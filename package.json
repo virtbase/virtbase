@@ -1,0 +1,54 @@
+{
+  "name": "virtbase",
+  "private": true,
+  "license": "AGPL-3.0-or-later",
+  "author": "Janic Bellmann <contact@janic.dev>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/masterjanic/virtbase"
+  },
+  "bugs": {
+    "url": "https://github.com/masterjanic/virtbase/issues"
+  },
+  "homepage": "https://virtbase.com",
+  "keywords": [
+    "vps",
+    "cloud",
+    "hosting"
+  ],
+  "engines": {
+    "bun": ">=1.3.10",
+    "node": ">=22.21.0"
+  },
+  "packageManager": "bun@1.3.10",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "tooling/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "check": "biome check .",
+    "check:unsafe": "biome check --write --unsafe .",
+    "check:write": "biome check --write .",
+    "clean": "git clean -xdf node_modules",
+    "clean:workspaces": "turbo run clean",
+    "db:push": "turbo -F @virtbase/db push",
+    "db:studio": "turbo -F @virtbase/db studio",
+    "dev": "turbo watch dev --continue",
+    "dev:next": "turbo watch dev -F @virtbase/web...",
+    "typecheck": "turbo run typecheck"
+  },
+  "catalog": {
+    "@types/bun": "latest",
+    "typescript": "^5"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.4.7",
+    "@types/bun": "catalog:",
+    "turbo": "^2.8.17"
+  },
+  "peerDependencies": {
+    "typescript": "catalog:"
+  }
+}
