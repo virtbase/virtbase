@@ -40,6 +40,10 @@
     "typecheck": "turbo run typecheck"
   },
   "catalog": {
+    "@tanstack/react-query": "^5.90.21",
+    "@trpc/client": "^11.13.4",
+    "@trpc/server": "^11.13.4",
+    "@trpc/tanstack-react-query": "^11.13.4",
     "@types/bun": "latest",
     "typescript": "^5",
     "zod": "^4.3.6"
