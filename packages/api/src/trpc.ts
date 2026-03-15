@@ -3,7 +3,7 @@ import { db } from "@virtbase/db/client";
 import superjson from "superjson";
 import z, { ZodError } from "zod";
 
-export const createTRPCContext = async (opts: {
+export const createTRPCContext = async (_opts: {
   headers: Headers;
   //auth: Auth;
 }) => {
