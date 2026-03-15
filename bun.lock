@@ -44,6 +44,17 @@
         "typescript": "catalog:",
       },
     },
+    "packages/validators": {
+      "name": "@virtbase/validators",
+      "dependencies": {
+        "zod": "catalog:",
+      },
+      "devDependencies": {
+        "@biomejs/biome": "catalog:",
+        "@virtbase/tsconfig": "workspace:*",
+        "typescript": "catalog:",
+      },
+    },
     "tooling/typescript": {
       "name": "@virtbase/tsconfig",
     },
@@ -152,6 +163,8 @@
     "@virtbase/db": ["@virtbase/db@workspace:packages/db"],
 
     "@virtbase/tsconfig": ["@virtbase/tsconfig@workspace:tooling/typescript"],
+
+    "@virtbase/validators": ["@virtbase/validators@workspace:packages/validators"],
 
     "buffer-from": ["buffer-from@1.1.2", "", {}, "sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ=="],
 
