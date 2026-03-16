@@ -15,5 +15,18 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./constants";
-export * from "./functions";
+import type { Graph, Thing, WithContext } from "schema-dts";
+
+export default function JsonLd({
+  schema,
+}: {
+  schema: WithContext<Thing> | Graph;
+}) {
+  return (
+    <script
+      type="application/ld+json"
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: required for JSON-LD
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}

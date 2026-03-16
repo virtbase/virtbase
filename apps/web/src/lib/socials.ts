@@ -15,5 +15,28 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./constants";
-export * from "./functions";
+import { Discord, Instagram, Twitter, YouTube } from "@virtbase/ui/icons";
+import { DISCORD_INVITE_URL } from "@virtbase/utils";
+
+export const SOCIALS = [
+  {
+    name: "YouTube",
+    icon: YouTube,
+    href: "https://www.youtube.com/@virtbase",
+  },
+  {
+    name: "Discord",
+    icon: Discord,
+    href: DISCORD_INVITE_URL,
+  },
+  {
+    name: "X",
+    icon: Twitter,
+    href: "https://x.com/virtbasecom",
+  },
+  {
+    name: "Instagram",
+    icon: Instagram,
+    href: "https://www.instagram.com/virtbasecom",
+  },
+] as const;

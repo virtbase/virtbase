@@ -15,5 +15,5 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./constants";
-export * from "./functions";
+export * from "./construct-metadata";
+export * from "./construct-opengraph-url";

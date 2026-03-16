@@ -15,5 +15,26 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./constants";
-export * from "./functions";
+import { cn } from "@virtbase/ui";
+
+export function Instagram({ className }: { className?: string }) {
+  return (
+    <svg
+      role="presentation"
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={cn(className, "fill-none! stroke-current")}
+    >
+      <rect width="20" height="20" x="2" y="2" rx="5" ry="5" />
+      <circle cx="12" cy="12" r="4" />
+      <circle cx="18" cy="6" r="1.5" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}

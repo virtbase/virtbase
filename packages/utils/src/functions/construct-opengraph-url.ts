@@ -15,5 +15,26 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./constants";
-export * from "./functions";
+export function constructOpengraphUrl({
+  title,
+  subtitle,
+  slug,
+  theme = "dark",
+}: {
+  title: string;
+  subtitle?: string;
+  slug?: string;
+  theme?: "light" | "dark";
+}) {
+  let url = `/api/og?title=${encodeURIComponent(title)}`;
+  if (subtitle) {
+    url += `&subtitle=${encodeURIComponent(subtitle)}`;
+  }
+  if (slug) {
+    url += `&slug=${encodeURIComponent(slug)}`;
+  }
+  if (theme) {
+    url += `&theme=${encodeURIComponent(theme)}`;
+  }
+  return url;
+}

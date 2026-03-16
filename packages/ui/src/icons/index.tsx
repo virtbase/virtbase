@@ -15,5 +15,9 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./constants";
-export * from "./functions";
+export * from "./discord";
+export * from "./github";
+export * from "./google";
+export * from "./instagram";
+export * from "./twitter";
+export * from "./youtube";
