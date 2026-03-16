@@ -1,24 +1,17 @@
 {
-  "name": "@virtbase/api",
+  "name": "@virtbase/auth",
   "private": true,
   "type": "module",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./src/index.ts"
-    }
+    ".": "./src/index.ts"
   },
   "scripts": {
-    "build": "tsc",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "dev": "tsc",
-    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@trpc/server": "catalog:",
-    "@virtbase/auth": "workspace:*",
     "@virtbase/db": "workspace:*",
-    "superjson": "^2.2.6",
+    "better-auth": "^1.5.5",
     "zod": "catalog:"
   },
   "devDependencies": {

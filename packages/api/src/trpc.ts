@@ -16,25 +16,23 @@
  */
 
 import { initTRPC, TRPCError } from "@trpc/server";
+import type { Auth } from "@virtbase/auth";
 import { db } from "@virtbase/db/client";
 import superjson from "superjson";
 import z, { ZodError } from "zod";
 
-export const createTRPCContext = async (_opts: {
+export const createTRPCContext = async (opts: {
   headers: Headers;
-  //auth: Auth;
+  auth: Auth;
 }) => {
-  /*
-    TODO: Implement auth
+  const authApi = opts.auth.api;
+  const session = await authApi.getSession({
+    headers: opts.headers,
+  });
 
-    const authApi = opts.auth.api;
-    const session = await authApi.getSession({
-      headers: opts.headers,
-    });
-    */
   return {
-    //authApi,
-    session: { user: null },
+    authApi,
+    session,
     db,
   };
 };
