@@ -37,7 +37,8 @@
     "db:studio": "turbo -F @virtbase/db studio",
     "dev": "turbo watch dev --continue",
     "dev:next": "turbo watch dev -F @virtbase/web...",
-    "typecheck": "turbo run typecheck"
+    "typecheck": "turbo run typecheck",
+    "ui-add": "turbo run ui-add"
   },
   "catalog": {
     "@biomejs/biome": "^2.4.7",

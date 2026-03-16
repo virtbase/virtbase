@@ -1,0 +1,23 @@
+{
+  "name": "@virtbase/tailwind-config",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./theme": "./theme.css",
+    "./postcss-config": "./postcss-config.js"
+  },
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss": "^4.2.1",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^4.2.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "catalog:",
+    "@virtbase/tsconfig": "workspace:*",
+    "typescript": "catalog:"
+  }
+}
