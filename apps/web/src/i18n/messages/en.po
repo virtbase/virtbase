@@ -6,23 +6,35 @@ msgstr ""
 "X-Generator: next-intl\n"
 "X-Crowdin-SourceKey: msgstr\n"
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx:33
+#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:32
+msgid "2znpSL"
+msgstr "Forgot password for {appName}"
+
+#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:33
+msgid "knQkcB"
+msgstr "Reset the password of your {appName} account."
+
+#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:56
+msgid "p+kmJg"
+msgstr "Reset your password"
+
+#: src/app/app.virtbase.com/(auth)/login/page.tsx:34
 msgid "VquSDh"
 msgstr "Sign in to {appName}"
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx:34
+#: src/app/app.virtbase.com/(auth)/login/page.tsx:35
 msgid "VGUFk+"
 msgstr "Sign in to your {appName} account to manage your virtual servers."
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx:58
+#: src/app/app.virtbase.com/(auth)/login/page.tsx:59
 msgid "TKG18n"
 msgstr "Log in to your {appName} account"
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx:62
+#: src/app/app.virtbase.com/(auth)/login/page.tsx:65
 msgid "25WwxF"
 msgstr "Don't have an account?"
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx:68
+#: src/app/app.virtbase.com/(auth)/login/page.tsx:71
 msgid "8HJxXG"
 msgstr "Sign up"
 
@@ -33,6 +45,30 @@ msgstr "Create your {appName} account"
 #: src/app/app.virtbase.com/(auth)/register/page.tsx:32
 msgid "PcjZtc"
 msgstr "Create your {appName} account to order your first virtual server."
+
+#: src/features/auth/components/auth-methods-separator.tsx:27
+msgid "Ntjkqd"
+msgstr "or"
+
+#: src/features/auth/components/discord-button.tsx:61
+msgid "Y7Cpd6"
+msgstr "Continue with Discord"
+
+#: src/features/auth/components/github-button.tsx:59
+msgid "8eQ7FM"
+msgstr "Continue with GitHub"
+
+#: src/features/auth/components/google-button.tsx:55
+msgid "FJ6r9E"
+msgstr "Continue with Google"
+
+#: src/features/auth/components/login-form.tsx:146
+msgid "Zk0/xv"
+msgstr "You signed in with {method} last time"
+
+#: src/features/auth/components/login-form.tsx:166
+msgid "u0mNBU"
+msgstr "Continue with another method"
 
 #: src/ui/layout/auth-layout.tsx:44
 msgid "jr1I15"

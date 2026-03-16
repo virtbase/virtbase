@@ -19,7 +19,11 @@ import { apiKey } from "@better-auth/api-key";
 import { passkey } from "@better-auth/passkey";
 import { APP_DOMAIN, APP_NAME } from "@virtbase/utils";
 import type { BetterAuthPlugin } from "better-auth";
-import { admin, createAccessControl } from "better-auth/plugins";
+import {
+  admin,
+  createAccessControl,
+  lastLoginMethod,
+} from "better-auth/plugins";
 import {
   adminAc,
   defaultStatements,
@@ -54,6 +58,10 @@ export const plugins = [
         modelName: "apiKey",
       },
     },
+  }),
+  lastLoginMethod({
+    storeInDatabase: false,
+    maxAge: 60 * 60 * 24 * 30, // 30 days
   }),
   passkey({
     rpName: APP_NAME,

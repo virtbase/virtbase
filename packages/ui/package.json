@@ -9,7 +9,9 @@
     "./grid": "./src/grid.tsx",
     "./logo": "./src/logo.tsx",
     "./icons": "./src/icons/index.tsx",
-    "./sonner": "./src/sonner.tsx"
+    "./sonner": "./src/sonner.tsx",
+    "./animated-size-container": "./src/animated-size-container.tsx",
+    "./spinner": "./src/spinner.tsx"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",

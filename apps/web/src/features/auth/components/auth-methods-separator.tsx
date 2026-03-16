@@ -15,20 +15,18 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { passkeyClient } from "@better-auth/passkey/client";
-import {
-  emailOTPClient,
-  lastLoginMethodClient,
-  magicLinkClient,
-} from "better-auth/client/plugins";
+import { useExtracted } from "next-intl";
 
-import { createAuthClient } from "better-auth/react";
+export function AuthMethodsSeparator() {
+  const t = useExtracted();
 
-export const authClient = createAuthClient({
-  plugins: [
-    emailOTPClient(),
-    lastLoginMethodClient(),
-    magicLinkClient(),
-    passkeyClient(),
-  ],
-});
+  return (
+    <div className="my-3 flex shrink items-center justify-center gap-2">
+      <div className="grow basis-0 border-border border-b" />
+      <span className="font-medium text-muted-foreground text-xs uppercase leading-none">
+        {t("or")}
+      </span>
+      <div className="grow basis-0 border-border border-b" />
+    </div>
+  );
+}

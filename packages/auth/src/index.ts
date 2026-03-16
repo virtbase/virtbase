@@ -17,7 +17,13 @@
 
 import { db } from "@virtbase/db/client";
 import { createId } from "@virtbase/db/utils";
-import { APP_NAME } from "@virtbase/utils";
+import {
+  ADMIN_HOSTNAMES,
+  APP_DOMAIN,
+  APP_HOSTNAMES,
+  APP_NAME,
+  PUBLIC_HOSTNAMES,
+} from "@virtbase/utils";
 import type { BetterAuthOptions, BetterAuthPlugin } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { betterAuth } from "better-auth/minimal";
@@ -63,6 +69,15 @@ export function initAuth({
       },
     },
     appName: APP_NAME,
+    baseURL: {
+      allowedHosts: [
+        ...PUBLIC_HOSTNAMES,
+        ...APP_HOSTNAMES,
+        ...ADMIN_HOSTNAMES,
+      ].filter(Boolean) as string[], // Sets are not empty
+      protocol: "auto",
+      fallback: APP_DOMAIN,
+    },
     database: drizzleAdapter(db, {
       provider: "pg",
       usePlural: true,

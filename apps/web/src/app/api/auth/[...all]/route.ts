@@ -15,20 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { passkeyClient } from "@better-auth/passkey/client";
-import {
-  emailOTPClient,
-  lastLoginMethodClient,
-  magicLinkClient,
-} from "better-auth/client/plugins";
+import { toNextJsHandler } from "better-auth/next-js";
 
-import { createAuthClient } from "better-auth/react";
+import { auth } from "@/lib/auth/server";
 
-export const authClient = createAuthClient({
-  plugins: [
-    emailOTPClient(),
-    lastLoginMethodClient(),
-    magicLinkClient(),
-    passkeyClient(),
-  ],
-});
+export const { POST, GET } = toNextJsHandler(auth);

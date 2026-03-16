@@ -22,25 +22,22 @@ import {
   constructOpengraphUrl,
 } from "@virtbase/utils";
 import type { Metadata } from "next";
-import NextLink from "next/link";
 import { useExtracted } from "next-intl";
 import { getExtracted } from "next-intl/server";
-import LoginForm from "@/features/auth/components/login-form";
 import { AuthLayout } from "@/ui/layout/auth-layout";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();
 
-  const title = t("Sign in to {appName}", { appName: APP_NAME });
-  const description = t(
-    "Sign in to your {appName} account to manage your virtual servers.",
-    { appName: APP_NAME },
-  );
+  const title = t("Forgot password for {appName}", { appName: APP_NAME });
+  const description = t("Reset the password of your {appName} account.", {
+    appName: APP_NAME,
+  });
 
   return constructMetadata({
     title,
     description,
-    canonicalUrl: `${APP_DOMAIN}/login`,
+    canonicalUrl: `${APP_DOMAIN}/forgot-password`,
     image: constructOpengraphUrl({
       title,
       subtitle: description,
@@ -53,24 +50,12 @@ export default function Page() {
   const t = useExtracted();
 
   return (
-    <AuthLayout showTerms>
+    <AuthLayout>
       <main className="w-full max-w-sm">
         <h1 className="text-center font-semibold text-xl">
-          {t("Log in to your {appName} account", { appName: APP_NAME })}
+          {t("Reset your password")}
         </h1>
-        <div className="mt-8">
-          <LoginForm />
-        </div>
-        <p className="mt-6 text-center font-medium text-muted-foreground text-sm">
-          {t("Don't have an account?")}&nbsp;
-          <NextLink
-            href="/register"
-            className="font-semibold text-foreground/80 transition-colors hover:text-foreground"
-            prefetch={false}
-          >
-            {t("Sign up")}
-          </NextLink>
-        </p>
+        <div className="mt-8">{/* <ForgotPasswordForm /> */}</div>
       </main>
     </AuthLayout>
   );
