@@ -48,6 +48,10 @@ We love our contributors! Here's how you can contribute:
 | node    | v22.21.0 |
 | bun     | 1.3.10   |
 
+## Repo Activity
+
+![Virtbase repo activity](https://repobeats.axiom.co/api/embed/6f82553dc7bd810ea49b649a538d740de7c4d560.svg "Repobeats analytics image")
+
 ## License
 
 This project is licensed under the [GNU Affero General Public License v3.0 (AGPLv3)](https://opensource.org/license/agpl-v3).
