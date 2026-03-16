@@ -15,8 +15,8 @@
   <a href="https://twitter.com/virtbasecom">
     <img src="https://img.shields.io/twitter/follow/virtbasecom?style=flat&label=%40virtbasecom&logo=twitter&color=0bf&logoColor=fff" alt="Twitter" />
   </a>
-  <a href="https://github.com/masterjanic/virtbase/blob/main/LICENSE.md">
-    <img src="https://img.shields.io/github/license/masterjanic/virtbase?label=license&logo=github&color=f80&logoColor=fff" alt="License" />
+  <a href="https://github.com/virtbase/virtbase/blob/main/LICENSE.md">
+    <img src="https://img.shields.io/github/license/virtbase/virtbase?label=license&logo=github&color=f80&logoColor=fff" alt="License" />
   </a>
 </p>
 
@@ -38,8 +38,8 @@
 
 We love our contributors! Here's how you can contribute:
 
-- [Open an issue](https://github.com/masterjanic/virtbase/issues) if you believe you've encountered a bug.
-- Make a [pull request](https://github.com/masterjanic/virtbase/pull) to add new features/make quality-of-life improvements/fix bugs.
+- [Open an issue](https://github.com/virtbase/virtbase/issues) if you believe you've encountered a bug.
+- Make a [pull request](https://github.com/virtbase/virtbase/pull) to add new features/make quality-of-life improvements/fix bugs.
 
 ### Recommended Versions
 
