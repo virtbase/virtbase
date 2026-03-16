@@ -19,6 +19,7 @@
 import "@/env";
 
 import type { NextConfig } from "next";
+import createNextIntlPlugin from "next-intl/plugin";
 import { contentSecurityPolicy } from "@/lib/csp";
 
 const nextConfig: NextConfig = {
@@ -144,4 +145,23 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+const withNextIntl = createNextIntlPlugin({
+  experimental: {
+    srcPath: "./src",
+    extract: {
+      sourceLocale: "en",
+    },
+    messages: {
+      path: "./src/i18n/messages",
+      locales: "infer",
+      format: "po",
+      // Currently causing issues with the build and emails
+      // (other consumers that use `use-intl/core`)
+      // precompile: true,
+    },
+  },
+});
+
+const configWithNextIntl = withNextIntl(nextConfig);
+
+export default configWithNextIntl;

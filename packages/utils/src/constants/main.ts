@@ -51,3 +51,17 @@ export const ADMIN_DOMAIN =
     : process.env.NEXT_PUBLIC_VERCEL_ENV === "preview"
       ? `https://staging.admin.${process.env.NEXT_PUBLIC_APP_DOMAIN}`
       : "http://admin.virtbase.localhost:3000";
+
+export const API_HOSTNAMES = new Set([
+  `api.${process.env.NEXT_PUBLIC_APP_DOMAIN}`,
+  `staging.api.${process.env.NEXT_PUBLIC_APP_DOMAIN}`,
+  "api.virtbase.localhost:3000",
+  "api.virtbase.localhost",
+]);
+
+export const API_DOMAIN =
+  process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
+    ? `https://api.${process.env.NEXT_PUBLIC_APP_DOMAIN}`
+    : process.env.NEXT_PUBLIC_VERCEL_ENV === "preview"
+      ? `https://staging.api.${process.env.NEXT_PUBLIC_APP_DOMAIN}`
+      : "http://api.virtbase.localhost:3000";
