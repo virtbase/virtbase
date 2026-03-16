@@ -1,0 +1,31 @@
+name: "virtbase-dev"
+services:
+  postgres:
+    image: postgres:16-alpine
+    command: '-d 1' # set debug-level
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=virtbase
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres']
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+  neon-proxy:
+    image: ghcr.io/timowilhelm/local-neon-http-proxy:main
+    restart: unless-stopped
+    environment:
+      - PG_CONNECTION_STRING=postgres://postgres:password@postgres:5432/virtbase
+    ports:
+      - '4444:4444'
+    depends_on:
+      postgres:
+        condition: service_healthy
+volumes:
+  postgres-data:

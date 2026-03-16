@@ -1,5 +1,5 @@
 {
-  "name": "@virtbase/api",
+  "name": "@virtbase/utils",
   "private": true,
   "type": "module",
   "exports": {
@@ -14,16 +14,7 @@
     "dev": "tsc",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
-  "dependencies": {
-    "@trpc/server": "catalog:",
-    "@virtbase/auth": "workspace:*",
-    "@virtbase/db": "workspace:*",
-    "superjson": "^2.2.6",
-    "zod": "catalog:"
-  },
-  "peerDependencies": {
-    "@simplewebauthn/server": "^13.2.3"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@biomejs/biome": "catalog:",
     "@virtbase/tsconfig": "workspace:*",

@@ -15,9 +15,4 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { initAuth } from "@virtbase/auth";
-import { nextCookies } from "better-auth/next-js";
-
-export const auth = initAuth({
-  additionalPlugins: [nextCookies()],
-});
+export * from "./create-id";

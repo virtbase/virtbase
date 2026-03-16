@@ -24,6 +24,14 @@
     },
     "//#clean": {
       "cache": false
+    },
+    "push": {
+      "cache": false,
+      "interactive": true
+    },
+    "studio": {
+      "cache": false,
+      "persistent": true
     }
   },
   "globalEnv": [],

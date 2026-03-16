@@ -136,6 +136,7 @@ const nextConfig: NextConfig = {
     "@virtbase/auth",
     "@virtbase/db",
     "@virtbase/ui",
+    "@virtbase/utils",
     "@virtbase/validators",
   ],
   typescript: {

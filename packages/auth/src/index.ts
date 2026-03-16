@@ -16,15 +16,118 @@
  */
 
 import { db } from "@virtbase/db/client";
-import type { BetterAuthOptions } from "better-auth";
+import { createId } from "@virtbase/db/utils";
+import { APP_NAME } from "@virtbase/utils";
+import type { BetterAuthOptions, BetterAuthPlugin } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { betterAuth } from "better-auth/minimal";
+import { plugins } from "./plugins";
 
-export function initAuth() {
+export function initAuth({
+  additionalPlugins,
+}: {
+  additionalPlugins?: BetterAuthPlugin[];
+} = {}) {
   const config = {
+    account: {
+      encryptOAuthTokens: true,
+      accountLinking: {
+        enabled: true,
+        allowDifferentEmails: true,
+        allowUnlinkingAll: true,
+        trustedProviders: ["google", "github", "discord"],
+      },
+    },
+    advanced: {
+      database: {
+        generateId: ({ model }) => {
+          switch (model) {
+            case "account":
+              return createId({ prefix: "acc_" });
+            case "user":
+              return createId({ prefix: "usr_" });
+            case "session":
+              return createId({ prefix: "sess_" });
+            case "verification":
+              return createId({ prefix: "verif_" });
+            case "passkey":
+              return createId({ prefix: "passkey_" });
+            default:
+              break;
+          }
+
+          // Use the default database ID
+          // generation as defined per schema
+          return false;
+        },
+      },
+    },
+    appName: APP_NAME,
     database: drizzleAdapter(db, {
       provider: "pg",
+      usePlural: true,
     }),
+    emailVerification: {
+      autoSignInAfterVerification: true,
+    },
+    plugins: [...plugins, ...(additionalPlugins || [])],
+    session: {
+      cookieCache: {
+        enabled: true,
+        maxAge: 5 * 60, // 5 minutes
+      },
+      // Allow sensitive actions without verification
+      // TODO: Implement a proper verification mechanism
+      freshAge: 0,
+    },
+    socialProviders: {
+      discord: {
+        enabled:
+          !!process.env.DISCORD_CLIENT_ID &&
+          !!process.env.DISCORD_CLIENT_SECRET,
+        clientId: process.env.DISCORD_CLIENT_ID || "",
+        clientSecret: process.env.DISCORD_CLIENT_SECRET,
+      },
+      github: {
+        enabled:
+          !!process.env.GITHUB_CLIENT_ID && !!process.env.GITHUB_CLIENT_SECRET,
+        clientId: process.env.GITHUB_CLIENT_ID || "",
+        clientSecret: process.env.GITHUB_CLIENT_SECRET,
+      },
+      google: {
+        enabled:
+          !!process.env.GOOGLE_CLIENT_ID && !!process.env.GOOGLE_CLIENT_SECRET,
+        clientId: process.env.GOOGLE_CLIENT_ID || "",
+        clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      },
+    },
+    telemetry: {
+      enabled: false,
+      debug: false,
+    },
+    user: {
+      additionalFields: {
+        stripeCustomerId: {
+          type: "string",
+          required: false,
+          unique: true,
+          input: false,
+        },
+        role: {
+          type: "string",
+          required: true,
+          unique: false,
+          input: false,
+          defaultValue: "CUSTOMER",
+        },
+        lastAttributedAt: {
+          type: "date",
+          required: false,
+          unique: false,
+          input: false,
+        },
+      },
+    },
   } satisfies BetterAuthOptions;
 
   return betterAuth(config);

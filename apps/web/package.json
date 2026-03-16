@@ -11,6 +11,7 @@
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {
+    "@better-auth/passkey": "^1.5.5",
     "@t3-oss/env-nextjs": "^0.13.10",
     "@tanstack/react-query": "catalog:",
     "@trpc/client": "catalog:",
@@ -19,6 +20,7 @@
     "@virtbase/api": "workspace:*",
     "@virtbase/auth": "workspace:*",
     "@virtbase/db": "workspace:*",
+    "@virtbase/utils": "workspace:*",
     "@virtbase/validators": "workspace:*",
     "better-auth": "^1.5.5",
     "next": "^16.2.0-canary.100",
