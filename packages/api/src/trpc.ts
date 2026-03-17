@@ -19,6 +19,7 @@ import { initTRPC, TRPCError } from "@trpc/server";
 import type { Auth } from "@virtbase/auth";
 import { db } from "@virtbase/db/client";
 import superjson from "superjson";
+import type { OpenApiMeta } from "trpc-to-openapi";
 import z, { ZodError } from "zod";
 
 export const createTRPCContext = async (opts: {
@@ -37,19 +38,22 @@ export const createTRPCContext = async (opts: {
   };
 };
 
-const t = initTRPC.context<typeof createTRPCContext>().create({
-  transformer: superjson,
-  errorFormatter: ({ shape, error }) => ({
-    ...shape,
-    data: {
-      ...shape.data,
-      zodError:
-        error.cause instanceof ZodError
-          ? z.flattenError(error.cause as ZodError<Record<string, unknown>>)
-          : null,
-    },
-  }),
-});
+const t = initTRPC
+  .meta<OpenApiMeta>()
+  .context<typeof createTRPCContext>()
+  .create({
+    transformer: superjson,
+    errorFormatter: ({ shape, error }) => ({
+      ...shape,
+      data: {
+        ...shape.data,
+        zodError:
+          error.cause instanceof ZodError
+            ? z.flattenError(error.cause as ZodError<Record<string, unknown>>)
+            : null,
+      },
+    }),
+  });
 
 export const createTRPCRouter = t.router;
 

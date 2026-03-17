@@ -42,6 +42,17 @@ import { createTRPCRouter, protectedProcedure } from "../trpc";
 
 export const sshKeysRouter = createTRPCRouter({
   get: protectedProcedure
+    .meta({
+      openapi: {
+        method: "GET",
+        path: "/ssh_keys/{id}",
+        protect: true,
+        contentTypes: ["application/json"],
+        tags: ["SSH Keys"],
+        summary: "Get an SSH key",
+        description: "Returns a specific SSH key by its unique identifier.",
+      },
+    })
     .input(GetSSHKeyInputSchema)
     .output(GetSSHKeyOutputSchema)
     .query(async ({ ctx, input }) => {
@@ -86,6 +97,17 @@ export const sshKeysRouter = createTRPCRouter({
       };
     }),
   list: protectedProcedure
+    .meta({
+      openapi: {
+        method: "GET",
+        path: "/ssh_keys",
+        protect: true,
+        contentTypes: ["application/json"],
+        tags: ["SSH Keys"],
+        summary: "List SSH keys",
+        description: "Returns a list of SSH keys.",
+      },
+    })
     .input(ListSSHKeysInputSchema)
     .output(ListSSHKeysOutputSchema)
     .query(async ({ ctx, input }) => {
@@ -159,6 +181,18 @@ export const sshKeysRouter = createTRPCRouter({
       };
     }),
   create: protectedProcedure
+    .meta({
+      openapi: {
+        method: "POST",
+        path: "/ssh_keys",
+        protect: true,
+        contentTypes: ["application/json"],
+        tags: ["SSH Keys"],
+        summary: "Create an SSH key",
+        description:
+          "Creates a new SSH key with the given `name` and `public_key`.",
+      },
+    })
     .input(CreateSSHKeyInputSchema)
     .output(CreateSSHKeyOutputSchema)
     .mutation(async ({ ctx, input }) => {
@@ -213,6 +247,17 @@ export const sshKeysRouter = createTRPCRouter({
       };
     }),
   update: protectedProcedure
+    .meta({
+      openapi: {
+        method: "PUT",
+        path: "/ssh_keys/{id}",
+        protect: true,
+        contentTypes: ["application/json"],
+        tags: ["SSH Keys"],
+        summary: "Update an SSH key",
+        description: "Updates an existing SSH key.",
+      },
+    })
     .input(UpdateSSHKeyInputSchema)
     .output(UpdateSSHKeyOutputSchema)
     .mutation(async ({ ctx, input }) => {
@@ -258,6 +303,17 @@ export const sshKeysRouter = createTRPCRouter({
       };
     }),
   delete: protectedProcedure
+    .meta({
+      openapi: {
+        method: "DELETE",
+        path: "/ssh_keys/{id}",
+        protect: true,
+        contentTypes: ["application/json"],
+        tags: ["SSH Keys"],
+        summary: "Delete an SSH key",
+        description: "Deletes a specific SSH key by its unique identifier.",
+      },
+    })
     .input(DeleteSSHKeyInputSchema)
     .output(DeleteSSHKeyOutputSchema)
     .mutation(async ({ ctx, input }) => {

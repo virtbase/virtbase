@@ -15,8 +15,36 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export const DISCORD_INVITE_URL = "https://discord.gg/ywrqTubzh5";
+import {
+  appRouter,
+  createOpenApiFetchHandler,
+  createTRPCContext,
+} from "@virtbase/api";
+import type { NextRequest } from "next/server";
+import { auth } from "@/lib/auth/server";
 
-export const APP_STORE_URL = "https://testflight.apple.com/join/YTMUeKSy";
+const createContext = async (req: NextRequest) => {
+  return createTRPCContext({
+    headers: req.headers,
+    auth,
+  });
+};
 
-export const LOOKING_GLASS_URL = "https://lg.virtbase.com";
+const handler = (req: NextRequest) => {
+  return createOpenApiFetchHandler({
+    endpoint: "/api/v1",
+    req,
+    router: appRouter,
+    createContext: () => createContext(req),
+  });
+};
+
+export {
+  handler as GET,
+  handler as POST,
+  handler as PUT,
+  handler as PATCH,
+  handler as DELETE,
+  handler as OPTIONS,
+  handler as HEAD,
+};

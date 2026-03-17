@@ -15,7 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { Viewport } from "next";
+import { constructMetadata } from "@virtbase/utils";
+import type { Metadata, Viewport } from "next";
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -28,8 +29,7 @@ export const viewport: Viewport = {
   ],
 };
 
-// TODO: Add base metadata
-// export const metadata = constructMetadata();
+export const metadata: Metadata = constructMetadata();
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return children;

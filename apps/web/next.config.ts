@@ -147,7 +147,7 @@ const nextConfig: NextConfig = {
 
 const withNextIntl = createNextIntlPlugin({
   experimental: {
-    srcPath: "./src",
+    srcPath: ["./src/app", "./src/features", "./src/ui"],
     extract: {
       sourceLocale: "en",
     },
@@ -155,9 +155,7 @@ const withNextIntl = createNextIntlPlugin({
       path: "./src/i18n/messages",
       locales: "infer",
       format: "po",
-      // Currently causing issues with the build and emails
-      // (other consumers that use `use-intl/core`)
-      // precompile: true,
+      precompile: true,
     },
   },
 });
