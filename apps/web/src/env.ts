@@ -19,6 +19,7 @@ import { createEnv } from "@t3-oss/env-nextjs";
 import { vercel } from "@t3-oss/env-nextjs/presets-zod";
 import { authEnv } from "@virtbase/auth/env";
 import * as z from "zod";
+import z4 from "zod/v4";
 
 export const env = createEnv({
   extends: [authEnv(), vercel()],
@@ -27,7 +28,10 @@ export const env = createEnv({
       .enum(["development", "production", "test"])
       .default("development"),
   },
-  server: {},
+  server: {
+    UPSTASH_REDIS_REST_URL: z4.string().min(1),
+    UPSTASH_REDIS_REST_TOKEN: z4.string().min(1),
+  },
   client: {},
   experimental__runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,

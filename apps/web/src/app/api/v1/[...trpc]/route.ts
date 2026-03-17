@@ -23,9 +23,23 @@ import {
 import type { NextRequest } from "next/server";
 import { auth } from "@/lib/auth/server";
 
-const createContext = async (req: NextRequest) => {
+// TODO: Check if there is a better way to set the rate limit headers
+const createContext = async ({
+  req,
+  res,
+}: {
+  req: Request;
+  // `res` is not typed on `createOpenApiFetchHandler`
+  // but it should exist
+  res?: { setHeader: (key: string, value: string | string[]) => void };
+}) => {
   return createTRPCContext({
     headers: req.headers,
+    // `res` might be undefined, but `setHeader` is required
+    // to set the rate limit headers on the response
+    setHeader: res
+      ? (name: string, value: string) => res.setHeader(name, value)
+      : () => {},
     auth,
   });
 };
@@ -35,7 +49,7 @@ const handler = (req: NextRequest) => {
     endpoint: "/api/v1",
     req,
     router: appRouter,
-    createContext: () => createContext(req),
+    createContext,
   });
 };
 

@@ -56,6 +56,9 @@ beforeAll(async () => {
     session: mockSession,
     db: testDb as never,
     authApi: {} as never,
+    apiKey: null,
+    headers: new Headers(),
+    setHeader: () => {},
   });
 });
 

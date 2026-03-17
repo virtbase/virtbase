@@ -16,6 +16,8 @@
   },
   "dependencies": {
     "@trpc/server": "catalog:",
+    "@upstash/ratelimit": "^2.0.8",
+    "@upstash/redis": "^1.37.0",
     "@virtbase/auth": "workspace:*",
     "@virtbase/db": "workspace:*",
     "@virtbase/utils": "workspace:*",

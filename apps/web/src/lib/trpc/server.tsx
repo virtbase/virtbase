@@ -22,7 +22,6 @@ import type { AppRouter } from "@virtbase/api";
 import { appRouter, createTRPCContext } from "@virtbase/api";
 import { headers } from "next/headers";
 import { cache } from "react";
-
 import { auth } from "@/lib/auth/server";
 import { createQueryClient } from "@/lib/trpc/query-client";
 
@@ -32,6 +31,7 @@ const createContext = cache(async () => {
 
   return createTRPCContext({
     headers: heads,
+    setHeader: heads.set,
     auth,
   });
 });

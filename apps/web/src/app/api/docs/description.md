@@ -45,7 +45,11 @@ Each request you send to our API endpoints are subject to rate limiting. This in
 
 If you have reached your rate limit, your requests will be handled with a `429 Too Many Requests` error.
 
-The default limit is 120 requests per minute, or 2 requests per second. Burst requests are allowed.
+Unless otherwise specified, the default rate limit is 10 requests per 10 seconds (or 60 requests per minute) using a sliding window. Burst requests are allowed within the window.
+
+- The `X-RateLimit-Limit` header contains the total number of requests you can perform per time window.
+- The `X-RateLimit-Remaining` header contains the number of requests remaining in the current rate limit time frame.
+- The `X-RateLimit-Reset` header contains a UNIX timestamp of the point in time when your rate limit will have recovered, and you will have the full number of requests available again.
 
 ## Sorting
 
