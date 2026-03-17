@@ -11,6 +11,10 @@
       "types": "./dist/client.d.ts",
       "default": "./src/client.ts"
     },
+    "./test-client": {
+      "types": "./dist/test-client.d.ts",
+      "default": "./src/test-client.ts"
+    },
     "./schema": {
       "types": "./dist/schema/index.d.ts",
       "default": "./src/schema/index.ts"
@@ -38,6 +42,7 @@
     "zod": "catalog:"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "^0.2.0",
     "@biomejs/biome": "catalog:",
     "@types/ws": "^8.18.1",
     "@virtbase/tsconfig": "workspace:*",

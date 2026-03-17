@@ -15,6 +15,18 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./main";
-export * from "./pagination";
-export * from "./urls";
+import { describe, expect, test } from "bun:test";
+import { APP_NAME } from "../../constants";
+import { constructMetadata } from "../construct-metadata";
+
+describe("constructMetadata", () => {
+  test("it constructs the correct metadata with title and description", () => {
+    const metadata = constructMetadata({
+      title: "Test Title",
+      description: "Test Description",
+    });
+
+    expect(metadata.title).toBe(`Test Title | ${APP_NAME}`);
+    expect(metadata.description).toBe("Test Description");
+  });
+});

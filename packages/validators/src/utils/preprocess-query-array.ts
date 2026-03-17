@@ -15,6 +15,16 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./main";
-export * from "./pagination";
-export * from "./urls";
+/**
+ * A zod preprocessor to split a comma-separated string into an array.
+ * Useful for converting query parameters into arrays.
+ *
+ * @example
+ * ```
+ * sort?=id:asc,name:desc
+ * => ["id:asc", "name:desc"]
+ * ```
+ */
+export const preprocessQueryArray = (value: unknown) => {
+  return value && typeof value === "string" ? value.split(",") : value;
+};

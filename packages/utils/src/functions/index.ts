@@ -17,3 +17,4 @@
 
 export * from "./construct-metadata";
 export * from "./construct-opengraph-url";
+export * from "./parse-public-key";

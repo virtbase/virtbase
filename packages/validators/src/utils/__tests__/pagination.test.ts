@@ -15,6 +15,18 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./main";
-export * from "./pagination";
-export * from "./urls";
+import { describe, expect, test } from "bun:test";
+import { getPaginationMeta } from "../../pagination";
+
+describe("getPaginationMeta", () => {
+  test("it returns the pagination meta for a list endpoint", () => {
+    expect(getPaginationMeta({ total: 100, page: 1, perPage: 10 })).toEqual({
+      page: 1,
+      per_page: 10,
+      previous_page: null,
+      next_page: 2,
+      last_page: 10,
+      total_entries: 100,
+    });
+  });
+});

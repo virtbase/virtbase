@@ -15,6 +15,12 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./main";
-export * from "./pagination";
-export * from "./urls";
+/**
+ * The default page number used for list endpoints.
+ */
+export const DEFAULT_PAGE = 1;
+
+/**
+ * The default number of entries per page used for list endpoints.
+ */
+export const DEFAULT_PER_PAGE = 10;

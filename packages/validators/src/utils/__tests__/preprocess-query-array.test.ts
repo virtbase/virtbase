@@ -15,6 +15,20 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./main";
-export * from "./pagination";
-export * from "./urls";
+import { describe, expect, test } from "bun:test";
+import { preprocessQueryArray } from "../preprocess-query-array";
+
+describe("preprocessQueryArray", () => {
+  test("it splits a comma-separated string into an array", () => {
+    expect(preprocessQueryArray("id:asc,name:desc")).toEqual([
+      "id:asc",
+      "name:desc",
+    ]);
+  });
+
+  test("it returns the value if it is not a valid string", () => {
+    expect(preprocessQueryArray("")).toEqual("");
+    expect(preprocessQueryArray(123)).toEqual(123);
+    expect(preprocessQueryArray(null)).toEqual(null);
+  });
+});

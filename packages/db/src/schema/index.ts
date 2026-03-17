@@ -16,3 +16,4 @@
  */
 
 export * from "./auth";
+export * from "./ssh-keys";

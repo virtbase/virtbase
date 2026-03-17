@@ -15,6 +15,12 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./main";
-export * from "./pagination";
-export * from "./urls";
+/**
+ * Generic type to create all sortable columns
+ * for a given schema.
+ */
+export type SortableColumns<T> = (
+  | `${keyof T & string}`
+  | `${keyof T & string}:asc`
+  | `${keyof T & string}:desc`
+)[];
