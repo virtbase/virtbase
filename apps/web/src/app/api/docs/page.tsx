@@ -71,6 +71,17 @@ const getDocumentation = cache(async () => {
   });
 
   Object.assign(doc, {
+    tags: [
+      // TODO: Add descriptions for the tags
+      /* {
+        name: "KVM",
+        description: ""
+      },
+      {
+        name: "SSH Keys",
+        description: "",
+      },*/
+    ],
     "x-tagGroups": [
       {
         name: "Server Resources",
