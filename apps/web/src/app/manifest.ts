@@ -15,13 +15,14 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { APP_NAME } from "@virtbase/utils";
 import type { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "Virtbase",
-    short_name: "Virtbase",
-    description: "Virtbase - Hosting, but secure.",
+    name: APP_NAME,
+    short_name: APP_NAME,
+    description: `${APP_NAME} - Hosting, but secure.`,
     start_url: "/",
     display: "standalone",
     theme_color: "#000000",

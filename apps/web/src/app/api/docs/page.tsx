@@ -45,7 +45,7 @@ const getDocumentation = cache(async () => {
   );
 
   const doc = generateOpenApiDocument(appRouter, {
-    title: "Virtbase Public API",
+    title: `${APP_NAME} Public API`,
     description,
     version: "1.0.0",
     baseUrl: `${PUBLIC_DOMAIN}/api/v1`,
@@ -63,7 +63,7 @@ const getDocumentation = cache(async () => {
     info: {
       ...doc.info,
       contact: {
-        name: "Virtbase",
+        name: APP_NAME,
         url: `${PUBLIC_DOMAIN}/contact`,
         email: "support@virtbase.com",
       },
