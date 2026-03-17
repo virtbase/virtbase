@@ -30,14 +30,20 @@ export const createTRPCContext = async ({
 }: {
   headers: Headers;
   setHeader: (name: string, value: string) => void;
-  auth: Auth;
+  auth: Pick<Auth, "api">;
 }) => {
   const authApi = opts.auth.api;
+
+  // Only include the methods we need to avoid large type inference errors
+  const narrowedAuthApi = {
+    verifyApiKey: authApi.verifyApiKey,
+    getSession: authApi.getSession,
+  };
 
   const apiKey = headers.get("x-virtbase-api-key");
   if (apiKey) {
     return {
-      authApi,
+      authApi: narrowedAuthApi,
       apiKey,
       session: null,
       db,
@@ -51,7 +57,7 @@ export const createTRPCContext = async ({
   });
 
   return {
-    authApi,
+    authApi: narrowedAuthApi,
     apiKey: null,
     session,
     db,
@@ -69,7 +75,10 @@ type RatelimitMeta = {
    */
   ratelimit?:
     | {
-        fingerprint: (userId?: string | null) => string;
+        fingerprint: (ctx: {
+          userId?: string | null;
+          defaultFingerprint: string;
+        }) => string;
         requests: number;
         seconds:
           | `${number} ms`
@@ -116,7 +125,7 @@ const ratelimitMiddleware = t.middleware(
     meta: { ratelimit: ratelimitConfig } = {},
     ctx: { headers, setHeader, session },
   }) => {
-    if (ratelimitConfig === false) {
+    if (ratelimitConfig === false || t._config.isDev) {
       // Ratelimit is disabled for this endpoint
       // Skip and go to the next middleware
       return next();
@@ -129,10 +138,13 @@ const ratelimitMiddleware = t.middleware(
     } = ratelimitConfig || {};
 
     const userId = session?.user?.id ?? null;
-    const desiredFingerprint = fingerprintFn?.(userId);
+    const defaultFingerprintValue = defaultFingerprint(headers);
+    const desiredFingerprint = fingerprintFn?.({
+      userId,
+      defaultFingerprint: defaultFingerprintValue,
+    });
 
-    const fingerprint =
-      desiredFingerprint || userId || defaultFingerprint(headers);
+    const fingerprint = desiredFingerprint || userId || defaultFingerprintValue;
 
     const { success, limit, reset, remaining } = await ratelimit(
       requests,

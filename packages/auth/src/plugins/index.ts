@@ -22,7 +22,9 @@ import type { BetterAuthPlugin } from "better-auth";
 import {
   admin,
   createAccessControl,
+  emailOTP,
   lastLoginMethod,
+  magicLink,
 } from "better-auth/plugins";
 import {
   adminAc,
@@ -59,9 +61,51 @@ export const plugins = [
       },
     },
   }),
+  emailOTP({
+    sendVerificationOnSignUp: true,
+    sendVerificationOTP: async ({ email, otp, type }) => {
+      if (type !== "email-verification") {
+        console.info(
+          `The following OTP type was requested, but is not yet implemented: ${type}`,
+        );
+        return;
+      }
+
+      if (process.env.NODE_ENV === "development") {
+        console.log(`OTP of type '${type}' for ${email}: ${otp}`);
+        return;
+      }
+
+      // TODO: Add email service
+      /*await sendEmail({
+        to: email,
+        subject: "Dein Virtbase Bestätigungscode",
+        react: VerifyEmail({ email, code: otp }),
+      });*/
+    },
+    expiresIn: 600, // 10 minutes
+    allowedAttempts: 3,
+    storeOTP: "encrypted",
+  }),
   lastLoginMethod({
     storeInDatabase: false,
     maxAge: 60 * 60 * 24 * 30, // 30 days
+  }),
+  magicLink({
+    disableSignUp: true,
+    sendMagicLink: async ({ email, url }) => {
+      if (process.env.NODE_ENV === "development") {
+        console.log(`Magic link for ${email}: ${url}`);
+        return;
+      }
+
+      // TODO: Add email service
+      /*await sendEmail({
+        to: email,
+        subject: "Dein Virtbase Login Link",
+        react: LoginLink({ email, url }),
+      });*/
+    },
   }),
   passkey({
     rpName: APP_NAME,

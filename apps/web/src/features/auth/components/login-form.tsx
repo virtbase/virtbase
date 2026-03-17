@@ -24,8 +24,10 @@ import type { Dispatch, SetStateAction } from "react";
 import { createContext, useEffect, useState } from "react";
 import { AuthMethodsSeparator } from "@/features/auth/components/auth-methods-separator";
 import { DiscordButton } from "@/features/auth/components/discord-button";
+import { EmailSignIn } from "@/features/auth/components/email-sign-in";
 import { GitHubButton } from "@/features/auth/components/github-button";
 import { GoogleButton } from "@/features/auth/components/google-button";
+import { PasskeyButton } from "@/features/auth/components/passkey-button";
 import { authClient } from "@/lib/auth/client";
 
 const authMethods = [
@@ -98,8 +100,6 @@ export default function LoginForm({
       component: DiscordButton,
       props: { next },
     },
-    /*
-    TODO
     {
       method: "email",
       component: EmailSignIn,
@@ -109,7 +109,7 @@ export default function LoginForm({
       method: "passkey",
       component: PasskeyButton,
       props: { next },
-    },*/
+    },
   ];
 
   const currentAuthProvider = authProviders.find(

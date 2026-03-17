@@ -22,12 +22,17 @@ import {
   APP_DOMAIN,
   APP_HOSTNAMES,
   APP_NAME,
+  getGravatarImage,
   PUBLIC_HOSTNAMES,
 } from "@virtbase/utils";
 import type { BetterAuthOptions, BetterAuthPlugin } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { betterAuth } from "better-auth/minimal";
 import { plugins } from "./plugins";
+
+const AUTH_COOKIE_DOMAIN = process.env.VERCEL_URL
+  ? `.${process.env.NEXT_PUBLIC_APP_DOMAIN}`
+  : ".virtbase.localhost";
 
 export function initAuth({
   additionalPlugins,
@@ -45,6 +50,15 @@ export function initAuth({
       },
     },
     advanced: {
+      crossSubDomainCookies: {
+        enabled: true,
+        // When working on localhost, there are several issues to cross subdomain cookies (https://stackoverflow.com/a/1188145)
+        // We use a custom subdomain for the cookies to work since the browser requires two dots in the domain name.
+        domain: AUTH_COOKIE_DOMAIN,
+      },
+      defaultCookieAttributes: {
+        domain: AUTH_COOKIE_DOMAIN,
+      },
       database: {
         generateId: ({ model }) => {
           switch (model) {
@@ -82,6 +96,53 @@ export function initAuth({
       provider: "pg",
       usePlural: true,
     }),
+    databaseHooks: {
+      user: {
+        create: {
+          before: async (user) => {
+            return {
+              data: {
+                ...user,
+                ...(!user.name && { name: user.email.split("@")[0] }),
+                ...(!user.image && {
+                  image: await getGravatarImage(user.email),
+                }),
+              },
+            };
+          },
+        },
+      },
+    },
+    emailAndPassword: {
+      enabled: true,
+      requireEmailVerification: true,
+      sendResetPassword: async ({ url, user }) => {
+        if (process.env.NODE_ENV === "development") {
+          console.log(`Reset password link for ${user.email}: ${url}`);
+          return;
+        }
+
+        // TODO: Add email service
+        /*await sendEmail({
+          to: user.email,
+          subject: "Link zum Zurücksetzen deines Virtbase Passworts",
+          react: ResetPasswordLink({ email: user.email, url }),
+        });*/
+      },
+      onPasswordReset: async ({ user }) => {
+        if (process.env.NODE_ENV === "development") {
+          console.log(`Password successfully reset for ${user.email}`);
+          return;
+        }
+
+        // TODO: Add email service
+        /*await sendEmail({
+          to: user.email,
+          subject: "Dein Virtbase Passwort wurde zurückgesetzt",
+          react: PasswordUpdated({ email: user.email, terminology: "reset" }),
+        });*/
+      },
+    },
     emailVerification: {
       autoSignInAfterVerification: true,
     },

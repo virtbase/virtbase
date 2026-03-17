@@ -15,10 +15,31 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "lucide-react";
-export * from "./discord";
-export { Github } from "./github";
-export * from "./google";
-export { Instagram } from "./instagram";
-export { Twitter } from "./twitter";
-export * from "./youtube";
+"use client";
+
+import { Separator as SeparatorPrimitive } from "radix-ui";
+import type * as React from "react";
+
+import { cn } from "./index";
+
+function Separator({
+  className,
+  orientation = "horizontal",
+  decorative = true,
+  ...props
+}: React.ComponentProps<typeof SeparatorPrimitive.Root>) {
+  return (
+    <SeparatorPrimitive.Root
+      data-slot="separator"
+      decorative={decorative}
+      orientation={orientation}
+      className={cn(
+        "shrink-0 bg-border data-[orientation=horizontal]:h-px data-[orientation=vertical]:h-full data-[orientation=horizontal]:w-full data-[orientation=vertical]:w-px",
+        className,
+      )}
+      {...props}
+    />
+  );
+}
+
+export { Separator };

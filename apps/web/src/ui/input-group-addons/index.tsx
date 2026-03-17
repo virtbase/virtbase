@@ -15,10 +15,5 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "lucide-react";
-export * from "./discord";
-export { Github } from "./github";
-export * from "./google";
-export { Instagram } from "./instagram";
-export { Twitter } from "./twitter";
-export * from "./youtube";
+export * from "./random-password-addon";
+export * from "./show-password-addon";

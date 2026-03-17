@@ -15,10 +15,12 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { authRouter } from "./router/auth";
 import { sshKeysRouter } from "./router/ssh-keys";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
+  auth: authRouter,
   sshKeys: sshKeysRouter,
 });
 

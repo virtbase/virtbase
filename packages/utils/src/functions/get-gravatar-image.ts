@@ -15,10 +15,13 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "lucide-react";
-export * from "./discord";
-export { Github } from "./github";
-export * from "./google";
-export { Instagram } from "./instagram";
-export { Twitter } from "./twitter";
-export * from "./youtube";
+export const getGravatarImage = async (email: string) => {
+  const digest = await crypto.subtle.digest(
+    "SHA-256",
+    new TextEncoder().encode(email.toLowerCase().trim()),
+  );
+  const hash = Array.from(new Uint8Array(digest))
+    .map((b) => b.toString(16).padStart(2, "0"))
+    .join("");
+  return `https://seccdn.libravatar.org/avatar/${hash}?d=identicon`;
+};

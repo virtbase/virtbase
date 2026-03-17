@@ -15,10 +15,28 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "lucide-react";
-export * from "./discord";
-export { Github } from "./github";
-export * from "./google";
-export { Instagram } from "./instagram";
-export { Twitter } from "./twitter";
-export * from "./youtube";
+import * as z from "zod/v4-mini";
+
+export const PasswordSchema = z
+  .string()
+  .check(
+    z.minLength(8),
+    z.maxLength(1000),
+    z.regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/),
+  );
+
+export const EmailSchema = z.string().check(z.email(), z.toLowerCase());
+
+export const NameSchema = z.string().check(z.minLength(1), z.maxLength(32));
+
+export const ResetPasswordSchema = z.object({
+  token: z.string().check(z.minLength(1)),
+  password: PasswordSchema,
+  confirmPassword: PasswordSchema,
+});
+
+export const SignUpSchema = z.object({
+  email: EmailSchema,
+  name: NameSchema,
+  password: PasswordSchema,
+});

@@ -17,4 +17,7 @@
 
 export * from "./construct-metadata";
 export * from "./construct-opengraph-url";
+export * from "./generate-password";
+export * from "./get-gravatar-image";
 export * from "./parse-public-key";
+export * from "./truncate";

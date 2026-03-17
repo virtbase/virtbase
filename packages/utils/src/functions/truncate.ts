@@ -15,10 +15,10 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "lucide-react";
-export * from "./discord";
-export { Github } from "./github";
-export * from "./google";
-export { Instagram } from "./instagram";
-export { Twitter } from "./twitter";
-export * from "./youtube";
+export const truncate = (
+  str: string | null | undefined,
+  length: number,
+): string | null => {
+  if (!str || str.length <= length) return str ?? null;
+  return `${str.slice(0, length - 3)}...`;
+};

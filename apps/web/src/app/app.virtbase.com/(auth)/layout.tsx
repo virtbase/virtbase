@@ -63,6 +63,7 @@ export default function Layout({ children }: LayoutProps<"/app.virtbase.com">) {
 
       <div className="relative flex min-h-screen w-full justify-center">
         <a
+          data-testid="logo-link"
           href={PUBLIC_DOMAIN}
           className="absolute top-4 left-1/2 z-10 -translate-x-1/2"
           rel="noopener noreferrer"

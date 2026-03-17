@@ -6,6 +6,10 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./src/index.ts"
+    },
+    "./auth": {
+      "types": "./dist/auth.d.ts",
+      "default": "./src/auth.ts"
     }
   },
   "scripts": {

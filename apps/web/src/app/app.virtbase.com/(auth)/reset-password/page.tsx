@@ -24,26 +24,27 @@ import {
 import type { Metadata } from "next";
 import { useExtracted } from "next-intl";
 import { getExtracted } from "next-intl/server";
-import { ForgotPasswordForm } from "@/features/auth/components/forgot-password-form";
+import { ResetPasswordForm } from "@/features/auth/components/reset-password-form";
 import { AuthLayout } from "@/ui/layout/auth-layout";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();
 
-  const title = t("Forgot password for {appName}", { appName: APP_NAME });
-  const description = t("Reset the password of your {appName} account.", {
+  const title = t("Reset your password for {appName}", { appName: APP_NAME });
+  const description = t("Reset your password for your {appName} account.", {
     appName: APP_NAME,
   });
 
   return constructMetadata({
     title,
     description,
-    canonicalUrl: `${APP_DOMAIN}/forgot-password`,
+    canonicalUrl: `${APP_DOMAIN}/reset-password`,
     image: constructOpengraphUrl({
       title,
       subtitle: description,
       theme: "dark",
     }),
+    noIndex: true,
   });
 }
 
@@ -57,7 +58,7 @@ export default function Page() {
           {t("Reset your password")}
         </h1>
         <div className="mt-8">
-          <ForgotPasswordForm />
+          <ResetPasswordForm />
         </div>
       </main>
     </AuthLayout>

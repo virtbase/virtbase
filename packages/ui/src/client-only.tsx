@@ -46,6 +46,7 @@ export const ClientOnly = ({
       <AnimatePresence>
         {clientReady ? (
           <Comp
+            data-testid="client-only"
             {...(fadeInDuration
               ? {
                   initial: { opacity: 0 },

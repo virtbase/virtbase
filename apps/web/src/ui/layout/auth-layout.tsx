@@ -40,7 +40,10 @@ export const AuthLayout = ({
 
       <div className="flex grow basis-0 flex-col justify-end">
         {showTerms && (
-          <p className="px-20 py-8 text-center font-medium text-muted-foreground text-xs md:px-0">
+          <p
+            data-testid="terms"
+            className="px-20 py-8 text-center font-medium text-muted-foreground text-xs md:px-0"
+          >
             {t.rich(
               "By continuing, you agree to {appName}'s <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>",
               {

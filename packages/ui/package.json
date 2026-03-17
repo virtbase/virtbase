@@ -11,7 +11,15 @@
     "./icons": "./src/icons/index.tsx",
     "./sonner": "./src/sonner.tsx",
     "./animated-size-container": "./src/animated-size-container.tsx",
-    "./spinner": "./src/spinner.tsx"
+    "./spinner": "./src/spinner.tsx",
+    "./field": "./src/field.tsx",
+    "./input": "./src/input.tsx",
+    "./input-otp": "./src/input-otp.tsx",
+    "./input-group": "./src/input-group.tsx",
+    "./label": "./src/label.tsx",
+    "./separator": "./src/separator.tsx",
+    "./textarea": "./src/textarea.tsx",
+    "./hooks": "./src/hooks/index.ts"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
@@ -21,6 +29,7 @@
   "dependencies": {
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "input-otp": "^1.4.2",
     "lucide-react": "^0.577.0",
     "motion": "^12.37.0",
     "next-themes": "^0.4.6",

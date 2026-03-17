@@ -6,15 +6,16 @@ msgstr ""
 "X-Generator: next-intl\n"
 "X-Crowdin-SourceKey: msgstr\n"
 
-#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:32
+#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:33
 msgid "2znpSL"
 msgstr ""
 
-#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:33
+#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:34
 msgid "knQkcB"
 msgstr ""
 
-#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:56
+#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:57
+#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx:58
 msgid "p+kmJg"
 msgstr ""
 
@@ -38,12 +39,37 @@ msgstr ""
 msgid "8HJxXG"
 msgstr ""
 
-#: src/app/app.virtbase.com/(auth)/register/page.tsx:31
+#: src/app/app.virtbase.com/(auth)/register/page-client.tsx:44
+#: src/app/app.virtbase.com/(auth)/register/page.tsx:32
 msgid "LcaCOE"
 msgstr ""
 
-#: src/app/app.virtbase.com/(auth)/register/page.tsx:32
+#: src/app/app.virtbase.com/(auth)/register/page-client.tsx:50
+msgid "uCk8r+"
+msgstr ""
+
+#: src/app/app.virtbase.com/(auth)/register/page-client.tsx:55
+msgid "odXlk8"
+msgstr ""
+
+#: src/app/app.virtbase.com/(auth)/register/page-client.tsx:71
+msgid "rEdUqQ"
+msgstr ""
+
+#: src/app/app.virtbase.com/(auth)/register/page-client.tsx:74
+msgid "H2tEgm"
+msgstr ""
+
+#: src/app/app.virtbase.com/(auth)/register/page.tsx:33
 msgid "PcjZtc"
+msgstr ""
+
+#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx:33
+msgid "D2Np7X"
+msgstr ""
+
+#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx:34
+msgid "tNqFr9"
 msgstr ""
 
 #: src/features/auth/components/auth-methods-separator.tsx:27
@@ -51,14 +77,63 @@ msgid "Ntjkqd"
 msgstr ""
 
 #: src/features/auth/components/discord-button.tsx:61
+#: src/features/auth/components/register/signup-oauth.tsx:99
 msgid "Y7Cpd6"
 msgstr ""
 
+#: src/features/auth/components/email-sign-in.tsx:100
+#: src/features/auth/components/email-sign-in.tsx:113
+msgid "JgGwrY"
+msgstr ""
+
+#: src/features/auth/components/email-sign-in.tsx:149
+msgid "YXNhCz"
+msgstr ""
+
+#: src/features/auth/components/email-sign-in.tsx:168
+#: src/features/auth/components/forgot-password-form.tsx:85
+#: src/features/auth/components/register/signup-email.tsx:114
+msgid "sy+pv5"
+msgstr ""
+
+#: src/features/auth/components/email-sign-in.tsx:193
+#: src/features/auth/components/register/signup-email.tsx:164
+#: src/features/auth/components/register/signup-email.tsx:170
+#: src/features/auth/components/reset-password-form.tsx:95
+msgid "5sg7KC"
+msgstr ""
+
+#: src/features/auth/components/email-sign-in.tsx:199
+msgid "V/JHlm"
+msgstr ""
+
+#: src/features/auth/components/email-sign-in.tsx:208
+msgid "tXea4K"
+msgstr ""
+
+#: src/features/auth/components/email-sign-in.tsx:244
+msgid "Bddm92"
+msgstr ""
+
+#: src/features/auth/components/email-sign-in.tsx:246
+msgid "vu1wqp"
+msgstr ""
+
+#: src/features/auth/components/forgot-password-form.tsx:51
+msgid "qm+oRY"
+msgstr ""
+
+#: src/features/auth/components/forgot-password-form.tsx:104
+msgid "DkQ5Q8"
+msgstr ""
+
 #: src/features/auth/components/github-button.tsx:61
+#: src/features/auth/components/register/signup-oauth.tsx:83
 msgid "8eQ7FM"
 msgstr ""
 
 #: src/features/auth/components/google-button.tsx:57
+#: src/features/auth/components/register/signup-oauth.tsx:66
 msgid "FJ6r9E"
 msgstr ""
 
@@ -70,6 +145,86 @@ msgstr ""
 msgid "u0mNBU"
 msgstr ""
 
-#: src/ui/layout/auth-layout.tsx:44
+#: src/features/auth/components/passkey-button.tsx:71
+msgid "kHhLiu"
+msgstr ""
+
+#: src/features/auth/components/password-requirements.tsx:28
+msgid "kFkPWB"
+msgstr ""
+
+#: src/features/auth/components/password-requirements.tsx:32
+msgid "cXsNgc"
+msgstr ""
+
+#: src/features/auth/components/password-requirements.tsx:36
+msgid "NNQ3iD"
+msgstr ""
+
+#: src/features/auth/components/password-requirements.tsx:40
+msgid "WK/0OI"
+msgstr ""
+
+#: src/features/auth/components/register/resend-otp.tsx:80
+msgid "pFU3mO"
+msgstr ""
+
+#: src/features/auth/components/register/resend-otp.tsx:89
+msgid "IXycMo"
+msgstr ""
+
+#: src/features/auth/components/register/resend-otp.tsx:97
+msgid "xfiWJo"
+msgstr ""
+
+#: src/features/auth/components/register/resend-otp.tsx:103
+msgid "p9iDr6"
+msgstr ""
+
+#: src/features/auth/components/register/signup-email.tsx:137
+msgid "dOQCL8"
+msgstr ""
+
+#: src/features/auth/components/register/signup-email.tsx:190
+msgid "39AHJm"
+msgstr ""
+
+#: src/features/auth/components/register/verify-email-form.tsx:62
+msgid "pwyqaX"
+msgstr ""
+
+#: src/features/auth/components/register/verify-email-form.tsx:120
+msgid "poE3OD"
+msgstr ""
+
+#: src/features/auth/components/register/verify-email-form.tsx:131
+msgid "acrOoz"
+msgstr ""
+
+#: src/features/auth/components/reset-password-form.tsx:80
+msgid "neYh81"
+msgstr ""
+
+#: src/features/auth/components/reset-password-form.tsx:118
+msgid "8HimVK"
+msgstr ""
+
+#: src/features/auth/components/reset-password-form.tsx:138
+msgid "xl27nc"
+msgstr ""
+
+#: src/ui/input-group-addons/random-password-addon.tsx:33
+msgid "gQLF4T"
+msgstr ""
+
+#: src/ui/input-group-addons/show-password-addon.tsx:39
+msgid "JHTwdB"
+msgstr ""
+
+#: src/ui/input-group-addons/show-password-addon.tsx:40
+msgid "K3fWTv"
+msgstr ""
+
+#: src/ui/layout/auth-layout.tsx:47
 msgid "jr1I15"
 msgstr ""

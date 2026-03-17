@@ -23,6 +23,7 @@ function Spinner({ className, ...props }: React.ComponentProps<"div">) {
       className={cn("size-4", className)}
       role="status"
       aria-label="Loading"
+      data-testid="spinner"
       {...props}
     >
       <div

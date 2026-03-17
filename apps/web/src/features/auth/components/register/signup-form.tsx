@@ -15,10 +15,25 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "lucide-react";
-export * from "./discord";
-export { Github } from "./github";
-export * from "./google";
-export { Instagram } from "./instagram";
-export { Twitter } from "./twitter";
-export * from "./youtube";
+"use client";
+
+import { AnimatedSizeContainer } from "@virtbase/ui/animated-size-container";
+import { AuthMethodsSeparator } from "../auth-methods-separator";
+import { SignUpEmail } from "./signup-email";
+import { SignUpOAuth } from "./signup-oauth";
+
+export const SignUpForm = ({
+  methods = ["email", "google", "github", "discord"],
+}: {
+  methods?: ("email" | "google" | "github" | "discord")[];
+}) => {
+  return (
+    <AnimatedSizeContainer height>
+      <div className="flex flex-col gap-3 p-1">
+        {methods.includes("email") && <SignUpEmail />}
+        {methods.length && <AuthMethodsSeparator />}
+        <SignUpOAuth methods={methods} />
+      </div>
+    </AnimatedSizeContainer>
+  );
+};

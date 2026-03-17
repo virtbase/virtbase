@@ -24,6 +24,7 @@ import {
 import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
 import { AuthLayout } from "@/ui/layout/auth-layout";
+import RegisterPageClient from "./page-client";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();
@@ -47,5 +48,9 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function Page() {
-  return <AuthLayout showTerms></AuthLayout>;
+  return (
+    <AuthLayout showTerms>
+      <RegisterPageClient />
+    </AuthLayout>
+  );
 }

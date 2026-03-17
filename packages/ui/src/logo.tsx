@@ -28,6 +28,7 @@ export function Logo({
 }) {
   return (
     <svg
+      data-testid="logo"
       role="presentation"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

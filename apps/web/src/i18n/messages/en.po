@@ -6,15 +6,16 @@ msgstr ""
 "X-Generator: next-intl\n"
 "X-Crowdin-SourceKey: msgstr\n"
 
-#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:32
+#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:33
 msgid "2znpSL"
 msgstr "Forgot password for {appName}"
 
-#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:33
+#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:34
 msgid "knQkcB"
 msgstr "Reset the password of your {appName} account."
 
-#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:56
+#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:57
+#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx:58
 msgid "p+kmJg"
 msgstr "Reset your password"
 
@@ -38,27 +39,101 @@ msgstr "Don't have an account?"
 msgid "8HJxXG"
 msgstr "Sign up"
 
-#: src/app/app.virtbase.com/(auth)/register/page.tsx:31
+#: src/app/app.virtbase.com/(auth)/register/page-client.tsx:44
+#: src/app/app.virtbase.com/(auth)/register/page.tsx:32
 msgid "LcaCOE"
 msgstr "Create your {appName} account"
 
-#: src/app/app.virtbase.com/(auth)/register/page.tsx:32
+#: src/app/app.virtbase.com/(auth)/register/page-client.tsx:50
+msgid "uCk8r+"
+msgstr "Already have an account?"
+
+#: src/app/app.virtbase.com/(auth)/register/page-client.tsx:55
+msgid "odXlk8"
+msgstr "Log in"
+
+#: src/app/app.virtbase.com/(auth)/register/page-client.tsx:71
+msgid "rEdUqQ"
+msgstr "Verify your email address"
+
+#: src/app/app.virtbase.com/(auth)/register/page-client.tsx:74
+msgid "H2tEgm"
+msgstr "Enter the six digit verification code sent to <strong>{email}</strong>"
+
+#: src/app/app.virtbase.com/(auth)/register/page.tsx:33
 msgid "PcjZtc"
 msgstr "Create your {appName} account to order your first virtual server."
+
+#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx:33
+msgid "D2Np7X"
+msgstr "Reset your password for {appName}"
+
+#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx:34
+msgid "tNqFr9"
+msgstr "Reset your password for your {appName} account."
 
 #: src/features/auth/components/auth-methods-separator.tsx:27
 msgid "Ntjkqd"
 msgstr "or"
 
 #: src/features/auth/components/discord-button.tsx:61
+#: src/features/auth/components/register/signup-oauth.tsx:99
 msgid "Y7Cpd6"
 msgstr "Continue with Discord"
 
+#: src/features/auth/components/email-sign-in.tsx:100
+#: src/features/auth/components/email-sign-in.tsx:113
+msgid "JgGwrY"
+msgstr "No account found with that email address."
+
+#: src/features/auth/components/email-sign-in.tsx:149
+msgid "YXNhCz"
+msgstr "Email sent - check your inbox!"
+
+#: src/features/auth/components/email-sign-in.tsx:168
+#: src/features/auth/components/forgot-password-form.tsx:85
+#: src/features/auth/components/register/signup-email.tsx:114
+msgid "sy+pv5"
+msgstr "Email"
+
+#: src/features/auth/components/email-sign-in.tsx:193
+#: src/features/auth/components/register/signup-email.tsx:164
+#: src/features/auth/components/register/signup-email.tsx:170
+#: src/features/auth/components/reset-password-form.tsx:95
+msgid "5sg7KC"
+msgstr "Password"
+
+#: src/features/auth/components/email-sign-in.tsx:199
+msgid "V/JHlm"
+msgstr "Forgot password?"
+
+#: src/features/auth/components/email-sign-in.tsx:208
+msgid "tXea4K"
+msgstr "Password (optional)"
+
+#: src/features/auth/components/email-sign-in.tsx:244
+msgid "Bddm92"
+msgstr "Log in with password"
+
+#: src/features/auth/components/email-sign-in.tsx:246
+msgid "vu1wqp"
+msgstr "Log in with email"
+
+#: src/features/auth/components/forgot-password-form.tsx:51
+msgid "qm+oRY"
+msgstr "You will receive an email with instructions to reset your password."
+
+#: src/features/auth/components/forgot-password-form.tsx:104
+msgid "DkQ5Q8"
+msgstr "Send reset link"
+
 #: src/features/auth/components/github-button.tsx:61
+#: src/features/auth/components/register/signup-oauth.tsx:83
 msgid "8eQ7FM"
 msgstr "Continue with GitHub"
 
 #: src/features/auth/components/google-button.tsx:57
+#: src/features/auth/components/register/signup-oauth.tsx:66
 msgid "FJ6r9E"
 msgstr "Continue with Google"
 
@@ -70,6 +145,86 @@ msgstr "You signed in with {method} last time"
 msgid "u0mNBU"
 msgstr "Continue with another method"
 
-#: src/ui/layout/auth-layout.tsx:44
+#: src/features/auth/components/passkey-button.tsx:71
+msgid "kHhLiu"
+msgstr "Continue with Passkey"
+
+#: src/features/auth/components/password-requirements.tsx:28
+msgid "kFkPWB"
+msgstr "Number"
+
+#: src/features/auth/components/password-requirements.tsx:32
+msgid "cXsNgc"
+msgstr "Uppercase letter"
+
+#: src/features/auth/components/password-requirements.tsx:36
+msgid "NNQ3iD"
+msgstr "Lowercase letter"
+
+#: src/features/auth/components/password-requirements.tsx:40
+msgid "WK/0OI"
+msgstr "8 characters"
+
+#: src/features/auth/components/register/resend-otp.tsx:80
+msgid "pFU3mO"
+msgstr "Didn't receive a code?"
+
+#: src/features/auth/components/register/resend-otp.tsx:89
+msgid "IXycMo"
+msgstr "Resend"
+
+#: src/features/auth/components/register/resend-otp.tsx:97
+msgid "xfiWJo"
+msgstr "Code sent successfully."
+
+#: src/features/auth/components/register/resend-otp.tsx:103
+msgid "p9iDr6"
+msgstr "Failed to send code."
+
+#: src/features/auth/components/register/signup-email.tsx:137
+msgid "dOQCL8"
+msgstr "Display name"
+
+#: src/features/auth/components/register/signup-email.tsx:190
+msgid "39AHJm"
+msgstr "Sign Up"
+
+#: src/features/auth/components/register/verify-email-form.tsx:62
+msgid "pwyqaX"
+msgstr "Account created! Redirecting..."
+
+#: src/features/auth/components/register/verify-email-form.tsx:120
+msgid "poE3OD"
+msgstr "Invalid code. Please try again."
+
+#: src/features/auth/components/register/verify-email-form.tsx:131
+msgid "acrOoz"
+msgstr "Continue"
+
+#: src/features/auth/components/reset-password-form.tsx:80
+msgid "neYh81"
+msgstr "Your password has been reset. You can now log in with your new password."
+
+#: src/features/auth/components/reset-password-form.tsx:118
+msgid "8HimVK"
+msgstr "Confirm password"
+
+#: src/features/auth/components/reset-password-form.tsx:138
+msgid "xl27nc"
+msgstr "Reset Password"
+
+#: src/ui/input-group-addons/random-password-addon.tsx:33
+msgid "gQLF4T"
+msgstr "Generate random password"
+
+#: src/ui/input-group-addons/show-password-addon.tsx:39
+msgid "JHTwdB"
+msgstr "Show password"
+
+#: src/ui/input-group-addons/show-password-addon.tsx:40
+msgid "K3fWTv"
+msgstr "Hide password"
+
+#: src/ui/layout/auth-layout.tsx:47
 msgid "jr1I15"
 msgstr "By continuing, you agree to {appName}'s <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>"
