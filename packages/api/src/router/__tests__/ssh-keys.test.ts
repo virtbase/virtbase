@@ -75,6 +75,9 @@ const sanitizedMockPublicKey =
 // Fingerprint of the mocked public key (matches the sanitized key)
 const mockFingerprint = "9b:a0:ba:37:33:01:cf:88:d9:2d:57:db:0d:3a:60:ab";
 
+// Fake ID that passes zod validation but is not a valid SSH key ID
+const fakeId = "sshkey_0000000000000000000000000";
+
 describe("sshKeys.create", () => {
   test("it creates a valid SSH key", async () => {
     const created = await caller.sshKeys.create({
@@ -90,7 +93,7 @@ describe("sshKeys.create", () => {
     expect(created.ssh_key.updated_at).toBeInstanceOf(Date);
   });
 
-  test("it throws a bad request error if the public key is invalid", async () => {
+  test("it throws a bad request error if the public key is invalid", () => {
     const createPromise = caller.sshKeys.create({
       name: "Test Key",
       public_key: "invalid",
@@ -103,7 +106,7 @@ describe("sshKeys.create", () => {
 describe("sshKeys.get", () => {
   test("it throws a not found error if the SSH key does not exist", async () => {
     const getPromise = caller.sshKeys.get({
-      id: "does-not-exist",
+      id: fakeId,
     });
 
     expect(getPromise).rejects.toThrow(TRPCError);
@@ -179,40 +182,51 @@ test("sshKeys.list - List SSH keys", async () => {
   expect(list.meta.pagination.next_page).toBeNull();
 });
 
-test("sshKeys.update - Update an SSH key", async () => {
-  const created = await testDb
-    .insert(sshKeys)
-    .values({
-      userId: mockSession.user.id,
-      name: "Test Key",
-      publicKey: mockPublicKey,
-      fingerprint: mockFingerprint,
-    })
-    .returning({
-      id: sshKeys.id,
-      name: sshKeys.name,
-      publicKey: sshKeys.publicKey,
-      fingerprint: sshKeys.fingerprint,
-      createdAt: sshKeys.createdAt,
-      updatedAt: sshKeys.updatedAt,
-    })
-    .then(([row]) => row ?? null);
+describe("sshKeys.update", () => {
+  test("it throws a not found error if the SSH key does not exist", () => {
+    const updatePromise = caller.sshKeys.update({
+      id: fakeId,
+      name: "Updated Name",
+    });
 
-  if (!created) {
-    throw new Error("Failed to create SSH key");
-  }
-
-  const updated = await caller.sshKeys.update({
-    id: created.id,
-    name: "Updated Test Key",
+    expect(updatePromise).rejects.toThrow(TRPCError);
   });
 
-  expect(updated.ssh_key.id).toBe(created.id);
-  expect(updated.ssh_key.name).toBe("Updated Test Key");
-  expect(updated.ssh_key.public_key).toBe(created.publicKey);
-  expect(updated.ssh_key.fingerprint).toBe(created.fingerprint);
-  expect(updated.ssh_key.created_at).toEqual(created.createdAt);
-  expect(updated.ssh_key.updated_at).not.toEqual(created.updatedAt);
+  test("it updates an existing SSH key", async () => {
+    const created = await testDb
+      .insert(sshKeys)
+      .values({
+        userId: mockSession.user.id,
+        name: "Test Key",
+        publicKey: mockPublicKey,
+        fingerprint: mockFingerprint,
+      })
+      .returning({
+        id: sshKeys.id,
+        name: sshKeys.name,
+        publicKey: sshKeys.publicKey,
+        fingerprint: sshKeys.fingerprint,
+        createdAt: sshKeys.createdAt,
+        updatedAt: sshKeys.updatedAt,
+      })
+      .then(([row]) => row ?? null);
+
+    if (!created) {
+      throw new Error("Failed to create SSH key");
+    }
+
+    const updated = await caller.sshKeys.update({
+      id: created.id,
+      name: "Updated Test Key",
+    });
+
+    expect(updated.ssh_key.id).toBe(created.id);
+    expect(updated.ssh_key.name).toBe("Updated Test Key");
+    expect(updated.ssh_key.public_key).toBe(created.publicKey);
+    expect(updated.ssh_key.fingerprint).toBe(created.fingerprint);
+    expect(updated.ssh_key.created_at).toEqual(created.createdAt);
+    expect(updated.ssh_key.updated_at).not.toEqual(created.updatedAt);
+  });
 });
 
 describe("sshKeys.delete", () => {
@@ -240,18 +254,12 @@ describe("sshKeys.delete", () => {
 
     expect(deleted).toBeUndefined();
 
-    const getPromise = caller.sshKeys.get({
-      id: created.id,
-    });
-
+    const getPromise = caller.sshKeys.get({ id: created.id });
     expect(getPromise).rejects.toThrow(TRPCError);
   });
 
-  test("it throws a not found error if the SSH key does not exist", async () => {
-    const getPromise = caller.sshKeys.get({
-      id: "does-not-exist",
-    });
-
-    expect(getPromise).rejects.toThrow(TRPCError);
+  test("it throws a not found error if the SSH key does not exist", () => {
+    const deletePromise = caller.sshKeys.delete({ id: fakeId });
+    expect(deletePromise).rejects.toThrow(TRPCError);
   });
 });
