@@ -15,6 +15,7 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
+    "@sentry/node": "^10.44.0",
     "@trpc/server": "catalog:",
     "@upstash/ratelimit": "^2.0.8",
     "@upstash/redis": "^1.37.0",

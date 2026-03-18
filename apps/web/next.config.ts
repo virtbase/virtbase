@@ -18,7 +18,9 @@
 // Import env files to validate at build time
 import "@/env";
 
+import { withSentryConfig } from "@sentry/nextjs";
 import type { NextConfig } from "next";
+
 import createNextIntlPlugin from "next-intl/plugin";
 import { contentSecurityPolicy } from "@/lib/csp";
 
@@ -162,4 +164,23 @@ const withNextIntl = createNextIntlPlugin({
 
 const configWithNextIntl = withNextIntl(nextConfig);
 
-export default configWithNextIntl;
+const sentrifiedConfig = withSentryConfig(configWithNextIntl, {
+  org: process.env.SENTRY_ORG,
+  project: process.env.SENTRY_PROJECT,
+  sentryUrl: process.env.SENTRY_URL,
+  silent: !process.env.CI,
+  widenClientFileUpload: true,
+  tunnelRoute: "/science",
+  webpack: {
+    treeshake: {
+      removeDebugLogging: true,
+    },
+    automaticVercelMonitors: true,
+  },
+});
+
+const finalConfig = process.env.NEXT_PUBLIC_SENTRY_DSN
+  ? sentrifiedConfig
+  : configWithNextIntl;
+
+export default finalConfig;

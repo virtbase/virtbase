@@ -15,28 +15,21 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "@virtbase/tailwind-config/theme";
+"use client";
 
-@source "../../../../packages/ui/src/*.{ts,tsx}";
+import * as Sentry from "@sentry/nextjs";
+import { useEffect } from "react";
 
-@plugin "tailwind-scrollbar";
-@plugin "@tailwindcss/typography";
+/**
+ * Lazy load the Sentry replay integration to reduce the initial bundle size.
+ * Currently only used on the app layout (public pages are not subject to replay recording)
+ */
+export default function SentryReplayIntegration() {
+  useEffect(() => {
+    void import("@sentry/nextjs").then((lazyLoadedSentry) => {
+      Sentry.addIntegration(lazyLoadedSentry.replayIntegration());
+    });
+  }, []);
 
-@custom-variant dark (&:where(.dark, .dark *));
-@custom-variant light (&:where(.light, .light *));
-@custom-variant auto (&:where(.auto, .auto *));
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  ::selection {
-    @apply bg-primary text-primary-foreground;
-  }
-  #sentry-feedback {
-    --font-family: var(--font-geist-sans);
-    --inset: auto;
-  }
+  return null;
 }

@@ -92,13 +92,14 @@ msgstr "Email sent - check your inbox!"
 
 #: src/features/auth/components/email-sign-in.tsx:175
 #: src/features/auth/components/forgot-password-form.tsx:85
-#: src/features/auth/components/register/signup-email.tsx:114
+#: src/features/auth/components/register/signup-email.tsx:116
+#: src/ui/feedback-button.tsx:34
 msgid "sy+pv5"
 msgstr "Email"
 
 #: src/features/auth/components/email-sign-in.tsx:200
-#: src/features/auth/components/register/signup-email.tsx:164
-#: src/features/auth/components/register/signup-email.tsx:170
+#: src/features/auth/components/register/signup-email.tsx:166
+#: src/features/auth/components/register/signup-email.tsx:172
 #: src/features/auth/components/reset-password-form.tsx:95
 msgid "5sg7KC"
 msgstr "Password"
@@ -181,11 +182,11 @@ msgstr "Code sent successfully."
 msgid "p9iDr6"
 msgstr "Failed to send code."
 
-#: src/features/auth/components/register/signup-email.tsx:137
+#: src/features/auth/components/register/signup-email.tsx:139
 msgid "dOQCL8"
 msgstr "Display name"
 
-#: src/features/auth/components/register/signup-email.tsx:190
+#: src/features/auth/components/register/signup-email.tsx:192
 msgid "39AHJm"
 msgstr "Sign Up"
 
@@ -212,6 +213,60 @@ msgstr "Confirm password"
 #: src/features/auth/components/reset-password-form.tsx:138
 msgid "xl27nc"
 msgstr "Reset Password"
+
+#: src/ui/feedback-button.tsx:30
+#: src/ui/feedback-button.tsx:96
+#: src/ui/feedback-button.tsx:105
+msgid "Ejhdi4"
+msgstr "Feedback"
+
+#: src/ui/feedback-button.tsx:31
+msgid "47FYwb"
+msgstr "Cancel"
+
+#: src/ui/feedback-button.tsx:32
+msgid "HAlOn1"
+msgstr "Name"
+
+#: src/ui/feedback-button.tsx:33
+msgid "HxIuLA"
+msgstr "Add screenshot"
+
+#: src/ui/feedback-button.tsx:35
+msgid "wSZR47"
+msgstr "Submit"
+
+#: src/ui/feedback-button.tsx:36
+msgid "N2IrpM"
+msgstr "Confirm"
+
+#: src/ui/feedback-button.tsx:37
+msgid "T7Ry38"
+msgstr "Message"
+
+#: src/ui/feedback-button.tsx:38
+msgid "VG94fP"
+msgstr "(required)"
+
+#: src/ui/feedback-button.tsx:39
+msgid "EbufBi"
+msgstr "Remove screenshot"
+
+#: src/ui/feedback-button.tsx:40
+msgid "Q43iqt"
+msgstr "Feedback sent successfully"
+
+#: src/ui/feedback-button.tsx:44
+msgid "mi/NYE"
+msgstr "Hide section"
+
+#: src/ui/feedback-button.tsx:45
+msgid "c47pnT"
+msgstr "Highlight section"
+
+#: src/ui/feedback-button.tsx:46
+msgid "bemE3q"
+msgstr "Remove section"
 
 #: src/ui/input-group-addons/random-password-addon.tsx:33
 msgid "gQLF4T"

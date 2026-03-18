@@ -15,28 +15,30 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "@virtbase/tailwind-config/theme";
+"use client";
 
-@source "../../../../packages/ui/src/*.{ts,tsx}";
+import * as Sentry from "@sentry/nextjs";
+import NextError from "next/error";
+import { useEffect } from "react";
 
-@plugin "tailwind-scrollbar";
-@plugin "@tailwindcss/typography";
+export default function GlobalError({
+  error,
+}: {
+  error: Error & { digest?: string };
+}) {
+  useEffect(() => {
+    Sentry.captureException(error);
+  }, [error]);
 
-@custom-variant dark (&:where(.dark, .dark *));
-@custom-variant light (&:where(.light, .light *));
-@custom-variant auto (&:where(.auto, .auto *));
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  ::selection {
-    @apply bg-primary text-primary-foreground;
-  }
-  #sentry-feedback {
-    --font-family: var(--font-geist-sans);
-    --inset: auto;
-  }
+  return (
+    <html lang="en">
+      <body>
+        {/* `NextError` is the default Next.js error page component. Its type
+        definition requires a `statusCode` prop. However, since the App Router
+        does not expose status codes for errors, we simply pass 0 to render a
+        generic error message. */}
+        <NextError statusCode={0} />
+      </body>
+    </html>
+  );
 }

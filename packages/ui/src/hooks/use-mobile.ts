@@ -15,28 +15,24 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "@virtbase/tailwind-config/theme";
+import * as React from "react";
 
-@source "../../../../packages/ui/src/*.{ts,tsx}";
+const MOBILE_BREAKPOINT = 768;
 
-@plugin "tailwind-scrollbar";
-@plugin "@tailwindcss/typography";
+export function useIsMobile() {
+  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(
+    undefined,
+  );
 
-@custom-variant dark (&:where(.dark, .dark *));
-@custom-variant light (&:where(.light, .light *));
-@custom-variant auto (&:where(.auto, .auto *));
+  React.useEffect(() => {
+    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
+    const onChange = () => {
+      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+    };
+    mql.addEventListener("change", onChange);
+    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
+    return () => mql.removeEventListener("change", onChange);
+  }, []);
 
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  ::selection {
-    @apply bg-primary text-primary-foreground;
-  }
-  #sentry-feedback {
-    --font-family: var(--font-geist-sans);
-    --inset: auto;
-  }
+  return !!isMobile;
 }

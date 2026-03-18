@@ -31,17 +31,23 @@ export const env = createEnv({
   server: {
     UPSTASH_REDIS_REST_URL: z4.string().min(1),
     UPSTASH_REDIS_REST_TOKEN: z4.string().min(1),
-    RESEND_API_KEY: z4.string(),
-    SMTP_HOST: z4.string(),
-    SMTP_PORT: z4.string(),
-    SMTP_USER: z4.string(),
-    SMTP_PASSWORD: z4.string(),
+    RESEND_API_KEY: z4.string().optional(),
+    SMTP_HOST: z4.string().optional(),
+    SMTP_PORT: z4.string().optional(),
+    SMTP_USER: z4.string().optional(),
+    SMTP_PASSWORD: z4.string().optional(),
+    // Sentry Configuration
+    SENTRY_ORG: z.string().optional(),
+    SENTRY_PROJECT: z.string().optional(),
+    SENTRY_URL: z.url().optional(),
   },
-  client: {},
+  client: {
+    // Sentry Configuration
+    NEXT_PUBLIC_SENTRY_DSN: z.url().optional(),
+  },
   experimental__runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
-
-    // NEXT_PUBLIC_CLIENTVAR: process.env.NEXT_PUBLIC_CLIENTVAR,
+    NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN,
   },
   skipValidation:
     !!process.env.CI || process.env.npm_lifecycle_event === "lint",

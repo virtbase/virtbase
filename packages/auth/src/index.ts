@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { captureException } from "@sentry/core";
 import { db } from "@virtbase/db/client";
 import { createId } from "@virtbase/db/utils";
 import { sendEmail } from "@virtbase/email";
@@ -157,6 +158,15 @@ export function initAuth({
     emailVerification: {
       expiresIn: 600, // 10 minutes
       autoSignInAfterVerification: true,
+    },
+    onAPIError: {
+      onError: (error) => {
+        captureException(error, {
+          tags: {
+            "better-auth.error": "true",
+          },
+        });
+      },
     },
     plugins: [...plugins, ...(additionalPlugins || [])],
     session: {

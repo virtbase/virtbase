@@ -15,28 +15,16 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "@virtbase/tailwind-config/theme";
+import * as Sentry from "@sentry/nextjs";
 
-@source "../../../../packages/ui/src/*.{ts,tsx}";
-
-@plugin "tailwind-scrollbar";
-@plugin "@tailwindcss/typography";
-
-@custom-variant dark (&:where(.dark, .dark *));
-@custom-variant light (&:where(.light, .light *));
-@custom-variant auto (&:where(.auto, .auto *));
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
+export async function register() {
+  if (process.env.NEXT_RUNTIME === "nodejs") {
+    await import("../sentry.server.config");
   }
-  ::selection {
-    @apply bg-primary text-primary-foreground;
-  }
-  #sentry-feedback {
-    --font-family: var(--font-geist-sans);
-    --inset: auto;
+
+  if (process.env.NEXT_RUNTIME === "edge") {
+    await import("../sentry.edge.config");
   }
 }
+
+export const onRequestError = Sentry.captureRequestError;

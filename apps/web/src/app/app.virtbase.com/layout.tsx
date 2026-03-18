@@ -22,6 +22,7 @@ import { Suspense } from "react";
 import { defaultLocale } from "@/i18n/config";
 import { TRPCReactProvider } from "@/lib/trpc/react";
 import Document from "@/ui/document";
+import SentryReplayIntegration from "@/ui/sentry-replay-integration";
 
 export default function Layout({ children }: LayoutProps<"/app.virtbase.com">) {
   return (
@@ -33,8 +34,7 @@ export default function Layout({ children }: LayoutProps<"/app.virtbase.com">) {
             <NextIntlClientProvider>{children}</NextIntlClientProvider>
           </Suspense>
           <Toaster className="pointer-events-auto" closeButton />
-          {/* TODO: Re-add SentryReplayIntegration */}
-          {/* <SentryReplayIntegration />  */}
+          <SentryReplayIntegration />
         </TRPCReactProvider>
       </NuqsAdapter>
     </Document>

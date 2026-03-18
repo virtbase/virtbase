@@ -27,11 +27,12 @@ import { parse } from "@/lib/middleware/utils/parse";
 export const config: ProxyConfig = {
   // Match all pathnames except for
   // - … if they start with `/api`, `/_next`, `/_vercel`, `/_proxy` or `/.well-known/workflow/`
+  // - … or if they start with `/science` (Sentry tunnel)
   // - … or if they are the geofeed.csv file route
   // - … or if they are the /supporter/*.svg file route
   // - … the ones containing a dot (e.g. `favicon.ico`)
   matcher:
-    "/((?!api|_next|_vercel|_proxy|\\.well-known/workflow/|geofeed\\.csv|supporter\\/.*\\.svg|.*\\..*).*)",
+    "/((?!api|_next|_vercel|_proxy|\\.well-known/workflow/|science|geofeed\\.csv|supporter\\/.*\\.svg|.*\\..*).*)",
 };
 
 const intlMiddleware = createMiddleware(routing);

@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import * as Sentry from "@sentry/node";
 import { initTRPC, TRPCError } from "@trpc/server";
 import type { Auth } from "@virtbase/auth";
 import { db } from "@virtbase/db/client";
@@ -109,6 +110,12 @@ const t = initTRPC
 
 export const createTRPCRouter = t.router;
 
+const sentryMiddleware = t.middleware(
+  Sentry.trpcMiddleware({
+    attachRpcInput: true,
+  }),
+);
+
 // TODO: Ephemeral cache + optimistically check rate limit before authentication
 /**
  * Ratelimits requests to the API.
@@ -190,6 +197,12 @@ const authMiddleware = t.middleware(async ({ ctx, next }) => {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
 
+  Sentry.setUser({
+    id: ctx.session.user.id,
+    email: ctx.session.user.email,
+    username: ctx.session.user.name,
+  });
+
   return next({
     ctx: {
       apiKey: null,
@@ -204,8 +217,11 @@ const authMiddleware = t.middleware(async ({ ctx, next }) => {
   });
 });
 
-export const publicProcedure = t.procedure.use(ratelimitMiddleware);
+export const publicProcedure = t.procedure
+  .use(sentryMiddleware)
+  .use(ratelimitMiddleware);
 
 export const protectedProcedure = t.procedure
+  .use(sentryMiddleware)
   .use(ratelimitMiddleware)
   .use(authMiddleware);

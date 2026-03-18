@@ -15,28 +15,14 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-@import "tailwindcss";
-@import "tw-animate-css";
-@import "@virtbase/tailwind-config/theme";
+import * as Sentry from "@sentry/nextjs";
 
-@source "../../../../packages/ui/src/*.{ts,tsx}";
-
-@plugin "tailwind-scrollbar";
-@plugin "@tailwindcss/typography";
-
-@custom-variant dark (&:where(.dark, .dark *));
-@custom-variant light (&:where(.light, .light *));
-@custom-variant auto (&:where(.auto, .auto *));
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-  ::selection {
-    @apply bg-primary text-primary-foreground;
-  }
-  #sentry-feedback {
-    --font-family: var(--font-geist-sans);
-    --inset: auto;
-  }
-}
+Sentry.init({
+  enabled: !!process.env.NEXT_PUBLIC_SENTRY_DSN,
+  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN
+    ? process.env.NEXT_PUBLIC_SENTRY_DSN
+    : undefined,
+  tracesSampleRate: 1,
+  enableLogs: true,
+  sendDefaultPii: false,
+});
