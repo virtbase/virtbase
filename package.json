@@ -39,7 +39,8 @@
     "dev:next": "turbo watch dev -F @virtbase/web...",
     "typecheck": "turbo run typecheck",
     "ui-add": "turbo run ui-add",
-    "email": "turbo run email"
+    "email": "turbo run email",
+    "prepare": "husky"
   },
   "catalog": {
     "@biomejs/biome": "^2.4.7",
@@ -53,8 +54,12 @@
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:",
+    "@commitlint/cli": "^20.5.0",
+    "@commitlint/config-conventional": "^20.5.0",
     "@types/bun": "catalog:",
     "dotenv-cli": "^11.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "turbo": "^2.8.17"
   },
   "peerDependencies": {
