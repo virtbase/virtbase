@@ -94,7 +94,10 @@ const sortSchema = z
 
 export const ListSSHKeysInputSchema = z.object({
   // Required for trpc-to-openapi to work correctly
-  sort: z.preprocess(preprocessQueryArray, sortSchema),
+  sort: z.preprocess(
+    preprocessQueryArray,
+    sortSchema,
+  ) as unknown as typeof sortSchema,
   name: SSHKeySchema.shape.name.optional(),
   fingerprint: SSHKeySchema.shape.fingerprint.optional(),
   page: PaginationSchema.shape.page,

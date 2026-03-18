@@ -15,6 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+"use client";
+
 import { cn } from "@virtbase/ui";
 import type { motion } from "motion/react";
 import { domAnimation, LazyMotion } from "motion/react";

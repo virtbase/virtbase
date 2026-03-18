@@ -60,26 +60,32 @@ export function AppSidebarMenu() {
 
   return (
     <SidebarMenu>
-      {items.map((item, index) => (
-        // biome-ignore lint/suspicious/noArrayIndexKey: index is unique
-        <SidebarMenuItem key={index}>
-          <SidebarMenuButton
-            asChild
-            className="group/menu-button h-9 gap-3 font-medium text-muted-foreground group-data-[collapsible=icon]:px-[5px]! [&>svg]:size-auto"
-            tooltip={item.title}
-            isActive={pathname.startsWith(item.path.getHref())}
-          >
-            <NextLink href={item.path.getHref()} prefetch={false}>
-              <item.icon
-                className="text-muted-foreground/65 group-data-[active=true]/menu-button:text-primary"
-                size={22}
-                aria-hidden="true"
-              />
-              <span>{item.title}</span>
-            </NextLink>
-          </SidebarMenuButton>
-        </SidebarMenuItem>
-      ))}
+      {items.map((item, index) => {
+        const href = item.path.getHref();
+        const isActive =
+          href === "/" ? pathname === href : pathname.startsWith(href);
+
+        return (
+          // biome-ignore lint/suspicious/noArrayIndexKey: index is unique
+          <SidebarMenuItem key={index}>
+            <SidebarMenuButton
+              asChild
+              className="group/menu-button h-9 gap-3 font-medium text-muted-foreground group-data-[collapsible=icon]:px-[5px]! [&>svg]:size-auto"
+              tooltip={item.title}
+              isActive={isActive}
+            >
+              <NextLink href={item.path.getHref()} prefetch={false}>
+                <item.icon
+                  className="text-muted-foreground/65 group-data-[active=true]/menu-button:text-primary"
+                  size={22}
+                  aria-hidden="true"
+                />
+                <span>{item.title}</span>
+              </NextLink>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+        );
+      })}
     </SidebarMenu>
   );
 }

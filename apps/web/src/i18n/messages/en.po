@@ -106,6 +106,7 @@ msgstr "API"
 
 #: src/features/account/components/account-breadcrumb.tsx:57
 #: src/features/account/components/account-nav.tsx:60
+#: src/features/account/components/ssh-keys/ssh-keys-card.tsx:43
 msgid "7Cdpiv"
 msgstr "SSH Keys"
 
@@ -113,6 +114,165 @@ msgstr "SSH Keys"
 #: src/ui/nav-user.tsx:120
 msgid "TwyMau"
 msgstr "Account"
+
+#: src/features/account/components/authentication/add-passkey-button.tsx:47
+msgid "IknBAk"
+msgstr "Add Passkey"
+
+#: src/features/account/components/authentication/user-passkeys-card.tsx:51
+#: src/features/account/components/authentication/user-providers-list.tsx:95
+msgid "ASrBq8"
+msgstr "Passkeys"
+
+#: src/features/account/components/authentication/user-passkeys-card.tsx:53
+msgid "yZU/cd"
+msgstr "Passkeys are a highly secure alternative to passwords. Register a new passkey or use an existing one."
+
+#: src/features/account/components/authentication/user-passkeys-card.tsx:76
+msgid "ANHQFQ"
+msgstr "Multiple passkeys can be used for authentication."
+
+#: src/features/account/components/authentication/user-passkeys-list.tsx:50
+msgid "Hcvdp5"
+msgstr "No passkeys"
+
+#: src/features/account/components/authentication/user-passkeys-list.tsx:52
+msgid "OHO8dm"
+msgstr "No passkeys have been registered for this account."
+
+#: src/features/account/components/authentication/user-passkeys-list.tsx:119
+msgid "GKNfO2"
+msgstr "Passkey #{number}"
+
+#: src/features/account/components/authentication/user-passkeys-list.tsx:135
+msgid "jUqYir"
+msgstr "Added {date}"
+
+#: src/features/account/components/authentication/user-passkeys-list.tsx:145
+msgid "G/yZLu"
+msgstr "Remove"
+
+#: src/features/account/components/authentication/user-providers-card.tsx:47
+msgid "w97pJ4"
+msgstr "Authentication Methods"
+
+#: src/features/account/components/authentication/user-providers-card.tsx:49
+msgid "wLHOoq"
+msgstr "Configure how you can sign in to your account. Link your accounts for a seamless, secure authentication experience."
+
+#: src/features/account/components/authentication/user-providers-list.tsx:65
+msgid "0Azlrb"
+msgstr "Manage"
+
+#: src/features/account/components/authentication/user-providers-list.tsx:82
+#: src/features/auth/components/email-sign-in.tsx:175
+#: src/features/auth/components/forgot-password-form.tsx:85
+#: src/features/auth/components/register/signup-email.tsx:116
+#: src/ui/feedback-button.tsx:34
+msgid "sy+pv5"
+msgstr "Email"
+
+#: src/features/account/components/authentication/user-providers-list.tsx:97
+msgid "EYyTPV"
+msgstr "Passwordless authentication with passkeys"
+
+#: src/features/account/components/authentication/user-providers-list.tsx:194
+msgid "waJLKW"
+msgstr "Linked"
+
+#: src/features/account/components/authentication/user-providers-list.tsx:197
+msgid "xGU8KV"
+msgstr "Link your {name} account"
+
+#: src/features/account/components/authentication/user-providers-list.tsx:253
+msgid "JBWS0c"
+msgstr "Link"
+
+#: src/features/account/components/authentication/user-providers-list.tsx:262
+msgid "4PKxPs"
+msgstr "Unlink"
+
+#: src/features/account/components/authentication/user-sessions-card.tsx:55
+msgid "V3ka34"
+msgstr "Active Sessions"
+
+#: src/features/account/components/authentication/user-sessions-card.tsx:57
+msgid "54Q9yz"
+msgstr "Sessions show currently logged in devices. They can be revoked at any time."
+
+#: src/features/account/components/authentication/user-sessions-list.tsx:68
+msgid "tkKKAr"
+msgstr "No sessions"
+
+#: src/features/account/components/authentication/user-sessions-list.tsx:70
+msgid "IYV2v0"
+msgstr "There are no active sessions. New logins will be displayed here."
+
+#: src/features/account/components/authentication/user-sessions-list.tsx:147
+msgid "10IkTF"
+msgstr "Unknown device"
+
+#: src/features/account/components/authentication/user-sessions-list.tsx:151
+msgid "pjASrh"
+msgstr "Current session"
+
+#: src/features/account/components/authentication/user-sessions-list.tsx:155
+msgid "PIRoCC"
+msgstr "Unknown IP address"
+
+#: src/features/account/components/authentication/user-sessions-list.tsx:161
+msgid "nBinN2"
+msgstr "Signed in {date}"
+
+#: src/features/account/components/authentication/user-sessions-list.tsx:170
+msgid "xXbJso"
+msgstr "Sign out"
+
+#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:63
+msgid "KdsDOJ"
+msgstr "Create SSH key"
+
+#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:85
+#: src/ui/feedback-button.tsx:31
+msgid "47FYwb"
+msgstr "Cancel"
+
+#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
+#: src/ui/feedback-button.tsx:32
+msgid "HAlOn1"
+msgstr "Name"
+
+#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:123
+msgid "q7jtp0"
+msgstr "My SSH key"
+
+#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:136
+msgid "jecC36"
+msgstr "Public key"
+
+#: src/features/account/components/ssh-keys/ssh-keys-card.tsx:45
+msgid "hdKY6S"
+msgstr "Create and manage SSH keys for use during installation."
+
+#: src/features/account/components/ssh-keys/ssh-keys-card.tsx:61
+msgid "UM2KPU"
+msgstr "Multiple SSH keys in <openssh>OpenSSH format</openssh> are supported."
+
+#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:49
+msgid "6xgIEt"
+msgstr "No SSH keys"
+
+#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:51
+msgid "6NcUU3"
+msgstr "No SSH keys have been created yet."
+
+#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:92
+msgid "goQBbA"
+msgstr "Created {date}"
+
+#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:101
+msgid "K3r6DQ"
+msgstr "Delete"
 
 #: src/features/auth/components/auth-methods-separator.tsx:27
 msgid "Ntjkqd"
@@ -131,13 +291,6 @@ msgstr "No account found with that email address."
 #: src/features/auth/components/email-sign-in.tsx:156
 msgid "YXNhCz"
 msgstr "Email sent - check your inbox!"
-
-#: src/features/auth/components/email-sign-in.tsx:175
-#: src/features/auth/components/forgot-password-form.tsx:85
-#: src/features/auth/components/register/signup-email.tsx:116
-#: src/ui/feedback-button.tsx:34
-msgid "sy+pv5"
-msgstr "Email"
 
 #: src/features/auth/components/email-sign-in.tsx:200
 #: src/features/auth/components/register/signup-email.tsx:166
@@ -287,14 +440,6 @@ msgstr "Support"
 #: src/ui/feedback-button.tsx:105
 msgid "Ejhdi4"
 msgstr "Feedback"
-
-#: src/ui/feedback-button.tsx:31
-msgid "47FYwb"
-msgstr "Cancel"
-
-#: src/ui/feedback-button.tsx:32
-msgid "HAlOn1"
-msgstr "Name"
 
 #: src/ui/feedback-button.tsx:33
 msgid "HxIuLA"

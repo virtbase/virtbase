@@ -16,12 +16,7 @@
  */
 
 import { Button } from "@virtbase/ui/button";
-import Document from "@/ui/document";
 
 export default function Home() {
-  return (
-    <Document locale="en">
-      <Button>Click me</Button>
-    </Document>
-  );
+  return <Button>Click me</Button>;
 }

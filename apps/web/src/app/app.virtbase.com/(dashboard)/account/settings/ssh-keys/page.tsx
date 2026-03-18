@@ -15,6 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { SSHKeysCard } from "@/features/account/components/ssh-keys/ssh-keys-card";
+
 export default function Page() {
-  return <>Placeholder</>;
+  return <SSHKeysCard />;
 }
