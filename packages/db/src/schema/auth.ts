@@ -41,6 +41,7 @@ export const users = pgTable(
     stripeCustomerId: t.text().unique(),
     role: t.text().notNull().default("CUSTOMER"),
     lastAttributedAt: t.timestamp({ withTimezone: true, mode: "date" }),
+    locale: t.text(),
   }),
   (t) => [index().on(t.email), index().on(t.stripeCustomerId)],
 );

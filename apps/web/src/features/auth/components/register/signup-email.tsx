@@ -24,7 +24,7 @@ import { useMediaQuery } from "@virtbase/ui/hooks";
 import { Input } from "@virtbase/ui/input";
 import { Spinner } from "@virtbase/ui/spinner";
 import { SignUpSchema } from "@virtbase/validators/auth";
-import { useExtracted } from "next-intl";
+import { useExtracted, useLocale } from "next-intl";
 import { useEffect, useState, useTransition } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -37,6 +37,7 @@ type SignUpProps = z.infer<typeof SignUpSchema>;
 
 export const SignUpEmail = () => {
   const t = useExtracted();
+  const locale = useLocale();
 
   const { isMobile } = useMediaQuery();
 
@@ -52,6 +53,7 @@ export const SignUpEmail = () => {
       email: email ?? "",
       name: name ?? "",
       password: "",
+      locale,
     },
   });
 

@@ -15,23 +15,19 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { passkeyClient } from "@better-auth/passkey/client";
-import type { Auth } from "@virtbase/auth";
-import {
-  emailOTPClient,
-  inferAdditionalFields,
-  lastLoginMethodClient,
-  magicLinkClient,
-} from "better-auth/client/plugins";
+import type { CreateEmailOptions } from "resend";
 
-import { createAuthClient } from "better-auth/react";
+export interface ResendEmailOptions
+  extends Omit<CreateEmailOptions, "to" | "from"> {
+  to: string;
+  from?: string;
+  variant?: "primary" | "notifications" | "marketing";
+  unsubscribeUrl?: string; // Custom unsubscribe URL for List-Unsubscribe header
+  /**
+   * If true, adds the Trustpilot AFS email to BCC.
+   * This will cause Trustpilot to ask the user to rate the service.
+   */
+  trustpilotAfs?: boolean;
+}
 
-export const authClient = createAuthClient({
-  plugins: [
-    inferAdditionalFields<Auth>(),
-    emailOTPClient(),
-    lastLoginMethodClient(),
-    magicLinkClient(),
-    passkeyClient(),
-  ],
-});
+export type ResendBulkEmailOptions = ResendEmailOptions[];

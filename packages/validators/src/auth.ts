@@ -39,4 +39,5 @@ export const SignUpSchema = z.object({
   email: EmailSchema,
   name: NameSchema,
   password: PasswordSchema,
+  locale: z.optional(z.string()),
 });

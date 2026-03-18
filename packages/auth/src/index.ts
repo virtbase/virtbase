@@ -17,6 +17,10 @@
 
 import { db } from "@virtbase/db/client";
 import { createId } from "@virtbase/db/utils";
+import { sendEmail } from "@virtbase/email";
+import PasswordUpdated from "@virtbase/email/templates/password-updated";
+import ResetPasswordLink from "@virtbase/email/templates/reset-password-link";
+import { getEmailTitle } from "@virtbase/email/translations";
 import {
   ADMIN_HOSTNAMES,
   APP_DOMAIN,
@@ -29,6 +33,7 @@ import {
 import type { BetterAuthOptions, BetterAuthPlugin } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { betterAuth } from "better-auth/minimal";
+import type { UserWithRole } from "better-auth/plugins";
 import { plugins } from "./plugins";
 
 export function initAuth({
@@ -113,38 +118,51 @@ export function initAuth({
     emailAndPassword: {
       enabled: true,
       requireEmailVerification: true,
-      sendResetPassword: async ({ url, user }) => {
+      revokeSessionsOnPasswordReset: true,
+      resetPasswordTokenExpiresIn: 600, // 10 minutes
+      sendResetPassword: async ({ url, user: providedUser }) => {
+        const user = providedUser as UserWithLocale;
         if (process.env.NODE_ENV === "development") {
-          console.log(`Reset password link for ${user.email}: ${url}`);
+          console.log(`Reset password link: ${url}`);
           return;
         }
 
-        // TODO: Add email service
-        /*await sendEmail({
+        await sendEmail({
           to: user.email,
-          subject: "Link zum Zurücksetzen deines Virtbase Passworts",
-          react: ResetPasswordLink({ email: user.email, url }),
-        });*/
+          subject: getEmailTitle("reset-password-link", user.locale),
+          react: ResetPasswordLink({
+            email: user.email,
+            url,
+            locale: user.locale,
+          }),
+        });
       },
-      onPasswordReset: async ({ user }) => {
+      onPasswordReset: async ({ user: providedUser }) => {
+        const user = providedUser as UserWithLocale;
         if (process.env.NODE_ENV === "development") {
-          console.log(`Password successfully reset for ${user.email}`);
+          console.log(`Password updated for user: ${user.email}`);
           return;
         }
 
-        // TODO: Add email service
-        /*await sendEmail({
+        await sendEmail({
           to: user.email,
-          subject: "Dein Virtbase Passwort wurde zurückgesetzt",
-          react: PasswordUpdated({ email: user.email, terminology: "reset" }),
-        });*/
+          subject: getEmailTitle("password-updated", user.locale),
+          react: PasswordUpdated({
+            email: user.email,
+            locale: user.locale,
+          }),
+        });
       },
     },
     emailVerification: {
+      expiresIn: 600, // 10 minutes
       autoSignInAfterVerification: true,
     },
     plugins: [...plugins, ...(additionalPlugins || [])],
     session: {
+      storeSessionInDatabase: true,
+      preserveSessionInDatabase: true,
+      expiresIn: 60 * 60 * 24 * 3, // 3 days
       cookieCache: {
         enabled: true,
         maxAge: 5 * 60, // 5 minutes
@@ -199,6 +217,12 @@ export function initAuth({
           unique: false,
           input: false,
         },
+        locale: {
+          type: "string",
+          unique: false,
+          required: false,
+          input: true,
+        },
       },
     },
   } satisfies BetterAuthOptions;
@@ -208,3 +232,4 @@ export function initAuth({
 
 export type Auth = ReturnType<typeof initAuth>;
 export type Session = Auth["$Infer"]["Session"];
+export type UserWithLocale = UserWithRole & { locale?: string | null };

@@ -15,23 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { passkeyClient } from "@better-auth/passkey/client";
-import type { Auth } from "@virtbase/auth";
-import {
-  emailOTPClient,
-  inferAdditionalFields,
-  lastLoginMethodClient,
-  magicLinkClient,
-} from "better-auth/client/plugins";
+import { Resend } from "resend";
 
-import { createAuthClient } from "better-auth/react";
-
-export const authClient = createAuthClient({
-  plugins: [
-    inferAdditionalFields<Auth>(),
-    emailOTPClient(),
-    lastLoginMethodClient(),
-    magicLinkClient(),
-    passkeyClient(),
-  ],
-});
+export const resend = process.env.RESEND_API_KEY
+  ? new Resend(process.env.RESEND_API_KEY)
+  : null;

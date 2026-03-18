@@ -15,23 +15,13 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { passkeyClient } from "@better-auth/passkey/client";
-import type { Auth } from "@virtbase/auth";
-import {
-  emailOTPClient,
-  inferAdditionalFields,
-  lastLoginMethodClient,
-  magicLinkClient,
-} from "better-auth/client/plugins";
+export const RESEND_AUDIENCE_ID = "<uuid-placeholder>";
 
-import { createAuthClient } from "better-auth/react";
+export const VARIANT_TO_FROM_MAP = {
+  primary: "Virtbase <system@account.virtbase.com>",
+  notifications: "Virtbase <notifications@mail.virtbase.com>",
+  marketing: "Janic @ Virtbase <janic@marketing.virtbase.com>",
+};
 
-export const authClient = createAuthClient({
-  plugins: [
-    inferAdditionalFields<Auth>(),
-    emailOTPClient(),
-    lastLoginMethodClient(),
-    magicLinkClient(),
-    passkeyClient(),
-  ],
-});
+export const TRUSTPILOT_AFS_EMAIL =
+  "virtbase.com+bfd344668a@invite.trustpilot.com";

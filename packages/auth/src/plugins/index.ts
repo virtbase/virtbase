@@ -17,6 +17,10 @@
 
 import { apiKey } from "@better-auth/api-key";
 import { passkey } from "@better-auth/passkey";
+import { sendEmail } from "@virtbase/email";
+import LoginLink from "@virtbase/email/templates/login-link";
+import VerifyEmail from "@virtbase/email/templates/verify-email";
+import { getEmailTitle } from "@virtbase/email/translations";
 import { APP_DOMAIN, APP_NAME } from "@virtbase/utils";
 import type { BetterAuthPlugin } from "better-auth";
 import {
@@ -63,10 +67,10 @@ export const plugins = [
   }),
   emailOTP({
     sendVerificationOnSignUp: true,
-    sendVerificationOTP: async ({ email, otp, type }) => {
+    sendVerificationOTP: async ({ email, otp, type }, ctx) => {
       if (type !== "email-verification") {
         console.info(
-          `The following OTP type was requested, but is not yet implemented: ${type}`,
+          `The following OTP type was requested, but is not yet implemented: ${type}. No email will be sent.`,
         );
         return;
       }
@@ -76,16 +80,23 @@ export const plugins = [
         return;
       }
 
-      // TODO: Add email service
-      /*await sendEmail({
+      // Locale read from the client (might be inaccurate)
+      // TODO: Get stored locale from the user
+      const locale = ctx?.query?.locale;
+
+      await sendEmail({
         to: email,
-        subject: "Dein Virtbase Bestätigungscode",
-        react: VerifyEmail({ email, code: otp }),
-      });*/
+        subject: getEmailTitle("verify-email", locale),
+        react: VerifyEmail({ email, code: otp, locale }),
+      });
     },
     expiresIn: 600, // 10 minutes
     allowedAttempts: 3,
     storeOTP: "encrypted",
+    rateLimit: {
+      window: 60,
+      max: 2,
+    },
   }),
   lastLoginMethod({
     storeInDatabase: false,
@@ -93,18 +104,27 @@ export const plugins = [
   }),
   magicLink({
     disableSignUp: true,
-    sendMagicLink: async ({ email, url }) => {
+    sendMagicLink: async ({ email, url }, ctx) => {
       if (process.env.NODE_ENV === "development") {
-        console.log(`Magic link for ${email}: ${url}`);
+        console.log(`Login link: ${url}`);
         return;
       }
 
-      // TODO: Add email service
-      /*await sendEmail({
+      // Locale read from the client (might be inaccurate)
+      // TODO: Get stored locale from the user
+      const locale = ctx?.query?.locale;
+
+      await sendEmail({
         to: email,
-        subject: "Dein Virtbase Login Link",
-        react: LoginLink({ email, url }),
-      });*/
+        subject: getEmailTitle("login-link", locale),
+        react: LoginLink({ email, url, locale }),
+      });
+    },
+    expiresIn: 600, // 10 minutes
+    allowedAttempts: 1,
+    rateLimit: {
+      window: 60,
+      max: 2,
     },
   }),
   passkey({

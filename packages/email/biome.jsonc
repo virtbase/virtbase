@@ -1,0 +1,22 @@
+{
+  "root": false,
+  "extends": "//",
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "style": {
+        "noRestrictedImports": {
+          "options": {
+            "paths": {
+              "use-intl": {
+                "importNames": ["createTranslator", "createFormatter"],
+                "message": "Use `import { ... } from \"use-intl/core\"` instead of `import { ... } from \"use-intl\"`."
+              }
+            }
+          },
+          "level": "error"
+        }
+      }
+    }
+  }
+}

@@ -15,23 +15,20 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { passkeyClient } from "@better-auth/passkey/client";
-import type { Auth } from "@virtbase/auth";
-import {
-  emailOTPClient,
-  inferAdditionalFields,
-  lastLoginMethodClient,
-  magicLinkClient,
-} from "better-auth/client/plugins";
+import type { EmailTitles, EmailTranslations } from ".";
 
-import { createAuthClient } from "better-auth/react";
+export const titles = {
+  en: "Your {appName} Login Link",
+} as const satisfies EmailTitles;
 
-export const authClient = createAuthClient({
-  plugins: [
-    inferAdditionalFields<Auth>(),
-    emailOTPClient(),
-    lastLoginMethodClient(),
-    magicLinkClient(),
-    passkeyClient(),
-  ],
-});
+export const messages = {
+  en: {
+    preview: "Your {appName} Login Link",
+    heading: "Your Login Link",
+    welcome: "Welcome to {appName}!",
+    instructions:
+      "Please click the magic link below to sign in to your account.",
+    signIn: "Sign in",
+    copyAndPaste: "or copy and paste this URL into your browser:",
+  },
+} as const satisfies EmailTranslations;

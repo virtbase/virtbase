@@ -1,0 +1,56 @@
+{
+  "name": "@virtbase/email",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./resend": {
+      "import": "./src/resend/index.ts",
+      "require": "./src/resend/index.ts"
+    },
+    "./resend/*": {
+      "import": "./src/resend/*.ts",
+      "require": "./src/resend/*.ts"
+    },
+    "./templates/*": {
+      "import": "./src/templates/*.tsx",
+      "require": "./src/templates/*.tsx"
+    },
+    "./translations": {
+      "import": "./src/translations/index.ts",
+      "require": "./src/translations/index.ts"
+    },
+    "./send-via-nodemailer": {
+      "import": "./src/send-via-nodemailer.ts",
+      "require": "./src/send-via-nodemailer.ts"
+    }
+  },
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "email": "email dev --dir ./src/templates -p 3333",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@react-email/components": "^1.0.10",
+    "@react-email/markdown": "^0.0.18",
+    "@react-email/render": "^2.0.4",
+    "@virtbase/utils": "workspace:*",
+    "nodemailer": "^8.0.2",
+    "react-email": "^5.2.10",
+    "resend": "^6.9.4",
+    "use-intl": "^4.8.3"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "catalog:",
+    "@react-email/preview-server": "^5.2.10",
+    "@types/nodemailer": "^7.0.11",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@virtbase/tsconfig": "workspace:*",
+    "typescript": "catalog:"
+  },
+  "peerDependencies": {
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
+  }
+}

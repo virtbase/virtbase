@@ -15,23 +15,18 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { passkeyClient } from "@better-auth/passkey/client";
-import type { Auth } from "@virtbase/auth";
-import {
-  emailOTPClient,
-  inferAdditionalFields,
-  lastLoginMethodClient,
-  magicLinkClient,
-} from "better-auth/client/plugins";
+import type { EmailTitles, EmailTranslations } from ".";
 
-import { createAuthClient } from "better-auth/react";
+export const titles = {
+  en: "Your {appName} Verification Code",
+} as const satisfies EmailTitles;
 
-export const authClient = createAuthClient({
-  plugins: [
-    inferAdditionalFields<Auth>(),
-    emailOTPClient(),
-    lastLoginMethodClient(),
-    magicLinkClient(),
-    passkeyClient(),
-  ],
-});
+export const messages = {
+  en: {
+    preview: "Your {appName} Verification Code",
+    heading: "Please confirm your email address",
+    instructions:
+      "Enter this code on the {appName} verify page to complete your sign up:",
+    hint: "This code expires in 10 minutes.",
+  },
+} as const satisfies EmailTranslations;

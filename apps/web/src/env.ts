@@ -31,6 +31,11 @@ export const env = createEnv({
   server: {
     UPSTASH_REDIS_REST_URL: z4.string().min(1),
     UPSTASH_REDIS_REST_TOKEN: z4.string().min(1),
+    RESEND_API_KEY: z4.string(),
+    SMTP_HOST: z4.string(),
+    SMTP_PORT: z4.string(),
+    SMTP_USER: z4.string(),
+    SMTP_PASSWORD: z4.string(),
   },
   client: {},
   experimental__runtimeEnv: {

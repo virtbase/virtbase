@@ -15,23 +15,20 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { passkeyClient } from "@better-auth/passkey/client";
-import type { Auth } from "@virtbase/auth";
-import {
-  emailOTPClient,
-  inferAdditionalFields,
-  lastLoginMethodClient,
-  magicLinkClient,
-} from "better-auth/client/plugins";
+import type { EmailTitles, EmailTranslations } from ".";
 
-import { createAuthClient } from "better-auth/react";
+export const titles = {
+  en: "Your email address has been changed",
+} as const satisfies EmailTitles;
 
-export const authClient = createAuthClient({
-  plugins: [
-    inferAdditionalFields<Auth>(),
-    emailOTPClient(),
-    lastLoginMethodClient(),
-    magicLinkClient(),
-    passkeyClient(),
-  ],
-});
+export const messages = {
+  en: {
+    preview: "Your email address has been updated",
+    heading: "Your email address has been updated",
+    changedFromTo:
+      "The e-mail address for your {appName} account has been changed from <strong>{oldEmail}</strong> to <strong>{newEmail}</strong>.",
+    support:
+      "If you did not make this change, please contact our support team or <link>update your email address</link>.",
+    hint: "This message is being sent to your old e-mail address only.",
+  },
+} as const satisfies EmailTranslations;

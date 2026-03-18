@@ -17,6 +17,9 @@
 
 export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || "Virtbase";
 
+export const VIRTBASE_WORDMARK =
+  "https://virtbase.com/assets/static/wordmark.png";
+
 export const PUBLIC_DOMAIN =
   process.env.NEXT_PUBLIC_VERCEL_ENV === "production"
     ? `https://${process.env.NEXT_PUBLIC_APP_DOMAIN}`

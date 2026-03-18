@@ -29,7 +29,7 @@ import {
 import { Spinner } from "@virtbase/ui/spinner";
 import NextLink from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useExtracted } from "next-intl";
+import { useExtracted, useLocale } from "next-intl";
 import { useContext, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
@@ -42,6 +42,7 @@ import { ShowPasswordAddon } from "@/ui/input-group-addons";
 
 export const EmailSignIn = ({ next }: { next?: string }) => {
   const t = useExtracted();
+  const locale = useLocale();
 
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -126,11 +127,17 @@ export const EmailSignIn = ({ next }: { next?: string }) => {
         email,
         password: password as string,
         callbackURL,
+        fetchOptions: {
+          query: { locale },
+        },
       });
     } else {
       response = await authClient.signIn.magicLink({
         email,
         callbackURL,
+        fetchOptions: {
+          query: { locale },
+        },
       });
     }
 
