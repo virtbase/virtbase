@@ -4,6 +4,7 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
+    "./avatar": "./src/avatar.tsx",
     "./button": "./src/button.tsx",
     "./client-only": "./src/client-only.tsx",
     "./grid": "./src/grid.tsx",
@@ -23,6 +24,9 @@
     "./tooltip": "./src/tooltip.tsx",
     "./sheet": "./src/sheet.tsx",
     "./textarea": "./src/textarea.tsx",
+    "./dropdown-menu": "./src/dropdown-menu.tsx",
+    "./breadcrumb": "./src/breadcrumb.tsx",
+    "./scroll-area": "./src/scroll-area.tsx",
     "./hooks": "./src/hooks/index.ts",
     "./theme-provider": "./src/theme-provider.tsx"
   },

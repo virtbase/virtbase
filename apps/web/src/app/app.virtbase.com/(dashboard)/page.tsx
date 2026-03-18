@@ -15,39 +15,13 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import {
-  Discord,
-  GithubCustom,
-  InstagramCustom,
-  TwitterCustom,
-  YouTube,
-} from "@virtbase/ui/icons";
-import { DISCORD_INVITE_URL } from "@virtbase/utils";
+import { Button } from "@virtbase/ui/button";
+import Document from "@/ui/document";
 
-export const SOCIALS = [
-  {
-    name: "YouTube",
-    icon: YouTube,
-    href: "https://www.youtube.com/@virtbase",
-  },
-  {
-    name: "Discord",
-    icon: Discord,
-    href: DISCORD_INVITE_URL,
-  },
-  {
-    name: "X",
-    icon: TwitterCustom,
-    href: "https://x.com/virtbasecom",
-  },
-  {
-    name: "Instagram",
-    icon: InstagramCustom,
-    href: "https://www.instagram.com/virtbasecom",
-  },
-  {
-    name: "GitHub",
-    icon: GithubCustom,
-    href: "https://github.com/virtbase",
-  },
-] as const;
+export default function Home() {
+  return (
+    <Document locale="en">
+      <Button>Click me</Button>
+    </Document>
+  );
+}

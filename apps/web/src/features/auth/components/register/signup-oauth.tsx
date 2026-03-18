@@ -18,7 +18,7 @@
 "use client";
 
 import { Button } from "@virtbase/ui/button";
-import { Discord, Github, Google } from "@virtbase/ui/icons";
+import { Discord, GithubCustom, Google } from "@virtbase/ui/icons";
 import { Spinner } from "@virtbase/ui/spinner";
 import { useSearchParams } from "next/navigation";
 import { useExtracted } from "next-intl";
@@ -79,7 +79,7 @@ export const SignUpOAuth = ({
           }}
           disabled={clickedGithub}
         >
-          {clickedGithub ? <Spinner /> : <Github />}
+          {clickedGithub ? <Spinner /> : <GithubCustom />}
           {t("Continue with GitHub")}
         </Button>
       )}

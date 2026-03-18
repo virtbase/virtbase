@@ -15,39 +15,24 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import {
-  Discord,
-  GithubCustom,
-  InstagramCustom,
-  TwitterCustom,
-  YouTube,
-} from "@virtbase/ui/icons";
-import { DISCORD_INVITE_URL } from "@virtbase/utils";
+import { constructMetadata } from "@virtbase/utils";
+import { AccountBreadcrumb } from "@/features/account/components/account-breadcrumb";
+import { AccountNav } from "@/features/account/components/account-nav";
+import DashboardLayout from "@/ui/layout/dashboard-layout";
 
-export const SOCIALS = [
-  {
-    name: "YouTube",
-    icon: YouTube,
-    href: "https://www.youtube.com/@virtbase",
-  },
-  {
-    name: "Discord",
-    icon: Discord,
-    href: DISCORD_INVITE_URL,
-  },
-  {
-    name: "X",
-    icon: TwitterCustom,
-    href: "https://x.com/virtbasecom",
-  },
-  {
-    name: "Instagram",
-    icon: InstagramCustom,
-    href: "https://www.instagram.com/virtbasecom",
-  },
-  {
-    name: "GitHub",
-    icon: GithubCustom,
-    href: "https://github.com/virtbase",
-  },
-] as const;
+export const metadata = constructMetadata({
+  title: "Account",
+});
+
+export default function AccountLayout({
+  children,
+}: LayoutProps<"/app.virtbase.com/account">) {
+  return (
+    <DashboardLayout leftSide={<AccountBreadcrumb />}>
+      <div className="space-y-4 overflow-hidden">
+        <AccountNav />
+        <div className="grid grid-cols-1 gap-4">{children}</div>
+      </div>
+    </DashboardLayout>
+  );
+}

@@ -15,39 +15,29 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import {
-  Discord,
-  GithubCustom,
-  InstagramCustom,
-  TwitterCustom,
-  YouTube,
-} from "@virtbase/ui/icons";
-import { DISCORD_INVITE_URL } from "@virtbase/utils";
+import { Avatar, AvatarFallback, AvatarImage } from "@virtbase/ui/avatar";
+import type { User } from "better-auth";
 
-export const SOCIALS = [
-  {
-    name: "YouTube",
-    icon: YouTube,
-    href: "https://www.youtube.com/@virtbase",
-  },
-  {
-    name: "Discord",
-    icon: Discord,
-    href: DISCORD_INVITE_URL,
-  },
-  {
-    name: "X",
-    icon: TwitterCustom,
-    href: "https://x.com/virtbasecom",
-  },
-  {
-    name: "Instagram",
-    icon: InstagramCustom,
-    href: "https://www.instagram.com/virtbasecom",
-  },
-  {
-    name: "GitHub",
-    icon: GithubCustom,
-    href: "https://github.com/virtbase",
-  },
-] as const;
+export function UserAvatar({
+  user,
+  ...props
+}: { user: Pick<User, "image" | "name"> } & React.ComponentProps<
+  typeof Avatar
+>) {
+  return (
+    <Avatar {...props}>
+      <AvatarImage src={user.image || undefined} referrerPolicy="no-referrer" />
+      <AvatarFallback>{getInitialsFromName(user.name)}</AvatarFallback>
+    </Avatar>
+  );
+}
+
+function getInitialsFromName(name: string) {
+  return name
+    .split(" ")
+    .map((n) => n[0])
+    .filter(Boolean)
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}

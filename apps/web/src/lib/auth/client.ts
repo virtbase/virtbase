@@ -18,6 +18,7 @@
 import { passkeyClient } from "@better-auth/passkey/client";
 import type { Auth } from "@virtbase/auth";
 import {
+  adminClient,
   emailOTPClient,
   inferAdditionalFields,
   lastLoginMethodClient,
@@ -29,6 +30,7 @@ import { createAuthClient } from "better-auth/react";
 export const authClient = createAuthClient({
   plugins: [
     inferAdditionalFields<Auth>(),
+    adminClient(),
     emailOTPClient(),
     lastLoginMethodClient(),
     magicLinkClient(),

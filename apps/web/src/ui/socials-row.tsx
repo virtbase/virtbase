@@ -15,39 +15,27 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import {
-  Discord,
-  GithubCustom,
-  InstagramCustom,
-  TwitterCustom,
-  YouTube,
-} from "@virtbase/ui/icons";
-import { DISCORD_INVITE_URL } from "@virtbase/utils";
+import { cn } from "@virtbase/ui";
+import { SOCIALS } from "@/lib/socials";
 
-export const SOCIALS = [
-  {
-    name: "YouTube",
-    icon: YouTube,
-    href: "https://www.youtube.com/@virtbase",
-  },
-  {
-    name: "Discord",
-    icon: Discord,
-    href: DISCORD_INVITE_URL,
-  },
-  {
-    name: "X",
-    icon: TwitterCustom,
-    href: "https://x.com/virtbasecom",
-  },
-  {
-    name: "Instagram",
-    icon: InstagramCustom,
-    href: "https://www.instagram.com/virtbasecom",
-  },
-  {
-    name: "GitHub",
-    icon: GithubCustom,
-    href: "https://github.com/virtbase",
-  },
-] as const;
+export function SocialsRow({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
+  return (
+    <div className={cn("flex items-center gap-3", className)} {...props}>
+      {SOCIALS.map(({ name, icon: Icon, href }) => (
+        <a
+          key={name}
+          href={href}
+          target="_blank"
+          rel="noreferrer"
+          className="group rounded-full p-1"
+        >
+          <span className="sr-only">{name}</span>
+          <Icon className="size-4 transition-colors duration-75 [&>svg]:text-foreground hover:[&>svg]:text-muted-foreground" />
+        </a>
+      ))}
+    </div>
+  );
+}

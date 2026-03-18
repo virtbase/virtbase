@@ -18,7 +18,7 @@
 "use client";
 
 import { Button } from "@virtbase/ui/button";
-import { Github } from "@virtbase/ui/icons";
+import { GithubCustom } from "@virtbase/ui/icons";
 import { Spinner } from "@virtbase/ui/spinner";
 import { useSearchParams } from "next/navigation";
 import { useExtracted } from "next-intl";
@@ -56,7 +56,7 @@ export function GitHubButton() {
       {clickedMethod === "github" ? (
         <Spinner />
       ) : (
-        <Github className="text-foreground" />
+        <GithubCustom className="text-foreground" />
       )}
       {t("Continue with GitHub")}
     </Button>
