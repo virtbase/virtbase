@@ -18,6 +18,7 @@
 import "@/styles/globals.css";
 
 import { cn } from "@virtbase/ui";
+import { ThemeProvider } from "@virtbase/ui/theme-provider";
 
 import { Geist, Geist_Mono } from "next/font/google";
 
@@ -36,7 +37,7 @@ export default function Document({
   locale,
 }: Readonly<{ children: React.ReactNode; locale: string }>) {
   return (
-    <html lang={locale} className="dark" suppressHydrationWarning>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={cn(
           "bg-background font-sans text-foreground antialiased",
@@ -44,7 +45,13 @@ export default function Document({
           geistMono.variable,
         )}
       >
-        {children}
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

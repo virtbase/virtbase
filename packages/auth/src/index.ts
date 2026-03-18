@@ -22,6 +22,7 @@ import {
   APP_DOMAIN,
   APP_HOSTNAMES,
   APP_NAME,
+  COOKIE_DOMAIN,
   getGravatarImage,
   PUBLIC_HOSTNAMES,
 } from "@virtbase/utils";
@@ -29,10 +30,6 @@ import type { BetterAuthOptions, BetterAuthPlugin } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { betterAuth } from "better-auth/minimal";
 import { plugins } from "./plugins";
-
-const AUTH_COOKIE_DOMAIN = process.env.VERCEL_URL
-  ? `.${process.env.NEXT_PUBLIC_APP_DOMAIN}`
-  : ".virtbase.localhost";
 
 export function initAuth({
   additionalPlugins,
@@ -54,10 +51,10 @@ export function initAuth({
         enabled: true,
         // When working on localhost, there are several issues to cross subdomain cookies (https://stackoverflow.com/a/1188145)
         // We use a custom subdomain for the cookies to work since the browser requires two dots in the domain name.
-        domain: AUTH_COOKIE_DOMAIN,
+        domain: COOKIE_DOMAIN,
       },
       defaultCookieAttributes: {
-        domain: AUTH_COOKIE_DOMAIN,
+        domain: COOKIE_DOMAIN,
       },
       database: {
         generateId: ({ model }) => {

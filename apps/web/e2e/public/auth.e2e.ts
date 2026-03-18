@@ -18,27 +18,31 @@
 import { expect, test } from "@playwright/test";
 import { APP_DOMAIN } from "@virtbase/utils";
 
-test("it should render the login page", async ({ page }) => {
-  await page.goto(`${APP_DOMAIN}/login`, { waitUntil: "domcontentloaded" });
+test.describe("login page", () => {
+  test("it should render the login page", async ({ page }) => {
+    await page.goto(`${APP_DOMAIN}/login`, { waitUntil: "domcontentloaded" });
 
-  // Wait for the animation to finish
-  await page.waitForSelector(
-    '[data-testid="client-only"][style="opacity: 1;"]',
-  );
+    // Wait for the animation to finish
+    await page.waitForSelector(
+      '[data-testid="client-only"][style="opacity: 1;"]',
+    );
 
-  await expect(page.getByTestId("logo-link")).toBeVisible();
-  await expect(page.getByTestId("terms")).toBeVisible();
-  await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
-  await expect(page.getByTestId("sign-in-email-password-button")).toBeVisible();
+    await expect(page.getByTestId("logo-link")).toBeVisible();
+    await expect(page.getByTestId("terms")).toBeVisible();
+    await expect(page.getByRole("heading", { level: 1 })).toBeVisible();
+    await expect(
+      page.getByTestId("sign-in-email-password-button"),
+    ).toBeVisible();
 
-  const emailInput = page.getByTestId("email-input");
-  await expect(emailInput).toBeVisible();
-  await expect(emailInput).toBeEditable();
-  await expect(emailInput).toHaveAttribute("placeholder");
+    const emailInput = page.getByTestId("email-input");
+    await expect(emailInput).toBeVisible();
+    await expect(emailInput).toBeEditable();
+    await expect(emailInput).toHaveAttribute("placeholder");
 
-  // Email input can be focused and clicked
-  await emailInput.click();
-  await expect(emailInput).toBeFocused();
+    // Email input can be focused and clicked
+    await emailInput.click();
+    await expect(emailInput).toBeFocused();
+  });
 });
 
 test.describe("register page", () => {
@@ -82,7 +86,7 @@ test.describe("forgot password page", () => {
 });
 
 test.describe("reset password page", () => {
-  test("it redirect to login page if no token is provided", async ({
+  test("it should redirect to login page if no token is provided", async ({
     page,
   }) => {
     await page.goto(`${APP_DOMAIN}/reset-password`, {

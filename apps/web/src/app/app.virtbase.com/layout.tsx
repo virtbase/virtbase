@@ -26,18 +26,17 @@ import Document from "@/ui/document";
 export default function Layout({ children }: LayoutProps<"/app.virtbase.com">) {
   return (
     <Document locale={defaultLocale}>
-      <Suspense>
-        <NextIntlClientProvider>
-          <NuqsAdapter>
-            <TRPCReactProvider>{children}</TRPCReactProvider>
-          </NuqsAdapter>
-        </NextIntlClientProvider>
-      </Suspense>
-      <Toaster className="pointer-events-auto" closeButton />
-      {/* 
-      // TODO: Re-add SentryReplayIntegration
-      // <SentryReplayIntegration /> 
-      */}
+      <NuqsAdapter>
+        <TRPCReactProvider>
+          {/* NextIntlClientProvider must be wrapped in a Suspense because it is not (yet) fully compatible with cacheComponents */}
+          <Suspense>
+            <NextIntlClientProvider>{children}</NextIntlClientProvider>
+          </Suspense>
+          <Toaster className="pointer-events-auto" closeButton />
+          {/* TODO: Re-add SentryReplayIntegration */}
+          {/* <SentryReplayIntegration />  */}
+        </TRPCReactProvider>
+      </NuqsAdapter>
     </Document>
   );
 }

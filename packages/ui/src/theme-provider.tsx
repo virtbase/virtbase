@@ -15,16 +15,4 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { COOKIE_DOMAIN } from "@virtbase/utils";
-import { defineRouting } from "next-intl/routing";
-import { COOKIE_NAME, defaultLocale, locales } from "./config";
-
-export const routing = defineRouting({
-  locales,
-  defaultLocale,
-  localeCookie: {
-    name: COOKIE_NAME,
-    domain: COOKIE_DOMAIN,
-    maxAge: 60 * 60 * 24 * 365, // 1 year
-  },
-});
+export { ThemeProvider } from "next-themes";

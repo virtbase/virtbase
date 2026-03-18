@@ -19,7 +19,8 @@
     "./label": "./src/label.tsx",
     "./separator": "./src/separator.tsx",
     "./textarea": "./src/textarea.tsx",
-    "./hooks": "./src/hooks/index.ts"
+    "./hooks": "./src/hooks/index.ts",
+    "./theme-provider": "./src/theme-provider.tsx"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
