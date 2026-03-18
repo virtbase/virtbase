@@ -29,11 +29,17 @@ export const EmailSchema = z.string().check(z.email(), z.toLowerCase());
 
 export const NameSchema = z.string().check(z.minLength(1), z.maxLength(32));
 
-export const ResetPasswordSchema = z.object({
-  token: z.string().check(z.minLength(1)),
-  password: PasswordSchema,
-  confirmPassword: PasswordSchema,
-});
+export const ResetPasswordSchema = z
+  .object({
+    token: z.string().check(z.minLength(1)),
+    password: PasswordSchema,
+    confirmPassword: PasswordSchema,
+  })
+  .check(
+    z.refine((data) => data.password === data.confirmPassword, {
+      path: ["confirmPassword"],
+    }),
+  );
 
 export const SignUpSchema = z.object({
   email: EmailSchema,
