@@ -32,6 +32,9 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    @apply scrollbar-thin scrollbar-thumb-primary scrollbar-track-muted;
+  }
   ::selection {
     @apply bg-primary text-primary-foreground;
   }
