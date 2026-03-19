@@ -252,8 +252,6 @@ export const sshKeysRouter = createTRPCRouter({
         },
       );
 
-      console.log(created, typeof created);
-
       return {
         ssh_key: created,
       };

@@ -30,6 +30,7 @@ import type { Locale } from "next-intl";
 import { getExtracted, getFormatter, setRequestLocale } from "next-intl/server";
 import { defaultLocale } from "@/i18n/config";
 import { legal } from "@/lib/source";
+import { BlockWrapper } from "@/ui/block-wrapper";
 import { TableOfContents } from "@/ui/fumadocs/table-of-contents";
 
 export async function generateStaticParams() {
@@ -92,54 +93,47 @@ export default async function LegalPage({
   const MDX = page.data.body;
 
   return (
-    <>
-      <div className="grid-section relative overflow-clip border-border border-b px-4 [.grid-section_~_&]:border-t-0">
-        <div className="relative z-0 mx-auto max-w-5xl border-border">
-          <div className="mask-[linear-gradient(transparent,var(--background))] pointer-events-none absolute inset-0 border-border border-x"></div>
-          <div className="relative mx-auto flex max-w-md flex-col items-center px-4 py-16 text-center">
-            <h1 className="mt-5 text-center font-medium text-4xl text-foreground sm:text-5xl sm:leading-[1.15]">
-              {page.data.title}
-            </h1>
-          </div>
+    <main>
+      <BlockWrapper variant="hero-full">
+        <div className="mx-auto flex max-w-md flex-col items-center px-4 py-16 text-center">
+          <h1 className="mt-5 text-center font-medium text-4xl text-foreground sm:text-5xl sm:leading-[1.15]">
+            {page.data.title}
+          </h1>
         </div>
-      </div>
-      <div className="grid-section relative overflow-clip border-border border-y px-4 [.grid-section_~_&]:border-t-0">
-        <div className="relative z-0 mx-auto max-w-5xl border-border border-x">
-          <div className="relative grid grid-cols-4 gap-10 bg-background p-8 sm:p-12 lg:gap-20">
-            <div className="col-span-4 md:col-span-3">
-              <article
-                className={cn(
-                  "prose prose-neutral dark:prose-invert prose-headings:relative w-full max-w-none prose-headings:scroll-mt-20",
-                  "prose-a:font-medium prose-a:text-muted-foreground prose-thead:text-lg prose-a:underline-offset-4 transition-all prose-a:hover:text-foreground",
-                  "prose-headings:prose-a:text-foreground prose-headings:prose-a:no-underline",
-                )}
-              >
-                <MDX
-                  components={{
-                    ...defaultMdxComponents,
-                    Steps,
-                    Step,
-                  }}
-                />
-              </article>
-            </div>
-            <div className="hidden md:block">
-              <div className="sticky top-20 flex-col">
-                <TableOfContents items={page.data.toc} />
-              </div>
+      </BlockWrapper>
+      <BlockWrapper>
+        <div className="grid grid-cols-4 gap-10 bg-background p-8 sm:p-12 lg:gap-20">
+          <div className="col-span-4 md:col-span-3">
+            <article
+              className={cn(
+                "prose prose-neutral dark:prose-invert prose-headings:relative w-full max-w-none prose-headings:scroll-mt-20",
+                "prose-a:font-medium prose-a:text-muted-foreground prose-thead:text-lg prose-a:underline-offset-4 transition-all prose-a:hover:text-foreground",
+                "prose-headings:prose-a:text-foreground prose-headings:prose-a:no-underline",
+              )}
+            >
+              <MDX
+                components={{
+                  ...defaultMdxComponents,
+                  Steps,
+                  Step,
+                }}
+              />
+            </article>
+          </div>
+          <div className="hidden md:block">
+            <div className="sticky top-20 flex-col">
+              <TableOfContents items={page.data.toc} />
             </div>
           </div>
         </div>
-      </div>
-      <div className="grid-section relative overflow-clip border-border border-y px-4 [.grid-section_~_&]:border-t-0">
-        <div className="relative z-0 mx-auto max-w-5xl border-border border-x py-10">
-          <p className="text-center text-muted-foreground text-sm">
-            {t("Last updated: {date}", {
-              date: format.dateTime(lastModified),
-            })}
-          </p>
-        </div>
-      </div>
-    </>
+      </BlockWrapper>
+      <BlockWrapper className="px-4 py-10">
+        <p className="text-center text-muted-foreground text-sm">
+          {t("Last updated: {date}", {
+            date: format.dateTime(lastModified),
+          })}
+        </p>
+      </BlockWrapper>
+    </main>
   );
 }

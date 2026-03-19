@@ -43,7 +43,7 @@ export function FakeSearchButton({
         className="lucide lucide-search absolute inset-y-0 left-4 z-10 my-auto h-4 w-4 text-muted-foreground"
       />
       <div className="w-full rounded-md border border-border bg-input/50 p-3 pl-12 text-left text-muted-foreground transition-colors group-active:bg-input">
-        {t("Suchen")}
+        {t("Search")}
       </div>
       <Kbd className="absolute inset-y-0 right-4 my-auto h-5 bg-transparent text-muted-foreground text-sm">
         ⌘K
