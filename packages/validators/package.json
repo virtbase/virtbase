@@ -23,6 +23,7 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
+    "@virtbase/utils": "workspace:*",
     "zod": "catalog:"
   },
   "devDependencies": {

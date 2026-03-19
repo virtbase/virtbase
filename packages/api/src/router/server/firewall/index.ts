@@ -17,7 +17,9 @@
 
 import { createTRPCRouter } from "../../../trpc";
 import { serverFirewallOptionsRouter } from "./options";
+import { serverFirewallRulesRouter } from "./rules";
 
 export const serverFirewallRouter = createTRPCRouter({
   options: serverFirewallOptionsRouter,
+  rules: serverFirewallRulesRouter,
 });

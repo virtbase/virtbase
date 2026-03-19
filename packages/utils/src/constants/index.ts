@@ -16,6 +16,7 @@
  */
 
 export * from "./cookies";
+export * from "./firewall";
 export * from "./limits";
 export * from "./main";
 export * from "./pagination";

@@ -17,9 +17,9 @@
 
 "use client";
 
-import { ActionSelect } from "@/features/servers/firewall/components/firewall-action-select";
-import { useFirewallOptions } from "@/features/servers/firewall/hooks/use-firewall-options";
-import { useUpdateFirewallOptions } from "@/features/servers/firewall/hooks/use-update-firewall-options";
+import { useFirewallOptions } from "../hooks/use-firewall-options";
+import { useUpdateFirewallOptions } from "../hooks/use-update-firewall-options";
+import { FirewallActionSelect } from "./firewall-action-select";
 
 export function FirewallActionState({
   serverId,
@@ -35,7 +35,7 @@ export function FirewallActionState({
   const { mutate: updateOptions } = useUpdateFirewallOptions();
 
   return (
-    <ActionSelect
+    <FirewallActionSelect
       onValueChange={(value: "ACCEPT" | "DROP" | "REJECT") =>
         updateOptions({
           server_id: serverId,

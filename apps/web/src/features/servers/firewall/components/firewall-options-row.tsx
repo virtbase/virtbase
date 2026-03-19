@@ -27,8 +27,8 @@ import { Switch } from "@virtbase/ui/switch";
 import { useExtracted } from "next-intl";
 import { Suspense, use } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { FirewallActionState } from "@/features/servers/firewall/components/firewall-action-state";
 import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
+import { FirewallActionState } from "./firewall-action-state";
 
 export function FirewallOptionsRow({ promise }: { promise: Promise<string> }) {
   const t = useExtracted();

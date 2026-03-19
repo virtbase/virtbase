@@ -46,8 +46,16 @@ export const serverFirewallOptionsRouter = createTRPCRouter({
       return {
         options: {
           enabled: !!options.enable,
-          policy_in: options.policy_in,
-          policy_out: options.policy_out,
+          policy_in: options.policy_in as
+            | "ACCEPT"
+            | "DROP"
+            | "REJECT"
+            | undefined,
+          policy_out: options.policy_out as
+            | "ACCEPT"
+            | "DROP"
+            | "REJECT"
+            | undefined,
           digest: options.digest,
         },
       };

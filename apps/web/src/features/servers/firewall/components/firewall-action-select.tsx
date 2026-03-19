@@ -29,7 +29,9 @@ import {
 } from "@virtbase/ui/select";
 import { useExtracted } from "next-intl";
 
-export function ActionSelect(props: React.ComponentProps<typeof Select>) {
+export function FirewallActionSelect(
+  props: React.ComponentProps<typeof Select>,
+) {
   const t = useExtracted();
 
   return (
