@@ -28,6 +28,7 @@ function BreadcrumbList({ className, ...props }: React.ComponentProps<"ol">) {
   return (
     <ol
       data-slot="breadcrumb-list"
+      data-testid="breadcrumb-list"
       className={cn(
         "wrap-break-word flex flex-wrap items-center gap-1.5 text-muted-foreground text-sm sm:gap-2.5",
         className,
@@ -41,6 +42,7 @@ function BreadcrumbItem({ className, ...props }: React.ComponentProps<"li">) {
   return (
     <li
       data-slot="breadcrumb-item"
+      data-testid="breadcrumb-item"
       className={cn("inline-flex items-center gap-1.5", className)}
       {...props}
     />
@@ -59,6 +61,7 @@ function BreadcrumbLink({
   return (
     <Comp
       data-slot="breadcrumb-link"
+      data-testid="breadcrumb-link"
       className={cn("transition-colors hover:text-foreground", className)}
       {...props}
     />
@@ -71,6 +74,7 @@ function BreadcrumbPage({ className, ...props }: React.ComponentProps<"span">) {
     // biome-ignore lint/a11y/useSemanticElements: ignored
     <span
       data-slot="breadcrumb-page"
+      data-testid="breadcrumb-page"
       role="link"
       aria-disabled="true"
       aria-current="page"
@@ -88,6 +92,7 @@ function BreadcrumbSeparator({
   return (
     <li
       data-slot="breadcrumb-separator"
+      data-testid="breadcrumb-separator"
       role="presentation"
       aria-hidden="true"
       className={cn("[&>svg]:size-3.5", className)}
@@ -105,6 +110,7 @@ function BreadcrumbEllipsis({
   return (
     <span
       data-slot="breadcrumb-ellipsis"
+      data-testid="breadcrumb-ellipsis"
       role="presentation"
       aria-hidden="true"
       className={cn("flex size-9 items-center justify-center", className)}
