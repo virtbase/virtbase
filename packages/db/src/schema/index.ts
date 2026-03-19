@@ -17,6 +17,7 @@
 
 export * from "./auth";
 export * from "./datacenters";
+export * from "./invoices";
 export * from "./proxmox-node-groups";
 export * from "./proxmox-nodes";
 export * from "./proxmox-template-groups";

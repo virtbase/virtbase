@@ -15,13 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export const getGravatarImage = async (email: string): Promise<string> => {
-  const digest = await crypto.subtle.digest(
-    "SHA-256",
-    new TextEncoder().encode(email.toLowerCase().trim()),
-  );
-  const hash = Array.from(new Uint8Array(digest))
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("");
-  return `https://seccdn.libravatar.org/avatar/${hash}?d=identicon`;
-};
+import { LexwareClient } from "./client";
+
+export const lexware = process.env.LEXWARE_API_KEY
+  ? new LexwareClient(process.env.LEXWARE_API_KEY)
+  : null;

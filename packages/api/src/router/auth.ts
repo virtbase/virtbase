@@ -61,7 +61,7 @@ export const authRouter = createTRPCRouter({
                 isNotNull(accounts.password),
               ),
             )
-            .groupBy(accounts.userId)
+            .groupBy(users.id)
             .limit(1)
             .then(([row]) => row);
         },

@@ -15,13 +15,24 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export const getGravatarImage = async (email: string): Promise<string> => {
-  const digest = await crypto.subtle.digest(
-    "SHA-256",
-    new TextEncoder().encode(email.toLowerCase().trim()),
-  );
-  const hash = Array.from(new Uint8Array(digest))
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("");
-  return `https://seccdn.libravatar.org/avatar/${hash}?d=identicon`;
-};
+import type { Session } from "@virtbase/auth";
+
+export const mockSession = {
+  session: {
+    id: "sess_0000000000000000000000000",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    userId: "usr_0000000000000000000000000",
+    expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
+    token: "__mock_token__",
+  },
+  user: {
+    id: "usr_0000000000000000000000000",
+    email: "test@example.com",
+    emailVerified: true,
+    name: "Mock User",
+    role: "CUSTOMER",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  },
+} satisfies Session;

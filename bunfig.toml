@@ -1,0 +1,10 @@
+[test]
+
+coveragePathIgnorePatterns = [
+    # Fixtures
+    "packages/api/src/router/__tests__/fixtures.ts",
+    # Static zod schemas
+    "packages/validators/src/**.ts",
+    # Drizzle database schemas
+    "packages/db/src/schema/**.ts"
+]

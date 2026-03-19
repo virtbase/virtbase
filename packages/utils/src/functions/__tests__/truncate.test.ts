@@ -15,13 +15,16 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export const getGravatarImage = async (email: string): Promise<string> => {
-  const digest = await crypto.subtle.digest(
-    "SHA-256",
-    new TextEncoder().encode(email.toLowerCase().trim()),
-  );
-  const hash = Array.from(new Uint8Array(digest))
-    .map((b) => b.toString(16).padStart(2, "0"))
-    .join("");
-  return `https://seccdn.libravatar.org/avatar/${hash}?d=identicon`;
-};
+import { describe, expect, test } from "bun:test";
+import { truncate } from "../truncate";
+
+describe("truncate", () => {
+  test("it truncates a string to the given length", () => {
+    expect(truncate("This is a test string", 10)).toEqual("This is...");
+  });
+
+  test("it returns null if the string is null or undefined", () => {
+    expect(truncate(null, 3)).toBeNull();
+    expect(truncate(undefined, 3)).toBeNull();
+  });
+});

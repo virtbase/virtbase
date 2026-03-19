@@ -22,6 +22,7 @@ import { db } from "@virtbase/db/client";
 import superjson from "superjson";
 import type { OpenApiMeta } from "trpc-to-openapi";
 import z, { ZodError } from "zod";
+import { lexware } from "./lexware";
 import { defaultFingerprint, ratelimit } from "./upstash";
 
 export const createTRPCContext = async ({
@@ -41,15 +42,20 @@ export const createTRPCContext = async ({
     getSession: authApi.getSession,
   };
 
+  const sharedContext = {
+    db,
+    authApi: narrowedAuthApi,
+    lexware,
+    headers,
+    setHeader,
+  };
+
   const apiKey = headers.get("x-virtbase-api-key");
   if (apiKey) {
     return {
-      authApi: narrowedAuthApi,
+      ...sharedContext,
       apiKey,
       session: null,
-      db,
-      headers,
-      setHeader,
     };
   }
 
@@ -58,12 +64,9 @@ export const createTRPCContext = async ({
   });
 
   return {
-    authApi: narrowedAuthApi,
+    ...sharedContext,
     apiKey: null,
     session,
-    db,
-    headers,
-    setHeader,
   };
 };
 

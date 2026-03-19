@@ -46,7 +46,6 @@ describe("parsePublicKey", () => {
   });
 
   test("it throws an error if the fingerprint is invalid", async () => {
-    const realCrypto = await import("node:crypto");
     mock.module("node:crypto", () => ({
       createHash: () => ({
         update: () => ({
@@ -55,10 +54,6 @@ describe("parsePublicKey", () => {
       }),
     }));
 
-    try {
-      expect(parsePublicKey("ssh-ed25519 AAAA")).rejects.toThrow(Error);
-    } finally {
-      mock.module("node:crypto", () => realCrypto);
-    }
+    expect(parsePublicKey("ssh-ed25519 AAAA")).rejects.toThrow(Error);
   });
 });

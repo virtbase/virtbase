@@ -18,6 +18,7 @@
 import { relations, sql } from "drizzle-orm";
 import { index, pgTable } from "drizzle-orm/pg-core";
 import { createId } from "../utils";
+import { invoices } from "./invoices";
 import { servers } from "./servers";
 import { sshKeys } from "./ssh-keys";
 
@@ -53,6 +54,7 @@ export const usersRelations = relations(users, ({ many }) => ({
   passkeys: many(passkeys),
   sshKeys: many(sshKeys),
   servers: many(servers),
+  invoices: many(invoices),
 }));
 
 export const sessions = pgTable(

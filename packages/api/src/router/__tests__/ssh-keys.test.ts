@@ -15,33 +15,20 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { afterEach, beforeAll, describe, expect, test } from "bun:test";
+import {
+  afterEach,
+  beforeAll,
+  describe,
+  expect,
+  setSystemTime,
+  test,
+} from "bun:test";
 import { TRPCError } from "@trpc/server";
-import type { Session } from "@virtbase/auth";
 import { sshKeys, users } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
 import { appRouter } from "../../root";
-
-const mockSession = {
-  session: {
-    id: "__mock_session_id__",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-    userId: "__mock_user_id__",
-    expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
-    token: "__mock_token__",
-  },
-  user: {
-    id: "__mock_user_id__",
-    email: "test@example.com",
-    emailVerified: true,
-    name: "Mock User",
-    role: "CUSTOMER",
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  },
-} satisfies Session;
+import { mockSession } from "./fixtures";
 
 let testDb: TestDb;
 let caller: ReturnType<typeof appRouter.createCaller>;
@@ -57,6 +44,7 @@ beforeAll(async () => {
     db: testDb as never,
     authApi: {} as never,
     apiKey: null,
+    lexware: null,
     headers: new Headers(),
     setHeader: () => {},
   });
@@ -217,6 +205,9 @@ describe("sshKeys.update", () => {
     if (!created) {
       throw new Error("Failed to create SSH key");
     }
+
+    // Set another time so updated_at is guaranteed to differ
+    setSystemTime(new Date(Date.now() + 10_000));
 
     const updated = await caller.sshKeys.update({
       id: created.id,
