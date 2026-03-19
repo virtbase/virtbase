@@ -17,7 +17,6 @@
 
 "use client";
 
-import { cn } from "@virtbase/ui";
 import { Badge } from "@virtbase/ui/badge";
 import { Button } from "@virtbase/ui/button";
 import {
@@ -34,6 +33,7 @@ import NextLink from "next/link";
 import { useRouter } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { Suspense, use, useTransition } from "react";
+import { ItemRow } from "@/features/account/components/item-row";
 import { authClient } from "@/lib/auth/client";
 import { paths } from "@/lib/paths";
 
@@ -67,8 +67,8 @@ export function UserProvidersList({
   return (
     <>
       <ItemRow
-        icon={LucideMail}
-        action={
+        icon={<LucideMail className="size-6 shrink-0" />}
+        rightSide={
           <Button size="sm" variant="outline" asChild>
             <NextLink
               href={`${paths.app.account.settings.getHref()}#email`}
@@ -85,8 +85,8 @@ export function UserProvidersList({
         </Suspense>
       </ItemRow>
       <ItemRow
-        icon={LucideRotateCcwKey}
-        action={
+        icon={<LucideRotateCcwKey className="size-6 shrink-0" />}
+        rightSide={
           <Button size="sm" variant="outline" asChild>
             <a href="#passkeys">{manageLabel}</a>
           </Button>
@@ -97,41 +97,15 @@ export function UserProvidersList({
           {t("Passwordless authentication with passkeys")}
         </p>
       </ItemRow>
-      {providers.map((provider) => (
-        <ProviderRow key={provider.provider} promise={promise} {...provider} />
+      {providers.map(({ icon: Icon, ...provider }) => (
+        <ProviderRow
+          key={provider.provider}
+          promise={promise}
+          icon={<Icon className="size-6 shrink-0" />}
+          {...provider}
+        />
       ))}
     </>
-  );
-}
-
-function ItemRow({
-  action,
-  children,
-  className,
-  icon: Icon,
-  ...props
-}: React.ComponentProps<"div"> & {
-  action: React.ReactNode;
-  icon: React.ElementType;
-}) {
-  return (
-    <div
-      className={cn(
-        "-m-px overflow-hidden border bg-background p-6 first:rounded-t-md last:rounded-b-md",
-        className,
-      )}
-      {...props}
-    >
-      <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-        <div className="flex items-center gap-4">
-          <div className="grid size-10 place-items-center rounded-full bg-muted p-2">
-            <Icon className="size-6 shrink-0" />
-          </div>
-          <div className="flex flex-col gap-1">{children}</div>
-        </div>
-        {action}
-      </div>
-    </div>
   );
 }
 
@@ -153,7 +127,7 @@ function ProviderRow({
   name,
   icon,
 }: {
-  icon: React.ElementType;
+  icon: React.ReactNode;
   name: string;
   provider: string;
   promise: Promise<[User | null, Account[]]>;
@@ -161,7 +135,7 @@ function ProviderRow({
   return (
     <ItemRow
       icon={icon}
-      action={
+      rightSide={
         <Suspense fallback={<Skeleton className="h-8 w-20" />}>
           <ProviderAction provider={provider} promise={promise} />
         </Suspense>

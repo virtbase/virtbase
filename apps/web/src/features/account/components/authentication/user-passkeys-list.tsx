@@ -33,6 +33,7 @@ import { useRouter } from "next/navigation";
 import { useExtracted, useFormatter, useNow } from "next-intl";
 import { cache, use, useTransition } from "react";
 import aaguidsMap from "@/features/account/assets/aaguid.json";
+import { ItemRow } from "@/features/account/components/item-row";
 import { authClient } from "@/lib/auth/client";
 
 export function UserPasskeysList({ promise }: { promise: Promise<Passkey[]> }) {
@@ -83,49 +84,33 @@ function PasskeyItem({ passkey, index }: { passkey: Passkey; index: number }) {
     });
 
   const branding = getPasskeyBrandingByAaguid(passkey.aaguid);
+  const name =
+    // Name set by the user
+    passkey.name ||
+    // Name of the passkey provider
+    branding?.name ||
+    // Default name
+    t("Passkey #{number}", { number: `${index + 1}` });
 
   return (
-    <div
-      className="-m-px overflow-hidden border bg-background p-6 first:rounded-t-md last:rounded-b-md"
+    <ItemRow
       data-testid="passkey-item"
-    >
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex flex-1 items-center gap-4 truncate">
-          <div
-            className="grid size-10 place-items-center rounded-full bg-muted p-2"
-            data-testid="passkey-icon"
-          >
-            {branding?.icon_dark ? (
-              <NextImage
-                src={branding.icon_dark}
-                alt={branding.name}
-                width={24}
-                height={24}
-                unoptimized
-                className="pointer-events-none size-6 shrink-0 select-none object-cover"
-                draggable={false}
-              />
-            ) : (
-              <LucideKey className="size-6 shrink-0" />
-            )}
-          </div>
-          <div className="flex flex-1 flex-col gap-1 truncate">
-            <p
-              className="truncate font-medium text-sm"
-              data-testid="passkey-name"
-            >
-              {branding?.name ||
-                passkey.name ||
-                t("Passkey #{number}", { number: String(index + 1) })}
-            </p>
-            <p
-              className="truncate text-muted-foreground text-sm leading-none"
-              data-testid="passkey-aaguid"
-            >
-              {passkey.aaguid}
-            </p>
-          </div>
-        </div>
+      icon={
+        branding?.icon_dark ? (
+          <NextImage
+            src={branding.icon_dark}
+            alt={branding.name}
+            width={24}
+            height={24}
+            unoptimized
+            className="pointer-events-none size-6 shrink-0 select-none object-cover"
+            draggable={false}
+          />
+        ) : (
+          <LucideKey className="size-6 shrink-0" />
+        )
+      }
+      rightSide={
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
           <p
             className="whitespace-nowrap text-sm"
@@ -145,8 +130,18 @@ function PasskeyItem({ passkey, index }: { passkey: Passkey; index: number }) {
             {isPending ? <Spinner /> : t("Remove")}
           </Button>
         </div>
-      </div>
-    </div>
+      }
+    >
+      <p className="truncate font-medium text-sm" data-testid="passkey-name">
+        {name}
+      </p>
+      <p
+        className="truncate text-muted-foreground text-sm leading-none"
+        data-testid="passkey-aaguid"
+      >
+        {passkey.aaguid}
+      </p>
+    </ItemRow>
   );
 }
 

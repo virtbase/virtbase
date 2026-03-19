@@ -77,9 +77,10 @@ export function AccountNav({
         className={cn("flex w-full flex-row gap-1 max-md:flex-wrap", className)}
         {...props}
       >
-        {items.map((item) => (
+        {items.map((item, index) => (
           <NextLink
-            key={item.title}
+            // biome-ignore lint/suspicious/noArrayIndexKey: index is unique
+            key={index}
             href={item.path.getHref()}
             prefetch={false}
             className={cn(

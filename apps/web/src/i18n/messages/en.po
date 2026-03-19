@@ -132,25 +132,25 @@ msgstr "Passkeys are a highly secure alternative to passwords. Register a new pa
 msgid "ANHQFQ"
 msgstr "Multiple passkeys can be used for authentication."
 
-#: src/features/account/components/authentication/user-passkeys-list.tsx:50
+#: src/features/account/components/authentication/user-passkeys-list.tsx:51
 msgid "Hcvdp5"
 msgstr "No passkeys"
 
-#: src/features/account/components/authentication/user-passkeys-list.tsx:52
+#: src/features/account/components/authentication/user-passkeys-list.tsx:53
 msgid "OHO8dm"
 msgstr "No passkeys have been registered for this account."
 
-#: src/features/account/components/authentication/user-passkeys-list.tsx:119
-msgid "GKNfO2"
-msgstr "Passkey #{number}"
-
-#: src/features/account/components/authentication/user-passkeys-list.tsx:135
+#: src/features/account/components/authentication/user-passkeys-list.tsx:113
 msgid "jUqYir"
 msgstr "Added {date}"
 
-#: src/features/account/components/authentication/user-passkeys-list.tsx:145
+#: src/features/account/components/authentication/user-passkeys-list.tsx:123
 msgid "G/yZLu"
 msgstr "Remove"
+
+#: src/features/account/components/authentication/user-passkeys-list.tsx:131
+msgid "GKNfO2"
+msgstr "Passkey #{number}"
 
 #: src/features/account/components/authentication/user-providers-card.tsx:47
 msgid "w97pJ4"
@@ -258,19 +258,19 @@ msgstr "Create and manage SSH keys for use during installation."
 msgid "UM2KPU"
 msgstr "Multiple SSH keys in <openssh>OpenSSH format</openssh> are supported."
 
-#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:49
+#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:50
 msgid "6xgIEt"
 msgstr "No SSH keys"
 
-#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:51
+#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:52
 msgid "6NcUU3"
 msgstr "No SSH keys have been created yet."
 
-#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:92
+#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:83
 msgid "goQBbA"
 msgstr "Created {date}"
 
-#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:101
+#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:92
 msgid "K3r6DQ"
 msgstr "Delete"
 

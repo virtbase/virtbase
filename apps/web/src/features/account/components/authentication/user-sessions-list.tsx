@@ -40,6 +40,7 @@ import { useRouter } from "next/navigation";
 import { userAgentFromString } from "next/server";
 import { useExtracted, useFormatter, useNow } from "next-intl";
 import { use, useTransition } from "react";
+import { ItemRow } from "@/features/account/components/item-row";
 import { authClient } from "@/lib/auth/client";
 
 const deviceTypes: Record<string, React.ElementType> = {
@@ -133,29 +134,9 @@ function SessionItem({
   const DeviceIcon = deviceTypes[agent?.device.type as string] || LucideMonitor;
 
   return (
-    <div className="-m-px overflow-hidden border bg-background p-6 first:rounded-t-md last:rounded-b-md">
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex flex-1 items-center gap-4 truncate">
-          <div className="grid size-10 place-items-center rounded-full bg-muted p-2">
-            <DeviceIcon className="size-6 shrink-0" />
-          </div>
-          <div className="flex flex-1 flex-col gap-1 truncate">
-            <div className="flex flex-wrap-reverse items-center gap-2">
-              <p className="truncate font-medium text-sm">
-                {agent
-                  ? `${agent.browser.name}${agent.os.name ? ` (${[agent.os.name, agent.os.version].filter(Boolean).join(" ")})` : ""}`
-                  : t("Unknown device")}
-                {agent?.device.type}
-              </p>
-              {isCurrent && (
-                <Badge className="rounded-full">{t("Current session")}</Badge>
-              )}
-            </div>
-            <p className="truncate text-muted-foreground text-sm leading-none">
-              {session.ipAddress || t("Unknown IP address")}
-            </p>
-          </div>
-        </div>
+    <ItemRow
+      icon={<DeviceIcon className="size-6 shrink-0" />}
+      rightSide={
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
           <p className="whitespace-nowrap text-sm" suppressHydrationWarning>
             {t("Signed in {date}", {
@@ -170,7 +151,22 @@ function SessionItem({
             {isPending ? <Spinner /> : t("Sign out")}
           </Button>
         </div>
+      }
+    >
+      <div className="flex flex-wrap-reverse items-center gap-2">
+        <p className="truncate font-medium text-sm">
+          {agent
+            ? `${agent.browser.name}${agent.os.name ? ` (${[agent.os.name, agent.os.version].filter(Boolean).join(" ")})` : ""}`
+            : t("Unknown device")}
+          {agent?.device.type}
+        </p>
+        {isCurrent && (
+          <Badge className="rounded-full">{t("Current session")}</Badge>
+        )}
       </div>
-    </div>
+      <p className="truncate text-muted-foreground text-sm leading-none">
+        {session.ipAddress || t("Unknown IP address")}
+      </p>
+    </ItemRow>
   );
 }
