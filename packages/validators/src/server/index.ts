@@ -15,8 +15,15 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Button } from "@virtbase/ui/button";
+import * as z from "zod";
+import { ServerSchema } from "./shared";
 
-export default function Home() {
-  return <Button>Click me</Button>;
-}
+export const RenameServerInputSchema = z.object({
+  server_id: ServerSchema.shape.id,
+  name: z.string().min(1).max(255),
+});
+
+export const RenameServerOutputSchema = z.void();
+
+export * from "./firewall";
+export * from "./shared";

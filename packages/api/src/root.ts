@@ -17,6 +17,7 @@
 
 import { authRouter } from "./router/auth";
 import { invoicesRouter } from "./router/invoices";
+import { serverRouter } from "./router/server";
 import { sshKeysRouter } from "./router/ssh-keys";
 import { createTRPCRouter } from "./trpc";
 
@@ -24,6 +25,7 @@ export const appRouter = createTRPCRouter({
   auth: authRouter,
   sshKeys: sshKeysRouter,
   invoices: invoicesRouter,
+  server: serverRouter,
 });
 
 export type AppRouter = typeof appRouter;

@@ -18,11 +18,15 @@
 import * as Sentry from "@sentry/node";
 import { initTRPC, TRPCError } from "@trpc/server";
 import type { Auth } from "@virtbase/auth";
+import { and, eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
+import { proxmoxNodes, servers } from "@virtbase/db/schema";
+import { ServerSchema } from "@virtbase/validators/server";
 import superjson from "superjson";
 import type { OpenApiMeta } from "trpc-to-openapi";
 import z, { ZodError } from "zod";
 import { lexware } from "./lexware";
+import { getProxmoxInstance } from "./proxmox";
 import { defaultFingerprint, ratelimit } from "./upstash";
 
 export const createTRPCContext = async ({
@@ -94,8 +98,21 @@ type RatelimitMeta = {
     | false;
 };
 
+type ServerProcedureMeta = {
+  /**
+   * Restrict the procedure to only allow
+   * certain server states.
+   */
+  states?: Array<"">;
+  /**
+   * Additional fields to return with
+   * the server data.
+   */
+  expand?: Array<"">;
+};
+
 const t = initTRPC
-  .meta<OpenApiMeta & RatelimitMeta>()
+  .meta<OpenApiMeta & RatelimitMeta & ServerProcedureMeta>()
   .context<typeof createTRPCContext>()
   .create({
     transformer: superjson,
@@ -220,6 +237,81 @@ const authMiddleware = t.middleware(async ({ ctx, next }) => {
   });
 });
 
+const serverMiddleware = authMiddleware.unstable_pipe(
+  async ({ ctx, next, getRawInput }) => {
+    const rawInput = await getRawInput();
+    if (
+      !rawInput ||
+      typeof rawInput !== "object" ||
+      !("server_id" in rawInput)
+    ) {
+      throw new TRPCError({ code: "BAD_REQUEST" });
+    }
+
+    const { success, data: serverId } =
+      await ServerSchema.shape.id.safeParseAsync(rawInput.server_id);
+    if (!success) {
+      throw new TRPCError({ code: "BAD_REQUEST" });
+    }
+
+    const { db } = ctx;
+    const server = await db.transaction(
+      async (tx) => {
+        return tx
+          .select({
+            id: servers.id,
+            name: servers.name,
+            vmid: servers.vmid,
+            proxmoxNode: {
+              id: proxmoxNodes.id,
+              hostname: proxmoxNodes.hostname,
+              fqdn: proxmoxNodes.fqdn,
+              // [!] Sensitive data
+              tokenID: proxmoxNodes.tokenID,
+              tokenSecret: proxmoxNodes.tokenSecret,
+            },
+          })
+          .from(servers)
+          .where(
+            and(
+              eq(servers.id, serverId),
+              // [!] Authorization: Only allow the user to access their own servers
+              eq(servers.userId, ctx.userId),
+            ),
+          )
+          .innerJoin(proxmoxNodes, eq(servers.proxmoxNodeId, proxmoxNodes.id))
+          .limit(1)
+          .then(([row]) => row);
+      },
+      {
+        accessMode: "read only",
+        isolationLevel: "read committed",
+      },
+    );
+
+    if (!server) {
+      // Server does not exist or user does not have access to it
+      throw new TRPCError({ code: "NOT_FOUND" });
+    }
+
+    // [!] Split sensitive data from server data
+    const { proxmoxNode, ...serverData } = server;
+
+    const instance = getProxmoxInstance(proxmoxNode);
+
+    return next({
+      ctx: {
+        server: serverData,
+        proxmoxNode,
+        instance: {
+          ...instance,
+          vm: instance.node.qemu.$(serverData.vmid),
+        },
+      },
+    });
+  },
+);
+
 export const publicProcedure = t.procedure
   .use(sentryMiddleware)
   .use(ratelimitMiddleware);
@@ -228,3 +320,9 @@ export const protectedProcedure = t.procedure
   .use(sentryMiddleware)
   .use(ratelimitMiddleware)
   .use(authMiddleware);
+
+export const serverProcedure = t.procedure
+  .use(sentryMiddleware)
+  .use(ratelimitMiddleware)
+  // Server middleware already includes authMiddleware
+  .use(serverMiddleware);

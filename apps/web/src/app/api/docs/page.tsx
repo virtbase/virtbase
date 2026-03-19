@@ -74,7 +74,7 @@ const getDocumentation = cache(async () => {
     tags: [
       // TODO: Add descriptions for the tags
       /* {
-        name: "KVM",
+        name: "Servers",
         description: ""
       },
       {
@@ -85,7 +85,7 @@ const getDocumentation = cache(async () => {
     "x-tagGroups": [
       {
         name: "Server Resources",
-        tags: ["KVM", "rDNS", "Backups", "Firewall"],
+        tags: ["Servers", "rDNS", "Backups", "Firewall"],
       },
       {
         name: "Account",

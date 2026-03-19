@@ -15,8 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Button } from "@virtbase/ui/button";
+import * as z from "zod";
 
-export default function Home() {
-  return <Button>Click me</Button>;
-}
+export const ServerSchema = z.object({
+  id: z.string().regex(/^kvm_[A-Z0-9]{25}$/),
+});

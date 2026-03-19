@@ -159,6 +159,19 @@ const nextConfig: NextConfig = {
       permanent: true,
     },
   ],
+  rewrites: async () => [
+    // Legacy API rewrites
+    {
+      source: "/api/v1/kvm/:path*",
+      has: [
+        {
+          type: "host",
+          value: new URL(PUBLIC_DOMAIN).hostname,
+        },
+      ],
+      destination: "/api/v1/servers/:path*",
+    },
+  ],
   transpilePackages: [
     "@virtbase/api",
     "@virtbase/auth",

@@ -15,8 +15,4 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Button } from "@virtbase/ui/button";
-
-export default function Home() {
-  return <Button>Click me</Button>;
-}
+export * from "./get-proxmox-instance";

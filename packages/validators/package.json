@@ -10,6 +10,10 @@
     "./auth": {
       "types": "./dist/auth.d.ts",
       "default": "./src/auth.ts"
+    },
+    "./server": {
+      "types": "./dist/server.d.ts",
+      "default": "./src/server/index.ts"
     }
   },
   "scripts": {

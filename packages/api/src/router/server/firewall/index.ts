@@ -15,8 +15,9 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Button } from "@virtbase/ui/button";
+import { createTRPCRouter } from "../../../trpc";
+import { serverFirewallOptionsRouter } from "./options";
 
-export default function Home() {
-  return <Button>Click me</Button>;
-}
+export const serverFirewallRouter = createTRPCRouter({
+  options: serverFirewallOptionsRouter,
+});
