@@ -1,5 +1,6 @@
 {
   "name": "virtbase",
+  "type": "module",
   "private": true,
   "license": "AGPL-3.0-or-later",
   "author": "Janic Bellmann <contact@janic.dev>",
@@ -44,7 +45,7 @@
   },
   "catalog": {
     "@biomejs/biome": "^2.4.8",
-    "@tanstack/react-query": "^5.90.21",
+    "@tanstack/react-query": "^5.91.2",
     "@trpc/client": "^11.13.4",
     "@trpc/server": "^11.13.4",
     "@trpc/tanstack-react-query": "^11.13.4",
@@ -65,8 +66,5 @@
   },
   "peerDependencies": {
     "typescript": "catalog:"
-  },
-  "patchedDependencies": {
-    "trpc-to-openapi@3.1.0": "patches/trpc-to-openapi@3.1.0.patch"
   }
 }
