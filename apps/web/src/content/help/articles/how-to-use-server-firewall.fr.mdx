@@ -1,0 +1,56 @@
+---
+title : Comment utiliser le pare-feu sur mon serveur Virtbase ?
+description : Découvrez comment configurer le pare-feu sur votre serveur.
+category : overview
+keywords : [pare-feu, sécurité, port]
+---
+
+Le pare-feu sans état de Virtbase vous permet de sécuriser davantage votre serveur. Vous pouvez filtrer de manière ciblée les requêtes entrantes et sortantes vers et depuis votre serveur à l'aide de vos propres règles.
+
+Vous disposez pour cela des options **Accepter**, **Ingorer** et **Refuser**.
+
+Par défaut, toutes les connexions entrantes et sortantes sont réglées sur **Accepter**. Vous devez adapter ce paramètre à vos besoins individuels.
+
+## Comment créer des règles de pare-feu ?
+
+Pour créer une nouvelle règle de pare-feu, procédez comme suit :
+
+1. Accédez à votre **serveur** dans le [portail client](https://app.virtbase.com/servers).
+2. Cliquez sur **Pare-feu** dans la navigation.
+3. Vous voyez alors apparaître un aperçu des règles de pare-feu que vous avez déjà créées. Cliquez sur **+** en haut à droite.
+4. Vous pouvez ici définir les propriétés de votre règle.
+
+![Options de la règle de pare-feu](/assets/static/articles/create-firewall-rule-dialog-fr.png)
+
+5. Assurez-vous que la règle est active. L'application de la règle aux nouvelles requêtes peut prendre quelques secondes.
+
+Si vous avez d'autres questions concernant le pare-feu ou si vous avez besoin d'aide, [contactez notre équipe d'assistance](/fr/contact).
+
+## Que signifient les options de traitement ?
+
+**Accepter** : la requête passe le pare-feu. Une requête qui répond aux caractéristiques de la règle est **autorisée** et peut atteindre ou quitter votre serveur.
+
+**Ingorer** : le pare-feu **bloque** la requête de manière **passive**. Aucune réponse n'est envoyée ou la requête reçoit un délai d'expiration (timeout). 
+
+**Refuser** : le pare-feu **bloque** la requête de manière **active**. Une réponse « Accès refusé » (Connection refused) est envoyée.
+
+En cas de blocage, nous recommandons toujours d'utiliser le mode **Ingorer**. Sinon, un éventuel pirate pourrait identifier que le port bloqué est utilisé sur votre serveur.
+Il serait alors possible de tirer des conclusions sur les services utilisés.
+
+Avec la méthode **Ingorer**, il est impossible de deviner quels ports sont utilisés.
+
+
+## Dans quel ordre les règles sont-elles traitées ?
+
+Les règles de pare-feu actives sont traitées de haut en bas. Dès qu'une règle s'applique à la requête, elle est appliquée et le traitement ultérieur est interrompu.
+
+Les règles de pare-feu inactives n'ont aucun effet sur les requêtes. Elles sont ignorées lors du traitement.
+
+Il est donc important de respecter l'ordre des règles. Nous vous recommandons l'ordre suivant :
+1. Commencez par les règles **REFUSER** spécifiques.
+2. Définissez ensuite les règles **AUTORISER** spécifiques.
+3. Placez les règles générales **REFUSER** à la fin.
+
+L'image suivante illustre cette structure pour les règles entrantes :
+
+![Ordre recommandé des règles de pare-feu](/assets/static/articles/create-firewall-rule-example-fr.png)

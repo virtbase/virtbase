@@ -34,7 +34,8 @@
     "./breadcrumb": "./src/breadcrumb.tsx",
     "./scroll-area": "./src/scroll-area.tsx",
     "./hooks": "./src/hooks/index.ts",
-    "./theme-provider": "./src/theme-provider.tsx"
+    "./theme-provider": "./src/theme-provider.tsx",
+    "./kbd": "./src/kbd.tsx"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",

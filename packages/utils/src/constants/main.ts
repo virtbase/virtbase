@@ -30,7 +30,7 @@ export const PUBLIC_DOMAIN =
 export const PUBLIC_HOSTNAMES = new Set([
   process.env.NEXT_PUBLIC_APP_DOMAIN,
   `staging.${process.env.NEXT_PUBLIC_APP_DOMAIN}`,
-  "virtbase.localhost:8888",
+  "virtbase.localhost:3000",
   "virtbase.localhost",
 ]);
 

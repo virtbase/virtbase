@@ -1,0 +1,42 @@
+---
+title: How do I use Virtbase's public API?
+description: Learn how to manage your Virtbase services with our API.
+category: overview
+keywords: [API, Account]
+---
+
+The public Virtbase API offers a flexible way to programmatically manage your booked services. 
+To do this, you need to create an API key to send authenticated requests.
+
+## How do I create an API key?
+
+Follow these steps to create an API key.
+
+<Hint>
+API keys do not have an expiration date, but can only be viewed once after creation.
+</Hint>
+
+
+1. Go to the **Account** settings in the [customer portal](https://app.virtbase.com/account/settings).
+2. Click on **API** in the navigation bar.
+3. You will now see a list of your active API keys. Click on **Create API key**.
+4. Assign a name for your key and confirm the creation.
+5. Your API key will now be displayed once in the upper area; save it carefully.
+
+Your API key can be used directly for API requests. If you no longer need your key, you can delete it at any time.
+
+If you have further questions about the public API or need assistance, please [contact our support team](/en/contact). 
+
+## How do I use the public API?
+
+You can find the complete documentation for all API endpoints at: https://virtbase.com/api/docs
+
+The documentation is available in English only.
+
+All requests to the endpoints must be made with the header `X-Virtbase-API-Key`.
+
+## Is there a rate limit?
+
+Yes, you can send a maximum of 60 requests per minute (= 1 request per second) to the API with one API key.
+
+A higher rate limit is only possible with approval. Please contact our support team for more information.

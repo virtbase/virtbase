@@ -1,0 +1,42 @@
+---
+title: Wie verwende ich die Public API von Virtbase?
+description: Erfahre, wie du deine Virtbase Dienste mit unserer API verwalten kannst
+category: overview
+keywords: [API, Account]
+---
+
+Die öffentliche Virtbase API bietet eine flexible Möglichkeit, um deine gebuchten Dienstleistungen programmatisch zu verwalten. 
+Dazu ist die Erstellung eines API-Schlüssels notwendig, um authentifizierte Anfragen zu senden.
+
+## Wie erstelle ich einen API-Schlüssel?
+
+Befolge diese Schritte, um einen API-Schlüssel zu erstellen.
+
+<Hint>
+API-Schlüssel haben kein Ablaufdatum, können jedoch nur einmal nach der Erstellung angezeigt werden.
+</Hint>
+
+
+1. Rufe die Einstellungen **Account** im [Kundenportal](https://app.virtbase.com/account/settings) auf.
+2. Klicke in der Navigation auf **API**.
+3. Du siehst nun eine List deiner bereits aktiven API-Schlüssel. Klicke hier auf **API-Schlüssel erstellen**.
+4. Vergib hier einen Namen für deinen Schlüssel und bestätige die Erstellung.
+5. Dein API-Schlüssel wird nun einmalig im oberen Bereich angezeigt, speichere ihn gut.
+
+Dein API-Schlüssel kann direkt für API-Anfragen verwendet werden. Falls du deinen Schlüssel nicht mehr benötigst, kannst du diesen jederzeit löschen.
+
+Falls du weitere Fragen zur Public API hast oder Unterstützung dabei benötigst, dann [kontaktiere unser Support-Team](/de/contact).
+
+## Wie verwende ich die Public API?
+
+Du findest die vollständige Dokumentation aller API-Endpunkte unter: https://virtbase.com/api/docs
+
+Die Dokumentation ist ausschließlich in Englisch verfügbar.
+
+Alle Anfragen an die Enpunkte müssen mit dem Header `X-Virtbase-API-Key` erfolgen.
+
+## Gibt es ein Rate-Limit?
+
+Ja, du kannst mit einem API-Schlüssel maximal 60 Anfrage pro Minute (= 1 Anfrage pro Sekunde) an die API senden.
+
+Ein höheres Rate-Limit ist nur nach Genehmigung möglich. Kontaktiere dazu unseren Support.

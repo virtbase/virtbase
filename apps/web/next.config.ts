@@ -19,8 +19,9 @@
 import "@/env";
 
 import { withSentryConfig } from "@sentry/nextjs";
+import { ADMIN_DOMAIN, APP_DOMAIN, PUBLIC_DOMAIN } from "@virtbase/utils";
+import { createMDX } from "fumadocs-mdx/next";
 import type { NextConfig } from "next";
-
 import createNextIntlPlugin from "next-intl/plugin";
 import { contentSecurityPolicy } from "@/lib/csp";
 
@@ -89,7 +90,7 @@ const nextConfig: NextConfig = {
       has: [
         {
           type: "host",
-          value: "admin.virtbase.com",
+          value: new URL(ADMIN_DOMAIN).hostname,
         },
       ],
       headers: [
@@ -134,6 +135,30 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 2678400, // 31 days
   },
   poweredByHeader: false,
+  redirects: async () => [
+    {
+      source: "/legal",
+      has: [
+        {
+          type: "host",
+          value: new URL(PUBLIC_DOMAIN).hostname,
+        },
+      ],
+      destination: "/legal/notice",
+      permanent: true,
+    },
+    {
+      source: "/servers/:id",
+      has: [
+        {
+          type: "host",
+          value: new URL(APP_DOMAIN).hostname,
+        },
+      ],
+      destination: "/servers/:id/overview",
+      permanent: true,
+    },
+  ],
   transpilePackages: [
     "@virtbase/api",
     "@virtbase/auth",
@@ -164,7 +189,11 @@ const withNextIntl = createNextIntlPlugin({
 
 const configWithNextIntl = withNextIntl(nextConfig);
 
-const sentrifiedConfig = withSentryConfig(configWithNextIntl, {
+const withMDX = createMDX();
+
+const configWithMDX = withMDX(configWithNextIntl);
+
+const sentrifiedConfig = withSentryConfig(configWithMDX, {
   org: process.env.SENTRY_ORG,
   project: process.env.SENTRY_PROJECT,
   sentryUrl: process.env.SENTRY_URL,
@@ -181,6 +210,6 @@ const sentrifiedConfig = withSentryConfig(configWithNextIntl, {
 
 const finalConfig = process.env.NEXT_PUBLIC_SENTRY_DSN
   ? sentrifiedConfig
-  : configWithNextIntl;
+  : configWithMDX;
 
 export default finalConfig;

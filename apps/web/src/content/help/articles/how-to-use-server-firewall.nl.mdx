@@ -1,0 +1,55 @@
+---
+title: Hoe gebruik ik de firewall op mijn Virtbase server?
+description: Ontdek hoe je de firewall op je server kunt configureren.
+category: overview
+keywords: [firewall, beveiliging, poort]
+---
+
+Met de stateless firewall van Virtbase kun je je server nog beter beveiligen. Je kunt met je eigen regels inkomende en uitgaande verzoeken naar en van je server gericht filteren.
+
+Je hebt daarbij de opties **Accepteren**, **Verwerpen** en **Weigeren** tot je beschikking.
+
+Standaard zijn alle inkomende en uitgaande verbindingen ingesteld op **Accepteren**. Je moet dit aanpassen aan je individuele behoeften.
+
+## Hoe maak ik firewallregels aan?
+
+Ga als volgt te werk om een nieuwe firewallregel aan te maken:
+
+1. Ga naar je **server** in het [klantenportaal](https://app.virtbase.com/servers).
+2. Klik in het navigatiemenu op **Firewall**.
+3. Je ziet nu een overzicht met je reeds aangemaakte firewallregels. Klik rechtsboven op **+**.
+4. Hier kun je de eigenschappen van je regel definiëren.
+
+![Opties van de firewallregel](/assets/static/articles/create-firewall-rule-dialog-nl.png)
+
+5. Zorg ervoor dat de regel actief is. Het kan enkele seconden duren voordat de regel op nieuwe verzoeken wordt toegepast.
+
+Als je nog vragen hebt over de firewall of hulp nodig hebt, neem dan [contact op met ons ondersteuningsteam](/nl/contact).
+
+## Wat betekenen de verwerkingsopties?
+
+**Accepteren**: het verzoek passeert de firewall. Een verzoek dat voldoet aan de eigenschappen van de regel wordt **toegestaan** en kan je server bereiken of verlaten.
+
+**Verwerpen**: de firewall **blokkeert** het verzoek **passief**. Er wordt geen antwoord verzonden of het verzoek krijgt een time-out. 
+
+**Weigeren**: de firewall **blokkeert** het verzoek **actief**. Er wordt een “Toegang geweigerd”-antwoord verzonden (Connection refused).
+
+Wij raden aan om bij een blokkering altijd de modus **Verwerpen** te gebruiken. Anders kan een mogelijke aanvaller vaststellen dat de geblokkeerde poort op je server wordt gebruikt.
+Hierdoor kunnen conclusies worden getrokken over de gebruikte diensten.
+
+Met de methode **Verwerpen** kan niet worden achterhaald welke poorten in gebruik zijn.
+
+## In welke volgorde worden de regels verwerkt?
+
+Actieve firewallregels worden van boven naar beneden verwerkt. Zodra een regel van toepassing is op het verzoek, wordt deze toegepast en wordt de verdere verwerking gestopt.
+
+Inactieve firewallregels hebben geen invloed op verzoeken. Deze worden tijdens de verwerking genegeerd.
+
+Houd daarom rekening met de volgorde van de regels. Wij raden u deze volgorde aan:
+1. Begin eerst met specifieke **WEIGER**-regels.
+2. Definieer vervolgens specifieke **TOESTA**-regels.
+3. Plaats algemene **WEIGEREN**-regels als laatste.
+
+De volgende afbeelding toont deze structuur voor inkomende regels:
+
+![Aanbevolen volgorde van firewallregels](/assets/static/articles/create-firewall-rule-example-nl.png)

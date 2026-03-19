@@ -1,0 +1,80 @@
+---
+title: Comment créer une sauvegarde de mon serveur Virtbase ?
+description: Découvrez comment sauvegarder votre serveur Virtbase à l'aide d'une sauvegarde
+category: overview
+keywords: [sauvegarde, backup, snapshot, serveur, récupération]
+---
+
+Pour éviter la perte de données importantes, il est essentiel d'effectuer des sauvegardes régulières de votre serveur.
+Les sauvegardes reflètent l'état complet de votre serveur à un moment précis et peuvent être restaurées à tout moment.
+
+Le nombre de points de sauvegarde disponibles dépend du forfait que vous avez choisi.
+
+## Comment créer une sauvegarde ?
+
+Suivez ces étapes pour créer une sauvegarde complète :
+
+<Hint>
+Pour des performances et une compatibilité maximales, nous recommandons d'installer le paquet `qemu-guest-agent`.
+Il est préinstallé par défaut dans tous nos systèmes d'exploitation.
+</Hint>
+
+1. Ouvrez votre **serveur** dans le [portail client](https://app.virtbase.com/servers).
+2. Cliquez sur **Sauvegardes** dans la barre de navigation.
+3. Vous verrez maintenant un aperçu de vos sauvegardes existantes. Cliquez sur **+ Créer une sauvegarde**.
+4. Ici, vous pouvez spécifier des options supplémentaires pour votre nouvelle sauvegarde. Les paramètres recommandés sont déjà présélectionnés. Donnez à votre sauvegarde un nom mémorable et activez la protection contre la suppression si nécessaire.
+
+![Options de création de sauvegarde](/assets/static/articles/create-backup-dialog-en.png)
+
+5. Cliquez sur **Créer une sauvegarde** pour démarrer le processus.
+
+Votre sauvegarde est en cours de création. La durée varie en fonction de l'espace de stockage que vous avez réservé et des performances de votre serveur. Cela ne devrait pas prendre plus de **5 minutes**.
+
+**Un seul processus de sauvegarde peut être lancé à la fois**.
+
+Vous pouvez suivre l'état actuel de la sauvegarde dans la liste des sauvegardes.
+
+Si vous avez d'autres questions sur le processus de sauvegarde ou si vous avez besoin d'aide, veuillez [contacter notre équipe d'assistance](/fr/contact).
+
+## Que signifient les options de sauvegarde ?
+
+**Nom** : C'est le nom de votre sauvegarde. Il s'affiche dans la liste des sauvegardes créées et sert à des fins d'organisation.
+Vous pouvez choisir n'importe quel nom, comme « Avant mise à jour », « Nouveau système d'exploitation » ou « État au JJ/MM/AAAA ».
+
+**Mode de sauvegarde** : Déterminez comment la sauvegarde est créée. Le mode que vous sélectionnez affecte la vitesse de la sauvegarde et l'état qui est sauvegardé.
+
+- **Snapshot** : Le serveur est sauvegardé pendant son fonctionnement. Par conséquent, tous les processus actifs et leur état sont également sauvegardés. Lorsque la sauvegarde est restaurée, les processus sont dans le même état qu'avant.
+- **Suspendre** : Le serveur est temporairement « gelé ». Tous les processus sont mis en pause et la sauvegarde est créée. Ce mode garantit que les processus actifs n'apportent pas de modifications supplémentaires au serveur. Votre serveur ne peut pas démarrer de nouveaux processus pendant la sauvegarde.
+- **Arrêter** : Le serveur est complètement arrêté avant le début du processus de sauvegarde. Le serveur est ensuite sauvegardé à l'état arrêté. Le serveur ne peut pas être démarré pendant la sauvegarde.
+
+Dans la plupart des cas, l'utilisation du mode **Snapshot** est suffisante. Si vous voulez être prudent, vous pouvez utiliser l'un des deux autres modes.
+
+**Protection contre la suppression** : Augmentez la sécurité de votre sauvegarde en activant la protection contre la suppression. La protection active contre la suppression empêche la suppression accidentelle de la sauvegarde.
+Vous devez d'abord désactiver la protection contre la suppression sur la sauvegarde terminée pour pouvoir la supprimer.
+
+## Quand dois-je faire une sauvegarde ?
+
+Il n'y a pas de règle exacte sur le moment où vous devez faire une sauvegarde. Il est de votre responsabilité de sauvegarder régulièrement vos données.
+
+Cependant, nous recommandons de créer une sauvegarde dans les situations suivantes :
+- Vous avez réinstallé le système d'exploitation de votre serveur ou souhaitez le faire
+- Vous souhaitez installer un nouveau logiciel non testé sur votre serveur
+- Vous mettez à jour le système d'exploitation de votre serveur vers une version plus récente
+- Vous souhaitez apporter des modifications majeures à la configuration de votre serveur
+
+Si une erreur se produit lors de ces événements, la sauvegarde vous permet d'annuler immédiatement les modifications.
+
+## Les sauvegardes sont-elles supprimées lors du changement de système d'exploitation ?
+
+Non, vos sauvegardes sont conservées jusqu'à ce que vous les supprimiez manuellement.
+Elles sont également conservées lors du changement de système d'exploitation, afin que vous puissiez revenir au système d'exploitation précédent.
+
+Notre système ne supprime les sauvegardes que si votre serveur n'a pas été renouvelé après l'expiration du terme.
+Dans ce cas, nous vous informerons plusieurs jours à l'avance avant qu'une sauvegarde ne soit supprimée.
+
+## Comment télécharger ma sauvegarde ?
+
+Pour des raisons de sécurité, il n'est actuellement pas possible de télécharger une sauvegarde directement depuis le portail client.
+
+Si vous avez besoin d'une copie de votre sauvegarde sous forme de fichier téléchargeable, veuillez [contacter notre équipe d'assistance](/fr/contact).
+

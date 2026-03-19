@@ -1,0 +1,56 @@
+---
+title: Wie verwende ich die Firewall bei meinem Virtbase Server?
+description: Erfahre, wie du die Firewall bei deinem Server konfigurieren kannst
+category: overview
+keywords: [Firewall, Sicherheit, Port]
+---
+
+Mit der stateless Firewall von Virtbase ist es möglich deinen Server weitergehend zu sichern. Du kannst mit eigenen Regeln gezielt ein- und ausgehende Anfragen zu und von deinem Server filtern.
+
+Dabei stehen dir die Optionen **Akzeptieren**, **Verwerfen** und **Ablehnen** zur Verfügung.
+
+Standardgemäß sind alle ein- und ausgehenden Verbindungen auf **Akzeptieren** gesetzt. Dies solltest du an deine individuellen Bedürfnisse anpassen.
+
+## Wie erstelle ich Firewall-Regeln?
+
+Um eine neue Firewall-Regel zu erstellen gehe wie folgt vor:
+
+1. Rufe deinen **Server** im [Kundenportal](https://app.virtbase.com/servers) auf.
+2. Klicke in der Navigation auf **Firewall**.
+3. Du siehst nun eine Übersicht mit deinen bereits erstellten Firewall-Regeln. Klicke oben rechts auf **+**.
+4. Hier kannst du die Eigenschaften deiner Regel definieren.
+
+![Optionen der Firewall-Regel](/assets/static/articles/create-firewall-rule-dialog-de.png)
+
+5. Stelle sicher, dass die Regel aktiv ist. Es kann ein paar Sekunden dauern, bis die Regel auf neue Anfragen angewendet wird.
+
+Falls du weitere Fragen zur Firewall hast oder Unterstützung dabei benötigst, dann [kontaktiere unser Support-Team](/de/contact).
+
+## Was bedeuten die Verarbeitungsoptionen?
+
+**Akzeptieren**: Die Anfrage passiert die Firewall. Eine Anfrage, welche die Eigenschaften der Regel erfüllt wird **erlaubt** und kann deinen Server erreichen bzw. ihn verlassen.
+
+**Verwerfen**: Die Firewall **blockiert** die Anfrage **passiv**. Es wird keine Antwort gesendet, bzw. die Anfrage erhält eine Zeitüberschreitung (Timeout). 
+
+**Ablehnen**: Die Firewall **blockiert** die Anfrage **aktiv**. Es wird eine "Zugriff verweigert" Antwort gesendet (Connection refused).
+
+Wir empfehlen bei einer Blockierung immer den Modus **Verwerfen** zu verwenden. Andernfalls kann ein möglicher Angreifer identifizieren, dass der blockierte Port auf deinem Server verwendet wird.
+Damit sind Rückschlüsse auf die verwendeten Dienste möglich.
+
+Mit der Methode **Verwerfen** kann man nicht erahnen, welche Ports in Verwendung sind.
+
+
+## In welcher Reihenfolge werden die Regeln bearbeitet?
+
+Aktive Firewall-Regeln werden von oben nach unten bearbeitet. Sobald eine Regel auf die Anfrage zutrifft wird sie angewendet und die weitere Verarbeitung wird gestoppt.
+
+Inaktive Firewall-Regeln haben keine Auswirkungen auf Anfragen. Diese werden bei der Verarbeitung ignoriert.
+
+Daher ist die Reihenfolge der Regeln zu beachten. Wir empfehlen dir diese Reihenfolge:
+1. Starte zuerst mit spezifischen **ABLEHNEN** Regeln.
+2. Definiere anschließend spezifische **ERLAUBEN** Regeln.
+3. Platziere allgemeine **ABLEHNEN** Regeln zum Schluss.
+
+Folgendes Bild zeigt diesen Aufbau für eingehende Regeln:
+
+![Empfohlene Reihenfolge von Firewall-Regeln](/assets/static/articles/create-firewall-rule-example-de.png)

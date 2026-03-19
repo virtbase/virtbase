@@ -1,0 +1,80 @@
+---
+title: Hoe maak ik een backup van mijn Virtbase server?
+description: Leer hoe je een backup maakt van je Virtbase server
+category: overview
+keywords: [backup, snapshot, server, herstel]
+---
+
+Om ervoor te zorgen dat er geen belangrijke gegevens verloren gaan, is het belangrijk om regelmatig backups van je server te maken.
+Backups geven de volledige status van je server op een specifiek moment weer en kunnen op elk moment worden hersteld.
+
+Het aantal beschikbare backuppunten hangt af van het pakket dat je hebt gekozen.
+
+## Hoe maak ik een backup?
+
+Volg deze stappen om een volledige backup te maken:
+
+<Hint>
+Voor maximale prestaties en compatibiliteit raden we aan om het `qemu-guest-agent` pakket te installeren.
+Dit is standaard voorgeïnstalleerd in al onze besturingssystemen.
+</Hint>
+
+1. Open je **server** in het [klantenportaal](https://app.virtbase.com/servers).
+2. Klik op **Backups** in de navigatiebalk.
+3. Je ziet nu een overzicht van je bestaande backups. Klik op **+ Backup maken**.
+4. Hier kun je extra opties voor je nieuwe backup opgeven. De aanbevolen instellingen zijn al voorgeselecteerd. Geef je backup een herkenbare naam en activeer indien nodig de verwijderbeveiliging.
+
+![Backup opties maken](/assets/static/articles/create-backup-dialog-en.png)
+
+5. Klik op **Backup maken** om het proces te starten.
+
+Je backup wordt nu gemaakt. De duur varieert afhankelijk van de opslagruimte die je hebt geboekt en de prestaties van je server. Het zou niet langer dan **5 minuten** moeten duren.
+
+**Er kan slechts één backupproces tegelijk worden gestart**.
+
+Je kunt de huidige status van de backup volgen in de lijst met backups.
+
+Als je nog vragen hebt over het backupproces of hulp nodig hebt, [neem dan contact op met ons supportteam](/nl/contact).
+
+## Wat betekenen de backup-opties?
+
+**Naam**: Dit is de naam van je backup. Deze wordt weergegeven in de lijst met gemaakte backups en wordt gebruikt voor organisatorische doeleinden.
+Je kunt elke naam kiezen die je wilt, zoals "Voor upgrade", "Nieuw besturingssysteem" of "Status op XX-XX-XXXX".
+
+**Backup-modus**: Bepaal hoe de backup wordt gemaakt. De modus die je selecteert beïnvloedt de snelheid van de backup en de status die wordt opgeslagen.
+
+- **Snapshot**: De server wordt tijdens het gebruik geback-upt. Hierdoor worden ook alle actieve processen en hun status opgeslagen. Wanneer de backup wordt hersteld, bevinden de processen zich in dezelfde staat als voorheen.
+- **Suspendeer**: De server wordt tijdelijk "bevroren". Alle processen worden gepauzeerd en de backup wordt gemaakt. Deze modus zorgt ervoor dat actieve processen geen verdere wijzigingen aan de server aanbrengen. Je server kan tijdens de backup geen nieuwe processen starten.
+- **Stop**: De server wordt volledig afgesloten voordat het backupproces start. De server wordt vervolgens in uitgeschakelde staat geback-upt. De server kan tijdens de backup niet worden gestart.
+
+In de meeste gevallen is het gebruik van de **Snapshot**-modus voldoende. Als je op veilig wilt spelen, kun je een van de andere twee modi gebruiken.
+
+**Verwijderbeveiliging**: Verhoog de beveiliging van je backup door verwijderbeveiliging te activeren. Actieve verwijderbeveiliging voorkomt onbedoelde verwijdering van de backup.
+Je moet dan eerst de verwijderbeveiliging op de voltooide backup deactiveren om deze te kunnen verwijderen.
+
+## Wanneer moet ik een backup maken?
+
+Er is geen exacte regel voor wanneer je een backup moet maken. Het is jouw verantwoordelijkheid om regelmatig een backup van je gegevens te maken.
+
+We raden echter aan om een backup te maken in de volgende situaties:
+- Je hebt het besturingssysteem van je server opnieuw geïnstalleerd of wilt dit doen
+- Je wilt nieuwe, ongeteste software op je server installeren
+- Je bent het besturingssysteem van je server aan het updaten naar een nieuwere versie
+- Je wilt grote wijzigingen aanbrengen in de configuratie van je server
+
+Als er tijdens deze gebeurtenissen een fout optreedt, zorgt de backup ervoor dat je de wijzigingen onmiddellijk ongedaan kunt maken.
+
+## Worden backups verwijderd bij het wisselen van besturingssysteem?
+
+Nee, je backups worden bewaard totdat je ze handmatig verwijdert.
+Ze worden ook bewaard bij het wisselen van besturingssysteem, zodat je terug kunt schakelen naar het vorige besturingssysteem.
+
+Ons systeem verwijdert alleen backups als je server niet is verlengd nadat de termijn is verlopen.
+In dit geval informeren we je meerdere dagen van tevoren voordat een backup wordt verwijderd.
+
+## Hoe download ik mijn backup?
+
+Om veiligheidsredenen is het momenteel niet mogelijk om een backup rechtstreeks vanuit het klantenportaal te downloaden.
+
+Als je een kopie van je backup nodig hebt in de vorm van een downloadbaar bestand, [neem dan contact op met ons supportteam](/nl/contact).
+

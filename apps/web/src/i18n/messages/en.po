@@ -6,6 +6,29 @@ msgstr ""
 "X-Generator: next-intl\n"
 "X-Crowdin-SourceKey: msgstr\n"
 
+#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:118
+#: src/app/(public)/[locale]/help/page.tsx:96
+msgid "tUmaeD"
+msgstr "All articles"
+
+#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:140
+#: src/app/(public)/[locale]/legal/[[...slug]]/page.tsx:137
+msgid "ZdCdo5"
+msgstr "Last updated: {date}"
+
+#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:179
+msgid "IAMn0B"
+msgstr "Still have questions? Contact us ↗"
+
+#: src/app/(public)/[locale]/help/page.tsx:46
+#: src/app/(public)/[locale]/help/page.tsx:90
+msgid "HtSDyc"
+msgstr "Help Center"
+
+#: src/app/(public)/[locale]/help/page.tsx:47
+msgid "PPnkha"
+msgstr "Find answers to all your Virtbase-related questions in one place with our comprehensive Help Center."
+
 #: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:33
 msgid "2znpSL"
 msgstr "Forgot password for {appName}"
@@ -72,17 +95,38 @@ msgstr "Reset your password for {appName}"
 msgid "tNqFr9"
 msgstr "Reset your password for your {appName} account."
 
-#: src/app/app.virtbase.com/(dashboard)/layout.tsx:59
-msgid "4XCigB"
-msgstr "Legal notice"
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx:41
+msgid "E+4Rfd"
+msgstr "Server not found"
 
-#: src/app/app.virtbase.com/(dashboard)/layout.tsx:71
-msgid "EBDrtq"
-msgstr "Terms of use"
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx:43
+msgid "bdn/TR"
+msgstr "The server you are looking for does not exist."
 
-#: src/app/app.virtbase.com/(dashboard)/layout.tsx:83
-msgid "cPwv2c"
-msgstr "Privacy policy"
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx:49
+msgid "43U065"
+msgstr "Go to servers"
+
+#: src/app/app.virtbase.com/(dashboard)/servers/error.tsx:53
+msgid "ox304v"
+msgstr "An error occurred"
+
+#: src/app/app.virtbase.com/(dashboard)/servers/error.tsx:55
+msgid "HkQfvt"
+msgstr "An unexpected error occurred while loading the server details."
+
+#: src/app/app.virtbase.com/(dashboard)/servers/error.tsx:59
+msgid "FazwRl"
+msgstr "Try again"
+
+#: src/app/app.virtbase.com/unauthorized.tsx:51
+msgid "srept4"
+msgstr "You are not authorized to access this page. Your session may have expired, please sign in again."
+
+#: src/app/app.virtbase.com/unauthorized.tsx:68
+#: src/features/account/components/authentication/user-sessions-list.tsx:151
+msgid "xXbJso"
+msgstr "Sign out"
 
 #: src/features/account/components/account-breadcrumb.tsx:41
 #: src/features/account/components/account-nav.tsx:40
@@ -211,10 +255,6 @@ msgstr "There are no active sessions. New logins will be displayed here."
 #: src/features/account/components/authentication/user-sessions-list.tsx:142
 msgid "nBinN2"
 msgstr "Signed in {date}"
-
-#: src/features/account/components/authentication/user-sessions-list.tsx:151
-msgid "xXbJso"
-msgstr "Sign out"
 
 #: src/features/account/components/authentication/user-sessions-list.tsx:160
 msgid "10IkTF"
@@ -409,6 +449,18 @@ msgstr "Confirm password"
 msgid "xl27nc"
 msgstr "Reset Password"
 
+#: src/ui/app-footer.tsx:37
+msgid "4XCigB"
+msgstr "Legal notice"
+
+#: src/ui/app-footer.tsx:49
+msgid "EBDrtq"
+msgstr "Terms of use"
+
+#: src/ui/app-footer.tsx:61
+msgid "cPwv2c"
+msgstr "Privacy policy"
+
 #: src/ui/app-sidebar-menu.tsx:40
 #: src/ui/nav-user.tsx:111
 msgid "hzSNj4"
@@ -480,6 +532,14 @@ msgstr "Highlight section"
 #: src/ui/feedback-button.tsx:46
 msgid "bemE3q"
 msgstr "Remove section"
+
+#: src/ui/fumadocs/fake-search-button.tsx:46
+msgid "dsIkSc"
+msgstr "Suchen"
+
+#: src/ui/fumadocs/table-of-contents.tsx:34
+msgid "TM7OHi"
+msgstr "On this page"
 
 #: src/ui/input-group-addons/random-password-addon.tsx:33
 msgid "gQLF4T"

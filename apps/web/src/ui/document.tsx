@@ -49,6 +49,7 @@ export default function Document({
           attribute="class"
           defaultTheme="dark"
           disableTransitionOnChange
+          enableSystem={false}
         >
           {children}
         </ThemeProvider>

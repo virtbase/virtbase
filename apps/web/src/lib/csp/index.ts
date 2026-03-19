@@ -142,18 +142,6 @@ const scalarApiReferencePolicy = {
   "frame-src": ["blob:"],
 } satisfies SecurityPolicyEntry;
 
-const facebookPixelPolicy = (
-  process.env.NEXT_PUBLIC_FACEBOOK_PIXEL_ID
-    ? {
-        "script-src": ["https://connect.facebook.net"],
-        "img-src": ["https://www.facebook.com"],
-        "connect-src": ["https://www.facebook.com"],
-        "frame-src": ["https://www.facebook.com"],
-        "form-action": ["https://www.facebook.com"],
-      }
-    : {}
-) satisfies SecurityPolicyEntry;
-
 export const contentSecurityPolicy = generateCSPHeader([
   defaultPolicy,
   vercelLivePolicy,
@@ -162,5 +150,4 @@ export const contentSecurityPolicy = generateCSPHeader([
   stripePolicy,
   noVNCPolicy,
   scalarApiReferencePolicy,
-  facebookPixelPolicy,
 ]);

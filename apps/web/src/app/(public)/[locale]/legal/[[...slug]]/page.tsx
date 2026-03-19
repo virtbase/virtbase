@@ -1,0 +1,145 @@
+/*
+ *   Copyright (c) 2026 Janic Bellmann
+ *
+ *   This program is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+import { cn } from "@virtbase/ui";
+import {
+  constructMetadata,
+  constructOpengraphUrl,
+  PUBLIC_DOMAIN,
+} from "@virtbase/utils";
+import { Step, Steps } from "fumadocs-ui/components/steps";
+import defaultMdxComponents from "fumadocs-ui/mdx";
+import type { Metadata } from "next";
+import { cacheLife, cacheTag } from "next/cache";
+import { notFound } from "next/navigation";
+import type { Locale } from "next-intl";
+import { getExtracted, getFormatter, setRequestLocale } from "next-intl/server";
+import { defaultLocale } from "@/i18n/config";
+import { legal } from "@/lib/source";
+import { TableOfContents } from "@/ui/fumadocs/table-of-contents";
+
+export async function generateStaticParams() {
+  return legal.getPages().map((page) => ({
+    locale: page.locale ?? defaultLocale,
+    slug: page.slugs,
+  }));
+}
+
+export async function generateMetadata({
+  params,
+}: PageProps<"/[locale]/legal/[[...slug]]">): Promise<Metadata> {
+  const { locale, slug } = await params;
+
+  const page = legal.getPage(slug, locale);
+
+  if (!page) {
+    notFound();
+  }
+
+  return constructMetadata({
+    title: page.data.title,
+    description: page.data.description,
+    canonicalUrl: PUBLIC_DOMAIN + page.url,
+    image: constructOpengraphUrl({
+      title: page.data.title,
+      subtitle: page.data.description,
+      slug: page.url,
+      theme: "dark",
+    }),
+  });
+}
+
+export default async function LegalPage({
+  params,
+}: {
+  params: Promise<{ locale: Locale; slug: string[] }>;
+}) {
+  "use cache";
+
+  cacheLife("max");
+  cacheTag("legal");
+
+  const { locale, slug } = await params;
+
+  setRequestLocale(locale);
+
+  const page = legal.getPage(slug, locale);
+  if (!page) {
+    notFound();
+  }
+
+  const format = await getFormatter({ locale });
+  const t = await getExtracted({
+    locale,
+  });
+
+  const lastModified = page.data.lastModified ?? new Date();
+
+  const MDX = page.data.body;
+
+  return (
+    <>
+      <div className="grid-section relative overflow-clip border-border border-b px-4 [.grid-section_~_&]:border-t-0">
+        <div className="relative z-0 mx-auto max-w-5xl border-border">
+          <div className="mask-[linear-gradient(transparent,var(--background))] pointer-events-none absolute inset-0 border-border border-x"></div>
+          <div className="relative mx-auto flex max-w-md flex-col items-center px-4 py-16 text-center">
+            <h1 className="mt-5 text-center font-medium text-4xl text-foreground sm:text-5xl sm:leading-[1.15]">
+              {page.data.title}
+            </h1>
+          </div>
+        </div>
+      </div>
+      <div className="grid-section relative overflow-clip border-border border-y px-4 [.grid-section_~_&]:border-t-0">
+        <div className="relative z-0 mx-auto max-w-5xl border-border border-x">
+          <div className="relative grid grid-cols-4 gap-10 bg-background p-8 sm:p-12 lg:gap-20">
+            <div className="col-span-4 md:col-span-3">
+              <article
+                className={cn(
+                  "prose prose-neutral dark:prose-invert prose-headings:relative w-full max-w-none prose-headings:scroll-mt-20",
+                  "prose-a:font-medium prose-a:text-muted-foreground prose-thead:text-lg prose-a:underline-offset-4 transition-all prose-a:hover:text-foreground",
+                  "prose-headings:prose-a:text-foreground prose-headings:prose-a:no-underline",
+                )}
+              >
+                <MDX
+                  components={{
+                    ...defaultMdxComponents,
+                    Steps,
+                    Step,
+                  }}
+                />
+              </article>
+            </div>
+            <div className="hidden md:block">
+              <div className="sticky top-20 flex-col">
+                <TableOfContents items={page.data.toc} />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="grid-section relative overflow-clip border-border border-y px-4 [.grid-section_~_&]:border-t-0">
+        <div className="relative z-0 mx-auto max-w-5xl border-border border-x py-10">
+          <p className="text-center text-muted-foreground text-sm">
+            {t("Last updated: {date}", {
+              date: format.dateTime(lastModified),
+            })}
+          </p>
+        </div>
+      </div>
+    </>
+  );
+}

@@ -1,0 +1,55 @@
+---
+title: How do I use the firewall on my Virtbase server?
+description: Learn how to configure the firewall on your server.
+category: overview
+keywords: [firewall, security, port]
+---
+
+With Virtbase's stateless firewall, you can further secure your server. You can use your own rules to filter incoming and outgoing requests to and from your server.
+
+The options **Accept**, **Drop**, and **Reject** are available.
+
+By default, all incoming and outgoing connections are set to **Accept**. You should adjust this to suit your individual needs.
+
+## How do I create firewall rules?
+
+To create a new firewall rule, proceed as follows:
+
+1. Open your **server** in the [customer portal](https://app.virtbase.com/servers).
+2. Click on **Firewall** in the navigation bar.
+3. You will now see an overview of your existing firewall rules. Click on **+** in the top right-hand corner.
+4. Here you can define the properties of your rule.
+
+![Firewall rule options](/assets/static/articles/create-firewall-rule-dialog-en.png)
+
+5. Ensure that the rule is active. It may take a few seconds for the rule to be applied to new requests.
+
+If you have any further questions about the firewall or need assistance, please [contact our support team](/en/contact).
+
+## What do the processing options mean?
+
+**Accept**: The request passes through the firewall. A request that meets the properties of the rule is **allowed** and can reach or leave your server.
+
+**Drop**: The firewall **passively blocks** the request. No response is sent, or the request times out. 
+
+**Reject**: The firewall **actively blocks** the request. A “connection refused” response is sent.
+
+We always recommend using the **Drop** mode for blocking. Otherwise, a potential attacker can identify that the blocked port is being used on your server.
+This allows conclusions to be drawn about the services being used.
+
+With the **Drop** method, it is not possible to guess which ports are in use.
+
+## In what order are the rules processed?
+
+Active firewall rules are processed from top to bottom. As soon as a rule applies to the request, it is applied and further processing is stopped.
+
+Inactive firewall rules have no effect on requests. They are ignored during processing.
+
+Therefore, the order of the rules must be observed. We recommend the following order:
+1. Start with specific **DENY** rules first.
+2. Then define specific **ALLOW** rules.
+3. Place general **DENY** rules at the end.
+
+The following image shows this structure for incoming rules:
+
+![Recommended order of firewall rules](/assets/static/articles/create-firewall-rule-example-en.png)

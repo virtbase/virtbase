@@ -1,0 +1,81 @@
+---
+title: Wie erstelle ich ein Backup von meinem Virtbase Server?
+description: Erfahre, wie du deinen Virtbase Server mit Hilfe eines Backups sichern kannst
+category: overview
+keywords: [Sicherung, Backup, Snapshot, Server, Wiederherstellung]
+---
+
+Damit keine wichtigen Daten verloren gehen, ist es wichtig regelmäßig Sicherungen deines Servers anzufertigen.
+Sicherungen bilden den kompletten Zustand deines Servers zu einem bestimmten Zeitpunkt ab und können jederzeit wiederhergestellt werden.
+
+Die Anzahl der verfügbaren Sicherungspunkte hängt von deinem gebuchten Paket ab.
+
+## Wie erstelle ich ein Backup?
+
+Befolge diese Schritte, um ein vollständiges Backup anzufertigen:
+
+<Hint>
+Für die maximale Performance und Kompatibilität wird empfohlen das Paket `qemu-guest-agent` zu installieren. 
+Es ist standardgemäß in jedem unserer Betriebssysteme vorinstalliert.
+</Hint>
+
+
+1. Rufe deinen **Server** im [Kundenportal](https://app.virtbase.com/servers) auf.
+2. Klicke in der Navigation auf **Backups**.
+3. Du siehst nun eine Übersicht mit deinen bereits erstellten Backups. Klicke hier auf **+ Backup erstellen**.
+4. Hier kannst du weitere Optionen für dein neues Backup festlegen. Die empfohlenen Einstellungen sind bereits vorausgewählt. Vergib einen einprägsamen Namen und aktiviere gegebenenfalls den Löschschutz.
+
+![Optionen zum Erstellen des Backups](/assets/static/articles/create-backup-dialog-de.png)
+
+5. Klicke auf **Backup erstellen** um den Prozess zu starten.
+
+Dein Backup wird nun erstellt. Je nach gebuchtem Speicherplatz und Leistung deines Servers variiert die Dauer. In der Regel sollte es nicht länger als **5 Minuten** dauern. 
+
+Es kann **nur ein Backup gleichzeitig** erstellt werden.
+
+Du kannst den aktuellen Status des Backups in der Liste der Backups verfolgen.
+
+Falls du weitere Fragen zum Backup-Prozess hast oder Unterstützung dabei benötigst, dann [kontaktiere unser Support-Team](/de/contact).
+
+## Was bedeuten die Backup-Optionen?
+
+**Name**: Das ist die Bezeichnung deines Backups. Sie wird in der Liste der erstellten Backups angezeigt und dient der Organisation. 
+Du kannst den Namen frei wählen, wie bspw. "Vor Upgrade", "Neues Betriebssystem" oder "Stand am XX.XX.XXXX".
+
+**Backup-Modus**: Bestimme, auf welche Art das Backup erstellt wird. Die Auswahl des Modus hat Auswirkungen auf die Geschwindigkeit des Backups und den Zustand, welcher gesichert wird.
+
+- **Snapshot**: Der Server wird während dem Betrieb gesichert. Folglich werden auch alle aktiven Prozesse und deren Zustand mit gesichert. Wenn das Backup wiederhergestellt wird, sind die Prozesse im gleichen Zustand wie zuvor.
+- **Suspendieren**: Der Server wird kurzzeitig "eingefroren". Alle Prozesse werden pausiert und das Backup wird erstellt. Dieser Modus stellt sicher, dass aktive Prozesse keine weiteren Änderungen am Server vornehmen. Während des Backups kann dein Server keine neuen Prozesse starten.
+- **Stoppen**: Der Server wird komplett heruntergefahren, bevor der Backup-Prozess startet. Anschließend wird der Server im ausgeschalteten Zustand gesichert. Während des Backups kann der Server nicht gestartet werden.
+
+In den meisten Fällen reicht die Verwendung des Modus **Snapshot**. Wenn du auf Nummer sicher gehen möchtest, dann kannst du einen der anderen beiden Modi verwenden.
+
+
+**Löschschutz**: Erhöhe die Sicherheit deines Backups, indem du den Löschschutz aktivierst. Ein aktiver Löschschutz verhindert die versehentliche Löschung des Backups.
+Du musst dann am fertigen Backup den Löschschutz zunächst wieder deaktivieren, um es zu löschen.
+
+## Wann sollte ich ein Backup anfertigen?
+
+Grundsätzlich gibt es keine genaue Regelung, wann du ein Backup anfertigen solltest. Es liegt in deiner Verantwortung deine Daten regelmäßig zu sichern.
+
+Wir empfehlen jedoch die Erstellung bei folgenden Ereignissen:
+- Du hast das Betriebssystem deines Servers neu installiert, oder willst dies tun
+- Du möchtest eine neue, ungetestete Software auf deinem Server installieren
+- Du aktualisierst das Betriebssystem deines Servers auf eine neuere Version
+- Du möchtest größere Änderungen an der Konfiguration deines Servers vornehmen
+
+Sollte bei diesen Ereignissen ein Fehler auftreten, so garantiert das Backup, dass du die Änderungen direkt wieder rückgängig machen kannst.
+
+## Werden Backups bei einem Wechsel des Betriebssystems gelöscht?
+
+Nein, deine Backups werden solange beibehalten, bis du sie manuell löschst. 
+Auch bei einem Wechsel des Betriebssystems bleiben diese erhalten, sodass du wieder auf das vorherige Betriebssystem zurück wechseln kannst.
+
+Unser System löscht Backups nur, wenn dein Server nach Ablauf der Laufzeit nicht mehr verlängert wurde.
+In diesem Fall informieren wir dich mehrere Tage vorab, bevor ein Backup gelöscht wird.
+
+## Wie ich mein Backup herunterladen?
+
+Aus sicherheitstechnischen Gründen ist es aktuell nicht möglich ein erstelltes Backup direkt über das Kundenportal herunterzuladen.
+
+Falls du eine Kopie deines Backups in Form einer herunterladbaren Datei benötigst, dann [kontaktiere unser Support-Team](/de/contact).

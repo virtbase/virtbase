@@ -1,0 +1,34 @@
+---
+title: Wie sicher ist Virtbase?
+description: Erfahre, welche Sicherheitsmaßnahmen Virtbase zum Schutz deiner Daten einsetzt
+category: overview
+keywords: [Sicherheit, Datenschutz, Verschlüsselung, Rechenzentrum, TPM]
+---
+
+Bei Virtbase hat die Sicherheit deiner Daten höchste Priorität. Vom Rechenzentrum bis zur Software setzen wir auf mehrere, voneinander unabhängige Schutzschichten, um ein durchgängig hohes Sicherheitsniveau zu gewährleisten.
+
+## Wie sind die Website und das Kundenportal geschützt?
+
+Unsere Website und das Kundenportal sind ausschließlich über verschlüsselte HTTPS-Verbindungen erreichbar. Die gesamte Kommunikation zwischen deinem Browser und unseren Systemen wird mit aktuellen TLS-Standards verschlüsselt, sodass Dritte keine Daten mitlesen können. Durch den Einsatz von HSTS (HTTP Strict Transport Security) wird zudem sichergestellt, dass dein Browser ausnahmslos verschlüsselte Verbindungen nutzt.
+
+Zum Schutz vor Cross-Site-Scripting (XSS) und anderen Angriffen setzen wir umfassende Security-Header ein. Dazu gehören unter anderem eine strikte Content-Security-Policy, eine Permission-Policy zur Einschränkung von Browser-Funktionen sowie weitere Schutzmaßnahmen auf HTTP-Ebene. Alle eingebundenen Skripte und Stylesheets werden zusätzlich mit SHA-384 Subresource Integrity abgesichert, sodass manipulierte Ressourcen vom Browser automatisch blockiert werden.
+
+Bei der Einbindung externer Inhalte gehen wir äußerst restriktiv vor. Nahezu alle Ressourcen — einschließlich Schriftarten, Skripte und Stylesheets — werden auf unserer eigenen Website gehostet. Dadurch minimieren wir Abhängigkeiten von Drittanbietern und reduzieren potenzielle Angriffsvektoren.
+
+Virtbase speichert keine Root-Passwörter deiner Server. Zugangsdaten werden ausschließlich bei der Ersteinrichtung einmalig angezeigt bzw. per E-Mail versendet und anschließend nicht in unseren Systemen hinterlegt.
+
+Darüber hinaus sichern wir das Kundenportal durch Maßnahmen wie Rate-Limiting und Web Application Firewalls ab, um unbefugte Zugriffe frühzeitig zu erkennen und zu blockieren.
+
+## Wie sind meine Server und deren Daten geschützt?
+
+Die Sicherheit beginnt beim Rechenzentrum selbst. Unsere Infrastruktur befindet sich in einem zertifizierten Rechenzentrum mit einem mehrstufigen physischen Sicherheitssystem — unbefugte Personen erhalten keinen Zutritt.
+
+Im Gegensatz zu vielen anderen Anbietern setzen wir zusätzlich auf eine erweiterte Boot-Sperre mit TPM sowie BIOS-Passwörter auf allen Hostsystemen. Damit wird sichergestellt, dass selbst bei physischem Zugang keine unautorisierte Manipulation der Systeme möglich ist.
+
+Darüber hinaus sind sämtliche Festplatten in unserem Ceph-Cluster mit einer bewährten LUKS2-Verschlüsselung gesichert. Deine Daten sind somit auch auf Speicherebene vollständig verschlüsselt und vor unbefugtem Zugriff geschützt.
+
+## Welche Daten werden verarbeitet?
+
+Eine vollständige Übersicht der Daten, die im Rahmen unserer Dienstleistungen verarbeitet werden, findest du in unserer [Datenschutzerklärung](/de/legal/privacy).
+
+Falls du weitere Fragen zum Thema Sicherheit oder Datenschutz hast, [kontaktiere unser Support-Team](/de/contact).

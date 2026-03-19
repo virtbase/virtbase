@@ -1,0 +1,34 @@
+---
+title: How secure is Virtbase?
+description: Learn about the security measures Virtbase uses to protect your data.
+category: overview
+keywords: [security, data protection, encryption, data center, TPM]
+---
+
+At Virtbase, the security of your data is our top priority. From the data center to the software, we rely on multiple, independent layers of protection to ensure a consistently high level of security.
+
+## How are the website and customer portal protected?
+
+Our website and customer portal are only accessible via encrypted HTTPS connections. All communication between your browser and our systems is encrypted using the latest TLS standards, so that third parties cannot read your data. The use of HSTS (HTTP Strict Transport Security) also ensures that your browser uses encrypted connections without exception.
+
+We use comprehensive security headers to protect against cross-site scripting (XSS) and other attacks. These include a strict content security policy, a permission policy to restrict browser functions, and other protective measures at the HTTP level. All integrated scripts and stylesheets are additionally secured with SHA-384 Subresource Integrity, so that manipulated resources are automatically blocked by the browser.
+
+We take an extremely restrictive approach to integrating external content. Nearly all resources—including fonts, scripts, and stylesheets—are hosted on our own website. This minimizes dependencies on third-party providers and reduces potential attack vectors.
+
+Virtbase does not store root passwords for your servers. Access data is only displayed once during the initial setup or sent by email and is not stored in our systems afterwards.
+
+In addition, we secure the customer portal with measures such as rate limiting and web application firewalls to detect and block unauthorized access at an early stage.
+
+## How are my servers and their data protected?
+
+Security begins at the data center itself. Our infrastructure is located in a certified data center with a multi-level physical security system — unauthorized persons are denied access.
+
+Unlike many other providers, we also use an extended boot lock with TPM and BIOS passwords on all host systems. This ensures that even with physical access, unauthorized manipulation of the systems is not possible.
+
+In addition, all hard drives in our Ceph cluster are secured with proven LUKS2 encryption. Your data is therefore also fully encrypted at the storage level and protected against unauthorized access.
+
+## What data is processed?
+
+A complete overview of the data processed as part of our services can be found in our [privacy policy](/en/legal/privacy).
+
+If you have any further questions about security or data protection, [contact our support team](/en/contact).
