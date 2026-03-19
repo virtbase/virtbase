@@ -16,26 +16,29 @@
  */
 
 import { cn } from "@virtbase/ui";
-import { SOCIALS } from "@/lib/socials";
+import { APP_NAME, APP_STORE_URL } from "@virtbase/utils";
+import NextImage from "next/image";
+import NextLink from "next/link";
+import { useLocale } from "next-intl";
 
-export function SocialsRow({
-  className,
-  ...props
-}: React.ComponentProps<"div">) {
+export function GetOnAppStore({ className }: { className?: string }) {
+  const locale = useLocale();
+
   return (
-    <div className={cn("flex items-center gap-3", className)} {...props}>
-      {SOCIALS.map(({ name, icon: Icon, href }) => (
-        <a
-          key={name}
-          href={href}
-          target="_blank"
-          rel="noreferrer"
-          className="group rounded-full p-1"
-        >
-          <span className="sr-only">{name}</span>
-          <Icon className="size-4 text-foreground transition-colors duration-75 hover:text-muted-foreground [&>svg]:text-foreground hover:[&>svg]:text-muted-foreground" />
-        </a>
-      ))}
-    </div>
+    <NextLink
+      href={APP_STORE_URL}
+      target="_blank"
+      prefetch={false}
+      className={cn("relative block aspect-3/1 h-10 w-fit shrink-0", className)}
+    >
+      <NextImage
+        src={`/assets/static/apple/pre_order_${locale}.svg`}
+        alt={`${APP_NAME} App`}
+        className="select-none object-contain"
+        fill
+        unoptimized
+        draggable={false}
+      />
+    </NextLink>
   );
 }

@@ -21,6 +21,8 @@ import { setRequestLocale } from "next-intl/server";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { locales } from "@/i18n/config";
 import Document from "@/ui/document";
+import { Footer } from "@/ui/footer";
+import { Nav } from "@/ui/nav";
 import { DefaultJsonLd } from "@/ui/seo/default-json-ld";
 
 export function generateStaticParams() {
@@ -43,9 +45,9 @@ export default async function LocaleLayout({
     <Document locale={locale}>
       <NextIntlClientProvider>
         <NuqsAdapter>
-          {/* <Nav className="max-w-5xl" /> */}
+          <Nav className="max-w-5xl" />
           {children}
-          {/* <Footer className="max-w-5xl border-0" locale={locale} /> */}
+          <Footer className="max-w-5xl border-0" locale={locale} />
         </NuqsAdapter>
       </NextIntlClientProvider>
       <DefaultJsonLd />

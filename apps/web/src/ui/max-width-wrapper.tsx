@@ -16,26 +16,18 @@
  */
 
 import { cn } from "@virtbase/ui";
-import { SOCIALS } from "@/lib/socials";
+import type { ReactNode } from "react";
 
-export function SocialsRow({
+export function MaxWidthWrapper({
   className,
-  ...props
-}: React.ComponentProps<"div">) {
+  children,
+}: {
+  className?: string;
+  children: ReactNode;
+}) {
   return (
-    <div className={cn("flex items-center gap-3", className)} {...props}>
-      {SOCIALS.map(({ name, icon: Icon, href }) => (
-        <a
-          key={name}
-          href={href}
-          target="_blank"
-          rel="noreferrer"
-          className="group rounded-full p-1"
-        >
-          <span className="sr-only">{name}</span>
-          <Icon className="size-4 text-foreground transition-colors duration-75 hover:text-muted-foreground [&>svg]:text-foreground hover:[&>svg]:text-muted-foreground" />
-        </a>
-      ))}
+    <div className={cn("mx-auto w-full max-w-7xl px-3 lg:px-10", className)}>
+      {children}
     </div>
   );
 }
