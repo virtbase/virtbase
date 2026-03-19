@@ -27,6 +27,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@virtbase/ui/sidebar";
+import { COOKIE_DOMAIN } from "@virtbase/utils";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import NextImage from "next/image";
@@ -61,7 +62,9 @@ export async function LocaleSwitcher() {
     "use server";
 
     const store = await cookies();
-    store.set(COOKIE_NAME, data.get("locale") as string);
+    store.set(COOKIE_NAME, data.get("locale") as string, {
+      domain: COOKIE_DOMAIN,
+    });
 
     revalidatePath("/app.virtbase.com");
     revalidatePath("/admin.virtbase.com");
