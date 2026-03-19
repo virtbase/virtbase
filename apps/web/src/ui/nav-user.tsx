@@ -95,7 +95,7 @@ export function NavUser() {
               <DropdownMenuLabel>
                 <div className="flex flex-col">
                   <span>{user.name}</span>
-                  <span className="font-normal text-muted-foreground">
+                  <span className="truncate font-normal text-muted-foreground">
                     {user.email}
                   </span>
                 </div>

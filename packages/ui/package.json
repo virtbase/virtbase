@@ -36,7 +36,9 @@
     "./hooks": "./src/hooks/index.ts",
     "./theme-provider": "./src/theme-provider.tsx",
     "./kbd": "./src/kbd.tsx",
-    "./motion": "./src/motion.ts"
+    "./motion": "./src/motion.ts",
+    "./switch": "./src/switch.tsx",
+    "./select": "./src/select.tsx"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",

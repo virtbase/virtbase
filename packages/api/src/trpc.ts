@@ -279,7 +279,7 @@ const serverMiddleware = authMiddleware.unstable_pipe(
               eq(servers.userId, ctx.userId),
             ),
           )
-          .innerJoin(proxmoxNodes, eq(servers.proxmoxNodeId, proxmoxNodes.id))
+          .innerJoin(proxmoxNodes, eq(proxmoxNodes.id, servers.proxmoxNodeId))
           .limit(1)
           .then(([row]) => row);
       },

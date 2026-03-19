@@ -45,9 +45,9 @@ export const paths = {
         getHref: (id: string) => `/users/${id}/overview`,
       },
     },
-    kvms: {
+    servers: {
       getHref: (params: { name?: string } = {}) => {
-        const basePath = "/kvms";
+        const basePath = "/servers";
 
         if (Object.keys(params).length === 0) {
           return basePath;

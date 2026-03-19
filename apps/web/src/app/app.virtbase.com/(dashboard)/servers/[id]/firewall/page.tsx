@@ -1,0 +1,34 @@
+/*
+ *   Copyright (c) 2026 Janic Bellmann
+ *
+ *   This program is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+import { constructMetadata } from "@virtbase/utils";
+import { FirewallOptionsRow } from "@/features/servers/firewall/components/firewall-options-row";
+
+export const metadata = constructMetadata({
+  title: "Firewall",
+  noIndex: true,
+});
+
+export default async function Page({
+  params,
+}: PageProps<"/app.virtbase.com/servers/[id]/firewall">) {
+  return (
+    <div className="grid auto-rows-min grid-cols-1 gap-4">
+      <FirewallOptionsRow promise={params.then(({ id }) => id)} />
+    </div>
+  );
+}
