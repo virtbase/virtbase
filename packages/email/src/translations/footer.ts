@@ -26,7 +26,6 @@ export const messages = {
     dontWantToGetTheseEmails: "Don't want to get these emails?",
     managePreferences: "Manage your email preferences",
     adjustNotificationSettings: "Adjust your notification settings",
-  
     managingDirector: "Managing Director",
     commercialRegister: "Commercial Register",
   },

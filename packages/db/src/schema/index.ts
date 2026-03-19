@@ -16,4 +16,13 @@
  */
 
 export * from "./auth";
+export * from "./datacenters";
+export * from "./proxmox-node-groups";
+export * from "./proxmox-nodes";
+export * from "./proxmox-template-groups";
+export * from "./proxmox-templates";
+export * from "./proxmox-templates-to-proxmox-nodes";
+export * from "./server-backups";
+export * from "./server-plans";
+export * from "./servers";
 export * from "./ssh-keys";
