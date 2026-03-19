@@ -3,6 +3,8 @@
 coveragePathIgnorePatterns = [
     # Fixtures
     "packages/api/src/router/__tests__/fixtures.ts",
+    # Static constants
+    "packages/utils/src/constants/**.ts",
     # Static zod schemas
     "packages/validators/src/**.ts",
     # Drizzle database schemas

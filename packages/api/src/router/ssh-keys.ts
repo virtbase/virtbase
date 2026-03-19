@@ -23,6 +23,7 @@ import type { ParsedPublicKey } from "@virtbase/utils";
 import {
   DEFAULT_PAGE,
   DEFAULT_PER_PAGE,
+  MAX_SSH_KEYS_PER_USER,
   parsePublicKey,
 } from "@virtbase/utils";
 import {
@@ -210,7 +211,7 @@ export const sshKeysRouter = createTRPCRouter({
 
       const created = await db.transaction(
         async (tx) => {
-          return tx
+          const inserted = await tx
             .insert(sshKeys)
             .values({
               // [!] Authorization: Link the SSH key to the current user
@@ -229,6 +230,21 @@ export const sshKeysRouter = createTRPCRouter({
             })
             .execute()
             .then(([row]) => row);
+
+          if (!inserted) {
+            throw new TRPCError({
+              code: "INTERNAL_SERVER_ERROR",
+            });
+          }
+
+          const count = await tx.$count(sshKeys, eq(sshKeys.userId, userId));
+          if (count > MAX_SSH_KEYS_PER_USER) {
+            throw new TRPCError({
+              code: "TOO_MANY_REQUESTS",
+            });
+          }
+
+          return inserted;
         },
         {
           accessMode: "read write",
@@ -236,11 +252,7 @@ export const sshKeysRouter = createTRPCRouter({
         },
       );
 
-      if (!created) {
-        throw new TRPCError({
-          code: "INTERNAL_SERVER_ERROR",
-        });
-      }
+      console.log(created, typeof created);
 
       return {
         ssh_key: created,

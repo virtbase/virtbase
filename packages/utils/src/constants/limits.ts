@@ -15,8 +15,4 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./cookies";
-export * from "./limits";
-export * from "./main";
-export * from "./pagination";
-export * from "./urls";
+export const MAX_SSH_KEYS_PER_USER = 100;

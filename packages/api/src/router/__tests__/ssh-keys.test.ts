@@ -27,6 +27,7 @@ import { TRPCError } from "@trpc/server";
 import { sshKeys, users } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
+import { MAX_SSH_KEYS_PER_USER } from "@virtbase/utils";
 import { appRouter } from "../../root";
 import { mockSession } from "./fixtures";
 
@@ -92,6 +93,27 @@ describe("sshKeys.create", () => {
 
     expect(createPromise).rejects.toThrow(TRPCError);
   });
+
+  test("it throws a too many requests error if the user has reached the maximum number of SSH keys", async () => {
+    // Create MAX_SSH_KEYS_PER_USER SSH keys for the test user
+    await testDb.insert(sshKeys).values(
+      Array.from({ length: MAX_SSH_KEYS_PER_USER }).map((_, i) => ({
+        userId: mockSession.user.id,
+        name: `Test Key ${i}`,
+        publicKey: mockPublicKey,
+        fingerprint: mockFingerprint,
+      })),
+    );
+
+    const createPromise = caller.sshKeys.create({
+      name: "Test Key",
+      public_key: mockPublicKey,
+    });
+
+    expect(createPromise).rejects.toThrow(
+      new TRPCError({ code: "TOO_MANY_REQUESTS" }),
+    );
+  });
 });
 
 describe("sshKeys.get", () => {
@@ -100,7 +122,7 @@ describe("sshKeys.get", () => {
       id: fakeId,
     });
 
-    expect(getPromise).rejects.toThrow(TRPCError);
+    expect(getPromise).rejects.toThrow(new TRPCError({ code: "NOT_FOUND" }));
   });
 
   test("it gets an existing SSH key", async () => {
@@ -180,7 +202,7 @@ describe("sshKeys.update", () => {
       name: "Updated Name",
     });
 
-    expect(updatePromise).rejects.toThrow(TRPCError);
+    expect(updatePromise).rejects.toThrow(new TRPCError({ code: "NOT_FOUND" }));
   });
 
   test("it updates an existing SSH key", async () => {
@@ -249,11 +271,11 @@ describe("sshKeys.delete", () => {
     expect(deleted).toBeUndefined();
 
     const getPromise = caller.sshKeys.get({ id: created.id });
-    expect(getPromise).rejects.toThrow(TRPCError);
+    expect(getPromise).rejects.toThrow(new TRPCError({ code: "NOT_FOUND" }));
   });
 
   test("it throws a not found error if the SSH key does not exist", () => {
     const deletePromise = caller.sshKeys.delete({ id: fakeId });
-    expect(deletePromise).rejects.toThrow(TRPCError);
+    expect(deletePromise).rejects.toThrow(new TRPCError({ code: "NOT_FOUND" }));
   });
 });
