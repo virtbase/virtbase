@@ -43,12 +43,12 @@
     "prepare": "husky"
   },
   "catalog": {
-    "@biomejs/biome": "^2.4.7",
+    "@biomejs/biome": "^2.4.8",
     "@tanstack/react-query": "^5.90.21",
     "@trpc/client": "^11.13.4",
     "@trpc/server": "^11.13.4",
     "@trpc/tanstack-react-query": "^11.13.4",
-    "@types/bun": "latest",
+    "@types/bun": "1.3.11",
     "typescript": "^5",
     "zod": "^4.3.6"
   },
@@ -60,7 +60,7 @@
     "dotenv-cli": "^11.0.0",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
-    "turbo": "^2.8.17"
+    "turbo": "^2.8.20"
   },
   "peerDependencies": {
     "typescript": "catalog:"
