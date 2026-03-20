@@ -15,11 +15,11 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./construct-metadata";
-export * from "./construct-opengraph-url";
-export * from "./generate-password";
-export * from "./get-gravatar-image";
-export * from "./map-proxmox-server-status";
-export * from "./parse-public-key";
-export * from "./server-state";
-export * from "./truncate";
+import * as z from "zod";
+
+export const ProxmoxTemplateSchema = z.object({
+  id: z.string().regex(/^temp_[A-Z0-9]{25}$/),
+  icon: z.url().nullable(),
+});
+
+export type ProxmoxTemplate = z.infer<typeof ProxmoxTemplateSchema>;

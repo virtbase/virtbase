@@ -70,7 +70,7 @@ beforeAll(async () => {
 
 describe("server.rename", () => {
   test("it throws an unauthorized error if the user is unauthenticated", async () => {
-    const resultPromise = unauthenticatedCaller.server.rename({
+    const resultPromise = unauthenticatedCaller.servers.rename({
       server_id: mockServer.id,
       name: "My server",
     });
@@ -81,7 +81,7 @@ describe("server.rename", () => {
   });
 
   test("it throws a bad request error if the server ID is invalid", async () => {
-    const resultPromise = caller.server.rename({
+    const resultPromise = caller.servers.rename({
       server_id: "invalid",
       name: "My server",
     });
@@ -92,7 +92,7 @@ describe("server.rename", () => {
   });
 
   test("it throws a not found error if the server does not exist", async () => {
-    const resultPromise = caller.server.rename({
+    const resultPromise = caller.servers.rename({
       server_id: mockServer.id,
       name: "My server",
     });
@@ -107,7 +107,7 @@ describe("server.rename", () => {
     await testDb.insert(proxmoxNodes).values(mockProxmoxNode);
     await testDb.insert(servers).values(mockServer);
 
-    const result = await caller.server.rename({
+    const result = await caller.servers.rename({
       server_id: mockServer.id,
       name: "My new server name",
     });

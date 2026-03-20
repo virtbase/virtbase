@@ -16,3 +16,9 @@
  */
 
 export const MAX_SSH_KEYS_PER_USER = 100;
+
+/**
+ * The number of days to keep the server data after
+ * a server was suspended.
+ */
+export const SERVER_DELETION_GRACE_PERIOD_DAYS = 5;

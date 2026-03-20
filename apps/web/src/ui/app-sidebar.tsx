@@ -32,9 +32,9 @@ import {
 import NextLink from "next/link";
 import { useExtracted } from "next-intl";
 import { AppSidebarMenu } from "@/ui/app-sidebar-menu";
-import FeedbackButton from "@/ui/feedback-button";
-import { LocaleSwitcher } from "@/ui/locale-switcher";
 import { NavUser } from "@/ui/nav-user";
+import FeedbackButton from "./feedback-button";
+import { LocaleSwitcher } from "./locale-switcher";
 
 export function AppSidebar() {
   const t = useExtracted();

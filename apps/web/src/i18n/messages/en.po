@@ -95,6 +95,19 @@ msgstr "Help Center"
 msgid "PPnkha"
 msgstr "Find answers to all your Virtbase-related questions in one place with our comprehensive Help Center."
 
+#: src/app/(public)/[locale]/page.tsx:43
+msgid "Wbc21W"
+msgstr "Virtbase - Hosting, but secure."
+
+#: src/app/(public)/[locale]/page.tsx:44
+#: src/app/(public)/[locale]/page.tsx:87
+msgid "nEWy6S"
+msgstr "Virtbase is the provider for secure server hosting. Maximum performance with minimal effort."
+
+#: src/app/(public)/[locale]/page.tsx:84
+msgid "BdEM9F"
+msgstr "Hosting, but secure."
+
 #: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:33
 msgid "2znpSL"
 msgstr "Forgot password for {appName}"
@@ -162,6 +175,14 @@ msgstr "Reset your password for {appName}"
 #: src/app/app.virtbase.com/(auth)/reset-password/page.tsx:34
 msgid "tNqFr9"
 msgstr "Reset your password for your {appName} account."
+
+#: src/app/app.virtbase.com/(dashboard)/page.tsx:36
+#: src/app/app.virtbase.com/(dashboard)/page.tsx:50
+#: src/ui/app-sidebar-menu.tsx:40
+#: src/ui/nav-user.tsx:111
+#: src/ui/nav.tsx:74
+msgid "hzSNj4"
+msgstr "Dashboard"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx:41
 msgid "E+4Rfd"
@@ -517,6 +538,178 @@ msgstr "Confirm password"
 msgid "xl27nc"
 msgstr "Reset Password"
 
+#: src/features/dashboard/components/latest-invoices-card.tsx:46
+msgid "15BgLW"
+msgstr "Latest Invoices"
+
+#: src/features/dashboard/components/latest-invoices-card.tsx:48
+msgid "VgBFI4"
+msgstr "Here you can see your latest invoices for direct download."
+
+#: src/features/dashboard/components/latest-invoices-card.tsx:57
+#: src/features/dashboard/components/latest-servers-card.tsx:57
+msgid "pFK6bJ"
+msgstr "View all"
+
+#: src/features/dashboard/components/latest-invoices-list.tsx:58
+msgid "QVIbFk"
+msgstr "No invoices"
+
+#: src/features/dashboard/components/latest-invoices-list.tsx:60
+msgid "GtDccr"
+msgstr "No invoices have been issued yet."
+
+#: src/features/dashboard/components/latest-invoices-list.tsx:83
+msgid "5q3qC0"
+msgstr "Download"
+
+#: src/features/dashboard/components/latest-servers-card.tsx:46
+msgid "DY6Cmc"
+msgstr "Latest Servers"
+
+#: src/features/dashboard/components/latest-servers-card.tsx:48
+msgid "2AizOe"
+msgstr "Here you can see your latest servers."
+
+#: src/features/dashboard/components/latest-servers-list.tsx:52
+msgid "fmSs/a"
+msgstr "No servers found"
+
+#: src/features/dashboard/components/latest-servers-list.tsx:54
+msgid "zuhonL"
+msgstr "No servers have been rented yet. New servers will be displayed here."
+
+#: src/features/dashboard/components/latest-servers-list.tsx:61
+msgid "SjCCH5"
+msgstr "Rent a server"
+
+#: src/features/dashboard/components/server-status-small.tsx:51
+msgid "KRtjzZ"
+msgstr "Expired (will be deleted {date})"
+
+#: src/features/dashboard/components/server-status-small.tsx:62
+msgid "oJsHQW"
+msgstr "Suspended"
+
+#: src/features/dashboard/components/server-status-small.tsx:68
+msgid "r9ELLA"
+msgstr "Installing..."
+
+#: src/features/dashboard/components/server-status-small.tsx:75
+msgid "vOjKW3"
+msgstr "Expiring (will be deleted {date})"
+
+#: src/features/dashboard/components/server-status-small.tsx:86
+msgid "Dnob31"
+msgstr "Operational"
+
+#: src/features/landing/components/advantages-row.tsx:44
+msgid "GTucMY"
+msgstr "Maximum privacy"
+
+#: src/features/landing/components/advantages-row.tsx:45
+msgid "IIN9F8"
+msgstr "With us, privacy comes first. No sharing with third parties, ever."
+
+#: src/features/landing/components/advantages-row.tsx:52
+msgid "daLPgg"
+msgstr "Genuine support"
+
+#: src/features/landing/components/advantages-row.tsx:53
+msgid "hnGR7B"
+msgstr "We offer human support around the clock, whenever you need it."
+
+#: src/features/landing/components/advantages-row.tsx:60
+msgid "uDrdrl"
+msgstr "DDoS protection included"
+
+#: src/features/landing/components/advantages-row.tsx:61
+msgid "TWNuCY"
+msgstr "Active DDoS protection keeps you online. No extra charges, ever."
+
+#: src/features/landing/components/advantages-row.tsx:68
+msgid "nVfA/q"
+msgstr "Modern customer portal"
+
+#: src/features/landing/components/advantages-row.tsx:69
+msgid "fQqAwd"
+msgstr "Efficiently manage your servers without hassle or frustration."
+
+#: src/features/landing/components/advantages-row.tsx:92
+#: src/features/landing/components/features-showcase.tsx:55
+#: src/features/landing/components/features-showcase.tsx:79
+msgid "TdTXXf"
+msgstr "Learn more"
+
+#: src/features/landing/components/features-showcase.tsx:45
+msgid "N2jrkQ"
+msgstr "Real-time server metrics"
+
+#: src/features/landing/components/features-showcase.tsx:48
+msgid "9mCvlG"
+msgstr "Our server metrics are updated in real-time, so you can always see the current status of your servers."
+
+#: src/features/landing/components/features-showcase.tsx:65
+msgid "S4NISm"
+msgstr "Stateless firewall"
+
+#: src/features/landing/components/features-showcase.tsx:68
+msgid "1s50w7"
+msgstr "With your own firewall rules, you can protect your server specifically. Each rule can be configured individually."
+
+#: src/features/landing/components/server-firewall-demo.tsx:42
+msgid "DZ2Koj"
+msgstr "Direction"
+
+#: src/features/landing/components/server-firewall-demo.tsx:53
+msgid "YDkqMJ"
+msgstr "Incoming"
+
+#: src/features/landing/components/server-firewall-demo.tsx:59
+msgid "QlsDcr"
+msgstr "Action"
+
+#: src/features/landing/components/server-firewall-demo.tsx:70
+#: src/features/servers/firewall/components/firewall-action-select.tsx:53
+msgid "VzIOKf"
+msgstr "Reject"
+
+#: src/features/landing/components/server-firewall-demo.tsx:77
+msgid "0QLzxo"
+msgstr "Protocol"
+
+#: src/features/landing/components/server-firewall-demo.tsx:89
+msgid "rqkHXK"
+msgstr "Source port"
+
+#: src/features/landing/components/server-firewall-demo.tsx:98
+msgid "WSxucy"
+msgstr "Destination port"
+
+#: src/features/landing/components/server-stats-demo.tsx:54
+msgid "tAnF0p"
+msgstr "Auslastung"
+
+#: src/features/landing/components/server-stats-demo.tsx:65
+msgid "QgBuiV"
+msgstr "CPU"
+
+#: src/features/landing/components/server-stats-demo.tsx:88
+msgid "LjglgP"
+msgstr "RAM"
+
+#: src/features/landing/components/server-stats-demo.tsx:108
+msgid "RvHfbi"
+msgstr "Festplatte"
+
+#: src/features/landing/components/server-stats-demo.tsx:130
+msgid "4gUCGX"
+msgstr "Netzwerk"
+
+#: src/features/landing/components/server-stats-demo.tsx:164
+msgid "If9lVS"
+msgstr "Letzter Neustart"
+
 #: src/features/servers/components/server-nav.tsx:42
 #: src/ui/app-sidebar.tsx:62
 msgid "9uOFF3"
@@ -554,10 +747,6 @@ msgstr "Accept"
 msgid "j8RTUO"
 msgstr "Drop"
 
-#: src/features/servers/firewall/components/firewall-action-select.tsx:53
-msgid "VzIOKf"
-msgstr "Reject"
-
 #: src/features/servers/firewall/components/firewall-options-row.tsx:45
 msgid "tzMNF3"
 msgstr "Status"
@@ -593,12 +782,6 @@ msgstr "Terms of use"
 #: src/ui/app-footer.tsx:61
 msgid "cPwv2c"
 msgstr "Privacy policy"
-
-#: src/ui/app-sidebar-menu.tsx:40
-#: src/ui/nav-user.tsx:111
-#: src/ui/nav.tsx:74
-msgid "hzSNj4"
-msgstr "Dashboard"
 
 #: src/ui/app-sidebar-menu.tsx:45
 msgid "QOxktD"

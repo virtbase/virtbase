@@ -162,7 +162,7 @@ describe("server.firewall.options.get", () => {
       }),
     );
 
-    const result = await caller.server.firewall.options.get({
+    const result = await caller.servers.firewall.options.get({
       server_id: mockServer.id,
     });
 
@@ -183,7 +183,7 @@ describe("server.firewall.options.update", () => {
 
     mock.module("../../../proxmox", () => createProxmoxMock({ $put }));
 
-    const result = await caller.server.firewall.options.update({
+    const result = await caller.servers.firewall.options.update({
       server_id: mockServer.id,
       policy_in: "DROP",
       policy_out: "ACCEPT",
@@ -223,7 +223,7 @@ describe("server.firewall.rules.get", () => {
       }),
     );
 
-    const result = await caller.server.firewall.rules.get({
+    const result = await caller.servers.firewall.rules.get({
       server_id: mockServer.id,
     });
 
@@ -256,7 +256,7 @@ describe("server.firewall.rules.create", () => {
       }),
     );
 
-    await caller.server.firewall.rules.create({
+    await caller.servers.firewall.rules.create({
       server_id: mockServer.id,
       enabled: true,
       direction: "in",
@@ -296,7 +296,7 @@ describe("server.firewall.rules.delete", () => {
       }),
     );
 
-    await caller.server.firewall.rules.delete({
+    await caller.servers.firewall.rules.delete({
       server_id: mockServer.id,
       pos: 3,
       digest: "rule-digest",
@@ -319,7 +319,7 @@ describe("server.firewall.rules.update", () => {
       }),
     );
 
-    await caller.server.firewall.rules.update({
+    await caller.servers.firewall.rules.update({
       server_id: mockServer.id,
       pos: 2,
       action: "DROP",
@@ -348,7 +348,7 @@ describe("server.firewall.rules.move", () => {
       }),
     );
 
-    await caller.server.firewall.rules.move({
+    await caller.servers.firewall.rules.move({
       server_id: mockServer.id,
       pos: 5,
       moveto: 2,
@@ -369,7 +369,7 @@ describe("server.firewall.rules.move", () => {
       }),
     );
 
-    await caller.server.firewall.rules.move({
+    await caller.servers.firewall.rules.move({
       server_id: mockServer.id,
       pos: 2,
       moveto: 5,

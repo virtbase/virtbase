@@ -15,8 +15,70 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import type { SortableColumns } from "@virtbase/db/utils";
 import * as z from "zod";
+import { PaginationSchema } from "../pagination";
+import { ProxmoxTemplateSchema } from "../proxmox-template";
+import { preprocessQueryArray } from "../utils";
+import type { Server } from "./shared";
 import { ServerSchema } from "./shared";
+
+const sortSchema = z
+  .enum<SortableColumns<Server>>([
+    "id",
+    "id:asc",
+    "id:desc",
+    "name",
+    "name:asc",
+    "name:desc",
+  ])
+  .array()
+  .default(["id:asc"]);
+
+const expandSchema = z.enum(["template"]).array().default([]);
+
+export const ListServersInputSchema = z.object({
+  // Required for trpc-to-openapi to work correctly
+  sort: z.preprocess(
+    preprocessQueryArray,
+    sortSchema,
+  ) as unknown as typeof sortSchema,
+  expand: z.preprocess(
+    preprocessQueryArray,
+    expandSchema,
+  ) as unknown as typeof expandSchema,
+  name: ServerSchema.shape.name.optional(),
+  page: PaginationSchema.shape.page,
+  per_page: PaginationSchema.shape.per_page,
+});
+
+export const ListServersOutputSchema = z.object({
+  servers: z.array(
+    ServerSchema.pick({
+      id: true,
+      name: true,
+      installed_at: true,
+      suspended_at: true,
+      terminates_at: true,
+    }).extend({
+      template: z
+        .union([
+          ProxmoxTemplateSchema.shape.id,
+          ProxmoxTemplateSchema.pick({
+            id: true,
+            icon: true,
+          }).meta({
+            description:
+              "Only present if the `template` expand is included. The current template of the server.",
+          }),
+        ])
+        .nullable(),
+    }),
+  ),
+  meta: z.object({
+    pagination: PaginationSchema,
+  }),
+});
 
 export const RenameServerInputSchema = z.object({
   server_id: ServerSchema.shape.id,

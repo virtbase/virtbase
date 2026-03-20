@@ -38,7 +38,8 @@
     "./kbd": "./src/kbd.tsx",
     "./motion": "./src/motion.ts",
     "./switch": "./src/switch.tsx",
-    "./select": "./src/select.tsx"
+    "./select": "./src/select.tsx",
+    "./progress": "./src/progress.tsx"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",

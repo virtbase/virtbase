@@ -19,4 +19,10 @@ import * as z from "zod";
 
 export const ServerSchema = z.object({
   id: z.string().regex(/^kvm_[A-Z0-9]{25}$/),
+  name: z.string().min(1).max(255),
+  installed_at: z.date().nullable(),
+  suspended_at: z.date().nullable(),
+  terminates_at: z.date().nullable(),
 });
+
+export type Server = z.infer<typeof ServerSchema>;

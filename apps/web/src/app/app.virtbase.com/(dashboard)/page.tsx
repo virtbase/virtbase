@@ -15,8 +15,54 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Button } from "@virtbase/ui/button";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbList,
+  BreadcrumbPage,
+} from "@virtbase/ui/breadcrumb";
+import { constructMetadata } from "@virtbase/utils";
+import type { Metadata } from "next";
+import { useExtracted } from "next-intl";
+import { getExtracted } from "next-intl/server";
+import { LatestInvoicesCard } from "@/features/dashboard/components/latest-invoices-card";
+import { LatestServersCard } from "@/features/dashboard/components/latest-servers-card";
+import DashboardLayout from "@/ui/layout/dashboard-layout";
 
-export default function Home() {
-  return <Button>Click me</Button>;
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getExtracted();
+
+  return constructMetadata({
+    title: t("Dashboard"),
+    noIndex: true,
+  });
+}
+
+export default function Page() {
+  const t = useExtracted();
+
+  return (
+    <DashboardLayout
+      leftSide={
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbPage>{t("Dashboard")}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      }
+    >
+      <div className="grid flex-1 auto-rows-max gap-4">
+        <div className="grid gap-4 lg:grid-cols-[1fr_250px] xl:grid-cols-4">
+          <div className="grid auto-rows-max items-start gap-4 lg:col-span-2">
+            <LatestServersCard />
+          </div>
+          <div className="grid auto-rows-max items-start gap-4 lg:col-span-2">
+            <LatestInvoicesCard />
+          </div>
+        </div>
+      </div>
+    </DashboardLayout>
+  );
 }
