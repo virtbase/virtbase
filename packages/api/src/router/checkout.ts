@@ -119,9 +119,6 @@ export const checkoutRouter = createTRPCRouter({
 
       const customerId = await getOrCreateStripeCustomer(userId);
 
-      switch (input.type) {
-      }
-
       try {
         const customerSessionPromise = stripe.customerSessions.create({
           customer: customerId,
