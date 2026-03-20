@@ -16,31 +16,20 @@
  */
 
 import { Button } from "@virtbase/ui/button";
-import { cacheLife, cacheTag } from "next/cache";
-import type { Locale } from "next-intl";
-import { getExtracted, setRequestLocale } from "next-intl/server";
+import { getExtracted } from "next-intl/server";
 import { IntlLink } from "@/i18n/navigation.public";
 import ServerFirewallDemo from "./server-firewall-demo";
 import ServerStatsDemo from "./server-stats-demo";
 
-export async function FeaturesShowcase({ locale }: { locale: Locale }) {
-  "use cache";
-
-  cacheTag("features-showcase");
-  cacheLife("max");
-
-  setRequestLocale(locale);
-
-  const t = await getExtracted({
-    locale,
-  });
+export async function FeaturesShowcase() {
+  const t = await getExtracted();
 
   return (
     <div className="grid grid-cols-1 border-grid-border md:grid-cols-2">
       <div className="contents divide-grid-border max-md:divide-y md:divide-x">
         <div className="relative flex flex-col gap-10 px-4 py-6 sm:px-10 sm:py-14">
           <div className="mask-[linear-gradient(black_50%,transparent)] relative h-72 overflow-hidden px-0 sm:h-[290px] lg:px-0">
-            <ServerStatsDemo inert locale={locale} />
+            <ServerStatsDemo inert />
           </div>
           <div className="relative flex flex-col text-base">
             <h3 className="font-semibold">{t("Real-time server metrics")}</h3>

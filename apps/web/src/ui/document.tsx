@@ -19,6 +19,8 @@ import "@/styles/globals.css";
 
 import { cn } from "@virtbase/ui";
 import { ThemeProvider } from "@virtbase/ui/theme-provider";
+import { constructMetadata } from "@virtbase/utils";
+import type { Metadata, Viewport } from "next";
 
 import { Geist, Geist_Mono } from "next/font/google";
 
@@ -31,6 +33,19 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-geist-mono",
 });
+
+export const defaultViewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  userScalable: true,
+  colorScheme: "dark light",
+  themeColor: [
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+  ],
+};
+
+export const defaultMetadata: Metadata = constructMetadata();
 
 export default function Document({
   children,

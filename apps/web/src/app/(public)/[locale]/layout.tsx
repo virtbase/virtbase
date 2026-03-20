@@ -15,9 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { notFound } from "next/navigation";
-import { hasLocale, NextIntlClientProvider } from "next-intl";
-import { setRequestLocale } from "next-intl/server";
+import { NextIntlClientProvider } from "next-intl";
+import { getLocale } from "next-intl/server";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { locales } from "@/i18n/config";
 import Document from "@/ui/document";
@@ -25,29 +24,27 @@ import { Footer } from "@/ui/footer";
 import { Nav } from "@/ui/nav";
 import { DefaultJsonLd } from "@/ui/seo/default-json-ld";
 
+export {
+  defaultMetadata as metadata,
+  defaultViewport as viewport,
+} from "@/ui/document";
+
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
 export default async function LocaleLayout({
   children,
-  params,
 }: LayoutProps<"/[locale]">) {
-  const { locale } = await params;
-
-  if (!hasLocale(locales, locale)) {
-    notFound();
-  }
-
-  setRequestLocale(locale);
+  const locale = await getLocale();
 
   return (
     <Document locale={locale}>
-      <NextIntlClientProvider>
+      <NextIntlClientProvider locale={locale}>
         <NuqsAdapter>
           <Nav className="max-w-5xl" />
           {children}
-          <Footer className="max-w-5xl border-0" locale={locale} />
+          <Footer className="max-w-5xl border-0" />
         </NuqsAdapter>
       </NextIntlClientProvider>
       <DefaultJsonLd />

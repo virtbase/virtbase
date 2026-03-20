@@ -25,10 +25,9 @@ import {
   PUBLIC_DOMAIN,
 } from "@virtbase/utils";
 import type { Metadata } from "next";
-import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import type { Locale } from "next-intl";
-import { getExtracted, setRequestLocale } from "next-intl/server";
+import { getExtracted, getLocale } from "next-intl/server";
 import { ElementsProvider } from "@/features/checkout/components/elements-provider";
 import { BlockWrapper } from "@/ui/block-wrapper";
 
@@ -57,18 +56,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  "use cache";
+  const locale = await getLocale();
+  const id = (await params).id;
 
-  cacheLife("max");
-  cacheTag("checkout");
-
-  const { locale, id } = await params;
-
-  setRequestLocale(locale);
-
-  const t = await getExtracted({
-    locale,
-  });
+  const t = await getExtracted();
 
   const plan = await db.transaction(
     async (tx) =>
@@ -111,22 +102,12 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: PageProps) {
-  "use cache";
-
-  cacheLife("max");
-  cacheTag("checkout");
-
-  const { locale, id: planId } = await params;
-
-  setRequestLocale(locale);
-
+  const planId = (await params).id;
   if (planId === "__placeholder__") {
     notFound();
   }
 
-  const t = await getExtracted({
-    locale,
-  });
+  const t = await getExtracted();
 
   return (
     <main>

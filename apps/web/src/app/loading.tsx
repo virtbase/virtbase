@@ -15,22 +15,6 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { constructMetadata } from "@virtbase/utils";
-import type { Metadata, Viewport } from "next";
-
-export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  userScalable: true,
-  colorScheme: "dark light",
-  themeColor: [
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-  ],
-};
-
-export const metadata: Metadata = constructMetadata();
-
-export default function RootLayout({ children }: LayoutProps<"/">) {
-  return children;
+export default function Loading() {
+  return null;
 }

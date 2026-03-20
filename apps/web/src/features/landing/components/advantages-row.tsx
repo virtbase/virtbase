@@ -22,22 +22,11 @@ import {
   LucideNetwork,
   LucideShield,
 } from "@virtbase/ui/icons";
-import { cacheLife, cacheTag } from "next/cache";
-import type { Locale } from "next-intl";
-import { getExtracted, setRequestLocale } from "next-intl/server";
+import { getExtracted } from "next-intl/server";
 import { IntlLink } from "@/i18n/navigation.public";
 
-export async function AdvantagesRow({ locale }: { locale: Locale }) {
-  "use cache";
-
-  cacheTag("advantages-row");
-  cacheLife("max");
-
-  setRequestLocale(locale);
-
-  const t = await getExtracted({
-    locale,
-  });
+export async function AdvantagesRow() {
+  const t = await getExtracted();
 
   const items = [
     {
