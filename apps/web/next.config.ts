@@ -23,6 +23,7 @@ import { ADMIN_DOMAIN, APP_DOMAIN, PUBLIC_DOMAIN } from "@virtbase/utils";
 import { createMDX } from "fumadocs-mdx/next";
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
+import { withWorkflow } from "workflow/next";
 import { contentSecurityPolicy } from "@/lib/csp";
 
 const nextConfig: NextConfig = {
@@ -225,4 +226,8 @@ const finalConfig = process.env.NEXT_PUBLIC_SENTRY_DSN
   ? sentrifiedConfig
   : configWithMDX;
 
-export default finalConfig;
+export default withWorkflow(finalConfig, {
+  workflows: {
+    lazyDiscovery: true,
+  },
+});

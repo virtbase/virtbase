@@ -47,4 +47,17 @@ test.describe("meta", () => {
       expect(response?.headers()["content-type"]).toContain("text/plain");
     }
   });
+
+  test("it should render the custom not found page", async ({ page }) => {
+    const response = await page.goto(
+      `${PUBLIC_DOMAIN}/some-random-non-existent-page`,
+      { waitUntil: "domcontentloaded" },
+    );
+
+    expect(response?.status()).toBe(404);
+
+    const heading = page.getByTestId("empty-title");
+    await expect(heading).toBeVisible();
+    await expect(heading).toHaveText("404");
+  });
 });

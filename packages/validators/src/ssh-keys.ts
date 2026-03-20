@@ -29,7 +29,7 @@ const MD5_FINGERPRINT_REGEX = /^[a-f0-9]{2}(:[a-f0-9]{2}){15}$/;
 const PUBLIC_KEY_REGEX =
   /^(ssh-dss AAAAB3NzaC1kc3|ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNT|ecdsa-sha2-nistp384 AAAAE2VjZHNhLXNoYTItbmlzdHAzOD|ecdsa-sha2-nistp521 AAAAE2VjZHNhLXNoYTItbmlzdHA1Mj|sk-ecdsa-sha2-nistp256@openssh.com AAAAInNrLWVjZHNhLXNoYTItbmlzdHAyNTZAb3BlbnNzaC5jb2|ssh-ed25519 AAAAC3NzaC1lZDI1NTE5|sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29t|ssh-rsa AAAAB3NzaC1yc2)[0-9A-Za-z+/]+[=]{0,3}(\s.*)?$/;
 
-const SSHKeySchema = z.object({
+export const SSHKeySchema = z.object({
   id: z
     .string()
     .regex(/^sshkey_[A-Z0-9]{25}$/)

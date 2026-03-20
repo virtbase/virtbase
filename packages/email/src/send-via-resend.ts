@@ -84,7 +84,10 @@ const resendEmailForOptions = (
 };
 
 // Send email using Resend (Recommended for production)
-export const sendEmailViaResend = async (opts: ResendEmailOptions) => {
+export const sendEmailViaResend = async (
+  opts: ResendEmailOptions,
+  settings?: { idempotencyKey?: string },
+) => {
   if (!resend) {
     console.info(
       "RESEND_API_KEY is not set in the .env. Skipping sending email.",
@@ -92,8 +95,12 @@ export const sendEmailViaResend = async (opts: ResendEmailOptions) => {
     return;
   }
 
-  // TODO: Consider adding idempotency key
-  return await resend.emails.send(resendEmailForOptions(opts));
+  const idempotencyKey = settings?.idempotencyKey || undefined;
+
+  return await resend.emails.send(
+    resendEmailForOptions(opts),
+    idempotencyKey ? { idempotencyKey } : undefined,
+  );
 };
 
 export const sendBatchEmailViaResend = async (

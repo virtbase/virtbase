@@ -20,10 +20,10 @@ import type { RouterInputs, RouterOutputs } from "@virtbase/api";
 import { useTRPC } from "@/lib/trpc/react";
 
 export type GetFirewallOptionsInput =
-  RouterInputs["server"]["firewall"]["options"]["get"];
+  RouterInputs["servers"]["firewall"]["options"]["get"];
 
 export type GetFirewallOptionsOutput =
-  RouterOutputs["server"]["firewall"]["options"]["get"];
+  RouterOutputs["servers"]["firewall"]["options"]["get"];
 
 interface GetFirewallOptions extends GetFirewallOptionsInput {
   queryConfig?: never;
@@ -36,6 +36,6 @@ export const useFirewallOptions = ({
   const trpc = useTRPC();
 
   return useSuspenseQuery(
-    trpc.server.firewall.options.get.queryOptions(input, queryConfig),
+    trpc.servers.firewall.options.get.queryOptions(input, queryConfig),
   );
 };

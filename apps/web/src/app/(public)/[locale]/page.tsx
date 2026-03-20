@@ -93,8 +93,10 @@ export default async function Page({
       <BlockWrapper>
         <FeaturesShowcase locale={locale} />
       </BlockWrapper>
-      <BlockWrapper>
-        <AdvantagesRow locale={locale} />
+      <BlockWrapper className="py-4">
+        <div className="border-y">
+          <AdvantagesRow locale={locale} />
+        </div>
       </BlockWrapper>
       <BlockWrapper>
         <OperatingSystemShowcase />

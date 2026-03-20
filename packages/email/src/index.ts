@@ -23,9 +23,12 @@ import type {
 import { sendViaNodeMailer } from "./send-via-nodemailer";
 import { sendBatchEmailViaResend, sendEmailViaResend } from "./send-via-resend";
 
-export const sendEmail = async (opts: ResendEmailOptions) => {
+export const sendEmail = async (
+  opts: ResendEmailOptions,
+  settings?: { idempotencyKey?: string },
+) => {
   if (resend) {
-    return await sendEmailViaResend(opts);
+    return await sendEmailViaResend(opts, settings);
   }
 
   // Fallback to SMTP if Resend is not configured

@@ -51,7 +51,7 @@ export const PasswordRequirements = memo(function PasswordRequirements({
   invalid,
   className,
 }: {
-  field: { value?: string };
+  field: { value?: string | null };
   invalid?: boolean;
   className?: string;
 }) {

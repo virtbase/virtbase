@@ -38,7 +38,7 @@ export const invoices = pgTable(
     /**
      * The UUID of the Lexware Office invoice.
      */
-    lexwareInvoiceId: t.uuid().notNull(),
+    lexwareInvoiceId: t.uuid().notNull().unique(),
     /**
      * The number of the invoice.
      */

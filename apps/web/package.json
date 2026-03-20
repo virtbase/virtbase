@@ -17,6 +17,8 @@
     "@hookform/resolvers": "^5.2.2",
     "@scalar/api-reference-react": "^0.9.11",
     "@sentry/nextjs": "^10.45.0",
+    "@stripe/react-stripe-js": "^5.6.1",
+    "@stripe/stripe-js": "^8.11.0",
     "@t3-oss/env-nextjs": "^0.13.10",
     "@tanstack/react-query": "catalog:",
     "@trpc/client": "catalog:",
@@ -41,6 +43,7 @@
     "react-hook-form": "^7.71.2",
     "sonner": "^2.0.7",
     "superjson": "^2.2.6",
+    "workflow": "^4.2.0-beta.71",
     "zod": "catalog:"
   },
   "devDependencies": {

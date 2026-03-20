@@ -35,7 +35,7 @@ export function FirewallOptionsRow({ promise }: { promise: Promise<string> }) {
   const serverId = use(promise);
 
   prefetch(
-    trpc.server.firewall.options.get.queryOptions({ server_id: serverId }),
+    trpc.servers.firewall.options.get.queryOptions({ server_id: serverId }),
   );
 
   return (

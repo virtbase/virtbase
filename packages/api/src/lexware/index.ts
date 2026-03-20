@@ -15,8 +15,4 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { LexwareClient } from "./client";
-
-export const lexware = process.env.LEXWARE_API_KEY
-  ? new LexwareClient(process.env.LEXWARE_API_KEY)
-  : null;
+export * from "./client";

@@ -15,7 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { createFormatter } from "next-intl";
+import type { createFormatter } from "use-intl/core";
 
 type BaseFormatOptions<T extends readonly string[]> = {
   formatter: ReturnType<typeof createFormatter>;

@@ -22,6 +22,10 @@ import {
 } from "./email-updated";
 import { messages as footerMessages } from "./footer";
 import {
+  messages as invoiceCreatedMessages,
+  titles as invoiceCreatedTitles,
+} from "./invoice-created";
+import {
   messages as loginLinkMessages,
   titles as loginLinkTitles,
 } from "./login-link";
@@ -63,6 +67,7 @@ const messagesMapping = {
   "reset-password-link": resetPasswordLinkMessages,
   "password-updated": passwordUpdatedMessages,
   "verify-email": verifyEmailMessages,
+  "invoice-created": invoiceCreatedMessages,
   // Components
   footer: footerMessages,
 } as const;
@@ -76,6 +81,7 @@ const titlesMapping = {
   "reset-password-link": resetPasswordLinkTitles,
   "verify-email": verifyEmailTitles,
   "password-updated": passwordUpdatedTitles,
+  "invoice-created": invoiceCreatedTitles,
 } as const;
 
 type TitlesMapping = typeof titlesMapping;

@@ -26,10 +26,10 @@ import {
   LucideUpload,
 } from "@virtbase/ui/icons";
 import { Progress } from "@virtbase/ui/progress";
+import { formatBytes } from "@virtbase/utils";
 import type { Locale } from "next-intl";
 import { getExtracted, getFormatter, getNow } from "next-intl/server";
 import type React from "react";
-import { formatBytes } from "@/lib/format-bytes";
 
 export default async function ServerStatsDemo({
   locale,
@@ -51,7 +51,7 @@ export default async function ServerStatsDemo({
   return (
     <Card {...props}>
       <CardHeader>
-        <CardTitle>{t("Auslastung")}</CardTitle>
+        <CardTitle>{t("Usage")}</CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid items-center gap-3 lg:grid-cols-[230px_1fr]">
@@ -105,7 +105,7 @@ export default async function ServerStatsDemo({
                 strokeWidth={1.5}
                 aria-hidden
               />
-              <span className="font-medium">{t("Festplatte")}</span>
+              <span className="font-medium">{t("Disk")}</span>
             </div>
             <div className="font-semibold text-sm">
               <span>
@@ -127,7 +127,7 @@ export default async function ServerStatsDemo({
                 strokeWidth={1.5}
                 aria-hidden
               />
-              <span className="font-medium">{t("Netzwerk")}</span>
+              <span className="font-medium">{t("Network")}</span>
             </div>
           </div>
           <div className="inline-flex items-center gap-2 font-semibold text-sm lg:justify-end">
@@ -161,7 +161,7 @@ export default async function ServerStatsDemo({
                 strokeWidth={1.5}
                 aria-hidden
               />
-              <span className="font-medium">{t("Letzter Neustart")}</span>
+              <span className="font-medium">{t("Last reboot")}</span>
             </div>
           </div>
           <div className="inline-flex items-center font-semibold text-sm lg:justify-end">

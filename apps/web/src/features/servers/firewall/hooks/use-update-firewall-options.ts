@@ -20,7 +20,7 @@ import { useTRPC } from "@/lib/trpc/react";
 
 type TRPC = ReturnType<typeof useTRPC>;
 type Options = Parameters<
-  TRPC["server"]["firewall"]["options"]["update"]["mutationOptions"]
+  TRPC["servers"]["firewall"]["options"]["update"]["mutationOptions"]
 >[0];
 
 interface UpdateFirewallOptionsOptions {
@@ -36,23 +36,23 @@ export const useUpdateFirewallOptions = ({
   const { onMutate, onError, onSettled, ...rest } = mutationConfig ?? {};
 
   return useMutation(
-    trpc.server.firewall.options.update.mutationOptions({
+    trpc.servers.firewall.options.update.mutationOptions({
       ...rest,
       onMutate: async (input, ...args) => {
         await queryClient.cancelQueries(
-          trpc.server.firewall.options.get.queryFilter({
+          trpc.servers.firewall.options.get.queryFilter({
             server_id: input.server_id,
           }),
         );
 
         const previousData = queryClient.getQueryData(
-          trpc.server.firewall.options.get.queryKey({
+          trpc.servers.firewall.options.get.queryKey({
             server_id: input.server_id,
           }),
         );
 
         queryClient.setQueryData(
-          trpc.server.firewall.options.get.queryKey({
+          trpc.servers.firewall.options.get.queryKey({
             server_id: input.server_id,
           }),
           (old) =>
@@ -72,7 +72,7 @@ export const useUpdateFirewallOptions = ({
       },
       onError: async (error, input, ctx, ...args) => {
         queryClient.setQueryData(
-          trpc.server.firewall.options.get.queryKey({
+          trpc.servers.firewall.options.get.queryKey({
             server_id: input.server_id,
           }),
           ctx?.previousData,
@@ -82,7 +82,7 @@ export const useUpdateFirewallOptions = ({
       },
       onSettled: async (data, error, input, ...args) => {
         await queryClient.invalidateQueries(
-          trpc.server.firewall.options.get.queryFilter({
+          trpc.servers.firewall.options.get.queryFilter({
             server_id: input.server_id,
           }),
         );

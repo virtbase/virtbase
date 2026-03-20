@@ -11,6 +11,10 @@
       "types": "./dist/proxmox.d.ts",
       "default": "./src/proxmox/index.ts"
     },
+    "./stripe": {
+      "types": "./dist/stripe.d.ts",
+      "default": "./src/stripe/index.ts"
+    },
     "./workflows": {
       "types": "./dist/workflows.d.ts",
       "default": "./src/workflows/index.ts"
@@ -29,12 +33,15 @@
     "@upstash/redis": "^1.37.0",
     "@virtbase/auth": "workspace:*",
     "@virtbase/db": "workspace:*",
+    "@virtbase/email": "workspace:*",
     "@virtbase/utils": "workspace:*",
     "@virtbase/validators": "workspace:*",
     "proxmox-api": "^1.1.1",
     "server-only": "^0.0.1",
+    "stripe": "^20.4.1",
     "superjson": "^2.2.6",
     "trpc-to-openapi": "^3.2.0",
+    "use-intl": "^4.8.3",
     "workflow": "^4.2.0-beta.71",
     "zod": "catalog:"
   },

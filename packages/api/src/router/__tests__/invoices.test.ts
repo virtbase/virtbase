@@ -149,10 +149,12 @@ describe("invoices.list", () => {
     await testDb.insert(invoices).values([
       {
         ...mockInvoice,
+        lexwareInvoiceId: "b2df5c0d-0340-42a7-9d47-cbc0a7460b8e",
         number: "RE-2026-0001",
       },
       {
         ...mockInvoice,
+        lexwareInvoiceId: "b2df5c0d-0340-42a7-9d47-cbc0a7460b8f",
         number: "RE-2026-0002",
       },
     ]);

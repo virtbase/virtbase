@@ -40,14 +40,20 @@ export const env = createEnv({
     SENTRY_ORG: z.string().optional(),
     SENTRY_PROJECT: z.string().optional(),
     SENTRY_URL: z.url().optional(),
+    // Stripe
+    STRIPE_SECRET_KEY: z4.string().min(1),
+    STRIPE_WEBHOOK_SECRET: z4.string().min(1),
   },
   client: {
     // Sentry Configuration
     NEXT_PUBLIC_SENTRY_DSN: z.url().optional(),
+    NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z4.string().min(1),
   },
   experimental__runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
     NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN,
+    NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:
+      process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
   },
   skipValidation:
     !!process.env.CI || process.env.npm_lifecycle_event === "lint",
