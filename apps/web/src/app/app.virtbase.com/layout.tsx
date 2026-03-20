@@ -17,22 +17,29 @@
 
 import { Toaster } from "@virtbase/ui/sonner";
 import { NextIntlClientProvider } from "next-intl";
+import { getLocale } from "next-intl/server";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
-import { Suspense } from "react";
-import { defaultLocale } from "@/i18n/config";
 import { TRPCReactProvider } from "@/lib/trpc/react";
 import Document from "@/ui/document";
 import SentryReplayIntegration from "@/ui/sentry-replay-integration";
 
-export default function Layout({ children }: LayoutProps<"/app.virtbase.com">) {
+export {
+  defaultMetadata as metadata,
+  defaultViewport as viewport,
+} from "@/ui/document";
+
+export default async function Layout({
+  children,
+}: LayoutProps<"/app.virtbase.com">) {
+  const locale = await getLocale();
+
   return (
-    <Document locale={defaultLocale}>
+    <Document locale={locale}>
       <NuqsAdapter>
         <TRPCReactProvider>
-          {/* NextIntlClientProvider must be wrapped in a Suspense because it is not (yet) fully compatible with cacheComponents */}
-          <Suspense>
-            <NextIntlClientProvider>{children}</NextIntlClientProvider>
-          </Suspense>
+          <NextIntlClientProvider locale={locale}>
+            {children}
+          </NextIntlClientProvider>
           <Toaster className="pointer-events-auto" closeButton />
           <SentryReplayIntegration />
         </TRPCReactProvider>

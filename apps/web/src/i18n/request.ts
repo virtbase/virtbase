@@ -16,15 +16,13 @@
  */
 
 import { cookies } from "next/headers";
+import * as rootParams from "next/root-params";
 import { hasLocale } from "next-intl";
 import { getRequestConfig } from "next-intl/server";
-
 import { COOKIE_NAME, defaultLocale, locales } from "./config";
 
-export default getRequestConfig(async ({ requestLocale }) => {
-  // Read from potential `[locale]` segment
-  // if the user is on a public page
-  let candidate = await requestLocale;
+export default getRequestConfig(async () => {
+  let candidate = await rootParams.locale();
 
   if (!candidate) {
     // Read from cookie if the user is logged in

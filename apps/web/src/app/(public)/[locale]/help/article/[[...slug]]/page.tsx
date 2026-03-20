@@ -34,10 +34,8 @@ import { ImageZoom } from "fumadocs-ui/components/image-zoom";
 import { Step, Steps } from "fumadocs-ui/components/steps";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { Metadata } from "next";
-import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
-import type { Locale } from "next-intl";
-import { getExtracted, getFormatter, setRequestLocale } from "next-intl/server";
+import { getExtracted, getFormatter, getLocale } from "next-intl/server";
 import { defaultLocale } from "@/i18n/config";
 import { IntlLink } from "@/i18n/navigation.public";
 import { helpArticles } from "@/lib/source";
@@ -78,17 +76,9 @@ export async function generateMetadata({
 
 export default async function HelpArticlePage({
   params,
-}: {
-  params: Promise<{ locale: Locale; slug: string[] }>;
-}) {
-  "use cache";
-
-  cacheLife("max");
-  cacheTag("help-article");
-
-  const { locale, slug } = await params;
-
-  setRequestLocale(locale);
+}: PageProps<"/[locale]/help/article/[[...slug]]">) {
+  const locale = await getLocale();
+  const slug = (await params).slug;
 
   const page = helpArticles.getPage(slug, locale);
   if (!page) {
@@ -101,10 +91,8 @@ export default async function HelpArticlePage({
   const description = page.data.description;
   const lastModified = page.data.lastModified ?? new Date();
 
-  const t = await getExtracted({
-    locale,
-  });
-  const format = await getFormatter({ locale });
+  const t = await getExtracted();
+  const format = await getFormatter();
 
   return (
     <main className="relative border-border border-t">

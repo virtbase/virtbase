@@ -19,9 +19,7 @@ import { cn } from "@virtbase/ui";
 import { LucideExternalLink } from "@virtbase/ui/icons";
 import { Logo } from "@virtbase/ui/logo";
 import { APP_DOMAIN, APP_NAME, LOOKING_GLASS_URL } from "@virtbase/utils";
-import { cacheLife, cacheTag } from "next/cache";
-import type { Locale } from "next-intl";
-import { getExtracted, setRequestLocale } from "next-intl/server";
+import { getExtracted } from "next-intl/server";
 import { IntlLink } from "@/i18n/navigation.public";
 import { GetOnAppStore } from "@/ui/get-on-app-store";
 import { MaxWidthWrapper } from "@/ui/max-width-wrapper";
@@ -32,23 +30,8 @@ const linkListClassName = "flex flex-col mt-2.5 gap-3.5";
 const linkListItemClassName =
   "flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground/80 transition-colors duration-75";
 
-export async function Footer({
-  className,
-  locale,
-}: {
-  className?: string;
-  locale: Locale;
-}) {
-  "use cache";
-
-  cacheTag("footer");
-  cacheLife("max");
-
-  setRequestLocale(locale);
-
-  const t = await getExtracted({
-    locale,
-  });
+export async function Footer({ className }: { className?: string }) {
+  const t = await getExtracted();
 
   return (
     <MaxWidthWrapper

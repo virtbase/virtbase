@@ -24,10 +24,8 @@ import {
 import { Step, Steps } from "fumadocs-ui/components/steps";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { Metadata } from "next";
-import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
-import type { Locale } from "next-intl";
-import { getExtracted, getFormatter, setRequestLocale } from "next-intl/server";
+import { getExtracted, getFormatter, getLocale } from "next-intl/server";
 import { defaultLocale } from "@/i18n/config";
 import { legal } from "@/lib/source";
 import { BlockWrapper } from "@/ui/block-wrapper";
@@ -43,7 +41,8 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: PageProps<"/[locale]/legal/[[...slug]]">): Promise<Metadata> {
-  const { locale, slug } = await params;
+  const locale = await getLocale();
+  const slug = (await params).slug;
 
   const page = legal.getPage(slug, locale);
 
@@ -66,27 +65,17 @@ export async function generateMetadata({
 
 export default async function LegalPage({
   params,
-}: {
-  params: Promise<{ locale: Locale; slug: string[] }>;
-}) {
-  "use cache";
-
-  cacheLife("max");
-  cacheTag("legal");
-
-  const { locale, slug } = await params;
-
-  setRequestLocale(locale);
+}: PageProps<"/[locale]/legal/[[...slug]]">) {
+  const locale = await getLocale();
+  const slug = (await params).slug;
 
   const page = legal.getPage(slug, locale);
   if (!page) {
     notFound();
   }
 
-  const format = await getFormatter({ locale });
-  const t = await getExtracted({
-    locale,
-  });
+  const format = await getFormatter();
+  const t = await getExtracted();
 
   const lastModified = page.data.lastModified ?? new Date();
 

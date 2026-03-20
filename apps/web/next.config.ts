@@ -177,6 +177,7 @@ const nextConfig: NextConfig = {
     "@virtbase/api",
     "@virtbase/auth",
     "@virtbase/db",
+    "@virtbase/email",
     "@virtbase/ui",
     "@virtbase/utils",
     "@virtbase/validators",

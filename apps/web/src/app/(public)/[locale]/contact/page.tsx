@@ -29,22 +29,13 @@ import {
   PUBLIC_DOMAIN,
 } from "@virtbase/utils";
 import type { Metadata } from "next";
-import { cacheLife, cacheTag } from "next/cache";
-import type { Locale } from "next-intl";
-import { getExtracted, setRequestLocale } from "next-intl/server";
+import { getExtracted, getLocale } from "next-intl/server";
 import { IntlLink } from "@/i18n/navigation.public";
 import { BlockWrapper } from "@/ui/block-wrapper";
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-
-  const t = await getExtracted({
-    locale,
-  });
+export async function generateMetadata(): Promise<Metadata> {
+  const locale = await getLocale();
+  const t = await getExtracted();
 
   const title = t("Contact");
   const description = t(
@@ -64,23 +55,8 @@ export async function generateMetadata({
   });
 }
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ locale: Locale }>;
-}) {
-  "use cache";
-
-  cacheTag("contact-page");
-  cacheLife("max");
-
-  const { locale } = await params;
-
-  setRequestLocale(locale);
-
-  const t = await getExtracted({
-    locale,
-  });
+export default async function Page() {
+  const t = await getExtracted();
 
   const items = [
     {

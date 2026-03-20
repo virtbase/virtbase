@@ -27,26 +27,18 @@ import {
 } from "@virtbase/ui/icons";
 import { Progress } from "@virtbase/ui/progress";
 import { formatBytes } from "@virtbase/utils";
-import type { Locale } from "next-intl";
 import { getExtracted, getFormatter, getNow } from "next-intl/server";
 import type React from "react";
 
-export default async function ServerStatsDemo({
-  locale,
-  ...props
-}: { locale: Locale } & React.ComponentProps<typeof Card>) {
+export default async function ServerStatsDemo(
+  props: React.ComponentProps<typeof Card>,
+) {
   "use cache";
 
-  const t = await getExtracted({
-    locale,
-  });
+  const t = await getExtracted();
 
-  const now = await getNow({
-    locale,
-  });
-  const formatter = await getFormatter({
-    locale,
-  });
+  const now = await getNow();
+  const formatter = await getFormatter();
 
   return (
     <Card {...props}>

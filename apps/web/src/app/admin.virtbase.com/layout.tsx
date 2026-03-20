@@ -21,4 +21,4 @@ export const metadata = constructMetadata({
   noIndex: true,
 });
 
-export { default } from "@/app/app.virtbase.com/layout";
+export { default, viewport } from "@/app/app.virtbase.com/layout";
