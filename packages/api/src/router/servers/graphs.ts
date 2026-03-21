@@ -26,7 +26,7 @@ export const serversGraphsRouter = createTRPCRouter({
     .meta({
       openapi: {
         method: "GET",
-        path: "/servers/graphs",
+        path: "/servers/{server_id}/graphs",
         protect: true,
         contentTypes: ["application/json"],
         tags: ["Servers"],

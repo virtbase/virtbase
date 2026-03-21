@@ -17,6 +17,7 @@
 
 import { constructMetadata } from "@virtbase/utils";
 import dynamic from "next/dynamic";
+import { ServerStatsCard } from "@/features/servers/components/server-stats-card";
 
 const ServerGraphs = dynamic(
   () => import("@/features/servers/components/server-graphs"),
@@ -37,8 +38,7 @@ export default function Page() {
           {/* <ServerDetails /> */}
         </div>
         <div className="grid auto-rows-max items-start gap-4 lg:col-span-2">
-          {/* TODO: Add ServerStatsWrapper */}
-          {/* <ServerStatsWrapper /> */}
+          <ServerStatsCard />
         </div>
       </div>
       <ServerGraphs />

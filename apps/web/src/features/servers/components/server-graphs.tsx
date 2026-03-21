@@ -83,8 +83,8 @@ export default function ServerGraphs({
     });
 
   const timeframeMapping = {
-    day: t("Days"),
     hour: t("Hours"),
+    day: t("Days"),
     week: t("Weeks"),
     month: t("Months"),
     year: t("Years"),

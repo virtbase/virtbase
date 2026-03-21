@@ -15,14 +15,28 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./aes-encryption";
-export * from "./construct-metadata";
-export * from "./construct-opengraph-url";
-export * from "./format-bytes";
-export * from "./generate-password";
-export * from "./get-gravatar-image";
-export * from "./map-proxmox-server-status";
-export * from "./map-proxmox-task-status";
-export * from "./parse-public-key";
-export * from "./server-state";
-export * from "./truncate";
+import { PROXMOX_TASK_STATUS_MAPPING } from "@virtbase/utils";
+import type { getProxmoxInstance } from "./get-proxmox-instance";
+
+export const getLastTask = async (
+  instance: ReturnType<typeof getProxmoxInstance>,
+  vmid: number,
+) => {
+  try {
+    const taskList = await instance.node.tasks.$get({
+      vmid,
+      limit: 3,
+      source: "active",
+      errors: false,
+    });
+    return (
+      taskList
+        .filter((task) => task.type in PROXMOX_TASK_STATUS_MAPPING)
+        .filter((task) => task.status === "RUNNING")
+        .at(0) ?? null
+    );
+  } catch {
+    // ignored: no task status available
+    return null;
+  }
+};

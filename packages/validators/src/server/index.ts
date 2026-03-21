@@ -120,3 +120,4 @@ export const RenameServerOutputSchema = z.void();
 export * from "./firewall";
 export * from "./graphs";
 export * from "./shared";
+export * from "./status";
