@@ -17,7 +17,6 @@
 
 "use server";
 
-import { captureException } from "@sentry/nextjs";
 import { TRPCError } from "@trpc/server";
 import type { Proxmox } from "@virtbase/api/proxmox";
 import { getProxmoxInstance } from "@virtbase/api/proxmox";
@@ -85,7 +84,7 @@ export const createProxmoxNodeAction = actionClient
 
     const hasValidBackupStorage = storages.some(
       (storage) =>
-        storage.storage === parsedInput.backup_storage &&
+        storage.storage === backup_storage &&
         storage.active &&
         storage.content.includes("backup"),
     );
@@ -93,13 +92,13 @@ export const createProxmoxNodeAction = actionClient
     if (!hasValidBackupStorage) {
       throw new TRPCError({
         code: "BAD_REQUEST",
-        message: `Backup storage \`${parsedInput.backup_storage}\` is not available or not configured correctly.`,
+        message: `Backup storage \`${backup_storage}\` is not available or not configured correctly.`,
       });
     }
 
     const hasValidSnippetStorage = storages.some(
       (storage) =>
-        storage.storage === parsedInput.snippet_storage &&
+        storage.storage === snippet_storage &&
         storage.active &&
         storage.content.includes("snippets"),
     );
@@ -107,7 +106,7 @@ export const createProxmoxNodeAction = actionClient
     if (!hasValidSnippetStorage) {
       throw new TRPCError({
         code: "BAD_REQUEST",
-        message: `Snippet storage \`${parsedInput.snippet_storage}\` is not available or not configured correctly.`,
+        message: `Snippet storage \`${snippet_storage}\` is not available or not configured correctly.`,
       });
     }
 
@@ -119,7 +118,7 @@ export const createProxmoxNodeAction = actionClient
         filename: "__temp-create-proxmox-node-test.yml",
         contents:
           "# This is a temporary test snippet. It can safely be deleted.",
-        storage: parsedInput.snippet_storage,
+        storage: snippet_storage,
       });
     } catch {
       throw new TRPCError({
@@ -157,9 +156,7 @@ export const createProxmoxNodeAction = actionClient
           isolationLevel: "read committed",
         },
       );
-    } catch (error) {
-      captureException(error);
-
+    } catch {
       throw new TRPCError({
         code: "INTERNAL_SERVER_ERROR",
         message:

@@ -17,4 +17,5 @@
 
 export * from "./build-order-by";
 export * from "./create-id";
+export * from "./get-date-interval-filter";
 export * from "./types";

@@ -15,24 +15,22 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import z from "zod";
-import { ObjectTimestampSchema } from "../timestamps";
+import { CrownIcon, UserIcon } from "@virtbase/ui/icons";
 
-export const ProxmoxNodeGroupSchema = z.object({
-  id: z.string().regex(/^png_[A-Z0-9]{25}$/),
-  name: z.string().min(1).max(255),
-  created_at: ObjectTimestampSchema.shape.created_at,
-  updated_at: ObjectTimestampSchema.shape.updated_at,
-});
+export function getRoleIcon(role: "CUSTOMER" | "ADMIN") {
+  const roleIcons = {
+    CUSTOMER: UserIcon,
+    ADMIN: CrownIcon,
+  } satisfies Record<"CUSTOMER" | "ADMIN", React.ElementType>;
 
-export type ProxmoxNodeGroup = z.infer<typeof ProxmoxNodeGroupSchema>;
+  return roleIcons[role];
+}
 
-export const CreateProxmoxNodeGroupInputSchema = ProxmoxNodeGroupSchema.omit({
-  id: true,
-  created_at: true,
-  updated_at: true,
-});
+export function getRoleLabel(role: "CUSTOMER" | "ADMIN") {
+  const roleLabels = {
+    CUSTOMER: "Customer",
+    ADMIN: "Admin",
+  } satisfies Record<"CUSTOMER" | "ADMIN", string>;
 
-export type CreateProxmoxNodeGroupInput = z.infer<
-  typeof CreateProxmoxNodeGroupInputSchema
->;
+  return roleLabels[role];
+}

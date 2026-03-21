@@ -33,3 +33,5 @@ export const CreateDatacenterInputSchema = DatacenterSchema.omit({
   created_at: true,
   updated_at: true,
 });
+
+export type CreateDatacenterInput = z.infer<typeof CreateDatacenterInputSchema>;

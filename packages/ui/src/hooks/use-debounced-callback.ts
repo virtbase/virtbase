@@ -15,24 +15,31 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import z from "zod";
-import { ObjectTimestampSchema } from "../timestamps";
+import * as React from "react";
 
-export const ProxmoxNodeGroupSchema = z.object({
-  id: z.string().regex(/^png_[A-Z0-9]{25}$/),
-  name: z.string().min(1).max(255),
-  created_at: ObjectTimestampSchema.shape.created_at,
-  updated_at: ObjectTimestampSchema.shape.updated_at,
-});
+import { useCallbackRef } from "./use-callback-ref";
 
-export type ProxmoxNodeGroup = z.infer<typeof ProxmoxNodeGroupSchema>;
+export function useDebouncedCallback<T extends (...args: never[]) => unknown>(
+  callback: T,
+  delay: number,
+) {
+  const handleCallback = useCallbackRef(callback);
+  const debounceTimerRef = React.useRef(0);
+  React.useEffect(
+    () => () => window.clearTimeout(debounceTimerRef.current),
+    [],
+  );
 
-export const CreateProxmoxNodeGroupInputSchema = ProxmoxNodeGroupSchema.omit({
-  id: true,
-  created_at: true,
-  updated_at: true,
-});
+  const setValue = React.useCallback(
+    (...args: Parameters<T>) => {
+      window.clearTimeout(debounceTimerRef.current);
+      debounceTimerRef.current = window.setTimeout(
+        () => handleCallback(...args),
+        delay,
+      );
+    },
+    [handleCallback, delay],
+  );
 
-export type CreateProxmoxNodeGroupInput = z.infer<
-  typeof CreateProxmoxNodeGroupInputSchema
->;
+  return setValue;
+}
