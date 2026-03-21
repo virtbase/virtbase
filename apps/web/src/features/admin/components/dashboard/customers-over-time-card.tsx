@@ -1,0 +1,58 @@
+/*
+ *   Copyright (c) 2026 Janic Bellmann
+ *
+ *   This program is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@virtbase/ui/card";
+import { Skeleton } from "@virtbase/ui/skeleton";
+import { useExtracted } from "next-intl";
+import { Suspense } from "react";
+import { getCustomersOverTime } from "../../api/dashboard/get-customers-over-time";
+import { CustomersOverTime } from "./customers-over-time";
+
+export function CustomersOverTimeCard() {
+  const t = useExtracted();
+
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle>{t("Customers by Date")}</CardTitle>
+        <CardDescription>
+          {t("New customers per day in the last 14 days")}
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="h-72 flex-1">
+        <Suspense
+          fallback={
+            <div className="grid size-full grid-cols-14 gap-2">
+              {Array.from({ length: 14 }).map((_, index) => (
+                // biome-ignore lint/suspicious/noArrayIndexKey: index is unique
+                <Skeleton key={index} className="h-full w-full" />
+              ))}
+            </div>
+          }
+        >
+          <CustomersOverTime promise={getCustomersOverTime()} />
+        </Suspense>
+      </CardContent>
+    </Card>
+  );
+}

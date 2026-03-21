@@ -35,12 +35,12 @@ function getDimensions() {
 
 export function useMediaQuery() {
   const [device, setDevice] = useState<"mobile" | "tablet" | "desktop" | null>(
-    getDevice(),
+    null,
   );
   const [dimensions, setDimensions] = useState<{
     width: number;
     height: number;
-  } | null>(getDimensions());
+  } | null>(null);
 
   useEffect(() => {
     const checkDevice = () => {
@@ -48,13 +48,9 @@ export function useMediaQuery() {
       setDimensions(getDimensions());
     };
 
-    // Initial detection
     checkDevice();
 
-    // Listener for windows resize
     window.addEventListener("resize", checkDevice);
-
-    // Cleanup listener
     return () => {
       window.removeEventListener("resize", checkDevice);
     };

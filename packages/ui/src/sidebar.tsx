@@ -23,7 +23,7 @@ import { PanelLeftIcon } from "lucide-react";
 import { Slot } from "radix-ui";
 import * as React from "react";
 import { Button } from "./button";
-import { useMediaQuery } from "./hooks/use-media-query";
+import { useIsMobile } from "./hooks/use-mobile";
 import { cn } from "./index";
 import { Input } from "./input";
 import { Separator } from "./separator";
@@ -83,7 +83,7 @@ function SidebarProvider({
   open?: boolean;
   onOpenChange?: (open: boolean) => void;
 }) {
-  const { isMobile } = useMediaQuery();
+  const isMobile = useIsMobile();
   const [openMobile, setOpenMobile] = React.useState(false);
 
   // This is the internal state of the sidebar.

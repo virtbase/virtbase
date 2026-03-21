@@ -49,7 +49,10 @@ export const users = pgTable(
 );
 
 export const usersRelations = relations(users, ({ many }) => ({
-  sessions: many(sessions),
+  sessions: many(sessions, { relationName: "session_user" }),
+  impersonatedSessions: many(sessions, {
+    relationName: "session_impersonator",
+  }),
   accounts: many(accounts),
   passkeys: many(passkeys),
   sshKeys: many(sshKeys),
@@ -89,10 +92,12 @@ export const sessionsRelations = relations(sessions, ({ one }) => ({
   user: one(users, {
     fields: [sessions.userId],
     references: [users.id],
+    relationName: "session_user",
   }),
   impersonator: one(users, {
     fields: [sessions.impersonatedBy],
     references: [users.id],
+    relationName: "session_impersonator",
   }),
 }));
 
