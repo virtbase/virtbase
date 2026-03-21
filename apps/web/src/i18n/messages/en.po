@@ -85,17 +85,17 @@ msgstr "How can we help you?"
 msgid "SLIoeO"
 msgstr "Contact us and get quick help."
 
-#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:109
+#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:106
 #: src/app/(public)/[locale]/help/page.tsx:75
 msgid "tUmaeD"
 msgstr "All articles"
 
-#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:131
-#: src/app/(public)/[locale]/legal/[[...slug]]/page.tsx:132
+#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:128
+#: src/app/(public)/[locale]/legal/[[...slug]]/page.tsx:121
 msgid "ZdCdo5"
 msgstr "Last updated: {date}"
 
-#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:170
+#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:167
 msgid "IAMn0B"
 msgstr "Still have questions? Contact us ↗"
 
@@ -552,18 +552,25 @@ msgstr "Confirm password"
 msgid "xl27nc"
 msgstr "Reset Password"
 
-#: src/features/dashboard/components/latest-invoices-card.tsx:46
+#: src/features/dashboard/components/empty-servers.tsx:30
+msgid "fmSs/a"
+msgstr "No servers found"
+
+#: src/features/dashboard/components/empty-servers.tsx:31
+msgid "zuhonL"
+msgstr "No servers have been rented yet. New servers will be displayed here."
+
+#: src/features/dashboard/components/empty-servers.tsx:37
+msgid "SjCCH5"
+msgstr "Rent a server"
+
+#: src/features/dashboard/components/latest-invoices-card.tsx:41
 msgid "15BgLW"
 msgstr "Latest Invoices"
 
-#: src/features/dashboard/components/latest-invoices-card.tsx:48
+#: src/features/dashboard/components/latest-invoices-card.tsx:43
 msgid "VgBFI4"
 msgstr "Here you can see your latest invoices for direct download."
-
-#: src/features/dashboard/components/latest-invoices-card.tsx:57
-#: src/features/dashboard/components/latest-servers-card.tsx:57
-msgid "pFK6bJ"
-msgstr "View all"
 
 #: src/features/dashboard/components/latest-invoices-list.tsx:58
 msgid "QVIbFk"
@@ -577,43 +584,31 @@ msgstr "No invoices have been issued yet."
 msgid "5q3qC0"
 msgstr "Download"
 
-#: src/features/dashboard/components/latest-servers-card.tsx:46
+#: src/features/dashboard/components/latest-servers-card.tsx:41
 msgid "DY6Cmc"
 msgstr "Latest Servers"
 
-#: src/features/dashboard/components/latest-servers-card.tsx:48
+#: src/features/dashboard/components/latest-servers-card.tsx:43
 msgid "2AizOe"
 msgstr "Here you can see your latest servers."
 
-#: src/features/dashboard/components/latest-servers-list.tsx:52
-msgid "fmSs/a"
-msgstr "No servers found"
-
-#: src/features/dashboard/components/latest-servers-list.tsx:54
-msgid "zuhonL"
-msgstr "No servers have been rented yet. New servers will be displayed here."
-
-#: src/features/dashboard/components/latest-servers-list.tsx:61
-msgid "SjCCH5"
-msgstr "Rent a server"
-
-#: src/features/dashboard/components/server-status-small.tsx:51
+#: src/features/dashboard/components/server-status-small.tsx:60
 msgid "KRtjzZ"
 msgstr "Expired (will be deleted {date})"
 
-#: src/features/dashboard/components/server-status-small.tsx:62
+#: src/features/dashboard/components/server-status-small.tsx:71
 msgid "oJsHQW"
 msgstr "Suspended"
 
-#: src/features/dashboard/components/server-status-small.tsx:68
+#: src/features/dashboard/components/server-status-small.tsx:77
 msgid "r9ELLA"
 msgstr "Installing..."
 
-#: src/features/dashboard/components/server-status-small.tsx:75
+#: src/features/dashboard/components/server-status-small.tsx:84
 msgid "vOjKW3"
 msgstr "Expiring (will be deleted {date})"
 
-#: src/features/dashboard/components/server-status-small.tsx:86
+#: src/features/dashboard/components/server-status-small.tsx:95
 msgid "Dnob31"
 msgstr "Operational"
 
@@ -676,6 +671,7 @@ msgid "DZ2Koj"
 msgstr "Direction"
 
 #: src/features/landing/components/server-firewall-demo.tsx:53
+#: src/features/servers/components/server-graphs.tsx:137
 msgid "YDkqMJ"
 msgstr "Incoming"
 
@@ -705,24 +701,76 @@ msgid "wbsq7O"
 msgstr "Usage"
 
 #: src/features/landing/components/server-stats-demo.tsx:57
+#: src/features/servers/components/server-graphs.tsx:99
 msgid "QgBuiV"
 msgstr "CPU"
 
 #: src/features/landing/components/server-stats-demo.tsx:80
+#: src/features/servers/components/server-graphs.tsx:108
 msgid "LjglgP"
 msgstr "RAM"
 
 #: src/features/landing/components/server-stats-demo.tsx:100
+#: src/features/servers/components/server-graphs.tsx:121
 msgid "OuCSDn"
 msgstr "Disk"
 
 #: src/features/landing/components/server-stats-demo.tsx:122
+#: src/features/servers/components/server-graphs.tsx:134
 msgid "I3JhPS"
 msgstr "Network"
 
 #: src/features/landing/components/server-stats-demo.tsx:156
 msgid "yCCio2"
 msgstr "Last reboot"
+
+#: src/features/servers/components/server-graphs.tsx:88
+msgid "d8EqQY"
+msgstr "Days"
+
+#: src/features/servers/components/server-graphs.tsx:89
+msgid "j9Y9nu"
+msgstr "Hours"
+
+#: src/features/servers/components/server-graphs.tsx:90
+msgid "g6+IGw"
+msgstr "Weeks"
+
+#: src/features/servers/components/server-graphs.tsx:91
+msgid "AxDOiG"
+msgstr "Months"
+
+#: src/features/servers/components/server-graphs.tsx:92
+msgid "Jr5tMR"
+msgstr "Years"
+
+#: src/features/servers/components/server-graphs.tsx:102
+msgid "x8Ik2d"
+msgstr "CPU (%)"
+
+#: src/features/servers/components/server-graphs.tsx:111
+msgid "XYkq4n"
+msgstr "Used"
+
+#: src/features/servers/components/server-graphs.tsx:115
+msgid "kkjl2v"
+msgstr "Max"
+
+#: src/features/servers/components/server-graphs.tsx:124
+msgid "filwqD"
+msgstr "Read"
+
+#: src/features/servers/components/server-graphs.tsx:128
+msgid "k2veDA"
+msgstr "Write"
+
+#: src/features/servers/components/server-graphs.tsx:141
+msgid "Arxl88"
+msgstr "Outgoing"
+
+#: src/features/servers/components/server-graphs.tsx:160
+msgid "zuaKy3"
+msgstr "Intervall"
 
 #: src/features/servers/components/server-nav.tsx:42
 #: src/ui/app-sidebar.tsx:62

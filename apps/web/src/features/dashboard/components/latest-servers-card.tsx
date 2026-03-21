@@ -15,23 +15,18 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Button } from "@virtbase/ui/button";
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@virtbase/ui/card";
-import { LucideExternalLink } from "@virtbase/ui/icons";
 import { Skeleton } from "@virtbase/ui/skeleton";
-import NextLink from "next/link";
 import { useExtracted } from "next-intl";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { defaultGetLatestServersQuery } from "@/features/dashboard/hooks/use-latest-servers";
-import { paths } from "@/lib/paths";
 import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
 import { LatestServersList } from "./latest-servers-list";
 
@@ -47,17 +42,6 @@ export function LatestServersCard() {
         <CardDescription>
           {t("Here you can see your latest servers.")}
         </CardDescription>
-        <CardAction>
-          <Button variant="outline" size="sm" asChild>
-            <NextLink href={paths.app.servers.getHref()} prefetch={false}>
-              <LucideExternalLink
-                className="text-muted-foreground"
-                aria-hidden="true"
-              />
-              {t("View all")}
-            </NextLink>
-          </Button>
-        </CardAction>
       </CardHeader>
       <CardContent>
         <HydrateClient>

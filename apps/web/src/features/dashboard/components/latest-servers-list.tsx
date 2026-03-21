@@ -17,52 +17,21 @@
 
 "use client";
 
-import { Button } from "@virtbase/ui/button";
-import {
-  Empty,
-  EmptyContent,
-  EmptyDescription,
-  EmptyHeader,
-  EmptyMedia,
-  EmptyTitle,
-} from "@virtbase/ui/empty";
-import { LucideChevronRight, LucideServerOff } from "@virtbase/ui/icons";
-import { PUBLIC_DOMAIN } from "@virtbase/utils";
+import { LucideChevronRight } from "@virtbase/ui/icons";
 import NextLink from "next/link";
-import { useExtracted } from "next-intl";
 import { paths } from "@/lib/paths";
 import { OperatingSystemIcon } from "@/ui/operating-system-icon";
 import { useLatestServers } from "../hooks/use-latest-servers";
+import { EmptyServers } from "./empty-servers";
 import { ServerStatusSmall } from "./server-status-small";
 
 export function LatestServersList() {
-  const t = useExtracted();
-
   const {
     data: { servers },
   } = useLatestServers();
 
-  if (!servers.length) {
-    return (
-      <Empty className="col-span-full border">
-        <EmptyHeader>
-          <EmptyMedia variant="icon">
-            <LucideServerOff aria-hidden="true" />
-          </EmptyMedia>
-          <EmptyTitle>{t("No servers found")}</EmptyTitle>
-          <EmptyDescription>
-            {t(
-              "No servers have been rented yet. New servers will be displayed here.",
-            )}
-          </EmptyDescription>
-        </EmptyHeader>
-        <EmptyContent>
-          <Button asChild>
-            <a href={`${PUBLIC_DOMAIN}`}>{t("Rent a server")}</a>
-          </Button>
-        </EmptyContent>
-      </Empty>
-    );
+  if (servers.length) {
+    return <EmptyServers />;
   }
 
   return (

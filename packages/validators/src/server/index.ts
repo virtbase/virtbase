@@ -88,4 +88,5 @@ export const RenameServerInputSchema = z.object({
 export const RenameServerOutputSchema = z.void();
 
 export * from "./firewall";
+export * from "./graphs";
 export * from "./shared";

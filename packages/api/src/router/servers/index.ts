@@ -32,9 +32,11 @@ import {
   serverProcedure,
 } from "../../trpc";
 import { serverFirewallRouter } from "./firewall";
+import { serversGraphsRouter } from "./graphs";
 
 export const serversRouter = createTRPCRouter({
   firewall: serverFirewallRouter,
+  graphs: serversGraphsRouter,
   list: protectedProcedure
     .meta({
       openapi: {

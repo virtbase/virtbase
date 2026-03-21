@@ -135,6 +135,8 @@
   --font-mono: var(--font-geist-mono);
 
   --animate-spinner: spinner 1.2s linear infinite;
+  --animate-infinite-scroll: infinite-scroll 22s linear infinite;
+  --animate-infinite-scroll-y: infinite-scroll-y 22s linear infinite;
 }
 
 @keyframes spinner {
@@ -143,5 +145,22 @@
   }
   100% {
     opacity: 0;
+  }
+}
+
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(var(--scroll, -150%));
+  }
+}
+@keyframes infinite-scroll-y {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(var(--scroll, -150%));
   }
 }

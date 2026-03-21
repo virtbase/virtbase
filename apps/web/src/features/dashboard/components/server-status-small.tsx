@@ -35,7 +35,16 @@ import type { GetLatestServersOutput } from "../hooks/use-latest-servers";
 
 type Server = GetLatestServersOutput["servers"][number];
 
-export function ServerStatusSmall({ server }: { server: Server }) {
+type ServerStatusSmallProps = Pick<
+  Server,
+  "installed_at" | "suspended_at" | "terminates_at"
+>;
+
+export function ServerStatusSmall({
+  server,
+}: {
+  server: ServerStatusSmallProps;
+}) {
   const t = useExtracted();
 
   const formatter = useFormatter();
@@ -47,7 +56,7 @@ export function ServerStatusSmall({ server }: { server: Server }) {
       icon: LucideBan,
       className: "text-destructive",
       condition: isTerminated,
-      label: (server: Server) =>
+      label: (server: ServerStatusSmallProps) =>
         t("Expired (will be deleted {date})", {
           date: formatter.relativeTime(
             getEstimatedServerDeletionDate(server) as Date,
@@ -63,7 +72,7 @@ export function ServerStatusSmall({ server }: { server: Server }) {
     },
     {
       icon: LucideLoader,
-      className: "text-yellow-500",
+      className: "text-yellow-500 [&_svg]:animate-spin",
       condition: isInstalling,
       label: () => t("Installing..."),
     },
@@ -71,7 +80,7 @@ export function ServerStatusSmall({ server }: { server: Server }) {
       icon: LucideClock,
       className: "text-yellow-500",
       condition: isExpiring,
-      label: (server: Server) =>
+      label: (server: ServerStatusSmallProps) =>
         t("Expiring (will be deleted {date})", {
           date: formatter.relativeTime(
             getEstimatedServerDeletionDate(server) as Date,
