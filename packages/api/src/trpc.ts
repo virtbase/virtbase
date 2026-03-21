@@ -262,6 +262,9 @@ const serverMiddleware = authMiddleware.unstable_pipe(
             id: servers.id,
             name: servers.name,
             vmid: servers.vmid,
+            installed_at: servers.installedAt,
+            suspended_at: servers.suspendedAt,
+            terminates_at: servers.terminatesAt,
             created_at: servers.createdAt,
             proxmoxNode: {
               id: proxmoxNodes.id,

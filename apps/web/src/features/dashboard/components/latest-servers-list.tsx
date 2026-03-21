@@ -30,7 +30,7 @@ export function LatestServersList() {
     data: { servers },
   } = useLatestServers();
 
-  if (servers.length) {
+  if (!servers.length) {
     return <EmptyServers />;
   }
 

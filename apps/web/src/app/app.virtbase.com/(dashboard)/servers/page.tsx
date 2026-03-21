@@ -15,13 +15,42 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbList,
+  BreadcrumbPage,
+} from "@virtbase/ui/breadcrumb";
+import { Button } from "@virtbase/ui/button";
+import { LucidePlus } from "@virtbase/ui/icons";
+import { PUBLIC_DOMAIN } from "@virtbase/utils";
+import { useExtracted } from "next-intl";
 import { ServersList } from "@/features/servers/components/servers-list";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
 
 export default function Page() {
+  const t = useExtracted();
+
   return (
-    <DashboardLayout>
-      {" "}
+    <DashboardLayout
+      leftSide={
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbPage>{t("Servers")}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      }
+      rightSide={
+        <Button size="sm" variant="outline" asChild>
+          <a href={PUBLIC_DOMAIN}>
+            <LucidePlus aria-hidden="true" />
+            {t("Rent a new server")}
+          </a>
+        </Button>
+      }
+    >
       <ServersList />
     </DashboardLayout>
   );

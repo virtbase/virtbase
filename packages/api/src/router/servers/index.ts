@@ -16,11 +16,13 @@
  */
 
 import { and, count, eq } from "@virtbase/db";
-import { proxmoxTemplates, servers } from "@virtbase/db/schema";
+import { proxmoxTemplates, serverPlans, servers } from "@virtbase/db/schema";
 import { buildOrderBy } from "@virtbase/db/utils";
 import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from "@virtbase/utils";
 import { getPaginationMeta } from "@virtbase/validators";
 import {
+  GetServerInputSchema,
+  GetServerOutputSchema,
   ListServersInputSchema,
   ListServersOutputSchema,
   RenameServerInputSchema,
@@ -37,6 +39,33 @@ import { serversGraphsRouter } from "./graphs";
 export const serversRouter = createTRPCRouter({
   firewall: serverFirewallRouter,
   graphs: serversGraphsRouter,
+  get: serverProcedure
+    .meta({
+      openapi: {
+        method: "GET",
+        path: "/servers/{server_id}",
+        protect: true,
+        contentTypes: ["application/json"],
+        tags: ["Servers"],
+        summary: "Get a server",
+        description: "Returns a server by its unique identifier.",
+      },
+    })
+    .input(GetServerInputSchema)
+    .output(GetServerOutputSchema)
+    .query(async ({ ctx }) => {
+      const { server } = ctx;
+
+      return {
+        server: {
+          id: server.id,
+          name: server.name,
+          installed_at: server.installed_at,
+          suspended_at: server.suspended_at,
+          terminates_at: server.terminates_at,
+        },
+      };
+    }),
   list: protectedProcedure
     .meta({
       openapi: {
@@ -77,7 +106,16 @@ export const serversRouter = createTRPCRouter({
               installedAt: servers.installedAt,
               suspendedAt: servers.suspendedAt,
               terminatesAt: servers.terminatesAt,
-              template: input.expand.includes("template")
+              plan: !input.expand.includes("plan")
+                ? serverPlans.id
+                : {
+                    id: serverPlans.id,
+                    name: serverPlans.name,
+                    cores: serverPlans.cores,
+                    memory: serverPlans.memory,
+                    storage: serverPlans.storage,
+                  },
+              template: !input.expand.includes("template")
                 ? proxmoxTemplates.id
                 : {
                     id: proxmoxTemplates.id,
@@ -85,6 +123,7 @@ export const serversRouter = createTRPCRouter({
                   },
             })
             .from(servers)
+            .innerJoin(serverPlans, eq(servers.serverPlanId, serverPlans.id))
             .leftJoin(
               proxmoxTemplates,
               eq(servers.proxmoxTemplateId, proxmoxTemplates.id),
@@ -114,6 +153,7 @@ export const serversRouter = createTRPCRouter({
           id: item.id,
           name: item.name,
           template: item.template,
+          plan: item.plan,
           installed_at: item.installedAt,
           suspended_at: item.suspendedAt,
           terminates_at: item.terminatesAt,

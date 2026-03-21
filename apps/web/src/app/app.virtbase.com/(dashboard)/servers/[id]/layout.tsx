@@ -16,6 +16,7 @@
  */
 
 import { ServerNav } from "@/features/servers/components/server-nav";
+import { ServerStatusBar } from "@/features/servers/components/server-status-bar";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
 
 export default function ServersLayout({
@@ -28,8 +29,7 @@ export default function ServersLayout({
     >
       <div className="space-y-4 overflow-clip">
         <ServerNav />
-        {/** TODO: Add server status bar */}
-        {/* <ServerStatusBar /> */}
+        <ServerStatusBar />
         {children}
       </div>
     </DashboardLayout>

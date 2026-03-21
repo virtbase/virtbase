@@ -15,35 +15,32 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import type { RouterInputs, RouterOutputs } from "@virtbase/api";
 import { isInstalling } from "@virtbase/utils";
 import { useTRPC } from "@/lib/trpc/react";
 
-export type GetLatestServersInput = RouterInputs["servers"]["list"];
+export type ServerListInput = RouterInputs["servers"]["list"];
 
-export type GetLatestServersOutput = RouterOutputs["servers"]["list"];
+export type ServerListOutput = RouterOutputs["servers"]["list"];
 
-interface GetLatestServers extends GetLatestServersInput {
+interface ServerList extends ServerListInput {
   queryConfig?: never;
 }
 
-export const defaultGetLatestServersQuery = {
+export const defaultServerListQuery = {
   sort: ["id:desc"],
-  per_page: 5,
-  expand: ["template"],
-} satisfies GetLatestServersInput;
+  per_page: 100,
+  expand: ["plan", "template"],
+} satisfies ServerListInput;
 
-export const useLatestServers = ({
-  queryConfig,
-  ...input
-}: GetLatestServers = {}) => {
+export const useServerList = ({ queryConfig, ...input }: ServerList = {}) => {
   const trpc = useTRPC();
 
-  return useSuspenseQuery(
+  return useQuery(
     trpc.servers.list.queryOptions(
       {
-        ...defaultGetLatestServersQuery,
+        ...defaultServerListQuery,
         ...input,
       },
       {

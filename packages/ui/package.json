@@ -4,6 +4,7 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
+    "./alert": "./src/alert.tsx",
     "./avatar": "./src/avatar.tsx",
     "./badge": "./src/badge.tsx",
     "./drawer": "./src/drawer.tsx",

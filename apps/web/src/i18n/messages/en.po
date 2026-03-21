@@ -222,6 +222,15 @@ msgstr "An unexpected error occurred while loading the server details."
 msgid "FazwRl"
 msgstr "Try again"
 
+#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx:40
+#: src/ui/app-sidebar-menu.tsx:45
+msgid "QOxktD"
+msgstr "Servers"
+
+#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx:49
+msgid "FgwBWh"
+msgstr "Rent a new server"
+
 #: src/app/app.virtbase.com/unauthorized.tsx:51
 msgid "srept4"
 msgstr "You are not authorized to access this page. Your session may have expired, please sign in again."
@@ -552,15 +561,15 @@ msgstr "Confirm password"
 msgid "xl27nc"
 msgstr "Reset Password"
 
-#: src/features/dashboard/components/empty-servers.tsx:30
+#: src/features/dashboard/components/empty-servers.tsx:31
 msgid "fmSs/a"
 msgstr "No servers found"
 
-#: src/features/dashboard/components/empty-servers.tsx:31
+#: src/features/dashboard/components/empty-servers.tsx:32
 msgid "zuhonL"
 msgstr "No servers have been rented yet. New servers will be displayed here."
 
-#: src/features/dashboard/components/empty-servers.tsx:37
+#: src/features/dashboard/components/empty-servers.tsx:38
 msgid "SjCCH5"
 msgstr "Rent a server"
 
@@ -671,7 +680,7 @@ msgid "DZ2Koj"
 msgstr "Direction"
 
 #: src/features/landing/components/server-firewall-demo.tsx:53
-#: src/features/servers/components/server-graphs.tsx:137
+#: src/features/servers/components/server-graphs.tsx:135
 msgid "YDkqMJ"
 msgstr "Incoming"
 
@@ -701,22 +710,22 @@ msgid "wbsq7O"
 msgstr "Usage"
 
 #: src/features/landing/components/server-stats-demo.tsx:57
-#: src/features/servers/components/server-graphs.tsx:99
+#: src/features/servers/components/server-graphs.tsx:97
 msgid "QgBuiV"
 msgstr "CPU"
 
 #: src/features/landing/components/server-stats-demo.tsx:80
-#: src/features/servers/components/server-graphs.tsx:108
+#: src/features/servers/components/server-graphs.tsx:106
 msgid "LjglgP"
 msgstr "RAM"
 
 #: src/features/landing/components/server-stats-demo.tsx:100
-#: src/features/servers/components/server-graphs.tsx:121
+#: src/features/servers/components/server-graphs.tsx:119
 msgid "OuCSDn"
 msgstr "Disk"
 
 #: src/features/landing/components/server-stats-demo.tsx:122
-#: src/features/servers/components/server-graphs.tsx:134
+#: src/features/servers/components/server-graphs.tsx:132
 msgid "I3JhPS"
 msgstr "Network"
 
@@ -724,53 +733,53 @@ msgstr "Network"
 msgid "yCCio2"
 msgstr "Last reboot"
 
-#: src/features/servers/components/server-graphs.tsx:88
+#: src/features/servers/components/server-graphs.tsx:86
 msgid "d8EqQY"
 msgstr "Days"
 
-#: src/features/servers/components/server-graphs.tsx:89
+#: src/features/servers/components/server-graphs.tsx:87
 msgid "j9Y9nu"
 msgstr "Hours"
 
-#: src/features/servers/components/server-graphs.tsx:90
+#: src/features/servers/components/server-graphs.tsx:88
 msgid "g6+IGw"
 msgstr "Weeks"
 
-#: src/features/servers/components/server-graphs.tsx:91
+#: src/features/servers/components/server-graphs.tsx:89
 msgid "AxDOiG"
 msgstr "Months"
 
-#: src/features/servers/components/server-graphs.tsx:92
+#: src/features/servers/components/server-graphs.tsx:90
 msgid "Jr5tMR"
 msgstr "Years"
 
-#: src/features/servers/components/server-graphs.tsx:102
+#: src/features/servers/components/server-graphs.tsx:100
 msgid "x8Ik2d"
 msgstr "CPU (%)"
 
-#: src/features/servers/components/server-graphs.tsx:111
+#: src/features/servers/components/server-graphs.tsx:109
 msgid "XYkq4n"
 msgstr "Used"
 
-#: src/features/servers/components/server-graphs.tsx:115
+#: src/features/servers/components/server-graphs.tsx:113
 msgid "kkjl2v"
 msgstr "Max"
 
-#: src/features/servers/components/server-graphs.tsx:124
+#: src/features/servers/components/server-graphs.tsx:122
 msgid "filwqD"
 msgstr "Read"
 
-#: src/features/servers/components/server-graphs.tsx:128
+#: src/features/servers/components/server-graphs.tsx:126
 msgid "k2veDA"
 msgstr "Write"
 
-#: src/features/servers/components/server-graphs.tsx:141
+#: src/features/servers/components/server-graphs.tsx:139
 msgid "Arxl88"
 msgstr "Outgoing"
 
-#: src/features/servers/components/server-graphs.tsx:160
-msgid "zuaKy3"
-msgstr "Intervall"
+#: src/features/servers/components/server-graphs.tsx:156
+msgid "6m3w+3"
+msgstr "Interval"
 
 #: src/features/servers/components/server-nav.tsx:42
 #: src/ui/app-sidebar.tsx:62
@@ -796,6 +805,50 @@ msgstr "rDNS"
 #: src/features/servers/components/server-nav.tsx:72
 msgid "fz0z4c"
 msgstr "Plan"
+
+#: src/features/servers/components/server-status-bar.tsx:52
+msgid "14KQU8"
+msgstr "Server suspended"
+
+#: src/features/servers/components/server-status-bar.tsx:53
+msgid "gmwFwF"
+msgstr "This server has been suspended and will be deleted at {date}, if not renewed."
+
+#: src/features/servers/components/server-status-bar.tsx:67
+msgid "+E3dAf"
+msgstr "Server is expiring"
+
+#: src/features/servers/components/server-status-bar.tsx:68
+msgid "fkf7mm"
+msgstr "This server is expiring {expiry} and will be deleted after, if not renewed"
+
+#: src/features/servers/components/server-status-bar.tsx:80
+msgid "sIwjuh"
+msgstr "Server is installing"
+
+#: src/features/servers/components/server-status-bar.tsx:81
+msgid "76X+Qu"
+msgstr "This server is being installed. Some features may not be available yet."
+
+#: src/features/servers/components/servers-list.tsx:115
+msgid "BGI16m"
+msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
+
+#: src/features/servers/components/servers-list.tsx:185
+msgid "FgydNe"
+msgstr "View"
+
+#: src/features/servers/components/servers-list.tsx:195
+msgid "SXm88k"
+msgstr "IP copied to clipboard!"
+
+#: src/features/servers/components/servers-list.tsx:204
+msgid "26lbPc"
+msgstr "Copy IP"
+
+#: src/features/servers/components/servers-list.tsx:214
+msgid "nWQFic"
+msgstr "Renew"
 
 #: src/features/servers/firewall/components/firewall-action-select.tsx:40
 msgid "ObQE5T"
@@ -845,10 +898,6 @@ msgstr "Terms of use"
 msgid "cPwv2c"
 msgstr "Privacy policy"
 
-#: src/ui/app-sidebar-menu.tsx:45
-msgid "QOxktD"
-msgstr "Servers"
-
 #: src/ui/app-sidebar-menu.tsx:50
 msgid "6dqYnF"
 msgstr "Invoices"
@@ -856,6 +905,14 @@ msgstr "Invoices"
 #: src/ui/app-sidebar.tsx:70
 msgid "y1Z3or"
 msgstr "Language"
+
+#: src/ui/copy-button.tsx:46
+msgid "9j0fO7"
+msgstr "Copied to clipboard!"
+
+#: src/ui/copy-button.tsx:55
+msgid "4l6vz1"
+msgstr "Copy"
 
 #: src/ui/feedback-button.tsx:30
 #: src/ui/feedback-button.tsx:96

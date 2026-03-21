@@ -19,4 +19,8 @@ import * as z from "zod";
 
 export const ServerPlanSchema = z.object({
   id: z.string().regex(/^pck_[A-Z0-9]{25}$/),
+  name: z.string().min(1).max(255),
+  cores: z.number().int(),
+  memory: z.number().int(),
+  storage: z.number().int(),
 });

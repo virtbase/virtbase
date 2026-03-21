@@ -19,9 +19,24 @@ import type { SortableColumns } from "@virtbase/db/utils";
 import * as z from "zod";
 import { PaginationSchema } from "../pagination";
 import { ProxmoxTemplateSchema } from "../proxmox-template";
+import { ServerPlanSchema } from "../server-plan";
 import { preprocessQueryArray } from "../utils";
 import type { Server } from "./shared";
 import { ServerSchema } from "./shared";
+
+export const GetServerInputSchema = z.object({
+  server_id: ServerSchema.shape.id,
+});
+
+export const GetServerOutputSchema = z.object({
+  server: ServerSchema.pick({
+    id: true,
+    name: true,
+    installed_at: true,
+    suspended_at: true,
+    terminates_at: true,
+  }),
+});
 
 const sortSchema = z
   .enum<SortableColumns<Server>>([
@@ -35,7 +50,7 @@ const sortSchema = z
   .array()
   .default(["id:asc"]);
 
-const expandSchema = z.enum(["template"]).array().default([]);
+const expandSchema = z.enum(["template", "plan"]).array().default([]);
 
 export const ListServersInputSchema = z.object({
   // Required for trpc-to-openapi to work correctly
@@ -70,6 +85,21 @@ export const ListServersOutputSchema = z.object({
           }).meta({
             description:
               "Only present if the `template` expand is included. The current template of the server.",
+          }),
+        ])
+        .nullable(),
+      plan: z
+        .union([
+          ServerPlanSchema.shape.id,
+          ServerPlanSchema.pick({
+            id: true,
+            name: true,
+            cores: true,
+            memory: true,
+            storage: true,
+          }).meta({
+            description:
+              "Only present if the `plan` expand is included. The current plan of the server.",
           }),
         ])
         .nullable(),

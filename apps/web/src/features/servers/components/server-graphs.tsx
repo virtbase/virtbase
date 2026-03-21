@@ -18,7 +18,6 @@
 "use client";
 
 import { cn } from "@virtbase/ui";
-import { Button } from "@virtbase/ui/button";
 import { Card, CardContent, CardHeader } from "@virtbase/ui/card";
 import type { ChartConfig } from "@virtbase/ui/chart";
 import {
@@ -32,15 +31,14 @@ import {
   ChartTooltipContent,
   XAxis,
 } from "@virtbase/ui/chart";
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@virtbase/ui/dropdown-menu";
 import { LucideCalendarClock } from "@virtbase/ui/icons";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@virtbase/ui/select";
 import { Spinner } from "@virtbase/ui/spinner";
 import { formatBytes } from "@virtbase/utils";
 import { useParams } from "next/navigation";
@@ -91,8 +89,6 @@ export default function ServerGraphs({
     month: t("Months"),
     year: t("Years"),
   } as Record<Timeframe, string>;
-
-  const timeframeLabel = timeframeMapping[activeTimeframe];
 
   const charts: ServerGraphsChartConfig = {
     cpu: {
@@ -149,30 +145,24 @@ export default function ServerGraphs({
     <Card className={cn("gap-0 overflow-hidden pt-0", className)} {...props}>
       <CardHeader className="flex flex-col items-stretch space-y-0 border-b lg:flex-row [.border-b]:p-0">
         <div className="inline-flex flex-1 gap-1 px-6 py-5 lg:py-4">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="outline">
-                <LucideCalendarClock aria-hidden />
-                {timeframeLabel}
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="start">
-              <DropdownMenuLabel>{t("Intervall")}</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              {["hour", "day", "week", "month", "year"].map((value) => {
-                const timeframe = value as Timeframe;
+          <Select
+            onValueChange={(value: Timeframe) => setActiveTimeframe(value)}
+            value={activeTimeframe}
+          >
+            <SelectTrigger>
+              <LucideCalendarClock aria-hidden />
+              <SelectValue placeholder={t("Interval")} />
+            </SelectTrigger>
+            <SelectContent position="popper">
+              {Object.entries(timeframeMapping).map(([value, label]) => {
                 return (
-                  <DropdownMenuCheckboxItem
-                    key={value}
-                    onCheckedChange={() => setActiveTimeframe(timeframe)}
-                    checked={activeTimeframe === value}
-                  >
-                    {timeframeMapping[timeframe]}
-                  </DropdownMenuCheckboxItem>
+                  <SelectItem key={value} value={value}>
+                    {label}
+                  </SelectItem>
                 );
               })}
-            </DropdownMenuContent>
-          </DropdownMenu>
+            </SelectContent>
+          </Select>
         </div>
         <div className="grid grid-cols-2 md:grid-cols-4">
           {["cpu", "memory", "disk", "network"].map((key) => {
