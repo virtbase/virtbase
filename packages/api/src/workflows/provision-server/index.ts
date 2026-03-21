@@ -15,8 +15,41 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export async function provisionServerWorkflow() {
+import { FatalError } from "workflow";
+import { cloneGuestStep } from "../shared/clone-guest";
+import { getTemplateStep } from "./get-template";
+import { selectProxmoxNodeStep } from "./select-proxmox-node";
+
+type ProvisionServerWorkflowParams = {
+  serverPlanId: string;
+  proxmoxTemplateId?: string | null;
+};
+
+export async function provisionServerWorkflow({
+  serverPlanId,
+  proxmoxTemplateId,
+}: ProvisionServerWorkflowParams) {
   "use workflow";
 
-  // TODO: Implement provision server workflow
+  const { plan, selectedNode } = await selectProxmoxNodeStep({ serverPlanId });
+
+  if (!proxmoxTemplateId) {
+    // TODO: Implement custom iso flow
+    throw new FatalError(
+      "Provisioning a server without a template is currently not implemented.",
+    );
+  }
+
+  const template = await getTemplateStep({
+    proxmoxTemplateId,
+    selectedNodeId: selectedNode.id,
+  });
+
+  const { clonedVmid, cloneUpid } = await cloneGuestStep({
+    proxmoxNode: selectedNode,
+    vmid: template.vmid,
+    options: {
+      target: template.storage,
+    },
+  });
 }

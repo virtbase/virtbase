@@ -16,10 +16,15 @@
  */
 
 import { relations, sql } from "drizzle-orm";
-import { pgTable } from "drizzle-orm/pg-core";
+import { pgEnum, pgTable } from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 import { proxmoxNodes } from "./proxmox-nodes";
 import { serverPlans } from "./server-plans";
+
+export const proxmoxNodeGroupStrategyEnum = pgEnum(
+  "proxmox_node_group_strategy",
+  ["RANDOM", "ROUND_ROBIN", "LEAST_USED", "FILL"],
+);
 
 /**
  * A Proxmox VE node group represents a logical grouping of Proxmox VE nodes
@@ -40,12 +45,19 @@ export const proxmoxNodeGroups = pgTable("proxmox_node_groups", (t) => ({
    * @example "Skylink EPYC 7443P"
    */
   name: t.text().notNull().unique(),
-
+  /**
+   * The strategy to use when selecting a node from the group.
+   *
+   * `RANDOM`: Select a node randomly.
+   * `ROUND_ROBIN`: Select a node in a round-robin manner.
+   * `LEAST_USED`: Select the node with the least usage.
+   * `FILL`: Opposite of `LEAST_USED`. Select the node with the most usage and fill it until it is full.
+   */
+  strategy: proxmoxNodeGroupStrategyEnum().notNull(),
   createdAt: t
     .timestamp({ withTimezone: true, mode: "date" })
     .defaultNow()
     .notNull(),
-
   updatedAt: t
     .timestamp({ withTimezone: true, mode: "date" })
     .defaultNow()
