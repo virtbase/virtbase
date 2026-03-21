@@ -19,6 +19,7 @@
 
 import { LucideChevronRight } from "@virtbase/ui/icons";
 import NextLink from "next/link";
+import { ServerTerminatesBadge } from "@/features/servers/components/server-terminates-badge";
 import { paths } from "@/lib/paths";
 import { OperatingSystemIcon } from "@/ui/operating-system-icon";
 import { useLatestServers } from "../hooks/use-latest-servers";
@@ -59,16 +60,21 @@ export function LatestServersList() {
             </div>
             <ServerStatusSmall server={server} />
           </div>
-          <NextLink
-            href={paths.app.servers.overview.getHref(server.id)}
-            className="shrink-0 outline-none transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
-            prefetch={false}
-          >
-            <LucideChevronRight
-              aria-hidden="true"
-              className="text-muted-foreground transition-colors hover:text-foreground"
-            />
-          </NextLink>
+          <div className="flex items-center gap-2">
+            <div className="min-w-0 grow">
+              <ServerTerminatesBadge server={server} />
+            </div>
+            <NextLink
+              href={paths.app.servers.overview.getHref(server.id)}
+              className="shrink-0 outline-none transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
+              prefetch={false}
+            >
+              <LucideChevronRight
+                aria-hidden="true"
+                className="text-muted-foreground transition-colors hover:text-foreground"
+              />
+            </NextLink>
+          </div>
         </div>
       ))}
     </div>

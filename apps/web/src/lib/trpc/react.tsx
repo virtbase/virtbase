@@ -23,9 +23,12 @@ import {
   createTRPCClient,
   httpBatchStreamLink,
   loggerLink,
+  retryLink,
 } from "@trpc/client";
 import { createTRPCContext } from "@trpc/tanstack-react-query";
 import type { AppRouter } from "@virtbase/api";
+import { APP_DOMAIN } from "@virtbase/utils";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import SuperJSON from "superjson";
 import { env } from "@/env";
@@ -47,10 +50,37 @@ export const { useTRPC, TRPCProvider } = createTRPCContext<AppRouter>();
 
 export function TRPCReactProvider(props: { children: React.ReactNode }) {
   const queryClient = getQueryClient();
+  const router = useRouter();
 
   const [trpcClient] = useState(() =>
     createTRPCClient<AppRouter>({
       links: [
+        retryLink({
+          retry: (otps) => {
+            if (otps.error.data && otps.error.data.code === "UNAUTHORIZED") {
+              router.replace(
+                `${APP_DOMAIN}/login?next=${encodeURIComponent(window.location.pathname)}`,
+              );
+              return false;
+            }
+
+            if (
+              otps.error.data &&
+              otps.error.data.code === "INTERNAL_SERVER_ERROR"
+            ) {
+              return false;
+            }
+
+            if (otps.op.type !== "query") {
+              return false;
+            }
+
+            return otps.attempts <= 3;
+          },
+          // Double every attempt, with max of 30 seconds (starting at 1 second)
+          retryDelayMs: (attemptIndex) =>
+            Math.min(1000 * 2 ** attemptIndex, 30000),
+        }),
         loggerLink({
           enabled: (op) =>
             env.NODE_ENV === "development" ||

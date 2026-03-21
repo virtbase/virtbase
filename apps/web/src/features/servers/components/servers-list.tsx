@@ -17,7 +17,6 @@
 
 "use client";
 
-import { Badge } from "@virtbase/ui/badge";
 import { Button } from "@virtbase/ui/button";
 import {
   DropdownMenu,
@@ -29,7 +28,6 @@ import {
 import {
   LucideCheckCircle2,
   LucideClock,
-  LucideClockAlert,
   LucideCopy,
   LucideCpu,
   LucideEye,
@@ -38,9 +36,9 @@ import {
   LucideMoreVertical,
 } from "@virtbase/ui/icons";
 import { Skeleton } from "@virtbase/ui/skeleton";
-import { formatBytes, isExpiring } from "@virtbase/utils";
+import { formatBytes } from "@virtbase/utils";
 import Link from "next/link";
-import { useExtracted, useFormatter, useNow } from "next-intl";
+import { useExtracted, useFormatter } from "next-intl";
 import { toast } from "sonner";
 import { EmptyServers } from "@/features/dashboard/components/empty-servers";
 import { useServerList } from "@/features/dashboard/hooks/use-server-list";
@@ -48,10 +46,10 @@ import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { paths } from "@/lib/paths";
 import { CopyButton } from "@/ui/copy-button";
 import { OperatingSystemIcon } from "@/ui/operating-system-icon";
+import { ServerTerminatesBadge } from "./server-terminates-badge";
 
 export function ServersList() {
   const t = useExtracted();
-  const now = useNow({ updateInterval: 1000 });
   const formatter = useFormatter();
 
   const { data: { servers } = {}, isPending } = useServerList();
@@ -151,22 +149,7 @@ export function ServersList() {
               </div>
               <div className="flex items-center gap-4 text-sm">
                 <div className="min-w-0 grow">
-                  {server.terminates_at && (
-                    <Badge
-                      variant={
-                        !isExpiring(server) ? "secondary" : "destructive"
-                      }
-                    >
-                      {!isExpiring(server) ? (
-                        <LucideClock aria-hidden="true" />
-                      ) : (
-                        <LucideClockAlert aria-hidden="true" />
-                      )}
-                      {formatter.relativeTime(server.terminates_at, {
-                        now,
-                      })}
-                    </Badge>
-                  )}
+                  <ServerTerminatesBadge server={server} />
                 </div>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>

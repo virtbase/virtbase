@@ -31,6 +31,11 @@ import { authClient } from "@/lib/auth/client";
 import Document from "@/ui/document";
 import ColoredLayout from "@/ui/layout/colored-layout";
 
+export {
+  defaultMetadata as metadata,
+  defaultViewport as viewport,
+} from "@/ui/document";
+
 // TODO: Correct localization when rootParams is available
 export default function NotFound() {
   return (

@@ -35,12 +35,13 @@ const nextConfig: NextConfig = {
   },
   experimental: {
     authInterrupts: true,
+    globalNotFound: true,
     instantNavigationDevToolsToggle: true,
     optimizePackageImports: ["radix-ui"],
     sri: {
       algorithm: "sha384",
     },
-    turbopackFileSystemCacheForDev: true,
+    // turbopackFileSystemCacheForDev: true,
   },
   headers: async () => [
     {
