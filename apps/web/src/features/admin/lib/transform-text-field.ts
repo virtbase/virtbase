@@ -15,22 +15,13 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { isAdmin } from "@virtbase/auth/utils";
-import { headers } from "next/headers";
-import { unauthorized } from "next/navigation";
-import { cache } from "react";
-import { auth } from "@/lib/auth/server";
-
-// [!] Used in action-client.ts
-// Change will affect all actions
-export const verifySession = cache(async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
-  if (!session || !isAdmin(session.user)) {
-    unauthorized();
-  }
-
-  return session;
-});
+export const transformTextField = {
+  // biome-ignore lint/suspicious/noGlobalIsNan: required
+  // biome-ignore lint/suspicious/noExplicitAny: required
+  input: (value: any) => (isNaN(value) || value === 0 ? "" : value.toString()),
+  output: (e: React.ChangeEvent<HTMLInputElement>) => {
+    const output = parseInt(e.target.value, 10);
+    // biome-ignore lint/suspicious/noGlobalIsNan: required
+    return isNaN(output) ? 0 : output;
+  },
+};

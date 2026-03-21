@@ -393,6 +393,7 @@ msgid "KdsDOJ"
 msgstr "Create SSH key"
 
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:85
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:105
 #: src/ui/feedback-button.tsx:31
 msgid "47FYwb"
 msgstr "Cancel"
@@ -570,6 +571,104 @@ msgstr "Revenue"
 #: src/features/admin/components/dashboard/sales-by-plan.tsx:126
 msgid "c8nvms"
 msgstr "Sales"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:96
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:112
+msgid "S+458D"
+msgstr "Create Proxmox Node"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:97
+msgid "deLbYn"
+msgstr "Create a new Proxmox VE node to host servers."
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:139
+msgid "uPDgth"
+msgstr "Hostname"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:164
+msgid "8cNS7n"
+msgstr "The hostname of the Proxmox VE node as configured in the Proxmox cluster."
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:180
+msgid "2BEZJh"
+msgstr "FQDN"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:205
+msgid "cUm+Vq"
+msgstr "The FQDN of the Proxmox VE node where the API is accessible. Must be reachable from the internet and use a valid TLS certificate."
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:222
+msgid "86ZUi9"
+msgstr "Token ID"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:242
+msgid "1gRCWa"
+msgstr "Token Secret"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:273
+msgid "6o6hYT"
+msgstr "Snippet Storage"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:302
+msgid "10Yrc8"
+msgstr "Cloud-init YAML files for any servers on this node will be stored here."
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:318
+msgid "IvtOOO"
+msgstr "Backup Storage"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:347
+msgid "elgt8s"
+msgstr "Backups of any servers on this node will be stored here."
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:364
+msgid "sB9VeA"
+msgstr "Uplink"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:395
+msgid "1oyHhQ"
+msgstr "The maximum possible network bandwidth of the Uplink in MB/s."
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:414
+msgid "gYG5ho"
+msgstr "Maximum number of VMs"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:418
+msgid "UYmKl1"
+msgstr "VMs"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:426
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:456
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:486
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:516
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:547
+msgid "ekXood"
+msgstr "Unlimited"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:444
+msgid "OCihQV"
+msgstr "Maximum memory"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:474
+msgid "T4Xl7g"
+msgstr "Maximum storage"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:504
+msgid "bRNAv0"
+msgstr "Maximum vCores"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:508
+#: src/features/servers/components/server-stats-card.tsx:90
+msgid "cCUvGW"
+msgstr "vCores"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:535
+msgid "ueCC3G"
+msgstr "Network limit"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:578
+msgid "U9Jxp7"
+msgstr "If reached, this node will no longer be used for services. Leave empty for unlimited."
 
 #: src/features/auth/components/auth-methods-separator.tsx:27
 msgid "Ntjkqd"
@@ -947,10 +1046,6 @@ msgstr "rDNS"
 #: src/features/servers/components/server-nav.tsx:72
 msgid "fz0z4c"
 msgstr "Plan"
-
-#: src/features/servers/components/server-stats-card.tsx:90
-msgid "cCUvGW"
-msgstr "vCores"
 
 #: src/features/servers/components/server-stats-card.tsx:192
 msgid "PW+sL4"

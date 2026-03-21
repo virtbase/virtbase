@@ -15,22 +15,21 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { isAdmin } from "@virtbase/auth/utils";
-import { headers } from "next/headers";
-import { unauthorized } from "next/navigation";
-import { cache } from "react";
-import { auth } from "@/lib/auth/server";
+import z from "zod";
+import { ObjectTimestampSchema } from "../timestamps";
 
-// [!] Used in action-client.ts
-// Change will affect all actions
-export const verifySession = cache(async () => {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
+export const DatacenterSchema = z.object({
+  id: z.string().regex(/^dc_[A-Z0-9]{25}$/),
+  name: z.string().min(1).max(255),
+  country: z.string().min(2).max(2),
+  created_at: ObjectTimestampSchema.shape.created_at,
+  updated_at: ObjectTimestampSchema.shape.updated_at,
+});
 
-  if (!session || !isAdmin(session.user)) {
-    unauthorized();
-  }
+export type Datacenter = z.infer<typeof DatacenterSchema>;
 
-  return session;
+export const CreateDatacenterInputSchema = DatacenterSchema.omit({
+  id: true,
+  created_at: true,
+  updated_at: true,
 });

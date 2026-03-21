@@ -15,5 +15,6 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+export type { Proxmox } from "proxmox-api";
 export * from "./get-last-task";
 export * from "./get-proxmox-instance";
