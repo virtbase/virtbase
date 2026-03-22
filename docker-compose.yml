@@ -1,5 +1,16 @@
 name: "virtbase-dev"
 services:
+  novnc-proxy:
+    build:
+      context: .
+      dockerfile: apps/novnc-proxy/Dockerfile
+    ports:
+      - ${PORT:-8443}:${PORT:-8443}
+    environment:
+      - NOVNC_PROXY_SECRET=${NOVNC_PROXY_SECRET}
+    env_file:
+      - .env
+    restart: always
   postgres:
     image: postgres:16-alpine
     command: '-d 1' # set debug-level

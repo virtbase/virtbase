@@ -15,14 +15,29 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import * as z from "zod";
+import type { WebSocketData } from "@virtbase/validators";
 
-export const ServerSchema = z.object({
-  id: z.string().regex(/^kvm_[A-Z0-9]{25}$/),
-  name: z.string().min(1).max(64),
-  installed_at: z.date().nullable(),
-  suspended_at: z.date().nullable(),
-  terminates_at: z.date().nullable(),
-});
+/**
+ * Constructs a websocket URL (wss://) for a given Proxmox VE server and VM.
+ * The URL can be used to the noVNC websocket endpoint of Proxmox VE.
+ *
+ * @returns The constructed websocket URL
+ */
+export const constructWebsocketUrl = ({
+  host,
+  node,
+  vmid,
+  type,
+  port,
+  vncticket,
+}: Pick<WebSocketData, "host" | "node" | "vmid" | "type"> & {
+  port: number | string;
+  vncticket: string;
+}): URL => {
+  const url = new URL(`wss://${host}`);
+  url.pathname = `/api2/json/nodes/${node}/${type}/${vmid}/vncwebsocket`;
+  url.searchParams.set("port", `${port}`);
+  url.searchParams.set("vncticket", vncticket);
 
-export type Server = z.infer<typeof ServerSchema>;
+  return url;
+};

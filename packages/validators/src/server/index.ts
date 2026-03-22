@@ -112,11 +112,14 @@ export const ListServersOutputSchema = z.object({
 
 export const RenameServerInputSchema = z.object({
   server_id: ServerSchema.shape.id,
-  name: z.string().min(1).max(255),
+  name: ServerSchema.shape.name,
 });
+
+export type RenameServerInput = z.infer<typeof RenameServerInputSchema>;
 
 export const RenameServerOutputSchema = z.void();
 
+export * from "./console";
 export * from "./firewall";
 export * from "./graphs";
 export * from "./shared";

@@ -16,13 +16,26 @@
  */
 
 import * as z from "zod";
+import { ServerSchema } from "./shared";
 
-export const ServerSchema = z.object({
-  id: z.string().regex(/^kvm_[A-Z0-9]{25}$/),
-  name: z.string().min(1).max(64),
-  installed_at: z.date().nullable(),
-  suspended_at: z.date().nullable(),
-  terminates_at: z.date().nullable(),
+export const GetServerConsoleInputSchema = z.object({
+  server_id: ServerSchema.shape.id,
 });
 
-export type Server = z.infer<typeof ServerSchema>;
+export type GetServerConsoleInput = z.infer<typeof GetServerConsoleInputSchema>;
+
+export const GetServerConsoleOutputSchema = z
+  .url({
+    protocol: /https/,
+    hostname: /novnc\.com/,
+  })
+  .meta({
+    description: "The noVNC console URL to access the server's console.",
+    examples: [
+      "https://novnc.com/noVNC/vnc.html?host=...&port=...&password=...&path=...",
+    ],
+  });
+
+export type GetServerConsoleOutput = z.infer<
+  typeof GetServerConsoleOutputSchema
+>;

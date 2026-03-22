@@ -1,0 +1,12 @@
+services:
+  novnc-proxy:
+    build:
+      context: ../..
+      dockerfile: apps/novnc-proxy/Dockerfile
+    ports:
+      - ${PORT:-8443}:${PORT:-8443}
+    environment:
+      - NOVNC_PROXY_SECRET=${NOVNC_PROXY_SECRET}
+    env_file:
+      - .env
+    restart: always

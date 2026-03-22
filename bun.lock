@@ -18,6 +18,19 @@
         "typescript": "catalog:",
       },
     },
+    "apps/novnc-proxy": {
+      "name": "@virtbase/novnc-proxy",
+      "dependencies": {
+        "@virtbase/utils": "workspace:*",
+        "@virtbase/validators": "workspace:*",
+        "zod": "catalog:",
+      },
+      "devDependencies": {
+        "@biomejs/biome": "catalog:",
+        "@virtbase/tsconfig": "workspace:*",
+        "typescript": "catalog:",
+      },
+    },
     "apps/web": {
       "name": "@virtbase/web",
       "dependencies": {
@@ -1592,6 +1605,8 @@
     "@virtbase/db": ["@virtbase/db@workspace:packages/db"],
 
     "@virtbase/email": ["@virtbase/email@workspace:packages/email"],
+
+    "@virtbase/novnc-proxy": ["@virtbase/novnc-proxy@workspace:apps/novnc-proxy"],
 
     "@virtbase/tailwind-config": ["@virtbase/tailwind-config@workspace:tooling/tailwind"],
 

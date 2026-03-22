@@ -33,6 +33,7 @@ import {
   protectedProcedure,
   serverProcedure,
 } from "../../trpc";
+import { serversConsoleRouter } from "./console";
 import { serverFirewallRouter } from "./firewall";
 import { serversGraphsRouter } from "./graphs";
 import { serversStatusRouter } from "./status";
@@ -41,6 +42,7 @@ export const serversRouter = createTRPCRouter({
   firewall: serverFirewallRouter,
   graphs: serversGraphsRouter,
   status: serversStatusRouter,
+  console: serversConsoleRouter,
   get: serverProcedure
     .meta({
       openapi: {

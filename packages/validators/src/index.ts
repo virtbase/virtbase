@@ -18,6 +18,7 @@
 export * from "./checkout";
 export * from "./invoices";
 export * from "./pagination";
+export * from "./proxy";
 export * from "./ssh-keys";
 export * from "./timestamps";
 export * from "./utils";

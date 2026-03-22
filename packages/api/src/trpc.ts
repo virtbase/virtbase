@@ -21,6 +21,7 @@ import type { Auth } from "@virtbase/auth";
 import { and, eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { proxmoxNodes, servers } from "@virtbase/db/schema";
+import { isInstalling, isSuspended, isTerminated } from "@virtbase/utils";
 import { ServerSchema } from "@virtbase/validators/server";
 import superjson from "superjson";
 import type { OpenApiMeta } from "trpc-to-openapi";
@@ -103,7 +104,7 @@ type ServerProcedureMeta = {
    * Restrict the procedure to only allow
    * certain server states.
    */
-  states?: Array<"">;
+  forbiddenStates?: Array<"suspended" | "terminated" | "installing">;
   /**
    * Additional fields to return with
    * the server data.
@@ -238,7 +239,7 @@ const authMiddleware = t.middleware(async ({ ctx, next }) => {
 });
 
 const serverMiddleware = authMiddleware.unstable_pipe(
-  async ({ ctx, next, getRawInput }) => {
+  async ({ ctx, next, getRawInput, meta }) => {
     const rawInput = await getRawInput();
     if (
       !rawInput ||
@@ -296,6 +297,16 @@ const serverMiddleware = authMiddleware.unstable_pipe(
     if (!server) {
       // Server does not exist or user does not have access to it
       throw new TRPCError({ code: "NOT_FOUND" });
+    }
+
+    if (meta?.forbiddenStates && meta.forbiddenStates.length > 0) {
+      if (
+        (meta.forbiddenStates.includes("suspended") && isSuspended(server)) ||
+        (meta.forbiddenStates.includes("terminated") && isTerminated(server)) ||
+        (meta.forbiddenStates.includes("installing") && isInstalling(server))
+      ) {
+        throw new TRPCError({ code: "FORBIDDEN" });
+      }
     }
 
     // [!] Split sensitive data from server data
