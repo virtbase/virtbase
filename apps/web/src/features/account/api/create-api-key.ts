@@ -15,8 +15,32 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { APIKeysCard } from "@/features/account/components/api-keys/api-keys-card";
+"use server";
 
-export default function Page() {
-  return <APIKeysCard />;
-}
+import { TRPCError } from "@trpc/server";
+import type { CreateAPIKeyInput } from "@virtbase/validators";
+import { headers } from "next/headers";
+import { auth } from "@/lib/auth/server";
+
+// Creating API keys is only possible via server actions
+export const createApiKeyAction = async (input: CreateAPIKeyInput) => {
+  const heads = await headers();
+
+  const session = await auth.api.getSession({
+    headers: heads,
+  });
+
+  if (!session) {
+    throw new TRPCError({ code: "UNAUTHORIZED" });
+  }
+
+  const response = await auth.api.createApiKey({
+    body: {
+      name: input.name,
+      permissions: input.permissions,
+      userId: session.user.id,
+    },
+  });
+
+  return response.key;
+};

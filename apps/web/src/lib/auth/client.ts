@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { apiKeyClient } from "@better-auth/api-key/client";
 import { passkeyClient } from "@better-auth/passkey/client";
 import type { Auth } from "@virtbase/auth";
 import {
@@ -31,6 +32,7 @@ export const authClient = createAuthClient({
   plugins: [
     inferAdditionalFields<Auth>(),
     adminClient(),
+    apiKeyClient(),
     emailOTPClient(),
     lastLoginMethodClient(),
     magicLinkClient(),

@@ -33,11 +33,13 @@ import {
 } from "@virtbase/ui/drawer";
 import { useMediaQuery } from "@virtbase/ui/hooks";
 import type React from "react";
+import { cn } from ".";
 
 interface ResponsiveDialogProps extends React.ComponentProps<typeof Dialog> {
   title: string;
   description?: string;
   footer?: React.ReactNode;
+  containerClassName?: string;
 }
 
 /**
@@ -48,6 +50,7 @@ export function ResponsiveDialog({
   children,
   description,
   footer,
+  containerClassName,
   ...props
 }: ResponsiveDialogProps) {
   const { isDesktop } = useMediaQuery();
@@ -66,7 +69,12 @@ export function ResponsiveDialog({
               </DialogDescription>
             )}
           </DialogHeader>
-          <div className="scrollbar-thin max-h-[80vh] overflow-y-auto px-6 py-4">
+          <div
+            className={cn(
+              "scrollbar-thin max-h-[80vh] overflow-y-auto px-6 py-4",
+              containerClassName,
+            )}
+          >
             {children}
           </div>
           <DialogFooter className="border-t p-4">{footer}</DialogFooter>
@@ -86,7 +94,12 @@ export function ResponsiveDialog({
             </DrawerDescription>
           )}
         </DrawerHeader>
-        <div className="scrollbar-thin overflow-y-scroll border-y px-6 py-4">
+        <div
+          className={cn(
+            "scrollbar-thin overflow-y-scroll border-y px-6 py-4",
+            containerClassName,
+          )}
+        >
           {children}
         </div>
         <DrawerFooter>{footer}</DrawerFooter>

@@ -16,7 +16,13 @@
  */
 
 import { and, count, eq } from "@virtbase/db";
-import { proxmoxTemplates, serverPlans, servers } from "@virtbase/db/schema";
+import {
+  datacenters,
+  proxmoxNodes,
+  proxmoxTemplates,
+  serverPlans,
+  servers,
+} from "@virtbase/db/schema";
 import { buildOrderBy } from "@virtbase/db/utils";
 import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from "@virtbase/utils";
 import { getPaginationMeta } from "@virtbase/validators";
@@ -64,6 +70,10 @@ export const serversRouter = createTRPCRouter({
         server: {
           id: server.id,
           name: server.name,
+          plan: server.plan,
+          template: server.template,
+          datacenter: server.datacenter,
+          node: server.node,
           installed_at: server.installed_at,
           suspended_at: server.suspended_at,
           terminates_at: server.terminates_at,
@@ -125,9 +135,30 @@ export const serversRouter = createTRPCRouter({
                     id: proxmoxTemplates.id,
                     icon: proxmoxTemplates.icon,
                   },
+              datacenter: !input.expand.includes("datacenter")
+                ? datacenters.id
+                : {
+                    id: datacenters.id,
+                    name: datacenters.name,
+                  },
+              node: !input.expand.includes("node")
+                ? proxmoxNodes.id
+                : {
+                    id: proxmoxNodes.id,
+                    hostname: proxmoxNodes.hostname,
+                    netrate: proxmoxNodes.netrate,
+                    storage_description: proxmoxNodes.storageDescription,
+                    memory_description: proxmoxNodes.memoryDescription,
+                    cpu_description: proxmoxNodes.cpuDescription,
+                  },
             })
             .from(servers)
             .innerJoin(serverPlans, eq(servers.serverPlanId, serverPlans.id))
+            .innerJoin(proxmoxNodes, eq(proxmoxNodes.id, servers.proxmoxNodeId))
+            .innerJoin(
+              datacenters,
+              eq(datacenters.id, proxmoxNodes.datacenterId),
+            )
             .leftJoin(
               proxmoxTemplates,
               eq(servers.proxmoxTemplateId, proxmoxTemplates.id),
@@ -158,6 +189,8 @@ export const serversRouter = createTRPCRouter({
           name: item.name,
           template: item.template,
           plan: item.plan,
+          datacenter: item.datacenter,
+          node: item.node,
           installed_at: item.installedAt,
           suspended_at: item.suspendedAt,
           terminates_at: item.terminatesAt,

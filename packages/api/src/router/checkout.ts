@@ -17,9 +17,9 @@
 
 import * as Sentry from "@sentry/node";
 import { TRPCError } from "@trpc/server";
-import { eq } from "@virtbase/db";
-import { serverPlans } from "@virtbase/db/schema";
-import { encryptPayload } from "@virtbase/utils";
+import { and, eq } from "@virtbase/db";
+import { serverPlans, servers } from "@virtbase/db/schema";
+import { encryptPayload, isInstalling } from "@virtbase/utils";
 import type { OrderConfigurationSnapshot } from "@virtbase/validators";
 import {
   OrderServerPlanInputSchema,
@@ -68,6 +68,7 @@ export const checkoutRouter = createTRPCRouter({
               id: serverPlans.id,
               name: serverPlans.name,
               price: serverPlans.price,
+              storage: serverPlans.storage,
             })
             .from(serverPlans)
             .where(eq(serverPlans.id, planId))
@@ -82,6 +83,53 @@ export const checkoutRouter = createTRPCRouter({
 
       if (!plan) {
         throw new TRPCError({ code: "NOT_FOUND" });
+      }
+
+      if (input.type === "extend_server" || input.type === "upgrade_server") {
+        const server = await db.transaction(
+          async (tx) => {
+            return tx
+              .select({
+                id: servers.id,
+                installed_at: servers.installedAt,
+                currentStorage: serverPlans.storage,
+              })
+              .from(servers)
+              .innerJoin(serverPlans, eq(servers.serverPlanId, serverPlans.id))
+              .where(
+                and(
+                  eq(servers.id, input.server_id),
+                  // [!] Authorization: Only allow the user to extend or upgrade their own server
+                  eq(servers.userId, userId),
+                ),
+              )
+              .limit(1)
+              .then(([res]) => res);
+          },
+          {
+            accessMode: "read only",
+            isolationLevel: "read committed",
+          },
+        );
+
+        if (!server) {
+          throw new TRPCError({ code: "NOT_FOUND" });
+        }
+
+        if (isInstalling(server)) {
+          // Cannot extend or upgrade an installing server
+          throw new TRPCError({ code: "BAD_REQUEST" });
+        }
+
+        if (
+          input.type === "upgrade_server" &&
+          server.currentStorage > plan.storage
+        ) {
+          // Downgrading to a smaller storage plan is not supported
+          throw new TRPCError({
+            code: "BAD_REQUEST",
+          });
+        }
       }
 
       let configuration: OrderConfigurationSnapshot;

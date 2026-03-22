@@ -20,9 +20,17 @@ import { initTRPC, TRPCError } from "@trpc/server";
 import type { Auth } from "@virtbase/auth";
 import { and, eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
-import { proxmoxNodes, servers } from "@virtbase/db/schema";
+import {
+  datacenters,
+  proxmoxNodes,
+  proxmoxTemplates,
+  serverPlans,
+  servers,
+} from "@virtbase/db/schema";
 import { isInstalling, isSuspended, isTerminated } from "@virtbase/utils";
-import { ServerSchema } from "@virtbase/validators/server";
+import type { APIKeyPermissions } from "@virtbase/validators";
+import type { ServerExpand } from "@virtbase/validators/server";
+import { GetServerInputSchema } from "@virtbase/validators/server";
 import superjson from "superjson";
 import type { OpenApiMeta } from "trpc-to-openapi";
 import z, { ZodError } from "zod";
@@ -109,11 +117,21 @@ type ServerProcedureMeta = {
    * Additional fields to return with
    * the server data.
    */
-  expand?: Array<"">;
+  expand?: ServerExpand;
+};
+
+type APIKeyProcedureMeta = {
+  /**
+   * Restrict the procedure to only allow
+   * certain API key permissions.
+   */
+  permissions?: Partial<APIKeyPermissions>;
 };
 
 const t = initTRPC
-  .meta<OpenApiMeta & RatelimitMeta & ServerProcedureMeta>()
+  .meta<
+    OpenApiMeta & RatelimitMeta & ServerProcedureMeta & APIKeyProcedureMeta
+  >()
   .context<typeof createTRPCContext>()
   .create({
     transformer: superjson,
@@ -192,12 +210,12 @@ const ratelimitMiddleware = t.middleware(
 );
 
 // TODO: Add OAuth
-const authMiddleware = t.middleware(async ({ ctx, next }) => {
+const authMiddleware = t.middleware(async ({ ctx, next, meta }) => {
   if (ctx.apiKey) {
     const result = await ctx.authApi.verifyApiKey({
       body: {
         key: ctx.apiKey,
-        // TODO: Permissions
+        permissions: meta?.permissions,
       },
     });
 
@@ -241,19 +259,17 @@ const authMiddleware = t.middleware(async ({ ctx, next }) => {
 const serverMiddleware = authMiddleware.unstable_pipe(
   async ({ ctx, next, getRawInput, meta }) => {
     const rawInput = await getRawInput();
-    if (
-      !rawInput ||
-      typeof rawInput !== "object" ||
-      !("server_id" in rawInput)
-    ) {
-      throw new TRPCError({ code: "BAD_REQUEST" });
-    }
 
-    const { success, data: serverId } =
-      await ServerSchema.shape.id.safeParseAsync(rawInput.server_id);
+    const { success, data } =
+      await GetServerInputSchema.safeParseAsync(rawInput);
     if (!success) {
       throw new TRPCError({ code: "BAD_REQUEST" });
     }
+
+    const { server_id: serverId, expand } = data;
+
+    // Merge internal expansions with user provided expansions and deduplicate
+    const expansions = new Set([...(meta?.expand ?? []), ...expand]);
 
     const { db } = ctx;
     const server = await db.transaction(
@@ -267,6 +283,37 @@ const serverMiddleware = authMiddleware.unstable_pipe(
             suspended_at: servers.suspendedAt,
             terminates_at: servers.terminatesAt,
             created_at: servers.createdAt,
+            plan: expansions.has("plan")
+              ? serverPlans.id
+              : {
+                  id: serverPlans.id,
+                  name: serverPlans.name,
+                  cores: serverPlans.cores,
+                  memory: serverPlans.memory,
+                  storage: serverPlans.storage,
+                },
+            template: expansions.has("template")
+              ? proxmoxTemplates.id
+              : {
+                  id: proxmoxTemplates.id,
+                  icon: proxmoxTemplates.icon,
+                },
+            datacenter: expansions.has("datacenter")
+              ? datacenters.id
+              : {
+                  id: datacenters.id,
+                  name: datacenters.name,
+                },
+            node: expansions.has("node")
+              ? proxmoxNodes.id
+              : {
+                  id: proxmoxNodes.id,
+                  hostname: proxmoxNodes.hostname,
+                  netrate: proxmoxNodes.netrate,
+                  storage_description: proxmoxNodes.storageDescription,
+                  memory_description: proxmoxNodes.memoryDescription,
+                  cpu_description: proxmoxNodes.cpuDescription,
+                },
             proxmoxNode: {
               id: proxmoxNodes.id,
               hostname: proxmoxNodes.hostname,
@@ -285,6 +332,12 @@ const serverMiddleware = authMiddleware.unstable_pipe(
             ),
           )
           .innerJoin(proxmoxNodes, eq(proxmoxNodes.id, servers.proxmoxNodeId))
+          .innerJoin(datacenters, eq(datacenters.id, proxmoxNodes.datacenterId))
+          .innerJoin(serverPlans, eq(servers.serverPlanId, serverPlans.id))
+          .leftJoin(
+            proxmoxTemplates,
+            eq(servers.proxmoxTemplateId, proxmoxTemplates.id),
+          )
           .limit(1)
           .then(([row]) => row);
       },

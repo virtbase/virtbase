@@ -17,6 +17,7 @@
 
 import type { SortableColumns } from "@virtbase/db/utils";
 import * as z from "zod";
+import { DatacenterSchema, ProxmoxNodeSchema } from "../admin";
 import { PaginationSchema } from "../pagination";
 import { ProxmoxTemplateSchema } from "../proxmox-template";
 import { ServerPlanSchema } from "../server-plan";
@@ -24,8 +25,72 @@ import { preprocessQueryArray } from "../utils";
 import type { Server } from "./shared";
 import { ServerSchema } from "./shared";
 
+export const ServerExpandSchema = z
+  .enum(["template", "plan", "datacenter", "node"])
+  .array()
+  .default([]);
+
+export type ServerExpand = z.infer<typeof ServerExpandSchema>;
+
+const ServerTemplateField = z
+  .union([
+    ProxmoxTemplateSchema.shape.id,
+    ProxmoxTemplateSchema.pick({
+      id: true,
+      icon: true,
+    }).meta({
+      description:
+        "Only present if the `template` expand is included. The current template of the server.",
+    }),
+  ])
+  .nullable();
+
+const ServerPlanField = z.union([
+  ServerPlanSchema.shape.id,
+  ServerPlanSchema.pick({
+    id: true,
+    name: true,
+    cores: true,
+    memory: true,
+    storage: true,
+  }).meta({
+    description:
+      "Only present if the `plan` expand is included. The current plan of the server.",
+  }),
+]);
+
+const ServerDatacenterField = z.union([
+  DatacenterSchema.shape.id,
+  DatacenterSchema.pick({
+    id: true,
+    name: true,
+  }).meta({
+    description:
+      "Only present if the `datacenter` expand is included. The datacenter of the server.",
+  }),
+]);
+
+const ServerNodeField = z.union([
+  ProxmoxNodeSchema.shape.id,
+  ProxmoxNodeSchema.pick({
+    id: true,
+    hostname: true,
+    netrate: true,
+    storage_description: true,
+    memory_description: true,
+    cpu_description: true,
+  }).meta({
+    description:
+      "Only present if the `node` expand is included. The node of the server.",
+  }),
+]);
+
 export const GetServerInputSchema = z.object({
   server_id: ServerSchema.shape.id,
+  expand: z.preprocess(
+    preprocessQueryArray,
+    ServerExpandSchema,
+  ) as unknown as typeof ServerExpandSchema,
 });
 
 export const GetServerOutputSchema = z.object({
@@ -35,6 +100,11 @@ export const GetServerOutputSchema = z.object({
     installed_at: true,
     suspended_at: true,
     terminates_at: true,
+  }).extend({
+    plan: ServerPlanField,
+    template: ServerTemplateField,
+    datacenter: ServerDatacenterField,
+    node: ServerNodeField,
   }),
 });
 
@@ -50,8 +120,6 @@ const sortSchema = z
   .array()
   .default(["id:asc"]);
 
-const expandSchema = z.enum(["template", "plan"]).array().default([]);
-
 export const ListServersInputSchema = z.object({
   // Required for trpc-to-openapi to work correctly
   sort: z.preprocess(
@@ -60,8 +128,8 @@ export const ListServersInputSchema = z.object({
   ) as unknown as typeof sortSchema,
   expand: z.preprocess(
     preprocessQueryArray,
-    expandSchema,
-  ) as unknown as typeof expandSchema,
+    ServerExpandSchema,
+  ) as unknown as typeof ServerExpandSchema,
   name: ServerSchema.shape.name.optional(),
   page: PaginationSchema.shape.page,
   per_page: PaginationSchema.shape.per_page,
@@ -76,33 +144,10 @@ export const ListServersOutputSchema = z.object({
       suspended_at: true,
       terminates_at: true,
     }).extend({
-      template: z
-        .union([
-          ProxmoxTemplateSchema.shape.id,
-          ProxmoxTemplateSchema.pick({
-            id: true,
-            icon: true,
-          }).meta({
-            description:
-              "Only present if the `template` expand is included. The current template of the server.",
-          }),
-        ])
-        .nullable(),
-      plan: z
-        .union([
-          ServerPlanSchema.shape.id,
-          ServerPlanSchema.pick({
-            id: true,
-            name: true,
-            cores: true,
-            memory: true,
-            storage: true,
-          }).meta({
-            description:
-              "Only present if the `plan` expand is included. The current plan of the server.",
-          }),
-        ])
-        .nullable(),
+      template: ServerTemplateField,
+      plan: ServerPlanField,
+      datacenter: ServerDatacenterField,
+      node: ServerNodeField,
     }),
   ),
   meta: z.object({

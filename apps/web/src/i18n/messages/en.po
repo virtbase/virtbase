@@ -65,6 +65,7 @@ msgid "TZHi//"
 msgstr "View Help Center"
 
 #: src/app/(public)/[locale]/contact/page.tsx:100
+#: src/features/account/components/api-keys/api-keys-card.tsx:63
 #: src/ui/footer.tsx:123
 msgid "yKOyCk"
 msgstr "API Documentation"
@@ -212,6 +213,7 @@ msgid "tNqFr9"
 msgstr "Reset your password for your {appName} account."
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/console/page.tsx:26
+#: src/features/account/components/api-keys/create-api-key-button.tsx:57
 #: src/features/servers/components/server-nav.tsx:48
 msgid "gc+2Z2"
 msgstr "Console"
@@ -241,6 +243,7 @@ msgid "FazwRl"
 msgstr "Try again"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/page.tsx:40
+#: src/features/account/components/api-keys/create-api-key-button.tsx:54
 #: src/features/admin/components/admin-sidebar-groups.tsx:61
 #: src/ui/app-sidebar-menu.tsx:45
 msgid "QOxktD"
@@ -289,6 +292,114 @@ msgstr "SSH Keys"
 #: src/ui/nav-user.tsx:120
 msgid "TwyMau"
 msgstr "Account"
+
+#: src/features/account/components/api-keys/api-keys-card.tsx:48
+msgid "jSp63j"
+msgstr "API Keys"
+
+#: src/features/account/components/api-keys/api-keys-card.tsx:50
+msgid "igeEmM"
+msgstr "Create and manage API keys for use with the public API."
+
+#: src/features/account/components/api-keys/api-keys-card.tsx:87
+msgid "uWmank"
+msgstr "Multiple API keys can be used for authentication."
+
+#: src/features/account/components/api-keys/api-keys-list.tsx:53
+msgid "oK3ylm"
+msgstr "No API keys"
+
+#: src/features/account/components/api-keys/api-keys-list.tsx:55
+msgid "8N9621"
+msgstr "No API keys have been created yet."
+
+#: src/features/account/components/api-keys/api-keys-list.tsx:94
+#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:83
+msgid "goQBbA"
+msgstr "Created {date}"
+
+#: src/features/account/components/api-keys/api-keys-list.tsx:103
+#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:92
+#: src/features/admin/components/users/users-table/columns.tsx:349
+msgid "K3r6DQ"
+msgstr "Delete"
+
+#: src/features/account/components/api-keys/create-api-key-button.tsx:55
+#: src/features/servers/components/server-nav.tsx:60
+msgid "T3lqx5"
+msgstr "Backups"
+
+#: src/features/account/components/api-keys/create-api-key-button.tsx:56
+#: src/features/servers/components/server-nav.tsx:54
+msgid "Bwqhmd"
+msgstr "Firewall"
+
+#: src/features/account/components/api-keys/create-api-key-button.tsx:58
+#: src/features/servers/components/server-nav.tsx:66
+msgid "F+02/l"
+msgstr "rDNS"
+
+#: src/features/account/components/api-keys/create-api-key-button.tsx:59
+msgid "TrBeGD"
+msgstr "SSH keys"
+
+#: src/features/account/components/api-keys/create-api-key-button.tsx:60
+#: src/ui/app-sidebar-menu.tsx:50
+msgid "6dqYnF"
+msgstr "Invoices"
+
+#: src/features/account/components/api-keys/create-api-key-button.tsx:91
+msgid "+J17tT"
+msgstr "Create API key"
+
+#: src/features/account/components/api-keys/create-api-key-button.tsx:117
+#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:85
+#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:71
+#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:72
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:106
+#: src/features/servers/components/overview/rename-server-dialog.tsx:74
+#: src/ui/feedback-button.tsx:31
+msgid "47FYwb"
+msgstr "Cancel"
+
+#: src/features/account/components/api-keys/create-api-key-button.tsx:134
+msgid "fnMCvo"
+msgstr "API key created"
+
+#: src/features/account/components/api-keys/create-api-key-button.tsx:137
+msgid "TQSqlk"
+msgstr "This key will only be displayed once. Please save it securely, as it cannot be restored:"
+
+#: src/features/account/components/api-keys/create-api-key-button.tsx:156
+#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
+#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:95
+#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:96
+#: src/features/servers/components/overview/rename-server-dialog.tsx:94
+#: src/ui/feedback-button.tsx:32
+msgid "HAlOn1"
+msgstr "Name"
+
+#: src/features/account/components/api-keys/create-api-key-button.tsx:164
+msgid "5Cu2sb"
+msgstr "My API key"
+
+#: src/features/account/components/api-keys/create-api-key-button.tsx:172
+msgid "SFuk1v"
+msgstr "Permissions"
+
+#: src/features/account/components/api-keys/create-api-key-button.tsx:174
+msgid "4u9ABD"
+msgstr "Depending on the permissions, the API key can perform certain actions."
+
+#: src/features/account/components/api-keys/create-api-key-button.tsx:211
+#: src/features/servers/components/server-graphs.tsx:120
+msgid "filwqD"
+msgstr "Read"
+
+#: src/features/account/components/api-keys/create-api-key-button.tsx:217
+#: src/features/servers/components/server-graphs.tsx:124
+msgid "k2veDA"
+msgstr "Write"
 
 #: src/features/account/components/authentication/add-passkey-button.tsx:47
 msgid "IknBAk"
@@ -403,23 +514,6 @@ msgstr "Unknown IP address"
 msgid "KdsDOJ"
 msgstr "Create SSH key"
 
-#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:85
-#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:71
-#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:72
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:106
-#: src/features/servers/components/overview/rename-server-dialog.tsx:74
-#: src/ui/feedback-button.tsx:31
-msgid "47FYwb"
-msgstr "Cancel"
-
-#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
-#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:95
-#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:96
-#: src/features/servers/components/overview/rename-server-dialog.tsx:94
-#: src/ui/feedback-button.tsx:32
-msgid "HAlOn1"
-msgstr "Name"
-
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:123
 msgid "q7jtp0"
 msgstr "My SSH key"
@@ -443,15 +537,6 @@ msgstr "No SSH keys"
 #: src/features/account/components/ssh-keys/ssh-keys-list.tsx:52
 msgid "6NcUU3"
 msgstr "No SSH keys have been created yet."
-
-#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:83
-msgid "goQBbA"
-msgstr "Created {date}"
-
-#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:92
-#: src/features/admin/components/users/users-table/columns.tsx:349
-msgid "K3r6DQ"
-msgstr "Delete"
 
 #: src/features/admin/components/admin-sidebar-groups.tsx:48
 #: src/features/servers/components/server-nav.tsx:42
@@ -1159,14 +1244,6 @@ msgstr "Used"
 msgid "kkjl2v"
 msgstr "Max"
 
-#: src/features/servers/components/server-graphs.tsx:120
-msgid "filwqD"
-msgstr "Read"
-
-#: src/features/servers/components/server-graphs.tsx:124
-msgid "k2veDA"
-msgstr "Write"
-
 #: src/features/servers/components/server-graphs.tsx:137
 msgid "Arxl88"
 msgstr "Outgoing"
@@ -1174,18 +1251,6 @@ msgstr "Outgoing"
 #: src/features/servers/components/server-graphs.tsx:154
 msgid "6m3w+3"
 msgstr "Interval"
-
-#: src/features/servers/components/server-nav.tsx:54
-msgid "Bwqhmd"
-msgstr "Firewall"
-
-#: src/features/servers/components/server-nav.tsx:60
-msgid "T3lqx5"
-msgstr "Backups"
-
-#: src/features/servers/components/server-nav.tsx:66
-msgid "F+02/l"
-msgstr "rDNS"
 
 #: src/features/servers/components/server-nav.tsx:72
 msgid "fz0z4c"
@@ -1335,10 +1400,6 @@ msgstr "Terms of use"
 #: src/ui/app-footer.tsx:61
 msgid "cPwv2c"
 msgstr "Privacy policy"
-
-#: src/ui/app-sidebar-menu.tsx:50
-msgid "6dqYnF"
-msgstr "Invoices"
 
 #: src/ui/copy-button.tsx:46
 msgid "9j0fO7"
