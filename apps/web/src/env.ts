@@ -44,6 +44,9 @@ export const env = createEnv({
     STRIPE_SECRET_KEY: z4.string().min(1),
     STRIPE_WEBHOOK_SECRET: z4.string().min(1),
     CRON_SECRET: z4.string().min(1),
+    // noVNC Proxy
+    NOVNC_PROXY_SECRET: z4.string().min(1),
+    NOVNC_PROXY_URL: z4.string().min(1),
   },
   client: {
     // Sentry Configuration

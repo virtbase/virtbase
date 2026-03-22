@@ -19,6 +19,8 @@ import { mapProxmoxServerStatus, mapProxmoxTaskStatus } from "@virtbase/utils";
 import {
   GetServerStatusInputSchema,
   GetServerStatusOutputSchema,
+  UpdateServerStatusInputSchema,
+  UpdateServerStatusOutputSchema,
 } from "@virtbase/validators/server";
 import { getLastTask } from "../../proxmox";
 import { getDiskInfo } from "../../proxmox/get-disk-info";
@@ -84,10 +86,62 @@ export const serversStatusRouter = createTRPCRouter({
             maxdisk: statusResponse.maxdisk,
             cpus: statusResponse.cpus,
           },
-          installedAt: server.installed_at,
-          suspendedAt: server.suspended_at,
-          terminatesAt: server.terminates_at,
+          installed_at: server.installed_at,
+          suspended_at: server.suspended_at,
+          terminates_at: server.terminates_at,
         },
       };
+    }),
+  update: serverProcedure
+    .meta({
+      openapi: {
+        method: "POST",
+        path: "/servers/{server_id}/status",
+        protect: true,
+        contentTypes: ["application/json"],
+        tags: ["Servers"],
+        summary: "Change status",
+        description: "Change the status of a server.",
+      },
+      forbiddenStates: ["suspended", "terminated", "installing"],
+    })
+    .input(UpdateServerStatusInputSchema)
+    .output(UpdateServerStatusOutputSchema)
+    .mutation(async ({ ctx, input }) => {
+      const { instance } = ctx;
+      const { action } = input;
+
+      switch (action) {
+        case "start":
+          await instance.vm.status.start.$post();
+          break;
+        case "stop":
+          await instance.vm.status.stop.$post();
+          break;
+        case "pause":
+          await instance.vm.status.suspend.$post({
+            todisk: false,
+          });
+          break;
+        case "resume":
+          await instance.vm.status.resume.$post();
+          break;
+        case "suspend":
+          await instance.vm.status.suspend.$post({
+            todisk: true,
+          });
+          break;
+        case "reset":
+          await instance.vm.status.reset.$post();
+          break;
+        case "reboot":
+          await instance.vm.status.reboot.$post();
+          break;
+        case "shutdown":
+          await instance.vm.status.shutdown.$post();
+          break;
+        default:
+          break;
+      }
     }),
 });

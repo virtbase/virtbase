@@ -211,6 +211,11 @@ msgstr ""
 msgid "tNqFr9"
 msgstr ""
 
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/console/page.tsx:26
+#: src/features/servers/components/server-nav.tsx:48
+msgid "gc+2Z2"
+msgstr ""
+
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx:41
 msgid "E+4Rfd"
 msgstr ""
@@ -402,6 +407,7 @@ msgstr ""
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:71
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:72
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:106
+#: src/features/servers/components/overview/rename-server-dialog.tsx:74
 #: src/ui/feedback-button.tsx:31
 msgid "47FYwb"
 msgstr ""
@@ -409,6 +415,7 @@ msgstr ""
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:95
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:96
+#: src/features/servers/components/overview/rename-server-dialog.tsx:94
 #: src/ui/feedback-button.tsx:32
 msgid "HAlOn1"
 msgstr ""
@@ -908,6 +915,7 @@ msgid "KRtjzZ"
 msgstr ""
 
 #: src/features/dashboard/components/server-status-small.tsx:71
+#: src/features/servers/hooks/use-status-mapping.ts:58
 msgid "oJsHQW"
 msgstr ""
 
@@ -1041,6 +1049,84 @@ msgstr ""
 msgid "yCCio2"
 msgstr ""
 
+#: src/features/servers/components/console/console-frame.tsx:73
+#: src/features/servers/components/server-status-bar.tsx:80
+msgid "sIwjuh"
+msgstr ""
+
+#: src/features/servers/components/console/console-frame.tsx:75
+msgid "/iuNMM"
+msgstr ""
+
+#: src/features/servers/components/console/console-frame.tsx:89
+msgid "lptya2"
+msgstr ""
+
+#: src/features/servers/components/console/console-frame.tsx:91
+msgid "3KjSye"
+msgstr ""
+
+#: src/features/servers/components/console/console-frame.tsx:110
+msgid "odJjY9"
+msgstr ""
+
+#: src/features/servers/components/console/console-frame.tsx:112
+msgid "Z/xHv5"
+msgstr ""
+
+#: src/features/servers/components/console/console-frame.tsx:128
+msgid "uHAMke"
+msgstr ""
+
+#: src/features/servers/components/console/console-frame.tsx:130
+msgid "clmnLf"
+msgstr ""
+
+#: src/features/servers/components/overview/rename-server-dialog.tsx:65
+#: src/features/servers/components/overview/rename-server-dialog.tsx:77
+msgid "SwBrEP"
+msgstr ""
+
+#: src/features/servers/components/overview/rename-server-dialog.tsx:66
+msgid "mFBy/n"
+msgstr ""
+
+#: src/features/servers/components/overview/rename-server-dialog.tsx:101
+msgid "UQXG4v"
+msgstr ""
+
+#: src/features/servers/components/server-actions-row.tsx:79
+msgid "tZbb+K"
+msgstr ""
+
+#: src/features/servers/components/server-actions-row.tsx:89
+msgid "9U7nUR"
+msgstr ""
+
+#: src/features/servers/components/server-actions-row.tsx:101
+msgid "mOFG3K"
+msgstr ""
+
+#: src/features/servers/components/server-actions-row.tsx:115
+msgid "3y9DGg"
+msgstr ""
+
+#: src/features/servers/components/server-actions-row.tsx:138
+msgid "tFFMkF"
+msgstr ""
+
+#: src/features/servers/components/server-actions-row.tsx:149
+msgid "elnaZe"
+msgstr ""
+
+#: src/features/servers/components/server-actions-row.tsx:162
+msgid "q/uwLT"
+msgstr ""
+
+#: src/features/servers/components/server-actions-row.tsx:174
+msgid "jm/spn"
+msgstr ""
+
 #: src/features/servers/components/server-graphs.tsx:86
 msgid "j9Y9nu"
 msgstr ""
@@ -1089,10 +1175,6 @@ msgstr ""
 msgid "6m3w+3"
 msgstr ""
 
-#: src/features/servers/components/server-nav.tsx:48
-msgid "gc+2Z2"
-msgstr ""
-
 #: src/features/servers/components/server-nav.tsx:54
 msgid "Bwqhmd"
 msgstr ""
@@ -1127,10 +1209,6 @@ msgstr ""
 
 #: src/features/servers/components/server-status-bar.tsx:68
 msgid "fkf7mm"
-msgstr ""
-
-#: src/features/servers/components/server-status-bar.tsx:80
-msgid "sIwjuh"
 msgstr ""
 
 #: src/features/servers/components/server-status-bar.tsx:81
@@ -1187,6 +1265,63 @@ msgstr ""
 
 #: src/features/servers/firewall/components/firewall-options-row.tsx:76
 msgid "9FBS2h"
+msgstr ""
+
+#: src/features/servers/hooks/use-status-mapping.ts:43
+msgid "ccU6l/"
+msgstr ""
+
+#: src/features/servers/hooks/use-status-mapping.ts:48
+msgid "7UOvbT"
+msgstr ""
+
+#: src/features/servers/hooks/use-status-mapping.ts:53
+msgid "C2iTEH"
+msgstr ""
+
+#: src/features/servers/hooks/use-status-mapping.ts:63
+#: src/features/servers/hooks/use-task-mapping.ts:71
+msgid "5jeq8P"
+msgstr ""
+
+#: src/features/servers/hooks/use-task-mapping.ts:31
+msgid "3qXa2f"
+msgstr ""
+
+#: src/features/servers/hooks/use-task-mapping.ts:35
+msgid "PdMcML"
+msgstr ""
+
+#: src/features/servers/hooks/use-task-mapping.ts:39
+msgid "JM9DH8"
+msgstr ""
+
+#: src/features/servers/hooks/use-task-mapping.ts:43
+msgid "yR4+kW"
+msgstr ""
+
+#: src/features/servers/hooks/use-task-mapping.ts:47
+msgid "jqQprl"
+msgstr ""
+
+#: src/features/servers/hooks/use-task-mapping.ts:51
+msgid "hbUGzS"
+msgstr ""
+
+#: src/features/servers/hooks/use-task-mapping.ts:55
+msgid "tXH4J0"
+msgstr ""
+
+#: src/features/servers/hooks/use-task-mapping.ts:59
+msgid "m1xdPJ"
+msgstr ""
+
+#: src/features/servers/hooks/use-task-mapping.ts:63
+msgid "3iXlTU"
+msgstr ""
+
+#: src/features/servers/hooks/use-task-mapping.ts:67
+msgid "98thq0"
 msgstr ""
 
 #: src/ui/app-footer.tsx:37

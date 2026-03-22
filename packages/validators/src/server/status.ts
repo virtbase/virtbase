@@ -114,8 +114,43 @@ export const GetServerStatusOutputSchema = z.object({
           examples: [1, 2, 4, 8],
         }),
     }),
-    installedAt: ServerSchema.shape.installed_at,
-    suspendedAt: ServerSchema.shape.suspended_at,
-    terminatesAt: ServerSchema.shape.terminates_at,
+    installed_at: ServerSchema.shape.installed_at,
+    suspended_at: ServerSchema.shape.suspended_at,
+    terminates_at: ServerSchema.shape.terminates_at,
   }),
 });
+
+export const UpdateServerStatusInputSchema = z.object({
+  server_id: ServerSchema.shape.id,
+  action: z
+    .enum([
+      "start",
+      "stop",
+      "pause",
+      "resume",
+      "suspend",
+      "reset",
+      "reboot",
+      "shutdown",
+    ])
+    .meta({
+      description:
+        "The action to perform on the server.\n\nThe action `resume` is only valid if the server is in a suspended/paused state. The action `pause` and `suspend` are only valid if the server is in a running state.",
+      examples: [
+        "start",
+        "stop",
+        "pause",
+        "resume",
+        "suspend",
+        "reset",
+        "reboot",
+        "shutdown",
+      ],
+    }),
+});
+
+export type UpdateServerStatusInput = z.infer<
+  typeof UpdateServerStatusInputSchema
+>;
+
+export const UpdateServerStatusOutputSchema = z.void();

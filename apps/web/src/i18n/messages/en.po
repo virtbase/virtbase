@@ -211,6 +211,11 @@ msgstr "Reset your password for {appName}"
 msgid "tNqFr9"
 msgstr "Reset your password for your {appName} account."
 
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/console/page.tsx:26
+#: src/features/servers/components/server-nav.tsx:48
+msgid "gc+2Z2"
+msgstr "Console"
+
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx:41
 msgid "E+4Rfd"
 msgstr "Server not found"
@@ -402,6 +407,7 @@ msgstr "Create SSH key"
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:71
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:72
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:106
+#: src/features/servers/components/overview/rename-server-dialog.tsx:74
 #: src/ui/feedback-button.tsx:31
 msgid "47FYwb"
 msgstr "Cancel"
@@ -409,6 +415,7 @@ msgstr "Cancel"
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:95
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:96
+#: src/features/servers/components/overview/rename-server-dialog.tsx:94
 #: src/ui/feedback-button.tsx:32
 msgid "HAlOn1"
 msgstr "Name"
@@ -908,6 +915,7 @@ msgid "KRtjzZ"
 msgstr "Expired (will be deleted {date})"
 
 #: src/features/dashboard/components/server-status-small.tsx:71
+#: src/features/servers/hooks/use-status-mapping.ts:58
 msgid "oJsHQW"
 msgstr "Suspended"
 
@@ -1041,6 +1049,84 @@ msgstr "Network"
 msgid "yCCio2"
 msgstr "Last reboot"
 
+#: src/features/servers/components/console/console-frame.tsx:73
+#: src/features/servers/components/server-status-bar.tsx:80
+msgid "sIwjuh"
+msgstr "Server is installing"
+
+#: src/features/servers/components/console/console-frame.tsx:75
+msgid "/iuNMM"
+msgstr "This feature is not available while the server is installing."
+
+#: src/features/servers/components/console/console-frame.tsx:89
+msgid "lptya2"
+msgstr "Server is suspended"
+
+#: src/features/servers/components/console/console-frame.tsx:91
+msgid "3KjSye"
+msgstr "This feature is not available while the server is suspended. Please renew your server to access the console."
+
+#: src/features/servers/components/console/console-frame.tsx:110
+msgid "odJjY9"
+msgstr "Backup in progress"
+
+#: src/features/servers/components/console/console-frame.tsx:112
+msgid "Z/xHv5"
+msgstr "This feature is not available while a backup is in progress. Please try again later."
+
+#: src/features/servers/components/console/console-frame.tsx:128
+msgid "uHAMke"
+msgstr "Server is not running"
+
+#: src/features/servers/components/console/console-frame.tsx:130
+msgid "clmnLf"
+msgstr "Start your server and the console will connect automatically."
+
+#: src/features/servers/components/overview/rename-server-dialog.tsx:65
+#: src/features/servers/components/overview/rename-server-dialog.tsx:77
+msgid "SwBrEP"
+msgstr "Rename Server"
+
+#: src/features/servers/components/overview/rename-server-dialog.tsx:66
+msgid "mFBy/n"
+msgstr "Rename your server."
+
+#: src/features/servers/components/overview/rename-server-dialog.tsx:101
+msgid "UQXG4v"
+msgstr "My Server"
+
+#: src/features/servers/components/server-actions-row.tsx:79
+msgid "tZbb+K"
+msgstr "Shutdown"
+
+#: src/features/servers/components/server-actions-row.tsx:89
+msgid "9U7nUR"
+msgstr "Reboot"
+
+#: src/features/servers/components/server-actions-row.tsx:101
+msgid "mOFG3K"
+msgstr "Start"
+
+#: src/features/servers/components/server-actions-row.tsx:115
+msgid "3y9DGg"
+msgstr "Resume"
+
+#: src/features/servers/components/server-actions-row.tsx:138
+msgid "tFFMkF"
+msgstr "Pause"
+
+#: src/features/servers/components/server-actions-row.tsx:149
+msgid "elnaZe"
+msgstr "Suspend"
+
+#: src/features/servers/components/server-actions-row.tsx:162
+msgid "q/uwLT"
+msgstr "Stop"
+
+#: src/features/servers/components/server-actions-row.tsx:174
+msgid "jm/spn"
+msgstr "Reset"
+
 #: src/features/servers/components/server-graphs.tsx:86
 msgid "j9Y9nu"
 msgstr "Hours"
@@ -1089,10 +1175,6 @@ msgstr "Outgoing"
 msgid "6m3w+3"
 msgstr "Interval"
 
-#: src/features/servers/components/server-nav.tsx:48
-msgid "gc+2Z2"
-msgstr "Console"
-
 #: src/features/servers/components/server-nav.tsx:54
 msgid "Bwqhmd"
 msgstr "Firewall"
@@ -1128,10 +1210,6 @@ msgstr "Server is expiring"
 #: src/features/servers/components/server-status-bar.tsx:68
 msgid "fkf7mm"
 msgstr "This server is expiring {expiry} and will be deleted after, if not renewed"
-
-#: src/features/servers/components/server-status-bar.tsx:80
-msgid "sIwjuh"
-msgstr "Server is installing"
 
 #: src/features/servers/components/server-status-bar.tsx:81
 msgid "76X+Qu"
@@ -1188,6 +1266,63 @@ msgstr "Outgoing packets"
 #: src/features/servers/firewall/components/firewall-options-row.tsx:76
 msgid "9FBS2h"
 msgstr "The default action for outgoing packages"
+
+#: src/features/servers/hooks/use-status-mapping.ts:43
+msgid "ccU6l/"
+msgstr "Online"
+
+#: src/features/servers/hooks/use-status-mapping.ts:48
+msgid "7UOvbT"
+msgstr "Offline"
+
+#: src/features/servers/hooks/use-status-mapping.ts:53
+msgid "C2iTEH"
+msgstr "Paused"
+
+#: src/features/servers/hooks/use-status-mapping.ts:63
+#: src/features/servers/hooks/use-task-mapping.ts:71
+msgid "5jeq8P"
+msgstr "Unknown"
+
+#: src/features/servers/hooks/use-task-mapping.ts:31
+msgid "3qXa2f"
+msgstr "Starting..."
+
+#: src/features/servers/hooks/use-task-mapping.ts:35
+msgid "PdMcML"
+msgstr "Resetting..."
+
+#: src/features/servers/hooks/use-task-mapping.ts:39
+msgid "JM9DH8"
+msgstr "Rebooting..."
+
+#: src/features/servers/hooks/use-task-mapping.ts:43
+msgid "yR4+kW"
+msgstr "Stopping..."
+
+#: src/features/servers/hooks/use-task-mapping.ts:47
+msgid "jqQprl"
+msgstr "Shutting down..."
+
+#: src/features/servers/hooks/use-task-mapping.ts:51
+msgid "hbUGzS"
+msgstr "Resuming..."
+
+#: src/features/servers/hooks/use-task-mapping.ts:55
+msgid "tXH4J0"
+msgstr "Suspending..."
+
+#: src/features/servers/hooks/use-task-mapping.ts:59
+msgid "m1xdPJ"
+msgstr "Pausing..."
+
+#: src/features/servers/hooks/use-task-mapping.ts:63
+msgid "3iXlTU"
+msgstr "Backing up..."
+
+#: src/features/servers/hooks/use-task-mapping.ts:67
+msgid "98thq0"
+msgstr "Restoring backup..."
 
 #: src/ui/app-footer.tsx:37
 msgid "4XCigB"

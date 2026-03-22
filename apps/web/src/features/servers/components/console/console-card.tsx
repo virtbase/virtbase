@@ -15,25 +15,15 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { ServerActionsRow } from "@/features/servers/components/server-actions-row";
-import { ServerLabel } from "@/features/servers/components/server-label";
-import { ServerNav } from "@/features/servers/components/server-nav";
-import { ServerStatusBar } from "@/features/servers/components/server-status-bar";
-import DashboardLayout from "@/ui/layout/dashboard-layout";
+import { Card, CardContent } from "@virtbase/ui/card";
+import { ConsoleFrame } from "./console-frame";
 
-export default function ServersLayout({
-  children,
-}: LayoutProps<"/app.virtbase.com/servers/[id]">) {
+export function ConsoleCard() {
   return (
-    <DashboardLayout
-      leftSide={<ServerLabel />}
-      rightSide={<ServerActionsRow />}
-    >
-      <div className="space-y-4 overflow-clip">
-        <ServerNav />
-        <ServerStatusBar />
-        {children}
-      </div>
-    </DashboardLayout>
+    <Card className="gap-0 overflow-hidden p-0">
+      <CardContent className="h-[50vh] p-0">
+        <ConsoleFrame />
+      </CardContent>
+    </Card>
   );
 }

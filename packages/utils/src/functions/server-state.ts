@@ -108,11 +108,11 @@ const isOperational = (server: {
   return !isInstalling(server) && !isSuspended(server) && !isTerminated(server);
 };
 
-const hasStatus = <T extends ProxmoxServerStatus>(
-  server: { status: ProxmoxServerStatus | null },
-  requiredStatus: T,
-): server is { status: T } => {
-  return server.status === requiredStatus;
+const hasState = <T extends ProxmoxServerStatus>(
+  server: { state: ProxmoxServerStatus | null },
+  requiredState: T,
+): server is { state: T } => {
+  return server.state === requiredState;
 };
 
 const hasTask = <T extends ProxmoxTaskStatus>(
@@ -140,21 +140,21 @@ const canAccessConsole = (server: {
   installed_at: Date | null;
   suspended_at: Date | null;
   terminates_at: Date | null;
-  status: ProxmoxServerStatus | null;
+  state: ProxmoxServerStatus | null;
   task: ProxmoxTaskStatus | null;
 }): boolean => {
   return (
     isOperational(server) &&
     !hasTask(server, ProxmoxTaskStatus.BACKING_UP) &&
     !hasTask(server, ProxmoxTaskStatus.RESTORING_BACKUP) &&
-    hasStatus(server, ProxmoxServerStatus.RUNNING)
+    hasState(server, ProxmoxServerStatus.RUNNING)
   );
 };
 
 export {
   canAccessConsole,
   getEstimatedServerDeletionDate,
-  hasStatus,
+  hasState,
   hasTask,
   isBusy,
   isExpiring,
