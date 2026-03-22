@@ -81,10 +81,14 @@ export const handlePaymentIntentSucceeded = async (event: Stripe.Event) => {
     async (tx) =>
       Promise.all([
         tx.$count(serverPlans, eq(serverPlans.id, planId)),
-        tx.$count(
-          users,
-          eq(users.stripeCustomerId, paymentIntent.customer as string),
-        ),
+        tx
+          .select({
+            id: users.id,
+          })
+          .from(users)
+          .where(eq(users.stripeCustomerId, paymentIntent.customer as string))
+          .limit(1)
+          .then(([row]) => row),
       ]),
     {
       accessMode: "read only",
@@ -116,8 +120,15 @@ export const handlePaymentIntentSucceeded = async (event: Stripe.Event) => {
 
   switch (configuration.type) {
     case "new_server":
-      // TODO: Start provision server workflow
-      await start(provisionServerWorkflow);
+      await start(provisionServerWorkflow, [
+        {
+          serverPlanId: planId,
+          userId: user.id,
+          initialSSHKeyId: configuration.ssh_key_id,
+          initialRootPassword: configuration.root_password,
+          proxmoxTemplateId: configuration.template_id,
+        },
+      ]);
       break;
     case "upgrade_server":
       // TODO: Start upgrade server workflow

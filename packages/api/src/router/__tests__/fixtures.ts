@@ -47,6 +47,7 @@ export const mockSession = {
 export const mockProxmoxNodeGroup = {
   id: "png_0000000000000000000000000",
   name: "My proxmox node group",
+  strategy: "RANDOM",
   createdAt: new Date(),
   updatedAt: new Date(),
 } satisfies typeof proxmoxNodeGroups.$inferInsert;
