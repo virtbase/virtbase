@@ -87,6 +87,7 @@ export async function selectProxmoxNodeStep({
     fqdn: proxmoxNodes.fqdn,
     tokenID: proxmoxNodes.tokenID,
     tokenSecret: proxmoxNodes.tokenSecret,
+    snippetStorage: proxmoxNodes.snippetStorage,
   };
 
   const usageSubquery = db
@@ -160,7 +161,12 @@ export async function selectProxmoxNodeStep({
   let selectedNode:
     | Pick<
         typeof proxmoxNodes.$inferSelect,
-        "id" | "hostname" | "fqdn" | "tokenID" | "tokenSecret"
+        | "id"
+        | "hostname"
+        | "fqdn"
+        | "tokenID"
+        | "tokenSecret"
+        | "snippetStorage"
       >
     | undefined;
   switch (strategy) {
@@ -193,7 +199,6 @@ export async function selectProxmoxNodeStep({
               latestProxmoxNodeId: servers.proxmoxNodeId,
             })
             .from(servers)
-            .innerJoin(proxmoxNodes, eq(servers.proxmoxNodeId, proxmoxNodes.id))
             .orderBy(desc(servers.id))
             .limit(1)
             .then(([res]) => res);

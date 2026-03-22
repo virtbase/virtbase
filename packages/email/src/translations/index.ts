@@ -38,6 +38,10 @@ import {
   titles as resetPasswordLinkTitles,
 } from "./reset-password-link";
 import {
+  messages as serverReadyMessages,
+  titles as serverReadyTitles,
+} from "./server-ready";
+import {
   messages as verifyEmailMessages,
   titles as verifyEmailTitles,
 } from "./verify-email";
@@ -68,6 +72,7 @@ const messagesMapping = {
   "password-updated": passwordUpdatedMessages,
   "verify-email": verifyEmailMessages,
   "invoice-created": invoiceCreatedMessages,
+  "server-ready": serverReadyMessages,
   // Components
   footer: footerMessages,
 } as const;
@@ -82,6 +87,7 @@ const titlesMapping = {
   "verify-email": verifyEmailTitles,
   "password-updated": passwordUpdatedTitles,
   "invoice-created": invoiceCreatedTitles,
+  "server-ready": serverReadyTitles,
 } as const;
 
 type TitlesMapping = typeof titlesMapping;

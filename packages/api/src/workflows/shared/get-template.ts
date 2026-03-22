@@ -22,12 +22,12 @@ import { FatalError } from "workflow";
 
 type GetTemplateStepParams = {
   proxmoxTemplateId: string;
-  selectedNodeId: string;
+  proxmoxNodeId: string;
 };
 
 export async function getTemplateStep({
   proxmoxTemplateId,
-  selectedNodeId,
+  proxmoxNodeId,
 }: GetTemplateStepParams) {
   "use step";
   const template = await db.transaction(
@@ -40,7 +40,7 @@ export async function getTemplateStep({
         .from(pt2pn)
         .where(
           and(
-            eq(pt2pn.proxmoxNodeId, selectedNodeId),
+            eq(pt2pn.proxmoxNodeId, proxmoxNodeId),
             eq(pt2pn.proxmoxTemplateId, proxmoxTemplateId),
           ),
         )
@@ -55,7 +55,7 @@ export async function getTemplateStep({
 
   if (!template) {
     throw new FatalError(
-      `The Proxmox template with ID "${proxmoxTemplateId}" does not exist. Cannot provision server.`,
+      `The Proxmox template with ID "${proxmoxTemplateId}" does not exist. Aborting.`,
     );
   }
 

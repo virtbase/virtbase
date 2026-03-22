@@ -45,17 +45,19 @@ export async function cloneGuestStep({
     vmid: newid,
   });
 
+  const defaultName =
+    process.env.NODE_ENV === "production" ? `vb${nextId}` : `vb-dev${nextId}`;
   const cloneUpid = await node.qemu.$(vmid).clone.$post({
     newid: nextId,
     bwlimit: 0,
     full: true,
-    name:
-      process.env.NODE_ENV === "production" ? `vb${nextId}` : `vb-dev${nextId}`,
+    name: defaultName,
     ...options,
   });
 
   return {
     clonedVmid: nextId,
+    clonedName: options.name ?? defaultName,
     cloneUpid,
   };
 }
