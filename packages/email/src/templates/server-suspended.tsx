@@ -28,33 +28,31 @@ import {
   Tailwind,
   Text,
 } from "@react-email/components";
-import { APP_DOMAIN, APP_NAME, VIRTBASE_WORDMARK } from "@virtbase/utils";
+import {
+  APP_DOMAIN,
+  APP_NAME,
+  SERVER_DELETION_GRACE_PERIOD_DAYS,
+  VIRTBASE_WORDMARK,
+} from "@virtbase/utils";
 import { createTranslator } from "use-intl/core";
 import { Footer } from "../components/footer";
 import { DEFAULT_EMAIL_LOCALE, getEmailTranslations } from "../translations";
 
-export default function ServerReady({
-  name = "Walter White",
+export default function ServerSuspended({
   email = "janic@virtbase.com",
+  name = "Walter White",
+  serverName = "vb1000",
   serverId = "1234567890",
-  rootUsername = "root",
-  rootPassword,
-  trustpilot,
   locale = DEFAULT_EMAIL_LOCALE,
 }: {
-  name: string;
   email: string;
+  name: string;
+  serverName: string;
   serverId: string;
-  rootUsername?: string;
-  rootPassword?: string | null;
-  trustpilot?: {
-    recipientName: string;
-    referenceId: string;
-  };
   locale?: string | null;
 }) {
   const t = createTranslator({
-    messages: getEmailTranslations("server-ready", locale),
+    messages: getEmailTranslations("server-suspended", locale),
     locale: locale ?? DEFAULT_EMAIL_LOCALE,
   });
 
@@ -68,48 +66,34 @@ export default function ServerReady({
             <Section className="mt-8">
               <Img src={VIRTBASE_WORDMARK} height="32" alt={APP_NAME} />
             </Section>
-            <Heading className="mx-0 my-7 p-0 font-medium text-black text-lg">
+            <Heading className="mx-0 my-7 p-0 font-medium text-black text-xl">
               {t("heading")}
             </Heading>
             <Text className="text-black text-sm leading-6">
               {t("greeting", { name })}
             </Text>
+            <Text className="mx-auto text-sm leading-6">
+              {t.rich("description", {
+                serverName,
+                strong: (chunks) => <strong>{chunks}</strong>,
+              })}
+            </Text>
             <Text className="text-black text-sm leading-6">
-              {t("description")}
-            </Text>
-            <Text className="text-black text-sm leading-none">
-              {t.rich("username", {
-                username: rootUsername,
+              {t.rich("hint", {
+                days: `${SERVER_DELETION_GRACE_PERIOD_DAYS}`,
                 strong: (chunks) => <strong>{chunks}</strong>,
               })}
             </Text>
-            <Text className="text-black text-sm leading-none">
-              {t.rich("rootPassword", {
-                rootPassword: rootPassword ?? t("customPassword"),
-                strong: (chunks) => <strong>{chunks}</strong>,
-              })}
-            </Text>
-            <Section className="my-8">
+            <Section className="my-8 mt-8">
               <Link
                 className="rounded-lg bg-black px-6 py-3 text-center font-semibold text-[12px] text-white no-underline"
-                href={`${APP_DOMAIN}/servers/${serverId}/overview`}
+                href={`${APP_DOMAIN}/servers/${serverId}/plan`}
               >
-                {t("portalLink")}
+                {t("renewButton")}
               </Link>
             </Section>
             <Footer email={email} locale={locale} />
           </Container>
-          {trustpilot && (
-            <script type="application/json+trustpilot">
-              {JSON.stringify({
-                recipientEmail: email,
-                recipientName: trustpilot.recipientName,
-                referenceId: trustpilot.referenceId,
-                senderName: "Virtbase",
-                replyTo: "support@virtbase.com",
-              })}
-            </script>
-          )}
         </Body>
       </Tailwind>
     </Html>

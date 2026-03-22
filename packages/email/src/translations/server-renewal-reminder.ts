@@ -15,7 +15,20 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./create-invoice";
-export * from "./delete-server";
-export * from "./provision-server";
-export * from "./upgrade-server";
+import type { EmailTitles, EmailTranslations } from ".";
+
+export const titles = {
+  en: "Your server is about to expire",
+} as const satisfies EmailTitles;
+
+export const messages = {
+  en: {
+    preview: "Your server is about to expire",
+    heading: "Your server is about to expire",
+    greeting: "Hi {name}!",
+    description:
+      "Your server <strong>{serverName}</strong> is about to expire in the next <strong>{days} days</strong>.",
+    hint: "To avoid deletion, we recommend that you renew your server <strong>as soon as possible</strong>.",
+    renewButton: "Renew now",
+  },
+} as const satisfies EmailTranslations;

@@ -15,7 +15,20 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./create-invoice";
-export * from "./delete-server";
-export * from "./provision-server";
-export * from "./upgrade-server";
+import type { GetProxmoxInstanceParams } from "../../proxmox/get-proxmox-instance";
+
+type DeleteServerWorkflowParams = {
+  vmid: number;
+  serverId: string;
+  proxmoxNode: GetProxmoxInstanceParams;
+};
+
+export async function deleteServerWorkflow({
+  vmid,
+  serverId,
+  proxmoxNode,
+}: DeleteServerWorkflowParams) {
+  "use workflow";
+
+  // TODO: Implement delete server workflow
+}

@@ -43,6 +43,7 @@ export const env = createEnv({
     // Stripe
     STRIPE_SECRET_KEY: z4.string().min(1),
     STRIPE_WEBHOOK_SECRET: z4.string().min(1),
+    CRON_SECRET: z4.string().min(1),
   },
   client: {
     // Sentry Configuration

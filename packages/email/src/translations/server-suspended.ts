@@ -15,7 +15,20 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./create-invoice";
-export * from "./delete-server";
-export * from "./provision-server";
-export * from "./upgrade-server";
+import type { EmailTitles, EmailTranslations } from ".";
+
+export const titles = {
+  en: "Your server has been suspended",
+} as const satisfies EmailTitles;
+
+export const messages = {
+  en: {
+    preview: "Your server has been suspended",
+    heading: "Your server has been suspended",
+    greeting: "Hi {name}!",
+    description:
+      "Your server <strong>{serverName}</strong> has been suspended, because it was not renewed in time.",
+    hint: "You have <strong>{days} days</strong> to renew your server. After that, your server and all data will be permanently deleted.",
+    renewButton: "Renew now",
+  },
+} as const satisfies EmailTranslations;

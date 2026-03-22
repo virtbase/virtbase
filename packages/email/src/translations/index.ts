@@ -42,6 +42,14 @@ import {
   titles as serverReadyTitles,
 } from "./server-ready";
 import {
+  messages as serverRenewalReminderMessages,
+  titles as serverRenewalReminderTitles,
+} from "./server-renewal-reminder";
+import {
+  messages as serverSuspendedMessages,
+  titles as serverSuspendedTitles,
+} from "./server-suspended";
+import {
   messages as verifyEmailMessages,
   titles as verifyEmailTitles,
 } from "./verify-email";
@@ -73,6 +81,8 @@ const messagesMapping = {
   "verify-email": verifyEmailMessages,
   "invoice-created": invoiceCreatedMessages,
   "server-ready": serverReadyMessages,
+  "server-renewal-reminder": serverRenewalReminderMessages,
+  "server-suspended": serverSuspendedMessages,
   // Components
   footer: footerMessages,
 } as const;
@@ -88,6 +98,8 @@ const titlesMapping = {
   "password-updated": passwordUpdatedTitles,
   "invoice-created": invoiceCreatedTitles,
   "server-ready": serverReadyTitles,
+  "server-renewal-reminder": serverRenewalReminderTitles,
+  "server-suspended": serverSuspendedTitles,
 } as const;
 
 type TitlesMapping = typeof titlesMapping;

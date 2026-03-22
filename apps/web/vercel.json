@@ -1,0 +1,17 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "crons": [
+    {
+      "path": "/api/cron/delete-suspended-servers",
+      "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/cron/suspend-terminated-servers",
+      "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/cron/send-renewal-notifications",
+      "schedule": "0 0 * * *"
+    }
+  ]
+}
