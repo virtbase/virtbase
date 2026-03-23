@@ -15,13 +15,15 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { and, count, eq } from "@virtbase/db";
+import { and, count, eq, sql } from "@virtbase/db";
 import {
   datacenters,
   proxmoxNodes,
   proxmoxTemplates,
   serverPlans,
   servers,
+  subnetAllocations,
+  subnets,
 } from "@virtbase/db/schema";
 import { buildOrderBy } from "@virtbase/db/utils";
 import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from "@virtbase/utils";
@@ -60,6 +62,9 @@ export const serversRouter = createTRPCRouter({
         summary: "Get a server",
         description: "Returns a server by its unique identifier.",
       },
+      permissions: {
+        servers: ["read"],
+      },
     })
     .input(GetServerInputSchema)
     .output(GetServerOutputSchema)
@@ -74,6 +79,7 @@ export const serversRouter = createTRPCRouter({
           template: server.template,
           datacenter: server.datacenter,
           node: server.node,
+          allocations: server.allocations,
           installed_at: server.installed_at,
           suspended_at: server.suspended_at,
           terminates_at: server.terminates_at,
@@ -90,6 +96,9 @@ export const serversRouter = createTRPCRouter({
         tags: ["Servers"],
         summary: "List servers",
         description: "Returns a list of servers for the current user.",
+      },
+      permissions: {
+        servers: ["read"],
       },
     })
     .input(ListServersInputSchema)
@@ -134,6 +143,7 @@ export const serversRouter = createTRPCRouter({
                 : {
                     id: proxmoxTemplates.id,
                     icon: proxmoxTemplates.icon,
+                    name: proxmoxTemplates.name,
                   },
               datacenter: !input.expand.includes("datacenter")
                 ? datacenters.id
@@ -151,6 +161,42 @@ export const serversRouter = createTRPCRouter({
                     memory_description: proxmoxNodes.memoryDescription,
                     cpu_description: proxmoxNodes.cpuDescription,
                   },
+              allocations: !input.expand.includes("allocations")
+                ? sql<string[]>`
+                    COALESCE(
+                      JSON_AGG(DISTINCT ${subnetAllocations.id})
+                      FILTER (WHERE ${subnetAllocations.id} IS NOT NULL),
+                      '[]'
+                    )
+                  `
+                : sql<
+                    {
+                      id: string;
+                      subnet: {
+                        id: string;
+                        cidr: string;
+                        gateway: string;
+                        dns_reverse_zone: string | null;
+                        family: 4 | 6;
+                      };
+                    }[]
+                  >`
+                    COALESCE(
+                      JSON_AGG(
+                        DISTINCT JSONB_BUILD_OBJECT(
+                          'id', ${subnetAllocations.id},
+                          'subnet', JSONB_BUILD_OBJECT(
+                            'id', ${subnets.id},
+                            'cidr', ${subnets.cidr},
+                            'gateway', ${subnets.gateway},
+                            'dns_reverse_zone', ${subnets.dnsReverseZone},
+                            'family', family(${subnets.cidr})
+                          )
+                        )
+                      ) FILTER (WHERE ${subnetAllocations.id} IS NOT NULL),
+                      '[]'
+                    )
+                  `,
             })
             .from(servers)
             .innerJoin(serverPlans, eq(servers.serverPlanId, serverPlans.id))
@@ -162,6 +208,18 @@ export const serversRouter = createTRPCRouter({
             .leftJoin(
               proxmoxTemplates,
               eq(servers.proxmoxTemplateId, proxmoxTemplates.id),
+            )
+            .leftJoin(
+              subnetAllocations,
+              eq(subnetAllocations.serverId, servers.id),
+            )
+            .leftJoin(subnets, eq(subnetAllocations.subnetId, subnets.id))
+            .groupBy(
+              servers.id,
+              serverPlans.id,
+              proxmoxTemplates.id,
+              datacenters.id,
+              proxmoxNodes.id,
             )
             .limit(perPage)
             .offset(offset)
@@ -191,6 +249,7 @@ export const serversRouter = createTRPCRouter({
           plan: item.plan,
           datacenter: item.datacenter,
           node: item.node,
+          allocations: item.allocations,
           installed_at: item.installedAt,
           suspended_at: item.suspendedAt,
           terminates_at: item.terminatesAt,
@@ -214,6 +273,9 @@ export const serversRouter = createTRPCRouter({
         tags: ["Servers"],
         summary: "Rename a server",
         description: "Renames a server by its unique identifier.",
+      },
+      permissions: {
+        servers: ["write"],
       },
     })
     .input(RenameServerInputSchema)

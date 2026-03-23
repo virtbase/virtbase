@@ -33,6 +33,9 @@ export const serversGraphsRouter = createTRPCRouter({
         summary: "Get server graphs",
         description: "Returns the graphs for a server.",
       },
+      permissions: {
+        servers: ["read"],
+      },
     })
     .input(GetServerGraphsInputSchema)
     .output(GetServerGraphsOutputSchema)

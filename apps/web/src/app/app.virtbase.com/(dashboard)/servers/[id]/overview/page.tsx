@@ -16,26 +16,33 @@
  */
 
 import { constructMetadata } from "@virtbase/utils";
+import type { Metadata } from "next";
 import dynamic from "next/dynamic";
+import { getExtracted } from "next-intl/server";
+import { ServerDetailsActions } from "@/features/servers/components/overview/server-details-actions";
+import { ServerDetailsCard } from "@/features/servers/components/overview/server-details-card";
 import { ServerStatsCard } from "@/features/servers/components/server-stats-card";
 
 const ServerGraphs = dynamic(
   () => import("@/features/servers/components/server-graphs"),
 );
 
-// TODO: Intl
-export const metadata = constructMetadata({
-  title: "Overview",
-  noIndex: true,
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getExtracted();
+
+  return constructMetadata({
+    title: t("Overview"),
+    noIndex: true,
+  });
+}
 
 export default function Page() {
   return (
     <div className="grid flex-1 auto-rows-max gap-4">
       <div className="grid gap-4 lg:grid-cols-[1fr_250px] xl:grid-cols-4">
         <div className="grid auto-rows-max items-start gap-4 lg:col-span-2">
-          {/* TODO: Add ServerDetails */}
-          {/* <ServerDetails /> */}
+          <ServerDetailsCard />
+          <ServerDetailsActions />
         </div>
         <div className="grid auto-rows-max items-start gap-4 lg:col-span-2">
           <ServerStatsCard />

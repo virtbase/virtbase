@@ -41,6 +41,9 @@ export const serverFirewallRulesRouter = createTRPCRouter({
         summary: "Get current firewall rules",
         description: "Get the current firewall rules for a server.",
       },
+      permissions: {
+        firewall: ["read"],
+      },
     })
     .input(GetServerFirewallRulesInputSchema)
     .output(GetServerFirewallRulesOutputSchema)
@@ -75,6 +78,9 @@ export const serverFirewallRulesRouter = createTRPCRouter({
         summary: "Create a new firewall rule",
         description: "Create a new firewall rule for a server.",
       },
+      permissions: {
+        firewall: ["write"],
+      },
     })
     .input(CreateServerFirewallRuleInputSchema)
     .output(CreateServerFirewallRuleOutputSchema)
@@ -106,6 +112,9 @@ export const serverFirewallRulesRouter = createTRPCRouter({
         summary: "Delete a firewall rule",
         description: "Delete a firewall rule for a server.",
       },
+      permissions: {
+        firewall: ["write"],
+      },
     })
     .input(DeleteServerFirewallRuleInputSchema)
     .output(DeleteServerFirewallRuleOutputSchema)
@@ -126,6 +135,9 @@ export const serverFirewallRulesRouter = createTRPCRouter({
         tags: ["Firewall"],
         summary: "Update a firewall rule",
         description: "Update a firewall rule for a server.",
+      },
+      permissions: {
+        firewall: ["write"],
       },
     })
     .input(UpdateServerFirewallRuleInputSchema)
@@ -150,6 +162,9 @@ export const serverFirewallRulesRouter = createTRPCRouter({
         tags: ["Firewall"],
         summary: "Move a firewall rule",
         description: "Move a firewall rule for a server.",
+      },
+      permissions: {
+        firewall: ["write"],
       },
     })
     .input(MoveServerFirewallRuleInputSchema)

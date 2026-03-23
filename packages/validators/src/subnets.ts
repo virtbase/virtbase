@@ -15,14 +15,21 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./api-keys";
-export * from "./checkout";
-export * from "./invoices";
-export * from "./pagination";
-export * from "./pointer-records";
-export * from "./proxy";
-export * from "./ssh-keys";
-export * from "./subnet-allocations";
-export * from "./subnets";
-export * from "./timestamps";
-export * from "./utils";
+import * as z from "zod";
+import { ObjectTimestampSchema } from "./timestamps";
+
+export const SubnetSchema = z.object({
+  id: z.string().regex(/^ipsub_[A-Z0-9]{25}$/),
+  parent_id: z
+    .string()
+    .regex(/^ipsub_[A-Z0-9]{25}$/)
+    .nullable(),
+  cidr: z.union([z.cidrv4(), z.cidrv6()]),
+  gateway: z.union([z.ipv4(), z.ipv6()]),
+  vlan: z.number().int(),
+  dns_reverse_zone: z.string().nullable(),
+  created_at: ObjectTimestampSchema.shape.created_at,
+  updated_at: ObjectTimestampSchema.shape.updated_at,
+});
+
+export type Subnet = z.infer<typeof SubnetSchema>;

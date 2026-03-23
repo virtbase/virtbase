@@ -15,14 +15,26 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./api-keys";
-export * from "./checkout";
-export * from "./invoices";
-export * from "./pagination";
-export * from "./pointer-records";
-export * from "./proxy";
-export * from "./ssh-keys";
-export * from "./subnet-allocations";
-export * from "./subnets";
-export * from "./timestamps";
-export * from "./utils";
+"use client";
+
+import { parseAsStringEnum, useQueryState } from "nuqs";
+
+export function useServerActionState() {
+  const [action, setAction] = useQueryState(
+    "action",
+    parseAsStringEnum([
+      "rename",
+      "view-node-details",
+      "reset-password",
+      "change-operating-system",
+    ]).withOptions({
+      clearOnDefault: true,
+      shallow: true,
+    }),
+  );
+
+  return {
+    action,
+    setAction,
+  };
+}

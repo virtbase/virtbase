@@ -21,12 +21,14 @@ import { DatacenterSchema, ProxmoxNodeSchema } from "../admin";
 import { PaginationSchema } from "../pagination";
 import { ProxmoxTemplateSchema } from "../proxmox-template";
 import { ServerPlanSchema } from "../server-plan";
+import { SubnetAllocationSchema } from "../subnet-allocations";
+import { SubnetSchema } from "../subnets";
 import { preprocessQueryArray } from "../utils";
 import type { Server } from "./shared";
 import { ServerSchema } from "./shared";
 
 export const ServerExpandSchema = z
-  .enum(["template", "plan", "datacenter", "node"])
+  .enum(["template", "plan", "datacenter", "node", "allocations"])
   .array()
   .default([]);
 
@@ -38,6 +40,7 @@ const ServerTemplateField = z
     ProxmoxTemplateSchema.pick({
       id: true,
       icon: true,
+      name: true,
     }).meta({
       description:
         "Only present if the `template` expand is included. The current template of the server.",
@@ -85,6 +88,29 @@ const ServerNodeField = z.union([
   }),
 ]);
 
+const ServerAllocationsField = z.union([
+  z.array(SubnetAllocationSchema.shape.id),
+  z
+    .array(
+      SubnetAllocationSchema.pick({
+        id: true,
+      }).extend({
+        subnet: SubnetSchema.pick({
+          id: true,
+          cidr: true,
+          gateway: true,
+          dns_reverse_zone: true,
+        }).extend({
+          family: z.union([z.literal(4), z.literal(6)]),
+        }),
+      }),
+    )
+    .meta({
+      description:
+        "Only present if the `allocations` expand is included. The allocations of the server.",
+    }),
+]);
+
 export const GetServerInputSchema = z.object({
   server_id: ServerSchema.shape.id,
   expand: z.preprocess(
@@ -105,6 +131,7 @@ export const GetServerOutputSchema = z.object({
     template: ServerTemplateField,
     datacenter: ServerDatacenterField,
     node: ServerNodeField,
+    allocations: ServerAllocationsField,
   }),
 });
 
@@ -148,6 +175,7 @@ export const ListServersOutputSchema = z.object({
       plan: ServerPlanField,
       datacenter: ServerDatacenterField,
       node: ServerNodeField,
+      allocations: ServerAllocationsField,
     }),
   ),
   meta: z.object({
@@ -164,6 +192,7 @@ export type RenameServerInput = z.infer<typeof RenameServerInputSchema>;
 
 export const RenameServerOutputSchema = z.void();
 
+export * from "./backups";
 export * from "./console";
 export * from "./firewall";
 export * from "./graphs";

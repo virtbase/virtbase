@@ -18,4 +18,5 @@
 export * from "./create-invoice";
 export * from "./delete-server";
 export * from "./provision-server";
+export * from "./restore-server-backup";
 export * from "./upgrade-server";

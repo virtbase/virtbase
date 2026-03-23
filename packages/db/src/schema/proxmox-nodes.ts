@@ -22,6 +22,7 @@ import { datacenters } from "./datacenters";
 import { proxmoxNodeGroups } from "./proxmox-node-groups";
 import { proxmoxTemplatesToProxmoxNodes } from "./proxmox-templates-to-proxmox-nodes";
 import { servers } from "./servers";
+import { subnetsToProxmoxNodes } from "./subnets-to-proxmox-nodes";
 
 /**
  * A Proxmox VE node represents a physical machine within a datacenter
@@ -173,6 +174,7 @@ export const proxmoxNodesRelations = relations(
       references: [proxmoxNodeGroups.id],
     }),
     proxmoxTemplates: many(proxmoxTemplatesToProxmoxNodes),
+    subnets: many(subnetsToProxmoxNodes),
     servers: many(servers),
   }),
 );

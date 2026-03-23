@@ -35,6 +35,9 @@ export const serverFirewallOptionsRouter = createTRPCRouter({
         summary: "Get firewall settings",
         description: "Get the current firewall settings for a server.",
       },
+      permissions: {
+        firewall: ["read"],
+      },
     })
     .input(GetServerFirewallOptionsInputSchema)
     .output(GetServerFirewallOptionsOutputSchema)
@@ -70,6 +73,9 @@ export const serverFirewallOptionsRouter = createTRPCRouter({
         tags: ["Firewall"],
         summary: "Update firewall settings",
         description: "Update the firewall settings for a server.",
+      },
+      permissions: {
+        firewall: ["write"],
       },
     })
     .input(UpdateServerFirewallOptionsInputSchema)

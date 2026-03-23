@@ -36,6 +36,9 @@ export const serversConsoleRouter = createTRPCRouter({
         summary: "Get console URL",
         description: "Returns the console noVNC console URL for a server.",
       },
+      permissions: {
+        console: ["read"],
+      },
       forbiddenStates: ["suspended", "terminated", "installing"],
     })
     .input(GetServerConsoleInputSchema)

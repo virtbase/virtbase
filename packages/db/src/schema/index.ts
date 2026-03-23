@@ -18,6 +18,7 @@
 export * from "./auth";
 export * from "./datacenters";
 export * from "./invoices";
+export * from "./pointer-records";
 export * from "./proxmox-node-groups";
 export * from "./proxmox-nodes";
 export * from "./proxmox-template-groups";
@@ -27,3 +28,6 @@ export * from "./server-backups";
 export * from "./server-plans";
 export * from "./servers";
 export * from "./ssh-keys";
+export * from "./subnet-allocations";
+export * from "./subnets";
+export * from "./subnets-to-proxmox-nodes";

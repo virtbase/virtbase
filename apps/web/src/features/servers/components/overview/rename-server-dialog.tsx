@@ -31,7 +31,7 @@ import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { useRenameServer } from "../../hooks/overview/use-rename-server";
 
-export function RenameServerDialog(
+export default function RenameServerDialog(
   props: Omit<
     React.ComponentProps<typeof ResponsiveDialog>,
     "title" | "description" | "footer"
@@ -83,7 +83,6 @@ export function RenameServerDialog(
       <form
         id="rename-server-form"
         onSubmit={form.handleSubmit((data) => renameServer(data))}
-        {...props}
       >
         <FieldGroup>
           <Controller

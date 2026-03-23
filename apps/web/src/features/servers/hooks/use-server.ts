@@ -28,23 +28,33 @@ interface GetServer extends GetServerInput {
   queryConfig?: never;
 }
 
+export const defaultGetServerExpand: Partial<GetServerInput> = {
+  expand: ["datacenter", "template", "node", "plan", "allocations"],
+};
+
 export const useServer = ({ queryConfig, ...input }: GetServer) => {
   const trpc = useTRPC();
 
   return useQuery(
-    trpc.servers.get.queryOptions(input, {
-      refetchInterval: (query) => {
-        const currentData = query.state.data;
-        if (!currentData) {
-          return false;
-        }
-
-        if (isInstalling(currentData.server)) {
-          return 5_000;
-        }
-
-        return false;
+    trpc.servers.get.queryOptions(
+      {
+        ...defaultGetServerExpand,
+        ...input,
       },
-    }),
+      {
+        refetchInterval: (query) => {
+          const currentData = query.state.data;
+          if (!currentData) {
+            return false;
+          }
+
+          if (isInstalling(currentData.server)) {
+            return 5_000;
+          }
+
+          return false;
+        },
+      },
+    ),
   );
 };

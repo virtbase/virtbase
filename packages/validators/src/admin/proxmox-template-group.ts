@@ -15,14 +15,26 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./api-keys";
-export * from "./checkout";
-export * from "./invoices";
-export * from "./pagination";
-export * from "./pointer-records";
-export * from "./proxy";
-export * from "./ssh-keys";
-export * from "./subnet-allocations";
-export * from "./subnets";
-export * from "./timestamps";
-export * from "./utils";
+import z from "zod";
+import { ObjectTimestampSchema } from "../timestamps";
+
+export const ProxmoxTemplateGroupSchema = z.object({
+  id: z.string().regex(/^ptg_[A-Z0-9]{25}$/),
+  name: z.string().min(1).max(255),
+  priority: z.number().int().default(0),
+  created_at: ObjectTimestampSchema.shape.created_at,
+  updated_at: ObjectTimestampSchema.shape.updated_at,
+});
+
+export type ProxmoxTemplateGroup = z.infer<typeof ProxmoxTemplateGroupSchema>;
+
+export const CreateProxmoxTemplateGroupInputSchema =
+  ProxmoxTemplateGroupSchema.omit({
+    id: true,
+    created_at: true,
+    updated_at: true,
+  });
+
+export type CreateProxmoxTemplateGroupInput = z.infer<
+  typeof CreateProxmoxTemplateGroupInputSchema
+>;

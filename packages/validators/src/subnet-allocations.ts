@@ -15,14 +15,20 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./api-keys";
-export * from "./checkout";
-export * from "./invoices";
-export * from "./pagination";
-export * from "./pointer-records";
-export * from "./proxy";
-export * from "./ssh-keys";
-export * from "./subnet-allocations";
-export * from "./subnets";
-export * from "./timestamps";
-export * from "./utils";
+import * as z from "zod";
+import { ObjectTimestampSchema } from "./timestamps";
+
+export const SubnetAllocationSchema = z.object({
+  id: z.string().regex(/^ipalloc_[A-Z0-9]{25}$/),
+  subnet_id: z.string().regex(/^ipsub_[A-Z0-9]{25}$/),
+  server_id: z
+    .string()
+    .regex(/^server_[A-Z0-9]{25}$/)
+    .nullable(),
+  description: z.string().nullable(),
+  allocated_at: z.date(),
+  deallocated_at: z.date().nullable(),
+  updated_at: ObjectTimestampSchema.shape.updated_at,
+});
+
+export type SubnetAllocation = z.infer<typeof SubnetAllocationSchema>;

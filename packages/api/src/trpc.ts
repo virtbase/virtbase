@@ -18,7 +18,7 @@
 import * as Sentry from "@sentry/node";
 import { initTRPC, TRPCError } from "@trpc/server";
 import type { Auth } from "@virtbase/auth";
-import { and, eq } from "@virtbase/db";
+import { and, eq, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import {
   datacenters,
@@ -26,6 +26,8 @@ import {
   proxmoxTemplates,
   serverPlans,
   servers,
+  subnetAllocations,
+  subnets,
 } from "@virtbase/db/schema";
 import { isInstalling, isSuspended, isTerminated } from "@virtbase/utils";
 import type { APIKeyPermissions } from "@virtbase/validators";
@@ -283,7 +285,7 @@ const serverMiddleware = authMiddleware.unstable_pipe(
             suspended_at: servers.suspendedAt,
             terminates_at: servers.terminatesAt,
             created_at: servers.createdAt,
-            plan: expansions.has("plan")
+            plan: !expansions.has("plan")
               ? serverPlans.id
               : {
                   id: serverPlans.id,
@@ -292,19 +294,20 @@ const serverMiddleware = authMiddleware.unstable_pipe(
                   memory: serverPlans.memory,
                   storage: serverPlans.storage,
                 },
-            template: expansions.has("template")
+            template: !expansions.has("template")
               ? proxmoxTemplates.id
               : {
                   id: proxmoxTemplates.id,
                   icon: proxmoxTemplates.icon,
+                  name: proxmoxTemplates.name,
                 },
-            datacenter: expansions.has("datacenter")
+            datacenter: !expansions.has("datacenter")
               ? datacenters.id
               : {
                   id: datacenters.id,
                   name: datacenters.name,
                 },
-            node: expansions.has("node")
+            node: !expansions.has("node")
               ? proxmoxNodes.id
               : {
                   id: proxmoxNodes.id,
@@ -314,6 +317,42 @@ const serverMiddleware = authMiddleware.unstable_pipe(
                   memory_description: proxmoxNodes.memoryDescription,
                   cpu_description: proxmoxNodes.cpuDescription,
                 },
+            allocations: !expansions.has("allocations")
+              ? sql<string[]>`
+                    COALESCE(
+                      JSON_AGG(DISTINCT ${subnetAllocations.id})
+                      FILTER (WHERE ${subnetAllocations.id} IS NOT NULL),
+                      '[]'
+                    )
+                  `
+              : sql<
+                  {
+                    id: string;
+                    subnet: {
+                      id: string;
+                      cidr: string;
+                      gateway: string;
+                      dns_reverse_zone: string | null;
+                      family: 4 | 6;
+                    };
+                  }[]
+                >`
+                    COALESCE(
+                      JSON_AGG(
+                        DISTINCT JSONB_BUILD_OBJECT(
+                          'id', ${subnetAllocations.id},
+                          'subnet', JSONB_BUILD_OBJECT(
+                            'id', ${subnets.id},
+                            'cidr', ${subnets.cidr},
+                            'gateway', ${subnets.gateway},
+                            'dns_reverse_zone', ${subnets.dnsReverseZone},
+                            'family', family(${subnets.cidr})
+                          )
+                        )
+                      ) FILTER (WHERE ${subnetAllocations.id} IS NOT NULL),
+                      '[]'
+                    )
+                  `,
             proxmoxNode: {
               id: proxmoxNodes.id,
               hostname: proxmoxNodes.hostname,
@@ -321,6 +360,7 @@ const serverMiddleware = authMiddleware.unstable_pipe(
               // [!] Sensitive data
               tokenID: proxmoxNodes.tokenID,
               tokenSecret: proxmoxNodes.tokenSecret,
+              backupStorage: proxmoxNodes.backupStorage,
             },
           })
           .from(servers)
@@ -333,10 +373,22 @@ const serverMiddleware = authMiddleware.unstable_pipe(
           )
           .innerJoin(proxmoxNodes, eq(proxmoxNodes.id, servers.proxmoxNodeId))
           .innerJoin(datacenters, eq(datacenters.id, proxmoxNodes.datacenterId))
+          .leftJoin(
+            subnetAllocations,
+            eq(subnetAllocations.serverId, servers.id),
+          )
+          .leftJoin(subnets, eq(subnetAllocations.subnetId, subnets.id))
           .innerJoin(serverPlans, eq(servers.serverPlanId, serverPlans.id))
           .leftJoin(
             proxmoxTemplates,
             eq(servers.proxmoxTemplateId, proxmoxTemplates.id),
+          )
+          .groupBy(
+            servers.id,
+            serverPlans.id,
+            proxmoxTemplates.id,
+            datacenters.id,
+            proxmoxNodes.id,
           )
           .limit(1)
           .then(([row]) => row);

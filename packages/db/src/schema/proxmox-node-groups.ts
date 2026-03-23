@@ -53,7 +53,7 @@ export const proxmoxNodeGroups = pgTable("proxmox_node_groups", (t) => ({
    * `LEAST_USED`: Select the node with the least usage.
    * `FILL`: Opposite of `LEAST_USED`. Select the node with the most usage and fill it until it is full.
    */
-  strategy: proxmoxNodeGroupStrategyEnum().notNull(),
+  strategy: proxmoxNodeGroupStrategyEnum().notNull().default("ROUND_ROBIN"),
   createdAt: t
     .timestamp({ withTimezone: true, mode: "date" })
     .defaultNow()

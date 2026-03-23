@@ -230,6 +230,13 @@ msgstr "The server you are looking for does not exist."
 msgid "43U065"
 msgstr "Go to servers"
 
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/overview/page.tsx:34
+#: src/features/admin/components/admin-sidebar-groups.tsx:48
+#: src/features/servers/components/server-nav.tsx:42
+#: src/ui/app-sidebar.tsx:62
+msgid "9uOFF3"
+msgstr "Overview"
+
 #: src/app/app.virtbase.com/(dashboard)/servers/error.tsx:53
 msgid "ox304v"
 msgstr "An error occurred"
@@ -374,7 +381,9 @@ msgstr "This key will only be displayed once. Please save it securely, as it can
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:95
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:96
-#: src/features/servers/components/overview/rename-server-dialog.tsx:94
+#: src/features/servers/components/overview/node-details-dialog.tsx:83
+#: src/features/servers/components/overview/rename-server-dialog.tsx:93
+#: src/features/servers/components/overview/server-details-card.tsx:59
 #: src/ui/feedback-button.tsx:32
 msgid "HAlOn1"
 msgstr "Name"
@@ -537,12 +546,6 @@ msgstr "No SSH keys"
 #: src/features/account/components/ssh-keys/ssh-keys-list.tsx:52
 msgid "6NcUU3"
 msgstr "No SSH keys have been created yet."
-
-#: src/features/admin/components/admin-sidebar-groups.tsx:48
-#: src/features/servers/components/server-nav.tsx:42
-#: src/ui/app-sidebar.tsx:62
-msgid "9uOFF3"
-msgstr "Overview"
 
 #: src/features/admin/components/admin-sidebar-groups.tsx:68
 msgid "UcHtCB"
@@ -743,6 +746,7 @@ msgid "elgt8s"
 msgstr "Backups of any servers on this node will be stored here."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:354
+#: src/features/servers/components/overview/node-details-dialog.tsx:105
 msgid "sB9VeA"
 msgstr "Uplink"
 
@@ -1106,6 +1110,7 @@ msgid "wbsq7O"
 msgstr "Usage"
 
 #: src/features/landing/components/server-stats-demo.tsx:57
+#: src/features/servers/components/overview/node-details-dialog.tsx:87
 #: src/features/servers/components/server-graphs.tsx:95
 #: src/features/servers/components/server-stats-card.tsx:78
 msgid "QgBuiV"
@@ -1167,8 +1172,34 @@ msgstr "Server is not running"
 msgid "clmnLf"
 msgstr "Start your server and the console will connect automatically."
 
+#: src/features/servers/components/overview/node-details-dialog.tsx:67
+#: src/features/servers/components/overview/server-details-card.tsx:99
+msgid "ivkv/L"
+msgstr "Node"
+
+#: src/features/servers/components/overview/node-details-dialog.tsx:68
+msgid "UfS56w"
+msgstr "Details of the node."
+
+#: src/features/servers/components/overview/node-details-dialog.tsx:77
+msgid "rbrahO"
+msgstr "Close"
+
+#: src/features/servers/components/overview/node-details-dialog.tsx:92
+msgid "dVx3yz"
+msgstr "Memory"
+
+#: src/features/servers/components/overview/node-details-dialog.tsx:97
+msgid "DUIDEq"
+msgstr "Storage"
+
+#: src/features/servers/components/overview/node-details-dialog.tsx:101
+msgid "zUxWZC"
+msgstr "Datacenter"
+
 #: src/features/servers/components/overview/rename-server-dialog.tsx:65
 #: src/features/servers/components/overview/rename-server-dialog.tsx:77
+#: src/features/servers/components/overview/server-details-card.tsx:70
 msgid "SwBrEP"
 msgstr "Rename Server"
 
@@ -1176,9 +1207,33 @@ msgstr "Rename Server"
 msgid "mFBy/n"
 msgstr "Rename your server."
 
-#: src/features/servers/components/overview/rename-server-dialog.tsx:101
+#: src/features/servers/components/overview/rename-server-dialog.tsx:100
 msgid "UQXG4v"
 msgstr "My Server"
+
+#: src/features/servers/components/overview/server-details-card.tsx:54
+msgid "F/6VqP"
+msgstr "Server"
+
+#: src/features/servers/components/overview/server-details-card.tsx:80
+msgid "t2uvIi"
+msgstr "Operating System"
+
+#: src/features/servers/components/overview/server-details-card.tsx:89
+msgid "4A//XV"
+msgstr "Custom Image"
+
+#: src/features/servers/components/overview/server-details-card.tsx:112
+msgid "RTw2Xk"
+msgstr "View Node Details"
+
+#: src/features/servers/components/overview/server-details-card.tsx:159
+msgid "8O64Ol"
+msgstr "Change Operating System"
+
+#: src/features/servers/components/overview/server-details-card.tsx:168
+msgid "D3OPFp"
+msgstr "Reset Root Password"
 
 #: src/features/servers/components/server-actions-row.tsx:79
 msgid "tZbb+K"
@@ -1535,3 +1590,15 @@ msgstr "Stop impersonation"
 #: src/ui/nav-user.tsx:174
 msgid "C81/uG"
 msgstr "Logout"
+
+#: src/ui/operating-system-select.tsx:87
+msgid "DMGJ3m"
+msgstr "Select an operating system..."
+
+#: src/ui/operating-system-select.tsx:98
+msgid "r3Zixe"
+msgstr "Search for an operating system..."
+
+#: src/ui/operating-system-select.tsx:102
+msgid "iEx8bl"
+msgstr "No supported operating system found."

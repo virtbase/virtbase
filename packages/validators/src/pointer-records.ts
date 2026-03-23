@@ -15,14 +15,16 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./api-keys";
-export * from "./checkout";
-export * from "./invoices";
-export * from "./pagination";
-export * from "./pointer-records";
-export * from "./proxy";
-export * from "./ssh-keys";
-export * from "./subnet-allocations";
-export * from "./subnets";
-export * from "./timestamps";
-export * from "./utils";
+import * as z from "zod";
+import { ObjectTimestampSchema } from "./timestamps";
+
+export const PointerRecordSchema = z.object({
+  id: z.string().regex(/^ipptr_[A-Z0-9]{25}$/),
+  subnet_allocation_id: z.string().regex(/^ipalloc_[A-Z0-9]{25}$/),
+  ip: z.union([z.ipv4(), z.ipv6()]),
+  hostname: z.string(),
+  created_at: ObjectTimestampSchema.shape.created_at,
+  updated_at: ObjectTimestampSchema.shape.updated_at,
+});
+
+export type PointerRecord = z.infer<typeof PointerRecordSchema>;

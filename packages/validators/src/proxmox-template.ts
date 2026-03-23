@@ -20,6 +20,7 @@ import * as z from "zod";
 export const ProxmoxTemplateSchema = z.object({
   id: z.string().regex(/^temp_[A-Z0-9]{25}$/),
   icon: z.url().nullable(),
+  name: z.string(),
 });
 
 export type ProxmoxTemplate = z.infer<typeof ProxmoxTemplateSchema>;

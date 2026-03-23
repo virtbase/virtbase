@@ -230,6 +230,13 @@ msgstr ""
 msgid "43U065"
 msgstr ""
 
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/overview/page.tsx:34
+#: src/features/admin/components/admin-sidebar-groups.tsx:48
+#: src/features/servers/components/server-nav.tsx:42
+#: src/ui/app-sidebar.tsx:62
+msgid "9uOFF3"
+msgstr ""
+
 #: src/app/app.virtbase.com/(dashboard)/servers/error.tsx:53
 msgid "ox304v"
 msgstr ""
@@ -374,7 +381,9 @@ msgstr ""
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:95
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:96
-#: src/features/servers/components/overview/rename-server-dialog.tsx:94
+#: src/features/servers/components/overview/node-details-dialog.tsx:83
+#: src/features/servers/components/overview/rename-server-dialog.tsx:93
+#: src/features/servers/components/overview/server-details-card.tsx:59
 #: src/ui/feedback-button.tsx:32
 msgid "HAlOn1"
 msgstr ""
@@ -536,12 +545,6 @@ msgstr ""
 
 #: src/features/account/components/ssh-keys/ssh-keys-list.tsx:52
 msgid "6NcUU3"
-msgstr ""
-
-#: src/features/admin/components/admin-sidebar-groups.tsx:48
-#: src/features/servers/components/server-nav.tsx:42
-#: src/ui/app-sidebar.tsx:62
-msgid "9uOFF3"
 msgstr ""
 
 #: src/features/admin/components/admin-sidebar-groups.tsx:68
@@ -743,6 +746,7 @@ msgid "elgt8s"
 msgstr ""
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:354
+#: src/features/servers/components/overview/node-details-dialog.tsx:105
 msgid "sB9VeA"
 msgstr ""
 
@@ -1106,6 +1110,7 @@ msgid "wbsq7O"
 msgstr ""
 
 #: src/features/landing/components/server-stats-demo.tsx:57
+#: src/features/servers/components/overview/node-details-dialog.tsx:87
 #: src/features/servers/components/server-graphs.tsx:95
 #: src/features/servers/components/server-stats-card.tsx:78
 msgid "QgBuiV"
@@ -1167,8 +1172,34 @@ msgstr ""
 msgid "clmnLf"
 msgstr ""
 
+#: src/features/servers/components/overview/node-details-dialog.tsx:67
+#: src/features/servers/components/overview/server-details-card.tsx:99
+msgid "ivkv/L"
+msgstr ""
+
+#: src/features/servers/components/overview/node-details-dialog.tsx:68
+msgid "UfS56w"
+msgstr ""
+
+#: src/features/servers/components/overview/node-details-dialog.tsx:77
+msgid "rbrahO"
+msgstr ""
+
+#: src/features/servers/components/overview/node-details-dialog.tsx:92
+msgid "dVx3yz"
+msgstr ""
+
+#: src/features/servers/components/overview/node-details-dialog.tsx:97
+msgid "DUIDEq"
+msgstr ""
+
+#: src/features/servers/components/overview/node-details-dialog.tsx:101
+msgid "zUxWZC"
+msgstr ""
+
 #: src/features/servers/components/overview/rename-server-dialog.tsx:65
 #: src/features/servers/components/overview/rename-server-dialog.tsx:77
+#: src/features/servers/components/overview/server-details-card.tsx:70
 msgid "SwBrEP"
 msgstr ""
 
@@ -1176,8 +1207,32 @@ msgstr ""
 msgid "mFBy/n"
 msgstr ""
 
-#: src/features/servers/components/overview/rename-server-dialog.tsx:101
+#: src/features/servers/components/overview/rename-server-dialog.tsx:100
 msgid "UQXG4v"
+msgstr ""
+
+#: src/features/servers/components/overview/server-details-card.tsx:54
+msgid "F/6VqP"
+msgstr ""
+
+#: src/features/servers/components/overview/server-details-card.tsx:80
+msgid "t2uvIi"
+msgstr ""
+
+#: src/features/servers/components/overview/server-details-card.tsx:89
+msgid "4A//XV"
+msgstr ""
+
+#: src/features/servers/components/overview/server-details-card.tsx:112
+msgid "RTw2Xk"
+msgstr ""
+
+#: src/features/servers/components/overview/server-details-card.tsx:159
+msgid "8O64Ol"
+msgstr ""
+
+#: src/features/servers/components/overview/server-details-card.tsx:168
+msgid "D3OPFp"
 msgstr ""
 
 #: src/features/servers/components/server-actions-row.tsx:79
@@ -1534,4 +1589,16 @@ msgstr ""
 
 #: src/ui/nav-user.tsx:174
 msgid "C81/uG"
+msgstr ""
+
+#: src/ui/operating-system-select.tsx:87
+msgid "DMGJ3m"
+msgstr ""
+
+#: src/ui/operating-system-select.tsx:98
+msgid "r3Zixe"
+msgstr ""
+
+#: src/ui/operating-system-select.tsx:102
+msgid "iEx8bl"
 msgstr ""

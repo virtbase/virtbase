@@ -18,8 +18,9 @@
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { serverPlans } from "@virtbase/db/schema";
+import { cache } from "react";
 
-export const getServerPlan = async (id: string) => {
+export const getServerPlan = cache(async (id: string) => {
   return db.transaction(
     async (tx) => {
       return tx
@@ -34,4 +35,4 @@ export const getServerPlan = async (id: string) => {
       isolationLevel: "read committed",
     },
   );
-};
+});

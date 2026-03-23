@@ -37,7 +37,17 @@ const nextConfig: NextConfig = {
     authInterrupts: true,
     globalNotFound: true,
     instantNavigationDevToolsToggle: true,
-    optimizePackageImports: ["radix-ui"],
+    optimizePackageImports: [
+      "radix-ui",
+      "@virtbase/validators",
+      "@virtbase/ui",
+      "fumadocs-core",
+      "fumadocs-ui",
+      "@better-auth/api-key",
+      "@better-auth/passkey",
+      "better-auth",
+      "lucide-react",
+    ],
     sri: {
       algorithm: "sha384",
     },

@@ -23,6 +23,7 @@ import { proxmoxNodes } from "./proxmox-nodes";
 import { proxmoxTemplates } from "./proxmox-templates";
 import { serverBackups } from "./server-backups";
 import { serverPlans } from "./server-plans";
+import { subnetAllocations } from "./subnet-allocations";
 
 export const servers = pgTable(
   "servers",
@@ -131,4 +132,5 @@ export const serversRelations = relations(servers, ({ one, many }) => ({
     references: [proxmoxTemplates.id],
   }),
   serverBackups: many(serverBackups),
+  subnetAllocations: many(subnetAllocations),
 }));

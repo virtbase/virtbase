@@ -15,14 +15,20 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./api-keys";
-export * from "./checkout";
-export * from "./invoices";
-export * from "./pagination";
-export * from "./pointer-records";
-export * from "./proxy";
-export * from "./ssh-keys";
-export * from "./subnet-allocations";
-export * from "./subnets";
-export * from "./timestamps";
-export * from "./utils";
+import type { GetProxmoxInstanceParams } from "../../proxmox";
+
+type RestoreServerBackupWorkflowParams = {
+  proxmoxNode: GetProxmoxInstanceParams;
+  vmid: number;
+  volid: string;
+};
+
+export async function restoreServerBackupWorkflow({
+  proxmoxNode,
+  vmid,
+  volid,
+}: RestoreServerBackupWorkflowParams) {
+  "use workflow";
+
+  // TODO: Implement restore server backup workflow
+}

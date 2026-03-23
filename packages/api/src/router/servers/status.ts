@@ -38,6 +38,9 @@ export const serversStatusRouter = createTRPCRouter({
         summary: "Get server status",
         description: "Returns the status of a server.",
       },
+      permissions: {
+        servers: ["read"],
+      },
     })
     .input(GetServerStatusInputSchema)
     .output(GetServerStatusOutputSchema)
@@ -102,6 +105,9 @@ export const serversStatusRouter = createTRPCRouter({
         tags: ["Servers"],
         summary: "Change status",
         description: "Change the status of a server.",
+      },
+      permissions: {
+        servers: ["write"],
       },
       forbiddenStates: ["suspended", "terminated", "installing"],
     })
