@@ -15,6 +15,25 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export { getTableColumns } from "drizzle-orm";
-export { alias } from "drizzle-orm/pg-core";
-export * from "drizzle-orm/sql";
+import { getValidFilters } from "@virtbase/ui/lib";
+import type { SearchParams } from "nuqs";
+import { getDatacentersList } from "../../api/datacenters/get-datacenters-list";
+import { searchParamsCache } from "../../lib/datacenters/validations";
+import { DatacentersTable } from "./datacenters-table";
+
+export async function DatacentersCard(props: {
+  searchParams: Promise<SearchParams>;
+}) {
+  const searchParams = await props.searchParams;
+  const search = searchParamsCache.parse(searchParams);
+
+  const validFilters = getValidFilters(search.filters);
+
+  return (
+    <DatacentersTable
+      promises={Promise.all([
+        getDatacentersList({ ...search, filters: validFilters }),
+      ])}
+    />
+  );
+}

@@ -15,6 +15,24 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export { getTableColumns } from "drizzle-orm";
-export { alias } from "drizzle-orm/pg-core";
-export * from "drizzle-orm/sql";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import type { RouterInputs, RouterOutputs } from "@virtbase/api";
+import { useTRPC } from "@/lib/trpc/react";
+
+export type GetBackupStatusInput =
+  RouterInputs["servers"]["backups"]["status"]["get"];
+
+export type GetBackupStatusOutput =
+  RouterOutputs["servers"]["backups"]["status"]["get"];
+
+interface GetBackupStatus extends GetBackupStatusInput {
+  queryConfig?: never;
+}
+
+export const useBackupStatus = ({ queryConfig, ...input }: GetBackupStatus) => {
+  const trpc = useTRPC();
+
+  return useSuspenseQuery(
+    trpc.servers.backups.status.get.queryOptions(input, queryConfig),
+  );
+};

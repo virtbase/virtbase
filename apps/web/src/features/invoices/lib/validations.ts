@@ -15,6 +15,20 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export { getTableColumns } from "drizzle-orm";
-export { alias } from "drizzle-orm/pg-core";
-export * from "drizzle-orm/sql";
+import { getSortingStateParser } from "@virtbase/ui/lib";
+import type { Invoice } from "@virtbase/validators";
+import {
+  createSearchParamsCache,
+  parseAsInteger,
+  parseAsString,
+} from "nuqs/server";
+
+export const searchParamsCache = createSearchParamsCache({
+  page: parseAsInteger.withDefault(1),
+  per_page: parseAsInteger.withDefault(10),
+  sort: getSortingStateParser<Invoice>().withDefault([
+    { id: "id", desc: false },
+  ]),
+  number: parseAsString,
+  total: parseAsInteger,
+});

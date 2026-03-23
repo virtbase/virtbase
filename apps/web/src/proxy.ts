@@ -29,10 +29,9 @@ export const config: ProxyConfig = {
   // - … if they start with `/api`, `/_next`, `/_vercel`, `/_proxy` or `/.well-known/workflow/`
   // - … or if they start with `/science` (Sentry tunnel)
   // - … or if they are the geofeed.csv file route
-  // - … or if they are the /supporter/*.svg file route
   // - … the ones containing a dot (e.g. `favicon.ico`)
   matcher:
-    "/((?!api|_next|_vercel|_proxy|\\.well-known/workflow/|science|geofeed\\.csv|supporter\\/.*\\.svg|.*\\..*).*)",
+    "/((?!api|_next|_vercel|_proxy|\\.well-known/workflow/|science|geofeed\\.csv|.*\\..*).*)",
 };
 
 const intlMiddleware = createMiddleware(routing);

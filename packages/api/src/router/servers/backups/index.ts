@@ -38,8 +38,10 @@ import {
 import { start } from "workflow/api";
 import { createTRPCRouter, serverProcedure } from "../../../trpc";
 import { restoreServerBackupWorkflow } from "../../../workflows";
+import { serversBackupsStatusRouter } from "./status";
 
 export const serversBackupsRouter = createTRPCRouter({
+  status: serversBackupsStatusRouter,
   get: serverProcedure
     .meta({
       openapi: {

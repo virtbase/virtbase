@@ -63,3 +63,5 @@ export const datacenters = pgTable(
 export const datacentersRelations = relations(datacenters, ({ many }) => ({
   proxmoxNodes: many(proxmoxNodes),
 }));
+
+export type DatabaseDatacenter = typeof datacenters.$inferSelect;

@@ -15,6 +15,14 @@
       "types": "./dist/stripe.d.ts",
       "default": "./src/stripe/index.ts"
     },
+    "./lexware": {
+      "types": "./dist/lexware.d.ts",
+      "default": "./src/lexware/index.ts"
+    },
+    "./powerdns": {
+      "types": "./dist/powerdns.d.ts",
+      "default": "./src/powerdns/index.ts"
+    },
     "./workflows": {
       "types": "./dist/workflows.d.ts",
       "default": "./src/workflows/index.ts"

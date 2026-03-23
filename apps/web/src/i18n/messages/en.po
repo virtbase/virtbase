@@ -6,17 +6,17 @@ msgstr ""
 "X-Generator: next-intl\n"
 "X-Crowdin-SourceKey: msgstr\n"
 
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:73
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:85
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:74
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:86
 msgid "VX2yLr"
 msgstr "Configure {name}"
 
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:74
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:86
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:75
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:87
 msgid "a7uVhC"
 msgstr "Configure the server plan {name} on {appName}"
 
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:122
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:123
 msgid "fYwMu5"
 msgstr "All prices include statutory VAT, if applicable."
 
@@ -123,6 +123,13 @@ msgstr "Virtbase is the provider for secure server hosting. Maximum performance 
 msgid "BdEM9F"
 msgstr "Hosting, but secure."
 
+#: src/app/admin.virtbase.com/(dashboard)/datacenters/[id]/page.tsx:38
+#: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx:37
+#: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx:53
+#: src/features/admin/components/admin-sidebar-groups.tsx:71
+msgid "NoQGSk"
+msgstr "Datacenters"
+
 #: src/app/admin.virtbase.com/(dashboard)/layout.tsx:28
 msgid "iHN12u"
 msgstr "Admin"
@@ -137,6 +144,13 @@ msgstr "Admin"
 #: src/ui/nav.tsx:74
 msgid "hzSNj4"
 msgstr "Dashboard"
+
+#: src/app/admin.virtbase.com/(dashboard)/subnets/[id]/page.tsx:38
+#: src/app/admin.virtbase.com/(dashboard)/subnets/page.tsx:37
+#: src/app/admin.virtbase.com/(dashboard)/subnets/page.tsx:53
+#: src/features/admin/components/admin-sidebar-groups.tsx:91
+msgid "9lr8v8"
+msgstr "Subnets"
 
 #: src/app/admin.virtbase.com/(dashboard)/users/page.tsx:37
 #: src/app/admin.virtbase.com/(dashboard)/users/page.tsx:53
@@ -211,6 +225,13 @@ msgstr "Reset your password for {appName}"
 #: src/app/app.virtbase.com/(auth)/reset-password/page.tsx:34
 msgid "tNqFr9"
 msgstr "Reset your password for your {appName} account."
+
+#: src/app/app.virtbase.com/(dashboard)/invoices/page.tsx:37
+#: src/app/app.virtbase.com/(dashboard)/invoices/page.tsx:53
+#: src/features/account/components/api-keys/create-api-key-button.tsx:60
+#: src/ui/app-sidebar-menu.tsx:50
+msgid "6dqYnF"
+msgstr "Invoices"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/console/page.tsx:26
 #: src/features/account/components/api-keys/create-api-key-button.tsx:57
@@ -349,11 +370,6 @@ msgstr "rDNS"
 #: src/features/account/components/api-keys/create-api-key-button.tsx:59
 msgid "TrBeGD"
 msgstr "SSH keys"
-
-#: src/features/account/components/api-keys/create-api-key-button.tsx:60
-#: src/ui/app-sidebar-menu.tsx:50
-msgid "6dqYnF"
-msgstr "Invoices"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx:91
 msgid "+J17tT"
@@ -551,10 +567,6 @@ msgstr "No SSH keys have been created yet."
 msgid "UcHtCB"
 msgstr "Proxmox VE"
 
-#: src/features/admin/components/admin-sidebar-groups.tsx:71
-msgid "NoQGSk"
-msgstr "Datacenters"
-
 #: src/features/admin/components/admin-sidebar-groups.tsx:76
 msgid "rcBiKK"
 msgstr "Node Groups"
@@ -566,10 +578,6 @@ msgstr "Template Groups"
 #: src/features/admin/components/admin-sidebar-groups.tsx:88
 msgid "+P4xiL"
 msgstr "IPAM"
-
-#: src/features/admin/components/admin-sidebar-groups.tsx:91
-msgid "9lr8v8"
-msgstr "Subnets"
 
 #: src/features/admin/components/admin-sidebar-groups.tsx:96
 msgid "M/iIYf"

@@ -15,6 +15,33 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export { getTableColumns } from "drizzle-orm";
-export { alias } from "drizzle-orm/pg-core";
-export * from "drizzle-orm/sql";
+import {
+  Breadcrumb,
+  BreadcrumbItem,
+  BreadcrumbList,
+  BreadcrumbPage,
+} from "@virtbase/ui/breadcrumb";
+import { useExtracted } from "next-intl";
+import DashboardLayout from "@/ui/layout/dashboard-layout";
+
+export default function Page({
+  searchParams: _,
+}: PageProps<"/admin.virtbase.com/subnets/[id]">) {
+  const t = useExtracted();
+
+  return (
+    <DashboardLayout
+      leftSide={
+        <Breadcrumb>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbPage>{t("Subnets")}</BreadcrumbPage>
+            </BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumb>
+      }
+    >
+      <div>TODO: Subnet details</div>
+    </DashboardLayout>
+  );
+}

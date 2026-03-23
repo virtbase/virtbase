@@ -138,6 +138,15 @@ const sortSchema = z
     "total",
     "total:asc",
     "total:desc",
+    "tax_amount",
+    "tax_amount:asc",
+    "tax_amount:desc",
+    "paid_at",
+    "paid_at:asc",
+    "paid_at:desc",
+    "created_at",
+    "created_at:asc",
+    "created_at:desc",
   ])
   .array()
   .default(["id:asc"]);
@@ -148,12 +157,14 @@ export const ListInvoicesInputSchema = z.object({
     preprocessQueryArray,
     sortSchema,
   ) as unknown as typeof sortSchema,
-  number: InvoiceSchema.shape.number.optional(),
-  total: InvoiceSchema.shape.total.optional(),
-  tax_amount: InvoiceSchema.shape.tax_amount.optional(),
+  number: InvoiceSchema.shape.number.nullish(),
+  total: InvoiceSchema.shape.total.nullish(),
+  tax_amount: InvoiceSchema.shape.tax_amount.nullish(),
   page: PaginationSchema.shape.page,
   per_page: PaginationSchema.shape.per_page,
 });
+
+export type ListInvoicesInput = z.infer<typeof ListInvoicesInputSchema>;
 
 export const ListInvoicesOutputSchema = z.object({
   invoices: z.array(
@@ -174,3 +185,5 @@ export const ListInvoicesOutputSchema = z.object({
     pagination: PaginationSchema,
   }),
 });
+
+export type ListInvoicesOutput = z.infer<typeof ListInvoicesOutputSchema>;

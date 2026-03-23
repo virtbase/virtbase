@@ -47,6 +47,9 @@ export const env = createEnv({
     // noVNC Proxy
     NOVNC_PROXY_SECRET: z4.string().min(1),
     NOVNC_PROXY_URL: z4.string().min(1),
+    // PowerDNS for reverse DNS management
+    POWERDNS_API_URL: z4.string().min(1),
+    POWERDNS_API_KEY: z4.string().min(1),
   },
   client: {
     // Sentry Configuration
