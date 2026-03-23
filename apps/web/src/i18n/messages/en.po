@@ -6,17 +6,17 @@ msgstr ""
 "X-Generator: next-intl\n"
 "X-Crowdin-SourceKey: msgstr\n"
 
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:82
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:94
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:73
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:85
 msgid "VX2yLr"
 msgstr "Configure {name}"
 
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:83
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:95
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:74
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:86
 msgid "a7uVhC"
 msgstr "Configure the server plan {name} on {appName}"
 
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:129
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:122
 msgid "fYwMu5"
 msgstr "All prices include statutory VAT, if applicable."
 
@@ -383,7 +383,7 @@ msgstr "This key will only be displayed once. Please save it securely, as it can
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:96
 #: src/features/servers/components/overview/node-details-dialog.tsx:83
 #: src/features/servers/components/overview/rename-server-dialog.tsx:93
-#: src/features/servers/components/overview/server-details-card.tsx:59
+#: src/features/servers/components/overview/server-details-card.tsx:72
 #: src/ui/feedback-button.tsx:32
 msgid "HAlOn1"
 msgstr "Name"
@@ -1173,7 +1173,7 @@ msgid "clmnLf"
 msgstr "Start your server and the console will connect automatically."
 
 #: src/features/servers/components/overview/node-details-dialog.tsx:67
-#: src/features/servers/components/overview/server-details-card.tsx:99
+#: src/features/servers/components/overview/server-details-card.tsx:112
 msgid "ivkv/L"
 msgstr "Node"
 
@@ -1199,7 +1199,7 @@ msgstr "Datacenter"
 
 #: src/features/servers/components/overview/rename-server-dialog.tsx:65
 #: src/features/servers/components/overview/rename-server-dialog.tsx:77
-#: src/features/servers/components/overview/server-details-card.tsx:70
+#: src/features/servers/components/overview/server-details-card.tsx:83
 msgid "SwBrEP"
 msgstr "Rename Server"
 
@@ -1211,27 +1211,27 @@ msgstr "Rename your server."
 msgid "UQXG4v"
 msgstr "My Server"
 
-#: src/features/servers/components/overview/server-details-card.tsx:54
+#: src/features/servers/components/overview/server-details-card.tsx:67
 msgid "F/6VqP"
 msgstr "Server"
 
-#: src/features/servers/components/overview/server-details-card.tsx:80
+#: src/features/servers/components/overview/server-details-card.tsx:93
 msgid "t2uvIi"
 msgstr "Operating System"
 
-#: src/features/servers/components/overview/server-details-card.tsx:89
+#: src/features/servers/components/overview/server-details-card.tsx:102
 msgid "4A//XV"
 msgstr "Custom Image"
 
-#: src/features/servers/components/overview/server-details-card.tsx:112
+#: src/features/servers/components/overview/server-details-card.tsx:125
 msgid "RTw2Xk"
 msgstr "View Node Details"
 
-#: src/features/servers/components/overview/server-details-card.tsx:159
+#: src/features/servers/components/overview/server-details-card.tsx:176
 msgid "8O64Ol"
 msgstr "Change Operating System"
 
-#: src/features/servers/components/overview/server-details-card.tsx:168
+#: src/features/servers/components/overview/server-details-card.tsx:185
 msgid "D3OPFp"
 msgstr "Reset Root Password"
 

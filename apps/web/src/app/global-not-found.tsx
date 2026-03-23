@@ -15,10 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-"use client";
-
 import { Button } from "@virtbase/ui/button";
-import { ClientOnly } from "@virtbase/ui/client-only";
 import {
   Empty,
   EmptyContent,
@@ -27,9 +24,9 @@ import {
   EmptyTitle,
 } from "@virtbase/ui/empty";
 import NextLink from "next/link";
-import { authClient } from "@/lib/auth/client";
 import Document from "@/ui/document";
 import ColoredLayout from "@/ui/layout/colored-layout";
+import { UserIndicator } from "@/ui/user-indicator";
 
 export {
   defaultMetadata as metadata,
@@ -42,7 +39,6 @@ export default function NotFound() {
     <Document locale="en">
       <ColoredLayout>
         <div className="flex min-h-screen w-full flex-col items-center justify-between">
-          {/* Empty div to help center main content */}
           <div className="grow basis-0">
             <div className="h-24" />
           </div>
@@ -65,31 +61,11 @@ export default function NotFound() {
               </EmptyContent>
             </Empty>
           </div>
-          {/* Empty div to help center main content */}
           <div className="flex grow basis-0 flex-col justify-end">
             <UserIndicator />
           </div>
         </div>
       </ColoredLayout>
     </Document>
-  );
-}
-
-function UserIndicator() {
-  const { data: session, isPending } = authClient.useSession();
-
-  if (isPending || !session) {
-    return null;
-  }
-
-  return (
-    <ClientOnly>
-      <p className="px-20 py-8 text-center font-medium text-muted-foreground text-xs md:px-0">
-        Logged in as{" "}
-        <span className="font-semibold text-foreground/80">
-          {session.user.name}
-        </span>
-      </p>
-    </ClientOnly>
   );
 }

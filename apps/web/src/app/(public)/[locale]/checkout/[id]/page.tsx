@@ -15,7 +15,6 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { serverPlans } from "@virtbase/db/schema";
 import {
@@ -28,6 +27,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import type { Locale } from "next-intl";
 import { getExtracted, getLocale } from "next-intl/server";
+import { Suspense } from "react";
+import { getServerPlan } from "@/features/checkout/api/get-server-plan";
 import { ElementsProvider } from "@/features/checkout/components/elements-provider";
 import { BlockWrapper } from "@/ui/block-wrapper";
 
@@ -56,28 +57,19 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const locale = await getLocale();
   const id = (await params).id;
 
-  const t = await getExtracted();
+  if (id === "__placeholder__") {
+    return {};
+  }
 
-  const plan = await db.transaction(
-    async (tx) =>
-      tx
-        .select({ name: serverPlans.name })
-        .from(serverPlans)
-        .where(eq(serverPlans.id, id))
-        .limit(1)
-        .then(([res]) => res),
-    {
-      accessMode: "read only",
-      isolationLevel: "read committed",
-    },
-  );
-
+  const plan = await getServerPlan(id);
   if (!plan) {
     notFound();
   }
+
+  const locale = await getLocale();
+  const t = await getExtracted();
 
   const title = t("Configure {name}", { name: plan.name });
   const description = t("Configure the server plan {name} on {appName}", {
@@ -102,8 +94,8 @@ export async function generateMetadata({
 }
 
 export default async function Page({ params }: PageProps) {
-  const planId = (await params).id;
-  if (planId === "__placeholder__") {
+  const id = (await params).id;
+  if (id === "__placeholder__") {
     notFound();
   }
 
@@ -115,14 +107,16 @@ export default async function Page({ params }: PageProps) {
         <div className="p-8" />
       </BlockWrapper>
       <BlockWrapper>
-        <ElementsProvider>
-          <div className="grid grid-cols-12 gap-px bg-border">
-            <div className="col-span-12 bg-background md:col-span-4">
-              <div className="flex flex-col gap-4 p-5 md:sticky md:top-20"></div>
+        <Suspense>
+          <ElementsProvider>
+            <div className="grid grid-cols-12 gap-px bg-border">
+              <div className="col-span-12 bg-background md:col-span-4">
+                <div className="flex flex-col gap-4 p-5 md:sticky md:top-20"></div>
+              </div>
+              <div className="col-span-12 flex flex-col gap-4 bg-background p-5 md:col-span-8"></div>
             </div>
-            <div className="col-span-12 flex flex-col gap-4 bg-background p-5 md:col-span-8"></div>
-          </div>
-        </ElementsProvider>
+          </ElementsProvider>
+        </Suspense>
       </BlockWrapper>
       <BlockWrapper className="py-10">
         <p className="px-4 text-center text-muted-foreground text-sm">

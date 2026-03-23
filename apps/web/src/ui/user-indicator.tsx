@@ -15,30 +15,26 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { eq } from "@virtbase/db";
-import { db } from "@virtbase/db/client";
-import { serverPlans } from "@virtbase/db/schema";
-import { cacheLife, cacheTag } from "next/cache";
-import { cache } from "react";
+"use client";
 
-export const getServerPlan = cache(async (id: string) => {
-  "use cache";
+import { ClientOnly } from "@virtbase/ui/client-only";
+import { authClient } from "@/lib/auth/client";
 
-  cacheTag("checkout");
-  cacheLife("max");
+export function UserIndicator() {
+  const { data: session, isPending } = authClient.useSession();
 
-  return db.transaction(
-    async (tx) => {
-      return tx
-        .select()
-        .from(serverPlans)
-        .where(eq(serverPlans.id, id))
-        .limit(1)
-        .then(([res]) => res);
-    },
-    {
-      accessMode: "read only",
-      isolationLevel: "read committed",
-    },
+  if (isPending || !session) {
+    return null;
+  }
+
+  return (
+    <ClientOnly>
+      <p className="px-20 py-8 text-center font-medium text-muted-foreground text-xs md:px-0">
+        Logged in as{" "}
+        <span className="font-semibold text-foreground/80">
+          {session.user.name}
+        </span>
+      </p>
+    </ClientOnly>
   );
-});
+}

@@ -74,6 +74,7 @@ export async function provisionServerWorkflow({
       proxmoxNode: selectedNode,
       vmid: template.vmid,
       options: {
+        // TODO: Other storage per node
         target: template.storage,
       },
     });
