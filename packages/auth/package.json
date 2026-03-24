@@ -12,19 +12,19 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@better-auth/api-key": "^1.5.5",
-    "@better-auth/passkey": "^1.5.5",
+    "@better-auth/api-key": "^1.5.6",
+    "@better-auth/passkey": "^1.5.6",
     "@sentry/core": "^10.45.0",
-    "@t3-oss/env-core": "^0.13.10",
+    "@t3-oss/env-core": "^0.13.11",
     "@virtbase/db": "workspace:*",
     "@virtbase/email": "workspace:*",
     "@virtbase/utils": "workspace:*",
-    "better-auth": "^1.5.5",
-    "zod": "catalog:"
+    "better-auth": "^1.5.6",
+    "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@biomejs/biome": "catalog:",
+    "@biomejs/biome": "^2.4.8",
     "@virtbase/tsconfig": "workspace:*",
-    "typescript": "catalog:"
+    "typescript": "^6.0.2"
   }
 }
