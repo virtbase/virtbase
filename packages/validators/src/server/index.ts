@@ -196,5 +196,6 @@ export * from "./backups";
 export * from "./console";
 export * from "./firewall";
 export * from "./graphs";
+export * from "./pointer-records";
 export * from "./shared";
 export * from "./status";

@@ -19,7 +19,6 @@ export * from "./api-keys";
 export * from "./checkout";
 export * from "./invoices";
 export * from "./pagination";
-export * from "./pointer-records";
 export * from "./proxy";
 export * from "./ssh-keys";
 export * from "./subnet-allocations";

@@ -45,6 +45,7 @@ import { serversBackupsRouter } from "./backups";
 import { serversConsoleRouter } from "./console";
 import { serverFirewallRouter } from "./firewall";
 import { serversGraphsRouter } from "./graphs";
+import { serversRdnsRouter } from "./rdns";
 import { serversStatusRouter } from "./status";
 
 export const serversRouter = createTRPCRouter({
@@ -53,6 +54,7 @@ export const serversRouter = createTRPCRouter({
   status: serversStatusRouter,
   console: serversConsoleRouter,
   backups: serversBackupsRouter,
+  rdns: serversRdnsRouter,
   get: serverProcedure
     .meta({
       openapi: {

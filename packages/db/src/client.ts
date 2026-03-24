@@ -21,6 +21,11 @@ import ws from "ws";
 
 import * as schema from "./schema";
 
+// Bun's native WebSocket handles the neon proxy handshake correctly on Linux,
+// whereas the `ws` npm package fails with "Unexpected server response: 101".
+// Fall back to `ws` for Node.js environments that lack a global WebSocket.
+const WebSocketConstructor = globalThis.WebSocket ?? ws;
+
 const connectionString = process.env.DATABASE_URL;
 
 if (!connectionString) {
@@ -42,7 +47,7 @@ if (process.env.NODE_ENV === "development") {
   neonConfig.wsProxy = (host) =>
     host === "db.localtest.me" ? `${host}:4444/v2` : `${host}/v2`;
 }
-neonConfig.webSocketConstructor = ws;
+neonConfig.webSocketConstructor = WebSocketConstructor;
 
 const pool = new Pool({ connectionString });
 
