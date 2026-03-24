@@ -15,25 +15,20 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-"use client";
+import { constructMetadata } from "@virtbase/utils";
+import type { Metadata } from "next";
+import { getExtracted } from "next-intl/server";
+import { BackupsCard } from "@/features/servers/components/backups/backups-card";
 
-import * as Sentry from "@sentry/nextjs";
-import { useEffect } from "react";
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getExtracted();
 
-let registered = false;
+  return constructMetadata({
+    title: t("Backups"),
+    noIndex: true,
+  });
+}
 
-/**
- * Lazy load the Sentry replay integration to reduce the initial bundle size.
- * Currently only used on the app layout (public pages are not subject to replay recording)
- */
-export default function SentryReplayIntegration() {
-  useEffect(() => {
-    if (registered) return;
-    registered = true;
-    void import("@sentry/nextjs").then((lazyLoadedSentry) => {
-      Sentry.addIntegration(lazyLoadedSentry.replayIntegration());
-    });
-  }, []);
-
-  return null;
+export default async function Page() {
+  return <BackupsCard />;
 }

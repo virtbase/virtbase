@@ -166,6 +166,10 @@ export const serversBackupsRouter = createTRPCRouter({
                   },
             })
             .from(serverBackups)
+            .leftJoin(
+              proxmoxTemplates,
+              eq(serverBackups.proxmoxTemplateId, proxmoxTemplates.id),
+            )
             .limit(perPage)
             .offset(offset)
             .where(where)
@@ -340,7 +344,7 @@ export const serversBackupsRouter = createTRPCRouter({
     .input(UpdateServerBackupInputSchema)
     .output(UpdateServerBackupOutputSchema)
     .mutation(async ({ ctx, input }) => {
-      const { db, instance } = ctx;
+      const { db, server, instance } = ctx;
 
       const updated = await db.transaction(
         async (tx) => {
@@ -356,7 +360,7 @@ export const serversBackupsRouter = createTRPCRouter({
               and(
                 eq(serverBackups.id, input.backup_id),
                 // [!] Authorization: Only allow the user to access their own backups
-                eq(serverBackups.serverId, input.server_id),
+                eq(serverBackups.serverId, server.id),
               ),
             )
             .limit(1)
@@ -507,9 +511,7 @@ export const serversBackupsRouter = createTRPCRouter({
           await instance.node.storage
             .$(storage)
             .content.$(backup.volid)
-            .$delete({
-              delay: 0,
-            });
+            .$delete();
         },
         {
           accessMode: "read write",

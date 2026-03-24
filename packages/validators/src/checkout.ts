@@ -26,7 +26,8 @@ const orderType = z.enum(["new_server", "extend_server", "upgrade_server"]);
 export const OrderNewServerPlanInputSchema = z.object({
   type: z.literal("new_server"),
   server_plan_id: ServerPlanSchema.shape.id,
-  template_id: ProxmoxTemplateSchema.shape.id.nullish(),
+  // TODO: Make nullish
+  template_id: ProxmoxTemplateSchema.shape.id,
   ssh_key_id: SSHKeySchema.shape.id.nullish(),
   new_ssh_key: SSHKeySchema.shape.public_key.nullish(),
   root_password: z

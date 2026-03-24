@@ -29,7 +29,11 @@ import type { Locale } from "next-intl";
 import { getExtracted, getLocale } from "next-intl/server";
 import { Suspense } from "react";
 import { getServerPlan } from "@/features/checkout/api/get-server-plan";
-import { ElementsProvider } from "@/features/checkout/components/elements-provider";
+import { getTemplateGroups } from "@/features/checkout/api/get-template-groups";
+import { CheckoutAuthWrapper } from "@/features/checkout/components/checkout-auth-wrapper";
+import { CheckoutForm } from "@/features/checkout/components/checkout-form";
+import { CheckoutFormSkeleton } from "@/features/checkout/components/checkout-form-skeleton";
+import { OrderSummary } from "@/features/checkout/components/order-summary";
 import { BlockWrapper } from "@/ui/block-wrapper";
 
 type PageProps = {
@@ -100,6 +104,11 @@ export default async function Page({ params }: PageProps) {
   }
 
   const t = await getExtracted();
+  const plan = await getServerPlan(id);
+
+  if (!plan) {
+    notFound();
+  }
 
   return (
     <main>
@@ -107,16 +116,29 @@ export default async function Page({ params }: PageProps) {
         <div className="p-8" />
       </BlockWrapper>
       <BlockWrapper>
-        <Suspense>
-          <ElementsProvider>
-            <div className="grid grid-cols-12 gap-px bg-border">
-              <div className="col-span-12 bg-background md:col-span-4">
-                <div className="flex flex-col gap-4 p-5 md:sticky md:top-20"></div>
-              </div>
-              <div className="col-span-12 flex flex-col gap-4 bg-background p-5 md:col-span-8"></div>
+        <div className="grid grid-cols-12 gap-px bg-border">
+          <div className="col-span-12 bg-background md:col-span-4">
+            <div className="flex flex-col gap-4 p-5 md:sticky md:top-20">
+              <OrderSummary
+                plan={plan}
+                datacenter={{
+                  id: "dc_1",
+                  name: "SkyLink Data Center",
+                  country: "NL",
+                }}
+              />
             </div>
-          </ElementsProvider>
-        </Suspense>
+          </div>
+          <div className="col-span-12 flex flex-col gap-4 bg-background p-5 md:col-span-8">
+            <Suspense fallback={<CheckoutFormSkeleton />}>
+              <CheckoutAuthWrapper planId={id}>
+                <CheckoutForm
+                  promise={getTemplateGroups(plan.proxmoxNodeGroupId)}
+                />
+              </CheckoutAuthWrapper>
+            </Suspense>
+          </div>
+        </div>
       </BlockWrapper>
       <BlockWrapper className="py-10">
         <p className="px-4 text-center text-muted-foreground text-sm">

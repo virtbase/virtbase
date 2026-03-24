@@ -15,7 +15,9 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { useSuspenseQuery } from "@tanstack/react-query";
+"use client";
+
+import { useQuery } from "@tanstack/react-query";
 import type { RouterInputs, RouterOutputs } from "@virtbase/api";
 import { useTRPC } from "@/lib/trpc/react";
 
@@ -36,7 +38,7 @@ export const defaultBackupListQuery = {
 export const useBackupList = ({ queryConfig, ...input }: GetBackupList) => {
   const trpc = useTRPC();
 
-  return useSuspenseQuery(
+  return useQuery(
     trpc.servers.backups.list.queryOptions(
       {
         ...defaultBackupListQuery,

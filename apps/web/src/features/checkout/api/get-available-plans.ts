@@ -15,25 +15,31 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-"use client";
+import { getTableColumns, sql } from "@virtbase/db";
+import { db } from "@virtbase/db/client";
+import { serverPlans } from "@virtbase/db/schema";
+import { cacheLife, cacheTag } from "next/cache";
+import { cache } from "react";
 
-import * as Sentry from "@sentry/nextjs";
-import { useEffect } from "react";
+export const getAvailablePlans = cache(async () => {
+  "use cache";
 
-let registered = false;
+  cacheTag("checkout");
+  cacheLife("max");
 
-/**
- * Lazy load the Sentry replay integration to reduce the initial bundle size.
- * Currently only used on the app layout (public pages are not subject to replay recording)
- */
-export default function SentryReplayIntegration() {
-  useEffect(() => {
-    if (registered) return;
-    registered = true;
-    void import("@sentry/nextjs").then((lazyLoadedSentry) => {
-      Sentry.addIntegration(lazyLoadedSentry.replayIntegration());
-    });
-  }, []);
-
-  return null;
-}
+  return db.transaction(
+    async (tx) => {
+      // TODO: Resource usage
+      return tx
+        .select({
+          ...getTableColumns(serverPlans),
+          isAvailable: sql<boolean>`TRUE`,
+        })
+        .from(serverPlans);
+    },
+    {
+      accessMode: "read only",
+      isolationLevel: "read committed",
+    },
+  );
+});

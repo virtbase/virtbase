@@ -87,3 +87,5 @@ export const serverPlansRelations = relations(serverPlans, ({ one }) => ({
     references: [proxmoxNodeGroups.id],
   }),
 }));
+
+export type DatabaseServerPlan = typeof serverPlans.$inferSelect;

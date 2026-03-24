@@ -18,7 +18,7 @@
 import { eq, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { serverPlans, servers, users } from "@virtbase/db/schema";
-import { decryptPayload } from "@virtbase/utils";
+import { decryptPayload, deriveKeyHex } from "@virtbase/utils";
 import type { OrderConfigurationSnapshot } from "@virtbase/validators";
 import type Stripe from "stripe";
 import { start } from "workflow/api";
@@ -60,7 +60,7 @@ export const handlePaymentIntentSucceeded = async (event: Stripe.Event) => {
 
   const decrypted = await decryptPayload(
     metadata.configurationSnapshot,
-    stripeSecretKey,
+    await deriveKeyHex(stripeSecretKey),
   );
   let configuration: OrderConfigurationSnapshot;
   try {

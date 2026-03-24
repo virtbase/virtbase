@@ -99,7 +99,7 @@ export const getProxmoxInstance = (proxmoxNode: GetProxmoxInstanceParams) => {
 
       try {
         const url = new URL(
-          `https://${hostname}/api2/json/nodes/${hostname}/storage/${storage}/upload`,
+          `https://${fqdn}/api2/json/nodes/${hostname}/storage/${storage}/upload`,
         );
         url.searchParams.set("content", "snippets");
         url.searchParams.set("filename", encodeURIComponent(filename));

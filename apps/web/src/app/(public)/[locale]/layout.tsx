@@ -19,6 +19,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { locales } from "@/i18n/config";
+import { TRPCReactProvider } from "@/lib/trpc/react";
 import Document from "@/ui/document";
 import { Footer } from "@/ui/footer";
 import { Nav } from "@/ui/nav";
@@ -42,9 +43,11 @@ export default async function LocaleLayout({
     <Document locale={locale}>
       <NextIntlClientProvider locale={locale}>
         <NuqsAdapter>
-          <Nav className="max-w-5xl" />
-          {children}
-          <Footer className="max-w-5xl border-0" />
+          <TRPCReactProvider>
+            <Nav className="max-w-5xl" />
+            {children}
+            <Footer className="max-w-5xl border-0" />
+          </TRPCReactProvider>
         </NuqsAdapter>
       </NextIntlClientProvider>
       <DefaultJsonLd />

@@ -15,25 +15,22 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-"use client";
+import { FieldSeparator } from "@virtbase/ui/field";
+import { Skeleton } from "@virtbase/ui/skeleton";
 
-import * as Sentry from "@sentry/nextjs";
-import { useEffect } from "react";
-
-let registered = false;
-
-/**
- * Lazy load the Sentry replay integration to reduce the initial bundle size.
- * Currently only used on the app layout (public pages are not subject to replay recording)
- */
-export default function SentryReplayIntegration() {
-  useEffect(() => {
-    if (registered) return;
-    registered = true;
-    void import("@sentry/nextjs").then((lazyLoadedSentry) => {
-      Sentry.addIntegration(lazyLoadedSentry.replayIntegration());
-    });
-  }, []);
-
-  return null;
+export function CheckoutFormSkeleton() {
+  return (
+    <div className="flex flex-col gap-7">
+      <Skeleton className="h-6 w-32" />
+      <Skeleton className="h-16 w-full" />
+      <Skeleton className="h-20 w-full" />
+      <FieldSeparator />
+      <Skeleton className="h-5 w-full" />
+      <Skeleton className="h-5 w-full" />
+      <FieldSeparator />
+      <div className="flex justify-end">
+        <Skeleton className="h-9 w-32" />
+      </div>
+    </div>
+  );
 }

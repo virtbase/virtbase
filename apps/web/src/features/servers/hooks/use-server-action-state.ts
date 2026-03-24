@@ -27,6 +27,7 @@ export function useServerActionState() {
       "view-node-details",
       "reset-password",
       "change-operating-system",
+      "create-backup",
     ]).withOptions({
       clearOnDefault: true,
       shallow: true,

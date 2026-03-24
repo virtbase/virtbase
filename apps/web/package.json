@@ -10,6 +10,7 @@
     "typecheck": "tsc --noEmit",
     "test:e2e": "playwright test",
     "test:codegen": "playwright codegen app.virtbase.localhost:3000",
+    "stripe:listen": "stripe listen --forward-to localhost:3000/api/stripe/webhook",
     "with-env": "dotenv -e ../../.env --"
   },
   "dependencies": {

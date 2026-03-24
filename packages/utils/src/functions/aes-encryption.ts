@@ -16,6 +16,17 @@
  */
 
 /**
+ * Derives a 32-byte AES-256 key from any arbitrary string secret by hashing it
+ * with SHA-256, returning the result as a 64-character hex string suitable for
+ * use with encryptPayload / decryptPayload.
+ */
+export const deriveKeyHex = async (secret: string): Promise<string> => {
+  const encoded = new TextEncoder().encode(secret);
+  const hashBuffer = await crypto.subtle.digest("SHA-256", encoded);
+  return Buffer.from(hashBuffer).toString("hex");
+};
+
+/**
  * Encrypts a string payload using AES-256-CBC encryption.
  *
  * The output will be in the format:

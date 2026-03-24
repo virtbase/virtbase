@@ -19,7 +19,7 @@ import * as Sentry from "@sentry/node";
 import { TRPCError } from "@trpc/server";
 import { and, eq } from "@virtbase/db";
 import { serverPlans, servers } from "@virtbase/db/schema";
-import { encryptPayload, isInstalling } from "@virtbase/utils";
+import { deriveKeyHex, encryptPayload, isInstalling } from "@virtbase/utils";
 import type { OrderConfigurationSnapshot } from "@virtbase/validators";
 import {
   OrderServerPlanInputSchema,
@@ -206,13 +206,10 @@ export const checkoutRouter = createTRPCRouter({
           },
           description: plan.name,
           metadata: {
-            configurationSnapshot:
-              // Encrypt the configuration snapshot using AES-256-CBC encryption
-              // with the stripe secret key
-              await encryptPayload(
-                JSON.stringify(configuration),
-                stripeSecretKey,
-              ),
+            configurationSnapshot: await encryptPayload(
+              JSON.stringify(configuration),
+              await deriveKeyHex(stripeSecretKey),
+            ),
           },
         });
 

@@ -15,25 +15,18 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-"use client";
+import { BlockWrapper } from "@/ui/block-wrapper";
 
-import * as Sentry from "@sentry/nextjs";
-import { useEffect } from "react";
-
-let registered = false;
-
-/**
- * Lazy load the Sentry replay integration to reduce the initial bundle size.
- * Currently only used on the app layout (public pages are not subject to replay recording)
- */
-export default function SentryReplayIntegration() {
-  useEffect(() => {
-    if (registered) return;
-    registered = true;
-    void import("@sentry/nextjs").then((lazyLoadedSentry) => {
-      Sentry.addIntegration(lazyLoadedSentry.replayIntegration());
-    });
-  }, []);
-
-  return null;
+export default function Layout({ children }: { children: React.ReactNode }) {
+  return (
+    <main className="relative">
+      <BlockWrapper variant="hero-full">
+        <div className="p-8" />
+      </BlockWrapper>
+      <BlockWrapper>{children}</BlockWrapper>
+      <BlockWrapper>
+        <div className="py-10" />
+      </BlockWrapper>
+    </main>
+  );
 }

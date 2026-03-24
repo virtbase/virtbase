@@ -17,6 +17,7 @@
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useTRPC } from "@/lib/trpc/react";
+import { defaultBackupListQuery } from "./use-backup-list";
 
 type TRPC = ReturnType<typeof useTRPC>;
 type Options = Parameters<
@@ -27,7 +28,7 @@ interface CreateBackupOptions {
   mutationConfig?: Options;
 }
 
-export const useDeleteBackup = ({
+export const useCreateBackup = ({
   mutationConfig,
 }: CreateBackupOptions = {}) => {
   const trpc = useTRPC();
@@ -41,18 +42,21 @@ export const useDeleteBackup = ({
       onMutate: async (input, ...args) => {
         await queryClient.cancelQueries(
           trpc.servers.backups.list.queryFilter({
+            ...defaultBackupListQuery,
             server_id: input.server_id,
           }),
         );
 
         const previousData = queryClient.getQueryData(
           trpc.servers.backups.list.queryKey({
+            ...defaultBackupListQuery,
             server_id: input.server_id,
           }),
         );
 
         queryClient.setQueryData(
           trpc.servers.backups.list.queryKey({
+            ...defaultBackupListQuery,
             server_id: input.server_id,
           }),
           (old) =>
@@ -89,6 +93,7 @@ export const useDeleteBackup = ({
       onError: async (error, input, ctx, ...args) => {
         queryClient.setQueryData(
           trpc.servers.backups.list.queryKey({
+            ...defaultBackupListQuery,
             server_id: input.server_id,
           }),
           ctx?.previousData,
@@ -99,6 +104,7 @@ export const useDeleteBackup = ({
       onSettled: async (data, error, input, ...args) => {
         await queryClient.invalidateQueries(
           trpc.servers.backups.list.queryFilter({
+            ...defaultBackupListQuery,
             server_id: input.server_id,
           }),
         );

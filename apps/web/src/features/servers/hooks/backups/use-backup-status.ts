@@ -26,7 +26,10 @@ export type GetBackupStatusOutput =
   RouterOutputs["servers"]["backups"]["status"]["get"];
 
 interface GetBackupStatus extends GetBackupStatusInput {
-  queryConfig?: never;
+  queryConfig?: {
+    enabled?: boolean;
+    refetchInterval?: number;
+  };
 }
 
 export const useBackupStatus = ({ queryConfig, ...input }: GetBackupStatus) => {

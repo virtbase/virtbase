@@ -41,7 +41,8 @@
     "typecheck": "turbo run typecheck",
     "ui-add": "turbo run ui-add",
     "email": "turbo run email",
-    "prepare": "husky"
+    "prepare": "husky",
+    "stripe:listen": "turbo -F @virtbase/web stripe:listen"
   },
   "catalog": {
     "@biomejs/biome": "^2.4.8",

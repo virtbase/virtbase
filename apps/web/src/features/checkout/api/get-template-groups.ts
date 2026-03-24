@@ -23,9 +23,15 @@ import {
   proxmoxTemplatesToProxmoxNodes as pt2pn,
   proxmoxTemplateGroups as ptg,
 } from "@virtbase/db/schema";
+import { cacheLife, cacheTag } from "next/cache";
 import { cache } from "react";
 
 export const getTemplateGroups = cache(async (proxmoxNodeGroupId: string) => {
+  "use cache";
+
+  cacheTag("checkout");
+  cacheLife("max");
+
   return db.transaction(
     async (tx) => {
       return tx

@@ -20,21 +20,25 @@
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import type { PropsWithChildren } from "react";
-import { useCheckoutState } from "../hooks/use-checkout-state";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "",
 );
 
-export function ElementsProvider({ children }: PropsWithChildren) {
-  const { customerSessionClientSecret, clientSecret } = useCheckoutState();
-
+export function ElementsProvider({
+  children,
+  customerSessionClientSecret,
+  clientSecret,
+}: PropsWithChildren<{
+  customerSessionClientSecret: string;
+  clientSecret: string;
+}>) {
   return (
     <Elements
       stripe={stripePromise}
       options={{
-        customerSessionClientSecret: customerSessionClientSecret || undefined,
-        clientSecret: clientSecret || undefined,
+        customerSessionClientSecret,
+        clientSecret,
         fonts: [
           {
             cssSrc:

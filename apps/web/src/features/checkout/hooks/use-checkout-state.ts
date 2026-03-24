@@ -17,9 +17,13 @@
 
 "use client";
 
+import { useMutation } from "@tanstack/react-query";
 import { parseAsString, useQueryState } from "nuqs";
+import { useTRPC } from "@/lib/trpc/react";
 
 export function useCheckoutState() {
+  const trpc = useTRPC();
+
   const [clientSecret, setClientSecret] = useQueryState(
     "client_secret",
     parseAsString,
@@ -27,10 +31,21 @@ export function useCheckoutState() {
   const [customerSessionClientSecret, setCustomerSessionClientSecret] =
     useQueryState("customer_session_client_secret", parseAsString);
 
+  const { mutate: createOrder, isPending } = useMutation(
+    trpc.checkout.order.mutationOptions({
+      onSuccess: (data) => {
+        setClientSecret(data.client_secret);
+        setCustomerSessionClientSecret(data.customer_session_client_secret);
+      },
+    }),
+  );
+
   return {
     clientSecret,
     setClientSecret,
     customerSessionClientSecret,
     setCustomerSessionClientSecret,
+    createOrder,
+    isPending,
   };
 }

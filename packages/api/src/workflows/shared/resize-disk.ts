@@ -81,7 +81,7 @@ export async function resizeDiskStep({
 
 /**
  * WARNING:
- * This step will destroy the disk and recreate it with the original size.
+ * This step will destroy the disk previously created.
  * Any data on the disk will be lost.
  */
 export async function rollbackResizeDiskStep({
@@ -115,11 +115,6 @@ export async function rollbackResizeDiskStep({
       // Use $put for synchronous update
       await vm.config.$put({
         delete: disk,
-      });
-
-      // Use $put for synchronous update
-      await vm.config.$put({
-        [disk]: `size=${oldSize}G`,
       });
     }
   }

@@ -238,10 +238,6 @@ const finalConfig = process.env.NEXT_PUBLIC_SENTRY_DSN
   ? sentrifiedConfig
   : configWithMDX;
 
-const _configWithWorkflow = withWorkflow(finalConfig, {
-  workflows: {
-    lazyDiscovery: true,
-  },
-});
+const configWithWorkflow = withWorkflow(finalConfig);
 
-export default finalConfig;
+export default configWithWorkflow;

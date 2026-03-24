@@ -75,8 +75,15 @@ export async function provisionServerWorkflow({
       vmid: template.vmid,
       options: {
         // TODO: Other storage per node
-        target: template.storage,
+        target: selectedNode.hostname,
       },
+    });
+
+    await sleep("5s");
+    await waitForProxmoxTaskStep({
+      proxmoxNode: selectedNode,
+      upid: cloneUpid,
+      ignoreErrors: false,
     });
 
     rollbacks.push(() =>

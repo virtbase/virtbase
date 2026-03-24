@@ -20,18 +20,23 @@
 import { cn } from "@virtbase/ui";
 import type * as React from "react";
 
-function Table({ className, ...props }: React.ComponentProps<"table">) {
+function TableContainer({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="table-container"
-      className="relative w-full overflow-x-auto"
-    >
-      <table
-        data-slot="table"
-        className={cn("w-full caption-bottom text-sm", className)}
-        {...props}
-      />
-    </div>
+      className={cn("relative w-full overflow-x-auto", className)}
+      {...props}
+    />
+  );
+}
+
+function Table({ className, ...props }: React.ComponentProps<"table">) {
+  return (
+    <table
+      data-slot="table"
+      className={cn("w-full caption-bottom text-sm", className)}
+      {...props}
+    />
   );
 }
 
@@ -125,6 +130,7 @@ export {
   TableBody,
   TableCaption,
   TableCell,
+  TableContainer,
   TableFooter,
   TableHead,
   TableHeader,

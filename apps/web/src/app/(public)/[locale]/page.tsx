@@ -22,6 +22,7 @@ import {
 } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted, getLocale } from "next-intl/server";
+import { OfferRow } from "@/features/checkout/components/offer-row";
 import { AdvantagesRow } from "@/features/landing/components/advantages-row";
 import { FeaturesShowcase } from "@/features/landing/components/features-showcase";
 import { OperatingSystemShowcase } from "@/features/landing/components/operating-system-showcase";
@@ -65,6 +66,9 @@ export default async function Page() {
             )}
           </p>
         </div>
+      </BlockWrapper>
+      <BlockWrapper>
+        <OfferRow />
       </BlockWrapper>
       <BlockWrapper>
         <FeaturesShowcase />

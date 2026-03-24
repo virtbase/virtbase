@@ -6,19 +6,123 @@ msgstr ""
 "X-Generator: next-intl\n"
 "X-Crowdin-SourceKey: msgstr\n"
 
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:74
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:86
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:78
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:90
 msgid "VX2yLr"
 msgstr "Configure {name}"
 
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:75
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:87
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:79
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:91
 msgid "a7uVhC"
 msgstr "Configure the server plan {name} on {appName}"
 
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:123
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:145
 msgid "fYwMu5"
 msgstr "All prices include statutory VAT, if applicable."
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:53
+msgid "xxhML8"
+msgstr "Payment details"
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:54
+msgid "H0EiGf"
+msgstr "Your payment has been processed. Here you can see the details of your order."
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:69
+msgid "MjOjxw"
+msgstr "Order canceled"
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:70
+msgid "MrIhWr"
+msgstr "The order has been canceled and will not be processed."
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:71
+msgid "Al9AIE"
+msgstr "Please go back to the checkout and try again with a different payment method."
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:78
+msgid "nImirt"
+msgstr "Payment is being processed"
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:79
+msgid "To2Myp"
+msgstr "Due to the chosen payment method, the order will only be processed after the payment has been successfully processed."
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:82
+msgid "NGX4ZX"
+msgstr "We will send an email with all the details once the order has been processed."
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:89
+msgid "p39Bbe"
+msgstr "Order requires action"
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:90
+msgid "lDCVlQ"
+msgstr "The order requires an action from you."
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:91
+msgid "uew4Mt"
+msgstr "Please perform the action and the order will be automatically processed."
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:98
+msgid "6O8bJK"
+msgstr "Order requires payment"
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:99
+msgid "yndqQb"
+msgstr "The order requires a payment."
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:100
+msgid "E9nzLe"
+msgstr "We will initiate the payment and process the order."
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:105
+msgid "dj4t0s"
+msgstr "Order requires confirmation"
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:106
+msgid "nxm6Cj"
+msgstr "The order requires a confirmation by your payment method."
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:109
+msgid "wsDmTC"
+msgstr "Perform the confirmation and the order will be automatically processed."
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:116
+msgid "uH08xA"
+msgstr "Order requires payment method"
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:117
+msgid "jS7WDS"
+msgstr "The order requires a valid payment method. Please go back to the checkout and try again. "
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:120
+msgid "mDRHG0"
+msgstr "If the problem persists, try using a different payment method."
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:127
+msgid "Ifl2yr"
+msgstr "Order successful"
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:128
+msgid "SZKxGU"
+msgstr "The order has been successfully completed and will now be automatically processed."
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:131
+msgid "pNwb8b"
+msgstr "We will send an email with all the details once the booked products are set up."
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:198
+msgid "aIRWQB"
+msgstr "Back to home"
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:207
+msgid "YgWige"
+msgstr "Back to customer portal"
+
+#: src/app/(public)/[locale]/checkout/return/page.tsx:217
+msgid "lVV2Zz"
+msgstr "Need help? Contact us ↗"
 
 #: src/app/(public)/[locale]/contact/page.tsx:40
 #: src/ui/footer.tsx:104
@@ -110,16 +214,16 @@ msgstr "Help Center"
 msgid "PPnkha"
 msgstr "Find answers to all your Virtbase-related questions in one place with our comprehensive Help Center."
 
-#: src/app/(public)/[locale]/page.tsx:34
+#: src/app/(public)/[locale]/page.tsx:35
 msgid "Wbc21W"
 msgstr "Virtbase - Hosting, but secure."
 
-#: src/app/(public)/[locale]/page.tsx:35
-#: src/app/(public)/[locale]/page.tsx:63
+#: src/app/(public)/[locale]/page.tsx:36
+#: src/app/(public)/[locale]/page.tsx:64
 msgid "nEWy6S"
 msgstr "Virtbase is the provider for secure server hosting. Maximum performance with minimal effort."
 
-#: src/app/(public)/[locale]/page.tsx:60
+#: src/app/(public)/[locale]/page.tsx:61
 msgid "BdEM9F"
 msgstr "Hosting, but secure."
 
@@ -188,6 +292,7 @@ msgid "25WwxF"
 msgstr "Don't have an account?"
 
 #: src/app/app.virtbase.com/(auth)/login/page.tsx:71
+#: src/features/checkout/components/checkout-auth-wrapper.tsx:79
 #: src/ui/footer.tsx:79
 #: src/ui/nav.tsx:94
 msgid "8HJxXG"
@@ -232,6 +337,13 @@ msgstr "Reset your password for your {appName} account."
 #: src/ui/app-sidebar-menu.tsx:50
 msgid "6dqYnF"
 msgstr "Invoices"
+
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/backups/page.tsx:27
+#: src/features/account/components/api-keys/create-api-key-button.tsx:55
+#: src/features/servers/components/backups/backups-card.tsx:63
+#: src/features/servers/components/server-nav.tsx:60
+msgid "T3lqx5"
+msgstr "Backups"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/console/page.tsx:26
 #: src/features/account/components/api-keys/create-api-key-button.tsx:57
@@ -352,11 +464,6 @@ msgstr "Created {date}"
 msgid "K3r6DQ"
 msgstr "Delete"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:55
-#: src/features/servers/components/server-nav.tsx:60
-msgid "T3lqx5"
-msgstr "Backups"
-
 #: src/features/account/components/api-keys/create-api-key-button.tsx:56
 #: src/features/servers/components/server-nav.tsx:54
 msgid "Bwqhmd"
@@ -397,6 +504,7 @@ msgstr "This key will only be displayed once. Please save it securely, as it can
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:95
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:96
+#: src/features/servers/components/backups/create-backup-dialog.tsx:123
 #: src/features/servers/components/overview/node-details-dialog.tsx:83
 #: src/features/servers/components/overview/rename-server-dialog.tsx:93
 #: src/features/servers/components/overview/server-details-card.tsx:72
@@ -971,6 +1079,104 @@ msgstr "Confirm password"
 msgid "xl27nc"
 msgstr "Reset Password"
 
+#: src/features/checkout/components/checkout-auth-wrapper.tsx:54
+msgid "jUKaDx"
+msgstr "Authentication required"
+
+#: src/features/checkout/components/checkout-auth-wrapper.tsx:56
+msgid "7VnKx0"
+msgstr "For the continuation of the order, the creation of a customer account is required."
+
+#: src/features/checkout/components/checkout-auth-wrapper.tsx:70
+msgid "SQJto2"
+msgstr "Sign in"
+
+#: src/features/checkout/components/checkout-form.tsx:106
+msgid "7OW8BT"
+msgstr "Configuration"
+
+#: src/features/checkout/components/checkout-form.tsx:113
+#: src/features/servers/components/overview/server-details-card.tsx:93
+msgid "t2uvIi"
+msgstr "Operating System"
+
+#: src/features/checkout/components/checkout-form.tsx:133
+msgid "hE8w/g"
+msgstr "Root Password (optional)"
+
+#: src/features/checkout/components/checkout-form.tsx:144
+msgid "wzt4BE"
+msgstr "Virtbase does not store your root password. It can be reset via the customer portal afterwards."
+
+#: src/features/checkout/components/checkout-form.tsx:152
+msgid "mnTP3x"
+msgstr "If left blank, a secure random password will be generated and sent by email."
+
+#: src/features/checkout/components/checkout-form.tsx:210
+msgid "fL6LzO"
+msgstr "I have read and accepted the <terms>Terms of Service</terms> and the <privacy>Privacy Policy</privacy>."
+
+#: src/features/checkout/components/checkout-form.tsx:254
+msgid "+3U5qS"
+msgstr "I have read and accepted the <revocation>Revocation Policy</revocation>. The revocation right expires as soon as the order is completed and the service is automatically provided."
+
+#: src/features/checkout/components/checkout-form.tsx:285
+msgid "+g+0OK"
+msgstr "Continue to payment"
+
+#: src/features/checkout/components/offer-card.tsx:87
+#: src/features/checkout/components/order-summary.tsx:157
+msgid "Rw82/V"
+msgstr "per month"
+
+#: src/features/checkout/components/offer-card.tsx:102
+#: src/features/checkout/components/order-summary.tsx:67
+#: src/features/servers/components/servers-list.tsx:113
+msgid "BGI16m"
+msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
+
+#: src/features/checkout/components/offer-card.tsx:143
+#: src/features/checkout/components/order-summary.tsx:109
+msgid "zSO/T8"
+msgstr "1 IPv4 + IPv6 /64 Subnet"
+
+#: src/features/checkout/components/offer-card.tsx:162
+msgid "kWI6zX"
+msgstr "Shared"
+
+#: src/features/checkout/components/offer-card.tsx:167
+msgid "Gzo4L7"
+msgstr "Shared-Uplink - the maximum possible bandwidth is shared with other customers."
+
+#: src/features/checkout/components/offer-card.tsx:184
+#: src/features/checkout/components/order-summary.tsx:135
+msgid "IYlDM0"
+msgstr "Unlimited traffic"
+
+#: src/features/checkout/components/offer-card.tsx:188
+msgid "bIu4NB"
+msgstr "Traffic after fair-use principle. Temporary throttling at excessive long-term usage."
+
+#: src/features/checkout/components/offer-card.tsx:219
+msgid "5EjMej"
+msgstr "Configure {name} now"
+
+#: src/features/checkout/components/offer-card.tsx:223
+msgid "khw/ok"
+msgstr "Configure now"
+
+#: src/features/checkout/components/offer-card.tsx:226
+msgid "spsPUc"
+msgstr "Sold out"
+
+#: src/features/checkout/components/order-summary.tsx:54
+msgid "ivNR8s"
+msgstr "Order Summary"
+
+#: src/features/checkout/components/stripe-payment-form.tsx:132
+msgid "u5AfPm"
+msgstr "Buy now"
+
 #: src/features/dashboard/components/empty-servers.tsx:31
 msgid "fmSs/a"
 msgstr "No servers found"
@@ -1147,6 +1353,69 @@ msgstr "Network"
 msgid "yCCio2"
 msgstr "Last reboot"
 
+#: src/features/servers/components/backups/backups-card.tsx:100
+msgid "pelX8B"
+msgstr "{count, plural, =1 {# Backup} other {# Backups}}"
+
+#: src/features/servers/components/backups/backups-table/index.tsx:102
+msgid "G7wlJr"
+msgstr "No backups"
+
+#: src/features/servers/components/backups/backups-table/index.tsx:103
+msgid "gyxApU"
+msgstr "No backups have been created yet."
+
+#: src/features/servers/components/backups/create-backup-dialog.tsx:89
+#: src/features/servers/components/backups/create-backup-dialog.tsx:107
+msgid "6f7NTQ"
+msgstr "Create Backup"
+
+#: src/features/servers/components/backups/create-backup-dialog.tsx:90
+msgid "Z6LfAU"
+msgstr "Create a new backup for your server."
+
+#: src/features/servers/components/backups/create-backup-dialog.tsx:99
+msgid "EZDv9v"
+msgstr "Abbrechen"
+
+#: src/features/servers/components/backups/create-backup-dialog.tsx:143
+msgid "mDxkGm"
+msgstr "Backup Mode"
+
+#: src/features/servers/components/backups/create-backup-dialog.tsx:159
+msgid "8Y0yUM"
+msgstr "Snapshot"
+
+#: src/features/servers/components/backups/create-backup-dialog.tsx:162
+msgid "04uNfB"
+msgstr "Creates a backup without interrupting the system. The current state of the processes is backed up."
+
+#: src/features/servers/components/backups/create-backup-dialog.tsx:178
+#: src/features/servers/components/server-actions-row.tsx:149
+msgid "elnaZe"
+msgstr "Suspend"
+
+#: src/features/servers/components/backups/create-backup-dialog.tsx:181
+msgid "qRuNZh"
+msgstr "Interrupts the system briefly to create a backup without shutting it down."
+
+#: src/features/servers/components/backups/create-backup-dialog.tsx:197
+#: src/features/servers/components/server-actions-row.tsx:162
+msgid "q/uwLT"
+msgstr "Stop"
+
+#: src/features/servers/components/backups/create-backup-dialog.tsx:200
+msgid "JidfdC"
+msgstr "Completely shuts down the system before creating the backup."
+
+#: src/features/servers/components/backups/create-backup-dialog.tsx:220
+msgid "/EmLPv"
+msgstr "Enable deletion protection"
+
+#: src/features/servers/components/backups/create-backup-dialog.tsx:229
+msgid "I9XNiI"
+msgstr "The newly created backup can only be deleted after the deletion protection is disabled."
+
 #: src/features/servers/components/console/console-frame.tsx:73
 #: src/features/servers/components/server-status-bar.tsx:80
 msgid "sIwjuh"
@@ -1223,10 +1492,6 @@ msgstr "My Server"
 msgid "F/6VqP"
 msgstr "Server"
 
-#: src/features/servers/components/overview/server-details-card.tsx:93
-msgid "t2uvIi"
-msgstr "Operating System"
-
 #: src/features/servers/components/overview/server-details-card.tsx:102
 msgid "4A//XV"
 msgstr "Custom Image"
@@ -1262,14 +1527,6 @@ msgstr "Resume"
 #: src/features/servers/components/server-actions-row.tsx:138
 msgid "tFFMkF"
 msgstr "Pause"
-
-#: src/features/servers/components/server-actions-row.tsx:149
-msgid "elnaZe"
-msgstr "Suspend"
-
-#: src/features/servers/components/server-actions-row.tsx:162
-msgid "q/uwLT"
-msgstr "Stop"
 
 #: src/features/servers/components/server-actions-row.tsx:174
 msgid "jm/spn"
@@ -1342,10 +1599,6 @@ msgstr "This server is expiring {expiry} and will be deleted after, if not renew
 #: src/features/servers/components/server-status-bar.tsx:81
 msgid "76X+Qu"
 msgstr "This server is being installed. Some features may not be available yet."
-
-#: src/features/servers/components/servers-list.tsx:113
-msgid "BGI16m"
-msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
 
 #: src/features/servers/components/servers-list.tsx:178
 msgid "SXm88k"
