@@ -19,9 +19,30 @@ import z from "zod";
 import { ObjectTimestampSchema } from "../timestamps";
 
 export const DatacenterSchema = z.object({
-  id: z.string().regex(/^dc_[A-Z0-9]{25}$/),
-  name: z.string().min(1).max(255),
-  country: z.string().min(2).max(2),
+  id: z
+    .string()
+    .regex(/^dc_[A-Z0-9]{25}$/)
+    .meta({
+      description: "Unique identifier of the datacenter.",
+      examples: ["dc_1KDR24RNF2WY69G0FG7YHDQ6T"],
+    }),
+  name: z
+    .string()
+    .min(1)
+    .max(255)
+    .meta({
+      description: "The official name of the datacenter.",
+      examples: ["Skylink Data Center"],
+    }),
+  country: z
+    .string()
+    .min(2)
+    .max(2)
+    .uppercase()
+    .meta({
+      description: "The two-letter ISO 3166-1 alpha-2 code of the country.",
+      examples: ["NL"],
+    }),
   created_at: ObjectTimestampSchema.shape.created_at,
   updated_at: ObjectTimestampSchema.shape.updated_at,
 });

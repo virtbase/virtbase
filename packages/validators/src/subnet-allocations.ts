@@ -16,18 +16,38 @@
  */
 
 import * as z from "zod";
-import { ObjectTimestampSchema } from "./timestamps";
+import { ServerSchema } from "./server/shared";
+import { SubnetSchema } from "./subnets";
+import { EXAMPLE_DATE, ObjectTimestampSchema, RFC3339LINK } from "./timestamps";
 
 export const SubnetAllocationSchema = z.object({
-  id: z.string().regex(/^ipalloc_[A-Z0-9]{25}$/),
-  subnet_id: z.string().regex(/^ipsub_[A-Z0-9]{25}$/),
-  server_id: z
+  id: z
     .string()
-    .regex(/^server_[A-Z0-9]{25}$/)
-    .nullable(),
-  description: z.string().nullable(),
-  allocated_at: z.date(),
-  deallocated_at: z.date().nullable(),
+    .regex(/^ipalloc_[A-Z0-9]{25}$/)
+    .meta({
+      description: "Unique identifier of the subnet allocation.",
+      examples: ["ipalloc_1KDR24RNF2WY69G0FG7YHDQ6T"],
+    }),
+  subnet_id: SubnetSchema.shape.id,
+  server_id: ServerSchema.shape.id.nullable(),
+  description: z
+    .string()
+    .nullable()
+    .meta({
+      description: "The description of the subnet allocation.",
+      examples: ["System-allocated allocation"],
+    }),
+  allocated_at: z.date().meta({
+    description: `The timestamp when the subnet allocation was allocated ${RFC3339LINK}.`,
+    examples: [EXAMPLE_DATE],
+  }),
+  deallocated_at: z
+    .date()
+    .nullable()
+    .meta({
+      description: `The timestamp when the subnet allocation was deallocated ${RFC3339LINK}.`,
+      examples: [EXAMPLE_DATE, null],
+    }),
   updated_at: ObjectTimestampSchema.shape.updated_at,
 });
 

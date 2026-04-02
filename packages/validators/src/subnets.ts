@@ -18,16 +18,41 @@
 import * as z from "zod";
 import { ObjectTimestampSchema } from "./timestamps";
 
+const subnetIdSchema = z.string().regex(/^ipsub_[A-Z0-9]{25}$/);
+
 export const SubnetSchema = z.object({
-  id: z.string().regex(/^ipsub_[A-Z0-9]{25}$/),
-  parent_id: z
+  id: subnetIdSchema.meta({
+    description: "Unique identifier of the subnet.",
+    examples: ["ipsub_1KDR24RNF2WY69G0FG7YHDQ6T"],
+  }),
+  parent_id: subnetIdSchema.nullable().meta({
+    description: "Unique identifier of the parent subnet.",
+    examples: [null],
+  }),
+  cidr: z.union([z.cidrv4(), z.cidrv6()]).meta({
+    description: "The network specification of the subnet in CIDR notation.",
+    examples: ["192.168.1.0/24", "2001:db8::/32"],
+  }),
+  gateway: z.union([z.ipv4(), z.ipv6()]).meta({
+    description: "The gateway IP address of the subnet.",
+    examples: ["192.168.1.1", "2001:db8::1"],
+  }),
+  vlan: z
+    .number()
+    .int()
+    .default(0)
+    .meta({
+      description: "The VLAN ID of the subnet.",
+      examples: [100],
+    }),
+  dns_reverse_zone: z
     .string()
-    .regex(/^ipsub_[A-Z0-9]{25}$/)
-    .nullable(),
-  cidr: z.union([z.cidrv4(), z.cidrv6()]),
-  gateway: z.union([z.ipv4(), z.ipv6()]),
-  vlan: z.number().int(),
-  dns_reverse_zone: z.string().nullable(),
+    .max(255)
+    .nullable()
+    .meta({
+      description: "The DNS reverse zone of the subnet.",
+      examples: ["10.10.10.in-addr.arpa"],
+    }),
   created_at: ObjectTimestampSchema.shape.created_at,
   updated_at: ObjectTimestampSchema.shape.updated_at,
 });

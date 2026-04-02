@@ -16,11 +16,68 @@
  */
 
 import * as z from "zod";
+import { ObjectTimestampSchema } from "./timestamps";
 
 export const ServerPlanSchema = z.object({
-  id: z.string().regex(/^pck_[A-Z0-9]{25}$/),
-  name: z.string().min(1).max(255),
-  cores: z.number().int(),
-  memory: z.number().int(),
-  storage: z.number().int(),
+  id: z
+    .string()
+    .regex(/^pck_[A-Z0-9]{25}$/)
+    .meta({
+      description: "Unique identifier of the server plan.",
+      examples: ["pck_1KDR24RNF2WY69G0FG7YHDQ6T"],
+    }),
+  // proxmoxNodeGroupId placeholder
+  name: z
+    .string()
+    .min(1)
+    .max(255)
+    .meta({
+      description: "Displayable name of the server plan.",
+      examples: ["Plan 1"],
+    }),
+  cores: z
+    .number()
+    .int()
+    .positive()
+    .meta({
+      description: "The number of guaranteed vCores of the server plan.",
+      examples: [1, 2, 4, 8],
+    }),
+  memory: z
+    .number()
+    .int()
+    .positive()
+    .meta({
+      description: "The guaranteed memory of the server plan in MiB.",
+      examples: [1024, 2048, 4096, 8192],
+    }),
+  storage: z
+    .number()
+    .int()
+    .positive()
+    .meta({
+      description: "The guaranteed storage of the server plan in GiB.",
+      examples: [100, 200, 400, 800],
+    }),
+  netrate: z
+    .number()
+    .int()
+    .positive()
+    .nullable()
+    .meta({
+      description:
+        "The maximum network bandwidth limit of the server plan in MB/s.",
+      examples: [1000, 2000, 4000, 8000],
+      internal: true,
+    }),
+  price: z
+    .number()
+    .int()
+    .positive()
+    .meta({
+      description: "The monthly price of the server plan in cents.",
+      examples: [1000, 2000, 4000, 8000],
+    }),
+  created_at: ObjectTimestampSchema.shape.created_at,
+  updated_at: ObjectTimestampSchema.shape.updated_at,
 });

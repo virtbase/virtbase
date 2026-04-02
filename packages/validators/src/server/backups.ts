@@ -36,6 +36,7 @@ export const ServerBackupSchema = z.object({
       example: "kbu_1KECN6RQ2MHEMQV0E62050P88",
     }),
   server_id: ServerSchema.shape.id,
+  // proxmoxTemplateId placeholder
   name: z
     .string()
     .min(1)

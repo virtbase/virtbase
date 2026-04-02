@@ -16,13 +16,70 @@
  */
 
 import * as z from "zod";
+import {
+  EXAMPLE_DATE,
+  ObjectTimestampSchema,
+  RFC3339LINK,
+} from "../timestamps";
 
 export const ServerSchema = z.object({
-  id: z.string().regex(/^kvm_[A-Z0-9]{25}$/),
-  name: z.string().min(1).max(64),
-  installed_at: z.date().nullable(),
-  suspended_at: z.date().nullable(),
-  terminates_at: z.date().nullable(),
+  id: z
+    .string()
+    .regex(/^kvm_[A-Z0-9]{25}$/)
+    .meta({
+      description: "Unique identifier of the server.",
+      examples: ["kvm_1KDR24RNF2WY69G0FG7YHDQ6T"],
+    }),
+  // userId placeholder
+  // serverPlanId placeholder
+  // proxmoxNodeId placeholder
+  // proxmoxTemplateId placeholder
+  name: z
+    .string()
+    .min(1)
+    .max(64)
+    .meta({
+      description: "Display name of the server.",
+      examples: ["My server"],
+    }),
+  vmid: z
+    .int()
+    .positive()
+    .meta({
+      description: "Proxmox VM ID of the server.",
+      examples: [100],
+      internal: true,
+    }),
+  installed_at: z
+    .date()
+    .nullable()
+    .meta({
+      description: `The timestamp when the server was installed ${RFC3339LINK}.`,
+      examples: [EXAMPLE_DATE, null],
+    }),
+  terminates_at: z
+    .date()
+    .nullable()
+    .meta({
+      description: `The timestamp when the server will be terminated ${RFC3339LINK}.`,
+      examples: [EXAMPLE_DATE, null],
+    }),
+  renewal_reminder_sent_at: z
+    .date()
+    .nullable()
+    .meta({
+      description: `The timestamp when the last renewal reminder was sent ${RFC3339LINK}.`,
+      examples: [EXAMPLE_DATE, null],
+    }),
+  suspended_at: z
+    .date()
+    .nullable()
+    .meta({
+      description: `The timestamp when the server was suspended ${RFC3339LINK}.`,
+      examples: [EXAMPLE_DATE, null],
+    }),
+  created_at: ObjectTimestampSchema.shape.created_at,
+  updated_at: ObjectTimestampSchema.shape.updated_at,
 });
 
 export type Server = z.infer<typeof ServerSchema>;
