@@ -36,13 +36,13 @@
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",
     "base-x": "^5.0.1",
-    "drizzle-orm": "^0.45.1",
+    "drizzle-orm": "^0.45.2",
     "drizzle-zod": "^0.8.3",
     "ws": "^8.20.0",
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@electric-sql/pglite": "^0.4.1",
+    "@electric-sql/pglite": "^0.4.3",
     "@biomejs/biome": "catalog:",
     "@types/ws": "^8.18.1",
     "@virtbase/tsconfig": "workspace:*",

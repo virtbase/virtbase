@@ -1,7 +1,6 @@
 {
   "$schema": "https://turborepo.com/schema.json",
   "ui": "tui",
-  "daemon": false,
   "tasks": {
     "topo": {
       "dependsOn": ["^topo"]
