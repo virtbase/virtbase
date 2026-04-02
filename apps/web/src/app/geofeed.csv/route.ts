@@ -39,8 +39,9 @@ const CITY = "Lichtenstein/Sachsen" as const;
 
 /**
  * @see https://datatracker.ietf.org/doc/html/rfc8805#name-postal-code
+ * @deprecated This field is recommended to be left empty due to the granularity of the data.
  */
-const POSTAL_CODE = "09350" as const;
+const POSTAL_CODE = "" as const;
 
 const HEADER =
   "# Self-published geofeed as defined in datatracker.ietf.org/doc/html/rfc8805\r\n# Virtbase Geofeed";
