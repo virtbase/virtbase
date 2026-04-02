@@ -32,6 +32,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import SuperJSON from "superjson";
 import { env } from "@/env";
+import { authClient } from "../auth/client";
 import { createQueryClient } from "./query-client";
 
 let clientQueryClientSingleton: QueryClient | undefined;
@@ -58,9 +59,18 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
         retryLink({
           retry: (otps) => {
             if (otps.error.data && otps.error.data.code === "UNAUTHORIZED") {
-              router.replace(
-                `${APP_DOMAIN}/login?next=${encodeURIComponent(window.location.pathname)}`,
-              );
+              // Globally handle expired sessions
+              // Remove the cookie on client-side by signing out, preventing back and forward navigation
+              void authClient.signOut({
+                fetchOptions: {
+                  onSuccess: () => {
+                    router.replace(
+                      `${APP_DOMAIN}/login?next=${encodeURIComponent(window.location.pathname)}`,
+                    );
+                  },
+                },
+              });
+
               return false;
             }
 

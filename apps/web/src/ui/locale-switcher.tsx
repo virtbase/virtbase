@@ -31,7 +31,7 @@ import { COOKIE_DOMAIN } from "@virtbase/utils";
 import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import NextImage from "next/image";
-import { getLocale } from "next-intl/server";
+import { useLocale } from "next-intl";
 import { COOKIE_NAME, locales } from "@/i18n/config";
 
 const localeMapping = {
@@ -53,8 +53,8 @@ const localeMapping = {
   },
 } as const;
 
-export async function LocaleSwitcher() {
-  const currentLocale = await getLocale();
+export function LocaleSwitcher() {
+  const currentLocale = useLocale();
   const selectedLocale = localeMapping[currentLocale];
 
   // TODO: Update locale in database
