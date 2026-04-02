@@ -16,29 +16,28 @@
  */
 
 import { cn } from "@virtbase/ui";
-import { APP_NAME, APP_STORE_URL } from "@virtbase/utils";
+import { APP_NAME, APPLE_APP_STORE_URL } from "@virtbase/utils";
 import NextImage from "next/image";
-import NextLink from "next/link";
 import { useLocale } from "next-intl";
 
 export function GetOnAppStore({ className }: { className?: string }) {
   const locale = useLocale();
 
   return (
-    <NextLink
-      href={APP_STORE_URL}
+    <a
+      href={APPLE_APP_STORE_URL}
       target="_blank"
-      prefetch={false}
+      rel="noopener noreferrer"
       className={cn("relative block aspect-3/1 h-10 w-fit shrink-0", className)}
     >
       <NextImage
-        src={`/assets/static/apple/pre_order_${locale}.svg`}
+        src={`/assets/static/apple/badge_${locale}.svg`}
         alt={`${APP_NAME} App`}
         className="select-none object-contain"
         fill
         unoptimized
         draggable={false}
       />
-    </NextLink>
+    </a>
   );
 }

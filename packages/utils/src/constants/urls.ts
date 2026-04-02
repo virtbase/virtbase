@@ -17,6 +17,8 @@
 
 export const DISCORD_INVITE_URL = "https://discord.gg/ywrqTubzh5";
 
-export const APP_STORE_URL = "https://testflight.apple.com/join/YTMUeKSy";
+export const APPLE_APP_STORE_ID = "6757938005";
+
+export const APPLE_APP_STORE_URL = `https://apps.apple.com/app/virtbase/id${APPLE_APP_STORE_ID}`;
 
 export const LOOKING_GLASS_URL = "https://lg.virtbase.com";

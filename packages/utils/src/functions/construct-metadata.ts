@@ -16,7 +16,7 @@
  */
 
 import type { Metadata } from "next";
-
+import { APPLE_APP_STORE_ID } from "../constants";
 import { APP_NAME, PUBLIC_DOMAIN } from "../constants/main";
 
 export function constructMetadata({
@@ -105,5 +105,8 @@ export function constructMetadata({
     },
     referrer: "no-referrer-when-downgrade",
     keywords,
+    itunes: {
+      appId: APPLE_APP_STORE_ID,
+    },
   };
 }

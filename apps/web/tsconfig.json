@@ -7,7 +7,7 @@
       "fdx-source/*": ["./.source/*"],
       "@/*": ["./src/*"]
     },
-    "plugins": [{ "name": "next" }]
+    "plugins": [{ "name": "next" }, { "name": "workflow" }]
   },
   "include": [".", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
