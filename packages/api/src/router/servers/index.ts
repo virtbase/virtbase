@@ -26,7 +26,6 @@ import {
   subnets,
 } from "@virtbase/db/schema";
 import { buildOrderBy } from "@virtbase/db/utils";
-import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from "@virtbase/utils";
 import { getPaginationMeta } from "@virtbase/validators";
 import {
   GetServerInputSchema,
@@ -110,8 +109,7 @@ export const serversRouter = createTRPCRouter({
     .query(async ({ ctx, input }) => {
       const { db, userId } = ctx;
 
-      const page = input.page ?? DEFAULT_PAGE;
-      const perPage = input.per_page ?? DEFAULT_PER_PAGE;
+      const { page, per_page: perPage } = input;
 
       const where = and(
         // [!] Authorization: Only allow the user to access their own servers

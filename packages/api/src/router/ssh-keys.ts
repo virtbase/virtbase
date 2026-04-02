@@ -20,12 +20,7 @@ import { and, count, eq } from "@virtbase/db";
 import { sshKeys } from "@virtbase/db/schema";
 import { buildOrderBy } from "@virtbase/db/utils";
 import type { ParsedPublicKey } from "@virtbase/utils";
-import {
-  DEFAULT_PAGE,
-  DEFAULT_PER_PAGE,
-  MAX_SSH_KEYS_PER_USER,
-  parsePublicKey,
-} from "@virtbase/utils";
+import { MAX_SSH_KEYS_PER_USER, parsePublicKey } from "@virtbase/utils";
 import {
   CreateSSHKeyInputSchema,
   CreateSSHKeyOutputSchema,
@@ -114,8 +109,7 @@ export const sshKeysRouter = createTRPCRouter({
     .query(async ({ ctx, input }) => {
       const { db, userId } = ctx;
 
-      const page = input.page ?? DEFAULT_PAGE;
-      const perPage = input.per_page ?? DEFAULT_PER_PAGE;
+      const { page, per_page: perPage } = input;
 
       const where = and(
         // [!] Authorization: Only allow the user to access their own SSH keys

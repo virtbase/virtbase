@@ -19,7 +19,6 @@ import { TRPCError } from "@trpc/server";
 import { and, count, eq, isNull } from "@virtbase/db";
 import { proxmoxTemplates, serverBackups } from "@virtbase/db/schema";
 import { buildOrderBy, createId } from "@virtbase/db/utils";
-import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from "@virtbase/utils";
 import { getPaginationMeta } from "@virtbase/validators";
 import {
   CreateServerBackupInputSchema,
@@ -132,8 +131,7 @@ export const serversBackupsRouter = createTRPCRouter({
     .query(async ({ ctx, input }) => {
       const { db } = ctx;
 
-      const page = input.page ?? DEFAULT_PAGE;
-      const perPage = input.per_page ?? DEFAULT_PER_PAGE;
+      const { page, per_page: perPage } = input;
 
       const where = and(
         // [!] Authorization: Only allow the user to access their own backups

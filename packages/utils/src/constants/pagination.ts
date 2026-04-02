@@ -16,11 +16,16 @@
  */
 
 /**
- * The default page number used for list endpoints.
+ * The default page number used for paginated endpoints.
  */
 export const DEFAULT_PAGE = 1;
 
 /**
- * The default number of entries per page used for list endpoints.
+ * The default number of entries per page used for paginated endpoints.
  */
 export const DEFAULT_PER_PAGE = 10;
+
+/**
+ * The maximum number of entries per page allowed for paginated endpoints.
+ */
+export const MAX_ENTRIES_PER_PAGE = 100;

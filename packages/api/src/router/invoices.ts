@@ -20,7 +20,6 @@ import { TRPCError } from "@trpc/server";
 import { and, count, eq } from "@virtbase/db";
 import { invoices } from "@virtbase/db/schema";
 import { buildOrderBy } from "@virtbase/db/utils";
-import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from "@virtbase/utils";
 import {
   DownloadInvoiceInputSchema,
   DownloadInvoiceOutputSchema,
@@ -183,8 +182,7 @@ export const invoicesRouter = createTRPCRouter({
     .query(async ({ ctx, input }) => {
       const { db, userId } = ctx;
 
-      const page = input.page ?? DEFAULT_PAGE;
-      const perPage = input.per_page ?? DEFAULT_PER_PAGE;
+      const { page, per_page: perPage } = input;
 
       const where = and(
         // [!] Authorization: Only allow the user to access their own invoices

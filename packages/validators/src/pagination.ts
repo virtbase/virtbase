@@ -15,6 +15,11 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import {
+  DEFAULT_PAGE,
+  DEFAULT_PER_PAGE,
+  MAX_ENTRIES_PER_PAGE,
+} from "@virtbase/utils";
 import * as z from "zod";
 
 const paginationHint =
@@ -25,12 +30,13 @@ export const PaginationSchema = z
     page: z
       .int()
       .positive()
-      .default(1)
+      .default(DEFAULT_PAGE)
       .describe(`Current page number. ${paginationHint}`),
     per_page: z
       .int()
       .positive()
-      .default(10)
+      .max(MAX_ENTRIES_PER_PAGE)
+      .default(DEFAULT_PER_PAGE)
       .describe(`Number of entries per page. ${paginationHint}`),
     previous_page: z
       .int()
