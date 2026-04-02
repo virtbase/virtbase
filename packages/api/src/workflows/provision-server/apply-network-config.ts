@@ -15,32 +15,31 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { GetProxmoxInstanceParams } from "../../proxmox";
+import type { GetProxmoxInstanceParams, NetworkAdapter } from "../../proxmox";
 import { getProxmoxInstance } from "../../proxmox";
-import type { NetworkAdapter } from "../../proxmox/generate-cloud-init-network-config";
 import { generateCloudInitNetworkConfig } from "../../proxmox/generate-cloud-init-network-config";
 import { getNetworkAdapterConfig } from "../../proxmox/get-network-adapter-config";
 
 type ApplyNetworkConfigStepParams = {
   proxmoxNode: GetProxmoxInstanceParams & { snippetStorage: string };
   vmid: number;
+  adapters: (NetworkAdapter & {
+    vlan: number;
+    bridge: string;
+    netrate?: number | null;
+  })[];
 };
 
 export async function applyNetworkConfigStep({
   proxmoxNode: { snippetStorage, ...proxmoxNode },
   vmid,
+  adapters,
 }: ApplyNetworkConfigStepParams) {
   "use step";
 
   const instance = getProxmoxInstance(proxmoxNode);
   const vm = instance.node.qemu.$(vmid);
 
-  // TODO: Get available subnets and create adapter config
-  const adapters: (NetworkAdapter & {
-    vlan: number;
-    bridge: string;
-    netrate?: number;
-  })[] = [];
   const cinetwork = generateCloudInitNetworkConfig(adapters);
 
   const filename = `ci-network-${vmid}.yml`;
@@ -122,7 +121,7 @@ export async function applyNetworkConfigStep({
 export async function rollbackApplyNetworkConfigStep({
   proxmoxNode: { snippetStorage, ...proxmoxNode },
   vmid,
-}: ApplyNetworkConfigStepParams) {
+}: Omit<ApplyNetworkConfigStepParams, "adapters">) {
   "use step";
 
   const instance = getProxmoxInstance(proxmoxNode);

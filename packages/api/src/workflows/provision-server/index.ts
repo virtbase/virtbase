@@ -17,9 +17,13 @@
 
 import { FatalError, sleep } from "workflow";
 import { cloneGuestStep, rollbackCloneGuestStep } from "../shared/clone-guest";
+import { getNetworkAdaptersStep } from "../shared/get-network-adapters";
 import { getTemplateStep } from "../shared/get-template";
+import {
+  performGuestActionStep,
+  rollbackPerformGuestActionStep,
+} from "../shared/perform-guest-action";
 import { resizeDiskStep, rollbackResizeDiskStep } from "../shared/resize-disk";
-import { rollbackStartGuestStep, startGuestStep } from "../shared/start-guest";
 import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task";
 import {
   applyHardwareConfigStep,
@@ -53,8 +57,6 @@ export async function provisionServerWorkflow({
 }: ProvisionServerWorkflowParams) {
   "use workflow";
 
-  const { plan, selectedNode } = await selectProxmoxNodeStep({ serverPlanId });
-
   if (!proxmoxTemplateId) {
     // TODO: Implement custom iso flow
     throw new FatalError(
@@ -62,8 +64,14 @@ export async function provisionServerWorkflow({
     );
   }
 
+  const { plan, selectedNode } = await selectProxmoxNodeStep({ serverPlanId });
+
   const template = await getTemplateStep({
     proxmoxTemplateId,
+    proxmoxNodeId: selectedNode.id,
+  });
+
+  const { adapters, allocations } = await getNetworkAdaptersStep({
     proxmoxNodeId: selectedNode.id,
   });
 
@@ -147,6 +155,7 @@ export async function provisionServerWorkflow({
     const { networkConfigUpid } = await applyNetworkConfigStep({
       proxmoxNode: selectedNode,
       vmid: clonedVmid,
+      adapters,
     });
 
     await waitForProxmoxTaskStep({
@@ -169,6 +178,7 @@ export async function provisionServerWorkflow({
       userId,
       serverPlanId,
       proxmoxTemplateId,
+      allocations,
     });
 
     rollbacks.push(() =>
@@ -177,9 +187,10 @@ export async function provisionServerWorkflow({
       }),
     );
 
-    const { startUpid } = await startGuestStep({
+    const { upid: startUpid } = await performGuestActionStep({
       proxmoxNode: selectedNode,
       vmid: clonedVmid,
+      action: "start",
     });
 
     await sleep("5s");
@@ -190,15 +201,19 @@ export async function provisionServerWorkflow({
     });
 
     rollbacks.push(async () => {
-      const { stopUpid } = await rollbackStartGuestStep({
+      const { upid: stopUpid } = await rollbackPerformGuestActionStep({
         proxmoxNode: selectedNode,
         vmid: clonedVmid,
+        initialAction: "start",
+        upid: startUpid,
       });
-      await waitForProxmoxTaskStep({
-        proxmoxNode: selectedNode,
-        upid: stopUpid,
-        ignoreErrors: true,
-      });
+      if (null !== stopUpid) {
+        await waitForProxmoxTaskStep({
+          proxmoxNode: selectedNode,
+          upid: stopUpid,
+          ignoreErrors: true,
+        });
+      }
     });
 
     await sendServerReadyEmailStep({

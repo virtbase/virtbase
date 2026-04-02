@@ -17,7 +17,7 @@
 
 import { eq, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
-import { servers } from "@virtbase/db/schema";
+import { servers, subnetAllocations } from "@virtbase/db/schema";
 import { FatalError } from "workflow";
 
 type StoreProvisionedServerStepParams = {
@@ -27,9 +27,9 @@ type StoreProvisionedServerStepParams = {
   serverPlanId: string;
   proxmoxNodeId: string;
   proxmoxTemplateId?: string | null;
+  allocations: string[];
 };
 
-// TODO: Store network configuration
 export async function storeProvisionedServerStep({
   vmid,
   name,
@@ -37,6 +37,7 @@ export async function storeProvisionedServerStep({
   serverPlanId,
   proxmoxNodeId,
   proxmoxTemplateId,
+  allocations,
 }: StoreProvisionedServerStepParams) {
   "use step";
 
@@ -65,6 +66,13 @@ export async function storeProvisionedServerStep({
         throw new FatalError("Failed to store provisioned server.");
       }
 
+      await tx.insert(subnetAllocations).values(
+        allocations.map((allocation) => ({
+          subnetId: allocation,
+          serverId: created.id,
+        })),
+      );
+
       return {
         serverId: created.id,
       };
@@ -89,7 +97,12 @@ export async function rollbackStoreProvisionedServerStep({
 
   await db.transaction(
     async (tx) => {
-      await tx.delete(servers).where(eq(servers.id, serverId));
+      const where = eq(subnetAllocations.serverId, serverId);
+
+      await Promise.all([
+        tx.delete(servers).where(where),
+        tx.delete(subnetAllocations).where(where),
+      ]);
     },
     {
       accessMode: "read write",

@@ -18,39 +18,29 @@
 import type { GetProxmoxInstanceParams } from "../../proxmox";
 import { getProxmoxInstance } from "../../proxmox";
 
-type StartGuestStepParams = {
+type LoadBackupStepParams = {
   proxmoxNode: GetProxmoxInstanceParams;
   vmid: number;
+  volid: string;
 };
 
-export async function startGuestStep({
+export async function loadBackupStep({
   proxmoxNode,
   vmid,
-}: StartGuestStepParams) {
+  volid,
+}: LoadBackupStepParams) {
   "use step";
 
-  const instance = getProxmoxInstance(proxmoxNode);
-  const vm = instance.node.qemu.$(vmid);
+  const { node } = getProxmoxInstance(proxmoxNode);
 
-  const startUpid = await vm.status.start.$post();
-
-  return {
-    startUpid,
-  };
-}
-
-export async function rollbackStartGuestStep({
-  proxmoxNode,
-  vmid,
-}: StartGuestStepParams) {
-  "use step";
-
-  const instance = getProxmoxInstance(proxmoxNode);
-  const vm = instance.node.qemu.$(vmid);
-
-  const stopUpid = await vm.status.stop.$post();
+  const upid = await node.qemu.$post({
+    vmid,
+    // Overwrites the current guest
+    force: true,
+    archive: volid,
+  });
 
   return {
-    stopUpid,
+    upid,
   };
 }

@@ -114,7 +114,7 @@ export function StripePaymentForm() {
             type: "accordion",
             spacedAccordionItems: true,
             defaultCollapsed: false,
-            radios: true,
+            radios: "auto",
           },
           terms: {
             card: "always",

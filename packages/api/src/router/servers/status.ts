@@ -22,7 +22,7 @@ import {
   UpdateServerStatusInputSchema,
   UpdateServerStatusOutputSchema,
 } from "@virtbase/validators/server";
-import { getLastTask } from "../../proxmox";
+import { getLastTask, performPowerAction } from "../../proxmox";
 import { getDiskInfo } from "../../proxmox/get-disk-info";
 import { createTRPCRouter, serverProcedure } from "../../trpc";
 
@@ -117,37 +117,10 @@ export const serversStatusRouter = createTRPCRouter({
       const { instance } = ctx;
       const { action } = input;
 
-      switch (action) {
-        case "start":
-          await instance.vm.status.start.$post();
-          break;
-        case "stop":
-          await instance.vm.status.stop.$post();
-          break;
-        case "pause":
-          await instance.vm.status.suspend.$post({
-            todisk: false,
-          });
-          break;
-        case "resume":
-          await instance.vm.status.resume.$post();
-          break;
-        case "suspend":
-          await instance.vm.status.suspend.$post({
-            todisk: true,
-          });
-          break;
-        case "reset":
-          await instance.vm.status.reset.$post();
-          break;
-        case "reboot":
-          await instance.vm.status.reboot.$post();
-          break;
-        case "shutdown":
-          await instance.vm.status.shutdown.$post();
-          break;
-        default:
-          break;
-      }
+      // Asynchronous operation, result ignored
+      await performPowerAction({
+        vm: instance.vm,
+        action,
+      });
     }),
 });

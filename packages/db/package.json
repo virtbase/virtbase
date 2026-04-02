@@ -22,6 +22,10 @@
     "./utils": {
       "types": "./dist/utils/index.d.ts",
       "default": "./src/utils/index.ts"
+    },
+    "./queries": {
+      "types": "./dist/queries/index.d.ts",
+      "default": "./src/queries/index.ts"
     }
   },
   "scripts": {

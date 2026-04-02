@@ -17,7 +17,7 @@
 
 import { TRPCError } from "@trpc/server";
 import { and, count, eq, isNull } from "@virtbase/db";
-import { proxmoxTemplates, serverBackups } from "@virtbase/db/schema";
+import { proxmoxTemplates, serverBackups, servers } from "@virtbase/db/schema";
 import { buildOrderBy, createId } from "@virtbase/db/utils";
 import { getPaginationMeta } from "@virtbase/validators";
 import {
@@ -552,6 +552,7 @@ export const serversBackupsRouter = createTRPCRouter({
               finishedAt: serverBackups.finishedAt,
               failedAt: serverBackups.failedAt,
               volid: serverBackups.volid,
+              proxmoxTemplateId: serverBackups.proxmoxTemplateId,
             })
             .from(serverBackups)
             .where(
@@ -601,11 +602,34 @@ export const serversBackupsRouter = createTRPCRouter({
         });
       }
 
+      // Optimistically set the server as installing,
+      // to prevent other actions during the restore process
+      await db.transaction(
+        async (tx) => {
+          return tx
+            .update(servers)
+            .set({
+              installedAt: null,
+            })
+            .where(eq(servers.id, server.id));
+        },
+        {
+          accessMode: "read write",
+          isolationLevel: "read committed",
+        },
+      );
+
       await start(restoreServerBackupWorkflow, [
         {
           proxmoxNode,
           vmid: server.vmid,
           volid: backup.volid,
+          proxmoxTemplateId: backup.proxmoxTemplateId,
+          serverId: server.id,
+          currentProxmoxTemplateId:
+            "object" === typeof server.template && null !== server.template
+              ? server.template.id
+              : server.template,
         },
       ]);
     }),
