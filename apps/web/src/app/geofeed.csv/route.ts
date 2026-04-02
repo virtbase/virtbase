@@ -19,6 +19,7 @@ import { captureException } from "@sentry/nextjs";
 import { asc, isNull, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { subnets } from "@virtbase/db/schema";
+import { APP_NAME } from "@virtbase/utils";
 import { cacheLife, cacheTag } from "next/cache";
 import { cache } from "react";
 
@@ -43,8 +44,7 @@ const CITY = "Lichtenstein/Sachsen" as const;
  */
 const POSTAL_CODE = "" as const;
 
-const HEADER =
-  "# Self-published geofeed as defined in datatracker.ietf.org/doc/html/rfc8805\r\n# Virtbase Geofeed";
+const HEADER = `# Self-published geofeed as defined in datatracker.ietf.org/doc/html/rfc8805\r\n# ${APP_NAME} Geofeed`;
 
 /**
  * @see https://datatracker.ietf.org/doc/html/rfc8805#name-specification
@@ -61,7 +61,7 @@ export const contentType = "text/csv; charset=utf-8";
 const getActiveSubnets = cache(async () => {
   "use cache";
 
-  cacheLife("hours");
+  cacheLife("days");
   cacheTag("geofeed");
 
   try {
@@ -105,7 +105,7 @@ async function handler() {
   return new Response([HEADER, ...contents].join("\r\n"), {
     headers: {
       "Content-Type": contentType,
-      "Cache-Control": "public, max-age=3600, immutable",
+      "Cache-Control": "public, max-age=86400, immutable",
     },
   });
 }
