@@ -1,0 +1,91 @@
+{
+  "email-updated": {
+    "title": "Deine E-Mail-Adresse wurde geändert",
+    "preview": "Deine E-Mail-Adresse wurde aktualisiert",
+    "heading": "Deine E-Mail-Adresse wurde aktualisiert",
+    "changedFromTo": "Die E-Mail-Adresse für deinen {appName} Account wurde von <strong>{oldEmail}</strong> zu <strong>{newEmail}</strong> geändert.",
+    "support": "Falls du diese Änderung nicht selbst durchgeführt hast, kontaktiere bitte unser Support-Team oder <link>aktualisiere deine E-Mail-Adresse</link>.",
+    "hint": "Diese Nachricht wurde ausschließlich an deine alte E-Mail-Adresse gesendet."
+  },
+  "invoice-created": {
+    "title": "Eine neue Rechnung wurde erstellt",
+    "preview": "Deine Rechnung ist verfügbar",
+    "heading": "Deine Rechnung ist verfügbar",
+    "greeting": "Hi {name}!",
+    "description": "Vielen Dank für deinen Einkauf bei {appName}. Deine Rechnung steht zum Download bereit. Sie befindet sich im Anhang dieser E-Mail.",
+    "voucherNumber": "Rechnungsnummer",
+    "totalAmount": "Gesamtbetrag",
+    "taxAmount": "Beinhaltete Steuern",
+    "viewInvoice": "Rechnung im Kundenportal anzeigen"
+  },
+  "login-link": {
+    "title": "Dein {appName} Login-Link",
+    "preview": "Dein {appName} Login-Link",
+    "heading": "Dein Login-Link",
+    "welcome": "Willkommen bei {appName}!",
+    "instructions": "Bitte klicke den nachfolgenden Link, um dich anzumelden.",
+    "signIn": "Anmelden",
+    "copyAndPaste": "oder kopiere diese URL in deinen Browser:"
+  },
+  "password-updated": {
+    "title": "Dein Passwort wurde geändert",
+    "preview": "Dein Passwort wurde geändert",
+    "heading": "Passwort wurde geändert",
+    "description": "Das Passwort für deinen {appName} Account wurde erfolgreich geändert.",
+    "hint": "Falls du diese Änderung nicht autorisiert hast, oder glaubst, dass eine unbefugte Person Zugriff auf deinen Account hat, dann kontaktiere uns bitte umgehend zur Sicherung deines Accounts."
+  },
+  "reset-password-link": {
+    "title": "Link zum Zurücksetzen des Passworts",
+    "preview": "Link zum Zurücksetzen des Passworts",
+    "heading": "Link zum Zurücksetzen des Passworts",
+    "description": "Du erhältst diese E-Mail, da wir eine Anfrage zum Zurücksetzen des Passworts für deinen {appName} Account erhalten haben.",
+    "instructions": "Bitte klicke auf den nachfolgenden Button, um dein Passwort zurückzusetzen.",
+    "resetPassword": "Passwort zurücksetzen",
+    "copyAndPaste": "oder kopiere diese URL in deinen Browser:"
+  },
+  "server-ready": {
+    "title": "Dein Server ist nun bereit",
+    "preview": "Dein Server ist nun bereit",
+    "heading": "Dein Server ist nun bereit",
+    "greeting": "Hi {name}!",
+    "description": "Dein gebuchter Server ist nun vollständig konfiguriert und einsatzbereit. Aus Sicherheitsgründen ist die IP-Adresse dieser E-Mail nicht beigefügt. Du findest diese im Kundenportal.",
+    "username": "<strong>• Benutzername:</strong> {username}",
+    "rootPassword": "<strong>• Root-Passwort:</strong> {rootPassword}",
+    "customPassword": "Von dir gewähltes Passwort",
+    "portalLink": "Server im Kundenportal anzeigen"
+  },
+  "server-renewal-reminder": {
+    "title": "Dein Server läuft bald ab",
+    "preview": "Dein Server läuft bald ab",
+    "heading": "Dein Server läuft bald ab",
+    "greeting": "Hi {name}!",
+    "description": "Dein Server <strong>{serverName}</strong> läuft in den nächsten <strong>{days} Tagen</strong> ab.",
+    "hint": "Um eine Löschung zu vermeiden, empfehlen wir den Server <strong>so schnell wie möglich</strong> zu verlängern.",
+    "renewButton": "Jetzt verlängern"
+  },
+  "server-suspended": {
+    "title": "Dein Server wurde deaktiviert",
+    "preview": "Dein Server wurde deaktiviert",
+    "heading": "Dein Server wurde deaktiviert",
+    "greeting": "Hi {name}!",
+    "description": "Dein Server <strong>{serverName}</strong> wurde deaktiviert, da er nicht rechtzeitig verlängert wurde.",
+    "hint": "Du hast <strong>{days} Tage</strong> zum Verlängern deines Servers. Danach werden dein Server und alle zugehörigen Daten permanent gelöscht.",
+    "renewButton": "Jetzt verlängern"
+  },
+  "verify-email": {
+    "title": "Dein {appName} Bestätigungscode",
+    "preview": "Dein {appName} Bestätigungscode",
+    "heading": "Bitte bestätige deine E-Mail-Adresse",
+    "instructions": "Gib diesen Code auf der {appName} Verifizierungsseite ein, um die Registrierung abzuschließen:",
+    "hint": "Dieser Code läuft in 10 Minuten ab."
+  },
+  "footer": {
+    "thisEmailWasIntendedFor": "Diese E-Mail ist für <strong>{email}</strong> bestimmt.",
+    "securityConcerns": "Falls du diese E-Mail nicht erwartet hast, kannst du sie ignorieren. Solltest du dir Sorgen um die Sicherheit deines Accounts machen, dann <link>kontaktiere uns</link>.",
+    "dontWantToGetTheseEmails": "Diese Art von E-Mail nicht erhalten?",
+    "managePreferences": "E-Mail-Präferenzen anpassen",
+    "adjustNotificationSettings": "Benachrichtigungseinstellungen anpassen",
+    "managingDirector": "Geschäftsführer",
+    "commercialRegister": "Handelsregister"
+  }
+}
