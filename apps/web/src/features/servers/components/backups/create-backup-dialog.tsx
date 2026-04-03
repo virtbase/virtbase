@@ -96,7 +96,7 @@ export default function CreateBackupDialog(
             disabled={form.formState.isSubmitting || isPending}
             onClick={() => props.onOpenChange?.(false)}
           >
-            {t("Abbrechen")}
+            {t("Cancel")}
           </Button>
           <Button
             type="submit"

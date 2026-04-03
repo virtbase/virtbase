@@ -55,7 +55,7 @@ export function FirewallOptionsRow({ promise }: { promise: Promise<string> }) {
         <CardHeader>
           <CardTitle>{t("Incoming packets")}</CardTitle>
           <CardDescription>
-            {t("The default action for incoming packages")}
+            {t("The default action for incoming packets")}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -73,7 +73,7 @@ export function FirewallOptionsRow({ promise }: { promise: Promise<string> }) {
         <CardHeader>
           <CardTitle>{t("Outgoing packets")}</CardTitle>
           <CardDescription>
-            {t("The default action for outgoing packages")}
+            {t("The default action for outgoing packets")}
           </CardDescription>
         </CardHeader>
         <CardContent>

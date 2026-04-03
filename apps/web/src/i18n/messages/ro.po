@@ -496,6 +496,7 @@ msgstr "Create API key"
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:71
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:72
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:106
+#: src/features/servers/components/backups/create-backup-dialog.tsx:99
 #: src/features/servers/components/overview/rename-server-dialog.tsx:74
 #: src/ui/feedback-button.tsx:31
 msgid "47FYwb"
@@ -1383,10 +1384,6 @@ msgstr "Create Backup"
 msgid "Z6LfAU"
 msgstr "Create a new backup for your server."
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:99
-msgid "EZDv9v"
-msgstr "Abbrechen"
-
 #: src/features/servers/components/backups/create-backup-dialog.tsx:143
 msgid "mDxkGm"
 msgstr "Backup Mode"
@@ -1646,16 +1643,16 @@ msgid "XumiMR"
 msgstr "Incoming packets"
 
 #: src/features/servers/firewall/components/firewall-options-row.tsx:58
-msgid "SnIe/I"
-msgstr "The default action for incoming packages"
+msgid "404iMx"
+msgstr ""
 
 #: src/features/servers/firewall/components/firewall-options-row.tsx:74
 msgid "MMByL/"
 msgstr "Outgoing packets"
 
 #: src/features/servers/firewall/components/firewall-options-row.tsx:76
-msgid "9FBS2h"
-msgstr "The default action for outgoing packages"
+msgid "ZO06B5"
+msgstr ""
 
 #: src/features/servers/hooks/use-status-mapping.ts:43
 msgid "ccU6l/"
@@ -1872,4 +1869,3 @@ msgstr "Search for an operating system..."
 #: src/ui/operating-system-select.tsx:102
 msgid "iEx8bl"
 msgstr "No supported operating system found."
-
