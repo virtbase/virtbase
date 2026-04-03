@@ -1,37 +1,37 @@
 {
   "email-updated": {
-    "title": "Your email address has been changed",
-    "preview": "Your email address has been updated",
-    "heading": "Your email address has been updated",
-    "changedFromTo": "The e-mail address for your {appName} account has been changed from <strong>{oldEmail}</strong> to <strong>{newEmail}</strong>.",
-    "support": "If you did not make this change, please contact our support team or <link>update your email address</link>.",
-    "hint": "This message is being sent to your old e-mail address only."
+    "title": "Deine E-Mail-Adresse wurde geändert",
+    "preview": "Deine E-Mail-Adresse wurde aktualisiert",
+    "heading": "Deine E-Mail-Adresse wurde aktualisiert",
+    "changedFromTo": "Die E-Mail-Adresse für deinen {appName} Account wurde von <strong>{oldEmail}</strong> zu <strong>{newEmail}</strong> geändert.",
+    "support": "Falls du diese Änderung nicht selbst durchgeführt hast, kontaktiere bitte unser Support-Team oder <link>aktualisiere deine E-Mail-Adresse</link>.",
+    "hint": "Diese Nachricht wurde ausschließlich an deine alte E-Mail-Adresse gesendet."
   },
   "invoice-created": {
-    "title": "A new invoice has been created",
-    "preview": "Your invoice is available",
-    "heading": "Your invoice is available",
+    "title": "Eine neue Rechnung wurde erstellt",
+    "preview": "Deine Rechnung ist verfügbar",
+    "heading": "Deine Rechnung ist verfügbar",
     "greeting": "Hi {name}!",
-    "description": "Thank you for your purchase at {appName}. Your invoice is available for download. Please find it in the attachments of this email.",
-    "voucherNumber": "Invoice number",
-    "totalAmount": "Total amount",
-    "taxAmount": "Included tax",
-    "viewInvoice": "View invoice in customer portal"
+    "description": "Vielen Dank für deinen Einkauf bei {appName}. Deine Rechnung steht zum Download bereit. Sie befindet sich im Anhang dieser E-Mail.",
+    "voucherNumber": "Rechnungsnummer",
+    "totalAmount": "Gesamtbetrag",
+    "taxAmount": "Beinhaltete Steuern",
+    "viewInvoice": "Rechnung im Kundenportal anzeigen"
   },
   "login-link": {
-    "title": "Your {appName} Login Link",
-    "preview": "Your {appName} Login Link",
-    "heading": "Your Login Link",
-    "welcome": "Welcome to {appName}!",
-    "instructions": "Please click the magic link below to sign in to your account.",
-    "signIn": "Sign in",
-    "copyAndPaste": "or copy and paste this URL into your browser:"
+    "title": "Dein {appName} Login-Link",
+    "preview": "Dein {appName} Login-Link",
+    "heading": "Dein Login-Link",
+    "welcome": "Willkommen bei {appName}!",
+    "instructions": "Bitte klicke den nachfolgenden Link, um dich anzumelden.",
+    "signIn": "Anmelden",
+    "copyAndPaste": "oder kopiere diese URL in deinen Browser:"
   },
   "password-updated": {
-    "title": "Your password has been changed",
-    "preview": "Your password has been changed",
-    "heading": "Password has been changed",
-    "description": "The password for your {appName} account has been successfully changed.",
+    "title": "Dein Passwort wurde geändert",
+    "preview": "Dein Passwort wurde geändert",
+    "heading": "Passwort wurde geändert",
+    "description": "Das Passwort für deinen {appName} Account wurde erfolgreich geändert.",
     "hint": "If you did not make this change or you believe an unauthorised person has accessed your account, please contact us immediately to secure your account."
   },
   "reset-password-link": {
@@ -60,7 +60,7 @@
     "heading": "Your server is about to expire",
     "greeting": "Hi {name}!",
     "description": "Your server <strong>{serverName}</strong> is about to expire in the next <strong>{days} days</strong>.",
-    "hint": "To avoid deletion, we recommend that you renew your server <strong>as soon as possible</strong>.",
+    "hint": "Um eine Löschung zu vermeiden, empfehlen wir den Server <strong>so schnell wie möglich</strong> zu verlängern.",
     "renewButton": "Renew now"
   },
   "server-suspended": {
@@ -82,7 +82,7 @@
   "footer": {
     "thisEmailWasIntendedFor": "This email was intended for <strong>{email}</strong>.",
     "securityConcerns": "If you were not expecting this email, you can ignore this email. If you are concerned about your account's safety, please <link>reach out to let us know</link>.",
-    "dontWantToGetTheseEmails": "Don't want to get these emails?",
+    "dontWantToGetTheseEmails": "Diese Art von E-Mail nicht erhalten?",
     "managePreferences": "Manage your email preferences",
     "adjustNotificationSettings": "Adjust your notification settings",
     "managingDirector": "Managing Director",
