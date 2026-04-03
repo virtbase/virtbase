@@ -1,242 +1,251 @@
 msgid ""
 msgstr ""
 "Language: fr\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: next-intl\n"
 "X-Crowdin-SourceKey: msgstr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Crowdin-Project: virtbase\n"
+"X-Crowdin-Project-ID: 886806\n"
+"X-Crowdin-Language: fr\n"
+"X-Crowdin-File: /main/apps/web/src/i18n/messages/en.po\n"
+"X-Crowdin-File-ID: 14\n"
+"Project-Id-Version: virtbase\n"
+"Language-Team: French\n"
+"PO-Revision-Date: 2026-04-03 11:45\n"
 
 #: src/app/(public)/[locale]/checkout/[id]/page.tsx:78
 #: src/app/(public)/[locale]/checkout/[id]/page.tsx:90
 msgid "VX2yLr"
-msgstr ""
+msgstr "Configure {name}"
 
 #: src/app/(public)/[locale]/checkout/[id]/page.tsx:79
 #: src/app/(public)/[locale]/checkout/[id]/page.tsx:91
 msgid "a7uVhC"
-msgstr ""
+msgstr "Configure the server plan {name} on {appName}"
 
 #: src/app/(public)/[locale]/checkout/[id]/page.tsx:145
 msgid "fYwMu5"
-msgstr ""
+msgstr "All prices include statutory VAT, if applicable."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:53
 msgid "xxhML8"
-msgstr ""
+msgstr "Payment details"
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:54
 msgid "H0EiGf"
-msgstr ""
+msgstr "Your payment has been processed. Here you can see the details of your order."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:69
 msgid "MjOjxw"
-msgstr ""
+msgstr "Order canceled"
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:70
 msgid "MrIhWr"
-msgstr ""
+msgstr "The order has been canceled and will not be processed."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:71
 msgid "Al9AIE"
-msgstr ""
+msgstr "Please go back to the checkout and try again with a different payment method."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:78
 msgid "nImirt"
-msgstr ""
+msgstr "Payment is being processed"
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:79
 msgid "To2Myp"
-msgstr ""
+msgstr "Due to the chosen payment method, the order will only be processed after the payment has been successfully processed."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:82
 msgid "NGX4ZX"
-msgstr ""
+msgstr "We will send an email with all the details once the order has been processed."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:89
 msgid "p39Bbe"
-msgstr ""
+msgstr "Order requires action"
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:90
 msgid "lDCVlQ"
-msgstr ""
+msgstr "The order requires an action from you."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:91
 msgid "uew4Mt"
-msgstr ""
+msgstr "Please perform the action and the order will be automatically processed."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:98
 msgid "6O8bJK"
-msgstr ""
+msgstr "Order requires payment"
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:99
 msgid "yndqQb"
-msgstr ""
+msgstr "The order requires a payment."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:100
 msgid "E9nzLe"
-msgstr ""
+msgstr "We will initiate the payment and process the order."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:105
 msgid "dj4t0s"
-msgstr ""
+msgstr "Order requires confirmation"
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:106
 msgid "nxm6Cj"
-msgstr ""
+msgstr "The order requires a confirmation by your payment method."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:109
 msgid "wsDmTC"
-msgstr ""
+msgstr "Perform the confirmation and the order will be automatically processed."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:116
 msgid "uH08xA"
-msgstr ""
+msgstr "Order requires payment method"
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:117
 msgid "jS7WDS"
-msgstr ""
+msgstr "The order requires a valid payment method. Please go back to the checkout and try again. "
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:120
 msgid "mDRHG0"
-msgstr ""
+msgstr "If the problem persists, try using a different payment method."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:127
 msgid "Ifl2yr"
-msgstr ""
+msgstr "Order successful"
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:128
 msgid "SZKxGU"
-msgstr ""
+msgstr "The order has been successfully completed and will now be automatically processed."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:131
 msgid "pNwb8b"
-msgstr ""
+msgstr "We will send an email with all the details once the booked products are set up."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:198
 msgid "aIRWQB"
-msgstr ""
+msgstr "Back to home"
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:207
 msgid "YgWige"
-msgstr ""
+msgstr "Back to customer portal"
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx:217
 msgid "lVV2Zz"
-msgstr ""
+msgstr "Need help? Contact us ↗"
 
 #: src/app/(public)/[locale]/contact/page.tsx:40
 #: src/ui/footer.tsx:104
 msgid "zFegDD"
-msgstr ""
+msgstr "Contact"
 
 #: src/app/(public)/[locale]/contact/page.tsx:41
 #: src/app/(public)/[locale]/contact/page.tsx:77
 msgid "Hse98V"
-msgstr ""
+msgstr "Get help with all product topics, give feedback or ask questions about billing."
 
 #: src/app/(public)/[locale]/contact/page.tsx:64
 msgid "cN2wPY"
-msgstr ""
+msgstr "Discord Community"
 
 #: src/app/(public)/[locale]/contact/page.tsx:65
 msgid "xmN7+N"
-msgstr ""
+msgstr "Join the community Discord server and chat with other users."
 
 #: src/app/(public)/[locale]/contact/page.tsx:69
 msgid "qh9exW"
-msgstr ""
+msgstr "Join Discord"
 
 #: src/app/(public)/[locale]/contact/page.tsx:76
 #: src/ui/app-sidebar.tsx:85
 #: src/ui/app-sidebar.tsx:98
 msgid "HqRNN8"
-msgstr ""
+msgstr "Support"
 
 #: src/app/(public)/[locale]/contact/page.tsx:81
 msgid "tA3IJb"
-msgstr ""
+msgstr "Request Support"
 
 #: src/app/(public)/[locale]/contact/page.tsx:88
 msgid "KV/9Hv"
-msgstr ""
+msgstr "Questions"
 
 #: src/app/(public)/[locale]/contact/page.tsx:89
 msgid "pNNM1r"
-msgstr ""
+msgstr "Our help articles already answer many of your questions."
 
 #: src/app/(public)/[locale]/contact/page.tsx:93
 msgid "TZHi//"
-msgstr ""
+msgstr "View Help Center"
 
 #: src/app/(public)/[locale]/contact/page.tsx:100
 #: src/features/account/components/api-keys/api-keys-card.tsx:63
 #: src/ui/footer.tsx:123
 msgid "yKOyCk"
-msgstr ""
+msgstr "API Documentation"
 
 #: src/app/(public)/[locale]/contact/page.tsx:101
 msgid "p21Rwp"
-msgstr ""
+msgstr "Learn more about the API interface for developers for your projects."
 
 #: src/app/(public)/[locale]/contact/page.tsx:105
 msgid "SxCabn"
-msgstr ""
+msgstr "View API Documentation"
 
 #: src/app/(public)/[locale]/contact/page.tsx:117
 msgid "M6PcEI"
-msgstr ""
+msgstr "How can we help you?"
 
 #: src/app/(public)/[locale]/contact/page.tsx:120
 msgid "SLIoeO"
-msgstr ""
+msgstr "Contact us and get quick help."
 
 #: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:106
 #: src/app/(public)/[locale]/help/page.tsx:75
 msgid "tUmaeD"
-msgstr ""
+msgstr "All articles"
 
 #: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:128
 #: src/app/(public)/[locale]/legal/[[...slug]]/page.tsx:121
 msgid "ZdCdo5"
-msgstr ""
+msgstr "Last updated: {date}"
 
 #: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:167
 msgid "IAMn0B"
-msgstr ""
+msgstr "Still have questions? Contact us ↗"
 
 #: src/app/(public)/[locale]/help/page.tsx:39
 #: src/app/(public)/[locale]/help/page.tsx:69
 #: src/ui/footer.tsx:113
 msgid "HtSDyc"
-msgstr ""
+msgstr "Help Center"
 
 #: src/app/(public)/[locale]/help/page.tsx:40
 msgid "PPnkha"
-msgstr ""
+msgstr "Find answers to all your Virtbase-related questions in one place with our comprehensive Help Center."
 
 #: src/app/(public)/[locale]/page.tsx:35
 msgid "Wbc21W"
-msgstr ""
+msgstr "Virtbase - Hosting, but secure."
 
 #: src/app/(public)/[locale]/page.tsx:36
 #: src/app/(public)/[locale]/page.tsx:64
 msgid "nEWy6S"
-msgstr ""
+msgstr "Virtbase is the provider for secure server hosting. Maximum performance with minimal effort."
 
 #: src/app/(public)/[locale]/page.tsx:61
 msgid "BdEM9F"
-msgstr ""
+msgstr "Hosting, but secure."
 
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/[id]/page.tsx:38
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx:37
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx:53
 #: src/features/admin/components/admin-sidebar-groups.tsx:71
 msgid "NoQGSk"
-msgstr ""
+msgstr "Datacenters"
 
 #: src/app/admin.virtbase.com/(dashboard)/layout.tsx:28
 msgid "iHN12u"
-msgstr ""
+msgstr "Admin"
 
 #: src/app/admin.virtbase.com/(dashboard)/page.tsx:40
 #: src/app/admin.virtbase.com/(dashboard)/page.tsx:54
@@ -247,240 +256,240 @@ msgstr ""
 #: src/ui/nav-user.tsx:111
 #: src/ui/nav.tsx:74
 msgid "hzSNj4"
-msgstr ""
+msgstr "Dashboard"
 
 #: src/app/admin.virtbase.com/(dashboard)/subnets/[id]/page.tsx:38
 #: src/app/admin.virtbase.com/(dashboard)/subnets/page.tsx:37
 #: src/app/admin.virtbase.com/(dashboard)/subnets/page.tsx:53
 #: src/features/admin/components/admin-sidebar-groups.tsx:91
 msgid "9lr8v8"
-msgstr ""
+msgstr "Subnets"
 
 #: src/app/admin.virtbase.com/(dashboard)/users/page.tsx:37
 #: src/app/admin.virtbase.com/(dashboard)/users/page.tsx:53
 #: src/features/admin/components/admin-sidebar-groups.tsx:56
 msgid "YDMrKK"
-msgstr ""
+msgstr "Users"
 
 #: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:33
 msgid "2znpSL"
-msgstr ""
+msgstr "Forgot password for {appName}"
 
 #: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:34
 msgid "knQkcB"
-msgstr ""
+msgstr "Reset the password of your {appName} account."
 
 #: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:57
 #: src/app/app.virtbase.com/(auth)/reset-password/page.tsx:58
 msgid "p+kmJg"
-msgstr ""
+msgstr "Reset your password"
 
 #: src/app/app.virtbase.com/(auth)/login/page.tsx:34
 msgid "VquSDh"
-msgstr ""
+msgstr "Sign in to {appName}"
 
 #: src/app/app.virtbase.com/(auth)/login/page.tsx:35
 msgid "VGUFk+"
-msgstr ""
+msgstr "Sign in to your {appName} account to manage your virtual servers."
 
 #: src/app/app.virtbase.com/(auth)/login/page.tsx:59
 msgid "TKG18n"
-msgstr ""
+msgstr "Log in to your {appName} account"
 
 #: src/app/app.virtbase.com/(auth)/login/page.tsx:65
 msgid "25WwxF"
-msgstr ""
+msgstr "Don't have an account?"
 
 #: src/app/app.virtbase.com/(auth)/login/page.tsx:71
 #: src/features/checkout/components/checkout-auth-wrapper.tsx:79
 #: src/ui/footer.tsx:79
 #: src/ui/nav.tsx:94
 msgid "8HJxXG"
-msgstr ""
+msgstr "Sign up"
 
 #: src/app/app.virtbase.com/(auth)/register/page-client.tsx:44
 #: src/app/app.virtbase.com/(auth)/register/page.tsx:32
 msgid "LcaCOE"
-msgstr ""
+msgstr "Create your {appName} account"
 
 #: src/app/app.virtbase.com/(auth)/register/page-client.tsx:50
 msgid "uCk8r+"
-msgstr ""
+msgstr "Already have an account?"
 
 #: src/app/app.virtbase.com/(auth)/register/page-client.tsx:55
 msgid "odXlk8"
-msgstr ""
+msgstr "Log in"
 
 #: src/app/app.virtbase.com/(auth)/register/page-client.tsx:71
 msgid "rEdUqQ"
-msgstr ""
+msgstr "Verify your email address"
 
 #: src/app/app.virtbase.com/(auth)/register/page-client.tsx:74
 msgid "H2tEgm"
-msgstr ""
+msgstr "Enter the six digit verification code sent to <strong>{email}</strong>"
 
 #: src/app/app.virtbase.com/(auth)/register/page.tsx:33
 msgid "PcjZtc"
-msgstr ""
+msgstr "Create your {appName} account to order your first virtual server."
 
 #: src/app/app.virtbase.com/(auth)/reset-password/page.tsx:33
 msgid "D2Np7X"
-msgstr ""
+msgstr "Reset your password for {appName}"
 
 #: src/app/app.virtbase.com/(auth)/reset-password/page.tsx:34
 msgid "tNqFr9"
-msgstr ""
+msgstr "Reset your password for your {appName} account."
 
 #: src/app/app.virtbase.com/(dashboard)/invoices/page.tsx:37
 #: src/app/app.virtbase.com/(dashboard)/invoices/page.tsx:53
 #: src/features/account/components/api-keys/create-api-key-button.tsx:60
 #: src/ui/app-sidebar-menu.tsx:50
 msgid "6dqYnF"
-msgstr ""
+msgstr "Invoices"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/backups/page.tsx:27
 #: src/features/account/components/api-keys/create-api-key-button.tsx:55
 #: src/features/servers/components/backups/backups-card.tsx:63
 #: src/features/servers/components/server-nav.tsx:60
 msgid "T3lqx5"
-msgstr ""
+msgstr "Backups"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/console/page.tsx:26
 #: src/features/account/components/api-keys/create-api-key-button.tsx:57
 #: src/features/servers/components/server-nav.tsx:48
 msgid "gc+2Z2"
-msgstr ""
+msgstr "Console"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx:41
 msgid "E+4Rfd"
-msgstr ""
+msgstr "Server not found"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx:43
 msgid "bdn/TR"
-msgstr ""
+msgstr "The server you are looking for does not exist."
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx:49
 msgid "43U065"
-msgstr ""
+msgstr "Go to servers"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/overview/page.tsx:34
 #: src/features/admin/components/admin-sidebar-groups.tsx:48
 #: src/features/servers/components/server-nav.tsx:42
 #: src/ui/app-sidebar.tsx:62
 msgid "9uOFF3"
-msgstr ""
+msgstr "Overview"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/error.tsx:53
 msgid "ox304v"
-msgstr ""
+msgstr "An error occurred"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/error.tsx:55
 msgid "HkQfvt"
-msgstr ""
+msgstr "An unexpected error occurred while loading the server details."
 
 #: src/app/app.virtbase.com/(dashboard)/servers/error.tsx:59
 msgid "FazwRl"
-msgstr ""
+msgstr "Try again"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/page.tsx:40
 #: src/features/account/components/api-keys/create-api-key-button.tsx:54
 #: src/features/admin/components/admin-sidebar-groups.tsx:61
 #: src/ui/app-sidebar-menu.tsx:45
 msgid "QOxktD"
-msgstr ""
+msgstr "Servers"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/page.tsx:49
 msgid "FgwBWh"
-msgstr ""
+msgstr "Rent a new server"
 
 #: src/app/app.virtbase.com/unauthorized.tsx:51
 msgid "srept4"
-msgstr ""
+msgstr "You are not authorized to access this page. Your session may have expired, please sign in again."
 
 #: src/app/app.virtbase.com/unauthorized.tsx:68
 #: src/features/account/components/authentication/user-sessions-list.tsx:151
 msgid "xXbJso"
-msgstr ""
+msgstr "Sign out"
 
 #: src/features/account/components/account-breadcrumb.tsx:41
 #: src/features/account/components/account-nav.tsx:40
 msgid "1iEPTM"
-msgstr ""
+msgstr "General"
 
 #: src/features/account/components/account-breadcrumb.tsx:45
 #: src/features/account/components/account-nav.tsx:45
 msgid "Py189G"
-msgstr ""
+msgstr "Security"
 
 #: src/features/account/components/account-breadcrumb.tsx:49
 #: src/features/account/components/account-nav.tsx:50
 msgid "Tbo377"
-msgstr ""
+msgstr "Billing"
 
 #: src/features/account/components/account-breadcrumb.tsx:53
 #: src/features/account/components/account-nav.tsx:55
 msgid "xwEc8K"
-msgstr ""
+msgstr "API"
 
 #: src/features/account/components/account-breadcrumb.tsx:57
 #: src/features/account/components/account-nav.tsx:60
 #: src/features/account/components/ssh-keys/ssh-keys-card.tsx:43
 msgid "7Cdpiv"
-msgstr ""
+msgstr "SSH Keys"
 
 #: src/features/account/components/account-breadcrumb.tsx:75
 #: src/ui/nav-user.tsx:120
 msgid "TwyMau"
-msgstr ""
+msgstr "Account"
 
 #: src/features/account/components/api-keys/api-keys-card.tsx:48
 msgid "jSp63j"
-msgstr ""
+msgstr "API Keys"
 
 #: src/features/account/components/api-keys/api-keys-card.tsx:50
 msgid "igeEmM"
-msgstr ""
+msgstr "Create and manage API keys for use with the public API."
 
 #: src/features/account/components/api-keys/api-keys-card.tsx:87
 msgid "uWmank"
-msgstr ""
+msgstr "Multiple API keys can be used for authentication."
 
 #: src/features/account/components/api-keys/api-keys-list.tsx:53
 msgid "oK3ylm"
-msgstr ""
+msgstr "No API keys"
 
 #: src/features/account/components/api-keys/api-keys-list.tsx:55
 msgid "8N9621"
-msgstr ""
+msgstr "No API keys have been created yet."
 
 #: src/features/account/components/api-keys/api-keys-list.tsx:94
 #: src/features/account/components/ssh-keys/ssh-keys-list.tsx:83
 msgid "goQBbA"
-msgstr ""
+msgstr "Created {date}"
 
 #: src/features/account/components/api-keys/api-keys-list.tsx:103
 #: src/features/account/components/ssh-keys/ssh-keys-list.tsx:92
 #: src/features/admin/components/users/users-table/columns.tsx:349
 msgid "K3r6DQ"
-msgstr ""
+msgstr "Delete"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx:56
 #: src/features/servers/components/server-nav.tsx:54
 msgid "Bwqhmd"
-msgstr ""
+msgstr "Firewall"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx:58
 #: src/features/servers/components/server-nav.tsx:66
 msgid "F+02/l"
-msgstr ""
+msgstr "rDNS"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx:59
 msgid "TrBeGD"
-msgstr ""
+msgstr "SSH keys"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx:91
 msgid "+J17tT"
-msgstr ""
+msgstr "Create API key"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx:117
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:85
@@ -490,15 +499,15 @@ msgstr ""
 #: src/features/servers/components/overview/rename-server-dialog.tsx:74
 #: src/ui/feedback-button.tsx:31
 msgid "47FYwb"
-msgstr ""
+msgstr "Cancel"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx:134
 msgid "fnMCvo"
-msgstr ""
+msgstr "API key created"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx:137
 msgid "TQSqlk"
-msgstr ""
+msgstr "This key will only be displayed once. Please save it securely, as it cannot be restored:"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx:156
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
@@ -510,78 +519,78 @@ msgstr ""
 #: src/features/servers/components/overview/server-details-card.tsx:72
 #: src/ui/feedback-button.tsx:32
 msgid "HAlOn1"
-msgstr ""
+msgstr "Name"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx:164
 msgid "5Cu2sb"
-msgstr ""
+msgstr "My API key"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx:172
 msgid "SFuk1v"
-msgstr ""
+msgstr "Permissions"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx:174
 msgid "4u9ABD"
-msgstr ""
+msgstr "Depending on the permissions, the API key can perform certain actions."
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx:211
 #: src/features/servers/components/server-graphs.tsx:120
 msgid "filwqD"
-msgstr ""
+msgstr "Read"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx:217
 #: src/features/servers/components/server-graphs.tsx:124
 msgid "k2veDA"
-msgstr ""
+msgstr "Write"
 
 #: src/features/account/components/authentication/add-passkey-button.tsx:47
 msgid "IknBAk"
-msgstr ""
+msgstr "Add Passkey"
 
 #: src/features/account/components/authentication/user-passkeys-card.tsx:51
 #: src/features/account/components/authentication/user-providers-list.tsx:95
 msgid "ASrBq8"
-msgstr ""
+msgstr "Passkeys"
 
 #: src/features/account/components/authentication/user-passkeys-card.tsx:53
 msgid "yZU/cd"
-msgstr ""
+msgstr "Passkeys are a highly secure alternative to passwords. Register a new passkey or use an existing one."
 
 #: src/features/account/components/authentication/user-passkeys-card.tsx:76
 msgid "ANHQFQ"
-msgstr ""
+msgstr "Multiple passkeys can be used for authentication."
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx:51
 msgid "Hcvdp5"
-msgstr ""
+msgstr "No passkeys"
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx:53
 msgid "OHO8dm"
-msgstr ""
+msgstr "No passkeys have been registered for this account."
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx:93
 msgid "GKNfO2"
-msgstr ""
+msgstr "Passkey #{number}"
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx:120
 msgid "jUqYir"
-msgstr ""
+msgstr "Added {date}"
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx:130
 msgid "G/yZLu"
-msgstr ""
+msgstr "Remove"
 
 #: src/features/account/components/authentication/user-providers-card.tsx:47
 msgid "w97pJ4"
-msgstr ""
+msgstr "Authentication Methods"
 
 #: src/features/account/components/authentication/user-providers-card.tsx:49
 msgid "wLHOoq"
-msgstr ""
+msgstr "Configure how you can sign in to your account. Link your accounts for a seamless, secure authentication experience."
 
 #: src/features/account/components/authentication/user-providers-list.tsx:65
 msgid "0Azlrb"
-msgstr ""
+msgstr "Manage"
 
 #: src/features/account/components/authentication/user-providers-list.tsx:82
 #: src/features/auth/components/email-sign-in.tsx:175
@@ -589,294 +598,294 @@ msgstr ""
 #: src/features/auth/components/register/signup-email.tsx:116
 #: src/ui/feedback-button.tsx:34
 msgid "sy+pv5"
-msgstr ""
+msgstr "Email"
 
 #: src/features/account/components/authentication/user-providers-list.tsx:97
 msgid "EYyTPV"
-msgstr ""
+msgstr "Passwordless authentication with passkeys"
 
 #: src/features/account/components/authentication/user-providers-list.tsx:168
 msgid "waJLKW"
-msgstr ""
+msgstr "Linked"
 
 #: src/features/account/components/authentication/user-providers-list.tsx:171
 msgid "xGU8KV"
-msgstr ""
+msgstr "Link your {name} account"
 
 #: src/features/account/components/authentication/user-providers-list.tsx:227
 msgid "JBWS0c"
-msgstr ""
+msgstr "Link"
 
 #: src/features/account/components/authentication/user-providers-list.tsx:236
 msgid "4PKxPs"
-msgstr ""
+msgstr "Unlink"
 
 #: src/features/account/components/authentication/user-sessions-card.tsx:55
 msgid "V3ka34"
-msgstr ""
+msgstr "Active Sessions"
 
 #: src/features/account/components/authentication/user-sessions-card.tsx:57
 msgid "54Q9yz"
-msgstr ""
+msgstr "Sessions show currently logged in devices. They can be revoked at any time."
 
 #: src/features/account/components/authentication/user-sessions-list.tsx:69
 msgid "tkKKAr"
-msgstr ""
+msgstr "No sessions"
 
 #: src/features/account/components/authentication/user-sessions-list.tsx:71
 msgid "IYV2v0"
-msgstr ""
+msgstr "There are no active sessions. New logins will be displayed here."
 
 #: src/features/account/components/authentication/user-sessions-list.tsx:142
 msgid "nBinN2"
-msgstr ""
+msgstr "Signed in {date}"
 
 #: src/features/account/components/authentication/user-sessions-list.tsx:160
 msgid "10IkTF"
-msgstr ""
+msgstr "Unknown device"
 
 #: src/features/account/components/authentication/user-sessions-list.tsx:164
 msgid "pjASrh"
-msgstr ""
+msgstr "Current session"
 
 #: src/features/account/components/authentication/user-sessions-list.tsx:168
 msgid "PIRoCC"
-msgstr ""
+msgstr "Unknown IP address"
 
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:63
 msgid "KdsDOJ"
-msgstr ""
+msgstr "Create SSH key"
 
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:123
 msgid "q7jtp0"
-msgstr ""
+msgstr "My SSH key"
 
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:136
 msgid "jecC36"
-msgstr ""
+msgstr "Public key"
 
 #: src/features/account/components/ssh-keys/ssh-keys-card.tsx:45
 msgid "hdKY6S"
-msgstr ""
+msgstr "Create and manage SSH keys for use during installation."
 
 #: src/features/account/components/ssh-keys/ssh-keys-card.tsx:61
 msgid "UM2KPU"
-msgstr ""
+msgstr "Multiple SSH keys in <openssh>OpenSSH format</openssh> are supported."
 
 #: src/features/account/components/ssh-keys/ssh-keys-list.tsx:50
 msgid "6xgIEt"
-msgstr ""
+msgstr "No SSH keys"
 
 #: src/features/account/components/ssh-keys/ssh-keys-list.tsx:52
 msgid "6NcUU3"
-msgstr ""
+msgstr "No SSH keys have been created yet."
 
 #: src/features/admin/components/admin-sidebar-groups.tsx:68
 msgid "UcHtCB"
-msgstr ""
+msgstr "Proxmox VE"
 
 #: src/features/admin/components/admin-sidebar-groups.tsx:76
 msgid "rcBiKK"
-msgstr ""
+msgstr "Node Groups"
 
 #: src/features/admin/components/admin-sidebar-groups.tsx:81
 msgid "aIwSug"
-msgstr ""
+msgstr "Template Groups"
 
 #: src/features/admin/components/admin-sidebar-groups.tsx:88
 msgid "+P4xiL"
-msgstr ""
+msgstr "IPAM"
 
 #: src/features/admin/components/admin-sidebar-groups.tsx:96
 msgid "M/iIYf"
-msgstr ""
+msgstr "IP Allocations"
 
 #: src/features/admin/components/admin-sidebar.tsx:47
 msgid "k81S1y"
-msgstr ""
+msgstr "Logo"
 
 #: src/features/admin/components/admin-sidebar.tsx:58
 #: src/ui/app-sidebar.tsx:70
 msgid "y1Z3or"
-msgstr ""
+msgstr "Language"
 
 #: src/features/admin/components/dashboard/activity-stats-row.tsx:39
 msgid "wCWFeb"
-msgstr ""
+msgstr "Active Servers"
 
 #: src/features/admin/components/dashboard/activity-stats-row.tsx:43
 msgid "j1CPmU"
-msgstr ""
+msgstr "The number of currently active servers"
 
 #: src/features/admin/components/dashboard/activity-stats-row.tsx:46
 msgid "TkYZBT"
-msgstr ""
+msgstr "Customers"
 
 #: src/features/admin/components/dashboard/activity-stats-row.tsx:50
 msgid "rRpnCw"
-msgstr ""
+msgstr "The number of registered customers"
 
 #: src/features/admin/components/dashboard/activity-stats-row.tsx:53
 msgid "d0YgXc"
-msgstr ""
+msgstr "Monthly Revenue"
 
 #: src/features/admin/components/dashboard/activity-stats-row.tsx:57
 msgid "XCXnQK"
-msgstr ""
+msgstr "Revenue in the last month"
 
 #: src/features/admin/components/dashboard/customers-over-time-card.tsx:37
 msgid "O5JOQn"
-msgstr ""
+msgstr "Customers by Date"
 
 #: src/features/admin/components/dashboard/customers-over-time-card.tsx:39
 msgid "yBCvTc"
-msgstr ""
+msgstr "New customers per day in the last 14 days"
 
 #: src/features/admin/components/dashboard/customers-over-time.tsx:45
 msgid "zHZzJH"
-msgstr ""
+msgstr "New Customers"
 
 #: src/features/admin/components/dashboard/latest-customers-card.tsx:43
 msgid "fuvH7s"
-msgstr ""
+msgstr "Latest Customers"
 
 #: src/features/admin/components/dashboard/latest-customers-card.tsx:44
 msgid "IqzPv+"
-msgstr ""
+msgstr "The latest customers by date"
 
 #: src/features/admin/components/dashboard/latest-customers-card.tsx:55
 #: src/features/admin/components/dashboard/latest-servers-card.tsx:52
 msgid "pFK6bJ"
-msgstr ""
+msgstr "View all"
 
 #: src/features/admin/components/dashboard/latest-customers-list.tsx:58
 msgid "FOEwIg"
-msgstr ""
+msgstr "No new customers"
 
 #: src/features/admin/components/dashboard/latest-customers-list.tsx:60
 msgid "jF7pQ8"
-msgstr ""
+msgstr "No new customers have been registered yet."
 
 #: src/features/admin/components/dashboard/latest-servers-card.tsx:43
 #: src/features/dashboard/components/latest-servers-card.tsx:41
 msgid "DY6Cmc"
-msgstr ""
+msgstr "Latest Servers"
 
 #: src/features/admin/components/dashboard/latest-servers-card.tsx:44
 msgid "U11Zf0"
-msgstr ""
+msgstr "The latest servers by date"
 
 #: src/features/admin/components/dashboard/latest-servers-list.tsx:58
 msgid "ILOirX"
-msgstr ""
+msgstr "No new servers"
 
 #: src/features/admin/components/dashboard/latest-servers-list.tsx:60
 msgid "Xp5CiD"
-msgstr ""
+msgstr "No new servers have been created yet."
 
 #: src/features/admin/components/dashboard/sales-by-plan-card.tsx:37
 msgid "N5LvQA"
-msgstr ""
+msgstr "Sales by Plan"
 
 #: src/features/admin/components/dashboard/sales-by-plan-card.tsx:39
 msgid "ZYHrCR"
-msgstr ""
+msgstr "Sales by plan in the last 30 days"
 
 #: src/features/admin/components/dashboard/sales-by-plan.tsx:64
 msgid "8WKgF6"
-msgstr ""
+msgstr "Revenue"
 
 #: src/features/admin/components/dashboard/sales-by-plan.tsx:126
 msgid "c8nvms"
-msgstr ""
+msgstr "Sales"
 
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:62
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:78
 msgid "ZD7Aza"
-msgstr ""
+msgstr "Create Datacenter"
 
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:63
 msgid "s3yKp4"
-msgstr ""
+msgstr "Create a new datacenter."
 
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:112
 msgid "vONi+O"
-msgstr ""
+msgstr "Country"
 
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:61
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:79
 msgid "1cAptV"
-msgstr ""
+msgstr "Create Proxmox Node Group"
 
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:62
 msgid "1sBtX6"
-msgstr ""
+msgstr "Create a new Proxmox VE node group for Proxmox VE nodes."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:97
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:113
 msgid "S+458D"
-msgstr ""
+msgstr "Create Proxmox Node"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:98
 msgid "deLbYn"
-msgstr ""
+msgstr "Create a new Proxmox VE node to host servers."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:129
 msgid "uPDgth"
-msgstr ""
+msgstr "Hostname"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:154
 msgid "8cNS7n"
-msgstr ""
+msgstr "The hostname of the Proxmox VE node as configured in the Proxmox cluster."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:170
 msgid "2BEZJh"
-msgstr ""
+msgstr "FQDN"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:195
 msgid "cUm+Vq"
-msgstr ""
+msgstr "The FQDN of the Proxmox VE node where the API is accessible. Must be reachable from the internet and use a valid TLS certificate."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:212
 msgid "86ZUi9"
-msgstr ""
+msgstr "Token ID"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:232
 msgid "1gRCWa"
-msgstr ""
+msgstr "Token Secret"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:263
 msgid "6o6hYT"
-msgstr ""
+msgstr "Snippet Storage"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:292
 msgid "10Yrc8"
-msgstr ""
+msgstr "Cloud-init YAML files for any servers on this node will be stored here."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:308
 msgid "IvtOOO"
-msgstr ""
+msgstr "Backup Storage"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:337
 msgid "elgt8s"
-msgstr ""
+msgstr "Backups of any servers on this node will be stored here."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:354
 #: src/features/servers/components/overview/node-details-dialog.tsx:105
 msgid "sB9VeA"
-msgstr ""
+msgstr "Uplink"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:385
 msgid "1oyHhQ"
-msgstr ""
+msgstr "The maximum possible network bandwidth of the Uplink in MB/s."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:404
 msgid "gYG5ho"
-msgstr ""
+msgstr "Maximum number of VMs"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:408
 msgid "UYmKl1"
-msgstr ""
+msgstr "VMs"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:416
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:446
@@ -884,982 +893,983 @@ msgstr ""
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:506
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:537
 msgid "ekXood"
-msgstr ""
+msgstr "Unlimited"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:434
 msgid "OCihQV"
-msgstr ""
+msgstr "Maximum memory"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:464
 msgid "T4Xl7g"
-msgstr ""
+msgstr "Maximum storage"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:494
 msgid "bRNAv0"
-msgstr ""
+msgstr "Maximum vCores"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:498
 #: src/features/servers/components/server-stats-card.tsx:90
 msgid "cCUvGW"
-msgstr ""
+msgstr "vCores"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:525
 msgid "ueCC3G"
-msgstr ""
+msgstr "Network limit"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:568
 msgid "U9Jxp7"
-msgstr ""
+msgstr "If reached, this node will no longer be used for services. Leave empty for unlimited."
 
 #: src/features/admin/components/users/users-table/columns.tsx:197
 msgid "a5msuh"
-msgstr ""
+msgstr "Yes"
 
 #: src/features/admin/components/users/users-table/columns.tsx:197
 msgid "oUWADl"
-msgstr ""
+msgstr "No"
 
 #: src/features/admin/components/users/users-table/columns.tsx:252
 msgid "bdcMGy"
-msgstr ""
+msgstr "Open menu"
 
 #: src/features/admin/components/users/users-table/columns.tsx:266
 #: src/features/servers/components/servers-list.tsx:168
 msgid "FgydNe"
-msgstr ""
+msgstr "View"
 
 #: src/features/admin/components/users/users-table/columns.tsx:284
 msgid "hQZhn8"
-msgstr ""
+msgstr "Impersonate"
 
 #: src/features/admin/components/users/users-table/columns.tsx:295
 msgid "C3uaig"
-msgstr ""
+msgstr "View in Stripe"
 
 #: src/features/admin/components/users/users-table/columns.tsx:317
 msgid "qXCbgZ"
-msgstr ""
+msgstr "Unlock"
 
 #: src/features/admin/components/users/users-table/columns.tsx:340
 msgid "XtUrMc"
-msgstr ""
+msgstr "Ban"
 
 #: src/features/auth/components/auth-methods-separator.tsx:27
 msgid "Ntjkqd"
-msgstr ""
+msgstr "or"
 
 #: src/features/auth/components/discord-button.tsx:61
 #: src/features/auth/components/register/signup-oauth.tsx:99
 msgid "Y7Cpd6"
-msgstr ""
+msgstr "Continue with Discord"
 
 #: src/features/auth/components/email-sign-in.tsx:101
 #: src/features/auth/components/email-sign-in.tsx:114
 msgid "JgGwrY"
-msgstr ""
+msgstr "No account found with that email address."
 
 #: src/features/auth/components/email-sign-in.tsx:156
 msgid "YXNhCz"
-msgstr ""
+msgstr "Email sent - check your inbox!"
 
 #: src/features/auth/components/email-sign-in.tsx:200
 #: src/features/auth/components/register/signup-email.tsx:166
 #: src/features/auth/components/register/signup-email.tsx:172
 #: src/features/auth/components/reset-password-form.tsx:95
 msgid "5sg7KC"
-msgstr ""
+msgstr "Password"
 
 #: src/features/auth/components/email-sign-in.tsx:206
 msgid "V/JHlm"
-msgstr ""
+msgstr "Forgot password?"
 
 #: src/features/auth/components/email-sign-in.tsx:215
 msgid "tXea4K"
-msgstr ""
+msgstr "Password (optional)"
 
 #: src/features/auth/components/email-sign-in.tsx:251
 msgid "Bddm92"
-msgstr ""
+msgstr "Log in with password"
 
 #: src/features/auth/components/email-sign-in.tsx:253
 msgid "vu1wqp"
-msgstr ""
+msgstr "Log in with email"
 
 #: src/features/auth/components/forgot-password-form.tsx:51
 msgid "qm+oRY"
-msgstr ""
+msgstr "You will receive an email with instructions to reset your password."
 
 #: src/features/auth/components/forgot-password-form.tsx:104
 msgid "DkQ5Q8"
-msgstr ""
+msgstr "Send reset link"
 
 #: src/features/auth/components/github-button.tsx:61
 #: src/features/auth/components/register/signup-oauth.tsx:83
 msgid "8eQ7FM"
-msgstr ""
+msgstr "Continue with GitHub"
 
 #: src/features/auth/components/google-button.tsx:57
 #: src/features/auth/components/register/signup-oauth.tsx:66
 msgid "FJ6r9E"
-msgstr ""
+msgstr "Continue with Google"
 
 #: src/features/auth/components/login-form.tsx:146
 msgid "Zk0/xv"
-msgstr ""
+msgstr "You signed in with {method} last time"
 
 #: src/features/auth/components/login-form.tsx:166
 msgid "u0mNBU"
-msgstr ""
+msgstr "Continue with another method"
 
 #: src/features/auth/components/passkey-button.tsx:71
 msgid "kHhLiu"
-msgstr ""
+msgstr "Continue with Passkey"
 
 #: src/features/auth/components/password-requirements.tsx:28
 msgid "kFkPWB"
-msgstr ""
+msgstr "Number"
 
 #: src/features/auth/components/password-requirements.tsx:32
 msgid "cXsNgc"
-msgstr ""
+msgstr "Uppercase letter"
 
 #: src/features/auth/components/password-requirements.tsx:36
 msgid "NNQ3iD"
-msgstr ""
+msgstr "Lowercase letter"
 
 #: src/features/auth/components/password-requirements.tsx:40
 msgid "WK/0OI"
-msgstr ""
+msgstr "8 characters"
 
 #: src/features/auth/components/register/resend-otp.tsx:80
 msgid "pFU3mO"
-msgstr ""
+msgstr "Didn't receive a code?"
 
 #: src/features/auth/components/register/resend-otp.tsx:89
 msgid "IXycMo"
-msgstr ""
+msgstr "Resend"
 
 #: src/features/auth/components/register/resend-otp.tsx:97
 msgid "xfiWJo"
-msgstr ""
+msgstr "Code sent successfully."
 
 #: src/features/auth/components/register/resend-otp.tsx:103
 msgid "p9iDr6"
-msgstr ""
+msgstr "Failed to send code."
 
 #: src/features/auth/components/register/signup-email.tsx:139
 msgid "dOQCL8"
-msgstr ""
+msgstr "Display name"
 
 #: src/features/auth/components/register/signup-email.tsx:192
 msgid "39AHJm"
-msgstr ""
+msgstr "Sign Up"
 
 #: src/features/auth/components/register/verify-email-form.tsx:62
 msgid "pwyqaX"
-msgstr ""
+msgstr "Account created! Redirecting..."
 
 #: src/features/auth/components/register/verify-email-form.tsx:120
 msgid "poE3OD"
-msgstr ""
+msgstr "Invalid code. Please try again."
 
 #: src/features/auth/components/register/verify-email-form.tsx:131
 msgid "acrOoz"
-msgstr ""
+msgstr "Continue"
 
 #: src/features/auth/components/reset-password-form.tsx:80
 msgid "neYh81"
-msgstr ""
+msgstr "Your password has been reset. You can now log in with your new password."
 
 #: src/features/auth/components/reset-password-form.tsx:118
 msgid "8HimVK"
-msgstr ""
+msgstr "Confirm password"
 
 #: src/features/auth/components/reset-password-form.tsx:138
 msgid "xl27nc"
-msgstr ""
+msgstr "Reset Password"
 
 #: src/features/checkout/components/checkout-auth-wrapper.tsx:54
 msgid "jUKaDx"
-msgstr ""
+msgstr "Authentication required"
 
 #: src/features/checkout/components/checkout-auth-wrapper.tsx:56
 msgid "7VnKx0"
-msgstr ""
+msgstr "For the continuation of the order, the creation of a customer account is required."
 
 #: src/features/checkout/components/checkout-auth-wrapper.tsx:70
 msgid "SQJto2"
-msgstr ""
+msgstr "Sign in"
 
 #: src/features/checkout/components/checkout-form.tsx:106
 msgid "7OW8BT"
-msgstr ""
+msgstr "Configuration"
 
 #: src/features/checkout/components/checkout-form.tsx:113
 #: src/features/servers/components/overview/server-details-card.tsx:93
 msgid "t2uvIi"
-msgstr ""
+msgstr "Operating System"
 
 #: src/features/checkout/components/checkout-form.tsx:133
 msgid "hE8w/g"
-msgstr ""
+msgstr "Root Password (optional)"
 
 #: src/features/checkout/components/checkout-form.tsx:144
 msgid "wzt4BE"
-msgstr ""
+msgstr "Virtbase does not store your root password. It can be reset via the customer portal afterwards."
 
 #: src/features/checkout/components/checkout-form.tsx:152
 msgid "mnTP3x"
-msgstr ""
+msgstr "If left blank, a secure random password will be generated and sent by email."
 
 #: src/features/checkout/components/checkout-form.tsx:210
 msgid "fL6LzO"
-msgstr ""
+msgstr "I have read and accepted the <terms>Terms of Service</terms> and the <privacy>Privacy Policy</privacy>."
 
 #: src/features/checkout/components/checkout-form.tsx:254
 msgid "+3U5qS"
-msgstr ""
+msgstr "I have read and accepted the <revocation>Revocation Policy</revocation>. The revocation right expires as soon as the order is completed and the service is automatically provided."
 
 #: src/features/checkout/components/checkout-form.tsx:285
 msgid "+g+0OK"
-msgstr ""
+msgstr "Continue to payment"
 
 #: src/features/checkout/components/offer-card.tsx:87
 #: src/features/checkout/components/order-summary.tsx:157
 msgid "Rw82/V"
-msgstr ""
+msgstr "per month"
 
 #: src/features/checkout/components/offer-card.tsx:102
 #: src/features/checkout/components/order-summary.tsx:67
 #: src/features/servers/components/servers-list.tsx:113
 msgid "BGI16m"
-msgstr ""
+msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
 
 #: src/features/checkout/components/offer-card.tsx:143
 #: src/features/checkout/components/order-summary.tsx:109
 msgid "zSO/T8"
-msgstr ""
+msgstr "1 IPv4 + IPv6 /64 Subnet"
 
 #: src/features/checkout/components/offer-card.tsx:162
 msgid "kWI6zX"
-msgstr ""
+msgstr "Shared"
 
 #: src/features/checkout/components/offer-card.tsx:167
 msgid "Gzo4L7"
-msgstr ""
+msgstr "Shared-Uplink - the maximum possible bandwidth is shared with other customers."
 
 #: src/features/checkout/components/offer-card.tsx:184
 #: src/features/checkout/components/order-summary.tsx:135
 msgid "IYlDM0"
-msgstr ""
+msgstr "Unlimited traffic"
 
 #: src/features/checkout/components/offer-card.tsx:188
 msgid "bIu4NB"
-msgstr ""
+msgstr "Traffic after fair-use principle. Temporary throttling at excessive long-term usage."
 
 #: src/features/checkout/components/offer-card.tsx:219
 msgid "5EjMej"
-msgstr ""
+msgstr "Configure {name} now"
 
 #: src/features/checkout/components/offer-card.tsx:223
 msgid "khw/ok"
-msgstr ""
+msgstr "Configure now"
 
 #: src/features/checkout/components/offer-card.tsx:226
 msgid "spsPUc"
-msgstr ""
+msgstr "Sold out"
 
 #: src/features/checkout/components/order-summary.tsx:54
 msgid "ivNR8s"
-msgstr ""
+msgstr "Order Summary"
 
 #: src/features/checkout/components/stripe-payment-form.tsx:132
 msgid "u5AfPm"
-msgstr ""
+msgstr "Buy now"
 
 #: src/features/dashboard/components/empty-servers.tsx:31
 msgid "fmSs/a"
-msgstr ""
+msgstr "No servers found"
 
 #: src/features/dashboard/components/empty-servers.tsx:32
 msgid "zuhonL"
-msgstr ""
+msgstr "No servers have been rented yet. New servers will be displayed here."
 
 #: src/features/dashboard/components/empty-servers.tsx:38
 msgid "SjCCH5"
-msgstr ""
+msgstr "Rent a server"
 
 #: src/features/dashboard/components/latest-invoices-card.tsx:41
 msgid "15BgLW"
-msgstr ""
+msgstr "Latest Invoices"
 
 #: src/features/dashboard/components/latest-invoices-card.tsx:43
 msgid "VgBFI4"
-msgstr ""
+msgstr "Here you can see your latest invoices for direct download."
 
 #: src/features/dashboard/components/latest-invoices-list.tsx:58
 msgid "QVIbFk"
-msgstr ""
+msgstr "No invoices"
 
 #: src/features/dashboard/components/latest-invoices-list.tsx:60
 msgid "GtDccr"
-msgstr ""
+msgstr "No invoices have been issued yet."
 
 #: src/features/dashboard/components/latest-invoices-list.tsx:83
 msgid "5q3qC0"
-msgstr ""
+msgstr "Download"
 
 #: src/features/dashboard/components/latest-servers-card.tsx:43
 msgid "2AizOe"
-msgstr ""
+msgstr "Here you can see your latest servers."
 
 #: src/features/dashboard/components/server-status-small.tsx:60
 msgid "KRtjzZ"
-msgstr ""
+msgstr "Expired (will be deleted {date})"
 
 #: src/features/dashboard/components/server-status-small.tsx:71
 #: src/features/servers/hooks/use-status-mapping.ts:58
 msgid "oJsHQW"
-msgstr ""
+msgstr "Suspended"
 
 #: src/features/dashboard/components/server-status-small.tsx:77
 msgid "r9ELLA"
-msgstr ""
+msgstr "Installing..."
 
 #: src/features/dashboard/components/server-status-small.tsx:84
 msgid "vOjKW3"
-msgstr ""
+msgstr "Expiring (will be deleted {date})"
 
 #: src/features/dashboard/components/server-status-small.tsx:95
 msgid "Dnob31"
-msgstr ""
+msgstr "Operational"
 
 #: src/features/landing/components/advantages-row.tsx:33
 msgid "GTucMY"
-msgstr ""
+msgstr "Maximum privacy"
 
 #: src/features/landing/components/advantages-row.tsx:34
 msgid "IIN9F8"
-msgstr ""
+msgstr "With us, privacy comes first. No sharing with third parties, ever."
 
 #: src/features/landing/components/advantages-row.tsx:41
 msgid "daLPgg"
-msgstr ""
+msgstr "Genuine support"
 
 #: src/features/landing/components/advantages-row.tsx:42
 msgid "hnGR7B"
-msgstr ""
+msgstr "We offer human support around the clock, whenever you need it."
 
 #: src/features/landing/components/advantages-row.tsx:49
 msgid "uDrdrl"
-msgstr ""
+msgstr "DDoS protection included"
 
 #: src/features/landing/components/advantages-row.tsx:50
 msgid "TWNuCY"
-msgstr ""
+msgstr "Active DDoS protection keeps you online. No extra charges, ever."
 
 #: src/features/landing/components/advantages-row.tsx:57
 msgid "nVfA/q"
-msgstr ""
+msgstr "Modern customer portal"
 
 #: src/features/landing/components/advantages-row.tsx:58
 msgid "fQqAwd"
-msgstr ""
+msgstr "Efficiently manage your servers without hassle or frustration."
 
 #: src/features/landing/components/advantages-row.tsx:81
 #: src/features/landing/components/features-showcase.tsx:45
 #: src/features/landing/components/features-showcase.tsx:69
 msgid "TdTXXf"
-msgstr ""
+msgstr "Learn more"
 
 #: src/features/landing/components/features-showcase.tsx:35
 msgid "N2jrkQ"
-msgstr ""
+msgstr "Real-time server metrics"
 
 #: src/features/landing/components/features-showcase.tsx:38
 msgid "9mCvlG"
-msgstr ""
+msgstr "Our server metrics are updated in real-time, so you can always see the current status of your servers."
 
 #: src/features/landing/components/features-showcase.tsx:55
 msgid "S4NISm"
-msgstr ""
+msgstr "Stateless firewall"
 
 #: src/features/landing/components/features-showcase.tsx:58
 msgid "1s50w7"
-msgstr ""
+msgstr "With your own firewall rules, you can protect your server specifically. Each rule can be configured individually."
 
 #: src/features/landing/components/server-firewall-demo.tsx:42
 msgid "DZ2Koj"
-msgstr ""
+msgstr "Direction"
 
 #: src/features/landing/components/server-firewall-demo.tsx:53
 #: src/features/servers/components/server-graphs.tsx:133
 msgid "YDkqMJ"
-msgstr ""
+msgstr "Incoming"
 
 #: src/features/landing/components/server-firewall-demo.tsx:59
 msgid "QlsDcr"
-msgstr ""
+msgstr "Action"
 
 #: src/features/landing/components/server-firewall-demo.tsx:70
 #: src/features/servers/firewall/components/firewall-action-select.tsx:53
 msgid "VzIOKf"
-msgstr ""
+msgstr "Reject"
 
 #: src/features/landing/components/server-firewall-demo.tsx:77
 msgid "0QLzxo"
-msgstr ""
+msgstr "Protocol"
 
 #: src/features/landing/components/server-firewall-demo.tsx:89
 msgid "rqkHXK"
-msgstr ""
+msgstr "Source port"
 
 #: src/features/landing/components/server-firewall-demo.tsx:98
 msgid "WSxucy"
-msgstr ""
+msgstr "Destination port"
 
 #: src/features/landing/components/server-stats-demo.tsx:46
 #: src/features/servers/components/server-stats-card.tsx:67
 msgid "wbsq7O"
-msgstr ""
+msgstr "Usage"
 
 #: src/features/landing/components/server-stats-demo.tsx:57
 #: src/features/servers/components/overview/node-details-dialog.tsx:87
 #: src/features/servers/components/server-graphs.tsx:95
 #: src/features/servers/components/server-stats-card.tsx:78
 msgid "QgBuiV"
-msgstr ""
+msgstr "CPU"
 
 #: src/features/landing/components/server-stats-demo.tsx:80
 #: src/features/servers/components/server-graphs.tsx:104
 #: src/features/servers/components/server-stats-card.tsx:107
 msgid "LjglgP"
-msgstr ""
+msgstr "RAM"
 
 #: src/features/landing/components/server-stats-demo.tsx:100
 #: src/features/servers/components/server-graphs.tsx:117
 #: src/features/servers/components/server-stats-card.tsx:130
 msgid "OuCSDn"
-msgstr ""
+msgstr "Disk"
 
 #: src/features/landing/components/server-stats-demo.tsx:122
 #: src/features/servers/components/server-graphs.tsx:130
 #: src/features/servers/components/server-stats-card.tsx:155
 msgid "I3JhPS"
-msgstr ""
+msgstr "Network"
 
 #: src/features/landing/components/server-stats-demo.tsx:156
 #: src/features/servers/components/server-stats-card.tsx:187
 msgid "yCCio2"
-msgstr ""
+msgstr "Last reboot"
 
 #: src/features/servers/components/backups/backups-card.tsx:100
 msgid "pelX8B"
-msgstr ""
+msgstr "{count, plural, =1 {# Backup} other {# Backups}}"
 
 #: src/features/servers/components/backups/backups-table/index.tsx:102
 msgid "G7wlJr"
-msgstr ""
+msgstr "No backups"
 
 #: src/features/servers/components/backups/backups-table/index.tsx:103
 msgid "gyxApU"
-msgstr ""
+msgstr "No backups have been created yet."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:89
 #: src/features/servers/components/backups/create-backup-dialog.tsx:107
 msgid "6f7NTQ"
-msgstr ""
+msgstr "Create Backup"
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:90
 msgid "Z6LfAU"
-msgstr ""
+msgstr "Create a new backup for your server."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:99
 msgid "EZDv9v"
-msgstr ""
+msgstr "Abbrechen"
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:143
 msgid "mDxkGm"
-msgstr ""
+msgstr "Backup Mode"
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:159
 msgid "8Y0yUM"
-msgstr ""
+msgstr "Snapshot"
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:162
 msgid "04uNfB"
-msgstr ""
+msgstr "Creates a backup without interrupting the system. The current state of the processes is backed up."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:178
 #: src/features/servers/components/server-actions-row.tsx:149
 msgid "elnaZe"
-msgstr ""
+msgstr "Suspend"
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:181
 msgid "qRuNZh"
-msgstr ""
+msgstr "Interrupts the system briefly to create a backup without shutting it down."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:197
 #: src/features/servers/components/server-actions-row.tsx:162
 msgid "q/uwLT"
-msgstr ""
+msgstr "Stop"
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:200
 msgid "JidfdC"
-msgstr ""
+msgstr "Completely shuts down the system before creating the backup."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:220
 msgid "/EmLPv"
-msgstr ""
+msgstr "Enable deletion protection"
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:229
 msgid "I9XNiI"
-msgstr ""
+msgstr "The newly created backup can only be deleted after the deletion protection is disabled."
 
 #: src/features/servers/components/console/console-frame.tsx:73
 #: src/features/servers/components/server-status-bar.tsx:80
 msgid "sIwjuh"
-msgstr ""
+msgstr "Server is installing"
 
 #: src/features/servers/components/console/console-frame.tsx:75
 msgid "/iuNMM"
-msgstr ""
+msgstr "This feature is not available while the server is installing."
 
 #: src/features/servers/components/console/console-frame.tsx:89
 msgid "lptya2"
-msgstr ""
+msgstr "Server is suspended"
 
 #: src/features/servers/components/console/console-frame.tsx:91
 msgid "3KjSye"
-msgstr ""
+msgstr "This feature is not available while the server is suspended. Please renew your server to access the console."
 
 #: src/features/servers/components/console/console-frame.tsx:110
 msgid "odJjY9"
-msgstr ""
+msgstr "Backup in progress"
 
 #: src/features/servers/components/console/console-frame.tsx:112
 msgid "Z/xHv5"
-msgstr ""
+msgstr "This feature is not available while a backup is in progress. Please try again later."
 
 #: src/features/servers/components/console/console-frame.tsx:128
 msgid "uHAMke"
-msgstr ""
+msgstr "Server is not running"
 
 #: src/features/servers/components/console/console-frame.tsx:130
 msgid "clmnLf"
-msgstr ""
+msgstr "Start your server and the console will connect automatically."
 
 #: src/features/servers/components/overview/node-details-dialog.tsx:67
 #: src/features/servers/components/overview/server-details-card.tsx:112
 msgid "ivkv/L"
-msgstr ""
+msgstr "Node"
 
 #: src/features/servers/components/overview/node-details-dialog.tsx:68
 msgid "UfS56w"
-msgstr ""
+msgstr "Details of the node."
 
 #: src/features/servers/components/overview/node-details-dialog.tsx:77
 msgid "rbrahO"
-msgstr ""
+msgstr "Close"
 
 #: src/features/servers/components/overview/node-details-dialog.tsx:92
 msgid "dVx3yz"
-msgstr ""
+msgstr "Memory"
 
 #: src/features/servers/components/overview/node-details-dialog.tsx:97
 msgid "DUIDEq"
-msgstr ""
+msgstr "Storage"
 
 #: src/features/servers/components/overview/node-details-dialog.tsx:101
 msgid "zUxWZC"
-msgstr ""
+msgstr "Datacenter"
 
 #: src/features/servers/components/overview/rename-server-dialog.tsx:65
 #: src/features/servers/components/overview/rename-server-dialog.tsx:77
 #: src/features/servers/components/overview/server-details-card.tsx:83
 msgid "SwBrEP"
-msgstr ""
+msgstr "Rename Server"
 
 #: src/features/servers/components/overview/rename-server-dialog.tsx:66
 msgid "mFBy/n"
-msgstr ""
+msgstr "Rename your server."
 
 #: src/features/servers/components/overview/rename-server-dialog.tsx:100
 msgid "UQXG4v"
-msgstr ""
+msgstr "My Server"
 
 #: src/features/servers/components/overview/server-details-card.tsx:67
 msgid "F/6VqP"
-msgstr ""
+msgstr "Server"
 
 #: src/features/servers/components/overview/server-details-card.tsx:102
 msgid "4A//XV"
-msgstr ""
+msgstr "Custom Image"
 
 #: src/features/servers/components/overview/server-details-card.tsx:125
 msgid "RTw2Xk"
-msgstr ""
+msgstr "View Node Details"
 
 #: src/features/servers/components/overview/server-details-card.tsx:176
 msgid "8O64Ol"
-msgstr ""
+msgstr "Change Operating System"
 
 #: src/features/servers/components/overview/server-details-card.tsx:185
 msgid "D3OPFp"
-msgstr ""
+msgstr "Reset Root Password"
 
 #: src/features/servers/components/server-actions-row.tsx:79
 msgid "tZbb+K"
-msgstr ""
+msgstr "Shutdown"
 
 #: src/features/servers/components/server-actions-row.tsx:89
 msgid "9U7nUR"
-msgstr ""
+msgstr "Reboot"
 
 #: src/features/servers/components/server-actions-row.tsx:101
 msgid "mOFG3K"
-msgstr ""
+msgstr "Start"
 
 #: src/features/servers/components/server-actions-row.tsx:115
 msgid "3y9DGg"
-msgstr ""
+msgstr "Resume"
 
 #: src/features/servers/components/server-actions-row.tsx:138
 msgid "tFFMkF"
-msgstr ""
+msgstr "Pause"
 
 #: src/features/servers/components/server-actions-row.tsx:174
 msgid "jm/spn"
-msgstr ""
+msgstr "Reset"
 
 #: src/features/servers/components/server-graphs.tsx:86
 msgid "j9Y9nu"
-msgstr ""
+msgstr "Hours"
 
 #: src/features/servers/components/server-graphs.tsx:87
 msgid "d8EqQY"
-msgstr ""
+msgstr "Days"
 
 #: src/features/servers/components/server-graphs.tsx:88
 msgid "g6+IGw"
-msgstr ""
+msgstr "Weeks"
 
 #: src/features/servers/components/server-graphs.tsx:89
 msgid "AxDOiG"
-msgstr ""
+msgstr "Months"
 
 #: src/features/servers/components/server-graphs.tsx:90
 msgid "Jr5tMR"
-msgstr ""
+msgstr "Years"
 
 #: src/features/servers/components/server-graphs.tsx:98
 msgid "x8Ik2d"
-msgstr ""
+msgstr "CPU (%)"
 
 #: src/features/servers/components/server-graphs.tsx:107
 msgid "XYkq4n"
-msgstr ""
+msgstr "Used"
 
 #: src/features/servers/components/server-graphs.tsx:111
 msgid "kkjl2v"
-msgstr ""
+msgstr "Max"
 
 #: src/features/servers/components/server-graphs.tsx:137
 msgid "Arxl88"
-msgstr ""
+msgstr "Outgoing"
 
 #: src/features/servers/components/server-graphs.tsx:154
 msgid "6m3w+3"
-msgstr ""
+msgstr "Interval"
 
 #: src/features/servers/components/server-nav.tsx:72
 msgid "fz0z4c"
-msgstr ""
+msgstr "Plan"
 
 #: src/features/servers/components/server-stats-card.tsx:192
 msgid "PW+sL4"
-msgstr ""
+msgstr "N/A"
 
 #: src/features/servers/components/server-status-bar.tsx:52
 msgid "14KQU8"
-msgstr ""
+msgstr "Server suspended"
 
 #: src/features/servers/components/server-status-bar.tsx:53
 msgid "gmwFwF"
-msgstr ""
+msgstr "This server has been suspended and will be deleted at {date}, if not renewed."
 
 #: src/features/servers/components/server-status-bar.tsx:67
 msgid "+E3dAf"
-msgstr ""
+msgstr "Server is expiring"
 
 #: src/features/servers/components/server-status-bar.tsx:68
 msgid "fkf7mm"
-msgstr ""
+msgstr "This server is expiring {expiry} and will be deleted after, if not renewed"
 
 #: src/features/servers/components/server-status-bar.tsx:81
 msgid "76X+Qu"
-msgstr ""
+msgstr "This server is being installed. Some features may not be available yet."
 
 #: src/features/servers/components/servers-list.tsx:178
 msgid "SXm88k"
-msgstr ""
+msgstr "IP copied to clipboard!"
 
 #: src/features/servers/components/servers-list.tsx:187
 msgid "26lbPc"
-msgstr ""
+msgstr "Copy IP"
 
 #: src/features/servers/components/servers-list.tsx:197
 msgid "nWQFic"
-msgstr ""
+msgstr "Renew"
 
 #: src/features/servers/firewall/components/firewall-action-select.tsx:40
 msgid "ObQE5T"
-msgstr ""
+msgstr "Select action"
 
 #: src/features/servers/firewall/components/firewall-action-select.tsx:45
 msgid "sjzLbX"
-msgstr ""
+msgstr "Accept"
 
 #: src/features/servers/firewall/components/firewall-action-select.tsx:49
 msgid "j8RTUO"
-msgstr ""
+msgstr "Drop"
 
 #: src/features/servers/firewall/components/firewall-options-row.tsx:45
 msgid "tzMNF3"
-msgstr ""
+msgstr "Status"
 
 #: src/features/servers/firewall/components/firewall-options-row.tsx:47
 msgid "z1Jw4U"
-msgstr ""
+msgstr "The firewall is always enabled"
 
 #: src/features/servers/firewall/components/firewall-options-row.tsx:56
 msgid "XumiMR"
-msgstr ""
+msgstr "Incoming packets"
 
 #: src/features/servers/firewall/components/firewall-options-row.tsx:58
 msgid "SnIe/I"
-msgstr ""
+msgstr "The default action for incoming packages"
 
 #: src/features/servers/firewall/components/firewall-options-row.tsx:74
 msgid "MMByL/"
-msgstr ""
+msgstr "Outgoing packets"
 
 #: src/features/servers/firewall/components/firewall-options-row.tsx:76
 msgid "9FBS2h"
-msgstr ""
+msgstr "The default action for outgoing packages"
 
 #: src/features/servers/hooks/use-status-mapping.ts:43
 msgid "ccU6l/"
-msgstr ""
+msgstr "Online"
 
 #: src/features/servers/hooks/use-status-mapping.ts:48
 msgid "7UOvbT"
-msgstr ""
+msgstr "Offline"
 
 #: src/features/servers/hooks/use-status-mapping.ts:53
 msgid "C2iTEH"
-msgstr ""
+msgstr "Paused"
 
 #: src/features/servers/hooks/use-status-mapping.ts:63
 #: src/features/servers/hooks/use-task-mapping.ts:71
 msgid "5jeq8P"
-msgstr ""
+msgstr "Unknown"
 
 #: src/features/servers/hooks/use-task-mapping.ts:31
 msgid "3qXa2f"
-msgstr ""
+msgstr "Starting..."
 
 #: src/features/servers/hooks/use-task-mapping.ts:35
 msgid "PdMcML"
-msgstr ""
+msgstr "Resetting..."
 
 #: src/features/servers/hooks/use-task-mapping.ts:39
 msgid "JM9DH8"
-msgstr ""
+msgstr "Rebooting..."
 
 #: src/features/servers/hooks/use-task-mapping.ts:43
 msgid "yR4+kW"
-msgstr ""
+msgstr "Stopping..."
 
 #: src/features/servers/hooks/use-task-mapping.ts:47
 msgid "jqQprl"
-msgstr ""
+msgstr "Shutting down..."
 
 #: src/features/servers/hooks/use-task-mapping.ts:51
 msgid "hbUGzS"
-msgstr ""
+msgstr "Resuming..."
 
 #: src/features/servers/hooks/use-task-mapping.ts:55
 msgid "tXH4J0"
-msgstr ""
+msgstr "Suspending..."
 
 #: src/features/servers/hooks/use-task-mapping.ts:59
 msgid "m1xdPJ"
-msgstr ""
+msgstr "Pausing..."
 
 #: src/features/servers/hooks/use-task-mapping.ts:63
 msgid "3iXlTU"
-msgstr ""
+msgstr "Backing up..."
 
 #: src/features/servers/hooks/use-task-mapping.ts:67
 msgid "98thq0"
-msgstr ""
+msgstr "Restoring backup..."
 
 #: src/ui/app-footer.tsx:37
 msgid "4XCigB"
-msgstr ""
+msgstr "Legal notice"
 
 #: src/ui/app-footer.tsx:49
 msgid "EBDrtq"
-msgstr ""
+msgstr "Terms of use"
 
 #: src/ui/app-footer.tsx:61
 msgid "cPwv2c"
-msgstr ""
+msgstr "Privacy policy"
 
 #: src/ui/copy-button.tsx:46
 msgid "9j0fO7"
-msgstr ""
+msgstr "Copied to clipboard!"
 
 #: src/ui/copy-button.tsx:55
 msgid "4l6vz1"
-msgstr ""
+msgstr "Copy"
 
 #: src/ui/feedback-button.tsx:30
 #: src/ui/feedback-button.tsx:96
 #: src/ui/feedback-button.tsx:105
 msgid "Ejhdi4"
-msgstr ""
+msgstr "Feedback"
 
 #: src/ui/feedback-button.tsx:33
 msgid "HxIuLA"
-msgstr ""
+msgstr "Add screenshot"
 
 #: src/ui/feedback-button.tsx:35
 msgid "wSZR47"
-msgstr ""
+msgstr "Submit"
 
 #: src/ui/feedback-button.tsx:36
 msgid "N2IrpM"
-msgstr ""
+msgstr "Confirm"
 
 #: src/ui/feedback-button.tsx:37
 msgid "T7Ry38"
-msgstr ""
+msgstr "Message"
 
 #: src/ui/feedback-button.tsx:38
 msgid "VG94fP"
-msgstr ""
+msgstr "(required)"
 
 #: src/ui/feedback-button.tsx:39
 msgid "EbufBi"
-msgstr ""
+msgstr "Remove screenshot"
 
 #: src/ui/feedback-button.tsx:40
 msgid "Q43iqt"
-msgstr ""
+msgstr "Feedback sent successfully"
 
 #: src/ui/feedback-button.tsx:44
 msgid "mi/NYE"
-msgstr ""
+msgstr "Hide section"
 
 #: src/ui/feedback-button.tsx:45
 msgid "c47pnT"
-msgstr ""
+msgstr "Highlight section"
 
 #: src/ui/feedback-button.tsx:46
 msgid "bemE3q"
-msgstr ""
+msgstr "Remove section"
 
 #: src/ui/footer.tsx:63
 msgid "Bqwweu"
-msgstr ""
+msgstr "Customer Portal"
 
 #: src/ui/footer.tsx:71
 #: src/ui/nav.tsx:85
 msgid "AyGauy"
-msgstr ""
+msgstr "Login"
 
 #: src/ui/footer.tsx:87
 msgid "Yy/yDL"
-msgstr ""
+msgstr "Reset password"
 
 #: src/ui/footer.tsx:96
 msgid "9YazHG"
-msgstr ""
+msgstr "Company"
 
 #: src/ui/footer.tsx:144
 msgid "7oFrM6"
-msgstr ""
+msgstr "Legal"
 
 #: src/ui/footer.tsx:152
 msgid "vx0nkZ"
-msgstr ""
+msgstr "Privacy Policy"
 
 #: src/ui/footer.tsx:161
 msgid "UhkSyx"
-msgstr ""
+msgstr "Terms of Use"
 
 #: src/ui/footer.tsx:170
 msgid "o8wpU5"
-msgstr ""
+msgstr "Revocation Policy"
 
 #: src/ui/footer.tsx:179
 msgid "+eN+I1"
-msgstr ""
+msgstr "Legal Notice"
 
 #: src/ui/footer.tsx:190
 msgid "xvRDbH"
-msgstr ""
+msgstr "© {year} {appName}, a brand of BeastHost UG (haftungsbeschränkt)."
 
 #: src/ui/fumadocs/fake-search-button.tsx:46
 msgid "xmcVZ0"
-msgstr ""
+msgstr "Search"
 
 #: src/ui/fumadocs/table-of-contents.tsx:34
 msgid "TM7OHi"
-msgstr ""
+msgstr "On this page"
 
 #: src/ui/input-group-addons/random-password-addon.tsx:33
 msgid "gQLF4T"
-msgstr ""
+msgstr "Generate random password"
 
 #: src/ui/input-group-addons/show-password-addon.tsx:39
 msgid "JHTwdB"
-msgstr ""
+msgstr "Show password"
 
 #: src/ui/input-group-addons/show-password-addon.tsx:40
 msgid "K3fWTv"
-msgstr ""
+msgstr "Hide password"
 
 #: src/ui/layout/auth-layout.tsx:47
 msgid "jr1I15"
-msgstr ""
+msgstr "By continuing, you agree to {appName}'s <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>"
 
 #: src/ui/nav-user.tsx:135
 msgid "f+sh2j"
-msgstr ""
+msgstr "Administration"
 
 #: src/ui/nav-user.tsx:143
 msgid "rxNddi"
-msgstr ""
+msgstr "Homepage"
 
 #: src/ui/nav-user.tsx:159
 msgid "gZwnDa"
-msgstr ""
+msgstr "Stop impersonation"
 
 #: src/ui/nav-user.tsx:174
 msgid "C81/uG"
-msgstr ""
+msgstr "Logout"
 
 #: src/ui/operating-system-select.tsx:87
 msgid "DMGJ3m"
-msgstr ""
+msgstr "Select an operating system..."
 
 #: src/ui/operating-system-select.tsx:98
 msgid "r3Zixe"
-msgstr ""
+msgstr "Search for an operating system..."
 
 #: src/ui/operating-system-select.tsx:102
 msgid "iEx8bl"
-msgstr ""
+msgstr "No supported operating system found."
+
