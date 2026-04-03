@@ -42,6 +42,7 @@
     "ui-add": "turbo run ui-add",
     "email": "turbo run email",
     "prepare": "husky",
+    "script": "turbo -F @virtbase/web script --",
     "stripe:listen": "turbo -F @virtbase/web stripe:listen"
   },
   "catalog": {
