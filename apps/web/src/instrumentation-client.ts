@@ -15,8 +15,6 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import * as Sentry from "@sentry/nextjs";
-
 declare global {
   interface Window {
     hasLoggedCustomMessage: boolean;
@@ -60,18 +58,30 @@ if (!window.hasLoggedCustomMessage) {
   window.hasLoggedCustomMessage = true;
 }
 
-Sentry.init({
-  enabled: !!process.env.NEXT_PUBLIC_SENTRY_DSN,
-  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
-  // Current integrations used:
-  // - replayIntegration (lazy loaded via sentry-replay-integration.tsx)
-  // - feedbackIntegration (lazy loaded via feedback-button.tsx)
-  integrations: [],
-  tracesSampleRate: 1,
-  enableLogs: true,
-  replaysSessionSampleRate: 0.1,
-  replaysOnErrorSampleRate: 1.0,
-  sendDefaultPii: false,
-});
+if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
+  const Sentry = await import("@sentry/nextjs");
 
-export const onRouterTransitionStart = Sentry.captureRouterTransitionStart;
+  Sentry.init({
+    dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+    // Current integrations used:
+    // - replayIntegration (lazy loaded via sentry-replay-integration.tsx)
+    // - feedbackIntegration (lazy loaded via feedback-button.tsx)
+    integrations: [],
+    tracesSampleRate: 1,
+    enableLogs: true,
+    replaysSessionSampleRate: 0.1,
+    replaysOnErrorSampleRate: 1.0,
+    sendDefaultPii: false,
+  });
+}
+
+export const onRouterTransitionStart = process.env.NEXT_PUBLIC_SENTRY_DSN
+  ? async (
+      ...args: Parameters<
+        typeof import("@sentry/nextjs").captureRouterTransitionStart
+      >
+    ) => {
+      const Sentry = await import("@sentry/nextjs");
+      Sentry.captureRouterTransitionStart(...args);
+    }
+  : undefined;

@@ -17,12 +17,11 @@
 
 import * as Sentry from "@sentry/nextjs";
 
-Sentry.init({
-  enabled: !!process.env.NEXT_PUBLIC_SENTRY_DSN,
-  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN
-    ? process.env.NEXT_PUBLIC_SENTRY_DSN
-    : undefined,
-  tracesSampleRate: 1,
-  enableLogs: true,
-  sendDefaultPii: false,
-});
+if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
+  Sentry.init({
+    dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
+    tracesSampleRate: 1,
+    enableLogs: true,
+    sendDefaultPii: false,
+  });
+}

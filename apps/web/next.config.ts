@@ -18,7 +18,6 @@
 // Import env files to validate at build time
 import "@/env";
 
-import { withSentryConfig } from "@sentry/nextjs";
 import { ADMIN_DOMAIN, APP_DOMAIN, PUBLIC_DOMAIN } from "@virtbase/utils";
 import { createMDX } from "fumadocs-mdx/next";
 import type { NextConfig } from "next";
@@ -219,25 +218,26 @@ const withMDX = createMDX();
 
 const configWithMDX = withMDX(configWithNextIntl);
 
-const sentrifiedConfig = withSentryConfig(configWithMDX, {
-  org: process.env.SENTRY_ORG,
-  project: process.env.SENTRY_PROJECT,
-  sentryUrl: process.env.SENTRY_URL,
-  silent: !process.env.CI,
-  widenClientFileUpload: true,
-  tunnelRoute: "/science",
-  webpack: {
-    treeshake: {
-      removeDebugLogging: true,
+let configWithOrWithoutSentry = configWithMDX;
+if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
+  const { withSentryConfig } = require("@sentry/nextjs");
+
+  configWithOrWithoutSentry = withSentryConfig(configWithMDX, {
+    org: process.env.SENTRY_ORG,
+    project: process.env.SENTRY_PROJECT,
+    sentryUrl: process.env.SENTRY_URL,
+    silent: !process.env.CI,
+    widenClientFileUpload: true,
+    tunnelRoute: "/science",
+    webpack: {
+      treeshake: {
+        removeDebugLogging: true,
+      },
+      automaticVercelMonitors: true,
     },
-    automaticVercelMonitors: true,
-  },
-});
+  });
+}
 
-const finalConfig = process.env.NEXT_PUBLIC_SENTRY_DSN
-  ? sentrifiedConfig
-  : configWithMDX;
-
-const configWithWorkflow = withWorkflow(finalConfig);
+const configWithWorkflow = withWorkflow(configWithOrWithoutSentry);
 
 export default configWithWorkflow;
