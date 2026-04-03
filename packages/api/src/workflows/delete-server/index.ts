@@ -23,11 +23,7 @@ type DeleteServerWorkflowParams = {
   proxmoxNode: GetProxmoxInstanceParams;
 };
 
-export async function deleteServerWorkflow({
-  vmid,
-  serverId,
-  proxmoxNode,
-}: DeleteServerWorkflowParams) {
+export async function deleteServerWorkflow(_: DeleteServerWorkflowParams) {
   "use workflow";
 
   // TODO: Implement delete server workflow

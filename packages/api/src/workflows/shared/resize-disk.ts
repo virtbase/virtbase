@@ -89,12 +89,10 @@ export async function rollbackResizeDiskStep({
   vmid,
   disk = "scsi0",
   resizeUpid,
-  oldSize,
 }: Pick<ResizeDiskStepParams, "proxmoxNode"> & {
   vmid: number;
   disk?: "scsi0" | "scsi1" | "scsi2" | "scsi3";
   resizeUpid: string;
-  oldSize: number;
 }) {
   "use step";
 

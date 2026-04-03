@@ -32,7 +32,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { beforeAll, describe, expect, test } from "bun:test";
+import { afterAll, beforeAll, describe, expect, test } from "bun:test";
 import { TRPCError } from "@trpc/server";
 import { accounts, users } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
@@ -68,6 +68,10 @@ beforeAll(async () => {
     ...sharedContext,
     session: null,
   });
+});
+
+afterAll(async () => {
+  await testDb.$client.close();
 });
 
 describe("auth.checkAccountExists", () => {

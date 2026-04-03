@@ -15,7 +15,15 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { afterEach, beforeAll, describe, expect, mock, test } from "bun:test";
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  describe,
+  expect,
+  mock,
+  test,
+} from "bun:test";
 
 mock.module("react", () => ({
   cache: (fn: (...args: never) => unknown) => fn,
@@ -40,6 +48,10 @@ beforeAll(async () => {
 
   const mod = await import("../get-customers-over-time");
   getCustomersOverTime = mod.getCustomersOverTime;
+});
+
+afterAll(async () => {
+  await testDb.$client.close();
 });
 
 afterEach(async () => {

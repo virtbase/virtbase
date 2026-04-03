@@ -15,7 +15,15 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { afterEach, beforeAll, describe, expect, spyOn, test } from "bun:test";
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  describe,
+  expect,
+  spyOn,
+  test,
+} from "bun:test";
 import { TRPCError } from "@trpc/server";
 import { invoices, users } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
@@ -74,6 +82,10 @@ beforeAll(async () => {
     session: mockSession,
     lexware: null,
   });
+});
+
+afterAll(async () => {
+  await testDb.$client.close();
 });
 
 afterEach(async () => {

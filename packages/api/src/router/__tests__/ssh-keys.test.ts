@@ -16,6 +16,7 @@
  */
 
 import {
+  afterAll,
   afterEach,
   beforeAll,
   describe,
@@ -49,6 +50,10 @@ beforeAll(async () => {
     headers: new Headers(),
     setHeader: () => {},
   });
+});
+
+afterAll(async () => {
+  await testDb.$client.close();
 });
 
 afterEach(async () => {

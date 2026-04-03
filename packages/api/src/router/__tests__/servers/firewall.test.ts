@@ -15,7 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { beforeAll, describe, expect, mock, test } from "bun:test";
+import { afterAll, beforeAll, describe, expect, mock, test } from "bun:test";
 import {
   datacenters,
   proxmoxNodeGroups,
@@ -77,6 +77,10 @@ beforeAll(async () => {
     ...sharedContext,
     session: null,
   });
+});
+
+afterAll(async () => {
+  await testDb.$client.close();
 });
 
 type FirewallRuleRaw = {

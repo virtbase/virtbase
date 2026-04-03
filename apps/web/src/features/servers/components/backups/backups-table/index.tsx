@@ -42,7 +42,7 @@ export function BackupsTable({
 }) {
   const t = useExtracted();
 
-  const { action, setAction } = useServerActionState();
+  const _ = useServerActionState();
 
   return (
     <ScrollArea className="h-96 w-full">

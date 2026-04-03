@@ -102,7 +102,7 @@ export async function provisionServerWorkflow({
       }),
     );
 
-    const { resizeUpid, oldSize } = await resizeDiskStep({
+    const { resizeUpid } = await resizeDiskStep({
       proxmoxNode: selectedNode,
       vmid: clonedVmid,
       size: plan.storage,
@@ -124,7 +124,6 @@ export async function provisionServerWorkflow({
           vmid: clonedVmid,
           disk: "scsi0",
           resizeUpid,
-          oldSize: oldSize,
         }),
       );
     }

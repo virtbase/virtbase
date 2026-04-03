@@ -15,7 +15,15 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { afterEach, beforeAll, describe, expect, mock, test } from "bun:test";
+import {
+  afterAll,
+  afterEach,
+  beforeAll,
+  describe,
+  expect,
+  mock,
+  test,
+} from "bun:test";
 
 mock.module("react", () => ({
   cache: (fn: (...args: never) => unknown) => fn,
@@ -61,6 +69,10 @@ beforeAll(async () => {
   await testDb.insert(datacenters).values(mockDatacenter);
   await testDb.insert(proxmoxNodes).values(mockProxmoxNode);
   await testDb.insert(serverPlans).values(mockServerPlan);
+});
+
+afterAll(async () => {
+  await testDb.$client.close();
 });
 
 afterEach(async () => {

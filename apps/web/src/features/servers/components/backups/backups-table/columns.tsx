@@ -206,7 +206,8 @@ export function getBackupsTableColumns(): Array<ColumnDef<BackupsTableColumn>> {
         } = row.original;
         const { id: serverId } = useParams<{ id: string }>();
 
-        const [rowAction, setRowAction] = useState<"restore" | null>(null);
+        // TODO: Move state to upper level
+        const [_, setRowAction] = useState<"restore" | null>(null);
 
         const { mutate: updateBackup, isPending: isUpdatingBackup } =
           useUpdateBackup();
