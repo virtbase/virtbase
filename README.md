@@ -1,3 +1,7 @@
+<a href="https://virtbase.com">
+  <img alt="Hosting, but secure. Virtbase is providing secure and open-source VPS hosting." src="https://raw.githubusercontent.com/virtbase/virtbase/main/.github/assets/banner.png">
+</a>
+
 <h3 align="center">Virtbase</h3>
 
 <p align="center">
@@ -17,6 +21,9 @@
   </a>
   <a href="https://github.com/virtbase/virtbase/blob/main/LICENSE.md">
     <img src="https://img.shields.io/github/license/virtbase/virtbase?label=license&logo=github&color=f80&logoColor=fff" alt="License" />
+  </a>
+  <a href="https://crowdin.com/project/virtbase" target="_blank" title="Crowdin">
+    <img src="https://badges.crowdin.net/virtbase/localized.svg" alt="Crowdin" />
   </a>
 </p>
 
@@ -39,14 +46,15 @@
 We love our contributors! Here's how you can contribute:
 
 - [Open an issue](https://github.com/virtbase/virtbase/issues) if you believe you've encountered a bug.
-- Make a [pull request](https://github.com/virtbase/virtbase/pull) to add new features/make quality-of-life improvements/fix bugs.
+- Make a [pull request](https://github.com/virtbase/virtbase/pull) to add new features, make quality-of-life improvements, or fix bugs.
+- Help translate Virtbase into your language on [Crowdin](https://crowdin.virtbase.com).
 
 ### Recommended Versions
 
-| Package | Version  |
-| ------- | -------- |
-| node    | v22.21.0 |
-| bun     | 1.3.10   |
+| Package |   Version    |
+|---------|--------------|
+| node    | >= v22.21.0  |
+| bun     | >= v1.3.11   |
 
 ## Repo Activity
 
