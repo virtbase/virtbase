@@ -117,17 +117,19 @@ async function handler(request: NextRequest) {
   }
 
   await sendBatchEmail(
-    upcomingTerminations.map(({ user, ...server }) => ({
-      to: user.email,
-      subject: getEmailTitle("server-renewal-reminder", user.locale),
-      react: ServerRenewalReminder({
-        serverName: server.serverName,
-        serverId: server.serverId,
-        name: user.name,
-        email: user.email,
-        locale: user.locale,
-      }),
-    })),
+    await Promise.all(
+      upcomingTerminations.map(async ({ user, ...server }) => ({
+        to: user.email,
+        subject: await getEmailTitle("server-renewal-reminder", user.locale),
+        react: ServerRenewalReminder({
+          serverName: server.serverName,
+          serverId: server.serverId,
+          name: user.name,
+          email: user.email,
+          locale: user.locale,
+        }),
+      })),
+    ),
   );
 
   // Mark servers as having received a renewal reminder

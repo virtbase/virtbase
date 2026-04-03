@@ -36,9 +36,9 @@ import {
 } from "@virtbase/utils";
 import { createTranslator } from "use-intl/core";
 import { Footer } from "../components/footer";
-import { DEFAULT_EMAIL_LOCALE, getEmailTranslations } from "../translations";
+import { DEFAULT_EMAIL_LOCALE } from "../translations";
 
-export default function ServerSuspended({
+export default async function ServerSuspended({
   email = "janic@virtbase.com",
   name = "Walter White",
   serverName = "vb1000",
@@ -52,8 +52,9 @@ export default function ServerSuspended({
   locale?: string | null;
 }) {
   const t = createTranslator({
-    messages: getEmailTranslations("server-suspended", locale),
+    messages: (await import(`../messages/${locale}.json`)).default,
     locale: locale ?? DEFAULT_EMAIL_LOCALE,
+    namespace: "server-suspended",
   });
 
   return (

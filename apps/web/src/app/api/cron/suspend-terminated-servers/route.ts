@@ -133,17 +133,19 @@ async function handler(request: NextRequest) {
   );
 
   await sendBatchEmail(
-    notificationTargets.map(({ user, ...server }) => ({
-      to: user.email,
-      subject: getEmailTitle("server-suspended", user.locale),
-      react: ServerSuspended({
-        serverName: server.serverName,
-        serverId: server.serverId,
-        name: user.name,
-        email: user.email,
-        locale: user.locale,
-      }),
-    })),
+    await Promise.all(
+      notificationTargets.map(async ({ user, ...server }) => ({
+        to: user.email,
+        subject: await getEmailTitle("server-suspended", user.locale),
+        react: ServerSuspended({
+          serverName: server.serverName,
+          serverId: server.serverId,
+          name: user.name,
+          email: user.email,
+          locale: user.locale,
+        }),
+      })),
+    ),
   );
 
   return new Response("OK", {

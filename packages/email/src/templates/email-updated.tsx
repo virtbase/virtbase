@@ -31,9 +31,9 @@ import {
 import { APP_DOMAIN, APP_NAME, VIRTBASE_WORDMARK } from "@virtbase/utils";
 import { createTranslator } from "use-intl/core";
 import { Footer } from "../components/footer";
-import { DEFAULT_EMAIL_LOCALE, getEmailTranslations } from "../translations";
+import { DEFAULT_EMAIL_LOCALE } from "../translations";
 
-export default function EmailUpdated({
+export default async function EmailUpdated({
   oldEmail = "janic@virtbase.com",
   newEmail = "janic@virtbase.com",
   locale = DEFAULT_EMAIL_LOCALE,
@@ -43,8 +43,9 @@ export default function EmailUpdated({
   locale?: string | null;
 }) {
   const t = createTranslator({
-    messages: getEmailTranslations("email-updated", locale),
+    messages: (await import(`../messages/${locale}.json`)).default,
     locale: locale ?? DEFAULT_EMAIL_LOCALE,
+    namespace: "email-updated",
   });
 
   return (

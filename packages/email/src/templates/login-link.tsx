@@ -31,9 +31,9 @@ import {
 import { APP_DOMAIN, APP_NAME, VIRTBASE_WORDMARK } from "@virtbase/utils";
 import { createTranslator } from "use-intl/core";
 import { Footer } from "../components/footer";
-import { DEFAULT_EMAIL_LOCALE, getEmailTranslations } from "../translations";
+import { DEFAULT_EMAIL_LOCALE } from "../translations";
 
-export default function LoginLink({
+export default async function LoginLink({
   email = "janic@virtbase.com",
   url = `${APP_DOMAIN}/api/auth/callback/email?callbackUrl=${encodeURIComponent(APP_DOMAIN)}/login&token=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxx&email=${encodeURIComponent(email)}`,
   locale = DEFAULT_EMAIL_LOCALE,
@@ -43,8 +43,9 @@ export default function LoginLink({
   locale?: string | null;
 }) {
   const t = createTranslator({
-    messages: getEmailTranslations("login-link", locale),
+    messages: (await import(`../messages/${locale}.json`)).default,
     locale: locale ?? DEFAULT_EMAIL_LOCALE,
+    namespace: "login-link",
   });
 
   return (

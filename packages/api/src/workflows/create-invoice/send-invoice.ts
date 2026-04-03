@@ -62,7 +62,7 @@ export async function sendInvoiceStep({
   await sendEmail(
     {
       to: customerEmail,
-      subject: getEmailTitle("invoice-created", locale),
+      subject: await getEmailTitle("invoice-created", locale),
       attachments: [
         {
           filename: `${createdInvoiceId}.pdf`,

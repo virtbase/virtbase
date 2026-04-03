@@ -130,7 +130,7 @@ export function initAuth({
 
         await sendEmail({
           to: user.email,
-          subject: getEmailTitle("reset-password-link", user.locale),
+          subject: await getEmailTitle("reset-password-link", user.locale),
           react: ResetPasswordLink({
             email: user.email,
             url,
@@ -147,7 +147,7 @@ export function initAuth({
 
         await sendEmail({
           to: user.email,
-          subject: getEmailTitle("password-updated", user.locale),
+          subject: await getEmailTitle("password-updated", user.locale),
           react: PasswordUpdated({
             email: user.email,
             locale: user.locale,

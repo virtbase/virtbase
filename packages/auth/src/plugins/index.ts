@@ -86,7 +86,7 @@ export const plugins = [
 
       await sendEmail({
         to: email,
-        subject: getEmailTitle("verify-email", locale),
+        subject: await getEmailTitle("verify-email", locale),
         react: VerifyEmail({ email, code: otp, locale }),
       });
     },
@@ -116,7 +116,7 @@ export const plugins = [
 
       await sendEmail({
         to: email,
-        subject: getEmailTitle("login-link", locale),
+        subject: await getEmailTitle("login-link", locale),
         react: LoginLink({ email, url, locale }),
       });
     },

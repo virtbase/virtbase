@@ -31,9 +31,9 @@ import {
 import { APP_DOMAIN, APP_NAME, VIRTBASE_WORDMARK } from "@virtbase/utils";
 import { createTranslator } from "use-intl/core";
 import { Footer } from "../components/footer";
-import { DEFAULT_EMAIL_LOCALE, getEmailTranslations } from "../translations";
+import { DEFAULT_EMAIL_LOCALE } from "../translations";
 
-export default function ResetPasswordLink({
+export default async function ResetPasswordLink({
   email = "janic@virtbase.com",
   url = `${APP_DOMAIN}/reset-password?token=adaf8468f590e70bb60fe40983321c2719c7bdc694063bd2437c1f8a53f7c90a`,
   locale = DEFAULT_EMAIL_LOCALE,
@@ -43,8 +43,9 @@ export default function ResetPasswordLink({
   locale?: string | null;
 }) {
   const t = createTranslator({
-    messages: getEmailTranslations("reset-password-link", locale),
+    messages: (await import(`../messages/${locale}.json`)).default,
     locale: locale ?? DEFAULT_EMAIL_LOCALE,
+    namespace: "reset-password-link",
   });
 
   return (

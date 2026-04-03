@@ -15,114 +15,30 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { AbstractIntlMessages } from "use-intl";
-import {
-  messages as emailUpdatedMessages,
-  titles as emailUpdatedTitles,
-} from "./email-updated";
-import { messages as footerMessages } from "./footer";
-import {
-  messages as invoiceCreatedMessages,
-  titles as invoiceCreatedTitles,
-} from "./invoice-created";
-import {
-  messages as loginLinkMessages,
-  titles as loginLinkTitles,
-} from "./login-link";
-import {
-  messages as passwordUpdatedMessages,
-  titles as passwordUpdatedTitles,
-} from "./password-updated";
-import {
-  messages as resetPasswordLinkMessages,
-  titles as resetPasswordLinkTitles,
-} from "./reset-password-link";
-import {
-  messages as serverReadyMessages,
-  titles as serverReadyTitles,
-} from "./server-ready";
-import {
-  messages as serverRenewalReminderMessages,
-  titles as serverRenewalReminderTitles,
-} from "./server-renewal-reminder";
-import {
-  messages as serverSuspendedMessages,
-  titles as serverSuspendedTitles,
-} from "./server-suspended";
-import {
-  messages as verifyEmailMessages,
-  titles as verifyEmailTitles,
-} from "./verify-email";
+import { hasLocale } from "use-intl";
 
 // TODO: Unify with the default locale in the web app (shared localization config and package)
 export const EMAIL_LOCALES = ["en", "de", "fr", "nl"] as const;
+export const DEFAULT_EMAIL_LOCALE = "en" as const;
 
-export type EmailLocale = (typeof EMAIL_LOCALES)[number];
-
-export const DEFAULT_EMAIL_LOCALE: EmailLocale = "en";
-
-export type DefaultEmailLocale = typeof DEFAULT_EMAIL_LOCALE;
-
-// Translations must at least have the default locale and can have additional locales
-export type EmailTranslations = Record<
-  DefaultEmailLocale,
-  AbstractIntlMessages
-> &
-  Partial<Record<EmailLocale, AbstractIntlMessages>>;
-
-export type EmailTitles = Record<DefaultEmailLocale, string> &
-  Partial<Record<EmailLocale, string>>;
-
-const messagesMapping = {
-  "email-updated": emailUpdatedMessages,
-  "login-link": loginLinkMessages,
-  "reset-password-link": resetPasswordLinkMessages,
-  "password-updated": passwordUpdatedMessages,
-  "verify-email": verifyEmailMessages,
-  "invoice-created": invoiceCreatedMessages,
-  "server-ready": serverReadyMessages,
-  "server-renewal-reminder": serverRenewalReminderMessages,
-  "server-suspended": serverSuspendedMessages,
-  // Components
-  footer: footerMessages,
-} as const;
-
-type MessagesMapping = typeof messagesMapping;
-type MessagesKey = keyof typeof messagesMapping;
-
-const titlesMapping = {
-  "email-updated": emailUpdatedTitles,
-  "login-link": loginLinkTitles,
-  "reset-password-link": resetPasswordLinkTitles,
-  "verify-email": verifyEmailTitles,
-  "password-updated": passwordUpdatedTitles,
-  "invoice-created": invoiceCreatedTitles,
-  "server-ready": serverReadyTitles,
-  "server-renewal-reminder": serverRenewalReminderTitles,
-  "server-suspended": serverSuspendedTitles,
-} as const;
-
-type TitlesMapping = typeof titlesMapping;
-type TitlesKey = keyof typeof titlesMapping;
-
-export function getEmailTranslations<T extends MessagesKey>(
-  key: T,
+export async function getEmailTitle(
+  key:
+    | "email-updated"
+    | "invoice-created"
+    | "login-link"
+    | "password-updated"
+    | "reset-password-link"
+    | "server-ready"
+    | "server-renewal-reminder"
+    | "server-suspended"
+    | "verify-email",
   locale: string | null = DEFAULT_EMAIL_LOCALE,
 ) {
-  const messages = messagesMapping[key];
-  // @ts-expect-error Let's not deal with this for now
-  return (messages[locale] ??
-    // @ts-expect-error Let's not deal with this for now
-    messages[DEFAULT_EMAIL_LOCALE]) as MessagesMapping[T][DefaultEmailLocale];
-}
+  let candidate = locale;
+  if (!hasLocale(EMAIL_LOCALES, candidate)) {
+    candidate = DEFAULT_EMAIL_LOCALE;
+  }
 
-export function getEmailTitle<T extends TitlesKey>(
-  key: T,
-  locale: string | null = DEFAULT_EMAIL_LOCALE,
-) {
-  const titles = titlesMapping[key];
-  // @ts-expect-error Let's not deal with this for now
-  return (titles[locale] ??
-    // @ts-expect-error Let's not deal with this for now
-    titles[DEFAULT_EMAIL_LOCALE]) as TitlesMapping[T][DefaultEmailLocale];
+  const message = (await import(`../messages/${candidate}.json`)).default;
+  return message[key].title;
 }

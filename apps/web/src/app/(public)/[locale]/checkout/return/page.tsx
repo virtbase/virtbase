@@ -163,7 +163,7 @@ export default async function CheckoutSuccessPage({
 
   const { payment_intent } = await searchParams;
 
-  if (!payment_intent) {
+  if (!payment_intent || "string" !== typeof payment_intent) {
     notFound();
   }
 

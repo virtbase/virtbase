@@ -67,7 +67,7 @@ export async function sendServerReadyEmailStep({
   await sendEmail(
     {
       to: user.email,
-      subject: getEmailTitle("server-ready", user.locale),
+      subject: await getEmailTitle("server-ready", user.locale),
       react: ServerReady({
         email: user.email,
         name: user.name,

@@ -15,10 +15,10 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Hr, Link, Tailwind, Text } from "@react-email/components";
+import { Hr, Link, Text } from "@react-email/components";
 import { APP_DOMAIN, PUBLIC_DOMAIN } from "@virtbase/utils";
 import { createTranslator } from "use-intl/core";
-import { DEFAULT_EMAIL_LOCALE, getEmailTranslations } from "../translations";
+import { DEFAULT_EMAIL_LOCALE } from "../translations";
 
 export function Footer({
   email,
@@ -34,12 +34,15 @@ export function Footer({
   locale?: string | null;
 }) {
   const t = createTranslator({
-    messages: getEmailTranslations("footer", locale),
+    // TODO: Using await import(...) causes issues with the build
+    // Footer must remain synchronous for now
+    messages: require(`../messages/${locale}.json`),
     locale: locale ?? DEFAULT_EMAIL_LOCALE,
+    namespace: "footer",
   });
 
   return (
-    <Tailwind>
+    <>
       <Hr className="mx-0 my-6 w-full border border-neutral-200" />
       <Text className="text-[12px] text-neutral-500 leading-6">
         {t.rich("thisEmailWasIntendedFor", {
@@ -80,6 +83,6 @@ export function Footer({
         <br />
         {t("commercialRegister")}: Amtsgericht Chemnitz HRB 37032
       </Text>
-    </Tailwind>
+    </>
   );
 }

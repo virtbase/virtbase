@@ -31,9 +31,9 @@ import {
 import { APP_DOMAIN, APP_NAME, VIRTBASE_WORDMARK } from "@virtbase/utils";
 import { createFormatter, createTranslator } from "use-intl/core";
 import { Footer } from "../components/footer";
-import { DEFAULT_EMAIL_LOCALE, getEmailTranslations } from "../translations";
+import { DEFAULT_EMAIL_LOCALE } from "../translations";
 
-export default function InvoiceCreated({
+export default async function InvoiceCreated({
   name = "Walter White",
   email = "janic@virtbase.com",
   locale = DEFAULT_EMAIL_LOCALE,
@@ -49,8 +49,9 @@ export default function InvoiceCreated({
   taxAmountCents: number;
 }) {
   const t = createTranslator({
-    messages: getEmailTranslations("invoice-created", locale),
+    messages: (await import(`../messages/${locale}.json`)).default,
     locale: locale ?? DEFAULT_EMAIL_LOCALE,
+    namespace: "invoice-created",
   });
 
   const formatter = createFormatter({

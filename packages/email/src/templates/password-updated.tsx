@@ -30,9 +30,9 @@ import {
 import { APP_NAME, VIRTBASE_WORDMARK } from "@virtbase/utils";
 import { createTranslator } from "use-intl/core";
 import { Footer } from "../components/footer";
-import { DEFAULT_EMAIL_LOCALE, getEmailTranslations } from "../translations";
+import { DEFAULT_EMAIL_LOCALE } from "../translations";
 
-export default function PasswordUpdated({
+export default async function PasswordUpdated({
   email = "janic@virtbase.com",
   locale = DEFAULT_EMAIL_LOCALE,
 }: {
@@ -40,8 +40,9 @@ export default function PasswordUpdated({
   locale?: string | null;
 }) {
   const t = createTranslator({
-    messages: getEmailTranslations("password-updated", locale),
+    messages: (await import(`../messages/${locale}.json`)).default,
     locale: locale ?? DEFAULT_EMAIL_LOCALE,
+    namespace: "password-updated",
   });
 
   return (

@@ -31,9 +31,9 @@ import {
 import { APP_DOMAIN, APP_NAME, VIRTBASE_WORDMARK } from "@virtbase/utils";
 import { createTranslator } from "use-intl/core";
 import { Footer } from "../components/footer";
-import { DEFAULT_EMAIL_LOCALE, getEmailTranslations } from "../translations";
+import { DEFAULT_EMAIL_LOCALE } from "../translations";
 
-export default function ServerReady({
+export default async function ServerReady({
   name = "Walter White",
   email = "janic@virtbase.com",
   serverId = "1234567890",
@@ -54,8 +54,9 @@ export default function ServerReady({
   locale?: string | null;
 }) {
   const t = createTranslator({
-    messages: getEmailTranslations("server-ready", locale),
+    messages: (await import(`../messages/${locale}.json`)).default,
     locale: locale ?? DEFAULT_EMAIL_LOCALE,
+    namespace: "server-ready",
   });
 
   return (

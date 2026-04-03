@@ -36,9 +36,9 @@ import {
 } from "@virtbase/utils";
 import { createTranslator } from "use-intl/core";
 import { Footer } from "../components/footer";
-import { DEFAULT_EMAIL_LOCALE, getEmailTranslations } from "../translations";
+import { DEFAULT_EMAIL_LOCALE } from "../translations";
 
-export default function ServerRenewalReminder({
+export default async function ServerRenewalReminder({
   email = "janic@virtbase.com",
   name = "Walter White",
   serverName = "vb1000",
@@ -52,8 +52,9 @@ export default function ServerRenewalReminder({
   locale?: string | null;
 }) {
   const t = createTranslator({
-    messages: getEmailTranslations("server-renewal-reminder", locale),
+    messages: (await import(`../messages/${locale}.json`)).default,
     locale: locale ?? DEFAULT_EMAIL_LOCALE,
+    namespace: "server-renewal-reminder",
   });
 
   return (
