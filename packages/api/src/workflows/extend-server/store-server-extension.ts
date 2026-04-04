@@ -104,7 +104,7 @@ export async function storeServerExtensionStep(
   };
 }
 
-export function rollbackStoreServerExtensionStep(
+export async function rollbackStoreServerExtensionStep(
   params: StoreServerExtensionStepParams,
 ) {
   "use step";

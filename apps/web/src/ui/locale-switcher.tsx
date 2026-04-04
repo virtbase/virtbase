@@ -15,6 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+"use client";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -26,13 +28,12 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  useSidebar,
 } from "@virtbase/ui/sidebar";
-import { COOKIE_DOMAIN } from "@virtbase/utils";
-import { revalidatePath } from "next/cache";
-import { cookies } from "next/headers";
 import NextImage from "next/image";
 import { useLocale } from "next-intl";
-import { COOKIE_NAME, locales } from "@/i18n/config";
+import { defaultLocale, locales } from "@/i18n/config";
+import { updateLocaleAction } from "./locale-switcher-action";
 
 const localeMapping = {
   en: {
@@ -55,20 +56,12 @@ const localeMapping = {
 
 export function LocaleSwitcher() {
   const currentLocale = useLocale();
-  const selectedLocale = localeMapping[currentLocale];
 
-  // TODO: Update locale in database
-  async function updateLocaleAction(data: FormData) {
-    "use server";
+  const { isMobile, open: isSidebarOpen } = useSidebar();
 
-    const store = await cookies();
-    store.set(COOKIE_NAME, data.get("locale") as string, {
-      domain: COOKIE_DOMAIN,
-    });
-
-    revalidatePath("/app.virtbase.com");
-    revalidatePath("/admin.virtbase.com");
-  }
+  const activeLocale =
+    currentLocale in localeMapping ? currentLocale : defaultLocale;
+  const selectedLocale = localeMapping[activeLocale];
 
   return (
     <SidebarMenu>
@@ -91,15 +84,14 @@ export function LocaleSwitcher() {
             </SidebarMenuButton>
           </DropdownMenuTrigger>
           <DropdownMenuContent
-            side="bottom"
             align="end"
             sideOffset={4}
-            //side={isMobile || isSidebarOpen ? "bottom" : "right"}
+            side={isMobile || isSidebarOpen ? "bottom" : "right"}
             className="w-(--radix-dropdown-menu-trigger-width) min-w-56"
           >
             <form action={updateLocaleAction}>
               {locales
-                .filter((locale) => locale !== currentLocale)
+                .filter((locale) => locale !== activeLocale)
                 .map((locale) => (
                   <DropdownMenuItem key={locale} asChild>
                     <button

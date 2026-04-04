@@ -20,6 +20,8 @@ import {
   datacenters,
   proxmoxNodeGroups,
   proxmoxTemplateGroups,
+  serverPlans,
+  users,
 } from "@virtbase/db/schema";
 import { createId } from "@virtbase/db/utils";
 import { sleep } from "bun";
@@ -29,6 +31,8 @@ const schema = {
   datacenters,
   proxmoxNodeGroups,
   proxmoxTemplateGroups,
+  users,
+  serverPlans,
 } as const;
 
 async function main() {
@@ -82,6 +86,9 @@ async function main() {
           values: ["RANDOM", "ROUND_ROBIN", "LEAST_USED", "FILL"],
         }),
       },
+      with: {
+        serverPlans: 4,
+      },
     },
     proxmoxTemplateGroups: {
       count: 5,
@@ -95,6 +102,46 @@ async function main() {
           isUnique: true,
         }),
         priority: f.default({ defaultValue: 0 }),
+      },
+    },
+    users: {
+      count: 1,
+      columns: {
+        id: f.default({ defaultValue: createId({ prefix: "usr_" }) }),
+        name: f.default({ defaultValue: "Admin" }),
+        email: f.default({ defaultValue: "admin@example.com" }),
+        emailVerified: f.default({ defaultValue: true }),
+        locale: f.default({ defaultValue: "en" }),
+        role: f.default({ defaultValue: "ADMIN" }),
+      },
+    },
+    serverPlans: {
+      count: 4,
+      columns: {
+        id: f.valuesFromArray({
+          values: Array.from({ length: 16 }, () =>
+            createId({ prefix: "pck_" }),
+          ),
+          isUnique: true,
+        }),
+        name: f.valuesFromArray({
+          values: ["Plan 1", "Plan 2", "Plan 3", "Plan 4"],
+        }),
+        cores: f.valuesFromArray({
+          values: [1, 2, 4, 6],
+        }),
+        memory: f.valuesFromArray({
+          values: [1024, 2048, 4096, 8192],
+        }),
+        storage: f.valuesFromArray({
+          values: [10, 25, 50, 100],
+        }),
+        netrate: f.valuesFromArray({
+          values: [125, 125, 125, 125],
+        }),
+        price: f.valuesFromArray({
+          values: [119, 349, 699, 1399],
+        }),
       },
     },
   }));

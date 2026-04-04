@@ -169,6 +169,17 @@ const nextConfig: NextConfig = {
       destination: "/servers/:id/overview",
       permanent: true,
     },
+    {
+      source: "/account/:path*",
+      has: [
+        {
+          type: "host",
+          value: new URL(ADMIN_DOMAIN).hostname,
+        },
+      ],
+      destination: `${APP_DOMAIN}/account/:path*`,
+      permanent: true,
+    },
   ],
   rewrites: async () => [
     // Legacy API rewrites
