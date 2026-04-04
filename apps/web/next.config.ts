@@ -47,9 +47,10 @@ const nextConfig: NextConfig = {
       "better-auth",
       "lucide-react",
     ],
-    sri: {
+    // TODO: Re-enable when issue is fixed: https://github.com/vercel/next.js/issues/91633
+    /*sri: {
       algorithm: "sha384",
-    },
+    },*/
     // turbopackFileSystemCacheForDev: true,
   },
   headers: async () => [
