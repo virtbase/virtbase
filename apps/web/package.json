@@ -12,7 +12,7 @@
     "test:codegen": "playwright codegen app.virtbase.localhost:3000",
     "script": "bun with-env bun scripts/run.ts",
     "stripe:listen": "stripe listen --forward-to localhost:3000/api/stripe/webhook",
-    "with-env": "bun --bun --env-file ../../.env --"
+    "with-env": "bun --env-file ../../.env --"
   },
   "dependencies": {
     "@better-auth/api-key": "^1.5.6",
