@@ -25,13 +25,20 @@
     "//#clean": {
       "cache": false
     },
-    "push": {
+    "db:push": {
       "cache": false,
       "interactive": true
     },
-    "studio": {
+    "db:studio": {
       "cache": false,
       "persistent": true
+    },
+    "db:generate": {
+      "cache": false,
+      "interactive": true
+    },
+    "db:migrate": {
+      "cache": false
     },
     "ui-add": {
       "cache": false,
@@ -50,6 +57,46 @@
       "persistent": true
     }
   },
-  "globalEnv": [],
-  "globalPassThroughEnv": []
+  "globalEnv": [
+    "NEXT_PUBLIC_APP_NAME",
+    "NEXT_PUBLIC_APP_DOMAIN",
+    "BETTER_AUTH_SECRET",
+    "DATABASE_URL",
+    "UPSTASH_REDIS_REST_URL",
+    "UPSTASH_REDIS_REST_TOKEN",
+    "RESEND_API_KEY",
+    "SMTP_HOST",
+    "SMTP_PORT",
+    "SMTP_USER",
+    "SMTP_PASSWORD",
+    "LEXWARE_API_KEY",
+    "STRIPE_SECRET_KEY",
+    "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
+    "STRIPE_WEBHOOK_SECRET",
+    "CRON_SECRET",
+    "NOVNC_PROXY_URL",
+    "NOVNC_PROXY_SECRET",
+    "POWERDNS_API_URL",
+    "POWERDNS_API_KEY",
+    "DISCORD_CLIENT_ID",
+    "DISCORD_CLIENT_SECRET",
+    "GITHUB_CLIENT_ID",
+    "GITHUB_CLIENT_SECRET",
+    "GOOGLE_CLIENT_ID",
+    "GOOGLE_CLIENT_SECRET",
+    "NEXT_PUBLIC_SENTRY_DSN",
+    "NEXT_PUBLIC_SENTRY_ORG",
+    "NEXT_PUBLIC_SENTRY_PROJECT",
+    "SENTRY_URL",
+    "VERCEL_AUTOMATION_BYPASS_SECRET"
+  ],
+  "globalPassThroughEnv": [
+    "NODE_ENV",
+    "CI",
+    "VERCEL",
+    "VERCEL_ENV",
+    "VERCEL_URL",
+    "VERCEL_GIT_COMMIT_REF",
+    "npm_lifecycle_event"
+  ]
 }

@@ -221,12 +221,6 @@ export function initAuth({
           input: false,
           defaultValue: "CUSTOMER",
         },
-        lastAttributedAt: {
-          type: "date",
-          required: false,
-          unique: false,
-          input: false,
-        },
         locale: {
           type: "string",
           unique: false,
