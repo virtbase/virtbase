@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Polish\n"
-"PO-Revision-Date: 2026-04-03 19:32\n"
+"PO-Revision-Date: 2026-04-04 14:09\n"
 
 #: src/app/(public)/[locale]/checkout/[id]/page.tsx:78
 #: src/app/(public)/[locale]/checkout/[id]/page.tsx:90
@@ -247,6 +247,10 @@ msgstr "Datacenters"
 msgid "iHN12u"
 msgstr "Admin"
 
+#: src/app/admin.virtbase.com/(dashboard)/nodes/[id]/page.tsx:48
+msgid "n3j8M6"
+msgstr "Proxmox Nodes"
+
 #: src/app/admin.virtbase.com/(dashboard)/page.tsx:40
 #: src/app/admin.virtbase.com/(dashboard)/page.tsx:54
 #: src/app/app.virtbase.com/(dashboard)/page.tsx:36
@@ -257,6 +261,15 @@ msgstr "Admin"
 #: src/ui/nav.tsx:74
 msgid "hzSNj4"
 msgstr "Dashboard"
+
+#: src/app/admin.virtbase.com/(dashboard)/servers/page.tsx:36
+#: src/app/admin.virtbase.com/(dashboard)/servers/page.tsx:52
+#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx:40
+#: src/features/account/components/api-keys/create-api-key-button.tsx:54
+#: src/features/admin/components/admin-sidebar-groups.tsx:61
+#: src/ui/app-sidebar-menu.tsx:45
+msgid "QOxktD"
+msgstr "Servers"
 
 #: src/app/admin.virtbase.com/(dashboard)/subnets/[id]/page.tsx:38
 #: src/app/admin.virtbase.com/(dashboard)/subnets/page.tsx:37
@@ -390,13 +403,6 @@ msgstr "An unexpected error occurred while loading the server details."
 #: src/app/app.virtbase.com/(dashboard)/servers/error.tsx:59
 msgid "FazwRl"
 msgstr "Try again"
-
-#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx:40
-#: src/features/account/components/api-keys/create-api-key-button.tsx:54
-#: src/features/admin/components/admin-sidebar-groups.tsx:61
-#: src/ui/app-sidebar-menu.tsx:45
-msgid "QOxktD"
-msgstr "Servers"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/page.tsx:49
 msgid "FgwBWh"
