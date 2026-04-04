@@ -35,7 +35,7 @@
     "push": "bun with-env drizzle-kit push",
     "studio": "bun with-env drizzle-kit studio",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "with-env": "dotenv -e ../../.env --"
+    "with-env": "bun --env-file ../../.env --"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.0.2",
