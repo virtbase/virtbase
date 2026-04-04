@@ -79,15 +79,29 @@ async function handler(request: NextRequest) {
     "nodes with terminated servers to suspend.",
   );
 
-  const promises = nodesWithTerminatedServers.map(({ servers, ...node }) => {
-    const instance = getProxmoxInstance(node);
+  const promises = nodesWithTerminatedServers.map(
+    async ({ servers, ...node }) => {
+      const instance = getProxmoxInstance(node);
 
-    return instance.cluster["bulk-action"].guest.shutdown.$post({
-      vms: servers.map((server) => server.vmid),
-      "force-stop": true,
-      maxworkers: 10,
-    });
-  });
+      // Update all servers to not boot if host is rebooted
+      // This change is asynchronous and applied after the shutdown operation.
+      await Promise.all(
+        servers.map(async (server) => {
+          const vm = instance.node.qemu.$(server.vmid);
+          await vm.config.$post({
+            onboot: false,
+          });
+        }),
+      );
+
+      // Shutdown all servers (async operation)
+      await instance.cluster["bulk-action"].guest.shutdown.$post({
+        vms: servers.map((server) => server.vmid),
+        "force-stop": true,
+        maxworkers: 10,
+      });
+    },
+  );
 
   await Promise.all(promises);
 

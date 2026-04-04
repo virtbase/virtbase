@@ -28,6 +28,7 @@ export async function getEmailTitle(
     | "login-link"
     | "password-updated"
     | "reset-password-link"
+    | "server-extended"
     | "server-ready"
     | "server-renewal-reminder"
     | "server-suspended"

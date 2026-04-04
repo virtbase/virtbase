@@ -15,14 +15,14 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { eq, sql } from "@virtbase/db";
+import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
-import { serverPlans, servers, users } from "@virtbase/db/schema";
+import { serverPlans, users } from "@virtbase/db/schema";
 import { decryptPayload, deriveKeyHex } from "@virtbase/utils";
 import type { OrderConfigurationSnapshot } from "@virtbase/validators";
 import type Stripe from "stripe";
 import { start } from "workflow/api";
-import { createInvoiceWorkflow } from "../workflows";
+import { createInvoiceWorkflow, extendServerWorkflow } from "../workflows";
 import { provisionServerWorkflow } from "../workflows/provision-server";
 import { upgradeServerWorkflow } from "../workflows/upgrade-server";
 
@@ -135,35 +135,11 @@ export const handlePaymentIntentSucceeded = async (event: Stripe.Event) => {
       await start(upgradeServerWorkflow);
       break;
     case "extend_server": {
-      const extended = await db.transaction(
-        async (tx) => {
-          return tx
-            .update(servers)
-            .set({
-              // If server was previously suspended, unsuspend it
-              // User is allowed to start the server again
-              suspendedAt: null,
-              // Add exactly one month to the termination date
-              terminatesAt: sql`CASE WHEN ${servers.terminatesAt} IS NULL THEN NULL ELSE ${servers.terminatesAt} + INTERVAL '1 month' END`,
-            })
-            .where(eq(servers.id, configuration.server_id))
-            .returning({
-              id: servers.id,
-            })
-            .then(([row]) => row);
-        },
+      await start(extendServerWorkflow, [
         {
-          accessMode: "read write",
-          isolationLevel: "read committed",
+          serverId: configuration.server_id,
         },
-      );
-
-      if (!extended || extended.id !== configuration.server_id) {
-        throw new Error(
-          `Failed to extend server. Server not found. ID: ${configuration.server_id}`,
-        );
-      }
-
+      ]);
       break;
     }
     default:
