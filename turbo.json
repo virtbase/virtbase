@@ -103,7 +103,8 @@
     "POSTGRES_URL_NON_POOLING",
     "DATABASE_URL_UNPOOLED",
     "PGHOST",
-    "NEON_PROJECT_ID"
+    "NEON_PROJECT_ID",
+    "NEXT_PUBLIC_VERCEL_ENV"
   ],
   "globalPassThroughEnv": [
     "NODE_ENV",
