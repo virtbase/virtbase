@@ -107,7 +107,6 @@ export function BackupsTable({
           ) : (
             Array.from({ length: 4 }).map((_, index) => {
               return (
-                // biome-ignore lint/suspicious/noArrayIndexKey: index is unique
                 <TableRow key={index}>
                   <TableCell
                     colSpan={table.getVisibleFlatColumns().length}

@@ -44,7 +44,6 @@ export function CustomersOverTimeCard() {
           fallback={
             <div className="grid size-full grid-cols-14 gap-2">
               {Array.from({ length: 14 }).map((_, index) => (
-                // biome-ignore lint/suspicious/noArrayIndexKey: index is unique
                 <Skeleton key={index} className="h-full w-full" />
               ))}
             </div>

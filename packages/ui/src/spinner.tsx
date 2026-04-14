@@ -36,7 +36,6 @@ function Spinner({ className, ...props }: React.ComponentProps<"div">) {
       >
         {[...Array(12)].map((_, idx) => (
           <div
-            // biome-ignore lint/suspicious/noArrayIndexKey: idx is unique
             key={idx}
             style={{
               animationDelay: `${-1.2 + 0.1 * idx}s`,

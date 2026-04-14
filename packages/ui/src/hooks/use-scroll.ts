@@ -24,7 +24,6 @@ export function useScroll(
 ) {
   const [scrolled, setScrolled] = useState(false);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: don't need update entry on every render
   const onScroll = useCallback(() => {
     setScrolled(
       (container?.current ? container.current.scrollTop : window.scrollY) >
@@ -32,7 +31,6 @@ export function useScroll(
     );
   }, [threshold]);
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: don't need update entry on every render
   useEffect(() => {
     const element = container?.current ?? window;
     element.addEventListener("scroll", onScroll);

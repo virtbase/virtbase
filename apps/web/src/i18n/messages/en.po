@@ -1014,7 +1014,7 @@ msgid "bdcMGy"
 msgstr "Open menu"
 
 #: src/features/admin/components/users/users-table/columns.tsx:266
-#: src/features/servers/components/servers-list.tsx:174
+#: src/features/servers/components/servers-list.tsx:173
 msgid "FgydNe"
 msgstr "View"
 
@@ -1149,11 +1149,11 @@ msgstr "Sign Up"
 msgid "pwyqaX"
 msgstr "Account created! Redirecting..."
 
-#: src/features/auth/components/register/verify-email-form.tsx:120
+#: src/features/auth/components/register/verify-email-form.tsx:119
 msgid "poE3OD"
 msgstr "Invalid code. Please try again."
 
-#: src/features/auth/components/register/verify-email-form.tsx:131
+#: src/features/auth/components/register/verify-email-form.tsx:130
 msgid "acrOoz"
 msgstr "Continue"
 
@@ -1214,48 +1214,48 @@ msgstr "I have read and accepted the <revocation>Revocation Policy</revocation>.
 msgid "+g+0OK"
 msgstr "Continue to payment"
 
-#: src/features/checkout/components/offer-card.tsx:87
+#: src/features/checkout/components/offer-card.tsx:95
 #: src/features/checkout/components/order-summary.tsx:157
 msgid "Rw82/V"
 msgstr "per month"
 
-#: src/features/checkout/components/offer-card.tsx:102
+#: src/features/checkout/components/offer-card.tsx:110
 #: src/features/checkout/components/order-summary.tsx:67
-#: src/features/servers/components/servers-list.tsx:119
+#: src/features/servers/components/servers-list.tsx:118
 msgid "BGI16m"
 msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
 
-#: src/features/checkout/components/offer-card.tsx:143
+#: src/features/checkout/components/offer-card.tsx:151
 #: src/features/checkout/components/order-summary.tsx:109
 msgid "zSO/T8"
 msgstr "1 IPv4 + IPv6 /64 Subnet"
 
-#: src/features/checkout/components/offer-card.tsx:162
+#: src/features/checkout/components/offer-card.tsx:170
 msgid "kWI6zX"
 msgstr "Shared"
 
-#: src/features/checkout/components/offer-card.tsx:167
+#: src/features/checkout/components/offer-card.tsx:175
 msgid "Gzo4L7"
 msgstr "Shared-Uplink - the maximum possible bandwidth is shared with other customers."
 
-#: src/features/checkout/components/offer-card.tsx:184
+#: src/features/checkout/components/offer-card.tsx:192
 #: src/features/checkout/components/order-summary.tsx:135
 msgid "IYlDM0"
 msgstr "Unlimited traffic"
 
-#: src/features/checkout/components/offer-card.tsx:188
+#: src/features/checkout/components/offer-card.tsx:196
 msgid "bIu4NB"
 msgstr "Traffic after fair-use principle. Temporary throttling at excessive long-term usage."
 
-#: src/features/checkout/components/offer-card.tsx:219
+#: src/features/checkout/components/offer-card.tsx:226
 msgid "5EjMej"
 msgstr "Configure {name} now"
 
-#: src/features/checkout/components/offer-card.tsx:223
+#: src/features/checkout/components/offer-card.tsx:230
 msgid "khw/ok"
 msgstr "Configure now"
 
-#: src/features/checkout/components/offer-card.tsx:226
+#: src/features/checkout/components/offer-card.tsx:233
 msgid "spsPUc"
 msgstr "Sold out"
 
@@ -1356,7 +1356,7 @@ msgstr "Modern customer portal"
 msgid "fQqAwd"
 msgstr "Efficiently manage your servers without hassle or frustration."
 
-#: src/features/landing/components/advantages-row.tsx:81
+#: src/features/landing/components/advantages-row.tsx:80
 #: src/features/landing/components/features-showcase.tsx:45
 #: src/features/landing/components/features-showcase.tsx:69
 msgid "TdTXXf"
@@ -1682,15 +1682,15 @@ msgstr "This server is expiring {expiry} and will be deleted after, if not renew
 msgid "76X+Qu"
 msgstr "This server is being installed. Some features may not be available yet."
 
-#: src/features/servers/components/servers-list.tsx:192
+#: src/features/servers/components/servers-list.tsx:191
 msgid "SXm88k"
 msgstr "IP copied to clipboard!"
 
-#: src/features/servers/components/servers-list.tsx:201
+#: src/features/servers/components/servers-list.tsx:200
 msgid "26lbPc"
 msgstr "Copy IP"
 
-#: src/features/servers/components/servers-list.tsx:212
+#: src/features/servers/components/servers-list.tsx:211
 msgid "nWQFic"
 msgstr "Renew"
 

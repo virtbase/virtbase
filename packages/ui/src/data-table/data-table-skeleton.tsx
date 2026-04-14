@@ -61,7 +61,6 @@ export function DataTableSkeleton({
         <div className="flex flex-1 items-center gap-2">
           {filterCount > 0
             ? Array.from({ length: filterCount }).map((_, i) => (
-                // biome-ignore lint/suspicious/noArrayIndexKey: ignored
                 <Skeleton key={i} className="h-7 w-18 border-dashed" />
               ))
             : null}
@@ -74,11 +73,9 @@ export function DataTableSkeleton({
         <Table>
           <TableHeader>
             {Array.from({ length: 1 }).map((_, i) => (
-              // biome-ignore lint/suspicious/noArrayIndexKey: ignored
               <TableRow key={i} className="hover:bg-transparent">
                 {Array.from({ length: columnCount }).map((_, j) => (
                   <TableHead
-                    // biome-ignore lint/suspicious/noArrayIndexKey: ignored
                     key={j}
                     style={{
                       width: cozyCellWidths[j],
@@ -93,11 +90,9 @@ export function DataTableSkeleton({
           </TableHeader>
           <TableBody>
             {Array.from({ length: rowCount }).map((_, i) => (
-              // biome-ignore lint/suspicious/noArrayIndexKey: ignored
               <TableRow key={i} className="hover:bg-transparent">
                 {Array.from({ length: columnCount }).map((_, j) => (
                   <TableCell
-                    // biome-ignore lint/suspicious/noArrayIndexKey: ignored
                     key={j}
                     style={{
                       width: cozyCellWidths[j],

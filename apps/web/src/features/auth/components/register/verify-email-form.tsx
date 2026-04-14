@@ -91,7 +91,6 @@ export const VerifyEmailForm = ({ next }: { next?: string }) => {
               <div className="flex w-full items-center justify-between">
                 {slots.map(({ char, isActive, hasFakeCaret }, idx) => (
                   <div
-                    // biome-ignore lint/suspicious/noArrayIndexKey: idx is unique
                     key={idx}
                     className={cn(
                       "relative flex h-14 w-12 items-center justify-center text-xl",

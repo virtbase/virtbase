@@ -82,7 +82,6 @@ export async function GET(req: NextRequest) {
           { position: { bottom: "-9px", right: "-9px" } },
         ].map((item, index) => (
           <svg
-            // biome-ignore lint/suspicious/noArrayIndexKey: index is unique
             key={index}
             role="presentation"
             style={{

@@ -66,7 +66,6 @@ export function AppSidebarMenu() {
           href === "/" ? pathname === href : pathname.startsWith(href);
 
         return (
-          // biome-ignore lint/suspicious/noArrayIndexKey: index is unique
           <SidebarMenuItem key={index}>
             <SidebarMenuButton
               asChild

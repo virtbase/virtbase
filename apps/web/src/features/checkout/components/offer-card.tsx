@@ -43,13 +43,21 @@ import type React from "react";
 import { IntlLink } from "@/i18n/navigation.public";
 
 type OfferCardProps = React.ComponentProps<"div"> & {
-  plan: Pick<
-    DatabaseServerPlan,
-    "id" | "name" | "price" | "cores" | "memory" | "storage" | "netrate"
-  > & {
+  plan: {
+    id: DatabaseServerPlan["id"];
+    name: DatabaseServerPlan["name"];
+    price: DatabaseServerPlan["price"];
+    cores: DatabaseServerPlan["cores"];
+    memory: DatabaseServerPlan["memory"];
+    storage: DatabaseServerPlan["storage"];
+    netrate: DatabaseServerPlan["netrate"];
     isAvailable: boolean;
   };
-  datacenter: Pick<DatabaseDatacenter, "id" | "name" | "country">;
+  datacenter: {
+    id: DatabaseDatacenter["id"];
+    name: DatabaseDatacenter["name"];
+    country: DatabaseDatacenter["country"];
+  };
 };
 
 export function OfferCard({
@@ -64,12 +72,12 @@ export function OfferCard({
   return (
     <div
       className={cn(
-        "relative top-0 flex h-full flex-col bg-background",
+        "relative top-0 flex h-full flex-col space-y-3 bg-background",
         className,
       )}
       {...props}
     >
-      <div className="flex flex-col gap-6 p-5 pb-3">
+      <div className="flex flex-col gap-6 p-5">
         <div className="pb-0">
           <div className="flex items-center gap-2">
             <h2 className="py-1 font-mono font-semibold text-foreground text-xl leading-none">
@@ -205,28 +213,26 @@ export function OfferCard({
             </ul>
           </div>
         </div>
-        <div className="pb-3">
-          <Button
-            className="w-full"
-            size="lg"
-            asChild={plan.isAvailable}
-            disabled={!plan.isAvailable}
-          >
-            {plan.isAvailable ? (
-              <IntlLink
-                href={`/checkout/${plan.id}`}
-                prefetch={false}
-                aria-label={t("Configure {name} now", {
-                  name: plan.name,
-                })}
-              >
-                {t("Configure now")}
-              </IntlLink>
-            ) : (
-              t("Sold out")
-            )}
-          </Button>
-        </div>
+        <Button
+          className="w-full"
+          size="lg"
+          asChild={plan.isAvailable}
+          disabled={!plan.isAvailable}
+        >
+          {plan.isAvailable ? (
+            <IntlLink
+              href={`/checkout/${plan.id}`}
+              prefetch={false}
+              aria-label={t("Configure {name} now", {
+                name: plan.name,
+              })}
+            >
+              {t("Configure now")}
+            </IntlLink>
+          ) : (
+            t("Sold out")
+          )}
+        </Button>
       </div>
     </div>
   );

@@ -36,7 +36,6 @@ export const useCopyToClipboard = (
     }
   };
 
-  // biome-ignore lint/correctness/useExhaustiveDependencies: required
   const copyToClipboard = useCallback(
     async (
       value: string | ClipboardItem,
@@ -68,7 +67,6 @@ export const useCopyToClipboard = (
   );
 
   // Cleanup the timer when the component unmounts
-  // biome-ignore lint/correctness/useExhaustiveDependencies: required
   useEffect(() => {
     return () => clearTimer();
   }, []);

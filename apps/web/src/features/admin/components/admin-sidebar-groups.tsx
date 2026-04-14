@@ -101,7 +101,6 @@ export function AdminSidebarGroups() {
   const pathname = usePathname();
 
   return groups.map(({ items, label }, index) => (
-    // biome-ignore lint/suspicious/noArrayIndexKey: index is unique
     <SidebarGroup key={index}>
       <SidebarGroupLabel className="text-muted-foreground/65 uppercase">
         {label}
@@ -109,7 +108,6 @@ export function AdminSidebarGroups() {
       <SidebarGroupContent>
         <SidebarMenu>
           {items.map((item, index) => (
-            // biome-ignore lint/suspicious/noArrayIndexKey: index is unique
             <SidebarMenuItem key={index}>
               <SidebarMenuButton
                 asChild

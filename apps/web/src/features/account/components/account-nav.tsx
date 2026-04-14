@@ -79,7 +79,6 @@ export function AccountNav({
       >
         {items.map((item, index) => (
           <NextLink
-            // biome-ignore lint/suspicious/noArrayIndexKey: index is unique
             key={index}
             href={item.path.getHref()}
             prefetch={false}

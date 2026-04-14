@@ -67,7 +67,6 @@ export async function AdvantagesRow() {
     <div className="grid grid-cols-1 gap-px bg-border text-sm sm:grid-cols-2 lg:grid-cols-4">
       {items.map((item, index) => (
         <div
-          // biome-ignore lint/suspicious/noArrayIndexKey: index is unique
           key={index}
           className="flex flex-col items-start gap-2 bg-background p-8 text-left lg:px-9 lg:py-10"
         >

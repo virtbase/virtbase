@@ -60,7 +60,6 @@ export function ServersList() {
     return (
       <div className="flex flex-col gap-4">
         {Array.from({ length: 3 }).map((_, index) => (
-          // biome-ignore lint/suspicious/noArrayIndexKey: index is unique
           <Skeleton key={index} className="h-20" />
         ))}
       </div>

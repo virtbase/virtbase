@@ -60,11 +60,7 @@ export function LatestServersCard() {
             fallback={
               <div className="space-y-2">
                 {Array.from({ length: 5 }).map((_, index) => (
-                  <Skeleton
-                    // biome-ignore lint/suspicious/noArrayIndexKey: index is unique
-                    key={index}
-                    className="h-12"
-                  />
+                  <Skeleton key={index} className="h-12" />
                 ))}
               </div>
             }

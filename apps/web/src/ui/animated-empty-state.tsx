@@ -64,11 +64,7 @@ export function AnimatedEmptyState({
           className="animation-duration-[10s] flex animate-infinite-scroll-y flex-col"
         >
           {[...Array(cardCount * 2)].map((_, idx) => (
-            <Card
-              // biome-ignore lint/suspicious/noArrayIndexKey: index is unique
-              key={idx}
-              className={cardClassName}
-            >
+            <Card key={idx} className={cardClassName}>
               {typeof cardContent === "function"
                 ? cardContent(idx % cardCount)
                 : cardContent}

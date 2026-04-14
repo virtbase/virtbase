@@ -128,7 +128,6 @@ export default async function Page() {
 
             return (
               <div
-                // biome-ignore lint/suspicious/noArrayIndexKey: index is unique
                 key={index}
                 className="relative space-y-8 bg-background p-8 sm:p-12"
               >

@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { cn } from "@virtbase/ui";
 import { getAvailablePlans } from "../api/get-available-plans";
 import { OfferCard } from "./offer-card";
 
@@ -27,9 +28,11 @@ export async function OfferRow() {
         plans.slice(index * 4, index * 4 + 4),
       ).map((chunk, index) => (
         <div
-          // biome-ignore lint/suspicious/noArrayIndexKey: index is unique
           key={index}
-          className="grid overflow-hidden md:grid-cols-2 lg:grid-cols-4 [&>*:not(:last-child)]:border-border max-md:[&>*:not(:last-child)]:border-b md:[&>*:not(:last-child)]:border-r"
+          className={cn(
+            "grid overflow-hidden md:grid-cols-2 lg:grid-cols-4 [&>*:not(:last-child)]:border-border max-md:[&>*:not(:last-child)]:border-b md:[&>*:not(:last-child)]:border-r",
+            index > 0 && "border-border border-t",
+          )}
         >
           {chunk.map((plan) => (
             <div key={plan.id}>

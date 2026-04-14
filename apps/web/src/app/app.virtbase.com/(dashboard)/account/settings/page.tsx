@@ -18,9 +18,5 @@
 import { UserIdCard } from "@/features/account/components/user-id-card";
 
 export default function Page() {
-  return (
-    <>
-      <UserIdCard />
-    </>
-  );
+  return <UserIdCard />;
 }

@@ -56,7 +56,6 @@ export default function ColoredLayout({ children }: PropsWithChildren) {
         {/* Gradient */}
         {[...Array(2)].map((_, idx) => (
           <div
-            // biome-ignore lint/suspicious/noArrayIndexKey: idx is unique
             key={idx}
             className={cn(
               "absolute top-6 left-1/2 size-[80px] -translate-x-1/2 -translate-y-1/2 scale-x-[1.6]",
@@ -66,7 +65,6 @@ export default function ColoredLayout({ children }: PropsWithChildren) {
           >
             {[...Array(idx === 0 ? 2 : 1)].map((_, idx) => (
               <div
-                // biome-ignore lint/suspicious/noArrayIndexKey: idx is unique
                 key={idx}
                 className={cn(
                   "absolute -inset-16 mix-blend-overlay blur-[50px] saturate-[2]",
