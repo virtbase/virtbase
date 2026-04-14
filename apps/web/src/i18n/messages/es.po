@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Spanish\n"
-"PO-Revision-Date: 2026-04-04 14:09\n"
+"PO-Revision-Date: 2026-04-14 10:43\n"
 
 #: src/app/(public)/[locale]/checkout/[id]/page.tsx:78
 #: src/app/(public)/[locale]/checkout/[id]/page.tsx:90
@@ -204,12 +204,12 @@ msgstr "Contact us and get quick help."
 msgid "tUmaeD"
 msgstr "All articles"
 
-#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:128
-#: src/app/(public)/[locale]/legal/[[...slug]]/page.tsx:121
+#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:129
+#: src/app/(public)/[locale]/legal/[[...slug]]/page.tsx:122
 msgid "ZdCdo5"
 msgstr "Last updated: {date}"
 
-#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:167
+#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:169
 msgid "IAMn0B"
 msgstr "Still have questions? Contact us ↗"
 
@@ -237,15 +237,23 @@ msgid "BdEM9F"
 msgstr "Hosting, but secure."
 
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/[id]/page.tsx:38
-#: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx:37
-#: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx:53
-#: src/features/admin/components/admin-sidebar-groups.tsx:71
+#: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx:38
+#: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx:54
+#: src/features/admin/components/admin-sidebar-groups.tsx:70
 msgid "NoQGSk"
 msgstr "Datacenters"
 
 #: src/app/admin.virtbase.com/(dashboard)/layout.tsx:28
 msgid "iHN12u"
 msgstr "Admin"
+
+#: src/app/admin.virtbase.com/(dashboard)/node-groups/[id]/page.tsx:40
+#: src/app/admin.virtbase.com/(dashboard)/node-groups/[id]/page.tsx:57
+#: src/app/admin.virtbase.com/(dashboard)/node-groups/page.tsx:38
+#: src/app/admin.virtbase.com/(dashboard)/node-groups/page.tsx:55
+#: src/features/admin/components/admin-sidebar-groups.tsx:75
+msgid "rcBiKK"
+msgstr "Node Groups"
 
 #: src/app/admin.virtbase.com/(dashboard)/nodes/[id]/page.tsx:48
 msgid "n3j8M6"
@@ -255,7 +263,7 @@ msgstr "Proxmox Nodes"
 #: src/app/admin.virtbase.com/(dashboard)/page.tsx:54
 #: src/app/app.virtbase.com/(dashboard)/page.tsx:36
 #: src/app/app.virtbase.com/(dashboard)/page.tsx:50
-#: src/features/admin/components/admin-sidebar-groups.tsx:51
+#: src/features/admin/components/admin-sidebar-groups.tsx:50
 #: src/ui/app-sidebar-menu.tsx:40
 #: src/ui/nav-user.tsx:111
 #: src/ui/nav.tsx:74
@@ -264,23 +272,32 @@ msgstr "Dashboard"
 
 #: src/app/admin.virtbase.com/(dashboard)/servers/page.tsx:36
 #: src/app/admin.virtbase.com/(dashboard)/servers/page.tsx:52
-#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx:40
+#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx:37
+#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx:51
 #: src/features/account/components/api-keys/create-api-key-button.tsx:54
-#: src/features/admin/components/admin-sidebar-groups.tsx:61
+#: src/features/admin/components/admin-sidebar-groups.tsx:60
 #: src/ui/app-sidebar-menu.tsx:45
 msgid "QOxktD"
 msgstr "Servers"
 
 #: src/app/admin.virtbase.com/(dashboard)/subnets/[id]/page.tsx:38
-#: src/app/admin.virtbase.com/(dashboard)/subnets/page.tsx:37
-#: src/app/admin.virtbase.com/(dashboard)/subnets/page.tsx:53
-#: src/features/admin/components/admin-sidebar-groups.tsx:91
+#: src/app/admin.virtbase.com/(dashboard)/subnets/page.tsx:38
+#: src/app/admin.virtbase.com/(dashboard)/subnets/page.tsx:54
+#: src/features/admin/components/admin-sidebar-groups.tsx:90
 msgid "9lr8v8"
 msgstr "Subnets"
 
+#: src/app/admin.virtbase.com/(dashboard)/template-groups/[id]/page.tsx:37
+#: src/app/admin.virtbase.com/(dashboard)/template-groups/[id]/page.tsx:55
+#: src/app/admin.virtbase.com/(dashboard)/template-groups/page.tsx:36
+#: src/app/admin.virtbase.com/(dashboard)/template-groups/page.tsx:52
+#: src/features/admin/components/admin-sidebar-groups.tsx:80
+msgid "aIwSug"
+msgstr "Template Groups"
+
 #: src/app/admin.virtbase.com/(dashboard)/users/page.tsx:37
 #: src/app/admin.virtbase.com/(dashboard)/users/page.tsx:53
-#: src/features/admin/components/admin-sidebar-groups.tsx:56
+#: src/features/admin/components/admin-sidebar-groups.tsx:55
 msgid "YDMrKK"
 msgstr "Users"
 
@@ -386,7 +403,7 @@ msgid "43U065"
 msgstr "Go to servers"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/overview/page.tsx:34
-#: src/features/admin/components/admin-sidebar-groups.tsx:48
+#: src/features/admin/components/admin-sidebar-groups.tsx:47
 #: src/features/servers/components/server-nav.tsx:42
 #: src/ui/app-sidebar.tsx:62
 msgid "9uOFF3"
@@ -404,7 +421,7 @@ msgstr "An unexpected error occurred while loading the server details."
 msgid "FazwRl"
 msgstr "Try again"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx:49
+#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx:60
 msgid "FgwBWh"
 msgstr "Rent a new server"
 
@@ -501,7 +518,8 @@ msgstr "Create API key"
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:85
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:71
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:72
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:106
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:120
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx:74
 #: src/features/servers/components/backups/create-backup-dialog.tsx:99
 #: src/features/servers/components/overview/rename-server-dialog.tsx:74
 #: src/ui/feedback-button.tsx:31
@@ -518,8 +536,8 @@ msgstr "This key will only be displayed once. Please save it securely, as it can
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx:156
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
-#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:95
-#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:96
+#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:94
+#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:95
 #: src/features/servers/components/backups/create-backup-dialog.tsx:123
 #: src/features/servers/components/overview/node-details-dialog.tsx:83
 #: src/features/servers/components/overview/rename-server-dialog.tsx:93
@@ -687,25 +705,25 @@ msgstr "No SSH keys"
 msgid "6NcUU3"
 msgstr "No SSH keys have been created yet."
 
-#: src/features/admin/components/admin-sidebar-groups.tsx:68
+#: src/features/account/components/user-id-card.tsx:47
+msgid "qW1hR5"
+msgstr "Your User ID"
+
+#: src/features/account/components/user-id-card.tsx:49
+msgid "tX7q8l"
+msgstr "This your unique account identifier on {appName}."
+
+#: src/features/account/components/user-id-card.tsx:68
+msgid "6dnHkY"
+msgstr "This may be used to identify your account in the API."
+
+#: src/features/admin/components/admin-sidebar-groups.tsx:67
 msgid "UcHtCB"
 msgstr "Proxmox VE"
 
-#: src/features/admin/components/admin-sidebar-groups.tsx:76
-msgid "rcBiKK"
-msgstr "Node Groups"
-
-#: src/features/admin/components/admin-sidebar-groups.tsx:81
-msgid "aIwSug"
-msgstr "Template Groups"
-
-#: src/features/admin/components/admin-sidebar-groups.tsx:88
+#: src/features/admin/components/admin-sidebar-groups.tsx:87
 msgid "+P4xiL"
 msgstr "IPAM"
-
-#: src/features/admin/components/admin-sidebar-groups.tsx:96
-msgid "M/iIYf"
-msgstr "IP Allocations"
 
 #: src/features/admin/components/admin-sidebar.tsx:47
 msgid "k81S1y"
@@ -806,6 +824,7 @@ msgstr "Revenue"
 msgid "c8nvms"
 msgstr "Sales"
 
+#: src/features/admin/components/datacenters/create-datacenter-button.tsx:42
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:62
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:78
 msgid "ZD7Aza"
@@ -815,9 +834,25 @@ msgstr "Create Datacenter"
 msgid "s3yKp4"
 msgstr "Create a new datacenter."
 
-#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:112
+#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:111
 msgid "vONi+O"
 msgstr "Country"
+
+#: src/features/admin/components/datacenters/datacenter-select.tsx:82
+msgid "kMzL65"
+msgstr "Select a datacenter..."
+
+#: src/features/admin/components/datacenters/datacenter-select.tsx:92
+msgid "ESAZCK"
+msgstr "Search for a datacenter..."
+
+#: src/features/admin/components/datacenters/datacenter-select.tsx:94
+msgid "lH0BHV"
+msgstr "No datacenter found."
+
+#: src/features/admin/components/proxmox-node-groups/create-node-group-button.tsx:42
+msgid "8gJfol"
+msgstr "Create Node Group"
 
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:61
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:79
@@ -828,104 +863,152 @@ msgstr "Create Proxmox Node Group"
 msgid "1sBtX6"
 msgstr "Create a new Proxmox VE node group for Proxmox VE nodes."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:97
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:113
+#: src/features/admin/components/proxmox-node-groups/node-group-select.tsx:78
+msgid "NMiQru"
+msgstr "Select a node group..."
+
+#: src/features/admin/components/proxmox-node-groups/node-group-select.tsx:89
+msgid "/Uo5jN"
+msgstr "Search for a node group..."
+
+#: src/features/admin/components/proxmox-node-groups/node-group-select.tsx:91
+msgid "ao30Ou"
+msgstr "No node group found."
+
+#: src/features/admin/components/proxmox-nodes/create-datacenter-button.tsx:48
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:111
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:127
 msgid "S+458D"
 msgstr "Create Proxmox Node"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:98
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:112
 msgid "deLbYn"
 msgstr "Create a new Proxmox VE node to host servers."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:129
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:143
+#: src/features/servers/components/overview/node-details-dialog.tsx:101
+msgid "zUxWZC"
+msgstr "Datacenter"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:162
+msgid "RJ3ocO"
+msgstr "Node Group"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:181
 msgid "uPDgth"
 msgstr "Hostname"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:154
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:206
 msgid "8cNS7n"
 msgstr "The hostname of the Proxmox VE node as configured in the Proxmox cluster."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:170
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:222
 msgid "2BEZJh"
 msgstr "FQDN"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:195
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:247
 msgid "cUm+Vq"
 msgstr "The FQDN of the Proxmox VE node where the API is accessible. Must be reachable from the internet and use a valid TLS certificate."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:212
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:264
 msgid "86ZUi9"
 msgstr "Token ID"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:232
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:284
 msgid "1gRCWa"
 msgstr "Token Secret"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:263
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:315
 msgid "6o6hYT"
 msgstr "Snippet Storage"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:292
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:344
 msgid "10Yrc8"
 msgstr "Cloud-init YAML files for any servers on this node will be stored here."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:308
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:360
 msgid "IvtOOO"
 msgstr "Backup Storage"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:337
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:389
 msgid "elgt8s"
 msgstr "Backups of any servers on this node will be stored here."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:354
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:406
 #: src/features/servers/components/overview/node-details-dialog.tsx:105
 msgid "sB9VeA"
 msgstr "Uplink"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:385
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:437
 msgid "1oyHhQ"
 msgstr "The maximum possible network bandwidth of the Uplink in MB/s."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:404
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:456
 msgid "gYG5ho"
 msgstr "Maximum number of VMs"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:408
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:460
 msgid "UYmKl1"
 msgstr "VMs"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:416
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:446
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:476
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:506
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:537
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:468
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:498
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:528
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:558
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:589
 msgid "ekXood"
 msgstr "Unlimited"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:434
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:486
 msgid "OCihQV"
 msgstr "Maximum memory"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:464
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:516
 msgid "T4Xl7g"
 msgstr "Maximum storage"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:494
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:546
 msgid "bRNAv0"
 msgstr "Maximum vCores"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:498
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:550
 #: src/features/servers/components/server-stats-card.tsx:90
 msgid "cCUvGW"
 msgstr "vCores"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:525
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:577
 msgid "ueCC3G"
 msgstr "Network limit"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:568
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:620
 msgid "U9Jxp7"
 msgstr "If reached, this node will no longer be used for services. Leave empty for unlimited."
+
+#: src/features/admin/components/subnets/create-subnet-button.tsx:39
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx:65
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx:77
+msgid "pXZyDa"
+msgstr "Create Subnet"
+
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx:66
+msgid "w+MmK2"
+msgstr "Create a new subnet."
+
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx:93
+msgid "4cxFaQ"
+msgstr "CIDR"
+
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx:110
+msgid "pMcQck"
+msgstr "Gateway"
+
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx:128
+msgid "tmvyl7"
+msgstr "Reverse DNS Zone"
+
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx:148
+msgid "IBNdTs"
+msgstr "VLAN"
 
 #: src/features/admin/components/users/users-table/columns.tsx:197
 msgid "a5msuh"
@@ -940,7 +1023,7 @@ msgid "bdcMGy"
 msgstr "Open menu"
 
 #: src/features/admin/components/users/users-table/columns.tsx:266
-#: src/features/servers/components/servers-list.tsx:168
+#: src/features/servers/components/servers-list.tsx:174
 msgid "FgydNe"
 msgstr "View"
 
@@ -1147,7 +1230,7 @@ msgstr "per month"
 
 #: src/features/checkout/components/offer-card.tsx:102
 #: src/features/checkout/components/order-summary.tsx:67
-#: src/features/servers/components/servers-list.tsx:113
+#: src/features/servers/components/servers-list.tsx:119
 msgid "BGI16m"
 msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
 
@@ -1482,10 +1565,6 @@ msgstr "Memory"
 msgid "DUIDEq"
 msgstr "Storage"
 
-#: src/features/servers/components/overview/node-details-dialog.tsx:101
-msgid "zUxWZC"
-msgstr "Datacenter"
-
 #: src/features/servers/components/overview/rename-server-dialog.tsx:65
 #: src/features/servers/components/overview/rename-server-dialog.tsx:77
 #: src/features/servers/components/overview/server-details-card.tsx:83
@@ -1612,15 +1691,15 @@ msgstr "This server is expiring {expiry} and will be deleted after, if not renew
 msgid "76X+Qu"
 msgstr "This server is being installed. Some features may not be available yet."
 
-#: src/features/servers/components/servers-list.tsx:178
+#: src/features/servers/components/servers-list.tsx:192
 msgid "SXm88k"
 msgstr "IP copied to clipboard!"
 
-#: src/features/servers/components/servers-list.tsx:187
+#: src/features/servers/components/servers-list.tsx:201
 msgid "26lbPc"
 msgstr "Copy IP"
 
-#: src/features/servers/components/servers-list.tsx:197
+#: src/features/servers/components/servers-list.tsx:212
 msgid "nWQFic"
 msgstr "Renew"
 
