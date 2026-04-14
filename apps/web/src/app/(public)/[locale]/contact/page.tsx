@@ -27,6 +27,7 @@ import {
   constructOpengraphUrl,
   DISCORD_INVITE_URL,
   PUBLIC_DOMAIN,
+  SUPPORT_EMAIL,
 } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted, getLocale } from "next-intl/server";
@@ -79,7 +80,7 @@ export default async function Page() {
       ),
       button: {
         text: t("Request Support"),
-        href: "mailto:support@virtbase.com",
+        href: `mailto:${SUPPORT_EMAIL}`,
         external: true,
       },
     },
@@ -148,7 +149,7 @@ export default async function Page() {
                     href={item.button.href}
                     {...(item.button.external
                       ? { target: "_blank", rel: "noopener noreferrer" }
-                      : {})}
+                      : { prefetch: false })}
                   >
                     {item.button.text}
                   </Comp>

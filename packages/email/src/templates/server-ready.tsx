@@ -28,7 +28,12 @@ import {
   Tailwind,
   Text,
 } from "@react-email/components";
-import { APP_DOMAIN, APP_NAME, VIRTBASE_WORDMARK } from "@virtbase/utils";
+import {
+  APP_DOMAIN,
+  APP_NAME,
+  SUPPORT_EMAIL,
+  VIRTBASE_WORDMARK,
+} from "@virtbase/utils";
 import { createTranslator } from "use-intl/core";
 import { Footer } from "../components/footer";
 import { DEFAULT_EMAIL_LOCALE, resolveEmailLocale } from "../translations";
@@ -109,7 +114,7 @@ export default async function ServerReady({
                 recipientName: trustpilot.recipientName,
                 referenceId: trustpilot.referenceId,
                 senderName: "Virtbase",
-                replyTo: "support@virtbase.com",
+                replyTo: SUPPORT_EMAIL,
               })}
             </script>
           )}

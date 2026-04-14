@@ -15,7 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { APP_NAME, PUBLIC_DOMAIN } from "@virtbase/utils";
+import { APP_NAME, PUBLIC_DOMAIN, SUPPORT_EMAIL } from "@virtbase/utils";
 import type { Organization, WithContext } from "schema-dts";
 import { SOCIALS } from "@/lib/socials";
 import JsonLd from "./json-ld";
@@ -27,7 +27,7 @@ export function DefaultJsonLd() {
     url: PUBLIC_DOMAIN,
     logo: `${PUBLIC_DOMAIN}/web-app-manifest-512x512.png`,
     image: `${PUBLIC_DOMAIN}/web-app-manifest-512x512.png`,
-    email: "support@virtbase.com",
+    email: SUPPORT_EMAIL,
     name: APP_NAME,
     description: `${APP_NAME} is your provider for secure server hosting. Maximum performance with minimal effort.`,
     legalName: "BeastHost UG (haftungsbeschränkt)",
@@ -43,7 +43,7 @@ export function DefaultJsonLd() {
     taxID: "227/106/00329",
     contactPoint: {
       "@type": "ContactPoint",
-      email: "support@virtbase.com",
+      email: SUPPORT_EMAIL,
     },
     iso6523Code: "0060:316427416",
     foundingDate: "2024-12-18",

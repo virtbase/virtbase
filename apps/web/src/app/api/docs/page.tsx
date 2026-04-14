@@ -27,6 +27,7 @@ import {
   constructMetadata,
   constructOpengraphUrl,
   PUBLIC_DOMAIN,
+  SUPPORT_EMAIL,
 } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { cacheLife, cacheTag } from "next/cache";
@@ -65,7 +66,7 @@ const getDocumentation = cache(async () => {
       contact: {
         name: APP_NAME,
         url: `${PUBLIC_DOMAIN}/contact`,
-        email: "support@virtbase.com",
+        email: SUPPORT_EMAIL,
       },
     },
   });

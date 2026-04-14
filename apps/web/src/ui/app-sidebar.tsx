@@ -29,6 +29,7 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@virtbase/ui/sidebar";
+import { SUPPORT_EMAIL } from "@virtbase/utils";
 import NextLink from "next/link";
 import { useExtracted } from "next-intl";
 import { AppSidebarMenu } from "@/ui/app-sidebar-menu";
@@ -86,7 +87,7 @@ export function AppSidebar() {
               className="group/menu-button h-9 gap-3 font-medium text-muted-foreground group-data-[collapsible=icon]:px-[5px]! [&>svg]:size-auto"
             >
               <a
-                href="mailto:support@virtbase.com"
+                href={`mailto:${SUPPORT_EMAIL}`}
                 target="_blank"
                 rel="noopener"
               >

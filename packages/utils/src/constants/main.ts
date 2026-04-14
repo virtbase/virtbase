@@ -17,6 +17,12 @@
 
 export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || "Virtbase";
 
+/**
+ * The support email address for the application.
+ * Users can use this email address to contact the support team.
+ */
+export const SUPPORT_EMAIL = "support@virtbase.com";
+
 export const VIRTBASE_WORDMARK =
   "https://virtbase.com/assets/static/wordmark.png";
 
