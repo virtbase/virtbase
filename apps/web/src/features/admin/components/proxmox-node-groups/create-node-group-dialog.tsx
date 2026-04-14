@@ -31,7 +31,7 @@ import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { createProxmoxNodeGroupAction } from "../../api/proxmox-node-groups/create-proxmox-node-group";
 
-export function CreateNodeGroupDialog(
+export default function CreateNodeGroupDialog(
   props: Omit<
     React.ComponentProps<typeof ResponsiveDialog>,
     "title" | "description" | "footer"
@@ -85,7 +85,6 @@ export function CreateNodeGroupDialog(
       <form
         id="create-proxmox-node-group-form"
         onSubmit={form.handleSubmit((data) => execute(data))}
-        {...props}
       >
         <FieldGroup>
           <Controller

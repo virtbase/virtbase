@@ -70,7 +70,7 @@ export async function sendInvoiceStep({
           content: Buffer.from(fileContent),
         },
       ],
-      react: InvoiceCreated({
+      react: await InvoiceCreated({
         name,
         email: customerEmail,
         voucherNumber,

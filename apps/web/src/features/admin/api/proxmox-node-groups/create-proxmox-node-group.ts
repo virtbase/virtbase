@@ -15,6 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+"use server";
+
 import { TRPCError } from "@trpc/server";
 import { db } from "@virtbase/db/client";
 import { proxmoxNodeGroups } from "@virtbase/db/schema";

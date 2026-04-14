@@ -55,7 +55,7 @@ export const LEXWARE_COUNTRY_CONTACTS = {
 /**
  * Tax rates for each EU member state.
  *
- * Last updated: 2025-11-21
+ * Last updated: 2026-04-14
  */
 export const LEXWARE_COUNTRY_TAX_RATES = {
   AT: 20.0,
@@ -65,9 +65,9 @@ export const LEXWARE_COUNTRY_TAX_RATES = {
   CZ: 21.0,
   DE: 19.0,
   DK: 25.0,
-  EE: 20.0,
+  EE: 24.0,
   ES: 21.0,
-  FI: 24.0,
+  FI: 25.5,
   FR: 20.0,
   HR: 25.0,
   HU: 27.0,
@@ -80,10 +80,10 @@ export const LEXWARE_COUNTRY_TAX_RATES = {
   NL: 21.0,
   PL: 23.0,
   PT: 23.0,
-  RO: 20.0,
+  RO: 21.0,
   SE: 25.0,
   SI: 22.0,
-  SK: 20.0,
+  SK: 23.0,
 } as const;
 
 export type LexwareCountry = keyof typeof LEXWARE_COUNTRY_TAX_RATES;

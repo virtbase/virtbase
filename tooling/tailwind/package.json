@@ -11,9 +11,9 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "@tailwindcss/postcss": "^4.2.1",
-    "postcss": "^8.5.8",
-    "tailwindcss": "^4.2.1"
+    "@tailwindcss/postcss": "catalog:",
+    "postcss": "catalog:",
+    "tailwindcss": "catalog:"
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:",

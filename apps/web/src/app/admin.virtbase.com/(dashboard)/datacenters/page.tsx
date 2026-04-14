@@ -27,6 +27,7 @@ import type { Metadata } from "next";
 import { useExtracted } from "next-intl";
 import { getExtracted } from "next-intl/server";
 import { Suspense } from "react";
+import { CreateDatacenterButton } from "@/features/admin/components/datacenters/create-datacenter-button";
 import { DatacentersCard } from "@/features/admin/components/datacenters/datacenters-card";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
 
@@ -55,7 +56,7 @@ export default function Page({
           </BreadcrumbList>
         </Breadcrumb>
       }
-      //rightSide={<CreateDatacenterButton />}
+      rightSide={<CreateDatacenterButton />}
     >
       <Suspense
         fallback={

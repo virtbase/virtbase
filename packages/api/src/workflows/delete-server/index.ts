@@ -15,7 +15,16 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { sleep } from "workflow";
 import type { GetProxmoxInstanceParams } from "../../proxmox/get-proxmox-instance";
+import { destroyGuestStep } from "../shared/destroy-guest";
+import { getServerOwnerStep } from "../shared/get-server-owner";
+import { performGuestActionStep } from "../shared/perform-guest-action";
+import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task";
+import { purgeAllBackupsStep } from "./purge-all-backups";
+import { resetPointerRecordsStep } from "./reset-pointer-records";
+import { sendServerDeletedEmailStep } from "./send-server-deleted-email";
+import { storeServerDeletionStep } from "./store-server-deletion";
 
 type DeleteServerWorkflowParams = {
   vmid: number;
@@ -23,8 +32,61 @@ type DeleteServerWorkflowParams = {
   proxmoxNode: GetProxmoxInstanceParams;
 };
 
-export async function deleteServerWorkflow(_: DeleteServerWorkflowParams) {
+export async function deleteServerWorkflow(params: DeleteServerWorkflowParams) {
   "use workflow";
 
-  // TODO: Implement delete server workflow
+  const { vmid, serverId, proxmoxNode } = params;
+
+  const user = await getServerOwnerStep({
+    serverId,
+  });
+
+  // 1. Stop the guest
+  const { upid: stopUpid } = await performGuestActionStep({
+    proxmoxNode,
+    vmid,
+    action: "stop",
+  });
+
+  await sleep("5s");
+  await waitForProxmoxTaskStep({
+    proxmoxNode,
+    upid: stopUpid,
+    ignoreErrors: false,
+  });
+
+  // 2. Destroy the VM in Proxmox
+  const { upid: destroyUpid } = await destroyGuestStep({
+    proxmoxNode,
+    vmid,
+  });
+
+  await sleep("5s");
+  await waitForProxmoxTaskStep({
+    proxmoxNode,
+    upid: destroyUpid,
+    ignoreErrors: false,
+  });
+
+  // 3. Purge all backups and reset pointer records
+  await Promise.all([
+    purgeAllBackupsStep({
+      proxmoxNode,
+      serverId,
+    }),
+    resetPointerRecordsStep({
+      serverId,
+    }),
+  ]);
+
+  // 4. Store the server deletion
+  const { serverName } = await storeServerDeletionStep({
+    serverId,
+  });
+
+  // 5. Send email to the user that the server has been deleted
+  await sendServerDeletedEmailStep({
+    user,
+    serverName,
+  });
 }

@@ -16,12 +16,17 @@
  */
 
 import * as Sentry from "@sentry/nextjs";
+import { TRPCError } from "@trpc/server";
 import { createSafeActionClient } from "next-safe-action";
 import { verifySession } from "../api/verify-session";
 
 export const actionClient = createSafeActionClient({
   handleServerError: (error) => {
     Sentry.captureException(error);
+
+    if (error instanceof TRPCError) {
+      return error.message;
+    }
 
     return "An unknown error occurred.";
   },

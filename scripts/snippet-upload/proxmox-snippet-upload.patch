@@ -1,0 +1,56 @@
+--- a/API2/Storage/Status.pm
++++ b/API2/Storage/Status.pm
+@@ -527,7 +527,7 @@
+                 description => "Content type.",
+                 type => 'string',
+                 format => 'pve-storage-content',
+-                enum => ['iso', 'vztmpl', 'import'],
++                enum => ['iso', 'vztmpl', 'import', 'snippets'],
+             },
+             filename => {
+                 description =>
+@@ -612,6 +612,8 @@
+             }
+ 
+             $path = PVE::Storage::get_import_dir($cfg, $storage);
++        } elsif ($content eq 'snippets') {
++          $path = PVE::Storage::get_snippet_dir($cfg, $storage); 
+         } else {
+             raise_param_exc({ content => "upload content type '$content' not allowed" });
+         }
+@@ -764,7 +766,7 @@
+                 description => "Content type.", # TODO: could be optional & detected in most cases
+                 type => 'string',
+                 format => 'pve-storage-content',
+-                enum => ['iso', 'vztmpl', 'import'],
++                enum => ['iso', 'vztmpl', 'import', 'snippets'],
+             },
+             filename => {
+                 description =>
+@@ -853,6 +855,8 @@
+             }
+ 
+             $path = PVE::Storage::get_import_dir($cfg, $storage);
++        } elsif ($content eq 'snippets') {
++            $path = PVE::Storage::get_snippet_dir($cfg, $param->{storage});
+         } else {
+             raise_param_exc({ content => "upload content-type '$content' is not allowed" });
+         }
+--- a/Storage.pm
++++ b/Storage.pm
+@@ -564,6 +564,15 @@
+     return $plugin->get_subdir($scfg, 'import');
+ }
+ 
++sub get_snippet_dir {
++    my ($cfg, $storeid) = @_;
+++
++    my $scfg = storage_config($cfg, $storeid);
++    my $plugin = PVE::Storage::Plugin->lookup($scfg->{type});
++
++    return $plugin->get_subdir($scfg, 'snippets');
++}
++
+ sub get_vztmpl_dir {
+     my ($cfg, $storeid) = @_;
+ 

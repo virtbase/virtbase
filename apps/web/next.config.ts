@@ -38,19 +38,13 @@ const nextConfig: NextConfig = {
     instantNavigationDevToolsToggle: true,
     optimizePackageImports: [
       "radix-ui",
-      "@virtbase/validators",
       "@virtbase/ui",
-      "fumadocs-core",
-      "fumadocs-ui",
-      "@better-auth/api-key",
-      "@better-auth/passkey",
-      "better-auth",
-      "lucide-react",
+      "@virtbase/utils",
+      "@virtbase/validators",
     ],
-    // TODO: Re-enable when issue is fixed: https://github.com/vercel/next.js/issues/91633
-    /*sri: {
+    sri: {
       algorithm: "sha384",
-    },*/
+    },
     // turbopackFileSystemCacheForDev: true,
   },
   headers: async () => [
@@ -195,15 +189,7 @@ const nextConfig: NextConfig = {
       destination: "/api/v1/servers/:path*",
     },
   ],
-  transpilePackages: [
-    "@virtbase/api",
-    "@virtbase/auth",
-    "@virtbase/db",
-    "@virtbase/email",
-    "@virtbase/ui",
-    "@virtbase/utils",
-    "@virtbase/validators",
-  ],
+  transpilePackages: ["@virtbase/email", "@virtbase/ui"],
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -219,7 +205,9 @@ const withNextIntl = createNextIntlPlugin({
       path: "./src/i18n/messages",
       locales: "infer",
       format: "po",
-      precompile: true,
+      // Keep runtime ICU formatting available for non-precompiled messages
+      // used by workspace packages (e.g. @virtbase/email templates).
+      precompile: false,
     },
   },
 });

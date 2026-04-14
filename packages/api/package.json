@@ -35,7 +35,7 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "@sentry/node": "^10.47.0",
+    "@sentry/node": "^10.48.0",
     "@trpc/server": "catalog:",
     "@upstash/ratelimit": "^2.0.8",
     "@upstash/redis": "^1.37.0",
@@ -44,13 +44,13 @@
     "@virtbase/email": "workspace:*",
     "@virtbase/utils": "workspace:*",
     "@virtbase/validators": "workspace:*",
-    "proxmox-api": "^1.1.1",
+    "proxmox-api": "catalog:",
     "server-only": "^0.0.1",
-    "stripe": "^21.0.1",
-    "superjson": "^2.2.6",
+    "stripe": "^22.0.1",
+    "superjson": "catalog:",
     "trpc-to-openapi": "^3.2.0",
-    "use-intl": "^4.9.0",
-    "workflow": "^4.2.0-beta.75",
+    "use-intl": "catalog:",
+    "workflow": "catalog:",
     "zod": "catalog:"
   },
   "peerDependencies": {

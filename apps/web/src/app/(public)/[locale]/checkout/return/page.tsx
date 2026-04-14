@@ -16,6 +16,7 @@
  */
 
 import { captureException } from "@sentry/nextjs";
+import type { Stripe } from "@virtbase/api/stripe";
 import { stripe } from "@virtbase/api/stripe";
 import { buttonVariants } from "@virtbase/ui/button";
 import {
@@ -41,7 +42,6 @@ import { notFound } from "next/navigation";
 import { connection } from "next/server";
 import { getExtracted, getLocale } from "next-intl/server";
 import { cache } from "react";
-import type Stripe from "stripe";
 import { ConfettiFireworks } from "@/features/checkout/components/confetti-fireworks";
 import { IntlLink } from "@/i18n/navigation.public";
 

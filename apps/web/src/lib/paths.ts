@@ -97,12 +97,6 @@ export const paths = {
         getHref: (id: string) => `/subnets/${id}`,
       },
     },
-    allocations: {
-      getHref: () => "/allocations",
-      overview: {
-        getHref: (id: string) => `/allocations/${id}`,
-      },
-    },
   },
   app: {
     home: {

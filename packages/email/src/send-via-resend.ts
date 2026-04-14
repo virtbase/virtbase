@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { render } from "@react-email/render";
 import { APP_DOMAIN } from "@virtbase/utils";
 import type { CreateEmailOptions } from "resend";
 import { resend } from "./resend";
@@ -24,9 +25,9 @@ import type {
   ResendEmailOptions,
 } from "./resend/types";
 
-const resendEmailForOptions = (
+const resendEmailForOptions = async (
   opts: ResendEmailOptions,
-): CreateEmailOptions => {
+): Promise<CreateEmailOptions> => {
   const {
     to,
     from,
@@ -34,6 +35,7 @@ const resendEmailForOptions = (
     bcc,
     replyTo,
     subject,
+    html,
     text,
     react,
     scheduledAt,
@@ -71,9 +73,22 @@ const resendEmailForOptions = (
       : headers && { headers }),
   };
 
-  // Add render options (react or text) - at least one must be present
+  // Add render options (html, react, or text) - at least one must be present
+  if (html) {
+    return { ...baseOptions, html };
+  }
   if (react) {
-    return { ...baseOptions, react };
+    const renderedHtml = await render(react);
+
+    // Helpful runtime signal when a template leaves unresolved placeholders.
+    const unresolvedTokens = renderedHtml.match(/\{[a-zA-Z0-9_]+\}/g) || [];
+    if (unresolvedTokens.length > 0) {
+      console.warn(
+        `Email HTML contains unresolved placeholders for subject "${subject}": ${[...new Set(unresolvedTokens)].join(", ")}`,
+      );
+    }
+
+    return { ...baseOptions, html: renderedHtml };
   }
   if (text) {
     return { ...baseOptions, text };
@@ -98,7 +113,7 @@ export const sendEmailViaResend = async (
   const idempotencyKey = settings?.idempotencyKey || undefined;
 
   return await resend.emails.send(
-    resendEmailForOptions(opts),
+    await resendEmailForOptions(opts),
     idempotencyKey ? { idempotencyKey } : undefined,
   );
 };
@@ -125,20 +140,15 @@ export const sendBatchEmailViaResend = async (
     };
   }
 
-  // Filter out emails without to address
-  // and format the emails for Resend
-  const filteredBatch = emails.reduce(
-    (acc, email) => {
-      if (!email?.to) {
-        return acc;
-      }
+  // Filter out emails without to address and format payload for Resend.
+  const filteredBatch: CreateEmailOptions[] = [];
+  for (const email of emails) {
+    if (!email?.to) {
+      continue;
+    }
 
-      acc.push(resendEmailForOptions(email));
-
-      return acc;
-    },
-    [] as ReturnType<typeof resendEmailForOptions>[],
-  );
+    filteredBatch.push(await resendEmailForOptions(email));
+  }
 
   if (filteredBatch.length === 0) {
     return {

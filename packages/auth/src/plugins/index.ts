@@ -87,7 +87,7 @@ export const plugins = [
       await sendEmail({
         to: email,
         subject: await getEmailTitle("verify-email", locale),
-        react: VerifyEmail({ email, code: otp, locale }),
+        react: await VerifyEmail({ email, code: otp, locale }),
       });
     },
     expiresIn: 600, // 10 minutes
@@ -117,7 +117,7 @@ export const plugins = [
       await sendEmail({
         to: email,
         subject: await getEmailTitle("login-link", locale),
-        react: LoginLink({ email, url, locale }),
+        react: await LoginLink({ email, url, locale }),
       });
     },
     expiresIn: 600, // 10 minutes

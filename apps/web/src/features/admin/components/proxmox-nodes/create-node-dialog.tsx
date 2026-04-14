@@ -38,6 +38,7 @@ import {
   InputGroupText,
 } from "@virtbase/ui/input-group";
 import { ResponsiveDialog } from "@virtbase/ui/responsive-dialog";
+import { Skeleton } from "@virtbase/ui/skeleton";
 import { Spinner } from "@virtbase/ui/spinner";
 import {
   Tooltip,
@@ -50,26 +51,39 @@ import { CreateProxmoxNodeInputSchema } from "@virtbase/validators/admin";
 import { useExtracted } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import type React from "react";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { ShowPasswordAddon } from "@/ui/input-group-addons";
+import type { getLinkableDatacenters } from "../../api/datacenters/get-linkable-datacenters";
+import type { getLinkableProxmoxNodeGroups } from "../../api/proxmox-node-groups/get-linkable-proxmox-node-groups";
 import { createProxmoxNodeAction } from "../../api/proxmox-nodes/create-proxmox-node";
 import { transformTextField } from "../../lib/transform-text-field";
+import { DatacenterSelect } from "../datacenters/datacenter-select";
+import { NodeGroupSelect } from "../proxmox-node-groups/node-group-select";
 
-export function CreateNodeDialog(
-  props: Omit<
+interface CreateNodeDialogProps
+  extends Omit<
     React.ComponentProps<typeof ResponsiveDialog>,
     "title" | "description" | "footer"
-  >,
-) {
+  > {
+  promises: [
+    ReturnType<typeof getLinkableDatacenters>,
+    ReturnType<typeof getLinkableProxmoxNodeGroups>,
+  ];
+}
+
+export default function CreateNodeDialog({
+  promises,
+  ...props
+}: CreateNodeDialogProps) {
   const t = useExtracted();
 
+  const [datacenters, nodeGroups] = promises;
   const [isTokenSecretVisible, setIsTokenSecretVisible] = useState(false);
 
   const form = useForm<CreateProxmoxNodeInput>({
     defaultValues: {
-      // TODO: Datacenter and Proxmox Node Group selector
       datacenter_id: "",
       proxmox_node_group_id: "",
       hostname: "",
@@ -121,6 +135,44 @@ export function CreateNodeDialog(
         onSubmit={form.handleSubmit((data) => execute(data))}
       >
         <FieldGroup>
+          <Controller
+            name="datacenter_id"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel htmlFor={field.name}>{t("Datacenter")}</FieldLabel>
+                <Suspense fallback={<Skeleton className="h-9 w-full" />}>
+                  <DatacenterSelect
+                    id={field.name}
+                    name={field.name}
+                    aria-invalid={fieldState.invalid}
+                    value={field.value}
+                    onValueChange={field.onChange}
+                    promise={datacenters}
+                  />
+                </Suspense>
+              </Field>
+            )}
+          />
+          <Controller
+            name="proxmox_node_group_id"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel htmlFor={field.name}>{t("Node Group")}</FieldLabel>
+                <Suspense fallback={<Skeleton className="h-9 w-full" />}>
+                  <NodeGroupSelect
+                    id={field.name}
+                    name={field.name}
+                    aria-invalid={fieldState.invalid}
+                    value={field.value}
+                    onValueChange={field.onChange}
+                    promise={nodeGroups}
+                  />
+                </Suspense>
+              </Field>
+            )}
+          />
           <Controller
             name="hostname"
             control={form.control}

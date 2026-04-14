@@ -42,7 +42,7 @@ export async function sendServerExtendedEmailStep(
     {
       to: user.email,
       subject: await getEmailTitle("server-extended", user.locale),
-      react: ServerExtended({
+      react: await ServerExtended({
         email: user.email,
         name: user.name,
         locale: user.locale,

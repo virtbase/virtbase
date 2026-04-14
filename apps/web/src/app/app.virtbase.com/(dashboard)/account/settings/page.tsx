@@ -15,6 +15,12 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { UserIdCard } from "@/features/account/components/user-id-card";
+
 export default function Page() {
-  return <>Placeholder</>;
+  return (
+    <>
+      <UserIdCard />
+    </>
+  );
 }

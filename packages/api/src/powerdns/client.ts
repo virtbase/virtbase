@@ -76,20 +76,32 @@ export class PowerDNSClient {
     );
   }
 
-  async deleteReverseDNSRecord({ zone, name }: { zone: string; name: string }) {
+  async deleteReverseDNSRecord({
+    zone,
+    name,
+  }: {
+    zone: string;
+    name: string | string[];
+  }) {
     const normalizedZone = zone.endsWith(".") ? zone : `${zone}.`;
     return this._request(
       `/api/v1/servers/localhost/zones/${encodeURIComponent(normalizedZone)}`,
       {
         method: "PATCH",
         body: JSON.stringify({
-          rrsets: [
-            {
-              name: `${name}.`,
-              type: "PTR",
-              changetype: "DELETE",
-            },
-          ],
+          rrsets: !Array.isArray(name)
+            ? [
+                {
+                  name: `${name}.`,
+                  type: "PTR",
+                  changetype: "DELETE",
+                },
+              ]
+            : name.map((entry) => ({
+                name: `${entry}.`,
+                type: "PTR",
+                changetype: "DELETE",
+              })),
         }),
       },
     );

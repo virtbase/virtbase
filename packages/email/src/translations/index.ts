@@ -15,11 +15,18 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { APP_NAME } from "@virtbase/utils";
 import { hasLocale } from "use-intl";
+import { createTranslator } from "use-intl/core";
 
 // TODO: Unify with the default locale in the web app (shared localization config and package)
 export const EMAIL_LOCALES = ["en", "de", "fr", "nl"] as const;
 export const DEFAULT_EMAIL_LOCALE = "en" as const;
+export type EmailLocale = (typeof EMAIL_LOCALES)[number];
+
+export function resolveEmailLocale(locale?: string | null): EmailLocale {
+  return hasLocale(EMAIL_LOCALES, locale) ? locale : DEFAULT_EMAIL_LOCALE;
+}
 
 export async function getEmailTitle(
   key:
@@ -28,6 +35,7 @@ export async function getEmailTitle(
     | "login-link"
     | "password-updated"
     | "reset-password-link"
+    | "server-deleted"
     | "server-extended"
     | "server-ready"
     | "server-renewal-reminder"
@@ -35,11 +43,14 @@ export async function getEmailTitle(
     | "verify-email",
   locale: string | null = DEFAULT_EMAIL_LOCALE,
 ) {
-  let candidate = locale;
-  if (!hasLocale(EMAIL_LOCALES, candidate)) {
-    candidate = DEFAULT_EMAIL_LOCALE;
-  }
+  const candidate = resolveEmailLocale(locale);
 
-  const message = (await import(`../messages/${candidate}.json`)).default;
-  return message[key].title;
+  const messages = (await import(`../messages/${candidate}.json`)).default;
+  const t = createTranslator({
+    messages,
+    locale: candidate,
+    namespace: key,
+  });
+
+  return t("title", { appName: APP_NAME });
 }

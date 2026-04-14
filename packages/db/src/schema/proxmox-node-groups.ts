@@ -72,3 +72,5 @@ export const proxmoxNodeGroupsRelations = relations(
     serverPlans: many(serverPlans),
   }),
 );
+
+export type DatabaseProxmoxNodeGroups = typeof proxmoxNodeGroups.$inferSelect;

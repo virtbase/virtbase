@@ -89,7 +89,7 @@ export default async function HelpArticlePage({
 
   const title = page.data.title;
   const description = page.data.description;
-  const lastModified = page.data.lastModified ?? new Date();
+  const lastModified = page.data.lastModified;
 
   const t = await getExtracted();
   const format = await getFormatter();
@@ -121,14 +121,16 @@ export default async function HelpArticlePage({
             </h1>
             <p className="text-muted-foreground">{description}</p>
             <div className="flex items-center space-x-3">
-              <time
-                dateTime={lastModified.toISOString()}
-                className="font-light text-muted-foreground text-sm"
-              >
-                {t("Last updated: {date}", {
-                  date: format.dateTime(lastModified),
-                })}
-              </time>
+              {lastModified && (
+                <time
+                  dateTime={lastModified.toISOString()}
+                  className="font-light text-muted-foreground text-sm"
+                >
+                  {t("Last updated: {date}", {
+                    date: format.dateTime(lastModified),
+                  })}
+                </time>
+              )}
             </div>
           </div>
           <article

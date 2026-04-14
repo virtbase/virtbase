@@ -23,10 +23,21 @@ import {
 } from "@virtbase/ui/breadcrumb";
 import { Button } from "@virtbase/ui/button";
 import { LucidePlus } from "@virtbase/ui/icons";
-import { PUBLIC_DOMAIN } from "@virtbase/utils";
+import { constructMetadata, PUBLIC_DOMAIN } from "@virtbase/utils";
+import type { Metadata } from "next";
 import { useExtracted } from "next-intl";
+import { getExtracted } from "next-intl/server";
 import { ServersList } from "@/features/servers/components/servers-list";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getExtracted();
+
+  return constructMetadata({
+    title: t("Servers"),
+    noIndex: true,
+  });
+}
 
 export default function Page() {
   const t = useExtracted();

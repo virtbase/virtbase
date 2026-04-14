@@ -18,7 +18,7 @@
 import { Hr, Link, Text } from "@react-email/components";
 import { APP_DOMAIN, PUBLIC_DOMAIN } from "@virtbase/utils";
 import { createTranslator } from "use-intl/core";
-import { DEFAULT_EMAIL_LOCALE } from "../translations";
+import { DEFAULT_EMAIL_LOCALE, resolveEmailLocale } from "../translations";
 
 export function Footer({
   email,
@@ -33,11 +33,13 @@ export function Footer({
   notificationSettingsUrl?: string;
   locale?: string | null;
 }) {
+  const resolvedLocale = resolveEmailLocale(locale);
+
   const t = createTranslator({
     // TODO: Using await import(...) causes issues with the build
     // Footer must remain synchronous for now
-    messages: require(`../messages/${locale}.json`),
-    locale: locale ?? DEFAULT_EMAIL_LOCALE,
+    messages: require(`../messages/${resolvedLocale}.json`),
+    locale: resolvedLocale,
     namespace: "footer",
   });
 

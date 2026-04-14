@@ -31,7 +31,7 @@ import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { createDatacenterAction } from "../../api/datacenters/create-datacenter";
 
-export function CreateDatacenterDialog(
+export default function CreateDatacenterDialog(
   props: Omit<
     React.ComponentProps<typeof ResponsiveDialog>,
     "title" | "description" | "footer"
@@ -84,7 +84,6 @@ export function CreateDatacenterDialog(
       <form
         id="create-datacenter-form"
         onSubmit={form.handleSubmit((data) => execute(data))}
-        {...props}
       >
         <FieldGroup>
           <Controller

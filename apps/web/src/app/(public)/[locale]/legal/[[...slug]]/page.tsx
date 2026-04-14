@@ -77,7 +77,7 @@ export default async function LegalPage({
   const format = await getFormatter();
   const t = await getExtracted();
 
-  const lastModified = page.data.lastModified ?? new Date();
+  const lastModified = page.data.lastModified;
 
   const MDX = page.data.body;
 
@@ -117,11 +117,13 @@ export default async function LegalPage({
         </div>
       </BlockWrapper>
       <BlockWrapper className="px-4 py-10">
-        <p className="text-center text-muted-foreground text-sm">
-          {t("Last updated: {date}", {
-            date: format.dateTime(lastModified),
-          })}
-        </p>
+        {lastModified && (
+          <p className="text-center text-muted-foreground text-sm">
+            {t("Last updated: {date}", {
+              date: format.dateTime(lastModified),
+            })}
+          </p>
+        )}
       </BlockWrapper>
     </main>
   );

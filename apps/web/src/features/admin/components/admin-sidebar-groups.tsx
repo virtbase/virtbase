@@ -20,7 +20,6 @@
 import {
   LucideBookTemplate,
   LucideBuilding2,
-  LucideEthernetPort,
   LucideGroup,
   LucideLayoutDashboard,
   LucideNetwork,
@@ -91,11 +90,6 @@ const useGroups = () => {
           title: t("Subnets"),
           path: paths.admin.subnets,
           icon: LucideNetwork,
-        },
-        {
-          title: t("IP Allocations"),
-          path: paths.admin.allocations,
-          icon: LucideEthernetPort,
         },
       ],
     },

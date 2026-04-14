@@ -79,6 +79,12 @@ export function ServersList() {
           return null;
         }
 
+        // Get the first IPv4 allocation, null if allocations is not expanded
+        const primaryAllocation = server.allocations.find(
+          (allocation) =>
+            "string" !== typeof allocation && allocation.subnet.family === 4,
+        );
+
         return (
           <li
             key={server.id}
@@ -168,24 +174,33 @@ export function ServersList() {
                         <span>{t("View")}</span>
                       </Link>
                     </DropdownMenuItem>
-                    <DropdownMenuItem
-                      onSelect={(e) => {
-                        // Don't close on click
-                        e.preventDefault();
+                    {primaryAllocation &&
+                      "string" !== typeof primaryAllocation && (
+                        <DropdownMenuItem
+                          onSelect={(e) => {
+                            // Don't close on click
+                            e.preventDefault();
 
-                        // TODO: Add IP to clipboard
-                        toast.promise(copyToClipboard("127.0.0.1"), {
-                          success: t("IP copied to clipboard!"),
-                        });
-                      }}
-                    >
-                      {copiedIp ? (
-                        <LucideCheckCircle2 aria-hidden="true" />
-                      ) : (
-                        <LucideCopy aria-hidden="true" />
+                            const ip =
+                              primaryAllocation.subnet.cidr.split("/")[0];
+                            if (!ip) {
+                              // IP is malformed
+                              return;
+                            }
+
+                            toast.promise(copyToClipboard(ip), {
+                              success: t("IP copied to clipboard!"),
+                            });
+                          }}
+                        >
+                          {copiedIp ? (
+                            <LucideCheckCircle2 aria-hidden="true" />
+                          ) : (
+                            <LucideCopy aria-hidden="true" />
+                          )}
+                          <span>{t("Copy IP")}</span>
+                        </DropdownMenuItem>
                       )}
-                      <span>{t("Copy IP")}</span>
-                    </DropdownMenuItem>
                     <DropdownMenuSeparator />
                     <DropdownMenuItem asChild>
                       <Link

@@ -123,15 +123,13 @@ async function main() {
                 return;
               }
 
-              if (backup.isLocked) {
-                await instance.node.storage
-                  .$(storage)
-                  .content.$(backup.volid)
-                  .$put({
-                    protected: false,
-                    notes: "Safe to delete - development server backup",
-                  });
-              }
+              await instance.node.storage
+                .$(storage)
+                .content.$(backup.volid)
+                .$put({
+                  protected: false,
+                  notes: "Safe to delete - development server backup",
+                });
 
               await instance.node.storage
                 .$(storage)

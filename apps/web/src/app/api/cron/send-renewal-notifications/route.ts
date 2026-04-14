@@ -121,7 +121,7 @@ async function handler(request: NextRequest) {
       upcomingTerminations.map(async ({ user, ...server }) => ({
         to: user.email,
         subject: await getEmailTitle("server-renewal-reminder", user.locale),
-        react: ServerRenewalReminder({
+        react: await ServerRenewalReminder({
           serverName: server.serverName,
           serverId: server.serverId,
           name: user.name,

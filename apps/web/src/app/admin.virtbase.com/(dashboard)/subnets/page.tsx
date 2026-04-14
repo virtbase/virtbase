@@ -27,6 +27,7 @@ import type { Metadata } from "next";
 import { useExtracted } from "next-intl";
 import { getExtracted } from "next-intl/server";
 import { Suspense } from "react";
+import { CreateSubnetButton } from "@/features/admin/components/subnets/create-subnet-button";
 import { SubnetsCard } from "@/features/admin/components/subnets/subnets-card";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
 
@@ -55,7 +56,7 @@ export default function Page({
           </BreadcrumbList>
         </Breadcrumb>
       }
-      //rightSide={<CreateSubnetButton />}
+      rightSide={<CreateSubnetButton />}
     >
       <Suspense
         fallback={

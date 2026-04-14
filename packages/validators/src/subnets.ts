@@ -58,3 +58,11 @@ export const SubnetSchema = z.object({
 });
 
 export type Subnet = z.infer<typeof SubnetSchema>;
+
+export const CreateSubnetInputSchema = SubnetSchema.omit({
+  id: true,
+  created_at: true,
+  updated_at: true,
+});
+
+export type CreateSubnetInput = z.infer<typeof CreateSubnetInputSchema>;

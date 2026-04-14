@@ -151,7 +151,7 @@ async function handler(request: NextRequest) {
       notificationTargets.map(async ({ user, ...server }) => ({
         to: user.email,
         subject: await getEmailTitle("server-suspended", user.locale),
-        react: ServerSuspended({
+        react: await ServerSuspended({
           serverName: server.serverName,
           serverId: server.serverId,
           name: user.name,
