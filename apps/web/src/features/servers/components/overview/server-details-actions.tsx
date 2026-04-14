@@ -28,6 +28,13 @@ const NodeDetailsDialog = dynamic(() => import("./node-details-dialog"), {
   ssr: false,
 });
 
+const ResetRootPasswordDialog = dynamic(
+  () => import("./reset-root-password-dialog"),
+  {
+    ssr: false,
+  },
+);
+
 export function ServerDetailsActions() {
   const { action, setAction } = useServerActionState();
 
@@ -42,6 +49,14 @@ export function ServerDetailsActions() {
       {action === "view-node-details" && (
         <NodeDetailsDialog
           onOpenChange={(open) => setAction(open ? "view-node-details" : null)}
+          open
+        />
+      )}
+      {action === "reset-root-password" && (
+        <ResetRootPasswordDialog
+          onOpenChange={(open) =>
+            setAction(open ? "reset-root-password" : null)
+          }
           open
         />
       )}

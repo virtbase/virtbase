@@ -192,6 +192,7 @@ export type RenameServerInput = z.infer<typeof RenameServerInputSchema>;
 
 export const RenameServerOutputSchema = z.void();
 
+export * from "./actions";
 export * from "./backups";
 export * from "./console";
 export * from "./firewall";

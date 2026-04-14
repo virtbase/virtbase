@@ -110,6 +110,12 @@ export const serversStatusRouter = createTRPCRouter({
         servers: ["write"],
       },
       forbiddenStates: ["suspended", "terminated", "installing"],
+      ratelimit: {
+        requests: 5,
+        seconds: "60 s",
+        fingerprint: ({ userId, defaultFingerprint }) =>
+          `update-server-status:${userId || defaultFingerprint}`,
+      },
     })
     .input(UpdateServerStatusInputSchema)
     .output(UpdateServerStatusOutputSchema)

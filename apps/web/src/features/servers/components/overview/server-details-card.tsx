@@ -179,7 +179,8 @@ export function ServerDetailsCard() {
             variant="outline"
             size="lg"
             className="w-full"
-            onClick={() => setAction("reset-password")}
+            onClick={() => setAction("reset-root-password")}
+            disabled={isPending || isError || !server || !isOperational(server)}
           >
             <LucideLock className="text-muted-foreground" aria-hidden="true" />
             <span className="truncate">{t("Reset Root Password")}</span>

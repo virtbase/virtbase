@@ -38,3 +38,9 @@ export const CreateProxmoxTemplateGroupInputSchema =
 export type CreateProxmoxTemplateGroupInput = z.infer<
   typeof CreateProxmoxTemplateGroupInputSchema
 >;
+
+export const CreateProxmoxTemplateGroupOutputSchema = z.void();
+
+export type CreateProxmoxTemplateGroupOutput = z.infer<
+  typeof CreateProxmoxTemplateGroupOutputSchema
+>;

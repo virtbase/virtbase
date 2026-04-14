@@ -15,10 +15,34 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./change-template";
-export * from "./create-invoice";
-export * from "./delete-server";
-export * from "./extend-server";
-export * from "./provision-server";
-export * from "./restore-server-backup";
-export * from "./upgrade-server";
+import type {
+  GetProxmoxInstanceParams,
+  ProxmoxInstance,
+} from "../../proxmox/get-proxmox-instance";
+import { getProxmoxInstance } from "../../proxmox/get-proxmox-instance";
+
+type MoveDiskParams = Parameters<
+  ReturnType<ProxmoxInstance["node"]["qemu"]["$"]>["move_disk"]["$post"]
+>[0];
+
+interface MoveDiskStepParams extends MoveDiskParams {
+  proxmoxNode: GetProxmoxInstanceParams;
+  vmid: number;
+}
+
+export async function moveDiskStep({
+  proxmoxNode,
+  vmid,
+  ...params
+}: MoveDiskStepParams) {
+  "use step";
+
+  const instance = getProxmoxInstance(proxmoxNode);
+  const vm = instance.node.qemu.$(vmid);
+
+  const upid = await vm.move_disk.$post(params);
+
+  return {
+    upid,
+  };
+}

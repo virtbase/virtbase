@@ -18,3 +18,4 @@
 export * from "./datacenters";
 export * from "./proxmox-node-group";
 export * from "./proxmox-nodes";
+export * from "./proxmox-template-group";

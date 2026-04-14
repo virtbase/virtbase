@@ -513,6 +513,7 @@ msgstr "Create API key"
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx:74
 #: src/features/servers/components/backups/create-backup-dialog.tsx:99
 #: src/features/servers/components/overview/rename-server-dialog.tsx:74
+#: src/features/servers/components/overview/reset-root-password-dialog.tsx:95
 #: src/ui/feedback-button.tsx:31
 msgid "47FYwb"
 msgstr "Cancel"
@@ -1570,6 +1571,28 @@ msgstr "Rename your server."
 msgid "UQXG4v"
 msgstr "My Server"
 
+#: src/features/servers/components/overview/reset-root-password-dialog.tsx:86
+#: src/features/servers/components/overview/reset-root-password-dialog.tsx:102
+#: src/features/servers/components/overview/server-details-card.tsx:186
+msgid "D3OPFp"
+msgstr "Reset Root Password"
+
+#: src/features/servers/components/overview/reset-root-password-dialog.tsx:87
+msgid "//IN8L"
+msgstr "Reset the root password of your server."
+
+#: src/features/servers/components/overview/reset-root-password-dialog.tsx:115
+msgid "3SVI5p"
+msgstr "Warning"
+
+#: src/features/servers/components/overview/reset-root-password-dialog.tsx:118
+msgid "K1+gri"
+msgstr "This action cannot be undone. If the <code>qemu-quest-agent</code> package is not installed, the process will fail."
+
+#: src/features/servers/components/overview/reset-root-password-dialog.tsx:135
+msgid "h8jASy"
+msgstr "New Root Password"
+
 #: src/features/servers/components/overview/server-details-card.tsx:67
 msgid "F/6VqP"
 msgstr "Server"
@@ -1585,10 +1608,6 @@ msgstr "View Node Details"
 #: src/features/servers/components/overview/server-details-card.tsx:176
 msgid "8O64Ol"
 msgstr "Change Operating System"
-
-#: src/features/servers/components/overview/server-details-card.tsx:185
-msgid "D3OPFp"
-msgstr "Reset Root Password"
 
 #: src/features/servers/components/server-actions-row.tsx:79
 msgid "tZbb+K"

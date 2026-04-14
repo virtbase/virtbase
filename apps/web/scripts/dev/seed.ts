@@ -144,6 +144,28 @@ async function main() {
         }),
       },
     },
+    subnets: {
+      count: 2,
+      columns: {
+        id: f.valuesFromArray({
+          values: Array.from({ length: 2 }, () =>
+            createId({ prefix: "ipsub_" }),
+          ),
+          isUnique: true,
+        }),
+        cidr: f.valuesFromArray({
+          values: ["192.168.1.0/24", "fd00::/48"],
+          isUnique: true,
+        }),
+        gateway: f.valuesFromArray({
+          values: ["192.168.1.1", "fd80::1"],
+          isUnique: true,
+        }),
+        vlan: f.valuesFromArray({
+          values: [1, 1],
+        }),
+      },
+    },
   }));
 
   process.exit(0);

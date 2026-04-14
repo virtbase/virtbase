@@ -522,6 +522,7 @@ msgstr "API-Schlüssel erstellen"
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx:74
 #: src/features/servers/components/backups/create-backup-dialog.tsx:99
 #: src/features/servers/components/overview/rename-server-dialog.tsx:74
+#: src/features/servers/components/overview/reset-root-password-dialog.tsx:95
 #: src/ui/feedback-button.tsx:31
 msgid "47FYwb"
 msgstr "Abbrechen"
@@ -1579,6 +1580,28 @@ msgstr "Benenne deinen Server um."
 msgid "UQXG4v"
 msgstr "Mein Server"
 
+#: src/features/servers/components/overview/reset-root-password-dialog.tsx:86
+#: src/features/servers/components/overview/reset-root-password-dialog.tsx:102
+#: src/features/servers/components/overview/server-details-card.tsx:186
+msgid "D3OPFp"
+msgstr "Root-Passwort zurücksetzen"
+
+#: src/features/servers/components/overview/reset-root-password-dialog.tsx:87
+msgid "//IN8L"
+msgstr ""
+
+#: src/features/servers/components/overview/reset-root-password-dialog.tsx:115
+msgid "3SVI5p"
+msgstr ""
+
+#: src/features/servers/components/overview/reset-root-password-dialog.tsx:118
+msgid "K1+gri"
+msgstr ""
+
+#: src/features/servers/components/overview/reset-root-password-dialog.tsx:135
+msgid "h8jASy"
+msgstr ""
+
 #: src/features/servers/components/overview/server-details-card.tsx:67
 msgid "F/6VqP"
 msgstr "Server"
@@ -1594,10 +1617,6 @@ msgstr "Details zum Hostsystem anzeigen"
 #: src/features/servers/components/overview/server-details-card.tsx:176
 msgid "8O64Ol"
 msgstr "Betriebssystem ändern"
-
-#: src/features/servers/components/overview/server-details-card.tsx:185
-msgid "D3OPFp"
-msgstr "Root-Passwort zurücksetzen"
 
 #: src/features/servers/components/server-actions-row.tsx:79
 msgid "tZbb+K"

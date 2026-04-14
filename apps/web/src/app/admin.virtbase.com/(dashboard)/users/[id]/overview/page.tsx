@@ -15,10 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./change-template";
-export * from "./create-invoice";
-export * from "./delete-server";
-export * from "./extend-server";
-export * from "./provision-server";
-export * from "./restore-server-backup";
-export * from "./upgrade-server";
+export default function Page({
+  params: _,
+}: PageProps<"/admin.virtbase.com/users/[id]/overview">) {
+  return null;
+}

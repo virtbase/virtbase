@@ -21,12 +21,9 @@ import {
   performGuestActionStep,
   rollbackPerformGuestActionStep,
 } from "../shared/perform-guest-action";
+import { updateServerStep } from "../shared/update-server";
 import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task";
 import { loadBackupStep } from "./load-backup";
-import {
-  rollbackStoreRestoredBackupStep,
-  storeRestoredBackupStep,
-} from "./store-restored-backup";
 
 type RestoreServerBackupWorkflowParams = {
   proxmoxNode: GetProxmoxInstanceParams;
@@ -118,14 +115,20 @@ export async function restoreServerBackupWorkflow({
     });
 
     // 5. Store the new server state
-    await storeRestoredBackupStep({
+    await updateServerStep({
       serverId,
-      proxmoxTemplateId,
+      data: {
+        proxmoxTemplateId,
+        installedAt: new Date(),
+      },
     });
     rollbacks.push(async () => {
-      await rollbackStoreRestoredBackupStep({
+      await updateServerStep({
         serverId,
-        previousProxmoxTemplateId: currentProxmoxTemplateId,
+        data: {
+          proxmoxTemplateId: currentProxmoxTemplateId,
+          installedAt: null,
+        },
       });
     });
 

@@ -15,56 +15,36 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { eq, sql } from "@virtbase/db";
+import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { servers } from "@virtbase/db/schema";
+import { FatalError } from "workflow";
 
-type StoreRestoredBackupStepParams = {
+type UpdateServerStepParams = {
   serverId: string;
-  proxmoxTemplateId: string | null;
+  data: Partial<typeof servers.$inferInsert>;
 };
 
-export async function storeRestoredBackupStep({
+export async function updateServerStep({
   serverId,
-  proxmoxTemplateId,
-}: StoreRestoredBackupStepParams) {
+  data,
+}: UpdateServerStepParams) {
   "use step";
 
   await db.transaction(
     async (tx) => {
-      await tx
+      const updated = await tx
         .update(servers)
-        .set({
-          proxmoxTemplateId,
-          installedAt: sql`now()`,
+        .set(data)
+        .where(eq(servers.id, serverId))
+        .returning({
+          id: servers.id,
         })
-        .where(eq(servers.id, serverId));
-    },
-    {
-      accessMode: "read write",
-      isolationLevel: "read committed",
-    },
-  );
-}
+        .then(([row]) => row);
 
-export async function rollbackStoreRestoredBackupStep({
-  serverId,
-  previousProxmoxTemplateId,
-}: {
-  serverId: string;
-  previousProxmoxTemplateId: string | null;
-}) {
-  "use step";
-
-  await db.transaction(
-    async (tx) => {
-      await tx
-        .update(servers)
-        .set({
-          proxmoxTemplateId: previousProxmoxTemplateId,
-          installedAt: null,
-        })
-        .where(eq(servers.id, serverId));
+      if (!updated) {
+        throw new FatalError(`Failed to update server. ID: ${serverId}`);
+      }
     },
     {
       accessMode: "read write",

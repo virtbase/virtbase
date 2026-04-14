@@ -64,6 +64,9 @@ export const proxmoxTemplateGroups = pgTable(
   }),
 );
 
+export type DatabaseProxmoxTemplateGroups =
+  typeof proxmoxTemplateGroups.$inferSelect;
+
 export const proxmoxTemplateGroupsRelations = relations(
   proxmoxTemplateGroups,
   ({ many }) => ({

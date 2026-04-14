@@ -15,10 +15,24 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./change-template";
-export * from "./create-invoice";
-export * from "./delete-server";
-export * from "./extend-server";
-export * from "./provision-server";
-export * from "./restore-server-backup";
-export * from "./upgrade-server";
+import { useMutation } from "@tanstack/react-query";
+import { useTRPC } from "@/lib/trpc/react";
+
+type TRPC = ReturnType<typeof useTRPC>;
+type Options = Parameters<
+  TRPC["servers"]["actions"]["resetRootPassword"]["mutationOptions"]
+>[0];
+
+interface ResetRootPasswordOptions {
+  mutationConfig?: Options;
+}
+
+export const useResetRootPassword = ({
+  mutationConfig,
+}: ResetRootPasswordOptions = {}) => {
+  const trpc = useTRPC();
+
+  return useMutation(
+    trpc.servers.actions.resetRootPassword.mutationOptions(mutationConfig),
+  );
+};
