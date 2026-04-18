@@ -44,6 +44,9 @@ yarn-error.log*
 .env
 .env*.local
 
+# Sentry MCP (self-hosted token; see .cursor/sentry-mcp.env.example)
+.cursor/sentry-mcp.env
+
 # vercel
 .vercel
 

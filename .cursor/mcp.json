@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "sentry-virtbase": {
+      "command": "bash",
+      "args": ["${workspaceFolder}/.cursor/run-sentry-mcp.sh"]
+    }
+  }
+}
