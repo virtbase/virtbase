@@ -15,8 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { pretty, render } from "@react-email/render";
 import nodemailer from "nodemailer";
+import { pretty, render } from "react-email";
 import type { CreateEmailOptions } from "resend";
 import { TRUSTPILOT_AFS_EMAIL } from "./resend/constants";
 

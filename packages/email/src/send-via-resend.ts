@@ -15,8 +15,13 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+<<<<<<< Updated upstream
 import { render } from "@react-email/render";
 import { APP_DOMAIN, SUPPORT_EMAIL } from "@virtbase/utils";
+=======
+import { APP_DOMAIN } from "@virtbase/utils";
+import { render } from "react-email";
+>>>>>>> Stashed changes
 import type { CreateEmailOptions } from "resend";
 import { resend } from "./resend";
 import { TRUSTPILOT_AFS_EMAIL, VARIANT_TO_FROM_MAP } from "./resend/constants";

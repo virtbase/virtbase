@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { APP_DOMAIN, APP_NAME, VIRTBASE_WORDMARK } from "@virtbase/utils";
 import {
   Body,
   Container,
@@ -27,6 +28,7 @@ import {
   Section,
   Tailwind,
   Text,
+<<<<<<< Updated upstream
 } from "@react-email/components";
 import {
   APP_DOMAIN,
@@ -34,6 +36,9 @@ import {
   SUPPORT_EMAIL,
   VIRTBASE_WORDMARK,
 } from "@virtbase/utils";
+=======
+} from "react-email";
+>>>>>>> Stashed changes
 import { createTranslator } from "use-intl/core";
 import { Footer } from "../components/footer";
 import { DEFAULT_EMAIL_LOCALE, resolveEmailLocale } from "../translations";

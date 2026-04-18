@@ -16,6 +16,12 @@
  */
 
 import {
+  APP_DOMAIN,
+  APP_NAME,
+  SERVER_DELETION_GRACE_PERIOD_DAYS,
+  VIRTBASE_WORDMARK,
+} from "@virtbase/utils";
+import {
   Body,
   Container,
   Head,
@@ -27,13 +33,7 @@ import {
   Section,
   Tailwind,
   Text,
-} from "@react-email/components";
-import {
-  APP_DOMAIN,
-  APP_NAME,
-  SERVER_DELETION_GRACE_PERIOD_DAYS,
-  VIRTBASE_WORDMARK,
-} from "@virtbase/utils";
+} from "react-email";
 import { createTranslator } from "use-intl/core";
 import { Footer } from "../components/footer";
 import { DEFAULT_EMAIL_LOCALE, resolveEmailLocale } from "../translations";

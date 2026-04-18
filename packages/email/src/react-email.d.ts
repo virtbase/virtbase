@@ -15,7 +15,9 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-declare module "@react-email/components" {
+import "react-email";
+
+declare module "react-email" {
   import type * as React from "react";
 
   export const Html: React.FC<React.HtmlHTMLAttributes<HTMLHtmlElement>>;
