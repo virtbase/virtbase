@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: German\n"
-"PO-Revision-Date: 2026-04-14 10:43\n"
+"PO-Revision-Date: 2026-04-18 13:09\n"
 
 #: src/app/(public)/[locale]/checkout/[id]/page.tsx:78
 #: src/app/(public)/[locale]/checkout/[id]/page.tsx:90
@@ -257,7 +257,7 @@ msgstr "Node-Gruppen"
 
 #: src/app/admin.virtbase.com/(dashboard)/nodes/[id]/page.tsx:48
 msgid "n3j8M6"
-msgstr "Proxmox Nodes"
+msgstr "Proxmox Hosts"
 
 #: src/app/admin.virtbase.com/(dashboard)/page.tsx:40
 #: src/app/admin.virtbase.com/(dashboard)/page.tsx:54
@@ -707,15 +707,15 @@ msgstr "Es wurden noch keine SSH-Schlüssel erstellt."
 
 #: src/features/account/components/user-id-card.tsx:47
 msgid "qW1hR5"
-msgstr "Your User ID"
+msgstr "Deine Benutzer-ID"
 
 #: src/features/account/components/user-id-card.tsx:49
 msgid "tX7q8l"
-msgstr "This your unique account identifier on {appName}."
+msgstr "Dies ist deine einzigartige Account-Identifikation auf {appName}."
 
 #: src/features/account/components/user-id-card.tsx:68
 msgid "6dnHkY"
-msgstr "This may be used to identify your account in the API."
+msgstr "Dies wird möglicherweise verwendet, um deinen Account in der API zu identifizieren."
 
 #: src/features/admin/components/admin-sidebar-groups.tsx:67
 msgid "UcHtCB"
@@ -840,19 +840,19 @@ msgstr "Land"
 
 #: src/features/admin/components/datacenters/datacenter-select.tsx:82
 msgid "kMzL65"
-msgstr "Select a datacenter..."
+msgstr "Wähle ein Rechenzentrum..."
 
 #: src/features/admin/components/datacenters/datacenter-select.tsx:92
 msgid "ESAZCK"
-msgstr "Search for a datacenter..."
+msgstr "Suche ein Rechenzentrum..."
 
 #: src/features/admin/components/datacenters/datacenter-select.tsx:94
 msgid "lH0BHV"
-msgstr "No datacenter found."
+msgstr "Kein Rechenzentrum gefunden."
 
 #: src/features/admin/components/proxmox-node-groups/create-node-group-button.tsx:42
 msgid "8gJfol"
-msgstr "Create Node Group"
+msgstr "Erstelle eine Host-Gruppe"
 
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:61
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:79
@@ -865,15 +865,15 @@ msgstr "Erstelle eine neue Proxmox VE Node-Gruppe für Proxmox VE Nodes."
 
 #: src/features/admin/components/proxmox-node-groups/node-group-select.tsx:78
 msgid "NMiQru"
-msgstr "Select a node group..."
+msgstr "Wähle eine Host-Gruppe..."
 
 #: src/features/admin/components/proxmox-node-groups/node-group-select.tsx:89
 msgid "/Uo5jN"
-msgstr "Search for a node group..."
+msgstr "Suche eine Host-Gruppe..."
 
 #: src/features/admin/components/proxmox-node-groups/node-group-select.tsx:91
 msgid "ao30Ou"
-msgstr "No node group found."
+msgstr "Keine Host-Gruppe gefunden."
 
 #: src/features/admin/components/proxmox-nodes/create-datacenter-button.tsx:48
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:111
@@ -892,7 +892,7 @@ msgstr "Rechenzentrum"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:162
 msgid "RJ3ocO"
-msgstr "Node Group"
+msgstr "Host-Gruppe"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:181
 msgid "uPDgth"
@@ -988,11 +988,11 @@ msgstr "Falls erreicht, wird dieses System nicht mehr für weitere Dienstleistun
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx:65
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx:77
 msgid "pXZyDa"
-msgstr "Create Subnet"
+msgstr "Subnetz erstellen"
 
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx:66
 msgid "w+MmK2"
-msgstr "Create a new subnet."
+msgstr "Erstelle ein neues Subnetz."
 
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx:93
 msgid "4cxFaQ"
