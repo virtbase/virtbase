@@ -26,37 +26,31 @@ import {
   CardHeader,
   CardTitle,
 } from "@virtbase/ui/card";
-import { LucidePlus, LucideRefreshCw } from "@virtbase/ui/icons";
+import { LucidePencil, LucideRefreshCw } from "@virtbase/ui/icons";
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
-import { useBackupList } from "../../hooks/backups/use-backup-list";
-import { useBackupsTable } from "../../hooks/backups/use-backups-table";
-import { BackupsTable } from "./backups-table";
-import { CreateBackupButton } from "./create-backup-button";
+import { usePointerRecordsList } from "../../hooks/rdns/use-pointer-records-list";
+import { RecordsTable } from "./records-table";
+import { UpsertRecordButton } from "./upsert-record-button";
 
-export function BackupsCard() {
+export function RecordsCard() {
   const t = useExtracted();
 
-  const { id } = useParams<{ id: string }>();
-  const {
-    data: { backups, meta } = {},
-    isPending,
-    isRefetching,
-    refetch,
-  } = useBackupList({ server_id: id });
-
-  const { table } = useBackupsTable({ data: backups ?? [] });
+  const { id: serverId } = useParams<{ id: string }>();
+  const { data, isPending, isRefetching, refetch } = usePointerRecordsList({
+    server_id: serverId,
+  });
 
   return (
     <Card className="gap-0 overflow-hidden pb-0">
       <CardHeader className="pb-4">
         <div className="flex items-center justify-between gap-2">
-          <CardTitle>{t("Backups")}</CardTitle>
+          <CardTitle>{t("PTR Records")}</CardTitle>
           <div className="flex items-center gap-2">
-            <CreateBackupButton disabled={isRefetching || isPending}>
-              <LucidePlus aria-hidden="true" />
-            </CreateBackupButton>
+            <UpsertRecordButton disabled={isRefetching || isPending}>
+              <LucidePencil aria-hidden="true" />
+            </UpsertRecordButton>
             <Button
               variant="outline"
               size="icon"
@@ -72,16 +66,16 @@ export function BackupsCard() {
         </div>
       </CardHeader>
       <CardContent className="p-0">
-        <BackupsTable table={table} isPending={isPending} />
+        <RecordsTable data={data} isPending={isPending} />
       </CardContent>
       <CardFooter className="border-t [.border-t]:py-4">
         <div className="flex flex-wrap items-center gap-2">
-          {isPending || !meta ? (
+          {isPending || !data?.meta ? (
             <Skeleton className="h-4 w-24" />
           ) : (
             <span className="text-muted-foreground text-sm">
-              {t("{count, plural, =1 {# Backup} other {# Backups}}", {
-                count: meta.pagination.total_entries,
+              {t("{count, plural, =1 {# PTR record} other {# PTR records}}", {
+                count: data.meta.pagination.total_entries,
               })}
             </span>
           )}

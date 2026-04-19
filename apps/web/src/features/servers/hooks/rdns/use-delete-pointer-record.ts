@@ -17,6 +17,7 @@
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useTRPC } from "@/lib/trpc/react";
+import { defaultPointerRecordsListQuery } from "./use-pointer-records-list";
 
 type TRPC = ReturnType<typeof useTRPC>;
 type Options = Parameters<
@@ -41,18 +42,21 @@ export const useDeletePointerRecord = ({
       onMutate: async (input, ...args) => {
         await queryClient.cancelQueries(
           trpc.servers.rdns.list.queryFilter({
+            ...defaultPointerRecordsListQuery,
             server_id: input.server_id,
           }),
         );
 
         const previousData = queryClient.getQueryData(
           trpc.servers.rdns.list.queryKey({
+            ...defaultPointerRecordsListQuery,
             server_id: input.server_id,
           }),
         );
 
         queryClient.setQueryData(
           trpc.servers.rdns.list.queryKey({
+            ...defaultPointerRecordsListQuery,
             server_id: input.server_id,
           }),
           (old) =>
@@ -79,6 +83,7 @@ export const useDeletePointerRecord = ({
       onError: async (error, input, ctx, ...args) => {
         queryClient.setQueryData(
           trpc.servers.rdns.list.queryKey({
+            ...defaultPointerRecordsListQuery,
             server_id: input.server_id,
           }),
           ctx?.previousData,
@@ -89,6 +94,7 @@ export const useDeletePointerRecord = ({
       onSettled: async (data, error, input, ...args) => {
         await queryClient.invalidateQueries(
           trpc.servers.rdns.list.queryFilter({
+            ...defaultPointerRecordsListQuery,
             server_id: input.server_id,
           }),
         );

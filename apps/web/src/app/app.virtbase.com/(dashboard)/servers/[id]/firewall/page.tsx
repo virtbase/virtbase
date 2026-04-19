@@ -16,12 +16,18 @@
  */
 
 import { constructMetadata } from "@virtbase/utils";
+import type { Metadata } from "next";
+import { getExtracted } from "next-intl/server";
 import { FirewallOptionsRow } from "@/features/servers/firewall/components/firewall-options-row";
 
-export const metadata = constructMetadata({
-  title: "Firewall",
-  noIndex: true,
-});
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getExtracted();
+
+  return constructMetadata({
+    title: t("Firewall"),
+    noIndex: true,
+  });
+}
 
 export default async function Page({
   params,

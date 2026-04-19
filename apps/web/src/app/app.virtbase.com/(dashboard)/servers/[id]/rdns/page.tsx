@@ -15,28 +15,20 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-"use client";
+import { constructMetadata } from "@virtbase/utils";
+import type { Metadata } from "next";
+import { getExtracted } from "next-intl/server";
+import { RecordsCard } from "@/features/servers/components/rdns/records-card";
 
-import { parseAsStringEnum, useQueryState } from "nuqs";
+export async function generateMetadata(): Promise<Metadata> {
+  const t = await getExtracted();
 
-export function useServerActionState() {
-  const [action, setAction] = useQueryState(
-    "action",
-    parseAsStringEnum([
-      "rename",
-      "view-node-details",
-      "reset-root-password",
-      "change-operating-system",
-      "create-backup",
-      "upsert-record",
-    ]).withOptions({
-      clearOnDefault: true,
-      shallow: true,
-    }),
-  );
+  return constructMetadata({
+    title: t("rDNS"),
+    noIndex: true,
+  });
+}
 
-  return {
-    action,
-    setAction,
-  };
+export default async function Page() {
+  return <RecordsCard />;
 }
