@@ -42,10 +42,13 @@ export function RecordsTable({
   data,
   isPending,
 }: {
-  data: GetPointerRecordsListOutput;
+  data?: GetPointerRecordsListOutput;
   isPending: boolean;
 }) {
-  const { records, meta } = data;
+  const { records, meta } = data || {
+    records: [],
+    meta: { pagination: { last_page: -1 } },
+  };
 
   const t = useExtracted();
   const columns = useRecordsTableColumns();

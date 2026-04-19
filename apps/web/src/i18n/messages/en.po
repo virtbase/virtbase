@@ -370,7 +370,7 @@ msgstr "Invoices"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/backups/page.tsx:27
 #: src/features/account/components/api-keys/create-api-key-button.tsx:55
-#: src/features/servers/components/backups/backups-card.tsx:63
+#: src/features/servers/components/backups/backups-card.tsx:55
 #: src/features/servers/components/server-nav.tsx:60
 msgid "T3lqx5"
 msgstr "Backups"
@@ -380,6 +380,12 @@ msgstr "Backups"
 #: src/features/servers/components/server-nav.tsx:48
 msgid "gc+2Z2"
 msgstr "Console"
+
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/firewall/page.tsx:27
+#: src/features/account/components/api-keys/create-api-key-button.tsx:56
+#: src/features/servers/components/server-nav.tsx:54
+msgid "Bwqhmd"
+msgstr "Firewall"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx:41
 msgid "E+4Rfd"
@@ -399,6 +405,12 @@ msgstr "Go to servers"
 #: src/ui/app-sidebar.tsx:63
 msgid "9uOFF3"
 msgstr "Overview"
+
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/rdns/page.tsx:27
+#: src/features/account/components/api-keys/create-api-key-button.tsx:58
+#: src/features/servers/components/server-nav.tsx:66
+msgid "F+02/l"
+msgstr "rDNS"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/error.tsx:53
 msgid "ox304v"
@@ -487,16 +499,6 @@ msgstr "Created {date}"
 msgid "K3r6DQ"
 msgstr "Delete"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:56
-#: src/features/servers/components/server-nav.tsx:54
-msgid "Bwqhmd"
-msgstr "Firewall"
-
-#: src/features/account/components/api-keys/create-api-key-button.tsx:58
-#: src/features/servers/components/server-nav.tsx:66
-msgid "F+02/l"
-msgstr "rDNS"
-
 #: src/features/account/components/api-keys/create-api-key-button.tsx:59
 msgid "TrBeGD"
 msgstr "SSH keys"
@@ -514,6 +516,7 @@ msgstr "Create API key"
 #: src/features/servers/components/backups/create-backup-dialog.tsx:104
 #: src/features/servers/components/overview/rename-server-dialog.tsx:74
 #: src/features/servers/components/overview/reset-root-password-dialog.tsx:95
+#: src/features/servers/components/rdns/upsert-record-dialog.tsx:89
 #: src/ui/feedback-button.tsx:31
 msgid "47FYwb"
 msgstr "Cancel"
@@ -887,6 +890,8 @@ msgid "RJ3ocO"
 msgstr "Node Group"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:181
+#: src/features/servers/components/rdns/records-table/columns.tsx:50
+#: src/features/servers/components/rdns/upsert-record-dialog.tsx:135
 msgid "uPDgth"
 msgstr "Hostname"
 
@@ -1444,7 +1449,7 @@ msgstr "Network"
 msgid "yCCio2"
 msgstr "Last reboot"
 
-#: src/features/servers/components/backups/backups-card.tsx:100
+#: src/features/servers/components/backups/backups-card.tsx:83
 msgid "pelX8B"
 msgstr "{count, plural, =1 {# Backup} other {# Backups}}"
 
@@ -1608,6 +1613,58 @@ msgstr "View Node Details"
 #: src/features/servers/components/overview/server-details-card.tsx:176
 msgid "8O64Ol"
 msgstr "Change Operating System"
+
+#: src/features/servers/components/rdns/records-card.tsx:49
+msgid "Z2vqA3"
+msgstr "PTR Records"
+
+#: src/features/servers/components/rdns/records-card.tsx:77
+msgid "K006kw"
+msgstr "{count, plural, =1 {# PTR record} other {# PTR records}}"
+
+#: src/features/servers/components/rdns/records-table/columns.tsx:40
+msgid "99tjyG"
+msgstr "IP"
+
+#: src/features/servers/components/rdns/records-table/columns.tsx:60
+msgid "AbXVP4"
+msgstr "Created at"
+
+#: src/features/servers/components/rdns/records-table/columns.tsx:72
+msgid "wFMlsH"
+msgstr "Updated at"
+
+#: src/features/servers/components/rdns/records-table/columns.tsx:98
+msgid "LUHXQL"
+msgstr "Delete PTR record"
+
+#: src/features/servers/components/rdns/records-table/index.tsx:122
+msgid "q9ZR74"
+msgstr "No PTR records"
+
+#: src/features/servers/components/rdns/records-table/index.tsx:123
+msgid "HPaNFO"
+msgstr "No PTR records have been created yet."
+
+#: src/features/servers/components/rdns/upsert-record-dialog.tsx:73
+msgid "mTjnKh"
+msgstr "Update PTR Record"
+
+#: src/features/servers/components/rdns/upsert-record-dialog.tsx:78
+msgid "JAfuaI"
+msgstr "Update a PTR record for a given IP and hostname."
+
+#: src/features/servers/components/rdns/upsert-record-dialog.tsx:112
+msgid "uJV0wU"
+msgstr "IP Address"
+
+#: src/features/servers/components/rdns/upsert-record-dialog.tsx:123
+msgid "sLLPqe"
+msgstr "PTR records can be created for all IP addresses assigned to this server."
+
+#: src/features/servers/components/rdns/upsert-record-dialog.tsx:146
+msgid "XM/KKz"
+msgstr "The hostname to resolve for the IP address. <code>localhost</code> is not allowed."
 
 #: src/features/servers/components/server-actions-row.tsx:79
 msgid "tZbb+K"

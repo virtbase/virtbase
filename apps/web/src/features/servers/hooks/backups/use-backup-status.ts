@@ -15,7 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import type { RouterInputs, RouterOutputs } from "@virtbase/api";
 import { useTRPC } from "@/lib/trpc/react";
 
@@ -35,7 +35,7 @@ interface GetBackupStatus extends GetBackupStatusInput {
 export const useBackupStatus = ({ queryConfig, ...input }: GetBackupStatus) => {
   const trpc = useTRPC();
 
-  return useSuspenseQuery(
+  return useQuery(
     trpc.servers.backups.status.get.queryOptions(input, queryConfig),
   );
 };

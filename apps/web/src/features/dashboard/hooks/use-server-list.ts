@@ -31,7 +31,7 @@ interface ServerList extends ServerListInput {
 export const defaultServerListQuery = {
   sort: ["id:desc"],
   per_page: MAX_ENTRIES_PER_PAGE,
-  expand: ["plan", "template"],
+  expand: ["plan", "template", "allocations"],
 } satisfies ServerListInput;
 
 export const useServerList = ({ queryConfig, ...input }: ServerList = {}) => {

@@ -62,11 +62,11 @@ export function DataTableColumnHeader<TData, TValue>({
         {label}
         {column.getCanSort() &&
           (column.getIsSorted() === "desc" ? (
-            <ChevronDown />
+            <ChevronDown aria-hidden="true"/>
           ) : column.getIsSorted() === "asc" ? (
-            <ChevronUp />
+            <ChevronUp aria-hidden="true" />
           ) : (
-            <ChevronsUpDown />
+            <ChevronsUpDown aria-hidden="true" />
           ))}
       </DropdownMenuTrigger>
       <DropdownMenuContent align="start" className="w-28">
@@ -77,7 +77,7 @@ export function DataTableColumnHeader<TData, TValue>({
               checked={column.getIsSorted() === "asc"}
               onClick={() => column.toggleSorting(false)}
             >
-              <ChevronUp />
+              <ChevronUp aria-hidden="true" />
               Asc
             </DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem
@@ -85,7 +85,7 @@ export function DataTableColumnHeader<TData, TValue>({
               checked={column.getIsSorted() === "desc"}
               onClick={() => column.toggleSorting(true)}
             >
-              <ChevronDown />
+              <ChevronDown aria-hidden="true" />
               Desc
             </DropdownMenuCheckboxItem>
             {column.getIsSorted() && (
@@ -93,7 +93,7 @@ export function DataTableColumnHeader<TData, TValue>({
                 className="pl-2 [&_svg]:text-muted-foreground"
                 onClick={() => column.clearSorting()}
               >
-                <X />
+                <X aria-hidden="true" />
                 Reset
               </DropdownMenuItem>
             )}
@@ -105,7 +105,7 @@ export function DataTableColumnHeader<TData, TValue>({
             checked={!column.getIsVisible()}
             onClick={() => column.toggleVisibility(false)}
           >
-            <EyeOff />
+            <EyeOff aria-hidden="true" />
             Hide
           </DropdownMenuCheckboxItem>
         )}

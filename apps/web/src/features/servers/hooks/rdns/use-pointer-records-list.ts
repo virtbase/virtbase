@@ -15,7 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { useSuspenseQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import type { RouterInputs, RouterOutputs } from "@virtbase/api";
 import { MAX_ENTRIES_PER_PAGE } from "@virtbase/utils";
 import { useTRPC } from "@/lib/trpc/react";
@@ -42,7 +42,7 @@ export const usePointerRecordsList = ({
 }: GetPointerRecordsList) => {
   const trpc = useTRPC();
 
-  return useSuspenseQuery(
+  return useQuery(
     trpc.servers.rdns.list.queryOptions(
       {
         ...defaultPointerRecordsListQuery,
