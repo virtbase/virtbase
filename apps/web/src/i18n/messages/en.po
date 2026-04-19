@@ -511,7 +511,7 @@ msgstr "Create API key"
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:72
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:120
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx:74
-#: src/features/servers/components/backups/create-backup-dialog.tsx:99
+#: src/features/servers/components/backups/create-backup-dialog.tsx:104
 #: src/features/servers/components/overview/rename-server-dialog.tsx:74
 #: src/features/servers/components/overview/reset-root-password-dialog.tsx:95
 #: src/ui/feedback-button.tsx:31
@@ -530,7 +530,7 @@ msgstr "This key will only be displayed once. Please save it securely, as it can
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:94
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:95
-#: src/features/servers/components/backups/create-backup-dialog.tsx:123
+#: src/features/servers/components/backups/create-backup-dialog.tsx:128
 #: src/features/servers/components/overview/node-details-dialog.tsx:83
 #: src/features/servers/components/overview/rename-server-dialog.tsx:93
 #: src/features/servers/components/overview/server-details-card.tsx:72
@@ -1456,69 +1456,69 @@ msgstr "No backups"
 msgid "gyxApU"
 msgstr "No backups have been created yet."
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:89
-#: src/features/servers/components/backups/create-backup-dialog.tsx:107
+#: src/features/servers/components/backups/create-backup-dialog.tsx:94
+#: src/features/servers/components/backups/create-backup-dialog.tsx:112
 msgid "6f7NTQ"
 msgstr "Create Backup"
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:90
+#: src/features/servers/components/backups/create-backup-dialog.tsx:95
 msgid "Z6LfAU"
 msgstr "Create a new backup for your server."
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:143
+#: src/features/servers/components/backups/create-backup-dialog.tsx:148
 msgid "mDxkGm"
 msgstr "Backup Mode"
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:159
+#: src/features/servers/components/backups/create-backup-dialog.tsx:164
 msgid "8Y0yUM"
 msgstr "Snapshot"
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:162
+#: src/features/servers/components/backups/create-backup-dialog.tsx:167
 msgid "04uNfB"
 msgstr "Creates a backup without interrupting the system. The current state of the processes is backed up."
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:178
+#: src/features/servers/components/backups/create-backup-dialog.tsx:183
 #: src/features/servers/components/server-actions-row.tsx:149
 msgid "elnaZe"
 msgstr "Suspend"
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:181
+#: src/features/servers/components/backups/create-backup-dialog.tsx:186
 msgid "qRuNZh"
 msgstr "Interrupts the system briefly to create a backup without shutting it down."
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:197
+#: src/features/servers/components/backups/create-backup-dialog.tsx:202
 #: src/features/servers/components/server-actions-row.tsx:162
 msgid "q/uwLT"
 msgstr "Stop"
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:200
+#: src/features/servers/components/backups/create-backup-dialog.tsx:205
 msgid "JidfdC"
 msgstr "Completely shuts down the system before creating the backup."
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:220
+#: src/features/servers/components/backups/create-backup-dialog.tsx:225
 msgid "/EmLPv"
 msgstr "Enable deletion protection"
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:229
+#: src/features/servers/components/backups/create-backup-dialog.tsx:234
 msgid "I9XNiI"
 msgstr "The newly created backup can only be deleted after the deletion protection is disabled."
 
 #: src/features/servers/components/console/console-frame.tsx:73
+msgid "lptya2"
+msgstr "Server is suspended"
+
+#: src/features/servers/components/console/console-frame.tsx:75
+msgid "3KjSye"
+msgstr "This feature is not available while the server is suspended. Please renew your server to access the console."
+
+#: src/features/servers/components/console/console-frame.tsx:91
 #: src/features/servers/components/server-status-bar.tsx:80
 msgid "sIwjuh"
 msgstr "Server is installing"
 
-#: src/features/servers/components/console/console-frame.tsx:75
+#: src/features/servers/components/console/console-frame.tsx:93
 msgid "/iuNMM"
 msgstr "This feature is not available while the server is installing."
-
-#: src/features/servers/components/console/console-frame.tsx:89
-msgid "lptya2"
-msgstr "Server is suspended"
-
-#: src/features/servers/components/console/console-frame.tsx:91
-msgid "3KjSye"
-msgstr "This feature is not available while the server is suspended. Please renew your server to access the console."
 
 #: src/features/servers/components/console/console-frame.tsx:110
 msgid "odJjY9"

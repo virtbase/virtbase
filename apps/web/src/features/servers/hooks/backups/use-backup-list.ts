@@ -19,6 +19,7 @@
 
 import { useQuery } from "@tanstack/react-query";
 import type { RouterInputs, RouterOutputs } from "@virtbase/api";
+import { MAX_ENTRIES_PER_PAGE } from "@virtbase/utils";
 import { useTRPC } from "@/lib/trpc/react";
 
 export type GetBackupListInput = RouterInputs["servers"]["backups"]["list"];
@@ -31,7 +32,7 @@ interface GetBackupList extends GetBackupListInput {
 
 export const defaultBackupListQuery = {
   sort: ["id:desc"],
-  per_page: 100,
+  per_page: MAX_ENTRIES_PER_PAGE,
   expand: ["template"],
 } satisfies Omit<GetBackupListInput, "server_id">;
 

@@ -63,22 +63,6 @@ export function ConsoleFrame() {
     return <Skeleton className="size-full" />;
   }
 
-  if (isInstalling(serverStatus)) {
-    return (
-      <Empty className="size-full">
-        <EmptyHeader>
-          <EmptyMedia variant="icon">
-            <LucideSettings aria-hidden="true" />
-          </EmptyMedia>
-          <EmptyTitle>{t("Server is installing")}</EmptyTitle>
-          <EmptyDescription>
-            {t("This feature is not available while the server is installing.")}
-          </EmptyDescription>
-        </EmptyHeader>
-      </Empty>
-    );
-  }
-
   if (isSuspended(serverStatus) || isTerminated(serverStatus)) {
     return (
       <Empty className="size-full">
@@ -91,6 +75,22 @@ export function ConsoleFrame() {
             {t(
               "This feature is not available while the server is suspended. Please renew your server to access the console.",
             )}
+          </EmptyDescription>
+        </EmptyHeader>
+      </Empty>
+    );
+  }
+
+  if (isInstalling(serverStatus)) {
+    return (
+      <Empty className="size-full">
+        <EmptyHeader>
+          <EmptyMedia variant="icon">
+            <LucideSettings aria-hidden="true" />
+          </EmptyMedia>
+          <EmptyTitle>{t("Server is installing")}</EmptyTitle>
+          <EmptyDescription>
+            {t("This feature is not available while the server is installing.")}
           </EmptyDescription>
         </EmptyHeader>
       </Empty>

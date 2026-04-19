@@ -17,6 +17,7 @@
 
 import { useSuspenseQuery } from "@tanstack/react-query";
 import type { RouterInputs, RouterOutputs } from "@virtbase/api";
+import { MAX_ENTRIES_PER_PAGE } from "@virtbase/utils";
 import { useTRPC } from "@/lib/trpc/react";
 
 export type GetSSHKeysListInput = RouterInputs["sshKeys"]["list"];
@@ -29,7 +30,7 @@ interface GetSSHKeysList extends GetSSHKeysListInput {
 
 export const defaultGetSSHKeysListQuery = {
   sort: ["name:asc"],
-  per_page: 100,
+  per_page: MAX_ENTRIES_PER_PAGE,
 } satisfies GetSSHKeysListInput;
 
 export const useSSHKeysList = ({

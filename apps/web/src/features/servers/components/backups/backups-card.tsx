@@ -57,7 +57,7 @@ export function BackupsCard() {
 
   return (
     <>
-      <Card className="overflow-hidden pb-0">
+      <Card className="gap-0 overflow-hidden pb-0">
         <CardHeader className="pb-4">
           <div className="flex items-center justify-between gap-2">
             <CardTitle>{t("Backups")}</CardTitle>

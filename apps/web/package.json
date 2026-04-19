@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "bun with-env next build",
-    "clean": "git clean -xdf .cache .next .turbo node_modules",
+    "clean": "git clean -xdf .cache .next .turbo node_modules src/app/.well-known",
     "dev": "bun with-env next dev",
     "start": "bun with-env next start",
     "typecheck": "bun with-env next typegen && tsc --noEmit",

@@ -44,7 +44,7 @@ import type { CreateServerBackupInput } from "@virtbase/validators/server";
 import { CreateServerBackupInputSchema } from "@virtbase/validators/server";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
-import { startTransition } from "react";
+import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import { useCreateBackup } from "../../hooks/backups/use-create-backup";
@@ -59,6 +59,17 @@ export default function CreateBackupDialog(
 
   const { id: serverId } = useParams<{ id: string }>();
 
+  const { mutateAsync, isPending } = useCreateBackup({
+    mutationConfig: {
+      onSuccess: () => {
+        props.onOpenChange?.(false);
+      },
+      onError: (error) => {
+        toast.error(error.message);
+      },
+    },
+  });
+
   const defaultName = `Backup ${new Date().toLocaleString()}`;
 
   const form = useForm<CreateServerBackupInput>({
@@ -69,20 +80,14 @@ export default function CreateBackupDialog(
       is_locked: false,
       mode: "snapshot",
     },
+    disabled: isPending,
   });
 
-  const { mutateAsync, isPending } = useCreateBackup({
-    mutationConfig: {
-      onSuccess: () =>
-        startTransition(() => {
-          props.onOpenChange?.(false);
-          form.reset();
-        }),
-      onError: (error) => {
-        toast.error(error.message);
-      },
-    },
-  });
+  useEffect(() => {
+    return () => {
+      form.reset();
+    };
+  }, []);
 
   return (
     <ResponsiveDialog
@@ -93,7 +98,7 @@ export default function CreateBackupDialog(
           <Button
             type="button"
             variant="outline"
-            disabled={form.formState.isSubmitting || isPending}
+            disabled={form.formState.disabled}
             onClick={() => props.onOpenChange?.(false)}
           >
             {t("Cancel")}
@@ -101,7 +106,7 @@ export default function CreateBackupDialog(
           <Button
             type="submit"
             form="create-backup-form"
-            disabled={form.formState.isSubmitting || isPending}
+            disabled={form.formState.disabled}
           >
             {isPending && <Spinner />}
             {t("Create Backup")}

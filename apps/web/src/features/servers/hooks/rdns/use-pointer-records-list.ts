@@ -17,6 +17,7 @@
 
 import { useSuspenseQuery } from "@tanstack/react-query";
 import type { RouterInputs, RouterOutputs } from "@virtbase/api";
+import { MAX_ENTRIES_PER_PAGE } from "@virtbase/utils";
 import { useTRPC } from "@/lib/trpc/react";
 
 export type GetPointerRecordsListInput =
@@ -31,7 +32,7 @@ interface GetPointerRecordsList extends GetPointerRecordsListInput {
 
 export const defaultPointerRecordsListQuery = {
   sort: ["id:desc"],
-  per_page: 100,
+  per_page: MAX_ENTRIES_PER_PAGE,
   expand: [],
 } satisfies Omit<GetPointerRecordsListInput, "server_id">;
 

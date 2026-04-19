@@ -9,6 +9,20 @@
     },
     "plugins": [{ "name": "next" }, { "name": "workflow" }]
   },
-  "include": [".", ".next/types/**/*.ts"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.cjs",
+    "**/*.js",
+    ".next/types/**/*.ts",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "playwright-report",
+    ".source",
+    "src/content",
+    "src/app/.well-known"
+  ]
 }
