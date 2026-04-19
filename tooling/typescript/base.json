@@ -17,7 +17,9 @@
     "checkJs": true,
     "module": "Preserve",
     "moduleResolution": "Bundler",
-    "noEmit": true
+    "noEmit": true,
+    "types": ["bun"],
+    "rootDir": "${configDir}"
   },
   "exclude": ["node_modules", "build", "dist", ".next", ".expo"]
 }
