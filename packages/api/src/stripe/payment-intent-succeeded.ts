@@ -15,6 +15,12 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import {
+  createInvoiceWorkflow,
+  extendServerWorkflow,
+  provisionServerWorkflow,
+  upgradeServerWorkflow,
+} from "@virtbase/api/workflows";
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { serverPlans, users } from "@virtbase/db/schema";
@@ -22,9 +28,6 @@ import { decryptPayload, deriveKeyHex } from "@virtbase/utils";
 import type { OrderConfigurationSnapshot } from "@virtbase/validators";
 import type Stripe from "stripe";
 import { start } from "workflow/api";
-import { createInvoiceWorkflow, extendServerWorkflow } from "../workflows";
-import { provisionServerWorkflow } from "../workflows/provision-server";
-import { upgradeServerWorkflow } from "../workflows/upgrade-server";
 
 /**
  * Handle a payment intent succeeded event from Stripe.
