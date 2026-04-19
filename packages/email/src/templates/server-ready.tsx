@@ -15,7 +15,17 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { APP_DOMAIN, APP_NAME, SUPPORT_EMAIL, VIRTBASE_WORDMARK } from "@virtbase/utils";
+import { Footer } from "@virtbase/email/templates/footer";
+import {
+  DEFAULT_EMAIL_LOCALE,
+  resolveEmailLocale,
+} from "@virtbase/email/translations";
+import {
+  APP_DOMAIN,
+  APP_NAME,
+  SUPPORT_EMAIL,
+  VIRTBASE_WORDMARK,
+} from "@virtbase/utils";
 import {
   Body,
   Container,
@@ -30,8 +40,6 @@ import {
   Text,
 } from "react-email";
 import { createTranslator } from "use-intl/core";
-import { Footer } from "../components/footer";
-import { DEFAULT_EMAIL_LOCALE, resolveEmailLocale } from "../translations";
 
 export default async function ServerReady({
   name = "Walter White",

@@ -15,6 +15,11 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { Footer } from "@virtbase/email/templates/footer";
+import {
+  DEFAULT_EMAIL_LOCALE,
+  resolveEmailLocale,
+} from "@virtbase/email/translations";
 import {
   APP_NAME,
   SERVER_DELETION_GRACE_PERIOD_DAYS,
@@ -33,8 +38,6 @@ import {
   Text,
 } from "react-email";
 import { createTranslator } from "use-intl/core";
-import { Footer } from "../components/footer";
-import { DEFAULT_EMAIL_LOCALE, resolveEmailLocale } from "../translations";
 
 export default async function ServerDeleted({
   email = "janic@virtbase.com",
