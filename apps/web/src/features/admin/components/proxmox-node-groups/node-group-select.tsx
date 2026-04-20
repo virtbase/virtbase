@@ -66,7 +66,7 @@ export function NodeGroupSelect({
           variant="outline"
           className={cn(
             "justify-between",
-            !value && "bg-input text-muted-foreground",
+            !value && "!dark:bg-input text-muted-foreground",
             className,
           )}
           {...props}

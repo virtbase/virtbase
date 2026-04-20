@@ -77,7 +77,7 @@ export default function ServerFirewallDemo(
             <Label htmlFor="proto">{t("Protocol")}</Label>
             <Button
               variant="outline"
-              className="justify-between bg-input"
+              className="justify-between !dark:bg-input"
               id="proto"
             >
               <div className="flex items-center gap-2">tcp</div>

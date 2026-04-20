@@ -40,6 +40,7 @@ const items = [
   },
 ] as const;
 
+// TODO: Add white mode versions with dark colors
 export function OperatingSystemShowcase() {
   return (
     <div className="grid grid-cols-2 items-center gap-4 px-4 py-10 transition-[opacity,transform] duration-500 sm:grid-cols-3 md:grid-cols-5">
@@ -52,7 +53,7 @@ export function OperatingSystemShowcase() {
                   <NextImage
                     alt={item.alt}
                     draggable={false}
-                    className="absolute inset-0 size-full object-contain object-center"
+                    className="absolute inset-0 size-full object-contain object-center light:grayscale light:invert"
                     src={item.src}
                     fill
                     unoptimized

@@ -22,20 +22,31 @@ import {
   LucideMoonStar,
   LucideSun,
 } from "@virtbase/ui/icons/index";
+import { Skeleton } from "@virtbase/ui/skeleton";
 import { useTheme } from "@virtbase/ui/theme-provider";
 import { ToggleGroup, ToggleGroupItem } from "@virtbase/ui/toggle-group";
 import { useExtracted } from "next-intl";
+import { useEffect, useState } from "react";
 
 export function ThemeSwitcher() {
   const t = useExtracted();
   const { theme, setTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) {
+    return <Skeleton aria-hidden="true" className="h-8 w-29 rounded-md" />;
+  }
 
   return (
     <ToggleGroup
       type="single"
       variant="outline"
       size="sm"
-      value={theme}
+      value={theme ?? "system"}
       onValueChange={setTheme}
     >
       <ToggleGroupItem value="system" variant="outline">

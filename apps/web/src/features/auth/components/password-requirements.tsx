@@ -79,7 +79,7 @@ export const PasswordRequirements = memo(function PasswordRequirements({
                   ? "direction-[alternate] animation-duration-[150ms] repeat-2 animate-scale-in [--from-scale:1] [--to-scale:1.2] [animation-timing-function:ease-in-out]"
                   : invalid
                     ? "text-destructive"
-                    : "text-neutral-200",
+                    : "text-muted-foreground",
               )}
             />
             <span>{name}</span>
