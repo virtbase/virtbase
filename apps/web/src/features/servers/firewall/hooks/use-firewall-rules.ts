@@ -17,27 +17,27 @@
 
 "use client";
 
-import { parseAsStringEnum, useQueryState } from "nuqs";
+import { useQuery } from "@tanstack/react-query";
+import type { RouterInputs, RouterOutputs } from "@virtbase/api";
+import { useTRPC } from "@/lib/trpc/react";
 
-export function useServerActionState() {
-  const [action, setAction] = useQueryState(
-    "action",
-    parseAsStringEnum([
-      "rename",
-      "view-node-details",
-      "reset-root-password",
-      "change-operating-system",
-      "create-backup",
-      "upsert-record",
-      "create-firewall-rule",
-    ]).withOptions({
-      clearOnDefault: true,
-      shallow: true,
-    }),
-  );
+export type GetFirewallRulesInput =
+  RouterInputs["servers"]["firewall"]["rules"]["get"];
 
-  return {
-    action,
-    setAction,
-  };
+export type GetFirewallRulesOutput =
+  RouterOutputs["servers"]["firewall"]["rules"]["get"];
+
+interface GetFirewallRules extends GetFirewallRulesInput {
+  queryConfig?: never;
 }
+
+export const useFirewallRules = ({
+  queryConfig,
+  ...input
+}: GetFirewallRules) => {
+  const trpc = useTRPC();
+
+  return useQuery(
+    trpc.servers.firewall.rules.get.queryOptions(input, queryConfig),
+  );
+};

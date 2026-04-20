@@ -16,11 +16,6 @@
  */
 
 import {
-  LucideCheckCircle,
-  LucideClock,
-  LucideXCircle,
-} from "@virtbase/ui/icons";
-import {
   Select,
   SelectContent,
   SelectItem,
@@ -28,30 +23,32 @@ import {
   SelectValue,
 } from "@virtbase/ui/select";
 import { useExtracted } from "next-intl";
+import { useFirewallActionMapping } from "../hooks/use-firewall-action-mapping";
 
-export function FirewallActionSelect(
-  props: React.ComponentProps<typeof Select>,
-) {
+interface FirewallActionSelectProps
+  extends React.ComponentProps<typeof Select> {
+  triggerProps?: React.ComponentProps<typeof SelectTrigger>;
+}
+
+export function FirewallActionSelect({
+  triggerProps,
+  ...props
+}: FirewallActionSelectProps) {
   const t = useExtracted();
+  const mapping = useFirewallActionMapping();
 
   return (
     <Select {...props}>
-      <SelectTrigger size="sm">
+      <SelectTrigger {...triggerProps}>
         <SelectValue placeholder={t("Select action")} />
       </SelectTrigger>
       <SelectContent>
-        <SelectItem value="ACCEPT">
-          <LucideCheckCircle aria-hidden="true" />
-          <span className="truncate">{t("Accept")}</span>
-        </SelectItem>
-        <SelectItem value="DROP">
-          <LucideClock aria-hidden="true" />
-          <span className="truncate">{t("Drop")}</span>
-        </SelectItem>
-        <SelectItem value="REJECT">
-          <LucideXCircle aria-hidden="true" />
-          <span className="truncate">{t("Reject")}</span>
-        </SelectItem>
+        {Object.entries(mapping).map(([value, { label, icon: Icon }]) => (
+          <SelectItem key={value} value={value}>
+            <Icon aria-hidden="true" />
+            <span className="truncate">{label}</span>
+          </SelectItem>
+        ))}
       </SelectContent>
     </Select>
   );

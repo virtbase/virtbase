@@ -86,7 +86,7 @@ afterAll(async () => {
 type FirewallRuleRaw = {
   enable: number;
   action: string;
-  direction: string;
+  type: string;
   pos: number;
   proto?: string;
   dport?: string;
@@ -208,7 +208,7 @@ describe("server.firewall.rules.get", () => {
       {
         enable: 1,
         action: "ACCEPT",
-        direction: "in",
+        type: "in",
         pos: 0,
         proto: "tcp",
         dport: "443",
@@ -332,7 +332,8 @@ describe("server.firewall.rules.update", () => {
 
     expect($put).toHaveBeenCalledTimes(1);
     expect($put).toHaveBeenCalledWith({
-      server_id: mockServer.id,
+      enable: 0,
+      delete: "type,icmp-type",
       action: "DROP",
       log: "nolog",
       digest: "d1",

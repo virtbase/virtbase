@@ -17,27 +17,28 @@
 
 "use client";
 
-import { parseAsStringEnum, useQueryState } from "nuqs";
+import {
+  LucideCheckCircle,
+  LucideClock,
+  LucideXCircle,
+} from "@virtbase/ui/icons";
+import { useExtracted } from "next-intl";
 
-export function useServerActionState() {
-  const [action, setAction] = useQueryState(
-    "action",
-    parseAsStringEnum([
-      "rename",
-      "view-node-details",
-      "reset-root-password",
-      "change-operating-system",
-      "create-backup",
-      "upsert-record",
-      "create-firewall-rule",
-    ]).withOptions({
-      clearOnDefault: true,
-      shallow: true,
-    }),
-  );
+export function useFirewallActionMapping() {
+  const t = useExtracted();
 
   return {
-    action,
-    setAction,
+    ACCEPT: {
+      label: t("Accept"),
+      icon: LucideCheckCircle,
+    },
+    DROP: {
+      label: t("Drop"),
+      icon: LucideClock,
+    },
+    REJECT: {
+      label: t("Reject"),
+      icon: LucideXCircle,
+    } as const,
   };
 }

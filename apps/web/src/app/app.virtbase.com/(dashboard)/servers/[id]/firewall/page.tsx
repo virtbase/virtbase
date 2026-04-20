@@ -19,6 +19,7 @@ import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
 import { FirewallOptionsRow } from "@/features/servers/firewall/components/firewall-options-row";
+import { FirewallRulesCard } from "@/features/servers/firewall/components/firewall-rules-card";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();
@@ -35,6 +36,7 @@ export default async function Page({
   return (
     <div className="grid auto-rows-min grid-cols-1 gap-4">
       <FirewallOptionsRow promise={params.then(({ id }) => id)} />
+      <FirewallRulesCard />
     </div>
   );
 }

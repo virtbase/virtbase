@@ -43,6 +43,9 @@ export function FirewallActionState({
         })
       }
       value={options[policy]}
+      triggerProps={{
+        size: "sm",
+      }}
     />
   );
 }

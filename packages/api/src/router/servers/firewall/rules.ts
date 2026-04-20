@@ -56,7 +56,7 @@ export const serverFirewallRulesRouter = createTRPCRouter({
         rules: rules.map((rule) => ({
           enabled: !!rule.enable,
           action: rule.action as "ACCEPT" | "DROP" | "REJECT",
-          direction: rule.direction as "out" | "in",
+          direction: rule.type as "out" | "in" | undefined,
           pos: rule.pos,
           proto: rule.proto,
           dport: rule.dport,
@@ -89,7 +89,8 @@ export const serverFirewallRulesRouter = createTRPCRouter({
 
       await instance.vm.firewall.rules.$post({
         enable: input.enabled ? 1 : 0,
-        type: input.direction === "in" ? "in" : "out",
+        // @ts-expect-error - direction is optional
+        type: input.direction,
         pos: input.pos,
         proto: input.proto,
         dport: input.dport,
@@ -144,12 +145,30 @@ export const serverFirewallRulesRouter = createTRPCRouter({
     .output(UpdateServerFirewallRuleOutputSchema)
     .mutation(async ({ ctx, input }) => {
       const { instance } = ctx;
-      const { pos, digest, ...rest } = input;
+      const {
+        pos,
+        digest,
+        enabled,
+        direction,
+        server_id: _,
+        icmp_type,
+        ...rest
+      } = input;
+
+      const undefinedFields = Object.entries({
+        type: direction,
+        "icmp-type": icmp_type,
+        ...rest,
+      }).filter(([_, value]) => value === undefined);
 
       await instance.vm.firewall.rules.$(`${pos}`).$put({
         ...rest,
+        enable: enabled ? 1 : 0,
+        ...(icmp_type && { "icmp-type": icmp_type }),
+        ...(direction && { type: direction }),
         log: "nolog",
         digest,
+        delete: undefinedFields.map(([key]) => key).join(","),
       });
     }),
   move: serverProcedure

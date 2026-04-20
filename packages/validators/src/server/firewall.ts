@@ -71,7 +71,7 @@ const FirewallRuleSchema = z.object({
     description: "Whether the rule is enabled.",
     example: true,
   }),
-  direction: z.enum(["in", "out"]).meta({
+  direction: z.enum(["in", "out"]).optional().meta({
     description: "The direction of the rule.",
     example: "in",
   }),
@@ -94,7 +94,7 @@ const FirewallRuleSchema = z.object({
     description: "The source port of the rule.",
     example: "80",
   }),
-  comment: z.string().optional().meta({
+  comment: z.string().max(64).optional().meta({
     description: "The comment of the rule.",
     example: "Allow HTTP traffic",
   }),
@@ -182,6 +182,10 @@ export const CreateServerFirewallRuleInputSchema = FirewallRuleSchema.extend({
   }
 });
 
+export type CreateServerFirewallRuleInput = z.infer<
+  typeof CreateServerFirewallRuleInputSchema
+>;
+
 export const CreateServerFirewallRuleOutputSchema = z.void();
 
 export const UpdateServerFirewallRuleInputSchema = FirewallRuleSchema.partial({
@@ -197,6 +201,10 @@ export const UpdateServerFirewallRuleInputSchema = FirewallRuleSchema.partial({
 }).extend({
   server_id: ServerSchema.shape.id,
 });
+
+export type UpdateServerFirewallRuleInput = z.infer<
+  typeof UpdateServerFirewallRuleInputSchema
+>;
 
 export const UpdateServerFirewallRuleOutputSchema = z.void();
 
