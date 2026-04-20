@@ -15,7 +15,28 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export type { Stripe } from "stripe";
-export * from "./client";
-export * from "./get-or-create-customer";
-export * from "./payment-intent-succeeded";
+import * as Sentry from "@sentry/nextjs";
+import { getOrCreateStripeCustomer, stripe } from "@virtbase/api/stripe";
+import { headers } from "next/headers";
+import { cache } from "react";
+import { auth } from "@/lib/auth/server";
+
+export const getPaymentMethodList = cache(async () => {
+  try {
+    const session = await auth.api.getSession({ headers: await headers() });
+    if (!session || !stripe) {
+      return [];
+    }
+
+    const customer = await getOrCreateStripeCustomer(session.user.id);
+    const paymentMethods = await stripe.customers.listPaymentMethods(customer, {
+      limit: 50,
+    });
+
+    return paymentMethods.data;
+  } catch (error) {
+    Sentry.captureException(error);
+
+    return [];
+  }
+});

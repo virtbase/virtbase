@@ -595,10 +595,12 @@ msgid "GKNfO2"
 msgstr "Passkey #{number}"
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx:120
+#: src/features/account/components/billing/payment-methods-list.tsx:139
 msgid "jUqYir"
 msgstr "Added {date}"
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx:130
+#: src/features/account/components/billing/payment-methods-list.tsx:149
 msgid "G/yZLu"
 msgstr "Remove"
 
@@ -673,6 +675,26 @@ msgstr "Current session"
 #: src/features/account/components/authentication/user-sessions-list.tsx:168
 msgid "PIRoCC"
 msgstr "Unknown IP address"
+
+#: src/features/account/components/billing/payment-methods-card.tsx:38
+msgid "xuTqgN"
+msgstr "Payment Methods"
+
+#: src/features/account/components/billing/payment-methods-card.tsx:40
+msgid "oBsxme"
+msgstr "The following payment methods are stored and can be used for billing."
+
+#: src/features/account/components/billing/payment-methods-list.tsx:53
+msgid "qyRflV"
+msgstr "No payment methods"
+
+#: src/features/account/components/billing/payment-methods-list.tsx:55
+msgid "gL/ZgG"
+msgstr "No payment methods have been linked to your account."
+
+#: src/features/account/components/billing/payment-methods-list.tsx:155
+msgid "Ql9c9w"
+msgstr "Kein Name angegeben"
 
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:63
 msgid "KdsDOJ"

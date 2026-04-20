@@ -15,6 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { PaymentMethodsCard } from "@/features/account/components/billing/payment-methods-card";
+
 export default function Page() {
-  return <>Placeholder</>;
+  return <PaymentMethodsCard />;
 }
