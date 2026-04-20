@@ -24,6 +24,7 @@ import { IntlLink } from "@/i18n/navigation.public";
 import { GetOnAppStore } from "@/ui/get-on-app-store";
 import { MaxWidthWrapper } from "@/ui/max-width-wrapper";
 import { SocialsRow } from "@/ui/socials-row";
+import { ThemeSwitcher } from "./theme-switcher";
 
 const linkListHeaderClassName = "text-sm font-medium text-foreground";
 const linkListClassName = "flex flex-col mt-2.5 gap-3.5";
@@ -185,16 +186,19 @@ export async function Footer({ className }: { className?: string }) {
           </div>
         </div>
         {/* Bottom row (status, copyright) */}
-        <div className="mt-12 grid grid-cols-1 place-items-center items-center gap-8 border-border border-t">
-          <p className="mt-6 text-muted-foreground text-xs sm:text-right">
-            {t(
-              "© {year} {appName}, a brand of BeastHost UG (haftungsbeschränkt).",
-              {
-                year: "2026",
-                appName: APP_NAME,
-              },
-            )}
-          </p>
+        <div className="mt-12 border-border border-t">
+          <div className="mt-6 flex items-center justify-between gap-8">
+            <p className="text-muted-foreground text-xs sm:text-right">
+              {t(
+                "© {year} {appName}, a brand of BeastHost UG (haftungsbeschränkt).",
+                {
+                  year: "2026",
+                  appName: APP_NAME,
+                },
+              )}
+            </p>
+            <ThemeSwitcher />
+          </div>
         </div>
       </footer>
     </MaxWidthWrapper>

@@ -15,4 +15,4 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export { ThemeProvider } from "next-themes";
+export { ThemeProvider, useTheme } from "next-themes";

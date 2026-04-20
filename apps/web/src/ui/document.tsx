@@ -64,7 +64,7 @@ export default function Document({
           attribute="class"
           defaultTheme="dark"
           disableTransitionOnChange
-          enableSystem={false}
+          enableSystem
         >
           {children}
         </ThemeProvider>
