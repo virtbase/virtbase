@@ -28,12 +28,17 @@ import {
 } from "@virtbase/ui/card";
 import { LucidePlus, LucideRefreshCw } from "@virtbase/ui/icons";
 import { Skeleton } from "@virtbase/ui/skeleton";
+import dynamic from "next/dynamic";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useBackupList } from "../../hooks/backups/use-backup-list";
 import { useBackupsTable } from "../../hooks/backups/use-backups-table";
 import { BackupsTable } from "./backups-table";
 import { CreateBackupButton } from "./create-backup-button";
+
+const RestoreBackupDialog = dynamic(() => import("./restore-backup-dialog"), {
+  ssr: false,
+});
 
 export function BackupsCard() {
   const t = useExtracted();
@@ -46,7 +51,9 @@ export function BackupsCard() {
     refetch,
   } = useBackupList({ server_id: id });
 
-  const { table } = useBackupsTable({ data: backups ?? [] });
+  const { table, rowAction, setRowAction } = useBackupsTable({
+    data: backups ?? [],
+  });
 
   return (
     <Card className="gap-0 overflow-hidden pb-0">
@@ -73,6 +80,13 @@ export function BackupsCard() {
       </CardHeader>
       <CardContent className="p-0">
         <BackupsTable table={table} isPending={isPending} />
+        {rowAction && rowAction.variant === "restore" && (
+          <RestoreBackupDialog
+            row={rowAction.row}
+            onOpenChange={(open) => setRowAction(open ? rowAction : null)}
+            open={rowAction.variant === "restore"}
+          />
+        )}
       </CardContent>
       <CardFooter className="border-t [.border-t]:py-4">
         <div className="flex flex-wrap items-center gap-2">

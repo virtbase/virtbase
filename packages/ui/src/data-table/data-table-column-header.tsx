@@ -62,7 +62,7 @@ export function DataTableColumnHeader<TData, TValue>({
         {label}
         {column.getCanSort() &&
           (column.getIsSorted() === "desc" ? (
-            <ChevronDown aria-hidden="true"/>
+            <ChevronDown aria-hidden="true" />
           ) : column.getIsSorted() === "asc" ? (
             <ChevronUp aria-hidden="true" />
           ) : (

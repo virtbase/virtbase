@@ -38,7 +38,7 @@ export function ThemeSwitcher() {
   }, []);
 
   if (!mounted) {
-    return <Skeleton aria-hidden="true" className="h-8 w-29 rounded-md" />;
+    return <Skeleton aria-hidden="true" className="h-8 w-29" />;
   }
 
   return (

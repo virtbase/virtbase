@@ -379,7 +379,7 @@ msgstr "Rechnungen"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/backups/page.tsx:27
 #: src/features/account/components/api-keys/create-api-key-button.tsx:55
-#: src/features/servers/components/backups/backups-card.tsx:55
+#: src/features/servers/components/backups/backups-card.tsx:62
 #: src/features/servers/components/server-nav.tsx:60
 msgid "T3lqx5"
 msgstr "Backups"
@@ -505,6 +505,7 @@ msgstr "Erstellt {date}"
 #: src/features/account/components/api-keys/api-keys-list.tsx:103
 #: src/features/account/components/ssh-keys/ssh-keys-list.tsx:92
 #: src/features/admin/components/users/users-table/columns.tsx:349
+#: src/features/servers/components/backups/backups-table/backup-actions.tsx:155
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:141
 msgid "K3r6DQ"
 msgstr "Löschen"
@@ -524,6 +525,8 @@ msgstr "API-Schlüssel erstellen"
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:120
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx:74
 #: src/features/servers/components/backups/create-backup-dialog.tsx:104
+#: src/features/servers/components/backups/restore-backup-dialog.tsx:76
+#: src/features/servers/components/overview/change-template-dialog.tsx:103
 #: src/features/servers/components/overview/rename-server-dialog.tsx:74
 #: src/features/servers/components/overview/reset-root-password-dialog.tsx:95
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx:89
@@ -544,10 +547,11 @@ msgstr "Dieser Schlüssel wird nur einmal angezeigt. Bitte speichere ihn gut, er
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:94
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:95
+#: src/features/servers/components/backups/backups-table/columns.tsx:64
 #: src/features/servers/components/backups/create-backup-dialog.tsx:128
 #: src/features/servers/components/overview/node-details-dialog.tsx:83
 #: src/features/servers/components/overview/rename-server-dialog.tsx:93
-#: src/features/servers/components/overview/server-details-card.tsx:72
+#: src/features/servers/components/overview/server-details-card.tsx:75
 #: src/ui/feedback-button.tsx:32
 msgid "HAlOn1"
 msgstr "Name"
@@ -1066,6 +1070,7 @@ msgid "C3uaig"
 msgstr "In Stripe ansehen"
 
 #: src/features/admin/components/users/users-table/columns.tsx:317
+#: src/features/servers/components/backups/backups-table/backup-actions.tsx:142
 msgid "qXCbgZ"
 msgstr "Entsperren"
 
@@ -1225,7 +1230,8 @@ msgid "7OW8BT"
 msgstr "Konfiguration"
 
 #: src/features/checkout/components/checkout-form.tsx:113
-#: src/features/servers/components/overview/server-details-card.tsx:93
+#: src/features/servers/components/backups/backups-table/columns.tsx:180
+#: src/features/servers/components/overview/server-details-card.tsx:96
 msgid "t2uvIi"
 msgstr "Betriebssystem"
 
@@ -1492,15 +1498,46 @@ msgstr "Netzwerk"
 msgid "yCCio2"
 msgstr "Letzter Neustart"
 
-#: src/features/servers/components/backups/backups-card.tsx:83
+#: src/features/servers/components/backups/backups-card.tsx:97
 msgid "pelX8B"
 msgstr "{count, plural, =1 {# Backup} other {# Backups}}"
 
-#: src/features/servers/components/backups/backups-table/index.tsx:102
+#: src/features/servers/components/backups/backups-table/backup-actions.tsx:122
+msgid "zz6ObK"
+msgstr ""
+
+#: src/features/servers/components/backups/backups-table/backup-actions.tsx:137
+msgid "Zl4/y9"
+msgstr ""
+
+#: src/features/servers/components/backups/backups-table/columns.tsx:88
+msgid "kF9XUo"
+msgstr ""
+
+#: src/features/servers/components/backups/backups-table/columns.tsx:108
+msgid "tBwTvx"
+msgstr ""
+
+#: src/features/servers/components/backups/backups-table/columns.tsx:155
+msgid "vXCeIi"
+msgstr ""
+
+#: src/features/servers/components/backups/backups-table/columns.tsx:164
+msgid "mRL9Vh"
+msgstr ""
+
+#: src/features/servers/components/backups/backups-table/columns.tsx:194
+#: src/features/servers/components/backups/restore-backup-dialog.tsx:107
+#: src/features/servers/hooks/use-status-mapping.ts:63
+#: src/features/servers/hooks/use-task-mapping.ts:71
+msgid "5jeq8P"
+msgstr "Unbekannt"
+
+#: src/features/servers/components/backups/backups-table/index.tsx:99
 msgid "G7wlJr"
 msgstr "Keine Backups"
 
-#: src/features/servers/components/backups/backups-table/index.tsx:103
+#: src/features/servers/components/backups/backups-table/index.tsx:100
 msgid "gyxApU"
 msgstr "Es wurden noch keine Backups erstellt."
 
@@ -1551,6 +1588,26 @@ msgstr "Löschschutz aktivieren"
 msgid "I9XNiI"
 msgstr "Das neu erstellte Backup kann erst nach Deaktivierung des Schutzes gelöscht werden."
 
+#: src/features/servers/components/backups/restore-backup-dialog.tsx:57
+msgid "MW7EBt"
+msgstr ""
+
+#: src/features/servers/components/backups/restore-backup-dialog.tsx:64
+msgid "LImSzk"
+msgstr ""
+
+#: src/features/servers/components/backups/restore-backup-dialog.tsx:93
+msgid "Z2bRvp"
+msgstr ""
+
+#: src/features/servers/components/backups/restore-backup-dialog.tsx:104
+msgid "bX1pzZ"
+msgstr ""
+
+#: src/features/servers/components/backups/restore-backup-dialog.tsx:110
+msgid "pFmRJS"
+msgstr ""
+
 #: src/features/servers/components/console/console-frame.tsx:73
 msgid "lptya2"
 msgstr "Server ist deaktiviert"
@@ -1584,8 +1641,34 @@ msgstr "Server läuft nicht"
 msgid "clmnLf"
 msgstr "Starte deinen Server und die Konsole verbindet sich automatisch."
 
+#: src/features/servers/components/overview/change-template-dialog.tsx:89
+msgid "CnkjLF"
+msgstr ""
+
+#: src/features/servers/components/overview/change-template-dialog.tsx:94
+msgid "VWfWP6"
+msgstr ""
+
+#: src/features/servers/components/overview/change-template-dialog.tsx:124
+#: src/features/servers/components/overview/reset-root-password-dialog.tsx:115
+msgid "3SVI5p"
+msgstr ""
+
+#: src/features/servers/components/overview/change-template-dialog.tsx:127
+msgid "3hIbVf"
+msgstr ""
+
+#: src/features/servers/components/overview/change-template-dialog.tsx:139
+msgid "MbXrbc"
+msgstr ""
+
+#: src/features/servers/components/overview/change-template-dialog.tsx:171
+#: src/features/servers/components/overview/reset-root-password-dialog.tsx:135
+msgid "h8jASy"
+msgstr ""
+
 #: src/features/servers/components/overview/node-details-dialog.tsx:67
-#: src/features/servers/components/overview/server-details-card.tsx:112
+#: src/features/servers/components/overview/server-details-card.tsx:115
 msgid "ivkv/L"
 msgstr "Hostsystem"
 
@@ -1607,7 +1690,7 @@ msgstr "Festplatte"
 
 #: src/features/servers/components/overview/rename-server-dialog.tsx:65
 #: src/features/servers/components/overview/rename-server-dialog.tsx:77
-#: src/features/servers/components/overview/server-details-card.tsx:83
+#: src/features/servers/components/overview/server-details-card.tsx:86
 msgid "SwBrEP"
 msgstr "Server umbenennen"
 
@@ -1621,7 +1704,7 @@ msgstr "Mein Server"
 
 #: src/features/servers/components/overview/reset-root-password-dialog.tsx:86
 #: src/features/servers/components/overview/reset-root-password-dialog.tsx:102
-#: src/features/servers/components/overview/server-details-card.tsx:186
+#: src/features/servers/components/overview/server-details-card.tsx:189
 msgid "D3OPFp"
 msgstr "Root-Passwort zurücksetzen"
 
@@ -1629,31 +1712,23 @@ msgstr "Root-Passwort zurücksetzen"
 msgid "//IN8L"
 msgstr ""
 
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:115
-msgid "3SVI5p"
-msgstr ""
-
 #: src/features/servers/components/overview/reset-root-password-dialog.tsx:118
 msgid "K1+gri"
 msgstr ""
 
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:135
-msgid "h8jASy"
-msgstr ""
-
-#: src/features/servers/components/overview/server-details-card.tsx:67
+#: src/features/servers/components/overview/server-details-card.tsx:70
 msgid "F/6VqP"
 msgstr "Server"
 
-#: src/features/servers/components/overview/server-details-card.tsx:102
+#: src/features/servers/components/overview/server-details-card.tsx:105
 msgid "4A//XV"
 msgstr "Eigenes Image"
 
-#: src/features/servers/components/overview/server-details-card.tsx:125
+#: src/features/servers/components/overview/server-details-card.tsx:128
 msgid "RTw2Xk"
 msgstr "Details zum Hostsystem anzeigen"
 
-#: src/features/servers/components/overview/server-details-card.tsx:176
+#: src/features/servers/components/overview/server-details-card.tsx:179
 msgid "8O64Ol"
 msgstr "Betriebssystem ändern"
 
@@ -1945,11 +2020,6 @@ msgstr "Offline"
 msgid "C2iTEH"
 msgstr "Pausiert"
 
-#: src/features/servers/hooks/use-status-mapping.ts:63
-#: src/features/servers/hooks/use-task-mapping.ts:71
-msgid "5jeq8P"
-msgstr "Unbekannt"
-
 #: src/features/servers/hooks/use-task-mapping.ts:31
 msgid "3qXa2f"
 msgstr "Wird gestartet..."
@@ -2149,14 +2219,14 @@ msgstr "Nach Betriebssystem suchen..."
 msgid "iEx8bl"
 msgstr "Kein unterstütztes Betriebssystem gefunden."
 
-#: src/ui/theme-switcher.tsx:42
+#: src/ui/theme-switcher.tsx:53
 msgid "Vny4fL"
 msgstr ""
 
-#: src/ui/theme-switcher.tsx:49
+#: src/ui/theme-switcher.tsx:60
 msgid "ee1Wp5"
 msgstr ""
 
-#: src/ui/theme-switcher.tsx:53
+#: src/ui/theme-switcher.tsx:64
 msgid "Efqxns"
 msgstr ""

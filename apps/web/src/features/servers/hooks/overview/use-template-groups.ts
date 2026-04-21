@@ -15,7 +15,27 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./use-data-table";
-export * from "./use-is-mobile";
-export * from "./use-media-query";
-export * from "./use-scroll";
+import { useQuery } from "@tanstack/react-query";
+import type { RouterInputs, RouterOutputs } from "@virtbase/api";
+import { useTRPC } from "@/lib/trpc/react";
+
+export type GetServerTemplateGroupsInput =
+  RouterInputs["servers"]["templateGroups"]["get"];
+
+export type GetServerTemplateGroupsOutput =
+  RouterOutputs["servers"]["templateGroups"]["get"];
+
+interface UseServerTemplateGroups extends GetServerTemplateGroupsInput {
+  queryConfig?: never;
+}
+
+export const useServerTemplateGroups = ({
+  queryConfig,
+  ...input
+}: UseServerTemplateGroups) => {
+  const trpc = useTRPC();
+
+  return useQuery(
+    trpc.servers.templateGroups.get.queryOptions(input, queryConfig),
+  );
+};

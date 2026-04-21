@@ -48,6 +48,9 @@ export function ServerDetailsCard() {
     server_id: serverId,
   });
 
+  const isActionsDisabled =
+    isPending || isError || !server || !isOperational(server);
+
   // TODO: Currently only one IPv4 and IPv6 address is supported for display
   // The UI would need to be updated to support multiple addresses.
 
@@ -170,17 +173,17 @@ export function ServerDetailsCard() {
             size="lg"
             className="w-full"
             onClick={() => setAction("change-operating-system")}
-            disabled={isPending || isError || !server || !isOperational(server)}
+            disabled={isActionsDisabled}
           >
             <MonitorCog className="text-muted-foreground" aria-hidden="true" />
-            {t("Change Operating System")}
+            <span className="truncate">{t("Change Operating System")}</span>
           </Button>
           <Button
             variant="outline"
             size="lg"
             className="w-full"
             onClick={() => setAction("reset-root-password")}
-            disabled={isPending || isError || !server || !isOperational(server)}
+            disabled={isActionsDisabled}
           >
             <LucideLock className="text-muted-foreground" aria-hidden="true" />
             <span className="truncate">{t("Reset Root Password")}</span>

@@ -29,7 +29,6 @@ import {
   TableRow,
 } from "@virtbase/ui/table";
 import { useExtracted } from "next-intl";
-import { useServerActionState } from "@/features/servers/hooks/use-server-action-state";
 import { AnimatedEmptyState } from "@/ui/animated-empty-state";
 import type { BackupsTableColumn } from "./columns";
 
@@ -41,8 +40,6 @@ export function BackupsTable({
   isPending: boolean;
 }) {
   const t = useExtracted();
-
-  const _ = useServerActionState();
 
   return (
     <ScrollArea className="h-96 w-full">

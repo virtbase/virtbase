@@ -35,6 +35,10 @@ const ResetRootPasswordDialog = dynamic(
   },
 );
 
+const ChangeTemplateDialog = dynamic(() => import("./change-template-dialog"), {
+  ssr: false,
+});
+
 export function ServerDetailsActions() {
   const { action, setAction } = useServerActionState();
 
@@ -56,6 +60,14 @@ export function ServerDetailsActions() {
         <ResetRootPasswordDialog
           onOpenChange={(open) =>
             setAction(open ? "reset-root-password" : null)
+          }
+          open
+        />
+      )}
+      {action === "change-operating-system" && (
+        <ChangeTemplateDialog
+          onOpenChange={(open) =>
+            setAction(open ? "change-operating-system" : null)
           }
           open
         />
