@@ -19,7 +19,6 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@virtbase/ui/button";
-import { Checkbox } from "@virtbase/ui/checkbox";
 import {
   Field,
   FieldDescription,
@@ -49,7 +48,6 @@ import { useExtracted } from "next-intl";
 import { use, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { PasswordRequirements } from "@/features/auth/components/password-requirements";
-import { IntlLink } from "@/i18n/navigation.public";
 import {
   RandomPasswordAddon,
   ShowPasswordAddon,
@@ -57,6 +55,7 @@ import {
 import { OperatingSystemSelect } from "@/ui/operating-system-select";
 import type { getTemplateGroups } from "../api/get-template-groups";
 import { useCheckoutState } from "../hooks/use-checkout-state";
+import { CheckoutWaivers } from "./checkout-waivers";
 import { ElementsProvider } from "./elements-provider";
 import { StripePaymentForm } from "./stripe-payment-form";
 
@@ -193,84 +192,7 @@ export function CheckoutForm({
           )}
         />
         <FieldSeparator />
-        <Controller
-          name="terms"
-          control={form.control}
-          render={({ field, fieldState }) => (
-            <Field orientation="horizontal" data-invalid={fieldState.invalid}>
-              <Checkbox
-                id={field.name}
-                name={field.name}
-                checked={field.value}
-                onCheckedChange={field.onChange}
-                aria-invalid={fieldState.invalid}
-              />
-              <FieldLabel htmlFor={field.name} className="font-normal">
-                <span>
-                  {t.rich(
-                    "I have read and accepted the <terms>Terms of Service</terms> and the <privacy>Privacy Policy</privacy>.",
-                    {
-                      terms: (chunks) => (
-                        <IntlLink
-                          href="/legal/terms"
-                          target="_blank"
-                          prefetch={false}
-                          className="font-semibold underline decoration-dotted"
-                        >
-                          {chunks}
-                        </IntlLink>
-                      ),
-                      privacy: (chunks) => (
-                        <IntlLink
-                          href="/legal/privacy"
-                          target="_blank"
-                          prefetch={false}
-                          className="font-semibold underline decoration-dotted"
-                        >
-                          {chunks}
-                        </IntlLink>
-                      ),
-                    },
-                  )}
-                </span>
-              </FieldLabel>
-            </Field>
-          )}
-        />
-        <Controller
-          name="waiver"
-          control={form.control}
-          render={({ field, fieldState }) => (
-            <Field orientation="horizontal" data-invalid={fieldState.invalid}>
-              <Checkbox
-                id={field.name}
-                name={field.name}
-                checked={field.value}
-                onCheckedChange={field.onChange}
-                aria-invalid={fieldState.invalid}
-              />
-              <FieldLabel htmlFor={field.name} className="font-normal">
-                <span>
-                  {t.rich(
-                    "I have read and accepted the <revocation>Revocation Policy</revocation>. The revocation right expires as soon as the order is completed and the service is automatically provided.",
-                    {
-                      revocation: (chunks) => (
-                        <IntlLink
-                          href="/legal/revocation"
-                          target="_blank"
-                          prefetch={false}
-                          className="font-semibold underline decoration-dotted"
-                        >
-                          {chunks}
-                        </IntlLink>
-                      ),
-                    },
-                  )}
-                </span>
-              </FieldLabel>
-            </Field>
-          )}
-        />
+        <CheckoutWaivers control={form.control} external={false} />
         <FieldSeparator />
         <div className="flex justify-end">
           <Button type="submit" form="checkout-form" disabled={isPending}>

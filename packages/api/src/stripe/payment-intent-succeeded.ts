@@ -74,11 +74,7 @@ export const handlePaymentIntentSucceeded = async (event: Stripe.Event) => {
     );
   }
 
-  const planId =
-    configuration.type === "new_server" ||
-    configuration.type === "extend_server"
-      ? configuration.server_plan_id
-      : configuration.new_server_plan_id;
+  const planId = configuration.server_plan_id;
 
   const [plan, user] = await db.transaction(
     async (tx) =>

@@ -56,10 +56,7 @@ export const checkoutRouter = createTRPCRouter({
 
       const { db, userId } = ctx;
 
-      const planId =
-        input.type === "new_server" || input.type === "extend_server"
-          ? input.server_plan_id
-          : input.new_server_plan_id;
+      const planId = input.server_plan_id;
 
       const plan = await db.transaction(
         async (tx) => {
@@ -93,6 +90,7 @@ export const checkoutRouter = createTRPCRouter({
                 id: servers.id,
                 installed_at: servers.installedAt,
                 currentStorage: serverPlans.storage,
+                currentPlanId: serverPlans.id,
               })
               .from(servers)
               .innerJoin(serverPlans, eq(servers.serverPlanId, serverPlans.id))
@@ -116,20 +114,20 @@ export const checkoutRouter = createTRPCRouter({
           throw new TRPCError({ code: "NOT_FOUND" });
         }
 
-        if (isInstalling(server)) {
-          // Cannot extend or upgrade an installing server
-          throw new TRPCError({ code: "BAD_REQUEST" });
+        if (input.type === "upgrade_server") {
+          if (
+            // Cannot upgrade an installing server
+            isInstalling(server) ||
+            // Downgrading to a smaller storage plan is not supported
+            server.currentStorage > plan.storage ||
+            // Cannot upgrade to the same plan
+            server.currentPlanId === plan.id
+          ) {
+            throw new TRPCError({ code: "BAD_REQUEST" });
+          }
         }
 
-        if (
-          input.type === "upgrade_server" &&
-          server.currentStorage > plan.storage
-        ) {
-          // Downgrading to a smaller storage plan is not supported
-          throw new TRPCError({
-            code: "BAD_REQUEST",
-          });
-        }
+        // TODO: Check availability of resources
       }
 
       let configuration: OrderConfigurationSnapshot;
@@ -158,7 +156,7 @@ export const checkoutRouter = createTRPCRouter({
             type: "upgrade_server",
             version: 1,
             server_id: input.server_id,
-            new_server_plan_id: plan.id,
+            server_plan_id: plan.id,
           };
           break;
         default:

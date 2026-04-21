@@ -1,0 +1,82 @@
+/*
+ *   Copyright (c) 2026 Janic Bellmann
+ *
+ *   This program is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+import { captureException } from "@sentry/nextjs";
+import { and, asc, desc, getTableColumns, ilike } from "@virtbase/db";
+import { db } from "@virtbase/db/client";
+import { proxmoxTemplates } from "@virtbase/db/schema";
+import { getDateIntervalFilter } from "@virtbase/db/utils";
+import { cacheLife, cacheTag } from "next/cache";
+import type { GetProxmoxTemplatesSchema } from "../../lib/proxmox-templates/validations";
+import { verifySession } from "../verify-session";
+
+export async function getTemplatesList(input: GetProxmoxTemplatesSchema) {
+  "use cache: private";
+
+  cacheLife({ revalidate: 1, stale: 1, expire: 60 });
+  cacheTag("proxmox-templates");
+
+  await verifySession();
+
+  try {
+    const offset = (input.page - 1) * input.perPage;
+
+    const where = and(
+      input.name ? ilike(proxmoxTemplates.name, `%${input.name}%`) : undefined,
+      getDateIntervalFilter(proxmoxTemplates.createdAt, input.createdAt),
+      getDateIntervalFilter(proxmoxTemplates.updatedAt, input.updatedAt),
+    );
+
+    const orderBy =
+      input.sort.length > 0
+        ? input.sort.map((item) =>
+            item.desc
+              ? desc(proxmoxTemplates[item.id])
+              : asc(proxmoxTemplates[item.id]),
+          )
+        : [asc(proxmoxTemplates.name)];
+
+    const { data, total } = await db.transaction(
+      async (tx) => {
+        const columns = getTableColumns(proxmoxTemplates);
+        const data = await tx
+          .select(columns)
+          .from(proxmoxTemplates)
+          .limit(input.perPage)
+          .offset(offset)
+          .where(where)
+          .orderBy(...orderBy);
+
+        const total = await tx.$count(proxmoxTemplates, where);
+
+        return { data, total };
+      },
+      {
+        accessMode: "read only",
+        isolationLevel: "read committed",
+      },
+    );
+
+    const pageCount = Math.ceil(total / input.perPage);
+
+    return { data, pageCount };
+  } catch (error) {
+    captureException(error);
+
+    return { data: [], pageCount: 0 };
+  }
+}

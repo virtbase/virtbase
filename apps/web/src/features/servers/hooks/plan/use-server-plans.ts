@@ -15,8 +15,20 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./datacenters";
-export * from "./proxmox-node-group";
-export * from "./proxmox-nodes";
-export * from "./proxmox-template-group";
-export * from "./proxmox-templates";
+import { useQuery } from "@tanstack/react-query";
+import type { RouterInputs, RouterOutputs } from "@virtbase/api";
+import { useTRPC } from "@/lib/trpc/react";
+
+export type GetServerPlansInput = RouterInputs["servers"]["plan"]["get"];
+
+export type GetServerPlansOutput = RouterOutputs["servers"]["plan"]["get"];
+
+interface GetServerPlans extends GetServerPlansInput {
+  queryConfig?: never;
+}
+
+export const useServerPlans = ({ queryConfig, ...input }: GetServerPlans) => {
+  const trpc = useTRPC();
+
+  return useQuery(trpc.servers.plan.get.queryOptions(input, queryConfig));
+};

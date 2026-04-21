@@ -34,6 +34,7 @@ import { CheckoutAuthWrapper } from "@/features/checkout/components/checkout-aut
 import { CheckoutForm } from "@/features/checkout/components/checkout-form";
 import { CheckoutFormSkeleton } from "@/features/checkout/components/checkout-form-skeleton";
 import { OrderSummary } from "@/features/checkout/components/order-summary";
+import { CheckoutStateProvider } from "@/features/checkout/hooks/use-checkout-state";
 import { BlockWrapper } from "@/ui/block-wrapper";
 
 type PageProps = {
@@ -132,9 +133,11 @@ export default async function Page({ params }: PageProps) {
           <div className="col-span-12 flex flex-col gap-4 bg-background p-5 md:col-span-8">
             <Suspense fallback={<CheckoutFormSkeleton />}>
               <CheckoutAuthWrapper planId={id}>
-                <CheckoutForm
-                  promise={getTemplateGroups(plan.proxmoxNodeGroupId)}
-                />
+                <CheckoutStateProvider>
+                  <CheckoutForm
+                    promise={getTemplateGroups(plan.proxmoxNodeGroupId)}
+                  />
+                </CheckoutStateProvider>
               </CheckoutAuthWrapper>
             </Suspense>
           </div>

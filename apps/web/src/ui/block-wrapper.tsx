@@ -20,10 +20,14 @@ import { cn } from "@virtbase/ui";
 export function BlockWrapper({
   children,
   variant = "default",
+  width = "default",
+  direction = "default",
   className,
 }: {
   children: React.ReactNode;
   variant?: "hero" | "hero-full" | "default" | "flush";
+  direction?: "default" | "reverse";
+  width?: "default" | "full";
   className?: string;
 }) {
   const base = "grid-section relative overflow-clip px-4";
@@ -35,15 +39,21 @@ export function BlockWrapper({
           base,
           "[.grid-section_~_&_>_div]:border-t-0",
           variant === "hero-full" && "border-b",
+          width === "full" && "px-0",
         )}
       >
         <div
           className={cn(
-            "relative z-0 mx-auto max-w-5xl border-border",
-            variant === "hero" && "border-b",
+            "relative z-0 mx-auto border-border",
+            variant === "hero" && direction === "default" && "border-b",
+            width === "default" && "max-w-5xl",
           )}
         >
-          <div className="mask-[linear-gradient(transparent,var(--background))] pointer-events-none absolute inset-0 border-border border-x" />
+          <div
+            className="data-[direction=default]:mask-[linear-gradient(transparent,var(--background))] data-[direction=reverse]:mask-[linear-gradient(var(--background),transparent)] pointer-events-none absolute inset-0 border-border border-x"
+            data-direction={direction}
+            aria-hidden="true"
+          />
           <div className={cn("relative", className)}>{children}</div>
         </div>
       </div>
@@ -60,11 +70,13 @@ export function BlockWrapper({
       className={cn(
         base,
         "border-border border-y [.grid-section_~_&]:border-t-0",
+        width === "full" && "px-0",
       )}
     >
       <div
         className={cn(
-          "relative z-0 mx-auto max-w-5xl border-border border-x",
+          "relative z-0 mx-auto border-border border-x",
+          width === "default" && "max-w-5xl",
           className,
         )}
       >

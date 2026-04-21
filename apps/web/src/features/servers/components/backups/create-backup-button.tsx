@@ -18,7 +18,7 @@
 "use client";
 
 import { Button } from "@virtbase/ui/button";
-import { hasTask, isOperational, ProxmoxTaskStatus } from "@virtbase/utils";
+import { isBusy, isOperational } from "@virtbase/utils";
 import dynamic from "next/dynamic";
 import { useParams } from "next/navigation";
 import type React from "react";
@@ -58,8 +58,7 @@ export function CreateBackupButton({
           isPending ||
           !status ||
           !isOperational(status) ||
-          hasTask(status, ProxmoxTaskStatus.BACKING_UP) ||
-          hasTask(status, ProxmoxTaskStatus.RESTORING_BACKUP) ||
+          isBusy(status) ||
           disabled
         }
         {...props}

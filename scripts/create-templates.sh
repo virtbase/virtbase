@@ -27,7 +27,7 @@ sources["ubuntu-25.10"]="https://cloud-images.ubuntu.com/questing/current/questi
 sources["ubuntu-25.04"]="https://cloud-images.ubuntu.com/plucky/current/plucky-server-cloudimg-amd64.img"
 # LTS versions
 sources["ubuntu-24.04"]="https://cloud-images.ubuntu.com/noble/current/noble-server-cloudimg-amd64.img"
-sources["ubuntu-22.04.5"]="https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64-disk-kvm.img"
+sources["ubuntu-22.04.5"]="https://cloud-images.ubuntu.com/jammy/current/jammy-server-cloudimg-amd64.img"
 
 # Older version
 #sources["ubuntu-23.04"]="https://cloud-images.ubuntu.com/lunar/current/lunar-server-cloudimg-amd64-disk-kvm.img"

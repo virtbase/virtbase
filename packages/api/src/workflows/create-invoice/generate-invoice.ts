@@ -109,11 +109,8 @@ export async function generateInvoiceStep({
     );
   }
 
-  const planId =
-    configuration.type === "new_server" ||
-    configuration.type === "extend_server"
-      ? configuration.server_plan_id
-      : configuration.new_server_plan_id;
+  const planId = configuration.server_plan_id;
+
   const plan = await db.transaction(
     async (tx) => {
       return tx

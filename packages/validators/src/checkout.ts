@@ -23,34 +23,40 @@ import { SSHKeySchema } from "./ssh-keys";
 
 const orderType = z.enum(["new_server", "extend_server", "upgrade_server"]);
 
-export const OrderNewServerPlanInputSchema = z.object({
-  type: z.literal("new_server"),
-  server_plan_id: ServerPlanSchema.shape.id,
-  // TODO: Make nullish
-  template_id: ProxmoxTemplateSchema.shape.id,
-  ssh_key_id: SSHKeySchema.shape.id.nullish(),
-  new_ssh_key: SSHKeySchema.shape.public_key.nullish(),
-  root_password: z
-    .string()
-    .min(8)
-    .regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/)
-    .nullish(),
+const BaseOrderServerPlanInputSchema = z.object({
   /** Legal requirements */
   waiver: z.boolean().refine((value) => value === true),
   terms: z.boolean().refine((value) => value === true),
 });
 
-export const OrderExtendServerPlanInputSchema = z.object({
-  type: z.literal("extend_server"),
-  server_plan_id: ServerPlanSchema.shape.id,
-  server_id: ServerSchema.shape.id,
-});
+export const OrderNewServerPlanInputSchema =
+  BaseOrderServerPlanInputSchema.extend({
+    type: z.literal("new_server"),
+    server_plan_id: ServerPlanSchema.shape.id,
+    // TODO: Make nullish
+    template_id: ProxmoxTemplateSchema.shape.id,
+    ssh_key_id: SSHKeySchema.shape.id.nullish(),
+    new_ssh_key: SSHKeySchema.shape.public_key.nullish(),
+    root_password: z
+      .string()
+      .min(8)
+      .regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/)
+      .nullish(),
+  });
 
-export const OrderUpgradeServerPlanInputSchema = z.object({
-  type: z.literal("upgrade_server"),
-  server_id: ServerSchema.shape.id,
-  new_server_plan_id: ServerPlanSchema.shape.id,
-});
+export const OrderExtendServerPlanInputSchema =
+  BaseOrderServerPlanInputSchema.extend({
+    type: z.literal("extend_server"),
+    server_plan_id: ServerPlanSchema.shape.id,
+    server_id: ServerSchema.shape.id,
+  });
+
+export const OrderUpgradeServerPlanInputSchema =
+  BaseOrderServerPlanInputSchema.extend({
+    type: z.literal("upgrade_server"),
+    server_plan_id: ServerPlanSchema.shape.id,
+    server_id: ServerSchema.shape.id,
+  });
 
 export const OrderServerPlanInputSchema = z.discriminatedUnion("type", [
   OrderNewServerPlanInputSchema,
@@ -59,6 +65,15 @@ export const OrderServerPlanInputSchema = z.discriminatedUnion("type", [
 ]);
 
 export type OrderServerPlanInput = z.infer<typeof OrderServerPlanInputSchema>;
+
+export const ExtendOrUpgradeServerPlanInputSchema = z.discriminatedUnion(
+  "type",
+  [OrderExtendServerPlanInputSchema, OrderUpgradeServerPlanInputSchema],
+);
+
+export type ExtendOrUpgradeServerPlanInput = z.infer<
+  typeof ExtendOrUpgradeServerPlanInputSchema
+>;
 
 export const OrderServerPlanOutputSchema = z.object({
   client_secret: z.string().nullable(),
@@ -105,8 +120,7 @@ export const UpgradeServerPlanConfigurationSnapshotSchema =
     version: z.literal(1),
     type: z.literal("upgrade_server"),
     server_id: ServerSchema.shape.id,
-    new_server_plan_id:
-      OrderUpgradeServerPlanInputSchema.shape.new_server_plan_id,
+    server_plan_id: OrderUpgradeServerPlanInputSchema.shape.server_plan_id,
   });
 
 export type UpgradeServerPlanConfigurationSnapshot = z.infer<

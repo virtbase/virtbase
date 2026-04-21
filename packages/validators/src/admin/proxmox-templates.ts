@@ -15,8 +15,24 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./datacenters";
-export * from "./proxmox-node-group";
-export * from "./proxmox-nodes";
-export * from "./proxmox-template-group";
-export * from "./proxmox-templates";
+import * as z from "zod";
+import { ProxmoxTemplateSchema } from "../proxmox-template";
+import { ProxmoxTemplateGroupSchema } from "./proxmox-template-group";
+
+export const CreateProxmoxTemplateInputSchema = ProxmoxTemplateSchema.omit({
+  id: true,
+  created_at: true,
+  updated_at: true,
+}).extend({
+  proxmox_template_group_id: ProxmoxTemplateGroupSchema.shape.id,
+});
+
+export type CreateProxmoxTemplateInput = z.infer<
+  typeof CreateProxmoxTemplateInputSchema
+>;
+
+export const CreateProxmoxTemplateOutputSchema = z.void();
+
+export type CreateProxmoxTemplateOutput = z.infer<
+  typeof CreateProxmoxTemplateOutputSchema
+>;

@@ -415,6 +415,12 @@ msgstr "Zu den Servern"
 msgid "9uOFF3"
 msgstr "Übersicht"
 
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/plan/page.tsx:30
+#: src/features/servers/components/plan/plan-form.tsx:75
+#: src/features/servers/components/server-nav.tsx:72
+msgid "fz0z4c"
+msgstr "Plan"
+
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/rdns/page.tsx:27
 #: src/features/account/components/api-keys/create-api-key-button.tsx:58
 #: src/features/servers/components/server-nav.tsx:66
@@ -1225,39 +1231,40 @@ msgstr "Für die Fortsetzung der Bestellung ist die Erstellung eines Kundenkonto
 msgid "SQJto2"
 msgstr "Anmelden"
 
-#: src/features/checkout/components/checkout-form.tsx:106
+#: src/features/checkout/components/checkout-form.tsx:105
 msgid "7OW8BT"
 msgstr "Konfiguration"
 
-#: src/features/checkout/components/checkout-form.tsx:113
+#: src/features/checkout/components/checkout-form.tsx:112
 #: src/features/servers/components/backups/backups-table/columns.tsx:180
 #: src/features/servers/components/overview/server-details-card.tsx:96
 msgid "t2uvIi"
 msgstr "Betriebssystem"
 
-#: src/features/checkout/components/checkout-form.tsx:133
+#: src/features/checkout/components/checkout-form.tsx:132
 msgid "hE8w/g"
 msgstr "Root-Passwort (optional)"
 
-#: src/features/checkout/components/checkout-form.tsx:144
+#: src/features/checkout/components/checkout-form.tsx:143
 msgid "wzt4BE"
 msgstr "Virtbase speichert dein Root-Passwort nicht. Es kann nachträglich über das Kundenportal geändert werden."
 
-#: src/features/checkout/components/checkout-form.tsx:152
+#: src/features/checkout/components/checkout-form.tsx:151
 msgid "mnTP3x"
 msgstr "Falls leer gelassen wird ein sicheres, zufällig generiertes Passwort per E-Mail versendet."
 
-#: src/features/checkout/components/checkout-form.tsx:210
+#: src/features/checkout/components/checkout-form.tsx:207
+#: src/features/servers/components/plan/plan-summary.tsx:273
+msgid "+g+0OK"
+msgstr "Mit Zahlung fortfahren"
+
+#: src/features/checkout/components/checkout-waivers.tsx:42
 msgid "fL6LzO"
 msgstr "Ich habe die <terms>Nutzungsbedingungen</terms> und die <privacy>Datenschutzerklärung</privacy> gelesen, verstanden und akzeptiere sie."
 
-#: src/features/checkout/components/checkout-form.tsx:254
+#: src/features/checkout/components/checkout-waivers.tsx:78
 msgid "+3U5qS"
 msgstr "Ich habe die <revocation>Widerrufsbestimmungen</revocation> gelesen und stimme zu. Das Widerrufsrecht erlischt, sobald die Bestellung abgeschlossen ist und die Dienstleistung automatisch bereitgestellt wird."
-
-#: src/features/checkout/components/checkout-form.tsx:285
-msgid "+g+0OK"
-msgstr "Mit Zahlung fortfahren"
 
 #: src/features/checkout/components/offer-card.tsx:95
 #: src/features/checkout/components/order-summary.tsx:157
@@ -1266,6 +1273,8 @@ msgstr "pro Monat"
 
 #: src/features/checkout/components/offer-card.tsx:110
 #: src/features/checkout/components/order-summary.tsx:67
+#: src/features/servers/components/plan/plan-radio-group.tsx:66
+#: src/features/servers/components/plan/plan-summary.tsx:155
 #: src/features/servers/components/servers-list.tsx:118
 msgid "BGI16m"
 msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
@@ -1301,6 +1310,7 @@ msgid "khw/ok"
 msgstr "Jetzt konfigurieren"
 
 #: src/features/checkout/components/offer-card.tsx:233
+#: src/features/servers/components/plan/plan-radio-group.tsx:121
 msgid "spsPUc"
 msgstr "Ausverkauft"
 
@@ -1308,9 +1318,33 @@ msgstr "Ausverkauft"
 msgid "ivNR8s"
 msgstr "Bestellübersicht"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:132
-msgid "u5AfPm"
-msgstr "Jetzt kaufen"
+#: src/features/checkout/components/stripe-payment-form.tsx:133
+msgid "6orx1c"
+msgstr ""
+
+#: src/features/checkout/components/stripe-payment-form.tsx:135
+msgid "PAzxoc"
+msgstr ""
+
+#: src/features/checkout/components/stripe-payment-form.tsx:152
+msgid "BVTni9"
+msgstr ""
+
+#: src/features/checkout/components/stripe-payment-form.tsx:159
+msgid "11yeGk"
+msgstr ""
+
+#: src/features/checkout/components/stripe-payment-form.tsx:195
+msgid "vhswJi"
+msgstr ""
+
+#: src/features/checkout/components/stripe-payment-form.tsx:213
+msgid "ddCkDY"
+msgstr ""
+
+#: src/features/checkout/components/stripe-payment-form.tsx:213
+msgid "7tOz+m"
+msgstr ""
 
 #: src/features/dashboard/components/empty-servers.tsx:31
 msgid "fmSs/a"
@@ -1732,6 +1766,76 @@ msgstr "Details zum Hostsystem anzeigen"
 msgid "8O64Ol"
 msgstr "Betriebssystem ändern"
 
+#: src/features/servers/components/plan/plan-form.tsx:77
+msgid "Kng3Em"
+msgstr ""
+
+#: src/features/servers/components/plan/plan-radio-group.tsx:74
+#: src/features/servers/components/plan/plan-summary.tsx:168
+msgid "tpfEY0"
+msgstr ""
+
+#: src/features/servers/components/plan/plan-radio-group.tsx:82
+#: src/features/servers/components/plan/plan-summary.tsx:182
+msgid "cenOuc"
+msgstr ""
+
+#: src/features/servers/components/plan/plan-radio-group.tsx:111
+msgid "JxjC5u"
+msgstr ""
+
+#: src/features/servers/components/plan/plan-summary.tsx:69
+msgid "aG7JgP"
+msgstr ""
+
+#: src/features/servers/components/plan/plan-summary.tsx:82
+msgid "3XuHC5"
+msgstr ""
+
+#: src/features/servers/components/plan/plan-summary.tsx:87
+msgid "1p9GGF"
+msgstr ""
+
+#: src/features/servers/components/plan/plan-summary.tsx:114
+msgid "ZjhoiP"
+msgstr ""
+
+#: src/features/servers/components/plan/plan-summary.tsx:117
+msgid "RrCui3"
+msgstr ""
+
+#: src/features/servers/components/plan/plan-summary.tsx:117
+msgid "SB//YQ"
+msgstr ""
+
+#: src/features/servers/components/plan/plan-summary.tsx:124
+msgid "6WPC9q"
+msgstr ""
+
+#: src/features/servers/components/plan/plan-summary.tsx:226
+msgid "Vn2ud4"
+msgstr ""
+
+#: src/features/servers/components/plan/plan-summary.tsx:232
+msgid "LQbES8"
+msgstr ""
+
+#: src/features/servers/components/plan/plan-summary.tsx:239
+msgid "N387FB"
+msgstr ""
+
+#: src/features/servers/components/plan/plan-summary.tsx:240
+msgid "TB+1v+"
+msgstr ""
+
+#: src/features/servers/components/plan/plan-summary.tsx:262
+msgid "So9+9+"
+msgstr ""
+
+#: src/features/servers/components/plan/plan-summary.tsx:272
+msgid "YeQq19"
+msgstr ""
+
 #: src/features/servers/components/rdns/records-card.tsx:49
 msgid "Z2vqA3"
 msgstr ""
@@ -1849,10 +1953,6 @@ msgstr "Ausgehend"
 #: src/features/servers/components/server-graphs.tsx:154
 msgid "6m3w+3"
 msgstr "Intervall"
-
-#: src/features/servers/components/server-nav.tsx:72
-msgid "fz0z4c"
-msgstr "Plan"
 
 #: src/features/servers/components/server-stats-card.tsx:192
 msgid "PW+sL4"

@@ -15,8 +15,31 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./datacenters";
-export * from "./proxmox-node-group";
-export * from "./proxmox-nodes";
-export * from "./proxmox-template-group";
-export * from "./proxmox-templates";
+import * as z from "zod";
+import { ServerPlanSchema } from "../server-plan";
+import { ServerSchema } from "./shared";
+
+export const GetServerPlanInputSchema = z.object({
+  server_id: ServerSchema.shape.id,
+});
+
+export type GetServerPlanInput = z.infer<typeof GetServerPlanInputSchema>;
+
+export const GetServerPlanOutputSchema = z.object({
+  plans: z.array(
+    ServerPlanSchema.pick({
+      id: true,
+      name: true,
+      cores: true,
+      memory: true,
+      storage: true,
+      netrate: true,
+      price: true,
+    }).extend({
+      current: z.boolean(),
+      available: z.boolean(),
+    }),
+  ),
+});
+
+export type GetServerPlanOutput = z.infer<typeof GetServerPlanOutputSchema>;

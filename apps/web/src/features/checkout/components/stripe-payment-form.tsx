@@ -21,13 +21,19 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
+import { Alert, AlertDescription, AlertTitle } from "@virtbase/ui/alert";
 import { Button } from "@virtbase/ui/button";
-import { LucideShoppingCart } from "@virtbase/ui/icons";
+import { FieldDescription, FieldSet, FieldTitle } from "@virtbase/ui/field";
+import {
+  LucideLock,
+  LucideShieldCheck,
+  LucideTriangleAlert,
+} from "@virtbase/ui/icons";
 import { Spinner } from "@virtbase/ui/spinner";
 import { PUBLIC_DOMAIN } from "@virtbase/utils";
 import { useExtracted, useLocale } from "next-intl";
 import type { FormEvent } from "react";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 export const countries = [
   "AT",
@@ -58,7 +64,17 @@ export const countries = [
   "SK",
 ];
 
-export function StripePaymentForm() {
+export function StripePaymentForm({
+  onProcessingChange,
+}: {
+  /**
+   * Fires `true` when `stripe.confirmPayment` starts and `false` once it
+   * resolves (or the component unmounts). Lets sibling UI — e.g. a
+   * "Change plan" back button — disable itself while the user is mid-
+   * payment so the session can't be pulled out from under them.
+   */
+  onProcessingChange?: (isProcessing: boolean) => void;
+}) {
   const stripe = useStripe();
   const elements = useElements();
   const locale = useLocale();
@@ -67,15 +83,48 @@ export function StripePaymentForm() {
 
   const [error, setError] = useState<string | null>(null);
   const [isPending, setIsPending] = useState(false);
+  const errorRef = useRef<HTMLDivElement | null>(null);
+
+  /**
+   * Bring the error into view whenever it changes so the user never misses
+   * a failed payment attempt — especially on mobile where the Payment
+   * Element pushes the CTA far below the fold.
+   */
+  useEffect(() => {
+    if (error && errorRef.current) {
+      errorRef.current.scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      });
+    }
+  }, [error]);
+
+  // Keep the processing callback in a ref so `handleSubmit` stays stable
+  // even if the caller passes a fresh function each render, and so an
+  // unmount during payment still flushes a clean `false`.
+  const onProcessingChangeRef = useRef(onProcessingChange);
+  useEffect(() => {
+    onProcessingChangeRef.current = onProcessingChange;
+  }, [onProcessingChange]);
+
+  useEffect(() => {
+    return () => {
+      onProcessingChangeRef.current?.(false);
+    };
+  }, []);
+
+  const isReady = Boolean(stripe && elements);
+  const isSubmitDisabled = isPending || !isReady;
 
   const handleSubmit = useCallback(
     async (event: FormEvent) => {
       event.preventDefault();
-      setIsPending(true);
 
-      if (!stripe || !elements) {
-        return;
-      }
+      if (!stripe || !elements) return;
+
+      setError(null);
+      setIsPending(true);
+      onProcessingChangeRef.current?.(true);
 
       const { error } = await stripe.confirmPayment({
         confirmParams: {
@@ -85,51 +134,109 @@ export function StripePaymentForm() {
         elements,
       });
 
+      // If we reach this point Stripe did not redirect — confirmPayment
+      // either failed client-side validation or the PI could not be
+      // confirmed. Surface the error and re-enable the form.
       if (error?.message) {
         setError(error.message);
-        setIsPending(false);
       }
+      setIsPending(false);
+      onProcessingChangeRef.current?.(false);
     },
     [stripe, elements, locale],
   );
 
   return (
-    <form id="checkout-form" className="space-y-4" onSubmit={handleSubmit}>
-      <AddressElement
-        options={{
-          mode: "billing",
-          allowedCountries: countries,
-          blockPoBox: true,
-          autocomplete: {
-            mode: "automatic",
-          },
-        }}
-      />
-      <PaymentElement
-        options={{
-          business: {
-            name: "Virtbase",
-          },
-          layout: {
-            type: "accordion",
-            spacedAccordionItems: true,
-            defaultCollapsed: false,
-            radios: "auto",
-          },
-          terms: {
-            card: "always",
-            sepaDebit: "always",
-          },
-          wallets: {
-            link: "never",
-          },
-        }}
-      />
-      {error && <p className="text-destructive text-sm">{error}</p>}
-      <div className="mt-6 flex justify-end">
-        <Button type="submit" form="checkout-form" disabled={isPending}>
-          {isPending ? <Spinner /> : <LucideShoppingCart aria-hidden="true" />}
-          {t("Buy now")}
+    <form id="checkout-form" onSubmit={handleSubmit} className="space-y-6">
+      {/**
+       * A single <fieldset disabled> disables every embedded Stripe iframe
+       * control in one go, preventing partial edits during confirmPayment.
+       */}
+
+      <FieldSet disabled={isPending}>
+        <section className="space-y-3">
+          <header className="flex flex-col gap-0.5">
+            <FieldTitle>{t("Billing address")}</FieldTitle>
+            <FieldDescription>
+              {t("Used for invoicing and VAT calculation.")}
+            </FieldDescription>
+          </header>
+          <AddressElement
+            options={{
+              mode: "billing",
+              allowedCountries: countries,
+              blockPoBox: true,
+              autocomplete: {
+                mode: "automatic",
+              },
+            }}
+          />
+        </section>
+
+        <section className="space-y-3">
+          <header className="flex flex-col gap-0.5">
+            <FieldTitle>{t("Payment method")}</FieldTitle>
+            <FieldDescription className="flex items-center gap-1.5 text-muted-foreground text-sm">
+              <LucideShieldCheck
+                className="size-3.5 shrink-0"
+                strokeWidth={1.75}
+                aria-hidden="true"
+              />
+              {t("Payments are securely processed by Stripe.")}
+            </FieldDescription>
+          </header>
+          <PaymentElement
+            options={{
+              business: {
+                name: "Virtbase",
+              },
+              layout: {
+                type: "accordion",
+                spacedAccordionItems: true,
+                defaultCollapsed: false,
+                radios: "auto",
+              },
+              terms: {
+                card: "always",
+                sepaDebit: "always",
+              },
+              wallets: {
+                link: "never",
+              },
+            }}
+          />
+        </section>
+      </FieldSet>
+
+      <div
+        ref={errorRef}
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className="empty:hidden"
+      >
+        {error && (
+          <Alert variant="destructive">
+            <LucideTriangleAlert aria-hidden="true" />
+            <AlertTitle>{t("Payment could not be completed")}</AlertTitle>
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
+      </div>
+
+      <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center sm:justify-end">
+        <Button
+          type="submit"
+          form="checkout-form"
+          disabled={isSubmitDisabled}
+          aria-busy={isPending}
+        >
+          {isPending ? (
+            <Spinner />
+          ) : (
+            <LucideLock aria-hidden="true" strokeWidth={1.75} />
+          )}
+          {isPending ? t("Processing payment…") : t("Pay now")}
         </Button>
       </div>
     </form>

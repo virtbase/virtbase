@@ -103,6 +103,8 @@ export const proxmoxTemplates = pgTable(
   (t) => [index().on(t.proxmoxTemplateGroupId)],
 );
 
+export type DatabaseProxmoxTemplates = typeof proxmoxTemplates.$inferSelect;
+
 export const proxmoxTemplatesRelations = relations(
   proxmoxTemplates,
   ({ one, many }) => ({
