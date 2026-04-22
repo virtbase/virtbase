@@ -130,8 +130,12 @@ export const handlePaymentIntentSucceeded = async (event: Stripe.Event) => {
       ]);
       break;
     case "upgrade_server":
-      // TODO: Start upgrade server workflow
-      await start(upgradeServerWorkflow);
+      await start(upgradeServerWorkflow, [
+        {
+          serverId: configuration.server_id,
+          serverPlanId: planId,
+        },
+      ]);
       break;
     case "extend_server": {
       await start(extendServerWorkflow, [

@@ -15,10 +15,37 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export type { Proxmox } from "proxmox-api";
-export * from "./change-adapter-netrate";
-export * from "./generate-cloud-init-network-config";
-export * from "./get-last-task";
-export * from "./get-network-adapter-config";
-export * from "./get-proxmox-instance";
-export * from "./perform-power-action";
+import { db } from "@virtbase/db/client";
+import { serverPlans } from "@virtbase/db/schema";
+import { FatalError } from "workflow";
+
+type GetServerPlanStepParams = {
+  serverPlanId: string;
+};
+
+export async function getServerPlanStep({
+  serverPlanId,
+}: GetServerPlanStepParams) {
+  "use step";
+  const plan = await db.transaction(
+    async (tx) => {
+      return tx
+        .select()
+        .from(serverPlans)
+        .limit(1)
+        .then(([res]) => res);
+    },
+    {
+      accessMode: "read only",
+      isolationLevel: "read committed",
+    },
+  );
+
+  if (!plan) {
+    throw new FatalError(
+      `The server plan with ID "${serverPlanId}" does not exist. Aborting.`,
+    );
+  }
+
+  return plan;
+}

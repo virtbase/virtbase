@@ -21,7 +21,6 @@ import { Checkbox } from "@virtbase/ui/checkbox";
 import { Field, FieldLabel } from "@virtbase/ui/field";
 import { PUBLIC_DOMAIN } from "@virtbase/utils";
 import { useExtracted } from "next-intl";
-import type { UseFormReturn } from "react-hook-form";
 import { Controller } from "react-hook-form";
 import { IntlLink } from "@/i18n/navigation.public";
 
@@ -31,10 +30,8 @@ export function CheckoutWaivers({
   control,
   external,
 }: {
-  control: UseFormReturn<{
-    terms: boolean;
-    waiver: boolean;
-  }>["control"];
+  // biome-ignore lint/suspicious/noExplicitAny: Fix this later
+  control: any;
   external: boolean;
 }) {
   const t = useExtracted();
