@@ -15,17 +15,17 @@ msgstr ""
 "Language-Team: Spanish\n"
 "PO-Revision-Date: 2026-04-03 12:42\n"
 
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:78
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:90
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:79
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:91
 msgid "VX2yLr"
 msgstr "Configure {name}"
 
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:79
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:91
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:80
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:92
 msgid "a7uVhC"
 msgstr "Configure the server plan {name} on {appName}"
 
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:145
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:148
 msgid "fYwMu5"
 msgstr "All prices include statutory VAT, if applicable."
 
@@ -247,8 +247,8 @@ msgstr "Datacenters"
 msgid "iHN12u"
 msgstr "Admin"
 
-#: src/app/admin.virtbase.com/(dashboard)/node-groups/[id]/page.tsx:40
-#: src/app/admin.virtbase.com/(dashboard)/node-groups/[id]/page.tsx:57
+#: src/app/admin.virtbase.com/(dashboard)/node-groups/[id]/page.tsx:41
+#: src/app/admin.virtbase.com/(dashboard)/node-groups/[id]/page.tsx:58
 #: src/app/admin.virtbase.com/(dashboard)/node-groups/page.tsx:38
 #: src/app/admin.virtbase.com/(dashboard)/node-groups/page.tsx:55
 #: src/features/admin/components/admin-sidebar-groups.tsx:75
@@ -270,8 +270,8 @@ msgstr ""
 msgid "hzSNj4"
 msgstr "Dashboard"
 
-#: src/app/admin.virtbase.com/(dashboard)/servers/page.tsx:36
-#: src/app/admin.virtbase.com/(dashboard)/servers/page.tsx:52
+#: src/app/admin.virtbase.com/(dashboard)/servers/page.tsx:37
+#: src/app/admin.virtbase.com/(dashboard)/servers/page.tsx:53
 #: src/app/app.virtbase.com/(dashboard)/servers/page.tsx:37
 #: src/app/app.virtbase.com/(dashboard)/servers/page.tsx:51
 #: src/features/account/components/api-keys/create-api-key-button.tsx:54
@@ -289,8 +289,8 @@ msgstr "Subnets"
 
 #: src/app/admin.virtbase.com/(dashboard)/template-groups/[id]/page.tsx:37
 #: src/app/admin.virtbase.com/(dashboard)/template-groups/[id]/page.tsx:55
-#: src/app/admin.virtbase.com/(dashboard)/template-groups/page.tsx:36
-#: src/app/admin.virtbase.com/(dashboard)/template-groups/page.tsx:52
+#: src/app/admin.virtbase.com/(dashboard)/template-groups/page.tsx:38
+#: src/app/admin.virtbase.com/(dashboard)/template-groups/page.tsx:54
 #: src/features/admin/components/admin-sidebar-groups.tsx:80
 msgid "aIwSug"
 msgstr "Template Groups"
@@ -416,7 +416,7 @@ msgid "9uOFF3"
 msgstr "Overview"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/plan/page.tsx:30
-#: src/features/servers/components/plan/plan-form.tsx:75
+#: src/features/servers/components/plan/plan-form.tsx:81
 #: src/features/servers/components/server-nav.tsx:72
 msgid "fz0z4c"
 msgstr "Plan"
@@ -510,6 +510,9 @@ msgstr "Created {date}"
 
 #: src/features/account/components/api-keys/api-keys-list.tsx:103
 #: src/features/account/components/ssh-keys/ssh-keys-list.tsx:92
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:369
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:205
+#: src/features/admin/components/servers/servers-table/columns.tsx:266
 #: src/features/admin/components/users/users-table/columns.tsx:349
 #: src/features/servers/components/backups/backups-table/backup-actions.tsx:155
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:141
@@ -529,6 +532,7 @@ msgstr "Create API key"
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:71
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:72
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:120
+#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:90
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx:74
 #: src/features/servers/components/backups/create-backup-dialog.tsx:104
 #: src/features/servers/components/backups/restore-backup-dialog.tsx:76
@@ -553,6 +557,11 @@ msgstr "This key will only be displayed once. Please save it securely, as it can
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:94
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:95
+#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:113
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:89
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:103
+#: src/features/admin/components/servers/servers-table/columns.tsx:96
+#: src/features/admin/components/servers/servers-table/columns.tsx:104
 #: src/features/servers/components/backups/backups-table/columns.tsx:64
 #: src/features/servers/components/backups/create-backup-dialog.tsx:128
 #: src/features/servers/components/overview/node-details-dialog.tsx:83
@@ -933,6 +942,8 @@ msgid "RJ3ocO"
 msgstr ""
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:181
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:88
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:100
 #: src/features/servers/components/rdns/records-table/columns.tsx:50
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx:135
 msgid "uPDgth"
@@ -1012,6 +1023,8 @@ msgid "bRNAv0"
 msgstr "Maximum vCores"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:550
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:239
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:266
 #: src/features/servers/components/server-stats-card.tsx:90
 msgid "cCUvGW"
 msgstr "vCores"
@@ -1023,6 +1036,137 @@ msgstr "Network limit"
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:620
 msgid "U9Jxp7"
 msgstr "If reached, this node will no longer be used for services. Leave empty for unlimited."
+
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:63
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:64
+#: src/features/admin/components/servers/servers-table/columns.tsx:71
+msgid "94Fg25"
+msgstr ""
+
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:74
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:75
+#: src/features/admin/components/servers/servers-table/columns.tsx:82
+msgid "4pJVaS"
+msgstr ""
+
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:101
+msgid "39jmFD"
+msgstr ""
+
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:112
+msgid "/xxglw"
+msgstr ""
+
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:128
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:162
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:207
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:253
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:287
+msgid "EWGm/3"
+msgstr ""
+
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:137
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:177
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:222
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:262
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:306
+msgid "17eYMk"
+msgstr ""
+
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:148
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:185
+#: src/features/landing/components/server-stats-demo.tsx:80
+#: src/features/servers/components/server-graphs.tsx:104
+#: src/features/servers/components/server-stats-card.tsx:107
+msgid "LjglgP"
+msgstr "RAM"
+
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:193
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:232
+#: src/features/servers/components/overview/node-details-dialog.tsx:97
+msgid "DUIDEq"
+msgstr "Storage"
+
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:273
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:318
+msgid "6vjF8Q"
+msgstr ""
+
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:326
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:332
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:145
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:151
+#: src/features/admin/components/servers/servers-table/columns.tsx:206
+#: src/features/admin/components/servers/servers-table/columns.tsx:212
+#: src/features/servers/components/rdns/records-table/columns.tsx:60
+msgid "AbXVP4"
+msgstr ""
+
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:346
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:180
+#: src/features/admin/components/servers/servers-table/columns.tsx:243
+#: src/features/admin/components/users/users-table/columns.tsx:252
+msgid "bdcMGy"
+msgstr "Open menu"
+
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:360
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:196
+#: src/features/admin/components/servers/servers-table/columns.tsx:257
+#: src/features/admin/components/users/users-table/columns.tsx:266
+#: src/features/servers/components/servers-list.tsx:173
+msgid "FgydNe"
+msgstr "View"
+
+#: src/features/admin/components/proxmox-template-groups/create-template-group-button.tsx:42
+#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:75
+msgid "Xj2bvc"
+msgstr ""
+
+#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:80
+msgid "Fbkq0B"
+msgstr ""
+
+#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:132
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:114
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:120
+msgid "8lCjAM"
+msgstr ""
+
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:104
+#: src/features/admin/components/servers/servers-table/columns.tsx:105
+msgid "wFbsIt"
+msgstr ""
+
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:130
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:137
+msgid "lb/VMv"
+msgstr ""
+
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:161
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:167
+#: src/features/servers/components/rdns/records-table/columns.tsx:72
+msgid "wFMlsH"
+msgstr ""
+
+#: src/features/admin/components/servers/servers-table/columns.tsx:115
+#: src/features/admin/components/servers/servers-table/columns.tsx:121
+msgid "XmTS6D"
+msgstr ""
+
+#: src/features/admin/components/servers/servers-table/columns.tsx:131
+#: src/features/admin/components/servers/servers-table/columns.tsx:154
+msgid "3JxaKs"
+msgstr ""
+
+#: src/features/admin/components/servers/servers-table/columns.tsx:177
+#: src/features/admin/components/servers/servers-table/columns.tsx:198
+msgid "EwRIOm"
+msgstr ""
+
+#: src/features/admin/components/servers/servers-table/columns.tsx:222
+#: src/features/admin/components/servers/servers-table/columns.tsx:229
+msgid "1UsI0I"
+msgstr ""
 
 #: src/features/admin/components/subnets/create-subnet-button.tsx:39
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx:65
@@ -1057,15 +1201,6 @@ msgstr "Yes"
 #: src/features/admin/components/users/users-table/columns.tsx:197
 msgid "oUWADl"
 msgstr "No"
-
-#: src/features/admin/components/users/users-table/columns.tsx:252
-msgid "bdcMGy"
-msgstr "Open menu"
-
-#: src/features/admin/components/users/users-table/columns.tsx:266
-#: src/features/servers/components/servers-list.tsx:173
-msgid "FgydNe"
-msgstr "View"
 
 #: src/features/admin/components/users/users-table/columns.tsx:284
 msgid "hQZhn8"
@@ -1254,7 +1389,7 @@ msgid "mnTP3x"
 msgstr "If left blank, a secure random password will be generated and sent by email."
 
 #: src/features/checkout/components/checkout-form.tsx:207
-#: src/features/servers/components/plan/plan-summary.tsx:273
+#: src/features/servers/components/plan/plan-summary.tsx:286
 msgid "+g+0OK"
 msgstr "Continue to payment"
 
@@ -1274,7 +1409,7 @@ msgstr "per month"
 #: src/features/checkout/components/offer-card.tsx:110
 #: src/features/checkout/components/order-summary.tsx:67
 #: src/features/servers/components/plan/plan-radio-group.tsx:66
-#: src/features/servers/components/plan/plan-summary.tsx:155
+#: src/features/servers/components/plan/plan-summary.tsx:150
 #: src/features/servers/components/servers-list.tsx:118
 msgid "BGI16m"
 msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
@@ -1318,31 +1453,31 @@ msgstr "Sold out"
 msgid "ivNR8s"
 msgstr "Order Summary"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:133
+#: src/features/checkout/components/stripe-payment-form.tsx:159
 msgid "6orx1c"
 msgstr ""
 
-#: src/features/checkout/components/stripe-payment-form.tsx:135
+#: src/features/checkout/components/stripe-payment-form.tsx:161
 msgid "PAzxoc"
 msgstr ""
 
-#: src/features/checkout/components/stripe-payment-form.tsx:152
+#: src/features/checkout/components/stripe-payment-form.tsx:178
 msgid "BVTni9"
 msgstr ""
 
-#: src/features/checkout/components/stripe-payment-form.tsx:159
+#: src/features/checkout/components/stripe-payment-form.tsx:185
 msgid "11yeGk"
 msgstr ""
 
-#: src/features/checkout/components/stripe-payment-form.tsx:195
+#: src/features/checkout/components/stripe-payment-form.tsx:221
 msgid "vhswJi"
 msgstr ""
 
-#: src/features/checkout/components/stripe-payment-form.tsx:213
+#: src/features/checkout/components/stripe-payment-form.tsx:239
 msgid "ddCkDY"
 msgstr ""
 
-#: src/features/checkout/components/stripe-payment-form.tsx:213
+#: src/features/checkout/components/stripe-payment-form.tsx:239
 msgid "7tOz+m"
 msgstr ""
 
@@ -1374,7 +1509,7 @@ msgstr "No invoices"
 msgid "GtDccr"
 msgstr "No invoices have been issued yet."
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:83
+#: src/features/dashboard/components/latest-invoices-list.tsx:84
 msgid "5q3qC0"
 msgstr "Download"
 
@@ -1508,12 +1643,6 @@ msgstr "Usage"
 #: src/features/servers/components/server-stats-card.tsx:78
 msgid "QgBuiV"
 msgstr "CPU"
-
-#: src/features/landing/components/server-stats-demo.tsx:80
-#: src/features/servers/components/server-graphs.tsx:104
-#: src/features/servers/components/server-stats-card.tsx:107
-msgid "LjglgP"
-msgstr "RAM"
 
 #: src/features/landing/components/server-stats-demo.tsx:100
 #: src/features/servers/components/server-graphs.tsx:117
@@ -1718,10 +1847,6 @@ msgstr "Close"
 msgid "dVx3yz"
 msgstr "Memory"
 
-#: src/features/servers/components/overview/node-details-dialog.tsx:97
-msgid "DUIDEq"
-msgstr "Storage"
-
 #: src/features/servers/components/overview/rename-server-dialog.tsx:65
 #: src/features/servers/components/overview/rename-server-dialog.tsx:77
 #: src/features/servers/components/overview/server-details-card.tsx:86
@@ -1766,17 +1891,17 @@ msgstr "View Node Details"
 msgid "8O64Ol"
 msgstr "Change Operating System"
 
-#: src/features/servers/components/plan/plan-form.tsx:77
+#: src/features/servers/components/plan/plan-form.tsx:83
 msgid "Kng3Em"
 msgstr ""
 
 #: src/features/servers/components/plan/plan-radio-group.tsx:74
-#: src/features/servers/components/plan/plan-summary.tsx:168
+#: src/features/servers/components/plan/plan-summary.tsx:163
 msgid "tpfEY0"
 msgstr ""
 
 #: src/features/servers/components/plan/plan-radio-group.tsx:82
-#: src/features/servers/components/plan/plan-summary.tsx:182
+#: src/features/servers/components/plan/plan-summary.tsx:177
 msgid "cenOuc"
 msgstr ""
 
@@ -1796,43 +1921,43 @@ msgstr ""
 msgid "1p9GGF"
 msgstr ""
 
-#: src/features/servers/components/plan/plan-summary.tsx:114
+#: src/features/servers/components/plan/plan-summary.tsx:109
 msgid "ZjhoiP"
 msgstr ""
 
-#: src/features/servers/components/plan/plan-summary.tsx:117
-msgid "RrCui3"
-msgstr ""
-
-#: src/features/servers/components/plan/plan-summary.tsx:117
+#: src/features/servers/components/plan/plan-summary.tsx:112
 msgid "SB//YQ"
 msgstr ""
 
-#: src/features/servers/components/plan/plan-summary.tsx:124
+#: src/features/servers/components/plan/plan-summary.tsx:112
+msgid "RrCui3"
+msgstr ""
+
+#: src/features/servers/components/plan/plan-summary.tsx:119
 msgid "6WPC9q"
 msgstr ""
 
-#: src/features/servers/components/plan/plan-summary.tsx:226
+#: src/features/servers/components/plan/plan-summary.tsx:221
 msgid "Vn2ud4"
 msgstr ""
 
-#: src/features/servers/components/plan/plan-summary.tsx:232
+#: src/features/servers/components/plan/plan-summary.tsx:227
 msgid "LQbES8"
 msgstr ""
 
-#: src/features/servers/components/plan/plan-summary.tsx:239
+#: src/features/servers/components/plan/plan-summary.tsx:234
 msgid "N387FB"
 msgstr ""
 
-#: src/features/servers/components/plan/plan-summary.tsx:240
+#: src/features/servers/components/plan/plan-summary.tsx:235
 msgid "TB+1v+"
 msgstr ""
 
-#: src/features/servers/components/plan/plan-summary.tsx:262
+#: src/features/servers/components/plan/plan-summary.tsx:270
 msgid "So9+9+"
 msgstr ""
 
-#: src/features/servers/components/plan/plan-summary.tsx:272
+#: src/features/servers/components/plan/plan-summary.tsx:285
 msgid "YeQq19"
 msgstr ""
 
@@ -1846,14 +1971,6 @@ msgstr ""
 
 #: src/features/servers/components/rdns/records-table/columns.tsx:40
 msgid "99tjyG"
-msgstr ""
-
-#: src/features/servers/components/rdns/records-table/columns.tsx:60
-msgid "AbXVP4"
-msgstr ""
-
-#: src/features/servers/components/rdns/records-table/columns.tsx:72
-msgid "wFMlsH"
 msgstr ""
 
 #: src/features/servers/components/rdns/records-table/columns.tsx:98

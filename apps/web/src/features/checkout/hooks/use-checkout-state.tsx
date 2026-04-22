@@ -18,6 +18,7 @@
 "use client";
 
 import { useMutation } from "@tanstack/react-query";
+import type { OrderServerPlanInput } from "@virtbase/validators";
 import { parseAsString, useQueryStates } from "nuqs";
 import type { PropsWithChildren } from "react";
 import { createContext, useCallback, useContext, useMemo } from "react";
@@ -26,7 +27,7 @@ import { useTRPC } from "@/lib/trpc/react";
 interface CheckoutStateValue {
   clientSecret: string | null;
   customerSessionClientSecret: string | null;
-  createOrder: ReturnType<typeof useCreateOrder>["createOrder"];
+  createOrder: (input: OrderServerPlanInput) => void;
   isPending: boolean;
   resetCheckoutSession: () => void;
 }
@@ -69,7 +70,7 @@ export function useCheckoutState() {
   return ctx;
 }
 
-function useCreateOrder() {
+function useCreateOrder(): CheckoutStateValue {
   const trpc = useTRPC();
 
   const [{ client_secret, customer_session_client_secret }, setCheckoutParams] =
@@ -101,7 +102,7 @@ function useCreateOrder() {
     resetMutation();
   }, [setCheckoutParams, resetMutation]);
 
-  return useMemo<CheckoutStateValue>(
+  return useMemo(
     () => ({
       clientSecret: client_secret,
       customerSessionClientSecret: customer_session_client_secret,

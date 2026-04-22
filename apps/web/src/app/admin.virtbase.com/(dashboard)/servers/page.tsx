@@ -27,6 +27,7 @@ import type { Metadata } from "next";
 import { useExtracted } from "next-intl";
 import { getExtracted } from "next-intl/server";
 import { Suspense } from "react";
+import { ServersTableCard } from "@/features/admin/components/servers/servers-table-card";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -39,7 +40,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function Page({
-  searchParams: _,
+  searchParams,
 }: PageProps<"/admin.virtbase.com/servers">) {
   const t = useExtracted();
 
@@ -66,8 +67,7 @@ export default function Page({
           />
         }
       >
-        {/** TODO: Add servers card */}
-        {/* <ServersCard searchParams={searchParams} /> */}
+        <ServersTableCard searchParams={searchParams} />
       </Suspense>
     </DashboardLayout>
   );

@@ -162,6 +162,8 @@ export const proxmoxNodes = pgTable(
   (t) => [index().on(t.datacenterId), index().on(t.proxmoxNodeGroupId)],
 );
 
+export type DatabaseProxmoxNode = typeof proxmoxNodes.$inferSelect;
+
 export const proxmoxNodesRelations = relations(
   proxmoxNodes,
   ({ one, many }) => ({

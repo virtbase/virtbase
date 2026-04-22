@@ -114,6 +114,8 @@ export const servers = pgTable(
   ],
 );
 
+export type DatabaseServer = typeof servers.$inferSelect;
+
 export const serversRelations = relations(servers, ({ one, many }) => ({
   user: one(users, {
     fields: [servers.userId],

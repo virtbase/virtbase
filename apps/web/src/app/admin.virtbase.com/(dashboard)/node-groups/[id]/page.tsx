@@ -30,6 +30,7 @@ import { Suspense } from "react";
 import { getLinkableDatacenters } from "@/features/admin/api/datacenters/get-linkable-datacenters";
 import { getLinkableProxmoxNodeGroups } from "@/features/admin/api/proxmox-node-groups/get-linkable-proxmox-node-groups";
 import { CreateNodeButton } from "@/features/admin/components/proxmox-nodes/create-datacenter-button";
+import { NodesTableCard } from "@/features/admin/components/proxmox-nodes/nodes-table-card";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -43,7 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default function Page({
-  searchParams: _,
+  searchParams,
 }: PageProps<"/admin.virtbase.com/node-groups/[id]">) {
   const t = useExtracted();
 
@@ -75,8 +76,7 @@ export default function Page({
           />
         }
       >
-        {/** TODO: Add nodes card */}
-        {/* <NodesCard searchParams={searchParams} /> */}
+        <NodesTableCard searchParams={searchParams} />
       </Suspense>
     </DashboardLayout>
   );
