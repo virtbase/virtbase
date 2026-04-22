@@ -54,11 +54,14 @@ export const env = createEnv({
   client: {
     // Sentry Configuration
     NEXT_PUBLIC_SENTRY_DSN: z.url().optional(),
+    NEXT_PUBLIC_SENTRY_CSP_REPORT_URI: z.url().optional(),
     NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z4.string().min(1),
   },
   experimental__runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
     NEXT_PUBLIC_SENTRY_DSN: process.env.NEXT_PUBLIC_SENTRY_DSN,
+    NEXT_PUBLIC_SENTRY_CSP_REPORT_URI:
+      process.env.NEXT_PUBLIC_SENTRY_CSP_REPORT_URI,
     NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:
       process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
   },

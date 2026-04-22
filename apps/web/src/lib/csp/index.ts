@@ -108,11 +108,10 @@ const avatarPolicy = {
 const sentryPolicy = {
   "connect-src": ["https://sentry.virtbase.com", "https://*.sentry.io"],
   "script-src": ["https://*.sentry-cdn.com"],
-  // Send CSP violations to Sentry
-  // TODO: Make this dynamic
-  "report-uri": [
-    "https://sentry.virtbase.com/api/2/security/?sentry_key=11183249f1049858d3c8eec4fd0ea40f",
-  ],
+  // Send CSP violations to Sentry, if configured
+  "report-uri": process.env.NEXT_PUBLIC_SENTRY_CSP_REPORT_URI
+    ? [process.env.NEXT_PUBLIC_SENTRY_CSP_REPORT_URI]
+    : [],
 } satisfies SecurityPolicyEntry;
 
 const stripePolicy = {
