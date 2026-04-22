@@ -13,15 +13,15 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: German\n"
-"PO-Revision-Date: 2026-04-22 13:59\n"
+"PO-Revision-Date: 2026-04-22 14:47\n"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:84
 msgid "o/UJXc"
-msgstr "Asc"
+msgstr "Aufsteigend"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:92
 msgid "FXGK2/"
-msgstr "Desc"
+msgstr "Absteigend"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:100
 #: ../../packages/ui/src/data-table/data-table-toolbar.tsx:78
@@ -31,85 +31,85 @@ msgstr "Reset"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:112
 msgid "VA/Z1S"
-msgstr "Hide"
+msgstr "Ausblenden"
 
 #: ../../packages/ui/src/data-table/data-table-date-filter.tsx:149
 msgid "qp/RxH"
-msgstr "Select date range"
+msgstr "Zeitraum auswählen"
 
 #: ../../packages/ui/src/data-table/data-table-date-filter.tsx:172
 msgid "gjwFsT"
-msgstr "Select date"
+msgstr "Datum auswählen"
 
 #: ../../packages/ui/src/data-table/data-table-date-filter.tsx:203
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:172
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:264
 msgid "/zw7BY"
-msgstr "Clear {title} filter"
+msgstr "{title} Filter löschen"
 
 #: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx:133
 msgid "NKPfmm"
-msgstr "{count} selected"
+msgstr "{count} ausgewählt"
 
 #: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx:159
 msgid "V5JQj+"
-msgstr "No results found."
+msgstr "Keine Ergebnisse gefunden."
 
 #: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx:198
 msgid "F4gyn3"
-msgstr "Clear filters"
+msgstr "Filter löschen"
 
 #: ../../packages/ui/src/data-table/data-table-pagination.tsx:58
 msgid "8b5d6w"
-msgstr "{count} of {total} row(s) selected"
+msgstr "{count} von {total} Zeile(n) ausgewählt"
 
 #: ../../packages/ui/src/data-table/data-table-pagination.tsx:66
 msgid "VCZBMt"
-msgstr "Rows per page"
+msgstr "Zeilen pro Seite"
 
 #: ../../packages/ui/src/data-table/data-table-pagination.tsx:87
 msgid "Alf4gQ"
-msgstr "Page {page} of {total}"
+msgstr "Seite {page} von {total}"
 
 #: ../../packages/ui/src/data-table/data-table-pagination.tsx:94
 msgid "F4dsUN"
-msgstr "Go to first page"
+msgstr "Zu ersten Seite gehen"
 
 #: ../../packages/ui/src/data-table/data-table-pagination.tsx:104
 msgid "NYErt1"
-msgstr "Go to previous page"
+msgstr "Zur vorherigen Seite gehen"
 
 #: ../../packages/ui/src/data-table/data-table-pagination.tsx:114
 msgid "nkDaFL"
-msgstr "Go to next page"
+msgstr "Zur nächsten Seite gehen"
 
 #: ../../packages/ui/src/data-table/data-table-pagination.tsx:124
 msgid "fMrPOR"
-msgstr "Go to last page"
+msgstr "Zur letzten Seite gehen"
 
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:203
 msgid "dM+p3/"
-msgstr "From"
+msgstr "Von"
 
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:227
 msgid "9j3hXO"
-msgstr "To"
+msgstr "Bis"
 
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:252
 msgid "UfFPe5"
-msgstr "{title} slider"
+msgstr "{title} Slider"
 
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:269
 msgid "/GCoTA"
-msgstr "Clear"
+msgstr "Löschen"
 
 #: ../../packages/ui/src/data-table/data-table-toolbar.tsx:71
 msgid "jZ0o74"
-msgstr "Reset filters"
+msgstr "Filter zurücksetzen"
 
 #: ../../packages/ui/src/data-table/data-table-view-options.tsx:64
 msgid "5PWP+M"
-msgstr "Toggle columns"
+msgstr "Spalten umschalten"
 
 #: ../../packages/ui/src/data-table/data-table-view-options.tsx:72
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:360
@@ -122,15 +122,15 @@ msgstr "Ansehen"
 
 #: ../../packages/ui/src/data-table/data-table-view-options.tsx:77
 msgid "nDz7zP"
-msgstr "Search columns..."
+msgstr "Spalten suchen..."
 
 #: ../../packages/ui/src/data-table/data-table-view-options.tsx:79
 msgid "945Lt6"
-msgstr "No columns found."
+msgstr "Keine Spalten gefunden."
 
 #: ../../packages/ui/src/data-table/data-table.tsx:106
 msgid "0H2hdf"
-msgstr "No results."
+msgstr "Keine Ergebnisse."
 
 #: src/app/(public)/[locale]/checkout/[id]/page.tsx:79
 #: src/app/(public)/[locale]/checkout/[id]/page.tsx:91
@@ -374,7 +374,7 @@ msgstr "Node-Gruppen"
 
 #: src/app/admin.virtbase.com/(dashboard)/nodes/[id]/page.tsx:48
 msgid "n3j8M6"
-msgstr "Proxmox Hosts"
+msgstr "Proxmox Nodes"
 
 #: src/app/admin.virtbase.com/(dashboard)/page.tsx:40
 #: src/app/admin.virtbase.com/(dashboard)/page.tsx:54
@@ -823,19 +823,19 @@ msgstr "Unbekannte IP-Adresse"
 
 #: src/features/account/components/billing/payment-methods-card.tsx:38
 msgid "xuTqgN"
-msgstr "Payment Methods"
+msgstr "Zahlungsmethoden"
 
 #: src/features/account/components/billing/payment-methods-card.tsx:40
 msgid "oBsxme"
-msgstr "The following payment methods are stored and can be used for billing."
+msgstr "Die folgenden Zahlungsmethoden sind hinterlegt und können für die Zahlung verwendet werden."
 
 #: src/features/account/components/billing/payment-methods-list.tsx:53
 msgid "qyRflV"
-msgstr "No payment methods"
+msgstr "Keine Zahlungsmethoden"
 
 #: src/features/account/components/billing/payment-methods-list.tsx:55
 msgid "gL/ZgG"
-msgstr "No payment methods have been linked to your account."
+msgstr "Deinem Account sind keine Zahlungsmethoden zugeordnet."
 
 #: src/features/account/components/billing/payment-methods-list.tsx:155
 msgid "Ql9c9w"
@@ -1004,7 +1004,7 @@ msgstr "Land"
 
 #: src/features/admin/components/datacenters/datacenter-select.tsx:82
 msgid "kMzL65"
-msgstr "Wähle ein Rechenzentrum..."
+msgstr "Rechenzentrum auswählen..."
 
 #: src/features/admin/components/datacenters/datacenter-select.tsx:92
 msgid "ESAZCK"
@@ -1016,7 +1016,7 @@ msgstr "Kein Rechenzentrum gefunden."
 
 #: src/features/admin/components/proxmox-node-groups/create-node-group-button.tsx:42
 msgid "8gJfol"
-msgstr "Erstelle eine Host-Gruppe"
+msgstr "Node-Gruppe erstellen"
 
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:61
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:79
@@ -1029,15 +1029,15 @@ msgstr "Erstelle eine neue Proxmox VE Node-Gruppe für Proxmox VE Nodes."
 
 #: src/features/admin/components/proxmox-node-groups/node-group-select.tsx:78
 msgid "NMiQru"
-msgstr "Wähle eine Host-Gruppe..."
+msgstr "Node-Gruppe auswählen..."
 
 #: src/features/admin/components/proxmox-node-groups/node-group-select.tsx:89
 msgid "/Uo5jN"
-msgstr "Suche eine Host-Gruppe..."
+msgstr "Suche eine Node-Gruppe..."
 
 #: src/features/admin/components/proxmox-node-groups/node-group-select.tsx:91
 msgid "ao30Ou"
-msgstr "Keine Host-Gruppe gefunden."
+msgstr "Keine Node-Gruppe gefunden."
 
 #: src/features/admin/components/proxmox-nodes/create-datacenter-button.tsx:48
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:111
@@ -1056,7 +1056,7 @@ msgstr "Rechenzentrum"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:162
 msgid "RJ3ocO"
-msgstr "Host-Gruppe"
+msgstr "Node-Gruppe"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:181
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:88
@@ -1158,21 +1158,21 @@ msgstr "Falls erreicht, wird dieses System nicht mehr für weitere Dienstleistun
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:64
 #: src/features/admin/components/servers/servers-table/columns.tsx:71
 msgid "94Fg25"
-msgstr "Select all"
+msgstr "Alle auswählen"
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:74
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:75
 #: src/features/admin/components/servers/servers-table/columns.tsx:82
 msgid "4pJVaS"
-msgstr "Select row"
+msgstr "Zeile auswählen"
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:101
 msgid "39jmFD"
-msgstr "Search by hostname..."
+msgstr "Nach Hostname suchen..."
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:112
 msgid "/xxglw"
-msgstr "Number of VMs"
+msgstr "Anzahl von VMs"
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:128
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:162
@@ -1207,7 +1207,7 @@ msgstr "Festplatte"
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:273
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:318
 msgid "6vjF8Q"
-msgstr "Bandwidth"
+msgstr "Bandbreite"
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:326
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:332
@@ -1217,7 +1217,7 @@ msgstr "Bandwidth"
 #: src/features/admin/components/servers/servers-table/columns.tsx:212
 #: src/features/servers/components/rdns/records-table/columns.tsx:60
 msgid "AbXVP4"
-msgstr "Created at"
+msgstr "Erstellt"
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:346
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:180
@@ -1229,38 +1229,38 @@ msgstr "Menü öffnen"
 #: src/features/admin/components/proxmox-template-groups/create-template-group-button.tsx:42
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:75
 msgid "Xj2bvc"
-msgstr "Create Proxmox Template Group"
+msgstr "Proxmox Template Gruppe erstellen"
 
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:80
 msgid "Fbkq0B"
-msgstr "Create a new Proxmox VE template group for Proxmox VE templates."
+msgstr "Erstelle eine neue Proxmox VE Template-Gruppe für Proxmox VE Templates."
 
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:132
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:114
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:120
 msgid "8lCjAM"
-msgstr "Priority"
+msgstr "Priorität"
 
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:104
 #: src/features/admin/components/servers/servers-table/columns.tsx:105
 msgid "wFbsIt"
-msgstr "Search by name..."
+msgstr "Nach Namen suchen..."
 
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:130
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:137
 msgid "lb/VMv"
-msgstr "Number of Templates"
+msgstr "Anzahl der Templates"
 
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:161
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:167
 #: src/features/servers/components/rdns/records-table/columns.tsx:72
 msgid "wFMlsH"
-msgstr "Updated at"
+msgstr "Aktualisiert"
 
 #: src/features/admin/components/servers/servers-table/columns.tsx:115
 #: src/features/admin/components/servers/servers-table/columns.tsx:121
 msgid "XmTS6D"
-msgstr "VM ID"
+msgstr "VM-ID"
 
 #: src/features/admin/components/servers/servers-table/columns.tsx:131
 #: src/features/admin/components/servers/servers-table/columns.tsx:154
@@ -1270,12 +1270,12 @@ msgstr "Template"
 #: src/features/admin/components/servers/servers-table/columns.tsx:177
 #: src/features/admin/components/servers/servers-table/columns.tsx:198
 msgid "EwRIOm"
-msgstr "User"
+msgstr "Benutzer"
 
 #: src/features/admin/components/servers/servers-table/columns.tsx:222
 #: src/features/admin/components/servers/servers-table/columns.tsx:229
 msgid "1UsI0I"
-msgstr "Terminates at"
+msgstr "Kündigungsdatum"
 
 #: src/features/admin/components/subnets/create-subnet-button.tsx:39
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx:65
@@ -1564,31 +1564,31 @@ msgstr "Bestellübersicht"
 
 #: src/features/checkout/components/stripe-payment-form.tsx:159
 msgid "6orx1c"
-msgstr "Billing address"
+msgstr "Rechnungsadresse"
 
 #: src/features/checkout/components/stripe-payment-form.tsx:161
 msgid "PAzxoc"
-msgstr "Used for invoicing and VAT calculation."
+msgstr "Verwendet für die Rechnungserstellung und Steuerberechnung."
 
 #: src/features/checkout/components/stripe-payment-form.tsx:178
 msgid "BVTni9"
-msgstr "Payment method"
+msgstr "Zahlungsmethode"
 
 #: src/features/checkout/components/stripe-payment-form.tsx:185
 msgid "11yeGk"
-msgstr "Payments are securely processed by Stripe."
+msgstr "Zahlungen werden sicher durch Stripe abgewickelt."
 
 #: src/features/checkout/components/stripe-payment-form.tsx:221
 msgid "vhswJi"
-msgstr "Payment could not be completed"
+msgstr "Zahlung konnte nicht abgeschlossen werden"
 
 #: src/features/checkout/components/stripe-payment-form.tsx:239
 msgid "ddCkDY"
-msgstr "Processing payment…"
+msgstr "Verarbeite Zahlung…"
 
 #: src/features/checkout/components/stripe-payment-form.tsx:239
 msgid "7tOz+m"
-msgstr "Pay now"
+msgstr "Jetzt kaufen"
 
 #: src/features/dashboard/components/empty-servers.tsx:31
 msgid "fmSs/a"
@@ -1776,27 +1776,27 @@ msgstr "{count, plural, =1 {# Backup} other {# Backups}}"
 
 #: src/features/servers/components/backups/backups-table/backup-actions.tsx:122
 msgid "zz6ObK"
-msgstr "Restore"
+msgstr "Wiederherstellen"
 
 #: src/features/servers/components/backups/backups-table/backup-actions.tsx:137
 msgid "Zl4/y9"
-msgstr "Lock"
+msgstr "Sperren"
 
 #: src/features/servers/components/backups/backups-table/columns.tsx:88
 msgid "kF9XUo"
-msgstr "Timestamp"
+msgstr "Zeitpunkt"
 
 #: src/features/servers/components/backups/backups-table/columns.tsx:108
 msgid "tBwTvx"
-msgstr "Size/Status"
+msgstr "Größe/Status"
 
 #: src/features/servers/components/backups/backups-table/columns.tsx:155
 msgid "vXCeIi"
-msgstr "Failed"
+msgstr "Fehlgeschlagen"
 
 #: src/features/servers/components/backups/backups-table/columns.tsx:164
 msgid "mRL9Vh"
-msgstr "Creating..."
+msgstr "Wird erstellt..."
 
 #: src/features/servers/components/backups/backups-table/columns.tsx:194
 #: src/features/servers/components/backups/restore-backup-dialog.tsx:107
@@ -1862,23 +1862,23 @@ msgstr "Das neu erstellte Backup kann erst nach Deaktivierung des Schutzes gelö
 
 #: src/features/servers/components/backups/restore-backup-dialog.tsx:57
 msgid "MW7EBt"
-msgstr "Restore backup"
+msgstr "Backup wiederherstellen"
 
 #: src/features/servers/components/backups/restore-backup-dialog.tsx:64
 msgid "LImSzk"
-msgstr "Restore a backup to your server."
+msgstr "Stelle ein Backup deines Servers wieder her."
 
 #: src/features/servers/components/backups/restore-backup-dialog.tsx:93
 msgid "Z2bRvp"
-msgstr "By restoring the backup, the current state of the server will be reset to the state of the backup from {date}."
+msgstr "Durch das Wiederherstellen des Backups wird der aktuelle Zustand des Servers auf den Stand des Backups vom {date} zurückgesetzt."
 
 #: src/features/servers/components/backups/restore-backup-dialog.tsx:104
 msgid "bX1pzZ"
-msgstr "The following operating system will be restored:"
+msgstr "Das folgende Betriebssystem wird wiederhergestellt:"
 
 #: src/features/servers/components/backups/restore-backup-dialog.tsx:110
 msgid "pFmRJS"
-msgstr "Should the backup be restored?"
+msgstr "Soll das Backup wiederhergestellt werden?"
 
 #: src/features/servers/components/console/console-frame.tsx:73
 msgid "lptya2"
@@ -1915,29 +1915,29 @@ msgstr "Starte deinen Server und die Konsole verbindet sich automatisch."
 
 #: src/features/servers/components/overview/change-template-dialog.tsx:89
 msgid "CnkjLF"
-msgstr "Change operating system"
+msgstr "Betriebssystem ändern"
 
 #: src/features/servers/components/overview/change-template-dialog.tsx:94
 msgid "VWfWP6"
-msgstr "Change the operating system of your server."
+msgstr "Ändere das Betriebssystem deines Servers."
 
 #: src/features/servers/components/overview/change-template-dialog.tsx:124
 #: src/features/servers/components/overview/reset-root-password-dialog.tsx:115
 msgid "3SVI5p"
-msgstr "Warning"
+msgstr "Warnung"
 
 #: src/features/servers/components/overview/change-template-dialog.tsx:127
 msgid "3hIbVf"
-msgstr "By changing the operating system, all data will be permanently deleted."
+msgstr "Durch den Wechsel des Betriebssystems werden alle Daten endgültig gelöscht."
 
 #: src/features/servers/components/overview/change-template-dialog.tsx:139
 msgid "MbXrbc"
-msgstr "New Operating System"
+msgstr "Neues Betriebssystem"
 
 #: src/features/servers/components/overview/change-template-dialog.tsx:171
 #: src/features/servers/components/overview/reset-root-password-dialog.tsx:135
 msgid "h8jASy"
-msgstr "New Root Password"
+msgstr "Neues Root-Passwort"
 
 #: src/features/servers/components/overview/node-details-dialog.tsx:67
 #: src/features/servers/components/overview/server-details-card.tsx:115
@@ -1978,11 +1978,11 @@ msgstr "Root-Passwort zurücksetzen"
 
 #: src/features/servers/components/overview/reset-root-password-dialog.tsx:87
 msgid "//IN8L"
-msgstr "Reset the root password of your server."
+msgstr "Setze das Root-Passwort für deinen Server zurück."
 
 #: src/features/servers/components/overview/reset-root-password-dialog.tsx:118
 msgid "K1+gri"
-msgstr "This action cannot be undone. If the <code>qemu-quest-agent</code> package is not installed, the process will fail."
+msgstr "Dieser Vorgang kann nicht rückgängig gemacht werden. Wenn das Paket <code>qemu-quest-agent</code> nicht installiert ist, schlägt der Vorgang fehl."
 
 #: src/features/servers/components/overview/server-details-card.tsx:70
 msgid "F/6VqP"
@@ -2002,7 +2002,7 @@ msgstr "Betriebssystem ändern"
 
 #: src/features/servers/components/plan/plan-form.tsx:83
 msgid "Kng3Em"
-msgstr "Select a new plan or extend your current plan. Downgrading to a smaller storage plan is not supported."
+msgstr "Wähle einen neuen Plan aus oder verlänger den aktuellen Plan. Ein Wechsel zu einem Plan mit weniger Speicherplatz wird nicht unterstützt."
 
 #: src/features/servers/components/plan/plan-radio-group.tsx:74
 #: src/features/servers/components/plan/plan-summary.tsx:163
@@ -2016,67 +2016,67 @@ msgstr "{storage} NVMe SSD"
 
 #: src/features/servers/components/plan/plan-radio-group.tsx:111
 msgid "JxjC5u"
-msgstr "{price} / month"
+msgstr "{price} / Monat"
 
 #: src/features/servers/components/plan/plan-summary.tsx:69
 msgid "aG7JgP"
-msgstr "Downgrading to a smaller storage plan isn't supported. Pick a plan with at least {size} of storage."
+msgstr "Ein Wechsel zu einem Plan mit geringerem Speicherplatz wird nicht unterstützt. Wähle einen Plan mit mindestens {size} Speicherplatz."
 
 #: src/features/servers/components/plan/plan-summary.tsx:82
 msgid "3XuHC5"
-msgstr "{name} is sold out right now. Try again later or pick a different plan."
+msgstr "{name} ist derzeit ausverkauft. Versuche es später erneut oder wähle ein anderes Angebot."
 
 #: src/features/servers/components/plan/plan-summary.tsx:87
 msgid "1p9GGF"
-msgstr "This plan is sold out. Please pick a different plan."
+msgstr "Dieser Plan ist ausverkauft. Bitte wähle einen anderen Plan."
 
 #: src/features/servers/components/plan/plan-summary.tsx:109
 msgid "ZjhoiP"
-msgstr "Select a plan"
+msgstr "Plan auswählen"
 
 #: src/features/servers/components/plan/plan-summary.tsx:112
 msgid "SB//YQ"
-msgstr "Order summary"
+msgstr "Bestellübersicht"
 
 #: src/features/servers/components/plan/plan-summary.tsx:112
 msgid "RrCui3"
-msgstr "Summary"
+msgstr "Übersicht"
 
 #: src/features/servers/components/plan/plan-summary.tsx:119
 msgid "6WPC9q"
-msgstr "Plan change"
+msgstr "Änderung des Plans"
 
 #: src/features/servers/components/plan/plan-summary.tsx:221
 msgid "Vn2ud4"
-msgstr "/ month"
+msgstr "/ Monat"
 
 #: src/features/servers/components/plan/plan-summary.tsx:227
 msgid "LQbES8"
-msgstr "Incl. statutory VAT, if applicable"
+msgstr "Inkl. MwSt., sofern anwendbar"
 
 #: src/features/servers/components/plan/plan-summary.tsx:234
 msgid "N387FB"
-msgstr "Your current plan will be extended by one month."
+msgstr "Dein aktueller Plan wird um einen Monat verlängert."
 
 #: src/features/servers/components/plan/plan-summary.tsx:235
 msgid "TB+1v+"
-msgstr "The plan will be changed to {name} and the term will be extended by one month."
+msgstr "Der Plan wird auf {name} umgestellt und die Laufzeit um einen Monat verlängert."
 
 #: src/features/servers/components/plan/plan-summary.tsx:270
 msgid "So9+9+"
-msgstr "Change plan"
+msgstr "Plan wechseln"
 
 #: src/features/servers/components/plan/plan-summary.tsx:285
 msgid "YeQq19"
-msgstr "Preparing checkout…"
+msgstr "Checkout wird vorbereitet…"
 
 #: src/features/servers/components/rdns/records-card.tsx:49
 msgid "Z2vqA3"
-msgstr "PTR Records"
+msgstr "PTR-Einträge"
 
 #: src/features/servers/components/rdns/records-card.tsx:77
 msgid "K006kw"
-msgstr "{count, plural, =1 {# PTR record} other {# PTR records}}"
+msgstr "{count, plural, =1 {# PTR-Eintrag} other {# PTR-Einträge}}"
 
 #: src/features/servers/components/rdns/records-table/columns.tsx:40
 msgid "99tjyG"
@@ -2084,35 +2084,35 @@ msgstr "IP"
 
 #: src/features/servers/components/rdns/records-table/columns.tsx:98
 msgid "LUHXQL"
-msgstr "Delete PTR record"
+msgstr "PTR-Eintrag löschen"
 
 #: src/features/servers/components/rdns/records-table/index.tsx:122
 msgid "q9ZR74"
-msgstr "No PTR records"
+msgstr "Keine PTR-Einträge"
 
 #: src/features/servers/components/rdns/records-table/index.tsx:123
 msgid "HPaNFO"
-msgstr "No PTR records have been created yet."
+msgstr "Es wurden noch keine PTR-Einträge erstellt."
 
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx:73
 msgid "mTjnKh"
-msgstr "Update PTR Record"
+msgstr "PTR-Eintrag aktualisieren"
 
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx:78
 msgid "JAfuaI"
-msgstr "Update a PTR record for a given IP and hostname."
+msgstr "Einen PTR-Eintrag für eine bestimmte IP-Adresse und einen bestimmten Hostnamen aktualisieren."
 
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx:112
 msgid "uJV0wU"
-msgstr "IP Address"
+msgstr "IP-Adresse"
 
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx:123
 msgid "sLLPqe"
-msgstr "PTR records can be created for all IP addresses assigned to this server."
+msgstr "PTR-Einträge können für alle diesem Server zugewiesenen IP-Adressen erstellt werden."
 
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx:146
 msgid "XM/KKz"
-msgstr "The hostname to resolve for the IP address. <code>localhost</code> is not allowed."
+msgstr "Der Hostname, der für die IP-Adresse aufgelöst werden soll. <code>localhost</code> ist nicht zulässig."
 
 #: src/features/servers/components/server-actions-row.tsx:79
 msgid "tZbb+K"
@@ -2242,61 +2242,61 @@ msgstr "Die Standardaktion für ausgehende Pakete"
 
 #: src/features/servers/firewall/components/firewall-protocol-select.tsx:70
 msgid "LV0wPI"
-msgstr "Search for a protocol..."
+msgstr "Nach Protokoll suchen..."
 
 #: src/features/servers/firewall/components/firewall-protocol-select.tsx:72
 msgid "0dWwJ5"
-msgstr "No supported protocol found."
+msgstr "Kein unterstütztes Protokoll gefunden."
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx:151
 msgid "m5EN4C"
-msgstr "Create Firewall Rule"
+msgstr "Firewall Regel erstellen"
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx:151
 msgid "gsXXUl"
-msgstr "Update Firewall Rule"
+msgstr "Firewall Regel aktualisieren"
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx:155
 msgid "fnX+hz"
-msgstr "Create a new firewall rule."
+msgstr "Erstelle eine neue Firewall Regel."
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx:156
 msgid "bGOOmV"
-msgstr "Update an existing firewall rule."
+msgstr "Aktualisiere eine bestehende Firewall Regel."
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx:201
 msgid "HrImBx"
-msgstr "Select direction"
+msgstr "Richtung auswählen"
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx:260
 msgid "ubliHx"
-msgstr "ICMP type"
+msgstr "ICMP-Typ"
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx:331
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx:55
 msgid "V52jNn"
-msgstr "Enabled"
+msgstr "Aktiviert"
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx:343
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx:158
 msgid "LgbKvU"
-msgstr "Comment"
+msgstr "Kommentar"
 
 #: src/features/servers/firewall/components/firewall-rules-card.tsx:49
 msgid "Qov8tl"
-msgstr "Firewall Rules"
+msgstr "Firewall Regeln"
 
 #: src/features/servers/firewall/components/firewall-rules-card.tsx:77
 msgid "flNVEF"
-msgstr "{count, plural, =1 {# rule} other {# rules}}, {activeCount} active"
+msgstr "{count, plural, =1 {# Regel} other {# Regeln}}, {activeCount} aktiv"
 
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx:67
 msgid "Mq5bUJ"
-msgstr "Disable rule"
+msgstr "Regel deaktivieren"
 
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx:67
 msgid "5te9jo"
-msgstr "Enable rule"
+msgstr "Regel aktivieren"
 
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx:140
 msgid "mqTGdC"
@@ -2304,19 +2304,19 @@ msgstr "Ports"
 
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx:146
 msgid "Ms3d/e"
-msgstr "No Firewall rules"
+msgstr "Keine Firewall Regeln"
 
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx:147
 msgid "xlDRKD"
-msgstr "No Firewall rules have been created yet."
+msgstr "Es wurden noch keine Firewall Regeln erstellt."
 
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:96
 msgid "wmFdws"
-msgstr "Move up"
+msgstr "Nach oben bewegen"
 
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:108
 msgid "H/r5m6"
-msgstr "Move down"
+msgstr "Nach unten bewegen"
 
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:128
 msgid "lo+Rw8"
@@ -2543,13 +2543,13 @@ msgstr "Kein unterstütztes Betriebssystem gefunden."
 
 #: src/ui/theme-switcher.tsx:53
 msgid "Vny4fL"
-msgstr "System theme"
+msgstr "System Erscheinungsbild"
 
 #: src/ui/theme-switcher.tsx:60
 msgid "ee1Wp5"
-msgstr "Light theme"
+msgstr "Helles Erscheinungsbild"
 
 #: src/ui/theme-switcher.tsx:64
 msgid "Efqxns"
-msgstr "Dark theme"
+msgstr "Dunkles Erscheinungsbild"
 
