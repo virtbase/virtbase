@@ -18,6 +18,7 @@
 import type { Table as TanstackTable } from "@tanstack/react-table";
 import { flexRender } from "@tanstack/react-table";
 import { cn } from "@virtbase/ui";
+import { useExtracted } from "next-intl";
 import type * as React from "react";
 import { getColumnPinningStyle } from "../lib/data-table";
 import {
@@ -42,6 +43,8 @@ export function DataTable<TData>({
   className,
   ...props
 }: DataTableProps<TData>) {
+  const t = useExtracted();
+
   return (
     <div
       className={cn("flex w-full flex-col gap-2 overflow-auto", className)}
@@ -100,7 +103,7 @@ export function DataTable<TData>({
                   colSpan={table.getAllColumns().length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  {t("No results.")}
                 </TableCell>
               </TableRow>
             )}

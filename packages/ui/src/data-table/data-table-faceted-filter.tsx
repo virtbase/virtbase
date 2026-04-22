@@ -20,6 +20,7 @@
 import type { Column } from "@tanstack/react-table";
 import { cn } from "@virtbase/ui";
 import { Check, PlusCircle, XCircle } from "lucide-react";
+import { useExtracted } from "next-intl";
 import * as React from "react";
 import { Badge } from "../badge";
 import { Button } from "../button";
@@ -49,6 +50,8 @@ export function DataTableFacetedFilter<TData, TValue>({
   options,
   multiple,
 }: DataTableFacetedFilterProps<TData, TValue>) {
+  const t = useExtracted();
+
   const [open, setOpen] = React.useState(false);
 
   const columnFilterValue = column?.getFilterValue();
@@ -127,7 +130,9 @@ export function DataTableFacetedFilter<TData, TValue>({
                     variant="secondary"
                     className="rounded-sm px-1 font-normal"
                   >
-                    {selectedValues.size} selected
+                    {t("{count} selected", {
+                      count: String(selectedValues.size),
+                    })}
                   </Badge>
                 ) : (
                   options
@@ -151,7 +156,7 @@ export function DataTableFacetedFilter<TData, TValue>({
         <Command>
           <CommandInput placeholder={title} />
           <CommandList className="max-h-full">
-            <CommandEmpty>No results found.</CommandEmpty>
+            <CommandEmpty>{t("No results found.")}</CommandEmpty>
             <CommandGroup className="max-h-[300px] scroll-py-1 overflow-y-auto overflow-x-hidden">
               {options.map((option) => {
                 const isSelected = selectedValues.has(option.value);
@@ -190,7 +195,7 @@ export function DataTableFacetedFilter<TData, TValue>({
                     onSelect={() => onReset()}
                     className="justify-center text-center"
                   >
-                    Clear filters
+                    {t("Clear filters")}
                   </CommandItem>
                 </CommandGroup>
               </>

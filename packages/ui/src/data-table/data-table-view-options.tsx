@@ -20,6 +20,7 @@
 import type { Table } from "@tanstack/react-table";
 import { cn } from "@virtbase/ui";
 import { Check, Settings2 } from "lucide-react";
+import { useExtracted } from "next-intl";
 import * as React from "react";
 import { Button } from "../button";
 import {
@@ -43,6 +44,8 @@ export function DataTableViewOptions<TData>({
   disabled,
   ...props
 }: DataTableViewOptionsProps<TData>) {
+  const t = useExtracted();
+
   const columns = React.useMemo(
     () =>
       table
@@ -58,7 +61,7 @@ export function DataTableViewOptions<TData>({
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          aria-label="Toggle columns"
+          aria-label={t("Toggle columns")}
           role="combobox"
           variant="outline"
           size="sm"
@@ -66,14 +69,14 @@ export function DataTableViewOptions<TData>({
           disabled={disabled}
         >
           <Settings2 className="text-muted-foreground" />
-          View
+          {t("View")}
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-44 p-0" {...props}>
         <Command>
-          <CommandInput placeholder="Search columns..." />
+          <CommandInput placeholder={t("Search columns...")} />
           <CommandList>
-            <CommandEmpty>No columns found.</CommandEmpty>
+            <CommandEmpty>{t("No columns found.")}</CommandEmpty>
             <CommandGroup>
               {columns.map((column) => (
                 <CommandItem

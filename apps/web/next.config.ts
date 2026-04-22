@@ -197,7 +197,12 @@ const nextConfig: NextConfig = {
 
 const withNextIntl = createNextIntlPlugin({
   experimental: {
-    srcPath: ["./src/app", "./src/features", "./src/ui"],
+    srcPath: [
+      "./src/app",
+      "./src/features",
+      "./src/ui",
+      "../../packages/ui/src",
+    ],
     extract: {
       sourceLocale: "en",
     },

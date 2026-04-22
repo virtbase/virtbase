@@ -20,6 +20,7 @@
 import type { Column, Table } from "@tanstack/react-table";
 import { cn } from "@virtbase/ui";
 import { X } from "lucide-react";
+import { useExtracted } from "next-intl";
 import * as React from "react";
 import { Button } from "../button";
 import { Input } from "../input";
@@ -38,6 +39,8 @@ export function DataTableToolbar<TData>({
   className,
   ...props
 }: DataTableToolbarProps<TData>) {
+  const t = useExtracted();
+
   const isFiltered = table.getState().columnFilters.length > 0;
 
   const columns = React.useMemo(
@@ -65,14 +68,14 @@ export function DataTableToolbar<TData>({
         ))}
         {isFiltered && (
           <Button
-            aria-label="Reset filters"
+            aria-label={t("Reset filters")}
             variant="outline"
             size="sm"
             className="border-dashed"
             onClick={onReset}
           >
             <X />
-            Reset
+            {t("Reset")}
           </Button>
         )}
       </div>

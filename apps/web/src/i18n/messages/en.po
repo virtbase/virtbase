@@ -6,6 +6,123 @@ msgstr ""
 "X-Generator: next-intl\n"
 "X-Crowdin-SourceKey: msgstr\n"
 
+#: ../../packages/ui/src/data-table/data-table-column-header.tsx:84
+msgid "o/UJXc"
+msgstr "Asc"
+
+#: ../../packages/ui/src/data-table/data-table-column-header.tsx:92
+msgid "FXGK2/"
+msgstr "Desc"
+
+#: ../../packages/ui/src/data-table/data-table-column-header.tsx:100
+#: ../../packages/ui/src/data-table/data-table-toolbar.tsx:78
+#: src/features/servers/components/server-actions-row.tsx:174
+msgid "jm/spn"
+msgstr "Reset"
+
+#: ../../packages/ui/src/data-table/data-table-column-header.tsx:112
+msgid "VA/Z1S"
+msgstr "Hide"
+
+#: ../../packages/ui/src/data-table/data-table-date-filter.tsx:149
+msgid "qp/RxH"
+msgstr "Select date range"
+
+#: ../../packages/ui/src/data-table/data-table-date-filter.tsx:172
+msgid "gjwFsT"
+msgstr "Select date"
+
+#: ../../packages/ui/src/data-table/data-table-date-filter.tsx:203
+#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:172
+#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:264
+msgid "/zw7BY"
+msgstr "Clear {title} filter"
+
+#: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx:133
+msgid "NKPfmm"
+msgstr "{count} selected"
+
+#: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx:159
+msgid "V5JQj+"
+msgstr "No results found."
+
+#: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx:198
+msgid "F4gyn3"
+msgstr "Clear filters"
+
+#: ../../packages/ui/src/data-table/data-table-pagination.tsx:58
+msgid "8b5d6w"
+msgstr "{count} of {total} row(s) selected"
+
+#: ../../packages/ui/src/data-table/data-table-pagination.tsx:66
+msgid "VCZBMt"
+msgstr "Rows per page"
+
+#: ../../packages/ui/src/data-table/data-table-pagination.tsx:87
+msgid "Alf4gQ"
+msgstr "Page {page} of {total}"
+
+#: ../../packages/ui/src/data-table/data-table-pagination.tsx:94
+msgid "F4dsUN"
+msgstr "Go to first page"
+
+#: ../../packages/ui/src/data-table/data-table-pagination.tsx:104
+msgid "NYErt1"
+msgstr "Go to previous page"
+
+#: ../../packages/ui/src/data-table/data-table-pagination.tsx:114
+msgid "nkDaFL"
+msgstr "Go to next page"
+
+#: ../../packages/ui/src/data-table/data-table-pagination.tsx:124
+msgid "fMrPOR"
+msgstr "Go to last page"
+
+#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:203
+msgid "dM+p3/"
+msgstr "From"
+
+#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:227
+msgid "9j3hXO"
+msgstr "To"
+
+#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:252
+msgid "UfFPe5"
+msgstr "{title} slider"
+
+#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:269
+msgid "/GCoTA"
+msgstr "Clear"
+
+#: ../../packages/ui/src/data-table/data-table-toolbar.tsx:71
+msgid "jZ0o74"
+msgstr "Reset filters"
+
+#: ../../packages/ui/src/data-table/data-table-view-options.tsx:64
+msgid "5PWP+M"
+msgstr "Toggle columns"
+
+#: ../../packages/ui/src/data-table/data-table-view-options.tsx:72
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:360
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:196
+#: src/features/admin/components/servers/servers-table/columns.tsx:257
+#: src/features/admin/components/users/users-table/columns.tsx:266
+#: src/features/servers/components/servers-list.tsx:173
+msgid "FgydNe"
+msgstr "View"
+
+#: ../../packages/ui/src/data-table/data-table-view-options.tsx:77
+msgid "nDz7zP"
+msgstr "Search columns..."
+
+#: ../../packages/ui/src/data-table/data-table-view-options.tsx:79
+msgid "945Lt6"
+msgstr "No columns found."
+
+#: ../../packages/ui/src/data-table/data-table.tsx:106
+msgid "0H2hdf"
+msgstr "No results."
+
 #: src/app/(public)/[locale]/checkout/[id]/page.tsx:79
 #: src/app/(public)/[locale]/checkout/[id]/page.tsx:91
 msgid "VX2yLr"
@@ -1100,14 +1217,6 @@ msgstr "Created at"
 msgid "bdcMGy"
 msgstr "Open menu"
 
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:360
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:196
-#: src/features/admin/components/servers/servers-table/columns.tsx:257
-#: src/features/admin/components/users/users-table/columns.tsx:266
-#: src/features/servers/components/servers-list.tsx:173
-msgid "FgydNe"
-msgstr "View"
-
 #: src/features/admin/components/proxmox-template-groups/create-template-group-button.tsx:42
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:75
 msgid "Xj2bvc"
@@ -2015,10 +2124,6 @@ msgstr "Resume"
 #: src/features/servers/components/server-actions-row.tsx:138
 msgid "tFFMkF"
 msgstr "Pause"
-
-#: src/features/servers/components/server-actions-row.tsx:174
-msgid "jm/spn"
-msgstr "Reset"
 
 #: src/features/servers/components/server-graphs.tsx:86
 msgid "j9Y9nu"

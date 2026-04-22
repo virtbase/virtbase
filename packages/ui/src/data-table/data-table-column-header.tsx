@@ -26,6 +26,7 @@ import {
   EyeOff,
   X,
 } from "lucide-react";
+import { useExtracted } from "next-intl";
 import {
   DropdownMenu,
   DropdownMenuCheckboxItem,
@@ -46,6 +47,8 @@ export function DataTableColumnHeader<TData, TValue>({
   className,
   ...props
 }: DataTableColumnHeaderProps<TData, TValue>) {
+  const t = useExtracted();
+
   if (!column.getCanSort() && !column.getCanHide()) {
     return <div className={cn(className)}>{label}</div>;
   }
@@ -78,7 +81,7 @@ export function DataTableColumnHeader<TData, TValue>({
               onClick={() => column.toggleSorting(false)}
             >
               <ChevronUp aria-hidden="true" />
-              Asc
+              {t("Asc")}
             </DropdownMenuCheckboxItem>
             <DropdownMenuCheckboxItem
               className="relative pr-8 pl-2 [&>span:first-child]:right-2 [&>span:first-child]:left-auto [&_svg]:text-muted-foreground"
@@ -86,7 +89,7 @@ export function DataTableColumnHeader<TData, TValue>({
               onClick={() => column.toggleSorting(true)}
             >
               <ChevronDown aria-hidden="true" />
-              Desc
+              {t("Desc")}
             </DropdownMenuCheckboxItem>
             {column.getIsSorted() && (
               <DropdownMenuItem
@@ -94,7 +97,7 @@ export function DataTableColumnHeader<TData, TValue>({
                 onClick={() => column.clearSorting()}
               >
                 <X aria-hidden="true" />
-                Reset
+                {t("Reset")}
               </DropdownMenuItem>
             )}
           </>
@@ -106,7 +109,7 @@ export function DataTableColumnHeader<TData, TValue>({
             onClick={() => column.toggleVisibility(false)}
           >
             <EyeOff aria-hidden="true" />
-            Hide
+            {t("Hide")}
           </DropdownMenuCheckboxItem>
         )}
       </DropdownMenuContent>
