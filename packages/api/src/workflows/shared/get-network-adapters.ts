@@ -42,7 +42,7 @@ export async function getNetworkAdaptersStep({
 
   const [v4, v6] = await Promise.all([
     findFirstAvailableSubnet(4, 32, proxmoxNodeId),
-    findFirstAvailableSubnet(6, 128, proxmoxNodeId),
+    findFirstAvailableSubnet(6, 64, proxmoxNodeId),
   ]);
 
   if (null === v4 || null === v6) {
