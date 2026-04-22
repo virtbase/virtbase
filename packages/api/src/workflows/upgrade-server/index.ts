@@ -61,7 +61,11 @@ export async function upgradeServerWorkflow({
     });
 
     // 3. Prepare new hardware config
-    const { upid: configUpid, previousConfig } = await applyGuestConfigStep({
+    const {
+      upid: configUpid,
+      previousConfig,
+      addedKeys,
+    } = await applyGuestConfigStep({
       proxmoxNode: server.proxmoxNode,
       vmid: server.vmid,
       mode: "sync",
@@ -89,6 +93,7 @@ export async function upgradeServerWorkflow({
         proxmoxNode: server.proxmoxNode,
         vmid: server.vmid,
         previousConfig,
+        addedKeys,
         mode: "sync",
       });
       if (null !== upid) {

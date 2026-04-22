@@ -48,23 +48,31 @@ export async function extendServerWorkflow({
 
     rollbacks.push(() => rollbackStoreServerExtensionStep({ serverId }));
 
-    const { previousConfig } = await applyGuestConfigStep({
+    const { previousConfig, addedKeys } = await applyGuestConfigStep({
       proxmoxNode,
       vmid: server.vmid,
       config: {
-        // Re-enable the server to boot on host node boot
+        // Re-enable the server to boot on host node boot.
         onboot: true,
       },
       mode: "sync",
     });
 
     rollbacks.push(async () => {
-      await rollbackApplyGuestConfigStep({
+      const { upid } = await rollbackApplyGuestConfigStep({
         proxmoxNode,
         vmid: server.vmid,
         previousConfig,
+        addedKeys,
         mode: "sync",
       });
+      if (null !== upid) {
+        await waitForProxmoxTaskStep({
+          proxmoxNode,
+          upid,
+          ignoreErrors: true,
+        });
+      }
     });
 
     const { upid: startUpid } = await performGuestActionStep({

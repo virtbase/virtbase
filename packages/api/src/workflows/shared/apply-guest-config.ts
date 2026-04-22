@@ -31,6 +31,17 @@ type ApplyGuestConfigStepParams = {
   mode?: "sync" | "async";
 };
 
+/**
+ * Normalize config values for comparison. Proxmox stores booleans as `0`/`1`
+ * and some numeric fields as strings (e.g. `cpulimit: "1"`), so strict
+ * equality would report spurious changes when the logical value is unchanged.
+ */
+function normalizeConfigValue(value: unknown): string | undefined {
+  if (value === undefined || value === null) return undefined;
+  if (typeof value === "boolean") return value ? "1" : "0";
+  return String(value);
+}
+
 export async function applyGuestConfigStep(params: ApplyGuestConfigStepParams) {
   "use step";
 
@@ -39,24 +50,54 @@ export async function applyGuestConfigStep(params: ApplyGuestConfigStepParams) {
   const instance = getProxmoxInstance(proxmoxNode);
   const vm = instance.node.qemu.$(vmid);
 
-  const currentConfig = await vm.config.$get();
+  // Include pending changes so the diff reflects the state the guest will
+  // actually be in when the PUT/POST is applied.
+  const currentConfig = await vm.config.$get({ current: true });
 
   const func = mode === "sync" ? vm.config.$put : vm.config.$post;
   const upid = await func(config);
 
-  // Only return changed config values
+  // Capture the previous values for every key we are changing so that a
+  // rollback can restore them. Also track keys that did not exist before
+  // (newly added) so that a rollback can delete them again.
   const previousConfig: Partial<ConfigInput> = {};
-  for (const key in currentConfig) {
+  const addedKeys: string[] = [];
+
+  for (const key in config) {
+    if (key === "delete") continue;
+    const currentValue = currentConfig[key];
     // @ts-expect-error - Type mismatch between string and enums
-    if (currentConfig[key] !== config[key]) {
+    const nextValue = config[key];
+    if (normalizeConfigValue(currentValue) === normalizeConfigValue(nextValue))
+      continue;
+
+    if (currentValue === undefined) {
+      addedKeys.push(key);
+    } else {
       // @ts-expect-error - Type mismatch between string and enums
-      previousConfig[key] = currentConfig[key];
+      previousConfig[key] = currentValue;
+    }
+  }
+
+  // Keys removed via `delete` need their previous value captured so they can
+  // be re-applied on rollback.
+  if (typeof config.delete === "string" && config.delete.length > 0) {
+    const deletedKeys = config.delete
+      .split(",")
+      .map((k) => k.trim())
+      .filter(Boolean);
+    for (const key of deletedKeys) {
+      const currentValue = currentConfig[key];
+      if (currentValue === undefined) continue;
+      // @ts-expect-error - Type mismatch between string and enums
+      previousConfig[key] = currentValue;
     }
   }
 
   return {
     upid,
     previousConfig,
+    addedKeys,
   };
 }
 
@@ -65,6 +106,11 @@ type RollbackApplyGuestConfigStepParams = Pick<
   "vmid" | "proxmoxNode" | "mode"
 > & {
   previousConfig: Partial<ConfigInput>;
+  /**
+   * Keys that were newly added by the forward step and therefore need to be
+   * deleted again on rollback. Optional for backwards compatibility.
+   */
+  addedKeys?: string[];
 };
 
 export async function rollbackApplyGuestConfigStep(
@@ -72,13 +118,35 @@ export async function rollbackApplyGuestConfigStep(
 ) {
   "use step";
 
-  const { proxmoxNode, vmid, mode = "async", previousConfig } = params;
+  const {
+    proxmoxNode,
+    vmid,
+    mode = "async",
+    previousConfig,
+    addedKeys = [],
+  } = params;
 
   const instance = getProxmoxInstance(proxmoxNode);
   const vm = instance.node.qemu.$(vmid);
 
+  const rollbackConfig: Partial<ConfigInput> = { ...previousConfig };
+  if (addedKeys.length > 0) {
+    // Merge with any pre-existing `delete` in previousConfig (shouldn't
+    // normally happen, but preserve it defensively).
+    const existingDelete =
+      typeof rollbackConfig.delete === "string" ? rollbackConfig.delete : "";
+    rollbackConfig.delete = [existingDelete, addedKeys.join(",")]
+      .filter(Boolean)
+      .join(",");
+  }
+
+  // Nothing to do if neither restoration nor deletion is needed.
+  if (Object.keys(rollbackConfig).length === 0) {
+    return { upid: null };
+  }
+
   const func = mode === "sync" ? vm.config.$put : vm.config.$post;
-  const upid = await func(previousConfig);
+  const upid = await func(rollbackConfig);
 
   return {
     upid,

@@ -17,7 +17,10 @@
 
 import { sleep } from "workflow";
 import type { GetProxmoxInstanceParams } from "../../proxmox/get-proxmox-instance";
-import { applyGuestConfigStep } from "../shared/apply-guest-config";
+import {
+  applyGuestConfigStep,
+  rollbackApplyGuestConfigStep,
+} from "../shared/apply-guest-config";
 import { cloneGuestStep, rollbackCloneGuestStep } from "../shared/clone-guest";
 import { destroyGuestStep } from "../shared/destroy-guest";
 import { getTemplateStep } from "../shared/get-template";
@@ -152,21 +155,46 @@ export async function changeTempalateWorkflow({
       }),
     );
 
-    // 4. Delete the current disk from the original guest
-    const { previousConfig } = await applyGuestConfigStep({
+    // 4. Detach the current disk and clear cloud-init/network config from the
+    //    original guest. The deleted keys are captured in `previousConfig` so
+    //    that we can either restore them if step 5 fails, or re-apply the
+    //    cloud-init values later in step 7.
+    const { previousConfig, addedKeys } = await applyGuestConfigStep({
       proxmoxNode,
       vmid,
       config: {
         delete: [
-          // Delete the current disk
+          // Detach the current disk (moves it to unused0 for now).
           "scsi0",
-          // Delete current cloud-init and network configuration
-          // Ensures that these properties are returned with the previous config
-          "cicustom,ciuser,cipassword,ciupgrade,net0,net1,boot",
+          // Clear cloud-init and network configuration so step 7 can
+          // re-apply them with the new password.
+          "cicustom",
+          "ciuser",
+          "cipassword",
+          "ciupgrade",
+          "net0",
+          "net1",
+          "boot",
         ].join(","),
       },
       mode: "sync",
     });
+
+    // This rollback is only safe BEFORE step 5 completes: step 5 fills the
+    // scsi0 slot with the new disk, and step 7 destroys the old disk at
+    // `unused0`. After either of those, restoring the old `scsi0` value would
+    // either clash or reference a non-existent volume. We pop this rollback
+    // immediately after step 5 succeeds.
+    const restorePreMoveConfigRollback = async () => {
+      await rollbackApplyGuestConfigStep({
+        proxmoxNode,
+        vmid,
+        previousConfig,
+        addedKeys,
+        mode: "sync",
+      });
+    };
+    rollbacks.push(restorePreMoveConfigRollback);
 
     // 5. Move the disk from the temporary guest to the original guest
     const { upid: moveUpid } = await moveDiskStep({
@@ -188,6 +216,14 @@ export async function changeTempalateWorkflow({
       upid: moveUpid,
       ignoreErrors: false,
     });
+
+    // Past the point of no return for the pre-move rollback: the cloned
+    // disk now occupies scsi0 and the original disk at `unused0` will be
+    // destroyed in step 7.
+    const preMoveRollbackIndex = rollbacks.indexOf(restorePreMoveConfigRollback);
+    if (preMoveRollbackIndex !== -1) {
+      rollbacks.splice(preMoveRollbackIndex, 1);
+    }
 
     // 6. Resize the disk to the original plan size
     const { resizeUpid } = await resizeDiskStep({
