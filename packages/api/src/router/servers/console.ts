@@ -62,7 +62,7 @@ export const serversConsoleRouter = createTRPCRouter({
         });
       }
 
-      const { vncticket, port, password } = data;
+      const { ticket: vncticket, port, password } = data;
 
       if (!password) {
         throw new TRPCError({
