@@ -68,6 +68,7 @@ export function LatestInvoicesList() {
     <ItemRow
       key={invoice.id}
       icon={<LucideFile className="size-6 shrink-0" />}
+      className="p-4"
       rightSide={
         <Button
           variant="outline"
