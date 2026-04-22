@@ -15,20 +15,49 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { cookies } from "next/headers";
+import { captureException } from "@sentry/nextjs";
+import { cookies, headers } from "next/headers";
 import * as rootParams from "next/root-params";
 import { hasLocale } from "next-intl";
 import { getRequestConfig } from "next-intl/server";
+import { cache } from "react";
+import { auth } from "@/lib/auth/server";
 import { COOKIE_NAME, defaultLocale, locales } from "./config";
+
+const getUserLocale = cache(async () => {
+  const store = await cookies();
+  const cookieValue = store.get(COOKIE_NAME)?.value;
+
+  if (cookieValue) {
+    // Use the cookie value if it already exists (synced with the database)
+    return cookieValue;
+  }
+
+  try {
+    const session = await auth.api.getSession({
+      headers: await headers(),
+    });
+
+    if (session && hasLocale(locales, session.user.locale)) {
+      // User is authenticated and has a valid locale
+      return session.user.locale;
+    }
+  } catch (error) {
+    captureException(error);
+  }
+
+  // User is not authenticated
+  // Fallback to the default locale
+  return null;
+});
 
 export default getRequestConfig(async () => {
   let candidate = await rootParams.locale();
 
   if (!candidate) {
-    // Read from cookie if the user is logged in
-    // TODO: Use the user locale from session and store it in the database
-    const store = await cookies();
-    candidate = store.get(COOKIE_NAME)?.value;
+    // There is no rootParam locale, so we are at the app or admin domain
+    // Fallback to the cookie and database locale
+    candidate = await getUserLocale();
   }
 
   const locale = hasLocale(locales, candidate) ? candidate : defaultLocale;

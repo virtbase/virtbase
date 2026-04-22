@@ -17,13 +17,16 @@
 
 "use server";
 
+import { captureException } from "@sentry/nextjs";
 import { COOKIE_DOMAIN } from "@virtbase/utils";
 import { revalidatePath } from "next/cache";
-import { cookies } from "next/headers";
+import { cookies, headers } from "next/headers";
+import { after } from "next/server";
 import { hasLocale } from "next-intl";
+import { cache } from "react";
 import { COOKIE_NAME, locales } from "@/i18n/config";
+import { auth } from "@/lib/auth/server";
 
-// TODO: Update locale in database
 export async function updateLocaleAction(data: FormData) {
   const locale = data.get("locale");
   if ("string" !== typeof locale || !hasLocale(locales, locale)) {
@@ -35,6 +38,19 @@ export async function updateLocaleAction(data: FormData) {
     domain: COOKIE_DOMAIN,
   });
 
+  after(() => updateDatabaseLocale(locale));
+
   revalidatePath("/app.virtbase.com");
   revalidatePath("/admin.virtbase.com");
 }
+
+const updateDatabaseLocale = cache(async (locale: string) => {
+  try {
+    await auth.api.updateUser({
+      headers: await headers(),
+      body: { locale },
+    });
+  } catch (error) {
+    captureException(error);
+  }
+});

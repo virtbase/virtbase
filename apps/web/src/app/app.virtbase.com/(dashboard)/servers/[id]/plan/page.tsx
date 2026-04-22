@@ -33,8 +33,6 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Page() {
-  const t = await getExtracted();
-
   return (
     <main>
       <BlockWrapper variant="hero" width="full">
