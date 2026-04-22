@@ -105,36 +105,55 @@ export async function findFirstAvailableSubnet(
       }
 
       const query = sql`
-      WITH RECURSIVE candidates AS (
+      WITH allocated AS (
+        SELECT ${subnets.cidr} AS cidr
+        FROM ${subnets}
+        WHERE ${subnets.parentId} = ${parent.id}
+          AND ${subnets.cidr} <<= ${parent.cidr}::cidr
+      ),
+      obstacles AS (
+        -- actual allocated children
+        SELECT cidr FROM allocated
+
+        UNION
+
+        -- when allocating a single host (targetPrefix = family max),
+        -- reserve the gateway address if it falls inside the parent
+        SELECT set_masklen(${parent.gateway}::inet, ${targetPrefix})::cidr
+        WHERE ${targetPrefix} = CASE WHEN ${family} = 4 THEN 32 ELSE 128 END
+          AND ${parent.gateway}::inet <<= ${parent.cidr}::cidr
+
+        UNION
+
+        -- for IPv4 /32 allocation, reserve network and broadcast addresses
+        SELECT set_masklen(network(${parent.cidr}::inet), 32)::cidr
+        WHERE ${family} = 4 AND ${targetPrefix} = 32
+
+        UNION
+
+        SELECT set_masklen(broadcast(${parent.cidr}::inet), 32)::cidr
+        WHERE ${family} = 4 AND ${targetPrefix} = 32
+      ),
+      candidates AS (
         -- first candidate: target prefix at the start of parent
         SELECT set_masklen(${parent.cidr}::inet, ${targetPrefix})::cidr AS subnet
-  
-        UNION ALL
-  
-        -- next candidate: broadcast(subnet) + 1
-        SELECT set_masklen((broadcast(subnet) + 1)::inet, ${targetPrefix})::cidr
-        FROM candidates
-        WHERE set_masklen((broadcast(subnet) + 1)::inet, ${targetPrefix}) <<= ${parent.cidr}::inet
+
+        UNION
+
+        -- for every obstacle, the first target-prefix slot after it
+        SELECT set_masklen((broadcast(cidr) + 1)::inet, ${targetPrefix})::cidr AS subnet
+        FROM obstacles
+        WHERE (broadcast(cidr) + 1)::inet <<= ${parent.cidr}::cidr
       )
       SELECT c.subnet
       FROM candidates c
-      LEFT JOIN ${subnets} existing
-        ON existing.parent_id = ${parent.id}
-        AND existing.cidr = c.subnet
-      WHERE existing.id IS NULL
-        AND (
-          ${targetPrefix} != CASE WHEN ${family} = 4 THEN 32 ELSE 128 END
-          OR (
-            (${family} != 4 OR (
-              c.subnet::inet <> network(${parent.cidr}::inet)
-              AND c.subnet::inet <> broadcast(${parent.cidr}::inet)
-            ))
-            AND (
-              ${parent.gateway} IS NULL
-              OR c.subnet <> set_masklen(${parent.gateway}::inet, ${targetPrefix})::cidr
-            )
-          )
+      WHERE c.subnet <<= ${parent.cidr}::cidr
+        AND NOT EXISTS (
+          SELECT 1
+          FROM obstacles o
+          WHERE c.subnet && o.cidr
         )
+      ORDER BY c.subnet
       LIMIT 1;
     `;
 
