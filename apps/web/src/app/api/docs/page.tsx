@@ -20,6 +20,7 @@ import "@scalar/api-reference-react/style.css";
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
 import { ApiReferenceReact } from "@scalar/api-reference-react";
+import { captureException } from "@sentry/nextjs";
 import { appRouter, generateOpenApiDocument } from "@virtbase/api";
 import {
   APP_DOMAIN,
@@ -34,20 +35,35 @@ import { cacheLife, cacheTag } from "next/cache";
 import { cache } from "react";
 import Document from "@/ui/document";
 
+/**
+ * Read a markdown file from the `src/app/api/docs` directory
+ *
+ * @param file The file to read
+ * @returns The content of the file or an empty string if the file does not exist
+ */
+const readMarkdown = async (file: string) => {
+  try {
+    return await readFile(join(process.cwd(), "src/app/api/docs", file), {
+      encoding: "utf-8",
+    });
+  } catch (error) {
+    captureException(error);
+
+    // Fallback to an empty string to allow the documentation
+    // to be displayed even if the file does not exist
+    return "";
+  }
+};
+
 const getDocumentation = cache(async () => {
   "use cache";
 
   cacheTag("api-docs");
   cacheLife("max");
 
-  const description = await readFile(
-    join(process.cwd(), "src/app/api/docs/description.md"),
-    { encoding: "utf-8" },
-  );
-
   const doc = generateOpenApiDocument(appRouter, {
     title: `${APP_NAME} Public API`,
-    description,
+    description: await readMarkdown("description.md"),
     version: "1.0.0",
     baseUrl: `${PUBLIC_DOMAIN}/api/v1`,
     securitySchemes: {
@@ -69,20 +85,20 @@ const getDocumentation = cache(async () => {
         email: SUPPORT_EMAIL,
       },
     },
-  });
-
-  Object.assign(doc, {
-    tags: [
-      // TODO: Add descriptions for the tags
-      /* {
-        name: "Servers",
-        description: ""
-      },
-      {
-        name: "SSH Keys",
-        description: "",
-      },*/
-    ],
+    tags: await Promise.all(
+      [
+        { name: "Servers", file: "servers.md" },
+        { name: "rDNS", file: "rdns.md" },
+        { name: "Backups", file: "backups.md" },
+        { name: "Firewall", file: "firewall.md" },
+        { name: "SSH Keys", file: "ssh-keys.md" },
+        { name: "Invoices", file: "invoices.md" },
+        { name: "Offers", file: "offers.md" },
+      ].map(async (tag) => ({
+        name: tag.name,
+        description: await readMarkdown(`tags/${tag.file}`),
+      })),
+    ),
     "x-tagGroups": [
       {
         name: "Server Resources",
