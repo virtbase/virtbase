@@ -105,12 +105,14 @@ export async function changeTempalateWorkflow({
       action: "stop",
     });
 
-    await sleep("5s");
-    await waitForProxmoxTaskStep({
-      proxmoxNode,
-      upid: stopUpid,
-      ignoreErrors: false,
-    });
+    if (null !== stopUpid) {
+      await sleep("5s");
+      await waitForProxmoxTaskStep({
+        proxmoxNode,
+        upid: stopUpid,
+        ignoreErrors: false,
+      });
+    }
 
     rollbacks.push(async () => {
       const { upid: startUpid } = await rollbackPerformGuestActionStep({
@@ -220,7 +222,9 @@ export async function changeTempalateWorkflow({
     // Past the point of no return for the pre-move rollback: the cloned
     // disk now occupies scsi0 and the original disk at `unused0` will be
     // destroyed in step 7.
-    const preMoveRollbackIndex = rollbacks.indexOf(restorePreMoveConfigRollback);
+    const preMoveRollbackIndex = rollbacks.indexOf(
+      restorePreMoveConfigRollback,
+    );
     if (preMoveRollbackIndex !== -1) {
       rollbacks.splice(preMoveRollbackIndex, 1);
     }
@@ -286,12 +290,14 @@ export async function changeTempalateWorkflow({
       action: "start",
     });
 
-    await sleep("5s");
-    await waitForProxmoxTaskStep({
-      proxmoxNode,
-      upid: startUpid,
-      ignoreErrors: false,
-    });
+    if (null !== startUpid) {
+      await sleep("5s");
+      await waitForProxmoxTaskStep({
+        proxmoxNode,
+        upid: startUpid,
+        ignoreErrors: false,
+      });
+    }
 
     rollbacks.push(async () => {
       const { upid: rollbackStartUpid } = await rollbackPerformGuestActionStep({

@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { mapProxmoxServerStatus, ProxmoxServerStatus } from "@virtbase/utils";
 import type { GetProxmoxInstanceParams } from "../../proxmox";
 import { getProxmoxInstance, performPowerAction } from "../../proxmox";
 
@@ -34,24 +35,52 @@ type PerformGuestActionStepParams = {
 
 type GuestAction = PerformGuestActionStepParams["action"];
 
-export async function performGuestActionStep({
+/**
+ * For each guest action, the set of current states that make the action a
+ * no-op. When the current state is in this set, we skip the action entirely
+ * and return a null upid so callers can treat it as "nothing to do" instead
+ * of hitting a Proxmox error like "VM is already running".
+ */
+const noopStatesMap: Record<GuestAction, readonly ProxmoxServerStatus[]> = {
+  start: [ProxmoxServerStatus.RUNNING],
+  resume: [ProxmoxServerStatus.RUNNING],
+  stop: [ProxmoxServerStatus.STOPPED, ProxmoxServerStatus.SUSPENDED],
+  shutdown: [ProxmoxServerStatus.STOPPED, ProxmoxServerStatus.SUSPENDED],
+  pause: [ProxmoxServerStatus.PAUSED],
+  suspend: [ProxmoxServerStatus.SUSPENDED],
+  // `reset` and `reboot` don't have a trivially safe no-op state: rebooting a
+  // stopped VM is clearly wrong, but that's a caller error rather than
+  // something we silently swallow. Let Proxmox surface the failure.
+  reset: [],
+  reboot: [],
+};
+
+async function executePowerActionIfNeeded({
   proxmoxNode,
   vmid,
   action,
-}: PerformGuestActionStepParams) {
-  "use step";
-
+}: PerformGuestActionStepParams): Promise<{ upid: string | null }> {
   const instance = getProxmoxInstance(proxmoxNode);
   const vm = instance.node.qemu.$(vmid);
 
-  const upid = await performPowerAction({
-    vm,
-    action,
-  });
+  const currentStatus = await vm.status.current.$get();
+  const state = mapProxmoxServerStatus(currentStatus);
 
-  return {
-    upid,
-  };
+  if (noopStatesMap[action].includes(state)) {
+    // Guest is already in the desired state; nothing to do.
+    return { upid: null };
+  }
+
+  const upid = await performPowerAction({ vm, action });
+  return { upid };
+}
+
+export async function performGuestActionStep(
+  params: PerformGuestActionStepParams,
+): Promise<{ upid: string | null }> {
+  "use step";
+
+  return executePowerActionIfNeeded(params);
 }
 
 const reversedActionsMap = {
@@ -73,45 +102,47 @@ export async function rollbackPerformGuestActionStep({
   upid,
 }: Pick<PerformGuestActionStepParams, "proxmoxNode" | "vmid"> & {
   initialAction: GuestAction;
-  upid: string;
+  /**
+   * The UPID returned by the forward step. May be `null` if the forward step
+   * was a no-op because the guest was already in the target state.
+   */
+  upid: string | null;
 }): Promise<{ upid: string | null }> {
   "use step";
 
+  // Forward step was a no-op — nothing to roll back.
+  if (upid === null) {
+    return { upid: null };
+  }
+
   const instance = getProxmoxInstance(proxmoxNode);
   const node = instance.node;
-  const vm = instance.node.qemu.$(vmid);
 
   const task = await node.tasks.$(upid).status.$get();
   if (task.status === "running") {
     // The task is still running, the guest has not been actioned completely yet.
     // Just delete the task and nothing will be done.
     await node.tasks.$(upid).$delete();
-  } else {
-    if (task.status === "stopped" && task.exitstatus === "OK") {
-      // The task has been completed successfully and the guest has been actioned.
-      const reversedAction = reversedActionsMap[initialAction];
-
-      if (null === reversedAction) {
-        // Special case, cannot be reversed
-        return {
-          upid: null,
-        };
-      }
-
-      const upid = await performPowerAction({
-        vm,
-        action: reversedAction,
-      });
-
-      return {
-        upid,
-      };
-    }
+    return { upid: null };
   }
 
-  // The task is stopped but it failed or any other status
-  // Do nothing.
-  return {
-    upid: null,
-  };
+  // The task finished but failed — no state change to undo.
+  if (task.status !== "stopped" || task.exitstatus !== "OK") {
+    return { upid: null };
+  }
+
+  const reversedAction = reversedActionsMap[initialAction];
+  if (null === reversedAction) {
+    // Special case, cannot be reversed
+    return { upid: null };
+  }
+
+  // Re-use the same no-op check for the reverse action: if an external actor
+  // already moved the guest into the state the rollback would produce, skip
+  // the power action rather than erroring.
+  return executePowerActionIfNeeded({
+    proxmoxNode,
+    vmid,
+    action: reversedAction,
+  });
 }

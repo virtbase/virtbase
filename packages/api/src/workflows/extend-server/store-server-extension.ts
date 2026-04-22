@@ -49,6 +49,7 @@ export async function storeServerExtensionStep(
             email: users.email,
             locale: users.locale,
           },
+          suspendedAt: servers.suspendedAt,
         })
         .from(servers)
         .innerJoin(proxmoxNodes, eq(servers.proxmoxNodeId, proxmoxNodes.id))
@@ -105,18 +106,18 @@ export async function storeServerExtensionStep(
 }
 
 export async function rollbackStoreServerExtensionStep(
-  params: StoreServerExtensionStepParams,
+  params: StoreServerExtensionStepParams & { suspendedAt: Date | null },
 ) {
   "use step";
 
-  const { serverId } = params;
+  const { serverId, suspendedAt } = params;
 
   return db.transaction(
     async (tx) => {
       await tx
         .update(servers)
         .set({
-          suspendedAt: sql`now()`,
+          suspendedAt: suspendedAt,
           terminatesAt: sql`CASE WHEN ${servers.terminatesAt} IS NULL THEN NULL ELSE ${servers.terminatesAt} - INTERVAL '1 month' END`,
           renewalReminderSentAt: sql`now()`,
         })

@@ -192,12 +192,14 @@ export async function provisionServerWorkflow({
       action: "start",
     });
 
-    await sleep("5s");
-    await waitForProxmoxTaskStep({
-      proxmoxNode: selectedNode,
-      upid: startUpid,
-      ignoreErrors: false,
-    });
+    if (null !== startUpid) {
+      await sleep("5s");
+      await waitForProxmoxTaskStep({
+        proxmoxNode: selectedNode,
+        upid: startUpid,
+        ignoreErrors: false,
+      });
+    }
 
     rollbacks.push(async () => {
       const { upid: stopUpid } = await rollbackPerformGuestActionStep({

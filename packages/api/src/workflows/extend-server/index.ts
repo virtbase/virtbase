@@ -46,7 +46,12 @@ export async function extendServerWorkflow({
     const { server, proxmoxNode, newTerminatesAt, user } =
       await storeServerExtensionStep({ serverId });
 
-    rollbacks.push(() => rollbackStoreServerExtensionStep({ serverId }));
+    rollbacks.push(() =>
+      rollbackStoreServerExtensionStep({
+        serverId,
+        suspendedAt: server.suspendedAt,
+      }),
+    );
 
     const { previousConfig, addedKeys } = await applyGuestConfigStep({
       proxmoxNode,
@@ -81,12 +86,14 @@ export async function extendServerWorkflow({
       vmid: server.vmid,
     });
 
-    await sleep("5s");
-    await waitForProxmoxTaskStep({
-      proxmoxNode,
-      upid: startUpid,
-      ignoreErrors: false,
-    });
+    if (null !== startUpid) {
+      await sleep("5s");
+      await waitForProxmoxTaskStep({
+        proxmoxNode,
+        upid: startUpid,
+        ignoreErrors: false,
+      });
+    }
 
     rollbacks.push(async () => {
       const { upid: rollbackStartUpid } = await rollbackPerformGuestActionStep({

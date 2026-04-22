@@ -48,12 +48,14 @@ export async function deleteServerWorkflow(params: DeleteServerWorkflowParams) {
     action: "stop",
   });
 
-  await sleep("5s");
-  await waitForProxmoxTaskStep({
-    proxmoxNode,
-    upid: stopUpid,
-    ignoreErrors: false,
-  });
+  if (null !== stopUpid) {
+    await sleep("5s");
+    await waitForProxmoxTaskStep({
+      proxmoxNode,
+      upid: stopUpid,
+      ignoreErrors: false,
+    });
+  }
 
   // 2. Destroy the VM in Proxmox
   const { upid: destroyUpid } = await destroyGuestStep({
