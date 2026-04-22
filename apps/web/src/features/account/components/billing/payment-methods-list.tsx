@@ -152,7 +152,7 @@ function PaymentMethodItem({
       }
     >
       <p className="font-medium text-sm">
-        {paymentMethod.billing_details.name || t("Kein Name angegeben")}
+        {paymentMethod.billing_details.name || t("No name")}
       </p>
       <div className="flex items-center gap-2">
         {method

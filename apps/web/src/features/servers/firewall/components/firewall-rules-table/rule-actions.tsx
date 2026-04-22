@@ -125,7 +125,7 @@ export function RuleActions({
             onSelect={() => setRowAction({ row, variant: "update" })}
           >
             <LucideEdit aria-hidden="true" />
-            <span>{t("Bearbeiten")}</span>
+            <span>{t("Edit")}</span>
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
