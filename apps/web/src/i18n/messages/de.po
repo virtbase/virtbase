@@ -1507,23 +1507,23 @@ msgstr "Mit Zahlung fortfahren"
 
 #: src/features/checkout/components/checkout-public-key-select.tsx:60
 msgid "fXFUFA"
-msgstr ""
+msgstr "Vorhandener SSH-Schlüssel"
 
 #: src/features/checkout/components/checkout-public-key-select.tsx:95
 msgid "UQc03N"
-msgstr ""
+msgstr "Neuen SSH-Schlüssel hinzufügen"
 
 #: src/features/checkout/components/checkout-public-key-select.tsx:110
 msgid "UpInkr"
-msgstr ""
+msgstr "SSH-Schlüssel (optional)"
 
 #: src/features/checkout/components/checkout-public-key-select.tsx:136
 msgid "RB81cJ"
-msgstr ""
+msgstr "Der SSH-Schlüssel wird im Benutzerkonto gespeichert und kann für zukünftige Bestellungen wiederverwendet werden."
 
 #: src/features/checkout/components/checkout-public-key-select.tsx:152
 msgid "iiDj1S"
-msgstr ""
+msgstr "Vorhandenen SSH-Schlüssel auswählen"
 
 #: src/features/checkout/components/checkout-waivers.tsx:43
 msgid "fL6LzO"
@@ -1535,7 +1535,7 @@ msgstr "Ich habe die <revocation>Widerrufsbestimmungen</revocation> gelesen und 
 
 #: src/features/checkout/components/elements-provider.tsx:83
 msgid "mlJ21x"
-msgstr ""
+msgstr "Anonym mit Kryptowährung bezahlen"
 
 #: src/features/checkout/components/offer-card.tsx:95
 #: src/features/checkout/components/order-summary.tsx:157
@@ -1591,7 +1591,7 @@ msgstr "Bestellübersicht"
 
 #: src/features/checkout/components/stripe-payment-form.tsx:162
 msgid "zAA8aS"
-msgstr ""
+msgstr "Bitte fülle alle Felder der Rechnungsadresse aus."
 
 #: src/features/checkout/components/stripe-payment-form.tsx:205
 msgid "6orx1c"
@@ -1718,71 +1718,71 @@ msgstr "Mehr erfahren"
 
 #: src/features/landing/components/faq-section.tsx:32
 msgid "j3A1sI"
-msgstr ""
+msgstr "Wie lange dauert die Bereitstellung eines Servers?"
 
 #: src/features/landing/components/faq-section.tsx:33
 msgid "50VRoa"
-msgstr ""
+msgstr "Die Bereitstellung des gebuchten Pakets erfolgt in der Regel nach der Bestellung automatisch durch unser System ohne Wartezeit. Zusätzlich wird eine Bestätigung per E-Mail versendet."
 
 #: src/features/landing/components/faq-section.tsx:38
 msgid "zWVB3p"
-msgstr ""
+msgstr "Gibt es ein Traffic-Limit?"
 
 #: src/features/landing/components/faq-section.tsx:39
 msgid "+T4TVw"
-msgstr ""
+msgstr "Nein, es gibt kein Traffic-Limit für unsere Server. Der Uplink wird nach dem Fair-Use-Prinzip bereitgestellt. Bei unverhältnismäßig hoher Dauernutzung kann die Bandbreite jedoch vorübergehend gedrosselt werden."
 
 #: src/features/landing/components/faq-section.tsx:44
 msgid "RS/4DH"
-msgstr ""
+msgstr "Kann das Paket später geändert werden?"
 
 #: src/features/landing/components/faq-section.tsx:45
 msgid "tBYbeE"
-msgstr ""
+msgstr "Das gebuchte Paket kann einfach über das Kundenportal geändert werden. Bei einem Wechsel während des laufenden Abrechnungszeitraums wird die Preisdifferenz entsprechend gutgeschrieben."
 
 #: src/features/landing/components/faq-section.tsx:50
 msgid "Adyexr"
-msgstr ""
+msgstr "Kann ich meinen Server jederzeit kündigen?"
 
 #: src/features/landing/components/faq-section.tsx:51
 msgid "4FVTjU"
-msgstr ""
+msgstr "Ja, gebuchte Server können jederzeit über das Kundenportal gekündigt werden. Kündigungen werden zum Ende des ausgewählten Abrechnungszeitraums wirksam."
 
 #: src/features/landing/components/faq-section.tsx:56
 msgid "KfLE6n"
-msgstr ""
+msgstr "Wie kann ich auf meine Server zugreifen?"
 
 #: src/features/landing/components/faq-section.tsx:57
 msgid "B7MEDP"
-msgstr ""
+msgstr "Der gebuchte Server kann über unser eigenes Kundenportal verwaltet werden. SSH-Zugriff per Passwort ist standardmäßig verfügbar. Der Server kann außerdem über die VNC-Konsole erreicht werden."
 
 #: src/features/landing/components/faq-section.tsx:62
 msgid "p/GLe/"
-msgstr ""
+msgstr "Wie sicher sind meine Daten?"
 
 #: src/features/landing/components/faq-section.tsx:63
 msgid "kexWaZ"
-msgstr ""
+msgstr "Datenschutz hat für uns höchste Priorität. Alle Daten auf den Servern werden auf verschlüsselten Datenträgern gespeichert. Ein Zugriff durch uns als Anbieter oder durch andere Akteure ist grundsätzlich nicht möglich. Weitere Informationen findest du in unserer <privacy>Datenschutzerklärung</privacy>."
 
 #: src/features/landing/components/faq-section.tsx:75
 msgid "zcLioW"
-msgstr ""
+msgstr "Wo erhalte ich Support?"
 
 #: src/features/landing/components/faq-section.tsx:76
 msgid "igjse2"
-msgstr ""
+msgstr "Unser Support-Team ist rund um die Uhr erreichbar. Sende eine E-Mail an <email>support@virtbase.com</email>, um schnell eine Antwort zu erhalten."
 
 #: src/features/landing/components/faq-section.tsx:84
 msgid "aINRxc"
-msgstr ""
+msgstr "Wo befinden sich die Server?"
 
 #: src/features/landing/components/faq-section.tsx:85
 msgid "cMXI0b"
-msgstr ""
+msgstr "Alle unsere Server befinden sich derzeit im Skylink Datacenter in den Niederlanden. Es ist nach Tier-3-Standards ausgestattet und verfügt über redundante Stromversorgung, Netzwerkkomponenten und Kühlung."
 
 #: src/features/landing/components/faq-section.tsx:94
 msgid "7Rm1x6"
-msgstr ""
+msgstr "Häufig gestellte Fragen"
 
 #: src/features/landing/components/features-showcase.tsx:35
 msgid "N2jrkQ"
@@ -2598,7 +2598,7 @@ msgstr "Auf dieser Seite"
 
 #: src/ui/generic-error.tsx:51
 msgid "sQClkg"
-msgstr ""
+msgstr "Beim Laden der Daten ist ein unerwarteter Fehler aufgetreten."
 
 #: src/ui/input-group-addons/random-password-addon.tsx:33
 msgid "gQLF4T"
