@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: German\n"
-"PO-Revision-Date: 2026-04-26 17:58\n"
+"PO-Revision-Date: 2026-04-26 18:58\n"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:84
 msgid "o/UJXc"
@@ -1507,23 +1507,23 @@ msgstr "Mit Zahlung fortfahren"
 
 #: src/features/checkout/components/checkout-public-key-select.tsx:60
 msgid "fXFUFA"
-msgstr "Existing SSH key"
+msgstr "Vorhandener SSH-Schlüssel"
 
 #: src/features/checkout/components/checkout-public-key-select.tsx:95
 msgid "UQc03N"
-msgstr "Add new SSH key"
+msgstr "Neuen SSH-Schlüssel hinzufügen"
 
 #: src/features/checkout/components/checkout-public-key-select.tsx:110
 msgid "UpInkr"
-msgstr "SSH key (optional)"
+msgstr "SSH-Schlüssel (optional)"
 
 #: src/features/checkout/components/checkout-public-key-select.tsx:136
 msgid "RB81cJ"
-msgstr "The SSH key will be stored in the user account and can be reused for future orders."
+msgstr "Der SSH-Schlüssel wird im Benutzerkonto gespeichert und kann für zukünftige Bestellungen wiederverwendet werden."
 
 #: src/features/checkout/components/checkout-public-key-select.tsx:152
 msgid "iiDj1S"
-msgstr "Select existing SSH key"
+msgstr "Vorhandenen SSH-Schlüssel auswählen"
 
 #: src/features/checkout/components/checkout-waivers.tsx:43
 msgid "fL6LzO"
@@ -1535,7 +1535,7 @@ msgstr "Ich habe die <revocation>Widerrufsbestimmungen</revocation> gelesen und 
 
 #: src/features/checkout/components/elements-provider.tsx:83
 msgid "mlJ21x"
-msgstr "Pay anonymously with cryptocurrency"
+msgstr "Anonym mit Kryptowährung bezahlen"
 
 #: src/features/checkout/components/offer-card.tsx:95
 #: src/features/checkout/components/order-summary.tsx:157
@@ -1591,7 +1591,7 @@ msgstr "Bestellübersicht"
 
 #: src/features/checkout/components/stripe-payment-form.tsx:162
 msgid "zAA8aS"
-msgstr "Please fill in all fields of the billing address."
+msgstr "Bitte fülle alle Felder der Rechnungsadresse aus."
 
 #: src/features/checkout/components/stripe-payment-form.tsx:205
 msgid "6orx1c"
@@ -1718,71 +1718,71 @@ msgstr "Mehr erfahren"
 
 #: src/features/landing/components/faq-section.tsx:32
 msgid "j3A1sI"
-msgstr "How long does it take to provision a server?"
+msgstr "Wie lange dauert die Bereitstellung eines Servers?"
 
 #: src/features/landing/components/faq-section.tsx:33
 msgid "50VRoa"
-msgstr "The provisioning of the booked package is usually done automatically after the order by our system without any waiting time. A confirmation by email is also sent additionally."
+msgstr "Die Bereitstellung des gebuchten Pakets erfolgt in der Regel nach der Bestellung automatisch durch unser System ohne Wartezeit. Zusätzlich wird eine Bestätigung per E-Mail versendet."
 
 #: src/features/landing/components/faq-section.tsx:38
 msgid "zWVB3p"
-msgstr "Is there a traffic limit?"
+msgstr "Gibt es ein Traffic-Limit?"
 
 #: src/features/landing/components/faq-section.tsx:39
 msgid "+T4TVw"
-msgstr "No, there is no traffic limit for our servers. The uplink is provided according to the fair use principle. However, bandwidth may be temporarily throttled in the event of disproportionately high sustained usage."
+msgstr "Nein, es gibt kein Traffic-Limit für unsere Server. Der Uplink wird nach dem Fair-Use-Prinzip bereitgestellt. Bei unverhältnismäßig hoher Dauernutzung kann die Bandbreite jedoch vorübergehend gedrosselt werden."
 
 #: src/features/landing/components/faq-section.tsx:44
 msgid "RS/4DH"
-msgstr "Can the package be changed later?"
+msgstr "Kann das Paket später geändert werden?"
 
 #: src/features/landing/components/faq-section.tsx:45
 msgid "tBYbeE"
-msgstr "The booked package can easily be changed through the customer portal. When switching during the current billing period, the price difference will be credited accordingly."
+msgstr "Das gebuchte Paket kann einfach über das Kundenportal geändert werden. Bei einem Wechsel während des laufenden Abrechnungszeitraums wird die Preisdifferenz entsprechend gutgeschrieben."
 
 #: src/features/landing/components/faq-section.tsx:50
 msgid "Adyexr"
-msgstr "Can I cancel my server at any time?"
+msgstr "Kann ich meinen Server jederzeit kündigen?"
 
 #: src/features/landing/components/faq-section.tsx:51
 msgid "4FVTjU"
-msgstr "Yes, booked servers can be canceled at any time through the customer portal. Cancellations take effect at the end of the selected billing period."
+msgstr "Ja, gebuchte Server können jederzeit über das Kundenportal gekündigt werden. Kündigungen werden zum Ende des ausgewählten Abrechnungszeitraums wirksam."
 
 #: src/features/landing/components/faq-section.tsx:56
 msgid "KfLE6n"
-msgstr "How can I access my servers?"
+msgstr "Wie kann ich auf meine Server zugreifen?"
 
 #: src/features/landing/components/faq-section.tsx:57
 msgid "B7MEDP"
-msgstr "The booked server can be managed through our in-house customer portal. SSH access via password is available by default. The server can also be accessed through the VNC console."
+msgstr "Der gebuchte Server kann über unser eigenes Kundenportal verwaltet werden. SSH-Zugriff per Passwort ist standardmäßig verfügbar. Der Server kann außerdem über die VNC-Konsole erreicht werden."
 
 #: src/features/landing/components/faq-section.tsx:62
 msgid "p/GLe/"
-msgstr "How secure is my data?"
+msgstr "Wie sicher sind meine Daten?"
 
 #: src/features/landing/components/faq-section.tsx:63
 msgid "kexWaZ"
-msgstr "Data protection is our highest priority. All data on the servers is stored on encrypted disks. Access by us as the provider or by other actors is generally not possible. You can find more information in our <privacy>privacy policy</privacy>."
+msgstr "Datenschutz hat für uns höchste Priorität. Alle Daten auf den Servern werden auf verschlüsselten Datenträgern gespeichert. Ein Zugriff durch uns als Anbieter oder durch andere Akteure ist grundsätzlich nicht möglich. Weitere Informationen findest du in unserer <privacy>Datenschutzerklärung</privacy>."
 
 #: src/features/landing/components/faq-section.tsx:75
 msgid "zcLioW"
-msgstr "Where can I get support?"
+msgstr "Wo erhalte ich Support?"
 
 #: src/features/landing/components/faq-section.tsx:76
 msgid "igjse2"
-msgstr "Our support team is available 24/7. Sending an email to <email>support@virtbase.com</email> will get you a quick response."
+msgstr "Unser Support-Team ist rund um die Uhr erreichbar. Sende eine E-Mail an <email>support@virtbase.com</email>, um schnell eine Antwort zu erhalten."
 
 #: src/features/landing/components/faq-section.tsx:84
 msgid "aINRxc"
-msgstr "Where are the servers located?"
+msgstr "Wo befinden sich die Server?"
 
 #: src/features/landing/components/faq-section.tsx:85
 msgid "cMXI0b"
-msgstr "All of our servers are currently located in the Skylink Datacenter in the Netherlands. It is equipped to Tier 3 standards and has redundant power supply, network components, and cooling."
+msgstr "Alle unsere Server befinden sich derzeit im Skylink Datacenter in den Niederlanden. Es ist nach Tier-3-Standards ausgestattet und verfügt über redundante Stromversorgung, Netzwerkkomponenten und Kühlung."
 
 #: src/features/landing/components/faq-section.tsx:94
 msgid "7Rm1x6"
-msgstr "Frequently asked questions"
+msgstr "Häufig gestellte Fragen"
 
 #: src/features/landing/components/features-showcase.tsx:35
 msgid "N2jrkQ"
@@ -2598,7 +2598,7 @@ msgstr "Auf dieser Seite"
 
 #: src/ui/generic-error.tsx:51
 msgid "sQClkg"
-msgstr "An unexpected error occurred while loading the data."
+msgstr "Beim Laden der Daten ist ein unerwarteter Fehler aufgetreten."
 
 #: src/ui/input-group-addons/random-password-addon.tsx:33
 msgid "gQLF4T"
