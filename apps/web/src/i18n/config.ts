@@ -27,3 +27,5 @@ export const defaultLocale: Locale = "en";
 // locale of registered users in a database, you can of course also use
 // that instead when the user is logged in.
 export const COOKIE_NAME = "NEXT_LOCALE";
+
+export const COOKIE_MAX_AGE = 60 * 60 * 24 * 365; // 1 year
