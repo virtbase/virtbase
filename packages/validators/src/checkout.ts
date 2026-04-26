@@ -44,6 +44,10 @@ export const OrderNewServerPlanInputSchema =
       .nullish(),
   });
 
+export type OrderNewServerPlanInput = z.infer<
+  typeof OrderNewServerPlanInputSchema
+>;
+
 export const OrderExtendServerPlanInputSchema =
   BaseOrderServerPlanInputSchema.extend({
     type: z.literal("extend_server"),

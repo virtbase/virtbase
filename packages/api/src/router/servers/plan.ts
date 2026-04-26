@@ -16,7 +16,8 @@
  */
 
 import { TRPCError } from "@trpc/server";
-import { eq, sql } from "@virtbase/db";
+import { eq } from "@virtbase/db";
+import { getPlansWithAvailability } from "@virtbase/db/queries";
 import { serverPlans, servers } from "@virtbase/db/schema";
 import {
   GetServerPlanInputSchema,
@@ -31,50 +32,37 @@ export const serversPlanRouter = createTRPCRouter({
     .query(async ({ ctx }) => {
       const { db, server } = ctx;
 
-      const { current, plans } = await db.transaction(async (tx) => {
-        const current = await tx
-          .select({
-            id: serverPlans.id,
-            storage: serverPlans.storage,
-            proxmoxNodeGroupId: serverPlans.proxmoxNodeGroupId,
-          })
-          .from(servers)
-          .where(eq(servers.id, server.id))
-          .innerJoin(serverPlans, eq(servers.serverPlanId, serverPlans.id))
-          .limit(1)
-          .then(([row]) => row);
+      const current = await db
+        .select({
+          id: serverPlans.id,
+          storage: serverPlans.storage,
+          proxmoxNodeGroupId: serverPlans.proxmoxNodeGroupId,
+        })
+        .from(servers)
+        .where(eq(servers.id, server.id))
+        .innerJoin(serverPlans, eq(servers.serverPlanId, serverPlans.id))
+        .limit(1)
+        .then(([row]) => row);
 
-        if (!current) {
-          throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
-        }
+      if (!current) {
+        throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
+      }
 
-        const plans = await tx
-          .select({
-            id: serverPlans.id,
-            name: serverPlans.name,
-            cores: serverPlans.cores,
-            memory: serverPlans.memory,
-            storage: serverPlans.storage,
-            netrate: serverPlans.netrate,
-            price: serverPlans.price,
-            // TODO: Resource usage
-            available: sql<boolean>`TRUE`,
-          })
-          .from(serverPlans)
-          .where(
-            eq(serverPlans.proxmoxNodeGroupId, current.proxmoxNodeGroupId),
-          );
-
-        return {
-          current,
-          plans,
-        };
-      });
+      const plans = await getPlansWithAvailability(
+        eq(serverPlans.proxmoxNodeGroupId, current.proxmoxNodeGroupId),
+      );
 
       return {
         plans: plans.map((plan) => ({
-          ...plan,
+          id: plan.id,
+          name: plan.name,
+          cores: plan.cores,
+          memory: plan.memory,
+          storage: plan.storage,
+          netrate: plan.netrate,
+          price: plan.price,
           current: plan.id === current.id,
+          available: plan.isAvailable,
         })),
       };
     }),

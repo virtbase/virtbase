@@ -28,6 +28,7 @@ import { notFound } from "next/navigation";
 import type { Locale } from "next-intl";
 import { getExtracted, getLocale } from "next-intl/server";
 import { Suspense } from "react";
+import { defaultGetSSHKeysListQuery } from "@/features/account/hooks/ssh-keys/ssh-keys-list";
 import { getServerPlan } from "@/features/checkout/api/get-server-plan";
 import { getTemplateGroups } from "@/features/checkout/api/get-template-groups";
 import { CheckoutAuthWrapper } from "@/features/checkout/components/checkout-auth-wrapper";
@@ -35,6 +36,7 @@ import { CheckoutForm } from "@/features/checkout/components/checkout-form";
 import { CheckoutFormSkeleton } from "@/features/checkout/components/checkout-form-skeleton";
 import { OrderSummary } from "@/features/checkout/components/order-summary";
 import { CheckoutStateProvider } from "@/features/checkout/hooks/use-checkout-state";
+import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
 import { BlockWrapper } from "@/ui/block-wrapper";
 
 type PageProps = {
@@ -111,6 +113,8 @@ export default async function Page({ params }: PageProps) {
     notFound();
   }
 
+  void prefetch(trpc.sshKeys.list.queryOptions(defaultGetSSHKeysListQuery));
+
   return (
     <main>
       <BlockWrapper variant="hero">
@@ -134,9 +138,11 @@ export default async function Page({ params }: PageProps) {
             <Suspense fallback={<CheckoutFormSkeleton />}>
               <CheckoutAuthWrapper planId={id}>
                 <CheckoutStateProvider>
-                  <CheckoutForm
-                    promise={getTemplateGroups(plan.proxmoxNodeGroupId)}
-                  />
+                  <HydrateClient>
+                    <CheckoutForm
+                      promise={getTemplateGroups(plan.proxmoxNodeGroupId)}
+                    />
+                  </HydrateClient>
                 </CheckoutStateProvider>
               </CheckoutAuthWrapper>
             </Suspense>

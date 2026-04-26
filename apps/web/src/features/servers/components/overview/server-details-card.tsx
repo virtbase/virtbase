@@ -51,7 +51,7 @@ export function ServerDetailsCard() {
   const isActionsDisabled =
     isPending || isError || !server || !isOperational(server);
 
-  // TODO: Currently only one IPv4 and IPv6 address is supported for display
+  // Currently only one IPv4 and IPv6 address is supported for display
   // The UI would need to be updated to support multiple addresses.
 
   const ipv4 = server?.allocations.find(

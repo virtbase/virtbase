@@ -16,3 +16,4 @@
  */
 
 export * from "./get-available-subnet";
+export * from "./get-plans-with-availability";

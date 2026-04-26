@@ -15,31 +15,21 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { getTableColumns, sql } from "@virtbase/db";
-import { db } from "@virtbase/db/client";
-import { serverPlans } from "@virtbase/db/schema";
+import { getPlansWithAvailability } from "@virtbase/db/queries";
 import { cacheLife, cacheTag } from "next/cache";
 import { cache } from "react";
 
 export const getAvailablePlans = cache(async () => {
   "use cache";
 
-  cacheTag("checkout");
-  cacheLife("max");
-
-  return db.transaction(
-    async (tx) => {
-      // TODO: Resource usage
-      return tx
-        .select({
-          ...getTableColumns(serverPlans),
-          isAvailable: sql<boolean>`TRUE`,
-        })
-        .from(serverPlans);
-    },
-    {
-      accessMode: "read only",
-      isolationLevel: "read committed",
-    },
+  cacheTag(
+    "checkout",
+    "proxmox-node-groups",
+    "proxmox-nodes",
+    "server-plans",
+    "servers",
   );
+  cacheLife("minutes");
+
+  return getPlansWithAvailability();
 });

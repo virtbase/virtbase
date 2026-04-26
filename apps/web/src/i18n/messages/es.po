@@ -132,17 +132,17 @@ msgstr "No columns found."
 msgid "0H2hdf"
 msgstr "No results."
 
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:79
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:91
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:81
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:93
 msgid "VX2yLr"
 msgstr "Configure {name}"
 
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:80
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:92
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:82
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:94
 msgid "a7uVhC"
 msgstr "Configure the server plan {name} on {appName}"
 
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:148
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx:154
 msgid "fYwMu5"
 msgstr "All prices include statutory VAT, if applicable."
 
@@ -340,16 +340,16 @@ msgstr "Help Center"
 msgid "PPnkha"
 msgstr "Find answers to all your Virtbase-related questions in one place with our comprehensive Help Center."
 
-#: src/app/(public)/[locale]/page.tsx:35
+#: src/app/(public)/[locale]/page.tsx:36
 msgid "Wbc21W"
 msgstr "Virtbase - Hosting, but secure."
 
-#: src/app/(public)/[locale]/page.tsx:36
-#: src/app/(public)/[locale]/page.tsx:64
+#: src/app/(public)/[locale]/page.tsx:37
+#: src/app/(public)/[locale]/page.tsx:65
 msgid "nEWy6S"
 msgstr "Virtbase is the provider for secure server hosting. Maximum performance with minimal effort."
 
-#: src/app/(public)/[locale]/page.tsx:61
+#: src/app/(public)/[locale]/page.tsx:62
 msgid "BdEM9F"
 msgstr "Hosting, but secure."
 
@@ -545,7 +545,7 @@ msgid "F+02/l"
 msgstr "rDNS"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/error.tsx:53
-#: src/ui/generic-error-inline.tsx:31
+#: src/ui/generic-error-inline.tsx:37
 #: src/ui/generic-error.tsx:49
 msgid "ox304v"
 msgstr "An error occurred"
@@ -1478,32 +1478,52 @@ msgstr "For the continuation of the order, the creation of a customer account is
 msgid "SQJto2"
 msgstr "Sign in"
 
-#: src/features/checkout/components/checkout-form.tsx:110
+#: src/features/checkout/components/checkout-form.tsx:120
 msgid "7OW8BT"
 msgstr "Configuration"
 
-#: src/features/checkout/components/checkout-form.tsx:117
+#: src/features/checkout/components/checkout-form.tsx:127
 #: src/features/servers/components/backups/backups-table/columns.tsx:180
 #: src/features/servers/components/overview/server-details-card.tsx:96
 msgid "t2uvIi"
 msgstr "Operating System"
 
-#: src/features/checkout/components/checkout-form.tsx:137
+#: src/features/checkout/components/checkout-form.tsx:147
 msgid "hE8w/g"
 msgstr "Root Password (optional)"
 
-#: src/features/checkout/components/checkout-form.tsx:148
+#: src/features/checkout/components/checkout-form.tsx:158
 msgid "wzt4BE"
 msgstr "Virtbase does not store your root password. It can be reset via the customer portal afterwards."
 
-#: src/features/checkout/components/checkout-form.tsx:156
+#: src/features/checkout/components/checkout-form.tsx:166
 msgid "mnTP3x"
 msgstr "If left blank, a secure random password will be generated and sent by email."
 
-#: src/features/checkout/components/checkout-form.tsx:212
+#: src/features/checkout/components/checkout-form.tsx:223
 #: src/features/servers/components/plan/plan-summary.tsx:286
 msgid "+g+0OK"
 msgstr "Continue to payment"
+
+#: src/features/checkout/components/checkout-public-key-select.tsx:60
+msgid "fXFUFA"
+msgstr ""
+
+#: src/features/checkout/components/checkout-public-key-select.tsx:95
+msgid "UQc03N"
+msgstr ""
+
+#: src/features/checkout/components/checkout-public-key-select.tsx:110
+msgid "UpInkr"
+msgstr ""
+
+#: src/features/checkout/components/checkout-public-key-select.tsx:136
+msgid "RB81cJ"
+msgstr ""
+
+#: src/features/checkout/components/checkout-public-key-select.tsx:152
+msgid "iiDj1S"
+msgstr ""
 
 #: src/features/checkout/components/checkout-waivers.tsx:43
 msgid "fL6LzO"
@@ -1621,15 +1641,15 @@ msgstr "Latest Invoices"
 msgid "VgBFI4"
 msgstr "Here you can see your latest invoices for direct download."
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:58
+#: src/features/dashboard/components/latest-invoices-list.tsx:65
 msgid "QVIbFk"
 msgstr "No invoices"
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:60
+#: src/features/dashboard/components/latest-invoices-list.tsx:67
 msgid "GtDccr"
 msgstr "No invoices have been issued yet."
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:84
+#: src/features/dashboard/components/latest-invoices-list.tsx:91
 msgid "5q3qC0"
 msgstr "Download"
 
@@ -1695,6 +1715,74 @@ msgstr "Efficiently manage your servers without hassle or frustration."
 #: src/features/landing/components/features-showcase.tsx:69
 msgid "TdTXXf"
 msgstr "Learn more"
+
+#: src/features/landing/components/faq-section.tsx:32
+msgid "j3A1sI"
+msgstr ""
+
+#: src/features/landing/components/faq-section.tsx:33
+msgid "50VRoa"
+msgstr ""
+
+#: src/features/landing/components/faq-section.tsx:38
+msgid "zWVB3p"
+msgstr ""
+
+#: src/features/landing/components/faq-section.tsx:39
+msgid "+T4TVw"
+msgstr ""
+
+#: src/features/landing/components/faq-section.tsx:44
+msgid "RS/4DH"
+msgstr ""
+
+#: src/features/landing/components/faq-section.tsx:45
+msgid "tBYbeE"
+msgstr ""
+
+#: src/features/landing/components/faq-section.tsx:50
+msgid "Adyexr"
+msgstr ""
+
+#: src/features/landing/components/faq-section.tsx:51
+msgid "4FVTjU"
+msgstr ""
+
+#: src/features/landing/components/faq-section.tsx:56
+msgid "KfLE6n"
+msgstr ""
+
+#: src/features/landing/components/faq-section.tsx:57
+msgid "B7MEDP"
+msgstr ""
+
+#: src/features/landing/components/faq-section.tsx:62
+msgid "p/GLe/"
+msgstr ""
+
+#: src/features/landing/components/faq-section.tsx:63
+msgid "kexWaZ"
+msgstr ""
+
+#: src/features/landing/components/faq-section.tsx:75
+msgid "zcLioW"
+msgstr ""
+
+#: src/features/landing/components/faq-section.tsx:76
+msgid "igjse2"
+msgstr ""
+
+#: src/features/landing/components/faq-section.tsx:84
+msgid "aINRxc"
+msgstr ""
+
+#: src/features/landing/components/faq-section.tsx:85
+msgid "cMXI0b"
+msgstr ""
+
+#: src/features/landing/components/faq-section.tsx:94
+msgid "7Rm1x6"
+msgstr ""
 
 #: src/features/landing/components/features-showcase.tsx:35
 msgid "N2jrkQ"

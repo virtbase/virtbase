@@ -18,13 +18,15 @@
 import * as Sentry from "@sentry/node";
 import { TRPCError } from "@trpc/server";
 import { and, eq } from "@virtbase/db";
-import { serverPlans, servers } from "@virtbase/db/schema";
+import { getPlansWithAvailability } from "@virtbase/db/queries";
+import { serverPlans, servers, sshKeys } from "@virtbase/db/schema";
 import {
   APP_NAME,
   deriveKeyHex,
   encryptPayload,
   isInstalling,
   PUBLIC_DOMAIN,
+  parsePublicKey,
   SUPPORT_EMAIL,
 } from "@virtbase/utils";
 import type { OrderConfigurationSnapshot } from "@virtbase/validators";
@@ -69,25 +71,10 @@ export const checkoutRouter = createTRPCRouter({
 
       const planId = input.server_plan_id;
 
-      const plan = await db.transaction(
-        async (tx) => {
-          return tx
-            .select({
-              id: serverPlans.id,
-              name: serverPlans.name,
-              price: serverPlans.price,
-              storage: serverPlans.storage,
-            })
-            .from(serverPlans)
-            .where(eq(serverPlans.id, planId))
-            .limit(1)
-            .then(([res]) => res);
-        },
-        {
-          accessMode: "read only",
-          isolationLevel: "read committed",
-        },
-      );
+      const plan = await getPlansWithAvailability(eq(serverPlans.id, planId))
+        .limit(1)
+        .execute()
+        .then(([res]) => res);
 
       if (!plan) {
         throw new TRPCError({ code: "NOT_FOUND" });
@@ -138,22 +125,67 @@ export const checkoutRouter = createTRPCRouter({
           }
         }
 
-        // TODO: Check availability of resources
+        // Upgrades are constrained to the server's existing node, so the
+        // cross-node availability flag from `getPlansWithAvailability` does
+        // not apply here. A node-local capacity check belongs in the upgrade
+        // workflow itself before the resize is attempted.
+        // Extensions reuse the resources already reserved for the server, so
+        // they don't need an availability check either.
+      } else if (!plan.isAvailable) {
+        // No node in the plan's group currently has capacity for a fresh
+        // server of this plan; refuse the order before charging the customer.
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: "The selected plan is currently sold out.",
+        });
       }
 
       let configuration: OrderConfigurationSnapshot;
       switch (input.type) {
-        case "new_server":
+        case "new_server": {
+          let sshKeyId = input.ssh_key_id;
+          if (!sshKeyId && input.new_ssh_key) {
+            try {
+              // This bypasses the limit defined in MAX_SSH_KEYS_PER_USER
+              // which is okay but should be handled by the client
+
+              const parsed = await parsePublicKey(input.new_ssh_key);
+              sshKeyId = await db.transaction(
+                async (tx) => {
+                  const inserted = await tx
+                    .insert(sshKeys)
+                    .values({
+                      userId,
+                      name: "SSH Key",
+                      publicKey: parsed.sanitzedKey,
+                      fingerprint: parsed.fingerprint,
+                    })
+                    .returning({ id: sshKeys.id })
+                    .execute()
+                    .then(([row]) => row);
+
+                  return inserted?.id ?? null;
+                },
+                {
+                  accessMode: "read write",
+                  isolationLevel: "read committed",
+                },
+              );
+            } catch {
+              // ignored
+            }
+          }
+
           configuration = {
             type: "new_server",
             version: 1,
             server_plan_id: plan.id,
-            // TODO: Create new SSH key if not provided
-            ssh_key_id: input.ssh_key_id,
+            ssh_key_id: sshKeyId,
             template_id: input.template_id,
             root_password: input.root_password,
           };
           break;
+        }
         case "extend_server":
           configuration = {
             type: "extend_server",

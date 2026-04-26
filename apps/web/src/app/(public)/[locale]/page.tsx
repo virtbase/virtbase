@@ -24,6 +24,7 @@ import type { Metadata } from "next";
 import { getExtracted, getLocale } from "next-intl/server";
 import { OfferRow } from "@/features/checkout/components/offer-row";
 import { AdvantagesRow } from "@/features/landing/components/advantages-row";
+import { FAQSection } from "@/features/landing/components/faq-section";
 import { FeaturesShowcase } from "@/features/landing/components/features-showcase";
 import { OperatingSystemShowcase } from "@/features/landing/components/operating-system-showcase";
 import { BlockWrapper } from "@/ui/block-wrapper";
@@ -80,6 +81,9 @@ export default async function Page() {
       </BlockWrapper>
       <BlockWrapper>
         <OperatingSystemShowcase />
+      </BlockWrapper>
+      <BlockWrapper>
+        <FAQSection />
       </BlockWrapper>
     </main>
   );

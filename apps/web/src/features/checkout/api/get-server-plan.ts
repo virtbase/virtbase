@@ -24,8 +24,8 @@ import { cache } from "react";
 export const getServerPlan = cache(async (id: string) => {
   "use cache";
 
-  cacheTag("checkout");
-  cacheLife("max");
+  cacheTag("checkout", "proxmox-node-groups", "proxmox-nodes", "server-plans");
+  cacheLife("minutes");
 
   return db.transaction(
     async (tx) => {

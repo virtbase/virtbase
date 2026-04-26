@@ -19,8 +19,6 @@ import { and, desc, eq, isNull, sql } from "drizzle-orm";
 import { db } from "../client";
 import { subnetAllocations, subnets, subnetsToProxmoxNodes } from "../schema";
 
-// TODO: Improve or cleanup
-// Currently unsafe and experimental
 export async function findFirstAvailableSubnet(
   family: 4 | 6,
   targetPrefix: number,

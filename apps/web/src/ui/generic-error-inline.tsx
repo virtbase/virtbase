@@ -20,13 +20,19 @@
 import { cn } from "@virtbase/ui";
 import { LucideAlertTriangle } from "@virtbase/ui/icons/index";
 import { useExtracted } from "next-intl";
-import React from "react";
+import type React from "react";
 
-export function GenericErrorInline({ className, ...props }: React.ComponentProps<"div">) {
+export function GenericErrorInline({
+  className,
+  ...props
+}: React.ComponentProps<"div">) {
   const t = useExtracted();
 
   return (
-    <div className={cn("flex h-8 items-center gap-2 text-destructive", className)} {...props}>
+    <div
+      className={cn("flex h-8 items-center gap-2 text-destructive", className)}
+      {...props}
+    >
       <LucideAlertTriangle className="size-4 shrink-0" aria-hidden="true" />
       <span className="text-sm">{t("An error occurred")}</span>
     </div>

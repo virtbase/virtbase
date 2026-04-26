@@ -29,7 +29,12 @@ import { cache } from "react";
 export const getTemplateGroups = cache(async (proxmoxNodeGroupId: string) => {
   "use cache";
 
-  cacheTag("checkout");
+  cacheTag(
+    "checkout",
+    "proxmox-template-groups",
+    "template-groups",
+    "proxmox-templates",
+  );
   cacheLife("max");
 
   return db.transaction(

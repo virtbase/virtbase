@@ -42,11 +42,16 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@virtbase/ui/tooltip";
+import type { OrderNewServerPlanInput } from "@virtbase/validators";
 import { OrderNewServerPlanInputSchema } from "@virtbase/validators";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { use, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
+import {
+  defaultGetSSHKeysListQuery,
+  useSSHKeysList,
+} from "@/features/account/hooks/ssh-keys/ssh-keys-list";
 import { PasswordRequirements } from "@/features/auth/components/password-requirements";
 import {
   RandomPasswordAddon,
@@ -55,11 +60,11 @@ import {
 import { OperatingSystemSelect } from "@/ui/operating-system-select";
 import type { getTemplateGroups } from "../api/get-template-groups";
 import { useCheckoutState } from "../hooks/use-checkout-state";
+import { CheckoutPublicKeySelect } from "./checkout-public-key-select";
 import { CheckoutWaivers } from "./checkout-waivers";
 import { ElementsProvider } from "./elements-provider";
 import { StripePaymentForm } from "./stripe-payment-form";
 
-// TODO: Re-add SSH key selection
 export function CheckoutForm({
   promise,
 }: {
@@ -78,11 +83,16 @@ export function CheckoutForm({
 
   const templateGroups = use(promise);
 
+  const { data: { ssh_keys: sshKeys } = { ssh_keys: [] } } = useSSHKeysList(
+    defaultGetSSHKeysListQuery,
+  );
+
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
-  const form = useForm({
+  const form = useForm<OrderNewServerPlanInput>({
     resolver: zodResolver(OrderNewServerPlanInputSchema),
     defaultValues: {
+      ssh_key_id: sshKeys[0]?.id ?? null,
       server_plan_id: planId,
       type: "new_server",
       terms: false,
@@ -196,6 +206,7 @@ export function CheckoutForm({
             </Field>
           )}
         />
+        <CheckoutPublicKeySelect form={form} values={sshKeys} />
         <FieldSeparator />
         <CheckoutWaivers control={form.control} external={false} />
         <FieldSeparator />
