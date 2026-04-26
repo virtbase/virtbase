@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: German\n"
-"PO-Revision-Date: 2026-04-22 14:47\n"
+"PO-Revision-Date: 2026-04-26 17:58\n"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:84
 msgid "o/UJXc"
@@ -1507,23 +1507,23 @@ msgstr "Mit Zahlung fortfahren"
 
 #: src/features/checkout/components/checkout-public-key-select.tsx:60
 msgid "fXFUFA"
-msgstr ""
+msgstr "Existing SSH key"
 
 #: src/features/checkout/components/checkout-public-key-select.tsx:95
 msgid "UQc03N"
-msgstr ""
+msgstr "Add new SSH key"
 
 #: src/features/checkout/components/checkout-public-key-select.tsx:110
 msgid "UpInkr"
-msgstr ""
+msgstr "SSH key (optional)"
 
 #: src/features/checkout/components/checkout-public-key-select.tsx:136
 msgid "RB81cJ"
-msgstr ""
+msgstr "The SSH key will be stored in the user account and can be reused for future orders."
 
 #: src/features/checkout/components/checkout-public-key-select.tsx:152
 msgid "iiDj1S"
-msgstr ""
+msgstr "Select existing SSH key"
 
 #: src/features/checkout/components/checkout-waivers.tsx:43
 msgid "fL6LzO"
@@ -1535,7 +1535,7 @@ msgstr "Ich habe die <revocation>Widerrufsbestimmungen</revocation> gelesen und 
 
 #: src/features/checkout/components/elements-provider.tsx:83
 msgid "mlJ21x"
-msgstr ""
+msgstr "Pay anonymously with cryptocurrency"
 
 #: src/features/checkout/components/offer-card.tsx:95
 #: src/features/checkout/components/order-summary.tsx:157
@@ -1591,7 +1591,7 @@ msgstr "Bestellübersicht"
 
 #: src/features/checkout/components/stripe-payment-form.tsx:162
 msgid "zAA8aS"
-msgstr ""
+msgstr "Please fill in all fields of the billing address."
 
 #: src/features/checkout/components/stripe-payment-form.tsx:205
 msgid "6orx1c"
@@ -1718,71 +1718,71 @@ msgstr "Mehr erfahren"
 
 #: src/features/landing/components/faq-section.tsx:32
 msgid "j3A1sI"
-msgstr ""
+msgstr "How long does it take to provision a server?"
 
 #: src/features/landing/components/faq-section.tsx:33
 msgid "50VRoa"
-msgstr ""
+msgstr "The provisioning of the booked package is usually done automatically after the order by our system without any waiting time. A confirmation by email is also sent additionally."
 
 #: src/features/landing/components/faq-section.tsx:38
 msgid "zWVB3p"
-msgstr ""
+msgstr "Is there a traffic limit?"
 
 #: src/features/landing/components/faq-section.tsx:39
 msgid "+T4TVw"
-msgstr ""
+msgstr "No, there is no traffic limit for our servers. The uplink is provided according to the fair use principle. However, bandwidth may be temporarily throttled in the event of disproportionately high sustained usage."
 
 #: src/features/landing/components/faq-section.tsx:44
 msgid "RS/4DH"
-msgstr ""
+msgstr "Can the package be changed later?"
 
 #: src/features/landing/components/faq-section.tsx:45
 msgid "tBYbeE"
-msgstr ""
+msgstr "The booked package can easily be changed through the customer portal. When switching during the current billing period, the price difference will be credited accordingly."
 
 #: src/features/landing/components/faq-section.tsx:50
 msgid "Adyexr"
-msgstr ""
+msgstr "Can I cancel my server at any time?"
 
 #: src/features/landing/components/faq-section.tsx:51
 msgid "4FVTjU"
-msgstr ""
+msgstr "Yes, booked servers can be canceled at any time through the customer portal. Cancellations take effect at the end of the selected billing period."
 
 #: src/features/landing/components/faq-section.tsx:56
 msgid "KfLE6n"
-msgstr ""
+msgstr "How can I access my servers?"
 
 #: src/features/landing/components/faq-section.tsx:57
 msgid "B7MEDP"
-msgstr ""
+msgstr "The booked server can be managed through our in-house customer portal. SSH access via password is available by default. The server can also be accessed through the VNC console."
 
 #: src/features/landing/components/faq-section.tsx:62
 msgid "p/GLe/"
-msgstr ""
+msgstr "How secure is my data?"
 
 #: src/features/landing/components/faq-section.tsx:63
 msgid "kexWaZ"
-msgstr ""
+msgstr "Data protection is our highest priority. All data on the servers is stored on encrypted disks. Access by us as the provider or by other actors is generally not possible. You can find more information in our <privacy>privacy policy</privacy>."
 
 #: src/features/landing/components/faq-section.tsx:75
 msgid "zcLioW"
-msgstr ""
+msgstr "Where can I get support?"
 
 #: src/features/landing/components/faq-section.tsx:76
 msgid "igjse2"
-msgstr ""
+msgstr "Our support team is available 24/7. Sending an email to <email>support@virtbase.com</email> will get you a quick response."
 
 #: src/features/landing/components/faq-section.tsx:84
 msgid "aINRxc"
-msgstr ""
+msgstr "Where are the servers located?"
 
 #: src/features/landing/components/faq-section.tsx:85
 msgid "cMXI0b"
-msgstr ""
+msgstr "All of our servers are currently located in the Skylink Datacenter in the Netherlands. It is equipped to Tier 3 standards and has redundant power supply, network components, and cooling."
 
 #: src/features/landing/components/faq-section.tsx:94
 msgid "7Rm1x6"
-msgstr ""
+msgstr "Frequently asked questions"
 
 #: src/features/landing/components/features-showcase.tsx:35
 msgid "N2jrkQ"
@@ -2598,7 +2598,7 @@ msgstr "Auf dieser Seite"
 
 #: src/ui/generic-error.tsx:51
 msgid "sQClkg"
-msgstr ""
+msgstr "An unexpected error occurred while loading the data."
 
 #: src/ui/input-group-addons/random-password-addon.tsx:33
 msgid "gQLF4T"
@@ -2655,3 +2655,4 @@ msgstr "Helles Erscheinungsbild"
 #: src/ui/theme-switcher.tsx:64
 msgid "Efqxns"
 msgstr "Dunkles Erscheinungsbild"
+
