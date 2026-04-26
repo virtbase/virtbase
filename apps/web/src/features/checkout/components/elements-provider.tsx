@@ -23,6 +23,7 @@ import {
   ANONPAY_MIN_AMOUNT,
   ANONPAY_STRIPE_METHOD_ID,
 } from "@virtbase/api/anonpay/constants";
+import { useTheme } from "@virtbase/ui/theme-provider";
 import { useExtracted } from "next-intl";
 import type { PropsWithChildren } from "react";
 import { useEffect, useState } from "react";
@@ -40,6 +41,7 @@ export function ElementsProvider({
   clientSecret: string;
 }>) {
   const t = useExtracted();
+  const { resolvedTheme: theme } = useTheme();
 
   const [amount, setAmount] = useState<number | null>(null);
 
@@ -96,14 +98,14 @@ export function ElementsProvider({
           inputs: "spaced",
           labels: "above",
           variables: {
-            colorPrimary: "#e5e5e5",
-            colorBackground: "#0a0a0a",
-            colorDanger: "#ff6467",
-            colorText: "#fafafa",
-            colorTextSecondary: "#a1a1a1",
+            colorPrimary: theme === "dark" ? "#e5e5e5" : "#171717",
+            colorBackground: theme === "dark" ? "#0a0a0a" : "#ffffff",
+            colorDanger: theme === "dark" ? "#ff6467" : "#e7000b",
+            colorText: theme === "dark" ? "#fafafa" : "#0a0a0a",
+            colorTextSecondary: theme === "dark" ? "#a1a1a1" : "#737373",
             borderRadius: "0.625rem",
-            colorTextPlaceholder: "#a1a1a1",
-            iconColor: "#a1a1a1",
+            colorTextPlaceholder: theme === "dark" ? "#a1a1a1" : "#737373",
+            iconColor: theme === "dark" ? "#a1a1a1" : "#737373",
             gridColumnSpacing: "20px",
             fontFamily: "Geist, sans-serif",
             fontSizeBase: "16px",
@@ -121,7 +123,7 @@ export function ElementsProvider({
               marginBottom: "8px",
             },
             ".Input": {
-              backgroundColor: "#ffffff0b",
+              backgroundColor: theme === "dark" ? "#ffffff0b" : "transparent",
             },
           },
         },

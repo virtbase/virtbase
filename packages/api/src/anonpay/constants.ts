@@ -18,7 +18,7 @@
 /**
  * The minimum amount for an Anonpay payment in EUR.
  */
-export const ANONPAY_MIN_AMOUNT = 400; // 4.00 EUR
+export const ANONPAY_MIN_AMOUNT = 500; // 5.00 EUR
 
 /**
  * The ID of the Stripe custom payment method for Anonpay.
