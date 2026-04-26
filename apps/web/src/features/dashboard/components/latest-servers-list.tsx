@@ -21,6 +21,7 @@ import { LucideChevronRight } from "@virtbase/ui/icons";
 import NextLink from "next/link";
 import { ServerTerminatesBadge } from "@/features/servers/components/server-terminates-badge";
 import { paths } from "@/lib/paths";
+import { GenericError } from "@/ui/generic-error";
 import { OperatingSystemIcon } from "@/ui/operating-system-icon";
 import { useLatestServers } from "../hooks/use-latest-servers";
 import { EmptyServers } from "./empty-servers";
@@ -29,7 +30,13 @@ import { ServerStatusSmall } from "./server-status-small";
 export function LatestServersList() {
   const {
     data: { servers },
+    isError,
+    refetch,
   } = useLatestServers();
+
+  if (isError) {
+    return <GenericError className="border" reset={refetch} />;
+  }
 
   if (!servers.length) {
     return <EmptyServers />;

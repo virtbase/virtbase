@@ -34,6 +34,7 @@ import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { auth } from "@/lib/auth/server";
 import { HydrateClient } from "@/lib/trpc/server";
+import { GenericError } from "@/ui/generic-error";
 import { ApiKeysList } from "./api-keys-list";
 import { CreateApiKeyButton } from "./create-api-key-button";
 
@@ -67,8 +68,7 @@ export function APIKeysCard() {
       </CardHeader>
       <CardContent>
         <HydrateClient>
-          {/** TODO: Add generic error fallback */}
-          <ErrorBoundary fallback={null}>
+          <ErrorBoundary fallback={<GenericError className="border" />}>
             <Suspense fallback={<Skeleton className="-m-px h-72 w-full" />}>
               <ApiKeysList
                 promise={headersPromise.then((headers) =>

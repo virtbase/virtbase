@@ -295,7 +295,7 @@ msgid "TZHi//"
 msgstr "Hilfe-Center ansehen"
 
 #: src/app/(public)/[locale]/contact/page.tsx:101
-#: src/features/account/components/api-keys/api-keys-card.tsx:63
+#: src/features/account/components/api-keys/api-keys-card.tsx:64
 #: src/ui/footer.tsx:124
 msgid "yKOyCk"
 msgstr "API-Dokumentation"
@@ -545,6 +545,8 @@ msgid "F+02/l"
 msgstr "rDNS"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/error.tsx:53
+#: src/ui/generic-error-inline.tsx:31
+#: src/ui/generic-error.tsx:49
 msgid "ox304v"
 msgstr "Ein Fehler ist aufgetreten"
 
@@ -553,6 +555,7 @@ msgid "HkQfvt"
 msgstr "Beim Abrufen der Server-Details ist ein unerwarteter Fehler aufgetreten."
 
 #: src/app/app.virtbase.com/(dashboard)/servers/error.tsx:59
+#: src/ui/generic-error.tsx:55
 msgid "FazwRl"
 msgstr "Erneut versuchen"
 
@@ -591,7 +594,7 @@ msgstr "API"
 
 #: src/features/account/components/account-breadcrumb.tsx:57
 #: src/features/account/components/account-nav.tsx:60
-#: src/features/account/components/ssh-keys/ssh-keys-card.tsx:43
+#: src/features/account/components/ssh-keys/ssh-keys-card.tsx:44
 msgid "7Cdpiv"
 msgstr "SSH-Schlüssel"
 
@@ -600,11 +603,11 @@ msgstr "SSH-Schlüssel"
 msgid "TwyMau"
 msgstr "Account"
 
-#: src/features/account/components/api-keys/api-keys-card.tsx:48
+#: src/features/account/components/api-keys/api-keys-card.tsx:49
 msgid "jSp63j"
 msgstr "API-Schlüssel"
 
-#: src/features/account/components/api-keys/api-keys-card.tsx:50
+#: src/features/account/components/api-keys/api-keys-card.tsx:51
 msgid "igeEmM"
 msgstr "Erstelle und verwalte API-Schlüssel zur Verwendung mit der öffentlichen API."
 
@@ -714,12 +717,12 @@ msgstr "Schreiben"
 msgid "IknBAk"
 msgstr "Passkey hinzufügen"
 
-#: src/features/account/components/authentication/user-passkeys-card.tsx:51
+#: src/features/account/components/authentication/user-passkeys-card.tsx:52
 #: src/features/account/components/authentication/user-providers-list.tsx:95
 msgid "ASrBq8"
 msgstr "Passkeys"
 
-#: src/features/account/components/authentication/user-passkeys-card.tsx:53
+#: src/features/account/components/authentication/user-passkeys-card.tsx:54
 msgid "yZU/cd"
 msgstr "Passkeys sind eine hochsichere Alternative zu Passwörtern. Registriere einen neuen Passkey oder verwende einen bestehenden."
 
@@ -749,11 +752,11 @@ msgstr "Hinzugefügt {date}"
 msgid "G/yZLu"
 msgstr "Entfernen"
 
-#: src/features/account/components/authentication/user-providers-card.tsx:47
+#: src/features/account/components/authentication/user-providers-card.tsx:48
 msgid "w97pJ4"
 msgstr "Anmeldemethoden"
 
-#: src/features/account/components/authentication/user-providers-card.tsx:49
+#: src/features/account/components/authentication/user-providers-card.tsx:50
 msgid "wLHOoq"
 msgstr "Passe an, wie du dich anmelden kannst. Verbinde deine Accounts für eine nahtlose, sichere Authentifizierung."
 
@@ -789,11 +792,11 @@ msgstr "Verknüpfen"
 msgid "4PKxPs"
 msgstr "Entfernen"
 
-#: src/features/account/components/authentication/user-sessions-card.tsx:55
+#: src/features/account/components/authentication/user-sessions-card.tsx:56
 msgid "V3ka34"
 msgstr "Aktive Sitzungen"
 
-#: src/features/account/components/authentication/user-sessions-card.tsx:57
+#: src/features/account/components/authentication/user-sessions-card.tsx:58
 msgid "54Q9yz"
 msgstr "Sitzungen zeigen aktuell angemeldete Geräte. Sie können jederzeit widerrufen werden."
 
@@ -821,11 +824,11 @@ msgstr "Aktuelle Sitzung"
 msgid "PIRoCC"
 msgstr "Unbekannte IP-Adresse"
 
-#: src/features/account/components/billing/payment-methods-card.tsx:38
+#: src/features/account/components/billing/payment-methods-card.tsx:39
 msgid "xuTqgN"
 msgstr "Zahlungsmethoden"
 
-#: src/features/account/components/billing/payment-methods-card.tsx:40
+#: src/features/account/components/billing/payment-methods-card.tsx:41
 msgid "oBsxme"
 msgstr "Die folgenden Zahlungsmethoden sind hinterlegt und können für die Zahlung verwendet werden."
 
@@ -853,7 +856,7 @@ msgstr "Mein SSH-Schlüssel"
 msgid "jecC36"
 msgstr "Öffentlicher Schlüssel"
 
-#: src/features/account/components/ssh-keys/ssh-keys-card.tsx:45
+#: src/features/account/components/ssh-keys/ssh-keys-card.tsx:46
 msgid "hdKY6S"
 msgstr "Erstelle und verwalte SSH-Schlüssel zur Verwendung während der Installation."
 
@@ -956,7 +959,7 @@ msgid "jF7pQ8"
 msgstr "Es haben sich noch keine neuen Kunden registriert."
 
 #: src/features/admin/components/dashboard/latest-servers-card.tsx:43
-#: src/features/dashboard/components/latest-servers-card.tsx:41
+#: src/features/dashboard/components/latest-servers-card.tsx:42
 msgid "DY6Cmc"
 msgstr "Letzte Server"
 
@@ -1610,11 +1613,11 @@ msgstr "Es wurden noch keine Server gemietet. Neue Server werden hier angezeigt.
 msgid "SjCCH5"
 msgstr "Server mieten"
 
-#: src/features/dashboard/components/latest-invoices-card.tsx:41
+#: src/features/dashboard/components/latest-invoices-card.tsx:42
 msgid "15BgLW"
 msgstr "Letzte Rechnungen"
 
-#: src/features/dashboard/components/latest-invoices-card.tsx:43
+#: src/features/dashboard/components/latest-invoices-card.tsx:44
 msgid "VgBFI4"
 msgstr "Hier siehst du deine letzten Rechnungen zum direkten Download."
 
@@ -1630,7 +1633,7 @@ msgstr "Es wurden noch keine Rechnungen ausgestellt."
 msgid "5q3qC0"
 msgstr "Herunterladen"
 
-#: src/features/dashboard/components/latest-servers-card.tsx:43
+#: src/features/dashboard/components/latest-servers-card.tsx:44
 msgid "2AizOe"
 msgstr "Hier siehst du deine letzten Server."
 
@@ -2224,19 +2227,19 @@ msgstr "Verlängern"
 msgid "ObQE5T"
 msgstr "Aktion auswählen"
 
-#: src/features/servers/firewall/components/firewall-options-row.tsx:45
+#: src/features/servers/firewall/components/firewall-options-row.tsx:46
 msgid "tzMNF3"
 msgstr "Status"
 
-#: src/features/servers/firewall/components/firewall-options-row.tsx:47
+#: src/features/servers/firewall/components/firewall-options-row.tsx:48
 msgid "z1Jw4U"
 msgstr "Die Firewall ist immer aktiviert"
 
-#: src/features/servers/firewall/components/firewall-options-row.tsx:56
+#: src/features/servers/firewall/components/firewall-options-row.tsx:57
 msgid "XumiMR"
 msgstr "Eingehende Pakete"
 
-#: src/features/servers/firewall/components/firewall-options-row.tsx:58
+#: src/features/servers/firewall/components/firewall-options-row.tsx:59
 msgid "404iMx"
 msgstr "Die Standardaktion für eingehende Pakete"
 
@@ -2504,6 +2507,10 @@ msgstr "Suchen"
 #: src/ui/fumadocs/table-of-contents.tsx:34
 msgid "TM7OHi"
 msgstr "Auf dieser Seite"
+
+#: src/ui/generic-error.tsx:51
+msgid "sQClkg"
+msgstr ""
 
 #: src/ui/input-group-addons/random-password-addon.tsx:33
 msgid "gQLF4T"

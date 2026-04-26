@@ -29,6 +29,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { LatestInvoicesList } from "@/features/dashboard/components/latest-invoices-list";
 import { defaultGetLatestInvoicesQuery } from "@/features/dashboard/hooks/use-latest-invoices";
 import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
+import { GenericError } from "@/ui/generic-error";
 
 export function LatestInvoicesCard() {
   const t = useExtracted();
@@ -45,8 +46,7 @@ export function LatestInvoicesCard() {
       </CardHeader>
       <CardContent>
         <HydrateClient>
-          {/** TODO: Add generic error fallback */}
-          <ErrorBoundary fallback={null}>
+          <ErrorBoundary fallback={<GenericError className="border" />}>
             <Suspense fallback={<Skeleton className="h-48 w-full" />}>
               <LatestInvoicesList />
             </Suspense>

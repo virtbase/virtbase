@@ -26,6 +26,7 @@ import { Skeleton } from "@virtbase/ui/skeleton";
 import { useExtracted } from "next-intl";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import { GenericError } from "@/ui/generic-error";
 import { getPaymentMethodList } from "../../api/billing/get-payment-method-list";
 import { PaymentMethodsList } from "./payment-methods-list";
 
@@ -43,8 +44,7 @@ export function PaymentMethodsCard() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        {/** TODO: Add generic error fallback */}
-        <ErrorBoundary fallback={null}>
+        <ErrorBoundary fallback={<GenericError className="border" />}>
           <Suspense fallback={<Skeleton className="-m-px h-48 w-full" />}>
             <PaymentMethodsList promise={getPaymentMethodList()} />
           </Suspense>

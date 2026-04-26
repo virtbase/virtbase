@@ -27,6 +27,7 @@ import { useExtracted } from "next-intl";
 import { cache } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { auth } from "@/lib/auth/server";
+import { GenericError } from "@/ui/generic-error";
 import { UserProvidersList } from "./user-providers-list";
 
 const getProvidersList = cache((headers: Headers) => {
@@ -52,8 +53,7 @@ export function UserProvidersCard() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        {/** TODO: Add generic error fallback */}
-        <ErrorBoundary fallback={null}>
+        <ErrorBoundary fallback={<GenericError className="border" />}>
           <UserProvidersList
             promise={headersPromise.then((headers) =>
               getProvidersList(headers),

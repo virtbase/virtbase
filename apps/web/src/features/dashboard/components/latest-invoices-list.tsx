@@ -34,6 +34,7 @@ import { Separator } from "@virtbase/ui/separator";
 import { Spinner } from "@virtbase/ui/spinner";
 import { useExtracted, useFormatter } from "next-intl";
 import { ItemRow } from "@/features/account/components/item-row";
+import { GenericError } from "@/ui/generic-error";
 import { useDownloadInvoice } from "../hooks/use-download-invoice";
 import { useLatestInvoices } from "../hooks/use-latest-invoices";
 
@@ -43,10 +44,16 @@ export function LatestInvoicesList() {
 
   const {
     data: { invoices },
+    isError,
+    refetch,
   } = useLatestInvoices();
 
   const { mutate: downloadInvoice, isPending: isDownloadingInvoice } =
     useDownloadInvoice();
+
+  if (isError) {
+    return <GenericError className="border" reset={refetch} />;
+  }
 
   if (!invoices.length) {
     return (

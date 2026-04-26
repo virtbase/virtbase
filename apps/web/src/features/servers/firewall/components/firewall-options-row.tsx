@@ -28,6 +28,7 @@ import { useExtracted } from "next-intl";
 import { Suspense, use } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
+import { GenericErrorInline } from "@/ui/generic-error-inline";
 import { FirewallActionState } from "./firewall-action-state";
 
 export function FirewallOptionsRow({ promise }: { promise: Promise<string> }) {
@@ -60,8 +61,7 @@ export function FirewallOptionsRow({ promise }: { promise: Promise<string> }) {
         </CardHeader>
         <CardContent>
           <HydrateClient>
-            {/** TODO: Add generic error fallback */}
-            <ErrorBoundary fallback={null}>
+            <ErrorBoundary fallback={<GenericErrorInline />}>
               <Suspense fallback={<Skeleton className="h-8 w-32" />}>
                 <FirewallActionState serverId={serverId} policy="policy_in" />
               </Suspense>
@@ -78,8 +78,7 @@ export function FirewallOptionsRow({ promise }: { promise: Promise<string> }) {
         </CardHeader>
         <CardContent>
           <HydrateClient>
-            {/** TODO: Add generic error fallback */}
-            <ErrorBoundary fallback={null}>
+            <ErrorBoundary fallback={<GenericErrorInline />}>
               <Suspense fallback={<Skeleton className="h-8 w-32" />}>
                 <FirewallActionState serverId={serverId} policy="policy_out" />
               </Suspense>

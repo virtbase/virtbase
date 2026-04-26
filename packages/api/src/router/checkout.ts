@@ -280,7 +280,6 @@ export const checkoutRouter = createTRPCRouter({
             paymentIntent.amount < ANONPAY_MIN_AMOUNT &&
             paymentIntent.currency === "eur"
           ) {
-            // Invalid amount parameter, amount must be bigger than 3.99 for EUR
             throw new TRPCError({ code: "BAD_REQUEST" });
           }
 

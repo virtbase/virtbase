@@ -29,6 +29,7 @@ import { useExtracted } from "next-intl";
 import { cache, Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { auth } from "@/lib/auth/server";
+import { GenericError } from "@/ui/generic-error";
 import { AddPasskeyButton } from "./add-passkey-button";
 import { UserPasskeysList } from "./user-passkeys-list";
 
@@ -56,8 +57,7 @@ export function UserPasskeysCard() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        {/** TODO: Add generic error fallback */}
-        <ErrorBoundary fallback={null}>
+        <ErrorBoundary fallback={<GenericError className="border" />}>
           <Suspense fallback={<Skeleton className="-m-px h-48 w-full" />}>
             <UserPasskeysList
               promise={headersPromise.then((headers) =>

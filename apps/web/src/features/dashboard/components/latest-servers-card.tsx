@@ -28,6 +28,7 @@ import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { defaultGetLatestServersQuery } from "@/features/dashboard/hooks/use-latest-servers";
 import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
+import { GenericError } from "@/ui/generic-error";
 import { LatestServersList } from "./latest-servers-list";
 
 export function LatestServersCard() {
@@ -45,8 +46,7 @@ export function LatestServersCard() {
       </CardHeader>
       <CardContent>
         <HydrateClient>
-          {/** TODO: Add generic error fallback */}
-          <ErrorBoundary fallback={null}>
+          <ErrorBoundary fallback={<GenericError className="border" />}>
             <Suspense
               fallback={
                 <div className="space-y-2">

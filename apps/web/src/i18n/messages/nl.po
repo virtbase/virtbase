@@ -295,7 +295,7 @@ msgid "TZHi//"
 msgstr "View Help Center"
 
 #: src/app/(public)/[locale]/contact/page.tsx:101
-#: src/features/account/components/api-keys/api-keys-card.tsx:63
+#: src/features/account/components/api-keys/api-keys-card.tsx:64
 #: src/ui/footer.tsx:124
 msgid "yKOyCk"
 msgstr "API Documentation"
@@ -545,6 +545,8 @@ msgid "F+02/l"
 msgstr "rDNS"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/error.tsx:53
+#: src/ui/generic-error-inline.tsx:31
+#: src/ui/generic-error.tsx:49
 msgid "ox304v"
 msgstr "An error occurred"
 
@@ -553,6 +555,7 @@ msgid "HkQfvt"
 msgstr "An unexpected error occurred while loading the server details."
 
 #: src/app/app.virtbase.com/(dashboard)/servers/error.tsx:59
+#: src/ui/generic-error.tsx:55
 msgid "FazwRl"
 msgstr "Try again"
 
@@ -591,7 +594,7 @@ msgstr "API"
 
 #: src/features/account/components/account-breadcrumb.tsx:57
 #: src/features/account/components/account-nav.tsx:60
-#: src/features/account/components/ssh-keys/ssh-keys-card.tsx:43
+#: src/features/account/components/ssh-keys/ssh-keys-card.tsx:44
 msgid "7Cdpiv"
 msgstr "SSH Keys"
 
@@ -600,11 +603,11 @@ msgstr "SSH Keys"
 msgid "TwyMau"
 msgstr "Account"
 
-#: src/features/account/components/api-keys/api-keys-card.tsx:48
+#: src/features/account/components/api-keys/api-keys-card.tsx:49
 msgid "jSp63j"
 msgstr "API Keys"
 
-#: src/features/account/components/api-keys/api-keys-card.tsx:50
+#: src/features/account/components/api-keys/api-keys-card.tsx:51
 msgid "igeEmM"
 msgstr "Create and manage API keys for use with the public API."
 
@@ -714,12 +717,12 @@ msgstr "Write"
 msgid "IknBAk"
 msgstr "Add Passkey"
 
-#: src/features/account/components/authentication/user-passkeys-card.tsx:51
+#: src/features/account/components/authentication/user-passkeys-card.tsx:52
 #: src/features/account/components/authentication/user-providers-list.tsx:95
 msgid "ASrBq8"
 msgstr "Passkeys"
 
-#: src/features/account/components/authentication/user-passkeys-card.tsx:53
+#: src/features/account/components/authentication/user-passkeys-card.tsx:54
 msgid "yZU/cd"
 msgstr "Passkeys are a highly secure alternative to passwords. Register a new passkey or use an existing one."
 
@@ -749,11 +752,11 @@ msgstr "Added {date}"
 msgid "G/yZLu"
 msgstr "Remove"
 
-#: src/features/account/components/authentication/user-providers-card.tsx:47
+#: src/features/account/components/authentication/user-providers-card.tsx:48
 msgid "w97pJ4"
 msgstr "Authentication Methods"
 
-#: src/features/account/components/authentication/user-providers-card.tsx:49
+#: src/features/account/components/authentication/user-providers-card.tsx:50
 msgid "wLHOoq"
 msgstr "Configure how you can sign in to your account. Link your accounts for a seamless, secure authentication experience."
 
@@ -789,11 +792,11 @@ msgstr "Link"
 msgid "4PKxPs"
 msgstr "Unlink"
 
-#: src/features/account/components/authentication/user-sessions-card.tsx:55
+#: src/features/account/components/authentication/user-sessions-card.tsx:56
 msgid "V3ka34"
 msgstr "Active Sessions"
 
-#: src/features/account/components/authentication/user-sessions-card.tsx:57
+#: src/features/account/components/authentication/user-sessions-card.tsx:58
 msgid "54Q9yz"
 msgstr "Sessions show currently logged in devices. They can be revoked at any time."
 
@@ -821,11 +824,11 @@ msgstr "Current session"
 msgid "PIRoCC"
 msgstr "Unknown IP address"
 
-#: src/features/account/components/billing/payment-methods-card.tsx:38
+#: src/features/account/components/billing/payment-methods-card.tsx:39
 msgid "xuTqgN"
 msgstr "Payment Methods"
 
-#: src/features/account/components/billing/payment-methods-card.tsx:40
+#: src/features/account/components/billing/payment-methods-card.tsx:41
 msgid "oBsxme"
 msgstr "The following payment methods are stored and can be used for billing."
 
@@ -853,7 +856,7 @@ msgstr "My SSH key"
 msgid "jecC36"
 msgstr "Public key"
 
-#: src/features/account/components/ssh-keys/ssh-keys-card.tsx:45
+#: src/features/account/components/ssh-keys/ssh-keys-card.tsx:46
 msgid "hdKY6S"
 msgstr "Create and manage SSH keys for use during installation."
 
@@ -956,7 +959,7 @@ msgid "jF7pQ8"
 msgstr "No new customers have been registered yet."
 
 #: src/features/admin/components/dashboard/latest-servers-card.tsx:43
-#: src/features/dashboard/components/latest-servers-card.tsx:41
+#: src/features/dashboard/components/latest-servers-card.tsx:42
 msgid "DY6Cmc"
 msgstr "Latest Servers"
 
@@ -1610,11 +1613,11 @@ msgstr "No servers have been rented yet. New servers will be displayed here."
 msgid "SjCCH5"
 msgstr "Rent a server"
 
-#: src/features/dashboard/components/latest-invoices-card.tsx:41
+#: src/features/dashboard/components/latest-invoices-card.tsx:42
 msgid "15BgLW"
 msgstr "Latest Invoices"
 
-#: src/features/dashboard/components/latest-invoices-card.tsx:43
+#: src/features/dashboard/components/latest-invoices-card.tsx:44
 msgid "VgBFI4"
 msgstr "Here you can see your latest invoices for direct download."
 
@@ -1630,7 +1633,7 @@ msgstr "No invoices have been issued yet."
 msgid "5q3qC0"
 msgstr "Download"
 
-#: src/features/dashboard/components/latest-servers-card.tsx:43
+#: src/features/dashboard/components/latest-servers-card.tsx:44
 msgid "2AizOe"
 msgstr "Here you can see your latest servers."
 
@@ -2224,19 +2227,19 @@ msgstr "Renew"
 msgid "ObQE5T"
 msgstr "Select action"
 
-#: src/features/servers/firewall/components/firewall-options-row.tsx:45
+#: src/features/servers/firewall/components/firewall-options-row.tsx:46
 msgid "tzMNF3"
 msgstr "Status"
 
-#: src/features/servers/firewall/components/firewall-options-row.tsx:47
+#: src/features/servers/firewall/components/firewall-options-row.tsx:48
 msgid "z1Jw4U"
 msgstr "The firewall is always enabled"
 
-#: src/features/servers/firewall/components/firewall-options-row.tsx:56
+#: src/features/servers/firewall/components/firewall-options-row.tsx:57
 msgid "XumiMR"
 msgstr "Incoming packets"
 
-#: src/features/servers/firewall/components/firewall-options-row.tsx:58
+#: src/features/servers/firewall/components/firewall-options-row.tsx:59
 msgid "404iMx"
 msgstr "The default action for incoming packets"
 
@@ -2504,6 +2507,10 @@ msgstr "Search"
 #: src/ui/fumadocs/table-of-contents.tsx:34
 msgid "TM7OHi"
 msgstr "On this page"
+
+#: src/ui/generic-error.tsx:51
+msgid "sQClkg"
+msgstr ""
 
 #: src/ui/input-group-addons/random-password-addon.tsx:33
 msgid "gQLF4T"

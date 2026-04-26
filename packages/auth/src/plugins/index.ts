@@ -35,6 +35,7 @@ import {
   defaultStatements,
   userAc,
 } from "better-auth/plugins/admin/access";
+import { getUserLocaleByEmail } from "../get-user-locale-by-email";
 
 const accessControl = createAccessControl(defaultStatements);
 
@@ -80,9 +81,8 @@ export const plugins = [
         return;
       }
 
-      // Locale read from the client (might be inaccurate)
-      // TODO: Get stored locale from the user
-      const locale = ctx?.query?.locale;
+      const fallbackLocale = ctx?.query?.locale;
+      const locale = (await getUserLocaleByEmail(email)) ?? fallbackLocale;
 
       await sendEmail({
         to: email,
@@ -110,9 +110,8 @@ export const plugins = [
         return;
       }
 
-      // Locale read from the client (might be inaccurate)
-      // TODO: Get stored locale from the user
-      const locale = ctx?.query?.locale;
+      const fallbackLocale = ctx?.query?.locale;
+      const locale = (await getUserLocaleByEmail(email)) ?? fallbackLocale;
 
       await sendEmail({
         to: email,

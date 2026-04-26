@@ -29,6 +29,7 @@ import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { defaultGetSSHKeysListQuery } from "@/features/account/hooks/ssh-keys/ssh-keys-list";
 import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
+import { GenericError } from "@/ui/generic-error";
 import { CreateSSHKeyButton } from "./create-ssh-key-button";
 import { SSHKeysList } from "./ssh-keys-list";
 
@@ -47,8 +48,7 @@ export function SSHKeysCard() {
       </CardHeader>
       <CardContent>
         <HydrateClient>
-          {/** TODO: Add generic error fallback */}
-          <ErrorBoundary fallback={null}>
+          <ErrorBoundary fallback={<GenericError className="border" />}>
             <Suspense fallback={<Skeleton className="-m-px h-72 w-full" />}>
               <SSHKeysList />
             </Suspense>
