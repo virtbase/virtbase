@@ -1,107 +1,107 @@
 {
   "email-updated": {
-    "title": "Your email address has been changed",
-    "preview": "Your email address has been updated",
-    "heading": "Your email address has been updated",
-    "changedFromTo": "The e-mail address for your {appName} account has been changed from <strong>{oldEmail}</strong> to <strong>{newEmail}</strong>.",
-    "support": "If you did not make this change, please contact our support team or <link>update your email address</link>.",
-    "hint": "This message is being sent to your old e-mail address only."
+    "title": "Il tuo indirizzo email è stato cambiato",
+    "preview": "Il tuo indirizzo email è stato aggiornato",
+    "heading": "Il tuo indirizzo email è stato aggiornato",
+    "changedFromTo": "L'indirizzo email del tuo account {appName} è stato cambiato da <strong>{oldEmail}</strong> a <strong>{newEmail}</strong>.",
+    "support": "Se non hai fatto tu questa modifica, contatta il nostro team di supporto oppure <link>aggiorna il tuo indirizzo email</link>.",
+    "hint": "Questo messaggio viene inviato solo al tuo vecchio indirizzo email."
   },
   "invoice-created": {
-    "title": "A new invoice has been created",
-    "preview": "Your invoice is available",
-    "heading": "Your invoice is available",
-    "greeting": "Hi {name}!",
-    "description": "Thank you for your purchase at {appName}. Your invoice is available for download. Please find it in the attachments of this email.",
-    "voucherNumber": "Invoice number",
-    "totalAmount": "Total amount",
-    "taxAmount": "Included tax",
-    "viewInvoice": "View invoice in customer portal"
+    "title": "È stata creata una nuova fattura",
+    "preview": "La tua fattura è disponibile",
+    "heading": "La tua fattura è disponibile",
+    "greeting": "Ciao {name}!",
+    "description": "Grazie per il tuo acquisto su {appName}. La tua fattura è disponibile per il download. La trovi negli allegati di questa email.",
+    "voucherNumber": "Numero fattura",
+    "totalAmount": "Importo totale",
+    "taxAmount": "Imposte incluse",
+    "viewInvoice": "Visualizza fattura nel portale clienti"
   },
   "login-link": {
-    "title": "Your {appName} Login Link",
-    "preview": "Your {appName} Login Link",
-    "heading": "Your Login Link",
-    "welcome": "Welcome to {appName}!",
-    "instructions": "Please click the magic link below to sign in to your account.",
-    "signIn": "Sign in",
-    "copyAndPaste": "or copy and paste this URL into your browser:"
+    "title": "Il tuo link di accesso a {appName}",
+    "preview": "Il tuo link di accesso a {appName}",
+    "heading": "Il tuo link di accesso",
+    "welcome": "Benvenuto su {appName}!",
+    "instructions": "Clicca sul magic link qui sotto per accedere al tuo account.",
+    "signIn": "Accedi",
+    "copyAndPaste": "oppure copia e incolla questo URL nel browser:"
   },
   "password-updated": {
-    "title": "Your password has been changed",
-    "preview": "Your password has been changed",
-    "heading": "Password has been changed",
-    "description": "The password for your {appName} account has been successfully changed.",
-    "hint": "If you did not make this change or you believe an unauthorised person has accessed your account, please contact us immediately to secure your account."
+    "title": "La tua password è stata cambiata",
+    "preview": "La tua password è stata cambiata",
+    "heading": "La password è stata cambiata",
+    "description": "La password del tuo account {appName} è stata cambiata correttamente.",
+    "hint": "Se non hai fatto tu questa modifica o pensi che una persona non autorizzata abbia avuto accesso al tuo account, contattaci subito per mettere in sicurezza il tuo account."
   },
   "reset-password-link": {
-    "title": "Reset Password Link",
-    "preview": "Reset Password Link",
-    "heading": "Reset Password Link",
-    "description": "You are receiving this email because we received a password reset request for your account at {appName}.",
-    "instructions": "Please click the button below to reset your password.",
-    "resetPassword": "Reset Password",
-    "copyAndPaste": "or copy and paste this URL into your browser:"
+    "title": "Link per reimpostare la password",
+    "preview": "Link per reimpostare la password",
+    "heading": "Link per reimpostare la password",
+    "description": "Ricevi questa email perché abbiamo ricevuto una richiesta di reimpostazione della password per il tuo account su {appName}.",
+    "instructions": "Clicca sul pulsante qui sotto per reimpostare la password.",
+    "resetPassword": "Reimposta password",
+    "copyAndPaste": "oppure copia e incolla questo URL nel browser:"
   },
   "server-deleted": {
-    "title": "Your server has been deleted",
-    "preview": "Your server has been deleted",
-    "heading": "Your server has been deleted",
-    "greeting": "Hi {name}!",
-    "description": "Your server <strong>{serverName}</strong> and all data have been permanently deleted.",
-    "hint": "Since your server was not renewed within the last {days} days, it has been deleted and cannot be restored."
+    "title": "Il tuo server è stato eliminato",
+    "preview": "Il tuo server è stato eliminato",
+    "heading": "Il tuo server è stato eliminato",
+    "greeting": "Ciao {name}!",
+    "description": "Il tuo server <strong>{serverName}</strong> e tutti i dati sono stati eliminati definitivamente.",
+    "hint": "Poiché il tuo server non è stato rinnovato negli ultimi {days} giorni, è stato eliminato e non può essere ripristinato."
   },
   "server-extended": {
-    "title": "Your server has been renewed",
-    "preview": "Your server has been renewed",
-    "heading": "Your server has been renewed",
-    "greeting": "Hi {name}!",
-    "description": "Your server <strong>{serverName}</strong> has been successfully renewed.",
-    "hint": "The new expiration date is <strong>{newTerminatesAt}</strong>. If you need to extend the server again, you can do so in the customer portal."
+    "title": "Il tuo server è stato rinnovato",
+    "preview": "Il tuo server è stato rinnovato",
+    "heading": "Il tuo server è stato rinnovato",
+    "greeting": "Ciao {name}!",
+    "description": "Il tuo server <strong>{serverName}</strong> è stato rinnovato correttamente.",
+    "hint": "La nuova data di scadenza è <strong>{newTerminatesAt}</strong>. Se devi estendere di nuovo il server, puoi farlo dal portale clienti."
   },
   "server-ready": {
-    "title": "Your server is now ready",
-    "preview": "Your server is now ready",
-    "heading": "Your server is now ready",
-    "greeting": "Hi {name}!",
-    "description": "The server you ordered is now fully configured and ready to use. For security reasons, the IP address is not included with this email. You can find it in the customer portal.",
-    "username": "<strong>• Username:</strong> {username}",
-    "rootPassword": "<strong>• Root password:</strong> {rootPassword}",
-    "customPassword": "Custom password chosen by you",
-    "portalLink": "View server in customer portal"
+    "title": "Il tuo server è pronto",
+    "preview": "Il tuo server è pronto",
+    "heading": "Il tuo server è pronto",
+    "greeting": "Ciao {name}!",
+    "description": "Il server che hai ordinato è ora completamente configurato e pronto per l'uso. Per motivi di sicurezza, l'indirizzo IP non è incluso in questa email. Lo trovi nel portale clienti.",
+    "username": "<strong>• Nome utente:</strong> {username}",
+    "rootPassword": "<strong>• Password root:</strong> {rootPassword}",
+    "customPassword": "Password personalizzata scelta da te",
+    "portalLink": "Visualizza server nel portale clienti"
   },
   "server-renewal-reminder": {
-    "title": "Your server is about to expire",
-    "preview": "Your server is about to expire",
-    "heading": "Your server is about to expire",
-    "greeting": "Hi {name}!",
-    "description": "Your server <strong>{serverName}</strong> is about to expire in the next <strong>{days} days</strong>.",
-    "hint": "To avoid deletion, we recommend that you renew your server <strong>as soon as possible</strong>.",
-    "renewButton": "Renew now"
+    "title": "Il tuo server sta per scadere",
+    "preview": "Il tuo server sta per scadere",
+    "heading": "Il tuo server sta per scadere",
+    "greeting": "Ciao {name}!",
+    "description": "Il tuo server <strong>{serverName}</strong> scadrà nei prossimi <strong>{days} giorni</strong>.",
+    "hint": "Per evitare l'eliminazione, ti consigliamo di rinnovare il server <strong>il prima possibile</strong>.",
+    "renewButton": "Rinnova ora"
   },
   "server-suspended": {
-    "title": "Your server has been suspended",
-    "preview": "Your server has been suspended",
-    "heading": "Your server has been suspended",
-    "greeting": "Hi {name}!",
-    "description": "Your server <strong>{serverName}</strong> has been suspended, because it was not renewed in time.",
-    "hint": "You have <strong>{days} days</strong> to renew your server. After that, your server and all data will be permanently deleted.",
-    "renewButton": "Renew now"
+    "title": "Il tuo server è stato sospeso",
+    "preview": "Il tuo server è stato sospeso",
+    "heading": "Il tuo server è stato sospeso",
+    "greeting": "Ciao {name}!",
+    "description": "Il tuo server <strong>{serverName}</strong> è stato sospeso perché non è stato rinnovato in tempo.",
+    "hint": "Hai <strong>{days} giorni</strong> per rinnovare il server. Dopo, il server e tutti i dati verranno eliminati definitivamente.",
+    "renewButton": "Rinnova ora"
   },
   "verify-email": {
-    "title": "Your {appName} Verification Code",
-    "preview": "Your {appName} Verification Code",
-    "heading": "Please confirm your email address",
-    "instructions": "Enter this code on the {appName} verify page to complete your sign up:",
-    "hint": "This code expires in 10 minutes."
+    "title": "Il tuo codice di verifica {appName}",
+    "preview": "Il tuo codice di verifica {appName}",
+    "heading": "Conferma il tuo indirizzo email",
+    "instructions": "Inserisci questo codice nella pagina di verifica di {appName} per completare la registrazione:",
+    "hint": "Questo codice scade tra 10 minuti."
   },
   "footer": {
-    "thisEmailWasIntendedFor": "This email was intended for <strong>{email}</strong>.",
-    "securityConcerns": "If you were not expecting this email, you can ignore this email. If you are concerned about your account's safety, please <link>reach out to let us know</link>.",
-    "dontWantToGetTheseEmails": "Don't want to get these emails?",
-    "managePreferences": "Manage your email preferences",
-    "adjustNotificationSettings": "Adjust your notification settings",
-    "managingDirector": "Managing Director",
-    "commercialRegister": "Commercial Register"
+    "thisEmailWasIntendedFor": "Questa email era destinata a <strong>{email}</strong>.",
+    "securityConcerns": "Se non ti aspettavi questa email, puoi ignorarla. Se sei preoccupato per la sicurezza del tuo account, <link>contattaci per farcelo sapere</link>.",
+    "dontWantToGetTheseEmails": "Non vuoi ricevere queste email?",
+    "managePreferences": "Gestisci le preferenze email",
+    "adjustNotificationSettings": "Modifica le impostazioni di notifica",
+    "managingDirector": "Amministratore delegato",
+    "commercialRegister": "Registro delle imprese"
   }
 }

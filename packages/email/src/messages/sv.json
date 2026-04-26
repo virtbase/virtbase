@@ -1,107 +1,107 @@
 {
   "email-updated": {
-    "title": "Your email address has been changed",
-    "preview": "Your email address has been updated",
-    "heading": "Your email address has been updated",
-    "changedFromTo": "The e-mail address for your {appName} account has been changed from <strong>{oldEmail}</strong> to <strong>{newEmail}</strong>.",
-    "support": "If you did not make this change, please contact our support team or <link>update your email address</link>.",
-    "hint": "This message is being sent to your old e-mail address only."
+    "title": "Din e-postadress har ändrats",
+    "preview": "Din e-postadress har uppdaterats",
+    "heading": "Din e-postadress har uppdaterats",
+    "changedFromTo": "E-postadressen för ditt {appName}-konto har ändrats från <strong>{oldEmail}</strong> till <strong>{newEmail}</strong>.",
+    "support": "Om det inte var du som gjorde den här ändringen, kontakta vårt supportteam eller <link>uppdatera din e-postadress</link>.",
+    "hint": "Det här meddelandet skickas bara till din gamla e-postadress."
   },
   "invoice-created": {
-    "title": "A new invoice has been created",
-    "preview": "Your invoice is available",
-    "heading": "Your invoice is available",
-    "greeting": "Hi {name}!",
-    "description": "Thank you for your purchase at {appName}. Your invoice is available for download. Please find it in the attachments of this email.",
-    "voucherNumber": "Invoice number",
-    "totalAmount": "Total amount",
-    "taxAmount": "Included tax",
-    "viewInvoice": "View invoice in customer portal"
+    "title": "En ny faktura har skapats",
+    "preview": "Din faktura är tillgänglig",
+    "heading": "Din faktura är tillgänglig",
+    "greeting": "Hej {name}!",
+    "description": "Tack för ditt köp hos {appName}. Din faktura finns att ladda ner. Du hittar den i bilagorna till det här mejlet.",
+    "voucherNumber": "Fakturanummer",
+    "totalAmount": "Totalt belopp",
+    "taxAmount": "Inkluderad skatt",
+    "viewInvoice": "Visa faktura i kundportalen"
   },
   "login-link": {
-    "title": "Your {appName} Login Link",
-    "preview": "Your {appName} Login Link",
-    "heading": "Your Login Link",
-    "welcome": "Welcome to {appName}!",
-    "instructions": "Please click the magic link below to sign in to your account.",
-    "signIn": "Sign in",
-    "copyAndPaste": "or copy and paste this URL into your browser:"
+    "title": "Din inloggningslänk till {appName}",
+    "preview": "Din inloggningslänk till {appName}",
+    "heading": "Din inloggningslänk",
+    "welcome": "Välkommen till {appName}!",
+    "instructions": "Klicka på magic link-länken nedan för att logga in på ditt konto.",
+    "signIn": "Logga in",
+    "copyAndPaste": "eller kopiera och klistra in den här URL:en i din webbläsare:"
   },
   "password-updated": {
-    "title": "Your password has been changed",
-    "preview": "Your password has been changed",
-    "heading": "Password has been changed",
-    "description": "The password for your {appName} account has been successfully changed.",
-    "hint": "If you did not make this change or you believe an unauthorised person has accessed your account, please contact us immediately to secure your account."
+    "title": "Ditt lösenord har ändrats",
+    "preview": "Ditt lösenord har ändrats",
+    "heading": "Lösenordet har ändrats",
+    "description": "Lösenordet för ditt {appName}-konto har ändrats.",
+    "hint": "Om det inte var du som gjorde den här ändringen, eller om du tror att någon obehörig har fått åtkomst till ditt konto, kontakta oss direkt så att vi kan säkra ditt konto."
   },
   "reset-password-link": {
-    "title": "Reset Password Link",
-    "preview": "Reset Password Link",
-    "heading": "Reset Password Link",
-    "description": "You are receiving this email because we received a password reset request for your account at {appName}.",
-    "instructions": "Please click the button below to reset your password.",
-    "resetPassword": "Reset Password",
-    "copyAndPaste": "or copy and paste this URL into your browser:"
+    "title": "Länk för att återställa lösenord",
+    "preview": "Länk för att återställa lösenord",
+    "heading": "Länk för att återställa lösenord",
+    "description": "Du får det här mejlet eftersom vi har fått en begäran om att återställa lösenordet för ditt konto hos {appName}.",
+    "instructions": "Klicka på knappen nedan för att återställa ditt lösenord.",
+    "resetPassword": "Återställ lösenord",
+    "copyAndPaste": "eller kopiera och klistra in den här URL:en i din webbläsare:"
   },
   "server-deleted": {
-    "title": "Your server has been deleted",
-    "preview": "Your server has been deleted",
-    "heading": "Your server has been deleted",
-    "greeting": "Hi {name}!",
-    "description": "Your server <strong>{serverName}</strong> and all data have been permanently deleted.",
-    "hint": "Since your server was not renewed within the last {days} days, it has been deleted and cannot be restored."
+    "title": "Din server har raderats",
+    "preview": "Din server har raderats",
+    "heading": "Din server har raderats",
+    "greeting": "Hej {name}!",
+    "description": "Din server <strong>{serverName}</strong> och all data har raderats permanent.",
+    "hint": "Eftersom din server inte förnyades under de senaste {days} dagarna har den raderats och kan inte återställas."
   },
   "server-extended": {
-    "title": "Your server has been renewed",
-    "preview": "Your server has been renewed",
-    "heading": "Your server has been renewed",
-    "greeting": "Hi {name}!",
-    "description": "Your server <strong>{serverName}</strong> has been successfully renewed.",
-    "hint": "The new expiration date is <strong>{newTerminatesAt}</strong>. If you need to extend the server again, you can do so in the customer portal."
+    "title": "Din server har förnyats",
+    "preview": "Din server har förnyats",
+    "heading": "Din server har förnyats",
+    "greeting": "Hej {name}!",
+    "description": "Din server <strong>{serverName}</strong> har förnyats.",
+    "hint": "Det nya utgångsdatumet är <strong>{newTerminatesAt}</strong>. Om du behöver förlänga servern igen kan du göra det i kundportalen."
   },
   "server-ready": {
-    "title": "Your server is now ready",
-    "preview": "Your server is now ready",
-    "heading": "Your server is now ready",
-    "greeting": "Hi {name}!",
-    "description": "The server you ordered is now fully configured and ready to use. For security reasons, the IP address is not included with this email. You can find it in the customer portal.",
-    "username": "<strong>• Username:</strong> {username}",
-    "rootPassword": "<strong>• Root password:</strong> {rootPassword}",
-    "customPassword": "Custom password chosen by you",
-    "portalLink": "View server in customer portal"
+    "title": "Din server är nu klar",
+    "preview": "Din server är nu klar",
+    "heading": "Din server är nu klar",
+    "greeting": "Hej {name}!",
+    "description": "Servern du beställde är nu helt konfigurerad och klar att använda. Av säkerhetsskäl finns IP-adressen inte med i det här mejlet. Du hittar den i kundportalen.",
+    "username": "<strong>• Användarnamn:</strong> {username}",
+    "rootPassword": "<strong>• Root-lösenord:</strong> {rootPassword}",
+    "customPassword": "Eget lösenord valt av dig",
+    "portalLink": "Visa server i kundportalen"
   },
   "server-renewal-reminder": {
-    "title": "Your server is about to expire",
-    "preview": "Your server is about to expire",
-    "heading": "Your server is about to expire",
-    "greeting": "Hi {name}!",
-    "description": "Your server <strong>{serverName}</strong> is about to expire in the next <strong>{days} days</strong>.",
-    "hint": "To avoid deletion, we recommend that you renew your server <strong>as soon as possible</strong>.",
-    "renewButton": "Renew now"
+    "title": "Din server håller på att löpa ut",
+    "preview": "Din server håller på att löpa ut",
+    "heading": "Din server håller på att löpa ut",
+    "greeting": "Hej {name}!",
+    "description": "Din server <strong>{serverName}</strong> löper ut inom de kommande <strong>{days} dagarna</strong>.",
+    "hint": "För att undvika radering rekommenderar vi att du förnyar din server <strong>så snart som möjligt</strong>.",
+    "renewButton": "Förnya nu"
   },
   "server-suspended": {
-    "title": "Your server has been suspended",
-    "preview": "Your server has been suspended",
-    "heading": "Your server has been suspended",
-    "greeting": "Hi {name}!",
-    "description": "Your server <strong>{serverName}</strong> has been suspended, because it was not renewed in time.",
-    "hint": "You have <strong>{days} days</strong> to renew your server. After that, your server and all data will be permanently deleted.",
-    "renewButton": "Renew now"
+    "title": "Din server har stängts av",
+    "preview": "Din server har stängts av",
+    "heading": "Din server har stängts av",
+    "greeting": "Hej {name}!",
+    "description": "Din server <strong>{serverName}</strong> har stängts av eftersom den inte förnyades i tid.",
+    "hint": "Du har <strong>{days} dagar</strong> på dig att förnya din server. Efter det raderas servern och all data permanent.",
+    "renewButton": "Förnya nu"
   },
   "verify-email": {
-    "title": "Your {appName} Verification Code",
-    "preview": "Your {appName} Verification Code",
-    "heading": "Please confirm your email address",
-    "instructions": "Enter this code on the {appName} verify page to complete your sign up:",
-    "hint": "This code expires in 10 minutes."
+    "title": "Din verifieringskod för {appName}",
+    "preview": "Din verifieringskod för {appName}",
+    "heading": "Bekräfta din e-postadress",
+    "instructions": "Ange den här koden på verifieringssidan för {appName} för att slutföra din registrering:",
+    "hint": "Den här koden går ut om 10 minuter."
   },
   "footer": {
-    "thisEmailWasIntendedFor": "This email was intended for <strong>{email}</strong>.",
-    "securityConcerns": "If you were not expecting this email, you can ignore this email. If you are concerned about your account's safety, please <link>reach out to let us know</link>.",
-    "dontWantToGetTheseEmails": "Don't want to get these emails?",
-    "managePreferences": "Manage your email preferences",
-    "adjustNotificationSettings": "Adjust your notification settings",
-    "managingDirector": "Managing Director",
-    "commercialRegister": "Commercial Register"
+    "thisEmailWasIntendedFor": "Det här mejlet var avsett för <strong>{email}</strong>.",
+    "securityConcerns": "Om du inte väntade dig det här mejlet kan du ignorera det. Om du är orolig för säkerheten på ditt konto, <link>kontakta oss och berätta det</link>.",
+    "dontWantToGetTheseEmails": "Vill du inte få de här mejlen?",
+    "managePreferences": "Hantera dina e-postinställningar",
+    "adjustNotificationSettings": "Justera dina aviseringsinställningar",
+    "managingDirector": "Verkställande direktör",
+    "commercialRegister": "Handelsregister"
   }
 }

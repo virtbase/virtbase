@@ -1,107 +1,107 @@
 {
   "email-updated": {
-    "title": "Your email address has been changed",
-    "preview": "Your email address has been updated",
-    "heading": "Your email address has been updated",
-    "changedFromTo": "The e-mail address for your {appName} account has been changed from <strong>{oldEmail}</strong> to <strong>{newEmail}</strong>.",
-    "support": "If you did not make this change, please contact our support team or <link>update your email address</link>.",
-    "hint": "This message is being sent to your old e-mail address only."
+    "title": "Din e-mailadresse er blevet ændret",
+    "preview": "Din e-mailadresse er blevet opdateret",
+    "heading": "Din e-mailadresse er blevet opdateret",
+    "changedFromTo": "E-mailadressen for din {appName}-konto er blevet ændret fra <strong>{oldEmail}</strong> til <strong>{newEmail}</strong>.",
+    "support": "Hvis det ikke var dig, der lavede denne ændring, så kontakt vores supportteam eller <link>opdater din e-mailadresse</link>.",
+    "hint": "Denne besked sendes kun til din gamle e-mailadresse."
   },
   "invoice-created": {
-    "title": "A new invoice has been created",
-    "preview": "Your invoice is available",
-    "heading": "Your invoice is available",
-    "greeting": "Hi {name}!",
-    "description": "Thank you for your purchase at {appName}. Your invoice is available for download. Please find it in the attachments of this email.",
-    "voucherNumber": "Invoice number",
-    "totalAmount": "Total amount",
-    "taxAmount": "Included tax",
-    "viewInvoice": "View invoice in customer portal"
+    "title": "Der er oprettet en ny faktura",
+    "preview": "Din faktura er klar",
+    "heading": "Din faktura er klar",
+    "greeting": "Hej {name}!",
+    "description": "Tak for dit køb hos {appName}. Din faktura er klar til download. Du finder den i vedhæftningerne til denne e-mail.",
+    "voucherNumber": "Fakturanummer",
+    "totalAmount": "Samlet beløb",
+    "taxAmount": "Inkluderet moms",
+    "viewInvoice": "Se faktura i kundeportalen"
   },
   "login-link": {
-    "title": "Your {appName} Login Link",
-    "preview": "Your {appName} Login Link",
-    "heading": "Your Login Link",
-    "welcome": "Welcome to {appName}!",
-    "instructions": "Please click the magic link below to sign in to your account.",
-    "signIn": "Sign in",
-    "copyAndPaste": "or copy and paste this URL into your browser:"
+    "title": "Dit loginlink til {appName}",
+    "preview": "Dit loginlink til {appName}",
+    "heading": "Dit loginlink",
+    "welcome": "Velkommen til {appName}!",
+    "instructions": "Klik på magic linket nedenfor for at logge ind på din konto.",
+    "signIn": "Log ind",
+    "copyAndPaste": "eller kopier og indsæt denne URL i din browser:"
   },
   "password-updated": {
-    "title": "Your password has been changed",
-    "preview": "Your password has been changed",
-    "heading": "Password has been changed",
-    "description": "The password for your {appName} account has been successfully changed.",
-    "hint": "If you did not make this change or you believe an unauthorised person has accessed your account, please contact us immediately to secure your account."
+    "title": "Din adgangskode er blevet ændret",
+    "preview": "Din adgangskode er blevet ændret",
+    "heading": "Adgangskoden er blevet ændret",
+    "description": "Adgangskoden til din {appName}-konto er blevet ændret.",
+    "hint": "Hvis det ikke var dig, der lavede denne ændring, eller du tror, at en uvedkommende har fået adgang til din konto, så kontakt os med det samme, så vi kan sikre din konto."
   },
   "reset-password-link": {
-    "title": "Reset Password Link",
-    "preview": "Reset Password Link",
-    "heading": "Reset Password Link",
-    "description": "You are receiving this email because we received a password reset request for your account at {appName}.",
-    "instructions": "Please click the button below to reset your password.",
-    "resetPassword": "Reset Password",
-    "copyAndPaste": "or copy and paste this URL into your browser:"
+    "title": "Link til nulstilling af adgangskode",
+    "preview": "Link til nulstilling af adgangskode",
+    "heading": "Link til nulstilling af adgangskode",
+    "description": "Du får denne e-mail, fordi vi har modtaget en anmodning om at nulstille adgangskoden til din konto hos {appName}.",
+    "instructions": "Klik på knappen nedenfor for at nulstille din adgangskode.",
+    "resetPassword": "Nulstil adgangskode",
+    "copyAndPaste": "eller kopier og indsæt denne URL i din browser:"
   },
   "server-deleted": {
-    "title": "Your server has been deleted",
-    "preview": "Your server has been deleted",
-    "heading": "Your server has been deleted",
-    "greeting": "Hi {name}!",
-    "description": "Your server <strong>{serverName}</strong> and all data have been permanently deleted.",
-    "hint": "Since your server was not renewed within the last {days} days, it has been deleted and cannot be restored."
+    "title": "Din server er blevet slettet",
+    "preview": "Din server er blevet slettet",
+    "heading": "Din server er blevet slettet",
+    "greeting": "Hej {name}!",
+    "description": "Din server <strong>{serverName}</strong> og alle data er blevet slettet permanent.",
+    "hint": "Da din server ikke blev fornyet inden for de seneste {days} dage, er den blevet slettet og kan ikke gendannes."
   },
   "server-extended": {
-    "title": "Your server has been renewed",
-    "preview": "Your server has been renewed",
-    "heading": "Your server has been renewed",
-    "greeting": "Hi {name}!",
-    "description": "Your server <strong>{serverName}</strong> has been successfully renewed.",
-    "hint": "The new expiration date is <strong>{newTerminatesAt}</strong>. If you need to extend the server again, you can do so in the customer portal."
+    "title": "Din server er blevet fornyet",
+    "preview": "Din server er blevet fornyet",
+    "heading": "Din server er blevet fornyet",
+    "greeting": "Hej {name}!",
+    "description": "Din server <strong>{serverName}</strong> er blevet fornyet.",
+    "hint": "Den nye udløbsdato er <strong>{newTerminatesAt}</strong>. Hvis du får brug for at forlænge serveren igen, kan du gøre det i kundeportalen."
   },
   "server-ready": {
-    "title": "Your server is now ready",
-    "preview": "Your server is now ready",
-    "heading": "Your server is now ready",
-    "greeting": "Hi {name}!",
-    "description": "The server you ordered is now fully configured and ready to use. For security reasons, the IP address is not included with this email. You can find it in the customer portal.",
-    "username": "<strong>• Username:</strong> {username}",
-    "rootPassword": "<strong>• Root password:</strong> {rootPassword}",
-    "customPassword": "Custom password chosen by you",
-    "portalLink": "View server in customer portal"
+    "title": "Din server er klar nu",
+    "preview": "Din server er klar nu",
+    "heading": "Din server er klar nu",
+    "greeting": "Hej {name}!",
+    "description": "Den server, du har bestilt, er nu fuldt konfigureret og klar til brug. Af sikkerhedsmæssige årsager er IP-adressen ikke med i denne e-mail. Du finder den i kundeportalen.",
+    "username": "<strong>• Brugernavn:</strong> {username}",
+    "rootPassword": "<strong>• Root-adgangskode:</strong> {rootPassword}",
+    "customPassword": "Egen adgangskode valgt af dig",
+    "portalLink": "Se server i kundeportalen"
   },
   "server-renewal-reminder": {
-    "title": "Your server is about to expire",
-    "preview": "Your server is about to expire",
-    "heading": "Your server is about to expire",
-    "greeting": "Hi {name}!",
-    "description": "Your server <strong>{serverName}</strong> is about to expire in the next <strong>{days} days</strong>.",
-    "hint": "To avoid deletion, we recommend that you renew your server <strong>as soon as possible</strong>.",
-    "renewButton": "Renew now"
+    "title": "Din server udløber snart",
+    "preview": "Din server udløber snart",
+    "heading": "Din server udløber snart",
+    "greeting": "Hej {name}!",
+    "description": "Din server <strong>{serverName}</strong> udløber inden for de næste <strong>{days} dage</strong>.",
+    "hint": "For at undgå sletning anbefaler vi, at du fornyer din server <strong>så hurtigt som muligt</strong>.",
+    "renewButton": "Forny nu"
   },
   "server-suspended": {
-    "title": "Your server has been suspended",
-    "preview": "Your server has been suspended",
-    "heading": "Your server has been suspended",
-    "greeting": "Hi {name}!",
-    "description": "Your server <strong>{serverName}</strong> has been suspended, because it was not renewed in time.",
-    "hint": "You have <strong>{days} days</strong> to renew your server. After that, your server and all data will be permanently deleted.",
-    "renewButton": "Renew now"
+    "title": "Din server er blevet suspenderet",
+    "preview": "Din server er blevet suspenderet",
+    "heading": "Din server er blevet suspenderet",
+    "greeting": "Hej {name}!",
+    "description": "Din server <strong>{serverName}</strong> er blevet suspenderet, fordi den ikke blev fornyet i tide.",
+    "hint": "Du har <strong>{days} dage</strong> til at forny din server. Derefter bliver serveren og alle data slettet permanent.",
+    "renewButton": "Forny nu"
   },
   "verify-email": {
-    "title": "Your {appName} Verification Code",
-    "preview": "Your {appName} Verification Code",
-    "heading": "Please confirm your email address",
-    "instructions": "Enter this code on the {appName} verify page to complete your sign up:",
-    "hint": "This code expires in 10 minutes."
+    "title": "Din bekræftelseskode til {appName}",
+    "preview": "Din bekræftelseskode til {appName}",
+    "heading": "Bekræft venligst din e-mailadresse",
+    "instructions": "Indtast denne kode på bekræftelsessiden hos {appName} for at færdiggøre din tilmelding:",
+    "hint": "Denne kode udløber om 10 minutter."
   },
   "footer": {
-    "thisEmailWasIntendedFor": "This email was intended for <strong>{email}</strong>.",
-    "securityConcerns": "If you were not expecting this email, you can ignore this email. If you are concerned about your account's safety, please <link>reach out to let us know</link>.",
-    "dontWantToGetTheseEmails": "Don't want to get these emails?",
-    "managePreferences": "Manage your email preferences",
-    "adjustNotificationSettings": "Adjust your notification settings",
-    "managingDirector": "Managing Director",
-    "commercialRegister": "Commercial Register"
+    "thisEmailWasIntendedFor": "Denne e-mail var tiltænkt <strong>{email}</strong>.",
+    "securityConcerns": "Hvis du ikke forventede denne e-mail, kan du ignorere den. Hvis du er bekymret for din kontos sikkerhed, så <link>kontakt os og fortæl det</link>.",
+    "dontWantToGetTheseEmails": "Vil du ikke modtage disse e-mails?",
+    "managePreferences": "Administrer dine e-mailpræferencer",
+    "adjustNotificationSettings": "Tilpas dine notifikationsindstillinger",
+    "managingDirector": "Administrerende direktør",
+    "commercialRegister": "Handelsregister"
   }
 }

@@ -1,107 +1,107 @@
 {
   "email-updated": {
-    "title": "Your email address has been changed",
-    "preview": "Your email address has been updated",
-    "heading": "Your email address has been updated",
-    "changedFromTo": "The e-mail address for your {appName} account has been changed from <strong>{oldEmail}</strong> to <strong>{newEmail}</strong>.",
-    "support": "If you did not make this change, please contact our support team or <link>update your email address</link>.",
-    "hint": "This message is being sent to your old e-mail address only."
+    "title": "Adresa ta de e-mail a fost schimbată",
+    "preview": "Adresa ta de e-mail a fost actualizată",
+    "heading": "Adresa ta de e-mail a fost actualizată",
+    "changedFromTo": "Adresa de e-mail pentru contul tău {appName} a fost schimbată din <strong>{oldEmail}</strong> în <strong>{newEmail}</strong>.",
+    "support": "Dacă nu tu ai făcut această schimbare, contactează echipa noastră de suport sau <link>actualizează-ți adresa de e-mail</link>.",
+    "hint": "Acest mesaj este trimis doar la vechea ta adresă de e-mail."
   },
   "invoice-created": {
-    "title": "A new invoice has been created",
-    "preview": "Your invoice is available",
-    "heading": "Your invoice is available",
-    "greeting": "Hi {name}!",
-    "description": "Thank you for your purchase at {appName}. Your invoice is available for download. Please find it in the attachments of this email.",
-    "voucherNumber": "Invoice number",
-    "totalAmount": "Total amount",
-    "taxAmount": "Included tax",
-    "viewInvoice": "View invoice in customer portal"
+    "title": "A fost creată o factură nouă",
+    "preview": "Factura ta este disponibilă",
+    "heading": "Factura ta este disponibilă",
+    "greeting": "Salut {name}!",
+    "description": "Îți mulțumim pentru achiziția făcută la {appName}. Factura ta este disponibilă pentru descărcare. O găsești în atașamentele acestui e-mail.",
+    "voucherNumber": "Număr factură",
+    "totalAmount": "Sumă totală",
+    "taxAmount": "Taxă inclusă",
+    "viewInvoice": "Vezi factura în portalul pentru clienți"
   },
   "login-link": {
-    "title": "Your {appName} Login Link",
-    "preview": "Your {appName} Login Link",
-    "heading": "Your Login Link",
-    "welcome": "Welcome to {appName}!",
-    "instructions": "Please click the magic link below to sign in to your account.",
-    "signIn": "Sign in",
-    "copyAndPaste": "or copy and paste this URL into your browser:"
+    "title": "Linkul tău de autentificare pentru {appName}",
+    "preview": "Linkul tău de autentificare pentru {appName}",
+    "heading": "Linkul tău de autentificare",
+    "welcome": "Bun venit la {appName}!",
+    "instructions": "Apasă pe linkul magic de mai jos ca să te autentifici în contul tău.",
+    "signIn": "Autentifică-te",
+    "copyAndPaste": "sau copiază și lipește acest URL în browser:"
   },
   "password-updated": {
-    "title": "Your password has been changed",
-    "preview": "Your password has been changed",
-    "heading": "Password has been changed",
-    "description": "The password for your {appName} account has been successfully changed.",
-    "hint": "If you did not make this change or you believe an unauthorised person has accessed your account, please contact us immediately to secure your account."
+    "title": "Parola ta a fost schimbată",
+    "preview": "Parola ta a fost schimbată",
+    "heading": "Parola a fost schimbată",
+    "description": "Parola contului tău {appName} a fost schimbată cu succes.",
+    "hint": "Dacă nu tu ai făcut această schimbare sau crezi că o persoană neautorizată ți-a accesat contul, contactează-ne imediat ca să îți securizăm contul."
   },
   "reset-password-link": {
-    "title": "Reset Password Link",
-    "preview": "Reset Password Link",
-    "heading": "Reset Password Link",
-    "description": "You are receiving this email because we received a password reset request for your account at {appName}.",
-    "instructions": "Please click the button below to reset your password.",
-    "resetPassword": "Reset Password",
-    "copyAndPaste": "or copy and paste this URL into your browser:"
+    "title": "Link pentru resetarea parolei",
+    "preview": "Link pentru resetarea parolei",
+    "heading": "Link pentru resetarea parolei",
+    "description": "Primești acest e-mail deoarece am primit o cerere de resetare a parolei pentru contul tău de la {appName}.",
+    "instructions": "Apasă pe butonul de mai jos ca să îți resetezi parola.",
+    "resetPassword": "Resetează parola",
+    "copyAndPaste": "sau copiază și lipește acest URL în browser:"
   },
   "server-deleted": {
-    "title": "Your server has been deleted",
-    "preview": "Your server has been deleted",
-    "heading": "Your server has been deleted",
-    "greeting": "Hi {name}!",
-    "description": "Your server <strong>{serverName}</strong> and all data have been permanently deleted.",
-    "hint": "Since your server was not renewed within the last {days} days, it has been deleted and cannot be restored."
+    "title": "Serverul tău a fost șters",
+    "preview": "Serverul tău a fost șters",
+    "heading": "Serverul tău a fost șters",
+    "greeting": "Salut {name}!",
+    "description": "Serverul tău <strong>{serverName}</strong> și toate datele au fost șterse definitiv.",
+    "hint": "Deoarece serverul tău nu a fost reînnoit în ultimele {days} zile, a fost șters și nu poate fi restaurat."
   },
   "server-extended": {
-    "title": "Your server has been renewed",
-    "preview": "Your server has been renewed",
-    "heading": "Your server has been renewed",
-    "greeting": "Hi {name}!",
-    "description": "Your server <strong>{serverName}</strong> has been successfully renewed.",
-    "hint": "The new expiration date is <strong>{newTerminatesAt}</strong>. If you need to extend the server again, you can do so in the customer portal."
+    "title": "Serverul tău a fost reînnoit",
+    "preview": "Serverul tău a fost reînnoit",
+    "heading": "Serverul tău a fost reînnoit",
+    "greeting": "Salut {name}!",
+    "description": "Serverul tău <strong>{serverName}</strong> a fost reînnoit cu succes.",
+    "hint": "Noua dată de expirare este <strong>{newTerminatesAt}</strong>. Dacă trebuie să prelungești din nou serverul, poți face asta din portalul pentru clienți."
   },
   "server-ready": {
-    "title": "Your server is now ready",
-    "preview": "Your server is now ready",
-    "heading": "Your server is now ready",
-    "greeting": "Hi {name}!",
-    "description": "The server you ordered is now fully configured and ready to use. For security reasons, the IP address is not included with this email. You can find it in the customer portal.",
-    "username": "<strong>• Username:</strong> {username}",
-    "rootPassword": "<strong>• Root password:</strong> {rootPassword}",
-    "customPassword": "Custom password chosen by you",
-    "portalLink": "View server in customer portal"
+    "title": "Serverul tău este gata",
+    "preview": "Serverul tău este gata",
+    "heading": "Serverul tău este gata",
+    "greeting": "Salut {name}!",
+    "description": "Serverul pe care l-ai comandat este acum complet configurat și gata de utilizare. Din motive de securitate, adresa IP nu este inclusă în acest e-mail. O poți găsi în portalul pentru clienți.",
+    "username": "<strong>• Nume de utilizator:</strong> {username}",
+    "rootPassword": "<strong>• Parolă root:</strong> {rootPassword}",
+    "customPassword": "Parolă personalizată aleasă de tine",
+    "portalLink": "Vezi serverul în portalul pentru clienți"
   },
   "server-renewal-reminder": {
-    "title": "Your server is about to expire",
-    "preview": "Your server is about to expire",
-    "heading": "Your server is about to expire",
-    "greeting": "Hi {name}!",
-    "description": "Your server <strong>{serverName}</strong> is about to expire in the next <strong>{days} days</strong>.",
-    "hint": "To avoid deletion, we recommend that you renew your server <strong>as soon as possible</strong>.",
-    "renewButton": "Renew now"
+    "title": "Serverul tău este pe cale să expire",
+    "preview": "Serverul tău este pe cale să expire",
+    "heading": "Serverul tău este pe cale să expire",
+    "greeting": "Salut {name}!",
+    "description": "Serverul tău <strong>{serverName}</strong> va expira în următoarele <strong>{days} zile</strong>.",
+    "hint": "Pentru a evita ștergerea, îți recomandăm să îți reînnoiești serverul <strong>cât mai curând posibil</strong>.",
+    "renewButton": "Reînnoiește acum"
   },
   "server-suspended": {
-    "title": "Your server has been suspended",
-    "preview": "Your server has been suspended",
-    "heading": "Your server has been suspended",
-    "greeting": "Hi {name}!",
-    "description": "Your server <strong>{serverName}</strong> has been suspended, because it was not renewed in time.",
-    "hint": "You have <strong>{days} days</strong> to renew your server. After that, your server and all data will be permanently deleted.",
-    "renewButton": "Renew now"
+    "title": "Serverul tău a fost suspendat",
+    "preview": "Serverul tău a fost suspendat",
+    "heading": "Serverul tău a fost suspendat",
+    "greeting": "Salut {name}!",
+    "description": "Serverul tău <strong>{serverName}</strong> a fost suspendat deoarece nu a fost reînnoit la timp.",
+    "hint": "Ai <strong>{days} zile</strong> ca să îți reînnoiești serverul. După aceea, serverul și toate datele vor fi șterse definitiv.",
+    "renewButton": "Reînnoiește acum"
   },
   "verify-email": {
-    "title": "Your {appName} Verification Code",
-    "preview": "Your {appName} Verification Code",
-    "heading": "Please confirm your email address",
-    "instructions": "Enter this code on the {appName} verify page to complete your sign up:",
-    "hint": "This code expires in 10 minutes."
+    "title": "Codul tău de verificare {appName}",
+    "preview": "Codul tău de verificare {appName}",
+    "heading": "Confirmă-ți adresa de e-mail",
+    "instructions": "Introdu acest cod pe pagina de verificare {appName} pentru a finaliza înregistrarea:",
+    "hint": "Acest cod expiră în 10 minute."
   },
   "footer": {
-    "thisEmailWasIntendedFor": "This email was intended for <strong>{email}</strong>.",
-    "securityConcerns": "If you were not expecting this email, you can ignore this email. If you are concerned about your account's safety, please <link>reach out to let us know</link>.",
-    "dontWantToGetTheseEmails": "Don't want to get these emails?",
-    "managePreferences": "Manage your email preferences",
-    "adjustNotificationSettings": "Adjust your notification settings",
-    "managingDirector": "Managing Director",
-    "commercialRegister": "Commercial Register"
+    "thisEmailWasIntendedFor": "Acest e-mail era destinat pentru <strong>{email}</strong>.",
+    "securityConcerns": "Dacă nu te așteptai la acest e-mail, îl poți ignora. Dacă ești îngrijorat de siguranța contului tău, <link>contactează-ne ca să ne spui</link>.",
+    "dontWantToGetTheseEmails": "Nu vrei să primești aceste e-mailuri?",
+    "managePreferences": "Gestionează preferințele pentru e-mail",
+    "adjustNotificationSettings": "Ajustează setările notificărilor",
+    "managingDirector": "Director general",
+    "commercialRegister": "Registrul comerțului"
   }
 }
