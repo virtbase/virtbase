@@ -18,6 +18,7 @@
 import type { SQL } from "drizzle-orm";
 import {
   and,
+  asc,
   count,
   eq,
   exists,
@@ -126,5 +127,6 @@ export const getPlansWithAvailability = (...filters: SQL[]) => {
       ).mapWith(Boolean),
     })
     .from(serverPlans)
-    .where(filters.length > 0 ? and(...filters) : undefined);
+    .where(filters.length > 0 ? and(...filters) : undefined)
+    .orderBy(asc(serverPlans.price));
 };
