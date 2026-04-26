@@ -15,6 +15,14 @@
       "types": "./dist/stripe.d.ts",
       "default": "./src/stripe/index.ts"
     },
+    "./anonpay": {
+      "types": "./dist/anonpay.d.ts",
+      "default": "./src/anonpay/index.ts"
+    },
+    "./anonpay/constants": {
+      "types": "./dist/anonpay/constants.d.ts",
+      "default": "./src/anonpay/constants.ts"
+    },
     "./lexware": {
       "types": "./dist/lexware.d.ts",
       "default": "./src/lexware/index.ts"

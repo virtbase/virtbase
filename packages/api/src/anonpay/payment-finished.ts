@@ -25,53 +25,65 @@ import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { serverPlans, users } from "@virtbase/db/schema";
 import { decryptPayload, deriveKeyHex } from "@virtbase/utils";
-import type { OrderConfigurationSnapshot } from "@virtbase/validators";
+import type {
+  CustomCheckoutInput,
+  OrderConfigurationSnapshot,
+} from "@virtbase/validators";
 import type Stripe from "stripe";
 import { start } from "workflow/api";
-import { stripe } from "./client";
+import type { AnonpayWebhookResponse } from "./types";
 
 /**
- * Handle a payment intent succeeded event from Stripe.
+ * Handle a payment finished event from Anonpay.
  *
  * At this point the payment has been successfully processed and the customer has been charged.
  *
  * This function will:
- * 1. Decrypt the configuration snapshot from the payment intent metadata
+ * 1. Decrypt the configuration snapshot from the encrypted configuration snapshot
  * 2. Parse the configuration snapshot
  * 3. Check if the server plan exists
  * 4. Check if the user exists
  * 5. Create an invoice
  * 6. Start the appropriate workflow based on the configuration type
  */
-export const handlePaymentIntentSucceeded = async (event: Stripe.Event) => {
-  const paymentIntent = event.data.object as Stripe.PaymentIntent;
+export const handlePaymentFinished = async ({
+  paymentIntent,
+  data: _,
+}: {
+  paymentIntent: Stripe.PaymentIntent;
+  data: AnonpayWebhookResponse;
+}) => {
   const metadata = paymentIntent.metadata as
-    | { configurationSnapshot?: string }
+    | { configurationSnapshot?: string; billingDetailsSnapshot?: string }
     | undefined;
 
-  if (!metadata?.configurationSnapshot) {
+  if (!metadata?.configurationSnapshot || !metadata?.billingDetailsSnapshot) {
     throw new Error(
-      "Configuration snapshot is missing. Cannot process payment intent.",
+      "Configuration snapshot or billing details snapshot is missing. Cannot process payment intent.",
     );
   }
 
   const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-  if (!stripeSecretKey || !stripe) {
+  if (!stripeSecretKey) {
     throw new Error(
-      "STRIPE_SECRET_KEY is not set in the .env. Cannot decrypt configuration snapshot.",
+      "STRIPE_SECRET_KEY is not set in the .env. Cannot decrypt configuration and billing details snapshot.",
     );
   }
 
-  const decrypted = await decryptPayload(
-    metadata.configurationSnapshot,
-    await deriveKeyHex(stripeSecretKey),
-  );
+  const derivedKeyHex = await deriveKeyHex(stripeSecretKey);
+  const [decryptedConfigurationSnapshot, decryptedBillingDetailsSnapshot] =
+    await Promise.all([
+      decryptPayload(metadata.configurationSnapshot, derivedKeyHex),
+      decryptPayload(metadata.billingDetailsSnapshot, derivedKeyHex),
+    ]);
   let configuration: OrderConfigurationSnapshot;
+  let billingDetails: CustomCheckoutInput["billing_details"];
   try {
-    configuration = JSON.parse(decrypted);
+    configuration = JSON.parse(decryptedConfigurationSnapshot);
+    billingDetails = JSON.parse(decryptedBillingDetailsSnapshot);
   } catch {
     throw new Error(
-      "Failed to parse configuration snapshot. Invalid STRIPE_SECRET_KEY or configuration snapshot is malformed.",
+      "Failed to parse configuration snapshot or billing details snapshot. Invalid STRIPE_SECRET_KEY or snapshots are malformed.",
     );
   }
 
@@ -82,9 +94,7 @@ export const handlePaymentIntentSucceeded = async (event: Stripe.Event) => {
       Promise.all([
         tx.$count(serverPlans, eq(serverPlans.id, planId)),
         tx
-          .select({
-            id: users.id,
-          })
+          .select({ id: users.id })
           .from(users)
           .where(eq(users.stripeCustomerId, paymentIntent.customer as string))
           .limit(1)
@@ -110,31 +120,17 @@ export const handlePaymentIntentSucceeded = async (event: Stripe.Event) => {
 
   // Currently all configuration types require an invoice to be created
   // Check if this changes with new configuration types
-  if (
-    paymentIntent.latest_charge &&
-    typeof paymentIntent.latest_charge === "string"
-  ) {
-    const charge = await stripe.charges.retrieve(paymentIntent.latest_charge);
-    const billingDetails = charge.billing_details;
-
-    if (!billingDetails.address) {
-      throw new Error(
-        "Expected a billing address in Stripe charge. Cannot create invoice.",
-      );
-    }
-
-    await start(createInvoiceWorkflow, [
-      {
-        configuration,
-        billingDetails: {
-          name: billingDetails.name,
-          email: billingDetails.email,
-          address: billingDetails.address,
-        },
-        stripeCustomerId: paymentIntent.customer as string,
+  await start(createInvoiceWorkflow, [
+    {
+      configuration,
+      billingDetails: {
+        ...billingDetails,
+        // AddressElement does not collect email; user.email is used in the workflow
+        email: null,
       },
-    ]);
-  }
+      stripeCustomerId: paymentIntent.customer as string,
+    },
+  ]);
 
   switch (configuration.type) {
     case "new_server":

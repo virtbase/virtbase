@@ -19,7 +19,13 @@
 
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import {
+  ANONPAY_MIN_AMOUNT,
+  ANONPAY_STRIPE_METHOD_ID,
+} from "@virtbase/api/anonpay/constants";
+import { useExtracted } from "next-intl";
 import type { PropsWithChildren } from "react";
+import { useEffect, useState } from "react";
 
 const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "",
@@ -33,10 +39,51 @@ export function ElementsProvider({
   customerSessionClientSecret: string;
   clientSecret: string;
 }>) {
+  const t = useExtracted();
+
+  const [amount, setAmount] = useState<number | null>(null);
+
+  useEffect(() => {
+    let cancelled = false;
+    void (async () => {
+      try {
+        const stripe = await stripePromise;
+        if (!stripe) {
+          if (!cancelled) setAmount(0);
+          return;
+        }
+        const { paymentIntent } =
+          await stripe.retrievePaymentIntent(clientSecret);
+        if (cancelled) return;
+        setAmount(paymentIntent?.amount ?? 0);
+      } catch {
+        if (!cancelled) setAmount(0);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, [clientSecret]);
+
   return (
     <Elements
       stripe={stripePromise}
       options={{
+        ...(ANONPAY_STRIPE_METHOD_ID &&
+        amount !== null &&
+        amount >= ANONPAY_MIN_AMOUNT
+          ? {
+              customPaymentMethods: [
+                {
+                  id: ANONPAY_STRIPE_METHOD_ID,
+                  options: {
+                    type: "static",
+                    subtitle: t("Pay anonymously with cryptocurrency"),
+                  },
+                },
+              ],
+            }
+          : {}),
         customerSessionClientSecret,
         clientSecret,
         fonts: [

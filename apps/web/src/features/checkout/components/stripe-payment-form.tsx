@@ -21,6 +21,7 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
+import { ANONPAY_STRIPE_METHOD_ID } from "@virtbase/api/anonpay/constants";
 import { Alert, AlertDescription, AlertTitle } from "@virtbase/ui/alert";
 import { Button } from "@virtbase/ui/button";
 import { FieldDescription, FieldSet, FieldTitle } from "@virtbase/ui/field";
@@ -34,6 +35,7 @@ import { PUBLIC_DOMAIN } from "@virtbase/utils";
 import { useExtracted, useLocale } from "next-intl";
 import type { FormEvent } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useCustomCheckout } from "../hooks/use-custom-checkout";
 
 export const countries = [
   "AT",
@@ -65,8 +67,10 @@ export const countries = [
 ];
 
 export function StripePaymentForm({
+  paymentIntentId,
   onProcessingChange,
 }: {
+  paymentIntentId: string | null;
   /**
    * Fires `true` when `stripe.confirmPayment` starts and `false` once it
    * resolves (or the component unmounts). Lets sibling UI — e.g. a
@@ -113,8 +117,21 @@ export function StripePaymentForm({
     };
   }, []);
 
+  const {
+    mutateAsync: createCustomCheckout,
+    isPending: isCustomCheckoutPending,
+  } = useCustomCheckout({
+    mutationConfig: {
+      onError: (error) => {
+        setError(error.message);
+        setIsPending(false);
+        onProcessingChangeRef.current?.(false);
+      },
+    },
+  });
+
   const isReady = Boolean(stripe && elements);
-  const isSubmitDisabled = isPending || !isReady;
+  const isSubmitDisabled = isPending || isCustomCheckoutPending || !isReady;
 
   const handleSubmit = useCallback(
     async (event: FormEvent) => {
@@ -122,9 +139,38 @@ export function StripePaymentForm({
 
       if (!stripe || !elements) return;
 
+      const { selectedPaymentMethod, error: submitError } =
+        await elements.submit();
+      if (!selectedPaymentMethod) {
+        setError(submitError?.message ?? null);
+        return;
+      }
+
       setError(null);
       setIsPending(true);
       onProcessingChangeRef.current?.(true);
+
+      if (
+        !!ANONPAY_STRIPE_METHOD_ID &&
+        selectedPaymentMethod === ANONPAY_STRIPE_METHOD_ID &&
+        paymentIntentId
+      ) {
+        const addressElement = elements.getElement("address");
+
+        const addressState = await addressElement?.getValue();
+        if (!addressState?.complete) {
+          setError(t("Please fill in all fields of the billing address."));
+          setIsPending(false);
+          onProcessingChangeRef.current?.(false);
+          return;
+        }
+
+        return createCustomCheckout({
+          payment_intent_id: paymentIntentId,
+          type: "anonpay",
+          billing_details: addressState.value,
+        });
+      }
 
       const { error } = await stripe.confirmPayment({
         confirmParams: {
@@ -143,7 +189,7 @@ export function StripePaymentForm({
       setIsPending(false);
       onProcessingChangeRef.current?.(false);
     },
-    [stripe, elements, locale],
+    [stripe, elements, locale, paymentIntentId, createCustomCheckout],
   );
 
   return (

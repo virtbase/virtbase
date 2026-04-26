@@ -21,6 +21,9 @@ import { authEnv } from "@virtbase/auth/env";
 import * as z from "zod";
 import z4 from "zod/v4";
 
+const isAnonpayConfigured = () =>
+  !!process.env.NEXT_PUBLIC_STRIPE_ANONPAY_METHOD_ID;
+
 export const env = createEnv({
   extends: [authEnv(), vercel()],
   shared: {
@@ -50,12 +53,43 @@ export const env = createEnv({
     // PowerDNS for reverse DNS management
     POWERDNS_API_URL: z4.string().min(1),
     POWERDNS_API_KEY: z4.string().min(1),
+    // Anonpay for cryptocurrency payments (optional)
+    ANONPAY_TICKER_TO: z4
+      .string()
+      .optional()
+      .refine(
+        (value) => !isAnonpayConfigured() || value !== undefined,
+        "ANONPAY_TICKER_TO is required if Anonpay is configured",
+      ),
+    ANONPAY_NETWORK_TO: z4
+      .string()
+      .optional()
+      .refine(
+        (value) => !isAnonpayConfigured() || value !== undefined,
+        "ANONPAY_NETWORK_TO is required if Anonpay is configured",
+      ),
+    ANONPAY_ADDRESS: z4
+      .string()
+      .optional()
+      .refine(
+        (value) => !isAnonpayConfigured() || value !== undefined,
+        "ANONPAY_ADDRESS is required if Anonpay is configured",
+      ),
+    ANONPAY_WEBHOOK_SECRET: z4
+      .string()
+      .optional()
+      .refine(
+        (value) => !isAnonpayConfigured() || value !== undefined,
+        "ANONPAY_WEBHOOK_SECRET is required if Anonpay is configured",
+      ),
   },
   client: {
     // Sentry Configuration
     NEXT_PUBLIC_SENTRY_DSN: z.url().optional(),
     NEXT_PUBLIC_SENTRY_CSP_REPORT_URI: z.url().optional(),
+    // Stripe
     NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY: z4.string().min(1),
+    NEXT_PUBLIC_STRIPE_ANONPAY_METHOD_ID: z4.string().optional(),
   },
   experimental__runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
@@ -64,6 +98,8 @@ export const env = createEnv({
       process.env.NEXT_PUBLIC_SENTRY_CSP_REPORT_URI,
     NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY:
       process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY,
+    NEXT_PUBLIC_STRIPE_ANONPAY_METHOD_ID:
+      process.env.NEXT_PUBLIC_STRIPE_ANONPAY_METHOD_ID,
   },
   skipValidation:
     !!process.env.CI || process.env.npm_lifecycle_event === "lint",

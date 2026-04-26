@@ -68,8 +68,13 @@ export function CheckoutForm({
   const t = useExtracted();
 
   const { id: planId } = useParams<{ id: string }>();
-  const { customerSessionClientSecret, clientSecret, createOrder, isPending } =
-    useCheckoutState();
+  const {
+    paymentIntentId,
+    customerSessionClientSecret,
+    clientSecret,
+    createOrder,
+    isPending,
+  } = useCheckoutState();
 
   const templateGroups = use(promise);
 
@@ -91,7 +96,7 @@ export function CheckoutForm({
         customerSessionClientSecret={customerSessionClientSecret}
         clientSecret={clientSecret}
       >
-        <StripePaymentForm />
+        <StripePaymentForm paymentIntentId={paymentIntentId} />
       </ElementsProvider>
     );
   }

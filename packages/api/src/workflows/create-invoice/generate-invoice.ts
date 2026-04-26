@@ -36,13 +36,23 @@ import {
 import { stripe } from "../../stripe";
 
 type GenerateInvoiceStepInput = {
-  latestChargeId: string;
+  billingDetails: {
+    name: string | null;
+    email: string | null;
+    address: {
+      line1: string | null;
+      line2: string | null;
+      city: string | null;
+      postal_code: string | null;
+      country: string | null;
+    };
+  };
   configuration: OrderConfigurationSnapshot;
 };
 
 // TODO: Idempotent step
 export async function generateInvoiceStep({
-  latestChargeId,
+  billingDetails,
   configuration,
 }: GenerateInvoiceStepInput) {
   "use step";
@@ -59,9 +69,7 @@ export async function generateInvoiceStep({
     );
   }
 
-  const charge = await stripe.charges.retrieve(latestChargeId);
-
-  const { name, email } = charge.billing_details;
+  const { name, email } = billingDetails;
 
   if (!name) {
     console.warn(
@@ -69,14 +77,7 @@ export async function generateInvoiceStep({
     );
   }
 
-  const billingAddress = charge.billing_details.address;
-  if (!billingAddress) {
-    throw new FatalError(
-      "Billing address is missing in Stripe charge. Cannot generate invoice.",
-    );
-  }
-
-  const { country, line1, line2, postal_code, city } = billingAddress;
+  const { country, line1, line2, postal_code, city } = billingDetails.address;
 
   if (!country || !city || !postal_code || !line1) {
     throw new FatalError(

@@ -22,20 +22,30 @@ import { storeInvoiceStep } from "./store-invoice";
 
 type CreateInvoiceWorkflowInput = {
   configuration: OrderConfigurationSnapshot;
-  latestChargeId: string;
   stripeCustomerId: string;
+  billingDetails: {
+    name: string | null;
+    email: string | null;
+    address: {
+      line1: string | null;
+      line2: string | null;
+      city: string | null;
+      postal_code: string | null;
+      country: string | null;
+    };
+  };
 };
 
 export async function createInvoiceWorkflow({
   configuration,
-  latestChargeId,
   stripeCustomerId,
+  billingDetails,
 }: CreateInvoiceWorkflowInput) {
   "use workflow";
 
   const { createdInvoiceId, customerEmail } = await generateInvoiceStep({
     configuration,
-    latestChargeId,
+    billingDetails,
   });
 
   const {
@@ -47,7 +57,6 @@ export async function createInvoiceWorkflow({
     email,
   } = await storeInvoiceStep({
     createdInvoiceId,
-    latestChargeId,
     stripeCustomerId,
   });
 

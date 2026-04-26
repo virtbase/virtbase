@@ -23,13 +23,11 @@ import { lexware } from "../../lexware";
 
 type StoreInvoiceStepInput = {
   createdInvoiceId: string;
-  latestChargeId: string;
   stripeCustomerId: string;
 };
 
 export async function storeInvoiceStep({
   createdInvoiceId,
-  latestChargeId,
   stripeCustomerId,
 }: StoreInvoiceStepInput) {
   "use step";
@@ -95,7 +93,6 @@ export async function storeInvoiceStep({
         .insert(invoices)
         .values({
           userId: user.id,
-          stripeChargeId: latestChargeId,
           lexwareInvoiceId: createdInvoiceId,
           number: voucherNumber,
           total: totalAmountCents,

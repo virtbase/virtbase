@@ -21,6 +21,7 @@ import { createId } from "../utils";
 import { invoices } from "./invoices";
 import { servers } from "./servers";
 import { sshKeys } from "./ssh-keys";
+import { transactions } from "./transactions";
 
 export const users = pgTable(
   "users",
@@ -57,6 +58,7 @@ export const usersRelations = relations(users, ({ many }) => ({
   sshKeys: many(sshKeys),
   servers: many(servers),
   invoices: many(invoices),
+  transactions: many(transactions),
 }));
 
 export const sessions = pgTable(

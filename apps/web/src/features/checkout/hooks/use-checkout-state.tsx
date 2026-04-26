@@ -25,6 +25,7 @@ import { createContext, useCallback, useContext, useMemo } from "react";
 import { useTRPC } from "@/lib/trpc/react";
 
 interface CheckoutStateValue {
+  paymentIntentId: string | null;
   clientSecret: string | null;
   customerSessionClientSecret: string | null;
   createOrder: (input: OrderServerPlanInput) => void;
@@ -73,11 +74,14 @@ export function useCheckoutState() {
 function useCreateOrder(): CheckoutStateValue {
   const trpc = useTRPC();
 
-  const [{ client_secret, customer_session_client_secret }, setCheckoutParams] =
-    useQueryStates({
-      client_secret: parseAsString,
-      customer_session_client_secret: parseAsString,
-    });
+  const [
+    { payment_intent_id, client_secret, customer_session_client_secret },
+    setCheckoutParams,
+  ] = useQueryStates({
+    payment_intent_id: parseAsString,
+    client_secret: parseAsString,
+    customer_session_client_secret: parseAsString,
+  });
 
   const {
     mutate: createOrder,
@@ -87,6 +91,7 @@ function useCreateOrder(): CheckoutStateValue {
     trpc.checkout.order.mutationOptions({
       onSuccess: (data) => {
         void setCheckoutParams({
+          payment_intent_id: data.payment_intent_id,
           client_secret: data.client_secret,
           customer_session_client_secret: data.customer_session_client_secret,
         });
@@ -96,6 +101,7 @@ function useCreateOrder(): CheckoutStateValue {
 
   const resetCheckoutSession = useCallback(() => {
     void setCheckoutParams({
+      payment_intent_id: null,
       client_secret: null,
       customer_session_client_secret: null,
     });
@@ -104,6 +110,7 @@ function useCreateOrder(): CheckoutStateValue {
 
   return useMemo(
     () => ({
+      paymentIntentId: payment_intent_id,
       clientSecret: client_secret,
       customerSessionClientSecret: customer_session_client_secret,
       createOrder,
@@ -111,6 +118,7 @@ function useCreateOrder(): CheckoutStateValue {
       resetCheckoutSession,
     }),
     [
+      payment_intent_id,
       client_secret,
       customer_session_client_secret,
       createOrder,

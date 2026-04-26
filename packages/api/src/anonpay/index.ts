@@ -15,20 +15,6 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./auth";
-export * from "./datacenters";
-export * from "./invoices";
-export * from "./pointer-records";
-export * from "./proxmox-node-groups";
-export * from "./proxmox-nodes";
-export * from "./proxmox-template-groups";
-export * from "./proxmox-templates";
-export * from "./proxmox-templates-to-proxmox-nodes";
-export * from "./server-backups";
-export * from "./server-plans";
-export * from "./servers";
-export * from "./ssh-keys";
-export * from "./subnet-allocations";
-export * from "./subnets";
-export * from "./subnets-to-proxmox-nodes";
-export * from "./transactions";
+export * from "./client";
+export * from "./payment-finished";
+export * from "./types";

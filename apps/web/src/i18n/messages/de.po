@@ -533,7 +533,7 @@ msgid "9uOFF3"
 msgstr "Übersicht"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/plan/page.tsx:30
-#: src/features/servers/components/plan/plan-form.tsx:81
+#: src/features/servers/components/plan/plan-form.tsx:85
 #: src/features/servers/components/server-nav.tsx:72
 msgid "fz0z4c"
 msgstr "Plan"
@@ -1475,29 +1475,29 @@ msgstr "Für die Fortsetzung der Bestellung ist die Erstellung eines Kundenkonto
 msgid "SQJto2"
 msgstr "Anmelden"
 
-#: src/features/checkout/components/checkout-form.tsx:105
+#: src/features/checkout/components/checkout-form.tsx:110
 msgid "7OW8BT"
 msgstr "Konfiguration"
 
-#: src/features/checkout/components/checkout-form.tsx:112
+#: src/features/checkout/components/checkout-form.tsx:117
 #: src/features/servers/components/backups/backups-table/columns.tsx:180
 #: src/features/servers/components/overview/server-details-card.tsx:96
 msgid "t2uvIi"
 msgstr "Betriebssystem"
 
-#: src/features/checkout/components/checkout-form.tsx:132
+#: src/features/checkout/components/checkout-form.tsx:137
 msgid "hE8w/g"
 msgstr "Root-Passwort (optional)"
 
-#: src/features/checkout/components/checkout-form.tsx:143
+#: src/features/checkout/components/checkout-form.tsx:148
 msgid "wzt4BE"
 msgstr "Virtbase speichert dein Root-Passwort nicht. Es kann nachträglich über das Kundenportal geändert werden."
 
-#: src/features/checkout/components/checkout-form.tsx:151
+#: src/features/checkout/components/checkout-form.tsx:156
 msgid "mnTP3x"
 msgstr "Falls leer gelassen wird ein sicheres, zufällig generiertes Passwort per E-Mail versendet."
 
-#: src/features/checkout/components/checkout-form.tsx:207
+#: src/features/checkout/components/checkout-form.tsx:212
 #: src/features/servers/components/plan/plan-summary.tsx:286
 msgid "+g+0OK"
 msgstr "Mit Zahlung fortfahren"
@@ -1509,6 +1509,10 @@ msgstr "Ich habe die <terms>Nutzungsbedingungen</terms> und die <privacy>Datensc
 #: src/features/checkout/components/checkout-waivers.tsx:79
 msgid "+3U5qS"
 msgstr "Ich habe die <revocation>Widerrufsbestimmungen</revocation> gelesen und stimme zu. Das Widerrufsrecht erlischt, sobald die Bestellung abgeschlossen ist und die Dienstleistung automatisch bereitgestellt wird."
+
+#: src/features/checkout/components/elements-provider.tsx:81
+msgid "mlJ21x"
+msgstr ""
 
 #: src/features/checkout/components/offer-card.tsx:95
 #: src/features/checkout/components/order-summary.tsx:157
@@ -1562,31 +1566,35 @@ msgstr "Ausverkauft"
 msgid "ivNR8s"
 msgstr "Bestellübersicht"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:159
+#: src/features/checkout/components/stripe-payment-form.tsx:162
+msgid "zAA8aS"
+msgstr ""
+
+#: src/features/checkout/components/stripe-payment-form.tsx:205
 msgid "6orx1c"
 msgstr "Rechnungsadresse"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:161
+#: src/features/checkout/components/stripe-payment-form.tsx:207
 msgid "PAzxoc"
 msgstr "Verwendet für die Rechnungserstellung und Steuerberechnung."
 
-#: src/features/checkout/components/stripe-payment-form.tsx:178
+#: src/features/checkout/components/stripe-payment-form.tsx:224
 msgid "BVTni9"
 msgstr "Zahlungsmethode"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:185
+#: src/features/checkout/components/stripe-payment-form.tsx:231
 msgid "11yeGk"
 msgstr "Zahlungen werden sicher durch Stripe abgewickelt."
 
-#: src/features/checkout/components/stripe-payment-form.tsx:221
+#: src/features/checkout/components/stripe-payment-form.tsx:267
 msgid "vhswJi"
 msgstr "Zahlung konnte nicht abgeschlossen werden"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:239
+#: src/features/checkout/components/stripe-payment-form.tsx:285
 msgid "ddCkDY"
 msgstr "Verarbeite Zahlung…"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:239
+#: src/features/checkout/components/stripe-payment-form.tsx:285
 msgid "7tOz+m"
 msgstr "Jetzt kaufen"
 
@@ -2000,7 +2008,7 @@ msgstr "Details zum Hostsystem anzeigen"
 msgid "8O64Ol"
 msgstr "Betriebssystem ändern"
 
-#: src/features/servers/components/plan/plan-form.tsx:83
+#: src/features/servers/components/plan/plan-form.tsx:87
 msgid "Kng3Em"
 msgstr "Wähle einen neuen Plan aus oder verlänger den aktuellen Plan. Ein Wechsel zu einem Plan mit weniger Speicherplatz wird nicht unterstützt."
 

@@ -76,6 +76,7 @@ export type ExtendOrUpgradeServerPlanInput = z.infer<
 >;
 
 export const OrderServerPlanOutputSchema = z.object({
+  payment_intent_id: z.string(),
   client_secret: z.string().nullable(),
   customer_session_client_secret: z.string(),
 });
@@ -131,3 +132,27 @@ export type OrderConfigurationSnapshot =
   | OrderNewServerPlanConfigurationSnapshot
   | OrderExtendServerPlanConfigurationSnapshot
   | UpgradeServerPlanConfigurationSnapshot;
+
+export const CustomCheckoutInputSchema = z.object({
+  payment_intent_id: z.string().min(1),
+  type: z.enum(["anonpay"]),
+  billing_details: z.object({
+    name: z.string().nullable(),
+    address: z.object({
+      line1: z.string().nullable(),
+      line2: z.string().nullable(),
+      city: z.string().nullable(),
+      state: z.string().nullable(),
+      postal_code: z.string().nullable(),
+      country: z.string().nullable(),
+    }),
+  }),
+});
+
+export type CustomCheckoutInput = z.infer<typeof CustomCheckoutInputSchema>;
+
+export const CustomCheckoutOutputSchema = z.object({
+  redirect_url: z.url(),
+});
+
+export type CustomCheckoutOutput = z.infer<typeof CustomCheckoutOutputSchema>;

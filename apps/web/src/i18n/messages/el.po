@@ -533,7 +533,7 @@ msgid "9uOFF3"
 msgstr "Overview"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/plan/page.tsx:30
-#: src/features/servers/components/plan/plan-form.tsx:81
+#: src/features/servers/components/plan/plan-form.tsx:85
 #: src/features/servers/components/server-nav.tsx:72
 msgid "fz0z4c"
 msgstr "Plan"
@@ -1475,29 +1475,29 @@ msgstr "For the continuation of the order, the creation of a customer account is
 msgid "SQJto2"
 msgstr "Sign in"
 
-#: src/features/checkout/components/checkout-form.tsx:105
+#: src/features/checkout/components/checkout-form.tsx:110
 msgid "7OW8BT"
 msgstr "Configuration"
 
-#: src/features/checkout/components/checkout-form.tsx:112
+#: src/features/checkout/components/checkout-form.tsx:117
 #: src/features/servers/components/backups/backups-table/columns.tsx:180
 #: src/features/servers/components/overview/server-details-card.tsx:96
 msgid "t2uvIi"
 msgstr "Operating System"
 
-#: src/features/checkout/components/checkout-form.tsx:132
+#: src/features/checkout/components/checkout-form.tsx:137
 msgid "hE8w/g"
 msgstr "Root Password (optional)"
 
-#: src/features/checkout/components/checkout-form.tsx:143
+#: src/features/checkout/components/checkout-form.tsx:148
 msgid "wzt4BE"
 msgstr "Virtbase does not store your root password. It can be reset via the customer portal afterwards."
 
-#: src/features/checkout/components/checkout-form.tsx:151
+#: src/features/checkout/components/checkout-form.tsx:156
 msgid "mnTP3x"
 msgstr "If left blank, a secure random password will be generated and sent by email."
 
-#: src/features/checkout/components/checkout-form.tsx:207
+#: src/features/checkout/components/checkout-form.tsx:212
 #: src/features/servers/components/plan/plan-summary.tsx:286
 msgid "+g+0OK"
 msgstr "Continue to payment"
@@ -1509,6 +1509,10 @@ msgstr "I have read and accepted the <terms>Terms of Service</terms> and the <pr
 #: src/features/checkout/components/checkout-waivers.tsx:79
 msgid "+3U5qS"
 msgstr "I have read and accepted the <revocation>Revocation Policy</revocation>. The revocation right expires as soon as the order is completed and the service is automatically provided."
+
+#: src/features/checkout/components/elements-provider.tsx:81
+msgid "mlJ21x"
+msgstr ""
 
 #: src/features/checkout/components/offer-card.tsx:95
 #: src/features/checkout/components/order-summary.tsx:157
@@ -1562,31 +1566,35 @@ msgstr "Sold out"
 msgid "ivNR8s"
 msgstr "Order Summary"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:159
+#: src/features/checkout/components/stripe-payment-form.tsx:162
+msgid "zAA8aS"
+msgstr ""
+
+#: src/features/checkout/components/stripe-payment-form.tsx:205
 msgid "6orx1c"
 msgstr "Billing address"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:161
+#: src/features/checkout/components/stripe-payment-form.tsx:207
 msgid "PAzxoc"
 msgstr "Used for invoicing and VAT calculation."
 
-#: src/features/checkout/components/stripe-payment-form.tsx:178
+#: src/features/checkout/components/stripe-payment-form.tsx:224
 msgid "BVTni9"
 msgstr "Payment method"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:185
+#: src/features/checkout/components/stripe-payment-form.tsx:231
 msgid "11yeGk"
 msgstr "Payments are securely processed by Stripe."
 
-#: src/features/checkout/components/stripe-payment-form.tsx:221
+#: src/features/checkout/components/stripe-payment-form.tsx:267
 msgid "vhswJi"
 msgstr "Payment could not be completed"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:239
+#: src/features/checkout/components/stripe-payment-form.tsx:285
 msgid "ddCkDY"
 msgstr "Processing payment…"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:239
+#: src/features/checkout/components/stripe-payment-form.tsx:285
 msgid "7tOz+m"
 msgstr "Pay now"
 
@@ -2000,7 +2008,7 @@ msgstr "View Node Details"
 msgid "8O64Ol"
 msgstr "Change Operating System"
 
-#: src/features/servers/components/plan/plan-form.tsx:83
+#: src/features/servers/components/plan/plan-form.tsx:87
 msgid "Kng3Em"
 msgstr "Select a new plan or extend your current plan. Downgrading to a smaller storage plan is not supported."
 

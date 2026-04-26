@@ -34,7 +34,6 @@ export const invoices = pgTable(
         onDelete: "cascade",
         onUpdate: "cascade",
       }),
-    stripeChargeId: t.text(),
     /**
      * The UUID of the Lexware Office invoice.
      */
@@ -83,11 +82,7 @@ export const invoices = pgTable(
       .notNull()
       .$onUpdate(() => sql`now()`),
   }),
-  (t) => [
-    index().on(t.stripeChargeId),
-    index().on(t.userId),
-    index().on(t.lexwareInvoiceId),
-  ],
+  (t) => [index().on(t.userId), index().on(t.lexwareInvoiceId)],
 );
 
 export const invoicesRelations = relations(invoices, ({ one }) => ({

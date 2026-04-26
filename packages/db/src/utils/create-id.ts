@@ -41,6 +41,7 @@ const prefixes = [
   "pck_", // kvm package
   "api_", // api key
   "sshkey_", // ssh key
+  "txn_", // transaction
 ] as const;
 
 // ULID uses base32 encoding
