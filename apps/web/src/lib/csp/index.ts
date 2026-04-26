@@ -15,6 +15,13 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import {
+  ADMIN_DOMAIN,
+  API_DOMAIN,
+  APP_DOMAIN,
+  PUBLIC_DOMAIN,
+} from "@virtbase/utils";
+
 type SecurityPolicyEntry = {
   "default-src"?: string[];
   "script-src"?: string[];
@@ -77,6 +84,10 @@ const defaultPolicy = {
   "base-uri": ["'self'"],
   "form-action": ["'self'"],
   "frame-ancestors": ["'none'"],
+} satisfies SecurityPolicyEntry;
+
+const virtbaseImagePolicy = {
+  "img-src": [ADMIN_DOMAIN, API_DOMAIN, APP_DOMAIN, PUBLIC_DOMAIN],
 } satisfies SecurityPolicyEntry;
 
 const vercelLivePolicy = {
@@ -143,6 +154,7 @@ const scalarApiReferencePolicy = {
 
 export const contentSecurityPolicy = generateCSPHeader([
   defaultPolicy,
+  virtbaseImagePolicy,
   vercelLivePolicy,
   avatarPolicy,
   sentryPolicy,
