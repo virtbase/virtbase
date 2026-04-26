@@ -59,9 +59,9 @@ export default function Page({
       <Suspense
         fallback={
           <DataTableSkeleton
-            columnCount={4}
-            filterCount={2}
-            cellWidths={["10rem", "10rem", "10rem", "6rem"]}
+            columnCount={5}
+            filterCount={3}
+            cellWidths={["10rem", "10rem", "10rem", "10rem", "6rem"]}
             shrinkZero
           />
         }

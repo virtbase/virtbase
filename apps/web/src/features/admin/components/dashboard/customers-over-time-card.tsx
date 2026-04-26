@@ -42,9 +42,9 @@ export function CustomersOverTimeCard() {
       <CardContent className="h-72 flex-1">
         <Suspense
           fallback={
-            <div className="grid size-full grid-cols-14 gap-2">
+            <div className="grid h-72 w-full grid-cols-14 gap-2">
               {Array.from({ length: 14 }).map((_, index) => (
-                <Skeleton key={index} className="h-full w-full" />
+                <Skeleton key={index} className="size-full" />
               ))}
             </div>
           }

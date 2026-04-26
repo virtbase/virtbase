@@ -24,7 +24,7 @@
 @import "fumadocs-ui/css/lib/base.css";
 @import "fumadocs-ui/css/generated/shared.css";
 
-@source "../../../../packages/ui/src/*.{ts,tsx}";
+@source "../../../../packages/ui/src/**/*.{ts,tsx}";
 
 @plugin "tailwind-scrollbar";
 @plugin "@tailwindcss/typography";
