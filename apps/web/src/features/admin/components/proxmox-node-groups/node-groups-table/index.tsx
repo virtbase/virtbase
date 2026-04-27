@@ -23,7 +23,7 @@ import type { DataTableRowAction } from "@virtbase/ui/types";
 import React, { use } from "react";
 import type { getNodeGroupsList } from "@/features/admin/api/proxmox-node-groups/get-node-groups-list";
 import type { NodeGroupsTableColumn } from "./columns";
-import { getNodeGroupsTableColumns } from "./columns";
+import { useNodeGroupsTableColumns } from "./columns";
 
 interface NodeGroupsTableProps {
   promises: Promise<[Awaited<ReturnType<typeof getNodeGroupsList>>]>;
@@ -41,10 +41,7 @@ export function NodeGroupsTable({ promises }: NodeGroupsTableProps) {
   const [rowAction, setRowAction] =
     React.useState<NodeGroupsTableRowAction | null>(null);
 
-  const columns = React.useMemo(
-    () => getNodeGroupsTableColumns({ setRowAction }),
-    [],
-  );
+  const columns = useNodeGroupsTableColumns({ setRowAction });
 
   const { table } = useDataTable({
     data,

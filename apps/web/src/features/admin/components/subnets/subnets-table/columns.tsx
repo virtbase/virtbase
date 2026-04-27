@@ -38,7 +38,7 @@ import {
 } from "@virtbase/ui/icons";
 import type { DataTableRowAction } from "@virtbase/ui/types";
 import NextLink from "next/link";
-import { useFormatter } from "next-intl";
+import { useExtracted, useFormatter } from "next-intl";
 import type React from "react";
 import type {
   getSubnetsList,
@@ -51,7 +51,7 @@ export type SubnetsTableColumn = Awaited<
   ReturnType<typeof getSubnetsList>
 >["data"][number];
 
-export function getSubnetsTableColumns({
+export function useSubnetsTableColumns({
   setRowAction,
   vlanCounts,
   typeCounts,
@@ -65,12 +65,15 @@ export function getSubnetsTableColumns({
   vlanCounts: Awaited<ReturnType<typeof getSubnetVlanCounts>>;
   typeCounts: Awaited<ReturnType<typeof getSubnetTypeCounts>>;
 }): Array<ColumnDef<SubnetsTableColumn>> {
+  const t = useExtracted();
+  const formatter = useFormatter();
+
   return [
     {
       id: "select",
       header: ({ table }) => (
         <Checkbox
-          aria-label="Select all"
+          aria-label={t("Select all")}
           className="translate-y-0.5"
           checked={
             table.getIsAllPageRowsSelected() ||
@@ -81,7 +84,7 @@ export function getSubnetsTableColumns({
       ),
       cell: ({ row }) => (
         <Checkbox
-          aria-label="Select row"
+          aria-label={t("Select row")}
           className="translate-y-0.5"
           checked={row.getIsSelected()}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
@@ -95,7 +98,7 @@ export function getSubnetsTableColumns({
       id: "cidr",
       accessorKey: "cidr",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} label="CIDR" />
+        <DataTableColumnHeader column={column} label={t("CIDR")} />
       ),
       cell: ({ cell }) => (
         <NextLink
@@ -115,8 +118,8 @@ export function getSubnetsTableColumns({
         </NextLink>
       ),
       meta: {
-        label: "CIDR",
-        placeholder: "Search by CIDR...",
+        label: t("CIDR"),
+        placeholder: t("Search by CIDR..."),
         variant: "text",
         icon: Text,
       },
@@ -126,7 +129,7 @@ export function getSubnetsTableColumns({
       id: "family",
       accessorKey: "family",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} label="Type" />
+        <DataTableColumnHeader column={column} label={t("Type")} />
       ),
       cell: ({ cell }) => (
         <div className="flex items-center gap-2">
@@ -136,7 +139,7 @@ export function getSubnetsTableColumns({
         </div>
       ),
       meta: {
-        label: "Type",
+        label: t("Type"),
         variant: "multiSelect",
         options: Object.entries(typeCounts).map(([type, count]) => ({
           label: `IPv${type}`,
@@ -152,7 +155,7 @@ export function getSubnetsTableColumns({
       id: "vlan",
       accessorKey: "vlan",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} label="VLAN ID" />
+        <DataTableColumnHeader column={column} label={t("VLAN ID")} />
       ),
       cell: ({ cell }) => (
         <div className="flex items-center gap-2">
@@ -162,7 +165,7 @@ export function getSubnetsTableColumns({
         </div>
       ),
       meta: {
-        label: "VLAN ID",
+        label: t("VLAN ID"),
         variant: "multiSelect",
         options: Object.entries(vlanCounts).map(([vlan, count]) => ({
           label: vlan,
@@ -178,15 +181,13 @@ export function getSubnetsTableColumns({
       id: "createdAt",
       accessorKey: "createdAt",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} label="Created at" />
+        <DataTableColumnHeader column={column} label={t("Created at")} />
       ),
       cell: ({ cell }) => {
-        const formatter = useFormatter();
-
         return formatter.dateTime(cell.getValue<Date>());
       },
       meta: {
-        label: "Created at",
+        label: t("Created at"),
         variant: "dateRange",
         icon: CalendarIcon,
       },
@@ -199,7 +200,7 @@ export function getSubnetsTableColumns({
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
-                aria-label="Open menu"
+                aria-label={t("Open menu")}
                 variant="ghost"
                 className="flex size-8 p-0 data-[state=open]:bg-muted"
               >
@@ -213,7 +214,7 @@ export function getSubnetsTableColumns({
                   prefetch={false}
                 >
                   <LucideEye aria-hidden="true" />
-                  <span>View</span>
+                  <span>{t("View")}</span>
                 </NextLink>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
@@ -222,7 +223,7 @@ export function getSubnetsTableColumns({
                 onSelect={() => setRowAction({ row, variant: "delete" })}
               >
                 <LucideTrash2 aria-hidden="true" />
-                <span>Delete</span>
+                <span>{t("Delete")}</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

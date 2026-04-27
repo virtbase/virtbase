@@ -30,18 +30,21 @@ import {
 } from "@virtbase/ui/icons";
 import { Spinner } from "@virtbase/ui/spinner";
 import type { ListInvoicesOutput } from "@virtbase/validators";
-import { useFormatter } from "next-intl";
+import { useExtracted, useFormatter } from "next-intl";
 import { useDownloadInvoice } from "@/features/dashboard/hooks/use-download-invoice";
 
 type ListInvoice = ListInvoicesOutput["invoices"][number];
 
-export function getInvoicesTableColumns(): Array<ColumnDef<ListInvoice>> {
+export function useInvoicesTableColumns(): Array<ColumnDef<ListInvoice>> {
+  const t = useExtracted();
+  const formatter = useFormatter();
+
   return [
     {
       id: "select",
       header: ({ table }) => (
         <Checkbox
-          aria-label="Select all"
+          aria-label={t("Select all")}
           className="translate-y-0.5"
           checked={
             table.getIsAllPageRowsSelected() ||
@@ -52,7 +55,7 @@ export function getInvoicesTableColumns(): Array<ColumnDef<ListInvoice>> {
       ),
       cell: ({ row }) => (
         <Checkbox
-          aria-label="Select row"
+          aria-label={t("Select row")}
           className="translate-y-0.5"
           checked={row.getIsSelected()}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
@@ -66,7 +69,7 @@ export function getInvoicesTableColumns(): Array<ColumnDef<ListInvoice>> {
       id: "number",
       accessorKey: "number",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} label="Invoice number" />
+        <DataTableColumnHeader column={column} label={t("Invoice number")} />
       ),
       cell: ({ cell }) => (
         <div className="max-w-40 truncate font-medium">
@@ -74,8 +77,8 @@ export function getInvoicesTableColumns(): Array<ColumnDef<ListInvoice>> {
         </div>
       ),
       meta: {
-        label: "Invoice number",
-        placeholder: "Search invoice number...",
+        label: t("Invoice number"),
+        placeholder: t("Search invoice number..."),
         variant: "text",
         icon: FileText,
       },
@@ -85,18 +88,16 @@ export function getInvoicesTableColumns(): Array<ColumnDef<ListInvoice>> {
       id: "total",
       accessorKey: "total",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} label="Amount" />
+        <DataTableColumnHeader column={column} label={t("Amount")} />
       ),
       cell: ({ cell }) => {
-        const formatter = useFormatter();
-
         return formatter.number(cell.getValue<number>() / 100, {
           style: "currency",
           currency: "EUR",
         });
       },
       meta: {
-        label: "Amount",
+        label: t("Amount"),
         variant: "number",
         icon: EuroIcon,
         unit: "€",
@@ -107,15 +108,13 @@ export function getInvoicesTableColumns(): Array<ColumnDef<ListInvoice>> {
       id: "created_at",
       accessorKey: "created_at",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} label="Invoice date" />
+        <DataTableColumnHeader column={column} label={t("Invoice date")} />
       ),
       cell: ({ cell }) => {
-        const formatter = useFormatter();
-
         return formatter.dateTime(cell.getValue<Date>());
       },
       meta: {
-        label: "Invoice date",
+        label: t("Invoice date"),
         variant: "dateRange",
         icon: CalendarIcon,
       },
@@ -125,17 +124,16 @@ export function getInvoicesTableColumns(): Array<ColumnDef<ListInvoice>> {
       id: "paid_at",
       accessorKey: "paid_at",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} label="Paid at" />
+        <DataTableColumnHeader column={column} label={t("Paid at")} />
       ),
       cell: ({ cell }) => {
-        const formatter = useFormatter();
         const value = cell.getValue<Date | null>();
 
         if (!value) return "-";
         return formatter.dateTime(value);
       },
       meta: {
-        label: "Paid at",
+        label: t("Paid at"),
         variant: "dateRange",
         icon: CalendarIcon,
       },
@@ -151,7 +149,7 @@ export function getInvoicesTableColumns(): Array<ColumnDef<ListInvoice>> {
           <Button
             variant="ghost"
             className="flex size-8 p-0 data-[state=open]:bg-muted"
-            aria-label="Download"
+            aria-label={t("Download")}
             onClick={() => downloadInvoice({ id: row.original.id })}
             disabled={isDownloadingInvoice}
           >

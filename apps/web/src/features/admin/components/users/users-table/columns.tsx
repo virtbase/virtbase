@@ -63,7 +63,7 @@ export type UsersTableColumn = Awaited<
   ReturnType<typeof getUsersList>
 >["data"][number];
 
-export function getUsersTableColumns({
+export function useUsersTableColumns({
   setRowAction,
   roleCounts,
   verifiedCounts,
@@ -74,12 +74,15 @@ export function getUsersTableColumns({
   roleCounts: Awaited<ReturnType<typeof getUserRoleCounts>>;
   verifiedCounts: Awaited<ReturnType<typeof getUserVerifiedCounts>>;
 }): Array<ColumnDef<UsersTableColumn>> {
+  const t = useExtracted();
+  const formatter = useFormatter();
+
   return [
     {
       id: "select",
       header: ({ table }) => (
         <Checkbox
-          aria-label="Select all"
+          aria-label={t("Select all")}
           className="translate-y-0.5"
           checked={
             table.getIsAllPageRowsSelected() ||
@@ -90,7 +93,7 @@ export function getUsersTableColumns({
       ),
       cell: ({ row }) => (
         <Checkbox
-          aria-label="Select row"
+          aria-label={t("Select row")}
           className="translate-y-0.5"
           checked={row.getIsSelected()}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
@@ -104,7 +107,7 @@ export function getUsersTableColumns({
       id: "name",
       accessorKey: "name",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} label="Name" />
+        <DataTableColumnHeader column={column} label={t("Name")} />
       ),
       cell: ({ cell, row }) => (
         <div className="flex items-center gap-2">
@@ -122,8 +125,8 @@ export function getUsersTableColumns({
         </div>
       ),
       meta: {
-        label: "Name",
-        placeholder: "Name/Email",
+        label: t("Name"),
+        placeholder: t("Name/Email"),
         variant: "text",
         icon: Text,
       },
@@ -133,14 +136,14 @@ export function getUsersTableColumns({
       id: "email",
       accessorKey: "email",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} label="Email" />
+        <DataTableColumnHeader column={column} label={t("Email")} />
       ),
       cell: ({ cell }) => (
         <div className="max-w-40 truncate">{cell.getValue<string>()}</div>
       ),
       enableColumnFilter: true,
       meta: {
-        label: "Email",
+        label: t("Email"),
         icon: Mail,
       },
     },
@@ -148,7 +151,7 @@ export function getUsersTableColumns({
       id: "role",
       accessorKey: "role",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} label="Role" />
+        <DataTableColumnHeader column={column} label={t("Role")} />
       ),
       cell: ({ cell }) => {
         const role = cell.getValue<"CUSTOMER" | "ADMIN">();
@@ -163,7 +166,7 @@ export function getUsersTableColumns({
         );
       },
       meta: {
-        label: "Role",
+        label: t("Role"),
         variant: "multiSelect",
         options: (Object.keys(roleCounts) as Array<"CUSTOMER" | "ADMIN">).map(
           (role) => ({
@@ -181,10 +184,9 @@ export function getUsersTableColumns({
       id: "emailVerified",
       accessorKey: "emailVerified",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} label="Email verified" />
+        <DataTableColumnHeader column={column} label={t("Email verified")} />
       ),
       cell: ({ cell }) => {
-        const t = useExtracted();
         const isVerified = cell.getValue<boolean>();
 
         return (
@@ -199,7 +201,7 @@ export function getUsersTableColumns({
         );
       },
       meta: {
-        label: "Email verified",
+        label: t("Email verified"),
         variant: "select",
         options: [
           {
@@ -223,15 +225,13 @@ export function getUsersTableColumns({
       id: "createdAt",
       accessorKey: "createdAt",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} label="Created at" />
+        <DataTableColumnHeader column={column} label={t("Created at")} />
       ),
       cell: ({ cell }) => {
-        const formatter = useFormatter();
-
         return formatter.dateTime(cell.getValue<Date>());
       },
       meta: {
-        label: "Created at",
+        label: t("Created at"),
         variant: "dateRange",
         icon: CalendarIcon,
       },
@@ -240,8 +240,6 @@ export function getUsersTableColumns({
     {
       id: "actions",
       cell: ({ row }) => {
-        const t = useExtracted();
-
         const router = useRouter();
         const user = row.original;
 

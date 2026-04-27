@@ -23,7 +23,7 @@ import type { DataTableRowAction } from "@virtbase/ui/types";
 import React, { use } from "react";
 import type { getDatacentersList } from "@/features/admin/api/datacenters/get-datacenters-list";
 import type { DatacentersTableColumn } from "@/features/admin/components/datacenters/datacenters-table/columns";
-import { getDatacentersTableColumns } from "@/features/admin/components/datacenters/datacenters-table/columns";
+import { useDatacentersTableColumns } from "@/features/admin/components/datacenters/datacenters-table/columns";
 
 interface DatacentersTableProps {
   promises: Promise<[Awaited<ReturnType<typeof getDatacentersList>>]>;
@@ -41,10 +41,7 @@ export function DatacentersTable({ promises }: DatacentersTableProps) {
   const [rowAction, setRowAction] =
     React.useState<DatacentersTableRowAction | null>(null);
 
-  const columns = React.useMemo(
-    () => getDatacentersTableColumns({ setRowAction }),
-    [],
-  );
+  const columns = useDatacentersTableColumns({ setRowAction });
 
   const { table } = useDataTable({
     data,

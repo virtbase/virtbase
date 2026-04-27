@@ -37,7 +37,7 @@ import {
 } from "@virtbase/ui/icons";
 import type { DataTableRowAction } from "@virtbase/ui/types";
 import NextLink from "next/link";
-import { useFormatter } from "next-intl";
+import { useExtracted, useFormatter } from "next-intl";
 import type React from "react";
 import type { getDatacentersList } from "@/features/admin/api/datacenters/get-datacenters-list";
 import { paths } from "@/lib/paths";
@@ -46,7 +46,7 @@ export type DatacentersTableColumn = Awaited<
   ReturnType<typeof getDatacentersList>
 >["data"][number];
 
-export function getDatacentersTableColumns({
+export function useDatacentersTableColumns({
   setRowAction,
 }: {
   setRowAction: React.Dispatch<
@@ -56,12 +56,15 @@ export function getDatacentersTableColumns({
     > | null>
   >;
 }): Array<ColumnDef<DatacentersTableColumn>> {
+  const t = useExtracted();
+  const formatter = useFormatter();
+
   return [
     {
       id: "select",
       header: ({ table }) => (
         <Checkbox
-          aria-label="Select all"
+          aria-label={t("Select all")}
           className="translate-y-0.5"
           checked={
             table.getIsAllPageRowsSelected() ||
@@ -72,7 +75,7 @@ export function getDatacentersTableColumns({
       ),
       cell: ({ row }) => (
         <Checkbox
-          aria-label="Select row"
+          aria-label={t("Select row")}
           className="translate-y-0.5"
           checked={row.getIsSelected()}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
@@ -86,7 +89,7 @@ export function getDatacentersTableColumns({
       id: "name",
       accessorKey: "name",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} label="Name" />
+        <DataTableColumnHeader column={column} label={t("Name")} />
       ),
       cell: ({ cell }) => (
         <NextLink
@@ -98,8 +101,8 @@ export function getDatacentersTableColumns({
         </NextLink>
       ),
       meta: {
-        label: "Name",
-        placeholder: "Search by name...",
+        label: t("Name"),
+        placeholder: t("Search by name..."),
         variant: "text",
         icon: Text,
       },
@@ -109,7 +112,7 @@ export function getDatacentersTableColumns({
       id: "country",
       accessorKey: "country",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} label="Country" />
+        <DataTableColumnHeader column={column} label={t("Country")} />
       ),
       cell: ({ cell }) => {
         return (
@@ -117,7 +120,7 @@ export function getDatacentersTableColumns({
         );
       },
       meta: {
-        label: "Country",
+        label: t("Country"),
         variant: "text",
         icon: MapPin,
       },
@@ -127,15 +130,13 @@ export function getDatacentersTableColumns({
       id: "createdAt",
       accessorKey: "createdAt",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} label="Created at" />
+        <DataTableColumnHeader column={column} label={t("Created at")} />
       ),
       cell: ({ cell }) => {
-        const formatter = useFormatter();
-
         return formatter.dateTime(cell.getValue<Date>());
       },
       meta: {
-        label: "Created at",
+        label: t("Created at"),
         variant: "dateRange",
         icon: CalendarIcon,
       },
@@ -148,7 +149,7 @@ export function getDatacentersTableColumns({
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
-                aria-label="Open menu"
+                aria-label={t("Open menu")}
                 variant="ghost"
                 className="flex size-8 p-0 data-[state=open]:bg-muted"
               >
@@ -164,7 +165,7 @@ export function getDatacentersTableColumns({
                   prefetch={false}
                 >
                   <LucideEye aria-hidden="true" />
-                  <span>View</span>
+                  <span>{t("View")}</span>
                 </NextLink>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
@@ -173,7 +174,7 @@ export function getDatacentersTableColumns({
                 onSelect={() => setRowAction({ row, variant: "delete" })}
               >
                 <LucideTrash2 aria-hidden="true" />
-                <span>Delete</span>
+                <span>{t("Delete")}</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>

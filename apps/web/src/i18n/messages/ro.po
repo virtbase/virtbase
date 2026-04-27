@@ -112,10 +112,13 @@ msgid "5PWP+M"
 msgstr "Comutați coloanele"
 
 #: ../../packages/ui/src/data-table/data-table-view-options.tsx:72
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:168
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:163
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:360
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:196
 #: src/features/admin/components/servers/servers-table/columns.tsx:257
-#: src/features/admin/components/users/users-table/columns.tsx:266
+#: src/features/admin/components/subnets/subnets-table/columns.tsx:217
+#: src/features/admin/components/users/users-table/columns.tsx:264
 #: src/features/servers/components/servers-list.tsx:173
 msgid "FgydNe"
 msgstr "Vedere"
@@ -630,10 +633,13 @@ msgstr "Creat {date}"
 
 #: src/features/account/components/api-keys/api-keys-list.tsx:103
 #: src/features/account/components/ssh-keys/ssh-keys-list.tsx:92
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:177
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:171
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:369
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:205
 #: src/features/admin/components/servers/servers-table/columns.tsx:266
-#: src/features/admin/components/users/users-table/columns.tsx:349
+#: src/features/admin/components/subnets/subnets-table/columns.tsx:226
+#: src/features/admin/components/users/users-table/columns.tsx:347
 #: src/features/servers/components/backups/backups-table/backup-actions.tsx:155
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:141
 msgid "K3r6DQ"
@@ -676,12 +682,18 @@ msgstr "Această cheie va fi afișată o singură dată. Salvați-l în siguran�
 #: src/features/account/components/api-keys/create-api-key-button.tsx:156
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:94
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:92
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:104
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:95
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:89
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:101
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:113
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:89
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:103
 #: src/features/admin/components/servers/servers-table/columns.tsx:96
 #: src/features/admin/components/servers/servers-table/columns.tsx:104
+#: src/features/admin/components/users/users-table/columns.tsx:110
+#: src/features/admin/components/users/users-table/columns.tsx:128
 #: src/features/servers/components/backups/backups-table/columns.tsx:64
 #: src/features/servers/components/backups/create-backup-dialog.tsx:128
 #: src/features/servers/components/overview/node-details-dialog.tsx:83
@@ -765,6 +777,8 @@ msgid "0Azlrb"
 msgstr "Gestionează"
 
 #: src/features/account/components/authentication/user-providers-list.tsx:82
+#: src/features/admin/components/users/users-table/columns.tsx:139
+#: src/features/admin/components/users/users-table/columns.tsx:146
 #: src/features/auth/components/email-sign-in.tsx:175
 #: src/features/auth/components/forgot-password-form.tsx:85
 #: src/features/auth/components/register/signup-email.tsx:116
@@ -1002,6 +1016,8 @@ msgid "s3yKp4"
 msgstr "Creați un nou centru de date."
 
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:111
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:115
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:123
 msgid "vONi+O"
 msgstr "Ţară"
 
@@ -1016,6 +1032,63 @@ msgstr "Căutați un centru de date..."
 #: src/features/admin/components/datacenters/datacenter-select.tsx:94
 msgid "lH0BHV"
 msgstr "Nu a fost găsit niciun centru de date."
+
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:67
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:64
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:63
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:64
+#: src/features/admin/components/servers/servers-table/columns.tsx:71
+#: src/features/admin/components/subnets/subnets-table/columns.tsx:76
+#: src/features/admin/components/users/users-table/columns.tsx:85
+#: src/features/invoices/components/invoices-table/columns.tsx:47
+msgid "94Fg25"
+msgstr "Selectați toate"
+
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:78
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:75
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:74
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:75
+#: src/features/admin/components/servers/servers-table/columns.tsx:82
+#: src/features/admin/components/subnets/subnets-table/columns.tsx:87
+#: src/features/admin/components/users/users-table/columns.tsx:96
+#: src/features/invoices/components/invoices-table/columns.tsx:58
+msgid "4pJVaS"
+msgstr "Selectați rândul"
+
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:105
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:102
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:104
+#: src/features/admin/components/servers/servers-table/columns.tsx:105
+msgid "wFbsIt"
+msgstr "Cauta dupa nume..."
+
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:133
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:139
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:112
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:118
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:326
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:332
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:145
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:151
+#: src/features/admin/components/servers/servers-table/columns.tsx:206
+#: src/features/admin/components/servers/servers-table/columns.tsx:212
+#: src/features/admin/components/subnets/subnets-table/columns.tsx:184
+#: src/features/admin/components/subnets/subnets-table/columns.tsx:190
+#: src/features/admin/components/users/users-table/columns.tsx:228
+#: src/features/admin/components/users/users-table/columns.tsx:234
+#: src/features/servers/components/rdns/records-table/columns.tsx:60
+msgid "AbXVP4"
+msgstr "Creat la"
+
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:152
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:147
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:346
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:180
+#: src/features/admin/components/servers/servers-table/columns.tsx:243
+#: src/features/admin/components/subnets/subnets-table/columns.tsx:203
+#: src/features/admin/components/users/users-table/columns.tsx:250
+msgid "bdcMGy"
+msgstr "Deschide meniul"
 
 #: src/features/admin/components/proxmox-node-groups/create-node-group-button.tsx:42
 msgid "8gJfol"
@@ -1041,6 +1114,11 @@ msgstr "Căutați un grup de noduri..."
 #: src/features/admin/components/proxmox-node-groups/node-group-select.tsx:91
 msgid "ao30Ou"
 msgstr "Nu a fost găsit niciun grup de noduri."
+
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:128
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:134
+msgid "0ICwq5"
+msgstr "Ultima actualizare"
 
 #: src/features/admin/components/proxmox-nodes/create-datacenter-button.tsx:48
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:111
@@ -1157,18 +1235,6 @@ msgstr "Limită de rețea"
 msgid "U9Jxp7"
 msgstr "Dacă este atins, acest nod nu va mai fi utilizat pentru servicii. Lăsați gol pentru nelimitat."
 
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:63
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:64
-#: src/features/admin/components/servers/servers-table/columns.tsx:71
-msgid "94Fg25"
-msgstr "Selectați toate"
-
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:74
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:75
-#: src/features/admin/components/servers/servers-table/columns.tsx:82
-msgid "4pJVaS"
-msgstr "Selectați rândul"
-
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:101
 msgid "39jmFD"
 msgstr "Căutați după nume de gazdă..."
@@ -1212,23 +1278,6 @@ msgstr "Depozitare"
 msgid "6vjF8Q"
 msgstr "Lățimea de bandă"
 
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:326
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:332
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:145
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:151
-#: src/features/admin/components/servers/servers-table/columns.tsx:206
-#: src/features/admin/components/servers/servers-table/columns.tsx:212
-#: src/features/servers/components/rdns/records-table/columns.tsx:60
-msgid "AbXVP4"
-msgstr "Creat la"
-
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:346
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:180
-#: src/features/admin/components/servers/servers-table/columns.tsx:243
-#: src/features/admin/components/users/users-table/columns.tsx:252
-msgid "bdcMGy"
-msgstr "Deschide meniul"
-
 #: src/features/admin/components/proxmox-template-groups/create-template-group-button.tsx:42
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:75
 msgid "Xj2bvc"
@@ -1243,11 +1292,6 @@ msgstr "Creați un nou grup de șabloane Proxmox VE pentru șabloane Proxmox VE.
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:120
 msgid "8lCjAM"
 msgstr "Prioritate"
-
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:104
-#: src/features/admin/components/servers/servers-table/columns.tsx:105
-msgid "wFbsIt"
-msgstr "Cauta dupa nume..."
 
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:130
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:137
@@ -1291,6 +1335,8 @@ msgid "w+MmK2"
 msgstr "Creați o nouă subrețea."
 
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx:93
+#: src/features/admin/components/subnets/subnets-table/columns.tsx:101
+#: src/features/admin/components/subnets/subnets-table/columns.tsx:121
 msgid "4cxFaQ"
 msgstr "CIDR"
 
@@ -1306,28 +1352,56 @@ msgstr "Zona DNS inversă"
 msgid "IBNdTs"
 msgstr "VLAN"
 
-#: src/features/admin/components/users/users-table/columns.tsx:197
+#: src/features/admin/components/subnets/subnets-table/columns.tsx:122
+msgid "XQeoKw"
+msgstr "Caută după CIDR..."
+
+#: src/features/admin/components/subnets/subnets-table/columns.tsx:132
+#: src/features/admin/components/subnets/subnets-table/columns.tsx:142
+msgid "+U6ozc"
+msgstr "Tip"
+
+#: src/features/admin/components/subnets/subnets-table/columns.tsx:158
+#: src/features/admin/components/subnets/subnets-table/columns.tsx:168
+msgid "PLUhm9"
+msgstr "ID VLAN"
+
+#: src/features/admin/components/users/users-table/columns.tsx:129
+msgid "BzHQ0A"
+msgstr "Nume/e-mail"
+
+#: src/features/admin/components/users/users-table/columns.tsx:154
+#: src/features/admin/components/users/users-table/columns.tsx:169
+msgid "1ZgrhW"
+msgstr "Rol"
+
+#: src/features/admin/components/users/users-table/columns.tsx:187
+#: src/features/admin/components/users/users-table/columns.tsx:204
+msgid "DC8+TO"
+msgstr "E-mail verificat"
+
+#: src/features/admin/components/users/users-table/columns.tsx:199
 msgid "a5msuh"
 msgstr "Da"
 
-#: src/features/admin/components/users/users-table/columns.tsx:197
+#: src/features/admin/components/users/users-table/columns.tsx:199
 msgid "oUWADl"
 msgstr "Nu"
 
-#: src/features/admin/components/users/users-table/columns.tsx:284
+#: src/features/admin/components/users/users-table/columns.tsx:282
 msgid "hQZhn8"
 msgstr "Uzurpare identitatea"
 
-#: src/features/admin/components/users/users-table/columns.tsx:295
+#: src/features/admin/components/users/users-table/columns.tsx:293
 msgid "C3uaig"
 msgstr "Vedeți în Stripe"
 
-#: src/features/admin/components/users/users-table/columns.tsx:317
+#: src/features/admin/components/users/users-table/columns.tsx:315
 #: src/features/servers/components/backups/backups-table/backup-actions.tsx:142
 msgid "qXCbgZ"
 msgstr "Deblocați"
 
-#: src/features/admin/components/users/users-table/columns.tsx:340
+#: src/features/admin/components/users/users-table/columns.tsx:338
 msgid "XtUrMc"
 msgstr "Interzice"
 
@@ -1650,6 +1724,7 @@ msgid "GtDccr"
 msgstr "Încă nu au fost emise facturi."
 
 #: src/features/dashboard/components/latest-invoices-list.tsx:91
+#: src/features/invoices/components/invoices-table/columns.tsx:152
 msgid "5q3qC0"
 msgstr "Descărcați"
 
@@ -1677,6 +1752,30 @@ msgstr "Expiră (va fi șters {date})"
 #: src/features/dashboard/components/server-status-small.tsx:95
 msgid "Dnob31"
 msgstr "Operațional"
+
+#: src/features/invoices/components/invoices-table/columns.tsx:72
+#: src/features/invoices/components/invoices-table/columns.tsx:80
+msgid "ijDMrP"
+msgstr "Număr factură"
+
+#: src/features/invoices/components/invoices-table/columns.tsx:81
+msgid "cIAuzz"
+msgstr "Caută numărul facturii..."
+
+#: src/features/invoices/components/invoices-table/columns.tsx:91
+#: src/features/invoices/components/invoices-table/columns.tsx:100
+msgid "/0TOL5"
+msgstr "Sumă"
+
+#: src/features/invoices/components/invoices-table/columns.tsx:111
+#: src/features/invoices/components/invoices-table/columns.tsx:117
+msgid "dULmbA"
+msgstr "Data facturii"
+
+#: src/features/invoices/components/invoices-table/columns.tsx:127
+#: src/features/invoices/components/invoices-table/columns.tsx:136
+msgid "YOc6Ow"
+msgstr "Plătit la"
 
 #: src/features/landing/components/advantages-row.tsx:33
 msgid "GTucMY"

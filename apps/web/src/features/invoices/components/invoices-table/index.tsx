@@ -21,7 +21,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { DataTable, DataTableToolbar } from "@virtbase/ui/data-table";
 import { useDataTable } from "@virtbase/ui/hooks";
 import type { ListInvoicesInput } from "@virtbase/validators";
-import { getInvoicesTableColumns } from "@/features/invoices/components/invoices-table/columns";
+import { useInvoicesTableColumns } from "@/features/invoices/components/invoices-table/columns";
 import { useTRPC } from "@/lib/trpc/react";
 
 interface InvoicesTableProps {
@@ -35,9 +35,11 @@ export function InvoicesTable({ search }: InvoicesTableProps) {
     data: { invoices, meta },
   } = useSuspenseQuery(trpc.invoices.list.queryOptions(search));
 
+  const columns = useInvoicesTableColumns();
+
   const { table } = useDataTable({
     data: invoices,
-    columns: getInvoicesTableColumns(),
+    columns,
     pageCount: Math.ceil(
       meta.pagination.total_entries / meta.pagination.per_page,
     ),

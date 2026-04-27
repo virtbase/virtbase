@@ -34,7 +34,7 @@ import {
 } from "@virtbase/ui/icons";
 import type { DataTableRowAction } from "@virtbase/ui/types";
 import NextLink from "next/link";
-import { useFormatter } from "next-intl";
+import { useExtracted, useFormatter } from "next-intl";
 import type React from "react";
 import type { getNodeGroupsList } from "@/features/admin/api/proxmox-node-groups/get-node-groups-list";
 import { paths } from "@/lib/paths";
@@ -43,7 +43,7 @@ export type NodeGroupsTableColumn = Awaited<
   ReturnType<typeof getNodeGroupsList>
 >["data"][number];
 
-export function getNodeGroupsTableColumns({
+export function useNodeGroupsTableColumns({
   setRowAction,
 }: {
   setRowAction: React.Dispatch<
@@ -53,12 +53,15 @@ export function getNodeGroupsTableColumns({
     > | null>
   >;
 }): Array<ColumnDef<NodeGroupsTableColumn>> {
+  const t = useExtracted();
+  const formatter = useFormatter();
+
   return [
     {
       id: "select",
       header: ({ table }) => (
         <Checkbox
-          aria-label="Select all"
+          aria-label={t("Select all")}
           className="translate-y-0.5"
           checked={
             table.getIsAllPageRowsSelected() ||
@@ -69,7 +72,7 @@ export function getNodeGroupsTableColumns({
       ),
       cell: ({ row }) => (
         <Checkbox
-          aria-label="Select row"
+          aria-label={t("Select row")}
           className="translate-y-0.5"
           checked={row.getIsSelected()}
           onCheckedChange={(value) => row.toggleSelected(!!value)}
@@ -83,7 +86,7 @@ export function getNodeGroupsTableColumns({
       id: "name",
       accessorKey: "name",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} label="Name" />
+        <DataTableColumnHeader column={column} label={t("Name")} />
       ),
       cell: ({ cell }) => (
         <NextLink
@@ -95,8 +98,8 @@ export function getNodeGroupsTableColumns({
         </NextLink>
       ),
       meta: {
-        label: "Name",
-        placeholder: "Search by name...",
+        label: t("Name"),
+        placeholder: t("Search by name..."),
         variant: "text",
         icon: Text,
       },
@@ -106,15 +109,13 @@ export function getNodeGroupsTableColumns({
       id: "createdAt",
       accessorKey: "createdAt",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} label="Created at" />
+        <DataTableColumnHeader column={column} label={t("Created at")} />
       ),
       cell: ({ cell }) => {
-        const formatter = useFormatter();
-
         return formatter.dateTime(cell.getValue<Date>());
       },
       meta: {
-        label: "Created at",
+        label: t("Created at"),
         variant: "dateRange",
         icon: CalendarIcon,
       },
@@ -124,15 +125,13 @@ export function getNodeGroupsTableColumns({
       id: "updatedAt",
       accessorKey: "updatedAt",
       header: ({ column }) => (
-        <DataTableColumnHeader column={column} label="Last updated" />
+        <DataTableColumnHeader column={column} label={t("Last updated")} />
       ),
       cell: ({ cell }) => {
-        const formatter = useFormatter();
-
         return formatter.dateTime(cell.getValue<Date>());
       },
       meta: {
-        label: "Last updated",
+        label: t("Last updated"),
         variant: "dateRange",
         icon: CalendarIcon,
       },
@@ -145,7 +144,7 @@ export function getNodeGroupsTableColumns({
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button
-                aria-label="Open menu"
+                aria-label={t("Open menu")}
                 variant="ghost"
                 className="flex size-8 p-0 data-[state=open]:bg-muted"
               >
@@ -161,7 +160,7 @@ export function getNodeGroupsTableColumns({
                   prefetch={false}
                 >
                   <LucideEye aria-hidden="true" />
-                  <span>View</span>
+                  <span>{t("View")}</span>
                 </NextLink>
               </DropdownMenuItem>
               <DropdownMenuItem
@@ -169,7 +168,7 @@ export function getNodeGroupsTableColumns({
                 onSelect={() => setRowAction({ row, variant: "delete" })}
               >
                 <LucideTrash2 aria-hidden="true" />
-                <span>Delete</span>
+                <span>{t("Delete")}</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
