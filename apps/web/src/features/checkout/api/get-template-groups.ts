@@ -15,13 +15,12 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { alias, asc, eq, sql } from "@virtbase/db";
+import { eq, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import {
   proxmoxNodes as pn,
   proxmoxTemplates as pt,
   proxmoxTemplatesToProxmoxNodes as pt2pn,
-  proxmoxTemplateGroups as ptg,
 } from "@virtbase/db/schema";
 import { cacheLife, cacheTag } from "next/cache";
 import { cache } from "react";
@@ -37,78 +36,63 @@ export const getTemplateGroups = cache(async (proxmoxNodeGroupId: string) => {
   );
   cacheLife("max");
 
-  return db.transaction(
+  const result = await db.transaction(
     async (tx) => {
-      const nodesInGroup = alias(pn, "nodes_in_group");
-
-      // One row per (group, template) where the template is on every node in the group
-      const eligible = tx
-        .select({
-          groupId: ptg.id,
-          groupName: ptg.name,
-          groupPriority: ptg.priority,
-          templateId: pt.id,
-          templateName: pt.name,
-          templateIcon: pt.icon,
-          templateRecommendedCores: pt.recommendedCores,
-          templateRecommendedMemory: pt.recommendedMemory,
-          templateRequiredStorage: pt.requiredStorage,
-          templateRecommendedStorage: pt.recommendedStorage,
-        })
+      const validTemplates = await tx
+        .select({ id: pt.id })
         .from(pt)
-        .innerJoin(ptg, eq(pt.proxmoxTemplateGroupId, ptg.id))
         .innerJoin(pt2pn, eq(pt.id, pt2pn.proxmoxTemplateId))
         .innerJoin(pn, eq(pt2pn.proxmoxNodeId, pn.id))
         .where(eq(pn.proxmoxNodeGroupId, proxmoxNodeGroupId))
-        .groupBy(ptg.id, pt.id)
+        .groupBy(pt.id)
         .having(sql`
           COUNT(DISTINCT ${pn.id}) = (
             SELECT COUNT(*)
-            FROM ${pn} ${nodesInGroup}
-            WHERE ${eq(nodesInGroup.proxmoxNodeGroupId, proxmoxNodeGroupId)}
+            FROM ${pn}
+            WHERE ${pn.proxmoxNodeGroupId} = ${proxmoxNodeGroupId}
           )
-        `)
-        .as("eligible");
+        `);
 
-      return tx
-        .select({
-          id: eligible.groupId,
-          name: eligible.groupName,
-          templates: sql<
-            Pick<
-              typeof pt.$inferSelect,
-              | "id"
-              | "name"
-              | "icon"
-              | "recommendedCores"
-              | "recommendedMemory"
-              | "requiredStorage"
-              | "recommendedStorage"
-            >[]
-          >`
-              COALESCE(
-                JSONB_AGG(
-                  JSONB_BUILD_OBJECT(
-                    'id', ${eligible.templateId},
-                    'name', ${eligible.templateName},
-                    'icon', ${eligible.templateIcon},
-                    'recommendedCores', ${eligible.templateRecommendedCores},
-                    'recommendedMemory', ${eligible.templateRecommendedMemory},
-                    'requiredStorage', ${eligible.templateRequiredStorage},
-                    'recommendedStorage', ${eligible.templateRecommendedStorage}
-                  ) ORDER BY ${eligible.templateName} ASC
-                ),
-                '[]'::jsonb
-              )
-            `,
-        })
-        .from(eligible)
-        .groupBy(eligible.groupId, eligible.groupName, eligible.groupPriority)
-        .orderBy(asc(eligible.groupPriority), asc(eligible.groupName));
+      return tx.query.proxmoxTemplateGroups.findMany({
+        columns: {
+          id: true,
+          name: true,
+          priority: true,
+        },
+        with: {
+          proxmoxTemplates: {
+            where: {
+              id: {
+                in: validTemplates.map((t) => t.id),
+              },
+            },
+            columns: {
+              id: true,
+              name: true,
+              icon: true,
+              recommendedCores: true,
+              recommendedMemory: true,
+              requiredStorage: true,
+              recommendedStorage: true,
+            },
+          },
+        },
+        orderBy: (t, { asc }) => [asc(t.priority), asc(t.name)],
+      });
     },
     {
       accessMode: "read only",
       isolationLevel: "read committed",
     },
   );
+
+  return result
+    .filter((entry) => entry.proxmoxTemplates.length > 0)
+    .map((entry) => {
+      return {
+        id: entry.id,
+        name: entry.name,
+        templates: entry.proxmoxTemplates,
+      };
+    });
 });

@@ -16,16 +16,14 @@
  */
 
 import { TRPCError } from "@trpc/server";
-import { alias, asc, eq, sql } from "@virtbase/db";
+import { eq, sql } from "@virtbase/db";
 import {
   proxmoxNodes as pn,
   proxmoxTemplates as pt,
   proxmoxTemplatesToProxmoxNodes as pt2pn,
-  proxmoxTemplateGroups as ptg,
   serverPlans,
   servers,
 } from "@virtbase/db/schema";
-import type { GetServerTemplateGroupsOutput } from "@virtbase/validators/server";
 import {
   GetServerTemplateGroupsInputSchema,
   GetServerTemplateGroupsOutputSchema,
@@ -58,7 +56,7 @@ export const serversTemplateGroupsRouter = createTRPCRouter({
     .query(async ({ ctx }) => {
       const { db, server } = ctx;
 
-      const templateGroups = await db.transaction(
+      const result = await db.transaction(
         async (tx) => {
           const plan = await tx
             .select({
@@ -76,74 +74,49 @@ export const serversTemplateGroupsRouter = createTRPCRouter({
             });
           }
 
-          const nodesInGroup = alias(pn, "nodes_in_group");
-
-          // One row per (group, template) where the template is on every node in the group
-          const eligible = tx
-            .select({
-              groupId: ptg.id,
-              groupName: ptg.name,
-              groupPriority: ptg.priority,
-              templateId: pt.id,
-              templateName: pt.name,
-              templateIcon: pt.icon,
-              templateRequiredCores: pt.requiredCores,
-              templateRecommendedCores: pt.recommendedCores,
-              templateRequiredMemory: pt.requiredMemory,
-              templateRecommendedMemory: pt.recommendedMemory,
-              templateRequiredStorage: pt.requiredStorage,
-              templateRecommendedStorage: pt.recommendedStorage,
-            })
+          const validTemplates = await tx
+            .select({ id: pt.id })
             .from(pt)
-            .innerJoin(ptg, eq(pt.proxmoxTemplateGroupId, ptg.id))
             .innerJoin(pt2pn, eq(pt.id, pt2pn.proxmoxTemplateId))
             .innerJoin(pn, eq(pt2pn.proxmoxNodeId, pn.id))
             .where(eq(pn.proxmoxNodeGroupId, plan.proxmoxNodeGroupId))
-            .groupBy(ptg.id, pt.id)
+            .groupBy(pt.id)
             .having(sql`
               COUNT(DISTINCT ${pn.id}) = (
                 SELECT COUNT(*)
-                FROM ${pn} ${nodesInGroup}
-                WHERE ${eq(
-                  nodesInGroup.proxmoxNodeGroupId,
-                  plan.proxmoxNodeGroupId,
-                )}
+                FROM ${pn}
+                WHERE ${pn.proxmoxNodeGroupId} = ${plan.proxmoxNodeGroupId}
               )
-            `)
-            .as("eligible");
+            `);
 
-          return tx
-            .select({
-              id: eligible.groupId,
-              name: eligible.groupName,
-              templates: sql<
-                GetServerTemplateGroupsOutput["template_groups"][number]["templates"]
-              >`
-                  COALESCE(
-                    JSONB_AGG(
-                      JSONB_BUILD_OBJECT(
-                        'id', ${eligible.templateId},
-                        'name', ${eligible.templateName},
-                        'icon', ${eligible.templateIcon},
-                        'required_cores', ${eligible.templateRequiredCores},
-                        'recommended_cores', ${eligible.templateRecommendedCores},
-                        'required_memory', ${eligible.templateRequiredMemory},
-                        'recommended_memory', ${eligible.templateRecommendedMemory},
-                        'required_storage', ${eligible.templateRequiredStorage},
-                        'recommended_storage', ${eligible.templateRecommendedStorage}
-                      ) ORDER BY ${eligible.templateName} ASC
-                    ),
-                    '[]'::jsonb
-                  )
-                `,
-            })
-            .from(eligible)
-            .groupBy(
-              eligible.groupId,
-              eligible.groupName,
-              eligible.groupPriority,
-            )
-            .orderBy(asc(eligible.groupPriority), asc(eligible.groupName));
+          return tx.query.proxmoxTemplateGroups.findMany({
+            columns: {
+              id: true,
+              name: true,
+              priority: true,
+            },
+            with: {
+              proxmoxTemplates: {
+                where: {
+                  id: {
+                    in: validTemplates.map((t) => t.id),
+                  },
+                },
+                columns: {
+                  id: true,
+                  name: true,
+                  icon: true,
+                  requiredCores: true,
+                  recommendedCores: true,
+                  recommendedMemory: true,
+                  requiredMemory: true,
+                  requiredStorage: true,
+                  recommendedStorage: true,
+                },
+              },
+            },
+            orderBy: (t, { asc }) => [asc(t.priority), asc(t.name)],
+          });
         },
         {
           accessMode: "read only",
@@ -152,7 +125,26 @@ export const serversTemplateGroupsRouter = createTRPCRouter({
       );
 
       return {
-        template_groups: templateGroups,
+        template_groups: result
+          .filter((entry) => entry.proxmoxTemplates.length > 0)
+          .map((entry) => {
+            return {
+              id: entry.id,
+              name: entry.name,
+              priority: entry.priority,
+              templates: entry.proxmoxTemplates.map((template) => ({
+                id: template.id,
+                name: template.name,
+                icon: template.icon,
+                required_cores: template.requiredCores,
+                recommended_cores: template.recommendedCores,
+                required_memory: template.requiredMemory,
+                recommended_memory: template.recommendedMemory,
+                required_storage: template.requiredStorage,
+                recommended_storage: template.recommendedStorage,
+              })),
+            };
+          }),
       };
     }),
 });
