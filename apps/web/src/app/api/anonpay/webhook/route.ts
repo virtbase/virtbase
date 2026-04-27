@@ -89,7 +89,9 @@ export async function POST(req: NextRequest) {
         { idempotencyKey: `create-payment-method-${data.trade_id}` },
       );
 
-      const statusDateSeconds = new Date(data.date).getTime() / 1000;
+      const statusDateSeconds = Math.floor(
+        new Date(data.date).getTime() / 1000,
+      );
 
       console.log("status date seconds", statusDateSeconds);
       console.log("reporting payment");
