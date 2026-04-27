@@ -15,13 +15,9 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { relations, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import { index, pgTable } from "drizzle-orm/pg-core";
 import { createId } from "../utils";
-import { invoices } from "./invoices";
-import { servers } from "./servers";
-import { sshKeys } from "./ssh-keys";
-import { transactions } from "./transactions";
 
 export const users = pgTable(
   "users",
@@ -47,19 +43,6 @@ export const users = pgTable(
   }),
   (t) => [index().on(t.email), index().on(t.stripeCustomerId)],
 );
-
-export const usersRelations = relations(users, ({ many }) => ({
-  sessions: many(sessions, { relationName: "session_user" }),
-  impersonatedSessions: many(sessions, {
-    relationName: "session_impersonator",
-  }),
-  accounts: many(accounts),
-  passkeys: many(passkeys),
-  sshKeys: many(sshKeys),
-  servers: many(servers),
-  invoices: many(invoices),
-  transactions: many(transactions),
-}));
 
 export const sessions = pgTable(
   "sessions",
@@ -89,19 +72,6 @@ export const sessions = pgTable(
   (t) => [index().on(t.userId), index().on(t.token)],
 );
 
-export const sessionsRelations = relations(sessions, ({ one }) => ({
-  user: one(users, {
-    fields: [sessions.userId],
-    references: [users.id],
-    relationName: "session_user",
-  }),
-  impersonator: one(users, {
-    fields: [sessions.impersonatedBy],
-    references: [users.id],
-    relationName: "session_impersonator",
-  }),
-}));
-
 export const accounts = pgTable(
   "accounts",
   (t) => ({
@@ -130,13 +100,6 @@ export const accounts = pgTable(
   }),
   (t) => [index().on(t.userId)],
 );
-
-export const accountsRelations = relations(accounts, ({ one }) => ({
-  user: one(users, {
-    fields: [accounts.userId],
-    references: [users.id],
-  }),
-}));
 
 export const verifications = pgTable(
   "verifications",
@@ -180,13 +143,6 @@ export const passkeys = pgTable(
   }),
   (t) => [index().on(t.userId), index().on(t.credentialID)],
 );
-
-export const passkeysRelations = relations(passkeys, ({ one }) => ({
-  user: one(users, {
-    fields: [passkeys.userId],
-    references: [users.id],
-  }),
-}));
 
 export const apiKeys = pgTable(
   "api_keys",

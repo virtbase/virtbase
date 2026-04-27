@@ -15,7 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { relations, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import { index, pgTable } from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 import { proxmoxTemplates } from "./proxmox-templates";
@@ -102,13 +102,4 @@ export const serverBackups = pgTable(
   ],
 );
 
-export const serverBackupsRelations = relations(serverBackups, ({ one }) => ({
-  server: one(servers, {
-    fields: [serverBackups.serverId],
-    references: [servers.id],
-  }),
-  proxmoxTemplate: one(proxmoxTemplates, {
-    fields: [serverBackups.proxmoxTemplateId],
-    references: [proxmoxTemplates.id],
-  }),
-}));
+export type DatabaseServerBackups = typeof serverBackups.$inferSelect;

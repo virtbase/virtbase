@@ -15,7 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { relations, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import { index, pgTable } from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 import { subnetAllocations } from "./subnet-allocations";
@@ -62,12 +62,5 @@ export const pointerRecords = pgTable(
   }),
   (t) => [index().on(t.subnetAllocationId), index().on(t.ip)],
 );
-
-export const pointerRecordsRelations = relations(pointerRecords, ({ one }) => ({
-  allocation: one(subnetAllocations, {
-    fields: [pointerRecords.subnetAllocationId],
-    references: [subnetAllocations.id],
-  }),
-}));
 
 export type DatabasePointerRecords = typeof pointerRecords.$inferSelect;

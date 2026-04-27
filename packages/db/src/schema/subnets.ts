@@ -15,12 +15,10 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { relations, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import type { AnyPgColumn } from "drizzle-orm/pg-core";
 import { index, pgTable } from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
-import { subnetAllocations } from "./subnet-allocations";
-import { subnetsToProxmoxNodes } from "./subnets-to-proxmox-nodes";
 
 /**
  * A subnet represents a contiguous block of IP addresses.
@@ -78,30 +76,5 @@ export const subnets = pgTable(
   }),
   (t) => [index().on(t.parentId)],
 );
-
-export const subnetsRelations = relations(subnets, ({ one, many }) => ({
-  /**
-   * The allocations associated with this subnet.
-   */
-  allocations: many(subnetAllocations),
-  /**
-   * The Proxmox VE nodes associated with this subnet.
-   */
-  proxmoxNodes: many(subnetsToProxmoxNodes),
-  /**
-   * The parent of this subnet.
-   */
-  parent: one(subnets, {
-    relationName: "subnet_parent_child",
-    fields: [subnets.parentId],
-    references: [subnets.id],
-  }),
-  /**
-   * The children of this subnet.
-   */
-  children: many(subnets, {
-    relationName: "subnet_parent_child",
-  }),
-}));
 
 export type DatabaseSubnets = typeof subnets.$inferSelect;

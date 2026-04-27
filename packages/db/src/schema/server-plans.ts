@@ -15,7 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { relations, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import { index, pgTable } from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 import { proxmoxNodeGroups } from "./proxmox-node-groups";
@@ -80,12 +80,5 @@ export const serverPlans = pgTable(
   }),
   (t) => [index().on(t.proxmoxNodeGroupId)],
 );
-
-export const serverPlansRelations = relations(serverPlans, ({ one }) => ({
-  proxmoxNodeGroup: one(proxmoxNodeGroups, {
-    fields: [serverPlans.proxmoxNodeGroupId],
-    references: [proxmoxNodeGroups.id],
-  }),
-}));
 
 export type DatabaseServerPlan = typeof serverPlans.$inferSelect;

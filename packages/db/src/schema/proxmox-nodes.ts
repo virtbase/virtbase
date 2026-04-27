@@ -15,14 +15,11 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { relations, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import { index, pgTable } from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 import { datacenters } from "./datacenters";
 import { proxmoxNodeGroups } from "./proxmox-node-groups";
-import { proxmoxTemplatesToProxmoxNodes } from "./proxmox-templates-to-proxmox-nodes";
-import { servers } from "./servers";
-import { subnetsToProxmoxNodes } from "./subnets-to-proxmox-nodes";
 
 /**
  * A Proxmox VE node represents a physical machine within a datacenter
@@ -163,20 +160,3 @@ export const proxmoxNodes = pgTable(
 );
 
 export type DatabaseProxmoxNode = typeof proxmoxNodes.$inferSelect;
-
-export const proxmoxNodesRelations = relations(
-  proxmoxNodes,
-  ({ one, many }) => ({
-    datacenter: one(datacenters, {
-      fields: [proxmoxNodes.datacenterId],
-      references: [datacenters.id],
-    }),
-    proxmoxNodeGroup: one(proxmoxNodeGroups, {
-      fields: [proxmoxNodes.proxmoxNodeGroupId],
-      references: [proxmoxNodeGroups.id],
-    }),
-    proxmoxTemplates: many(proxmoxTemplatesToProxmoxNodes),
-    subnets: many(subnetsToProxmoxNodes),
-    servers: many(servers),
-  }),
-);

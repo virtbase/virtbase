@@ -23,6 +23,8 @@ import { AdminMiddleware } from "@/lib/middleware/admin";
 import { ApiMiddleware } from "@/lib/middleware/api";
 import { AppMiddleware } from "@/lib/middleware/app";
 import { parse } from "@/lib/middleware/utils/parse";
+import { defaultLocale } from "./i18n/config";
+import { ensureLocaleCookie } from "./lib/middleware/ensure-locale-cookie";
 
 export const config: ProxyConfig = {
   // Match all pathnames except for
@@ -52,5 +54,14 @@ export default async function proxy(req: NextRequest) {
   }
 
   // for public pages
-  return intlMiddleware(req);
+  const res = intlMiddleware(req);
+
+  // Ensure that the locale cookie is set the first time the user visits the site
+  // This will allow syncing the locale between the public and private pages
+  const [, locale = defaultLocale] = new URL(
+    res.headers.get("x-middleware-rewrite") || req.url,
+  ).pathname.split("/");
+
+  ensureLocaleCookie(req, res, locale);
+  return res;
 }

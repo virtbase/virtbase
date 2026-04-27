@@ -15,7 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { relations, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import { pgTable, primaryKey } from "drizzle-orm/pg-core";
 import { proxmoxNodes } from "./proxmox-nodes";
 import { proxmoxTemplates } from "./proxmox-templates";
@@ -74,18 +74,4 @@ export const proxmoxTemplatesToProxmoxNodes = pgTable(
       columns: [t.proxmoxTemplateId, t.proxmoxNodeId],
     }),
   ],
-);
-
-export const proxmoxTemplatesToProxmoxNodesRelations = relations(
-  proxmoxTemplatesToProxmoxNodes,
-  ({ one }) => ({
-    proxmoxTemplate: one(proxmoxTemplates, {
-      fields: [proxmoxTemplatesToProxmoxNodes.proxmoxTemplateId],
-      references: [proxmoxTemplates.id],
-    }),
-    proxmoxNode: one(proxmoxNodes, {
-      fields: [proxmoxTemplatesToProxmoxNodes.proxmoxNodeId],
-      references: [proxmoxNodes.id],
-    }),
-  }),
 );

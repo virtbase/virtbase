@@ -151,7 +151,7 @@ export function StripePaymentForm({
       onProcessingChangeRef.current?.(true);
 
       if (
-        !!ANONPAY_STRIPE_METHOD_ID &&
+        ANONPAY_STRIPE_METHOD_ID &&
         selectedPaymentMethod === ANONPAY_STRIPE_METHOD_ID &&
         paymentIntentId
       ) {

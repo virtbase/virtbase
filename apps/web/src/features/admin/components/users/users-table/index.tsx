@@ -27,7 +27,7 @@ import type {
   getUserVerifiedCounts,
 } from "@/features/admin/api/users/get-users-list";
 import type { UsersTableColumn } from "@/features/admin/components/users/users-table/columns";
-import { getUsersTableColumns } from "@/features/admin/components/users/users-table/columns";
+import { useUsersTableColumns } from "./columns";
 
 interface UsersTableProps {
   promises: Promise<
@@ -49,10 +49,11 @@ export function UsersTable({ promises }: UsersTableProps) {
     null,
   );
 
-  const columns = React.useMemo(
-    () => getUsersTableColumns({ setRowAction, roleCounts, verifiedCounts }),
-    [roleCounts, verifiedCounts],
-  );
+  const columns = useUsersTableColumns({
+    setRowAction,
+    roleCounts,
+    verifiedCounts,
+  });
 
   const { table } = useDataTable({
     data,

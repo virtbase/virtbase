@@ -19,7 +19,7 @@ import Stripe from "stripe";
 
 export const stripe = process.env.STRIPE_SECRET_KEY
   ? new Stripe(process.env.STRIPE_SECRET_KEY, {
-      apiVersion: "2026-03-25.dahlia",
+      apiVersion: "2026-04-22.dahlia",
       typescript: true,
       telemetry: false,
     })

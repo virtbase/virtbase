@@ -16,15 +16,21 @@
  */
 
 import { COOKIE_DOMAIN } from "@virtbase/utils";
-import { defineRouting } from "next-intl/routing";
-import { COOKIE_MAX_AGE, COOKIE_NAME, defaultLocale, locales } from "./config";
+import type { NextRequest, NextResponse } from "next/server";
+import { COOKIE_MAX_AGE, COOKIE_NAME } from "@/i18n/config";
 
-export const routing = defineRouting({
-  locales,
-  defaultLocale,
-  localeCookie: {
-    name: COOKIE_NAME,
+export function ensureLocaleCookie(
+  request: NextRequest,
+  response: NextResponse,
+  locale: string,
+) {
+  const hasCookie =
+    request.cookies.has(COOKIE_NAME) || response.cookies.has(COOKIE_NAME);
+
+  if (hasCookie) return;
+
+  response.cookies.set(COOKIE_NAME, locale, {
     domain: COOKIE_DOMAIN,
     maxAge: COOKIE_MAX_AGE,
-  },
-});
+  });
+}

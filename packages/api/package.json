@@ -43,7 +43,7 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "@sentry/node": "^10.48.0",
+    "@sentry/node": "10.43.0",
     "@trpc/server": "catalog:",
     "@upstash/ratelimit": "^2.0.8",
     "@upstash/redis": "^1.37.0",
@@ -54,7 +54,7 @@
     "@virtbase/validators": "workspace:*",
     "proxmox-api": "catalog:",
     "server-only": "^0.0.1",
-    "stripe": "^22.0.2",
+    "stripe": "^22.1.0",
     "superjson": "catalog:",
     "trpc-to-openapi": "^3.2.0",
     "use-intl": "catalog:",

@@ -23,4 +23,5 @@ export const {
   Link: IntlLink,
   getPathname: getIntlPathname,
   useRouter: useIntlRouter,
+  usePathname: useIntlPathname,
 } = createNavigation(routing);

@@ -15,10 +15,9 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { relations, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import { pgTable } from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
-import { proxmoxTemplates } from "./proxmox-templates";
 
 /**
  * A Proxmox VE template group represents a logical grouping of Proxmox VE templates
@@ -66,10 +65,3 @@ export const proxmoxTemplateGroups = pgTable(
 
 export type DatabaseProxmoxTemplateGroups =
   typeof proxmoxTemplateGroups.$inferSelect;
-
-export const proxmoxTemplateGroupsRelations = relations(
-  proxmoxTemplateGroups,
-  ({ many }) => ({
-    proxmoxTemplates: many(proxmoxTemplates),
-  }),
-);

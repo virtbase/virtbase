@@ -15,7 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { relations, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import { pgTable, primaryKey } from "drizzle-orm/pg-core";
 import { proxmoxNodes } from "./proxmox-nodes";
 import { subnets } from "./subnets";
@@ -62,26 +62,6 @@ export const subnetsToProxmoxNodes = pgTable(
     // Combined primary key => implicit index on both columns
     primaryKey({ columns: [t.subnetId, t.proxmoxNodeId] }),
   ],
-);
-
-export const subnetsToProxmoxNodesRelations = relations(
-  subnetsToProxmoxNodes,
-  ({ one }) => ({
-    /**
-     * The subnet associated with this subnet to Proxmox VE node association.
-     */
-    subnet: one(subnets, {
-      fields: [subnetsToProxmoxNodes.subnetId],
-      references: [subnets.id],
-    }),
-    /**
-     * The Proxmox VE node associated with this subnet to Proxmox VE node association.
-     */
-    proxmoxNode: one(proxmoxNodes, {
-      fields: [subnetsToProxmoxNodes.proxmoxNodeId],
-      references: [proxmoxNodes.id],
-    }),
-  }),
 );
 
 export type DatabaseSubnetsToProxmoxNodes =

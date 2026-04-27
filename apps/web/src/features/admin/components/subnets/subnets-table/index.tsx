@@ -27,7 +27,7 @@ import type {
   getSubnetVlanCounts,
 } from "@/features/admin/api/subnets/get-subnets-list";
 import type { SubnetsTableColumn } from "@/features/admin/components/subnets/subnets-table/columns";
-import { getSubnetsTableColumns } from "@/features/admin/components/subnets/subnets-table/columns";
+import { useSubnetsTableColumns } from "@/features/admin/components/subnets/subnets-table/columns";
 
 interface SubnetsTableProps {
   promises: Promise<
@@ -48,10 +48,11 @@ export function SubnetsTable({ promises }: SubnetsTableProps) {
   const [rowAction, setRowAction] =
     React.useState<SubnetsTableRowAction | null>(null);
 
-  const columns = React.useMemo(
-    () => getSubnetsTableColumns({ setRowAction, vlanCounts, typeCounts }),
-    [vlanCounts, typeCounts],
-  );
+  const columns = useSubnetsTableColumns({
+    setRowAction,
+    vlanCounts,
+    typeCounts,
+  });
 
   const { table } = useDataTable({
     data,

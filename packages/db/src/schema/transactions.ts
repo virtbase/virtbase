@@ -15,7 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { relations, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import { index, pgEnum, pgTable, unique } from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 import { users } from "./auth";
@@ -61,10 +61,3 @@ export const transactions = pgTable(
 );
 
 export type DatabaseTransaction = typeof transactions.$inferSelect;
-
-export const transactionsRelations = relations(transactions, ({ one }) => ({
-  user: one(users, {
-    fields: [transactions.userId],
-    references: [users.id],
-  }),
-}));

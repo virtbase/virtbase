@@ -29,6 +29,7 @@ import { useId } from "react";
 import { IntlLink } from "@/i18n/navigation.public";
 import { authClient } from "@/lib/auth/client";
 import { MaxWidthWrapper } from "@/ui/max-width-wrapper";
+import { LocaleSwitcherCircle } from "./locale-switcher-circle";
 
 export function Nav({ className }: { className?: string }) {
   const t = useExtracted();
@@ -64,17 +65,21 @@ export function Nav({ className }: { className?: string }) {
             {/**hidden grow basis-0 justify-end gap-2 lg:flex */}
             <ClientOnly className="flex grow basis-0 justify-end gap-2">
               {session && Object.keys(session).length > 0 ? (
-                <a
-                  href={APP_DOMAIN}
-                  className={buttonVariants({
-                    variant: "default",
-                    size: "sm",
-                  })}
-                >
-                  {t("Dashboard")}
-                </a>
+                <>
+                  <LocaleSwitcherCircle />
+                  <a
+                    href={APP_DOMAIN}
+                    className={buttonVariants({
+                      variant: "default",
+                      size: "sm",
+                    })}
+                  >
+                    {t("Dashboard")}
+                  </a>
+                </>
               ) : !isPending ? (
                 <>
+                  <LocaleSwitcherCircle />
                   <a
                     href={`${APP_DOMAIN}/login`}
                     className={buttonVariants({

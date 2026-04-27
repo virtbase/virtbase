@@ -15,13 +15,10 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { relations, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import { index, pgTable } from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 import { proxmoxTemplateGroups } from "./proxmox-template-groups";
-import { proxmoxTemplatesToProxmoxNodes } from "./proxmox-templates-to-proxmox-nodes";
-import { serverBackups } from "./server-backups";
-import { servers } from "./servers";
 
 /**
  * A Proxmox VE template represents a template that can be used to create new guests.
@@ -104,16 +101,3 @@ export const proxmoxTemplates = pgTable(
 );
 
 export type DatabaseProxmoxTemplates = typeof proxmoxTemplates.$inferSelect;
-
-export const proxmoxTemplatesRelations = relations(
-  proxmoxTemplates,
-  ({ one, many }) => ({
-    proxmoxTemplateGroup: one(proxmoxTemplateGroups, {
-      fields: [proxmoxTemplates.proxmoxTemplateGroupId],
-      references: [proxmoxTemplateGroups.id],
-    }),
-    proxmoxNodes: many(proxmoxTemplatesToProxmoxNodes),
-    servers: many(servers),
-    serverBackups: many(serverBackups),
-  }),
-);
