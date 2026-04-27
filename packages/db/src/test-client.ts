@@ -15,18 +15,10 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { createRequire } from "node:module";
 import { PGlite } from "@electric-sql/pglite";
 import { drizzle } from "drizzle-orm/pglite";
+import { relations } from "./relations";
 import * as schema from "./schema";
-
-const require = createRequire(import.meta.url);
-const { pushSchema } = require("drizzle-kit/api") as {
-  pushSchema: (
-    schema: object,
-    db: object,
-  ) => Promise<{ apply: () => Promise<void> }>;
-};
 
 export type TestDb = Awaited<ReturnType<typeof createTestDb>>;
 
@@ -36,9 +28,14 @@ export type TestDb = Awaited<ReturnType<typeof createTestDb>>;
  * Call in beforeAll() or at the start of each test file.
  */
 export async function createTestDb() {
+  // drizzle-kit v1 splits APIs by driver (`api-postgres` replaces `api`). Load lazily
+  // to avoid circular init / TDZ issues with the test module graph.
+  const { pushSchema } = await import("drizzle-kit/api-postgres");
+
   const client = new PGlite();
-  const db = drizzle(client, {
-    schema,
+  const db = drizzle({
+    client,
+    relations,
     // pushSchema creates camelCase columns; omit casing so generated SQL matches
   });
 

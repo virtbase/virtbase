@@ -15,11 +15,9 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { relations, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import { pgEnum, pgTable } from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
-import { proxmoxNodes } from "./proxmox-nodes";
-import { serverPlans } from "./server-plans";
 
 export const proxmoxNodeGroupStrategyEnum = pgEnum(
   "proxmox_node_group_strategy",
@@ -64,13 +62,5 @@ export const proxmoxNodeGroups = pgTable("proxmox_node_groups", (t) => ({
     .notNull()
     .$onUpdate(() => sql`now()`),
 }));
-
-export const proxmoxNodeGroupsRelations = relations(
-  proxmoxNodeGroups,
-  ({ many }) => ({
-    proxmoxNodes: many(proxmoxNodes),
-    serverPlans: many(serverPlans),
-  }),
-);
 
 export type DatabaseProxmoxNodeGroups = typeof proxmoxNodeGroups.$inferSelect;

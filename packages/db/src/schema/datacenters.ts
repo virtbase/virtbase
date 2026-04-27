@@ -15,10 +15,9 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { relations, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import { index, pgTable } from "drizzle-orm/pg-core";
 import { createId } from "../utils";
-import { proxmoxNodes } from "./proxmox-nodes";
 
 /**
  * A datacenter represents a physical location where one ore more
@@ -59,9 +58,5 @@ export const datacenters = pgTable(
   }),
   (t) => [index().on(t.name)],
 );
-
-export const datacentersRelations = relations(datacenters, ({ many }) => ({
-  proxmoxNodes: many(proxmoxNodes),
-}));
 
 export type DatabaseDatacenter = typeof datacenters.$inferSelect;

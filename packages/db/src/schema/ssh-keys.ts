@@ -15,7 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { relations, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import { index, pgTable } from "drizzle-orm/pg-core";
 import { createId } from "../utils";
 import { users } from "./auth";
@@ -46,10 +46,3 @@ export const sshKeys = pgTable(
   }),
   (t) => [index().on(t.userId), index().on(t.fingerprint)],
 );
-
-export const sshKeysRelations = relations(sshKeys, ({ one }) => ({
-  user: one(users, {
-    fields: [sshKeys.userId],
-    references: [users.id],
-  }),
-}));

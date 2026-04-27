@@ -15,15 +15,13 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { relations, sql } from "drizzle-orm";
+import { sql } from "drizzle-orm";
 import { index, pgTable } from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 import { users } from "./auth";
 import { proxmoxNodes } from "./proxmox-nodes";
 import { proxmoxTemplates } from "./proxmox-templates";
-import { serverBackups } from "./server-backups";
 import { serverPlans } from "./server-plans";
-import { subnetAllocations } from "./subnet-allocations";
 
 export const servers = pgTable(
   "servers",
@@ -115,24 +113,3 @@ export const servers = pgTable(
 );
 
 export type DatabaseServer = typeof servers.$inferSelect;
-
-export const serversRelations = relations(servers, ({ one, many }) => ({
-  user: one(users, {
-    fields: [servers.userId],
-    references: [users.id],
-  }),
-  serverPlan: one(serverPlans, {
-    fields: [servers.serverPlanId],
-    references: [serverPlans.id],
-  }),
-  proxmoxNode: one(proxmoxNodes, {
-    fields: [servers.proxmoxNodeId],
-    references: [proxmoxNodes.id],
-  }),
-  proxmoxTemplate: one(proxmoxTemplates, {
-    fields: [servers.proxmoxTemplateId],
-    references: [proxmoxTemplates.id],
-  }),
-  serverBackups: many(serverBackups),
-  subnetAllocations: many(subnetAllocations),
-}));

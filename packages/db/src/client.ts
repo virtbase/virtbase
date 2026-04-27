@@ -18,7 +18,7 @@
 import { neonConfig, Pool } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-serverless";
 import ws from "ws";
-
+import { relations } from "./relations";
 import * as schema from "./schema";
 
 // Bun's native WebSocket handles the neon proxy handshake correctly on Linux,
@@ -54,5 +54,6 @@ const pool = new Pool({ connectionString });
 export const db = drizzle({
   client: pool,
   schema,
+  relations,
   casing: "snake_case",
 });
