@@ -75,6 +75,9 @@ export async function POST(req: NextRequest) {
     if (data.status === "finished" || data.status === "failed") {
       // Report the payment status to Stripe
 
+      console.log("data", data);
+      console.log("creating payment method");
+
       // Create an instance of the custom payment method
       const paymentMethod = await stripe.paymentMethods.create(
         {
@@ -87,6 +90,9 @@ export async function POST(req: NextRequest) {
       );
 
       const statusDateSeconds = new Date(data.date).getTime() / 1000;
+
+      console.log("status date seconds", statusDateSeconds);
+      console.log("reporting payment");
 
       await stripe.paymentRecords.reportPayment(
         {
@@ -114,6 +120,7 @@ export async function POST(req: NextRequest) {
 
     switch (data.status) {
       case "finished": {
+        console.log("handling payment finished");
         await handlePaymentFinished({
           paymentIntent,
           data,
@@ -126,6 +133,8 @@ export async function POST(req: NextRequest) {
         break;
     }
   } catch (error) {
+    console.error(error);
+
     Sentry.captureException(error, {
       tags: {
         "anonpay.webhook.error": "true",
