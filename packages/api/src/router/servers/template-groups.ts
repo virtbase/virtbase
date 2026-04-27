@@ -16,7 +16,7 @@
  */
 
 import { TRPCError } from "@trpc/server";
-import { asc, eq, sql } from "@virtbase/db";
+import { alias, asc, eq, sql } from "@virtbase/db";
 import {
   proxmoxNodes as pn,
   proxmoxTemplates as pt,
@@ -76,40 +76,53 @@ export const serversTemplateGroupsRouter = createTRPCRouter({
             });
           }
 
-          return tx
-            .select({
-              id: ptg.id,
-              name: ptg.name,
-              templates: sql<
-                GetServerTemplateGroupsOutput["template_groups"][number]["templates"]
-              >`
-                COALESCE(
-                  JSON_AGG(
-                    JSON_BUILD_OBJECT(
-                      'id', ${pt.id},
-                      'name', ${pt.name},
-                      'icon', ${pt.icon},
-                      'required_cores', ${pt.requiredCores},
-                      'recommended_cores', ${pt.recommendedCores},
-                      'required_memory', ${pt.requiredMemory},
-                      'recommended_memory', ${pt.recommendedMemory},
-                      'required_storage', ${pt.requiredStorage},
-                      'recommended_storage', ${pt.recommendedStorage}
-                    )
-                  ) FILTER (
-                    WHERE ${pt.id} IS NOT NULL
-                  ),
-                  '[]'
+          const nodesInGroup = alias(pn, "nodes_in_group");
+
+          return (
+            tx
+              .select({
+                id: ptg.id,
+                name: ptg.name,
+                templates: sql<
+                  GetServerTemplateGroupsOutput["template_groups"][number]["templates"]
+                >`
+                  COALESCE(
+                    JSONB_AGG(
+                      DISTINCT JSONB_BUILD_OBJECT(
+                        'id', ${pt.id},
+                        'name', ${pt.name},
+                        'icon', ${pt.icon},
+                        'required_cores', ${pt.requiredCores},
+                        'recommended_cores', ${pt.recommendedCores},
+                        'required_memory', ${pt.requiredMemory},
+                        'recommended_memory', ${pt.recommendedMemory},
+                        'required_storage', ${pt.requiredStorage},
+                        'recommended_storage', ${pt.recommendedStorage}
+                      )
+                    ) FILTER (WHERE ${pt.id} IS NOT NULL),
+                    '[]'::jsonb
+                  )
+                `,
+              })
+              .from(pt)
+              .innerJoin(ptg, eq(pt.proxmoxTemplateGroupId, ptg.id))
+              .innerJoin(pt2pn, eq(pt.id, pt2pn.proxmoxTemplateId))
+              .innerJoin(pn, eq(pt2pn.proxmoxNodeId, pn.id))
+              .where(eq(pn.proxmoxNodeGroupId, plan.proxmoxNodeGroupId))
+              .groupBy(ptg.id, pt.id)
+              // Only include template groups that have all nodes in the group
+              .having(sql`
+                COUNT(DISTINCT ${pn.id}) = (
+                  SELECT COUNT(*)
+                  FROM ${pn} ${nodesInGroup}
+                  WHERE ${eq(
+                    nodesInGroup.proxmoxNodeGroupId,
+                    plan.proxmoxNodeGroupId,
+                  )}
                 )
-              `,
-            })
-            .from(pt)
-            .innerJoin(ptg, eq(pt.proxmoxTemplateGroupId, ptg.id))
-            .innerJoin(pt2pn, eq(pt.id, pt2pn.proxmoxTemplateId))
-            .innerJoin(pn, eq(pt2pn.proxmoxNodeId, pn.id))
-            .where(eq(pn.proxmoxNodeGroupId, plan.proxmoxNodeGroupId))
-            .groupBy(ptg.id)
-            .orderBy(asc(ptg.priority), asc(ptg.name));
+              `)
+              .orderBy(asc(ptg.priority), asc(ptg.name))
+          );
         },
         {
           accessMode: "read only",
