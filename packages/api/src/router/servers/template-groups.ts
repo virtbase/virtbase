@@ -78,51 +78,72 @@ export const serversTemplateGroupsRouter = createTRPCRouter({
 
           const nodesInGroup = alias(pn, "nodes_in_group");
 
-          return (
-            tx
-              .select({
-                id: ptg.id,
-                name: ptg.name,
-                templates: sql<
-                  GetServerTemplateGroupsOutput["template_groups"][number]["templates"]
-                >`
+          // One row per (group, template) where the template is on every node in the group
+          const eligible = tx
+            .select({
+              groupId: ptg.id,
+              groupName: ptg.name,
+              groupPriority: ptg.priority,
+              templateId: pt.id,
+              templateName: pt.name,
+              templateIcon: pt.icon,
+              templateRequiredCores: pt.requiredCores,
+              templateRecommendedCores: pt.recommendedCores,
+              templateRequiredMemory: pt.requiredMemory,
+              templateRecommendedMemory: pt.recommendedMemory,
+              templateRequiredStorage: pt.requiredStorage,
+              templateRecommendedStorage: pt.recommendedStorage,
+            })
+            .from(pt)
+            .innerJoin(ptg, eq(pt.proxmoxTemplateGroupId, ptg.id))
+            .innerJoin(pt2pn, eq(pt.id, pt2pn.proxmoxTemplateId))
+            .innerJoin(pn, eq(pt2pn.proxmoxNodeId, pn.id))
+            .where(eq(pn.proxmoxNodeGroupId, plan.proxmoxNodeGroupId))
+            .groupBy(ptg.id, pt.id)
+            .having(sql`
+              COUNT(DISTINCT ${pn.id}) = (
+                SELECT COUNT(*)
+                FROM ${pn} ${nodesInGroup}
+                WHERE ${eq(
+                  nodesInGroup.proxmoxNodeGroupId,
+                  plan.proxmoxNodeGroupId,
+                )}
+              )
+            `)
+            .as("eligible");
+
+          return tx
+            .select({
+              id: eligible.groupId,
+              name: eligible.groupName,
+              templates: sql<
+                GetServerTemplateGroupsOutput["template_groups"][number]["templates"]
+              >`
                   COALESCE(
                     JSONB_AGG(
-                      DISTINCT JSONB_BUILD_OBJECT(
-                        'id', ${pt.id},
-                        'name', ${pt.name},
-                        'icon', ${pt.icon},
-                        'required_cores', ${pt.requiredCores},
-                        'recommended_cores', ${pt.recommendedCores},
-                        'required_memory', ${pt.requiredMemory},
-                        'recommended_memory', ${pt.recommendedMemory},
-                        'required_storage', ${pt.requiredStorage},
-                        'recommended_storage', ${pt.recommendedStorage}
-                      )
-                    ) FILTER (WHERE ${pt.id} IS NOT NULL),
+                      JSONB_BUILD_OBJECT(
+                        'id', ${eligible.templateId},
+                        'name', ${eligible.templateName},
+                        'icon', ${eligible.templateIcon},
+                        'required_cores', ${eligible.templateRequiredCores},
+                        'recommended_cores', ${eligible.templateRecommendedCores},
+                        'required_memory', ${eligible.templateRequiredMemory},
+                        'recommended_memory', ${eligible.templateRecommendedMemory},
+                        'required_storage', ${eligible.templateRequiredStorage},
+                        'recommended_storage', ${eligible.templateRecommendedStorage}
+                      ) ORDER BY ${eligible.templateName} ASC
+                    ),
                     '[]'::jsonb
                   )
                 `,
-              })
-              .from(pt)
-              .innerJoin(ptg, eq(pt.proxmoxTemplateGroupId, ptg.id))
-              .innerJoin(pt2pn, eq(pt.id, pt2pn.proxmoxTemplateId))
-              .innerJoin(pn, eq(pt2pn.proxmoxNodeId, pn.id))
-              .where(eq(pn.proxmoxNodeGroupId, plan.proxmoxNodeGroupId))
-              .groupBy(ptg.id, pt.id)
-              // Only include template groups that have all nodes in the group
-              .having(sql`
-                COUNT(DISTINCT ${pn.id}) = (
-                  SELECT COUNT(*)
-                  FROM ${pn} ${nodesInGroup}
-                  WHERE ${eq(
-                    nodesInGroup.proxmoxNodeGroupId,
-                    plan.proxmoxNodeGroupId,
-                  )}
-                )
-              `)
-              .orderBy(asc(ptg.priority), asc(ptg.name))
-          );
+            })
+            .from(eligible)
+            .groupBy(
+              eligible.groupId,
+              eligible.groupName,
+              eligible.groupPriority,
+            )
+            .orderBy(asc(eligible.groupPriority), asc(eligible.groupName));
         },
         {
           accessMode: "read only",

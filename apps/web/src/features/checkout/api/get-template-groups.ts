@@ -41,55 +41,70 @@ export const getTemplateGroups = cache(async (proxmoxNodeGroupId: string) => {
     async (tx) => {
       const nodesInGroup = alias(pn, "nodes_in_group");
 
-      return (
-        tx
-          .select({
-            id: ptg.id,
-            name: ptg.name,
-            templates: sql<
-              Pick<
-                typeof pt.$inferSelect,
-                | "id"
-                | "name"
-                | "icon"
-                | "recommendedCores"
-                | "recommendedMemory"
-                | "requiredStorage"
-                | "recommendedStorage"
-              >[]
-            >`
+      // One row per (group, template) where the template is on every node in the group
+      const eligible = tx
+        .select({
+          groupId: ptg.id,
+          groupName: ptg.name,
+          groupPriority: ptg.priority,
+          templateId: pt.id,
+          templateName: pt.name,
+          templateIcon: pt.icon,
+          templateRecommendedCores: pt.recommendedCores,
+          templateRecommendedMemory: pt.recommendedMemory,
+          templateRequiredStorage: pt.requiredStorage,
+          templateRecommendedStorage: pt.recommendedStorage,
+        })
+        .from(pt)
+        .innerJoin(ptg, eq(pt.proxmoxTemplateGroupId, ptg.id))
+        .innerJoin(pt2pn, eq(pt.id, pt2pn.proxmoxTemplateId))
+        .innerJoin(pn, eq(pt2pn.proxmoxNodeId, pn.id))
+        .where(eq(pn.proxmoxNodeGroupId, proxmoxNodeGroupId))
+        .groupBy(ptg.id, pt.id)
+        .having(sql`
+          COUNT(DISTINCT ${pn.id}) = (
+            SELECT COUNT(*)
+            FROM ${pn} ${nodesInGroup}
+            WHERE ${eq(nodesInGroup.proxmoxNodeGroupId, proxmoxNodeGroupId)}
+          )
+        `)
+        .as("eligible");
+
+      return tx
+        .select({
+          id: eligible.groupId,
+          name: eligible.groupName,
+          templates: sql<
+            Pick<
+              typeof pt.$inferSelect,
+              | "id"
+              | "name"
+              | "icon"
+              | "recommendedCores"
+              | "recommendedMemory"
+              | "requiredStorage"
+              | "recommendedStorage"
+            >[]
+          >`
               COALESCE(
                 JSONB_AGG(
-                  DISTINCT JSONB_BUILD_OBJECT(
-                    'id', ${pt.id},
-                    'name', ${pt.name},
-                    'icon', ${pt.icon},
-                    'recommendedCores', ${pt.recommendedCores},
-                    'recommendedMemory', ${pt.recommendedMemory},
-                    'requiredStorage', ${pt.requiredStorage},
-                    'recommendedStorage', ${pt.recommendedStorage}
-                  )
-                ) FILTER (WHERE ${pt.id} IS NOT NULL),
+                  JSONB_BUILD_OBJECT(
+                    'id', ${eligible.templateId},
+                    'name', ${eligible.templateName},
+                    'icon', ${eligible.templateIcon},
+                    'recommendedCores', ${eligible.templateRecommendedCores},
+                    'recommendedMemory', ${eligible.templateRecommendedMemory},
+                    'requiredStorage', ${eligible.templateRequiredStorage},
+                    'recommendedStorage', ${eligible.templateRecommendedStorage}
+                  ) ORDER BY ${eligible.templateName} ASC
+                ),
                 '[]'::jsonb
               )
             `,
-          })
-          .from(pt)
-          .innerJoin(ptg, eq(pt.proxmoxTemplateGroupId, ptg.id))
-          .innerJoin(pt2pn, eq(pt.id, pt2pn.proxmoxTemplateId))
-          .innerJoin(pn, eq(pt2pn.proxmoxNodeId, pn.id))
-          .where(eq(pn.proxmoxNodeGroupId, proxmoxNodeGroupId))
-          .groupBy(ptg.id, pt.id)
-          // Only include template groups that have all nodes in the group
-          .having(sql`
-            COUNT(DISTINCT ${pn.id}) = (
-              SELECT COUNT(*)
-              FROM ${pn} ${nodesInGroup}
-              WHERE ${eq(nodesInGroup.proxmoxNodeGroupId, proxmoxNodeGroupId)}
-            )
-          `)
-          .orderBy(asc(ptg.priority), asc(ptg.name))
-      );
+        })
+        .from(eligible)
+        .groupBy(eligible.groupId, eligible.groupName, eligible.groupPriority)
+        .orderBy(asc(eligible.groupPriority), asc(eligible.groupName));
     },
     {
       accessMode: "read only",
