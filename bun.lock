@@ -34,6 +34,7 @@
       "name": "@virtbase/web",
       "dependencies": {
         "@better-auth/api-key": "catalog:",
+        "@better-auth/oauth-provider": "catalog:",
         "@better-auth/passkey": "catalog:",
         "@hookform/resolvers": "^5.2.2",
         "@scalar/api-reference-react": "^0.9.28",
@@ -128,6 +129,7 @@
       "name": "@virtbase/auth",
       "dependencies": {
         "@better-auth/api-key": "catalog:",
+        "@better-auth/oauth-provider": "catalog:",
         "@better-auth/passkey": "catalog:",
         "@sentry/core": "10.43.0",
         "@t3-oss/env-core": "^0.13.11",
@@ -265,6 +267,7 @@
   },
   "catalog": {
     "@better-auth/api-key": "^1.6.9",
+    "@better-auth/oauth-provider": "^1.6.9",
     "@better-auth/passkey": "^1.6.9",
     "@biomejs/biome": "^2.4.13",
     "@tailwindcss/postcss": "^4.2.4",
@@ -408,6 +411,8 @@
     "@better-auth/memory-adapter": ["@better-auth/memory-adapter@1.6.9", "", { "peerDependencies": { "@better-auth/core": "^1.6.9", "@better-auth/utils": "0.4.0" } }, "sha512-XmIG4tUnOXZ+KEcWjHUjOI9Z5donD09dC2t/AQTXifAUIqx7cySg86w0KTM09ArzAxRx1fCqO36Wkt5nULnrkQ=="],
 
     "@better-auth/mongo-adapter": ["@better-auth/mongo-adapter@1.6.9", "", { "peerDependencies": { "@better-auth/core": "^1.6.9", "@better-auth/utils": "0.4.0", "mongodb": "^6.0.0 || ^7.0.0" }, "optionalPeers": ["mongodb"] }, "sha512-h+AiRJ/TsBSi+ZDjySASBpbJ/9QCXBre34PSKgCz7QmTHrFM9Cg2EM4AM7LjR5lPXipEE+2rWPBc9wfnUBjhcw=="],
+
+    "@better-auth/oauth-provider": ["@better-auth/oauth-provider@1.6.9", "", { "dependencies": { "jose": "^6.1.3", "zod": "^4.3.6" }, "peerDependencies": { "@better-auth/core": "^1.6.9", "@better-auth/utils": "0.4.0", "@better-fetch/fetch": "1.1.21", "better-auth": "^1.6.9", "better-call": "1.3.5" } }, "sha512-GJCRDLu7xOc/HcAuQXaFZ9xZo8l3yLuc+1/vKYB5gh0O+owub+vLH88+AfNm/jMHZ084MSHpgkyxmEnmBXe4iQ=="],
 
     "@better-auth/passkey": ["@better-auth/passkey@1.6.9", "", { "dependencies": { "@simplewebauthn/browser": "^13.2.2", "@simplewebauthn/server": "^13.2.3", "zod": "^4.3.6" }, "peerDependencies": { "@better-auth/core": "^1.6.9", "@better-auth/utils": "0.4.0", "@better-fetch/fetch": "1.1.21", "better-auth": "^1.6.9", "better-call": "1.3.5", "nanostores": "^1.0.1" } }, "sha512-MFpi+2G/pG2wVcTuL/PcnWxP2ddFL4jmFByTCbgvr61tp7u96d5liBptxpTqfS5IuCi2o8bBRmjiQnDZAvxmHg=="],
 

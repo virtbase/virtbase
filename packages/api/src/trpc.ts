@@ -43,23 +43,18 @@ import { defaultFingerprint, ratelimit } from "./upstash";
 export const createTRPCContext = async ({
   headers,
   setHeader,
-  ...opts
+  auth,
 }: {
   headers: Headers;
   setHeader: (name: string, value: string) => void;
   auth: Pick<Auth, "api">;
 }) => {
-  const authApi = opts.auth.api;
-
-  // Only include the methods we need to avoid large type inference errors
-  const narrowedAuthApi = {
-    verifyApiKey: authApi.verifyApiKey,
-    getSession: authApi.getSession,
-  };
+  const { verifyApiKey, getSession } = auth.api;
 
   const sharedContext = {
     db,
-    authApi: narrowedAuthApi,
+    // Only include the methods we need to avoid large type inference errors
+    authApi: { verifyApiKey, getSession },
     lexware,
     headers,
     setHeader,
@@ -70,18 +65,30 @@ export const createTRPCContext = async ({
     return {
       ...sharedContext,
       apiKey,
+      accessToken: null,
       session: null,
     };
   }
 
-  const session = await authApi.getSession({
-    headers,
-  });
+  const authorization = headers.get("authorization");
+  const accessToken = authorization?.startsWith("Bearer ")
+    ? authorization.slice(7)
+    : null;
+
+  if (accessToken) {
+    return {
+      ...sharedContext,
+      apiKey: null,
+      session: null,
+      accessToken,
+    };
+  }
 
   return {
     ...sharedContext,
     apiKey: null,
-    session,
+    accessToken: null,
+    session: await getSession({ headers }),
   };
 };
 
@@ -232,6 +239,9 @@ const authMiddleware = t.middleware(async ({ ctx, next, meta }) => {
         userId: result.key.referenceId,
       },
     });
+  }
+
+  if (ctx.accessToken) {
   }
 
   if (!ctx.session?.user) {

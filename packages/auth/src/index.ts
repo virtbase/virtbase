@@ -116,6 +116,7 @@ export function initAuth({
         },
       },
     },
+    disabledPaths: ["/token"],
     emailAndPassword: {
       enabled: true,
       requireEmailVerification: true,

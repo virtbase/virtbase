@@ -28,12 +28,12 @@ import { ensureLocaleCookie } from "./lib/middleware/ensure-locale-cookie";
 
 export const config: ProxyConfig = {
   // Match all pathnames except for
-  // - … if they start with `/api`, `/_next`, `/_vercel`, `/_proxy` or `/.well-known/workflow/`
+  // - … if they start with `/api`, `/_next`, `/_vercel`, `/_proxy` or `/.well-known/workflow/`, `/.well-known/openid-configuration/`, `/.well-known/oauth-authorization-server/`
   // - … or if they start with `/science` (Sentry tunnel)
   // - … or if they are the geofeed.csv file route
   // - … the ones containing a dot (e.g. `favicon.ico`)
   matcher:
-    "/((?!api|_next|_vercel|_proxy|\\.well-known/workflow/|science|geofeed\\.csv|.*\\..*).*)",
+    "/((?!api|_next|_vercel|_proxy|\\.well-known/workflow/|\\.well-known/openid-configuration|\\.well-known/oauth-authorization-server|science|geofeed\\.csv|.*\\..*).*)",
 };
 
 const intlMiddleware = createMiddleware(routing);

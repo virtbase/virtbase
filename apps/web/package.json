@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "build": "bun with-env next build",
-    "clean": "git clean -xdf .cache .next .turbo node_modules src/app/.well-known",
+    "clean": "git clean -xdf .cache .next .turbo node_modules src/app/.well-known/workflow",
     "dev": "NODE_OPTIONS='--max-old-space-size=4096' bun with-env next dev",
     "start": "bun with-env next start",
     "typecheck": "bun with-env next typegen && tsc --noEmit",
@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@better-auth/api-key": "catalog:",
+    "@better-auth/oauth-provider": "catalog:",
     "@better-auth/passkey": "catalog:",
     "@hookform/resolvers": "^5.2.2",
     "@scalar/api-reference-react": "^0.9.28",

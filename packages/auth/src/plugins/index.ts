@@ -16,6 +16,7 @@
  */
 
 import { apiKey } from "@better-auth/api-key";
+import { oauthProvider } from "@better-auth/oauth-provider";
 import { passkey } from "@better-auth/passkey";
 import { sendEmail } from "@virtbase/email";
 import LoginLink from "@virtbase/email/templates/login-link";
@@ -27,6 +28,7 @@ import {
   admin,
   createAccessControl,
   emailOTP,
+  jwt,
   lastLoginMethod,
   magicLink,
 } from "better-auth/plugins";
@@ -98,6 +100,7 @@ export const plugins = [
       max: 2,
     },
   }),
+  jwt(),
   lastLoginMethod({
     storeInDatabase: false,
     maxAge: 60 * 60 * 24 * 30, // 30 days
@@ -125,6 +128,19 @@ export const plugins = [
       window: 60,
       max: 2,
     },
+  }),
+  oauthProvider({
+    loginPage: "/login",
+    consentPage: "/consent",
+    accessTokenExpiresIn: 2 * 60 * 60, // 2 hours
+    refreshTokenExpiresIn: 120 * 24 * 60 * 60, // 120 days
+    codeExpiresIn: 2 * 60, // 2 minutes
+    prefix: {
+      opaqueAccessToken: "virtbase_access_token_",
+      refreshToken: "virtbase_refresh_token_",
+      clientSecret: "virtbase_secret_",
+    },
+    scopes: [],
   }),
   passkey({
     rpName: APP_NAME,

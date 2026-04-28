@@ -15,29 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { apiKeyClient } from "@better-auth/api-key/client";
-import { oauthProviderClient } from "@better-auth/oauth-provider/client";
-import { passkeyClient } from "@better-auth/passkey/client";
-import type { Auth } from "@virtbase/auth";
-import {
-  adminClient,
-  emailOTPClient,
-  inferAdditionalFields,
-  lastLoginMethodClient,
-  magicLinkClient,
-} from "better-auth/client/plugins";
+import { oauthProviderAuthServerMetadata } from "@better-auth/oauth-provider";
+import { auth } from "@/lib/auth/server";
 
-import { createAuthClient } from "better-auth/react";
-
-export const authClient = createAuthClient({
-  plugins: [
-    inferAdditionalFields<Auth>(),
-    adminClient(),
-    apiKeyClient(),
-    emailOTPClient(),
-    lastLoginMethodClient(),
-    magicLinkClient(),
-    oauthProviderClient(),
-    passkeyClient(),
-  ],
-});
+export const GET = oauthProviderAuthServerMetadata(auth);
