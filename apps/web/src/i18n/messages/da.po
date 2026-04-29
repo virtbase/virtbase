@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Danish\n"
-"PO-Revision-Date: 2026-04-29 08:05\n"
+"PO-Revision-Date: 2026-04-29 12:54\n"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:84
 msgid "o/UJXc"
@@ -355,6 +355,72 @@ msgstr "Virtbase er udbyderen af ​​sikker serverhosting. Maksimal ydeevne me
 #: src/app/(public)/[locale]/page.tsx:62
 msgid "BdEM9F"
 msgstr "Hosting, men sikker."
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:88
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:133
+msgid "t1DCfI"
+msgstr "Skift til en mere kraftfuld server"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:89
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:136
+msgid "0mibRH"
+msgstr "Et lille ekstra gebyr. Mærkbart mere ydelse."
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:187
+msgid "8VIOz4"
+msgstr "{cores, plural, =0 {+# vCores} =1 {+# vCore} other {+# vCores}}"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:190
+msgid "j2HEjv"
+msgstr "Bedre multitasking-ydelse"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:196
+msgid "tDBsIi"
+msgstr "{percent} mere RAM"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:203
+msgid "LM23s2"
+msgstr "Hurtigere responstid for programmer"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:209
+msgid "R0fF2V"
+msgstr "{percent} mere lagerplads"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:216
+msgid "E8bbzS"
+msgstr "Gem mere indhold på din server"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:225
+msgid "J4j1Fd"
+msgstr "{value} mere båndbredde"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:236
+msgid "NkmKCs"
+msgstr "Mærkbart hurtigere datahastigheder"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:242
+msgid "7NydGv"
+msgstr "Intet oprettelsesgebyr"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:243
+msgid "lt2ynN"
+msgstr "Gratis opsætning, ingen ekstra gebyrer"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:248
+msgid "XucETQ"
+msgstr "Døgnåben support"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:249
+msgid "CKQfnV"
+msgstr "Tilgængelig når du har brug for det"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:254
+msgid "3SJxuA"
+msgstr "Aktiv DDoS-beskyttelse"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:255
+msgid "VI9ImX"
+msgstr "Din server er beskyttet uden ekstra omkostninger"
 
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/[id]/page.tsx:38
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx:38
@@ -1611,16 +1677,16 @@ msgstr "Jeg har læst og accepteret <revocation>Revocation Policy</revocation>. 
 msgid "mlJ21x"
 msgstr "Betal anonymt med kryptovaluta"
 
-#: src/features/checkout/components/offer-card.tsx:92
+#: src/features/checkout/components/offer-card.tsx:93
 msgid "pxF+t0"
 msgstr "Populær"
 
-#: src/features/checkout/components/offer-card.tsx:104
+#: src/features/checkout/components/offer-card.tsx:105
 #: src/features/checkout/components/order-summary.tsx:157
 msgid "Rw82/V"
 msgstr "om måneden"
 
-#: src/features/checkout/components/offer-card.tsx:118
+#: src/features/checkout/components/offer-card.tsx:119
 #: src/features/checkout/components/order-summary.tsx:67
 #: src/features/servers/components/plan/plan-radio-group.tsx:66
 #: src/features/servers/components/plan/plan-summary.tsx:150
@@ -1628,37 +1694,37 @@ msgstr "om måneden"
 msgid "BGI16m"
 msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
 
-#: src/features/checkout/components/offer-card.tsx:159
+#: src/features/checkout/components/offer-card.tsx:160
 #: src/features/checkout/components/order-summary.tsx:109
 msgid "zSO/T8"
 msgstr "1 IPv4 + IPv6 /64 Subnet"
 
-#: src/features/checkout/components/offer-card.tsx:178
+#: src/features/checkout/components/offer-card.tsx:179
 msgid "kWI6zX"
 msgstr "Delt"
 
-#: src/features/checkout/components/offer-card.tsx:183
+#: src/features/checkout/components/offer-card.tsx:184
 msgid "Gzo4L7"
 msgstr "Shared-Uplink - den maksimalt mulige båndbredde deles med andre kunder."
 
-#: src/features/checkout/components/offer-card.tsx:200
+#: src/features/checkout/components/offer-card.tsx:201
 #: src/features/checkout/components/order-summary.tsx:135
 msgid "IYlDM0"
 msgstr "Ubegrænset trafik"
 
-#: src/features/checkout/components/offer-card.tsx:204
+#: src/features/checkout/components/offer-card.tsx:205
 msgid "bIu4NB"
 msgstr "Trafik efter fair-use princippet. Midlertidig drosling ved overdreven langvarig brug."
 
-#: src/features/checkout/components/offer-card.tsx:234
+#: src/features/checkout/components/offer-card.tsx:239
 msgid "5EjMej"
 msgstr "Konfigurer {name} nu"
 
-#: src/features/checkout/components/offer-card.tsx:238
+#: src/features/checkout/components/offer-card.tsx:243
 msgid "khw/ok"
 msgstr "Konfigurer nu"
 
-#: src/features/checkout/components/offer-card.tsx:241
+#: src/features/checkout/components/offer-card.tsx:246
 #: src/features/servers/components/plan/plan-radio-group.tsx:121
 msgid "spsPUc"
 msgstr "Udsolgt"
@@ -1781,43 +1847,43 @@ msgstr "Fakturadato"
 msgid "YOc6Ow"
 msgstr "Betalt"
 
-#: src/features/landing/components/advantages-row.tsx:33
-msgid "GTucMY"
-msgstr "Maksimalt privatliv"
-
-#: src/features/landing/components/advantages-row.tsx:34
-msgid "IIN9F8"
-msgstr "Hos os er dit privatliv i fokus. Ingen deling med tredjeparter, nogensinde."
-
-#: src/features/landing/components/advantages-row.tsx:41
-msgid "daLPgg"
-msgstr "Ægte støtte"
-
-#: src/features/landing/components/advantages-row.tsx:42
-msgid "hnGR7B"
-msgstr "Vi tilbyder menneskelig støtte døgnet rundt, når du har brug for det."
-
-#: src/features/landing/components/advantages-row.tsx:49
-msgid "uDrdrl"
-msgstr "DDoS-beskyttelse inkluderet"
-
-#: src/features/landing/components/advantages-row.tsx:50
-msgid "TWNuCY"
-msgstr "Aktiv DDoS-beskyttelse holder dig online. Ingen ekstra gebyrer, nogensinde."
-
-#: src/features/landing/components/advantages-row.tsx:57
-msgid "nVfA/q"
-msgstr "Moderne kundeportal"
-
-#: src/features/landing/components/advantages-row.tsx:58
-msgid "fQqAwd"
-msgstr "Administrer dine servere effektivt uden besvær eller frustration."
-
-#: src/features/landing/components/advantages-row.tsx:80
+#: src/features/landing/components/advantage-item.tsx:58
 #: src/features/landing/components/features-showcase.tsx:45
 #: src/features/landing/components/features-showcase.tsx:69
 msgid "TdTXXf"
 msgstr "Få flere oplysninger"
+
+#: src/features/landing/components/advantages-row.tsx:32
+msgid "GTucMY"
+msgstr "Maksimalt privatliv"
+
+#: src/features/landing/components/advantages-row.tsx:33
+msgid "IIN9F8"
+msgstr "Hos os er dit privatliv i fokus. Ingen deling med tredjeparter, nogensinde."
+
+#: src/features/landing/components/advantages-row.tsx:40
+msgid "daLPgg"
+msgstr "Ægte støtte"
+
+#: src/features/landing/components/advantages-row.tsx:41
+msgid "hnGR7B"
+msgstr "Vi tilbyder menneskelig støtte døgnet rundt, når du har brug for det."
+
+#: src/features/landing/components/advantages-row.tsx:48
+msgid "uDrdrl"
+msgstr "DDoS-beskyttelse inkluderet"
+
+#: src/features/landing/components/advantages-row.tsx:49
+msgid "TWNuCY"
+msgstr "Aktiv DDoS-beskyttelse holder dig online. Ingen ekstra gebyrer, nogensinde."
+
+#: src/features/landing/components/advantages-row.tsx:56
+msgid "nVfA/q"
+msgstr "Moderne kundeportal"
+
+#: src/features/landing/components/advantages-row.tsx:57
+msgid "fQqAwd"
+msgstr "Administrer dine servere effektivt uden besvær eller frustration."
 
 #: src/features/landing/components/faq-section.tsx:32
 msgid "j3A1sI"
