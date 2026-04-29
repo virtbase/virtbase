@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Italian\n"
-"PO-Revision-Date: 2026-04-27 11:45\n"
+"PO-Revision-Date: 2026-04-29 08:06\n"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:84
 msgid "o/UJXc"
@@ -1611,12 +1611,16 @@ msgstr "Ho letto e accettato la Politica di revoca <revocation></revocation>. Il
 msgid "mlJ21x"
 msgstr "Paga in modo anonimo con criptovaluta"
 
-#: src/features/checkout/components/offer-card.tsx:95
+#: src/features/checkout/components/offer-card.tsx:92
+msgid "pxF+t0"
+msgstr "Popolare"
+
+#: src/features/checkout/components/offer-card.tsx:104
 #: src/features/checkout/components/order-summary.tsx:157
 msgid "Rw82/V"
 msgstr "al mese"
 
-#: src/features/checkout/components/offer-card.tsx:110
+#: src/features/checkout/components/offer-card.tsx:118
 #: src/features/checkout/components/order-summary.tsx:67
 #: src/features/servers/components/plan/plan-radio-group.tsx:66
 #: src/features/servers/components/plan/plan-summary.tsx:150
@@ -1624,37 +1628,37 @@ msgstr "al mese"
 msgid "BGI16m"
 msgstr "{cores, plural, =0 {# vCore} =1 {# vCore} other {# vCore}}"
 
-#: src/features/checkout/components/offer-card.tsx:151
+#: src/features/checkout/components/offer-card.tsx:159
 #: src/features/checkout/components/order-summary.tsx:109
 msgid "zSO/T8"
 msgstr "1 sottorete IPv4 + IPv6 /64"
 
-#: src/features/checkout/components/offer-card.tsx:170
+#: src/features/checkout/components/offer-card.tsx:178
 msgid "kWI6zX"
 msgstr "Condivisa"
 
-#: src/features/checkout/components/offer-card.tsx:175
+#: src/features/checkout/components/offer-card.tsx:183
 msgid "Gzo4L7"
 msgstr "Shared-Uplink: la massima larghezza di banda possibile viene condivisa con altri clienti."
 
-#: src/features/checkout/components/offer-card.tsx:192
+#: src/features/checkout/components/offer-card.tsx:200
 #: src/features/checkout/components/order-summary.tsx:135
 msgid "IYlDM0"
 msgstr "Traffico illimitato"
 
-#: src/features/checkout/components/offer-card.tsx:196
+#: src/features/checkout/components/offer-card.tsx:204
 msgid "bIu4NB"
 msgstr "Traffico basato sul principio del fair use. Limitazione temporanea in caso di utilizzo eccessivo a lungo termine."
 
-#: src/features/checkout/components/offer-card.tsx:226
+#: src/features/checkout/components/offer-card.tsx:234
 msgid "5EjMej"
 msgstr "Configura ora {name}"
 
-#: src/features/checkout/components/offer-card.tsx:230
+#: src/features/checkout/components/offer-card.tsx:238
 msgid "khw/ok"
 msgstr "Configura ora"
 
-#: src/features/checkout/components/offer-card.tsx:233
+#: src/features/checkout/components/offer-card.tsx:241
 #: src/features/servers/components/plan/plan-radio-group.tsx:121
 msgid "spsPUc"
 msgstr "Esaurito"
