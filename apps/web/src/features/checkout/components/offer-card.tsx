@@ -20,6 +20,7 @@ import type {
   DatabaseServerPlan,
 } from "@virtbase/db/schema";
 import { cn } from "@virtbase/ui";
+import { Badge } from "@virtbase/ui/badge";
 import { Button } from "@virtbase/ui/button";
 import {
   LucideCpu,
@@ -30,7 +31,6 @@ import {
   LucideMemoryStick,
   LucideNetwork,
 } from "@virtbase/ui/icons";
-import { Separator } from "@virtbase/ui/separator";
 import {
   Tooltip,
   TooltipContent,
@@ -52,6 +52,7 @@ type OfferCardProps = React.ComponentProps<"div"> & {
     storage: DatabaseServerPlan["storage"];
     netrate: DatabaseServerPlan["netrate"];
     isAvailable: boolean;
+    recommended?: boolean;
   };
   datacenter: {
     id: DatabaseDatacenter["id"];
@@ -73,6 +74,7 @@ export function OfferCard({
     <div
       className={cn(
         "relative top-0 flex h-full flex-col space-y-3 bg-background",
+        plan.recommended && "bg-linear-to-b from-primary/2.5 to-30%",
         className,
       )}
       {...props}
@@ -83,6 +85,11 @@ export function OfferCard({
             <h2 className="py-1 font-mono font-semibold text-foreground text-xl leading-none">
               {plan.name}
             </h2>
+            {plan.recommended && (
+              <Badge className="px-2 py-1 text-center text-[0.5rem] uppercase leading-none [&>svg]:size-2.5">
+                {t("Popular")}
+              </Badge>
+            )}
           </div>
           <div className="mt-1 flex items-center gap-1.5">
             <span className="font-medium text-base tabular-nums">
@@ -96,7 +103,6 @@ export function OfferCard({
             </span>
           </div>
         </div>
-        <Separator />
         <div className="flex flex-col gap-3 text-sm">
           <div className="relative flex flex-col">
             <ul className="flex flex-col gap-2.5">

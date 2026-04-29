@@ -43,6 +43,10 @@
   ::selection {
     @apply bg-primary text-primary-foreground;
   }
+  .select-inverse *::selection,
+  .select-inverse::selection {
+    @apply bg-background text-foreground;
+  }
   #sentry-feedback {
     --font-family: var(--font-geist-sans);
     --inset: auto;

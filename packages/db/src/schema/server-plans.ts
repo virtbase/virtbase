@@ -16,7 +16,7 @@
  */
 
 import { sql } from "drizzle-orm";
-import { index, pgTable } from "drizzle-orm/pg-core";
+import { index, pgTable, uniqueIndex } from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 import { proxmoxNodeGroups } from "./proxmox-node-groups";
 
@@ -68,6 +68,12 @@ export const serverPlans = pgTable(
      * @example 1000 cents = 10 €
      */
     price: t.integer().notNull(),
+    /**
+     * Whether the server plan is highlighted as popular.
+     *
+     * @default false
+     */
+    recommended: t.boolean().notNull().default(false),
     createdAt: t
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
@@ -78,7 +84,13 @@ export const serverPlans = pgTable(
       .notNull()
       .$onUpdate(() => sql`now()`),
   }),
-  (t) => [index().on(t.proxmoxNodeGroupId)],
+  (t) => [
+    index().on(t.proxmoxNodeGroupId),
+    // only one recommended plan per proxmox node group
+    uniqueIndex("server_plans_proxmox_node_group_id_recommended_index")
+      .on(t.proxmoxNodeGroupId)
+      .where(sql`${t.recommended} IS TRUE`),
+  ],
 );
 
 export type DatabaseServerPlan = typeof serverPlans.$inferSelect;
