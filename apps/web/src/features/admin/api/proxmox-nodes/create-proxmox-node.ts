@@ -66,7 +66,88 @@ export const createProxmoxNodeAction = actionClient
       });
     }
 
-    // TODO: Check permissions of the token
+    // Response from Proxmox permissions endpoint is an object where each key is a path,
+    // and its value is an object mapping permission names to their granted (1) or denied (0) status.
+    // Example:
+    // {
+    //   "/": {
+    //     "VM.Migrate": 1,  // 1 means the permission is granted
+    //     "VM.Backup": 1,
+    //     // ...
+    //   }
+    // }
+    const permissions = await instance.proxmox.access.permissions.$get({
+      path: "/",
+    });
+
+    // This can be further refined
+    // Or split into multiple paths like /storage/<storage_name> or /nodes/<hostname>
+    const requiredPermissions = [
+      "Mapping.Modify",
+      "VM.Migrate",
+      "VM.Backup",
+      "Permissions.Modify",
+      "VM.GuestAgent.FileSystemMgmt",
+      "Sys.Modify",
+      "VM.Clone",
+      "Sys.Console",
+      "VM.Config.Memory",
+      "VM.Config.Options",
+      "VM.Allocate",
+      "VM.PowerMgmt",
+      "VM.GuestAgent.FileWrite",
+      "VM.Replicate",
+      "Sys.AccessNetwork",
+      "VM.Config.CPU",
+      "VM.GuestAgent.FileRead",
+      "Sys.Incoming",
+      "Datastore.AllocateTemplate",
+      "VM.GuestAgent.Audit",
+      "VM.Snapshot",
+      "Pool.Audit",
+      "Datastore.AllocateSpace",
+      "VM.Snapshot.Rollback",
+      "VM.GuestAgent.Unrestricted",
+      "Datastore.Allocate",
+      "VM.Audit",
+      "Sys.Audit",
+      "VM.Config.Cloudinit",
+      "SDN.Audit",
+      "VM.Config.Disk",
+      "SDN.Allocate",
+      "Pool.Allocate",
+      "Sys.Syslog",
+      "VM.Console",
+      "VM.Config.Network",
+      "Mapping.Audit",
+      "Datastore.Audit",
+      "Mapping.Use",
+      "Realm.Allocate",
+      "User.Modify",
+      "Realm.AllocateUser",
+      "VM.Config.CDROM",
+      "Group.Allocate",
+      "Sys.PowerMgmt",
+      "SDN.Use",
+      "VM.Config.HWType",
+    ];
+
+    const missingPermissions =
+      "/" in permissions
+        ? requiredPermissions.filter(
+            (permission) =>
+              !(
+                permission in permissions["/"] ||
+                permissions["/"][permission] !== 1
+              ),
+          )
+        : requiredPermissions;
+    if (missingPermissions.length > 0) {
+      throw new TRPCError({
+        code: "BAD_REQUEST",
+        message: `The API token is missing the following permissions: ${missingPermissions.join(", ")}.`,
+      });
+    }
 
     let storages: Proxmox.nodesStorageIndex[] | null = null;
     try {
