@@ -356,6 +356,72 @@ msgstr "Virtbase é o provedor de hospedagem segura de servidores. Máximo desem
 msgid "BdEM9F"
 msgstr "Hospedagem, mas segura."
 
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:88
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:133
+msgid "t1DCfI"
+msgstr "Faça upgrade para um servidor mais potente"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:89
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:136
+msgid "0mibRH"
+msgstr "Um pequeno valor extra. Muito mais desempenho."
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:187
+msgid "8VIOz4"
+msgstr "{cores, plural, =0 {+# vCores} =1 {+# vCore} other {+# vCores}}"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:190
+msgid "j2HEjv"
+msgstr "Melhor desempenho em multitarefa"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:196
+msgid "tDBsIi"
+msgstr "{percent} mais de RAM"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:203
+msgid "LM23s2"
+msgstr "Resposta das aplicações mais rápida"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:209
+msgid "R0fF2V"
+msgstr "{percent} mais de armazenamento"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:216
+msgid "E8bbzS"
+msgstr "Guarde mais conteúdo no seu servidor"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:225
+msgid "J4j1Fd"
+msgstr "{value} mais largura de banda"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:236
+msgid "NkmKCs"
+msgstr "Aumento perceptível das velocidades de transferência"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:242
+msgid "7NydGv"
+msgstr "Sem taxa de configuração"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:243
+msgid "lt2ynN"
+msgstr "Configuração gratuita, sem custos adicionais"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:248
+msgid "XucETQ"
+msgstr "Suporte 24/7"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:249
+msgid "CKQfnV"
+msgstr "Disponível a qualquer hora, quando precisar"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:254
+msgid "3SJxuA"
+msgstr "Proteção DDoS ativa"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:255
+msgid "VI9ImX"
+msgstr "O seu servidor está protegido sem custos adicionais"
+
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/[id]/page.tsx:38
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx:38
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx:54
@@ -1611,16 +1677,16 @@ msgstr "Li e aceito a Política de Revogação <revocation></revocation>. O dire
 msgid "mlJ21x"
 msgstr "Pague anonimamente com criptomoeda"
 
-#: src/features/checkout/components/offer-card.tsx:90
+#: src/features/checkout/components/offer-card.tsx:93
 msgid "pxF+t0"
 msgstr "Popular"
 
-#: src/features/checkout/components/offer-card.tsx:102
+#: src/features/checkout/components/offer-card.tsx:105
 #: src/features/checkout/components/order-summary.tsx:157
 msgid "Rw82/V"
 msgstr "por mês"
 
-#: src/features/checkout/components/offer-card.tsx:116
+#: src/features/checkout/components/offer-card.tsx:119
 #: src/features/checkout/components/order-summary.tsx:67
 #: src/features/servers/components/plan/plan-radio-group.tsx:66
 #: src/features/servers/components/plan/plan-summary.tsx:150
@@ -1628,37 +1694,37 @@ msgstr "por mês"
 msgid "BGI16m"
 msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
 
-#: src/features/checkout/components/offer-card.tsx:157
+#: src/features/checkout/components/offer-card.tsx:160
 #: src/features/checkout/components/order-summary.tsx:109
 msgid "zSO/T8"
 msgstr "1 sub-rede IPv4 + IPv6/64"
 
-#: src/features/checkout/components/offer-card.tsx:176
+#: src/features/checkout/components/offer-card.tsx:179
 msgid "kWI6zX"
 msgstr "Compartilhada"
 
-#: src/features/checkout/components/offer-card.tsx:181
+#: src/features/checkout/components/offer-card.tsx:184
 msgid "Gzo4L7"
 msgstr "Shared-Uplink - a largura de banda máxima possível é compartilhada com outros clientes."
 
-#: src/features/checkout/components/offer-card.tsx:198
+#: src/features/checkout/components/offer-card.tsx:201
 #: src/features/checkout/components/order-summary.tsx:135
 msgid "IYlDM0"
 msgstr "Tráfego ilimitado"
 
-#: src/features/checkout/components/offer-card.tsx:202
+#: src/features/checkout/components/offer-card.tsx:205
 msgid "bIu4NB"
 msgstr "Tráfego após o princípio do uso justo. Estrangulamento temporário em caso de uso excessivo a longo prazo."
 
-#: src/features/checkout/components/offer-card.tsx:232
+#: src/features/checkout/components/offer-card.tsx:239
 msgid "5EjMej"
 msgstr "Configure {name} agora"
 
-#: src/features/checkout/components/offer-card.tsx:236
+#: src/features/checkout/components/offer-card.tsx:243
 msgid "khw/ok"
 msgstr "Configurar agora"
 
-#: src/features/checkout/components/offer-card.tsx:239
+#: src/features/checkout/components/offer-card.tsx:246
 #: src/features/servers/components/plan/plan-radio-group.tsx:121
 msgid "spsPUc"
 msgstr "Vendido"
@@ -1781,43 +1847,43 @@ msgstr "Data da fatura"
 msgid "YOc6Ow"
 msgstr "Pago em"
 
-#: src/features/landing/components/advantages-row.tsx:33
-msgid "GTucMY"
-msgstr "Privacidade máxima"
-
-#: src/features/landing/components/advantages-row.tsx:34
-msgid "IIN9F8"
-msgstr "Conosco, a privacidade está em primeiro lugar. Nunca compartilhe com terceiros."
-
-#: src/features/landing/components/advantages-row.tsx:41
-msgid "daLPgg"
-msgstr "Suporte genuíno"
-
-#: src/features/landing/components/advantages-row.tsx:42
-msgid "hnGR7B"
-msgstr "Oferecemos suporte humano 24 horas por dia, sempre que você precisar."
-
-#: src/features/landing/components/advantages-row.tsx:49
-msgid "uDrdrl"
-msgstr "Proteção DDoS incluída"
-
-#: src/features/landing/components/advantages-row.tsx:50
-msgid "TWNuCY"
-msgstr "A proteção ativa contra DDoS mantém você online. Sem custos extras, nunca."
-
-#: src/features/landing/components/advantages-row.tsx:57
-msgid "nVfA/q"
-msgstr "Portal do cliente moderno"
-
-#: src/features/landing/components/advantages-row.tsx:58
-msgid "fQqAwd"
-msgstr "Gerencie seus servidores com eficiência, sem complicações ou frustrações."
-
-#: src/features/landing/components/advantages-row.tsx:80
+#: src/features/landing/components/advantage-item.tsx:58
 #: src/features/landing/components/features-showcase.tsx:45
 #: src/features/landing/components/features-showcase.tsx:69
 msgid "TdTXXf"
 msgstr "Saber mais"
+
+#: src/features/landing/components/advantages-row.tsx:32
+msgid "GTucMY"
+msgstr "Privacidade máxima"
+
+#: src/features/landing/components/advantages-row.tsx:33
+msgid "IIN9F8"
+msgstr "Conosco, a privacidade está em primeiro lugar. Nunca compartilhe com terceiros."
+
+#: src/features/landing/components/advantages-row.tsx:40
+msgid "daLPgg"
+msgstr "Suporte genuíno"
+
+#: src/features/landing/components/advantages-row.tsx:41
+msgid "hnGR7B"
+msgstr "Oferecemos suporte humano 24 horas por dia, sempre que você precisar."
+
+#: src/features/landing/components/advantages-row.tsx:48
+msgid "uDrdrl"
+msgstr "Proteção DDoS incluída"
+
+#: src/features/landing/components/advantages-row.tsx:49
+msgid "TWNuCY"
+msgstr "A proteção ativa contra DDoS mantém você online. Sem custos extras, nunca."
+
+#: src/features/landing/components/advantages-row.tsx:56
+msgid "nVfA/q"
+msgstr "Portal do cliente moderno"
+
+#: src/features/landing/components/advantages-row.tsx:57
+msgid "fQqAwd"
+msgstr "Gerencie seus servidores com eficiência, sem complicações ou frustrações."
 
 #: src/features/landing/components/faq-section.tsx:32
 msgid "j3A1sI"

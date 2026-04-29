@@ -356,6 +356,72 @@ msgstr "Virtbase tarjoaa suojatun palvelimen isännöinnin. Maksimaalinen suorit
 msgid "BdEM9F"
 msgstr "Isännöinti, mutta turvallinen."
 
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:88
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:133
+msgid "t1DCfI"
+msgstr "Vaihda tehokkaampaan palvelimeen"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:89
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:136
+msgid "0mibRH"
+msgstr "Vähän lisähintaa. Huomattavasti enemmän tehoa."
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:187
+msgid "8VIOz4"
+msgstr "{cores, plural, =0 {+# vCores} =1 {+# vCore} other {+# vCores}}"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:190
+msgid "j2HEjv"
+msgstr "Parempi moniajon suorituskyky"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:196
+msgid "tDBsIi"
+msgstr "{percent} enemmän RAM-muistia"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:203
+msgid "LM23s2"
+msgstr "Sovellukset vastaavat nopeammin"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:209
+msgid "R0fF2V"
+msgstr "{percent} enemmän tallennustilaa"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:216
+msgid "E8bbzS"
+msgstr "Tallenna palvelimelle enemmän sisältöä"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:225
+msgid "J4j1Fd"
+msgstr "{value} enemmän kaistanleveyttä"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:236
+msgid "NkmKCs"
+msgstr "Tuntuvasti korkeammat tiedonsiirtonopeudet"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:242
+msgid "7NydGv"
+msgstr "Ei käyttöönottoveloitusta"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:243
+msgid "lt2ynN"
+msgstr "Asennus maksutta, ei lisäkuluja"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:248
+msgid "XucETQ"
+msgstr "Tuki 24/7"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:249
+msgid "CKQfnV"
+msgstr "Saatavilla ympäri vuorokauden, kun tarvitset apua"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:254
+msgid "3SJxuA"
+msgstr "Aktiivinen DDoS-suojaus"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:255
+msgid "VI9ImX"
+msgstr "Palvelimesi on suojattu ilman lisäkuluja"
+
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/[id]/page.tsx:38
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx:38
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx:54
@@ -1611,16 +1677,16 @@ msgstr "Olen lukenut ja hyväksynyt <revocation>R:n peruutuskäytännön</revoca
 msgid "mlJ21x"
 msgstr "Maksa anonyymisti kryptovaluutalla"
 
-#: src/features/checkout/components/offer-card.tsx:90
+#: src/features/checkout/components/offer-card.tsx:93
 msgid "pxF+t0"
 msgstr "Suosittu"
 
-#: src/features/checkout/components/offer-card.tsx:102
+#: src/features/checkout/components/offer-card.tsx:105
 #: src/features/checkout/components/order-summary.tsx:157
 msgid "Rw82/V"
 msgstr "kuukaudessa"
 
-#: src/features/checkout/components/offer-card.tsx:116
+#: src/features/checkout/components/offer-card.tsx:119
 #: src/features/checkout/components/order-summary.tsx:67
 #: src/features/servers/components/plan/plan-radio-group.tsx:66
 #: src/features/servers/components/plan/plan-summary.tsx:150
@@ -1628,37 +1694,37 @@ msgstr "kuukaudessa"
 msgid "BGI16m"
 msgstr "{cores, plural, =0 {# vCorea} =1 {# vCore} other {# vCorea}}"
 
-#: src/features/checkout/components/offer-card.tsx:157
+#: src/features/checkout/components/offer-card.tsx:160
 #: src/features/checkout/components/order-summary.tsx:109
 msgid "zSO/T8"
 msgstr "1 IPv4 + IPv6 /64 -aliverkko"
 
-#: src/features/checkout/components/offer-card.tsx:176
+#: src/features/checkout/components/offer-card.tsx:179
 msgid "kWI6zX"
 msgstr "Jaettu"
 
-#: src/features/checkout/components/offer-card.tsx:181
+#: src/features/checkout/components/offer-card.tsx:184
 msgid "Gzo4L7"
 msgstr "Shared-Uplink - suurin mahdollinen kaistanleveys jaetaan muiden asiakkaiden kanssa."
 
-#: src/features/checkout/components/offer-card.tsx:198
+#: src/features/checkout/components/offer-card.tsx:201
 #: src/features/checkout/components/order-summary.tsx:135
 msgid "IYlDM0"
 msgstr "Rajoittamaton liikenne"
 
-#: src/features/checkout/components/offer-card.tsx:202
+#: src/features/checkout/components/offer-card.tsx:205
 msgid "bIu4NB"
 msgstr "Liikenne reilun käytön jälkeen. Väliaikainen kuristus liiallisessa pitkäaikaisessa käytössä."
 
-#: src/features/checkout/components/offer-card.tsx:232
+#: src/features/checkout/components/offer-card.tsx:239
 msgid "5EjMej"
 msgstr "Määritä {name} nyt"
 
-#: src/features/checkout/components/offer-card.tsx:236
+#: src/features/checkout/components/offer-card.tsx:243
 msgid "khw/ok"
 msgstr "Määritä nyt"
 
-#: src/features/checkout/components/offer-card.tsx:239
+#: src/features/checkout/components/offer-card.tsx:246
 #: src/features/servers/components/plan/plan-radio-group.tsx:121
 msgid "spsPUc"
 msgstr "Loppuunmyyty"
@@ -1781,43 +1847,43 @@ msgstr "Laskun päivämäärä"
 msgid "YOc6Ow"
 msgstr "Maksettu"
 
-#: src/features/landing/components/advantages-row.tsx:33
-msgid "GTucMY"
-msgstr "Maksimaalinen yksityisyys"
-
-#: src/features/landing/components/advantages-row.tsx:34
-msgid "IIN9F8"
-msgstr "Meillä yksityisyys on etusijalla. Ei jakamista kolmansille osapuolille koskaan."
-
-#: src/features/landing/components/advantages-row.tsx:41
-msgid "daLPgg"
-msgstr "Aito tuki"
-
-#: src/features/landing/components/advantages-row.tsx:42
-msgid "hnGR7B"
-msgstr "Tarjoamme inhimillistä tukea ympäri vuorokauden, aina kun sitä tarvitset."
-
-#: src/features/landing/components/advantages-row.tsx:49
-msgid "uDrdrl"
-msgstr "Mukana DDoS-suojaus"
-
-#: src/features/landing/components/advantages-row.tsx:50
-msgid "TWNuCY"
-msgstr "Aktiivinen DDoS-suojaus pitää sinut verkossa. Ei ylimääräisiä kuluja koskaan."
-
-#: src/features/landing/components/advantages-row.tsx:57
-msgid "nVfA/q"
-msgstr "Nykyaikainen asiakasportaali"
-
-#: src/features/landing/components/advantages-row.tsx:58
-msgid "fQqAwd"
-msgstr "Hallitse palvelimiasi tehokkaasti ilman vaivaa tai turhautumista."
-
-#: src/features/landing/components/advantages-row.tsx:80
+#: src/features/landing/components/advantage-item.tsx:58
 #: src/features/landing/components/features-showcase.tsx:45
 #: src/features/landing/components/features-showcase.tsx:69
 msgid "TdTXXf"
 msgstr "Lue lisää"
+
+#: src/features/landing/components/advantages-row.tsx:32
+msgid "GTucMY"
+msgstr "Maksimaalinen yksityisyys"
+
+#: src/features/landing/components/advantages-row.tsx:33
+msgid "IIN9F8"
+msgstr "Meillä yksityisyys on etusijalla. Ei jakamista kolmansille osapuolille koskaan."
+
+#: src/features/landing/components/advantages-row.tsx:40
+msgid "daLPgg"
+msgstr "Aito tuki"
+
+#: src/features/landing/components/advantages-row.tsx:41
+msgid "hnGR7B"
+msgstr "Tarjoamme inhimillistä tukea ympäri vuorokauden, aina kun sitä tarvitset."
+
+#: src/features/landing/components/advantages-row.tsx:48
+msgid "uDrdrl"
+msgstr "Mukana DDoS-suojaus"
+
+#: src/features/landing/components/advantages-row.tsx:49
+msgid "TWNuCY"
+msgstr "Aktiivinen DDoS-suojaus pitää sinut verkossa. Ei ylimääräisiä kuluja koskaan."
+
+#: src/features/landing/components/advantages-row.tsx:56
+msgid "nVfA/q"
+msgstr "Nykyaikainen asiakasportaali"
+
+#: src/features/landing/components/advantages-row.tsx:57
+msgid "fQqAwd"
+msgstr "Hallitse palvelimiasi tehokkaasti ilman vaivaa tai turhautumista."
 
 #: src/features/landing/components/faq-section.tsx:32
 msgid "j3A1sI"

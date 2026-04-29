@@ -356,6 +356,72 @@ msgstr "A Virtbase a biztonságos szervertárhely szolgáltatója. Maximális te
 msgid "BdEM9F"
 msgstr "Tárhely, de biztonságos."
 
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:88
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:133
+msgid "t1DCfI"
+msgstr "Váltás erősebb szerverre"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:89
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:136
+msgid "0mibRH"
+msgstr "Csak egy kicsi többletdíj. Sokkal több teljesítmény."
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:187
+msgid "8VIOz4"
+msgstr "{cores, plural, =0 {+# vCores} =1 {+# vCore} other {+# vCores}}"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:190
+msgid "j2HEjv"
+msgstr "Jobb többfeladatos teljesítmény"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:196
+msgid "tDBsIi"
+msgstr "{percent} több RAM"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:203
+msgid "LM23s2"
+msgstr "Gyorsabb alkalmazás-válaszidő"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:209
+msgid "R0fF2V"
+msgstr "{percent} több tárhely"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:216
+msgid "E8bbzS"
+msgstr "További tartalom tárolása a szerveren"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:225
+msgid "J4j1Fd"
+msgstr "{value} több sávszél"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:236
+msgid "NkmKCs"
+msgstr "Érezhetően gyorsabb adatátvitel"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:242
+msgid "7NydGv"
+msgstr "Nincs beállítási díj"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:243
+msgid "lt2ynN"
+msgstr "Ingyenes üzembe helyezés, további költségek nélkül"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:248
+msgid "XucETQ"
+msgstr "Éjjel-nappali ügyfélszolgálat"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:249
+msgid "CKQfnV"
+msgstr "Elérhető, amikor csak szükséged van rá"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:254
+msgid "3SJxuA"
+msgstr "Aktív DDoS-védelem"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:255
+msgid "VI9ImX"
+msgstr "A szervered további költség nélkül védett"
+
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/[id]/page.tsx:38
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx:38
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx:54
@@ -1611,16 +1677,16 @@ msgstr "Elolvastam és elfogadtam a <revocation>R visszavonási szabályzatát</
 msgid "mlJ21x"
 msgstr "Fizessen névtelenül kriptovalutával"
 
-#: src/features/checkout/components/offer-card.tsx:90
+#: src/features/checkout/components/offer-card.tsx:93
 msgid "pxF+t0"
 msgstr "Népszerű"
 
-#: src/features/checkout/components/offer-card.tsx:102
+#: src/features/checkout/components/offer-card.tsx:105
 #: src/features/checkout/components/order-summary.tsx:157
 msgid "Rw82/V"
 msgstr "havonta"
 
-#: src/features/checkout/components/offer-card.tsx:116
+#: src/features/checkout/components/offer-card.tsx:119
 #: src/features/checkout/components/order-summary.tsx:67
 #: src/features/servers/components/plan/plan-radio-group.tsx:66
 #: src/features/servers/components/plan/plan-summary.tsx:150
@@ -1628,37 +1694,37 @@ msgstr "havonta"
 msgid "BGI16m"
 msgstr "{cores, plural, =0 {# vCore} =1 {# vCore} other {# vCore}}"
 
-#: src/features/checkout/components/offer-card.tsx:157
+#: src/features/checkout/components/offer-card.tsx:160
 #: src/features/checkout/components/order-summary.tsx:109
 msgid "zSO/T8"
 msgstr "1 IPv4 + IPv6 /64 alhálózat"
 
-#: src/features/checkout/components/offer-card.tsx:176
+#: src/features/checkout/components/offer-card.tsx:179
 msgid "kWI6zX"
 msgstr "Megosztva"
 
-#: src/features/checkout/components/offer-card.tsx:181
+#: src/features/checkout/components/offer-card.tsx:184
 msgid "Gzo4L7"
 msgstr "Shared-Uplink – a lehető legnagyobb sávszélességet osztják meg más ügyfelekkel."
 
-#: src/features/checkout/components/offer-card.tsx:198
+#: src/features/checkout/components/offer-card.tsx:201
 #: src/features/checkout/components/order-summary.tsx:135
 msgid "IYlDM0"
 msgstr "Korlátlan forgalom"
 
-#: src/features/checkout/components/offer-card.tsx:202
+#: src/features/checkout/components/offer-card.tsx:205
 msgid "bIu4NB"
 msgstr "Közlekedés a méltányos használat után. Ideiglenes fojtás túlzott hosszú távú használat esetén."
 
-#: src/features/checkout/components/offer-card.tsx:232
+#: src/features/checkout/components/offer-card.tsx:239
 msgid "5EjMej"
 msgstr "A {name} konfigurálása most"
 
-#: src/features/checkout/components/offer-card.tsx:236
+#: src/features/checkout/components/offer-card.tsx:243
 msgid "khw/ok"
 msgstr "Konfigurálja most"
 
-#: src/features/checkout/components/offer-card.tsx:239
+#: src/features/checkout/components/offer-card.tsx:246
 #: src/features/servers/components/plan/plan-radio-group.tsx:121
 msgid "spsPUc"
 msgstr "Elfogyott"
@@ -1781,43 +1847,43 @@ msgstr "Számla dátuma"
 msgid "YOc6Ow"
 msgstr "Fizetve"
 
-#: src/features/landing/components/advantages-row.tsx:33
-msgid "GTucMY"
-msgstr "Maximális magánélet"
-
-#: src/features/landing/components/advantages-row.tsx:34
-msgid "IIN9F8"
-msgstr "Nálunk a magánélet az első. Soha tilos megosztást harmadik felekkel."
-
-#: src/features/landing/components/advantages-row.tsx:41
-msgid "daLPgg"
-msgstr "Valódi támogatás"
-
-#: src/features/landing/components/advantages-row.tsx:42
-msgid "hnGR7B"
-msgstr "Emberi támogatást nyújtunk éjjel-nappal, amikor csak szüksége van rá."
-
-#: src/features/landing/components/advantages-row.tsx:49
-msgid "uDrdrl"
-msgstr "DDoS védelmet tartalmaz"
-
-#: src/features/landing/components/advantages-row.tsx:50
-msgid "TWNuCY"
-msgstr "Az aktív DDoS védelem online marad. Semmi extra költség, soha."
-
-#: src/features/landing/components/advantages-row.tsx:57
-msgid "nVfA/q"
-msgstr "Modern ügyfélkapu"
-
-#: src/features/landing/components/advantages-row.tsx:58
-msgid "fQqAwd"
-msgstr "Hatékonyan kezelheti szervereit probléma és frusztráció nélkül."
-
-#: src/features/landing/components/advantages-row.tsx:80
+#: src/features/landing/components/advantage-item.tsx:58
 #: src/features/landing/components/features-showcase.tsx:45
 #: src/features/landing/components/features-showcase.tsx:69
 msgid "TdTXXf"
 msgstr "További információ"
+
+#: src/features/landing/components/advantages-row.tsx:32
+msgid "GTucMY"
+msgstr "Maximális magánélet"
+
+#: src/features/landing/components/advantages-row.tsx:33
+msgid "IIN9F8"
+msgstr "Nálunk a magánélet az első. Soha tilos megosztást harmadik felekkel."
+
+#: src/features/landing/components/advantages-row.tsx:40
+msgid "daLPgg"
+msgstr "Valódi támogatás"
+
+#: src/features/landing/components/advantages-row.tsx:41
+msgid "hnGR7B"
+msgstr "Emberi támogatást nyújtunk éjjel-nappal, amikor csak szüksége van rá."
+
+#: src/features/landing/components/advantages-row.tsx:48
+msgid "uDrdrl"
+msgstr "DDoS védelmet tartalmaz"
+
+#: src/features/landing/components/advantages-row.tsx:49
+msgid "TWNuCY"
+msgstr "Az aktív DDoS védelem online marad. Semmi extra költség, soha."
+
+#: src/features/landing/components/advantages-row.tsx:56
+msgid "nVfA/q"
+msgstr "Modern ügyfélkapu"
+
+#: src/features/landing/components/advantages-row.tsx:57
+msgid "fQqAwd"
+msgstr "Hatékonyan kezelheti szervereit probléma és frusztráció nélkül."
 
 #: src/features/landing/components/faq-section.tsx:32
 msgid "j3A1sI"

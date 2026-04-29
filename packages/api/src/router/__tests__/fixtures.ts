@@ -62,6 +62,7 @@ export const mockServerPlan = {
   storage: 100,
   netrate: 1000,
   recommended: false,
+  upsellTo: null,
   createdAt: new Date(),
   updatedAt: new Date(),
 } satisfies typeof serverPlans.$inferSelect;

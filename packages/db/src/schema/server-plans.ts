@@ -16,7 +16,8 @@
  */
 
 import { sql } from "drizzle-orm";
-import { index, pgTable, uniqueIndex } from "drizzle-orm/pg-core";
+import type { AnyPgColumn } from "drizzle-orm/pg-core";
+import { check, index, pgTable, uniqueIndex } from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 import { proxmoxNodeGroups } from "./proxmox-node-groups";
 
@@ -74,6 +75,15 @@ export const serverPlans = pgTable(
      * @default false
      */
     recommended: t.boolean().notNull().default(false),
+    /**
+     * Another plan that will be shown as an upsell for this plan.
+     *
+     * @default null
+     */
+    upsellTo: t.text().references((): AnyPgColumn => serverPlans.id, {
+      onDelete: "set null",
+      onUpdate: "cascade",
+    }),
     createdAt: t
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
@@ -90,6 +100,7 @@ export const serverPlans = pgTable(
     uniqueIndex("server_plans_proxmox_node_group_id_recommended_index")
       .on(t.proxmoxNodeGroupId)
       .where(sql`${t.recommended} IS TRUE`),
+    check("upsell_to_is_not_self", sql`${t.upsellTo} IS DISTINCT FROM ${t.id}`),
   ],
 );
 

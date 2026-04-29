@@ -30,7 +30,14 @@ export default async function robots(): Promise<MetadataRoute.Robots> {
       {
         userAgent: "*",
         allow: ["/", "/api/docs"],
-        disallow: ["/api", "/api/", "*/checkout", "*/checkout/"],
+        disallow: [
+          "/api",
+          "/api/",
+          "*/checkout",
+          "*/checkout/",
+          "*/upsell",
+          "*/upsell/",
+        ],
       },
       {
         userAgent: "nsa",

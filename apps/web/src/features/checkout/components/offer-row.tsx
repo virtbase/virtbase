@@ -44,6 +44,7 @@ export async function OfferRow() {
                   name: "SkyLink Data Center",
                   country: "NL",
                 }}
+                enableUpsell
               />
             </div>
           ))}

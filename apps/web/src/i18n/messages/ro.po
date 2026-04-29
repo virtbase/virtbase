@@ -356,6 +356,72 @@ msgstr "Virtbase este furnizorul de găzduire securizată de servere. Performan�
 msgid "BdEM9F"
 msgstr "Gazduire, dar sigura."
 
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:88
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:133
+msgid "t1DCfI"
+msgstr "Treci la un server mai puternic"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:89
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:136
+msgid "0mibRH"
+msgstr "Un mic supliment. Mult mai multă putere."
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:187
+msgid "8VIOz4"
+msgstr "{cores, plural, =0 {+# vCores} =1 {+# vCore} other {+# vCores}}"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:190
+msgid "j2HEjv"
+msgstr "Performanță îmbunătățită la multitasking"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:196
+msgid "tDBsIi"
+msgstr "{percent} mai multă memorie RAM"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:203
+msgid "LM23s2"
+msgstr "Răspuns mai rapid al aplicațiilor"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:209
+msgid "R0fF2V"
+msgstr "{percent} mai mult spațiu de stocare"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:216
+msgid "E8bbzS"
+msgstr "Stocați mai mult conținut pe server"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:225
+msgid "J4j1Fd"
+msgstr "{value} mai multă lățime de bandă"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:236
+msgid "NkmKCs"
+msgstr "Creștere evidentă a vitezelor de transfer"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:242
+msgid "7NydGv"
+msgstr "Fără taxă de configurare"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:243
+msgid "lt2ynN"
+msgstr "Configurare gratuită, fără costuri suplimentare"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:248
+msgid "XucETQ"
+msgstr "Asistență 24/7"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:249
+msgid "CKQfnV"
+msgstr "Disponibil oricând aveți nevoie"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:254
+msgid "3SJxuA"
+msgstr "Protecție activă împotriva DDoS"
+
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:255
+msgid "VI9ImX"
+msgstr "Serverul dumneavoastră este protejat fără costuri suplimentare"
+
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/[id]/page.tsx:38
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx:38
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx:54
@@ -1611,16 +1677,16 @@ msgstr "Am citit și am acceptat Politica de revocare <revocation></revocation>.
 msgid "mlJ21x"
 msgstr "Plătiți anonim cu criptomonede"
 
-#: src/features/checkout/components/offer-card.tsx:90
+#: src/features/checkout/components/offer-card.tsx:93
 msgid "pxF+t0"
 msgstr "Popular"
 
-#: src/features/checkout/components/offer-card.tsx:102
+#: src/features/checkout/components/offer-card.tsx:105
 #: src/features/checkout/components/order-summary.tsx:157
 msgid "Rw82/V"
 msgstr "pe lună"
 
-#: src/features/checkout/components/offer-card.tsx:116
+#: src/features/checkout/components/offer-card.tsx:119
 #: src/features/checkout/components/order-summary.tsx:67
 #: src/features/servers/components/plan/plan-radio-group.tsx:66
 #: src/features/servers/components/plan/plan-summary.tsx:150
@@ -1628,37 +1694,37 @@ msgstr "pe lună"
 msgid "BGI16m"
 msgstr "{cores, plural, =0 {# vCore} =1 {# vCore} other {# vCore}}"
 
-#: src/features/checkout/components/offer-card.tsx:157
+#: src/features/checkout/components/offer-card.tsx:160
 #: src/features/checkout/components/order-summary.tsx:109
 msgid "zSO/T8"
 msgstr "1 IPv4 + IPv6 /64 Subnet"
 
-#: src/features/checkout/components/offer-card.tsx:176
+#: src/features/checkout/components/offer-card.tsx:179
 msgid "kWI6zX"
 msgstr "Partajat"
 
-#: src/features/checkout/components/offer-card.tsx:181
+#: src/features/checkout/components/offer-card.tsx:184
 msgid "Gzo4L7"
 msgstr "Shared-Uplink - lățimea de bandă maximă posibilă este partajată cu alți clienți."
 
-#: src/features/checkout/components/offer-card.tsx:198
+#: src/features/checkout/components/offer-card.tsx:201
 #: src/features/checkout/components/order-summary.tsx:135
 msgid "IYlDM0"
 msgstr "Trafic nelimitat"
 
-#: src/features/checkout/components/offer-card.tsx:202
+#: src/features/checkout/components/offer-card.tsx:205
 msgid "bIu4NB"
 msgstr "Trafic după principiul utilizării loiale. Limitare temporară la utilizare excesivă pe termen lung."
 
-#: src/features/checkout/components/offer-card.tsx:232
+#: src/features/checkout/components/offer-card.tsx:239
 msgid "5EjMej"
 msgstr "Configurați {name} acum"
 
-#: src/features/checkout/components/offer-card.tsx:236
+#: src/features/checkout/components/offer-card.tsx:243
 msgid "khw/ok"
 msgstr "Configurați acum"
 
-#: src/features/checkout/components/offer-card.tsx:239
+#: src/features/checkout/components/offer-card.tsx:246
 #: src/features/servers/components/plan/plan-radio-group.tsx:121
 msgid "spsPUc"
 msgstr "Epuizat"
@@ -1781,43 +1847,43 @@ msgstr "Data facturii"
 msgid "YOc6Ow"
 msgstr "Plătit la"
 
-#: src/features/landing/components/advantages-row.tsx:33
-msgid "GTucMY"
-msgstr "Intimitate maxima"
-
-#: src/features/landing/components/advantages-row.tsx:34
-msgid "IIN9F8"
-msgstr "La noi, confidențialitatea este pe primul loc. Niciodată nicio împărtășire cu terțe părți."
-
-#: src/features/landing/components/advantages-row.tsx:41
-msgid "daLPgg"
-msgstr "Suport autentic"
-
-#: src/features/landing/components/advantages-row.tsx:42
-msgid "hnGR7B"
-msgstr "Oferim sprijin uman non-stop, ori de câte ori aveți nevoie."
-
-#: src/features/landing/components/advantages-row.tsx:49
-msgid "uDrdrl"
-msgstr "Protecție DDoS inclusă"
-
-#: src/features/landing/components/advantages-row.tsx:50
-msgid "TWNuCY"
-msgstr "Protecția activă DDoS vă menține online. Niciodată fără taxe suplimentare."
-
-#: src/features/landing/components/advantages-row.tsx:57
-msgid "nVfA/q"
-msgstr "Portal modern pentru clienți"
-
-#: src/features/landing/components/advantages-row.tsx:58
-msgid "fQqAwd"
-msgstr "Gestionați-vă eficient serverele fără bătăi de cap sau frustrare."
-
-#: src/features/landing/components/advantages-row.tsx:80
+#: src/features/landing/components/advantage-item.tsx:58
 #: src/features/landing/components/features-showcase.tsx:45
 #: src/features/landing/components/features-showcase.tsx:69
 msgid "TdTXXf"
 msgstr "Află mai multe"
+
+#: src/features/landing/components/advantages-row.tsx:32
+msgid "GTucMY"
+msgstr "Intimitate maxima"
+
+#: src/features/landing/components/advantages-row.tsx:33
+msgid "IIN9F8"
+msgstr "La noi, confidențialitatea este pe primul loc. Niciodată nicio împărtășire cu terțe părți."
+
+#: src/features/landing/components/advantages-row.tsx:40
+msgid "daLPgg"
+msgstr "Suport autentic"
+
+#: src/features/landing/components/advantages-row.tsx:41
+msgid "hnGR7B"
+msgstr "Oferim sprijin uman non-stop, ori de câte ori aveți nevoie."
+
+#: src/features/landing/components/advantages-row.tsx:48
+msgid "uDrdrl"
+msgstr "Protecție DDoS inclusă"
+
+#: src/features/landing/components/advantages-row.tsx:49
+msgid "TWNuCY"
+msgstr "Protecția activă DDoS vă menține online. Niciodată fără taxe suplimentare."
+
+#: src/features/landing/components/advantages-row.tsx:56
+msgid "nVfA/q"
+msgstr "Portal modern pentru clienți"
+
+#: src/features/landing/components/advantages-row.tsx:57
+msgid "fQqAwd"
+msgstr "Gestionați-vă eficient serverele fără bătăi de cap sau frustrare."
 
 #: src/features/landing/components/faq-section.tsx:32
 msgid "j3A1sI"

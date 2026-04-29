@@ -15,7 +15,6 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Button } from "@virtbase/ui/button";
 import {
   LucideLayoutDashboard,
   LucideLifeBuoy,
@@ -23,7 +22,7 @@ import {
   LucideShield,
 } from "@virtbase/ui/icons";
 import { getExtracted } from "next-intl/server";
-import { IntlLink } from "@/i18n/navigation.public";
+import { AdvantageItem } from "./advantage-item";
 
 export async function AdvantagesRow() {
   const t = await getExtracted();
@@ -66,21 +65,7 @@ export async function AdvantagesRow() {
   return (
     <div className="grid grid-cols-1 gap-px bg-border text-sm sm:grid-cols-2 lg:grid-cols-4">
       {items.map((item, index) => (
-        <div
-          key={index}
-          className="flex flex-col items-start gap-2 bg-background p-8 text-left lg:px-9 lg:py-10"
-        >
-          <item.icon className="size-4 shrink-0 text-muted-foreground" />
-          <h3 className="font-medium">{item.title}</h3>
-          <div className="max-w-xs text-pretty text-muted-foreground sm:max-w-none [&_a]:font-medium [&_a]:text-foreground/80 [&_a]:underline [&_a]:decoration-dotted [&_a]:underline-offset-2 [&_a]:hover:text-foreground">
-            <p>{item.description}</p>
-          </div>
-          <Button variant="outline" size="sm" asChild>
-            <IntlLink href={item.href} prefetch={false} className="mt-3 w-fit">
-              {t("Learn more")}
-            </IntlLink>
-          </Button>
-        </div>
+        <AdvantageItem key={index} {...item} />
       ))}
     </div>
   );

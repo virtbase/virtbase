@@ -51,6 +51,7 @@ type OfferCardProps = React.ComponentProps<"div"> & {
     memory: DatabaseServerPlan["memory"];
     storage: DatabaseServerPlan["storage"];
     netrate: DatabaseServerPlan["netrate"];
+    upsellTo?: DatabaseServerPlan["upsellTo"];
     isAvailable: boolean;
     recommended?: boolean;
   };
@@ -59,12 +60,14 @@ type OfferCardProps = React.ComponentProps<"div"> & {
     name: DatabaseDatacenter["name"];
     country: DatabaseDatacenter["country"];
   };
+  enableUpsell?: boolean;
 };
 
 export function OfferCard({
   plan,
   datacenter,
   className,
+  enableUpsell = false,
   ...props
 }: OfferCardProps) {
   const t = useExtracted();
@@ -227,7 +230,11 @@ export function OfferCard({
         >
           {plan.isAvailable ? (
             <IntlLink
-              href={`/checkout/${plan.id}`}
+              href={
+                enableUpsell && plan.upsellTo
+                  ? `/upsell/${plan.id}/${plan.upsellTo}`
+                  : `/checkout/${plan.id}`
+              }
               prefetch={false}
               aria-label={t("Configure {name} now", {
                 name: plan.name,
