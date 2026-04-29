@@ -15,6 +15,6 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export { getTableColumns } from "drizzle-orm";
+export { getColumns as getTableColumns } from "drizzle-orm";
 export { alias } from "drizzle-orm/pg-core";
 export * from "drizzle-orm/sql";
