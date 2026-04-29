@@ -15,14 +15,22 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./api-keys";
-export * from "./checkout";
-export * from "./invoices";
-export * from "./pagination";
-export * from "./proxy";
-export * from "./public";
-export * from "./ssh-keys";
-export * from "./subnet-allocations";
-export * from "./subnets";
-export * from "./timestamps";
-export * from "./utils";
+import * as z from "zod";
+import { ServerPlanSchema } from "./server-plan";
+
+export const GetOfferListOutputSchema = z.array(
+  z.object({
+    id: ServerPlanSchema.shape.id,
+    name: ServerPlanSchema.shape.name,
+    cores: ServerPlanSchema.shape.cores,
+    memory: ServerPlanSchema.shape.memory,
+    storage: ServerPlanSchema.shape.storage,
+    netrate: ServerPlanSchema.shape.netrate,
+    price: ServerPlanSchema.shape.price,
+    is_available: z
+      .boolean()
+      .describe("Whether the offer is currently available."),
+  }),
+);
+
+export type GetOfferListOutput = z.infer<typeof GetOfferListOutputSchema>;
