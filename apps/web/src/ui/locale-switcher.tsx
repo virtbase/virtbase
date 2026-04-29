@@ -31,52 +31,35 @@ import {
   useSidebar,
 } from "@virtbase/ui/sidebar";
 import NextImage from "next/image";
-import { useLocale } from "next-intl";
-import { defaultLocale, locales } from "@/i18n/config";
+import { useFormatter, useLocale } from "next-intl";
+import { locales } from "@/i18n/config";
+import { getLocaleFlag } from "@/i18n/utils";
 import { updateLocaleAction } from "./locale-switcher-action";
 
-const localeMapping = {
-  en: {
-    label: "English",
-    image: "/assets/static/flags/us.svg",
-  },
-  de: {
-    label: "Deutsch",
-    image: "/assets/static/flags/de.svg",
-  },
-  fr: {
-    label: "Français",
-    image: "/assets/static/flags/fr.svg",
-  },
-  nl: {
-    label: "Nederlands",
-    image: "/assets/static/flags/nl.svg",
-  },
-} as const;
-
 export function LocaleSwitcher() {
-  const currentLocale = useLocale();
+  const activeLocale = useLocale();
+  const format = useFormatter();
 
   const { isMobile, open: isSidebarOpen } = useSidebar();
 
-  const activeLocale =
-    currentLocale in localeMapping ? currentLocale : defaultLocale;
-  const selectedLocale = localeMapping[activeLocale];
+  const selectedLocaleLabel = format.displayName(activeLocale, {
+    type: "language",
+  });
 
   return (
     <SidebarMenu>
       <SidebarMenuItem>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <SidebarMenuButton variant="outline" tooltip={selectedLocale.label}>
+            <SidebarMenuButton variant="outline" tooltip={selectedLocaleLabel}>
               <NextImage
-                src={selectedLocale.image}
-                alt={selectedLocale.label}
+                src={getLocaleFlag(activeLocale)}
+                alt={selectedLocaleLabel}
                 width={20}
                 height={20}
                 unoptimized
               />
-              <span className="flex-1 truncate">{selectedLocale.label}</span>
+              <span className="flex-1 truncate">{selectedLocaleLabel}</span>
               <LucideChevronsUpDown
                 aria-hidden="true"
                 className="text-muted-foreground"
@@ -92,25 +75,31 @@ export function LocaleSwitcher() {
             <form action={updateLocaleAction}>
               {locales
                 .filter((locale) => locale !== activeLocale)
-                .map((locale) => (
-                  <DropdownMenuItem key={locale} asChild>
-                    <button
-                      className="w-full"
-                      name="locale"
-                      value={locale}
-                      type="submit"
-                    >
-                      <NextImage
-                        src={localeMapping[locale].image}
-                        alt={localeMapping[locale].label}
-                        width={20}
-                        height={20}
-                        unoptimized
-                      />
-                      {localeMapping[locale].label}
-                    </button>
-                  </DropdownMenuItem>
-                ))}
+                .map((locale) => {
+                  const label = format.displayName(locale, {
+                    type: "language",
+                  });
+
+                  return (
+                    <DropdownMenuItem key={locale} asChild>
+                      <button
+                        className="w-full"
+                        name="locale"
+                        value={locale}
+                        type="submit"
+                      >
+                        <NextImage
+                          src={getLocaleFlag(locale)}
+                          alt={label}
+                          width={20}
+                          height={20}
+                          unoptimized
+                        />
+                        {label}
+                      </button>
+                    </DropdownMenuItem>
+                  );
+                })}
             </form>
           </DropdownMenuContent>
         </DropdownMenu>

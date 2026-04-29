@@ -26,46 +26,29 @@ import {
 } from "@virtbase/ui/dropdown-menu";
 import NextImage from "next/image";
 import type { Locale } from "next-intl";
-import { useLocale } from "next-intl";
+import { useFormatter, useLocale } from "next-intl";
 import { useTransition } from "react";
-import { defaultLocale, locales } from "@/i18n/config";
+import { locales } from "@/i18n/config";
 import { useIntlPathname, useIntlRouter } from "@/i18n/navigation.public";
-
-const localeMapping = {
-  en: {
-    label: "English",
-    image: "/assets/static/flags/us.svg",
-  },
-  de: {
-    label: "Deutsch",
-    image: "/assets/static/flags/de.svg",
-  },
-  fr: {
-    label: "Français",
-    image: "/assets/static/flags/fr.svg",
-  },
-  nl: {
-    label: "Nederlands",
-    image: "/assets/static/flags/nl.svg",
-  },
-} as const;
+import { getLocaleFlag } from "@/i18n/utils";
 
 export function LocaleSwitcherCircle() {
-  const currentLocale = useLocale();
+  const activeLocale = useLocale();
+  const format = useFormatter();
   const router = useIntlRouter();
   const pathname = useIntlPathname();
 
   const [isPending, startTransition] = useTransition();
-
-  const activeLocale =
-    currentLocale in localeMapping ? currentLocale : defaultLocale;
-  const selectedLocale = localeMapping[activeLocale];
 
   const onSelect = (locale: Locale) => {
     startTransition(() => {
       router.replace({ pathname }, { locale });
     });
   };
+
+  const selectedLocaleLabel = format.displayName(activeLocale, {
+    type: "language",
+  });
 
   return (
     <DropdownMenu>
@@ -77,35 +60,41 @@ export function LocaleSwitcherCircle() {
           disabled={isPending}
         >
           <NextImage
-            src={selectedLocale.image}
-            alt={selectedLocale.label}
+            src={getLocaleFlag(activeLocale)}
+            alt={selectedLocaleLabel}
             width={20}
             height={20}
             unoptimized
           />
-          <span className="sr-only">{selectedLocale.label}</span>
+          <span className="sr-only">{selectedLocaleLabel}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
         sideOffset={4}
         side="bottom"
-        className="w-(--radix-dropdown-menu-trigger-width)"
+        className="min-w-(--radix-dropdown-menu-trigger-width)"
       >
         {locales
           .filter((locale) => locale !== activeLocale)
-          .map((locale) => (
-            <DropdownMenuItem key={locale} onSelect={() => onSelect(locale)}>
-              <NextImage
-                src={localeMapping[locale].image}
-                alt={localeMapping[locale].label}
-                width={20}
-                height={20}
-                unoptimized
-              />
-              <span>{localeMapping[locale].label}</span>
-            </DropdownMenuItem>
-          ))}
+          .map((locale) => {
+            const label = format.displayName(locale, {
+              type: "language",
+            });
+
+            return (
+              <DropdownMenuItem key={locale} onSelect={() => onSelect(locale)}>
+                <NextImage
+                  src={getLocaleFlag(locale)}
+                  alt={label}
+                  width={20}
+                  height={20}
+                  unoptimized
+                />
+                <span>{label}</span>
+              </DropdownMenuItem>
+            );
+          })}
       </DropdownMenuContent>
     </DropdownMenu>
   );
