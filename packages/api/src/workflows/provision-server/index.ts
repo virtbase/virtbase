@@ -73,6 +73,7 @@ export async function provisionServerWorkflow({
 
   const { adapters, allocations } = await getNetworkAdaptersStep({
     proxmoxNodeId: selectedNode.id,
+    netrate: plan.netrate,
   });
 
   const rollbacks: Array<() => Promise<void>> = [];
