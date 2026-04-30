@@ -53,7 +53,7 @@ export async function generateStaticParams() {
     },
   );
 
-  if (!plans.length) {
+  if (!plans.length || plans.length < 2) {
     return [
       {
         from: PLACEHOLDER_ID,
