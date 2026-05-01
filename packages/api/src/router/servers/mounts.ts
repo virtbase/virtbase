@@ -39,6 +39,7 @@ export const serversMountsRouter = createTRPCRouter({
         summary: "Mount an ISO image",
         description: "Mount a downloaded ISO image to a server.",
       },
+      forbiddenStates: ["installing", "suspended", "terminated"],
       permissions: {
         servers: ["write"],
         iso: ["read"],
@@ -169,6 +170,7 @@ export const serversMountsRouter = createTRPCRouter({
         summary: "Unmount an ISO image",
         description: "Unmount a mounted ISO image from a server.",
       },
+      forbiddenStates: ["installing", "suspended", "terminated"],
       permissions: {
         servers: ["write"],
         iso: ["read"],

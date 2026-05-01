@@ -27,6 +27,7 @@ import {
   DropdownMenuTrigger,
 } from "@virtbase/ui/dropdown-menu";
 import {
+  LucideDisc3,
   LucideDownload,
   LucideMoreHorizontal,
   LucidePause,
@@ -45,13 +46,20 @@ import {
   isSuspended,
   ProxmoxServerStatus,
 } from "@virtbase/utils";
+import dynamic from "next/dynamic";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
+import { useServerActionState } from "../hooks/use-server-action-state";
 import { useServerStatus } from "../hooks/use-server-status";
 import { useUpdateServerStatus } from "../hooks/use-update-server-status";
 
+const ServerMountsDialog = dynamic(() => import("./server-mounts-dialog"), {
+  ssr: false,
+});
+
 export function ServerActionsRow() {
   const t = useExtracted();
+  const { action, setAction } = useServerActionState();
 
   const { id: serverId } = useParams<{ id: string }>();
   const { data: { status } = {}, isPending } = useServerStatus({
@@ -65,116 +73,134 @@ export function ServerActionsRow() {
   }
 
   return (
-    <ButtonGroup disabled={isSuspended(status) || isInstalling(status)}>
-      {hasState(status, ProxmoxServerStatus.RUNNING) && (
-        <>
+    <>
+      <ButtonGroup disabled={isSuspended(status) || isInstalling(status)}>
+        {hasState(status, ProxmoxServerStatus.RUNNING) && (
+          <>
+            <Button
+              variant="outline"
+              onClick={() =>
+                changeStatus({ server_id: serverId, action: "shutdown" })
+              }
+              disabled={isBusy(status)}
+            >
+              <LucidePowerOff className="text-muted-foreground" aria-hidden />
+              {t("Shutdown")}
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() =>
+                changeStatus({ server_id: serverId, action: "reboot" })
+              }
+              disabled={isBusy(status)}
+            >
+              <LucideRefreshCw className="text-muted-foreground" aria-hidden />
+              {t("Reboot")}
+            </Button>
+          </>
+        )}
+        {hasState(status, ProxmoxServerStatus.STOPPED) && (
+          // VM is currently fully stopped without pending operation
           <Button
             variant="outline"
             onClick={() =>
-              changeStatus({ server_id: serverId, action: "shutdown" })
+              changeStatus({ server_id: serverId, action: "start" })
             }
             disabled={isBusy(status)}
           >
-            <LucidePowerOff className="text-muted-foreground" aria-hidden />
-            {t("Shutdown")}
+            <LucidePower className="text-muted-foreground" aria-hidden />
+            {t("Start")}
           </Button>
+        )}
+        {(hasState(status, ProxmoxServerStatus.PAUSED) ||
+          hasState(status, ProxmoxServerStatus.SUSPENDED)) && (
+          // VM is hibernated
           <Button
             variant="outline"
             onClick={() =>
-              changeStatus({ server_id: serverId, action: "reboot" })
+              changeStatus({ server_id: serverId, action: "resume" })
             }
             disabled={isBusy(status)}
           >
-            <LucideRefreshCw className="text-muted-foreground" aria-hidden />
-            {t("Reboot")}
+            <LucidePlay className="text-muted-foreground" aria-hidden />
+            {t("Resume")}
           </Button>
-        </>
-      )}
-      {hasState(status, ProxmoxServerStatus.STOPPED) && (
-        // VM is currently fully stopped without pending operation
-        <Button
-          variant="outline"
-          onClick={() => changeStatus({ server_id: serverId, action: "start" })}
-          disabled={isBusy(status)}
-        >
-          <LucidePower className="text-muted-foreground" aria-hidden />
-          {t("Start")}
-        </Button>
-      )}
-      {(hasState(status, ProxmoxServerStatus.PAUSED) ||
-        hasState(status, ProxmoxServerStatus.SUSPENDED)) && (
-        // VM is hibernated
-        <Button
-          variant="outline"
-          onClick={() =>
-            changeStatus({ server_id: serverId, action: "resume" })
-          }
-          disabled={isBusy(status)}
-        >
-          <LucidePlay className="text-muted-foreground" aria-hidden />
-          {t("Resume")}
-        </Button>
-      )}
+        )}
 
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button variant="outline" size="icon" disabled={isBusy(status)}>
-            <LucideMoreHorizontal
-              className="text-muted-foreground"
-              aria-hidden
-            />
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end">
-          <DropdownMenuItem
-            onClick={() =>
-              changeStatus({ server_id: serverId, action: "pause" })
-            }
-            disabled={
-              !hasState(status, ProxmoxServerStatus.RUNNING) || isBusy(status)
-            }
-          >
-            <LucidePause aria-hidden />
-            {t("Pause")}
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            onClick={() =>
-              changeStatus({ server_id: serverId, action: "suspend" })
-            }
-            disabled={
-              !hasState(status, ProxmoxServerStatus.RUNNING) || isBusy(status)
-            }
-          >
-            <LucideDownload aria-hidden />
-            {t("Suspend")}
-          </DropdownMenuItem>
-          <DropdownMenuSeparator />
-          <DropdownMenuItem
-            variant="destructive"
-            onClick={() =>
-              changeStatus({ server_id: serverId, action: "stop" })
-            }
-            disabled={
-              hasState(status, ProxmoxServerStatus.STOPPED) || isBusy(status)
-            }
-          >
-            <LucideSquareStop aria-hidden />
-            {t("Stop")}
-          </DropdownMenuItem>
-          <DropdownMenuItem
-            variant="destructive"
-            onClick={() =>
-              changeStatus({ server_id: serverId, action: "reset" })
-            }
-            disabled={
-              hasState(status, ProxmoxServerStatus.STOPPED) || isBusy(status)
-            }
-          >
-            <LucideZap aria-hidden />
-            {t("Reset")}
-          </DropdownMenuItem>
-        </DropdownMenuContent>
-      </DropdownMenu>
-    </ButtonGroup>
+        <DropdownMenu>
+          <DropdownMenuTrigger asChild>
+            <Button variant="outline" size="icon" disabled={isBusy(status)}>
+              <LucideMoreHorizontal
+                className="text-muted-foreground"
+                aria-hidden
+              />
+            </Button>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent align="end">
+            <DropdownMenuItem
+              onClick={() => setAction("manage-mounts")}
+              disabled={isBusy(status)}
+            >
+              <LucideDisc3 aria-hidden />
+              {t("Mount ISO")}
+            </DropdownMenuItem>
+
+            <DropdownMenuItem
+              onClick={() =>
+                changeStatus({ server_id: serverId, action: "pause" })
+              }
+              disabled={
+                !hasState(status, ProxmoxServerStatus.RUNNING) || isBusy(status)
+              }
+            >
+              <LucidePause aria-hidden />
+              {t("Pause")}
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              onClick={() =>
+                changeStatus({ server_id: serverId, action: "suspend" })
+              }
+              disabled={
+                !hasState(status, ProxmoxServerStatus.RUNNING) || isBusy(status)
+              }
+            >
+              <LucideDownload aria-hidden />
+              {t("Suspend")}
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
+            <DropdownMenuItem
+              variant="destructive"
+              onClick={() =>
+                changeStatus({ server_id: serverId, action: "stop" })
+              }
+              disabled={
+                hasState(status, ProxmoxServerStatus.STOPPED) || isBusy(status)
+              }
+            >
+              <LucideSquareStop aria-hidden />
+              {t("Stop")}
+            </DropdownMenuItem>
+            <DropdownMenuItem
+              variant="destructive"
+              onClick={() =>
+                changeStatus({ server_id: serverId, action: "reset" })
+              }
+              disabled={
+                hasState(status, ProxmoxServerStatus.STOPPED) || isBusy(status)
+              }
+            >
+              <LucideZap aria-hidden />
+              {t("Reset")}
+            </DropdownMenuItem>
+          </DropdownMenuContent>
+        </DropdownMenu>
+      </ButtonGroup>
+      {action === "manage-mounts" && (
+        <ServerMountsDialog
+          open={action === "manage-mounts"}
+          onOpenChange={(open) => setAction(open ? "manage-mounts" : null)}
+        />
+      )}
+    </>
   );
 }

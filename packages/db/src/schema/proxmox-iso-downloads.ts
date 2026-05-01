@@ -45,6 +45,10 @@ export const proxmoxIsoDownloads = pgTable(
         onUpdate: "cascade",
       }),
     /**
+     * The user-defined name of the ISO image.
+     */
+    name: t.text().notNull(),
+    /**
      * The Proxmox UPID of the ISO image download task.
      */
     upid: t.text().notNull(),

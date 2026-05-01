@@ -25,7 +25,7 @@ msgstr "Absteigend"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:100
 #: ../../packages/ui/src/data-table/data-table-toolbar.tsx:78
-#: src/features/servers/components/server-actions-row.tsx:174
+#: src/features/servers/components/server-actions-row.tsx:193
 msgid "jm/spn"
 msgstr "Reset"
 
@@ -728,7 +728,7 @@ msgid "+J17tT"
 msgstr "API-Schlüssel erstellen"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx:118
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:84
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:85
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:85
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:71
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:72
@@ -755,6 +755,7 @@ msgid "TQSqlk"
 msgstr "Dieser Schlüssel wird nur einmal angezeigt. Bitte speichere ihn gut, er kann nicht wiederhergestellt werden:"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx:157
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:109
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:94
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx:92
@@ -934,19 +935,19 @@ msgid "3MBRV5"
 msgstr "Kein Name"
 
 #: src/features/account/components/custom-images/create-custom-image-button.tsx:40
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:70
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:71
 msgid "TKvr5O"
 msgstr "Benutzerdefiniertes Image erstellen"
 
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:75
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:76
 msgid "ggQwe8"
 msgstr "Erstelle ein neues benutzerdefiniertes Image für deine Server."
 
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:107
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:135
 msgid "bWjdfa"
 msgstr "URL"
 
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:119
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:148
 msgid "aLOPr+"
 msgstr "Die URL muss direkt auf die ISO-Datei verweisen. Die maximale Dateigröße beträgt {size}."
 
@@ -971,6 +972,7 @@ msgid "8RV8A9"
 msgstr "Es wurden noch keine eigenen Abbilder hochgeladen."
 
 #: src/features/account/components/custom-images/custom-images-list.tsx:76
+#: src/features/servers/components/server-mounts-badge.tsx:64
 msgid "N/dZaF"
 msgstr "Läuft ab {time}"
 
@@ -2161,7 +2163,7 @@ msgid "04uNfB"
 msgstr "Erstellt das Backup ohne Unterbrechungen des Systems. Der aktuelle Zustand der Prozesse wird gesichert."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:183
-#: src/features/servers/components/server-actions-row.tsx:149
+#: src/features/servers/components/server-actions-row.tsx:168
 msgid "elnaZe"
 msgstr "Suspendieren"
 
@@ -2170,7 +2172,7 @@ msgid "qRuNZh"
 msgstr "Unterbricht das System kurzfristig, um das Backup zu erstellen, ohne es herunterzufahren."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:202
-#: src/features/servers/components/server-actions-row.tsx:162
+#: src/features/servers/components/server-actions-row.tsx:181
 msgid "q/uwLT"
 msgstr "Stoppen"
 
@@ -2440,25 +2442,41 @@ msgstr "PTR-Einträge können für alle diesem Server zugewiesenen IP-Adressen e
 msgid "XM/KKz"
 msgstr "Der Hostname, der für die IP-Adresse aufgelöst werden soll. <code>localhost</code> ist nicht zulässig."
 
-#: src/features/servers/components/server-actions-row.tsx:79
+#: src/features/servers/components/server-actions-row.tsx:88
 msgid "tZbb+K"
 msgstr "Herunterfahren"
 
-#: src/features/servers/components/server-actions-row.tsx:89
+#: src/features/servers/components/server-actions-row.tsx:98
 msgid "9U7nUR"
 msgstr "Neustart"
 
-#: src/features/servers/components/server-actions-row.tsx:101
+#: src/features/servers/components/server-actions-row.tsx:112
 msgid "mOFG3K"
 msgstr "Starten"
 
-#: src/features/servers/components/server-actions-row.tsx:115
+#: src/features/servers/components/server-actions-row.tsx:126
 msgid "3y9DGg"
 msgstr "Fortsetzen"
 
-#: src/features/servers/components/server-actions-row.tsx:138
+#: src/features/servers/components/server-actions-row.tsx:145
+msgid "YsjuRA"
+msgstr "ISO einbinden"
+
+#: src/features/servers/components/server-actions-row.tsx:157
 msgid "tFFMkF"
 msgstr "Pausieren"
+
+#: src/features/servers/components/server-custom-image-select.tsx:71
+msgid "wPPrpH"
+msgstr "Benutzerdefiniertes Image auswählen..."
+
+#: src/features/servers/components/server-custom-image-select.tsx:81
+msgid "3MDlnT"
+msgstr "Benutzerdefiniertes Image suchen..."
+
+#: src/features/servers/components/server-custom-image-select.tsx:83
+msgid "5YXiqk"
+msgstr "Kein benutzerdefiniertes Image gefunden."
 
 #: src/features/servers/components/server-graphs.tsx:86
 msgid "j9Y9nu"
@@ -2502,9 +2520,33 @@ msgstr "Ausgehend"
 msgid "6m3w+3"
 msgstr "Intervall"
 
-#: src/features/servers/components/server-mounts-badge.tsx:46
+#: src/features/servers/components/server-mounts-badge.tsx:48
 msgid "Han16c"
 msgstr "Eingehängt"
+
+#: src/features/servers/components/server-mounts-dialog.tsx:57
+msgid "ZE4urv"
+msgstr "ISO-Images einbinden"
+
+#: src/features/servers/components/server-mounts-dialog.tsx:58
+msgid "HZdPWF"
+msgstr "Binden Sie ISO-Images an Ihren Server."
+
+#: src/features/servers/components/server-mounts-dialog.tsx:108
+msgid "lgSmVl"
+msgstr "ISO-Image erfolgreich eingebunden. Die Änderung wird beim nächsten Start wirksam."
+
+#: src/features/servers/components/server-mounts-dialog.tsx:122
+msgid "1INFXA"
+msgstr "ISO-Image erfolgreich ausgehängt. Die Änderung wird beim nächsten Start wirksam."
+
+#: src/features/servers/components/server-mounts-dialog.tsx:133
+msgid "xGxID0"
+msgstr "Steckplatz {count}"
+
+#: src/features/servers/components/server-mounts-dialog.tsx:161
+msgid "u9VaJ3"
+msgstr "Aushängen"
 
 #: src/features/servers/components/server-stats-card.tsx:192
 msgid "PW+sL4"

@@ -62,6 +62,7 @@ export const isoRouter = createTRPCRouter({
 
       const {
         id,
+        name,
         url,
         expiresAt: expires_at,
         finishedAt: finished_at,
@@ -106,6 +107,7 @@ export const isoRouter = createTRPCRouter({
       return {
         iso_download: {
           id,
+          name,
           url,
           expires_at,
           finished_at,
@@ -153,6 +155,7 @@ export const isoRouter = createTRPCRouter({
           const data = await tx
             .select({
               id: pids.id,
+              name: pids.name,
               url: pids.url,
               expires_at: pids.expiresAt,
               failed_at: pids.failedAt,
@@ -177,6 +180,7 @@ export const isoRouter = createTRPCRouter({
       return {
         iso_downloads: data.map((item) => ({
           id: item.id,
+          name: item.name,
           url: item.url,
           expires_at: item.expires_at,
           failed_at: item.failed_at,
@@ -215,7 +219,7 @@ export const isoRouter = createTRPCRouter({
     .output(UploadProxmoxIsoOutputSchema)
     .mutation(async ({ ctx, input }) => {
       const { db, userId } = ctx;
-      const { url } = input;
+      const { url, name } = input;
 
       const { id, created_at, updated_at, expires_at, finished_at, failed_at } =
         await db.transaction(
@@ -280,6 +284,7 @@ export const isoRouter = createTRPCRouter({
               .values({
                 id: fileId,
                 userId,
+                name,
                 url,
                 upid,
                 proxmoxNodeId: proxmoxNode.id,
@@ -287,6 +292,7 @@ export const isoRouter = createTRPCRouter({
               })
               .returning({
                 id: pids.id,
+                name: pids.name,
                 expires_at: pids.expiresAt,
                 finished_at: pids.finishedAt,
                 failed_at: pids.failedAt,
@@ -312,6 +318,7 @@ export const isoRouter = createTRPCRouter({
       return {
         iso_download: {
           id,
+          name,
           url,
           created_at,
           updated_at,
