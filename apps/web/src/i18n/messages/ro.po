@@ -25,7 +25,7 @@ msgstr "Desc"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:100
 #: ../../packages/ui/src/data-table/data-table-toolbar.tsx:78
-#: src/features/servers/components/server-actions-row.tsx:174
+#: src/features/servers/components/server-actions-row.tsx:193
 msgid "jm/spn"
 msgstr "Resetați"
 
@@ -728,7 +728,7 @@ msgid "+J17tT"
 msgstr "Creați cheia API"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx:118
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:84
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:85
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:85
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:71
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:72
@@ -755,6 +755,7 @@ msgid "TQSqlk"
 msgstr "Această cheie va fi afișată o singură dată. Salvați-l în siguranță, deoarece nu poate fi restaurat:"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx:157
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:109
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:94
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx:92
@@ -934,19 +935,19 @@ msgid "3MBRV5"
 msgstr "Fără nume indicat"
 
 #: src/features/account/components/custom-images/create-custom-image-button.tsx:40
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:70
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:71
 msgid "TKvr5O"
 msgstr "Creează imagine personalizată"
 
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:75
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:76
 msgid "ggQwe8"
 msgstr "Creează o imagine personalizată nouă pentru serverele tale."
 
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:107
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:135
 msgid "bWjdfa"
 msgstr "URL"
 
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:119
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:148
 msgid "aLOPr+"
 msgstr "URL-ul trebuie să indice direct fișierul ISO. Dimensiunea maximă a fișierului este {size}."
 
@@ -971,6 +972,7 @@ msgid "8RV8A9"
 msgstr "Nu au fost încărcate imagini personalizate."
 
 #: src/features/account/components/custom-images/custom-images-list.tsx:76
+#: src/features/servers/components/server-mounts-badge.tsx:64
 msgid "N/dZaF"
 msgstr "Expiră {time}"
 
@@ -2161,7 +2163,7 @@ msgid "04uNfB"
 msgstr "Creează o copie de rezervă fără a întrerupe sistemul. Starea curentă a proceselor este susținută."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:183
-#: src/features/servers/components/server-actions-row.tsx:149
+#: src/features/servers/components/server-actions-row.tsx:168
 msgid "elnaZe"
 msgstr "Suspenda"
 
@@ -2170,7 +2172,7 @@ msgid "qRuNZh"
 msgstr "Întrerupe scurt sistemul pentru a crea o copie de rezervă fără a-l închide."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:202
-#: src/features/servers/components/server-actions-row.tsx:162
+#: src/features/servers/components/server-actions-row.tsx:181
 msgid "q/uwLT"
 msgstr "Stop"
 
@@ -2440,25 +2442,41 @@ msgstr "Înregistrările PTR pot fi create pentru toate adresele IP atribuite ac
 msgid "XM/KKz"
 msgstr "Numele de gazdă de rezolvat pentru adresa IP. <code>localhost</code> nu este permis."
 
-#: src/features/servers/components/server-actions-row.tsx:79
+#: src/features/servers/components/server-actions-row.tsx:88
 msgid "tZbb+K"
 msgstr "Închidere"
 
-#: src/features/servers/components/server-actions-row.tsx:89
+#: src/features/servers/components/server-actions-row.tsx:98
 msgid "9U7nUR"
 msgstr "Reporniți"
 
-#: src/features/servers/components/server-actions-row.tsx:101
+#: src/features/servers/components/server-actions-row.tsx:112
 msgid "mOFG3K"
 msgstr "Început"
 
-#: src/features/servers/components/server-actions-row.tsx:115
+#: src/features/servers/components/server-actions-row.tsx:126
 msgid "3y9DGg"
 msgstr "Relua"
 
-#: src/features/servers/components/server-actions-row.tsx:138
+#: src/features/servers/components/server-actions-row.tsx:145
+msgid "YsjuRA"
+msgstr "Montare ISO"
+
+#: src/features/servers/components/server-actions-row.tsx:157
 msgid "tFFMkF"
 msgstr "Pauză"
+
+#: src/features/servers/components/server-custom-image-select.tsx:71
+msgid "wPPrpH"
+msgstr "Selectați o imagine personalizată..."
+
+#: src/features/servers/components/server-custom-image-select.tsx:81
+msgid "3MDlnT"
+msgstr "Căutați o imagine personalizată..."
+
+#: src/features/servers/components/server-custom-image-select.tsx:83
+msgid "5YXiqk"
+msgstr "Nu s-a găsit nicio imagine personalizată."
 
 #: src/features/servers/components/server-graphs.tsx:86
 msgid "j9Y9nu"
@@ -2502,9 +2520,33 @@ msgstr "Ieșire"
 msgid "6m3w+3"
 msgstr "Interval"
 
-#: src/features/servers/components/server-mounts-badge.tsx:46
+#: src/features/servers/components/server-mounts-badge.tsx:48
 msgid "Han16c"
 msgstr "Montat"
+
+#: src/features/servers/components/server-mounts-dialog.tsx:57
+msgid "ZE4urv"
+msgstr "Montare imagini ISO"
+
+#: src/features/servers/components/server-mounts-dialog.tsx:58
+msgid "HZdPWF"
+msgstr "Montați imagini ISO pe serverul dumneavoastră."
+
+#: src/features/servers/components/server-mounts-dialog.tsx:108
+msgid "lgSmVl"
+msgstr "Imaginea ISO a fost montată cu succes. Modificarea va intra în vigoare la următoarea repornire."
+
+#: src/features/servers/components/server-mounts-dialog.tsx:122
+msgid "1INFXA"
+msgstr "Imaginea ISO a fost demontată cu succes. Modificarea va intra în vigoare la următoarea repornire."
+
+#: src/features/servers/components/server-mounts-dialog.tsx:133
+msgid "xGxID0"
+msgstr "Slot {count}"
+
+#: src/features/servers/components/server-mounts-dialog.tsx:161
+msgid "u9VaJ3"
+msgstr "Demontare"
 
 #: src/features/servers/components/server-stats-card.tsx:192
 msgid "PW+sL4"

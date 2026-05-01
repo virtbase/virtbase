@@ -34,6 +34,14 @@ export const ProxmoxIsoDownloadSchema = z.object({
   upid: z.string().meta({
     description: "The Proxmox UPID of the ISO image download task.",
   }),
+  name: z
+    .string()
+    .min(1)
+    .max(64)
+    .meta({
+      description: "The user-defined name of the ISO image.",
+      examples: ["Debian 12 (Bookworm)"],
+    }),
   url: z
     .url({
       protocol: /^https$/,
@@ -79,6 +87,7 @@ export type GetProxmoxIsoDownloadInput = z.infer<
 export const GetProxmoxIsoDownloadOutputSchema = z.object({
   iso_download: ProxmoxIsoDownloadSchema.pick({
     id: true,
+    name: true,
     url: true,
     expires_at: true,
     finished_at: true,
@@ -97,6 +106,9 @@ const sortSchema = z
     "id",
     "id:asc",
     "id:desc",
+    "name",
+    "name:asc",
+    "name:desc",
     "url",
     "url:asc",
     "url:desc",
@@ -110,6 +122,7 @@ export const ListProxmoxIsoDownloadsInputSchema = z.object({
     preprocessQueryArray,
     sortSchema,
   ) as unknown as typeof sortSchema,
+  name: ProxmoxIsoDownloadSchema.shape.name.optional(),
   url: ProxmoxIsoDownloadSchema.shape.url.optional(),
   page: PaginationSchema.shape.page,
   per_page: PaginationSchema.shape.per_page,
@@ -123,6 +136,7 @@ export const ListProxmoxIsoDownloadsOutputSchema = z.object({
   iso_downloads: z.array(
     ProxmoxIsoDownloadSchema.pick({
       id: true,
+      name: true,
       url: true,
       expires_at: true,
       finished_at: true,
@@ -140,6 +154,7 @@ export type ListProxmoxIsoDownloadsOutput = z.infer<
 
 export const UploadProxmoxIsoInputSchema = ProxmoxIsoDownloadSchema.pick({
   url: true,
+  name: true,
 });
 
 export type UploadProxmoxIsoInput = z.infer<typeof UploadProxmoxIsoInputSchema>;

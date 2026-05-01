@@ -24,7 +24,7 @@ import {
   HoverCardTrigger,
 } from "@virtbase/ui/hover-card";
 import { LucideDisc3 } from "@virtbase/ui/icons";
-import { useExtracted } from "next-intl";
+import { useExtracted, useFormatter, useNow } from "next-intl";
 import type { GetServerOutput } from "../hooks/use-server";
 
 export function ServerMountsBadge({
@@ -33,6 +33,8 @@ export function ServerMountsBadge({
   mounts: GetServerOutput["server"]["mounts"];
 }) {
   const t = useExtracted();
+  const format = useFormatter();
+  const now = useNow({ updateInterval: 1000 });
 
   if (mounts.length === 0) {
     return null;
@@ -53,8 +55,16 @@ export function ServerMountsBadge({
           }
 
           return (
-            <div key={mount.id}>
-              <p>{mount.id}</p>
+            <div
+              key={mount.id}
+              className="grid grid-cols-2 gap-2 overflow-hidden text-sm"
+            >
+              <span className="truncate font-medium">{mount.image.name}</span>
+              <span className="shrink-0 text-muted-foreground">
+                {t("Expires {time}", {
+                  time: format.relativeTime(mount.image.expires_at, now),
+                })}
+              </span>
             </div>
           );
         })}

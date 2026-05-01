@@ -15,30 +15,26 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-"use client";
+import { useQuery } from "@tanstack/react-query";
+import type { RouterInputs, RouterOutputs } from "@virtbase/api";
+import { useTRPC } from "@/lib/trpc/react";
 
-import { parseAsStringEnum, useQueryState } from "nuqs";
+export type GetCustomImageStatusInput = RouterInputs["iso"]["status"]["get"];
 
-export function useServerActionState() {
-  const [action, setAction] = useQueryState(
-    "action",
-    parseAsStringEnum([
-      "rename",
-      "view-node-details",
-      "reset-root-password",
-      "change-operating-system",
-      "create-backup",
-      "upsert-record",
-      "create-firewall-rule",
-      "manage-mounts",
-    ]).withOptions({
-      clearOnDefault: true,
-      shallow: true,
-    }),
-  );
+export type GetCustomImageStatusOutput = RouterOutputs["iso"]["status"]["get"];
 
-  return {
-    action,
-    setAction,
+interface GetCustomImageStatus extends GetCustomImageStatusInput {
+  queryConfig?: {
+    enabled?: boolean;
+    refetchInterval?: number;
   };
 }
+
+export const useCustomImageStatus = ({
+  queryConfig,
+  ...input
+}: GetCustomImageStatus) => {
+  const trpc = useTRPC();
+
+  return useQuery(trpc.iso.status.get.queryOptions(input, queryConfig));
+};

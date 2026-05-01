@@ -19,6 +19,7 @@ import type { SortableColumns } from "@virtbase/db/utils";
 import * as z from "zod";
 import { DatacenterSchema, ProxmoxNodeSchema } from "../admin";
 import { PaginationSchema } from "../pagination";
+import { ProxmoxIsoDownloadSchema } from "../proxmox-iso-downloads";
 import { ProxmoxTemplateSchema } from "../proxmox-template";
 import { ServerPlanSchema } from "../server-plan";
 import { SubnetAllocationSchema } from "../subnet-allocations";
@@ -118,10 +119,18 @@ const ServerMountsField = z.array(
     ServerMountSchema.pick({
       id: true,
       drive: true,
-    }).meta({
-      description:
-        "Only present if the `mounts` expand is included. The mounts of the server.",
-    }),
+    })
+      .meta({
+        description:
+          "Only present if the `mounts` expand is included. The mounts of the server.",
+      })
+      .extend({
+        image: ProxmoxIsoDownloadSchema.pick({
+          id: true,
+          name: true,
+          expires_at: true,
+        }),
+      }),
   ]),
 );
 
@@ -191,6 +200,7 @@ export const ListServersOutputSchema = z.object({
       datacenter: ServerDatacenterField,
       node: ServerNodeField,
       allocations: ServerAllocationsField,
+      mounts: ServerMountsField,
     }),
   ),
   meta: z.object({

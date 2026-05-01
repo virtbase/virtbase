@@ -81,8 +81,10 @@ function CustomImageItem({
       }
     >
       <div className="flex flex-col gap-1">
-        <p className="font-medium text-sm">{image.url}</p>
-        <p className="text-muted-foreground text-sm leading-none">{image.id}</p>
+        <p className="font-medium text-sm">{image.name}</p>
+        <p className="text-muted-foreground text-sm leading-none">
+          {image.url}
+        </p>
       </div>
     </ItemRow>
   );

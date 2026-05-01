@@ -22,6 +22,7 @@ import { and, eq, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import {
   datacenters,
+  proxmoxIsoDownloads,
   proxmoxNodes,
   proxmoxTemplates,
   serverMounts,
@@ -367,13 +368,23 @@ const serverMiddleware = authMiddleware.unstable_pipe(
                   {
                     id: string;
                     drive: string;
+                    image: {
+                      id: string;
+                      name: string;
+                      expires_at: Date;
+                    };
                   }[]
                 >`
                   COALESCE(
                     JSON_AGG(
                       DISTINCT JSONB_BUILD_OBJECT(
                         'id', ${serverMounts.id},
-                        'drive', ${serverMounts.drive}
+                        'drive', ${serverMounts.drive},
+                        'image', JSONB_BUILD_OBJECT(
+                          'id', ${proxmoxIsoDownloads.id},
+                          'name', ${proxmoxIsoDownloads.name},
+                          'expires_at', ${proxmoxIsoDownloads.expiresAt}
+                        )
                       )
                     ) FILTER (WHERE ${serverMounts.id} IS NOT NULL),
                     '[]'
@@ -411,6 +422,10 @@ const serverMiddleware = authMiddleware.unstable_pipe(
             eq(servers.proxmoxTemplateId, proxmoxTemplates.id),
           )
           .leftJoin(serverMounts, eq(serverMounts.serverId, servers.id))
+          .leftJoin(
+            proxmoxIsoDownloads,
+            eq(serverMounts.isoDownloadId, proxmoxIsoDownloads.id),
+          )
           .groupBy(
             servers.id,
             serverPlans.id,

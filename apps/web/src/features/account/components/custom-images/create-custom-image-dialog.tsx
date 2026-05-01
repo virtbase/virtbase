@@ -55,6 +55,7 @@ export default function CreateCustomImageDialog({
 
   const form = useForm<UploadProxmoxIsoInput>({
     defaultValues: {
+      name: "",
       url: "",
     },
     resolver: zodResolver(UploadProxmoxIsoInputSchema),
@@ -100,6 +101,33 @@ export default function CreateCustomImageDialog({
       >
         <FieldGroup>
           <Controller
+            name="name"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <div className="flex flex-row items-center justify-between gap-2">
+                  <FieldLabel htmlFor={field.name}>{t("Name")}</FieldLabel>
+                  <span className="flex font-normal text-muted-foreground text-sm">
+                    <span className="flex w-5 justify-end">
+                      {field.value?.length ?? 0}
+                    </span>
+                    <span>/64</span>
+                  </span>
+                </div>
+                <Input
+                  id={field.name}
+                  aria-invalid={fieldState.invalid}
+                  autoComplete="off"
+                  type="text"
+                  maxLength={64}
+                  minLength={1}
+                  placeholder="Debian 13 (trixie)"
+                  {...field}
+                />
+              </Field>
+            )}
+          />
+          <Controller
             name="url"
             control={form.control}
             render={({ field, fieldState }) => (
@@ -109,9 +137,10 @@ export default function CreateCustomImageDialog({
                   id={field.name}
                   aria-invalid={fieldState.invalid}
                   autoComplete="off"
-                  type="text"
-                  maxLength={64}
-                  minLength={1}
+                  autoCapitalize="off"
+                  spellCheck="false"
+                  type="url"
+                  inputMode="url"
                   placeholder="https://example.com/image.iso"
                   {...field}
                 />

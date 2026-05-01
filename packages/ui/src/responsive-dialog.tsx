@@ -77,7 +77,9 @@ export function ResponsiveDialog({
           >
             {children}
           </div>
-          <DialogFooter className="border-t p-4">{footer}</DialogFooter>
+          {footer && (
+            <DialogFooter className="border-t p-4">{footer}</DialogFooter>
+          )}
         </DialogContent>
       </Dialog>
     );
@@ -102,7 +104,7 @@ export function ResponsiveDialog({
         >
           {children}
         </div>
-        <DrawerFooter>{footer}</DrawerFooter>
+        {footer && <DrawerFooter>{footer}</DrawerFooter>}
       </DrawerContent>
     </Drawer>
   );

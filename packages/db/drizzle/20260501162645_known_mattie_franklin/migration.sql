@@ -1,0 +1,1 @@
+ALTER TABLE "proxmox_iso_downloads" ADD COLUMN "name" text NOT NULL;

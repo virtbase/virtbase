@@ -25,7 +25,7 @@ msgstr "Desc"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:100
 #: ../../packages/ui/src/data-table/data-table-toolbar.tsx:78
-#: src/features/servers/components/server-actions-row.tsx:174
+#: src/features/servers/components/server-actions-row.tsx:193
 msgid "jm/spn"
 msgstr "Reset"
 
@@ -728,7 +728,7 @@ msgid "+J17tT"
 msgstr "API-kulcs létrehozása"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx:118
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:84
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:85
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:85
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:71
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:72
@@ -755,6 +755,7 @@ msgid "TQSqlk"
 msgstr "Ez a gomb csak egyszer jelenik meg. Kérjük, mentse biztonságosan, mert nem lehet visszaállítani:"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx:157
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:109
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:94
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx:92
@@ -934,19 +935,19 @@ msgid "3MBRV5"
 msgstr "Nincs megadva név"
 
 #: src/features/account/components/custom-images/create-custom-image-button.tsx:40
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:70
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:71
 msgid "TKvr5O"
 msgstr "Egyéni lemezkép létrehozása"
 
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:75
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:76
 msgid "ggQwe8"
 msgstr "Hozzon létre egy új egyéni lemezképet a szervereihez."
 
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:107
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:135
 msgid "bWjdfa"
 msgstr "URL"
 
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:119
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:148
 msgid "aLOPr+"
 msgstr "Az URL-nek közvetlenül az ISO fájlra kell mutatnia. A maximális fájlméret: {size}."
 
@@ -971,6 +972,7 @@ msgid "8RV8A9"
 msgstr "Még nem töltöttek fel egyéni lemezképeket."
 
 #: src/features/account/components/custom-images/custom-images-list.tsx:76
+#: src/features/servers/components/server-mounts-badge.tsx:64
 msgid "N/dZaF"
 msgstr "Lejár: {time}"
 
@@ -2161,7 +2163,7 @@ msgid "04uNfB"
 msgstr "Biztonsági mentést készít a rendszer megszakítása nélkül. A folyamatok jelenlegi állapotáról biztonsági másolat készül."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:183
-#: src/features/servers/components/server-actions-row.tsx:149
+#: src/features/servers/components/server-actions-row.tsx:168
 msgid "elnaZe"
 msgstr "Felfüggeszteni"
 
@@ -2170,7 +2172,7 @@ msgid "qRuNZh"
 msgstr "Rövid időre megszakítja a rendszert, hogy biztonsági másolatot készítsen anélkül, hogy leállítaná."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:202
-#: src/features/servers/components/server-actions-row.tsx:162
+#: src/features/servers/components/server-actions-row.tsx:181
 msgid "q/uwLT"
 msgstr "Stop"
 
@@ -2440,25 +2442,41 @@ msgstr "PTR rekordok hozhatók létre az ehhez a szerverhez rendelt összes IP-c
 msgid "XM/KKz"
 msgstr "Az IP-címhez feloldandó gazdagépnév. A <code>localhost</code> nem engedélyezett."
 
-#: src/features/servers/components/server-actions-row.tsx:79
+#: src/features/servers/components/server-actions-row.tsx:88
 msgid "tZbb+K"
 msgstr "Leállítás"
 
-#: src/features/servers/components/server-actions-row.tsx:89
+#: src/features/servers/components/server-actions-row.tsx:98
 msgid "9U7nUR"
 msgstr "Indítsa újra"
 
-#: src/features/servers/components/server-actions-row.tsx:101
+#: src/features/servers/components/server-actions-row.tsx:112
 msgid "mOFG3K"
 msgstr "Indul"
 
-#: src/features/servers/components/server-actions-row.tsx:115
+#: src/features/servers/components/server-actions-row.tsx:126
 msgid "3y9DGg"
 msgstr "Folytatás"
 
-#: src/features/servers/components/server-actions-row.tsx:138
+#: src/features/servers/components/server-actions-row.tsx:145
+msgid "YsjuRA"
+msgstr "ISO csatolása"
+
+#: src/features/servers/components/server-actions-row.tsx:157
 msgid "tFFMkF"
 msgstr "Szünet"
+
+#: src/features/servers/components/server-custom-image-select.tsx:71
+msgid "wPPrpH"
+msgstr "Válasszon egyéni lemezképet..."
+
+#: src/features/servers/components/server-custom-image-select.tsx:81
+msgid "3MDlnT"
+msgstr "Egyéni lemezkép keresése..."
+
+#: src/features/servers/components/server-custom-image-select.tsx:83
+msgid "5YXiqk"
+msgstr "Nem található egyéni lemezkép."
 
 #: src/features/servers/components/server-graphs.tsx:86
 msgid "j9Y9nu"
@@ -2502,9 +2520,33 @@ msgstr "Kimenő"
 msgid "6m3w+3"
 msgstr "Intervallum"
 
-#: src/features/servers/components/server-mounts-badge.tsx:46
+#: src/features/servers/components/server-mounts-badge.tsx:48
 msgid "Han16c"
 msgstr "Csatolva"
+
+#: src/features/servers/components/server-mounts-dialog.tsx:57
+msgid "ZE4urv"
+msgstr "ISO-lemezképek csatolása"
+
+#: src/features/servers/components/server-mounts-dialog.tsx:58
+msgid "HZdPWF"
+msgstr "Csatoljon ISO-lemezképeket a kiszolgálóhoz."
+
+#: src/features/servers/components/server-mounts-dialog.tsx:108
+msgid "lgSmVl"
+msgstr "Az ISO-lemezkép sikeresen csatolva. A változás a következő indításkor lép életbe."
+
+#: src/features/servers/components/server-mounts-dialog.tsx:122
+msgid "1INFXA"
+msgstr "Az ISO-lemezkép sikeresen leválasztva. A változás a következő indításkor lép életbe."
+
+#: src/features/servers/components/server-mounts-dialog.tsx:133
+msgid "xGxID0"
+msgstr "Foglalat {count}"
+
+#: src/features/servers/components/server-mounts-dialog.tsx:161
+msgid "u9VaJ3"
+msgstr "Leválasztás"
 
 #: src/features/servers/components/server-stats-card.tsx:192
 msgid "PW+sL4"
