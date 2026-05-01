@@ -92,6 +92,7 @@ const getDocumentation = cache(async () => {
         { name: "Backups", file: "backups.md" },
         { name: "Firewall", file: "firewall.md" },
         { name: "SSH Keys", file: "ssh-keys.md" },
+        { name: "ISO", file: "iso.md" },
         { name: "Invoices", file: "invoices.md" },
         { name: "Offers", file: "offers.md" },
       ].map(async (tag) => ({
@@ -106,7 +107,7 @@ const getDocumentation = cache(async () => {
       },
       {
         name: "Account",
-        tags: ["SSH Keys", "Invoices"],
+        tags: ["SSH Keys", "Invoices", "ISO"],
       },
       {
         name: "Public",

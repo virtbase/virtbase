@@ -109,9 +109,10 @@ export default function CreateCustomImageDialog({
                   id={field.name}
                   aria-invalid={fieldState.invalid}
                   autoComplete="off"
-                  type="text"
-                  maxLength={64}
-                  minLength={1}
+                  autoCapitalize="off"
+                  spellCheck="false"
+                  type="url"
+                  inputMode="url"
                   placeholder="https://example.com/image.iso"
                   {...field}
                 />

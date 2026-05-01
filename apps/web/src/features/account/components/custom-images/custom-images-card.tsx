@@ -40,7 +40,7 @@ export function CustomImagesCard() {
   void prefetch(trpc.iso.list.queryOptions(defaultGetCustomImagesListQuery));
 
   return (
-    <Card>
+    <Card className="overflow-hidden pb-0">
       <CardHeader>
         <CardTitle className="text-lg">{t("Custom ISO Images")}</CardTitle>
         <CardDescription>
