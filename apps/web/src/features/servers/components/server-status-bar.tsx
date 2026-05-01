@@ -28,7 +28,7 @@ import {
 } from "@virtbase/utils";
 import { useParams } from "next/navigation";
 import { useExtracted, useFormatter, useNow } from "next-intl";
-import { useServer } from "../hooks/use-server";
+import { useServerStatus } from "../hooks/use-server-status";
 
 export function ServerStatusBar() {
   const t = useExtracted();
@@ -36,11 +36,11 @@ export function ServerStatusBar() {
   const formatter = useFormatter();
 
   const { id: serverId } = useParams<{ id: string }>();
-  const { data: { server } = {}, isPending } = useServer({
+  const { data: { status } = {}, isPending } = useServerStatus({
     server_id: serverId,
   });
 
-  if (!server || isPending) {
+  if (!status || isPending) {
     return null;
   }
 
@@ -54,7 +54,7 @@ export function ServerStatusBar() {
         "This server has been suspended and will be deleted at {date}, if not renewed.",
         {
           date: formatter.relativeTime(
-            getEstimatedServerDeletionDate(server) as Date,
+            getEstimatedServerDeletionDate(status) as Date,
             now,
           ),
         },
@@ -68,7 +68,7 @@ export function ServerStatusBar() {
       description: t(
         "This server is expiring {expiry} and will be deleted after, if not renewed",
         {
-          expiry: formatter.relativeTime(server.terminates_at as Date, now),
+          expiry: formatter.relativeTime(status.terminates_at as Date, now),
         },
       ),
       condition: isExpiring,
@@ -85,7 +85,7 @@ export function ServerStatusBar() {
     },
   ];
 
-  const state = states.find((state) => state.condition(server));
+  const state = states.find((state) => state.condition(status));
   if (!state) {
     return null;
   }

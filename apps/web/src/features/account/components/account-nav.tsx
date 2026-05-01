@@ -21,6 +21,7 @@ import { cn } from "@virtbase/ui";
 import { buttonVariants } from "@virtbase/ui/button";
 import {
   LucideCreditCard,
+  LucideDisc3,
   LucideLock,
   LucideTerminal,
   LucideUser,
@@ -60,6 +61,11 @@ const useItems = () => {
       title: t("SSH Keys"),
       path: paths.app.account.settings.sshKeys,
       icon: LucideUserKey,
+    },
+    {
+      title: t("ISO Images"),
+      path: paths.app.account.settings.customImages,
+      icon: LucideDisc3,
     },
   ] as const;
 };

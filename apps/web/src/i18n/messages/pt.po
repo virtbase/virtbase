@@ -642,27 +642,27 @@ msgid "xXbJso"
 msgstr "sair"
 
 #: src/features/account/components/account-breadcrumb.tsx:41
-#: src/features/account/components/account-nav.tsx:40
+#: src/features/account/components/account-nav.tsx:41
 msgid "1iEPTM"
 msgstr "Em geral"
 
 #: src/features/account/components/account-breadcrumb.tsx:45
-#: src/features/account/components/account-nav.tsx:45
+#: src/features/account/components/account-nav.tsx:46
 msgid "Py189G"
 msgstr "Segurança"
 
 #: src/features/account/components/account-breadcrumb.tsx:49
-#: src/features/account/components/account-nav.tsx:50
+#: src/features/account/components/account-nav.tsx:51
 msgid "Tbo377"
 msgstr "Cobrança"
 
 #: src/features/account/components/account-breadcrumb.tsx:53
-#: src/features/account/components/account-nav.tsx:55
+#: src/features/account/components/account-nav.tsx:56
 msgid "xwEc8K"
 msgstr "API"
 
 #: src/features/account/components/account-breadcrumb.tsx:57
-#: src/features/account/components/account-nav.tsx:60
+#: src/features/account/components/account-nav.tsx:61
 #: src/features/account/components/ssh-keys/ssh-keys-card.tsx:44
 msgid "7Cdpiv"
 msgstr "Chaves SSH"
@@ -671,6 +671,10 @@ msgstr "Chaves SSH"
 #: src/ui/nav-user.tsx:120
 msgid "TwyMau"
 msgstr "Conta"
+
+#: src/features/account/components/account-nav.tsx:66
+msgid "96Us9V"
+msgstr "Imagens ISO"
 
 #: src/features/account/components/api-keys/api-keys-card.tsx:49
 msgid "jSp63j"
@@ -715,15 +719,20 @@ msgstr "Excluir"
 msgid "TrBeGD"
 msgstr "Chaves SSH"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:91
+#: src/features/account/components/api-keys/create-api-key-button.tsx:61
+msgid "42rMfw"
+msgstr "ISO"
+
+#: src/features/account/components/api-keys/create-api-key-button.tsx:92
 msgid "+J17tT"
 msgstr "Criar chave de API"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:117
+#: src/features/account/components/api-keys/create-api-key-button.tsx:118
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:84
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:85
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:71
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:72
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:120
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:122
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:90
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx:74
 #: src/features/servers/components/backups/create-backup-dialog.tsx:104
@@ -737,15 +746,15 @@ msgstr "Criar chave de API"
 msgid "47FYwb"
 msgstr "Cancelar"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:134
+#: src/features/account/components/api-keys/create-api-key-button.tsx:135
 msgid "fnMCvo"
 msgstr "Chave de API criada"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:137
+#: src/features/account/components/api-keys/create-api-key-button.tsx:138
 msgid "TQSqlk"
 msgstr "Esta chave só será exibida uma vez. Salve-o com segurança, pois não pode ser restaurado:"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:156
+#: src/features/account/components/api-keys/create-api-key-button.tsx:157
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:94
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx:92
@@ -769,24 +778,24 @@ msgstr "Esta chave só será exibida uma vez. Salve-o com segurança, pois não 
 msgid "HAlOn1"
 msgstr "Nome"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:164
+#: src/features/account/components/api-keys/create-api-key-button.tsx:165
 msgid "5Cu2sb"
 msgstr "Minha chave API"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:172
+#: src/features/account/components/api-keys/create-api-key-button.tsx:173
 msgid "SFuk1v"
 msgstr "Permissões"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:174
+#: src/features/account/components/api-keys/create-api-key-button.tsx:175
 msgid "4u9ABD"
 msgstr "Dependendo das permissões, a chave API pode realizar determinadas ações."
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:211
+#: src/features/account/components/api-keys/create-api-key-button.tsx:212
 #: src/features/servers/components/server-graphs.tsx:120
 msgid "filwqD"
 msgstr "Ler"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:217
+#: src/features/account/components/api-keys/create-api-key-button.tsx:218
 #: src/features/servers/components/server-graphs.tsx:124
 msgid "k2veDA"
 msgstr "Escrever"
@@ -923,6 +932,47 @@ msgstr "Nenhum método de pagamento foi vinculado à sua conta."
 #: src/features/account/components/billing/payment-methods-list.tsx:155
 msgid "3MBRV5"
 msgstr "Nenhum nome indicado"
+
+#: src/features/account/components/custom-images/create-custom-image-button.tsx:40
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:70
+msgid "TKvr5O"
+msgstr "Criar imagem personalizada"
+
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:75
+msgid "ggQwe8"
+msgstr "Crie uma nova imagem personalizada para os seus servidores."
+
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:107
+msgid "bWjdfa"
+msgstr "URL"
+
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:119
+msgid "aLOPr+"
+msgstr "O URL deve apontar diretamente para o ficheiro ISO. O tamanho máximo do ficheiro é {size}."
+
+#: src/features/account/components/custom-images/custom-images-card.tsx:45
+msgid "4NrukI"
+msgstr "Imagens ISO personalizadas"
+
+#: src/features/account/components/custom-images/custom-images-card.tsx:47
+msgid "GnqZoy"
+msgstr "Carregue e faça a gestão de imagens ISO personalizadas para os seus servidores."
+
+#: src/features/account/components/custom-images/custom-images-card.tsx:60
+msgid "Lwyinc"
+msgstr "Pode ter até {count} imagens ISO ativas."
+
+#: src/features/account/components/custom-images/custom-images-list.tsx:47
+msgid "sHUPf5"
+msgstr "Sem imagens personalizadas"
+
+#: src/features/account/components/custom-images/custom-images-list.tsx:49
+msgid "8RV8A9"
+msgstr "Ainda não foram carregadas imagens personalizadas."
+
+#: src/features/account/components/custom-images/custom-images-list.tsx:76
+msgid "N/dZaF"
+msgstr "Expira {time}"
 
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:63
 msgid "KdsDOJ"
@@ -1187,25 +1237,25 @@ msgid "0ICwq5"
 msgstr "Última atualização"
 
 #: src/features/admin/components/proxmox-nodes/create-datacenter-button.tsx:48
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:111
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:127
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:113
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:129
 msgid "S+458D"
 msgstr "Criar nó Proxmox"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:112
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:114
 msgid "deLbYn"
 msgstr "Crie um novo nó Proxmox VE para hospedar servidores."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:143
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:145
 #: src/features/servers/components/overview/node-details-dialog.tsx:101
 msgid "zUxWZC"
 msgstr "Centro de dados"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:162
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:164
 msgid "RJ3ocO"
 msgstr "Grupo de nós"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:181
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:183
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:88
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:100
 #: src/features/servers/components/rdns/records-table/columns.tsx:50
@@ -1213,91 +1263,99 @@ msgstr "Grupo de nós"
 msgid "uPDgth"
 msgstr "Nome do host"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:206
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:208
 msgid "8cNS7n"
 msgstr "O nome do host do nó Proxmox VE conforme configurado no cluster Proxmox."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:222
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:224
 msgid "2BEZJh"
 msgstr "FQDN"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:247
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:249
 msgid "cUm+Vq"
 msgstr "O FQDN do nó Proxmox VE onde a API está acessível. Deve ser acessível pela Internet e usar um certificado TLS válido."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:264
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:266
 msgid "86ZUi9"
 msgstr "ID do token"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:284
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:286
 msgid "1gRCWa"
 msgstr "Segredo do token"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:315
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:317
 msgid "6o6hYT"
 msgstr "Armazenamento de trechos"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:344
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:346
 msgid "10Yrc8"
 msgstr "Os arquivos YAML de inicialização da nuvem para qualquer servidor neste nó serão armazenados aqui."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:360
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:362
 msgid "IvtOOO"
 msgstr "Armazenamento de backup"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:389
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:391
 msgid "elgt8s"
 msgstr "Os backups de quaisquer servidores neste nó serão armazenados aqui."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:406
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:407
+msgid "foINKU"
+msgstr "Armazenamento de transferência ISO"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:436
+msgid "Us0NPD"
+msgstr "As imagens ISO serão armazenadas aqui."
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:451
 #: src/features/servers/components/overview/node-details-dialog.tsx:105
 msgid "sB9VeA"
 msgstr "Ligação ascendente"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:437
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:482
 msgid "1oyHhQ"
 msgstr "A largura de banda de rede máxima possível do Uplink em MB/s."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:456
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:501
 msgid "gYG5ho"
 msgstr "Número máximo de VMs"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:460
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:505
 msgid "UYmKl1"
 msgstr "VMs"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:468
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:498
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:528
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:558
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:589
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:513
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:543
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:573
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:603
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:634
 msgid "ekXood"
 msgstr "Ilimitada"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:486
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:531
 msgid "OCihQV"
 msgstr "Memória máxima"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:516
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:561
 msgid "T4Xl7g"
 msgstr "Armazenamento máximo"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:546
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:591
 msgid "bRNAv0"
 msgstr "Máximo de vCores"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:550
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:595
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:239
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:266
 #: src/features/servers/components/server-stats-card.tsx:90
 msgid "cCUvGW"
 msgstr "vCores"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:577
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:622
 msgid "ueCC3G"
 msgstr "Limite de rede"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:620
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:665
 msgid "U9Jxp7"
 msgstr "Se alcançado, este nó não será mais utilizado para serviços. Deixe em branco por ilimitado."
 
@@ -2443,6 +2501,10 @@ msgstr "Extrovertida"
 #: src/features/servers/components/server-graphs.tsx:154
 msgid "6m3w+3"
 msgstr "Intervalo"
+
+#: src/features/servers/components/server-mounts-badge.tsx:46
+msgid "Han16c"
+msgstr "Montado"
 
 #: src/features/servers/components/server-stats-card.tsx:192
 msgid "PW+sL4"

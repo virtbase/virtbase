@@ -22,3 +22,18 @@ export const MAX_SSH_KEYS_PER_USER = 100;
  * a server was suspended.
  */
 export const SERVER_DELETION_GRACE_PERIOD_DAYS = 5;
+
+/**
+ * The maximum number of active ISO image downloads per user.
+ */
+export const MAX_ACTIVE_ISO_DOWNLOADS_PER_USER = 3;
+
+/**
+ * The maximum size of an ISO image download in bytes.
+ */
+export const MAX_ISO_DOWNLOAD_SIZE_BYTES = 10 * 1024 * 1024 * 1024; // 10GB
+
+/**
+ * The expiration time of an ISO image download in minutes.
+ */
+export const ISO_DOWNLOAD_EXPIRATION_MINUTES = 60; // 1 hour

@@ -141,6 +141,9 @@ export const paths = {
         sshKeys: {
           getHref: () => "/account/settings/ssh-keys",
         },
+        customImages: {
+          getHref: () => "/account/settings/custom-images",
+        },
       },
     },
   },

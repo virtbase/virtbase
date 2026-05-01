@@ -70,6 +70,7 @@ beforeAll(async () => {
     tokenSecret: "secret",
     snippetStorage: "local-lvm",
     backupStorage: "local-lvm",
+    isoDownloadStorage: "local-lvm",
   });
 });
 

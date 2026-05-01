@@ -29,7 +29,7 @@ interface GetServer extends GetServerInput {
 }
 
 export const defaultGetServerExpand: Partial<GetServerInput> = {
-  expand: ["datacenter", "template", "node", "plan", "allocations"],
+  expand: ["datacenter", "template", "node", "plan", "allocations", "mounts"],
 };
 
 export const useServer = ({ queryConfig, ...input }: GetServer) => {

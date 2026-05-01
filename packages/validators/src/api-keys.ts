@@ -25,6 +25,7 @@ export const API_KEY_PERMISSIONS = {
   rdns: ["read", "write"],
   ssh_keys: ["read", "write"],
   invoices: ["read"],
+  iso: ["read", "write"],
 };
 
 export type APIKeyPermissions = typeof API_KEY_PERMISSIONS;
@@ -37,6 +38,7 @@ export const APIKeyPermissionsSchema = z.object({
   rdns: z.array(z.enum(["read", "write"])).default([]),
   ssh_keys: z.array(z.enum(["read", "write"])).default([]),
   invoices: z.array(z.enum(["read"])).default([]),
+  iso: z.array(z.enum(["read", "write"])).default([]),
 });
 
 export const CreateAPIKeyInputSchema = z.object({
