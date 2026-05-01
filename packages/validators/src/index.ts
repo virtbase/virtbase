@@ -19,6 +19,7 @@ export * from "./api-keys";
 export * from "./checkout";
 export * from "./invoices";
 export * from "./pagination";
+export * from "./proxmox-iso-downloads";
 export * from "./proxy";
 export * from "./public";
 export * from "./ssh-keys";

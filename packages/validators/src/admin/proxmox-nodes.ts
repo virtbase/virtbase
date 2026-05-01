@@ -150,6 +150,14 @@ export const ProxmoxNodeSchema = z.object({
       examples: ["local-lvm"],
       internal: true,
     }),
+  iso_download_storage: z
+    .string()
+    .min(1)
+    .meta({
+      description: "The name of the storage used for ISO image downloads.",
+      examples: ["local-lvm"],
+      internal: true,
+    }),
   created_at: ObjectTimestampSchema.shape.created_at,
   updated_at: ObjectTimestampSchema.shape.updated_at,
 });

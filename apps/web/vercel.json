@@ -2,6 +2,10 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "crons": [
     {
+      "path": "/api/cron/delete-expired-iso-images",
+      "schedule": "* * * * *"
+    },
+    {
       "path": "/api/cron/delete-suspended-servers",
       "schedule": "0 0 * * *"
     },

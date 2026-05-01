@@ -64,6 +64,7 @@ export const mockProxmoxNode = {
   tokenSecret: "00000000-0000-0000-0000-000000000001",
   snippetStorage: "local",
   backupStorage: "local",
+  isoDownloadStorage: "local",
   createdAt: new Date(),
   updatedAt: new Date(),
 } satisfies typeof proxmoxNodes.$inferInsert;

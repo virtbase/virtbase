@@ -58,6 +58,7 @@ const usePermissionLocalizations = cache(() => {
     rdns: t("rDNS"),
     ssh_keys: t("SSH keys"),
     invoices: t("Invoices"),
+    iso: t("ISO"),
   } satisfies Record<keyof APIKeyPermissions, string>;
 });
 

@@ -20,6 +20,7 @@ import {
   datacenters,
   proxmoxNodes,
   proxmoxTemplates,
+  serverMounts,
   serverPlans,
   servers,
   subnetAllocations,
@@ -45,6 +46,7 @@ import { serversBackupsRouter } from "./backups";
 import { serversConsoleRouter } from "./console";
 import { serverFirewallRouter } from "./firewall";
 import { serversGraphsRouter } from "./graphs";
+import { serversMountsRouter } from "./mounts";
 import { serversPlanRouter } from "./plan";
 import { serversRdnsRouter } from "./rdns";
 import { serversStatusRouter } from "./status";
@@ -57,6 +59,7 @@ export const serversRouter = createTRPCRouter({
   status: serversStatusRouter,
   console: serversConsoleRouter,
   backups: serversBackupsRouter,
+  mounts: serversMountsRouter,
   rdns: serversRdnsRouter,
   templateGroups: serversTemplateGroupsRouter,
   plan: serversPlanRouter,
@@ -89,6 +92,7 @@ export const serversRouter = createTRPCRouter({
           datacenter: server.datacenter,
           node: server.node,
           allocations: server.allocations,
+          mounts: server.mounts,
           installed_at: server.installed_at,
           suspended_at: server.suspended_at,
           terminates_at: server.terminates_at,
@@ -130,6 +134,7 @@ export const serversRouter = createTRPCRouter({
 
       const { data, total } = await db.transaction(
         async (tx) => {
+          // TODO: Use query api
           const data = await tx
             .select({
               id: servers.id,
@@ -205,6 +210,30 @@ export const serversRouter = createTRPCRouter({
                       '[]'
                     )
                   `,
+              mounts: !input.expand.includes("mounts")
+                ? sql<string[]>`
+                    COALESCE(
+                      JSON_AGG(DISTINCT ${serverMounts.id})
+                      FILTER (WHERE ${serverMounts.id} IS NOT NULL),
+                      '[]'
+                    )
+                  `
+                : sql<
+                    {
+                      id: string;
+                      drive: string;
+                    }[]
+                  >`
+                    COALESCE(
+                      JSON_AGG(
+                        DISTINCT JSONB_BUILD_OBJECT(
+                          'id', ${serverMounts.id},
+                          'drive', ${serverMounts.drive}
+                        )
+                      ) FILTER (WHERE ${serverMounts.id} IS NOT NULL),
+                      '[]'
+                    )
+                  `,
             })
             .from(servers)
             .innerJoin(serverPlans, eq(servers.serverPlanId, serverPlans.id))
@@ -222,6 +251,7 @@ export const serversRouter = createTRPCRouter({
               eq(subnetAllocations.serverId, servers.id),
             )
             .leftJoin(subnets, eq(subnetAllocations.subnetId, subnets.id))
+            .leftJoin(serverMounts, eq(serverMounts.serverId, servers.id))
             .groupBy(
               servers.id,
               serverPlans.id,
@@ -258,6 +288,7 @@ export const serversRouter = createTRPCRouter({
           datacenter: item.datacenter,
           node: item.node,
           allocations: item.allocations,
+          mounts: item.mounts,
           installed_at: item.installedAt,
           suspended_at: item.suspendedAt,
           terminates_at: item.terminatesAt,

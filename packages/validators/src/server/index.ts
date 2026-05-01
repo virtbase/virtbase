@@ -24,11 +24,12 @@ import { ServerPlanSchema } from "../server-plan";
 import { SubnetAllocationSchema } from "../subnet-allocations";
 import { SubnetSchema } from "../subnets";
 import { preprocessQueryArray } from "../utils";
+import { ServerMountSchema } from "./mounts";
 import type { Server } from "./shared";
 import { ServerSchema } from "./shared";
 
 export const ServerExpandSchema = z
-  .enum(["template", "plan", "datacenter", "node", "allocations"])
+  .enum(["template", "plan", "datacenter", "node", "allocations", "mounts"])
   .array()
   .default([]);
 
@@ -111,6 +112,19 @@ const ServerAllocationsField = z.union([
     }),
 ]);
 
+const ServerMountsField = z.array(
+  z.union([
+    ServerMountSchema.shape.id,
+    ServerMountSchema.pick({
+      id: true,
+      drive: true,
+    }).meta({
+      description:
+        "Only present if the `mounts` expand is included. The mounts of the server.",
+    }),
+  ]),
+);
+
 export const GetServerInputSchema = z.object({
   server_id: ServerSchema.shape.id,
   expand: z.preprocess(
@@ -132,6 +146,7 @@ export const GetServerOutputSchema = z.object({
     datacenter: ServerDatacenterField,
     node: ServerNodeField,
     allocations: ServerAllocationsField,
+    mounts: ServerMountsField,
   }),
 });
 
@@ -197,6 +212,7 @@ export * from "./backups";
 export * from "./console";
 export * from "./firewall";
 export * from "./graphs";
+export * from "./mounts";
 export * from "./plan";
 export * from "./pointer-records";
 export * from "./shared";

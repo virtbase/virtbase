@@ -24,6 +24,7 @@ import {
   datacenters,
   proxmoxNodes,
   proxmoxTemplates,
+  serverMounts,
   serverPlans,
   servers,
   subnetAllocations,
@@ -276,6 +277,7 @@ const serverMiddleware = authMiddleware.unstable_pipe(
     const { db } = ctx;
     const server = await db.transaction(
       async (tx) => {
+        // TODO: Use query api
         return tx
           .select({
             id: servers.id,
@@ -353,6 +355,30 @@ const serverMiddleware = authMiddleware.unstable_pipe(
                       '[]'
                     )
                   `,
+            mounts: !expansions.has("mounts")
+              ? sql<string[]>`
+                  COALESCE(
+                    JSON_AGG(DISTINCT ${serverMounts.id})
+                    FILTER (WHERE ${serverMounts.id} IS NOT NULL),
+                    '[]'
+                  )
+                `
+              : sql<
+                  {
+                    id: string;
+                    drive: string;
+                  }[]
+                >`
+                  COALESCE(
+                    JSON_AGG(
+                      DISTINCT JSONB_BUILD_OBJECT(
+                        'id', ${serverMounts.id},
+                        'drive', ${serverMounts.drive}
+                      )
+                    ) FILTER (WHERE ${serverMounts.id} IS NOT NULL),
+                    '[]'
+                  )
+                `,
             proxmoxNode: {
               id: proxmoxNodes.id,
               hostname: proxmoxNodes.hostname,
@@ -361,6 +387,7 @@ const serverMiddleware = authMiddleware.unstable_pipe(
               tokenID: proxmoxNodes.tokenID,
               tokenSecret: proxmoxNodes.tokenSecret,
               backupStorage: proxmoxNodes.backupStorage,
+              isoDownloadStorage: proxmoxNodes.isoDownloadStorage,
             },
           })
           .from(servers)
@@ -383,6 +410,7 @@ const serverMiddleware = authMiddleware.unstable_pipe(
             proxmoxTemplates,
             eq(servers.proxmoxTemplateId, proxmoxTemplates.id),
           )
+          .leftJoin(serverMounts, eq(serverMounts.serverId, servers.id))
           .groupBy(
             servers.id,
             serverPlans.id,

@@ -146,6 +146,12 @@ export const proxmoxNodes = pgTable(
      * @example "local-lvm", "cephfs", "nfs"
      */
     backupStorage: t.text().notNull(),
+    /**
+     * The name of the storage used for ISO image downloads.
+     *
+     * @example "local-lvm", "cephfs", "nfs"
+     */
+    isoDownloadStorage: t.text().notNull(),
     createdAt: t
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()

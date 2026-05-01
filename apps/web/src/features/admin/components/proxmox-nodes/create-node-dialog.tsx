@@ -27,6 +27,7 @@ import {
 } from "@virtbase/ui/field";
 import {
   LucideCircleQuestionMark,
+  LucideDisc3,
   LucideFileText,
   LucideHardDrive,
 } from "@virtbase/ui/icons";
@@ -92,6 +93,7 @@ export default function CreateNodeDialog({
       token_secret: "",
       snippet_storage: "",
       backup_storage: "",
+      iso_download_storage: "",
     },
     resolver: zodResolver(CreateProxmoxNodeInputSchema),
   });
@@ -389,6 +391,49 @@ export default function CreateNodeDialog({
                           {t(
                             "Backups of any servers on this node will be stored here.",
                           )}
+                        </TooltipContent>
+                      </Tooltip>
+                    </InputGroupAddon>
+                  </InputGroup>
+                </Field>
+              )}
+            />
+            <Controller
+              name="iso_download_storage"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor={field.name}>
+                    {t("ISO Download Storage")}
+                  </FieldLabel>
+                  <InputGroup>
+                    <InputGroupAddon align="inline-start">
+                      <LucideDisc3 />
+                    </InputGroupAddon>
+                    <InputGroupInput
+                      id={field.name}
+                      aria-invalid={fieldState.invalid}
+                      autoComplete="off"
+                      type="text"
+                      minLength={1}
+                      placeholder="cephfs"
+                      {...field}
+                    />
+                    <InputGroupAddon align="inline-end">
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <InputGroupButton
+                            size="icon-xs"
+                            className="rounded-full"
+                          >
+                            <LucideCircleQuestionMark />
+                          </InputGroupButton>
+                        </TooltipTrigger>
+                        <TooltipContent
+                          className="max-w-xs text-center"
+                          align="end"
+                        >
+                          {t("ISO images will be stored here.")}
                         </TooltipContent>
                       </Tooltip>
                     </InputGroupAddon>

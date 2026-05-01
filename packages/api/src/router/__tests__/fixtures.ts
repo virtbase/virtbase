@@ -94,6 +94,7 @@ export const mockProxmoxNode = {
   coresLimit: 1,
   snippetStorage: "local-lvm",
   backupStorage: "local-lvm",
+  isoDownloadStorage: "local-lvm",
   createdAt: new Date(),
   updatedAt: new Date(),
 } satisfies typeof proxmoxNodes.$inferSelect;

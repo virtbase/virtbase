@@ -42,6 +42,8 @@ const prefixes = [
   "api_", // api key
   "sshkey_", // ssh key
   "txn_", // transaction
+  "iso_", // iso download
+  "mnt_", // server mount
 ] as const;
 
 // ULID uses base32 encoding
