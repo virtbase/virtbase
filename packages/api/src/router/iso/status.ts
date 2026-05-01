@@ -16,7 +16,7 @@
  */
 
 import { TRPCError } from "@trpc/server";
-import { and, eq } from "@virtbase/db";
+import { and, eq, sql } from "@virtbase/db";
 import {
   proxmoxIsoDownloads as pids,
   proxmoxNodes as pns,
