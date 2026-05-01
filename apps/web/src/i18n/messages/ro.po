@@ -2119,6 +2119,7 @@ msgid "tBwTvx"
 msgstr "Dimensiune/Stare"
 
 #: src/features/servers/components/backups/backups-table/columns.tsx:155
+#: src/features/servers/components/server-custom-image-select.tsx:188
 msgid "vXCeIi"
 msgstr "A eșuat"
 
@@ -2466,17 +2467,25 @@ msgstr "Montare ISO"
 msgid "tFFMkF"
 msgstr "Pauză"
 
-#: src/features/servers/components/server-custom-image-select.tsx:71
+#: src/features/servers/components/server-custom-image-select.tsx:99
 msgid "wPPrpH"
 msgstr "Selectați o imagine personalizată..."
 
-#: src/features/servers/components/server-custom-image-select.tsx:81
+#: src/features/servers/components/server-custom-image-select.tsx:109
 msgid "3MDlnT"
 msgstr "Căutați o imagine personalizată..."
 
-#: src/features/servers/components/server-custom-image-select.tsx:83
+#: src/features/servers/components/server-custom-image-select.tsx:111
 msgid "5YXiqk"
 msgstr "Nu s-a găsit nicio imagine personalizată."
+
+#: src/features/servers/components/server-custom-image-select.tsx:179
+msgid "9P0AA6"
+msgstr "Se încarcă {percentage}"
+
+#: src/features/servers/components/server-custom-image-select.tsx:184
+msgid "JEsxDw"
+msgstr "Se încarcă..."
 
 #: src/features/servers/components/server-graphs.tsx:86
 msgid "j9Y9nu"
@@ -2524,17 +2533,21 @@ msgstr "Interval"
 msgid "Han16c"
 msgstr "Montat"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:57
+#: src/features/servers/components/server-mounts-dialog.tsx:56
 msgid "ZE4urv"
 msgstr "Montare imagini ISO"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:58
+#: src/features/servers/components/server-mounts-dialog.tsx:57
 msgid "HZdPWF"
 msgstr "Montați imagini ISO pe serverul dumneavoastră."
 
-#: src/features/servers/components/server-mounts-dialog.tsx:106
+#: src/features/servers/components/server-mounts-dialog.tsx:103
 msgid "lgSmVl"
 msgstr "Imaginea ISO a fost montată cu succes. Modificarea va intra în vigoare la următoarea repornire."
+
+#: src/features/servers/components/server-mounts-dialog.tsx:109
+msgid "bmliQK"
+msgstr "Nu s-a putut monta imaginea ISO."
 
 #: src/features/servers/components/server-mounts-dialog.tsx:120
 msgid "1INFXA"
@@ -2544,7 +2557,7 @@ msgstr "Imaginea ISO a fost demontată cu succes. Modificarea va intra în vigoa
 msgid "xGxID0"
 msgstr "Slot {count}"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:158
+#: src/features/servers/components/server-mounts-dialog.tsx:159
 msgid "u9VaJ3"
 msgstr "Demontare"
 

@@ -2119,6 +2119,7 @@ msgid "tBwTvx"
 msgstr "Størrelse/status"
 
 #: src/features/servers/components/backups/backups-table/columns.tsx:155
+#: src/features/servers/components/server-custom-image-select.tsx:188
 msgid "vXCeIi"
 msgstr "Mislykkedes"
 
@@ -2466,17 +2467,25 @@ msgstr "Monter ISO"
 msgid "tFFMkF"
 msgstr "Pause"
 
-#: src/features/servers/components/server-custom-image-select.tsx:71
+#: src/features/servers/components/server-custom-image-select.tsx:99
 msgid "wPPrpH"
 msgstr "Vælg et brugerdefineret image..."
 
-#: src/features/servers/components/server-custom-image-select.tsx:81
+#: src/features/servers/components/server-custom-image-select.tsx:109
 msgid "3MDlnT"
 msgstr "Søg efter brugerdefineret image..."
 
-#: src/features/servers/components/server-custom-image-select.tsx:83
+#: src/features/servers/components/server-custom-image-select.tsx:111
 msgid "5YXiqk"
 msgstr "Intet brugerdefineret image fundet."
+
+#: src/features/servers/components/server-custom-image-select.tsx:179
+msgid "9P0AA6"
+msgstr "Uploader {percentage}"
+
+#: src/features/servers/components/server-custom-image-select.tsx:184
+msgid "JEsxDw"
+msgstr "Uploader..."
 
 #: src/features/servers/components/server-graphs.tsx:86
 msgid "j9Y9nu"
@@ -2524,17 +2533,21 @@ msgstr "Interval"
 msgid "Han16c"
 msgstr "Monteret"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:57
+#: src/features/servers/components/server-mounts-dialog.tsx:56
 msgid "ZE4urv"
 msgstr "Monter ISO-billeder"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:58
+#: src/features/servers/components/server-mounts-dialog.tsx:57
 msgid "HZdPWF"
 msgstr "Monter ISO-billeder på din server."
 
-#: src/features/servers/components/server-mounts-dialog.tsx:106
+#: src/features/servers/components/server-mounts-dialog.tsx:103
 msgid "lgSmVl"
 msgstr "ISO-image monteret. Ændringen træder i kraft ved næste opstart."
+
+#: src/features/servers/components/server-mounts-dialog.tsx:109
+msgid "bmliQK"
+msgstr "ISO-aftrykket kunne ikke monteres."
 
 #: src/features/servers/components/server-mounts-dialog.tsx:120
 msgid "1INFXA"
@@ -2544,7 +2557,7 @@ msgstr "ISO-image afmonteret. Ændringen træder i kraft ved næste opstart."
 msgid "xGxID0"
 msgstr "Plads {count}"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:158
+#: src/features/servers/components/server-mounts-dialog.tsx:159
 msgid "u9VaJ3"
 msgstr "Afmonter"
 

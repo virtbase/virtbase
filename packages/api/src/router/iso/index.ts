@@ -17,7 +17,7 @@
 
 import * as Sentry from "@sentry/node";
 import { TRPCError } from "@trpc/server";
-import { and, eq, getTableColumns, gt, sql } from "@virtbase/db";
+import { and, eq, getTableColumns, gt, like, sql } from "@virtbase/db";
 import { proxmoxIsoDownloads as pids, proxmoxNodes } from "@virtbase/db/schema";
 import { buildOrderBy, createId } from "@virtbase/db/utils";
 import {
@@ -85,6 +85,8 @@ export const isoRouter = createTRPCRouter({
                 eq(pids.id, input.id),
                 // [!] Authorization: Only allow the user to access their own ISO image downloads
                 eq(pids.userId, userId),
+                // Only show ISO images that have not expired yet
+                gt(pids.expiresAt, sql`now()`),
               ),
             )
             .limit(1)
@@ -142,8 +144,11 @@ export const isoRouter = createTRPCRouter({
       const where = and(
         // [!] Authorization: Only allow the user to access their own ISO image downloads
         eq(pids.userId, userId),
+        // Only show ISO images that have not expired yet
+        gt(pids.expiresAt, sql`now()`),
         // Filters
         input.url ? eq(pids.url, input.url) : undefined,
+        input.name ? like(pids.name, `%${input.name}%`) : undefined,
       );
 
       const orderBy = buildOrderBy(pids, input.sort, pids.id);

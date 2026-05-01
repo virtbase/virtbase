@@ -2110,6 +2110,7 @@ msgid "tBwTvx"
 msgstr "Size/Status"
 
 #: src/features/servers/components/backups/backups-table/columns.tsx:155
+#: src/features/servers/components/server-custom-image-select.tsx:188
 msgid "vXCeIi"
 msgstr "Failed"
 
@@ -2457,17 +2458,25 @@ msgstr "Mount ISO"
 msgid "tFFMkF"
 msgstr "Pause"
 
-#: src/features/servers/components/server-custom-image-select.tsx:71
+#: src/features/servers/components/server-custom-image-select.tsx:99
 msgid "wPPrpH"
 msgstr "Select a custom image..."
 
-#: src/features/servers/components/server-custom-image-select.tsx:81
+#: src/features/servers/components/server-custom-image-select.tsx:109
 msgid "3MDlnT"
 msgstr "Search for a custom image..."
 
-#: src/features/servers/components/server-custom-image-select.tsx:83
+#: src/features/servers/components/server-custom-image-select.tsx:111
 msgid "5YXiqk"
 msgstr "No custom image found."
+
+#: src/features/servers/components/server-custom-image-select.tsx:179
+msgid "9P0AA6"
+msgstr "Uploading {percentage}"
+
+#: src/features/servers/components/server-custom-image-select.tsx:184
+msgid "JEsxDw"
+msgstr "Uploading..."
 
 #: src/features/servers/components/server-graphs.tsx:86
 msgid "j9Y9nu"
@@ -2515,17 +2524,21 @@ msgstr "Interval"
 msgid "Han16c"
 msgstr "Mounted"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:57
+#: src/features/servers/components/server-mounts-dialog.tsx:56
 msgid "ZE4urv"
 msgstr "Mount ISO Images"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:58
+#: src/features/servers/components/server-mounts-dialog.tsx:57
 msgid "HZdPWF"
 msgstr "Mount ISO images to your server."
 
-#: src/features/servers/components/server-mounts-dialog.tsx:106
+#: src/features/servers/components/server-mounts-dialog.tsx:103
 msgid "lgSmVl"
 msgstr "ISO image mounted successfully. Change will take effect on next boot."
+
+#: src/features/servers/components/server-mounts-dialog.tsx:109
+msgid "bmliQK"
+msgstr "Could not mount ISO image."
 
 #: src/features/servers/components/server-mounts-dialog.tsx:120
 msgid "1INFXA"
@@ -2535,7 +2548,7 @@ msgstr "ISO image unmounted successfully. Change will take effect on next boot."
 msgid "xGxID0"
 msgstr "Slot {count}"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:158
+#: src/features/servers/components/server-mounts-dialog.tsx:159
 msgid "u9VaJ3"
 msgstr "Unmount"
 

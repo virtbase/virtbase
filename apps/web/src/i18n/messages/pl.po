@@ -2119,6 +2119,7 @@ msgid "tBwTvx"
 msgstr "Rozmiar/stan"
 
 #: src/features/servers/components/backups/backups-table/columns.tsx:155
+#: src/features/servers/components/server-custom-image-select.tsx:188
 msgid "vXCeIi"
 msgstr "Przegrany"
 
@@ -2466,17 +2467,25 @@ msgstr "Zamontuj ISO"
 msgid "tFFMkF"
 msgstr "Pauza"
 
-#: src/features/servers/components/server-custom-image-select.tsx:71
+#: src/features/servers/components/server-custom-image-select.tsx:99
 msgid "wPPrpH"
 msgstr "Wybierz niestandardowy obraz..."
 
-#: src/features/servers/components/server-custom-image-select.tsx:81
+#: src/features/servers/components/server-custom-image-select.tsx:109
 msgid "3MDlnT"
 msgstr "Szukaj niestandardowego obrazu..."
 
-#: src/features/servers/components/server-custom-image-select.tsx:83
+#: src/features/servers/components/server-custom-image-select.tsx:111
 msgid "5YXiqk"
 msgstr "Nie znaleziono niestandardowego obrazu."
+
+#: src/features/servers/components/server-custom-image-select.tsx:179
+msgid "9P0AA6"
+msgstr "Przesyłanie {percentage}"
+
+#: src/features/servers/components/server-custom-image-select.tsx:184
+msgid "JEsxDw"
+msgstr "Przesyłanie..."
 
 #: src/features/servers/components/server-graphs.tsx:86
 msgid "j9Y9nu"
@@ -2524,17 +2533,21 @@ msgstr "Interwał"
 msgid "Han16c"
 msgstr "Zamontowane"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:57
+#: src/features/servers/components/server-mounts-dialog.tsx:56
 msgid "ZE4urv"
 msgstr "Zamontuj obrazy ISO"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:58
+#: src/features/servers/components/server-mounts-dialog.tsx:57
 msgid "HZdPWF"
 msgstr "Zamontuj obrazy ISO na serwerze."
 
-#: src/features/servers/components/server-mounts-dialog.tsx:106
+#: src/features/servers/components/server-mounts-dialog.tsx:103
 msgid "lgSmVl"
 msgstr "Obraz ISO został pomyślnie zamontowany. Zmiana zostanie zastosowana przy następnym uruchomieniu."
+
+#: src/features/servers/components/server-mounts-dialog.tsx:109
+msgid "bmliQK"
+msgstr "Nie udało się zamontować obrazu ISO."
 
 #: src/features/servers/components/server-mounts-dialog.tsx:120
 msgid "1INFXA"
@@ -2544,7 +2557,7 @@ msgstr "Obraz ISO został pomyślnie odmontowany. Zmiana zostanie zastosowana pr
 msgid "xGxID0"
 msgstr "Gniazdo {count}"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:158
+#: src/features/servers/components/server-mounts-dialog.tsx:159
 msgid "u9VaJ3"
 msgstr "Odmontuj"
 

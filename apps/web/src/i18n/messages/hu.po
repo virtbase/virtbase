@@ -2119,6 +2119,7 @@ msgid "tBwTvx"
 msgstr "Méret/Állapot"
 
 #: src/features/servers/components/backups/backups-table/columns.tsx:155
+#: src/features/servers/components/server-custom-image-select.tsx:188
 msgid "vXCeIi"
 msgstr "Sikertelen"
 
@@ -2466,17 +2467,25 @@ msgstr "ISO csatolása"
 msgid "tFFMkF"
 msgstr "Szünet"
 
-#: src/features/servers/components/server-custom-image-select.tsx:71
+#: src/features/servers/components/server-custom-image-select.tsx:99
 msgid "wPPrpH"
 msgstr "Válasszon egyéni lemezképet..."
 
-#: src/features/servers/components/server-custom-image-select.tsx:81
+#: src/features/servers/components/server-custom-image-select.tsx:109
 msgid "3MDlnT"
 msgstr "Egyéni lemezkép keresése..."
 
-#: src/features/servers/components/server-custom-image-select.tsx:83
+#: src/features/servers/components/server-custom-image-select.tsx:111
 msgid "5YXiqk"
 msgstr "Nem található egyéni lemezkép."
+
+#: src/features/servers/components/server-custom-image-select.tsx:179
+msgid "9P0AA6"
+msgstr "Feltöltés: {percentage}"
+
+#: src/features/servers/components/server-custom-image-select.tsx:184
+msgid "JEsxDw"
+msgstr "Feltöltés..."
 
 #: src/features/servers/components/server-graphs.tsx:86
 msgid "j9Y9nu"
@@ -2524,17 +2533,21 @@ msgstr "Intervallum"
 msgid "Han16c"
 msgstr "Csatolva"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:57
+#: src/features/servers/components/server-mounts-dialog.tsx:56
 msgid "ZE4urv"
 msgstr "ISO-lemezképek csatolása"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:58
+#: src/features/servers/components/server-mounts-dialog.tsx:57
 msgid "HZdPWF"
 msgstr "Csatoljon ISO-lemezképeket a kiszolgálóhoz."
 
-#: src/features/servers/components/server-mounts-dialog.tsx:106
+#: src/features/servers/components/server-mounts-dialog.tsx:103
 msgid "lgSmVl"
 msgstr "Az ISO-lemezkép sikeresen csatolva. A változás a következő indításkor lép életbe."
+
+#: src/features/servers/components/server-mounts-dialog.tsx:109
+msgid "bmliQK"
+msgstr "Az ISO-lemezkép felcsatolása nem sikerült."
 
 #: src/features/servers/components/server-mounts-dialog.tsx:120
 msgid "1INFXA"
@@ -2544,7 +2557,7 @@ msgstr "Az ISO-lemezkép sikeresen leválasztva. A változás a következő ind�
 msgid "xGxID0"
 msgstr "Foglalat {count}"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:158
+#: src/features/servers/components/server-mounts-dialog.tsx:159
 msgid "u9VaJ3"
 msgstr "Leválasztás"
 

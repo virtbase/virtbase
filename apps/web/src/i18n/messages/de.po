@@ -957,7 +957,7 @@ msgstr "Eigene ISO-Abbilder"
 
 #: src/features/account/components/custom-images/custom-images-card.tsx:47
 msgid "GnqZoy"
-msgstr "Lade eigene ISO-Abbilder hoch und verwalten sie für deine Server."
+msgstr "Lade eigene ISO-Abbilder hoch und verwalte sie für deine Server."
 
 #: src/features/account/components/custom-images/custom-images-card.tsx:60
 msgid "Lwyinc"
@@ -2119,6 +2119,7 @@ msgid "tBwTvx"
 msgstr "Größe/Status"
 
 #: src/features/servers/components/backups/backups-table/columns.tsx:155
+#: src/features/servers/components/server-custom-image-select.tsx:188
 msgid "vXCeIi"
 msgstr "Fehlgeschlagen"
 
@@ -2466,17 +2467,25 @@ msgstr "ISO einbinden"
 msgid "tFFMkF"
 msgstr "Pausieren"
 
-#: src/features/servers/components/server-custom-image-select.tsx:71
+#: src/features/servers/components/server-custom-image-select.tsx:99
 msgid "wPPrpH"
 msgstr "Benutzerdefiniertes Image auswählen..."
 
-#: src/features/servers/components/server-custom-image-select.tsx:81
+#: src/features/servers/components/server-custom-image-select.tsx:109
 msgid "3MDlnT"
 msgstr "Benutzerdefiniertes Image suchen..."
 
-#: src/features/servers/components/server-custom-image-select.tsx:83
+#: src/features/servers/components/server-custom-image-select.tsx:111
 msgid "5YXiqk"
 msgstr "Kein benutzerdefiniertes Image gefunden."
+
+#: src/features/servers/components/server-custom-image-select.tsx:179
+msgid "9P0AA6"
+msgstr "Hochladen {percentage}"
+
+#: src/features/servers/components/server-custom-image-select.tsx:184
+msgid "JEsxDw"
+msgstr "Wird hochgeladen..."
 
 #: src/features/servers/components/server-graphs.tsx:86
 msgid "j9Y9nu"
@@ -2524,17 +2533,21 @@ msgstr "Intervall"
 msgid "Han16c"
 msgstr "Eingehängt"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:57
+#: src/features/servers/components/server-mounts-dialog.tsx:56
 msgid "ZE4urv"
 msgstr "ISO-Images einbinden"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:58
+#: src/features/servers/components/server-mounts-dialog.tsx:57
 msgid "HZdPWF"
 msgstr "Binden Sie ISO-Images an Ihren Server."
 
-#: src/features/servers/components/server-mounts-dialog.tsx:106
+#: src/features/servers/components/server-mounts-dialog.tsx:103
 msgid "lgSmVl"
 msgstr "ISO-Image erfolgreich eingebunden. Die Änderung wird beim nächsten Start wirksam."
+
+#: src/features/servers/components/server-mounts-dialog.tsx:109
+msgid "bmliQK"
+msgstr "ISO-Image konnte nicht eingebunden werden."
 
 #: src/features/servers/components/server-mounts-dialog.tsx:120
 msgid "1INFXA"
@@ -2544,7 +2557,7 @@ msgstr "ISO-Image erfolgreich ausgehängt. Die Änderung wird beim nächsten Sta
 msgid "xGxID0"
 msgstr "Steckplatz {count}"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:158
+#: src/features/servers/components/server-mounts-dialog.tsx:159
 msgid "u9VaJ3"
 msgstr "Aushängen"
 

@@ -97,9 +97,7 @@ export const serversMountsRouter = createTRPCRouter({
               });
             }
 
-            const current = instance.vm.config.$get({
-              current: true,
-            });
+            const current = instance.vm.config.$get();
 
             let drive: string | null = null;
             for (let i = 0; i < 4; i++) {
@@ -122,6 +120,7 @@ export const serversMountsRouter = createTRPCRouter({
             // Synchronous update - effective on next boot
             await instance.vm.config.$put({
               [drive]: `${volid},media=cdrom`,
+              boot: `order=${drive},scsi0`,
             });
 
             const inserted = await tx
