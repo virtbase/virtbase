@@ -113,26 +113,26 @@ const ServerAllocationsField = z.union([
     }),
 ]);
 
-const ServerMountsField = z.array(
-  z.union([
-    ServerMountSchema.shape.id,
-    ServerMountSchema.pick({
-      id: true,
-      drive: true,
-    })
-      .meta({
-        description:
-          "Only present if the `mounts` expand is included. The mounts of the server.",
-      })
-      .extend({
+const ServerMountsField = z.union([
+  z.array(ServerMountSchema.shape.id),
+  z
+    .array(
+      ServerMountSchema.pick({
+        id: true,
+        drive: true,
+      }).extend({
         image: ProxmoxIsoDownloadSchema.pick({
           id: true,
           name: true,
           expires_at: true,
         }),
       }),
-  ]),
-);
+    )
+    .meta({
+      description:
+        "Only present if the `mounts` expand is included. The mounts of the server.",
+    }),
+]);
 
 export const GetServerInputSchema = z.object({
   server_id: ServerSchema.shape.id,

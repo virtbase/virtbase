@@ -371,7 +371,7 @@ const serverMiddleware = authMiddleware.unstable_pipe(
                     image: {
                       id: string;
                       name: string;
-                      expires_at: Date;
+                      expires_at: string;
                     };
                   }[]
                 >`
@@ -458,13 +458,36 @@ const serverMiddleware = authMiddleware.unstable_pipe(
     }
 
     // [!] Split sensitive data from server data
-    const { proxmoxNode, ...serverData } = server;
+    const { proxmoxNode, mounts, ...serverData } = server;
 
     const instance = getProxmoxInstance(proxmoxNode);
 
+    const mountsExpanded = expansions.has("mounts");
+
     return next({
       ctx: {
-        server: serverData,
+        server: {
+          ...serverData,
+          mounts: mountsExpanded
+            ? (
+                mounts as {
+                  id: string;
+                  drive: string;
+                  image: {
+                    id: string;
+                    name: string;
+                    expires_at: string;
+                  };
+                }[]
+              ).map((mount) => ({
+                ...mount,
+                image: {
+                  ...mount.image,
+                  expires_at: new Date(mount.image.expires_at),
+                },
+              }))
+            : (mounts as string[]),
+        },
         proxmoxNode,
         instance: {
           ...instance,
