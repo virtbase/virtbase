@@ -144,7 +144,7 @@ export function ServerActionsRow() {
               <LucideDisc3 aria-hidden />
               {t("Mount ISO")}
             </DropdownMenuItem>
-
+            <DropdownMenuSeparator />
             <DropdownMenuItem
               onClick={() =>
                 changeStatus({ server_id: serverId, action: "pause" })

@@ -59,22 +59,20 @@ export default function ServerMountsDialog(
       {...props}
     >
       <FieldGroup>
-        <div className="grid gap-6 lg:grid-cols-2">
-          {Array.from({ length: 2 }).map((_, index) => {
-            const mount = mounts[index];
-            return (
-              <Suspense fallback={<Skeleton className="h-10 w-full" />}>
-                <ServerMountImageItem
-                  key={index}
-                  mount={mount}
-                  serverId={serverId}
-                  disabled={isLoadingServer}
-                  index={index}
-                />
-              </Suspense>
-            );
-          })}
-        </div>
+        {Array.from({ length: 2 }).map((_, index) => {
+          const mount = mounts[index];
+          return (
+            <Suspense fallback={<Skeleton className="h-10 w-full" />}>
+              <ServerMountImageItem
+                key={index}
+                mount={mount}
+                serverId={serverId}
+                disabled={isLoadingServer}
+                index={index}
+              />
+            </Suspense>
+          );
+        })}
       </FieldGroup>
     </ResponsiveDialog>
   );
@@ -132,36 +130,34 @@ function ServerMountImageItem({
       <FieldLabel htmlFor={`mount-${index}`}>
         {t("Slot {count}", { count: String(index + 1) })}
       </FieldLabel>
-      <div className="flex items-center gap-2">
-        <ServerCustomImageSelect
-          id={`mount-${index}`}
-          images={images}
-          value={isMounted ? mount.image.id : ""}
-          onValueChange={(value) =>
-            mountImage({
+      <ServerCustomImageSelect
+        id={`mount-${index}`}
+        images={images}
+        value={isMounted ? mount.image.id : ""}
+        onValueChange={(value) =>
+          mountImage({
+            server_id: serverId,
+            iso_download_id: value,
+          })
+        }
+        disabled={disabled || isMountingImage || isUnmountingImage}
+      />
+      {isMounted && (
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={() =>
+            unmountImage({
               server_id: serverId,
-              iso_download_id: value,
+              mount_id: mount.id,
             })
           }
           disabled={disabled || isMountingImage || isUnmountingImage}
-        />
-        {isMounted && (
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={() =>
-              unmountImage({
-                server_id: serverId,
-                mount_id: mount.id,
-              })
-            }
-            disabled={disabled || isMountingImage || isUnmountingImage}
-          >
-            <LucideX aria-hidden="true" />
-            <span className="sr-only">{t("Unmount")}</span>
-          </Button>
-        )}
-      </div>
+        >
+          <LucideX aria-hidden="true" />
+          <span className="sr-only">{t("Unmount")}</span>
+        </Button>
+      )}
     </Field>
   );
 }

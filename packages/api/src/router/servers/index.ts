@@ -226,7 +226,7 @@ export const serversRouter = createTRPCRouter({
                       image: {
                         id: string;
                         name: string;
-                        expires_at: Date;
+                        expires_at: string;
                       };
                     }[]
                   >`
@@ -294,6 +294,8 @@ export const serversRouter = createTRPCRouter({
         },
       );
 
+      const mountsExpanded = input.expand.includes("mounts");
+
       return {
         servers: data.map((item) => ({
           id: item.id,
@@ -303,9 +305,28 @@ export const serversRouter = createTRPCRouter({
           datacenter: item.datacenter,
           node: item.node,
           allocations: item.allocations,
-          mounts: item.mounts,
+          mounts: mountsExpanded
+            ? (
+                item.mounts as {
+                  id: string;
+                  drive: string;
+                  image: {
+                    id: string;
+                    name: string;
+                    expires_at: string;
+                  };
+                }[]
+              ).map((mount) => ({
+                ...mount,
+                image: {
+                  ...mount.image,
+                  expires_at: new Date(mount.image.expires_at),
+                },
+              }))
+            : (item.mounts as string[]),
           installed_at: item.installedAt,
           suspended_at: item.suspendedAt,
+
           terminates_at: item.terminatesAt,
         })),
         meta: {
