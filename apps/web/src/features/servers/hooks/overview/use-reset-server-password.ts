@@ -20,19 +20,19 @@ import { useTRPC } from "@/lib/trpc/react";
 
 type TRPC = ReturnType<typeof useTRPC>;
 type Options = Parameters<
-  TRPC["servers"]["actions"]["resetRootPassword"]["mutationOptions"]
+  TRPC["servers"]["actions"]["resetPassword"]["mutationOptions"]
 >[0];
 
-interface ResetRootPasswordOptions {
+interface ResetServerPasswordOptions {
   mutationConfig?: Options;
 }
 
-export const useResetRootPassword = ({
+export const useResetServerPassword = ({
   mutationConfig,
-}: ResetRootPasswordOptions = {}) => {
+}: ResetServerPasswordOptions = {}) => {
   const trpc = useTRPC();
 
   return useMutation(
-    trpc.servers.actions.resetRootPassword.mutationOptions(mutationConfig),
+    trpc.servers.actions.resetPassword.mutationOptions(mutationConfig),
   );
 };

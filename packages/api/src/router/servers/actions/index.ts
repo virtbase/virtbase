@@ -24,8 +24,8 @@ import { mapProxmoxServerStatus, ProxmoxServerStatus } from "@virtbase/utils";
 import {
   ChangeTemplateServerInputSchema,
   ChangeTemplateServerOutputSchema,
-  ResetRootPasswordServerInputSchema,
-  ResetRootPasswordServerOutputSchema,
+  ResetServerPasswordServerInputSchema,
+  ResetServerPasswordServerOutputSchema,
 } from "@virtbase/validators/server";
 import { start } from "workflow/api";
 import { createTRPCRouter, serverProcedure } from "../../../trpc";
@@ -105,17 +105,17 @@ export const serversActionsRouter = createTRPCRouter({
         },
       ]);
     }),
-  resetRootPassword: serverProcedure
+  resetPassword: serverProcedure
     .meta({
       openapi: {
         method: "POST",
-        path: "/servers/{server_id}/actions/reset-root-password",
+        path: "/servers/{server_id}/actions/reset-password",
         protect: true,
         contentTypes: ["application/json"],
         tags: ["Servers"],
-        summary: "Reset root password",
+        summary: "Reset password",
         description:
-          "Reset the root password of a server. Requires the `qemu-guest-agent` to be installed and the server to be running.",
+          "Reset the password of a user on a server. Requires the `qemu-guest-agent` to be installed and the server to be running.",
       },
       permissions: {
         servers: ["write"],
@@ -125,11 +125,11 @@ export const serversActionsRouter = createTRPCRouter({
         requests: 3,
         seconds: "60 s",
         fingerprint: ({ userId, defaultFingerprint }) =>
-          `reset-server-root-password:${userId || defaultFingerprint}`,
+          `reset-server-password:${userId || defaultFingerprint}`,
       },
     })
-    .input(ResetRootPasswordServerInputSchema)
-    .output(ResetRootPasswordServerOutputSchema)
+    .input(ResetServerPasswordServerInputSchema)
+    .output(ResetServerPasswordServerOutputSchema)
     .mutation(async ({ ctx, input }) => {
       const { instance } = ctx;
       const { vm } = instance;
@@ -143,11 +143,11 @@ export const serversActionsRouter = createTRPCRouter({
         });
       }
 
-      const { root_password: password } = input;
+      const { username, password } = input;
 
       try {
         await vm.agent["set-user-password"].$post({
-          username: "root",
+          username,
           password,
         });
       } catch (error) {

@@ -20,8 +20,14 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Alert, AlertDescription, AlertTitle } from "@virtbase/ui/alert";
 import { Button } from "@virtbase/ui/button";
-import { Field, FieldGroup, FieldLabel } from "@virtbase/ui/field";
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@virtbase/ui/field";
 import { LucideAlertTriangle } from "@virtbase/ui/icons/index";
+import { Input } from "@virtbase/ui/input";
 import {
   InputGroup,
   InputGroupAddon,
@@ -29,8 +35,7 @@ import {
 } from "@virtbase/ui/input-group";
 import { ResponsiveDialog } from "@virtbase/ui/responsive-dialog";
 import { Spinner } from "@virtbase/ui/spinner";
-import type { ResetRootPasswordServerInput } from "@virtbase/validators/server";
-import { ResetRootPasswordServerInputSchema } from "@virtbase/validators/server";
+import { ResetServerPasswordServerInputSchema } from "@virtbase/validators/server";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useEffect, useState } from "react";
@@ -41,9 +46,9 @@ import {
   RandomPasswordAddon,
   ShowPasswordAddon,
 } from "@/ui/input-group-addons";
-import { useResetRootPassword } from "../../hooks/overview/use-reset-root-password";
+import { useResetServerPassword } from "../../hooks/overview/use-reset-server-password";
 
-export default function ResetRootPasswordDialog(
+export default function ResetServerPasswordDialog(
   props: Omit<
     React.ComponentProps<typeof ResponsiveDialog>,
     "title" | "description" | "footer"
@@ -52,7 +57,7 @@ export default function ResetRootPasswordDialog(
   const { id: serverId } = useParams<{ id: string }>();
   const t = useExtracted();
 
-  const { mutate: resetRootPassword, isPending } = useResetRootPassword({
+  const { mutate: resetServerPassword, isPending } = useResetServerPassword({
     mutationConfig: {
       onSuccess: () => {
         props.onOpenChange?.(false);
@@ -63,12 +68,13 @@ export default function ResetRootPasswordDialog(
     },
   });
 
-  const form = useForm<ResetRootPasswordServerInput>({
+  const form = useForm({
     defaultValues: {
       server_id: serverId,
-      root_password: "",
+      username: "root",
+      password: "",
     },
-    resolver: zodResolver(ResetRootPasswordServerInputSchema),
+    resolver: zodResolver(ResetServerPasswordServerInputSchema),
     disabled: isPending,
   });
 
@@ -83,8 +89,8 @@ export default function ResetRootPasswordDialog(
 
   return (
     <ResponsiveDialog
-      title={t("Reset Root Password")}
-      description={t("Reset the root password of your server.")}
+      title={t("Reset Password")}
+      description={t("Reset the password of a user on your server.")}
       footer={
         <>
           <Button
@@ -96,18 +102,18 @@ export default function ResetRootPasswordDialog(
           </Button>
           <Button
             type="submit"
-            form="reset-root-password-form"
+            form="reset-server-password-form"
             disabled={form.formState.disabled || isPending}
           >
-            {isPending && <Spinner />} {t("Reset Root Password")}
+            {isPending && <Spinner />} {t("Reset Password")}
           </Button>
         </>
       }
       {...props}
     >
       <form
-        id="reset-root-password-form"
-        onSubmit={form.handleSubmit((data) => resetRootPassword(data))}
+        id="reset-server-password-form"
+        onSubmit={form.handleSubmit((data) => resetServerPassword(data))}
       >
         <FieldGroup>
           <Alert variant="destructive">
@@ -127,12 +133,51 @@ export default function ResetRootPasswordDialog(
             </AlertDescription>
           </Alert>
           <Controller
-            name="root_password"
+            name="username"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <div className="flex flex-row items-center justify-between gap-2">
+                  <FieldLabel htmlFor={field.name}>{t("Username")}</FieldLabel>
+                  <span className="flex font-normal text-muted-foreground text-sm">
+                    <span className="flex w-5 justify-end">
+                      {field.value?.length ?? 0}
+                    </span>
+                    <span>/64</span>
+                  </span>
+                </div>
+                <Input
+                  id={field.name}
+                  aria-invalid={fieldState.invalid}
+                  autoComplete="off"
+                  autoCapitalize="off"
+                  spellCheck={false}
+                  type="text"
+                  maxLength={64}
+                  minLength={1}
+                  placeholder="root"
+                  {...field}
+                />
+                <FieldDescription>
+                  {t.rich(
+                    "The username of the account to reset the password for. Mostly <code>root</code> for Linux and <code>Administrator</code> for Windows.",
+                    {
+                      code: (chunks) => (
+                        <span className="font-mono">{chunks}</span>
+                      ),
+                    },
+                  )}
+                </FieldDescription>
+              </Field>
+            )}
+          />
+          <Controller
+            name="password"
             control={form.control}
             render={({ field, fieldState }) => (
               <Field data-invalid={fieldState.invalid}>
                 <FieldLabel htmlFor={field.name}>
-                  {t("New Root Password")}
+                  {t("New Password")}
                 </FieldLabel>
                 <InputGroup>
                   <InputGroupInput
@@ -146,7 +191,7 @@ export default function ResetRootPasswordDialog(
                   <InputGroupAddon align="inline-end">
                     <RandomPasswordAddon
                       onClick={(password) => {
-                        form.setValue("root_password", password, {
+                        form.setValue("password", password, {
                           shouldDirty: true,
                           shouldValidate: true,
                           shouldTouch: true,

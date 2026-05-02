@@ -739,7 +739,7 @@ msgstr "Maak een API-sleutel"
 #: src/features/servers/components/backups/restore-backup-dialog.tsx:76
 #: src/features/servers/components/overview/change-template-dialog.tsx:103
 #: src/features/servers/components/overview/rename-server-dialog.tsx:74
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:95
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:101
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx:89
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx:170
 #: src/ui/feedback-button.tsx:31
@@ -1663,6 +1663,9 @@ msgid "8HimVK"
 msgstr "Bevestig wachtwoord"
 
 #: src/features/auth/components/reset-password-form.tsx:138
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:92
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:108
+#: src/features/servers/components/overview/server-details-card.tsx:189
 msgid "xl27nc"
 msgstr "Wachtwoord opnieuw instellen"
 
@@ -2251,7 +2254,7 @@ msgid "VWfWP6"
 msgstr "Wijzig het besturingssysteem van uw server."
 
 #: src/features/servers/components/overview/change-template-dialog.tsx:124
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:115
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:121
 msgid "3SVI5p"
 msgstr "Waarschuwing"
 
@@ -2264,7 +2267,6 @@ msgid "MbXrbc"
 msgstr "Nieuw besturingssysteem"
 
 #: src/features/servers/components/overview/change-template-dialog.tsx:171
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:135
 msgid "h8jASy"
 msgstr "Nieuw root-wachtwoord"
 
@@ -2299,19 +2301,25 @@ msgstr "Hernoem uw server."
 msgid "UQXG4v"
 msgstr "Mijn server"
 
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:86
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:102
-#: src/features/servers/components/overview/server-details-card.tsx:189
-msgid "D3OPFp"
-msgstr "Root-wachtwoord opnieuw instellen"
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:93
+msgid "5juwi+"
+msgstr "Stel het wachtwoord van een gebruiker op uw server opnieuw in."
 
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:87
-msgid "//IN8L"
-msgstr "Reset het rootwachtwoord van uw server."
-
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:118
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:124
 msgid "K1+gri"
 msgstr "Deze actie kan niet ongedaan worden gemaakt. Als het <code>qemu-quest-agent</code>-pakket niet is geïnstalleerd, mislukt het proces."
+
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:141
+msgid "JCIgkj"
+msgstr "Gebruikersnaam"
+
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:162
+msgid "1jWUV4"
+msgstr "De gebruikersnaam van het account waarvan u het wachtwoord wilt resetten. Meestal <code>root</code> op Linux en <code>Administrator</code> op Windows."
+
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:180
+msgid "Ev6SEF"
+msgstr "Nieuw wachtwoord"
 
 #: src/features/servers/components/overview/server-details-card.tsx:70
 msgid "F/6VqP"

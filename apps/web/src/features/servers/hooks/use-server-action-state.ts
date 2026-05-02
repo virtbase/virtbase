@@ -25,7 +25,7 @@ export function useServerActionState() {
     parseAsStringEnum([
       "rename",
       "view-node-details",
-      "reset-root-password",
+      "reset-server-password",
       "change-operating-system",
       "create-backup",
       "upsert-record",

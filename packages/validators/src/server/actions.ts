@@ -44,17 +44,25 @@ export type ChangeTemplateServerOutput = z.infer<
   typeof ChangeTemplateServerOutputSchema
 >;
 
-export const ResetRootPasswordServerInputSchema = z.object({
+export const ResetServerPasswordServerInputSchema = z.object({
   server_id: ServerSchema.shape.id,
-  root_password: RootPasswordSchema,
+  username: z
+    .string()
+    .min(1)
+    .max(64)
+    .default("root")
+    .describe("The username to reset the password for."),
+  password: RootPasswordSchema.meta({
+    description: "The new password for the user defined in `username`.",
+  }),
 });
 
-export type ResetRootPasswordServerInput = z.infer<
-  typeof ResetRootPasswordServerInputSchema
+export type ResetServerPasswordServerInput = z.infer<
+  typeof ResetServerPasswordServerInputSchema
 >;
 
-export const ResetRootPasswordServerOutputSchema = z.void();
+export const ResetServerPasswordServerOutputSchema = z.void();
 
-export type ResetRootPasswordServerOutput = z.infer<
-  typeof ResetRootPasswordServerOutputSchema
+export type ResetServerPasswordServerOutput = z.infer<
+  typeof ResetServerPasswordServerOutputSchema
 >;

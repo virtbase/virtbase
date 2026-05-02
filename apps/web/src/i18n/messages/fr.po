@@ -739,7 +739,7 @@ msgstr "Créer une clé API"
 #: src/features/servers/components/backups/restore-backup-dialog.tsx:76
 #: src/features/servers/components/overview/change-template-dialog.tsx:103
 #: src/features/servers/components/overview/rename-server-dialog.tsx:74
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:95
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:101
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx:89
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx:170
 #: src/ui/feedback-button.tsx:31
@@ -1663,6 +1663,9 @@ msgid "8HimVK"
 msgstr "Confirmez le mot de passe"
 
 #: src/features/auth/components/reset-password-form.tsx:138
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:92
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:108
+#: src/features/servers/components/overview/server-details-card.tsx:189
 msgid "xl27nc"
 msgstr "Réinitialiser le mot de passe"
 
@@ -2251,7 +2254,7 @@ msgid "VWfWP6"
 msgstr "Changez le système d'exploitation de votre serveur."
 
 #: src/features/servers/components/overview/change-template-dialog.tsx:124
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:115
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:121
 msgid "3SVI5p"
 msgstr "Avertissement"
 
@@ -2264,7 +2267,6 @@ msgid "MbXrbc"
 msgstr "Nouveau système d'exploitation"
 
 #: src/features/servers/components/overview/change-template-dialog.tsx:171
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:135
 msgid "h8jASy"
 msgstr "Nouveau mot de passe racine"
 
@@ -2299,19 +2301,25 @@ msgstr "Renommez votre serveur."
 msgid "UQXG4v"
 msgstr "Mon serveur"
 
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:86
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:102
-#: src/features/servers/components/overview/server-details-card.tsx:189
-msgid "D3OPFp"
-msgstr "Réinitialiser le mot de passe racine"
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:93
+msgid "5juwi+"
+msgstr "Réinitialisez le mot de passe d'un utilisateur sur votre serveur."
 
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:87
-msgid "//IN8L"
-msgstr "Réinitialisez le mot de passe root de votre serveur."
-
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:118
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:124
 msgid "K1+gri"
 msgstr "Cette action ne peut pas être annulée. Si le package <code>qemu-quest-agent</code> n'est pas installé, le processus échouera."
+
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:141
+msgid "JCIgkj"
+msgstr "Nom d'utilisateur"
+
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:162
+msgid "1jWUV4"
+msgstr "Le nom d'utilisateur du compte dont vous voulez réinitialiser le mot de passe. Généralement <code>root</code> sous Linux et <code>Administrator</code> sous Windows."
+
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:180
+msgid "Ev6SEF"
+msgstr "Nouveau mot de passe"
 
 #: src/features/servers/components/overview/server-details-card.tsx:70
 msgid "F/6VqP"

@@ -739,7 +739,7 @@ msgstr "Opret API-nøgle"
 #: src/features/servers/components/backups/restore-backup-dialog.tsx:76
 #: src/features/servers/components/overview/change-template-dialog.tsx:103
 #: src/features/servers/components/overview/rename-server-dialog.tsx:74
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:95
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:101
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx:89
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx:170
 #: src/ui/feedback-button.tsx:31
@@ -1663,6 +1663,9 @@ msgid "8HimVK"
 msgstr "Bekræft adgangskode"
 
 #: src/features/auth/components/reset-password-form.tsx:138
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:92
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:108
+#: src/features/servers/components/overview/server-details-card.tsx:189
 msgid "xl27nc"
 msgstr "Nulstil adgangskode"
 
@@ -2251,7 +2254,7 @@ msgid "VWfWP6"
 msgstr "Skift operativsystemet på din server."
 
 #: src/features/servers/components/overview/change-template-dialog.tsx:124
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:115
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:121
 msgid "3SVI5p"
 msgstr "Advarsel"
 
@@ -2264,7 +2267,6 @@ msgid "MbXrbc"
 msgstr "Nyt operativsystem"
 
 #: src/features/servers/components/overview/change-template-dialog.tsx:171
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:135
 msgid "h8jASy"
 msgstr "Ny root-adgangskode"
 
@@ -2299,19 +2301,25 @@ msgstr "Omdøb din server."
 msgid "UQXG4v"
 msgstr "Min server"
 
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:86
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:102
-#: src/features/servers/components/overview/server-details-card.tsx:189
-msgid "D3OPFp"
-msgstr "Nulstil root-adgangskode"
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:93
+msgid "5juwi+"
+msgstr "Nulstil adgangskoden for en bruger på din server."
 
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:87
-msgid "//IN8L"
-msgstr "Nulstil root-adgangskoden til din server."
-
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:118
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:124
 msgid "K1+gri"
 msgstr "Denne handling kan ikke fortrydes. Hvis <code>qemu-quest-agent</code>-pakken ikke er installeret, vil processen mislykkes."
+
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:141
+msgid "JCIgkj"
+msgstr "Brugernavn"
+
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:162
+msgid "1jWUV4"
+msgstr "Brugernavnet på den konto, hvis adgangskode skal nulstilles. Som regel <code>root</code> på Linux og <code>Administrator</code> på Windows."
+
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:180
+msgid "Ev6SEF"
+msgstr "Ny adgangskode"
 
 #: src/features/servers/components/overview/server-details-card.tsx:70
 msgid "F/6VqP"
