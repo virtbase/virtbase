@@ -18,15 +18,22 @@
 "use client";
 
 import { Button } from "@virtbase/ui/button";
-import { Field, FieldGroup, FieldLabel } from "@virtbase/ui/field";
+import {
+  Field,
+  FieldDescription,
+  FieldGroup,
+  FieldLabel,
+} from "@virtbase/ui/field";
 import { LucideX } from "@virtbase/ui/icons/index";
 import { ResponsiveDialog } from "@virtbase/ui/responsive-dialog";
 import { Skeleton } from "@virtbase/ui/skeleton";
+import NextLink from "next/link";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { Suspense } from "react";
 import { toast } from "sonner";
 import { useCustomImagesList } from "@/features/account/hooks/custom-images/use-custom-image-list";
+import { paths } from "@/lib/paths";
 import { useMountImage } from "../hooks/use-mount-image";
 import { useServer } from "../hooks/use-server";
 import { useUnmountImage } from "../hooks/use-unmount-image";
@@ -102,6 +109,8 @@ export default function ServerMountDialog(
             <div className="flex items-center gap-2">
               <ServerCustomImageSelect
                 id="mount"
+                className="flex-1"
+                modal
                 images={images}
                 value={isMounted ? mount.id : ""}
                 onValueChange={(value) =>
@@ -128,6 +137,25 @@ export default function ServerMountDialog(
                 </Button>
               )}
             </div>
+            <FieldDescription>
+              {t(
+                "The ISO image will be mounted instantly, but to boot into it, you need to fully stop and restart the server.",
+              )}{" "}
+              {t.rich(
+                "Images can be uploaded from your <link>account settings</link>.",
+                {
+                  link: (chunks) => (
+                    <NextLink
+                      href={paths.app.account.settings.customImages.getHref()}
+                      prefetch={false}
+                      className="text-foreground underline decoration-dotted transition-colors hover:text-foreground/80"
+                    >
+                      {chunks}
+                    </NextLink>
+                  ),
+                },
+              )}
+            </FieldDescription>
           </Field>
         </Suspense>
       </FieldGroup>

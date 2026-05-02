@@ -2533,33 +2533,41 @@ msgstr "Intervalo"
 msgid "Han16c"
 msgstr "Montado"
 
-#: src/features/servers/components/server-mount-dialog.tsx:63
+#: src/features/servers/components/server-mount-dialog.tsx:70
 msgid "lgSmVl"
 msgstr "Imagen ISO montada correctamente. El cambio se aplicará en el próximo arranque."
 
-#: src/features/servers/components/server-mount-dialog.tsx:69
+#: src/features/servers/components/server-mount-dialog.tsx:76
 msgid "bmliQK"
 msgstr "No se pudo montar la imagen ISO."
 
-#: src/features/servers/components/server-mount-dialog.tsx:80
+#: src/features/servers/components/server-mount-dialog.tsx:87
 msgid "1INFXA"
 msgstr "Imagen ISO desmontada correctamente. El cambio se aplicará en el próximo arranque."
 
-#: src/features/servers/components/server-mount-dialog.tsx:94
+#: src/features/servers/components/server-mount-dialog.tsx:101
 msgid "ZE4urv"
 msgstr "Montar imágenes ISO"
 
-#: src/features/servers/components/server-mount-dialog.tsx:95
+#: src/features/servers/components/server-mount-dialog.tsx:102
 msgid "HZdPWF"
 msgstr "Monta imágenes ISO en tu servidor."
 
-#: src/features/servers/components/server-mount-dialog.tsx:101
+#: src/features/servers/components/server-mount-dialog.tsx:108
 msgid "C3jmVs"
 msgstr "Imagen ISO"
 
-#: src/features/servers/components/server-mount-dialog.tsx:127
+#: src/features/servers/components/server-mount-dialog.tsx:136
 msgid "u9VaJ3"
 msgstr "Desmontar"
+
+#: src/features/servers/components/server-mount-dialog.tsx:141
+msgid "Uh7TFc"
+msgstr "La imagen ISO se montará al instante, pero para arrancar desde ella debes detener por completo el servidor y reiniciarlo."
+
+#: src/features/servers/components/server-mount-dialog.tsx:144
+msgid "FglhQv"
+msgstr "Puedes subir imágenes desde la <link>configuración de tu cuenta</link>."
 
 #: src/features/servers/components/server-stats-card.tsx:192
 msgid "PW+sL4"

@@ -2533,33 +2533,41 @@ msgstr "Intervallum"
 msgid "Han16c"
 msgstr "Csatolva"
 
-#: src/features/servers/components/server-mount-dialog.tsx:63
+#: src/features/servers/components/server-mount-dialog.tsx:70
 msgid "lgSmVl"
 msgstr "Az ISO-lemezkép sikeresen csatolva. A változás a következő indításkor lép életbe."
 
-#: src/features/servers/components/server-mount-dialog.tsx:69
+#: src/features/servers/components/server-mount-dialog.tsx:76
 msgid "bmliQK"
 msgstr "Az ISO-lemezkép felcsatolása nem sikerült."
 
-#: src/features/servers/components/server-mount-dialog.tsx:80
+#: src/features/servers/components/server-mount-dialog.tsx:87
 msgid "1INFXA"
 msgstr "Az ISO-lemezkép sikeresen leválasztva. A változás a következő indításkor lép életbe."
 
-#: src/features/servers/components/server-mount-dialog.tsx:94
+#: src/features/servers/components/server-mount-dialog.tsx:101
 msgid "ZE4urv"
 msgstr "ISO-lemezképek csatolása"
 
-#: src/features/servers/components/server-mount-dialog.tsx:95
+#: src/features/servers/components/server-mount-dialog.tsx:102
 msgid "HZdPWF"
 msgstr "Csatoljon ISO-lemezképeket a kiszolgálóhoz."
 
-#: src/features/servers/components/server-mount-dialog.tsx:101
+#: src/features/servers/components/server-mount-dialog.tsx:108
 msgid "C3jmVs"
 msgstr "ISO-lemezkép"
 
-#: src/features/servers/components/server-mount-dialog.tsx:127
+#: src/features/servers/components/server-mount-dialog.tsx:136
 msgid "u9VaJ3"
 msgstr "Leválasztás"
+
+#: src/features/servers/components/server-mount-dialog.tsx:141
+msgid "Uh7TFc"
+msgstr "Az ISO-lemezkép azonnal csatolásra kerül, de róla való bootoláshoz teljesen le kell állítani a szervert, majd újra kell indítani."
+
+#: src/features/servers/components/server-mount-dialog.tsx:144
+msgid "FglhQv"
+msgstr "A képek a <link>fiókbeállítások</link> között tölthetők fel."
 
 #: src/features/servers/components/server-stats-card.tsx:192
 msgid "PW+sL4"

@@ -49,7 +49,7 @@ export function ServerMountBadge({
         </Badge>
       </HoverCardTrigger>
       <HoverCardContent side="bottom" align="center">
-        <div className="flex flex-col gap-1 overflow-hidden text-sm">
+        <div className="flex flex-col truncate text-sm">
           <span className="truncate font-medium">{mount.name}</span>
           <span className="text-muted-foreground">
             {t("Expires {time}", {

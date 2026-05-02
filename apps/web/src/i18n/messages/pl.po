@@ -2533,33 +2533,41 @@ msgstr "Interwał"
 msgid "Han16c"
 msgstr "Zamontowane"
 
-#: src/features/servers/components/server-mount-dialog.tsx:63
+#: src/features/servers/components/server-mount-dialog.tsx:70
 msgid "lgSmVl"
 msgstr "Obraz ISO został pomyślnie zamontowany. Zmiana zostanie zastosowana przy następnym uruchomieniu."
 
-#: src/features/servers/components/server-mount-dialog.tsx:69
+#: src/features/servers/components/server-mount-dialog.tsx:76
 msgid "bmliQK"
 msgstr "Nie udało się zamontować obrazu ISO."
 
-#: src/features/servers/components/server-mount-dialog.tsx:80
+#: src/features/servers/components/server-mount-dialog.tsx:87
 msgid "1INFXA"
 msgstr "Obraz ISO został pomyślnie odmontowany. Zmiana zostanie zastosowana przy następnym uruchomieniu."
 
-#: src/features/servers/components/server-mount-dialog.tsx:94
+#: src/features/servers/components/server-mount-dialog.tsx:101
 msgid "ZE4urv"
 msgstr "Zamontuj obrazy ISO"
 
-#: src/features/servers/components/server-mount-dialog.tsx:95
+#: src/features/servers/components/server-mount-dialog.tsx:102
 msgid "HZdPWF"
 msgstr "Zamontuj obrazy ISO na serwerze."
 
-#: src/features/servers/components/server-mount-dialog.tsx:101
+#: src/features/servers/components/server-mount-dialog.tsx:108
 msgid "C3jmVs"
 msgstr "Obraz ISO"
 
-#: src/features/servers/components/server-mount-dialog.tsx:127
+#: src/features/servers/components/server-mount-dialog.tsx:136
 msgid "u9VaJ3"
 msgstr "Odmontuj"
+
+#: src/features/servers/components/server-mount-dialog.tsx:141
+msgid "Uh7TFc"
+msgstr "Obraz ISO zostanie zamontowany natychmiast, ale aby z niego uruchomić system, musisz całkowicie zatrzymać serwer i uruchomić go ponownie."
+
+#: src/features/servers/components/server-mount-dialog.tsx:144
+msgid "FglhQv"
+msgstr "Obrazy można przesłać w <link>ustawieniach konta</link>."
 
 #: src/features/servers/components/server-stats-card.tsx:192
 msgid "PW+sL4"
