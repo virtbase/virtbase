@@ -104,6 +104,7 @@ export const serversAdvancedRouter = createTRPCRouter({
         if (input.tpm === null && config.tpmstate0) {
           await instance.vm.config.$put({
             delete: "tpmstate0",
+            force: true,
           });
         }
 
@@ -111,6 +112,7 @@ export const serversAdvancedRouter = createTRPCRouter({
           if (config.tpmstate0) {
             await instance.vm.config.$put({
               delete: "tpmstate0",
+              force: true,
             });
           }
 
@@ -119,10 +121,19 @@ export const serversAdvancedRouter = createTRPCRouter({
           });
         }
 
-        if (input.bios) {
-          await instance.vm.config.$put({
-            bios: input.bios !== "uefi" ? "seabios" : "ovmf",
-          });
+        if (input.bios !== undefined) {
+          if (input.bios === null || input.bios === "legacy") {
+            await instance.vm.config.$put({
+              bios: "seabios",
+              delete: "efidisk0",
+              force: true,
+            });
+          } else {
+            await instance.vm.config.$put({
+              bios: "ovmf",
+              efidisk0: `${storage}:1,efitype=4m,pre-enrolled-keys=1`,
+            });
+          }
         }
       } catch (error) {
         Sentry.captureException(error);
