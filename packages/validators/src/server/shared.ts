@@ -55,28 +55,28 @@ export const ServerSchema = z.object({
     .nullable()
     .meta({
       description: `The timestamp when the server was installed ${RFC3339LINK}.`,
-      examples: [EXAMPLE_DATE, null],
+      examples: [EXAMPLE_DATE],
     }),
   terminates_at: z
     .date()
     .nullable()
     .meta({
       description: `The timestamp when the server will be terminated ${RFC3339LINK}.`,
-      examples: [EXAMPLE_DATE, null],
+      examples: [EXAMPLE_DATE],
     }),
   renewal_reminder_sent_at: z
     .date()
     .nullable()
     .meta({
       description: `The timestamp when the last renewal reminder was sent ${RFC3339LINK}.`,
-      examples: [EXAMPLE_DATE, null],
+      examples: [EXAMPLE_DATE],
     }),
   suspended_at: z
     .date()
     .nullable()
     .meta({
       description: `The timestamp when the server was suspended ${RFC3339LINK}.`,
-      examples: [EXAMPLE_DATE, null],
+      examples: [EXAMPLE_DATE],
     }),
   created_at: ObjectTimestampSchema.shape.created_at,
   updated_at: ObjectTimestampSchema.shape.updated_at,

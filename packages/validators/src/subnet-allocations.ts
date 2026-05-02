@@ -46,7 +46,7 @@ export const SubnetAllocationSchema = z.object({
     .nullable()
     .meta({
       description: `The timestamp when the subnet allocation was deallocated ${RFC3339LINK}.`,
-      examples: [EXAMPLE_DATE, null],
+      examples: [EXAMPLE_DATE],
     }),
   updated_at: ObjectTimestampSchema.shape.updated_at,
 });

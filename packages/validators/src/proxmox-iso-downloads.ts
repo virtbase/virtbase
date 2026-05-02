@@ -61,14 +61,14 @@ export const ProxmoxIsoDownloadSchema = z.object({
     .nullable()
     .meta({
       description: `Completion timestamp of the ISO image download task for any status ${RFC3339LINK}.`,
-      examples: [EXAMPLE_DATE, null],
+      examples: [EXAMPLE_DATE],
     }),
   failed_at: z
     .date()
     .nullable()
     .meta({
       description: `Failure timestamp of the ISO image download task, if it failed ${RFC3339LINK}.`,
-      examples: [null, EXAMPLE_DATE],
+      examples: [EXAMPLE_DATE],
     }),
   created_at: ObjectTimestampSchema.shape.created_at,
   updated_at: ObjectTimestampSchema.shape.updated_at,
