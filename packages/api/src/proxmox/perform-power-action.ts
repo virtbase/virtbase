@@ -37,10 +37,14 @@ export const performPowerAction = async ({
   let upid: string;
   switch (action) {
     case "start":
-      upid = await vm.status.start.$post();
+      upid = await vm.status.start.$post({
+        timeout: 30,
+      });
       break;
     case "stop":
-      upid = await vm.status.stop.$post();
+      upid = await vm.status.stop.$post({
+        timeout: 30,
+      });
       break;
     case "pause":
       upid = await vm.status.suspend.$post({
@@ -59,10 +63,14 @@ export const performPowerAction = async ({
       upid = await vm.status.reset.$post();
       break;
     case "reboot":
-      upid = await vm.status.reboot.$post();
+      upid = await vm.status.reboot.$post({
+        timeout: 30,
+      });
       break;
     case "shutdown":
-      upid = await vm.status.shutdown.$post();
+      upid = await vm.status.shutdown.$post({
+        timeout: 30,
+      });
       break;
     default:
       throw new Error(
