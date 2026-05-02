@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Norwegian\n"
-"PO-Revision-Date: 2026-04-29 12:55\n"
+"PO-Revision-Date: 2026-05-02 10:58\n"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:84
 msgid "o/UJXc"
@@ -25,7 +25,7 @@ msgstr "Desc"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:100
 #: ../../packages/ui/src/data-table/data-table-toolbar.tsx:78
-#: src/features/servers/components/server-actions-row.tsx:174
+#: src/features/servers/components/server-actions-row.tsx:193
 msgid "jm/spn"
 msgstr "Tilbakestill"
 
@@ -642,27 +642,27 @@ msgid "xXbJso"
 msgstr "Logg ut"
 
 #: src/features/account/components/account-breadcrumb.tsx:41
-#: src/features/account/components/account-nav.tsx:40
+#: src/features/account/components/account-nav.tsx:41
 msgid "1iEPTM"
 msgstr "General"
 
 #: src/features/account/components/account-breadcrumb.tsx:45
-#: src/features/account/components/account-nav.tsx:45
+#: src/features/account/components/account-nav.tsx:46
 msgid "Py189G"
 msgstr "Sikkerhet"
 
 #: src/features/account/components/account-breadcrumb.tsx:49
-#: src/features/account/components/account-nav.tsx:50
+#: src/features/account/components/account-nav.tsx:51
 msgid "Tbo377"
 msgstr "Fakturering"
 
 #: src/features/account/components/account-breadcrumb.tsx:53
-#: src/features/account/components/account-nav.tsx:55
+#: src/features/account/components/account-nav.tsx:56
 msgid "xwEc8K"
 msgstr "API"
 
 #: src/features/account/components/account-breadcrumb.tsx:57
-#: src/features/account/components/account-nav.tsx:60
+#: src/features/account/components/account-nav.tsx:61
 #: src/features/account/components/ssh-keys/ssh-keys-card.tsx:44
 msgid "7Cdpiv"
 msgstr "SSH-nøkler"
@@ -671,6 +671,10 @@ msgstr "SSH-nøkler"
 #: src/ui/nav-user.tsx:120
 msgid "TwyMau"
 msgstr "Konto"
+
+#: src/features/account/components/account-nav.tsx:66
+msgid "96Us9V"
+msgstr "ISO-bilder"
 
 #: src/features/account/components/api-keys/api-keys-card.tsx:49
 msgid "jSp63j"
@@ -715,15 +719,20 @@ msgstr "Slett"
 msgid "TrBeGD"
 msgstr "SSH-nøkler"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:91
+#: src/features/account/components/api-keys/create-api-key-button.tsx:61
+msgid "42rMfw"
+msgstr "ISO"
+
+#: src/features/account/components/api-keys/create-api-key-button.tsx:92
 msgid "+J17tT"
 msgstr "Opprett API-nøkkel"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:117
+#: src/features/account/components/api-keys/create-api-key-button.tsx:118
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:85
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:85
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:71
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:72
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:120
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:122
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:90
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx:74
 #: src/features/servers/components/backups/create-backup-dialog.tsx:104
@@ -737,15 +746,16 @@ msgstr "Opprett API-nøkkel"
 msgid "47FYwb"
 msgstr "Kansellere"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:134
+#: src/features/account/components/api-keys/create-api-key-button.tsx:135
 msgid "fnMCvo"
 msgstr "API-nøkkel opprettet"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:137
+#: src/features/account/components/api-keys/create-api-key-button.tsx:138
 msgid "TQSqlk"
 msgstr "Denne tasten vises kun én gang. Vennligst lagre det sikkert, siden det ikke kan gjenopprettes:"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:156
+#: src/features/account/components/api-keys/create-api-key-button.tsx:157
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:109
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:94
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx:92
@@ -769,24 +779,24 @@ msgstr "Denne tasten vises kun én gang. Vennligst lagre det sikkert, siden det 
 msgid "HAlOn1"
 msgstr "Navn"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:164
+#: src/features/account/components/api-keys/create-api-key-button.tsx:165
 msgid "5Cu2sb"
 msgstr "Min API-nøkkel"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:172
+#: src/features/account/components/api-keys/create-api-key-button.tsx:173
 msgid "SFuk1v"
 msgstr "Tillatelser"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:174
+#: src/features/account/components/api-keys/create-api-key-button.tsx:175
 msgid "4u9ABD"
 msgstr "Avhengig av tillatelsene, kan API-nøkkelen utføre visse handlinger."
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:211
+#: src/features/account/components/api-keys/create-api-key-button.tsx:212
 #: src/features/servers/components/server-graphs.tsx:120
 msgid "filwqD"
 msgstr "Lese"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:217
+#: src/features/account/components/api-keys/create-api-key-button.tsx:218
 #: src/features/servers/components/server-graphs.tsx:124
 msgid "k2veDA"
 msgstr "Skrive"
@@ -923,6 +933,48 @@ msgstr "Ingen betalingsmåter er knyttet til kontoen din."
 #: src/features/account/components/billing/payment-methods-list.tsx:155
 msgid "3MBRV5"
 msgstr "Intet navn oppgitt"
+
+#: src/features/account/components/custom-images/create-custom-image-button.tsx:40
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:71
+msgid "TKvr5O"
+msgstr "Opprett tilpasset image"
+
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:76
+msgid "ggQwe8"
+msgstr "Opprett et nytt tilpasset image for serverne dine."
+
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:135
+msgid "bWjdfa"
+msgstr "URL"
+
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:148
+msgid "aLOPr+"
+msgstr "URL-en må peke direkte til ISO-filen. Maksimal filstørrelse er {size}."
+
+#: src/features/account/components/custom-images/custom-images-card.tsx:45
+msgid "4NrukI"
+msgstr "Tilpassede ISO-bilder"
+
+#: src/features/account/components/custom-images/custom-images-card.tsx:47
+msgid "GnqZoy"
+msgstr "Last opp og administrer tilpassede ISO-bilder for serverne dine."
+
+#: src/features/account/components/custom-images/custom-images-card.tsx:60
+msgid "Lwyinc"
+msgstr "Du kan ha opptil {count} aktive ISO-bilder."
+
+#: src/features/account/components/custom-images/custom-images-list.tsx:47
+msgid "sHUPf5"
+msgstr "Ingen tilpassede bilder"
+
+#: src/features/account/components/custom-images/custom-images-list.tsx:49
+msgid "8RV8A9"
+msgstr "Ingen tilpassede bilder er lastet opp ennå."
+
+#: src/features/account/components/custom-images/custom-images-list.tsx:76
+#: src/features/servers/components/server-mount-badge.tsx:55
+msgid "N/dZaF"
+msgstr "Utgår {time}"
 
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:63
 msgid "KdsDOJ"
@@ -1187,25 +1239,25 @@ msgid "0ICwq5"
 msgstr "Sist oppdatert"
 
 #: src/features/admin/components/proxmox-nodes/create-datacenter-button.tsx:48
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:111
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:127
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:113
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:129
 msgid "S+458D"
 msgstr "Opprett Proxmox Node"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:112
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:114
 msgid "deLbYn"
 msgstr "Opprett en ny Proxmox VE-node for å være vert for servere."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:143
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:145
 #: src/features/servers/components/overview/node-details-dialog.tsx:101
 msgid "zUxWZC"
 msgstr "Datasenter"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:162
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:164
 msgid "RJ3ocO"
 msgstr "Nodegruppe"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:181
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:183
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:88
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:100
 #: src/features/servers/components/rdns/records-table/columns.tsx:50
@@ -1213,91 +1265,99 @@ msgstr "Nodegruppe"
 msgid "uPDgth"
 msgstr "Vertsnavn"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:206
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:208
 msgid "8cNS7n"
 msgstr "Vertsnavnet til Proxmox VE-noden som konfigurert i Proxmox-klyngen."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:222
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:224
 msgid "2BEZJh"
 msgstr "FQDN"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:247
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:249
 msgid "cUm+Vq"
 msgstr "FQDN til Proxmox VE-noden der API er tilgjengelig. Må være tilgjengelig fra internett og bruke et gyldig TLS-sertifikat."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:264
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:266
 msgid "86ZUi9"
 msgstr "Token-ID"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:284
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:286
 msgid "1gRCWa"
 msgstr "Token Secret"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:315
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:317
 msgid "6o6hYT"
 msgstr "Snippet Storage"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:344
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:346
 msgid "10Yrc8"
 msgstr "Cloud-init YAML-filer for alle servere på denne noden vil bli lagret her."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:360
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:362
 msgid "IvtOOO"
 msgstr "Sikkerhetskopiering"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:389
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:391
 msgid "elgt8s"
 msgstr "Sikkerhetskopier av alle servere på denne noden vil bli lagret her."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:406
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:407
+msgid "foINKU"
+msgstr "ISO-nedlastingslagring"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:436
+msgid "Us0NPD"
+msgstr "ISO-bilder lagres her."
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:451
 #: src/features/servers/components/overview/node-details-dialog.tsx:105
 msgid "sB9VeA"
 msgstr "Opplink"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:437
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:482
 msgid "1oyHhQ"
 msgstr "Maksimal mulig nettverksbåndbredde for Uplink i MB/s."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:456
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:501
 msgid "gYG5ho"
 msgstr "Maksimalt antall VM-er"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:460
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:505
 msgid "UYmKl1"
 msgstr "VM-er"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:468
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:498
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:528
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:558
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:589
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:513
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:543
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:573
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:603
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:634
 msgid "ekXood"
 msgstr "Ubegrenset"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:486
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:531
 msgid "OCihQV"
 msgstr "Maksimalt minne"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:516
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:561
 msgid "T4Xl7g"
 msgstr "Maksimal lagring"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:546
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:591
 msgid "bRNAv0"
 msgstr "Maksimal vCores"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:550
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:595
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:239
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:266
 #: src/features/servers/components/server-stats-card.tsx:90
 msgid "cCUvGW"
 msgstr "vCores"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:577
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:622
 msgid "ueCC3G"
 msgstr "Nettverksgrense"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:620
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:665
 msgid "U9Jxp7"
 msgstr "Hvis den nås, vil denne noden ikke lenger brukes til tjenester. La stå tomt for ubegrenset."
 
@@ -2059,6 +2119,7 @@ msgid "tBwTvx"
 msgstr "Størrelse/status"
 
 #: src/features/servers/components/backups/backups-table/columns.tsx:155
+#: src/features/servers/components/server-custom-image-select.tsx:188
 msgid "vXCeIi"
 msgstr "Mislyktes"
 
@@ -2103,7 +2164,7 @@ msgid "04uNfB"
 msgstr "Oppretter en sikkerhetskopi uten å forstyrre systemet. Den nåværende tilstanden til prosessene er sikkerhetskopiert."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:183
-#: src/features/servers/components/server-actions-row.tsx:149
+#: src/features/servers/components/server-actions-row.tsx:168
 msgid "elnaZe"
 msgstr "Henge"
 
@@ -2112,7 +2173,7 @@ msgid "qRuNZh"
 msgstr "Avbryter systemet kort for å lage en sikkerhetskopi uten å slå det av."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:202
-#: src/features/servers/components/server-actions-row.tsx:162
+#: src/features/servers/components/server-actions-row.tsx:181
 msgid "q/uwLT"
 msgstr "Stoppe"
 
@@ -2382,25 +2443,49 @@ msgstr "PTR-poster kan opprettes for alle IP-adresser som er tildelt denne serve
 msgid "XM/KKz"
 msgstr "Vertsnavnet som skal løses for IP-adressen. <code>localhost</code> er ikke tillatt."
 
-#: src/features/servers/components/server-actions-row.tsx:79
+#: src/features/servers/components/server-actions-row.tsx:88
 msgid "tZbb+K"
 msgstr "Avslutning"
 
-#: src/features/servers/components/server-actions-row.tsx:89
+#: src/features/servers/components/server-actions-row.tsx:98
 msgid "9U7nUR"
 msgstr "Start på nytt"
 
-#: src/features/servers/components/server-actions-row.tsx:101
+#: src/features/servers/components/server-actions-row.tsx:112
 msgid "mOFG3K"
 msgstr "Start"
 
-#: src/features/servers/components/server-actions-row.tsx:115
+#: src/features/servers/components/server-actions-row.tsx:126
 msgid "3y9DGg"
 msgstr "Gjenoppta"
 
-#: src/features/servers/components/server-actions-row.tsx:138
+#: src/features/servers/components/server-actions-row.tsx:145
+msgid "YsjuRA"
+msgstr "Monter ISO"
+
+#: src/features/servers/components/server-actions-row.tsx:157
 msgid "tFFMkF"
 msgstr "Pause"
+
+#: src/features/servers/components/server-custom-image-select.tsx:99
+msgid "wPPrpH"
+msgstr "Velg et tilpasset image..."
+
+#: src/features/servers/components/server-custom-image-select.tsx:109
+msgid "3MDlnT"
+msgstr "Søk etter tilpasset image..."
+
+#: src/features/servers/components/server-custom-image-select.tsx:111
+msgid "5YXiqk"
+msgstr "Fant ikke noe tilpasset image."
+
+#: src/features/servers/components/server-custom-image-select.tsx:179
+msgid "9P0AA6"
+msgstr "Laster opp {percentage}"
+
+#: src/features/servers/components/server-custom-image-select.tsx:184
+msgid "JEsxDw"
+msgstr "Laster opp..."
 
 #: src/features/servers/components/server-graphs.tsx:86
 msgid "j9Y9nu"
@@ -2443,6 +2528,46 @@ msgstr "Utgående"
 #: src/features/servers/components/server-graphs.tsx:154
 msgid "6m3w+3"
 msgstr "Intervall"
+
+#: src/features/servers/components/server-mount-badge.tsx:48
+msgid "Han16c"
+msgstr "Montert"
+
+#: src/features/servers/components/server-mount-dialog.tsx:70
+msgid "lgSmVl"
+msgstr "ISO-image montert. Endringen trer i kraft ved neste omstart."
+
+#: src/features/servers/components/server-mount-dialog.tsx:76
+msgid "bmliQK"
+msgstr "Kunne ikke montere ISO-avbildningen."
+
+#: src/features/servers/components/server-mount-dialog.tsx:87
+msgid "1INFXA"
+msgstr "ISO-image avmontert. Endringen trer i kraft ved neste omstart."
+
+#: src/features/servers/components/server-mount-dialog.tsx:101
+msgid "ZE4urv"
+msgstr "Monter ISO-imagefiler"
+
+#: src/features/servers/components/server-mount-dialog.tsx:102
+msgid "HZdPWF"
+msgstr "Monter ISO-imagefiler på serveren din."
+
+#: src/features/servers/components/server-mount-dialog.tsx:108
+msgid "C3jmVs"
+msgstr "ISO-image"
+
+#: src/features/servers/components/server-mount-dialog.tsx:136
+msgid "u9VaJ3"
+msgstr "Avmonter"
+
+#: src/features/servers/components/server-mount-dialog.tsx:141
+msgid "Uh7TFc"
+msgstr "ISO-image monteres umiddelbart, men for å boote fra det må du stoppe serveren helt og starte den på nytt."
+
+#: src/features/servers/components/server-mount-dialog.tsx:144
+msgid "FglhQv"
+msgstr "Bilder kan lastes opp fra dine <link>kontoinnstillinger</link>."
 
 #: src/features/servers/components/server-stats-card.tsx:192
 msgid "PW+sL4"
