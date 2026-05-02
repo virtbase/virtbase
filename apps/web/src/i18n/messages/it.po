@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Italian\n"
-"PO-Revision-Date: 2026-05-02 14:15\n"
+"PO-Revision-Date: 2026-05-02 19:50\n"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:84
 msgid "o/UJXc"
@@ -563,22 +563,27 @@ msgstr "Reimposta la password per il tuo account {appName}."
 msgid "6dqYnF"
 msgstr "Fatture"
 
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/advanced/page.tsx:28
+#: src/features/servers/components/server-nav.tsx:73
+msgid "3Rx6Qo"
+msgstr "Avanzato"
+
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/backups/page.tsx:27
 #: src/features/account/components/api-keys/create-api-key-button.tsx:55
 #: src/features/servers/components/backups/backups-card.tsx:62
-#: src/features/servers/components/server-nav.tsx:60
+#: src/features/servers/components/server-nav.tsx:61
 msgid "T3lqx5"
 msgstr "Backup"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/console/page.tsx:26
 #: src/features/account/components/api-keys/create-api-key-button.tsx:57
-#: src/features/servers/components/server-nav.tsx:48
+#: src/features/servers/components/server-nav.tsx:49
 msgid "gc+2Z2"
 msgstr "Consolle"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/firewall/page.tsx:28
 #: src/features/account/components/api-keys/create-api-key-button.tsx:56
-#: src/features/servers/components/server-nav.tsx:54
+#: src/features/servers/components/server-nav.tsx:55
 msgid "Bwqhmd"
 msgstr "Firewall"
 
@@ -596,20 +601,20 @@ msgstr "Vai ai server"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/overview/page.tsx:34
 #: src/features/admin/components/admin-sidebar-groups.tsx:47
-#: src/features/servers/components/server-nav.tsx:42
+#: src/features/servers/components/server-nav.tsx:43
 #: src/ui/app-sidebar.tsx:63
 msgid "9uOFF3"
 msgstr "Panoramica"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/plan/page.tsx:30
 #: src/features/servers/components/plan/plan-form.tsx:85
-#: src/features/servers/components/server-nav.tsx:72
+#: src/features/servers/components/server-nav.tsx:79
 msgid "fz0z4c"
 msgstr "Piano"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/rdns/page.tsx:27
 #: src/features/account/components/api-keys/create-api-key-button.tsx:58
-#: src/features/servers/components/server-nav.tsx:66
+#: src/features/servers/components/server-nav.tsx:67
 msgid "F+02/l"
 msgstr "rDNS"
 
@@ -2100,6 +2105,70 @@ msgstr "Rete"
 #: src/features/servers/components/server-stats-card.tsx:187
 msgid "yCCio2"
 msgstr "Ultimo riavvio"
+
+#: src/features/servers/components/advanced/advanced-bios-card.tsx:35
+msgid "NjgW6o"
+msgstr "BIOS"
+
+#: src/features/servers/components/advanced/advanced-bios-card.tsx:37
+msgid "4HNt5G"
+msgstr "Seleziona il tipo di BIOS per il tuo server."
+
+#: src/features/servers/components/advanced/advanced-bios-card.tsx:45
+msgid "HJOq/1"
+msgstr "Il BIOS UEFI è consigliato per le installazioni di Windows. Usa il BIOS legacy per le installazioni Linux più vecchie."
+
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:73
+msgid "XHiVwa"
+msgstr "BIOS legacy"
+
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:75
+msgid "AhxnaN"
+msgstr "Usa il BIOS legacy per questo server."
+
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:84
+msgid "/eGTDl"
+msgstr "BIOS UEFI"
+
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:86
+msgid "oZyWxo"
+msgstr "Usa il BIOS UEFI più recente per questo server."
+
+#: src/features/servers/components/advanced/advanced-tpm-card.tsx:35
+msgid "KX3bZF"
+msgstr "TPM"
+
+#: src/features/servers/components/advanced/advanced-tpm-card.tsx:37
+msgid "C6jvVM"
+msgstr "Attiva o disattiva il modulo TPM per il tuo server."
+
+#: src/features/servers/components/advanced/advanced-tpm-card.tsx:45
+msgid "1Lw+6m"
+msgstr "La maggior parte delle installazioni Linux non richiede il TPM, mentre Windows richiede TPM v2.0."
+
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:73
+msgid "I1Um2Q"
+msgstr "Disattiva TPM"
+
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:75
+msgid "i1+8G8"
+msgstr "Disattiva completamente il TPM per questo server."
+
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:84
+msgid "HrP3QG"
+msgstr "Attiva TPM v1.2"
+
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:86
+msgid "/p73Kl"
+msgstr "Attiva il TPM v1.2 per questo server."
+
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:95
+msgid "DwWNni"
+msgstr "Attiva TPM v2.0"
+
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:97
+msgid "i/5Hb2"
+msgstr "Attiva il TPM v2.0 per questo server."
 
 #: src/features/servers/components/backups/backups-card.tsx:97
 msgid "pelX8B"
