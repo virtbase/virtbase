@@ -563,22 +563,27 @@ msgstr "Nulstil din adgangskode til din {appName}-konto."
 msgid "6dqYnF"
 msgstr "Fakturaer"
 
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/advanced/page.tsx:28
+#: src/features/servers/components/server-nav.tsx:73
+msgid "3Rx6Qo"
+msgstr "Avanceret"
+
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/backups/page.tsx:27
 #: src/features/account/components/api-keys/create-api-key-button.tsx:55
 #: src/features/servers/components/backups/backups-card.tsx:62
-#: src/features/servers/components/server-nav.tsx:60
+#: src/features/servers/components/server-nav.tsx:61
 msgid "T3lqx5"
 msgstr "Sikkerhedskopier"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/console/page.tsx:26
 #: src/features/account/components/api-keys/create-api-key-button.tsx:57
-#: src/features/servers/components/server-nav.tsx:48
+#: src/features/servers/components/server-nav.tsx:49
 msgid "gc+2Z2"
 msgstr "Konsol"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/firewall/page.tsx:28
 #: src/features/account/components/api-keys/create-api-key-button.tsx:56
-#: src/features/servers/components/server-nav.tsx:54
+#: src/features/servers/components/server-nav.tsx:55
 msgid "Bwqhmd"
 msgstr "Firewall"
 
@@ -596,20 +601,20 @@ msgstr "Gå til servere"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/overview/page.tsx:34
 #: src/features/admin/components/admin-sidebar-groups.tsx:47
-#: src/features/servers/components/server-nav.tsx:42
+#: src/features/servers/components/server-nav.tsx:43
 #: src/ui/app-sidebar.tsx:63
 msgid "9uOFF3"
 msgstr "Oversigt"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/plan/page.tsx:30
 #: src/features/servers/components/plan/plan-form.tsx:85
-#: src/features/servers/components/server-nav.tsx:72
+#: src/features/servers/components/server-nav.tsx:79
 msgid "fz0z4c"
 msgstr "Plan"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/rdns/page.tsx:27
 #: src/features/account/components/api-keys/create-api-key-button.tsx:58
-#: src/features/servers/components/server-nav.tsx:66
+#: src/features/servers/components/server-nav.tsx:67
 msgid "F+02/l"
 msgstr "rDNS"
 
@@ -2100,6 +2105,70 @@ msgstr "Netværk"
 #: src/features/servers/components/server-stats-card.tsx:187
 msgid "yCCio2"
 msgstr "Sidste genstart"
+
+#: src/features/servers/components/advanced/advanced-bios-card.tsx:35
+msgid "NjgW6o"
+msgstr "BIOS"
+
+#: src/features/servers/components/advanced/advanced-bios-card.tsx:37
+msgid "4HNt5G"
+msgstr "Vælg BIOS-typen til din server."
+
+#: src/features/servers/components/advanced/advanced-bios-card.tsx:45
+msgid "HJOq/1"
+msgstr "UEFI BIOS anbefales til Windows-installationer. Brug legacy BIOS til ældre Linux-installationer."
+
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:73
+msgid "XHiVwa"
+msgstr "Legacy BIOS"
+
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:75
+msgid "AhxnaN"
+msgstr "Brug legacy BIOS til denne server."
+
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:84
+msgid "/eGTDl"
+msgstr "UEFI BIOS"
+
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:86
+msgid "oZyWxo"
+msgstr "Brug den nyere UEFI BIOS til denne server."
+
+#: src/features/servers/components/advanced/advanced-tpm-card.tsx:35
+msgid "KX3bZF"
+msgstr "TPM"
+
+#: src/features/servers/components/advanced/advanced-tpm-card.tsx:37
+msgid "C6jvVM"
+msgstr "Aktivér eller deaktivér TPM-modulet for din server."
+
+#: src/features/servers/components/advanced/advanced-tpm-card.tsx:45
+msgid "1Lw+6m"
+msgstr "De fleste Linux-installationer kræver ikke TPM, mens Windows kræver TPM v2.0."
+
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:73
+msgid "I1Um2Q"
+msgstr "Deaktivér TPM"
+
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:75
+msgid "i1+8G8"
+msgstr "Slå TPM helt fra for denne server."
+
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:84
+msgid "HrP3QG"
+msgstr "Aktivér TPM v1.2"
+
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:86
+msgid "/p73Kl"
+msgstr "Aktivér TPM v1.2 for denne server."
+
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:95
+msgid "DwWNni"
+msgstr "Aktivér TPM v2.0"
+
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:97
+msgid "i/5Hb2"
+msgstr "Aktivér TPM v2.0 for denne server."
 
 #: src/features/servers/components/backups/backups-card.tsx:97
 msgid "pelX8B"

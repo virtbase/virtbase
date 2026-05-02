@@ -119,6 +119,9 @@ export const paths = {
       rdns: {
         getHref: (id: string) => `/servers/${id}/rdns`,
       },
+      advanced: {
+        getHref: (id: string) => `/servers/${id}/advanced`,
+      },
       plan: {
         getHref: (id: string) => `/servers/${id}/plan`,
       },

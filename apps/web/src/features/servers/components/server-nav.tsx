@@ -26,6 +26,7 @@ import {
   LucideGlobe,
   LucideLayoutDashboard,
   LucideTerminalSquare,
+  LucideWrench,
 } from "@virtbase/ui/icons";
 import { ScrollArea } from "@virtbase/ui/scroll-area";
 import NextLink from "next/link";
@@ -67,6 +68,12 @@ const useItems = () => {
       value: "rdns",
       path: paths.app.servers.rdns.getHref(kvmId),
       icon: LucideGlobe,
+    },
+    {
+      title: t("Advanced"),
+      value: "advanced",
+      path: paths.app.servers.advanced.getHref(kvmId),
+      icon: LucideWrench,
     },
     {
       title: t("Plan"),

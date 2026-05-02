@@ -42,6 +42,7 @@ import {
   serverProcedure,
 } from "../../trpc";
 import { serversActionsRouter } from "./actions";
+import { serversAdvancedRouter } from "./advanced";
 import { serversBackupsRouter } from "./backups";
 import { serversConsoleRouter } from "./console";
 import { serverFirewallRouter } from "./firewall";
@@ -54,6 +55,7 @@ import { serversTemplateGroupsRouter } from "./template-groups";
 
 export const serversRouter = createTRPCRouter({
   actions: serversActionsRouter,
+  advanced: serversAdvancedRouter,
   firewall: serverFirewallRouter,
   graphs: serversGraphsRouter,
   status: serversStatusRouter,
