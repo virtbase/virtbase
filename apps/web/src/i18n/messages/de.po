@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: German\n"
-"PO-Revision-Date: 2026-05-02 10:58\n"
+"PO-Revision-Date: 2026-05-02 14:15\n"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:84
 msgid "o/UJXc"
@@ -739,7 +739,7 @@ msgstr "API-Schlüssel erstellen"
 #: src/features/servers/components/backups/restore-backup-dialog.tsx:76
 #: src/features/servers/components/overview/change-template-dialog.tsx:103
 #: src/features/servers/components/overview/rename-server-dialog.tsx:74
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:95
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:101
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx:89
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx:170
 #: src/ui/feedback-button.tsx:31
@@ -1663,6 +1663,9 @@ msgid "8HimVK"
 msgstr "Passwort wiederholen"
 
 #: src/features/auth/components/reset-password-form.tsx:138
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:92
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:108
+#: src/features/servers/components/overview/server-details-card.tsx:189
 msgid "xl27nc"
 msgstr "Passwort zurücksetzen"
 
@@ -2251,7 +2254,7 @@ msgid "VWfWP6"
 msgstr "Ändere das Betriebssystem deines Servers."
 
 #: src/features/servers/components/overview/change-template-dialog.tsx:124
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:115
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:121
 msgid "3SVI5p"
 msgstr "Warnung"
 
@@ -2264,7 +2267,6 @@ msgid "MbXrbc"
 msgstr "Neues Betriebssystem"
 
 #: src/features/servers/components/overview/change-template-dialog.tsx:171
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:135
 msgid "h8jASy"
 msgstr "Neues Root-Passwort"
 
@@ -2299,19 +2301,25 @@ msgstr "Benenne deinen Server um."
 msgid "UQXG4v"
 msgstr "Mein Server"
 
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:86
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:102
-#: src/features/servers/components/overview/server-details-card.tsx:189
-msgid "D3OPFp"
-msgstr "Root-Passwort zurücksetzen"
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:93
+msgid "5juwi+"
+msgstr "Setze das Passwort eines Benutzers auf deinem Server zurück."
 
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:87
-msgid "//IN8L"
-msgstr "Setze das Root-Passwort für deinen Server zurück."
-
-#: src/features/servers/components/overview/reset-root-password-dialog.tsx:118
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:124
 msgid "K1+gri"
 msgstr "Dieser Vorgang kann nicht rückgängig gemacht werden. Wenn das Paket <code>qemu-quest-agent</code> nicht installiert ist, schlägt der Vorgang fehl."
+
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:141
+msgid "JCIgkj"
+msgstr "Benutzername"
+
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:162
+msgid "1jWUV4"
+msgstr "Der Benutzername des Kontos, für welches das Passwort zurückgesetzt werden soll. Meist <code>root</code> unter Linux und <code>Administrator</code> unter Windows."
+
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx:180
+msgid "Ev6SEF"
+msgstr "Neues Passwort"
 
 #: src/features/servers/components/overview/server-details-card.tsx:70
 msgid "F/6VqP"
@@ -2551,7 +2559,7 @@ msgstr "ISO-Images einbinden"
 
 #: src/features/servers/components/server-mount-dialog.tsx:102
 msgid "HZdPWF"
-msgstr "Binden Sie ISO-Images an Ihren Server."
+msgstr "Hänge ISO-Images an deinen Server."
 
 #: src/features/servers/components/server-mount-dialog.tsx:108
 msgid "C3jmVs"
@@ -2563,7 +2571,7 @@ msgstr "Aushängen"
 
 #: src/features/servers/components/server-mount-dialog.tsx:141
 msgid "Uh7TFc"
-msgstr "Das ISO-Image wird sofort eingebunden; um davon zu starten, müssen Sie den Server jedoch vollständig herunterfahren und neu starten."
+msgstr "Das ISO-Image wird sofort eingebunden; um davon zu starten, muss der Server jedoch vollständig herunterfahren und neu starten."
 
 #: src/features/servers/components/server-mount-dialog.tsx:144
 msgid "FglhQv"
