@@ -104,7 +104,9 @@ export const serversAdvancedRouter = createTRPCRouter({
         if (input.tpm === null && config.tpmstate0) {
           await instance.vm.config.$put({
             delete: "tpmstate0",
-            force: true,
+          });
+          await instance.vm.config.$put({
+            delete: "unused0",
           });
         }
 
@@ -112,7 +114,9 @@ export const serversAdvancedRouter = createTRPCRouter({
           if (config.tpmstate0) {
             await instance.vm.config.$put({
               delete: "tpmstate0",
-              force: true,
+            });
+            await instance.vm.config.$put({
+              delete: "unused0",
             });
           }
 
@@ -126,7 +130,9 @@ export const serversAdvancedRouter = createTRPCRouter({
             await instance.vm.config.$put({
               bios: "seabios",
               delete: "efidisk0",
-              force: true,
+            });
+            await instance.vm.config.$put({
+              delete: "unused0",
             });
           } else {
             await instance.vm.config.$put({
