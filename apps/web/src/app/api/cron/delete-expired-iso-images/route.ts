@@ -104,16 +104,26 @@ export async function handler(request: NextRequest) {
             if (!item.failedAt) {
               const instance = getProxmoxInstance(proxmoxNode);
 
-              if (item.finishedAt) {
-                const storage = proxmoxNode.isoDownloadStorage;
-                const volid = `${storage}:iso/${item.id}.iso`;
+              const storage = proxmoxNode.isoDownloadStorage;
+              const volid = `${storage}:iso/${item.id}.iso`;
 
+              try {
+                await instance.node.tasks.$(item.upid).$delete();
+              } catch {
+                console.error(
+                  `[CRON] Failed to delete ISO image ${item.id} task ${item.upid}`,
+                );
+              }
+
+              try {
                 await instance.node.storage
                   .$(storage)
                   .content.$(volid)
                   .$delete();
-              } else {
-                await instance.node.tasks.$(item.upid).$delete();
+              } catch {
+                console.error(
+                  `[CRON] Failed to delete ISO image ${item.id} from storage ${storage}:iso/${item.id}.iso`,
+                );
               }
             }
 
