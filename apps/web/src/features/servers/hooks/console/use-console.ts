@@ -46,9 +46,14 @@ export const useServerConsole = ({
 
   const query = useQuery(
     trpc.servers.console.get.queryOptions(input, {
-      enabled: !!status && canAccessConsole(status),
+      enabled:
+        !!status &&
+        canAccessConsole(status) &&
+        // Small delay of 1 second to ensure console is ready
+        !!status.stats.uptime,
       refetchOnWindowFocus: false,
       refetchOnReconnect: true,
+      refetchOnMount: "always",
       refetchInterval: () => {
         // Reconnect every 10 minutes
         return 10 * 60 * 1000;
