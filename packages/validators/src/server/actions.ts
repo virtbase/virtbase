@@ -52,9 +52,9 @@ export const ResetServerPasswordServerInputSchema = z.object({
     .max(64)
     .default("root")
     .describe("The username to reset the password for."),
-  password: RootPasswordSchema.meta({
-    description: "The new password for the user defined in `username`.",
-  }),
+  password: RootPasswordSchema.describe(
+    "The new password for the user defined in `username`.",
+  ),
 });
 
 export type ResetServerPasswordServerInput = z.infer<

@@ -27,7 +27,7 @@ export const SubnetSchema = z.object({
   }),
   parent_id: subnetIdSchema.nullable().meta({
     description: "Unique identifier of the parent subnet.",
-    examples: [null],
+    examples: [],
   }),
   cidr: z.union([z.cidrv4(), z.cidrv6()]).meta({
     description: "The network specification of the subnet in CIDR notation.",
