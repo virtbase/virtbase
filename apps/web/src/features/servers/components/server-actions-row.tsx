@@ -53,7 +53,7 @@ import { useServerActionState } from "../hooks/use-server-action-state";
 import { useServerStatus } from "../hooks/use-server-status";
 import { useUpdateServerStatus } from "../hooks/use-update-server-status";
 
-const ServerMountsDialog = dynamic(() => import("./server-mounts-dialog"), {
+const ServerMountDialog = dynamic(() => import("./server-mount-dialog"), {
   ssr: false,
 });
 
@@ -138,7 +138,7 @@ export function ServerActionsRow() {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuItem
-              onClick={() => setAction("manage-mounts")}
+              onClick={() => setAction("manage-mount")}
               disabled={isBusy(status)}
             >
               <LucideDisc3 aria-hidden />
@@ -195,10 +195,10 @@ export function ServerActionsRow() {
           </DropdownMenuContent>
         </DropdownMenu>
       </ButtonGroup>
-      {action === "manage-mounts" && (
-        <ServerMountsDialog
-          open={action === "manage-mounts"}
-          onOpenChange={(open) => setAction(open ? "manage-mounts" : null)}
+      {action === "manage-mount" && (
+        <ServerMountDialog
+          open={action === "manage-mount"}
+          onOpenChange={(open) => setAction(open ? "manage-mount" : null)}
         />
       )}
     </>

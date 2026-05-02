@@ -972,7 +972,7 @@ msgid "8RV8A9"
 msgstr "Ainda não foram carregadas imagens personalizadas."
 
 #: src/features/account/components/custom-images/custom-images-list.tsx:76
-#: src/features/servers/components/server-mounts-badge.tsx:64
+#: src/features/servers/components/server-mount-badge.tsx:55
 msgid "N/dZaF"
 msgstr "Expira {time}"
 
@@ -2529,35 +2529,35 @@ msgstr "Extrovertida"
 msgid "6m3w+3"
 msgstr "Intervalo"
 
-#: src/features/servers/components/server-mounts-badge.tsx:48
+#: src/features/servers/components/server-mount-badge.tsx:48
 msgid "Han16c"
 msgstr "Montado"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:56
-msgid "ZE4urv"
-msgstr "Montar imagens ISO"
-
-#: src/features/servers/components/server-mounts-dialog.tsx:57
-msgid "HZdPWF"
-msgstr "Monte imagens ISO no seu servidor."
-
-#: src/features/servers/components/server-mounts-dialog.tsx:103
+#: src/features/servers/components/server-mount-dialog.tsx:63
 msgid "lgSmVl"
 msgstr "Imagem ISO montada com sucesso. A alteração terá efeito no próximo arranque."
 
-#: src/features/servers/components/server-mounts-dialog.tsx:109
+#: src/features/servers/components/server-mount-dialog.tsx:69
 msgid "bmliQK"
 msgstr "Não foi possível montar a imagem ISO."
 
-#: src/features/servers/components/server-mounts-dialog.tsx:120
+#: src/features/servers/components/server-mount-dialog.tsx:80
 msgid "1INFXA"
 msgstr "Imagem ISO desmontada com sucesso. A alteração terá efeito no próximo arranque."
 
-#: src/features/servers/components/server-mounts-dialog.tsx:131
-msgid "xGxID0"
-msgstr "Ranhura {count}"
+#: src/features/servers/components/server-mount-dialog.tsx:94
+msgid "ZE4urv"
+msgstr "Montar imagens ISO"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:159
+#: src/features/servers/components/server-mount-dialog.tsx:95
+msgid "HZdPWF"
+msgstr "Monte imagens ISO no seu servidor."
+
+#: src/features/servers/components/server-mount-dialog.tsx:101
+msgid "C3jmVs"
+msgstr "Imagem ISO"
+
+#: src/features/servers/components/server-mount-dialog.tsx:127
 msgid "u9VaJ3"
 msgstr "Desmontar"
 

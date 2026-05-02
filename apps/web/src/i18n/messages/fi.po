@@ -972,7 +972,7 @@ msgid "8RV8A9"
 msgstr "Mukautettuja levykuvia ei ole vielä ladattu."
 
 #: src/features/account/components/custom-images/custom-images-list.tsx:76
-#: src/features/servers/components/server-mounts-badge.tsx:64
+#: src/features/servers/components/server-mount-badge.tsx:55
 msgid "N/dZaF"
 msgstr "Vanhenee {time}"
 
@@ -2529,35 +2529,35 @@ msgstr "Lähtevät"
 msgid "6m3w+3"
 msgstr "Intervalli"
 
-#: src/features/servers/components/server-mounts-badge.tsx:48
+#: src/features/servers/components/server-mount-badge.tsx:48
 msgid "Han16c"
 msgstr "Liitetty"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:56
-msgid "ZE4urv"
-msgstr "Liitä ISO-levykuvia"
-
-#: src/features/servers/components/server-mounts-dialog.tsx:57
-msgid "HZdPWF"
-msgstr "Liitä ISO-levykuvia palvelimellesi."
-
-#: src/features/servers/components/server-mounts-dialog.tsx:103
+#: src/features/servers/components/server-mount-dialog.tsx:63
 msgid "lgSmVl"
 msgstr "ISO-levykuva kytketty onnistuneesti. Muutos astuu voimaan seuraavan käynnistyksen yhteydessä."
 
-#: src/features/servers/components/server-mounts-dialog.tsx:109
+#: src/features/servers/components/server-mount-dialog.tsx:69
 msgid "bmliQK"
 msgstr "ISO-levykuvaa ei voitu liittää."
 
-#: src/features/servers/components/server-mounts-dialog.tsx:120
+#: src/features/servers/components/server-mount-dialog.tsx:80
 msgid "1INFXA"
 msgstr "ISO-levykuva irrotettu onnistuneesti. Muutos astuu voimaan seuraavan käynnistyksen yhteydessä."
 
-#: src/features/servers/components/server-mounts-dialog.tsx:131
-msgid "xGxID0"
-msgstr "Paikka {count}"
+#: src/features/servers/components/server-mount-dialog.tsx:94
+msgid "ZE4urv"
+msgstr "Liitä ISO-levykuvia"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:159
+#: src/features/servers/components/server-mount-dialog.tsx:95
+msgid "HZdPWF"
+msgstr "Liitä ISO-levykuvia palvelimellesi."
+
+#: src/features/servers/components/server-mount-dialog.tsx:101
+msgid "C3jmVs"
+msgstr "ISO-levykuva"
+
+#: src/features/servers/components/server-mount-dialog.tsx:127
 msgid "u9VaJ3"
 msgstr "Irrota"
 

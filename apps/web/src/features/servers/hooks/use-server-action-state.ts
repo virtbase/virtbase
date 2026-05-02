@@ -30,7 +30,7 @@ export function useServerActionState() {
       "create-backup",
       "upsert-record",
       "create-firewall-rule",
-      "manage-mounts",
+      "manage-mount",
     ]).withOptions({
       clearOnDefault: true,
       shallow: true,

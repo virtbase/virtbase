@@ -25,12 +25,11 @@ import { ServerPlanSchema } from "../server-plan";
 import { SubnetAllocationSchema } from "../subnet-allocations";
 import { SubnetSchema } from "../subnets";
 import { preprocessQueryArray } from "../utils";
-import { ServerMountSchema } from "./mounts";
 import type { Server } from "./shared";
 import { ServerSchema } from "./shared";
 
 export const ServerExpandSchema = z
-  .enum(["template", "plan", "datacenter", "node", "allocations", "mounts"])
+  .enum(["template", "plan", "datacenter", "node", "allocations", "mount"])
   .array()
   .default([]);
 
@@ -113,26 +112,22 @@ const ServerAllocationsField = z.union([
     }),
 ]);
 
-const ServerMountsField = z.union([
-  z.array(ServerMountSchema.shape.id),
-  z
-    .array(
-      ServerMountSchema.pick({
-        id: true,
-        drive: true,
-      }).extend({
-        image: ProxmoxIsoDownloadSchema.pick({
-          id: true,
-          name: true,
-          expires_at: true,
-        }),
-      }),
-    )
-    .meta({
+const ServerMountField = z
+  .union([
+    ProxmoxIsoDownloadSchema.shape.id,
+    ProxmoxIsoDownloadSchema.pick({
+      id: true,
+      name: true,
+      url: true,
+      expires_at: true,
+      finished_at: true,
+      failed_at: true,
+    }).meta({
       description:
         "Only present if the `mounts` expand is included. The mounts of the server.",
     }),
-]);
+  ])
+  .nullable();
 
 export const GetServerInputSchema = z.object({
   server_id: ServerSchema.shape.id,
@@ -155,7 +150,7 @@ export const GetServerOutputSchema = z.object({
     datacenter: ServerDatacenterField,
     node: ServerNodeField,
     allocations: ServerAllocationsField,
-    mounts: ServerMountsField,
+    mount: ServerMountField,
   }),
 });
 
@@ -200,7 +195,7 @@ export const ListServersOutputSchema = z.object({
       datacenter: ServerDatacenterField,
       node: ServerNodeField,
       allocations: ServerAllocationsField,
-      mounts: ServerMountsField,
+      mount: ServerMountField,
     }),
   ),
   meta: z.object({

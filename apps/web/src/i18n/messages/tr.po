@@ -972,7 +972,7 @@ msgid "8RV8A9"
 msgstr "Henüz özel görüntü yüklenmedi."
 
 #: src/features/account/components/custom-images/custom-images-list.tsx:76
-#: src/features/servers/components/server-mounts-badge.tsx:64
+#: src/features/servers/components/server-mount-badge.tsx:55
 msgid "N/dZaF"
 msgstr "Süresi doluyor: {time}"
 
@@ -2529,35 +2529,35 @@ msgstr "Dışa dönük"
 msgid "6m3w+3"
 msgstr "Aralık"
 
-#: src/features/servers/components/server-mounts-badge.tsx:48
+#: src/features/servers/components/server-mount-badge.tsx:48
 msgid "Han16c"
 msgstr "Bağlı"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:56
-msgid "ZE4urv"
-msgstr "ISO imajlarını bağla"
-
-#: src/features/servers/components/server-mounts-dialog.tsx:57
-msgid "HZdPWF"
-msgstr "ISO imajlarını sunucunuza bağlayın."
-
-#: src/features/servers/components/server-mounts-dialog.tsx:103
+#: src/features/servers/components/server-mount-dialog.tsx:63
 msgid "lgSmVl"
 msgstr "ISO imajı başarıyla bağlandı. Değişiklik bir sonraki önyüklemede geçerli olacak."
 
-#: src/features/servers/components/server-mounts-dialog.tsx:109
+#: src/features/servers/components/server-mount-dialog.tsx:69
 msgid "bmliQK"
 msgstr "ISO kalıbı bağlanamadı."
 
-#: src/features/servers/components/server-mounts-dialog.tsx:120
+#: src/features/servers/components/server-mount-dialog.tsx:80
 msgid "1INFXA"
 msgstr "ISO imajı başarıyla ayırıldı. Değişiklik bir sonraki önyüklemede geçerli olacak."
 
-#: src/features/servers/components/server-mounts-dialog.tsx:131
-msgid "xGxID0"
-msgstr "Yuva {count}"
+#: src/features/servers/components/server-mount-dialog.tsx:94
+msgid "ZE4urv"
+msgstr "ISO imajlarını bağla"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:159
+#: src/features/servers/components/server-mount-dialog.tsx:95
+msgid "HZdPWF"
+msgstr "ISO imajlarını sunucunuza bağlayın."
+
+#: src/features/servers/components/server-mount-dialog.tsx:101
+msgid "C3jmVs"
+msgstr "ISO imajı"
+
+#: src/features/servers/components/server-mount-dialog.tsx:127
 msgid "u9VaJ3"
 msgstr "Ayır"
 

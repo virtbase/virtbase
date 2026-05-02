@@ -21,7 +21,6 @@ import {
   proxmoxIsoDownloads,
   proxmoxNodes,
   proxmoxTemplates,
-  serverMounts,
   serverPlans,
   servers,
   subnetAllocations,
@@ -93,7 +92,7 @@ export const serversRouter = createTRPCRouter({
           datacenter: server.datacenter,
           node: server.node,
           allocations: server.allocations,
-          mounts: server.mounts,
+          mount: server.mount,
           installed_at: server.installed_at,
           suspended_at: server.suspended_at,
           terminates_at: server.terminates_at,
@@ -211,40 +210,16 @@ export const serversRouter = createTRPCRouter({
                       '[]'
                     )
                   `,
-              mounts: !input.expand.includes("mounts")
-                ? sql<string[]>`
-                    COALESCE(
-                      JSON_AGG(DISTINCT ${serverMounts.id})
-                      FILTER (WHERE ${serverMounts.id} IS NOT NULL),
-                      '[]'
-                    )
-                  `
-                : sql<
-                    {
-                      id: string;
-                      drive: string;
-                      image: {
-                        id: string;
-                        name: string;
-                        expires_at: string;
-                      };
-                    }[]
-                  >`
-                    COALESCE(
-                      JSON_AGG(
-                        DISTINCT JSONB_BUILD_OBJECT(
-                          'id', ${serverMounts.id},
-                          'drive', ${serverMounts.drive},
-                          'image', JSONB_BUILD_OBJECT(
-                            'id', ${proxmoxIsoDownloads.id},
-                            'name', ${proxmoxIsoDownloads.name},
-                            'expires_at', ${proxmoxIsoDownloads.expiresAt}
-                          )
-                        )
-                      ) FILTER (WHERE ${serverMounts.id} IS NOT NULL),
-                      '[]'
-                    )
-                  `,
+              mount: !input.expand.includes("mount")
+                ? proxmoxIsoDownloads.id
+                : {
+                    id: proxmoxIsoDownloads.id,
+                    name: proxmoxIsoDownloads.name,
+                    url: proxmoxIsoDownloads.url,
+                    expires_at: proxmoxIsoDownloads.expiresAt,
+                    finished_at: proxmoxIsoDownloads.finishedAt,
+                    failed_at: proxmoxIsoDownloads.failedAt,
+                  },
             })
             .from(servers)
             .innerJoin(serverPlans, eq(servers.serverPlanId, serverPlans.id))
@@ -262,10 +237,9 @@ export const serversRouter = createTRPCRouter({
               eq(subnetAllocations.serverId, servers.id),
             )
             .leftJoin(subnets, eq(subnetAllocations.subnetId, subnets.id))
-            .leftJoin(serverMounts, eq(serverMounts.serverId, servers.id))
             .leftJoin(
               proxmoxIsoDownloads,
-              eq(serverMounts.isoDownloadId, proxmoxIsoDownloads.id),
+              eq(servers.proxmoxIsoDownloadId, proxmoxIsoDownloads.id),
             )
             .groupBy(
               servers.id,
@@ -273,6 +247,7 @@ export const serversRouter = createTRPCRouter({
               proxmoxTemplates.id,
               datacenters.id,
               proxmoxNodes.id,
+              proxmoxIsoDownloads.id,
             )
             .limit(perPage)
             .offset(offset)
@@ -294,8 +269,6 @@ export const serversRouter = createTRPCRouter({
         },
       );
 
-      const mountsExpanded = input.expand.includes("mounts");
-
       return {
         servers: data.map((item) => ({
           id: item.id,
@@ -305,28 +278,9 @@ export const serversRouter = createTRPCRouter({
           datacenter: item.datacenter,
           node: item.node,
           allocations: item.allocations,
-          mounts: mountsExpanded
-            ? (
-                item.mounts as {
-                  id: string;
-                  drive: string;
-                  image: {
-                    id: string;
-                    name: string;
-                    expires_at: string;
-                  };
-                }[]
-              ).map((mount) => ({
-                ...mount,
-                image: {
-                  ...mount.image,
-                  expires_at: new Date(mount.image.expires_at),
-                },
-              }))
-            : (item.mounts as string[]),
+          mount: item.mount,
           installed_at: item.installedAt,
           suspended_at: item.suspendedAt,
-
           terminates_at: item.terminatesAt,
         })),
         meta: {

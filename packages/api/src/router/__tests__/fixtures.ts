@@ -105,6 +105,7 @@ export const mockServer = {
   serverPlanId: mockServerPlan.id,
   proxmoxNodeId: mockProxmoxNode.id,
   proxmoxTemplateId: null,
+  proxmoxIsoDownloadId: null,
   name: "My server",
   vmid: 100,
   installedAt: new Date(),

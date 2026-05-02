@@ -25,7 +25,6 @@ import {
   proxmoxIsoDownloads,
   proxmoxNodes,
   proxmoxTemplates,
-  serverMounts,
   serverPlans,
   servers,
   subnetAllocations,
@@ -276,10 +275,10 @@ const serverMiddleware = authMiddleware.unstable_pipe(
     const expansions = new Set([...(meta?.expand ?? []), ...expand]);
 
     const { db } = ctx;
-    const server = await db.transaction(
+    const result = await db.transaction(
       async (tx) => {
         // TODO: Use query api
-        return tx
+        const server = await tx
           .select({
             id: servers.id,
             name: servers.name,
@@ -356,40 +355,16 @@ const serverMiddleware = authMiddleware.unstable_pipe(
                       '[]'
                     )
                   `,
-            mounts: !expansions.has("mounts")
-              ? sql<string[]>`
-                  COALESCE(
-                    JSON_AGG(DISTINCT ${serverMounts.id})
-                    FILTER (WHERE ${serverMounts.id} IS NOT NULL),
-                    '[]'
-                  )
-                `
-              : sql<
-                  {
-                    id: string;
-                    drive: string;
-                    image: {
-                      id: string;
-                      name: string;
-                      expires_at: string;
-                    };
-                  }[]
-                >`
-                  COALESCE(
-                    JSON_AGG(
-                      DISTINCT JSONB_BUILD_OBJECT(
-                        'id', ${serverMounts.id},
-                        'drive', ${serverMounts.drive},
-                        'image', JSONB_BUILD_OBJECT(
-                          'id', ${proxmoxIsoDownloads.id},
-                          'name', ${proxmoxIsoDownloads.name},
-                          'expires_at', ${proxmoxIsoDownloads.expiresAt}
-                        )
-                      )
-                    ) FILTER (WHERE ${serverMounts.id} IS NOT NULL),
-                    '[]'
-                  )
-                `,
+            mount: !expansions.has("mount")
+              ? proxmoxIsoDownloads.id
+              : {
+                  id: proxmoxIsoDownloads.id,
+                  name: proxmoxIsoDownloads.name,
+                  url: proxmoxIsoDownloads.url,
+                  expires_at: proxmoxIsoDownloads.expiresAt,
+                  finished_at: proxmoxIsoDownloads.finishedAt,
+                  failed_at: proxmoxIsoDownloads.failedAt,
+                },
             proxmoxNode: {
               id: proxmoxNodes.id,
               hostname: proxmoxNodes.hostname,
@@ -421,10 +396,9 @@ const serverMiddleware = authMiddleware.unstable_pipe(
             proxmoxTemplates,
             eq(servers.proxmoxTemplateId, proxmoxTemplates.id),
           )
-          .leftJoin(serverMounts, eq(serverMounts.serverId, servers.id))
           .leftJoin(
             proxmoxIsoDownloads,
-            eq(serverMounts.isoDownloadId, proxmoxIsoDownloads.id),
+            eq(servers.proxmoxIsoDownloadId, proxmoxIsoDownloads.id),
           )
           .groupBy(
             servers.id,
@@ -432,9 +406,17 @@ const serverMiddleware = authMiddleware.unstable_pipe(
             proxmoxTemplates.id,
             datacenters.id,
             proxmoxNodes.id,
+            proxmoxIsoDownloads.id,
           )
           .limit(1)
           .then(([row]) => row);
+
+        if (!server) {
+          // Server does not exist or user does not have access to it
+          throw new TRPCError({ code: "NOT_FOUND" });
+        }
+
+        return server;
       },
       {
         accessMode: "read only",
@@ -442,10 +424,8 @@ const serverMiddleware = authMiddleware.unstable_pipe(
       },
     );
 
-    if (!server) {
-      // Server does not exist or user does not have access to it
-      throw new TRPCError({ code: "NOT_FOUND" });
-    }
+    // [!] Split sensitive data from server data
+    const { proxmoxNode, ...server } = result;
 
     if (meta?.forbiddenStates && meta.forbiddenStates.length > 0) {
       if (
@@ -457,41 +437,15 @@ const serverMiddleware = authMiddleware.unstable_pipe(
       }
     }
 
-    // [!] Split sensitive data from server data
-    const { proxmoxNode, mounts, ...serverData } = server;
-
     const instance = getProxmoxInstance(proxmoxNode);
-
-    const mountsExpanded = expansions.has("mounts");
 
     return next({
       ctx: {
-        server: {
-          ...serverData,
-          mounts: mountsExpanded
-            ? (
-                mounts as {
-                  id: string;
-                  drive: string;
-                  image: {
-                    id: string;
-                    name: string;
-                    expires_at: string;
-                  };
-                }[]
-              ).map((mount) => ({
-                ...mount,
-                image: {
-                  ...mount.image,
-                  expires_at: new Date(mount.image.expires_at),
-                },
-              }))
-            : (mounts as string[]),
-        },
+        server,
         proxmoxNode,
         instance: {
           ...instance,
-          vm: instance.node.qemu.$(serverData.vmid),
+          vm: instance.node.qemu.$(server.vmid),
         },
       },
     });

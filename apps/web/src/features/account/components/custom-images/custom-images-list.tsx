@@ -80,12 +80,10 @@ function CustomImageItem({
         </div>
       }
     >
-      <div className="flex flex-col gap-1">
-        <p className="font-medium text-sm">{image.name}</p>
-        <p className="text-muted-foreground text-sm leading-none">
-          {image.url}
-        </p>
-      </div>
+      <p className="truncate font-medium text-sm">{image.name}</p>
+      <p className="truncate text-muted-foreground text-sm leading-none">
+        {image.url}
+      </p>
     </ItemRow>
   );
 }

@@ -28,12 +28,12 @@ import { Suspense } from "react";
 import { toast } from "sonner";
 import { useCustomImagesList } from "@/features/account/hooks/custom-images/use-custom-image-list";
 import { useMountImage } from "../hooks/use-mount-image";
-import type { GetServerOutput } from "../hooks/use-server";
 import { useServer } from "../hooks/use-server";
 import { useUnmountImage } from "../hooks/use-unmount-image";
 import { ServerCustomImageSelect } from "./server-custom-image-select";
 
-export default function ServerMountsDialog(
+// TODO: Rework this component
+export default function ServerMountDialog(
   props: Omit<
     React.ComponentProps<typeof ResponsiveDialog>,
     "title" | "description"
@@ -44,52 +44,12 @@ export default function ServerMountsDialog(
 
   const {
     data: {
-      server: { mounts },
-    } = { server: { mounts: [] } },
+      server: { mount },
+    } = { server: { mount: null } },
     isPending: isLoadingServer,
   } = useServer({
     server_id: serverId,
   });
-
-  return (
-    <ResponsiveDialog
-      title={t("Mount ISO Images")}
-      description={t("Mount ISO images to your server.")}
-      {...props}
-    >
-      <FieldGroup>
-        {Array.from({ length: 2 }).map((_, index) => {
-          const mount = mounts[index];
-          return (
-            <Suspense fallback={<Skeleton className="h-10 w-full" />}>
-              <ServerMountImageItem
-                key={index}
-                mount={mount}
-                serverId={serverId}
-                disabled={isLoadingServer}
-                index={index}
-              />
-            </Suspense>
-          );
-        })}
-      </FieldGroup>
-    </ResponsiveDialog>
-  );
-}
-
-function ServerMountImageItem({
-  mount,
-  serverId,
-  disabled,
-  index,
-}: {
-  mount?: GetServerOutput["server"]["mounts"][number];
-  serverId: string;
-  disabled: boolean;
-  index: number;
-}) {
-  const t = useExtracted();
-  const isMounted = !!mount && typeof mount !== "string";
 
   const {
     data: { iso_downloads: images },
@@ -125,41 +85,52 @@ function ServerMountImageItem({
       },
     });
 
+  const isMounted = !!mount && typeof mount !== "string";
+  const isActionsDisabled =
+    isLoadingServer || isMountingImage || isUnmountingImage;
+
   return (
-    <Field>
-      <FieldLabel htmlFor={`mount-${index}`}>
-        {t("Slot {count}", { count: String(index + 1) })}
-      </FieldLabel>
-      <div className="flex items-center gap-2">
-        <ServerCustomImageSelect
-          id={`mount-${index}`}
-          images={images}
-          value={isMounted ? mount.image.id : ""}
-          onValueChange={(value) =>
-            mountImage({
-              server_id: serverId,
-              iso_download_id: value,
-            })
-          }
-          disabled={disabled || isMountingImage || isUnmountingImage}
-        />
-        {isMounted && (
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={() =>
-              unmountImage({
-                server_id: serverId,
-                mount_id: mount.id,
-              })
-            }
-            disabled={disabled || isMountingImage || isUnmountingImage}
-          >
-            <LucideX aria-hidden="true" />
-            <span className="sr-only">{t("Unmount")}</span>
-          </Button>
-        )}
-      </div>
-    </Field>
+    <ResponsiveDialog
+      title={t("Mount ISO Images")}
+      description={t("Mount ISO images to your server.")}
+      {...props}
+    >
+      <FieldGroup>
+        <Suspense fallback={<Skeleton className="h-10 w-full" />}>
+          <Field>
+            <FieldLabel htmlFor="mount">{t("ISO Image")}</FieldLabel>
+            <div className="flex items-center gap-2">
+              <ServerCustomImageSelect
+                id="mount"
+                images={images}
+                value={isMounted ? mount.id : ""}
+                onValueChange={(value) =>
+                  mountImage({
+                    server_id: serverId,
+                    iso_download_id: value,
+                  })
+                }
+                disabled={isActionsDisabled}
+              />
+              {isMounted && (
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={() =>
+                    unmountImage({
+                      server_id: serverId,
+                    })
+                  }
+                  disabled={isActionsDisabled}
+                >
+                  <LucideX aria-hidden="true" />
+                  <span className="sr-only">{t("Unmount")}</span>
+                </Button>
+              )}
+            </div>
+          </Field>
+        </Suspense>
+      </FieldGroup>
+    </ResponsiveDialog>
   );
 }

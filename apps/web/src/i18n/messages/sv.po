@@ -972,7 +972,7 @@ msgid "8RV8A9"
 msgstr "Inga anpassade avbildningar har laddats upp ännu."
 
 #: src/features/account/components/custom-images/custom-images-list.tsx:76
-#: src/features/servers/components/server-mounts-badge.tsx:64
+#: src/features/servers/components/server-mount-badge.tsx:55
 msgid "N/dZaF"
 msgstr "Utgår {time}"
 
@@ -2529,35 +2529,35 @@ msgstr "Utgående"
 msgid "6m3w+3"
 msgstr "Intervall"
 
-#: src/features/servers/components/server-mounts-badge.tsx:48
+#: src/features/servers/components/server-mount-badge.tsx:48
 msgid "Han16c"
 msgstr "Monterad"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:56
-msgid "ZE4urv"
-msgstr "Montera ISO-avbildningar"
-
-#: src/features/servers/components/server-mounts-dialog.tsx:57
-msgid "HZdPWF"
-msgstr "Montera ISO-avbildningar på din server."
-
-#: src/features/servers/components/server-mounts-dialog.tsx:103
+#: src/features/servers/components/server-mount-dialog.tsx:63
 msgid "lgSmVl"
 msgstr "ISO-avbildning monterad. Ändringen träder i kraft vid nästa start."
 
-#: src/features/servers/components/server-mounts-dialog.tsx:109
+#: src/features/servers/components/server-mount-dialog.tsx:69
 msgid "bmliQK"
 msgstr "Det gick inte att montera ISO-avbildningen."
 
-#: src/features/servers/components/server-mounts-dialog.tsx:120
+#: src/features/servers/components/server-mount-dialog.tsx:80
 msgid "1INFXA"
 msgstr "ISO-avbildning avmonterad. Ändringen träder i kraft vid nästa start."
 
-#: src/features/servers/components/server-mounts-dialog.tsx:131
-msgid "xGxID0"
-msgstr "Plats {count}"
+#: src/features/servers/components/server-mount-dialog.tsx:94
+msgid "ZE4urv"
+msgstr "Montera ISO-avbildningar"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:159
+#: src/features/servers/components/server-mount-dialog.tsx:95
+msgid "HZdPWF"
+msgstr "Montera ISO-avbildningar på din server."
+
+#: src/features/servers/components/server-mount-dialog.tsx:101
+msgid "C3jmVs"
+msgstr "ISO-avbildning"
+
+#: src/features/servers/components/server-mount-dialog.tsx:127
 msgid "u9VaJ3"
 msgstr "Avmontera"
 

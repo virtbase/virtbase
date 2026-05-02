@@ -84,10 +84,7 @@ export const relations = defineRelations(schema, (r) => ({
     }),
   },
   proxmoxIsoDownloads: {
-    mounts: r.many.serverMounts({
-      from: r.proxmoxIsoDownloads.id,
-      to: r.serverMounts.isoDownloadId,
-    }),
+    servers: r.many.servers(),
     proxmoxNode: r.one.proxmoxNodes({
       from: r.proxmoxIsoDownloads.proxmoxNodeId,
       to: r.proxmoxNodes.id,
@@ -169,10 +166,6 @@ export const relations = defineRelations(schema, (r) => ({
       from: r.servers.userId,
       to: r.users.id,
     }),
-    mounts: r.many.serverMounts({
-      from: r.servers.id,
-      to: r.serverMounts.serverId,
-    }),
     serverPlan: r.one.serverPlans({
       from: r.servers.serverPlanId,
       to: r.serverPlans.id,
@@ -187,23 +180,16 @@ export const relations = defineRelations(schema, (r) => ({
       to: r.proxmoxTemplates.id,
       optional: true,
     }),
+    proxmoxIsoDownload: r.one.proxmoxIsoDownloads({
+      from: r.servers.proxmoxIsoDownloadId,
+      to: r.proxmoxIsoDownloads.id,
+      optional: true,
+    }),
     serverBackups: r.many.serverBackups(),
     subnetAllocations: r.many.subnetAllocations(),
     subnets: r.many.subnets({
       from: r.servers.id.through(r.subnetAllocations.serverId),
       to: r.subnets.id.through(r.subnetAllocations.subnetId),
-    }),
-  },
-  serverMounts: {
-    server: r.one.servers({
-      from: r.serverMounts.serverId,
-      to: r.servers.id,
-      optional: false,
-    }),
-    proxmoxIsoDownload: r.one.proxmoxIsoDownloads({
-      from: r.serverMounts.isoDownloadId,
-      to: r.proxmoxIsoDownloads.id,
-      optional: false,
     }),
   },
   serverPlans: {

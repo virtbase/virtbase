@@ -25,7 +25,7 @@ import { useServer } from "../hooks/use-server";
 import { useServerStatus } from "../hooks/use-server-status";
 import { useStatusMapping } from "../hooks/use-status-mapping";
 import { useTaskMapping } from "../hooks/use-task-mapping";
-import { ServerMountsBadge } from "./server-mounts-badge";
+import { ServerMountBadge } from "./server-mount-badge";
 import { ServerTerminatesBadge } from "./server-terminates-badge";
 
 export function ServerLabel() {
@@ -74,7 +74,7 @@ export function ServerLabel() {
           )}
           {currentTask ? currentTask.label : currentStatus.label}
         </Badge>
-        <ServerMountsBadge mounts={server.mounts} />
+        <ServerMountBadge mount={server.mount} />
         <ServerTerminatesBadge server={server} />
       </div>
     </div>

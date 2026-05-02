@@ -19,19 +19,6 @@ import * as z from "zod";
 import { ProxmoxIsoDownloadSchema } from "../proxmox-iso-downloads";
 import { ServerSchema } from "./shared";
 
-export const ServerMountSchema = z.object({
-  id: z
-    .string()
-    .regex(/^mnt_[A-Z0-9]{25}$/)
-    .meta({
-      description: "Unique identifier of the server mount.",
-      examples: ["mnt_1KECN6RQ2MHEMQV0E62050P88"],
-    }),
-  drive: z.string().regex(/^ide[0-3]$/),
-});
-
-export type ServerMount = z.infer<typeof ServerMountSchema>;
-
 export const MountServerImageInputSchema = z.object({
   server_id: ServerSchema.shape.id,
   iso_download_id: ProxmoxIsoDownloadSchema.shape.id,
@@ -43,7 +30,6 @@ export const MountServerImageOutputSchema = z.void();
 
 export const UnmountServerImageInputSchema = z.object({
   server_id: ServerSchema.shape.id,
-  mount_id: ServerMountSchema.shape.id,
 });
 
 export type UnmountServerImageInput = z.infer<

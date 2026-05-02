@@ -18,7 +18,7 @@
 import * as Sentry from "@sentry/node";
 import { TRPCError } from "@trpc/server";
 import { and, eq, sql } from "@virtbase/db";
-import { proxmoxIsoDownloads as pids, serverMounts } from "@virtbase/db/schema";
+import { proxmoxIsoDownloads as pids, servers } from "@virtbase/db/schema";
 import {
   MountServerImageInputSchema,
   MountServerImageOutputSchema,
@@ -32,7 +32,7 @@ export const serversMountsRouter = createTRPCRouter({
     .meta({
       openapi: {
         method: "POST",
-        path: "/servers/{server_id}/mounts",
+        path: "/servers/{server_id}/mount",
         protect: true,
         contentTypes: ["application/json"],
         tags: ["Servers"],
@@ -87,33 +87,7 @@ export const serversMountsRouter = createTRPCRouter({
               });
             }
 
-            const mounts = await tx.$count(
-              serverMounts,
-              eq(serverMounts.serverId, server.id),
-            );
-            if (mounts >= 2) {
-              throw new TRPCError({
-                code: "CONFLICT",
-              });
-            }
-
-            const current = instance.vm.config.$get();
-
-            let drive: string | null = null;
-            for (let i = 0; i < 4; i++) {
-              const candidate = `ide${i}`;
-              if (!(candidate in current)) {
-                drive = candidate;
-                break;
-              }
-            }
-
-            if (!drive) {
-              throw new TRPCError({
-                code: "INTERNAL_SERVER_ERROR",
-              });
-            }
-
+            const drive = "ide0";
             const storage = proxmoxNode.isoDownloadStorage;
             const volid = `${storage}:iso/${isoDownload.id}.iso`;
 
@@ -123,19 +97,18 @@ export const serversMountsRouter = createTRPCRouter({
               boot: `order=${drive};scsi0`,
             });
 
-            const inserted = await tx
-              .insert(serverMounts)
-              .values({
-                serverId: server.id,
-                isoDownloadId: isoDownload.id,
-                drive,
+            const updated = await tx
+              .update(servers)
+              .set({
+                proxmoxIsoDownloadId: isoDownload.id,
               })
+              .where(eq(servers.id, server.id))
               .returning({
-                id: serverMounts.id,
+                id: servers.id,
               })
               .then(([row]) => row);
 
-            if (!inserted) {
+            if (!updated) {
               throw new TRPCError({
                 code: "INTERNAL_SERVER_ERROR",
               });
@@ -162,7 +135,7 @@ export const serversMountsRouter = createTRPCRouter({
     .meta({
       openapi: {
         method: "DELETE",
-        path: "/servers/{server_id}/mounts/{mount_id}",
+        path: "/servers/{server_id}/mount",
         protect: true,
         contentTypes: ["application/json"],
         tags: ["Servers"],
@@ -177,35 +150,49 @@ export const serversMountsRouter = createTRPCRouter({
     })
     .input(UnmountServerImageInputSchema)
     .output(UnmountServerImageOutputSchema)
-    .mutation(async ({ ctx, input }) => {
-      const { db, instance } = ctx;
+    .mutation(async ({ ctx }) => {
+      const { db, server, instance } = ctx;
 
       try {
         await db.transaction(
           async (tx) => {
-            const deleted = await tx
-              .delete(serverMounts)
+            if (!server.mount) {
+              throw new TRPCError({
+                code: "BAD_REQUEST",
+              });
+            }
+
+            const updated = await tx
+              .update(servers)
+              .set({
+                proxmoxIsoDownloadId: null,
+              })
               .where(
                 and(
-                  // [!] Authorization: Only allow the user to access their own server mounts
-                  eq(serverMounts.serverId, input.server_id),
-                  eq(serverMounts.id, input.mount_id),
+                  // [!] Authorization: Only allow the user to access their own server mount
+                  eq(servers.id, server.id),
+                  eq(
+                    servers.proxmoxIsoDownloadId,
+                    typeof server.mount === "string"
+                      ? server.mount
+                      : server.mount.id,
+                  ),
                 ),
               )
               .returning({
-                id: serverMounts.id,
-                drive: serverMounts.drive,
+                id: servers.id,
               })
               .then(([row]) => row);
 
-            if (!deleted) {
+            if (!updated) {
+              // There was no mount to unmount
               throw new TRPCError({
                 code: "BAD_REQUEST",
               });
             }
 
             // Synchronous update - effective on next boot
-            await instance.vm.config.$put({ delete: deleted.drive });
+            await instance.vm.config.$put({ delete: "ide0" });
           },
           {
             accessMode: "read write",

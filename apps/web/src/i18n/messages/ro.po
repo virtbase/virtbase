@@ -972,7 +972,7 @@ msgid "8RV8A9"
 msgstr "Nu au fost încărcate imagini personalizate."
 
 #: src/features/account/components/custom-images/custom-images-list.tsx:76
-#: src/features/servers/components/server-mounts-badge.tsx:64
+#: src/features/servers/components/server-mount-badge.tsx:55
 msgid "N/dZaF"
 msgstr "Expiră {time}"
 
@@ -2529,35 +2529,35 @@ msgstr "Ieșire"
 msgid "6m3w+3"
 msgstr "Interval"
 
-#: src/features/servers/components/server-mounts-badge.tsx:48
+#: src/features/servers/components/server-mount-badge.tsx:48
 msgid "Han16c"
 msgstr "Montat"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:56
-msgid "ZE4urv"
-msgstr "Montare imagini ISO"
-
-#: src/features/servers/components/server-mounts-dialog.tsx:57
-msgid "HZdPWF"
-msgstr "Montați imagini ISO pe serverul dumneavoastră."
-
-#: src/features/servers/components/server-mounts-dialog.tsx:103
+#: src/features/servers/components/server-mount-dialog.tsx:63
 msgid "lgSmVl"
 msgstr "Imaginea ISO a fost montată cu succes. Modificarea va intra în vigoare la următoarea repornire."
 
-#: src/features/servers/components/server-mounts-dialog.tsx:109
+#: src/features/servers/components/server-mount-dialog.tsx:69
 msgid "bmliQK"
 msgstr "Nu s-a putut monta imaginea ISO."
 
-#: src/features/servers/components/server-mounts-dialog.tsx:120
+#: src/features/servers/components/server-mount-dialog.tsx:80
 msgid "1INFXA"
 msgstr "Imaginea ISO a fost demontată cu succes. Modificarea va intra în vigoare la următoarea repornire."
 
-#: src/features/servers/components/server-mounts-dialog.tsx:131
-msgid "xGxID0"
-msgstr "Slot {count}"
+#: src/features/servers/components/server-mount-dialog.tsx:94
+msgid "ZE4urv"
+msgstr "Montare imagini ISO"
 
-#: src/features/servers/components/server-mounts-dialog.tsx:159
+#: src/features/servers/components/server-mount-dialog.tsx:95
+msgid "HZdPWF"
+msgstr "Montați imagini ISO pe serverul dumneavoastră."
+
+#: src/features/servers/components/server-mount-dialog.tsx:101
+msgid "C3jmVs"
+msgstr "Imagine ISO"
+
+#: src/features/servers/components/server-mount-dialog.tsx:127
 msgid "u9VaJ3"
 msgstr "Demontare"
 

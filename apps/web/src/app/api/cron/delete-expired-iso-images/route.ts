@@ -17,9 +17,9 @@
 
 import * as Sentry from "@sentry/nextjs";
 import { getProxmoxInstance } from "@virtbase/api/proxmox";
-import { eq } from "@virtbase/db";
+import { eq, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
-import { proxmoxIsoDownloads, serverMounts } from "@virtbase/db/schema";
+import { proxmoxIsoDownloads, servers } from "@virtbase/db/schema";
 import type { NextRequest } from "next/server";
 
 /**
@@ -41,9 +41,9 @@ export async function handler(request: NextRequest) {
   await db.transaction(
     async (tx) => {
       const expired = await tx.query.proxmoxIsoDownloads.findMany({
-        columns: { id: true, failedAt: true, finishedAt: true },
+        columns: { id: true, upid: true, failedAt: true, finishedAt: true },
         where: {
-          expiresAt: { lt: new Date() },
+          RAW: (t) => sql`${t.expiresAt} < now()`,
         },
         with: {
           proxmoxNode: {
@@ -56,22 +56,17 @@ export async function handler(request: NextRequest) {
               tokenSecret: true,
             },
           },
-          mounts: {
-            columns: { drive: true },
+          servers: {
+            columns: { id: true, vmid: true },
             with: {
-              server: {
-                columns: { id: true, vmid: true },
-                with: {
-                  proxmoxNode: {
-                    columns: {
-                      isoDownloadStorage: true,
-                      hostname: true,
-                      fqdn: true,
-                      // [!] Sensitive data
-                      tokenID: true,
-                      tokenSecret: true,
-                    },
-                  },
+              proxmoxNode: {
+                columns: {
+                  isoDownloadStorage: true,
+                  hostname: true,
+                  fqdn: true,
+                  // [!] Sensitive data
+                  tokenID: true,
+                  tokenSecret: true,
                 },
               },
             },
@@ -85,38 +80,42 @@ export async function handler(request: NextRequest) {
         "expired ISO images to delete.",
       );
 
-      // TODO: Handle failed / dangling downloads
       await Promise.all(
         expired.map(async ({ proxmoxNode, ...item }) => {
           try {
-            if (item.mounts.length > 0) {
+            if (item.servers.length > 0) {
               // The ISO image is still in use, unlink it from the servers
               await Promise.all(
-                item.mounts.map(async (mount) => {
-                  const {
-                    drive,
-                    server: { proxmoxNode, ...server },
-                  } = mount;
-
+                item.servers.map(async ({ proxmoxNode, ...server }) => {
                   const instance = getProxmoxInstance(proxmoxNode);
                   const vm = instance.node.qemu.$(server.vmid);
 
                   // Synchronous update - effective on next boot
-                  await vm.config.$put({ delete: drive });
+                  await vm.config.$put({ delete: "ide0" });
                 }),
               );
 
               await tx
-                .delete(serverMounts)
-                .where(eq(serverMounts.isoDownloadId, item.id));
+                .update(servers)
+                .set({ proxmoxIsoDownloadId: null })
+                .where(eq(servers.proxmoxIsoDownloadId, item.id));
             }
 
-            const instance = getProxmoxInstance(proxmoxNode);
+            if (!item.failedAt) {
+              const instance = getProxmoxInstance(proxmoxNode);
 
-            const storage = proxmoxNode.isoDownloadStorage;
-            const volid = `${storage}:iso/${item.id}.iso`;
+              if (item.finishedAt) {
+                const storage = proxmoxNode.isoDownloadStorage;
+                const volid = `${storage}:iso/${item.id}.iso`;
 
-            await instance.node.storage.$(storage).content.$(volid).$delete();
+                await instance.node.storage
+                  .$(storage)
+                  .content.$(volid)
+                  .$delete();
+              } else {
+                await instance.node.tasks.$(item.upid).$delete();
+              }
+            }
 
             await tx
               .delete(proxmoxIsoDownloads)

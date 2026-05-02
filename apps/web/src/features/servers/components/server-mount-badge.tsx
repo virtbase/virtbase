@@ -27,16 +27,16 @@ import { LucideDisc3 } from "@virtbase/ui/icons";
 import { useExtracted, useFormatter, useNow } from "next-intl";
 import type { GetServerOutput } from "../hooks/use-server";
 
-export function ServerMountsBadge({
-  mounts,
+export function ServerMountBadge({
+  mount,
 }: {
-  mounts: GetServerOutput["server"]["mounts"];
+  mount: GetServerOutput["server"]["mount"];
 }) {
   const t = useExtracted();
   const format = useFormatter();
   const now = useNow({ updateInterval: 1000 });
 
-  if (mounts.length === 0) {
+  if (!mount || typeof mount === "string") {
     return null;
   }
 
@@ -49,25 +49,14 @@ export function ServerMountsBadge({
         </Badge>
       </HoverCardTrigger>
       <HoverCardContent side="bottom" align="center">
-        {mounts.map((mount) => {
-          if (typeof mount === "string") {
-            return null;
-          }
-
-          return (
-            <div
-              key={mount.id}
-              className="grid grid-cols-2 gap-2 overflow-hidden text-sm"
-            >
-              <span className="truncate font-medium">{mount.image.name}</span>
-              <span className="shrink-0 text-muted-foreground">
-                {t("Expires {time}", {
-                  time: format.relativeTime(mount.image.expires_at, now),
-                })}
-              </span>
-            </div>
-          );
-        })}
+        <div className="flex flex-col gap-1 overflow-hidden text-sm">
+          <span className="truncate font-medium">{mount.name}</span>
+          <span className="text-muted-foreground">
+            {t("Expires {time}", {
+              time: format.relativeTime(mount.expires_at, now),
+            })}
+          </span>
+        </div>
       </HoverCardContent>
     </HoverCard>
   );

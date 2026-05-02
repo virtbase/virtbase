@@ -19,6 +19,7 @@ import { sql } from "drizzle-orm";
 import { index, pgTable } from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 import { users } from "./auth";
+import { proxmoxIsoDownloads } from "./proxmox-iso-downloads";
 import { proxmoxNodes } from "./proxmox-nodes";
 import { proxmoxTemplates } from "./proxmox-templates";
 import { serverPlans } from "./server-plans";
@@ -53,6 +54,10 @@ export const servers = pgTable(
     proxmoxTemplateId: t.text().references(() => proxmoxTemplates.id, {
       // Don't allow deletion of the Proxmox VE template if it still has servers
       onDelete: "restrict",
+      onUpdate: "cascade",
+    }),
+    proxmoxIsoDownloadId: t.text().references(() => proxmoxIsoDownloads.id, {
+      onDelete: "set null",
       onUpdate: "cascade",
     }),
     /**
@@ -109,6 +114,7 @@ export const servers = pgTable(
     index().on(t.serverPlanId),
     index().on(t.proxmoxNodeId),
     index().on(t.proxmoxTemplateId),
+    index().on(t.proxmoxIsoDownloadId),
   ],
 );
 

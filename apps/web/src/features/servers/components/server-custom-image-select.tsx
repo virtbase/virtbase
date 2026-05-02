@@ -102,7 +102,7 @@ export function ServerCustomImageSelect({
           </Button>
         </PopoverTrigger>
         <PopoverContent
-          className="w-(--radix-popover-trigger-width) p-0"
+          className="min-w-(--radix-popover-trigger-width) p-0"
           onWheel={(e) => e.stopPropagation()}
         >
           <Command>
