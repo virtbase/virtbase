@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Dutch\n"
-"PO-Revision-Date: 2026-04-29 12:55\n"
+"PO-Revision-Date: 2026-05-02 10:58\n"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:84
 msgid "o/UJXc"
@@ -25,7 +25,7 @@ msgstr "Besch"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:100
 #: ../../packages/ui/src/data-table/data-table-toolbar.tsx:78
-#: src/features/servers/components/server-actions-row.tsx:174
+#: src/features/servers/components/server-actions-row.tsx:193
 msgid "jm/spn"
 msgstr "Opnieuw instellen"
 
@@ -642,27 +642,27 @@ msgid "xXbJso"
 msgstr "Meld u af"
 
 #: src/features/account/components/account-breadcrumb.tsx:41
-#: src/features/account/components/account-nav.tsx:40
+#: src/features/account/components/account-nav.tsx:41
 msgid "1iEPTM"
 msgstr "Algemeen"
 
 #: src/features/account/components/account-breadcrumb.tsx:45
-#: src/features/account/components/account-nav.tsx:45
+#: src/features/account/components/account-nav.tsx:46
 msgid "Py189G"
 msgstr "Beveiliging"
 
 #: src/features/account/components/account-breadcrumb.tsx:49
-#: src/features/account/components/account-nav.tsx:50
+#: src/features/account/components/account-nav.tsx:51
 msgid "Tbo377"
 msgstr "Facturering"
 
 #: src/features/account/components/account-breadcrumb.tsx:53
-#: src/features/account/components/account-nav.tsx:55
+#: src/features/account/components/account-nav.tsx:56
 msgid "xwEc8K"
 msgstr "API"
 
 #: src/features/account/components/account-breadcrumb.tsx:57
-#: src/features/account/components/account-nav.tsx:60
+#: src/features/account/components/account-nav.tsx:61
 #: src/features/account/components/ssh-keys/ssh-keys-card.tsx:44
 msgid "7Cdpiv"
 msgstr "SSH-sleutels"
@@ -671,6 +671,10 @@ msgstr "SSH-sleutels"
 #: src/ui/nav-user.tsx:120
 msgid "TwyMau"
 msgstr "Rekening"
+
+#: src/features/account/components/account-nav.tsx:66
+msgid "96Us9V"
+msgstr "ISO-images"
 
 #: src/features/account/components/api-keys/api-keys-card.tsx:49
 msgid "jSp63j"
@@ -715,15 +719,20 @@ msgstr "Verwijderen"
 msgid "TrBeGD"
 msgstr "SSH-sleutels"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:91
+#: src/features/account/components/api-keys/create-api-key-button.tsx:61
+msgid "42rMfw"
+msgstr "ISO"
+
+#: src/features/account/components/api-keys/create-api-key-button.tsx:92
 msgid "+J17tT"
 msgstr "Maak een API-sleutel"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:117
+#: src/features/account/components/api-keys/create-api-key-button.tsx:118
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:85
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:85
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:71
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:72
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:120
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:122
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:90
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx:74
 #: src/features/servers/components/backups/create-backup-dialog.tsx:104
@@ -737,15 +746,16 @@ msgstr "Maak een API-sleutel"
 msgid "47FYwb"
 msgstr "Annuleren"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:134
+#: src/features/account/components/api-keys/create-api-key-button.tsx:135
 msgid "fnMCvo"
 msgstr "API-sleutel gemaakt"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:137
+#: src/features/account/components/api-keys/create-api-key-button.tsx:138
 msgid "TQSqlk"
 msgstr "Deze sleutel wordt slechts één keer weergegeven. Bewaar het veilig, want het kan niet worden hersteld:"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:156
+#: src/features/account/components/api-keys/create-api-key-button.tsx:157
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:109
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:94
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx:92
@@ -769,24 +779,24 @@ msgstr "Deze sleutel wordt slechts één keer weergegeven. Bewaar het veilig, wa
 msgid "HAlOn1"
 msgstr "Naam"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:164
+#: src/features/account/components/api-keys/create-api-key-button.tsx:165
 msgid "5Cu2sb"
 msgstr "Mijn API-sleutel"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:172
+#: src/features/account/components/api-keys/create-api-key-button.tsx:173
 msgid "SFuk1v"
 msgstr "Machtigingen"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:174
+#: src/features/account/components/api-keys/create-api-key-button.tsx:175
 msgid "4u9ABD"
 msgstr "Afhankelijk van de rechten kan de API-sleutel bepaalde acties uitvoeren."
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:211
+#: src/features/account/components/api-keys/create-api-key-button.tsx:212
 #: src/features/servers/components/server-graphs.tsx:120
 msgid "filwqD"
 msgstr "Lezen"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:217
+#: src/features/account/components/api-keys/create-api-key-button.tsx:218
 #: src/features/servers/components/server-graphs.tsx:124
 msgid "k2veDA"
 msgstr "Schrijven"
@@ -923,6 +933,48 @@ msgstr "Er zijn geen betaalmethoden aan uw account gekoppeld."
 #: src/features/account/components/billing/payment-methods-list.tsx:155
 msgid "3MBRV5"
 msgstr "Geen naam opgegeven"
+
+#: src/features/account/components/custom-images/create-custom-image-button.tsx:40
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:71
+msgid "TKvr5O"
+msgstr "Aangepaste image maken"
+
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:76
+msgid "ggQwe8"
+msgstr "Maak een nieuwe aangepaste image voor uw servers."
+
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:135
+msgid "bWjdfa"
+msgstr "URL"
+
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:148
+msgid "aLOPr+"
+msgstr "De URL moet direct naar het ISO-bestand wijzen. Maximale bestandsgrootte is {size}."
+
+#: src/features/account/components/custom-images/custom-images-card.tsx:45
+msgid "4NrukI"
+msgstr "Aangepaste ISO-images"
+
+#: src/features/account/components/custom-images/custom-images-card.tsx:47
+msgid "GnqZoy"
+msgstr "Upload en beheer aangepaste ISO-images voor uw servers."
+
+#: src/features/account/components/custom-images/custom-images-card.tsx:60
+msgid "Lwyinc"
+msgstr "U kunt maximaal {count} actieve ISO-images hebben."
+
+#: src/features/account/components/custom-images/custom-images-list.tsx:47
+msgid "sHUPf5"
+msgstr "Geen aangepaste images"
+
+#: src/features/account/components/custom-images/custom-images-list.tsx:49
+msgid "8RV8A9"
+msgstr "Er zijn nog geen aangepaste images geüpload."
+
+#: src/features/account/components/custom-images/custom-images-list.tsx:76
+#: src/features/servers/components/server-mount-badge.tsx:55
+msgid "N/dZaF"
+msgstr "Verloopt {time}"
 
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:63
 msgid "KdsDOJ"
@@ -1187,25 +1239,25 @@ msgid "0ICwq5"
 msgstr "Laatst bijgewerkt"
 
 #: src/features/admin/components/proxmox-nodes/create-datacenter-button.tsx:48
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:111
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:127
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:113
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:129
 msgid "S+458D"
 msgstr "Maak een Proxmox-knooppunt"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:112
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:114
 msgid "deLbYn"
 msgstr "Maak een nieuw Proxmox VE-knooppunt om servers te hosten."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:143
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:145
 #: src/features/servers/components/overview/node-details-dialog.tsx:101
 msgid "zUxWZC"
 msgstr "Datacentrum"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:162
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:164
 msgid "RJ3ocO"
 msgstr "Knooppuntgroep"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:181
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:183
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:88
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:100
 #: src/features/servers/components/rdns/records-table/columns.tsx:50
@@ -1213,91 +1265,99 @@ msgstr "Knooppuntgroep"
 msgid "uPDgth"
 msgstr "Hostnaam"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:206
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:208
 msgid "8cNS7n"
 msgstr "De hostnaam van het Proxmox VE-knooppunt zoals geconfigureerd in het Proxmox-cluster."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:222
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:224
 msgid "2BEZJh"
 msgstr "FQDN"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:247
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:249
 msgid "cUm+Vq"
 msgstr "De FQDN van het Proxmox VE-knooppunt waar de API toegankelijk is. Moet bereikbaar zijn vanaf internet en een geldig TLS-certificaat gebruiken."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:264
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:266
 msgid "86ZUi9"
 msgstr "Token-ID"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:284
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:286
 msgid "1gRCWa"
 msgstr "Tokengeheim"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:315
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:317
 msgid "6o6hYT"
 msgstr "Fragmentopslag"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:344
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:346
 msgid "10Yrc8"
 msgstr "Cloud-init YAML-bestanden voor alle servers op dit knooppunt worden hier opgeslagen."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:360
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:362
 msgid "IvtOOO"
 msgstr "Back-upopslag"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:389
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:391
 msgid "elgt8s"
 msgstr "Back-ups van eventuele servers op dit knooppunt worden hier opgeslagen."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:406
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:407
+msgid "foINKU"
+msgstr "ISO-downloadopslag"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:436
+msgid "Us0NPD"
+msgstr "ISO-images worden hier opgeslagen."
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:451
 #: src/features/servers/components/overview/node-details-dialog.tsx:105
 msgid "sB9VeA"
 msgstr "Uplink"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:437
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:482
 msgid "1oyHhQ"
 msgstr "De maximaal mogelijke netwerkbandbreedte van de Uplink in MB/s."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:456
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:501
 msgid "gYG5ho"
 msgstr "Maximaal aantal VM's"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:460
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:505
 msgid "UYmKl1"
 msgstr "VM's"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:468
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:498
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:528
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:558
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:589
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:513
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:543
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:573
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:603
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:634
 msgid "ekXood"
 msgstr "Onbeperkt"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:486
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:531
 msgid "OCihQV"
 msgstr "Maximaal geheugen"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:516
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:561
 msgid "T4Xl7g"
 msgstr "Maximale opslag"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:546
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:591
 msgid "bRNAv0"
 msgstr "Maximale vCores"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:550
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:595
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:239
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:266
 #: src/features/servers/components/server-stats-card.tsx:90
 msgid "cCUvGW"
 msgstr "vCores"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:577
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:622
 msgid "ueCC3G"
 msgstr "Netwerklimiet"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:620
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:665
 msgid "U9Jxp7"
 msgstr "Indien dit knooppunt wordt bereikt, wordt het niet langer gebruikt voor services. Laat leeg voor onbeperkt."
 
@@ -2059,6 +2119,7 @@ msgid "tBwTvx"
 msgstr "Grootte/Status"
 
 #: src/features/servers/components/backups/backups-table/columns.tsx:155
+#: src/features/servers/components/server-custom-image-select.tsx:188
 msgid "vXCeIi"
 msgstr "Mislukt"
 
@@ -2103,7 +2164,7 @@ msgid "04uNfB"
 msgstr "Maakt een back-up zonder het systeem te onderbreken. Er wordt een back-up gemaakt van de huidige status van de processen."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:183
-#: src/features/servers/components/server-actions-row.tsx:149
+#: src/features/servers/components/server-actions-row.tsx:168
 msgid "elnaZe"
 msgstr "Opschorten"
 
@@ -2112,7 +2173,7 @@ msgid "qRuNZh"
 msgstr "Onderbreekt het systeem kort om een ​​back-up te maken zonder het af te sluiten."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:202
-#: src/features/servers/components/server-actions-row.tsx:162
+#: src/features/servers/components/server-actions-row.tsx:181
 msgid "q/uwLT"
 msgstr "Stop"
 
@@ -2382,25 +2443,49 @@ msgstr "Voor alle IP-adressen die aan deze server zijn toegewezen, kunnen PTR-re
 msgid "XM/KKz"
 msgstr "De hostnaam die moet worden omgezet in het IP-adres. <code>localhost</code> is niet toegestaan."
 
-#: src/features/servers/components/server-actions-row.tsx:79
+#: src/features/servers/components/server-actions-row.tsx:88
 msgid "tZbb+K"
 msgstr "Afsluiten"
 
-#: src/features/servers/components/server-actions-row.tsx:89
+#: src/features/servers/components/server-actions-row.tsx:98
 msgid "9U7nUR"
 msgstr "Opnieuw opstarten"
 
-#: src/features/servers/components/server-actions-row.tsx:101
+#: src/features/servers/components/server-actions-row.tsx:112
 msgid "mOFG3K"
 msgstr "Begin"
 
-#: src/features/servers/components/server-actions-row.tsx:115
+#: src/features/servers/components/server-actions-row.tsx:126
 msgid "3y9DGg"
 msgstr "Cv"
 
-#: src/features/servers/components/server-actions-row.tsx:138
+#: src/features/servers/components/server-actions-row.tsx:145
+msgid "YsjuRA"
+msgstr "ISO koppelen"
+
+#: src/features/servers/components/server-actions-row.tsx:157
 msgid "tFFMkF"
 msgstr "Pauze"
+
+#: src/features/servers/components/server-custom-image-select.tsx:99
+msgid "wPPrpH"
+msgstr "Selecteer een aangepaste image..."
+
+#: src/features/servers/components/server-custom-image-select.tsx:109
+msgid "3MDlnT"
+msgstr "Zoek een aangepaste image..."
+
+#: src/features/servers/components/server-custom-image-select.tsx:111
+msgid "5YXiqk"
+msgstr "Geen aangepaste image gevonden."
+
+#: src/features/servers/components/server-custom-image-select.tsx:179
+msgid "9P0AA6"
+msgstr "Uploaden {percentage}"
+
+#: src/features/servers/components/server-custom-image-select.tsx:184
+msgid "JEsxDw"
+msgstr "Uploaden..."
 
 #: src/features/servers/components/server-graphs.tsx:86
 msgid "j9Y9nu"
@@ -2443,6 +2528,46 @@ msgstr "Uitgaand"
 #: src/features/servers/components/server-graphs.tsx:154
 msgid "6m3w+3"
 msgstr "Interval"
+
+#: src/features/servers/components/server-mount-badge.tsx:48
+msgid "Han16c"
+msgstr "Gemonteerd"
+
+#: src/features/servers/components/server-mount-dialog.tsx:70
+msgid "lgSmVl"
+msgstr "ISO-image succesvol gekoppeld. De wijziging wordt van kracht bij de volgende keer opstarten."
+
+#: src/features/servers/components/server-mount-dialog.tsx:76
+msgid "bmliQK"
+msgstr "ISO-image kon niet worden gekoppeld."
+
+#: src/features/servers/components/server-mount-dialog.tsx:87
+msgid "1INFXA"
+msgstr "ISO-image succesvol ontkoppeld. De wijziging wordt van kracht bij de volgende keer opstarten."
+
+#: src/features/servers/components/server-mount-dialog.tsx:101
+msgid "ZE4urv"
+msgstr "ISO-images koppelen"
+
+#: src/features/servers/components/server-mount-dialog.tsx:102
+msgid "HZdPWF"
+msgstr "Koppel ISO-images aan uw server."
+
+#: src/features/servers/components/server-mount-dialog.tsx:108
+msgid "C3jmVs"
+msgstr "ISO-image"
+
+#: src/features/servers/components/server-mount-dialog.tsx:136
+msgid "u9VaJ3"
+msgstr "Ontkoppelen"
+
+#: src/features/servers/components/server-mount-dialog.tsx:141
+msgid "Uh7TFc"
+msgstr "De ISO-image wordt direct gekoppeld, maar om er van op te starten moet u de server volledig uitschakelen en opnieuw opstarten."
+
+#: src/features/servers/components/server-mount-dialog.tsx:144
+msgid "FglhQv"
+msgstr "ISO-images kunt u uploaden via uw <link>accountinstellingen</link>."
 
 #: src/features/servers/components/server-stats-card.tsx:192
 msgid "PW+sL4"
