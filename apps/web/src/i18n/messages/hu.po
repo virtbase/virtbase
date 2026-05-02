@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Hungarian\n"
-"PO-Revision-Date: 2026-04-29 12:54\n"
+"PO-Revision-Date: 2026-05-02 10:58\n"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:84
 msgid "o/UJXc"
@@ -25,7 +25,7 @@ msgstr "Desc"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:100
 #: ../../packages/ui/src/data-table/data-table-toolbar.tsx:78
-#: src/features/servers/components/server-actions-row.tsx:174
+#: src/features/servers/components/server-actions-row.tsx:193
 msgid "jm/spn"
 msgstr "Reset"
 
@@ -642,27 +642,27 @@ msgid "xXbJso"
 msgstr "Jelentkezzen ki"
 
 #: src/features/account/components/account-breadcrumb.tsx:41
-#: src/features/account/components/account-nav.tsx:40
+#: src/features/account/components/account-nav.tsx:41
 msgid "1iEPTM"
 msgstr "Általános"
 
 #: src/features/account/components/account-breadcrumb.tsx:45
-#: src/features/account/components/account-nav.tsx:45
+#: src/features/account/components/account-nav.tsx:46
 msgid "Py189G"
 msgstr "Biztonság"
 
 #: src/features/account/components/account-breadcrumb.tsx:49
-#: src/features/account/components/account-nav.tsx:50
+#: src/features/account/components/account-nav.tsx:51
 msgid "Tbo377"
 msgstr "Számlázás"
 
 #: src/features/account/components/account-breadcrumb.tsx:53
-#: src/features/account/components/account-nav.tsx:55
+#: src/features/account/components/account-nav.tsx:56
 msgid "xwEc8K"
 msgstr "API"
 
 #: src/features/account/components/account-breadcrumb.tsx:57
-#: src/features/account/components/account-nav.tsx:60
+#: src/features/account/components/account-nav.tsx:61
 #: src/features/account/components/ssh-keys/ssh-keys-card.tsx:44
 msgid "7Cdpiv"
 msgstr "SSH kulcsok"
@@ -671,6 +671,10 @@ msgstr "SSH kulcsok"
 #: src/ui/nav-user.tsx:120
 msgid "TwyMau"
 msgstr "fiók"
+
+#: src/features/account/components/account-nav.tsx:66
+msgid "96Us9V"
+msgstr "ISO-képek"
 
 #: src/features/account/components/api-keys/api-keys-card.tsx:49
 msgid "jSp63j"
@@ -715,15 +719,20 @@ msgstr "Töröl"
 msgid "TrBeGD"
 msgstr "SSH kulcsok"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:91
+#: src/features/account/components/api-keys/create-api-key-button.tsx:61
+msgid "42rMfw"
+msgstr "ISO"
+
+#: src/features/account/components/api-keys/create-api-key-button.tsx:92
 msgid "+J17tT"
 msgstr "API-kulcs létrehozása"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:117
+#: src/features/account/components/api-keys/create-api-key-button.tsx:118
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:85
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:85
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:71
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:72
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:120
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:122
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:90
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx:74
 #: src/features/servers/components/backups/create-backup-dialog.tsx:104
@@ -737,15 +746,16 @@ msgstr "API-kulcs létrehozása"
 msgid "47FYwb"
 msgstr "Mégse"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:134
+#: src/features/account/components/api-keys/create-api-key-button.tsx:135
 msgid "fnMCvo"
 msgstr "API-kulcs létrehozva"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:137
+#: src/features/account/components/api-keys/create-api-key-button.tsx:138
 msgid "TQSqlk"
 msgstr "Ez a gomb csak egyszer jelenik meg. Kérjük, mentse biztonságosan, mert nem lehet visszaállítani:"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:156
+#: src/features/account/components/api-keys/create-api-key-button.tsx:157
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:109
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:94
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx:92
@@ -769,24 +779,24 @@ msgstr "Ez a gomb csak egyszer jelenik meg. Kérjük, mentse biztonságosan, mer
 msgid "HAlOn1"
 msgstr "Név"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:164
+#: src/features/account/components/api-keys/create-api-key-button.tsx:165
 msgid "5Cu2sb"
 msgstr "Az API kulcsom"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:172
+#: src/features/account/components/api-keys/create-api-key-button.tsx:173
 msgid "SFuk1v"
 msgstr "Engedélyek"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:174
+#: src/features/account/components/api-keys/create-api-key-button.tsx:175
 msgid "4u9ABD"
 msgstr "Az engedélyektől függően az API-kulcs végrehajthat bizonyos műveleteket."
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:211
+#: src/features/account/components/api-keys/create-api-key-button.tsx:212
 #: src/features/servers/components/server-graphs.tsx:120
 msgid "filwqD"
 msgstr "Olvas"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:217
+#: src/features/account/components/api-keys/create-api-key-button.tsx:218
 #: src/features/servers/components/server-graphs.tsx:124
 msgid "k2veDA"
 msgstr "Írj"
@@ -923,6 +933,48 @@ msgstr "Nincsenek fizetési módok összekapcsolva a fiókjával."
 #: src/features/account/components/billing/payment-methods-list.tsx:155
 msgid "3MBRV5"
 msgstr "Nincs megadva név"
+
+#: src/features/account/components/custom-images/create-custom-image-button.tsx:40
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:71
+msgid "TKvr5O"
+msgstr "Egyéni lemezkép létrehozása"
+
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:76
+msgid "ggQwe8"
+msgstr "Hozzon létre egy új egyéni lemezképet a szervereihez."
+
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:135
+msgid "bWjdfa"
+msgstr "URL"
+
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:148
+msgid "aLOPr+"
+msgstr "Az URL-nek közvetlenül az ISO fájlra kell mutatnia. A maximális fájlméret: {size}."
+
+#: src/features/account/components/custom-images/custom-images-card.tsx:45
+msgid "4NrukI"
+msgstr "Egyéni ISO-képek"
+
+#: src/features/account/components/custom-images/custom-images-card.tsx:47
+msgid "GnqZoy"
+msgstr "Töltse fel és kezelje az egyéni ISO-képeket a szervereihez."
+
+#: src/features/account/components/custom-images/custom-images-card.tsx:60
+msgid "Lwyinc"
+msgstr "Legfeljebb {count} aktív ISO-kép lehet."
+
+#: src/features/account/components/custom-images/custom-images-list.tsx:47
+msgid "sHUPf5"
+msgstr "Nincsenek egyéni lemezképek"
+
+#: src/features/account/components/custom-images/custom-images-list.tsx:49
+msgid "8RV8A9"
+msgstr "Még nem töltöttek fel egyéni lemezképeket."
+
+#: src/features/account/components/custom-images/custom-images-list.tsx:76
+#: src/features/servers/components/server-mount-badge.tsx:55
+msgid "N/dZaF"
+msgstr "Lejár: {time}"
 
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:63
 msgid "KdsDOJ"
@@ -1187,25 +1239,25 @@ msgid "0ICwq5"
 msgstr "Utoljára frissítve"
 
 #: src/features/admin/components/proxmox-nodes/create-datacenter-button.tsx:48
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:111
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:127
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:113
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:129
 msgid "S+458D"
 msgstr "Hozzon létre Proxmox csomópontot"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:112
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:114
 msgid "deLbYn"
 msgstr "Hozzon létre egy új Proxmox VE csomópontot a kiszolgálók számára."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:143
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:145
 #: src/features/servers/components/overview/node-details-dialog.tsx:101
 msgid "zUxWZC"
 msgstr "Adatközpont"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:162
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:164
 msgid "RJ3ocO"
 msgstr "Csomópont csoport"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:181
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:183
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:88
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:100
 #: src/features/servers/components/rdns/records-table/columns.tsx:50
@@ -1213,91 +1265,99 @@ msgstr "Csomópont csoport"
 msgid "uPDgth"
 msgstr "Gazdanév"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:206
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:208
 msgid "8cNS7n"
 msgstr "A Proxmox VE csomópont gazdagépneve a Proxmox-fürtben konfigurált módon."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:222
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:224
 msgid "2BEZJh"
 msgstr "FQDN"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:247
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:249
 msgid "cUm+Vq"
 msgstr "Annak a Proxmox VE csomópontnak az FQDN-je, ahol az API elérhető. Elérhetőnek kell lennie az internetről, és érvényes TLS-tanúsítványt kell használnia."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:264
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:266
 msgid "86ZUi9"
 msgstr "Token azonosító"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:284
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:286
 msgid "1gRCWa"
 msgstr "Token Secret"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:315
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:317
 msgid "6o6hYT"
 msgstr "Kivonat tárolása"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:344
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:346
 msgid "10Yrc8"
 msgstr "A csomóponton található bármely szerver felhő-init YAML-fájljai itt lesznek tárolva."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:360
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:362
 msgid "IvtOOO"
 msgstr "Biztonsági mentés tárhely"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:389
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:391
 msgid "elgt8s"
 msgstr "A csomóponton található kiszolgálók biztonsági másolatai itt lesznek tárolva."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:406
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:407
+msgid "foINKU"
+msgstr "ISO-letöltési tárhely"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:436
+msgid "Us0NPD"
+msgstr "Az ISO-képek itt lesznek tárolva."
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:451
 #: src/features/servers/components/overview/node-details-dialog.tsx:105
 msgid "sB9VeA"
 msgstr "Uplink"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:437
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:482
 msgid "1oyHhQ"
 msgstr "Az Uplink lehetséges maximális hálózati sávszélessége MB/s-ban."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:456
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:501
 msgid "gYG5ho"
 msgstr "A virtuális gépek maximális száma"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:460
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:505
 msgid "UYmKl1"
 msgstr "Virtuális gépek"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:468
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:498
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:528
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:558
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:589
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:513
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:543
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:573
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:603
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:634
 msgid "ekXood"
 msgstr "Korlátlan"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:486
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:531
 msgid "OCihQV"
 msgstr "Maximális memória"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:516
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:561
 msgid "T4Xl7g"
 msgstr "Maximális tárhely"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:546
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:591
 msgid "bRNAv0"
 msgstr "Maximális vCore"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:550
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:595
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:239
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:266
 #: src/features/servers/components/server-stats-card.tsx:90
 msgid "cCUvGW"
 msgstr "vCores"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:577
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:622
 msgid "ueCC3G"
 msgstr "Hálózati korlát"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:620
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:665
 msgid "U9Jxp7"
 msgstr "Ha eléri, ez a csomópont többé nem lesz használva szolgáltatásokhoz. Hagyja üresen korlátlanul."
 
@@ -2059,6 +2119,7 @@ msgid "tBwTvx"
 msgstr "Méret/Állapot"
 
 #: src/features/servers/components/backups/backups-table/columns.tsx:155
+#: src/features/servers/components/server-custom-image-select.tsx:188
 msgid "vXCeIi"
 msgstr "Sikertelen"
 
@@ -2103,7 +2164,7 @@ msgid "04uNfB"
 msgstr "Biztonsági mentést készít a rendszer megszakítása nélkül. A folyamatok jelenlegi állapotáról biztonsági másolat készül."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:183
-#: src/features/servers/components/server-actions-row.tsx:149
+#: src/features/servers/components/server-actions-row.tsx:168
 msgid "elnaZe"
 msgstr "Felfüggeszteni"
 
@@ -2112,7 +2173,7 @@ msgid "qRuNZh"
 msgstr "Rövid időre megszakítja a rendszert, hogy biztonsági másolatot készítsen anélkül, hogy leállítaná."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:202
-#: src/features/servers/components/server-actions-row.tsx:162
+#: src/features/servers/components/server-actions-row.tsx:181
 msgid "q/uwLT"
 msgstr "Stop"
 
@@ -2382,25 +2443,49 @@ msgstr "PTR rekordok hozhatók létre az ehhez a szerverhez rendelt összes IP-c
 msgid "XM/KKz"
 msgstr "Az IP-címhez feloldandó gazdagépnév. A <code>localhost</code> nem engedélyezett."
 
-#: src/features/servers/components/server-actions-row.tsx:79
+#: src/features/servers/components/server-actions-row.tsx:88
 msgid "tZbb+K"
 msgstr "Leállítás"
 
-#: src/features/servers/components/server-actions-row.tsx:89
+#: src/features/servers/components/server-actions-row.tsx:98
 msgid "9U7nUR"
 msgstr "Indítsa újra"
 
-#: src/features/servers/components/server-actions-row.tsx:101
+#: src/features/servers/components/server-actions-row.tsx:112
 msgid "mOFG3K"
 msgstr "Indul"
 
-#: src/features/servers/components/server-actions-row.tsx:115
+#: src/features/servers/components/server-actions-row.tsx:126
 msgid "3y9DGg"
 msgstr "Folytatás"
 
-#: src/features/servers/components/server-actions-row.tsx:138
+#: src/features/servers/components/server-actions-row.tsx:145
+msgid "YsjuRA"
+msgstr "ISO csatolása"
+
+#: src/features/servers/components/server-actions-row.tsx:157
 msgid "tFFMkF"
 msgstr "Szünet"
+
+#: src/features/servers/components/server-custom-image-select.tsx:99
+msgid "wPPrpH"
+msgstr "Válasszon egyéni lemezképet..."
+
+#: src/features/servers/components/server-custom-image-select.tsx:109
+msgid "3MDlnT"
+msgstr "Egyéni lemezkép keresése..."
+
+#: src/features/servers/components/server-custom-image-select.tsx:111
+msgid "5YXiqk"
+msgstr "Nem található egyéni lemezkép."
+
+#: src/features/servers/components/server-custom-image-select.tsx:179
+msgid "9P0AA6"
+msgstr "Feltöltés: {percentage}"
+
+#: src/features/servers/components/server-custom-image-select.tsx:184
+msgid "JEsxDw"
+msgstr "Feltöltés..."
 
 #: src/features/servers/components/server-graphs.tsx:86
 msgid "j9Y9nu"
@@ -2443,6 +2528,46 @@ msgstr "Kimenő"
 #: src/features/servers/components/server-graphs.tsx:154
 msgid "6m3w+3"
 msgstr "Intervallum"
+
+#: src/features/servers/components/server-mount-badge.tsx:48
+msgid "Han16c"
+msgstr "Csatolva"
+
+#: src/features/servers/components/server-mount-dialog.tsx:70
+msgid "lgSmVl"
+msgstr "Az ISO-lemezkép sikeresen csatolva. A változás a következő indításkor lép életbe."
+
+#: src/features/servers/components/server-mount-dialog.tsx:76
+msgid "bmliQK"
+msgstr "Az ISO-lemezkép felcsatolása nem sikerült."
+
+#: src/features/servers/components/server-mount-dialog.tsx:87
+msgid "1INFXA"
+msgstr "Az ISO-lemezkép sikeresen leválasztva. A változás a következő indításkor lép életbe."
+
+#: src/features/servers/components/server-mount-dialog.tsx:101
+msgid "ZE4urv"
+msgstr "ISO-lemezképek csatolása"
+
+#: src/features/servers/components/server-mount-dialog.tsx:102
+msgid "HZdPWF"
+msgstr "Csatoljon ISO-lemezképeket a kiszolgálóhoz."
+
+#: src/features/servers/components/server-mount-dialog.tsx:108
+msgid "C3jmVs"
+msgstr "ISO-lemezkép"
+
+#: src/features/servers/components/server-mount-dialog.tsx:136
+msgid "u9VaJ3"
+msgstr "Leválasztás"
+
+#: src/features/servers/components/server-mount-dialog.tsx:141
+msgid "Uh7TFc"
+msgstr "Az ISO-lemezkép azonnal csatolásra kerül, de róla való bootoláshoz teljesen le kell állítani a szervert, majd újra kell indítani."
+
+#: src/features/servers/components/server-mount-dialog.tsx:144
+msgid "FglhQv"
+msgstr "A képek a <link>fiókbeállítások</link> között tölthetők fel."
 
 #: src/features/servers/components/server-stats-card.tsx:192
 msgid "PW+sL4"
