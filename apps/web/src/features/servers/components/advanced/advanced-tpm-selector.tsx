@@ -24,6 +24,11 @@ import {
   FieldLabel,
   FieldTitle,
 } from "@virtbase/ui/field";
+import {
+  LucideLock,
+  LucideToggleLeft,
+  LucideToggleRight,
+} from "@virtbase/ui/icons";
 import { RadioGroup, RadioGroupItem } from "@virtbase/ui/radio-group";
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { useParams } from "next/navigation";
@@ -70,7 +75,13 @@ export function AdvancedTpmSelector() {
       <FieldLabel htmlFor="tpm-disabled">
         <Field orientation="horizontal">
           <FieldContent>
-            <FieldTitle>{t("Disable TPM")}</FieldTitle>
+            <FieldTitle>
+              <LucideToggleLeft
+                className="size-4 shrink-0 text-muted-foreground"
+                aria-hidden="true"
+              />
+              {t("Disable TPM")}
+            </FieldTitle>
             <FieldDescription>
               {t("Turn off TPM completely for this server.")}
             </FieldDescription>
@@ -81,7 +92,13 @@ export function AdvancedTpmSelector() {
       <FieldLabel htmlFor="tpm-version-1">
         <Field orientation="horizontal">
           <FieldContent>
-            <FieldTitle>{t("Enable TPM v1.2")}</FieldTitle>
+            <FieldTitle>
+              <LucideToggleRight
+                className="size-4 shrink-0 text-muted-foreground"
+                aria-hidden="true"
+              />
+              {t("Enable TPM v1.2")}
+            </FieldTitle>
             <FieldDescription>
               {t("Activate TPM v1.2 for this server.")}
             </FieldDescription>
@@ -92,7 +109,13 @@ export function AdvancedTpmSelector() {
       <FieldLabel htmlFor="tpm-version-2">
         <Field orientation="horizontal">
           <FieldContent>
-            <FieldTitle>{t("Enable TPM v2.0")}</FieldTitle>
+            <FieldTitle>
+              <LucideLock
+                className="size-4 shrink-0 text-muted-foreground"
+                aria-hidden="true"
+              />
+              {t("Enable TPM v2.0")}
+            </FieldTitle>
             <FieldDescription>
               {t("Activate TPM v2.0 for this server.")}
             </FieldDescription>

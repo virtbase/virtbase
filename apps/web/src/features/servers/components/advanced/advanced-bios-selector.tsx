@@ -24,6 +24,7 @@ import {
   FieldLabel,
   FieldTitle,
 } from "@virtbase/ui/field";
+import { LucideGauge, LucideTerminal } from "@virtbase/ui/icons";
 import { RadioGroup, RadioGroupItem } from "@virtbase/ui/radio-group";
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { useParams } from "next/navigation";
@@ -70,7 +71,13 @@ export function AdvancedBiosSelector() {
       <FieldLabel htmlFor="bios-legacy">
         <Field orientation="horizontal">
           <FieldContent>
-            <FieldTitle>{t("Legacy BIOS")}</FieldTitle>
+            <FieldTitle>
+              <LucideTerminal
+                className="size-4 shrink-0 text-muted-foreground"
+                aria-hidden="true"
+              />
+              {t("Legacy BIOS")}
+            </FieldTitle>
             <FieldDescription>
               {t("Use the legacy BIOS for this server.")}
             </FieldDescription>
@@ -81,7 +88,13 @@ export function AdvancedBiosSelector() {
       <FieldLabel htmlFor="bios-uefi">
         <Field orientation="horizontal">
           <FieldContent>
-            <FieldTitle>{t("UEFI BIOS")}</FieldTitle>
+            <FieldTitle>
+              <LucideGauge
+                className="size-4 shrink-0 text-muted-foreground"
+                aria-hidden="true"
+              />
+              {t("UEFI BIOS")}
+            </FieldTitle>
             <FieldDescription>
               {t("Use the newer UEFI BIOS for this server.")}
             </FieldDescription>

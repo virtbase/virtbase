@@ -55,7 +55,7 @@ export const serversAdvancedRouter = createTRPCRouter({
         return {
           settings: {
             tpm: tpmversion as "v1.2" | "v2.0" | null,
-            bios: bios !== "uefi" ? "legacy" : "uefi",
+            bios: bios !== "ovmf" ? "legacy" : "uefi",
           },
         };
       } catch (error) {

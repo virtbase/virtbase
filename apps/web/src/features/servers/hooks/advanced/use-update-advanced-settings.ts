@@ -59,12 +59,16 @@ export const useUpdateAdvancedSettings = ({
             if (!old) {
               return undefined;
             }
-            if (input.tpm === undefined) {
+            if (input.tpm === undefined && input.bios === undefined) {
               return old;
             }
             return {
               ...old,
-              settings: { ...old.settings, tpm: input.tpm },
+              settings: {
+                ...old.settings,
+                ...(input.bios !== undefined && { bios: input.bios }),
+                ...(input.tpm !== undefined && { tpm: input.tpm }),
+              },
             };
           },
         );
