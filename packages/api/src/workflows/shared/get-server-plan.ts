@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { serverPlans } from "@virtbase/db/schema";
 import { FatalError } from "workflow";
@@ -32,6 +33,7 @@ export async function getServerPlanStep({
       return tx
         .select()
         .from(serverPlans)
+        .where(eq(serverPlans.id, serverPlanId))
         .limit(1)
         .then(([res]) => res);
     },
