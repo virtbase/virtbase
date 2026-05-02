@@ -50,11 +50,11 @@
   "catalog": {
     "@better-auth/api-key": "^1.6.9",
     "@better-auth/passkey": "^1.6.9",
-    "@biomejs/biome": "^2.4.13",
+    "@biomejs/biome": "^2.4.14",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@tailwindcss/postcss": "^4.2.4",
-    "@tanstack/react-query": "^5.100.6",
+    "@tanstack/react-query": "^5.100.8",
     "@tanstack/react-table": "^8.21.3",
     "@trpc/client": "^11.17.0",
     "@trpc/server": "^11.17.0",
@@ -64,7 +64,7 @@
     "next": "^16.2.4",
     "next-intl": "^4.11.0",
     "nuqs": "^2.8.9",
-    "postcss": "^8.5.12",
+    "postcss": "^8.5.13",
     "proxmox-api": "^1.1.1",
     "react": "^19.2.5",
     "react-dom": "^19.2.5",
@@ -75,16 +75,16 @@
     "typescript": "^6.0.3",
     "use-intl": "^4.11.0",
     "workflow": "^4.2.4",
-    "zod": "^4.3.6"
+    "zod": "^4.4.2"
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:",
-    "@commitlint/cli": "^20.5.2",
-    "@commitlint/config-conventional": "^20.5.0",
+    "@commitlint/cli": "^20.5.3",
+    "@commitlint/config-conventional": "^20.5.3",
     "@types/bun": "catalog:",
     "husky": "^9.1.7",
     "lint-staged": "^16.4.0",
-    "turbo": "^2.9.6"
+    "turbo": "^2.9.7"
   },
   "peerDependencies": {
     "typescript": "catalog:"

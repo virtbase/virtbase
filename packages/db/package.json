@@ -42,7 +42,7 @@
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",
     "base-x": "^5.0.1",
-    "drizzle-orm": "^1.0.0-beta.22",
+    "drizzle-orm": "1.0.0-beta.22",
     "ws": "^8.20.0",
     "zod": "catalog:"
   },
@@ -51,7 +51,7 @@
     "@electric-sql/pglite": "^0.4.5",
     "@types/ws": "^8.18.1",
     "@virtbase/tsconfig": "workspace:*",
-    "drizzle-kit": "^1.0.0-beta.22",
+    "drizzle-kit": "1.0.0-beta.22",
     "pg": "^8.20.0",
     "typescript": "catalog:"
   }
