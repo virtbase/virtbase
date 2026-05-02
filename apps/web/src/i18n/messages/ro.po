@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Romanian\n"
-"PO-Revision-Date: 2026-04-29 12:54\n"
+"PO-Revision-Date: 2026-05-02 10:58\n"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:84
 msgid "o/UJXc"
@@ -25,7 +25,7 @@ msgstr "Desc"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:100
 #: ../../packages/ui/src/data-table/data-table-toolbar.tsx:78
-#: src/features/servers/components/server-actions-row.tsx:174
+#: src/features/servers/components/server-actions-row.tsx:193
 msgid "jm/spn"
 msgstr "Resetați"
 
@@ -642,27 +642,27 @@ msgid "xXbJso"
 msgstr "Deconectare"
 
 #: src/features/account/components/account-breadcrumb.tsx:41
-#: src/features/account/components/account-nav.tsx:40
+#: src/features/account/components/account-nav.tsx:41
 msgid "1iEPTM"
 msgstr "General"
 
 #: src/features/account/components/account-breadcrumb.tsx:45
-#: src/features/account/components/account-nav.tsx:45
+#: src/features/account/components/account-nav.tsx:46
 msgid "Py189G"
 msgstr "Securitate"
 
 #: src/features/account/components/account-breadcrumb.tsx:49
-#: src/features/account/components/account-nav.tsx:50
+#: src/features/account/components/account-nav.tsx:51
 msgid "Tbo377"
 msgstr "Facturare"
 
 #: src/features/account/components/account-breadcrumb.tsx:53
-#: src/features/account/components/account-nav.tsx:55
+#: src/features/account/components/account-nav.tsx:56
 msgid "xwEc8K"
 msgstr "API"
 
 #: src/features/account/components/account-breadcrumb.tsx:57
-#: src/features/account/components/account-nav.tsx:60
+#: src/features/account/components/account-nav.tsx:61
 #: src/features/account/components/ssh-keys/ssh-keys-card.tsx:44
 msgid "7Cdpiv"
 msgstr "Chei SSH"
@@ -671,6 +671,10 @@ msgstr "Chei SSH"
 #: src/ui/nav-user.tsx:120
 msgid "TwyMau"
 msgstr "Cont"
+
+#: src/features/account/components/account-nav.tsx:66
+msgid "96Us9V"
+msgstr "Imagini ISO"
 
 #: src/features/account/components/api-keys/api-keys-card.tsx:49
 msgid "jSp63j"
@@ -715,15 +719,20 @@ msgstr "Şterge"
 msgid "TrBeGD"
 msgstr "chei SSH"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:91
+#: src/features/account/components/api-keys/create-api-key-button.tsx:61
+msgid "42rMfw"
+msgstr "ISO"
+
+#: src/features/account/components/api-keys/create-api-key-button.tsx:92
 msgid "+J17tT"
 msgstr "Creați cheia API"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:117
+#: src/features/account/components/api-keys/create-api-key-button.tsx:118
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:85
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:85
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:71
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:72
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:120
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:122
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:90
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx:74
 #: src/features/servers/components/backups/create-backup-dialog.tsx:104
@@ -737,15 +746,16 @@ msgstr "Creați cheia API"
 msgid "47FYwb"
 msgstr "Anula"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:134
+#: src/features/account/components/api-keys/create-api-key-button.tsx:135
 msgid "fnMCvo"
 msgstr "Cheia API creată"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:137
+#: src/features/account/components/api-keys/create-api-key-button.tsx:138
 msgid "TQSqlk"
 msgstr "Această cheie va fi afișată o singură dată. Salvați-l în siguranță, deoarece nu poate fi restaurat:"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:156
+#: src/features/account/components/api-keys/create-api-key-button.tsx:157
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:109
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:94
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx:92
@@ -769,24 +779,24 @@ msgstr "Această cheie va fi afișată o singură dată. Salvați-l în siguran�
 msgid "HAlOn1"
 msgstr "Nume"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:164
+#: src/features/account/components/api-keys/create-api-key-button.tsx:165
 msgid "5Cu2sb"
 msgstr "Cheia mea API"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:172
+#: src/features/account/components/api-keys/create-api-key-button.tsx:173
 msgid "SFuk1v"
 msgstr "Permisiuni"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:174
+#: src/features/account/components/api-keys/create-api-key-button.tsx:175
 msgid "4u9ABD"
 msgstr "În funcție de permisiuni, cheia API poate efectua anumite acțiuni."
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:211
+#: src/features/account/components/api-keys/create-api-key-button.tsx:212
 #: src/features/servers/components/server-graphs.tsx:120
 msgid "filwqD"
 msgstr "Citire"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:217
+#: src/features/account/components/api-keys/create-api-key-button.tsx:218
 #: src/features/servers/components/server-graphs.tsx:124
 msgid "k2veDA"
 msgstr "Scrie"
@@ -923,6 +933,48 @@ msgstr "Nicio metodă de plată nu a fost conectată la contul dvs."
 #: src/features/account/components/billing/payment-methods-list.tsx:155
 msgid "3MBRV5"
 msgstr "Fără nume indicat"
+
+#: src/features/account/components/custom-images/create-custom-image-button.tsx:40
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:71
+msgid "TKvr5O"
+msgstr "Creează imagine personalizată"
+
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:76
+msgid "ggQwe8"
+msgstr "Creează o imagine personalizată nouă pentru serverele tale."
+
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:135
+msgid "bWjdfa"
+msgstr "URL"
+
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:148
+msgid "aLOPr+"
+msgstr "URL-ul trebuie să indice direct fișierul ISO. Dimensiunea maximă a fișierului este {size}."
+
+#: src/features/account/components/custom-images/custom-images-card.tsx:45
+msgid "4NrukI"
+msgstr "Imagini ISO personalizate"
+
+#: src/features/account/components/custom-images/custom-images-card.tsx:47
+msgid "GnqZoy"
+msgstr "Încarcă și gestionează imagini ISO personalizate pentru serverele tale."
+
+#: src/features/account/components/custom-images/custom-images-card.tsx:60
+msgid "Lwyinc"
+msgstr "Poți avea până la {count} imagini ISO active."
+
+#: src/features/account/components/custom-images/custom-images-list.tsx:47
+msgid "sHUPf5"
+msgstr "Nu există imagini personalizate"
+
+#: src/features/account/components/custom-images/custom-images-list.tsx:49
+msgid "8RV8A9"
+msgstr "Nu au fost încărcate imagini personalizate."
+
+#: src/features/account/components/custom-images/custom-images-list.tsx:76
+#: src/features/servers/components/server-mount-badge.tsx:55
+msgid "N/dZaF"
+msgstr "Expiră {time}"
 
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:63
 msgid "KdsDOJ"
@@ -1187,25 +1239,25 @@ msgid "0ICwq5"
 msgstr "Ultima actualizare"
 
 #: src/features/admin/components/proxmox-nodes/create-datacenter-button.tsx:48
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:111
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:127
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:113
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:129
 msgid "S+458D"
 msgstr "Creați nodul Proxmox"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:112
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:114
 msgid "deLbYn"
 msgstr "Creați un nou nod Proxmox VE pentru a găzdui serverele."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:143
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:145
 #: src/features/servers/components/overview/node-details-dialog.tsx:101
 msgid "zUxWZC"
 msgstr "Centru de date"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:162
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:164
 msgid "RJ3ocO"
 msgstr "Grupul de noduri"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:181
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:183
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:88
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:100
 #: src/features/servers/components/rdns/records-table/columns.tsx:50
@@ -1213,91 +1265,99 @@ msgstr "Grupul de noduri"
 msgid "uPDgth"
 msgstr "Nume gazdă"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:206
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:208
 msgid "8cNS7n"
 msgstr "Numele de gazdă al nodului Proxmox VE, așa cum este configurat în clusterul Proxmox."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:222
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:224
 msgid "2BEZJh"
 msgstr "FQDN"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:247
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:249
 msgid "cUm+Vq"
 msgstr "FQDN-ul nodului Proxmox VE unde API-ul este accesibil. Trebuie să fie accesibil de pe internet și să folosească un certificat TLS valid."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:264
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:266
 msgid "86ZUi9"
 msgstr "ID-ul simbolului"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:284
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:286
 msgid "1gRCWa"
 msgstr "Token Secret"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:315
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:317
 msgid "6o6hYT"
 msgstr "Stocare fragmente"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:344
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:346
 msgid "10Yrc8"
 msgstr "Fișierele YAML de inițializare în cloud pentru orice server de pe acest nod vor fi stocate aici."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:360
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:362
 msgid "IvtOOO"
 msgstr "Spațiu de rezervă"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:389
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:391
 msgid "elgt8s"
 msgstr "Copiile de rezervă ale oricăror servere de pe acest nod vor fi stocate aici."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:406
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:407
+msgid "foINKU"
+msgstr "Stocare descărcări ISO"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:436
+msgid "Us0NPD"
+msgstr "Imaginile ISO vor fi stocate aici."
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:451
 #: src/features/servers/components/overview/node-details-dialog.tsx:105
 msgid "sB9VeA"
 msgstr "Uplink"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:437
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:482
 msgid "1oyHhQ"
 msgstr "Lățimea de bandă maximă posibilă a uplink-ului în MB/s."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:456
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:501
 msgid "gYG5ho"
 msgstr "Numărul maxim de VM"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:460
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:505
 msgid "UYmKl1"
 msgstr "VM-uri"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:468
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:498
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:528
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:558
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:589
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:513
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:543
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:573
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:603
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:634
 msgid "ekXood"
 msgstr "Nelimitat"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:486
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:531
 msgid "OCihQV"
 msgstr "Memoria maxima"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:516
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:561
 msgid "T4Xl7g"
 msgstr "Depozitare maximă"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:546
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:591
 msgid "bRNAv0"
 msgstr "Numărul maxim de vCo-uri"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:550
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:595
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:239
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:266
 #: src/features/servers/components/server-stats-card.tsx:90
 msgid "cCUvGW"
 msgstr "vCo-uri"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:577
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:622
 msgid "ueCC3G"
 msgstr "Limită de rețea"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:620
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:665
 msgid "U9Jxp7"
 msgstr "Dacă este atins, acest nod nu va mai fi utilizat pentru servicii. Lăsați gol pentru nelimitat."
 
@@ -2059,6 +2119,7 @@ msgid "tBwTvx"
 msgstr "Dimensiune/Stare"
 
 #: src/features/servers/components/backups/backups-table/columns.tsx:155
+#: src/features/servers/components/server-custom-image-select.tsx:188
 msgid "vXCeIi"
 msgstr "A eșuat"
 
@@ -2103,7 +2164,7 @@ msgid "04uNfB"
 msgstr "Creează o copie de rezervă fără a întrerupe sistemul. Starea curentă a proceselor este susținută."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:183
-#: src/features/servers/components/server-actions-row.tsx:149
+#: src/features/servers/components/server-actions-row.tsx:168
 msgid "elnaZe"
 msgstr "Suspenda"
 
@@ -2112,7 +2173,7 @@ msgid "qRuNZh"
 msgstr "Întrerupe scurt sistemul pentru a crea o copie de rezervă fără a-l închide."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx:202
-#: src/features/servers/components/server-actions-row.tsx:162
+#: src/features/servers/components/server-actions-row.tsx:181
 msgid "q/uwLT"
 msgstr "Stop"
 
@@ -2382,25 +2443,49 @@ msgstr "Înregistrările PTR pot fi create pentru toate adresele IP atribuite ac
 msgid "XM/KKz"
 msgstr "Numele de gazdă de rezolvat pentru adresa IP. <code>localhost</code> nu este permis."
 
-#: src/features/servers/components/server-actions-row.tsx:79
+#: src/features/servers/components/server-actions-row.tsx:88
 msgid "tZbb+K"
 msgstr "Închidere"
 
-#: src/features/servers/components/server-actions-row.tsx:89
+#: src/features/servers/components/server-actions-row.tsx:98
 msgid "9U7nUR"
 msgstr "Reporniți"
 
-#: src/features/servers/components/server-actions-row.tsx:101
+#: src/features/servers/components/server-actions-row.tsx:112
 msgid "mOFG3K"
 msgstr "Început"
 
-#: src/features/servers/components/server-actions-row.tsx:115
+#: src/features/servers/components/server-actions-row.tsx:126
 msgid "3y9DGg"
 msgstr "Relua"
 
-#: src/features/servers/components/server-actions-row.tsx:138
+#: src/features/servers/components/server-actions-row.tsx:145
+msgid "YsjuRA"
+msgstr "Montare ISO"
+
+#: src/features/servers/components/server-actions-row.tsx:157
 msgid "tFFMkF"
 msgstr "Pauză"
+
+#: src/features/servers/components/server-custom-image-select.tsx:99
+msgid "wPPrpH"
+msgstr "Selectați o imagine personalizată..."
+
+#: src/features/servers/components/server-custom-image-select.tsx:109
+msgid "3MDlnT"
+msgstr "Căutați o imagine personalizată..."
+
+#: src/features/servers/components/server-custom-image-select.tsx:111
+msgid "5YXiqk"
+msgstr "Nu s-a găsit nicio imagine personalizată."
+
+#: src/features/servers/components/server-custom-image-select.tsx:179
+msgid "9P0AA6"
+msgstr "Se încarcă {percentage}"
+
+#: src/features/servers/components/server-custom-image-select.tsx:184
+msgid "JEsxDw"
+msgstr "Se încarcă..."
 
 #: src/features/servers/components/server-graphs.tsx:86
 msgid "j9Y9nu"
@@ -2443,6 +2528,46 @@ msgstr "Ieșire"
 #: src/features/servers/components/server-graphs.tsx:154
 msgid "6m3w+3"
 msgstr "Interval"
+
+#: src/features/servers/components/server-mount-badge.tsx:48
+msgid "Han16c"
+msgstr "Montat"
+
+#: src/features/servers/components/server-mount-dialog.tsx:70
+msgid "lgSmVl"
+msgstr "Imaginea ISO a fost montată cu succes. Modificarea va intra în vigoare la următoarea repornire."
+
+#: src/features/servers/components/server-mount-dialog.tsx:76
+msgid "bmliQK"
+msgstr "Nu s-a putut monta imaginea ISO."
+
+#: src/features/servers/components/server-mount-dialog.tsx:87
+msgid "1INFXA"
+msgstr "Imaginea ISO a fost demontată cu succes. Modificarea va intra în vigoare la următoarea repornire."
+
+#: src/features/servers/components/server-mount-dialog.tsx:101
+msgid "ZE4urv"
+msgstr "Montare imagini ISO"
+
+#: src/features/servers/components/server-mount-dialog.tsx:102
+msgid "HZdPWF"
+msgstr "Montați imagini ISO pe serverul dumneavoastră."
+
+#: src/features/servers/components/server-mount-dialog.tsx:108
+msgid "C3jmVs"
+msgstr "Imagine ISO"
+
+#: src/features/servers/components/server-mount-dialog.tsx:136
+msgid "u9VaJ3"
+msgstr "Demontare"
+
+#: src/features/servers/components/server-mount-dialog.tsx:141
+msgid "Uh7TFc"
+msgstr "Imaginea ISO va fi montată instantaneu, dar pentru a porni de pe aceasta trebuie să opriți complet serverul și să îl reporniți."
+
+#: src/features/servers/components/server-mount-dialog.tsx:144
+msgid "FglhQv"
+msgstr "Imaginile pot fi încărcate din <link>setările contului</link>."
 
 #: src/features/servers/components/server-stats-card.tsx:192
 msgid "PW+sL4"
