@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Finnish\n"
-"PO-Revision-Date: 2026-05-02 19:50\n"
+"PO-Revision-Date: 2026-05-03 15:38\n"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:84
 msgid "o/UJXc"
@@ -116,10 +116,10 @@ msgstr "Vaihda sarakkeita"
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:163
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:360
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:196
-#: src/features/admin/components/servers/servers-table/columns.tsx:257
+#: src/features/admin/components/servers/servers-table/columns.tsx:253
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:217
 #: src/features/admin/components/users/users-table/columns.tsx:264
-#: src/features/servers/components/servers-list.tsx:173
+#: src/features/servers/components/servers-list.tsx:189
 msgid "FgydNe"
 msgstr "Näytä"
 
@@ -356,69 +356,69 @@ msgstr "Virtbase tarjoaa suojatun palvelimen isännöinnin. Maksimaalinen suorit
 msgid "BdEM9F"
 msgstr "Isännöinti, mutta turvallinen."
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:88
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:133
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:89
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:134
 msgid "t1DCfI"
 msgstr "Vaihda tehokkaampaan palvelimeen"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:89
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:136
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:90
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:137
 msgid "0mibRH"
 msgstr "Vähän lisähintaa. Huomattavasti enemmän tehoa."
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:187
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:188
 msgid "8VIOz4"
 msgstr "{cores, plural, =0 {+# vCores} =1 {+# vCore} other {+# vCores}}"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:190
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:191
 msgid "j2HEjv"
 msgstr "Parempi moniajon suorituskyky"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:196
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:197
 msgid "tDBsIi"
 msgstr "{percent} enemmän RAM-muistia"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:203
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:204
 msgid "LM23s2"
 msgstr "Sovellukset vastaavat nopeammin"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:209
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:210
 msgid "R0fF2V"
 msgstr "{percent} enemmän tallennustilaa"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:216
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:217
 msgid "E8bbzS"
 msgstr "Tallenna palvelimelle enemmän sisältöä"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:225
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:226
 msgid "J4j1Fd"
 msgstr "{value} enemmän kaistanleveyttä"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:236
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:237
 msgid "NkmKCs"
 msgstr "Tuntuvasti korkeammat tiedonsiirtonopeudet"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:242
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:243
 msgid "7NydGv"
 msgstr "Ei käyttöönottoveloitusta"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:243
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:244
 msgid "lt2ynN"
 msgstr "Asennus maksutta, ei lisäkuluja"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:248
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:249
 msgid "XucETQ"
 msgstr "Tuki 24/7"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:249
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:250
 msgid "CKQfnV"
 msgstr "Saatavilla ympäri vuorokauden, kun tarvitset apua"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:254
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:255
 msgid "3SJxuA"
 msgstr "Aktiivinen DDoS-suojaus"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:255
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:256
 msgid "VI9ImX"
 msgstr "Palvelimesi on suojattu ilman lisäkuluja"
 
@@ -445,8 +445,8 @@ msgstr "Solmuryhmät"
 msgid "n3j8M6"
 msgstr "Proxmox-solmut"
 
-#: src/app/admin.virtbase.com/(dashboard)/page.tsx:40
-#: src/app/admin.virtbase.com/(dashboard)/page.tsx:54
+#: src/app/admin.virtbase.com/(dashboard)/page.tsx:41
+#: src/app/admin.virtbase.com/(dashboard)/page.tsx:55
 #: src/app/app.virtbase.com/(dashboard)/page.tsx:36
 #: src/app/app.virtbase.com/(dashboard)/page.tsx:50
 #: src/features/admin/components/admin-sidebar-groups.tsx:50
@@ -712,7 +712,7 @@ msgstr "Luotu {date}"
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:171
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:369
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:205
-#: src/features/admin/components/servers/servers-table/columns.tsx:266
+#: src/features/admin/components/servers/servers-table/columns.tsx:270
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:226
 #: src/features/admin/components/users/users-table/columns.tsx:347
 #: src/features/servers/components/backups/backups-table/backup-actions.tsx:155
@@ -771,8 +771,8 @@ msgstr "Tämä näppäin näkyy vain kerran. Tallenna se turvallisesti, koska si
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:113
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:89
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:103
-#: src/features/admin/components/servers/servers-table/columns.tsx:96
-#: src/features/admin/components/servers/servers-table/columns.tsx:104
+#: src/features/admin/components/servers/servers-table/columns.tsx:97
+#: src/features/admin/components/servers/servers-table/columns.tsx:105
 #: src/features/admin/components/users/users-table/columns.tsx:110
 #: src/features/admin/components/users/users-table/columns.tsx:128
 #: src/features/servers/components/backups/backups-table/columns.tsx:64
@@ -1062,11 +1062,11 @@ msgstr "Kuukausittaiset tulot"
 msgid "XCXnQK"
 msgstr "Viimeisen kuukauden tulot"
 
-#: src/features/admin/components/dashboard/customers-over-time-card.tsx:37
+#: src/features/admin/components/dashboard/customers-over-time-card.tsx:39
 msgid "O5JOQn"
 msgstr "Asiakkaat päivämäärän mukaan"
 
-#: src/features/admin/components/dashboard/customers-over-time-card.tsx:39
+#: src/features/admin/components/dashboard/customers-over-time-card.tsx:41
 msgid "yBCvTc"
 msgstr "Uusia asiakkaita päivässä viimeisen 14 päivän aikana"
 
@@ -1074,16 +1074,16 @@ msgstr "Uusia asiakkaita päivässä viimeisen 14 päivän aikana"
 msgid "zHZzJH"
 msgstr "Uusia asiakkaita"
 
-#: src/features/admin/components/dashboard/latest-customers-card.tsx:43
+#: src/features/admin/components/dashboard/latest-customers-card.tsx:44
 msgid "fuvH7s"
 msgstr "Uusimmat asiakkaat"
 
-#: src/features/admin/components/dashboard/latest-customers-card.tsx:44
+#: src/features/admin/components/dashboard/latest-customers-card.tsx:45
 msgid "IqzPv+"
 msgstr "Uusimmat asiakkaat päivämäärän mukaan"
 
-#: src/features/admin/components/dashboard/latest-customers-card.tsx:55
-#: src/features/admin/components/dashboard/latest-servers-card.tsx:52
+#: src/features/admin/components/dashboard/latest-customers-card.tsx:56
+#: src/features/admin/components/dashboard/latest-servers-card.tsx:53
 msgid "pFK6bJ"
 msgstr "Näytä kaikki"
 
@@ -1095,12 +1095,12 @@ msgstr "Ei uusia asiakkaita"
 msgid "jF7pQ8"
 msgstr "Uusia asiakkaita ei ole vielä rekisteröity."
 
-#: src/features/admin/components/dashboard/latest-servers-card.tsx:43
+#: src/features/admin/components/dashboard/latest-servers-card.tsx:44
 #: src/features/dashboard/components/latest-servers-card.tsx:42
 msgid "DY6Cmc"
 msgstr "Uusimmat palvelimet"
 
-#: src/features/admin/components/dashboard/latest-servers-card.tsx:44
+#: src/features/admin/components/dashboard/latest-servers-card.tsx:45
 msgid "U11Zf0"
 msgstr "Uusimmat palvelimet päivämäärän mukaan"
 
@@ -1112,17 +1112,26 @@ msgstr "Ei uusia palvelimia"
 msgid "Xp5CiD"
 msgstr "Uusia palvelimia ei ole vielä luotu."
 
-#: src/features/admin/components/dashboard/sales-by-plan-card.tsx:37
-msgid "N5LvQA"
-msgstr "Myynti suunnitelman mukaan"
+#: src/features/admin/components/dashboard/revenue-over-time-card.tsx:39
+msgid "vQuPQB"
+msgstr "Tulot päivämäärän mukaan"
 
-#: src/features/admin/components/dashboard/sales-by-plan-card.tsx:39
-msgid "ZYHrCR"
-msgstr "Myynti suunnitelman mukaan viimeisen 30 päivän aikana"
+#: src/features/admin/components/dashboard/revenue-over-time-card.tsx:41
+msgid "655MNT"
+msgstr "Tulot päivässä viimeisen 14 päivän aikana"
 
+#: src/features/admin/components/dashboard/revenue-over-time.tsx:45
 #: src/features/admin/components/dashboard/sales-by-plan.tsx:64
 msgid "8WKgF6"
 msgstr "Tulot"
+
+#: src/features/admin/components/dashboard/sales-by-plan-card.tsx:39
+msgid "N5LvQA"
+msgstr "Myynti suunnitelman mukaan"
+
+#: src/features/admin/components/dashboard/sales-by-plan-card.tsx:41
+msgid "ZYHrCR"
+msgstr "Myynti suunnitelman mukaan viimeisen 30 päivän aikana"
 
 #: src/features/admin/components/dashboard/sales-by-plan.tsx:126
 msgid "c8nvms"
@@ -1160,7 +1169,7 @@ msgstr "Tietokeskusta ei löytynyt."
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:64
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:63
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:64
-#: src/features/admin/components/servers/servers-table/columns.tsx:71
+#: src/features/admin/components/servers/servers-table/columns.tsx:72
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:76
 #: src/features/admin/components/users/users-table/columns.tsx:85
 #: src/features/invoices/components/invoices-table/columns.tsx:47
@@ -1171,7 +1180,7 @@ msgstr "Valitse kaikki"
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:75
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:74
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:75
-#: src/features/admin/components/servers/servers-table/columns.tsx:82
+#: src/features/admin/components/servers/servers-table/columns.tsx:83
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:87
 #: src/features/admin/components/users/users-table/columns.tsx:96
 #: src/features/invoices/components/invoices-table/columns.tsx:58
@@ -1181,7 +1190,7 @@ msgstr "Valitse rivi"
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx:105
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:102
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:104
-#: src/features/admin/components/servers/servers-table/columns.tsx:105
+#: src/features/admin/components/servers/servers-table/columns.tsx:106
 msgid "wFbsIt"
 msgstr "Hae nimellä..."
 
@@ -1193,8 +1202,8 @@ msgstr "Hae nimellä..."
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:332
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:145
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:151
-#: src/features/admin/components/servers/servers-table/columns.tsx:206
-#: src/features/admin/components/servers/servers-table/columns.tsx:212
+#: src/features/admin/components/servers/servers-table/columns.tsx:202
+#: src/features/admin/components/servers/servers-table/columns.tsx:208
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:184
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:190
 #: src/features/admin/components/users/users-table/columns.tsx:228
@@ -1207,7 +1216,7 @@ msgstr "Luotu klo"
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:147
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:346
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:180
-#: src/features/admin/components/servers/servers-table/columns.tsx:243
+#: src/features/admin/components/servers/servers-table/columns.tsx:239
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:203
 #: src/features/admin/components/users/users-table/columns.tsx:250
 msgid "bdcMGy"
@@ -1435,25 +1444,29 @@ msgstr "Mallien määrä"
 msgid "wFMlsH"
 msgstr "Päivitetty klo"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:115
-#: src/features/admin/components/servers/servers-table/columns.tsx:121
+#: src/features/admin/components/servers/servers-table/columns.tsx:116
+#: src/features/admin/components/servers/servers-table/columns.tsx:122
 msgid "XmTS6D"
 msgstr "VM-tunnus"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:131
-#: src/features/admin/components/servers/servers-table/columns.tsx:154
+#: src/features/admin/components/servers/servers-table/columns.tsx:132
+#: src/features/admin/components/servers/servers-table/columns.tsx:155
 msgid "3JxaKs"
 msgstr "Malli"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:177
-#: src/features/admin/components/servers/servers-table/columns.tsx:198
+#: src/features/admin/components/servers/servers-table/columns.tsx:178
+#: src/features/admin/components/servers/servers-table/columns.tsx:194
 msgid "EwRIOm"
 msgstr "Käyttäjä"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:222
-#: src/features/admin/components/servers/servers-table/columns.tsx:229
+#: src/features/admin/components/servers/servers-table/columns.tsx:218
+#: src/features/admin/components/servers/servers-table/columns.tsx:225
 msgid "1UsI0I"
 msgstr "Päättyy klo"
+
+#: src/features/admin/components/servers/servers-table/columns.tsx:261
+msgid "zvQbH/"
+msgstr "Näytä Proxmoxissa"
 
 #: src/features/admin/components/subnets/create-subnet-button.tsx:39
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx:65
@@ -1758,7 +1771,7 @@ msgstr "kuukaudessa"
 #: src/features/checkout/components/order-summary.tsx:67
 #: src/features/servers/components/plan/plan-radio-group.tsx:66
 #: src/features/servers/components/plan/plan-summary.tsx:150
-#: src/features/servers/components/servers-list.tsx:118
+#: src/features/servers/components/servers-list.tsx:134
 msgid "BGI16m"
 msgstr "{cores, plural, =0 {# vCorea} =1 {# vCore} other {# vCorea}}"
 
@@ -1853,15 +1866,15 @@ msgstr "Viimeisimmät laskut"
 msgid "VgBFI4"
 msgstr "Täältä näet viimeisimmät laskusi suoraan ladattavaksi."
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:65
+#: src/features/dashboard/components/latest-invoices-list.tsx:61
 msgid "QVIbFk"
 msgstr "Ei laskuja"
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:67
+#: src/features/dashboard/components/latest-invoices-list.tsx:63
 msgid "GtDccr"
 msgstr "Laskuja ei ole vielä lähetetty."
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:91
+#: src/features/dashboard/components/latest-invoices-list.tsx:87
 #: src/features/invoices/components/invoices-table/columns.tsx:152
 msgid "5q3qC0"
 msgstr "Lataa"
@@ -2118,19 +2131,19 @@ msgstr "Valitse BIOS-tyyppi palvelimellesi."
 msgid "HJOq/1"
 msgstr "UEFI-BIOS suositellaan Windows-asennuksille. Käytä legacy-BIOSia vanhemmille Linux-asennuksille."
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:73
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:100
 msgid "XHiVwa"
 msgstr "Legacy BIOS"
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:75
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:103
 msgid "AhxnaN"
 msgstr "Käytä legacy-BIOSia tälle palvelimelle."
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:84
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:117
 msgid "/eGTDl"
 msgstr "UEFI BIOS"
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:86
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:120
 msgid "oZyWxo"
 msgstr "Käytä uudempaa UEFI-BIOSia tälle palvelimelle."
 
@@ -2146,27 +2159,27 @@ msgstr "Ota TPM-moduuli käyttöön tai poista se käytöstä palvelimellasi."
 msgid "1Lw+6m"
 msgstr "Useimmat Linux-asennukset eivät vaadi TPM:ää, Windows vaatii TPM v2.0:n."
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:73
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:105
 msgid "I1Um2Q"
 msgstr "Poista TPM käytöstä"
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:75
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:108
 msgid "i1+8G8"
 msgstr "Sammuta TPM kokonaan tällä palvelimella."
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:84
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:122
 msgid "HrP3QG"
 msgstr "Ota TPM v1.2 käyttöön"
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:86
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:125
 msgid "/p73Kl"
 msgstr "Aktivoi TPM v1.2 tälle palvelimelle."
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:95
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:139
 msgid "DwWNni"
 msgstr "Ota TPM v2.0 käyttöön"
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:97
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:142
 msgid "i/5Hb2"
 msgstr "Aktivoi TPM v2.0 tälle palvelimelle."
 
@@ -2670,15 +2683,15 @@ msgstr "Tämä palvelin on vanhentumassa {expiry} ja se poistetaan sen jälkeen,
 msgid "76X+Qu"
 msgstr "Tätä palvelinta asennetaan. Jotkut ominaisuudet eivät ehkä ole vielä saatavilla."
 
-#: src/features/servers/components/servers-list.tsx:191
+#: src/features/servers/components/servers-list.tsx:207
 msgid "SXm88k"
 msgstr "IP kopioitu leikepöydälle!"
 
-#: src/features/servers/components/servers-list.tsx:200
+#: src/features/servers/components/servers-list.tsx:216
 msgid "26lbPc"
 msgstr "Kopioi IP"
 
-#: src/features/servers/components/servers-list.tsx:211
+#: src/features/servers/components/servers-list.tsx:227
 msgid "nWQFic"
 msgstr "Uusia"
 
