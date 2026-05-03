@@ -106,7 +106,15 @@ export async function applyHardwareConfigStep({
     ostype: "l26", // Linux 2.6 - 6.X Kernel
     freeze: false, // Don't freeze the VM when booting up
     hotplug: "0", // Don't allow any hotplugging of devices (enhanced security)
-    tags: "virtbase",
+    tags: [
+      "virtbase",
+      // Add tag `preview` or `development` if not in production
+      process.env.NEXT_PUBLIC_VERCEL_ENV !== "production"
+        ? process.env.NEXT_PUBLIC_VERCEL_ENV
+        : "",
+    ]
+      .filter(Boolean)
+      .join(","),
     // Cloud init configuration
     ciuser: "root",
     cipassword,

@@ -28,9 +28,8 @@ const handler = async (req: NextRequest) => {
     endpoint: "/api/trpc",
     req,
     router: appRouter,
-    createContext: (opts) =>
+    createContext: () =>
       createTRPCContext({
-        ...opts,
         auth,
         headers: req.headers,
         setHeader: (k, v) => (rateLimitHeaders[k] = v),
