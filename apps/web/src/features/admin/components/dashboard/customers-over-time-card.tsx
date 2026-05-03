@@ -25,6 +25,8 @@ import {
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { useExtracted } from "next-intl";
 import { Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
+import { GenericError } from "@/ui/generic-error";
 import { getCustomersOverTime } from "../../api/dashboard/get-customers-over-time";
 import { CustomersOverTime } from "./customers-over-time";
 
@@ -40,17 +42,19 @@ export function CustomersOverTimeCard() {
         </CardDescription>
       </CardHeader>
       <CardContent className="h-72 flex-1">
-        <Suspense
-          fallback={
-            <div className="grid h-72 w-full grid-cols-14 gap-2">
-              {Array.from({ length: 14 }).map((_, index) => (
-                <Skeleton key={index} className="size-full" />
-              ))}
-            </div>
-          }
-        >
-          <CustomersOverTime promise={getCustomersOverTime()} />
-        </Suspense>
+        <ErrorBoundary fallback={<GenericError className="border" />}>
+          <Suspense
+            fallback={
+              <div className="grid h-72 w-full grid-cols-14 gap-2">
+                {Array.from({ length: 14 }).map((_, index) => (
+                  <Skeleton key={index} className="size-full" />
+                ))}
+              </div>
+            }
+          >
+            <CustomersOverTime promise={getCustomersOverTime()} />
+          </Suspense>
+        </ErrorBoundary>
       </CardContent>
     </Card>
   );

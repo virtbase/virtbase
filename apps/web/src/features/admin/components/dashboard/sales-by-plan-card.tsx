@@ -25,6 +25,8 @@ import {
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { useExtracted } from "next-intl";
 import { Suspense } from "react";
+import { ErrorBoundary } from "react-error-boundary";
+import { GenericError } from "@/ui/generic-error";
 import { getSalesByPlan } from "../../api/dashboard/get-sales-by-plan";
 import { SalesByPlan } from "./sales-by-plan";
 
@@ -40,9 +42,11 @@ export function SalesByPlanCard() {
         </CardDescription>
       </CardHeader>
       <CardContent className="h-72 flex-1 pb-0">
-        <Suspense fallback={<Skeleton className="size-full h-72" />}>
-          <SalesByPlan promise={getSalesByPlan()} />
-        </Suspense>
+        <ErrorBoundary fallback={<GenericError className="border" />}>
+          <Suspense fallback={<Skeleton className="size-full h-72" />}>
+            <SalesByPlan promise={getSalesByPlan()} />
+          </Suspense>
+        </ErrorBoundary>
       </CardContent>
     </Card>
   );

@@ -33,6 +33,7 @@ import { ErrorBoundary } from "react-error-boundary";
 import { getLatestCustomers } from "@/features/admin/api/dashboard/get-latest-customers";
 import { LatestCustomersList } from "@/features/admin/components/dashboard/latest-customers-list";
 import { paths } from "@/lib/paths";
+import { GenericError } from "@/ui/generic-error";
 
 export function LatestCustomersCard() {
   const t = useExtracted();
@@ -58,7 +59,7 @@ export function LatestCustomersCard() {
         </CardAction>
       </CardHeader>
       <CardContent>
-        <ErrorBoundary fallback={null}>
+        <ErrorBoundary fallback={<GenericError className="border" />}>
           <Suspense
             fallback={
               <div className="space-y-2">

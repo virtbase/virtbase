@@ -116,7 +116,7 @@ msgstr "Přepnout sloupce"
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:163
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:360
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:196
-#: src/features/admin/components/servers/servers-table/columns.tsx:257
+#: src/features/admin/components/servers/servers-table/columns.tsx:253
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:217
 #: src/features/admin/components/users/users-table/columns.tsx:264
 #: src/features/servers/components/servers-list.tsx:189
@@ -445,8 +445,8 @@ msgstr "Skupiny uzlů"
 msgid "n3j8M6"
 msgstr "Uzly Proxmox"
 
-#: src/app/admin.virtbase.com/(dashboard)/page.tsx:40
-#: src/app/admin.virtbase.com/(dashboard)/page.tsx:54
+#: src/app/admin.virtbase.com/(dashboard)/page.tsx:41
+#: src/app/admin.virtbase.com/(dashboard)/page.tsx:55
 #: src/app/app.virtbase.com/(dashboard)/page.tsx:36
 #: src/app/app.virtbase.com/(dashboard)/page.tsx:50
 #: src/features/admin/components/admin-sidebar-groups.tsx:50
@@ -712,7 +712,7 @@ msgstr "Vytvořeno {date}"
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:171
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:369
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:205
-#: src/features/admin/components/servers/servers-table/columns.tsx:266
+#: src/features/admin/components/servers/servers-table/columns.tsx:270
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:226
 #: src/features/admin/components/users/users-table/columns.tsx:347
 #: src/features/servers/components/backups/backups-table/backup-actions.tsx:155
@@ -771,8 +771,8 @@ msgstr "Tento klíč se zobrazí jen jednou. Bezpečně si ho ulož, protože ho
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:113
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:89
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:103
-#: src/features/admin/components/servers/servers-table/columns.tsx:96
-#: src/features/admin/components/servers/servers-table/columns.tsx:104
+#: src/features/admin/components/servers/servers-table/columns.tsx:97
+#: src/features/admin/components/servers/servers-table/columns.tsx:105
 #: src/features/admin/components/users/users-table/columns.tsx:110
 #: src/features/admin/components/users/users-table/columns.tsx:128
 #: src/features/servers/components/backups/backups-table/columns.tsx:64
@@ -1062,11 +1062,11 @@ msgstr "Měsíční tržby"
 msgid "XCXnQK"
 msgstr "Tržby za poslední měsíc"
 
-#: src/features/admin/components/dashboard/customers-over-time-card.tsx:37
+#: src/features/admin/components/dashboard/customers-over-time-card.tsx:39
 msgid "O5JOQn"
 msgstr "Zákazníci podle data"
 
-#: src/features/admin/components/dashboard/customers-over-time-card.tsx:39
+#: src/features/admin/components/dashboard/customers-over-time-card.tsx:41
 msgid "yBCvTc"
 msgstr "Noví zákazníci za den za posledních 14 dní"
 
@@ -1074,16 +1074,16 @@ msgstr "Noví zákazníci za den za posledních 14 dní"
 msgid "zHZzJH"
 msgstr "Noví zákazníci"
 
-#: src/features/admin/components/dashboard/latest-customers-card.tsx:43
+#: src/features/admin/components/dashboard/latest-customers-card.tsx:44
 msgid "fuvH7s"
 msgstr "Nejnovější zákazníci"
 
-#: src/features/admin/components/dashboard/latest-customers-card.tsx:44
+#: src/features/admin/components/dashboard/latest-customers-card.tsx:45
 msgid "IqzPv+"
 msgstr "Nejnovější zákazníci podle data"
 
-#: src/features/admin/components/dashboard/latest-customers-card.tsx:55
-#: src/features/admin/components/dashboard/latest-servers-card.tsx:52
+#: src/features/admin/components/dashboard/latest-customers-card.tsx:56
+#: src/features/admin/components/dashboard/latest-servers-card.tsx:53
 msgid "pFK6bJ"
 msgstr "Zobrazit vše"
 
@@ -1095,12 +1095,12 @@ msgstr "Žádní noví zákazníci"
 msgid "jF7pQ8"
 msgstr "Zatím nebyli zaregistrováni žádní noví zákazníci."
 
-#: src/features/admin/components/dashboard/latest-servers-card.tsx:43
+#: src/features/admin/components/dashboard/latest-servers-card.tsx:44
 #: src/features/dashboard/components/latest-servers-card.tsx:42
 msgid "DY6Cmc"
 msgstr "Nejnovější servery"
 
-#: src/features/admin/components/dashboard/latest-servers-card.tsx:44
+#: src/features/admin/components/dashboard/latest-servers-card.tsx:45
 msgid "U11Zf0"
 msgstr "Nejnovější servery podle data"
 
@@ -1112,17 +1112,26 @@ msgstr "Žádné nové servery"
 msgid "Xp5CiD"
 msgstr "Zatím nebyly vytvořeny žádné nové servery."
 
-#: src/features/admin/components/dashboard/sales-by-plan-card.tsx:37
-msgid "N5LvQA"
-msgstr "Prodeje podle plánu"
+#: src/features/admin/components/dashboard/revenue-over-time-card.tsx:39
+msgid "vQuPQB"
+msgstr "Tržby podle data"
 
-#: src/features/admin/components/dashboard/sales-by-plan-card.tsx:39
-msgid "ZYHrCR"
-msgstr "Prodeje podle plánu za posledních 30 dní"
+#: src/features/admin/components/dashboard/revenue-over-time-card.tsx:41
+msgid "655MNT"
+msgstr "Tržby za den za posledních 14 dní"
 
+#: src/features/admin/components/dashboard/revenue-over-time.tsx:45
 #: src/features/admin/components/dashboard/sales-by-plan.tsx:64
 msgid "8WKgF6"
 msgstr "Tržby"
+
+#: src/features/admin/components/dashboard/sales-by-plan-card.tsx:39
+msgid "N5LvQA"
+msgstr "Prodeje podle plánu"
+
+#: src/features/admin/components/dashboard/sales-by-plan-card.tsx:41
+msgid "ZYHrCR"
+msgstr "Prodeje podle plánu za posledních 30 dní"
 
 #: src/features/admin/components/dashboard/sales-by-plan.tsx:126
 msgid "c8nvms"
@@ -1160,7 +1169,7 @@ msgstr "Nebylo nalezeno žádné datacentrum."
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:64
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:63
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:64
-#: src/features/admin/components/servers/servers-table/columns.tsx:71
+#: src/features/admin/components/servers/servers-table/columns.tsx:72
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:76
 #: src/features/admin/components/users/users-table/columns.tsx:85
 #: src/features/invoices/components/invoices-table/columns.tsx:47
@@ -1171,7 +1180,7 @@ msgstr "Vybrat vše"
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:75
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:74
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:75
-#: src/features/admin/components/servers/servers-table/columns.tsx:82
+#: src/features/admin/components/servers/servers-table/columns.tsx:83
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:87
 #: src/features/admin/components/users/users-table/columns.tsx:96
 #: src/features/invoices/components/invoices-table/columns.tsx:58
@@ -1181,7 +1190,7 @@ msgstr "Vybrat řádek"
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx:105
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:102
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:104
-#: src/features/admin/components/servers/servers-table/columns.tsx:105
+#: src/features/admin/components/servers/servers-table/columns.tsx:106
 msgid "wFbsIt"
 msgstr "Hledat podle názvu..."
 
@@ -1193,8 +1202,8 @@ msgstr "Hledat podle názvu..."
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:332
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:145
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:151
-#: src/features/admin/components/servers/servers-table/columns.tsx:206
-#: src/features/admin/components/servers/servers-table/columns.tsx:212
+#: src/features/admin/components/servers/servers-table/columns.tsx:202
+#: src/features/admin/components/servers/servers-table/columns.tsx:208
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:184
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:190
 #: src/features/admin/components/users/users-table/columns.tsx:228
@@ -1207,7 +1216,7 @@ msgstr "Vytvořeno"
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:147
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:346
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:180
-#: src/features/admin/components/servers/servers-table/columns.tsx:243
+#: src/features/admin/components/servers/servers-table/columns.tsx:239
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:203
 #: src/features/admin/components/users/users-table/columns.tsx:250
 msgid "bdcMGy"
@@ -1435,25 +1444,29 @@ msgstr "Počet šablon"
 msgid "wFMlsH"
 msgstr "Aktualizováno"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:115
-#: src/features/admin/components/servers/servers-table/columns.tsx:121
+#: src/features/admin/components/servers/servers-table/columns.tsx:116
+#: src/features/admin/components/servers/servers-table/columns.tsx:122
 msgid "XmTS6D"
 msgstr "ID VM"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:131
-#: src/features/admin/components/servers/servers-table/columns.tsx:154
+#: src/features/admin/components/servers/servers-table/columns.tsx:132
+#: src/features/admin/components/servers/servers-table/columns.tsx:155
 msgid "3JxaKs"
 msgstr "Šablona"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:177
-#: src/features/admin/components/servers/servers-table/columns.tsx:198
+#: src/features/admin/components/servers/servers-table/columns.tsx:178
+#: src/features/admin/components/servers/servers-table/columns.tsx:194
 msgid "EwRIOm"
 msgstr "Uživatel"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:222
-#: src/features/admin/components/servers/servers-table/columns.tsx:229
+#: src/features/admin/components/servers/servers-table/columns.tsx:218
+#: src/features/admin/components/servers/servers-table/columns.tsx:225
 msgid "1UsI0I"
 msgstr "Končí"
+
+#: src/features/admin/components/servers/servers-table/columns.tsx:261
+msgid "zvQbH/"
+msgstr "Zobrazit v Proxmoxu"
 
 #: src/features/admin/components/subnets/create-subnet-button.tsx:39
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx:65

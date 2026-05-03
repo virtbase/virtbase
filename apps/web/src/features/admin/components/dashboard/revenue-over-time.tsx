@@ -22,16 +22,16 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from "@virtbase/ui/chart";
-import { UsersIcon } from "@virtbase/ui/icons";
+import { LucideEuro } from "@virtbase/ui/icons";
 import { useExtracted, useFormatter } from "next-intl";
 import { use } from "react";
-import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
-import type { getCustomersOverTime } from "../../api/dashboard/get-customers-over-time";
+import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
+import type { getRevenueOverTime } from "../../api/dashboard/get-revenue-over-time";
 
-export function CustomersOverTime({
+export function RevenueOverTime({
   promise,
 }: {
-  promise: ReturnType<typeof getCustomersOverTime>;
+  promise: ReturnType<typeof getRevenueOverTime>;
 }) {
   const data = use(promise);
 
@@ -41,14 +41,14 @@ export function CustomersOverTime({
   return (
     <ChartContainer
       config={{
-        count: {
-          label: t("New Customers"),
-          icon: UsersIcon,
+        amount: {
+          label: t("Revenue"),
+          icon: LucideEuro,
           color: "var(--primary)",
         },
       }}
     >
-      <BarChart
+      <LineChart
         data={data}
         accessibilityLayer
         margin={{
@@ -68,29 +68,42 @@ export function CustomersOverTime({
             })
           }
         />
+        <YAxis
+          dataKey="amount"
+          tickLine={false}
+          axisLine={false}
+          tickMargin={10}
+          tickFormatter={(value: number) =>
+            format.number(value / 100, {
+              style: "currency",
+              currency: "EUR",
+            })
+          }
+          orientation="right"
+        />
         <ChartTooltip
           cursor={false}
           content={
             <ChartTooltipContent
-              valueFormatter={(_, value) => format.number(value as number)}
+              valueFormatter={(_, value) =>
+                format.number((value as number) / 100, {
+                  style: "currency",
+                  currency: "EUR",
+                })
+              }
               className="w-40"
             />
           }
         />
-        <Bar
-          dataKey="count"
-          fill="var(--color-count)"
-          minPointSize={1}
-          radius={8}
-        >
-          <LabelList
-            position="top"
-            offset={12}
-            className="fill-foreground"
-            fontSize={12}
-          />
-        </Bar>
-      </BarChart>
+        <Line
+          dataKey="amount"
+          type="linear"
+          stroke="var(--color-amount)"
+          fill="var(--color-amount)"
+          strokeWidth={2}
+          dot={false}
+        />
+      </LineChart>
     </ChartContainer>
   );
 }

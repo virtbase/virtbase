@@ -29,6 +29,7 @@ import {
 import {
   CalendarIcon,
   Ellipsis,
+  LucideExternalLink,
   LucideEye,
   LucideHash,
   LucideTag,
@@ -178,11 +179,6 @@ export function useServersTableColumns({
       ),
       cell: ({ row }) => {
         const user = row.original.user;
-
-        if (!user) {
-          return null;
-        }
-
         return (
           <NextLink
             href={paths.admin.users.overview.getHref(user.id)}
@@ -256,6 +252,14 @@ export function useServersTableColumns({
                   <LucideEye aria-hidden="true" />
                   <span>{t("View")}</span>
                 </NextLink>
+                <a
+                  href={`https://${row.original.proxmoxNode.fqdn}/#v1:0:=qemu%2F${row.original.vmid}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <LucideExternalLink aria-hidden="true" />
+                  <span>{t("View in Proxmox")}</span>
+                </a>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem

@@ -30,6 +30,7 @@ import { ActivityStatsRow } from "@/features/admin/components/dashboard/activity
 import { CustomersOverTimeCard } from "@/features/admin/components/dashboard/customers-over-time-card";
 import { LatestCustomersCard } from "@/features/admin/components/dashboard/latest-customers-card";
 import { LatestServersCard } from "@/features/admin/components/dashboard/latest-servers-card";
+import { RevenueOverTimeCard } from "@/features/admin/components/dashboard/revenue-over-time-card";
 import { SalesByPlanCard } from "@/features/admin/components/dashboard/sales-by-plan-card";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
 
@@ -64,6 +65,7 @@ export default function Page() {
             <div className="grid auto-rows-max items-start gap-4 lg:col-span-2">
               <CustomersOverTimeCard />
               <SalesByPlanCard />
+              <RevenueOverTimeCard />
             </div>
             <div className="grid auto-rows-max items-start gap-4 lg:col-span-2">
               <LatestServersCard />

@@ -15,58 +15,36 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Button } from "@virtbase/ui/button";
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
 } from "@virtbase/ui/card";
-import { LucideExternalLink } from "@virtbase/ui/icons";
 import { Skeleton } from "@virtbase/ui/skeleton";
-import NextLink from "next/link";
 import { useExtracted } from "next-intl";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { getLatestServers } from "@/features/admin/api/dashboard/get-latest-servers";
-import { paths } from "@/lib/paths";
 import { GenericError } from "@/ui/generic-error";
-import { LatestServersList } from "./latest-servers-list";
+import { getRevenueOverTime } from "../../api/dashboard/get-revenue-over-time";
+import { RevenueOverTime } from "./revenue-over-time";
 
-export function LatestServersCard() {
+export function RevenueOverTimeCard() {
   const t = useExtracted();
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>{t("Latest Servers")}</CardTitle>
-        <CardDescription>{t("The latest servers by date")}</CardDescription>
-        <CardAction>
-          <Button variant="outline" size="sm" asChild>
-            <NextLink href={paths.admin.servers.getHref()} prefetch={false}>
-              <LucideExternalLink
-                className="text-muted-foreground"
-                aria-hidden="true"
-              />
-              {t("View all")}
-            </NextLink>
-          </Button>
-        </CardAction>
+        <CardTitle>{t("Revenue by Date")}</CardTitle>
+        <CardDescription>
+          {t("Revenue per day in the last 14 days")}
+        </CardDescription>
       </CardHeader>
-      <CardContent>
+      <CardContent className="h-72 flex-1">
         <ErrorBoundary fallback={<GenericError className="border" />}>
-          <Suspense
-            fallback={
-              <div className="space-y-2">
-                {Array.from({ length: 5 }).map((_, index) => (
-                  <Skeleton key={index} className="h-12" />
-                ))}
-              </div>
-            }
-          >
-            <LatestServersList promise={getLatestServers()} />
+          <Suspense fallback={<Skeleton className="size-full h-72" />}>
+            <RevenueOverTime promise={getRevenueOverTime()} />
           </Suspense>
         </ErrorBoundary>
       </CardContent>

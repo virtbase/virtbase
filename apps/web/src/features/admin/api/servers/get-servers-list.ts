@@ -26,7 +26,12 @@ import {
   inArray,
 } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
-import { proxmoxTemplates, servers, users } from "@virtbase/db/schema";
+import {
+  proxmoxNodes,
+  proxmoxTemplates,
+  servers,
+  users,
+} from "@virtbase/db/schema";
 import { getDateIntervalFilter } from "@virtbase/db/utils";
 import { cacheLife, cacheTag } from "next/cache";
 import type { GetServersSchema } from "../../lib/servers/validations";
@@ -76,13 +81,17 @@ export async function getServersList(input: GetServersSchema) {
               name: users.name,
               image: users.image,
             },
+            proxmoxNode: {
+              fqdn: proxmoxNodes.fqdn,
+            },
           })
           .from(servers)
           .leftJoin(
             proxmoxTemplates,
             eq(servers.proxmoxTemplateId, proxmoxTemplates.id),
           )
-          .leftJoin(users, eq(servers.userId, users.id))
+          .innerJoin(users, eq(servers.userId, users.id))
+          .innerJoin(proxmoxNodes, eq(servers.proxmoxNodeId, proxmoxNodes.id))
           .limit(input.perPage)
           .offset(offset)
           .where(where)
