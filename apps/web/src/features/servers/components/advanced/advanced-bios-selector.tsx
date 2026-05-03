@@ -27,15 +27,26 @@ import {
 import { LucideGauge, LucideTerminal } from "@virtbase/ui/icons";
 import { RadioGroup, RadioGroupItem } from "@virtbase/ui/radio-group";
 import { Skeleton } from "@virtbase/ui/skeleton";
+import { isBusy, isOperational } from "@virtbase/utils";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { GenericError } from "@/ui/generic-error";
 import { useAdvancedSettings } from "../../hooks/advanced/use-advanced-settings";
 import { useUpdateAdvancedSettings } from "../../hooks/advanced/use-update-advanced-settings";
+import { useServerStatus } from "../../hooks/use-server-status";
 
 export function AdvancedBiosSelector() {
   const t = useExtracted();
   const params = useParams<{ id: string }>();
+
+  const {
+    data: { status } = {},
+    isPending: isServerStatusPending,
+    isError: isServerStatusError,
+    refetch: refetchServerStatus,
+  } = useServerStatus({
+    server_id: params.id,
+  });
 
   const {
     data: { settings } = {},
@@ -49,12 +60,22 @@ export function AdvancedBiosSelector() {
   const { mutate: updateAdvancedSettings, isPending: isUpdatePending } =
     useUpdateAdvancedSettings();
 
-  if (isError) {
-    return <GenericError className="border" reset={refetch} />;
+  if (isServerStatusError || isError) {
+    return (
+      <GenericError
+        className="border"
+        reset={isServerStatusError ? refetchServerStatus : refetch}
+      />
+    );
   }
 
-  if (isPending || !settings) {
-    return <Skeleton className="h-72 w-full" />;
+  if (isServerStatusPending || isPending || !status || !settings) {
+    return (
+      <div className="grid gap-3">
+        <Skeleton className="h-20 w-full" />
+        <Skeleton className="h-20 w-full" />
+      </div>
+    );
   }
 
   return (
@@ -66,7 +87,7 @@ export function AdvancedBiosSelector() {
           bios: value,
         })
       }
-      disabled={isUpdatePending}
+      disabled={isUpdatePending || !isOperational(status) || isBusy(status)}
     >
       <FieldLabel htmlFor="bios-legacy">
         <Field orientation="horizontal">

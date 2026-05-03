@@ -45,6 +45,7 @@ import { useServerList } from "@/features/dashboard/hooks/use-server-list";
 import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
 import { paths } from "@/lib/paths";
 import { CopyButton } from "@/ui/copy-button";
+import { GenericError } from "@/ui/generic-error";
 import { OperatingSystemIcon } from "@/ui/operating-system-icon";
 import { ServerTerminatesBadge } from "./server-terminates-badge";
 
@@ -52,29 +53,41 @@ export function ServersList() {
   const t = useExtracted();
   const formatter = useFormatter();
 
-  const { data: { servers } = {}, isPending } = useServerList();
+  const {
+    data: { servers } = {},
+    isPending,
+    isError,
+    refetch,
+  } = useServerList();
 
   const [copiedIp, copyToClipboard] = useCopyToClipboard();
 
+  if (isError) {
+    return <GenericError className="border" reset={refetch} />;
+  }
+
   if (isPending || !servers) {
     return (
-      <div className="flex flex-col gap-4">
-        {Array.from({ length: 3 }).map((_, index) => (
-          <Skeleton key={index} className="h-20" />
-        ))}
+      <div className="grid gap-4">
+        <Skeleton className="h-20 w-full" />
+        <Skeleton className="h-20 w-full" />
+        <Skeleton className="h-20 w-full" />
       </div>
     );
   }
 
-  if (!isPending && !servers.length) {
+  if (!servers.length) {
     return <EmptyServers />;
   }
 
   return (
     <ul className="flex flex-col gap-4">
       {servers.map((server) => {
-        if (!server.plan || typeof server.plan !== "object") {
-          // Never the case since the plan is always expanded
+        if (
+          typeof server.plan !== "object" ||
+          typeof server.template === "string"
+        ) {
+          // Never the case since the plan and template are always expanded
           return null;
         }
 
@@ -92,7 +105,10 @@ export function ServersList() {
             <div className="flex items-center gap-5 px-4 py-2.5 text-sm sm:gap-8 md:gap-12">
               <div className="min-w-0 grow">
                 <div className="flex h-[60px] items-center gap-3 transition-[height]">
-                  <OperatingSystemIcon className="size-9 rounded-full bg-muted p-2" />
+                  <OperatingSystemIcon
+                    className="size-9 rounded-full bg-muted p-2"
+                    icon={server.template?.icon}
+                  />
                   <div className="h-[46px] min-w-0 overflow-hidden transition-[height]">
                     <div className="flex items-center gap-2">
                       <div className="min-w-0 shrink grow-0">
