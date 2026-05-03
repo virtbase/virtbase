@@ -107,7 +107,7 @@ export const serversBackupsStatusRouter = createTRPCRouter({
             });
 
           const entry = content.find(
-            (entry) => !!entry.notes && entry.notes.includes(server.id),
+            (entry) => !!entry.notes && entry.notes.includes(backup.id),
           );
 
           if (!entry) {
