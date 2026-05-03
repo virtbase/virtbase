@@ -313,7 +313,7 @@ export const serversRdnsRouter = createTRPCRouter({
             throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
           }
 
-          const upserted = await db
+          const upserted = await tx
             .insert(pointerRecords)
             .values({
               subnetAllocationId: allocation.id,

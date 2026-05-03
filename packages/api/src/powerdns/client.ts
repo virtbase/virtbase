@@ -55,7 +55,7 @@ export class PowerDNSClient {
     return this._request(
       `/api/v1/servers/localhost/zones/${encodeURIComponent(normalizedZone)}`,
       {
-        method: "PUT",
+        method: "PATCH",
         body: JSON.stringify({
           rrsets: [
             {

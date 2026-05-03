@@ -95,7 +95,7 @@ export async function getServersList(input: GetServersSchema) {
           .limit(input.perPage)
           .offset(offset)
           .where(where)
-          .groupBy(servers.id, proxmoxTemplates.id, users.id)
+          .groupBy(servers.id, proxmoxTemplates.id, users.id, proxmoxNodes.fqdn)
           .orderBy(...orderBy);
 
         const total = await tx.$count(servers, where);
@@ -112,7 +112,6 @@ export async function getServersList(input: GetServersSchema) {
 
     return { data, pageCount };
   } catch (error) {
-    console.error(error);
     captureException(error);
 
     return { data: [], pageCount: 0 };
