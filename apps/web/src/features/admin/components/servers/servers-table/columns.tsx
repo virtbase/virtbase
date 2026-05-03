@@ -252,6 +252,9 @@ export function useServersTableColumns({
                   <LucideEye aria-hidden="true" />
                   <span>{t("View")}</span>
                 </NextLink>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem asChild>
                 <a
                   href={`https://${row.original.proxmoxNode.fqdn}/#v1:0:=qemu%2F${row.original.vmid}`}
                   target="_blank"
