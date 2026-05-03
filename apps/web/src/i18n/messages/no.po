@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Norwegian\n"
-"PO-Revision-Date: 2026-05-02 19:50\n"
+"PO-Revision-Date: 2026-05-03 15:38\n"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:84
 msgid "o/UJXc"
@@ -116,10 +116,10 @@ msgstr "Slå på kolonner"
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:163
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:360
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:196
-#: src/features/admin/components/servers/servers-table/columns.tsx:257
+#: src/features/admin/components/servers/servers-table/columns.tsx:253
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:217
 #: src/features/admin/components/users/users-table/columns.tsx:264
-#: src/features/servers/components/servers-list.tsx:173
+#: src/features/servers/components/servers-list.tsx:189
 msgid "FgydNe"
 msgstr "Utsikt"
 
@@ -356,69 +356,69 @@ msgstr "Virtbase er leverandøren for sikker serverhosting. Maksimal ytelse med 
 msgid "BdEM9F"
 msgstr "Hosting, men sikker."
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:88
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:133
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:89
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:134
 msgid "t1DCfI"
 msgstr "Oppgrader til en kraftigere server"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:89
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:136
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:90
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:137
 msgid "0mibRH"
 msgstr "Et lite tillegg. Betydelig mer ytelse."
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:187
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:188
 msgid "8VIOz4"
 msgstr "{cores, plural, =0 {+# vCores} =1 {+# vCore} other {+# vCores}}"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:190
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:191
 msgid "j2HEjv"
 msgstr "Bedre ytelse ved flere oppgaver"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:196
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:197
 msgid "tDBsIi"
 msgstr "{percent} mer RAM"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:203
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:204
 msgid "LM23s2"
 msgstr "Raskere responstid for apper"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:209
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:210
 msgid "R0fF2V"
 msgstr "{percent} mer lagring"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:216
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:217
 msgid "E8bbzS"
 msgstr "Lagre mer innhold på serveren din"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:225
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:226
 msgid "J4j1Fd"
 msgstr "{value} mer båndbredde"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:236
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:237
 msgid "NkmKCs"
 msgstr "Merkbar økning i datahastighet"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:242
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:243
 msgid "7NydGv"
 msgstr "Ingen etableringsavgift"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:243
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:244
 msgid "lt2ynN"
 msgstr "Gratis oppsett, ingen tilleggskostnader"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:248
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:249
 msgid "XucETQ"
 msgstr "Support døgnen rundt"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:249
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:250
 msgid "CKQfnV"
 msgstr "Tilgjengelig når du trenger det"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:254
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:255
 msgid "3SJxuA"
 msgstr "Aktiv DDoS-beskyttelse"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:255
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:256
 msgid "VI9ImX"
 msgstr "Serveren din er beskyttet uten tilleggskostnader"
 
@@ -445,8 +445,8 @@ msgstr "Nodegrupper"
 msgid "n3j8M6"
 msgstr "Proxmox-noder"
 
-#: src/app/admin.virtbase.com/(dashboard)/page.tsx:40
-#: src/app/admin.virtbase.com/(dashboard)/page.tsx:54
+#: src/app/admin.virtbase.com/(dashboard)/page.tsx:41
+#: src/app/admin.virtbase.com/(dashboard)/page.tsx:55
 #: src/app/app.virtbase.com/(dashboard)/page.tsx:36
 #: src/app/app.virtbase.com/(dashboard)/page.tsx:50
 #: src/features/admin/components/admin-sidebar-groups.tsx:50
@@ -712,7 +712,7 @@ msgstr "Opprettet {date}"
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:171
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:369
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:205
-#: src/features/admin/components/servers/servers-table/columns.tsx:266
+#: src/features/admin/components/servers/servers-table/columns.tsx:270
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:226
 #: src/features/admin/components/users/users-table/columns.tsx:347
 #: src/features/servers/components/backups/backups-table/backup-actions.tsx:155
@@ -771,8 +771,8 @@ msgstr "Denne tasten vises kun én gang. Vennligst lagre det sikkert, siden det 
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:113
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:89
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:103
-#: src/features/admin/components/servers/servers-table/columns.tsx:96
-#: src/features/admin/components/servers/servers-table/columns.tsx:104
+#: src/features/admin/components/servers/servers-table/columns.tsx:97
+#: src/features/admin/components/servers/servers-table/columns.tsx:105
 #: src/features/admin/components/users/users-table/columns.tsx:110
 #: src/features/admin/components/users/users-table/columns.tsx:128
 #: src/features/servers/components/backups/backups-table/columns.tsx:64
@@ -1062,11 +1062,11 @@ msgstr "Månedlig inntekt"
 msgid "XCXnQK"
 msgstr "Inntekter siste måned"
 
-#: src/features/admin/components/dashboard/customers-over-time-card.tsx:37
+#: src/features/admin/components/dashboard/customers-over-time-card.tsx:39
 msgid "O5JOQn"
 msgstr "Kunder etter dato"
 
-#: src/features/admin/components/dashboard/customers-over-time-card.tsx:39
+#: src/features/admin/components/dashboard/customers-over-time-card.tsx:41
 msgid "yBCvTc"
 msgstr "Nye kunder per dag de siste 14 dagene"
 
@@ -1074,16 +1074,16 @@ msgstr "Nye kunder per dag de siste 14 dagene"
 msgid "zHZzJH"
 msgstr "Nye kunder"
 
-#: src/features/admin/components/dashboard/latest-customers-card.tsx:43
+#: src/features/admin/components/dashboard/latest-customers-card.tsx:44
 msgid "fuvH7s"
 msgstr "Siste kunder"
 
-#: src/features/admin/components/dashboard/latest-customers-card.tsx:44
+#: src/features/admin/components/dashboard/latest-customers-card.tsx:45
 msgid "IqzPv+"
 msgstr "De siste kundene etter dato"
 
-#: src/features/admin/components/dashboard/latest-customers-card.tsx:55
-#: src/features/admin/components/dashboard/latest-servers-card.tsx:52
+#: src/features/admin/components/dashboard/latest-customers-card.tsx:56
+#: src/features/admin/components/dashboard/latest-servers-card.tsx:53
 msgid "pFK6bJ"
 msgstr "Se alle"
 
@@ -1095,12 +1095,12 @@ msgstr "Ingen nye kunder"
 msgid "jF7pQ8"
 msgstr "Ingen nye kunder er registrert ennå."
 
-#: src/features/admin/components/dashboard/latest-servers-card.tsx:43
+#: src/features/admin/components/dashboard/latest-servers-card.tsx:44
 #: src/features/dashboard/components/latest-servers-card.tsx:42
 msgid "DY6Cmc"
 msgstr "Siste servere"
 
-#: src/features/admin/components/dashboard/latest-servers-card.tsx:44
+#: src/features/admin/components/dashboard/latest-servers-card.tsx:45
 msgid "U11Zf0"
 msgstr "De siste serverne etter dato"
 
@@ -1112,17 +1112,26 @@ msgstr "Ingen nye servere"
 msgid "Xp5CiD"
 msgstr "Ingen nye servere er opprettet ennå."
 
-#: src/features/admin/components/dashboard/sales-by-plan-card.tsx:37
-msgid "N5LvQA"
-msgstr "Salg etter plan"
+#: src/features/admin/components/dashboard/revenue-over-time-card.tsx:39
+msgid "vQuPQB"
+msgstr "Inntekter etter dato"
 
-#: src/features/admin/components/dashboard/sales-by-plan-card.tsx:39
-msgid "ZYHrCR"
-msgstr "Salg etter plan de siste 30 dagene"
+#: src/features/admin/components/dashboard/revenue-over-time-card.tsx:41
+msgid "655MNT"
+msgstr "Inntekter per dag de siste 14 dagene"
 
+#: src/features/admin/components/dashboard/revenue-over-time.tsx:45
 #: src/features/admin/components/dashboard/sales-by-plan.tsx:64
 msgid "8WKgF6"
 msgstr "Inntekter"
+
+#: src/features/admin/components/dashboard/sales-by-plan-card.tsx:39
+msgid "N5LvQA"
+msgstr "Salg etter plan"
+
+#: src/features/admin/components/dashboard/sales-by-plan-card.tsx:41
+msgid "ZYHrCR"
+msgstr "Salg etter plan de siste 30 dagene"
 
 #: src/features/admin/components/dashboard/sales-by-plan.tsx:126
 msgid "c8nvms"
@@ -1160,7 +1169,7 @@ msgstr "Ingen datasenter funnet."
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:64
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:63
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:64
-#: src/features/admin/components/servers/servers-table/columns.tsx:71
+#: src/features/admin/components/servers/servers-table/columns.tsx:72
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:76
 #: src/features/admin/components/users/users-table/columns.tsx:85
 #: src/features/invoices/components/invoices-table/columns.tsx:47
@@ -1171,7 +1180,7 @@ msgstr "Velg alle"
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:75
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:74
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:75
-#: src/features/admin/components/servers/servers-table/columns.tsx:82
+#: src/features/admin/components/servers/servers-table/columns.tsx:83
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:87
 #: src/features/admin/components/users/users-table/columns.tsx:96
 #: src/features/invoices/components/invoices-table/columns.tsx:58
@@ -1181,7 +1190,7 @@ msgstr "Velg rad"
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx:105
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:102
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:104
-#: src/features/admin/components/servers/servers-table/columns.tsx:105
+#: src/features/admin/components/servers/servers-table/columns.tsx:106
 msgid "wFbsIt"
 msgstr "Søk på navn..."
 
@@ -1193,8 +1202,8 @@ msgstr "Søk på navn..."
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:332
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:145
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:151
-#: src/features/admin/components/servers/servers-table/columns.tsx:206
-#: src/features/admin/components/servers/servers-table/columns.tsx:212
+#: src/features/admin/components/servers/servers-table/columns.tsx:202
+#: src/features/admin/components/servers/servers-table/columns.tsx:208
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:184
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:190
 #: src/features/admin/components/users/users-table/columns.tsx:228
@@ -1207,7 +1216,7 @@ msgstr "Opprettet kl"
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:147
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:346
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:180
-#: src/features/admin/components/servers/servers-table/columns.tsx:243
+#: src/features/admin/components/servers/servers-table/columns.tsx:239
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:203
 #: src/features/admin/components/users/users-table/columns.tsx:250
 msgid "bdcMGy"
@@ -1435,25 +1444,29 @@ msgstr "Antall maler"
 msgid "wFMlsH"
 msgstr "Oppdatert kl"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:115
-#: src/features/admin/components/servers/servers-table/columns.tsx:121
+#: src/features/admin/components/servers/servers-table/columns.tsx:116
+#: src/features/admin/components/servers/servers-table/columns.tsx:122
 msgid "XmTS6D"
 msgstr "VM ID"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:131
-#: src/features/admin/components/servers/servers-table/columns.tsx:154
+#: src/features/admin/components/servers/servers-table/columns.tsx:132
+#: src/features/admin/components/servers/servers-table/columns.tsx:155
 msgid "3JxaKs"
 msgstr "Mal"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:177
-#: src/features/admin/components/servers/servers-table/columns.tsx:198
+#: src/features/admin/components/servers/servers-table/columns.tsx:178
+#: src/features/admin/components/servers/servers-table/columns.tsx:194
 msgid "EwRIOm"
 msgstr "Bruker"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:222
-#: src/features/admin/components/servers/servers-table/columns.tsx:229
+#: src/features/admin/components/servers/servers-table/columns.tsx:218
+#: src/features/admin/components/servers/servers-table/columns.tsx:225
 msgid "1UsI0I"
 msgstr "Avsluttes kl"
+
+#: src/features/admin/components/servers/servers-table/columns.tsx:261
+msgid "zvQbH/"
+msgstr "Vis i Proxmox"
 
 #: src/features/admin/components/subnets/create-subnet-button.tsx:39
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx:65
@@ -1758,7 +1771,7 @@ msgstr "per måned"
 #: src/features/checkout/components/order-summary.tsx:67
 #: src/features/servers/components/plan/plan-radio-group.tsx:66
 #: src/features/servers/components/plan/plan-summary.tsx:150
-#: src/features/servers/components/servers-list.tsx:118
+#: src/features/servers/components/servers-list.tsx:134
 msgid "BGI16m"
 msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
 
@@ -1853,15 +1866,15 @@ msgstr "Siste fakturaer"
 msgid "VgBFI4"
 msgstr "Her kan du se dine siste fakturaer for direkte nedlasting."
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:65
+#: src/features/dashboard/components/latest-invoices-list.tsx:61
 msgid "QVIbFk"
 msgstr "Ingen fakturaer"
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:67
+#: src/features/dashboard/components/latest-invoices-list.tsx:63
 msgid "GtDccr"
 msgstr "Ingen fakturaer er utstedt ennå."
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:91
+#: src/features/dashboard/components/latest-invoices-list.tsx:87
 #: src/features/invoices/components/invoices-table/columns.tsx:152
 msgid "5q3qC0"
 msgstr "Last ned"
@@ -2118,19 +2131,19 @@ msgstr "Velg BIOS-type for serveren din."
 msgid "HJOq/1"
 msgstr "UEFI BIOS anbefales for Windows-installasjoner. Bruk legacy BIOS for eldre Linux-installasjoner."
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:73
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:100
 msgid "XHiVwa"
 msgstr "Legacy BIOS"
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:75
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:103
 msgid "AhxnaN"
 msgstr "Bruk legacy BIOS for denne serveren."
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:84
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:117
 msgid "/eGTDl"
 msgstr "UEFI BIOS"
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:86
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:120
 msgid "oZyWxo"
 msgstr "Bruk den nyere UEFI BIOS for denne serveren."
 
@@ -2146,27 +2159,27 @@ msgstr "Aktiver eller deaktiver TPM-modulen for serveren din."
 msgid "1Lw+6m"
 msgstr "De fleste Linux-installasjoner krever ikke TPM, mens Windows krever TPM v2.0."
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:73
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:105
 msgid "I1Um2Q"
 msgstr "Deaktiver TPM"
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:75
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:108
 msgid "i1+8G8"
 msgstr "Slå av TPM helt for denne serveren."
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:84
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:122
 msgid "HrP3QG"
 msgstr "Aktiver TPM v1.2"
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:86
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:125
 msgid "/p73Kl"
 msgstr "Aktiver TPM v1.2 for denne serveren."
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:95
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:139
 msgid "DwWNni"
 msgstr "Aktiver TPM v2.0"
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:97
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:142
 msgid "i/5Hb2"
 msgstr "Aktiver TPM v2.0 for denne serveren."
 
@@ -2670,15 +2683,15 @@ msgstr "Denne serveren utløper {expiry} og vil bli slettet etter, hvis den ikke
 msgid "76X+Qu"
 msgstr "Denne serveren blir installert. Noen funksjoner er kanskje ikke tilgjengelige ennå."
 
-#: src/features/servers/components/servers-list.tsx:191
+#: src/features/servers/components/servers-list.tsx:207
 msgid "SXm88k"
 msgstr "IP kopiert til utklippstavlen!"
 
-#: src/features/servers/components/servers-list.tsx:200
+#: src/features/servers/components/servers-list.tsx:216
 msgid "26lbPc"
 msgstr "Kopier IP"
 
-#: src/features/servers/components/servers-list.tsx:211
+#: src/features/servers/components/servers-list.tsx:227
 msgid "nWQFic"
 msgstr "Fornye"
 
