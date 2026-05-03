@@ -23,33 +23,30 @@ import {
 import type { NextRequest } from "next/server";
 import { auth } from "@/lib/auth/server";
 
-// TODO: Check if there is a better way to set the rate limit headers
-const createContext = async ({
-  req,
-  res,
-}: {
-  req: Request;
-  // `res` is not typed on `createOpenApiFetchHandler`
-  // but it should exist
-  res?: { setHeader: (key: string, value: string | string[]) => void };
-}) => {
-  return createTRPCContext({
-    headers: req.headers,
-    // `res` might be undefined, but `setHeader` is required
-    // to set the rate limit headers on the response
-    setHeader: res
-      ? (name: string, value: string) => res.setHeader(name, value)
-      : () => {},
-    auth,
-  });
-};
+const handler = async (req: NextRequest) => {
+  const rateLimitHeaders: Record<string, string> = {};
 
-const handler = (req: NextRequest) => {
-  return createOpenApiFetchHandler({
+  const response = await createOpenApiFetchHandler({
     endpoint: "/api/v1",
     req,
     router: appRouter,
-    createContext,
+    createContext: () =>
+      createTRPCContext({
+        auth,
+        headers: req.headers,
+        setHeader: (k, v) => (rateLimitHeaders[k] = v),
+      }),
+  });
+
+  const newHeaders = new Headers(response.headers);
+
+  for (const [k, v] of Object.entries(rateLimitHeaders)) {
+    newHeaders.set(k, v);
+  }
+
+  return new Response(response.body, {
+    status: response.status,
+    headers: newHeaders,
   });
 };
 

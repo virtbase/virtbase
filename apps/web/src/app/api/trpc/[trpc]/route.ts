@@ -21,18 +21,19 @@ import type { NextRequest } from "next/server";
 import { env } from "@/env";
 import { auth } from "@/lib/auth/server";
 
-const handler = async (req: NextRequest) =>
-  fetchRequestHandler({
+const handler = async (req: NextRequest) => {
+  const rateLimitHeaders: Record<string, string> = {};
+
+  const response = await fetchRequestHandler({
     endpoint: "/api/trpc",
     req,
     router: appRouter,
-    createContext: () =>
+    createContext: (opts) =>
       createTRPCContext({
+        ...opts,
         auth,
         headers: req.headers,
-        // TODO: Add a way to set the headers
-        // Not a problem for now, since the endpoints here are used only internally
-        setHeader: () => {},
+        setHeader: (k, v) => (rateLimitHeaders[k] = v),
       }),
     onError:
       env.NODE_ENV === "development"
@@ -43,5 +44,17 @@ const handler = async (req: NextRequest) =>
           }
         : undefined,
   });
+
+  const newHeaders = new Headers(response.headers);
+
+  for (const [k, v] of Object.entries(rateLimitHeaders)) {
+    newHeaders.set(k, v);
+  }
+
+  return new Response(response.body, {
+    status: response.status,
+    headers: newHeaders,
+  });
+};
 
 export { handler as GET, handler as POST };

@@ -110,7 +110,7 @@ msgstr "Toggle columns"
 #: src/features/admin/components/servers/servers-table/columns.tsx:257
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:217
 #: src/features/admin/components/users/users-table/columns.tsx:264
-#: src/features/servers/components/servers-list.tsx:173
+#: src/features/servers/components/servers-list.tsx:189
 msgid "FgydNe"
 msgstr "View"
 
@@ -347,69 +347,69 @@ msgstr "Virtbase is the provider for secure server hosting. Maximum performance 
 msgid "BdEM9F"
 msgstr "Hosting, but secure."
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:88
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:133
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:89
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:134
 msgid "t1DCfI"
 msgstr "Upgrade to a more powerful server"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:89
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:136
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:90
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:137
 msgid "0mibRH"
 msgstr "A small extra charge. Significantly more power."
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:187
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:188
 msgid "8VIOz4"
 msgstr "{cores, plural, =0 {+# vCores} =1 {+# vCore} other {+# vCores}}"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:190
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:191
 msgid "j2HEjv"
 msgstr "Improved multi-tasking performance"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:196
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:197
 msgid "tDBsIi"
 msgstr "{percent} more RAM"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:203
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:204
 msgid "LM23s2"
 msgstr "Faster application responsiveness"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:209
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:210
 msgid "R0fF2V"
 msgstr "{percent} more storage"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:216
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:217
 msgid "E8bbzS"
 msgstr "Store more content on your server"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:225
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:226
 msgid "J4j1Fd"
 msgstr "{value} more bandwidth"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:236
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:237
 msgid "NkmKCs"
 msgstr "Noticeable increase in data transfer speeds"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:242
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:243
 msgid "7NydGv"
 msgstr "No setup fee"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:243
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:244
 msgid "lt2ynN"
 msgstr "Free setup, no additional charges"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:248
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:249
 msgid "XucETQ"
 msgstr "24/7 support"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:249
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:250
 msgid "CKQfnV"
 msgstr "Available around the clock whenever you need it"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:254
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:255
 msgid "3SJxuA"
 msgstr "Active DDoS protection"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:255
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:256
 msgid "VI9ImX"
 msgstr "Your server is protected without additional charges"
 
@@ -1749,7 +1749,7 @@ msgstr "per month"
 #: src/features/checkout/components/order-summary.tsx:67
 #: src/features/servers/components/plan/plan-radio-group.tsx:66
 #: src/features/servers/components/plan/plan-summary.tsx:150
-#: src/features/servers/components/servers-list.tsx:118
+#: src/features/servers/components/servers-list.tsx:134
 msgid "BGI16m"
 msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
 
@@ -1844,15 +1844,15 @@ msgstr "Latest Invoices"
 msgid "VgBFI4"
 msgstr "Here you can see your latest invoices for direct download."
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:65
+#: src/features/dashboard/components/latest-invoices-list.tsx:61
 msgid "QVIbFk"
 msgstr "No invoices"
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:67
+#: src/features/dashboard/components/latest-invoices-list.tsx:63
 msgid "GtDccr"
 msgstr "No invoices have been issued yet."
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:91
+#: src/features/dashboard/components/latest-invoices-list.tsx:87
 #: src/features/invoices/components/invoices-table/columns.tsx:152
 msgid "5q3qC0"
 msgstr "Download"
@@ -2109,19 +2109,19 @@ msgstr "Select the BIOS type for your server."
 msgid "HJOq/1"
 msgstr "UEFI BIOS is recommended for Windows installations. Use the legacy BIOS for older Linux installations."
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:73
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:100
 msgid "XHiVwa"
 msgstr "Legacy BIOS"
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:75
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:103
 msgid "AhxnaN"
 msgstr "Use the legacy BIOS for this server."
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:84
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:117
 msgid "/eGTDl"
 msgstr "UEFI BIOS"
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:86
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:120
 msgid "oZyWxo"
 msgstr "Use the newer UEFI BIOS for this server."
 
@@ -2137,27 +2137,27 @@ msgstr "Enable or disable the TPM module for your server."
 msgid "1Lw+6m"
 msgstr "Most Linux installations don't require TPM, whereas Windows requires TPM v2.0."
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:73
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:105
 msgid "I1Um2Q"
 msgstr "Disable TPM"
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:75
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:108
 msgid "i1+8G8"
 msgstr "Turn off TPM completely for this server."
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:84
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:122
 msgid "HrP3QG"
 msgstr "Enable TPM v1.2"
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:86
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:125
 msgid "/p73Kl"
 msgstr "Activate TPM v1.2 for this server."
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:95
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:139
 msgid "DwWNni"
 msgstr "Enable TPM v2.0"
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:97
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:142
 msgid "i/5Hb2"
 msgstr "Activate TPM v2.0 for this server."
 
@@ -2661,15 +2661,15 @@ msgstr "This server is expiring {expiry} and will be deleted after, if not renew
 msgid "76X+Qu"
 msgstr "This server is being installed. Some features may not be available yet."
 
-#: src/features/servers/components/servers-list.tsx:191
+#: src/features/servers/components/servers-list.tsx:207
 msgid "SXm88k"
 msgstr "IP copied to clipboard!"
 
-#: src/features/servers/components/servers-list.tsx:200
+#: src/features/servers/components/servers-list.tsx:216
 msgid "26lbPc"
 msgstr "Copy IP"
 
-#: src/features/servers/components/servers-list.tsx:211
+#: src/features/servers/components/servers-list.tsx:227
 msgid "nWQFic"
 msgstr "Renew"
 

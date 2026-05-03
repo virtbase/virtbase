@@ -88,10 +88,10 @@ export const createTRPCContext = async ({
 
 type RatelimitMeta = {
   /**
-   * Ratelimit configuration for this endpoint.
-   * If `false`, ratelimit is disabled for this endpoint.
-   *
-   * @default { requests: 10, seconds: "10 s" }
+   * A custom rate limit configuration for this endpoint.
+   * - If set to an object, that configuration is used.
+   * - If set to `false`, rate limiting is disabled for this endpoint.
+   * - If omitted, the default from `ratelimit.ts` applies.
    */
   ratelimit?:
     | {
@@ -174,15 +174,15 @@ const ratelimitMiddleware = t.middleware(
     meta: { ratelimit: ratelimitConfig } = {},
     ctx: { headers, setHeader, session },
   }) => {
-    if (ratelimitConfig === false || t._config.isDev) {
+    if (ratelimitConfig === false) {
       // Ratelimit is disabled for this endpoint
       // Skip and go to the next middleware
       return next();
     }
 
     const {
-      requests = 10,
-      seconds = "10 s",
+      requests,
+      seconds,
       fingerprint: fingerprintFn,
     } = ratelimitConfig || {};
 

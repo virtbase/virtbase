@@ -119,7 +119,7 @@ msgstr "Comutați coloanele"
 #: src/features/admin/components/servers/servers-table/columns.tsx:257
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:217
 #: src/features/admin/components/users/users-table/columns.tsx:264
-#: src/features/servers/components/servers-list.tsx:173
+#: src/features/servers/components/servers-list.tsx:189
 msgid "FgydNe"
 msgstr "Vedere"
 
@@ -356,69 +356,69 @@ msgstr "Virtbase este furnizorul de găzduire securizată de servere. Performan�
 msgid "BdEM9F"
 msgstr "Gazduire, dar sigura."
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:88
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:133
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:89
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:134
 msgid "t1DCfI"
 msgstr "Treci la un server mai puternic"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:89
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:136
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:90
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:137
 msgid "0mibRH"
 msgstr "Un mic supliment. Mult mai multă putere."
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:187
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:188
 msgid "8VIOz4"
 msgstr "{cores, plural, =0 {+# vCores} =1 {+# vCore} other {+# vCores}}"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:190
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:191
 msgid "j2HEjv"
 msgstr "Performanță îmbunătățită la multitasking"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:196
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:197
 msgid "tDBsIi"
 msgstr "{percent} mai multă memorie RAM"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:203
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:204
 msgid "LM23s2"
 msgstr "Răspuns mai rapid al aplicațiilor"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:209
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:210
 msgid "R0fF2V"
 msgstr "{percent} mai mult spațiu de stocare"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:216
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:217
 msgid "E8bbzS"
 msgstr "Stocați mai mult conținut pe server"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:225
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:226
 msgid "J4j1Fd"
 msgstr "{value} mai multă lățime de bandă"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:236
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:237
 msgid "NkmKCs"
 msgstr "Creștere evidentă a vitezelor de transfer"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:242
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:243
 msgid "7NydGv"
 msgstr "Fără taxă de configurare"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:243
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:244
 msgid "lt2ynN"
 msgstr "Configurare gratuită, fără costuri suplimentare"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:248
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:249
 msgid "XucETQ"
 msgstr "Asistență 24/7"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:249
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:250
 msgid "CKQfnV"
 msgstr "Disponibil oricând aveți nevoie"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:254
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:255
 msgid "3SJxuA"
 msgstr "Protecție activă împotriva DDoS"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:255
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:256
 msgid "VI9ImX"
 msgstr "Serverul dumneavoastră este protejat fără costuri suplimentare"
 
@@ -1758,7 +1758,7 @@ msgstr "pe lună"
 #: src/features/checkout/components/order-summary.tsx:67
 #: src/features/servers/components/plan/plan-radio-group.tsx:66
 #: src/features/servers/components/plan/plan-summary.tsx:150
-#: src/features/servers/components/servers-list.tsx:118
+#: src/features/servers/components/servers-list.tsx:134
 msgid "BGI16m"
 msgstr "{cores, plural, =0 {# vCore} =1 {# vCore} other {# vCore}}"
 
@@ -1853,15 +1853,15 @@ msgstr "Ultimele facturi"
 msgid "VgBFI4"
 msgstr "Aici puteți vedea cele mai recente facturi pentru descărcare directă."
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:65
+#: src/features/dashboard/components/latest-invoices-list.tsx:61
 msgid "QVIbFk"
 msgstr "Fara facturi"
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:67
+#: src/features/dashboard/components/latest-invoices-list.tsx:63
 msgid "GtDccr"
 msgstr "Încă nu au fost emise facturi."
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:91
+#: src/features/dashboard/components/latest-invoices-list.tsx:87
 #: src/features/invoices/components/invoices-table/columns.tsx:152
 msgid "5q3qC0"
 msgstr "Descărcați"
@@ -2118,19 +2118,19 @@ msgstr "Selectați tipul de BIOS pentru serverul dvs."
 msgid "HJOq/1"
 msgstr "BIOS-ul UEFI este recomandat pentru instalările Windows. Folosiți BIOS-ul legacy pentru instalări Linux mai vechi."
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:73
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:100
 msgid "XHiVwa"
 msgstr "BIOS legacy"
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:75
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:103
 msgid "AhxnaN"
 msgstr "Folosiți BIOS-ul legacy pentru acest server."
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:84
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:117
 msgid "/eGTDl"
 msgstr "BIOS UEFI"
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:86
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx:120
 msgid "oZyWxo"
 msgstr "Folosiți BIOS-ul UEFI mai nou pentru acest server."
 
@@ -2146,27 +2146,27 @@ msgstr "Activați sau dezactivați modulul TPM pentru serverul dvs."
 msgid "1Lw+6m"
 msgstr "Majoritatea instalărilor Linux nu necesită TPM, în timp ce Windows necesită TPM v2.0."
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:73
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:105
 msgid "I1Um2Q"
 msgstr "Dezactivare TPM"
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:75
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:108
 msgid "i1+8G8"
 msgstr "Dezactivați complet TPM pentru acest server."
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:84
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:122
 msgid "HrP3QG"
 msgstr "Activare TPM v1.2"
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:86
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:125
 msgid "/p73Kl"
 msgstr "Activați TPM v1.2 pentru acest server."
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:95
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:139
 msgid "DwWNni"
 msgstr "Activare TPM v2.0"
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:97
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:142
 msgid "i/5Hb2"
 msgstr "Activați TPM v2.0 pentru acest server."
 
@@ -2670,15 +2670,15 @@ msgstr "Acest server expiră {expiry} și va fi șters după, dacă nu este reî
 msgid "76X+Qu"
 msgstr "Acest server este în curs de instalare. Este posibil ca unele funcții să nu fie încă disponibile."
 
-#: src/features/servers/components/servers-list.tsx:191
+#: src/features/servers/components/servers-list.tsx:207
 msgid "SXm88k"
 msgstr "IP copiat în clipboard!"
 
-#: src/features/servers/components/servers-list.tsx:200
+#: src/features/servers/components/servers-list.tsx:216
 msgid "26lbPc"
 msgstr "Copiați IP-ul"
 
-#: src/features/servers/components/servers-list.tsx:211
+#: src/features/servers/components/servers-list.tsx:227
 msgid "nWQFic"
 msgstr "Reînnoi"
 

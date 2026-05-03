@@ -124,7 +124,7 @@ const ServerMountField = z
       failed_at: true,
     }).meta({
       description:
-        "Only present if the `mounts` expand is included. The mounts of the server.",
+        "Only present if the `mount` expand is included. The mount of the server.",
     }),
   ])
   .nullable();
