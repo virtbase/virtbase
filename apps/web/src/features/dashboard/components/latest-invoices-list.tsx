@@ -25,7 +25,7 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@virtbase/ui/empty";
-import { LucideDownload, LucideReceipt } from "@virtbase/ui/icons";
+import { LucideDownload, LucideReceiptText } from "@virtbase/ui/icons";
 import { Separator } from "@virtbase/ui/separator";
 import { Spinner } from "@virtbase/ui/spinner";
 import { useExtracted, useFormatter } from "next-intl";
@@ -56,7 +56,7 @@ export function LatestInvoicesList() {
       <Empty className="border">
         <EmptyHeader>
           <EmptyMedia variant="icon">
-            <LucideReceipt className="size-5" aria-hidden="true" />
+            <LucideReceiptText className="size-5" aria-hidden="true" />
           </EmptyMedia>
           <EmptyTitle>{t("No invoices")}</EmptyTitle>
           <EmptyDescription>
@@ -70,7 +70,7 @@ export function LatestInvoicesList() {
   return invoices.map((invoice) => (
     <ItemRow
       key={invoice.id}
-      icon={<LucideReceipt className="size-6 shrink-0" />}
+      icon={<LucideReceiptText className="size-6 shrink-0" />}
       className="p-4"
       rightSide={
         <Button

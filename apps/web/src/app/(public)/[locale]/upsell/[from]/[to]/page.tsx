@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { alias, and, eq, isNotNull, ne } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { serverPlans } from "@virtbase/db/schema";
 import type { LucideIcon } from "@virtbase/ui/icons/index";
@@ -45,7 +46,20 @@ const PLACEHOLDER_ID = "__placeholder__";
 export async function generateStaticParams() {
   const plans = await db.transaction(
     async (tx) => {
-      return tx.select({ id: serverPlans.id }).from(serverPlans);
+      const upsellPlans = alias(serverPlans, "upsell_plans");
+      return tx
+        .select({ from: serverPlans.id, to: upsellPlans.id })
+        .from(serverPlans)
+        .leftJoin(
+          upsellPlans,
+          and(
+            eq(serverPlans.upsellTo, upsellPlans.id),
+            // Exclude self-referential upsells
+            ne(serverPlans.id, upsellPlans.id),
+          ),
+        )
+        .where(isNotNull(serverPlans.upsellTo))
+        .limit(1000);
     },
     {
       accessMode: "read only",
@@ -53,24 +67,11 @@ export async function generateStaticParams() {
     },
   );
 
-  if (!plans.length || plans.length < 2) {
-    return [
-      {
-        from: PLACEHOLDER_ID,
-        to: PLACEHOLDER_ID,
-      },
-    ];
+  if (!plans.length) {
+    return [{ from: PLACEHOLDER_ID, to: PLACEHOLDER_ID }];
   }
 
-  // Map each plan to all other plans, never pairing a plan with itself
-  return plans.flatMap((from) =>
-    plans
-      .filter((to) => to.id !== from.id)
-      .map((to) => ({
-        from: from.id,
-        to: to.id,
-      })),
-  );
+  return plans;
 }
 
 export async function generateMetadata({
