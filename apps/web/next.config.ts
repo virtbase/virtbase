@@ -202,6 +202,7 @@ const withNextIntl = createNextIntlPlugin({
       "./src/features",
       "./src/ui",
       "../../packages/ui/src",
+      "../../packages/discord/src",
     ],
     extract: {
       sourceLocale: "en",

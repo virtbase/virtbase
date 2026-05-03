@@ -1,0 +1,21 @@
+{
+  "root": false,
+  "extends": "//",
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "style": {
+        "noRestrictedImports": {
+          "options": {
+            "paths": {
+              "discord-api-types/v9": {
+                "message": "Use `import { ... } from \"discord-api-types/v10\"` instead of `import { ... } from \"discord-api-types/v9\"`."
+              }
+            }
+          },
+          "level": "error"
+        }
+      }
+    }
+  }
+}

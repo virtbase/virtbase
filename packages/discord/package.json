@@ -1,0 +1,37 @@
+{
+  "name": "@virtbase/discord",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    },
+    "./utils": {
+      "types": "./dist/utils/index.d.ts",
+      "default": "./src/utils/index.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "tsc",
+    "register-commands": "bun with-env src/scripts/register-commands.ts",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "with-env": "bun --env-file ../../.env --"
+  },
+  "dependencies": {
+    "@virtbase/api": "workspace:*",
+    "@virtbase/db": "workspace:*",
+    "@virtbase/utils": "workspace:*",
+    "discord-api-types": "^0.38.47",
+    "next-intl": "catalog:",
+    "tweetnacl": "^1.0.3",
+    "use-intl": "catalog:"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "catalog:",
+    "@virtbase/tsconfig": "workspace:*",
+    "typescript": "catalog:"
+  }
+}
