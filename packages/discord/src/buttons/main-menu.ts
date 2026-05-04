@@ -17,13 +17,14 @@
 
 import type { APIButtonComponentWithCustomId } from "discord-api-types/v10";
 import { ButtonStyle, ComponentType } from "discord-api-types/v10";
+import type { Locale } from "next-intl";
 import { getExtracted } from "next-intl/server";
 
 export const MainMenuButton = async ({
   locale,
   ...overrides
 }: {
-  locale: string;
+  locale: Locale;
   overrides?: Omit<
     Partial<APIButtonComponentWithCustomId>,
     "type" | "custom_id"
@@ -38,6 +39,7 @@ export const MainMenuButton = async ({
     type: ComponentType.Button,
     style: ButtonStyle.Secondary,
     label: t("Back to menu"),
+    emoji: { name: "◀️" },
     custom_id: "button:main-menu",
     ...overrides,
   };

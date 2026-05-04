@@ -16,5 +16,8 @@
  */
 
 export * from "./main-menu";
+export * from "./manage-servers";
+export * from "./renew-server";
 export * from "./reset-server-password";
+export * from "./server-console";
 export * from "./show-in-portal";

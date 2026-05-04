@@ -24,6 +24,7 @@ import {
   InteractionResponseType,
   MessageFlags,
 } from "discord-api-types/v10";
+import type { Locale } from "next-intl";
 import { getExtracted } from "next-intl/server";
 import { ShowInPortalButton } from "../buttons";
 import { createEmbed } from "../utils/create-embed";
@@ -32,7 +33,7 @@ export const SetupMenuMessage = async ({
   locale,
   type = InteractionResponseType.ChannelMessageWithSource,
 }: {
-  locale: string;
+  locale: Locale;
   type?:
     | InteractionResponseType.ChannelMessageWithSource
     | InteractionResponseType.UpdateMessage;

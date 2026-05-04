@@ -17,6 +17,7 @@
 
 import type { APIButtonComponentWithCustomId } from "discord-api-types/v10";
 import { ButtonStyle, ComponentType } from "discord-api-types/v10";
+import type { Locale } from "next-intl";
 import { getExtracted } from "next-intl/server";
 
 export const ResetServerPasswordButton = async ({
@@ -24,7 +25,7 @@ export const ResetServerPasswordButton = async ({
   serverId,
   ...overrides
 }: {
-  locale: string;
+  locale: Locale;
   serverId: string;
   overrides?: Omit<
     Partial<APIButtonComponentWithCustomId>,

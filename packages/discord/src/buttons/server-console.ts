@@ -15,21 +15,23 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { APP_DOMAIN } from "@virtbase/utils";
-import type { APIButtonComponentWithURL } from "discord-api-types/v10";
+import type { APIButtonComponentWithCustomId } from "discord-api-types/v10";
 import { ButtonStyle, ComponentType } from "discord-api-types/v10";
 import type { Locale } from "next-intl";
 import { getExtracted } from "next-intl/server";
 
-export const ShowInPortalButton = async ({
+export const ServerConsoleButton = async ({
   locale,
-  pathname,
+  serverId,
   ...overrides
 }: {
   locale: Locale;
-  pathname: string;
-  overrides?: Omit<Partial<APIButtonComponentWithURL>, "type" | "url">;
-}): Promise<APIButtonComponentWithURL> => {
+  serverId: string;
+  overrides?: Omit<
+    Partial<APIButtonComponentWithCustomId>,
+    "type" | "custom_id"
+  >;
+}): Promise<APIButtonComponentWithCustomId> => {
   const t = await getExtracted({
     namespace: "discord-integration",
     locale,
@@ -37,9 +39,9 @@ export const ShowInPortalButton = async ({
 
   return {
     type: ComponentType.Button,
-    style: ButtonStyle.Link,
-    url: APP_DOMAIN + pathname,
-    label: t("Show in portal"),
+    style: ButtonStyle.Secondary,
+    label: t("Console"),
+    custom_id: `button:server-console:${serverId}`,
     ...overrides,
   };
 };

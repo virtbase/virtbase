@@ -15,110 +15,272 @@ msgstr ""
 "Language-Team: Dutch\n"
 "PO-Revision-Date: 2026-04-22 13:59\n"
 
-#: ../../packages/discord/src/buttons/main-menu.ts:40
+#: ../../packages/discord/src/buttons/main-menu.ts:41
 msgctxt "discord-integration"
 msgid "AgoOEq"
-msgstr ""
+msgstr "Terug naar menu"
 
-#: ../../packages/discord/src/buttons/reset-server-password.ts:42
+#: ../../packages/discord/src/buttons/manage-servers.ts:38
+#: ../../packages/discord/src/messages/servers/servers-list.ts:63
+msgctxt "discord-integration"
+msgid "U2slxM"
+msgstr "Servers beheren"
+
+#: ../../packages/discord/src/buttons/renew-server.ts:42
+msgctxt "discord-integration"
+msgid "nWQFic"
+msgstr "Verlengen"
+
+#: ../../packages/discord/src/buttons/reset-server-password.ts:43
 msgctxt "discord-integration"
 msgid "Yy/yDL"
-msgstr ""
+msgstr "Wachtwoord resetten"
 
-#: ../../packages/discord/src/buttons/show-in-portal.ts:41
+#: ../../packages/discord/src/buttons/server-console.ts:43
+#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts:60
+msgctxt "discord-integration"
+msgid "gc+2Z2"
+msgstr "Console"
+
+#: ../../packages/discord/src/buttons/server-overview.ts:40
+msgctxt "discord-integration"
+msgid "/w61wP"
+msgstr "Terug naar server"
+
+#: ../../packages/discord/src/buttons/show-in-portal.ts:42
 msgctxt "discord-integration"
 msgid "+uqHID"
-msgstr ""
+msgstr "Tonen in portaal"
 
-#: ../../packages/discord/src/messages/invite.ts:61
+#: ../../packages/discord/src/messages/invite.ts:57
 msgctxt "discord-integration"
 msgid "uXREGV"
-msgstr ""
+msgstr "Nodig Virtbase uit op je server"
 
-#: ../../packages/discord/src/messages/invite.ts:63
+#: ../../packages/discord/src/messages/invite.ts:59
 msgctxt "discord-integration"
 msgid "yoX1pg"
-msgstr ""
+msgstr "Klik op de link hieronder om de Virtbase-integratie aan je Discord-server toe te voegen:"
 
-#: ../../packages/discord/src/messages/invite.ts:78
+#: ../../packages/discord/src/messages/invite.ts:74
 msgctxt "discord-integration"
 msgid "6O3+aN"
-msgstr ""
-
-#: ../../packages/discord/src/messages/main-menu.ts:55
-msgctxt "discord-integration"
-msgid "QCv9lw"
-msgstr ""
+msgstr "Uitnodigings-URL"
 
 #: ../../packages/discord/src/messages/main-menu.ts:56
 msgctxt "discord-integration"
-msgid "gaUHYQ"
-msgstr ""
+msgid "QCv9lw"
+msgstr "Hoofdmenu"
 
-#: ../../packages/discord/src/messages/main-menu.ts:66
+#: ../../packages/discord/src/messages/main-menu.ts:57
 msgctxt "discord-integration"
-msgid "U2slxM"
-msgstr ""
+msgid "gaUHYQ"
+msgstr "Kies een actie in het menu hieronder."
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts:61
+#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts:58
+msgctxt "discord-integration"
+msgid "GyeODL"
+msgstr "Wachtwoord is succesvol gereset."
+
+#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts:60
+msgctxt "discord-integration"
+msgid "n/xfjW"
+msgstr "Het wachtwoord van je server is succesvol gereset."
+
+#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts:61
+msgctxt "discord-integration"
+msgid "pJ2eg6"
+msgstr "Je kunt nu inloggen op de server met het nieuwe wachtwoord."
+
+#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts:62
+msgctxt "discord-integration"
+msgid "PlveeX"
+msgstr "Klik op de eenmalige link hieronder om de console te openen:"
+
+#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts:63
+msgctxt "discord-integration"
+msgid "8rmkQD"
+msgstr "Deze link verloopt over 10 seconden."
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:76
+msgctxt "discord-integration"
+msgid "t2uvIi"
+msgstr "Besturingssysteem"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:84
+msgctxt "discord-integration"
+msgid "ivkv/L"
+msgstr "Node"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:86
+msgctxt "discord-integration"
+msgid "GaTcNW"
+msgstr "- Naam: {hostname}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:90
+msgctxt "discord-integration"
+msgid "M1WTIv"
+msgstr "- Datacenter: {datacenter}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:95
+msgctxt "discord-integration"
+msgid "SuwJeu"
+msgstr "- Uplink: {netrate}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:104
+msgctxt "discord-integration"
+msgid "rnZkeW"
+msgstr "- CPU: {cpu_description}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:109
+msgctxt "discord-integration"
+msgid "gs/Iys"
+msgstr "- RAM: {memory_description}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:114
+msgctxt "discord-integration"
+msgid "9PSqfa"
+msgstr "- Opslag: {storage_description}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:129
+msgctxt "discord-integration"
+msgid "UlO1td"
+msgstr "Netwerkinterfaces"
+
+#: ../../packages/discord/src/messages/servers/servers-list-empty.ts:58
+msgctxt "discord-integration"
+msgid "Vq3ifs"
+msgstr "Geen servers beschikbaar"
+
+#: ../../packages/discord/src/messages/servers/servers-list-empty.ts:59
+msgctxt "discord-integration"
+msgid "fUXt5C"
+msgstr "Je hebt nog geen servers gehuurd. Huur een server om die via de Discord-integratie te beheren."
+
+#: ../../packages/discord/src/messages/servers/servers-list-empty.ts:72
+msgctxt "discord-integration"
+msgid "67Bzc5"
+msgstr "Virtbase-winkel"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:65
+msgctxt "discord-integration"
+msgid "pN8BlF"
+msgstr "De volgende servers staan op je account en kun je beheren."
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:69
+msgctxt "discord-integration"
+msgid "0ZPfix"
+msgstr "Kies een server om te beheren:"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:77
+msgctxt "discord-integration"
+msgid "BGI16m"
+msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:83
+msgctxt "discord-integration"
+msgid "tpfEY0"
+msgstr "{memory} RAM"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:88
+msgctxt "discord-integration"
+msgid "cenOuc"
+msgstr "{storage} NVMe SSD"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:97
+msgctxt "discord-integration"
+msgid "7F86ji"
+msgstr "Bekijk in portaal ↗"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:114
 msgctxt "discord-integration"
 msgid "JGe/wh"
-msgstr ""
+msgstr "Kies een server"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:55
+#: ../../packages/discord/src/messages/setup-menu.ts:56
 msgctxt "discord-integration"
 msgid "dvr19k"
-msgstr ""
+msgstr "Instellingen"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:57
+#: ../../packages/discord/src/messages/setup-menu.ts:58
 msgctxt "discord-integration"
 msgid "S0rNC0"
-msgstr ""
+msgstr "Welkom bij Virtbase!"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:59
+#: ../../packages/discord/src/messages/setup-menu.ts:60
 msgctxt "discord-integration"
 msgid "Kh0E7j"
-msgstr ""
+msgstr "Je Virtbase-account is nog niet gekoppeld aan je Discord-account."
 
-#: ../../packages/discord/src/messages/setup-menu.ts:63
+#: ../../packages/discord/src/messages/setup-menu.ts:64
 msgctxt "discord-integration"
 msgid "u/Hev8"
-msgstr ""
-
-#: ../../packages/discord/src/messages/setup-menu.ts:67
-msgctxt "discord-integration"
-msgid "ac8Iok"
-msgstr ""
+msgstr "Volg de stappen hieronder om de accounts te koppelen:"
 
 #: ../../packages/discord/src/messages/setup-menu.ts:68
 msgctxt "discord-integration"
-msgid "f4ziLK"
-msgstr ""
+msgid "ac8Iok"
+msgstr "1. Open het klantenportaal"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:73
+#: ../../packages/discord/src/messages/setup-menu.ts:69
 msgctxt "discord-integration"
-msgid "2ZTNN3"
-msgstr ""
+msgid "f4ziLK"
+msgstr "Klik op de knop hieronder en log in met je Virtbase-account."
 
 #: ../../packages/discord/src/messages/setup-menu.ts:74
 msgctxt "discord-integration"
-msgid "XnY6rW"
-msgstr ""
+msgid "2ZTNN3"
+msgstr "2. Accounts koppelen"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:79
+#: ../../packages/discord/src/messages/setup-menu.ts:75
 msgctxt "discord-integration"
-msgid "VRJHO/"
-msgstr ""
+msgid "XnY6rW"
+msgstr "Ga in het klantenportaal naar je account, onder **Beveiliging** bij **Authenticatie**. Koppel daar je Discord-account."
 
 #: ../../packages/discord/src/messages/setup-menu.ts:80
 msgctxt "discord-integration"
-msgid "gCSCoh"
-msgstr ""
+msgid "VRJHO/"
+msgstr "3. Herhaal het commando"
 
-#: ../../packages/discord/src/utils/create-embed.ts:34
+#: ../../packages/discord/src/messages/setup-menu.ts:81
+msgctxt "discord-integration"
+msgid "gCSCoh"
+msgstr "Herhaal het commando als je acties wilt uitvoeren."
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:43
+msgctxt "discord-integration"
+msgid "xl27nc"
+msgstr "Wachtwoord resetten"
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:48
+msgctxt "discord-integration"
+msgid "qHabR+"
+msgstr "De actie mislukt als het pakket `qemu-quest-agent` niet is geïnstalleerd."
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:54
+msgctxt "discord-integration"
+msgid "JCIgkj"
+msgstr "Gebruikersnaam"
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:56
+msgctxt "discord-integration"
+msgid "eREue0"
+msgstr "Meestal `root` op Linux en `Administrator` op Windows."
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:72
+msgctxt "discord-integration"
+msgid "Ev6SEF"
+msgstr "Nieuw wachtwoord"
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:74
+msgctxt "discord-integration"
+msgid "LGDnPd"
+msgstr "Eén hoofdletter, één kleine letter, één cijfer en minimaal 8 tekens."
+
+#: ../../packages/discord/src/utils/create-embed.ts:35
 msgctxt "discord-integration"
 msgid "Wbc21W"
-msgstr ""
+msgstr "Virtbase – hosting, maar veilig."
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:84
 msgid "o/UJXc"

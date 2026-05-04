@@ -23,7 +23,7 @@
  * Requires Node 18+ for built-in fetch, otherwise you need to polyfill fetch.
  *
  * ===== Usage =====
- * Run `yarn register-commands` from the root of the repository.
+ * Run `bun run discord:register-commands` from the root of the repository.
  *
  * @see https://discord.com/developers/docs/interactions/application-commands#bulk-overwrite-global-application-commands
  */
@@ -39,7 +39,7 @@ import { commands } from "../commands";
 async function main() {
   const { DISCORD_APP_ID, DISCORD_BOT_TOKEN } = process.env;
   if (!DISCORD_APP_ID || !DISCORD_BOT_TOKEN) {
-    console.error(
+    console.warn(
       "[@virtbase/discord] DISCORD_APP_ID or DISCORD_BOT_TOKEN is not set, skipping command registration",
     );
     return;

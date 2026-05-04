@@ -15,110 +15,272 @@ msgstr ""
 "Language-Team: French\n"
 "PO-Revision-Date: 2026-04-22 13:59\n"
 
-#: ../../packages/discord/src/buttons/main-menu.ts:40
+#: ../../packages/discord/src/buttons/main-menu.ts:41
 msgctxt "discord-integration"
 msgid "AgoOEq"
-msgstr ""
+msgstr "Retour au menu"
 
-#: ../../packages/discord/src/buttons/reset-server-password.ts:42
+#: ../../packages/discord/src/buttons/manage-servers.ts:38
+#: ../../packages/discord/src/messages/servers/servers-list.ts:63
+msgctxt "discord-integration"
+msgid "U2slxM"
+msgstr "Gérer les serveurs"
+
+#: ../../packages/discord/src/buttons/renew-server.ts:42
+msgctxt "discord-integration"
+msgid "nWQFic"
+msgstr "Renouveler"
+
+#: ../../packages/discord/src/buttons/reset-server-password.ts:43
 msgctxt "discord-integration"
 msgid "Yy/yDL"
-msgstr ""
+msgstr "Réinitialiser le mot de passe"
 
-#: ../../packages/discord/src/buttons/show-in-portal.ts:41
+#: ../../packages/discord/src/buttons/server-console.ts:43
+#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts:60
+msgctxt "discord-integration"
+msgid "gc+2Z2"
+msgstr "Console"
+
+#: ../../packages/discord/src/buttons/server-overview.ts:40
+msgctxt "discord-integration"
+msgid "/w61wP"
+msgstr "Retour au serveur"
+
+#: ../../packages/discord/src/buttons/show-in-portal.ts:42
 msgctxt "discord-integration"
 msgid "+uqHID"
-msgstr ""
+msgstr "Voir dans le portail"
 
-#: ../../packages/discord/src/messages/invite.ts:61
+#: ../../packages/discord/src/messages/invite.ts:57
 msgctxt "discord-integration"
 msgid "uXREGV"
-msgstr ""
+msgstr "Invite Virtbase sur ton serveur"
 
-#: ../../packages/discord/src/messages/invite.ts:63
+#: ../../packages/discord/src/messages/invite.ts:59
 msgctxt "discord-integration"
 msgid "yoX1pg"
-msgstr ""
+msgstr "Clique sur le lien ci-dessous pour ajouter l’intégration Virtbase à ton serveur Discord :"
 
-#: ../../packages/discord/src/messages/invite.ts:78
+#: ../../packages/discord/src/messages/invite.ts:74
 msgctxt "discord-integration"
 msgid "6O3+aN"
-msgstr ""
-
-#: ../../packages/discord/src/messages/main-menu.ts:55
-msgctxt "discord-integration"
-msgid "QCv9lw"
-msgstr ""
+msgstr "URL d’invitation"
 
 #: ../../packages/discord/src/messages/main-menu.ts:56
 msgctxt "discord-integration"
-msgid "gaUHYQ"
-msgstr ""
+msgid "QCv9lw"
+msgstr "Menu principal"
 
-#: ../../packages/discord/src/messages/main-menu.ts:66
+#: ../../packages/discord/src/messages/main-menu.ts:57
 msgctxt "discord-integration"
-msgid "U2slxM"
-msgstr ""
+msgid "gaUHYQ"
+msgstr "Choisis une action dans le menu ci-dessous."
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts:61
+#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts:58
+msgctxt "discord-integration"
+msgid "GyeODL"
+msgstr "Mot de passe réinitialisé avec succès."
+
+#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts:60
+msgctxt "discord-integration"
+msgid "n/xfjW"
+msgstr "Le mot de passe de ton serveur a été réinitialisé avec succès."
+
+#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts:61
+msgctxt "discord-integration"
+msgid "pJ2eg6"
+msgstr "Tu peux maintenant te connecter au serveur avec le nouveau mot de passe."
+
+#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts:62
+msgctxt "discord-integration"
+msgid "PlveeX"
+msgstr "Clique sur le lien à usage unique ci-dessous pour accéder à la console :"
+
+#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts:63
+msgctxt "discord-integration"
+msgid "8rmkQD"
+msgstr "Ce lien expire dans 10 secondes."
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:76
+msgctxt "discord-integration"
+msgid "t2uvIi"
+msgstr "Système d’exploitation"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:84
+msgctxt "discord-integration"
+msgid "ivkv/L"
+msgstr "Nœud"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:86
+msgctxt "discord-integration"
+msgid "GaTcNW"
+msgstr "- Nom : {hostname}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:90
+msgctxt "discord-integration"
+msgid "M1WTIv"
+msgstr "- Datacenter : {datacenter}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:95
+msgctxt "discord-integration"
+msgid "SuwJeu"
+msgstr "- Liaison montante : {netrate}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:104
+msgctxt "discord-integration"
+msgid "rnZkeW"
+msgstr "- CPU : {cpu_description}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:109
+msgctxt "discord-integration"
+msgid "gs/Iys"
+msgstr "- RAM : {memory_description}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:114
+msgctxt "discord-integration"
+msgid "9PSqfa"
+msgstr "- Stockage : {storage_description}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:129
+msgctxt "discord-integration"
+msgid "UlO1td"
+msgstr "Interfaces réseau"
+
+#: ../../packages/discord/src/messages/servers/servers-list-empty.ts:58
+msgctxt "discord-integration"
+msgid "Vq3ifs"
+msgstr "Aucun serveur disponible"
+
+#: ../../packages/discord/src/messages/servers/servers-list-empty.ts:59
+msgctxt "discord-integration"
+msgid "fUXt5C"
+msgstr "Tu n’as pas encore loué de serveur. Loue un serveur pour le gérer via l’intégration Discord."
+
+#: ../../packages/discord/src/messages/servers/servers-list-empty.ts:72
+msgctxt "discord-integration"
+msgid "67Bzc5"
+msgstr "Boutique Virtbase"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:65
+msgctxt "discord-integration"
+msgid "pN8BlF"
+msgstr "Les serveurs suivants sont associés à ton compte et peuvent être gérés."
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:69
+msgctxt "discord-integration"
+msgid "0ZPfix"
+msgstr "Choisis un serveur à gérer :"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:77
+msgctxt "discord-integration"
+msgid "BGI16m"
+msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:83
+msgctxt "discord-integration"
+msgid "tpfEY0"
+msgstr "{memory} RAM"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:88
+msgctxt "discord-integration"
+msgid "cenOuc"
+msgstr "{storage} NVMe SSD"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:97
+msgctxt "discord-integration"
+msgid "7F86ji"
+msgstr "Voir dans le portail ↗"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:114
 msgctxt "discord-integration"
 msgid "JGe/wh"
-msgstr ""
+msgstr "Choisir un serveur"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:55
+#: ../../packages/discord/src/messages/setup-menu.ts:56
 msgctxt "discord-integration"
 msgid "dvr19k"
-msgstr ""
+msgstr "Configuration"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:57
+#: ../../packages/discord/src/messages/setup-menu.ts:58
 msgctxt "discord-integration"
 msgid "S0rNC0"
-msgstr ""
+msgstr "Bienvenue chez Virtbase !"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:59
+#: ../../packages/discord/src/messages/setup-menu.ts:60
 msgctxt "discord-integration"
 msgid "Kh0E7j"
-msgstr ""
+msgstr "Ton compte Virtbase n’est pas encore lié à ton compte Discord."
 
-#: ../../packages/discord/src/messages/setup-menu.ts:63
+#: ../../packages/discord/src/messages/setup-menu.ts:64
 msgctxt "discord-integration"
 msgid "u/Hev8"
-msgstr ""
-
-#: ../../packages/discord/src/messages/setup-menu.ts:67
-msgctxt "discord-integration"
-msgid "ac8Iok"
-msgstr ""
+msgstr "Suis les étapes ci-dessous pour lier les comptes :"
 
 #: ../../packages/discord/src/messages/setup-menu.ts:68
 msgctxt "discord-integration"
-msgid "f4ziLK"
-msgstr ""
+msgid "ac8Iok"
+msgstr "1. Ouvre le portail client"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:73
+#: ../../packages/discord/src/messages/setup-menu.ts:69
 msgctxt "discord-integration"
-msgid "2ZTNN3"
-msgstr ""
+msgid "f4ziLK"
+msgstr "Clique sur le bouton ci-dessous et connecte-toi avec ton compte Virtbase."
 
 #: ../../packages/discord/src/messages/setup-menu.ts:74
 msgctxt "discord-integration"
-msgid "XnY6rW"
-msgstr ""
+msgid "2ZTNN3"
+msgstr "2. Lier les comptes"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:79
+#: ../../packages/discord/src/messages/setup-menu.ts:75
 msgctxt "discord-integration"
-msgid "VRJHO/"
-msgstr ""
+msgid "XnY6rW"
+msgstr "Va sur ton compte dans le portail client, sous **Sécurité**, section **Authentification**. Lie ton compte Discord là."
 
 #: ../../packages/discord/src/messages/setup-menu.ts:80
 msgctxt "discord-integration"
-msgid "gCSCoh"
-msgstr ""
+msgid "VRJHO/"
+msgstr "3. Répète la commande"
 
-#: ../../packages/discord/src/utils/create-embed.ts:34
+#: ../../packages/discord/src/messages/setup-menu.ts:81
+msgctxt "discord-integration"
+msgid "gCSCoh"
+msgstr "Répète la commande quand tu veux effectuer des actions."
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:43
+msgctxt "discord-integration"
+msgid "xl27nc"
+msgstr "Réinitialiser le mot de passe"
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:48
+msgctxt "discord-integration"
+msgid "qHabR+"
+msgstr "L’action échouera si le paquet `qemu-quest-agent` n’est pas installé."
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:54
+msgctxt "discord-integration"
+msgid "JCIgkj"
+msgstr "Nom d’utilisateur"
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:56
+msgctxt "discord-integration"
+msgid "eREue0"
+msgstr "Souvent `root` sous Linux et `Administrator` sous Windows."
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:72
+msgctxt "discord-integration"
+msgid "Ev6SEF"
+msgstr "Nouveau mot de passe"
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:74
+msgctxt "discord-integration"
+msgid "LGDnPd"
+msgstr "Une majuscule, une minuscule, un chiffre et au moins 8 caractères."
+
+#: ../../packages/discord/src/utils/create-embed.ts:35
 msgctxt "discord-integration"
 msgid "Wbc21W"
-msgstr ""
+msgstr "Virtbase – de l’hébergement, en sécurité."
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:84
 msgid "o/UJXc"

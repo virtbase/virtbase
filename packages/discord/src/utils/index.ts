@@ -15,4 +15,6 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+export * from "./create-discord-caller";
+export * from "./get-user-by-interaction";
 export * from "./verify-incoming-request";

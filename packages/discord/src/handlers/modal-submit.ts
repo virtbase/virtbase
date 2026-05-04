@@ -16,16 +16,36 @@
  */
 
 import type { APIModalSubmitInteraction } from "discord-api-types/v10";
+import { handleResetServerPasswordModalSubmit } from "./modals/reset-server-password";
 import type { InteractionHandler } from "./types";
 
 export const handleModalSubmit: InteractionHandler<
   APIModalSubmitInteraction
-> = async (interaction) => {
+> = async ({ interaction, user, caller }) => {
   // User has submitted a modal
 
   const { custom_id } = interaction.data;
 
-  switch (custom_id) {
+  const [type, action, ..._args] = custom_id.split(":");
+  if (type !== "modal") {
+    throw new Error(
+      `[@virtbase/discord] Expected modal custom_id to start with 'modal:', got: ${custom_id}`,
+    );
+  }
+
+  if (!action) {
+    throw new Error(
+      `[@virtbase/discord] Expected modal custom_id to have an action, got: ${custom_id}`,
+    );
+  }
+
+  switch (action) {
+    case "reset-server-password":
+      return handleResetServerPasswordModalSubmit({
+        interaction,
+        user,
+        caller,
+      });
     default:
       // Pass through, handle at the end of the function
       break;

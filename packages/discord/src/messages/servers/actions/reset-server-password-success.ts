@@ -26,17 +26,19 @@ import {
 } from "discord-api-types/v10";
 import type { Locale } from "next-intl";
 import { getExtracted } from "next-intl/server";
-import { ManageServersButton } from "../buttons";
-import { createEmbed } from "../utils/create-embed";
+import { ServerOverviewButton } from "../../../buttons/server-overview";
+import { createEmbed } from "../../../utils/create-embed";
 
-export const MainMenuMessage = async ({
+export const ResetServerPasswordSuccessMessage = async ({
   locale,
   type = InteractionResponseType.ChannelMessageWithSource,
+  serverId,
 }: {
   locale: Locale;
   type?:
     | InteractionResponseType.ChannelMessageWithSource
     | InteractionResponseType.UpdateMessage;
+  serverId: string;
 }): Promise<
   | APIInteractionResponseChannelMessageWithSource
   | APIInteractionResponseUpdateMessage
@@ -53,14 +55,17 @@ export const MainMenuMessage = async ({
       embeds: [
         await createEmbed({
           locale,
-          title: t("Main menu"),
-          description: t("Please select an action from the menu below."),
+          title: t("Password reset successfully."),
+          description: [
+            t("The password for your server has been reset successfully."),
+            t("You can now login to the server using the new password."),
+          ].join(" "),
         }),
       ],
       components: [
         {
           type: ComponentType.ActionRow,
-          components: [await ManageServersButton({ locale })],
+          components: [await ServerOverviewButton({ locale, serverId })],
         },
       ],
     },

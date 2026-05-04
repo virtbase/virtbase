@@ -17,7 +17,9 @@
 
 import Sentry from "@sentry/nextjs";
 import {
+  createDiscordCaller,
   getInteractionHandler,
+  getUserByInteraction,
   verifyInteractionRequest,
 } from "@virtbase/discord";
 import { NextResponse } from "next/server";
@@ -44,7 +46,11 @@ export async function POST(request: Request) {
 
   try {
     const handler = getInteractionHandler(interaction.type);
-    const result = await handler(interaction);
+
+    const user = await getUserByInteraction(interaction);
+    const caller = await createDiscordCaller({ user });
+
+    const result = await handler({ interaction, user, caller });
 
     return NextResponse.json(result, { status: 200 });
   } catch (error) {

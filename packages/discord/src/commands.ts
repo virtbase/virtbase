@@ -17,6 +17,10 @@
 
 import type { APIApplicationCommand } from "discord-api-types/v10";
 import { ApplicationCommandType } from "discord-api-types/v10";
+import {
+  inviteCommandDescriptionLocalizations,
+  menuCommandDescriptionLocalizations,
+} from "./command-description-localizations";
 
 type Command = Omit<
   APIApplicationCommand,
@@ -27,13 +31,13 @@ export const commands = {
   invite: {
     name: "invite",
     description: "Invite the Virtbase bot to your server",
-    description_localizations: {},
+    description_localizations: { ...inviteCommandDescriptionLocalizations },
     type: ApplicationCommandType.ChatInput,
   },
   menu: {
     name: "menu",
     description: "Show the main menu with all available actions",
-    description_localizations: {},
+    description_localizations: { ...menuCommandDescriptionLocalizations },
     type: ApplicationCommandType.ChatInput,
   },
 } satisfies Record<string, Command>;

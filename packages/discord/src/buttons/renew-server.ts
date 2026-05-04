@@ -21,13 +21,13 @@ import { ButtonStyle, ComponentType } from "discord-api-types/v10";
 import type { Locale } from "next-intl";
 import { getExtracted } from "next-intl/server";
 
-export const ShowInPortalButton = async ({
+export const RenewServerButton = async ({
   locale,
-  pathname,
+  serverId,
   ...overrides
 }: {
   locale: Locale;
-  pathname: string;
+  serverId: string;
   overrides?: Omit<Partial<APIButtonComponentWithURL>, "type" | "url">;
 }): Promise<APIButtonComponentWithURL> => {
   const t = await getExtracted({
@@ -38,8 +38,8 @@ export const ShowInPortalButton = async ({
   return {
     type: ComponentType.Button,
     style: ButtonStyle.Link,
-    url: APP_DOMAIN + pathname,
-    label: t("Show in portal"),
+    url: `${APP_DOMAIN}/servers/${serverId}/plan`,
+    label: t("Renew"),
     ...overrides,
   };
 };

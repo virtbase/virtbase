@@ -19,7 +19,11 @@ import type {
   APIInteraction,
   APIInteractionResponse,
 } from "discord-api-types/v10";
+import type { DiscordCaller } from "../utils/create-discord-caller";
+import type { UserByInteraction } from "../utils/get-user-by-interaction";
 
-export type InteractionHandler<T extends APIInteraction> = (
-  interaction: T,
-) => APIInteractionResponse | Promise<APIInteractionResponse>;
+export type InteractionHandler<T extends APIInteraction> = (args: {
+  interaction: T;
+  user: UserByInteraction | null;
+  caller: DiscordCaller;
+}) => APIInteractionResponse | Promise<APIInteractionResponse>;

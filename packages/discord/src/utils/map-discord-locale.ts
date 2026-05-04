@@ -16,21 +16,37 @@
  */
 
 import type { Locale as DiscordLocale } from "discord-api-types/v10";
+import type { Locale } from "next-intl";
 
-const defaultLocale = "en";
+const defaultLocale = "en" satisfies Locale;
 
-const discordLocaleMapping: Partial<Record<DiscordLocale, string>> = {
-  "en-US": "en",
-  "en-GB": "en",
+/** Discord `Locale` string → Virtbase `*.po` basename (only where both exist). */
+const discordLocaleMapping: Partial<Record<DiscordLocale, Locale>> = {
+  // cs: "cs",
+  // da: "da",
   de: "de",
+  // el: "el",
+  "en-GB": "en",
+  "en-US": "en",
+  // "es-419": "es",
+  // "es-ES": "es",
+  // fi: "fi",
   fr: "fr",
+  // hu: "hu",
+  // it: "it",
   nl: "nl",
-} as const;
+  // no: "no",
+  // pl: "pl",
+  // "pt-BR": "pt",
+  // ro: "ro",
+  // "sv-SE": "sv",
+  // tr: "tr",
+};
 
 /**
  * Maps a Discord locale to a supported next-intl locale.
  * If the locale is not supported, the default locale is returned.
  */
-export const mapDiscordLocale = (locale: DiscordLocale): string => {
+export const mapDiscordLocale = (locale: DiscordLocale): Locale => {
   return discordLocaleMapping[locale] ?? defaultLocale;
 };

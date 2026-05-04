@@ -17,12 +17,13 @@
 
 import type { APIEmbed } from "discord-api-types/v10";
 import { EmbedType } from "discord-api-types/v10";
+import type { Locale } from "next-intl";
 import { getExtracted } from "next-intl/server";
 
 export const createEmbed = async ({
   locale,
   ...props
-}: APIEmbed & { locale: string }): Promise<APIEmbed> => {
+}: APIEmbed & { locale: Locale }): Promise<APIEmbed> => {
   const t = await getExtracted({
     locale,
     namespace: "discord-integration",

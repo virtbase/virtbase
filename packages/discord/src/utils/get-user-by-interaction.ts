@@ -44,7 +44,14 @@ export const getUserByInteraction = async (interaction: APIInteraction) => {
         .select({
           id: users.id,
           name: users.name,
+          email: users.email,
+          emailVerified: users.emailVerified,
+          image: users.image,
+          role: users.role,
+          stripeCustomerId: users.stripeCustomerId,
           locale: users.locale,
+          createdAt: users.createdAt,
+          updatedAt: users.updatedAt,
         })
         .from(users)
         .innerJoin(accounts, eq(users.id, accounts.userId))

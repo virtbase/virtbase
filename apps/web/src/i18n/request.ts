@@ -51,31 +51,27 @@ const getUserLocale = cache(async () => {
   return null;
 });
 
-export default getRequestConfig(
-  async ({ locale: explicitLocale, requestLocale }) => {
-    // `explicitLocale` is set when callers pass `{ locale }` to `getExtracted` /
-    // `getTranslations` (e.g. Discord interactions). `requestLocale` reflects
-    // the `[locale]` segment or middleware; do not call `rootParams.locale()`
-    // before these — it throws in Route Handlers (unsupported `next/root-params`).
-    let candidate: string | undefined = explicitLocale ?? (await requestLocale);
+export default getRequestConfig(async ({ locale: explicitLocale }) => {
+  // `explicitLocale` is set when callers pass `{ locale }` to `getExtracted` /
+  // `getTranslations` (e.g. Discord interactions).
+  let candidate: string | undefined = explicitLocale;
 
-    if (!candidate) {
-      try {
-        candidate = await rootParams.locale();
-      } catch {
-        candidate = undefined;
-      }
+  if (!candidate) {
+    try {
+      candidate = await rootParams.locale();
+    } catch {
+      candidate = undefined;
     }
+  }
 
-    if (!candidate) {
-      // App or admin domain: cookie and database locale
-      candidate = (await getUserLocale()) ?? undefined;
-    }
+  if (!candidate) {
+    // App or admin domain: cookie and database locale
+    candidate = (await getUserLocale()) ?? undefined;
+  }
 
-    const locale = hasLocale(locales, candidate) ? candidate : defaultLocale;
-    return {
-      locale,
-      messages: (await import(`./messages/${locale}.po`)).default,
-    };
-  },
-);
+  const locale = hasLocale(locales, candidate) ? candidate : defaultLocale;
+  return {
+    locale,
+    messages: (await import(`./messages/${locale}.po`)).default,
+  };
+});

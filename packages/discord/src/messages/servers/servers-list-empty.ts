@@ -15,21 +15,23 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { PUBLIC_DOMAIN } from "@virtbase/utils";
 import type {
   APIInteractionResponseChannelMessageWithSource,
   APIInteractionResponseUpdateMessage,
 } from "discord-api-types/v10";
 import {
+  ButtonStyle,
   ComponentType,
   InteractionResponseType,
   MessageFlags,
 } from "discord-api-types/v10";
 import type { Locale } from "next-intl";
 import { getExtracted } from "next-intl/server";
-import { ManageServersButton } from "../buttons";
-import { createEmbed } from "../utils/create-embed";
+import { MainMenuButton } from "../../buttons";
+import { createEmbed } from "../../utils/create-embed";
 
-export const MainMenuMessage = async ({
+export const ServersListEmptyMessage = async ({
   locale,
   type = InteractionResponseType.ChannelMessageWithSource,
 }: {
@@ -53,14 +55,24 @@ export const MainMenuMessage = async ({
       embeds: [
         await createEmbed({
           locale,
-          title: t("Main menu"),
-          description: t("Please select an action from the menu below."),
+          title: t("No servers available"),
+          description: t(
+            "You have not rented any servers yet. Rent a server to manage it via the Discord integration.",
+          ),
         }),
       ],
       components: [
         {
           type: ComponentType.ActionRow,
-          components: [await ManageServersButton({ locale })],
+          components: [
+            {
+              type: ComponentType.Button,
+              style: ButtonStyle.Link,
+              url: PUBLIC_DOMAIN,
+              label: t("Virtbase Store"),
+            },
+            await MainMenuButton({ locale }),
+          ],
         },
       ],
     },

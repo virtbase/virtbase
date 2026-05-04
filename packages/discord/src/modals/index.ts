@@ -15,19 +15,4 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { inferRouterInputs, inferRouterOutputs } from "@trpc/server";
-
-import type { AppRouter } from "./root";
-
-type RouterInputs = inferRouterInputs<AppRouter>;
-
-type RouterOutputs = inferRouterOutputs<AppRouter>;
-
-export { TRPCError } from "@trpc/server";
-export {
-  createOpenApiFetchHandler,
-  generateOpenApiDocument,
-} from "trpc-to-openapi";
-export { type AppRouter, appRouter } from "./root";
-export { createTRPCContext } from "./trpc";
-export type { RouterInputs, RouterOutputs };
+export * from "./reset-server-password";

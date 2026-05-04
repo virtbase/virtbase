@@ -24,6 +24,7 @@ import {
   ComponentType,
   InteractionResponseType,
 } from "discord-api-types/v10";
+import type { Locale } from "next-intl";
 import { getExtracted } from "next-intl/server";
 import { DISCORD_INTEGRATION_INVITE_URL } from "../utils/consts";
 import { createEmbed } from "../utils/create-embed";
@@ -33,7 +34,7 @@ export const InviteMessage = async ({
   url = DISCORD_INTEGRATION_INVITE_URL,
   type = InteractionResponseType.ChannelMessageWithSource,
 }: {
-  locale: string;
+  locale: Locale;
   url?: string;
   type?:
     | InteractionResponseType.ChannelMessageWithSource
@@ -42,15 +43,10 @@ export const InviteMessage = async ({
   | APIInteractionResponseChannelMessageWithSource
   | APIInteractionResponseUpdateMessage
 > => {
-  console.log("pre", locale);
-  console.log("pre", locale);
-  console.log("pre", locale);
   const t = await getExtracted({
     namespace: "discord-integration",
     locale,
   });
-  console.log("post");
-  console.log("post");
 
   return {
     type,

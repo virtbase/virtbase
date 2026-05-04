@@ -15,30 +15,41 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { APIMessageComponentInteraction } from "discord-api-types/v10";
+import type {
+  APIMessageComponentButtonInteraction,
+  APIMessageComponentInteraction,
+  APIMessageComponentSelectMenuInteraction,
+} from "discord-api-types/v10";
 import { ComponentType } from "discord-api-types/v10";
 import { handleButtonComponent } from "./button-component";
+import { handleStringSelectComponent } from "./string-select";
 import type { InteractionHandler } from "./types";
 
 export const handleMessageComponent: InteractionHandler<
   APIMessageComponentInteraction
-> = async (interaction) => {
+> = async ({ interaction, user, caller }) => {
   // User has interacted with a message component
 
   const { custom_id, component_type } = interaction.data;
 
   if (component_type === ComponentType.Button) {
-    return handleButtonComponent(interaction);
+    return handleButtonComponent({
+      interaction: interaction as APIMessageComponentButtonInteraction,
+      user,
+      caller,
+    });
   }
 
-  switch (custom_id) {
-    default:
-      // Pass through, handle at the end of the function
-      break;
+  if (component_type === ComponentType.StringSelect) {
+    return handleStringSelectComponent({
+      interaction: interaction as APIMessageComponentSelectMenuInteraction,
+      user,
+      caller,
+    });
   }
 
   // Unhandled message component
   throw new Error(
-    `[@virtbase/discord] Unhandled message component: ${custom_id}`,
+    `[@virtbase/discord] Unhandled message component: ${custom_id}, type: ${component_type}`,
   );
 };

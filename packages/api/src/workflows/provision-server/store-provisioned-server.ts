@@ -97,11 +97,15 @@ export async function rollbackStoreProvisionedServerStep({
 
   await db.transaction(
     async (tx) => {
-      const where = eq(subnetAllocations.serverId, serverId);
-
       await Promise.all([
-        tx.delete(servers).where(where),
-        tx.delete(subnetAllocations).where(where),
+        tx.delete(servers).where(eq(servers.id, serverId)),
+        tx
+          .update(subnetAllocations)
+          .set({
+            allocatedAt: sql`now()`,
+            serverId: null,
+          })
+          .where(eq(subnetAllocations.serverId, serverId)),
       ]);
     },
     {

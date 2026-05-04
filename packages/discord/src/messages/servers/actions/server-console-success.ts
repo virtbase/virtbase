@@ -26,17 +26,21 @@ import {
 } from "discord-api-types/v10";
 import type { Locale } from "next-intl";
 import { getExtracted } from "next-intl/server";
-import { ManageServersButton } from "../buttons";
-import { createEmbed } from "../utils/create-embed";
+import { ServerOverviewButton } from "../../../buttons/server-overview";
+import { createEmbed } from "../../../utils/create-embed";
 
-export const MainMenuMessage = async ({
+export const ServerConsoleSuccessMessage = async ({
   locale,
   type = InteractionResponseType.ChannelMessageWithSource,
+  url,
+  serverId,
 }: {
   locale: Locale;
   type?:
     | InteractionResponseType.ChannelMessageWithSource
     | InteractionResponseType.UpdateMessage;
+  url: string;
+  serverId: string;
 }): Promise<
   | APIInteractionResponseChannelMessageWithSource
   | APIInteractionResponseUpdateMessage
@@ -53,14 +57,19 @@ export const MainMenuMessage = async ({
       embeds: [
         await createEmbed({
           locale,
-          title: t("Main menu"),
-          description: t("Please select an action from the menu below."),
+          title: t("Console"),
+          description: [
+            t("Click the one-time link below to access the console:"),
+            t("This link will expire in 10 seconds."),
+            "",
+            url,
+          ].join("\n"),
         }),
       ],
       components: [
         {
           type: ComponentType.ActionRow,
-          components: [await ManageServersButton({ locale })],
+          components: [await ServerOverviewButton({ locale, serverId })],
         },
       ],
     },

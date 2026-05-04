@@ -20,13 +20,12 @@ import { ApplicationCommandType } from "discord-api-types/v10";
 import { commands } from "../commands";
 import { MainMenuMessage, SetupMenuMessage } from "../messages";
 import { InviteMessage } from "../messages/invite";
-import { getUserByInteraction } from "../utils/get-user-by-interaction";
 import { mapDiscordLocale } from "../utils/map-discord-locale";
 import type { InteractionHandler } from "./types";
 
 export const handleApplicationCommand: InteractionHandler<
   APIApplicationCommandInteraction
-> = async (interaction) => {
+> = async ({ interaction, user }) => {
   // User has used any registered command
 
   const { name, type } = interaction.data;
@@ -38,7 +37,6 @@ export const handleApplicationCommand: InteractionHandler<
       case commands.invite.name:
         return InviteMessage({ locale });
       case commands.menu.name: {
-        const user = await getUserByInteraction(interaction);
         if (!user) {
           // The user invoked the menu command, but has not linked their account yet
           // We send them a setup guide on how to link their account
