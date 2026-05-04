@@ -196,11 +196,6 @@ function ProviderAction({
         requestSignUp: false,
         callbackURL: paths.app.account.settings.authentication.getHref(),
         errorCallbackURL: paths.app.account.settings.authentication.getHref(),
-        fetchOptions: {
-          onSuccess: () => {
-            router.refresh();
-          },
-        },
       });
     });
 
