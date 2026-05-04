@@ -13,7 +13,274 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Turkish\n"
-"PO-Revision-Date: 2026-05-03 15:38\n"
+"PO-Revision-Date: 2026-05-04 11:48\n"
+
+#: ../../packages/discord/src/buttons/main-menu.ts:41
+msgctxt "discord-integration"
+msgid "AgoOEq"
+msgstr "Menüye dön"
+
+#: ../../packages/discord/src/buttons/manage-servers.ts:38
+#: ../../packages/discord/src/messages/servers/servers-list.ts:63
+msgctxt "discord-integration"
+msgid "U2slxM"
+msgstr "Sunucuları yönet"
+
+#: ../../packages/discord/src/buttons/renew-server.ts:42
+msgctxt "discord-integration"
+msgid "nWQFic"
+msgstr "Yenile"
+
+#: ../../packages/discord/src/buttons/reset-server-password.ts:43
+msgctxt "discord-integration"
+msgid "Yy/yDL"
+msgstr "Şifreyi sıfırla"
+
+#: ../../packages/discord/src/buttons/server-console.ts:43
+#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts:60
+msgctxt "discord-integration"
+msgid "gc+2Z2"
+msgstr "Konsol"
+
+#: ../../packages/discord/src/buttons/server-overview.ts:40
+msgctxt "discord-integration"
+msgid "/w61wP"
+msgstr "Sunucuya dön"
+
+#: ../../packages/discord/src/buttons/show-in-portal.ts:42
+msgctxt "discord-integration"
+msgid "+uqHID"
+msgstr "Portaldan göster"
+
+#: ../../packages/discord/src/messages/invite.ts:57
+msgctxt "discord-integration"
+msgid "uXREGV"
+msgstr "Virtbase’i sunucuna davet et"
+
+#: ../../packages/discord/src/messages/invite.ts:59
+msgctxt "discord-integration"
+msgid "yoX1pg"
+msgstr "Virtbase entegrasyonunu Discord sunucuna eklemek için aşağıdaki bağlantıya tıkla:"
+
+#: ../../packages/discord/src/messages/invite.ts:74
+msgctxt "discord-integration"
+msgid "6O3+aN"
+msgstr "Davet URL’si"
+
+#: ../../packages/discord/src/messages/main-menu.ts:56
+msgctxt "discord-integration"
+msgid "QCv9lw"
+msgstr "Ana menü"
+
+#: ../../packages/discord/src/messages/main-menu.ts:57
+msgctxt "discord-integration"
+msgid "gaUHYQ"
+msgstr "Aşağıdaki menüden bir işlem seç."
+
+#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts:58
+msgctxt "discord-integration"
+msgid "GyeODL"
+msgstr "Şifre başarıyla sıfırlandı."
+
+#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts:60
+msgctxt "discord-integration"
+msgid "n/xfjW"
+msgstr "Sunucunun şifresi başarıyla sıfırlandı."
+
+#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts:61
+msgctxt "discord-integration"
+msgid "pJ2eg6"
+msgstr "Artık yeni şifreyle sunucuya giriş yapabilirsin."
+
+#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts:62
+msgctxt "discord-integration"
+msgid "PlveeX"
+msgstr "Konsola erişmek için aşağıdaki tek kullanımlık bağlantıya tıkla:"
+
+#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts:63
+msgctxt "discord-integration"
+msgid "8rmkQD"
+msgstr "Bu bağlantı 10 saniye içinde sona erer."
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:76
+msgctxt "discord-integration"
+msgid "t2uvIi"
+msgstr "İşletim sistemi"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:84
+msgctxt "discord-integration"
+msgid "ivkv/L"
+msgstr "Düğüm"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:86
+msgctxt "discord-integration"
+msgid "GaTcNW"
+msgstr "- Ad: {hostname}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:90
+msgctxt "discord-integration"
+msgid "M1WTIv"
+msgstr "- Veri merkezi: {datacenter}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:95
+msgctxt "discord-integration"
+msgid "SuwJeu"
+msgstr "- Uplink: {netrate}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:104
+msgctxt "discord-integration"
+msgid "rnZkeW"
+msgstr "- CPU: {cpu_description}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:109
+msgctxt "discord-integration"
+msgid "gs/Iys"
+msgstr "- RAM: {memory_description}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:114
+msgctxt "discord-integration"
+msgid "9PSqfa"
+msgstr "- Depolama: {storage_description}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:129
+msgctxt "discord-integration"
+msgid "UlO1td"
+msgstr "Ağ arayüzleri"
+
+#: ../../packages/discord/src/messages/servers/servers-list-empty.ts:58
+msgctxt "discord-integration"
+msgid "Vq3ifs"
+msgstr "Sunucu yok"
+
+#: ../../packages/discord/src/messages/servers/servers-list-empty.ts:59
+msgctxt "discord-integration"
+msgid "fUXt5C"
+msgstr "Henüz sunucu kiralamadın. Discord entegrasyonuyla yönetmek için bir sunucu kirala."
+
+#: ../../packages/discord/src/messages/servers/servers-list-empty.ts:72
+msgctxt "discord-integration"
+msgid "67Bzc5"
+msgstr "Virtbase mağazası"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:65
+msgctxt "discord-integration"
+msgid "pN8BlF"
+msgstr "Aşağıdaki sunucular hesabına atanmış ve yönetilebilir."
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:69
+msgctxt "discord-integration"
+msgid "0ZPfix"
+msgstr "Yönetmek için bir sunucu seç:"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:77
+msgctxt "discord-integration"
+msgid "BGI16m"
+msgstr "{cores, plural, =0 {# vCore} =1 {# vCore} other {# vCore}}"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:83
+msgctxt "discord-integration"
+msgid "tpfEY0"
+msgstr "{memory} RAM"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:88
+msgctxt "discord-integration"
+msgid "cenOuc"
+msgstr "{storage} NVMe SSD"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:97
+msgctxt "discord-integration"
+msgid "7F86ji"
+msgstr "Portaldan gör ↗"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:114
+msgctxt "discord-integration"
+msgid "JGe/wh"
+msgstr "Sunucu seç"
+
+#: ../../packages/discord/src/messages/setup-menu.ts:56
+msgctxt "discord-integration"
+msgid "dvr19k"
+msgstr "Kurulum"
+
+#: ../../packages/discord/src/messages/setup-menu.ts:58
+msgctxt "discord-integration"
+msgid "S0rNC0"
+msgstr "Virtbase’e hoş geldin!"
+
+#: ../../packages/discord/src/messages/setup-menu.ts:60
+msgctxt "discord-integration"
+msgid "Kh0E7j"
+msgstr "Virtbase hesabın henüz Discord ile bağlı değil."
+
+#: ../../packages/discord/src/messages/setup-menu.ts:64
+msgctxt "discord-integration"
+msgid "u/Hev8"
+msgstr "Hesapları bağlamak için aşağıdaki adımları izle:"
+
+#: ../../packages/discord/src/messages/setup-menu.ts:68
+msgctxt "discord-integration"
+msgid "ac8Iok"
+msgstr "1. Müşteri portalını aç"
+
+#: ../../packages/discord/src/messages/setup-menu.ts:69
+msgctxt "discord-integration"
+msgid "f4ziLK"
+msgstr "Aşağıdaki düğmeye tıkla ve Virtbase hesabınla giriş yap."
+
+#: ../../packages/discord/src/messages/setup-menu.ts:74
+msgctxt "discord-integration"
+msgid "2ZTNN3"
+msgstr "2. Hesapları bağla"
+
+#: ../../packages/discord/src/messages/setup-menu.ts:75
+msgctxt "discord-integration"
+msgid "XnY6rW"
+msgstr "Müşteri portalında hesabına git, **Güvenlik** altında **Kimlik doğrulama** bölümünde Discord hesabını bağla."
+
+#: ../../packages/discord/src/messages/setup-menu.ts:80
+msgctxt "discord-integration"
+msgid "VRJHO/"
+msgstr "3. Komutu tekrarla"
+
+#: ../../packages/discord/src/messages/setup-menu.ts:81
+msgctxt "discord-integration"
+msgid "gCSCoh"
+msgstr "İşlem yapmak istediğinde komutu tekrarla."
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:43
+msgctxt "discord-integration"
+msgid "xl27nc"
+msgstr "Şifreyi sıfırla"
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:48
+msgctxt "discord-integration"
+msgid "qHabR+"
+msgstr "`qemu-quest-agent` paketi yüklü değilse işlem başarısız olur."
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:54
+msgctxt "discord-integration"
+msgid "JCIgkj"
+msgstr "Kullanıcı adı"
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:56
+msgctxt "discord-integration"
+msgid "eREue0"
+msgstr "Linux’ta genelde `root`, Windows’ta `Administrator`."
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:72
+msgctxt "discord-integration"
+msgid "Ev6SEF"
+msgstr "Yeni şifre"
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:74
+msgctxt "discord-integration"
+msgid "LGDnPd"
+msgstr "Bir büyük harf, bir küçük harf, bir rakam ve en az 8 karakter."
+
+#: ../../packages/discord/src/utils/create-embed.ts:35
+msgctxt "discord-integration"
+msgid "Wbc21W"
+msgstr "Virtbase – hosting, güvenli."
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:84
 msgid "o/UJXc"
@@ -712,7 +979,7 @@ msgstr "{date} oluşturuldu"
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:171
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:369
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:205
-#: src/features/admin/components/servers/servers-table/columns.tsx:270
+#: src/features/admin/components/servers/servers-table/columns.tsx:273
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:226
 #: src/features/admin/components/users/users-table/columns.tsx:347
 #: src/features/servers/components/backups/backups-table/backup-actions.tsx:155
@@ -1464,7 +1731,7 @@ msgstr "Kullanıcı"
 msgid "1UsI0I"
 msgstr "Şu saatte sona eriyor:"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:261
+#: src/features/admin/components/servers/servers-table/columns.tsx:264
 msgid "zvQbH/"
 msgstr "Proxmox'ta görüntüle"
 
