@@ -36,6 +36,7 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { betterAuth } from "better-auth/minimal";
 import type { UserWithRole } from "better-auth/plugins";
 import { plugins } from "./plugins";
+import { syncDiscordLinkedRoleMetadata } from "./sync-discord-metadata";
 
 export function initAuth({
   additionalPlugins,
@@ -100,6 +101,18 @@ export function initAuth({
       usePlural: true,
     }),
     databaseHooks: {
+      account: {
+        create: {
+          after: async (account, ctx) => {
+            await syncDiscordLinkedRoleMetadata(account, ctx);
+          },
+        },
+        update: {
+          after: async (account, ctx) => {
+            await syncDiscordLinkedRoleMetadata(account, ctx);
+          },
+        },
+      },
       user: {
         create: {
           before: async (user) => {
@@ -188,6 +201,13 @@ export function initAuth({
           !!process.env.DISCORD_CLIENT_SECRET,
         clientId: process.env.DISCORD_CLIENT_ID || "",
         clientSecret: process.env.DISCORD_CLIENT_SECRET,
+        scope: [
+          // Default scopes
+          "identify",
+          "email",
+          // Discord integration for linked roles
+          process.env.DISCORD_APP_ID ? "role_connections.write" : "",
+        ].filter(Boolean),
       },
       github: {
         enabled:

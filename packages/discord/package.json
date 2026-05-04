@@ -17,6 +17,7 @@
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "dev": "tsc",
     "register-commands": "bun with-env src/scripts/register-commands.ts",
+    "register-connections-metadata": "bun with-env src/scripts/register-connections-metadata.ts",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "with-env": "bun --env-file ../../.env --"
   },

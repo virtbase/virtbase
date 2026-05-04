@@ -1,6 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "turbo -F @virtbase/db db:migrate && turbo -F @virtbase/discord register-commands && turbo build",
+  "buildCommand": "turbo -F @virtbase/db db:migrate && turbo -F @virtbase/discord register-commands && turbo -F @virtbase/discord register-connections-metadata && turbo build",
   "github": {
     "silent": true,
     "autoJobCancelation": true

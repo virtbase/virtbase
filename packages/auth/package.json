@@ -5,7 +5,9 @@
   "exports": {
     ".": "./src/index.ts",
     "./utils": "./src/utils.ts",
-    "./env": "./env.ts"
+    "./env": "./env.ts",
+    "./stored-oauth-token": "./src/stored-oauth-token.ts",
+    "./push-discord-linked-role-metadata": "./src/push-discord-linked-role-metadata.ts"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",

@@ -16,6 +16,10 @@
     {
       "path": "/api/cron/send-renewal-notifications",
       "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/cron/sync-discord-metadata",
+      "schedule": "0 0 * * *"
     }
   ]
 }

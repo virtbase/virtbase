@@ -41,6 +41,7 @@
     "dev": "turbo watch dev --continue",
     "dev:next": "turbo watch dev -F @virtbase/web...",
     "discord:register-commands": "turbo -F @virtbase/discord register-commands",
+    "discord:register-connections-metadata": "turbo -F @virtbase/discord register-connections-metadata",
     "typecheck": "turbo run typecheck",
     "ui-add": "turbo run ui-add",
     "email": "turbo run email",
