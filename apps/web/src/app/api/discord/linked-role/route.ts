@@ -16,10 +16,8 @@
  */
 
 import Sentry from "@sentry/nextjs";
-import { NextResponse } from "next/server";
+import { connection, NextResponse } from "next/server";
 import { auth } from "@/lib/auth/server";
-
-export const dynamic = "force-dynamic";
 
 /**
  * Route configured in the Discord developer console which facilitates the
@@ -28,6 +26,8 @@ export const dynamic = "force-dynamic";
  * and redirect the user there.
  */
 export const GET = async () => {
+  await connection();
+
   try {
     const { DISCORD_APP_ID, DISCORD_BOT_TOKEN } = process.env;
     if (!DISCORD_APP_ID || !DISCORD_BOT_TOKEN) {
