@@ -55,6 +55,9 @@
     "stripe:listen": {
       "cache": false,
       "persistent": true
+    },
+    "register-commands": {
+      "cache": false
     }
   },
   "globalEnv": [

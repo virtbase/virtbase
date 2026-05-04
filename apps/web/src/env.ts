@@ -21,8 +21,11 @@ import { authEnv } from "@virtbase/auth/env";
 import * as z from "zod";
 import z4 from "zod/v4";
 
-const isAnonpayConfigured = () =>
-  !!process.env.NEXT_PUBLIC_STRIPE_ANONPAY_METHOD_ID;
+const requiredWithAnonpayConfigured = (value: unknown) =>
+  !!process.env.NEXT_PUBLIC_STRIPE_ANONPAY_METHOD_ID || value !== undefined;
+
+const requiredWithDiscordIntegration = (value: unknown) =>
+  !!process.env.DISCORD_APP_ID || value !== undefined;
 
 export const env = createEnv({
   extends: [authEnv(), vercel()],
@@ -58,30 +61,40 @@ export const env = createEnv({
       .string()
       .optional()
       .refine(
-        (value) => !isAnonpayConfigured() || value !== undefined,
+        requiredWithAnonpayConfigured,
         "ANONPAY_TICKER_TO is required if Anonpay is configured",
       ),
     ANONPAY_NETWORK_TO: z4
       .string()
       .optional()
       .refine(
-        (value) => !isAnonpayConfigured() || value !== undefined,
+        requiredWithAnonpayConfigured,
         "ANONPAY_NETWORK_TO is required if Anonpay is configured",
       ),
     ANONPAY_ADDRESS: z4
       .string()
       .optional()
       .refine(
-        (value) => !isAnonpayConfigured() || value !== undefined,
+        requiredWithAnonpayConfigured,
         "ANONPAY_ADDRESS is required if Anonpay is configured",
       ),
     ANONPAY_WEBHOOK_SECRET: z4
       .string()
       .optional()
       .refine(
-        (value) => !isAnonpayConfigured() || value !== undefined,
+        requiredWithAnonpayConfigured,
         "ANONPAY_WEBHOOK_SECRET is required if Anonpay is configured",
       ),
+    // Discord Integration
+    DISCORD_APP_ID: z4.string().optional(),
+    DISCORD_APP_PUBLIC_KEY: z4
+      .string()
+      .optional()
+      .refine(requiredWithDiscordIntegration),
+    DISCORD_BOT_TOKEN: z4
+      .string()
+      .optional()
+      .refine(requiredWithDiscordIntegration),
   },
   client: {
     // Sentry Configuration

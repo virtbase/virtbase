@@ -15,6 +15,273 @@ msgstr ""
 "Language-Team: Swedish\n"
 "PO-Revision-Date: 2026-04-22 13:59\n"
 
+#: ../../packages/discord/src/buttons/main-menu.ts:41
+msgctxt "discord-integration"
+msgid "AgoOEq"
+msgstr "Tillbaka till menyn"
+
+#: ../../packages/discord/src/buttons/manage-servers.ts:38
+#: ../../packages/discord/src/messages/servers/servers-list.ts:63
+msgctxt "discord-integration"
+msgid "U2slxM"
+msgstr "Hantera servrar"
+
+#: ../../packages/discord/src/buttons/renew-server.ts:42
+msgctxt "discord-integration"
+msgid "nWQFic"
+msgstr "Förnya"
+
+#: ../../packages/discord/src/buttons/reset-server-password.ts:43
+msgctxt "discord-integration"
+msgid "Yy/yDL"
+msgstr "Återställ lösenord"
+
+#: ../../packages/discord/src/buttons/server-console.ts:43
+#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts:60
+msgctxt "discord-integration"
+msgid "gc+2Z2"
+msgstr "Konsol"
+
+#: ../../packages/discord/src/buttons/server-overview.ts:40
+msgctxt "discord-integration"
+msgid "/w61wP"
+msgstr "Tillbaka till servern"
+
+#: ../../packages/discord/src/buttons/show-in-portal.ts:42
+msgctxt "discord-integration"
+msgid "+uqHID"
+msgstr "Visa i portalen"
+
+#: ../../packages/discord/src/messages/invite.ts:57
+msgctxt "discord-integration"
+msgid "uXREGV"
+msgstr "Bjud in Virtbase till din server"
+
+#: ../../packages/discord/src/messages/invite.ts:59
+msgctxt "discord-integration"
+msgid "yoX1pg"
+msgstr "Klicka på länken nedan för att lägga till Virtbase-integrationen på din Discord-server:"
+
+#: ../../packages/discord/src/messages/invite.ts:74
+msgctxt "discord-integration"
+msgid "6O3+aN"
+msgstr "Inbjudnings-URL"
+
+#: ../../packages/discord/src/messages/main-menu.ts:56
+msgctxt "discord-integration"
+msgid "QCv9lw"
+msgstr "Huvudmeny"
+
+#: ../../packages/discord/src/messages/main-menu.ts:57
+msgctxt "discord-integration"
+msgid "gaUHYQ"
+msgstr "Välj en åtgärd i menyn nedan."
+
+#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts:58
+msgctxt "discord-integration"
+msgid "GyeODL"
+msgstr "Lösenordet har återställts."
+
+#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts:60
+msgctxt "discord-integration"
+msgid "n/xfjW"
+msgstr "Lösenordet för din server har återställts."
+
+#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts:61
+msgctxt "discord-integration"
+msgid "pJ2eg6"
+msgstr "Du kan nu logga in på servern med det nya lösenordet."
+
+#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts:62
+msgctxt "discord-integration"
+msgid "PlveeX"
+msgstr "Klicka på engångslänken nedan för att öppna konsolen:"
+
+#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts:63
+msgctxt "discord-integration"
+msgid "8rmkQD"
+msgstr "Länken går ut om 10 sekunder."
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:76
+msgctxt "discord-integration"
+msgid "t2uvIi"
+msgstr "Operativsystem"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:84
+msgctxt "discord-integration"
+msgid "ivkv/L"
+msgstr "Nod"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:86
+msgctxt "discord-integration"
+msgid "GaTcNW"
+msgstr "- Namn: {hostname}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:90
+msgctxt "discord-integration"
+msgid "M1WTIv"
+msgstr "- Datacenter: {datacenter}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:95
+msgctxt "discord-integration"
+msgid "SuwJeu"
+msgstr "- Uplink: {netrate}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:104
+msgctxt "discord-integration"
+msgid "rnZkeW"
+msgstr "- CPU: {cpu_description}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:109
+msgctxt "discord-integration"
+msgid "gs/Iys"
+msgstr "- RAM: {memory_description}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:114
+msgctxt "discord-integration"
+msgid "9PSqfa"
+msgstr "- Lagring: {storage_description}"
+
+#: ../../packages/discord/src/messages/servers/server-overview.ts:129
+msgctxt "discord-integration"
+msgid "UlO1td"
+msgstr "Nätverksgränssnitt"
+
+#: ../../packages/discord/src/messages/servers/servers-list-empty.ts:58
+msgctxt "discord-integration"
+msgid "Vq3ifs"
+msgstr "Inga servrar tillgängliga"
+
+#: ../../packages/discord/src/messages/servers/servers-list-empty.ts:59
+msgctxt "discord-integration"
+msgid "fUXt5C"
+msgstr "Du har inte hyrt några servrar än. Hyr en server för att hantera den via Discord-integrationen."
+
+#: ../../packages/discord/src/messages/servers/servers-list-empty.ts:72
+msgctxt "discord-integration"
+msgid "67Bzc5"
+msgstr "Virtbase-butik"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:65
+msgctxt "discord-integration"
+msgid "pN8BlF"
+msgstr "Följande servrar är kopplade till ditt konto och kan hanteras."
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:69
+msgctxt "discord-integration"
+msgid "0ZPfix"
+msgstr "Välj en server att hantera:"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:77
+msgctxt "discord-integration"
+msgid "BGI16m"
+msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:83
+msgctxt "discord-integration"
+msgid "tpfEY0"
+msgstr "{memory} RAM"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:88
+msgctxt "discord-integration"
+msgid "cenOuc"
+msgstr "{storage} NVMe SSD"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:97
+msgctxt "discord-integration"
+msgid "7F86ji"
+msgstr "Visa i portalen ↗"
+
+#: ../../packages/discord/src/messages/servers/servers-list.ts:114
+msgctxt "discord-integration"
+msgid "JGe/wh"
+msgstr "Välj en server"
+
+#: ../../packages/discord/src/messages/setup-menu.ts:56
+msgctxt "discord-integration"
+msgid "dvr19k"
+msgstr "Konfiguration"
+
+#: ../../packages/discord/src/messages/setup-menu.ts:58
+msgctxt "discord-integration"
+msgid "S0rNC0"
+msgstr "Välkommen till Virtbase!"
+
+#: ../../packages/discord/src/messages/setup-menu.ts:60
+msgctxt "discord-integration"
+msgid "Kh0E7j"
+msgstr "Ditt Virtbase-konto är inte kopplat till Discord än."
+
+#: ../../packages/discord/src/messages/setup-menu.ts:64
+msgctxt "discord-integration"
+msgid "u/Hev8"
+msgstr "Följ stegen nedan för att koppla kontona:"
+
+#: ../../packages/discord/src/messages/setup-menu.ts:68
+msgctxt "discord-integration"
+msgid "ac8Iok"
+msgstr "1. Öppna kundportalen"
+
+#: ../../packages/discord/src/messages/setup-menu.ts:69
+msgctxt "discord-integration"
+msgid "f4ziLK"
+msgstr "Klicka på knappen nedan och logga in med ditt Virtbase-konto."
+
+#: ../../packages/discord/src/messages/setup-menu.ts:74
+msgctxt "discord-integration"
+msgid "2ZTNN3"
+msgstr "2. Koppla konton"
+
+#: ../../packages/discord/src/messages/setup-menu.ts:75
+msgctxt "discord-integration"
+msgid "XnY6rW"
+msgstr "Gå till ditt konto i kundportalen, under **Säkerhet** i **Autentisering**. Koppla ditt Discord-konto där."
+
+#: ../../packages/discord/src/messages/setup-menu.ts:80
+msgctxt "discord-integration"
+msgid "VRJHO/"
+msgstr "3. Upprepa kommandot"
+
+#: ../../packages/discord/src/messages/setup-menu.ts:81
+msgctxt "discord-integration"
+msgid "gCSCoh"
+msgstr "Upprepa kommandot när du vill utföra åtgärder."
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:43
+msgctxt "discord-integration"
+msgid "xl27nc"
+msgstr "Återställ lösenord"
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:48
+msgctxt "discord-integration"
+msgid "qHabR+"
+msgstr "Åtgärden misslyckas om paketet `qemu-quest-agent` inte är installerat."
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:54
+msgctxt "discord-integration"
+msgid "JCIgkj"
+msgstr "Användarnamn"
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:56
+msgctxt "discord-integration"
+msgid "eREue0"
+msgstr "Oftast `root` på Linux och `Administrator` på Windows."
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:72
+msgctxt "discord-integration"
+msgid "Ev6SEF"
+msgstr "Nytt lösenord"
+
+#: ../../packages/discord/src/modals/reset-server-password.ts:74
+msgctxt "discord-integration"
+msgid "LGDnPd"
+msgstr "En versal, en gemen, en siffra och minst 8 tecken."
+
+#: ../../packages/discord/src/utils/create-embed.ts:35
+msgctxt "discord-integration"
+msgid "Wbc21W"
+msgstr "Virtbase – hosting, men säkert."
+
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx:84
 msgid "o/UJXc"
 msgstr "Asc"

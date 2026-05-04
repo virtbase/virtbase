@@ -23,6 +23,7 @@ type RouterInputs = inferRouterInputs<AppRouter>;
 
 type RouterOutputs = inferRouterOutputs<AppRouter>;
 
+export { TRPCError } from "@trpc/server";
 export {
   createOpenApiFetchHandler,
   generateOpenApiDocument,

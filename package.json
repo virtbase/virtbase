@@ -40,6 +40,7 @@
     "db:studio": "turbo -F @virtbase/db db:studio",
     "dev": "turbo watch dev --continue",
     "dev:next": "turbo watch dev -F @virtbase/web...",
+    "discord:register-commands": "turbo -F @virtbase/discord register-commands",
     "typecheck": "turbo run typecheck",
     "ui-add": "turbo run ui-add",
     "email": "turbo run email",

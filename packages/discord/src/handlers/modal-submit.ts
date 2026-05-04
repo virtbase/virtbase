@@ -1,0 +1,56 @@
+/*
+ *   Copyright (c) 2026 Janic Bellmann
+ *
+ *   This program is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+import type { APIModalSubmitInteraction } from "discord-api-types/v10";
+import { handleResetServerPasswordModalSubmit } from "./modals/reset-server-password";
+import type { InteractionHandler } from "./types";
+
+export const handleModalSubmit: InteractionHandler<
+  APIModalSubmitInteraction
+> = async ({ interaction, user, caller }) => {
+  // User has submitted a modal
+
+  const { custom_id } = interaction.data;
+
+  const [type, action, ..._args] = custom_id.split(":");
+  if (type !== "modal") {
+    throw new Error(
+      `[@virtbase/discord] Expected modal custom_id to start with 'modal:', got: ${custom_id}`,
+    );
+  }
+
+  if (!action) {
+    throw new Error(
+      `[@virtbase/discord] Expected modal custom_id to have an action, got: ${custom_id}`,
+    );
+  }
+
+  switch (action) {
+    case "reset-server-password":
+      return handleResetServerPasswordModalSubmit({
+        interaction,
+        user,
+        caller,
+      });
+    default:
+      // Pass through, handle at the end of the function
+      break;
+  }
+
+  // Unhandled modal
+  throw new Error(`[@virtbase/discord] Unhandled modal submit: ${custom_id}`);
+};
