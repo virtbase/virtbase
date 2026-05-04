@@ -67,7 +67,7 @@ const getPullApiBody = cache(async () => {
       memory_ecc: "eccreg",
       hdd_amount: "0",
       hdd_capacity: "0",
-      sdd_amount: "1",
+      ssd_amount: "1",
       ssd_capacity: String(offer.storage),
       uplink: offer.netrate ? String(Math.round(offer.netrate / 8)) : null,
       traffic: null,
