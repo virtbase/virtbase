@@ -20,13 +20,14 @@ import { PUBLIC_DOMAIN } from "@virtbase/utils";
 import { cacheLife, cacheTag } from "next/cache";
 
 import { NextResponse } from "next/server";
+import { cache } from "react";
 
 export const contentType = "application/json";
 
 /**
  * @see https://www.serverhunter.com/providers/api/
  */
-async function handler() {
+const getPullApiBody = cache(async () => {
   "use cache";
 
   cacheLife("days");
@@ -40,62 +41,62 @@ async function handler() {
 
   const offers = await getPlansWithAvailability();
 
-  return NextResponse.json(
-    {
-      version: 1,
-      offers: offers.map((offer) => ({
-        name: offer.name,
-        internal: offer.id,
-        url: PUBLIC_DOMAIN,
-        currency: "EUR",
-        price: offer.price / 100,
-        setup_fee: 0,
-        // TODO: ?
-        stock: offer.isAvailable ? "in_stock" : null,
-        billing_interval: "monthly",
-        product_type: "vps",
-        virtualization: "kvm",
-        visibility: "visible",
-        gpu_name: null,
-        cpu_type: "amd",
-        cpu_name: "EPYC",
-        cpu_amount: "1",
-        cpu_cores: String(offer.cores),
-        cpu_speed: "",
-        memory_amount: String(offer.memory),
-        memory_type: "ddr4",
-        memory_ecc: "eccreg",
-        hdd_amount: "0",
-        hdd_capacity: "0",
-        sdd_amount: "1",
-        ssd_capacity: String(offer.storage),
-        uplink: offer.netrate ? String(Math.round(offer.netrate / 8)) : null,
-        traffic: null,
-        unmetered: [],
-        operating_systems: ["custom", "ubuntu", "debian", "fedora", "freebsd"],
-        control_panel: [],
-        country_code: "NL",
-        location: "Eygelshoven, Netherlands",
-        coordinates: "50.8956,6.0698",
-        payment_methods: ["altcoin", "bitcoin", "creditcard", "paypal"],
-        features: [
-          "247_support",
-          "api",
-          "ddos",
-          "instant_setup",
-          "kvm",
-          "ipv6",
-          "nvme",
-        ],
-      })),
-    },
-    {
-      headers: {
-        "Content-Type": contentType,
-        "Cache-Control": "public, max-age=86400, immutable",
-      },
-    },
-  );
-}
+  return {
+    version: 1,
+    offers: offers.map((offer) => ({
+      name: offer.name,
+      internal: offer.id,
+      url: PUBLIC_DOMAIN,
+      currency: "EUR",
+      price: offer.price / 100,
+      setup_fee: 0,
+      // TODO: ?
+      stock: offer.isAvailable ? "in_stock" : null,
+      billing_interval: "monthly",
+      product_type: "vps",
+      virtualization: "kvm",
+      visibility: "visible",
+      gpu_name: null,
+      cpu_type: "amd",
+      cpu_name: "EPYC",
+      cpu_amount: "1",
+      cpu_cores: String(offer.cores),
+      cpu_speed: "",
+      memory_amount: String(offer.memory),
+      memory_type: "ddr4",
+      memory_ecc: "eccreg",
+      hdd_amount: "0",
+      hdd_capacity: "0",
+      sdd_amount: "1",
+      ssd_capacity: String(offer.storage),
+      uplink: offer.netrate ? String(Math.round(offer.netrate / 8)) : null,
+      traffic: null,
+      unmetered: [],
+      operating_systems: ["custom", "ubuntu", "debian", "fedora", "freebsd"],
+      control_panel: [],
+      country_code: "NL",
+      location: "Eygelshoven, Netherlands",
+      coordinates: "50.8956,6.0698",
+      payment_methods: ["altcoin", "bitcoin", "creditcard", "paypal"],
+      features: [
+        "247_support",
+        "api",
+        "ddos",
+        "instant_setup",
+        "kvm",
+        "ipv6",
+        "nvme",
+      ],
+    })),
+  };
+});
 
-export { handler as GET };
+export async function GET() {
+  const body = await getPullApiBody();
+  return NextResponse.json(body, {
+    headers: {
+      "Content-Type": contentType,
+      "Cache-Control": "public, max-age=86400, immutable",
+    },
+  });
+}
