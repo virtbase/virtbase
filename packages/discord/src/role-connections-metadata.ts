@@ -17,6 +17,10 @@
 
 import type { APIApplicationRoleConnectionMetadata } from "discord-api-types/v10";
 import { ApplicationRoleConnectionMetadataType } from "discord-api-types/v10";
+import {
+  activeServersCountDescriptionLocalizations,
+  activeServersCountNameLocalizations,
+} from "./role-connections-localizations";
 
 export const roleConnectionsMetadata: APIApplicationRoleConnectionMetadata[] = [
   {
@@ -24,5 +28,9 @@ export const roleConnectionsMetadata: APIApplicationRoleConnectionMetadata[] = [
     type: ApplicationRoleConnectionMetadataType.IntegerGreaterThanOrEqual,
     name: "Active Servers",
     description: "Number of currently active servers",
+    name_localizations: { ...activeServersCountNameLocalizations },
+    description_localizations: {
+      ...activeServersCountDescriptionLocalizations,
+    },
   },
 ];
