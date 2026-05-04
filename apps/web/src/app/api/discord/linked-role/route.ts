@@ -19,6 +19,8 @@ import Sentry from "@sentry/nextjs";
 import { NextResponse } from "next/server";
 import { auth } from "@/lib/auth/server";
 
+export const dynamic = "force-dynamic";
+
 /**
  * Route configured in the Discord developer console which facilitates the
  * connection between Discord and any additional services you may use.
