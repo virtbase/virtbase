@@ -24,6 +24,7 @@ import {
   eq,
   getTableColumns,
   ilike,
+  sql,
   sum,
 } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
@@ -35,10 +36,18 @@ import { verifySession } from "../verify-session";
 
 const extras = {
   guestCount: count(serverPlans.id).as("guest_count"),
-  memoryUsage: sum(serverPlans.memory).as("memory_usage"),
-  storageUsage: sum(serverPlans.storage).as("storage_usage"),
-  coresUsage: sum(serverPlans.cores).as("cores_usage"),
-  netrateUsage: sum(serverPlans.netrate).as("netrate_usage"),
+  memoryUsage: sql<number>`COALESCE(${sum(serverPlans.memory)}, 0)`.as(
+    "memory_usage",
+  ),
+  storageUsage: sql<number>`COALESCE(${sum(serverPlans.storage)}, 0)`.as(
+    "storage_usage",
+  ),
+  coresUsage: sql<number>`COALESCE(${sum(serverPlans.cores)}, 0)`.as(
+    "cores_usage",
+  ),
+  netrateUsage: sql<number>`COALESCE(${sum(serverPlans.netrate)}, 0)`.as(
+    "netrate_usage",
+  ),
 } as const;
 
 export async function getProxmoxNodesList(input: GetProxmoxNodesSchema) {

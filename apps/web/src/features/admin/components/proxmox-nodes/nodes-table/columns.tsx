@@ -35,7 +35,7 @@ import {
 } from "@virtbase/ui/icons/index";
 import { Progress } from "@virtbase/ui/progress";
 import type { DataTableRowAction } from "@virtbase/ui/types";
-import { formatBytes } from "@virtbase/utils";
+import { formatBits, formatBytes } from "@virtbase/utils";
 import NextLink from "next/link";
 import { useExtracted, useFormatter } from "next-intl";
 import type { getProxmoxNodesList } from "@/features/admin/api/proxmox-nodes/get-proxmox-nodes-list";
@@ -285,15 +285,17 @@ export function useNodesTableColumns({
               />
               <span className="text-muted-foreground text-xs">
                 {t("{usage} / {limit}", {
-                  usage: formatBytes(usage * 1e6, {
+                  usage: formatBits(usage * 1e6 * 8, {
                     formatter: format,
                     perSecond: true,
                     base: 1000,
+                    unit: "gigabit",
                   }),
-                  limit: formatBytes(limit * 1e6, {
+                  limit: formatBits(limit * 1e6 * 8, {
                     formatter: format,
                     perSecond: true,
                     base: 1000,
+                    unit: "gigabit",
                   }),
                 })}
               </span>
@@ -304,10 +306,11 @@ export function useNodesTableColumns({
         return (
           <span>
             {t("{usage} / ∞", {
-              usage: formatBytes(usage * 1e6, {
+              usage: formatBits(usage * 1e6 * 8, {
                 formatter: format,
                 perSecond: true,
                 base: 1000,
+                unit: "gigabit",
               }),
             })}
           </span>
