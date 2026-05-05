@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Greek\n"
-"PO-Revision-Date: 2026-05-04 11:48\n"
+"PO-Revision-Date: 2026-05-05 17:37\n"
 
 #: ../../packages/discord/src/buttons/main-menu.ts:41
 msgctxt "discord-integration"
@@ -381,7 +381,7 @@ msgstr "Εναλλαγή στηλών"
 #: ../../packages/ui/src/data-table/data-table-view-options.tsx:72
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx:168
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:163
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:360
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:363
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:196
 #: src/features/admin/components/servers/servers-table/columns.tsx:253
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:217
@@ -977,7 +977,7 @@ msgstr "Δημιουργήθηκε το {date}"
 #: src/features/account/components/ssh-keys/ssh-keys-list.tsx:92
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx:177
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:171
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:369
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:372
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:205
 #: src/features/admin/components/servers/servers-table/columns.tsx:273
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:226
@@ -1146,11 +1146,11 @@ msgstr "Συνδεδεμένο"
 msgid "xGU8KV"
 msgstr "Συνδέστε τον λογαριασμό σας {name}"
 
-#: src/features/account/components/authentication/user-providers-list.tsx:227
+#: src/features/account/components/authentication/user-providers-list.tsx:222
 msgid "JBWS0c"
 msgstr "Σύνδεσμος"
 
-#: src/features/account/components/authentication/user-providers-list.tsx:236
+#: src/features/account/components/authentication/user-providers-list.tsx:231
 msgid "4PKxPs"
 msgstr "Αποσύνδεση"
 
@@ -1287,6 +1287,22 @@ msgstr "Αυτό είναι το μοναδικό αναγνωριστικό λ�
 #: src/features/account/components/user-id-card.tsx:68
 msgid "6dnHkY"
 msgstr "Αυτό μπορεί να χρησιμοποιηθεί για την αναγνώριση του λογαριασμού σας στο API."
+
+#: src/features/account/components/user-name-card.tsx:68
+msgid "pwlQEY"
+msgstr "Εμφανιζόμενο όνομα"
+
+#: src/features/account/components/user-name-card.tsx:70
+msgid "1CYEqL"
+msgstr "Βάλε το πλήρες όνομά σου ή ένα εμφανιζόμενο όνομα με το οποίο αισθάνεσαι άνετα."
+
+#: src/features/account/components/user-name-card.tsx:94
+msgid "YP7yEd"
+msgstr "Χρησιμοποίησε το πολύ 32 χαρακτήρες."
+
+#: src/features/account/components/user-name-card.tsx:102
+msgid "jvo0vs"
+msgstr "Αποθήκευση"
 
 #: src/features/admin/components/admin-sidebar-groups.tsx:67
 msgid "UcHtCB"
@@ -1465,8 +1481,8 @@ msgstr "Αναζήτηση με όνομα..."
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx:139
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:112
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:118
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:326
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:332
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:329
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:335
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:145
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:151
 #: src/features/admin/components/servers/servers-table/columns.tsx:202
@@ -1481,7 +1497,7 @@ msgstr "Δημιουργήθηκε στο"
 
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx:152
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:147
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:346
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:349
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:180
 #: src/features/admin/components/servers/servers-table/columns.tsx:239
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:203
@@ -1662,7 +1678,7 @@ msgstr "{usage} / {limit}"
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:177
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:222
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:262
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:306
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:308
 msgid "17eYMk"
 msgstr "{usage} / ∞"
 
@@ -1681,7 +1697,7 @@ msgid "DUIDEq"
 msgstr "Αποθήκευση"
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:273
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:318
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:321
 msgid "6vjF8Q"
 msgstr "Εύρος ζώνης"
 
