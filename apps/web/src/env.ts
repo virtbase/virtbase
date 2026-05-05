@@ -22,10 +22,10 @@ import * as z from "zod";
 import z4 from "zod/v4";
 
 const requiredWithAnonpayConfigured = (value: unknown) =>
-  !!process.env.NEXT_PUBLIC_STRIPE_ANONPAY_METHOD_ID || value !== undefined;
+  !process.env.NEXT_PUBLIC_STRIPE_ANONPAY_METHOD_ID || !!value;
 
 const requiredWithDiscordIntegration = (value: unknown) =>
-  !!process.env.DISCORD_APP_ID || value !== undefined;
+  !process.env.DISCORD_APP_ID || !!value;
 
 export const env = createEnv({
   extends: [authEnv(), vercel()],
