@@ -174,7 +174,8 @@ const ratelimitMiddleware = t.middleware(
     meta: { ratelimit: ratelimitConfig } = {},
     ctx: { headers, setHeader, session },
   }) => {
-    if (ratelimitConfig === false) {
+    // Disable ratelimit in development and for tests
+    if (ratelimitConfig === false || t._config.isDev) {
       // Ratelimit is disabled for this endpoint
       // Skip and go to the next middleware
       return next();

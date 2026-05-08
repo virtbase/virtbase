@@ -178,6 +178,7 @@ export default function ChangeTemplateDialog({
                     placeholder="********"
                     type={!isPasswordVisible ? "password" : "text"}
                     disabled={form.formState.disabled}
+                    maxLength={64}
                     {...field}
                   />
                   <InputGroupAddon align="inline-end">

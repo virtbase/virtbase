@@ -174,6 +174,7 @@ export function CheckoutForm({
                   autoComplete="off"
                   placeholder="********"
                   type={!isPasswordVisible ? "password" : "text"}
+                  maxLength={64}
                   {...field}
                   onChange={(e) =>
                     field.onChange(e.target.value.trim() || undefined)

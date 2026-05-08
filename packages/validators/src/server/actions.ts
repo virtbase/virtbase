@@ -22,7 +22,7 @@ import { ServerSchema } from "./shared";
 const RootPasswordSchema = z
   .string()
   .min(8)
-  .max(1000)
+  .max(64)
   .regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/)
   .meta({
     description: "The new root password for the server.",

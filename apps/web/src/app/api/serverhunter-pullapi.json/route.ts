@@ -50,7 +50,6 @@ const getPullApiBody = cache(async () => {
       currency: "EUR",
       price: offer.price / 100,
       setup_fee: 0,
-      // TODO: ?
       stock: offer.isAvailable ? "in_stock" : null,
       billing_interval: "monthly",
       product_type: "vps",

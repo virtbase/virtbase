@@ -333,7 +333,7 @@ describe("server.firewall.rules.update", () => {
     expect($put).toHaveBeenCalledTimes(1);
     expect($put).toHaveBeenCalledWith({
       enable: 0,
-      delete: "type,icmp-type",
+      delete: "icmp-type",
       action: "DROP",
       log: "nolog",
       digest: "d1",

@@ -186,6 +186,7 @@ export default function ResetServerPasswordDialog(
                     autoComplete="off"
                     placeholder="********"
                     type={!isPasswordVisible ? "password" : "text"}
+                    maxLength={64}
                     {...field}
                   />
                   <InputGroupAddon align="inline-end">

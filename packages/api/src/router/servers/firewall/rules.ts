@@ -156,7 +156,6 @@ export const serverFirewallRulesRouter = createTRPCRouter({
       } = input;
 
       const undefinedFields = Object.entries({
-        type: direction,
         "icmp-type": icmp_type,
         ...rest,
       }).filter(([_, value]) => value === undefined);

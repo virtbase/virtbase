@@ -40,6 +40,7 @@ export const OrderNewServerPlanInputSchema =
     root_password: z
       .string()
       .min(8)
+      .max(64)
       .regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/)
       .nullish(),
   });

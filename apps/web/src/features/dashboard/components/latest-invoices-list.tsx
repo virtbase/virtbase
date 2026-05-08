@@ -84,7 +84,7 @@ export function LatestInvoicesList() {
           ) : (
             <LucideDownload aria-hidden="true" />
           )}
-          <span className="max-md:sr-only">{t("Download")}</span>
+          {t("Download")}
         </Button>
       }
     >

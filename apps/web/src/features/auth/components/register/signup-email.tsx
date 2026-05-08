@@ -171,6 +171,7 @@ export const SignUpEmail = () => {
                       type="password"
                       placeholder={t("Password")}
                       autoComplete="new-password"
+                      maxLength={64}
                       {...field}
                     />
                     <PasswordRequirements

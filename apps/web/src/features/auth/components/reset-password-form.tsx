@@ -100,6 +100,7 @@ export const ResetPasswordForm = () => {
                 aria-invalid={fieldState.invalid}
                 autoComplete="new-password"
                 autoFocus={!isMobile}
+                maxLength={64}
                 {...field}
               />
               <PasswordRequirements

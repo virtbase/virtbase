@@ -21,7 +21,7 @@ export const PasswordSchema = z
   .string()
   .check(
     z.minLength(8),
-    z.maxLength(1000),
+    z.maxLength(64),
     z.regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/),
   );
 
