@@ -116,7 +116,7 @@ export default async function ServerReady({
                 recipientEmail: email,
                 recipientName: trustpilot.recipientName,
                 referenceId: trustpilot.referenceId,
-                senderName: "Virtbase",
+                senderName: APP_NAME,
                 replyTo: SUPPORT_EMAIL,
               })}
             </script>

@@ -16,11 +16,17 @@
  */
 
 import { sleep } from "workflow";
-import type { GetProxmoxInstanceParams } from "../../proxmox";
+import type { GetProxmoxInstanceParams, Proxmox } from "../../proxmox";
+import {
+  applyGuestConfigStep,
+  rollbackApplyGuestConfigStep,
+} from "../shared/apply-guest-config";
+import { getGuestConfigStep } from "../shared/get-guest-config";
 import {
   performGuestActionStep,
   rollbackPerformGuestActionStep,
 } from "../shared/perform-guest-action";
+import { resizeDiskStep } from "../shared/resize-disk";
 import { updateServerStep } from "../shared/update-server";
 import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task";
 import { loadBackupStep } from "./load-backup";
@@ -79,6 +85,13 @@ export async function restoreServerBackupWorkflow({
       }
     });
 
+    // Save a copy of the original configuration before the backup is restored
+    const { config: originalConfig } = await getGuestConfigStep({
+      proxmoxNode,
+      vmid,
+      current: true,
+    });
+
     // 2. Restore the backup from file
     // This step can not be rolled back and deletes data
     const { upid: restoreUpid } = await loadBackupStep({
@@ -98,7 +111,85 @@ export async function restoreServerBackupWorkflow({
     // This step is required in case the customer has upgraded their server, but restores an older backup.
     // Proxmox saves the whole VM configuration in the backup.
 
-    // TODO: Implement
+    const {
+      // See: apply-hardware-config.ts
+      kvm,
+      cpu,
+      cpulimit,
+      cores,
+      memory,
+      balloon,
+      tablet,
+      rng0,
+      vga,
+      machine,
+      onboot,
+      agent,
+      ostype,
+      freeze,
+      hotplug,
+      tags,
+      // Additional configuration
+      bios,
+      tpmstate0,
+      efidisk0,
+    } = originalConfig;
+    const { previousConfig, addedKeys } = await applyGuestConfigStep({
+      proxmoxNode,
+      vmid,
+      mode: "sync",
+      config: {
+        kvm,
+        cpu,
+        cpulimit,
+        cores,
+        memory,
+        balloon,
+        tablet,
+        rng0,
+        vga,
+        machine,
+        onboot,
+        agent,
+        ostype: ostype as Proxmox.Tostype,
+        freeze,
+        hotplug,
+        tags,
+        bios: bios as Proxmox.Tbios,
+        tpmstate0,
+        efidisk0,
+        delete: "unused0",
+      },
+    });
+
+    rollbacks.push(async () => {
+      await rollbackApplyGuestConfigStep({
+        proxmoxNode,
+        vmid,
+        previousConfig,
+        addedKeys,
+        mode: "sync",
+      });
+    });
+
+    const size = originalConfig.scsi0?.match(/size=(\d+)G/)?.[1];
+    if (size) {
+      const { resizeUpid } = await resizeDiskStep({
+        proxmoxNode,
+        vmid,
+        size: Number(size),
+        disk: "scsi0",
+      });
+
+      if (resizeUpid) {
+        await sleep("5s");
+        await waitForProxmoxTaskStep({
+          proxmoxNode,
+          upid: resizeUpid,
+          ignoreErrors: false,
+        });
+      }
+    }
 
     // 4. Restart the guest
     const { upid: startUpid } = await performGuestActionStep({
