@@ -47,7 +47,7 @@ export const ProxmoxIsoDownloadSchema = z.object({
       protocol: /^https$/,
       hostname: z.regexes.domain,
     })
-    .lowercase()
+    .toLowerCase()
     .refine((value) => new URL(value).pathname.endsWith(".iso"))
     .register(z.globalRegistry, {
       description: "The URL that was used to download the ISO image.",
