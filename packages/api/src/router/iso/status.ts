@@ -141,27 +141,41 @@ export const isoStatusRouter = createTRPCRouter({
           if (task.status === "running") {
             // ISO download is still running
 
-            const log = await instance.node.tasks.$(upid).log.$get({
-              download: false,
-            });
+            let start = 0;
+            const limit = 50;
 
-            // Go through log lines in reverse order
             let percentage: number | null = null;
-            for (let i = log.length - 1; i >= 0; i--) {
-              const entry = log[i];
-              if (!entry) continue;
 
-              // Example lines:
-              // 622592K ........ ........ ........ ........ 84%  352M 0s
-              // 655360K ........ ........ ........ ........ 89%  342M 0s
-              // 688128K ........ ........ ........ ........ 93%  345M 0s
-              // 720896K ........ ........ ........ ........ 97%  335M 0s
-              // 753664K ........ ........ ..               100%  339M=2.6s
-              const match = entry.t.match(/(\d+)%/);
-              if (match?.[1]) {
-                percentage = parseInt(match[1], 10);
+            while (percentage === null) {
+              const result = await instance.node.tasks.$(upid).log.$get({
+                download: false,
+                start,
+                limit,
+              });
+
+              // No more logs available
+              if (result.length === 0) {
                 break;
               }
+
+              // Search newest -> oldest in this batch
+              for (let i = result.length - 1; i >= 0; i--) {
+                const text = result[i]?.t;
+                if (!text) continue;
+
+                const match = /(\d+)%/.exec(text);
+                if (match?.[1]) {
+                  percentage = Number(match[1]);
+                  break;
+                }
+              }
+
+              // Last page reached and still nothing found
+              if (result.length < limit) {
+                break;
+              }
+
+              start += result.length;
             }
 
             return {
