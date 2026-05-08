@@ -72,6 +72,17 @@ export function CustomersOverTime({
           cursor={false}
           content={
             <ChartTooltipContent
+              labelFormatter={(_, data) => {
+                if (!data?.[0]) {
+                  return null;
+                }
+
+                const value = (data[0].payload as { date: string }).date;
+                return format.dateTime(new Date(value), {
+                  day: "numeric",
+                  month: "numeric",
+                });
+              }}
               valueFormatter={(_, value) => format.number(value as number)}
               className="w-40"
             />
