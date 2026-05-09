@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Turkish\n"
-"PO-Revision-Date: 2026-05-05 17:37\n"
+"PO-Revision-Date: 2026-05-09 13:52\n"
 
 #: ../../packages/discord/src/buttons/main-menu.ts:41
 msgctxt "discord-integration"
@@ -1939,7 +1939,7 @@ msgstr "Kod gönderilemedi."
 msgid "dOQCL8"
 msgstr "Ekran adı"
 
-#: src/features/auth/components/register/signup-email.tsx:192
+#: src/features/auth/components/register/signup-email.tsx:193
 msgid "39AHJm"
 msgstr "Üye olmak"
 
@@ -1959,11 +1959,11 @@ msgstr "Devam etmek"
 msgid "neYh81"
 msgstr "Şifreniz sıfırlandı. Artık yeni şifrenizle giriş yapabilirsiniz."
 
-#: src/features/auth/components/reset-password-form.tsx:118
+#: src/features/auth/components/reset-password-form.tsx:119
 msgid "8HimVK"
 msgstr "Şifreyi onayla"
 
-#: src/features/auth/components/reset-password-form.tsx:138
+#: src/features/auth/components/reset-password-form.tsx:139
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx:92
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx:108
 #: src/features/servers/components/overview/server-details-card.tsx:189
@@ -2004,7 +2004,7 @@ msgstr "Virtbase root şifrenizi saklamaz. Daha sonra müşteri portalı aracıl
 msgid "mnTP3x"
 msgstr "Boş bırakılırsa güvenli, rastgele bir şifre oluşturulacak ve e-postayla gönderilecektir."
 
-#: src/features/checkout/components/checkout-form.tsx:223
+#: src/features/checkout/components/checkout-form.tsx:224
 #: src/features/servers/components/plan/plan-summary.tsx:286
 msgid "+g+0OK"
 msgstr "Ödemeye devam et"
@@ -3048,11 +3048,11 @@ msgstr "Etkinleştirilmiş"
 msgid "LgbKvU"
 msgstr "Yorum"
 
-#: src/features/servers/firewall/components/firewall-rules-card.tsx:49
+#: src/features/servers/firewall/components/firewall-rules-card.tsx:54
 msgid "Qov8tl"
 msgstr "Güvenlik Duvarı Kuralları"
 
-#: src/features/servers/firewall/components/firewall-rules-card.tsx:77
+#: src/features/servers/firewall/components/firewall-rules-card.tsx:85
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# kural} other {# kural}}, {activeCount} aktif"
 
@@ -3087,6 +3087,30 @@ msgstr "Aşağı taşı"
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:128
 msgid "wEQDC6"
 msgstr "Düzenle"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:80
+msgid "w+tZ4Z"
+msgstr "Güvenlik duvarı kuralları oluştur"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:81
+msgid "zxRL4s"
+msgstr "Yapay zekânın sunucun için güvenlik duvarı kuralları oluşturmasına izin verin."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:99
+msgid "iWKE8s"
+msgstr "İstem"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:105
+msgid "0r2ykg"
+msgstr "HTTPS trafiğine izin verin, ancak sunucumdaki SSH trafiğini engelleyin."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:124
+msgid "Pc+tM3"
+msgstr "Oluştur"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:139
+msgid "EWw/tK"
+msgstr "Uygula"
 
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts:32
 msgid "sjzLbX"
