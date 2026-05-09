@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Romanian\n"
-"PO-Revision-Date: 2026-05-05 17:36\n"
+"PO-Revision-Date: 2026-05-09 13:52\n"
 
 #: ../../packages/discord/src/buttons/main-menu.ts:41
 msgctxt "discord-integration"
@@ -1939,7 +1939,7 @@ msgstr "Nu s-a putut trimite codul."
 msgid "dOQCL8"
 msgstr "Numele de afișare"
 
-#: src/features/auth/components/register/signup-email.tsx:192
+#: src/features/auth/components/register/signup-email.tsx:193
 msgid "39AHJm"
 msgstr "Înscrieți-vă"
 
@@ -1959,11 +1959,11 @@ msgstr "Continua"
 msgid "neYh81"
 msgstr "Parola dvs. a fost resetată. Acum vă puteți conecta cu noua parolă."
 
-#: src/features/auth/components/reset-password-form.tsx:118
+#: src/features/auth/components/reset-password-form.tsx:119
 msgid "8HimVK"
 msgstr "Confirmați parola"
 
-#: src/features/auth/components/reset-password-form.tsx:138
+#: src/features/auth/components/reset-password-form.tsx:139
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx:92
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx:108
 #: src/features/servers/components/overview/server-details-card.tsx:189
@@ -2004,7 +2004,7 @@ msgstr "Virtbase nu stochează parola dvs. de root. Poate fi resetat ulterior pr
 msgid "mnTP3x"
 msgstr "Dacă este lăsată necompletată, o parolă aleatorie sigură va fi generată și trimisă prin e-mail."
 
-#: src/features/checkout/components/checkout-form.tsx:223
+#: src/features/checkout/components/checkout-form.tsx:224
 #: src/features/servers/components/plan/plan-summary.tsx:286
 msgid "+g+0OK"
 msgstr "Continuați cu plata"
@@ -3048,11 +3048,11 @@ msgstr "Activat"
 msgid "LgbKvU"
 msgstr "Comentariu"
 
-#: src/features/servers/firewall/components/firewall-rules-card.tsx:49
+#: src/features/servers/firewall/components/firewall-rules-card.tsx:54
 msgid "Qov8tl"
 msgstr "Reguli pentru firewall"
 
-#: src/features/servers/firewall/components/firewall-rules-card.tsx:77
+#: src/features/servers/firewall/components/firewall-rules-card.tsx:85
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# regulă} other {# reguli}}, {activeCount} active"
 
@@ -3087,6 +3087,30 @@ msgstr "Deplasați-vă în jos"
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:128
 msgid "wEQDC6"
 msgstr "Editează"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:80
+msgid "w+tZ4Z"
+msgstr "Generează reguli de firewall"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:81
+msgid "zxRL4s"
+msgstr "Lasă IA să genereze reguli de firewall pentru serverul tău."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:99
+msgid "iWKE8s"
+msgstr "Instrucțiune"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:105
+msgid "0r2ykg"
+msgstr "Permite traficul HTTPS, dar blochează traficul SSH pe serverul meu."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:124
+msgid "Pc+tM3"
+msgstr "Generează"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:139
+msgid "EWw/tK"
+msgstr "Aplică"
 
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts:32
 msgid "sjzLbX"
