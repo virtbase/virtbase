@@ -59,7 +59,12 @@ export const useDeleteFirewallRule = ({
             !old
               ? undefined
               : {
-                  rules: old.rules.filter((rule) => rule.pos !== input.pos),
+                  rules: old.rules
+                    .filter((rule) => rule.pos !== input.pos)
+                    .map((rule, index) => ({
+                      ...rule,
+                      pos: index,
+                    })),
                 },
         );
 
