@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Polish\n"
-"PO-Revision-Date: 2026-05-05 17:37\n"
+"PO-Revision-Date: 2026-05-09 13:52\n"
 
 #: ../../packages/discord/src/buttons/main-menu.ts:41
 msgctxt "discord-integration"
@@ -1939,7 +1939,7 @@ msgstr "Nie udało się wysłać kodu."
 msgid "dOQCL8"
 msgstr "Nazwa wyświetlana"
 
-#: src/features/auth/components/register/signup-email.tsx:192
+#: src/features/auth/components/register/signup-email.tsx:193
 msgid "39AHJm"
 msgstr "Zapisać się"
 
@@ -1959,11 +1959,11 @@ msgstr "Kontynuować"
 msgid "neYh81"
 msgstr "Twoje hasło zostało zresetowane. Możesz teraz zalogować się przy użyciu nowego hasła."
 
-#: src/features/auth/components/reset-password-form.tsx:118
+#: src/features/auth/components/reset-password-form.tsx:119
 msgid "8HimVK"
 msgstr "Potwierdź hasło"
 
-#: src/features/auth/components/reset-password-form.tsx:138
+#: src/features/auth/components/reset-password-form.tsx:139
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx:92
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx:108
 #: src/features/servers/components/overview/server-details-card.tsx:189
@@ -2004,7 +2004,7 @@ msgstr "Virtbase nie przechowuje hasła roota. Można go później zresetować z
 msgid "mnTP3x"
 msgstr "Jeśli pozostawisz puste, zostanie wygenerowane bezpieczne losowe hasło i wysłane e-mailem."
 
-#: src/features/checkout/components/checkout-form.tsx:223
+#: src/features/checkout/components/checkout-form.tsx:224
 #: src/features/servers/components/plan/plan-summary.tsx:286
 msgid "+g+0OK"
 msgstr "Kontynuuj płatność"
@@ -3048,11 +3048,11 @@ msgstr "Włączony"
 msgid "LgbKvU"
 msgstr "Komentarz"
 
-#: src/features/servers/firewall/components/firewall-rules-card.tsx:49
+#: src/features/servers/firewall/components/firewall-rules-card.tsx:54
 msgid "Qov8tl"
 msgstr "Zasady zapory sieciowej"
 
-#: src/features/servers/firewall/components/firewall-rules-card.tsx:77
+#: src/features/servers/firewall/components/firewall-rules-card.tsx:85
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# reguła} other {# reguły}}, {activeCount} aktywnych"
 
@@ -3087,6 +3087,30 @@ msgstr "Opuszczać"
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:128
 msgid "wEQDC6"
 msgstr "Edytuj"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:80
+msgid "w+tZ4Z"
+msgstr "Generuj reguły zapory"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:81
+msgid "zxRL4s"
+msgstr "Pozwól AI wygenerować reguły zapory dla Twojego serwera."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:99
+msgid "iWKE8s"
+msgstr "Polecenie"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:105
+msgid "0r2ykg"
+msgstr "Zezwalaj na ruch HTTPS, ale blokuj ruch SSH na moim serwerze."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:124
+msgid "Pc+tM3"
+msgstr "Generuj"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:139
+msgid "EWw/tK"
+msgstr "Zastosuj"
 
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts:32
 msgid "sjzLbX"
