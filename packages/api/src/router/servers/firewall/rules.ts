@@ -203,6 +203,7 @@ export const serverFirewallRulesRouter = createTRPCRouter({
     }),
   generate: serverProcedure
     .meta({
+      forbiddenStates: ["suspended", "terminated"],
       ratelimit: {
         requests: 10,
         seconds: "1 d",
