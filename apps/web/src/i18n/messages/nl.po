@@ -1939,7 +1939,7 @@ msgstr "Kan code niet verzenden."
 msgid "dOQCL8"
 msgstr "Weergavenaam"
 
-#: src/features/auth/components/register/signup-email.tsx:192
+#: src/features/auth/components/register/signup-email.tsx:193
 msgid "39AHJm"
 msgstr "Aanmelden"
 
@@ -1959,11 +1959,11 @@ msgstr "Doorgaan"
 msgid "neYh81"
 msgstr "Uw wachtwoord is opnieuw ingesteld. U kunt nu inloggen met uw nieuwe wachtwoord."
 
-#: src/features/auth/components/reset-password-form.tsx:118
+#: src/features/auth/components/reset-password-form.tsx:119
 msgid "8HimVK"
 msgstr "Bevestig wachtwoord"
 
-#: src/features/auth/components/reset-password-form.tsx:138
+#: src/features/auth/components/reset-password-form.tsx:139
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx:92
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx:108
 #: src/features/servers/components/overview/server-details-card.tsx:189
@@ -2004,7 +2004,7 @@ msgstr "Virtbase slaat uw root-wachtwoord niet op. Deze kan achteraf via het kla
 msgid "mnTP3x"
 msgstr "Als u dit veld leeg laat, wordt er een veilig, willekeurig wachtwoord gegenereerd en per e-mail verzonden."
 
-#: src/features/checkout/components/checkout-form.tsx:223
+#: src/features/checkout/components/checkout-form.tsx:224
 #: src/features/servers/components/plan/plan-summary.tsx:286
 msgid "+g+0OK"
 msgstr "Ga verder naar betaling"
@@ -3048,11 +3048,11 @@ msgstr "Ingeschakeld"
 msgid "LgbKvU"
 msgstr "Opmerking"
 
-#: src/features/servers/firewall/components/firewall-rules-card.tsx:49
+#: src/features/servers/firewall/components/firewall-rules-card.tsx:54
 msgid "Qov8tl"
 msgstr "Firewall-regels"
 
-#: src/features/servers/firewall/components/firewall-rules-card.tsx:77
+#: src/features/servers/firewall/components/firewall-rules-card.tsx:85
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# regel} other {# regels}}, {activeCount} actief"
 
@@ -3087,6 +3087,30 @@ msgstr "Ga naar beneden"
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:128
 msgid "wEQDC6"
 msgstr "Bewerken"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:80
+msgid "w+tZ4Z"
+msgstr "Firewallregels genereren"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:81
+msgid "zxRL4s"
+msgstr "Laat AI firewallregels voor je server genereren."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:99
+msgid "iWKE8s"
+msgstr "Invoer"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:105
+msgid "0r2ykg"
+msgstr "HTTPS-verkeer toestaan, maar SSH-verkeer op mijn server blokkeren."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:124
+msgid "Pc+tM3"
+msgstr "Genereren"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:139
+msgid "EWw/tK"
+msgstr "Toepassen"
 
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts:32
 msgid "sjzLbX"

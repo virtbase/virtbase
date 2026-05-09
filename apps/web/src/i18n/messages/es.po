@@ -1939,7 +1939,7 @@ msgstr "No se pudo enviar el código."
 msgid "dOQCL8"
 msgstr "Nombre para mostrar"
 
-#: src/features/auth/components/register/signup-email.tsx:192
+#: src/features/auth/components/register/signup-email.tsx:193
 msgid "39AHJm"
 msgstr "Inscribirse"
 
@@ -1959,11 +1959,11 @@ msgstr "Continuar"
 msgid "neYh81"
 msgstr "Su contraseña ha sido restablecida. Ahora puedes iniciar sesión con tu nueva contraseña."
 
-#: src/features/auth/components/reset-password-form.tsx:118
+#: src/features/auth/components/reset-password-form.tsx:119
 msgid "8HimVK"
 msgstr "Confirmar Contraseña"
 
-#: src/features/auth/components/reset-password-form.tsx:138
+#: src/features/auth/components/reset-password-form.tsx:139
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx:92
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx:108
 #: src/features/servers/components/overview/server-details-card.tsx:189
@@ -2004,7 +2004,7 @@ msgstr "Virtbase no almacena su contraseña de root. Posteriormente se puede res
 msgid "mnTP3x"
 msgstr "Si se deja en blanco, se generará una contraseña aleatoria segura y se enviará por correo electrónico."
 
-#: src/features/checkout/components/checkout-form.tsx:223
+#: src/features/checkout/components/checkout-form.tsx:224
 #: src/features/servers/components/plan/plan-summary.tsx:286
 msgid "+g+0OK"
 msgstr "Continuar con el pago"
@@ -3048,11 +3048,11 @@ msgstr "Activada"
 msgid "LgbKvU"
 msgstr "Comentario"
 
-#: src/features/servers/firewall/components/firewall-rules-card.tsx:49
+#: src/features/servers/firewall/components/firewall-rules-card.tsx:54
 msgid "Qov8tl"
 msgstr "Reglas del cortafuegos"
 
-#: src/features/servers/firewall/components/firewall-rules-card.tsx:77
+#: src/features/servers/firewall/components/firewall-rules-card.tsx:85
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# regla} other {# reglas}}, {activeCount} activas"
 
@@ -3087,6 +3087,30 @@ msgstr "Bajar"
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:128
 msgid "wEQDC6"
 msgstr "Editar"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:80
+msgid "w+tZ4Z"
+msgstr "Generar reglas de cortafuegos"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:81
+msgid "zxRL4s"
+msgstr "Deja que la IA genere reglas de cortafuegos para tu servidor."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:99
+msgid "iWKE8s"
+msgstr "Indicación"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:105
+msgid "0r2ykg"
+msgstr "Permitir tráfico HTTPS, pero bloquear el tráfico SSH en mi servidor."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:124
+msgid "Pc+tM3"
+msgstr "Generar"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:139
+msgid "EWw/tK"
+msgstr "Aplicar"
 
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts:32
 msgid "sjzLbX"

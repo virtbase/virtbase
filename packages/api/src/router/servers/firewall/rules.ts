@@ -15,11 +15,15 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { TRPCError } from "@trpc/server";
+import { FIRWALL_PROTOCOLS_WITH_PORTS } from "@virtbase/utils";
 import {
   CreateServerFirewallRuleInputSchema,
   CreateServerFirewallRuleOutputSchema,
   DeleteServerFirewallRuleInputSchema,
   DeleteServerFirewallRuleOutputSchema,
+  GenerateServerFirewallRuleInputSchema,
+  GenerateServerFirewallRuleOutputSchema,
   GetServerFirewallRulesInputSchema,
   GetServerFirewallRulesOutputSchema,
   MoveServerFirewallRuleInputSchema,
@@ -27,6 +31,7 @@ import {
   UpdateServerFirewallRuleInputSchema,
   UpdateServerFirewallRuleOutputSchema,
 } from "@virtbase/validators/server";
+import { generateText, Output } from "ai";
 import { createTRPCRouter, serverProcedure } from "../../../trpc";
 
 export const serverFirewallRulesRouter = createTRPCRouter({
@@ -195,5 +200,55 @@ export const serverFirewallRulesRouter = createTRPCRouter({
         moveto: pos > moveto ? moveto : moveto + 1,
         digest,
       });
+    }),
+  generate: serverProcedure
+    .meta({
+      ratelimit: {
+        requests: 10,
+        seconds: "1 d",
+        fingerprint: ({ userId, defaultFingerprint }) =>
+          `generate-firewall-rules:${userId || defaultFingerprint}`,
+      },
+    })
+    .input(GenerateServerFirewallRuleInputSchema)
+    .output(GenerateServerFirewallRuleOutputSchema)
+    .mutation(async ({ input }) => {
+      const { prompt } = input;
+
+      if (!process.env.AI_GATEWAY_API_KEY) {
+        throw new TRPCError({
+          code: "INTERNAL_SERVER_ERROR",
+        });
+      }
+
+      const result = await generateText({
+        model: "mistral/ministral-3b",
+        prompt,
+        allowSystemInMessages: false,
+        system: [
+          "Create a maximum of 5 rules.",
+          "Always create a short, descriptive comment for each rule without any special characters or ports.",
+          "Write comments and descriptions in language of prompt if known, otherwise fallback to English.",
+          "Description must concisely explain protocol and ports with recommendations.",
+          `Defining 'sport' and 'dport' is only allowed for 'proto': ${FIRWALL_PROTOCOLS_WITH_PORTS.join(", ")}.`,
+          "Omit 'sport' and 'dport' if not supported by the protocol or any ports should be ruled.",
+          "The property 'icmp_type' must be included the protocols 'icmp' and 'ipv6-icmp'.",
+          "Do not mix up 'sport' and 'dport' with 'icmp_type'.",
+        ].join("; "),
+        output: Output.object({
+          name: "annotated_rules",
+          description:
+            "Firewall rules that should be created with an explanation and recommendation.",
+          schema: GenerateServerFirewallRuleOutputSchema,
+        }),
+        timeout: 10_000,
+        providerOptions: {
+          gateway: {
+            caching: "auto",
+          },
+        },
+      });
+
+      return result.output;
     }),
 });

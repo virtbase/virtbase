@@ -1939,7 +1939,7 @@ msgstr "Αποτυχία αποστολής κωδικού."
 msgid "dOQCL8"
 msgstr "Εμφανιζόμενο όνομα"
 
-#: src/features/auth/components/register/signup-email.tsx:192
+#: src/features/auth/components/register/signup-email.tsx:193
 msgid "39AHJm"
 msgstr "Εγγραφείτε"
 
@@ -1959,11 +1959,11 @@ msgstr "Συνεχίζω"
 msgid "neYh81"
 msgstr "Ο κωδικός πρόσβασής σας επαναφέρθηκε. Τώρα μπορείτε να συνδεθείτε με τον νέο σας κωδικό πρόσβασης."
 
-#: src/features/auth/components/reset-password-form.tsx:118
+#: src/features/auth/components/reset-password-form.tsx:119
 msgid "8HimVK"
 msgstr "Επιβεβαίωση κωδικού πρόσβασης"
 
-#: src/features/auth/components/reset-password-form.tsx:138
+#: src/features/auth/components/reset-password-form.tsx:139
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx:92
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx:108
 #: src/features/servers/components/overview/server-details-card.tsx:189
@@ -2004,7 +2004,7 @@ msgstr "Το Virtbase δεν αποθηκεύει τον κωδικό πρόσβ
 msgid "mnTP3x"
 msgstr "Εάν μείνει κενό, θα δημιουργηθεί ένας ασφαλής τυχαίος κωδικός πρόσβασης και θα σταλεί μέσω email."
 
-#: src/features/checkout/components/checkout-form.tsx:223
+#: src/features/checkout/components/checkout-form.tsx:224
 #: src/features/servers/components/plan/plan-summary.tsx:286
 msgid "+g+0OK"
 msgstr "Συνεχίστε την πληρωμή"
@@ -3048,11 +3048,11 @@ msgstr "Ενεργοποιημένο"
 msgid "LgbKvU"
 msgstr "Σχόλιο"
 
-#: src/features/servers/firewall/components/firewall-rules-card.tsx:49
+#: src/features/servers/firewall/components/firewall-rules-card.tsx:54
 msgid "Qov8tl"
 msgstr "Κανόνες τείχους προστασίας"
 
-#: src/features/servers/firewall/components/firewall-rules-card.tsx:77
+#: src/features/servers/firewall/components/firewall-rules-card.tsx:85
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# κανόνας} other {# κανόνες}}, {activeCount} ενεργοί"
 
@@ -3087,6 +3087,30 @@ msgstr "Μετακίνηση προς τα κάτω"
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:128
 msgid "wEQDC6"
 msgstr "Επεξεργασία"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:80
+msgid "w+tZ4Z"
+msgstr "Δημιουργία κανόνων τείχους προστασίας"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:81
+msgid "zxRL4s"
+msgstr "Αφήστε την ΤΝ να δημιουργήσει κανόνες τείχους προστασίας για τον διακομιστή σας."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:99
+msgid "iWKE8s"
+msgstr "Οδηγία"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:105
+msgid "0r2ykg"
+msgstr "Να επιτρέπεται η κίνηση HTTPS, αλλά να αποκλείεται η κίνηση SSH στον διακομιστή μου."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:124
+msgid "Pc+tM3"
+msgstr "Δημιουργία"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:139
+msgid "EWw/tK"
+msgstr "Εφαρμογή"
 
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts:32
 msgid "sjzLbX"

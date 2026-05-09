@@ -1930,7 +1930,7 @@ msgstr "Failed to send code."
 msgid "dOQCL8"
 msgstr "Display name"
 
-#: src/features/auth/components/register/signup-email.tsx:192
+#: src/features/auth/components/register/signup-email.tsx:193
 msgid "39AHJm"
 msgstr "Sign Up"
 
@@ -1950,11 +1950,11 @@ msgstr "Continue"
 msgid "neYh81"
 msgstr "Your password has been reset. You can now log in with your new password."
 
-#: src/features/auth/components/reset-password-form.tsx:118
+#: src/features/auth/components/reset-password-form.tsx:119
 msgid "8HimVK"
 msgstr "Confirm password"
 
-#: src/features/auth/components/reset-password-form.tsx:138
+#: src/features/auth/components/reset-password-form.tsx:139
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx:92
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx:108
 #: src/features/servers/components/overview/server-details-card.tsx:189
@@ -1995,7 +1995,7 @@ msgstr "Virtbase does not store your root password. It can be reset via the cust
 msgid "mnTP3x"
 msgstr "If left blank, a secure random password will be generated and sent by email."
 
-#: src/features/checkout/components/checkout-form.tsx:223
+#: src/features/checkout/components/checkout-form.tsx:224
 #: src/features/servers/components/plan/plan-summary.tsx:286
 msgid "+g+0OK"
 msgstr "Continue to payment"
@@ -3039,11 +3039,11 @@ msgstr "Enabled"
 msgid "LgbKvU"
 msgstr "Comment"
 
-#: src/features/servers/firewall/components/firewall-rules-card.tsx:49
+#: src/features/servers/firewall/components/firewall-rules-card.tsx:54
 msgid "Qov8tl"
 msgstr "Firewall Rules"
 
-#: src/features/servers/firewall/components/firewall-rules-card.tsx:77
+#: src/features/servers/firewall/components/firewall-rules-card.tsx:85
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# rule} other {# rules}}, {activeCount} active"
 
@@ -3078,6 +3078,30 @@ msgstr "Move down"
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:128
 msgid "wEQDC6"
 msgstr "Edit"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:80
+msgid "w+tZ4Z"
+msgstr "Generate Firewall Rules"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:81
+msgid "zxRL4s"
+msgstr "Let AI generate firewall rules for your server."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:99
+msgid "iWKE8s"
+msgstr "Prompt"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:105
+msgid "0r2ykg"
+msgstr "Allow HTTPS traffic, but block SSH traffic on my server."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:124
+msgid "Pc+tM3"
+msgstr "Generate"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:139
+msgid "EWw/tK"
+msgstr "Apply"
 
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts:32
 msgid "sjzLbX"

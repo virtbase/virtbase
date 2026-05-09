@@ -35,6 +35,8 @@ export const env = createEnv({
       .default("development"),
   },
   server: {
+    // Vercel AI Gateway API Key
+    AI_GATEWAY_API_KEY: z4.string().optional(),
     UPSTASH_REDIS_REST_URL: z4.string().min(1),
     UPSTASH_REDIS_REST_TOKEN: z4.string().min(1),
     RESEND_API_KEY: z4.string().optional(),

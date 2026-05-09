@@ -1939,7 +1939,7 @@ msgstr "Det gick inte att skicka koden."
 msgid "dOQCL8"
 msgstr "Visningsnamn"
 
-#: src/features/auth/components/register/signup-email.tsx:192
+#: src/features/auth/components/register/signup-email.tsx:193
 msgid "39AHJm"
 msgstr "Registrera dig"
 
@@ -1959,11 +1959,11 @@ msgstr "Fortsätta"
 msgid "neYh81"
 msgstr "Ditt lösenord har återställts. Du kan nu logga in med ditt nya lösenord."
 
-#: src/features/auth/components/reset-password-form.tsx:118
+#: src/features/auth/components/reset-password-form.tsx:119
 msgid "8HimVK"
 msgstr "Bekräfta lösenord"
 
-#: src/features/auth/components/reset-password-form.tsx:138
+#: src/features/auth/components/reset-password-form.tsx:139
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx:92
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx:108
 #: src/features/servers/components/overview/server-details-card.tsx:189
@@ -2004,7 +2004,7 @@ msgstr "Virtbase lagrar inte ditt root-lösenord. Den kan återställas via kund
 msgid "mnTP3x"
 msgstr "Om det lämnas tomt kommer ett säkert slumpmässigt lösenord att genereras och skickas via e-post."
 
-#: src/features/checkout/components/checkout-form.tsx:223
+#: src/features/checkout/components/checkout-form.tsx:224
 #: src/features/servers/components/plan/plan-summary.tsx:286
 msgid "+g+0OK"
 msgstr "Fortsätt till betalning"
@@ -3048,11 +3048,11 @@ msgstr "Aktiverad"
 msgid "LgbKvU"
 msgstr "Kommentar"
 
-#: src/features/servers/firewall/components/firewall-rules-card.tsx:49
+#: src/features/servers/firewall/components/firewall-rules-card.tsx:54
 msgid "Qov8tl"
 msgstr "Brandväggsregler"
 
-#: src/features/servers/firewall/components/firewall-rules-card.tsx:77
+#: src/features/servers/firewall/components/firewall-rules-card.tsx:85
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# regel} other {# regler}}, {activeCount} aktiva"
 
@@ -3087,6 +3087,30 @@ msgstr "Flytta ner"
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:128
 msgid "wEQDC6"
 msgstr "Redigera"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:80
+msgid "w+tZ4Z"
+msgstr "Generera brandväggsregler"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:81
+msgid "zxRL4s"
+msgstr "Låt AI generera brandväggsregler för din server."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:99
+msgid "iWKE8s"
+msgstr "Instruktion"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:105
+msgid "0r2ykg"
+msgstr "Tillåt HTTPS-trafik men blockera SSH-trafik på min server."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:124
+msgid "Pc+tM3"
+msgstr "Generera"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:139
+msgid "EWw/tK"
+msgstr "Verkställ"
 
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts:32
 msgid "sjzLbX"

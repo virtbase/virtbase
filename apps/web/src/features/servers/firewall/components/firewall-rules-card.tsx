@@ -26,13 +26,18 @@ import {
   CardHeader,
   CardTitle,
 } from "@virtbase/ui/card";
-import { LucidePlus, LucideRefreshCw } from "@virtbase/ui/icons/index";
+import {
+  LucidePlus,
+  LucideRefreshCw,
+  LucideSparkles,
+} from "@virtbase/ui/icons/index";
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useFirewallRules } from "../hooks/use-firewall-rules";
 import { CreateFirewallRuleButton } from "./create-firewall-rule-button";
 import { FirewallRulesTable } from "./firewall-rules-table";
+import { GenerateFirewallRulesButton } from "./generate-firewall-rules-button";
 
 export function FirewallRulesCard() {
   const t = useExtracted();
@@ -51,6 +56,9 @@ export function FirewallRulesCard() {
             <CreateFirewallRuleButton disabled={isRefetching || isPending}>
               <LucidePlus aria-hidden="true" />
             </CreateFirewallRuleButton>
+            <GenerateFirewallRulesButton disabled={isRefetching || isPending}>
+              <LucideSparkles aria-hidden="true" />
+            </GenerateFirewallRulesButton>
             <Button
               variant="outline"
               size="icon"

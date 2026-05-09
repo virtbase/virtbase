@@ -36,18 +36,18 @@ export function ItemRow({
       data-testid="item-row"
       {...props}
     >
-      <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-        <div className="flex flex-1 items-center gap-4 truncate">
+      <div className="flex min-w-0 flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex min-w-0 flex-1 items-center gap-4">
           {icon && (
             <div
-              className="grid size-10 place-items-center rounded-full bg-muted p-2"
+              className="grid size-10 shrink-0 place-items-center rounded-full bg-muted p-2"
               data-testid="item-row-icon"
             >
               {icon}
             </div>
           )}
           <div
-            className="flex flex-col gap-1 truncate"
+            className="flex min-w-0 flex-1 flex-col gap-1"
             data-testid="item-row-content"
           >
             {children}

@@ -15,31 +15,24 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-"use client";
+import { useMutation } from "@tanstack/react-query";
+import { useTRPC } from "@/lib/trpc/react";
 
-import { parseAsStringEnum, useQueryState } from "nuqs";
+type TRPC = ReturnType<typeof useTRPC>;
+type Options = Parameters<
+  TRPC["servers"]["firewall"]["rules"]["generate"]["mutationOptions"]
+>[0];
 
-export function useServerActionState() {
-  const [action, setAction] = useQueryState(
-    "action",
-    parseAsStringEnum([
-      "rename",
-      "view-node-details",
-      "reset-server-password",
-      "change-operating-system",
-      "create-backup",
-      "upsert-record",
-      "create-firewall-rule",
-      "generate-firewall-rules",
-      "manage-mount",
-    ]).withOptions({
-      clearOnDefault: true,
-      shallow: true,
-    }),
-  );
-
-  return {
-    action,
-    setAction,
-  };
+interface GenerateFirewallRuleOptions {
+  mutationConfig?: Options;
 }
+
+export const useGenerateFirewallRule = ({
+  mutationConfig,
+}: GenerateFirewallRuleOptions = {}) => {
+  const trpc = useTRPC();
+
+  return useMutation(
+    trpc.servers.firewall.rules.generate.mutationOptions(mutationConfig),
+  );
+};

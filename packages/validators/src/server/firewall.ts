@@ -79,21 +79,24 @@ const FirewallRuleSchema = z.object({
     description: "The position of the rule. Lower numbers are processed first.",
     example: 0,
   }),
-  proto: z
-    .union([z.enum(FIRWALL_PROTOCOLS), z.string()])
+  proto: z.enum(FIRWALL_PROTOCOLS).optional().meta({
+    description: "The protocol of the rule.",
+    example: "tcp",
+  }),
+  dport: z
+    .string()
     .optional()
     .meta({
-      description: "The protocol of the rule.",
-      example: "tcp",
+      description: `The destination port of the rule. Only valid for protocols: ${FIRWALL_PROTOCOLS_WITH_PORTS.map((proto) => `\`${proto}\``).join(", ")}.`,
+      example: "80",
     }),
-  dport: z.string().optional().meta({
-    description: "The destination port of the rule.",
-    example: "80",
-  }),
-  sport: z.string().optional().meta({
-    description: "The source port of the rule.",
-    example: "80",
-  }),
+  sport: z
+    .string()
+    .optional()
+    .meta({
+      description: `The source port of the rule. Only valid for protocols: ${FIRWALL_PROTOCOLS_WITH_PORTS.map((proto) => `\`${proto}\``).join(", ")}.`,
+      example: "80",
+    }),
   comment: z.string().max(64).optional().meta({
     description: "The comment of the rule.",
     example: "Allow HTTP traffic",
@@ -103,10 +106,14 @@ const FirewallRuleSchema = z.object({
     example: "ACCEPT",
   }),
   icmp_type: z
-    .union([z.enum(ICMP_TYPE_NAMES), z.enum(ICMPV6_TYPE_NAMES)])
+    .union([
+      z.enum(ICMP_TYPE_NAMES).describe("ICMP types for protocol `icmp`"),
+      z.enum(ICMPV6_TYPE_NAMES).describe("ICMP types for protocol `ipv6-icmp`"),
+    ])
     .optional()
     .meta({
-      description: "The ICMP type of the rule. Only valid for ICMP protocol.",
+      description:
+        "The ICMP type of the rule. Only valid for protocols: `icmp`, `ipv6-icmp`.",
       example: "echo-request",
     }),
   digest: z.string().optional(),
@@ -229,3 +236,42 @@ export const MoveServerFirewallRuleInputSchema = FirewallRuleSchema.pick({
 });
 
 export const MoveServerFirewallRuleOutputSchema = z.void();
+
+export const GenerateServerFirewallRuleInputSchema = z.object({
+  server_id: ServerSchema.shape.id,
+  prompt: z.string().min(1).max(512).meta({
+    description: "The prompt to generate the rule.",
+    example: "Allow HTTPS traffic, but block SSH traffic.",
+  }),
+});
+
+export type GenerateServerFirewallRuleInput = z.infer<
+  typeof GenerateServerFirewallRuleInputSchema
+>;
+
+const GeneratedFirewallRuleSchema = FirewallRuleSchema.pick({
+  direction: true,
+  action: true,
+  proto: true,
+  sport: true,
+  dport: true,
+  icmp_type: true,
+  comment: true,
+});
+
+export const GenerateServerFirewallRuleOutputSchema = z.object({
+  rules: z
+    .array(GeneratedFirewallRuleSchema)
+    .min(1)
+    .max(5)
+    .describe("The generated rules by the AI."),
+  description: z.string().min(1).max(512).meta({
+    description: "The reasoning and recommendation for the rules.",
+    example:
+      "The standard port for SSH is 22 and should be blocked. Port 80 should be allowed for HTTP traffic.",
+  }),
+});
+
+export type GenerateServerFirewallRuleOutput = z.infer<
+  typeof GenerateServerFirewallRuleOutputSchema
+>;
