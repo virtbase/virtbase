@@ -54,7 +54,7 @@ export function ActivityStatsRow({
         promise={promise}
         accessorKey="monthlyRevenue"
         icon={<LucideDollarSign className="size-4" />}
-        description={t("Revenue in the last month")}
+        description={t("Revenue in the current month")}
         formatOptions={{
           style: "currency",
           currency: "EUR",

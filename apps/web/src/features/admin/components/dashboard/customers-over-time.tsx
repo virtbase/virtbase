@@ -81,6 +81,7 @@ export function CustomersOverTime({
                 return format.dateTime(new Date(value), {
                   day: "numeric",
                   month: "numeric",
+                  year: "numeric",
                 });
               }}
               valueFormatter={(_, value) => format.number(value as number)}

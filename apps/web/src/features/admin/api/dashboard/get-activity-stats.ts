@@ -16,7 +16,18 @@
  */
 
 import { captureException } from "@sentry/nextjs";
-import { and, eq, gt, isNotNull, isNull, lt, or, sql, sum } from "@virtbase/db";
+import {
+  and,
+  eq,
+  gt,
+  gte,
+  isNotNull,
+  isNull,
+  lte,
+  or,
+  sql,
+  sum,
+} from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { invoices, servers, users } from "@virtbase/db/schema";
 import { cacheLife, cacheTag } from "next/cache";
@@ -57,8 +68,8 @@ export const getActivityStats = cache(async () => {
             .where(
               and(
                 isNotNull(invoices.paidAt),
-                gt(invoices.paidAt, sql`(now() - interval '1 month')`),
-                lt(invoices.paidAt, sql`now()`),
+                gte(invoices.paidAt, sql`date_trunc('month', now())`),
+                lte(invoices.paidAt, sql`now()`),
               ),
             )
             .then(([res]) => (res ? Number(res.total) / 100 : 0)),

@@ -135,19 +135,32 @@ describe("getActivityStats", () => {
     expect(result.activeServersCount).toBe(2);
   });
 
-  test("it calculates monthly revenue from paid invoices", async () => {
+  test("it sums month-to-date revenue from paid invoices in the current calendar month", async () => {
     await testDb.insert(users).values(mockUser);
+
+    const paidThisMonth = new Date();
+    const paidLastCalendarMonth = new Date(
+      Date.UTC(
+        paidThisMonth.getUTCFullYear(),
+        paidThisMonth.getUTCMonth() - 1,
+        15,
+        12,
+        0,
+        0,
+      ),
+    );
+
     await testDb.insert(invoices).values([
       {
         ...mockInvoice,
-        paidAt: new Date(Date.now() - 24 * 60 * 60 * 1000),
+        paidAt: paidThisMonth,
       },
       {
         ...mockInvoice,
         lexwareInvoiceId: "00000000-0000-0000-0000-000000000002",
         number: "RE-2026-0002",
         total: 2000,
-        paidAt: new Date(Date.now() - 24 * 60 * 60 * 1000),
+        paidAt: paidThisMonth,
       },
       {
         ...mockInvoice,
@@ -156,11 +169,18 @@ describe("getActivityStats", () => {
         total: 500,
         paidAt: null,
       },
+      {
+        ...mockInvoice,
+        lexwareInvoiceId: "00000000-0000-0000-0000-000000000004",
+        number: "RE-2026-0004",
+        total: 99_000,
+        paidAt: paidLastCalendarMonth,
+      },
     ]);
 
     const result = await getActivityStats();
 
-    // 1000 + 2000 = 3000 cents => 30 euros (unpaid invoice excluded)
+    // 1000 + 2000 = 3000 cents => 30 euros (unpaid + prior calendar month excluded)
     expect(result.monthlyRevenue).toBe(30);
   });
 });
