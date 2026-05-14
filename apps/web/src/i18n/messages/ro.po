@@ -1316,78 +1316,88 @@ msgstr "Informații despre raport"
 msgid "NJOMwI"
 msgstr "Marcaj temporal export:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:225
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:231
 msgid "To1Yq6"
 msgstr "Date utilizator"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:252
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:340
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:415
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:258
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:361
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:436
 msgid "tmcdrp"
 msgstr "ID:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:256
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:262
 msgid "9ANu2O"
 msgstr "Nume afișat:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:260
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:266
 msgid "xpTPb3"
 msgstr "E-mail:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:264
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:270
 msgid "axPF0j"
 msgstr "E-mail confirmat:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:268
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:271
+#: src/features/admin/components/users/users-table/columns.tsx:201
+msgid "a5msuh"
+msgstr "Da"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:271
+#: src/features/admin/components/users/users-table/columns.tsx:201
+msgid "oUWADl"
+msgstr "Nu"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:274
 msgid "fiNfmb"
 msgstr "Limbă:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:272
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:278
 msgid "Ur+SeM"
 msgstr "ID Stripe:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:276
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:282
 msgid "vxMnwH"
 msgstr "Data înregistrării:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:280
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:437
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:292
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:461
 msgid "iXH4ox"
 msgstr "Ultima modificare:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:297
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:315
 msgid "MEekj5"
 msgstr "Informații sesiune"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:310
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:328
 msgid "RQPliO"
 msgstr "Nicio sesiune înregistrată."
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:347
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:368
 msgid "/7I9Fi"
 msgstr "Adresă IP:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:351
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:372
 msgid "uK95OQ"
 msgstr "User-Agent:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:370
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:391
 msgid "njqGJJ"
 msgstr "Conturi asociate"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:383
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:404
 msgid "nuEHW2"
 msgstr "Niciun cont asociat înregistrat."
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:422
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:443
 msgid "w6rwdu"
 msgstr "ID furnizor:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:426
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:447
 msgid "a2VLth"
 msgstr "Permisiuni:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:430
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:451
 msgid "71lPLk"
 msgstr "Data creării:"
 
@@ -1893,14 +1903,6 @@ msgstr "Rol"
 #: src/features/admin/components/users/users-table/columns.tsx:206
 msgid "DC8+TO"
 msgstr "E-mail verificat"
-
-#: src/features/admin/components/users/users-table/columns.tsx:201
-msgid "a5msuh"
-msgstr "Da"
-
-#: src/features/admin/components/users/users-table/columns.tsx:201
-msgid "oUWADl"
-msgstr "Nu"
 
 #: src/features/admin/components/users/users-table/columns.tsx:287
 msgid "hQZhn8"

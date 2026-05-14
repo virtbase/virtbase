@@ -1316,78 +1316,88 @@ msgstr "Jelentés adatai"
 msgid "NJOMwI"
 msgstr "Export időbélyeg:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:225
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:231
 msgid "To1Yq6"
 msgstr "Felhasználói adatok"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:252
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:340
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:415
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:258
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:361
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:436
 msgid "tmcdrp"
 msgstr "Azonosító:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:256
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:262
 msgid "9ANu2O"
 msgstr "Megjelenítendő név:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:260
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:266
 msgid "xpTPb3"
 msgstr "E-mail:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:264
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:270
 msgid "axPF0j"
 msgstr "E-mail megerősítve:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:268
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:271
+#: src/features/admin/components/users/users-table/columns.tsx:201
+msgid "a5msuh"
+msgstr "Igen"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:271
+#: src/features/admin/components/users/users-table/columns.tsx:201
+msgid "oUWADl"
+msgstr "Nem"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:274
 msgid "fiNfmb"
 msgstr "Nyelv:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:272
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:278
 msgid "Ur+SeM"
 msgstr "Stripe-azonosító:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:276
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:282
 msgid "vxMnwH"
 msgstr "Regisztráció dátuma:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:280
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:437
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:292
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:461
 msgid "iXH4ox"
 msgstr "Utolsó módosítás:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:297
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:315
 msgid "MEekj5"
 msgstr "Munkamenet-információk"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:310
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:328
 msgid "RQPliO"
 msgstr "Nincs rögzített munkamenet."
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:347
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:368
 msgid "/7I9Fi"
 msgstr "IP-cím:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:351
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:372
 msgid "uK95OQ"
 msgstr "User-Agent:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:370
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:391
 msgid "njqGJJ"
 msgstr "Kapcsolt fiókok"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:383
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:404
 msgid "nuEHW2"
 msgstr "Nincs rögzített kapcsolt fiók."
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:422
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:443
 msgid "w6rwdu"
 msgstr "Szolgáltató azonosítója:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:426
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:447
 msgid "a2VLth"
 msgstr "Engedélyek:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:430
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:451
 msgid "71lPLk"
 msgstr "Létrehozás dátuma:"
 
@@ -1893,14 +1903,6 @@ msgstr "Szerepkör"
 #: src/features/admin/components/users/users-table/columns.tsx:206
 msgid "DC8+TO"
 msgstr "E-mail megerősítve"
-
-#: src/features/admin/components/users/users-table/columns.tsx:201
-msgid "a5msuh"
-msgstr "Igen"
-
-#: src/features/admin/components/users/users-table/columns.tsx:201
-msgid "oUWADl"
-msgstr "Nem"
 
 #: src/features/admin/components/users/users-table/columns.tsx:287
 msgid "hQZhn8"

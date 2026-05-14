@@ -1316,78 +1316,88 @@ msgstr "Informationen zur Auskunft"
 msgid "NJOMwI"
 msgstr "Exportzeitpunkt:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:225
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:231
 msgid "To1Yq6"
 msgstr "Benutzerdaten"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:252
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:340
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:415
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:258
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:361
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:436
 msgid "tmcdrp"
 msgstr "ID:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:256
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:262
 msgid "9ANu2O"
 msgstr "Anzeigename:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:260
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:266
 msgid "xpTPb3"
 msgstr "E-Mail:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:264
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:270
 msgid "axPF0j"
 msgstr "E-Mail bestätigt:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:268
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:271
+#: src/features/admin/components/users/users-table/columns.tsx:201
+msgid "a5msuh"
+msgstr "Ja"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:271
+#: src/features/admin/components/users/users-table/columns.tsx:201
+msgid "oUWADl"
+msgstr "Nein"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:274
 msgid "fiNfmb"
 msgstr "Sprache:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:272
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:278
 msgid "Ur+SeM"
 msgstr "Stripe-ID:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:276
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:282
 msgid "vxMnwH"
 msgstr "Registrierungsdatum:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:280
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:437
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:292
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:461
 msgid "iXH4ox"
 msgstr "Letzte Änderung:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:297
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:315
 msgid "MEekj5"
 msgstr "Sitzungsinformationen"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:310
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:328
 msgid "RQPliO"
 msgstr "Keine Sitzungen erfasst."
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:347
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:368
 msgid "/7I9Fi"
 msgstr "IP-Adresse:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:351
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:372
 msgid "uK95OQ"
 msgstr "User-Agent:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:370
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:391
 msgid "njqGJJ"
 msgstr "Verknüpfte Konten"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:383
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:404
 msgid "nuEHW2"
 msgstr "Keine verknüpften Konten erfasst."
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:422
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:443
 msgid "w6rwdu"
 msgstr "Anbieter-ID:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:426
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:447
 msgid "a2VLth"
 msgstr "Berechtigungen:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:430
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:451
 msgid "71lPLk"
 msgstr "Erstellungsdatum:"
 
@@ -1893,14 +1903,6 @@ msgstr "Rolle"
 #: src/features/admin/components/users/users-table/columns.tsx:206
 msgid "DC8+TO"
 msgstr "E-Mail bestätigt"
-
-#: src/features/admin/components/users/users-table/columns.tsx:201
-msgid "a5msuh"
-msgstr "Ja"
-
-#: src/features/admin/components/users/users-table/columns.tsx:201
-msgid "oUWADl"
-msgstr "Nein"
 
 #: src/features/admin/components/users/users-table/columns.tsx:287
 msgid "hQZhn8"

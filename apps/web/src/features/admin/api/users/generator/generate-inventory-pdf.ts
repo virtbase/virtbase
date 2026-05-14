@@ -206,7 +206,13 @@ export const generateInventoryPdf = async ({
           data: [
             [
               { text: t("Export timestamp:"), type: "TH" },
-              { text: formatter.dateTime(new Date()), type: "TD" },
+              {
+                text: formatter.dateTime(new Date(), {
+                  dateStyle: "full",
+                  timeStyle: "full",
+                }),
+                type: "TD",
+              },
             ],
           ],
         });
@@ -262,7 +268,7 @@ export const generateInventoryPdf = async ({
             ],
             [
               { text: t("Email confirmed:"), type: "TH" },
-              { text: user.emailVerified ? "✓" : "🞩", type: "TD" },
+              { text: user.emailVerified ? t("Yes") : t("No"), type: "TD" },
             ],
             [
               { text: t("Language:"), type: "TH" },
@@ -274,11 +280,23 @@ export const generateInventoryPdf = async ({
             ],
             [
               { text: t("Registration date:"), type: "TH" },
-              { text: formatter.dateTime(user.createdAt), type: "TD" },
+              {
+                text: formatter.dateTime(user.createdAt, {
+                  dateStyle: "full",
+                  timeStyle: "full",
+                }),
+                type: "TD",
+              },
             ],
             [
               { text: t("Last change:"), type: "TH" },
-              { text: formatter.dateTime(user.updatedAt), type: "TD" },
+              {
+                text: formatter.dateTime(user.updatedAt, {
+                  dateStyle: "full",
+                  timeStyle: "full",
+                }),
+                type: "TD",
+              },
             ],
           ],
         });
@@ -330,7 +348,10 @@ export const generateInventoryPdf = async ({
               data: [
                 [
                   {
-                    text: formatter.dateTime(session.createdAt),
+                    text: formatter.dateTime(session.createdAt, {
+                      dateStyle: "full",
+                      timeStyle: "full",
+                    }),
                     type: "TH",
                     colSpan: 2,
                     backgroundColor: COLOR_SECONDARY,
@@ -429,14 +450,20 @@ export const generateInventoryPdf = async ({
                 [
                   { text: t("Creation date:"), type: "TH" },
                   {
-                    text: formatter.dateTime(account.createdAt),
+                    text: formatter.dateTime(account.createdAt, {
+                      dateStyle: "full",
+                      timeStyle: "full",
+                    }),
                     type: "TD",
                   },
                 ],
                 [
                   { text: t("Last change:"), type: "TH" },
                   {
-                    text: formatter.dateTime(account.updatedAt),
+                    text: formatter.dateTime(account.updatedAt, {
+                      dateStyle: "full",
+                      timeStyle: "full",
+                    }),
                     type: "TD",
                   },
                 ],

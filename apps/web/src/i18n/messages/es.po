@@ -1316,78 +1316,88 @@ msgstr "Información del informe"
 msgid "NJOMwI"
 msgstr "Marca de tiempo de exportación:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:225
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:231
 msgid "To1Yq6"
 msgstr "Datos del usuario"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:252
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:340
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:415
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:258
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:361
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:436
 msgid "tmcdrp"
 msgstr "ID:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:256
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:262
 msgid "9ANu2O"
 msgstr "Nombre para mostrar:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:260
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:266
 msgid "xpTPb3"
 msgstr "Correo electrónico:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:264
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:270
 msgid "axPF0j"
 msgstr "Correo confirmado:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:268
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:271
+#: src/features/admin/components/users/users-table/columns.tsx:201
+msgid "a5msuh"
+msgstr "Sí"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:271
+#: src/features/admin/components/users/users-table/columns.tsx:201
+msgid "oUWADl"
+msgstr "No"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:274
 msgid "fiNfmb"
 msgstr "Idioma:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:272
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:278
 msgid "Ur+SeM"
 msgstr "ID de Stripe:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:276
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:282
 msgid "vxMnwH"
 msgstr "Fecha de registro:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:280
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:437
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:292
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:461
 msgid "iXH4ox"
 msgstr "Último cambio:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:297
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:315
 msgid "MEekj5"
 msgstr "Información de la sesión"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:310
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:328
 msgid "RQPliO"
 msgstr "No hay sesiones registradas."
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:347
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:368
 msgid "/7I9Fi"
 msgstr "Dirección IP:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:351
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:372
 msgid "uK95OQ"
 msgstr "User-Agent:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:370
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:391
 msgid "njqGJJ"
 msgstr "Cuentas vinculadas"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:383
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:404
 msgid "nuEHW2"
 msgstr "No hay cuentas vinculadas registradas."
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:422
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:443
 msgid "w6rwdu"
 msgstr "ID del proveedor:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:426
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:447
 msgid "a2VLth"
 msgstr "Permisos:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:430
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:451
 msgid "71lPLk"
 msgstr "Fecha de creación:"
 
@@ -1893,14 +1903,6 @@ msgstr "Rol"
 #: src/features/admin/components/users/users-table/columns.tsx:206
 msgid "DC8+TO"
 msgstr "Correo verificado"
-
-#: src/features/admin/components/users/users-table/columns.tsx:201
-msgid "a5msuh"
-msgstr "Sí"
-
-#: src/features/admin/components/users/users-table/columns.tsx:201
-msgid "oUWADl"
-msgstr "No"
 
 #: src/features/admin/components/users/users-table/columns.tsx:287
 msgid "hQZhn8"
