@@ -385,7 +385,7 @@ msgstr "Εναλλαγή στηλών"
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:196
 #: src/features/admin/components/servers/servers-table/columns.tsx:253
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:217
-#: src/features/admin/components/users/users-table/columns.tsx:264
+#: src/features/admin/components/users/users-table/columns.tsx:269
 #: src/features/servers/components/servers-list.tsx:189
 msgid "FgydNe"
 msgstr "Θέα"
@@ -981,7 +981,7 @@ msgstr "Δημιουργήθηκε το {date}"
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:205
 #: src/features/admin/components/servers/servers-table/columns.tsx:273
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:226
-#: src/features/admin/components/users/users-table/columns.tsx:347
+#: src/features/admin/components/users/users-table/columns.tsx:358
 #: src/features/servers/components/backups/backups-table/backup-actions.tsx:155
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:141
 msgid "K3r6DQ"
@@ -1040,8 +1040,8 @@ msgstr "Αυτό το κλειδί θα εμφανιστεί μόνο μία φ�
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:103
 #: src/features/admin/components/servers/servers-table/columns.tsx:97
 #: src/features/admin/components/servers/servers-table/columns.tsx:105
-#: src/features/admin/components/users/users-table/columns.tsx:110
-#: src/features/admin/components/users/users-table/columns.tsx:128
+#: src/features/admin/components/users/users-table/columns.tsx:112
+#: src/features/admin/components/users/users-table/columns.tsx:130
 #: src/features/servers/components/backups/backups-table/columns.tsx:64
 #: src/features/servers/components/backups/create-backup-dialog.tsx:128
 #: src/features/servers/components/overview/node-details-dialog.tsx:83
@@ -1125,8 +1125,8 @@ msgid "0Azlrb"
 msgstr "Διαχειρίζομαι"
 
 #: src/features/account/components/authentication/user-providers-list.tsx:82
-#: src/features/admin/components/users/users-table/columns.tsx:139
-#: src/features/admin/components/users/users-table/columns.tsx:146
+#: src/features/admin/components/users/users-table/columns.tsx:141
+#: src/features/admin/components/users/users-table/columns.tsx:148
 #: src/features/auth/components/email-sign-in.tsx:175
 #: src/features/auth/components/forgot-password-form.tsx:85
 #: src/features/auth/components/register/signup-email.tsx:116
@@ -1304,6 +1304,93 @@ msgstr "Χρησιμοποίησε το πολύ 32 χαρακτήρες."
 msgid "jvo0vs"
 msgstr "Αποθήκευση"
 
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:90
+msgid "QZwgMJ"
+msgstr "Αναφορά δεδομένων χρήστη"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:181
+msgid "g26DD9"
+msgstr "Πληροφορίες αναφοράς"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:208
+msgid "NJOMwI"
+msgstr "Χρονική σήμανση εξαγωγής:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:225
+msgid "To1Yq6"
+msgstr "Δεδομένα χρήστη"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:252
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:340
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:415
+msgid "tmcdrp"
+msgstr "ID:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:256
+msgid "9ANu2O"
+msgstr "Εμφανιζόμενο όνομα:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:260
+msgid "xpTPb3"
+msgstr "Email:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:264
+msgid "axPF0j"
+msgstr "Επιβεβαιωμένο email:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:268
+msgid "fiNfmb"
+msgstr "Γλώσσα:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:272
+msgid "Ur+SeM"
+msgstr "Αναγν. Stripe:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:276
+msgid "vxMnwH"
+msgstr "Ημερομηνία εγγραφής:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:280
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:437
+msgid "iXH4ox"
+msgstr "Τελευταία αλλαγή:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:297
+msgid "MEekj5"
+msgstr "Πληροφορίες συνεδρίας"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:310
+msgid "RQPliO"
+msgstr "Δεν έχουν καταγραφεί συνεδρίες."
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:347
+msgid "/7I9Fi"
+msgstr "Διεύθυνση IP:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:351
+msgid "uK95OQ"
+msgstr "User-Agent:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:370
+msgid "njqGJJ"
+msgstr "Συνδεδεμένοι λογαριασμοί"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:383
+msgid "nuEHW2"
+msgstr "Δεν έχουν καταγραφεί συνδεδεμένοι λογαριασμοί."
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:422
+msgid "w6rwdu"
+msgstr "Αναγν. παρόχου:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:426
+msgid "a2VLth"
+msgstr "Δικαιώματα:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:430
+msgid "71lPLk"
+msgstr "Ημερομηνία δημιουργίας:"
+
 #: src/features/admin/components/admin-sidebar-groups.tsx:67
 msgid "UcHtCB"
 msgstr "Proxmox VE"
@@ -1454,7 +1541,7 @@ msgstr "Δεν βρέθηκε κέντρο δεδομένων."
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:64
 #: src/features/admin/components/servers/servers-table/columns.tsx:72
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:76
-#: src/features/admin/components/users/users-table/columns.tsx:85
+#: src/features/admin/components/users/users-table/columns.tsx:87
 #: src/features/invoices/components/invoices-table/columns.tsx:47
 msgid "94Fg25"
 msgstr "Επιλέξτε όλα"
@@ -1465,7 +1552,7 @@ msgstr "Επιλέξτε όλα"
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:75
 #: src/features/admin/components/servers/servers-table/columns.tsx:83
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:87
-#: src/features/admin/components/users/users-table/columns.tsx:96
+#: src/features/admin/components/users/users-table/columns.tsx:98
 #: src/features/invoices/components/invoices-table/columns.tsx:58
 msgid "4pJVaS"
 msgstr "Επιλέξτε σειρά"
@@ -1489,8 +1576,8 @@ msgstr "Αναζήτηση με όνομα..."
 #: src/features/admin/components/servers/servers-table/columns.tsx:208
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:184
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:190
-#: src/features/admin/components/users/users-table/columns.tsx:228
-#: src/features/admin/components/users/users-table/columns.tsx:234
+#: src/features/admin/components/users/users-table/columns.tsx:230
+#: src/features/admin/components/users/users-table/columns.tsx:236
 #: src/features/servers/components/rdns/records-table/columns.tsx:60
 msgid "AbXVP4"
 msgstr "Δημιουργήθηκε στο"
@@ -1501,7 +1588,7 @@ msgstr "Δημιουργήθηκε στο"
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:180
 #: src/features/admin/components/servers/servers-table/columns.tsx:239
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:203
-#: src/features/admin/components/users/users-table/columns.tsx:250
+#: src/features/admin/components/users/users-table/columns.tsx:255
 msgid "bdcMGy"
 msgstr "Άνοιγμα μενού"
 
@@ -1793,42 +1880,46 @@ msgstr "Τύπος"
 msgid "PLUhm9"
 msgstr "ID VLAN"
 
-#: src/features/admin/components/users/users-table/columns.tsx:129
+#: src/features/admin/components/users/users-table/columns.tsx:131
 msgid "BzHQ0A"
 msgstr "Όνομα/email"
 
-#: src/features/admin/components/users/users-table/columns.tsx:154
-#: src/features/admin/components/users/users-table/columns.tsx:169
+#: src/features/admin/components/users/users-table/columns.tsx:156
+#: src/features/admin/components/users/users-table/columns.tsx:171
 msgid "1ZgrhW"
 msgstr "Ρόλος"
 
-#: src/features/admin/components/users/users-table/columns.tsx:187
-#: src/features/admin/components/users/users-table/columns.tsx:204
+#: src/features/admin/components/users/users-table/columns.tsx:189
+#: src/features/admin/components/users/users-table/columns.tsx:206
 msgid "DC8+TO"
 msgstr "Email επαληθευμένο"
 
-#: src/features/admin/components/users/users-table/columns.tsx:199
+#: src/features/admin/components/users/users-table/columns.tsx:201
 msgid "a5msuh"
 msgstr "Ναί"
 
-#: src/features/admin/components/users/users-table/columns.tsx:199
+#: src/features/admin/components/users/users-table/columns.tsx:201
 msgid "oUWADl"
 msgstr "Οχι"
 
-#: src/features/admin/components/users/users-table/columns.tsx:282
+#: src/features/admin/components/users/users-table/columns.tsx:287
 msgid "hQZhn8"
 msgstr "Υποδύομαι"
 
-#: src/features/admin/components/users/users-table/columns.tsx:293
+#: src/features/admin/components/users/users-table/columns.tsx:298
 msgid "C3uaig"
 msgstr "Προβολή σε Stripe"
 
-#: src/features/admin/components/users/users-table/columns.tsx:315
+#: src/features/admin/components/users/users-table/columns.tsx:320
 #: src/features/servers/components/backups/backups-table/backup-actions.tsx:142
 msgid "qXCbgZ"
 msgstr "Ξεκλειδώνω"
 
-#: src/features/admin/components/users/users-table/columns.tsx:338
+#: src/features/admin/components/users/users-table/columns.tsx:329
+msgid "SVwJTM"
+msgstr "Εξαγωγή"
+
+#: src/features/admin/components/users/users-table/columns.tsx:349
 msgid "XtUrMc"
 msgstr "Απαγόρευση"
 

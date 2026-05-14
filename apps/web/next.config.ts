@@ -189,6 +189,7 @@ const nextConfig: NextConfig = {
       destination: "/api/v1/servers/:path*",
     },
   ],
+  serverExternalPackages: ["pdfkit"],
   transpilePackages: ["@virtbase/email", "@virtbase/ui"],
   typescript: {
     ignoreBuildErrors: true,

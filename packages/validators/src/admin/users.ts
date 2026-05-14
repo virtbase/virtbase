@@ -15,9 +15,13 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./datacenters";
-export * from "./proxmox-node-group";
-export * from "./proxmox-nodes";
-export * from "./proxmox-template-group";
-export * from "./proxmox-templates";
-export * from "./users";
+import z from "zod";
+
+export const CreateUserExportInputSchema = z.object({
+  user_id: z
+    .string()
+    .min(1)
+    .regex(/^usr_[A-Z0-9]{25}$/),
+});
+
+export type CreateUserExportInput = z.infer<typeof CreateUserExportInputSchema>;

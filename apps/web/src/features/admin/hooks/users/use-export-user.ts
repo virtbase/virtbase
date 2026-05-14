@@ -15,9 +15,30 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./datacenters";
-export * from "./proxmox-node-group";
-export * from "./proxmox-nodes";
-export * from "./proxmox-template-group";
-export * from "./proxmox-templates";
-export * from "./users";
+import { useAction } from "next-safe-action/hooks";
+import { createUserExportAction } from "../../api/users/create-user-export";
+
+export function useExportUser() {
+  const action = useAction(createUserExportAction, {
+    onSuccess: ({ data: blob, input }) => {
+      const anchor = document.createElement("a");
+
+      anchor.style = "display: none";
+      anchor.ariaHidden = "true";
+
+      const url = window.URL.createObjectURL(blob);
+      anchor.href = url;
+      anchor.download = `${input.user_id}.pdf`;
+
+      document.body.appendChild(anchor);
+      anchor.click();
+
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(anchor);
+
+      action.reset();
+    },
+  });
+
+  return action;
+}

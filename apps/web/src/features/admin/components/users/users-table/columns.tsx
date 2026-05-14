@@ -38,6 +38,7 @@ import {
   LucideExternalLink,
   LucideEye,
   LucideLogIn,
+  LucideScale,
   LucideTrash2,
   LucideUnlock,
   Mail,
@@ -55,6 +56,7 @@ import type {
   getUsersList,
   getUserVerifiedCounts,
 } from "@/features/admin/api/users/get-users-list";
+import { useExportUser } from "@/features/admin/hooks/users/use-export-user";
 import { getRoleIcon, getRoleLabel } from "@/features/admin/lib/users/labels";
 import { authClient } from "@/lib/auth/client";
 import { paths } from "@/lib/paths";
@@ -243,6 +245,9 @@ export function useUsersTableColumns({
         const router = useRouter();
         const user = row.original;
 
+        const { executeAsync: exportUser, isPending: isExportingUser } =
+          useExportUser();
+
         return (
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -316,7 +321,13 @@ export function useUsersTableColumns({
                 </DropdownMenuItem>
               )}
               <DropdownMenuSeparator />
-
+              <DropdownMenuItem
+                onSelect={() => exportUser({ user_id: user.id })}
+                disabled={isExportingUser}
+              >
+                <LucideScale aria-hidden="true" />
+                <span>{t("Export")}</span>
+              </DropdownMenuItem>
               {!user.banned && (
                 <DropdownMenuItem
                   variant="destructive"
@@ -338,7 +349,7 @@ export function useUsersTableColumns({
                   <span>{t("Ban")}</span>
                 </DropdownMenuItem>
               )}
-
+              <DropdownMenuSeparator />
               <DropdownMenuItem
                 variant="destructive"
                 onSelect={() => setRowAction({ row, variant: "delete" })}

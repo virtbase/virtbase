@@ -376,7 +376,7 @@ msgstr "Toggle columns"
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:196
 #: src/features/admin/components/servers/servers-table/columns.tsx:253
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:217
-#: src/features/admin/components/users/users-table/columns.tsx:264
+#: src/features/admin/components/users/users-table/columns.tsx:269
 #: src/features/servers/components/servers-list.tsx:189
 msgid "FgydNe"
 msgstr "View"
@@ -972,7 +972,7 @@ msgstr "Created {date}"
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:205
 #: src/features/admin/components/servers/servers-table/columns.tsx:273
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:226
-#: src/features/admin/components/users/users-table/columns.tsx:347
+#: src/features/admin/components/users/users-table/columns.tsx:358
 #: src/features/servers/components/backups/backups-table/backup-actions.tsx:155
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:141
 msgid "K3r6DQ"
@@ -1031,8 +1031,8 @@ msgstr "This key will only be displayed once. Please save it securely, as it can
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:103
 #: src/features/admin/components/servers/servers-table/columns.tsx:97
 #: src/features/admin/components/servers/servers-table/columns.tsx:105
-#: src/features/admin/components/users/users-table/columns.tsx:110
-#: src/features/admin/components/users/users-table/columns.tsx:128
+#: src/features/admin/components/users/users-table/columns.tsx:112
+#: src/features/admin/components/users/users-table/columns.tsx:130
 #: src/features/servers/components/backups/backups-table/columns.tsx:64
 #: src/features/servers/components/backups/create-backup-dialog.tsx:128
 #: src/features/servers/components/overview/node-details-dialog.tsx:83
@@ -1116,8 +1116,8 @@ msgid "0Azlrb"
 msgstr "Manage"
 
 #: src/features/account/components/authentication/user-providers-list.tsx:82
-#: src/features/admin/components/users/users-table/columns.tsx:139
-#: src/features/admin/components/users/users-table/columns.tsx:146
+#: src/features/admin/components/users/users-table/columns.tsx:141
+#: src/features/admin/components/users/users-table/columns.tsx:148
 #: src/features/auth/components/email-sign-in.tsx:175
 #: src/features/auth/components/forgot-password-form.tsx:85
 #: src/features/auth/components/register/signup-email.tsx:116
@@ -1295,6 +1295,93 @@ msgstr "Please use 32 characters at maximum."
 msgid "jvo0vs"
 msgstr "Save"
 
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:90
+msgid "QZwgMJ"
+msgstr "User Data Report"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:181
+msgid "g26DD9"
+msgstr "Report Information"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:208
+msgid "NJOMwI"
+msgstr "Export timestamp:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:225
+msgid "To1Yq6"
+msgstr "User data"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:252
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:340
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:415
+msgid "tmcdrp"
+msgstr "ID:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:256
+msgid "9ANu2O"
+msgstr "Display name:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:260
+msgid "xpTPb3"
+msgstr "Email:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:264
+msgid "axPF0j"
+msgstr "Email confirmed:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:268
+msgid "fiNfmb"
+msgstr "Language:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:272
+msgid "Ur+SeM"
+msgstr "Stripe ID:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:276
+msgid "vxMnwH"
+msgstr "Registration date:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:280
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:437
+msgid "iXH4ox"
+msgstr "Last change:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:297
+msgid "MEekj5"
+msgstr "Session information"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:310
+msgid "RQPliO"
+msgstr "No sessions recorded."
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:347
+msgid "/7I9Fi"
+msgstr "IP address:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:351
+msgid "uK95OQ"
+msgstr "User-Agent:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:370
+msgid "njqGJJ"
+msgstr "Linked accounts"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:383
+msgid "nuEHW2"
+msgstr "No linked accounts recorded."
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:422
+msgid "w6rwdu"
+msgstr "Provider ID:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:426
+msgid "a2VLth"
+msgstr "Permissions:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:430
+msgid "71lPLk"
+msgstr "Creation date:"
+
 #: src/features/admin/components/admin-sidebar-groups.tsx:67
 msgid "UcHtCB"
 msgstr "Proxmox VE"
@@ -1445,7 +1532,7 @@ msgstr "No datacenter found."
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:64
 #: src/features/admin/components/servers/servers-table/columns.tsx:72
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:76
-#: src/features/admin/components/users/users-table/columns.tsx:85
+#: src/features/admin/components/users/users-table/columns.tsx:87
 #: src/features/invoices/components/invoices-table/columns.tsx:47
 msgid "94Fg25"
 msgstr "Select all"
@@ -1456,7 +1543,7 @@ msgstr "Select all"
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:75
 #: src/features/admin/components/servers/servers-table/columns.tsx:83
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:87
-#: src/features/admin/components/users/users-table/columns.tsx:96
+#: src/features/admin/components/users/users-table/columns.tsx:98
 #: src/features/invoices/components/invoices-table/columns.tsx:58
 msgid "4pJVaS"
 msgstr "Select row"
@@ -1480,8 +1567,8 @@ msgstr "Search by name..."
 #: src/features/admin/components/servers/servers-table/columns.tsx:208
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:184
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:190
-#: src/features/admin/components/users/users-table/columns.tsx:228
-#: src/features/admin/components/users/users-table/columns.tsx:234
+#: src/features/admin/components/users/users-table/columns.tsx:230
+#: src/features/admin/components/users/users-table/columns.tsx:236
 #: src/features/servers/components/rdns/records-table/columns.tsx:60
 msgid "AbXVP4"
 msgstr "Created at"
@@ -1492,7 +1579,7 @@ msgstr "Created at"
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:180
 #: src/features/admin/components/servers/servers-table/columns.tsx:239
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:203
-#: src/features/admin/components/users/users-table/columns.tsx:250
+#: src/features/admin/components/users/users-table/columns.tsx:255
 msgid "bdcMGy"
 msgstr "Open menu"
 
@@ -1784,42 +1871,46 @@ msgstr "Type"
 msgid "PLUhm9"
 msgstr "VLAN ID"
 
-#: src/features/admin/components/users/users-table/columns.tsx:129
+#: src/features/admin/components/users/users-table/columns.tsx:131
 msgid "BzHQ0A"
 msgstr "Name/Email"
 
-#: src/features/admin/components/users/users-table/columns.tsx:154
-#: src/features/admin/components/users/users-table/columns.tsx:169
+#: src/features/admin/components/users/users-table/columns.tsx:156
+#: src/features/admin/components/users/users-table/columns.tsx:171
 msgid "1ZgrhW"
 msgstr "Role"
 
-#: src/features/admin/components/users/users-table/columns.tsx:187
-#: src/features/admin/components/users/users-table/columns.tsx:204
+#: src/features/admin/components/users/users-table/columns.tsx:189
+#: src/features/admin/components/users/users-table/columns.tsx:206
 msgid "DC8+TO"
 msgstr "Email verified"
 
-#: src/features/admin/components/users/users-table/columns.tsx:199
+#: src/features/admin/components/users/users-table/columns.tsx:201
 msgid "a5msuh"
 msgstr "Yes"
 
-#: src/features/admin/components/users/users-table/columns.tsx:199
+#: src/features/admin/components/users/users-table/columns.tsx:201
 msgid "oUWADl"
 msgstr "No"
 
-#: src/features/admin/components/users/users-table/columns.tsx:282
+#: src/features/admin/components/users/users-table/columns.tsx:287
 msgid "hQZhn8"
 msgstr "Impersonate"
 
-#: src/features/admin/components/users/users-table/columns.tsx:293
+#: src/features/admin/components/users/users-table/columns.tsx:298
 msgid "C3uaig"
 msgstr "View in Stripe"
 
-#: src/features/admin/components/users/users-table/columns.tsx:315
+#: src/features/admin/components/users/users-table/columns.tsx:320
 #: src/features/servers/components/backups/backups-table/backup-actions.tsx:142
 msgid "qXCbgZ"
 msgstr "Unlock"
 
-#: src/features/admin/components/users/users-table/columns.tsx:338
+#: src/features/admin/components/users/users-table/columns.tsx:329
+msgid "SVwJTM"
+msgstr "Export"
+
+#: src/features/admin/components/users/users-table/columns.tsx:349
 msgid "XtUrMc"
 msgstr "Ban"
 
