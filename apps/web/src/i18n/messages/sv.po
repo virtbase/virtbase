@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Swedish\n"
-"PO-Revision-Date: 2026-05-14 16:48\n"
+"PO-Revision-Date: 2026-05-14 17:56\n"
 
 #: ../../packages/discord/src/buttons/main-menu.ts:41
 msgctxt "discord-integration"
@@ -1304,102 +1304,123 @@ msgstr "Använd högst 32 tecken."
 msgid "jvo0vs"
 msgstr "Spara"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:90
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:94
 msgid "QZwgMJ"
 msgstr "Användardatarapport"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:181
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:187
 msgid "g26DD9"
 msgstr "Rapportinformation"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:208
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:214
 msgid "NJOMwI"
 msgstr "Exporttidpunkt:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:231
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:237
 msgid "To1Yq6"
 msgstr "Användardata"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:258
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:361
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:436
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:264
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:366
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:440
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:535
 msgid "tmcdrp"
 msgstr "ID:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:262
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:268
 msgid "9ANu2O"
 msgstr "Visningsnamn:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:266
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:272
 msgid "xpTPb3"
 msgstr "E-post:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:270
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:276
 msgid "axPF0j"
 msgstr "E-post bekräftad:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:271
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:277
 #: src/features/admin/components/users/users-table/columns.tsx:201
 msgid "a5msuh"
 msgstr "Ja"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:271
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:277
 #: src/features/admin/components/users/users-table/columns.tsx:201
 msgid "oUWADl"
 msgstr "Inga"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:274
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:280
 msgid "fiNfmb"
 msgstr "Språk:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:278
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:284
 msgid "Ur+SeM"
 msgstr "Stripe-ID:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:282
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:288
 msgid "vxMnwH"
 msgstr "Registreringsdatum:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:292
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:461
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:298
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:465
 msgid "iXH4ox"
 msgstr "Senaste ändring:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:315
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:321
 msgid "MEekj5"
 msgstr "Sessionsinformation"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:328
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:333
 msgid "RQPliO"
 msgstr "Inga sessioner registrerade."
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:368
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:373
 msgid "/7I9Fi"
 msgstr "IP-adress:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:372
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:377
 msgid "uK95OQ"
 msgstr "User-Agent:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:391
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:396
 msgid "njqGJJ"
 msgstr "Länkade konton"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:404
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:408
 msgid "nuEHW2"
 msgstr "Inga länkade konton registrerade."
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:443
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:447
 msgid "w6rwdu"
 msgstr "Leverantörs-ID:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:447
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:451
 msgid "a2VLth"
 msgstr "Behörigheter:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:451
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:455
 msgid "71lPLk"
 msgstr "Skapandedatum:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:489
+msgid "vtStU2"
+msgstr "Betalningshistorik"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:501
+msgid "iPmh1t"
+msgstr "Inga debiteringar registrerade."
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:542
+msgid "C43FrR"
+msgstr "Belopp:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:555
+msgid "3fVD9R"
+msgstr "Status:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:559
+msgid "BIoIM3"
+msgstr "Faktureringsuppgifter:"
 
 #: src/features/admin/components/admin-sidebar-groups.tsx:67
 msgid "UcHtCB"
