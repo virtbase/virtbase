@@ -17,6 +17,9 @@
 
 "use server";
 
+import type { Stripe } from "@virtbase/api/stripe";
+import { stripe } from "@virtbase/api/stripe";
+import type { Session } from "@virtbase/auth";
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import {
@@ -41,7 +44,7 @@ export const createUserExportAction = actionClient
       auth.api.getUser({
         query: { id: userId },
         headers: await headers(),
-      }),
+      }) as Promise<Session["user"]>,
       db
         .select({
           id: sessionsTable.id,
@@ -66,6 +69,23 @@ export const createUserExportAction = actionClient
         .orderBy(accountsTable.createdAt),
     ]);
 
+    const userWithStripeCustomerId = user as unknown as {
+      stripeCustomerId: string;
+    };
+    let charges: Stripe.Charge[] = [];
+    if (stripe && userWithStripeCustomerId.stripeCustomerId) {
+      try {
+        charges = await stripe.charges
+          .list({
+            customer: userWithStripeCustomerId.stripeCustomerId,
+            limit: 100,
+          })
+          .then((res) => res.data);
+      } catch {
+        charges = [];
+      }
+    }
+
     const locale = hasLocale(locales, requester.locale)
       ? requester.locale
       : defaultLocale;
@@ -74,6 +94,7 @@ export const createUserExportAction = actionClient
       user,
       sessions,
       accounts,
+      charges,
       locale,
     });
 

@@ -1304,102 +1304,123 @@ msgstr "Usa al massimo 32 caratteri."
 msgid "jvo0vs"
 msgstr "Salva"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:90
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:93
 msgid "QZwgMJ"
 msgstr "Rapporto dati utente"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:181
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:184
 msgid "g26DD9"
 msgstr "Informazioni sul rapporto"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:208
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:211
 msgid "NJOMwI"
 msgstr "Data e ora di esportazione:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:231
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:234
 msgid "To1Yq6"
 msgstr "Dati utente"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:258
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:361
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:436
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:261
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:364
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:439
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:535
 msgid "tmcdrp"
 msgstr "ID:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:262
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:265
 msgid "9ANu2O"
 msgstr "Nome visualizzato:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:266
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:269
 msgid "xpTPb3"
 msgstr "Email:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:270
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:273
 msgid "axPF0j"
 msgstr "Email verificata:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:271
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:274
 #: src/features/admin/components/users/users-table/columns.tsx:201
 msgid "a5msuh"
 msgstr "SÌ"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:271
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:274
 #: src/features/admin/components/users/users-table/columns.tsx:201
 msgid "oUWADl"
 msgstr "NO"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:274
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:277
 msgid "fiNfmb"
 msgstr "Lingua:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:278
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:281
 msgid "Ur+SeM"
 msgstr "ID Stripe:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:282
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:285
 msgid "vxMnwH"
 msgstr "Data di registrazione:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:292
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:461
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:295
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:464
 msgid "iXH4ox"
 msgstr "Ultima modifica:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:315
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:318
 msgid "MEekj5"
 msgstr "Informazioni sulla sessione"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:328
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:331
 msgid "RQPliO"
 msgstr "Nessuna sessione registrata."
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:368
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:371
 msgid "/7I9Fi"
 msgstr "Indirizzo IP:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:372
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:375
 msgid "uK95OQ"
 msgstr "User-Agent:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:391
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:394
 msgid "njqGJJ"
 msgstr "Account collegati"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:404
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:407
 msgid "nuEHW2"
 msgstr "Nessun account collegato registrato."
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:443
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:446
 msgid "w6rwdu"
 msgstr "ID fornitore:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:447
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:450
 msgid "a2VLth"
 msgstr "Autorizzazioni:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:451
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:454
 msgid "71lPLk"
 msgstr "Data di creazione:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:488
+msgid "vtStU2"
+msgstr "Cronologia pagamenti"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:501
+msgid "iPmh1t"
+msgstr "Nessun addebito registrato."
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:542
+msgid "C43FrR"
+msgstr "Importo:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:555
+msgid "3fVD9R"
+msgstr "Stato:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:559
+msgid "BIoIM3"
+msgstr "Dati di fatturazione:"
 
 #: src/features/admin/components/admin-sidebar-groups.tsx:67
 msgid "UcHtCB"

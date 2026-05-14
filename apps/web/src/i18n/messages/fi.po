@@ -1304,102 +1304,123 @@ msgstr "Käytä enintään 32 merkkiä."
 msgid "jvo0vs"
 msgstr "Tallenna"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:90
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:93
 msgid "QZwgMJ"
 msgstr "Käyttäjätietoraportti"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:181
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:184
 msgid "g26DD9"
 msgstr "Raporttiedot"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:208
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:211
 msgid "NJOMwI"
 msgstr "Viennin aikaleima:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:231
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:234
 msgid "To1Yq6"
 msgstr "Käyttäjätiedot"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:258
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:361
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:436
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:261
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:364
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:439
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:535
 msgid "tmcdrp"
 msgstr "Tunnus:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:262
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:265
 msgid "9ANu2O"
 msgstr "Näyttönimi:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:266
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:269
 msgid "xpTPb3"
 msgstr "Sähköposti:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:270
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:273
 msgid "axPF0j"
 msgstr "Sähköposti vahvistettu:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:271
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:274
 #: src/features/admin/components/users/users-table/columns.tsx:201
 msgid "a5msuh"
 msgstr "Kyllä"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:271
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:274
 #: src/features/admin/components/users/users-table/columns.tsx:201
 msgid "oUWADl"
 msgstr "Ei"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:274
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:277
 msgid "fiNfmb"
 msgstr "Kieli:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:278
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:281
 msgid "Ur+SeM"
 msgstr "Stripe-tunnus:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:282
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:285
 msgid "vxMnwH"
 msgstr "Rekisteröitymispäivä:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:292
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:461
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:295
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:464
 msgid "iXH4ox"
 msgstr "Viimeisin muutos:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:315
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:318
 msgid "MEekj5"
 msgstr "Istuntotiedot"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:328
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:331
 msgid "RQPliO"
 msgstr "Istuntoja ei ole tallennettu."
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:368
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:371
 msgid "/7I9Fi"
 msgstr "IP-osoite:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:372
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:375
 msgid "uK95OQ"
 msgstr "User-Agent:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:391
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:394
 msgid "njqGJJ"
 msgstr "Linkitetyt tilit"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:404
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:407
 msgid "nuEHW2"
 msgstr "Linkitettyjä tilejä ei ole tallennettu."
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:443
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:446
 msgid "w6rwdu"
 msgstr "Palveluntarjoajan tunnus:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:447
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:450
 msgid "a2VLth"
 msgstr "Käyttöoikeudet:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:451
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:454
 msgid "71lPLk"
 msgstr "Luontipäivä:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:488
+msgid "vtStU2"
+msgstr "Maksuhistoria"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:501
+msgid "iPmh1t"
+msgstr "Veloituksia ei ole tallennettu."
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:542
+msgid "C43FrR"
+msgstr "Määrä:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:555
+msgid "3fVD9R"
+msgstr "Tila:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:559
+msgid "BIoIM3"
+msgstr "Laskutustiedot:"
 
 #: src/features/admin/components/admin-sidebar-groups.tsx:67
 msgid "UcHtCB"

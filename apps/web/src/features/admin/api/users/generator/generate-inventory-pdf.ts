@@ -16,6 +16,7 @@
  */
 
 import { join } from "node:path";
+import type { Stripe } from "@virtbase/api/stripe";
 import type { Session } from "@virtbase/auth";
 import { APP_NAME } from "@virtbase/utils";
 import type { Account } from "better-auth";
@@ -61,6 +62,7 @@ export const generateInventoryPdf = async ({
   user,
   sessions,
   accounts,
+  charges,
   locale = defaultLocale,
 }: {
   user: Pick<
@@ -82,6 +84,7 @@ export const generateInventoryPdf = async ({
     Account,
     "id" | "accountId" | "providerId" | "createdAt" | "updatedAt" | "scope"
   >[];
+  charges: Stripe.Charge[];
   locale?: Locale;
 }): Promise<Blob> => {
   const t = await getExtracted({ locale });
@@ -209,7 +212,7 @@ export const generateInventoryPdf = async ({
               {
                 text: formatter.dateTime(new Date(), {
                   dateStyle: "full",
-                  timeStyle: "full",
+                  timeStyle: "long",
                 }),
                 type: "TD",
               },
@@ -283,7 +286,7 @@ export const generateInventoryPdf = async ({
               {
                 text: formatter.dateTime(user.createdAt, {
                   dateStyle: "full",
-                  timeStyle: "full",
+                  timeStyle: "long",
                 }),
                 type: "TD",
               },
@@ -293,7 +296,7 @@ export const generateInventoryPdf = async ({
               {
                 text: formatter.dateTime(user.updatedAt, {
                   dateStyle: "full",
-                  timeStyle: "full",
+                  timeStyle: "long",
                 }),
                 type: "TD",
               },
@@ -350,7 +353,7 @@ export const generateInventoryPdf = async ({
                   {
                     text: formatter.dateTime(session.createdAt, {
                       dateStyle: "full",
-                      timeStyle: "full",
+                      timeStyle: "long",
                     }),
                     type: "TH",
                     colSpan: 2,
@@ -452,7 +455,7 @@ export const generateInventoryPdf = async ({
                   {
                     text: formatter.dateTime(account.createdAt, {
                       dateStyle: "full",
-                      timeStyle: "full",
+                      timeStyle: "long",
                     }),
                     type: "TD",
                   },
@@ -462,7 +465,7 @@ export const generateInventoryPdf = async ({
                   {
                     text: formatter.dateTime(account.updatedAt, {
                       dateStyle: "full",
-                      timeStyle: "full",
+                      timeStyle: "long",
                     }),
                     type: "TD",
                   },
@@ -471,6 +474,109 @@ export const generateInventoryPdf = async ({
             });
         }),
       );
+    }
+
+    const chargesSection = document.struct("Sect");
+    struct.add(chargesSection);
+
+    chargesSection.add(
+      document.struct("H2", {}, () => {
+        document
+          .moveDown()
+          .fontSize(14.5)
+          .font("Arial Black")
+          .text(t("Payment history"), document.page.margins.left)
+          .moveDown();
+      }),
+    );
+
+    if (charges.length === 0) {
+      chargesSection.add(
+        document.struct("P", {}, () => {
+          document
+            .moveDown()
+            .fontSize(9.5)
+            .font("Arial")
+            .fillColor("#000")
+            .text(t("No charges recorded."), document.page.margins.left);
+        }),
+      );
+    } else {
+      for (const charge of charges) {
+        chargesSection.add(
+          document.struct("Table", {}, () => {
+            const { name, address } = charge.billing_details;
+            document
+              .fontSize(9.5)
+              .font("Arial")
+              .table({
+                columnStyles: [
+                  { width: 100, minWidth: 72 },
+                  { width: "*", minWidth: 120 },
+                ],
+                defaultStyle: {
+                  padding: 8,
+                  border: 0,
+                  textColor: "#000",
+                },
+                data: [
+                  [
+                    {
+                      text: formatter.dateTime(charge.created * 1000, {
+                        dateStyle: "full",
+                        timeStyle: "long",
+                      }),
+                      type: "TH",
+                      colSpan: 2,
+                      backgroundColor: COLOR_SECONDARY,
+                    },
+                  ],
+                  [
+                    { text: t("ID:"), type: "TH" },
+                    {
+                      text: charge.id,
+                      type: "TD",
+                    },
+                  ],
+                  [
+                    { text: t("Amount:"), type: "TH" },
+                    {
+                      text: formatter.number(charge.amount / 100, {
+                        style: "currency",
+                        currency: charge.currency,
+                        currencyDisplay: "symbol",
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2,
+                      }),
+                      type: "TD",
+                    },
+                  ],
+                  [
+                    { text: t("Status:"), type: "TH" },
+                    { text: charge.status, type: "TD" },
+                  ],
+                  [
+                    { text: t("Billing Details:"), type: "TH" },
+                    {
+                      text: [
+                        name,
+                        address?.line1,
+                        address?.line2,
+                        address?.city,
+                        address?.state,
+                        address?.postal_code,
+                        address?.country,
+                      ]
+                        .filter(Boolean)
+                        .join("\n"),
+                      type: "TD",
+                    },
+                  ],
+                ],
+              });
+          }),
+        );
+      }
     }
   }
 
