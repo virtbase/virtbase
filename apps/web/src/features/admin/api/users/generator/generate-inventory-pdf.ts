@@ -42,11 +42,12 @@ const WORDMARK_IMAGE_HEIGHT = 31;
 const COLOR_SECONDARY = "#f0f0f0";
 const COLOR_BACKGROUND = "#ffffff";
 
-function renderBackgroundImage(document: PDFKit.PDFDocument) {
+// biome-ignore lint/suspicious/noExplicitAny: PDFKit.PDFDocument.image is not typed
+function renderBackgroundImage(document: PDFKit.PDFDocument, image: any) {
   document.save();
   document.opacity(0.02);
   document.image(
-    BACKGROUND_IMAGE,
+    image,
     document.page.width / 2 - BACKGROUND_IMAGE_WIDTH / 2,
     document.page.height / 2 - BACKGROUND_IMAGE_HEIGHT / 2,
     {
@@ -115,9 +116,11 @@ export const generateInventoryPdf = async ({
   document.info.Author = APP_NAME;
   document.info.CreationDate = new Date();
 
-  renderBackgroundImage(document);
+  // @ts-expect-error - PDFKit.PDFDocument.openImage is not typed
+  const backgroundImage = document.openImage(BACKGROUND_IMAGE);
+  renderBackgroundImage(document, backgroundImage);
   document.on("pageAdded", () => {
-    renderBackgroundImage(document);
+    renderBackgroundImage(document, backgroundImage);
   });
 
   const struct = document.struct("Document");
@@ -324,7 +327,6 @@ export const generateInventoryPdf = async ({
     sessionSection.add(
       document.struct("P", {}, () => {
         document
-          .moveDown()
           .fontSize(9.5)
           .font("Arial")
           .fillColor("#000")
@@ -400,7 +402,6 @@ export const generateInventoryPdf = async ({
     sessionSection.add(
       document.struct("P", {}, () => {
         document
-          .moveDown()
           .fontSize(9.5)
           .font("Arial")
           .fillColor("#000")
@@ -494,7 +495,6 @@ export const generateInventoryPdf = async ({
       chargesSection.add(
         document.struct("P", {}, () => {
           document
-            .moveDown()
             .fontSize(9.5)
             .font("Arial")
             .fillColor("#000")
