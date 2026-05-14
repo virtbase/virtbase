@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Polish\n"
-"PO-Revision-Date: 2026-05-11 12:20\n"
+"PO-Revision-Date: 2026-05-14 16:48\n"
 
 #: ../../packages/discord/src/buttons/main-menu.ts:41
 msgctxt "discord-integration"
@@ -385,7 +385,7 @@ msgstr "Przełącz kolumny"
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:196
 #: src/features/admin/components/servers/servers-table/columns.tsx:253
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:217
-#: src/features/admin/components/users/users-table/columns.tsx:264
+#: src/features/admin/components/users/users-table/columns.tsx:269
 #: src/features/servers/components/servers-list.tsx:189
 msgid "FgydNe"
 msgstr "Pogląd"
@@ -981,7 +981,7 @@ msgstr "Utworzono {date}"
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:205
 #: src/features/admin/components/servers/servers-table/columns.tsx:273
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:226
-#: src/features/admin/components/users/users-table/columns.tsx:347
+#: src/features/admin/components/users/users-table/columns.tsx:358
 #: src/features/servers/components/backups/backups-table/backup-actions.tsx:155
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:141
 msgid "K3r6DQ"
@@ -1040,8 +1040,8 @@ msgstr "Ten klucz zostanie wyświetlony tylko raz. Zapisz go bezpiecznie, poniew
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:103
 #: src/features/admin/components/servers/servers-table/columns.tsx:97
 #: src/features/admin/components/servers/servers-table/columns.tsx:105
-#: src/features/admin/components/users/users-table/columns.tsx:110
-#: src/features/admin/components/users/users-table/columns.tsx:128
+#: src/features/admin/components/users/users-table/columns.tsx:112
+#: src/features/admin/components/users/users-table/columns.tsx:130
 #: src/features/servers/components/backups/backups-table/columns.tsx:64
 #: src/features/servers/components/backups/create-backup-dialog.tsx:128
 #: src/features/servers/components/overview/node-details-dialog.tsx:83
@@ -1125,8 +1125,8 @@ msgid "0Azlrb"
 msgstr "Zarządzać"
 
 #: src/features/account/components/authentication/user-providers-list.tsx:82
-#: src/features/admin/components/users/users-table/columns.tsx:139
-#: src/features/admin/components/users/users-table/columns.tsx:146
+#: src/features/admin/components/users/users-table/columns.tsx:141
+#: src/features/admin/components/users/users-table/columns.tsx:148
 #: src/features/auth/components/email-sign-in.tsx:175
 #: src/features/auth/components/forgot-password-form.tsx:85
 #: src/features/auth/components/register/signup-email.tsx:116
@@ -1304,6 +1304,103 @@ msgstr "Użyj maksymalnie 32 znaków."
 msgid "jvo0vs"
 msgstr "Zapisz"
 
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:90
+msgid "QZwgMJ"
+msgstr "Raport danych użytkownika"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:181
+msgid "g26DD9"
+msgstr "Informacje o raporcie"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:208
+msgid "NJOMwI"
+msgstr "Znacznik czasu eksportu:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:231
+msgid "To1Yq6"
+msgstr "Dane użytkownika"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:258
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:361
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:436
+msgid "tmcdrp"
+msgstr "ID:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:262
+msgid "9ANu2O"
+msgstr "Nazwa wyświetlana:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:266
+msgid "xpTPb3"
+msgstr "E-mail:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:270
+msgid "axPF0j"
+msgstr "E-mail potwierdzony:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:271
+#: src/features/admin/components/users/users-table/columns.tsx:201
+msgid "a5msuh"
+msgstr "Tak"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:271
+#: src/features/admin/components/users/users-table/columns.tsx:201
+msgid "oUWADl"
+msgstr "NIE"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:274
+msgid "fiNfmb"
+msgstr "Język:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:278
+msgid "Ur+SeM"
+msgstr "ID Stripe:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:282
+msgid "vxMnwH"
+msgstr "Data rejestracji:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:292
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:461
+msgid "iXH4ox"
+msgstr "Ostatnia zmiana:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:315
+msgid "MEekj5"
+msgstr "Informacje o sesji"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:328
+msgid "RQPliO"
+msgstr "Brak zarejestrowanych sesji."
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:368
+msgid "/7I9Fi"
+msgstr "Adres IP:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:372
+msgid "uK95OQ"
+msgstr "User-Agent:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:391
+msgid "njqGJJ"
+msgstr "Powiązane konta"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:404
+msgid "nuEHW2"
+msgstr "Brak zarejestrowanych powiązanych kont."
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:443
+msgid "w6rwdu"
+msgstr "ID dostawcy:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:447
+msgid "a2VLth"
+msgstr "Uprawnienia:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:451
+msgid "71lPLk"
+msgstr "Data utworzenia:"
+
 #: src/features/admin/components/admin-sidebar-groups.tsx:67
 msgid "UcHtCB"
 msgstr "Proxmox VE"
@@ -1454,7 +1551,7 @@ msgstr "Nie znaleziono centrum danych."
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:64
 #: src/features/admin/components/servers/servers-table/columns.tsx:72
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:76
-#: src/features/admin/components/users/users-table/columns.tsx:85
+#: src/features/admin/components/users/users-table/columns.tsx:87
 #: src/features/invoices/components/invoices-table/columns.tsx:47
 msgid "94Fg25"
 msgstr "Zaznacz wszystko"
@@ -1465,7 +1562,7 @@ msgstr "Zaznacz wszystko"
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:75
 #: src/features/admin/components/servers/servers-table/columns.tsx:83
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:87
-#: src/features/admin/components/users/users-table/columns.tsx:96
+#: src/features/admin/components/users/users-table/columns.tsx:98
 #: src/features/invoices/components/invoices-table/columns.tsx:58
 msgid "4pJVaS"
 msgstr "Wybierz wiersz"
@@ -1489,8 +1586,8 @@ msgstr "Szukaj według nazwy..."
 #: src/features/admin/components/servers/servers-table/columns.tsx:208
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:184
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:190
-#: src/features/admin/components/users/users-table/columns.tsx:228
-#: src/features/admin/components/users/users-table/columns.tsx:234
+#: src/features/admin/components/users/users-table/columns.tsx:230
+#: src/features/admin/components/users/users-table/columns.tsx:236
 #: src/features/servers/components/rdns/records-table/columns.tsx:60
 msgid "AbXVP4"
 msgstr "Utworzono o godz"
@@ -1501,7 +1598,7 @@ msgstr "Utworzono o godz"
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:180
 #: src/features/admin/components/servers/servers-table/columns.tsx:239
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:203
-#: src/features/admin/components/users/users-table/columns.tsx:250
+#: src/features/admin/components/users/users-table/columns.tsx:255
 msgid "bdcMGy"
 msgstr "Otwórz menu"
 
@@ -1793,42 +1890,38 @@ msgstr "Typ"
 msgid "PLUhm9"
 msgstr "ID VLAN"
 
-#: src/features/admin/components/users/users-table/columns.tsx:129
+#: src/features/admin/components/users/users-table/columns.tsx:131
 msgid "BzHQ0A"
 msgstr "Nazwa/e-mail"
 
-#: src/features/admin/components/users/users-table/columns.tsx:154
-#: src/features/admin/components/users/users-table/columns.tsx:169
+#: src/features/admin/components/users/users-table/columns.tsx:156
+#: src/features/admin/components/users/users-table/columns.tsx:171
 msgid "1ZgrhW"
 msgstr "Rola"
 
-#: src/features/admin/components/users/users-table/columns.tsx:187
-#: src/features/admin/components/users/users-table/columns.tsx:204
+#: src/features/admin/components/users/users-table/columns.tsx:189
+#: src/features/admin/components/users/users-table/columns.tsx:206
 msgid "DC8+TO"
 msgstr "E-mail potwierdzony"
 
-#: src/features/admin/components/users/users-table/columns.tsx:199
-msgid "a5msuh"
-msgstr "Tak"
-
-#: src/features/admin/components/users/users-table/columns.tsx:199
-msgid "oUWADl"
-msgstr "NIE"
-
-#: src/features/admin/components/users/users-table/columns.tsx:282
+#: src/features/admin/components/users/users-table/columns.tsx:287
 msgid "hQZhn8"
 msgstr "Personifikować"
 
-#: src/features/admin/components/users/users-table/columns.tsx:293
+#: src/features/admin/components/users/users-table/columns.tsx:298
 msgid "C3uaig"
 msgstr "Zobacz w Stripe"
 
-#: src/features/admin/components/users/users-table/columns.tsx:315
+#: src/features/admin/components/users/users-table/columns.tsx:320
 #: src/features/servers/components/backups/backups-table/backup-actions.tsx:142
 msgid "qXCbgZ"
 msgstr "Odblokować"
 
-#: src/features/admin/components/users/users-table/columns.tsx:338
+#: src/features/admin/components/users/users-table/columns.tsx:329
+msgid "SVwJTM"
+msgstr "Eksportuj"
+
+#: src/features/admin/components/users/users-table/columns.tsx:349
 msgid "XtUrMc"
 msgstr "Zakaz"
 
