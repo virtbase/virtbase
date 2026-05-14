@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Czech\n"
-"PO-Revision-Date: 2026-05-11 12:20\n"
+"PO-Revision-Date: 2026-05-14 16:48\n"
 
 #: ../../packages/discord/src/buttons/main-menu.ts:41
 msgctxt "discord-integration"
@@ -385,7 +385,7 @@ msgstr "Přepnout sloupce"
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:196
 #: src/features/admin/components/servers/servers-table/columns.tsx:253
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:217
-#: src/features/admin/components/users/users-table/columns.tsx:264
+#: src/features/admin/components/users/users-table/columns.tsx:269
 #: src/features/servers/components/servers-list.tsx:189
 msgid "FgydNe"
 msgstr "Zobrazit"
@@ -981,7 +981,7 @@ msgstr "Vytvořeno {date}"
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:205
 #: src/features/admin/components/servers/servers-table/columns.tsx:273
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:226
-#: src/features/admin/components/users/users-table/columns.tsx:347
+#: src/features/admin/components/users/users-table/columns.tsx:358
 #: src/features/servers/components/backups/backups-table/backup-actions.tsx:155
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:141
 msgid "K3r6DQ"
@@ -1040,8 +1040,8 @@ msgstr "Tento klíč se zobrazí jen jednou. Bezpečně si ho ulož, protože ho
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:103
 #: src/features/admin/components/servers/servers-table/columns.tsx:97
 #: src/features/admin/components/servers/servers-table/columns.tsx:105
-#: src/features/admin/components/users/users-table/columns.tsx:110
-#: src/features/admin/components/users/users-table/columns.tsx:128
+#: src/features/admin/components/users/users-table/columns.tsx:112
+#: src/features/admin/components/users/users-table/columns.tsx:130
 #: src/features/servers/components/backups/backups-table/columns.tsx:64
 #: src/features/servers/components/backups/create-backup-dialog.tsx:128
 #: src/features/servers/components/overview/node-details-dialog.tsx:83
@@ -1125,8 +1125,8 @@ msgid "0Azlrb"
 msgstr "Spravovat"
 
 #: src/features/account/components/authentication/user-providers-list.tsx:82
-#: src/features/admin/components/users/users-table/columns.tsx:139
-#: src/features/admin/components/users/users-table/columns.tsx:146
+#: src/features/admin/components/users/users-table/columns.tsx:141
+#: src/features/admin/components/users/users-table/columns.tsx:148
 #: src/features/auth/components/email-sign-in.tsx:175
 #: src/features/auth/components/forgot-password-form.tsx:85
 #: src/features/auth/components/register/signup-email.tsx:116
@@ -1304,6 +1304,103 @@ msgstr "Použij nejvýše 32 znaků."
 msgid "jvo0vs"
 msgstr "Uložit"
 
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:90
+msgid "QZwgMJ"
+msgstr "Zpráva o uživatelských datech"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:181
+msgid "g26DD9"
+msgstr "Informace o zprávě"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:208
+msgid "NJOMwI"
+msgstr "Čas exportu:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:231
+msgid "To1Yq6"
+msgstr "Uživatelská data"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:258
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:361
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:436
+msgid "tmcdrp"
+msgstr "ID:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:262
+msgid "9ANu2O"
+msgstr "Zobrazované jméno:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:266
+msgid "xpTPb3"
+msgstr "E-mail:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:270
+msgid "axPF0j"
+msgstr "E-mail potvrzen:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:271
+#: src/features/admin/components/users/users-table/columns.tsx:201
+msgid "a5msuh"
+msgstr "Ano"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:271
+#: src/features/admin/components/users/users-table/columns.tsx:201
+msgid "oUWADl"
+msgstr "Ne"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:274
+msgid "fiNfmb"
+msgstr "Jazyk:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:278
+msgid "Ur+SeM"
+msgstr "ID Stripe:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:282
+msgid "vxMnwH"
+msgstr "Datum registrace:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:292
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:461
+msgid "iXH4ox"
+msgstr "Poslední změna:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:315
+msgid "MEekj5"
+msgstr "Informace o relaci"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:328
+msgid "RQPliO"
+msgstr "Nejsou zaznamenány žádné relace."
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:368
+msgid "/7I9Fi"
+msgstr "IP adresa:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:372
+msgid "uK95OQ"
+msgstr "User-Agent:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:391
+msgid "njqGJJ"
+msgstr "Propojené účty"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:404
+msgid "nuEHW2"
+msgstr "Nejsou zaznamenány žádné propojené účty."
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:443
+msgid "w6rwdu"
+msgstr "ID poskytovatele:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:447
+msgid "a2VLth"
+msgstr "Oprávnění:"
+
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:451
+msgid "71lPLk"
+msgstr "Datum vytvoření:"
+
 #: src/features/admin/components/admin-sidebar-groups.tsx:67
 msgid "UcHtCB"
 msgstr "Proxmox VE"
@@ -1454,7 +1551,7 @@ msgstr "Nebylo nalezeno žádné datacentrum."
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:64
 #: src/features/admin/components/servers/servers-table/columns.tsx:72
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:76
-#: src/features/admin/components/users/users-table/columns.tsx:85
+#: src/features/admin/components/users/users-table/columns.tsx:87
 #: src/features/invoices/components/invoices-table/columns.tsx:47
 msgid "94Fg25"
 msgstr "Vybrat vše"
@@ -1465,7 +1562,7 @@ msgstr "Vybrat vše"
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:75
 #: src/features/admin/components/servers/servers-table/columns.tsx:83
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:87
-#: src/features/admin/components/users/users-table/columns.tsx:96
+#: src/features/admin/components/users/users-table/columns.tsx:98
 #: src/features/invoices/components/invoices-table/columns.tsx:58
 msgid "4pJVaS"
 msgstr "Vybrat řádek"
@@ -1489,8 +1586,8 @@ msgstr "Hledat podle názvu..."
 #: src/features/admin/components/servers/servers-table/columns.tsx:208
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:184
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:190
-#: src/features/admin/components/users/users-table/columns.tsx:228
-#: src/features/admin/components/users/users-table/columns.tsx:234
+#: src/features/admin/components/users/users-table/columns.tsx:230
+#: src/features/admin/components/users/users-table/columns.tsx:236
 #: src/features/servers/components/rdns/records-table/columns.tsx:60
 msgid "AbXVP4"
 msgstr "Vytvořeno"
@@ -1501,7 +1598,7 @@ msgstr "Vytvořeno"
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:180
 #: src/features/admin/components/servers/servers-table/columns.tsx:239
 #: src/features/admin/components/subnets/subnets-table/columns.tsx:203
-#: src/features/admin/components/users/users-table/columns.tsx:250
+#: src/features/admin/components/users/users-table/columns.tsx:255
 msgid "bdcMGy"
 msgstr "Otevřít nabídku"
 
@@ -1793,42 +1890,38 @@ msgstr "Typ"
 msgid "PLUhm9"
 msgstr "ID VLAN"
 
-#: src/features/admin/components/users/users-table/columns.tsx:129
+#: src/features/admin/components/users/users-table/columns.tsx:131
 msgid "BzHQ0A"
 msgstr "Jméno/e-mail"
 
-#: src/features/admin/components/users/users-table/columns.tsx:154
-#: src/features/admin/components/users/users-table/columns.tsx:169
+#: src/features/admin/components/users/users-table/columns.tsx:156
+#: src/features/admin/components/users/users-table/columns.tsx:171
 msgid "1ZgrhW"
 msgstr "Role"
 
-#: src/features/admin/components/users/users-table/columns.tsx:187
-#: src/features/admin/components/users/users-table/columns.tsx:204
+#: src/features/admin/components/users/users-table/columns.tsx:189
+#: src/features/admin/components/users/users-table/columns.tsx:206
 msgid "DC8+TO"
 msgstr "E-mail ověřen"
 
-#: src/features/admin/components/users/users-table/columns.tsx:199
-msgid "a5msuh"
-msgstr "Ano"
-
-#: src/features/admin/components/users/users-table/columns.tsx:199
-msgid "oUWADl"
-msgstr "Ne"
-
-#: src/features/admin/components/users/users-table/columns.tsx:282
+#: src/features/admin/components/users/users-table/columns.tsx:287
 msgid "hQZhn8"
 msgstr "Přihlásit se jako uživatel"
 
-#: src/features/admin/components/users/users-table/columns.tsx:293
+#: src/features/admin/components/users/users-table/columns.tsx:298
 msgid "C3uaig"
 msgstr "Zobrazit ve Stripe"
 
-#: src/features/admin/components/users/users-table/columns.tsx:315
+#: src/features/admin/components/users/users-table/columns.tsx:320
 #: src/features/servers/components/backups/backups-table/backup-actions.tsx:142
 msgid "qXCbgZ"
 msgstr "Odemknout"
 
-#: src/features/admin/components/users/users-table/columns.tsx:338
+#: src/features/admin/components/users/users-table/columns.tsx:329
+msgid "SVwJTM"
+msgstr "Exportovat"
+
+#: src/features/admin/components/users/users-table/columns.tsx:349
 msgid "XtUrMc"
 msgstr "Zablokovat"
 
