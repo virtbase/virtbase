@@ -48,5 +48,6 @@ export const createProxmoxNodeGroupAction = actionClient
     }
 
     revalidateTag("proxmox-node-groups", "max");
+    revalidateTag("checkout", "max");
     revalidatePath("/admin.virtbase.com");
   });

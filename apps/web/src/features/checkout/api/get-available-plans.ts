@@ -22,14 +22,8 @@ import { cache } from "react";
 export const getAvailablePlans = cache(async () => {
   "use cache";
 
-  cacheTag(
-    "checkout",
-    "proxmox-node-groups",
-    "proxmox-nodes",
-    "server-plans",
-    "servers",
-  );
-  cacheLife("minutes");
+  cacheTag("checkout");
+  cacheLife("max");
 
   return getPlansWithAvailability();
 });

@@ -18,6 +18,7 @@
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { servers } from "@virtbase/db/schema";
+import { revalidateTag } from "next/cache";
 import { FatalError } from "workflow";
 
 type UpdateServerStepParams = {
@@ -51,4 +52,6 @@ export async function updateServerStep({
       isolationLevel: "read committed",
     },
   );
+
+  revalidateTag("checkout", "max");
 }

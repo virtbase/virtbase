@@ -248,5 +248,6 @@ export const createProxmoxNodeAction = actionClient
     }
 
     revalidateTag("proxmox-nodes", "max");
+    revalidateTag("checkout", "max");
     revalidatePath("/admin.virtbase.com");
   });

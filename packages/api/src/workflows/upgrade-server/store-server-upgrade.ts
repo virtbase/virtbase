@@ -18,6 +18,7 @@
 import { eq, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { servers } from "@virtbase/db/schema";
+import { revalidateTag } from "next/cache";
 
 export async function storeServerUpgradeStep({
   serverId,
@@ -44,6 +45,8 @@ export async function storeServerUpgradeStep({
       isolationLevel: "read committed",
     },
   );
+
+  revalidateTag("checkout", "max");
 }
 
 export async function rollbackStoreServerUpgradeStep({
@@ -70,4 +73,6 @@ export async function rollbackStoreServerUpgradeStep({
       isolationLevel: "read committed",
     },
   );
+
+  revalidateTag("checkout", "max");
 }

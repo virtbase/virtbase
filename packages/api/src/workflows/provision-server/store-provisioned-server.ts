@@ -18,6 +18,7 @@
 import { eq, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { servers, subnetAllocations } from "@virtbase/db/schema";
+import { revalidateTag } from "next/cache";
 import { FatalError } from "workflow";
 
 type StoreProvisionedServerStepParams = {
@@ -83,6 +84,8 @@ export async function storeProvisionedServerStep({
     },
   );
 
+  revalidateTag("checkout", "max");
+
   return {
     serverId: result.serverId,
   };
@@ -113,4 +116,6 @@ export async function rollbackStoreProvisionedServerStep({
       isolationLevel: "read committed",
     },
   );
+
+  revalidateTag("checkout", "max");
 }
