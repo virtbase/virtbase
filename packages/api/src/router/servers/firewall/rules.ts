@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
 import { FIRWALL_PROTOCOLS_WITH_PORTS } from "@virtbase/utils";
 import {
@@ -32,9 +33,9 @@ import {
   UpdateServerFirewallRuleOutputSchema,
 } from "@virtbase/validators/server";
 import { generateText, Output } from "ai";
-import { createTRPCRouter, serverProcedure } from "../../../trpc";
+import { serverProcedure } from "../../../trpc";
 
-export const serverFirewallRulesRouter = createTRPCRouter({
+export const serverFirewallRulesRouter = {
   get: serverProcedure
     .meta({
       openapi: {
@@ -252,4 +253,4 @@ export const serverFirewallRulesRouter = createTRPCRouter({
 
       return result.output;
     }),
-});
+} satisfies TRPCRouterRecord;

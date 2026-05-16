@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import type { TRPCRouterRecord } from "@trpc/server";
 import { mapProxmoxServerStatus, mapProxmoxTaskStatus } from "@virtbase/utils";
 import {
   GetServerStatusInputSchema,
@@ -24,9 +25,9 @@ import {
 } from "@virtbase/validators/server";
 import { getLastTask, performPowerAction } from "../../proxmox";
 import { getDiskInfo } from "../../proxmox/get-disk-info";
-import { createTRPCRouter, serverProcedure } from "../../trpc";
+import { serverProcedure } from "../../trpc";
 
-export const serversStatusRouter = createTRPCRouter({
+export const serversStatusRouter = {
   get: serverProcedure
     .meta({
       openapi: {
@@ -129,4 +130,4 @@ export const serversStatusRouter = createTRPCRouter({
         action,
       });
     }),
-});
+} satisfies TRPCRouterRecord;

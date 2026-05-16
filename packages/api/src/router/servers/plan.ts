@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
 import { eq } from "@virtbase/db";
 import { getPlansWithAvailability } from "@virtbase/db/queries";
@@ -23,9 +24,9 @@ import {
   GetServerPlanInputSchema,
   GetServerPlanOutputSchema,
 } from "@virtbase/validators/server";
-import { createTRPCRouter, serverProcedure } from "../../trpc";
+import { serverProcedure } from "../../trpc";
 
-export const serversPlanRouter = createTRPCRouter({
+export const serversPlanRouter = {
   get: serverProcedure
     .input(GetServerPlanInputSchema)
     .output(GetServerPlanOutputSchema)
@@ -66,4 +67,4 @@ export const serversPlanRouter = createTRPCRouter({
         })),
       };
     }),
-});
+} satisfies TRPCRouterRecord;

@@ -16,6 +16,7 @@
  */
 
 import * as Sentry from "@sentry/node";
+import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
 import { and, eq, getTableColumns, gt, like, sql } from "@virtbase/db";
 import { proxmoxIsoDownloads as pids, proxmoxNodes } from "@virtbase/db/schema";
@@ -35,10 +36,10 @@ import {
   UploadProxmoxIsoOutputSchema,
 } from "@virtbase/validators";
 import { getProxmoxInstance } from "../../proxmox";
-import { createTRPCRouter, protectedProcedure } from "../../trpc";
+import { protectedProcedure } from "../../trpc";
 import { isoStatusRouter } from "./status";
 
-export const isoRouter = createTRPCRouter({
+export const isoRouter = {
   status: isoStatusRouter,
   get: protectedProcedure
     .meta({
@@ -333,7 +334,7 @@ export const isoRouter = createTRPCRouter({
         },
       };
     }),
-});
+} satisfies TRPCRouterRecord;
 
 const getFileDownloadSizeBytes = async (url: string): Promise<number | 0> => {
   try {

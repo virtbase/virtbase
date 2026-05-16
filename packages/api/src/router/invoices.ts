@@ -16,6 +16,7 @@
  */
 
 import * as Sentry from "@sentry/node";
+import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
 import { and, count, eq } from "@virtbase/db";
 import { invoices } from "@virtbase/db/schema";
@@ -29,9 +30,9 @@ import {
   ListInvoicesInputSchema,
   ListInvoicesOutputSchema,
 } from "@virtbase/validators";
-import { createTRPCRouter, protectedProcedure } from "../trpc";
+import { protectedProcedure } from "../trpc";
 
-export const invoicesRouter = createTRPCRouter({
+export const invoicesRouter = {
   get: protectedProcedure
     .meta({
       openapi: {
@@ -255,4 +256,4 @@ export const invoicesRouter = createTRPCRouter({
         },
       };
     }),
-});
+} satisfies TRPCRouterRecord;

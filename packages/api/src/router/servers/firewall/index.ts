@@ -15,11 +15,12 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { createTRPCRouter } from "../../../trpc";
+import type { TRPCRouterRecord } from "@trpc/server";
+
 import { serverFirewallOptionsRouter } from "./options";
 import { serverFirewallRulesRouter } from "./rules";
 
-export const serverFirewallRouter = createTRPCRouter({
+export const serverFirewallRouter = {
   options: serverFirewallOptionsRouter,
   rules: serverFirewallRulesRouter,
-});
+} satisfies TRPCRouterRecord;

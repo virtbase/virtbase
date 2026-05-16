@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
 import { encryptPayload } from "@virtbase/utils";
 import type { WebSocketData } from "@virtbase/validators";
@@ -22,9 +23,9 @@ import {
   GetServerConsoleInputSchema,
   GetServerConsoleOutputSchema,
 } from "@virtbase/validators/server";
-import { createTRPCRouter, serverProcedure } from "../../trpc";
+import { serverProcedure } from "../../trpc";
 
-export const serversConsoleRouter = createTRPCRouter({
+export const serversConsoleRouter = {
   get: serverProcedure
     .meta({
       openapi: {
@@ -95,4 +96,4 @@ export const serversConsoleRouter = createTRPCRouter({
 
       return url.toString();
     }),
-});
+} satisfies TRPCRouterRecord;

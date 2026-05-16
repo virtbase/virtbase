@@ -16,6 +16,7 @@
  */
 
 import * as Sentry from "@sentry/node";
+import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
 import { and, eq } from "@virtbase/db";
 import { getPlansWithAvailability } from "@virtbase/db/queries";
@@ -40,9 +41,9 @@ import { anonpay } from "../anonpay";
 import { ANONPAY_MIN_AMOUNT } from "../anonpay/constants";
 import { stripe } from "../stripe";
 import { getOrCreateStripeCustomer } from "../stripe/get-or-create-customer";
-import { createTRPCRouter, protectedProcedure } from "../trpc";
+import { protectedProcedure } from "../trpc";
 
-export const checkoutRouter = createTRPCRouter({
+export const checkoutRouter = {
   order: protectedProcedure
     .meta({
       ratelimit: {
@@ -373,4 +374,4 @@ export const checkoutRouter = createTRPCRouter({
           throw new TRPCError({ code: "BAD_REQUEST" });
       }
     }),
-});
+} satisfies TRPCRouterRecord;

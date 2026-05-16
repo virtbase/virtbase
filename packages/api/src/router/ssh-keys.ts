@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
 import { and, count, eq } from "@virtbase/db";
 import { sshKeys } from "@virtbase/db/schema";
@@ -34,9 +35,9 @@ import {
   UpdateSSHKeyInputSchema,
   UpdateSSHKeyOutputSchema,
 } from "@virtbase/validators";
-import { createTRPCRouter, protectedProcedure } from "../trpc";
+import { protectedProcedure } from "../trpc";
 
-export const sshKeysRouter = createTRPCRouter({
+export const sshKeysRouter = {
   get: protectedProcedure
     .meta({
       openapi: {
@@ -354,4 +355,4 @@ export const sshKeysRouter = createTRPCRouter({
       // Return nothing on success (void)
       return;
     }),
-});
+} satisfies TRPCRouterRecord;

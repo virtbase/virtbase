@@ -17,7 +17,7 @@
 
 import * as Sentry from "@sentry/node";
 import { initTRPC, TRPCError } from "@trpc/server";
-import type { Auth } from "@virtbase/auth";
+import type { Auth, Session } from "@virtbase/auth";
 import { and, eq, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import {
@@ -41,30 +41,32 @@ import { lexware } from "./lexware";
 import { getProxmoxInstance } from "./proxmox";
 import { defaultFingerprint, ratelimit } from "./upstash";
 
+type TRPCContext = {
+  db: typeof db;
+  // Only include the methods we need to avoid large type inference errors
+  authApi: Pick<Auth["api"], "verifyApiKey" | "getSession">;
+  lexware: typeof lexware;
+  headers: Headers;
+  setHeader: (name: string, value: string) => void;
+  apiKey: string | null;
+  session: Session | null;
+};
+
 export const createTRPCContext = async ({
   headers,
   setHeader,
-  ...opts
-}: {
-  headers: Headers;
-  setHeader: (name: string, value: string) => void;
-  auth: Pick<Auth, "api">;
-}) => {
-  const authApi = opts.auth.api;
-
-  // Only include the methods we need to avoid large type inference errors
-  const narrowedAuthApi = {
-    verifyApiKey: authApi.verifyApiKey,
-    getSession: authApi.getSession,
-  };
-
+  authApi,
+}: Pick<
+  TRPCContext,
+  "headers" | "setHeader" | "authApi"
+>): Promise<TRPCContext> => {
   const sharedContext = {
     db,
-    authApi: narrowedAuthApi,
+    authApi,
     lexware,
     headers,
     setHeader,
-  };
+  } satisfies Partial<TRPCContext>;
 
   const apiKey = headers.get("x-virtbase-api-key");
   if (apiKey) {
@@ -85,8 +87,7 @@ export const createTRPCContext = async ({
     session,
   };
 };
-
-type RatelimitMeta = {
+export interface TRPCMeta extends OpenApiMeta {
   /**
    * A custom rate limit configuration for this endpoint.
    * - If set to an object, that configuration is used.
@@ -108,9 +109,6 @@ type RatelimitMeta = {
           | `${number} d`;
       }
     | false;
-};
-
-type ServerProcedureMeta = {
   /**
    * Restrict the procedure to only allow
    * certain server states.
@@ -121,21 +119,16 @@ type ServerProcedureMeta = {
    * the server data.
    */
   expand?: ServerExpand;
-};
-
-type APIKeyProcedureMeta = {
   /**
    * Restrict the procedure to only allow
    * certain API key permissions.
    */
   permissions?: Partial<APIKeyPermissions>;
-};
+}
 
 const t = initTRPC
-  .meta<
-    OpenApiMeta & RatelimitMeta & ServerProcedureMeta & APIKeyProcedureMeta
-  >()
-  .context<typeof createTRPCContext>()
+  .meta<TRPCMeta>()
+  .context<TRPCContext>()
   .create({
     transformer: superjson,
     errorFormatter: ({ shape, error }) => ({

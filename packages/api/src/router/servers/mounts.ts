@@ -16,6 +16,7 @@
  */
 
 import * as Sentry from "@sentry/node";
+import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
 import { and, eq, sql } from "@virtbase/db";
 import { proxmoxIsoDownloads as pids, servers } from "@virtbase/db/schema";
@@ -25,9 +26,9 @@ import {
   UnmountServerImageInputSchema,
   UnmountServerImageOutputSchema,
 } from "@virtbase/validators/server";
-import { createTRPCRouter, serverProcedure } from "../../trpc";
+import { serverProcedure } from "../../trpc";
 
-export const serversMountsRouter = createTRPCRouter({
+export const serversMountsRouter = {
   mount: serverProcedure
     .meta({
       openapi: {
@@ -211,4 +212,4 @@ export const serversMountsRouter = createTRPCRouter({
         });
       }
     }),
-});
+} satisfies TRPCRouterRecord;

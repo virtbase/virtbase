@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
 import { and, count, eq, isNull, sql } from "@virtbase/db";
 import {
@@ -35,9 +36,9 @@ import {
   UpsertPointerRecordOutputSchema,
 } from "@virtbase/validators/server";
 import { buildPtrName, powerdns } from "../../powerdns";
-import { createTRPCRouter, serverProcedure } from "../../trpc";
+import { serverProcedure } from "../../trpc";
 
-export const serversRdnsRouter = createTRPCRouter({
+export const serversRdnsRouter = {
   get: serverProcedure
     .meta({
       openapi: {
@@ -432,4 +433,4 @@ export const serversRdnsRouter = createTRPCRouter({
         },
       );
     }),
-});
+} satisfies TRPCRouterRecord;

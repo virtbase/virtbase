@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
 import { and, eq, sql } from "@virtbase/db";
 import {
@@ -26,9 +27,9 @@ import {
   GetProxmoxIsoDownloadStatusOutputSchema,
 } from "@virtbase/validators";
 import { getProxmoxInstance } from "../../proxmox";
-import { createTRPCRouter, protectedProcedure } from "../../trpc";
+import { protectedProcedure } from "../../trpc";
 
-export const isoStatusRouter = createTRPCRouter({
+export const isoStatusRouter = {
   get: protectedProcedure
     .meta({
       openapi: {
@@ -201,4 +202,4 @@ export const isoStatusRouter = createTRPCRouter({
         status,
       };
     }),
-});
+} satisfies TRPCRouterRecord;

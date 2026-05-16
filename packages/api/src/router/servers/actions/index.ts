@@ -16,6 +16,7 @@
  */
 
 import * as Sentry from "@sentry/node";
+import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
 import { changeTempalateWorkflow } from "@virtbase/api/workflows";
 import { eq } from "@virtbase/db";
@@ -28,9 +29,9 @@ import {
   ResetServerPasswordServerOutputSchema,
 } from "@virtbase/validators/server";
 import { start } from "workflow/api";
-import { createTRPCRouter, serverProcedure } from "../../../trpc";
+import { serverProcedure } from "../../../trpc";
 
-export const serversActionsRouter = createTRPCRouter({
+export const serversActionsRouter = {
   changeTemplate: serverProcedure
     .meta({
       openapi: {
@@ -158,4 +159,4 @@ export const serversActionsRouter = createTRPCRouter({
         });
       }
     }),
-});
+} satisfies TRPCRouterRecord;

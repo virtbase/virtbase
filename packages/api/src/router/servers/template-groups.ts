@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
 import { eq, sql } from "@virtbase/db";
 import {
@@ -28,9 +29,9 @@ import {
   GetServerTemplateGroupsInputSchema,
   GetServerTemplateGroupsOutputSchema,
 } from "@virtbase/validators/server";
-import { createTRPCRouter, serverProcedure } from "../../trpc";
+import { serverProcedure } from "../../trpc";
 
-export const serversTemplateGroupsRouter = createTRPCRouter({
+export const serversTemplateGroupsRouter = {
   get: serverProcedure
     .meta({
       openapi: {
@@ -147,4 +148,4 @@ export const serversTemplateGroupsRouter = createTRPCRouter({
           }),
       };
     }),
-});
+} satisfies TRPCRouterRecord;

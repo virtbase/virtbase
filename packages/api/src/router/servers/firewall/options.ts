@@ -15,15 +15,16 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import type { TRPCRouterRecord } from "@trpc/server";
 import {
   GetServerFirewallOptionsInputSchema,
   GetServerFirewallOptionsOutputSchema,
   UpdateServerFirewallOptionsInputSchema,
   UpdateServerFirewallOptionsOutputSchema,
 } from "@virtbase/validators/server";
-import { createTRPCRouter, serverProcedure } from "../../../trpc";
+import { serverProcedure } from "../../../trpc";
 
-export const serverFirewallOptionsRouter = createTRPCRouter({
+export const serverFirewallOptionsRouter = {
   get: serverProcedure
     .meta({
       openapi: {
@@ -88,4 +89,4 @@ export const serverFirewallOptionsRouter = createTRPCRouter({
         policy_out: input.policy_out,
       });
     }),
-});
+} satisfies TRPCRouterRecord;

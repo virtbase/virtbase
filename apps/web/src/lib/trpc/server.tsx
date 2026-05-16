@@ -32,7 +32,10 @@ const createContext = cache(async () => {
   return createTRPCContext({
     headers: heads,
     setHeader: (name: string, value: string) => heads.set(name, value),
-    auth,
+    authApi: {
+      verifyApiKey: auth.api.verifyApiKey,
+      getSession: auth.api.getSession,
+    },
   });
 });
 

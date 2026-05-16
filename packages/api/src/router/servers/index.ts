@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import type { TRPCRouterRecord } from "@trpc/server";
 import { and, count, eq, sql } from "@virtbase/db";
 import {
   datacenters,
@@ -36,11 +37,7 @@ import {
   RenameServerInputSchema,
   RenameServerOutputSchema,
 } from "@virtbase/validators/server";
-import {
-  createTRPCRouter,
-  protectedProcedure,
-  serverProcedure,
-} from "../../trpc";
+import { protectedProcedure, serverProcedure } from "../../trpc";
 import { serversActionsRouter } from "./actions";
 import { serversAdvancedRouter } from "./advanced";
 import { serversBackupsRouter } from "./backups";
@@ -53,7 +50,7 @@ import { serversRdnsRouter } from "./rdns";
 import { serversStatusRouter } from "./status";
 import { serversTemplateGroupsRouter } from "./template-groups";
 
-export const serversRouter = createTRPCRouter({
+export const serversRouter = {
   actions: serversActionsRouter,
   advanced: serversAdvancedRouter,
   firewall: serverFirewallRouter,
@@ -330,4 +327,4 @@ export const serversRouter = createTRPCRouter({
           );
       });
     }),
-});
+} satisfies TRPCRouterRecord;

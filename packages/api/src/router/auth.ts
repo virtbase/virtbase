@@ -15,13 +15,14 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
 import { and, count, eq, isNotNull } from "@virtbase/db";
 import { accounts, users } from "@virtbase/db/schema";
 import * as z from "zod";
-import { createTRPCRouter, publicProcedure } from "../trpc";
+import { publicProcedure } from "../trpc";
 
-export const authRouter = createTRPCRouter({
+export const authRouter = {
   checkAccountExists: publicProcedure
     .meta({
       ratelimit: {
@@ -83,4 +84,4 @@ export const authRouter = createTRPCRouter({
         hasPassword: result.accounts > 0,
       };
     }),
-});
+} satisfies TRPCRouterRecord;

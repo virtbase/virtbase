@@ -15,16 +15,20 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import type { AppRouter } from "@virtbase/api";
 import { appRouter } from "@virtbase/api";
 import { db } from "@virtbase/db/client";
 import { createId } from "@virtbase/db/utils";
 import type { UserByInteraction } from "./get-user-by-interaction";
 
+/** tRPC server caller for {@link appRouter} (portable in declaration emit). */
+export type DiscordCaller = ReturnType<AppRouter["createCaller"]>;
+
 export const createDiscordCaller = async ({
   user,
 }: {
   user: UserByInteraction | null;
-}) => {
+}): Promise<DiscordCaller> => {
   return appRouter.createCaller({
     db,
     authApi: {} as never,
@@ -47,5 +51,3 @@ export const createDiscordCaller = async ({
       : null,
   });
 };
-
-export type DiscordCaller = Awaited<ReturnType<typeof createDiscordCaller>>;

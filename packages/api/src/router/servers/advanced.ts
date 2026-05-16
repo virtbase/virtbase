@@ -16,6 +16,7 @@
  */
 
 import * as Sentry from "@sentry/node";
+import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
 import {
   GetServerAdvancedInputSchema,
@@ -23,9 +24,9 @@ import {
   UpdateServerAdvancedInputSchema,
   UpdateServerAdvancedOutputSchema,
 } from "@virtbase/validators/server";
-import { createTRPCRouter, serverProcedure } from "../../trpc";
+import { serverProcedure } from "../../trpc";
 
-export const serversAdvancedRouter = createTRPCRouter({
+export const serversAdvancedRouter = {
   get: serverProcedure
     .meta({
       openapi: {
@@ -153,4 +154,4 @@ export const serversAdvancedRouter = createTRPCRouter({
         });
       }
     }),
-});
+} satisfies TRPCRouterRecord;

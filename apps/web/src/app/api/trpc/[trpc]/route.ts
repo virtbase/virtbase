@@ -30,7 +30,10 @@ const handler = async (req: NextRequest) => {
     router: appRouter,
     createContext: () =>
       createTRPCContext({
-        auth,
+        authApi: {
+          verifyApiKey: auth.api.verifyApiKey,
+          getSession: auth.api.getSession,
+        },
         headers: req.headers,
         setHeader: (k, v) => (rateLimitHeaders[k] = v),
       }),

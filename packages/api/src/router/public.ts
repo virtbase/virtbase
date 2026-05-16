@@ -15,11 +15,12 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import type { TRPCRouterRecord } from "@trpc/server";
 import { getPlansWithAvailability } from "@virtbase/db/queries";
 import { GetOfferListOutputSchema } from "@virtbase/validators";
-import { createTRPCRouter, publicProcedure } from "../trpc";
+import { publicProcedure } from "../trpc";
 
-export const publicRouter = createTRPCRouter({
+export const publicRouter = {
   getOfferList: publicProcedure
     .meta({
       openapi: {
@@ -52,4 +53,4 @@ export const publicRouter = createTRPCRouter({
         is_available: offer.isAvailable,
       }));
     }),
-});
+} satisfies TRPCRouterRecord;

@@ -15,13 +15,14 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import type { TRPCRouterRecord } from "@trpc/server";
 import {
   GetServerGraphsInputSchema,
   GetServerGraphsOutputSchema,
 } from "@virtbase/validators/server";
-import { createTRPCRouter, serverProcedure } from "../../trpc";
+import { serverProcedure } from "../../trpc";
 
-export const serversGraphsRouter = createTRPCRouter({
+export const serversGraphsRouter = {
   get: serverProcedure
     .meta({
       openapi: {
@@ -81,4 +82,4 @@ export const serversGraphsRouter = createTRPCRouter({
         data: filteredData,
       };
     }),
-});
+} satisfies TRPCRouterRecord;
