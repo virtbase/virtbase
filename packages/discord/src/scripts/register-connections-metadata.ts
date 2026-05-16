@@ -45,6 +45,21 @@ async function main() {
     return;
   }
 
+  const count = roleConnectionsMetadata.length;
+  if (count === 0) {
+    console.warn(
+      "[@virtbase/discord] No connections metadata to register, skipping",
+    );
+    return;
+  }
+
+  if (count > 5) {
+    console.error(
+      `[@virtbase/discord] Too many connections (${count} > 5) metadata to register, skipping`,
+    );
+    return;
+  }
+
   const url = `https://discord.com/api/v10/applications/${DISCORD_APP_ID}/role-connections/metadata`;
   const response = await fetch(url, {
     headers: {

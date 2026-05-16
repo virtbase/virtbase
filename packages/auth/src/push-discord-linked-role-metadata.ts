@@ -17,11 +17,13 @@
 
 import { and, eq, gte, isNull, or, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
-import { servers } from "@virtbase/db/schema";
+import { servers, users } from "@virtbase/db/schema";
 
 // Must match the schema defined in src/role-connections-metadata.ts
 interface Metadata {
   active_servers_count: number;
+  user_email_verified?: number;
+  user_created_at?: string;
 }
 
 /**
@@ -51,8 +53,22 @@ export const pushDiscordLinkedRoleMetadata = async ({
       ),
     );
 
+    const user = await tx
+      .select({
+        emailVerified: users.emailVerified,
+        createdAt: users.createdAt,
+      })
+      .from(users)
+      .where(eq(users.id, userId))
+      .limit(1)
+      .then(([row]) => row);
+
     return {
       active_servers_count: activeServersCount,
+      ...(user && {
+        user_email_verified: user.emailVerified ? 1 : 0,
+        user_created_at: user.createdAt.toISOString(),
+      }),
     } satisfies Metadata;
   });
 

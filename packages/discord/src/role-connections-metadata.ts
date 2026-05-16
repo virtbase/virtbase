@@ -20,6 +20,10 @@ import { ApplicationRoleConnectionMetadataType } from "discord-api-types/v10";
 import {
   activeServersCountDescriptionLocalizations,
   activeServersCountNameLocalizations,
+  emailVerifiedDescriptionLocalizations,
+  emailVerifiedNameLocalizations,
+  registrationDateDescriptionLocalizations,
+  registrationDateNameLocalizations,
 } from "./role-connections-localizations";
 
 export const roleConnectionsMetadata: APIApplicationRoleConnectionMetadata[] = [
@@ -32,5 +36,21 @@ export const roleConnectionsMetadata: APIApplicationRoleConnectionMetadata[] = [
     description_localizations: {
       ...activeServersCountDescriptionLocalizations,
     },
+  },
+  {
+    key: "user_email_verified",
+    type: ApplicationRoleConnectionMetadataType.BooleanEqual,
+    name: "Email Verified",
+    description: "User has verified their email address",
+    name_localizations: { ...emailVerifiedNameLocalizations },
+    description_localizations: { ...emailVerifiedDescriptionLocalizations },
+  },
+  {
+    key: "user_created_at",
+    type: ApplicationRoleConnectionMetadataType.DatetimeLessThanOrEqual,
+    name: "Registered Days",
+    description: "Days since the user registered",
+    name_localizations: { ...registrationDateNameLocalizations },
+    description_localizations: { ...registrationDateDescriptionLocalizations },
   },
 ];

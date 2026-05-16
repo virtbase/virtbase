@@ -20,7 +20,7 @@
 import type { Stripe } from "@virtbase/api/stripe";
 import { stripe } from "@virtbase/api/stripe";
 import type { Session } from "@virtbase/auth";
-import { eq } from "@virtbase/db";
+import { and, eq, isNull } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import {
   accounts as accountsTable,
@@ -53,7 +53,12 @@ export const createUserExportAction = actionClient
           createdAt: sessionsTable.createdAt,
         })
         .from(sessionsTable)
-        .where(eq(sessionsTable.userId, userId))
+        .where(
+          and(
+            eq(sessionsTable.userId, userId),
+            isNull(sessionsTable.impersonatedBy),
+          ),
+        )
         .orderBy(sessionsTable.createdAt),
       db
         .select({
@@ -80,7 +85,8 @@ export const createUserExportAction = actionClient
             customer: userWithStripeCustomerId.stripeCustomerId,
             limit: 100,
           })
-          .then((res) => res.data);
+          .then((res) => res.data)
+          .then((data) => data.sort((a, b) => b.created - a.created));
       } catch {
         charges = [];
       }
