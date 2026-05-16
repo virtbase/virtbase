@@ -15,3448 +15,3363 @@ msgstr ""
 "Language-Team: Spanish\n"
 "PO-Revision-Date: 2026-04-22 13:59\n"
 
-#: ../../packages/discord/src/buttons/main-menu.ts:41
+#: ../../packages/discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
 msgid "AgoOEq"
 msgstr "Volver al menú"
 
-#: ../../packages/discord/src/buttons/manage-servers.ts:38
-#: ../../packages/discord/src/messages/servers/servers-list.ts:63
+#: ../../packages/discord/src/buttons/manage-servers.ts
+#: ../../packages/discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "U2slxM"
 msgstr "Gestionar servidores"
 
-#: ../../packages/discord/src/buttons/renew-server.ts:42
+#: ../../packages/discord/src/buttons/renew-server.ts
 msgctxt "discord-integration"
 msgid "nWQFic"
 msgstr "Renovar"
 
-#: ../../packages/discord/src/buttons/reset-server-password.ts:43
+#: ../../packages/discord/src/buttons/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "Yy/yDL"
 msgstr "Restablecer contraseña"
 
-#: ../../packages/discord/src/buttons/server-console.ts:43
-#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts:60
+#: ../../packages/discord/src/buttons/server-console.ts
+#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts
 msgctxt "discord-integration"
 msgid "gc+2Z2"
 msgstr "Consola"
 
-#: ../../packages/discord/src/buttons/server-overview.ts:40
+#: ../../packages/discord/src/buttons/server-overview.ts
 msgctxt "discord-integration"
 msgid "/w61wP"
 msgstr "Volver al servidor"
 
-#: ../../packages/discord/src/buttons/show-in-portal.ts:42
+#: ../../packages/discord/src/buttons/show-in-portal.ts
 msgctxt "discord-integration"
 msgid "+uqHID"
 msgstr "Ver en el portal"
 
-#: ../../packages/discord/src/messages/invite.ts:57
+#: ../../packages/discord/src/messages/invite.ts
 msgctxt "discord-integration"
 msgid "uXREGV"
 msgstr "Invita Virtbase a tu servidor"
 
-#: ../../packages/discord/src/messages/invite.ts:59
+#: ../../packages/discord/src/messages/invite.ts
 msgctxt "discord-integration"
 msgid "yoX1pg"
 msgstr "Haz clic en el enlace de abajo para añadir la integración de Virtbase a tu servidor de Discord:"
 
-#: ../../packages/discord/src/messages/invite.ts:74
+#: ../../packages/discord/src/messages/invite.ts
 msgctxt "discord-integration"
 msgid "6O3+aN"
 msgstr "URL de invitación"
 
-#: ../../packages/discord/src/messages/main-menu.ts:56
+#: ../../packages/discord/src/messages/main-menu.ts
 msgctxt "discord-integration"
 msgid "QCv9lw"
 msgstr "Menú principal"
 
-#: ../../packages/discord/src/messages/main-menu.ts:57
+#: ../../packages/discord/src/messages/main-menu.ts
 msgctxt "discord-integration"
 msgid "gaUHYQ"
 msgstr "Elige una acción en el menú de abajo."
 
-#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts:58
+#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts
 msgctxt "discord-integration"
 msgid "GyeODL"
 msgstr "Contraseña restablecida correctamente."
 
-#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts:60
+#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts
 msgctxt "discord-integration"
 msgid "n/xfjW"
 msgstr "La contraseña de tu servidor se ha restablecido correctamente."
 
-#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts:61
+#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts
 msgctxt "discord-integration"
 msgid "pJ2eg6"
 msgstr "Ya puedes iniciar sesión en el servidor con la nueva contraseña."
 
-#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts:62
+#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts
 msgctxt "discord-integration"
 msgid "PlveeX"
 msgstr "Haz clic en el enlace de un solo uso de abajo para abrir la consola:"
 
-#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts:63
+#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts
 msgctxt "discord-integration"
 msgid "8rmkQD"
 msgstr "Este enlace caduca en 10 segundos."
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts:76
+#: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "t2uvIi"
 msgstr "Sistema operativo"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts:84
+#: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "ivkv/L"
 msgstr "Nodo"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts:86
+#: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "GaTcNW"
 msgstr "- Nombre: {hostname}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts:90
+#: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "M1WTIv"
 msgstr "- Datacenter: {datacenter}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts:95
+#: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "SuwJeu"
 msgstr "- Uplink: {netrate}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts:104
+#: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "rnZkeW"
 msgstr "- CPU: {cpu_description}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts:109
+#: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "gs/Iys"
 msgstr "- RAM: {memory_description}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts:114
+#: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "9PSqfa"
 msgstr "- Almacenamiento: {storage_description}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts:129
+#: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "UlO1td"
 msgstr "Interfaces de red"
 
-#: ../../packages/discord/src/messages/servers/servers-list-empty.ts:58
+#: ../../packages/discord/src/messages/servers/servers-list-empty.ts
 msgctxt "discord-integration"
 msgid "Vq3ifs"
 msgstr "No hay servidores disponibles"
 
-#: ../../packages/discord/src/messages/servers/servers-list-empty.ts:59
+#: ../../packages/discord/src/messages/servers/servers-list-empty.ts
 msgctxt "discord-integration"
 msgid "fUXt5C"
 msgstr "Aún no has alquilado ningún servidor. Alquila uno para gestionarlo con la integración de Discord."
 
-#: ../../packages/discord/src/messages/servers/servers-list-empty.ts:72
+#: ../../packages/discord/src/messages/servers/servers-list-empty.ts
 msgctxt "discord-integration"
 msgid "67Bzc5"
 msgstr "Tienda Virtbase"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts:65
+#: ../../packages/discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "pN8BlF"
 msgstr "Los siguientes servidores están asignados a tu cuenta y puedes gestionarlos."
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts:69
+#: ../../packages/discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "0ZPfix"
 msgstr "Elige un servidor para gestionarlo:"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts:77
+#: ../../packages/discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "BGI16m"
 msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts:83
+#: ../../packages/discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "tpfEY0"
 msgstr "{memory} RAM"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts:88
+#: ../../packages/discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "cenOuc"
 msgstr "{storage} NVMe SSD"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts:97
+#: ../../packages/discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "7F86ji"
 msgstr "Ver en el portal ↗"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts:114
+#: ../../packages/discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "JGe/wh"
 msgstr "Elige un servidor"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:56
+#: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "dvr19k"
 msgstr "Configuración"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:58
+#: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "S0rNC0"
 msgstr "¡Bienvenido a Virtbase!"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:60
+#: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "Kh0E7j"
 msgstr "Tu cuenta de Virtbase aún no está vinculada a Discord."
 
-#: ../../packages/discord/src/messages/setup-menu.ts:64
+#: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "u/Hev8"
 msgstr "Sigue los pasos de abajo para vincular las cuentas:"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:68
+#: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "ac8Iok"
 msgstr "1. Abre el portal de clientes"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:69
+#: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "f4ziLK"
 msgstr "Haz clic en el botón de abajo e inicia sesión con tu cuenta de Virtbase."
 
-#: ../../packages/discord/src/messages/setup-menu.ts:74
+#: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "2ZTNN3"
 msgstr "2. Vincular cuentas"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:75
+#: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "XnY6rW"
 msgstr "Ve a tu cuenta en el portal, en **Seguridad**, sección **Autenticación**. Ahí vincula tu cuenta de Discord."
 
-#: ../../packages/discord/src/messages/setup-menu.ts:80
+#: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "VRJHO/"
 msgstr "3. Repite el comando"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:81
+#: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "gCSCoh"
 msgstr "Repite el comando cuando quieras realizar acciones."
 
-#: ../../packages/discord/src/modals/reset-server-password.ts:43
+#: ../../packages/discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "xl27nc"
 msgstr "Restablecer contraseña"
 
-#: ../../packages/discord/src/modals/reset-server-password.ts:48
+#: ../../packages/discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "qHabR+"
 msgstr "La acción fallará si no está instalado el paquete `qemu-quest-agent`."
 
-#: ../../packages/discord/src/modals/reset-server-password.ts:54
+#: ../../packages/discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "JCIgkj"
 msgstr "Usuario"
 
-#: ../../packages/discord/src/modals/reset-server-password.ts:56
+#: ../../packages/discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "eREue0"
 msgstr "Suele ser `root` en Linux y `Administrator` en Windows."
 
-#: ../../packages/discord/src/modals/reset-server-password.ts:72
+#: ../../packages/discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "Ev6SEF"
 msgstr "Nueva contraseña"
 
-#: ../../packages/discord/src/modals/reset-server-password.ts:74
+#: ../../packages/discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "LGDnPd"
 msgstr "Una mayúscula, una minúscula, un número y mínimo 8 caracteres."
 
-#: ../../packages/discord/src/utils/create-embed.ts:35
+#: ../../packages/discord/src/utils/create-embed.ts
 msgctxt "discord-integration"
 msgid "Wbc21W"
 msgstr "Virtbase: hosting, pero seguro."
 
-#: ../../packages/ui/src/data-table/data-table-column-header.tsx:84
+#: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "o/UJXc"
 msgstr "asc"
 
-#: ../../packages/ui/src/data-table/data-table-column-header.tsx:92
+#: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "FXGK2/"
 msgstr "Descripción"
 
-#: ../../packages/ui/src/data-table/data-table-column-header.tsx:100
-#: ../../packages/ui/src/data-table/data-table-toolbar.tsx:78
-#: src/features/servers/components/server-actions-row.tsx:193
+#: ../../packages/ui/src/data-table/data-table-column-header.tsx
+#: ../../packages/ui/src/data-table/data-table-toolbar.tsx
+#: src/features/servers/components/server-actions-row.tsx
 msgid "jm/spn"
 msgstr "Reiniciar"
 
-#: ../../packages/ui/src/data-table/data-table-column-header.tsx:112
+#: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "VA/Z1S"
 msgstr "Esconder"
 
-#: ../../packages/ui/src/data-table/data-table-date-filter.tsx:149
+#: ../../packages/ui/src/data-table/data-table-date-filter.tsx
 msgid "qp/RxH"
 msgstr "Seleccionar rango de fechas"
 
-#: ../../packages/ui/src/data-table/data-table-date-filter.tsx:172
+#: ../../packages/ui/src/data-table/data-table-date-filter.tsx
 msgid "gjwFsT"
 msgstr "Seleccionar fecha"
 
-#: ../../packages/ui/src/data-table/data-table-date-filter.tsx:203
-#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:172
-#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:264
+#: ../../packages/ui/src/data-table/data-table-date-filter.tsx
+#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
 msgid "/zw7BY"
 msgstr "Borrar filtro {title}"
 
-#: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx:133
+#: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx
 msgid "NKPfmm"
 msgstr "{count} seleccionado"
 
-#: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx:159
+#: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx
 msgid "V5JQj+"
 msgstr "No se encontraron resultados."
 
-#: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx:198
+#: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx
 msgid "F4gyn3"
 msgstr "Limpiar filtros"
 
-#: ../../packages/ui/src/data-table/data-table-pagination.tsx:58
+#: ../../packages/ui/src/data-table/data-table-pagination.tsx
 msgid "8b5d6w"
 msgstr "{count} de las filas {total} seleccionadas"
 
-#: ../../packages/ui/src/data-table/data-table-pagination.tsx:66
+#: ../../packages/ui/src/data-table/data-table-pagination.tsx
 msgid "VCZBMt"
 msgstr "Filas por página"
 
-#: ../../packages/ui/src/data-table/data-table-pagination.tsx:87
+#: ../../packages/ui/src/data-table/data-table-pagination.tsx
 msgid "Alf4gQ"
 msgstr "Página {page} de {total}"
 
-#: ../../packages/ui/src/data-table/data-table-pagination.tsx:94
+#: ../../packages/ui/src/data-table/data-table-pagination.tsx
 msgid "F4dsUN"
 msgstr "Ir a la primera página"
 
-#: ../../packages/ui/src/data-table/data-table-pagination.tsx:104
+#: ../../packages/ui/src/data-table/data-table-pagination.tsx
 msgid "NYErt1"
 msgstr "Ir a la página anterior"
 
-#: ../../packages/ui/src/data-table/data-table-pagination.tsx:114
+#: ../../packages/ui/src/data-table/data-table-pagination.tsx
 msgid "nkDaFL"
 msgstr "Ir a la página siguiente"
 
-#: ../../packages/ui/src/data-table/data-table-pagination.tsx:124
+#: ../../packages/ui/src/data-table/data-table-pagination.tsx
 msgid "fMrPOR"
 msgstr "Ir a la última página"
 
-#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:203
+#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
 msgid "dM+p3/"
 msgstr "De"
 
-#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:227
+#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
 msgid "9j3hXO"
 msgstr "A"
 
-#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:252
+#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
 msgid "UfFPe5"
 msgstr "control deslizante {title}"
 
-#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:269
+#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
 msgid "/GCoTA"
 msgstr "Clara"
 
-#: ../../packages/ui/src/data-table/data-table-toolbar.tsx:71
+#: ../../packages/ui/src/data-table/data-table-toolbar.tsx
 msgid "jZ0o74"
 msgstr "Restablecer filtros"
 
-#: ../../packages/ui/src/data-table/data-table-view-options.tsx:64
+#: ../../packages/ui/src/data-table/data-table-view-options.tsx
 msgid "5PWP+M"
 msgstr "Alternar columnas"
 
-#: ../../packages/ui/src/data-table/data-table-view-options.tsx:72
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:168
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:163
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:363
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:196
-#: src/features/admin/components/servers/servers-table/columns.tsx:253
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:217
-#: src/features/admin/components/users/users-table/columns.tsx:269
-#: src/features/servers/components/servers-list.tsx:189
+#: ../../packages/ui/src/data-table/data-table-view-options.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/servers/components/servers-list.tsx
 msgid "FgydNe"
 msgstr "Vista"
 
-#: ../../packages/ui/src/data-table/data-table-view-options.tsx:77
+#: ../../packages/ui/src/data-table/data-table-view-options.tsx
 msgid "nDz7zP"
 msgstr "Buscar columnas..."
 
-#: ../../packages/ui/src/data-table/data-table-view-options.tsx:79
+#: ../../packages/ui/src/data-table/data-table-view-options.tsx
 msgid "945Lt6"
 msgstr "No se encontraron columnas."
 
-#: ../../packages/ui/src/data-table/data-table.tsx:106
+#: ../../packages/ui/src/data-table/data-table.tsx
 msgid "0H2hdf"
 msgstr "Sin resultados."
 
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:81
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:93
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx
 msgid "VX2yLr"
 msgstr "Configurar {name}"
 
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:82
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:94
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx
 msgid "a7uVhC"
 msgstr "Configure el plan del servidor {name} en {appName}"
 
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:154
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx
 msgid "fYwMu5"
 msgstr "Todos los precios incluyen el IVA legal, en su caso."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:53
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "xxhML8"
 msgstr "Detalles de pago"
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:54
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "H0EiGf"
 msgstr "Su pago ha sido procesado. Aquí podrás ver los detalles de tu pedido."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:69
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "MjOjxw"
 msgstr "Orden cancelada"
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:70
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "MrIhWr"
 msgstr "El pedido ha sido cancelado y no será procesado."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:71
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "Al9AIE"
 msgstr "Vuelva a finalizar la compra e inténtelo nuevamente con un método de pago diferente."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:78
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "nImirt"
 msgstr "El pago se está procesando."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:79
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "To2Myp"
 msgstr "Debido al método de pago elegido, el pedido sólo se procesará después de que el pago se haya procesado exitosamente."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:82
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "NGX4ZX"
 msgstr "Le enviaremos un correo electrónico con todos los detalles una vez procesado el pedido."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:89
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "p39Bbe"
 msgstr "El orden requiere acción"
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:90
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "lDCVlQ"
 msgstr "La orden requiere una acción por su parte."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:91
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "uew4Mt"
 msgstr "Realice la acción y el pedido se procesará automáticamente."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:98
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "6O8bJK"
 msgstr "El pedido requiere pago"
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:99
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "yndqQb"
 msgstr "El pedido requiere un pago."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:100
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "E9nzLe"
 msgstr "Iniciaremos el pago y procesaremos el pedido."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:105
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "dj4t0s"
 msgstr "El pedido requiere confirmación"
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:106
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "nxm6Cj"
 msgstr "El pedido requiere una confirmación mediante su método de pago."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:109
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "wsDmTC"
 msgstr "Realice la confirmación y el pedido será procesado automáticamente."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:116
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "uH08xA"
 msgstr "El pedido requiere método de pago"
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:117
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "jS7WDS"
 msgstr "El pedido requiere un método de pago válido. Vuelve a finalizar la compra e inténtalo de nuevo."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:120
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "mDRHG0"
 msgstr "Si el problema persiste, intenta utilizar un método de pago diferente."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:127
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "Ifl2yr"
 msgstr "Orden exitosa"
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:128
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "SZKxGU"
 msgstr "El pedido se ha completado con éxito y ahora se procesará automáticamente."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:131
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "pNwb8b"
 msgstr "Te enviaremos un correo con todos los detalles en cuanto los productos de tu pedido estén listos."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:198
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "aIRWQB"
 msgstr "De vuelta a casa"
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:207
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "YgWige"
 msgstr "Volver al portal del cliente"
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:217
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "lVV2Zz"
 msgstr "¿Necesitar ayuda? Contáctanos ↗"
 
-#: src/app/(public)/[locale]/contact/page.tsx:41
-#: src/ui/footer.tsx:105
+#: src/app/(public)/[locale]/contact/page.tsx
+#: src/ui/footer.tsx
 msgid "zFegDD"
 msgstr "Contacto"
 
-#: src/app/(public)/[locale]/contact/page.tsx:42
-#: src/app/(public)/[locale]/contact/page.tsx:78
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "Hse98V"
 msgstr "Obtenga ayuda con todos los temas de productos, envíe comentarios o haga preguntas sobre facturación."
 
-#: src/app/(public)/[locale]/contact/page.tsx:65
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "cN2wPY"
 msgstr "Comunidad de discordia"
 
-#: src/app/(public)/[locale]/contact/page.tsx:66
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "xmN7+N"
 msgstr "Únase al servidor de Discord de la comunidad y charle con otros usuarios."
 
-#: src/app/(public)/[locale]/contact/page.tsx:70
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "qh9exW"
 msgstr "Únete a la discordia"
 
-#: src/app/(public)/[locale]/contact/page.tsx:77
-#: src/ui/app-sidebar.tsx:86
-#: src/ui/app-sidebar.tsx:99
+#: src/app/(public)/[locale]/contact/page.tsx
+#: src/ui/app-sidebar.tsx
 msgid "HqRNN8"
 msgstr "Apoyo"
 
-#: src/app/(public)/[locale]/contact/page.tsx:82
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "tA3IJb"
 msgstr "Solicitar soporte"
 
-#: src/app/(public)/[locale]/contact/page.tsx:89
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "KV/9Hv"
 msgstr "Preguntas"
 
-#: src/app/(public)/[locale]/contact/page.tsx:90
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "pNNM1r"
 msgstr "Nuestros artículos de ayuda ya responden a muchas de sus preguntas."
 
-#: src/app/(public)/[locale]/contact/page.tsx:94
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "TZHi//"
 msgstr "Ver centro de ayuda"
 
-#: src/app/(public)/[locale]/contact/page.tsx:101
-#: src/features/account/components/api-keys/api-keys-card.tsx:64
-#: src/ui/footer.tsx:124
+#: src/app/(public)/[locale]/contact/page.tsx
+#: src/features/account/components/api-keys/api-keys-card.tsx
+#: src/ui/footer.tsx
 msgid "yKOyCk"
 msgstr "Documentación API"
 
-#: src/app/(public)/[locale]/contact/page.tsx:102
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "p21Rwp"
 msgstr "Obtenga más información sobre la interfaz API para desarrolladores para sus proyectos."
 
-#: src/app/(public)/[locale]/contact/page.tsx:106
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "SxCabn"
 msgstr "Ver documentación API"
 
-#: src/app/(public)/[locale]/contact/page.tsx:118
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "M6PcEI"
 msgstr "¿Cómo podemos ayudarte?"
 
-#: src/app/(public)/[locale]/contact/page.tsx:121
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "SLIoeO"
 msgstr "Contáctenos y obtenga ayuda rápida."
 
-#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:106
-#: src/app/(public)/[locale]/help/page.tsx:75
+#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
+#: src/app/(public)/[locale]/help/page.tsx
 msgid "tUmaeD"
 msgstr "Todos los artículos"
 
-#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:129
-#: src/app/(public)/[locale]/legal/[[...slug]]/page.tsx:122
+#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
+#: src/app/(public)/[locale]/legal/[[...slug]]/page.tsx
 msgid "ZdCdo5"
 msgstr "Última actualización: {date}"
 
-#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:169
+#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
 msgid "IAMn0B"
 msgstr "¿Aún tienes preguntas? Contáctanos ↗"
 
-#: src/app/(public)/[locale]/help/page.tsx:39
-#: src/app/(public)/[locale]/help/page.tsx:69
-#: src/ui/footer.tsx:114
+#: src/app/(public)/[locale]/help/page.tsx
+#: src/ui/footer.tsx
 msgid "HtSDyc"
 msgstr "Centro de ayuda"
 
-#: src/app/(public)/[locale]/help/page.tsx:40
+#: src/app/(public)/[locale]/help/page.tsx
 msgid "PPnkha"
 msgstr "Encuentre respuestas a todas sus preguntas relacionadas con Virtbase en un solo lugar con nuestro completo Centro de ayuda."
 
-#: src/app/(public)/[locale]/page.tsx:36
+#: src/app/(public)/[locale]/page.tsx
 msgid "Wbc21W"
 msgstr "Virtbase: Alojamiento, pero seguro."
 
-#: src/app/(public)/[locale]/page.tsx:37
-#: src/app/(public)/[locale]/page.tsx:65
+#: src/app/(public)/[locale]/page.tsx
 msgid "nEWy6S"
 msgstr "Virtbase es el proveedor de alojamiento de servidores seguros. Máximo rendimiento con el mínimo esfuerzo."
 
-#: src/app/(public)/[locale]/page.tsx:62
+#: src/app/(public)/[locale]/page.tsx
 msgid "BdEM9F"
 msgstr "Hosting, pero segura."
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:89
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:134
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "t1DCfI"
 msgstr "Pasa a un servidor más potente"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:90
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:137
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "0mibRH"
 msgstr "Un pequeño extra. Mucho más rendimiento."
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:188
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "8VIOz4"
 msgstr "{cores, plural, =0 {+# vCores} =1 {+# vCore} other {+# vCores}}"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:191
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "j2HEjv"
 msgstr "Rendimiento multitarea mejorado"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:197
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "tDBsIi"
 msgstr "{percent} más RAM"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:204
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "LM23s2"
 msgstr "Aplicaciones que responden más rápido"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:210
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "R0fF2V"
 msgstr "{percent} más de almacenamiento"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:217
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "E8bbzS"
 msgstr "Almacena más contenido en tu servidor"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:226
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "J4j1Fd"
 msgstr "{value} más de ancho de banda"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:237
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "NkmKCs"
 msgstr "Incremento notable de las velocidades de transferencia"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:243
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "7NydGv"
 msgstr "Sin cuota de instalación"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:244
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "lt2ynN"
 msgstr "Configuración gratuita sin cargos adicionales"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:249
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "XucETQ"
 msgstr "Atención 24/7"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:250
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "CKQfnV"
 msgstr "Disponible en todo momento cuando lo necesites"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:255
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "3SJxuA"
 msgstr "Protección DDoS activa"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:256
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "VI9ImX"
 msgstr "Tu servidor está protegido sin cargos adicionales"
 
-#: src/app/admin.virtbase.com/(dashboard)/datacenters/[id]/page.tsx:38
-#: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx:38
-#: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx:54
-#: src/features/admin/components/admin-sidebar-groups.tsx:70
+#: src/app/admin.virtbase.com/(dashboard)/datacenters/[id]/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "NoQGSk"
 msgstr "Centros de datos"
 
-#: src/app/admin.virtbase.com/(dashboard)/layout.tsx:28
+#: src/app/admin.virtbase.com/(dashboard)/layout.tsx
 msgid "iHN12u"
 msgstr "Administradora"
 
-#: src/app/admin.virtbase.com/(dashboard)/node-groups/[id]/page.tsx:41
-#: src/app/admin.virtbase.com/(dashboard)/node-groups/[id]/page.tsx:58
-#: src/app/admin.virtbase.com/(dashboard)/node-groups/page.tsx:38
-#: src/app/admin.virtbase.com/(dashboard)/node-groups/page.tsx:55
-#: src/features/admin/components/admin-sidebar-groups.tsx:75
+#: src/app/admin.virtbase.com/(dashboard)/node-groups/[id]/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/node-groups/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "rcBiKK"
 msgstr "Grupos de nodos"
 
-#: src/app/admin.virtbase.com/(dashboard)/nodes/[id]/page.tsx:48
+#: src/app/admin.virtbase.com/(dashboard)/nodes/[id]/page.tsx
 msgid "n3j8M6"
 msgstr "Nodos Proxmox"
 
-#: src/app/admin.virtbase.com/(dashboard)/page.tsx:41
-#: src/app/admin.virtbase.com/(dashboard)/page.tsx:55
-#: src/app/app.virtbase.com/(dashboard)/page.tsx:36
-#: src/app/app.virtbase.com/(dashboard)/page.tsx:50
-#: src/features/admin/components/admin-sidebar-groups.tsx:50
-#: src/ui/app-sidebar-menu.tsx:40
-#: src/ui/nav-user.tsx:111
-#: src/ui/nav.tsx:77
+#: src/app/admin.virtbase.com/(dashboard)/page.tsx
+#: src/app/app.virtbase.com/(dashboard)/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+#: src/ui/app-sidebar-menu.tsx
+#: src/ui/nav-user.tsx
+#: src/ui/nav.tsx
 msgid "hzSNj4"
 msgstr "Panel"
 
-#: src/app/admin.virtbase.com/(dashboard)/servers/page.tsx:37
-#: src/app/admin.virtbase.com/(dashboard)/servers/page.tsx:53
-#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx:37
-#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx:51
-#: src/features/account/components/api-keys/create-api-key-button.tsx:54
-#: src/features/admin/components/admin-sidebar-groups.tsx:60
-#: src/ui/app-sidebar-menu.tsx:45
+#: src/app/admin.virtbase.com/(dashboard)/servers/page.tsx
+#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx
+#: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+#: src/ui/app-sidebar-menu.tsx
 msgid "QOxktD"
 msgstr "Servidoras"
 
-#: src/app/admin.virtbase.com/(dashboard)/subnets/[id]/page.tsx:38
-#: src/app/admin.virtbase.com/(dashboard)/subnets/page.tsx:38
-#: src/app/admin.virtbase.com/(dashboard)/subnets/page.tsx:54
-#: src/features/admin/components/admin-sidebar-groups.tsx:90
+#: src/app/admin.virtbase.com/(dashboard)/subnets/[id]/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/subnets/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "9lr8v8"
 msgstr "Subredes"
 
-#: src/app/admin.virtbase.com/(dashboard)/template-groups/[id]/page.tsx:37
-#: src/app/admin.virtbase.com/(dashboard)/template-groups/[id]/page.tsx:55
-#: src/app/admin.virtbase.com/(dashboard)/template-groups/page.tsx:38
-#: src/app/admin.virtbase.com/(dashboard)/template-groups/page.tsx:54
-#: src/features/admin/components/admin-sidebar-groups.tsx:80
+#: src/app/admin.virtbase.com/(dashboard)/template-groups/[id]/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/template-groups/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "aIwSug"
 msgstr "Grupos de plantillas"
 
-#: src/app/admin.virtbase.com/(dashboard)/users/page.tsx:37
-#: src/app/admin.virtbase.com/(dashboard)/users/page.tsx:53
-#: src/features/admin/components/admin-sidebar-groups.tsx:55
+#: src/app/admin.virtbase.com/(dashboard)/users/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "YDMrKK"
 msgstr "Usuarias"
 
-#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:33
+#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx
 msgid "2znpSL"
 msgstr "Olvidé mi contraseña para {appName}"
 
-#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:34
+#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx
 msgid "knQkcB"
 msgstr "Restablezca la contraseña de su cuenta {appName}."
 
-#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:57
-#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx:58
+#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx
+#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx
 msgid "p+kmJg"
 msgstr "Restablece tu contraseña"
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx:34
+#: src/app/app.virtbase.com/(auth)/login/page.tsx
 msgid "VquSDh"
 msgstr "Iniciar sesión en {appName}"
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx:35
+#: src/app/app.virtbase.com/(auth)/login/page.tsx
 msgid "VGUFk+"
 msgstr "Inicie sesión en su cuenta {appName} para administrar sus servidores virtuales."
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx:59
+#: src/app/app.virtbase.com/(auth)/login/page.tsx
 msgid "TKG18n"
 msgstr "Inicie sesión en su cuenta {appName}"
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx:65
+#: src/app/app.virtbase.com/(auth)/login/page.tsx
 msgid "25WwxF"
 msgstr "¿No tienes una cuenta?"
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx:71
-#: src/features/checkout/components/checkout-auth-wrapper.tsx:79
-#: src/ui/footer.tsx:80
-#: src/ui/nav.tsx:99
+#: src/app/app.virtbase.com/(auth)/login/page.tsx
+#: src/features/checkout/components/checkout-auth-wrapper.tsx
+#: src/ui/footer.tsx
+#: src/ui/nav.tsx
 msgid "8HJxXG"
 msgstr "Inscribirse"
 
-#: src/app/app.virtbase.com/(auth)/register/page-client.tsx:44
-#: src/app/app.virtbase.com/(auth)/register/page.tsx:32
+#: src/app/app.virtbase.com/(auth)/register/page-client.tsx
+#: src/app/app.virtbase.com/(auth)/register/page.tsx
 msgid "LcaCOE"
 msgstr "Crea tu cuenta {appName}"
 
-#: src/app/app.virtbase.com/(auth)/register/page-client.tsx:50
+#: src/app/app.virtbase.com/(auth)/register/page-client.tsx
 msgid "uCk8r+"
 msgstr "¿Ya tienes una cuenta?"
 
-#: src/app/app.virtbase.com/(auth)/register/page-client.tsx:55
+#: src/app/app.virtbase.com/(auth)/register/page-client.tsx
 msgid "odXlk8"
 msgstr "Acceso"
 
-#: src/app/app.virtbase.com/(auth)/register/page-client.tsx:71
+#: src/app/app.virtbase.com/(auth)/register/page-client.tsx
 msgid "rEdUqQ"
 msgstr "Verifica tu dirección de correo electrónico"
 
-#: src/app/app.virtbase.com/(auth)/register/page-client.tsx:74
+#: src/app/app.virtbase.com/(auth)/register/page-client.tsx
 msgid "H2tEgm"
 msgstr "Ingrese el código de verificación de seis dígitos enviado a <strong>{email}</strong>"
 
-#: src/app/app.virtbase.com/(auth)/register/page.tsx:33
+#: src/app/app.virtbase.com/(auth)/register/page.tsx
 msgid "PcjZtc"
 msgstr "Cree su cuenta {appName} para solicitar su primer servidor virtual."
 
-#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx:33
+#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx
 msgid "D2Np7X"
 msgstr "Restablece tu contraseña para {appName}"
 
-#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx:34
+#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx
 msgid "tNqFr9"
 msgstr "Restablezca su contraseña para su cuenta {appName}."
 
-#: src/app/app.virtbase.com/(dashboard)/invoices/page.tsx:37
-#: src/app/app.virtbase.com/(dashboard)/invoices/page.tsx:53
-#: src/features/account/components/api-keys/create-api-key-button.tsx:60
-#: src/ui/app-sidebar-menu.tsx:50
+#: src/app/app.virtbase.com/(dashboard)/invoices/page.tsx
+#: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/ui/app-sidebar-menu.tsx
 msgid "6dqYnF"
 msgstr "Facturas"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/advanced/page.tsx:28
-#: src/features/servers/components/server-nav.tsx:73
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/advanced/page.tsx
+#: src/features/servers/components/server-nav.tsx
 msgid "3Rx6Qo"
 msgstr "Avanzado"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/backups/page.tsx:27
-#: src/features/account/components/api-keys/create-api-key-button.tsx:55
-#: src/features/servers/components/backups/backups-card.tsx:62
-#: src/features/servers/components/server-nav.tsx:61
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/backups/page.tsx
+#: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/servers/components/backups/backups-card.tsx
+#: src/features/servers/components/server-nav.tsx
 msgid "T3lqx5"
 msgstr "Copias de seguridad"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/console/page.tsx:26
-#: src/features/account/components/api-keys/create-api-key-button.tsx:57
-#: src/features/servers/components/server-nav.tsx:49
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/console/page.tsx
+#: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/servers/components/server-nav.tsx
 msgid "gc+2Z2"
 msgstr "Consola"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/firewall/page.tsx:28
-#: src/features/account/components/api-keys/create-api-key-button.tsx:56
-#: src/features/servers/components/server-nav.tsx:55
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/firewall/page.tsx
+#: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/servers/components/server-nav.tsx
 msgid "Bwqhmd"
 msgstr "Cortafuegos"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx:41
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx
 msgid "E+4Rfd"
 msgstr "Servidor no encontrado"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx:43
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx
 msgid "bdn/TR"
 msgstr "El servidor que buscas no existe."
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx:49
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx
 msgid "43U065"
 msgstr "Ir a servidores"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/overview/page.tsx:34
-#: src/features/admin/components/admin-sidebar-groups.tsx:47
-#: src/features/servers/components/server-nav.tsx:43
-#: src/ui/app-sidebar.tsx:63
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/overview/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+#: src/features/servers/components/server-nav.tsx
+#: src/ui/app-sidebar.tsx
 msgid "9uOFF3"
 msgstr "Descripción general"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/plan/page.tsx:30
-#: src/features/servers/components/plan/plan-form.tsx:85
-#: src/features/servers/components/server-nav.tsx:79
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/plan/page.tsx
+#: src/features/servers/components/plan/plan-form.tsx
+#: src/features/servers/components/server-nav.tsx
 msgid "fz0z4c"
 msgstr "Plan"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/rdns/page.tsx:27
-#: src/features/account/components/api-keys/create-api-key-button.tsx:58
-#: src/features/servers/components/server-nav.tsx:67
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/rdns/page.tsx
+#: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/servers/components/server-nav.tsx
 msgid "F+02/l"
 msgstr "DNSr"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/error.tsx:53
-#: src/ui/generic-error-inline.tsx:37
-#: src/ui/generic-error.tsx:49
+#: src/app/app.virtbase.com/(dashboard)/servers/error.tsx
+#: src/ui/generic-error-inline.tsx
+#: src/ui/generic-error.tsx
 msgid "ox304v"
 msgstr "Se produjo un error"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/error.tsx:55
+#: src/app/app.virtbase.com/(dashboard)/servers/error.tsx
 msgid "HkQfvt"
 msgstr "Se produjo un error inesperado al cargar los detalles del servidor."
 
-#: src/app/app.virtbase.com/(dashboard)/servers/error.tsx:59
-#: src/ui/generic-error.tsx:55
+#: src/app/app.virtbase.com/(dashboard)/servers/error.tsx
+#: src/ui/generic-error.tsx
 msgid "FazwRl"
 msgstr "Intentar otra vez"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx:60
+#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx
 msgid "FgwBWh"
 msgstr "Alquilar un nuevo servidor"
 
-#: src/app/app.virtbase.com/unauthorized.tsx:51
+#: src/app/app.virtbase.com/unauthorized.tsx
 msgid "srept4"
 msgstr "No estás autorizado a acceder a esta página. Es posible que su sesión haya caducado, inicie sesión nuevamente."
 
-#: src/app/app.virtbase.com/unauthorized.tsx:68
-#: src/features/account/components/authentication/user-sessions-list.tsx:151
+#: src/app/app.virtbase.com/unauthorized.tsx
+#: src/features/account/components/authentication/user-sessions-list.tsx
 msgid "xXbJso"
 msgstr "desconectar"
 
-#: src/features/account/components/account-breadcrumb.tsx:41
-#: src/features/account/components/account-nav.tsx:41
+#: src/features/account/components/account-breadcrumb.tsx
+#: src/features/account/components/account-nav.tsx
 msgid "1iEPTM"
 msgstr "General"
 
-#: src/features/account/components/account-breadcrumb.tsx:45
-#: src/features/account/components/account-nav.tsx:46
+#: src/features/account/components/account-breadcrumb.tsx
+#: src/features/account/components/account-nav.tsx
 msgid "Py189G"
 msgstr "Seguridad"
 
-#: src/features/account/components/account-breadcrumb.tsx:49
-#: src/features/account/components/account-nav.tsx:51
+#: src/features/account/components/account-breadcrumb.tsx
+#: src/features/account/components/account-nav.tsx
 msgid "Tbo377"
 msgstr "Facturación"
 
-#: src/features/account/components/account-breadcrumb.tsx:53
-#: src/features/account/components/account-nav.tsx:56
+#: src/features/account/components/account-breadcrumb.tsx
+#: src/features/account/components/account-nav.tsx
 msgid "xwEc8K"
 msgstr "API"
 
-#: src/features/account/components/account-breadcrumb.tsx:57
-#: src/features/account/components/account-nav.tsx:61
-#: src/features/account/components/ssh-keys/ssh-keys-card.tsx:44
+#: src/features/account/components/account-breadcrumb.tsx
+#: src/features/account/components/account-nav.tsx
+#: src/features/account/components/ssh-keys/ssh-keys-card.tsx
 msgid "7Cdpiv"
 msgstr "Claves SSH"
 
-#: src/features/account/components/account-breadcrumb.tsx:75
-#: src/ui/nav-user.tsx:120
+#: src/features/account/components/account-breadcrumb.tsx
+#: src/ui/nav-user.tsx
 msgid "TwyMau"
 msgstr "Cuenta"
 
-#: src/features/account/components/account-nav.tsx:66
+#: src/features/account/components/account-nav.tsx
 msgid "96Us9V"
 msgstr "Imágenes ISO"
 
-#: src/features/account/components/api-keys/api-keys-card.tsx:49
+#: src/features/account/components/api-keys/api-keys-card.tsx
 msgid "jSp63j"
 msgstr "Claves API"
 
-#: src/features/account/components/api-keys/api-keys-card.tsx:51
+#: src/features/account/components/api-keys/api-keys-card.tsx
 msgid "igeEmM"
 msgstr "Cree y administre claves API para usar con la API pública."
 
-#: src/features/account/components/api-keys/api-keys-card.tsx:87
+#: src/features/account/components/api-keys/api-keys-card.tsx
 msgid "uWmank"
 msgstr "Se pueden utilizar varias claves API para la autenticación."
 
-#: src/features/account/components/api-keys/api-keys-list.tsx:53
+#: src/features/account/components/api-keys/api-keys-list.tsx
 msgid "oK3ylm"
 msgstr "Sin claves API"
 
-#: src/features/account/components/api-keys/api-keys-list.tsx:55
+#: src/features/account/components/api-keys/api-keys-list.tsx
 msgid "8N9621"
 msgstr "Aún no se han creado claves API."
 
-#: src/features/account/components/api-keys/api-keys-list.tsx:94
-#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:83
+#: src/features/account/components/api-keys/api-keys-list.tsx
+#: src/features/account/components/ssh-keys/ssh-keys-list.tsx
 msgid "goQBbA"
 msgstr "Creado {date}"
 
-#: src/features/account/components/api-keys/api-keys-list.tsx:103
-#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:92
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:177
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:171
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:372
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:205
-#: src/features/admin/components/servers/servers-table/columns.tsx:273
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:226
-#: src/features/admin/components/users/users-table/columns.tsx:358
-#: src/features/servers/components/backups/backups-table/backup-actions.tsx:155
-#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:141
+#: src/features/account/components/api-keys/api-keys-list.tsx
+#: src/features/account/components/ssh-keys/ssh-keys-list.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/servers/components/backups/backups-table/backup-actions.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
 msgid "K3r6DQ"
 msgstr "Borrar"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:59
+#: src/features/account/components/api-keys/create-api-key-button.tsx
 msgid "TrBeGD"
 msgstr "Claves SSH"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:61
+#: src/features/account/components/api-keys/create-api-key-button.tsx
 msgid "42rMfw"
 msgstr "ISO"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:92
+#: src/features/account/components/api-keys/create-api-key-button.tsx
 msgid "+J17tT"
 msgstr "Crear clave API"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:118
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:85
-#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:85
-#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:71
-#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:72
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:122
-#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:90
-#: src/features/admin/components/subnets/create-subnet-dialog.tsx:74
-#: src/features/servers/components/backups/create-backup-dialog.tsx:104
-#: src/features/servers/components/backups/restore-backup-dialog.tsx:76
-#: src/features/servers/components/overview/change-template-dialog.tsx:103
-#: src/features/servers/components/overview/rename-server-dialog.tsx:74
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx:101
-#: src/features/servers/components/rdns/upsert-record-dialog.tsx:89
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:170
-#: src/ui/feedback-button.tsx:31
+#: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx
+#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
+#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
+#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
+#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx
+#: src/features/servers/components/backups/create-backup-dialog.tsx
+#: src/features/servers/components/backups/restore-backup-dialog.tsx
+#: src/features/servers/components/overview/change-template-dialog.tsx
+#: src/features/servers/components/overview/rename-server-dialog.tsx
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
+#: src/features/servers/components/rdns/upsert-record-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/ui/feedback-button.tsx
 msgid "47FYwb"
 msgstr "Cancelar"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:135
+#: src/features/account/components/api-keys/create-api-key-button.tsx
 msgid "fnMCvo"
 msgstr "Clave API creada"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:138
+#: src/features/account/components/api-keys/create-api-key-button.tsx
 msgid "TQSqlk"
 msgstr "Esta clave solo se mostrará una vez. Guárdelo de forma segura, ya que no se puede restaurar:"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:157
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:109
-#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
-#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:94
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:92
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:104
-#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:95
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:89
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:101
-#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:113
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:89
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:103
-#: src/features/admin/components/servers/servers-table/columns.tsx:97
-#: src/features/admin/components/servers/servers-table/columns.tsx:105
-#: src/features/admin/components/users/users-table/columns.tsx:112
-#: src/features/admin/components/users/users-table/columns.tsx:130
-#: src/features/servers/components/backups/backups-table/columns.tsx:64
-#: src/features/servers/components/backups/create-backup-dialog.tsx:128
-#: src/features/servers/components/overview/node-details-dialog.tsx:83
-#: src/features/servers/components/overview/rename-server-dialog.tsx:93
-#: src/features/servers/components/overview/server-details-card.tsx:75
-#: src/ui/feedback-button.tsx:32
+#: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx
+#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
+#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/servers/components/backups/backups-table/columns.tsx
+#: src/features/servers/components/backups/create-backup-dialog.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
+#: src/features/servers/components/overview/rename-server-dialog.tsx
+#: src/features/servers/components/overview/server-details-card.tsx
+#: src/ui/feedback-button.tsx
 msgid "HAlOn1"
 msgstr "Nombre"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:165
+#: src/features/account/components/api-keys/create-api-key-button.tsx
 msgid "5Cu2sb"
 msgstr "Mi clave API"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:173
+#: src/features/account/components/api-keys/create-api-key-button.tsx
 msgid "SFuk1v"
 msgstr "Permisos"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:175
+#: src/features/account/components/api-keys/create-api-key-button.tsx
 msgid "4u9ABD"
 msgstr "Dependiendo de los permisos, la clave API puede realizar determinadas acciones."
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:212
-#: src/features/servers/components/server-graphs.tsx:120
+#: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/servers/components/server-graphs.tsx
 msgid "filwqD"
 msgstr "Leer"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:218
-#: src/features/servers/components/server-graphs.tsx:124
+#: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/servers/components/server-graphs.tsx
 msgid "k2veDA"
 msgstr "Escribir"
 
-#: src/features/account/components/authentication/add-passkey-button.tsx:47
+#: src/features/account/components/authentication/add-passkey-button.tsx
 msgid "IknBAk"
 msgstr "Agregar clave de acceso"
 
-#: src/features/account/components/authentication/user-passkeys-card.tsx:52
-#: src/features/account/components/authentication/user-providers-list.tsx:95
+#: src/features/account/components/authentication/user-passkeys-card.tsx
+#: src/features/account/components/authentication/user-providers-list.tsx
 msgid "ASrBq8"
 msgstr "Claves de acceso"
 
-#: src/features/account/components/authentication/user-passkeys-card.tsx:54
+#: src/features/account/components/authentication/user-passkeys-card.tsx
 msgid "yZU/cd"
 msgstr "Las claves de acceso son una alternativa altamente segura a las contraseñas. Registre una nueva clave de acceso o utilice una existente."
 
-#: src/features/account/components/authentication/user-passkeys-card.tsx:76
+#: src/features/account/components/authentication/user-passkeys-card.tsx
 msgid "ANHQFQ"
 msgstr "Se pueden utilizar varias claves de acceso para la autenticación."
 
-#: src/features/account/components/authentication/user-passkeys-list.tsx:51
+#: src/features/account/components/authentication/user-passkeys-list.tsx
 msgid "Hcvdp5"
 msgstr "Sin claves de acceso"
 
-#: src/features/account/components/authentication/user-passkeys-list.tsx:53
+#: src/features/account/components/authentication/user-passkeys-list.tsx
 msgid "OHO8dm"
 msgstr "No se han registrado claves de acceso para esta cuenta."
 
-#: src/features/account/components/authentication/user-passkeys-list.tsx:93
+#: src/features/account/components/authentication/user-passkeys-list.tsx
 msgid "GKNfO2"
 msgstr "Clave de acceso #{number}"
 
-#: src/features/account/components/authentication/user-passkeys-list.tsx:120
-#: src/features/account/components/billing/payment-methods-list.tsx:139
+#: src/features/account/components/authentication/user-passkeys-list.tsx
+#: src/features/account/components/billing/payment-methods-list.tsx
 msgid "jUqYir"
 msgstr "Añadido {date}"
 
-#: src/features/account/components/authentication/user-passkeys-list.tsx:130
-#: src/features/account/components/billing/payment-methods-list.tsx:149
+#: src/features/account/components/authentication/user-passkeys-list.tsx
+#: src/features/account/components/billing/payment-methods-list.tsx
 msgid "G/yZLu"
 msgstr "Eliminar"
 
-#: src/features/account/components/authentication/user-providers-card.tsx:48
+#: src/features/account/components/authentication/user-providers-card.tsx
 msgid "w97pJ4"
 msgstr "Métodos de autenticación"
 
-#: src/features/account/components/authentication/user-providers-card.tsx:50
+#: src/features/account/components/authentication/user-providers-card.tsx
 msgid "wLHOoq"
 msgstr "Configure cómo puede iniciar sesión en su cuenta. Vincula tus cuentas para disfrutar de una experiencia de autenticación segura y fluida."
 
-#: src/features/account/components/authentication/user-providers-list.tsx:65
+#: src/features/account/components/authentication/user-providers-list.tsx
 msgid "0Azlrb"
 msgstr "Administrar"
 
-#: src/features/account/components/authentication/user-providers-list.tsx:82
-#: src/features/admin/components/users/users-table/columns.tsx:141
-#: src/features/admin/components/users/users-table/columns.tsx:148
-#: src/features/auth/components/email-sign-in.tsx:175
-#: src/features/auth/components/forgot-password-form.tsx:85
-#: src/features/auth/components/register/signup-email.tsx:116
-#: src/ui/feedback-button.tsx:34
+#: src/features/account/components/authentication/user-providers-list.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/auth/components/email-sign-in.tsx
+#: src/features/auth/components/forgot-password-form.tsx
+#: src/features/auth/components/register/signup-email.tsx
+#: src/ui/feedback-button.tsx
 msgid "sy+pv5"
 msgstr "Correo electrónico"
 
-#: src/features/account/components/authentication/user-providers-list.tsx:97
+#: src/features/account/components/authentication/user-providers-list.tsx
 msgid "EYyTPV"
 msgstr "Autenticación sin contraseña con claves de acceso"
 
-#: src/features/account/components/authentication/user-providers-list.tsx:168
+#: src/features/account/components/authentication/user-providers-list.tsx
 msgid "waJLKW"
 msgstr "Vinculada"
 
-#: src/features/account/components/authentication/user-providers-list.tsx:171
+#: src/features/account/components/authentication/user-providers-list.tsx
 msgid "xGU8KV"
 msgstr "Vincula tu cuenta {name}"
 
-#: src/features/account/components/authentication/user-providers-list.tsx:222
+#: src/features/account/components/authentication/user-providers-list.tsx
 msgid "JBWS0c"
 msgstr "Enlace"
 
-#: src/features/account/components/authentication/user-providers-list.tsx:231
+#: src/features/account/components/authentication/user-providers-list.tsx
 msgid "4PKxPs"
 msgstr "Desconectar"
 
-#: src/features/account/components/authentication/user-sessions-card.tsx:56
+#: src/features/account/components/authentication/user-sessions-card.tsx
 msgid "V3ka34"
 msgstr "Sesiones activas"
 
-#: src/features/account/components/authentication/user-sessions-card.tsx:58
+#: src/features/account/components/authentication/user-sessions-card.tsx
 msgid "54Q9yz"
 msgstr "Las sesiones muestran los dispositivos actualmente conectados. Pueden ser revocados en cualquier momento."
 
-#: src/features/account/components/authentication/user-sessions-list.tsx:69
+#: src/features/account/components/authentication/user-sessions-list.tsx
 msgid "tkKKAr"
 msgstr "Sin sesiones"
 
-#: src/features/account/components/authentication/user-sessions-list.tsx:71
+#: src/features/account/components/authentication/user-sessions-list.tsx
 msgid "IYV2v0"
 msgstr "No hay sesiones activas. Los nuevos inicios de sesión se mostrarán aquí."
 
-#: src/features/account/components/authentication/user-sessions-list.tsx:142
+#: src/features/account/components/authentication/user-sessions-list.tsx
 msgid "nBinN2"
 msgstr "Firmado en {date}"
 
-#: src/features/account/components/authentication/user-sessions-list.tsx:160
+#: src/features/account/components/authentication/user-sessions-list.tsx
 msgid "10IkTF"
 msgstr "Dispositivo desconocido"
 
-#: src/features/account/components/authentication/user-sessions-list.tsx:164
+#: src/features/account/components/authentication/user-sessions-list.tsx
 msgid "pjASrh"
 msgstr "Sesión actual"
 
-#: src/features/account/components/authentication/user-sessions-list.tsx:168
+#: src/features/account/components/authentication/user-sessions-list.tsx
 msgid "PIRoCC"
 msgstr "Dirección IP desconocida"
 
-#: src/features/account/components/billing/payment-methods-card.tsx:39
+#: src/features/account/components/billing/payment-methods-card.tsx
 msgid "xuTqgN"
 msgstr "Métodos de pago"
 
-#: src/features/account/components/billing/payment-methods-card.tsx:41
+#: src/features/account/components/billing/payment-methods-card.tsx
 msgid "oBsxme"
 msgstr "Los siguientes métodos de pago se almacenan y se pueden utilizar para la facturación."
 
-#: src/features/account/components/billing/payment-methods-list.tsx:53
+#: src/features/account/components/billing/payment-methods-list.tsx
 msgid "qyRflV"
 msgstr "Sin métodos de pago"
 
-#: src/features/account/components/billing/payment-methods-list.tsx:55
+#: src/features/account/components/billing/payment-methods-list.tsx
 msgid "gL/ZgG"
 msgstr "No se han vinculado ningún método de pago a su cuenta."
 
-#: src/features/account/components/billing/payment-methods-list.tsx:155
+#: src/features/account/components/billing/payment-methods-list.tsx
 msgid "3MBRV5"
 msgstr "Nombre no indicado"
 
-#: src/features/account/components/custom-images/create-custom-image-button.tsx:40
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:71
+#: src/features/account/components/custom-images/create-custom-image-button.tsx
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 msgid "TKvr5O"
 msgstr "Crear imagen personalizada"
 
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:76
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 msgid "ggQwe8"
 msgstr "Cree una nueva imagen personalizada para sus servidores."
 
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:135
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 msgid "bWjdfa"
 msgstr "URL"
 
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:148
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 msgid "aLOPr+"
 msgstr "La URL debe apuntar directamente al archivo ISO. El tamaño máximo del archivo es {size}."
 
-#: src/features/account/components/custom-images/custom-images-card.tsx:45
+#: src/features/account/components/custom-images/custom-images-card.tsx
 msgid "4NrukI"
 msgstr "Imágenes ISO personalizadas"
 
-#: src/features/account/components/custom-images/custom-images-card.tsx:47
+#: src/features/account/components/custom-images/custom-images-card.tsx
 msgid "GnqZoy"
 msgstr "Cargue y gestione imágenes ISO personalizadas para sus servidores."
 
-#: src/features/account/components/custom-images/custom-images-card.tsx:60
+#: src/features/account/components/custom-images/custom-images-card.tsx
 msgid "Lwyinc"
 msgstr "Puede tener hasta {count} imágenes ISO activas."
 
-#: src/features/account/components/custom-images/custom-images-list.tsx:47
+#: src/features/account/components/custom-images/custom-images-list.tsx
 msgid "sHUPf5"
 msgstr "Sin imágenes personalizadas"
 
-#: src/features/account/components/custom-images/custom-images-list.tsx:49
+#: src/features/account/components/custom-images/custom-images-list.tsx
 msgid "8RV8A9"
 msgstr "Aún no se han cargado imágenes personalizadas."
 
-#: src/features/account/components/custom-images/custom-images-list.tsx:76
-#: src/features/servers/components/server-mount-badge.tsx:55
+#: src/features/account/components/custom-images/custom-images-list.tsx
+#: src/features/servers/components/server-mount-badge.tsx
 msgid "N/dZaF"
 msgstr "Caduca {time}"
 
-#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:63
+#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 msgid "KdsDOJ"
 msgstr "Crear clave SSH"
 
-#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:123
+#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 msgid "q7jtp0"
 msgstr "Mi clave SSH"
 
-#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:136
+#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 msgid "jecC36"
 msgstr "Clave pública"
 
-#: src/features/account/components/ssh-keys/ssh-keys-card.tsx:46
+#: src/features/account/components/ssh-keys/ssh-keys-card.tsx
 msgid "hdKY6S"
 msgstr "Cree y administre claves SSH para usar durante la instalación."
 
-#: src/features/account/components/ssh-keys/ssh-keys-card.tsx:61
+#: src/features/account/components/ssh-keys/ssh-keys-card.tsx
 msgid "UM2KPU"
 msgstr "Se admiten varias claves SSH en formato <openssh>OpenSSH </openssh>."
 
-#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:50
+#: src/features/account/components/ssh-keys/ssh-keys-list.tsx
 msgid "6xgIEt"
 msgstr "Sin claves SSH"
 
-#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:52
+#: src/features/account/components/ssh-keys/ssh-keys-list.tsx
 msgid "6NcUU3"
 msgstr "Aún no se han creado claves SSH."
 
-#: src/features/account/components/user-id-card.tsx:47
+#: src/features/account/components/user-id-card.tsx
 msgid "qW1hR5"
 msgstr "Su ID de usuario"
 
-#: src/features/account/components/user-id-card.tsx:49
+#: src/features/account/components/user-id-card.tsx
 msgid "tX7q8l"
 msgstr "Este es su identificador de cuenta único en {appName}."
 
-#: src/features/account/components/user-id-card.tsx:68
+#: src/features/account/components/user-id-card.tsx
 msgid "6dnHkY"
 msgstr "Esto puede usarse para identificar su cuenta en la API."
 
-#: src/features/account/components/user-name-card.tsx:68
+#: src/features/account/components/user-name-card.tsx
 msgid "pwlQEY"
 msgstr "Nombre para mostrar"
 
-#: src/features/account/components/user-name-card.tsx:70
+#: src/features/account/components/user-name-card.tsx
 msgid "1CYEqL"
 msgstr "Introduce tu nombre completo o un nombre para mostrar con el que te sientas a gusto."
 
-#: src/features/account/components/user-name-card.tsx:94
+#: src/features/account/components/user-name-card.tsx
 msgid "YP7yEd"
 msgstr "Usa como máximo 32 caracteres."
 
-#: src/features/account/components/user-name-card.tsx:102
+#: src/features/account/components/user-name-card.tsx
 msgid "jvo0vs"
 msgstr "Guardar"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:105
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "QZwgMJ"
 msgstr "Informe de datos del usuario"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:203
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "g26DD9"
 msgstr "Información del informe"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:230
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "NJOMwI"
 msgstr "Marca de tiempo de exportación:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:253
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "To1Yq6"
 msgstr "Datos del usuario"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:276
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:378
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:452
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:547
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "tmcdrp"
 msgstr "ID:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:280
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "9ANu2O"
 msgstr "Nombre para mostrar:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:284
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "xpTPb3"
 msgstr "Correo electrónico:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:288
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "axPF0j"
 msgstr "Correo confirmado:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:289
-#: src/features/admin/components/users/users-table/columns.tsx:201
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "a5msuh"
 msgstr "Sí"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:289
-#: src/features/admin/components/users/users-table/columns.tsx:201
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "oUWADl"
 msgstr "No"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:292
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "fiNfmb"
 msgstr "Idioma:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:296
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "Ur+SeM"
 msgstr "ID de Stripe:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:300
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "vxMnwH"
 msgstr "Fecha de registro:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:310
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:477
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "iXH4ox"
 msgstr "Último cambio:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:333
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "MEekj5"
 msgstr "Información de la sesión"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:345
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "RQPliO"
 msgstr "No hay sesiones registradas."
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:385
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "/7I9Fi"
 msgstr "Dirección IP:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:389
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "uK95OQ"
 msgstr "User-Agent:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:408
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "njqGJJ"
 msgstr "Cuentas vinculadas"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:420
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "nuEHW2"
 msgstr "No hay cuentas vinculadas registradas."
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:459
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "w6rwdu"
 msgstr "ID del proveedor:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:463
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "a2VLth"
 msgstr "Permisos:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:467
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "71lPLk"
 msgstr "Fecha de creación:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:501
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "vtStU2"
 msgstr "Historial de pagos"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:513
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "iPmh1t"
 msgstr "No hay cargos registrados."
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:554
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "C43FrR"
 msgstr "Importe:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:567
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "3fVD9R"
 msgstr "Estado:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:571
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "BIoIM3"
 msgstr "Datos de facturación:"
 
-#: src/features/admin/components/admin-sidebar-groups.tsx:67
+#: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "UcHtCB"
 msgstr "Proxmox VE"
 
-#: src/features/admin/components/admin-sidebar-groups.tsx:87
+#: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "+P4xiL"
 msgstr "IPAM"
 
-#: src/features/admin/components/admin-sidebar.tsx:47
+#: src/features/admin/components/admin-sidebar.tsx
 msgid "k81S1y"
 msgstr "Logo"
 
-#: src/features/admin/components/admin-sidebar.tsx:58
-#: src/ui/app-sidebar.tsx:71
+#: src/features/admin/components/admin-sidebar.tsx
+#: src/ui/app-sidebar.tsx
 msgid "y1Z3or"
 msgstr "Idioma"
 
-#: src/features/admin/components/dashboard/activity-stats-row.tsx:39
+#: src/features/admin/components/dashboard/activity-stats-row.tsx
 msgid "wCWFeb"
 msgstr "Servidores activos"
 
-#: src/features/admin/components/dashboard/activity-stats-row.tsx:43
+#: src/features/admin/components/dashboard/activity-stats-row.tsx
 msgid "j1CPmU"
 msgstr "El número de servidores actualmente activos."
 
-#: src/features/admin/components/dashboard/activity-stats-row.tsx:46
+#: src/features/admin/components/dashboard/activity-stats-row.tsx
 msgid "TkYZBT"
 msgstr "Clientes"
 
-#: src/features/admin/components/dashboard/activity-stats-row.tsx:50
+#: src/features/admin/components/dashboard/activity-stats-row.tsx
 msgid "rRpnCw"
 msgstr "El número de clientes registrados."
 
-#: src/features/admin/components/dashboard/activity-stats-row.tsx:53
+#: src/features/admin/components/dashboard/activity-stats-row.tsx
 msgid "d0YgXc"
 msgstr "Ingresos mensuales"
 
-#: src/features/admin/components/dashboard/activity-stats-row.tsx:57
+#: src/features/admin/components/dashboard/activity-stats-row.tsx
 msgid "oTdX2X"
 msgstr "Ingresos del mes en curso"
 
-#: src/features/admin/components/dashboard/customers-over-time-card.tsx:39
+#: src/features/admin/components/dashboard/customers-over-time-card.tsx
 msgid "O5JOQn"
 msgstr "Clientes por fecha"
 
-#: src/features/admin/components/dashboard/customers-over-time-card.tsx:41
+#: src/features/admin/components/dashboard/customers-over-time-card.tsx
 msgid "yBCvTc"
 msgstr "Nuevos clientes por día en los últimos 14 días"
 
-#: src/features/admin/components/dashboard/customers-over-time.tsx:45
+#: src/features/admin/components/dashboard/customers-over-time.tsx
 msgid "zHZzJH"
 msgstr "Nuevas clientas"
 
-#: src/features/admin/components/dashboard/latest-customers-card.tsx:44
+#: src/features/admin/components/dashboard/latest-customers-card.tsx
 msgid "fuvH7s"
 msgstr "Últimas clientes"
 
-#: src/features/admin/components/dashboard/latest-customers-card.tsx:45
+#: src/features/admin/components/dashboard/latest-customers-card.tsx
 msgid "IqzPv+"
 msgstr "Las últimas clientes por fecha."
 
-#: src/features/admin/components/dashboard/latest-customers-card.tsx:56
-#: src/features/admin/components/dashboard/latest-servers-card.tsx:53
+#: src/features/admin/components/dashboard/latest-customers-card.tsx
+#: src/features/admin/components/dashboard/latest-servers-card.tsx
 msgid "pFK6bJ"
 msgstr "Ver todo"
 
-#: src/features/admin/components/dashboard/latest-customers-list.tsx:58
+#: src/features/admin/components/dashboard/latest-customers-list.tsx
 msgid "FOEwIg"
 msgstr "No hay nuevas clientes"
 
-#: src/features/admin/components/dashboard/latest-customers-list.tsx:60
+#: src/features/admin/components/dashboard/latest-customers-list.tsx
 msgid "jF7pQ8"
 msgstr "Aún no se han registrado nuevos clientes."
 
-#: src/features/admin/components/dashboard/latest-servers-card.tsx:44
-#: src/features/dashboard/components/latest-servers-card.tsx:42
+#: src/features/admin/components/dashboard/latest-servers-card.tsx
+#: src/features/dashboard/components/latest-servers-card.tsx
 msgid "DY6Cmc"
 msgstr "Servidores más recientes"
 
-#: src/features/admin/components/dashboard/latest-servers-card.tsx:45
+#: src/features/admin/components/dashboard/latest-servers-card.tsx
 msgid "U11Zf0"
 msgstr "Los últimos servidores por fecha"
 
-#: src/features/admin/components/dashboard/latest-servers-list.tsx:58
+#: src/features/admin/components/dashboard/latest-servers-list.tsx
 msgid "ILOirX"
 msgstr "No hay nuevos servidores"
 
-#: src/features/admin/components/dashboard/latest-servers-list.tsx:60
+#: src/features/admin/components/dashboard/latest-servers-list.tsx
 msgid "Xp5CiD"
 msgstr "Aún no se han creado nuevos servidores."
 
-#: src/features/admin/components/dashboard/revenue-over-time-card.tsx:39
+#: src/features/admin/components/dashboard/revenue-over-time-card.tsx
 msgid "vQuPQB"
 msgstr "Ganancia por fecha"
 
-#: src/features/admin/components/dashboard/revenue-over-time-card.tsx:41
+#: src/features/admin/components/dashboard/revenue-over-time-card.tsx
 msgid "655MNT"
 msgstr "Ganancia diaria en los últimos 14 días"
 
-#: src/features/admin/components/dashboard/revenue-over-time.tsx:45
-#: src/features/admin/components/dashboard/sales-by-plan.tsx:64
+#: src/features/admin/components/dashboard/revenue-over-time.tsx
+#: src/features/admin/components/dashboard/sales-by-plan.tsx
 msgid "8WKgF6"
 msgstr "Ganancia"
 
-#: src/features/admin/components/dashboard/sales-by-plan-card.tsx:39
+#: src/features/admin/components/dashboard/sales-by-plan-card.tsx
 msgid "N5LvQA"
 msgstr "Ventas por plan"
 
-#: src/features/admin/components/dashboard/sales-by-plan-card.tsx:41
+#: src/features/admin/components/dashboard/sales-by-plan-card.tsx
 msgid "ZYHrCR"
 msgstr "Ventas por plan en los últimos 30 días"
 
-#: src/features/admin/components/dashboard/sales-by-plan.tsx:126
+#: src/features/admin/components/dashboard/sales-by-plan.tsx
 msgid "c8nvms"
 msgstr "Ventas"
 
-#: src/features/admin/components/datacenters/create-datacenter-button.tsx:42
-#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:62
-#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:78
+#: src/features/admin/components/datacenters/create-datacenter-button.tsx
+#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
 msgid "ZD7Aza"
 msgstr "Crear centro de datos"
 
-#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:63
+#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
 msgid "s3yKp4"
 msgstr "Cree un nuevo centro de datos."
 
-#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:111
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:115
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:123
+#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
 msgid "vONi+O"
 msgstr "País"
 
-#: src/features/admin/components/datacenters/datacenter-select.tsx:82
+#: src/features/admin/components/datacenters/datacenter-select.tsx
 msgid "kMzL65"
 msgstr "Seleccione un centro de datos..."
 
-#: src/features/admin/components/datacenters/datacenter-select.tsx:92
+#: src/features/admin/components/datacenters/datacenter-select.tsx
 msgid "ESAZCK"
 msgstr "Buscar un centro de datos..."
 
-#: src/features/admin/components/datacenters/datacenter-select.tsx:94
+#: src/features/admin/components/datacenters/datacenter-select.tsx
 msgid "lH0BHV"
 msgstr "No se encontró ningún centro de datos."
 
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:67
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:64
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:63
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:64
-#: src/features/admin/components/servers/servers-table/columns.tsx:72
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:76
-#: src/features/admin/components/users/users-table/columns.tsx:87
-#: src/features/invoices/components/invoices-table/columns.tsx:47
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
 msgid "94Fg25"
 msgstr "Seleccionar todo"
 
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:78
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:75
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:74
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:75
-#: src/features/admin/components/servers/servers-table/columns.tsx:83
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:87
-#: src/features/admin/components/users/users-table/columns.tsx:98
-#: src/features/invoices/components/invoices-table/columns.tsx:58
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
 msgid "4pJVaS"
 msgstr "Seleccionar fila"
 
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:105
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:102
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:104
-#: src/features/admin/components/servers/servers-table/columns.tsx:106
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
 msgid "wFbsIt"
 msgstr "Buscar por nombre..."
 
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:133
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:139
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:112
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:118
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:329
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:335
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:145
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:151
-#: src/features/admin/components/servers/servers-table/columns.tsx:202
-#: src/features/admin/components/servers/servers-table/columns.tsx:208
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:184
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:190
-#: src/features/admin/components/users/users-table/columns.tsx:230
-#: src/features/admin/components/users/users-table/columns.tsx:236
-#: src/features/servers/components/rdns/records-table/columns.tsx:60
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/servers/components/rdns/records-table/columns.tsx
 msgid "AbXVP4"
 msgstr "Creado en"
 
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:152
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:147
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:349
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:180
-#: src/features/admin/components/servers/servers-table/columns.tsx:239
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:203
-#: src/features/admin/components/users/users-table/columns.tsx:255
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "bdcMGy"
 msgstr "abrir menú"
 
-#: src/features/admin/components/proxmox-node-groups/create-node-group-button.tsx:42
+#: src/features/admin/components/proxmox-node-groups/create-node-group-button.tsx
 msgid "8gJfol"
 msgstr "Crear grupo de nodos"
 
-#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:61
-#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:79
+#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
 msgid "1cAptV"
 msgstr "Crear grupo de nodos Proxmox"
 
-#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:62
+#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
 msgid "1sBtX6"
 msgstr "Cree un nuevo grupo de nodos Proxmox VE para nodos Proxmox VE."
 
-#: src/features/admin/components/proxmox-node-groups/node-group-select.tsx:78
+#: src/features/admin/components/proxmox-node-groups/node-group-select.tsx
 msgid "NMiQru"
 msgstr "Seleccione un grupo de nodos..."
 
-#: src/features/admin/components/proxmox-node-groups/node-group-select.tsx:89
+#: src/features/admin/components/proxmox-node-groups/node-group-select.tsx
 msgid "/Uo5jN"
 msgstr "Buscar un grupo de nodos..."
 
-#: src/features/admin/components/proxmox-node-groups/node-group-select.tsx:91
+#: src/features/admin/components/proxmox-node-groups/node-group-select.tsx
 msgid "ao30Ou"
 msgstr "No se encontró ningún grupo de nodos."
 
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:128
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:134
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 msgid "0ICwq5"
 msgstr "Última actualización"
 
-#: src/features/admin/components/proxmox-nodes/create-datacenter-button.tsx:48
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:113
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:129
+#: src/features/admin/components/proxmox-nodes/create-datacenter-button.tsx
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "S+458D"
 msgstr "Crear nodo Proxmox"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:114
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "deLbYn"
 msgstr "Cree un nuevo nodo Proxmox VE para alojar servidores."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:145
-#: src/features/servers/components/overview/node-details-dialog.tsx:101
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "zUxWZC"
 msgstr "centro de datos"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:164
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "RJ3ocO"
 msgstr "Grupo de nodos"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:183
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:88
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:100
-#: src/features/servers/components/rdns/records-table/columns.tsx:50
-#: src/features/servers/components/rdns/upsert-record-dialog.tsx:135
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/servers/components/rdns/records-table/columns.tsx
+#: src/features/servers/components/rdns/upsert-record-dialog.tsx
 msgid "uPDgth"
 msgstr "Nombre de host"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:208
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "8cNS7n"
 msgstr "El nombre de host del nodo Proxmox VE configurado en el clúster de Proxmox."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:224
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "2BEZJh"
 msgstr "FQDN"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:249
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "cUm+Vq"
 msgstr "El FQDN del nodo Proxmox VE donde se puede acceder a la API. Debe ser accesible desde Internet y utilizar un certificado TLS válido."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:266
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "86ZUi9"
 msgstr "ID de token"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:286
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "1gRCWa"
 msgstr "Secreto simbólico"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:317
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "6o6hYT"
 msgstr "Almacenamiento de fragmentos"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:346
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "10Yrc8"
 msgstr "Los archivos YAML de inicio en la nube para cualquier servidor en este nodo se almacenarán aquí."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:362
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "IvtOOO"
 msgstr "Almacenamiento de respaldo"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:391
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "elgt8s"
 msgstr "Las copias de seguridad de cualquier servidor en este nodo se almacenarán aquí."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:407
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "foINKU"
 msgstr "Almacenamiento de descarga de ISO"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:436
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "Us0NPD"
 msgstr "Las imágenes ISO se almacenarán aquí."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:451
-#: src/features/servers/components/overview/node-details-dialog.tsx:105
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "sB9VeA"
 msgstr "Enlace ascendente"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:482
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "1oyHhQ"
 msgstr "El ancho de banda de red máximo posible del enlace ascendente en MB/s."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:501
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "gYG5ho"
 msgstr "Número máximo de máquinas virtuales"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:505
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "UYmKl1"
 msgstr "máquinas virtuales"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:513
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:543
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:573
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:603
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:634
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "ekXood"
 msgstr "Ilimitada"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:531
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "OCihQV"
 msgstr "Memoria máxima"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:561
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "T4Xl7g"
 msgstr "Almacenamiento máximo"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:591
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "bRNAv0"
 msgstr "Núcleos virtuales máximos"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:595
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:239
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:266
-#: src/features/servers/components/server-stats-card.tsx:90
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/servers/components/server-stats-card.tsx
 msgid "cCUvGW"
 msgstr "núcleos virtuales"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:622
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "ueCC3G"
 msgstr "Límite de red"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:665
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "U9Jxp7"
 msgstr "Si se alcanza, este nodo ya no se utilizará para servicios. Déjelo vacío por ilimitado."
 
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:101
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 msgid "39jmFD"
 msgstr "Buscar por nombre de host..."
 
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:112
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 msgid "/xxglw"
 msgstr "Número de máquinas virtuales"
 
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:128
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:162
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:207
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:253
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:287
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 msgid "EWGm/3"
 msgstr "{usage} / {limit}"
 
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:137
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:177
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:222
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:262
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:308
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 msgid "17eYMk"
 msgstr "{usage} / ∞"
 
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:148
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:185
-#: src/features/landing/components/server-stats-demo.tsx:80
-#: src/features/servers/components/server-graphs.tsx:104
-#: src/features/servers/components/server-stats-card.tsx:107
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/landing/components/server-stats-demo.tsx
+#: src/features/servers/components/server-graphs.tsx
+#: src/features/servers/components/server-stats-card.tsx
 msgid "LjglgP"
 msgstr "RAM"
 
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:193
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:232
-#: src/features/servers/components/overview/node-details-dialog.tsx:97
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "DUIDEq"
 msgstr "Almacenamiento"
 
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:273
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:321
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 msgid "6vjF8Q"
 msgstr "Ancho de banda"
 
-#: src/features/admin/components/proxmox-template-groups/create-template-group-button.tsx:42
-#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:75
+#: src/features/admin/components/proxmox-template-groups/create-template-group-button.tsx
+#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
 msgid "Xj2bvc"
 msgstr "Crear grupo de plantillas Proxmox"
 
-#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:80
+#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
 msgid "Fbkq0B"
 msgstr "Cree un nuevo grupo de plantillas de Proxmox VE para las plantillas de Proxmox VE."
 
-#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:132
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:114
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:120
+#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
 msgid "8lCjAM"
 msgstr "Prioridad"
 
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:130
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:137
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
 msgid "lb/VMv"
 msgstr "Número de plantillas"
 
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:161
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:167
-#: src/features/servers/components/rdns/records-table/columns.tsx:72
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/servers/components/rdns/records-table/columns.tsx
 msgid "wFMlsH"
 msgstr "Actualizado en"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:116
-#: src/features/admin/components/servers/servers-table/columns.tsx:122
+#: src/features/admin/components/servers/servers-table/columns.tsx
 msgid "XmTS6D"
 msgstr "ID de máquina virtual"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:132
-#: src/features/admin/components/servers/servers-table/columns.tsx:155
+#: src/features/admin/components/servers/servers-table/columns.tsx
 msgid "3JxaKs"
 msgstr "Plantilla"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:178
-#: src/features/admin/components/servers/servers-table/columns.tsx:194
+#: src/features/admin/components/servers/servers-table/columns.tsx
 msgid "EwRIOm"
 msgstr "Usuaria"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:218
-#: src/features/admin/components/servers/servers-table/columns.tsx:225
+#: src/features/admin/components/servers/servers-table/columns.tsx
 msgid "1UsI0I"
 msgstr "Termina en"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:264
+#: src/features/admin/components/servers/servers-table/columns.tsx
 msgid "zvQbH/"
 msgstr "Ver en Proxmox"
 
-#: src/features/admin/components/subnets/create-subnet-button.tsx:39
-#: src/features/admin/components/subnets/create-subnet-dialog.tsx:65
-#: src/features/admin/components/subnets/create-subnet-dialog.tsx:77
+#: src/features/admin/components/subnets/create-subnet-button.tsx
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx
 msgid "pXZyDa"
 msgstr "Crear subred"
 
-#: src/features/admin/components/subnets/create-subnet-dialog.tsx:66
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx
 msgid "w+MmK2"
 msgstr "Crea una nueva subred."
 
-#: src/features/admin/components/subnets/create-subnet-dialog.tsx:93
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:101
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:121
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
 msgid "4cxFaQ"
 msgstr "CIDR"
 
-#: src/features/admin/components/subnets/create-subnet-dialog.tsx:110
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx
 msgid "pMcQck"
 msgstr "Puerta"
 
-#: src/features/admin/components/subnets/create-subnet-dialog.tsx:128
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx
 msgid "tmvyl7"
 msgstr "Zona DNS inversa"
 
-#: src/features/admin/components/subnets/create-subnet-dialog.tsx:148
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx
 msgid "IBNdTs"
 msgstr "VLAN"
 
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:122
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
 msgid "XQeoKw"
 msgstr "Buscar por CIDR..."
 
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:132
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:142
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
 msgid "+U6ozc"
 msgstr "Tipo"
 
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:158
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:168
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
 msgid "PLUhm9"
 msgstr "ID de VLAN"
 
-#: src/features/admin/components/users/users-table/columns.tsx:131
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "BzHQ0A"
 msgstr "Nombre/correo"
 
-#: src/features/admin/components/users/users-table/columns.tsx:156
-#: src/features/admin/components/users/users-table/columns.tsx:171
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "1ZgrhW"
 msgstr "Rol"
 
-#: src/features/admin/components/users/users-table/columns.tsx:189
-#: src/features/admin/components/users/users-table/columns.tsx:206
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "DC8+TO"
 msgstr "Correo verificado"
 
-#: src/features/admin/components/users/users-table/columns.tsx:287
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "hQZhn8"
 msgstr "Personificar"
 
-#: src/features/admin/components/users/users-table/columns.tsx:298
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "C3uaig"
 msgstr "Ver en raya"
 
-#: src/features/admin/components/users/users-table/columns.tsx:320
-#: src/features/servers/components/backups/backups-table/backup-actions.tsx:142
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/servers/components/backups/backups-table/backup-actions.tsx
 msgid "qXCbgZ"
 msgstr "Descubrir"
 
-#: src/features/admin/components/users/users-table/columns.tsx:329
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "SVwJTM"
 msgstr "Exportar"
 
-#: src/features/admin/components/users/users-table/columns.tsx:349
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "XtUrMc"
 msgstr "Prohibición"
 
-#: src/features/auth/components/auth-methods-separator.tsx:27
+#: src/features/auth/components/auth-methods-separator.tsx
 msgid "Ntjkqd"
 msgstr "o"
 
-#: src/features/auth/components/discord-button.tsx:61
-#: src/features/auth/components/register/signup-oauth.tsx:99
+#: src/features/auth/components/discord-button.tsx
+#: src/features/auth/components/register/signup-oauth.tsx
 msgid "Y7Cpd6"
 msgstr "Continuar con discordia"
 
-#: src/features/auth/components/email-sign-in.tsx:101
-#: src/features/auth/components/email-sign-in.tsx:114
+#: src/features/auth/components/email-sign-in.tsx
 msgid "JgGwrY"
 msgstr "No se encontró ninguna cuenta con esa dirección de correo electrónico."
 
-#: src/features/auth/components/email-sign-in.tsx:156
+#: src/features/auth/components/email-sign-in.tsx
 msgid "YXNhCz"
 msgstr "Correo electrónico enviado: ¡revisa tu bandeja de entrada!"
 
-#: src/features/auth/components/email-sign-in.tsx:200
-#: src/features/auth/components/register/signup-email.tsx:166
-#: src/features/auth/components/register/signup-email.tsx:172
-#: src/features/auth/components/reset-password-form.tsx:95
+#: src/features/auth/components/email-sign-in.tsx
+#: src/features/auth/components/register/signup-email.tsx
+#: src/features/auth/components/reset-password-form.tsx
 msgid "5sg7KC"
 msgstr "Contraseña"
 
-#: src/features/auth/components/email-sign-in.tsx:206
+#: src/features/auth/components/email-sign-in.tsx
 msgid "V/JHlm"
 msgstr "¿Has olvidado tu contraseña?"
 
-#: src/features/auth/components/email-sign-in.tsx:215
+#: src/features/auth/components/email-sign-in.tsx
 msgid "tXea4K"
 msgstr "Contraseña (opcional)"
 
-#: src/features/auth/components/email-sign-in.tsx:251
+#: src/features/auth/components/email-sign-in.tsx
 msgid "Bddm92"
 msgstr "Iniciar sesión con contraseña"
 
-#: src/features/auth/components/email-sign-in.tsx:253
+#: src/features/auth/components/email-sign-in.tsx
 msgid "vu1wqp"
 msgstr "Iniciar sesión con correo electrónico"
 
-#: src/features/auth/components/forgot-password-form.tsx:51
+#: src/features/auth/components/forgot-password-form.tsx
 msgid "qm+oRY"
 msgstr "Recibirá un correo electrónico con instrucciones para restablecer su contraseña."
 
-#: src/features/auth/components/forgot-password-form.tsx:104
+#: src/features/auth/components/forgot-password-form.tsx
 msgid "DkQ5Q8"
 msgstr "Enviar enlace de reinicio"
 
-#: src/features/auth/components/github-button.tsx:61
-#: src/features/auth/components/register/signup-oauth.tsx:83
+#: src/features/auth/components/github-button.tsx
+#: src/features/auth/components/register/signup-oauth.tsx
 msgid "8eQ7FM"
 msgstr "Continuar con GitHub"
 
-#: src/features/auth/components/google-button.tsx:57
-#: src/features/auth/components/register/signup-oauth.tsx:66
+#: src/features/auth/components/google-button.tsx
+#: src/features/auth/components/register/signup-oauth.tsx
 msgid "FJ6r9E"
 msgstr "Continuar con Google"
 
-#: src/features/auth/components/login-form.tsx:146
+#: src/features/auth/components/login-form.tsx
 msgid "Zk0/xv"
 msgstr "Iniciaste sesión con {method} la última vez"
 
-#: src/features/auth/components/login-form.tsx:166
+#: src/features/auth/components/login-form.tsx
 msgid "u0mNBU"
 msgstr "Continuar con otro método"
 
-#: src/features/auth/components/passkey-button.tsx:71
+#: src/features/auth/components/passkey-button.tsx
 msgid "kHhLiu"
 msgstr "Continuar con la clave de acceso"
 
-#: src/features/auth/components/password-requirements.tsx:28
+#: src/features/auth/components/password-requirements.tsx
 msgid "kFkPWB"
 msgstr "Número"
 
-#: src/features/auth/components/password-requirements.tsx:32
+#: src/features/auth/components/password-requirements.tsx
 msgid "cXsNgc"
 msgstr "letra mayúscula"
 
-#: src/features/auth/components/password-requirements.tsx:36
+#: src/features/auth/components/password-requirements.tsx
 msgid "NNQ3iD"
 msgstr "letra minúscula"
 
-#: src/features/auth/components/password-requirements.tsx:40
+#: src/features/auth/components/password-requirements.tsx
 msgid "WK/0OI"
 msgstr "8 caracteres"
 
-#: src/features/auth/components/register/resend-otp.tsx:80
+#: src/features/auth/components/register/resend-otp.tsx
 msgid "pFU3mO"
 msgstr "¿No recibiste un código?"
 
-#: src/features/auth/components/register/resend-otp.tsx:89
+#: src/features/auth/components/register/resend-otp.tsx
 msgid "IXycMo"
 msgstr "Reenviar"
 
-#: src/features/auth/components/register/resend-otp.tsx:97
+#: src/features/auth/components/register/resend-otp.tsx
 msgid "xfiWJo"
 msgstr "Código enviado exitosamente."
 
-#: src/features/auth/components/register/resend-otp.tsx:103
+#: src/features/auth/components/register/resend-otp.tsx
 msgid "p9iDr6"
 msgstr "No se pudo enviar el código."
 
-#: src/features/auth/components/register/signup-email.tsx:139
+#: src/features/auth/components/register/signup-email.tsx
 msgid "dOQCL8"
 msgstr "Nombre para mostrar"
 
-#: src/features/auth/components/register/signup-email.tsx:193
+#: src/features/auth/components/register/signup-email.tsx
 msgid "39AHJm"
 msgstr "Inscribirse"
 
-#: src/features/auth/components/register/verify-email-form.tsx:62
+#: src/features/auth/components/register/verify-email-form.tsx
 msgid "pwyqaX"
 msgstr "¡Cuenta creada! Redirigiendo..."
 
-#: src/features/auth/components/register/verify-email-form.tsx:119
+#: src/features/auth/components/register/verify-email-form.tsx
 msgid "poE3OD"
 msgstr "Código no válido. Por favor inténtalo de nuevo."
 
-#: src/features/auth/components/register/verify-email-form.tsx:130
+#: src/features/auth/components/register/verify-email-form.tsx
 msgid "acrOoz"
 msgstr "Continuar"
 
-#: src/features/auth/components/reset-password-form.tsx:80
+#: src/features/auth/components/reset-password-form.tsx
 msgid "neYh81"
 msgstr "Su contraseña ha sido restablecida. Ahora puedes iniciar sesión con tu nueva contraseña."
 
-#: src/features/auth/components/reset-password-form.tsx:119
+#: src/features/auth/components/reset-password-form.tsx
 msgid "8HimVK"
 msgstr "Confirmar Contraseña"
 
-#: src/features/auth/components/reset-password-form.tsx:139
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx:92
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx:108
-#: src/features/servers/components/overview/server-details-card.tsx:189
+#: src/features/auth/components/reset-password-form.tsx
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
+#: src/features/servers/components/overview/server-details-card.tsx
 msgid "xl27nc"
 msgstr "Restablecer contraseña"
 
-#: src/features/checkout/components/checkout-auth-wrapper.tsx:54
+#: src/features/checkout/components/checkout-auth-wrapper.tsx
 msgid "jUKaDx"
 msgstr "Se requiere autenticación"
 
-#: src/features/checkout/components/checkout-auth-wrapper.tsx:56
+#: src/features/checkout/components/checkout-auth-wrapper.tsx
 msgid "7VnKx0"
 msgstr "Para continuar con el pedido es necesaria la creación de una cuenta de cliente."
 
-#: src/features/checkout/components/checkout-auth-wrapper.tsx:70
+#: src/features/checkout/components/checkout-auth-wrapper.tsx
 msgid "SQJto2"
 msgstr "Iniciar sesión"
 
-#: src/features/checkout/components/checkout-form.tsx:120
+#: src/features/checkout/components/checkout-form.tsx
 msgid "7OW8BT"
 msgstr "Configuración"
 
-#: src/features/checkout/components/checkout-form.tsx:127
-#: src/features/servers/components/backups/backups-table/columns.tsx:180
-#: src/features/servers/components/overview/server-details-card.tsx:96
+#: src/features/checkout/components/checkout-form.tsx
+#: src/features/servers/components/backups/backups-table/columns.tsx
+#: src/features/servers/components/overview/server-details-card.tsx
 msgid "t2uvIi"
 msgstr "Sistema operativo"
 
-#: src/features/checkout/components/checkout-form.tsx:147
+#: src/features/checkout/components/checkout-form.tsx
 msgid "hE8w/g"
 msgstr "Contraseña raíz (opcional)"
 
-#: src/features/checkout/components/checkout-form.tsx:158
+#: src/features/checkout/components/checkout-form.tsx
 msgid "wzt4BE"
 msgstr "Virtbase no almacena su contraseña de root. Posteriormente se puede restablecer a través del portal del cliente."
 
-#: src/features/checkout/components/checkout-form.tsx:166
+#: src/features/checkout/components/checkout-form.tsx
 msgid "mnTP3x"
 msgstr "Si se deja en blanco, se generará una contraseña aleatoria segura y se enviará por correo electrónico."
 
-#: src/features/checkout/components/checkout-form.tsx:224
-#: src/features/servers/components/plan/plan-summary.tsx:286
+#: src/features/checkout/components/checkout-form.tsx
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "+g+0OK"
 msgstr "Continuar con el pago"
 
-#: src/features/checkout/components/checkout-public-key-select.tsx:60
+#: src/features/checkout/components/checkout-public-key-select.tsx
 msgid "fXFUFA"
 msgstr "Clave SSH existente"
 
-#: src/features/checkout/components/checkout-public-key-select.tsx:95
+#: src/features/checkout/components/checkout-public-key-select.tsx
 msgid "UQc03N"
 msgstr "Agregar nueva clave SSH"
 
-#: src/features/checkout/components/checkout-public-key-select.tsx:110
+#: src/features/checkout/components/checkout-public-key-select.tsx
 msgid "UpInkr"
 msgstr "Clave SSH (opcional)"
 
-#: src/features/checkout/components/checkout-public-key-select.tsx:136
+#: src/features/checkout/components/checkout-public-key-select.tsx
 msgid "RB81cJ"
 msgstr "La clave SSH se almacenará en la cuenta del usuario y podrá reutilizarse para futuros pedidos."
 
-#: src/features/checkout/components/checkout-public-key-select.tsx:152
+#: src/features/checkout/components/checkout-public-key-select.tsx
 msgid "iiDj1S"
 msgstr "Seleccione la clave SSH existente"
 
-#: src/features/checkout/components/checkout-waivers.tsx:43
+#: src/features/checkout/components/checkout-waivers.tsx
 msgid "fL6LzO"
 msgstr "He leído y acepto las Condiciones de servicio <terms> </terms> y la Política de privacidad <privacy> </privacy>."
 
-#: src/features/checkout/components/checkout-waivers.tsx:79
+#: src/features/checkout/components/checkout-waivers.tsx
 msgid "+3U5qS"
 msgstr "He leído y acepto la Política de Revocación <revocation> </revocation>. El derecho de revocación expira tan pronto como se completa el pedido y el servicio se presta automáticamente."
 
-#: src/features/checkout/components/elements-provider.tsx:83
+#: src/features/checkout/components/elements-provider.tsx
 msgid "mlJ21x"
 msgstr "Pague de forma anónima con criptomonedas"
 
-#: src/features/checkout/components/offer-card.tsx:93
+#: src/features/checkout/components/offer-card.tsx
 msgid "pxF+t0"
 msgstr "Popular"
 
-#: src/features/checkout/components/offer-card.tsx:105
-#: src/features/checkout/components/order-summary.tsx:157
+#: src/features/checkout/components/offer-card.tsx
+#: src/features/checkout/components/order-summary.tsx
 msgid "Rw82/V"
 msgstr "por mes"
 
-#: src/features/checkout/components/offer-card.tsx:119
-#: src/features/checkout/components/order-summary.tsx:67
-#: src/features/servers/components/plan/plan-radio-group.tsx:66
-#: src/features/servers/components/plan/plan-summary.tsx:150
-#: src/features/servers/components/servers-list.tsx:134
+#: src/features/checkout/components/offer-card.tsx
+#: src/features/checkout/components/order-summary.tsx
+#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/plan-summary.tsx
+#: src/features/servers/components/servers-list.tsx
 msgid "BGI16m"
 msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
 
-#: src/features/checkout/components/offer-card.tsx:160
-#: src/features/checkout/components/order-summary.tsx:109
+#: src/features/checkout/components/offer-card.tsx
+#: src/features/checkout/components/order-summary.tsx
 msgid "zSO/T8"
 msgstr "1 subred IPv4 + IPv6 /64"
 
-#: src/features/checkout/components/offer-card.tsx:179
+#: src/features/checkout/components/offer-card.tsx
 msgid "kWI6zX"
 msgstr "Compartida"
 
-#: src/features/checkout/components/offer-card.tsx:184
+#: src/features/checkout/components/offer-card.tsx
 msgid "Gzo4L7"
 msgstr "Enlace ascendente compartido: se comparte el máximo ancho de banda posible con otros clientes."
 
-#: src/features/checkout/components/offer-card.tsx:201
-#: src/features/checkout/components/order-summary.tsx:135
+#: src/features/checkout/components/offer-card.tsx
+#: src/features/checkout/components/order-summary.tsx
 msgid "IYlDM0"
 msgstr "Tráfico ilimitado"
 
-#: src/features/checkout/components/offer-card.tsx:205
+#: src/features/checkout/components/offer-card.tsx
 msgid "bIu4NB"
 msgstr "Tráfico según el principio de uso legítimo. Estrangulamiento temporal en caso de uso excesivo a largo plazo."
 
-#: src/features/checkout/components/offer-card.tsx:239
+#: src/features/checkout/components/offer-card.tsx
 msgid "5EjMej"
 msgstr "Configurar {name} ahora"
 
-#: src/features/checkout/components/offer-card.tsx:243
+#: src/features/checkout/components/offer-card.tsx
 msgid "khw/ok"
 msgstr "Configurar ahora"
 
-#: src/features/checkout/components/offer-card.tsx:246
-#: src/features/servers/components/plan/plan-radio-group.tsx:121
+#: src/features/checkout/components/offer-card.tsx
+#: src/features/servers/components/plan/plan-radio-group.tsx
 msgid "spsPUc"
 msgstr "Agotado"
 
-#: src/features/checkout/components/order-summary.tsx:54
+#: src/features/checkout/components/order-summary.tsx
 msgid "ivNR8s"
 msgstr "Resumen del pedido"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:162
+#: src/features/checkout/components/stripe-payment-form.tsx
 msgid "zAA8aS"
 msgstr "Por favor complete todos los campos de la dirección de facturación."
 
-#: src/features/checkout/components/stripe-payment-form.tsx:205
+#: src/features/checkout/components/stripe-payment-form.tsx
 msgid "6orx1c"
 msgstr "Dirección de Envio"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:207
+#: src/features/checkout/components/stripe-payment-form.tsx
 msgid "PAzxoc"
 msgstr "Se utiliza para facturación y cálculo del IVA."
 
-#: src/features/checkout/components/stripe-payment-form.tsx:224
+#: src/features/checkout/components/stripe-payment-form.tsx
 msgid "BVTni9"
 msgstr "Método de pago"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:231
+#: src/features/checkout/components/stripe-payment-form.tsx
 msgid "11yeGk"
 msgstr "Stripe procesa los pagos de forma segura."
 
-#: src/features/checkout/components/stripe-payment-form.tsx:267
+#: src/features/checkout/components/stripe-payment-form.tsx
 msgid "vhswJi"
 msgstr "No se pudo completar el pago"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:285
+#: src/features/checkout/components/stripe-payment-form.tsx
 msgid "ddCkDY"
 msgstr "Procesando pago…"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:285
+#: src/features/checkout/components/stripe-payment-form.tsx
 msgid "7tOz+m"
 msgstr "Paga ahora"
 
-#: src/features/dashboard/components/empty-servers.tsx:31
+#: src/features/dashboard/components/empty-servers.tsx
 msgid "fmSs/a"
 msgstr "No se encontraron servidores"
 
-#: src/features/dashboard/components/empty-servers.tsx:32
+#: src/features/dashboard/components/empty-servers.tsx
 msgid "zuhonL"
 msgstr "Aún no se han alquilado servidores. Los nuevos servidores se mostrarán aquí."
 
-#: src/features/dashboard/components/empty-servers.tsx:38
+#: src/features/dashboard/components/empty-servers.tsx
 msgid "SjCCH5"
 msgstr "alquilar un servidor"
 
-#: src/features/dashboard/components/latest-invoices-card.tsx:42
+#: src/features/dashboard/components/latest-invoices-card.tsx
 msgid "15BgLW"
 msgstr "Últimas facturas"
 
-#: src/features/dashboard/components/latest-invoices-card.tsx:44
+#: src/features/dashboard/components/latest-invoices-card.tsx
 msgid "VgBFI4"
 msgstr "Aquí podrás ver tus últimas facturas para descarga directa."
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:61
+#: src/features/dashboard/components/latest-invoices-list.tsx
 msgid "QVIbFk"
 msgstr "Sin facturas"
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:63
+#: src/features/dashboard/components/latest-invoices-list.tsx
 msgid "GtDccr"
 msgstr "Aún no se han emitido facturas."
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:87
-#: src/features/invoices/components/invoices-table/columns.tsx:152
+#: src/features/dashboard/components/latest-invoices-list.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
 msgid "5q3qC0"
 msgstr "Descargar"
 
-#: src/features/dashboard/components/latest-servers-card.tsx:44
+#: src/features/dashboard/components/latest-servers-card.tsx
 msgid "2AizOe"
 msgstr "Aquí puedes ver tus últimos servidores."
 
-#: src/features/dashboard/components/server-status-small.tsx:60
+#: src/features/dashboard/components/server-status-small.tsx
 msgid "KRtjzZ"
 msgstr "Caducada (se eliminará {date})"
 
-#: src/features/dashboard/components/server-status-small.tsx:71
-#: src/features/servers/hooks/use-status-mapping.ts:58
+#: src/features/dashboard/components/server-status-small.tsx
+#: src/features/servers/hooks/use-status-mapping.ts
 msgid "oJsHQW"
 msgstr "Suspendida"
 
-#: src/features/dashboard/components/server-status-small.tsx:77
+#: src/features/dashboard/components/server-status-small.tsx
 msgid "r9ELLA"
 msgstr "Instalando..."
 
-#: src/features/dashboard/components/server-status-small.tsx:84
+#: src/features/dashboard/components/server-status-small.tsx
 msgid "vOjKW3"
 msgstr "Caducando (será eliminado {date})"
 
-#: src/features/dashboard/components/server-status-small.tsx:95
+#: src/features/dashboard/components/server-status-small.tsx
 msgid "Dnob31"
 msgstr "Operacional"
 
-#: src/features/invoices/components/invoices-table/columns.tsx:72
-#: src/features/invoices/components/invoices-table/columns.tsx:80
+#: src/features/invoices/components/invoices-table/columns.tsx
 msgid "ijDMrP"
 msgstr "Número de factura"
 
-#: src/features/invoices/components/invoices-table/columns.tsx:81
+#: src/features/invoices/components/invoices-table/columns.tsx
 msgid "cIAuzz"
 msgstr "Buscar número de factura..."
 
-#: src/features/invoices/components/invoices-table/columns.tsx:91
-#: src/features/invoices/components/invoices-table/columns.tsx:100
+#: src/features/invoices/components/invoices-table/columns.tsx
 msgid "/0TOL5"
 msgstr "Importe"
 
-#: src/features/invoices/components/invoices-table/columns.tsx:111
-#: src/features/invoices/components/invoices-table/columns.tsx:117
+#: src/features/invoices/components/invoices-table/columns.tsx
 msgid "dULmbA"
 msgstr "Fecha de factura"
 
-#: src/features/invoices/components/invoices-table/columns.tsx:127
-#: src/features/invoices/components/invoices-table/columns.tsx:136
+#: src/features/invoices/components/invoices-table/columns.tsx
 msgid "YOc6Ow"
 msgstr "Pagado el"
 
-#: src/features/landing/components/advantage-item.tsx:58
-#: src/features/landing/components/features-showcase.tsx:45
-#: src/features/landing/components/features-showcase.tsx:69
+#: src/features/landing/components/advantage-item.tsx
+#: src/features/landing/components/features-showcase.tsx
 msgid "TdTXXf"
 msgstr "Más información"
 
-#: src/features/landing/components/advantages-row.tsx:32
+#: src/features/landing/components/advantages-row.tsx
 msgid "GTucMY"
 msgstr "Máxima privacidad"
 
-#: src/features/landing/components/advantages-row.tsx:33
+#: src/features/landing/components/advantages-row.tsx
 msgid "IIN9F8"
 msgstr "Para nosotros, la privacidad es lo primero. Nunca compartir con terceros."
 
-#: src/features/landing/components/advantages-row.tsx:40
+#: src/features/landing/components/advantages-row.tsx
 msgid "daLPgg"
 msgstr "Soporte genuino"
 
-#: src/features/landing/components/advantages-row.tsx:41
+#: src/features/landing/components/advantages-row.tsx
 msgid "hnGR7B"
 msgstr "Ofrecemos soporte humano las 24 horas del día, siempre que lo necesite."
 
-#: src/features/landing/components/advantages-row.tsx:48
+#: src/features/landing/components/advantages-row.tsx
 msgid "uDrdrl"
 msgstr "Protección DDoS incluida"
 
-#: src/features/landing/components/advantages-row.tsx:49
+#: src/features/landing/components/advantages-row.tsx
 msgid "TWNuCY"
 msgstr "La protección activa DDoS te mantiene en línea. Sin cargos adicionales, nunca."
 
-#: src/features/landing/components/advantages-row.tsx:56
+#: src/features/landing/components/advantages-row.tsx
 msgid "nVfA/q"
 msgstr "Portal de clientes moderno"
 
-#: src/features/landing/components/advantages-row.tsx:57
+#: src/features/landing/components/advantages-row.tsx
 msgid "fQqAwd"
 msgstr "Administre eficientemente sus servidores sin problemas ni frustraciones."
 
-#: src/features/landing/components/faq-section.tsx:32
+#: src/features/landing/components/faq-section.tsx
 msgid "j3A1sI"
 msgstr "¿Cuánto tiempo lleva aprovisionar un servidor?"
 
-#: src/features/landing/components/faq-section.tsx:33
+#: src/features/landing/components/faq-section.tsx
 msgid "50VRoa"
 msgstr "El aprovisionamiento del paquete contratado se hace normalmente al instante, de forma automática tras el pedido, sin colas. También te enviamos un correo de confirmación."
 
-#: src/features/landing/components/faq-section.tsx:38
+#: src/features/landing/components/faq-section.tsx
 msgid "zWVB3p"
 msgstr "¿Existe un límite de tráfico?"
 
-#: src/features/landing/components/faq-section.tsx:39
+#: src/features/landing/components/faq-section.tsx
 msgid "+T4TVw"
 msgstr "No, no hay límite de tráfico para nuestros servidores. El enlace ascendente se proporciona según el principio de uso legítimo. Sin embargo, el ancho de banda puede verse limitado temporalmente en caso de un uso sostenido desproporcionadamente alto."
 
-#: src/features/landing/components/faq-section.tsx:44
+#: src/features/landing/components/faq-section.tsx
 msgid "RS/4DH"
 msgstr "¿Se puede cambiar el paquete más tarde?"
 
-#: src/features/landing/components/faq-section.tsx:45
+#: src/features/landing/components/faq-section.tsx
 msgid "tBYbeE"
 msgstr "Puedes cambiar el paquete contratado fácilmente en el portal del cliente. Si cambias dentro del periodo de facturación en curso, el precio se ajustará en consecuencia."
 
-#: src/features/landing/components/faq-section.tsx:50
+#: src/features/landing/components/faq-section.tsx
 msgid "Adyexr"
 msgstr "¿Puedo cancelar mi servidor en cualquier momento?"
 
-#: src/features/landing/components/faq-section.tsx:51
+#: src/features/landing/components/faq-section.tsx
 msgid "4FVTjU"
 msgstr "Sí, puedes cancelar los servidores contratados en cualquier momento desde el portal del cliente. La baja aplica al final del periodo de facturación elegido."
 
-#: src/features/landing/components/faq-section.tsx:56
+#: src/features/landing/components/faq-section.tsx
 msgid "KfLE6n"
 msgstr "¿Cómo puedo acceder a mis servidores?"
 
-#: src/features/landing/components/faq-section.tsx:57
+#: src/features/landing/components/faq-section.tsx
 msgid "B7MEDP"
 msgstr "Gestionas tu servidor contratado en nuestro portal de clientes. El acceso SSH con contraseña viene activado por defecto. También puedes usar la consola VNC."
 
-#: src/features/landing/components/faq-section.tsx:62
+#: src/features/landing/components/faq-section.tsx
 msgid "p/GLe/"
 msgstr "¿Qué tan seguras son mis datos?"
 
-#: src/features/landing/components/faq-section.tsx:63
+#: src/features/landing/components/faq-section.tsx
 msgid "kexWaZ"
 msgstr "La protección de datos es nuestra máxima prioridad. Todos los datos de los servidores se almacenan en discos cifrados. Por lo general, no es posible el acceso por nuestra parte como proveedor o por parte de otros actores. Puedes encontrar más información en nuestra <privacy>política de privacidad</privacy>."
 
-#: src/features/landing/components/faq-section.tsx:75
+#: src/features/landing/components/faq-section.tsx
 msgid "zcLioW"
 msgstr "¿Dónde puedo obtener soporte?"
 
-#: src/features/landing/components/faq-section.tsx:76
+#: src/features/landing/components/faq-section.tsx
 msgid "igjse2"
 msgstr "Nuestro equipo de soporte está disponible 24 horas al día, 7 días a la semana. Enviando un correo electrónico a <email>support@virtbase.com</email> obtendrá una respuesta rápida."
 
-#: src/features/landing/components/faq-section.tsx:84
+#: src/features/landing/components/faq-section.tsx
 msgid "aINRxc"
 msgstr "¿Dónde están ubicados los servidores?"
 
-#: src/features/landing/components/faq-section.tsx:85
+#: src/features/landing/components/faq-section.tsx
 msgid "cMXI0b"
 msgstr "Todos nuestros servidores están ubicados actualmente en el Skylink Datacenter en los Países Bajos. Está equipado según los estándares Tier 3 y tiene suministro de energía, componentes de red y refrigeración redundantes."
 
-#: src/features/landing/components/faq-section.tsx:94
+#: src/features/landing/components/faq-section.tsx
 msgid "7Rm1x6"
 msgstr "Preguntas frecuentes"
 
-#: src/features/landing/components/features-showcase.tsx:35
+#: src/features/landing/components/features-showcase.tsx
 msgid "N2jrkQ"
 msgstr "Métricas del servidor en tiempo real"
 
-#: src/features/landing/components/features-showcase.tsx:38
+#: src/features/landing/components/features-showcase.tsx
 msgid "9mCvlG"
 msgstr "Las métricas de nuestros servidores se actualizan en tiempo real, para que siempre pueda ver el estado actual de sus servidores."
 
-#: src/features/landing/components/features-showcase.tsx:55
+#: src/features/landing/components/features-showcase.tsx
 msgid "S4NISm"
 msgstr "Cortafuegos sin estado"
 
-#: src/features/landing/components/features-showcase.tsx:58
+#: src/features/landing/components/features-showcase.tsx
 msgid "1s50w7"
 msgstr "Con sus propias reglas de firewall, puede proteger su servidor específicamente. Cada regla se puede configurar individualmente."
 
-#: src/features/landing/components/server-firewall-demo.tsx:42
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:191
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx:87
+#: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "DZ2Koj"
 msgstr "Dirección"
 
-#: src/features/landing/components/server-firewall-demo.tsx:53
-#: src/features/servers/components/server-graphs.tsx:133
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:206
-#: src/features/servers/firewall/hooks/use-firewall-direction-mapping.ts:31
+#: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/components/server-graphs.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/hooks/use-firewall-direction-mapping.ts
 msgid "YDkqMJ"
 msgstr "Entrante"
 
-#: src/features/landing/components/server-firewall-demo.tsx:59
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:222
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx:109
+#: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "QlsDcr"
 msgstr "Acción"
 
-#: src/features/landing/components/server-firewall-demo.tsx:70
-#: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts:40
+#: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "VzIOKf"
 msgstr "Rechazar"
 
-#: src/features/landing/components/server-firewall-demo.tsx:77
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:242
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx:127
+#: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "0QLzxo"
 msgstr "Protocolo"
 
-#: src/features/landing/components/server-firewall-demo.tsx:89
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:295
+#: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "rqkHXK"
 msgstr "Puerto de origen"
 
-#: src/features/landing/components/server-firewall-demo.tsx:98
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:296
+#: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "WSxucy"
 msgstr "Puerto de destino"
 
-#: src/features/landing/components/server-stats-demo.tsx:46
-#: src/features/servers/components/server-stats-card.tsx:67
+#: src/features/landing/components/server-stats-demo.tsx
+#: src/features/servers/components/server-stats-card.tsx
 msgid "wbsq7O"
 msgstr "Uso"
 
-#: src/features/landing/components/server-stats-demo.tsx:57
-#: src/features/servers/components/overview/node-details-dialog.tsx:87
-#: src/features/servers/components/server-graphs.tsx:95
-#: src/features/servers/components/server-stats-card.tsx:78
+#: src/features/landing/components/server-stats-demo.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
+#: src/features/servers/components/server-graphs.tsx
+#: src/features/servers/components/server-stats-card.tsx
 msgid "QgBuiV"
 msgstr "UPC"
 
-#: src/features/landing/components/server-stats-demo.tsx:100
-#: src/features/servers/components/server-graphs.tsx:117
-#: src/features/servers/components/server-stats-card.tsx:130
+#: src/features/landing/components/server-stats-demo.tsx
+#: src/features/servers/components/server-graphs.tsx
+#: src/features/servers/components/server-stats-card.tsx
 msgid "OuCSDn"
 msgstr "Disco"
 
-#: src/features/landing/components/server-stats-demo.tsx:122
-#: src/features/servers/components/server-graphs.tsx:130
-#: src/features/servers/components/server-stats-card.tsx:155
+#: src/features/landing/components/server-stats-demo.tsx
+#: src/features/servers/components/server-graphs.tsx
+#: src/features/servers/components/server-stats-card.tsx
 msgid "I3JhPS"
 msgstr "Red"
 
-#: src/features/landing/components/server-stats-demo.tsx:156
-#: src/features/servers/components/server-stats-card.tsx:187
+#: src/features/landing/components/server-stats-demo.tsx
+#: src/features/servers/components/server-stats-card.tsx
 msgid "yCCio2"
 msgstr "último reinicio"
 
-#: src/features/servers/components/advanced/advanced-bios-card.tsx:35
+#: src/features/servers/components/advanced/advanced-bios-card.tsx
 msgid "NjgW6o"
 msgstr "BIOS"
 
-#: src/features/servers/components/advanced/advanced-bios-card.tsx:37
+#: src/features/servers/components/advanced/advanced-bios-card.tsx
 msgid "4HNt5G"
 msgstr "Selecciona el tipo de BIOS para tu servidor."
 
-#: src/features/servers/components/advanced/advanced-bios-card.tsx:45
+#: src/features/servers/components/advanced/advanced-bios-card.tsx
 msgid "HJOq/1"
 msgstr "Se recomienda UEFI BIOS para instalaciones de Windows. Usa el BIOS heredado para instalaciones antiguas de Linux."
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:100
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx
 msgid "XHiVwa"
 msgstr "BIOS heredado"
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:103
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx
 msgid "AhxnaN"
 msgstr "Usa el BIOS heredado para este servidor."
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:117
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx
 msgid "/eGTDl"
 msgstr "UEFI BIOS"
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:120
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx
 msgid "oZyWxo"
 msgstr "Usa el UEFI BIOS más reciente para este servidor."
 
-#: src/features/servers/components/advanced/advanced-tpm-card.tsx:35
+#: src/features/servers/components/advanced/advanced-tpm-card.tsx
 msgid "KX3bZF"
 msgstr "TPM"
 
-#: src/features/servers/components/advanced/advanced-tpm-card.tsx:37
+#: src/features/servers/components/advanced/advanced-tpm-card.tsx
 msgid "C6jvVM"
 msgstr "Activa o desactiva el módulo TPM de tu servidor."
 
-#: src/features/servers/components/advanced/advanced-tpm-card.tsx:45
+#: src/features/servers/components/advanced/advanced-tpm-card.tsx
 msgid "1Lw+6m"
 msgstr "La mayoría de instalaciones Linux no requieren TPM, mientras que Windows requiere TPM v2.0."
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:105
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx
 msgid "I1Um2Q"
 msgstr "Desactivar TPM"
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:108
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx
 msgid "i1+8G8"
 msgstr "Desactiva por completo el TPM en este servidor."
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:122
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx
 msgid "HrP3QG"
 msgstr "Activar TPM v1.2"
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:125
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx
 msgid "/p73Kl"
 msgstr "Activa TPM v1.2 en este servidor."
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:139
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx
 msgid "DwWNni"
 msgstr "Activar TPM v2.0"
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:142
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx
 msgid "i/5Hb2"
 msgstr "Activa TPM v2.0 en este servidor."
 
-#: src/features/servers/components/backups/backups-card.tsx:97
+#: src/features/servers/components/backups/backups-card.tsx
 msgid "pelX8B"
 msgstr "{count, plural, =1 {# copia de seguridad} other {# copias de seguridad}}"
 
-#: src/features/servers/components/backups/backups-table/backup-actions.tsx:122
+#: src/features/servers/components/backups/backups-table/backup-actions.tsx
 msgid "zz6ObK"
 msgstr "Restaurar"
 
-#: src/features/servers/components/backups/backups-table/backup-actions.tsx:137
+#: src/features/servers/components/backups/backups-table/backup-actions.tsx
 msgid "Zl4/y9"
 msgstr "Cerrar"
 
-#: src/features/servers/components/backups/backups-table/columns.tsx:88
+#: src/features/servers/components/backups/backups-table/columns.tsx
 msgid "kF9XUo"
 msgstr "Marca de tiempo"
 
-#: src/features/servers/components/backups/backups-table/columns.tsx:108
+#: src/features/servers/components/backups/backups-table/columns.tsx
 msgid "tBwTvx"
 msgstr "Tamaño/Estado"
 
-#: src/features/servers/components/backups/backups-table/columns.tsx:155
-#: src/features/servers/components/server-custom-image-select.tsx:188
+#: src/features/servers/components/backups/backups-table/columns.tsx
+#: src/features/servers/components/server-custom-image-select.tsx
 msgid "vXCeIi"
 msgstr "Fallida"
 
-#: src/features/servers/components/backups/backups-table/columns.tsx:164
+#: src/features/servers/components/backups/backups-table/columns.tsx
 msgid "mRL9Vh"
 msgstr "Creando..."
 
-#: src/features/servers/components/backups/backups-table/columns.tsx:194
-#: src/features/servers/components/backups/restore-backup-dialog.tsx:107
-#: src/features/servers/hooks/use-status-mapping.ts:63
-#: src/features/servers/hooks/use-task-mapping.ts:71
+#: src/features/servers/components/backups/backups-table/columns.tsx
+#: src/features/servers/components/backups/restore-backup-dialog.tsx
+#: src/features/servers/hooks/use-status-mapping.ts
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "5jeq8P"
 msgstr "Desconocida"
 
-#: src/features/servers/components/backups/backups-table/index.tsx:99
+#: src/features/servers/components/backups/backups-table/index.tsx
 msgid "G7wlJr"
 msgstr "Sin copias de seguridad"
 
-#: src/features/servers/components/backups/backups-table/index.tsx:100
+#: src/features/servers/components/backups/backups-table/index.tsx
 msgid "gyxApU"
 msgstr "Aún no se han creado copias de seguridad."
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:94
-#: src/features/servers/components/backups/create-backup-dialog.tsx:112
+#: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "6f7NTQ"
 msgstr "Crear copia de seguridad"
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:95
+#: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "Z6LfAU"
 msgstr "Cree una nueva copia de seguridad para su servidor."
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:148
+#: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "mDxkGm"
 msgstr "Modo de copia de seguridad"
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:164
+#: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "8Y0yUM"
 msgstr "Instantánea"
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:167
+#: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "04uNfB"
 msgstr "Crea una copia de seguridad sin interrumpir el sistema. Se realiza una copia de seguridad del estado actual de los procesos."
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:183
-#: src/features/servers/components/server-actions-row.tsx:168
+#: src/features/servers/components/backups/create-backup-dialog.tsx
+#: src/features/servers/components/server-actions-row.tsx
 msgid "elnaZe"
 msgstr "Suspender"
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:186
+#: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "qRuNZh"
 msgstr "Interrumpe el sistema brevemente para crear una copia de seguridad sin apagarlo."
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:202
-#: src/features/servers/components/server-actions-row.tsx:181
+#: src/features/servers/components/backups/create-backup-dialog.tsx
+#: src/features/servers/components/server-actions-row.tsx
 msgid "q/uwLT"
 msgstr "Detener"
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:205
+#: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "JidfdC"
 msgstr "Apaga completamente el sistema antes de crear la copia de seguridad."
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:225
+#: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "/EmLPv"
 msgstr "Habilitar protección contra eliminación"
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:234
+#: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "I9XNiI"
 msgstr "La copia de seguridad recién creada solo se puede eliminar después de que se deshabilite la protección contra eliminación."
 
-#: src/features/servers/components/backups/restore-backup-dialog.tsx:57
+#: src/features/servers/components/backups/restore-backup-dialog.tsx
 msgid "MW7EBt"
 msgstr "Restaurar copia de seguridad"
 
-#: src/features/servers/components/backups/restore-backup-dialog.tsx:64
+#: src/features/servers/components/backups/restore-backup-dialog.tsx
 msgid "LImSzk"
 msgstr "Restaure una copia de seguridad en su servidor."
 
-#: src/features/servers/components/backups/restore-backup-dialog.tsx:93
+#: src/features/servers/components/backups/restore-backup-dialog.tsx
 msgid "Z2bRvp"
 msgstr "Al restaurar la copia de seguridad, el estado actual del servidor se restablecerá al estado de la copia de seguridad de {date}."
 
-#: src/features/servers/components/backups/restore-backup-dialog.tsx:104
+#: src/features/servers/components/backups/restore-backup-dialog.tsx
 msgid "bX1pzZ"
 msgstr "Se restaurará el siguiente sistema operativo:"
 
-#: src/features/servers/components/backups/restore-backup-dialog.tsx:110
+#: src/features/servers/components/backups/restore-backup-dialog.tsx
 msgid "pFmRJS"
 msgstr "¿Se debe restaurar la copia de seguridad?"
 
-#: src/features/servers/components/console/console-frame.tsx:73
+#: src/features/servers/components/console/console-frame.tsx
 msgid "lptya2"
 msgstr "El servidor esta suspendido"
 
-#: src/features/servers/components/console/console-frame.tsx:75
+#: src/features/servers/components/console/console-frame.tsx
 msgid "3KjSye"
 msgstr "Esta función no está disponible mientras el servidor está suspendido. Renueve su servidor para acceder a la consola."
 
-#: src/features/servers/components/console/console-frame.tsx:91
-#: src/features/servers/components/server-status-bar.tsx:80
+#: src/features/servers/components/console/console-frame.tsx
+#: src/features/servers/components/server-status-bar.tsx
 msgid "sIwjuh"
 msgstr "El servidor se está instalando"
 
-#: src/features/servers/components/console/console-frame.tsx:93
+#: src/features/servers/components/console/console-frame.tsx
 msgid "/iuNMM"
 msgstr "Esta característica no está disponible mientras se está instalando el servidor."
 
-#: src/features/servers/components/console/console-frame.tsx:110
+#: src/features/servers/components/console/console-frame.tsx
 msgid "odJjY9"
 msgstr "Copia de seguridad en progreso"
 
-#: src/features/servers/components/console/console-frame.tsx:112
+#: src/features/servers/components/console/console-frame.tsx
 msgid "Z/xHv5"
 msgstr "Esta función no está disponible mientras se realiza una copia de seguridad. Inténtelo de nuevo más tarde."
 
-#: src/features/servers/components/console/console-frame.tsx:128
+#: src/features/servers/components/console/console-frame.tsx
 msgid "uHAMke"
 msgstr "El servidor no se está ejecutando"
 
-#: src/features/servers/components/console/console-frame.tsx:130
+#: src/features/servers/components/console/console-frame.tsx
 msgid "clmnLf"
 msgstr "Inicie su servidor y la consola se conectará automáticamente."
 
-#: src/features/servers/components/overview/change-template-dialog.tsx:89
+#: src/features/servers/components/overview/change-template-dialog.tsx
 msgid "CnkjLF"
 msgstr "Cambiar sistema operativo"
 
-#: src/features/servers/components/overview/change-template-dialog.tsx:94
+#: src/features/servers/components/overview/change-template-dialog.tsx
 msgid "VWfWP6"
 msgstr "Cambia el sistema operativo de tu servidor."
 
-#: src/features/servers/components/overview/change-template-dialog.tsx:124
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx:121
+#: src/features/servers/components/overview/change-template-dialog.tsx
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgid "3SVI5p"
 msgstr "Advertencia"
 
-#: src/features/servers/components/overview/change-template-dialog.tsx:127
+#: src/features/servers/components/overview/change-template-dialog.tsx
 msgid "3hIbVf"
 msgstr "Al cambiar el sistema operativo, todos los datos se eliminarán permanentemente."
 
-#: src/features/servers/components/overview/change-template-dialog.tsx:139
+#: src/features/servers/components/overview/change-template-dialog.tsx
 msgid "MbXrbc"
 msgstr "Nuevo sistema operativo"
 
-#: src/features/servers/components/overview/change-template-dialog.tsx:171
+#: src/features/servers/components/overview/change-template-dialog.tsx
 msgid "h8jASy"
 msgstr "Nueva contraseña raíz"
 
-#: src/features/servers/components/overview/node-details-dialog.tsx:67
-#: src/features/servers/components/overview/server-details-card.tsx:115
+#: src/features/servers/components/overview/node-details-dialog.tsx
+#: src/features/servers/components/overview/server-details-card.tsx
 msgid "ivkv/L"
 msgstr "Nodo"
 
-#: src/features/servers/components/overview/node-details-dialog.tsx:68
+#: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "UfS56w"
 msgstr "Detalles del nodo."
 
-#: src/features/servers/components/overview/node-details-dialog.tsx:77
+#: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "rbrahO"
 msgstr "Cerca"
 
-#: src/features/servers/components/overview/node-details-dialog.tsx:92
+#: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "dVx3yz"
 msgstr "Memoria"
 
-#: src/features/servers/components/overview/rename-server-dialog.tsx:65
-#: src/features/servers/components/overview/rename-server-dialog.tsx:77
-#: src/features/servers/components/overview/server-details-card.tsx:86
+#: src/features/servers/components/overview/rename-server-dialog.tsx
+#: src/features/servers/components/overview/server-details-card.tsx
 msgid "SwBrEP"
 msgstr "Cambiar nombre del servidor"
 
-#: src/features/servers/components/overview/rename-server-dialog.tsx:66
+#: src/features/servers/components/overview/rename-server-dialog.tsx
 msgid "mFBy/n"
 msgstr "Cambie el nombre de su servidor."
 
-#: src/features/servers/components/overview/rename-server-dialog.tsx:100
+#: src/features/servers/components/overview/rename-server-dialog.tsx
 msgid "UQXG4v"
 msgstr "mi servidor"
 
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx:93
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgid "5juwi+"
 msgstr "Restablece la contraseña de un usuario en tu servidor."
 
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx:124
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgid "K1+gri"
 msgstr "Esta acción no se puede deshacer. Si el paquete <code>qemu-quest-agent</code> no está instalado, el proceso fallará."
 
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx:141
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgid "JCIgkj"
 msgstr "Nombre de usuario"
 
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx:162
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgid "1jWUV4"
 msgstr "El nombre de usuario de la cuenta cuya contraseña quieres restablecer. Suele ser <code>root</code> en Linux y <code>Administrator</code> en Windows."
 
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx:180
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgid "Ev6SEF"
 msgstr "Nueva contraseña"
 
-#: src/features/servers/components/overview/server-details-card.tsx:70
+#: src/features/servers/components/overview/server-details-card.tsx
 msgid "F/6VqP"
 msgstr "Servidora"
 
-#: src/features/servers/components/overview/server-details-card.tsx:105
+#: src/features/servers/components/overview/server-details-card.tsx
 msgid "4A//XV"
 msgstr "Imagen personalizada"
 
-#: src/features/servers/components/overview/server-details-card.tsx:128
+#: src/features/servers/components/overview/server-details-card.tsx
 msgid "RTw2Xk"
 msgstr "Ver detalles del nodo"
 
-#: src/features/servers/components/overview/server-details-card.tsx:179
+#: src/features/servers/components/overview/server-details-card.tsx
 msgid "8O64Ol"
 msgstr "Cambiar sistema operativo"
 
-#: src/features/servers/components/plan/plan-form.tsx:87
+#: src/features/servers/components/plan/plan-form.tsx
 msgid "Kng3Em"
 msgstr "Seleccione un nuevo plan o amplíe su plan actual. No se admite la degradación a un plan de almacenamiento más pequeño."
 
-#: src/features/servers/components/plan/plan-radio-group.tsx:74
-#: src/features/servers/components/plan/plan-summary.tsx:163
+#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "tpfEY0"
 msgstr "RAM {memory}"
 
-#: src/features/servers/components/plan/plan-radio-group.tsx:82
-#: src/features/servers/components/plan/plan-summary.tsx:177
+#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "cenOuc"
 msgstr "SSD NVMe {storage}"
 
-#: src/features/servers/components/plan/plan-radio-group.tsx:111
+#: src/features/servers/components/plan/plan-radio-group.tsx
 msgid "JxjC5u"
 msgstr "{price} / mes"
 
-#: src/features/servers/components/plan/plan-summary.tsx:69
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "aG7JgP"
 msgstr "No se admite la degradación a un plan de almacenamiento más pequeño. Elija un plan con al menos {size} de almacenamiento."
 
-#: src/features/servers/components/plan/plan-summary.tsx:82
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "3XuHC5"
 msgstr "{name} está agotado en este momento. Vuelve a intentarlo más tarde o elige un plan diferente."
 
-#: src/features/servers/components/plan/plan-summary.tsx:87
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "1p9GGF"
 msgstr "Este plan está agotado. Elija un plan diferente."
 
-#: src/features/servers/components/plan/plan-summary.tsx:109
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "ZjhoiP"
 msgstr "Selecciona un plan"
 
-#: src/features/servers/components/plan/plan-summary.tsx:112
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "SB//YQ"
 msgstr "Resumen del pedido"
 
-#: src/features/servers/components/plan/plan-summary.tsx:112
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "RrCui3"
 msgstr "Resumen"
 
-#: src/features/servers/components/plan/plan-summary.tsx:119
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "6WPC9q"
 msgstr "cambio de plan"
 
-#: src/features/servers/components/plan/plan-summary.tsx:221
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "Vn2ud4"
 msgstr "/ mes"
 
-#: src/features/servers/components/plan/plan-summary.tsx:227
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "LQbES8"
 msgstr "incluido IVA legal, si corresponde"
 
-#: src/features/servers/components/plan/plan-summary.tsx:234
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "N387FB"
 msgstr "Su plan actual se ampliará por un mes."
 
-#: src/features/servers/components/plan/plan-summary.tsx:235
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "TB+1v+"
 msgstr "El plan se cambiará a {name} y el plazo se ampliará un mes."
 
-#: src/features/servers/components/plan/plan-summary.tsx:270
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "So9+9+"
 msgstr "Cambiar de plan"
 
-#: src/features/servers/components/plan/plan-summary.tsx:285
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "YeQq19"
 msgstr "Preparando el pago..."
 
-#: src/features/servers/components/rdns/records-card.tsx:49
+#: src/features/servers/components/rdns/records-card.tsx
 msgid "Z2vqA3"
 msgstr "Registros PTR"
 
-#: src/features/servers/components/rdns/records-card.tsx:77
+#: src/features/servers/components/rdns/records-card.tsx
 msgid "K006kw"
 msgstr "{count, plural, =1 {# registro PTR} other {# registros PTR}}"
 
-#: src/features/servers/components/rdns/records-table/columns.tsx:40
+#: src/features/servers/components/rdns/records-table/columns.tsx
 msgid "99tjyG"
 msgstr "IP"
 
-#: src/features/servers/components/rdns/records-table/columns.tsx:98
+#: src/features/servers/components/rdns/records-table/columns.tsx
 msgid "LUHXQL"
 msgstr "Eliminar registro PTR"
 
-#: src/features/servers/components/rdns/records-table/index.tsx:122
+#: src/features/servers/components/rdns/records-table/index.tsx
 msgid "q9ZR74"
 msgstr "Sin registros PTR"
 
-#: src/features/servers/components/rdns/records-table/index.tsx:123
+#: src/features/servers/components/rdns/records-table/index.tsx
 msgid "HPaNFO"
 msgstr "Aún no se han creado registros PTR."
 
-#: src/features/servers/components/rdns/upsert-record-dialog.tsx:73
+#: src/features/servers/components/rdns/upsert-record-dialog.tsx
 msgid "mTjnKh"
 msgstr "Actualizar registro PTR"
 
-#: src/features/servers/components/rdns/upsert-record-dialog.tsx:78
+#: src/features/servers/components/rdns/upsert-record-dialog.tsx
 msgid "JAfuaI"
 msgstr "Actualice un registro PTR para una IP y un nombre de host determinados."
 
-#: src/features/servers/components/rdns/upsert-record-dialog.tsx:112
+#: src/features/servers/components/rdns/upsert-record-dialog.tsx
 msgid "uJV0wU"
 msgstr "Dirección IP"
 
-#: src/features/servers/components/rdns/upsert-record-dialog.tsx:123
+#: src/features/servers/components/rdns/upsert-record-dialog.tsx
 msgid "sLLPqe"
 msgstr "Se pueden crear registros PTR para todas las direcciones IP asignadas a este servidor."
 
-#: src/features/servers/components/rdns/upsert-record-dialog.tsx:146
+#: src/features/servers/components/rdns/upsert-record-dialog.tsx
 msgid "XM/KKz"
 msgstr "El nombre de host a resolver para la dirección IP. <code>localhost</code> no está permitido."
 
-#: src/features/servers/components/server-actions-row.tsx:88
+#: src/features/servers/components/server-actions-row.tsx
 msgid "tZbb+K"
 msgstr "Cerrar"
 
-#: src/features/servers/components/server-actions-row.tsx:98
+#: src/features/servers/components/server-actions-row.tsx
 msgid "9U7nUR"
 msgstr "Reiniciar"
 
-#: src/features/servers/components/server-actions-row.tsx:112
+#: src/features/servers/components/server-actions-row.tsx
 msgid "mOFG3K"
 msgstr "Comenzar"
 
-#: src/features/servers/components/server-actions-row.tsx:126
+#: src/features/servers/components/server-actions-row.tsx
 msgid "3y9DGg"
 msgstr "Reanudar"
 
-#: src/features/servers/components/server-actions-row.tsx:145
+#: src/features/servers/components/server-actions-row.tsx
 msgid "YsjuRA"
 msgstr "Montar ISO"
 
-#: src/features/servers/components/server-actions-row.tsx:157
+#: src/features/servers/components/server-actions-row.tsx
 msgid "tFFMkF"
 msgstr "Pausa"
 
-#: src/features/servers/components/server-custom-image-select.tsx:99
+#: src/features/servers/components/server-custom-image-select.tsx
 msgid "wPPrpH"
 msgstr "Selecciona una imagen personalizada..."
 
-#: src/features/servers/components/server-custom-image-select.tsx:109
+#: src/features/servers/components/server-custom-image-select.tsx
 msgid "3MDlnT"
 msgstr "Buscar una imagen personalizada..."
 
-#: src/features/servers/components/server-custom-image-select.tsx:111
+#: src/features/servers/components/server-custom-image-select.tsx
 msgid "5YXiqk"
 msgstr "No se encontró ninguna imagen personalizada."
 
-#: src/features/servers/components/server-custom-image-select.tsx:179
+#: src/features/servers/components/server-custom-image-select.tsx
 msgid "9P0AA6"
 msgstr "Subiendo {percentage}"
 
-#: src/features/servers/components/server-custom-image-select.tsx:184
+#: src/features/servers/components/server-custom-image-select.tsx
 msgid "JEsxDw"
 msgstr "Subiendo..."
 
-#: src/features/servers/components/server-graphs.tsx:86
+#: src/features/servers/components/server-graphs.tsx
 msgid "j9Y9nu"
 msgstr "Horas"
 
-#: src/features/servers/components/server-graphs.tsx:87
+#: src/features/servers/components/server-graphs.tsx
 msgid "d8EqQY"
 msgstr "Días"
 
-#: src/features/servers/components/server-graphs.tsx:88
+#: src/features/servers/components/server-graphs.tsx
 msgid "g6+IGw"
 msgstr "Semanas"
 
-#: src/features/servers/components/server-graphs.tsx:89
+#: src/features/servers/components/server-graphs.tsx
 msgid "AxDOiG"
 msgstr "Meses"
 
-#: src/features/servers/components/server-graphs.tsx:90
+#: src/features/servers/components/server-graphs.tsx
 msgid "Jr5tMR"
 msgstr "Años"
 
-#: src/features/servers/components/server-graphs.tsx:98
+#: src/features/servers/components/server-graphs.tsx
 msgid "x8Ik2d"
 msgstr "UPC (%)"
 
-#: src/features/servers/components/server-graphs.tsx:107
+#: src/features/servers/components/server-graphs.tsx
 msgid "XYkq4n"
 msgstr "Usada"
 
-#: src/features/servers/components/server-graphs.tsx:111
+#: src/features/servers/components/server-graphs.tsx
 msgid "kkjl2v"
 msgstr "máx."
 
-#: src/features/servers/components/server-graphs.tsx:137
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:210
-#: src/features/servers/firewall/hooks/use-firewall-direction-mapping.ts:35
+#: src/features/servers/components/server-graphs.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/hooks/use-firewall-direction-mapping.ts
 msgid "Arxl88"
 msgstr "Extrovertida"
 
-#: src/features/servers/components/server-graphs.tsx:154
+#: src/features/servers/components/server-graphs.tsx
 msgid "6m3w+3"
 msgstr "Intervalo"
 
-#: src/features/servers/components/server-mount-badge.tsx:48
+#: src/features/servers/components/server-mount-badge.tsx
 msgid "Han16c"
 msgstr "Montado"
 
-#: src/features/servers/components/server-mount-dialog.tsx:70
+#: src/features/servers/components/server-mount-dialog.tsx
 msgid "lgSmVl"
 msgstr "Imagen ISO montada correctamente. El cambio se aplicará en el próximo arranque."
 
-#: src/features/servers/components/server-mount-dialog.tsx:76
+#: src/features/servers/components/server-mount-dialog.tsx
 msgid "bmliQK"
 msgstr "No se pudo montar la imagen ISO."
 
-#: src/features/servers/components/server-mount-dialog.tsx:87
+#: src/features/servers/components/server-mount-dialog.tsx
 msgid "1INFXA"
 msgstr "Imagen ISO desmontada correctamente. El cambio se aplicará en el próximo arranque."
 
-#: src/features/servers/components/server-mount-dialog.tsx:101
+#: src/features/servers/components/server-mount-dialog.tsx
 msgid "ZE4urv"
 msgstr "Montar imágenes ISO"
 
-#: src/features/servers/components/server-mount-dialog.tsx:102
+#: src/features/servers/components/server-mount-dialog.tsx
 msgid "HZdPWF"
 msgstr "Monta imágenes ISO en tu servidor."
 
-#: src/features/servers/components/server-mount-dialog.tsx:108
+#: src/features/servers/components/server-mount-dialog.tsx
 msgid "C3jmVs"
 msgstr "Imagen ISO"
 
-#: src/features/servers/components/server-mount-dialog.tsx:136
+#: src/features/servers/components/server-mount-dialog.tsx
 msgid "u9VaJ3"
 msgstr "Desmontar"
 
-#: src/features/servers/components/server-mount-dialog.tsx:141
+#: src/features/servers/components/server-mount-dialog.tsx
 msgid "Uh7TFc"
 msgstr "La imagen ISO se montará al instante, pero para arrancar desde ella debes detener por completo el servidor y reiniciarlo."
 
-#: src/features/servers/components/server-mount-dialog.tsx:144
+#: src/features/servers/components/server-mount-dialog.tsx
 msgid "FglhQv"
 msgstr "Puedes subir imágenes desde la <link>configuración de tu cuenta</link>."
 
-#: src/features/servers/components/server-stats-card.tsx:192
+#: src/features/servers/components/server-stats-card.tsx
 msgid "PW+sL4"
 msgstr "N / A"
 
-#: src/features/servers/components/server-status-bar.tsx:52
+#: src/features/servers/components/server-status-bar.tsx
 msgid "14KQU8"
 msgstr "Servidor suspendido"
 
-#: src/features/servers/components/server-status-bar.tsx:53
+#: src/features/servers/components/server-status-bar.tsx
 msgid "gmwFwF"
 msgstr "Este servidor ha sido suspendido y se eliminará en {date}, si no se renueva."
 
-#: src/features/servers/components/server-status-bar.tsx:67
+#: src/features/servers/components/server-status-bar.tsx
 msgid "+E3dAf"
 msgstr "El servidor está caducando"
 
-#: src/features/servers/components/server-status-bar.tsx:68
+#: src/features/servers/components/server-status-bar.tsx
 msgid "fkf7mm"
 msgstr "Este servidor está caducando {expiry} y se eliminará después, si no se renueva"
 
-#: src/features/servers/components/server-status-bar.tsx:81
+#: src/features/servers/components/server-status-bar.tsx
 msgid "76X+Qu"
 msgstr "Este servidor se está instalando. Es posible que algunas funciones aún no estén disponibles."
 
-#: src/features/servers/components/servers-list.tsx:207
+#: src/features/servers/components/servers-list.tsx
 msgid "SXm88k"
 msgstr "¡IP copiada al portapapeles!"
 
-#: src/features/servers/components/servers-list.tsx:216
+#: src/features/servers/components/servers-list.tsx
 msgid "26lbPc"
 msgstr "Copiar IP"
 
-#: src/features/servers/components/servers-list.tsx:227
+#: src/features/servers/components/servers-list.tsx
 msgid "nWQFic"
 msgstr "Renovar"
 
-#: src/features/servers/firewall/components/firewall-action-select.tsx:43
+#: src/features/servers/firewall/components/firewall-action-select.tsx
 msgid "ObQE5T"
 msgstr "Seleccionar acción"
 
-#: src/features/servers/firewall/components/firewall-options-row.tsx:46
+#: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "tzMNF3"
 msgstr "Estado"
 
-#: src/features/servers/firewall/components/firewall-options-row.tsx:48
+#: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "z1Jw4U"
 msgstr "El firewall siempre está habilitado."
 
-#: src/features/servers/firewall/components/firewall-options-row.tsx:57
+#: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "XumiMR"
 msgstr "Paquetes entrantes"
 
-#: src/features/servers/firewall/components/firewall-options-row.tsx:59
+#: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "404iMx"
 msgstr "La acción predeterminada para paquetes entrantes."
 
-#: src/features/servers/firewall/components/firewall-options-row.tsx:74
+#: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "MMByL/"
 msgstr "paquetes salientes"
 
-#: src/features/servers/firewall/components/firewall-options-row.tsx:76
+#: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "ZO06B5"
 msgstr "La acción predeterminada para paquetes salientes."
 
-#: src/features/servers/firewall/components/firewall-protocol-select.tsx:70
+#: src/features/servers/firewall/components/firewall-protocol-select.tsx
 msgid "LV0wPI"
 msgstr "Buscar un protocolo..."
 
-#: src/features/servers/firewall/components/firewall-protocol-select.tsx:72
+#: src/features/servers/firewall/components/firewall-protocol-select.tsx
 msgid "0dWwJ5"
 msgstr "No se encontró ningún protocolo compatible."
 
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:151
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "m5EN4C"
 msgstr "Crear regla de firewall"
 
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:151
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "gsXXUl"
 msgstr "Actualizar regla de firewall"
 
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:155
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "fnX+hz"
 msgstr "Cree una nueva regla de firewall."
 
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:156
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "bGOOmV"
 msgstr "Actualice una regla de firewall existente."
 
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:201
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "HrImBx"
 msgstr "Seleccionar dirección"
 
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:260
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "ubliHx"
 msgstr "tipo ICMP"
 
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:331
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx:55
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "V52jNn"
 msgstr "Activada"
 
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:343
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx:158
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "LgbKvU"
 msgstr "Comentario"
 
-#: src/features/servers/firewall/components/firewall-rules-card.tsx:54
+#: src/features/servers/firewall/components/firewall-rules-card.tsx
 msgid "Qov8tl"
 msgstr "Reglas del cortafuegos"
 
-#: src/features/servers/firewall/components/firewall-rules-card.tsx:85
+#: src/features/servers/firewall/components/firewall-rules-card.tsx
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# regla} other {# reglas}}, {activeCount} activas"
 
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx:67
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "Mq5bUJ"
 msgstr "Deshabilitar regla"
 
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx:67
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "5te9jo"
 msgstr "Habilitar regla"
 
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx:140
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "mqTGdC"
 msgstr "Puertos"
 
-#: src/features/servers/firewall/components/firewall-rules-table/index.tsx:146
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
 msgid "Ms3d/e"
 msgstr "Sin reglas de firewall"
 
-#: src/features/servers/firewall/components/firewall-rules-table/index.tsx:147
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
 msgid "xlDRKD"
 msgstr "Aún no se han creado reglas de firewall."
 
-#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:96
+#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
 msgid "wmFdws"
 msgstr "Subir"
 
-#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:108
+#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
 msgid "H/r5m6"
 msgstr "Bajar"
 
-#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:128
+#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
 msgid "wEQDC6"
 msgstr "Editar"
 
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:110
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "w+tZ4Z"
 msgstr "Generar reglas de cortafuegos"
 
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:111
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "zxRL4s"
 msgstr "Deja que la IA genere reglas de cortafuegos para tu servidor."
 
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:125
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "iWKE8s"
 msgstr "Indicación"
 
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:131
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "0r2ykg"
 msgstr "Permitir tráfico HTTPS, pero bloquear el tráfico SSH en mi servidor."
 
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:150
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "Pc+tM3"
 msgstr "Generar"
 
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:181
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "EWw/tK"
 msgstr "Aplicar"
 
-#: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts:32
+#: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "sjzLbX"
 msgstr "Aceptar"
 
-#: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts:36
+#: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "j8RTUO"
 msgstr "Gota"
 
-#: src/features/servers/hooks/use-status-mapping.ts:43
+#: src/features/servers/hooks/use-status-mapping.ts
 msgid "ccU6l/"
 msgstr "En línea"
 
-#: src/features/servers/hooks/use-status-mapping.ts:48
+#: src/features/servers/hooks/use-status-mapping.ts
 msgid "7UOvbT"
 msgstr "Desconectada"
 
-#: src/features/servers/hooks/use-status-mapping.ts:53
+#: src/features/servers/hooks/use-status-mapping.ts
 msgid "C2iTEH"
 msgstr "En pausa"
 
-#: src/features/servers/hooks/use-task-mapping.ts:31
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "3qXa2f"
 msgstr "A partir de..."
 
-#: src/features/servers/hooks/use-task-mapping.ts:35
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "PdMcML"
 msgstr "Restableciendo..."
 
-#: src/features/servers/hooks/use-task-mapping.ts:39
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "JM9DH8"
 msgstr "Reiniciando..."
 
-#: src/features/servers/hooks/use-task-mapping.ts:43
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "yR4+kW"
 msgstr "Parada..."
 
-#: src/features/servers/hooks/use-task-mapping.ts:47
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "jqQprl"
 msgstr "Cerrando..."
 
-#: src/features/servers/hooks/use-task-mapping.ts:51
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "hbUGzS"
 msgstr "Reanudando..."
 
-#: src/features/servers/hooks/use-task-mapping.ts:55
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "tXH4J0"
 msgstr "Suspendiendo..."
 
-#: src/features/servers/hooks/use-task-mapping.ts:59
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "m1xdPJ"
 msgstr "Pausando..."
 
-#: src/features/servers/hooks/use-task-mapping.ts:63
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "3iXlTU"
 msgstr "Retrocediendo..."
 
-#: src/features/servers/hooks/use-task-mapping.ts:67
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "98thq0"
 msgstr "Restaurando copia de seguridad..."
 
-#: src/ui/app-footer.tsx:37
+#: src/ui/app-footer.tsx
 msgid "4XCigB"
 msgstr "Aviso legal"
 
-#: src/ui/app-footer.tsx:49
+#: src/ui/app-footer.tsx
 msgid "EBDrtq"
 msgstr "Condiciones de uso"
 
-#: src/ui/app-footer.tsx:61
+#: src/ui/app-footer.tsx
 msgid "cPwv2c"
 msgstr "Política de privacidad"
 
-#: src/ui/copy-button.tsx:46
+#: src/ui/copy-button.tsx
 msgid "9j0fO7"
 msgstr "Copiada al portapapeles!"
 
-#: src/ui/copy-button.tsx:55
+#: src/ui/copy-button.tsx
 msgid "4l6vz1"
 msgstr "Copiar"
 
-#: src/ui/feedback-button.tsx:30
-#: src/ui/feedback-button.tsx:96
-#: src/ui/feedback-button.tsx:105
+#: src/ui/feedback-button.tsx
 msgid "Ejhdi4"
 msgstr "Comentario"
 
-#: src/ui/feedback-button.tsx:33
+#: src/ui/feedback-button.tsx
 msgid "HxIuLA"
 msgstr "Agregar captura de pantalla"
 
-#: src/ui/feedback-button.tsx:35
+#: src/ui/feedback-button.tsx
 msgid "wSZR47"
 msgstr "Entregar"
 
-#: src/ui/feedback-button.tsx:36
+#: src/ui/feedback-button.tsx
 msgid "N2IrpM"
 msgstr "Confirmar"
 
-#: src/ui/feedback-button.tsx:37
+#: src/ui/feedback-button.tsx
 msgid "T7Ry38"
 msgstr "Mensaje"
 
-#: src/ui/feedback-button.tsx:38
+#: src/ui/feedback-button.tsx
 msgid "VG94fP"
 msgstr "(requerida)"
 
-#: src/ui/feedback-button.tsx:39
+#: src/ui/feedback-button.tsx
 msgid "EbufBi"
 msgstr "Quitar captura de pantalla"
 
-#: src/ui/feedback-button.tsx:40
+#: src/ui/feedback-button.tsx
 msgid "Q43iqt"
 msgstr "Comentarios enviados correctamente"
 
-#: src/ui/feedback-button.tsx:44
+#: src/ui/feedback-button.tsx
 msgid "mi/NYE"
 msgstr "Ocultar sección"
 
-#: src/ui/feedback-button.tsx:45
+#: src/ui/feedback-button.tsx
 msgid "c47pnT"
 msgstr "Sección destacada"
 
-#: src/ui/feedback-button.tsx:46
+#: src/ui/feedback-button.tsx
 msgid "bemE3q"
 msgstr "Eliminar sección"
 
-#: src/ui/footer.tsx:64
+#: src/ui/footer.tsx
 msgid "Bqwweu"
 msgstr "Portal del cliente"
 
-#: src/ui/footer.tsx:72
-#: src/ui/nav.tsx:90
+#: src/ui/footer.tsx
+#: src/ui/nav.tsx
 msgid "AyGauy"
 msgstr "Acceso"
 
-#: src/ui/footer.tsx:88
+#: src/ui/footer.tsx
 msgid "Yy/yDL"
 msgstr "Restablecer contraseña"
 
-#: src/ui/footer.tsx:97
+#: src/ui/footer.tsx
 msgid "9YazHG"
 msgstr "Compañía"
 
-#: src/ui/footer.tsx:145
+#: src/ui/footer.tsx
 msgid "7oFrM6"
 msgstr "Información legal"
 
-#: src/ui/footer.tsx:153
+#: src/ui/footer.tsx
 msgid "vx0nkZ"
 msgstr "política de privacidad"
 
-#: src/ui/footer.tsx:162
+#: src/ui/footer.tsx
 msgid "UhkSyx"
 msgstr "Condiciones de uso"
 
-#: src/ui/footer.tsx:171
+#: src/ui/footer.tsx
 msgid "o8wpU5"
 msgstr "Política de revocación"
 
-#: src/ui/footer.tsx:180
+#: src/ui/footer.tsx
 msgid "+eN+I1"
 msgstr "Aviso Legal"
 
-#: src/ui/footer.tsx:192
+#: src/ui/footer.tsx
 msgid "xvRDbH"
 msgstr "© {year} {appName}, una marca de BeastHost UG (haftungsbeschränkt)."
 
-#: src/ui/fumadocs/fake-search-button.tsx:46
+#: src/ui/fumadocs/fake-search-button.tsx
 msgid "xmcVZ0"
 msgstr "Buscar"
 
-#: src/ui/fumadocs/table-of-contents.tsx:34
+#: src/ui/fumadocs/table-of-contents.tsx
 msgid "TM7OHi"
 msgstr "En esta pagina"
 
-#: src/ui/generic-error.tsx:51
+#: src/ui/generic-error.tsx
 msgid "sQClkg"
 msgstr "Se produjo un error inesperado al cargar los datos."
 
-#: src/ui/input-group-addons/random-password-addon.tsx:33
+#: src/ui/input-group-addons/random-password-addon.tsx
 msgid "gQLF4T"
 msgstr "Generar contraseña aleatoria"
 
-#: src/ui/input-group-addons/show-password-addon.tsx:39
+#: src/ui/input-group-addons/show-password-addon.tsx
 msgid "JHTwdB"
 msgstr "Mostrar contraseña"
 
-#: src/ui/input-group-addons/show-password-addon.tsx:40
+#: src/ui/input-group-addons/show-password-addon.tsx
 msgid "K3fWTv"
 msgstr "Ocultar contraseña"
 
-#: src/ui/layout/auth-layout.tsx:47
+#: src/ui/layout/auth-layout.tsx
 msgid "jr1I15"
 msgstr "Al continuar, aceptas los <terms>Términos del servicio</terms> y la <privacy>Política de privacidad</privacy> de {appName}"
 
-#: src/ui/nav-user.tsx:135
+#: src/ui/nav-user.tsx
 msgid "f+sh2j"
 msgstr "Administración"
 
-#: src/ui/nav-user.tsx:143
+#: src/ui/nav-user.tsx
 msgid "rxNddi"
 msgstr "Página principal"
 
-#: src/ui/nav-user.tsx:159
+#: src/ui/nav-user.tsx
 msgid "gZwnDa"
 msgstr "detener la suplantación"
 
-#: src/ui/nav-user.tsx:174
+#: src/ui/nav-user.tsx
 msgid "C81/uG"
 msgstr "Cerrar sesión"
 
-#: src/ui/operating-system-select.tsx:87
+#: src/ui/operating-system-select.tsx
 msgid "DMGJ3m"
 msgstr "Seleccione un sistema operativo..."
 
-#: src/ui/operating-system-select.tsx:98
+#: src/ui/operating-system-select.tsx
 msgid "r3Zixe"
 msgstr "Busque un sistema operativo..."
 
-#: src/ui/operating-system-select.tsx:102
+#: src/ui/operating-system-select.tsx
 msgid "iEx8bl"
 msgstr "No se encontró ningún sistema operativo compatible."
 
-#: src/ui/theme-switcher.tsx:53
+#: src/ui/theme-switcher.tsx
 msgid "Vny4fL"
 msgstr "Tema del sistema"
 
-#: src/ui/theme-switcher.tsx:60
+#: src/ui/theme-switcher.tsx
 msgid "ee1Wp5"
 msgstr "Tema ligero"
 
-#: src/ui/theme-switcher.tsx:64
+#: src/ui/theme-switcher.tsx
 msgid "Efqxns"
 msgstr "tema oscuro"

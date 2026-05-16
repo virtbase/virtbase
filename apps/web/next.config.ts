@@ -205,12 +205,11 @@ const withNextIntl = createNextIntlPlugin({
       "../../packages/ui/src",
       "../../packages/discord/src",
     ],
-    extract: {
-      sourceLocale: "en",
-    },
+    extract: true,
     messages: {
       path: "./src/i18n/messages",
       locales: "infer",
+      sourceLocale: "en",
       format: "po",
       // Keep runtime ICU formatting available for non-precompiled messages
       // used by workspace packages (e.g. @virtbase/email templates).

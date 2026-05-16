@@ -53,8 +53,8 @@ We love our contributors! Here's how you can contribute:
 
 | Package |   Version    |
 |---------|--------------|
-| node    | >= v22.21.0  |
-| bun     | >= v1.3.11   |
+| node    | >= v24.15.0  |
+| bun     | >= v1.3.14   |
 
 ## Repo Activity
 
