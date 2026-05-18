@@ -13,3451 +13,3383 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Czech\n"
-"PO-Revision-Date: 2026-05-14 17:56\n"
+"PO-Revision-Date: 2026-05-18 14:12\n"
 
-#: ../../packages/discord/src/buttons/main-menu.ts:41
+#: ../../packages/discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
 msgid "AgoOEq"
 msgstr "Zpět do menu"
 
-#: ../../packages/discord/src/buttons/manage-servers.ts:38
-#: ../../packages/discord/src/messages/servers/servers-list.ts:63
+#: ../../packages/discord/src/buttons/manage-servers.ts
+#: ../../packages/discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "U2slxM"
 msgstr "Spravovat servery"
 
-#: ../../packages/discord/src/buttons/renew-server.ts:42
+#: ../../packages/discord/src/buttons/renew-server.ts
 msgctxt "discord-integration"
 msgid "nWQFic"
 msgstr "Obnovit"
 
-#: ../../packages/discord/src/buttons/reset-server-password.ts:43
+#: ../../packages/discord/src/buttons/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "Yy/yDL"
 msgstr "Resetovat heslo"
 
-#: ../../packages/discord/src/buttons/server-console.ts:43
-#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts:60
+#: ../../packages/discord/src/buttons/server-console.ts
+#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts
 msgctxt "discord-integration"
 msgid "gc+2Z2"
 msgstr "Konzole"
 
-#: ../../packages/discord/src/buttons/server-overview.ts:40
+#: ../../packages/discord/src/buttons/server-overview.ts
 msgctxt "discord-integration"
 msgid "/w61wP"
 msgstr "Zpět na server"
 
-#: ../../packages/discord/src/buttons/show-in-portal.ts:42
+#: ../../packages/discord/src/buttons/show-in-portal.ts
 msgctxt "discord-integration"
 msgid "+uqHID"
 msgstr "Ukázat v portálu"
 
-#: ../../packages/discord/src/messages/invite.ts:57
+#: ../../packages/discord/src/messages/invite.ts
 msgctxt "discord-integration"
 msgid "uXREGV"
 msgstr "Pozvi Virtbase na svůj server"
 
-#: ../../packages/discord/src/messages/invite.ts:59
+#: ../../packages/discord/src/messages/invite.ts
 msgctxt "discord-integration"
 msgid "yoX1pg"
 msgstr "Klikni na odkaz níže a přidej integraci Virtbase na svůj Discord server:"
 
-#: ../../packages/discord/src/messages/invite.ts:74
+#: ../../packages/discord/src/messages/invite.ts
 msgctxt "discord-integration"
 msgid "6O3+aN"
 msgstr "Odkaz na pozvánku"
 
-#: ../../packages/discord/src/messages/main-menu.ts:56
+#: ../../packages/discord/src/messages/main-menu.ts
 msgctxt "discord-integration"
 msgid "QCv9lw"
 msgstr "Hlavní menu"
 
-#: ../../packages/discord/src/messages/main-menu.ts:57
+#: ../../packages/discord/src/messages/main-menu.ts
 msgctxt "discord-integration"
 msgid "gaUHYQ"
 msgstr "Vyber akci z menu níže."
 
-#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts:58
+#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts
 msgctxt "discord-integration"
 msgid "GyeODL"
 msgstr "Heslo bylo úspěšně resetováno."
 
-#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts:60
+#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts
 msgctxt "discord-integration"
 msgid "n/xfjW"
 msgstr "Heslo k tvému serveru bylo úspěšně resetováno."
 
-#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts:61
+#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts
 msgctxt "discord-integration"
 msgid "pJ2eg6"
 msgstr "Teď se můžeš na server přihlásit novým heslem."
 
-#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts:62
+#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts
 msgctxt "discord-integration"
 msgid "PlveeX"
 msgstr "Klikni na jednorázový odkaz níže pro přístup ke konzoli:"
 
-#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts:63
+#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts
 msgctxt "discord-integration"
 msgid "8rmkQD"
 msgstr "Tento odkaz vyprší za 10 sekund."
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts:76
+#: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "t2uvIi"
 msgstr "Operační systém"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts:84
+#: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "ivkv/L"
 msgstr "Uzel"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts:86
+#: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "GaTcNW"
 msgstr "- Název: {hostname}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts:90
+#: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "M1WTIv"
 msgstr "- Datacentrum: {datacenter}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts:95
+#: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "SuwJeu"
 msgstr "- Uplink: {netrate}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts:104
+#: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "rnZkeW"
 msgstr "- CPU: {cpu_description}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts:109
+#: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "gs/Iys"
 msgstr "- RAM: {memory_description}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts:114
+#: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "9PSqfa"
 msgstr "- Úložiště: {storage_description}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts:129
+#: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "UlO1td"
 msgstr "Síťová rozhraní"
 
-#: ../../packages/discord/src/messages/servers/servers-list-empty.ts:58
+#: ../../packages/discord/src/messages/servers/servers-list-empty.ts
 msgctxt "discord-integration"
 msgid "Vq3ifs"
 msgstr "Žádné servery k dispozici"
 
-#: ../../packages/discord/src/messages/servers/servers-list-empty.ts:59
+#: ../../packages/discord/src/messages/servers/servers-list-empty.ts
 msgctxt "discord-integration"
 msgid "fUXt5C"
 msgstr "Ještě sis nepronajal žádný server. Pronajmi si server a spravuj ho přes Discord integraci."
 
-#: ../../packages/discord/src/messages/servers/servers-list-empty.ts:72
+#: ../../packages/discord/src/messages/servers/servers-list-empty.ts
 msgctxt "discord-integration"
 msgid "67Bzc5"
 msgstr "Virtbase obchod"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts:65
+#: ../../packages/discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "pN8BlF"
 msgstr "Následující servery jsou přiřazené k tvému účtu a můžeš je spravovat."
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts:69
+#: ../../packages/discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "0ZPfix"
 msgstr "Vyber server, který chceš spravovat:"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts:77
+#: ../../packages/discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "BGI16m"
 msgstr "{cores, plural, =0 {# vCore} =1 {# vCore} other {# vCore}}"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts:83
+#: ../../packages/discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "tpfEY0"
 msgstr "{memory} RAM"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts:88
+#: ../../packages/discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "cenOuc"
 msgstr "{storage} NVMe SSD"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts:97
+#: ../../packages/discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "7F86ji"
 msgstr "Zobrazit v portálu ↗"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts:114
+#: ../../packages/discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "JGe/wh"
 msgstr "Vyber server"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:56
+#: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "dvr19k"
 msgstr "Nastavení"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:58
+#: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "S0rNC0"
 msgstr "Vítej ve Virtbase!"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:60
+#: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "Kh0E7j"
 msgstr "Tvůj účet Virtbase zatím není propojený s Discordem."
 
-#: ../../packages/discord/src/messages/setup-menu.ts:64
+#: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "u/Hev8"
 msgstr "Postupuj podle kroků níže a propoj účty:"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:68
+#: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "ac8Iok"
 msgstr "1. Otevři zákaznický portál"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:69
+#: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "f4ziLK"
 msgstr "Klikni na tlačítko níže a přihlas se účtem Virtbase."
 
-#: ../../packages/discord/src/messages/setup-menu.ts:74
+#: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "2ZTNN3"
 msgstr "2. Propoj účty"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:75
+#: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "XnY6rW"
 msgstr "V zákaznickém portálu přejdi na svůj účet, v sekci **Zabezpečení** u **Ověřování**. Tam propoj svůj Discord účet."
 
-#: ../../packages/discord/src/messages/setup-menu.ts:80
+#: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "VRJHO/"
 msgstr "3. Zopakuj příkaz"
 
-#: ../../packages/discord/src/messages/setup-menu.ts:81
+#: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "gCSCoh"
 msgstr "Příkaz zopakuj, až budeš chtít něco udělat."
 
-#: ../../packages/discord/src/modals/reset-server-password.ts:43
+#: ../../packages/discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "xl27nc"
 msgstr "Reset hesla"
 
-#: ../../packages/discord/src/modals/reset-server-password.ts:48
+#: ../../packages/discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "qHabR+"
 msgstr "Akce selže, pokud není nainstalovaný balíček `qemu-quest-agent`."
 
-#: ../../packages/discord/src/modals/reset-server-password.ts:54
+#: ../../packages/discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "JCIgkj"
 msgstr "Uživatelské jméno"
 
-#: ../../packages/discord/src/modals/reset-server-password.ts:56
+#: ../../packages/discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "eREue0"
 msgstr "U Linuxu většinou `root`, u Windows `Administrator`."
 
-#: ../../packages/discord/src/modals/reset-server-password.ts:72
+#: ../../packages/discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "Ev6SEF"
 msgstr "Nové heslo"
 
-#: ../../packages/discord/src/modals/reset-server-password.ts:74
+#: ../../packages/discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "LGDnPd"
 msgstr "Jedno velké písmeno, jedno malé, jedna číslice, minimálně 8 znaků."
 
-#: ../../packages/discord/src/utils/create-embed.ts:35
+#: ../../packages/discord/src/utils/create-embed.ts
 msgctxt "discord-integration"
 msgid "Wbc21W"
 msgstr "Virtbase – hosting, ale bezpečně."
 
-#: ../../packages/ui/src/data-table/data-table-column-header.tsx:84
+#: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "o/UJXc"
 msgstr "Vzestupně"
 
-#: ../../packages/ui/src/data-table/data-table-column-header.tsx:92
+#: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "FXGK2/"
 msgstr "Sestupně"
 
-#: ../../packages/ui/src/data-table/data-table-column-header.tsx:100
-#: ../../packages/ui/src/data-table/data-table-toolbar.tsx:78
-#: src/features/servers/components/server-actions-row.tsx:193
+#: ../../packages/ui/src/data-table/data-table-column-header.tsx
+#: ../../packages/ui/src/data-table/data-table-toolbar.tsx
+#: src/features/servers/components/server-actions-row.tsx
 msgid "jm/spn"
 msgstr "Resetovat"
 
-#: ../../packages/ui/src/data-table/data-table-column-header.tsx:112
+#: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "VA/Z1S"
 msgstr "Skrýt"
 
-#: ../../packages/ui/src/data-table/data-table-date-filter.tsx:149
+#: ../../packages/ui/src/data-table/data-table-date-filter.tsx
 msgid "qp/RxH"
 msgstr "Vybrat období"
 
-#: ../../packages/ui/src/data-table/data-table-date-filter.tsx:172
+#: ../../packages/ui/src/data-table/data-table-date-filter.tsx
 msgid "gjwFsT"
 msgstr "Vybrat datum"
 
-#: ../../packages/ui/src/data-table/data-table-date-filter.tsx:203
-#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:172
-#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:264
+#: ../../packages/ui/src/data-table/data-table-date-filter.tsx
+#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
 msgid "/zw7BY"
 msgstr "Vymazat filtr {title}"
 
-#: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx:133
+#: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx
 msgid "NKPfmm"
 msgstr "Vybráno: {count}"
 
-#: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx:159
+#: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx
 msgid "V5JQj+"
 msgstr "Nebyly nalezeny žádné výsledky."
 
-#: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx:198
+#: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx
 msgid "F4gyn3"
 msgstr "Vymazat filtry"
 
-#: ../../packages/ui/src/data-table/data-table-pagination.tsx:58
+#: ../../packages/ui/src/data-table/data-table-pagination.tsx
 msgid "8b5d6w"
 msgstr "Vybráno {count} z {total} řádků"
 
-#: ../../packages/ui/src/data-table/data-table-pagination.tsx:66
+#: ../../packages/ui/src/data-table/data-table-pagination.tsx
 msgid "VCZBMt"
 msgstr "Řádků na stránku"
 
-#: ../../packages/ui/src/data-table/data-table-pagination.tsx:87
+#: ../../packages/ui/src/data-table/data-table-pagination.tsx
 msgid "Alf4gQ"
 msgstr "Stránka {page} z {total}"
 
-#: ../../packages/ui/src/data-table/data-table-pagination.tsx:94
+#: ../../packages/ui/src/data-table/data-table-pagination.tsx
 msgid "F4dsUN"
 msgstr "Přejít na první stránku"
 
-#: ../../packages/ui/src/data-table/data-table-pagination.tsx:104
+#: ../../packages/ui/src/data-table/data-table-pagination.tsx
 msgid "NYErt1"
 msgstr "Přejít na předchozí stránku"
 
-#: ../../packages/ui/src/data-table/data-table-pagination.tsx:114
+#: ../../packages/ui/src/data-table/data-table-pagination.tsx
 msgid "nkDaFL"
 msgstr "Přejít na další stránku"
 
-#: ../../packages/ui/src/data-table/data-table-pagination.tsx:124
+#: ../../packages/ui/src/data-table/data-table-pagination.tsx
 msgid "fMrPOR"
 msgstr "Přejít na poslední stránku"
 
-#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:203
+#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
 msgid "dM+p3/"
 msgstr "Od"
 
-#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:227
+#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
 msgid "9j3hXO"
 msgstr "Do"
 
-#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:252
+#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
 msgid "UfFPe5"
 msgstr "Posuvník {title}"
 
-#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx:269
+#: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
 msgid "/GCoTA"
 msgstr "Vymazat"
 
-#: ../../packages/ui/src/data-table/data-table-toolbar.tsx:71
+#: ../../packages/ui/src/data-table/data-table-toolbar.tsx
 msgid "jZ0o74"
 msgstr "Resetovat filtry"
 
-#: ../../packages/ui/src/data-table/data-table-view-options.tsx:64
+#: ../../packages/ui/src/data-table/data-table-view-options.tsx
 msgid "5PWP+M"
 msgstr "Přepnout sloupce"
 
-#: ../../packages/ui/src/data-table/data-table-view-options.tsx:72
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:168
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:163
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:363
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:196
-#: src/features/admin/components/servers/servers-table/columns.tsx:253
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:217
-#: src/features/admin/components/users/users-table/columns.tsx:269
-#: src/features/servers/components/servers-list.tsx:189
+#: ../../packages/ui/src/data-table/data-table-view-options.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/servers/components/servers-list.tsx
 msgid "FgydNe"
 msgstr "Zobrazit"
 
-#: ../../packages/ui/src/data-table/data-table-view-options.tsx:77
+#: ../../packages/ui/src/data-table/data-table-view-options.tsx
 msgid "nDz7zP"
 msgstr "Hledat sloupce..."
 
-#: ../../packages/ui/src/data-table/data-table-view-options.tsx:79
+#: ../../packages/ui/src/data-table/data-table-view-options.tsx
 msgid "945Lt6"
 msgstr "Nebyly nalezeny žádné sloupce."
 
-#: ../../packages/ui/src/data-table/data-table.tsx:106
+#: ../../packages/ui/src/data-table/data-table.tsx
 msgid "0H2hdf"
 msgstr "Žádné výsledky."
 
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:81
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:93
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx
 msgid "VX2yLr"
 msgstr "Nastavit {name}"
 
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:82
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:94
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx
 msgid "a7uVhC"
 msgstr "Nastavit serverový plán {name} na {appName}"
 
-#: src/app/(public)/[locale]/checkout/[id]/page.tsx:154
+#: src/app/(public)/[locale]/checkout/[id]/page.tsx
 msgid "fYwMu5"
 msgstr "Všechny ceny zahrnují zákonnou DPH, pokud se uplatňuje."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:53
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "xxhML8"
 msgstr "Platební údaje"
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:54
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "H0EiGf"
 msgstr "Platba byla zpracována. Tady najdeš podrobnosti své objednávky."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:69
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "MjOjxw"
 msgstr "Objednávka zrušena"
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:70
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "MrIhWr"
 msgstr "Objednávka byla zrušena a nebude zpracována."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:71
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "Al9AIE"
 msgstr "Vrať se prosím k objednávce a zkus to znovu s jinou platební metodou."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:78
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "nImirt"
 msgstr "Platba se zpracovává"
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:79
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "To2Myp"
 msgstr "Kvůli zvolené platební metodě bude objednávka zpracována až po úspěšném zpracování platby."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:82
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "NGX4ZX"
 msgstr "Jakmile bude objednávka zpracována, pošleme e-mail se všemi podrobnostmi."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:89
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "p39Bbe"
 msgstr "Objednávka vyžaduje akci"
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:90
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "lDCVlQ"
 msgstr "Objednávka vyžaduje tvou akci."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:91
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "uew4Mt"
 msgstr "Proveď prosím požadovanou akci a objednávka se automaticky zpracuje."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:98
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "6O8bJK"
 msgstr "Objednávka vyžaduje platbu"
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:99
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "yndqQb"
 msgstr "Objednávka vyžaduje platbu."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:100
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "E9nzLe"
 msgstr "Zahájíme platbu a objednávku zpracujeme."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:105
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "dj4t0s"
 msgstr "Objednávka vyžaduje potvrzení"
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:106
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "nxm6Cj"
 msgstr "Objednávka vyžaduje potvrzení platební metodou."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:109
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "wsDmTC"
 msgstr "Proveď potvrzení a objednávka se automaticky zpracuje."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:116
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "uH08xA"
 msgstr "Objednávka vyžaduje platební metodu"
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:117
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "jS7WDS"
 msgstr "Objednávka vyžaduje platnou platební metodu. Vrať se prosím k objednávce a zkus to znovu."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:120
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "mDRHG0"
 msgstr "Pokud problém přetrvává, zkus použít jinou platební metodu."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:127
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "Ifl2yr"
 msgstr "Objednávka dokončena"
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:128
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "SZKxGU"
 msgstr "Objednávka byla úspěšně dokončena a teď se automaticky zpracuje."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:131
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "pNwb8b"
 msgstr "Jakmile budou objednané produkty nastavené, pošleme e-mail se všemi podrobnostmi."
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:198
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "aIRWQB"
 msgstr "Zpět domů"
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:207
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "YgWige"
 msgstr "Zpět do zákaznického portálu"
 
-#: src/app/(public)/[locale]/checkout/return/page.tsx:217
+#: src/app/(public)/[locale]/checkout/return/page.tsx
 msgid "lVV2Zz"
 msgstr "Potřebuješ pomoc? Kontaktuj nás ↗"
 
-#: src/app/(public)/[locale]/contact/page.tsx:41
-#: src/ui/footer.tsx:105
+#: src/app/(public)/[locale]/contact/page.tsx
+#: src/ui/footer.tsx
 msgid "zFegDD"
 msgstr "Kontakt"
 
-#: src/app/(public)/[locale]/contact/page.tsx:42
-#: src/app/(public)/[locale]/contact/page.tsx:78
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "Hse98V"
 msgstr "Získej pomoc s produkty, pošli zpětnou vazbu nebo se zeptej na fakturaci."
 
-#: src/app/(public)/[locale]/contact/page.tsx:65
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "cN2wPY"
 msgstr "Discord komunita"
 
-#: src/app/(public)/[locale]/contact/page.tsx:66
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "xmN7+N"
 msgstr "Připoj se na komunitní Discord server a chatuj s ostatními uživateli."
 
-#: src/app/(public)/[locale]/contact/page.tsx:70
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "qh9exW"
 msgstr "Připojit se na Discord"
 
-#: src/app/(public)/[locale]/contact/page.tsx:77
-#: src/ui/app-sidebar.tsx:86
-#: src/ui/app-sidebar.tsx:99
+#: src/app/(public)/[locale]/contact/page.tsx
+#: src/ui/app-sidebar.tsx
 msgid "HqRNN8"
 msgstr "Podpora"
 
-#: src/app/(public)/[locale]/contact/page.tsx:82
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "tA3IJb"
 msgstr "Požádat o podporu"
 
-#: src/app/(public)/[locale]/contact/page.tsx:89
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "KV/9Hv"
 msgstr "Otázky"
 
-#: src/app/(public)/[locale]/contact/page.tsx:90
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "pNNM1r"
 msgstr "Naše články nápovědy už odpovídají na mnoho tvých otázek."
 
-#: src/app/(public)/[locale]/contact/page.tsx:94
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "TZHi//"
 msgstr "Zobrazit centrum nápovědy"
 
-#: src/app/(public)/[locale]/contact/page.tsx:101
-#: src/features/account/components/api-keys/api-keys-card.tsx:64
-#: src/ui/footer.tsx:124
+#: src/app/(public)/[locale]/contact/page.tsx
+#: src/features/account/components/api-keys/api-keys-card.tsx
+#: src/ui/footer.tsx
 msgid "yKOyCk"
 msgstr "Dokumentace API"
 
-#: src/app/(public)/[locale]/contact/page.tsx:102
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "p21Rwp"
 msgstr "Zjisti víc o API rozhraní pro vývojáře a své projekty."
 
-#: src/app/(public)/[locale]/contact/page.tsx:106
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "SxCabn"
 msgstr "Zobrazit dokumentaci API"
 
-#: src/app/(public)/[locale]/contact/page.tsx:118
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "M6PcEI"
 msgstr "Jak můžeme pomoct?"
 
-#: src/app/(public)/[locale]/contact/page.tsx:121
+#: src/app/(public)/[locale]/contact/page.tsx
 msgid "SLIoeO"
 msgstr "Kontaktuj nás a získej rychlou pomoc."
 
-#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:106
-#: src/app/(public)/[locale]/help/page.tsx:75
+#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
+#: src/app/(public)/[locale]/help/page.tsx
 msgid "tUmaeD"
 msgstr "Všechny články"
 
-#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:129
-#: src/app/(public)/[locale]/legal/[[...slug]]/page.tsx:122
+#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
+#: src/app/(public)/[locale]/legal/[[...slug]]/page.tsx
 msgid "ZdCdo5"
 msgstr "Poslední aktualizace: {date}"
 
-#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx:169
+#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
 msgid "IAMn0B"
 msgstr "Máš další otázky? Kontaktuj nás ↗"
 
-#: src/app/(public)/[locale]/help/page.tsx:39
-#: src/app/(public)/[locale]/help/page.tsx:69
-#: src/ui/footer.tsx:114
+#: src/app/(public)/[locale]/help/page.tsx
+#: src/ui/footer.tsx
 msgid "HtSDyc"
 msgstr "Centrum nápovědy"
 
-#: src/app/(public)/[locale]/help/page.tsx:40
+#: src/app/(public)/[locale]/help/page.tsx
 msgid "PPnkha"
 msgstr "Najdi odpovědi na všechny otázky ohledně Virtbase na jednom místě v našem centru nápovědy."
 
-#: src/app/(public)/[locale]/page.tsx:36
+#: src/app/(public)/[locale]/page.tsx
 msgid "Wbc21W"
 msgstr "Virtbase - Hosting, ale bezpečný."
 
-#: src/app/(public)/[locale]/page.tsx:37
-#: src/app/(public)/[locale]/page.tsx:65
+#: src/app/(public)/[locale]/page.tsx
 msgid "nEWy6S"
 msgstr "Virtbase poskytuje bezpečný serverový hosting. Maximální výkon s minimálním úsilím."
 
-#: src/app/(public)/[locale]/page.tsx:62
+#: src/app/(public)/[locale]/page.tsx
 msgid "BdEM9F"
 msgstr "Hosting, ale bezpečný."
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:89
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:134
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "t1DCfI"
 msgstr "Přejděte na výkonnější server"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:90
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:137
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "0mibRH"
 msgstr "Malý doplatek. Podstatně vyšší výkon."
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:188
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "8VIOz4"
 msgstr "{cores, plural, =0 {+# vCores} =1 {+# vCore} other {+# vCores}}"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:191
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "j2HEjv"
 msgstr "Lepší výkon při paralelních úlohách"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:197
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "tDBsIi"
 msgstr "{percent} více RAM"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:204
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "LM23s2"
 msgstr "Rychlejší odezva aplikací"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:210
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "R0fF2V"
 msgstr "{percent} více úložiště"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:217
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "E8bbzS"
 msgstr "Ukládejte na server více dat"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:226
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "J4j1Fd"
 msgstr "{value} více šířky pásma"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:237
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "NkmKCs"
 msgstr "Viditelný nárůst rychlosti přenosu dat"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:243
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "7NydGv"
 msgstr "Žádný jednorázový poplatek za zřízení"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:244
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "lt2ynN"
 msgstr "Bezplatné nastavení, žádné další poplatky"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:249
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "XucETQ"
 msgstr "Podpora 24/7"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:250
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "CKQfnV"
 msgstr "Kdykoli dostupná, když ji potřebujete"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:255
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "3SJxuA"
 msgstr "Aktivní ochrana proti DDoS"
 
-#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx:256
+#: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "VI9ImX"
 msgstr "Váš server je chráněn bez dodatečných nákladů"
 
-#: src/app/admin.virtbase.com/(dashboard)/datacenters/[id]/page.tsx:38
-#: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx:38
-#: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx:54
-#: src/features/admin/components/admin-sidebar-groups.tsx:70
+#: src/app/admin.virtbase.com/(dashboard)/datacenters/[id]/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "NoQGSk"
 msgstr "Datacentra"
 
-#: src/app/admin.virtbase.com/(dashboard)/layout.tsx:28
+#: src/app/admin.virtbase.com/(dashboard)/layout.tsx
 msgid "iHN12u"
 msgstr "Administrace"
 
-#: src/app/admin.virtbase.com/(dashboard)/node-groups/[id]/page.tsx:41
-#: src/app/admin.virtbase.com/(dashboard)/node-groups/[id]/page.tsx:58
-#: src/app/admin.virtbase.com/(dashboard)/node-groups/page.tsx:38
-#: src/app/admin.virtbase.com/(dashboard)/node-groups/page.tsx:55
-#: src/features/admin/components/admin-sidebar-groups.tsx:75
+#: src/app/admin.virtbase.com/(dashboard)/node-groups/[id]/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/node-groups/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "rcBiKK"
 msgstr "Skupiny uzlů"
 
-#: src/app/admin.virtbase.com/(dashboard)/nodes/[id]/page.tsx:48
+#: src/app/admin.virtbase.com/(dashboard)/nodes/[id]/page.tsx
 msgid "n3j8M6"
 msgstr "Uzly Proxmox"
 
-#: src/app/admin.virtbase.com/(dashboard)/page.tsx:41
-#: src/app/admin.virtbase.com/(dashboard)/page.tsx:55
-#: src/app/app.virtbase.com/(dashboard)/page.tsx:36
-#: src/app/app.virtbase.com/(dashboard)/page.tsx:50
-#: src/features/admin/components/admin-sidebar-groups.tsx:50
-#: src/ui/app-sidebar-menu.tsx:40
-#: src/ui/nav-user.tsx:111
-#: src/ui/nav.tsx:77
+#: src/app/admin.virtbase.com/(dashboard)/page.tsx
+#: src/app/app.virtbase.com/(dashboard)/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+#: src/ui/app-sidebar-menu.tsx
+#: src/ui/nav-user.tsx
+#: src/ui/nav.tsx
 msgid "hzSNj4"
 msgstr "Přehled"
 
-#: src/app/admin.virtbase.com/(dashboard)/servers/page.tsx:37
-#: src/app/admin.virtbase.com/(dashboard)/servers/page.tsx:53
-#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx:37
-#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx:51
-#: src/features/account/components/api-keys/create-api-key-button.tsx:54
-#: src/features/admin/components/admin-sidebar-groups.tsx:60
-#: src/ui/app-sidebar-menu.tsx:45
+#: src/app/admin.virtbase.com/(dashboard)/servers/page.tsx
+#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx
+#: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+#: src/ui/app-sidebar-menu.tsx
 msgid "QOxktD"
 msgstr "Servery"
 
-#: src/app/admin.virtbase.com/(dashboard)/subnets/[id]/page.tsx:38
-#: src/app/admin.virtbase.com/(dashboard)/subnets/page.tsx:38
-#: src/app/admin.virtbase.com/(dashboard)/subnets/page.tsx:54
-#: src/features/admin/components/admin-sidebar-groups.tsx:90
+#: src/app/admin.virtbase.com/(dashboard)/subnets/[id]/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/subnets/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "9lr8v8"
 msgstr "Podsítě"
 
-#: src/app/admin.virtbase.com/(dashboard)/template-groups/[id]/page.tsx:37
-#: src/app/admin.virtbase.com/(dashboard)/template-groups/[id]/page.tsx:55
-#: src/app/admin.virtbase.com/(dashboard)/template-groups/page.tsx:38
-#: src/app/admin.virtbase.com/(dashboard)/template-groups/page.tsx:54
-#: src/features/admin/components/admin-sidebar-groups.tsx:80
+#: src/app/admin.virtbase.com/(dashboard)/template-groups/[id]/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/template-groups/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "aIwSug"
 msgstr "Skupiny šablon"
 
-#: src/app/admin.virtbase.com/(dashboard)/users/page.tsx:37
-#: src/app/admin.virtbase.com/(dashboard)/users/page.tsx:53
-#: src/features/admin/components/admin-sidebar-groups.tsx:55
+#: src/app/admin.virtbase.com/(dashboard)/users/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "YDMrKK"
 msgstr "Uživatelé"
 
-#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:33
+#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx
 msgid "2znpSL"
 msgstr "Zapomenuté heslo pro {appName}"
 
-#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:34
+#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx
 msgid "knQkcB"
 msgstr "Obnov heslo ke svému účtu {appName}."
 
-#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx:57
-#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx:58
+#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx
+#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx
 msgid "p+kmJg"
 msgstr "Obnovit heslo"
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx:34
+#: src/app/app.virtbase.com/(auth)/login/page.tsx
 msgid "VquSDh"
 msgstr "Přihlásit se do {appName}"
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx:35
+#: src/app/app.virtbase.com/(auth)/login/page.tsx
 msgid "VGUFk+"
 msgstr "Přihlas se ke svému účtu {appName} a spravuj své virtuální servery."
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx:59
+#: src/app/app.virtbase.com/(auth)/login/page.tsx
 msgid "TKG18n"
 msgstr "Přihlášení k účtu {appName}"
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx:65
+#: src/app/app.virtbase.com/(auth)/login/page.tsx
 msgid "25WwxF"
 msgstr "Nemáš účet?"
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx:71
-#: src/features/checkout/components/checkout-auth-wrapper.tsx:79
-#: src/ui/footer.tsx:80
-#: src/ui/nav.tsx:99
+#: src/app/app.virtbase.com/(auth)/login/page.tsx
+#: src/features/checkout/components/checkout-auth-wrapper.tsx
+#: src/ui/footer.tsx
+#: src/ui/nav.tsx
 msgid "8HJxXG"
 msgstr "Zaregistrovat se"
 
-#: src/app/app.virtbase.com/(auth)/register/page-client.tsx:44
-#: src/app/app.virtbase.com/(auth)/register/page.tsx:32
+#: src/app/app.virtbase.com/(auth)/register/page-client.tsx
+#: src/app/app.virtbase.com/(auth)/register/page.tsx
 msgid "LcaCOE"
 msgstr "Vytvoř si účet {appName}"
 
-#: src/app/app.virtbase.com/(auth)/register/page-client.tsx:50
+#: src/app/app.virtbase.com/(auth)/register/page-client.tsx
 msgid "uCk8r+"
 msgstr "Už máš účet?"
 
-#: src/app/app.virtbase.com/(auth)/register/page-client.tsx:55
+#: src/app/app.virtbase.com/(auth)/register/page-client.tsx
 msgid "odXlk8"
 msgstr "Přihlásit se"
 
-#: src/app/app.virtbase.com/(auth)/register/page-client.tsx:71
+#: src/app/app.virtbase.com/(auth)/register/page-client.tsx
 msgid "rEdUqQ"
 msgstr "Ověř svou e-mailovou adresu"
 
-#: src/app/app.virtbase.com/(auth)/register/page-client.tsx:74
+#: src/app/app.virtbase.com/(auth)/register/page-client.tsx
 msgid "H2tEgm"
 msgstr "Zadej šestimístný ověřovací kód odeslaný na <strong>{email}</strong>"
 
-#: src/app/app.virtbase.com/(auth)/register/page.tsx:33
+#: src/app/app.virtbase.com/(auth)/register/page.tsx
 msgid "PcjZtc"
 msgstr "Vytvoř si účet {appName} a objednej si svůj první virtuální server."
 
-#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx:33
+#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx
 msgid "D2Np7X"
 msgstr "Obnovit heslo pro {appName}"
 
-#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx:34
+#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx
 msgid "tNqFr9"
 msgstr "Obnov heslo ke svému účtu {appName}."
 
-#: src/app/app.virtbase.com/(dashboard)/invoices/page.tsx:37
-#: src/app/app.virtbase.com/(dashboard)/invoices/page.tsx:53
-#: src/features/account/components/api-keys/create-api-key-button.tsx:60
-#: src/ui/app-sidebar-menu.tsx:50
+#: src/app/app.virtbase.com/(dashboard)/invoices/page.tsx
+#: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/ui/app-sidebar-menu.tsx
 msgid "6dqYnF"
 msgstr "Faktury"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/advanced/page.tsx:28
-#: src/features/servers/components/server-nav.tsx:73
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/advanced/page.tsx
+#: src/features/servers/components/server-nav.tsx
 msgid "3Rx6Qo"
 msgstr "Rozšířené"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/backups/page.tsx:27
-#: src/features/account/components/api-keys/create-api-key-button.tsx:55
-#: src/features/servers/components/backups/backups-card.tsx:62
-#: src/features/servers/components/server-nav.tsx:61
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/backups/page.tsx
+#: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/servers/components/backups/backups-card.tsx
+#: src/features/servers/components/server-nav.tsx
 msgid "T3lqx5"
 msgstr "Zálohy"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/console/page.tsx:26
-#: src/features/account/components/api-keys/create-api-key-button.tsx:57
-#: src/features/servers/components/server-nav.tsx:49
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/console/page.tsx
+#: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/servers/components/server-nav.tsx
 msgid "gc+2Z2"
 msgstr "Konzole"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/firewall/page.tsx:28
-#: src/features/account/components/api-keys/create-api-key-button.tsx:56
-#: src/features/servers/components/server-nav.tsx:55
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/firewall/page.tsx
+#: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/servers/components/server-nav.tsx
 msgid "Bwqhmd"
 msgstr "Firewall"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx:41
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx
 msgid "E+4Rfd"
 msgstr "Server nenalezen"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx:43
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx
 msgid "bdn/TR"
 msgstr "Server, který hledáš, neexistuje."
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx:49
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx
 msgid "43U065"
 msgstr "Přejít na servery"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/overview/page.tsx:34
-#: src/features/admin/components/admin-sidebar-groups.tsx:47
-#: src/features/servers/components/server-nav.tsx:43
-#: src/ui/app-sidebar.tsx:63
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/overview/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+#: src/features/servers/components/server-nav.tsx
+#: src/ui/app-sidebar.tsx
 msgid "9uOFF3"
 msgstr "Přehled"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/plan/page.tsx:30
-#: src/features/servers/components/plan/plan-form.tsx:85
-#: src/features/servers/components/server-nav.tsx:79
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/plan/page.tsx
+#: src/features/servers/components/plan/plan-form.tsx
+#: src/features/servers/components/server-nav.tsx
 msgid "fz0z4c"
 msgstr "Plán"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/rdns/page.tsx:27
-#: src/features/account/components/api-keys/create-api-key-button.tsx:58
-#: src/features/servers/components/server-nav.tsx:67
+#: src/app/app.virtbase.com/(dashboard)/servers/[id]/rdns/page.tsx
+#: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/servers/components/server-nav.tsx
 msgid "F+02/l"
 msgstr "rDNS"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/error.tsx:53
-#: src/ui/generic-error-inline.tsx:37
-#: src/ui/generic-error.tsx:49
+#: src/app/app.virtbase.com/(dashboard)/servers/error.tsx
+#: src/ui/generic-error-inline.tsx
+#: src/ui/generic-error.tsx
 msgid "ox304v"
 msgstr "Došlo k chybě"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/error.tsx:55
+#: src/app/app.virtbase.com/(dashboard)/servers/error.tsx
 msgid "HkQfvt"
 msgstr "Při načítání detailů serveru došlo k neočekávané chybě."
 
-#: src/app/app.virtbase.com/(dashboard)/servers/error.tsx:59
-#: src/ui/generic-error.tsx:55
+#: src/app/app.virtbase.com/(dashboard)/servers/error.tsx
+#: src/ui/generic-error.tsx
 msgid "FazwRl"
 msgstr "Zkusit znovu"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx:60
+#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx
 msgid "FgwBWh"
 msgstr "Pronajmout nový server"
 
-#: src/app/app.virtbase.com/unauthorized.tsx:51
+#: src/app/app.virtbase.com/unauthorized.tsx
 msgid "srept4"
 msgstr "K této stránce nemáš oprávnění. Relace možná vypršela, přihlas se prosím znovu."
 
-#: src/app/app.virtbase.com/unauthorized.tsx:68
-#: src/features/account/components/authentication/user-sessions-list.tsx:151
+#: src/app/app.virtbase.com/unauthorized.tsx
+#: src/features/account/components/authentication/user-sessions-list.tsx
 msgid "xXbJso"
 msgstr "Odhlásit se"
 
-#: src/features/account/components/account-breadcrumb.tsx:41
-#: src/features/account/components/account-nav.tsx:41
+#: src/features/account/components/account-breadcrumb.tsx
+#: src/features/account/components/account-nav.tsx
 msgid "1iEPTM"
 msgstr "Obecné"
 
-#: src/features/account/components/account-breadcrumb.tsx:45
-#: src/features/account/components/account-nav.tsx:46
+#: src/features/account/components/account-breadcrumb.tsx
+#: src/features/account/components/account-nav.tsx
 msgid "Py189G"
 msgstr "Zabezpečení"
 
-#: src/features/account/components/account-breadcrumb.tsx:49
-#: src/features/account/components/account-nav.tsx:51
+#: src/features/account/components/account-breadcrumb.tsx
+#: src/features/account/components/account-nav.tsx
 msgid "Tbo377"
 msgstr "Fakturace"
 
-#: src/features/account/components/account-breadcrumb.tsx:53
-#: src/features/account/components/account-nav.tsx:56
+#: src/features/account/components/account-breadcrumb.tsx
+#: src/features/account/components/account-nav.tsx
 msgid "xwEc8K"
 msgstr "API"
 
-#: src/features/account/components/account-breadcrumb.tsx:57
-#: src/features/account/components/account-nav.tsx:61
-#: src/features/account/components/ssh-keys/ssh-keys-card.tsx:44
+#: src/features/account/components/account-breadcrumb.tsx
+#: src/features/account/components/account-nav.tsx
+#: src/features/account/components/ssh-keys/ssh-keys-card.tsx
 msgid "7Cdpiv"
 msgstr "SSH klíče"
 
-#: src/features/account/components/account-breadcrumb.tsx:75
-#: src/ui/nav-user.tsx:120
+#: src/features/account/components/account-breadcrumb.tsx
+#: src/ui/nav-user.tsx
 msgid "TwyMau"
 msgstr "Účet"
 
-#: src/features/account/components/account-nav.tsx:66
+#: src/features/account/components/account-nav.tsx
 msgid "96Us9V"
 msgstr "Obrazy ISO"
 
-#: src/features/account/components/api-keys/api-keys-card.tsx:49
+#: src/features/account/components/api-keys/api-keys-card.tsx
 msgid "jSp63j"
 msgstr "API klíče"
 
-#: src/features/account/components/api-keys/api-keys-card.tsx:51
+#: src/features/account/components/api-keys/api-keys-card.tsx
 msgid "igeEmM"
 msgstr "Vytvářej a spravuj API klíče pro použití s veřejným API."
 
-#: src/features/account/components/api-keys/api-keys-card.tsx:87
+#: src/features/account/components/api-keys/api-keys-card.tsx
 msgid "uWmank"
 msgstr "Pro ověření lze použít více API klíčů."
 
-#: src/features/account/components/api-keys/api-keys-list.tsx:53
+#: src/features/account/components/api-keys/api-keys-list.tsx
 msgid "oK3ylm"
 msgstr "Žádné API klíče"
 
-#: src/features/account/components/api-keys/api-keys-list.tsx:55
+#: src/features/account/components/api-keys/api-keys-list.tsx
 msgid "8N9621"
 msgstr "Zatím nebyly vytvořeny žádné API klíče."
 
-#: src/features/account/components/api-keys/api-keys-list.tsx:94
-#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:83
+#: src/features/account/components/api-keys/api-keys-list.tsx
+#: src/features/account/components/ssh-keys/ssh-keys-list.tsx
 msgid "goQBbA"
 msgstr "Vytvořeno {date}"
 
-#: src/features/account/components/api-keys/api-keys-list.tsx:103
-#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:92
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:177
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:171
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:372
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:205
-#: src/features/admin/components/servers/servers-table/columns.tsx:273
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:226
-#: src/features/admin/components/users/users-table/columns.tsx:358
-#: src/features/servers/components/backups/backups-table/backup-actions.tsx:155
-#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:141
+#: src/features/account/components/api-keys/api-keys-list.tsx
+#: src/features/account/components/ssh-keys/ssh-keys-list.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/servers/components/backups/backups-table/backup-actions.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
 msgid "K3r6DQ"
 msgstr "Smazat"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:59
+#: src/features/account/components/api-keys/create-api-key-button.tsx
 msgid "TrBeGD"
 msgstr "SSH klíče"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:61
+#: src/features/account/components/api-keys/create-api-key-button.tsx
 msgid "42rMfw"
 msgstr "ISO"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:92
+#: src/features/account/components/api-keys/create-api-key-button.tsx
 msgid "+J17tT"
 msgstr "Vytvořit API klíč"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:118
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:85
-#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:85
-#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:71
-#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:72
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:122
-#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:90
-#: src/features/admin/components/subnets/create-subnet-dialog.tsx:74
-#: src/features/servers/components/backups/create-backup-dialog.tsx:104
-#: src/features/servers/components/backups/restore-backup-dialog.tsx:76
-#: src/features/servers/components/overview/change-template-dialog.tsx:103
-#: src/features/servers/components/overview/rename-server-dialog.tsx:74
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx:101
-#: src/features/servers/components/rdns/upsert-record-dialog.tsx:89
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:170
-#: src/ui/feedback-button.tsx:31
+#: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx
+#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
+#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
+#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
+#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx
+#: src/features/servers/components/backups/create-backup-dialog.tsx
+#: src/features/servers/components/backups/restore-backup-dialog.tsx
+#: src/features/servers/components/overview/change-template-dialog.tsx
+#: src/features/servers/components/overview/rename-server-dialog.tsx
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
+#: src/features/servers/components/rdns/upsert-record-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/ui/feedback-button.tsx
 msgid "47FYwb"
 msgstr "Zrušit"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:135
+#: src/features/account/components/api-keys/create-api-key-button.tsx
 msgid "fnMCvo"
 msgstr "API klíč vytvořen"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:138
+#: src/features/account/components/api-keys/create-api-key-button.tsx
 msgid "TQSqlk"
 msgstr "Tento klíč se zobrazí jen jednou. Bezpečně si ho ulož, protože ho nelze obnovit:"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:157
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:109
-#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:108
-#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:94
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:92
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:104
-#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:95
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:89
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:101
-#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:113
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:89
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:103
-#: src/features/admin/components/servers/servers-table/columns.tsx:97
-#: src/features/admin/components/servers/servers-table/columns.tsx:105
-#: src/features/admin/components/users/users-table/columns.tsx:112
-#: src/features/admin/components/users/users-table/columns.tsx:130
-#: src/features/servers/components/backups/backups-table/columns.tsx:64
-#: src/features/servers/components/backups/create-backup-dialog.tsx:128
-#: src/features/servers/components/overview/node-details-dialog.tsx:83
-#: src/features/servers/components/overview/rename-server-dialog.tsx:93
-#: src/features/servers/components/overview/server-details-card.tsx:75
-#: src/ui/feedback-button.tsx:32
+#: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx
+#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
+#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/servers/components/backups/backups-table/columns.tsx
+#: src/features/servers/components/backups/create-backup-dialog.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
+#: src/features/servers/components/overview/rename-server-dialog.tsx
+#: src/features/servers/components/overview/server-details-card.tsx
+#: src/ui/feedback-button.tsx
 msgid "HAlOn1"
 msgstr "Název"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:165
+#: src/features/account/components/api-keys/create-api-key-button.tsx
 msgid "5Cu2sb"
 msgstr "Můj API klíč"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:173
+#: src/features/account/components/api-keys/create-api-key-button.tsx
 msgid "SFuk1v"
 msgstr "Oprávnění"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:175
+#: src/features/account/components/api-keys/create-api-key-button.tsx
 msgid "4u9ABD"
 msgstr "Podle oprávnění může API klíč provádět určité akce."
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:212
-#: src/features/servers/components/server-graphs.tsx:120
+#: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/servers/components/server-graphs.tsx
 msgid "filwqD"
 msgstr "Čtení"
 
-#: src/features/account/components/api-keys/create-api-key-button.tsx:218
-#: src/features/servers/components/server-graphs.tsx:124
+#: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/servers/components/server-graphs.tsx
 msgid "k2veDA"
 msgstr "Zápis"
 
-#: src/features/account/components/authentication/add-passkey-button.tsx:47
+#: src/features/account/components/authentication/add-passkey-button.tsx
 msgid "IknBAk"
 msgstr "Přidat passkey"
 
-#: src/features/account/components/authentication/user-passkeys-card.tsx:52
-#: src/features/account/components/authentication/user-providers-list.tsx:95
+#: src/features/account/components/authentication/user-passkeys-card.tsx
+#: src/features/account/components/authentication/user-providers-list.tsx
 msgid "ASrBq8"
 msgstr "Passkeys"
 
-#: src/features/account/components/authentication/user-passkeys-card.tsx:54
+#: src/features/account/components/authentication/user-passkeys-card.tsx
 msgid "yZU/cd"
 msgstr "Passkeys jsou vysoce bezpečná alternativa k heslům. Zaregistruj nový passkey nebo použij existující."
 
-#: src/features/account/components/authentication/user-passkeys-card.tsx:76
+#: src/features/account/components/authentication/user-passkeys-card.tsx
 msgid "ANHQFQ"
 msgstr "Pro ověření lze použít více passkeys."
 
-#: src/features/account/components/authentication/user-passkeys-list.tsx:51
+#: src/features/account/components/authentication/user-passkeys-list.tsx
 msgid "Hcvdp5"
 msgstr "Žádné passkeys"
 
-#: src/features/account/components/authentication/user-passkeys-list.tsx:53
+#: src/features/account/components/authentication/user-passkeys-list.tsx
 msgid "OHO8dm"
 msgstr "Pro tento účet nejsou registrované žádné passkeys."
 
-#: src/features/account/components/authentication/user-passkeys-list.tsx:93
+#: src/features/account/components/authentication/user-passkeys-list.tsx
 msgid "GKNfO2"
 msgstr "Passkey #{number}"
 
-#: src/features/account/components/authentication/user-passkeys-list.tsx:120
-#: src/features/account/components/billing/payment-methods-list.tsx:139
+#: src/features/account/components/authentication/user-passkeys-list.tsx
+#: src/features/account/components/billing/payment-methods-list.tsx
 msgid "jUqYir"
 msgstr "Přidáno {date}"
 
-#: src/features/account/components/authentication/user-passkeys-list.tsx:130
-#: src/features/account/components/billing/payment-methods-list.tsx:149
+#: src/features/account/components/authentication/user-passkeys-list.tsx
+#: src/features/account/components/billing/payment-methods-list.tsx
 msgid "G/yZLu"
 msgstr "Odebrat"
 
-#: src/features/account/components/authentication/user-providers-card.tsx:48
+#: src/features/account/components/authentication/user-providers-card.tsx
 msgid "w97pJ4"
 msgstr "Metody ověření"
 
-#: src/features/account/components/authentication/user-providers-card.tsx:50
+#: src/features/account/components/authentication/user-providers-card.tsx
 msgid "wLHOoq"
 msgstr "Nastav, jak se můžeš přihlašovat ke svému účtu. Propoj účty pro plynulé a bezpečné ověření."
 
-#: src/features/account/components/authentication/user-providers-list.tsx:65
+#: src/features/account/components/authentication/user-providers-list.tsx
 msgid "0Azlrb"
 msgstr "Spravovat"
 
-#: src/features/account/components/authentication/user-providers-list.tsx:82
-#: src/features/admin/components/users/users-table/columns.tsx:141
-#: src/features/admin/components/users/users-table/columns.tsx:148
-#: src/features/auth/components/email-sign-in.tsx:175
-#: src/features/auth/components/forgot-password-form.tsx:85
-#: src/features/auth/components/register/signup-email.tsx:116
-#: src/ui/feedback-button.tsx:34
+#: src/features/account/components/authentication/user-providers-list.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/auth/components/email-sign-in.tsx
+#: src/features/auth/components/forgot-password-form.tsx
+#: src/features/auth/components/register/signup-email.tsx
+#: src/ui/feedback-button.tsx
 msgid "sy+pv5"
 msgstr "E-mail"
 
-#: src/features/account/components/authentication/user-providers-list.tsx:97
+#: src/features/account/components/authentication/user-providers-list.tsx
 msgid "EYyTPV"
 msgstr "Přihlášení bez hesla pomocí passkeys"
 
-#: src/features/account/components/authentication/user-providers-list.tsx:168
+#: src/features/account/components/authentication/user-providers-list.tsx
 msgid "waJLKW"
 msgstr "Propojeno"
 
-#: src/features/account/components/authentication/user-providers-list.tsx:171
+#: src/features/account/components/authentication/user-providers-list.tsx
 msgid "xGU8KV"
 msgstr "Propojit účet {name}"
 
-#: src/features/account/components/authentication/user-providers-list.tsx:222
+#: src/features/account/components/authentication/user-providers-list.tsx
 msgid "JBWS0c"
 msgstr "Propojit"
 
-#: src/features/account/components/authentication/user-providers-list.tsx:231
+#: src/features/account/components/authentication/user-providers-list.tsx
 msgid "4PKxPs"
 msgstr "Odpojit"
 
-#: src/features/account/components/authentication/user-sessions-card.tsx:56
+#: src/features/account/components/authentication/user-sessions-card.tsx
 msgid "V3ka34"
 msgstr "Aktivní relace"
 
-#: src/features/account/components/authentication/user-sessions-card.tsx:58
+#: src/features/account/components/authentication/user-sessions-card.tsx
 msgid "54Q9yz"
 msgstr "Relace ukazují aktuálně přihlášená zařízení. Kdykoli je můžeš zrušit."
 
-#: src/features/account/components/authentication/user-sessions-list.tsx:69
+#: src/features/account/components/authentication/user-sessions-list.tsx
 msgid "tkKKAr"
 msgstr "Žádné relace"
 
-#: src/features/account/components/authentication/user-sessions-list.tsx:71
+#: src/features/account/components/authentication/user-sessions-list.tsx
 msgid "IYV2v0"
 msgstr "Nejsou tu žádné aktivní relace. Nová přihlášení se zobrazí tady."
 
-#: src/features/account/components/authentication/user-sessions-list.tsx:142
+#: src/features/account/components/authentication/user-sessions-list.tsx
 msgid "nBinN2"
 msgstr "Přihlášeno {date}"
 
-#: src/features/account/components/authentication/user-sessions-list.tsx:160
+#: src/features/account/components/authentication/user-sessions-list.tsx
 msgid "10IkTF"
 msgstr "Neznámé zařízení"
 
-#: src/features/account/components/authentication/user-sessions-list.tsx:164
+#: src/features/account/components/authentication/user-sessions-list.tsx
 msgid "pjASrh"
 msgstr "Aktuální relace"
 
-#: src/features/account/components/authentication/user-sessions-list.tsx:168
+#: src/features/account/components/authentication/user-sessions-list.tsx
 msgid "PIRoCC"
 msgstr "Neznámá IP adresa"
 
-#: src/features/account/components/billing/payment-methods-card.tsx:39
+#: src/features/account/components/billing/payment-methods-card.tsx
 msgid "xuTqgN"
 msgstr "Platební metody"
 
-#: src/features/account/components/billing/payment-methods-card.tsx:41
+#: src/features/account/components/billing/payment-methods-card.tsx
 msgid "oBsxme"
 msgstr "Následující platební metody jsou uložené a lze je použít k fakturaci."
 
-#: src/features/account/components/billing/payment-methods-list.tsx:53
+#: src/features/account/components/billing/payment-methods-list.tsx
 msgid "qyRflV"
 msgstr "Žádné platební metody"
 
-#: src/features/account/components/billing/payment-methods-list.tsx:55
+#: src/features/account/components/billing/payment-methods-list.tsx
 msgid "gL/ZgG"
 msgstr "K tvému účtu nejsou připojené žádné platební metody."
 
-#: src/features/account/components/billing/payment-methods-list.tsx:155
+#: src/features/account/components/billing/payment-methods-list.tsx
 msgid "3MBRV5"
 msgstr "Není uveden název"
 
-#: src/features/account/components/custom-images/create-custom-image-button.tsx:40
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:71
+#: src/features/account/components/custom-images/create-custom-image-button.tsx
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 msgid "TKvr5O"
 msgstr "Vytvořit vlastní obraz"
 
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:76
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 msgid "ggQwe8"
 msgstr "Vytvořte nový vlastní obraz pro vaše servery."
 
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:135
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 msgid "bWjdfa"
 msgstr "URL"
 
-#: src/features/account/components/custom-images/create-custom-image-dialog.tsx:148
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 msgid "aLOPr+"
 msgstr "Adresa URL musí přímo odkazovat na soubor ISO. Maximální velikost souboru je {size}."
 
-#: src/features/account/components/custom-images/custom-images-card.tsx:45
+#: src/features/account/components/custom-images/custom-images-card.tsx
 msgid "4NrukI"
 msgstr "Vlastní ISO obrazy"
 
-#: src/features/account/components/custom-images/custom-images-card.tsx:47
+#: src/features/account/components/custom-images/custom-images-card.tsx
 msgid "GnqZoy"
 msgstr "Nahrávejte a spravujte vlastní ISO obrazy pro vaše servery."
 
-#: src/features/account/components/custom-images/custom-images-card.tsx:60
+#: src/features/account/components/custom-images/custom-images-card.tsx
 msgid "Lwyinc"
 msgstr "Můžete mít až {count} aktivních ISO obrazů."
 
-#: src/features/account/components/custom-images/custom-images-list.tsx:47
+#: src/features/account/components/custom-images/custom-images-list.tsx
 msgid "sHUPf5"
 msgstr "Žádné vlastní obrazy"
 
-#: src/features/account/components/custom-images/custom-images-list.tsx:49
+#: src/features/account/components/custom-images/custom-images-list.tsx
 msgid "8RV8A9"
 msgstr "Zatím nebyly nahrány žádné vlastní obrazy."
 
-#: src/features/account/components/custom-images/custom-images-list.tsx:76
-#: src/features/servers/components/server-mount-badge.tsx:55
+#: src/features/account/components/custom-images/custom-images-list.tsx
+#: src/features/servers/components/server-mount-badge.tsx
 msgid "N/dZaF"
 msgstr "Vyprší {time}"
 
-#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:63
+#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 msgid "KdsDOJ"
 msgstr "Vytvořit SSH klíč"
 
-#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:123
+#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 msgid "q7jtp0"
 msgstr "Můj SSH klíč"
 
-#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx:136
+#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 msgid "jecC36"
 msgstr "Veřejný klíč"
 
-#: src/features/account/components/ssh-keys/ssh-keys-card.tsx:46
+#: src/features/account/components/ssh-keys/ssh-keys-card.tsx
 msgid "hdKY6S"
 msgstr "Vytvářej a spravuj SSH klíče pro použití během instalace."
 
-#: src/features/account/components/ssh-keys/ssh-keys-card.tsx:61
+#: src/features/account/components/ssh-keys/ssh-keys-card.tsx
 msgid "UM2KPU"
 msgstr "Je podporováno více SSH klíčů ve formátu <openssh>OpenSSH</openssh>."
 
-#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:50
+#: src/features/account/components/ssh-keys/ssh-keys-list.tsx
 msgid "6xgIEt"
 msgstr "Žádné SSH klíče"
 
-#: src/features/account/components/ssh-keys/ssh-keys-list.tsx:52
+#: src/features/account/components/ssh-keys/ssh-keys-list.tsx
 msgid "6NcUU3"
 msgstr "Zatím nebyly vytvořeny žádné SSH klíče."
 
-#: src/features/account/components/user-id-card.tsx:47
+#: src/features/account/components/user-id-card.tsx
 msgid "qW1hR5"
 msgstr "Tvoje ID uživatele"
 
-#: src/features/account/components/user-id-card.tsx:49
+#: src/features/account/components/user-id-card.tsx
 msgid "tX7q8l"
 msgstr "Toto je tvůj jedinečný identifikátor účtu na {appName}."
 
-#: src/features/account/components/user-id-card.tsx:68
+#: src/features/account/components/user-id-card.tsx
 msgid "6dnHkY"
 msgstr "Lze ho použít k identifikaci tvého účtu v API."
 
-#: src/features/account/components/user-name-card.tsx:68
+#: src/features/account/components/user-name-card.tsx
 msgid "pwlQEY"
 msgstr "Zobrazované jméno"
 
-#: src/features/account/components/user-name-card.tsx:70
+#: src/features/account/components/user-name-card.tsx
 msgid "1CYEqL"
 msgstr "Zadej celé jméno nebo zobrazované jméno, se kterým se cítíš dobře."
 
-#: src/features/account/components/user-name-card.tsx:94
+#: src/features/account/components/user-name-card.tsx
 msgid "YP7yEd"
 msgstr "Použij nejvýše 32 znaků."
 
-#: src/features/account/components/user-name-card.tsx:102
+#: src/features/account/components/user-name-card.tsx
 msgid "jvo0vs"
 msgstr "Uložit"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:94
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "QZwgMJ"
 msgstr "Zpráva o uživatelských datech"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:187
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "g26DD9"
 msgstr "Informace o zprávě"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:214
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "NJOMwI"
 msgstr "Čas exportu:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:237
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "To1Yq6"
 msgstr "Uživatelská data"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:264
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:366
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:440
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:535
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "tmcdrp"
 msgstr "ID:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:268
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "9ANu2O"
 msgstr "Zobrazované jméno:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:272
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "xpTPb3"
 msgstr "E-mail:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:276
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "axPF0j"
 msgstr "E-mail potvrzen:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:277
-#: src/features/admin/components/users/users-table/columns.tsx:201
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "a5msuh"
 msgstr "Ano"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:277
-#: src/features/admin/components/users/users-table/columns.tsx:201
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "oUWADl"
 msgstr "Ne"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:280
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "fiNfmb"
 msgstr "Jazyk:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:284
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "Ur+SeM"
 msgstr "ID Stripe:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:288
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "vxMnwH"
 msgstr "Datum registrace:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:298
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:465
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "iXH4ox"
 msgstr "Poslední změna:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:321
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "MEekj5"
 msgstr "Informace o relaci"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:333
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "RQPliO"
 msgstr "Nejsou zaznamenány žádné relace."
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:373
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "/7I9Fi"
 msgstr "IP adresa:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:377
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "uK95OQ"
 msgstr "User-Agent:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:396
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "njqGJJ"
 msgstr "Propojené účty"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:408
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "nuEHW2"
 msgstr "Nejsou zaznamenány žádné propojené účty."
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:447
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "w6rwdu"
 msgstr "ID poskytovatele:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:451
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "a2VLth"
 msgstr "Oprávnění:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:455
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "71lPLk"
 msgstr "Datum vytvoření:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:489
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "vtStU2"
 msgstr "Historie plateb"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:501
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "iPmh1t"
 msgstr "Nejsou zaznamenány žádné platby."
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:542
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "C43FrR"
 msgstr "Částka:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:555
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "3fVD9R"
 msgstr "Stav:"
 
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts:559
+#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "BIoIM3"
 msgstr "Fakturační údaje:"
 
-#: src/features/admin/components/admin-sidebar-groups.tsx:67
+#: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "UcHtCB"
 msgstr "Proxmox VE"
 
-#: src/features/admin/components/admin-sidebar-groups.tsx:87
+#: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "+P4xiL"
 msgstr "IPAM"
 
-#: src/features/admin/components/admin-sidebar.tsx:47
+#: src/features/admin/components/admin-sidebar.tsx
 msgid "k81S1y"
 msgstr "Logo"
 
-#: src/features/admin/components/admin-sidebar.tsx:58
-#: src/ui/app-sidebar.tsx:71
+#: src/features/admin/components/admin-sidebar.tsx
+#: src/ui/app-sidebar.tsx
 msgid "y1Z3or"
 msgstr "Jazyk"
 
-#: src/features/admin/components/dashboard/activity-stats-row.tsx:39
+#: src/features/admin/components/dashboard/activity-stats-row.tsx
 msgid "wCWFeb"
 msgstr "Aktivní servery"
 
-#: src/features/admin/components/dashboard/activity-stats-row.tsx:43
+#: src/features/admin/components/dashboard/activity-stats-row.tsx
 msgid "j1CPmU"
 msgstr "Počet aktuálně aktivních serverů"
 
-#: src/features/admin/components/dashboard/activity-stats-row.tsx:46
+#: src/features/admin/components/dashboard/activity-stats-row.tsx
 msgid "TkYZBT"
 msgstr "Zákazníci"
 
-#: src/features/admin/components/dashboard/activity-stats-row.tsx:50
+#: src/features/admin/components/dashboard/activity-stats-row.tsx
 msgid "rRpnCw"
 msgstr "Počet registrovaných zákazníků"
 
-#: src/features/admin/components/dashboard/activity-stats-row.tsx:53
+#: src/features/admin/components/dashboard/activity-stats-row.tsx
 msgid "d0YgXc"
 msgstr "Měsíční tržby"
 
-#: src/features/admin/components/dashboard/activity-stats-row.tsx:57
+#: src/features/admin/components/dashboard/activity-stats-row.tsx
 msgid "oTdX2X"
 msgstr "Tržby v aktuálním měsíci"
 
-#: src/features/admin/components/dashboard/customers-over-time-card.tsx:39
+#: src/features/admin/components/dashboard/customers-over-time-card.tsx
 msgid "O5JOQn"
 msgstr "Zákazníci podle data"
 
-#: src/features/admin/components/dashboard/customers-over-time-card.tsx:41
+#: src/features/admin/components/dashboard/customers-over-time-card.tsx
 msgid "yBCvTc"
 msgstr "Noví zákazníci za den za posledních 14 dní"
 
-#: src/features/admin/components/dashboard/customers-over-time.tsx:45
+#: src/features/admin/components/dashboard/customers-over-time.tsx
 msgid "zHZzJH"
 msgstr "Noví zákazníci"
 
-#: src/features/admin/components/dashboard/latest-customers-card.tsx:44
+#: src/features/admin/components/dashboard/latest-customers-card.tsx
 msgid "fuvH7s"
 msgstr "Nejnovější zákazníci"
 
-#: src/features/admin/components/dashboard/latest-customers-card.tsx:45
+#: src/features/admin/components/dashboard/latest-customers-card.tsx
 msgid "IqzPv+"
 msgstr "Nejnovější zákazníci podle data"
 
-#: src/features/admin/components/dashboard/latest-customers-card.tsx:56
-#: src/features/admin/components/dashboard/latest-servers-card.tsx:53
+#: src/features/admin/components/dashboard/latest-customers-card.tsx
+#: src/features/admin/components/dashboard/latest-servers-card.tsx
 msgid "pFK6bJ"
 msgstr "Zobrazit vše"
 
-#: src/features/admin/components/dashboard/latest-customers-list.tsx:58
+#: src/features/admin/components/dashboard/latest-customers-list.tsx
 msgid "FOEwIg"
 msgstr "Žádní noví zákazníci"
 
-#: src/features/admin/components/dashboard/latest-customers-list.tsx:60
+#: src/features/admin/components/dashboard/latest-customers-list.tsx
 msgid "jF7pQ8"
 msgstr "Zatím nebyli zaregistrováni žádní noví zákazníci."
 
-#: src/features/admin/components/dashboard/latest-servers-card.tsx:44
-#: src/features/dashboard/components/latest-servers-card.tsx:42
+#: src/features/admin/components/dashboard/latest-servers-card.tsx
+#: src/features/dashboard/components/latest-servers-card.tsx
 msgid "DY6Cmc"
 msgstr "Nejnovější servery"
 
-#: src/features/admin/components/dashboard/latest-servers-card.tsx:45
+#: src/features/admin/components/dashboard/latest-servers-card.tsx
 msgid "U11Zf0"
 msgstr "Nejnovější servery podle data"
 
-#: src/features/admin/components/dashboard/latest-servers-list.tsx:58
+#: src/features/admin/components/dashboard/latest-servers-list.tsx
 msgid "ILOirX"
 msgstr "Žádné nové servery"
 
-#: src/features/admin/components/dashboard/latest-servers-list.tsx:60
+#: src/features/admin/components/dashboard/latest-servers-list.tsx
 msgid "Xp5CiD"
 msgstr "Zatím nebyly vytvořeny žádné nové servery."
 
-#: src/features/admin/components/dashboard/revenue-over-time-card.tsx:39
+#: src/features/admin/components/dashboard/revenue-over-time-card.tsx
 msgid "vQuPQB"
 msgstr "Tržby podle data"
 
-#: src/features/admin/components/dashboard/revenue-over-time-card.tsx:41
+#: src/features/admin/components/dashboard/revenue-over-time-card.tsx
 msgid "655MNT"
 msgstr "Tržby za den za posledních 14 dní"
 
-#: src/features/admin/components/dashboard/revenue-over-time.tsx:45
-#: src/features/admin/components/dashboard/sales-by-plan.tsx:64
+#: src/features/admin/components/dashboard/revenue-over-time.tsx
+#: src/features/admin/components/dashboard/sales-by-plan.tsx
 msgid "8WKgF6"
 msgstr "Tržby"
 
-#: src/features/admin/components/dashboard/sales-by-plan-card.tsx:39
+#: src/features/admin/components/dashboard/sales-by-plan-card.tsx
 msgid "N5LvQA"
 msgstr "Prodeje podle plánu"
 
-#: src/features/admin/components/dashboard/sales-by-plan-card.tsx:41
+#: src/features/admin/components/dashboard/sales-by-plan-card.tsx
 msgid "ZYHrCR"
 msgstr "Prodeje podle plánu za posledních 30 dní"
 
-#: src/features/admin/components/dashboard/sales-by-plan.tsx:126
+#: src/features/admin/components/dashboard/sales-by-plan.tsx
 msgid "c8nvms"
 msgstr "Prodeje"
 
-#: src/features/admin/components/datacenters/create-datacenter-button.tsx:42
-#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:62
-#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:78
+#: src/features/admin/components/datacenters/create-datacenter-button.tsx
+#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
 msgid "ZD7Aza"
 msgstr "Vytvořit datacentrum"
 
-#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:63
+#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
 msgid "s3yKp4"
 msgstr "Vytvořit nové datacentrum."
 
-#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx:111
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:115
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:123
+#: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
 msgid "vONi+O"
 msgstr "Země"
 
-#: src/features/admin/components/datacenters/datacenter-select.tsx:82
+#: src/features/admin/components/datacenters/datacenter-select.tsx
 msgid "kMzL65"
 msgstr "Vybrat datacentrum..."
 
-#: src/features/admin/components/datacenters/datacenter-select.tsx:92
+#: src/features/admin/components/datacenters/datacenter-select.tsx
 msgid "ESAZCK"
 msgstr "Hledat datacentrum..."
 
-#: src/features/admin/components/datacenters/datacenter-select.tsx:94
+#: src/features/admin/components/datacenters/datacenter-select.tsx
 msgid "lH0BHV"
 msgstr "Nebylo nalezeno žádné datacentrum."
 
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:67
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:64
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:63
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:64
-#: src/features/admin/components/servers/servers-table/columns.tsx:72
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:76
-#: src/features/admin/components/users/users-table/columns.tsx:87
-#: src/features/invoices/components/invoices-table/columns.tsx:47
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
 msgid "94Fg25"
 msgstr "Vybrat vše"
 
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:78
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:75
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:74
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:75
-#: src/features/admin/components/servers/servers-table/columns.tsx:83
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:87
-#: src/features/admin/components/users/users-table/columns.tsx:98
-#: src/features/invoices/components/invoices-table/columns.tsx:58
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
 msgid "4pJVaS"
 msgstr "Vybrat řádek"
 
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:105
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:102
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:104
-#: src/features/admin/components/servers/servers-table/columns.tsx:106
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
 msgid "wFbsIt"
 msgstr "Hledat podle názvu..."
 
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:133
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:139
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:112
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:118
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:329
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:335
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:145
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:151
-#: src/features/admin/components/servers/servers-table/columns.tsx:202
-#: src/features/admin/components/servers/servers-table/columns.tsx:208
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:184
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:190
-#: src/features/admin/components/users/users-table/columns.tsx:230
-#: src/features/admin/components/users/users-table/columns.tsx:236
-#: src/features/servers/components/rdns/records-table/columns.tsx:60
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/servers/components/rdns/records-table/columns.tsx
 msgid "AbXVP4"
 msgstr "Vytvořeno"
 
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx:152
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:147
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:349
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:180
-#: src/features/admin/components/servers/servers-table/columns.tsx:239
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:203
-#: src/features/admin/components/users/users-table/columns.tsx:255
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "bdcMGy"
 msgstr "Otevřít nabídku"
 
-#: src/features/admin/components/proxmox-node-groups/create-node-group-button.tsx:42
+#: src/features/admin/components/proxmox-node-groups/create-node-group-button.tsx
 msgid "8gJfol"
 msgstr "Vytvořit skupinu uzlů"
 
-#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:61
-#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:79
+#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
 msgid "1cAptV"
 msgstr "Vytvořit skupinu uzlů Proxmox"
 
-#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx:62
+#: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
 msgid "1sBtX6"
 msgstr "Vytvořit novou skupinu uzlů Proxmox VE pro uzly Proxmox VE."
 
-#: src/features/admin/components/proxmox-node-groups/node-group-select.tsx:78
+#: src/features/admin/components/proxmox-node-groups/node-group-select.tsx
 msgid "NMiQru"
 msgstr "Vybrat skupinu uzlů..."
 
-#: src/features/admin/components/proxmox-node-groups/node-group-select.tsx:89
+#: src/features/admin/components/proxmox-node-groups/node-group-select.tsx
 msgid "/Uo5jN"
 msgstr "Hledat skupinu uzlů..."
 
-#: src/features/admin/components/proxmox-node-groups/node-group-select.tsx:91
+#: src/features/admin/components/proxmox-node-groups/node-group-select.tsx
 msgid "ao30Ou"
 msgstr "Nebyla nalezena žádná skupina uzlů."
 
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:128
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx:134
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 msgid "0ICwq5"
 msgstr "Naposledy aktualizováno"
 
-#: src/features/admin/components/proxmox-nodes/create-datacenter-button.tsx:48
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:113
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:129
+#: src/features/admin/components/proxmox-nodes/create-datacenter-button.tsx
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "S+458D"
 msgstr "Vytvořit uzel Proxmox"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:114
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "deLbYn"
 msgstr "Vytvořit nový uzel Proxmox VE pro hostování serverů."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:145
-#: src/features/servers/components/overview/node-details-dialog.tsx:101
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "zUxWZC"
 msgstr "Datacentrum"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:164
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "RJ3ocO"
 msgstr "Skupina uzlů"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:183
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:88
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:100
-#: src/features/servers/components/rdns/records-table/columns.tsx:50
-#: src/features/servers/components/rdns/upsert-record-dialog.tsx:135
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/servers/components/rdns/records-table/columns.tsx
+#: src/features/servers/components/rdns/upsert-record-dialog.tsx
 msgid "uPDgth"
 msgstr "Hostname"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:208
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "8cNS7n"
 msgstr "Hostname uzlu Proxmox VE podle konfigurace v clusteru Proxmox."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:224
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "2BEZJh"
 msgstr "FQDN"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:249
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "cUm+Vq"
 msgstr "FQDN uzlu Proxmox VE, na kterém je dostupné API. Musí být dosažitelné z internetu a používat platný TLS certifikát."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:266
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "86ZUi9"
 msgstr "ID tokenu"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:286
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "1gRCWa"
 msgstr "Secret tokenu"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:317
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "6o6hYT"
 msgstr "Úložiště snippetů"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:346
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "10Yrc8"
 msgstr "Cloud-init YAML soubory pro všechny servery na tomto uzlu se budou ukládat sem."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:362
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "IvtOOO"
 msgstr "Úložiště záloh"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:391
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "elgt8s"
 msgstr "Zálohy všech serverů na tomto uzlu se budou ukládat sem."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:407
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "foINKU"
 msgstr "Úložiště stahování ISO"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:436
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "Us0NPD"
 msgstr "ISO obrazy budou uloženy zde."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:451
-#: src/features/servers/components/overview/node-details-dialog.tsx:105
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "sB9VeA"
 msgstr "Uplink"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:482
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "1oyHhQ"
 msgstr "Maximální možná síťová propustnost uplinku v MB/s."
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:501
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "gYG5ho"
 msgstr "Maximální počet VM"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:505
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "UYmKl1"
 msgstr "VM"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:513
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:543
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:573
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:603
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:634
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "ekXood"
 msgstr "Neomezeně"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:531
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "OCihQV"
 msgstr "Maximální paměť"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:561
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "T4Xl7g"
 msgstr "Maximální úložiště"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:591
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "bRNAv0"
 msgstr "Maximum vCore"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:595
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:239
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:266
-#: src/features/servers/components/server-stats-card.tsx:90
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/servers/components/server-stats-card.tsx
 msgid "cCUvGW"
 msgstr "vCore"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:622
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "ueCC3G"
 msgstr "Limit sítě"
 
-#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx:665
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "U9Jxp7"
 msgstr "Po dosažení se tento uzel už nebude používat pro služby. Pro neomezeno ponech prázdné."
 
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:101
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 msgid "39jmFD"
 msgstr "Hledat podle hostname..."
 
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:112
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 msgid "/xxglw"
 msgstr "Počet VM"
 
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:128
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:162
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:207
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:253
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:287
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 msgid "EWGm/3"
 msgstr "{usage} / {limit}"
 
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:137
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:177
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:222
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:262
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:308
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 msgid "17eYMk"
 msgstr "{usage} / ∞"
 
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:148
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:185
-#: src/features/landing/components/server-stats-demo.tsx:80
-#: src/features/servers/components/server-graphs.tsx:104
-#: src/features/servers/components/server-stats-card.tsx:107
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/landing/components/server-stats-demo.tsx
+#: src/features/servers/components/server-graphs.tsx
+#: src/features/servers/components/server-stats-card.tsx
 msgid "LjglgP"
 msgstr "RAM"
 
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:193
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:232
-#: src/features/servers/components/overview/node-details-dialog.tsx:97
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "DUIDEq"
 msgstr "Úložiště"
 
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:273
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx:321
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 msgid "6vjF8Q"
 msgstr "Propustnost"
 
-#: src/features/admin/components/proxmox-template-groups/create-template-group-button.tsx:42
-#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:75
+#: src/features/admin/components/proxmox-template-groups/create-template-group-button.tsx
+#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
 msgid "Xj2bvc"
 msgstr "Vytvořit skupinu šablon Proxmox"
 
-#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:80
+#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
 msgid "Fbkq0B"
 msgstr "Vytvořit novou skupinu šablon Proxmox VE pro šablony Proxmox VE."
 
-#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx:132
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:114
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:120
+#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
 msgid "8lCjAM"
 msgstr "Priorita"
 
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:130
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:137
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
 msgid "lb/VMv"
 msgstr "Počet šablon"
 
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:161
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx:167
-#: src/features/servers/components/rdns/records-table/columns.tsx:72
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/servers/components/rdns/records-table/columns.tsx
 msgid "wFMlsH"
 msgstr "Aktualizováno"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:116
-#: src/features/admin/components/servers/servers-table/columns.tsx:122
+#: src/features/admin/components/servers/servers-table/columns.tsx
 msgid "XmTS6D"
 msgstr "ID VM"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:132
-#: src/features/admin/components/servers/servers-table/columns.tsx:155
+#: src/features/admin/components/servers/servers-table/columns.tsx
 msgid "3JxaKs"
 msgstr "Šablona"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:178
-#: src/features/admin/components/servers/servers-table/columns.tsx:194
+#: src/features/admin/components/servers/servers-table/columns.tsx
 msgid "EwRIOm"
 msgstr "Uživatel"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:218
-#: src/features/admin/components/servers/servers-table/columns.tsx:225
+#: src/features/admin/components/servers/servers-table/columns.tsx
 msgid "1UsI0I"
 msgstr "Končí"
 
-#: src/features/admin/components/servers/servers-table/columns.tsx:264
+#: src/features/admin/components/servers/servers-table/columns.tsx
 msgid "zvQbH/"
 msgstr "Zobrazit v Proxmoxu"
 
-#: src/features/admin/components/subnets/create-subnet-button.tsx:39
-#: src/features/admin/components/subnets/create-subnet-dialog.tsx:65
-#: src/features/admin/components/subnets/create-subnet-dialog.tsx:77
+#: src/features/admin/components/subnets/create-subnet-button.tsx
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx
 msgid "pXZyDa"
 msgstr "Vytvořit podsíť"
 
-#: src/features/admin/components/subnets/create-subnet-dialog.tsx:66
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx
 msgid "w+MmK2"
 msgstr "Vytvořit novou podsíť."
 
-#: src/features/admin/components/subnets/create-subnet-dialog.tsx:93
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:101
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:121
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
 msgid "4cxFaQ"
 msgstr "CIDR"
 
-#: src/features/admin/components/subnets/create-subnet-dialog.tsx:110
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx
 msgid "pMcQck"
 msgstr "Brána"
 
-#: src/features/admin/components/subnets/create-subnet-dialog.tsx:128
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx
 msgid "tmvyl7"
 msgstr "Reverzní DNS zóna"
 
-#: src/features/admin/components/subnets/create-subnet-dialog.tsx:148
+#: src/features/admin/components/subnets/create-subnet-dialog.tsx
 msgid "IBNdTs"
 msgstr "VLAN"
 
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:122
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
 msgid "XQeoKw"
 msgstr "Hledat podle CIDR..."
 
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:132
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:142
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
 msgid "+U6ozc"
 msgstr "Typ"
 
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:158
-#: src/features/admin/components/subnets/subnets-table/columns.tsx:168
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
 msgid "PLUhm9"
 msgstr "ID VLAN"
 
-#: src/features/admin/components/users/users-table/columns.tsx:131
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "BzHQ0A"
 msgstr "Jméno/e-mail"
 
-#: src/features/admin/components/users/users-table/columns.tsx:156
-#: src/features/admin/components/users/users-table/columns.tsx:171
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "1ZgrhW"
 msgstr "Role"
 
-#: src/features/admin/components/users/users-table/columns.tsx:189
-#: src/features/admin/components/users/users-table/columns.tsx:206
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "DC8+TO"
 msgstr "E-mail ověřen"
 
-#: src/features/admin/components/users/users-table/columns.tsx:287
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "hQZhn8"
 msgstr "Přihlásit se jako uživatel"
 
-#: src/features/admin/components/users/users-table/columns.tsx:298
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "C3uaig"
 msgstr "Zobrazit ve Stripe"
 
-#: src/features/admin/components/users/users-table/columns.tsx:320
-#: src/features/servers/components/backups/backups-table/backup-actions.tsx:142
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/servers/components/backups/backups-table/backup-actions.tsx
 msgid "qXCbgZ"
 msgstr "Odemknout"
 
-#: src/features/admin/components/users/users-table/columns.tsx:329
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "SVwJTM"
 msgstr "Exportovat"
 
-#: src/features/admin/components/users/users-table/columns.tsx:349
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "XtUrMc"
 msgstr "Zablokovat"
 
-#: src/features/auth/components/auth-methods-separator.tsx:27
+#: src/features/auth/components/auth-methods-separator.tsx
 msgid "Ntjkqd"
 msgstr "nebo"
 
-#: src/features/auth/components/discord-button.tsx:61
-#: src/features/auth/components/register/signup-oauth.tsx:99
+#: src/features/auth/components/discord-button.tsx
+#: src/features/auth/components/register/signup-oauth.tsx
 msgid "Y7Cpd6"
 msgstr "Pokračovat přes Discord"
 
-#: src/features/auth/components/email-sign-in.tsx:101
-#: src/features/auth/components/email-sign-in.tsx:114
+#: src/features/auth/components/email-sign-in.tsx
 msgid "JgGwrY"
 msgstr "S touto e-mailovou adresou nebyl nalezen žádný účet."
 
-#: src/features/auth/components/email-sign-in.tsx:156
+#: src/features/auth/components/email-sign-in.tsx
 msgid "YXNhCz"
 msgstr "E-mail odeslán - zkontroluj doručenou poštu!"
 
-#: src/features/auth/components/email-sign-in.tsx:200
-#: src/features/auth/components/register/signup-email.tsx:166
-#: src/features/auth/components/register/signup-email.tsx:172
-#: src/features/auth/components/reset-password-form.tsx:95
+#: src/features/auth/components/email-sign-in.tsx
+#: src/features/auth/components/register/signup-email.tsx
+#: src/features/auth/components/reset-password-form.tsx
 msgid "5sg7KC"
 msgstr "Heslo"
 
-#: src/features/auth/components/email-sign-in.tsx:206
+#: src/features/auth/components/email-sign-in.tsx
 msgid "V/JHlm"
 msgstr "Zapomenuté heslo?"
 
-#: src/features/auth/components/email-sign-in.tsx:215
+#: src/features/auth/components/email-sign-in.tsx
 msgid "tXea4K"
 msgstr "Heslo (volitelné)"
 
-#: src/features/auth/components/email-sign-in.tsx:251
+#: src/features/auth/components/email-sign-in.tsx
 msgid "Bddm92"
 msgstr "Přihlásit se heslem"
 
-#: src/features/auth/components/email-sign-in.tsx:253
+#: src/features/auth/components/email-sign-in.tsx
 msgid "vu1wqp"
 msgstr "Přihlásit se e-mailem"
 
-#: src/features/auth/components/forgot-password-form.tsx:51
+#: src/features/auth/components/forgot-password-form.tsx
 msgid "qm+oRY"
 msgstr "Dostaneš e-mail s pokyny k obnovení hesla."
 
-#: src/features/auth/components/forgot-password-form.tsx:104
+#: src/features/auth/components/forgot-password-form.tsx
 msgid "DkQ5Q8"
 msgstr "Odeslat odkaz pro obnovení"
 
-#: src/features/auth/components/github-button.tsx:61
-#: src/features/auth/components/register/signup-oauth.tsx:83
+#: src/features/auth/components/github-button.tsx
+#: src/features/auth/components/register/signup-oauth.tsx
 msgid "8eQ7FM"
 msgstr "Pokračovat přes GitHub"
 
-#: src/features/auth/components/google-button.tsx:57
-#: src/features/auth/components/register/signup-oauth.tsx:66
+#: src/features/auth/components/google-button.tsx
+#: src/features/auth/components/register/signup-oauth.tsx
 msgid "FJ6r9E"
 msgstr "Pokračovat přes Google"
 
-#: src/features/auth/components/login-form.tsx:146
+#: src/features/auth/components/login-form.tsx
 msgid "Zk0/xv"
 msgstr "Naposledy ses přihlásil přes {method}"
 
-#: src/features/auth/components/login-form.tsx:166
+#: src/features/auth/components/login-form.tsx
 msgid "u0mNBU"
 msgstr "Pokračovat jinou metodou"
 
-#: src/features/auth/components/passkey-button.tsx:71
+#: src/features/auth/components/passkey-button.tsx
 msgid "kHhLiu"
 msgstr "Pokračovat přes passkey"
 
-#: src/features/auth/components/password-requirements.tsx:28
+#: src/features/auth/components/password-requirements.tsx
 msgid "kFkPWB"
 msgstr "Číslice"
 
-#: src/features/auth/components/password-requirements.tsx:32
+#: src/features/auth/components/password-requirements.tsx
 msgid "cXsNgc"
 msgstr "Velké písmeno"
 
-#: src/features/auth/components/password-requirements.tsx:36
+#: src/features/auth/components/password-requirements.tsx
 msgid "NNQ3iD"
 msgstr "Malé písmeno"
 
-#: src/features/auth/components/password-requirements.tsx:40
+#: src/features/auth/components/password-requirements.tsx
 msgid "WK/0OI"
 msgstr "8 znaků"
 
-#: src/features/auth/components/register/resend-otp.tsx:80
+#: src/features/auth/components/register/resend-otp.tsx
 msgid "pFU3mO"
 msgstr "Nepřišel kód?"
 
-#: src/features/auth/components/register/resend-otp.tsx:89
+#: src/features/auth/components/register/resend-otp.tsx
 msgid "IXycMo"
 msgstr "Poslat znovu"
 
-#: src/features/auth/components/register/resend-otp.tsx:97
+#: src/features/auth/components/register/resend-otp.tsx
 msgid "xfiWJo"
 msgstr "Kód byl úspěšně odeslán."
 
-#: src/features/auth/components/register/resend-otp.tsx:103
+#: src/features/auth/components/register/resend-otp.tsx
 msgid "p9iDr6"
 msgstr "Kód se nepodařilo odeslat."
 
-#: src/features/auth/components/register/signup-email.tsx:139
+#: src/features/auth/components/register/signup-email.tsx
 msgid "dOQCL8"
 msgstr "Zobrazované jméno"
 
-#: src/features/auth/components/register/signup-email.tsx:193
+#: src/features/auth/components/register/signup-email.tsx
 msgid "39AHJm"
 msgstr "Zaregistrovat se"
 
-#: src/features/auth/components/register/verify-email-form.tsx:62
+#: src/features/auth/components/register/verify-email-form.tsx
 msgid "pwyqaX"
 msgstr "Účet vytvořen! Přesměrování..."
 
-#: src/features/auth/components/register/verify-email-form.tsx:119
+#: src/features/auth/components/register/verify-email-form.tsx
 msgid "poE3OD"
 msgstr "Neplatný kód. Zkus to prosím znovu."
 
-#: src/features/auth/components/register/verify-email-form.tsx:130
+#: src/features/auth/components/register/verify-email-form.tsx
 msgid "acrOoz"
 msgstr "Pokračovat"
 
-#: src/features/auth/components/reset-password-form.tsx:80
+#: src/features/auth/components/reset-password-form.tsx
 msgid "neYh81"
 msgstr "Heslo bylo obnoveno. Teď se můžeš přihlásit novým heslem."
 
-#: src/features/auth/components/reset-password-form.tsx:119
+#: src/features/auth/components/reset-password-form.tsx
 msgid "8HimVK"
 msgstr "Potvrdit heslo"
 
-#: src/features/auth/components/reset-password-form.tsx:139
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx:92
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx:108
-#: src/features/servers/components/overview/server-details-card.tsx:189
+#: src/features/auth/components/reset-password-form.tsx
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
+#: src/features/servers/components/overview/server-details-card.tsx
 msgid "xl27nc"
 msgstr "Obnovit heslo"
 
-#: src/features/checkout/components/checkout-auth-wrapper.tsx:54
+#: src/features/checkout/components/checkout-auth-wrapper.tsx
 msgid "jUKaDx"
 msgstr "Vyžaduje se přihlášení"
 
-#: src/features/checkout/components/checkout-auth-wrapper.tsx:56
+#: src/features/checkout/components/checkout-auth-wrapper.tsx
 msgid "7VnKx0"
 msgstr "Pro pokračování objednávky je potřeba vytvořit zákaznický účet."
 
-#: src/features/checkout/components/checkout-auth-wrapper.tsx:70
+#: src/features/checkout/components/checkout-auth-wrapper.tsx
 msgid "SQJto2"
 msgstr "Přihlásit se"
 
-#: src/features/checkout/components/checkout-form.tsx:120
+#: src/features/checkout/components/checkout-form.tsx
 msgid "7OW8BT"
 msgstr "Konfigurace"
 
-#: src/features/checkout/components/checkout-form.tsx:127
-#: src/features/servers/components/backups/backups-table/columns.tsx:180
-#: src/features/servers/components/overview/server-details-card.tsx:96
+#: src/features/checkout/components/checkout-form.tsx
+#: src/features/servers/components/backups/backups-table/columns.tsx
+#: src/features/servers/components/overview/server-details-card.tsx
 msgid "t2uvIi"
 msgstr "Operační systém"
 
-#: src/features/checkout/components/checkout-form.tsx:147
+#: src/features/checkout/components/checkout-form.tsx
 msgid "hE8w/g"
 msgstr "Root heslo (volitelné)"
 
-#: src/features/checkout/components/checkout-form.tsx:158
+#: src/features/checkout/components/checkout-form.tsx
 msgid "wzt4BE"
 msgstr "Virtbase neukládá tvoje root heslo. Později ho lze resetovat v zákaznickém portálu."
 
-#: src/features/checkout/components/checkout-form.tsx:166
+#: src/features/checkout/components/checkout-form.tsx
 msgid "mnTP3x"
 msgstr "Pokud pole necháš prázdné, vygeneruje se bezpečné náhodné heslo a pošle se e-mailem."
 
-#: src/features/checkout/components/checkout-form.tsx:224
-#: src/features/servers/components/plan/plan-summary.tsx:286
+#: src/features/checkout/components/checkout-form.tsx
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "+g+0OK"
 msgstr "Pokračovat k platbě"
 
-#: src/features/checkout/components/checkout-public-key-select.tsx:60
+#: src/features/checkout/components/checkout-public-key-select.tsx
 msgid "fXFUFA"
 msgstr "Existující SSH klíč"
 
-#: src/features/checkout/components/checkout-public-key-select.tsx:95
+#: src/features/checkout/components/checkout-public-key-select.tsx
 msgid "UQc03N"
 msgstr "Přidat nový SSH klíč"
 
-#: src/features/checkout/components/checkout-public-key-select.tsx:110
+#: src/features/checkout/components/checkout-public-key-select.tsx
 msgid "UpInkr"
 msgstr "SSH klíč (volitelné)"
 
-#: src/features/checkout/components/checkout-public-key-select.tsx:136
+#: src/features/checkout/components/checkout-public-key-select.tsx
 msgid "RB81cJ"
 msgstr "SSH klíč se uloží do uživatelského účtu a lze ho znovu použít pro budoucí objednávky."
 
-#: src/features/checkout/components/checkout-public-key-select.tsx:152
+#: src/features/checkout/components/checkout-public-key-select.tsx
 msgid "iiDj1S"
 msgstr "Vybrat existující SSH klíč"
 
-#: src/features/checkout/components/checkout-waivers.tsx:43
+#: src/features/checkout/components/checkout-waivers.tsx
 msgid "fL6LzO"
 msgstr "Přečetl(a) jsem si a souhlasím s <terms>podmínkami služby</terms> a <privacy>zásadami ochrany osobních údajů</privacy>."
 
-#: src/features/checkout/components/checkout-waivers.tsx:79
+#: src/features/checkout/components/checkout-waivers.tsx
 msgid "+3U5qS"
 msgstr "Přečetl(a) jsem si a souhlasím se <revocation>zásadami odstoupení</revocation>. Právo na odstoupení zaniká, jakmile je objednávka dokončena a služba automaticky poskytnuta."
 
-#: src/features/checkout/components/elements-provider.tsx:83
+#: src/features/checkout/components/elements-provider.tsx
 msgid "mlJ21x"
 msgstr "Platit anonymně kryptoměnou"
 
-#: src/features/checkout/components/offer-card.tsx:93
+#: src/features/checkout/components/offer-card.tsx
 msgid "pxF+t0"
 msgstr "Populární"
 
-#: src/features/checkout/components/offer-card.tsx:105
-#: src/features/checkout/components/order-summary.tsx:157
+#: src/features/checkout/components/offer-card.tsx
+#: src/features/checkout/components/order-summary.tsx
 msgid "Rw82/V"
 msgstr "měsíčně"
 
-#: src/features/checkout/components/offer-card.tsx:119
-#: src/features/checkout/components/order-summary.tsx:67
-#: src/features/servers/components/plan/plan-radio-group.tsx:66
-#: src/features/servers/components/plan/plan-summary.tsx:150
-#: src/features/servers/components/servers-list.tsx:134
+#: src/features/checkout/components/offer-card.tsx
+#: src/features/checkout/components/order-summary.tsx
+#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/plan-summary.tsx
+#: src/features/servers/components/servers-list.tsx
 msgid "BGI16m"
 msgstr "{cores, plural, =0 {# vCore} =1 {# vCore} other {# vCore}}"
 
-#: src/features/checkout/components/offer-card.tsx:160
-#: src/features/checkout/components/order-summary.tsx:109
+#: src/features/checkout/components/offer-card.tsx
+#: src/features/checkout/components/order-summary.tsx
 msgid "zSO/T8"
 msgstr "1 IPv4 + IPv6 /64 podsíť"
 
-#: src/features/checkout/components/offer-card.tsx:179
+#: src/features/checkout/components/offer-card.tsx
 msgid "kWI6zX"
 msgstr "Sdílené"
 
-#: src/features/checkout/components/offer-card.tsx:184
+#: src/features/checkout/components/offer-card.tsx
 msgid "Gzo4L7"
 msgstr "Sdílený uplink - maximální možná propustnost je sdílena s ostatními zákazníky."
 
-#: src/features/checkout/components/offer-card.tsx:201
-#: src/features/checkout/components/order-summary.tsx:135
+#: src/features/checkout/components/offer-card.tsx
+#: src/features/checkout/components/order-summary.tsx
 msgid "IYlDM0"
 msgstr "Neomezený provoz"
 
-#: src/features/checkout/components/offer-card.tsx:205
+#: src/features/checkout/components/offer-card.tsx
 msgid "bIu4NB"
 msgstr "Provoz podle principu fair use. Při nadměrném dlouhodobém využití může dojít k dočasnému omezení rychlosti."
 
-#: src/features/checkout/components/offer-card.tsx:239
+#: src/features/checkout/components/offer-card.tsx
 msgid "5EjMej"
 msgstr "Nastavit {name}"
 
-#: src/features/checkout/components/offer-card.tsx:243
+#: src/features/checkout/components/offer-card.tsx
 msgid "khw/ok"
 msgstr "Nastavit teď"
 
-#: src/features/checkout/components/offer-card.tsx:246
-#: src/features/servers/components/plan/plan-radio-group.tsx:121
+#: src/features/checkout/components/offer-card.tsx
+#: src/features/servers/components/plan/plan-radio-group.tsx
 msgid "spsPUc"
 msgstr "Vyprodáno"
 
-#: src/features/checkout/components/order-summary.tsx:54
+#: src/features/checkout/components/order-summary.tsx
 msgid "ivNR8s"
 msgstr "Shrnutí objednávky"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:162
+#: src/features/checkout/components/stripe-payment-form.tsx
 msgid "zAA8aS"
 msgstr "Vyplň prosím všechna pole fakturační adresy."
 
-#: src/features/checkout/components/stripe-payment-form.tsx:205
+#: src/features/checkout/components/stripe-payment-form.tsx
 msgid "6orx1c"
 msgstr "Fakturační adresa"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:207
+#: src/features/checkout/components/stripe-payment-form.tsx
 msgid "PAzxoc"
 msgstr "Používá se pro fakturaci a výpočet DPH."
 
-#: src/features/checkout/components/stripe-payment-form.tsx:224
+#: src/features/checkout/components/stripe-payment-form.tsx
 msgid "BVTni9"
 msgstr "Platební metoda"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:231
+#: src/features/checkout/components/stripe-payment-form.tsx
 msgid "11yeGk"
 msgstr "Platby bezpečně zpracovává Stripe."
 
-#: src/features/checkout/components/stripe-payment-form.tsx:267
+#: src/features/checkout/components/stripe-payment-form.tsx
 msgid "vhswJi"
 msgstr "Platbu se nepodařilo dokončit"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:285
+#: src/features/checkout/components/stripe-payment-form.tsx
 msgid "ddCkDY"
 msgstr "Zpracování platby…"
 
-#: src/features/checkout/components/stripe-payment-form.tsx:285
+#: src/features/checkout/components/stripe-payment-form.tsx
 msgid "7tOz+m"
 msgstr "Zaplatit teď"
 
-#: src/features/dashboard/components/empty-servers.tsx:31
+#: src/features/dashboard/components/empty-servers.tsx
 msgid "fmSs/a"
 msgstr "Nebyly nalezeny žádné servery"
 
-#: src/features/dashboard/components/empty-servers.tsx:32
+#: src/features/dashboard/components/empty-servers.tsx
 msgid "zuhonL"
 msgstr "Zatím nebyly pronajaty žádné servery. Nové servery se zobrazí tady."
 
-#: src/features/dashboard/components/empty-servers.tsx:38
+#: src/features/dashboard/components/empty-servers.tsx
 msgid "SjCCH5"
 msgstr "Pronajmout server"
 
-#: src/features/dashboard/components/latest-invoices-card.tsx:42
+#: src/features/dashboard/components/latest-invoices-card.tsx
 msgid "15BgLW"
 msgstr "Nejnovější faktury"
 
-#: src/features/dashboard/components/latest-invoices-card.tsx:44
+#: src/features/dashboard/components/latest-invoices-card.tsx
 msgid "VgBFI4"
 msgstr "Tady najdeš své nejnovější faktury k přímému stažení."
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:61
+#: src/features/dashboard/components/latest-invoices-list.tsx
 msgid "QVIbFk"
 msgstr "Žádné faktury"
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:63
+#: src/features/dashboard/components/latest-invoices-list.tsx
 msgid "GtDccr"
 msgstr "Zatím nebyly vystaveny žádné faktury."
 
-#: src/features/dashboard/components/latest-invoices-list.tsx:87
-#: src/features/invoices/components/invoices-table/columns.tsx:152
+#: src/features/dashboard/components/latest-invoices-list.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
 msgid "5q3qC0"
 msgstr "Stáhnout"
 
-#: src/features/dashboard/components/latest-servers-card.tsx:44
+#: src/features/dashboard/components/latest-servers-card.tsx
 msgid "2AizOe"
 msgstr "Tady najdeš své nejnovější servery."
 
-#: src/features/dashboard/components/server-status-small.tsx:60
+#: src/features/dashboard/components/server-status-small.tsx
 msgid "KRtjzZ"
 msgstr "Vypršelo (bude smazáno {date})"
 
-#: src/features/dashboard/components/server-status-small.tsx:71
-#: src/features/servers/hooks/use-status-mapping.ts:58
+#: src/features/dashboard/components/server-status-small.tsx
+#: src/features/servers/hooks/use-status-mapping.ts
 msgid "oJsHQW"
 msgstr "Pozastaveno"
 
-#: src/features/dashboard/components/server-status-small.tsx:77
+#: src/features/dashboard/components/server-status-small.tsx
 msgid "r9ELLA"
 msgstr "Instalace..."
 
-#: src/features/dashboard/components/server-status-small.tsx:84
+#: src/features/dashboard/components/server-status-small.tsx
 msgid "vOjKW3"
 msgstr "Brzy vyprší (bude smazáno {date})"
 
-#: src/features/dashboard/components/server-status-small.tsx:95
+#: src/features/dashboard/components/server-status-small.tsx
 msgid "Dnob31"
 msgstr "V provozu"
 
-#: src/features/invoices/components/invoices-table/columns.tsx:72
-#: src/features/invoices/components/invoices-table/columns.tsx:80
+#: src/features/invoices/components/invoices-table/columns.tsx
 msgid "ijDMrP"
 msgstr "Číslo faktury"
 
-#: src/features/invoices/components/invoices-table/columns.tsx:81
+#: src/features/invoices/components/invoices-table/columns.tsx
 msgid "cIAuzz"
 msgstr "Hledat číslo faktury..."
 
-#: src/features/invoices/components/invoices-table/columns.tsx:91
-#: src/features/invoices/components/invoices-table/columns.tsx:100
+#: src/features/invoices/components/invoices-table/columns.tsx
 msgid "/0TOL5"
 msgstr "Částka"
 
-#: src/features/invoices/components/invoices-table/columns.tsx:111
-#: src/features/invoices/components/invoices-table/columns.tsx:117
+#: src/features/invoices/components/invoices-table/columns.tsx
 msgid "dULmbA"
 msgstr "Datum faktury"
 
-#: src/features/invoices/components/invoices-table/columns.tsx:127
-#: src/features/invoices/components/invoices-table/columns.tsx:136
+#: src/features/invoices/components/invoices-table/columns.tsx
 msgid "YOc6Ow"
 msgstr "Zaplaceno"
 
-#: src/features/landing/components/advantage-item.tsx:58
-#: src/features/landing/components/features-showcase.tsx:45
-#: src/features/landing/components/features-showcase.tsx:69
+#: src/features/landing/components/advantage-item.tsx
+#: src/features/landing/components/features-showcase.tsx
 msgid "TdTXXf"
 msgstr "Zjistit víc"
 
-#: src/features/landing/components/advantages-row.tsx:32
+#: src/features/landing/components/advantages-row.tsx
 msgid "GTucMY"
 msgstr "Maximální soukromí"
 
-#: src/features/landing/components/advantages-row.tsx:33
+#: src/features/landing/components/advantages-row.tsx
 msgid "IIN9F8"
 msgstr "U nás je soukromí na prvním místě. Nikdy nic nesdílíme s třetími stranami."
 
-#: src/features/landing/components/advantages-row.tsx:40
+#: src/features/landing/components/advantages-row.tsx
 msgid "daLPgg"
 msgstr "Skutečná podpora"
 
-#: src/features/landing/components/advantages-row.tsx:41
+#: src/features/landing/components/advantages-row.tsx
 msgid "hnGR7B"
 msgstr "Nabízíme lidskou podporu nonstop, kdykoli ji potřebuješ."
 
-#: src/features/landing/components/advantages-row.tsx:48
+#: src/features/landing/components/advantages-row.tsx
 msgid "uDrdrl"
 msgstr "DDoS ochrana v ceně"
 
-#: src/features/landing/components/advantages-row.tsx:49
+#: src/features/landing/components/advantages-row.tsx
 msgid "TWNuCY"
 msgstr "Aktivní DDoS ochrana tě udrží online. Bez dalších poplatků, vždy."
 
-#: src/features/landing/components/advantages-row.tsx:56
+#: src/features/landing/components/advantages-row.tsx
 msgid "nVfA/q"
 msgstr "Moderní zákaznický portál"
 
-#: src/features/landing/components/advantages-row.tsx:57
+#: src/features/landing/components/advantages-row.tsx
 msgid "fQqAwd"
 msgstr "Spravuj své servery efektivně, bez starostí a frustrace."
 
-#: src/features/landing/components/faq-section.tsx:32
+#: src/features/landing/components/faq-section.tsx
 msgid "j3A1sI"
 msgstr "Jak dlouho trvá zřízení serveru?"
 
-#: src/features/landing/components/faq-section.tsx:33
+#: src/features/landing/components/faq-section.tsx
 msgid "50VRoa"
 msgstr "Zřízení objednaného balíčku obvykle proběhne automaticky po objednávce, bez čekání. Navíc pošleme potvrzení e-mailem."
 
-#: src/features/landing/components/faq-section.tsx:38
+#: src/features/landing/components/faq-section.tsx
 msgid "zWVB3p"
 msgstr "Existuje limit provozu?"
 
-#: src/features/landing/components/faq-section.tsx:39
+#: src/features/landing/components/faq-section.tsx
 msgid "+T4TVw"
 msgstr "Ne, naše servery nemají žádný limit provozu. Uplink je poskytován podle principu fair use. Při neúměrně vysokém dlouhodobém využití však může být propustnost dočasně omezena."
 
-#: src/features/landing/components/faq-section.tsx:44
+#: src/features/landing/components/faq-section.tsx
 msgid "RS/4DH"
 msgstr "Lze balíček později změnit?"
 
-#: src/features/landing/components/faq-section.tsx:45
+#: src/features/landing/components/faq-section.tsx
 msgid "tBYbeE"
 msgstr "Objednaný balíček lze snadno změnit v zákaznickém portálu. Při změně během aktuálního fakturačního období bude cenový rozdíl odpovídajícím způsobem započten."
 
-#: src/features/landing/components/faq-section.tsx:50
+#: src/features/landing/components/faq-section.tsx
 msgid "Adyexr"
 msgstr "Mohu svůj server kdykoli zrušit?"
 
-#: src/features/landing/components/faq-section.tsx:51
+#: src/features/landing/components/faq-section.tsx
 msgid "4FVTjU"
 msgstr "Ano, objednané servery lze kdykoli zrušit v zákaznickém portálu. Zrušení se projeví na konci zvoleného fakturačního období."
 
-#: src/features/landing/components/faq-section.tsx:56
+#: src/features/landing/components/faq-section.tsx
 msgid "KfLE6n"
 msgstr "Jak se dostanu ke svým serverům?"
 
-#: src/features/landing/components/faq-section.tsx:57
+#: src/features/landing/components/faq-section.tsx
 msgid "B7MEDP"
 msgstr "Objednaný server lze spravovat přes náš vlastní zákaznický portál. SSH přístup heslem je dostupný ve výchozím nastavení. K serveru se lze připojit také přes VNC konzoli."
 
-#: src/features/landing/components/faq-section.tsx:62
+#: src/features/landing/components/faq-section.tsx
 msgid "p/GLe/"
 msgstr "Jak bezpečná jsou moje data?"
 
-#: src/features/landing/components/faq-section.tsx:63
+#: src/features/landing/components/faq-section.tsx
 msgid "kexWaZ"
 msgstr "Ochrana dat je naší nejvyšší prioritou. Všechna data na serverech jsou uložená na šifrovaných discích. Přístup z naší strany jako poskytovatele ani od jiných subjektů obecně není možný. Více informací najdeš v našich <privacy>zásadách ochrany osobních údajů</privacy>."
 
-#: src/features/landing/components/faq-section.tsx:75
+#: src/features/landing/components/faq-section.tsx
 msgid "zcLioW"
 msgstr "Kde získám podporu?"
 
-#: src/features/landing/components/faq-section.tsx:76
+#: src/features/landing/components/faq-section.tsx
 msgid "igjse2"
 msgstr "Náš tým podpory je dostupný 24/7. Pošli e-mail na <email>support@virtbase.com</email> a rychle se ti ozveme."
 
-#: src/features/landing/components/faq-section.tsx:84
+#: src/features/landing/components/faq-section.tsx
 msgid "aINRxc"
 msgstr "Kde jsou servery umístěné?"
 
-#: src/features/landing/components/faq-section.tsx:85
+#: src/features/landing/components/faq-section.tsx
 msgid "cMXI0b"
 msgstr "Všechny naše servery jsou aktuálně umístěné v datacentru Skylink v Nizozemsku. Splňuje standard Tier 3 a má redundantní napájení, síťové prvky i chlazení."
 
-#: src/features/landing/components/faq-section.tsx:94
+#: src/features/landing/components/faq-section.tsx
 msgid "7Rm1x6"
 msgstr "Časté otázky"
 
-#: src/features/landing/components/features-showcase.tsx:35
+#: src/features/landing/components/features-showcase.tsx
 msgid "N2jrkQ"
 msgstr "Serverové metriky v reálném čase"
 
-#: src/features/landing/components/features-showcase.tsx:38
+#: src/features/landing/components/features-showcase.tsx
 msgid "9mCvlG"
 msgstr "Naše serverové metriky se aktualizují v reálném čase, takže vždy vidíš aktuální stav svých serverů."
 
-#: src/features/landing/components/features-showcase.tsx:55
+#: src/features/landing/components/features-showcase.tsx
 msgid "S4NISm"
 msgstr "Bezstavový firewall"
 
-#: src/features/landing/components/features-showcase.tsx:58
+#: src/features/landing/components/features-showcase.tsx
 msgid "1s50w7"
 msgstr "Vlastními pravidly firewallu můžeš cíleně chránit svůj server. Každé pravidlo lze nastavit samostatně."
 
-#: src/features/landing/components/server-firewall-demo.tsx:42
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:191
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx:87
+#: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "DZ2Koj"
 msgstr "Směr"
 
-#: src/features/landing/components/server-firewall-demo.tsx:53
-#: src/features/servers/components/server-graphs.tsx:133
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:206
-#: src/features/servers/firewall/hooks/use-firewall-direction-mapping.ts:31
+#: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/components/server-graphs.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/hooks/use-firewall-direction-mapping.ts
 msgid "YDkqMJ"
 msgstr "Příchozí"
 
-#: src/features/landing/components/server-firewall-demo.tsx:59
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:222
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx:109
+#: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "QlsDcr"
 msgstr "Akce"
 
-#: src/features/landing/components/server-firewall-demo.tsx:70
-#: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts:40
+#: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "VzIOKf"
 msgstr "Odmítnout"
 
-#: src/features/landing/components/server-firewall-demo.tsx:77
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:242
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx:127
+#: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "0QLzxo"
 msgstr "Protokol"
 
-#: src/features/landing/components/server-firewall-demo.tsx:89
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:295
+#: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "rqkHXK"
 msgstr "Zdrojový port"
 
-#: src/features/landing/components/server-firewall-demo.tsx:98
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:296
+#: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "WSxucy"
 msgstr "Cílový port"
 
-#: src/features/landing/components/server-stats-demo.tsx:46
-#: src/features/servers/components/server-stats-card.tsx:67
+#: src/features/landing/components/server-stats-demo.tsx
+#: src/features/servers/components/server-stats-card.tsx
 msgid "wbsq7O"
 msgstr "Využití"
 
-#: src/features/landing/components/server-stats-demo.tsx:57
-#: src/features/servers/components/overview/node-details-dialog.tsx:87
-#: src/features/servers/components/server-graphs.tsx:95
-#: src/features/servers/components/server-stats-card.tsx:78
+#: src/features/landing/components/server-stats-demo.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
+#: src/features/servers/components/server-graphs.tsx
+#: src/features/servers/components/server-stats-card.tsx
 msgid "QgBuiV"
 msgstr "CPU"
 
-#: src/features/landing/components/server-stats-demo.tsx:100
-#: src/features/servers/components/server-graphs.tsx:117
-#: src/features/servers/components/server-stats-card.tsx:130
+#: src/features/landing/components/server-stats-demo.tsx
+#: src/features/servers/components/server-graphs.tsx
+#: src/features/servers/components/server-stats-card.tsx
 msgid "OuCSDn"
 msgstr "Disk"
 
-#: src/features/landing/components/server-stats-demo.tsx:122
-#: src/features/servers/components/server-graphs.tsx:130
-#: src/features/servers/components/server-stats-card.tsx:155
+#: src/features/landing/components/server-stats-demo.tsx
+#: src/features/servers/components/server-graphs.tsx
+#: src/features/servers/components/server-stats-card.tsx
 msgid "I3JhPS"
 msgstr "Síť"
 
-#: src/features/landing/components/server-stats-demo.tsx:156
-#: src/features/servers/components/server-stats-card.tsx:187
+#: src/features/landing/components/server-stats-demo.tsx
+#: src/features/servers/components/server-stats-card.tsx
 msgid "yCCio2"
 msgstr "Poslední restart"
 
-#: src/features/servers/components/advanced/advanced-bios-card.tsx:35
+#: src/features/servers/components/advanced/advanced-bios-card.tsx
 msgid "NjgW6o"
 msgstr "BIOS"
 
-#: src/features/servers/components/advanced/advanced-bios-card.tsx:37
+#: src/features/servers/components/advanced/advanced-bios-card.tsx
 msgid "4HNt5G"
 msgstr "Vyberte typ BIOSu pro váš server."
 
-#: src/features/servers/components/advanced/advanced-bios-card.tsx:45
+#: src/features/servers/components/advanced/advanced-bios-card.tsx
 msgid "HJOq/1"
 msgstr "Pro instalace Windows se doporučuje UEFI BIOS. Pro starší instalace Linuxu použijte legacy BIOS."
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:100
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx
 msgid "XHiVwa"
 msgstr "Legacy BIOS"
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:103
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx
 msgid "AhxnaN"
 msgstr "Pro tento server použijte legacy BIOS."
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:117
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx
 msgid "/eGTDl"
 msgstr "UEFI BIOS"
 
-#: src/features/servers/components/advanced/advanced-bios-selector.tsx:120
+#: src/features/servers/components/advanced/advanced-bios-selector.tsx
 msgid "oZyWxo"
 msgstr "Pro tento server použijte novější UEFI BIOS."
 
-#: src/features/servers/components/advanced/advanced-tpm-card.tsx:35
+#: src/features/servers/components/advanced/advanced-tpm-card.tsx
 msgid "KX3bZF"
 msgstr "TPM"
 
-#: src/features/servers/components/advanced/advanced-tpm-card.tsx:37
+#: src/features/servers/components/advanced/advanced-tpm-card.tsx
 msgid "C6jvVM"
 msgstr "Zapněte nebo vypněte modul TPM pro váš server."
 
-#: src/features/servers/components/advanced/advanced-tpm-card.tsx:45
+#: src/features/servers/components/advanced/advanced-tpm-card.tsx
 msgid "1Lw+6m"
 msgstr "Většina instalací Linuxu TPM nevyžaduje, Windows vyžaduje TPM v2.0."
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:105
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx
 msgid "I1Um2Q"
 msgstr "Vypnout TPM"
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:108
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx
 msgid "i1+8G8"
 msgstr "Úplně vypněte TPM pro tento server."
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:122
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx
 msgid "HrP3QG"
 msgstr "Zapnout TPM v1.2"
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:125
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx
 msgid "/p73Kl"
 msgstr "Aktivujte TPM v1.2 pro tento server."
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:139
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx
 msgid "DwWNni"
 msgstr "Zapnout TPM v2.0"
 
-#: src/features/servers/components/advanced/advanced-tpm-selector.tsx:142
+#: src/features/servers/components/advanced/advanced-tpm-selector.tsx
 msgid "i/5Hb2"
 msgstr "Aktivujte TPM v2.0 pro tento server."
 
-#: src/features/servers/components/backups/backups-card.tsx:97
+#: src/features/servers/components/backups/backups-card.tsx
 msgid "pelX8B"
 msgstr "{count, plural, =1 {# záloha} other {# záloh}}"
 
-#: src/features/servers/components/backups/backups-table/backup-actions.tsx:122
+#: src/features/servers/components/backups/backups-table/backup-actions.tsx
 msgid "zz6ObK"
 msgstr "Obnovit"
 
-#: src/features/servers/components/backups/backups-table/backup-actions.tsx:137
+#: src/features/servers/components/backups/backups-table/backup-actions.tsx
 msgid "Zl4/y9"
 msgstr "Uzamknout"
 
-#: src/features/servers/components/backups/backups-table/columns.tsx:88
+#: src/features/servers/components/backups/backups-table/columns.tsx
 msgid "kF9XUo"
 msgstr "Čas"
 
-#: src/features/servers/components/backups/backups-table/columns.tsx:108
+#: src/features/servers/components/backups/backups-table/columns.tsx
 msgid "tBwTvx"
 msgstr "Velikost/stav"
 
-#: src/features/servers/components/backups/backups-table/columns.tsx:155
-#: src/features/servers/components/server-custom-image-select.tsx:188
+#: src/features/servers/components/backups/backups-table/columns.tsx
+#: src/features/servers/components/server-custom-image-select.tsx
 msgid "vXCeIi"
 msgstr "Selhalo"
 
-#: src/features/servers/components/backups/backups-table/columns.tsx:164
+#: src/features/servers/components/backups/backups-table/columns.tsx
 msgid "mRL9Vh"
 msgstr "Vytváření..."
 
-#: src/features/servers/components/backups/backups-table/columns.tsx:194
-#: src/features/servers/components/backups/restore-backup-dialog.tsx:107
-#: src/features/servers/hooks/use-status-mapping.ts:63
-#: src/features/servers/hooks/use-task-mapping.ts:71
+#: src/features/servers/components/backups/backups-table/columns.tsx
+#: src/features/servers/components/backups/restore-backup-dialog.tsx
+#: src/features/servers/hooks/use-status-mapping.ts
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "5jeq8P"
 msgstr "Neznámé"
 
-#: src/features/servers/components/backups/backups-table/index.tsx:99
+#: src/features/servers/components/backups/backups-table/index.tsx
 msgid "G7wlJr"
 msgstr "Žádné zálohy"
 
-#: src/features/servers/components/backups/backups-table/index.tsx:100
+#: src/features/servers/components/backups/backups-table/index.tsx
 msgid "gyxApU"
 msgstr "Zatím nebyly vytvořeny žádné zálohy."
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:94
-#: src/features/servers/components/backups/create-backup-dialog.tsx:112
+#: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "6f7NTQ"
 msgstr "Vytvořit zálohu"
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:95
+#: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "Z6LfAU"
 msgstr "Vytvořit novou zálohu serveru."
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:148
+#: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "mDxkGm"
 msgstr "Režim zálohování"
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:164
+#: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "8Y0yUM"
 msgstr "Snapshot"
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:167
+#: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "04uNfB"
 msgstr "Vytvoří zálohu bez přerušení systému. Zálohuje se aktuální stav procesů."
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:183
-#: src/features/servers/components/server-actions-row.tsx:168
+#: src/features/servers/components/backups/create-backup-dialog.tsx
+#: src/features/servers/components/server-actions-row.tsx
 msgid "elnaZe"
 msgstr "Uspat"
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:186
+#: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "qRuNZh"
 msgstr "Krátce přeruší systém, aby vytvořil zálohu bez jeho vypnutí."
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:202
-#: src/features/servers/components/server-actions-row.tsx:181
+#: src/features/servers/components/backups/create-backup-dialog.tsx
+#: src/features/servers/components/server-actions-row.tsx
 msgid "q/uwLT"
 msgstr "Zastavit"
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:205
+#: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "JidfdC"
 msgstr "Před vytvořením zálohy systém úplně vypne."
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:225
+#: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "/EmLPv"
 msgstr "Zapnout ochranu proti smazání"
 
-#: src/features/servers/components/backups/create-backup-dialog.tsx:234
+#: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "I9XNiI"
 msgstr "Nově vytvořenou zálohu lze smazat až po vypnutí ochrany proti smazání."
 
-#: src/features/servers/components/backups/restore-backup-dialog.tsx:57
+#: src/features/servers/components/backups/restore-backup-dialog.tsx
 msgid "MW7EBt"
 msgstr "Obnovit zálohu"
 
-#: src/features/servers/components/backups/restore-backup-dialog.tsx:64
+#: src/features/servers/components/backups/restore-backup-dialog.tsx
 msgid "LImSzk"
 msgstr "Obnov zálohu na svůj server."
 
-#: src/features/servers/components/backups/restore-backup-dialog.tsx:93
+#: src/features/servers/components/backups/restore-backup-dialog.tsx
 msgid "Z2bRvp"
 msgstr "Obnovením zálohy se aktuální stav serveru vrátí do stavu zálohy z {date}."
 
-#: src/features/servers/components/backups/restore-backup-dialog.tsx:104
+#: src/features/servers/components/backups/restore-backup-dialog.tsx
 msgid "bX1pzZ"
 msgstr "Bude obnoven následující operační systém:"
 
-#: src/features/servers/components/backups/restore-backup-dialog.tsx:110
+#: src/features/servers/components/backups/restore-backup-dialog.tsx
 msgid "pFmRJS"
 msgstr "Obnovit tuto zálohu?"
 
-#: src/features/servers/components/console/console-frame.tsx:73
+#: src/features/servers/components/console/console-frame.tsx
 msgid "lptya2"
 msgstr "Server je pozastaven"
 
-#: src/features/servers/components/console/console-frame.tsx:75
+#: src/features/servers/components/console/console-frame.tsx
 msgid "3KjSye"
 msgstr "Tato funkce není dostupná, když je server pozastaven. Pro přístup ke konzoli server obnov."
 
-#: src/features/servers/components/console/console-frame.tsx:91
-#: src/features/servers/components/server-status-bar.tsx:80
+#: src/features/servers/components/console/console-frame.tsx
+#: src/features/servers/components/server-status-bar.tsx
 msgid "sIwjuh"
 msgstr "Server se instaluje"
 
-#: src/features/servers/components/console/console-frame.tsx:93
+#: src/features/servers/components/console/console-frame.tsx
 msgid "/iuNMM"
 msgstr "Tato funkce není dostupná, dokud se server instaluje."
 
-#: src/features/servers/components/console/console-frame.tsx:110
+#: src/features/servers/components/console/console-frame.tsx
 msgid "odJjY9"
 msgstr "Probíhá zálohování"
 
-#: src/features/servers/components/console/console-frame.tsx:112
+#: src/features/servers/components/console/console-frame.tsx
 msgid "Z/xHv5"
 msgstr "Tato funkce není dostupná, když probíhá zálohování. Zkus to prosím později."
 
-#: src/features/servers/components/console/console-frame.tsx:128
+#: src/features/servers/components/console/console-frame.tsx
 msgid "uHAMke"
 msgstr "Server neběží"
 
-#: src/features/servers/components/console/console-frame.tsx:130
+#: src/features/servers/components/console/console-frame.tsx
 msgid "clmnLf"
 msgstr "Spusť server a konzole se automaticky připojí."
 
-#: src/features/servers/components/overview/change-template-dialog.tsx:89
+#: src/features/servers/components/overview/change-template-dialog.tsx
 msgid "CnkjLF"
 msgstr "Změnit operační systém"
 
-#: src/features/servers/components/overview/change-template-dialog.tsx:94
+#: src/features/servers/components/overview/change-template-dialog.tsx
 msgid "VWfWP6"
 msgstr "Změnit operační systém serveru."
 
-#: src/features/servers/components/overview/change-template-dialog.tsx:124
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx:121
+#: src/features/servers/components/overview/change-template-dialog.tsx
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgid "3SVI5p"
 msgstr "Varování"
 
-#: src/features/servers/components/overview/change-template-dialog.tsx:127
+#: src/features/servers/components/overview/change-template-dialog.tsx
 msgid "3hIbVf"
 msgstr "Změnou operačního systému budou všechna data trvale smazána."
 
-#: src/features/servers/components/overview/change-template-dialog.tsx:139
+#: src/features/servers/components/overview/change-template-dialog.tsx
 msgid "MbXrbc"
 msgstr "Nový operační systém"
 
-#: src/features/servers/components/overview/change-template-dialog.tsx:171
+#: src/features/servers/components/overview/change-template-dialog.tsx
 msgid "h8jASy"
 msgstr "Nové root heslo"
 
-#: src/features/servers/components/overview/node-details-dialog.tsx:67
-#: src/features/servers/components/overview/server-details-card.tsx:115
+#: src/features/servers/components/overview/node-details-dialog.tsx
+#: src/features/servers/components/overview/server-details-card.tsx
 msgid "ivkv/L"
 msgstr "Uzel"
 
-#: src/features/servers/components/overview/node-details-dialog.tsx:68
+#: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "UfS56w"
 msgstr "Detaily uzlu."
 
-#: src/features/servers/components/overview/node-details-dialog.tsx:77
+#: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "rbrahO"
 msgstr "Zavřít"
 
-#: src/features/servers/components/overview/node-details-dialog.tsx:92
+#: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "dVx3yz"
 msgstr "Paměť"
 
-#: src/features/servers/components/overview/rename-server-dialog.tsx:65
-#: src/features/servers/components/overview/rename-server-dialog.tsx:77
-#: src/features/servers/components/overview/server-details-card.tsx:86
+#: src/features/servers/components/overview/rename-server-dialog.tsx
+#: src/features/servers/components/overview/server-details-card.tsx
 msgid "SwBrEP"
 msgstr "Přejmenovat server"
 
-#: src/features/servers/components/overview/rename-server-dialog.tsx:66
+#: src/features/servers/components/overview/rename-server-dialog.tsx
 msgid "mFBy/n"
 msgstr "Přejmenuj svůj server."
 
-#: src/features/servers/components/overview/rename-server-dialog.tsx:100
+#: src/features/servers/components/overview/rename-server-dialog.tsx
 msgid "UQXG4v"
 msgstr "Můj server"
 
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx:93
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgid "5juwi+"
 msgstr "Obnovte heslo uživatele na vašem serveru."
 
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx:124
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgid "K1+gri"
 msgstr "Tuto akci nelze vrátit zpět. Pokud není nainstalovaný balíček <code>qemu-quest-agent</code>, proces selže."
 
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx:141
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgid "JCIgkj"
 msgstr "Uživatelské jméno"
 
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx:162
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgid "1jWUV4"
 msgstr "Uživatelské jméno účtu, pro který chcete obnovit heslo. U Linuxu je to většinou <code>root</code>, u Windows <code>Administrator</code>."
 
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx:180
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgid "Ev6SEF"
 msgstr "Nové heslo"
 
-#: src/features/servers/components/overview/server-details-card.tsx:70
+#: src/features/servers/components/overview/server-details-card.tsx
 msgid "F/6VqP"
 msgstr "Server"
 
-#: src/features/servers/components/overview/server-details-card.tsx:105
+#: src/features/servers/components/overview/server-details-card.tsx
 msgid "4A//XV"
 msgstr "Vlastní image"
 
-#: src/features/servers/components/overview/server-details-card.tsx:128
+#: src/features/servers/components/overview/server-details-card.tsx
 msgid "RTw2Xk"
 msgstr "Zobrazit detaily uzlu"
 
-#: src/features/servers/components/overview/server-details-card.tsx:179
+#: src/features/servers/components/overview/server-details-card.tsx
 msgid "8O64Ol"
 msgstr "Změnit operační systém"
 
-#: src/features/servers/components/plan/plan-form.tsx:87
+#: src/features/servers/components/plan/plan-form.tsx
 msgid "Kng3Em"
 msgstr "Vyber nový plán nebo prodluž aktuální plán. Přechod na plán s menším úložištěm není podporován."
 
-#: src/features/servers/components/plan/plan-radio-group.tsx:74
-#: src/features/servers/components/plan/plan-summary.tsx:163
+#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "tpfEY0"
 msgstr "{memory} RAM"
 
-#: src/features/servers/components/plan/plan-radio-group.tsx:82
-#: src/features/servers/components/plan/plan-summary.tsx:177
+#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "cenOuc"
 msgstr "{storage} NVMe SSD"
 
-#: src/features/servers/components/plan/plan-radio-group.tsx:111
+#: src/features/servers/components/plan/plan-radio-group.tsx
+msgid "uPG29C"
+msgstr "{price} dnes"
+
+#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/plan-summary.tsx
+msgid "9H3YQm"
+msgstr "poté {price} / měsíc"
+
+#: src/features/servers/components/plan/plan-radio-group.tsx
 msgid "JxjC5u"
 msgstr "{price} / měsíc"
 
-#: src/features/servers/components/plan/plan-summary.tsx:69
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "aG7JgP"
 msgstr "Přechod na plán s menším úložištěm není podporován. Vyber plán s úložištěm alespoň {size}."
 
-#: src/features/servers/components/plan/plan-summary.tsx:82
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "3XuHC5"
 msgstr "{name} je teď vyprodaný. Zkus to později nebo vyber jiný plán."
 
-#: src/features/servers/components/plan/plan-summary.tsx:87
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "1p9GGF"
 msgstr "Tento plán je vyprodaný. Vyber prosím jiný plán."
 
-#: src/features/servers/components/plan/plan-summary.tsx:109
+#: src/features/servers/components/plan/plan-summary.tsx
+msgid "fOZyRZ"
+msgstr "Vaše aktuální období vypršelo. Nejprve obnovte server a poté proveďte upgrade."
+
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "ZjhoiP"
 msgstr "Vybrat plán"
 
-#: src/features/servers/components/plan/plan-summary.tsx:112
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "SB//YQ"
 msgstr "Shrnutí objednávky"
 
-#: src/features/servers/components/plan/plan-summary.tsx:112
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "RrCui3"
 msgstr "Shrnutí"
 
-#: src/features/servers/components/plan/plan-summary.tsx:119
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "6WPC9q"
 msgstr "Změna plánu"
 
-#: src/features/servers/components/plan/plan-summary.tsx:221
+#: src/features/servers/components/plan/plan-summary.tsx
+msgid "kkpP2k"
+msgstr "dnes"
+
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "Vn2ud4"
 msgstr "/ měsíc"
 
-#: src/features/servers/components/plan/plan-summary.tsx:227
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "LQbES8"
 msgstr "Vč. zákonné DPH, pokud se uplatňuje"
 
-#: src/features/servers/components/plan/plan-summary.tsx:234
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "N387FB"
 msgstr "Tvůj aktuální plán se prodlouží o jeden měsíc."
 
-#: src/features/servers/components/plan/plan-summary.tsx:235
-msgid "TB+1v+"
-msgstr "Plán se změní na {name} a období se prodlouží o jeden měsíc."
+#: src/features/servers/components/plan/plan-summary.tsx
+msgid "6Mawmq"
+msgstr "Plán bude změněn na {name}. Dnes platíte pouze poměrnou část rozdílu — vaše aktuální období zůstává stejné."
 
-#: src/features/servers/components/plan/plan-summary.tsx:270
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "So9+9+"
 msgstr "Změnit plán"
 
-#: src/features/servers/components/plan/plan-summary.tsx:285
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "YeQq19"
 msgstr "Příprava platby…"
 
-#: src/features/servers/components/rdns/records-card.tsx:49
+#: src/features/servers/components/rdns/records-card.tsx
 msgid "Z2vqA3"
 msgstr "PTR záznamy"
 
-#: src/features/servers/components/rdns/records-card.tsx:77
+#: src/features/servers/components/rdns/records-card.tsx
 msgid "K006kw"
 msgstr "{count, plural, =1 {# PTR záznam} other {# PTR záznamů}}"
 
-#: src/features/servers/components/rdns/records-table/columns.tsx:40
+#: src/features/servers/components/rdns/records-table/columns.tsx
 msgid "99tjyG"
 msgstr "IP"
 
-#: src/features/servers/components/rdns/records-table/columns.tsx:98
+#: src/features/servers/components/rdns/records-table/columns.tsx
 msgid "LUHXQL"
 msgstr "Smazat PTR záznam"
 
-#: src/features/servers/components/rdns/records-table/index.tsx:122
+#: src/features/servers/components/rdns/records-table/index.tsx
 msgid "q9ZR74"
 msgstr "Žádné PTR záznamy"
 
-#: src/features/servers/components/rdns/records-table/index.tsx:123
+#: src/features/servers/components/rdns/records-table/index.tsx
 msgid "HPaNFO"
 msgstr "Zatím nebyly vytvořeny žádné PTR záznamy."
 
-#: src/features/servers/components/rdns/upsert-record-dialog.tsx:73
+#: src/features/servers/components/rdns/upsert-record-dialog.tsx
 msgid "mTjnKh"
 msgstr "Upravit PTR záznam"
 
-#: src/features/servers/components/rdns/upsert-record-dialog.tsx:78
+#: src/features/servers/components/rdns/upsert-record-dialog.tsx
 msgid "JAfuaI"
 msgstr "Upravit PTR záznam pro danou IP a hostname."
 
-#: src/features/servers/components/rdns/upsert-record-dialog.tsx:112
+#: src/features/servers/components/rdns/upsert-record-dialog.tsx
 msgid "uJV0wU"
 msgstr "IP adresa"
 
-#: src/features/servers/components/rdns/upsert-record-dialog.tsx:123
+#: src/features/servers/components/rdns/upsert-record-dialog.tsx
 msgid "sLLPqe"
 msgstr "PTR záznamy lze vytvořit pro všechny IP adresy přiřazené tomuto serveru."
 
-#: src/features/servers/components/rdns/upsert-record-dialog.tsx:146
+#: src/features/servers/components/rdns/upsert-record-dialog.tsx
 msgid "XM/KKz"
 msgstr "Hostname, na který se má IP adresa překládat. <code>localhost</code> není povolen."
 
-#: src/features/servers/components/server-actions-row.tsx:88
+#: src/features/servers/components/server-actions-row.tsx
 msgid "tZbb+K"
 msgstr "Vypnout"
 
-#: src/features/servers/components/server-actions-row.tsx:98
+#: src/features/servers/components/server-actions-row.tsx
 msgid "9U7nUR"
 msgstr "Restartovat"
 
-#: src/features/servers/components/server-actions-row.tsx:112
+#: src/features/servers/components/server-actions-row.tsx
 msgid "mOFG3K"
 msgstr "Spustit"
 
-#: src/features/servers/components/server-actions-row.tsx:126
+#: src/features/servers/components/server-actions-row.tsx
 msgid "3y9DGg"
 msgstr "Obnovit"
 
-#: src/features/servers/components/server-actions-row.tsx:145
+#: src/features/servers/components/server-actions-row.tsx
 msgid "YsjuRA"
 msgstr "Připojit ISO"
 
-#: src/features/servers/components/server-actions-row.tsx:157
+#: src/features/servers/components/server-actions-row.tsx
 msgid "tFFMkF"
 msgstr "Pozastavit"
 
-#: src/features/servers/components/server-custom-image-select.tsx:99
+#: src/features/servers/components/server-custom-image-select.tsx
 msgid "wPPrpH"
 msgstr "Vyberte vlastní obraz..."
 
-#: src/features/servers/components/server-custom-image-select.tsx:109
+#: src/features/servers/components/server-custom-image-select.tsx
 msgid "3MDlnT"
 msgstr "Hledat vlastní obraz..."
 
-#: src/features/servers/components/server-custom-image-select.tsx:111
+#: src/features/servers/components/server-custom-image-select.tsx
 msgid "5YXiqk"
 msgstr "Nebyl nalezen žádný vlastní obraz."
 
-#: src/features/servers/components/server-custom-image-select.tsx:179
+#: src/features/servers/components/server-custom-image-select.tsx
 msgid "9P0AA6"
 msgstr "Nahrávání {percentage}"
 
-#: src/features/servers/components/server-custom-image-select.tsx:184
+#: src/features/servers/components/server-custom-image-select.tsx
 msgid "JEsxDw"
 msgstr "Nahrávání..."
 
-#: src/features/servers/components/server-graphs.tsx:86
+#: src/features/servers/components/server-graphs.tsx
 msgid "j9Y9nu"
 msgstr "Hodiny"
 
-#: src/features/servers/components/server-graphs.tsx:87
+#: src/features/servers/components/server-graphs.tsx
 msgid "d8EqQY"
 msgstr "Dny"
 
-#: src/features/servers/components/server-graphs.tsx:88
+#: src/features/servers/components/server-graphs.tsx
 msgid "g6+IGw"
 msgstr "Týdny"
 
-#: src/features/servers/components/server-graphs.tsx:89
+#: src/features/servers/components/server-graphs.tsx
 msgid "AxDOiG"
 msgstr "Měsíce"
 
-#: src/features/servers/components/server-graphs.tsx:90
+#: src/features/servers/components/server-graphs.tsx
 msgid "Jr5tMR"
 msgstr "Roky"
 
-#: src/features/servers/components/server-graphs.tsx:98
+#: src/features/servers/components/server-graphs.tsx
 msgid "x8Ik2d"
 msgstr "CPU (%)"
 
-#: src/features/servers/components/server-graphs.tsx:107
+#: src/features/servers/components/server-graphs.tsx
 msgid "XYkq4n"
 msgstr "Využito"
 
-#: src/features/servers/components/server-graphs.tsx:111
+#: src/features/servers/components/server-graphs.tsx
 msgid "kkjl2v"
 msgstr "Max"
 
-#: src/features/servers/components/server-graphs.tsx:137
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:210
-#: src/features/servers/firewall/hooks/use-firewall-direction-mapping.ts:35
+#: src/features/servers/components/server-graphs.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/hooks/use-firewall-direction-mapping.ts
 msgid "Arxl88"
 msgstr "Odchozí"
 
-#: src/features/servers/components/server-graphs.tsx:154
+#: src/features/servers/components/server-graphs.tsx
 msgid "6m3w+3"
 msgstr "Interval"
 
-#: src/features/servers/components/server-mount-badge.tsx:48
+#: src/features/servers/components/server-mount-badge.tsx
 msgid "Han16c"
 msgstr "Připojeno"
 
-#: src/features/servers/components/server-mount-dialog.tsx:70
+#: src/features/servers/components/server-mount-dialog.tsx
 msgid "lgSmVl"
 msgstr "Obraz ISO byl úspěšně připojen. Změna se projeví při příštím spuštění."
 
-#: src/features/servers/components/server-mount-dialog.tsx:76
+#: src/features/servers/components/server-mount-dialog.tsx
 msgid "bmliQK"
 msgstr "Obraz ISO se nepodařilo připojit."
 
-#: src/features/servers/components/server-mount-dialog.tsx:87
+#: src/features/servers/components/server-mount-dialog.tsx
 msgid "1INFXA"
 msgstr "Obraz ISO byl úspěšně odpojen. Změna se projeví při příštím spuštění."
 
-#: src/features/servers/components/server-mount-dialog.tsx:101
+#: src/features/servers/components/server-mount-dialog.tsx
 msgid "ZE4urv"
 msgstr "Připojit ISO obrazy"
 
-#: src/features/servers/components/server-mount-dialog.tsx:102
+#: src/features/servers/components/server-mount-dialog.tsx
 msgid "HZdPWF"
 msgstr "Připojte ISO obrazy k vašemu serveru."
 
-#: src/features/servers/components/server-mount-dialog.tsx:108
+#: src/features/servers/components/server-mount-dialog.tsx
 msgid "C3jmVs"
 msgstr "Obraz ISO"
 
-#: src/features/servers/components/server-mount-dialog.tsx:136
+#: src/features/servers/components/server-mount-dialog.tsx
 msgid "u9VaJ3"
 msgstr "Odpojit"
 
-#: src/features/servers/components/server-mount-dialog.tsx:141
+#: src/features/servers/components/server-mount-dialog.tsx
 msgid "Uh7TFc"
 msgstr "Obraz ISO bude připojen okamžitě, ale abyste z něj mohli nabootovat, musíte server úplně zastavit a znovu spustit."
 
-#: src/features/servers/components/server-mount-dialog.tsx:144
+#: src/features/servers/components/server-mount-dialog.tsx
 msgid "FglhQv"
 msgstr "Obrazy ISO lze nahrát v <link>nastavení účtu</link>."
 
-#: src/features/servers/components/server-stats-card.tsx:192
+#: src/features/servers/components/server-stats-card.tsx
 msgid "PW+sL4"
 msgstr "N/A"
 
-#: src/features/servers/components/server-status-bar.tsx:52
+#: src/features/servers/components/server-status-bar.tsx
 msgid "14KQU8"
 msgstr "Server pozastaven"
 
-#: src/features/servers/components/server-status-bar.tsx:53
+#: src/features/servers/components/server-status-bar.tsx
 msgid "gmwFwF"
 msgstr "Tento server byl pozastaven a pokud nebude obnoven, bude {date} smazán."
 
-#: src/features/servers/components/server-status-bar.tsx:67
+#: src/features/servers/components/server-status-bar.tsx
 msgid "+E3dAf"
 msgstr "Server brzy vyprší"
 
-#: src/features/servers/components/server-status-bar.tsx:68
+#: src/features/servers/components/server-status-bar.tsx
 msgid "fkf7mm"
 msgstr "Platnost tohoto serveru vyprší {expiry} a pokud nebude obnoven, poté bude smazán"
 
-#: src/features/servers/components/server-status-bar.tsx:81
+#: src/features/servers/components/server-status-bar.tsx
 msgid "76X+Qu"
 msgstr "Tento server se instaluje. Některé funkce zatím nemusí být dostupné."
 
-#: src/features/servers/components/servers-list.tsx:207
+#: src/features/servers/components/servers-list.tsx
 msgid "SXm88k"
 msgstr "IP zkopírována do schránky!"
 
-#: src/features/servers/components/servers-list.tsx:216
+#: src/features/servers/components/servers-list.tsx
 msgid "26lbPc"
 msgstr "Kopírovat IP"
 
-#: src/features/servers/components/servers-list.tsx:227
+#: src/features/servers/components/servers-list.tsx
 msgid "nWQFic"
 msgstr "Prodloužit"
 
-#: src/features/servers/firewall/components/firewall-action-select.tsx:43
+#: src/features/servers/firewall/components/firewall-action-select.tsx
 msgid "ObQE5T"
 msgstr "Vybrat akci"
 
-#: src/features/servers/firewall/components/firewall-options-row.tsx:46
+#: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "tzMNF3"
 msgstr "Stav"
 
-#: src/features/servers/firewall/components/firewall-options-row.tsx:48
+#: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "z1Jw4U"
 msgstr "Firewall je vždy zapnutý"
 
-#: src/features/servers/firewall/components/firewall-options-row.tsx:57
+#: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "XumiMR"
 msgstr "Příchozí pakety"
 
-#: src/features/servers/firewall/components/firewall-options-row.tsx:59
+#: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "404iMx"
 msgstr "Výchozí akce pro příchozí pakety"
 
-#: src/features/servers/firewall/components/firewall-options-row.tsx:74
+#: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "MMByL/"
 msgstr "Odchozí pakety"
 
-#: src/features/servers/firewall/components/firewall-options-row.tsx:76
+#: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "ZO06B5"
 msgstr "Výchozí akce pro odchozí pakety"
 
-#: src/features/servers/firewall/components/firewall-protocol-select.tsx:70
+#: src/features/servers/firewall/components/firewall-protocol-select.tsx
 msgid "LV0wPI"
 msgstr "Hledat protokol..."
 
-#: src/features/servers/firewall/components/firewall-protocol-select.tsx:72
+#: src/features/servers/firewall/components/firewall-protocol-select.tsx
 msgid "0dWwJ5"
 msgstr "Nebyl nalezen žádný podporovaný protokol."
 
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:151
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "m5EN4C"
 msgstr "Vytvořit pravidlo firewallu"
 
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:151
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "gsXXUl"
 msgstr "Upravit pravidlo firewallu"
 
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:155
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "fnX+hz"
 msgstr "Vytvořit nové pravidlo firewallu."
 
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:156
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "bGOOmV"
 msgstr "Upravit existující pravidlo firewallu."
 
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:201
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "HrImBx"
 msgstr "Vybrat směr"
 
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:260
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "ubliHx"
 msgstr "Typ ICMP"
 
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:331
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx:55
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "V52jNn"
 msgstr "Povoleno"
 
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx:343
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx:158
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "LgbKvU"
 msgstr "Komentář"
 
-#: src/features/servers/firewall/components/firewall-rules-card.tsx:54
+#: src/features/servers/firewall/components/firewall-rules-card.tsx
 msgid "Qov8tl"
 msgstr "Pravidla firewallu"
 
-#: src/features/servers/firewall/components/firewall-rules-card.tsx:85
+#: src/features/servers/firewall/components/firewall-rules-card.tsx
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# pravidlo} other {# pravidel}}, {activeCount} aktivních"
 
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx:67
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "Mq5bUJ"
 msgstr "Zakázat pravidlo"
 
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx:67
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "5te9jo"
 msgstr "Povolit pravidlo"
 
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx:140
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "mqTGdC"
 msgstr "Porty"
 
-#: src/features/servers/firewall/components/firewall-rules-table/index.tsx:146
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
 msgid "Ms3d/e"
 msgstr "Žádná pravidla firewallu"
 
-#: src/features/servers/firewall/components/firewall-rules-table/index.tsx:147
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
 msgid "xlDRKD"
 msgstr "Zatím nebyla vytvořena žádná pravidla firewallu."
 
-#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:96
+#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
 msgid "wmFdws"
 msgstr "Posunout nahoru"
 
-#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:108
+#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
 msgid "H/r5m6"
 msgstr "Posunout dolů"
 
-#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx:128
+#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
 msgid "wEQDC6"
 msgstr "Upravit"
 
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:110
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "w+tZ4Z"
 msgstr "Generovat pravidla firewallu"
 
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:111
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "zxRL4s"
 msgstr "Nechte AI vygenerovat pravidla firewallu pro váš server."
 
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:125
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "iWKE8s"
 msgstr "Zadání"
 
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:131
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "0r2ykg"
 msgstr "Povolit provoz HTTPS, ale blokovat SSH na mém serveru."
 
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:150
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "Pc+tM3"
 msgstr "Generovat"
 
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx:181
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "EWw/tK"
 msgstr "Použít"
 
-#: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts:32
+#: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "sjzLbX"
 msgstr "Přijmout"
 
-#: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts:36
+#: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "j8RTUO"
 msgstr "Zahodit"
 
-#: src/features/servers/hooks/use-status-mapping.ts:43
+#: src/features/servers/hooks/use-status-mapping.ts
 msgid "ccU6l/"
 msgstr "Online"
 
-#: src/features/servers/hooks/use-status-mapping.ts:48
+#: src/features/servers/hooks/use-status-mapping.ts
 msgid "7UOvbT"
 msgstr "Offline"
 
-#: src/features/servers/hooks/use-status-mapping.ts:53
+#: src/features/servers/hooks/use-status-mapping.ts
 msgid "C2iTEH"
 msgstr "Pozastaveno"
 
-#: src/features/servers/hooks/use-task-mapping.ts:31
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "3qXa2f"
 msgstr "Spouštění..."
 
-#: src/features/servers/hooks/use-task-mapping.ts:35
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "PdMcML"
 msgstr "Resetování..."
 
-#: src/features/servers/hooks/use-task-mapping.ts:39
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "JM9DH8"
 msgstr "Restartování..."
 
-#: src/features/servers/hooks/use-task-mapping.ts:43
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "yR4+kW"
 msgstr "Zastavování..."
 
-#: src/features/servers/hooks/use-task-mapping.ts:47
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "jqQprl"
 msgstr "Vypínání..."
 
-#: src/features/servers/hooks/use-task-mapping.ts:51
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "hbUGzS"
 msgstr "Obnovování..."
 
-#: src/features/servers/hooks/use-task-mapping.ts:55
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "tXH4J0"
 msgstr "Uspávání..."
 
-#: src/features/servers/hooks/use-task-mapping.ts:59
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "m1xdPJ"
 msgstr "Pozastavování..."
 
-#: src/features/servers/hooks/use-task-mapping.ts:63
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "3iXlTU"
 msgstr "Zálohování..."
 
-#: src/features/servers/hooks/use-task-mapping.ts:67
+#: src/features/servers/hooks/use-task-mapping.ts
 msgid "98thq0"
 msgstr "Obnovování zálohy..."
 
-#: src/ui/app-footer.tsx:37
+#: src/ui/app-footer.tsx
 msgid "4XCigB"
 msgstr "Právní údaje"
 
-#: src/ui/app-footer.tsx:49
+#: src/ui/app-footer.tsx
 msgid "EBDrtq"
 msgstr "Podmínky použití"
 
-#: src/ui/app-footer.tsx:61
+#: src/ui/app-footer.tsx
 msgid "cPwv2c"
 msgstr "Zásady ochrany osobních údajů"
 
-#: src/ui/copy-button.tsx:46
+#: src/ui/copy-button.tsx
 msgid "9j0fO7"
 msgstr "Zkopírováno do schránky!"
 
-#: src/ui/copy-button.tsx:55
+#: src/ui/copy-button.tsx
 msgid "4l6vz1"
 msgstr "Kopírovat"
 
-#: src/ui/feedback-button.tsx:30
-#: src/ui/feedback-button.tsx:96
-#: src/ui/feedback-button.tsx:105
+#: src/ui/feedback-button.tsx
 msgid "Ejhdi4"
 msgstr "Zpětná vazba"
 
-#: src/ui/feedback-button.tsx:33
+#: src/ui/feedback-button.tsx
 msgid "HxIuLA"
 msgstr "Přidat snímek obrazovky"
 
-#: src/ui/feedback-button.tsx:35
+#: src/ui/feedback-button.tsx
 msgid "wSZR47"
 msgstr "Odeslat"
 
-#: src/ui/feedback-button.tsx:36
+#: src/ui/feedback-button.tsx
 msgid "N2IrpM"
 msgstr "Potvrdit"
 
-#: src/ui/feedback-button.tsx:37
+#: src/ui/feedback-button.tsx
 msgid "T7Ry38"
 msgstr "Zpráva"
 
-#: src/ui/feedback-button.tsx:38
+#: src/ui/feedback-button.tsx
 msgid "VG94fP"
 msgstr "(povinné)"
 
-#: src/ui/feedback-button.tsx:39
+#: src/ui/feedback-button.tsx
 msgid "EbufBi"
 msgstr "Odebrat snímek obrazovky"
 
-#: src/ui/feedback-button.tsx:40
+#: src/ui/feedback-button.tsx
 msgid "Q43iqt"
 msgstr "Zpětná vazba úspěšně odeslána"
 
-#: src/ui/feedback-button.tsx:44
+#: src/ui/feedback-button.tsx
 msgid "mi/NYE"
 msgstr "Skrýt sekci"
 
-#: src/ui/feedback-button.tsx:45
+#: src/ui/feedback-button.tsx
 msgid "c47pnT"
 msgstr "Zvýraznit sekci"
 
-#: src/ui/feedback-button.tsx:46
+#: src/ui/feedback-button.tsx
 msgid "bemE3q"
 msgstr "Odebrat sekci"
 
-#: src/ui/footer.tsx:64
+#: src/ui/footer.tsx
 msgid "Bqwweu"
 msgstr "Zákaznický portál"
 
-#: src/ui/footer.tsx:72
-#: src/ui/nav.tsx:90
+#: src/ui/footer.tsx
+#: src/ui/nav.tsx
 msgid "AyGauy"
 msgstr "Přihlášení"
 
-#: src/ui/footer.tsx:88
+#: src/ui/footer.tsx
 msgid "Yy/yDL"
 msgstr "Obnovit heslo"
 
-#: src/ui/footer.tsx:97
+#: src/ui/footer.tsx
 msgid "9YazHG"
 msgstr "Společnost"
 
-#: src/ui/footer.tsx:145
+#: src/ui/footer.tsx
 msgid "7oFrM6"
 msgstr "Právní"
 
-#: src/ui/footer.tsx:153
+#: src/ui/footer.tsx
 msgid "vx0nkZ"
 msgstr "Zásady ochrany osobních údajů"
 
-#: src/ui/footer.tsx:162
+#: src/ui/footer.tsx
 msgid "UhkSyx"
 msgstr "Podmínky použití"
 
-#: src/ui/footer.tsx:171
+#: src/ui/footer.tsx
 msgid "o8wpU5"
 msgstr "Zásady odstoupení"
 
-#: src/ui/footer.tsx:180
+#: src/ui/footer.tsx
 msgid "+eN+I1"
 msgstr "Právní údaje"
 
-#: src/ui/footer.tsx:192
+#: src/ui/footer.tsx
 msgid "xvRDbH"
 msgstr "© {year} {appName}, značka BeastHost UG (haftungsbeschränkt)."
 
-#: src/ui/fumadocs/fake-search-button.tsx:46
+#: src/ui/fumadocs/fake-search-button.tsx
 msgid "xmcVZ0"
 msgstr "Hledat"
 
-#: src/ui/fumadocs/table-of-contents.tsx:34
+#: src/ui/fumadocs/table-of-contents.tsx
 msgid "TM7OHi"
 msgstr "Na této stránce"
 
-#: src/ui/generic-error.tsx:51
+#: src/ui/generic-error.tsx
 msgid "sQClkg"
 msgstr "Při načítání dat došlo k neočekávané chybě."
 
-#: src/ui/input-group-addons/random-password-addon.tsx:33
+#: src/ui/input-group-addons/random-password-addon.tsx
 msgid "gQLF4T"
 msgstr "Vygenerovat náhodné heslo"
 
-#: src/ui/input-group-addons/show-password-addon.tsx:39
+#: src/ui/input-group-addons/show-password-addon.tsx
 msgid "JHTwdB"
 msgstr "Zobrazit heslo"
 
-#: src/ui/input-group-addons/show-password-addon.tsx:40
+#: src/ui/input-group-addons/show-password-addon.tsx
 msgid "K3fWTv"
 msgstr "Skrýt heslo"
 
-#: src/ui/layout/auth-layout.tsx:47
+#: src/ui/layout/auth-layout.tsx
 msgid "jr1I15"
 msgstr "Pokračováním souhlasíš s <terms>podmínkami služby</terms> a <privacy>zásadami ochrany osobních údajů</privacy> {appName}"
 
-#: src/ui/nav-user.tsx:135
+#: src/ui/nav-user.tsx
 msgid "f+sh2j"
 msgstr "Administrace"
 
-#: src/ui/nav-user.tsx:143
+#: src/ui/nav-user.tsx
 msgid "rxNddi"
 msgstr "Domovská stránka"
 
-#: src/ui/nav-user.tsx:159
+#: src/ui/nav-user.tsx
 msgid "gZwnDa"
 msgstr "Ukončit impersonaci"
 
-#: src/ui/nav-user.tsx:174
+#: src/ui/nav-user.tsx
 msgid "C81/uG"
 msgstr "Odhlásit se"
 
-#: src/ui/operating-system-select.tsx:87
+#: src/ui/operating-system-select.tsx
 msgid "DMGJ3m"
 msgstr "Vybrat operační systém..."
 
-#: src/ui/operating-system-select.tsx:98
+#: src/ui/operating-system-select.tsx
 msgid "r3Zixe"
 msgstr "Hledat operační systém..."
 
-#: src/ui/operating-system-select.tsx:102
+#: src/ui/operating-system-select.tsx
 msgid "iEx8bl"
 msgstr "Nebyl nalezen žádný podporovaný operační systém."
 
-#: src/ui/theme-switcher.tsx:53
+#: src/ui/theme-switcher.tsx
 msgid "Vny4fL"
 msgstr "Systémové téma"
 
-#: src/ui/theme-switcher.tsx:60
+#: src/ui/theme-switcher.tsx
 msgid "ee1Wp5"
 msgstr "Světlé téma"
 
-#: src/ui/theme-switcher.tsx:64
+#: src/ui/theme-switcher.tsx
 msgid "Efqxns"
 msgstr "Tmavé téma"
 
