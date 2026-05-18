@@ -91,6 +91,10 @@ export const serversPlanRouter = {
         throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
       }
 
+      const rawLockedDiscount = current.lockedRenewalDiscount;
+      const lockedRenewalDiscount =
+        rawLockedDiscount?.id != null ? rawLockedDiscount : null;
+
       const remainingMs = current.terminatesAt
         ? Math.max(0, current.terminatesAt.getTime() - Date.now())
         : 0;
@@ -100,17 +104,16 @@ export const serversPlanRouter = {
         eq(serverPlans.proxmoxNodeGroupId, current.proxmoxNodeGroupId),
       );
 
-      const lockedRenewalDiscount = current.lockedRenewalDiscount;
-
       return {
         plans: plans.map((plan) => {
           const isCurrent = plan.id === current.id;
+          const discountsOnPlan = plan.activeDiscounts ?? [];
           const { discount: purchaseDiscount, finalPrice: purchasePrice } =
-            pickBestDiscount(plan.price, plan.activeDiscounts, "purchase");
+            pickBestDiscount(plan.price, discountsOnPlan, "purchase");
           const {
             discount: freshRenewalDiscount,
             finalPrice: freshRenewalPrice,
-          } = pickBestDiscount(plan.price, plan.activeDiscounts, "renewal");
+          } = pickBestDiscount(plan.price, discountsOnPlan, "renewal");
 
           // Current plan row reflects what the customer is locked into. Any
           // other plan reflects the freshly evaluated catalog price, since
@@ -155,22 +158,24 @@ export const serversPlanRouter = {
             purchase_price: purchasePrice,
             renewal_price: renewalPrice,
             upgrade_price: upgradePrice,
-            purchase_discount: purchaseDiscount
-              ? {
-                  id: purchaseDiscount.id,
-                  name: purchaseDiscount.name,
-                  type: purchaseDiscount.type,
-                  amount: purchaseDiscount.amount,
-                }
-              : null,
-            renewal_discount: renewalDiscount
-              ? {
-                  id: renewalDiscount.id,
-                  name: renewalDiscount.name,
-                  type: renewalDiscount.type,
-                  amount: renewalDiscount.amount,
-                }
-              : null,
+            purchase_discount:
+              purchaseDiscount?.id != null
+                ? {
+                    id: purchaseDiscount.id,
+                    name: purchaseDiscount.name,
+                    type: purchaseDiscount.type,
+                    amount: purchaseDiscount.amount,
+                  }
+                : null,
+            renewal_discount:
+              renewalDiscount?.id != null
+                ? {
+                    id: renewalDiscount.id,
+                    name: renewalDiscount.name,
+                    type: renewalDiscount.type,
+                    amount: renewalDiscount.amount,
+                  }
+                : null,
           };
         }),
       };
