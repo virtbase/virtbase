@@ -17,8 +17,10 @@
 
 import type {
   DatabaseDatacenter,
+  DatabaseDiscount,
   DatabaseServerPlan,
 } from "@virtbase/db/schema";
+import { Badge } from "@virtbase/ui/badge";
 import {
   LucideCpu,
   LucideDownloadCloud,
@@ -30,6 +32,7 @@ import {
 } from "@virtbase/ui/icons";
 import { formatBits, formatBytes } from "@virtbase/utils";
 import { useExtracted, useFormatter } from "next-intl";
+import { formatDiscountLabel } from "../utils/format-discount";
 
 export function OrderSummary({
   plan,
@@ -38,11 +41,18 @@ export function OrderSummary({
   plan: Pick<
     DatabaseServerPlan,
     "id" | "name" | "price" | "cores" | "memory" | "storage" | "netrate"
-  >;
+  > & {
+    purchasePrice?: number;
+    purchaseDiscount?: Pick<DatabaseDiscount, "type" | "amount"> | null;
+  };
   datacenter: Pick<DatabaseDatacenter, "id" | "name" | "country">;
 }) {
   const t = useExtracted();
   const format = useFormatter();
+
+  const purchasePrice = plan.purchasePrice ?? plan.price;
+  const hasDiscount =
+    plan.purchaseDiscount != null && purchasePrice < plan.price;
 
   return (
     <div className="flex flex-col gap-4">
@@ -146,16 +156,34 @@ export function OrderSummary({
             </li>
           </ul>
         </div>
-        <div className="mt-1 flex items-center gap-1.5 border-t pt-4">
-          <span className="font-medium text-base tabular-nums">
-            {format.number(plan.price / 100, {
-              style: "currency",
-              currency: "EUR",
-            })}
-          </span>
-          <span className="text-muted-foreground text-sm">
-            {t("per month")}
-          </span>
+        <div className="mt-1 flex flex-col gap-1 border-t pt-4">
+          <div className="flex flex-wrap items-center gap-1.5">
+            {hasDiscount && (
+              <span className="text-muted-foreground text-sm tabular-nums line-through">
+                {format.number(plan.price / 100, {
+                  style: "currency",
+                  currency: "EUR",
+                })}
+              </span>
+            )}
+            <span className="font-medium text-base tabular-nums">
+              {format.number(purchasePrice / 100, {
+                style: "currency",
+                currency: "EUR",
+              })}
+            </span>
+            <span className="text-muted-foreground text-sm">
+              {t("per month")}
+            </span>
+            {hasDiscount && plan.purchaseDiscount && (
+              <Badge
+                variant="secondary"
+                className="px-2 py-1 text-[0.5rem] uppercase tabular-nums leading-none"
+              >
+                {formatDiscountLabel(plan.purchaseDiscount, format)}
+              </Badge>
+            )}
+          </div>
         </div>
       </div>
     </div>

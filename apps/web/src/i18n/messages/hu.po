@@ -2748,6 +2748,15 @@ msgid "cenOuc"
 msgstr "{storage} NVMe SSD"
 
 #: src/features/servers/components/plan/plan-radio-group.tsx
+msgid "uPG29C"
+msgstr "{price} ma"
+
+#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/plan-summary.tsx
+msgid "9H3YQm"
+msgstr "majd {price} / hónap"
+
+#: src/features/servers/components/plan/plan-radio-group.tsx
 msgid "JxjC5u"
 msgstr "{price} / hó"
 
@@ -2762,6 +2771,10 @@ msgstr "A {name} most elkelt. Próbálja újra később, vagy válasszon másik 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgid "1p9GGF"
 msgstr "Ez a terv elkelt. Kérjük, válasszon másik tervet."
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgid "fOZyRZ"
+msgstr "A jelenlegi időszakod lejárt. Kérjük, először újítsd meg a szervert, majd hajtsd végre a frissítést."
 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgid "ZjhoiP"
@@ -2780,6 +2793,10 @@ msgid "6WPC9q"
 msgstr "Tervváltás"
 
 #: src/features/servers/components/plan/plan-summary.tsx
+msgid "kkpP2k"
+msgstr "ma"
+
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "Vn2ud4"
 msgstr "/ hónap"
 
@@ -2792,8 +2809,8 @@ msgid "N387FB"
 msgstr "Jelenlegi tervét egy hónappal meghosszabbítják."
 
 #: src/features/servers/components/plan/plan-summary.tsx
-msgid "TB+1v+"
-msgstr "A terv {name}-re módosul, és a futamidő egy hónappal meghosszabbodik."
+msgid "6Mawmq"
+msgstr "A csomag {name} csomagra változik. Ma csak az időarányos különbözetet fizeted — a jelenlegi időszakod változatlan marad."
 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgid "So9+9+"

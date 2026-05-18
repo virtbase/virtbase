@@ -20,6 +20,7 @@ import type {
   datacenters,
   proxmoxNodeGroups,
   proxmoxNodes,
+  serverPlanPrices,
   serverPlans,
   servers,
 } from "@virtbase/db/schema";
@@ -67,6 +68,13 @@ export const mockServerPlan = {
   updatedAt: new Date(),
 } satisfies typeof serverPlans.$inferSelect;
 
+export const mockServerPlanPrice = {
+  id: "price_0000000000000000000000000",
+  serverPlanId: mockServerPlan.id,
+  purchasePrice: 2999,
+  renewalPrice: 3499,
+} satisfies typeof serverPlanPrices.$inferInsert;
+
 export const mockDatacenter = {
   id: "dc_0000000000000000000000000",
   name: "My datacenter",
@@ -103,6 +111,7 @@ export const mockServer = {
   id: "kvm_0000000000000000000000000",
   userId: mockSession.user.id,
   serverPlanId: mockServerPlan.id,
+  serverPlanPriceId: mockServerPlanPrice.id,
   proxmoxNodeId: mockProxmoxNode.id,
   proxmoxTemplateId: null,
   proxmoxIsoDownloadId: null,

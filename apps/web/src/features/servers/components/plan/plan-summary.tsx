@@ -17,7 +17,9 @@
 
 "use client";
 
+import { cn } from "@virtbase/ui";
 import { Alert, AlertDescription } from "@virtbase/ui/alert";
+import { Badge } from "@virtbase/ui/badge";
 import { Button } from "@virtbase/ui/button";
 import {
   LucideArrowLeft,
@@ -35,6 +37,7 @@ import { Spinner } from "@virtbase/ui/spinner";
 import { formatBits, formatBytes } from "@virtbase/utils";
 import { useExtracted, useFormatter } from "next-intl";
 import { useCheckoutState } from "@/features/checkout/hooks/use-checkout-state";
+import { formatDiscountLabel } from "@/features/checkout/utils/format-discount";
 import { usePlanContext } from "./plan-context";
 
 export function PlanSummary() {
@@ -56,10 +59,22 @@ export function PlanSummary() {
   } = useCheckoutState();
 
   const isPaymentStep = Boolean(clientSecret && customerSessionClientSecret);
-  const price = selectedPlan ? selectedPlan.price : 0;
+  const catalogPrice = selectedPlan ? selectedPlan.price : 0;
+  const renewalPrice = selectedPlan?.renewal_price ?? catalogPrice;
+  const renewalDiscount = selectedPlan?.renewal_discount ?? null;
   const isRenewal = selectedPlan?.current ?? false;
   const isUpgrade =
     !!selectedPlan && !!currentPlan && selectedPlan.id !== currentPlan.id;
+  // For upgrades the customer is charged the pro-rata difference today;
+  // the term doesn't change. Show that as the headline so it matches what
+  // they'll see on the payment step. For renewals/extensions we show the
+  // monthly renewal price.
+  const upgradeCharge = isUpgrade
+    ? (selectedPlan?.upgrade_price ?? null)
+    : null;
+  const displayedPrice = upgradeCharge ?? renewalPrice;
+  const hasDiscount =
+    !isUpgrade && renewalDiscount != null && renewalPrice < catalogPrice;
 
   // Explain *why* the submit CTA is disabled so the user isn't stuck
   // guessing at a greyed-out button.
@@ -86,6 +101,13 @@ export function PlanSummary() {
     } else if (!currentPlan && !selectedPlan.available) {
       disabledReason = t(
         "This plan is sold out. Please pick a different plan.",
+      );
+    } else if (isUpgrade && upgradeCharge === 0) {
+      // Pro-rata is zero when the term has already lapsed (or is unset).
+      // The customer should renew first so a meaningful charge can be
+      // applied for the new plan.
+      disabledReason = t(
+        "Your current term has expired. Please renew your server first, then upgrade.",
       );
     }
   }
@@ -206,23 +228,54 @@ export function PlanSummary() {
       <Separator />
 
       <div className="flex flex-col gap-1">
-        <div className="flex items-baseline gap-1.5">
+        <div className="flex flex-wrap items-baseline gap-1.5">
           {isPlansPending ? (
             <Skeleton className="h-8 w-24" />
           ) : (
             <>
-              <span className="font-medium text-2xl tabular-nums">
-                {format.number(price / 100, {
+              {hasDiscount && (
+                <span className="text-muted-foreground text-sm tabular-nums line-through">
+                  {format.number(catalogPrice / 100, {
+                    style: "currency",
+                    currency: "EUR",
+                  })}
+                </span>
+              )}
+              <span
+                className={cn(
+                  "font-medium text-2xl tabular-nums",
+                  hasDiscount && "text-destructive",
+                )}
+              >
+                {format.number(displayedPrice / 100, {
                   style: "currency",
                   currency: "EUR",
                 })}
               </span>
               <span className="text-muted-foreground text-sm">
-                {t("/ month")}
+                {isUpgrade ? t("today") : t("/ month")}
               </span>
+              {hasDiscount && renewalDiscount && (
+                <Badge
+                  variant="destructive"
+                  className="px-2 py-1 text-[0.5rem] uppercase tabular-nums leading-none"
+                >
+                  {formatDiscountLabel(renewalDiscount, format)}
+                </Badge>
+              )}
             </>
           )}
         </div>
+        {isUpgrade && !isPlansPending && (
+          <span className="text-muted-foreground text-sm tabular-nums">
+            {t("then {price} / month", {
+              price: format.number(renewalPrice / 100, {
+                style: "currency",
+                currency: "EUR",
+              }),
+            })}
+          </span>
+        )}
         <span className="text-muted-foreground text-xs">
           {t("Incl. statutory VAT, if applicable")}
         </span>
@@ -233,7 +286,7 @@ export function PlanSummary() {
           {isRenewal
             ? t("Your current plan will be extended by one month.")
             : t(
-                "The plan will be changed to {name} and the term will be extended by one month.",
+                "The plan will be changed to {name}. You only pay the prorated difference today — your current term stays the same.",
                 { name: selectedPlan.name },
               )}
         </p>

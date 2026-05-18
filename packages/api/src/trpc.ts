@@ -25,6 +25,7 @@ import {
   proxmoxIsoDownloads,
   proxmoxNodes,
   proxmoxTemplates,
+  serverPlanPrices,
   serverPlans,
   servers,
   subnetAllocations,
@@ -290,6 +291,15 @@ const serverMiddleware = authMiddleware.unstable_pipe(
                   memory: serverPlans.memory,
                   storage: serverPlans.storage,
                 },
+            price: !expansions.has("price")
+              ? serverPlanPrices.id
+              : {
+                  id: serverPlanPrices.id,
+                  purchase_price: serverPlanPrices.purchasePrice,
+                  renewal_price: serverPlanPrices.renewalPrice,
+                  purchase_discount_id: serverPlanPrices.purchaseDiscountId,
+                  renewal_discount_id: serverPlanPrices.renewalDiscountId,
+                },
             template: !expansions.has("template")
               ? proxmoxTemplates.id
               : {
@@ -386,6 +396,10 @@ const serverMiddleware = authMiddleware.unstable_pipe(
           )
           .leftJoin(subnets, eq(subnetAllocations.subnetId, subnets.id))
           .innerJoin(serverPlans, eq(servers.serverPlanId, serverPlans.id))
+          .innerJoin(
+            serverPlanPrices,
+            eq(servers.serverPlanPriceId, serverPlanPrices.id),
+          )
           .leftJoin(
             proxmoxTemplates,
             eq(servers.proxmoxTemplateId, proxmoxTemplates.id),
@@ -397,6 +411,7 @@ const serverMiddleware = authMiddleware.unstable_pipe(
           .groupBy(
             servers.id,
             serverPlans.id,
+            serverPlanPrices.id,
             proxmoxTemplates.id,
             datacenters.id,
             proxmoxNodes.id,

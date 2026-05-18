@@ -21,10 +21,14 @@ import {
   provisionServerWorkflow,
   upgradeServerWorkflow,
 } from "@virtbase/api/workflows";
-import { eq } from "@virtbase/db";
+import { and, eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
-import { serverPlans, users } from "@virtbase/db/schema";
-import { decryptPayload, deriveKeyHex } from "@virtbase/utils";
+import { serverPlanPrices, serverPlans, users } from "@virtbase/db/schema";
+import {
+  decryptPayload,
+  deriveKeyHex,
+  readChunkedStripeMetadata,
+} from "@virtbase/utils";
 import type {
   CustomCheckoutInput,
   OrderConfigurationSnapshot,
@@ -54,10 +58,23 @@ export const handlePaymentFinished = async ({
   data: AnonpayWebhookResponse;
 }) => {
   const metadata = paymentIntent.metadata as
-    | { configurationSnapshot?: string; billingDetailsSnapshot?: string }
+    | Record<string, string | undefined>
     | undefined;
 
-  if (!metadata?.configurationSnapshot || !metadata?.billingDetailsSnapshot) {
+  // Both snapshots are stored chunked across `<baseKey>_0..N` keys
+  // because the encrypted payloads overflow Stripe's 500-character
+  // per-value metadata limit. `readChunkedStripeMetadata` reassembles
+  // them and handles any legacy single-key entries.
+  const configurationSnapshot = readChunkedStripeMetadata(
+    metadata,
+    "configurationSnapshot",
+  );
+  const billingDetailsSnapshot = readChunkedStripeMetadata(
+    metadata,
+    "billingDetailsSnapshot",
+  );
+
+  if (!configurationSnapshot || !billingDetailsSnapshot) {
     throw new Error(
       "Configuration snapshot or billing details snapshot is missing. Cannot process payment intent.",
     );
@@ -73,8 +90,8 @@ export const handlePaymentFinished = async ({
   const derivedKeyHex = await deriveKeyHex(stripeSecretKey);
   const [decryptedConfigurationSnapshot, decryptedBillingDetailsSnapshot] =
     await Promise.all([
-      decryptPayload(metadata.configurationSnapshot, derivedKeyHex),
-      decryptPayload(metadata.billingDetailsSnapshot, derivedKeyHex),
+      decryptPayload(configurationSnapshot, derivedKeyHex),
+      decryptPayload(billingDetailsSnapshot, derivedKeyHex),
     ]);
   let configuration: OrderConfigurationSnapshot;
   let billingDetails: CustomCheckoutInput["billing_details"];
@@ -88,11 +105,21 @@ export const handlePaymentFinished = async ({
   }
 
   const planId = configuration.server_plan_id;
+  const serverPlanPriceId = configuration.server_plan_price_id;
 
-  const [plan, user] = await db.transaction(
+  const [plan, price, user] = await db.transaction(
     async (tx) =>
       Promise.all([
         tx.$count(serverPlans, eq(serverPlans.id, planId)),
+        tx.$count(
+          serverPlanPrices,
+          and(
+            eq(serverPlanPrices.id, serverPlanPriceId),
+            // Sanity check: the price row must belong to the plan recorded
+            // in the same snapshot.
+            eq(serverPlanPrices.serverPlanId, planId),
+          ),
+        ),
         tx
           .select({ id: users.id })
           .from(users)
@@ -109,6 +136,12 @@ export const handlePaymentFinished = async ({
   if (!plan) {
     throw new Error(
       `Server plan not found. No actions will be taken. ID: ${planId}`,
+    );
+  }
+
+  if (!price) {
+    throw new Error(
+      `Server plan price not found or does not belong to the recorded plan. No actions will be taken. ID: ${serverPlanPriceId}`,
     );
   }
 
@@ -137,6 +170,7 @@ export const handlePaymentFinished = async ({
       await start(provisionServerWorkflow, [
         {
           serverPlanId: planId,
+          serverPlanPriceId,
           userId: user.id,
           initialSSHKeyId: configuration.ssh_key_id,
           initialRootPassword: configuration.root_password,
@@ -149,6 +183,7 @@ export const handlePaymentFinished = async ({
         {
           serverId: configuration.server_id,
           serverPlanId: planId,
+          serverPlanPriceId,
         },
       ]);
       break;

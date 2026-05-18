@@ -26,6 +26,7 @@ type StoreProvisionedServerStepParams = {
   name: string;
   userId: string;
   serverPlanId: string;
+  serverPlanPriceId: string;
   proxmoxNodeId: string;
   proxmoxTemplateId?: string | null;
   allocations: string[];
@@ -36,6 +37,7 @@ export async function storeProvisionedServerStep({
   name,
   userId,
   serverPlanId,
+  serverPlanPriceId,
   proxmoxNodeId,
   proxmoxTemplateId,
   allocations,
@@ -51,6 +53,7 @@ export async function storeProvisionedServerStep({
           vmid,
           name,
           serverPlanId,
+          serverPlanPriceId,
           proxmoxNodeId,
           proxmoxTemplateId,
           installedAt: sql`now()`,

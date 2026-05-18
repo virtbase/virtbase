@@ -15,9 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
-import { serverPlans } from "@virtbase/db/schema";
+import { pickBestDiscount } from "@virtbase/db/queries";
 import { cacheLife, cacheTag } from "next/cache";
 import { cache } from "react";
 
@@ -27,18 +26,44 @@ export const getServerPlan = cache(async (id: string) => {
   cacheTag("checkout");
   cacheLife("max");
 
-  return db.transaction(
-    async (tx) => {
-      return tx
-        .select()
-        .from(serverPlans)
-        .where(eq(serverPlans.id, id))
-        .limit(1)
-        .then(([res]) => res);
+  const plan = await db.query.serverPlans.findFirst({
+    where: { id },
+    with: {
+      discounts: {
+        where: {
+          AND: [
+            { active: true },
+            {
+              RAW: (t, { sql }) =>
+                sql`${t.startsAt} IS NULL OR ${t.startsAt} <= now()`,
+            },
+            {
+              RAW: (t, { sql }) =>
+                sql`${t.endsAt} IS NULL OR ${t.endsAt} >= now()`,
+            },
+          ],
+        },
+      },
     },
-    {
-      accessMode: "read only",
-      isolationLevel: "read committed",
-    },
-  );
+  });
+
+  if (!plan) {
+    return null;
+  }
+
+  // Pick only the best (lowest resulting price) discount per side. The DB
+  // can return multiple active discounts attached to the plan; the UI only
+  // ever surfaces one.
+  const { discount: purchaseDiscount, finalPrice: purchasePrice } =
+    pickBestDiscount(plan.price, plan.discounts, "purchase");
+  const { discount: renewalDiscount, finalPrice: renewalPrice } =
+    pickBestDiscount(plan.price, plan.discounts, "renewal");
+
+  return {
+    ...plan,
+    purchasePrice,
+    renewalPrice,
+    purchaseDiscount,
+    renewalDiscount,
+  };
 });

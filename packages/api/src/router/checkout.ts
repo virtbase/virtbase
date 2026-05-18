@@ -18,9 +18,19 @@
 import * as Sentry from "@sentry/node";
 import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
-import { and, eq } from "@virtbase/db";
-import { getPlansWithAvailability } from "@virtbase/db/queries";
-import { serverPlans, servers, sshKeys } from "@virtbase/db/schema";
+import { and, eq, sql } from "@virtbase/db";
+import {
+  getPlansWithAvailability,
+  pickBestDiscount,
+} from "@virtbase/db/queries";
+import {
+  discounts,
+  discountsToServerPlans,
+  serverPlanPrices,
+  serverPlans,
+  servers,
+  sshKeys,
+} from "@virtbase/db/schema";
 import {
   APP_NAME,
   deriveKeyHex,
@@ -29,6 +39,7 @@ import {
   PUBLIC_DOMAIN,
   parsePublicKey,
   SUPPORT_EMAIL,
+  writeChunkedStripeMetadata,
 } from "@virtbase/utils";
 import type { OrderConfigurationSnapshot } from "@virtbase/validators";
 import {
@@ -42,6 +53,15 @@ import { ANONPAY_MIN_AMOUNT } from "../anonpay/constants";
 import { stripe } from "../stripe";
 import { getOrCreateStripeCustomer } from "../stripe/get-or-create-customer";
 import { protectedProcedure } from "../trpc";
+
+// Pro-rata math reference period. We bill against a flat 30-day month so
+// the upgrade charge is stable regardless of which calendar month the
+// upgrade lands in (Postgres `INTERVAL '1 month'` is variable length).
+const MONTH_MS = 30 * 24 * 60 * 60 * 1000;
+
+// Stripe's minimum charge for EUR is 50 cents. Round small but non-zero
+// pro-rata charges up so the upgrade order can still be processed.
+const STRIPE_MIN_CHARGE_EUR_CENTS = 50;
 
 export const checkoutRouter = {
   order: protectedProcedure
@@ -81,6 +101,16 @@ export const checkoutRouter = {
         throw new TRPCError({ code: "NOT_FOUND" });
       }
 
+      // For `upgrade_server`, pro-rata depends on the customer's current
+      // locked renewal price and how much of their term is still remaining.
+      // Capture the current row up-front (alongside the existing auth and
+      // sanity checks) so we can use it when constructing the new price row
+      // and the charge below.
+      let upgradeContext: {
+        currentRenewalPrice: number;
+        terminatesAt: Date | null;
+      } | null = null;
+
       if (input.type === "extend_server" || input.type === "upgrade_server") {
         const server = await db.transaction(
           async (tx) => {
@@ -90,9 +120,15 @@ export const checkoutRouter = {
                 installed_at: servers.installedAt,
                 currentStorage: serverPlans.storage,
                 currentPlanId: serverPlans.id,
+                currentRenewalPrice: serverPlanPrices.renewalPrice,
+                terminatesAt: servers.terminatesAt,
               })
               .from(servers)
               .innerJoin(serverPlans, eq(servers.serverPlanId, serverPlans.id))
+              .innerJoin(
+                serverPlanPrices,
+                eq(servers.serverPlanPriceId, serverPlanPrices.id),
+              )
               .where(
                 and(
                   eq(servers.id, input.server_id),
@@ -124,6 +160,11 @@ export const checkoutRouter = {
           ) {
             throw new TRPCError({ code: "BAD_REQUEST" });
           }
+
+          upgradeContext = {
+            currentRenewalPrice: server.currentRenewalPrice,
+            terminatesAt: server.terminatesAt,
+          };
         }
 
         // Upgrades are constrained to the server's existing node, so the
@@ -139,6 +180,160 @@ export const checkoutRouter = {
           code: "BAD_REQUEST",
           message: "The selected plan is currently sold out.",
         });
+      }
+
+      // Resolve the `server_plan_prices` row for this order.
+      //
+      // - `new_server` and `upgrade_server` create a fresh row that locks in
+      //   the best applicable discount for both purchase and renewal at
+      //   order-time. The created row's id is encoded into the snapshot so
+      //   the workflow can attach it to the server.
+      // - `extend_server` reuses the server's existing price row so the
+      //   customer keeps any custom/discounted pricing carried since the
+      //   original purchase.
+      let serverPlanPriceId: string;
+      let chargedAmount: number;
+      let createdPriceId: string | null = null;
+      // Pro-rata charge for `upgrade_server`; null otherwise. Threaded
+      // through the snapshot so invoice generation can render the actual
+      // amount that was charged today (which is less than the full plan
+      // price because we keep the existing term length intact).
+      let upgradeCharge: number | null = null;
+      if (input.type === "extend_server") {
+        const existing = await db.transaction(
+          async (tx) => {
+            return tx
+              .select({
+                id: serverPlanPrices.id,
+                renewalPrice: serverPlanPrices.renewalPrice,
+              })
+              .from(servers)
+              .innerJoin(
+                serverPlanPrices,
+                eq(servers.serverPlanPriceId, serverPlanPrices.id),
+              )
+              .where(
+                and(
+                  eq(servers.id, input.server_id),
+                  // Re-check ownership for defense in depth
+                  eq(servers.userId, userId),
+                ),
+              )
+              .limit(1)
+              .then(([res]) => res);
+          },
+          {
+            accessMode: "read only",
+            isolationLevel: "read committed",
+          },
+        );
+
+        if (!existing) {
+          throw new TRPCError({ code: "NOT_FOUND" });
+        }
+
+        serverPlanPriceId = existing.id;
+        chargedAmount = existing.renewalPrice;
+      } else {
+        // `new_server` or `upgrade_server`: evaluate discounts and create
+        // a new price row that snapshots the result.
+        const result = await db.transaction(
+          async (tx) => {
+            const activeDiscounts = await tx
+              .select({
+                id: discounts.id,
+                type: discounts.type,
+                amount: discounts.amount,
+                appliesTo: discounts.appliesTo,
+              })
+              .from(discounts)
+              .innerJoin(
+                discountsToServerPlans,
+                eq(discountsToServerPlans.discountId, discounts.id),
+              )
+              .where(
+                and(
+                  eq(discountsToServerPlans.serverPlanId, plan.id),
+                  eq(discounts.active, true),
+                  sql`${discounts.startsAt} IS NULL OR ${discounts.startsAt} <= now()`,
+                  sql`${discounts.endsAt} IS NULL OR ${discounts.endsAt} >= now()`,
+                ),
+              );
+
+            const { discount: purchaseDiscount, finalPrice: purchasePrice } =
+              pickBestDiscount(plan.price, activeDiscounts, "purchase");
+            const { discount: renewalDiscount, finalPrice: renewalPrice } =
+              pickBestDiscount(plan.price, activeDiscounts, "renewal");
+
+            const inserted = await tx
+              .insert(serverPlanPrices)
+              .values({
+                serverPlanId: plan.id,
+                purchasePrice,
+                renewalPrice,
+                purchaseDiscountId: purchaseDiscount?.id ?? null,
+                renewalDiscountId: renewalDiscount?.id ?? null,
+              })
+              .returning({
+                id: serverPlanPrices.id,
+                purchasePrice: serverPlanPrices.purchasePrice,
+                renewalPrice: serverPlanPrices.renewalPrice,
+              })
+              .then(([row]) => row);
+
+            if (!inserted) {
+              throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
+            }
+
+            return inserted;
+          },
+          {
+            accessMode: "read write",
+            isolationLevel: "read committed",
+          },
+        );
+
+        serverPlanPriceId = result.id;
+        createdPriceId = result.id;
+
+        if (input.type === "upgrade_server" && upgradeContext) {
+          // Pro-rata: the customer keeps their current term (`terminatesAt`
+          // does not move). They pay the difference between the freshly
+          // locked renewal price of the new plan and their current locked
+          // renewal price, scaled by how much of the term is still left.
+          const remainingMs = upgradeContext.terminatesAt
+            ? Math.max(0, upgradeContext.terminatesAt.getTime() - Date.now())
+            : 0;
+          const proRataFraction = Math.max(
+            0,
+            Math.min(1, remainingMs / MONTH_MS),
+          );
+          const diff = Math.max(
+            0,
+            result.renewalPrice - upgradeContext.currentRenewalPrice,
+          );
+          const raw = Math.floor(diff * proRataFraction);
+          // If the term has lapsed (or the new plan isn't more expensive)
+          // there's nothing to charge; the customer should renew first
+          // rather than upgrade through an empty PaymentIntent that
+          // Stripe would reject.
+          if (raw <= 0) {
+            throw new TRPCError({
+              code: "BAD_REQUEST",
+              message:
+                "Your current term has expired or the upgrade does not require an additional charge. Please renew your server before upgrading.",
+            });
+          }
+          // Stripe rejects EUR PaymentIntents below 50 cents. Round small
+          // pro-rata charges up so the upgrade still goes through.
+          upgradeCharge =
+            raw < STRIPE_MIN_CHARGE_EUR_CENTS
+              ? STRIPE_MIN_CHARGE_EUR_CENTS
+              : raw;
+          chargedAmount = upgradeCharge;
+        } else {
+          chargedAmount = result.purchasePrice;
+        }
       }
 
       let configuration: OrderConfigurationSnapshot;
@@ -179,8 +374,9 @@ export const checkoutRouter = {
 
           configuration = {
             type: "new_server",
-            version: 1,
+            version: 2,
             server_plan_id: plan.id,
+            server_plan_price_id: serverPlanPriceId,
             ssh_key_id: sshKeyId,
             template_id: input.template_id,
             root_password: input.root_password,
@@ -190,17 +386,26 @@ export const checkoutRouter = {
         case "extend_server":
           configuration = {
             type: "extend_server",
-            version: 1,
+            version: 2,
             server_id: input.server_id,
             server_plan_id: plan.id,
+            server_plan_price_id: serverPlanPriceId,
           };
           break;
         case "upgrade_server":
+          if (upgradeCharge === null) {
+            // Defensive: pro-rata branch above must have populated this
+            // for any `upgrade_server` order. Bail out rather than silently
+            // omitting the field from the snapshot.
+            throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
+          }
           configuration = {
             type: "upgrade_server",
-            version: 1,
+            version: 2,
             server_id: input.server_id,
             server_plan_id: plan.id,
+            server_plan_price_id: serverPlanPriceId,
+            upgrade_charge: upgradeCharge,
           };
           break;
         default:
@@ -231,7 +436,7 @@ export const checkoutRouter = {
         });
 
         const paymentIntentPromise = stripe.paymentIntents.create({
-          amount: plan.price,
+          amount: chargedAmount,
           customer: customerId,
           automatic_payment_methods: {
             enabled: true,
@@ -242,17 +447,22 @@ export const checkoutRouter = {
               {
                 product_name: plan.name,
                 quantity: 1,
-                unit_cost: plan.price,
+                unit_cost: chargedAmount,
               },
             ],
           },
           description: plan.name,
-          metadata: {
-            configurationSnapshot: await encryptPayload(
+          // The encrypted configuration snapshot routinely overshoots
+          // Stripe's 500-character per-value metadata cap (hex encoding
+          // doubles the ciphertext size), so we chunk it across several
+          // keys. The webhook reassembles via `readChunkedStripeMetadata`.
+          metadata: writeChunkedStripeMetadata(
+            "configurationSnapshot",
+            await encryptPayload(
               JSON.stringify(configuration),
               await deriveKeyHex(stripeSecretKey),
             ),
-          },
+          ),
         });
 
         const [customerSession, paymentIntent] = await Promise.all([
@@ -266,6 +476,30 @@ export const checkoutRouter = {
           customer_session_client_secret: customerSession.client_secret,
         };
       } catch (error) {
+        // If we created a fresh price row for this order, undo it so we
+        // don't accumulate orphan rows from failed Stripe calls.
+        if (createdPriceId) {
+          try {
+            await db.transaction(
+              async (tx) => {
+                await tx
+                  .delete(serverPlanPrices)
+                  .where(eq(serverPlanPrices.id, createdPriceId));
+              },
+              {
+                accessMode: "read write",
+                isolationLevel: "read committed",
+              },
+            );
+          } catch (rollbackError) {
+            Sentry.captureException(rollbackError, {
+              tags: {
+                "checkout.rollback": "true",
+              },
+            });
+          }
+        }
+
         Sentry.captureException(error, {
           tags: {
             "stripe.error": "true",
@@ -333,12 +567,16 @@ export const checkoutRouter = {
 
           // Update payment intent with encrypted billing details
           await stripe.paymentIntents.update(paymentIntent.id, {
-            metadata: {
-              billingDetailsSnapshot: await encryptPayload(
+            // Chunked for the same reason as the configurationSnapshot
+            // above — encrypted billing details can exceed Stripe's
+            // 500-character per-value metadata limit.
+            metadata: writeChunkedStripeMetadata(
+              "billingDetailsSnapshot",
+              await encryptPayload(
                 JSON.stringify(input.billing_details),
                 await deriveKeyHex(stripeSecretKey),
               ),
-            },
+            ),
           });
 
           const webhook = new URL(`${PUBLIC_DOMAIN}/api/anonpay/webhook`);

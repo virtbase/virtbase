@@ -2748,6 +2748,15 @@ msgid "cenOuc"
 msgstr "SSD NVMe {storage}"
 
 #: src/features/servers/components/plan/plan-radio-group.tsx
+msgid "uPG29C"
+msgstr "{price} hoy"
+
+#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/plan-summary.tsx
+msgid "9H3YQm"
+msgstr "luego {price} / mes"
+
+#: src/features/servers/components/plan/plan-radio-group.tsx
 msgid "JxjC5u"
 msgstr "{price} / mes"
 
@@ -2762,6 +2771,10 @@ msgstr "{name} está agotado en este momento. Vuelve a intentarlo más tarde o e
 #: src/features/servers/components/plan/plan-summary.tsx
 msgid "1p9GGF"
 msgstr "Este plan está agotado. Elija un plan diferente."
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgid "fOZyRZ"
+msgstr "Tu periodo actual ha expirado. Renueva primero tu servidor y luego realiza la actualización."
 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgid "ZjhoiP"
@@ -2780,6 +2793,10 @@ msgid "6WPC9q"
 msgstr "cambio de plan"
 
 #: src/features/servers/components/plan/plan-summary.tsx
+msgid "kkpP2k"
+msgstr "hoy"
+
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "Vn2ud4"
 msgstr "/ mes"
 
@@ -2792,8 +2809,8 @@ msgid "N387FB"
 msgstr "Su plan actual se ampliará por un mes."
 
 #: src/features/servers/components/plan/plan-summary.tsx
-msgid "TB+1v+"
-msgstr "El plan se cambiará a {name} y el plazo se ampliará un mes."
+msgid "6Mawmq"
+msgstr "El plan se cambiará a {name}. Hoy solo pagas la diferencia prorrateada — tu periodo actual se mantiene igual."
 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgid "So9+9+"

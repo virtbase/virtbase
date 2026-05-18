@@ -15,7 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { eq, sql } from "@virtbase/db";
+import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { servers } from "@virtbase/db/schema";
 import { revalidateTag } from "next/cache";
@@ -23,20 +23,25 @@ import { revalidateTag } from "next/cache";
 export async function storeServerUpgradeStep({
   serverId,
   serverPlanId,
+  serverPlanPriceId,
 }: {
   serverId: string;
   serverPlanId: string;
+  serverPlanPriceId: string;
 }) {
   "use step";
 
+  // Upgrades are pro-rated: the customer's term length does not change,
+  // they pay only the difference for the time remaining. `terminatesAt`
+  // therefore stays untouched here — only the plan and the locked price
+  // row move. The same is true on rollback below.
   await db.transaction(
     async (tx) => {
       await tx
         .update(servers)
         .set({
           serverPlanId,
-          // Currently add one month of runtime to the KVM when upgrading
-          terminatesAt: sql`CASE WHEN ${servers.terminatesAt} IS NULL THEN NULL ELSE ${servers.terminatesAt} + interval '1 month' END`,
+          serverPlanPriceId,
         })
         .where(eq(servers.id, serverId));
     },
@@ -52,9 +57,11 @@ export async function storeServerUpgradeStep({
 export async function rollbackStoreServerUpgradeStep({
   serverId,
   previousServerPlanId,
+  previousServerPlanPriceId,
 }: {
   serverId: string;
   previousServerPlanId: string;
+  previousServerPlanPriceId: string;
 }) {
   "use step";
 
@@ -64,7 +71,7 @@ export async function rollbackStoreServerUpgradeStep({
         .update(servers)
         .set({
           serverPlanId: previousServerPlanId,
-          terminatesAt: sql`CASE WHEN ${servers.terminatesAt} IS NULL THEN NULL ELSE ${servers.terminatesAt} - interval '1 month' END`,
+          serverPlanPriceId: previousServerPlanPriceId,
         })
         .where(eq(servers.id, serverId));
     },

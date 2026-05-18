@@ -17,7 +17,7 @@
 
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
-import { serverPlans } from "@virtbase/db/schema";
+import { serverPlanPrices, serverPlans } from "@virtbase/db/schema";
 import { APP_NAME, formatBits, formatBytes } from "@virtbase/utils";
 import type { OrderConfigurationSnapshot } from "@virtbase/validators";
 import { createFormatter, createTranslator } from "use-intl/core";
@@ -111,20 +111,26 @@ export async function generateInvoiceStep({
   }
 
   const planId = configuration.server_plan_id;
+  const serverPlanPriceId = configuration.server_plan_price_id;
 
   const plan = await db.transaction(
     async (tx) => {
       return tx
         .select({
           name: serverPlans.name,
-          price: serverPlans.price,
           cores: serverPlans.cores,
           memory: serverPlans.memory,
           storage: serverPlans.storage,
           netrate: serverPlans.netrate,
+          purchasePrice: serverPlanPrices.purchasePrice,
+          renewalPrice: serverPlanPrices.renewalPrice,
         })
         .from(serverPlans)
-        .where(eq(serverPlans.id, planId))
+        .innerJoin(
+          serverPlanPrices,
+          eq(serverPlanPrices.serverPlanId, serverPlans.id),
+        )
+        .where(eq(serverPlanPrices.id, serverPlanPriceId))
         .limit(1)
         .then(([res]) => res);
     },
@@ -136,9 +142,23 @@ export async function generateInvoiceStep({
 
   if (!plan) {
     throw new FatalError(
-      `The plan with ID ${planId} does not exist. Cannot generate invoice.`,
+      `The plan price with ID ${serverPlanPriceId} (plan ${planId}) does not exist. Cannot generate invoice.`,
     );
   }
+
+  // Different order types charge different amounts:
+  // - `extend_server`: the locked renewal price.
+  // - `upgrade_server`: the pro-rata charge captured in the snapshot
+  //   (`upgrade_charge`). The customer keeps their existing term, so the
+  //   invoice reflects only the difference they paid today rather than
+  //   the new plan's full price.
+  // - `new_server`: the locked purchase price of the new plan.
+  const linePriceCents =
+    configuration.type === "extend_server"
+      ? plan.renewalPrice
+      : configuration.type === "upgrade_server"
+        ? configuration.upgrade_charge
+        : plan.purchasePrice;
 
   const mappedLocale = mapLexwareCountryToLocale(country as LexwareCountry);
   const t = createTranslator({
@@ -171,7 +191,14 @@ export async function generateInvoiceStep({
       language: country === "DE" ? "de" : "en",
       lineItems: [
         {
-          name: plan.name,
+          // Upgrades are pro-rated and only cover the price difference for
+          // the time left on the term, so the line item is labelled
+          // accordingly to avoid confusing the customer with the full plan
+          // price when they're charged a fraction of it.
+          name:
+            configuration.type === "upgrade_server"
+              ? t("upgradeLineItemName", { name: plan.name })
+              : plan.name,
           // TODO: Translate / more dynamic
           description: [
             `${plan.cores} ${plan.cores > 1 ? "vCores" : "vCore"}`,
@@ -186,7 +213,7 @@ export async function generateInvoiceStep({
           type: "custom",
           unitPrice: {
             currency: "EUR",
-            grossAmount: plan.price / 100,
+            grossAmount: linePriceCents / 100,
             taxRatePercentage,
           },
           unitName: t("unitName"),

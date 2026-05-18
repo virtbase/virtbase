@@ -17,11 +17,13 @@
 
 export * from "./api-keys";
 export * from "./checkout";
+export * from "./discounts";
 export * from "./invoices";
 export * from "./pagination";
 export * from "./proxmox-iso-downloads";
 export * from "./proxy";
 export * from "./public";
+export * from "./server-plan-prices";
 export * from "./ssh-keys";
 export * from "./subnet-allocations";
 export * from "./subnets";

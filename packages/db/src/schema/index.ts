@@ -17,6 +17,8 @@
 
 export * from "./auth";
 export * from "./datacenters";
+export * from "./discounts";
+export * from "./discounts-to-server-plans";
 export * from "./invoices";
 export * from "./pointer-records";
 export * from "./proxmox-iso-downloads";
@@ -26,6 +28,7 @@ export * from "./proxmox-template-groups";
 export * from "./proxmox-templates";
 export * from "./proxmox-templates-to-proxmox-nodes";
 export * from "./server-backups";
+export * from "./server-plan-prices";
 export * from "./server-plans";
 export * from "./servers";
 export * from "./ssh-keys";

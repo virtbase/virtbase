@@ -22,6 +22,7 @@ import { users } from "./auth";
 import { proxmoxIsoDownloads } from "./proxmox-iso-downloads";
 import { proxmoxNodes } from "./proxmox-nodes";
 import { proxmoxTemplates } from "./proxmox-templates";
+import { serverPlanPrices } from "./server-plan-prices";
 import { serverPlans } from "./server-plans";
 
 export const servers = pgTable(
@@ -40,6 +41,14 @@ export const servers = pgTable(
       .notNull()
       .references(() => serverPlans.id, {
         // Don't allow deletion of the server plan if it still has servers
+        onDelete: "restrict",
+        onUpdate: "cascade",
+      }),
+    serverPlanPriceId: t
+      .text()
+      .notNull()
+      .references(() => serverPlanPrices.id, {
+        // Don't allow deletion of the server plan price if it still has servers
         onDelete: "restrict",
         onUpdate: "cascade",
       }),

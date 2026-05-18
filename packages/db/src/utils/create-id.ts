@@ -44,6 +44,8 @@ const prefixes = [
   "txn_", // transaction
   "iso_", // iso download
   "mnt_", // server mount
+  "dsc_", // discount
+  "price_", // server plan price
 ] as const;
 
 // ULID uses base32 encoding

@@ -2748,6 +2748,15 @@ msgid "cenOuc"
 msgstr "{storage} NVMe SSD"
 
 #: src/features/servers/components/plan/plan-radio-group.tsx
+msgid "uPG29C"
+msgstr "{price} dnes"
+
+#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/plan-summary.tsx
+msgid "9H3YQm"
+msgstr "poté {price} / měsíc"
+
+#: src/features/servers/components/plan/plan-radio-group.tsx
 msgid "JxjC5u"
 msgstr "{price} / měsíc"
 
@@ -2762,6 +2771,10 @@ msgstr "{name} je teď vyprodaný. Zkus to později nebo vyber jiný plán."
 #: src/features/servers/components/plan/plan-summary.tsx
 msgid "1p9GGF"
 msgstr "Tento plán je vyprodaný. Vyber prosím jiný plán."
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgid "fOZyRZ"
+msgstr "Vaše aktuální období vypršelo. Nejprve obnovte server a poté proveďte upgrade."
 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgid "ZjhoiP"
@@ -2780,6 +2793,10 @@ msgid "6WPC9q"
 msgstr "Změna plánu"
 
 #: src/features/servers/components/plan/plan-summary.tsx
+msgid "kkpP2k"
+msgstr "dnes"
+
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "Vn2ud4"
 msgstr "/ měsíc"
 
@@ -2792,8 +2809,8 @@ msgid "N387FB"
 msgstr "Tvůj aktuální plán se prodlouží o jeden měsíc."
 
 #: src/features/servers/components/plan/plan-summary.tsx
-msgid "TB+1v+"
-msgstr "Plán se změní na {name} a období se prodlouží o jeden měsíc."
+msgid "6Mawmq"
+msgstr "Plán bude změněn na {name}. Dnes platíte pouze poměrnou část rozdílu — vaše aktuální období zůstává stejné."
 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgid "So9+9+"

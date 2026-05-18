@@ -2748,6 +2748,15 @@ msgid "cenOuc"
 msgstr "{storage} NVMe SSD"
 
 #: src/features/servers/components/plan/plan-radio-group.tsx
+msgid "uPG29C"
+msgstr "{price} heute"
+
+#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/plan-summary.tsx
+msgid "9H3YQm"
+msgstr "dann {price} / Monat"
+
+#: src/features/servers/components/plan/plan-radio-group.tsx
 msgid "JxjC5u"
 msgstr "{price} / Monat"
 
@@ -2762,6 +2771,10 @@ msgstr "{name} ist derzeit ausverkauft. Versuche es später erneut oder wähle e
 #: src/features/servers/components/plan/plan-summary.tsx
 msgid "1p9GGF"
 msgstr "Dieser Plan ist ausverkauft. Bitte wähle einen anderen Plan."
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgid "fOZyRZ"
+msgstr "Dein aktueller Vertragszeitraum ist abgelaufen. Bitte verlängere zuerst deinen Server und führe dann das Upgrade durch."
 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgid "ZjhoiP"
@@ -2780,6 +2793,10 @@ msgid "6WPC9q"
 msgstr "Änderung des Plans"
 
 #: src/features/servers/components/plan/plan-summary.tsx
+msgid "kkpP2k"
+msgstr "heute"
+
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "Vn2ud4"
 msgstr "/ Monat"
 
@@ -2792,8 +2809,8 @@ msgid "N387FB"
 msgstr "Dein aktueller Plan wird um einen Monat verlängert."
 
 #: src/features/servers/components/plan/plan-summary.tsx
-msgid "TB+1v+"
-msgstr "Der Plan wird auf {name} umgestellt und die Laufzeit um einen Monat verlängert."
+msgid "6Mawmq"
+msgstr "Der Plan wird zu {name} geändert. Du zahlst heute nur die anteilige Differenz — dein aktueller Vertragszeitraum bleibt gleich."
 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgid "So9+9+"

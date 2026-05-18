@@ -39,6 +39,7 @@ import {
   invoices,
   proxmoxNodeGroups,
   proxmoxNodes,
+  serverPlanPrices,
   serverPlans,
   servers,
   users,
@@ -52,6 +53,7 @@ import {
   mockProxmoxNodeGroup,
   mockServer,
   mockServerPlan,
+  mockServerPlanPrice,
   mockUser,
 } from "./fixtures";
 
@@ -69,6 +71,7 @@ beforeAll(async () => {
   await testDb.insert(datacenters).values(mockDatacenter);
   await testDb.insert(proxmoxNodes).values(mockProxmoxNode);
   await testDb.insert(serverPlans).values(mockServerPlan);
+  await testDb.insert(serverPlanPrices).values(mockServerPlanPrice);
 });
 
 afterAll(async () => {

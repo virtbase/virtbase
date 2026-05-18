@@ -2748,6 +2748,15 @@ msgid "cenOuc"
 msgstr "{storage} NVMe SSD"
 
 #: src/features/servers/components/plan/plan-radio-group.tsx
+msgid "uPG29C"
+msgstr "{price} idag"
+
+#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/plan-summary.tsx
+msgid "9H3YQm"
+msgstr "sedan {price} / månad"
+
+#: src/features/servers/components/plan/plan-radio-group.tsx
 msgid "JxjC5u"
 msgstr "{price} / månad"
 
@@ -2762,6 +2771,10 @@ msgstr "{name} är slutsåld just nu. Försök igen senare eller välj en annan 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgid "1p9GGF"
 msgstr "Denna plan är slutsåld. Välj en annan plan."
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgid "fOZyRZ"
+msgstr "Din nuvarande period har gått ut. Förnya först din server och uppgradera sedan."
 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgid "ZjhoiP"
@@ -2780,6 +2793,10 @@ msgid "6WPC9q"
 msgstr "Planförändring"
 
 #: src/features/servers/components/plan/plan-summary.tsx
+msgid "kkpP2k"
+msgstr "idag"
+
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "Vn2ud4"
 msgstr "/ månad"
 
@@ -2792,8 +2809,8 @@ msgid "N387FB"
 msgstr "Din nuvarande plan kommer att förlängas med en månad."
 
 #: src/features/servers/components/plan/plan-summary.tsx
-msgid "TB+1v+"
-msgstr "Planen kommer att ändras till {name} och löptiden förlängs med en månad."
+msgid "6Mawmq"
+msgstr "Planen ändras till {name}. Du betalar bara den proportionerliga skillnaden idag — din nuvarande period förblir densamma."
 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgid "So9+9+"

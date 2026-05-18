@@ -22,6 +22,7 @@ import {
   datacenters,
   proxmoxNodeGroups,
   proxmoxNodes,
+  serverPlanPrices,
   serverPlans,
   servers,
   users,
@@ -35,6 +36,7 @@ import {
   mockProxmoxNodeGroup,
   mockServer,
   mockServerPlan,
+  mockServerPlanPrice,
   mockSession,
 } from "../fixtures";
 
@@ -108,6 +110,7 @@ describe("server.rename", () => {
     await testDb.insert(datacenters).values(mockDatacenter);
     await testDb.insert(proxmoxNodeGroups).values(mockProxmoxNodeGroup);
     await testDb.insert(serverPlans).values(mockServerPlan);
+    await testDb.insert(serverPlanPrices).values(mockServerPlanPrice);
     await testDb.insert(proxmoxNodes).values(mockProxmoxNode);
     await testDb.insert(servers).values(mockServer);
 

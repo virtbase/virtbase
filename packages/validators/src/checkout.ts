@@ -19,6 +19,7 @@ import * as z from "zod";
 import { ProxmoxTemplateSchema } from "./proxmox-template";
 import { ServerSchema } from "./server";
 import { ServerPlanSchema } from "./server-plan";
+import { ServerPlanPriceSchema } from "./server-plan-prices";
 import { SSHKeySchema } from "./ssh-keys";
 
 const orderType = z.enum(["new_server", "extend_server", "upgrade_server"]);
@@ -97,9 +98,10 @@ export type ConfigurationSnapshotBase = z.infer<
 
 export const OrderNewServerPlanConfigurationSnapshotSchema =
   ConfigurationSnapshotBaseSchema.extend({
-    version: z.literal(1),
+    version: z.literal(2),
     type: z.literal("new_server"),
     server_plan_id: OrderNewServerPlanInputSchema.shape.server_plan_id,
+    server_plan_price_id: ServerPlanPriceSchema.shape.id,
     template_id: OrderNewServerPlanInputSchema.shape.template_id,
     ssh_key_id: OrderNewServerPlanInputSchema.shape.ssh_key_id,
     root_password: z.string().nullish(),
@@ -111,10 +113,11 @@ export type OrderNewServerPlanConfigurationSnapshot = z.infer<
 
 export const OrderExtendServerPlanConfigurationSnapshotSchema =
   ConfigurationSnapshotBaseSchema.extend({
-    version: z.literal(1),
+    version: z.literal(2),
     type: z.literal("extend_server"),
     server_id: ServerSchema.shape.id,
     server_plan_id: ServerPlanSchema.shape.id,
+    server_plan_price_id: ServerPlanPriceSchema.shape.id,
   });
 
 export type OrderExtendServerPlanConfigurationSnapshot = z.infer<
@@ -123,10 +126,18 @@ export type OrderExtendServerPlanConfigurationSnapshot = z.infer<
 
 export const UpgradeServerPlanConfigurationSnapshotSchema =
   ConfigurationSnapshotBaseSchema.extend({
-    version: z.literal(1),
+    version: z.literal(2),
     type: z.literal("upgrade_server"),
     server_id: ServerSchema.shape.id,
     server_plan_id: OrderUpgradeServerPlanInputSchema.shape.server_plan_id,
+    server_plan_price_id: ServerPlanPriceSchema.shape.id,
+    /**
+     * The pro-rata amount charged today (in cents) when the upgrade was
+     * placed. The customer's term length does not change on upgrade, so
+     * this is the only money that changes hands at order time. Invoice
+     * generation uses this directly instead of recomputing.
+     */
+    upgrade_charge: z.int().positive(),
   });
 
 export type UpgradeServerPlanConfigurationSnapshot = z.infer<

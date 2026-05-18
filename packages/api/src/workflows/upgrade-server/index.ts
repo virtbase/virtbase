@@ -38,9 +38,11 @@ import {
 export async function upgradeServerWorkflow({
   serverId,
   serverPlanId,
+  serverPlanPriceId,
 }: {
   serverId: string;
   serverPlanId: string;
+  serverPlanPriceId: string;
 }) {
   "use workflow";
 
@@ -133,12 +135,14 @@ export async function upgradeServerWorkflow({
     await storeServerUpgradeStep({
       serverId,
       serverPlanId,
+      serverPlanPriceId,
     });
 
     rollbacks.push(async () => {
       await rollbackStoreServerUpgradeStep({
         serverId,
         previousServerPlanId: server.serverPlanId,
+        previousServerPlanPriceId: server.serverPlanPriceId,
       });
     });
 

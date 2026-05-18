@@ -170,6 +170,10 @@ export const relations = defineRelations(schema, (r) => ({
       from: r.servers.serverPlanId,
       to: r.serverPlans.id,
     }),
+    serverPlanPrice: r.one.serverPlanPrices({
+      from: r.servers.serverPlanPriceId,
+      to: r.serverPlanPrices.id,
+    }),
     proxmoxNode: r.one.proxmoxNodes({
       from: r.servers.proxmoxNodeId,
       to: r.proxmoxNodes.id,
@@ -193,11 +197,31 @@ export const relations = defineRelations(schema, (r) => ({
     }),
   },
   serverPlans: {
+    discounts: r.many.discounts({
+      from: r.serverPlans.id.through(r.discountsToServerPlans.serverPlanId),
+      to: r.discounts.id.through(r.discountsToServerPlans.discountId),
+    }),
     proxmoxNodeGroup: r.one.proxmoxNodeGroups({
       from: r.serverPlans.proxmoxNodeGroupId,
       to: r.proxmoxNodeGroups.id,
     }),
     servers: r.many.servers(),
+  },
+  serverPlanPrices: {
+    serverPlan: r.one.serverPlans({
+      from: r.serverPlanPrices.serverPlanId,
+      to: r.serverPlans.id,
+    }),
+    purchaseDiscount: r.one.discounts({
+      from: r.serverPlanPrices.purchaseDiscountId,
+      to: r.discounts.id,
+      optional: true,
+    }),
+    renewalDiscount: r.one.discounts({
+      from: r.serverPlanPrices.renewalDiscountId,
+      to: r.discounts.id,
+      optional: true,
+    }),
   },
   sshKeys: {
     user: r.one.users({

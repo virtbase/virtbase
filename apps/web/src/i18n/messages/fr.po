@@ -2748,6 +2748,15 @@ msgid "cenOuc"
 msgstr "SSD NVMe {storage}"
 
 #: src/features/servers/components/plan/plan-radio-group.tsx
+msgid "uPG29C"
+msgstr "{price} aujourd'hui"
+
+#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/plan-summary.tsx
+msgid "9H3YQm"
+msgstr "puis {price} / mois"
+
+#: src/features/servers/components/plan/plan-radio-group.tsx
 msgid "JxjC5u"
 msgstr "{price} / mois"
 
@@ -2762,6 +2771,10 @@ msgstr "{name} est actuellement épuisé. Réessayez plus tard ou choisissez un 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgid "1p9GGF"
 msgstr "Ce plan est épuisé. Veuillez choisir un plan différent."
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgid "fOZyRZ"
+msgstr "Votre période actuelle a expiré. Veuillez d'abord renouveler votre serveur, puis effectuer la mise à niveau."
 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgid "ZjhoiP"
@@ -2780,6 +2793,10 @@ msgid "6WPC9q"
 msgstr "Changement de forfait"
 
 #: src/features/servers/components/plan/plan-summary.tsx
+msgid "kkpP2k"
+msgstr "aujourd'hui"
+
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "Vn2ud4"
 msgstr "/ mois"
 
@@ -2792,8 +2809,8 @@ msgid "N387FB"
 msgstr "Votre forfait actuel sera prolongé d'un mois."
 
 #: src/features/servers/components/plan/plan-summary.tsx
-msgid "TB+1v+"
-msgstr "Le forfait sera changé en {name} et la durée sera prolongée d'un mois."
+msgid "6Mawmq"
+msgstr "Le forfait sera changé pour {name}. Vous ne payez aujourd'hui que la différence au prorata — votre période actuelle reste la même."
 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgid "So9+9+"

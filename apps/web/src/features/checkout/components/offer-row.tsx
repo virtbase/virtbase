@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { pickBestDiscount } from "@virtbase/db/queries";
 import { cn } from "@virtbase/ui";
 import { getAvailablePlans } from "../api/get-available-plans";
 import { OfferCard } from "./offer-card";
@@ -34,20 +35,29 @@ export async function OfferRow() {
             index > 0 && "border-border border-t",
           )}
         >
-          {chunk.map((plan) => (
-            <div key={plan.id}>
-              <OfferCard
-                plan={plan}
-                // TODO: Make dynamic
-                datacenter={{
-                  id: "dc_1",
-                  name: "SkyLink Data Center",
-                  country: "NL",
-                }}
-                enableUpsell
-              />
-            </div>
-          ))}
+          {chunk.map((plan) => {
+            const { discount: purchaseDiscount, finalPrice: purchasePrice } =
+              pickBestDiscount(plan.price, plan.activeDiscounts, "purchase");
+
+            return (
+              <div key={plan.id}>
+                <OfferCard
+                  plan={{
+                    ...plan,
+                    purchasePrice,
+                    purchaseDiscount,
+                  }}
+                  // TODO: Make dynamic
+                  datacenter={{
+                    id: "dc_1",
+                    name: "SkyLink Data Center",
+                    country: "NL",
+                  }}
+                  enableUpsell
+                />
+              </div>
+            );
+          })}
         </div>
       ))}
     </div>

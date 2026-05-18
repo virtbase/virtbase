@@ -2748,6 +2748,15 @@ msgid "cenOuc"
 msgstr "{storage} NVMe SSD"
 
 #: src/features/servers/components/plan/plan-radio-group.tsx
+msgid "uPG29C"
+msgstr "{price} vandaag"
+
+#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/plan-summary.tsx
+msgid "9H3YQm"
+msgstr "daarna {price} / maand"
+
+#: src/features/servers/components/plan/plan-radio-group.tsx
 msgid "JxjC5u"
 msgstr "{price} / maand"
 
@@ -2762,6 +2771,10 @@ msgstr "{name} is momenteel uitverkocht. Probeer het later opnieuw of kies een a
 #: src/features/servers/components/plan/plan-summary.tsx
 msgid "1p9GGF"
 msgstr "Dit plan is uitverkocht. Kies een ander abonnement."
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgid "fOZyRZ"
+msgstr "Je huidige termijn is verlopen. Verleng eerst je server en voer daarna de upgrade uit."
 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgid "ZjhoiP"
@@ -2780,6 +2793,10 @@ msgid "6WPC9q"
 msgstr "Planwijziging"
 
 #: src/features/servers/components/plan/plan-summary.tsx
+msgid "kkpP2k"
+msgstr "vandaag"
+
+#: src/features/servers/components/plan/plan-summary.tsx
 msgid "Vn2ud4"
 msgstr "/ maand"
 
@@ -2792,8 +2809,8 @@ msgid "N387FB"
 msgstr "Je huidige abonnement wordt met één maand verlengd."
 
 #: src/features/servers/components/plan/plan-summary.tsx
-msgid "TB+1v+"
-msgstr "Het abonnement wordt gewijzigd naar {name} en de looptijd wordt met een maand verlengd."
+msgid "6Mawmq"
+msgstr "Het plan wordt gewijzigd naar {name}. Je betaalt vandaag alleen het naar rato berekende verschil — je huidige termijn blijft hetzelfde."
 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgid "So9+9+"

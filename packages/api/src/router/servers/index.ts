@@ -22,6 +22,7 @@ import {
   proxmoxIsoDownloads,
   proxmoxNodes,
   proxmoxTemplates,
+  serverPlanPrices,
   serverPlans,
   servers,
   subnetAllocations,
@@ -87,6 +88,7 @@ export const serversRouter = {
           id: server.id,
           name: server.name,
           plan: server.plan,
+          price: server.price,
           template: server.template,
           datacenter: server.datacenter,
           node: server.node,
@@ -149,6 +151,15 @@ export const serversRouter = {
                     cores: serverPlans.cores,
                     memory: serverPlans.memory,
                     storage: serverPlans.storage,
+                  },
+              price: !input.expand.includes("price")
+                ? serverPlanPrices.id
+                : {
+                    id: serverPlanPrices.id,
+                    purchase_price: serverPlanPrices.purchasePrice,
+                    renewal_price: serverPlanPrices.renewalPrice,
+                    purchase_discount_id: serverPlanPrices.purchaseDiscountId,
+                    renewal_discount_id: serverPlanPrices.renewalDiscountId,
                   },
               template: !input.expand.includes("template")
                 ? proxmoxTemplates.id
@@ -222,6 +233,10 @@ export const serversRouter = {
             })
             .from(servers)
             .innerJoin(serverPlans, eq(servers.serverPlanId, serverPlans.id))
+            .innerJoin(
+              serverPlanPrices,
+              eq(servers.serverPlanPriceId, serverPlanPrices.id),
+            )
             .innerJoin(proxmoxNodes, eq(proxmoxNodes.id, servers.proxmoxNodeId))
             .innerJoin(
               datacenters,
@@ -243,6 +258,7 @@ export const serversRouter = {
             .groupBy(
               servers.id,
               serverPlans.id,
+              serverPlanPrices.id,
               proxmoxTemplates.id,
               datacenters.id,
               proxmoxNodes.id,
@@ -274,6 +290,7 @@ export const serversRouter = {
           name: item.name,
           template: item.template,
           plan: item.plan,
+          price: item.price,
           datacenter: item.datacenter,
           node: item.node,
           allocations: item.allocations,

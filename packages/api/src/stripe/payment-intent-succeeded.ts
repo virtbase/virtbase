@@ -21,10 +21,14 @@ import {
   provisionServerWorkflow,
   upgradeServerWorkflow,
 } from "@virtbase/api/workflows";
-import { eq } from "@virtbase/db";
+import { and, eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
-import { serverPlans, users } from "@virtbase/db/schema";
-import { decryptPayload, deriveKeyHex } from "@virtbase/utils";
+import { serverPlanPrices, serverPlans, users } from "@virtbase/db/schema";
+import {
+  decryptPayload,
+  deriveKeyHex,
+  readChunkedStripeMetadata,
+} from "@virtbase/utils";
 import type { OrderConfigurationSnapshot } from "@virtbase/validators";
 import type Stripe from "stripe";
 import { start } from "workflow/api";
@@ -45,11 +49,23 @@ import { stripe } from "./client";
  */
 export const handlePaymentIntentSucceeded = async (event: Stripe.Event) => {
   const paymentIntent = event.data.object as Stripe.PaymentIntent;
+  // Stripe types `Metadata` as `{ [key: string]: string }` but in practice
+  // unrecognised keys come through as `string | undefined`; the chunk
+  // reader expects the looser shape.
   const metadata = paymentIntent.metadata as
-    | { configurationSnapshot?: string }
+    | Record<string, string | undefined>
     | undefined;
 
-  if (!metadata?.configurationSnapshot) {
+  // The snapshot is chunked across `configurationSnapshot_0..N` keys
+  // because the encrypted payload overflows Stripe's 500-character
+  // per-value metadata limit. `readChunkedStripeMetadata` reassembles
+  // it (and transparently handles legacy single-key entries).
+  const configurationSnapshot = readChunkedStripeMetadata(
+    metadata,
+    "configurationSnapshot",
+  );
+
+  if (!configurationSnapshot) {
     throw new Error(
       "Configuration snapshot is missing. Cannot process payment intent.",
     );
@@ -63,7 +79,7 @@ export const handlePaymentIntentSucceeded = async (event: Stripe.Event) => {
   }
 
   const decrypted = await decryptPayload(
-    metadata.configurationSnapshot,
+    configurationSnapshot,
     await deriveKeyHex(stripeSecretKey),
   );
   let configuration: OrderConfigurationSnapshot;
@@ -76,11 +92,22 @@ export const handlePaymentIntentSucceeded = async (event: Stripe.Event) => {
   }
 
   const planId = configuration.server_plan_id;
+  const serverPlanPriceId = configuration.server_plan_price_id;
 
-  const [plan, user] = await db.transaction(
+  const [plan, price, user] = await db.transaction(
     async (tx) =>
       Promise.all([
         tx.$count(serverPlans, eq(serverPlans.id, planId)),
+        tx.$count(
+          serverPlanPrices,
+          and(
+            eq(serverPlanPrices.id, serverPlanPriceId),
+            // Sanity check: the price row must belong to the plan recorded
+            // in the same snapshot. Mismatch indicates a tampered or stale
+            // payment intent.
+            eq(serverPlanPrices.serverPlanId, planId),
+          ),
+        ),
         tx
           .select({
             id: users.id,
@@ -99,6 +126,12 @@ export const handlePaymentIntentSucceeded = async (event: Stripe.Event) => {
   if (!plan) {
     throw new Error(
       `Server plan not found. No actions will be taken. ID: ${planId}`,
+    );
+  }
+
+  if (!price) {
+    throw new Error(
+      `Server plan price not found or does not belong to the recorded plan. No actions will be taken. ID: ${serverPlanPriceId}`,
     );
   }
 
@@ -141,6 +174,7 @@ export const handlePaymentIntentSucceeded = async (event: Stripe.Event) => {
       await start(provisionServerWorkflow, [
         {
           serverPlanId: planId,
+          serverPlanPriceId,
           userId: user.id,
           initialSSHKeyId: configuration.ssh_key_id,
           initialRootPassword: configuration.root_password,
@@ -153,6 +187,7 @@ export const handlePaymentIntentSucceeded = async (event: Stripe.Event) => {
         {
           serverId: configuration.server_id,
           serverPlanId: planId,
+          serverPlanPriceId,
         },
       ]);
       break;

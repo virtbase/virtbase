@@ -148,7 +148,7 @@ const nextConfig: NextConfig = {
           value: "public, s-maxage=300, stale-while-revalidate=86400",
         },
       ],
-    }
+    },
   ],
   images: {
     formats: ["image/avif", "image/webp"],

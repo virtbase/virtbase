@@ -26,6 +26,7 @@ export const lexwareInvoiceMessages = {
     remark: "Thank you for your purchase at {appName}!",
     paymentConditionText:
       "This invoice has already been paid, please do not transfer.",
+    upgradeLineItemName: "Upgrade to {name} (prorated)",
   },
   de: {
     unitName: "Stück",
@@ -34,6 +35,7 @@ export const lexwareInvoiceMessages = {
     remark: "Vielen Dank für Ihren Einkauf bei {appName}!",
     paymentConditionText:
       "Diese Rechnung ist bereits bezahlt, bitte nicht überweisen.",
+    upgradeLineItemName: "Upgrade auf {name} (anteilig)",
   },
   nl: {
     unitName: "Stuk",
@@ -42,6 +44,7 @@ export const lexwareInvoiceMessages = {
     remark: "Bedankt voor uw aankoop bij {appName}!",
     paymentConditionText:
       "Deze factuur is al betaald, gelieve niet over te maken.",
+    upgradeLineItemName: "Upgrade naar {name} (pro rata)",
   },
   fr: {
     unitName: "Unité",
@@ -50,6 +53,7 @@ export const lexwareInvoiceMessages = {
     remark: "Merci pour votre achat chez {appName} !",
     paymentConditionText:
       "Cette facture est déjà payée, veuillez ne pas transférer.",
+    upgradeLineItemName: "Mise à niveau vers {name} (au prorata)",
   },
 } satisfies Record<Locale, AbstractIntlMessages>;
 

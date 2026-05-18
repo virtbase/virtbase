@@ -22,6 +22,7 @@ import { PaginationSchema } from "../pagination";
 import { ProxmoxIsoDownloadSchema } from "../proxmox-iso-downloads";
 import { ProxmoxTemplateSchema } from "../proxmox-template";
 import { ServerPlanSchema } from "../server-plan";
+import { ServerPlanPriceSchema } from "../server-plan-prices";
 import { SubnetAllocationSchema } from "../subnet-allocations";
 import { SubnetSchema } from "../subnets";
 import { preprocessQueryArray } from "../utils";
@@ -29,7 +30,15 @@ import type { Server } from "./shared";
 import { ServerSchema } from "./shared";
 
 export const ServerExpandSchema = z
-  .enum(["template", "plan", "datacenter", "node", "allocations", "mount"])
+  .enum([
+    "template",
+    "plan",
+    "price",
+    "datacenter",
+    "node",
+    "allocations",
+    "mount",
+  ])
   .array()
   .default([]);
 
@@ -60,6 +69,20 @@ const ServerPlanField = z.union([
   }).meta({
     description:
       "Only present if the `plan` expand is included. The current plan of the server.",
+  }),
+]);
+
+const ServerPriceField = z.union([
+  ServerPlanPriceSchema.shape.id,
+  ServerPlanPriceSchema.pick({
+    id: true,
+    purchase_price: true,
+    renewal_price: true,
+    purchase_discount_id: true,
+    renewal_discount_id: true,
+  }).meta({
+    description:
+      "Only present if the `price` expand is included. The current price of the server, including discount references if any.",
   }),
 ]);
 
@@ -147,6 +170,7 @@ export const GetServerOutputSchema = z.object({
   }).extend({
     plan: ServerPlanField,
     template: ServerTemplateField,
+    price: ServerPriceField,
     datacenter: ServerDatacenterField,
     node: ServerNodeField,
     allocations: ServerAllocationsField,
@@ -192,6 +216,7 @@ export const ListServersOutputSchema = z.object({
     }).extend({
       template: ServerTemplateField,
       plan: ServerPlanField,
+      price: ServerPriceField,
       datacenter: ServerDatacenterField,
       node: ServerNodeField,
       allocations: ServerAllocationsField,

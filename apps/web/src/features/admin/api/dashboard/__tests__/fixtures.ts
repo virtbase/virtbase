@@ -22,6 +22,7 @@ import type {
   proxmoxNodes,
   proxmoxTemplateGroups,
   proxmoxTemplates,
+  serverPlanPrices,
   serverPlans,
   servers,
   users,
@@ -82,6 +83,13 @@ export const mockServerPlan = {
   updatedAt: new Date(),
 } satisfies typeof serverPlans.$inferInsert;
 
+export const mockServerPlanPrice = {
+  id: "price_0000000000000000000000001",
+  serverPlanId: mockServerPlan.id,
+  purchasePrice: 2999,
+  renewalPrice: 3499,
+} satisfies typeof serverPlanPrices.$inferInsert;
+
 export const mockProxmoxTemplateGroup = {
   id: "ptg_0000000000000000000000001",
   name: "Debian",
@@ -106,6 +114,7 @@ export const mockServer = {
   id: "kvm_0000000000000000000000001",
   userId: mockUser.id,
   serverPlanId: mockServerPlan.id,
+  serverPlanPriceId: mockServerPlanPrice.id,
   proxmoxNodeId: mockProxmoxNode.id,
   proxmoxTemplateId: null,
   name: "Test Server",

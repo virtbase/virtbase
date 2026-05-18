@@ -17,6 +17,7 @@
 
 import type {
   DatabaseDatacenter,
+  DatabaseDiscount,
   DatabaseServerPlan,
 } from "@virtbase/db/schema";
 import { cn } from "@virtbase/ui";
@@ -41,6 +42,7 @@ import { formatBits, formatBytes } from "@virtbase/utils";
 import { useExtracted, useFormatter } from "next-intl";
 import type React from "react";
 import { IntlLink } from "@/i18n/navigation.public";
+import { formatDiscountLabel } from "../utils/format-discount";
 
 type OfferCardProps = React.ComponentProps<"div"> & {
   plan: {
@@ -54,6 +56,16 @@ type OfferCardProps = React.ComponentProps<"div"> & {
     upsellTo?: DatabaseServerPlan["upsellTo"];
     isAvailable: boolean;
     recommended?: boolean;
+    /**
+     * Resulting purchase price (in cents) after the best active discount has
+     * been applied. When omitted or equal to `price`, no discount UI is shown.
+     */
+    purchasePrice?: number;
+    /**
+     * Best active discount for the purchase side, if any. Used to render the
+     * savings badge next to the price.
+     */
+    purchaseDiscount?: Pick<DatabaseDiscount, "type" | "amount"> | null;
   };
   datacenter: {
     id: DatabaseDatacenter["id"];
@@ -72,6 +84,10 @@ export function OfferCard({
 }: OfferCardProps) {
   const t = useExtracted();
   const format = useFormatter();
+
+  const purchasePrice = plan.purchasePrice ?? plan.price;
+  const hasDiscount =
+    plan.purchaseDiscount != null && purchasePrice < plan.price;
 
   return (
     <div
@@ -93,10 +109,31 @@ export function OfferCard({
                 {t("Popular")}
               </Badge>
             )}
+            {hasDiscount && plan.purchaseDiscount && (
+              <Badge
+                variant="destructive"
+                className="px-2 py-1 text-center text-[0.5rem] uppercase tabular-nums leading-none"
+              >
+                {formatDiscountLabel(plan.purchaseDiscount, format)}
+              </Badge>
+            )}
           </div>
           <div className="mt-1 flex items-center gap-1.5">
-            <span className="font-medium text-base tabular-nums">
-              {format.number(plan.price / 100, {
+            {hasDiscount && (
+              <span className="text-muted-foreground text-sm tabular-nums line-through">
+                {format.number(plan.price / 100, {
+                  style: "currency",
+                  currency: "EUR",
+                })}
+              </span>
+            )}
+            <span
+              className={cn(
+                "font-medium text-base tabular-nums",
+                hasDiscount && "text-destructive",
+              )}
+            >
+              {format.number(purchasePrice / 100, {
                 style: "currency",
                 currency: "EUR",
               })}

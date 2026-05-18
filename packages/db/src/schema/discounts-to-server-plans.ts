@@ -15,15 +15,27 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./aes-encryption";
-export * from "./construct-metadata";
-export * from "./construct-opengraph-url";
-export * from "./format-bytes";
-export * from "./generate-password";
-export * from "./get-gravatar-image";
-export * from "./map-proxmox-server-status";
-export * from "./map-proxmox-task-status";
-export * from "./parse-public-key";
-export * from "./server-state";
-export * from "./stripe-metadata";
-export * from "./truncate";
+import { pgTable, primaryKey } from "drizzle-orm/pg-core";
+import { discounts } from "./discounts";
+import { serverPlans } from "./server-plans";
+
+export const discountsToServerPlans = pgTable(
+  "discounts_to_server_plans",
+  (t) => ({
+    discountId: t
+      .text()
+      .notNull()
+      .references(() => discounts.id, {
+        onDelete: "cascade",
+        onUpdate: "cascade",
+      }),
+    serverPlanId: t
+      .text()
+      .notNull()
+      .references(() => serverPlans.id, {
+        onDelete: "cascade",
+        onUpdate: "cascade",
+      }),
+  }),
+  (t) => [primaryKey({ columns: [t.discountId, t.serverPlanId] })],
+);

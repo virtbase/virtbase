@@ -42,6 +42,7 @@ import {
 
 type ProvisionServerWorkflowParams = {
   serverPlanId: string;
+  serverPlanPriceId: string;
   userId: string;
   proxmoxTemplateId?: string | null;
   initialRootPassword?: string | null;
@@ -50,6 +51,7 @@ type ProvisionServerWorkflowParams = {
 
 export async function provisionServerWorkflow({
   serverPlanId,
+  serverPlanPriceId,
   userId,
   proxmoxTemplateId,
   initialRootPassword,
@@ -177,6 +179,7 @@ export async function provisionServerWorkflow({
       proxmoxNodeId: selectedNode.id,
       userId,
       serverPlanId,
+      serverPlanPriceId,
       proxmoxTemplateId,
       allocations,
     });
