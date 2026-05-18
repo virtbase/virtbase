@@ -34,6 +34,7 @@ import {
   formatBits,
   PUBLIC_DOMAIN,
 } from "@virtbase/utils";
+import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import { getExtracted, getFormatter, getLocale } from "next-intl/server";
 import { getServerPlan } from "@/features/checkout/api/get-server-plan";
@@ -77,14 +78,19 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: PageProps<"/[locale]/upsell/[from]/[to]">) {
+  "use cache";
+
   const { from, to } = await params;
+
+  const locale = await getLocale();
+  const t = await getExtracted({ locale });
+
+  cacheLife("max");
+  cacheTag("home", locale);
 
   if (from === PLACEHOLDER_ID || to === PLACEHOLDER_ID || from === to) {
     notFound();
   }
-
-  const locale = await getLocale();
-  const t = await getExtracted();
 
   const title = t("Upgrade to a more powerful server");
   const description = t("A small extra charge. Significantly more power.");
@@ -105,6 +111,8 @@ export async function generateMetadata({
 export default async function Page({
   params,
 }: PageProps<"/[locale]/upsell/[from]/[to]">) {
+  "use cache";
+
   const { from, to } = await params;
 
   if (from === PLACEHOLDER_ID || to === PLACEHOLDER_ID || from === to) {
@@ -123,7 +131,11 @@ export default async function Page({
     notFound();
   }
 
-  const t = await getExtracted();
+  const locale = await getLocale();
+  const t = await getExtracted({ locale });
+
+  cacheLife("max");
+  cacheTag("home", locale);
 
   return (
     <main>

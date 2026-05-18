@@ -28,13 +28,19 @@ import {
   PUBLIC_DOMAIN,
 } from "@virtbase/utils";
 import type { Metadata } from "next";
+import { cacheLife, cacheTag } from "next/cache";
 import { getExtracted, getLocale } from "next-intl/server";
 import { IntlLink } from "@/i18n/navigation.public";
 import { helpArticles } from "@/lib/source";
 
 export async function generateMetadata(): Promise<Metadata> {
+  "use cache";
+
   const locale = await getLocale();
-  const t = await getExtracted();
+  const t = await getExtracted({ locale });
+
+  cacheLife("max");
+  cacheTag("home", locale);
 
   const title = t("Help Center");
   const description = t(
@@ -55,8 +61,13 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function HelpPage() {
+  "use cache";
+
   const locale = await getLocale();
-  const t = await getExtracted();
+  const t = await getExtracted({ locale });
+
+  cacheLife("max");
+  cacheTag("home", locale);
 
   const pages = helpArticles
     .getPages()

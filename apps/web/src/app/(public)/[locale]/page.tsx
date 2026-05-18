@@ -21,6 +21,7 @@ import {
   PUBLIC_DOMAIN,
 } from "@virtbase/utils";
 import type { Metadata } from "next";
+import { cacheLife, cacheTag } from "next/cache";
 import { getExtracted, getLocale } from "next-intl/server";
 import { OfferRow } from "@/features/checkout/components/offer-row";
 import { AdvantagesRow } from "@/features/landing/components/advantages-row";
@@ -30,8 +31,13 @@ import { OperatingSystemShowcase } from "@/features/landing/components/operating
 import { BlockWrapper } from "@/ui/block-wrapper";
 
 export async function generateMetadata(): Promise<Metadata> {
+  "use cache";
+
   const locale = await getLocale();
   const t = await getExtracted();
+
+  cacheLife("max");
+  cacheTag("home", locale);
 
   const title = t("Virtbase - Hosting, but secure.");
   const description = t(
@@ -52,7 +58,13 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 export default async function Page() {
-  const t = await getExtracted();
+  "use cache";
+
+  const locale = await getLocale();
+  const t = await getExtracted({ locale });
+
+  cacheLife("max");
+  cacheTag("home", locale);
 
   return (
     <main>

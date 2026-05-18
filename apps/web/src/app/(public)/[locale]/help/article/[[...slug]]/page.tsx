@@ -34,6 +34,7 @@ import { ImageZoom } from "fumadocs-ui/components/image-zoom";
 import { Step, Steps } from "fumadocs-ui/components/steps";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { Metadata } from "next";
+import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import { getExtracted, getFormatter, getLocale } from "next-intl/server";
 import { defaultLocale } from "@/i18n/config";
@@ -52,7 +53,12 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: PageProps<"/[locale]/help/article/[[...slug]]">): Promise<Metadata> {
+  "use cache";
+
   const { locale, slug } = await params;
+
+  cacheLife("max");
+  cacheTag("home", locale);
 
   const page = helpArticles.getPage(slug, locale);
 
@@ -60,13 +66,15 @@ export async function generateMetadata({
     notFound();
   }
 
+  const { title, description } = page.data;
+
   return constructMetadata({
-    title: page.data.title,
-    description: page.data.description,
+    title,
+    description,
     canonicalUrl: PUBLIC_DOMAIN + page.url,
     image: constructOpengraphUrl({
-      title: page.data.title,
-      subtitle: page.data.description,
+      title,
+      subtitle: description,
       slug: page.url,
       theme: "dark",
     }),
@@ -77,8 +85,13 @@ export async function generateMetadata({
 export default async function HelpArticlePage({
   params,
 }: PageProps<"/[locale]/help/article/[[...slug]]">) {
+  "use cache";
+
   const locale = await getLocale();
   const slug = (await params).slug;
+
+  cacheLife("max");
+  cacheTag("home", locale);
 
   const page = helpArticles.getPage(slug, locale);
   if (!page) {
@@ -87,12 +100,10 @@ export default async function HelpArticlePage({
 
   const MDX = page.data.body;
 
-  const title = page.data.title;
-  const description = page.data.description;
-  const lastModified = page.data.lastModified;
+  const { title, description, lastModified } = page.data;
 
-  const t = await getExtracted();
-  const format = await getFormatter();
+  const t = await getExtracted({ locale });
+  const format = await getFormatter({ locale });
 
   return (
     <main className="relative border-border border-t">

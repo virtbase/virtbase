@@ -85,7 +85,7 @@ export function constructMetadata({
       }),
       creator: "@virtbasecom",
     },
-    metadataBase: new URL(PUBLIC_DOMAIN),
+    metadataBase: PUBLIC_DOMAIN,
     ...((url || canonicalUrl) && {
       alternates: {
         canonical: url || canonicalUrl,

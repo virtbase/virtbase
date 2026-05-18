@@ -24,6 +24,7 @@ import {
   PUBLIC_DOMAIN,
 } from "@virtbase/utils";
 import type { Metadata } from "next";
+import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import type { Locale } from "next-intl";
 import { getExtracted, getLocale } from "next-intl/server";
@@ -64,8 +65,15 @@ export async function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
-  const id = (await params).id;
+  "use cache";
 
+  const locale = await getLocale();
+  const t = await getExtracted({ locale });
+
+  cacheLife("max");
+  cacheTag("home", locale);
+
+  const id = (await params).id;
   if (id === "__placeholder__") {
     return {};
   }
@@ -74,9 +82,6 @@ export async function generateMetadata({
   if (!plan) {
     notFound();
   }
-
-  const locale = await getLocale();
-  const t = await getExtracted();
 
   const title = t("Configure {name}", { name: plan.name });
   const description = t("Configure the server plan {name} on {appName}", {

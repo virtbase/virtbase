@@ -39,15 +39,19 @@ import { APP_DOMAIN, constructMetadata, PUBLIC_DOMAIN } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
-import { connection } from "next/server";
 import { getExtracted, getLocale } from "next-intl/server";
 import { cache } from "react";
 import { ConfettiFireworks } from "@/features/checkout/components/confetti-fireworks";
 import { IntlLink } from "@/i18n/navigation.public";
 
 export async function generateMetadata(): Promise<Metadata> {
+  "use cache";
+
   const locale = await getLocale();
-  const t = await getExtracted();
+  const t = await getExtracted({ locale });
+
+  cacheLife("max");
+  cacheTag("home", locale);
 
   return constructMetadata({
     fullTitle: t("Payment details"),
@@ -138,16 +142,13 @@ const getStatusMap = cache(async () => {
 const getPaymentIntentStatus = cache(async (payment_intent: string) => {
   "use cache";
 
-  cacheLife("seconds");
+  cacheLife("minutes");
   cacheTag(payment_intent);
 
   try {
-    if (!stripe) {
-      return "canceled";
-    }
-
-    const response = await stripe.paymentIntents.retrieve(payment_intent);
-    return response.status;
+    return stripe
+      ? (await stripe.paymentIntents.retrieve(payment_intent)).status
+      : "canceled";
   } catch (error) {
     captureException(error);
 
@@ -159,13 +160,15 @@ const getPaymentIntentStatus = cache(async (payment_intent: string) => {
 export default async function CheckoutSuccessPage({
   searchParams,
 }: PageProps<"/[locale]/checkout/return">) {
-  await connection();
+  "use cache: private";
 
   const { payment_intent } = await searchParams;
-
   if (!payment_intent || "string" !== typeof payment_intent) {
     notFound();
   }
+
+  cacheLife("minutes");
+  cacheTag(payment_intent);
 
   const t = await getExtracted();
 
