@@ -23,6 +23,7 @@ import { createMDX } from "fumadocs-mdx/next";
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 import { withWorkflow } from "workflow/next";
+import { routing } from "@/i18n/routing.public";
 import { contentSecurityPolicy } from "@/lib/csp";
 
 const nextConfig: NextConfig = {
@@ -133,6 +134,21 @@ const nextConfig: NextConfig = {
         },
       ],
     },
+    {
+      source: `/:locale(${routing.locales.join("|")})/:path*`,
+      has: [
+        {
+          type: "host",
+          value: new URL(PUBLIC_DOMAIN).hostname,
+        },
+      ],
+      headers: [
+        {
+          key: "Cache-Control",
+          value: "public, s-maxage=300, stale-while-revalidate=86400",
+        },
+      ],
+    }
   ],
   images: {
     formats: ["image/avif", "image/webp"],
