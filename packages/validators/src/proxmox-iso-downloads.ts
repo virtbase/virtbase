@@ -47,8 +47,10 @@ export const ProxmoxIsoDownloadSchema = z.object({
       protocol: /^https$/,
       hostname: z.regexes.domain,
     })
-    .toLowerCase()
-    .refine((value) => new URL(value).pathname.endsWith(".iso"))
+    .refine((value) => new URL(value).pathname.toLowerCase().endsWith(".iso"), {
+      // Only run if the URL itself is valid (otherwise, it would throw an error)
+      when: (payload) => !payload.issues.length,
+    })
     .register(z.globalRegistry, {
       description: "The URL that was used to download the ISO image.",
       examples: ["https://example.com/debian-12-amd64.iso"],
