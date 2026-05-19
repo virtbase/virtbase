@@ -140,26 +140,32 @@ export const isoStatusRouter = {
           }
 
           if (task.status === "running") {
-            // ISO download is still running
+            // ISO download is still running.
+            //
+            // The Proxmox task log grows chronologically (oldest first) and
+            // the `proxmox-api` client does not expose the `Total-Count`
+            // header, so we cannot jump straight to the tail. We therefore
+            // page through every batch and keep overwriting `percentage`
+            // with the newest match we find, so the value we return reflects
+            // the *latest* progress line in the entire log rather than the
+            // newest match in the first batch.
 
             let start = 0;
-            const limit = 50;
+            const limit = 500;
 
             let percentage: number | null = null;
 
-            while (percentage === null) {
+            while (true) {
               const result = await instance.node.tasks.$(upid).log.$get({
                 download: false,
                 start,
                 limit,
               });
 
-              // No more logs available
               if (result.length === 0) {
                 break;
               }
 
-              // Search newest -> oldest in this batch
               for (let i = result.length - 1; i >= 0; i--) {
                 const text = result[i]?.t;
                 if (!text) continue;
@@ -171,7 +177,6 @@ export const isoStatusRouter = {
                 }
               }
 
-              // Last page reached and still nothing found
               if (result.length < limit) {
                 break;
               }
