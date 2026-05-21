@@ -80,6 +80,8 @@ if (( FROM > TO )); then
 fi
 
 HOOKSCRIPT="${STORAGE}:snippets/${SCRIPT}"
+UPDATED=0
+SKIPPED=0
 
 run_qm_set() {
   local vmid="$1"
@@ -91,11 +93,16 @@ run_qm_set() {
   fi
 
   echo "[*] Setting hookscript on VM $vmid..."
-  "${cmd[@]}"
+  if "${cmd[@]}"; then
+    ((UPDATED++)) || true
+  else
+    echo "[!] Skipping VM $vmid (qm set failed)." >&2
+    ((SKIPPED++)) || true
+  fi
 }
 
 for (( vmid = FROM; vmid <= TO; vmid++ )); do
   run_qm_set "$vmid"
 done
 
-echo "[*] Done. Updated VM IDs ${FROM}-${TO} with hookscript ${HOOKSCRIPT}."
+echo "[*] Done. Updated ${UPDATED} VM(s), skipped ${SKIPPED}. Hookscript: ${HOOKSCRIPT}."
