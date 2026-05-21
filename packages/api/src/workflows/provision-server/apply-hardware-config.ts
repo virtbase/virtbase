@@ -23,7 +23,7 @@ import type { GetProxmoxInstanceParams } from "../../proxmox";
 import { getProxmoxInstance } from "../../proxmox";
 
 type ApplyHardwareConfigStepParams = {
-  proxmoxNode: GetProxmoxInstanceParams;
+  proxmoxNode: GetProxmoxInstanceParams & { snippetStorage: string };
   vmid: number;
   plan: {
     cores: number;
@@ -106,6 +106,7 @@ export async function applyHardwareConfigStep({
     ostype: "l26", // Linux 2.6 - 6.X Kernel
     freeze: false, // Don't freeze the VM when booting up
     hotplug: "0", // Don't allow any hotplugging of devices (enhanced security)
+    hookscript: `${proxmoxNode.snippetStorage}:snippets/hookscript.pl`,
     tags: [
       "virtbase",
       // Add tag `preview` or `development` if not in production

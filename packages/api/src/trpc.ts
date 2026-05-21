@@ -378,6 +378,7 @@ const serverMiddleware = authMiddleware.unstable_pipe(
               tokenSecret: proxmoxNodes.tokenSecret,
               backupStorage: proxmoxNodes.backupStorage,
               isoDownloadStorage: proxmoxNodes.isoDownloadStorage,
+              snippetStorage: proxmoxNodes.snippetStorage,
             },
           })
           .from(servers)

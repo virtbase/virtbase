@@ -32,7 +32,7 @@ import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task";
 import { loadBackupStep } from "./load-backup";
 
 type RestoreServerBackupWorkflowParams = {
-  proxmoxNode: GetProxmoxInstanceParams;
+  proxmoxNode: GetProxmoxInstanceParams & { snippetStorage: string };
   vmid: number;
   volid: string;
   proxmoxTemplateId: string | null;
@@ -154,6 +154,7 @@ export async function restoreServerBackupWorkflow({
         ostype: ostype as Proxmox.Tostype,
         freeze,
         hotplug,
+        hookscript: `${proxmoxNode.snippetStorage}:snippets/hookscript.pl`,
         tags,
         bios: bios as Proxmox.Tbios,
         tpmstate0,
