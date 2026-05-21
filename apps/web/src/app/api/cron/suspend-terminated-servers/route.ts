@@ -23,7 +23,6 @@ import { proxmoxNodes, servers, users } from "@virtbase/db/schema";
 import { sendBatchEmail } from "@virtbase/email";
 import ServerSuspended from "@virtbase/email/templates/server-suspended";
 import { getEmailTitle } from "@virtbase/email/translations";
-import { mapProxmoxServerStatus, ProxmoxServerStatus } from "@virtbase/utils";
 import type { NextRequest } from "next/server";
 
 /**
@@ -86,30 +85,12 @@ async function handler(request: NextRequest) {
       const instance = getProxmoxInstance(node);
 
       // Update all servers to not boot if host is rebooted
-      // This change is asynchronous and applied after the shutdown operation.
+      // This change is synchronous and applied before the shutdown operation.
       await Promise.all(
         servers.map(async (server) => {
           try {
             const vm = instance.node.qemu.$(server.vmid);
-
-            const response = await vm.status.current.$get();
-
-            if (response.lock) {
-              const status = mapProxmoxServerStatus(response);
-              if (status === ProxmoxServerStatus.SUSPENDED) {
-                // User has currently suspended the server (locked)
-                // Revert this action
-                await vm.status.resume.$post();
-                await new Promise((resolve) => setTimeout(resolve, 2_000));
-              } else {
-                // Server is not suspended, but has another global lock
-                throw new Error(
-                  "[CRON] Server is not suspended, but has another global lock, deferring suspension",
-                );
-              }
-            }
-
-            await vm.config.$post({
+            await vm.config.$put({
               onboot: false,
             });
           } catch (error) {

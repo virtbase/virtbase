@@ -128,20 +128,20 @@ export const UpdateServerStatusInputSchema = z.object({
       "stop",
       "pause",
       "resume",
-      "suspend",
+      // Suspend is not available in high availability environments
+      //"suspend",
       "reset",
       "reboot",
       "shutdown",
     ])
     .meta({
       description:
-        "The action to perform on the server.\n\nThe action `resume` is only valid if the server is in a suspended/paused state. The action `pause` and `suspend` are only valid if the server is in a running state.",
+        "The action to perform on the server.\n\nThe action `resume` is only valid if the server is in a suspended/paused state. The action `pause` is only valid if the server is in a running state.",
       examples: [
         "start",
         "stop",
         "pause",
         "resume",
-        "suspend",
         "reset",
         "reboot",
         "shutdown",

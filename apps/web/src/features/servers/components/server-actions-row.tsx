@@ -28,7 +28,6 @@ import {
 } from "@virtbase/ui/dropdown-menu";
 import {
   LucideDisc3,
-  LucideDownload,
   LucideMoreHorizontal,
   LucidePause,
   LucidePlay,
@@ -155,17 +154,6 @@ export function ServerActionsRow() {
             >
               <LucidePause aria-hidden />
               {t("Pause")}
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              onClick={() =>
-                changeStatus({ server_id: serverId, action: "suspend" })
-              }
-              disabled={
-                !hasState(status, ProxmoxServerStatus.RUNNING) || isBusy(status)
-              }
-            >
-              <LucideDownload aria-hidden />
-              {t("Suspend")}
             </DropdownMenuItem>
             <DropdownMenuSeparator />
             <DropdownMenuItem
