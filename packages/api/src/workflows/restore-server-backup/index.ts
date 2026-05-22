@@ -183,7 +183,6 @@ export async function restoreServerBackupWorkflow({
       });
 
       if (resizeUpid) {
-        await sleep("5s");
         await waitForProxmoxTaskStep({
           proxmoxNode,
           upid: resizeUpid,
@@ -200,7 +199,6 @@ export async function restoreServerBackupWorkflow({
     });
 
     if (null !== startUpid) {
-      await sleep("5s");
       // Check if the guest can start correctly before unlocking the server
       // If this fails, the server will still be locked to prevent further actions by the customer
       await waitForProxmoxTaskStep({

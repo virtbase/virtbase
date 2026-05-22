@@ -17,6 +17,7 @@
 
 import { FatalError, sleep } from "workflow";
 import { cloneGuestStep, rollbackCloneGuestStep } from "../shared/clone-guest";
+import { getHAFailoverNodesStep } from "../shared/get-ha-failover-nodes";
 import { getNetworkAdaptersStep } from "../shared/get-network-adapters";
 import { getTemplateStep } from "../shared/get-template";
 import {
@@ -24,6 +25,7 @@ import {
   rollbackPerformGuestActionStep,
 } from "../shared/perform-guest-action";
 import { resizeDiskStep, rollbackResizeDiskStep } from "../shared/resize-disk";
+import { updateHASettingsStep } from "../shared/update-ha-settings";
 import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task";
 import {
   applyHardwareConfigStep,
@@ -90,7 +92,7 @@ export async function provisionServerWorkflow({
       },
     });
 
-    await sleep("5s");
+    await sleep("3s");
     await waitForProxmoxTaskStep({
       proxmoxNode: selectedNode,
       upid: cloneUpid,
@@ -113,8 +115,6 @@ export async function provisionServerWorkflow({
     });
 
     if (resizeUpid) {
-      // Wait at least 5 seconds before checking task status
-      await sleep("5s");
       await waitForProxmoxTaskStep({
         proxmoxNode: selectedNode,
         upid: resizeUpid,
@@ -197,7 +197,6 @@ export async function provisionServerWorkflow({
     });
 
     if (null !== startUpid) {
-      await sleep("5s");
       await waitForProxmoxTaskStep({
         proxmoxNode: selectedNode,
         upid: startUpid,
@@ -228,6 +227,27 @@ export async function provisionServerWorkflow({
       initialRootPassword: isRootPasswordGenerated ? rootPassword : null,
       sshKeyApplied,
     });
+
+    try {
+      // Add up to 5 sibling nodes from the same node group as failover
+      // targets so the HA stack can relocate the VM if the primary fails.
+      const { hostnames: failoverHostnames } = await getHAFailoverNodesStep({
+        proxmoxNodeGroupId: plan.proxmoxNodeGroupId,
+        excludeHostname: selectedNode.hostname,
+      });
+
+      await updateHASettingsStep({
+        proxmoxNode: selectedNode,
+        vmid: clonedVmid,
+        mode: "create",
+        nodes: failoverHostnames,
+      });
+    } catch (error) {
+      console.warn(
+        "[@virtbase/api] Failed to update HA settings for new server: ",
+        error,
+      );
+    }
   } catch (error) {
     for (const rollback of rollbacks.reverse()) {
       await rollback();

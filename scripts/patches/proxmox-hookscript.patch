@@ -1,0 +1,10 @@
+--- a/API2/Qemu.pm
++++ b/API2/Qemu.pm
+@@ -811,6 +811,7 @@
+     'startup' => 1,
+     'tdf' => 1,
+     'template' => 1,
++    'hookscript' => 1,
+ };
+ 
+ my $vmpoweroptions = {

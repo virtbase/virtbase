@@ -49,6 +49,12 @@ export const changeAdapterNetrate = ({
     return net.replace(/rate=\d+/, `rate=${netrate}`);
   }
 
+  if (!netrate) {
+    // The current network config did not have a ratelimit
+    // and new ratelimit is not set
+    return net;
+  }
+
   // The current network config does not have a ratelimit
   // Add the new ratelimit and return the new config
   return `${net},rate=${netrate}`;

@@ -46,8 +46,10 @@ export type ProxmoxServerStatus =
 export const PROXMOX_TASK_STATUS_MAPPING = {
   qmreboot: ProxmoxTaskStatus.REBOOTING,
   qmshutdown: ProxmoxTaskStatus.SHUTTING_DOWN,
-  qmstop: ProxmoxTaskStatus.STOPPING,
-  qmstart: ProxmoxTaskStatus.STARTING,
+  qmstop: ProxmoxTaskStatus.STOPPING, // Normal stop
+  hastop: ProxmoxTaskStatus.STOPPING, // High availability stop
+  qmstart: ProxmoxTaskStatus.STARTING, // Normal start
+  hastart: ProxmoxTaskStatus.STARTING, // High availability start
   qmreset: ProxmoxTaskStatus.RESETTING,
   qmresume: ProxmoxTaskStatus.RESUMING,
   qmsuspend: ProxmoxTaskStatus.SUSPENDING,

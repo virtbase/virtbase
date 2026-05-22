@@ -17,7 +17,11 @@
 
 import { FatalError, getStepMetadata, RetryableError } from "workflow";
 import type { GetProxmoxInstanceParams } from "../../proxmox";
-import { getProxmoxInstance } from "../../proxmox";
+import {
+  findFollowUpGuestPowerTask,
+  getProxmoxInstance,
+  isHaPowerTask,
+} from "../../proxmox";
 
 interface WaitForProxmoxTaskStepParams {
   proxmoxNode: GetProxmoxInstanceParams;
@@ -42,7 +46,8 @@ export async function waitForProxmoxTaskStep({
 }: WaitForProxmoxTaskStepParams) {
   "use step";
 
-  const { node } = getProxmoxInstance(proxmoxNode);
+  const instance = getProxmoxInstance(proxmoxNode);
+  const { node } = instance;
 
   // Retrieve the latest task status
   const task = await node.tasks.$(upid).status.$get();
@@ -50,6 +55,40 @@ export async function waitForProxmoxTaskStep({
   if (task.status === "stopped") {
     if (task.exitstatus === "OK") {
       // Task finished successfully
+
+      // If the task is a high availability start or stop, the actual
+      // qm{start,stop,shutdown,...} task is created separately by the CRM/LRM
+      // 1-2 seconds (and up to ~20s in worst case) later. Proxmox does not
+      // link the two via UPID, so we poll the task list by vmid until the
+      // follow-up appears and then wait on that instead.
+      if (isHaPowerTask(task)) {
+        const vmid = Number(task.id);
+        if (!Number.isFinite(vmid)) {
+          throw new FatalError(
+            `Could not parse vmid from HA task "${upid}" (id="${task.id}").`,
+          );
+        }
+
+        const followUpTask = await findFollowUpGuestPowerTask(instance, vmid, {
+          sinceStarttime: task.starttime,
+        });
+
+        if (followUpTask) {
+          return waitForProxmoxTaskStep({
+            proxmoxNode,
+            upid: followUpTask.upid,
+            ignoreErrors,
+          });
+        }
+
+        // HA task finished but the guest power task hasn't been created yet.
+        // Keep retrying with a tighter backoff so we pick it up quickly.
+        throw new RetryableError(
+          `Proxmox HA task "${upid}" finished but follow-up guest power task has not been created yet.`,
+          { retryAfter: 2_000 },
+        );
+      }
+
       return true;
     }
 

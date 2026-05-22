@@ -64,6 +64,49 @@ export const getProxmoxInstance = (proxmoxNode: GetProxmoxInstanceParams) => {
           },
         },
       },
+      ha: {
+        rules: {
+          $post(params: {
+            type: "node-affinity" | "resource-affinity";
+            rule: string;
+            resources: string;
+            strict?: boolean | 0 | 1;
+            affinity?: "positive" | "negative";
+            comment?: string;
+            disable?: boolean | 0 | 1;
+            nodes?: string;
+          }): Promise<null> {
+            return engine.doRequest(
+              "POST",
+              "/api2/json/cluster/ha/rules",
+              "/api2/json/cluster/ha/rules",
+              params,
+            );
+          },
+          $(rule: string) {
+            return {
+              async $put(params: {
+                type: "node-affinity" | "resource-affinity";
+                affinity?: "positive" | "negative";
+                comment?: string;
+                delete?: string;
+                digest?: string;
+                disable?: boolean | 0 | 1;
+                nodes?: string;
+                resources?: string;
+                strict?: boolean | 0 | 1;
+              }): Promise<null> {
+                return engine.doRequest(
+                  "PUT",
+                  `/api2/json/cluster/ha/rules/${rule}`,
+                  "/api2/json/cluster/ha/rules/*",
+                  params,
+                );
+              },
+            };
+          },
+        },
+      },
     }),
     // Need to place this here because Proxmox team is too lazy to implement this
     // in the official Proxmox VE API.

@@ -34,7 +34,7 @@ const actionToTaskStatusMapping = {
   stop: ProxmoxTaskStatus.STOPPING,
   pause: ProxmoxTaskStatus.PAUSING,
   resume: ProxmoxTaskStatus.RESUMING,
-  suspend: ProxmoxTaskStatus.SUSPENDING,
+  //suspend: ProxmoxTaskStatus.SUSPENDING,
   reset: ProxmoxTaskStatus.RESETTING,
   reboot: ProxmoxTaskStatus.REBOOTING,
   shutdown: ProxmoxTaskStatus.SHUTTING_DOWN,

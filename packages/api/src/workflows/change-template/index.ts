@@ -212,7 +212,7 @@ export async function changeTempalateWorkflow({
       delete: true,
     });
 
-    await sleep("5s");
+    await sleep("3s");
     await waitForProxmoxTaskStep({
       proxmoxNode,
       upid: moveUpid,
@@ -238,7 +238,6 @@ export async function changeTempalateWorkflow({
     });
 
     if (resizeUpid) {
-      await sleep("5s");
       await waitForProxmoxTaskStep({
         proxmoxNode,
         upid: resizeUpid,
@@ -291,7 +290,6 @@ export async function changeTempalateWorkflow({
     });
 
     if (null !== startUpid) {
-      await sleep("5s");
       await waitForProxmoxTaskStep({
         proxmoxNode,
         upid: startUpid,
