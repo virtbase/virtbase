@@ -41,17 +41,27 @@ Updates:
 Copy the patch files to the node, then use the helper script (recommended):
 
 ```bash
-./patch.sh dry-run-apply
+./patch.sh status          # show which patches are already applied
+./patch.sh dry-run-apply   # verify both patches would apply cleanly
 ./patch.sh apply
 ```
 
-`patch.sh` applies both patches in order (snippet upload, then hookscript) and restarts `pvedaemon` and `pveproxy`.
+`patch.sh` is **idempotent**: each patch is classified before being touched.
+
+| Classification | Meaning | `apply` | `unapply` |
+| --- | --- | --- | --- |
+| `pending` | would apply cleanly (forward dry-run succeeds) | applies it | no-op |
+| `applied` | reverse dry-run succeeds (already in place) | no-op | reverts it |
+| `unknown` | neither direction is clean (drifted / partial / wrong) | reports failure, continues to next patch | reports failure, continues to next patch |
+
+Patches are processed independently, so a failure on one patch does **not** stop the others. `pvedaemon` / `pveproxy` are restarted only when at least one patch actually changed state.
 
 Environment overrides:
 
 - `PVE_BASE` — default `/usr/share/perl5/PVE`
 - `PATCH_FILES` — space-separated list replacing the default pair
 - `PATCH_FILE` — apply or revert a single patch only (legacy)
+- `SKIP_RESTART=1` — never restart `pvedaemon`/`pveproxy`, even on changes
 
 ### Manual apply
 
@@ -80,7 +90,7 @@ Apply on all cluster nodes.
 ./patch.sh unapply
 ```
 
-`patch.sh` reverts in reverse order (hookscript, then snippet upload) and restarts services.
+`patch.sh` reverts in reverse order (hookscript, then snippet upload) and restarts services only if anything was actually reverted.
 
 ### Manual rollback
 
