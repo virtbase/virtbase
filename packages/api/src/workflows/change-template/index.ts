@@ -294,6 +294,7 @@ export async function changeTempalateWorkflow({
         proxmoxNode,
         upid: startUpid,
         ignoreErrors: false,
+        ignoreFollowupTask: true,
       });
     }
 
@@ -309,6 +310,7 @@ export async function changeTempalateWorkflow({
           proxmoxNode,
           upid: rollbackStartUpid,
           ignoreErrors: true,
+          ignoreFollowupTask: true,
         });
       }
     });

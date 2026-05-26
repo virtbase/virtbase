@@ -27,6 +27,7 @@ interface WaitForProxmoxTaskStepParams {
   proxmoxNode: GetProxmoxInstanceParams;
   upid: string;
   ignoreErrors?: boolean;
+  ignoreFollowupTask?: boolean;
 }
 
 /**
@@ -43,6 +44,7 @@ export async function waitForProxmoxTaskStep({
   proxmoxNode,
   upid,
   ignoreErrors = false,
+  ignoreFollowupTask = false,
 }: WaitForProxmoxTaskStepParams) {
   "use step";
 
@@ -61,7 +63,7 @@ export async function waitForProxmoxTaskStep({
       // 1-2 seconds (and up to ~20s in worst case) later. Proxmox does not
       // link the two via UPID, so we poll the task list by vmid until the
       // follow-up appears and then wait on that instead.
-      if (isHaPowerTask(task)) {
+      if (isHaPowerTask(task) && !ignoreFollowupTask) {
         const vmid = Number(task.id);
         if (!Number.isFinite(vmid)) {
           throw new FatalError(

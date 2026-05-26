@@ -241,7 +241,7 @@ for source in $sorted; do
     --cores 2 \
     --memory 1024 \
     --scsihw virtio-scsi-single \
-    --scsi0 "$storage:0,import-from=/tmp/$source.$extension,discard=on,iothread=1,ssd=1" \
+    --scsi0 "$storage:0,import-from=/tmp/$source.$extension,discard=on,iothread=1,ssd=1,cache=writeback" \
     --net0 virtio,bridge=vmbr0,firewall=1 \
     --tablet 0 \
     --rng0 source=/dev/urandom \
