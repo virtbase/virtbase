@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Hungarian\n"
-"PO-Revision-Date: 2026-05-18 14:12\n"
+"PO-Revision-Date: 2026-06-03 15:49\n"
 
 #: ../../packages/discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -33,23 +33,23 @@ msgstr "Megújítás"
 
 #: ../../packages/discord/src/buttons/reset-server-password.ts
 msgctxt "discord-integration"
-msgid "Yy/yDL"
+msgid "Yy_yDL"
 msgstr "Jelszó visszaállítása"
 
 #: ../../packages/discord/src/buttons/server-console.ts
 #: ../../packages/discord/src/messages/servers/actions/server-console-success.ts
 msgctxt "discord-integration"
-msgid "gc+2Z2"
+msgid "gc-2Z2"
 msgstr "Konzol"
 
 #: ../../packages/discord/src/buttons/server-overview.ts
 msgctxt "discord-integration"
-msgid "/w61wP"
+msgid "_w61wP"
 msgstr "Vissza a szerverhez"
 
 #: ../../packages/discord/src/buttons/show-in-portal.ts
 msgctxt "discord-integration"
-msgid "+uqHID"
+msgid "-uqHID"
 msgstr "Megjelenítés a portálon"
 
 #: ../../packages/discord/src/messages/invite.ts
@@ -64,7 +64,7 @@ msgstr "Kattints az alábbi linkre, hogy hozzáadd a Virtbase integrációt a Di
 
 #: ../../packages/discord/src/messages/invite.ts
 msgctxt "discord-integration"
-msgid "6O3+aN"
+msgid "6O3-aN"
 msgstr "Meghívó URL"
 
 #: ../../packages/discord/src/messages/main-menu.ts
@@ -84,7 +84,7 @@ msgstr "A jelszó sikeresen vissza lett állítva."
 
 #: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts
 msgctxt "discord-integration"
-msgid "n/xfjW"
+msgid "n_xfjW"
 msgstr "A szervered jelszava sikeresen vissza lett állítva."
 
 #: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts
@@ -109,7 +109,7 @@ msgstr "Operációs rendszer"
 
 #: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
-msgid "ivkv/L"
+msgid "ivkv_L"
 msgstr "Csomópont"
 
 #: ../../packages/discord/src/messages/servers/server-overview.ts
@@ -134,7 +134,7 @@ msgstr "- CPU: {cpu_description}"
 
 #: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
-msgid "gs/Iys"
+msgid "gs_Iys"
 msgstr "- RAM: {memory_description}"
 
 #: ../../packages/discord/src/messages/servers/server-overview.ts
@@ -194,7 +194,7 @@ msgstr "Megtekintés a portálon ↗"
 
 #: ../../packages/discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
-msgid "JGe/wh"
+msgid "JGe_wh"
 msgstr "Válassz szervert"
 
 #: ../../packages/discord/src/messages/setup-menu.ts
@@ -214,7 +214,7 @@ msgstr "A Virtbase fiókod még nincs összekapcsolva a Discord fiókoddal."
 
 #: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
-msgid "u/Hev8"
+msgid "u_Hev8"
 msgstr "Kövesd az alábbi lépéseket a fiókok összekapcsolásához:"
 
 #: ../../packages/discord/src/messages/setup-menu.ts
@@ -239,7 +239,7 @@ msgstr "Az ügyfélportálon menj a fiókodhoz, a **Biztonság** alatt, **Hitele
 
 #: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
-msgid "VRJHO/"
+msgid "VRJHO_"
 msgstr "3. Ismételd meg a parancsot"
 
 #: ../../packages/discord/src/messages/setup-menu.ts
@@ -254,7 +254,7 @@ msgstr "Jelszó visszaállítása"
 
 #: ../../packages/discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
-msgid "qHabR+"
+msgid "qHabR-"
 msgstr "A művelet sikertelen lesz, ha a `qemu-quest-agent` csomag nincs telepítve."
 
 #: ../../packages/discord/src/modals/reset-server-password.ts
@@ -283,25 +283,25 @@ msgid "Wbc21W"
 msgstr "Virtbase – hosting, biztonságosan."
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
-msgid "o/UJXc"
+msgid "o_UJXc"
 msgstr "Asc"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
-msgid "FXGK2/"
+msgid "FXGK2_"
 msgstr "Desc"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 #: ../../packages/ui/src/data-table/data-table-toolbar.tsx
 #: src/features/servers/components/server-actions-row.tsx
-msgid "jm/spn"
+msgid "jm_spn"
 msgstr "Reset"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
-msgid "VA/Z1S"
+msgid "VA_Z1S"
 msgstr "Elrejt"
 
 #: ../../packages/ui/src/data-table/data-table-date-filter.tsx
-msgid "qp/RxH"
+msgid "qp_RxH"
 msgstr "Válassza ki a dátumtartományt"
 
 #: ../../packages/ui/src/data-table/data-table-date-filter.tsx
@@ -310,7 +310,7 @@ msgstr "Válassza ki a dátumot"
 
 #: ../../packages/ui/src/data-table/data-table-date-filter.tsx
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
-msgid "/zw7BY"
+msgid "_zw7BY"
 msgstr "Tiszta {title} szűrő"
 
 #: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx
@@ -318,7 +318,7 @@ msgid "NKPfmm"
 msgstr "{count} kiválasztva"
 
 #: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx
-msgid "V5JQj+"
+msgid "V5JQj-"
 msgstr "Nincs találat."
 
 #: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx
@@ -354,7 +354,7 @@ msgid "fMrPOR"
 msgstr "Ugrás az utolsó oldalra"
 
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
-msgid "dM+p3/"
+msgid "dM-p3_"
 msgstr "Tól"
 
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
@@ -366,7 +366,7 @@ msgid "UfFPe5"
 msgstr "{title} csúszka"
 
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
-msgid "/GCoTA"
+msgid "_GCoTA"
 msgstr "Világos"
 
 #: ../../packages/ui/src/data-table/data-table-toolbar.tsx
@@ -374,7 +374,7 @@ msgid "jZ0o74"
 msgstr "Szűrők visszaállítása"
 
 #: ../../packages/ui/src/data-table/data-table-view-options.tsx
-msgid "5PWP+M"
+msgid "5PWP-M"
 msgstr "Oszlopok váltása"
 
 #: ../../packages/ui/src/data-table/data-table-view-options.tsx
@@ -531,7 +531,7 @@ msgid "cN2wPY"
 msgstr "Discord közösség"
 
 #: src/app/(public)/[locale]/contact/page.tsx
-msgid "xmN7+N"
+msgid "xmN7-N"
 msgstr "Csatlakozz a közösségi Discord szerverhez, és csevegj más felhasználókkal."
 
 #: src/app/(public)/[locale]/contact/page.tsx
@@ -548,7 +548,7 @@ msgid "tA3IJb"
 msgstr "Kérjen támogatást"
 
 #: src/app/(public)/[locale]/contact/page.tsx
-msgid "KV/9Hv"
+msgid "KV_9Hv"
 msgstr "Kérdések"
 
 #: src/app/(public)/[locale]/contact/page.tsx
@@ -556,7 +556,7 @@ msgid "pNNM1r"
 msgstr "Súgócikkeink már sok kérdésére választ adnak."
 
 #: src/app/(public)/[locale]/contact/page.tsx
-msgid "TZHi//"
+msgid "TZHi__"
 msgstr "Tekintse meg a Súgót"
 
 #: src/app/(public)/[locale]/contact/page.tsx
@@ -744,7 +744,7 @@ msgstr "Állítsa vissza a {appName} fiók jelszavát."
 
 #: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx
 #: src/app/app.virtbase.com/(auth)/reset-password/page.tsx
-msgid "p+kmJg"
+msgid "p-kmJg"
 msgstr "Állítsa vissza jelszavát"
 
 #: src/app/app.virtbase.com/(auth)/login/page.tsx
@@ -752,7 +752,7 @@ msgid "VquSDh"
 msgstr "Jelentkezzen be a {appName}-be"
 
 #: src/app/app.virtbase.com/(auth)/login/page.tsx
-msgid "VGUFk+"
+msgid "VGUFk-"
 msgstr "Jelentkezzen be {appName} fiókjába a virtuális szerverek kezeléséhez."
 
 #: src/app/app.virtbase.com/(auth)/login/page.tsx
@@ -776,7 +776,7 @@ msgid "LcaCOE"
 msgstr "Hozza létre {appName} fiókját"
 
 #: src/app/app.virtbase.com/(auth)/register/page-client.tsx
-msgid "uCk8r+"
+msgid "uCk8r-"
 msgstr "Már van fiókja?"
 
 #: src/app/app.virtbase.com/(auth)/register/page-client.tsx
@@ -824,7 +824,7 @@ msgstr "Biztonsági mentések"
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/console/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/servers/components/server-nav.tsx
-msgid "gc+2Z2"
+msgid "gc-2Z2"
 msgstr "Konzol"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/firewall/page.tsx
@@ -834,11 +834,11 @@ msgid "Bwqhmd"
 msgstr "Tűzfal"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx
-msgid "E+4Rfd"
+msgid "E-4Rfd"
 msgstr "A szerver nem található"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx
-msgid "bdn/TR"
+msgid "bdn_TR"
 msgstr "A keresett szerver nem létezik."
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx
@@ -861,7 +861,7 @@ msgstr "Terv"
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/rdns/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/servers/components/server-nav.tsx
-msgid "F+02/l"
+msgid "F-02_l"
 msgstr "rDNS"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/error.tsx
@@ -975,7 +975,7 @@ msgid "42rMfw"
 msgstr "ISO"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx
-msgid "+J17tT"
+msgid "-J17tT"
 msgstr "API-kulcs létrehozása"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx
@@ -1057,7 +1057,7 @@ msgid "ASrBq8"
 msgstr "azonosítók"
 
 #: src/features/account/components/authentication/user-passkeys-card.tsx
-msgid "yZU/cd"
+msgid "yZU_cd"
 msgstr "A jelszavak a jelszavak rendkívül biztonságos alternatívája. Regisztráljon egy új jelszót, vagy használjon egy meglévőt."
 
 #: src/features/account/components/authentication/user-passkeys-card.tsx
@@ -1083,7 +1083,7 @@ msgstr "Hozzáadott {date}"
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx
 #: src/features/account/components/billing/payment-methods-list.tsx
-msgid "G/yZLu"
+msgid "G_yZLu"
 msgstr "Távolítsa el"
 
 #: src/features/account/components/authentication/user-providers-card.tsx
@@ -1104,7 +1104,7 @@ msgstr "Kezelése"
 #: src/features/auth/components/forgot-password-form.tsx
 #: src/features/auth/components/register/signup-email.tsx
 #: src/ui/feedback-button.tsx
-msgid "sy+pv5"
+msgid "sy-pv5"
 msgstr "Email"
 
 #: src/features/account/components/authentication/user-providers-list.tsx
@@ -1172,7 +1172,7 @@ msgid "qyRflV"
 msgstr "Nincsenek fizetési módok"
 
 #: src/features/account/components/billing/payment-methods-list.tsx
-msgid "gL/ZgG"
+msgid "gL_ZgG"
 msgstr "Nincsenek fizetési módok összekapcsolva a fiókjával."
 
 #: src/features/account/components/billing/payment-methods-list.tsx
@@ -1193,7 +1193,7 @@ msgid "bWjdfa"
 msgstr "URL"
 
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
-msgid "aLOPr+"
+msgid "aLOPr-"
 msgstr "Az URL-nek közvetlenül az ISO fájlra kell mutatnia. A maximális fájlméret: {size}."
 
 #: src/features/account/components/custom-images/custom-images-card.tsx
@@ -1218,7 +1218,7 @@ msgstr "Még nem töltöttek fel egyéni lemezképeket."
 
 #: src/features/account/components/custom-images/custom-images-list.tsx
 #: src/features/servers/components/server-mount-badge.tsx
-msgid "N/dZaF"
+msgid "N_dZaF"
 msgstr "Lejár: {time}"
 
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
@@ -1324,7 +1324,7 @@ msgid "fiNfmb"
 msgstr "Nyelv:"
 
 #: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "Ur+SeM"
+msgid "Ur-SeM"
 msgstr "Stripe-azonosító:"
 
 #: src/features/admin/api/users/generator/generate-inventory-pdf.ts
@@ -1344,7 +1344,7 @@ msgid "RQPliO"
 msgstr "Nincs rögzített munkamenet."
 
 #: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "/7I9Fi"
+msgid "_7I9Fi"
 msgstr "IP-cím:"
 
 #: src/features/admin/api/users/generator/generate-inventory-pdf.ts
@@ -1396,7 +1396,7 @@ msgid "UcHtCB"
 msgstr "Proxmox VE"
 
 #: src/features/admin/components/admin-sidebar-groups.tsx
-msgid "+P4xiL"
+msgid "-P4xiL"
 msgstr "IPAM"
 
 #: src/features/admin/components/admin-sidebar.tsx
@@ -1449,7 +1449,7 @@ msgid "fuvH7s"
 msgstr "Legújabb vásárlók"
 
 #: src/features/admin/components/dashboard/latest-customers-card.tsx
-msgid "IqzPv+"
+msgid "IqzPv-"
 msgstr "A legújabb ügyfelek dátum szerint"
 
 #: src/features/admin/components/dashboard/latest-customers-card.tsx
@@ -1518,7 +1518,7 @@ msgstr "Hozzon létre egy új adatközpontot."
 
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
-msgid "vONi+O"
+msgid "vONi-O"
 msgstr "Ország"
 
 #: src/features/admin/components/datacenters/datacenter-select.tsx
@@ -1600,7 +1600,7 @@ msgid "NMiQru"
 msgstr "Válasszon csomópontcsoportot..."
 
 #: src/features/admin/components/proxmox-node-groups/node-group-select.tsx
-msgid "/Uo5jN"
+msgid "_Uo5jN"
 msgstr "Csomópontcsoport keresése..."
 
 #: src/features/admin/components/proxmox-node-groups/node-group-select.tsx
@@ -1613,7 +1613,7 @@ msgstr "Utoljára frissítve"
 
 #: src/features/admin/components/proxmox-nodes/create-datacenter-button.tsx
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
-msgid "S+458D"
+msgid "S-458D"
 msgstr "Hozzon létre Proxmox csomópontot"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
@@ -1645,7 +1645,7 @@ msgid "2BEZJh"
 msgstr "FQDN"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
-msgid "cUm+Vq"
+msgid "cUm-Vq"
 msgstr "Annak a Proxmox VE csomópontnak az FQDN-je, ahol az API elérhető. Elérhetőnek kell lennie az internetről, és érvényes TLS-tanúsítványt kell használnia."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
@@ -1732,11 +1732,11 @@ msgid "39jmFD"
 msgstr "Keresés gazdagépnév alapján..."
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-msgid "/xxglw"
+msgid "_xxglw"
 msgstr "Virtuális gépek száma"
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-msgid "EWGm/3"
+msgid "EWGm_3"
 msgstr "{usage} / {limit}"
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
@@ -1774,7 +1774,7 @@ msgid "8lCjAM"
 msgstr "Prioritás"
 
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-msgid "lb/VMv"
+msgid "lb_VMv"
 msgstr "Sablonok száma"
 
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
@@ -1799,7 +1799,7 @@ msgid "1UsI0I"
 msgstr "Megszűnik:"
 
 #: src/features/admin/components/servers/servers-table/columns.tsx
-msgid "zvQbH/"
+msgid "zvQbH_"
 msgstr "Megjelenítés a Proxmoxban"
 
 #: src/features/admin/components/subnets/create-subnet-button.tsx
@@ -1808,7 +1808,7 @@ msgid "pXZyDa"
 msgstr "Alhálózat létrehozása"
 
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx
-msgid "w+MmK2"
+msgid "w-MmK2"
 msgstr "Hozzon létre egy új alhálózatot."
 
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx
@@ -1833,7 +1833,7 @@ msgid "XQeoKw"
 msgstr "Keresés CIDR szerint..."
 
 #: src/features/admin/components/subnets/subnets-table/columns.tsx
-msgid "+U6ozc"
+msgid "-U6ozc"
 msgstr "Típus"
 
 #: src/features/admin/components/subnets/subnets-table/columns.tsx
@@ -1849,7 +1849,7 @@ msgid "1ZgrhW"
 msgstr "Szerepkör"
 
 #: src/features/admin/components/users/users-table/columns.tsx
-msgid "DC8+TO"
+msgid "DC8-TO"
 msgstr "E-mail megerősítve"
 
 #: src/features/admin/components/users/users-table/columns.tsx
@@ -1897,7 +1897,7 @@ msgid "5sg7KC"
 msgstr "Jelszó"
 
 #: src/features/auth/components/email-sign-in.tsx
-msgid "V/JHlm"
+msgid "V_JHlm"
 msgstr "Elfelejtetted a jelszavad?"
 
 #: src/features/auth/components/email-sign-in.tsx
@@ -1913,7 +1913,7 @@ msgid "vu1wqp"
 msgstr "Jelentkezzen be emailben"
 
 #: src/features/auth/components/forgot-password-form.tsx
-msgid "qm+oRY"
+msgid "qm-oRY"
 msgstr "Kapni fog egy e-mailt a jelszó visszaállításához szükséges utasításokkal."
 
 #: src/features/auth/components/forgot-password-form.tsx
@@ -1931,7 +1931,7 @@ msgid "FJ6r9E"
 msgstr "Folytassa a Google-lal"
 
 #: src/features/auth/components/login-form.tsx
-msgid "Zk0/xv"
+msgid "Zk0_xv"
 msgstr "Legutóbb a {method} használatával jelentkezett be"
 
 #: src/features/auth/components/login-form.tsx
@@ -1955,7 +1955,7 @@ msgid "NNQ3iD"
 msgstr "Kisbetű"
 
 #: src/features/auth/components/password-requirements.tsx
-msgid "WK/0OI"
+msgid "WK_0OI"
 msgstr "8 karakter"
 
 #: src/features/auth/components/register/resend-otp.tsx
@@ -2031,7 +2031,7 @@ msgid "t2uvIi"
 msgstr "Operációs rendszer"
 
 #: src/features/checkout/components/checkout-form.tsx
-msgid "hE8w/g"
+msgid "hE8w_g"
 msgstr "Root jelszó (opcionális)"
 
 #: src/features/checkout/components/checkout-form.tsx
@@ -2044,7 +2044,7 @@ msgstr "Ha üresen hagyja, a rendszer egy biztonságos véletlenszerű jelszót 
 
 #: src/features/checkout/components/checkout-form.tsx
 #: src/features/servers/components/plan/plan-summary.tsx
-msgid "+g+0OK"
+msgid "-g-0OK"
 msgstr "Tovább a fizetéshez"
 
 #: src/features/checkout/components/checkout-public-key-select.tsx
@@ -2072,7 +2072,7 @@ msgid "fL6LzO"
 msgstr "Elolvastam és elfogadtam a <terms></terms> szolgáltatási feltételeket és a <privacy>Padatvédelmi szabályzatot</privacy>."
 
 #: src/features/checkout/components/checkout-waivers.tsx
-msgid "+3U5qS"
+msgid "-3U5qS"
 msgstr "Elolvastam és elfogadtam a <revocation>R visszavonási szabályzatát</revocation>. Az elállási jog a megrendelés teljesítésével és a szolgáltatás automatikus teljesítésével azonnal lejár."
 
 #: src/features/checkout/components/elements-provider.tsx
@@ -2080,12 +2080,12 @@ msgid "mlJ21x"
 msgstr "Fizessen névtelenül kriptovalutával"
 
 #: src/features/checkout/components/offer-card.tsx
-msgid "pxF+t0"
+msgid "pxF-t0"
 msgstr "Népszerű"
 
 #: src/features/checkout/components/offer-card.tsx
 #: src/features/checkout/components/order-summary.tsx
-msgid "Rw82/V"
+msgid "Rw82_V"
 msgstr "havonta"
 
 #: src/features/checkout/components/offer-card.tsx
@@ -2098,7 +2098,7 @@ msgstr "{cores, plural, =0 {# vCore} =1 {# vCore} other {# vCore}}"
 
 #: src/features/checkout/components/offer-card.tsx
 #: src/features/checkout/components/order-summary.tsx
-msgid "zSO/T8"
+msgid "zSO_T8"
 msgstr "1 IPv4 + IPv6 /64 alhálózat"
 
 #: src/features/checkout/components/offer-card.tsx
@@ -2123,7 +2123,7 @@ msgid "5EjMej"
 msgstr "A {name} konfigurálása most"
 
 #: src/features/checkout/components/offer-card.tsx
-msgid "khw/ok"
+msgid "khw_ok"
 msgstr "Konfigurálja most"
 
 #: src/features/checkout/components/offer-card.tsx
@@ -2164,11 +2164,11 @@ msgid "ddCkDY"
 msgstr "Fizetés feldolgozása…"
 
 #: src/features/checkout/components/stripe-payment-form.tsx
-msgid "7tOz+m"
+msgid "7tOz-m"
 msgstr "Fizessen most"
 
 #: src/features/dashboard/components/empty-servers.tsx
-msgid "fmSs/a"
+msgid "fmSs_a"
 msgstr "Nem találhatók szerverek"
 
 #: src/features/dashboard/components/empty-servers.tsx
@@ -2234,7 +2234,7 @@ msgid "cIAuzz"
 msgstr "Számlaszám keresése..."
 
 #: src/features/invoices/components/invoices-table/columns.tsx
-msgid "/0TOL5"
+msgid "_0TOL5"
 msgstr "Összeg"
 
 #: src/features/invoices/components/invoices-table/columns.tsx
@@ -2275,7 +2275,7 @@ msgid "TWNuCY"
 msgstr "Az aktív DDoS védelem online marad. Semmi extra költség, soha."
 
 #: src/features/landing/components/advantages-row.tsx
-msgid "nVfA/q"
+msgid "nVfA_q"
 msgstr "Modern ügyfélkapu"
 
 #: src/features/landing/components/advantages-row.tsx
@@ -2295,11 +2295,11 @@ msgid "zWVB3p"
 msgstr "Van forgalomkorlátozás?"
 
 #: src/features/landing/components/faq-section.tsx
-msgid "+T4TVw"
+msgid "-T4TVw"
 msgstr "Nem, szervereinkre nincs forgalomkorlátozás. A felfelé irányuló kapcsolat a méltányos használat elve szerint történik. A sávszélesség azonban átmenetileg lefojtásra kerülhet aránytalanul magas tartós használat esetén."
 
 #: src/features/landing/components/faq-section.tsx
-msgid "RS/4DH"
+msgid "RS_4DH"
 msgstr "A csomag később módosítható?"
 
 #: src/features/landing/components/faq-section.tsx
@@ -2323,7 +2323,7 @@ msgid "B7MEDP"
 msgstr "A megrendelt szervert a saját ügyfélportálunkon kezeled. Az SSH jelszó alapértelmezés szerint be van kapcsolva. A VNC-konzol is használható."
 
 #: src/features/landing/components/faq-section.tsx
-msgid "p/GLe/"
+msgid "p_GLe_"
 msgstr "Mennyire biztonságosak az adataim?"
 
 #: src/features/landing/components/faq-section.tsx
@@ -2444,7 +2444,7 @@ msgid "4HNt5G"
 msgstr "Válassza ki a BIOS típusát a szerveréhez."
 
 #: src/features/servers/components/advanced/advanced-bios-card.tsx
-msgid "HJOq/1"
+msgid "HJOq_1"
 msgstr "UEFI BIOS ajánlott Windows telepítésekhez. Régebbi Linux telepítésekhez használja a legacy BIOS-t."
 
 #: src/features/servers/components/advanced/advanced-bios-selector.tsx
@@ -2456,7 +2456,7 @@ msgid "AhxnaN"
 msgstr "Használja a legacy BIOS-t ehhez a szerverhez."
 
 #: src/features/servers/components/advanced/advanced-bios-selector.tsx
-msgid "/eGTDl"
+msgid "_eGTDl"
 msgstr "UEFI BIOS"
 
 #: src/features/servers/components/advanced/advanced-bios-selector.tsx
@@ -2472,7 +2472,7 @@ msgid "C6jvVM"
 msgstr "Engedélyezze vagy tiltsa le a TPM modult a szerverén."
 
 #: src/features/servers/components/advanced/advanced-tpm-card.tsx
-msgid "1Lw+6m"
+msgid "1Lw-6m"
 msgstr "A legtöbb Linux telepítés nem igényel TPM-et, míg a Windows TPM v2.0-t igényel."
 
 #: src/features/servers/components/advanced/advanced-tpm-selector.tsx
@@ -2480,7 +2480,7 @@ msgid "I1Um2Q"
 msgstr "TPM letiltása"
 
 #: src/features/servers/components/advanced/advanced-tpm-selector.tsx
-msgid "i1+8G8"
+msgid "i1-8G8"
 msgstr "Kapcsolja ki teljesen a TPM-et ennél a szervernél."
 
 #: src/features/servers/components/advanced/advanced-tpm-selector.tsx
@@ -2488,7 +2488,7 @@ msgid "HrP3QG"
 msgstr "TPM v1.2 engedélyezése"
 
 #: src/features/servers/components/advanced/advanced-tpm-selector.tsx
-msgid "/p73Kl"
+msgid "_p73Kl"
 msgstr "Aktiválja a TPM v1.2-t ennél a szervernél."
 
 #: src/features/servers/components/advanced/advanced-tpm-selector.tsx
@@ -2496,7 +2496,7 @@ msgid "DwWNni"
 msgstr "TPM v2.0 engedélyezése"
 
 #: src/features/servers/components/advanced/advanced-tpm-selector.tsx
-msgid "i/5Hb2"
+msgid "i_5Hb2"
 msgstr "Aktiválja a TPM v2.0-t ennél a szervernél."
 
 #: src/features/servers/components/backups/backups-card.tsx
@@ -2508,7 +2508,7 @@ msgid "zz6ObK"
 msgstr "Visszaállítás"
 
 #: src/features/servers/components/backups/backups-table/backup-actions.tsx
-msgid "Zl4/y9"
+msgid "Zl4_y9"
 msgstr "Zár"
 
 #: src/features/servers/components/backups/backups-table/columns.tsx
@@ -2564,7 +2564,6 @@ msgid "04uNfB"
 msgstr "Biztonsági mentést készít a rendszer megszakítása nélkül. A folyamatok jelenlegi állapotáról biztonsági másolat készül."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx
-#: src/features/servers/components/server-actions-row.tsx
 msgid "elnaZe"
 msgstr "Felfüggeszteni"
 
@@ -2574,7 +2573,7 @@ msgstr "Rövid időre megszakítja a rendszert, hogy biztonsági másolatot kés
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 #: src/features/servers/components/server-actions-row.tsx
-msgid "q/uwLT"
+msgid "q_uwLT"
 msgstr "Stop"
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx
@@ -2582,7 +2581,7 @@ msgid "JidfdC"
 msgstr "A biztonsági mentés létrehozása előtt teljesen leállítja a rendszert."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx
-msgid "/EmLPv"
+msgid "_EmLPv"
 msgstr "Törlésvédelem engedélyezése"
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx
@@ -2623,7 +2622,7 @@ msgid "sIwjuh"
 msgstr "A szerver telepítése folyamatban van"
 
 #: src/features/servers/components/console/console-frame.tsx
-msgid "/iuNMM"
+msgid "_iuNMM"
 msgstr "Ez a szolgáltatás nem érhető el a kiszolgáló telepítése közben."
 
 #: src/features/servers/components/console/console-frame.tsx
@@ -2631,7 +2630,7 @@ msgid "odJjY9"
 msgstr "Biztonsági mentés folyamatban"
 
 #: src/features/servers/components/console/console-frame.tsx
-msgid "Z/xHv5"
+msgid "Z_xHv5"
 msgstr "Ez a funkció nem érhető el, amíg a biztonsági mentés folyamatban van. Kérjük, próbálja újra később."
 
 #: src/features/servers/components/console/console-frame.tsx
@@ -2669,7 +2668,7 @@ msgstr "Új root jelszó"
 
 #: src/features/servers/components/overview/node-details-dialog.tsx
 #: src/features/servers/components/overview/server-details-card.tsx
-msgid "ivkv/L"
+msgid "ivkv_L"
 msgstr "Csomópont"
 
 #: src/features/servers/components/overview/node-details-dialog.tsx
@@ -2690,7 +2689,7 @@ msgid "SwBrEP"
 msgstr "Szerver átnevezése"
 
 #: src/features/servers/components/overview/rename-server-dialog.tsx
-msgid "mFBy/n"
+msgid "mFBy_n"
 msgstr "Nevezze át a szervert."
 
 #: src/features/servers/components/overview/rename-server-dialog.tsx
@@ -2698,11 +2697,11 @@ msgid "UQXG4v"
 msgstr "Saját szerver"
 
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
-msgid "5juwi+"
+msgid "5juwi-"
 msgstr "Állítsa vissza egy felhasználó jelszavát a kiszolgálón."
 
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
-msgid "K1+gri"
+msgid "K1-gri"
 msgstr "Ez a művelet nem vonható vissza. Ha a <code>qemu-quest-agent</code> csomag nincs telepítve, a folyamat sikertelen lesz."
 
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
@@ -2718,11 +2717,11 @@ msgid "Ev6SEF"
 msgstr "Új jelszó"
 
 #: src/features/servers/components/overview/server-details-card.tsx
-msgid "F/6VqP"
+msgid "F_6VqP"
 msgstr "Szerver"
 
 #: src/features/servers/components/overview/server-details-card.tsx
-msgid "4A//XV"
+msgid "4A__XV"
 msgstr "Egyedi kép"
 
 #: src/features/servers/components/overview/server-details-card.tsx
@@ -2781,7 +2780,7 @@ msgid "ZjhoiP"
 msgstr "Válasszon egy tervet"
 
 #: src/features/servers/components/plan/plan-summary.tsx
-msgid "SB//YQ"
+msgid "SB__YQ"
 msgstr "Megrendelés összefoglalója"
 
 #: src/features/servers/components/plan/plan-summary.tsx
@@ -2813,7 +2812,7 @@ msgid "6Mawmq"
 msgstr "A csomag {name} csomagra változik. Ma csak az időarányos különbözetet fizeted — a jelenlegi időszakod változatlan marad."
 
 #: src/features/servers/components/plan/plan-summary.tsx
-msgid "So9+9+"
+msgid "So9-9-"
 msgstr "Terv módosítása"
 
 #: src/features/servers/components/plan/plan-summary.tsx
@@ -2861,11 +2860,11 @@ msgid "sLLPqe"
 msgstr "PTR rekordok hozhatók létre az ehhez a szerverhez rendelt összes IP-címhez."
 
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx
-msgid "XM/KKz"
+msgid "XM_KKz"
 msgstr "Az IP-címhez feloldandó gazdagépnév. A <code>localhost</code> nem engedélyezett."
 
 #: src/features/servers/components/server-actions-row.tsx
-msgid "tZbb+K"
+msgid "tZbb-K"
 msgstr "Leállítás"
 
 #: src/features/servers/components/server-actions-row.tsx
@@ -2917,7 +2916,7 @@ msgid "d8EqQY"
 msgstr "Napok"
 
 #: src/features/servers/components/server-graphs.tsx
-msgid "g6+IGw"
+msgid "g6-IGw"
 msgstr "Hetek"
 
 #: src/features/servers/components/server-graphs.tsx
@@ -2947,7 +2946,7 @@ msgid "Arxl88"
 msgstr "Kimenő"
 
 #: src/features/servers/components/server-graphs.tsx
-msgid "6m3w+3"
+msgid "6m3w-3"
 msgstr "Intervallum"
 
 #: src/features/servers/components/server-mount-badge.tsx
@@ -2991,7 +2990,7 @@ msgid "FglhQv"
 msgstr "A képek a <link>fiókbeállítások</link> között tölthetők fel."
 
 #: src/features/servers/components/server-stats-card.tsx
-msgid "PW+sL4"
+msgid "PW-sL4"
 msgstr "N/A"
 
 #: src/features/servers/components/server-status-bar.tsx
@@ -3003,7 +3002,7 @@ msgid "gmwFwF"
 msgstr "Ezt a szervert felfüggesztették, és ha nem újítják meg, a {date} címen töröljük."
 
 #: src/features/servers/components/server-status-bar.tsx
-msgid "+E3dAf"
+msgid "-E3dAf"
 msgstr "A szerver lejár"
 
 #: src/features/servers/components/server-status-bar.tsx
@@ -3011,7 +3010,7 @@ msgid "fkf7mm"
 msgstr "Ez a szerver {expiry} lejár, és ha nem újítják meg, akkor törlődik"
 
 #: src/features/servers/components/server-status-bar.tsx
-msgid "76X+Qu"
+msgid "76X-Qu"
 msgstr "A szerver telepítése folyamatban van. Előfordulhat, hogy egyes funkciók még nem állnak rendelkezésre."
 
 #: src/features/servers/components/servers-list.tsx
@@ -3047,7 +3046,7 @@ msgid "404iMx"
 msgstr "A bejövő csomagok alapértelmezett művelete"
 
 #: src/features/servers/firewall/components/firewall-options-row.tsx
-msgid "MMByL/"
+msgid "MMByL_"
 msgstr "Kimenő csomagok"
 
 #: src/features/servers/firewall/components/firewall-options-row.tsx
@@ -3071,7 +3070,7 @@ msgid "gsXXUl"
 msgstr "Frissítse a tűzfalszabályt"
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
-msgid "fnX+hz"
+msgid "fnX-hz"
 msgstr "Hozzon létre egy új tűzfalszabályt."
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
@@ -3117,7 +3116,7 @@ msgid "mqTGdC"
 msgstr "Portok"
 
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx
-msgid "Ms3d/e"
+msgid "Ms3d_e"
 msgstr "Nincsenek tűzfalszabályok"
 
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx
@@ -3129,7 +3128,7 @@ msgid "wmFdws"
 msgstr "Lépj felfelé"
 
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
-msgid "H/r5m6"
+msgid "H_r5m6"
 msgstr "Mozgás lefelé"
 
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
@@ -3137,7 +3136,7 @@ msgid "wEQDC6"
 msgstr "Szerkesztés"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
-msgid "w+tZ4Z"
+msgid "w-tZ4Z"
 msgstr "Tűzfalszabályok generálása"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
@@ -3153,11 +3152,11 @@ msgid "0r2ykg"
 msgstr "HTTPS-forgalom engedélyezése, de SSH-forgalom tiltása a szerveremen."
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
-msgid "Pc+tM3"
+msgid "Pc-tM3"
 msgstr "Generálás"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
-msgid "EWw/tK"
+msgid "EWw_tK"
 msgstr "Alkalmaz"
 
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
@@ -3169,7 +3168,7 @@ msgid "j8RTUO"
 msgstr "Csepp"
 
 #: src/features/servers/hooks/use-status-mapping.ts
-msgid "ccU6l/"
+msgid "ccU6l_"
 msgstr "Online"
 
 #: src/features/servers/hooks/use-status-mapping.ts
@@ -3193,7 +3192,7 @@ msgid "JM9DH8"
 msgstr "Újraindítás..."
 
 #: src/features/servers/hooks/use-task-mapping.ts
-msgid "yR4+kW"
+msgid "yR4-kW"
 msgstr "Leállítás..."
 
 #: src/features/servers/hooks/use-task-mapping.ts
@@ -3273,7 +3272,7 @@ msgid "Q43iqt"
 msgstr "A visszajelzés sikeresen elküldve"
 
 #: src/ui/feedback-button.tsx
-msgid "mi/NYE"
+msgid "mi_NYE"
 msgstr "Szakasz elrejtése"
 
 #: src/ui/feedback-button.tsx
@@ -3294,7 +3293,7 @@ msgid "AyGauy"
 msgstr "Bejelentkezés"
 
 #: src/ui/footer.tsx
-msgid "Yy/yDL"
+msgid "Yy_yDL"
 msgstr "Jelszó visszaállítása"
 
 #: src/ui/footer.tsx
@@ -3318,7 +3317,7 @@ msgid "o8wpU5"
 msgstr "Visszavonási szabályzat"
 
 #: src/ui/footer.tsx
-msgid "+eN+I1"
+msgid "-eN-I1"
 msgstr "Jogi közlemény"
 
 #: src/ui/footer.tsx
@@ -3354,7 +3353,7 @@ msgid "jr1I15"
 msgstr "A folytatással elfogadod a(z) {appName} <terms>Szolgáltatási feltételeit</terms> és <privacy>Adatvédelmi irányelveit</privacy>"
 
 #: src/ui/nav-user.tsx
-msgid "f+sh2j"
+msgid "f-sh2j"
 msgstr "Adminisztráció"
 
 #: src/ui/nav-user.tsx
@@ -3366,7 +3365,7 @@ msgid "gZwnDa"
 msgstr "Hagyd abba a megszemélyesítést"
 
 #: src/ui/nav-user.tsx
-msgid "C81/uG"
+msgid "C81_uG"
 msgstr "Kijelentkezés"
 
 #: src/ui/operating-system-select.tsx
