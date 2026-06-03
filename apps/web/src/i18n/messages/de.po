@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: German\n"
-"PO-Revision-Date: 2026-05-18 14:12\n"
+"PO-Revision-Date: 2026-06-03 15:49\n"
 
 #: ../../packages/discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -33,23 +33,23 @@ msgstr "Verlängern"
 
 #: ../../packages/discord/src/buttons/reset-server-password.ts
 msgctxt "discord-integration"
-msgid "Yy/yDL"
+msgid "Yy_yDL"
 msgstr "Passwort zurücksetzen"
 
 #: ../../packages/discord/src/buttons/server-console.ts
 #: ../../packages/discord/src/messages/servers/actions/server-console-success.ts
 msgctxt "discord-integration"
-msgid "gc+2Z2"
+msgid "gc-2Z2"
 msgstr "Konsole"
 
 #: ../../packages/discord/src/buttons/server-overview.ts
 msgctxt "discord-integration"
-msgid "/w61wP"
+msgid "_w61wP"
 msgstr "Zurück zum Server"
 
 #: ../../packages/discord/src/buttons/show-in-portal.ts
 msgctxt "discord-integration"
-msgid "+uqHID"
+msgid "-uqHID"
 msgstr "Im Portal anzeigen"
 
 #: ../../packages/discord/src/messages/invite.ts
@@ -64,7 +64,7 @@ msgstr "Klick auf den Link unten, um die Virtbase-Integration zu deinem Discord-
 
 #: ../../packages/discord/src/messages/invite.ts
 msgctxt "discord-integration"
-msgid "6O3+aN"
+msgid "6O3-aN"
 msgstr "Einladungs-URL"
 
 #: ../../packages/discord/src/messages/main-menu.ts
@@ -84,7 +84,7 @@ msgstr "Passwort wurde erfolgreich zurückgesetzt."
 
 #: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts
 msgctxt "discord-integration"
-msgid "n/xfjW"
+msgid "n_xfjW"
 msgstr "Das Passwort für deinen Server wurde erfolgreich zurückgesetzt."
 
 #: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts
@@ -109,7 +109,7 @@ msgstr "Betriebssystem"
 
 #: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
-msgid "ivkv/L"
+msgid "ivkv_L"
 msgstr "Node"
 
 #: ../../packages/discord/src/messages/servers/server-overview.ts
@@ -134,7 +134,7 @@ msgstr "- CPU: {cpu_description}"
 
 #: ../../packages/discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
-msgid "gs/Iys"
+msgid "gs_Iys"
 msgstr "- RAM: {memory_description}"
 
 #: ../../packages/discord/src/messages/servers/server-overview.ts
@@ -194,7 +194,7 @@ msgstr "Im Portal ansehen ↗"
 
 #: ../../packages/discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
-msgid "JGe/wh"
+msgid "JGe_wh"
 msgstr "Server auswählen"
 
 #: ../../packages/discord/src/messages/setup-menu.ts
@@ -214,7 +214,7 @@ msgstr "Dein Virtbase-Konto ist noch nicht mit deinem Discord-Konto verknüpft."
 
 #: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
-msgid "u/Hev8"
+msgid "u_Hev8"
 msgstr "Folg den Schritten unten, um die Konten zu verknüpfen:"
 
 #: ../../packages/discord/src/messages/setup-menu.ts
@@ -239,7 +239,7 @@ msgstr "Geh im Kundenportal zu deinem Konto, unter **Sicherheit** im Bereich **A
 
 #: ../../packages/discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
-msgid "VRJHO/"
+msgid "VRJHO_"
 msgstr "3. Befehl wiederholen"
 
 #: ../../packages/discord/src/messages/setup-menu.ts
@@ -254,7 +254,7 @@ msgstr "Passwort zurücksetzen"
 
 #: ../../packages/discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
-msgid "qHabR+"
+msgid "qHabR-"
 msgstr "Die Aktion schlägt fehl, wenn das Paket `qemu-quest-agent` nicht installiert ist."
 
 #: ../../packages/discord/src/modals/reset-server-password.ts
@@ -283,25 +283,25 @@ msgid "Wbc21W"
 msgstr "Virtbase – Hosting, aber sicher."
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
-msgid "o/UJXc"
+msgid "o_UJXc"
 msgstr "Aufsteigend"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
-msgid "FXGK2/"
+msgid "FXGK2_"
 msgstr "Absteigend"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 #: ../../packages/ui/src/data-table/data-table-toolbar.tsx
 #: src/features/servers/components/server-actions-row.tsx
-msgid "jm/spn"
+msgid "jm_spn"
 msgstr "Reset"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
-msgid "VA/Z1S"
+msgid "VA_Z1S"
 msgstr "Ausblenden"
 
 #: ../../packages/ui/src/data-table/data-table-date-filter.tsx
-msgid "qp/RxH"
+msgid "qp_RxH"
 msgstr "Zeitraum auswählen"
 
 #: ../../packages/ui/src/data-table/data-table-date-filter.tsx
@@ -310,7 +310,7 @@ msgstr "Datum auswählen"
 
 #: ../../packages/ui/src/data-table/data-table-date-filter.tsx
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
-msgid "/zw7BY"
+msgid "_zw7BY"
 msgstr "{title} Filter löschen"
 
 #: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx
@@ -318,7 +318,7 @@ msgid "NKPfmm"
 msgstr "{count} ausgewählt"
 
 #: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx
-msgid "V5JQj+"
+msgid "V5JQj-"
 msgstr "Keine Ergebnisse gefunden."
 
 #: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx
@@ -354,7 +354,7 @@ msgid "fMrPOR"
 msgstr "Zur letzten Seite gehen"
 
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
-msgid "dM+p3/"
+msgid "dM-p3_"
 msgstr "Von"
 
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
@@ -366,7 +366,7 @@ msgid "UfFPe5"
 msgstr "{title} Slider"
 
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
-msgid "/GCoTA"
+msgid "_GCoTA"
 msgstr "Löschen"
 
 #: ../../packages/ui/src/data-table/data-table-toolbar.tsx
@@ -374,7 +374,7 @@ msgid "jZ0o74"
 msgstr "Filter zurücksetzen"
 
 #: ../../packages/ui/src/data-table/data-table-view-options.tsx
-msgid "5PWP+M"
+msgid "5PWP-M"
 msgstr "Spalten umschalten"
 
 #: ../../packages/ui/src/data-table/data-table-view-options.tsx
@@ -531,7 +531,7 @@ msgid "cN2wPY"
 msgstr "Discord-Community"
 
 #: src/app/(public)/[locale]/contact/page.tsx
-msgid "xmN7+N"
+msgid "xmN7-N"
 msgstr "Dem Discord Server beitreten und mit anderen Nutzern chatten."
 
 #: src/app/(public)/[locale]/contact/page.tsx
@@ -548,7 +548,7 @@ msgid "tA3IJb"
 msgstr "Hilfe anfordern"
 
 #: src/app/(public)/[locale]/contact/page.tsx
-msgid "KV/9Hv"
+msgid "KV_9Hv"
 msgstr "Fragen"
 
 #: src/app/(public)/[locale]/contact/page.tsx
@@ -556,7 +556,7 @@ msgid "pNNM1r"
 msgstr "Unsere Hilfe-Artikel beantworten viele Fragen bereits."
 
 #: src/app/(public)/[locale]/contact/page.tsx
-msgid "TZHi//"
+msgid "TZHi__"
 msgstr "Hilfe-Center ansehen"
 
 #: src/app/(public)/[locale]/contact/page.tsx
@@ -744,7 +744,7 @@ msgstr "Setze das Passwort für deinen {appName} Account zurück."
 
 #: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx
 #: src/app/app.virtbase.com/(auth)/reset-password/page.tsx
-msgid "p+kmJg"
+msgid "p-kmJg"
 msgstr "Dein Passwort zurücksetzen"
 
 #: src/app/app.virtbase.com/(auth)/login/page.tsx
@@ -752,7 +752,7 @@ msgid "VquSDh"
 msgstr "Bei {appName} anmelden"
 
 #: src/app/app.virtbase.com/(auth)/login/page.tsx
-msgid "VGUFk+"
+msgid "VGUFk-"
 msgstr "Melde dich bei deinem {appName} Account an, um deine virtuellen Server zu verwalten."
 
 #: src/app/app.virtbase.com/(auth)/login/page.tsx
@@ -776,7 +776,7 @@ msgid "LcaCOE"
 msgstr "Erstelle deinen {appName} Account"
 
 #: src/app/app.virtbase.com/(auth)/register/page-client.tsx
-msgid "uCk8r+"
+msgid "uCk8r-"
 msgstr "Bereits einen Account?"
 
 #: src/app/app.virtbase.com/(auth)/register/page-client.tsx
@@ -824,7 +824,7 @@ msgstr "Backups"
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/console/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/servers/components/server-nav.tsx
-msgid "gc+2Z2"
+msgid "gc-2Z2"
 msgstr "Konsole"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/firewall/page.tsx
@@ -834,11 +834,11 @@ msgid "Bwqhmd"
 msgstr "Firewall"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx
-msgid "E+4Rfd"
+msgid "E-4Rfd"
 msgstr "Server nicht gefunden"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx
-msgid "bdn/TR"
+msgid "bdn_TR"
 msgstr "Der gesuchte Server existiert nicht."
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx
@@ -861,7 +861,7 @@ msgstr "Plan"
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/rdns/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/servers/components/server-nav.tsx
-msgid "F+02/l"
+msgid "F-02_l"
 msgstr "rDNS"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/error.tsx
@@ -975,7 +975,7 @@ msgid "42rMfw"
 msgstr "ISO"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx
-msgid "+J17tT"
+msgid "-J17tT"
 msgstr "API-Schlüssel erstellen"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx
@@ -1057,7 +1057,7 @@ msgid "ASrBq8"
 msgstr "Passkeys"
 
 #: src/features/account/components/authentication/user-passkeys-card.tsx
-msgid "yZU/cd"
+msgid "yZU_cd"
 msgstr "Passkeys sind eine hochsichere Alternative zu Passwörtern. Registriere einen neuen Passkey oder verwende einen bestehenden."
 
 #: src/features/account/components/authentication/user-passkeys-card.tsx
@@ -1083,7 +1083,7 @@ msgstr "Hinzugefügt {date}"
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx
 #: src/features/account/components/billing/payment-methods-list.tsx
-msgid "G/yZLu"
+msgid "G_yZLu"
 msgstr "Entfernen"
 
 #: src/features/account/components/authentication/user-providers-card.tsx
@@ -1104,7 +1104,7 @@ msgstr "Verwalten"
 #: src/features/auth/components/forgot-password-form.tsx
 #: src/features/auth/components/register/signup-email.tsx
 #: src/ui/feedback-button.tsx
-msgid "sy+pv5"
+msgid "sy-pv5"
 msgstr "E-Mail"
 
 #: src/features/account/components/authentication/user-providers-list.tsx
@@ -1172,7 +1172,7 @@ msgid "qyRflV"
 msgstr "Keine Zahlungsmethoden"
 
 #: src/features/account/components/billing/payment-methods-list.tsx
-msgid "gL/ZgG"
+msgid "gL_ZgG"
 msgstr "Deinem Account sind keine Zahlungsmethoden zugeordnet."
 
 #: src/features/account/components/billing/payment-methods-list.tsx
@@ -1193,7 +1193,7 @@ msgid "bWjdfa"
 msgstr "URL"
 
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
-msgid "aLOPr+"
+msgid "aLOPr-"
 msgstr "Die URL muss direkt auf die ISO-Datei verweisen. Die maximale Dateigröße beträgt {size}."
 
 #: src/features/account/components/custom-images/custom-images-card.tsx
@@ -1218,7 +1218,7 @@ msgstr "Es wurden noch keine eigenen Abbilder hochgeladen."
 
 #: src/features/account/components/custom-images/custom-images-list.tsx
 #: src/features/servers/components/server-mount-badge.tsx
-msgid "N/dZaF"
+msgid "N_dZaF"
 msgstr "Läuft ab {time}"
 
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
@@ -1324,7 +1324,7 @@ msgid "fiNfmb"
 msgstr "Sprache:"
 
 #: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "Ur+SeM"
+msgid "Ur-SeM"
 msgstr "Stripe-ID:"
 
 #: src/features/admin/api/users/generator/generate-inventory-pdf.ts
@@ -1344,7 +1344,7 @@ msgid "RQPliO"
 msgstr "Keine Sitzungen erfasst."
 
 #: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "/7I9Fi"
+msgid "_7I9Fi"
 msgstr "IP-Adresse:"
 
 #: src/features/admin/api/users/generator/generate-inventory-pdf.ts
@@ -1396,7 +1396,7 @@ msgid "UcHtCB"
 msgstr "Proxmox VE"
 
 #: src/features/admin/components/admin-sidebar-groups.tsx
-msgid "+P4xiL"
+msgid "-P4xiL"
 msgstr "IPAM"
 
 #: src/features/admin/components/admin-sidebar.tsx
@@ -1449,7 +1449,7 @@ msgid "fuvH7s"
 msgstr "Letzte Kunden"
 
 #: src/features/admin/components/dashboard/latest-customers-card.tsx
-msgid "IqzPv+"
+msgid "IqzPv-"
 msgstr "Die letzten Kunden nach Datum"
 
 #: src/features/admin/components/dashboard/latest-customers-card.tsx
@@ -1518,7 +1518,7 @@ msgstr "Erstelle ein neues Rechenzentrum."
 
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
-msgid "vONi+O"
+msgid "vONi-O"
 msgstr "Land"
 
 #: src/features/admin/components/datacenters/datacenter-select.tsx
@@ -1600,7 +1600,7 @@ msgid "NMiQru"
 msgstr "Node-Gruppe auswählen..."
 
 #: src/features/admin/components/proxmox-node-groups/node-group-select.tsx
-msgid "/Uo5jN"
+msgid "_Uo5jN"
 msgstr "Suche eine Node-Gruppe..."
 
 #: src/features/admin/components/proxmox-node-groups/node-group-select.tsx
@@ -1613,7 +1613,7 @@ msgstr "Zuletzt aktualisiert"
 
 #: src/features/admin/components/proxmox-nodes/create-datacenter-button.tsx
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
-msgid "S+458D"
+msgid "S-458D"
 msgstr "Proxmox Node erstellen"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
@@ -1645,7 +1645,7 @@ msgid "2BEZJh"
 msgstr "FQDN"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
-msgid "cUm+Vq"
+msgid "cUm-Vq"
 msgstr "Der FQDN des Proxmox VE Nodes, wo die API erreichbar ist. Muss öffentlich erreichbar sein und über ein gültiges TLS-Zertifikat verfügen."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
@@ -1732,11 +1732,11 @@ msgid "39jmFD"
 msgstr "Nach Hostname suchen..."
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-msgid "/xxglw"
+msgid "_xxglw"
 msgstr "Anzahl von VMs"
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-msgid "EWGm/3"
+msgid "EWGm_3"
 msgstr "{usage} / {limit}"
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
@@ -1774,7 +1774,7 @@ msgid "8lCjAM"
 msgstr "Priorität"
 
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-msgid "lb/VMv"
+msgid "lb_VMv"
 msgstr "Anzahl der Templates"
 
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
@@ -1799,7 +1799,7 @@ msgid "1UsI0I"
 msgstr "Kündigungsdatum"
 
 #: src/features/admin/components/servers/servers-table/columns.tsx
-msgid "zvQbH/"
+msgid "zvQbH_"
 msgstr "In Proxmox anzeigen"
 
 #: src/features/admin/components/subnets/create-subnet-button.tsx
@@ -1808,7 +1808,7 @@ msgid "pXZyDa"
 msgstr "Subnetz erstellen"
 
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx
-msgid "w+MmK2"
+msgid "w-MmK2"
 msgstr "Erstelle ein neues Subnetz."
 
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx
@@ -1833,7 +1833,7 @@ msgid "XQeoKw"
 msgstr "Nach CIDR suchen..."
 
 #: src/features/admin/components/subnets/subnets-table/columns.tsx
-msgid "+U6ozc"
+msgid "-U6ozc"
 msgstr "Typ"
 
 #: src/features/admin/components/subnets/subnets-table/columns.tsx
@@ -1849,7 +1849,7 @@ msgid "1ZgrhW"
 msgstr "Rolle"
 
 #: src/features/admin/components/users/users-table/columns.tsx
-msgid "DC8+TO"
+msgid "DC8-TO"
 msgstr "E-Mail bestätigt"
 
 #: src/features/admin/components/users/users-table/columns.tsx
@@ -1897,7 +1897,7 @@ msgid "5sg7KC"
 msgstr "Passwort"
 
 #: src/features/auth/components/email-sign-in.tsx
-msgid "V/JHlm"
+msgid "V_JHlm"
 msgstr "Passwort vergessen?"
 
 #: src/features/auth/components/email-sign-in.tsx
@@ -1913,7 +1913,7 @@ msgid "vu1wqp"
 msgstr "Mit E-Mail anmelden"
 
 #: src/features/auth/components/forgot-password-form.tsx
-msgid "qm+oRY"
+msgid "qm-oRY"
 msgstr "Du erhältst eine E-Mail mit Anweisungen zum Zurücksetzen deines Passwortes."
 
 #: src/features/auth/components/forgot-password-form.tsx
@@ -1931,7 +1931,7 @@ msgid "FJ6r9E"
 msgstr "Mit Google fortfahren"
 
 #: src/features/auth/components/login-form.tsx
-msgid "Zk0/xv"
+msgid "Zk0_xv"
 msgstr "Du hast dich zuletzt mit {method} angemeldet"
 
 #: src/features/auth/components/login-form.tsx
@@ -1955,7 +1955,7 @@ msgid "NNQ3iD"
 msgstr "Kleinbuchstabe"
 
 #: src/features/auth/components/password-requirements.tsx
-msgid "WK/0OI"
+msgid "WK_0OI"
 msgstr "8 Zeichen"
 
 #: src/features/auth/components/register/resend-otp.tsx
@@ -2031,7 +2031,7 @@ msgid "t2uvIi"
 msgstr "Betriebssystem"
 
 #: src/features/checkout/components/checkout-form.tsx
-msgid "hE8w/g"
+msgid "hE8w_g"
 msgstr "Root-Passwort (optional)"
 
 #: src/features/checkout/components/checkout-form.tsx
@@ -2044,7 +2044,7 @@ msgstr "Falls leer gelassen wird ein sicheres, zufällig generiertes Passwort pe
 
 #: src/features/checkout/components/checkout-form.tsx
 #: src/features/servers/components/plan/plan-summary.tsx
-msgid "+g+0OK"
+msgid "-g-0OK"
 msgstr "Mit Zahlung fortfahren"
 
 #: src/features/checkout/components/checkout-public-key-select.tsx
@@ -2072,7 +2072,7 @@ msgid "fL6LzO"
 msgstr "Ich habe die <terms>Nutzungsbedingungen</terms> und die <privacy>Datenschutzerklärung</privacy> gelesen, verstanden und akzeptiere sie."
 
 #: src/features/checkout/components/checkout-waivers.tsx
-msgid "+3U5qS"
+msgid "-3U5qS"
 msgstr "Ich habe die <revocation>Widerrufsbestimmungen</revocation> gelesen und stimme zu. Das Widerrufsrecht erlischt, sobald die Bestellung abgeschlossen ist und die Dienstleistung automatisch bereitgestellt wird."
 
 #: src/features/checkout/components/elements-provider.tsx
@@ -2080,12 +2080,12 @@ msgid "mlJ21x"
 msgstr "Anonym mit Kryptowährung bezahlen"
 
 #: src/features/checkout/components/offer-card.tsx
-msgid "pxF+t0"
+msgid "pxF-t0"
 msgstr "Beliebt"
 
 #: src/features/checkout/components/offer-card.tsx
 #: src/features/checkout/components/order-summary.tsx
-msgid "Rw82/V"
+msgid "Rw82_V"
 msgstr "pro Monat"
 
 #: src/features/checkout/components/offer-card.tsx
@@ -2098,7 +2098,7 @@ msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
 
 #: src/features/checkout/components/offer-card.tsx
 #: src/features/checkout/components/order-summary.tsx
-msgid "zSO/T8"
+msgid "zSO_T8"
 msgstr "1 IPv4 + IPv6 /64 Subnetz"
 
 #: src/features/checkout/components/offer-card.tsx
@@ -2123,7 +2123,7 @@ msgid "5EjMej"
 msgstr "Jetzt {name} konfigurieren"
 
 #: src/features/checkout/components/offer-card.tsx
-msgid "khw/ok"
+msgid "khw_ok"
 msgstr "Jetzt konfigurieren"
 
 #: src/features/checkout/components/offer-card.tsx
@@ -2164,11 +2164,11 @@ msgid "ddCkDY"
 msgstr "Verarbeite Zahlung…"
 
 #: src/features/checkout/components/stripe-payment-form.tsx
-msgid "7tOz+m"
+msgid "7tOz-m"
 msgstr "Jetzt kaufen"
 
 #: src/features/dashboard/components/empty-servers.tsx
-msgid "fmSs/a"
+msgid "fmSs_a"
 msgstr "Keine Server gefunden"
 
 #: src/features/dashboard/components/empty-servers.tsx
@@ -2234,7 +2234,7 @@ msgid "cIAuzz"
 msgstr "Rechnungsnummer suchen..."
 
 #: src/features/invoices/components/invoices-table/columns.tsx
-msgid "/0TOL5"
+msgid "_0TOL5"
 msgstr "Betrag"
 
 #: src/features/invoices/components/invoices-table/columns.tsx
@@ -2275,7 +2275,7 @@ msgid "TWNuCY"
 msgstr "Unser aktiver DDoS-Schutz schützt vor ungewünschten Ausfällen. Keine zusätzlichen Kosten."
 
 #: src/features/landing/components/advantages-row.tsx
-msgid "nVfA/q"
+msgid "nVfA_q"
 msgstr "Modernes Kundenportal"
 
 #: src/features/landing/components/advantages-row.tsx
@@ -2295,11 +2295,11 @@ msgid "zWVB3p"
 msgstr "Gibt es ein Traffic-Limit?"
 
 #: src/features/landing/components/faq-section.tsx
-msgid "+T4TVw"
+msgid "-T4TVw"
 msgstr "Nein, es gibt kein Traffic-Limit für unsere Server. Der Uplink wird nach dem Fair-Use-Prinzip bereitgestellt. Bei unverhältnismäßig hoher Dauernutzung kann die Bandbreite jedoch vorübergehend gedrosselt werden."
 
 #: src/features/landing/components/faq-section.tsx
-msgid "RS/4DH"
+msgid "RS_4DH"
 msgstr "Kann das Paket später geändert werden?"
 
 #: src/features/landing/components/faq-section.tsx
@@ -2323,7 +2323,7 @@ msgid "B7MEDP"
 msgstr "Der gebuchte Server kann über unser eigenes Kundenportal verwaltet werden. SSH-Zugriff per Passwort ist standardmäßig verfügbar. Der Server kann außerdem über die VNC-Konsole erreicht werden."
 
 #: src/features/landing/components/faq-section.tsx
-msgid "p/GLe/"
+msgid "p_GLe_"
 msgstr "Wie sicher sind meine Daten?"
 
 #: src/features/landing/components/faq-section.tsx
@@ -2444,7 +2444,7 @@ msgid "4HNt5G"
 msgstr "Wähle den BIOS-Typ für deinen Server."
 
 #: src/features/servers/components/advanced/advanced-bios-card.tsx
-msgid "HJOq/1"
+msgid "HJOq_1"
 msgstr "UEFI-BIOS wird für Windows-Installationen empfohlen. Nutze das Legacy-BIOS für ältere Linux-Installationen."
 
 #: src/features/servers/components/advanced/advanced-bios-selector.tsx
@@ -2456,7 +2456,7 @@ msgid "AhxnaN"
 msgstr "Nutze das Legacy-BIOS für diesen Server."
 
 #: src/features/servers/components/advanced/advanced-bios-selector.tsx
-msgid "/eGTDl"
+msgid "_eGTDl"
 msgstr "UEFI-BIOS"
 
 #: src/features/servers/components/advanced/advanced-bios-selector.tsx
@@ -2472,7 +2472,7 @@ msgid "C6jvVM"
 msgstr "Aktiviere oder deaktiviere das TPM-Modul für deinen Server."
 
 #: src/features/servers/components/advanced/advanced-tpm-card.tsx
-msgid "1Lw+6m"
+msgid "1Lw-6m"
 msgstr "Die meisten Linux-Installationen benötigen kein TPM, Windows erfordert TPM v2.0."
 
 #: src/features/servers/components/advanced/advanced-tpm-selector.tsx
@@ -2480,7 +2480,7 @@ msgid "I1Um2Q"
 msgstr "TPM deaktivieren"
 
 #: src/features/servers/components/advanced/advanced-tpm-selector.tsx
-msgid "i1+8G8"
+msgid "i1-8G8"
 msgstr "Schalte TPM für diesen Server vollständig aus."
 
 #: src/features/servers/components/advanced/advanced-tpm-selector.tsx
@@ -2488,7 +2488,7 @@ msgid "HrP3QG"
 msgstr "TPM v1.2 aktivieren"
 
 #: src/features/servers/components/advanced/advanced-tpm-selector.tsx
-msgid "/p73Kl"
+msgid "_p73Kl"
 msgstr "Aktiviere TPM v1.2 für diesen Server."
 
 #: src/features/servers/components/advanced/advanced-tpm-selector.tsx
@@ -2496,7 +2496,7 @@ msgid "DwWNni"
 msgstr "TPM v2.0 aktivieren"
 
 #: src/features/servers/components/advanced/advanced-tpm-selector.tsx
-msgid "i/5Hb2"
+msgid "i_5Hb2"
 msgstr "Aktiviere TPM v2.0 für diesen Server."
 
 #: src/features/servers/components/backups/backups-card.tsx
@@ -2508,7 +2508,7 @@ msgid "zz6ObK"
 msgstr "Wiederherstellen"
 
 #: src/features/servers/components/backups/backups-table/backup-actions.tsx
-msgid "Zl4/y9"
+msgid "Zl4_y9"
 msgstr "Sperren"
 
 #: src/features/servers/components/backups/backups-table/columns.tsx
@@ -2564,7 +2564,6 @@ msgid "04uNfB"
 msgstr "Erstellt das Backup ohne Unterbrechungen des Systems. Der aktuelle Zustand der Prozesse wird gesichert."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx
-#: src/features/servers/components/server-actions-row.tsx
 msgid "elnaZe"
 msgstr "Suspendieren"
 
@@ -2574,7 +2573,7 @@ msgstr "Unterbricht das System kurzfristig, um das Backup zu erstellen, ohne es 
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 #: src/features/servers/components/server-actions-row.tsx
-msgid "q/uwLT"
+msgid "q_uwLT"
 msgstr "Stoppen"
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx
@@ -2582,7 +2581,7 @@ msgid "JidfdC"
 msgstr "Das System wird zur Erstellung des Backups vollständig gestoppt."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx
-msgid "/EmLPv"
+msgid "_EmLPv"
 msgstr "Löschschutz aktivieren"
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx
@@ -2623,7 +2622,7 @@ msgid "sIwjuh"
 msgstr "Server wird installiert"
 
 #: src/features/servers/components/console/console-frame.tsx
-msgid "/iuNMM"
+msgid "_iuNMM"
 msgstr "Diese Funktion ist nicht verfügbar, während der Server installiert wird."
 
 #: src/features/servers/components/console/console-frame.tsx
@@ -2631,7 +2630,7 @@ msgid "odJjY9"
 msgstr "Backup-Prozess läuft"
 
 #: src/features/servers/components/console/console-frame.tsx
-msgid "Z/xHv5"
+msgid "Z_xHv5"
 msgstr "Diese Funktion ist nicht verfügbar, während ein Backup-Prozess läuft. Bitte versuche es später erneut."
 
 #: src/features/servers/components/console/console-frame.tsx
@@ -2669,7 +2668,7 @@ msgstr "Neues Root-Passwort"
 
 #: src/features/servers/components/overview/node-details-dialog.tsx
 #: src/features/servers/components/overview/server-details-card.tsx
-msgid "ivkv/L"
+msgid "ivkv_L"
 msgstr "Hostsystem"
 
 #: src/features/servers/components/overview/node-details-dialog.tsx
@@ -2690,7 +2689,7 @@ msgid "SwBrEP"
 msgstr "Server umbenennen"
 
 #: src/features/servers/components/overview/rename-server-dialog.tsx
-msgid "mFBy/n"
+msgid "mFBy_n"
 msgstr "Benenne deinen Server um."
 
 #: src/features/servers/components/overview/rename-server-dialog.tsx
@@ -2698,11 +2697,11 @@ msgid "UQXG4v"
 msgstr "Mein Server"
 
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
-msgid "5juwi+"
+msgid "5juwi-"
 msgstr "Setze das Passwort eines Benutzers auf deinem Server zurück."
 
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
-msgid "K1+gri"
+msgid "K1-gri"
 msgstr "Dieser Vorgang kann nicht rückgängig gemacht werden. Wenn das Paket <code>qemu-quest-agent</code> nicht installiert ist, schlägt der Vorgang fehl."
 
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
@@ -2718,11 +2717,11 @@ msgid "Ev6SEF"
 msgstr "Neues Passwort"
 
 #: src/features/servers/components/overview/server-details-card.tsx
-msgid "F/6VqP"
+msgid "F_6VqP"
 msgstr "Server"
 
 #: src/features/servers/components/overview/server-details-card.tsx
-msgid "4A//XV"
+msgid "4A__XV"
 msgstr "Eigenes Image"
 
 #: src/features/servers/components/overview/server-details-card.tsx
@@ -2781,7 +2780,7 @@ msgid "ZjhoiP"
 msgstr "Plan auswählen"
 
 #: src/features/servers/components/plan/plan-summary.tsx
-msgid "SB//YQ"
+msgid "SB__YQ"
 msgstr "Bestellübersicht"
 
 #: src/features/servers/components/plan/plan-summary.tsx
@@ -2813,7 +2812,7 @@ msgid "6Mawmq"
 msgstr "Der Plan wird zu {name} geändert. Du zahlst heute nur die anteilige Differenz — dein aktueller Vertragszeitraum bleibt gleich."
 
 #: src/features/servers/components/plan/plan-summary.tsx
-msgid "So9+9+"
+msgid "So9-9-"
 msgstr "Plan wechseln"
 
 #: src/features/servers/components/plan/plan-summary.tsx
@@ -2861,11 +2860,11 @@ msgid "sLLPqe"
 msgstr "PTR-Einträge können für alle diesem Server zugewiesenen IP-Adressen erstellt werden."
 
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx
-msgid "XM/KKz"
+msgid "XM_KKz"
 msgstr "Der Hostname, der für die IP-Adresse aufgelöst werden soll. <code>localhost</code> ist nicht zulässig."
 
 #: src/features/servers/components/server-actions-row.tsx
-msgid "tZbb+K"
+msgid "tZbb-K"
 msgstr "Herunterfahren"
 
 #: src/features/servers/components/server-actions-row.tsx
@@ -2917,7 +2916,7 @@ msgid "d8EqQY"
 msgstr "Tage"
 
 #: src/features/servers/components/server-graphs.tsx
-msgid "g6+IGw"
+msgid "g6-IGw"
 msgstr "Wochen"
 
 #: src/features/servers/components/server-graphs.tsx
@@ -2947,7 +2946,7 @@ msgid "Arxl88"
 msgstr "Ausgehend"
 
 #: src/features/servers/components/server-graphs.tsx
-msgid "6m3w+3"
+msgid "6m3w-3"
 msgstr "Intervall"
 
 #: src/features/servers/components/server-mount-badge.tsx
@@ -2991,7 +2990,7 @@ msgid "FglhQv"
 msgstr "Abbilder können in den <link>Kontoeinstellungen</link> hochgeladen werden."
 
 #: src/features/servers/components/server-stats-card.tsx
-msgid "PW+sL4"
+msgid "PW-sL4"
 msgstr "N/A"
 
 #: src/features/servers/components/server-status-bar.tsx
@@ -3003,7 +3002,7 @@ msgid "gmwFwF"
 msgstr "Dieser Server wurde deaktiviert und wird am {date} gelöscht, falls nicht verlängert."
 
 #: src/features/servers/components/server-status-bar.tsx
-msgid "+E3dAf"
+msgid "-E3dAf"
 msgstr "Server läuft ab"
 
 #: src/features/servers/components/server-status-bar.tsx
@@ -3011,7 +3010,7 @@ msgid "fkf7mm"
 msgstr "Dieser Server läuft {expiry} ab und wird danach gelöscht, falls nicht verlängert"
 
 #: src/features/servers/components/server-status-bar.tsx
-msgid "76X+Qu"
+msgid "76X-Qu"
 msgstr "Dieser Server wird gerade installiert. Einige Funktionen sind möglicherweise nicht verfügbar."
 
 #: src/features/servers/components/servers-list.tsx
@@ -3047,7 +3046,7 @@ msgid "404iMx"
 msgstr "Die Standardaktion für eingehende Pakete"
 
 #: src/features/servers/firewall/components/firewall-options-row.tsx
-msgid "MMByL/"
+msgid "MMByL_"
 msgstr "Ausgehende Pakete"
 
 #: src/features/servers/firewall/components/firewall-options-row.tsx
@@ -3071,7 +3070,7 @@ msgid "gsXXUl"
 msgstr "Firewall Regel aktualisieren"
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
-msgid "fnX+hz"
+msgid "fnX-hz"
 msgstr "Erstelle eine neue Firewall Regel."
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
@@ -3117,7 +3116,7 @@ msgid "mqTGdC"
 msgstr "Ports"
 
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx
-msgid "Ms3d/e"
+msgid "Ms3d_e"
 msgstr "Keine Firewall Regeln"
 
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx
@@ -3129,7 +3128,7 @@ msgid "wmFdws"
 msgstr "Nach oben bewegen"
 
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
-msgid "H/r5m6"
+msgid "H_r5m6"
 msgstr "Nach unten bewegen"
 
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
@@ -3137,7 +3136,7 @@ msgid "wEQDC6"
 msgstr "Bearbeiten"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
-msgid "w+tZ4Z"
+msgid "w-tZ4Z"
 msgstr "Firewall-Regeln generieren"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
@@ -3153,11 +3152,11 @@ msgid "0r2ykg"
 msgstr "HTTPS-Verkehr erlauben, SSH-Verkehr auf meinem Server jedoch blockieren."
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
-msgid "Pc+tM3"
+msgid "Pc-tM3"
 msgstr "Generieren"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
-msgid "EWw/tK"
+msgid "EWw_tK"
 msgstr "Anwenden"
 
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
@@ -3169,7 +3168,7 @@ msgid "j8RTUO"
 msgstr "Verwerfen"
 
 #: src/features/servers/hooks/use-status-mapping.ts
-msgid "ccU6l/"
+msgid "ccU6l_"
 msgstr "Online"
 
 #: src/features/servers/hooks/use-status-mapping.ts
@@ -3193,7 +3192,7 @@ msgid "JM9DH8"
 msgstr "Wird neu gestartet..."
 
 #: src/features/servers/hooks/use-task-mapping.ts
-msgid "yR4+kW"
+msgid "yR4-kW"
 msgstr "Wird gestoppt..."
 
 #: src/features/servers/hooks/use-task-mapping.ts
@@ -3273,7 +3272,7 @@ msgid "Q43iqt"
 msgstr "Feedback erfolgreich abgesendet"
 
 #: src/ui/feedback-button.tsx
-msgid "mi/NYE"
+msgid "mi_NYE"
 msgstr "Sektion ausblenden"
 
 #: src/ui/feedback-button.tsx
@@ -3294,7 +3293,7 @@ msgid "AyGauy"
 msgstr "Anmelden"
 
 #: src/ui/footer.tsx
-msgid "Yy/yDL"
+msgid "Yy_yDL"
 msgstr "Passwort zurücksetzen"
 
 #: src/ui/footer.tsx
@@ -3318,7 +3317,7 @@ msgid "o8wpU5"
 msgstr "Widerrufsbestimmungen"
 
 #: src/ui/footer.tsx
-msgid "+eN+I1"
+msgid "-eN-I1"
 msgstr "Impressum"
 
 #: src/ui/footer.tsx
@@ -3354,7 +3353,7 @@ msgid "jr1I15"
 msgstr "Durch fortfahren akzeptierst du die <terms>AGB</terms> und <privacy>Datenschutzerklärung</privacy> von {appName}"
 
 #: src/ui/nav-user.tsx
-msgid "f+sh2j"
+msgid "f-sh2j"
 msgstr "Administration"
 
 #: src/ui/nav-user.tsx
@@ -3366,7 +3365,7 @@ msgid "gZwnDa"
 msgstr "Impersonierung beenden"
 
 #: src/ui/nav-user.tsx
-msgid "C81/uG"
+msgid "C81_uG"
 msgstr "Abmelden"
 
 #: src/ui/operating-system-select.tsx
