@@ -52,10 +52,10 @@
     "@virtbase/email": "workspace:*",
     "@virtbase/utils": "workspace:*",
     "@virtbase/validators": "workspace:*",
-    "ai": "^6.0.191",
+    "ai": "^6.0.195",
     "proxmox-api": "catalog:",
     "server-only": "^0.0.1",
-    "stripe": "^22.1.1",
+    "stripe": "^22.2.0",
     "superjson": "catalog:",
     "trpc-to-openapi": "^3.3.0",
     "use-intl": "catalog:",
@@ -63,7 +63,7 @@
     "zod": "catalog:"
   },
   "peerDependencies": {
-    "@simplewebauthn/server": "^13.2.3",
+    "@simplewebauthn/server": "^13.3.1",
     "next": "catalog:"
   },
   "devDependencies": {
