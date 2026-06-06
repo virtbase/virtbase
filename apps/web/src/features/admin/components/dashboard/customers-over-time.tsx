@@ -65,6 +65,7 @@ export function CustomersOverTime({
             format.dateTime(new Date(value), {
               day: "numeric",
               month: "numeric",
+              timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
             })
           }
         />
@@ -82,6 +83,7 @@ export function CustomersOverTime({
                   day: "numeric",
                   month: "numeric",
                   year: "numeric",
+                  timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
                 });
               }}
               valueFormatter={(_, value) => format.number(value as number)}

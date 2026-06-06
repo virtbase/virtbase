@@ -48,14 +48,13 @@ export function ServerTerminatesBadge({
     return null;
   }
 
+  const expiresSoon = isExpiring(server);
+
   return (
     <HoverCard>
       <HoverCardTrigger asChild>
-        <Badge
-          variant={!isExpiring(server) ? "secondary" : "destructive"}
-          {...props}
-        >
-          {!isExpiring(server) ? (
+        <Badge variant={!expiresSoon ? "secondary" : "destructive"} {...props}>
+          {!expiresSoon ? (
             <LucideClock aria-hidden="true" />
           ) : (
             <LucideClockAlert aria-hidden="true" />

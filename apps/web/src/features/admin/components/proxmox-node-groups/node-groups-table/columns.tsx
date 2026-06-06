@@ -112,7 +112,9 @@ export function useNodeGroupsTableColumns({
         <DataTableColumnHeader column={column} label={t("Created at")} />
       ),
       cell: ({ cell }) => {
-        return formatter.dateTime(cell.getValue<Date>());
+        return formatter.dateTime(cell.getValue<Date>(), {
+          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        });
       },
       meta: {
         label: t("Created at"),
@@ -128,7 +130,9 @@ export function useNodeGroupsTableColumns({
         <DataTableColumnHeader column={column} label={t("Last updated")} />
       ),
       cell: ({ cell }) => {
-        return formatter.dateTime(cell.getValue<Date>());
+        return formatter.dateTime(cell.getValue<Date>(), {
+          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        });
       },
       meta: {
         label: t("Last updated"),

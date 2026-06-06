@@ -202,7 +202,9 @@ export function useServersTableColumns({
         <DataTableColumnHeader column={column} label={t("Created at")} />
       ),
       cell: ({ cell }) => {
-        return format.dateTime(cell.getValue<Date>());
+        return format.dateTime(cell.getValue<Date>(), {
+          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        });
       },
       meta: {
         label: t("Created at"),
@@ -219,7 +221,11 @@ export function useServersTableColumns({
       ),
       cell: ({ cell }) => {
         const value = cell.getValue<Date | null>();
-        return value ? format.dateTime(value) : null;
+        return value
+          ? format.dateTime(value, {
+              timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            })
+          : null;
       },
       meta: {
         label: t("Terminates at"),

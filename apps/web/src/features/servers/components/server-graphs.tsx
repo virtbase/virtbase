@@ -241,6 +241,8 @@ export default function ServerGraphs({
                           hour: "2-digit",
                           minute: "2-digit",
                           second: "2-digit",
+                          timeZone:
+                            Intl.DateTimeFormat().resolvedOptions().timeZone,
                         });
                       }}
                       valueFormatter={(key, value) => {

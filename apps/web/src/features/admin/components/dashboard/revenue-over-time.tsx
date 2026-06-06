@@ -65,6 +65,7 @@ export function RevenueOverTime({
             format.dateTime(new Date(value), {
               day: "numeric",
               month: "numeric",
+              timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
             })
           }
         />
@@ -94,6 +95,7 @@ export function RevenueOverTime({
                 return format.dateTime(new Date(value), {
                   day: "numeric",
                   month: "numeric",
+                  timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
                 });
               }}
               valueFormatter={(_, value) =>

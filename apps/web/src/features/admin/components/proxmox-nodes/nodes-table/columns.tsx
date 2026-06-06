@@ -329,7 +329,9 @@ export function useNodesTableColumns({
         <DataTableColumnHeader column={column} label={t("Created at")} />
       ),
       cell: ({ cell }) => {
-        return format.dateTime(cell.getValue<Date>());
+        return format.dateTime(cell.getValue<Date>(), {
+          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        });
       },
       meta: {
         label: t("Created at"),

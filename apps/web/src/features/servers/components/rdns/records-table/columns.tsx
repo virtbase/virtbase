@@ -61,7 +61,9 @@ export function useRecordsTableColumns(): Array<ColumnDef<RecordsTableColumn>> {
       ),
       cell: ({ cell }) => (
         <span className="text-muted-foreground">
-          {formatter.dateTime(cell.getValue<Date>())}
+          {formatter.dateTime(cell.getValue<Date>(), {
+            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          })}
         </span>
       ),
     },
@@ -73,7 +75,9 @@ export function useRecordsTableColumns(): Array<ColumnDef<RecordsTableColumn>> {
       ),
       cell: ({ cell }) => (
         <span className="text-muted-foreground">
-          {formatter.dateTime(cell.getValue<Date>())}
+          {formatter.dateTime(cell.getValue<Date>(), {
+            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          })}
         </span>
       ),
     },

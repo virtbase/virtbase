@@ -133,7 +133,9 @@ export function useDatacentersTableColumns({
         <DataTableColumnHeader column={column} label={t("Created at")} />
       ),
       cell: ({ cell }) => {
-        return formatter.dateTime(cell.getValue<Date>());
+        return formatter.dateTime(cell.getValue<Date>(), {
+          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        });
       },
       meta: {
         label: t("Created at"),

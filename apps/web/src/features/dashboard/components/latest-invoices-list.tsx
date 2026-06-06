@@ -91,7 +91,9 @@ export function LatestInvoicesList() {
       <p className="font-medium text-sm">{invoice.number}</p>
       <div className="flex gap-1">
         <p className="text-muted-foreground text-sm leading-none">
-          {formatter.dateTime(invoice.created_at)}
+          {formatter.dateTime(invoice.created_at, {
+            timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          })}
         </p>
         <Separator
           orientation="vertical"

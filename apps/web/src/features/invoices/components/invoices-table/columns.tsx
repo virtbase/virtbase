@@ -111,7 +111,9 @@ export function useInvoicesTableColumns(): Array<ColumnDef<ListInvoice>> {
         <DataTableColumnHeader column={column} label={t("Invoice date")} />
       ),
       cell: ({ cell }) => {
-        return formatter.dateTime(cell.getValue<Date>());
+        return formatter.dateTime(cell.getValue<Date>(), {
+          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        });
       },
       meta: {
         label: t("Invoice date"),
@@ -130,7 +132,9 @@ export function useInvoicesTableColumns(): Array<ColumnDef<ListInvoice>> {
         const value = cell.getValue<Date | null>();
 
         if (!value) return "-";
-        return formatter.dateTime(value);
+        return formatter.dateTime(value, {
+          timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+        });
       },
       meta: {
         label: t("Paid at"),

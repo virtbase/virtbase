@@ -96,6 +96,7 @@ export default function RestoreBackupDialog({
               date: format.dateTime(backup.started_at, {
                 dateStyle: "medium",
                 timeStyle: "short",
+                timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
               }),
             },
           )}
