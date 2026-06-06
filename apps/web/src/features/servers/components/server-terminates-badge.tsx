@@ -71,6 +71,7 @@ export function ServerTerminatesBadge({
             {formatter.dateTime(server.terminates_at, {
               dateStyle: "short",
               timeStyle: "short",
+              timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone,
             })}
           </span>
           <span className="text-muted-foreground">
@@ -80,7 +81,6 @@ export function ServerTerminatesBadge({
               year: "numeric",
               hour: "2-digit",
               minute: "2-digit",
-              second: "2-digit",
               timeZoneName: "short",
               timeZone: "UTC",
             })}
