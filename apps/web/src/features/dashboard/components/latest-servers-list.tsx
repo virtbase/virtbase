@@ -69,7 +69,12 @@ export function LatestServersList() {
           </div>
           <div className="flex items-center gap-2">
             <div className="min-w-0 grow">
-              <ServerTerminatesBadge server={server} />
+              <ServerTerminatesBadge
+                server={server}
+                hoverCardProps={{
+                  align: "end",
+                }}
+              />
             </div>
             <NextLink
               href={paths.app.servers.overview.getHref(server.id)}

@@ -15,18 +15,32 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+"use client";
+
 import { Badge } from "@virtbase/ui/badge";
+import {
+  HoverCard,
+  HoverCardContent,
+  HoverCardTrigger,
+} from "@virtbase/ui/hover-card";
 import { LucideClock, LucideClockAlert } from "@virtbase/ui/icons";
 import { isExpiring } from "@virtbase/utils";
 import { useFormatter, useNow } from "next-intl";
+import type React from "react";
 
-export function ServerTerminatesBadge({
-  server,
-}: {
+interface ServerTerminatesBadgeProps
+  extends Omit<React.ComponentProps<typeof Badge>, "children" | "variant"> {
   server: {
     terminates_at: Date | null;
   };
-}) {
+  hoverCardProps?: React.ComponentProps<typeof HoverCardContent>;
+}
+
+export function ServerTerminatesBadge({
+  server,
+  hoverCardProps,
+  ...props
+}: ServerTerminatesBadgeProps) {
   const formatter = useFormatter();
   const now = useNow({ updateInterval: 1000 });
 
@@ -35,15 +49,44 @@ export function ServerTerminatesBadge({
   }
 
   return (
-    <Badge variant={!isExpiring(server) ? "secondary" : "destructive"}>
-      {!isExpiring(server) ? (
-        <LucideClock aria-hidden="true" />
-      ) : (
-        <LucideClockAlert aria-hidden="true" />
-      )}
-      {formatter.relativeTime(server.terminates_at, {
-        now,
-      })}
-    </Badge>
+    <HoverCard>
+      <HoverCardTrigger asChild>
+        <Badge
+          variant={!isExpiring(server) ? "secondary" : "destructive"}
+          {...props}
+        >
+          {!isExpiring(server) ? (
+            <LucideClock aria-hidden="true" />
+          ) : (
+            <LucideClockAlert aria-hidden="true" />
+          )}
+          {formatter.relativeTime(server.terminates_at, {
+            now,
+          })}
+        </Badge>
+      </HoverCardTrigger>
+      <HoverCardContent side="bottom" align="center" {...hoverCardProps}>
+        <div className="flex flex-col truncate text-sm">
+          <span className="truncate font-medium">
+            {formatter.dateTime(server.terminates_at, {
+              dateStyle: "short",
+              timeStyle: "short",
+            })}
+          </span>
+          <span className="text-muted-foreground">
+            {formatter.dateTime(server.terminates_at, {
+              day: "2-digit",
+              month: "2-digit",
+              year: "numeric",
+              hour: "2-digit",
+              minute: "2-digit",
+              second: "2-digit",
+              timeZoneName: "short",
+              timeZone: "UTC",
+            })}
+          </span>
+        </div>
+      </HoverCardContent>
+    </HoverCard>
   );
 }

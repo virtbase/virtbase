@@ -170,7 +170,12 @@ export function ServersList() {
               </div>
               <div className="flex items-center gap-4 text-sm">
                 <div className="min-w-0 grow">
-                  <ServerTerminatesBadge server={server} />
+                  <ServerTerminatesBadge
+                    server={server}
+                    hoverCardProps={{
+                      align: "end",
+                    }}
+                  />
                 </div>
                 <DropdownMenu>
                   <DropdownMenuTrigger asChild>
