@@ -20,6 +20,7 @@ import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
 import { AdvancedBiosCard } from "@/features/servers/components/advanced/advanced-bios-card";
 import { AdvancedTpmCard } from "@/features/servers/components/advanced/advanced-tpm-card";
+import { ServerIdCard } from "@/features/servers/components/advanced/server-id-card";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();
@@ -35,6 +36,7 @@ export default async function Page() {
     <>
       <AdvancedBiosCard />
       <AdvancedTpmCard />
+      <ServerIdCard />
     </>
   );
 }
