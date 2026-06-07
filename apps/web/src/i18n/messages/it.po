@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Italian\n"
-"PO-Revision-Date: 2026-06-07 17:27\n"
+"PO-Revision-Date: 2026-06-07 22:31\n"
 
 #: ../../packages/discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -803,6 +803,19 @@ msgstr "Reimposta la tua password per {appName}"
 msgid "tNqFr9"
 msgstr "Reimposta la password per il tuo account {appName}."
 
+#: src/app/app.virtbase.com/(auth)/two-factor/page.tsx
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "AJyYQz"
+msgstr "Autenticazione a due fattori"
+
+#: src/app/app.virtbase.com/(auth)/two-factor/page.tsx
+msgid "Wfg5YD"
+msgstr "Verifica il codice di autenticazione a due fattori."
+
+#: src/app/app.virtbase.com/(auth)/two-factor/page.tsx
+msgid "Ldnbs0"
+msgstr "Inserisci il codice a sei cifre dalla tua app di autenticazione."
+
 #: src/app/app.virtbase.com/(dashboard)/invoices/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/ui/app-sidebar-menu.tsx
@@ -979,6 +992,8 @@ msgid "-J17tT"
 msgstr "Crea chiave API"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/account/components/authentication/confirm-password-dialog.tsx
+#: src/features/account/components/authentication/two-factor-enable-dialog.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
@@ -1050,6 +1065,56 @@ msgstr "Scrivere"
 #: src/features/account/components/authentication/add-passkey-button.tsx
 msgid "IknBAk"
 msgstr "Aggiungi chiave di accesso"
+
+#: src/features/account/components/authentication/backup-codes-dialog.tsx
+msgid "RrL8zs"
+msgstr "Codici di backup"
+
+#: src/features/account/components/authentication/backup-codes-dialog.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
+msgid "rbrahO"
+msgstr "Vicina"
+
+#: src/features/account/components/authentication/backup-codes-dialog.tsx
+msgid "gULNyk"
+msgstr "Questi sono i tuoi codici di backup. Conservali in un luogo sicuro. Ti serviranno per accedere al tuo account se perdi la tua app di autenticazione."
+
+#: src/features/account/components/authentication/confirm-password-dialog.tsx
+msgid "vfG-nh"
+msgstr "Conferma password"
+
+#: src/features/account/components/authentication/confirm-password-dialog.tsx
+#: src/features/auth/components/email-sign-in.tsx
+#: src/features/auth/components/register/signup-email.tsx
+#: src/features/auth/components/reset-password-form.tsx
+msgid "5sg7KC"
+msgstr "Password"
+
+#: src/features/account/components/authentication/regenerate-backup-codes-button.tsx
+msgid "6PgVSe"
+msgstr "Rigenera"
+
+#: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+msgid "tGMBuw"
+msgstr "Configura app di autenticazione"
+
+#: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+msgid "sDHrPA"
+msgstr "Scansiona il codice QR con la tua app di autenticazione. Inserisci il codice a 6 cifre per completare la configurazione, oppure copia il segreto se non riesci a scansionarlo."
+
+#: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+#: src/features/auth/components/register/verify-email-form.tsx
+#: src/features/auth/components/verify-totp-form.tsx
+msgid "poE3OD"
+msgstr "Codice non valido. Per favore riprova."
+
+#: src/features/account/components/authentication/two-factor-manage-button.tsx
+msgid "4xmgHd"
+msgstr "Configura"
+
+#: src/features/account/components/authentication/two-factor-manage-button.tsx
+msgid "Hvp-_6"
+msgstr "Sostituisci"
 
 #: src/features/account/components/authentication/user-passkeys-card.tsx
 #: src/features/account/components/authentication/user-providers-list.tsx
@@ -1158,6 +1223,34 @@ msgstr "Sessione corrente"
 #: src/features/account/components/authentication/user-sessions-list.tsx
 msgid "PIRoCC"
 msgstr "Indirizzo IP sconosciuto"
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "BrXXiS"
+msgstr "Protegge il tuo account richiedendo un secondo fattore all'accesso."
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "7YrJer"
+msgstr "È fortemente consigliato abilitare l'autenticazione a due fattori."
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "qP6L_L"
+msgstr "App di autenticazione (TOTP)"
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "4BGiwE"
+msgstr "Registrato"
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "gnU5U1"
+msgstr "Usa un'app come 1Password, Google Authenticator o Microsoft Authenticator."
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "cAAdXm"
+msgstr "Codici di recupero"
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "w-q8k4"
+msgstr "Codici monouso nel caso in cui perdi l'accesso agli altri fattori."
 
 #: src/features/account/components/billing/payment-methods-card.tsx
 msgid "xuTqgN"
@@ -1934,12 +2027,6 @@ msgid "YXNhCz"
 msgstr "Email inviata: controlla la tua casella di posta!"
 
 #: src/features/auth/components/email-sign-in.tsx
-#: src/features/auth/components/register/signup-email.tsx
-#: src/features/auth/components/reset-password-form.tsx
-msgid "5sg7KC"
-msgstr "Password"
-
-#: src/features/auth/components/email-sign-in.tsx
 msgid "V_JHlm"
 msgstr "Ha dimenticato la password?"
 
@@ -2030,10 +2117,7 @@ msgid "pwyqaX"
 msgstr "Account creato! Reindirizzamento..."
 
 #: src/features/auth/components/register/verify-email-form.tsx
-msgid "poE3OD"
-msgstr "Codice non valido. Per favore riprova."
-
-#: src/features/auth/components/register/verify-email-form.tsx
+#: src/features/auth/components/verify-totp-form.tsx
 msgid "acrOoz"
 msgstr "Continuare"
 
@@ -2729,10 +2813,6 @@ msgstr "Nodo"
 #: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "UfS56w"
 msgstr "Dettagli del nodo."
-
-#: src/features/servers/components/overview/node-details-dialog.tsx
-msgid "rbrahO"
-msgstr "Vicina"
 
 #: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "dVx3yz"
