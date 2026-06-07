@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Swedish\n"
-"PO-Revision-Date: 2026-06-06 20:33\n"
+"PO-Revision-Date: 2026-06-07 17:27\n"
 
 #: ../../packages/discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -1249,6 +1249,28 @@ msgstr "Inga SSH-nycklar"
 msgid "6NcUU3"
 msgstr "Inga SSH-nycklar har skapats ännu."
 
+#: src/features/account/components/user-email-card.tsx
+msgid "NMQtEq"
+msgstr "Ett bekräftelsemeddelande har skickats till din nya e-postadress."
+
+#: src/features/account/components/user-email-card.tsx
+msgid "Hi93rl"
+msgstr "Ändra e-post"
+
+#: src/features/account/components/user-email-card.tsx
+msgid "UNWWt5"
+msgstr "Ange din nya e-postadress."
+
+#: src/features/account/components/user-email-card.tsx
+msgid "xs_MJu"
+msgstr "Ange en giltig e-postadress."
+
+#: src/features/account/components/user-email-card.tsx
+#: src/features/account/components/user-name-card.tsx
+#: src/features/account/components/user-password-card.tsx
+msgid "jvo0vs"
+msgstr "Spara"
+
 #: src/features/account/components/user-id-card.tsx
 msgid "qW1hR5"
 msgstr "Ditt användar-ID"
@@ -1273,9 +1295,30 @@ msgstr "Ange ditt fullständiga namn eller ett visningsnamn du känner dig bekv�
 msgid "YP7yEd"
 msgstr "Använd högst 32 tecken."
 
-#: src/features/account/components/user-name-card.tsx
-msgid "jvo0vs"
-msgstr "Spara"
+#: src/features/account/components/user-password-card.tsx
+msgid "or6fqM"
+msgstr "Lösenordet har uppdaterats."
+
+#: src/features/account/components/user-password-card.tsx
+msgid "QiKKFz"
+msgstr "Ändra lösenord"
+
+#: src/features/account/components/user-password-card.tsx
+msgid "GI9j4c"
+msgstr "Ange ditt nuvarande lösenord och ett nytt lösenord."
+
+#: src/features/account/components/user-password-card.tsx
+msgid "GretYf"
+msgstr "Nuvarande lösenord"
+
+#: src/features/account/components/user-password-card.tsx
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
+msgid "Ev6SEF"
+msgstr "Nytt lösenord"
+
+#: src/features/account/components/user-password-card.tsx
+msgid "6admx4"
+msgstr "Använd minst 8 tecken, en stor bokstav, en liten bokstav och en siffra."
 
 #: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "QZwgMJ"
@@ -2723,10 +2766,6 @@ msgstr "Användarnamn"
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgid "1jWUV4"
 msgstr "Användarnamnet för kontot som lösenordet ska återställas för. Ofta <code>root</code> på Linux och <code>Administrator</code> på Windows."
-
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx
-msgid "Ev6SEF"
-msgstr "Nytt lösenord"
 
 #: src/features/servers/components/overview/server-details-card.tsx
 msgid "F_6VqP"
