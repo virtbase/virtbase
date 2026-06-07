@@ -40,7 +40,8 @@ export async function getEmailTitle(
     | "server-ready"
     | "server-renewal-reminder"
     | "server-suspended"
-    | "verify-email",
+    | "verify-email"
+    | "verify-email-link",
   locale: string | null = DEFAULT_EMAIL_LOCALE,
 ) {
   const candidate = resolveEmailLocale(locale);

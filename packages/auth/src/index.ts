@@ -21,6 +21,7 @@ import { createId } from "@virtbase/db/utils";
 import { sendEmail } from "@virtbase/email";
 import PasswordUpdated from "@virtbase/email/templates/password-updated";
 import ResetPasswordLink from "@virtbase/email/templates/reset-password-link";
+import VerifyEmailLink from "@virtbase/email/templates/verify-email-link";
 import { getEmailTitle } from "@virtbase/email/translations";
 import {
   ADMIN_HOSTNAMES,
@@ -171,6 +172,23 @@ export function initAuth({
     emailVerification: {
       expiresIn: 600, // 10 minutes
       autoSignInAfterVerification: true,
+      sendVerificationEmail: async ({ user: providedUser, url }) => {
+        const user = providedUser as UserWithLocale;
+        if (process.env.NODE_ENV === "development") {
+          console.log(`Verification email sent to user ${user.email}:`, url);
+          return;
+        }
+
+        await sendEmail({
+          to: user.email,
+          subject: await getEmailTitle("verify-email-link", user.locale),
+          react: await VerifyEmailLink({
+            email: user.email,
+            url,
+            locale: user.locale,
+          }),
+        });
+      },
     },
     onAPIError: {
       onError: (error) => {
@@ -247,6 +265,10 @@ export function initAuth({
           required: false,
           input: true,
         },
+      },
+      changeEmail: {
+        enabled: true,
+        updateEmailWithoutVerification: false,
       },
     },
   } satisfies BetterAuthOptions;

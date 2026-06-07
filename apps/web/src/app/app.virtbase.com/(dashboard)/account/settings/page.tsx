@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { UserEmailCard } from "@/features/account/components/user-email-card";
 import { UserIdCard } from "@/features/account/components/user-id-card";
 import { UserNameCard } from "@/features/account/components/user-name-card";
 import { UserPasswordCard } from "@/features/account/components/user-password-card";
@@ -23,6 +24,7 @@ export default function Page() {
   return (
     <>
       <UserNameCard />
+      <UserEmailCard />
       <UserPasswordCard />
       <UserIdCard />
     </>
