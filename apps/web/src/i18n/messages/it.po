@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Italian\n"
-"PO-Revision-Date: 2026-06-06 20:33\n"
+"PO-Revision-Date: 2026-06-07 17:27\n"
 
 #: ../../packages/discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -1249,6 +1249,28 @@ msgstr "Nessuna chiave SSH"
 msgid "6NcUU3"
 msgstr "Nessuna chiave SSH è stata ancora creata."
 
+#: src/features/account/components/user-email-card.tsx
+msgid "NMQtEq"
+msgstr "Un'email di conferma è stata inviata al tuo nuovo indirizzo email."
+
+#: src/features/account/components/user-email-card.tsx
+msgid "Hi93rl"
+msgstr "Cambia email"
+
+#: src/features/account/components/user-email-card.tsx
+msgid "UNWWt5"
+msgstr "Inserisci il tuo nuovo indirizzo email."
+
+#: src/features/account/components/user-email-card.tsx
+msgid "xs_MJu"
+msgstr "Inserisci un indirizzo email valido."
+
+#: src/features/account/components/user-email-card.tsx
+#: src/features/account/components/user-name-card.tsx
+#: src/features/account/components/user-password-card.tsx
+msgid "jvo0vs"
+msgstr "Salva"
+
 #: src/features/account/components/user-id-card.tsx
 msgid "qW1hR5"
 msgstr "Il tuo ID utente"
@@ -1273,9 +1295,30 @@ msgstr "Inserisci il tuo nome completo o un nome visualizzato con cui ti senti a
 msgid "YP7yEd"
 msgstr "Usa al massimo 32 caratteri."
 
-#: src/features/account/components/user-name-card.tsx
-msgid "jvo0vs"
-msgstr "Salva"
+#: src/features/account/components/user-password-card.tsx
+msgid "or6fqM"
+msgstr "Password aggiornata correttamente."
+
+#: src/features/account/components/user-password-card.tsx
+msgid "QiKKFz"
+msgstr "Cambia password"
+
+#: src/features/account/components/user-password-card.tsx
+msgid "GI9j4c"
+msgstr "Inserisci la password attuale e una nuova password."
+
+#: src/features/account/components/user-password-card.tsx
+msgid "GretYf"
+msgstr "Password attuale"
+
+#: src/features/account/components/user-password-card.tsx
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
+msgid "Ev6SEF"
+msgstr "Nuova password"
+
+#: src/features/account/components/user-password-card.tsx
+msgid "6admx4"
+msgstr "Usa almeno 8 caratteri, una lettera maiuscola, una lettera minuscola e un numero."
 
 #: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "QZwgMJ"
@@ -2723,10 +2766,6 @@ msgstr "Nome utente"
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgid "1jWUV4"
 msgstr "Il nome utente dell'account di cui reimpostare la password. Di solito <code>root</code> su Linux e <code>Administrator</code> su Windows."
-
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx
-msgid "Ev6SEF"
-msgstr "Nuova password"
 
 #: src/features/servers/components/overview/server-details-card.tsx
 msgid "F_6VqP"
