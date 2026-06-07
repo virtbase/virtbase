@@ -33,8 +33,8 @@ export async function AppMiddleware(req: NextRequest) {
     path !== "/login" &&
     path !== "/forgot-password" &&
     path !== "/register" &&
-    !path.startsWith("/reset-password") &&
-    !path.startsWith("/two-factor")
+    path !== "/two-factor" &&
+    !path.startsWith("/reset-password")
   ) {
     return NextResponse.redirect(
       new URL(
@@ -46,7 +46,7 @@ export async function AppMiddleware(req: NextRequest) {
     // if there's a session cookie
   } else if (sessionCookie) {
     // if the path is /login or /register, redirect to the dashboard
-    if (["/login", "/register"].includes(path)) {
+    if (["/login", "/register", "/two-factor"].includes(path)) {
       const next = searchParamsObj.next
         ? decodeURIComponent(searchParamsObj.next as string)
         : "/";

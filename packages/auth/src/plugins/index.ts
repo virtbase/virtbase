@@ -21,7 +21,7 @@ import { sendEmail } from "@virtbase/email";
 import LoginLink from "@virtbase/email/templates/login-link";
 import VerifyEmail from "@virtbase/email/templates/verify-email";
 import { getEmailTitle } from "@virtbase/email/translations";
-import { APP_DOMAIN, APP_NAME } from "@virtbase/utils";
+import { ADMIN_DOMAIN, APP_DOMAIN, APP_NAME } from "@virtbase/utils";
 import type { BetterAuthPlugin } from "better-auth";
 import {
   admin,
@@ -129,7 +129,7 @@ export const plugins = [
   }),
   passkey({
     rpName: APP_NAME,
-    origin: APP_DOMAIN,
+    origin: [APP_DOMAIN, ADMIN_DOMAIN],
   }),
   twoFactor({
     issuer: APP_NAME,

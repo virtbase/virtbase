@@ -30,7 +30,7 @@ export async function AdminMiddleware(req: NextRequest) {
   const sessionCookie = getSessionCookie(req.headers);
 
   // if there's no session cookie and the path isn't /login, redirect to /login
-  if (!sessionCookie && path !== "/login" && !path.startsWith("/two-factor")) {
+  if (!sessionCookie && path !== "/login" && path !== "/two-factor") {
     return NextResponse.redirect(
       new URL(
         `/login${path === "/" ? "" : `?next=${encodeURIComponent(fullPath)}`}`,
@@ -53,7 +53,7 @@ export async function AdminMiddleware(req: NextRequest) {
     }
 
     // if the path is /login, redirect to the dashboard
-    if (path === "/login") {
+    if (["/login", "/two-factor"].includes(path)) {
       const next = searchParamsObj.next
         ? decodeURIComponent(searchParamsObj.next as string)
         : "/";
