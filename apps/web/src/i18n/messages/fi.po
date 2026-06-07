@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Finnish\n"
-"PO-Revision-Date: 2026-06-07 17:27\n"
+"PO-Revision-Date: 2026-06-07 22:31\n"
 
 #: ../../packages/discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -803,6 +803,19 @@ msgstr "Palauta salasana {appName}:lle"
 msgid "tNqFr9"
 msgstr "Palauta salasana {appName}-tilillesi."
 
+#: src/app/app.virtbase.com/(auth)/two-factor/page.tsx
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "AJyYQz"
+msgstr "Kaksivaiheinen tunnistautuminen"
+
+#: src/app/app.virtbase.com/(auth)/two-factor/page.tsx
+msgid "Wfg5YD"
+msgstr "Vahvista kaksivaiheisen tunnistautumisen koodisi."
+
+#: src/app/app.virtbase.com/(auth)/two-factor/page.tsx
+msgid "Ldnbs0"
+msgstr "Syötä kuusinumeroinen koodi tunnistautumissovelluksestasi."
+
 #: src/app/app.virtbase.com/(dashboard)/invoices/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/ui/app-sidebar-menu.tsx
@@ -979,6 +992,8 @@ msgid "-J17tT"
 msgstr "Luo API-avain"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/account/components/authentication/confirm-password-dialog.tsx
+#: src/features/account/components/authentication/two-factor-enable-dialog.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
@@ -1050,6 +1065,56 @@ msgstr "Kirjoittaa"
 #: src/features/account/components/authentication/add-passkey-button.tsx
 msgid "IknBAk"
 msgstr "Lisää salasana"
+
+#: src/features/account/components/authentication/backup-codes-dialog.tsx
+msgid "RrL8zs"
+msgstr "Varakoodit"
+
+#: src/features/account/components/authentication/backup-codes-dialog.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
+msgid "rbrahO"
+msgstr "Lähellä"
+
+#: src/features/account/components/authentication/backup-codes-dialog.tsx
+msgid "gULNyk"
+msgstr "Nämä ovat varakoodisi. Säilytä ne turvallisessa paikassa. Tarvitset niitä tilillesi pääsemiseen, jos menetät tunnistautumissovelluksesi."
+
+#: src/features/account/components/authentication/confirm-password-dialog.tsx
+msgid "vfG-nh"
+msgstr "Vahvista salasana"
+
+#: src/features/account/components/authentication/confirm-password-dialog.tsx
+#: src/features/auth/components/email-sign-in.tsx
+#: src/features/auth/components/register/signup-email.tsx
+#: src/features/auth/components/reset-password-form.tsx
+msgid "5sg7KC"
+msgstr "Salasana"
+
+#: src/features/account/components/authentication/regenerate-backup-codes-button.tsx
+msgid "6PgVSe"
+msgstr "Luo uudelleen"
+
+#: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+msgid "tGMBuw"
+msgstr "Määritä tunnistautumissovellus"
+
+#: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+msgid "sDHrPA"
+msgstr "Skannaa QR-koodi tunnistautumissovelluksellasi. Syötä 6-numeroinen koodi viimeistelläksesi määrityksen, tai kopioi salaisuus, jos et voi skannata sitä."
+
+#: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+#: src/features/auth/components/register/verify-email-form.tsx
+#: src/features/auth/components/verify-totp-form.tsx
+msgid "poE3OD"
+msgstr "Virheellinen koodi. Yritä uudelleen."
+
+#: src/features/account/components/authentication/two-factor-manage-button.tsx
+msgid "4xmgHd"
+msgstr "Määritä"
+
+#: src/features/account/components/authentication/two-factor-manage-button.tsx
+msgid "Hvp-_6"
+msgstr "Korvaa"
 
 #: src/features/account/components/authentication/user-passkeys-card.tsx
 #: src/features/account/components/authentication/user-providers-list.tsx
@@ -1158,6 +1223,34 @@ msgstr "Nykyinen istunto"
 #: src/features/account/components/authentication/user-sessions-list.tsx
 msgid "PIRoCC"
 msgstr "Tuntematon IP-osoite"
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "BrXXiS"
+msgstr "Suojaa tiliäsi vaatimalla toisen tekijän kirjautumisen yhteydessä."
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "7YrJer"
+msgstr "Kaksivaiheisen tunnistautumisen käyttöönottoa suositellaan vahvasti."
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "qP6L_L"
+msgstr "Tunnistautumissovellus (TOTP)"
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "4BGiwE"
+msgstr "Rekisteröity"
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "gnU5U1"
+msgstr "Käytä sovellusta kuten 1Password, Google Authenticator tai Microsoft Authenticator."
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "cAAdXm"
+msgstr "Palautuskoodit"
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "w-q8k4"
+msgstr "Kertakäyttöiset koodit siltä varalta, että menetät pääsyn muihin tekijöihisi."
 
 #: src/features/account/components/billing/payment-methods-card.tsx
 msgid "xuTqgN"
@@ -1934,12 +2027,6 @@ msgid "YXNhCz"
 msgstr "Sähköposti lähetetty - tarkista postilaatikkosi!"
 
 #: src/features/auth/components/email-sign-in.tsx
-#: src/features/auth/components/register/signup-email.tsx
-#: src/features/auth/components/reset-password-form.tsx
-msgid "5sg7KC"
-msgstr "Salasana"
-
-#: src/features/auth/components/email-sign-in.tsx
 msgid "V_JHlm"
 msgstr "Unohditko salasanan?"
 
@@ -2030,10 +2117,7 @@ msgid "pwyqaX"
 msgstr "Tili luotu! Uudelleenohjataan..."
 
 #: src/features/auth/components/register/verify-email-form.tsx
-msgid "poE3OD"
-msgstr "Virheellinen koodi. Yritä uudelleen."
-
-#: src/features/auth/components/register/verify-email-form.tsx
+#: src/features/auth/components/verify-totp-form.tsx
 msgid "acrOoz"
 msgstr "Jatkaa"
 
@@ -2729,10 +2813,6 @@ msgstr "Solmu"
 #: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "UfS56w"
 msgstr "Solmun tiedot."
-
-#: src/features/servers/components/overview/node-details-dialog.tsx
-msgid "rbrahO"
-msgstr "Lähellä"
 
 #: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "dVx3yz"
