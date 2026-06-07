@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Norwegian\n"
-"PO-Revision-Date: 2026-06-06 20:33\n"
+"PO-Revision-Date: 2026-06-07 17:27\n"
 
 #: ../../packages/discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -1249,6 +1249,28 @@ msgstr "Ingen SSH-nøkler"
 msgid "6NcUU3"
 msgstr "Ingen SSH-nøkler er opprettet ennå."
 
+#: src/features/account/components/user-email-card.tsx
+msgid "NMQtEq"
+msgstr "En bekreftelses-e-post er sendt til den nye e-postadressen din."
+
+#: src/features/account/components/user-email-card.tsx
+msgid "Hi93rl"
+msgstr "Endre e-post"
+
+#: src/features/account/components/user-email-card.tsx
+msgid "UNWWt5"
+msgstr "Skriv inn den nye e-postadressen din."
+
+#: src/features/account/components/user-email-card.tsx
+msgid "xs_MJu"
+msgstr "Skriv inn en gyldig e-postadresse."
+
+#: src/features/account/components/user-email-card.tsx
+#: src/features/account/components/user-name-card.tsx
+#: src/features/account/components/user-password-card.tsx
+msgid "jvo0vs"
+msgstr "Lagre"
+
 #: src/features/account/components/user-id-card.tsx
 msgid "qW1hR5"
 msgstr "Din bruker-ID"
@@ -1273,9 +1295,30 @@ msgstr "Skriv inn fullt navn eller et visningsnavn du er komfortabel med."
 msgid "YP7yEd"
 msgstr "Bruk maks 32 tegn."
 
-#: src/features/account/components/user-name-card.tsx
-msgid "jvo0vs"
-msgstr "Lagre"
+#: src/features/account/components/user-password-card.tsx
+msgid "or6fqM"
+msgstr "Passordet ble oppdatert."
+
+#: src/features/account/components/user-password-card.tsx
+msgid "QiKKFz"
+msgstr "Endre passord"
+
+#: src/features/account/components/user-password-card.tsx
+msgid "GI9j4c"
+msgstr "Skriv inn ditt nåværende passord og et nytt passord."
+
+#: src/features/account/components/user-password-card.tsx
+msgid "GretYf"
+msgstr "Nåværende passord"
+
+#: src/features/account/components/user-password-card.tsx
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
+msgid "Ev6SEF"
+msgstr "Nytt passord"
+
+#: src/features/account/components/user-password-card.tsx
+msgid "6admx4"
+msgstr "Bruk minst 8 tegn, én stor bokstav, én liten bokstav og ett tall."
 
 #: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "QZwgMJ"
@@ -2723,10 +2766,6 @@ msgstr "Brukernavn"
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgid "1jWUV4"
 msgstr "Brukernavnet til kontoen du vil tilbakestille passordet for. Vanligvis <code>root</code> på Linux og <code>Administrator</code> på Windows."
-
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx
-msgid "Ev6SEF"
-msgstr "Nytt passord"
 
 #: src/features/servers/components/overview/server-details-card.tsx
 msgid "F_6VqP"
