@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Czech\n"
-"PO-Revision-Date: 2026-06-07 17:26\n"
+"PO-Revision-Date: 2026-06-07 22:31\n"
 
 #: ../../packages/discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -803,6 +803,19 @@ msgstr "Obnovit heslo pro {appName}"
 msgid "tNqFr9"
 msgstr "Obnov heslo ke svému účtu {appName}."
 
+#: src/app/app.virtbase.com/(auth)/two-factor/page.tsx
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "AJyYQz"
+msgstr "Dvoufaktorové ověřování"
+
+#: src/app/app.virtbase.com/(auth)/two-factor/page.tsx
+msgid "Wfg5YD"
+msgstr "Ověř svůj kód dvoufaktorového ověřování."
+
+#: src/app/app.virtbase.com/(auth)/two-factor/page.tsx
+msgid "Ldnbs0"
+msgstr "Zadej šestimístný kód z ověřovací aplikace."
+
 #: src/app/app.virtbase.com/(dashboard)/invoices/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/ui/app-sidebar-menu.tsx
@@ -979,6 +992,8 @@ msgid "-J17tT"
 msgstr "Vytvořit API klíč"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/account/components/authentication/confirm-password-dialog.tsx
+#: src/features/account/components/authentication/two-factor-enable-dialog.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
@@ -1050,6 +1065,56 @@ msgstr "Zápis"
 #: src/features/account/components/authentication/add-passkey-button.tsx
 msgid "IknBAk"
 msgstr "Přidat passkey"
+
+#: src/features/account/components/authentication/backup-codes-dialog.tsx
+msgid "RrL8zs"
+msgstr "Záložní kódy"
+
+#: src/features/account/components/authentication/backup-codes-dialog.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
+msgid "rbrahO"
+msgstr "Zavřít"
+
+#: src/features/account/components/authentication/backup-codes-dialog.tsx
+msgid "gULNyk"
+msgstr "Toto jsou tvé záložní kódy. Ulož je na bezpečné místo. Budeš je potřebovat pro přístup k účtu, pokud ztratíš ověřovací aplikaci."
+
+#: src/features/account/components/authentication/confirm-password-dialog.tsx
+msgid "vfG-nh"
+msgstr "Potvrdit heslo"
+
+#: src/features/account/components/authentication/confirm-password-dialog.tsx
+#: src/features/auth/components/email-sign-in.tsx
+#: src/features/auth/components/register/signup-email.tsx
+#: src/features/auth/components/reset-password-form.tsx
+msgid "5sg7KC"
+msgstr "Heslo"
+
+#: src/features/account/components/authentication/regenerate-backup-codes-button.tsx
+msgid "6PgVSe"
+msgstr "Vygenerovat znovu"
+
+#: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+msgid "tGMBuw"
+msgstr "Nastavit ověřovací aplikaci"
+
+#: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+msgid "sDHrPA"
+msgstr "Naskenuj QR kód ověřovací aplikací. Pro dokončení nastavení zadej šestimístný kód, nebo zkopíruj tajný klíč, pokud ho nemůžeš naskenovat."
+
+#: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+#: src/features/auth/components/register/verify-email-form.tsx
+#: src/features/auth/components/verify-totp-form.tsx
+msgid "poE3OD"
+msgstr "Neplatný kód. Zkus to prosím znovu."
+
+#: src/features/account/components/authentication/two-factor-manage-button.tsx
+msgid "4xmgHd"
+msgstr "Nastavit"
+
+#: src/features/account/components/authentication/two-factor-manage-button.tsx
+msgid "Hvp-_6"
+msgstr "Nahradit"
 
 #: src/features/account/components/authentication/user-passkeys-card.tsx
 #: src/features/account/components/authentication/user-providers-list.tsx
@@ -1158,6 +1223,34 @@ msgstr "Aktuální relace"
 #: src/features/account/components/authentication/user-sessions-list.tsx
 msgid "PIRoCC"
 msgstr "Neznámá IP adresa"
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "BrXXiS"
+msgstr "Chrání tvůj účet tím, že při přihlášení vyžaduje druhý faktor."
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "7YrJer"
+msgstr "Důrazně doporučujeme zapnout dvoufaktorové ověřování."
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "qP6L_L"
+msgstr "Ověřovací aplikace (TOTP)"
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "4BGiwE"
+msgstr "Zaregistrováno"
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "gnU5U1"
+msgstr "Použij aplikaci jako 1Password, Google Authenticator nebo Microsoft Authenticator."
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "cAAdXm"
+msgstr "Obnovovací kódy"
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "w-q8k4"
+msgstr "Jednorázové kódy pro případ, že ztratíš přístup k ostatním faktorům."
 
 #: src/features/account/components/billing/payment-methods-card.tsx
 msgid "xuTqgN"
@@ -1934,12 +2027,6 @@ msgid "YXNhCz"
 msgstr "E-mail odeslán - zkontroluj doručenou poštu!"
 
 #: src/features/auth/components/email-sign-in.tsx
-#: src/features/auth/components/register/signup-email.tsx
-#: src/features/auth/components/reset-password-form.tsx
-msgid "5sg7KC"
-msgstr "Heslo"
-
-#: src/features/auth/components/email-sign-in.tsx
 msgid "V_JHlm"
 msgstr "Zapomenuté heslo?"
 
@@ -2030,10 +2117,7 @@ msgid "pwyqaX"
 msgstr "Účet vytvořen! Přesměrování..."
 
 #: src/features/auth/components/register/verify-email-form.tsx
-msgid "poE3OD"
-msgstr "Neplatný kód. Zkus to prosím znovu."
-
-#: src/features/auth/components/register/verify-email-form.tsx
+#: src/features/auth/components/verify-totp-form.tsx
 msgid "acrOoz"
 msgstr "Pokračovat"
 
@@ -2729,10 +2813,6 @@ msgstr "Uzel"
 #: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "UfS56w"
 msgstr "Detaily uzlu."
-
-#: src/features/servers/components/overview/node-details-dialog.tsx
-msgid "rbrahO"
-msgstr "Zavřít"
 
 #: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "dVx3yz"
