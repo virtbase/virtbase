@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Turkish\n"
-"PO-Revision-Date: 2026-06-06 20:33\n"
+"PO-Revision-Date: 2026-06-07 17:27\n"
 
 #: ../../packages/discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -1249,6 +1249,28 @@ msgstr "SSH anahtarı yok"
 msgid "6NcUU3"
 msgstr "Henüz SSH anahtarı oluşturulmadı."
 
+#: src/features/account/components/user-email-card.tsx
+msgid "NMQtEq"
+msgstr "Yeni e-posta adresine bir onay e-postası gönderildi."
+
+#: src/features/account/components/user-email-card.tsx
+msgid "Hi93rl"
+msgstr "E-postayı değiştir"
+
+#: src/features/account/components/user-email-card.tsx
+msgid "UNWWt5"
+msgstr "Yeni e-posta adresini gir."
+
+#: src/features/account/components/user-email-card.tsx
+msgid "xs_MJu"
+msgstr "Geçerli bir e-posta adresi gir."
+
+#: src/features/account/components/user-email-card.tsx
+#: src/features/account/components/user-name-card.tsx
+#: src/features/account/components/user-password-card.tsx
+msgid "jvo0vs"
+msgstr "Kaydet"
+
 #: src/features/account/components/user-id-card.tsx
 msgid "qW1hR5"
 msgstr "Kullanıcı Kimliğiniz"
@@ -1273,9 +1295,30 @@ msgstr "Tam adını ya da rahat hissettiğin bir görünen adı gir."
 msgid "YP7yEd"
 msgstr "En fazla 32 karakter kullan."
 
-#: src/features/account/components/user-name-card.tsx
-msgid "jvo0vs"
-msgstr "Kaydet"
+#: src/features/account/components/user-password-card.tsx
+msgid "or6fqM"
+msgstr "Şifre başarıyla güncellendi."
+
+#: src/features/account/components/user-password-card.tsx
+msgid "QiKKFz"
+msgstr "Şifreyi değiştir"
+
+#: src/features/account/components/user-password-card.tsx
+msgid "GI9j4c"
+msgstr "Mevcut şifreni ve yeni bir şifre gir."
+
+#: src/features/account/components/user-password-card.tsx
+msgid "GretYf"
+msgstr "Mevcut şifre"
+
+#: src/features/account/components/user-password-card.tsx
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
+msgid "Ev6SEF"
+msgstr "Yeni parola"
+
+#: src/features/account/components/user-password-card.tsx
+msgid "6admx4"
+msgstr "En az 8 karakter, bir büyük harf, bir küçük harf ve bir rakam kullan."
 
 #: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "QZwgMJ"
@@ -2723,10 +2766,6 @@ msgstr "Kullanıcı adı"
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgid "1jWUV4"
 msgstr "Parolası sıfırlanacak hesabın kullanıcı adı. Linux’ta çoğunlukla <code>root</code>, Windows’ta <code>Administrator</code>."
-
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx
-msgid "Ev6SEF"
-msgstr "Yeni parola"
 
 #: src/features/servers/components/overview/server-details-card.tsx
 msgid "F_6VqP"
