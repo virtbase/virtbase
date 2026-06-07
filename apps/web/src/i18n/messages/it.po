@@ -1274,8 +1274,34 @@ msgid "YP7yEd"
 msgstr "Usa al massimo 32 caratteri."
 
 #: src/features/account/components/user-name-card.tsx
+#: src/features/account/components/user-password-card.tsx
 msgid "jvo0vs"
 msgstr "Salva"
+
+#: src/features/account/components/user-password-card.tsx
+msgid "or6fqM"
+msgstr "Password aggiornata correttamente."
+
+#: src/features/account/components/user-password-card.tsx
+msgid "QiKKFz"
+msgstr "Cambia password"
+
+#: src/features/account/components/user-password-card.tsx
+msgid "GI9j4c"
+msgstr "Inserisci la password attuale e una nuova password."
+
+#: src/features/account/components/user-password-card.tsx
+msgid "GretYf"
+msgstr "Password attuale"
+
+#: src/features/account/components/user-password-card.tsx
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
+msgid "Ev6SEF"
+msgstr "Nuova password"
+
+#: src/features/account/components/user-password-card.tsx
+msgid "6admx4"
+msgstr "Usa almeno 8 caratteri, una lettera maiuscola, una lettera minuscola e un numero."
 
 #: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "QZwgMJ"
@@ -2723,10 +2749,6 @@ msgstr "Nome utente"
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgid "1jWUV4"
 msgstr "Il nome utente dell'account di cui reimpostare la password. Di solito <code>root</code> su Linux e <code>Administrator</code> su Windows."
-
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx
-msgid "Ev6SEF"
-msgstr "Nuova password"
 
 #: src/features/servers/components/overview/server-details-card.tsx
 msgid "F_6VqP"

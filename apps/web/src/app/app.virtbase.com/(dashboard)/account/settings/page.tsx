@@ -17,11 +17,13 @@
 
 import { UserIdCard } from "@/features/account/components/user-id-card";
 import { UserNameCard } from "@/features/account/components/user-name-card";
+import { UserPasswordCard } from "@/features/account/components/user-password-card";
 
 export default function Page() {
   return (
     <>
       <UserNameCard />
+      <UserPasswordCard />
       <UserIdCard />
     </>
   );

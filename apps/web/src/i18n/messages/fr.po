@@ -1274,8 +1274,34 @@ msgid "YP7yEd"
 msgstr "Utilise au maximum 32 caractères."
 
 #: src/features/account/components/user-name-card.tsx
+#: src/features/account/components/user-password-card.tsx
 msgid "jvo0vs"
 msgstr "Enregistrer"
+
+#: src/features/account/components/user-password-card.tsx
+msgid "or6fqM"
+msgstr "Mot de passe mis à jour avec succès."
+
+#: src/features/account/components/user-password-card.tsx
+msgid "QiKKFz"
+msgstr "Changer le mot de passe"
+
+#: src/features/account/components/user-password-card.tsx
+msgid "GI9j4c"
+msgstr "Saisis ton mot de passe actuel et un nouveau mot de passe."
+
+#: src/features/account/components/user-password-card.tsx
+msgid "GretYf"
+msgstr "Mot de passe actuel"
+
+#: src/features/account/components/user-password-card.tsx
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
+msgid "Ev6SEF"
+msgstr "Nouveau mot de passe"
+
+#: src/features/account/components/user-password-card.tsx
+msgid "6admx4"
+msgstr "Utilise au moins 8 caractères, une lettre majuscule, une lettre minuscule et un chiffre."
 
 #: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "QZwgMJ"
@@ -2723,10 +2749,6 @@ msgstr "Nom d'utilisateur"
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgid "1jWUV4"
 msgstr "Le nom d'utilisateur du compte dont vous voulez réinitialiser le mot de passe. Généralement <code>root</code> sous Linux et <code>Administrator</code> sous Windows."
-
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx
-msgid "Ev6SEF"
-msgstr "Nouveau mot de passe"
 
 #: src/features/servers/components/overview/server-details-card.tsx
 msgid "F_6VqP"

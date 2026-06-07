@@ -1274,8 +1274,34 @@ msgid "YP7yEd"
 msgstr "Usa como máximo 32 caracteres."
 
 #: src/features/account/components/user-name-card.tsx
+#: src/features/account/components/user-password-card.tsx
 msgid "jvo0vs"
 msgstr "Guardar"
+
+#: src/features/account/components/user-password-card.tsx
+msgid "or6fqM"
+msgstr "Contraseña actualizada correctamente."
+
+#: src/features/account/components/user-password-card.tsx
+msgid "QiKKFz"
+msgstr "Cambiar contraseña"
+
+#: src/features/account/components/user-password-card.tsx
+msgid "GI9j4c"
+msgstr "Introduce tu contraseña actual y una nueva contraseña."
+
+#: src/features/account/components/user-password-card.tsx
+msgid "GretYf"
+msgstr "Contraseña actual"
+
+#: src/features/account/components/user-password-card.tsx
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
+msgid "Ev6SEF"
+msgstr "Nueva contraseña"
+
+#: src/features/account/components/user-password-card.tsx
+msgid "6admx4"
+msgstr "Usa al menos 8 caracteres, una letra mayúscula, una letra minúscula y un número."
 
 #: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "QZwgMJ"
@@ -2723,10 +2749,6 @@ msgstr "Nombre de usuario"
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgid "1jWUV4"
 msgstr "El nombre de usuario de la cuenta cuya contraseña quieres restablecer. Suele ser <code>root</code> en Linux y <code>Administrator</code> en Windows."
-
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx
-msgid "Ev6SEF"
-msgstr "Nueva contraseña"
 
 #: src/features/servers/components/overview/server-details-card.tsx
 msgid "F_6VqP"
