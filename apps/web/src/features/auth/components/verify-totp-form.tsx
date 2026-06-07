@@ -28,10 +28,8 @@ import { useExtracted } from "next-intl";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
 import { authClient } from "@/lib/auth/client";
-import { useRegisterContext } from "./context";
-import { ResendOtp } from "./resend-otp";
 
-export const VerifyEmailForm = ({ next }: { next?: string }) => {
+export const VerifyTotpForm = ({ next }: { next?: string }) => {
   const t = useExtracted();
 
   const router = useRouter();
@@ -40,42 +38,34 @@ export const VerifyEmailForm = ({ next }: { next?: string }) => {
 
   const { isMobile } = useMediaQuery();
   const [code, setCode] = useState("");
-  const { email, password } = useRegisterContext();
   const [isInvalidCode, setIsInvalidCode] = useState(false);
   const [isRedirecting, setIsRedirecting] = useState(false);
   const [isPending, startTransition] = useTransition();
 
-  const onSubmit = async ({ email, code }: { email: string; code: string }) =>
+  const onSubmit = async ({ code }: { code: string }) =>
     startTransition(async () => {
-      const response = await authClient.emailOtp.verifyEmail({
-        email,
-        otp: code,
+      const response = await authClient.twoFactor.verifyTotp({
+        code,
       });
 
-      if (!response.data && response.error) {
+      if (!response.data?.token && response.error) {
         toast.error(response.error.message);
         setCode("");
         setIsInvalidCode(true);
         return;
       }
 
-      toast.success(t("Account created! Redirecting..."));
       setIsRedirecting(true);
 
       router.push(finalNext || "/");
     });
-
-  if (!email || !password) {
-    router.push("/register");
-    return;
-  }
 
   return (
     <div className="flex flex-col gap-3">
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          void onSubmit({ email, code });
+          void onSubmit({ code });
         }}
       >
         <div>
@@ -110,7 +100,7 @@ export const VerifyEmailForm = ({ next }: { next?: string }) => {
               </div>
             )}
             onComplete={(code) => {
-              void onSubmit({ email, code });
+              void onSubmit({ code });
             }}
           />
           <AnimatedSizeContainer height>
@@ -131,8 +121,6 @@ export const VerifyEmailForm = ({ next }: { next?: string }) => {
           </Button>
         </div>
       </form>
-
-      <ResendOtp email={email} />
     </div>
   );
 };

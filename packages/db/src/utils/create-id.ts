@@ -24,6 +24,7 @@ const prefixes = [
   "acc_", // account
   "verif_", // verification
   "passkey_", // passkey
+  "tfa_", // two-factor authentication
   // Proxmox VE
   "kvm_", // kvm instance
   "kbu_", // kvm backup

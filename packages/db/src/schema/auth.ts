@@ -36,6 +36,8 @@ export const users = pgTable(
     banned: t.boolean().notNull().default(false),
     banReason: t.text(),
     banExpires: t.timestamp({ withTimezone: true, mode: "date" }),
+    // Better Auth two-factor plugin
+    twoFactorEnabled: t.boolean(),
     // Custom fields
     stripeCustomerId: t.text().unique(),
     role: t.text().notNull().default("CUSTOMER"),
@@ -195,4 +197,22 @@ export const apiKeys = pgTable(
     metadata: t.jsonb(),
   }),
   (t) => [index().on(t.referenceId)],
+);
+
+export const twoFactors = pgTable(
+  "two_factors",
+  (t) => ({
+    id: t
+      .text()
+      .primaryKey()
+      .$default(() => createId({ prefix: "tfa_" })),
+    userId: t
+      .text()
+      .notNull()
+      .references(() => users.id, { onDelete: "cascade", onUpdate: "cascade" }),
+    secret: t.text().notNull(),
+    backupCodes: t.text().notNull(),
+    verified: t.boolean().notNull(),
+  }),
+  (t) => [index().on(t.userId)],
 );

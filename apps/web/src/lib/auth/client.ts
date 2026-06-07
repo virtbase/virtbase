@@ -24,6 +24,7 @@ import {
   inferAdditionalFields,
   lastLoginMethodClient,
   magicLinkClient,
+  twoFactorClient,
 } from "better-auth/client/plugins";
 
 import { createAuthClient } from "better-auth/react";
@@ -37,5 +38,20 @@ export const authClient = createAuthClient({
     lastLoginMethodClient(),
     magicLinkClient(),
     passkeyClient(),
+    twoFactorClient({
+      onTwoFactorRedirect: () => {
+        const currentPath =
+          window.location.pathname +
+          window.location.search +
+          window.location.hash;
+
+        const isRedirectPage =
+          currentPath === "/" || currentPath.startsWith("/two-factor");
+
+        window.location.href = isRedirectPage
+          ? "/two-factor"
+          : `/two-factor?next=${encodeURIComponent(currentPath)}`;
+      },
+    }),
   ],
 });

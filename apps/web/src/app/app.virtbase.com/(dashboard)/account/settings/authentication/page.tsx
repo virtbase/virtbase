@@ -18,11 +18,13 @@
 import { UserPasskeysCard } from "@/features/account/components/authentication/user-passkeys-card";
 import { UserProvidersCard } from "@/features/account/components/authentication/user-providers-card";
 import { UserSessionsCard } from "@/features/account/components/authentication/user-sessions-card";
+import { UserTfaCard } from "@/features/account/components/authentication/user-tfa-card";
 
 export default function Page() {
   return (
     <>
       <UserProvidersCard />
+      <UserTfaCard />
       <UserPasskeysCard />
       <UserSessionsCard />
     </>

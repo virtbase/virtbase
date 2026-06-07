@@ -29,6 +29,7 @@ import {
   emailOTP,
   lastLoginMethod,
   magicLink,
+  twoFactor,
 } from "better-auth/plugins";
 import {
   adminAc,
@@ -119,7 +120,7 @@ export const plugins = [
         react: await LoginLink({ email, url, locale }),
       });
     },
-    expiresIn: 600, // 10 minutes
+    expiresIn: 300, // 5 minutes
     allowedAttempts: 1,
     rateLimit: {
       window: 60,
@@ -129,5 +130,17 @@ export const plugins = [
   passkey({
     rpName: APP_NAME,
     origin: APP_DOMAIN,
+  }),
+  twoFactor({
+    issuer: APP_NAME,
+    allowPasswordless: true,
+    backupCodeOptions: {
+      storeBackupCodes: "encrypted",
+    },
+    otpOptions: {
+      storeOTP: "encrypted",
+      allowedAttempts: 3,
+    },
+    skipVerificationOnEnable: false,
   }),
 ] satisfies BetterAuthPlugin[];

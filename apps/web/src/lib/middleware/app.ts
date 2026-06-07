@@ -33,7 +33,8 @@ export async function AppMiddleware(req: NextRequest) {
     path !== "/login" &&
     path !== "/forgot-password" &&
     path !== "/register" &&
-    !path.startsWith("/reset-password")
+    !path.startsWith("/reset-password") &&
+    !path.startsWith("/two-factor")
   ) {
     return NextResponse.redirect(
       new URL(
