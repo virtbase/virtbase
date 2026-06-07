@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Hungarian\n"
-"PO-Revision-Date: 2026-06-07 17:27\n"
+"PO-Revision-Date: 2026-06-07 22:31\n"
 
 #: ../../packages/discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -803,6 +803,19 @@ msgstr "Állítsa vissza a {appName} jelszavát"
 msgid "tNqFr9"
 msgstr "Állítsa vissza jelszavát {appName} fiókjához."
 
+#: src/app/app.virtbase.com/(auth)/two-factor/page.tsx
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "AJyYQz"
+msgstr "Kétfaktoros hitelesítés"
+
+#: src/app/app.virtbase.com/(auth)/two-factor/page.tsx
+msgid "Wfg5YD"
+msgstr "Ellenőrizd a kétfaktoros hitelesítési kódodat."
+
+#: src/app/app.virtbase.com/(auth)/two-factor/page.tsx
+msgid "Ldnbs0"
+msgstr "Add meg a hatjegyű kódot a hitelesítő alkalmazásodból."
+
 #: src/app/app.virtbase.com/(dashboard)/invoices/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/ui/app-sidebar-menu.tsx
@@ -979,6 +992,8 @@ msgid "-J17tT"
 msgstr "API-kulcs létrehozása"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/account/components/authentication/confirm-password-dialog.tsx
+#: src/features/account/components/authentication/two-factor-enable-dialog.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
@@ -1050,6 +1065,56 @@ msgstr "Írj"
 #: src/features/account/components/authentication/add-passkey-button.tsx
 msgid "IknBAk"
 msgstr "Adja hozzá a jelszót"
+
+#: src/features/account/components/authentication/backup-codes-dialog.tsx
+msgid "RrL8zs"
+msgstr "Biztonsági kódok"
+
+#: src/features/account/components/authentication/backup-codes-dialog.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
+msgid "rbrahO"
+msgstr "Közeli"
+
+#: src/features/account/components/authentication/backup-codes-dialog.tsx
+msgid "gULNyk"
+msgstr "Ezek a biztonsági kódjaid. Tárold őket biztonságos helyen. Szükséged lesz rájuk a fiókod eléréséhez, ha elveszíted a hitelesítő alkalmazásodat."
+
+#: src/features/account/components/authentication/confirm-password-dialog.tsx
+msgid "vfG-nh"
+msgstr "Jelszó megerősítése"
+
+#: src/features/account/components/authentication/confirm-password-dialog.tsx
+#: src/features/auth/components/email-sign-in.tsx
+#: src/features/auth/components/register/signup-email.tsx
+#: src/features/auth/components/reset-password-form.tsx
+msgid "5sg7KC"
+msgstr "Jelszó"
+
+#: src/features/account/components/authentication/regenerate-backup-codes-button.tsx
+msgid "6PgVSe"
+msgstr "Újragenerálás"
+
+#: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+msgid "tGMBuw"
+msgstr "Hitelesítő alkalmazás beállítása"
+
+#: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+msgid "sDHrPA"
+msgstr "Olvasd be a QR-kódot a hitelesítő alkalmazásoddal. Add meg a 6 jegyű kódot a beállítás befejezéséhez, vagy másold ki a titkot, ha nem tudod beolvasni."
+
+#: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+#: src/features/auth/components/register/verify-email-form.tsx
+#: src/features/auth/components/verify-totp-form.tsx
+msgid "poE3OD"
+msgstr "Érvénytelen kód. Kérjük, próbálja újra."
+
+#: src/features/account/components/authentication/two-factor-manage-button.tsx
+msgid "4xmgHd"
+msgstr "Beállítás"
+
+#: src/features/account/components/authentication/two-factor-manage-button.tsx
+msgid "Hvp-_6"
+msgstr "Csere"
 
 #: src/features/account/components/authentication/user-passkeys-card.tsx
 #: src/features/account/components/authentication/user-providers-list.tsx
@@ -1158,6 +1223,34 @@ msgstr "Aktuális munkamenet"
 #: src/features/account/components/authentication/user-sessions-list.tsx
 msgid "PIRoCC"
 msgstr "Ismeretlen IP-cím"
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "BrXXiS"
+msgstr "Úgy védi a fiókodat, hogy bejelentkezéskor egy második faktort is megkövetel."
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "7YrJer"
+msgstr "Erősen ajánlott bekapcsolni a kétfaktoros hitelesítést."
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "qP6L_L"
+msgstr "Hitelesítő alkalmazás (TOTP)"
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "4BGiwE"
+msgstr "Regisztrálva"
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "gnU5U1"
+msgstr "Használj olyan alkalmazást, mint az 1Password, a Google Authenticator vagy a Microsoft Authenticator."
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "cAAdXm"
+msgstr "Helyreállítási kódok"
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "w-q8k4"
+msgstr "Egyszer használatos kódok arra az esetre, ha elveszíted a hozzáférést a többi faktorodhoz."
 
 #: src/features/account/components/billing/payment-methods-card.tsx
 msgid "xuTqgN"
@@ -1934,12 +2027,6 @@ msgid "YXNhCz"
 msgstr "E-mail elküldve – ellenőrizze a beérkező leveleket!"
 
 #: src/features/auth/components/email-sign-in.tsx
-#: src/features/auth/components/register/signup-email.tsx
-#: src/features/auth/components/reset-password-form.tsx
-msgid "5sg7KC"
-msgstr "Jelszó"
-
-#: src/features/auth/components/email-sign-in.tsx
 msgid "V_JHlm"
 msgstr "Elfelejtetted a jelszavad?"
 
@@ -2030,10 +2117,7 @@ msgid "pwyqaX"
 msgstr "Fiók létrehozva! Átirányítás..."
 
 #: src/features/auth/components/register/verify-email-form.tsx
-msgid "poE3OD"
-msgstr "Érvénytelen kód. Kérjük, próbálja újra."
-
-#: src/features/auth/components/register/verify-email-form.tsx
+#: src/features/auth/components/verify-totp-form.tsx
 msgid "acrOoz"
 msgstr "Folytatás"
 
@@ -2729,10 +2813,6 @@ msgstr "Csomópont"
 #: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "UfS56w"
 msgstr "A csomópont részletei."
-
-#: src/features/servers/components/overview/node-details-dialog.tsx
-msgid "rbrahO"
-msgstr "Közeli"
 
 #: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "dVx3yz"
