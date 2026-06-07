@@ -105,11 +105,15 @@ export function UserPasswordCard() {
         <CardContent>
           <FieldGroup className="md:flex-row">
             <Field>
-              <FieldLabel className="text-muted-foreground">
+              <FieldLabel
+                htmlFor="current-user-password"
+                className="text-muted-foreground"
+              >
                 {t("Current Password")}
               </FieldLabel>
               <InputGroup>
                 <InputGroupInput
+                  id="current-user-password"
                   autoFocus={false}
                   autoComplete="current-password"
                   minLength={8}
@@ -132,11 +136,15 @@ export function UserPasswordCard() {
               </InputGroup>
             </Field>
             <Field>
-              <FieldLabel className="text-muted-foreground">
+              <FieldLabel
+                htmlFor="new-user-password"
+                className="text-muted-foreground"
+              >
                 {t("New Password")}
               </FieldLabel>
               <InputGroup>
                 <InputGroupInput
+                  id="new-user-password"
                   autoFocus={false}
                   autoComplete="new-password"
                   minLength={8}
