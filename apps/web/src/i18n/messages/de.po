@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: German\n"
-"PO-Revision-Date: 2026-06-07 17:26\n"
+"PO-Revision-Date: 2026-06-07 22:31\n"
 
 #: ../../packages/discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -803,6 +803,19 @@ msgstr "Dein Passwort für {appName} zurücksetzen"
 msgid "tNqFr9"
 msgstr "Setze dein Passwort für deinen {appName} Account zurück."
 
+#: src/app/app.virtbase.com/(auth)/two-factor/page.tsx
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "AJyYQz"
+msgstr "Zwei-Faktor-Authentifizierung"
+
+#: src/app/app.virtbase.com/(auth)/two-factor/page.tsx
+msgid "Wfg5YD"
+msgstr "Bestätige deinen Zwei-Faktor-Authentifizierungscode."
+
+#: src/app/app.virtbase.com/(auth)/two-factor/page.tsx
+msgid "Ldnbs0"
+msgstr "Gib den sechsstelligen Code aus deiner Authenticator-App ein."
+
 #: src/app/app.virtbase.com/(dashboard)/invoices/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/ui/app-sidebar-menu.tsx
@@ -979,6 +992,8 @@ msgid "-J17tT"
 msgstr "API-Schlüssel erstellen"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/account/components/authentication/confirm-password-dialog.tsx
+#: src/features/account/components/authentication/two-factor-enable-dialog.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
@@ -1050,6 +1065,56 @@ msgstr "Schreiben"
 #: src/features/account/components/authentication/add-passkey-button.tsx
 msgid "IknBAk"
 msgstr "Passkey hinzufügen"
+
+#: src/features/account/components/authentication/backup-codes-dialog.tsx
+msgid "RrL8zs"
+msgstr "Backup-Codes"
+
+#: src/features/account/components/authentication/backup-codes-dialog.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
+msgid "rbrahO"
+msgstr "Schließen"
+
+#: src/features/account/components/authentication/backup-codes-dialog.tsx
+msgid "gULNyk"
+msgstr "Dies sind deine Backup-Codes. Bewahre sie an einem sicheren Ort auf. Du benötigst sie, um auf deinen Account zuzugreifen, falls du deine Authenticator-App verlierst."
+
+#: src/features/account/components/authentication/confirm-password-dialog.tsx
+msgid "vfG-nh"
+msgstr "Passwort bestätigen"
+
+#: src/features/account/components/authentication/confirm-password-dialog.tsx
+#: src/features/auth/components/email-sign-in.tsx
+#: src/features/auth/components/register/signup-email.tsx
+#: src/features/auth/components/reset-password-form.tsx
+msgid "5sg7KC"
+msgstr "Passwort"
+
+#: src/features/account/components/authentication/regenerate-backup-codes-button.tsx
+msgid "6PgVSe"
+msgstr "Neu generieren"
+
+#: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+msgid "tGMBuw"
+msgstr "Authenticator-App einrichten"
+
+#: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+msgid "sDHrPA"
+msgstr "Scanne den QR-Code mit deiner Authenticator-App. Gib den 6-stelligen Code ein, um die Einrichtung abzuschließen, oder kopiere das Geheimnis, falls du ihn nicht scannen kannst."
+
+#: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+#: src/features/auth/components/register/verify-email-form.tsx
+#: src/features/auth/components/verify-totp-form.tsx
+msgid "poE3OD"
+msgstr "Ungültiger Code. Bitte erneut versuchen."
+
+#: src/features/account/components/authentication/two-factor-manage-button.tsx
+msgid "4xmgHd"
+msgstr "Einrichten"
+
+#: src/features/account/components/authentication/two-factor-manage-button.tsx
+msgid "Hvp-_6"
+msgstr "Ersetzen"
 
 #: src/features/account/components/authentication/user-passkeys-card.tsx
 #: src/features/account/components/authentication/user-providers-list.tsx
@@ -1158,6 +1223,34 @@ msgstr "Aktuelle Sitzung"
 #: src/features/account/components/authentication/user-sessions-list.tsx
 msgid "PIRoCC"
 msgstr "Unbekannte IP-Adresse"
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "BrXXiS"
+msgstr "Schützt deinen Account, indem beim Anmelden ein zweiter Faktor erforderlich ist."
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "7YrJer"
+msgstr "Es wird dringend empfohlen, die Zwei-Faktor-Authentifizierung zu aktivieren."
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "qP6L_L"
+msgstr "Authenticator-App (TOTP)"
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "4BGiwE"
+msgstr "Registriert"
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "gnU5U1"
+msgstr "Verwende eine App wie 1Password, Google Authenticator oder Microsoft Authenticator."
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "cAAdXm"
+msgstr "Wiederherstellungscodes"
+
+#: src/features/account/components/authentication/user-tfa-card.tsx
+msgid "w-q8k4"
+msgstr "Einmalcodes für den Fall, dass du den Zugriff auf deine anderen Faktoren verlierst."
 
 #: src/features/account/components/billing/payment-methods-card.tsx
 msgid "xuTqgN"
@@ -1934,12 +2027,6 @@ msgid "YXNhCz"
 msgstr "E-Mail gesendet - Posteingang prüfen!"
 
 #: src/features/auth/components/email-sign-in.tsx
-#: src/features/auth/components/register/signup-email.tsx
-#: src/features/auth/components/reset-password-form.tsx
-msgid "5sg7KC"
-msgstr "Passwort"
-
-#: src/features/auth/components/email-sign-in.tsx
 msgid "V_JHlm"
 msgstr "Passwort vergessen?"
 
@@ -2030,10 +2117,7 @@ msgid "pwyqaX"
 msgstr "Account erstellt! Weiterleitung..."
 
 #: src/features/auth/components/register/verify-email-form.tsx
-msgid "poE3OD"
-msgstr "Ungültiger Code. Bitte erneut versuchen."
-
-#: src/features/auth/components/register/verify-email-form.tsx
+#: src/features/auth/components/verify-totp-form.tsx
 msgid "acrOoz"
 msgstr "Fortfahren"
 
@@ -2729,10 +2813,6 @@ msgstr "Hostsystem"
 #: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "UfS56w"
 msgstr "Details zum Hostsystem."
-
-#: src/features/servers/components/overview/node-details-dialog.tsx
-msgid "rbrahO"
-msgstr "Schließen"
 
 #: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "dVx3yz"
