@@ -218,6 +218,8 @@ export default function ServerGraphs({
                       day: activeTimeframe !== "hour" ? "2-digit" : undefined,
                       hour: "2-digit",
                       minute: "2-digit",
+                      timeZone:
+                        Intl.DateTimeFormat().resolvedOptions().timeZone,
                     });
                   }}
                 />
