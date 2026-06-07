@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Czech\n"
-"PO-Revision-Date: 2026-06-06 20:32\n"
+"PO-Revision-Date: 2026-06-07 17:26\n"
 
 #: ../../packages/discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -1249,6 +1249,28 @@ msgstr "Žádné SSH klíče"
 msgid "6NcUU3"
 msgstr "Zatím nebyly vytvořeny žádné SSH klíče."
 
+#: src/features/account/components/user-email-card.tsx
+msgid "NMQtEq"
+msgstr "Na tvou novou e-mailovou adresu byl odeslán potvrzovací e-mail."
+
+#: src/features/account/components/user-email-card.tsx
+msgid "Hi93rl"
+msgstr "Změnit e-mail"
+
+#: src/features/account/components/user-email-card.tsx
+msgid "UNWWt5"
+msgstr "Zadej svou novou e-mailovou adresu."
+
+#: src/features/account/components/user-email-card.tsx
+msgid "xs_MJu"
+msgstr "Zadej platnou e-mailovou adresu."
+
+#: src/features/account/components/user-email-card.tsx
+#: src/features/account/components/user-name-card.tsx
+#: src/features/account/components/user-password-card.tsx
+msgid "jvo0vs"
+msgstr "Uložit"
+
 #: src/features/account/components/user-id-card.tsx
 msgid "qW1hR5"
 msgstr "Tvoje ID uživatele"
@@ -1273,9 +1295,30 @@ msgstr "Zadej celé jméno nebo zobrazované jméno, se kterým se cítíš dob�
 msgid "YP7yEd"
 msgstr "Použij nejvýše 32 znaků."
 
-#: src/features/account/components/user-name-card.tsx
-msgid "jvo0vs"
-msgstr "Uložit"
+#: src/features/account/components/user-password-card.tsx
+msgid "or6fqM"
+msgstr "Heslo bylo úspěšně aktualizováno."
+
+#: src/features/account/components/user-password-card.tsx
+msgid "QiKKFz"
+msgstr "Změnit heslo"
+
+#: src/features/account/components/user-password-card.tsx
+msgid "GI9j4c"
+msgstr "Zadej své aktuální heslo a nové heslo."
+
+#: src/features/account/components/user-password-card.tsx
+msgid "GretYf"
+msgstr "Aktuální heslo"
+
+#: src/features/account/components/user-password-card.tsx
+#: src/features/servers/components/overview/reset-server-password-dialog.tsx
+msgid "Ev6SEF"
+msgstr "Nové heslo"
+
+#: src/features/account/components/user-password-card.tsx
+msgid "6admx4"
+msgstr "Použij alespoň 8 znaků, jedno velké písmeno, jedno malé písmeno a jedno číslo."
 
 #: src/features/admin/api/users/generator/generate-inventory-pdf.ts
 msgid "QZwgMJ"
@@ -2723,10 +2766,6 @@ msgstr "Uživatelské jméno"
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgid "1jWUV4"
 msgstr "Uživatelské jméno účtu, pro který chcete obnovit heslo. U Linuxu je to většinou <code>root</code>, u Windows <code>Administrator</code>."
-
-#: src/features/servers/components/overview/reset-server-password-dialog.tsx
-msgid "Ev6SEF"
-msgstr "Nové heslo"
 
 #: src/features/servers/components/overview/server-details-card.tsx
 msgid "F_6VqP"
