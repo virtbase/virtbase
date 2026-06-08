@@ -1,0 +1,1 @@
+CREATE INDEX "two_factors_secret_index" ON "two_factors" ("secret");

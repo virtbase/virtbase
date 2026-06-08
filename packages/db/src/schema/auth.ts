@@ -214,5 +214,5 @@ export const twoFactors = pgTable(
     backupCodes: t.text().notNull(),
     verified: t.boolean().notNull(),
   }),
-  (t) => [index().on(t.userId)],
+  (t) => [index().on(t.userId), index().on(t.secret)],
 );
