@@ -88,6 +88,7 @@ export function UserEmailCard() {
         <CardContent>
           {data?.user && !isPending ? (
             <Input
+              name="user-email"
               className="max-w-md"
               autoFocus={false}
               autoComplete="email"
@@ -96,6 +97,8 @@ export function UserEmailCard() {
               value={value}
               onChange={(e) => setValue(e.target.value)}
               disabled={isPending || isUpdating}
+              placeholder="janic@virtbase.com"
+              title={t("Email")}
             />
           ) : (
             <Skeleton className="h-9 w-full max-w-md" />

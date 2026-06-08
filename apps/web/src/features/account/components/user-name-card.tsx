@@ -75,6 +75,7 @@ export function UserNameCard() {
         <CardContent>
           {data?.user && !isPending ? (
             <Input
+              name="user-display-name"
               className="max-w-md"
               autoFocus={false}
               autoComplete="name"
@@ -83,6 +84,9 @@ export function UserNameCard() {
               value={value}
               onChange={(e) => setValue(e.target.value)}
               disabled={isPending || isUpdating}
+              placeholder="Walter White"
+              required
+              title={t("Display Name")}
             />
           ) : (
             <Skeleton className="h-9 w-full max-w-md" />

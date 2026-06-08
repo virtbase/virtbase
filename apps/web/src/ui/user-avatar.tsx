@@ -26,7 +26,11 @@ export function UserAvatar({
 >) {
   return (
     <Avatar {...props}>
-      <AvatarImage src={user.image || undefined} referrerPolicy="no-referrer" />
+      <AvatarImage
+        src={user.image || undefined}
+        alt={user.name}
+        referrerPolicy="no-referrer"
+      />
       <AvatarFallback>{getInitialsFromName(user.name)}</AvatarFallback>
     </Avatar>
   );

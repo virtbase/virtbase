@@ -54,7 +54,7 @@ export function UserIdCard() {
       <CardContent>
         {data?.user && !isPending ? (
           <InputGroup className="max-w-md">
-            <InputGroupInput value={data.user.id} readOnly />
+            <InputGroupInput name="user-id" value={data.user.id} readOnly />
             <InputGroupAddon align="inline-end">
               <CopyButton value={data.user.id} />
             </InputGroupAddon>
