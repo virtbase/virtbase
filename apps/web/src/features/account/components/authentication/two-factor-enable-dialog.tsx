@@ -21,7 +21,7 @@ import { cn } from "@virtbase/ui";
 import { AnimatedSizeContainer } from "@virtbase/ui/animated-size-container";
 import { Button } from "@virtbase/ui/button";
 import { useMediaQuery } from "@virtbase/ui/hooks";
-import { InputOTP } from "@virtbase/ui/input-otp";
+import { InputOTP, REGEXP_ONLY_DIGITS } from "@virtbase/ui/input-otp";
 import { ResponsiveDialog } from "@virtbase/ui/responsive-dialog";
 import { Separator } from "@virtbase/ui/separator";
 import { Spinner } from "@virtbase/ui/spinner";
@@ -129,6 +129,7 @@ export default function TwoFactorEnableDialog({
         <div>
           <InputOTP
             maxLength={6}
+            pattern={REGEXP_ONLY_DIGITS}
             autoFocus={!isMobile}
             value={code}
             onChange={(code) => {
