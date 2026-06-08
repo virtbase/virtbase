@@ -17,7 +17,7 @@
 
 import * as Sentry from "@sentry/nextjs";
 import { getProxmoxInstance } from "@virtbase/api/proxmox";
-import { and, eq, gt, inArray, isNull, sql } from "@virtbase/db";
+import { and, eq, gte, inArray, isNotNull, isNull, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { proxmoxNodes, servers, users } from "@virtbase/db/schema";
 import { sendBatchEmail } from "@virtbase/email";
@@ -65,11 +65,9 @@ async function handler(request: NextRequest) {
     .innerJoin(proxmoxNodes, eq(servers.proxmoxNodeId, proxmoxNodes.id))
     .where(
       and(
-        gt(
-          sql`DATE_TRUNC('day', now())`,
-          sql`DATE_TRUNC('day', ${servers.terminatesAt})`,
-        ),
+        isNotNull(servers.terminatesAt),
         isNull(servers.suspendedAt),
+        gte(sql`now()`, servers.terminatesAt),
       ),
     )
     .groupBy(proxmoxNodes.id);

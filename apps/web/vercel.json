@@ -3,15 +3,15 @@
   "crons": [
     {
       "path": "/api/cron/delete-expired-iso-images",
-      "schedule": "* * * * *"
+      "schedule": "*/5 * * * *"
     },
     {
       "path": "/api/cron/delete-suspended-servers",
-      "schedule": "0 0 * * *"
+      "schedule": "*/15 * * * *"
     },
     {
       "path": "/api/cron/suspend-terminated-servers",
-      "schedule": "0 0 * * *"
+      "schedule": "*/15 * * * *"
     },
     {
       "path": "/api/cron/send-renewal-notifications",

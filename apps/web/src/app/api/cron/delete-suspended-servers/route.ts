@@ -16,7 +16,7 @@
  */
 
 import { deleteServerWorkflow } from "@virtbase/api/workflows";
-import { and, eq, gt, sql } from "@virtbase/db";
+import { and, eq, gte, isNotNull, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { proxmoxNodes, servers } from "@virtbase/db/schema";
 import { SERVER_DELETION_GRACE_PERIOD_DAYS } from "@virtbase/utils";
@@ -58,9 +58,10 @@ async function handler(request: NextRequest) {
         .innerJoin(proxmoxNodes, eq(servers.proxmoxNodeId, proxmoxNodes.id))
         .where(
           and(
-            gt(
-              sql`DATE_TRUNC('day', now())`,
-              sql`(DATE_TRUNC('day', ${servers.suspendedAt}) + INTERVAL '${sql.raw(`${SERVER_DELETION_GRACE_PERIOD_DAYS}`)} days')`,
+            isNotNull(servers.suspendedAt),
+            gte(
+              sql`now()`,
+              sql`(${servers.suspendedAt} + INTERVAL '${sql.raw(`${SERVER_DELETION_GRACE_PERIOD_DAYS}`)} days')`,
             ),
           ),
         );

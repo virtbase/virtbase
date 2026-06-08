@@ -19,6 +19,7 @@ import {
   and,
   eq,
   gt,
+  gte,
   inArray,
   isNotNull,
   isNull,
@@ -79,12 +80,11 @@ async function handler(request: NextRequest) {
             ),
             // Current date > (termination date - deletion grace period)
             // => Server is about to be terminated in next n days
-            gt(
+            gte(
               // Current date
-              sql`DATE_TRUNC('day', now())`,
-
+              sql`now()`,
               // Before termination
-              sql`(DATE_TRUNC('day', ${servers.terminatesAt}) - INTERVAL '${sql.raw(`${SERVER_DELETION_GRACE_PERIOD_DAYS}`)} days')`,
+              sql`(${servers.terminatesAt} - INTERVAL '${sql.raw(`${SERVER_DELETION_GRACE_PERIOD_DAYS}`)} days')`,
             ),
             // No reminder sent yet, or reminder was sent before the current expiration period started
             // (handles case where server was renewed and is expiring again)

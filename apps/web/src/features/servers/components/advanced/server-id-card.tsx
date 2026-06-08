@@ -37,7 +37,7 @@ import { CopyButton } from "@/ui/copy-button";
 
 export function ServerIdCard() {
   const t = useExtracted();
-  const serverId = useParams<{ id: string }>().id;
+  const serverId = useParams<{ id?: string }>().id ?? "";
 
   return (
     <Card className="overflow-hidden pb-0">
