@@ -40,6 +40,7 @@ export const env = createEnv({
     UPSTASH_REDIS_REST_URL: z4.string().min(1),
     UPSTASH_REDIS_REST_TOKEN: z4.string().min(1),
     RESEND_API_KEY: z4.string().optional(),
+    RESEND_WEBHOOK_SECRET: z4.string().optional(),
     SMTP_HOST: z4.string().optional(),
     SMTP_PORT: z4.string().optional(),
     SMTP_USER: z4.string().optional(),

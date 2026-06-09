@@ -345,10 +345,12 @@ msgid "fMrPOR"
 msgstr "Go to last page"
 
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
 msgid "dM-p3_"
 msgstr "From"
 
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
 msgid "9j3hXO"
 msgstr "To"
 
@@ -370,6 +372,7 @@ msgstr "Toggle columns"
 
 #: ../../packages/ui/src/data-table/data-table-view-options.tsx
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
@@ -676,6 +679,11 @@ msgstr "Your server is protected without additional charges"
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "NoQGSk"
 msgstr "Datacenters"
+
+#: src/app/admin.virtbase.com/(dashboard)/emails/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+msgid "AdAi3x"
+msgstr "Emails"
 
 #: src/app/admin.virtbase.com/(dashboard)/layout.tsx
 msgid "iHN12u"
@@ -1662,6 +1670,7 @@ msgid "lH0BHV"
 msgstr "No datacenter found."
 
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
@@ -1673,6 +1682,7 @@ msgid "94Fg25"
 msgstr "Select all"
 
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
@@ -1691,6 +1701,7 @@ msgid "wFbsIt"
 msgstr "Search by name..."
 
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
@@ -1702,6 +1713,7 @@ msgid "AbXVP4"
 msgstr "Created at"
 
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
@@ -1710,6 +1722,23 @@ msgstr "Created at"
 #: src/features/admin/components/users/users-table/columns.tsx
 msgid "bdcMGy"
 msgstr "Open menu"
+
+#: src/features/admin/components/emails/email-preview-dialog.tsx
+msgid "fg6AsA"
+msgstr "Email preview"
+
+#: src/features/admin/components/emails/emails-table/columns.tsx
+msgid "LLtKhp"
+msgstr "Subject"
+
+#: src/features/admin/components/emails/emails-table/columns.tsx
+msgid "EPGMwQ"
+msgstr "Search by subject..."
+
+#: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/servers/firewall/components/firewall-options-row.tsx
+msgid "tzMNF3"
+msgstr "Status"
 
 #: src/features/admin/components/proxmox-node-groups/create-node-group-button.tsx
 msgid "8gJfol"
@@ -3151,10 +3180,6 @@ msgstr "Renew"
 #: src/features/servers/firewall/components/firewall-action-select.tsx
 msgid "ObQE5T"
 msgstr "Select action"
-
-#: src/features/servers/firewall/components/firewall-options-row.tsx
-msgid "tzMNF3"
-msgstr "Status"
 
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "z1Jw4U"

@@ -20,6 +20,9 @@ export const paths = {
     getHref: () => "/",
   },
   admin: {
+    emails: {
+      getHref: () => "/emails",
+    },
     home: {
       getHref: () => "/",
     },

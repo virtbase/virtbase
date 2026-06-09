@@ -47,6 +47,7 @@ const prefixes = [
   "mnt_", // server mount
   "dsc_", // discount
   "price_", // server plan price
+  "email_", // email
 ] as const;
 
 // ULID uses base32 encoding

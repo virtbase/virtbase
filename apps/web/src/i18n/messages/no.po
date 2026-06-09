@@ -354,10 +354,12 @@ msgid "fMrPOR"
 msgstr "Gå til siste side"
 
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
 msgid "dM-p3_"
 msgstr "Fra"
 
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
 msgid "9j3hXO"
 msgstr "Til"
 
@@ -379,6 +381,7 @@ msgstr "Slå på kolonner"
 
 #: ../../packages/ui/src/data-table/data-table-view-options.tsx
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
@@ -685,6 +688,11 @@ msgstr "Serveren din er beskyttet uten tilleggskostnader"
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "NoQGSk"
 msgstr "Datasentre"
+
+#: src/app/admin.virtbase.com/(dashboard)/emails/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+msgid "AdAi3x"
+msgstr "E-poster"
 
 #: src/app/admin.virtbase.com/(dashboard)/layout.tsx
 msgid "iHN12u"
@@ -1671,6 +1679,7 @@ msgid "lH0BHV"
 msgstr "Ingen datasenter funnet."
 
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
@@ -1682,6 +1691,7 @@ msgid "94Fg25"
 msgstr "Velg alle"
 
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
@@ -1700,6 +1710,7 @@ msgid "wFbsIt"
 msgstr "Søk på navn..."
 
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
@@ -1711,6 +1722,7 @@ msgid "AbXVP4"
 msgstr "Opprettet kl"
 
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
@@ -1719,6 +1731,23 @@ msgstr "Opprettet kl"
 #: src/features/admin/components/users/users-table/columns.tsx
 msgid "bdcMGy"
 msgstr "Åpne menyen"
+
+#: src/features/admin/components/emails/email-preview-dialog.tsx
+msgid "fg6AsA"
+msgstr "Forhåndsvisning av e-post"
+
+#: src/features/admin/components/emails/emails-table/columns.tsx
+msgid "LLtKhp"
+msgstr "Emne"
+
+#: src/features/admin/components/emails/emails-table/columns.tsx
+msgid "EPGMwQ"
+msgstr "Søk etter emne..."
+
+#: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/servers/firewall/components/firewall-options-row.tsx
+msgid "tzMNF3"
+msgstr "Status"
 
 #: src/features/admin/components/proxmox-node-groups/create-node-group-button.tsx
 msgid "8gJfol"
@@ -3160,10 +3189,6 @@ msgstr "Fornye"
 #: src/features/servers/firewall/components/firewall-action-select.tsx
 msgid "ObQE5T"
 msgstr "Velg handling"
-
-#: src/features/servers/firewall/components/firewall-options-row.tsx
-msgid "tzMNF3"
-msgstr "Status"
 
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "z1Jw4U"

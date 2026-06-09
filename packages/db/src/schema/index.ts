@@ -19,6 +19,7 @@ export * from "./auth";
 export * from "./datacenters";
 export * from "./discounts";
 export * from "./discounts-to-server-plans";
+export * from "./emails";
 export * from "./invoices";
 export * from "./pointer-records";
 export * from "./proxmox-iso-downloads";
