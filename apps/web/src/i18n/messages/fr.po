@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: French\n"
-"PO-Revision-Date: 2026-06-07 22:31\n"
+"PO-Revision-Date: 2026-06-09 14:36\n"
 
 #: ../../packages/discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -354,10 +354,12 @@ msgid "fMrPOR"
 msgstr "Aller à la dernière page"
 
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
 msgid "dM-p3_"
 msgstr "Depuis"
 
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
 msgid "9j3hXO"
 msgstr "À"
 
@@ -379,6 +381,7 @@ msgstr "Basculer les colonnes"
 
 #: ../../packages/ui/src/data-table/data-table-view-options.tsx
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
@@ -685,6 +688,11 @@ msgstr "Votre serveur est protégé sans frais supplémentaires"
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "NoQGSk"
 msgstr "Centres de données"
+
+#: src/app/admin.virtbase.com/(dashboard)/emails/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+msgid "AdAi3x"
+msgstr "E-mails"
 
 #: src/app/admin.virtbase.com/(dashboard)/layout.tsx
 msgid "iHN12u"
@@ -1164,6 +1172,7 @@ msgid "0Azlrb"
 msgstr "Gérer"
 
 #: src/features/account/components/authentication/user-providers-list.tsx
+#: src/features/account/components/user-email-card.tsx
 #: src/features/admin/components/users/users-table/columns.tsx
 #: src/features/auth/components/email-sign-in.tsx
 #: src/features/auth/components/forgot-password-form.tsx
@@ -1670,6 +1679,7 @@ msgid "lH0BHV"
 msgstr "Aucun centre de données trouvé."
 
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
@@ -1681,6 +1691,7 @@ msgid "94Fg25"
 msgstr "Tout sélectionner"
 
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
@@ -1699,6 +1710,7 @@ msgid "wFbsIt"
 msgstr "Rechercher par nom..."
 
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
@@ -1710,6 +1722,7 @@ msgid "AbXVP4"
 msgstr "Créé à"
 
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
@@ -1718,6 +1731,23 @@ msgstr "Créé à"
 #: src/features/admin/components/users/users-table/columns.tsx
 msgid "bdcMGy"
 msgstr "Ouvrir le menu"
+
+#: src/features/admin/components/emails/email-preview-dialog.tsx
+msgid "fg6AsA"
+msgstr "Aperçu de l'e-mail"
+
+#: src/features/admin/components/emails/emails-table/columns.tsx
+msgid "LLtKhp"
+msgstr "Objet"
+
+#: src/features/admin/components/emails/emails-table/columns.tsx
+msgid "EPGMwQ"
+msgstr "Rechercher par objet..."
+
+#: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/servers/firewall/components/firewall-options-row.tsx
+msgid "tzMNF3"
+msgstr "Statut"
 
 #: src/features/admin/components/proxmox-node-groups/create-node-group-button.tsx
 msgid "8gJfol"
@@ -3159,10 +3189,6 @@ msgstr "Renouveler"
 #: src/features/servers/firewall/components/firewall-action-select.tsx
 msgid "ObQE5T"
 msgstr "Sélectionnez une action"
-
-#: src/features/servers/firewall/components/firewall-options-row.tsx
-msgid "tzMNF3"
-msgstr "Statut"
 
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "z1Jw4U"
