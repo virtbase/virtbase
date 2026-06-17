@@ -50,20 +50,20 @@
     "stripe:listen": "turbo -F @virtbase/web stripe:listen"
   },
   "catalog": {
-    "@better-auth/api-key": "^1.6.14",
-    "@better-auth/passkey": "^1.6.14",
-    "@biomejs/biome": "^2.4.16",
+    "@better-auth/api-key": "^1.6.19",
+    "@better-auth/passkey": "^1.6.19",
+    "@biomejs/biome": "^2.5.0",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
-    "@tailwindcss/postcss": "^4.3.0",
+    "@tailwindcss/postcss": "^4.3.1",
     "@tanstack/react-query": "^5.101.0",
     "@tanstack/react-table": "^8.21.3",
     "@trpc/client": "^11.17.0",
     "@trpc/server": "^11.17.0",
     "@trpc/tanstack-react-query": "^11.17.0",
     "@types/bun": "1.3.14",
-    "better-auth": "^1.6.14",
-    "next": "^16.2.7",
+    "better-auth": "^1.6.19",
+    "next": "^16.2.9",
     "next-intl": "^4.13.0",
     "nuqs": "^2.8.9",
     "postcss": "^8.5.15",
@@ -73,17 +73,17 @@
     "recharts": "^3.9.0-canary.0",
     "sonner": "^2.0.7",
     "superjson": "^2.2.6",
-    "tailwindcss": "^4.3.0",
+    "tailwindcss": "^4.3.1",
     "typescript": "^6.0.3",
     "use-intl": "^4.13.0",
-    "workflow": "^4.3.1",
+    "workflow": "^4.5.0",
     "zod": "^4.4.3"
   },
   "catalogs": {
     "sentry": {
-      "@sentry/core": "10.56.0",
-      "@sentry/nextjs": "10.56.0",
-      "@sentry/node": "10.56.0"
+      "@sentry/core": "10.58.0",
+      "@sentry/nextjs": "10.58.0",
+      "@sentry/node": "10.58.0"
     }
   },
   "devDependencies": {
@@ -93,7 +93,7 @@
     "@types/bun": "catalog:",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.7",
-    "turbo": "^2.9.16"
+    "turbo": "^2.9.18"
   },
   "peerDependencies": {
     "typescript": "catalog:"

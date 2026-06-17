@@ -15,7 +15,9 @@
     "lineWidth": 80,
     "attributePosition": "auto"
   },
-
+  "files": {
+    "includes": ["**", "!**/*.svg"]
+  },
   "css": {
     "parser": {
       "tailwindDirectives": true
@@ -48,7 +50,7 @@
         "noRestrictedTypes": "off",
         "noRestrictedGlobals": "off"
       },
-      "recommended": true,
+      "preset": "recommended",
       "suspicious": {
         "noImplicitAnyLet": "warn",
         "noDuplicateObjectKeys": "warn",
