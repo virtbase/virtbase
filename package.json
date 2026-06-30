@@ -98,6 +98,9 @@
   "peerDependencies": {
     "typescript": "catalog:"
   },
+  "patchedDependencies": {
+    "@ai-sdk/provider-utils@5.0.2": "patches/@ai-sdk-provider-utils@5.0.2.patch"
+  },
   "overrides": {
     "@vue/compiler-core": "3.5.32",
     "@vue/compiler-dom": "3.5.32",
