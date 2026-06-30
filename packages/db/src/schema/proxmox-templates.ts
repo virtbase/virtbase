@@ -16,24 +16,24 @@
  */
 
 import { sql } from "drizzle-orm";
-import { index, pgTable } from "drizzle-orm/pg-core";
+import * as d from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 import { proxmoxTemplateGroups } from "./proxmox-template-groups";
 
 /**
  * A Proxmox VE template represents a template that can be used to create new guests.
  */
-export const proxmoxTemplates = pgTable(
+export const proxmoxTemplates = d.snakeCase.table(
   "proxmox_templates",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() => createId({ prefix: "temp_" })),
     /**
      * The ID of the Proxmox VE template group this Proxmox VE template belongs to.
      */
-    proxmoxTemplateGroupId: t
+    proxmoxTemplateGroupId: d
       .text()
       .notNull()
       .references(() => proxmoxTemplateGroups.id, {
@@ -45,59 +45,59 @@ export const proxmoxTemplates = pgTable(
      *
      * @example "Debian 12 (Bookworm)"
      */
-    name: t.text().notNull(),
+    name: d.text().notNull(),
     /**
      * The icon image url of the Proxmox VE template.
      * (must be allowed by CSP)
      */
-    icon: t.text(),
+    icon: d.text(),
     /**
      * The required number of cores for the Proxmox VE template.
      *
      * @default null
      */
-    requiredCores: t.smallint(),
+    requiredCores: d.smallint(),
     /**
      * The recommended number of cores for the Proxmox VE template.
      *
      * @default null
      */
-    recommendedCores: t.smallint(),
+    recommendedCores: d.smallint(),
     /**
      * The required memory for the Proxmox VE template in MiB.
      *
      * @default null
      */
-    requiredMemory: t.integer(),
+    requiredMemory: d.integer(),
     /**
      * The recommended memory for the Proxmox VE template in MiB.
      *
      * @default null
      */
-    recommendedMemory: t.integer(),
+    recommendedMemory: d.integer(),
     /**
      * The required storage for the Proxmox VE template in GiB.
      *
      * @default null
      */
-    requiredStorage: t.integer(),
+    requiredStorage: d.integer(),
     /**
      * The recommended storage for the Proxmox VE template in GiB.
      *
      * @default null
      */
-    recommendedStorage: t.integer(),
-    createdAt: t
+    recommendedStorage: d.integer(),
+    createdAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull(),
-    updatedAt: t
+    updatedAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull()
       .$onUpdate(() => sql`now()`),
-  }),
-  (t) => [index().on(t.proxmoxTemplateGroupId)],
+  },
+  (t) => [d.index().on(t.proxmoxTemplateGroupId)],
 );
 
 export type DatabaseProxmoxTemplates = typeof proxmoxTemplates.$inferSelect;

@@ -16,17 +16,17 @@
  */
 
 import { sql } from "drizzle-orm";
-import { index, pgTable } from "drizzle-orm/pg-core";
+import * as d from "drizzle-orm/pg-core";
 import { createId } from "../utils";
 
 /**
  * A datacenter represents a physical location where one ore more
  * Proxmox VE nodes are located.
  */
-export const datacenters = pgTable(
+export const datacenters = d.snakeCase.table(
   "datacenters",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() =>
@@ -39,24 +39,24 @@ export const datacenters = pgTable(
      *
      * @example "Skylink Data Center"
      */
-    name: t.text().notNull().unique(),
+    name: d.text().notNull().unique(),
     /**
      * The two-letter ISO 3166-1 alpha-2 code of the country.
      *
      * @example "NL"
      */
-    country: t.text().notNull(),
-    createdAt: t
+    country: d.text().notNull(),
+    createdAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull(),
-    updatedAt: t
+    updatedAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .$onUpdate(() => sql`now()`)
       .notNull(),
-  }),
-  (t) => [index().on(t.name)],
+  },
+  (t) => [d.index().on(t.name)],
 );
 
 export type DatabaseDatacenter = typeof datacenters.$inferSelect;

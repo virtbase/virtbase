@@ -16,7 +16,7 @@
  */
 
 import { sql } from "drizzle-orm";
-import { pgTable, primaryKey } from "drizzle-orm/pg-core";
+import * as d from "drizzle-orm/pg-core";
 import { proxmoxNodes } from "./proxmox-nodes";
 import { subnets } from "./subnets";
 
@@ -24,10 +24,10 @@ import { subnets } from "./subnets";
  * A subnet to Proxmox VE node association represents a relationship
  * between a subnet and a Proxmox VE node.
  */
-export const subnetsToProxmoxNodes = pgTable(
+export const subnetsToProxmoxNodes = d.snakeCase.table(
   "subnets_to_proxmox_nodes",
-  (t) => ({
-    subnetId: t
+  {
+    subnetId: d
       .text()
       .notNull()
       .references(() => subnets.id, {
@@ -35,7 +35,7 @@ export const subnetsToProxmoxNodes = pgTable(
         onDelete: "restrict",
         onUpdate: "cascade",
       }),
-    proxmoxNodeId: t
+    proxmoxNodeId: d
       .text()
       .notNull()
       .references(() => proxmoxNodes.id, {
@@ -47,20 +47,20 @@ export const subnetsToProxmoxNodes = pgTable(
      * The bridge interface name of the IPAM subnet on the Proxmox VE node.
      * @example "vmbr0" (no VLAN ID), "vmbr0.1211" (with VLAN ID)
      */
-    bridge: t.text().notNull(),
-    createdAt: t
+    bridge: d.text().notNull(),
+    createdAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull(),
-    updatedAt: t
+    updatedAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull()
       .$onUpdate(() => sql`now()`),
-  }),
+  },
   (t) => [
     // Combined primary key => implicit index on both columns
-    primaryKey({ columns: [t.subnetId, t.proxmoxNodeId] }),
+    d.primaryKey({ columns: [t.subnetId, t.proxmoxNodeId] }),
   ],
 );
 

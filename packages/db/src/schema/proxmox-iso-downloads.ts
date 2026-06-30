@@ -16,19 +16,19 @@
  */
 
 import { sql } from "drizzle-orm";
-import { index, pgTable } from "drizzle-orm/pg-core";
+import * as d from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 import { users } from "./auth";
 import { proxmoxNodes } from "./proxmox-nodes";
 
-export const proxmoxIsoDownloads = pgTable(
+export const proxmoxIsoDownloads = d.snakeCase.table(
   "proxmox_iso_downloads",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() => createId({ prefix: "iso_" })),
-    proxmoxNodeId: t
+    proxmoxNodeId: d
       .text()
       .notNull()
       .references(() => proxmoxNodes.id, {
@@ -36,7 +36,7 @@ export const proxmoxIsoDownloads = pgTable(
         onDelete: "restrict",
         onUpdate: "cascade",
       }),
-    userId: t
+    userId: d
       .text()
       .notNull()
       .references(() => users.id, {
@@ -47,45 +47,45 @@ export const proxmoxIsoDownloads = pgTable(
     /**
      * The user-defined name of the ISO image.
      */
-    name: t.text().notNull(),
+    name: d.text().notNull(),
     /**
      * The Proxmox UPID of the ISO image download task.
      */
-    upid: t.text().notNull(),
+    upid: d.text().notNull(),
     /**
      * The URL that was used to download the ISO image.
      */
-    url: t.text().notNull(),
+    url: d.text().notNull(),
     /**
      * The timestamp when the ISO image will expire.
      * After this timestamp, the ISO image can no longer be used and will be deleted soon.
      */
-    expiresAt: t.timestamp({ withTimezone: true, mode: "date" }).notNull(),
+    expiresAt: d.timestamp({ withTimezone: true, mode: "date" }).notNull(),
     /**
      * The timestamp when the ISO image download was finished (any status).
      */
-    finishedAt: t.timestamp({ withTimezone: true, mode: "date" }),
+    finishedAt: d.timestamp({ withTimezone: true, mode: "date" }),
     /**
      * The timestamp when the ISO image download failed, if it failed.
      */
-    failedAt: t.timestamp({ withTimezone: true, mode: "date" }),
+    failedAt: d.timestamp({ withTimezone: true, mode: "date" }),
     /**
      * The timestamp when the Proxmox VE ISO download was created.
      */
-    createdAt: t
+    createdAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull(),
     /**
      * The timestamp when the Proxmox VE ISO download was last updated.
      */
-    updatedAt: t
+    updatedAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull()
       .$onUpdate(() => sql`now()`),
-  }),
-  (t) => [index().on(t.userId), index().on(t.proxmoxNodeId)],
+  },
+  (t) => [d.index().on(t.userId), d.index().on(t.proxmoxNodeId)],
 );
 
 export type DatabaseProxmoxIsoDownload =

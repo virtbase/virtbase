@@ -16,15 +16,15 @@
  */
 
 import { sql } from "drizzle-orm";
-import { index, pgTable } from "drizzle-orm/pg-core";
+import * as d from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 import { servers } from "./servers";
 import { subnets } from "./subnets";
 
-export const subnetAllocations = pgTable(
+export const subnetAllocations = d.snakeCase.table(
   "subnet_allocations",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() =>
@@ -35,7 +35,7 @@ export const subnetAllocations = pgTable(
     /**
      * The ID of the subnet associated with this subnet allocation.
      */
-    subnetId: t
+    subnetId: d
       .text()
       .notNull()
       .references(() => subnets.id, {
@@ -46,7 +46,7 @@ export const subnetAllocations = pgTable(
      * The ID of the server associated with this subnet allocation.
      * An allocation can also be created without a server.
      */
-    serverId: t.text().references(() => servers.id, {
+    serverId: d.text().references(() => servers.id, {
       onDelete: "cascade",
       onUpdate: "cascade",
     }),
@@ -54,25 +54,25 @@ export const subnetAllocations = pgTable(
      * The description of the subnet allocation.
      * Mainly used for by the system created allocations.
      */
-    description: t.text(),
+    description: d.text(),
     /**
      * The timestamp when the subnet was allocated.
      */
-    allocatedAt: t
+    allocatedAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .notNull()
       .defaultNow(),
     /**
      * The timestamp when the subnet was deallocated.
      */
-    deallocatedAt: t.timestamp({ withTimezone: true, mode: "date" }),
-    updatedAt: t
+    deallocatedAt: d.timestamp({ withTimezone: true, mode: "date" }),
+    updatedAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull()
       .$onUpdate(() => sql`now()`),
-  }),
-  (t) => [index().on(t.subnetId), index().on(t.serverId)],
+  },
+  (t) => [d.index().on(t.subnetId), d.index().on(t.serverId)],
 );
 
 export type DatabaseSubnetAllocations = typeof subnetAllocations.$inferSelect;

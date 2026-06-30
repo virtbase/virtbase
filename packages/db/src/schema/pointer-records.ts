@@ -16,14 +16,14 @@
  */
 
 import { sql } from "drizzle-orm";
-import { index, pgTable } from "drizzle-orm/pg-core";
+import * as d from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 import { subnetAllocations } from "./subnet-allocations";
 
-export const pointerRecords = pgTable(
+export const pointerRecords = d.snakeCase.table(
   "pointer_records",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() => createId({ prefix: "ipptr_" })),
@@ -31,7 +31,7 @@ export const pointerRecords = pgTable(
      * The ID of the subnet allocation associated with this PTR record.
      * This could be a single /32 IPv4 child subnet allocation or an entire /64 IPv6 allocation.
      */
-    subnetAllocationId: t
+    subnetAllocationId: d
       .text()
       .notNull()
       .references(() => subnetAllocations.id, {
@@ -43,24 +43,24 @@ export const pointerRecords = pgTable(
      * @example "192.168.1.1"
      * @example "2001:db8::1"
      */
-    ip: t.inet().notNull().unique(),
+    ip: d.inet().notNull().unique(),
     /**
      * The hostname of the PTR record.
      * @example "vm01.example.com"
      * @example "192.168.1.1.customer.virtbase.com"
      */
-    hostname: t.text().notNull(),
-    createdAt: t
+    hostname: d.text().notNull(),
+    createdAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull(),
-    updatedAt: t
+    updatedAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull()
       .$onUpdate(() => sql`now()`),
-  }),
-  (t) => [index().on(t.subnetAllocationId), index().on(t.ip)],
+  },
+  (t) => [d.index().on(t.subnetAllocationId), d.index().on(t.ip)],
 );
 
 export type DatabasePointerRecords = typeof pointerRecords.$inferSelect;

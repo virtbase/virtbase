@@ -16,23 +16,23 @@
  */
 
 import { sql } from "drizzle-orm";
-import { index, pgEnum, pgTable, unique } from "drizzle-orm/pg-core";
+import * as d from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 import { users } from "./auth";
 
-export const paymentMethodsEnum = pgEnum("payment_methods", [
+export const paymentMethodsEnum = d.pgEnum("payment_methods", [
   "stripe",
   "anonpay",
 ]);
 
-export const transactions = pgTable(
+export const transactions = d.snakeCase.table(
   "transactions",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() => createId({ prefix: "txn_" })),
-    userId: t
+    userId: d
       .text()
       .notNull()
       .references(() => users.id, {
@@ -40,23 +40,23 @@ export const transactions = pgTable(
         onUpdate: "cascade",
       }),
     paymentMethod: paymentMethodsEnum().notNull(),
-    externalId: t.text().notNull(),
-    amount: t.integer().notNull(),
-    currency: t.text().notNull(),
-    createdAt: t
+    externalId: d.text().notNull(),
+    amount: d.integer().notNull(),
+    currency: d.text().notNull(),
+    createdAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull(),
-    updatedAt: t
+    updatedAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull()
       .$onUpdate(() => sql`now()`),
-  }),
+  },
   (t) => [
-    index().on(t.userId),
+    d.index().on(t.userId),
     // External ID is unique per payment method
-    unique().on(t.paymentMethod, t.externalId),
+    d.unique().on(t.paymentMethod, t.externalId),
   ],
 );
 

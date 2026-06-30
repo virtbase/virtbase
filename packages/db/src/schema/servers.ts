@@ -16,7 +16,7 @@
  */
 
 import { sql } from "drizzle-orm";
-import { index, pgTable } from "drizzle-orm/pg-core";
+import * as d from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 import { users } from "./auth";
 import { proxmoxIsoDownloads } from "./proxmox-iso-downloads";
@@ -25,18 +25,18 @@ import { proxmoxTemplates } from "./proxmox-templates";
 import { serverPlanPrices } from "./server-plan-prices";
 import { serverPlans } from "./server-plans";
 
-export const servers = pgTable(
+export const servers = d.snakeCase.table(
   "servers",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() => createId({ prefix: "kvm_" })),
-    userId: t
+    userId: d
       .text()
       .notNull()
       .references(() => users.id, { onDelete: "cascade", onUpdate: "cascade" }),
-    serverPlanId: t
+    serverPlanId: d
       .text()
       .notNull()
       .references(() => serverPlans.id, {
@@ -44,7 +44,7 @@ export const servers = pgTable(
         onDelete: "restrict",
         onUpdate: "cascade",
       }),
-    serverPlanPriceId: t
+    serverPlanPriceId: d
       .text()
       .notNull()
       .references(() => serverPlanPrices.id, {
@@ -52,7 +52,7 @@ export const servers = pgTable(
         onDelete: "restrict",
         onUpdate: "cascade",
       }),
-    proxmoxNodeId: t
+    proxmoxNodeId: d
       .text()
       .notNull()
       .references(() => proxmoxNodes.id, {
@@ -60,12 +60,12 @@ export const servers = pgTable(
         onDelete: "restrict",
         onUpdate: "cascade",
       }),
-    proxmoxTemplateId: t.text().references(() => proxmoxTemplates.id, {
+    proxmoxTemplateId: d.text().references(() => proxmoxTemplates.id, {
       // Don't allow deletion of the Proxmox VE template if it still has servers
       onDelete: "restrict",
       onUpdate: "cascade",
     }),
-    proxmoxIsoDownloadId: t.text().references(() => proxmoxIsoDownloads.id, {
+    proxmoxIsoDownloadId: d.text().references(() => proxmoxIsoDownloads.id, {
       onDelete: "set null",
       onUpdate: "cascade",
     }),
@@ -74,56 +74,56 @@ export const servers = pgTable(
      *
      * @example "My server"
      */
-    name: t.text().notNull(),
+    name: d.text().notNull(),
     /**
      * The Proxmox VM ID.
      *
      * @example 100
      */
-    vmid: t.integer().notNull(),
+    vmid: d.integer().notNull(),
     /**
      * The timestamp when the server was installed.
      * If the server is not installed, this is null.
      *
      * @default null
      */
-    installedAt: t.timestamp({ withTimezone: true, mode: "date" }),
+    installedAt: d.timestamp({ withTimezone: true, mode: "date" }),
     /**
      * The timestamp when the server will be terminated, if termination is requested or service is not renewed.
      *
      * @default null
      */
-    terminatesAt: t.timestamp({ withTimezone: true, mode: "date" }),
+    terminatesAt: d.timestamp({ withTimezone: true, mode: "date" }),
     /**
      * The timestamp when the last renewal reminder was sent.
      * Used to avoid sending duplicate reminders for the same expiration period.
      *
      * @default null
      */
-    renewalReminderSentAt: t.timestamp({ withTimezone: true, mode: "date" }),
+    renewalReminderSentAt: d.timestamp({ withTimezone: true, mode: "date" }),
     /**
      * The timestamp when the server was suspended. Notice sent out to the customer.
      * After a certain amount of time, the server will be deleted automatically.
      *
      * @default null
      */
-    suspendedAt: t.timestamp({ withTimezone: true, mode: "date" }),
-    createdAt: t
+    suspendedAt: d.timestamp({ withTimezone: true, mode: "date" }),
+    createdAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull(),
-    updatedAt: t
+    updatedAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull()
       .$onUpdate(() => sql`now()`),
-  }),
+  },
   (t) => [
-    index().on(t.userId),
-    index().on(t.serverPlanId),
-    index().on(t.proxmoxNodeId),
-    index().on(t.proxmoxTemplateId),
-    index().on(t.proxmoxIsoDownloadId),
+    d.index().on(t.userId),
+    d.index().on(t.serverPlanId),
+    d.index().on(t.proxmoxNodeId),
+    d.index().on(t.proxmoxTemplateId),
+    d.index().on(t.proxmoxIsoDownloadId),
   ],
 );
 

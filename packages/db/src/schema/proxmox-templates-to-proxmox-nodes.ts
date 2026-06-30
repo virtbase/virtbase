@@ -16,17 +16,17 @@
  */
 
 import { sql } from "drizzle-orm";
-import { pgTable, primaryKey } from "drizzle-orm/pg-core";
+import * as d from "drizzle-orm/pg-core";
 import { proxmoxNodes } from "./proxmox-nodes";
 import { proxmoxTemplates } from "./proxmox-templates";
 
-export const proxmoxTemplatesToProxmoxNodes = pgTable(
+export const proxmoxTemplatesToProxmoxNodes = d.snakeCase.table(
   "proxmox_templates_to_proxmox_nodes",
-  (t) => ({
+  {
     /**
      * The ID of the Proxmox VE template this Proxmox VE template to Proxmox VE node association belongs to.
      */
-    proxmoxTemplateId: t
+    proxmoxTemplateId: d
       .text()
       .notNull()
       .references(() => proxmoxTemplates.id, {
@@ -36,7 +36,7 @@ export const proxmoxTemplatesToProxmoxNodes = pgTable(
     /**
      * The ID of the Proxmox VE node this Proxmox VE template to Proxmox VE node association belongs to.
      */
-    proxmoxNodeId: t
+    proxmoxNodeId: d
       .text()
       .notNull()
       .references(() => proxmoxNodes.id, {
@@ -48,27 +48,27 @@ export const proxmoxTemplatesToProxmoxNodes = pgTable(
      *
      * @example 100
      */
-    vmid: t.integer().notNull(),
+    vmid: d.integer().notNull(),
     /**
      * The storage this Proxmox VE template is available on
      * at this specific Proxmox VE node.
      *
      * @example "local-lvm", "cephfs", "nfs"
      */
-    storage: t.text().notNull(),
-    createdAt: t
+    storage: d.text().notNull(),
+    createdAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull(),
-    updatedAt: t
+    updatedAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull()
       .$onUpdate(() => sql`now()`),
-  }),
+  },
   (t) => [
     // Combined primary key => implicit index on both columns
-    primaryKey({
+    d.primaryKey({
       // Custom name otherwise it would be too long / truncated
       name: "pt2pn_composite_pk",
       columns: [t.proxmoxTemplateId, t.proxmoxNodeId],

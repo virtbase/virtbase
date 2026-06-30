@@ -17,18 +17,18 @@
 
 import { sql } from "drizzle-orm";
 import type { AnyPgColumn } from "drizzle-orm/pg-core";
-import { check, index, pgTable, uniqueIndex } from "drizzle-orm/pg-core";
+import * as d from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 import { proxmoxNodeGroups } from "./proxmox-node-groups";
 
-export const serverPlans = pgTable(
+export const serverPlans = d.snakeCase.table(
   "server_plans",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() => createId({ prefix: "pck_" })),
-    proxmoxNodeGroupId: t
+    proxmoxNodeGroupId: d
       .text()
       .references(() => proxmoxNodeGroups.id, {
         // Don't allow deletion of the Proxmox VE node group if it still has server plans
@@ -36,25 +36,25 @@ export const serverPlans = pgTable(
         onUpdate: "cascade",
       })
       .notNull(),
-    name: t.text().notNull(),
+    name: d.text().notNull(),
     /**
      * The number of guaranteed vCores of the server plan.
      *
      * @example 1
      */
-    cores: t.smallint().notNull(),
+    cores: d.smallint().notNull(),
     /**
      * The guaranteed memory of the server plan in MiB.
      *
      * @example 1024 MiB = 1 GiB
      */
-    memory: t.integer().notNull(),
+    memory: d.integer().notNull(),
     /**
      * The guaranteed storage of the server plan in GiB.
      *
      * @example 100 GiB
      */
-    storage: t.integer().notNull(),
+    storage: d.integer().notNull(),
     /**
      * The maximum network bandwidth limit of the server plan in MB/s
      *
@@ -62,45 +62,49 @@ export const serverPlans = pgTable(
      *
      * @default null
      */
-    netrate: t.smallint(),
+    netrate: d.smallint(),
     /**
      * The monthly price of the server plan in cents.
      *
      * @example 1000 cents = 10 €
      */
-    price: t.integer().notNull(),
+    price: d.integer().notNull(),
     /**
      * Whether the server plan is highlighted as popular.
      *
      * @default false
      */
-    recommended: t.boolean().notNull().default(false),
+    recommended: d.boolean().notNull().default(false),
     /**
      * Another plan that will be shown as an upsell for this plan.
      *
      * @default null
      */
-    upsellTo: t.text().references((): AnyPgColumn => serverPlans.id, {
+    upsellTo: d.text().references((): AnyPgColumn => serverPlans.id, {
       onDelete: "set null",
       onUpdate: "cascade",
     }),
-    createdAt: t
+    createdAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull(),
-    updatedAt: t
+    updatedAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull()
       .$onUpdate(() => sql`now()`),
-  }),
+  },
   (t) => [
-    index().on(t.proxmoxNodeGroupId),
+    d.index().on(t.proxmoxNodeGroupId),
     // only one recommended plan per proxmox node group
-    uniqueIndex("server_plans_proxmox_node_group_id_recommended_index")
+    d
+      .uniqueIndex("server_plans_proxmox_node_group_id_recommended_index")
       .on(t.proxmoxNodeGroupId)
       .where(sql`${t.recommended} IS TRUE`),
-    check("upsell_to_is_not_self", sql`${t.upsellTo} IS DISTINCT FROM ${t.id}`),
+    d.check(
+      "upsell_to_is_not_self",
+      sql`${t.upsellTo} IS DISTINCT FROM ${t.id}`,
+    ),
   ],
 );
 

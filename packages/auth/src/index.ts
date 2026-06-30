@@ -17,6 +17,7 @@
 
 import { captureException } from "@sentry/core";
 import { db } from "@virtbase/db/client";
+import * as schema from "@virtbase/db/schema";
 import { createId } from "@virtbase/db/utils";
 import { sendEmail } from "@virtbase/email";
 import PasswordUpdated from "@virtbase/email/templates/password-updated";
@@ -100,6 +101,8 @@ export function initAuth({
     database: drizzleAdapter(db, {
       provider: "pg",
       usePlural: true,
+      camelCase: false,
+      schema,
     }),
     databaseHooks: {
       account: {

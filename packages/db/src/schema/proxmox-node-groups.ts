@@ -16,10 +16,10 @@
  */
 
 import { sql } from "drizzle-orm";
-import { pgEnum, pgTable } from "drizzle-orm/pg-core";
+import * as d from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 
-export const proxmoxNodeGroupStrategyEnum = pgEnum(
+export const proxmoxNodeGroupStrategyEnum = d.pgEnum(
   "proxmox_node_group_strategy",
   ["RANDOM", "ROUND_ROBIN", "LEAST_USED", "FILL"],
 );
@@ -28,8 +28,8 @@ export const proxmoxNodeGroupStrategyEnum = pgEnum(
  * A Proxmox VE node group represents a logical grouping of Proxmox VE nodes
  * with similar specifications.
  */
-export const proxmoxNodeGroups = pgTable("proxmox_node_groups", (t) => ({
-  id: t
+export const proxmoxNodeGroups = d.snakeCase.table("proxmox_node_groups", {
+  id: d
     .text()
     .primaryKey()
     .$default(() =>
@@ -42,7 +42,7 @@ export const proxmoxNodeGroups = pgTable("proxmox_node_groups", (t) => ({
    *
    * @example "Skylink EPYC 7443P"
    */
-  name: t.text().notNull().unique(),
+  name: d.text().notNull().unique(),
   /**
    * The strategy to use when selecting a node from the group.
    *
@@ -52,15 +52,15 @@ export const proxmoxNodeGroups = pgTable("proxmox_node_groups", (t) => ({
    * `FILL`: Opposite of `LEAST_USED`. Select the node with the most usage and fill it until it is full.
    */
   strategy: proxmoxNodeGroupStrategyEnum().notNull().default("ROUND_ROBIN"),
-  createdAt: t
+  createdAt: d
     .timestamp({ withTimezone: true, mode: "date" })
     .defaultNow()
     .notNull(),
-  updatedAt: t
+  updatedAt: d
     .timestamp({ withTimezone: true, mode: "date" })
     .defaultNow()
     .notNull()
     .$onUpdate(() => sql`now()`),
-}));
+});
 
 export type DatabaseProxmoxNodeGroups = typeof proxmoxNodeGroups.$inferSelect;

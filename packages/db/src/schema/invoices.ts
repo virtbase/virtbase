@@ -16,18 +16,18 @@
  */
 
 import { sql } from "drizzle-orm";
-import { index, pgTable } from "drizzle-orm/pg-core";
+import * as d from "drizzle-orm/pg-core";
 import { createId } from "../utils";
 import { users } from "./auth";
 
-export const invoices = pgTable(
+export const invoices = d.snakeCase.table(
   "invoices",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() => createId({ prefix: "inv_" })),
-    userId: t
+    userId: d
       .text()
       .notNull()
       .references(() => users.id, {
@@ -37,50 +37,50 @@ export const invoices = pgTable(
     /**
      * The UUID of the Lexware Office invoice.
      */
-    lexwareInvoiceId: t.uuid().notNull().unique(),
+    lexwareInvoiceId: d.uuid().notNull().unique(),
     /**
      * The number of the invoice.
      */
-    number: t.text().notNull(),
+    number: d.text().notNull(),
     /**
      * The total amount of the invoice in cents including tax.
      */
-    total: t.integer().notNull(),
+    total: d.integer().notNull(),
     /**
      * The tax amount of the invoice in cents.
      */
-    taxAmount: t.integer().notNull(),
+    taxAmount: d.integer().notNull(),
     /**
      * Whether the reverse charge applies to the invoice.
      */
-    reverseCharge: t.boolean().notNull(),
+    reverseCharge: d.boolean().notNull(),
     /**
      * The timestamp when the invoice was cancelled.
      */
-    cancelledAt: t.timestamp({ withTimezone: true, mode: "date" }),
+    cancelledAt: d.timestamp({ withTimezone: true, mode: "date" }),
     /**
      * The timestamp when the invoice was fully paid.
      */
-    paidAt: t.timestamp({ withTimezone: true, mode: "date" }),
+    paidAt: d.timestamp({ withTimezone: true, mode: "date" }),
     /**
      * The timestamp when the invoice was delivered to the customer.
      */
-    sentAt: t.timestamp({ withTimezone: true, mode: "date" }),
+    sentAt: d.timestamp({ withTimezone: true, mode: "date" }),
     /**
      * The timestamp when the invoice was created.
      */
-    createdAt: t
+    createdAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull(),
     /**
      * The timestamp when the invoice was last updated.
      */
-    updatedAt: t
+    updatedAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull()
       .$onUpdate(() => sql`now()`),
-  }),
-  (t) => [index().on(t.userId), index().on(t.lexwareInvoiceId)],
+  },
+  (t) => [d.index().on(t.userId), d.index().on(t.lexwareInvoiceId)],
 );

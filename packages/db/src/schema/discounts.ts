@@ -16,24 +16,24 @@
  */
 
 import { sql } from "drizzle-orm";
-import { check, pgEnum, pgTable } from "drizzle-orm/pg-core";
+import * as d from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 
-export const discountTypesEnum = pgEnum("discount_types", [
+export const discountTypesEnum = d.pgEnum("discount_types", [
   "PERCENTAGE",
   "FIXED",
 ]);
 
-export const discountAppliesToEnum = pgEnum("discount_applies_to", [
+export const discountAppliesToEnum = d.pgEnum("discount_applies_to", [
   "PURCHASE",
   "RENEWAL",
   "BOTH",
 ]);
 
-export const discounts = pgTable(
+export const discounts = d.snakeCase.table(
   "discounts",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() => createId({ prefix: "dsc_" })),
@@ -42,7 +42,7 @@ export const discounts = pgTable(
      *
      * @example "Summer Sale"
      */
-    name: t.text().notNull(),
+    name: d.text().notNull(),
     /**
      * The type of the discount:
      * - `PERCENTAGE`: A percentage discount; see `amount` for the unit.
@@ -56,7 +56,7 @@ export const discounts = pgTable(
      * - When `type = FIXED`: amount in cents to subtract from the price
      *   (e.g. `1000` means 10 €).
      */
-    amount: t.integer().notNull(),
+    amount: d.integer().notNull(),
     /**
      * Which side of the price the discount applies to:
      * - `PURCHASE`: Only the first (new server) purchase.
@@ -68,29 +68,29 @@ export const discounts = pgTable(
      * Whether the discount is currently active. Inactive discounts are
      * ignored even if their date window is current.
      */
-    active: t.boolean().notNull().default(true),
+    active: d.boolean().notNull().default(true),
     /**
      * The timestamp when the discount becomes active. `NULL` means the
      * discount is already active (no lower bound).
      */
-    startsAt: t.timestamp({ withTimezone: true, mode: "date" }),
+    startsAt: d.timestamp({ withTimezone: true, mode: "date" }),
     /**
      * The timestamp when the discount stops being active. `NULL` means the
      * discount has no expiration (no upper bound).
      */
-    endsAt: t.timestamp({ withTimezone: true, mode: "date" }),
-    createdAt: t
+    endsAt: d.timestamp({ withTimezone: true, mode: "date" }),
+    createdAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull(),
-    updatedAt: t
+    updatedAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull()
       .$onUpdate(() => sql`now()`),
-  }),
+  },
   (t) => [
-    check(
+    d.check(
       "discounts_amount_range",
       sql`(${t.type} = 'PERCENTAGE' AND ${t.amount} BETWEEN 1 AND 100) OR (${t.type} = 'FIXED' AND ${t.amount} > 0)`,
     ),

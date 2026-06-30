@@ -16,22 +16,22 @@
  */
 
 import { sql } from "drizzle-orm";
-import { index, pgTable } from "drizzle-orm/pg-core";
+import * as d from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 import { discounts } from "./discounts";
 import { serverPlans } from "./server-plans";
 
-export const serverPlanPrices = pgTable(
+export const serverPlanPrices = d.snakeCase.table(
   "server_plan_prices",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() => createId({ prefix: "price_" })),
     /**
      * The server plan this price is for.
      */
-    serverPlanId: t
+    serverPlanId: d
       .text()
       .notNull()
       .references(() => serverPlans.id, {
@@ -41,36 +41,36 @@ export const serverPlanPrices = pgTable(
     /**
      * The price of the server plan for a new purchase in cents.
      */
-    purchasePrice: t.integer().notNull(),
+    purchasePrice: d.integer().notNull(),
     /**
      * The price of the server plan for a renewal in cents.
      */
-    renewalPrice: t.integer().notNull(),
+    renewalPrice: d.integer().notNull(),
     /**
      * The discount applied to the purchase price if any.
      */
-    purchaseDiscountId: t.text().references(() => discounts.id, {
+    purchaseDiscountId: d.text().references(() => discounts.id, {
       onDelete: "set null",
       onUpdate: "cascade",
     }),
     /**
      * The discount applied to the renewal price if any.
      */
-    renewalDiscountId: t.text().references(() => discounts.id, {
+    renewalDiscountId: d.text().references(() => discounts.id, {
       onDelete: "set null",
       onUpdate: "cascade",
     }),
-    createdAt: t
+    createdAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull(),
-    updatedAt: t
+    updatedAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull()
       .$onUpdate(() => sql`now()`),
-  }),
-  (t) => [index().on(t.serverPlanId)],
+  },
+  (t) => [d.index().on(t.serverPlanId)],
 );
 
 export type DatabaseServerPlanPrice = typeof serverPlanPrices.$inferSelect;

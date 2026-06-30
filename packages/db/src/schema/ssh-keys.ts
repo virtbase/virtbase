@@ -16,33 +16,33 @@
  */
 
 import { sql } from "drizzle-orm";
-import { index, pgTable } from "drizzle-orm/pg-core";
+import * as d from "drizzle-orm/pg-core";
 import { createId } from "../utils";
 import { users } from "./auth";
 
-export const sshKeys = pgTable(
+export const sshKeys = d.snakeCase.table(
   "ssh_keys",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() => createId({ prefix: "sshkey_" })),
-    userId: t
+    userId: d
       .text()
       .notNull()
       .references(() => users.id, { onDelete: "cascade", onUpdate: "cascade" }),
-    name: t.text().notNull(),
-    fingerprint: t.text().notNull(),
-    publicKey: t.text().notNull(),
-    createdAt: t
+    name: d.text().notNull(),
+    fingerprint: d.text().notNull(),
+    publicKey: d.text().notNull(),
+    createdAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull(),
-    updatedAt: t
+    updatedAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull()
       .$onUpdate(() => sql`now()`),
-  }),
-  (t) => [index().on(t.userId), index().on(t.fingerprint)],
+  },
+  (t) => [d.index().on(t.userId), d.index().on(t.fingerprint)],
 );

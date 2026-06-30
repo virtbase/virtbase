@@ -15,44 +15,44 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { index, pgTable } from "drizzle-orm/pg-core";
+import * as d from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 
-export const emails = pgTable(
+export const emails = d.snakeCase.table(
   "emails",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() => createId({ prefix: "email_" })),
-    externalId: t.text().unique(),
-    from: t.text().notNull(),
-    to: t.text().array().notNull(),
-    cc: t.text().array(),
-    bcc: t.text().array(),
-    replyTo: t.text().array(),
-    subject: t.text().notNull(),
-    html: t.text(),
-    text: t.text(),
-    tags: t.jsonb(),
-    lastEvent: t.text(),
-    createdAt: t
+    externalId: d.text().unique(),
+    from: d.text().notNull(),
+    to: d.text().array().notNull(),
+    cc: d.text().array(),
+    bcc: d.text().array(),
+    replyTo: d.text().array(),
+    subject: d.text().notNull(),
+    html: d.text(),
+    text: d.text(),
+    tags: d.jsonb(),
+    lastEvent: d.text(),
+    createdAt: d
       .timestamp({
         withTimezone: true,
         mode: "date",
       })
       .defaultNow()
       .notNull(),
-    scheduledAt: t.timestamp({
+    scheduledAt: d.timestamp({
       withTimezone: true,
       mode: "date",
     }),
-  }),
+  },
   (t) => [
-    index().on(t.externalId),
-    index().on(t.from),
-    index().on(t.to),
-    index().on(t.lastEvent),
+    d.index().on(t.externalId),
+    d.index().on(t.from),
+    d.index().on(t.to),
+    d.index().on(t.lastEvent),
   ],
 );
 

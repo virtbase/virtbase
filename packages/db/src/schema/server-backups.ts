@@ -16,26 +16,26 @@
  */
 
 import { sql } from "drizzle-orm";
-import { index, pgTable } from "drizzle-orm/pg-core";
+import * as d from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 import { proxmoxTemplates } from "./proxmox-templates";
 import { servers } from "./servers";
 
-export const serverBackups = pgTable(
+export const serverBackups = d.snakeCase.table(
   "server_backups",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() => createId({ prefix: "kbu_" })),
-    serverId: t
+    serverId: d
       .text()
       .notNull()
       .references(() => servers.id, {
         onDelete: "cascade",
         onUpdate: "cascade",
       }),
-    proxmoxTemplateId: t.text().references(() => proxmoxTemplates.id, {
+    proxmoxTemplateId: d.text().references(() => proxmoxTemplates.id, {
       onDelete: "set null",
       onUpdate: "cascade",
     }),
@@ -44,30 +44,30 @@ export const serverBackups = pgTable(
      *
      * @example "My backup"
      */
-    name: t.varchar().notNull(),
+    name: d.varchar().notNull(),
     /**
      * If locked, the backup is protected and cannot be deleted.
      */
-    isLocked: t.boolean().notNull().default(false),
+    isLocked: d.boolean().notNull().default(false),
     /**
      * The Proxmox volume ID, in the format <storage>:<content_type>/vzdump-<vm_type>-<vm_id>-<date_string>.<format>
      */
-    volid: t.varchar(),
+    volid: d.varchar(),
     /**
      * The size of the backup in bytes.
      */
-    size: t.bigint({
+    size: d.bigint({
       mode: "number",
     }),
     /**
      * The Proxmox UPID of the backup task.
      */
-    upid: t.varchar().notNull(),
+    upid: d.varchar().notNull(),
     /**
      * The timestamp when the backup task was started.
      * (= createdAt timestamp of the backup)
      */
-    startedAt: t
+    startedAt: d
       .timestamp({
         withTimezone: true,
         mode: "date",
@@ -77,28 +77,28 @@ export const serverBackups = pgTable(
     /**
      * If failed, the timestamp when the backup failed.
      */
-    failedAt: t.timestamp({
+    failedAt: d.timestamp({
       withTimezone: true,
       mode: "date",
     }),
     /**
      * The timestamp when the backup was finished (any status).
      */
-    finishedAt: t.timestamp({
+    finishedAt: d.timestamp({
       withTimezone: true,
       mode: "date",
     }),
-    updatedAt: t
+    updatedAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull()
       .$onUpdate(() => sql`now()`),
-  }),
+  },
   (t) => [
-    index().on(t.serverId),
-    index().on(t.proxmoxTemplateId),
-    index().on(t.upid),
-    index().on(t.volid),
+    d.index().on(t.serverId),
+    d.index().on(t.proxmoxTemplateId),
+    d.index().on(t.upid),
+    d.index().on(t.volid),
   ],
 );
 

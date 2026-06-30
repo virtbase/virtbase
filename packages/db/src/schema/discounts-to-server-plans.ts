@@ -15,27 +15,27 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { pgTable, primaryKey } from "drizzle-orm/pg-core";
+import * as d from "drizzle-orm/pg-core";
 import { discounts } from "./discounts";
 import { serverPlans } from "./server-plans";
 
-export const discountsToServerPlans = pgTable(
+export const discountsToServerPlans = d.snakeCase.table(
   "discounts_to_server_plans",
-  (t) => ({
-    discountId: t
+  {
+    discountId: d
       .text()
       .notNull()
       .references(() => discounts.id, {
         onDelete: "cascade",
         onUpdate: "cascade",
       }),
-    serverPlanId: t
+    serverPlanId: d
       .text()
       .notNull()
       .references(() => serverPlans.id, {
         onDelete: "cascade",
         onUpdate: "cascade",
       }),
-  }),
-  (t) => [primaryKey({ columns: [t.discountId, t.serverPlanId] })],
+  },
+  (t) => [d.primaryKey({ columns: [t.discountId, t.serverPlanId] })],
 );

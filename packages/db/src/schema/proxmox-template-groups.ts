@@ -16,17 +16,17 @@
  */
 
 import { sql } from "drizzle-orm";
-import { pgTable } from "drizzle-orm/pg-core";
+import * as d from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 
 /**
  * A Proxmox VE template group represents a logical grouping of Proxmox VE templates
  * with similar specifications.
  */
-export const proxmoxTemplateGroups = pgTable(
+export const proxmoxTemplateGroups = d.snakeCase.table(
   "proxmox_template_groups",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() =>
@@ -39,7 +39,7 @@ export const proxmoxTemplateGroups = pgTable(
      *
      * @example "Debian"
      */
-    name: t.text().notNull().unique(),
+    name: d.text().notNull().unique(),
     /**
      * The priority of the Proxmox VE template group.
      * Lower numbers are displayed first.
@@ -49,18 +49,18 @@ export const proxmoxTemplateGroups = pgTable(
      * @default 0
      * @example 0
      */
-    priority: t.smallint().notNull().default(0),
-    createdAt: t
+    priority: d.smallint().notNull().default(0),
+    createdAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull(),
 
-    updatedAt: t
+    updatedAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull()
       .$onUpdate(() => sql`now()`),
-  }),
+  },
 );
 
 export type DatabaseProxmoxTemplateGroups =

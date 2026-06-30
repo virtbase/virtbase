@@ -17,16 +17,16 @@
 
 import { sql } from "drizzle-orm";
 import type { AnyPgColumn } from "drizzle-orm/pg-core";
-import { index, pgTable } from "drizzle-orm/pg-core";
+import * as d from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
 
 /**
  * A subnet represents a contiguous block of IP addresses.
  */
-export const subnets = pgTable(
+export const subnets = d.snakeCase.table(
   "subnets",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() =>
@@ -37,7 +37,7 @@ export const subnets = pgTable(
     /**
      * If the subnet is a child subnet, the ID of the parent.
      */
-    parentId: t
+    parentId: d
       .varchar({ length: 255 })
       .references((): AnyPgColumn => subnets.id, {
         onDelete: "cascade",
@@ -47,34 +47,34 @@ export const subnets = pgTable(
      * The network specification of the subnet in CIDR notation.
      * @example "192.168.1.0/24"
      */
-    cidr: t.cidr().notNull().unique(),
+    cidr: d.cidr().notNull().unique(),
     /**
      * The gateway IP address of the subnet.
      * @example "192.168.1.1"
      */
-    gateway: t.inet().notNull(),
+    gateway: d.inet().notNull(),
     /**
      * The VLAN ID of the subnet.
      * @example 100
      * @default 0
      */
-    vlan: t.integer().notNull().default(0),
+    vlan: d.integer().notNull().default(0),
     /**
      * The DNS reverse zone of the subnet.
      * @example "10.10.10.in-addr.arpa"
      */
-    dnsReverseZone: t.varchar({ length: 255 }),
-    createdAt: t
+    dnsReverseZone: d.varchar({ length: 255 }),
+    createdAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull(),
-    updatedAt: t
+    updatedAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
       .notNull()
       .$onUpdate(() => sql`now()`),
-  }),
-  (t) => [index().on(t.parentId)],
+  },
+  (t) => [d.index().on(t.parentId)],
 );
 
 export type DatabaseSubnets = typeof subnets.$inferSelect;

@@ -59,6 +59,7 @@ export function TwoFactorManageButton({
   const initiateTwoFactor = (password: string) =>
     startTransition(async () => {
       await authClient.twoFactor.enable({
+        method: "totp",
         password,
         fetchOptions: {
           onSuccess: ({ data }) => {

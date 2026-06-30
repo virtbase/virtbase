@@ -16,203 +16,209 @@
  */
 
 import { sql } from "drizzle-orm";
-import { index, pgTable } from "drizzle-orm/pg-core";
+import * as d from "drizzle-orm/pg-core";
 import { createId } from "../utils";
 
-export const users = pgTable(
+export const users = d.snakeCase.table(
   "users",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() => createId({ prefix: "usr_" })),
-    name: t.text().notNull(),
-    email: t.text().notNull().unique(),
-    emailVerified: t.boolean().default(false).notNull(),
-    image: t.text(),
-    createdAt: t.timestamp().defaultNow().notNull(),
-    updatedAt: t.timestamp().defaultNow().notNull(),
+    name: d.text().notNull(),
+    email: d.text().notNull().unique(),
+    emailVerified: d.boolean().default(false).notNull(),
+    image: d.text(),
+    createdAt: d.timestamp().defaultNow().notNull(),
+    updatedAt: d.timestamp().defaultNow().notNull(),
     // Better Auth admin plugin
-    banned: t.boolean().notNull().default(false),
-    banReason: t.text(),
-    banExpires: t.timestamp({ withTimezone: true, mode: "date" }),
+    banned: d.boolean().notNull().default(false),
+    banReason: d.text(),
+    banExpires: d.timestamp({ withTimezone: true, mode: "date" }),
     // Better Auth two-factor plugin
-    twoFactorEnabled: t.boolean(),
+    twoFactorEnabled: d.boolean(),
     // Custom fields
-    stripeCustomerId: t.text().unique(),
-    role: t.text().notNull().default("CUSTOMER"),
-    locale: t.text(),
-  }),
-  (t) => [index().on(t.email), index().on(t.stripeCustomerId)],
+    stripeCustomerId: d.text().unique(),
+    role: d.text().notNull().default("CUSTOMER"),
+    locale: d.text(),
+  },
+  (t) => [d.index().on(t.email), d.index().on(t.stripeCustomerId)],
 );
 
-export const sessions = pgTable(
+export const sessions = d.snakeCase.table(
   "sessions",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() => createId({ prefix: "sess_" })),
-    expiresAt: t.timestamp().notNull(),
-    token: t.text().notNull().unique(),
-    createdAt: t.timestamp().defaultNow().notNull(),
-    updatedAt: t
+    expiresAt: d.timestamp().notNull(),
+    token: d.text().notNull().unique(),
+    createdAt: d.timestamp().defaultNow().notNull(),
+    updatedAt: d
       .timestamp()
       .$onUpdate(() => sql`now()`)
       .notNull(),
-    ipAddress: t.text(),
-    userAgent: t.text(),
-    userId: t
+    ipAddress: d.text(),
+    userAgent: d.text(),
+    userId: d
       .text()
       .notNull()
       .references(() => users.id, { onDelete: "cascade", onUpdate: "cascade" }),
-    impersonatedBy: t.text().references(() => users.id, {
+    impersonatedBy: d.text().references(() => users.id, {
       onDelete: "cascade",
       onUpdate: "cascade",
     }),
-  }),
-  (t) => [index().on(t.userId), index().on(t.token)],
+  },
+  (t) => [d.index().on(t.userId), d.index().on(t.token)],
 );
 
-export const accounts = pgTable(
+export const accounts = d.snakeCase.table(
   "accounts",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() => createId({ prefix: "acc_" })),
-    accountId: t.text().notNull(),
-    providerId: t.text().notNull(),
-    userId: t
+    accountId: d.text().notNull(),
+    providerId: d.text().notNull(),
+    userId: d
       .text()
       .notNull()
       .references(() => users.id, { onDelete: "cascade", onUpdate: "cascade" }),
-    accessToken: t.text(),
-    refreshToken: t.text(),
-    idToken: t.text(),
-    accessTokenExpiresAt: t.timestamp(),
-    refreshTokenExpiresAt: t.timestamp(),
-    scope: t.text(),
-    password: t.text(),
-    createdAt: t.timestamp().defaultNow().notNull(),
-    updatedAt: t
+    accessToken: d.text(),
+    refreshToken: d.text(),
+    idToken: d.text(),
+    accessTokenExpiresAt: d.timestamp(),
+    refreshTokenExpiresAt: d.timestamp(),
+    scope: d.text(),
+    password: d.text(),
+    createdAt: d.timestamp().defaultNow().notNull(),
+    updatedAt: d
       .timestamp()
       .$onUpdate(() => sql`now()`)
       .notNull(),
-  }),
-  (t) => [index().on(t.userId)],
+  },
+  (t) => [d.index().on(t.userId)],
 );
 
-export const verifications = pgTable(
+export const verifications = d.snakeCase.table(
   "verifications",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() => createId({ prefix: "verif_" })),
-    identifier: t.text().notNull(),
-    value: t.text().notNull(),
-    expiresAt: t.timestamp().notNull(),
-    createdAt: t.timestamp().defaultNow().notNull(),
-    updatedAt: t
+    identifier: d.text().notNull(),
+    value: d.text().notNull(),
+    expiresAt: d.timestamp().notNull(),
+    createdAt: d.timestamp().defaultNow().notNull(),
+    updatedAt: d
       .timestamp()
       .defaultNow()
       .$onUpdate(() => sql`now()`)
       .notNull(),
-  }),
-  (t) => [index().on(t.identifier)],
+  },
+  (t) => [d.index().on(t.identifier)],
 );
 
-export const passkeys = pgTable(
+export const passkeys = d.snakeCase.table(
   "passkeys",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() => createId({ prefix: "passkey_" })),
-    userId: t
+    userId: d
       .text()
       .notNull()
       .references(() => users.id, { onDelete: "cascade", onUpdate: "cascade" }),
-    publicKey: t.text().notNull(),
-    credentialID: t.text().notNull(),
-    counter: t.integer().notNull(),
-    deviceType: t.text().notNull(),
-    backedUp: t.boolean().notNull(),
-    transports: t.text(),
-    createdAt: t.timestamp({ withTimezone: true }).defaultNow().notNull(),
-    aaguid: t.text(),
-  }),
-  (t) => [index().on(t.userId), index().on(t.credentialID)],
+    publicKey: d.text().notNull(),
+    credentialID: d.text().notNull(),
+    counter: d.integer().notNull(),
+    deviceType: d.text().notNull(),
+    backedUp: d.boolean().notNull(),
+    transports: d.text(),
+    createdAt: d.timestamp({ withTimezone: true }).defaultNow().notNull(),
+    aaguid: d.text(),
+  },
+  (t) => [d.index().on(t.userId), d.index().on(t.credentialID)],
 );
 
-export const apiKeys = pgTable(
+export const apiKeys = d.snakeCase.table(
   "api_keys",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() => createId({ prefix: "api_" })),
-    name: t.text(),
-    start: t.text(),
-    prefix: t.text(),
-    key: t.text(),
-    referenceId: t.text(),
-    configId: t.text().notNull().default("default"),
-    refillInterval: t.integer(),
-    refillAmount: t.integer(),
-    lastRefillAt: t.timestamp({
+    name: d.text(),
+    start: d.text(),
+    prefix: d.text(),
+    key: d.text(),
+    referenceId: d.text(),
+    configId: d.text().notNull().default("default"),
+    refillInterval: d.integer(),
+    refillAmount: d.integer(),
+    lastRefillAt: d.timestamp({
       withTimezone: true,
       mode: "date",
     }),
-    enabled: t.boolean().notNull(),
-    rateLimitEnabled: t.boolean().notNull(),
-    rateLimitTimeWindow: t.integer(),
-    rateLimitMax: t.integer(),
-    requestCount: t.integer().notNull(),
-    remaining: t.integer(),
-    lastRequest: t.timestamp({
+    enabled: d.boolean().notNull(),
+    rateLimitEnabled: d.boolean().notNull(),
+    rateLimitTimeWindow: d.integer(),
+    rateLimitMax: d.integer(),
+    requestCount: d.integer().notNull(),
+    remaining: d.integer(),
+    lastRequest: d.timestamp({
       withTimezone: true,
       mode: "date",
     }),
-    expiresAt: t.timestamp({
+    expiresAt: d.timestamp({
       withTimezone: true,
       mode: "date",
     }),
-    createdAt: t
+    createdAt: d
       .timestamp({
         withTimezone: true,
         mode: "date",
       })
       .defaultNow()
       .notNull(),
-    updatedAt: t
+    updatedAt: d
       .timestamp({
         withTimezone: true,
         mode: "date",
       })
       .$onUpdate(() => sql`now()`)
       .notNull(),
-    permissions: t.text(),
-    metadata: t.jsonb(),
-  }),
-  (t) => [index().on(t.referenceId)],
+    permissions: d.text(),
+    metadata: d.jsonb(),
+  },
+  (t) => [d.index().on(t.referenceId)],
 );
 
-export const twoFactors = pgTable(
+export const twoFactors = d.snakeCase.table(
   "two_factors",
-  (t) => ({
-    id: t
+  {
+    id: d
       .text()
       .primaryKey()
       .$default(() => createId({ prefix: "tfa_" })),
-    userId: t
+    userId: d
       .text()
       .notNull()
       .references(() => users.id, { onDelete: "cascade", onUpdate: "cascade" }),
-    secret: t.text().notNull(),
-    backupCodes: t.text().notNull(),
-    verified: t.boolean().notNull(),
-  }),
-  (t) => [index().on(t.userId), index().on(t.secret)],
+    secret: d.text().notNull(),
+    backupCodes: d.text().notNull(),
+    verified: d.boolean().notNull(),
+    failedVerificationCount: d.integer().notNull(),
+    lockedUntil: d.timestamp({
+      precision: 6,
+      withTimezone: true,
+      mode: "date",
+    }),
+  },
+  (t) => [d.index().on(t.userId), d.index().on(t.secret)],
 );
