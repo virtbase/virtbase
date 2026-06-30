@@ -18,6 +18,7 @@
 import { Footer } from "@virtbase/email/templates/footer";
 import {
   DEFAULT_EMAIL_LOCALE,
+  getEmailMessages,
   resolveEmailLocale,
 } from "@virtbase/email/translations";
 import {
@@ -57,7 +58,7 @@ export default async function ServerSuspended({
   const resolvedLocale = resolveEmailLocale(locale);
 
   const t = createTranslator({
-    messages: (await import(`../messages/${resolvedLocale}.json`)).default,
+    messages: getEmailMessages(resolvedLocale),
     locale: resolvedLocale,
     namespace: "server-suspended",
   });

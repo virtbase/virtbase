@@ -18,6 +18,7 @@
 import { Footer } from "@virtbase/email/templates/footer";
 import {
   DEFAULT_EMAIL_LOCALE,
+  getEmailMessages,
   resolveEmailLocale,
 } from "@virtbase/email/translations";
 import { APP_NAME, VIRTBASE_WORDMARK } from "@virtbase/utils";
@@ -45,7 +46,7 @@ export default async function PasswordUpdated({
   const resolvedLocale = resolveEmailLocale(locale);
 
   const t = createTranslator({
-    messages: (await import(`../messages/${resolvedLocale}.json`)).default,
+    messages: getEmailMessages(resolvedLocale),
     locale: resolvedLocale,
     namespace: "password-updated",
   });

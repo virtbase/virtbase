@@ -66,9 +66,8 @@ export async function getEmailTitle(
 ) {
   const candidate = resolveEmailLocale(locale);
 
-  const messages = (await import(`../messages/${candidate}.json`)).default;
   const t = createTranslator({
-    messages,
+    messages: getEmailMessages(candidate),
     locale: candidate,
     namespace: key,
   });
