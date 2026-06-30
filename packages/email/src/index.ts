@@ -20,16 +20,14 @@ import type {
   ResendBulkEmailOptions,
   ResendEmailOptions,
 } from "./resend/types";
+import { sendViaNodeMailer } from "./send-via-nodemailer";
+import { sendBatchEmailViaResend, sendEmailViaResend } from "./send-via-resend";
 
 export const sendEmail = async (
   opts: ResendEmailOptions,
   settings?: { idempotencyKey?: string },
 ) => {
   if (resend) {
-    // Lazily imported so consumers (e.g. workflow steps) don't pull the email
-    // rendering stack (react-email) into their static module graph, which
-    // breaks bundling/build-time page-data collection.
-    const { sendEmailViaResend } = await import("./send-via-resend");
     return await sendEmailViaResend(opts, settings);
   }
 
@@ -40,7 +38,6 @@ export const sendEmail = async (
 
   if (smtpConfigured) {
     const { to, subject, text, react, bcc, trustpilotAfs } = opts;
-    const { sendViaNodeMailer } = await import("./send-via-nodemailer");
     return await sendViaNodeMailer({
       to,
       subject,
@@ -61,7 +58,6 @@ export const sendBatchEmail = async (
   options?: { idempotencyKey?: string },
 ) => {
   if (resend) {
-    const { sendBatchEmailViaResend } = await import("./send-via-resend");
     return await sendBatchEmailViaResend(emails, options);
   }
 
@@ -71,7 +67,6 @@ export const sendBatchEmail = async (
   );
 
   if (smtpConfigured) {
-    const { sendViaNodeMailer } = await import("./send-via-nodemailer");
     await Promise.all(
       emails.map((p) =>
         sendViaNodeMailer({

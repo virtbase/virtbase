@@ -19,6 +19,7 @@ import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { users } from "@virtbase/db/schema";
 import { sendEmail } from "@virtbase/email";
+import ServerReady from "@virtbase/email/templates/server-ready";
 import { getEmailTitle } from "@virtbase/email/translations";
 import { FatalError, getStepMetadata } from "workflow";
 
@@ -62,10 +63,6 @@ export async function sendServerReadyEmailStep({
       `The user with ID "${userId}" was not found. Cannot send server ready email.`,
     );
   }
-
-  const { default: ServerReady } = await import(
-    "@virtbase/email/templates/server-ready"
-  );
 
   await sendEmail(
     {
