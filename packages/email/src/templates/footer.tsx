@@ -17,6 +17,7 @@
 
 import {
   DEFAULT_EMAIL_LOCALE,
+  getEmailMessages,
   resolveEmailLocale,
 } from "@virtbase/email/translations";
 import { APP_DOMAIN, PUBLIC_DOMAIN } from "@virtbase/utils";
@@ -39,9 +40,9 @@ export function Footer({
   const resolvedLocale = resolveEmailLocale(locale);
 
   const t = createTranslator({
-    // TODO: Using await import(...) causes issues with the build
-    // Footer must remain synchronous for now
-    messages: require(`../messages/${resolvedLocale}.json`),
+    // Footer must remain synchronous (it is rendered as a JSX child), so we
+    // use statically-imported messages instead of dynamic require/import.
+    messages: getEmailMessages(resolvedLocale),
     locale: resolvedLocale,
     namespace: "footer",
   });

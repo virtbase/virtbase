@@ -18,14 +18,34 @@
 import { APP_NAME } from "@virtbase/utils";
 import { hasLocale } from "use-intl";
 import { createTranslator } from "use-intl/core";
+import deMessages from "../messages/de.json";
+import enMessages from "../messages/en.json";
+import frMessages from "../messages/fr.json";
+import nlMessages from "../messages/nl.json";
 
 // TODO: Unify with the default locale in the web app (shared localization config and package)
 export const EMAIL_LOCALES = ["en", "de", "fr", "nl"] as const;
 export const DEFAULT_EMAIL_LOCALE = "en" as const;
 export type EmailLocale = (typeof EMAIL_LOCALES)[number];
 
+const EMAIL_MESSAGES: Record<EmailLocale, typeof enMessages> = {
+  en: enMessages,
+  de: deMessages,
+  fr: frMessages,
+  nl: nlMessages,
+};
+
 export function resolveEmailLocale(locale?: string | null): EmailLocale {
   return hasLocale(EMAIL_LOCALES, locale) ? locale : DEFAULT_EMAIL_LOCALE;
+}
+
+/**
+ * Synchronously resolves email messages for a locale using static imports.
+ * Use this when a component must remain synchronous (e.g. rendered as a JSX
+ * child) and cannot `await import(...)`.
+ */
+export function getEmailMessages(locale?: string | null) {
+  return EMAIL_MESSAGES[resolveEmailLocale(locale)];
 }
 
 export async function getEmailTitle(

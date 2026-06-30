@@ -51,7 +51,7 @@ export async function generateStaticParams() {
       return tx
         .select({ from: serverPlans.id, to: upsellPlans.id })
         .from(serverPlans)
-        .leftJoin(
+        .innerJoin(
           upsellPlans,
           and(
             eq(serverPlans.upsellTo, upsellPlans.id),
