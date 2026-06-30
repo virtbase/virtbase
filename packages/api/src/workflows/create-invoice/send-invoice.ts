@@ -16,7 +16,6 @@
  */
 
 import { sendEmail } from "@virtbase/email";
-import InvoiceCreated from "@virtbase/email/templates/invoice-created";
 import { getEmailTitle } from "@virtbase/email/translations";
 import { FatalError, getStepMetadata } from "workflow";
 import { lexware } from "../../lexware";
@@ -58,6 +57,10 @@ export async function sendInvoiceStep({
   }
 
   const { stepId } = getStepMetadata();
+
+  const { default: InvoiceCreated } = await import(
+    "@virtbase/email/templates/invoice-created"
+  );
 
   await sendEmail(
     {

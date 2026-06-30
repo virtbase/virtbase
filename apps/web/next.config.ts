@@ -205,12 +205,7 @@ const nextConfig: NextConfig = {
       destination: "/api/v1/servers/:path*",
     },
   ],
-  // `react-email` (v6) bundles the dev/CLI runtime, pulling in `tailwindcss`,
-  // `esbuild`, `jiti`, etc. which rely on dynamic `require`. Bundling it for
-  // server routes (e.g. the workflow `/.well-known/workflow/v1/step` handler)
-  // fails with "dynamic usage of require is not supported". Keep it external so
-  // it is required at runtime in Node, where dynamic require works.
-  serverExternalPackages: ["pdfkit", "react-email"],
+  serverExternalPackages: ["pdfkit"],
   transpilePackages: ["@virtbase/email", "@virtbase/ui"],
   typescript: {
     ignoreBuildErrors: true,

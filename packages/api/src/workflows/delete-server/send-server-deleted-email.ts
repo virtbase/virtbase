@@ -16,7 +16,6 @@
  */
 
 import { sendEmail } from "@virtbase/email";
-import ServerDeleted from "@virtbase/email/templates/server-deleted";
 import { getEmailTitle } from "@virtbase/email/translations";
 import { getStepMetadata } from "workflow";
 
@@ -36,6 +35,10 @@ export async function sendServerDeletedEmailStep({
   "use step";
 
   const { stepId } = getStepMetadata();
+
+  const { default: ServerDeleted } = await import(
+    "@virtbase/email/templates/server-deleted"
+  );
 
   await sendEmail(
     {

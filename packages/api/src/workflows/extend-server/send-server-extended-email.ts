@@ -16,7 +16,6 @@
  */
 
 import { sendEmail } from "@virtbase/email";
-import ServerExtended from "@virtbase/email/templates/server-extended";
 import { getEmailTitle } from "@virtbase/email/translations";
 import { getStepMetadata } from "workflow";
 
@@ -37,6 +36,10 @@ export async function sendServerExtendedEmailStep(
 
   const { user, serverName, newTerminatesAt } = params;
   const { stepId } = getStepMetadata();
+
+  const { default: ServerExtended } = await import(
+    "@virtbase/email/templates/server-extended"
+  );
 
   await sendEmail(
     {
