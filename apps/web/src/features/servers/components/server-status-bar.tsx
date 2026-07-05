@@ -62,6 +62,16 @@ export function ServerStatusBar() {
       condition: isSuspended,
     },
     {
+      icon: LucideLoader,
+      iconClassName: "animate-spin",
+      variant: "warning",
+      title: t("Server is installing"),
+      description: t(
+        "This server is being installed. Some features may not be available yet.",
+      ),
+      condition: isInstalling,
+    },
+    {
       icon: LucideBan,
       variant: "warning",
       title: t("Server is expiring"),
@@ -72,16 +82,6 @@ export function ServerStatusBar() {
         },
       ),
       condition: isExpiring,
-    },
-    {
-      icon: LucideLoader,
-      iconClassName: "animate-spin",
-      variant: "warning",
-      title: t("Server is installing"),
-      description: t(
-        "This server is being installed. Some features may not be available yet.",
-      ),
-      condition: isInstalling,
     },
   ];
 
