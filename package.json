@@ -101,17 +101,5 @@
   "patchedDependencies": {
     "@ai-sdk/provider-utils@5.0.2": "patches/@ai-sdk-provider-utils@5.0.2.patch",
     "proxmox-api@1.1.1": "patches/proxmox-api@1.1.1.patch"
-  },
-  "overrides": {
-    "@vue/compiler-core": "3.5.32",
-    "@vue/compiler-dom": "3.5.32",
-    "@vue/compiler-sfc": "3.5.32",
-    "@vue/compiler-ssr": "3.5.32",
-    "@vue/reactivity": "3.5.32",
-    "@vue/runtime-core": "3.5.32",
-    "@vue/runtime-dom": "3.5.32",
-    "@vue/server-renderer": "3.5.32",
-    "@vue/shared": "3.5.32",
-    "vue": "3.5.32"
   }
 }
