@@ -50,9 +50,9 @@
     "stripe:listen": "turbo -F @virtbase/web stripe:listen"
   },
   "catalog": {
-    "@better-auth/api-key": "^1.7.0-rc.0",
-    "@better-auth/passkey": "^1.7.0-rc.0",
-    "@biomejs/biome": "^2.5.1",
+    "@better-auth/api-key": "^1.7.0-rc.1",
+    "@better-auth/passkey": "^1.7.0-rc.1",
+    "@biomejs/biome": "2.5.1",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "@tailwindcss/postcss": "^4.3.2",
@@ -62,38 +62,38 @@
     "@trpc/server": "^11.18.0",
     "@trpc/tanstack-react-query": "^11.18.0",
     "@types/bun": "1.3.14",
-    "better-auth": "^1.7.0-rc.0",
-    "next": "^16.2.9",
-    "next-intl": "^4.13.1",
+    "better-auth": "^1.7.0-rc.1",
+    "next": "^16.2.10",
+    "next-intl": "^4.13.2",
     "nuqs": "^2.9.0",
-    "postcss": "^8.5.16",
+    "postcss": "^8.5.19",
     "proxmox-api": "^1.1.1",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
-    "recharts": "^3.9.1",
+    "recharts": "^3.9.2",
     "sonner": "^2.0.7",
     "superjson": "^2.2.6",
     "tailwindcss": "^4.3.2",
     "typescript": "^6.0.3",
-    "use-intl": "^4.13.1",
-    "workflow": "^4.5.0",
+    "use-intl": "^4.13.2",
+    "workflow": "^4.6.0",
     "zod": "^4.4.3"
   },
   "catalogs": {
     "sentry": {
-      "@sentry/core": "10.62.0",
-      "@sentry/nextjs": "10.62.0",
-      "@sentry/node": "10.62.0"
+      "@sentry/core": "10.65.0",
+      "@sentry/nextjs": "10.65.0",
+      "@sentry/node": "10.65.0"
     }
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:",
-    "@commitlint/cli": "^21.2.0",
+    "@commitlint/cli": "^21.2.1",
     "@commitlint/config-conventional": "^21.2.0",
     "@types/bun": "catalog:",
     "husky": "^9.1.7",
     "lint-staged": "^17.0.8",
-    "turbo": "^2.9.18"
+    "turbo": "^2.10.5"
   },
   "peerDependencies": {
     "typescript": "catalog:"

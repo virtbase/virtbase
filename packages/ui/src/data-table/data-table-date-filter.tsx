@@ -17,11 +17,11 @@
 
 "use client";
 
+import type { DateRange } from "@daypicker/react";
 import type { Column } from "@tanstack/react-table";
 import { CalendarIcon, XCircle } from "lucide-react";
 import { useExtracted } from "next-intl";
 import * as React from "react";
-import type { DateRange } from "@daypicker/react";
 import { Button } from "../button";
 import { Calendar } from "../calendar";
 import { formatDate } from "../lib/format";
