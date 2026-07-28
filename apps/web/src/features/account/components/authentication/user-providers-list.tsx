@@ -199,11 +199,10 @@ function ProviderAction({
       });
     });
 
-  const unlinkAccount = (accountId: string) =>
+  const unlinkAccount = (id: string) =>
     startTransition(async () => {
       await authClient.unlinkAccount({
-        providerId: provider,
-        accountId,
+        accountId: id,
         fetchOptions: {
           onSuccess: () => {
             router.refresh();
@@ -225,7 +224,7 @@ function ProviderAction({
     <Button
       size="sm"
       variant="outline"
-      onClick={() => unlinkAccount(existingAccount.accountId)}
+      onClick={() => unlinkAccount(existingAccount.id)}
       disabled={isPending}
     >
       {isPending ? <Spinner /> : t("Unlink")}

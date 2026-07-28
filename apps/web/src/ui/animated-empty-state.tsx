@@ -84,7 +84,6 @@ export function AnimatedEmptyState({
             href={learnMoreHref}
             target={learnMoreTarget}
             className={cn(
-              // biome-ignore lint/nursery/noMisusedPromises: not applicable
               buttonVariants({ variant: addButton ? "outline" : "default" }),
               "flex h-9 items-center whitespace-nowrap rounded-lg border px-4 text-sm",
               learnMoreClassName,

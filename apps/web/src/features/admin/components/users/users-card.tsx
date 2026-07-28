@@ -29,7 +29,7 @@ export async function UsersCard(props: {
   searchParams: Promise<SearchParams>;
 }) {
   const searchParams = await props.searchParams;
-  const search = searchParamsCache.parse(searchParams);
+  const search = await searchParamsCache.parse(searchParams);
 
   const validFilters = getValidFilters(search.filters);
 

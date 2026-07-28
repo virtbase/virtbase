@@ -171,7 +171,7 @@ export default function GenerateFirewallRulesDialog(
                           className="w-full sm:w-auto"
                           disabled={isCreatePending}
                           onClick={() => {
-                            createFirewallRule({
+                            void createFirewallRule({
                               server_id: serverId,
                               pos: index,
                               ...rule,

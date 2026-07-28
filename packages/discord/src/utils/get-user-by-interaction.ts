@@ -55,7 +55,7 @@ export const getUserByInteraction = async (interaction: APIInteraction) => {
         })
         .from(users)
         .innerJoin(accounts, eq(users.id, accounts.userId))
-        .where(eq(accounts.accountId, discordAccountId))
+        .where(eq(accounts.providerAccountId, discordAccountId))
         .limit(1)
         .then(([row]) => row);
     },

@@ -94,7 +94,12 @@ export const generateInventoryPdf = async ({
   >[];
   accounts: Pick<
     Account,
-    "id" | "accountId" | "providerId" | "createdAt" | "updatedAt" | "scope"
+    | "id"
+    | "providerAccountId"
+    | "providerId"
+    | "createdAt"
+    | "updatedAt"
+    | "scope"
   >[];
   charges: Stripe.Charge[];
   locale?: Locale;
@@ -457,7 +462,7 @@ export const generateInventoryPdf = async ({
                 ],
                 [
                   { text: t("Provider ID:"), type: "TH" },
-                  { text: account.accountId, type: "TD" },
+                  { text: account.providerAccountId, type: "TD" },
                 ],
                 [
                   { text: t("Permissions:"), type: "TH" },
