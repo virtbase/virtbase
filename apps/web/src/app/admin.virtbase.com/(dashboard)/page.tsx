@@ -23,9 +23,9 @@ import {
 } from "@virtbase/ui/breadcrumb";
 import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
-import { useExtracted } from "next-intl";
 import { getExtracted } from "next-intl/server";
 import { getActivityStats } from "@/features/admin/api/dashboard/get-activity-stats";
+import { verifySession } from "@/features/admin/api/verify-session";
 import { ActivityStatsRow } from "@/features/admin/components/dashboard/activity-stats-row";
 import { CustomersOverTimeCard } from "@/features/admin/components/dashboard/customers-over-time-card";
 import { LatestCustomersCard } from "@/features/admin/components/dashboard/latest-customers-card";
@@ -43,8 +43,10 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function Page() {
-  const t = useExtracted();
+export default async function Page() {
+  await verifySession();
+
+  const t = await getExtracted();
 
   return (
     <DashboardLayout

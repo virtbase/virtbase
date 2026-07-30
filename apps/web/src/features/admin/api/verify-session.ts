@@ -17,19 +17,24 @@
 
 import { isAdmin } from "@virtbase/auth/utils";
 import { headers } from "next/headers";
-import { unauthorized } from "next/navigation";
+import { notFound, unauthorized } from "next/navigation";
 import { cache } from "react";
 import { auth } from "@/lib/auth/server";
 
-// [!] Used in action-client.ts
+// [!] Used in action-client.ts and all admin pages
 // Change will affect all actions
 export const verifySession = cache(async () => {
   const session = await auth.api.getSession({
     headers: await headers(),
   });
 
-  if (!session || !isAdmin(session.user)) {
+  if (!session) {
     unauthorized();
+  }
+
+  // Hide the admin surface from authenticated non-admins (404, not 401).
+  if (!isAdmin(session.user)) {
+    notFound();
   }
 
   return session;

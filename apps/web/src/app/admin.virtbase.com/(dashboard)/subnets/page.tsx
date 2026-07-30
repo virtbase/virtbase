@@ -24,9 +24,9 @@ import {
 import { DataTableSkeleton } from "@virtbase/ui/data-table";
 import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
-import { useExtracted } from "next-intl";
 import { getExtracted } from "next-intl/server";
 import { Suspense } from "react";
+import { verifySession } from "@/features/admin/api/verify-session";
 import { CreateSubnetButton } from "@/features/admin/components/subnets/create-subnet-button";
 import { SubnetsCard } from "@/features/admin/components/subnets/subnets-card";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
@@ -40,10 +40,12 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function Page({
+export default async function Page({
   searchParams,
 }: PageProps<"/admin.virtbase.com/subnets">) {
-  const t = useExtracted();
+  await verifySession();
+
+  const t = await getExtracted();
 
   return (
     <DashboardLayout

@@ -24,9 +24,9 @@ import {
 import { DataTableSkeleton } from "@virtbase/ui/data-table";
 import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
-import { useExtracted } from "next-intl";
 import { getExtracted } from "next-intl/server";
 import { Suspense } from "react";
+import { verifySession } from "@/features/admin/api/verify-session";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -39,11 +39,13 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function Page({
+export default async function Page({
   searchParams: _,
   params: __,
 }: PageProps<"/admin.virtbase.com/template-groups/[id]">) {
-  const t = useExtracted();
+  await verifySession();
+
+  const t = await getExtracted();
 
   return (
     <DashboardLayout

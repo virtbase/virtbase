@@ -23,7 +23,8 @@ import {
 } from "@virtbase/ui/breadcrumb";
 import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
-import { useExtracted } from "next-intl";
+import { getExtracted } from "next-intl/server";
+import { verifySession } from "@/features/admin/api/verify-session";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -34,10 +35,12 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function Page({
+export default async function Page({
   searchParams: _,
 }: PageProps<"/admin.virtbase.com/nodes/[id]">) {
-  const t = useExtracted();
+  await verifySession();
+
+  const t = await getExtracted();
 
   return (
     <DashboardLayout

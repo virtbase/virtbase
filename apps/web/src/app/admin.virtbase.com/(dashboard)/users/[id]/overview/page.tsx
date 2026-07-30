@@ -15,8 +15,12 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export default function Page({
+import { verifySession } from "@/features/admin/api/verify-session";
+
+export default async function Page({
   params: _,
 }: PageProps<"/admin.virtbase.com/users/[id]/overview">) {
+  await verifySession();
+
   return null;
 }

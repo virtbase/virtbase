@@ -19,6 +19,7 @@ import { SidebarInset, SidebarProvider } from "@virtbase/ui/sidebar";
 import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
+import { verifySession } from "@/features/admin/api/verify-session";
 import { AdminSidebar } from "@/features/admin/components/admin-sidebar";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -30,9 +31,11 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default function AdminLayout({
+export default async function AdminLayout({
   children,
 }: LayoutProps<"/admin.virtbase.com">) {
+  await verifySession();
+
   return (
     <SidebarProvider>
       <AdminSidebar />
