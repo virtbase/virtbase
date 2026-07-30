@@ -22,6 +22,7 @@ import {
 } from "@virtbase/api/anonpay";
 import { ANONPAY_STRIPE_METHOD_ID } from "@virtbase/api/anonpay/constants";
 import { stripe } from "@virtbase/api/stripe";
+import { safeSecretCompare } from "@virtbase/utils";
 import type { NextRequest } from "next/server";
 
 export async function POST(req: NextRequest) {
@@ -40,7 +41,8 @@ export async function POST(req: NextRequest) {
   const searchParams = url.searchParams;
 
   const secret = searchParams.get("secret");
-  if (!secret || secret !== process.env.ANONPAY_WEBHOOK_SECRET) {
+  const expected = process.env.ANONPAY_WEBHOOK_SECRET;
+  if (!secret || !safeSecretCompare(secret, expected)) {
     return new Response("Unauthorized", { status: 401 });
   }
 

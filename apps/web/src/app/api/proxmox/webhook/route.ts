@@ -18,6 +18,7 @@
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { proxmoxNodes, servers } from "@virtbase/db/schema";
+import { safeSecretCompare } from "@virtbase/utils";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import * as z from "zod";
@@ -34,8 +35,16 @@ const schema = z.object({
  * Handles events for `pre-start`, `post-start`, `pre-stop`, and `post-stop`.
  */
 async function handler(request: NextRequest) {
+  if (!env.CRON_SECRET) {
+    return NextResponse.json(
+      { error: "Cron secret is not configured", issues: [] },
+      { status: 500 },
+    );
+  }
+
   const authHeader = request.headers.get("authorization");
-  if (authHeader !== `Bearer ${env.CRON_SECRET}`) {
+  const expected = `Bearer ${env.CRON_SECRET}`;
+  if (!safeSecretCompare(authHeader, expected)) {
     return NextResponse.json(
       { error: "Unauthorized", issues: [] },
       { status: 401 },

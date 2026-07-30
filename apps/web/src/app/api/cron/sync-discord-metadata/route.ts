@@ -20,32 +20,26 @@ import { decryptStoredOAuthTokenIfNeeded } from "@virtbase/auth/stored-oauth-tok
 import { and, eq, gte, ilike, isNotNull, isNull, or, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { accounts } from "@virtbase/db/schema";
-import type { NextRequest } from "next/server";
+import { env } from "@/env";
+import { withCronSecret } from "@/lib/with-cron-secret";
 
 /**
  * Syncs the Discord linked role metadata for all users.
  */
-async function handler(request: NextRequest) {
-  const authHeader = request.headers.get("authorization");
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-    return new Response("Unauthorized", {
-      status: 401,
-    });
-  }
-
+const handler = withCronSecret(async () => {
   console.log(
     "[CRON] Starting sync of Discord linked role metadata. Current time is:",
     new Date().toISOString(),
   );
 
-  const authSecret = process.env.BETTER_AUTH_SECRET;
+  const authSecret = env.BETTER_AUTH_SECRET;
   if (!authSecret) {
     return new Response("BETTER_AUTH_SECRET is not configured", {
       status: 500,
     });
   }
 
-  if (!process.env.DISCORD_APP_ID) {
+  if (!env.DISCORD_APP_ID) {
     console.warn(
       "[CRON] DISCORD_APP_ID is not set, skipping sync of Discord linked role metadata",
     );
@@ -98,6 +92,6 @@ async function handler(request: NextRequest) {
   return new Response("OK", {
     status: 200,
   });
-}
+});
 
 export { handler as GET };

@@ -15,16 +15,21 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./aes-encryption";
-export * from "./construct-metadata";
-export * from "./construct-opengraph-url";
-export * from "./format-bytes";
-export * from "./generate-password";
-export * from "./get-gravatar-image";
-export * from "./map-proxmox-server-status";
-export * from "./map-proxmox-task-status";
-export * from "./parse-public-key";
-export * from "./safe-secret-compare";
-export * from "./server-state";
-export * from "./stripe-metadata";
-export * from "./truncate";
+import { timingSafeEqual } from "node:crypto";
+
+export function safeSecretCompare(
+  provided: string | null,
+  expected: string,
+): boolean {
+  const providedBuf = Buffer.from(provided ?? "", "utf8");
+  const expectedBuf = Buffer.from(expected, "utf8");
+
+  if (providedBuf.length !== expectedBuf.length) {
+    // Dummy compare to keep timing similar.
+    const dummy = Buffer.alloc(expectedBuf.length);
+    timingSafeEqual(expectedBuf, dummy);
+    return false;
+  }
+
+  return timingSafeEqual(providedBuf, expectedBuf);
+}

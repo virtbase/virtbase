@@ -23,20 +23,13 @@ import { proxmoxNodes, servers, users } from "@virtbase/db/schema";
 import { sendBatchEmail } from "@virtbase/email";
 import ServerSuspended from "@virtbase/email/templates/server-suspended";
 import { getEmailTitle } from "@virtbase/email/translations";
-import type { NextRequest } from "next/server";
+import { withCronSecret } from "@/lib/with-cron-secret";
 
 /**
  * Checks for terminated servers, marks them as suspended
  * and shuts them down.
  */
-async function handler(request: NextRequest) {
-  const authHeader = request.headers.get("authorization");
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-    return new Response("Unauthorized", {
-      status: 401,
-    });
-  }
-
+const handler = withCronSecret(async () => {
   console.log(
     "[CRON] Starting suspension of terminated servers. Current time is:",
     new Date().toISOString(),
@@ -169,6 +162,6 @@ async function handler(request: NextRequest) {
   return new Response("OK", {
     status: 200,
   });
-}
+});
 
 export { handler as GET };

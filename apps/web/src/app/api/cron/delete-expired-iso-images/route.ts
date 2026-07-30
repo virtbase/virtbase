@@ -20,19 +20,12 @@ import { getProxmoxInstance } from "@virtbase/api/proxmox";
 import { eq, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { proxmoxIsoDownloads, servers } from "@virtbase/db/schema";
-import type { NextRequest } from "next/server";
+import { withCronSecret } from "@/lib/with-cron-secret";
 
 /**
  * Checks for expired ISO images and deletes them.
  */
-export async function handler(request: NextRequest) {
-  const authHeader = request.headers.get("authorization");
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-    return new Response("Unauthorized", {
-      status: 401,
-    });
-  }
-
+const handler = withCronSecret(async () => {
   console.log(
     "[CRON] Starting deletion of expired ISO images. Current time is:",
     new Date().toISOString(),
@@ -150,6 +143,6 @@ export async function handler(request: NextRequest) {
   return new Response("OK", {
     status: 200,
   });
-}
+});
 
 export { handler as GET };

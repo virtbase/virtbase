@@ -33,7 +33,7 @@ import { sendBatchEmail } from "@virtbase/email";
 import ServerRenewalReminder from "@virtbase/email/templates/server-renewal-reminder";
 import { getEmailTitle } from "@virtbase/email/translations";
 import { SERVER_DELETION_GRACE_PERIOD_DAYS } from "@virtbase/utils";
-import type { NextRequest } from "next/server";
+import { withCronSecret } from "@/lib/with-cron-secret";
 
 /**
  * Checks for servers that are about to terminate and
@@ -42,14 +42,7 @@ import type { NextRequest } from "next/server";
  * Only sends one reminder per expiration period by tracking
  * `renewalReminderSentAt` on the server.
  */
-async function handler(request: NextRequest) {
-  const authHeader = request.headers.get("authorization");
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-    return new Response("Unauthorized", {
-      status: 401,
-    });
-  }
-
+const handler = withCronSecret(async () => {
   console.log(
     "[CRON] Starting to send renewal notifications to customers. Current time is:",
     new Date().toISOString(),
@@ -154,6 +147,6 @@ async function handler(request: NextRequest) {
   return new Response("OK", {
     status: 200,
   });
-}
+});
 
 export { handler as GET };

@@ -15,16 +15,28 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./aes-encryption";
-export * from "./construct-metadata";
-export * from "./construct-opengraph-url";
-export * from "./format-bytes";
-export * from "./generate-password";
-export * from "./get-gravatar-image";
-export * from "./map-proxmox-server-status";
-export * from "./map-proxmox-task-status";
-export * from "./parse-public-key";
-export * from "./safe-secret-compare";
-export * from "./server-state";
-export * from "./stripe-metadata";
-export * from "./truncate";
+import { safeSecretCompare } from "@virtbase/utils";
+import type { NextRequest } from "next/server";
+import { env } from "@/env";
+
+export function withCronSecret(
+  handler: (request: NextRequest) => Promise<Response>,
+) {
+  return async (request: NextRequest) => {
+    if (!env.CRON_SECRET) {
+      return new Response("Cron secret is not configured", {
+        status: 500,
+      });
+    }
+
+    const authHeader = request.headers.get("authorization");
+    const expected = `Bearer ${env.CRON_SECRET}`;
+    if (!safeSecretCompare(authHeader, expected)) {
+      return new Response("Unauthorized", {
+        status: 401,
+      });
+    }
+
+    return handler(request);
+  };
+}

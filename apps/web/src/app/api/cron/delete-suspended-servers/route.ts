@@ -20,21 +20,14 @@ import { and, eq, gte, isNotNull, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { proxmoxNodes, servers } from "@virtbase/db/schema";
 import { SERVER_DELETION_GRACE_PERIOD_DAYS } from "@virtbase/utils";
-import type { NextRequest } from "next/server";
 import { start } from "workflow/api";
+import { withCronSecret } from "@/lib/with-cron-secret";
 
 /**
  * Checks for suspended servers that are past the deletion grace
  * period and queues them for deletion.
  */
-async function handler(request: NextRequest) {
-  const authHeader = request.headers.get("authorization");
-  if (authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-    return new Response("Unauthorized", {
-      status: 401,
-    });
-  }
-
+const handler = withCronSecret(async () => {
   console.log(
     "[CRON] Starting deletion of suspended servers. Current time is:",
     new Date().toISOString(),
@@ -93,6 +86,6 @@ async function handler(request: NextRequest) {
   return new Response("OK", {
     status: 200,
   });
-}
+});
 
 export { handler as GET };
