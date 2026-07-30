@@ -16,10 +16,10 @@
  */
 
 import { captureException } from "@sentry/nextjs";
-import { and, asc, desc, ilike, inArray } from "@virtbase/db";
+import { and, asc, desc, eq, inArray, or } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { datacenters } from "@virtbase/db/schema";
-import { getDateIntervalFilter } from "@virtbase/db/utils";
+import { escapedIlike, getDateIntervalFilter } from "@virtbase/db/utils";
 import { cacheLife, cacheTag } from "next/cache";
 import type { GetDatacentersSchema } from "../../lib/datacenters/validations";
 import { verifySession } from "../verify-session";
@@ -39,7 +39,12 @@ export async function getDatacentersList(input: GetDatacentersSchema) {
       input.country.length > 0
         ? inArray(datacenters.country, input.country)
         : undefined,
-      input.name ? ilike(datacenters.name, `%${input.name}%`) : undefined,
+      input.name
+        ? or(
+            eq(datacenters.id, input.name),
+            escapedIlike(datacenters.name, input.name),
+          )
+        : undefined,
       getDateIntervalFilter(datacenters.createdAt, input.createdAt),
     );
 

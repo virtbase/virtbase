@@ -16,10 +16,10 @@
  */
 
 import { captureException } from "@sentry/nextjs";
-import { and, asc, count, desc, eq, ilike, inArray, or } from "@virtbase/db";
+import { and, asc, count, desc, eq, inArray, or } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { users } from "@virtbase/db/schema";
-import { getDateIntervalFilter } from "@virtbase/db/utils";
+import { escapedIlike, getDateIntervalFilter } from "@virtbase/db/utils";
 import { cacheLife, cacheTag } from "next/cache";
 import type { GetUsersSchema } from "@/features/admin/lib/users/validations";
 import { verifySession } from "../verify-session";
@@ -38,8 +38,9 @@ export async function getUsersList(input: GetUsersSchema) {
     const where = and(
       input.name
         ? or(
-            ilike(users.name, `%${input.name}%`),
-            ilike(users.email, `%${input.name}%`),
+            eq(users.id, input.name),
+            escapedIlike(users.name, input.name),
+            escapedIlike(users.email, input.name),
           )
         : undefined,
       input.role.length > 0 ? inArray(users.role, input.role) : undefined,

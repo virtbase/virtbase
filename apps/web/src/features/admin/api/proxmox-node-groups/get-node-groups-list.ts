@@ -16,10 +16,10 @@
  */
 
 import * as Sentry from "@sentry/nextjs";
-import { and, asc, count, desc, ilike } from "@virtbase/db";
+import { and, asc, count, desc, eq, or } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { proxmoxNodeGroups } from "@virtbase/db/schema";
-import { getDateIntervalFilter } from "@virtbase/db/utils";
+import { escapedIlike, getDateIntervalFilter } from "@virtbase/db/utils";
 import { cacheLife, cacheTag } from "next/cache";
 import type { GetNodeGroupsSchema } from "../../lib/node-groups/validations";
 import { verifySession } from "../verify-session";
@@ -36,7 +36,12 @@ export async function getNodeGroupsList(input: GetNodeGroupsSchema) {
     const offset = (input.page - 1) * input.perPage;
 
     const where = and(
-      input.name ? ilike(proxmoxNodeGroups.name, `%${input.name}%`) : undefined,
+      input.name
+        ? or(
+            eq(proxmoxNodeGroups.id, input.name),
+            escapedIlike(proxmoxNodeGroups.name, input.name),
+          )
+        : undefined,
       getDateIntervalFilter(proxmoxNodeGroups.createdAt, input.createdAt),
       getDateIntervalFilter(proxmoxNodeGroups.updatedAt, input.updatedAt),
     );

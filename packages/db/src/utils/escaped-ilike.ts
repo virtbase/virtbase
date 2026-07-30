@@ -15,8 +15,13 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./build-order-by";
-export * from "./create-id";
-export * from "./escaped-ilike";
-export * from "./get-date-interval-filter";
-export * from "./types";
+import type { AnyColumn, SQL } from "drizzle-orm";
+import { ilike } from "drizzle-orm";
+
+export const escapedIlike = (
+  column: SQL<unknown> | AnyColumn,
+  search: string,
+) => {
+  const escapedSearch = search.replace(/[%_]/g, "\\$&");
+  return ilike(column, `%${escapedSearch}%`);
+};

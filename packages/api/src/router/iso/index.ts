@@ -18,9 +18,9 @@
 import * as Sentry from "@sentry/node";
 import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
-import { and, eq, getTableColumns, gt, like, sql } from "@virtbase/db";
+import { and, eq, getTableColumns, gt, sql } from "@virtbase/db";
 import { proxmoxIsoDownloads as pids, proxmoxNodes } from "@virtbase/db/schema";
-import { buildOrderBy, createId } from "@virtbase/db/utils";
+import { buildOrderBy, createId, escapedIlike } from "@virtbase/db/utils";
 import {
   ISO_DOWNLOAD_EXPIRATION_MINUTES,
   MAX_ACTIVE_ISO_DOWNLOADS_PER_USER,
@@ -149,7 +149,7 @@ export const isoRouter = {
         gt(pids.expiresAt, sql`now()`),
         // Filters
         input.url ? eq(pids.url, input.url) : undefined,
-        input.name ? like(pids.name, `%${input.name}%`) : undefined,
+        input.name ? escapedIlike(pids.name, input.name) : undefined,
       );
 
       const orderBy = buildOrderBy(pids, input.sort, pids.id);

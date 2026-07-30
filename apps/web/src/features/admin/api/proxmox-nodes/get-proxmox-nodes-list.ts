@@ -23,13 +23,12 @@ import {
   desc,
   eq,
   getTableColumns,
-  ilike,
   sql,
   sum,
 } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { proxmoxNodes, serverPlans, servers } from "@virtbase/db/schema";
-import { getDateIntervalFilter } from "@virtbase/db/utils";
+import { escapedIlike, getDateIntervalFilter } from "@virtbase/db/utils";
 import { cacheLife, cacheTag } from "next/cache";
 import type { GetProxmoxNodesSchema } from "../../lib/proxmox-nodes/validations";
 import { verifySession } from "../verify-session";
@@ -63,7 +62,7 @@ export async function getProxmoxNodesList(input: GetProxmoxNodesSchema) {
 
     const where = and(
       input.hostname
-        ? ilike(proxmoxNodes.hostname, `%${input.hostname}%`)
+        ? escapedIlike(proxmoxNodes.hostname, input.hostname)
         : undefined,
       getDateIntervalFilter(proxmoxNodes.createdAt, input.createdAt),
     );

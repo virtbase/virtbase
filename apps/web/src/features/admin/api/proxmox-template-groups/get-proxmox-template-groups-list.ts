@@ -16,21 +16,13 @@
  */
 
 import { captureException } from "@sentry/nextjs";
-import {
-  and,
-  asc,
-  count,
-  desc,
-  eq,
-  getTableColumns,
-  ilike,
-} from "@virtbase/db";
+import { and, asc, count, desc, eq, getTableColumns } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import {
   proxmoxTemplates as pt,
   proxmoxTemplateGroups as ptg,
 } from "@virtbase/db/schema";
-import { getDateIntervalFilter } from "@virtbase/db/utils";
+import { escapedIlike, getDateIntervalFilter } from "@virtbase/db/utils";
 import { cacheLife, cacheTag } from "next/cache";
 import type { GetTemplateGroupsSchema } from "../../lib/template-groups/validations";
 import { verifySession } from "../verify-session";
@@ -53,7 +45,7 @@ export async function getProxmoxTemplateGroupsList(
     const offset = (input.page - 1) * input.perPage;
 
     const where = and(
-      input.name ? ilike(ptg.name, `%${input.name}%`) : undefined,
+      input.name ? escapedIlike(ptg.name, input.name) : undefined,
       input.priority ? eq(ptg.priority, input.priority) : undefined,
       getDateIntervalFilter(ptg.createdAt, input.createdAt),
       getDateIntervalFilter(ptg.updatedAt, input.updatedAt),

@@ -22,13 +22,12 @@ import {
   count,
   desc,
   getTableColumns,
-  ilike,
   inArray,
   sql,
 } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { subnets } from "@virtbase/db/schema";
-import { getDateIntervalFilter } from "@virtbase/db/utils";
+import { escapedIlike, getDateIntervalFilter } from "@virtbase/db/utils";
 import { cacheLife, cacheTag } from "next/cache";
 import type { GetSubnetsSchema } from "../../lib/subnets/validations";
 import { verifySession } from "../verify-session";
@@ -46,7 +45,7 @@ export async function getSubnetsList(input: GetSubnetsSchema) {
 
     const where = and(
       input.cidr
-        ? ilike(sql`text(${subnets.cidr})`, `%${input.cidr}%`)
+        ? escapedIlike(sql`text(${subnets.cidr})`, input.cidr)
         : undefined,
       input.vlan.length > 0 ? inArray(subnets.vlan, input.vlan) : undefined,
       input.family.length > 0

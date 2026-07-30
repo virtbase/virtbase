@@ -16,10 +16,10 @@
  */
 
 import { captureException } from "@sentry/nextjs";
-import { and, asc, desc, getTableColumns, ilike } from "@virtbase/db";
+import { and, asc, desc, getTableColumns } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { proxmoxTemplates } from "@virtbase/db/schema";
-import { getDateIntervalFilter } from "@virtbase/db/utils";
+import { escapedIlike, getDateIntervalFilter } from "@virtbase/db/utils";
 import { cacheLife, cacheTag } from "next/cache";
 import type { GetProxmoxTemplatesSchema } from "../../lib/proxmox-templates/validations";
 import { verifySession } from "../verify-session";
@@ -36,7 +36,7 @@ export async function getTemplatesList(input: GetProxmoxTemplatesSchema) {
     const offset = (input.page - 1) * input.perPage;
 
     const where = and(
-      input.name ? ilike(proxmoxTemplates.name, `%${input.name}%`) : undefined,
+      input.name ? escapedIlike(proxmoxTemplates.name, input.name) : undefined,
       getDateIntervalFilter(proxmoxTemplates.createdAt, input.createdAt),
       getDateIntervalFilter(proxmoxTemplates.updatedAt, input.updatedAt),
     );

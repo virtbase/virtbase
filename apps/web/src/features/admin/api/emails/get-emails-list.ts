@@ -16,10 +16,10 @@
  */
 
 import { captureException } from "@sentry/nextjs";
-import { and, asc, desc, ilike } from "@virtbase/db";
+import { and, asc, desc } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { emails } from "@virtbase/db/schema";
-import { getDateIntervalFilter } from "@virtbase/db/utils";
+import { escapedIlike, getDateIntervalFilter } from "@virtbase/db/utils";
 import { cacheLife, cacheTag } from "next/cache";
 import type { GetEmailsSchema } from "../../lib/emails/validations";
 import { verifySession } from "../verify-session";
@@ -36,7 +36,7 @@ export async function getEmailsList(input: GetEmailsSchema) {
     const offset = (input.page - 1) * input.perPage;
 
     const where = and(
-      input.subject ? ilike(emails.subject, `%${input.subject}%`) : undefined,
+      input.subject ? escapedIlike(emails.subject, input.subject) : undefined,
       getDateIntervalFilter(emails.createdAt, input.createdAt),
     );
 

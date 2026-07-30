@@ -16,15 +16,7 @@
  */
 
 import { captureException } from "@sentry/nextjs";
-import {
-  and,
-  asc,
-  desc,
-  eq,
-  getTableColumns,
-  ilike,
-  inArray,
-} from "@virtbase/db";
+import { and, asc, desc, eq, getTableColumns, inArray, or } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import {
   proxmoxNodes,
@@ -32,7 +24,7 @@ import {
   servers,
   users,
 } from "@virtbase/db/schema";
-import { getDateIntervalFilter } from "@virtbase/db/utils";
+import { escapedIlike, getDateIntervalFilter } from "@virtbase/db/utils";
 import { cacheLife, cacheTag } from "next/cache";
 import type { GetServersSchema } from "../../lib/servers/validations";
 import { verifySession } from "../verify-session";
@@ -49,7 +41,9 @@ export async function getServersList(input: GetServersSchema) {
     const offset = (input.page - 1) * input.perPage;
 
     const where = and(
-      input.name ? ilike(servers.name, `%${input.name}%`) : undefined,
+      input.name
+        ? or(eq(servers.id, input.name), escapedIlike(servers.name, input.name))
+        : undefined,
       input.vmid ? eq(servers.vmid, input.vmid) : undefined,
       input.template.length > 0
         ? inArray(servers.proxmoxTemplateId, input.template)
