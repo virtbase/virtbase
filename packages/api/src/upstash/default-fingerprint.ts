@@ -19,12 +19,22 @@
  * Inspired by trpc-limiter
  *
  * @see https://github.com/OrJDev/trpc-limiter/blob/923ae1e6c6122cc60f2cb7aebcbd99717ade57ad/packages/core/src/index.ts#L96
+ *
+ * Prefer X-Real-IP over X-Forwarded-For when present, since it
+ * is set by Vercel and can not be spoofed.
+ *
+ * @see https://vercel.com/docs/headers/request-headers#x-real-ip
  */
 export const defaultFingerprint = (headers: Headers): string => {
+  const realIp = headers.get("x-real-ip");
+  if (realIp) {
+    return realIp.trim();
+  }
+
   const forwarded = headers.get("x-forwarded-for");
   const ip = forwarded
     ? (typeof forwarded === "string" ? forwarded : forwarded[0])?.split(/, /)[0]
     : null;
 
-  return ip || "127.0.0.1";
+  return ip || "unknown";
 };

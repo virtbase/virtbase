@@ -31,13 +31,26 @@ describe("defaultFingerprint", () => {
     ).toBe("192.168.1.1");
   });
 
-  test("it uses the remote address if the x-forwarded-for header is not present", () => {
-    expect(defaultFingerprint(new Headers({}))).toBe("127.0.0.1");
+  test("it prefers x-real-ip over x-forwarded-for when present", () => {
+    expect(
+      defaultFingerprint(
+        new Headers({
+          "x-real-ip": "198.51.100.20",
+          "x-forwarded-for": "192.0.2.1, 198.51.100.20",
+        }),
+      ),
+    ).toBe("198.51.100.20");
   });
 
-  test("it uses the remote address if the x-forwarded-for header is present but empty", () => {
-    expect(defaultFingerprint(new Headers({ "x-forwarded-for": "" }))).toBe(
-      "127.0.0.1",
-    );
+  test("falls back to unknown when IP headers are empty", () => {
+    expect(
+      defaultFingerprint(
+        new Headers({
+          "x-vercel-forwarded-for": "",
+          "x-real-ip": "",
+          "x-forwarded-for": "",
+        }),
+      ),
+    ).toBe("unknown");
   });
 });
