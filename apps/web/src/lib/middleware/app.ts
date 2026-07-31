@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { getSafeRedirectUrl } from "@virtbase/utils";
 import { getSessionCookie } from "better-auth/cookies";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
@@ -47,9 +48,11 @@ export async function AppMiddleware(req: NextRequest) {
   } else if (sessionCookie) {
     // if the path is /login or /register, redirect to the dashboard
     if (["/login", "/register", "/two-factor"].includes(path)) {
-      const next = searchParamsObj.next
-        ? decodeURIComponent(searchParamsObj.next as string)
-        : "/";
+      const next = getSafeRedirectUrl(
+        typeof searchParamsObj.next === "string"
+          ? searchParamsObj.next
+          : undefined,
+      );
       return NextResponse.redirect(new URL(next, req.url));
     }
   }

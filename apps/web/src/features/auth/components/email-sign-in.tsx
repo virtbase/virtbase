@@ -27,6 +27,7 @@ import {
   InputGroupInput,
 } from "@virtbase/ui/input-group";
 import { Spinner } from "@virtbase/ui/spinner";
+import { getSafeRedirectUrl } from "@virtbase/utils";
 import NextLink from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useExtracted, useLocale } from "next-intl";
@@ -46,7 +47,7 @@ export const EmailSignIn = ({ next }: { next?: string }) => {
 
   const router = useRouter();
   const searchParams = useSearchParams();
-  const finalNext = next ?? searchParams?.get("next");
+  const finalNext = getSafeRedirectUrl(next ?? searchParams?.get("next"));
   const { isMobile } = useMediaQuery();
 
   const [showPassword, setShowPassword] = useState(false);
@@ -121,7 +122,7 @@ export const EmailSignIn = ({ next }: { next?: string }) => {
       | Awaited<ReturnType<typeof authClient.signIn.email>>
       | Awaited<ReturnType<typeof authClient.signIn.magicLink>>
       | undefined;
-    const callbackURL = finalNext || "/";
+    const callbackURL = finalNext;
     if (isPasswordLogin) {
       response = await authClient.signIn.email({
         email,
@@ -159,7 +160,7 @@ export const EmailSignIn = ({ next }: { next?: string }) => {
       return;
     }
 
-    router.push(response?.url || callbackURL);
+    router.push(getSafeRedirectUrl(response?.url, callbackURL));
   };
 
   return (

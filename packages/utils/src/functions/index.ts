@@ -21,6 +21,7 @@ export * from "./construct-opengraph-url";
 export * from "./format-bytes";
 export * from "./generate-password";
 export * from "./get-gravatar-image";
+export * from "./get-safe-redirect-url";
 export * from "./map-proxmox-server-status";
 export * from "./map-proxmox-task-status";
 export * from "./parse-public-key";

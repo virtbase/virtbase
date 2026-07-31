@@ -17,6 +17,7 @@
 
 "use client";
 
+import { getSafeRedirectUrl } from "@virtbase/utils";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useContext, useEffect, useRef } from "react";
 import { authClient } from "@/lib/auth/client";
@@ -36,7 +37,7 @@ export function PasskeyConditionalUI() {
 
   const router = useRouter();
   const searchParams = useSearchParams();
-  const finalNext = searchParams?.get("next") || "/";
+  const finalNext = getSafeRedirectUrl(searchParams?.get("next"));
 
   const { setClickedMethod } = useContext(LoginFormContext);
 

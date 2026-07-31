@@ -20,6 +20,7 @@
 import { Button } from "@virtbase/ui/button";
 import { GithubCustom } from "@virtbase/ui/icons";
 import { Spinner } from "@virtbase/ui/spinner";
+import { getSafeRedirectUrl } from "@virtbase/utils";
 import { useSearchParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useContext } from "react";
@@ -30,7 +31,7 @@ export function GitHubButton() {
   const t = useExtracted();
 
   const searchParams = useSearchParams();
-  const finalNext = searchParams?.get("next");
+  const finalNext = getSafeRedirectUrl(searchParams?.get("next"));
 
   const { setClickedMethod, clickedMethod } = useContext(LoginFormContext);
 
@@ -41,9 +42,7 @@ export function GitHubButton() {
         setClickedMethod("github");
         authClient.signIn.social({
           provider: "github",
-          ...(finalNext && finalNext.length > 0
-            ? { callbackURL: finalNext }
-            : {}),
+          callbackURL: finalNext,
           errorCallbackURL: "/login",
         });
       }}

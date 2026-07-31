@@ -23,6 +23,7 @@ import { Button } from "@virtbase/ui/button";
 import { useMediaQuery } from "@virtbase/ui/hooks";
 import { InputOTP, REGEXP_ONLY_DIGITS } from "@virtbase/ui/input-otp";
 import { Spinner } from "@virtbase/ui/spinner";
+import { getSafeRedirectUrl } from "@virtbase/utils";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useState, useTransition } from "react";
@@ -34,7 +35,7 @@ export const VerifyTotpForm = ({ next }: { next?: string }) => {
 
   const router = useRouter();
   const searchParams = useSearchParams();
-  const finalNext = next ?? searchParams?.get("next");
+  const finalNext = getSafeRedirectUrl(next ?? searchParams?.get("next"));
 
   const { isMobile } = useMediaQuery();
   const [code, setCode] = useState("");
@@ -57,7 +58,7 @@ export const VerifyTotpForm = ({ next }: { next?: string }) => {
 
       setIsRedirecting(true);
 
-      router.push(finalNext || "/");
+      router.push(finalNext);
     });
 
   return (

@@ -16,7 +16,7 @@
  */
 
 import { isAdmin } from "@virtbase/auth/utils";
-import { APP_DOMAIN } from "@virtbase/utils";
+import { APP_DOMAIN, getSafeRedirectUrl } from "@virtbase/utils";
 import { getCookieCache, getSessionCookie } from "better-auth/cookies";
 import type { UserWithRole } from "better-auth/plugins";
 import type { NextRequest } from "next/server";
@@ -54,9 +54,11 @@ export async function AdminMiddleware(req: NextRequest) {
 
     // if the path is /login, redirect to the dashboard
     if (["/login", "/two-factor"].includes(path)) {
-      const next = searchParamsObj.next
-        ? decodeURIComponent(searchParamsObj.next as string)
-        : "/";
+      const next = getSafeRedirectUrl(
+        typeof searchParamsObj.next === "string"
+          ? searchParamsObj.next
+          : undefined,
+      );
       return NextResponse.redirect(new URL(next, req.url));
     }
   }

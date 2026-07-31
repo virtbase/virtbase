@@ -18,6 +18,7 @@
 import { Button } from "@virtbase/ui/button";
 import { LucideKeyRound } from "@virtbase/ui/icons";
 import { Spinner } from "@virtbase/ui/spinner";
+import { getSafeRedirectUrl } from "@virtbase/utils";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useContext } from "react";
@@ -29,7 +30,7 @@ export function PasskeyButton() {
 
   const router = useRouter();
   const searchParams = useSearchParams();
-  const finalNext = searchParams?.get("next") || "/";
+  const finalNext = getSafeRedirectUrl(searchParams?.get("next"));
 
   const { setClickedMethod, clickedMethod } = useContext(LoginFormContext);
 

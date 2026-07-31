@@ -20,6 +20,7 @@
 import { Button } from "@virtbase/ui/button";
 import { Google } from "@virtbase/ui/icons";
 import { Spinner } from "@virtbase/ui/spinner";
+import { getSafeRedirectUrl } from "@virtbase/utils";
 import { useSearchParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useContext } from "react";
@@ -30,7 +31,7 @@ export function GoogleButton({ next }: { next?: string }) {
   const t = useExtracted();
 
   const searchParams = useSearchParams();
-  const finalNext = next ?? searchParams?.get("next");
+  const finalNext = getSafeRedirectUrl(next ?? searchParams?.get("next"));
 
   const { setClickedMethod, clickedMethod } = useContext(LoginFormContext);
 
@@ -41,9 +42,7 @@ export function GoogleButton({ next }: { next?: string }) {
         setClickedMethod("google");
         authClient.signIn.social({
           provider: "google",
-          ...(finalNext && finalNext.length > 0
-            ? { callbackURL: finalNext }
-            : {}),
+          callbackURL: finalNext,
           errorCallbackURL: "/login",
         });
       }}

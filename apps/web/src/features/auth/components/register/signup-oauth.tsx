@@ -20,6 +20,7 @@
 import { Button } from "@virtbase/ui/button";
 import { Discord, GithubCustom, Google } from "@virtbase/ui/icons";
 import { Spinner } from "@virtbase/ui/spinner";
+import { getSafeRedirectUrl } from "@virtbase/utils";
 import { useSearchParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useEffect, useState } from "react";
@@ -33,7 +34,7 @@ export const SignUpOAuth = ({
   const t = useExtracted();
 
   const searchParams = useSearchParams();
-  const next = searchParams?.get("next");
+  const callbackURL = getSafeRedirectUrl(searchParams?.get("next"));
   const [clickedGoogle, setClickedGoogle] = useState(false);
   const [clickedGithub, setClickedGithub] = useState(false);
   const [clickedDiscord, setClickedDiscord] = useState(false);
@@ -57,7 +58,7 @@ export const SignUpOAuth = ({
             authClient.signIn.social({
               requestSignUp: true,
               provider: "google",
-              ...(next && next.length > 0 ? { callbackUrl: next } : {}),
+              callbackURL,
             });
           }}
           disabled={clickedGoogle}
@@ -74,7 +75,7 @@ export const SignUpOAuth = ({
             authClient.signIn.social({
               requestSignUp: true,
               provider: "github",
-              ...(next && next.length > 0 ? { callbackUrl: next } : {}),
+              callbackURL,
             });
           }}
           disabled={clickedGithub}
@@ -91,7 +92,7 @@ export const SignUpOAuth = ({
             authClient.signIn.social({
               requestSignUp: true,
               provider: "discord",
-              ...(next && next.length > 0 ? { callbackUrl: next } : {}),
+              callbackURL,
             });
           }}
         >
