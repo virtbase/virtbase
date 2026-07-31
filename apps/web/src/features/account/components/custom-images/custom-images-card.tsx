@@ -28,7 +28,7 @@ import { MAX_ACTIVE_ISO_DOWNLOADS_PER_USER } from "@virtbase/utils";
 import { useExtracted } from "next-intl";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { prefetch, trpc } from "@/lib/trpc/server";
+import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
 import { GenericError } from "@/ui/generic-error";
 import { defaultGetCustomImagesListQuery } from "../../hooks/custom-images/use-custom-image-list";
 import { CreateCustomImageButton } from "./create-custom-image-button";
@@ -48,11 +48,13 @@ export function CustomImagesCard() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <ErrorBoundary fallback={<GenericError className="border" />}>
-          <Suspense fallback={<Skeleton className="-m-px h-48 w-full" />}>
-            <CustomImagesList />
-          </Suspense>
-        </ErrorBoundary>
+        <HydrateClient>
+          <ErrorBoundary fallback={<GenericError className="border" />}>
+            <Suspense fallback={<Skeleton className="-m-px h-48 w-full" />}>
+              <CustomImagesList />
+            </Suspense>
+          </ErrorBoundary>
+        </HydrateClient>
       </CardContent>
       <CardFooter className="border-t bg-background [.border-t]:p-6">
         <div className="flex w-full flex-col items-center justify-center gap-4 lg:flex-row lg:justify-between">
