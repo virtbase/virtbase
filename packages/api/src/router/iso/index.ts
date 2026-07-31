@@ -15,7 +15,6 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import * as Sentry from "@sentry/node";
 import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
 import { and, eq, getTableColumns, gt, sql } from "@virtbase/db";
@@ -35,6 +34,11 @@ import {
   UploadProxmoxIsoInputSchema,
   UploadProxmoxIsoOutputSchema,
 } from "@virtbase/validators";
+import {
+  assertSafeIsoDownloadUrl,
+  getSafeIsoDownloadSizeBytes,
+  UnsafeIsoDownloadUrlError,
+} from "../../lib/safe-iso-download-url";
 import { getProxmoxInstance } from "../../proxmox";
 import { protectedProcedure } from "../../trpc";
 import { isoStatusRouter } from "./status";
@@ -246,7 +250,18 @@ export const isoRouter = {
               });
             }
 
-            const fileSizeBytes = await getFileDownloadSizeBytes(url);
+            let fileSizeBytes: number;
+            try {
+              fileSizeBytes = await getSafeIsoDownloadSizeBytes(url);
+            } catch (error) {
+              if (error instanceof UnsafeIsoDownloadUrlError) {
+                throw new TRPCError({
+                  code: "BAD_REQUEST",
+                });
+              }
+              throw error;
+            }
+
             if (!fileSizeBytes || fileSizeBytes > MAX_ISO_DOWNLOAD_SIZE_BYTES) {
               throw new TRPCError({
                 code: "BAD_REQUEST",
@@ -272,6 +287,19 @@ export const isoRouter = {
               throw new TRPCError({
                 code: "INTERNAL_SERVER_ERROR",
               });
+            }
+
+            // Re-validate immediately before handing the URL to Proxmox so a
+            // late DNS change to a blocked address fails closed.
+            try {
+              await assertSafeIsoDownloadUrl(url);
+            } catch (error) {
+              if (error instanceof UnsafeIsoDownloadUrlError) {
+                throw new TRPCError({
+                  code: "BAD_REQUEST",
+                });
+              }
+              throw error;
             }
 
             const instance = getProxmoxInstance(proxmoxNode);
@@ -335,26 +363,3 @@ export const isoRouter = {
       };
     }),
 } satisfies TRPCRouterRecord;
-
-const getFileDownloadSizeBytes = async (url: string): Promise<number | 0> => {
-  try {
-    const response = await fetch(url, {
-      method: "HEAD",
-    });
-
-    if (!response.ok) {
-      return 0;
-    }
-
-    const contentLength = response.headers.get("content-length");
-    if (!contentLength) {
-      return 0;
-    }
-
-    return parseInt(contentLength, 10);
-  } catch (error) {
-    Sentry.captureException(error);
-
-    return 0;
-  }
-};
