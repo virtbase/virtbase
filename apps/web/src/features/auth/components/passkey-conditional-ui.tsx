@@ -47,16 +47,18 @@ export function PasskeyConditionalUI() {
     started.current = true;
 
     async function triggerPasskeyLogin() {
-      if (!window.PublicKeyCredential) {
-        // Probably not a browser that supports passkeys or ssr
+      const supportsConditionalMediation =
+        typeof PublicKeyCredential?.isConditionalMediationAvailable ===
+        "function";
+
+      if (!supportsConditionalMediation) {
         return;
       }
 
-      const supported =
+      const available =
         await PublicKeyCredential.isConditionalMediationAvailable();
 
-      if (!supported) {
-        // Browser does not support conditional mediation
+      if (!available) {
         return;
       }
 
