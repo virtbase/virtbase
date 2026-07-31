@@ -148,7 +148,9 @@ export const createTRPCRouter = t.router;
 
 const sentryMiddleware = t.middleware(
   Sentry.trpcMiddleware({
-    attachRpcInput: true,
+    // [!] Disable attaching the inputs to the events.
+    // This is to avoid sensitive data being attached to the events.
+    attachRpcInput: false,
   }),
 );
 
