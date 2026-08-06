@@ -15,7 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { eq } from "@virtbase/db";
+import { and, eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { proxmoxNodes, servers } from "@virtbase/db/schema";
 import { safeSecretCompare } from "@virtbase/utils";
@@ -88,23 +88,31 @@ async function handler(request: NextRequest) {
             return;
           }
 
-          const server = await tx
+          const matches = await tx
             .update(servers)
-            .set({
-              proxmoxNodeId: proxmoxNode.id,
-            })
-            .where(eq(servers.vmid, vmid))
-            .returning({
-              id: servers.id,
-            })
-            .then(([row]) => row);
+            .set({ proxmoxNodeId: proxmoxNode.id })
+            .where(
+              and(
+                eq(servers.vmid, vmid),
+                eq(servers.proxmoxNodeId, proxmoxNode.id),
+              ),
+            )
+            .returning({ id: servers.id });
 
-          if (!server) {
+          if (!matches.length) {
             // Server does not exist, ignore.
             console.warn(
               `[@virtbase/web] Server with VM ID "${vmid}" does not exist, ignoring webhook for guest ${vmid} on phase "${phase}".`,
             );
             return;
+          }
+
+          if (matches.length > 1) {
+            // Multiple servers found with same VM ID
+            console.error(
+              `[@virtbase/web] Multiple servers found with same VM ID "${vmid}" on Proxmox node "${node}".`,
+            );
+            tx.rollback();
           }
         },
         {

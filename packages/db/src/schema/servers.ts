@@ -124,6 +124,7 @@ export const servers = d.snakeCase.table(
     d.index().on(t.proxmoxNodeId),
     d.index().on(t.proxmoxTemplateId),
     d.index().on(t.proxmoxIsoDownloadId),
+    d.unique().on(t.proxmoxNodeId, t.vmid),
   ],
 );
 

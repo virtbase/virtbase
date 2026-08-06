@@ -1,0 +1,1 @@
+ALTER TABLE "servers" ADD CONSTRAINT "servers_proxmox_node_id_vmid_unique" UNIQUE("proxmox_node_id","vmid");
