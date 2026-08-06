@@ -212,10 +212,18 @@ const ratelimitMiddleware = t.middleware(
 // TODO: Add OAuth
 const authMiddleware = t.middleware(async ({ ctx, next, meta }) => {
   if (ctx.apiKey) {
+    const permissions = meta?.permissions;
+    if (!permissions) {
+      // No API key permissions were declared for this endpoint
+      throw new TRPCError({
+        code: "FORBIDDEN",
+      });
+    }
+
     const result = await ctx.authApi.verifyApiKey({
       body: {
         key: ctx.apiKey,
-        permissions: meta?.permissions,
+        permissions,
       },
     });
 

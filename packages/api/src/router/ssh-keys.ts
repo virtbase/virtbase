@@ -49,6 +49,9 @@ export const sshKeysRouter = {
         summary: "Get an SSH key",
         description: "Returns a specific SSH key by its unique identifier.",
       },
+      permissions: {
+        ssh_keys: ["read"],
+      },
     })
     .input(GetSSHKeyInputSchema)
     .output(GetSSHKeyOutputSchema)
@@ -103,6 +106,9 @@ export const sshKeysRouter = {
         tags: ["SSH Keys"],
         summary: "List SSH keys",
         description: "Returns a list of SSH keys.",
+      },
+      permissions: {
+        ssh_keys: ["read"],
       },
     })
     .input(ListSSHKeysInputSchema)
@@ -188,6 +194,9 @@ export const sshKeysRouter = {
         description:
           "Creates a new SSH key with the given `name` and `public_key`.",
       },
+      permissions: {
+        ssh_keys: ["write"],
+      },
     })
     .input(CreateSSHKeyInputSchema)
     .output(CreateSSHKeyOutputSchema)
@@ -262,6 +271,9 @@ export const sshKeysRouter = {
         summary: "Update an SSH key",
         description: "Updates an existing SSH key.",
       },
+      permissions: {
+        ssh_keys: ["write"],
+      },
     })
     .input(UpdateSSHKeyInputSchema)
     .output(UpdateSSHKeyOutputSchema)
@@ -317,6 +329,9 @@ export const sshKeysRouter = {
         tags: ["SSH Keys"],
         summary: "Delete an SSH key",
         description: "Deletes a specific SSH key by its unique identifier.",
+      },
+      permissions: {
+        ssh_keys: ["write"],
       },
     })
     .input(DeleteSSHKeyInputSchema)

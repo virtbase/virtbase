@@ -44,6 +44,9 @@ export const invoicesRouter = {
         summary: "Get an invoice",
         description: "Returns a specific invoice by its unique identifier.",
       },
+      permissions: {
+        invoices: ["read"],
+      },
     })
     .input(GetInvoiceInputSchema)
     .output(GetInvoiceOutputSchema)
@@ -100,6 +103,9 @@ export const invoicesRouter = {
         tags: ["Invoices"],
         summary: "Download an invoice",
         description: "Downloads a specific invoice by its unique identifier.",
+      },
+      permissions: {
+        invoices: ["read"],
       },
       ratelimit: {
         requests: 4,
@@ -176,6 +182,9 @@ export const invoicesRouter = {
         tags: ["Invoices"],
         summary: "List invoices",
         description: "Returns a list of invoices for the current user.",
+      },
+      permissions: {
+        invoices: ["read"],
       },
     })
     .input(ListInvoicesInputSchema)
