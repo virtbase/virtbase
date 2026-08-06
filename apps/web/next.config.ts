@@ -45,6 +45,7 @@ const nextConfig: NextConfig = {
     sri: {
       algorithm: "sha384",
     },
+    useTypeScriptCli: true,
     // turbopackFileSystemCacheForDev: true,
   },
   headers: async () => [
