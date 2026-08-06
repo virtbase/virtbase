@@ -42,7 +42,7 @@ export async function AdminMiddleware(req: NextRequest) {
   } else if (sessionCookie) {
     // Cookie cache may be empty so we just use this as an additional check
     const cookieCache = await getCookieCache(req.headers);
-    if (cookieCache && !isAdmin(cookieCache.user as UserWithRole)) {
+    if (cookieCache && !isAdmin(cookieCache.user as unknown as UserWithRole)) {
       if (!cookieCache.session.impersonatedBy) {
         // throw 404 page
         return NextResponse.next();

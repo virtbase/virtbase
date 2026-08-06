@@ -63,7 +63,7 @@ export const createUserExportAction = actionClient
       db
         .select({
           id: accountsTable.id,
-          providerAccountId: accountsTable.providerAccountId,
+          accountId: accountsTable.accountId,
           providerId: accountsTable.providerId,
           createdAt: accountsTable.createdAt,
           updatedAt: accountsTable.updatedAt,

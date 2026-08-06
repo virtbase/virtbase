@@ -66,6 +66,11 @@ export function PaymentMethodsList({
   });
 }
 
+type PaymentMethodType = Extract<
+  Stripe.PaymentMethod.Type,
+  keyof Stripe.PaymentMethod
+>;
+
 const paymentMethodMapping = {
   card: {
     icon: LucideCreditCard,
@@ -91,7 +96,7 @@ const paymentMethodMapping = {
     },
   },
 } satisfies Partial<{
-  [T in Stripe.PaymentMethod.Type]: {
+  [T in PaymentMethodType]: {
     icon?: LucideIcon;
     render: (method: NonNullable<Stripe.PaymentMethod[T]>) => (string | null)[];
   };

@@ -18,13 +18,15 @@
 import { join } from "node:path";
 import type { Stripe } from "@virtbase/api/stripe";
 import type { Session } from "@virtbase/auth";
+import type { accounts } from "@virtbase/db/schema";
 import { APP_NAME } from "@virtbase/utils";
-import type { Account } from "better-auth";
 import blobStream from "blob-stream";
 import type { Locale } from "next-intl";
 import { getExtracted, getFormatter } from "next-intl/server";
 import PDFDocument from "pdfkit";
 import { defaultLocale } from "@/i18n/config";
+
+type Account = typeof accounts.$inferSelect;
 
 const BASE_DIR = join(process.cwd(), "src/features/admin/api/users/generator");
 
@@ -94,12 +96,7 @@ export const generateInventoryPdf = async ({
   >[];
   accounts: Pick<
     Account,
-    | "id"
-    | "providerAccountId"
-    | "providerId"
-    | "createdAt"
-    | "updatedAt"
-    | "scope"
+    "id" | "accountId" | "providerId" | "createdAt" | "updatedAt" | "scope"
   >[];
   charges: Stripe.Charge[];
   locale?: Locale;
@@ -462,7 +459,7 @@ export const generateInventoryPdf = async ({
                 ],
                 [
                   { text: t("Provider ID:"), type: "TH" },
-                  { text: account.providerAccountId, type: "TD" },
+                  { text: account.accountId, type: "TD" },
                 ],
                 [
                   { text: t("Permissions:"), type: "TH" },

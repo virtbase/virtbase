@@ -36,7 +36,6 @@ const nextConfig: NextConfig = {
   experimental: {
     authInterrupts: true,
     globalNotFound: true,
-    instantNavigationDevToolsToggle: true,
     optimizePackageImports: [
       "radix-ui",
       "@virtbase/ui",

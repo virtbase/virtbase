@@ -88,7 +88,7 @@ describe("auth.checkAccountExists", () => {
 
   test("it returns hasPassword true if the account has a password", async () => {
     await testDb.insert(accounts).values({
-      providerAccountId: mockSession.user.id,
+      accountId: mockSession.user.id,
       userId: mockSession.user.id,
       providerId: "credential",
       issuer: "local:credential",
