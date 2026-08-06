@@ -68,7 +68,7 @@ const nextConfig: NextConfig = {
         },
         {
           key: "Referrer-Policy",
-          value: "no-referrer-when-downgrade",
+          value: "strict-origin-when-cross-origin",
         },
         {
           key: "Strict-Transport-Security",

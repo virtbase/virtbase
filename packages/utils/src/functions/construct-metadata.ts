@@ -103,7 +103,7 @@ export function constructMetadata({
       email: false,
       telephone: false,
     },
-    referrer: "no-referrer-when-downgrade",
+    referrer: "strict-origin-when-cross-origin",
     keywords,
     itunes: {
       appId: APPLE_APP_STORE_ID,
