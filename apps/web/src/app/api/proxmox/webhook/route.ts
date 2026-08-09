@@ -91,12 +91,7 @@ async function handler(request: NextRequest) {
           const matches = await tx
             .update(servers)
             .set({ proxmoxNodeId: proxmoxNode.id })
-            .where(
-              and(
-                eq(servers.vmid, vmid),
-                eq(servers.proxmoxNodeId, proxmoxNode.id),
-              ),
-            )
+            .where(and(eq(servers.vmid, vmid)))
             .returning({ id: servers.id });
 
           if (!matches.length) {
