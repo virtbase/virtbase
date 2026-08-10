@@ -1,0 +1,116 @@
+{
+  // Enforces the layering the architecture plan describes: imports only point
+  // downward. Layer rules that are only written down get violated within a
+  // quarter, so they are checked here instead.
+  //
+  //   Layer 0 Foundation    contracts (validators), observability, utils
+  //   Layer 1 Platform      db, auth, email, ui, config, cache
+  //   Layer 2 Ports         ports                     <- interfaces only
+  //   Layer 3 Domain        proxmox, provisioning, billing, abuse, events
+  //   Layer 4 Integrations  integration-sdk, integration-*
+  //   Layer 5 Composition   api, admin-api, apps/*
+  "forbidden": [
+    {
+      "name": "integration-no-composition",
+      "comment": "An integration is a plug-in, not a dependency of the thing it plugs into. Depend on @virtbase/ports and implement the capability instead.",
+      "severity": "error",
+      "from": { "path": "^packages/integration-" },
+      "to": { "path": "^(packages/api|packages/admin-api|apps)/" }
+    },
+    {
+      "name": "integration-no-domain",
+      "comment": "Layer 4 may not import Layer 3. Domain code calls integrations through ports, never the other way round.",
+      "severity": "error",
+      "from": { "path": "^packages/integration-" },
+      "to": {
+        "path": "^packages/(proxmox|provisioning|billing|abuse|events)/"
+      }
+    },
+    {
+      "name": "integration-no-peer-integration",
+      "comment": "Integrations must not know about each other; compose them in the registry.",
+      "severity": "error",
+      "from": { "path": "^packages/(integration-(?!sdk)[^/]+)/" },
+      "to": {
+        "path": "^packages/integration-(?!sdk)",
+        "pathNot": "^packages/$1/"
+      }
+    },
+    {
+      "name": "sdk-no-integrations",
+      "comment": "The SDK defines the plug-in contract and must not know any implementation of it.",
+      "severity": "error",
+      "from": { "path": "^packages/integration-sdk/" },
+      "to": {
+        "path": "^(packages/integration-(?!sdk)|packages/api|packages/admin-api|apps)/"
+      }
+    },
+    {
+      "name": "platform-no-upward-imports",
+      "comment": "Layer 1 is infrastructure. @virtbase/config stores integration configuration but must not know what an integration is.",
+      "severity": "error",
+      "from": { "path": "^packages/config/" },
+      "to": {
+        "path": "^packages/(integration-|api|admin-api|ports)|^apps/"
+      }
+    },
+    {
+      "name": "ports-are-leaves",
+      "comment": "Layer 2 is interfaces only. @virtbase/ports may depend on contracts and utils and nothing else — a runtime dependency here would leak into every integration.",
+      "severity": "error",
+      "from": { "path": "^packages/ports/" },
+      "to": {
+        "path": "^(packages|apps)/",
+        "pathNot": "^packages/(ports|validators|utils)/"
+      }
+    },
+    {
+      "name": "platform-no-provider-code",
+      "comment": "@virtbase/auth owns the OAuth dance, not what any particular provider wants afterwards. Emit an event and let an integration react through the identity port.",
+      "severity": "error",
+      "from": { "path": "^packages/(auth|email|db)/" },
+      "to": {
+        "path": "(discord|stripe|anonpay|lexware|powerdns)",
+        "pathNot": "^node_modules/"
+      }
+    },
+    {
+      "name": "no-cross-package-circular",
+      "comment": "A cycle that crosses package boundaries means the layering cannot be verified. Intra-package cycles are out of scope here.",
+      "severity": "error",
+      "from": { "path": "^packages/([^/]+)/" },
+      "to": {
+        "circular": true,
+        "via": { "path": "^packages/", "pathNot": "^packages/$1/" }
+      }
+    }
+  ],
+  "options": {
+    "doNotFollow": {
+      "path": ["node_modules", "dist", "\\.next", "\\.turbo", "\\.cache"]
+    },
+    "exclude": {
+      "path": [
+        "node_modules",
+        "dist",
+        "\\.next",
+        "\\.turbo",
+        "\\.cache",
+        "__tests__"
+      ]
+    },
+    "tsPreCompilationDeps": true,
+    // Workspace packages expose their entry points through "exports" only, and
+    // dependency-cruiser disables that field by default — without this, every
+    // cross-package import silently fails to resolve and no layer rule fires.
+    // "types" is deliberately absent from conditionNames: the exports maps
+    // point it at paths tsc does not actually emit, which breaks resolution.
+    "enhancedResolveOptions": {
+      "exportsFields": ["exports"],
+      "conditionNames": ["import", "require", "node", "default"]
+    },
+    "reporterOptions": {
+      "text": { "highlightFocused": true }
+    }
+  }
+}

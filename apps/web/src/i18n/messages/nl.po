@@ -15,272 +15,338 @@ msgstr ""
 "Language-Team: Dutch\n"
 "PO-Revision-Date: 2026-04-22 13:59\n"
 
-#: ../../packages/discord/src/buttons/main-menu.ts
+#: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
 msgid "AgoOEq"
 msgstr "Terug naar menu"
 
-#: ../../packages/discord/src/buttons/manage-servers.ts
-#: ../../packages/discord/src/messages/servers/servers-list.ts
+#: ../../packages/integration-discord/src/buttons/manage-servers.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "U2slxM"
 msgstr "Servers beheren"
 
-#: ../../packages/discord/src/buttons/renew-server.ts
+#: ../../packages/integration-discord/src/buttons/renew-server.ts
 msgctxt "discord-integration"
 msgid "nWQFic"
 msgstr "Verlengen"
 
-#: ../../packages/discord/src/buttons/reset-server-password.ts
+#: ../../packages/integration-discord/src/buttons/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "Yy_yDL"
 msgstr "Wachtwoord resetten"
 
-#: ../../packages/discord/src/buttons/server-console.ts
-#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts
+#: ../../packages/integration-discord/src/buttons/server-console.ts
+#: ../../packages/integration-discord/src/messages/servers/actions/server-console-success.ts
 msgctxt "discord-integration"
 msgid "gc-2Z2"
 msgstr "Console"
 
-#: ../../packages/discord/src/buttons/server-overview.ts
+#: ../../packages/integration-discord/src/buttons/server-overview.ts
 msgctxt "discord-integration"
 msgid "_w61wP"
 msgstr "Terug naar server"
 
-#: ../../packages/discord/src/buttons/show-in-portal.ts
+#: ../../packages/integration-discord/src/buttons/show-in-portal.ts
 msgctxt "discord-integration"
 msgid "-uqHID"
 msgstr "Tonen in portaal"
 
-#: ../../packages/discord/src/messages/invite.ts
+#: ../../packages/integration-discord/src/localize.ts
+msgid "FvmV6q"
+msgstr "Discord"
+
+#: ../../packages/integration-discord/src/localize.ts
+msgid "vKRsEn"
+msgstr "Serverbeheer vanuit Discord en accountkoppeling via Discord."
+
+#: ../../packages/integration-discord/src/localize.ts
+msgid "SPsiYd"
+msgstr "Applicatie-ID"
+
+#: ../../packages/integration-discord/src/localize.ts
+msgid "cIkrjA"
+msgstr "Te vinden onder General Information in het Discord-ontwikkelaarsportaal."
+
+#: ../../packages/integration-discord/src/localize.ts
+msgid "YXi-kI"
+msgstr "Bottoken"
+
+#: ../../packages/integration-discord/src/localize.ts
+#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
+msgid "jecC36"
+msgstr "Openbare sleutel"
+
+#: ../../packages/integration-discord/src/localize.ts
+msgid "FYYjSc"
+msgstr "Wordt gebruikt om te controleren of interactieverzoeken echt van Discord komen."
+
+#: ../../packages/integration-discord/src/messages/invite.ts
 msgctxt "discord-integration"
 msgid "uXREGV"
 msgstr "Nodig Virtbase uit op je server"
 
-#: ../../packages/discord/src/messages/invite.ts
+#: ../../packages/integration-discord/src/messages/invite.ts
 msgctxt "discord-integration"
 msgid "yoX1pg"
 msgstr "Klik op de link hieronder om de Virtbase-integratie aan je Discord-server toe te voegen:"
 
-#: ../../packages/discord/src/messages/invite.ts
+#: ../../packages/integration-discord/src/messages/invite.ts
 msgctxt "discord-integration"
 msgid "6O3-aN"
 msgstr "Uitnodigings-URL"
 
-#: ../../packages/discord/src/messages/main-menu.ts
+#: ../../packages/integration-discord/src/messages/main-menu.ts
 msgctxt "discord-integration"
 msgid "QCv9lw"
 msgstr "Hoofdmenu"
 
-#: ../../packages/discord/src/messages/main-menu.ts
+#: ../../packages/integration-discord/src/messages/main-menu.ts
 msgctxt "discord-integration"
 msgid "gaUHYQ"
 msgstr "Kies een actie in het menu hieronder."
 
-#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts
+#: ../../packages/integration-discord/src/messages/servers/actions/reset-server-password-success.ts
 msgctxt "discord-integration"
 msgid "GyeODL"
 msgstr "Wachtwoord is succesvol gereset."
 
-#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts
+#: ../../packages/integration-discord/src/messages/servers/actions/reset-server-password-success.ts
 msgctxt "discord-integration"
 msgid "n_xfjW"
 msgstr "Het wachtwoord van je server is succesvol gereset."
 
-#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts
+#: ../../packages/integration-discord/src/messages/servers/actions/reset-server-password-success.ts
 msgctxt "discord-integration"
 msgid "pJ2eg6"
 msgstr "Je kunt nu inloggen op de server met het nieuwe wachtwoord."
 
-#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts
+#: ../../packages/integration-discord/src/messages/servers/actions/server-console-success.ts
 msgctxt "discord-integration"
 msgid "PlveeX"
 msgstr "Klik op de eenmalige link hieronder om de console te openen:"
 
-#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts
+#: ../../packages/integration-discord/src/messages/servers/actions/server-console-success.ts
 msgctxt "discord-integration"
 msgid "8rmkQD"
 msgstr "Deze link verloopt over 10 seconden."
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts
+#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "t2uvIi"
 msgstr "Besturingssysteem"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts
+#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "ivkv_L"
 msgstr "Node"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts
+#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "GaTcNW"
 msgstr "- Naam: {hostname}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts
+#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "M1WTIv"
 msgstr "- Datacenter: {datacenter}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts
+#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "SuwJeu"
 msgstr "- Uplink: {netrate}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts
+#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "rnZkeW"
 msgstr "- CPU: {cpu_description}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts
+#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "gs_Iys"
 msgstr "- RAM: {memory_description}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts
+#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "9PSqfa"
 msgstr "- Opslag: {storage_description}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts
+#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "UlO1td"
 msgstr "Netwerkinterfaces"
 
-#: ../../packages/discord/src/messages/servers/servers-list-empty.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list-empty.ts
 msgctxt "discord-integration"
 msgid "Vq3ifs"
 msgstr "Geen servers beschikbaar"
 
-#: ../../packages/discord/src/messages/servers/servers-list-empty.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list-empty.ts
 msgctxt "discord-integration"
 msgid "fUXt5C"
 msgstr "Je hebt nog geen servers gehuurd. Huur een server om die via de Discord-integratie te beheren."
 
-#: ../../packages/discord/src/messages/servers/servers-list-empty.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list-empty.ts
 msgctxt "discord-integration"
 msgid "67Bzc5"
 msgstr "Virtbase-winkel"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "pN8BlF"
 msgstr "De volgende servers staan op je account en kun je beheren."
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "0ZPfix"
 msgstr "Kies een server om te beheren:"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "BGI16m"
 msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "tpfEY0"
 msgstr "{memory} RAM"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "cenOuc"
 msgstr "{storage} NVMe SSD"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "7F86ji"
 msgstr "Bekijk in portaal ↗"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "JGe_wh"
 msgstr "Kies een server"
 
-#: ../../packages/discord/src/messages/setup-menu.ts
+#: ../../packages/integration-discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "dvr19k"
 msgstr "Instellingen"
 
-#: ../../packages/discord/src/messages/setup-menu.ts
+#: ../../packages/integration-discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "S0rNC0"
 msgstr "Welkom bij Virtbase!"
 
-#: ../../packages/discord/src/messages/setup-menu.ts
+#: ../../packages/integration-discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "Kh0E7j"
 msgstr "Je Virtbase-account is nog niet gekoppeld aan je Discord-account."
 
-#: ../../packages/discord/src/messages/setup-menu.ts
+#: ../../packages/integration-discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "u_Hev8"
 msgstr "Volg de stappen hieronder om de accounts te koppelen:"
 
-#: ../../packages/discord/src/messages/setup-menu.ts
+#: ../../packages/integration-discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "ac8Iok"
 msgstr "1. Open het klantenportaal"
 
-#: ../../packages/discord/src/messages/setup-menu.ts
+#: ../../packages/integration-discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "f4ziLK"
 msgstr "Klik op de knop hieronder en log in met je Virtbase-account."
 
-#: ../../packages/discord/src/messages/setup-menu.ts
+#: ../../packages/integration-discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "2ZTNN3"
 msgstr "2. Accounts koppelen"
 
-#: ../../packages/discord/src/messages/setup-menu.ts
+#: ../../packages/integration-discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "XnY6rW"
 msgstr "Ga in het klantenportaal naar je account, onder **Beveiliging** bij **Authenticatie**. Koppel daar je Discord-account."
 
-#: ../../packages/discord/src/messages/setup-menu.ts
+#: ../../packages/integration-discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "VRJHO_"
 msgstr "3. Herhaal het commando"
 
-#: ../../packages/discord/src/messages/setup-menu.ts
+#: ../../packages/integration-discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "gCSCoh"
 msgstr "Herhaal het commando als je acties wilt uitvoeren."
 
-#: ../../packages/discord/src/modals/reset-server-password.ts
+#: ../../packages/integration-discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "xl27nc"
 msgstr "Wachtwoord resetten"
 
-#: ../../packages/discord/src/modals/reset-server-password.ts
+#: ../../packages/integration-discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "qHabR-"
 msgstr "De actie mislukt als het pakket `qemu-quest-agent` niet is geïnstalleerd."
 
-#: ../../packages/discord/src/modals/reset-server-password.ts
+#: ../../packages/integration-discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "JCIgkj"
 msgstr "Gebruikersnaam"
 
-#: ../../packages/discord/src/modals/reset-server-password.ts
+#: ../../packages/integration-discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "eREue0"
 msgstr "Meestal `root` op Linux en `Administrator` op Windows."
 
-#: ../../packages/discord/src/modals/reset-server-password.ts
+#: ../../packages/integration-discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "Ev6SEF"
 msgstr "Nieuw wachtwoord"
 
-#: ../../packages/discord/src/modals/reset-server-password.ts
+#: ../../packages/integration-discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "LGDnPd"
 msgstr "Eén hoofdletter, één kleine letter, één cijfer en minimaal 8 tekens."
 
-#: ../../packages/discord/src/utils/create-embed.ts
+#: ../../packages/integration-discord/src/utils/create-embed.ts
 msgctxt "discord-integration"
 msgid "Wbc21W"
 msgstr "Virtbase – hosting, maar veilig."
+
+#: ../../packages/integration-lexware/src/localize.ts
+msgid "XPQ6rZ"
+msgstr "Lexware"
+
+#: ../../packages/integration-lexware/src/localize.ts
+msgid "iyNvec"
+msgstr "Stelt klantfacturen op en genereert de pdf's die per e-mail worden verstuurd en gedownload."
+
+#: ../../packages/integration-lexware/src/localize.ts
+#: ../../packages/integration-powerdns/src/localize.ts
+msgid "KTNoOq"
+msgstr "API-sleutel"
+
+#: ../../packages/integration-lexware/src/localize.ts
+msgid "gF5il8"
+msgstr "Aan te maken in Lexware Office onder Extras → lexoffice API."
+
+#: ../../packages/integration-powerdns/src/localize.ts
+msgid "NU8d67"
+msgstr "PowerDNS"
+
+#: ../../packages/integration-powerdns/src/localize.ts
+msgid "fJnA_T"
+msgstr "Beheer van reverse DNS (PTR) voor IP-toewijzingen van klanten, gebruikt door de rDNS-API en bij het verwijderen van servers."
+
+#: ../../packages/integration-powerdns/src/localize.ts
+msgid "lOgYVy"
+msgstr "API-URL"
+
+#: ../../packages/integration-powerdns/src/localize.ts
+msgid "LF6AoR"
+msgstr "Basis-URL van de PowerDNS HTTP-API, zonder afsluitende schuine streep."
+
+#: ../../packages/integration-powerdns/src/localize.ts
+msgid "KSXj3s"
+msgstr "Wordt verzonden als de X-API-Key-header."
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "o_UJXc"
@@ -694,6 +760,12 @@ msgstr "Datacentra"
 msgid "AdAi3x"
 msgstr "E-mails"
 
+#: src/app/admin.virtbase.com/(dashboard)/integrations/[id]/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/integrations/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+msgid "6cBDhe"
+msgstr "Integraties"
+
 #: src/app/admin.virtbase.com/(dashboard)/layout.tsx
 msgid "iHN12u"
 msgstr "Beheerder"
@@ -925,6 +997,7 @@ msgstr "Beveiliging"
 
 #: src/features/account/components/account-breadcrumb.tsx
 #: src/features/account/components/account-nav.tsx
+#: src/features/admin/components/integrations/integrations-hub.tsx
 msgid "Tbo377"
 msgstr "Facturering"
 
@@ -1331,10 +1404,6 @@ msgstr "Maak een SSH-sleutel"
 msgid "q7jtp0"
 msgstr "Mijn SSH-sleutel"
 
-#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
-msgid "jecC36"
-msgstr "Openbare sleutel"
-
 #: src/features/account/components/ssh-keys/ssh-keys-card.tsx
 msgid "hdKY6S"
 msgstr "Maak en beheer SSH-sleutels voor gebruik tijdens de installatie."
@@ -1370,6 +1439,7 @@ msgstr "Voer een geldig e-mailadres in."
 #: src/features/account/components/user-email-card.tsx
 #: src/features/account/components/user-name-card.tsx
 #: src/features/account/components/user-password-card.tsx
+#: src/features/admin/components/integrations/integration-settings-form.tsx
 msgid "jvo0vs"
 msgstr "Opslaan"
 
@@ -1745,9 +1815,106 @@ msgid "EPGMwQ"
 msgstr "Zoeken op onderwerp..."
 
 #: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/integrations/integration-health-panel.tsx
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "tzMNF3"
 msgstr "Status"
+
+#: src/features/admin/components/integrations/integration-detail.tsx
+msgid "Q4e8bq"
+msgstr "Gemaakt door"
+
+#: src/features/admin/components/integrations/integration-detail.tsx
+msgid "JkLHGw"
+msgstr "Website"
+
+#: src/features/admin/components/integrations/integration-detail.tsx
+msgid "_6_sPX"
+msgstr "Documentatie"
+
+#: src/features/admin/components/integrations/integration-detail.tsx
+msgid "Cm2_-V"
+msgstr "Lees de documentatie"
+
+#: src/features/admin/components/integrations/integration-detail.tsx
+msgid "ZLrvCJ"
+msgstr "Deze integratie heeft niets om in te stellen."
+
+#: src/features/admin/components/integrations/integration-enable-button.tsx
+#: src/features/admin/components/integrations/integration-health-panel.tsx
+#: src/features/admin/components/integrations/integration-settings-form.tsx
+msgid "iuY8kx"
+msgstr "Er is iets misgegaan."
+
+#: src/features/admin/components/integrations/integration-enable-button.tsx
+msgid "Rw7iI7"
+msgstr "Uitschakelen"
+
+#: src/features/admin/components/integrations/integration-enable-button.tsx
+msgid "TqSTI0"
+msgstr "Inschakelen"
+
+#: src/features/admin/components/integrations/integration-field.tsx
+msgid "q0-99k"
+msgstr "Selecteren…"
+
+#: src/features/admin/components/integrations/integration-field.tsx
+msgid "HMbMyO"
+msgstr "•••••••• (laat leeg om te behouden)"
+
+#: src/features/admin/components/integrations/integration-health-panel.tsx
+msgid "Aoy3jt"
+msgstr "Gecontroleerd {date}"
+
+#: src/features/admin/components/integrations/integration-health-panel.tsx
+msgid "sLtVGp"
+msgstr "Nooit gecontroleerd"
+
+#: src/features/admin/components/integrations/integration-health-panel.tsx
+msgid "jZb3d7"
+msgstr "Opnieuw controleren"
+
+#: src/features/admin/components/integrations/integration-settings-form.tsx
+msgid "D3idYv"
+msgstr "Instellingen"
+
+#: src/features/admin/components/integrations/integration-settings-form.tsx
+msgid "WKtGHy"
+msgstr "Geheimen"
+
+#: src/features/admin/components/integrations/integration-settings-form.tsx
+msgid "-iD5iQ"
+msgstr "Worden versleuteld opgeslagen en nooit meer getoond. Laat een veld leeg om de huidige waarde te behouden."
+
+#: src/features/admin/components/integrations/integrations-hub.tsx
+msgid "iYc3Ld"
+msgstr "Betalingen"
+
+#: src/features/admin/components/integrations/integrations-hub.tsx
+msgid "dA-hnZ"
+msgstr "Infrastructuur"
+
+#: src/features/admin/components/integrations/integrations-hub.tsx
+msgid "n5D_Ku"
+msgstr "Communicatie"
+
+#: src/features/admin/components/integrations/integrations-hub.tsx
+msgid "GZJpDf"
+msgstr "Analyse"
+
+#: src/features/admin/components/integrations/integrations-hub.tsx
+msgid "1UwRXb"
+msgstr "Misbruik"
+
+#: src/features/admin/components/integrations/integrations-hub.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
+msgid "DUIDEq"
+msgstr "Opslag"
+
+#: src/features/admin/components/integrations/integrations-hub.tsx
+msgid "Mmuj1R"
+msgstr "Platform"
 
 #: src/features/admin/components/proxmox-node-groups/create-node-group-button.tsx
 msgid "8gJfol"
@@ -1915,11 +2082,6 @@ msgstr "{usage} / ∞"
 #: src/features/servers/components/server-stats-card.tsx
 msgid "LjglgP"
 msgstr "RAM"
-
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-#: src/features/servers/components/overview/node-details-dialog.tsx
-msgid "DUIDEq"
-msgstr "Opslag"
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 msgid "6vjF8Q"

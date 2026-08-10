@@ -15,9 +15,12 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { dispatchAccountLinked } from "@virtbase/api/integrations";
 import { initAuth } from "@virtbase/auth";
 import { nextCookies } from "better-auth/next-js";
 
 export const auth = initAuth({
   additionalPlugins: [nextCookies()],
+  // Fans social logins out to integrations implementing the `identity` port.
+  onAccountLinked: dispatchAccountLinked,
 });

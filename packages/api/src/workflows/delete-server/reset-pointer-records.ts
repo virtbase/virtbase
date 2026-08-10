@@ -22,7 +22,7 @@ import {
   subnetAllocations,
   subnets,
 } from "@virtbase/db/schema";
-import { buildPtrName, powerdns } from "../../powerdns";
+import { integrations } from "../../integrations";
 
 type ResetPointerRecordsStepParams = {
   serverId: string;
@@ -33,8 +33,11 @@ export async function resetPointerRecordsStep({
 }: ResetPointerRecordsStepParams) {
   "use step";
 
-  if (!powerdns) {
-    console.warn("PowerDNS is not configured, skipping pointer record reset");
+  const dns = await integrations.resolve("dns");
+  if (!dns) {
+    console.warn(
+      "No DNS provider is configured, skipping pointer record reset",
+    );
     return;
   }
 
@@ -71,11 +74,9 @@ export async function resetPointerRecordsStep({
 
       await Promise.all(
         Object.entries(groupedByZone).map(async ([zone, records]) => {
-          if (!powerdns) return;
-
-          await powerdns.deleteReverseDNSRecord({
+          await dns.deletePointerRecords({
             zone,
-            name: records.map((record) => buildPtrName(record.ip, zone)),
+            ips: records.map((record) => record.ip),
           });
         }),
       );

@@ -1,0 +1,31 @@
+{
+  "name": "@virtbase/integration-lexware",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "tsc",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "dependencies": {
+    "@virtbase/integration-sdk": "workspace:*",
+    "@virtbase/ports": "workspace:*",
+    "@virtbase/utils": "workspace:*",
+    "next-intl": "catalog:",
+    "use-intl": "catalog:",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "catalog:",
+    "@virtbase/tsconfig": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

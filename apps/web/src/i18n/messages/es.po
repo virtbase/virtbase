@@ -15,272 +15,338 @@ msgstr ""
 "Language-Team: Spanish\n"
 "PO-Revision-Date: 2026-04-22 13:59\n"
 
-#: ../../packages/discord/src/buttons/main-menu.ts
+#: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
 msgid "AgoOEq"
 msgstr "Volver al menú"
 
-#: ../../packages/discord/src/buttons/manage-servers.ts
-#: ../../packages/discord/src/messages/servers/servers-list.ts
+#: ../../packages/integration-discord/src/buttons/manage-servers.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "U2slxM"
 msgstr "Gestionar servidores"
 
-#: ../../packages/discord/src/buttons/renew-server.ts
+#: ../../packages/integration-discord/src/buttons/renew-server.ts
 msgctxt "discord-integration"
 msgid "nWQFic"
 msgstr "Renovar"
 
-#: ../../packages/discord/src/buttons/reset-server-password.ts
+#: ../../packages/integration-discord/src/buttons/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "Yy_yDL"
 msgstr "Restablecer contraseña"
 
-#: ../../packages/discord/src/buttons/server-console.ts
-#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts
+#: ../../packages/integration-discord/src/buttons/server-console.ts
+#: ../../packages/integration-discord/src/messages/servers/actions/server-console-success.ts
 msgctxt "discord-integration"
 msgid "gc-2Z2"
 msgstr "Consola"
 
-#: ../../packages/discord/src/buttons/server-overview.ts
+#: ../../packages/integration-discord/src/buttons/server-overview.ts
 msgctxt "discord-integration"
 msgid "_w61wP"
 msgstr "Volver al servidor"
 
-#: ../../packages/discord/src/buttons/show-in-portal.ts
+#: ../../packages/integration-discord/src/buttons/show-in-portal.ts
 msgctxt "discord-integration"
 msgid "-uqHID"
 msgstr "Ver en el portal"
 
-#: ../../packages/discord/src/messages/invite.ts
+#: ../../packages/integration-discord/src/localize.ts
+msgid "FvmV6q"
+msgstr "Discord"
+
+#: ../../packages/integration-discord/src/localize.ts
+msgid "vKRsEn"
+msgstr "Gestión de servidores desde Discord y vinculación de cuentas a través de Discord."
+
+#: ../../packages/integration-discord/src/localize.ts
+msgid "SPsiYd"
+msgstr "ID de aplicación"
+
+#: ../../packages/integration-discord/src/localize.ts
+msgid "cIkrjA"
+msgstr "Se encuentra en General Information en el portal de desarrolladores de Discord."
+
+#: ../../packages/integration-discord/src/localize.ts
+msgid "YXi-kI"
+msgstr "Token del bot"
+
+#: ../../packages/integration-discord/src/localize.ts
+#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
+msgid "jecC36"
+msgstr "Clave pública"
+
+#: ../../packages/integration-discord/src/localize.ts
+msgid "FYYjSc"
+msgstr "Se usa para verificar que las solicitudes de interacción provienen realmente de Discord."
+
+#: ../../packages/integration-discord/src/messages/invite.ts
 msgctxt "discord-integration"
 msgid "uXREGV"
 msgstr "Invita Virtbase a tu servidor"
 
-#: ../../packages/discord/src/messages/invite.ts
+#: ../../packages/integration-discord/src/messages/invite.ts
 msgctxt "discord-integration"
 msgid "yoX1pg"
 msgstr "Haz clic en el enlace de abajo para añadir la integración de Virtbase a tu servidor de Discord:"
 
-#: ../../packages/discord/src/messages/invite.ts
+#: ../../packages/integration-discord/src/messages/invite.ts
 msgctxt "discord-integration"
 msgid "6O3-aN"
 msgstr "URL de invitación"
 
-#: ../../packages/discord/src/messages/main-menu.ts
+#: ../../packages/integration-discord/src/messages/main-menu.ts
 msgctxt "discord-integration"
 msgid "QCv9lw"
 msgstr "Menú principal"
 
-#: ../../packages/discord/src/messages/main-menu.ts
+#: ../../packages/integration-discord/src/messages/main-menu.ts
 msgctxt "discord-integration"
 msgid "gaUHYQ"
 msgstr "Elige una acción en el menú de abajo."
 
-#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts
+#: ../../packages/integration-discord/src/messages/servers/actions/reset-server-password-success.ts
 msgctxt "discord-integration"
 msgid "GyeODL"
 msgstr "Contraseña restablecida correctamente."
 
-#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts
+#: ../../packages/integration-discord/src/messages/servers/actions/reset-server-password-success.ts
 msgctxt "discord-integration"
 msgid "n_xfjW"
 msgstr "La contraseña de tu servidor se ha restablecido correctamente."
 
-#: ../../packages/discord/src/messages/servers/actions/reset-server-password-success.ts
+#: ../../packages/integration-discord/src/messages/servers/actions/reset-server-password-success.ts
 msgctxt "discord-integration"
 msgid "pJ2eg6"
 msgstr "Ya puedes iniciar sesión en el servidor con la nueva contraseña."
 
-#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts
+#: ../../packages/integration-discord/src/messages/servers/actions/server-console-success.ts
 msgctxt "discord-integration"
 msgid "PlveeX"
 msgstr "Haz clic en el enlace de un solo uso de abajo para abrir la consola:"
 
-#: ../../packages/discord/src/messages/servers/actions/server-console-success.ts
+#: ../../packages/integration-discord/src/messages/servers/actions/server-console-success.ts
 msgctxt "discord-integration"
 msgid "8rmkQD"
 msgstr "Este enlace caduca en 10 segundos."
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts
+#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "t2uvIi"
 msgstr "Sistema operativo"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts
+#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "ivkv_L"
 msgstr "Nodo"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts
+#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "GaTcNW"
 msgstr "- Nombre: {hostname}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts
+#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "M1WTIv"
 msgstr "- Datacenter: {datacenter}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts
+#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "SuwJeu"
 msgstr "- Uplink: {netrate}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts
+#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "rnZkeW"
 msgstr "- CPU: {cpu_description}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts
+#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "gs_Iys"
 msgstr "- RAM: {memory_description}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts
+#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "9PSqfa"
 msgstr "- Almacenamiento: {storage_description}"
 
-#: ../../packages/discord/src/messages/servers/server-overview.ts
+#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
 msgctxt "discord-integration"
 msgid "UlO1td"
 msgstr "Interfaces de red"
 
-#: ../../packages/discord/src/messages/servers/servers-list-empty.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list-empty.ts
 msgctxt "discord-integration"
 msgid "Vq3ifs"
 msgstr "No hay servidores disponibles"
 
-#: ../../packages/discord/src/messages/servers/servers-list-empty.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list-empty.ts
 msgctxt "discord-integration"
 msgid "fUXt5C"
 msgstr "Aún no has alquilado ningún servidor. Alquila uno para gestionarlo con la integración de Discord."
 
-#: ../../packages/discord/src/messages/servers/servers-list-empty.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list-empty.ts
 msgctxt "discord-integration"
 msgid "67Bzc5"
 msgstr "Tienda Virtbase"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "pN8BlF"
 msgstr "Los siguientes servidores están asignados a tu cuenta y puedes gestionarlos."
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "0ZPfix"
 msgstr "Elige un servidor para gestionarlo:"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "BGI16m"
 msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "tpfEY0"
 msgstr "{memory} RAM"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "cenOuc"
 msgstr "{storage} NVMe SSD"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "7F86ji"
 msgstr "Ver en el portal ↗"
 
-#: ../../packages/discord/src/messages/servers/servers-list.ts
+#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
 msgctxt "discord-integration"
 msgid "JGe_wh"
 msgstr "Elige un servidor"
 
-#: ../../packages/discord/src/messages/setup-menu.ts
+#: ../../packages/integration-discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "dvr19k"
 msgstr "Configuración"
 
-#: ../../packages/discord/src/messages/setup-menu.ts
+#: ../../packages/integration-discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "S0rNC0"
 msgstr "¡Bienvenido a Virtbase!"
 
-#: ../../packages/discord/src/messages/setup-menu.ts
+#: ../../packages/integration-discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "Kh0E7j"
 msgstr "Tu cuenta de Virtbase aún no está vinculada a Discord."
 
-#: ../../packages/discord/src/messages/setup-menu.ts
+#: ../../packages/integration-discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "u_Hev8"
 msgstr "Sigue los pasos de abajo para vincular las cuentas:"
 
-#: ../../packages/discord/src/messages/setup-menu.ts
+#: ../../packages/integration-discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "ac8Iok"
 msgstr "1. Abre el portal de clientes"
 
-#: ../../packages/discord/src/messages/setup-menu.ts
+#: ../../packages/integration-discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "f4ziLK"
 msgstr "Haz clic en el botón de abajo e inicia sesión con tu cuenta de Virtbase."
 
-#: ../../packages/discord/src/messages/setup-menu.ts
+#: ../../packages/integration-discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "2ZTNN3"
 msgstr "2. Vincular cuentas"
 
-#: ../../packages/discord/src/messages/setup-menu.ts
+#: ../../packages/integration-discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "XnY6rW"
 msgstr "Ve a tu cuenta en el portal, en **Seguridad**, sección **Autenticación**. Ahí vincula tu cuenta de Discord."
 
-#: ../../packages/discord/src/messages/setup-menu.ts
+#: ../../packages/integration-discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "VRJHO_"
 msgstr "3. Repite el comando"
 
-#: ../../packages/discord/src/messages/setup-menu.ts
+#: ../../packages/integration-discord/src/messages/setup-menu.ts
 msgctxt "discord-integration"
 msgid "gCSCoh"
 msgstr "Repite el comando cuando quieras realizar acciones."
 
-#: ../../packages/discord/src/modals/reset-server-password.ts
+#: ../../packages/integration-discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "xl27nc"
 msgstr "Restablecer contraseña"
 
-#: ../../packages/discord/src/modals/reset-server-password.ts
+#: ../../packages/integration-discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "qHabR-"
 msgstr "La acción fallará si no está instalado el paquete `qemu-quest-agent`."
 
-#: ../../packages/discord/src/modals/reset-server-password.ts
+#: ../../packages/integration-discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "JCIgkj"
 msgstr "Usuario"
 
-#: ../../packages/discord/src/modals/reset-server-password.ts
+#: ../../packages/integration-discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "eREue0"
 msgstr "Suele ser `root` en Linux y `Administrator` en Windows."
 
-#: ../../packages/discord/src/modals/reset-server-password.ts
+#: ../../packages/integration-discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "Ev6SEF"
 msgstr "Nueva contraseña"
 
-#: ../../packages/discord/src/modals/reset-server-password.ts
+#: ../../packages/integration-discord/src/modals/reset-server-password.ts
 msgctxt "discord-integration"
 msgid "LGDnPd"
 msgstr "Una mayúscula, una minúscula, un número y mínimo 8 caracteres."
 
-#: ../../packages/discord/src/utils/create-embed.ts
+#: ../../packages/integration-discord/src/utils/create-embed.ts
 msgctxt "discord-integration"
 msgid "Wbc21W"
 msgstr "Virtbase: hosting, pero seguro."
+
+#: ../../packages/integration-lexware/src/localize.ts
+msgid "XPQ6rZ"
+msgstr "Lexware"
+
+#: ../../packages/integration-lexware/src/localize.ts
+msgid "iyNvec"
+msgstr "Emite facturas de clientes y genera los PDF que se envían por correo y se descargan."
+
+#: ../../packages/integration-lexware/src/localize.ts
+#: ../../packages/integration-powerdns/src/localize.ts
+msgid "KTNoOq"
+msgstr "Clave de API"
+
+#: ../../packages/integration-lexware/src/localize.ts
+msgid "gF5il8"
+msgstr "Se crea en Lexware Office en Extras → lexoffice API."
+
+#: ../../packages/integration-powerdns/src/localize.ts
+msgid "NU8d67"
+msgstr "PowerDNS"
+
+#: ../../packages/integration-powerdns/src/localize.ts
+msgid "fJnA_T"
+msgstr "Gestión de DNS inverso (PTR) para las asignaciones de IP de los clientes, usada por la API de rDNS y al eliminar servidores."
+
+#: ../../packages/integration-powerdns/src/localize.ts
+msgid "lOgYVy"
+msgstr "URL de la API"
+
+#: ../../packages/integration-powerdns/src/localize.ts
+msgid "LF6AoR"
+msgstr "URL base de la API HTTP de PowerDNS, sin barra final."
+
+#: ../../packages/integration-powerdns/src/localize.ts
+msgid "KSXj3s"
+msgstr "Se envía como la cabecera X-API-Key."
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "o_UJXc"
@@ -694,6 +760,12 @@ msgstr "Centros de datos"
 msgid "AdAi3x"
 msgstr "Correos electrónicos"
 
+#: src/app/admin.virtbase.com/(dashboard)/integrations/[id]/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/integrations/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+msgid "6cBDhe"
+msgstr "Integraciones"
+
 #: src/app/admin.virtbase.com/(dashboard)/layout.tsx
 msgid "iHN12u"
 msgstr "Administradora"
@@ -925,6 +997,7 @@ msgstr "Seguridad"
 
 #: src/features/account/components/account-breadcrumb.tsx
 #: src/features/account/components/account-nav.tsx
+#: src/features/admin/components/integrations/integrations-hub.tsx
 msgid "Tbo377"
 msgstr "Facturación"
 
@@ -1331,10 +1404,6 @@ msgstr "Crear clave SSH"
 msgid "q7jtp0"
 msgstr "Mi clave SSH"
 
-#: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
-msgid "jecC36"
-msgstr "Clave pública"
-
 #: src/features/account/components/ssh-keys/ssh-keys-card.tsx
 msgid "hdKY6S"
 msgstr "Cree y administre claves SSH para usar durante la instalación."
@@ -1370,6 +1439,7 @@ msgstr "Introduce una dirección de email válida."
 #: src/features/account/components/user-email-card.tsx
 #: src/features/account/components/user-name-card.tsx
 #: src/features/account/components/user-password-card.tsx
+#: src/features/admin/components/integrations/integration-settings-form.tsx
 msgid "jvo0vs"
 msgstr "Guardar"
 
@@ -1745,9 +1815,106 @@ msgid "EPGMwQ"
 msgstr "Buscar por asunto..."
 
 #: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/integrations/integration-health-panel.tsx
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "tzMNF3"
 msgstr "Estado"
+
+#: src/features/admin/components/integrations/integration-detail.tsx
+msgid "Q4e8bq"
+msgstr "Creado por"
+
+#: src/features/admin/components/integrations/integration-detail.tsx
+msgid "JkLHGw"
+msgstr "Sitio web"
+
+#: src/features/admin/components/integrations/integration-detail.tsx
+msgid "_6_sPX"
+msgstr "Documentación"
+
+#: src/features/admin/components/integrations/integration-detail.tsx
+msgid "Cm2_-V"
+msgstr "Leer la documentación"
+
+#: src/features/admin/components/integrations/integration-detail.tsx
+msgid "ZLrvCJ"
+msgstr "Esta integración no tiene nada que configurar."
+
+#: src/features/admin/components/integrations/integration-enable-button.tsx
+#: src/features/admin/components/integrations/integration-health-panel.tsx
+#: src/features/admin/components/integrations/integration-settings-form.tsx
+msgid "iuY8kx"
+msgstr "Algo salió mal."
+
+#: src/features/admin/components/integrations/integration-enable-button.tsx
+msgid "Rw7iI7"
+msgstr "Desactivar"
+
+#: src/features/admin/components/integrations/integration-enable-button.tsx
+msgid "TqSTI0"
+msgstr "Activar"
+
+#: src/features/admin/components/integrations/integration-field.tsx
+msgid "q0-99k"
+msgstr "Seleccionar…"
+
+#: src/features/admin/components/integrations/integration-field.tsx
+msgid "HMbMyO"
+msgstr "•••••••• (déjalo vacío para conservarlo)"
+
+#: src/features/admin/components/integrations/integration-health-panel.tsx
+msgid "Aoy3jt"
+msgstr "Comprobado {date}"
+
+#: src/features/admin/components/integrations/integration-health-panel.tsx
+msgid "sLtVGp"
+msgstr "Nunca comprobado"
+
+#: src/features/admin/components/integrations/integration-health-panel.tsx
+msgid "jZb3d7"
+msgstr "Volver a comprobar"
+
+#: src/features/admin/components/integrations/integration-settings-form.tsx
+msgid "D3idYv"
+msgstr "Ajustes"
+
+#: src/features/admin/components/integrations/integration-settings-form.tsx
+msgid "WKtGHy"
+msgstr "Secretos"
+
+#: src/features/admin/components/integrations/integration-settings-form.tsx
+msgid "-iD5iQ"
+msgstr "Se almacenan cifrados y no se vuelven a mostrar. Deja un campo vacío para conservar su valor actual."
+
+#: src/features/admin/components/integrations/integrations-hub.tsx
+msgid "iYc3Ld"
+msgstr "Pagos"
+
+#: src/features/admin/components/integrations/integrations-hub.tsx
+msgid "dA-hnZ"
+msgstr "Infraestructura"
+
+#: src/features/admin/components/integrations/integrations-hub.tsx
+msgid "n5D_Ku"
+msgstr "Comunicación"
+
+#: src/features/admin/components/integrations/integrations-hub.tsx
+msgid "GZJpDf"
+msgstr "Analíticas"
+
+#: src/features/admin/components/integrations/integrations-hub.tsx
+msgid "1UwRXb"
+msgstr "Abuso"
+
+#: src/features/admin/components/integrations/integrations-hub.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
+msgid "DUIDEq"
+msgstr "Almacenamiento"
+
+#: src/features/admin/components/integrations/integrations-hub.tsx
+msgid "Mmuj1R"
+msgstr "Plataforma"
 
 #: src/features/admin/components/proxmox-node-groups/create-node-group-button.tsx
 msgid "8gJfol"
@@ -1915,11 +2082,6 @@ msgstr "{usage} / ∞"
 #: src/features/servers/components/server-stats-card.tsx
 msgid "LjglgP"
 msgstr "RAM"
-
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-#: src/features/servers/components/overview/node-details-dialog.tsx
-msgid "DUIDEq"
-msgstr "Almacenamiento"
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 msgid "6vjF8Q"

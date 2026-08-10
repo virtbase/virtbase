@@ -28,14 +28,14 @@ import { TRPCError } from "@trpc/server";
 import { invoices, users } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { LexwareClient } from "../../lexware/client";
+import type { InvoiceProvider } from "@virtbase/ports";
+import { integrations } from "../../integrations";
 import { appRouter } from "../../root";
 import { mockSession } from "./fixtures";
 
 let testDb: TestDb;
 let caller: ReturnType<typeof appRouter.createCaller>;
 let unauthenticatedCaller: ReturnType<typeof appRouter.createCaller>;
-let unconfiguredLexwareCaller: ReturnType<typeof appRouter.createCaller>;
 
 // Fake ID that passes zod validation but is not a valid invoice ID
 const fakeId = "inv_0000000000000000000000000";
@@ -49,7 +49,16 @@ const mockInvoice = {
   lexwareInvoiceId: "b2df5c0d-0340-42a7-9d47-cbc0a7460b8e",
 };
 
-const mockLexwareClient = new LexwareClient("mock-api-key");
+/** Stands in for whichever integration currently fills the `invoice` slot. */
+const fakeInvoiceProvider = {
+  createInvoice: async () => {
+    throw new Error("not used");
+  },
+  retrieveInvoice: async () => {
+    throw new Error("not used");
+  },
+  downloadInvoice: async () => new ArrayBuffer(8),
+} satisfies InvoiceProvider;
 
 beforeAll(async () => {
   testDb = await createTestDb();
@@ -68,19 +77,11 @@ beforeAll(async () => {
   caller = appRouter.createCaller({
     ...sharedContext,
     session: mockSession,
-    lexware: mockLexwareClient,
   });
 
   unauthenticatedCaller = appRouter.createCaller({
     ...sharedContext,
     session: null,
-    lexware: mockLexwareClient,
-  });
-
-  unconfiguredLexwareCaller = appRouter.createCaller({
-    ...sharedContext,
-    session: mockSession,
-    lexware: null,
   });
 });
 
@@ -215,7 +216,7 @@ describe("invoices.download", () => {
     );
   });
 
-  test("it throws a internal server error if the lexware client is not configured", async () => {
+  test("it throws an internal server error if no invoice provider is enabled", async () => {
     const created = await testDb
       .insert(invoices)
       .values(mockInvoice)
@@ -226,7 +227,9 @@ describe("invoices.download", () => {
       throw new Error("Failed to create invoice");
     }
 
-    const downloadPromise = unconfiguredLexwareCaller.invoices.download({
+    const resolve = spyOn(integrations, "resolve").mockResolvedValue(null);
+
+    const downloadPromise = caller.invoices.download({
       id: created.id,
     });
 
@@ -235,9 +238,11 @@ describe("invoices.download", () => {
         code: "INTERNAL_SERVER_ERROR",
       }),
     );
+
+    resolve.mockRestore();
   });
 
-  test("it downloads an existing invoice if the lexware client is configured", async () => {
+  test("it downloads an existing invoice through the invoice port", async () => {
     const created = await testDb
       .insert(invoices)
       .values(mockInvoice)
@@ -248,10 +253,10 @@ describe("invoices.download", () => {
       throw new Error("Failed to create invoice");
     }
 
-    const spy = spyOn(
-      LexwareClient.prototype,
-      "downloadInvoice",
-    ).mockResolvedValue(new ArrayBuffer(8));
+    const spy = spyOn(fakeInvoiceProvider, "downloadInvoice");
+    const resolve = spyOn(integrations, "resolve").mockResolvedValue(
+      fakeInvoiceProvider as never,
+    );
 
     const download = await caller.invoices.download({
       id: created.id,
@@ -265,5 +270,7 @@ describe("invoices.download", () => {
     expect(download.content).toBe(
       Buffer.from(new ArrayBuffer(8)).toString("base64url"),
     );
+
+    resolve.mockRestore();
   });
 });

@@ -18,8 +18,12 @@
       "schedule": "0 0 * * *"
     },
     {
-      "path": "/api/cron/sync-discord-metadata",
+      "path": "/api/cron/sync-linked-account-metadata",
       "schedule": "0 0 * * *"
+    },
+    {
+      "path": "/api/cron/check-integration-health",
+      "schedule": "*/30 * * * *"
     }
   ]
 }

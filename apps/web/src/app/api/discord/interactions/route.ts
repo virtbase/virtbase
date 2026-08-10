@@ -15,57 +15,27 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import Sentry from "@sentry/nextjs";
-import {
-  createDiscordCaller,
-  getInteractionHandler,
-  getUserByInteraction,
-  verifyInteractionRequest,
-} from "@virtbase/discord";
-import { NextResponse } from "next/server";
+import { POST as dispatchIntegrationWebhook } from "../../integrations/[integration]/[...path]/route";
 
-const DISCORD_APP_PUBLIC_KEY = process.env.DISCORD_APP_PUBLIC_KEY;
-
+/**
+ * TODO: DELETE THIS ROUTE once the Discord developer portal's "Interactions
+ * Endpoint URL" has been repointed and verified in production.
+ *
+ * Legacy mount point for the Discord interactions endpoint. The handler itself
+ * now lives in `@virtbase/integration-discord` and is served at
+ * `/api/integrations/discord/interactions`; this file only forwards to it.
+ *
+ * To retire it:
+ *   1. Set the Interactions Endpoint URL to
+ *      `https://<host>/api/integrations/discord/interactions`
+ *   2. Confirm Discord's verification ping succeeds and a slash command works
+ *   3. Delete this directory
+ */
 export async function POST(request: Request) {
-  if (!DISCORD_APP_PUBLIC_KEY) {
-    return new NextResponse("DISCORD_APP_PUBLIC_KEY is not in the .env.", {
-      status: 500,
-    });
-  }
-
-  const verifyResult = await verifyInteractionRequest(
-    request,
-    DISCORD_APP_PUBLIC_KEY,
-  );
-
-  if (!verifyResult.isValid || !verifyResult.interaction) {
-    return new NextResponse("Invalid request.", { status: 401 });
-  }
-
-  const { interaction } = verifyResult;
-
-  try {
-    const handler = getInteractionHandler(interaction.type);
-
-    const user = await getUserByInteraction(interaction);
-    const caller = await createDiscordCaller({ user });
-
-    const result = await handler({ interaction, user, caller });
-
-    return NextResponse.json(result, { status: 200 });
-  } catch (error) {
-    console.error(error);
-
-    Sentry.captureException(error, {
-      tags: {
-        "discord.interaction.error": "true",
-        "discord.interaction.id": interaction.id,
-        "discord.interaction.type": interaction.type,
-      },
-    });
-
-    return new NextResponse("Failed to handle interaction.", {
-      status: 500,
-    });
-  }
+  return dispatchIntegrationWebhook(request, {
+    params: Promise.resolve({
+      integration: "discord",
+      path: ["interactions"],
+    }),
+  });
 }

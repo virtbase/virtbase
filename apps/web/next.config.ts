@@ -219,7 +219,9 @@ const withNextIntl = createNextIntlPlugin({
       "./src/features",
       "./src/ui",
       "../../packages/ui/src",
-      "../../packages/discord/src",
+      "../../packages/integration-discord/src",
+      "../../packages/integration-lexware/src",
+      "../../packages/integration-powerdns/src",
     ],
     extract: true,
     messages: {

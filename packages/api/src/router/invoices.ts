@@ -30,6 +30,7 @@ import {
   ListInvoicesInputSchema,
   ListInvoicesOutputSchema,
 } from "@virtbase/validators";
+import { integrations } from "../integrations";
 import { protectedProcedure } from "../trpc";
 
 export const invoicesRouter = {
@@ -117,7 +118,7 @@ export const invoicesRouter = {
     .input(DownloadInvoiceInputSchema)
     .output(DownloadInvoiceOutputSchema)
     .mutation(async ({ ctx, input }) => {
-      const { db, lexware, userId } = ctx;
+      const { db, userId } = ctx;
 
       const invoice = await db.transaction(
         async (tx) => {
@@ -148,14 +149,15 @@ export const invoicesRouter = {
         });
       }
 
-      if (!lexware) {
+      const invoiceProvider = await integrations.resolve("invoice");
+      if (!invoiceProvider) {
         throw new TRPCError({
           code: "INTERNAL_SERVER_ERROR",
         });
       }
 
       try {
-        const arrayBuffer = await lexware.downloadInvoice(
+        const arrayBuffer = await invoiceProvider.downloadInvoice(
           invoice.lexwareInvoiceId,
         );
 

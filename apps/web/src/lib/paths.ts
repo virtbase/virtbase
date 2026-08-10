@@ -23,6 +23,12 @@ export const paths = {
     emails: {
       getHref: () => "/emails",
     },
+    integrations: {
+      getHref: () => "/integrations",
+    },
+    integration: {
+      getHref: (id: string) => `/integrations/${id}`,
+    },
     home: {
       getHref: () => "/",
     },

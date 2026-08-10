@@ -19,7 +19,7 @@ import { eq, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { invoices, users } from "@virtbase/db/schema";
 import { FatalError } from "workflow";
-import { lexware } from "../../lexware";
+import { integrations } from "../../integrations";
 
 type StoreInvoiceStepInput = {
   createdInvoiceId: string;
@@ -32,42 +32,30 @@ export async function storeInvoiceStep({
 }: StoreInvoiceStepInput) {
   "use step";
 
-  if (!lexware) {
+  const invoiceProvider = await integrations.resolve("invoice");
+  if (!invoiceProvider) {
     throw new FatalError(
-      "LEXWARE_API_KEY is not set in the .env. Cannot store invoice.",
+      "No invoice provider is enabled. Cannot store invoice.",
     );
   }
 
-  const invoice = await lexware.retrieveInvoice(createdInvoiceId);
+  const invoice = await invoiceProvider.retrieveInvoice(createdInvoiceId);
 
-  const totalPrice = invoice.totalPrice;
-  if (!totalPrice) {
+  if (!invoice.taxAmount || !invoice.grossAmount) {
     throw new FatalError(
-      "Expected Lexware invoice to have a total price. Cannot store invoice.",
+      "Expected the invoice to have a tax amount and a gross amount. Cannot store invoice.",
     );
   }
 
-  const totalTaxAmount = totalPrice.totalTaxAmount;
-  const totalGrossAmount = totalPrice.totalGrossAmount;
-  if (
-    typeof totalTaxAmount !== "number" ||
-    typeof totalGrossAmount !== "number"
-  ) {
-    throw new FatalError(
-      "Expected Lexware invoice to have a total tax amount and total gross amount. Cannot store invoice.",
-    );
-  }
-
-  const voucherNumber = invoice.voucherNumber;
+  const voucherNumber = invoice.number;
   if (!voucherNumber) {
     throw new FatalError(
-      "Expected Lexware invoice to have a voucher number. Cannot store invoice.",
+      "Expected the invoice to have a number. Cannot store invoice.",
     );
   }
 
-  // Need to round because Lexware may return a float value
-  const taxAmountCents = Math.round(totalTaxAmount * 100);
-  const totalAmountCents = Math.round(totalGrossAmount * 100);
+  const taxAmountCents = invoice.taxAmount.amount;
+  const totalAmountCents = invoice.grossAmount.amount;
 
   const { locale, name, email } = await db.transaction(
     async (tx) => {

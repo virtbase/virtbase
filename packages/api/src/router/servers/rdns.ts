@@ -35,7 +35,7 @@ import {
   UpsertPointerRecordInputSchema,
   UpsertPointerRecordOutputSchema,
 } from "@virtbase/validators/server";
-import { buildPtrName, powerdns } from "../../powerdns";
+import { integrations } from "../../integrations";
 import { serverProcedure } from "../../trpc";
 
 export const serversRdnsRouter = {
@@ -275,12 +275,13 @@ export const serversRdnsRouter = {
     .mutation(async ({ ctx, input }) => {
       const { db, server } = ctx;
 
+      const dns = await integrations.resolve("dns");
+      if (!dns) {
+        throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
+      }
+
       const record = await db.transaction(
         async (tx) => {
-          if (!powerdns) {
-            throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
-          }
-
           // Find the matching (active) allocation for the given IP
           // The IP must be inside the subnet of the allocation
           const allocation = await tx
@@ -344,10 +345,10 @@ export const serversRdnsRouter = {
 
           const { ip, hostname } = upserted;
 
-          await powerdns.upsertReverseDNSRecord({
+          await dns.upsertPointerRecord({
             zone: zoneName,
             hostname,
-            name: buildPtrName(ip, zoneName),
+            ip,
           });
 
           return upserted;
@@ -380,12 +381,13 @@ export const serversRdnsRouter = {
     .mutation(async ({ ctx, input }) => {
       const { db, server } = ctx;
 
+      const dns = await integrations.resolve("dns");
+      if (!dns) {
+        throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
+      }
+
       await db.transaction(
         async (tx) => {
-          if (!powerdns) {
-            throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
-          }
-
           const record = await tx
             .select({
               id: pointerRecords.id,
@@ -422,9 +424,9 @@ export const serversRdnsRouter = {
             .delete(pointerRecords)
             .where(eq(pointerRecords.id, record.id));
 
-          await powerdns.deleteReverseDNSRecord({
+          await dns.deletePointerRecords({
             zone: zoneName,
-            name: buildPtrName(record.ip, zoneName),
+            ips: [record.ip],
           });
         },
         {

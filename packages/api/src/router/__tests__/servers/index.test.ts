@@ -54,7 +54,6 @@ beforeAll(async () => {
     db: testDb as never,
     authApi: {} as never,
     apiKey: null,
-    lexware: null,
     headers: new Headers(),
     setHeader: () => {},
   };

@@ -48,6 +48,9 @@ const prefixes = [
   "dsc_", // discount
   "price_", // server plan price
   "email_", // email
+  // Configuration
+  "intg_", // integration installation
+  "isec_", // integration secret
 ] as const;
 
 // ULID uses base32 encoding

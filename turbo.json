@@ -15,6 +15,7 @@
       "persistent": false
     },
     "//#check": {},
+    "//#check:boundaries": {},
     "typecheck": {
       "dependsOn": ["^topo", "^build"],
       "outputs": [".cache/tsbuildinfo.json"]
@@ -61,6 +62,9 @@
     },
     "register-connections-metadata": {
       "cache": false
+    },
+    "config:import": {
+      "cache": false
     }
   },
   "globalEnv": [
@@ -68,6 +72,7 @@
     "NEXT_PUBLIC_APP_NAME",
     "NEXT_PUBLIC_APP_DOMAIN",
     "BETTER_AUTH_SECRET",
+    "CONFIG_ENCRYPTION_KEY",
     "DATABASE_URL",
     "UPSTASH_REDIS_REST_URL",
     "UPSTASH_REDIS_REST_TOKEN",

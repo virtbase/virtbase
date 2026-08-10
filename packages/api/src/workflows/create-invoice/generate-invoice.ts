@@ -18,21 +18,17 @@
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { serverPlanPrices, serverPlans } from "@virtbase/db/schema";
-import { APP_NAME, formatBits, formatBytes } from "@virtbase/utils";
+import { formatBits, formatBytes } from "@virtbase/utils";
 import type { OrderConfigurationSnapshot } from "@virtbase/validators";
 import { createFormatter, createTranslator } from "use-intl/core";
 import { FatalError } from "workflow";
-import { lexware } from "../../lexware";
-import type { LexwareCountry } from "../../lexware/constants";
+import { integrations } from "../../integrations";
+import type { InvoiceCountry } from "../../lib/invoicing";
 import {
-  LEXWARE_COUNTRY_CONTACTS,
-  LEXWARE_COUNTRY_TAX_RATES,
-  LEXWARE_HOME_COUNTRY,
-} from "../../lexware/constants";
-import {
-  lexwareInvoiceMessages,
-  mapLexwareCountryToLocale,
-} from "../../lexware/translations";
+  EU_VAT_RATES,
+  mapCountryToInvoiceLocale,
+  upgradeLineItemNames,
+} from "../../lib/invoicing";
 import { stripe } from "../../stripe";
 
 type GenerateInvoiceStepInput = {
@@ -63,9 +59,10 @@ export async function generateInvoiceStep({
     );
   }
 
-  if (!lexware) {
+  const invoiceProvider = await integrations.resolve("invoice");
+  if (!invoiceProvider) {
     throw new FatalError(
-      "LEXWARE_API_KEY is not set in the .env. Cannot generate invoice.",
+      "No invoice provider is enabled. Cannot generate invoice.",
     );
   }
 
@@ -85,28 +82,10 @@ export async function generateInvoiceStep({
     );
   }
 
-  const taxRatePercentage =
-    LEXWARE_COUNTRY_TAX_RATES[country as LexwareCountry];
+  const taxRatePercentage = EU_VAT_RATES[country as InvoiceCountry];
   if (!taxRatePercentage) {
     throw new FatalError(
       `The tax rate percentage for country ${country} has not been configured. Cannot generate invoice.`,
-    );
-  }
-
-  const contactId = LEXWARE_COUNTRY_CONTACTS[country as LexwareCountry];
-  if (!contactId) {
-    throw new FatalError(
-      `The collective contact ID for country ${country} has not been configured. Cannot generate invoice.`,
-    );
-  }
-
-  try {
-    // Check if the collective contact exists within Lexware.
-    // Otherwise the default contact may be used which is not what we want.
-    await lexware.retrieveContact(contactId);
-  } catch {
-    throw new FatalError(
-      `The collective contact ID ${contactId} does not exist within Lexware. Cannot generate invoice.`,
     );
   }
 
@@ -160,14 +139,12 @@ export async function generateInvoiceStep({
         ? configuration.upgrade_charge
         : plan.purchasePrice;
 
-  const mappedLocale = mapLexwareCountryToLocale(country as LexwareCountry);
+  const locale = mapCountryToInvoiceLocale(country as InvoiceCountry);
   const t = createTranslator({
-    locale: mappedLocale,
-    messages: lexwareInvoiceMessages[mappedLocale],
+    locale,
+    messages: { upgradeLineItemName: upgradeLineItemNames[locale] },
   });
-  const formatter = createFormatter({
-    locale: mappedLocale,
-  });
+  const formatter = createFormatter({ locale });
 
   const memoryFormatted = formatBytes(plan.memory * 1024 * 1024, { formatter });
   const storageFormatted = formatBytes(plan.storage * 1024 * 1024 * 1024, {
@@ -183,82 +160,46 @@ export async function generateInvoiceStep({
     : null;
 
   // TODO: Add usage timestamps
-  const invoice = await lexware.createInvoice(
-    {
-      archived: false,
-      voucherDate: new Date().toISOString(),
-      // Lexware only supports German and English invoices
-      language: country === "DE" ? "de" : "en",
-      lineItems: [
-        {
-          // Upgrades are pro-rated and only cover the price difference for
-          // the time left on the term, so the line item is labelled
-          // accordingly to avoid confusing the customer with the full plan
-          // price when they're charged a fraction of it.
-          name:
-            configuration.type === "upgrade_server"
-              ? t("upgradeLineItemName", { name: plan.name })
-              : plan.name,
-          // TODO: Translate / more dynamic
-          description: [
-            `${plan.cores} ${plan.cores > 1 ? "vCores" : "vCore"}`,
-            `${memoryFormatted} RAM`,
-            `${storageFormatted} NVMe SSD`,
-            `${netrateFormatted || "∞"} Uplink`,
-            `1x IPv4 /32 + 1x IPv6 /64`,
-          ]
-            .map((item) => `• ${item}`)
-            .join("\n"),
-          quantity: 1,
-          type: "custom",
-          unitPrice: {
-            currency: "EUR",
-            grossAmount: linePriceCents / 100,
-            taxRatePercentage,
-          },
-          unitName: t("unitName"),
-          discountPercentage: 0,
-        },
-      ],
-      totalPrice: {
-        currency: "EUR",
-      },
-      taxConditions: {
-        taxType: "gross",
-        ...(country !== LEXWARE_HOME_COUNTRY && {
-          // Set the OSS country according to the home country
-          taxSubType: "electronicServices",
-        }),
-      },
-      address: {
-        name: name || APP_NAME,
-        city,
-        contactId,
-        countryCode: country,
-        street: line1,
-        ...(line2 && { supplement: line2 }),
-        zip: postal_code,
-      },
-      shippingConditions: {
-        shippingType: "service",
-        shippingDate: new Date().toISOString(),
-      },
-      // Translated fields per country
-      title: t("invoiceTitle"),
-      introduction: t("introduction"),
-      remark: t("remark", { appName: APP_NAME }),
-      paymentConditions: {
-        paymentTermDuration: 7,
-        paymentTermLabel: t("paymentConditionText"),
-      },
+  const invoice = await invoiceProvider.createInvoice({
+    address: {
+      name,
+      street: line1,
+      ...(line2 && { supplement: line2 }),
+      zip: postal_code,
+      city,
+      countryCode: country,
     },
-    {
-      finalize: process.env.NODE_ENV === "production",
-    },
-  );
+    lineItems: [
+      {
+        // Upgrades are pro-rated and only cover the price difference for
+        // the time left on the term, so the line item is labelled
+        // accordingly to avoid confusing the customer with the full plan
+        // price when they're charged a fraction of it.
+        name:
+          configuration.type === "upgrade_server"
+            ? t("upgradeLineItemName", { name: plan.name })
+            : plan.name,
+        // TODO: Translate / more dynamic
+        description: [
+          `${plan.cores} ${plan.cores > 1 ? "vCores" : "vCore"}`,
+          `${memoryFormatted} RAM`,
+          `${storageFormatted} NVMe SSD`,
+          `${netrateFormatted || "∞"} Uplink`,
+          `1x IPv4 /32 + 1x IPv6 /64`,
+        ]
+          .map((item) => `• ${item}`)
+          .join("\n"),
+        quantity: 1,
+        unitPrice: { amount: linePriceCents, currency: "EUR" },
+        taxRatePercentage,
+      },
+    ],
+    locale,
+    finalize: process.env.NODE_ENV === "production",
+  });
 
   return {
-    createdInvoiceId: invoice.id,
+    createdInvoiceId: invoice.externalId,
     customerEmail: email,
   };
 }

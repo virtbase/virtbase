@@ -38,7 +38,6 @@ import { GetServerInputSchema } from "@virtbase/validators/server";
 import superjson from "superjson";
 import type { OpenApiMeta } from "trpc-to-openapi";
 import z, { ZodError } from "zod";
-import { lexware } from "./lexware";
 import { getProxmoxInstance } from "./proxmox";
 import { defaultFingerprint, ratelimit } from "./upstash";
 
@@ -46,7 +45,6 @@ type TRPCContext = {
   db: typeof db;
   // Only include the methods we need to avoid large type inference errors
   authApi: Pick<Auth["api"], "verifyApiKey" | "getSession">;
-  lexware: typeof lexware;
   headers: Headers;
   setHeader: (name: string, value: string) => void;
   apiKey: string | null;
@@ -64,7 +62,6 @@ export const createTRPCContext = async ({
   const sharedContext = {
     db,
     authApi,
-    lexware,
     headers,
     setHeader,
   } satisfies Partial<TRPCContext>;

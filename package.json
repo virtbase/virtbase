@@ -30,6 +30,7 @@
   "scripts": {
     "build": "turbo run build",
     "check": "biome check .",
+    "check:boundaries": "bun node_modules/dependency-cruiser/bin/dependency-cruise.mjs packages apps --config .dependency-cruiser.jsonc --output-type err",
     "check:unsafe": "biome check --write --unsafe .",
     "check:write": "biome check --write .",
     "clean": "git clean -xdf node_modules",
@@ -40,14 +41,15 @@
     "db:studio": "turbo -F @virtbase/db db:studio",
     "dev": "turbo watch dev --continue",
     "dev:next": "turbo watch dev -F @virtbase/web...",
-    "discord:register-commands": "turbo -F @virtbase/discord register-commands",
-    "discord:register-connections-metadata": "turbo -F @virtbase/discord register-connections-metadata",
+    "discord:register-commands": "turbo -F @virtbase/integration-discord register-commands",
+    "discord:register-connections-metadata": "turbo -F @virtbase/integration-discord register-connections-metadata",
     "typecheck": "turbo run typecheck",
     "ui-add": "turbo run ui-add",
     "email": "turbo run email",
     "prepare": "husky",
     "script": "turbo -F @virtbase/web script --",
-    "stripe:listen": "turbo -F @virtbase/web stripe:listen"
+    "stripe:listen": "turbo -F @virtbase/web stripe:listen",
+    "config:import": "turbo -F @virtbase/api config:import --"
   },
   "catalog": {
     "@better-auth/api-key": "^1.7.0-rc.4",
@@ -91,6 +93,7 @@
     "@commitlint/cli": "^21.2.1",
     "@commitlint/config-conventional": "^21.2.0",
     "@types/bun": "catalog:",
+    "dependency-cruiser": "^18.1.1",
     "husky": "^9.1.7",
     "lint-staged": "^17.3.0",
     "turbo": "^2.10.8"

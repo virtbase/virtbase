@@ -24,6 +24,7 @@ import {
   LucideLayoutDashboard,
   LucideMail,
   LucideNetwork,
+  LucidePlug,
   LucideServer,
   LucideUsers,
 } from "@virtbase/ui/icons";
@@ -66,6 +67,11 @@ const useGroups = () => {
           title: t("Emails"),
           path: paths.admin.emails,
           icon: LucideMail,
+        },
+        {
+          title: t("Integrations"),
+          path: paths.admin.integrations,
+          icon: LucidePlug,
         },
       ],
     },

@@ -37,13 +37,20 @@ import type { BetterAuthOptions, BetterAuthPlugin } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { betterAuth } from "better-auth/minimal";
 import type { UserWithRole } from "better-auth/plugins";
+import type { AccountLinkedHandler } from "./account-linked";
+import { notifyAccountLinked } from "./account-linked";
 import { plugins } from "./plugins";
-import { syncDiscordLinkedRoleMetadata } from "./sync-discord-metadata";
 
 export function initAuth({
   additionalPlugins,
+  onAccountLinked,
 }: {
   additionalPlugins?: BetterAuthPlugin[];
+  /**
+   * Called after a social account is linked or its token refreshed. Wired in
+   * the composition root so this package stays free of provider-specific code.
+   */
+  onAccountLinked?: AccountLinkedHandler;
 } = {}) {
   const config = {
     account: {
@@ -108,12 +115,12 @@ export function initAuth({
       account: {
         create: {
           after: async (account, ctx) => {
-            await syncDiscordLinkedRoleMetadata(account, ctx);
+            await notifyAccountLinked(account, ctx, onAccountLinked);
           },
         },
         update: {
           after: async (account, ctx) => {
-            await syncDiscordLinkedRoleMetadata(account, ctx);
+            await notifyAccountLinked(account, ctx, onAccountLinked);
           },
         },
       },
@@ -279,6 +286,7 @@ export function initAuth({
   return betterAuth(config);
 }
 
+export type { AccountLinkedHandler, LinkedAccountInfo } from "./account-linked";
 export type Auth = ReturnType<typeof initAuth>;
 export type Session = Auth["$Infer"]["Session"];
 export type UserWithLocale = UserWithRole & { locale?: string | null };

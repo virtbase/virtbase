@@ -1,0 +1,93 @@
+/*
+ *   Copyright (c) 2026 Janic Bellmann
+ *
+ *   This program is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+import { and, eq, gte, isNull, or, sql } from "@virtbase/db";
+import { db } from "@virtbase/db/client";
+import { servers, users } from "@virtbase/db/schema";
+
+// Must match the schema defined in src/role-connections-metadata.ts
+interface Metadata {
+  active_servers_count: number;
+  user_email_verified?: number;
+  user_created_at?: string;
+}
+
+/**
+ * Given metadata that matches the schema, push that data to Discord on behalf
+ * of the current user.
+ */
+export const pushDiscordLinkedRoleMetadata = async ({
+  userId,
+  accessToken,
+  appId,
+}: {
+  userId: string;
+  accessToken: string;
+  appId: string;
+}) => {
+  const metadata = await db.transaction(async (tx) => {
+    const activeServersCount = await tx.$count(
+      servers,
+      and(
+        eq(servers.userId, userId),
+        or(isNull(servers.terminatesAt), gte(servers.terminatesAt, sql`now()`)),
+      ),
+    );
+
+    const user = await tx
+      .select({
+        emailVerified: users.emailVerified,
+        createdAt: users.createdAt,
+      })
+      .from(users)
+      .where(eq(users.id, userId))
+      .limit(1)
+      .then(([row]) => row);
+
+    return {
+      active_servers_count: activeServersCount,
+      ...(user && {
+        user_email_verified: user.emailVerified ? 1 : 0,
+        user_created_at: user.createdAt.toISOString(),
+      }),
+    } satisfies Metadata;
+  });
+
+  const url = `https://discord.com/api/v10/users/@me/applications/${appId}/role-connection`;
+  const response = await fetch(url, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    method: "PUT",
+    body: JSON.stringify({
+      metadata,
+    }),
+  });
+  if (!response.ok) {
+    let errorText = `[discord] Error sending metadata \n ${response.url}: ${response.status} ${response.statusText}`;
+    try {
+      const error = await response.text();
+      if (error) {
+        errorText = `${errorText} \n\n ${error}`;
+      }
+    } catch (err) {
+      console.error("[discord] Error reading body from request:", err);
+    }
+    console.error(errorText);
+  }
+};

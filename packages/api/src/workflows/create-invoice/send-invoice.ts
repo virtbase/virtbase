@@ -19,7 +19,7 @@ import { sendEmail } from "@virtbase/email";
 import InvoiceCreated from "@virtbase/email/templates/invoice-created";
 import { getEmailTitle } from "@virtbase/email/translations";
 import { FatalError, getStepMetadata } from "workflow";
-import { lexware } from "../../lexware";
+import { integrations } from "../../integrations";
 
 type SendInvoiceStepInput = {
   createdInvoiceId: string;
@@ -42,18 +42,19 @@ export async function sendInvoiceStep({
 }: SendInvoiceStepInput) {
   "use step";
 
-  if (!lexware) {
+  const invoiceProvider = await integrations.resolve("invoice");
+  if (!invoiceProvider) {
     throw new FatalError(
-      "LEXWARE_API_KEY is not set in the .env. Cannot download and send invoice.",
+      "No invoice provider is enabled. Cannot download and send invoice.",
     );
   }
 
   let fileContent: ArrayBuffer;
   try {
-    fileContent = await lexware.downloadInvoice(createdInvoiceId);
+    fileContent = await invoiceProvider.downloadInvoice(createdInvoiceId);
   } catch {
     throw new FatalError(
-      "Failed to download invoice from Lexware. Cannot send invoice.",
+      "Failed to download the invoice. Cannot send invoice.",
     );
   }
 
