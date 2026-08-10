@@ -16,8 +16,8 @@
  */
 
 import { captureException } from "@sentry/nextjs";
-import type { Stripe } from "@virtbase/api/stripe";
-import { stripe } from "@virtbase/api/stripe";
+import type { Stripe } from "@virtbase/integration-stripe";
+import { stripe } from "@virtbase/integration-stripe";
 import { buttonVariants } from "@virtbase/ui/button";
 import {
   Empty,

@@ -51,6 +51,12 @@ const prefixes = [
   // Configuration
   "intg_", // integration installation
   "isec_", // integration secret
+  // Orders and payments
+  "ord_", // order
+  "oi_", // order item
+  "otr_", // order status transition
+  "pay_", // payment
+  "pev_", // payment provider event
 ] as const;
 
 // ULID uses base32 encoding

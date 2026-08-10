@@ -16,9 +16,9 @@
  */
 
 import { join } from "node:path";
-import type { Stripe } from "@virtbase/api/stripe";
 import type { Session } from "@virtbase/auth";
 import type { accounts } from "@virtbase/db/schema";
+import type { Stripe } from "@virtbase/integration-stripe";
 import { APP_NAME } from "@virtbase/utils";
 import blobStream from "blob-stream";
 import type { Locale } from "next-intl";

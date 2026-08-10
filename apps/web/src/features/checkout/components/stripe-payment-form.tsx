@@ -21,7 +21,7 @@ import {
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
-import { ANONPAY_STRIPE_METHOD_ID } from "@virtbase/api/anonpay/constants";
+import { ANONPAY_STRIPE_METHOD_ID } from "@virtbase/integration-anonpay";
 import { Alert, AlertDescription, AlertTitle } from "@virtbase/ui/alert";
 import { Button } from "@virtbase/ui/button";
 import { FieldDescription, FieldSet, FieldTitle } from "@virtbase/ui/field";
@@ -67,10 +67,10 @@ export const countries = [
 ];
 
 export function StripePaymentForm({
-  paymentIntentId,
+  orderId,
   onProcessingChange,
 }: {
-  paymentIntentId: string | null;
+  orderId: string | null;
   /**
    * Fires `true` when `stripe.confirmPayment` starts and `false` once it
    * resolves (or the component unmounts). Lets sibling UI — e.g. a
@@ -153,7 +153,7 @@ export function StripePaymentForm({
       if (
         ANONPAY_STRIPE_METHOD_ID &&
         selectedPaymentMethod === ANONPAY_STRIPE_METHOD_ID &&
-        paymentIntentId
+        orderId
       ) {
         const addressElement = elements.getElement("address");
 
@@ -166,7 +166,7 @@ export function StripePaymentForm({
         }
 
         return createCustomCheckout({
-          payment_intent_id: paymentIntentId,
+          order_id: orderId,
           type: "anonpay",
           billing_details: addressState.value,
         });
@@ -189,7 +189,7 @@ export function StripePaymentForm({
       setIsPending(false);
       onProcessingChangeRef.current?.(false);
     },
-    [stripe, elements, locale, paymentIntentId, createCustomCheckout],
+    [stripe, elements, locale, orderId, createCustomCheckout],
   );
 
   return (

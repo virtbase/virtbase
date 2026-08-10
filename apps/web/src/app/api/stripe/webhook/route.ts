@@ -16,8 +16,9 @@
  */
 
 import * as Sentry from "@sentry/nextjs";
-import type { Stripe } from "@virtbase/api/stripe";
-import { handlePaymentIntentSucceeded, stripe } from "@virtbase/api/stripe";
+import { handlePaymentIntentSucceeded } from "@virtbase/api/orders";
+import type { Stripe } from "@virtbase/integration-stripe";
+import { stripe } from "@virtbase/integration-stripe";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 

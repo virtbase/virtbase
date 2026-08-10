@@ -11,21 +11,13 @@
       "types": "./dist/integrations.d.ts",
       "default": "./src/integrations/index.ts"
     },
+    "./orders": {
+      "types": "./dist/orders.d.ts",
+      "default": "./src/orders/index.ts"
+    },
     "./proxmox": {
       "types": "./dist/proxmox.d.ts",
       "default": "./src/proxmox/index.ts"
-    },
-    "./stripe": {
-      "types": "./dist/stripe.d.ts",
-      "default": "./src/stripe/index.ts"
-    },
-    "./anonpay": {
-      "types": "./dist/anonpay.d.ts",
-      "default": "./src/anonpay/index.ts"
-    },
-    "./anonpay/constants": {
-      "types": "./dist/anonpay/constants.d.ts",
-      "default": "./src/anonpay/constants.ts"
     },
     "./workflows": {
       "types": "./dist/workflows.d.ts",
@@ -49,17 +41,18 @@
     "@virtbase/config": "workspace:*",
     "@virtbase/db": "workspace:*",
     "@virtbase/email": "workspace:*",
+    "@virtbase/integration-anonpay": "workspace:*",
     "@virtbase/integration-discord": "workspace:*",
     "@virtbase/integration-lexware": "workspace:*",
     "@virtbase/integration-powerdns": "workspace:*",
     "@virtbase/integration-sdk": "workspace:*",
+    "@virtbase/integration-stripe": "workspace:*",
     "@virtbase/ports": "workspace:*",
     "@virtbase/utils": "workspace:*",
     "@virtbase/validators": "workspace:*",
     "ai": "7.0.55",
     "proxmox-api": "catalog:",
     "server-only": "^0.0.1",
-    "stripe": "^22.4.0",
     "superjson": "catalog:",
     "trpc-to-openapi": "^3.3.0",
     "use-intl": "catalog:",

@@ -74,7 +74,7 @@ export function CheckoutForm({
 
   const { id: planId } = useParams<{ id: string }>();
   const {
-    paymentIntentId,
+    orderId,
     customerSessionClientSecret,
     clientSecret,
     createOrder,
@@ -106,7 +106,7 @@ export function CheckoutForm({
         customerSessionClientSecret={customerSessionClientSecret}
         clientSecret={clientSecret}
       >
-        <StripePaymentForm paymentIntentId={paymentIntentId} />
+        <StripePaymentForm orderId={orderId} />
       </ElementsProvider>
     );
   }

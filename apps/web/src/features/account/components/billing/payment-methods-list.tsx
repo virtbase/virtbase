@@ -17,7 +17,7 @@
 
 "use client";
 
-import type { Stripe } from "@virtbase/api/stripe";
+import type { Stripe } from "@virtbase/integration-stripe";
 import { Button } from "@virtbase/ui/button";
 import {
   Empty,

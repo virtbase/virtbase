@@ -51,5 +51,3 @@ export class AnonpayClient {
     return response.json() as Promise<AnonpayCreateResponse>;
   }
 }
-
-export const anonpay = new AnonpayClient();

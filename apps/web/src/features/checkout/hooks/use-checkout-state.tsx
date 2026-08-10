@@ -25,6 +25,8 @@ import { createContext, useCallback, useContext, useMemo } from "react";
 import { useTRPC } from "@/lib/trpc/react";
 
 interface CheckoutStateValue {
+  /** The order being paid for. Alternative payment methods settle against it. */
+  orderId: string | null;
   paymentIntentId: string | null;
   clientSecret: string | null;
   customerSessionClientSecret: string | null;
@@ -75,9 +77,15 @@ function useCreateOrder(): CheckoutStateValue {
   const trpc = useTRPC();
 
   const [
-    { payment_intent_id, client_secret, customer_session_client_secret },
+    {
+      order_id,
+      payment_intent_id,
+      client_secret,
+      customer_session_client_secret,
+    },
     setCheckoutParams,
   ] = useQueryStates({
+    order_id: parseAsString,
     payment_intent_id: parseAsString,
     client_secret: parseAsString,
     customer_session_client_secret: parseAsString,
@@ -91,6 +99,7 @@ function useCreateOrder(): CheckoutStateValue {
     trpc.checkout.order.mutationOptions({
       onSuccess: (data) => {
         void setCheckoutParams({
+          order_id: data.order_id,
           payment_intent_id: data.payment_intent_id,
           client_secret: data.client_secret,
           customer_session_client_secret: data.customer_session_client_secret,
@@ -101,6 +110,7 @@ function useCreateOrder(): CheckoutStateValue {
 
   const resetCheckoutSession = useCallback(() => {
     void setCheckoutParams({
+      order_id: null,
       payment_intent_id: null,
       client_secret: null,
       customer_session_client_secret: null,
@@ -110,6 +120,7 @@ function useCreateOrder(): CheckoutStateValue {
 
   return useMemo(
     () => ({
+      orderId: order_id,
       paymentIntentId: payment_intent_id,
       clientSecret: client_secret,
       customerSessionClientSecret: customer_session_client_secret,
@@ -118,6 +129,7 @@ function useCreateOrder(): CheckoutStateValue {
       resetCheckoutSession,
     }),
     [
+      order_id,
       payment_intent_id,
       client_secret,
       customer_session_client_secret,

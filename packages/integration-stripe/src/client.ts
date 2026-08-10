@@ -15,7 +15,19 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export type { Stripe } from "stripe";
-export * from "./client";
-export * from "./get-or-create-customer";
-export * from "./payment-intent-succeeded";
+import Stripe from "stripe";
+
+/**
+ * Module-level client, kept because the checkout UI is built on Stripe
+ * Elements: the app needs customer sessions, saved payment methods and
+ * `webhooks.constructEvent`, none of which are payment-lifecycle capabilities
+ * that belong on `PaymentProvider`. The port covers taking money; this covers
+ * the rest of what Stripe is to this application.
+ */
+export const stripe = process.env.STRIPE_SECRET_KEY
+  ? new Stripe(process.env.STRIPE_SECRET_KEY, {
+      apiVersion: "2026-07-29.dahlia",
+      typescript: true,
+      telemetry: false,
+    })
+  : null;

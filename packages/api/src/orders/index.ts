@@ -15,6 +15,12 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./client";
-export * from "./payment-finished";
-export * from "./types";
+export * from "./apply-payment-event";
+export * from "./create-order";
+export * from "./fulfill-order";
+export * from "./legacy-snapshot";
+export * from "./order-secrets";
+export * from "./record-billing-details";
+export * from "./settle-anonpay-payment";
+export * from "./settle-stripe-payment";
+export * from "./transition-order";

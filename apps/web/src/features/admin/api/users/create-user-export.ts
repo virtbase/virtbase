@@ -17,8 +17,6 @@
 
 "use server";
 
-import type { Stripe } from "@virtbase/api/stripe";
-import { stripe } from "@virtbase/api/stripe";
 import type { Session } from "@virtbase/auth";
 import { and, eq, isNull } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
@@ -26,6 +24,8 @@ import {
   accounts as accountsTable,
   sessions as sessionsTable,
 } from "@virtbase/db/schema";
+import type { Stripe } from "@virtbase/integration-stripe";
+import { stripe } from "@virtbase/integration-stripe";
 import { CreateUserExportInputSchema } from "@virtbase/validators/admin";
 import { headers } from "next/headers";
 import { hasLocale } from "use-intl";

@@ -18,7 +18,10 @@
 "use server";
 
 import { TRPCError } from "@trpc/server";
-import { getOrCreateStripeCustomer, stripe } from "@virtbase/api/stripe";
+import {
+  getOrCreateStripeCustomer,
+  stripe,
+} from "@virtbase/integration-stripe";
 import { headers } from "next/headers";
 import { auth } from "@/lib/auth/server";
 

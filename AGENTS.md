@@ -72,7 +72,9 @@ integration.
    the integration package from a router or workflow.
 
 `packages/integration-powerdns` is the smallest reference implementation;
-`packages/integration-discord` shows webhooks and port consumption.
+`packages/integration-discord` shows webhooks and port consumption;
+`packages/integration-stripe` shows a provider whose UI surface deliberately
+stays outside its port.
 
 ### Webhooks
 

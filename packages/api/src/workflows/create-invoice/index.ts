@@ -22,7 +22,7 @@ import { storeInvoiceStep } from "./store-invoice";
 
 type CreateInvoiceWorkflowInput = {
   configuration: OrderConfigurationSnapshot;
-  stripeCustomerId: string;
+  userId: string;
   billingDetails: {
     name: string | null;
     email: string | null;
@@ -38,7 +38,7 @@ type CreateInvoiceWorkflowInput = {
 
 export async function createInvoiceWorkflow({
   configuration,
-  stripeCustomerId,
+  userId,
   billingDetails,
 }: CreateInvoiceWorkflowInput) {
   "use workflow";
@@ -57,7 +57,7 @@ export async function createInvoiceWorkflow({
     email,
   } = await storeInvoiceStep({
     createdInvoiceId,
-    stripeCustomerId,
+    userId,
   });
 
   await sendInvoiceStep({

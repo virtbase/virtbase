@@ -39,7 +39,7 @@ export type PortName = (typeof PORTS)[keyof typeof PORTS];
 
 /**
  * A monetary amount in the currency's smallest unit (cents for EUR/USD), which
- * is how both Stripe and the `transactions` table already store money.
+ * is how both Stripe and the `payments` table store money.
  */
 export interface Money {
   /** Amount in the smallest currency unit, e.g. `1250` for EUR 12.50. */

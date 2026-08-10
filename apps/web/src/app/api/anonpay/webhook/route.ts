@@ -16,22 +16,18 @@
  */
 
 import * as Sentry from "@sentry/nextjs";
-import {
-  AnonpayWebhookSchema,
-  handlePaymentFinished,
-} from "@virtbase/api/anonpay";
-import { ANONPAY_STRIPE_METHOD_ID } from "@virtbase/api/anonpay/constants";
-import { stripe } from "@virtbase/api/stripe";
+import { handlePaymentFinished, resolveOrderId } from "@virtbase/api/orders";
+import { eq } from "@virtbase/db";
+import { db } from "@virtbase/db/client";
+import { users } from "@virtbase/db/schema";
+import { AnonpayWebhookSchema } from "@virtbase/integration-anonpay";
+import { stripe } from "@virtbase/integration-stripe";
 import { safeSecretCompare } from "@virtbase/utils";
 import type { NextRequest } from "next/server";
 
 export async function POST(req: NextRequest) {
-  if (
-    !stripe ||
-    !ANONPAY_STRIPE_METHOD_ID ||
-    !process.env.ANONPAY_WEBHOOK_SECRET
-  ) {
-    return new Response("Stripe or Anonpay is not configured", {
+  if (!process.env.ANONPAY_WEBHOOK_SECRET) {
+    return new Response("Anonpay is not configured", {
       // Send status 200 to avoid retries
       status: 200,
     });
@@ -46,9 +42,9 @@ export async function POST(req: NextRequest) {
     return new Response("Unauthorized", { status: 401 });
   }
 
-  const paymentIntentId = searchParams.get("payment_intent_id");
-  if (!paymentIntentId) {
-    return new Response("Missing payment intent ID", {
+  const orderId = await resolveWebhookOrderId(searchParams);
+  if (!orderId) {
+    return new Response("Missing order ID", {
       status: 400,
     });
   }
@@ -60,73 +56,13 @@ export async function POST(req: NextRequest) {
   }
 
   try {
-    const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
-
-    const customer =
-      typeof paymentIntent.customer === "object" &&
-      paymentIntent.customer !== null
-        ? paymentIntent.customer.id
-        : paymentIntent.customer;
-
-    if (!customer) {
-      return new Response("Missing customer in payment intent", {
-        status: 400,
-      });
-    }
-
-    if (data.status === "finished" || data.status === "failed") {
-      // Report the payment status to Stripe
-
-      // Create an instance of the custom payment method
-      const paymentMethod = await stripe.paymentMethods.create(
-        {
-          type: "custom",
-          custom: {
-            type: ANONPAY_STRIPE_METHOD_ID,
-          },
-        },
-        { idempotencyKey: `create-payment-method-${data.trade_id}` },
-      );
-
-      const statusDateSeconds = Math.floor(
-        new Date(data.date).getTime() / 1000,
-      );
-
-      await stripe.paymentRecords.reportPayment(
-        {
-          description: paymentIntent.description || undefined,
-          amount_requested: {
-            value: Math.round(data.details.fiat_amount * 100),
-            currency: data.details.fiat_equiv.toLowerCase(),
-          },
-          payment_method_details: { payment_method: paymentMethod.id },
-          customer_details: { customer },
-          processor_details: {
-            type: "custom",
-            custom: { payment_reference: data.trade_id },
-          },
-          initiated_at: statusDateSeconds,
-          customer_presence: "on_session",
-          outcome: data.status === "finished" ? "guaranteed" : "failed",
-          ...(data.status === "finished"
-            ? { guaranteed: { guaranteed_at: statusDateSeconds } }
-            : { failed: { failed_at: statusDateSeconds } }),
-        },
-        { idempotencyKey: `report-payment-${data.trade_id}` },
-      );
-    }
-
     switch (data.status) {
       case "finished": {
-        await handlePaymentFinished({
-          paymentIntent,
-          data,
-        });
+        await handlePaymentFinished({ orderId, data });
         break;
       }
       default:
-        // Unhandled event type
-        // Passthrough and send status 200
+        // Unhandled status. Pass through with a 200 so Anonpay does not retry.
         break;
     }
   } catch (error) {
@@ -141,4 +77,54 @@ export async function POST(req: NextRequest) {
     return new Response("Webhook processing failed", { status: 500 });
   }
   return new Response("Webhook received", { status: 200 });
+}
+
+/**
+ * Finds the order a settlement belongs to.
+ *
+ * Trades created before Anonpay was decoupled from Stripe call back with a
+ * `payment_intent_id` instead of an `order_id`. A customer who has already paid
+ * in crypto must still get their server, so that parameter is honoured for one
+ * release by resolving the intent to its order.
+ *
+ * TODO: delete the legacy branch once no Anonpay trade predating the cutover is
+ * still open. Trades expire, so this is a short window.
+ */
+async function resolveWebhookOrderId(
+  searchParams: URLSearchParams,
+): Promise<string | null> {
+  const orderId = searchParams.get("order_id");
+  if (orderId) return orderId;
+
+  const paymentIntentId = searchParams.get("payment_intent_id");
+  if (!paymentIntentId || !stripe) return null;
+
+  const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+  const customer =
+    typeof paymentIntent.customer === "object" &&
+    paymentIntent.customer !== null
+      ? paymentIntent.customer.id
+      : paymentIntent.customer;
+
+  if (!customer) return null;
+
+  const user = await db
+    .select({ id: users.id })
+    .from(users)
+    .where(eq(users.stripeCustomerId, customer))
+    .limit(1)
+    .then(([row]) => row);
+
+  if (!user) return null;
+
+  console.warn(
+    "[anonpay] Settling a trade that predates the order-based webhook URL.",
+  );
+
+  return resolveOrderId({
+    metadata: paymentIntent.metadata as Record<string, string | undefined>,
+    userId: user.id,
+    amount: paymentIntent.amount,
+    planName: paymentIntent.description ?? "Server plan",
+  });
 }

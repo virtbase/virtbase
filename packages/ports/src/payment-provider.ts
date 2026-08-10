@@ -91,7 +91,7 @@ export interface RefundInput {
  * system does not care about, so route handlers stay a one-liner.
  */
 export interface PaymentProvider {
-  /** Stable id of the payment method as stored on `transactions.paymentMethod`. */
+  /** Stable id of the payment method as stored on `payments.provider`. */
   readonly method: string;
 
   createPayment(input: CreatePaymentInput): Promise<CreatePaymentResult>;

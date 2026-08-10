@@ -38,7 +38,7 @@ export function PlanForm() {
   const t = useExtracted();
 
   const {
-    paymentIntentId,
+    orderId,
     customerSessionClientSecret,
     clientSecret,
     createOrder,
@@ -62,7 +62,7 @@ export function PlanForm() {
         clientSecret={clientSecret}
       >
         <StripePaymentForm
-          paymentIntentId={paymentIntentId}
+          orderId={orderId}
           onProcessingChange={setIsConfirmingPayment}
         />
       </ElementsProvider>

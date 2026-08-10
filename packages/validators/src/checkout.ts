@@ -82,6 +82,11 @@ export type ExtendOrUpgradeServerPlanInput = z.infer<
 >;
 
 export const OrderServerPlanOutputSchema = z.object({
+  /**
+   * The order this checkout is for. Alternative payment methods settle against
+   * this rather than against the Stripe payment intent.
+   */
+  order_id: z.string(),
   payment_intent_id: z.string(),
   client_secret: z.string().nullable(),
   customer_session_client_secret: z.string(),
@@ -150,7 +155,7 @@ export type OrderConfigurationSnapshot =
   | UpgradeServerPlanConfigurationSnapshot;
 
 export const CustomCheckoutInputSchema = z.object({
-  payment_intent_id: z.string().min(1),
+  order_id: z.string().min(1),
   type: z.enum(["anonpay"]),
   billing_details: z.object({
     name: z.string().nullable(),

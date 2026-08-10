@@ -16,7 +16,10 @@
  */
 
 import * as Sentry from "@sentry/nextjs";
-import { getOrCreateStripeCustomer, stripe } from "@virtbase/api/stripe";
+import {
+  getOrCreateStripeCustomer,
+  stripe,
+} from "@virtbase/integration-stripe";
 import { headers } from "next/headers";
 import { cache } from "react";
 import { auth } from "@/lib/auth/server";

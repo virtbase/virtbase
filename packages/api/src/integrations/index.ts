@@ -17,6 +17,7 @@
 
 import { IntegrationConfigStore, parseMasterKey } from "@virtbase/config";
 import { db } from "@virtbase/db/client";
+import anonpay from "@virtbase/integration-anonpay";
 import discord from "@virtbase/integration-discord";
 import lexware from "@virtbase/integration-lexware";
 import powerdns from "@virtbase/integration-powerdns";
@@ -26,6 +27,7 @@ import {
   EnvConfigSource,
   IntegrationRegistry,
 } from "@virtbase/integration-sdk";
+import stripe from "@virtbase/integration-stripe";
 import { DbConfigSource } from "./db-config-source";
 import { TRPCServerManagement } from "./server-management";
 
@@ -81,7 +83,7 @@ const config: ConfigSource = integrationConfigStore
  * dependency; nothing else in this package changes.
  */
 export const integrations = new IntegrationRegistry({
-  integrations: [core, powerdns, discord, lexware],
+  integrations: [core, powerdns, discord, lexware, stripe, anonpay],
   config,
 });
 

@@ -33,7 +33,8 @@ export const relations = defineRelations(schema, (r) => ({
     sessions: r.many.sessions({ alias: "session_user" }),
     impersonatedSessions: r.many.sessions({ alias: "session_impersonator" }),
     sshKeys: r.many.sshKeys(),
-    transactions: r.many.transactions(),
+    orders: r.many.orders(),
+    payments: r.many.payments(),
     proxmoxIsoDownloads: r.many.proxmoxIsoDownloads(),
   },
   sessions: {
@@ -49,10 +50,36 @@ export const relations = defineRelations(schema, (r) => ({
       alias: "session_impersonator",
     }),
   },
-  transactions: {
+  orders: {
     user: r.one.users({
-      from: r.transactions.userId,
+      from: r.orders.userId,
       to: r.users.id,
+    }),
+    items: r.many.orderItems(),
+    transitions: r.many.orderTransitions(),
+    payments: r.many.payments(),
+  },
+  orderItems: {
+    order: r.one.orders({
+      from: r.orderItems.orderId,
+      to: r.orders.id,
+    }),
+  },
+  orderTransitions: {
+    order: r.one.orders({
+      from: r.orderTransitions.orderId,
+      to: r.orders.id,
+    }),
+  },
+  payments: {
+    user: r.one.users({
+      from: r.payments.userId,
+      to: r.users.id,
+    }),
+    order: r.one.orders({
+      from: r.payments.orderId,
+      to: r.orders.id,
+      optional: true,
     }),
   },
   invoices: {

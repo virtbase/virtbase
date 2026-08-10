@@ -18,6 +18,7 @@
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { serverPlanPrices, serverPlans } from "@virtbase/db/schema";
+import { stripe } from "@virtbase/integration-stripe";
 import { formatBits, formatBytes } from "@virtbase/utils";
 import type { OrderConfigurationSnapshot } from "@virtbase/validators";
 import { createFormatter, createTranslator } from "use-intl/core";
@@ -29,7 +30,6 @@ import {
   mapCountryToInvoiceLocale,
   upgradeLineItemNames,
 } from "../../lib/invoicing";
-import { stripe } from "../../stripe";
 
 type GenerateInvoiceStepInput = {
   billingDetails: {

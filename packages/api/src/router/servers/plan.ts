@@ -32,19 +32,13 @@ import {
   GetServerPlanInputSchema,
   GetServerPlanOutputSchema,
 } from "@virtbase/validators/server";
+import { calculateProRataUpgrade } from "../../lib/pricing";
 import { serverProcedure } from "../../trpc";
 
 // Pro-rata math reference period. Postgres `INTERVAL '1 month'` is variable
 // length (28-31 days), but for charge calculations we use a flat 30-day
 // month so the displayed pro-rata charge is stable regardless of the
 // calendar month the upgrade lands in.
-const MONTH_MS = 30 * 24 * 60 * 60 * 1000;
-
-// Stripe's minimum charge for EUR is 50 cents. Pro-rata charges below
-// that get bumped up so the upgrade still goes through; the customer
-// pays at most ~50 cents more than the strict pro-rata in edge cases
-// (e.g. upgrading a few days before renewal with a small price delta).
-const STRIPE_MIN_CHARGE_EUR_CENTS = 50;
 
 export const serversPlanRouter = {
   get: serverProcedure
@@ -95,11 +89,6 @@ export const serversPlanRouter = {
       const lockedRenewalDiscount =
         rawLockedDiscount?.id != null ? rawLockedDiscount : null;
 
-      const remainingMs = current.terminatesAt
-        ? Math.max(0, current.terminatesAt.getTime() - Date.now())
-        : 0;
-      const proRataFraction = Math.max(0, Math.min(1, remainingMs / MONTH_MS));
-
       const plans = await getPlansWithAvailability(
         eq(serverPlans.proxmoxNodeGroupId, current.proxmoxNodeGroupId),
       );
@@ -132,17 +121,15 @@ export const serversPlanRouter = {
             // Compare against the customer's locked-in renewal price so the
             // pro-rata reflects what the customer actually pays right now
             // (including any custom discount carried forward).
-            const diff = Math.max(
-              0,
-              freshRenewalPrice - current.lockedRenewalPrice,
-            );
-            const raw = Math.floor(diff * proRataFraction);
-            // Clamp small but non-zero pro-rata to Stripe's EUR minimum so
-            // the upgrade can still be processed.
-            upgradePrice =
-              raw > 0 && raw < STRIPE_MIN_CHARGE_EUR_CENTS
-                ? STRIPE_MIN_CHARGE_EUR_CENTS
-                : raw;
+            //
+            // Same calculation checkout charges from. Note that an
+            // unchargeable upgrade is still priced at zero here, which
+            // checkout then refuses — see `chargeable` on the result.
+            upgradePrice = calculateProRataUpgrade({
+              currentRenewalPrice: current.lockedRenewalPrice,
+              newRenewalPrice: freshRenewalPrice,
+              terminatesAt: current.terminatesAt,
+            }).amount;
           }
 
           return {

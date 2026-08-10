@@ -51,7 +51,9 @@
         "@virtbase/auth": "workspace:*",
         "@virtbase/db": "workspace:*",
         "@virtbase/email": "workspace:*",
+        "@virtbase/integration-anonpay": "workspace:*",
         "@virtbase/integration-sdk": "workspace:*",
+        "@virtbase/integration-stripe": "workspace:*",
         "@virtbase/ui": "workspace:*",
         "@virtbase/utils": "workspace:*",
         "@virtbase/validators": "workspace:*",
@@ -112,17 +114,18 @@
         "@virtbase/config": "workspace:*",
         "@virtbase/db": "workspace:*",
         "@virtbase/email": "workspace:*",
+        "@virtbase/integration-anonpay": "workspace:*",
         "@virtbase/integration-discord": "workspace:*",
         "@virtbase/integration-lexware": "workspace:*",
         "@virtbase/integration-powerdns": "workspace:*",
         "@virtbase/integration-sdk": "workspace:*",
+        "@virtbase/integration-stripe": "workspace:*",
         "@virtbase/ports": "workspace:*",
         "@virtbase/utils": "workspace:*",
         "@virtbase/validators": "workspace:*",
         "ai": "7.0.55",
         "proxmox-api": "catalog:",
         "server-only": "^0.0.1",
-        "stripe": "^22.4.0",
         "superjson": "catalog:",
         "trpc-to-openapi": "^3.3.0",
         "use-intl": "catalog:",
@@ -213,6 +216,21 @@
         "react-dom": "catalog:",
       },
     },
+    "packages/integration-anonpay": {
+      "name": "@virtbase/integration-anonpay",
+      "dependencies": {
+        "@virtbase/integration-sdk": "workspace:*",
+        "@virtbase/ports": "workspace:*",
+        "@virtbase/utils": "workspace:*",
+        "next-intl": "catalog:",
+        "zod": "catalog:",
+      },
+      "devDependencies": {
+        "@biomejs/biome": "catalog:",
+        "@virtbase/tsconfig": "workspace:*",
+        "typescript": "catalog:",
+      },
+    },
     "packages/integration-discord": {
       "name": "@virtbase/integration-discord",
       "dependencies": {
@@ -265,6 +283,23 @@
       "name": "@virtbase/integration-sdk",
       "dependencies": {
         "@virtbase/ports": "workspace:*",
+        "zod": "catalog:",
+      },
+      "devDependencies": {
+        "@biomejs/biome": "catalog:",
+        "@virtbase/tsconfig": "workspace:*",
+        "typescript": "catalog:",
+      },
+    },
+    "packages/integration-stripe": {
+      "name": "@virtbase/integration-stripe",
+      "dependencies": {
+        "@virtbase/db": "workspace:*",
+        "@virtbase/integration-sdk": "workspace:*",
+        "@virtbase/ports": "workspace:*",
+        "@virtbase/utils": "workspace:*",
+        "next-intl": "catalog:",
+        "stripe": "^22.4.0",
         "zod": "catalog:",
       },
       "devDependencies": {
@@ -1541,6 +1576,8 @@
 
     "@virtbase/email": ["@virtbase/email@workspace:packages/email"],
 
+    "@virtbase/integration-anonpay": ["@virtbase/integration-anonpay@workspace:packages/integration-anonpay"],
+
     "@virtbase/integration-discord": ["@virtbase/integration-discord@workspace:packages/integration-discord"],
 
     "@virtbase/integration-lexware": ["@virtbase/integration-lexware@workspace:packages/integration-lexware"],
@@ -1548,6 +1585,8 @@
     "@virtbase/integration-powerdns": ["@virtbase/integration-powerdns@workspace:packages/integration-powerdns"],
 
     "@virtbase/integration-sdk": ["@virtbase/integration-sdk@workspace:packages/integration-sdk"],
+
+    "@virtbase/integration-stripe": ["@virtbase/integration-stripe@workspace:packages/integration-stripe"],
 
     "@virtbase/novnc-proxy": ["@virtbase/novnc-proxy@workspace:apps/novnc-proxy"],
 

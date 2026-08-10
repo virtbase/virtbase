@@ -22,7 +22,7 @@ import { loadStripe } from "@stripe/stripe-js";
 import {
   ANONPAY_MIN_AMOUNT,
   ANONPAY_STRIPE_METHOD_ID,
-} from "@virtbase/api/anonpay/constants";
+} from "@virtbase/integration-anonpay";
 import { useTheme } from "@virtbase/ui/theme-provider";
 import { useExtracted } from "next-intl";
 import type { PropsWithChildren } from "react";

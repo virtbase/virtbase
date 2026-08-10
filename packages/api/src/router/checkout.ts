@@ -26,11 +26,20 @@ import {
 import {
   discounts,
   discountsToServerPlans,
+  orders,
   serverPlanPrices,
   serverPlans,
   servers,
   sshKeys,
 } from "@virtbase/db/schema";
+import {
+  ANONPAY_MIN_AMOUNT,
+  AnonpayClient,
+} from "@virtbase/integration-anonpay";
+import {
+  getOrCreateStripeCustomer,
+  stripe,
+} from "@virtbase/integration-stripe";
 import {
   APP_NAME,
   deriveKeyHex,
@@ -48,20 +57,13 @@ import {
   OrderServerPlanInputSchema,
   OrderServerPlanOutputSchema,
 } from "@virtbase/validators";
-import { anonpay } from "../anonpay";
-import { ANONPAY_MIN_AMOUNT } from "../anonpay/constants";
-import { stripe } from "../stripe";
-import { getOrCreateStripeCustomer } from "../stripe/get-or-create-customer";
+import { calculateProRataUpgrade } from "../lib/pricing";
+import { createOrder, recordBillingDetails } from "../orders";
 import { protectedProcedure } from "../trpc";
 
 // Pro-rata math reference period. We bill against a flat 30-day month so
 // the upgrade charge is stable regardless of which calendar month the
 // upgrade lands in (Postgres `INTERVAL '1 month'` is variable length).
-const MONTH_MS = 30 * 24 * 60 * 60 * 1000;
-
-// Stripe's minimum charge for EUR is 50 cents. Round small but non-zero
-// pro-rata charges up so the upgrade order can still be processed.
-const STRIPE_MIN_CHARGE_EUR_CENTS = 50;
 
 export const checkoutRouter = {
   order: protectedProcedure
@@ -297,39 +299,25 @@ export const checkoutRouter = {
         createdPriceId = result.id;
 
         if (input.type === "upgrade_server" && upgradeContext) {
-          // Pro-rata: the customer keeps their current term (`terminatesAt`
-          // does not move). They pay the difference between the freshly
-          // locked renewal price of the new plan and their current locked
-          // renewal price, scaled by how much of the term is still left.
-          const remainingMs = upgradeContext.terminatesAt
-            ? Math.max(0, upgradeContext.terminatesAt.getTime() - Date.now())
-            : 0;
-          const proRataFraction = Math.max(
-            0,
-            Math.min(1, remainingMs / MONTH_MS),
-          );
-          const diff = Math.max(
-            0,
-            result.renewalPrice - upgradeContext.currentRenewalPrice,
-          );
-          const raw = Math.floor(diff * proRataFraction);
+          const quote = calculateProRataUpgrade({
+            currentRenewalPrice: upgradeContext.currentRenewalPrice,
+            newRenewalPrice: result.renewalPrice,
+            terminatesAt: upgradeContext.terminatesAt,
+          });
+
           // If the term has lapsed (or the new plan isn't more expensive)
           // there's nothing to charge; the customer should renew first
           // rather than upgrade through an empty PaymentIntent that
           // Stripe would reject.
-          if (raw <= 0) {
+          if (!quote.chargeable) {
             throw new TRPCError({
               code: "BAD_REQUEST",
               message:
                 "Your current term has expired or the upgrade does not require an additional charge. Please renew your server before upgrading.",
             });
           }
-          // Stripe rejects EUR PaymentIntents below 50 cents. Round small
-          // pro-rata charges up so the upgrade still goes through.
-          upgradeCharge =
-            raw < STRIPE_MIN_CHARGE_EUR_CENTS
-              ? STRIPE_MIN_CHARGE_EUR_CENTS
-              : raw;
+
+          upgradeCharge = quote.amount;
           chargedAmount = upgradeCharge;
         } else {
           chargedAmount = result.purchasePrice;
@@ -414,6 +402,19 @@ export const checkoutRouter = {
 
       const customerId = await getOrCreateStripeCustomer(userId);
 
+      // The order is the record of what was bought. The payment intent points
+      // at it by id; the encrypted snapshot below is the legacy carrier and is
+      // written alongside until every in-flight payment predating orders has
+      // settled (finding F9).
+      const orderId = await createOrder({
+        userId,
+        configuration,
+        totalAmount: chargedAmount,
+        planName: plan.name,
+        rootPassword:
+          "root_password" in configuration ? configuration.root_password : null,
+      });
+
       try {
         const customerSessionPromise = stripe.customerSessions.create({
           customer: customerId,
@@ -456,13 +457,18 @@ export const checkoutRouter = {
           // Stripe's 500-character per-value metadata cap (hex encoding
           // doubles the ciphertext size), so we chunk it across several
           // keys. The webhook reassembles via `readChunkedStripeMetadata`.
-          metadata: writeChunkedStripeMetadata(
-            "configurationSnapshot",
-            await encryptPayload(
-              JSON.stringify(configuration),
-              await deriveKeyHex(stripeSecretKey),
+          metadata: {
+            orderId,
+            // TODO(WS5.7): remove once no unsettled payment intent predates
+            // the order table. The webhook already prefers `orderId`.
+            ...writeChunkedStripeMetadata(
+              "configurationSnapshot",
+              await encryptPayload(
+                JSON.stringify(configuration),
+                await deriveKeyHex(stripeSecretKey),
+              ),
             ),
-          ),
+          },
         });
 
         const [customerSession, paymentIntent] = await Promise.all([
@@ -471,6 +477,7 @@ export const checkoutRouter = {
         ]);
 
         return {
+          order_id: orderId,
           payment_intent_id: paymentIntent.id,
           client_secret: paymentIntent.client_secret,
           customer_session_client_secret: customerSession.client_secret,
@@ -527,25 +534,36 @@ export const checkoutRouter = {
         throw new TRPCError({ code: "FORBIDDEN" });
       }
 
-      const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-      if (!stripe || !stripeSecretKey) {
-        throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
+      const order = await ctx.db
+        .select({
+          id: orders.id,
+          userId: orders.userId,
+          totalAmount: orders.totalAmount,
+          currency: orders.currency,
+          status: orders.status,
+        })
+        .from(orders)
+        .where(eq(orders.id, input.order_id))
+        .limit(1)
+        .then(([row]) => row);
+
+      // [!] Authorization: an order may only be paid for by the user who placed it
+      if (!order || order.userId !== ctx.userId) {
+        throw new TRPCError({ code: "NOT_FOUND" });
       }
 
-      const [paymentIntent, customer] = await Promise.all([
-        stripe.paymentIntents.retrieve(input.payment_intent_id),
-        getOrCreateStripeCustomer(ctx.userId),
-      ]);
-
-      if (paymentIntent.customer !== customer) {
-        throw new TRPCError({ code: "FORBIDDEN" });
+      if (order.status !== "awaiting_payment") {
+        throw new TRPCError({
+          code: "BAD_REQUEST",
+          message: "This order is no longer awaiting payment.",
+        });
       }
 
       switch (input.type) {
         case "anonpay": {
           if (
-            paymentIntent.amount < ANONPAY_MIN_AMOUNT &&
-            paymentIntent.currency === "eur"
+            order.totalAmount < ANONPAY_MIN_AMOUNT &&
+            order.currency === "EUR"
           ) {
             throw new TRPCError({ code: "BAD_REQUEST" });
           }
@@ -565,33 +583,26 @@ export const checkoutRouter = {
             throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
           }
 
-          // Update payment intent with encrypted billing details
-          await stripe.paymentIntents.update(paymentIntent.id, {
-            // Chunked for the same reason as the configurationSnapshot
-            // above — encrypted billing details can exceed Stripe's
-            // 500-character per-value metadata limit.
-            metadata: writeChunkedStripeMetadata(
-              "billingDetailsSnapshot",
-              await encryptPayload(
-                JSON.stringify(input.billing_details),
-                await deriveKeyHex(stripeSecretKey),
-              ),
-            ),
+          // The address goes on the order rather than through provider
+          // metadata. Anonpay collects it before payment, unlike Stripe.
+          await recordBillingDetails(order.id, {
+            ...input.billing_details,
+            email: null,
           });
 
           const webhook = new URL(`${PUBLIC_DOMAIN}/api/anonpay/webhook`);
           webhook.searchParams.set("secret", ANONPAY_WEBHOOK_SECRET);
-          webhook.searchParams.set("payment_intent_id", paymentIntent.id);
+          webhook.searchParams.set("order_id", order.id);
 
-          const response = await anonpay.create({
+          const response = await new AnonpayClient().create({
             // Required Parameters
             ticker_to: ANONPAY_TICKER_TO,
             network_to: ANONPAY_NETWORK_TO,
             address: ANONPAY_ADDRESS,
             // Optional Parameters
-            description: paymentIntent.description || undefined,
-            amount: (paymentIntent.amount / 100).toFixed(2),
-            fiat_equiv: paymentIntent.currency.toUpperCase(),
+            description: `${APP_NAME} order ${order.id}`,
+            amount: (order.totalAmount / 100).toFixed(2),
+            fiat_equiv: order.currency,
             direct: false,
             email: SUPPORT_EMAIL,
             donation: false,

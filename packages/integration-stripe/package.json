@@ -1,0 +1,32 @@
+{
+  "name": "@virtbase/integration-stripe",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "scripts": {
+    "build": "tsc",
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "dev": "tsc",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "dependencies": {
+    "@virtbase/db": "workspace:*",
+    "@virtbase/integration-sdk": "workspace:*",
+    "@virtbase/ports": "workspace:*",
+    "@virtbase/utils": "workspace:*",
+    "next-intl": "catalog:",
+    "stripe": "^22.4.0",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "catalog:",
+    "@virtbase/tsconfig": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

@@ -23,12 +23,12 @@ import { integrations } from "../../integrations";
 
 type StoreInvoiceStepInput = {
   createdInvoiceId: string;
-  stripeCustomerId: string;
+  userId: string;
 };
 
 export async function storeInvoiceStep({
   createdInvoiceId,
-  stripeCustomerId,
+  userId,
 }: StoreInvoiceStepInput) {
   "use step";
 
@@ -67,14 +67,12 @@ export async function storeInvoiceStep({
           email: users.email,
         })
         .from(users)
-        .where(eq(users.stripeCustomerId, stripeCustomerId))
+        .where(eq(users.id, userId))
         .limit(1)
         .then(([res]) => res);
 
       if (!user) {
-        throw new FatalError(
-          "User with Stripe customer ID not found. Cannot store invoice.",
-        );
+        throw new FatalError("User not found. Cannot store invoice.");
       }
 
       await tx
