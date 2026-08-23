@@ -224,6 +224,35 @@ installs — are hidden from the hub.
 the result, so the status shown in admin is not just whatever the last person to
 press "Check now" saw. Cron schedules live in `apps/web/vercel.json`.
 
+## Server backups
+
+A backup is a Proxmox `vzdump` task. `servers.backups.create` starts it and
+stores a row with the task's UPID; the archive's `volid`, size and finish time
+are only known afterwards, so the row starts out unsettled
+(`finished_at IS NULL`).
+
+Settling that row is `reconcileServerBackup()` in `packages/api/src/backups`,
+and it is the only place that writes a terminal state. It runs from three
+callers:
+
+- `servers.backups.status.get`, polled by the backups page,
+- `servers.backups.create` and `.delete`, before they act on the backup state,
+- `/api/cron/reconcile-server-backups`, every ten minutes.
+
+The cron is what makes the rest safe. An unsettled row blocks every further
+backup of its server and can be neither deleted nor restored, so a backup that
+is only ever reconciled by a browser is a backup that strands the moment the
+customer closes the tab. Reconciliation is therefore total: every branch either
+settles the backup or leaves it for the next run, and a task that can no longer
+be resolved at all is marked as failed once it is older than
+`BACKUP_STALE_AFTER_HOURS`. Proxmox failures are reported to Sentry and
+swallowed - an unreachable node must never fail the caller.
+
+`failed_at` implies there is no archive on the node: a hard `vzdump` error
+writes none, and an exit status of `WARNINGS: n` is treated as a success as
+long as the archive carrying the backup's id is on the storage. Deleting a
+failed backup therefore only drops the row.
+
 ## Secrets and Env Safety
 
 Always treat environment variable values as sensitive unless they are known test-mode flags.

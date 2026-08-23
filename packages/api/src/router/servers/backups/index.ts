@@ -37,6 +37,7 @@ import {
   UpdateServerBackupOutputSchema,
 } from "@virtbase/validators/server";
 import { start } from "workflow/api";
+import { reconcileServerBackups } from "../../../backups";
 import { serverProcedure } from "../../../trpc";
 import { serversBackupsStatusRouter } from "./status";
 
@@ -235,6 +236,18 @@ export const serversBackupsRouter = {
     .output(CreateServerBackupOutputSchema)
     .mutation(async ({ ctx, input }) => {
       const { db, instance, proxmoxNode, server } = ctx;
+
+      // Settle backups that nobody ever finished. Outside of this call a
+      // backup is only reconciled while a customer watches the backups page,
+      // so a single abandoned row would block every further backup of this
+      // server forever.
+      await reconcileServerBackups({
+        db,
+        instance,
+        backupStorage: proxmoxNode.backupStorage,
+        vmid: server.vmid,
+        serverId: server.id,
+      });
 
       const created = await db.transaction(
         async (tx) => {
@@ -461,7 +474,17 @@ export const serversBackupsRouter = {
     .input(DeleteServerBackupInputSchema)
     .output(DeleteServerBackupOutputSchema)
     .mutation(async ({ ctx, input }) => {
-      const { db, instance } = ctx;
+      const { db, instance, proxmoxNode, server } = ctx;
+
+      // A backup that is still marked as running cannot be deleted, so give
+      // reconciliation a chance to settle it first.
+      await reconcileServerBackups({
+        db,
+        instance,
+        backupStorage: proxmoxNode.backupStorage,
+        vmid: server.vmid,
+        serverId: server.id,
+      });
 
       await db.transaction(
         async (tx) => {
@@ -488,15 +511,25 @@ export const serversBackupsRouter = {
             });
           }
 
-          if (!backup.finishedAt || !backup.volid || backup.isLocked) {
+          if (!backup.finishedAt) {
+            // The backup is still running - it has to settle first
             throw new TRPCError({
               code: "BAD_REQUEST",
             });
           }
 
-          if (backup.failedAt) {
-            // Backup failed, no need to delete it in Proxmox
+          if (backup.failedAt || !backup.volid) {
+            // A failed backup has no archive on the node, so there is nothing
+            // to delete there. Its lock never protected any data either, which
+            // is why it is dropped regardless of `isLocked` - otherwise a
+            // failed locked backup could never be removed from the list.
             return;
+          }
+
+          if (backup.isLocked) {
+            throw new TRPCError({
+              code: "BAD_REQUEST",
+            });
           }
 
           const [storage] = backup.volid.split(":");

@@ -7,6 +7,10 @@
       "types": "./dist/index.d.ts",
       "default": "./src/index.ts"
     },
+    "./backups": {
+      "types": "./dist/backups.d.ts",
+      "default": "./src/backups/index.ts"
+    },
     "./integrations": {
       "types": "./dist/integrations.d.ts",
       "default": "./src/integrations/index.ts"

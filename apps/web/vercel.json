@@ -24,6 +24,10 @@
     {
       "path": "/api/cron/check-integration-health",
       "schedule": "*/30 * * * *"
+    },
+    {
+      "path": "/api/cron/reconcile-server-backups",
+      "schedule": "*/10 * * * *"
     }
   ]
 }

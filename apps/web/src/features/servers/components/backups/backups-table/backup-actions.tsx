@@ -122,7 +122,7 @@ export function BackupActions({
             <span>{t("Restore")}</span>
           </DropdownMenuItem>
           <DropdownMenuItem
-            disabled={!finishedAt || isActionsDisabled}
+            disabled={!finishedAt || !!failedAt || isActionsDisabled}
             onClick={() =>
               updateBackup({
                 server_id: serverId,
@@ -146,7 +146,9 @@ export function BackupActions({
           <DropdownMenuSeparator />
           <DropdownMenuItem
             variant="destructive"
-            disabled={isLocked || !finishedAt || isActionsDisabled}
+            disabled={
+              (isLocked && !failedAt) || !finishedAt || isActionsDisabled
+            }
             onSelect={() =>
               deleteBackup({ server_id: serverId, backup_id: backupId })
             }

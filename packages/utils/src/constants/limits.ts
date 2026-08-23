@@ -37,3 +37,17 @@ export const MAX_ISO_DOWNLOAD_SIZE_BYTES = 10 * 1024 * 1024 * 1024; // 10GB
  * The expiration time of an ISO image download in minutes.
  */
 export const ISO_DOWNLOAD_EXPIRATION_MINUTES = 60; // 1 hour
+
+/**
+ * The number of hours after which an unfinished backup is considered
+ * unresolvable and is marked as failed by reconciliation. A `vzdump` task
+ * that runs longer than this has not survived the node's task index anyway.
+ */
+export const BACKUP_STALE_AFTER_HOURS = 12;
+
+/**
+ * The number of minutes reconciliation waits for a backup archive to show up
+ * on the backup storage after its task reported success, before it treats the
+ * archive as gone.
+ */
+export const BACKUP_ARCHIVE_GRACE_MINUTES = 10;
