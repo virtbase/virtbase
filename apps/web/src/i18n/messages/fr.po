@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: French\n"
-"PO-Revision-Date: 2026-08-23 17:41\n"
+"PO-Revision-Date: 2026-08-23 19:39\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -347,6 +347,54 @@ msgstr "URL de base de l'API HTTP de PowerDNS, sans barre oblique finale."
 #: ../../packages/integration-powerdns/src/localize.ts
 msgid "KSXj3s"
 msgstr "Envoyée dans l'en-tête X-API-Key."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AMCq17"
+msgstr "Prometheus"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5VMIS_"
+msgstr "Expose les métriques de la plateforme et du runtime sur un point de collecte authentifié pour Prometheus et Grafana."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "pJ6LWb"
+msgstr "Préfixe des métriques"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "shWZET"
+msgstr "Ajouté devant chaque nom de métrique, y compris les métriques du runtime Node.js."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "eQ6FCA"
+msgstr "Métriques du runtime Node.js"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3V_aL1"
+msgstr "Latence de la boucle d'événements, utilisation du tas, ramasse-miettes et handles ouverts de l'instance interrogée."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "GIgXZF"
+msgstr "Métriques de la plateforme"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "igJLap"
+msgstr "Serveurs, sauvegardes, commandes, paiements et attributions d'IP, comptés dans la base de données au moment de la collecte."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5z4qH1"
+msgstr "Buckets d'histogramme (ms)"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3rCYri"
+msgstr "Bornes supérieures séparées par des virgules pour les durées enregistrées. Laisser vide pour la plage par défaut de 5 ms à 5 minutes."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AfjPfR"
+msgstr "Jeton de collecte"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "NMkV81"
+msgstr "Prometheus l'envoie comme jeton Bearer. Générez-en un avec `openssl rand -hex 32`."
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "o_UJXc"
