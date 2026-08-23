@@ -1,0 +1,152 @@
+---
+title: Unser Rechenzentrum in den Niederlanden
+description: Alle Virtbase-Server stehen im SkyLink Data Center in Eygelshoven, direkt hinter der Grenze bei Aachen. Tier-3-Standard, zwei Stromwege pro Rack, eingehauste Kaltgänge und redundante Glasfaser.
+keywords:
+  - Rechenzentrum
+  - Niederlande
+  - VPS Niederlande
+  - Tier 3
+  - Hosting EU
+  - DSGVO Hosting
+---
+
+<Hero>
+
+# Ein Rechenzentrum, in den Niederlanden
+
+Alle unsere Server stehen im selben Gebäude: dem SkyLink Data Center in
+Eygelshoven, wenige Minuten hinter der deutschen Grenze.
+
+</Hero>
+
+<Advantages>
+  <Advantage title="Eygelshoven, Niederlande" icon="map-pin">
+    Direkt hinter der Grenze bei Aachen, mitten in der EU und nah an Amsterdam.
+  </Advantage>
+
+  <Advantage title="Two power feeds" icon="zap">
+    Jedes Rack hat eine A- und eine B-Seite. Fällt eine aus, läuft dein Server.
+  </Advantage>
+
+  <Advantage title="Eingehauste Kaltgänge" icon="snowflake">
+    Die Kaltluft ist eingehaust, oben im Rack ist es so kühl wie ganz unten.
+  </Advantage>
+
+  <Advantage title="Redundant fibre" icon="network">
+    Zwei Wege aus dem Gebäude, direkt zu den Knoten in Frankfurt und Amsterdam.
+  </Advantage>
+</Advantages>
+
+<Prose>
+
+## Warum die Niederlande
+
+Eygelshoven liegt auf der niederländischen Seite der Grenze, eine kurze Fahrt
+von Aachen entfernt.
+Deutscher Traffic verlässt die Region kaum, und Amsterdam
+und Frankfurt, wo die meisten europäischen Netze ihren Traffic austauschen,
+sind beide nah.
+
+Deine Daten bleiben außerdem in der EU und unter der DSGVO. Wenn du in
+Deutschland, Österreich oder der Schweiz sitzt, bekommst du Latenzen, die sich
+lokal anfühlen, ohne dass deine Daten europäisches Recht verlassen.
+
+## Strom
+
+Tier 3 ist ein Baustandard: An Strom und Kühlung kann gearbeitet werden,
+während die Kundensysteme weiterlaufen.
+
+Jedes Rack wird doppelt versorgt, über eine A- und eine B-Seite, und die beiden
+treffen sich vor dem Server nie. Unsere Hosts haben an jeder Seite ein Netzteil. Fällt ein Weg wegen Wartung oder einer defekten PDU weg, läuft die Maschine über
+den anderen weiter.
+
+![Zwei unabhängige Stromwege, A und B, die jeweils ein eigenes Netzteil im selben Host erreichen.](/assets/static/datacenter/power-path-de.svg)
+
+*Jeder Weg trägt die volle Last auch allein.*
+
+## Kühlung
+
+Kalte Luft wird in einen geschlossenen Gang zwischen zwei Rackreihen gedrückt. Weil der Gang eingehaust ist, kann die Luft nirgendwo hin außer durch die
+Server.
+
+Dadurch zieht eine Maschine oben im Rack Luft mit derselben Temperatur an wie
+eine ganz unten. Server, die warm werden, drosseln, und Drosselung ist ein
+häufiger Grund dafür, dass günstiges Hosting mal schnell und mal langsam wirkt.
+
+![Querschnitt durch einen eingehausten Kaltgang: Kalte Luft strömt in den geschlossenen Gang zwischen zwei Rackreihen, geht durch die Server und verlässt sie als Abwärme an der Außenseite.](/assets/static/datacenter/cold-aisle-de.svg)
+
+*Die Einhausung hält die Ansaugtemperatur über das ganze Rack gleich.*
+
+## Netz
+
+Die Glasfaser ins Gebäude ist redundant und erreicht DE-CIX Frankfurt, Speed-IX
+und Nikhef Amsterdam. Traffic zu deutschen und niederländischen Netzen bleibt in
+der Regel regional, statt erst den Kontinent zu queren.
+
+Vor jedem Server sitzt außerdem der DDoS-Schutz von
+aurologic, in jedem Paket, ohne
+Aufpreis. Angriffstraffic wird vorgelagert gefiltert und erreicht deinen Uplink
+nie.
+
+![Netztopologie: Eygelshoven ist über je zwei unabhängige Glasfaserwege mit Nikhef Amsterdam und Speed-IX sowie mit DE-CIX Frankfurt verbunden.](/assets/static/datacenter/network-map-de.svg)
+
+*Jede Strecke besteht aus zwei unabhängigen Glasfaserwegen.*
+
+## Sicherheit
+
+Der Zutritt zum Gebäude ist kontrolliert und überwacht. Das ist der einfache
+Teil und schützt für sich genommen weniger, als viele annehmen.
+
+Deshalb sichern wir auch die Maschinen ab. Jeder Host hat eine Bootsperre mit
+TPM- und BIOS-Passwort, sodass niemand an einem Server herumspielen kann, nur
+weil er davorsteht. Jede Platte in unserem Ceph-Cluster ist mit LUKS2
+verschlüsselt. Auf einem Datenträger, der das Gebäude verlässt, steht nichts
+Lesbares.
+
+Mehr dazu steht in Wie sicher ist
+Virtbase.
+
+## Wer das Gebäude betreibt
+
+Das Rechenzentrum gehört der SkyLink Data Center BV, Bart van Slobbestraat 16B,
+6471 WV Eygelshoven. Die Hardware darin gehört uns. Wir kaufen und betreiben
+unsere eigenen Server, statt fremde Kapazität weiterzuverkaufen.
+
+</Prose>
+
+<Faq title="Fragen zu unserem Rechenzentrum">
+  <Question title="Wo genau stehen die Virtbase-Server?">
+    Alle stehen im SkyLink Data Center in Eygelshoven im Süden der Niederlande,
+    nahe der deutschen Grenze bei Aachen.
+  </Question>
+
+  <Question title="Liegen meine Daten in der Europäischen Union?">
+    Ja. Das Gebäude steht in den Niederlanden, deine Daten bleiben also in der
+    EU und werden nach DSGVO verarbeitet. Was wir verarbeiten, steht in unserer
+    [Datenschutzerklärung](/de/legal/privacy).
+  </Question>
+
+  <Question title="Was bedeutet Tier-3-Standard?">
+    Er beschreibt das Gebäude, nicht die Server. Ein Tier-3-Rechenzentrum hat
+    mehr als einen Strom- und Kühlweg, sodass Wartung möglich ist, ohne
+    Kundensysteme abzuschalten.
+  </Question>
+
+  <Question title="Was passiert, wenn ein Stromweg ausfällt?">
+    Nichts, das du merken würdest. Jedes Rack wird über zwei getrennte Wege
+    versorgt und unsere Hosts haben an jedem ein Netzteil.
+  </Question>
+
+  <Question title="An welchen Internetknoten hängt das Rechenzentrum?">
+    An DE-CIX Frankfurt, Speed-IX und Nikhef Amsterdam, über redundante
+    Glasfaser. Das hält den Weg zu deutschen und niederländischen Netzen kurz.
+  </Question>
+
+  <Question title="Kann ich das Rechenzentrum besichtigen oder Remote Hands bekommen?">
+    Nein. Virtbase ist ein gemanagtes VPS-Produkt, Kunden haben keinen
+    physischen Zugang zu den Racks. Wenn auf Hardware-Ebene etwas zu tun ist,
+    [frag unseren Support](/de/contact).
+  </Question>
+</Faq>
+
+<Offers />
