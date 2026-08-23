@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { NextProvider } from "fumadocs-core/framework/next";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
@@ -41,15 +42,17 @@ export default async function LocaleLayout({
 
   return (
     <Document locale={locale}>
-      <NextIntlClientProvider locale={locale}>
-        <NuqsAdapter>
-          <TRPCReactProvider>
-            <Nav className="max-w-5xl" />
-            {children}
-            <Footer className="max-w-5xl border-0" />
-          </TRPCReactProvider>
-        </NuqsAdapter>
-      </NextIntlClientProvider>
+      <NextProvider>
+        <NextIntlClientProvider locale={locale}>
+          <NuqsAdapter>
+            <TRPCReactProvider>
+              <Nav className="max-w-5xl" />
+              {children}
+              <Footer className="max-w-5xl border-0" />
+            </TRPCReactProvider>
+          </NuqsAdapter>
+        </NextIntlClientProvider>
+      </NextProvider>
       <DefaultJsonLd />
     </Document>
   );

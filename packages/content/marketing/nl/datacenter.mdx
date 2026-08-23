@@ -1,0 +1,154 @@
+---
+title: Ons datacenter in Nederland
+description: Alle Virtbase-servers staan in het SkyLink Data Center in Eygelshoven, net over de grens bij Aken. Tier 3-standaard, twee stroomvoedingen per rack, afgesloten koude gangen en redundante glasvezel.
+keywords:
+  - datacenter
+  - Nederland
+  - VPS Nederland
+  - Tier 3
+  - EU hosting
+  - AVG hosting
+---
+
+<Hero>
+
+# Eén datacenter, in Nederland
+
+Al onze servers staan in hetzelfde gebouw: het SkyLink Data Center in
+Eygelshoven, een paar minuten van de Duitse grens.
+
+</Hero>
+
+<Advantages>
+  <Advantage title="Eygelshoven, Nederland" icon="map-pin">
+    Net over de Duitse grens bij Aken, binnen de EU en dicht bij Amsterdam.
+  </Advantage>
+
+  <Advantage title="Twee stroomvoedingen" icon="zap">
+    Elk rack heeft een A- en een B-kant. Valt er één weg, dan draait je server.
+  </Advantage>
+
+  <Advantage title="Afgesloten koude gangen" icon="snowflake">
+    De koude lucht zit ingesloten: bovenin is het net zo koel als onderin.
+  </Advantage>
+
+  <Advantage title="Redundante glasvezel" icon="network">
+    Twee routes het gebouw uit, naar de knooppunten in Frankfurt en Amsterdam.
+  </Advantage>
+</Advantages>
+
+<Prose>
+
+## Waarom Nederland
+
+Eygelshoven ligt aan de Nederlandse kant van de grens, een klein stukje rijden
+vanaf Aken. Duits verkeer verlaat de regio nauwelijks, en Amsterdam en
+Frankfurt, waar de meeste Europese netwerken hun verkeer uitwisselen, liggen
+allebei dichtbij.
+
+Je data blijft bovendien binnen de EU en onder de AVG. Zit je in Nederland,
+België of Duitsland, dan krijg je latency die lokaal aanvoelt zonder dat je data
+het Europese recht verlaat.
+
+## Stroom
+
+Tier 3 is een ontwerpstandaard: aan stroom en koeling kan gewerkt worden
+terwijl de apparatuur van klanten gewoon doordraait.
+
+Elk rack wordt dubbel gevoed, via een A- en een B-kant, en die twee komen vóór
+de server nooit samen. Onze hosts hebben aan elke kant een voeding. Valt een
+kant weg door onderhoud of een kapotte PDU, dan draait de machine door op de
+andere.
+
+![Twee onafhankelijke stroomvoedingen, A en B, die elk een aparte voeding in dezelfde host bereiken.](/assets/static/datacenter/power-path-nl.svg)
+
+_Elke voeding trekt in zijn eentje de volledige belasting._
+
+## Koeling
+
+Koude lucht wordt in een afgesloten gang tussen twee rijen racks geblazen.
+Doordat de gang is ingesloten, kan die lucht nergens heen behalve door de
+servers.
+
+Daardoor zuigt een machine bovenin het rack lucht aan van dezelfde temperatuur
+als een machine onderin. Servers die warm worden gaan knijpen, en dat knijpen is
+een veelvoorkomende reden dat goedkope hosting het ene moment snel voelt en het
+volgende traag.
+
+![Doorsnede van een afgesloten koude gang: koude lucht komt de gesloten gang tussen twee rijen racks binnen, gaat door de servers heen en verlaat ze als warme lucht aan de buitenkant.](/assets/static/datacenter/cold-aisle-nl.svg)
+
+_De insluiting houdt de aanzuigtemperatuur over het hele rack gelijk._
+
+## Netwerk
+
+De glasvezel het gebouw in is redundant en komt uit op DE-CIX Frankfurt,
+Speed-IX en Nikhef Amsterdam. Verkeer naar Duitse en Nederlandse netwerken
+blijft meestal regionaal in plaats van eerst het continent over te steken.
+
+Voor elke server zit daarnaast de [DDoS-bescherming van
+aurologic](/nl/help/article/about-ddos-protection), bij elk pakket, zonder
+meerprijs. Aanvalsverkeer wordt bovenstrooms gefilterd en bereikt je uplink
+nooit.
+
+![Netwerktopologie: Eygelshoven is via twee onafhankelijke glasvezelroutes verbonden met Nikhef Amsterdam en Speed-IX, en met DE-CIX Frankfurt.](/assets/static/datacenter/network-map-nl.svg)
+
+_Elke verbinding bestaat uit twee onafhankelijke glasvezelroutes._
+
+## Beveiliging
+
+De toegang tot het gebouw is beheerd en wordt bewaakt. Dat is het makkelijke
+deel, en op zichzelf beschermt het minder dan mensen denken.
+
+Daarom zetten we de machines zelf ook op slot. Elke host heeft een bootlock met
+TPM- en BIOS-wachtwoord, zodat niemand aan een server kan sleutelen puur omdat
+hij ervoor staat. Elke schijf in ons Ceph-cluster is versleuteld met LUKS2. Op
+een schijf die het gebouw verlaat staat niets leesbaars.
+
+Meer daarover lees je in [Hoe veilig is
+Virtbase](/nl/help/article/about-security).
+
+## Wie het gebouw beheert
+
+Het pand is van SkyLink Data Center BV, Bart van Slobbestraat 16B, 6471 WV
+Eygelshoven. De hardware erin is van ons. We kopen en beheren onze eigen servers
+in plaats van capaciteit van iemand anders door te verkopen.
+
+</Prose>
+
+<Faq title="Vragen over ons datacenter">
+  <Question title="Waar staan de Virtbase-servers precies?">
+    Allemaal in het SkyLink Data Center in Eygelshoven, in het zuiden van
+    Nederland, dicht bij de Duitse grens bij Aken.
+  </Question>
+
+  <Question title="Staat mijn data binnen de Europese Unie?">
+    Ja. Het gebouw staat in Nederland, dus je data blijft binnen de EU en wordt
+    verwerkt onder de AVG. In onze [privacyverklaring](/nl/legal/privacy) staat
+    wat we verwerken.
+  </Question>
+
+  <Question title="Wat betekent Tier 3-standaard?">
+    Het zegt iets over het gebouw, niet over de servers. Een Tier 3-locatie
+    heeft meer dan één stroom- en koelpad, zodat onderhoud kan plaatsvinden
+    zonder apparatuur van klanten uit te zetten.
+  </Question>
+
+  <Question title="Wat gebeurt er als een stroomvoeding uitvalt?">
+    Niets dat je zou merken. Elk rack wordt via twee gescheiden paden gevoed en
+    onze hosts hebben aan elk pad een voeding, dus er kan er één wegvallen
+    zonder onderbreking.
+  </Question>
+
+  <Question title="Op welke internetknooppunten is het datacenter aangesloten?">
+    Op DE-CIX Frankfurt, Speed-IX en Nikhef Amsterdam, via redundante
+    glasvezel. Dat houdt de route naar Duitse en Nederlandse netwerken kort.
+  </Question>
+
+  <Question title="Kan ik het datacenter bezoeken of remote hands krijgen?">
+    Nee. Virtbase is een managed VPS-product, klanten hebben geen fysieke
+    toegang tot de racks. Moet er iets op hardwareniveau gebeuren,
+    [neem dan contact op met support](/nl/contact).
+  </Question>
+</Faq>
+
+<Offers />

@@ -107,6 +107,15 @@ export async function Footer({ className }: { className?: string }) {
                     </li>
                     <li>
                       <IntlLink
+                        href="/datacenter"
+                        prefetch={false}
+                        className={linkListItemClassName}
+                      >
+                        {t("Data center")}
+                      </IntlLink>
+                    </li>
+                    <li>
+                      <IntlLink
                         href="/help"
                         prefetch={false}
                         className={linkListItemClassName}

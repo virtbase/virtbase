@@ -21,8 +21,13 @@ import type { LucideIcon } from "@virtbase/ui/icons";
 import {
   LucideLayoutDashboard,
   LucideLifeBuoy,
+  LucideLock,
+  LucideMapPin,
   LucideNetwork,
+  LucideServer,
   LucideShield,
+  LucideSnowflake,
+  LucideZap,
 } from "@virtbase/ui/icons";
 import { useExtracted } from "next-intl";
 import type React from "react";
@@ -39,6 +44,11 @@ const icons = {
   "life-buoy": LucideLifeBuoy,
   network: LucideNetwork,
   "layout-dashboard": LucideLayoutDashboard,
+  lock: LucideLock,
+  "map-pin": LucideMapPin,
+  server: LucideServer,
+  snowflake: LucideSnowflake,
+  zap: LucideZap,
 } as const;
 
 export type AdvantageIcon = keyof typeof icons;
