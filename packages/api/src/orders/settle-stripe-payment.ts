@@ -18,8 +18,8 @@
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { users } from "@virtbase/db/schema";
+import type { Stripe } from "@virtbase/integration-stripe";
 import { stripe } from "@virtbase/integration-stripe";
-import type { Stripe } from "stripe";
 import { applyPaymentEvent } from "../orders/apply-payment-event";
 import { fulfilOrder } from "../orders/fulfill-order";
 import { resolveOrderId } from "../orders/legacy-snapshot";
