@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Turkish\n"
-"PO-Revision-Date: 2026-08-23 12:11\n"
+"PO-Revision-Date: 2026-08-23 17:42\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -672,18 +672,6 @@ msgstr "Yardım Merkezi"
 #: src/app/(public)/[locale]/help/page.tsx
 msgid "PPnkha"
 msgstr "Kapsamlı Yardım Merkezimiz ile Virtbase ile ilgili tüm sorularınızın yanıtlarını tek bir yerde bulun."
-
-#: src/app/(public)/[locale]/page.tsx
-msgid "Wbc21W"
-msgstr "Virtbase - Barındırma ama güvenli."
-
-#: src/app/(public)/[locale]/page.tsx
-msgid "nEWy6S"
-msgstr "Virtbase, güvenli sunucu barındırma sağlayıcısıdır. Minimum çabayla maksimum performans."
-
-#: src/app/(public)/[locale]/page.tsx
-msgid "BdEM9F"
-msgstr "Barındırma ama güvenli."
 
 #: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "t1DCfI"
@@ -2565,125 +2553,9 @@ msgid "YOc6Ow"
 msgstr "Ödeme tarihi"
 
 #: src/features/landing/components/advantage-item.tsx
-#: src/features/landing/components/features-showcase.tsx
+#: src/features/landing/components/feature.tsx
 msgid "TdTXXf"
 msgstr "Daha fazla bilgi edin"
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "GTucMY"
-msgstr "Maksimum gizlilik"
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "IIN9F8"
-msgstr "Bizim için gizlilik her şeyden önce gelir. Üçüncü şahıslarla kesinlikle paylaşım yapılmaz."
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "daLPgg"
-msgstr "Orijinal destek"
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "hnGR7B"
-msgstr "İhtiyaç duyduğunuz her an, günün her saati insani destek sunuyoruz."
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "uDrdrl"
-msgstr "DDoS koruması dahil"
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "TWNuCY"
-msgstr "Aktif DDoS koruması sizi çevrimiçi tutar. Asla ekstra ücret alınmaz."
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "nVfA_q"
-msgstr "Modern müşteri portalı"
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "fQqAwd"
-msgstr "Sunucularınızı güçlük veya hayal kırıklığı yaşamadan verimli bir şekilde yönetin."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "j3A1sI"
-msgstr "Bir sunucunun sağlanması ne kadar sürer?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "50VRoa"
-msgstr "Sipariş edilen paketin sağlanması genelde siparişten hemen sonra, sistemimizde otomatik ve bekleme olmadan tamamlanır. Ek olarak e-posta ile onay da gönderilir."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "zWVB3p"
-msgstr "Trafik sınırı var mı?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "-T4TVw"
-msgstr "Hayır, sunucularımız için herhangi bir trafik sınırı yoktur. Uplink adil kullanım ilkesine göre sağlanmaktadır. Ancak orantısız derecede yüksek sürekli kullanım durumunda bant genişliği geçici olarak kısıtlanabilir."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "RS_4DH"
-msgstr "Paket sonradan değiştirilebilir mi?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "tBYbeE"
-msgstr "Sipariş edilen paketi müşteri portalından kolayca değiştirebilirsin. Geçerli fatura döneminde geçersen fiyat farkı buna göre yansıtılır."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "Adyexr"
-msgstr "Sunucumu istediğim zaman iptal edebilir miyim?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "4FVTjU"
-msgstr "Evet, sipariş edilen sunucuları dilediğin zaman müşteri portalından iptal edebilirsin. İptal, seçtiğin fatura döneminin sonunda geçerli olur."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "KfLE6n"
-msgstr "Sunucularıma nasıl erişebilirim?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "B7MEDP"
-msgstr "Sipariş ettiğin sunucuyu kendi müşteri portalımız üzerinden yönetirsin. Şifreyle SSH erişimi varsayılan olarak açıktır. Ayrıca VNC konsoluna da geçebilirsin."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "p_GLe_"
-msgstr "Verilerim ne kadar güvende?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "kexWaZ"
-msgstr "Verilerin korunması en büyük önceliğimizdir. Sunuculardaki tüm veriler şifrelenmiş disklerde saklanır. Sağlayıcı olarak bizim veya diğer aktörlerin erişimi genellikle mümkün değildir. Daha fazla bilgiyi <privacy>gizlilik politikamızda</privacy> bulabilirsiniz."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "zcLioW"
-msgstr "Nereden destek alabilirim?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "igjse2"
-msgstr "Destek ekibimiz 7/24 hizmetinizdedir. <email>support@virtbase.com</email> adresine e-posta gönderdiğinizde hızlı bir yanıt alırsınız."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "aINRxc"
-msgstr "Sunucular nerede bulunuyor?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "cMXI0b"
-msgstr "Sunucularımızın tümü şu anda Hollanda'daki Skylink Veri Merkezinde bulunmaktadır. Tier 3 standartlarıyla donatılmıştır ve yedek güç kaynağına, ağ bileşenlerine ve soğutmaya sahiptir."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "7Rm1x6"
-msgstr "Sık sorulan sorular"
-
-#: src/features/landing/components/features-showcase.tsx
-msgid "N2jrkQ"
-msgstr "Gerçek zamanlı sunucu ölçümleri"
-
-#: src/features/landing/components/features-showcase.tsx
-msgid "9mCvlG"
-msgstr "Sunucu ölçümlerimiz gerçek zamanlı olarak güncellenir, böylece sunucularınızın mevcut durumunu her zaman görebilirsiniz."
-
-#: src/features/landing/components/features-showcase.tsx
-msgid "S4NISm"
-msgstr "Durum bilgisi olmayan güvenlik duvarı"
-
-#: src/features/landing/components/features-showcase.tsx
-msgid "1s50w7"
-msgstr "Kendi güvenlik duvarı kurallarınızla sunucunuzu özel olarak koruyabilirsiniz. Her kural ayrı ayrı yapılandırılabilir."
 
 #: src/features/landing/components/server-firewall-demo.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
@@ -3618,6 +3490,10 @@ msgstr "Şifreyi sıfırla"
 #: src/ui/footer.tsx
 msgid "9YazHG"
 msgstr "Şirket"
+
+#: src/ui/footer.tsx
+msgid "iby7Fe"
+msgstr "Veri merkezi"
 
 #: src/ui/footer.tsx
 msgid "7oFrM6"
