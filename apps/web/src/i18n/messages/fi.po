@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Finnish\n"
-"PO-Revision-Date: 2026-08-23 17:42\n"
+"PO-Revision-Date: 2026-08-23 19:39\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -347,6 +347,54 @@ msgstr "PowerDNS:n HTTP-rajapinnan perus-URL ilman lopun kauttaviivaa."
 #: ../../packages/integration-powerdns/src/localize.ts
 msgid "KSXj3s"
 msgstr "Lähetetään X-API-Key-otsakkeena."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AMCq17"
+msgstr "Prometheus"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5VMIS_"
+msgstr "Julkaisee alusta- ja ajonaikaiset metriikat todennetussa scrape-päätepisteessä Prometheusta ja Grafanaa varten."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "pJ6LWb"
+msgstr "Metriikan etuliite"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "shWZET"
+msgstr "Lisätään jokaisen metriikan nimen eteen, myös Node.js:n ajonaikaisiin metriikkoihin."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "eQ6FCA"
+msgstr "Node.js:n ajonaikaiset metriikat"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3V_aL1"
+msgstr "Tapahtumasilmukan viive, keon käyttö, roskienkeruu ja avoimet kahvat siitä instanssista, jota luetaan."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "GIgXZF"
+msgstr "Alustan metriikat"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "igJLap"
+msgstr "Palvelimet, varmuuskopiot, tilaukset, maksut ja IP-varaukset laskettuna tietokannasta lukuhetkellä."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5z4qH1"
+msgstr "Histogrammin lokerot (ms)"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3rCYri"
+msgstr "Pilkuilla erotellut ylärajat tallennetuille kestoille. Jätä tyhjäksi, jolloin käytetään oletusaluetta 5 ms – 5 minuuttia."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AfjPfR"
+msgstr "Scrape-tunnus"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "NMkV81"
+msgstr "Prometheus lähettää sen Bearer-tunnuksena. Luo sellainen komennolla `openssl rand -hex 32`."
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "o_UJXc"
