@@ -7,7 +7,7 @@
 <p align="center">
     Hosting, but secure.
     <br />
-    <a href="https://virtbsase.com"><strong>Learn more »</strong></a>
+    <a href="https://virtbase.com"><strong>Learn more »</strong></a>
     <br />
     <br />
     <a href="#introduction"><strong>Introduction</strong></a> ·
