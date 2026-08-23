@@ -28,7 +28,8 @@ import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import { getExtracted, getFormatter, getLocale } from "next-intl/server";
 import { defaultLocale } from "@/i18n/config";
-import { legal } from "@/lib/source";
+import { constructAlternateLanguages } from "@/lib/hreflang";
+import { getDocumentLocales, legal } from "@/lib/source";
 import { BlockWrapper } from "@/ui/block-wrapper";
 import { TableOfContents } from "@/ui/fumadocs/table-of-contents";
 
@@ -61,6 +62,10 @@ export async function generateMetadata({
     title,
     description,
     canonicalUrl: PUBLIC_DOMAIN + page.url,
+    languages: constructAlternateLanguages(
+      `/legal/${page.slugs.join("/")}`,
+      getDocumentLocales(legal, page.slugs),
+    ),
     image: constructOpengraphUrl({
       title,
       subtitle: description,

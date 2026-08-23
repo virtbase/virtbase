@@ -19,9 +19,18 @@ import { APP_DOMAIN, PUBLIC_DOMAIN } from "@virtbase/utils";
 import type { MetadataRoute } from "next";
 import { cacheLife, cacheTag } from "next/cache";
 import { routing } from "@/i18n/routing.public";
-import { helpArticles, legal } from "@/lib/source";
+import { constructAlternateLanguages } from "@/lib/hreflang";
+import { getDocumentLocales, helpArticles, legal } from "@/lib/source";
 
 type SitemapPage = MetadataRoute.Sitemap[number];
+
+/**
+ * Fumadocs bakes the locale into `page.url` (`/en/help/article/...`), while
+ * `constructAlternateLanguages` expects a locale-agnostic path.
+ */
+function localelessPath(page: { url: string; locale?: string | undefined }) {
+  return page.locale ? page.url.slice(page.locale.length + 1) : page.url;
+}
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   "use cache";
@@ -52,16 +61,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             changeFrequency: "monthly",
             priority: page === "/" ? 1 : 0.8,
             alternates: {
-              languages: {
-                ...Object.assign(
-                  {},
-                  ...routing.locales
-                    .filter((currentLocale) => currentLocale !== locale)
-                    .map((currentLocale) => ({
-                      [currentLocale]: `${PUBLIC_DOMAIN}/${currentLocale}${page === "/" ? "" : page}`,
-                    })),
-                ),
-              },
+              languages: constructAlternateLanguages(page === "/" ? "" : page),
             },
           }) satisfies SitemapPage,
       ),
@@ -86,25 +86,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             lastModified: page.data.lastModified ?? new Date(),
             priority: 0.5,
             alternates: {
-              languages: {
-                ...Object.assign(
-                  {},
-                  ...pages
-                    // Page has the same path (without locale)
-                    .filter(
-                      (currentPage) =>
-                        currentPage.slugs.join("/") === page.slugs.join("/"),
-                    )
-                    // Page has a locale
-                    .filter((currentPage) => Boolean(currentPage.locale))
-                    // Page has a different locale
-                    .filter((currentPage) => currentPage.locale !== page.locale)
-                    .map((currentPage) => ({
-                      [currentPage.locale as string]:
-                        PUBLIC_DOMAIN + currentPage.url,
-                    })),
-                ),
-              },
+              languages: constructAlternateLanguages(
+                localelessPath(page),
+                getDocumentLocales(collection, page.slugs),
+              ),
             },
           }) satisfies SitemapPage,
       );

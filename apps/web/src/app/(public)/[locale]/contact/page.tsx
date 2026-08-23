@@ -33,6 +33,7 @@ import type { Metadata } from "next";
 import { cacheLife, cacheTag } from "next/cache";
 import { getExtracted, getLocale } from "next-intl/server";
 import { IntlLink } from "@/i18n/navigation.public";
+import { constructAlternateLanguages } from "@/lib/hreflang";
 import { BlockWrapper } from "@/ui/block-wrapper";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -53,6 +54,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title,
     description,
     canonicalUrl: `${PUBLIC_DOMAIN}/${locale}/contact`,
+    languages: constructAlternateLanguages("/contact"),
     image: constructOpengraphUrl({
       title,
       subtitle: description,

@@ -29,4 +29,46 @@ describe("constructMetadata", () => {
     expect(metadata.title).toBe(`Test Title | ${APP_NAME}`);
     expect(metadata.description).toBe("Test Description");
   });
+
+  test("it omits alternates when neither a url nor languages are given", () => {
+    expect(
+      constructMetadata({ title: "Test Title" }).alternates,
+    ).toBeUndefined();
+  });
+
+  test("it keeps the canonical url when no languages are given", () => {
+    const metadata = constructMetadata({
+      canonicalUrl: "https://example.com/en/help",
+    });
+
+    expect(metadata.alternates?.canonical).toBe("https://example.com/en/help");
+    expect(metadata.alternates?.languages).toBeUndefined();
+  });
+
+  test("it exposes the hreflang map alongside the canonical url", () => {
+    const languages = {
+      en: "https://example.com/en/help",
+      de: "https://example.com/de/help",
+      "x-default": "https://example.com/en/help",
+    };
+
+    const metadata = constructMetadata({
+      canonicalUrl: "https://example.com/en/help",
+      languages,
+    });
+
+    expect(metadata.alternates?.canonical).toBe("https://example.com/en/help");
+    expect(metadata.alternates?.languages).toEqual(languages);
+  });
+
+  test("it exposes the hreflang map without a canonical url", () => {
+    const metadata = constructMetadata({
+      languages: { en: "https://example.com/en" },
+    });
+
+    expect(metadata.alternates?.canonical).toBeUndefined();
+    expect(metadata.alternates?.languages).toEqual({
+      en: "https://example.com/en",
+    });
+  });
 });

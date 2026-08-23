@@ -28,6 +28,7 @@ import { AdvantagesRow } from "@/features/landing/components/advantages-row";
 import { FAQSection } from "@/features/landing/components/faq-section";
 import { FeaturesShowcase } from "@/features/landing/components/features-showcase";
 import { OperatingSystemShowcase } from "@/features/landing/components/operating-system-showcase";
+import { constructAlternateLanguages } from "@/lib/hreflang";
 import { BlockWrapper } from "@/ui/block-wrapper";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -48,6 +49,7 @@ export async function generateMetadata(): Promise<Metadata> {
     fullTitle: title,
     description,
     canonicalUrl: `${PUBLIC_DOMAIN}/${locale}`,
+    languages: constructAlternateLanguages(""),
     image: constructOpengraphUrl({
       title,
       subtitle: description,

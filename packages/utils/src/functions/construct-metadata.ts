@@ -30,6 +30,7 @@ export function constructMetadata({
   noIndex = false,
   manifest,
   keywords,
+  languages,
 }: {
   title?: string;
   fullTitle?: string;
@@ -41,6 +42,12 @@ export function constructMetadata({
   noIndex?: boolean;
   manifest?: string | URL | null;
   keywords?: string[] | null;
+  /**
+   * `hreflang` map for the localized variants of this page, including the
+   * `x-default` entry. Build it with `constructAlternateLanguages` so the map
+   * stays self-referential, which is what the hreflang spec requires.
+   */
+  languages?: Record<string, string> | null;
 } = {}): Metadata {
   return {
     title:
@@ -86,9 +93,10 @@ export function constructMetadata({
       creator: "@virtbasecom",
     },
     metadataBase: PUBLIC_DOMAIN,
-    ...((url || canonicalUrl) && {
+    ...((url || canonicalUrl || languages) && {
       alternates: {
         canonical: url || canonicalUrl,
+        ...(languages && { languages }),
       },
     }),
     robots: {

@@ -31,6 +31,7 @@ import type { Metadata } from "next";
 import { cacheLife, cacheTag } from "next/cache";
 import { getExtracted, getLocale } from "next-intl/server";
 import { IntlLink } from "@/i18n/navigation.public";
+import { constructAlternateLanguages } from "@/lib/hreflang";
 import { helpArticles } from "@/lib/source";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -51,6 +52,7 @@ export async function generateMetadata(): Promise<Metadata> {
     title,
     description,
     canonicalUrl: `${PUBLIC_DOMAIN}/${locale}/help`,
+    languages: constructAlternateLanguages("/help"),
     image: constructOpengraphUrl({
       title,
       subtitle: description,

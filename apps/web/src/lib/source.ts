@@ -20,6 +20,8 @@ import { defineI18n } from "fumadocs-core/i18n";
 import { loader } from "fumadocs-core/source";
 import { toFumadocsSource } from "fumadocs-mdx/runtime/server";
 
+import type { Locale } from "next-intl";
+
 import { defaultLocale, locales } from "@/i18n/config";
 
 const i18n = defineI18n({
@@ -38,3 +40,37 @@ export const helpArticles = loader({
   source: toFumadocsSource(helpArticleCollection, []),
   i18n,
 });
+
+/**
+ * A Fumadocs loader, narrowed to what locale lookups need. Structural so both
+ * collections work without threading their schemas through.
+ */
+type LocalizedSource = {
+  getPages: () => readonly {
+    slugs: readonly string[];
+    locale?: string | undefined;
+  }[];
+};
+
+/**
+ * The locales a document has an MDX file for, in the order locales are
+ * declared.
+ *
+ * Translated documents are not guaranteed to be complete, so hreflang and the
+ * sitemap must only advertise the languages that actually resolve.
+ */
+export function getDocumentLocales(
+  source: LocalizedSource,
+  slugs: readonly string[] = [],
+): Locale[] {
+  const slug = slugs.join("/");
+
+  const documentLocales = new Set(
+    source
+      .getPages()
+      .filter((page) => page.slugs.join("/") === slug)
+      .map((page) => page.locale),
+  );
+
+  return locales.filter((locale) => documentLocales.has(locale));
+}

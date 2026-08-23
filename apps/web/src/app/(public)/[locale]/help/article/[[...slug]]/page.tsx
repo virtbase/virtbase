@@ -39,9 +39,11 @@ import { notFound } from "next/navigation";
 import { getExtracted, getFormatter, getLocale } from "next-intl/server";
 import { defaultLocale } from "@/i18n/config";
 import { IntlLink } from "@/i18n/navigation.public";
-import { helpArticles } from "@/lib/source";
+import { constructAlternateLanguages } from "@/lib/hreflang";
+import { getDocumentLocales, helpArticles } from "@/lib/source";
 import { HelpHint } from "@/ui/fumadocs/help-hint";
 import { TableOfContents } from "@/ui/fumadocs/table-of-contents";
+import { BreadcrumbJsonLd } from "@/ui/seo/breadcrumb-json-ld";
 
 export async function generateStaticParams() {
   return helpArticles.getPages().map((page) => ({
@@ -72,6 +74,10 @@ export async function generateMetadata({
     title,
     description,
     canonicalUrl: PUBLIC_DOMAIN + page.url,
+    languages: constructAlternateLanguages(
+      `/help/article/${page.slugs.join("/")}`,
+      getDocumentLocales(helpArticles, page.slugs),
+    ),
     image: constructOpengraphUrl({
       title,
       subtitle: description,
@@ -181,6 +187,12 @@ export default async function HelpArticlePage({
           </IntlLink>
         </div>
       </div>
+      <BreadcrumbJsonLd
+        items={[
+          { name: t("All articles"), url: `${PUBLIC_DOMAIN}/${locale}/help` },
+          { name: title },
+        ]}
+      />
     </main>
   );
 }
