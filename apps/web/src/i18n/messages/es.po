@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Spanish\n"
-"PO-Revision-Date: 2026-08-23 17:41\n"
+"PO-Revision-Date: 2026-08-23 19:39\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -347,6 +347,54 @@ msgstr "URL base de la API HTTP de PowerDNS, sin barra final."
 #: ../../packages/integration-powerdns/src/localize.ts
 msgid "KSXj3s"
 msgstr "Se envía como la cabecera X-API-Key."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AMCq17"
+msgstr "Prometheus"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5VMIS_"
+msgstr "Expone métricas de la plataforma y del runtime en un endpoint de scrape autenticado para Prometheus y Grafana."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "pJ6LWb"
+msgstr "Prefijo de métricas"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "shWZET"
+msgstr "Se antepone a cada nombre de métrica, incluidas las métricas del runtime de Node.js."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "eQ6FCA"
+msgstr "Métricas del runtime de Node.js"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3V_aL1"
+msgstr "Latencia del bucle de eventos, uso del heap, recolección de basura y handles abiertos de la instancia consultada."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "GIgXZF"
+msgstr "Métricas de la plataforma"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "igJLap"
+msgstr "Servidores, copias de seguridad, pedidos, pagos y asignaciones de IP, contados en la base de datos en el momento del scrape."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5z4qH1"
+msgstr "Buckets de histograma (ms)"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3rCYri"
+msgstr "Límites superiores separados por comas para las duraciones registradas. Déjalo en blanco para el rango predeterminado de 5 ms a 5 minutos."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AfjPfR"
+msgstr "Token de scrape"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "NMkV81"
+msgstr "Prometheus lo envía como token Bearer. Genera uno con `openssl rand -hex 32`."
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "o_UJXc"
