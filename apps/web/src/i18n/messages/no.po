@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Norwegian\n"
-"PO-Revision-Date: 2026-08-23 12:11\n"
+"PO-Revision-Date: 2026-08-23 17:42\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -672,18 +672,6 @@ msgstr "Hjelpesenter"
 #: src/app/(public)/[locale]/help/page.tsx
 msgid "PPnkha"
 msgstr "Finn svar på alle dine Virtbase-relaterte spørsmål på ett sted med vårt omfattende hjelpesenter."
-
-#: src/app/(public)/[locale]/page.tsx
-msgid "Wbc21W"
-msgstr "Virtbase - Hosting, men sikker."
-
-#: src/app/(public)/[locale]/page.tsx
-msgid "nEWy6S"
-msgstr "Virtbase er leverandøren for sikker serverhosting. Maksimal ytelse med minimal innsats."
-
-#: src/app/(public)/[locale]/page.tsx
-msgid "BdEM9F"
-msgstr "Hosting, men sikker."
 
 #: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "t1DCfI"
@@ -2565,125 +2553,9 @@ msgid "YOc6Ow"
 msgstr "Betalt"
 
 #: src/features/landing/components/advantage-item.tsx
-#: src/features/landing/components/features-showcase.tsx
+#: src/features/landing/components/feature.tsx
 msgid "TdTXXf"
 msgstr "Lær mer"
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "GTucMY"
-msgstr "Maksimalt privatliv"
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "IIN9F8"
-msgstr "Hos oss kommer personvernet først. Ingen deling med tredjeparter, aldri."
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "daLPgg"
-msgstr "Genuin støtte"
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "hnGR7B"
-msgstr "Vi tilbyr menneskelig støtte døgnet rundt, når du trenger det."
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "uDrdrl"
-msgstr "DDoS-beskyttelse inkludert"
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "TWNuCY"
-msgstr "Aktiv DDoS-beskyttelse holder deg online. Ingen ekstra kostnader, aldri."
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "nVfA_q"
-msgstr "Moderne kundeportal"
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "fQqAwd"
-msgstr "Administrer serverne dine effektivt uten problemer eller frustrasjon."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "j3A1sI"
-msgstr "Hvor lang tid tar det å klargjøre en server?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "50VRoa"
-msgstr "Leveringen av den bestilte pakken gjøres vanligvis automatisk etter bestillingen av systemet vårt uten ventetid. En bekreftelse på e-post sendes i tillegg."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "zWVB3p"
-msgstr "Er det en trafikkgrense?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "-T4TVw"
-msgstr "Nei, det er ingen trafikkgrense for våre servere. Oppkoblingen leveres i henhold til prinsippet om rimelig bruk. Imidlertid kan båndbredden begrenses midlertidig ved uforholdsmessig høy vedvarende bruk."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "RS_4DH"
-msgstr "Kan pakken endres senere?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "tBYbeE"
-msgstr "Den bestilte pakken kan enkelt endres gjennom kundeportalen. Ved bytte i gjeldende faktureringsperiode vil prisdifferansen bli kreditert tilsvarende."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "Adyexr"
-msgstr "Kan jeg kansellere serveren min når som helst?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "4FVTjU"
-msgstr "Ja, bestilte servere kan kanselleres når som helst gjennom kundeportalen. Kanselleringer trer i kraft ved slutten av den valgte faktureringsperioden."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "KfLE6n"
-msgstr "Hvordan får jeg tilgang til serverne mine?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "B7MEDP"
-msgstr "Den bestilte serveren kan administreres gjennom vår interne kundeportal. SSH-tilgang via passord er tilgjengelig som standard. Serveren kan også nås via VNC-konsollen."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "p_GLe_"
-msgstr "Hvor sikre er dataene mine?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "kexWaZ"
-msgstr "Databeskyttelse er vår høyeste prioritet. Alle data på serverne lagres på krypterte disker. Tilgang for oss som leverandør eller av andre aktører er generelt ikke mulig. Du finner mer informasjon i vår <privacy>personvernpolicy</privacy>."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "zcLioW"
-msgstr "Hvor kan jeg få støtte?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "igjse2"
-msgstr "Vårt supportteam er tilgjengelig 24/7. Ved å sende en e-post til <email>support@virtbase.com</email> vil du få et raskt svar."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "aINRxc"
-msgstr "Hvor er serverne plassert?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "cMXI0b"
-msgstr "Alle våre servere er for tiden plassert i Skylink Datacenter i Nederland. Den er utstyrt i henhold til Tier 3-standarder og har redundant strømforsyning, nettverkskomponenter og kjøling."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "7Rm1x6"
-msgstr "Ofte stilte spørsmål"
-
-#: src/features/landing/components/features-showcase.tsx
-msgid "N2jrkQ"
-msgstr "Serverberegninger i sanntid"
-
-#: src/features/landing/components/features-showcase.tsx
-msgid "9mCvlG"
-msgstr "Serverberegningene våre oppdateres i sanntid, slik at du alltid kan se gjeldende status for serverne dine."
-
-#: src/features/landing/components/features-showcase.tsx
-msgid "S4NISm"
-msgstr "Statsløs brannmur"
-
-#: src/features/landing/components/features-showcase.tsx
-msgid "1s50w7"
-msgstr "Med dine egne brannmurregler kan du beskytte serveren din spesifikt. Hver regel kan konfigureres individuelt."
 
 #: src/features/landing/components/server-firewall-demo.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
@@ -3618,6 +3490,10 @@ msgstr "Tilbakestill passord"
 #: src/ui/footer.tsx
 msgid "9YazHG"
 msgstr "Bedrift"
+
+#: src/ui/footer.tsx
+msgid "iby7Fe"
+msgstr "Datasenter"
 
 #: src/ui/footer.tsx
 msgid "7oFrM6"
