@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: German\n"
-"PO-Revision-Date: 2026-08-23 12:11\n"
+"PO-Revision-Date: 2026-08-23 17:42\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -672,18 +672,6 @@ msgstr "Hilfe-Center"
 #: src/app/(public)/[locale]/help/page.tsx
 msgid "PPnkha"
 msgstr "Im Hilfe-Center findest du Antworten auf alle Fragen zu Virtbase an einem Ort."
-
-#: src/app/(public)/[locale]/page.tsx
-msgid "Wbc21W"
-msgstr "Virtbase - Hosting, aber sicher."
-
-#: src/app/(public)/[locale]/page.tsx
-msgid "nEWy6S"
-msgstr "Virtbase ist der Provider für sicheres Server-Hosting. Maximale Performance mit minimalem Aufwand."
-
-#: src/app/(public)/[locale]/page.tsx
-msgid "BdEM9F"
-msgstr "Hosting, aber sicher."
 
 #: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgid "t1DCfI"
@@ -2565,125 +2553,9 @@ msgid "YOc6Ow"
 msgstr "Bezahlt am"
 
 #: src/features/landing/components/advantage-item.tsx
-#: src/features/landing/components/features-showcase.tsx
+#: src/features/landing/components/feature.tsx
 msgid "TdTXXf"
 msgstr "Mehr erfahren"
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "GTucMY"
-msgstr "Maximale Privatsphäre"
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "IIN9F8"
-msgstr "Bei uns steht der Datenschutz an erster Stelle. Keine Weitergabe an Dritte, niemals."
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "daLPgg"
-msgstr "Echter Support"
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "hnGR7B"
-msgstr "Wir setzen auf menschlichen Support, wenn er gebraucht wird - und das rund um die Uhr."
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "uDrdrl"
-msgstr "DDoS-Schutz inbegriffen"
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "TWNuCY"
-msgstr "Unser aktiver DDoS-Schutz schützt vor ungewünschten Ausfällen. Keine zusätzlichen Kosten."
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "nVfA_q"
-msgstr "Modernes Kundenportal"
-
-#: src/features/landing/components/advantages-row.tsx
-msgid "fQqAwd"
-msgstr "Eine effiziente Verwaltung der gebuchten Server ohne großen Aufwand und ohne Frust."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "j3A1sI"
-msgstr "Wie lange dauert die Bereitstellung eines Servers?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "50VRoa"
-msgstr "Die Bereitstellung des gebuchten Pakets erfolgt in der Regel nach der Bestellung automatisch durch unser System ohne Wartezeit. Zusätzlich wird eine Bestätigung per E-Mail versendet."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "zWVB3p"
-msgstr "Gibt es ein Traffic-Limit?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "-T4TVw"
-msgstr "Nein, es gibt kein Traffic-Limit für unsere Server. Der Uplink wird nach dem Fair-Use-Prinzip bereitgestellt. Bei unverhältnismäßig hoher Dauernutzung kann die Bandbreite jedoch vorübergehend gedrosselt werden."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "RS_4DH"
-msgstr "Kann das Paket später geändert werden?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "tBYbeE"
-msgstr "Das gebuchte Paket kann einfach über das Kundenportal geändert werden. Bei einem Wechsel während des laufenden Abrechnungszeitraums wird die Preisdifferenz entsprechend gutgeschrieben."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "Adyexr"
-msgstr "Kann ich meinen Server jederzeit kündigen?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "4FVTjU"
-msgstr "Ja, gebuchte Server können jederzeit über das Kundenportal gekündigt werden. Kündigungen werden zum Ende des ausgewählten Abrechnungszeitraums wirksam."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "KfLE6n"
-msgstr "Wie kann ich auf meine Server zugreifen?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "B7MEDP"
-msgstr "Der gebuchte Server kann über unser eigenes Kundenportal verwaltet werden. SSH-Zugriff per Passwort ist standardmäßig verfügbar. Der Server kann außerdem über die VNC-Konsole erreicht werden."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "p_GLe_"
-msgstr "Wie sicher sind meine Daten?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "kexWaZ"
-msgstr "Datenschutz hat für uns höchste Priorität. Alle Daten auf den Servern werden auf verschlüsselten Datenträgern gespeichert. Ein Zugriff durch uns als Anbieter oder durch andere Akteure ist grundsätzlich nicht möglich. Weitere Informationen findest du in unserer <privacy>Datenschutzerklärung</privacy>."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "zcLioW"
-msgstr "Wo erhalte ich Support?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "igjse2"
-msgstr "Unser Support-Team ist rund um die Uhr erreichbar. Sende eine E-Mail an <email>support@virtbase.com</email>, um schnell eine Antwort zu erhalten."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "aINRxc"
-msgstr "Wo befinden sich die Server?"
-
-#: src/features/landing/components/faq-section.tsx
-msgid "cMXI0b"
-msgstr "Alle unsere Server befinden sich derzeit im Skylink Datacenter in den Niederlanden. Es ist nach Tier-3-Standards ausgestattet und verfügt über redundante Stromversorgung, Netzwerkkomponenten und Kühlung."
-
-#: src/features/landing/components/faq-section.tsx
-msgid "7Rm1x6"
-msgstr "Häufig gestellte Fragen"
-
-#: src/features/landing/components/features-showcase.tsx
-msgid "N2jrkQ"
-msgstr "Metriken in Echtzeit"
-
-#: src/features/landing/components/features-showcase.tsx
-msgid "9mCvlG"
-msgstr "Unsere Server-Metriken werden in Echtzeit aktualisiert, sodass du immer den aktuellen Stand deiner Server siehst."
-
-#: src/features/landing/components/features-showcase.tsx
-msgid "S4NISm"
-msgstr "Stateless Firewall"
-
-#: src/features/landing/components/features-showcase.tsx
-msgid "1s50w7"
-msgstr "Mit eigenen Firewall-Regeln kannst du deinen Server gezielt schützen. Jede Regel kann individuell konfiguriert werden."
 
 #: src/features/landing/components/server-firewall-demo.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
@@ -3618,6 +3490,10 @@ msgstr "Passwort zurücksetzen"
 #: src/ui/footer.tsx
 msgid "9YazHG"
 msgstr "Unternehmen"
+
+#: src/ui/footer.tsx
+msgid "iby7Fe"
+msgstr "Rechenzentrum"
 
 #: src/ui/footer.tsx
 msgid "7oFrM6"
