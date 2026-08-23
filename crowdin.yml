@@ -3,3 +3,7 @@ files:
     translation: /apps/web/src/i18n/messages/%two_letters_code%.%file_extension%
   - source: /packages/email/src/messages/en.json
     translation: /packages/email/src/messages/%two_letters_code%.%file_extension%
+  # MDX content. Locales are directories, so the source locale segment is the
+  # only part of the path that changes per translation.
+  - source: /packages/content/**/en/**/*.mdx
+    translation: /packages/content/**/%two_letters_code%/**/%original_file_name%

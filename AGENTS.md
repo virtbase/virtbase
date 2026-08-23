@@ -12,6 +12,7 @@ This is a bun monorepo containing the Virtbase web app and related packages.
 virtbase/
 ├── apps/               # Published apps (website)
 ├── packages/           # Internal packages with shared logic
+│   └── content/        # MDX for the public site (no code)
 └── tooling/            # Shared tools for development (tsconfig, tailwind)
 ```
 
@@ -115,6 +116,46 @@ parameter. `name` and `description` on the definition stay untranslated and are
 used in logs and health output. `localize()` needs a Next request
 context; when it is unavailable the registry falls back to the declared text
 rather than failing.
+
+## Website content
+
+Public prose lives in `packages/content`, a workspace package that holds MDX and
+no code. `apps/web/source.config.ts` points `fumadocs-mdx` at it and compiles it
+into `apps/web/.source` at build time; nothing ever imports the package. It is a
+workspace rather than a plain directory so Turborepo tracks it — `@virtbase/web`
+depends on it, so editing an MDX file invalidates the web build and typecheck
+caches.
+
+Three collections, each loaded in `apps/web/src/lib/source.ts`:
+
+| Collection | Files | URL |
+| --- | --- | --- |
+| `marketing` | `marketing/<locale>/index.mdx` | `/<locale>` |
+| `marketing` | `marketing/<locale>/<slug>.mdx` | `/<locale>/<slug>` |
+| `legal` | `legal/<locale>/<slug>.mdx` | `/<locale>/legal/<slug>` |
+| `helpArticles` | `help/articles/<locale>/<slug>.mdx` | `/<locale>/help/article/<slug>` |
+
+Locales are **directories**, not filename suffixes, so Fumadocs is configured
+with `parser: "dir"`. That is the only layout Crowdin can map onto a translation
+path — it has no placeholder that strips `.en` from the middle of a filename.
+
+The home page is `marketing/<locale>/index.mdx`. Its prose is MDX rather than
+next-intl messages; the sections it composes (`<Offers />`, `<Features />`,
+`<Faq />`, …) come from `apps/web/src/ui/mdx/marketing-components.tsx`. Anything
+backed by live data — plans, prices, specs — stays a component and is never
+copied into MDX, or it goes stale.
+
+### Locales and the fallback
+
+`source.ts` builds each collection twice. The exported loaders keep the default
+`fallbackLanguage`, so a document with no file for the requested locale serves
+the source locale instead of a 404. A second, private set of loaders sets
+`fallbackLanguage: null`, and `getDocumentLocales()` reads those — it is the
+only way to ask which translations really exist, because `getPages()` on a
+loader with a fallback reports every locale whether or not the file is there.
+
+`hreflang` and the sitemap must use `getDocumentLocales()`. Advertising a locale
+that silently serves English is worse than advertising nothing.
 
 ## Configuration platform
 

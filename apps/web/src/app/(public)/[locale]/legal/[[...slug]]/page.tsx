@@ -64,7 +64,7 @@ export async function generateMetadata({
     canonicalUrl: PUBLIC_DOMAIN + page.url,
     languages: constructAlternateLanguages(
       `/legal/${page.slugs.join("/")}`,
-      getDocumentLocales(legal, page.slugs),
+      getDocumentLocales("legal", page.slugs),
     ),
     image: constructOpengraphUrl({
       title,

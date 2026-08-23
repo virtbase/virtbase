@@ -1,0 +1,8 @@
+{
+  "name": "@virtbase/content",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo node_modules"
+  }
+}

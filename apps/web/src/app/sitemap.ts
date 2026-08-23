@@ -20,7 +20,13 @@ import type { MetadataRoute } from "next";
 import { cacheLife, cacheTag } from "next/cache";
 import { routing } from "@/i18n/routing.public";
 import { constructAlternateLanguages } from "@/lib/hreflang";
-import { getDocumentLocales, helpArticles, legal } from "@/lib/source";
+import type { ContentCollection } from "@/lib/source";
+import {
+  getDocumentLocales,
+  helpArticles,
+  legal,
+  marketing,
+} from "@/lib/source";
 
 type SitemapPage = MetadataRoute.Sitemap[number];
 
@@ -32,16 +38,51 @@ function localelessPath(page: { url: string; locale?: string | undefined }) {
   return page.locale ? page.url.slice(page.locale.length + 1) : page.url;
 }
 
+/**
+ * Narrowed to the fields every collection shares — the collections have
+ * different frontmatter schemas, so their loaders are not one type.
+ */
+type DocumentPage = {
+  url: string;
+  slugs: string[];
+  locale?: string | undefined;
+  data: { lastModified?: Date | undefined };
+};
+
+function documentPages(
+  collection: ContentCollection,
+  pages: DocumentPage[],
+): SitemapPage[] {
+  return pages.map((page) => {
+    // Only the marketing collection has an index document, and that is the
+    // home page.
+    const isHome = page.slugs.length === 0;
+
+    return {
+      url: PUBLIC_DOMAIN + page.url,
+      lastModified: page.data.lastModified ?? new Date(),
+      changeFrequency: "monthly",
+      priority: isHome ? 1 : 0.5,
+      alternates: {
+        languages: constructAlternateLanguages(
+          localelessPath(page),
+          getDocumentLocales(collection, page.slugs),
+        ),
+      },
+    } satisfies SitemapPage;
+  });
+}
+
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   "use cache";
 
   cacheTag("sitemap.xml");
   cacheLife("max");
 
-  const pages = ["/", "/help", "/contact"] as const;
+  // Pages backed by a React route rather than a document. Everything in a
+  // content collection — the home page included — is picked up below.
+  const pages = ["/help", "/contact"] as const;
   const appPages = ["/login", "/register", "/forgot-password"] as const;
-
-  const collections = [legal, helpArticles];
 
   return [
     // Special page without locale
@@ -56,12 +97,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       pages.map(
         (page) =>
           ({
-            url: `${PUBLIC_DOMAIN}/${locale}${page === "/" ? "" : page}`,
+            url: `${PUBLIC_DOMAIN}/${locale}${page}`,
             lastModified: new Date(),
             changeFrequency: "monthly",
-            priority: page === "/" ? 1 : 0.8,
+            priority: 0.8,
             alternates: {
-              languages: constructAlternateLanguages(page === "/" ? "" : page),
+              languages: constructAlternateLanguages(page),
             },
           }) satisfies SitemapPage,
       ),
@@ -77,22 +118,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         }) satisfies SitemapPage,
     ),
     // Fumadocs collections have a locale, but already in the url
-    ...collections.flatMap((collection) => {
-      const pages = collection.getPages();
-      return pages.map(
-        (page) =>
-          ({
-            url: PUBLIC_DOMAIN + page.url,
-            lastModified: page.data.lastModified ?? new Date(),
-            priority: 0.5,
-            alternates: {
-              languages: constructAlternateLanguages(
-                localelessPath(page),
-                getDocumentLocales(collection, page.slugs),
-              ),
-            },
-          }) satisfies SitemapPage,
-      );
-    }),
+    ...documentPages("marketing", marketing.getPages()),
+    ...documentPages("legal", legal.getPages()),
+    ...documentPages("helpArticles", helpArticles.getPages()),
   ];
 }

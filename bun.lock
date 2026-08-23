@@ -49,6 +49,7 @@
         "@trpc/tanstack-react-query": "catalog:",
         "@virtbase/api": "workspace:*",
         "@virtbase/auth": "workspace:*",
+        "@virtbase/content": "workspace:*",
         "@virtbase/db": "workspace:*",
         "@virtbase/email": "workspace:*",
         "@virtbase/integration-anonpay": "workspace:*",
@@ -172,6 +173,9 @@
         "@virtbase/tsconfig": "workspace:*",
         "typescript": "catalog:",
       },
+    },
+    "packages/content": {
+      "name": "@virtbase/content",
     },
     "packages/db": {
       "name": "@virtbase/db",
@@ -1571,6 +1575,8 @@
     "@virtbase/auth": ["@virtbase/auth@workspace:packages/auth"],
 
     "@virtbase/config": ["@virtbase/config@workspace:packages/config"],
+
+    "@virtbase/content": ["@virtbase/content@workspace:packages/content"],
 
     "@virtbase/db": ["@virtbase/db@workspace:packages/db"],
 

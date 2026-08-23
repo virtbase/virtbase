@@ -76,7 +76,7 @@ export async function generateMetadata({
     canonicalUrl: PUBLIC_DOMAIN + page.url,
     languages: constructAlternateLanguages(
       `/help/article/${page.slugs.join("/")}`,
-      getDocumentLocales(helpArticles, page.slugs),
+      getDocumentLocales("helpArticles", page.slugs),
     ),
     image: constructOpengraphUrl({
       title,

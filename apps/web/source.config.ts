@@ -21,7 +21,7 @@ import * as z4 from "zod";
 
 export const legalCollection = defineCollections({
   type: "doc",
-  dir: "./src/content/legal",
+  dir: "../../packages/content/legal",
   schema: z4.object({
     title: z4.string(),
     description: z4.string(),
@@ -30,12 +30,27 @@ export const legalCollection = defineCollections({
 
 export const helpArticleCollection = defineCollections({
   type: "doc",
-  dir: "./src/content/help/articles",
+  dir: "../../packages/content/help/articles",
   schema: z4.object({
     title: z4.string(),
     description: z4.string(),
     category: z4.enum(["overview"]),
     keywords: z4.array(z4.string()),
+  }),
+});
+
+export const marketingCollection = defineCollections({
+  type: "doc",
+  dir: "../../packages/content/marketing",
+  schema: z4.object({
+    /**
+     * The `<title>` of the page. Not rendered — the visible heading is the
+     * document's own `#` heading.
+     */
+    title: z4.string(),
+    /** The meta description, and the OpenGraph subtitle. */
+    description: z4.string(),
+    keywords: z4.array(z4.string()).optional(),
   }),
 });
 

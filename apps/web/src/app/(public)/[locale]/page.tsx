@@ -22,40 +22,47 @@ import {
 } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { cacheLife, cacheTag } from "next/cache";
-import { getExtracted, getLocale } from "next-intl/server";
-import { OfferRow } from "@/features/checkout/components/offer-row";
-import { AdvantagesRow } from "@/features/landing/components/advantages-row";
-import { FAQSection } from "@/features/landing/components/faq-section";
-import { FeaturesShowcase } from "@/features/landing/components/features-showcase";
-import { OperatingSystemShowcase } from "@/features/landing/components/operating-system-showcase";
+import { notFound } from "next/navigation";
+import { getLocale } from "next-intl/server";
+
 import { constructAlternateLanguages } from "@/lib/hreflang";
-import { BlockWrapper } from "@/ui/block-wrapper";
+import { getDocumentLocales, marketing } from "@/lib/source";
+import { marketingMdxComponents } from "@/ui/mdx/marketing-components";
+
+/** The home page is `marketing/<locale>/index.mdx`, which has no slug. */
+const HOME_SLUGS: string[] = [];
 
 export async function generateMetadata(): Promise<Metadata> {
   "use cache";
 
   const locale = await getLocale();
-  const t = await getExtracted();
 
   cacheLife("max");
   cacheTag("home", locale);
 
-  const title = t("Virtbase - Hosting, but secure.");
-  const description = t(
-    "Virtbase is the provider for secure server hosting. Maximum performance with minimal effort.",
-  );
+  const page = marketing.getPage(HOME_SLUGS, locale);
+
+  if (!page) {
+    notFound();
+  }
+
+  const { title, description, keywords } = page.data;
 
   return constructMetadata({
     fullTitle: title,
     description,
     canonicalUrl: `${PUBLIC_DOMAIN}/${locale}`,
-    languages: constructAlternateLanguages(""),
+    languages: constructAlternateLanguages(
+      "",
+      getDocumentLocales("marketing", HOME_SLUGS),
+    ),
     image: constructOpengraphUrl({
       title,
       subtitle: description,
       slug: `/${locale}`,
       theme: "dark",
     }),
+    keywords,
   });
 }
 
@@ -63,42 +70,21 @@ export default async function Page() {
   "use cache";
 
   const locale = await getLocale();
-  const t = await getExtracted({ locale });
 
   cacheLife("max");
   cacheTag("home", locale);
 
+  const page = marketing.getPage(HOME_SLUGS, locale);
+
+  if (!page) {
+    notFound();
+  }
+
+  const MDX = page.data.body;
+
   return (
     <main>
-      <BlockWrapper className="px-8 pt-16 pb-8" variant="hero">
-        <div className="relative mx-auto text-center sm:max-w-lg">
-          <h1 className="mt-5 text-balance text-center font-medium text-4xl text-foreground sm:text-5xl sm:leading-[1.15]">
-            {t("Hosting, but secure.")}
-          </h1>
-          <p className="mt-4 text-pretty text-lg text-muted-foreground sm:text-xl">
-            {t(
-              "Virtbase is the provider for secure server hosting. Maximum performance with minimal effort.",
-            )}
-          </p>
-        </div>
-      </BlockWrapper>
-      <BlockWrapper>
-        <OfferRow />
-      </BlockWrapper>
-      <BlockWrapper>
-        <FeaturesShowcase />
-      </BlockWrapper>
-      <BlockWrapper className="py-4">
-        <div className="border-y">
-          <AdvantagesRow />
-        </div>
-      </BlockWrapper>
-      <BlockWrapper>
-        <OperatingSystemShowcase />
-      </BlockWrapper>
-      <BlockWrapper>
-        <FAQSection />
-      </BlockWrapper>
+      <MDX components={marketingMdxComponents} />
     </main>
   );
 }
