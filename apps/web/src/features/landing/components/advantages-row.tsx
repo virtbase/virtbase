@@ -15,58 +15,16 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import {
-  LucideLayoutDashboard,
-  LucideLifeBuoy,
-  LucideNetwork,
-  LucideShield,
-} from "@virtbase/ui/icons";
-import { getExtracted } from "next-intl/server";
-import { AdvantageItem } from "./advantage-item";
+import type { ReactNode } from "react";
 
-export async function AdvantagesRow() {
-  const t = await getExtracted();
-
-  const items = [
-    {
-      title: t("Maximum privacy"),
-      description: t(
-        "With us, privacy comes first. No sharing with third parties, ever.",
-      ),
-      icon: LucideShield,
-      href: "/help/article/about-security",
-    },
-    {
-      title: t("Genuine support"),
-      description: t(
-        "We offer human support around the clock, whenever you need it.",
-      ),
-      icon: LucideLifeBuoy,
-      href: "/contact",
-    },
-    {
-      title: t("DDoS protection included"),
-      description: t(
-        "Active DDoS protection keeps you online. No extra charges, ever.",
-      ),
-      icon: LucideNetwork,
-      href: "/help/article/about-ddos-protection",
-    },
-    {
-      title: t("Modern customer portal"),
-      description: t(
-        "Efficiently manage your servers without hassle or frustration.",
-      ),
-      icon: LucideLayoutDashboard,
-      href: "/help",
-    },
-  ] as const;
-
+/**
+ * A four-across band of `<Advantage>` blocks. The `gap-px` over a border
+ * background is what draws the hairlines between cells.
+ */
+export function AdvantagesRow({ children }: { children?: ReactNode }) {
   return (
     <div className="grid grid-cols-1 gap-px bg-border text-sm sm:grid-cols-2 lg:grid-cols-4">
-      {items.map((item, index) => (
-        <AdvantageItem key={index} {...item} />
-      ))}
+      {children}
     </div>
   );
 }

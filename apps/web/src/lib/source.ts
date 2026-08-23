@@ -104,6 +104,31 @@ export type ContentCollection = keyof typeof translated;
  * Translated documents are not guaranteed to be complete, so `hreflang` and the
  * sitemap must only advertise the languages that actually resolve.
  */
+/**
+ * The documents that really exist on disk for a collection.
+ *
+ * `marketing.getPages()` and friends also report the locales a document falls
+ * back into, which is right for rendering but wrong for the sitemap — listing a
+ * URL that serves another language's content invites a duplicate-content
+ * penalty.
+ */
+export function getTranslatedPages(
+  collection: ContentCollection,
+): TranslatedPage[] {
+  return translated[collection].getPages();
+}
+
+/**
+ * A document narrowed to the fields every collection shares. The collections
+ * have different frontmatter schemas, so their loaders are not one type.
+ */
+export type TranslatedPage = {
+  url: string;
+  slugs: string[];
+  locale?: string | undefined;
+  data: { lastModified?: Date | undefined };
+};
+
 export function getDocumentLocales(
   collection: ContentCollection,
   slugs: readonly string[] = [],

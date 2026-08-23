@@ -58,14 +58,20 @@ export async function generateMetadata({
 
   const { title, description } = page.data;
 
+  const languages = constructAlternateLanguages(
+    `/legal/${page.slugs.join("/")}`,
+    getDocumentLocales("legal", page.slugs),
+  );
+
   return constructMetadata({
     title,
     description,
-    canonicalUrl: PUBLIC_DOMAIN + page.url,
-    languages: constructAlternateLanguages(
-      `/legal/${page.slugs.join("/")}`,
-      getDocumentLocales("legal", page.slugs),
-    ),
+    // When the requested locale has no file of its own the page is served
+    // through the fallback, so the canonical points at the locale that owns the
+    // content rather than at a duplicate of it.
+    canonicalUrl:
+      languages[locale] ?? languages["x-default"] ?? PUBLIC_DOMAIN + page.url,
+    languages,
     image: constructOpengraphUrl({
       title,
       subtitle: description,

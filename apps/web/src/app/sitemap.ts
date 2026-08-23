@@ -20,13 +20,8 @@ import type { MetadataRoute } from "next";
 import { cacheLife, cacheTag } from "next/cache";
 import { routing } from "@/i18n/routing.public";
 import { constructAlternateLanguages } from "@/lib/hreflang";
-import type { ContentCollection } from "@/lib/source";
-import {
-  getDocumentLocales,
-  helpArticles,
-  legal,
-  marketing,
-} from "@/lib/source";
+import type { ContentCollection, TranslatedPage } from "@/lib/source";
+import { getDocumentLocales, getTranslatedPages } from "@/lib/source";
 
 type SitemapPage = MetadataRoute.Sitemap[number];
 
@@ -34,26 +29,12 @@ type SitemapPage = MetadataRoute.Sitemap[number];
  * Fumadocs bakes the locale into `page.url` (`/en/help/article/...`), while
  * `constructAlternateLanguages` expects a locale-agnostic path.
  */
-function localelessPath(page: { url: string; locale?: string | undefined }) {
+function localelessPath(page: TranslatedPage) {
   return page.locale ? page.url.slice(page.locale.length + 1) : page.url;
 }
 
-/**
- * Narrowed to the fields every collection shares — the collections have
- * different frontmatter schemas, so their loaders are not one type.
- */
-type DocumentPage = {
-  url: string;
-  slugs: string[];
-  locale?: string | undefined;
-  data: { lastModified?: Date | undefined };
-};
-
-function documentPages(
-  collection: ContentCollection,
-  pages: DocumentPage[],
-): SitemapPage[] {
-  return pages.map((page) => {
+function documentPages(collection: ContentCollection): SitemapPage[] {
+  return getTranslatedPages(collection).map((page) => {
     // Only the marketing collection has an index document, and that is the
     // home page.
     const isHome = page.slugs.length === 0;
@@ -118,8 +99,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         }) satisfies SitemapPage,
     ),
     // Fumadocs collections have a locale, but already in the url
-    ...documentPages("marketing", marketing.getPages()),
-    ...documentPages("legal", legal.getPages()),
-    ...documentPages("helpArticles", helpArticles.getPages()),
+    ...documentPages("marketing"),
+    ...documentPages("legal"),
+    ...documentPages("helpArticles"),
   ];
 }

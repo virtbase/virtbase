@@ -21,11 +21,15 @@ import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { ComponentProps, ReactNode } from "react";
 
 import { OfferRow } from "@/features/checkout/components/offer-row";
+import { AdvantageItem } from "@/features/landing/components/advantage-item";
 import { AdvantagesRow } from "@/features/landing/components/advantages-row";
+import { Question } from "@/features/landing/components/faq-question";
 import { FAQSection } from "@/features/landing/components/faq-section";
+import { Feature } from "@/features/landing/components/feature";
 import { FeaturesShowcase } from "@/features/landing/components/features-showcase";
 import { OperatingSystemShowcase } from "@/features/landing/components/operating-system-showcase";
 import { BlockWrapper } from "@/ui/block-wrapper";
+import { Prose } from "@/ui/prose";
 
 /**
  * The centered opening block of a marketing page. The `#` heading and the
@@ -79,26 +83,41 @@ export const marketingMdxComponents = {
       <OfferRow />
     </BlockWrapper>
   ),
-  Features: () => (
-    <BlockWrapper>
-      <FeaturesShowcase />
-    </BlockWrapper>
-  ),
-  Advantages: () => (
-    <BlockWrapper className="py-4">
-      <div className="border-y">
-        <AdvantagesRow />
-      </div>
-    </BlockWrapper>
-  ),
   OperatingSystems: () => (
     <BlockWrapper>
       <OperatingSystemShowcase />
     </BlockWrapper>
   ),
-  Faq: () => (
+  Features: ({ children }: { children?: ReactNode }) => (
     <BlockWrapper>
-      <FAQSection />
+      <FeaturesShowcase>{children}</FeaturesShowcase>
     </BlockWrapper>
   ),
+  Feature,
+  /**
+   * A band of long-form text. Prose is wrapped explicitly rather than the page
+   * being one big prose container, so a `<Offers />` or `<Features>` further
+   * down the document does not inherit article typography.
+   */
+  Prose: ({ children }: { children?: ReactNode }) => (
+    <BlockWrapper>
+      <div className="mx-auto w-full max-w-3xl px-4 py-12 sm:py-16">
+        <Prose>{children}</Prose>
+      </div>
+    </BlockWrapper>
+  ),
+  Advantages: ({ children }: { children?: ReactNode }) => (
+    <BlockWrapper className="py-4">
+      <div className="border-y">
+        <AdvantagesRow>{children}</AdvantagesRow>
+      </div>
+    </BlockWrapper>
+  ),
+  Advantage: AdvantageItem,
+  Faq: ({ title, children }: { title: string; children?: ReactNode }) => (
+    <BlockWrapper>
+      <FAQSection title={title}>{children}</FAQSection>
+    </BlockWrapper>
+  ),
+  Question,
 };

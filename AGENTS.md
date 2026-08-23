@@ -140,10 +140,35 @@ with `parser: "dir"`. That is the only layout Crowdin can map onto a translation
 path — it has no placeholder that strips `.en` from the middle of a filename.
 
 The home page is `marketing/<locale>/index.mdx`. Its prose is MDX rather than
-next-intl messages; the sections it composes (`<Offers />`, `<Features />`,
-`<Faq />`, …) come from `apps/web/src/ui/mdx/marketing-components.tsx`. Anything
-backed by live data — plans, prices, specs — stays a component and is never
-copied into MDX, or it goes stale.
+next-intl messages. Anything backed by live data — plans, prices, specs — stays
+a component and is never copied into MDX, or it goes stale.
+
+### Marketing blocks
+
+The components a marketing document may use are registered in
+`apps/web/src/ui/mdx/marketing-components.tsx`. Nothing else is in scope.
+
+| Block | Body | Notes |
+| --- | --- | --- |
+| `<Hero>` | `#` heading + paragraph | `h1` is rendered unanchored |
+| `<Offers />` | — | plans and prices from the database |
+| `<OperatingSystems />` | — | distro logos |
+| `<Features>` / `<Feature>` | prose | `title`, `demo`, optional `href` |
+| `<Advantages>` / `<Advantage>` | prose | `title`, `icon`, optional `href` |
+| `<Faq>` / `<Question>` | prose | `title`; also emits `FAQPage` JSON-LD |
+
+Two conventions hold across the blocks:
+
+- **Short labels are attributes, prose is the body.** A heading or a question is
+  a `title` attribute; everything longer is Markdown inside the block, so it can
+  carry links and emphasis. `FAQSection` flattens answer Markdown with
+  `toPlainText` for the structured data, so an answer is never written twice.
+- **`icon` and `demo` are names, not components.** MDX picks from a fixed map so
+  a document cannot import arbitrary React.
+
+Links inside MDX carry their own locale prefix (`/de/legal/privacy`), matching
+the help and legal articles. The `href` attribute on a block is different — it
+goes through `IntlLink` and must stay unprefixed (`/help/article/...`).
 
 ### Locales and the fallback
 

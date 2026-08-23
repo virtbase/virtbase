@@ -40,6 +40,7 @@ import { getExtracted, getFormatter, getLocale } from "next-intl/server";
 import { getServerPlan } from "@/features/checkout/api/get-server-plan";
 import { OfferCard } from "@/features/checkout/components/offer-card";
 import { AdvantageItem } from "@/features/landing/components/advantage-item";
+import { AdvantagesRow } from "@/features/landing/components/advantages-row";
 import { BlockWrapper } from "@/ui/block-wrapper";
 
 const PLACEHOLDER_ID = "__placeholder__";
@@ -276,7 +277,7 @@ async function UpsellAdvantages({
   }[];
 
   return (
-    <div className="grid grid-cols-1 gap-px bg-border text-sm sm:grid-cols-2 lg:grid-cols-4">
+    <AdvantagesRow>
       {items
         .filter((item) => item.condition(fromPlan, toPlan))
         .slice(0, 4)
@@ -284,10 +285,11 @@ async function UpsellAdvantages({
           <AdvantageItem
             key={index}
             title={item.title(fromPlan, toPlan)}
-            description={item.description}
             icon={item.icon}
-          />
+          >
+            {item.description}
+          </AdvantageItem>
         ))}
-    </div>
+    </AdvantagesRow>
   );
 }
