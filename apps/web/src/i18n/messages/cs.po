@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Czech\n"
-"PO-Revision-Date: 2026-08-23 17:42\n"
+"PO-Revision-Date: 2026-08-23 19:39\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -347,6 +347,54 @@ msgstr "Základní URL HTTP API PowerDNS, bez koncového lomítka."
 #: ../../packages/integration-powerdns/src/localize.ts
 msgid "KSXj3s"
 msgstr "Odesílá se jako hlavička X-API-Key."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AMCq17"
+msgstr "Prometheus"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5VMIS_"
+msgstr "Zpřístupňuje metriky platformy a běhového prostředí na ověřeném koncovém bodu pro Prometheus a Grafanu."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "pJ6LWb"
+msgstr "Předpona metrik"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "shWZET"
+msgstr "Přidává se před každý název metriky, včetně metrik běhového prostředí Node.js."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "eQ6FCA"
+msgstr "Metriky běhového prostředí Node.js"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3V_aL1"
+msgstr "Zpoždění smyčky událostí, využití haldy, uvolňování paměti a otevřené handly dotazované instance."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "GIgXZF"
+msgstr "Metriky platformy"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "igJLap"
+msgstr "Servery, zálohy, objednávky, platby a přidělení IP adres, spočítané v databázi v okamžiku načtení."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5z4qH1"
+msgstr "Intervaly histogramu (ms)"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3rCYri"
+msgstr "Čárkami oddělené horní hranice zaznamenaných dob. Ponechte prázdné pro výchozí rozsah od 5 ms do 5 minut."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AfjPfR"
+msgstr "Token pro načítání"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "NMkV81"
+msgstr "Prometheus jej posílá jako token Bearer. Vygenerujte jej příkazem `openssl rand -hex 32`."
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "o_UJXc"
