@@ -222,6 +222,7 @@ const withNextIntl = createNextIntlPlugin({
       "../../packages/integration-discord/src",
       "../../packages/integration-lexware/src",
       "../../packages/integration-powerdns/src",
+      "../../packages/integration-prometheus/src",
     ],
     extract: true,
     messages: {

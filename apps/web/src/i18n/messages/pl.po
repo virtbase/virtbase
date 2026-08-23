@@ -348,6 +348,54 @@ msgstr "Bazowy adres URL interfejsu HTTP API PowerDNS, bez ukośnika na końcu."
 msgid "KSXj3s"
 msgstr "Wysyłany jako nagłówek X-API-Key."
 
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AMCq17"
+msgstr "Prometheus"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5VMIS_"
+msgstr "Udostępnia metryki platformy i środowiska uruchomieniowego przez uwierzytelniony punkt zbierania dla Prometheusa i Grafany."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "pJ6LWb"
+msgstr "Prefiks metryk"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "shWZET"
+msgstr "Dodawany przed każdą nazwą metryki, także przed metrykami środowiska Node.js."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "eQ6FCA"
+msgstr "Metryki środowiska Node.js"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3V_aL1"
+msgstr "Opóźnienie pętli zdarzeń, użycie sterty, odśmiecanie pamięci i otwarte uchwyty odpytywanej instancji."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "GIgXZF"
+msgstr "Metryki platformy"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "igJLap"
+msgstr "Serwery, kopie zapasowe, zamówienia, płatności i przydziały adresów IP, liczone w bazie danych w momencie zbierania."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5z4qH1"
+msgstr "Przedziały histogramu (ms)"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3rCYri"
+msgstr "Rozdzielone przecinkami górne granice rejestrowanych czasów. Pozostaw puste, aby użyć domyślnego zakresu od 5 ms do 5 minut."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AfjPfR"
+msgstr "Token zbierania"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "NMkV81"
+msgstr "Prometheus wysyła go jako token Bearer. Wygeneruj go poleceniem `openssl rand -hex 32`."
+
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "o_UJXc"
 msgstr "rosnąco"

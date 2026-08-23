@@ -348,6 +348,54 @@ msgstr "URL base da API HTTP do PowerDNS, sem barra final."
 msgid "KSXj3s"
 msgstr "Enviada como cabeçalho X-API-Key."
 
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AMCq17"
+msgstr "Prometheus"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5VMIS_"
+msgstr "Expõe métricas da plataforma e do runtime num endpoint de recolha autenticado para o Prometheus e o Grafana."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "pJ6LWb"
+msgstr "Prefixo das métricas"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "shWZET"
+msgstr "Adicionado antes de cada nome de métrica, incluindo as métricas do runtime do Node.js."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "eQ6FCA"
+msgstr "Métricas do runtime do Node.js"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3V_aL1"
+msgstr "Latência do event loop, uso da heap, coleta de lixo e handles abertos da instância consultada."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "GIgXZF"
+msgstr "Métricas da plataforma"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "igJLap"
+msgstr "Servidores, backups, pedidos, pagamentos e atribuições de IP, contados na base de dados no momento da recolha."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5z4qH1"
+msgstr "Buckets do histograma (ms)"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3rCYri"
+msgstr "Limites superiores separados por vírgulas para as durações registradas. Deixe em branco para o intervalo padrão de 5 ms a 5 minutos."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AfjPfR"
+msgstr "Token de recolha"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "NMkV81"
+msgstr "Enviado pelo Prometheus como token Bearer. Gere um com `openssl rand -hex 32`."
+
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "o_UJXc"
 msgstr "Asc"

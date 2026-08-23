@@ -339,6 +339,54 @@ msgstr "Base URL of the PowerDNS HTTP API, without a trailing slash."
 msgid "KSXj3s"
 msgstr "Sent as the X-API-Key header."
 
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AMCq17"
+msgstr "Prometheus"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5VMIS_"
+msgstr "Exposes platform and runtime metrics on an authenticated scrape endpoint for Prometheus and Grafana."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "pJ6LWb"
+msgstr "Metric prefix"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "shWZET"
+msgstr "Prepended to every metric name, including the Node.js runtime metrics."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "eQ6FCA"
+msgstr "Node.js runtime metrics"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3V_aL1"
+msgstr "Event loop lag, heap usage, garbage collection and open handles for the instance being scraped."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "GIgXZF"
+msgstr "Platform metrics"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "igJLap"
+msgstr "Servers, backups, orders, payments and IP allocations, counted in the database at scrape time."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5z4qH1"
+msgstr "Histogram buckets (ms)"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3rCYri"
+msgstr "Comma-separated upper bounds for recorded durations. Leave blank for the default range of 5ms to 5 minutes."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AfjPfR"
+msgstr "Scrape token"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "NMkV81"
+msgstr "Prometheus sends this as a bearer token. Generate one with `openssl rand -hex 32`."
+
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "o_UJXc"
 msgstr "Asc"

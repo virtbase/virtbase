@@ -348,6 +348,54 @@ msgstr "URL di base dell'API HTTP di PowerDNS, senza barra finale."
 msgid "KSXj3s"
 msgstr "Inviata come intestazione X-API-Key."
 
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AMCq17"
+msgstr "Prometheus"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5VMIS_"
+msgstr "Espone le metriche della piattaforma e del runtime su un endpoint di scraping autenticato per Prometheus e Grafana."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "pJ6LWb"
+msgstr "Prefisso delle metriche"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "shWZET"
+msgstr "Anteposto a ogni nome di metrica, comprese le metriche del runtime Node.js."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "eQ6FCA"
+msgstr "Metriche del runtime Node.js"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3V_aL1"
+msgstr "Latenza dell'event loop, utilizzo dell'heap, garbage collection e handle aperti dell'istanza interrogata."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "GIgXZF"
+msgstr "Metriche della piattaforma"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "igJLap"
+msgstr "Server, backup, ordini, pagamenti e assegnazioni IP, conteggiati nel database al momento dello scraping."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5z4qH1"
+msgstr "Bucket dell'istogramma (ms)"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3rCYri"
+msgstr "Limiti superiori separati da virgole per le durate registrate. Lascia vuoto per l'intervallo predefinito da 5 ms a 5 minuti."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AfjPfR"
+msgstr "Token di scraping"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "NMkV81"
+msgstr "Prometheus lo invia come token Bearer. Generane uno con `openssl rand -hex 32`."
+
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "o_UJXc"
 msgstr "Asc"

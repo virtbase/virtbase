@@ -348,6 +348,54 @@ msgstr "A PowerDNS HTTP API alap-URL-je, záró perjel nélkül."
 msgid "KSXj3s"
 msgstr "X-API-Key fejlécként kerül elküldésre."
 
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AMCq17"
+msgstr "Prometheus"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5VMIS_"
+msgstr "Platform- és futásidejű metrikákat tesz elérhetővé hitelesített lekérdezési végponton a Prometheus és a Grafana számára."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "pJ6LWb"
+msgstr "Metrikaelőtag"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "shWZET"
+msgstr "Minden metrikanév elé kerül, a Node.js futásidejű metrikáit is beleértve."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "eQ6FCA"
+msgstr "Node.js futásidejű metrikák"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3V_aL1"
+msgstr "Eseményhurok-késleltetés, heap-használat, szemétgyűjtés és nyitott leírók a lekérdezett példányról."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "GIgXZF"
+msgstr "Platformmetrikák"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "igJLap"
+msgstr "Kiszolgálók, biztonsági mentések, megrendelések, fizetések és IP-kiosztások, az adatbázisban a lekérdezés pillanatában megszámolva."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5z4qH1"
+msgstr "Hisztogram-vödrök (ms)"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3rCYri"
+msgstr "Vesszővel elválasztott felső határok a rögzített időtartamokhoz. Hagyja üresen az alapértelmezett 5 ms – 5 perc tartományhoz."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AfjPfR"
+msgstr "Lekérdezési token"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "NMkV81"
+msgstr "A Prometheus Bearer tokenként küldi. Hozzon létre egyet az `openssl rand -hex 32` paranccsal."
+
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "o_UJXc"
 msgstr "Asc"

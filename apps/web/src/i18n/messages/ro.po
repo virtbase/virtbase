@@ -348,6 +348,54 @@ msgstr "URL-ul de bază al API-ului HTTP PowerDNS, fără bară oblică la final
 msgid "KSXj3s"
 msgstr "Trimisă ca antet X-API-Key."
 
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AMCq17"
+msgstr "Prometheus"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5VMIS_"
+msgstr "Expune metrici de platformă și de rulare pe un punct de colectare autentificat pentru Prometheus și Grafana."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "pJ6LWb"
+msgstr "Prefixul metricilor"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "shWZET"
+msgstr "Se adaugă înaintea fiecărui nume de metrică, inclusiv a metricilor de rulare Node.js."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "eQ6FCA"
+msgstr "Metrici de rulare Node.js"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3V_aL1"
+msgstr "Întârzierea buclei de evenimente, utilizarea heap-ului, colectarea gunoiului și handle-urile deschise ale instanței interogate."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "GIgXZF"
+msgstr "Metrici de platformă"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "igJLap"
+msgstr "Servere, copii de rezervă, comenzi, plăți și alocări de IP, numărate în baza de date în momentul colectării."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5z4qH1"
+msgstr "Intervale de histogramă (ms)"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3rCYri"
+msgstr "Limite superioare separate prin virgulă pentru duratele înregistrate. Lăsați gol pentru intervalul implicit de la 5 ms la 5 minute."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AfjPfR"
+msgstr "Token de colectare"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "NMkV81"
+msgstr "Prometheus îl trimite ca token Bearer. Generați unul cu `openssl rand -hex 32`."
+
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "o_UJXc"
 msgstr "Asc"

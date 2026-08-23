@@ -392,16 +392,26 @@ export class IntegrationRegistry {
   private async buildContext(
     integration: Integration,
   ): Promise<ResolvedIntegration> {
-    if (!(await this.config.isEnabled(integration))) {
-      return { context: null, configError: null };
+    let stored: { settings: unknown; secrets: unknown };
+    try {
+      if (!(await this.config.isEnabled(integration))) {
+        return { context: null, configError: null };
+      }
+
+      stored = {
+        settings: await this.config.settings(integration),
+        secrets: await this.config.secrets(integration),
+      };
+    } catch (error) {
+      const message = `Configuration could not be read: ${
+        error instanceof Error ? error.message : String(error)
+      }`;
+      this.logger.error(`[${integration.id}] ${message}`);
+      return { context: null, configError: message };
     }
 
-    const settings = integration.settings?.schema.safeParse(
-      await this.config.settings(integration),
-    );
-    const secrets = integration.secrets?.schema.safeParse(
-      await this.config.secrets(integration),
-    );
+    const settings = integration.settings?.schema.safeParse(stored.settings);
+    const secrets = integration.secrets?.schema.safeParse(stored.secrets);
 
     // A misconfigured optional integration must not take the process down the
     // way a boot-time env check does; it reports through health() instead.

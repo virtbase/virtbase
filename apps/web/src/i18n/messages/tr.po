@@ -348,6 +348,54 @@ msgstr "PowerDNS HTTP API'sinin temel URL'si, sonunda eğik çizgi olmadan."
 msgid "KSXj3s"
 msgstr "X-API-Key başlığı olarak gönderilir."
 
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AMCq17"
+msgstr "Prometheus"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5VMIS_"
+msgstr "Platform ve çalışma zamanı metriklerini Prometheus ve Grafana için kimlik doğrulamalı bir toplama uç noktasında sunar."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "pJ6LWb"
+msgstr "Metrik ön eki"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "shWZET"
+msgstr "Her metrik adının önüne eklenir, Node.js çalışma zamanı metrikleri dahil."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "eQ6FCA"
+msgstr "Node.js çalışma zamanı metrikleri"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3V_aL1"
+msgstr "Toplanan örneğe ait olay döngüsü gecikmesi, yığın kullanımı, çöp toplama ve açık tutamaçlar."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "GIgXZF"
+msgstr "Platform metrikleri"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "igJLap"
+msgstr "Sunucular, yedekler, siparişler, ödemeler ve IP tahsisleri; toplama anında veritabanında sayılır."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5z4qH1"
+msgstr "Histogram kovaları (ms)"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3rCYri"
+msgstr "Kaydedilen süreler için virgülle ayrılmış üst sınırlar. Varsayılan 5 ms – 5 dakika aralığı için boş bırakın."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AfjPfR"
+msgstr "Toplama belirteci"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "NMkV81"
+msgstr "Prometheus bunu Bearer belirteci olarak gönderir. `openssl rand -hex 32` ile bir tane oluşturun."
+
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "o_UJXc"
 msgstr "Artan"

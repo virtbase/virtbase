@@ -21,6 +21,7 @@ import anonpay from "@virtbase/integration-anonpay";
 import discord from "@virtbase/integration-discord";
 import lexware from "@virtbase/integration-lexware";
 import powerdns from "@virtbase/integration-powerdns";
+import prometheus from "@virtbase/integration-prometheus";
 import type { ConfigSource } from "@virtbase/integration-sdk";
 import {
   DisabledConfigSource,
@@ -84,7 +85,7 @@ const config: ConfigSource = integrationConfigStore
  * dependency; nothing else in this package changes.
  */
 export const integrations = new IntegrationRegistry({
-  integrations: [core, powerdns, discord, lexware, stripe, anonpay],
+  integrations: [core, powerdns, discord, lexware, stripe, anonpay, prometheus],
   config,
 });
 

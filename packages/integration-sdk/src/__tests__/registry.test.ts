@@ -164,3 +164,77 @@ describe("IntegrationRegistry", () => {
     expect(await registry.resolve("dns")).not.toBe(first);
   });
 });
+
+/**
+ * A `ConfigSource` whose reads fail the way the real one does when a secret's
+ * data key was wrapped with a different `CONFIG_ENCRYPTION_KEY`: WebCrypto
+ * rejects with a bare `OperationError` carrying no hint of which integration
+ * or which key was involved.
+ */
+const undecryptableConfig = (
+  entries: Record<string, Stored>,
+  broken: string[],
+): ConfigSource => ({
+  isEnabled: async (integration) => entries[integration.id]?.enabled ?? false,
+  settings: async (integration) => entries[integration.id]?.settings ?? {},
+  secrets: async (integration) => {
+    if (broken.includes(integration.id)) {
+      throw new DOMException(
+        "The operation failed for an operation-specific reason",
+        "OperationError",
+      );
+    }
+    return entries[integration.id]?.secrets ?? {};
+  },
+});
+
+describe("a configuration source that throws", () => {
+  const registry = () =>
+    new IntegrationRegistry({
+      integrations: ["alpha", "beta"].map(dnsIntegration),
+      config: undecryptableConfig(
+        { alpha: configured("alpha"), beta: configured("beta") },
+        ["beta"],
+      ),
+      logger: silentLogger,
+    });
+
+  test("does not let one broken installation reject the whole probe", async () => {
+    // `health()` fans out with `Promise.all`. Before this was handled, a single
+    // undecryptable secret rejected the entire call, so the admin console
+    // replaced every integration's status with one unexplained error and the
+    // re-check button could not be used on any of them.
+    const health = await registry().health();
+
+    expect(health.alpha?.status).toBe("ok");
+    expect(health.beta?.status).toBe("error");
+  });
+
+  test("says which integration could not be read, and why", async () => {
+    const health = await registry().health();
+
+    expect(health.beta).toMatchObject({
+      status: "error",
+      message: expect.stringContaining("Configuration could not be read"),
+    });
+  });
+
+  test("keeps the other integrations resolvable", async () => {
+    // The broken one must not be resolvable, but it must also not take the
+    // working one down with it.
+    const resolved = await registry().resolve("dns", {
+      integrationId: "alpha",
+    });
+    expect(resolved).not.toBeNull();
+
+    expect(
+      await registry().resolve("dns", { integrationId: "beta" }),
+    ).toBeNull();
+  });
+
+  test("require() explains itself instead of surfacing a DOMException", async () => {
+    await expect(
+      registry().require("dns", { integrationId: "beta" }),
+    ).rejects.toBeInstanceOf(PortUnavailableError);
+  });
+});
