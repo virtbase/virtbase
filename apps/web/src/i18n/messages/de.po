@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: German\n"
-"PO-Revision-Date: 2026-08-23 17:42\n"
+"PO-Revision-Date: 2026-08-23 19:39\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -347,6 +347,54 @@ msgstr "Basis-URL der PowerDNS-HTTP-API, ohne abschließenden Schrägstrich."
 #: ../../packages/integration-powerdns/src/localize.ts
 msgid "KSXj3s"
 msgstr "Wird als X-API-Key-Header gesendet."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AMCq17"
+msgstr "Prometheus"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5VMIS_"
+msgstr "Stellt Plattform- und Laufzeitmetriken über einen authentifizierten Scrape-Endpunkt für Prometheus und Grafana bereit."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "pJ6LWb"
+msgstr "Metrik-Präfix"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "shWZET"
+msgstr "Wird jedem Metriknamen vorangestellt, auch den Node.js-Laufzeitmetriken."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "eQ6FCA"
+msgstr "Node.js-Laufzeitmetriken"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3V_aL1"
+msgstr "Event-Loop-Verzögerung, Heap-Auslastung, Garbage Collection und offene Handles der abgefragten Instanz."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "GIgXZF"
+msgstr "Plattformmetriken"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "igJLap"
+msgstr "Server, Backups, Bestellungen, Zahlungen und IP-Zuweisungen, zum Zeitpunkt der Abfrage in der Datenbank gezählt."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "5z4qH1"
+msgstr "Histogramm-Buckets (ms)"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "3rCYri"
+msgstr "Kommagetrennte Obergrenzen für erfasste Laufzeiten. Leer lassen für den Standardbereich von 5 ms bis 5 Minuten."
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "AfjPfR"
+msgstr "Scrape-Token"
+
+#: ../../packages/integration-prometheus/src/localize.ts
+msgid "NMkV81"
+msgstr "Wird von Prometheus als Bearer-Token gesendet. Mit `openssl rand -hex 32` erzeugen."
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "o_UJXc"
