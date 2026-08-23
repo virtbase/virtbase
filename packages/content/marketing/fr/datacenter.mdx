@@ -1,0 +1,153 @@
+---
+title: Notre centre de données aux Pays-Bas
+description: Tous les serveurs Virtbase se trouvent au SkyLink Data Center d'Eygelshoven, juste de l'autre côté de la frontière près d'Aix-la-Chapelle. Norme Tier 3, deux arrivées électriques par baie, allées froides confinées et fibre redondante.
+keywords:
+  - centre de données
+  - Pays-Bas
+  - VPS Pays-Bas
+  - Tier 3
+  - hébergement UE
+  - hébergement RGPD
+---
+
+<Hero>
+
+# Un centre de données, aux Pays-Bas
+
+Tous nos serveurs sont dans le même bâtiment : le SkyLink Data Center
+d'Eygelshoven, à quelques minutes de la frontière allemande.
+
+</Hero>
+
+<Advantages>
+  <Advantage title="Eygelshoven, Pays-Bas" icon="map-pin">
+    Juste après la frontière près d'Aix-la-Chapelle, dans l'UE, près d'Amsterdam.
+  </Advantage>
+
+  <Advantage title="Deux arrivées électriques" icon="zap">
+    Every rack has an A and a B side. One can fail and your server stays up.
+  </Advantage>
+
+  <Advantage title="Allées froides confinées" icon="snowflake">
+    Cold air is walled in, so the top of a rack runs as cool as the bottom.
+  </Advantage>
+
+  <Advantage title="Fibre redondante" icon="network">
+    Deux chemins hors du bâtiment, vers les nœuds de Francfort et d'Amsterdam.
+  </Advantage>
+</Advantages>
+
+<Prose>
+
+## Pourquoi les Pays-Bas
+
+Eygelshoven se trouve du côté néerlandais de la frontière, à quelques minutes
+d'Aix-la-Chapelle.
+Le trafic allemand ne quitte pratiquement pas la région, et
+Amsterdam et Francfort, où la plupart des réseaux européens s'échangent leur
+trafic, sont tout près.
+
+Vos données restent aussi dans l'UE et sous le RGPD. Si vous êtes en France, en
+Belgique ou en Suisse, vous obtenez une latence qui reste européenne sans que
+vos données sortent du droit européen.
+
+## Alimentation
+
+Tier 3 est une norme de conception : on peut intervenir sur l'électricité et la
+climatisation pendant que les équipements des clients continuent de tourner.
+
+Chaque baie est alimentée deux fois, par un côté A et un côté B, et les deux ne
+se rejoignent jamais avant le serveur. Nos hôtes ont une alimentation sur
+chacun. Si un côté disparaît, pour une maintenance ou une PDU en panne, la
+machine continue sur l'autre.
+
+![Deux arrivées électriques indépendantes, A et B, atteignant chacune une alimentation distincte dans le même hôte.](/assets/static/datacenter/power-path-fr.svg)
+
+*Chaque arrivée encaisse seule la charge complète.*
+
+## Refroidissement
+
+L'air froid est poussé dans une allée fermée entre deux rangées de baies. Comme
+l'allée est confinée, il n'a nulle part où aller sinon à travers les serveurs.
+
+Résultat : une machine en haut de baie aspire de l'air à la même température
+qu'une machine en bas. Les serveurs qui chauffent se brident, et le bridage
+explique souvent qu'un hébergement bon marché paraisse rapide puis lent.
+
+![Coupe d'une allée froide confinée : l'air froid entre dans l'allée fermée entre deux rangées de baies, traverse les serveurs et ressort en air chaud sur l'extérieur de chaque rangée.](/assets/static/datacenter/cold-aisle-fr.svg)
+
+*Le confinement maintient la température d'aspiration égale sur toute la baie.*
+
+## Réseau
+
+La fibre qui entre dans le bâtiment est redondante et atteint DE-CIX Francfort,
+Speed-IX et Nikhef Amsterdam. Le trafic vers les réseaux allemands et
+néerlandais reste en général régional au lieu de traverser le continent.
+
+Chaque serveur est aussi derrière la protection DDoS
+d'aurologic, sur toutes les offres,
+sans supplément. Le trafic d'attaque est filtré en amont et n'atteint jamais
+votre lien.
+
+![Topologie réseau : Eygelshoven est relié par deux chemins de fibre indépendants à Nikhef Amsterdam avec Speed-IX, et à DE-CIX Francfort.](/assets/static/datacenter/network-map-fr.svg)
+
+*Chaque liaison compte deux chemins de fibre indépendants.*
+
+## Sécurité
+
+L'accès au bâtiment est contrôlé et surveillé. C'est la partie facile, et seule
+elle protège moins qu'on ne le croit.
+
+Nous verrouillons donc aussi les machines. Chaque hôte a un verrou de démarrage
+avec mots de passe TPM et BIOS : personne ne peut toucher à un serveur
+simplement parce qu'il est devant. Chaque disque de notre grappe Ceph est
+chiffré avec LUKS2. Un disque qui sort du bâtiment ne contient rien de lisible.
+
+Vous trouverez plus de détails dans Quel est le niveau de sécurité de
+Virtbase.
+
+## Qui exploite le bâtiment
+
+Le site appartient à SkyLink Data Center BV, Bart van Slobbestraat 16B,
+6471 WV Eygelshoven. Le matériel à l'intérieur est le nôtre. Nous achetons et
+exploitons nos propres serveurs plutôt que de revendre la capacité d'un tiers.
+
+</Prose>
+
+<Faq title="Questions sur notre centre de données">
+  <Question title="Où se trouvent exactement les serveurs Virtbase ?">
+    Tous au SkyLink Data Center d'Eygelshoven, dans le sud des Pays-Bas, près de
+    la frontière allemande et d'Aix-la-Chapelle.
+  </Question>
+
+  <Question title="Mes données sont-elles stockées dans l'Union européenne ?">
+    Oui. Le bâtiment est aux Pays-Bas, vos données restent donc dans l'UE et
+    sont traitées sous le RGPD. Notre politique de
+    confidentialité détaille ce que nous traitons.
+  </Question>
+
+  <Question title="Que signifie la norme Tier 3 ?">
+    Elle décrit le bâtiment, pas les serveurs. Un site Tier 3 dispose de
+    plusieurs chemins d'alimentation et de refroidissement, ce qui permet la
+    maintenance sans éteindre les équipements des clients.
+  </Question>
+
+  <Question title="Que se passe-t-il si une arrivée électrique tombe ?">
+    Rien que vous remarqueriez. Chaque baie est alimentée par deux chemins
+    distincts et nos hôtes ont une alimentation sur chacun : l'un peut
+    disparaître sans rien interrompre.
+  </Question>
+
+  <Question title="À quels points d'échange le centre de données est-il relié ?">
+    À DE-CIX Francfort, Speed-IX et Nikhef Amsterdam, par fibre redondante. Cela
+    raccourcit la route vers les réseaux allemands et néerlandais.
+  </Question>
+
+  <Question title="Puis-je visiter le centre de données ou demander une intervention sur place ?">
+    Non. Virtbase est un produit VPS infogéré : les clients n'ont pas d'accès
+    physique aux baies. Si quelque chose doit être fait au niveau matériel,
+    [écrivez à notre support](/fr/contact).
+  </Question>
+</Faq>
+
+<Offers />
