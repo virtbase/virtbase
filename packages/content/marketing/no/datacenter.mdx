@@ -1,0 +1,151 @@
+---
+title: Our data center in the Netherlands
+description: Every Virtbase server runs in the SkyLink Data Center in Eygelshoven, just over the Dutch border from Aachen. Tier 3 standard, two power feeds per rack, contained cold aisles and redundant fibre.
+keywords:
+  - data center
+  - Netherlands
+  - VPS Netherlands
+  - Tier 3
+  - EU hosting
+  - GDPR hosting
+---
+
+<Hero>
+
+# One data center, in the Netherlands
+
+Every server we run sits in the same building: the SkyLink Data Center in
+Eygelshoven, a few minutes from the German border.
+
+</Hero>
+
+<Advantages>
+  <Advantage title="Eygelshoven, Netherlands" icon="map-pin">
+    Just over the Dutch border from Aachen, inside the EU, close to Amsterdam.
+  </Advantage>
+
+  <Advantage title="Two power feeds" icon="zap">
+    Every rack has an A and a B side. One can fail and your server stays up.
+  </Advantage>
+
+  <Advantage title="Contained cold aisles" icon="snowflake">
+    Cold air is walled in, so the top of a rack runs as cool as the bottom.
+  </Advantage>
+
+  <Advantage title="Redundant fibre" icon="network">
+    Two paths out of the building, into the Frankfurt and Amsterdam exchanges.
+  </Advantage>
+</Advantages>
+
+<Prose>
+
+## Why the Netherlands
+
+Eygelshoven sits on the Dutch side of the border, a short drive from Aachen.
+German traffic barely leaves the region, and Amsterdam and Frankfurt, where most
+European networks hand traffic to each other, are both close by.
+
+Your data also stays inside the EU and under the GDPR. If you are in Germany,
+Austria or Switzerland, you get latency that feels local without your data
+leaving European law.
+
+## Power
+
+Tier 3 is a design standard: the power and cooling can be worked on while
+customer equipment keeps running.
+
+Each rack is fed twice, from an A side and a B side, and the two never meet
+before the server. Our hosts have a power supply on each. If a feed drops for
+maintenance or because a PDU fails, the machine carries on running from the
+other one.
+
+![Two independent power feeds, A and B, each reaching a separate power supply in the same host system.](/assets/static/datacenter/power-path-en.svg)
+
+*Either feed on its own carries the full load.*
+
+## Cooling
+
+Chilled air is pushed into a closed aisle between two rows of racks. Because the
+aisle is walled off, the air has nowhere to go except through the servers.
+
+The result is that a machine at the top of a rack draws air at the same
+temperature as one at the bottom. Servers that get warm start throttling, and
+throttling is a common reason cheap hosting feels fast one minute and slow the
+next.
+
+![Cross-section of a contained cold aisle: chilled air enters the closed aisle between two rack rows, passes through the servers, and leaves as hot exhaust on the outside of each row.](/assets/static/datacenter/cold-aisle-en.svg)
+
+*Containment is what keeps intake temperature even across the whole rack.*
+
+## Network
+
+The fibre into the building is redundant, and it reaches DE-CIX Frankfurt,
+Speed-IX and Nikhef Amsterdam. Traffic to German and Dutch networks usually
+stays regional instead of crossing the continent first.
+
+Every server also sits behind aurologic's DDoS
+protection, on every plan, at no extra
+cost. Attack traffic is filtered upstream and never reaches your uplink.
+
+![Network topology: Eygelshoven connects over two independent fibre paths each to Nikhef Amsterdam with Speed-IX, and to DE-CIX Frankfurt.](/assets/static/datacenter/network-map-en.svg)
+
+*Every link is two independent fibre paths.*
+
+## Security
+
+Getting into the building is controlled and monitored. That part is easy, and on
+its own it protects less than people assume.
+
+So we lock the machines down too. Every host has a boot lock with TPM and BIOS
+passwords, which means nobody can start poking at a server just by standing in
+front of it. Every disk in our Ceph cluster is encrypted with LUKS2, so a drive
+that leaves the building has nothing readable on it.
+
+There is more on this in how secure is
+Virtbase.
+
+## Who runs the building
+
+The facility belongs to SkyLink Data Center BV, Bart van Slobbestraat 16B,
+6471 WV Eygelshoven. The hardware in it is ours. We buy and run our own servers
+rather than reselling capacity from someone else.
+
+</Prose>
+
+<Faq title="Questions about our data center">
+  <Question title="Where exactly are Virtbase servers located?">
+    All of them are in the SkyLink Data Center in Eygelshoven, in the south of
+    the Netherlands, close to the German border near Aachen.
+  </Question>
+
+  <Question title="Is my data stored inside the European Union?">
+    Yes. The building is in the Netherlands, so your data stays in the EU and is
+    processed under the GDPR. Our [privacy policy](/en/legal/privacy) lists what
+    we process.
+  </Question>
+
+  <Question title="What does Tier 3 standard mean?">
+    It describes the building, not the servers. A Tier 3 facility has more than
+    one power and cooling path, so maintenance can happen without switching
+    customer equipment off.
+  </Question>
+
+  <Question title="What happens if a power feed fails?">
+    Nothing you would notice. Each rack is fed from two separate paths and our
+    hosts have a power supply on each, so one feed can go away without
+    interrupting anything.
+  </Question>
+
+  <Question title="Which internet exchanges is the data center connected to?">
+    DE-CIX Frankfurt, Speed-IX and Nikhef Amsterdam, over redundant fibre. That
+    keeps the route to German and Dutch networks short.
+  </Question>
+
+  <Question title="Can I visit the data center or get remote hands?">
+    No. Virtbase is a managed VPS product, so customers do not have physical
+    access to the racks. If something needs doing at the hardware level,
+    [ask our support team](/en/contact).
+  </Question>
+</Faq>
+
+<Offers />
