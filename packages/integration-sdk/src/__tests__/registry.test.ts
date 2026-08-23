@@ -18,7 +18,7 @@
 import { describe, expect, test } from "bun:test";
 import type { DnsProvider } from "@virtbase/ports";
 import * as z from "zod";
-import { EnvConfigSource } from "../config-source";
+import type { ConfigSource } from "../config-source";
 import { defineIntegration } from "../define-integration";
 import { IntegrationRegistry, PortUnavailableError } from "../registry";
 import type { IntegrationLogger } from "../types";
@@ -45,61 +45,73 @@ const dnsIntegration = (id: string) =>
     category: "platform",
     settings: {
       schema: z.object({ apiUrl: z.url() }),
-      fields: [
-        {
-          key: "apiUrl",
-          label: "API URL",
-          widget: "url",
-          env: `${id.toUpperCase()}_API_URL`,
-        },
-      ],
+      fields: [{ key: "apiUrl", label: "API URL", widget: "url" }],
     },
     secrets: {
       schema: z.object({ apiKey: z.string().min(1) }),
-      fields: [
-        {
-          key: "apiKey",
-          label: "API key",
-          widget: "password",
-          env: `${id.toUpperCase()}_API_KEY`,
-        },
-      ],
+      fields: [{ key: "apiKey", label: "API key", widget: "password" }],
     },
     provides: { dns: () => fakeDns(id) },
   });
 
-const registryWith = (
-  env: Record<string, string | undefined>,
-  ids = ["alpha"],
-) =>
+interface Stored {
+  enabled?: boolean;
+  settings?: unknown;
+  secrets?: unknown;
+}
+
+/**
+ * Stands in for the Postgres-backed store. The registry only cares about the
+ * three questions a `ConfigSource` answers, so a plain object is enough and
+ * keeps these tests about wiring rather than about storage.
+ */
+const staticConfig = (entries: Record<string, Stored>): ConfigSource => ({
+  isEnabled: async (integration) => entries[integration.id]?.enabled ?? false,
+  settings: async (integration) => entries[integration.id]?.settings ?? {},
+  secrets: async (integration) => entries[integration.id]?.secrets ?? {},
+});
+
+/** An enabled integration whose configuration passes its own schema. */
+const configured = (id: string): Stored => ({
+  enabled: true,
+  settings: { apiUrl: `https://${id}.example.com` },
+  secrets: { apiKey: id },
+});
+
+const registryWith = (entries: Record<string, Stored>, ids = ["alpha"]) =>
   new IntegrationRegistry({
     integrations: ids.map(dnsIntegration),
-    config: new EnvConfigSource(env),
+    config: staticConfig(entries),
     logger: silentLogger,
   });
 
 describe("IntegrationRegistry", () => {
-  test("resolves a port when the environment configures the integration", async () => {
-    const registry = registryWith({
-      ALPHA_API_URL: "https://dns.example.com",
-      ALPHA_API_KEY: "secret",
-    });
+  test("resolves a port when the integration is enabled and configured", async () => {
+    const registry = registryWith({ alpha: configured("alpha") });
 
     expect(await registry.resolve("dns")).not.toBeNull();
   });
 
-  test("returns null when the integration is not configured", async () => {
-    // The same rule the old `process.env.X ? new Client() : null` applied.
-    const registry = registryWith({ ALPHA_API_URL: "https://dns.example.com" });
+  test("returns null when an administrator has it switched off", async () => {
+    const registry = registryWith({
+      alpha: { ...configured("alpha"), enabled: false },
+    });
+
+    expect(await registry.resolve("dns")).toBeNull();
+  });
+
+  test("returns null when the stored configuration is incomplete", async () => {
+    // Enabled, but the secret was never filled in — a real state, because the
+    // row is created before the admin form is submitted.
+    const registry = registryWith({
+      alpha: { enabled: true, settings: { apiUrl: "https://a.example.com" } },
+    });
 
     expect(await registry.resolve("dns")).toBeNull();
   });
 
   test("returns null for a port nothing provides", async () => {
-    const registry = registryWith({
-      ALPHA_API_URL: "https://dns.example.com",
-      ALPHA_API_KEY: "secret",
-    });
+    const registry = registryWith({ alpha: configured("alpha") });
 
     expect(await registry.resolve("payment")).toBeNull();
   });
@@ -114,12 +126,7 @@ describe("IntegrationRegistry", () => {
 
   test("refuses to guess when two integrations fill the same slot", async () => {
     const registry = registryWith(
-      {
-        ALPHA_API_URL: "https://a.example.com",
-        ALPHA_API_KEY: "a",
-        BETA_API_URL: "https://b.example.com",
-        BETA_API_KEY: "b",
-      },
+      { alpha: configured("alpha"), beta: configured("beta") },
       ["alpha", "beta"],
     );
 
@@ -134,8 +141,11 @@ describe("IntegrationRegistry", () => {
 
   test("reports invalid configuration through health instead of throwing", async () => {
     const registry = registryWith({
-      ALPHA_API_URL: "not-a-url",
-      ALPHA_API_KEY: "secret",
+      alpha: {
+        enabled: true,
+        settings: { apiUrl: "not-a-url" },
+        secrets: { apiKey: "secret" },
+      },
     });
 
     expect(await registry.resolve("dns")).toBeNull();
@@ -145,10 +155,7 @@ describe("IntegrationRegistry", () => {
   });
 
   test("caches the adapter until the integration is invalidated", async () => {
-    const registry = registryWith({
-      ALPHA_API_URL: "https://dns.example.com",
-      ALPHA_API_KEY: "secret",
-    });
+    const registry = registryWith({ alpha: configured("alpha") });
 
     const first = await registry.resolve("dns");
     expect(await registry.resolve("dns")).toBe(first);

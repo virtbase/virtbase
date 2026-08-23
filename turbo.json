@@ -62,9 +62,6 @@
     },
     "register-connections-metadata": {
       "cache": false
-    },
-    "config:import": {
-      "cache": false
     }
   },
   "globalEnv": [
@@ -82,7 +79,6 @@
     "SMTP_PORT",
     "SMTP_USER",
     "SMTP_PASSWORD",
-    "LEXWARE_API_KEY",
     "STRIPE_SECRET_KEY",
     "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
     "STRIPE_WEBHOOK_SECRET",
@@ -94,12 +90,9 @@
     "CRON_SECRET",
     "NOVNC_PROXY_URL",
     "NOVNC_PROXY_SECRET",
-    "POWERDNS_API_URL",
-    "POWERDNS_API_KEY",
     "DISCORD_CLIENT_ID",
     "DISCORD_CLIENT_SECRET",
     "DISCORD_APP_ID",
-    "DISCORD_APP_PUBLIC_KEY",
     "DISCORD_BOT_TOKEN",
     "GITHUB_CLIENT_ID",
     "GITHUB_CLIENT_SECRET",

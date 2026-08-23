@@ -28,7 +28,7 @@ import {
 } from "../workflows";
 import { decryptOrderSecret } from "./order-secrets";
 import { recordBillingDetails } from "./record-billing-details";
-import { transitionOrder } from "./transition-order";
+import { claimOrderForFulfilment, transitionOrder } from "./transition-order";
 
 export interface FulfilOrderInput {
   orderId: string;
@@ -75,13 +75,18 @@ export const fulfilOrder = async ({
 
   const configuration = order.configuration as OrderConfigurationSnapshot;
 
-  await transitionOrder(orderId, "fulfilling", { idempotent: true });
-
-  // The address only becomes available once payment succeeds, so this is the
-  // first moment the order can be priced for tax.
-  await recordBillingDetails(orderId, billingDetails);
+  // Whoever wins this claim does the work; everyone else returns quietly. A
+  // second webhook delivery arriving mid-fulfilment therefore cannot provision
+  // a second server, and one arriving after a failed attempt can retry.
+  if (!(await claimOrderForFulfilment(orderId))) return;
 
   try {
+    // The address only becomes available once payment succeeds, so this is the
+    // first moment the order can be priced for tax. Inside the try because a
+    // failure here must mark the order failed like any other, rather than
+    // leaving it parked in `fulfilling` with no recorded reason.
+    await recordBillingDetails(orderId, billingDetails);
+
     // Every order type currently produces an invoice.
     await start(createInvoiceWorkflow, [
       {

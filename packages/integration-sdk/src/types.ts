@@ -38,12 +38,6 @@ export interface FieldDescriptor<TKey extends string = string> {
   optional?: boolean;
   /** Required when `widget` is `"select"`. */
   options?: { value: string; label: string }[];
-  /**
-   * Environment variable this field is read from while configuration still
-   * lives in the environment. Drops out once WS1's store is the source of
-   * truth; see {@link ../config-source.ts EnvConfigSource}.
-   */
-  env?: string;
 }
 
 /**

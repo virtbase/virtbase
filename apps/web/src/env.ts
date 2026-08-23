@@ -56,9 +56,6 @@ export const env = createEnv({
     // noVNC Proxy
     NOVNC_PROXY_SECRET: z4.string().min(1),
     NOVNC_PROXY_URL: z4.string().min(1),
-    // PowerDNS for reverse DNS management
-    POWERDNS_API_URL: z4.string().min(1),
-    POWERDNS_API_KEY: z4.string().min(1),
     // Anonpay for cryptocurrency payments (optional)
     ANONPAY_TICKER_TO: z4
       .string()
@@ -88,12 +85,11 @@ export const env = createEnv({
         requiredWithAnonpayConfigured,
         "ANONPAY_WEBHOOK_SECRET is required if Anonpay is configured",
       ),
-    // Discord Integration
+    // Discord. The integration's own credentials live in the configuration
+    // store; these two remain because they are read directly — by the two
+    // build-time registration scripts, by the linked-role route, and to decide
+    // whether to request the `role_connections.write` scope at login.
     DISCORD_APP_ID: z4.string().optional(),
-    DISCORD_APP_PUBLIC_KEY: z4
-      .string()
-      .optional()
-      .refine(requiredWithDiscordIntegration),
     DISCORD_BOT_TOKEN: z4
       .string()
       .optional()

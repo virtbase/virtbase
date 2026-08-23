@@ -27,7 +27,6 @@
   "scripts": {
     "build": "tsc",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "config:import": "bun with-env src/integrations/scripts/import-config.ts",
     "dev": "tsc",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "with-env": "bun --env-file ../../.env --"

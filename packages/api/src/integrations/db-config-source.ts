@@ -19,50 +19,34 @@ import type { IntegrationConfigStore } from "@virtbase/config";
 import type { ConfigSource, Integration } from "@virtbase/integration-sdk";
 
 /**
- * Reads integration configuration from Postgres, falling back to the
- * environment for integrations that have no row yet.
+ * Reads integration configuration from Postgres.
  *
- * The fallback is what makes the cutover safe: deploying this before running
- * the importer changes nothing, because every integration still resolves
- * exactly the values it resolved before. Once the importer has run and the
- * store is authoritative, the fallback can be dropped along with the `env`
- * hints on the field descriptors.
- *
- * Note the granularity: an integration is served *entirely* from the store or
- * *entirely* from the environment, never half of each. Mixing the two would
- * produce a configuration that exists in neither place, which is not something
- * anyone could debug.
+ * The single source of truth. An integration with no row is off — there is no
+ * second place to look, which is the point: configuration that could come from
+ * either the database or the environment meant every question about a live
+ * value had two possible answers.
  */
 export class DbConfigSource implements ConfigSource {
   private readonly store: IntegrationConfigStore;
-  private readonly fallback: ConfigSource | null;
 
-  constructor(options: {
-    store: IntegrationConfigStore;
-    fallback?: ConfigSource;
-  }) {
+  constructor(options: { store: IntegrationConfigStore }) {
     this.store = options.store;
-    this.fallback = options.fallback ?? null;
   }
 
   async isEnabled(integration: Integration): Promise<boolean> {
     const installation = await this.store.find(integration.id);
-    if (installation) return installation.enabled;
-
-    return (await this.fallback?.isEnabled(integration)) ?? false;
+    return installation?.enabled ?? false;
   }
 
   async settings(integration: Integration): Promise<unknown> {
     const installation = await this.store.find(integration.id);
-    if (installation) return installation.settings;
-
-    return (await this.fallback?.settings(integration)) ?? {};
+    return installation?.settings ?? {};
   }
 
   async secrets(integration: Integration): Promise<unknown> {
     const installation = await this.store.find(integration.id);
-    if (installation) return this.store.secrets(integration.id);
+    if (!installation) return {};
 
-    return (await this.fallback?.secrets(integration)) ?? {};
+    return this.store.secrets(integration.id);
   }
 }

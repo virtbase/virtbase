@@ -112,7 +112,7 @@ localize: async () => {
 It takes no translator argument on purpose — the extractor only sees literals at
 a `getExtracted`/`useExtracted` call site and cannot follow a `t` passed as a
 parameter. `name` and `description` on the definition stay untranslated and are
-used in logs, health output and the importer. `localize()` needs a Next request
+used in logs and health output. `localize()` needs a Next request
 context; when it is unavailable the registry falls back to the declared text
 rather than failing.
 
@@ -126,22 +126,23 @@ Integration configuration lives in Postgres, not in the environment.
   that key rewraps one short string per installation and touches no ciphertext.
 - `settings` holds application settings keyed by dotted namespace.
 
-`DbConfigSource` falls back to the environment for any integration with no row,
-which is what makes deploying the store a no-op. Seed it with:
+`DbConfigSource` is the only source. An integration with no row is off — there
+is no environment fallback, and no `env` hint on field descriptors. Configure
+integrations in the admin console; a fresh database therefore starts with
+everything disabled, which includes local development after a reset.
 
-```bash
-bun config:import -- --dry-run   # report only
-bun config:import                # write
-```
-
-The importer is idempotent and never overwrites an existing row, so it cannot
-revert an admin edit back to a stale environment variable. Once every
-environment has been imported, the fallback and the `env` hints on field
-descriptors can both be deleted.
-
-Without `CONFIG_ENCRYPTION_KEY` the application falls back to environment-only
-configuration rather than refusing to boot. Generate one with
+Without `CONFIG_ENCRYPTION_KEY` there is no way to read a stored secret, so
+`DisabledConfigSource` reports every integration as off and logs a warning. The
+application still boots and serves. Generate a key with
 `openssl rand -base64 32`.
+
+Some credentials are still read from the environment because application code
+outside the registry reads them directly: `STRIPE_SECRET_KEY` and
+`STRIPE_WEBHOOK_SECRET` (the module-level client, checkout, the webhook route),
+the four `ANONPAY_*` variables (checkout and the webhook route), and
+`DISCORD_APP_ID` / `DISCORD_BOT_TOKEN` (the build-time registration scripts, the
+linked-role route, and the login scope decision). Those consumers have to move
+behind a port before the variables can go.
 
 The admin console has a hub at `/admin.virtbase.com/integrations`, grouped by
 category, and a detail page at `/integrations/<id>` with the enable switch,

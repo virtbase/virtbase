@@ -166,8 +166,16 @@ export const applyPaymentEvent = async (
   return {
     applied: true,
     orderId: event.orderId,
-    // Only a payment that just moved the order into `paid` starts fulfilment.
+    // Reports whether the order *needs* fulfilment, not whether this call was
+    // the one that moved it. Fulfilment runs after the event has been claimed,
+    // so anything throwing in between — a charge fetch, the workflow queue —
+    // leaves a paid order unfulfilled; keying this on `transition.changed`
+    // turned the provider's retry into a no-op and stranded the order for good,
+    // because nothing else retries. `claimOrderForFulfilment` is what keeps
+    // concurrent deliveries from acting on this answer twice.
     shouldFulfil:
-      succeeded && transition.changed && transition.status === "paid",
+      succeeded &&
+      (transition.status === "paid" ||
+        (transition.status === "failed" && transition.paid)),
   };
 };

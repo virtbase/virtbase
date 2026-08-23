@@ -23,8 +23,8 @@ import lexware from "@virtbase/integration-lexware";
 import powerdns from "@virtbase/integration-powerdns";
 import type { ConfigSource } from "@virtbase/integration-sdk";
 import {
+  DisabledConfigSource,
   defineIntegration,
-  EnvConfigSource,
   IntegrationRegistry,
 } from "@virtbase/integration-sdk";
 import stripe from "@virtbase/integration-stripe";
@@ -47,16 +47,14 @@ const core = defineIntegration({
   },
 });
 
-const environmentConfig = new EnvConfigSource();
-
 /**
  * The store, when a bootstrap key is available.
  *
- * Without `CONFIG_ENCRYPTION_KEY` there is no way to read stored secrets, so
- * the application falls back to environment-only configuration rather than
- * refusing to boot. That is the difference between "the config platform is not
- * provisioned yet" and "the application is broken", and only the second one
- * deserves a crash.
+ * Without `CONFIG_ENCRYPTION_KEY` there is no way to read a stored secret, so
+ * every integration reports as off rather than the application refusing to
+ * boot. That is the difference between "the configuration store is not
+ * readable" and "the application is broken", and only the second deserves a
+ * crash — the site still serves, and admin shows why.
  */
 export const integrationConfigStore = process.env.CONFIG_ENCRYPTION_KEY
   ? new IntegrationConfigStore({
@@ -65,13 +63,16 @@ export const integrationConfigStore = process.env.CONFIG_ENCRYPTION_KEY
     })
   : null;
 
+if (!integrationConfigStore) {
+  console.warn(
+    "[integrations] CONFIG_ENCRYPTION_KEY is not set. Every integration will " +
+      "report as disabled until it is configured.",
+  );
+}
+
 const config: ConfigSource = integrationConfigStore
-  ? new DbConfigSource({
-      store: integrationConfigStore,
-      // Dropped once the importer has run everywhere; see DbConfigSource.
-      fallback: environmentConfig,
-    })
-  : environmentConfig;
+  ? new DbConfigSource({ store: integrationConfigStore })
+  : new DisabledConfigSource();
 
 /**
  * The composition root for integrations — the single place where concrete

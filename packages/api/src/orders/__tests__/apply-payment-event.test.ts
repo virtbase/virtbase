@@ -39,6 +39,7 @@ const USER_ID = "usr_00000000000000000000000001";
 mock.module("@virtbase/db/client", () => ({ db: testDb }));
 
 const { applyPaymentEvent } = await import("../apply-payment-event");
+const { claimOrderForFulfilment } = await import("../transition-order");
 
 const seedOrder = async (
   status: "awaiting_payment" | "paid" = "awaiting_payment",
@@ -160,8 +161,11 @@ describe("applyPaymentEvent", () => {
   });
 
   test("two distinct events on one order still fulfil only once", async () => {
-    // Stripe can emit more than one succeeded event for an intent; only the
-    // one that actually moves the order should start work.
+    // Stripe can emit more than one succeeded event for an intent. Both now
+    // report that the order needs fulfilling — the order really is still
+    // unfulfilled — and `claimOrderForFulfilment` is what makes exactly one of
+    // them act. Deciding it here instead is what made a stranded order
+    // unrecoverable.
     const orderId = await seedOrder();
 
     const first = await applyPaymentEvent(event(orderId));
@@ -171,7 +175,80 @@ describe("applyPaymentEvent", () => {
 
     expect(first.shouldFulfil).toBe(true);
     expect(second.applied).toBe(true);
-    expect(second.shouldFulfil).toBe(false);
+    expect(second.shouldFulfil).toBe(true);
+
+    const claims = await Promise.all([
+      claimOrderForFulfilment(orderId),
+      claimOrderForFulfilment(orderId),
+    ]);
+
+    expect(claims.filter(Boolean)).toHaveLength(1);
+  });
+
+  test("a redelivery retries an order whose fulfilment never ran", async () => {
+    // The failure this exists for: the event is claimed, then fulfilment throws
+    // before it starts. The order sits at `paid` and the provider's retry is
+    // the only thing left that can rescue it.
+    const orderId = await seedOrder();
+    await applyPaymentEvent(event(orderId));
+
+    const retry = await applyPaymentEvent(event(orderId, { eventId: "evt_2" }));
+
+    expect(retry.shouldFulfil).toBe(true);
+    expect(await claimOrderForFulfilment(orderId)).toBe(true);
+  });
+
+  test("a redelivery retries an order whose fulfilment failed after payment", async () => {
+    const orderId = await seedOrder();
+    await applyPaymentEvent(event(orderId));
+
+    // What `fulfilOrder`'s catch block leaves behind.
+    await testDb
+      .update(orders)
+      .set({ status: "failed", failureReason: "workflow queue unavailable" })
+      .where(eq(orders.id, orderId));
+
+    const retry = await applyPaymentEvent(event(orderId, { eventId: "evt_2" }));
+
+    expect(retry.shouldFulfil).toBe(true);
+    expect(await claimOrderForFulfilment(orderId)).toBe(true);
+
+    const order = await testDb
+      .select({ status: orders.status, failureReason: orders.failureReason })
+      .from(orders)
+      .where(eq(orders.id, orderId))
+      .then(([row]) => row);
+
+    // The claim clears the stale reason, so a second failure is not read as the
+    // first one lingering.
+    expect(order?.status).toBe("fulfilling");
+    expect(order?.failureReason).toBeNull();
+  });
+
+  test("an order that failed before payment is never fulfilled", async () => {
+    // Same `failed` status as the case above, but no money was taken. The
+    // difference is `paidAt`, and getting it wrong would provision a server for
+    // a declined card.
+    const orderId = await seedOrder();
+
+    await applyPaymentEvent(
+      event(orderId, { type: "payment.failed", failureReason: "declined" }),
+    );
+
+    const late = await applyPaymentEvent(
+      event(orderId, { eventId: "evt_2", type: "payment.succeeded" }),
+    );
+
+    expect(late.shouldFulfil).toBe(false);
+    expect(await claimOrderForFulfilment(orderId)).toBe(false);
+  });
+
+  test("an order already being fulfilled cannot be claimed again", async () => {
+    const orderId = await seedOrder();
+    await applyPaymentEvent(event(orderId));
+
+    expect(await claimOrderForFulfilment(orderId)).toBe(true);
+    expect(await claimOrderForFulfilment(orderId)).toBe(false);
   });
 
   test("an event arriving after the order moved on does not rewind it", async () => {

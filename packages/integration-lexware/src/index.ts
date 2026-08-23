@@ -52,7 +52,6 @@ export default defineIntegration({
         label: "API key",
         help: "Created under Extras → lexoffice API in Lexware Office.",
         widget: "password",
-        env: "LEXWARE_API_KEY",
       },
     ],
   },

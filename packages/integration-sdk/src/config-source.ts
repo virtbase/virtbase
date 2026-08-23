@@ -20,10 +20,10 @@ import type { Integration } from "./types";
 /**
  * Where an integration's configuration comes from.
  *
- * Today the only implementation is {@link EnvConfigSource}, which preserves
- * exactly the current behaviour: an integration is on when its environment
- * variables are present. WS1 replaces it with a Postgres-backed source without
- * any integration changing — that is the whole point of the interface.
+ * The only real implementation is `DbConfigSource` in the composition layer,
+ * which reads the Postgres-backed store an administrator edits. Configuration
+ * used to be read from `process.env` as well; that source is gone, because two
+ * places to set the same value is one more than anyone can reason about.
  */
 export interface ConfigSource {
   /** Whether an admin has this integration turned on. */
@@ -35,57 +35,30 @@ export interface ConfigSource {
   /**
    * Subscribe to configuration changes so the registry can drop cached
    * adapters. Returns an unsubscribe function. Sources whose configuration
-   * cannot change at runtime — the environment — may omit this.
+   * cannot change at runtime may omit this.
    */
   onChange?(listener: (integrationId: string) => void): () => void;
 }
 
 /**
- * Reads configuration from `process.env` using the `env` hint each field
- * carries.
+ * A source that reports every integration as off.
  *
- * An integration counts as enabled when every non-optional field that declares
- * an `env` name has a non-empty value, which is the same rule the current
- * module-level clients apply (`process.env.X ? new Client(...) : null`).
+ * Used when there is no `CONFIG_ENCRYPTION_KEY`, and therefore no way to read a
+ * stored secret. The application still boots and serves: an unreadable
+ * configuration store is a reason for integrations to be unavailable, not a
+ * reason for the site to be down. The admin console shows each integration as
+ * not configured, which is exactly what is true.
  */
-export class EnvConfigSource implements ConfigSource {
-  private readonly env: Record<string, string | undefined>;
-
-  constructor(env: Record<string, string | undefined> = process.env) {
-    this.env = env;
+export class DisabledConfigSource implements ConfigSource {
+  async isEnabled(): Promise<boolean> {
+    return false;
   }
 
-  async isEnabled(integration: Integration): Promise<boolean> {
-    const required = [
-      ...(integration.settings?.fields ?? []),
-      ...(integration.secrets?.fields ?? []),
-    ].filter((field) => field.env && !field.optional);
-
-    // An integration that declares no environment-backed fields has nothing to
-    // be missing, so it is on. Everything real declares at least one.
-    return required.every((field) => Boolean(this.env[field.env as string]));
+  async settings(): Promise<unknown> {
+    return {};
   }
 
-  async settings(integration: Integration): Promise<unknown> {
-    return this.read(integration, "settings");
-  }
-
-  async secrets(integration: Integration): Promise<unknown> {
-    return this.read(integration, "secrets");
-  }
-
-  private read(
-    integration: Integration,
-    kind: "settings" | "secrets",
-  ): Record<string, string> {
-    const values: Record<string, string> = {};
-    for (const field of integration[kind]?.fields ?? []) {
-      if (!field.env) continue;
-      const value = this.env[field.env];
-      if (value !== undefined && value !== "") {
-        values[field.key] = value;
-      }
-    }
-    return values;
+  async secrets(): Promise<unknown> {
+    return {};
   }
 }

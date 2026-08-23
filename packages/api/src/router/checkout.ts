@@ -42,13 +42,10 @@ import {
 } from "@virtbase/integration-stripe";
 import {
   APP_NAME,
-  deriveKeyHex,
-  encryptPayload,
   isInstalling,
   PUBLIC_DOMAIN,
   parsePublicKey,
   SUPPORT_EMAIL,
-  writeChunkedStripeMetadata,
 } from "@virtbase/utils";
 import type { OrderConfigurationSnapshot } from "@virtbase/validators";
 import {
@@ -84,8 +81,7 @@ export const checkoutRouter = {
         throw new TRPCError({ code: "FORBIDDEN" });
       }
 
-      const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
-      if (!stripe || !stripeSecretKey) {
+      if (!stripe) {
         // Stripe is not configured
         throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
       }
@@ -453,22 +449,15 @@ export const checkoutRouter = {
             ],
           },
           description: plan.name,
-          // The encrypted configuration snapshot routinely overshoots
-          // Stripe's 500-character per-value metadata cap (hex encoding
-          // doubles the ciphertext size), so we chunk it across several
-          // keys. The webhook reassembles via `readChunkedStripeMetadata`.
-          metadata: {
-            orderId,
-            // TODO(WS5.7): remove once no unsettled payment intent predates
-            // the order table. The webhook already prefers `orderId`.
-            ...writeChunkedStripeMetadata(
-              "configurationSnapshot",
-              await encryptPayload(
-                JSON.stringify(configuration),
-                await deriveKeyHex(stripeSecretKey),
-              ),
-            ),
-          },
+          // The order is the record of what was bought; the intent only points
+          // at it. This used to also carry the whole configuration, encrypted
+          // and chunked across several metadata keys because the ciphertext
+          // overshot Stripe's 500-character per-value cap, under a key derived
+          // from `STRIPE_SECRET_KEY` — which meant rotating a payment
+          // credential made in-flight orders unreadable. `resolveOrderId` still
+          // reads that shape for intents created before the order table, and
+          // goes away with them.
+          metadata: { orderId },
         });
 
         const [customerSession, paymentIntent] = await Promise.all([

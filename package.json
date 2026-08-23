@@ -48,8 +48,7 @@
     "email": "turbo run email",
     "prepare": "husky",
     "script": "turbo -F @virtbase/web script --",
-    "stripe:listen": "turbo -F @virtbase/web stripe:listen",
-    "config:import": "turbo -F @virtbase/api config:import --"
+    "stripe:listen": "turbo -F @virtbase/web stripe:listen"
   },
   "catalog": {
     "@better-auth/api-key": "^1.7.0-rc.4",

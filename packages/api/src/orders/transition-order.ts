@@ -40,6 +40,13 @@ export interface TransitionResult {
   status: OrderStatus;
   /** False when the order was already in the target status. */
   changed: boolean;
+  /**
+   * Whether money has been taken for this order, as of the end of the
+   * transition. Distinguishes an order that failed *during fulfilment* from one
+   * whose payment never succeeded — they share the `failed` status but only the
+   * first may be fulfilled.
+   */
+  paid: boolean;
 }
 
 /**
@@ -57,7 +64,11 @@ export const transitionOrder = async (
   db.transaction(
     async (tx) => {
       const order = await tx
-        .select({ id: orders.id, status: orders.status })
+        .select({
+          id: orders.id,
+          status: orders.status,
+          paidAt: orders.paidAt,
+        })
         .from(orders)
         .where(eq(orders.id, orderId))
         .limit(1)
@@ -72,7 +83,11 @@ export const transitionOrder = async (
       // machine rather than assuming sameness means no-op.
       if (!canTransitionOrder(order.status, to)) {
         if (options.idempotent) {
-          return { status: order.status, changed: false };
+          return {
+            status: order.status,
+            changed: false,
+            paid: order.paidAt !== null,
+          };
         }
         assertOrderTransition(order.status, to);
       }
@@ -97,7 +112,74 @@ export const transitionOrder = async (
         reason: options.reason,
       });
 
-      return { status: to, changed: true };
+      return {
+        status: to,
+        changed: true,
+        paid: to === "paid" || order.paidAt !== null,
+      };
+    },
+    {
+      accessMode: "read write",
+      isolationLevel: "read committed",
+    },
+  );
+
+/**
+ * Atomically claims an order for fulfilment, returning whether the caller won.
+ *
+ * This is the gate that stops an order being fulfilled twice, and it lives here
+ * rather than in `applyPaymentEvent` on purpose. The reducer used to decide by
+ * asking whether *it* was the call that moved the order to `paid`, which
+ * conflated two different questions: "has this order been paid for" and "is
+ * anyone already fulfilling it". That conflation is why a fulfilment that threw
+ * could never be retried — the money was in, the order was stranded, and every
+ * redelivery declined to act because the transition had already happened.
+ *
+ * Deciding under the row lock separates them. Any number of deliveries may
+ * conclude the order needs fulfilment; exactly one of them wins the claim.
+ */
+export const claimOrderForFulfilment = async (
+  orderId: string,
+  options: { actor?: string } = {},
+): Promise<boolean> =>
+  db.transaction(
+    async (tx) => {
+      const order = await tx
+        .select({ status: orders.status, paidAt: orders.paidAt })
+        .from(orders)
+        .where(eq(orders.id, orderId))
+        .limit(1)
+        .for("update")
+        .then(([row]) => row);
+
+      if (!order) {
+        throw new Error(`Order ${orderId} does not exist.`);
+      }
+
+      // `paid` is the ordinary case. `failed` *with* a recorded payment is a
+      // fulfilment that already went wrong once — the provider is redelivering
+      // and nothing else retries, so it is allowed through. `failed` without
+      // `paidAt` is a payment that never succeeded and must never be fulfilled.
+      // `fulfilling` is refused because someone else holds the claim.
+      const claimable =
+        order.status === "paid" ||
+        (order.status === "failed" && order.paidAt !== null);
+
+      if (!claimable) return false;
+
+      await tx
+        .update(orders)
+        .set({ status: "fulfilling", failureReason: null })
+        .where(eq(orders.id, orderId));
+
+      await tx.insert(orderTransitions).values({
+        orderId,
+        fromStatus: order.status,
+        toStatus: "fulfilling",
+        actor: options.actor ?? "system",
+      });
+
+      return true;
     },
     {
       accessMode: "read write",
