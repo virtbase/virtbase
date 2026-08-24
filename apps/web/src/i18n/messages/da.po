@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Danish\n"
-"PO-Revision-Date: 2026-08-24 17:38\n"
+"PO-Revision-Date: 2026-08-24 19:41\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -1400,6 +1400,10 @@ msgid "ggQwe8"
 msgstr "Opret et nyt brugerdefineret image til dine servere."
 
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
+msgid "ueVsqa"
+msgstr "Brug et brugerdefineret image"
+
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 msgid "bWjdfa"
 msgstr "URL"
 
@@ -1431,6 +1435,34 @@ msgstr "Der er endnu ikke uploadet brugerdefinerede billeder."
 #: src/features/servers/components/server-mount-badge.tsx
 msgid "N_dZaF"
 msgstr "Udløber {time}"
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "gq3uD1"
+msgstr "Søg efter images"
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "dQH9xy"
+msgstr "Betroede images"
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "6tPG_M"
+msgstr "Om betroede images"
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "kRS0qP"
+msgstr "Disse images hentes direkte fra producenternes egne servere. Virtbase kontrollerer hver kilde, men hoster eller ændrer ikke images."
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "f2nkRw"
+msgstr "Ingen images matcher din søgning."
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "Z8971h"
+msgstr "Verificeret"
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "vnJUHh"
+msgstr "Udgivet {date}"
 
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 msgid "KdsDOJ"
