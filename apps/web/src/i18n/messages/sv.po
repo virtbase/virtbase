@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Swedish\n"
-"PO-Revision-Date: 2026-08-24 17:39\n"
+"PO-Revision-Date: 2026-08-24 19:41\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -1400,6 +1400,10 @@ msgid "ggQwe8"
 msgstr "Skapa en ny anpassad avbildning för dina servrar."
 
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
+msgid "ueVsqa"
+msgstr "Använd en anpassad avbildning"
+
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 msgid "bWjdfa"
 msgstr "URL"
 
@@ -1431,6 +1435,34 @@ msgstr "Inga anpassade avbildningar har laddats upp ännu."
 #: src/features/servers/components/server-mount-badge.tsx
 msgid "N_dZaF"
 msgstr "Utgår {time}"
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "gq3uD1"
+msgstr "Sök avbildningar"
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "dQH9xy"
+msgstr "Betrodda avbildningar"
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "6tPG_M"
+msgstr "Om betrodda avbildningar"
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "kRS0qP"
+msgstr "De här avbildningarna hämtas direkt från leverantörernas egna servrar. Virtbase kontrollerar varje källa, men varken lagrar eller ändrar avbildningarna."
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "f2nkRw"
+msgstr "Ingen avbildning matchar din sökning."
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "Z8971h"
+msgstr "Verifierad"
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "vnJUHh"
+msgstr "Släppt {date}"
 
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 msgid "KdsDOJ"
