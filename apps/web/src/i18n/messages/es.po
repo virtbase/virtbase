@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Spanish\n"
-"PO-Revision-Date: 2026-08-24 17:38\n"
+"PO-Revision-Date: 2026-08-24 19:41\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -1400,6 +1400,10 @@ msgid "ggQwe8"
 msgstr "Cree una nueva imagen personalizada para sus servidores."
 
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
+msgid "ueVsqa"
+msgstr "Usar una imagen personalizada"
+
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 msgid "bWjdfa"
 msgstr "URL"
 
@@ -1431,6 +1435,34 @@ msgstr "Aún no se han cargado imágenes personalizadas."
 #: src/features/servers/components/server-mount-badge.tsx
 msgid "N_dZaF"
 msgstr "Caduca {time}"
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "gq3uD1"
+msgstr "Buscar imágenes"
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "dQH9xy"
+msgstr "Imágenes de confianza"
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "6tPG_M"
+msgstr "Acerca de las imágenes de confianza"
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "kRS0qP"
+msgstr "Estas imágenes se descargan directamente de los servidores de cada proveedor. Virtbase comprueba cada fuente, pero no aloja ni modifica las imágenes."
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "f2nkRw"
+msgstr "Ninguna imagen coincide con su búsqueda."
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "Z8971h"
+msgstr "Verificada"
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "vnJUHh"
+msgstr "Publicada el {date}"
 
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 msgid "KdsDOJ"
