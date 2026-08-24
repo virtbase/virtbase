@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Romanian\n"
-"PO-Revision-Date: 2026-08-23 19:39\n"
+"PO-Revision-Date: 2026-08-24 14:07\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -2885,6 +2885,7 @@ msgid "Z_xHv5"
 msgstr "Această funcție nu este disponibilă în timp ce o copie de rezervă este în curs. Vă rugăm să încercați din nou mai târziu."
 
 #: src/features/servers/components/console/console-frame.tsx
+#: src/features/servers/hooks/use-agent-status-mapping.ts
 msgid "uHAMke"
 msgstr "Serverul nu rulează"
 
@@ -3272,6 +3273,18 @@ msgstr "Reînnoi"
 msgid "ObQE5T"
 msgstr "Selectați acțiunea"
 
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "EnTkxu"
+msgstr "Recomandări"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "9d24PR"
+msgstr "Creează regulă"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "E8UYvP"
+msgstr "Elimină regula"
+
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "z1Jw4U"
 msgstr "Firewall-ul este întotdeauna activat"
@@ -3342,6 +3355,14 @@ msgstr "Reguli pentru firewall"
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# regulă} other {# reguli}}, {activeCount} active"
 
+#: src/features/servers/firewall/components/firewall-rules-card.tsx
+msgid "g8rjZa"
+msgstr "{count, plural, =1 {# rule} other {# rules}} inside your server"
+
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "_F7m4I"
+msgstr "Gestionat în interiorul serverului tău"
+
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "Mq5bUJ"
 msgstr "Dezactivați regula"
@@ -3353,6 +3374,18 @@ msgstr "Activați regula"
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "mqTGdC"
 msgstr "Porturi"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "yjxSm7"
+msgstr "Firewall Virtbase"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "Z5QJFN"
+msgstr "În interiorul serverului tău ({manager})"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "qpmEEg"
+msgstr "În interiorul serverului tău"
 
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx
 msgid "Ms3d_e"
@@ -3398,6 +3431,66 @@ msgstr "Generează"
 msgid "EWw_tK"
 msgstr "Aplică"
 
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "XKXFT7"
+msgstr "{label} rulează și în interiorul serverului tău"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "W3oQ4P"
+msgstr "Un firewall rulează și în interiorul serverului tău"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "dzPuiI"
+msgstr "Traficul trebuie să treacă prin ambele firewall-uri. Virtbase nu poate citi încă regulile {label}, dar acestea se aplică în continuare."
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "C03sMA"
+msgstr "Traficul trebuie să treacă prin ambele firewall-uri. Regulile sale sunt listate mai jos."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "6tQJAd"
+msgstr "Acest serviciu"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "HB3kA-"
+msgstr "firewall-ul din interiorul serverului tău"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "dFvCEF"
+msgstr "{service} poate fi accesat de pe internet"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "x7Q_jE"
+msgstr "{process} ascultă pe portul {port}/{proto} și ambele firewall-uri permit acest lucru. Restricționează acest port, cu excepția cazului în care ai vrut să îl publici."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "qjt1Iu"
+msgstr "Portul {port}/{proto} este deschis pentru toată lumea și ambele firewall-uri permit acest lucru. Restricționează acest port, cu excepția cazului în care ai vrut să îl publici."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "xfh7EO"
+msgstr "Portul {port} este blocat în interiorul serverului tău"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "l_aWrb"
+msgstr "Regula ta Virtbase permite portul {port}, dar {manager} îl blochează, așa că traficul nu ajunge niciodată la serviciul tău. Schimbă acest lucru în interiorul serverului tău."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "XY8_Nu"
+msgstr "Nimic nu ascultă pe portul {port}"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "I-VOBT"
+msgstr "O regulă deschide portul {port}/{proto}, dar niciun serviciu nu îl folosește. Eliminarea regulii îți menține firewall-ul mai ușor de citit."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "DBuKpi"
+msgstr "Unele verificări nu au putut fi rulate"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "PSqTo2"
+msgstr "Virtbase nu a putut privi în interiorul serverului tău, așa că această listă poate fi incompletă."
+
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "sjzLbX"
 msgstr "Accepta"
@@ -3405,6 +3498,58 @@ msgstr "Accepta"
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "j8RTUO"
 msgstr "Picătură"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "D7fMMu"
+msgstr "Agentul invitat rulează"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "Xqe44A"
+msgstr "Virtbase poate citi detalii din interiorul acestui server."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "dXWINf"
+msgstr "Pornește serverul pentru a-i verifica agentul invitat."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "v_GL5s"
+msgstr "Agentul invitat nu răspunde"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "ihTPpu"
+msgstr "Utilizarea spațiului de stocare, resetarea parolelor și detectarea firewall-ului necesită pachetul {packageName} instalat și pornit în interiorul serverului tău."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "0pGhq1"
+msgstr "Agentul invitat este oprit"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "9iMOX1"
+msgstr "Agentul invitat este dezactivat în configurația acestui server, așa că Virtbase nu poate citi nimic din interiorul lui."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "uOy0WB"
+msgstr "Agentul invitat nu poate rula comenzi"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "4tx48B"
+msgstr "Agentul rulează, dar executarea comenzilor este blocată. Elimină guest-exec din BLOCK_RPCS în /etc/default/{packageName} pentru a activa detectarea firewall-ului și a porturilor."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "_uAmKB"
+msgstr "Indisponibil pe acest sistem de operare"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "bJS7-1"
+msgstr "Citirea firewall-ului și a porturilor deschise din interiorul unui server este acceptată momentan doar pe Linux."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "RBtJkt"
+msgstr "Starea agentului invitat este indisponibilă"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "XiMFvI"
+msgstr "Virtbase nu a putut verifica agentul invitat momentan. Încearcă din nou mai târziu."
 
 #: src/features/servers/hooks/use-status-mapping.ts
 msgid "ccU6l_"
