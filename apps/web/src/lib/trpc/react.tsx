@@ -22,8 +22,10 @@ import { QueryClientProvider } from "@tanstack/react-query";
 import {
   createTRPCClient,
   httpBatchStreamLink,
+  httpLink,
   loggerLink,
   retryLink,
+  splitLink,
 } from "@trpc/client";
 import { createTRPCContext } from "@trpc/tanstack-react-query";
 import type { AppRouter } from "@virtbase/api";
@@ -48,6 +50,24 @@ const getQueryClient = () => {
 };
 
 export const { useTRPC, TRPCProvider } = createTRPCContext<AppRouter>();
+
+/**
+ * Marks a query as too slow to share a batch.
+ *
+ * Batching puts every query the page fires into one HTTP request, and that
+ * request is only done when its slowest member is. Anything that reaches into a
+ * customer's server through the guest agent takes seconds, so batching it with
+ * the firewall rules makes the whole page wait on a probe nothing else needs.
+ *
+ * Spread into `queryOptions` to send that query on its own request instead:
+ *
+ * ```ts
+ * useQuery(trpc.servers.agent.get.queryOptions(input, UNBATCHED));
+ * ```
+ */
+export const UNBATCHED = {
+  trpc: { context: { unbatched: true } },
+} as const;
 
 export function TRPCReactProvider(props: { children: React.ReactNode }) {
   const queryClient = getQueryClient();
@@ -96,14 +116,11 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
             env.NODE_ENV === "development" ||
             (op.direction === "down" && op.result instanceof Error),
         }),
-        httpBatchStreamLink({
-          transformer: SuperJSON,
-          url: `${getBaseUrl()}/api/trpc`,
-          headers() {
-            const headers = new Headers();
-            headers.set("x-trpc-source", "nextjs-react");
-            return headers;
-          },
+        splitLink({
+          condition: (op) => op.context.unbatched === true,
+          // One request of its own, so a slow guest probe delays nothing else.
+          true: httpLink(httpOptions()),
+          false: httpBatchStreamLink(httpOptions()),
         }),
       ],
     }),
@@ -117,6 +134,18 @@ export function TRPCReactProvider(props: { children: React.ReactNode }) {
     </QueryClientProvider>
   );
 }
+
+// A function rather than a constant: `getBaseUrl` is declared below, so
+// resolving the URL at module load would read it before it exists.
+const httpOptions = () => ({
+  transformer: SuperJSON,
+  url: `${getBaseUrl()}/api/trpc`,
+  headers() {
+    const headers = new Headers();
+    headers.set("x-trpc-source", "nextjs-react");
+    return headers;
+  },
+});
 
 const getBaseUrl = () => {
   if (typeof window !== "undefined") return window.location.origin;

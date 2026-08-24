@@ -2885,6 +2885,7 @@ msgid "Z_xHv5"
 msgstr "Ta funkcja nie jest dostępna, gdy trwa tworzenie kopii zapasowej. Spróbuj ponownie później."
 
 #: src/features/servers/components/console/console-frame.tsx
+#: src/features/servers/hooks/use-agent-status-mapping.ts
 msgid "uHAMke"
 msgstr "Serwer nie działa"
 
@@ -3272,6 +3273,18 @@ msgstr "Odnowić"
 msgid "ObQE5T"
 msgstr "Wybierz akcję"
 
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "EnTkxu"
+msgstr "Zalecenia"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "9d24PR"
+msgstr "Utwórz regułę"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "E8UYvP"
+msgstr "Usuń regułę"
+
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "z1Jw4U"
 msgstr "Zapora sieciowa jest zawsze włączona"
@@ -3342,6 +3355,14 @@ msgstr "Zasady zapory sieciowej"
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# reguła} other {# reguły}}, {activeCount} aktywnych"
 
+#: src/features/servers/firewall/components/firewall-rules-card.tsx
+msgid "g8rjZa"
+msgstr "{count, plural, one {# reguła} few {# reguły} many {# reguł} other {# reguł}} w Twoim serwerze"
+
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "_F7m4I"
+msgstr "Zarządzane wewnątrz Twojego serwera"
+
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "Mq5bUJ"
 msgstr "Wyłącz regułę"
@@ -3353,6 +3374,18 @@ msgstr "Włącz regułę"
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "mqTGdC"
 msgstr "Porty"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "yjxSm7"
+msgstr "Zapora sieciowa Virtbase"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "Z5QJFN"
+msgstr "Wewnątrz Twojego serwera ({manager})"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "qpmEEg"
+msgstr "Wewnątrz Twojego serwera"
 
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx
 msgid "Ms3d_e"
@@ -3398,6 +3431,66 @@ msgstr "Generuj"
 msgid "EWw_tK"
 msgstr "Zastosuj"
 
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "XKXFT7"
+msgstr "{label} działa również wewnątrz Twojego serwera"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "W3oQ4P"
+msgstr "Wewnątrz Twojego serwera działa również zapora sieciowa"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "dzPuiI"
+msgstr "Ruch musi przejść przez obie zapory. Virtbase nie potrafi jeszcze odczytać reguł {label}, ale nadal one obowiązują."
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "C03sMA"
+msgstr "Ruch musi przejść przez obie zapory. Jej reguły są wymienione poniżej."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "6tQJAd"
+msgstr "Ta usługa"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "HB3kA-"
+msgstr "zapora wewnątrz Twojego serwera"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "dFvCEF"
+msgstr "{service} jest osiągalna z internetu"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "x7Q_jE"
+msgstr "{process} nasłuchuje na porcie {port}/{proto} i obie zapory na to pozwalają. Ogranicz ten port, chyba że chcesz go udostępniać publicznie."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "qjt1Iu"
+msgstr "Port {port}/{proto} jest otwarty dla wszystkich i obie zapory na to pozwalają. Ogranicz ten port, chyba że chcesz go udostępniać publicznie."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "xfh7EO"
+msgstr "Port {port} jest zablokowany wewnątrz Twojego serwera"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "l_aWrb"
+msgstr "Twoja reguła Virtbase zezwala na port {port}, ale {manager} go blokuje, więc ruch nigdy nie dociera do Twojej usługi. Zmień to wewnątrz swojego serwera."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "XY8_Nu"
+msgstr "Nic nie nasłuchuje na porcie {port}"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "I-VOBT"
+msgstr "Reguła otwiera port {port}/{proto}, ale żadna usługa go nie używa. Usunięcie reguły utrzyma zaporę w czytelnym stanie."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "DBuKpi"
+msgstr "Niektórych sprawdzeń nie udało się wykonać"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "PSqTo2"
+msgstr "Virtbase nie mógł zajrzeć do wnętrza Twojego serwera, więc ta lista może być niepełna."
+
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "sjzLbX"
 msgstr "Przyjąć"
@@ -3405,6 +3498,58 @@ msgstr "Przyjąć"
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "j8RTUO"
 msgstr "Upuszczać"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "D7fMMu"
+msgstr "Agent gościa działa"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "Xqe44A"
+msgstr "Virtbase może odczytywać szczegóły z wnętrza tego serwera."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "dXWINf"
+msgstr "Uruchom serwer, aby sprawdzić jego agenta gościa."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "v_GL5s"
+msgstr "Agent gościa nie odpowiada"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "ihTPpu"
+msgstr "Wykorzystanie pamięci, resetowanie haseł i wykrywanie zapory wymagają pakietu {packageName} zainstalowanego i działającego wewnątrz Twojego serwera."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "0pGhq1"
+msgstr "Agent gościa jest wyłączony"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "9iMOX1"
+msgstr "Agent gościa jest wyłączony w konfiguracji tego serwera, więc Virtbase nie może niczego z niego odczytać."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "uOy0WB"
+msgstr "Agent gościa nie może wykonywać poleceń"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "4tx48B"
+msgstr "Agent działa, ale wykonywanie poleceń jest zablokowane. Usuń guest-exec z BLOCK_RPCS w /etc/default/{packageName}, aby włączyć wykrywanie zapory i portów."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "_uAmKB"
+msgstr "Niedostępne w tym systemie operacyjnym"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "bJS7-1"
+msgstr "Odczyt zapory sieciowej i otwartych portów z wnętrza serwera jest obecnie obsługiwany tylko w systemie Linux."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "RBtJkt"
+msgstr "Status agenta gościa jest niedostępny"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "XiMFvI"
+msgstr "Virtbase nie mógł teraz sprawdzić agenta gościa. Spróbuj ponownie później."
 
 #: src/features/servers/hooks/use-status-mapping.ts
 msgid "ccU6l_"

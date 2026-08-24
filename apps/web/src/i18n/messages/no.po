@@ -2885,6 +2885,7 @@ msgid "Z_xHv5"
 msgstr "Denne funksjonen er ikke tilgjengelig mens en sikkerhetskopiering pågår. Vennligst prøv igjen senere."
 
 #: src/features/servers/components/console/console-frame.tsx
+#: src/features/servers/hooks/use-agent-status-mapping.ts
 msgid "uHAMke"
 msgstr "Serveren kjører ikke"
 
@@ -3272,6 +3273,18 @@ msgstr "Fornye"
 msgid "ObQE5T"
 msgstr "Velg handling"
 
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "EnTkxu"
+msgstr "Anbefalinger"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "9d24PR"
+msgstr "Opprett regel"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "E8UYvP"
+msgstr "Fjern regel"
+
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "z1Jw4U"
 msgstr "Brannmuren er alltid aktivert"
@@ -3342,6 +3355,14 @@ msgstr "Brannmurregler"
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# regel} other {# regler}}, {activeCount} aktive"
 
+#: src/features/servers/firewall/components/firewall-rules-card.tsx
+msgid "g8rjZa"
+msgstr "{count, plural, =1 {# regel} other {# regler}} inne i serveren din"
+
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "_F7m4I"
+msgstr "Administreres inne i serveren din"
+
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "Mq5bUJ"
 msgstr "Deaktiver regel"
@@ -3353,6 +3374,18 @@ msgstr "Aktiver regel"
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "mqTGdC"
 msgstr "Havner"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "yjxSm7"
+msgstr "Virtbase-brannmur"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "Z5QJFN"
+msgstr "Inne i serveren din ({manager})"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "qpmEEg"
+msgstr "Inne i serveren din"
 
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx
 msgid "Ms3d_e"
@@ -3398,6 +3431,66 @@ msgstr "Generer"
 msgid "EWw_tK"
 msgstr "Bruk"
 
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "XKXFT7"
+msgstr "{label} kjører også inne i serveren din"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "W3oQ4P"
+msgstr "Det kjører også en brannmur inne i serveren din"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "dzPuiI"
+msgstr "Trafikk må gjennom begge brannmurene. Virtbase kan ennå ikke lese {label}-regler, men de gjelder likevel."
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "C03sMA"
+msgstr "Trafikk må gjennom begge brannmurene. Reglene står nedenfor."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "6tQJAd"
+msgstr "Denne tjenesten"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "HB3kA-"
+msgstr "brannmuren inne i serveren din"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "dFvCEF"
+msgstr "{service} kan nås fra internett"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "x7Q_jE"
+msgstr "{process} lytter på port {port}/{proto}, og begge brannmurene tillater det. Begrens denne porten, med mindre du med vilje ville publisere den."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "qjt1Iu"
+msgstr "Port {port}/{proto} er åpen for alle, og begge brannmurene tillater det. Begrens denne porten, med mindre du med vilje ville publisere den."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "xfh7EO"
+msgstr "Port {port} er blokkert inne i serveren din"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "l_aWrb"
+msgstr "Virtbase-regelen din tillater port {port}, men {manager} blokkerer den, så trafikken når aldri fram til tjenesten din. Endre dette inne i serveren din."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "XY8_Nu"
+msgstr "Ingenting lytter på port {port}"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "I-VOBT"
+msgstr "En regel åpner port {port}/{proto}, men ingen tjeneste bruker den. Å fjerne regelen holder brannmuren lettere å lese."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "DBuKpi"
+msgstr "Noen kontroller kunne ikke kjøres"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "PSqTo2"
+msgstr "Virtbase kunne ikke se inn i serveren din, så denne listen kan være ufullstendig."
+
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "sjzLbX"
 msgstr "Akseptere"
@@ -3405,6 +3498,58 @@ msgstr "Akseptere"
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "j8RTUO"
 msgstr "Slippe"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "D7fMMu"
+msgstr "Gjesteagenten kjører"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "Xqe44A"
+msgstr "Virtbase kan lese detaljer inne fra denne serveren."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "dXWINf"
+msgstr "Start serveren for å sjekke gjesteagenten."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "v_GL5s"
+msgstr "Gjesteagenten svarer ikke"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "ihTPpu"
+msgstr "Lagringsbruk, tilbakestilling av passord og brannmurgjenkjenning krever pakken {packageName} installert og kjørende inne i serveren din."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "0pGhq1"
+msgstr "Gjesteagenten er slått av"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "9iMOX1"
+msgstr "Gjesteagenten er deaktivert i konfigurasjonen til denne serveren, så Virtbase kan ikke lese noe inne fra den."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "uOy0WB"
+msgstr "Gjesteagenten kan ikke kjøre kommandoer"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "4tx48B"
+msgstr "Agenten kjører, men kommandokjøring er blokkert. Fjern guest-exec fra BLOCK_RPCS i /etc/default/{packageName} for å aktivere brannmur- og portgjenkjenning."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "_uAmKB"
+msgstr "Ikke tilgjengelig på dette operativsystemet"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "bJS7-1"
+msgstr "Lesing av brannmur og åpne porter inne fra en server støttes for øyeblikket bare på Linux."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "RBtJkt"
+msgstr "Statusen til gjesteagenten er utilgjengelig"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "XiMFvI"
+msgstr "Virtbase kunne ikke sjekke gjesteagenten akkurat nå. Prøv igjen senere."
 
 #: src/features/servers/hooks/use-status-mapping.ts
 msgid "ccU6l_"

@@ -2885,6 +2885,7 @@ msgid "Z_xHv5"
 msgstr "Este recurso não está disponível enquanto um backup está em andamento. Por favor, tente novamente mais tarde."
 
 #: src/features/servers/components/console/console-frame.tsx
+#: src/features/servers/hooks/use-agent-status-mapping.ts
 msgid "uHAMke"
 msgstr "O servidor não está em execução"
 
@@ -3272,6 +3273,18 @@ msgstr "Renovar"
 msgid "ObQE5T"
 msgstr "Selecione a ação"
 
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "EnTkxu"
+msgstr "Recomendações"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "9d24PR"
+msgstr "Criar regra"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "E8UYvP"
+msgstr "Remover regra"
+
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "z1Jw4U"
 msgstr "O firewall está sempre ativado"
@@ -3342,6 +3355,14 @@ msgstr "Regras de firewall"
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# regra} other {# regras}}, {activeCount} ativas"
 
+#: src/features/servers/firewall/components/firewall-rules-card.tsx
+msgid "g8rjZa"
+msgstr "{count, plural, =1 {# regra} other {# regras}} dentro do seu servidor"
+
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "_F7m4I"
+msgstr "Gerido dentro do seu servidor"
+
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "Mq5bUJ"
 msgstr "Desativar regra"
@@ -3353,6 +3374,18 @@ msgstr "Habilitar regra"
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "mqTGdC"
 msgstr "Portas"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "yjxSm7"
+msgstr "Firewall Virtbase"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "Z5QJFN"
+msgstr "Dentro do seu servidor ({manager})"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "qpmEEg"
+msgstr "Dentro do seu servidor"
 
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx
 msgid "Ms3d_e"
@@ -3398,6 +3431,66 @@ msgstr "Gerar"
 msgid "EWw_tK"
 msgstr "Aplicar"
 
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "XKXFT7"
+msgstr "{label} também está em execução dentro do seu servidor"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "W3oQ4P"
+msgstr "Também há uma firewall em execução dentro do seu servidor"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "dzPuiI"
+msgstr "O tráfego tem de passar pelas duas firewalls. O Virtbase ainda não consegue ler as regras de {label}, mas elas continuam a aplicar-se."
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "C03sMA"
+msgstr "O tráfego tem de passar pelas duas firewalls. As suas regras estão listadas abaixo."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "6tQJAd"
+msgstr "Este serviço"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "HB3kA-"
+msgstr "a firewall dentro do seu servidor"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "dFvCEF"
+msgstr "{service} pode ser alcançado a partir da Internet"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "x7Q_jE"
+msgstr "{process} está à escuta na porta {port}/{proto} e ambas as firewalls permitem-no. Restrinja esta porta, a não ser que a quisesse publicar."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "qjt1Iu"
+msgstr "A porta {port}/{proto} está aberta a todos e ambas as firewalls permitem-no. Restrinja esta porta, a não ser que a quisesse publicar."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "xfh7EO"
+msgstr "A porta {port} está bloqueada dentro do seu servidor"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "l_aWrb"
+msgstr "A sua regra Virtbase permite a porta {port}, mas o {manager} bloqueia-a, pelo que o tráfego nunca chega ao seu serviço. Altere isto dentro do seu servidor."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "XY8_Nu"
+msgstr "Não há nada à escuta na porta {port}"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "I-VOBT"
+msgstr "Uma regra abre a porta {port}/{proto}, mas nenhum serviço a usa. Remover a regra mantém a sua firewall mais legível."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "DBuKpi"
+msgstr "Algumas verificações não puderam ser efetuadas"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "PSqTo2"
+msgstr "O Virtbase não conseguiu olhar dentro do seu servidor, pelo que esta lista pode estar incompleta."
+
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "sjzLbX"
 msgstr "Aceitar"
@@ -3405,6 +3498,58 @@ msgstr "Aceitar"
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "j8RTUO"
 msgstr "Derrubar"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "D7fMMu"
+msgstr "O agente convidado está em execução"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "Xqe44A"
+msgstr "O Virtbase consegue ler detalhes de dentro deste servidor."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "dXWINf"
+msgstr "Inicie o servidor para verificar o agente convidado."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "v_GL5s"
+msgstr "O agente convidado não responde"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "ihTPpu"
+msgstr "A utilização de armazenamento, a reposição de palavras-passe e a deteção da firewall necessitam do pacote {packageName} instalado e em execução dentro do seu servidor."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "0pGhq1"
+msgstr "O agente convidado está desligado"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "9iMOX1"
+msgstr "O agente convidado está desativado na configuração deste servidor, pelo que o Virtbase não consegue ler nada a partir do seu interior."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "uOy0WB"
+msgstr "O agente convidado não consegue executar comandos"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "4tx48B"
+msgstr "O agente está em execução, mas a execução de comandos está bloqueada. Remova guest-exec de BLOCK_RPCS em /etc/default/{packageName} para ativar a deteção de firewall e portas."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "_uAmKB"
+msgstr "Não disponível neste sistema operativo"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "bJS7-1"
+msgstr "A leitura da firewall e das portas abertas a partir de dentro de um servidor é atualmente suportada apenas em Linux."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "RBtJkt"
+msgstr "Estado do agente convidado indisponível"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "XiMFvI"
+msgstr "O Virtbase não conseguiu verificar o agente convidado neste momento. Tente novamente mais tarde."
 
 #: src/features/servers/hooks/use-status-mapping.ts
 msgid "ccU6l_"

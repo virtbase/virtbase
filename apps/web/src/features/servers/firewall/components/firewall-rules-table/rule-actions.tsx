@@ -17,7 +17,7 @@
 
 "use client";
 
-import type { Row, Table } from "@tanstack/react-table";
+import type { Row } from "@tanstack/react-table";
 import { cn } from "@virtbase/ui";
 import { Button } from "@virtbase/ui/button";
 import {
@@ -41,20 +41,30 @@ import type { Dispatch, SetStateAction } from "react";
 import { useCallback } from "react";
 import { useDeleteFirewallRule } from "../../hooks/use-delete-firewall-rule";
 import { useMoveFirewallRule } from "../../hooks/use-move-firewall-rule";
-import type { FirewallRulesTableColumn } from "./columns";
+import type { FirewallTableRow, HostFirewallRow } from "../../lib/table-rows";
 
 interface RuleActionsProps extends React.ComponentProps<"div"> {
-  table: Table<FirewallRulesTableColumn>;
-  row: Row<FirewallRulesTableColumn>;
-  rowAction: DataTableRowAction<FirewallRulesTableColumn> | null;
+  row: Row<FirewallTableRow>;
+  /** The rule this row shows. Only host rules are editable. */
+  hostRow: HostFirewallRow;
+  /**
+   * How many host rules there are.
+   *
+   * Passed in rather than read from the table: the table also holds the rules
+   * found inside the server, which cannot be reordered, so its row count would
+   * put the "move down" boundary in the wrong place.
+   */
+  hostRuleCount: number;
+  rowAction: DataTableRowAction<FirewallTableRow> | null;
   setRowAction: Dispatch<
-    SetStateAction<DataTableRowAction<FirewallRulesTableColumn> | null>
+    SetStateAction<DataTableRowAction<FirewallTableRow> | null>
   >;
 }
 
 export function RuleActions({
-  table,
   row,
+  hostRow,
+  hostRuleCount,
   rowAction,
   setRowAction,
   className,
@@ -68,19 +78,23 @@ export function RuleActions({
   const { mutate: deleteRule, isPending: isDeletePending } =
     useDeleteFirewallRule();
 
-  const move = useCallback((direction: "up" | "down") => {
-    return () => {
-      if (direction === "up" && row.original.pos === 0) return;
-      if (direction === "down" && row.original.pos === table.getRowCount() - 1)
-        return;
+  const { pos } = hostRow;
+  const isFirst = pos === 0;
+  const isLast = pos === hostRuleCount - 1;
+
+  const move = useCallback(
+    (direction: "up" | "down") => () => {
+      if (direction === "up" && isFirst) return;
+      if (direction === "down" && isLast) return;
 
       moveRule({
         server_id: serverId,
-        pos: row.original.pos,
-        moveto: row.original.pos + (direction === "up" ? -1 : 1),
+        pos,
+        moveto: pos + (direction === "up" ? -1 : 1),
       });
-    };
-  }, []);
+    },
+    [isFirst, isLast, moveRule, pos, serverId],
+  );
 
   const isActionsDisabled =
     isMovePending || isDeletePending || rowAction !== null;
@@ -91,7 +105,7 @@ export function RuleActions({
         variant="outline"
         size="icon"
         className="size-8 text-muted-foreground"
-        disabled={row.original.pos === 0 || isActionsDisabled}
+        disabled={isFirst || isActionsDisabled}
         onClick={move("up")}
         aria-label={t("Move up")}
       >
@@ -101,9 +115,7 @@ export function RuleActions({
         variant="outline"
         size="icon"
         className="size-8 text-muted-foreground"
-        disabled={
-          row.original.pos === table.getRowCount() - 1 || isActionsDisabled
-        }
+        disabled={isLast || isActionsDisabled}
         onClick={move("down")}
         aria-label={t("Move down")}
       >
@@ -129,12 +141,7 @@ export function RuleActions({
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
-            onSelect={() =>
-              deleteRule({
-                server_id: serverId,
-                pos: row.original.pos,
-              })
-            }
+            onSelect={() => deleteRule({ server_id: serverId, pos })}
             variant="destructive"
           >
             <LucideTrash2 aria-hidden="true" />

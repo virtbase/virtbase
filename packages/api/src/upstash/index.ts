@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+export * from "./cache";
 export * from "./default-fingerprint";
 export * from "./ratelimit";
 export * from "./redis";

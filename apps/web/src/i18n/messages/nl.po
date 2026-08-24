@@ -2885,6 +2885,7 @@ msgid "Z_xHv5"
 msgstr "Deze functie is niet beschikbaar terwijl er een back-up wordt gemaakt. Probeer het later opnieuw."
 
 #: src/features/servers/components/console/console-frame.tsx
+#: src/features/servers/hooks/use-agent-status-mapping.ts
 msgid "uHAMke"
 msgstr "Server is niet actief"
 
@@ -3272,6 +3273,18 @@ msgstr "Vernieuwen"
 msgid "ObQE5T"
 msgstr "Selecteer actie"
 
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "EnTkxu"
+msgstr "Aanbevelingen"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "9d24PR"
+msgstr "Regel aanmaken"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "E8UYvP"
+msgstr "Regel verwijderen"
+
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "z1Jw4U"
 msgstr "De firewall is altijd ingeschakeld"
@@ -3342,6 +3355,14 @@ msgstr "Firewall-regels"
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# regel} other {# regels}}, {activeCount} actief"
 
+#: src/features/servers/firewall/components/firewall-rules-card.tsx
+msgid "g8rjZa"
+msgstr "{count, plural, =1 {# regel} other {# regels}} in je server"
+
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "_F7m4I"
+msgstr "Beheerd in je server"
+
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "Mq5bUJ"
 msgstr "Schakel regel uit"
@@ -3353,6 +3374,18 @@ msgstr "Regel inschakelen"
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "mqTGdC"
 msgstr "Poorten"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "yjxSm7"
+msgstr "Virtbase-firewall"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "Z5QJFN"
+msgstr "In je server ({manager})"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "qpmEEg"
+msgstr "In je server"
 
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx
 msgid "Ms3d_e"
@@ -3398,6 +3431,66 @@ msgstr "Genereren"
 msgid "EWw_tK"
 msgstr "Toepassen"
 
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "XKXFT7"
+msgstr "{label} draait ook in je server"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "W3oQ4P"
+msgstr "Er draait ook een firewall in je server"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "dzPuiI"
+msgstr "Verkeer moet beide firewalls passeren. Virtbase kan {label}-regels nog niet lezen, maar ze gelden wel."
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "C03sMA"
+msgstr "Verkeer moet beide firewalls passeren. De regels staan hieronder."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "6tQJAd"
+msgstr "Deze dienst"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "HB3kA-"
+msgstr "de firewall in je server"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "dFvCEF"
+msgstr "{service} is bereikbaar vanaf internet"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "x7Q_jE"
+msgstr "{process} luistert op poort {port}/{proto} en beide firewalls staan dat toe. Beperk deze poort, tenzij je hem bewust wilde publiceren."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "qjt1Iu"
+msgstr "Poort {port}/{proto} staat voor iedereen open en beide firewalls staan dat toe. Beperk deze poort, tenzij je hem bewust wilde publiceren."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "xfh7EO"
+msgstr "Poort {port} wordt in je server geblokkeerd"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "l_aWrb"
+msgstr "Je Virtbase-regel staat poort {port} toe, maar {manager} blokkeert die, waardoor verkeer je dienst nooit bereikt. Pas dit aan in je server."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "XY8_Nu"
+msgstr "Er luistert niets op poort {port}"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "I-VOBT"
+msgstr "Een regel opent poort {port}/{proto}, maar geen enkele dienst gebruikt die. De regel verwijderen houdt je firewall overzichtelijk."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "DBuKpi"
+msgstr "Sommige controles konden niet worden uitgevoerd"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "PSqTo2"
+msgstr "Virtbase kon niet in je server kijken, dus deze lijst is mogelijk onvolledig."
+
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "sjzLbX"
 msgstr "Accepteren"
@@ -3405,6 +3498,58 @@ msgstr "Accepteren"
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "j8RTUO"
 msgstr "Druppel"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "D7fMMu"
+msgstr "Gastagent draait"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "Xqe44A"
+msgstr "Virtbase kan gegevens uit deze server lezen."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "dXWINf"
+msgstr "Start de server om de gastagent te controleren."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "v_GL5s"
+msgstr "Gastagent reageert niet"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "ihTPpu"
+msgstr "Opslaggebruik, wachtwoordherstel en firewalldetectie hebben het pakket {packageName} nodig, geïnstalleerd en draaiend in je server."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "0pGhq1"
+msgstr "Gastagent is uitgeschakeld"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "9iMOX1"
+msgstr "De gastagent is uitgeschakeld in de configuratie van deze server, waardoor Virtbase er niets uit kan lezen."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "uOy0WB"
+msgstr "Gastagent kan geen opdrachten uitvoeren"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "4tx48B"
+msgstr "De agent draait, maar het uitvoeren van opdrachten is geblokkeerd. Verwijder guest-exec uit BLOCK_RPCS in /etc/default/{packageName} om firewall- en poortdetectie in te schakelen."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "_uAmKB"
+msgstr "Niet beschikbaar op dit besturingssysteem"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "bJS7-1"
+msgstr "Het uitlezen van de firewall en open poorten in een server wordt momenteel alleen ondersteund op Linux."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "RBtJkt"
+msgstr "Status van gastagent niet beschikbaar"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "XiMFvI"
+msgstr "Virtbase kon de gastagent nu niet controleren. Probeer het later opnieuw."
 
 #: src/features/servers/hooks/use-status-mapping.ts
 msgid "ccU6l_"

@@ -2885,6 +2885,7 @@ msgid "Z_xHv5"
 msgstr "Bu özellik yedekleme devam ederken kullanılamaz. Lütfen daha sonra tekrar deneyin."
 
 #: src/features/servers/components/console/console-frame.tsx
+#: src/features/servers/hooks/use-agent-status-mapping.ts
 msgid "uHAMke"
 msgstr "Sunucu çalışmıyor"
 
@@ -3272,6 +3273,18 @@ msgstr "Yenile"
 msgid "ObQE5T"
 msgstr "Eylem seçin"
 
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "EnTkxu"
+msgstr "Öneriler"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "9d24PR"
+msgstr "Kural oluştur"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "E8UYvP"
+msgstr "Kuralı kaldır"
+
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "z1Jw4U"
 msgstr "Güvenlik duvarı her zaman etkindir"
@@ -3342,6 +3355,14 @@ msgstr "Güvenlik Duvarı Kuralları"
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# kural} other {# kural}}, {activeCount} aktif"
 
+#: src/features/servers/firewall/components/firewall-rules-card.tsx
+msgid "g8rjZa"
+msgstr "sunucunuzun içinde {count, plural, =1 {# kural} other {# kural}}"
+
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "_F7m4I"
+msgstr "Sunucunuzun içinde yönetiliyor"
+
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "Mq5bUJ"
 msgstr "Kuralı devre dışı bırak"
@@ -3353,6 +3374,18 @@ msgstr "Kuralı etkinleştir"
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "mqTGdC"
 msgstr "Limanlar"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "yjxSm7"
+msgstr "Virtbase güvenlik duvarı"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "Z5QJFN"
+msgstr "Sunucunuzun içinde ({manager})"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "qpmEEg"
+msgstr "Sunucunuzun içinde"
 
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx
 msgid "Ms3d_e"
@@ -3398,6 +3431,66 @@ msgstr "Oluştur"
 msgid "EWw_tK"
 msgstr "Uygula"
 
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "XKXFT7"
+msgstr "{label} da sunucunuzun içinde çalışıyor"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "W3oQ4P"
+msgstr "Sunucunuzun içinde de bir güvenlik duvarı çalışıyor"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "dzPuiI"
+msgstr "Trafiğin her iki güvenlik duvarından da geçmesi gerekir. Virtbase {label} kurallarını henüz okuyamıyor, ancak bu kurallar yine de geçerlidir."
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "C03sMA"
+msgstr "Trafiğin her iki güvenlik duvarından da geçmesi gerekir. Kuralları aşağıda listelenmiştir."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "6tQJAd"
+msgstr "Bu hizmet"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "HB3kA-"
+msgstr "sunucunuzun içindeki güvenlik duvarı"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "dFvCEF"
+msgstr "{service} internetten erişilebilir durumda"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "x7Q_jE"
+msgstr "{process} {port}/{proto} bağlantı noktasını dinliyor ve her iki güvenlik duvarı da buna izin veriyor. Bilerek yayımlamadıysanız bu bağlantı noktasını kısıtlayın."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "qjt1Iu"
+msgstr "{port}/{proto} bağlantı noktası herkese açık ve her iki güvenlik duvarı da buna izin veriyor. Bilerek yayımlamadıysanız bu bağlantı noktasını kısıtlayın."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "xfh7EO"
+msgstr "{port} bağlantı noktası sunucunuzun içinde engelleniyor"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "l_aWrb"
+msgstr "Virtbase kuralınız {port} bağlantı noktasına izin veriyor, ancak {manager} onu engelliyor; bu yüzden trafik hizmetinize hiç ulaşmıyor. Bunu sunucunuzun içinde değiştirin."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "XY8_Nu"
+msgstr "{port} bağlantı noktasını dinleyen bir şey yok"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "I-VOBT"
+msgstr "Bir kural {port}/{proto} bağlantı noktasını açıyor, ancak hiçbir hizmet onu kullanmıyor. Kuralı kaldırmak güvenlik duvarınızı daha okunaklı tutar."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "DBuKpi"
+msgstr "Bazı denetimler çalıştırılamadı"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "PSqTo2"
+msgstr "Virtbase sunucunuzun içine bakamadı, bu nedenle bu liste eksik olabilir."
+
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "sjzLbX"
 msgstr "Kabul etmek"
@@ -3405,6 +3498,58 @@ msgstr "Kabul etmek"
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "j8RTUO"
 msgstr "Düşürmek"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "D7fMMu"
+msgstr "Konuk aracısı çalışıyor"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "Xqe44A"
+msgstr "Virtbase bu sunucunun içinden ayrıntıları okuyabiliyor."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "dXWINf"
+msgstr "Konuk aracısını denetlemek için sunucuyu başlatın."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "v_GL5s"
+msgstr "Konuk aracısı yanıt vermiyor"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "ihTPpu"
+msgstr "Depolama kullanımı, parola sıfırlama ve güvenlik duvarı algılama için {packageName} paketinin sunucunuzun içinde kurulu ve çalışıyor olması gerekir."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "0pGhq1"
+msgstr "Konuk aracısı kapalı"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "9iMOX1"
+msgstr "Konuk aracısı bu sunucunun yapılandırmasında devre dışı bırakılmış, bu nedenle Virtbase sunucunun içinden hiçbir şey okuyamıyor."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "uOy0WB"
+msgstr "Konuk aracısı komut çalıştıramıyor"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "4tx48B"
+msgstr "Aracı çalışıyor ancak komut çalıştırma engellenmiş. Güvenlik duvarı ve bağlantı noktası algılamayı etkinleştirmek için /etc/default/{packageName} dosyasındaki BLOCK_RPCS listesinden guest-exec girdisini kaldırın."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "_uAmKB"
+msgstr "Bu işletim sisteminde kullanılamıyor"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "bJS7-1"
+msgstr "Bir sunucunun içinden güvenlik duvarının ve açık bağlantı noktalarının okunması şu anda yalnızca Linux üzerinde desteklenmektedir."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "RBtJkt"
+msgstr "Konuk aracısı durumu kullanılamıyor"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "XiMFvI"
+msgstr "Virtbase konuk aracısını şu anda denetleyemedi. Lütfen daha sonra tekrar deneyin."
 
 #: src/features/servers/hooks/use-status-mapping.ts
 msgid "ccU6l_"

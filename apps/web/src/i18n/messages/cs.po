@@ -2885,6 +2885,7 @@ msgid "Z_xHv5"
 msgstr "Tato funkce není dostupná, když probíhá zálohování. Zkus to prosím později."
 
 #: src/features/servers/components/console/console-frame.tsx
+#: src/features/servers/hooks/use-agent-status-mapping.ts
 msgid "uHAMke"
 msgstr "Server neběží"
 
@@ -3272,6 +3273,18 @@ msgstr "Prodloužit"
 msgid "ObQE5T"
 msgstr "Vybrat akci"
 
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "EnTkxu"
+msgstr "Doporučení"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "9d24PR"
+msgstr "Vytvořit pravidlo"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "E8UYvP"
+msgstr "Odebrat pravidlo"
+
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "z1Jw4U"
 msgstr "Firewall je vždy zapnutý"
@@ -3342,6 +3355,14 @@ msgstr "Pravidla firewallu"
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# pravidlo} other {# pravidel}}, {activeCount} aktivních"
 
+#: src/features/servers/firewall/components/firewall-rules-card.tsx
+msgid "g8rjZa"
+msgstr "{count, plural, one {# pravidlo} few {# pravidla} many {# pravidla} other {# pravidel}} uvnitř tvého serveru"
+
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "_F7m4I"
+msgstr "Spravováno uvnitř tvého serveru"
+
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "Mq5bUJ"
 msgstr "Zakázat pravidlo"
@@ -3353,6 +3374,18 @@ msgstr "Povolit pravidlo"
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "mqTGdC"
 msgstr "Porty"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "yjxSm7"
+msgstr "Firewall Virtbase"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "Z5QJFN"
+msgstr "Uvnitř tvého serveru ({manager})"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "qpmEEg"
+msgstr "Uvnitř tvého serveru"
 
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx
 msgid "Ms3d_e"
@@ -3398,6 +3431,66 @@ msgstr "Generovat"
 msgid "EWw_tK"
 msgstr "Použít"
 
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "XKXFT7"
+msgstr "{label} běží také uvnitř tvého serveru"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "W3oQ4P"
+msgstr "Uvnitř tvého serveru běží také firewall"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "dzPuiI"
+msgstr "Provoz musí projít oběma firewally. Virtbase zatím neumí přečíst pravidla {label}, ale ta stále platí."
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "C03sMA"
+msgstr "Provoz musí projít oběma firewally. Jeho pravidla jsou uvedena níže."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "6tQJAd"
+msgstr "Tato služba"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "HB3kA-"
+msgstr "firewall uvnitř tvého serveru"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "dFvCEF"
+msgstr "{service} je dosažitelná z internetu"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "x7Q_jE"
+msgstr "{process} naslouchá na portu {port}/{proto} a oba firewally to povolují. Omez tento port, pokud jsi ho nechtěl zveřejnit."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "qjt1Iu"
+msgstr "Port {port}/{proto} je otevřený všem a oba firewally to povolují. Omez tento port, pokud jsi ho nechtěl zveřejnit."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "xfh7EO"
+msgstr "Port {port} je uvnitř tvého serveru blokovaný"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "l_aWrb"
+msgstr "Tvoje pravidlo Virtbase povoluje port {port}, ale {manager} ho blokuje, takže provoz se ke tvé službě nikdy nedostane. Změň to uvnitř svého serveru."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "XY8_Nu"
+msgstr "Na portu {port} nic nenaslouchá"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "I-VOBT"
+msgstr "Pravidlo otevírá port {port}/{proto}, ale žádná služba ho nepoužívá. Odebrání pravidla udrží firewall přehledný."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "DBuKpi"
+msgstr "Některé kontroly se nepodařilo provést"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "PSqTo2"
+msgstr "Virtbase se nemohl podívat dovnitř tvého serveru, takže tento seznam může být neúplný."
+
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "sjzLbX"
 msgstr "Přijmout"
@@ -3405,6 +3498,58 @@ msgstr "Přijmout"
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "j8RTUO"
 msgstr "Zahodit"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "D7fMMu"
+msgstr "Agent hosta běží"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "Xqe44A"
+msgstr "Virtbase může číst údaje zevnitř tohoto serveru."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "dXWINf"
+msgstr "Spusť server, abys mohl zkontrolovat jeho agenta hosta."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "v_GL5s"
+msgstr "Agent hosta neodpovídá"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "ihTPpu"
+msgstr "Využití úložiště, obnovení hesel a detekce firewallu vyžadují balíček {packageName} nainstalovaný a spuštěný uvnitř tvého serveru."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "0pGhq1"
+msgstr "Agent hosta je vypnutý"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "9iMOX1"
+msgstr "Agent hosta je v konfiguraci tohoto serveru zakázán, takže z něj Virtbase nemůže nic přečíst."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "uOy0WB"
+msgstr "Agent hosta nemůže spouštět příkazy"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "4tx48B"
+msgstr "Agent běží, ale spouštění příkazů je zablokované. Odeber guest-exec z BLOCK_RPCS v /etc/default/{packageName}, abys povolil detekci firewallu a portů."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "_uAmKB"
+msgstr "Není k dispozici v tomto operačním systému"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "bJS7-1"
+msgstr "Čtení firewallu a otevřených portů zevnitř serveru je aktuálně podporováno pouze na Linuxu."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "RBtJkt"
+msgstr "Stav agenta hosta není k dispozici"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "XiMFvI"
+msgstr "Virtbase teď nemohl agenta hosta zkontrolovat. Zkus to prosím později."
 
 #: src/features/servers/hooks/use-status-mapping.ts
 msgid "ccU6l_"

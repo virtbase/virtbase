@@ -239,6 +239,7 @@ export const RenameServerOutputSchema = z.void();
 
 export * from "./actions";
 export * from "./advanced";
+export * from "./agent";
 export * from "./backups";
 export * from "./console";
 export * from "./firewall";

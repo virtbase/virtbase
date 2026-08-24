@@ -25,6 +25,7 @@ import {
 import type { LucideIcon } from "@virtbase/ui/icons";
 import {
   LucideBrickWallShield,
+  LucideLock,
   LucideShieldCheck,
   LucideShieldX,
 } from "@virtbase/ui/icons";
@@ -41,10 +42,14 @@ import {
 import type { DataTableRowAction } from "@virtbase/ui/types";
 import dynamic from "next/dynamic";
 import { useExtracted } from "next-intl";
-import { useState } from "react";
-import type { GetFirewallRulesOutput } from "@/features/servers/firewall/hooks/use-firewall-rules";
+import { Fragment, useMemo, useState } from "react";
 import { AnimatedEmptyState } from "@/ui/animated-empty-state";
-import type { FirewallRulesTableColumn } from "./columns";
+import type {
+  FirewallTableRow,
+  GuestRule,
+  HostRule,
+} from "../../lib/table-rows";
+import { buildFirewallTableRows, countHostRows } from "../../lib/table-rows";
 import { useFirewallRulesTableColumns } from "./columns";
 
 const FirewallRuleDialog = dynamic(() => import("../firewall-rule-dialog"), {
@@ -52,31 +57,53 @@ const FirewallRuleDialog = dynamic(() => import("../firewall-rule-dialog"), {
 });
 
 export function FirewallRulesTable({
-  data,
+  hostRules,
+  guestRules,
+  guestManager,
   isPending,
 }: {
-  data?: GetFirewallRulesOutput;
+  hostRules?: HostRule[];
+  guestRules?: GuestRule[];
+  /** The in-VM firewall the guest rules came from, for the group heading. */
+  guestManager?: string | null;
   isPending: boolean;
 }) {
-  const { rules } = data || { rules: [] };
-
   const t = useExtracted();
 
+  const rows = useMemo(
+    () => buildFirewallTableRows({ hostRules, guestRules }),
+    [hostRules, guestRules],
+  );
+  const hostRuleCount = countHostRows(rows);
+
   const [rowAction, setRowAction] =
-    useState<DataTableRowAction<FirewallRulesTableColumn> | null>(null);
-  const columns = useFirewallRulesTableColumns({ rowAction, setRowAction });
+    useState<DataTableRowAction<FirewallTableRow> | null>(null);
+  const columns = useFirewallRulesTableColumns({
+    hostRuleCount,
+    rowAction,
+    setRowAction,
+  });
 
   const table = useReactTable({
-    data: rules,
+    data: rows,
     columns,
     pageCount: 1,
     getCoreRowModel: getCoreRowModel(),
     enableHiding: false,
     enableSorting: false,
+    getRowId: (row) => row.key,
     initialState: {
       columnPinning: { right: ["actions"] },
     },
   });
+
+  const columnCount = table.getVisibleFlatColumns().length;
+  const modelRows = table.getRowModel().rows;
+
+  // A heading is emitted wherever the layer changes, so the table reads top to
+  // bottom as the sequence of gates a packet passes. Only worth showing once
+  // there is a second layer to tell the first one apart from.
+  const hasGuestRows = rows.some((row) => row.layer === "guest");
 
   return (
     <>
@@ -103,27 +130,66 @@ export function FirewallRulesTable({
             ))}
           </TableHeader>
           <TableBody className="bg-card">
-            {table.getRowModel().rows?.length ? (
-              table.getRowModel().rows.map((row) => (
-                <TableRow
-                  key={row.id}
-                  data-state={row.getIsSelected() && "selected"}
-                  className="hover:bg-transparent"
-                >
-                  {row.getVisibleCells().map((cell) => (
-                    <TableCell className="px-6 py-4" key={cell.id}>
-                      {flexRender(
-                        cell.column.columnDef.cell,
-                        cell.getContext(),
-                      )}
-                    </TableCell>
-                  ))}
-                </TableRow>
-              ))
+            {modelRows.length ? (
+              modelRows.map((row, index) => {
+                const previous = modelRows[index - 1]?.original.layer;
+                const showHeading =
+                  hasGuestRows && row.original.layer !== previous;
+
+                return (
+                  <Fragment key={row.id}>
+                    {showHeading && (
+                      <TableRow className="hover:bg-transparent">
+                        <TableCell
+                          colSpan={columnCount}
+                          className="bg-muted/50 px-6 py-2"
+                        >
+                          <div className="flex items-center gap-2 font-medium text-muted-foreground text-xs uppercase tracking-wide">
+                            {row.original.layer === "host" ? (
+                              <>
+                                <LucideBrickWallShield
+                                  aria-hidden="true"
+                                  className="size-3.5"
+                                />
+                                {t("Virtbase firewall")}
+                              </>
+                            ) : (
+                              <>
+                                <LucideLock
+                                  aria-hidden="true"
+                                  className="size-3.5"
+                                />
+                                {guestManager
+                                  ? t("Inside your server ({manager})", {
+                                      manager: guestManager,
+                                    })
+                                  : t("Inside your server")}
+                              </>
+                            )}
+                          </div>
+                        </TableCell>
+                      </TableRow>
+                    )}
+                    <TableRow
+                      data-layer={row.original.layer}
+                      className="hover:bg-transparent data-[layer=guest]:bg-muted/20"
+                    >
+                      {row.getVisibleCells().map((cell) => (
+                        <TableCell className="px-6 py-4" key={cell.id}>
+                          {flexRender(
+                            cell.column.columnDef.cell,
+                            cell.getContext(),
+                          )}
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  </Fragment>
+                );
+              })
             ) : !isPending ? (
               <TableRow>
                 <TableCell
-                  colSpan={table.getVisibleFlatColumns().length}
+                  colSpan={columnCount}
                   className="pointer-events-none"
                 >
                   <AnimatedEmptyState
@@ -149,31 +215,30 @@ export function FirewallRulesTable({
                 </TableCell>
               </TableRow>
             ) : (
-              Array.from({ length: 4 }).map((_, index) => {
-                return (
-                  <TableRow key={index}>
-                    <TableCell
-                      colSpan={table.getVisibleFlatColumns().length}
-                      className="pointer-events-none"
-                    >
-                      <Skeleton className="h-10" />
-                    </TableCell>
-                  </TableRow>
-                );
-              })
+              Array.from({ length: 4 }).map((_, index) => (
+                <TableRow key={index}>
+                  <TableCell
+                    colSpan={columnCount}
+                    className="pointer-events-none"
+                  >
+                    <Skeleton className="h-10" />
+                  </TableCell>
+                </TableRow>
+              ))
             )}
           </TableBody>
         </Table>
         <ScrollBar orientation="horizontal" />
       </ScrollArea>
-      {rowAction && rowAction.variant === "update" && (
-        <FirewallRuleDialog
-          mode="update"
-          defaultValues={rowAction.row.original}
-          open
-          onOpenChange={(open) => setRowAction(open ? rowAction : null)}
-        />
-      )}
+      {rowAction?.variant === "update" &&
+        rowAction.row.original.layer === "host" && (
+          <FirewallRuleDialog
+            mode="update"
+            defaultValues={rowAction.row.original.rule}
+            open
+            onOpenChange={(open) => setRowAction(open ? rowAction : null)}
+          />
+        )}
     </>
   );
 }

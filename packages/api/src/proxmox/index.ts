@@ -16,6 +16,7 @@
  */
 
 export type { Proxmox } from "proxmox-api";
+export * from "./agent";
 export * from "./change-adapter-netrate";
 export * from "./find-follow-up-guest-power-task";
 export * from "./generate-cloud-init-network-config";

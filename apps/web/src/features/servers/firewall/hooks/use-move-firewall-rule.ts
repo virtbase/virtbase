@@ -17,6 +17,7 @@
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useTRPC } from "@/lib/trpc/react";
+import { invalidateFirewallAnalysis } from "../lib/invalidate-analysis";
 
 type TRPC = ReturnType<typeof useTRPC>;
 type Options = Parameters<
@@ -97,6 +98,8 @@ export const useMoveFirewallRule = ({
             server_id: input.server_id,
           }),
         );
+
+        invalidateFirewallAnalysis(queryClient, trpc, input.server_id);
 
         onSettled?.(data, error, input, ...args);
       },

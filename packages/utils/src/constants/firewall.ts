@@ -159,3 +159,100 @@ export const ICMPV6_TYPE_NAMES = [
   "neighbour-advertisement",
   "redirect",
 ] as const;
+
+/**
+ * Severity of a finding about a server's exposure.
+ *
+ * `critical` is reserved for services that are dangerous the moment they are
+ * reachable from the internet - an unauthenticated database, a container API.
+ * Everything else is `warning` or `info`, because a security list nobody reads
+ * protects nobody.
+ */
+export type ExposureSeverity = "critical" | "warning" | "info";
+
+export interface SensitivePort {
+  port: number;
+  proto: "tcp" | "udp";
+  /** Shown to the customer, so a recognisable product name rather than a slug. */
+  service: string;
+  severity: Exclude<ExposureSeverity, "info">;
+}
+
+/**
+ * Ports worth warning about when they are reachable from the internet.
+ *
+ * Deliberately short. Ports 22, 80 and 443 are missing on purpose: they are
+ * open on almost every server by design, and a list that flags them trains
+ * customers to ignore the whole feature. Only services that are dangerous
+ * *because* they are reachable earn a place here - datastores that ship without
+ * authentication, control-plane APIs that grant root, remote desktops, and the
+ * UDP services routinely abused for reflection attacks.
+ */
+export const SENSITIVE_PORTS: readonly SensitivePort[] = [
+  // Datastores - unauthenticated by default in most distributions
+  {
+    port: 3306,
+    proto: "tcp",
+    service: "MySQL / MariaDB",
+    severity: "critical",
+  },
+  { port: 5432, proto: "tcp", service: "PostgreSQL", severity: "critical" },
+  { port: 27017, proto: "tcp", service: "MongoDB", severity: "critical" },
+  { port: 6379, proto: "tcp", service: "Redis", severity: "critical" },
+  { port: 11211, proto: "tcp", service: "Memcached", severity: "critical" },
+  { port: 9200, proto: "tcp", service: "Elasticsearch", severity: "critical" },
+  { port: 5984, proto: "tcp", service: "CouchDB", severity: "critical" },
+  { port: 9042, proto: "tcp", service: "Cassandra", severity: "critical" },
+  { port: 8086, proto: "tcp", service: "InfluxDB", severity: "critical" },
+  {
+    port: 1433,
+    proto: "tcp",
+    service: "Microsoft SQL Server",
+    severity: "critical",
+  },
+  {
+    port: 1521,
+    proto: "tcp",
+    service: "Oracle Database",
+    severity: "critical",
+  },
+  // Control planes - reaching these usually means root on the host
+  { port: 2375, proto: "tcp", service: "Docker API", severity: "critical" },
+  {
+    port: 2376,
+    proto: "tcp",
+    service: "Docker API (TLS)",
+    severity: "warning",
+  },
+  { port: 2379, proto: "tcp", service: "etcd", severity: "critical" },
+  { port: 10250, proto: "tcp", service: "Kubelet", severity: "critical" },
+  // Message brokers and their admin interfaces
+  { port: 5672, proto: "tcp", service: "RabbitMQ", severity: "critical" },
+  {
+    port: 15672,
+    proto: "tcp",
+    service: "RabbitMQ management",
+    severity: "critical",
+  },
+  // Remote access and file sharing
+  { port: 5900, proto: "tcp", service: "VNC", severity: "critical" },
+  { port: 3389, proto: "tcp", service: "Remote Desktop", severity: "warning" },
+  { port: 445, proto: "tcp", service: "SMB", severity: "critical" },
+  { port: 139, proto: "tcp", service: "NetBIOS", severity: "critical" },
+  { port: 111, proto: "tcp", service: "rpcbind", severity: "warning" },
+  // UDP services abused for reflection and amplification attacks
+  { port: 53, proto: "udp", service: "DNS resolver", severity: "warning" },
+  { port: 123, proto: "udp", service: "NTP", severity: "warning" },
+  { port: 161, proto: "udp", service: "SNMP", severity: "critical" },
+  { port: 1900, proto: "udp", service: "SSDP", severity: "critical" },
+  { port: 11211, proto: "udp", service: "Memcached", severity: "critical" },
+] as const;
+
+/**
+ * Looks up a port in the catalogue.
+ */
+export const findSensitivePort = (
+  port: number,
+  proto: "tcp" | "udp",
+): SensitivePort | undefined =>
+  SENSITIVE_PORTS.find((entry) => entry.port === port && entry.proto === proto);

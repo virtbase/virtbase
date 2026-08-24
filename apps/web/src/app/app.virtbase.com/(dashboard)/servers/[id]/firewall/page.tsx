@@ -18,8 +18,11 @@
 import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
+import { GuestAgentNotice } from "@/features/servers/components/guest-agent-notice";
+import { FirewallFindingsCard } from "@/features/servers/firewall/components/firewall-findings-card";
 import { FirewallOptionsRow } from "@/features/servers/firewall/components/firewall-options-row";
 import { FirewallRulesCard } from "@/features/servers/firewall/components/firewall-rules-card";
+import { GuestFirewallAlert } from "@/features/servers/firewall/components/guest-firewall-alert";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();
@@ -33,9 +36,14 @@ export async function generateMetadata(): Promise<Metadata> {
 export default async function Page({
   params,
 }: PageProps<"/app.virtbase.com/servers/[id]/firewall">) {
+  const { id } = await params;
+
   return (
     <div className="grid auto-rows-min grid-cols-1 gap-4">
-      <FirewallOptionsRow promise={params.then(({ id }) => id)} />
+      <FirewallOptionsRow promise={Promise.resolve(id)} />
+      <GuestAgentNotice serverId={id} />
+      <GuestFirewallAlert serverId={id} />
+      <FirewallFindingsCard serverId={id} />
       <FirewallRulesCard />
     </div>
   );

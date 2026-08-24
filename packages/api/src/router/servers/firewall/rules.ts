@@ -69,6 +69,8 @@ export const serverFirewallRulesRouter = {
           sport: rule.sport,
           comment: rule.comment,
           icmp_type: rule["icmp-type"],
+          source: rule.source,
+          dest: rule.dest,
           digest: rule.digest,
         })),
       };
