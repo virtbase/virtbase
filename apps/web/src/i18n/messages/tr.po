@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Turkish\n"
-"PO-Revision-Date: 2026-08-24 17:39\n"
+"PO-Revision-Date: 2026-08-24 19:41\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -1400,6 +1400,10 @@ msgid "ggQwe8"
 msgstr "Sunucularınız için yeni bir özel görüntü oluşturun."
 
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
+msgid "ueVsqa"
+msgstr "Özel görüntü kullan"
+
+#: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 msgid "bWjdfa"
 msgstr "URL"
 
@@ -1431,6 +1435,34 @@ msgstr "Henüz özel görüntü yüklenmedi."
 #: src/features/servers/components/server-mount-badge.tsx
 msgid "N_dZaF"
 msgstr "Süresi doluyor: {time}"
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "gq3uD1"
+msgstr "Görüntülerde ara"
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "dQH9xy"
+msgstr "Güvenilir görüntüler"
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "6tPG_M"
+msgstr "Güvenilir görüntüler hakkında"
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "kRS0qP"
+msgstr "Bu görüntüler doğrudan sağlayıcıların kendi sunucularından indirilir. Virtbase her kaynağı denetler, ancak görüntüleri barındırmaz veya değiştirmez."
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "f2nkRw"
+msgstr "Aramanızla eşleşen görüntü yok."
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "Z8971h"
+msgstr "Doğrulanmış"
+
+#: src/features/account/components/custom-images/iso-catalog-grid.tsx
+msgid "vnJUHh"
+msgstr "Yayınlandı: {date}"
 
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 msgid "KdsDOJ"
