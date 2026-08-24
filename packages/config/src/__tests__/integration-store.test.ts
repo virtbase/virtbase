@@ -15,7 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { beforeAll, describe, expect, test } from "bun:test";
+import { afterAll, beforeAll, describe, expect, test } from "bun:test";
 import { eq } from "@virtbase/db";
 import {
   integrationInstallations,
@@ -37,6 +37,12 @@ beforeAll(async () => {
     db: db as unknown as ConfigDatabase,
     masterKey,
   });
+});
+
+afterAll(async () => {
+  // PGlite holds the event loop open; without this the process is force-killed
+  // with exit code 99 even though every test passed.
+  await db.$client.close();
 });
 
 describe("IntegrationConfigStore", () => {

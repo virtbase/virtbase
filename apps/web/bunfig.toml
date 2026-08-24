@@ -1,0 +1,6 @@
+[test]
+
+# Register happy-dom and Testing Library cleanup for this package only. The root
+# bunfig deliberately does not do this: `GlobalRegistrator` replaces globals such
+# as `fetch`, which breaks the suites that install their own `fetch` mock.
+preload = ["@virtbase/test-utils/preload"]

@@ -31,11 +31,12 @@
   "scripts": {
     "build": "tsc",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "dev": "tsc",
     "db:generate": "bun with-env drizzle-kit generate",
     "db:migrate": "bun with-env drizzle-kit migrate",
     "db:push": "bun with-env drizzle-kit push",
     "db:studio": "bun with-env drizzle-kit studio",
+    "dev": "tsc",
+    "test": "bun --env-file=../../.env.test test --timeout 20000",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "with-env": "bun --env-file ../../.env --"
   },

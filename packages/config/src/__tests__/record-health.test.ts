@@ -31,6 +31,11 @@ const newStore = async () => {
       db: db as unknown as ConfigDatabase,
       masterKey: generateKey(),
     }),
+    // PGlite holds the event loop open; a test that leaves one behind makes bun
+    // force-exit with code 99 even though every assertion passed.
+    [Symbol.asyncDispose]: async () => {
+      await db.$client.close();
+    },
   };
 };
 
@@ -41,7 +46,8 @@ const newStore = async () => {
  */
 describe("partial writes preserve unrelated state", () => {
   test("recordHealth does not disturb the enabled flag or settings", async () => {
-    const { db, store } = await newStore();
+    await using resources = await newStore();
+    const { db, store } = resources;
 
     await store.upsert({
       integrationId: "acme",
@@ -65,7 +71,8 @@ describe("partial writes preserve unrelated state", () => {
   });
 
   test("upsert without `enabled` does not disable an enabled integration", async () => {
-    const { store } = await newStore();
+    await using resources = await newStore();
+    const { store } = resources;
 
     await store.upsert({ integrationId: "acme", enabled: true });
     await store.upsert({ integrationId: "acme", settings: { a: 2 } });
@@ -78,7 +85,8 @@ describe("partial writes preserve unrelated state", () => {
   });
 
   test("upsert without `settings` does not blank stored settings", async () => {
-    const { store } = await newStore();
+    await using resources = await newStore();
+    const { store } = resources;
 
     await store.upsert({ integrationId: "acme", settings: { a: 1 } });
     await store.upsert({ integrationId: "acme", enabled: true });

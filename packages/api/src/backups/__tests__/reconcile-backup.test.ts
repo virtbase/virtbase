@@ -42,7 +42,7 @@ import {
   mockServerPlan,
   mockServerPlanPrice,
   mockSession,
-} from "../../router/__tests__/fixtures";
+} from "../../testing";
 import { reconcileServerBackup } from "../reconcile-backup";
 import { reconcileServerBackups } from "../reconcile-server-backups";
 

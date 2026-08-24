@@ -16,11 +16,11 @@
  */
 
 import { expect, test } from "@playwright/test";
-import { PUBLIC_DOMAIN } from "@virtbase/utils";
+import { publicUrl } from "../support/urls";
 
 test.describe("compliance", () => {
   test("it should render the legal notice", async ({ page }) => {
-    await page.goto(`${PUBLIC_DOMAIN}/legal/notice`, {
+    await page.goto(publicUrl(`/legal/notice`), {
       waitUntil: "domcontentloaded",
     });
     await expect(page.url()).toContain("/legal/notice");
@@ -28,7 +28,7 @@ test.describe("compliance", () => {
   });
 
   test("it should render the privacy policy", async ({ page }) => {
-    await page.goto(`${PUBLIC_DOMAIN}/legal/privacy`, {
+    await page.goto(publicUrl(`/legal/privacy`), {
       waitUntil: "domcontentloaded",
     });
     await expect(page.url()).toContain("/legal/privacy");
@@ -36,7 +36,7 @@ test.describe("compliance", () => {
   });
 
   test("it should render the terms of use", async ({ page }) => {
-    await page.goto(`${PUBLIC_DOMAIN}/legal/terms`, {
+    await page.goto(publicUrl(`/legal/terms`), {
       waitUntil: "domcontentloaded",
     });
     await expect(page.url()).toContain("/legal/terms");
@@ -44,7 +44,7 @@ test.describe("compliance", () => {
   });
 
   test("it should render the revocation policy", async ({ page }) => {
-    await page.goto(`${PUBLIC_DOMAIN}/legal/revocation`, {
+    await page.goto(publicUrl(`/legal/revocation`), {
       waitUntil: "domcontentloaded",
     });
     await expect(page.url()).toContain("/legal/revocation");

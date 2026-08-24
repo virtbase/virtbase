@@ -26,12 +26,21 @@
     "./workflows": {
       "types": "./dist/workflows.d.ts",
       "default": "./src/workflows/index.ts"
+    },
+    "./testing": {
+      "types": "./dist/testing/index.d.ts",
+      "default": "./src/testing/index.ts"
+    },
+    "./testing/fixtures": {
+      "types": "./dist/testing/fixtures.d.ts",
+      "default": "./src/testing/fixtures.ts"
     }
   },
   "scripts": {
     "build": "tsc",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "dev": "tsc",
+    "test": "bun --env-file=../../.env.test test --timeout 20000",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "with-env": "bun --env-file ../../.env --"
   },

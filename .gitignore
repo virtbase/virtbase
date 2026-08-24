@@ -9,6 +9,9 @@ node_modules
 coverage
 test-results
 playwright-report
+
+# Playwright storage state: real session cookies, minted per run
+e2e/.auth
 playwright/.cache
 
 # next.js

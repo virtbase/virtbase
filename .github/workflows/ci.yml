@@ -1,0 +1,89 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # `apps/web/src/env.ts` and `packages/auth/env.ts` both skip t3-env validation
+  # when CI is set, so no application secrets are needed for these jobs.
+  CI: "true"
+  TURBO_TELEMETRY_DISABLED: "1"
+
+jobs:
+  check:
+    name: Lint, types and boundaries
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: package.json
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Lint
+        run: bun check
+
+      - name: Typecheck
+        run: bun typecheck
+
+      # dependency-cruiser runs through bun because it refuses to start on
+      # node 25; see AGENTS.md.
+      - name: Architecture boundaries
+        run: bun check:boundaries
+
+  test:
+    name: Unit and integration tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: package.json
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      # No database service: `createTestDb()` is PGlite, an in-process Postgres.
+      # Placeholder env comes from the committed `.env.test`.
+      - name: Run tests with coverage
+        run: bun run test:coverage
+
+      - name: Publish coverage summary
+        if: ${{ !cancelled() }}
+        run: |
+          {
+            echo "## Coverage"
+            echo
+            echo '```'
+            find . -path ./node_modules -prune -o -name 'lcov.info' -print \
+              | while read -r file; do
+                  package=$(dirname "$(dirname "$file")")
+                  lines=$(grep -c '^DA:' "$file" || echo 0)
+                  hit=$(grep '^DA:' "$file" | grep -vc ',0$' || echo 0)
+                  if [ "$lines" -gt 0 ]; then
+                    printf '%-44s %s%%\n' "${package#./}" "$((hit * 100 / lines))"
+                  fi
+                done
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload coverage
+        if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v5
+        with:
+          name: coverage
+          path: "**/coverage/lcov.info"
+          retention-days: 14
+          if-no-files-found: warn

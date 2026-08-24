@@ -11,6 +11,17 @@
   //   Layer 5 Composition   api, admin-api, apps/*
   "forbidden": [
     {
+      "name": "no-test-helpers-in-shipped-code",
+      "comment": "Test harnesses must never reach production code. `options.exclude.path` skips `__tests__`, and `apps/web/e2e` is exempted here, so anything that trips this rule is a real module that would ship a PGlite database, Testing Library or a fixture object to users.",
+      "severity": "error",
+      "from": {
+        "pathNot": "^(packages/(test-utils/src|api/src/testing)|apps/web/e2e)/"
+      },
+      "to": {
+        "path": "^packages/(test-utils/src|api/src/testing)/"
+      }
+    },
+    {
       "name": "integration-no-composition",
       "comment": "An integration is a plug-in, not a dependency of the thing it plugs into. Depend on @virtbase/ports and implement the capability instead.",
       "severity": "error",

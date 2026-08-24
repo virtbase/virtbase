@@ -16,11 +16,11 @@
  */
 
 import { expect, test } from "@playwright/test";
-import { APP_DOMAIN } from "@virtbase/utils";
+import { appUrl } from "../support/urls";
 
 test.describe("login page", () => {
   test("it should render the login page", async ({ page }) => {
-    await page.goto(`${APP_DOMAIN}/login`, { waitUntil: "domcontentloaded" });
+    await page.goto(appUrl(`/login`), { waitUntil: "domcontentloaded" });
 
     // Wait for the animation to finish
     await page.waitForSelector(
@@ -47,7 +47,7 @@ test.describe("login page", () => {
 
 test.describe("register page", () => {
   test("it should render the register page", async ({ page }) => {
-    await page.goto(`${APP_DOMAIN}/register`, {
+    await page.goto(appUrl(`/register`), {
       waitUntil: "domcontentloaded",
     });
 
@@ -67,7 +67,7 @@ test.describe("register page", () => {
 
 test.describe("forgot password page", () => {
   test("it should render the forgot password page", async ({ page }) => {
-    await page.goto(`${APP_DOMAIN}/forgot-password`, {
+    await page.goto(appUrl(`/forgot-password`), {
       waitUntil: "domcontentloaded",
     });
 
@@ -89,23 +89,21 @@ test.describe("reset password page", () => {
   test("it should redirect to login page if no token is provided", async ({
     page,
   }) => {
-    await page.goto(`${APP_DOMAIN}/reset-password`, {
+    await page.goto(appUrl(`/reset-password`), {
       waitUntil: "domcontentloaded",
     });
 
-    await expect(page).toHaveURL(`${APP_DOMAIN}/login`);
+    await expect(page).toHaveURL(appUrl(`/login`));
   });
 
   test("it should render the reset password page if a token is provided", async ({
     page,
   }) => {
-    await page.goto(`${APP_DOMAIN}/reset-password?token=1234567890`, {
+    await page.goto(appUrl(`/reset-password?token=1234567890`), {
       waitUntil: "domcontentloaded",
     });
 
-    await expect(page).toHaveURL(
-      `${APP_DOMAIN}/reset-password?token=1234567890`,
-    );
+    await expect(page).toHaveURL(appUrl(`/reset-password?token=1234567890`));
 
     // Wait for the animation to finish
     await page.waitForSelector(

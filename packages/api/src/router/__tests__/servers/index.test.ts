@@ -38,7 +38,7 @@ import {
   mockServerPlan,
   mockServerPlanPrice,
   mockSession,
-} from "../fixtures";
+} from "../../../testing";
 
 let testDb: TestDb;
 let caller: ReturnType<typeof appRouter.createCaller>;

@@ -20,7 +20,7 @@
     "register-connections-metadata": "bun with-env src/scripts/register-connections-metadata.ts",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "with-env": "bun --env-file ../../.env --",
-    "test": "bun test"
+    "test": "bun --env-file=../../.env.test test --timeout 20000"
   },
   "dependencies": {
     "@virtbase/db": "workspace:*",

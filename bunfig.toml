@@ -1,8 +1,9 @@
 [test]
 
 coveragePathIgnorePatterns = [
-    # Fixtures
-    "packages/api/src/router/__tests__/fixtures.ts",
+    # Test harness: fixtures, the tRPC caller factory and the DOM preload
+    "packages/api/src/testing/**.ts",
+    "packages/test-utils/src/**.ts",
     # Static constants
     "packages/utils/src/constants/**.ts",
     # Static zod schemas

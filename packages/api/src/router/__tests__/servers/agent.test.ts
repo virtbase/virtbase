@@ -44,7 +44,7 @@ import {
   mockServerPlan,
   mockServerPlanPrice,
   mockSession,
-} from "../fixtures";
+} from "../../../testing";
 
 // Redis is stubbed rather than exercised: `cached` degrades on any Redis error,
 // so a real client would still pass while quietly making the suite depend on

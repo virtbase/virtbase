@@ -44,7 +44,7 @@ import {
   mockServerPlan,
   mockServerPlanPrice,
   mockSession,
-} from "../fixtures";
+} from "../../../testing";
 
 const cacheStore = new Map<string, unknown>();
 

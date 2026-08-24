@@ -16,10 +16,11 @@
  */
 
 import { expect, test } from "@playwright/test";
-import { APP_NAME, PUBLIC_DOMAIN } from "@virtbase/utils";
+import { APP_NAME } from "@virtbase/utils";
+import { publicUrl } from "../support/urls";
 
 test("it should render the public API documentation", async ({ page }) => {
-  await page.goto(`${PUBLIC_DOMAIN}/api/docs`, {
+  await page.goto(publicUrl(`/api/docs`), {
     waitUntil: "domcontentloaded",
   });
 

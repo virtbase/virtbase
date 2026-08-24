@@ -16,13 +16,14 @@
  */
 
 import { expect, test } from "@playwright/test";
-import { APP_DOMAIN, PUBLIC_DOMAIN } from "@virtbase/utils";
+import { appOrigin, publicOrigin, publicUrl } from "../support/urls";
 
 test.describe("meta", () => {
-  const domains = [PUBLIC_DOMAIN, APP_DOMAIN];
+  // robots, sitemap and security.txt must be served on both hosts.
+  const origins = [publicOrigin, appOrigin];
 
   test("it should render the robots.txt", async ({ page }) => {
-    for (const domain of domains) {
+    for (const domain of origins) {
       const url = `${domain}/robots.txt`;
       const response = await page.goto(url, { waitUntil: "commit" });
       expect(response?.status()).toBe(200);
@@ -31,7 +32,7 @@ test.describe("meta", () => {
   });
 
   test("it should render the sitemap.xml", async ({ page }) => {
-    for (const domain of domains) {
+    for (const domain of origins) {
       const url = `${domain}/sitemap.xml`;
       const response = await page.goto(url, { waitUntil: "commit" });
       expect(response?.status()).toBe(200);
@@ -40,7 +41,7 @@ test.describe("meta", () => {
   });
 
   test("it should render the security.txt", async ({ page }) => {
-    for (const domain of domains) {
+    for (const domain of origins) {
       const url = `${domain}/.well-known/security.txt`;
       const response = await page.goto(url, { waitUntil: "commit" });
       expect(response?.status()).toBe(200);
@@ -50,7 +51,7 @@ test.describe("meta", () => {
 
   test("it should render the custom not found page", async ({ page }) => {
     const response = await page.goto(
-      `${PUBLIC_DOMAIN}/some-random-non-existent-page`,
+      publicUrl(`/some-random-non-existent-page`),
       { waitUntil: "domcontentloaded" },
     );
 

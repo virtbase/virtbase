@@ -18,42 +18,24 @@
 import { afterAll, beforeAll, describe, expect, test } from "bun:test";
 import { TRPCError } from "@trpc/server";
 import { accounts, users } from "@virtbase/db/schema";
-import type { TestDb } from "@virtbase/db/test-client";
-import { createTestDb } from "@virtbase/db/test-client";
-import { appRouter } from "../../root";
-import { mockSession } from "./fixtures";
+import type { TestCaller, TestCallerResult } from "../../testing";
+import { createTestCaller, mockSession } from "../../testing";
 
-let testDb: TestDb;
-let caller: ReturnType<typeof appRouter.createCaller>;
-let unauthenticatedCaller: ReturnType<typeof appRouter.createCaller>;
+let harness: TestCallerResult;
+let testDb: TestCallerResult["db"];
+let caller: TestCaller;
+let unauthenticatedCaller: TestCaller;
 
 beforeAll(async () => {
-  testDb = await createTestDb();
+  harness = await createTestCaller();
+  ({ db: testDb, caller, unauthenticatedCaller } = harness);
 
   // Create a test user, required for linking ssh keys
   await testDb.insert(users).values(mockSession.user).onConflictDoNothing();
-
-  const sharedContext = {
-    db: testDb as never,
-    authApi: {} as never,
-    apiKey: null,
-    headers: new Headers(),
-    setHeader: () => {},
-  };
-
-  caller = appRouter.createCaller({
-    ...sharedContext,
-    session: mockSession,
-  });
-
-  unauthenticatedCaller = appRouter.createCaller({
-    ...sharedContext,
-    session: null,
-  });
 });
 
 afterAll(async () => {
-  await testDb.$client.close();
+  await harness.close();
 });
 
 describe("auth.checkAccountExists", () => {

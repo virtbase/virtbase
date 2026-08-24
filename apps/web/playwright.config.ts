@@ -15,13 +15,10 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-//import "dotenv/config";
-
 import { defineConfig, devices } from "@playwright/test";
-import { APP_DOMAIN } from "@virtbase/utils";
+import { appOrigin } from "./e2e/support/urls";
 
-const PORT = 3000;
-const BASE_URL = process.env.BASE_URL || APP_DOMAIN;
+const PORT = Number(process.env.E2E_PORT ?? 3000);
 
 /**
  * @see https://playwright.dev/docs/test-configuration
@@ -32,10 +29,26 @@ export default defineConfig({
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 2 : 0,
   workers: process.env.CI ? 1 : undefined,
-  reporter: "html",
+  // The HTML report embeds the traces, videos and screenshots, so it is the one
+  // artifact worth downloading. `github` adds inline annotations on the PR diff.
+  // If this suite is ever sharded, add `["blob"]` here and a merge step - blob
+  // reports are the only ones that combine across shards.
+  reporter: process.env.CI
+    ? [["html", { open: "never" }], ["github"]]
+    : [["list"], ["html", { open: "never" }]],
   use: {
-    baseURL: BASE_URL,
-    trace: "on-first-retry",
+    // Specs build absolute URLs through `e2e/support/urls.ts` because the app is
+    // three hostnames, not one. `baseURL` is set anyway so Playwright's trace
+    // viewer and `page.goto("/")` behave sensibly.
+    baseURL: appOrigin,
+    // `retain-on-failure` rather than Playwright's usual `on-first-retry`:
+    // `retries` is 0 outside CI, so there is no retry to attach a trace to and a
+    // local failure would produce nothing to look at. This records every test
+    // and throws the recording away when it passes, which costs a little time
+    // and means a failure is always reproducible in the trace viewer.
+    trace: "retain-on-failure",
+    video: "retain-on-failure",
+    screenshot: "only-on-failure",
     // Bypass Vercel Deployment Protection when running E2E against protected deployments
     ...(process.env.VERCEL_AUTOMATION_BYPASS_SECRET && {
       extraHTTPHeaders: {
@@ -46,32 +59,47 @@ export default defineConfig({
     }),
   },
   projects: [
-    // Public pages without authentication
+    // Seeds the database and mints session cookies for the two roles below.
+    { name: "setup", testMatch: /.*\.setup\.ts/ },
+
+    // Public pages, no session.
     {
       name: "public",
       testDir: "./e2e/public",
       testMatch: /.*\.e2e\.ts/,
+      use: { ...devices["Desktop Chrome"] },
+    },
+
+    {
+      name: "app",
+      testDir: "./e2e/app",
+      testMatch: /.*\.e2e\.ts/,
+      dependencies: ["setup"],
       use: {
         ...devices["Desktop Chrome"],
+        storageState: "e2e/.auth/customer.json",
       },
     },
-    /*{ name: "setup", testMatch: /.*\.setup\.ts/ },
+
     {
-      name: "chromium",
-      testMatch: /.*\.spec\.ts/,
+      name: "admin",
+      testDir: "./e2e/admin",
+      testMatch: /.*\.e2e\.ts/,
+      dependencies: ["setup"],
       use: {
         ...devices["Desktop Chrome"],
-        storageState: "e2e/.auth/user.json",
+        storageState: "e2e/.auth/admin.json",
       },
-      dependencies: ["setup"],
-    },*/
+    },
   ],
-  webServer: !process.env.CI
-    ? {
-        command: `next dev --turbo --port ${PORT}`,
-        timeout: 120 * 1000,
+  webServer: process.env.E2E_SKIP_WEB_SERVER
+    ? undefined
+    : {
+        command: `bun with-env next dev --turbo --port ${PORT}`,
+        timeout: 240 * 1000,
         port: PORT,
         reuseExistingServer: !process.env.CI,
-      }
-    : undefined,
+        stdout: "pipe",
+        stderr: "pipe",
+      },
 });

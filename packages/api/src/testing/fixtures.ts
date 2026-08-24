@@ -24,6 +24,8 @@ import type {
   serverPlans,
   servers,
 } from "@virtbase/db/schema";
+import * as schema from "@virtbase/db/schema";
+import type { TestDb } from "@virtbase/db/test-client";
 
 export const mockSession = {
   session: {
@@ -124,3 +126,66 @@ export const mockServer = {
   createdAt: new Date(),
   updatedAt: new Date(),
 } satisfies typeof servers.$inferSelect;
+
+/**
+ * An `ADMIN` counterpart to {@link mockSession}, for the admin surface. The IDs
+ * differ in their last digit so a test that mixes both never silently passes
+ * because the two users collided.
+ */
+export const mockAdminSession = {
+  session: {
+    ...mockSession.session,
+    id: "sess_0000000000000000000000001",
+    userId: "usr_0000000000000000000000001",
+  },
+  user: {
+    ...mockSession.user,
+    id: "usr_0000000000000000000000001",
+    email: "admin@example.com",
+    name: "Mock Admin",
+    role: "ADMIN",
+  },
+} satisfies Session;
+
+/**
+ * Insert the object graph a server actually needs to exist.
+ *
+ * `servers` has foreign keys reaching all the way back to a datacenter, so a
+ * test that wants one row ends up writing six. Every router test that touches
+ * servers was assembling this chain by hand; the order below is the insert
+ * order the constraints require.
+ */
+export async function seedServerGraph(db: TestDb) {
+  await db.insert(schema.users).values(mockSession.user).onConflictDoNothing();
+  await db
+    .insert(schema.datacenters)
+    .values(mockDatacenter)
+    .onConflictDoNothing();
+  await db
+    .insert(schema.proxmoxNodeGroups)
+    .values(mockProxmoxNodeGroup)
+    .onConflictDoNothing();
+  await db
+    .insert(schema.proxmoxNodes)
+    .values(mockProxmoxNode)
+    .onConflictDoNothing();
+  await db
+    .insert(schema.serverPlans)
+    .values(mockServerPlan)
+    .onConflictDoNothing();
+  await db
+    .insert(schema.serverPlanPrices)
+    .values(mockServerPlanPrice)
+    .onConflictDoNothing();
+  await db.insert(schema.servers).values(mockServer).onConflictDoNothing();
+
+  return {
+    user: mockSession.user,
+    datacenter: mockDatacenter,
+    proxmoxNodeGroup: mockProxmoxNodeGroup,
+    proxmoxNode: mockProxmoxNode,
+    serverPlan: mockServerPlan,
+    serverPlanPrice: mockServerPlanPrice,
+    server: mockServer,
+  };
+}

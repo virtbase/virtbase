@@ -14,6 +14,7 @@
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "test": "bun --env-file=../../.env.test test --timeout 20000",
     "typecheck": "tsc --noEmit",
     "ui-add": "bunx shadcn@latest add"
   },
@@ -40,8 +41,9 @@
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:",
-    "@virtbase/tsconfig": "workspace:*",
     "@types/react": "catalog:",
+    "@virtbase/test-utils": "workspace:*",
+    "@virtbase/tsconfig": "workspace:*",
     "typescript": "catalog:"
   },
   "peerDependencies": {

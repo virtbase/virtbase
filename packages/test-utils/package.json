@@ -1,0 +1,27 @@
+{
+  "name": "@virtbase/test-utils",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./react": "./src/react.tsx",
+    "./preload": "./src/preload.ts"
+  },
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "catalog:",
+    "@happy-dom/global-registrator": "^19.0.2",
+    "@tanstack/react-query": "catalog:",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
+    "@types/react": "catalog:",
+    "@virtbase/tsconfig": "workspace:*",
+    "next-intl": "catalog:",
+    "next-themes": "^0.4.6",
+    "react": "catalog:",
+    "typescript": "catalog:"
+  }
+}

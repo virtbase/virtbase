@@ -16,6 +16,23 @@
     },
     "//#check": {},
     "//#check:boundaries": {},
+    "test": {
+      "dependsOn": ["^topo", "^build"],
+      "outputs": [],
+      "inputs": [
+        "src/**",
+        "e2e/**",
+        "bunfig.toml",
+        "package.json",
+        "tsconfig.json",
+        "$TURBO_DEFAULT$"
+      ]
+    },
+    "test:e2e": {
+      "dependsOn": ["^topo", "^build"],
+      "cache": false,
+      "outputs": ["playwright-report/**", "test-results/**", "blob-report/**"]
+    },
     "typecheck": {
       "dependsOn": ["^topo", "^build"],
       "outputs": [".cache/tsbuildinfo.json"]

@@ -26,33 +26,24 @@ import {
 } from "bun:test";
 import { TRPCError } from "@trpc/server";
 import { sshKeys, users } from "@virtbase/db/schema";
-import type { TestDb } from "@virtbase/db/test-client";
-import { createTestDb } from "@virtbase/db/test-client";
 import { MAX_SSH_KEYS_PER_USER } from "@virtbase/utils";
-import { appRouter } from "../../root";
-import { mockSession } from "./fixtures";
+import type { TestCaller, TestCallerResult } from "../../testing";
+import { createTestCaller, mockSession } from "../../testing";
 
-let testDb: TestDb;
-let caller: ReturnType<typeof appRouter.createCaller>;
+let harness: TestCallerResult;
+let testDb: TestCallerResult["db"];
+let caller: TestCaller;
 
 beforeAll(async () => {
-  testDb = await createTestDb();
+  harness = await createTestCaller();
+  ({ db: testDb, caller } = harness);
 
   // Create a test user, required for linking ssh keys
   await testDb.insert(users).values(mockSession.user).onConflictDoNothing();
-
-  caller = appRouter.createCaller({
-    session: mockSession,
-    db: testDb as never,
-    authApi: {} as never,
-    apiKey: null,
-    headers: new Headers(),
-    setHeader: () => {},
-  });
 });
 
 afterAll(async () => {
-  await testDb.$client.close();
+  await harness.close();
 });
 
 afterEach(async () => {
