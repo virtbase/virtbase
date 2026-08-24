@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Romanian\n"
-"PO-Revision-Date: 2026-08-24 14:07\n"
+"PO-Revision-Date: 2026-08-24 17:38\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -3344,6 +3344,19 @@ msgstr "Activat"
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "aH4De2"
+msgstr "Sursă"
+
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+msgid "c-r5qz"
+msgstr "Orice adresă"
+
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+msgid "08nIQL"
+msgstr "Potrivește doar traficul din această adresă sau rețea, de exemplu 10.0.0.0/8. Lasă gol pentru a se potrivi cu orice adresă."
+
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "LgbKvU"
 msgstr "Comentariu"
 
@@ -3408,6 +3421,14 @@ msgid "wEQDC6"
 msgstr "Editează"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "AFkUOq"
+msgstr "Nu s-au putut genera regulile. Încercați din nou."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "N8n7F4"
+msgstr "Regula nu a putut fi creată. Încercați din nou."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "w-tZ4Z"
 msgstr "Generează reguli de firewall"
 
@@ -3428,8 +3449,16 @@ msgid "Pc-tM3"
 msgstr "Generează"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "9LprhS"
+msgstr "Nicio regulă necesară."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "EWw_tK"
 msgstr "Aplică"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "c9zsSH"
+msgstr "Aplicați toate"
 
 #: src/features/servers/firewall/components/guest-firewall-alert.tsx
 msgid "XKXFT7"
