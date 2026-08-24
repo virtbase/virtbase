@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Portuguese\n"
-"PO-Revision-Date: 2026-08-24 14:08\n"
+"PO-Revision-Date: 2026-08-24 17:38\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -3344,6 +3344,19 @@ msgstr "Habilitada"
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "aH4De2"
+msgstr "Origem"
+
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+msgid "c-r5qz"
+msgstr "Qualquer endereço"
+
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+msgid "08nIQL"
+msgstr "Corresponde apenas ao tráfego deste endereço ou rede, por exemplo 10.0.0.0/8. Deixe em branco para corresponder a qualquer endereço."
+
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "LgbKvU"
 msgstr "Comentário"
 
@@ -3408,6 +3421,14 @@ msgid "wEQDC6"
 msgstr "Editar"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "AFkUOq"
+msgstr "Não foi possível gerar as regras. Tente novamente."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "N8n7F4"
+msgstr "Não foi possível criar a regra. Tente novamente."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "w-tZ4Z"
 msgstr "Gerar regras de firewall"
 
@@ -3428,8 +3449,16 @@ msgid "Pc-tM3"
 msgstr "Gerar"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "9LprhS"
+msgstr "Nenhuma regra necessária."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "EWw_tK"
 msgstr "Aplicar"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "c9zsSH"
+msgstr "Aplicar tudo"
 
 #: src/features/servers/firewall/components/guest-firewall-alert.tsx
 msgid "XKXFT7"
