@@ -22,10 +22,8 @@ test.describe("login page", () => {
   test("it should render the login page", async ({ page }) => {
     await page.goto(appUrl(`/login`), { waitUntil: "domcontentloaded" });
 
-    // Wait for the animation to finish
-    await page.waitForSelector(
-      '[data-testid="client-only"][style="opacity: 1;"]',
-    );
+    // Wait for the fade-in to finish.
+    await expect(page.getByTestId("client-only")).toHaveCSS("opacity", "1");
 
     await expect(page.getByTestId("logo-link")).toBeVisible();
     await expect(page.getByTestId("terms")).toBeVisible();
@@ -51,10 +49,8 @@ test.describe("register page", () => {
       waitUntil: "domcontentloaded",
     });
 
-    // Wait for the animation to finish
-    await page.waitForSelector(
-      '[data-testid="client-only"][style="opacity: 1;"]',
-    );
+    // Wait for the fade-in to finish.
+    await expect(page.getByTestId("client-only")).toHaveCSS("opacity", "1");
 
     await expect(page.getByTestId("logo-link")).toBeVisible();
     await expect(page.getByTestId("terms")).toBeVisible();
@@ -71,10 +67,8 @@ test.describe("forgot password page", () => {
       waitUntil: "domcontentloaded",
     });
 
-    // Wait for the animation to finish
-    await page.waitForSelector(
-      '[data-testid="client-only"][style="opacity: 1;"]',
-    );
+    // Wait for the fade-in to finish.
+    await expect(page.getByTestId("client-only")).toHaveCSS("opacity", "1");
 
     await expect(page.getByTestId("logo-link")).toBeVisible();
     await expect(page.getByTestId("terms")).not.toBeVisible();
@@ -105,10 +99,8 @@ test.describe("reset password page", () => {
 
     await expect(page).toHaveURL(appUrl(`/reset-password?token=1234567890`));
 
-    // Wait for the animation to finish
-    await page.waitForSelector(
-      '[data-testid="client-only"][style="opacity: 1;"]',
-    );
+    // Wait for the fade-in to finish.
+    await expect(page.getByTestId("client-only")).toHaveCSS("opacity", "1");
 
     await expect(page.getByTestId("logo-link")).toBeVisible();
     await expect(page.getByTestId("terms")).not.toBeVisible();

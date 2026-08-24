@@ -82,6 +82,7 @@ jobs:
           NEXT_PUBLIC_APP_NAME=Virtbase
           NEXT_PUBLIC_APP_DOMAIN=virtbase.com
           BETTER_AUTH_SECRET=e2e-only-secret-not-used-outside-ci
+          NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_00000000000000000000000000
           ENVFILE
 
       - name: Run migrations
