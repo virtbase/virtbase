@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Czech\n"
-"PO-Revision-Date: 2026-08-24 14:07\n"
+"PO-Revision-Date: 2026-08-24 17:38\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -3344,6 +3344,19 @@ msgstr "Povoleno"
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "aH4De2"
+msgstr "Zdroj"
+
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+msgid "c-r5qz"
+msgstr "Jakákoli adresa"
+
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+msgid "08nIQL"
+msgstr "Zachycovat pouze přenosy z této adresy nebo sítě, například 10.0.0.0/8. Ponechat prázdné pro zachycení jakékoli adresy."
+
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "LgbKvU"
 msgstr "Komentář"
 
@@ -3408,6 +3421,14 @@ msgid "wEQDC6"
 msgstr "Upravit"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "AFkUOq"
+msgstr "Nebylo možné vygenerovat pravidla. Zkuste to prosím znovu."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "N8n7F4"
+msgstr "Nepodařilo se vytvořit pravidlo. Zkuste to prosím znovu."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "w-tZ4Z"
 msgstr "Generovat pravidla firewallu"
 
@@ -3428,8 +3449,16 @@ msgid "Pc-tM3"
 msgstr "Generovat"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "9LprhS"
+msgstr "Žádná pravidla nejsou potřeba."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "EWw_tK"
 msgstr "Použít"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "c9zsSH"
+msgstr "Použít vše"
 
 #: src/features/servers/firewall/components/guest-firewall-alert.tsx
 msgid "XKXFT7"
