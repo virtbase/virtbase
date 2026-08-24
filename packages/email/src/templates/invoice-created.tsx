@@ -108,7 +108,7 @@ export default async function InvoiceCreated({
                 {t("viewInvoice")}
               </Link>
             </Section>
-            <Footer email={email} locale={locale} />
+            <Footer email={email} locale={locale} showReview />
           </Container>
         </Body>
       </Tailwind>

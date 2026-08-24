@@ -22,3 +22,22 @@ export const APPLE_APP_STORE_ID = "6757938005";
 export const APPLE_APP_STORE_URL = `https://apps.apple.com/app/virtbase/id${APPLE_APP_STORE_ID}`;
 
 export const LOOKING_GLASS_URL = "https://lg.virtbase.com";
+
+export const YOUTUBE_URL = "https://www.youtube.com/@virtbase";
+
+export const X_URL = "https://x.com/virtbasecom";
+
+export const INSTAGRAM_URL = "https://www.instagram.com/virtbasecom";
+
+export const GITHUB_URL = "https://github.com/virtbase";
+
+/**
+ * The public review form. Note that server-ready emails already BCC
+ * `TRUSTPILOT_AFS_EMAIL`, so those recipients get an invitation from Trustpilot
+ * itself as well.
+ */
+export const TRUSTPILOT_REVIEW_URL =
+  "https://www.trustpilot.com/evaluate/virtbase.com";
+
+export const TRUSTPILOT_PROFILE_URL =
+  "https://www.trustpilot.com/review/virtbase.com";

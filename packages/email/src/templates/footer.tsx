@@ -20,21 +20,42 @@ import {
   getEmailMessages,
   resolveEmailLocale,
 } from "@virtbase/email/translations";
-import { APP_DOMAIN, PUBLIC_DOMAIN } from "@virtbase/utils";
+import {
+  APP_DOMAIN,
+  PUBLIC_DOMAIN,
+  TRUSTPILOT_REVIEW_URL,
+} from "@virtbase/utils";
 import { Hr, Link, Text } from "react-email";
 import { createTranslator } from "use-intl/core";
+import { Socials } from "./socials";
+
+/**
+ * Legal documents live in `packages/content/legal/<locale>/<slug>.mdx` and are
+ * served at `/<locale>/legal/<slug>`. The prefix is explicit here because an
+ * email knows the recipient's locale and should not depend on a cookie or
+ * `Accept-Language` to land them on the right language.
+ */
+const LEGAL_SLUGS = ["notice", "terms", "privacy", "revocation"] as const;
 
 export function Footer({
   email,
   marketing,
   unsubscribeUrl = `${APP_DOMAIN}/account/settings`,
   notificationSettingsUrl,
+  showReview = false,
   locale = DEFAULT_EMAIL_LOCALE,
 }: {
   email: string;
   marketing?: boolean;
   unsubscribeUrl?: string;
   notificationSettingsUrl?: string;
+  /**
+   * Opt in to the Trustpilot review link. Off by default on purpose: a
+   * forgotten opt-in is a missing call to action, while a forgotten opt-out
+   * puts "rate us five stars" inside a password-reset or account-security
+   * email, which reads as a phishing tell.
+   */
+  showReview?: boolean;
   locale?: string | null;
 }) {
   const resolvedLocale = resolveEmailLocale(locale);
@@ -80,6 +101,37 @@ export function Footer({
           </Link>
         </Text>
       )}
+      {showReview && (
+        <Text className="text-[12px] text-neutral-500 leading-6">
+          {t.rich("howAreWeDoing", {
+            link: (chunks) => (
+              <Link
+                className="text-neutral-700 underline"
+                href={TRUSTPILOT_REVIEW_URL}
+              >
+                {chunks}
+              </Link>
+            ),
+          })}
+        </Text>
+      )}
+
+      <Text className="text-[12px] text-neutral-500 leading-6">
+        {LEGAL_SLUGS.map((slug, index) => (
+          <span key={slug}>
+            {index > 0 && <span className="text-neutral-300"> &middot; </span>}
+            <Link
+              className="text-neutral-700 underline"
+              href={`${PUBLIC_DOMAIN}/${resolvedLocale}/legal/${slug}`}
+            >
+              {t(`legal.${slug}`)}
+            </Link>
+          </span>
+        ))}
+      </Text>
+
+      <Socials />
+
       <Text className="text-[12px] text-neutral-500">
         BeastHost UG (haftungsbeschränkt)
         <br />

@@ -22,13 +22,19 @@ import {
   TwitterCustom,
   YouTube,
 } from "@virtbase/ui/icons";
-import { DISCORD_INVITE_URL } from "@virtbase/utils";
+import {
+  DISCORD_INVITE_URL,
+  GITHUB_URL,
+  INSTAGRAM_URL,
+  X_URL,
+  YOUTUBE_URL,
+} from "@virtbase/utils";
 
 export const SOCIALS = [
   {
     name: "YouTube",
     icon: YouTube,
-    href: "https://www.youtube.com/@virtbase",
+    href: YOUTUBE_URL,
   },
   {
     name: "Discord",
@@ -38,16 +44,16 @@ export const SOCIALS = [
   {
     name: "X",
     icon: TwitterCustom,
-    href: "https://x.com/virtbasecom",
+    href: X_URL,
   },
   {
     name: "Instagram",
     icon: InstagramCustom,
-    href: "https://www.instagram.com/virtbasecom",
+    href: INSTAGRAM_URL,
   },
   {
     name: "GitHub",
     icon: GithubCustom,
-    href: "https://github.com/virtbase",
+    href: GITHUB_URL,
   },
 ] as const;

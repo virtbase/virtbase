@@ -99,7 +99,7 @@ export default async function ServerRenewalReminder({
                 {t("renewButton")}
               </Link>
             </Section>
-            <Footer email={email} locale={locale} />
+            <Footer email={email} locale={locale} showReview />
           </Container>
         </Body>
       </Tailwind>

@@ -89,7 +89,7 @@ export default async function ServerExtended({
                 newTerminatesAt: formatter.dateTime(newTerminatesAt),
               })}
             </Text>
-            <Footer email={email} locale={locale} />
+            <Footer email={email} locale={locale} showReview />
           </Container>
         </Body>
       </Tailwind>

@@ -23,8 +23,14 @@ export const APP_NAME = process.env.NEXT_PUBLIC_APP_NAME || "Virtbase";
  */
 export const SUPPORT_EMAIL = "support@virtbase.com";
 
-export const VIRTBASE_WORDMARK =
-  "https://virtbase.com/assets/static/wordmark.png";
+/**
+ * Absolute, production-only base for images embedded in emails. A mail client
+ * has no session and no access to a preview or localhost deployment, so these
+ * never follow `PUBLIC_DOMAIN`.
+ */
+export const VIRTBASE_EMAIL_ASSETS = "https://virtbase.com/assets/static";
+
+export const VIRTBASE_WORDMARK = `${VIRTBASE_EMAIL_ASSETS}/wordmark.png`;
 
 export const PUBLIC_DOMAIN =
   process.env.NEXT_PUBLIC_VERCEL_ENV === "production"

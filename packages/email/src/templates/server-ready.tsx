@@ -109,7 +109,7 @@ export default async function ServerReady({
                 {t("portalLink")}
               </Link>
             </Section>
-            <Footer email={email} locale={locale} />
+            <Footer email={email} locale={locale} showReview />
           </Container>
           {trustpilot && (
             <script type="application/json+trustpilot">
