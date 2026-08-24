@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: German\n"
-"PO-Revision-Date: 2026-08-23 19:39\n"
+"PO-Revision-Date: 2026-08-24 14:07\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -2885,6 +2885,7 @@ msgid "Z_xHv5"
 msgstr "Diese Funktion ist nicht verfügbar, während ein Backup-Prozess läuft. Bitte versuche es später erneut."
 
 #: src/features/servers/components/console/console-frame.tsx
+#: src/features/servers/hooks/use-agent-status-mapping.ts
 msgid "uHAMke"
 msgstr "Server läuft nicht"
 
@@ -3272,6 +3273,18 @@ msgstr "Verlängern"
 msgid "ObQE5T"
 msgstr "Aktion auswählen"
 
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "EnTkxu"
+msgstr "Empfehlungen"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "9d24PR"
+msgstr "Regel erstellen"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "E8UYvP"
+msgstr "Regel entfernen"
+
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "z1Jw4U"
 msgstr "Die Firewall ist immer aktiviert"
@@ -3342,6 +3355,14 @@ msgstr "Firewall Regeln"
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# Regel} other {# Regeln}}, {activeCount} aktiv"
 
+#: src/features/servers/firewall/components/firewall-rules-card.tsx
+msgid "g8rjZa"
+msgstr "{count, plural, =1 {# Regel} other {# Regeln}} in deinem Server"
+
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "_F7m4I"
+msgstr "Wird in deinem Server verwaltet"
+
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "Mq5bUJ"
 msgstr "Regel deaktivieren"
@@ -3353,6 +3374,18 @@ msgstr "Regel aktivieren"
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "mqTGdC"
 msgstr "Ports"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "yjxSm7"
+msgstr "Virtbase-Firewall"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "Z5QJFN"
+msgstr "In deinem Server ({manager})"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "qpmEEg"
+msgstr "In deinem Server"
 
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx
 msgid "Ms3d_e"
@@ -3398,6 +3431,66 @@ msgstr "Generieren"
 msgid "EWw_tK"
 msgstr "Anwenden"
 
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "XKXFT7"
+msgstr "{label} läuft ebenfalls in deinem Server"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "W3oQ4P"
+msgstr "In deinem Server läuft ebenfalls eine Firewall"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "dzPuiI"
+msgstr "Datenverkehr muss beide Firewalls passieren. Virtbase kann {label}-Regeln noch nicht auslesen, sie gelten aber trotzdem."
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "C03sMA"
+msgstr "Datenverkehr muss beide Firewalls passieren. Die Regeln stehen unten."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "6tQJAd"
+msgstr "Dieser Dienst"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "HB3kA-"
+msgstr "die Firewall in deinem Server"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "dFvCEF"
+msgstr "{service} ist aus dem Internet erreichbar"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "x7Q_jE"
+msgstr "{process} lauscht auf Port {port}/{proto} und beide Firewalls lassen das zu. Beschränke diesen Port, sofern du ihn nicht absichtlich veröffentlicht hast."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "qjt1Iu"
+msgstr "Port {port}/{proto} ist für alle offen und beide Firewalls lassen das zu. Beschränke diesen Port, sofern du ihn nicht absichtlich veröffentlicht hast."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "xfh7EO"
+msgstr "Port {port} wird in deinem Server blockiert"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "l_aWrb"
+msgstr "Deine Virtbase-Regel erlaubt Port {port}, aber {manager} blockiert ihn, sodass kein Datenverkehr deinen Dienst erreicht. Ändere das in deinem Server."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "XY8_Nu"
+msgstr "Auf Port {port} lauscht nichts"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "I-VOBT"
+msgstr "Eine Regel öffnet Port {port}/{proto}, aber kein Dienst nutzt ihn. Das Entfernen der Regel hält deine Firewall übersichtlich."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "DBuKpi"
+msgstr "Einige Prüfungen konnten nicht ausgeführt werden"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "PSqTo2"
+msgstr "Virtbase konnte nicht in deinen Server schauen, daher ist diese Liste möglicherweise unvollständig."
+
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "sjzLbX"
 msgstr "Akzeptieren"
@@ -3405,6 +3498,58 @@ msgstr "Akzeptieren"
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "j8RTUO"
 msgstr "Verwerfen"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "D7fMMu"
+msgstr "Gast-Agent läuft"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "Xqe44A"
+msgstr "Virtbase kann Details aus diesem Server auslesen."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "dXWINf"
+msgstr "Starte den Server, um den Gast-Agenten zu prüfen."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "v_GL5s"
+msgstr "Gast-Agent antwortet nicht"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "ihTPpu"
+msgstr "Speicherauslastung, Passwort-Zurücksetzungen und Firewall-Erkennung benötigen das Paket {packageName}, installiert und laufend in deinem Server."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "0pGhq1"
+msgstr "Gast-Agent ist ausgeschaltet"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "9iMOX1"
+msgstr "Der Gast-Agent ist in der Konfiguration dieses Servers deaktiviert, daher kann Virtbase nichts aus dem Server auslesen."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "uOy0WB"
+msgstr "Gast-Agent kann keine Befehle ausführen"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "4tx48B"
+msgstr "Der Agent läuft, aber die Befehlsausführung ist blockiert. Entferne guest-exec aus BLOCK_RPCS in /etc/default/{packageName}, um Firewall- und Port-Erkennung zu aktivieren."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "_uAmKB"
+msgstr "Für dieses Betriebssystem nicht verfügbar"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "bJS7-1"
+msgstr "Das Auslesen von Firewall und offenen Ports aus einem Server wird derzeit nur unter Linux unterstützt."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "RBtJkt"
+msgstr "Status des Gast-Agenten nicht verfügbar"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "XiMFvI"
+msgstr "Virtbase konnte den Gast-Agenten gerade nicht prüfen. Bitte versuche es später erneut."
 
 #: src/features/servers/hooks/use-status-mapping.ts
 msgid "ccU6l_"
