@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: French\n"
-"PO-Revision-Date: 2026-08-24 14:07\n"
+"PO-Revision-Date: 2026-08-24 17:38\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -3344,6 +3344,19 @@ msgstr "Activé"
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "aH4De2"
+msgstr "Source"
+
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+msgid "c-r5qz"
+msgstr "N'importe quelle adresse"
+
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+msgid "08nIQL"
+msgstr "Ne correspondre qu'au trafic provenant de cette adresse ou réseau, par exemple 10.0.0.0/8. Laisser vide pour correspondre à n'importe quelle adresse."
+
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "LgbKvU"
 msgstr "Commentaire"
 
@@ -3408,6 +3421,14 @@ msgid "wEQDC6"
 msgstr "Modifier"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "AFkUOq"
+msgstr "Impossible de générer les règles. Veuillez réessayer."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "N8n7F4"
+msgstr "Impossible de créer la règle. Veuillez réessayer."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "w-tZ4Z"
 msgstr "Générer des règles de pare-feu"
 
@@ -3428,8 +3449,16 @@ msgid "Pc-tM3"
 msgstr "Générer"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "9LprhS"
+msgstr "Aucune règle nécessaire."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "EWw_tK"
 msgstr "Appliquer"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "c9zsSH"
+msgstr "Appliquer tout"
 
 #: src/features/servers/firewall/components/guest-firewall-alert.tsx
 msgid "XKXFT7"
