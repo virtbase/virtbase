@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Greek\n"
-"PO-Revision-Date: 2026-08-23 19:39\n"
+"PO-Revision-Date: 2026-08-24 14:07\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -2885,6 +2885,7 @@ msgid "Z_xHv5"
 msgstr "Αυτή η δυνατότητα δεν είναι διαθέσιμη ενώ βρίσκεται σε εξέλιξη η δημιουργία αντιγράφων ασφαλείας. Δοκιμάστε ξανά αργότερα."
 
 #: src/features/servers/components/console/console-frame.tsx
+#: src/features/servers/hooks/use-agent-status-mapping.ts
 msgid "uHAMke"
 msgstr "Ο διακομιστής δεν εκτελείται"
 
@@ -3272,6 +3273,18 @@ msgstr "Ανανεώνω"
 msgid "ObQE5T"
 msgstr "Επιλέξτε δράση"
 
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "EnTkxu"
+msgstr "Συστάσεις"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "9d24PR"
+msgstr "Δημιουργία κανόνα"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "E8UYvP"
+msgstr "Αφαίρεση κανόνα"
+
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "z1Jw4U"
 msgstr "Το τείχος προστασίας είναι πάντα ενεργοποιημένο"
@@ -3342,6 +3355,14 @@ msgstr "Κανόνες τείχους προστασίας"
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# κανόνας} other {# κανόνες}}, {activeCount} ενεργοί"
 
+#: src/features/servers/firewall/components/firewall-rules-card.tsx
+msgid "g8rjZa"
+msgstr "{count, plural, =1 {# κανόνας} other {# κανόνες}} μέσα στον διακομιστή σου"
+
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "_F7m4I"
+msgstr "Διαχειρίζεται μέσα στον διακομιστή σου"
+
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "Mq5bUJ"
 msgstr "Απενεργοποίηση κανόνα"
@@ -3353,6 +3374,18 @@ msgstr "Ενεργοποίηση κανόνα"
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "mqTGdC"
 msgstr "λιμάνια"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "yjxSm7"
+msgstr "Τείχος προστασίας Virtbase"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "Z5QJFN"
+msgstr "Μέσα στον διακομιστή σου ({manager})"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "qpmEEg"
+msgstr "Μέσα στον διακομιστή σου"
 
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx
 msgid "Ms3d_e"
@@ -3398,6 +3431,66 @@ msgstr "Δημιουργία"
 msgid "EWw_tK"
 msgstr "Εφαρμογή"
 
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "XKXFT7"
+msgstr "Το {label} εκτελείται επίσης μέσα στον διακομιστή σου"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "W3oQ4P"
+msgstr "Ένα τείχος προστασίας εκτελείται επίσης μέσα στον διακομιστή σου"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "dzPuiI"
+msgstr "Η κίνηση πρέπει να περάσει και από τα δύο τείχη προστασίας. Το Virtbase δεν μπορεί ακόμη να διαβάσει τους κανόνες {label}, αλλά εξακολουθούν να ισχύουν."
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "C03sMA"
+msgstr "Η κίνηση πρέπει να περάσει και από τα δύο τείχη προστασίας. Οι κανόνες του παρατίθενται παρακάτω."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "6tQJAd"
+msgstr "Αυτή η υπηρεσία"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "HB3kA-"
+msgstr "το τείχος προστασίας μέσα στον διακομιστή σου"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "dFvCEF"
+msgstr "Η υπηρεσία {service} είναι προσβάσιμη από το διαδίκτυο"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "x7Q_jE"
+msgstr "Η διεργασία {process} ακούει στη θύρα {port}/{proto} και τα δύο τείχη προστασίας το επιτρέπουν. Περιόρισε αυτή τη θύρα, εκτός αν ήθελες να τη δημοσιεύσεις."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "qjt1Iu"
+msgstr "Η θύρα {port}/{proto} είναι ανοιχτή σε όλους και τα δύο τείχη προστασίας το επιτρέπουν. Περιόρισε αυτή τη θύρα, εκτός αν ήθελες να τη δημοσιεύσεις."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "xfh7EO"
+msgstr "Η θύρα {port} αποκλείεται μέσα στον διακομιστή σου"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "l_aWrb"
+msgstr "Ο κανόνας Virtbase επιτρέπει τη θύρα {port}, αλλά το {manager} την αποκλείει, οπότε η κίνηση δεν φτάνει ποτέ στην υπηρεσία σου. Άλλαξέ το μέσα στον διακομιστή σου."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "XY8_Nu"
+msgstr "Τίποτα δεν ακούει στη θύρα {port}"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "I-VOBT"
+msgstr "Ένας κανόνας ανοίγει τη θύρα {port}/{proto}, αλλά καμία υπηρεσία δεν τη χρησιμοποιεί. Η αφαίρεση του κανόνα κρατά το τείχος προστασίας πιο ευανάγνωστο."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "DBuKpi"
+msgstr "Ορισμένοι έλεγχοι δεν μπόρεσαν να εκτελεστούν"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "PSqTo2"
+msgstr "Το Virtbase δεν μπόρεσε να κοιτάξει μέσα στον διακομιστή σου, οπότε αυτή η λίστα μπορεί να είναι ελλιπής."
+
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "sjzLbX"
 msgstr "Αποδέχομαι"
@@ -3405,6 +3498,58 @@ msgstr "Αποδέχομαι"
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "j8RTUO"
 msgstr "Πτώση"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "D7fMMu"
+msgstr "Ο πράκτορας επισκέπτη εκτελείται"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "Xqe44A"
+msgstr "Το Virtbase μπορεί να διαβάσει στοιχεία από το εσωτερικό αυτού του διακομιστή."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "dXWINf"
+msgstr "Ξεκίνησε τον διακομιστή για να ελέγξεις τον πράκτορα επισκέπτη."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "v_GL5s"
+msgstr "Ο πράκτορας επισκέπτη δεν αποκρίνεται"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "ihTPpu"
+msgstr "Η χρήση αποθηκευτικού χώρου, η επαναφορά κωδικών και η ανίχνευση τείχους προστασίας απαιτούν το πακέτο {packageName} εγκατεστημένο και σε λειτουργία μέσα στον διακομιστή σου."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "0pGhq1"
+msgstr "Ο πράκτορας επισκέπτη είναι απενεργοποιημένος"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "9iMOX1"
+msgstr "Ο πράκτορας επισκέπτη είναι απενεργοποιημένος στη διαμόρφωση αυτού του διακομιστή, οπότε το Virtbase δεν μπορεί να διαβάσει τίποτα από μέσα του."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "uOy0WB"
+msgstr "Ο πράκτορας επισκέπτη δεν μπορεί να εκτελέσει εντολές"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "4tx48B"
+msgstr "Ο πράκτορας εκτελείται αλλά η εκτέλεση εντολών είναι αποκλεισμένη. Αφαίρεσε το guest-exec από το BLOCK_RPCS στο /etc/default/{packageName} για να ενεργοποιήσεις την ανίχνευση τείχους προστασίας και θυρών."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "_uAmKB"
+msgstr "Μη διαθέσιμο σε αυτό το λειτουργικό σύστημα"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "bJS7-1"
+msgstr "Η ανάγνωση του τείχους προστασίας και των ανοιχτών θυρών από το εσωτερικό ενός διακομιστή υποστηρίζεται προς το παρόν μόνο σε Linux."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "RBtJkt"
+msgstr "Η κατάσταση του πράκτορα επισκέπτη δεν είναι διαθέσιμη"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "XiMFvI"
+msgstr "Το Virtbase δεν μπόρεσε να ελέγξει τον πράκτορα επισκέπτη αυτή τη στιγμή. Δοκίμασε ξανά αργότερα."
 
 #: src/features/servers/hooks/use-status-mapping.ts
 msgid "ccU6l_"
