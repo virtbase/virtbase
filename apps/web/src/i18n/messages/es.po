@@ -3344,6 +3344,19 @@ msgstr "Activada"
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "aH4De2"
+msgstr "Origen"
+
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+msgid "c-r5qz"
+msgstr "Cualquier dirección"
+
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+msgid "08nIQL"
+msgstr "Solo coincide con el tráfico desde esta dirección o red, por ejemplo 10.0.0.0/8. Dejar vacío para coincidir con cualquier dirección."
+
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "LgbKvU"
 msgstr "Comentario"
 
@@ -3408,6 +3421,14 @@ msgid "wEQDC6"
 msgstr "Editar"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "AFkUOq"
+msgstr "No se pudieron generar las reglas. Por favor, inténtelo de nuevo."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "N8n7F4"
+msgstr "No se pudo crear la regla. Por favor, inténtelo de nuevo."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "w-tZ4Z"
 msgstr "Generar reglas de cortafuegos"
 
@@ -3428,8 +3449,16 @@ msgid "Pc-tM3"
 msgstr "Generar"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "9LprhS"
+msgstr "No se necesitan reglas."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "EWw_tK"
 msgstr "Aplicar"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "c9zsSH"
+msgstr "Aplicar todo"
 
 #: src/features/servers/firewall/components/guest-firewall-alert.tsx
 msgid "XKXFT7"

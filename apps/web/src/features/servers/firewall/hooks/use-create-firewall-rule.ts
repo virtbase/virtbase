@@ -56,15 +56,15 @@ export const useCreateFirewallRule = ({
           trpc.servers.firewall.rules.get.queryKey({
             server_id: input.server_id,
           }),
+          // Proxmox puts a new rule at the top and shifts the rest down; the
+          // `pos` sent with a create is not honoured. Mirroring that here keeps
+          // the optimistic order the same as the one the refetch brings back.
           (old) =>
             !old
               ? undefined
               : {
                   rules: [
-                    {
-                      ...input,
-                      pos: 0,
-                    },
+                    { ...input, pos: 0 },
                     ...old.rules.map((rule) => ({
                       ...rule,
                       pos: rule.pos + 1,

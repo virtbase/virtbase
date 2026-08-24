@@ -43,12 +43,13 @@
     "dev:next": "turbo watch dev -F @virtbase/web...",
     "discord:register-commands": "turbo -F @virtbase/integration-discord register-commands",
     "discord:register-connections-metadata": "turbo -F @virtbase/integration-discord register-connections-metadata",
-    "typecheck": "turbo run typecheck",
-    "ui-add": "turbo run ui-add",
     "email": "turbo run email",
+    "eval:firewall-ai": "bun --env-file .env packages/api/src/firewall-ai/eval/run.ts",
     "prepare": "husky",
     "script": "turbo -F @virtbase/web script --",
-    "stripe:listen": "turbo -F @virtbase/web stripe:listen"
+    "stripe:listen": "turbo -F @virtbase/web stripe:listen",
+    "typecheck": "turbo run typecheck",
+    "ui-add": "turbo run ui-add"
   },
   "catalog": {
     "@better-auth/api-key": "^1.7.0-rc.4",

@@ -3344,6 +3344,19 @@ msgstr "Engedélyezve"
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "aH4De2"
+msgstr "Forrás"
+
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+msgid "c-r5qz"
+msgstr "Bármely cím"
+
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+msgid "08nIQL"
+msgstr "Csak ebből a címről vagy hálózatról érkező forgalomnak felel meg, például 10.0.0.0/8. Hagyja üresen, ha bármely címnek szeretne megfelelni."
+
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "LgbKvU"
 msgstr "Megjegyzés"
 
@@ -3408,6 +3421,14 @@ msgid "wEQDC6"
 msgstr "Szerkesztés"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "AFkUOq"
+msgstr "Nem sikerült generálni a szabályokat. Kérjük, próbálja újra."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "N8n7F4"
+msgstr "Nem sikerült létrehozni a szabályt. Kérjük, próbálja újra."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "w-tZ4Z"
 msgstr "Tűzfalszabályok generálása"
 
@@ -3428,8 +3449,16 @@ msgid "Pc-tM3"
 msgstr "Generálás"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "9LprhS"
+msgstr "Nincsenek szükséges szabályok."
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "EWw_tK"
 msgstr "Alkalmaz"
+
+#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
+msgid "c9zsSH"
+msgstr "Összes alkalmazása"
 
 #: src/features/servers/firewall/components/guest-firewall-alert.tsx
 msgid "XKXFT7"

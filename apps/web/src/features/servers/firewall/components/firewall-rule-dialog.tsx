@@ -23,6 +23,7 @@ import { Checkbox } from "@virtbase/ui/checkbox";
 import {
   Field,
   FieldContent,
+  FieldDescription,
   FieldGroup,
   FieldLabel,
   FieldSeparator,
@@ -330,6 +331,35 @@ export default function FirewallRuleDialog({
                 <FieldContent>
                   <FieldLabel htmlFor={field.name}>{t("Enabled")}</FieldLabel>
                 </FieldContent>
+              </Field>
+            )}
+          />
+          <FieldSeparator />
+          <Controller
+            name="source"
+            control={form.control}
+            render={({ field, fieldState }) => (
+              <Field data-invalid={fieldState.invalid}>
+                <FieldLabel htmlFor={field.name}>{t("Source")}</FieldLabel>
+                <Input
+                  id={field.name}
+                  aria-invalid={fieldState.invalid}
+                  type="text"
+                  inputMode="text"
+                  autoComplete="off"
+                  autoCapitalize="off"
+                  spellCheck={false}
+                  maxLength={512}
+                  placeholder={t("Any address")}
+                  {...field}
+                  onChange={(e) => field.onChange(e.target.value || undefined)}
+                  value={field.value ?? ""}
+                />
+                <FieldDescription>
+                  {t(
+                    "Only match traffic from this address or network, for example 10.0.0.0/8. Leave empty to match any address.",
+                  )}
+                </FieldDescription>
               </Field>
             )}
           />

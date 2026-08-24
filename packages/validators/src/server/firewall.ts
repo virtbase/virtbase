@@ -18,6 +18,8 @@
 import {
   FIRWALL_PROTOCOLS,
   FIRWALL_PROTOCOLS_WITH_PORTS,
+  GENERATED_FIREWALL_PROTOCOLS,
+  GENERATED_ICMP_TYPES,
   ICMP_TYPE_NAMES,
   ICMPV6_TYPE_NAMES,
 } from "@virtbase/utils";
@@ -117,6 +119,14 @@ const FirewallRuleSchema = z.object({
         "The ICMP type of the rule. Only valid for protocols: `icmp`, `ipv6-icmp`.",
       example: "echo-request",
     }),
+  source: z
+    .union([z.ipv4(), z.cidrv4(), z.ipv6(), z.cidrv6()])
+    .optional()
+    .meta({
+      description:
+        "Restrict the rule to a source address, network or list. Accepts anything the Proxmox firewall accepts, including aliases and IP sets.",
+      example: "10.0.0.0/8",
+    }),
   digest: z.string().optional(),
 });
 
@@ -127,18 +137,12 @@ export const GetServerFirewallRulesInputSchema = z.object({
 /**
  * Rules as Proxmox reports them.
  *
- * `source` and `dest` are read-only for now: they are not settable through the
- * create and update endpoints yet, but they have to be readable, because a rule
- * restricted to one network is not the same as one open to the internet - and
- * reading it as the latter would produce a security warning about a server that
- * is perfectly safe.
+ * `dest` is read-only: a Virtbase server has one address, so restricting a rule
+ * by destination is not something the panel offers - but a rule created
+ * elsewhere may still carry one, and dropping it silently on read would make
+ * the rule look broader than it is.
  */
 const ReadFirewallRuleSchema = FirewallRuleSchema.extend({
-  source: z.string().optional().meta({
-    description:
-      "The source address or network the rule is restricted to. Read-only.",
-    example: "10.0.0.0/8",
-  }),
   dest: z.string().optional().meta({
     description:
       "The destination address the rule is restricted to. Read-only.",
@@ -150,14 +154,18 @@ export const GetServerFirewallRulesOutputSchema = z.object({
   rules: z.array(ReadFirewallRuleSchema),
 });
 
-export const CreateServerFirewallRuleInputSchema = FirewallRuleSchema.extend({
-  server_id: ServerSchema.shape.id,
-}).superRefine((input, ctx) => {
+export const refineFirewallRule = (
+  input: {
+    proto?: string;
+    sport?: string;
+    dport?: string;
+    icmp_type?: string;
+  },
+  ctx: z.RefinementCtx,
+): void => {
   if ((Boolean(input.sport) || Boolean(input.dport)) && !input.proto) {
-    return ctx.addIssue({
-      code: "custom",
-      path: ["proto"],
-    });
+    ctx.addIssue({ code: "custom", path: ["proto"] });
+    return;
   }
 
   if (
@@ -165,17 +173,11 @@ export const CreateServerFirewallRuleInputSchema = FirewallRuleSchema.extend({
     !FIRWALL_PROTOCOLS_WITH_PORTS.includes(input.proto as never)
   ) {
     if (input.sport) {
-      ctx.addIssue({
-        code: "custom",
-        path: ["sport"],
-      });
+      ctx.addIssue({ code: "custom", path: ["sport"] });
     }
 
     if (input.dport) {
-      ctx.addIssue({
-        code: "custom",
-        path: ["dport"],
-      });
+      ctx.addIssue({ code: "custom", path: ["dport"] });
     }
   }
 
@@ -183,10 +185,8 @@ export const CreateServerFirewallRuleInputSchema = FirewallRuleSchema.extend({
     (input.proto === "icmp" || input.proto === "ipv6-icmp") &&
     !input.icmp_type
   ) {
-    return ctx.addIssue({
-      code: "custom",
-      path: ["icmp_type"],
-    });
+    ctx.addIssue({ code: "custom", path: ["icmp_type"] });
+    return;
   }
 
   if (
@@ -194,23 +194,23 @@ export const CreateServerFirewallRuleInputSchema = FirewallRuleSchema.extend({
     input.icmp_type &&
     !ICMP_TYPE_NAMES.includes(input.icmp_type as never)
   ) {
-    return ctx.addIssue({
-      code: "custom",
-      path: ["icmp_type"],
-    });
+    ctx.addIssue({ code: "custom", path: ["icmp_type"] });
+    return;
   }
 
+  // ICMPv6 has no `any` type, so a value valid for `icmp` can be invalid here.
   if (
     input.proto === "ipv6-icmp" &&
     input.icmp_type &&
     !ICMPV6_TYPE_NAMES.includes(input.icmp_type as never)
   ) {
-    return ctx.addIssue({
-      code: "custom",
-      path: ["icmp_type"],
-    });
+    ctx.addIssue({ code: "custom", path: ["icmp_type"] });
   }
-});
+};
+
+export const CreateServerFirewallRuleInputSchema = FirewallRuleSchema.extend({
+  server_id: ServerSchema.shape.id,
+}).superRefine(refineFirewallRule);
 
 export type CreateServerFirewallRuleInput = z.infer<
   typeof CreateServerFirewallRuleInputSchema
@@ -266,28 +266,62 @@ export const GenerateServerFirewallRuleInputSchema = z.object({
     description: "The prompt to generate the rule.",
     example: "Allow HTTPS traffic, but block SSH traffic.",
   }),
+  locale: z.string().max(16).optional().meta({
+    description:
+      "Language for the generated comments and explanation, as a BCP 47 tag. Defaults to the language of the prompt.",
+    example: "de",
+  }),
 });
 
 export type GenerateServerFirewallRuleInput = z.infer<
   typeof GenerateServerFirewallRuleInputSchema
 >;
 
-const GeneratedFirewallRuleSchema = FirewallRuleSchema.pick({
-  direction: true,
-  action: true,
-  proto: true,
-  sport: true,
-  dport: true,
-  icmp_type: true,
-  comment: true,
-});
+const GeneratedFirewallRuleSchema = z
+  .object({
+    direction: z.enum(["in", "out"]).describe("Which way the traffic flows."),
+    action: z
+      .enum(["ACCEPT", "DROP", "REJECT"])
+      .describe("DROP blocks silently, REJECT answers with a refusal."),
+    proto: z.enum(GENERATED_FIREWALL_PROTOCOLS).optional(),
+    sport: z
+      .string()
+      .max(64)
+      .optional()
+      .describe("Source port. Only for tcp, udp, udplite, dccp and sctp."),
+    dport: z
+      .string()
+      .max(64)
+      .optional()
+      .describe(
+        "Destination port, a comma separated list, or a start:end range. Only for tcp, udp, udplite, dccp and sctp.",
+      ),
+    icmp_type: z
+      .enum(GENERATED_ICMP_TYPES)
+      .optional()
+      .describe(
+        "Required for icmp and ipv6-icmp, forbidden otherwise. `any` is valid for icmp only.",
+      ),
+    source: z
+      .union([z.ipv4(), z.cidrv4(), z.ipv6(), z.cidrv6()])
+      .optional()
+      .describe(
+        "Restrict the rule to one address or network. Only set this when the prompt names a specific address.",
+      ),
+    comment: z
+      .string()
+      .max(64)
+      .describe("A short description without ports or special characters."),
+  })
+  .superRefine(refineFirewallRule);
+
+export type GeneratedFirewallRule = z.infer<typeof GeneratedFirewallRuleSchema>;
 
 export const GenerateServerFirewallRuleOutputSchema = z.object({
   rules: z
     .array(GeneratedFirewallRuleSchema)
-    .min(1)
     .max(5)
-    .describe("The generated rules by the AI."),
+    .describe("The rules to create. Empty when no rule is needed."),
   description: z.string().min(1).max(512).meta({
     description: "The reasoning and recommendation for the rules.",
     example:

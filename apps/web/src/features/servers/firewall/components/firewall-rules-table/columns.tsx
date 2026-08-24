@@ -187,6 +187,17 @@ export function useFirewallRulesTableColumns({
       },
     },
     {
+      id: "source",
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} label={t("Source")} />
+      ),
+      cell: ({ row }) => (
+        <span className="text-muted-foreground tabular-nums">
+          {row.original.source || "*"}
+        </span>
+      ),
+    },
+    {
       id: "comment",
       header: ({ column }) => (
         <DataTableColumnHeader column={column} label={t("Comment")} />

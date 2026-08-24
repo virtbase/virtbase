@@ -40,6 +40,7 @@ interface FirewallRowBase {
   proto: string | null;
   sport: string | null;
   dport: string | null;
+  source: string | null;
   comment: string | null;
 }
 
@@ -80,6 +81,7 @@ const toHostRow = (rule: HostRule): HostFirewallRow => ({
   proto: rule.proto ?? null,
   sport: rule.sport ?? null,
   dport: rule.dport ?? null,
+  source: rule.source ?? null,
   comment: rule.comment ?? null,
   rule,
 });
@@ -96,6 +98,7 @@ const toGuestRow = (rule: GuestRule, position: number): GuestFirewallRow => ({
   proto: rule.proto,
   sport: rule.sport,
   dport: rule.dport,
+  source: rule.source_addr,
   comment: rule.comment,
   iface: rule.iface,
   raw: rule.raw,

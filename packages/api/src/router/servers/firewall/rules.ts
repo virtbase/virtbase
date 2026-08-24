@@ -17,7 +17,6 @@
 
 import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
-import { FIRWALL_PROTOCOLS_WITH_PORTS } from "@virtbase/utils";
 import {
   CreateServerFirewallRuleInputSchema,
   CreateServerFirewallRuleOutputSchema,
@@ -32,8 +31,18 @@ import {
   UpdateServerFirewallRuleInputSchema,
   UpdateServerFirewallRuleOutputSchema,
 } from "@virtbase/validators/server";
-import { generateText, Output } from "ai";
+import { generateObject } from "ai";
+import {
+  buildGenerationContext,
+  buildSystemPrompt,
+} from "../../../firewall-ai";
+import { inspectGuest } from "../../../guest-firewall";
 import { serverProcedure } from "../../../trpc";
+import {
+  FIREWALL_AI_MODEL,
+  GENERATION_TIMEOUT_MS,
+  repairGeneratedText,
+} from "./generation";
 
 export const serverFirewallRulesRouter = {
   get: serverProcedure
@@ -103,6 +112,7 @@ export const serverFirewallRulesRouter = {
         proto: input.proto,
         dport: input.dport,
         sport: input.sport,
+        source: input.source,
         comment: input.comment,
         action: input.action,
         "icmp-type": input.icmp_type,
@@ -207,6 +217,9 @@ export const serverFirewallRulesRouter = {
   generate: serverProcedure
     .meta({
       forbiddenStates: ["suspended", "terminated"],
+      permissions: {
+        firewall: ["read"],
+      },
       ratelimit: {
         requests: 10,
         seconds: "1 d",
@@ -216,8 +229,10 @@ export const serverFirewallRulesRouter = {
     })
     .input(GenerateServerFirewallRuleInputSchema)
     .output(GenerateServerFirewallRuleOutputSchema)
-    .mutation(async ({ input }) => {
-      const { prompt } = input;
+    .mutation(async ({ ctx, input }) => {
+      const { server, instance } = ctx;
+      const { vm } = instance;
+      const { prompt, locale } = input;
 
       if (!process.env.AI_GATEWAY_API_KEY) {
         throw new TRPCError({
@@ -225,27 +240,48 @@ export const serverFirewallRulesRouter = {
         });
       }
 
-      const result = await generateText({
-        model: "mistral/ministral-3b",
-        prompt,
-        allowSystemInMessages: false,
-        system: [
-          "Create a maximum of 5 rules.",
-          "Always create a short, descriptive comment for each rule without any special characters or ports.",
-          "Write comments and descriptions in language of prompt if known, otherwise fallback to English.",
-          "Description must concisely explain protocol and ports with recommendations.",
-          `Defining 'sport' and 'dport' is only allowed for 'proto': ${FIRWALL_PROTOCOLS_WITH_PORTS.join(", ")}.`,
-          "Omit 'sport' and 'dport' if not supported by the protocol or any ports should be ruled.",
-          "The property 'icmp_type' must be included the protocols 'icmp' and 'ipv6-icmp'.",
-          "Do not mix up 'sport' and 'dport' with 'icmp_type'.",
-        ].join("; "),
-        output: Output.object({
-          name: "annotated_rules",
-          description:
-            "Firewall rules that should be created with an explanation and recommendation.",
-          schema: GenerateServerFirewallRuleOutputSchema,
-        }),
-        timeout: 10_000,
+      // Everything the model needs to know about this particular server. The
+      // guest inspection is cached and never allowed to fail the request: a
+      // server without a working agent should still get rules, just without the
+      // benefit of knowing what is listening on it.
+      const [rules, options, inspection] = await Promise.all([
+        vm.firewall.rules.$get(),
+        vm.firewall.options.$get(),
+        inspectGuest({ vm, serverId: server.id }).catch(() => null),
+      ]);
+
+      const context = buildGenerationContext({
+        os: null,
+        policyIn: options.policy_in ?? null,
+        policyOut: options.policy_out ?? null,
+        rules: rules.map((rule) => ({
+          pos: rule.pos,
+          enabled: Boolean(rule.enable),
+          direction: rule.type,
+          action: rule.action,
+          proto: rule.proto,
+          dport: rule.dport,
+          sport: rule.sport,
+          source: rule.source,
+          comment: rule.comment,
+        })),
+        sockets: inspection?.sockets ?? null,
+        guestManager: inspection?.primary ?? null,
+      });
+
+      const result = await generateObject({
+        model: FIREWALL_AI_MODEL,
+        system: buildSystemPrompt(locale),
+        prompt: [`Server:\n${context}`, "", `Request: ${prompt}`].join("\n"),
+        schema: GenerateServerFirewallRuleOutputSchema,
+        schemaName: "annotated_rules",
+        schemaDescription:
+          "Firewall rules to create, with an explanation and recommendation.",
+        // The mistakes a model reliably makes are normalised away before the
+        // schema sees them, so they cost nothing instead of a whole retry.
+        repairText: async ({ text }) => repairGeneratedText(text),
+        maxRetries: 2,
+        abortSignal: AbortSignal.timeout(GENERATION_TIMEOUT_MS),
         providerOptions: {
           gateway: {
             caching: "auto",
@@ -253,6 +289,6 @@ export const serverFirewallRulesRouter = {
         },
       });
 
-      return result.output;
+      return result.object;
     }),
 } satisfies TRPCRouterRecord;

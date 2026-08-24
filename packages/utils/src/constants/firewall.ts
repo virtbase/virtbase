@@ -73,7 +73,7 @@ export const FIRWALL_PROTOCOLS = [
   "rohc",
 ] as const;
 
-type FirewallProtocol = (typeof FIRWALL_PROTOCOLS)[number];
+export type FirewallProtocol = (typeof FIRWALL_PROTOCOLS)[number];
 
 /**
  * Protocols that support defining source and destination ports.
@@ -256,3 +256,39 @@ export const findSensitivePort = (
   proto: "tcp" | "udp",
 ): SensitivePort | undefined =>
   SENSITIVE_PORTS.find((entry) => entry.port === port && entry.proto === proto);
+
+/**
+ * The protocols rule generation may choose from.
+ *
+ * A deliberate subset of {@link FIRWALL_PROTOCOLS}. Handing a model 51 enum
+ * values to pick from is most of why generated rules come back wrong: the list
+ * is long enough to invent entries from, and almost none of it is anything a
+ * customer would ever write a rule about. The manual dialog keeps the full set.
+ */
+export const GENERATED_FIREWALL_PROTOCOLS = [
+  "tcp",
+  "udp",
+  "icmp",
+  "ipv6-icmp",
+  "gre",
+  "esp",
+  "ah",
+  "sctp",
+  "igmp",
+] as const satisfies readonly FirewallProtocol[];
+
+/**
+ * The ICMP types rule generation may choose from.
+ *
+ * `any` is valid with `icmp` only - ICMPv6 has no such type - which the system
+ * prompt states and the schema rejects.
+ */
+export const GENERATED_ICMP_TYPES = [
+  "any",
+  "echo-request",
+  "echo-reply",
+  "destination-unreachable",
+  "time-exceeded",
+  // The `satisfies` keeps this a real subset: a typo here would otherwise
+  // produce a value the firewall rejects only once a customer applies the rule.
+] as const satisfies readonly (typeof ICMP_TYPE_NAMES)[number][];
