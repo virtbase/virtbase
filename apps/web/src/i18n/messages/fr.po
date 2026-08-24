@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: French\n"
-"PO-Revision-Date: 2026-08-23 19:39\n"
+"PO-Revision-Date: 2026-08-24 14:07\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -2885,6 +2885,7 @@ msgid "Z_xHv5"
 msgstr "Cette fonctionnalité n'est pas disponible lorsqu'une sauvegarde est en cours. Veuillez réessayer plus tard."
 
 #: src/features/servers/components/console/console-frame.tsx
+#: src/features/servers/hooks/use-agent-status-mapping.ts
 msgid "uHAMke"
 msgstr "Le serveur ne fonctionne pas"
 
@@ -3272,6 +3273,18 @@ msgstr "Renouveler"
 msgid "ObQE5T"
 msgstr "Sélectionnez une action"
 
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "EnTkxu"
+msgstr "Recommandations"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "9d24PR"
+msgstr "Créer une règle"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "E8UYvP"
+msgstr "Supprimer la règle"
+
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "z1Jw4U"
 msgstr "Le pare-feu est toujours activé"
@@ -3342,6 +3355,14 @@ msgstr "Règles de pare-feu"
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# règle} other {# règles}}, {activeCount} actives"
 
+#: src/features/servers/firewall/components/firewall-rules-card.tsx
+msgid "g8rjZa"
+msgstr "{count, plural, =1 {# règle} other {# règles}} dans votre serveur"
+
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "_F7m4I"
+msgstr "Géré dans votre serveur"
+
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "Mq5bUJ"
 msgstr "Désactiver la règle"
@@ -3353,6 +3374,18 @@ msgstr "Activer la règle"
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "mqTGdC"
 msgstr "Ports"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "yjxSm7"
+msgstr "Pare-feu Virtbase"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "Z5QJFN"
+msgstr "Dans votre serveur ({manager})"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "qpmEEg"
+msgstr "Dans votre serveur"
 
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx
 msgid "Ms3d_e"
@@ -3398,6 +3431,66 @@ msgstr "Générer"
 msgid "EWw_tK"
 msgstr "Appliquer"
 
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "XKXFT7"
+msgstr "{label} fonctionne également dans votre serveur"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "W3oQ4P"
+msgstr "Un pare-feu fonctionne également dans votre serveur"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "dzPuiI"
+msgstr "Le trafic doit passer les deux pare-feu. Virtbase ne peut pas encore lire les règles {label}, mais elles s'appliquent quand même."
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "C03sMA"
+msgstr "Le trafic doit passer les deux pare-feu. Ses règles sont listées ci-dessous."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "6tQJAd"
+msgstr "Ce service"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "HB3kA-"
+msgstr "le pare-feu dans votre serveur"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "dFvCEF"
+msgstr "{service} est accessible depuis Internet"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "x7Q_jE"
+msgstr "{process} écoute sur le port {port}/{proto} et les deux pare-feu l'autorisent. Restreignez ce port, sauf si vous vouliez le publier."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "qjt1Iu"
+msgstr "Le port {port}/{proto} est ouvert à tous et les deux pare-feu l'autorisent. Restreignez ce port, sauf si vous vouliez le publier."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "xfh7EO"
+msgstr "Le port {port} est bloqué dans votre serveur"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "l_aWrb"
+msgstr "Votre règle Virtbase autorise le port {port}, mais {manager} le bloque, si bien que le trafic n'atteint jamais votre service. Modifiez cela dans votre serveur."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "XY8_Nu"
+msgstr "Rien n'écoute sur le port {port}"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "I-VOBT"
+msgstr "Une règle ouvre le port {port}/{proto}, mais aucun service ne l'utilise. Supprimer la règle garde votre pare-feu plus lisible."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "DBuKpi"
+msgstr "Certaines vérifications n'ont pas pu être effectuées"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "PSqTo2"
+msgstr "Virtbase n'a pas pu regarder dans votre serveur, cette liste est donc peut-être incomplète."
+
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "sjzLbX"
 msgstr "Accepter"
@@ -3405,6 +3498,58 @@ msgstr "Accepter"
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "j8RTUO"
 msgstr "Baisse"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "D7fMMu"
+msgstr "L'agent invité fonctionne"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "Xqe44A"
+msgstr "Virtbase peut lire des informations depuis ce serveur."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "dXWINf"
+msgstr "Démarrez le serveur pour vérifier son agent invité."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "v_GL5s"
+msgstr "L'agent invité ne répond pas"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "ihTPpu"
+msgstr "L'utilisation du stockage, la réinitialisation des mots de passe et la détection du pare-feu nécessitent le paquet {packageName} installé et en cours d'exécution dans votre serveur."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "0pGhq1"
+msgstr "L'agent invité est désactivé"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "9iMOX1"
+msgstr "L'agent invité est désactivé dans la configuration de ce serveur, Virtbase ne peut donc rien y lire."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "uOy0WB"
+msgstr "L'agent invité ne peut pas exécuter de commandes"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "4tx48B"
+msgstr "L'agent fonctionne mais l'exécution de commandes est bloquée. Retirez guest-exec de BLOCK_RPCS dans /etc/default/{packageName} pour activer la détection du pare-feu et des ports."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "_uAmKB"
+msgstr "Non disponible sur ce système d'exploitation"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "bJS7-1"
+msgstr "La lecture du pare-feu et des ports ouverts depuis un serveur est actuellement prise en charge sous Linux uniquement."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "RBtJkt"
+msgstr "Statut de l'agent invité indisponible"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "XiMFvI"
+msgstr "Virtbase n'a pas pu vérifier l'agent invité pour le moment. Veuillez réessayer plus tard."
 
 #: src/features/servers/hooks/use-status-mapping.ts
 msgid "ccU6l_"
