@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Finnish\n"
-"PO-Revision-Date: 2026-08-23 19:39\n"
+"PO-Revision-Date: 2026-08-24 14:07\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -2885,6 +2885,7 @@ msgid "Z_xHv5"
 msgstr "Tämä ominaisuus ei ole käytettävissä, kun varmuuskopiointi on käynnissä. Yritä myöhemmin uudelleen."
 
 #: src/features/servers/components/console/console-frame.tsx
+#: src/features/servers/hooks/use-agent-status-mapping.ts
 msgid "uHAMke"
 msgstr "Palvelin ei ole käynnissä"
 
@@ -3272,6 +3273,18 @@ msgstr "Uusia"
 msgid "ObQE5T"
 msgstr "Valitse toiminto"
 
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "EnTkxu"
+msgstr "Suositukset"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "9d24PR"
+msgstr "Luo sääntö"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "E8UYvP"
+msgstr "Poista sääntö"
+
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "z1Jw4U"
 msgstr "Palomuuri on aina käytössä"
@@ -3342,6 +3355,14 @@ msgstr "Palomuurisäännöt"
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# sääntö} other {# sääntöä}}, {activeCount} aktiivista"
 
+#: src/features/servers/firewall/components/firewall-rules-card.tsx
+msgid "g8rjZa"
+msgstr "{count, plural, =1 {# sääntö} other {# sääntöä}} palvelimesi sisällä"
+
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "_F7m4I"
+msgstr "Hallitaan palvelimesi sisällä"
+
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "Mq5bUJ"
 msgstr "Poista sääntö käytöstä"
@@ -3353,6 +3374,18 @@ msgstr "Ota sääntö käyttöön"
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "mqTGdC"
 msgstr "Portit"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "yjxSm7"
+msgstr "Virtbasen palomuuri"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "Z5QJFN"
+msgstr "Palvelimesi sisällä ({manager})"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "qpmEEg"
+msgstr "Palvelimesi sisällä"
 
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx
 msgid "Ms3d_e"
@@ -3398,6 +3431,66 @@ msgstr "Luo"
 msgid "EWw_tK"
 msgstr "Käytä"
 
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "XKXFT7"
+msgstr "{label} on käynnissä myös palvelimesi sisällä"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "W3oQ4P"
+msgstr "Palvelimesi sisällä on käynnissä myös palomuuri"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "dzPuiI"
+msgstr "Liikenteen on läpäistävä molemmat palomuurit. Virtbase ei osaa vielä lukea {label}-sääntöjä, mutta ne ovat silti voimassa."
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "C03sMA"
+msgstr "Liikenteen on läpäistävä molemmat palomuurit. Sen säännöt on lueteltu alla."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "6tQJAd"
+msgstr "Tämä palvelu"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "HB3kA-"
+msgstr "palvelimesi sisällä oleva palomuuri"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "dFvCEF"
+msgstr "{service} on tavoitettavissa internetistä"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "x7Q_jE"
+msgstr "{process} kuuntelee porttia {port}/{proto} ja molemmat palomuurit sallivat sen. Rajoita tätä porttia, ellet halunnut julkaista sitä."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "qjt1Iu"
+msgstr "Portti {port}/{proto} on avoinna kaikille ja molemmat palomuurit sallivat sen. Rajoita tätä porttia, ellet halunnut julkaista sitä."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "xfh7EO"
+msgstr "Portti {port} on estetty palvelimesi sisällä"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "l_aWrb"
+msgstr "Virtbase-sääntösi sallii portin {port}, mutta {manager} estää sen, joten liikenne ei koskaan tavoita palveluasi. Muuta tämä palvelimesi sisällä."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "XY8_Nu"
+msgstr "Mikään ei kuuntele porttia {port}"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "I-VOBT"
+msgstr "Sääntö avaa portin {port}/{proto}, mutta mikään palvelu ei käytä sitä. Säännön poistaminen pitää palomuurin selkeämpänä."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "DBuKpi"
+msgstr "Joitakin tarkistuksia ei voitu suorittaa"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "PSqTo2"
+msgstr "Virtbase ei päässyt katsomaan palvelimesi sisälle, joten tämä luettelo voi olla puutteellinen."
+
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "sjzLbX"
 msgstr "Hyväksyä"
@@ -3405,6 +3498,58 @@ msgstr "Hyväksyä"
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "j8RTUO"
 msgstr "Pudota"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "D7fMMu"
+msgstr "Vierasagentti on käynnissä"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "Xqe44A"
+msgstr "Virtbase voi lukea tietoja tämän palvelimen sisältä."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "dXWINf"
+msgstr "Käynnistä palvelin tarkistaaksesi sen vierasagentin."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "v_GL5s"
+msgstr "Vierasagentti ei vastaa"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "ihTPpu"
+msgstr "Tallennustilan käyttö, salasanojen nollaus ja palomuurin tunnistus edellyttävät, että paketti {packageName} on asennettu ja käynnissä palvelimesi sisällä."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "0pGhq1"
+msgstr "Vierasagentti on pois käytöstä"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "9iMOX1"
+msgstr "Vierasagentti on poistettu käytöstä tämän palvelimen määrityksissä, joten Virtbase ei voi lukea siltä mitään."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "uOy0WB"
+msgstr "Vierasagentti ei voi suorittaa komentoja"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "4tx48B"
+msgstr "Agentti on käynnissä, mutta komentojen suoritus on estetty. Poista guest-exec kohdasta BLOCK_RPCS tiedostossa /etc/default/{packageName} ottaaksesi palomuurin ja porttien tunnistuksen käyttöön."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "_uAmKB"
+msgstr "Ei käytettävissä tässä käyttöjärjestelmässä"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "bJS7-1"
+msgstr "Palomuurin ja avoimien porttien lukemista palvelimen sisältä tuetaan tällä hetkellä vain Linuxissa."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "RBtJkt"
+msgstr "Vierasagentin tila ei ole käytettävissä"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "XiMFvI"
+msgstr "Virtbase ei voinut tarkistaa vierasagenttia juuri nyt. Yritä myöhemmin uudelleen."
 
 #: src/features/servers/hooks/use-status-mapping.ts
 msgid "ccU6l_"
