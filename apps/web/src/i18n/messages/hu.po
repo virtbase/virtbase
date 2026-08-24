@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Hungarian\n"
-"PO-Revision-Date: 2026-08-23 19:39\n"
+"PO-Revision-Date: 2026-08-24 14:07\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -2885,6 +2885,7 @@ msgid "Z_xHv5"
 msgstr "Ez a funkció nem érhető el, amíg a biztonsági mentés folyamatban van. Kérjük, próbálja újra később."
 
 #: src/features/servers/components/console/console-frame.tsx
+#: src/features/servers/hooks/use-agent-status-mapping.ts
 msgid "uHAMke"
 msgstr "A szerver nem fut"
 
@@ -3272,6 +3273,18 @@ msgstr "Megújítás"
 msgid "ObQE5T"
 msgstr "Válassza ki a műveletet"
 
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "EnTkxu"
+msgstr "Javaslatok"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "9d24PR"
+msgstr "Szabály létrehozása"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "E8UYvP"
+msgstr "Szabály eltávolítása"
+
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "z1Jw4U"
 msgstr "A tűzfal mindig engedélyezve van"
@@ -3342,6 +3355,14 @@ msgstr "Tűzfalszabályok"
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# szabály} other {# szabály}}, {activeCount} aktív"
 
+#: src/features/servers/firewall/components/firewall-rules-card.tsx
+msgid "g8rjZa"
+msgstr "{count, plural, =1 {# szabály} other {# szabály}} a kiszolgálódon belül"
+
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "_F7m4I"
+msgstr "A kiszolgálón belül kezelve"
+
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "Mq5bUJ"
 msgstr "Szabály letiltása"
@@ -3353,6 +3374,18 @@ msgstr "Szabály engedélyezése"
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "mqTGdC"
 msgstr "Portok"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "yjxSm7"
+msgstr "Virtbase tűzfal"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "Z5QJFN"
+msgstr "A kiszolgálón belül ({manager})"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "qpmEEg"
+msgstr "A kiszolgálón belül"
 
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx
 msgid "Ms3d_e"
@@ -3398,6 +3431,66 @@ msgstr "Generálás"
 msgid "EWw_tK"
 msgstr "Alkalmaz"
 
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "XKXFT7"
+msgstr "A(z) {label} szintén fut a kiszolgálódon belül"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "W3oQ4P"
+msgstr "A kiszolgálódon belül szintén fut egy tűzfal"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "dzPuiI"
+msgstr "A forgalomnak mindkét tűzfalon át kell jutnia. A Virtbase még nem tudja beolvasni a(z) {label} szabályait, de azok továbbra is érvényesek."
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "C03sMA"
+msgstr "A forgalomnak mindkét tűzfalon át kell jutnia. A szabályai alább láthatók."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "6tQJAd"
+msgstr "Ez a szolgáltatás"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "HB3kA-"
+msgstr "a kiszolgálón belüli tűzfal"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "dFvCEF"
+msgstr "A(z) {service} elérhető az internetről"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "x7Q_jE"
+msgstr "A(z) {process} a(z) {port}/{proto} porton figyel, és mindkét tűzfal engedélyezi. Korlátozd ezt a portot, hacsak nem szándékosan tetted közzé."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "qjt1Iu"
+msgstr "A(z) {port}/{proto} port mindenki számára nyitva áll, és mindkét tűzfal engedélyezi. Korlátozd ezt a portot, hacsak nem szándékosan tetted közzé."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "xfh7EO"
+msgstr "A(z) {port} port blokkolva van a kiszolgálón belül"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "l_aWrb"
+msgstr "A Virtbase-szabályod engedélyezi a(z) {port} portot, de a(z) {manager} blokkolja, így a forgalom sosem éri el a szolgáltatásodat. Ezt a kiszolgálón belül módosítsd."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "XY8_Nu"
+msgstr "Semmi sem figyel a(z) {port} porton"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "I-VOBT"
+msgstr "Egy szabály megnyitja a(z) {port}/{proto} portot, de egyetlen szolgáltatás sem használja. A szabály eltávolítása átláthatóbban tartja a tűzfalat."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "DBuKpi"
+msgstr "Néhány ellenőrzést nem sikerült lefuttatni"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "PSqTo2"
+msgstr "A Virtbase nem tudott belenézni a kiszolgálódba, ezért ez a lista hiányos lehet."
+
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "sjzLbX"
 msgstr "Elfogadás"
@@ -3405,6 +3498,58 @@ msgstr "Elfogadás"
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "j8RTUO"
 msgstr "Csepp"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "D7fMMu"
+msgstr "A vendégügynök fut"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "Xqe44A"
+msgstr "A Virtbase be tud olvasni adatokat a kiszolgáló belsejéből."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "dXWINf"
+msgstr "Indítsd el a kiszolgálót a vendégügynök ellenőrzéséhez."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "v_GL5s"
+msgstr "A vendégügynök nem válaszol"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "ihTPpu"
+msgstr "A tárhelyhasználathoz, a jelszó-visszaállításhoz és a tűzfal észleléséhez a(z) {packageName} csomagnak telepítve kell lennie és futnia kell a kiszolgálódon belül."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "0pGhq1"
+msgstr "A vendégügynök ki van kapcsolva"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "9iMOX1"
+msgstr "A vendégügynök le van tiltva ennek a kiszolgálónak a beállításaiban, ezért a Virtbase semmit sem tud beolvasni a belsejéből."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "uOy0WB"
+msgstr "A vendégügynök nem tud parancsokat futtatni"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "4tx48B"
+msgstr "Az ügynök fut, de a parancsfuttatás blokkolva van. Távolítsd el a guest-exec bejegyzést a BLOCK_RPCS listából a /etc/default/{packageName} fájlban a tűzfal- és portészlelés engedélyezéséhez."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "_uAmKB"
+msgstr "Ezen az operációs rendszeren nem érhető el"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "bJS7-1"
+msgstr "A tűzfal és a nyitott portok kiszolgálón belüli beolvasása jelenleg csak Linuxon támogatott."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "RBtJkt"
+msgstr "A vendégügynök állapota nem érhető el"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "XiMFvI"
+msgstr "A Virtbase most nem tudta ellenőrizni a vendégügynököt. Próbáld újra később."
 
 #: src/features/servers/hooks/use-status-mapping.ts
 msgid "ccU6l_"
