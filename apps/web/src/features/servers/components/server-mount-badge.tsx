@@ -25,6 +25,7 @@ import {
 } from "@virtbase/ui/hover-card";
 import { LucideDisc3 } from "@virtbase/ui/icons";
 import { useExtracted, useFormatter, useNow } from "next-intl";
+import { CustomImageIcon } from "@/ui/custom-image-icon";
 import type { GetServerOutput } from "../hooks/use-server";
 
 export function ServerMountBadge({
@@ -49,13 +50,16 @@ export function ServerMountBadge({
         </Badge>
       </HoverCardTrigger>
       <HoverCardContent side="bottom" align="center">
-        <div className="flex flex-col truncate text-sm">
-          <span className="truncate font-medium">{mount.name}</span>
-          <span className="text-muted-foreground">
-            {t("Expires {time}", {
-              time: format.relativeTime(mount.expires_at, now),
-            })}
-          </span>
+        <div className="flex items-center gap-2">
+          <CustomImageIcon url={mount.url} className="size-5" />
+          <div className="flex min-w-0 flex-col text-sm">
+            <span className="truncate font-medium">{mount.name}</span>
+            <span className="text-muted-foreground">
+              {t("Expires {time}", {
+                time: format.relativeTime(mount.expires_at, now),
+              })}
+            </span>
+          </div>
         </div>
       </HoverCardContent>
     </HoverCard>

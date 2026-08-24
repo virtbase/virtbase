@@ -26,6 +26,7 @@ import {
 } from "@virtbase/ui/empty";
 import { LucideDisc3 } from "@virtbase/ui/icons";
 import { useExtracted, useFormatter, useNow } from "next-intl";
+import { CustomImageIcon } from "@/ui/custom-image-icon";
 import type { GetCustomImagesListOutput } from "../../hooks/custom-images/use-custom-image-list";
 import { useCustomImagesList } from "../../hooks/custom-images/use-custom-image-list";
 import { ItemRow } from "../item-row";
@@ -69,7 +70,7 @@ function CustomImageItem({
 
   return (
     <ItemRow
-      icon={<LucideDisc3 className="size-6 shrink-0" />}
+      icon={<CustomImageIcon url={image.url} className="size-6 shrink-0" />}
       rightSide={
         <div className="flex flex-col gap-4 md:flex-row md:items-center">
           <p className="text-sm">

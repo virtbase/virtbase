@@ -32,7 +32,6 @@ import {
 import {
   ChevronsUpDown,
   LucideCheck,
-  LucideDisc3,
   LucideLoaderCircle,
   LucideX,
 } from "@virtbase/ui/icons";
@@ -44,6 +43,7 @@ import type { GetCustomImagesListOutput } from "@/features/account/hooks/custom-
 import { defaultGetCustomImagesListQuery } from "@/features/account/hooks/custom-images/use-custom-image-list";
 import { useCustomImageStatus } from "@/features/account/hooks/custom-images/use-custom-image-status";
 import { useTRPC } from "@/lib/trpc/react";
+import { CustomImageIcon } from "@/ui/custom-image-icon";
 
 type CustomImage = GetCustomImagesListOutput["iso_downloads"][number];
 
@@ -95,7 +95,7 @@ export function ServerCustomImageSelect({
             {...props}
           >
             <div className="flex items-center gap-2">
-              <LucideDisc3 aria-hidden="true" />
+              <CustomImageIcon url={selectedImage?.url} className="size-4" />
               {value ? selectedImage?.name : t("Select a custom image...")}
             </div>
             <ChevronsUpDown className="opacity-50" />
@@ -170,7 +170,7 @@ function CustomImageItem({
         ) : isFailed ? (
           <LucideX className="text-destructive" aria-hidden="true" />
         ) : (
-          <LucideDisc3 aria-hidden="true" />
+          <CustomImageIcon url={image.url} className="size-4" />
         )}
         <span className="truncate">{image.name}</span>
         {isUploading ? (

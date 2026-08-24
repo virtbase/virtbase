@@ -21,6 +21,7 @@ import { and, eq, getTableColumns, gt, sql } from "@virtbase/db";
 import { proxmoxIsoDownloads as pids, proxmoxNodes } from "@virtbase/db/schema";
 import { buildOrderBy, createId, escapedIlike } from "@virtbase/db/utils";
 import {
+  findIsoCatalogEntry,
   ISO_DOWNLOAD_EXPIRATION_MINUTES,
   MAX_ACTIVE_ISO_DOWNLOADS_PER_USER,
   MAX_ISO_DOWNLOAD_SIZE_BYTES,
@@ -305,12 +306,23 @@ export const isoRouter = {
             const instance = getProxmoxInstance(proxmoxNode);
             const fileId = createId({ prefix: "iso_" });
 
+            // Matched here rather than taken from the input, so a client can
+            // neither forge a hash nor suppress one. Proxmox aborts the
+            // download when the image does not match.
+            const catalogEntry = findIsoCatalogEntry(url);
+
             const upid = await instance.node.storage
               .$(proxmoxNode.isoDownloadStorage)
               ["download-url"].$post({
                 content: "iso",
                 filename: `${fileId}.iso`,
                 url,
+                ...(catalogEntry?.sha256
+                  ? {
+                      checksum: catalogEntry.sha256,
+                      "checksum-algorithm": "sha256",
+                    }
+                  : {}),
               });
 
             const result = await tx
