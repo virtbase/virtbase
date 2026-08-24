@@ -228,9 +228,10 @@ export const ISO_CATALOG: readonly IsoCatalogEntry[] = [
     // A driver disc rather than a distribution - the generic disc icon says
     // that better than a borrowed logo would.
     icon: null,
-    // The unversioned `virtio-win.iso` alias redirects four times, one hop past
-    // what `getSafeIsoDownloadSizeBytes` follows, so the version is pinned.
-    url: "https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win-0.1.285.iso",
+    // Both `stable-virtio` paths are symlinks whose 301 downgrades to plain
+    // `http://`, which `assertSafeIsoDownloadUrl` rejects on every hop. The
+    // archive path is the real file and answers 200 with no redirect at all.
+    url: "https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/archive-virtio/virtio-win-0.1.285-1/virtio-win-0.1.285.iso",
     // Upstream only publishes MD5 sums, and only for the RPMs - there is no
     // vendor hash for the image itself to pin.
     sha256: null,
