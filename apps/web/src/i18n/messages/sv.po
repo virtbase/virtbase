@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Swedish\n"
-"PO-Revision-Date: 2026-08-23 19:39\n"
+"PO-Revision-Date: 2026-08-24 14:08\n"
 
 #: ../../packages/integration-discord/src/buttons/main-menu.ts
 msgctxt "discord-integration"
@@ -2885,6 +2885,7 @@ msgid "Z_xHv5"
 msgstr "Den här funktionen är inte tillgänglig medan en säkerhetskopiering pågår. Försök igen senare."
 
 #: src/features/servers/components/console/console-frame.tsx
+#: src/features/servers/hooks/use-agent-status-mapping.ts
 msgid "uHAMke"
 msgstr "Servern körs inte"
 
@@ -3272,6 +3273,18 @@ msgstr "Förnya"
 msgid "ObQE5T"
 msgstr "Välj åtgärd"
 
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "EnTkxu"
+msgstr "Rekommendationer"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "9d24PR"
+msgstr "Skapa regel"
+
+#: src/features/servers/firewall/components/firewall-findings-card.tsx
+msgid "E8UYvP"
+msgstr "Ta bort regel"
+
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgid "z1Jw4U"
 msgstr "Brandväggen är alltid aktiverad"
@@ -3342,6 +3355,14 @@ msgstr "Brandväggsregler"
 msgid "flNVEF"
 msgstr "{count, plural, =1 {# regel} other {# regler}}, {activeCount} aktiva"
 
+#: src/features/servers/firewall/components/firewall-rules-card.tsx
+msgid "g8rjZa"
+msgstr "{count, plural, =1 {# regel} other {# regler}} inuti din server"
+
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "_F7m4I"
+msgstr "Hanteras inuti din server"
+
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "Mq5bUJ"
 msgstr "Inaktivera regel"
@@ -3353,6 +3374,18 @@ msgstr "Aktivera regel"
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "mqTGdC"
 msgstr "Hamnar"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "yjxSm7"
+msgstr "Virtbase-brandvägg"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "Z5QJFN"
+msgstr "Inuti din server ({manager})"
+
+#: src/features/servers/firewall/components/firewall-rules-table/index.tsx
+msgid "qpmEEg"
+msgstr "Inuti din server"
 
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx
 msgid "Ms3d_e"
@@ -3398,6 +3431,66 @@ msgstr "Generera"
 msgid "EWw_tK"
 msgstr "Verkställ"
 
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "XKXFT7"
+msgstr "{label} körs också inuti din server"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "W3oQ4P"
+msgstr "Det körs även en brandvägg inuti din server"
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "dzPuiI"
+msgstr "Trafiken måste passera båda brandväggarna. Virtbase kan ännu inte läsa {label}-regler, men de gäller ändå."
+
+#: src/features/servers/firewall/components/guest-firewall-alert.tsx
+msgid "C03sMA"
+msgstr "Trafiken måste passera båda brandväggarna. Reglerna listas nedan."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "6tQJAd"
+msgstr "Den här tjänsten"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "HB3kA-"
+msgstr "brandväggen inuti din server"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "dFvCEF"
+msgstr "{service} går att nå från internet"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "x7Q_jE"
+msgstr "{process} lyssnar på port {port}/{proto} och båda brandväggarna tillåter det. Begränsa den här porten om du inte medvetet ville publicera den."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "qjt1Iu"
+msgstr "Port {port}/{proto} är öppen för alla och båda brandväggarna tillåter det. Begränsa den här porten om du inte medvetet ville publicera den."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "xfh7EO"
+msgstr "Port {port} blockeras inuti din server"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "l_aWrb"
+msgstr "Din Virtbase-regel tillåter port {port}, men {manager} blockerar den, så trafiken når aldrig din tjänst. Ändra det inuti din server."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "XY8_Nu"
+msgstr "Inget lyssnar på port {port}"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "I-VOBT"
+msgstr "En regel öppnar port {port}/{proto}, men ingen tjänst använder den. Att ta bort regeln håller brandväggen lättare att läsa."
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "DBuKpi"
+msgstr "Vissa kontroller kunde inte köras"
+
+#: src/features/servers/firewall/hooks/use-finding-mapping.ts
+msgid "PSqTo2"
+msgstr "Virtbase kunde inte titta inuti din server, så den här listan kan vara ofullständig."
+
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "sjzLbX"
 msgstr "Acceptera"
@@ -3405,6 +3498,58 @@ msgstr "Acceptera"
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgid "j8RTUO"
 msgstr "Släppa"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "D7fMMu"
+msgstr "Gästagenten körs"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "Xqe44A"
+msgstr "Virtbase kan läsa uppgifter inifrån den här servern."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "dXWINf"
+msgstr "Starta servern för att kontrollera dess gästagent."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "v_GL5s"
+msgstr "Gästagenten svarar inte"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "ihTPpu"
+msgstr "Lagringsanvändning, lösenordsåterställning och brandväggsidentifiering kräver paketet {packageName} installerat och igång inuti din server."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "0pGhq1"
+msgstr "Gästagenten är avstängd"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "9iMOX1"
+msgstr "Gästagenten är inaktiverad i den här serverns konfiguration, så Virtbase kan inte läsa något inifrån den."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "uOy0WB"
+msgstr "Gästagenten kan inte köra kommandon"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "4tx48B"
+msgstr "Agenten körs men kommandokörning är blockerad. Ta bort guest-exec från BLOCK_RPCS i /etc/default/{packageName} för att aktivera brandväggs- och portidentifiering."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "_uAmKB"
+msgstr "Inte tillgängligt på detta operativsystem"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "bJS7-1"
+msgstr "Att läsa brandväggen och öppna portar inifrån en server stöds för närvarande endast på Linux."
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "RBtJkt"
+msgstr "Gästagentens status är inte tillgänglig"
+
+#: src/features/servers/hooks/use-agent-status-mapping.ts
+msgid "XiMFvI"
+msgstr "Virtbase kunde inte kontrollera gästagenten just nu. Försök igen senare."
 
 #: src/features/servers/hooks/use-status-mapping.ts
 msgid "ccU6l_"
