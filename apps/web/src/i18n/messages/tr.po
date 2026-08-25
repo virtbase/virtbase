@@ -13,44 +13,1215 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Turkish\n"
-"PO-Revision-Date: 2026-08-25 15:36\n"
+"PO-Revision-Date: 2026-08-25 22:23\n"
 
-#: ../../packages/integration-discord/src/buttons/main-menu.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration"
-msgid "AgoOEq"
-msgstr "Menüye dön"
+msgid "T3lqx5"
+msgstr "Yedeklemeler"
 
-#: ../../packages/integration-discord/src/buttons/manage-servers.ts
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration"
-msgid "U2slxM"
-msgstr "Sunucuları yönet"
+msgid "ugAt-k"
+msgstr "Bu sunucunun henüz yedeği yok. Daha sonra bu noktaya dönebilmek için bir tane oluştur."
 
-#: ../../packages/integration-discord/src/buttons/renew-server.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration"
-msgid "nWQFic"
+msgid "dGAzhe"
+msgstr "Bir yedek sunucunun tamamını kapsar. Geri yüklemek diskteki her şeyin yerine geçer."
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "3kNr3U"
+msgstr "Sayfa {page} / {totalPages}"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "b0Qt5R"
+msgstr "Sürüyor…"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "FFGk_G"
+msgstr "Başarısız {when}"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "ROJojP"
+msgstr "Oluşturuldu {when}"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "l1LOYZ"
+msgstr "Boyut: {size}"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "tABcGc"
+msgstr "Bir yedek seç"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "iOPt-o"
+msgstr "Yedek oluştur"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "rELDbB"
 msgstr "Yenile"
 
-#: ../../packages/integration-discord/src/buttons/reset-server-password.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration"
-msgid "Yy_yDL"
-msgstr "Şifreyi sıfırla"
+msgid "JJNc3c"
+msgstr "Önceki"
 
-#: ../../packages/integration-discord/src/buttons/server-console.ts
-#: ../../packages/integration-discord/src/messages/servers/actions/server-console-success.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration"
-msgid "gc-2Z2"
-msgstr "Konsol"
+msgid "9-Ddtu"
+msgstr "Sonraki"
 
-#: ../../packages/integration-discord/src/buttons/server-overview.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+#: ../../packages/integration-discord/src/features/stats/index.ts
 msgctxt "discord-integration"
 msgid "_w61wP"
 msgstr "Sunucuya dön"
 
-#: ../../packages/integration-discord/src/buttons/show-in-portal.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "ORGv1Q"
+msgstr "Oluşturuldu"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "agOXPD"
+msgstr "Boyut"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "oL0rU6"
+msgstr "Kilitli"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "a5msuh"
+msgstr "Evet"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "oUWADl"
+msgstr "HAYIR"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "zz6ObK"
+msgstr "Eski haline getirmek"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "qXCbgZ"
+msgstr "Kilidi aç"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "Zl4_y9"
+msgstr "Kilit"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "K3r6DQ"
+msgstr "Silmek"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "2u-6YO"
+msgstr "Yedeklere dön"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "QPFWVq"
+msgstr "Yedek alınırken sunucu çalışmaya devam eder. Birkaç dakika sürebilir."
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "HAlOn1"
+msgstr "İsim"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "Bvg3KH"
+msgstr "Bu yedeği daha sonra neyden tanıyacaksın."
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "dQpBgM"
+msgstr "Yükseltmeden önce"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "C8rGez"
+msgstr "Bu yedek geri yüklensin mi?"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "pcZWbD"
+msgstr "Sunucunun diskinde şu anda bulunan her şey bu yedeğin içeriğiyle değiştirilecek. Geri yükleme sırasında sunucu durdurulur ve yedek alındığından beri oluşan her şey kaybolur."
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "VgpYlr"
+msgstr "Bu yedek silinsin mi?"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "Ho45g6"
+msgstr "Yedek depolamadan kaldırılır ve kurtarılamaz."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "Bwqhmd"
+msgstr "Güvenlik duvarı"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "WybD0S"
+msgstr "Güvenlik duvarı her zaman açıktır. Bunlar, aşağıdaki kuralların hiçbirinin kapsamadığı her şeye uygulanan varsayılan eylemlerdir."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "2Cuff9"
+msgstr "Gelen: **{incoming}** · Giden: **{outgoing}**"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "0EJN6x"
+msgstr "{total} kuraldan {shown} tanesi gösteriliyor. Kalanları müşteri panelinden yönet."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "ue2UOa"
+msgstr "Kural yok"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "7SSws8"
+msgstr "Bu sunucunun güvenlik duvarı kuralı yok. Güvenlik duvarı açıkken ve kural yokken her şeye yalnızca yukarıdaki varsayılan politikalar karar verir."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "kAAlGL"
+msgstr "Kurallar"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "xpPI_5"
+msgstr "Silinecek kuralı seç"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "Nqtcq5"
+msgstr "Varsayılan politikalar"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "gzM1em"
+msgstr "Kural ekle"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "MHRs1u"
+msgstr "Güvenlik duvarı kuralı ekle"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "QlsDcr"
+msgstr "Aksiyon"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "ATw7BX"
+msgstr "ACCEPT, DROP veya REJECT. En üste eklenir, bu yüzden ilk olarak kontrol edilir."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "0QLzxo"
+msgstr "Protokol"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "8FY7Cm"
+msgstr "Örneğin tcp, udp veya icmp."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "WSxucy"
+msgstr "Hedef bağlantı noktası"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "P4-ymJ"
+msgstr "Bir port, 8000:8100 gibi bir aralık ya da boş bırak."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "EUpNeO"
+msgstr "Kaynak adresi"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "21K9fI"
+msgstr "Bir adres veya ağ. Boş bırakmak her yerden anlamına gelir."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "LgbKvU"
+msgstr "Yorum"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "SI8jUB"
+msgstr "Bu kuralın ne için olduğu."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "vMpPa-"
+msgstr "HTTPS'e izin ver"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "ZLl_FA"
+msgstr "Bu güvenlik duvarı kuralı silinsin mi?"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "q6DHpk"
+msgstr "#{pos} numaralı kural kaldırılacak. Kendi erişimine izin veren kural buysa kendini dışarıda bırakabilirsin."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "MdFdbd"
+msgstr "Kuralı sil"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "BSLmiO"
+msgstr "Paketin geçmesine izin ver"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "nI-IU7"
+msgstr "Sessizce at"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "nkFaIe"
+msgstr "At ve göndereni bilgilendir"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "YDAX4F"
+msgstr "Hiçbir kuralın kapsamadığı bir pakete ne olur. Neden değiştirdiğini bilmiyorsan geleni **DROP** olarak bırak."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "XumiMR"
+msgstr "Gelen paketler"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "MMByL_"
+msgstr "Giden paketler"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "uyszcP"
+msgstr "Gelen paketler için varsayılan eylem"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "lOb0Lj"
+msgstr "Giden paketler için varsayılan eylem"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "mxX1G1"
+msgstr "Güvenlik duvarına dön"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "XwWlMe"
+msgstr "Ayarlar — {name}"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "db8X8t"
+msgstr "Bu sunucunun ne olduğunu değiştiren her şey."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "t2uvIi"
+msgstr "İşletim sistemi"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "iXNbPf"
+msgstr "Yeniden adlandır"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "fz0z4c"
+msgstr "Planı"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "tPfumK"
+msgstr "Kurulum imajı"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "3Rx6Qo"
+msgstr "Gelişmiş"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "AQkpi3"
+msgstr "Yeniden kur"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "A6VeUw"
+msgstr "**{name}** kullanıyorsun — {cores, plural, =1 {# vCore} other {# vCore}}, {memory} RAM, {storage} depolama."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "GXCHD8"
+msgstr "Bu sunucunun paketi belirlenemedi."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "LR754a"
+msgstr "Şu tutara yenilenir"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "5NTPq8"
+msgstr "Mevcut yükseltmeler"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "YbrRXR"
+msgstr " (bugün {price} karşılığında yükselt)"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "-nInAI"
+msgstr "Paketi değiştir veya yenile"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "07Xf2y"
+msgstr "Ayarlara dön"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "b3LGQk"
+msgstr "**{name}** bağlı. Ondan başlatmak için sunucuyu yeniden başlat ya da diske dönmek için bağlantısını kaldır."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "BWwrKU"
+msgstr "Hazır kurulum imajın yok. Müşteri panelinden bir tane ekle, sonra buradan bağla."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "U7qHPh"
+msgstr "Hiçbir şey bağlı değil. Bağlanan bir imaj sanal sürücü olarak eklenir; ondan başlatmak için sonrasında sunucuyu yeniden başlat."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "L2ufbn"
+msgstr "Sona eriyor {when}"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "LkI5V4"
+msgstr "Bağlanacak imajı seç"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "UzHwi-"
+msgstr "Şu anda bağlı"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "u9VaJ3"
+msgstr "Ayır"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "jQVfJU"
+msgstr "İmajları yönet"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "mrzKVy"
+msgstr "Kurulacak bir işletim sistemi seç. **Diskte şu anda bulunan her şey yok edilir** ve sunucu sıfırdan kurulur. Saklamak istediğin bir şey varsa önce yedek al."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "kK9UBD"
+msgstr "Bir işletim sistemi seç"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+#: ../../packages/integration-discord/src/ui/confirm.ts
+msgctxt "discord-integration"
+msgid "47FYwb"
+msgstr "İptal etmek"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "VLFQi1"
+msgstr "Ürün yazılımı ayarları. Bunlardan birini değiştirmek sunucuyu yeniden başlatır ve bir ayarla kurulmuş bir makine diğeriyle açılmayabilir."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "NjgW6o"
+msgstr "BIOS"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "AjQTa5"
+msgstr "UEFI"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "XHiVwa"
+msgstr "Legacy BIOS"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "KX3bZF"
+msgstr "TPM"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "450Fty"
+msgstr "Yok"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "AhxnaN"
+msgstr "Bu sunucu için legacy BIOS kullanın."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "_eGTDl"
+msgstr "UEFI BIOS"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "oZyWxo"
+msgstr "Bu sunucu için daha yeni UEFI BIOS kullanın."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "vl0-ZH"
+msgstr "TPM yok"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "3TcT6l"
+msgstr "Güvenilir platform modülü yok."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "mPnVcE"
+msgstr "Windows 11 için gerekli."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "9gz6MI"
+msgstr "Daha eski sürüm."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "_Z_CEb"
+msgstr "Sunucuyu yeniden adlandır"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "UaxxLd"
+msgstr "Bu sunucunun Virtbase'de nasıl adlandırıldığı."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "D02emF"
+msgstr "Sunucuyu yeniden kur"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "ve6iIJ"
+msgstr "Diskteki her şey yok edilecek. Devam etmek için yeni root parolasını yaz."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "n1HGlP"
+msgstr "Root parolası"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "LGDnPd"
+msgstr "Bir büyük harf, bir küçük harf, bir rakam ve en az 8 karakter."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "qM4VuW"
+msgstr "Bu sunucu yeniden kurulsun mu?"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "u3HAkl"
+msgstr "Disk temizlenir ve işletim sistemi sıfırdan kurulur. Yedekler korunur, ancak çalışan sunucudaki her şey kaybolur."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "4W-hOr"
+msgstr "Bir parola seç"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "QCv9lw"
+msgstr "Ana menü"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "gaUHYQ"
+msgstr "Aşağıdaki menüden bir işlem seç."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "U2slxM"
+msgstr "Sunucuları yönet"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "wtXIUF"
+msgstr "Bu bot neler yapabilir?"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+#: ../../packages/integration-discord/src/features/stats/index.ts
 msgctxt "discord-integration"
 msgid "-uqHID"
 msgstr "Portaldan göster"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "dvr19k"
+msgstr "Kurulum"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "S0rNC0"
+msgstr "Virtbase’e hoş geldin!"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "Kh0E7j"
+msgstr "Virtbase hesabın henüz Discord ile bağlı değil."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "u_Hev8"
+msgstr "Hesapları bağlamak için aşağıdaki adımları izle:"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "ac8Iok"
+msgstr "1. Müşteri portalını aç"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "f4ziLK"
+msgstr "Aşağıdaki düğmeye tıkla ve Virtbase hesabınla giriş yap."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "2ZTNN3"
+msgstr "2. Hesapları bağla"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "XnY6rW"
+msgstr "Müşteri portalında hesabına git, **Güvenlik** altında **Kimlik doğrulama** bölümünde Discord hesabını bağla."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "VRJHO_"
+msgstr "3. Komutu tekrarla"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "gCSCoh"
+msgstr "İşlem yapmak istediğinde komutu tekrarla."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "baD-Vp"
+msgstr "Hesabımı bağla"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "PrkyZZ"
+msgstr "Kurulum kılavuzu"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "uXREGV"
+msgstr "Virtbase’i sunucuna davet et"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "B3qx3D"
+msgstr "Virtbase entegrasyonunu Discord sunucuna eklemek için aşağıdaki düğmeye tıkla:"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "e68Bcd"
+msgstr "Sunucuya ekle"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "jWjN3Y"
+msgstr "Sunucularını Discord'dan yönet"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "lrRN8m"
+msgstr "Virtbase hesabını bir kez bağla, sonra kiraladığın her sunucuyu **/menu** ile yönet — paneli açmadan."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "_AFP30"
+msgstr "🖥️ Sunucular"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "Waq2D9"
+msgstr "Kiraladığın her sunucuyu paketi, işletim sistemi, düğümü ve IP adresleriyle birlikte gör."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "kzrJPG"
+msgstr "⚡ Güç"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "GTTrr5"
+msgstr "Bir sunucuyu başlat, yeniden başlat, kapat veya durdur ve anlık işlemci, bellek, disk ve ağ kullanımını gör."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "ufCiKc"
+msgstr "📈 İstatistikler"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "6FCtEZ"
+msgstr "Son bir saatlik, günlük, haftalık, aylık veya yıllık işlemci, bellek ve ağ kullanımını gör."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "bqDCLE"
+msgstr "💾 Yedekler"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "XtvCXj"
+msgstr "Yedek oluştur, geri yükle ve sil."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "3uIWlF"
+msgstr "🛡️ Güvenlik duvarı ve rDNS"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "f2U7no"
+msgstr "Güvenlik duvarını aç veya kapat, kural ekle ve kaldır, adreslerin için ters DNS ayarla."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "imThHA"
+msgstr "🔧 Ayarlar"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "YcmU1n"
+msgstr "Bir sunucuyu yeniden adlandır, farklı bir işletim sistemiyle yeniden kur, kurulum imajı bağla ve paketini incele."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "OJkAII"
+msgstr "🔑 Erişim"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "TETrFT"
+msgstr "Tek kullanımlık bir konsol bağlantısı aç ve yönetici parolasını sıfırla."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "ChtMnC"
+msgstr "🏅 Bağlı roller"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "HI_CMF"
+msgstr "Hesabını bağla; Discord sunucuları ne kadar süredir müşteri olduğuna ve kaç sunucu çalıştırdığına göre sana rol verebilir."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "hwV-OS"
+msgstr "Kılavuzu oku"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "hCh8lk"
+msgstr "Müşteri paneli"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "AgoOEq"
+msgstr "Menüye dön"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "ngKlxe"
+msgstr "Güç — {name}"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "tRnhH9"
+msgstr "CPU {bar}"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "JwRgMO"
+msgstr "RAM {bar} ({used} / {total})"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "AuSwGG"
+msgstr "Çalışma süresi: {uptime}"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "2mkNcb"
+msgstr "Geçerli durum düğümden okunamadı."
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "mOFG3K"
+msgstr "Başlangıç"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "9U7nUR"
+msgstr "Yeniden başlat"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "CR9Lxh"
+msgstr "Kapat"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "w6OTlP"
+msgstr "Zorla durdur"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "QP2DrP"
+msgstr "Donanımsal sıfırlama"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "MC4BZC"
+msgstr "Bu sunucu zorla durdurulsun mu?"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "5bZujk"
+msgstr "Bu sunucuya donanımsal sıfırlama yapılsın mı?"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "gYaoFx"
+msgstr "Bu, işletim sisteminin kapanmasına izin vermeden gücü hemen keser. Kaydedilmemiş veriler kaybolabilir."
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "kBgP-a"
+msgstr "Bu, reset düğmesinin karşılığıdır. İşletim sisteminden kapanması istenmez ve kaydedilmemiş veriler kaybolabilir."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "LWepl5"
+msgstr "Ters DNS"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "6o2MqQ"
+msgstr "Ters DNS kaydı ayarlanmamış. Özellikle posta sunucuları bir adresin kendi ana bilgisayar adına geri çözümlenmesini bekler."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "U8lx56"
+msgstr "Bu kayıtlar, adreslerinin her birinin hangi ana bilgisayar adına geri çözümlendiğini belirtir."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "yYYenE"
+msgstr "Düzenlenecek veya silinecek kaydı seç"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "uObQkC"
+msgstr "Bir kayıt ayarla"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "uPDgth"
+msgstr "Ana makine adı"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "HdibrD"
+msgstr "Ana bilgisayar adını değiştir"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "xFAbZq"
+msgstr "Kayıtlara dön"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "DuV8PO"
+msgstr "Ters DNS ayarla"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "Sy9t2g"
+msgstr "Adres, bu sunucuya ayrılmış adreslerden biri olmalıdır."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "ZbWc-A"
+msgstr "IP adresi"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "zUMAxj"
+msgstr "Bu sunucunun adreslerinden biri."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "YE0dUp"
+msgstr "Bu adresin neye geri çözümlenmesi gerektiği."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "gzzmN5"
+msgstr "Ters DNS'i değiştir"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "Ai4Weg"
+msgstr "Bu ters DNS kaydı silinsin mi?"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "R61yfz"
+msgstr "Adres artık kendi ana bilgisayar adına geri çözümlenmeyecek. Buradan gönderilen postalar büyük olasılıkla reddedilir."
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "xl27nc"
+msgstr "Şifreyi sıfırla"
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "Aev2Hy"
+msgstr "`qemu-guest-agent` paketi kurulu değilse bu işlem başarısız olur."
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "JCIgkj"
+msgstr "Kullanıcı adı"
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "eREue0"
+msgstr "Linux’ta genelde `root`, Windows’ta `Administrator`."
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "Ev6SEF"
+msgstr "Yeni şifre"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "pN8BlF"
+msgstr "Aşağıdaki sunucular hesabına atanmış ve yönetilebilir."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "0ZPfix"
+msgstr "Yönetmek için bir sunucu seç:"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "BGI16m"
+msgstr "{cores, plural, =0 {# vCore} =1 {# vCore} other {# vCore}}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "tpfEY0"
+msgstr "{memory} RAM"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "cenOuc"
+msgstr "{storage} NVMe SSD"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "7F86ji"
+msgstr "Portaldan gör ↗"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "JGe_wh"
+msgstr "Sunucu seç"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "Vq3ifs"
+msgstr "Sunucu yok"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "fUXt5C"
+msgstr "Henüz sunucu kiralamadın. Discord entegrasyonuyla yönetmek için bir sunucu kirala."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "67Bzc5"
+msgstr "Virtbase mağazası"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "wbsq7O"
+msgstr "Kullanım"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "1-fy2I"
+msgstr "Disk {bar} ({used} / {total})"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "cvhvPu"
+msgstr "Trafik: {in} gelen / {out} giden"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "ivkv_L"
+msgstr "Düğüm"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "GaTcNW"
+msgstr "- Ad: {hostname}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "M1WTIv"
+msgstr "- Veri merkezi: {datacenter}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "SuwJeu"
+msgstr "- Uplink: {netrate}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "rnZkeW"
+msgstr "- CPU: {cpu_description}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "UlO1td"
+msgstr "Ağ arayüzleri"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "1A_d7u"
+msgstr "Yenilenir"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "YXoHk0"
+msgstr "Güç"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "F-02_l"
+msgstr "rDNS"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "D3idYv"
+msgstr "Ayarlar"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "gc-2Z2"
+msgstr "Konsol"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "Yy_yDL"
+msgstr "Şifreyi sıfırla"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "H3eDAS"
+msgstr "İstatistikler"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "NZAIyV"
+msgstr "Tüm sunucular"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "PlveeX"
+msgstr "Konsola erişmek için aşağıdaki tek kullanımlık bağlantıya tıkla:"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "8rmkQD"
+msgstr "Bu bağlantı 10 saniye içinde sona erer."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "ELISMh"
+msgstr "Konsolu aç"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "GyeODL"
+msgstr "Şifre başarıyla sıfırlandı."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "n_xfjW"
+msgstr "Sunucunun şifresi başarıyla sıfırlandı."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "pJ2eg6"
+msgstr "Artık yeni şifreyle sunucuya giriş yapabilirsin."
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "s8HBot"
+msgstr "Son saat"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "boa1qH"
+msgstr "Son gün"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "ynWMp2"
+msgstr "Son hafta"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "y9ZbeM"
+msgstr "Son ay"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "4RJ4Im"
+msgstr "Son yıl"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "cQgU3V"
+msgstr "İstatistikler — {name}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "JN-P22"
+msgstr "Bu dönem için henüz veri yok. Sunucu yalnızca çalışırken kullanım bildirir."
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "txpTlM"
+msgstr "{timeframe}, en eskisi solda."
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "9COc9n"
+msgstr "CPU — şimdi {now}, ortalama {avg}, tepe {peak}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "wBvha6"
+msgstr "Bellek — şimdi {now}, ortalama {avg}, tepe {peak}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "xiYQvK"
+msgstr "Ağ gelen — tepe {peak}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "b4azRB"
+msgstr "Ağ giden — tepe {peak}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "DZ-Egm"
+msgstr "Dönem"
 
 #: ../../packages/integration-discord/src/localize.ts
 msgid "FvmV6q"
@@ -81,230 +1252,40 @@ msgstr "Ortak anahtar"
 msgid "FYYjSc"
 msgstr "Etkileşim isteklerinin gerçekten Discord'dan geldiğini doğrulamak için kullanılır."
 
-#: ../../packages/integration-discord/src/messages/invite.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "uXREGV"
-msgstr "Virtbase’i sunucuna davet et"
+msgid "nDwv-3"
+msgstr "Bir şeyler ters gitti. Lütfen birazdan tekrar dene."
 
-#: ../../packages/integration-discord/src/messages/invite.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "yoX1pg"
-msgstr "Virtbase entegrasyonunu Discord sunucuna eklemek için aşağıdaki bağlantıya tıkla:"
+msgid "nRAtFh"
+msgstr "O sunucu artık mevcut değil."
 
-#: ../../packages/integration-discord/src/messages/invite.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "6O3-aN"
-msgstr "Davet URL’si"
+msgid "Bu3w9U"
+msgstr "Bunu yapmana izin verilmiyor."
 
-#: ../../packages/integration-discord/src/messages/main-menu.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "QCv9lw"
-msgstr "Ana menü"
+msgid "NAzXO_"
+msgstr "Girdiğin bilgilerin bazıları geçerli değil."
 
-#: ../../packages/integration-discord/src/messages/main-menu.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "gaUHYQ"
-msgstr "Aşağıdaki menüden bir işlem seç."
+msgid "612Bxo"
+msgstr "Bunu çok sık yapıyorsun. Lütfen biraz bekle."
 
-#: ../../packages/integration-discord/src/messages/servers/actions/reset-server-password-success.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "GyeODL"
-msgstr "Şifre başarıyla sıfırlandı."
+msgid "eXkTwt"
+msgstr "Sunucu başka bir görevle meşgul. Lütfen bitmesini bekle."
 
-#: ../../packages/integration-discord/src/messages/servers/actions/reset-server-password-success.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "n_xfjW"
-msgstr "Sunucunun şifresi başarıyla sıfırlandı."
-
-#: ../../packages/integration-discord/src/messages/servers/actions/reset-server-password-success.ts
-msgctxt "discord-integration"
-msgid "pJ2eg6"
-msgstr "Artık yeni şifreyle sunucuya giriş yapabilirsin."
-
-#: ../../packages/integration-discord/src/messages/servers/actions/server-console-success.ts
-msgctxt "discord-integration"
-msgid "PlveeX"
-msgstr "Konsola erişmek için aşağıdaki tek kullanımlık bağlantıya tıkla:"
-
-#: ../../packages/integration-discord/src/messages/servers/actions/server-console-success.ts
-msgctxt "discord-integration"
-msgid "8rmkQD"
-msgstr "Bu bağlantı 10 saniye içinde sona erer."
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "t2uvIi"
-msgstr "İşletim sistemi"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "ivkv_L"
-msgstr "Düğüm"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "GaTcNW"
-msgstr "- Ad: {hostname}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "M1WTIv"
-msgstr "- Veri merkezi: {datacenter}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "SuwJeu"
-msgstr "- Uplink: {netrate}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "rnZkeW"
-msgstr "- CPU: {cpu_description}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "gs_Iys"
-msgstr "- RAM: {memory_description}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "9PSqfa"
-msgstr "- Depolama: {storage_description}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "UlO1td"
-msgstr "Ağ arayüzleri"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list-empty.ts
-msgctxt "discord-integration"
-msgid "Vq3ifs"
-msgstr "Sunucu yok"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list-empty.ts
-msgctxt "discord-integration"
-msgid "fUXt5C"
-msgstr "Henüz sunucu kiralamadın. Discord entegrasyonuyla yönetmek için bir sunucu kirala."
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list-empty.ts
-msgctxt "discord-integration"
-msgid "67Bzc5"
-msgstr "Virtbase mağazası"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "pN8BlF"
-msgstr "Aşağıdaki sunucular hesabına atanmış ve yönetilebilir."
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "0ZPfix"
-msgstr "Yönetmek için bir sunucu seç:"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "BGI16m"
-msgstr "{cores, plural, =0 {# vCore} =1 {# vCore} other {# vCore}}"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "tpfEY0"
-msgstr "{memory} RAM"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "cenOuc"
-msgstr "{storage} NVMe SSD"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "7F86ji"
-msgstr "Portaldan gör ↗"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "JGe_wh"
-msgstr "Sunucu seç"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "dvr19k"
-msgstr "Kurulum"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "S0rNC0"
-msgstr "Virtbase’e hoş geldin!"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "Kh0E7j"
-msgstr "Virtbase hesabın henüz Discord ile bağlı değil."
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "u_Hev8"
-msgstr "Hesapları bağlamak için aşağıdaki adımları izle:"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "ac8Iok"
-msgstr "1. Müşteri portalını aç"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "f4ziLK"
-msgstr "Aşağıdaki düğmeye tıkla ve Virtbase hesabınla giriş yap."
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "2ZTNN3"
-msgstr "2. Hesapları bağla"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "XnY6rW"
-msgstr "Müşteri portalında hesabına git, **Güvenlik** altında **Kimlik doğrulama** bölümünde Discord hesabını bağla."
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "VRJHO_"
-msgstr "3. Komutu tekrarla"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "gCSCoh"
-msgstr "İşlem yapmak istediğinde komutu tekrarla."
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "xl27nc"
-msgstr "Şifreyi sıfırla"
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "qHabR-"
-msgstr "`qemu-quest-agent` paketi yüklü değilse işlem başarısız olur."
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "JCIgkj"
-msgstr "Kullanıcı adı"
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "eREue0"
-msgstr "Linux’ta genelde `root`, Windows’ta `Administrator`."
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "Ev6SEF"
-msgstr "Yeni şifre"
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "LGDnPd"
-msgstr "Bir büyük harf, bir küçük harf, bir rakam ve en az 8 karakter."
+msgid "3ASDbq"
+msgstr "Bu işe yaramadı"
 
 #: ../../packages/integration-discord/src/utils/create-embed.ts
 msgctxt "discord-integration"
@@ -959,6 +1940,7 @@ msgstr "Gelişmiş"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/backups/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/servers/components/backups/backups-card.tsx
 #: src/features/servers/components/server-nav.tsx
 msgid "T3lqx5"
@@ -972,6 +1954,7 @@ msgstr "Konsol"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/firewall/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/servers/components/server-nav.tsx
 msgid "Bwqhmd"
 msgstr "Güvenlik duvarı"
@@ -1003,6 +1986,7 @@ msgstr "Planı"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/rdns/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/servers/components/server-nav.tsx
 msgid "F-02_l"
 msgstr "rDNS"
@@ -1234,6 +2218,22 @@ msgstr "Şifreyi onayla"
 #: src/features/auth/components/reset-password-form.tsx
 msgid "5sg7KC"
 msgstr "Şifre"
+
+#: src/features/account/components/authentication/discord-bot-card.tsx
+msgid "jWjN3Y"
+msgstr "Sunucularını Discord'dan yönet"
+
+#: src/features/account/components/authentication/discord-bot-card.tsx
+msgid "0eStxB"
+msgstr "Sohbetten çıkmadan sunucuları başlat ve durdur, yedek al, güvenlik duvarı kurallarını düzenle ve konsol aç. Aşağıdan Discord hesabını bağla, sonra /menu komutunu çalıştır."
+
+#: src/features/account/components/authentication/discord-bot-card.tsx
+msgid "vEF59U"
+msgstr "Kılavuz"
+
+#: src/features/account/components/authentication/discord-bot-card.tsx
+msgid "2Rwx1x"
+msgstr "Discord'a ekle"
 
 #: src/features/account/components/authentication/regenerate-backup-codes-button.tsx
 msgid "6PgVSe"
@@ -2373,6 +3373,7 @@ msgid "17eYMk"
 msgstr "{usage} / ∞"
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/landing/components/server-stats-demo.tsx
 #: src/features/servers/components/server-graphs.tsx
 #: src/features/servers/components/server-stats-card.tsx
@@ -3079,6 +4080,58 @@ msgstr "Ödeme tarihi"
 msgid "TdTXXf"
 msgstr "Daha fazla bilgi edin"
 
+#: src/features/landing/components/discord-bot-demo.tsx
+#: src/features/landing/components/server-stats-demo.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
+#: src/features/servers/components/server-graphs.tsx
+#: src/features/servers/components/server-stats-card.tsx
+msgid "QgBuiV"
+msgstr "İşlemci"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "zEgvvh"
+msgstr "AĞ"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "Ua-Cf7"
+msgstr "Sunucularını yönet"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "b_Pq29"
+msgstr "Bu botun yapabildikleri"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "HiI_P4"
+msgstr "Başka bir sunucuya ekle"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "YXoHk0"
+msgstr "Güç"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "H3eDAS"
+msgstr "İstatistikler"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "2rUVsU"
+msgstr "APP"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "2ZWKh0"
+msgstr "Bugün 21:04"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "Wbc21W"
+msgstr "Virtbase – hosting, güvenli."
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "Ny1Wyk"
+msgstr "Bunu yalnızca sen görüyorsun"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "TY8Ho1"
+msgstr "Komutlar"
+
 #: src/features/landing/components/server-firewall-demo.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
@@ -3123,13 +4176,6 @@ msgstr "Hedef bağlantı noktası"
 #: src/features/servers/components/server-stats-card.tsx
 msgid "wbsq7O"
 msgstr "Kullanım"
-
-#: src/features/landing/components/server-stats-demo.tsx
-#: src/features/servers/components/overview/node-details-dialog.tsx
-#: src/features/servers/components/server-graphs.tsx
-#: src/features/servers/components/server-stats-card.tsx
-msgid "QgBuiV"
-msgstr "İşlemci"
 
 #: src/features/landing/components/server-stats-demo.tsx
 #: src/features/servers/components/server-graphs.tsx
