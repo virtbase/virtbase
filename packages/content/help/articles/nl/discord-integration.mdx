@@ -1,0 +1,88 @@
+---
+title: Hoe beheer ik mijn servers vanuit Discord?
+description: Voeg de Virtbase-bot toe aan Discord, koppel je account en beheer al je servers zonder de chat te verlaten.
+category: overview
+keywords:
+  - discord
+  - bot
+  - integratie
+  - gekoppelde rollen
+  - chat
+---
+
+Met de Virtbase-Discord-bot beheer je alle servers die je huurt rechtstreeks vanuit Discord — starten en stoppen, back-ups maken, firewallregels aanpassen, een console openen — zonder het klantenportaal te openen.
+
+Alles wat de bot stuurt is **alleen voor jou zichtbaar**, ook in een gedeeld kanaal. Niemand anders op de server ziet je servernamen, adressen of consolelinks.
+
+## Wat kan de bot?
+
+| Area             | Wat je kunt doen                                                                                                                |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| **Servers**      | Alle servers zien die je huurt, met hun pakket, besturingssysteem, node en IP-adressen                                          |
+| **Aan/uit**      | Starten, herstarten, afsluiten, geforceerd stoppen of resetten, en het live CPU-, geheugen-, schijf- en netwerkgebruik aflezen  |
+| **Back-ups**     | Back-ups maken, terugzetten, vergrendelen en verwijderen                                                                        |
+| **Firewall**     | Je regels bekijken, toevoegen en verwijderen, en de standaardbeleidsregels wijzigen                                             |
+| **Reverse DNS**  | De hostnaam instellen en verwijderen waar je adressen naar terugverwijzen                                                       |
+| **Instellingen** | Een server hernoemen, opnieuw installeren met een ander besturingssysteem, een installatie-image koppelen en je pakket bekijken |
+| **Toegang**      | Een eenmalige consolelink openen en het beheerderswachtwoord opnieuw instellen                                                  |
+
+Alles wat geld kost — een pakket upgraden, een server verlengen — verwijst je door naar het klantenportaal. De bot brengt je nooit iets in rekening.
+
+## Hoe voeg ik de bot toe aan mijn Discord-server?
+
+1. Voer **/invite** uit op een Discord-server waar de bot al aanwezig is, of gebruik de knop op je pagina [authenticatie](https://app.virtbase.com/account/settings/authentication).
+2. Kies de Discord-server waaraan je hem wilt toevoegen.
+3. Bevestig. De bot vraagt alleen toestemming om berichten te sturen en op slash-opdrachten te reageren.
+
+Je hoeft de bot niet aan een eigen server toe te voegen. Staat hij al op een server waarvan je lid bent, dan kun je hem daar gebruiken — of hem rechtstreeks een bericht sturen.
+
+## Hoe koppel ik mijn Virtbase-account?
+
+De bot kan alleen aan je Discord-account niet zien wie je bent, dus die twee moeten eenmalig gekoppeld worden.
+
+1. Open je [authenticatie-instellingen](https://app.virtbase.com/account/settings/authentication) in het klantenportaal.
+2. Koppel onder **Authenticatie** je Discord-account.
+3. Ga terug naar Discord en voer **/menu** uit.
+
+Dat is alles. Vanaf dat moment herkent de bot je op elke Discord-server waar hij aanwezig is, en in privéberichten.
+
+Voer je **/menu** uit vóór het koppelen, dan toont de bot je deze stappen in plaats van een foutmelding.
+
+## Wat zijn gekoppelde rollen?
+
+Zodra je account gekoppeld is, kan een Discord-server je automatisch rollen toekennen op basis van je Virtbase-gegevens:
+
+* **Actieve servers** — hoeveel servers je op dit moment huurt
+* **E-mail geverifieerd** — of je e-mailadres bevestigd is
+* **Dagen sinds registratie** — hoe lang je al klant bent
+
+Zo kan een community langdurige klanten een rol geven zonder dat iemand dat handmatig hoeft te controleren. Je e-mailadres, servernamen en adressen worden **nooit** met de Discord-server gedeeld — alleen de drie waarden hierboven, en alleen voor de rollen waarvoor hij is ingesteld.
+
+Gekoppelde rollen vereisen de toestemming `role_connections.write`, die bij het koppelen wordt gevraagd. Heb je gekoppeld voordat dit beschikbaar was, ontkoppel dan en koppel opnieuw.
+
+## Welke opdrachten zijn er?
+
+| Command     | Wat die doet                                                   |
+| ----------- | -------------------------------------------------------------- |
+| **/menu**   | Het hoofdmenu — alles begint hier                              |
+| **/help**   | Wat de bot kan, met links naar deze handleiding                |
+| **/invite** | Een link om de bot aan een andere Discord-server toe te voegen |
+
+Bijna al het andere zijn knoppen. Ben je eenmaal in het menu, dan hoef je nooit meer een opdracht te typen.
+
+## Is het veilig?
+
+* Elk antwoord is kortstondig — alleen jij ziet het, ook in een openbaar kanaal.
+* De bot handelt strikt namens jou. Hij bereikt alleen servers op je eigen account, en elke actie doorloopt dezelfde rechtencontroles als het klantenportaal.
+* Destructieve acties — een back-up terugzetten, opnieuw installeren, geforceerd stoppen — vragen altijd eerst om bevestiging.
+* Consolelinks zijn eenmalig geldig en verlopen na tien seconden.
+
+## De bot reageert niet
+
+Doet een opdracht niets, controleer dan het volgende:
+
+1. **Mag de bot in dat kanaal antwoorden?** Probeer het anders met een privébericht.
+2. **Is je account gekoppeld?** Voer **/menu** uit — zo niet, dan zie je de installatiestappen.
+3. **Heb je gekoppeld voordat de integratie was ingesteld?** Ontkoppel je Discord-account op je pagina [authenticatie](https://app.virtbase.com/account/settings/authentication) en koppel opnieuw.
+
+Helpt niets daarvan, [neem dan contact op met ons supportteam](/nl/contact).
