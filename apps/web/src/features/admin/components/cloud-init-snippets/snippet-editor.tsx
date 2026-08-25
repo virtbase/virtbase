@@ -19,7 +19,7 @@
 
 import { yaml } from "@codemirror/lang-yaml";
 import { oneDark } from "@codemirror/theme-one-dark";
-import CodeMirror from "@uiw/react-codemirror";
+import CodeMirror, { EditorState } from "@uiw/react-codemirror";
 import { useTheme } from "@virtbase/ui/theme-provider";
 import { validateSnippetContent } from "@virtbase/utils";
 import { useExtracted } from "next-intl";
@@ -52,7 +52,26 @@ export default function SnippetEditor({
   // Only cloud-config gets a language mode. A shell snippet is edited as plain
   // text with line numbers, which is not worth two extra packages to improve -
   // the validation below is the half that catches real mistakes.
-  const extensions = useMemo(() => (kind === "shell" ? [] : [yaml()]), [kind]);
+  //
+  // The language extension is resolved here before it is handed to the editor.
+  // In production bundles this has thrown "Unrecognized extension value in
+  // extension set", which takes the whole page down - and syntax highlighting
+  // is the one part of this editor nobody needs. `EditorState` comes from the
+  // editor's own re-export, so this probe resolves the extension against
+  // exactly the module instance that would apply it: it fails when, and only
+  // when, the real thing would.
+  const extensions = useMemo(() => {
+    if (kind === "shell") return [];
+
+    try {
+      const language = yaml();
+      EditorState.create({ extensions: [language] });
+
+      return [language];
+    } catch {
+      return [];
+    }
+  }, [kind]);
 
   // Parsed on every keystroke: the document is small and the parser is fast,
   // and an error that appears as you type is worth far more than one on save.
