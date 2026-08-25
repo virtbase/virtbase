@@ -16,6 +16,7 @@
  */
 
 import Sentry from "@sentry/nextjs";
+import { integrations } from "@virtbase/api/integrations";
 import { connection, NextResponse } from "next/server";
 import { auth } from "@/lib/auth/server";
 
@@ -29,11 +30,14 @@ export const GET = async () => {
   await connection();
 
   try {
-    const { DISCORD_APP_ID, DISCORD_BOT_TOKEN } = process.env;
-    if (!DISCORD_APP_ID || !DISCORD_BOT_TOKEN) {
-      throw new Error(
-        "[@virtbase/discord] DISCORD_APP_ID or DISCORD_BOT_TOKEN is not set. Linked role integration can only be used if both are set.",
-      );
+    // Whether linked roles work at all is the integration's business, not the
+    // environment's. An unconfigured or disabled integration is not an error —
+    // the route simply does not exist yet.
+    const discord = await integrations.resolve("identity", {
+      integrationId: "discord",
+    });
+    if (!discord) {
+      return new NextResponse("Not found", { status: 404 });
     }
 
     const { response, headers } = await auth.api.signInSocial({

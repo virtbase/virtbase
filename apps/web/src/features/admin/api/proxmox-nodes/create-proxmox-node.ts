@@ -17,21 +17,16 @@
 
 "use server";
 
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
 import { TRPCError } from "@trpc/server";
 import type { Proxmox } from "@virtbase/api/proxmox";
 import { getProxmoxInstance } from "@virtbase/api/proxmox";
 import { db } from "@virtbase/db/client";
 import { proxmoxNodes } from "@virtbase/db/schema";
-import { PUBLIC_DOMAIN } from "@virtbase/utils";
 import { CreateProxmoxNodeInputSchema } from "@virtbase/validators/admin";
 import { revalidatePath, revalidateTag } from "next/cache";
 import { env } from "@/env";
 import { actionClient } from "../../lib/action-client";
-
-const HOOKSCRIPT_FILENAME = "hookscript.pl";
-const HOOKSCRIPT_DIR = "src/features/admin/assets/proxmox-nodes";
+import { uploadHookscript } from "../../lib/proxmox-nodes/hookscript";
 
 export const createProxmoxNodeAction = actionClient
   .inputSchema(CreateProxmoxNodeInputSchema)
@@ -247,27 +242,14 @@ export const createProxmoxNodeAction = actionClient
       });
     }
 
-    // Upload the hookscript.pl to the snippet storage
-    // This will also overwrite if it already exists.
-    //
-    // There might be an issue with the hookscript.pl not being executable.
-    // To fix run: `chmod +x <storage>:snippets/hookscript.pl`
+    // Upload the hookscript.pl to the snippet storage, overwriting any
+    // existing copy. Provisioning cannot set `--hookscript` on a guest until
+    // this file is in place and executable - see `uploadHookscript`.
     try {
-      const fileContents = await readFile(
-        join(process.cwd(), HOOKSCRIPT_DIR, HOOKSCRIPT_FILENAME),
-        {
-          encoding: "utf-8",
-        },
-      );
-
-      await instance.uploadSnippet({
-        filename: HOOKSCRIPT_FILENAME,
-        contents: fileContents
-          .replaceAll("{{PUBLIC_DOMAIN}}", PUBLIC_DOMAIN)
-          // For now use the Vercel cron secret as the hookscript secret which is used by other webhooks.
-          // We might change this to a dedicated secret in the future.
-          .replaceAll("{{HOOKSCRIPT_SECRET}}", env.CRON_SECRET),
+      await uploadHookscript({
+        instance,
         storage: snippet_storage,
+        secret: env.CRON_SECRET,
       });
     } catch {
       throw new TRPCError({

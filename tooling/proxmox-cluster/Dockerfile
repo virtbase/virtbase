@@ -5,10 +5,11 @@
 #   - `pveceph install` pulls ~106 MB and takes minutes, and installs into
 #     `/usr`, which is container filesystem rather than a volume. Every
 #     recreated container would pay that again.
-#   - The snippet-upload and hookscript patches live in `/usr/share/perl5/PVE`,
-#     so they are lost on recreation too. Without them cloud-init snippets
-#     cannot be uploaded and `hookscript` is rejected on VM config updates -
-#     which is to say provisioning does not work.
+#   - The snippet-upload, snippet-mode and hookscript patches live in
+#     `/usr/share/perl5/PVE`, so they are lost on recreation too. Without them
+#     cloud-init snippets cannot be uploaded, an uploaded hookscript is not
+#     executable, and `hookscript` is rejected on VM config updates - which is
+#     to say provisioning does not work.
 #
 # Build context is the repository root so `scripts/patches` is reachable.
 FROM dockurr/proxmox

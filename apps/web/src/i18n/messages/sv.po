@@ -15,42 +15,1213 @@ msgstr ""
 "Language-Team: Swedish\n"
 "PO-Revision-Date: 2026-04-22 13:59\n"
 
-#: ../../packages/integration-discord/src/buttons/main-menu.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration"
-msgid "AgoOEq"
-msgstr "Tillbaka till menyn"
+msgid "T3lqx5"
+msgstr "Säkerhetskopieringar"
 
-#: ../../packages/integration-discord/src/buttons/manage-servers.ts
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration"
-msgid "U2slxM"
-msgstr "Hantera servrar"
+msgid "ugAt-k"
+msgstr "Den här servern har ännu inga säkerhetskopior. Skapa en för att kunna återgå till det här läget senare."
 
-#: ../../packages/integration-discord/src/buttons/renew-server.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration"
-msgid "nWQFic"
-msgstr "Förnya"
+msgid "dGAzhe"
+msgstr "En säkerhetskopia omfattar hela servern. Att återställa den ersätter allt på disken."
 
-#: ../../packages/integration-discord/src/buttons/reset-server-password.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration"
-msgid "Yy_yDL"
-msgstr "Återställ lösenord"
+msgid "3kNr3U"
+msgstr "Sida {page} av {totalPages}"
 
-#: ../../packages/integration-discord/src/buttons/server-console.ts
-#: ../../packages/integration-discord/src/messages/servers/actions/server-console-success.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration"
-msgid "gc-2Z2"
-msgstr "Konsol"
+msgid "b0Qt5R"
+msgstr "Pågår…"
 
-#: ../../packages/integration-discord/src/buttons/server-overview.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "FFGk_G"
+msgstr "Misslyckades {when}"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "ROJojP"
+msgstr "Skapad {when}"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "l1LOYZ"
+msgstr "Storlek: {size}"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "tABcGc"
+msgstr "Välj en säkerhetskopia"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "iOPt-o"
+msgstr "Skapa säkerhetskopia"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "rELDbB"
+msgstr "Uppdatera"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "JJNc3c"
+msgstr "Föregående"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "9-Ddtu"
+msgstr "Nästa"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+#: ../../packages/integration-discord/src/features/stats/index.ts
 msgctxt "discord-integration"
 msgid "_w61wP"
 msgstr "Tillbaka till servern"
 
-#: ../../packages/integration-discord/src/buttons/show-in-portal.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "ORGv1Q"
+msgstr "Skapad"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "agOXPD"
+msgstr "Storlek"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "oL0rU6"
+msgstr "Låst"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "a5msuh"
+msgstr "Ja"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "oUWADl"
+msgstr "Inga"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "zz6ObK"
+msgstr "Återställa"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "qXCbgZ"
+msgstr "Låsa upp"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "Zl4_y9"
+msgstr "Låsa"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "K3r6DQ"
+msgstr "Radera"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "2u-6YO"
+msgstr "Tillbaka till säkerhetskopior"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "QPFWVq"
+msgstr "Servern fortsätter att köra medan säkerhetskopian tas. Det kan ta flera minuter."
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "HAlOn1"
+msgstr "Namn"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "Bvg3KH"
+msgstr "Så känner du igen den här säkerhetskopian senare."
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "dQpBgM"
+msgstr "Före uppgradering"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "C8rGez"
+msgstr "Återställa den här säkerhetskopian?"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "pcZWbD"
+msgstr "Allt som just nu finns på serverns disk ersätts med innehållet i den här säkerhetskopian. Servern stoppas under återställningen och allt som skapats sedan säkerhetskopian togs går förlorat."
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "VgpYlr"
+msgstr "Ta bort den här säkerhetskopian?"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "Ho45g6"
+msgstr "Säkerhetskopian tas bort från lagringen och kan inte återskapas."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "Bwqhmd"
+msgstr "Brandvägg"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "WybD0S"
+msgstr "Brandväggen är alltid på. Det här är standardåtgärderna för allt som ingen av reglerna nedan omfattar."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "2Cuff9"
+msgstr "Inkommande: **{incoming}** · Utgående: **{outgoing}**"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "0EJN6x"
+msgstr "Visar {shown} av {total} regler. Hantera resten i portalen."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "ue2UOa"
+msgstr "Inga regler"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "7SSws8"
+msgstr "Den här servern har inga brandväggsregler. Med brandväggen på och inga regler är det bara standardpolicyerna ovan som avgör allt."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "kAAlGL"
+msgstr "Regler"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "xpPI_5"
+msgstr "Välj en regel att ta bort"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "Nqtcq5"
+msgstr "Standardpolicyer"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "gzM1em"
+msgstr "Lägg till regel"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "MHRs1u"
+msgstr "Lägg till brandväggsregel"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "QlsDcr"
+msgstr "Handling"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "ATw7BX"
+msgstr "ACCEPT, DROP eller REJECT. Läggs högst upp och kontrolleras därför först."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "0QLzxo"
+msgstr "Protokoll"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "8FY7Cm"
+msgstr "Till exempel tcp, udp eller icmp."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "WSxucy"
+msgstr "Destinationshamn"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "P4-ymJ"
+msgstr "En port, ett intervall som 8000:8100, eller lämna tomt."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "EUpNeO"
+msgstr "Källadress"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "21K9fI"
+msgstr "En adress eller ett nätverk. Tomt betyder varifrån som helst."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "LgbKvU"
+msgstr "Kommentar"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "SI8jUB"
+msgstr "Vad den här regeln är till för."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "vMpPa-"
+msgstr "Tillåt HTTPS"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "ZLl_FA"
+msgstr "Ta bort den här brandväggsregeln?"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "q6DHpk"
+msgstr "Regel #{pos} tas bort. Om det var regeln som gav dig åtkomst kan du låsa ute dig själv."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "MdFdbd"
+msgstr "Ta bort regel"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "BSLmiO"
+msgstr "Släpp igenom paketet"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "nI-IU7"
+msgstr "Kasta det tyst"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "nkFaIe"
+msgstr "Kasta det och meddela avsändaren"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "YDAX4F"
+msgstr "Vad som händer med ett paket som ingen regel omfattar. Låt inkommande stå på **DROP** om du inte vet varför du ändrar det."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "XumiMR"
+msgstr "Inkommande paket"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "MMByL_"
+msgstr "Utgående paket"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "uyszcP"
+msgstr "Standardåtgärd för inkommande paket"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "lOb0Lj"
+msgstr "Standardåtgärd för utgående paket"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "mxX1G1"
+msgstr "Tillbaka till brandväggen"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "XwWlMe"
+msgstr "Inställningar — {name}"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "db8X8t"
+msgstr "Allt som ändrar vad den här servern är."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "t2uvIi"
+msgstr "Operativsystem"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "iXNbPf"
+msgstr "Byt namn"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "fz0z4c"
+msgstr "Planera"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "tPfumK"
+msgstr "Installationsavbild"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "3Rx6Qo"
+msgstr "Avancerat"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "AQkpi3"
+msgstr "Installera om"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "A6VeUw"
+msgstr "Du har **{name}** — {cores, plural, =1 {# vCore} other {# vCores}}, {memory} RAM, {storage} lagring."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "GXCHD8"
+msgstr "Serverns abonnemang kunde inte fastställas."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "LR754a"
+msgstr "Förnyas för"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "5NTPq8"
+msgstr "Tillgängliga uppgraderingar"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "YbrRXR"
+msgstr " (uppgradera idag för {price})"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "-nInAI"
+msgstr "Byt abonnemang eller förnya"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "07Xf2y"
+msgstr "Tillbaka till inställningar"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "b3LGQk"
+msgstr "**{name}** är monterad. Starta om servern för att starta från den, eller avmontera den för att gå tillbaka till disken."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "BWwrKU"
+msgstr "Du har inga installationsavbilder redo. Lägg till en i kundportalen och montera den sedan här."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "U7qHPh"
+msgstr "Inget är monterat. En monterad avbild ansluts som en virtuell enhet; starta om servern efteråt för att starta från den."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "L2ufbn"
+msgstr "Går ut {when}"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "LkI5V4"
+msgstr "Välj en avbild att montera"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "UzHwi-"
+msgstr "Monterad just nu"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "u9VaJ3"
+msgstr "Avmontera"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "jQVfJU"
+msgstr "Hantera avbilder"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "mrzKVy"
+msgstr "Välj ett operativsystem att installera. **Allt som just nu finns på disken förstörs** och servern byggs upp från grunden. Ta en säkerhetskopia först om det finns något du vill behålla."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "kK9UBD"
+msgstr "Välj ett operativsystem"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+#: ../../packages/integration-discord/src/ui/confirm.ts
+msgctxt "discord-integration"
+msgid "47FYwb"
+msgstr "Avboka"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "VLFQi1"
+msgstr "Inställningar för fast programvara. Att ändra någon av dem startar om servern, och en maskin som installerats med den ena inställningen kanske inte startar med den andra."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "NjgW6o"
+msgstr "BIOS"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "AjQTa5"
+msgstr "UEFI"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "XHiVwa"
+msgstr "Legacy BIOS"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "KX3bZF"
+msgstr "TPM"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "450Fty"
+msgstr "Ingen"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "AhxnaN"
+msgstr "Använd legacy BIOS för den här servern."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "_eGTDl"
+msgstr "UEFI BIOS"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "oZyWxo"
+msgstr "Använd det nyare UEFI BIOS för den här servern."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "vl0-ZH"
+msgstr "Ingen TPM"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "3TcT6l"
+msgstr "Ingen trusted platform module."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "mPnVcE"
+msgstr "Krävs av Windows 11."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "9gz6MI"
+msgstr "Den äldre revisionen."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "_Z_CEb"
+msgstr "Byt namn på servern"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "UaxxLd"
+msgstr "Hur den här servern benämns i Virtbase."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "D02emF"
+msgstr "Installera om servern"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "ve6iIJ"
+msgstr "Allt på disken kommer att förstöras. Skriv det nya root-lösenordet för att fortsätta."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "n1HGlP"
+msgstr "Root-lösenord"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "LGDnPd"
+msgstr "En versal, en gemen, en siffra och minst 8 tecken."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "qM4VuW"
+msgstr "Installera om den här servern?"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "u3HAkl"
+msgstr "Disken rensas och operativsystemet installeras från grunden. Säkerhetskopior behålls, men allt på den körande servern går förlorat."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "4W-hOr"
+msgstr "Välj ett lösenord"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "QCv9lw"
+msgstr "Huvudmeny"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "gaUHYQ"
+msgstr "Välj en åtgärd i menyn nedan."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "U2slxM"
+msgstr "Hantera servrar"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "wtXIUF"
+msgstr "Vad kan den här boten?"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+#: ../../packages/integration-discord/src/features/stats/index.ts
 msgctxt "discord-integration"
 msgid "-uqHID"
 msgstr "Visa i portalen"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "dvr19k"
+msgstr "Konfiguration"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "S0rNC0"
+msgstr "Välkommen till Virtbase!"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "Kh0E7j"
+msgstr "Ditt Virtbase-konto är inte kopplat till Discord än."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "u_Hev8"
+msgstr "Följ stegen nedan för att koppla kontona:"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "ac8Iok"
+msgstr "1. Öppna kundportalen"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "f4ziLK"
+msgstr "Klicka på knappen nedan och logga in med ditt Virtbase-konto."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "2ZTNN3"
+msgstr "2. Koppla konton"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "XnY6rW"
+msgstr "Gå till ditt konto i kundportalen, under **Säkerhet** i **Autentisering**. Koppla ditt Discord-konto där."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "VRJHO_"
+msgstr "3. Upprepa kommandot"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "gCSCoh"
+msgstr "Upprepa kommandot när du vill utföra åtgärder."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "baD-Vp"
+msgstr "Länka mitt konto"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "PrkyZZ"
+msgstr "Installationsguide"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "uXREGV"
+msgstr "Bjud in Virtbase till din server"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "B3qx3D"
+msgstr "Klicka på knappen nedan för att lägga till Virtbase-integrationen på din Discord-server:"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "e68Bcd"
+msgstr "Lägg till på server"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "jWjN3Y"
+msgstr "Hantera dina servrar från Discord"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "lrRN8m"
+msgstr "Länka ditt Virtbase-konto en gång och kör sedan **/menu** för att hantera varje server du hyr — utan att öppna portalen."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "_AFP30"
+msgstr "🖥️ Servrar"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "Waq2D9"
+msgstr "Se varje server du hyr, med abonnemang, operativsystem, nod och IP-adresser."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "kzrJPG"
+msgstr "⚡ Ström"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "GTTrr5"
+msgstr "Starta, starta om, stäng av eller stoppa en server och läs av dess aktuella CPU-, minnes-, disk- och nätverksanvändning."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "ufCiKc"
+msgstr "📈 Statistik"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "6FCtEZ"
+msgstr "Se CPU-, minnes- och nätverksanvändning för den senaste timmen, dagen, veckan, månaden eller året."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "bqDCLE"
+msgstr "💾 Säkerhetskopior"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "XtvCXj"
+msgstr "Skapa, återställa och ta bort säkerhetskopior."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "3uIWlF"
+msgstr "🛡️ Brandvägg och rDNS"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "f2U7no"
+msgstr "Slå på eller av brandväggen, lägg till och ta bort regler och ange omvänd DNS för dina adresser."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "imThHA"
+msgstr "🔧 Inställningar"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "YcmU1n"
+msgstr "Byt namn på en server, installera om den med ett annat operativsystem, montera en installationsavbild och se över ditt abonnemang."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "OJkAII"
+msgstr "🔑 Åtkomst"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "TETrFT"
+msgstr "Öppna en engångslänk till konsolen och återställ administratörslösenordet."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "ChtMnC"
+msgstr "🏅 Länkade roller"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "HI_CMF"
+msgstr "Länka ditt konto så kan Discord-servrar ge dig roller utifrån hur länge du varit kund och hur många servrar du kör."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "hwV-OS"
+msgstr "Läs guiden"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "hCh8lk"
+msgstr "Kundportal"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "AgoOEq"
+msgstr "Tillbaka till menyn"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "ngKlxe"
+msgstr "Ström — {name}"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "tRnhH9"
+msgstr "CPU {bar}"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "JwRgMO"
+msgstr "RAM {bar} ({used} av {total})"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "AuSwGG"
+msgstr "Drifttid: {uptime}"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "2mkNcb"
+msgstr "Det aktuella tillståndet kunde inte läsas från noden."
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "mOFG3K"
+msgstr "Start"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "9U7nUR"
+msgstr "Starta om"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "CR9Lxh"
+msgstr "Stäng av"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "w6OTlP"
+msgstr "Tvinga stopp"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "QP2DrP"
+msgstr "Hård återställning"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "MC4BZC"
+msgstr "Tvinga stopp av den här servern?"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "5bZujk"
+msgstr "Utföra hård återställning av den här servern?"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "gYaoFx"
+msgstr "Detta bryter strömmen omedelbart, utan att låta operativsystemet stängas av. Osparade data kan gå förlorade."
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "kBgP-a"
+msgstr "Det motsvarar reset-knappen. Operativsystemet ombeds inte att stängas av och osparade data kan gå förlorade."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "LWepl5"
+msgstr "Omvänd DNS"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "6o2MqQ"
+msgstr "Inga omvända DNS-poster är angivna. Särskilt e-postservrar förväntar sig att en adress pekar tillbaka till sitt värdnamn."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "U8lx56"
+msgstr "De här posterna anger vilket värdnamn var och en av dina adresser pekar tillbaka till."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "yYYenE"
+msgstr "Välj en post att redigera eller ta bort"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "uObQkC"
+msgstr "Ange en post"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "uPDgth"
+msgstr "Värdnamn"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "HdibrD"
+msgstr "Ändra värdnamn"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "xFAbZq"
+msgstr "Tillbaka till poster"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "DuV8PO"
+msgstr "Ange omvänd DNS"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "Sy9t2g"
+msgstr "Adressen måste vara en av de adresser som tilldelats den här servern."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "ZbWc-A"
+msgstr "IP-adress"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "zUMAxj"
+msgstr "En av den här serverns adresser."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "YE0dUp"
+msgstr "Vad den här adressen ska peka tillbaka till."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "gzzmN5"
+msgstr "Ändra omvänd DNS"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "Ai4Weg"
+msgstr "Ta bort den här omvända DNS-posten?"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "R61yfz"
+msgstr "Adressen slutar peka tillbaka till sitt värdnamn. E-post som skickas från den kommer sannolikt att avvisas."
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "xl27nc"
+msgstr "Återställ lösenord"
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "Aev2Hy"
+msgstr "Den här åtgärden misslyckas om paketet `qemu-guest-agent` inte är installerat."
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "JCIgkj"
+msgstr "Användarnamn"
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "eREue0"
+msgstr "Oftast `root` på Linux och `Administrator` på Windows."
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "Ev6SEF"
+msgstr "Nytt lösenord"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "pN8BlF"
+msgstr "Följande servrar är kopplade till ditt konto och kan hanteras."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "0ZPfix"
+msgstr "Välj en server att hantera:"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "BGI16m"
+msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "tpfEY0"
+msgstr "{memory} RAM"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "cenOuc"
+msgstr "{storage} NVMe SSD"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "7F86ji"
+msgstr "Visa i portalen ↗"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "JGe_wh"
+msgstr "Välj en server"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "Vq3ifs"
+msgstr "Inga servrar tillgängliga"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "fUXt5C"
+msgstr "Du har inte hyrt några servrar än. Hyr en server för att hantera den via Discord-integrationen."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "67Bzc5"
+msgstr "Virtbase-butik"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "wbsq7O"
+msgstr "Användande"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "1-fy2I"
+msgstr "Disk {bar} ({used} av {total})"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "cvhvPu"
+msgstr "Trafik: {in} in / {out} ut"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "ivkv_L"
+msgstr "Nod"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "GaTcNW"
+msgstr "- Namn: {hostname}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "M1WTIv"
+msgstr "- Datacenter: {datacenter}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "SuwJeu"
+msgstr "- Uplink: {netrate}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "rnZkeW"
+msgstr "- CPU: {cpu_description}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "UlO1td"
+msgstr "Nätverksgränssnitt"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "1A_d7u"
+msgstr "Förnyas"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "YXoHk0"
+msgstr "Ström"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "F-02_l"
+msgstr "rDNS"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "D3idYv"
+msgstr "Inställningar"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "gc-2Z2"
+msgstr "Konsol"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "Yy_yDL"
+msgstr "Återställ lösenord"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "H3eDAS"
+msgstr "Statistik"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "NZAIyV"
+msgstr "Alla servrar"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "PlveeX"
+msgstr "Klicka på engångslänken nedan för att öppna konsolen:"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "8rmkQD"
+msgstr "Länken går ut om 10 sekunder."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "ELISMh"
+msgstr "Öppna konsol"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "GyeODL"
+msgstr "Lösenordet har återställts."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "n_xfjW"
+msgstr "Lösenordet för din server har återställts."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "pJ2eg6"
+msgstr "Du kan nu logga in på servern med det nya lösenordet."
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "s8HBot"
+msgstr "Senaste timmen"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "boa1qH"
+msgstr "Senaste dygnet"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "ynWMp2"
+msgstr "Senaste veckan"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "y9ZbeM"
+msgstr "Senaste månaden"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "4RJ4Im"
+msgstr "Senaste året"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "cQgU3V"
+msgstr "Statistik — {name}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "JN-P22"
+msgstr "Ingen data för den här perioden ännu. En server rapporterar användning bara medan den kör."
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "txpTlM"
+msgstr "{timeframe}, äldst till vänster."
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "9COc9n"
+msgstr "CPU — nu {now}, snitt {avg}, topp {peak}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "wBvha6"
+msgstr "Minne — nu {now}, snitt {avg}, topp {peak}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "xiYQvK"
+msgstr "Nätverk in — topp {peak}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "b4azRB"
+msgstr "Nätverk ut — topp {peak}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "DZ-Egm"
+msgstr "Period"
 
 #: ../../packages/integration-discord/src/localize.ts
 msgid "FvmV6q"
@@ -81,230 +1252,40 @@ msgstr "Offentlig nyckel"
 msgid "FYYjSc"
 msgstr "Används för att verifiera att interaktionsförfrågningar verkligen kom från Discord."
 
-#: ../../packages/integration-discord/src/messages/invite.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "uXREGV"
-msgstr "Bjud in Virtbase till din server"
+msgid "nDwv-3"
+msgstr "Något gick fel. Försök igen om en stund."
 
-#: ../../packages/integration-discord/src/messages/invite.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "yoX1pg"
-msgstr "Klicka på länken nedan för att lägga till Virtbase-integrationen på din Discord-server:"
+msgid "nRAtFh"
+msgstr "Den servern finns inte längre."
 
-#: ../../packages/integration-discord/src/messages/invite.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "6O3-aN"
-msgstr "Inbjudnings-URL"
+msgid "Bu3w9U"
+msgstr "Det får du inte göra."
 
-#: ../../packages/integration-discord/src/messages/main-menu.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "QCv9lw"
-msgstr "Huvudmeny"
+msgid "NAzXO_"
+msgstr "Några av uppgifterna du angav är ogiltiga."
 
-#: ../../packages/integration-discord/src/messages/main-menu.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "gaUHYQ"
-msgstr "Välj en åtgärd i menyn nedan."
+msgid "612Bxo"
+msgstr "Du gör det för ofta. Vänta ett ögonblick."
 
-#: ../../packages/integration-discord/src/messages/servers/actions/reset-server-password-success.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "GyeODL"
-msgstr "Lösenordet har återställts."
+msgid "eXkTwt"
+msgstr "Servern är upptagen med en annan uppgift. Vänta tills den är klar."
 
-#: ../../packages/integration-discord/src/messages/servers/actions/reset-server-password-success.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "n_xfjW"
-msgstr "Lösenordet för din server har återställts."
-
-#: ../../packages/integration-discord/src/messages/servers/actions/reset-server-password-success.ts
-msgctxt "discord-integration"
-msgid "pJ2eg6"
-msgstr "Du kan nu logga in på servern med det nya lösenordet."
-
-#: ../../packages/integration-discord/src/messages/servers/actions/server-console-success.ts
-msgctxt "discord-integration"
-msgid "PlveeX"
-msgstr "Klicka på engångslänken nedan för att öppna konsolen:"
-
-#: ../../packages/integration-discord/src/messages/servers/actions/server-console-success.ts
-msgctxt "discord-integration"
-msgid "8rmkQD"
-msgstr "Länken går ut om 10 sekunder."
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "t2uvIi"
-msgstr "Operativsystem"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "ivkv_L"
-msgstr "Nod"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "GaTcNW"
-msgstr "- Namn: {hostname}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "M1WTIv"
-msgstr "- Datacenter: {datacenter}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "SuwJeu"
-msgstr "- Uplink: {netrate}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "rnZkeW"
-msgstr "- CPU: {cpu_description}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "gs_Iys"
-msgstr "- RAM: {memory_description}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "9PSqfa"
-msgstr "- Lagring: {storage_description}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "UlO1td"
-msgstr "Nätverksgränssnitt"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list-empty.ts
-msgctxt "discord-integration"
-msgid "Vq3ifs"
-msgstr "Inga servrar tillgängliga"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list-empty.ts
-msgctxt "discord-integration"
-msgid "fUXt5C"
-msgstr "Du har inte hyrt några servrar än. Hyr en server för att hantera den via Discord-integrationen."
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list-empty.ts
-msgctxt "discord-integration"
-msgid "67Bzc5"
-msgstr "Virtbase-butik"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "pN8BlF"
-msgstr "Följande servrar är kopplade till ditt konto och kan hanteras."
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "0ZPfix"
-msgstr "Välj en server att hantera:"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "BGI16m"
-msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "tpfEY0"
-msgstr "{memory} RAM"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "cenOuc"
-msgstr "{storage} NVMe SSD"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "7F86ji"
-msgstr "Visa i portalen ↗"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "JGe_wh"
-msgstr "Välj en server"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "dvr19k"
-msgstr "Konfiguration"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "S0rNC0"
-msgstr "Välkommen till Virtbase!"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "Kh0E7j"
-msgstr "Ditt Virtbase-konto är inte kopplat till Discord än."
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "u_Hev8"
-msgstr "Följ stegen nedan för att koppla kontona:"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "ac8Iok"
-msgstr "1. Öppna kundportalen"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "f4ziLK"
-msgstr "Klicka på knappen nedan och logga in med ditt Virtbase-konto."
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "2ZTNN3"
-msgstr "2. Koppla konton"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "XnY6rW"
-msgstr "Gå till ditt konto i kundportalen, under **Säkerhet** i **Autentisering**. Koppla ditt Discord-konto där."
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "VRJHO_"
-msgstr "3. Upprepa kommandot"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "gCSCoh"
-msgstr "Upprepa kommandot när du vill utföra åtgärder."
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "xl27nc"
-msgstr "Återställ lösenord"
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "qHabR-"
-msgstr "Åtgärden misslyckas om paketet `qemu-quest-agent` inte är installerat."
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "JCIgkj"
-msgstr "Användarnamn"
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "eREue0"
-msgstr "Oftast `root` på Linux och `Administrator` på Windows."
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "Ev6SEF"
-msgstr "Nytt lösenord"
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "LGDnPd"
-msgstr "En versal, en gemen, en siffra och minst 8 tecken."
+msgid "3ASDbq"
+msgstr "Det fungerade inte"
 
 #: ../../packages/integration-discord/src/utils/create-embed.ts
 msgctxt "discord-integration"
@@ -959,6 +1940,7 @@ msgstr "Avancerat"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/backups/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/servers/components/backups/backups-card.tsx
 #: src/features/servers/components/server-nav.tsx
 msgid "T3lqx5"
@@ -972,6 +1954,7 @@ msgstr "Trösta"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/firewall/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/servers/components/server-nav.tsx
 msgid "Bwqhmd"
 msgstr "Brandvägg"
@@ -1003,6 +1986,7 @@ msgstr "Planera"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/rdns/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/servers/components/server-nav.tsx
 msgid "F-02_l"
 msgstr "rDNS"
@@ -1234,6 +2218,22 @@ msgstr "Bekräfta lösenord"
 #: src/features/auth/components/reset-password-form.tsx
 msgid "5sg7KC"
 msgstr "Lösenord"
+
+#: src/features/account/components/authentication/discord-bot-card.tsx
+msgid "jWjN3Y"
+msgstr "Hantera dina servrar från Discord"
+
+#: src/features/account/components/authentication/discord-bot-card.tsx
+msgid "0eStxB"
+msgstr "Starta och stoppa servrar, ta säkerhetskopior, redigera brandväggsregler och öppna en konsol — utan att lämna chatten. Länka ditt Discord-konto nedan och kör sedan /menu."
+
+#: src/features/account/components/authentication/discord-bot-card.tsx
+msgid "vEF59U"
+msgstr "Guide"
+
+#: src/features/account/components/authentication/discord-bot-card.tsx
+msgid "2Rwx1x"
+msgstr "Lägg till i Discord"
 
 #: src/features/account/components/authentication/regenerate-backup-codes-button.tsx
 msgid "6PgVSe"
@@ -2373,6 +3373,7 @@ msgid "17eYMk"
 msgstr "{usage} / ∞"
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/landing/components/server-stats-demo.tsx
 #: src/features/servers/components/server-graphs.tsx
 #: src/features/servers/components/server-stats-card.tsx
@@ -3079,6 +4080,58 @@ msgstr "Betald"
 msgid "TdTXXf"
 msgstr "Läs mer"
 
+#: src/features/landing/components/discord-bot-demo.tsx
+#: src/features/landing/components/server-stats-demo.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
+#: src/features/servers/components/server-graphs.tsx
+#: src/features/servers/components/server-stats-card.tsx
+msgid "QgBuiV"
+msgstr "CPU"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "zEgvvh"
+msgstr "NÄT"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "Ua-Cf7"
+msgstr "Hantera dina servrar"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "b_Pq29"
+msgstr "Vad den här boten kan"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "HiI_P4"
+msgstr "Lägg till den på en annan server"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "YXoHk0"
+msgstr "Ström"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "H3eDAS"
+msgstr "Statistik"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "2rUVsU"
+msgstr "APP"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "2ZWKh0"
+msgstr "I dag kl. 21.04"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "Wbc21W"
+msgstr "Virtbase – hosting, men säkert."
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "Ny1Wyk"
+msgstr "Bara du ser detta"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "TY8Ho1"
+msgstr "Kommandon"
+
 #: src/features/landing/components/server-firewall-demo.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
@@ -3123,13 +4176,6 @@ msgstr "Destinationshamn"
 #: src/features/servers/components/server-stats-card.tsx
 msgid "wbsq7O"
 msgstr "Användande"
-
-#: src/features/landing/components/server-stats-demo.tsx
-#: src/features/servers/components/overview/node-details-dialog.tsx
-#: src/features/servers/components/server-graphs.tsx
-#: src/features/servers/components/server-stats-card.tsx
-msgid "QgBuiV"
-msgstr "CPU"
 
 #: src/features/landing/components/server-stats-demo.tsx
 #: src/features/servers/components/server-graphs.tsx

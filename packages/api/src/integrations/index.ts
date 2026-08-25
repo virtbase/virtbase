@@ -34,8 +34,12 @@ import { TRPCServerManagement } from "./server-management";
 
 /**
  * Capabilities the application itself provides to integrations, exposed through
- * the same registry so a consumer cannot tell the difference. Always enabled:
- * it declares no configuration, so there is nothing for it to be missing.
+ * the same registry so a consumer cannot tell the difference.
+ *
+ * Always enabled, and the registry is what makes that true: an `internal`
+ * integration declaring neither settings nor secrets skips the config source
+ * entirely. It is hidden from the admin hub, so there is no switch to turn it
+ * on and no row for the source to find.
  */
 const core = defineIntegration({
   id: "core",
@@ -90,3 +94,4 @@ export const integrations = new IntegrationRegistry({
 });
 
 export { dispatchAccountLinked } from "./account-linked";
+export { type DiscordBotInfo, getDiscordBotInfo } from "./discord-bot";

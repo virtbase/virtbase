@@ -15,11 +15,13 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { cn } from "@virtbase/ui";
 import { Button } from "@virtbase/ui/button";
 import { getExtracted } from "next-intl/server";
 import type { ReactNode } from "react";
 
 import { IntlLink } from "@/i18n/navigation.public";
+import DiscordBotDemo from "./discord-bot-demo";
 import ServerFirewallDemo from "./server-firewall-demo";
 import ServerStatsDemo from "./server-stats-demo";
 
@@ -30,6 +32,7 @@ import ServerStatsDemo from "./server-stats-demo";
 const demos = {
   "server-stats": ServerStatsDemo,
   "server-firewall": ServerFirewallDemo,
+  "discord-bot": DiscordBotDemo,
 } as const;
 
 export type FeatureDemo = keyof typeof demos;
@@ -42,20 +45,37 @@ export async function Feature({
   title,
   demo,
   href,
+  wide,
   children,
 }: {
   title: string;
   demo: FeatureDemo;
   /** Optional target for the "Learn more" button. */
   href?: string;
+  /**
+   * Take the full width of the showcase instead of one column. For a demo that
+   * is laid out horizontally and would be squeezed into a single cell.
+   */
+  wide?: boolean;
   children?: ReactNode;
 }) {
   const t = await getExtracted();
   const Demo = demos[demo];
 
   return (
-    <div className="relative flex flex-col gap-10 px-4 py-6 sm:px-10 sm:py-14">
-      <div className="mask-[linear-gradient(black_50%,transparent)] relative h-72 overflow-hidden px-0 sm:h-[290px] lg:px-0">
+    <div
+      className={cn(
+        "relative flex flex-col gap-10 px-4 py-6 sm:px-10 sm:py-14",
+        wide && "md:col-span-2 md:border-grid-border md:border-t md:border-l-0",
+      )}
+    >
+      <div
+        className={cn(
+          "relative px-0 pt-px lg:px-0",
+          !wide &&
+            "mask-[linear-gradient(black_50%,transparent)] h-72 overflow-hidden sm:h-72.5",
+        )}
+      >
         <Demo inert />
       </div>
       <div className="relative flex flex-col text-base">

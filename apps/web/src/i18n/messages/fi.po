@@ -15,42 +15,1213 @@ msgstr ""
 "Language-Team: Finnish\n"
 "PO-Revision-Date: 2026-04-22 13:59\n"
 
-#: ../../packages/integration-discord/src/buttons/main-menu.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration"
-msgid "AgoOEq"
-msgstr "Takaisin valikkoon"
+msgid "T3lqx5"
+msgstr "Varmuuskopiot"
 
-#: ../../packages/integration-discord/src/buttons/manage-servers.ts
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration"
-msgid "U2slxM"
-msgstr "Hallinnoi palvelimia"
+msgid "ugAt-k"
+msgstr "Tällä palvelimella ei ole vielä varmuuskopioita. Luo sellainen, jotta voit palata tähän tilanteeseen myöhemmin."
 
-#: ../../packages/integration-discord/src/buttons/renew-server.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration"
-msgid "nWQFic"
-msgstr "Uudista"
+msgid "dGAzhe"
+msgstr "Varmuuskopio kattaa koko palvelimen. Sen palauttaminen korvaa kaiken levyllä olevan."
 
-#: ../../packages/integration-discord/src/buttons/reset-server-password.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration"
-msgid "Yy_yDL"
-msgstr "Nollaa salasana"
+msgid "3kNr3U"
+msgstr "Sivu {page} / {totalPages}"
 
-#: ../../packages/integration-discord/src/buttons/server-console.ts
-#: ../../packages/integration-discord/src/messages/servers/actions/server-console-success.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration"
-msgid "gc-2Z2"
-msgstr "Konsoli"
+msgid "b0Qt5R"
+msgstr "Käynnissä…"
 
-#: ../../packages/integration-discord/src/buttons/server-overview.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "FFGk_G"
+msgstr "Epäonnistui {when}"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "ROJojP"
+msgstr "Luotu {when}"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "l1LOYZ"
+msgstr "Koko: {size}"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "tABcGc"
+msgstr "Valitse varmuuskopio"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "iOPt-o"
+msgstr "Luo varmuuskopio"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "rELDbB"
+msgstr "Päivitä"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "JJNc3c"
+msgstr "Edellinen"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "9-Ddtu"
+msgstr "Seuraava"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+#: ../../packages/integration-discord/src/features/stats/index.ts
 msgctxt "discord-integration"
 msgid "_w61wP"
 msgstr "Takaisin palvelimelle"
 
-#: ../../packages/integration-discord/src/buttons/show-in-portal.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "ORGv1Q"
+msgstr "Luotu"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "agOXPD"
+msgstr "Koko"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "oL0rU6"
+msgstr "Lukittu"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "a5msuh"
+msgstr "Kyllä"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "oUWADl"
+msgstr "Ei"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "zz6ObK"
+msgstr "Palauttaa"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "qXCbgZ"
+msgstr "Avata"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "Zl4_y9"
+msgstr "Lukko"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "K3r6DQ"
+msgstr "Poistaa"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "2u-6YO"
+msgstr "Takaisin varmuuskopioihin"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "QPFWVq"
+msgstr "Palvelin jatkaa toimintaansa varmuuskopioinnin aikana. Se voi kestää useita minuutteja."
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "HAlOn1"
+msgstr "Nimi"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "Bvg3KH"
+msgstr "Mistä tunnistat tämän varmuuskopion myöhemmin."
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "dQpBgM"
+msgstr "Ennen päivitystä"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "C8rGez"
+msgstr "Palautetaanko tämä varmuuskopio?"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "pcZWbD"
+msgstr "Kaikki, mikä nyt on palvelimen levyllä, korvataan tämän varmuuskopion sisällöllä. Palvelin pysäytetään palautuksen ajaksi, ja kaikki varmuuskopion jälkeen syntynyt menetetään."
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "VgpYlr"
+msgstr "Poistetaanko tämä varmuuskopio?"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "Ho45g6"
+msgstr "Varmuuskopio poistetaan tallennustilasta eikä sitä voi palauttaa."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "Bwqhmd"
+msgstr "Palomuuri"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "WybD0S"
+msgstr "Palomuuri on aina päällä. Nämä ovat oletustoiminnot kaikelle, mihin mikään alla olevista säännöistä ei osu."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "2Cuff9"
+msgstr "Saapuva: **{incoming}** · Lähtevä: **{outgoing}**"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "0EJN6x"
+msgstr "Näytetään {shown}/{total} sääntöä. Hallitse loput asiakasportaalissa."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "ue2UOa"
+msgstr "Ei sääntöjä"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "7SSws8"
+msgstr "Tällä palvelimella ei ole palomuurisääntöjä. Kun palomuuri on päällä eikä sääntöjä ole, kaiken ratkaisevat yksin yllä olevat oletuskäytännöt."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "kAAlGL"
+msgstr "Säännöt"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "xpPI_5"
+msgstr "Valitse poistettava sääntö"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "Nqtcq5"
+msgstr "Oletuskäytännöt"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "gzM1em"
+msgstr "Lisää sääntö"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "MHRs1u"
+msgstr "Lisää palomuurisääntö"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "QlsDcr"
+msgstr "Toiminta"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "ATw7BX"
+msgstr "ACCEPT, DROP tai REJECT. Lisätään alkuun, joten se tarkistetaan ensimmäisenä."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "0QLzxo"
+msgstr "pöytäkirja"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "8FY7Cm"
+msgstr "Esimerkiksi tcp, udp tai icmp."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "WSxucy"
+msgstr "Kohdesatama"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "P4-ymJ"
+msgstr "Portti, väli kuten 8000:8100, tai jätä tyhjäksi."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "EUpNeO"
+msgstr "Lähdeosoite"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "21K9fI"
+msgstr "Osoite tai verkko. Tyhjä tarkoittaa mistä tahansa."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "LgbKvU"
+msgstr "Kommentti"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "SI8jUB"
+msgstr "Mihin tämä sääntö on tarkoitettu."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "vMpPa-"
+msgstr "Salli HTTPS"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "ZLl_FA"
+msgstr "Poistetaanko tämä palomuurisääntö?"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "q6DHpk"
+msgstr "Sääntö #{pos} poistetaan. Jos se oli sääntö, joka salli oman pääsysi, saatat lukita itsesi ulos."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "MdFdbd"
+msgstr "Poista sääntö"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "BSLmiO"
+msgstr "Päästä paketti läpi"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "nI-IU7"
+msgstr "Hylkää se hiljaisesti"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "nkFaIe"
+msgstr "Hylkää se ja ilmoita lähettäjälle"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "YDAX4F"
+msgstr "Mitä tapahtuu paketille, johon mikään sääntö ei osu. Jätä saapuva **DROP**-asetukseen, ellet tiedä miksi muutat sitä."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "XumiMR"
+msgstr "Saapuvat paketit"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "MMByL_"
+msgstr "Lähtevät paketit"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "uyszcP"
+msgstr "Oletustoiminto saapuville paketeille"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "lOb0Lj"
+msgstr "Oletustoiminto lähteville paketeille"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "mxX1G1"
+msgstr "Takaisin palomuuriin"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "XwWlMe"
+msgstr "Asetukset — {name}"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "db8X8t"
+msgstr "Kaikki, mikä muuttaa sitä, mikä tämä palvelin on."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "t2uvIi"
+msgstr "Käyttöjärjestelmä"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "iXNbPf"
+msgstr "Nimeä uudelleen"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "fz0z4c"
+msgstr "Suunnitelma"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "tPfumK"
+msgstr "Asennuslevykuva"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "3Rx6Qo"
+msgstr "Lisäasetukset"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "AQkpi3"
+msgstr "Asenna uudelleen"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "A6VeUw"
+msgstr "Käytössäsi on **{name}** — {cores, plural, =1 {# vCore} other {# vCores}}, {memory} RAM, {storage} tallennustilaa."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "GXCHD8"
+msgstr "Tämän palvelimen pakettia ei voitu määrittää."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "LR754a"
+msgstr "Uusitaan hintaan"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "5NTPq8"
+msgstr "Saatavilla olevat päivitykset"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "YbrRXR"
+msgstr " (päivitä tänään hintaan {price})"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "-nInAI"
+msgstr "Vaihda pakettia tai uusi"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "07Xf2y"
+msgstr "Takaisin asetuksiin"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "b3LGQk"
+msgstr "**{name}** on liitetty. Käynnistä palvelin uudelleen käynnistääksesi siitä, tai irrota se palataksesi levylle."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "BWwrKU"
+msgstr "Sinulla ei ole asennuslevykuvia valmiina. Lisää sellainen asiakasportaalissa ja liitä se sitten tässä."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "U7qHPh"
+msgstr "Mitään ei ole liitetty. Liitetty levykuva kytketään virtuaalisena asemana; käynnistä palvelin sen jälkeen uudelleen käynnistääksesi siitä."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "L2ufbn"
+msgstr "Vanhenee {when}"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "LkI5V4"
+msgstr "Valitse liitettävä levykuva"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "UzHwi-"
+msgstr "Liitettynä nyt"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "u9VaJ3"
+msgstr "Irrota"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "jQVfJU"
+msgstr "Hallitse levykuvia"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "mrzKVy"
+msgstr "Valitse asennettava käyttöjärjestelmä. **Kaikki, mikä nyt on levyllä, tuhotaan**, ja palvelin rakennetaan alusta. Ota ensin varmuuskopio, jos haluat säilyttää jotain."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "kK9UBD"
+msgstr "Valitse käyttöjärjestelmä"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+#: ../../packages/integration-discord/src/ui/confirm.ts
+msgctxt "discord-integration"
+msgid "47FYwb"
+msgstr "Peruuttaa"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "VLFQi1"
+msgstr "Laiteohjelmiston asetukset. Kummankin muuttaminen käynnistää palvelimen uudelleen, eikä yhdellä asetuksella asennettu kone välttämättä käynnisty toisella."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "NjgW6o"
+msgstr "BIOS"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "AjQTa5"
+msgstr "UEFI"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "XHiVwa"
+msgstr "Legacy BIOS"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "KX3bZF"
+msgstr "TPM"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "450Fty"
+msgstr "Ei mitään"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "AhxnaN"
+msgstr "Käytä legacy-BIOSia tälle palvelimelle."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "_eGTDl"
+msgstr "UEFI BIOS"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "oZyWxo"
+msgstr "Käytä uudempaa UEFI-BIOSia tälle palvelimelle."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "vl0-ZH"
+msgstr "Ei TPM:ää"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "3TcT6l"
+msgstr "Ei trusted platform module -piiriä."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "mPnVcE"
+msgstr "Windows 11 vaatii tämän."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "9gz6MI"
+msgstr "Vanhempi versio."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "_Z_CEb"
+msgstr "Nimeä palvelin uudelleen"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "UaxxLd"
+msgstr "Miten tämä palvelin on nimetty Virtbasessa."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "D02emF"
+msgstr "Asenna palvelin uudelleen"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "ve6iIJ"
+msgstr "Kaikki levyllä oleva tuhotaan. Kirjoita uusi root-salasana jatkaaksesi."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "n1HGlP"
+msgstr "Root-salasana"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "LGDnPd"
+msgstr "Yksi iso kirjain, yksi pieni, yksi numero ja vähintään 8 merkkiä."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "qM4VuW"
+msgstr "Asennetaanko tämä palvelin uudelleen?"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "u3HAkl"
+msgstr "Levy tyhjennetään ja käyttöjärjestelmä asennetaan alusta. Varmuuskopiot säilyvät, mutta kaikki käynnissä olevalla palvelimella oleva menetetään."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "4W-hOr"
+msgstr "Valitse salasana"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "QCv9lw"
+msgstr "Päävalikko"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "gaUHYQ"
+msgstr "Valitse toiminto alla olevasta valikosta."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "U2slxM"
+msgstr "Hallinnoi palvelimia"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "wtXIUF"
+msgstr "Mitä tämä botti osaa?"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+#: ../../packages/integration-discord/src/features/stats/index.ts
 msgctxt "discord-integration"
 msgid "-uqHID"
 msgstr "Näytä portaalissa"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "dvr19k"
+msgstr "Asetukset"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "S0rNC0"
+msgstr "Tervetuloa Virtbaseen!"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "Kh0E7j"
+msgstr "Virtbase-tiliäsi ei ole vielä yhdistetty Discord-tiliisi."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "u_Hev8"
+msgstr "Yhdistä tilit seuraamalla alla olevia ohjeita:"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "ac8Iok"
+msgstr "1. Avaa asiakasportaali"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "f4ziLK"
+msgstr "Klikkaa alla olevaa painiketta ja kirjaudu Virtbase-tililläsi."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "2ZTNN3"
+msgstr "2. Yhdistä tilit"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "XnY6rW"
+msgstr "Siirry asiakasportaalissa tilillesi, kohtaan **Turvallisuus**, osio **Todennus**. Yhdistä Discord-tilisi siellä."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "VRJHO_"
+msgstr "3. Toista komento"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "gCSCoh"
+msgstr "Toista komento kun haluat suorittaa toimintoja."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "baD-Vp"
+msgstr "Yhdistä tilini"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "PrkyZZ"
+msgstr "Käyttöönotto-opas"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "uXREGV"
+msgstr "Kutsu Virtbase palvelimellesi"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "B3qx3D"
+msgstr "Napsauta alla olevaa painiketta lisätäksesi Virtbase-integraation Discord-palvelimellesi:"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "e68Bcd"
+msgstr "Lisää palvelimelle"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "jWjN3Y"
+msgstr "Hallitse palvelimiasi Discordista"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "lrRN8m"
+msgstr "Yhdistä Virtbase-tilisi kerran ja hallitse sitten komennolla **/menu** jokaista vuokraamaasi palvelinta — avaamatta portaalia."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "_AFP30"
+msgstr "🖥️ Palvelimet"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "Waq2D9"
+msgstr "Näe jokainen vuokraamasi palvelin pakettinsa, käyttöjärjestelmänsä, solmunsa ja IP-osoitteidensa kanssa."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "kzrJPG"
+msgstr "⚡ Virta"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "GTTrr5"
+msgstr "Käynnistä, käynnistä uudelleen, sammuta tai pysäytä palvelin ja lue sen reaaliaikainen suorittimen, muistin, levyn ja verkon käyttö."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "ufCiKc"
+msgstr "📈 Tilastot"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "6FCtEZ"
+msgstr "Katso suorittimen, muistin ja verkon käyttö viime tunnilta, vuorokaudelta, viikolta, kuukaudelta tai vuodelta."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "bqDCLE"
+msgstr "💾 Varmuuskopiot"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "XtvCXj"
+msgstr "Luo, palauta ja poista varmuuskopioita."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "3uIWlF"
+msgstr "🛡️ Palomuuri ja rDNS"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "f2U7no"
+msgstr "Kytke palomuuri päälle tai pois, lisää ja poista sääntöjä ja aseta käänteinen DNS osoitteillesi."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "imThHA"
+msgstr "🔧 Asetukset"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "YcmU1n"
+msgstr "Nimeä palvelin uudelleen, asenna se toisella käyttöjärjestelmällä, liitä asennuslevykuva ja tarkastele pakettiasi."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "OJkAII"
+msgstr "🔑 Käyttöoikeus"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "TETrFT"
+msgstr "Avaa kertakäyttöinen konsolilinkki ja nollaa järjestelmänvalvojan salasana."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "ChtMnC"
+msgstr "🏅 Yhdistetyt roolit"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "HI_CMF"
+msgstr "Yhdistä tilisi, niin Discord-palvelimet voivat myöntää sinulle rooleja sen perusteella, kuinka kauan olet ollut asiakas ja kuinka monta palvelinta sinulla on."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "hwV-OS"
+msgstr "Lue opas"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "hCh8lk"
+msgstr "Asiakasportaali"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "AgoOEq"
+msgstr "Takaisin valikkoon"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "ngKlxe"
+msgstr "Virta — {name}"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "tRnhH9"
+msgstr "CPU {bar}"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "JwRgMO"
+msgstr "RAM {bar} ({used} / {total})"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "AuSwGG"
+msgstr "Käyttöaika: {uptime}"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "2mkNcb"
+msgstr "Nykyistä tilaa ei voitu lukea solmulta."
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "mOFG3K"
+msgstr "Aloita"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "9U7nUR"
+msgstr "Käynnistä uudelleen"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "CR9Lxh"
+msgstr "Sammuta"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "w6OTlP"
+msgstr "Pakota pysäytys"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "QP2DrP"
+msgstr "Kova nollaus"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "MC4BZC"
+msgstr "Pakotetaanko tämän palvelimen pysäytys?"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "5bZujk"
+msgstr "Tehdäänkö tälle palvelimelle kova nollaus?"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "gYaoFx"
+msgstr "Tämä katkaisee virran heti antamatta käyttöjärjestelmän sammua. Tallentamattomat tiedot voivat kadota."
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "kBgP-a"
+msgstr "Tämä vastaa reset-painiketta. Käyttöjärjestelmää ei pyydetä sammumaan, ja tallentamattomat tiedot voivat kadota."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "LWepl5"
+msgstr "Käänteinen DNS"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "6o2MqQ"
+msgstr "Käänteisen DNS:n tietueita ei ole asetettu. Erityisesti sähköpostipalvelimet odottavat, että osoite viittaa takaisin isäntänimeensä."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "U8lx56"
+msgstr "Nämä tietueet kertovat, mihin isäntänimeen kukin osoitteistasi viittaa takaisin."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "yYYenE"
+msgstr "Valitse muokattava tai poistettava tietue"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "uObQkC"
+msgstr "Aseta tietue"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "uPDgth"
+msgstr "Isäntänimi"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "HdibrD"
+msgstr "Vaihda isäntänimi"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "xFAbZq"
+msgstr "Takaisin tietueisiin"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "DuV8PO"
+msgstr "Aseta käänteinen DNS"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "Sy9t2g"
+msgstr "Osoitteen on oltava yksi tälle palvelimelle varatuista osoitteista."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "ZbWc-A"
+msgstr "IP-osoite"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "zUMAxj"
+msgstr "Yksi tämän palvelimen osoitteista."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "YE0dUp"
+msgstr "Mihin tämän osoitteen tulisi viitata takaisin."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "gzzmN5"
+msgstr "Vaihda käänteinen DNS"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "Ai4Weg"
+msgstr "Poistetaanko tämä käänteisen DNS:n tietue?"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "R61yfz"
+msgstr "Osoite lakkaa viittaamasta takaisin isäntänimeensä. Siitä lähetetty sähköposti hylätään todennäköisesti."
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "xl27nc"
+msgstr "Nollaa salasana"
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "Aev2Hy"
+msgstr "Tämä toiminto epäonnistuu, jos pakettia `qemu-guest-agent` ei ole asennettu."
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "JCIgkj"
+msgstr "Käyttäjätunnus"
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "eREue0"
+msgstr "Linuxilla yleensä `root`, Windowsissa `Administrator`."
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "Ev6SEF"
+msgstr "Uusi salasana"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "pN8BlF"
+msgstr "Seuraavat palvelimet on liitetty tiliisi ja niitä voi hallita."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "0ZPfix"
+msgstr "Valitse palvelin hallittavaksi:"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "BGI16m"
+msgstr "{cores, plural, =0 {# vCorea} =1 {# vCore} other {# vCorea}}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "tpfEY0"
+msgstr "{memory} RAM"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "cenOuc"
+msgstr "{storage} NVMe SSD"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "7F86ji"
+msgstr "Näytä portaalissa ↗"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "JGe_wh"
+msgstr "Valitse palvelin"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "Vq3ifs"
+msgstr "Ei palvelimia saatavilla"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "fUXt5C"
+msgstr "Et ole vielä vuokrannut palvelimia. Vuokraa palvelin hallitaksesi sitä Discord-integraation kautta."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "67Bzc5"
+msgstr "Virtbase-kauppa"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "wbsq7O"
+msgstr "Käyttö"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "1-fy2I"
+msgstr "Levy {bar} ({used} / {total})"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "cvhvPu"
+msgstr "Liikenne: {in} sisään / {out} ulos"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "ivkv_L"
+msgstr "Solmu"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "GaTcNW"
+msgstr "- Nimi: {hostname}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "M1WTIv"
+msgstr "- Palvelinkeskus: {datacenter}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "SuwJeu"
+msgstr "- Uplink: {netrate}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "rnZkeW"
+msgstr "- CPU: {cpu_description}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "UlO1td"
+msgstr "Verkkoliitännät"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "1A_d7u"
+msgstr "Uusiutuu"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "YXoHk0"
+msgstr "Virta"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "F-02_l"
+msgstr "rDNS"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "D3idYv"
+msgstr "Asetukset"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "gc-2Z2"
+msgstr "Konsoli"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "Yy_yDL"
+msgstr "Nollaa salasana"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "H3eDAS"
+msgstr "Tilastot"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "NZAIyV"
+msgstr "Kaikki palvelimet"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "PlveeX"
+msgstr "Klikkaa alla olevaa kertakäyttölinkkiä avataksesi konsolin:"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "8rmkQD"
+msgstr "Tämä linkki vanhenee 10 sekunnissa."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "ELISMh"
+msgstr "Avaa konsoli"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "GyeODL"
+msgstr "Salasana nollattu onnistuneesti."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "n_xfjW"
+msgstr "Palvelimesi salasana on nollattu onnistuneesti."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "pJ2eg6"
+msgstr "Voit nyt kirjautua palvelimelle uudella salasanalla."
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "s8HBot"
+msgstr "Viime tunti"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "boa1qH"
+msgstr "Viime vuorokausi"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "ynWMp2"
+msgstr "Viime viikko"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "y9ZbeM"
+msgstr "Viime kuukausi"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "4RJ4Im"
+msgstr "Viime vuosi"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "cQgU3V"
+msgstr "Tilastot — {name}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "JN-P22"
+msgstr "Tältä ajanjaksolta ei ole vielä tietoja. Palvelin raportoi käyttöä vain käynnissä ollessaan."
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "txpTlM"
+msgstr "{timeframe}, vanhimmat vasemmalla."
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "9COc9n"
+msgstr "CPU — nyt {now}, keskiarvo {avg}, huippu {peak}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "wBvha6"
+msgstr "Muisti — nyt {now}, keskiarvo {avg}, huippu {peak}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "xiYQvK"
+msgstr "Verkko sisään — huippu {peak}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "b4azRB"
+msgstr "Verkko ulos — huippu {peak}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "DZ-Egm"
+msgstr "Ajanjakso"
 
 #: ../../packages/integration-discord/src/localize.ts
 msgid "FvmV6q"
@@ -81,230 +1252,40 @@ msgstr "Julkinen avain"
 msgid "FYYjSc"
 msgstr "Käytetään varmistamaan, että vuorovaikutuspyynnöt tulivat todella Discordista."
 
-#: ../../packages/integration-discord/src/messages/invite.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "uXREGV"
-msgstr "Kutsu Virtbase palvelimellesi"
+msgid "nDwv-3"
+msgstr "Jokin meni pieleen. Yritä hetken kuluttua uudelleen."
 
-#: ../../packages/integration-discord/src/messages/invite.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "yoX1pg"
-msgstr "Klikkaa alla olevaa linkkiä lisätäksesi Virtbase-integraation Discord-palvelimellesi:"
+msgid "nRAtFh"
+msgstr "Kyseistä palvelinta ei ole enää olemassa."
 
-#: ../../packages/integration-discord/src/messages/invite.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "6O3-aN"
-msgstr "Kutsulinkki"
+msgid "Bu3w9U"
+msgstr "Sinulla ei ole lupaa tehdä sitä."
 
-#: ../../packages/integration-discord/src/messages/main-menu.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "QCv9lw"
-msgstr "Päävalikko"
+msgid "NAzXO_"
+msgstr "Jotkin antamistasi tiedoista eivät kelpaa."
 
-#: ../../packages/integration-discord/src/messages/main-menu.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "gaUHYQ"
-msgstr "Valitse toiminto alla olevasta valikosta."
+msgid "612Bxo"
+msgstr "Teet sitä liian usein. Odota hetki."
 
-#: ../../packages/integration-discord/src/messages/servers/actions/reset-server-password-success.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "GyeODL"
-msgstr "Salasana nollattu onnistuneesti."
+msgid "eXkTwt"
+msgstr "Palvelin on varattu toiseen tehtävään. Odota, että se valmistuu."
 
-#: ../../packages/integration-discord/src/messages/servers/actions/reset-server-password-success.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "n_xfjW"
-msgstr "Palvelimesi salasana on nollattu onnistuneesti."
-
-#: ../../packages/integration-discord/src/messages/servers/actions/reset-server-password-success.ts
-msgctxt "discord-integration"
-msgid "pJ2eg6"
-msgstr "Voit nyt kirjautua palvelimelle uudella salasanalla."
-
-#: ../../packages/integration-discord/src/messages/servers/actions/server-console-success.ts
-msgctxt "discord-integration"
-msgid "PlveeX"
-msgstr "Klikkaa alla olevaa kertakäyttölinkkiä avataksesi konsolin:"
-
-#: ../../packages/integration-discord/src/messages/servers/actions/server-console-success.ts
-msgctxt "discord-integration"
-msgid "8rmkQD"
-msgstr "Tämä linkki vanhenee 10 sekunnissa."
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "t2uvIi"
-msgstr "Käyttöjärjestelmä"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "ivkv_L"
-msgstr "Solmu"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "GaTcNW"
-msgstr "- Nimi: {hostname}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "M1WTIv"
-msgstr "- Palvelinkeskus: {datacenter}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "SuwJeu"
-msgstr "- Uplink: {netrate}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "rnZkeW"
-msgstr "- CPU: {cpu_description}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "gs_Iys"
-msgstr "- RAM: {memory_description}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "9PSqfa"
-msgstr "- Tallennus: {storage_description}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "UlO1td"
-msgstr "Verkkoliitännät"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list-empty.ts
-msgctxt "discord-integration"
-msgid "Vq3ifs"
-msgstr "Ei palvelimia saatavilla"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list-empty.ts
-msgctxt "discord-integration"
-msgid "fUXt5C"
-msgstr "Et ole vielä vuokrannut palvelimia. Vuokraa palvelin hallitaksesi sitä Discord-integraation kautta."
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list-empty.ts
-msgctxt "discord-integration"
-msgid "67Bzc5"
-msgstr "Virtbase-kauppa"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "pN8BlF"
-msgstr "Seuraavat palvelimet on liitetty tiliisi ja niitä voi hallita."
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "0ZPfix"
-msgstr "Valitse palvelin hallittavaksi:"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "BGI16m"
-msgstr "{cores, plural, =0 {# vCorea} =1 {# vCore} other {# vCorea}}"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "tpfEY0"
-msgstr "{memory} RAM"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "cenOuc"
-msgstr "{storage} NVMe SSD"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "7F86ji"
-msgstr "Näytä portaalissa ↗"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "JGe_wh"
-msgstr "Valitse palvelin"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "dvr19k"
-msgstr "Asetukset"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "S0rNC0"
-msgstr "Tervetuloa Virtbaseen!"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "Kh0E7j"
-msgstr "Virtbase-tiliäsi ei ole vielä yhdistetty Discord-tiliisi."
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "u_Hev8"
-msgstr "Yhdistä tilit seuraamalla alla olevia ohjeita:"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "ac8Iok"
-msgstr "1. Avaa asiakasportaali"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "f4ziLK"
-msgstr "Klikkaa alla olevaa painiketta ja kirjaudu Virtbase-tililläsi."
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "2ZTNN3"
-msgstr "2. Yhdistä tilit"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "XnY6rW"
-msgstr "Siirry asiakasportaalissa tilillesi, kohtaan **Turvallisuus**, osio **Todennus**. Yhdistä Discord-tilisi siellä."
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "VRJHO_"
-msgstr "3. Toista komento"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "gCSCoh"
-msgstr "Toista komento kun haluat suorittaa toimintoja."
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "xl27nc"
-msgstr "Nollaa salasana"
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "qHabR-"
-msgstr "Toiminto epäonnistuu, jos pakettia `qemu-quest-agent` ei ole asennettu."
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "JCIgkj"
-msgstr "Käyttäjätunnus"
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "eREue0"
-msgstr "Linuxilla yleensä `root`, Windowsissa `Administrator`."
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "Ev6SEF"
-msgstr "Uusi salasana"
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "LGDnPd"
-msgstr "Yksi iso kirjain, yksi pieni, yksi numero ja vähintään 8 merkkiä."
+msgid "3ASDbq"
+msgstr "Se ei onnistunut"
 
 #: ../../packages/integration-discord/src/utils/create-embed.ts
 msgctxt "discord-integration"
@@ -959,6 +1940,7 @@ msgstr "Lisäasetukset"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/backups/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/servers/components/backups/backups-card.tsx
 #: src/features/servers/components/server-nav.tsx
 msgid "T3lqx5"
@@ -972,6 +1954,7 @@ msgstr "Konsoli"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/firewall/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/servers/components/server-nav.tsx
 msgid "Bwqhmd"
 msgstr "Palomuuri"
@@ -1003,6 +1986,7 @@ msgstr "Suunnitelma"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/rdns/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/servers/components/server-nav.tsx
 msgid "F-02_l"
 msgstr "rDNS"
@@ -1234,6 +2218,22 @@ msgstr "Vahvista salasana"
 #: src/features/auth/components/reset-password-form.tsx
 msgid "5sg7KC"
 msgstr "Salasana"
+
+#: src/features/account/components/authentication/discord-bot-card.tsx
+msgid "jWjN3Y"
+msgstr "Hallitse palvelimiasi Discordista"
+
+#: src/features/account/components/authentication/discord-bot-card.tsx
+msgid "0eStxB"
+msgstr "Käynnistä ja pysäytä palvelimia, ota varmuuskopioita, muokkaa palomuurisääntöjä ja avaa konsoli — poistumatta keskustelusta. Yhdistä Discord-tilisi alla ja aja sitten /menu."
+
+#: src/features/account/components/authentication/discord-bot-card.tsx
+msgid "vEF59U"
+msgstr "Opas"
+
+#: src/features/account/components/authentication/discord-bot-card.tsx
+msgid "2Rwx1x"
+msgstr "Lisää Discordiin"
 
 #: src/features/account/components/authentication/regenerate-backup-codes-button.tsx
 msgid "6PgVSe"
@@ -2373,6 +3373,7 @@ msgid "17eYMk"
 msgstr "{usage} / ∞"
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/landing/components/server-stats-demo.tsx
 #: src/features/servers/components/server-graphs.tsx
 #: src/features/servers/components/server-stats-card.tsx
@@ -3079,6 +4080,58 @@ msgstr "Maksettu"
 msgid "TdTXXf"
 msgstr "Lue lisää"
 
+#: src/features/landing/components/discord-bot-demo.tsx
+#: src/features/landing/components/server-stats-demo.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
+#: src/features/servers/components/server-graphs.tsx
+#: src/features/servers/components/server-stats-card.tsx
+msgid "QgBuiV"
+msgstr "CPU"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "zEgvvh"
+msgstr "VERKKO"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "Ua-Cf7"
+msgstr "Hallitse palvelimiasi"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "b_Pq29"
+msgstr "Mitä tämä botti osaa"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "HiI_P4"
+msgstr "Lisää se toiselle palvelimelle"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "YXoHk0"
+msgstr "Virta"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "H3eDAS"
+msgstr "Tilastot"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "2rUVsU"
+msgstr "APP"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "2ZWKh0"
+msgstr "Tänään klo 21.04"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "Wbc21W"
+msgstr "Virtbase – hostingia, turvallisesti."
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "Ny1Wyk"
+msgstr "Vain sinä näet tämän"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "TY8Ho1"
+msgstr "Komennot"
+
 #: src/features/landing/components/server-firewall-demo.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
@@ -3123,13 +4176,6 @@ msgstr "Kohdesatama"
 #: src/features/servers/components/server-stats-card.tsx
 msgid "wbsq7O"
 msgstr "Käyttö"
-
-#: src/features/landing/components/server-stats-demo.tsx
-#: src/features/servers/components/overview/node-details-dialog.tsx
-#: src/features/servers/components/server-graphs.tsx
-#: src/features/servers/components/server-stats-card.tsx
-msgid "QgBuiV"
-msgstr "CPU"
 
 #: src/features/landing/components/server-stats-demo.tsx
 #: src/features/servers/components/server-graphs.tsx

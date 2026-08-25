@@ -18,6 +18,7 @@
 import type { APIApplicationCommand } from "discord-api-types/v10";
 import { ApplicationCommandType } from "discord-api-types/v10";
 import {
+  helpCommandDescriptionLocalizations,
   inviteCommandDescriptionLocalizations,
   menuCommandDescriptionLocalizations,
 } from "./command-description-localizations";
@@ -38,6 +39,12 @@ export const commands = {
     name: "menu",
     description: "Show the main menu with all available actions",
     description_localizations: { ...menuCommandDescriptionLocalizations },
+    type: ApplicationCommandType.ChatInput,
+  },
+  help: {
+    name: "help",
+    description: "Learn what the Virtbase bot can do and how to set it up",
+    description_localizations: { ...helpCommandDescriptionLocalizations },
     type: ApplicationCommandType.ChatInput,
   },
 } satisfies Record<string, Command>;

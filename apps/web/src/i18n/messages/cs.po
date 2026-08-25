@@ -15,42 +15,1213 @@ msgstr ""
 "Language-Team: Czech\n"
 "PO-Revision-Date: 2026-04-22 13:59\n"
 
-#: ../../packages/integration-discord/src/buttons/main-menu.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration"
-msgid "AgoOEq"
-msgstr "Zpět do menu"
+msgid "T3lqx5"
+msgstr "Zálohy"
 
-#: ../../packages/integration-discord/src/buttons/manage-servers.ts
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration"
-msgid "U2slxM"
-msgstr "Spravovat servery"
+msgid "ugAt-k"
+msgstr "Tento server zatím nemá žádné zálohy. Vytvoř jednu, aby ses k tomuto stavu mohl později vrátit."
 
-#: ../../packages/integration-discord/src/buttons/renew-server.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration"
-msgid "nWQFic"
+msgid "dGAzhe"
+msgstr "Záloha zachytí celý server. Její obnovení nahradí vše, co je na disku."
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "3kNr3U"
+msgstr "Stránka {page} z {totalPages}"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "b0Qt5R"
+msgstr "Probíhá…"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "FFGk_G"
+msgstr "Selhalo {when}"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "ROJojP"
+msgstr "Vytvořeno {when}"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "l1LOYZ"
+msgstr "Velikost: {size}"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "tABcGc"
+msgstr "Vyber zálohu"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "iOPt-o"
+msgstr "Vytvořit zálohu"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "rELDbB"
 msgstr "Obnovit"
 
-#: ../../packages/integration-discord/src/buttons/reset-server-password.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration"
-msgid "Yy_yDL"
-msgstr "Resetovat heslo"
+msgid "JJNc3c"
+msgstr "Předchozí"
 
-#: ../../packages/integration-discord/src/buttons/server-console.ts
-#: ../../packages/integration-discord/src/messages/servers/actions/server-console-success.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration"
-msgid "gc-2Z2"
-msgstr "Konzole"
+msgid "9-Ddtu"
+msgstr "Další"
 
-#: ../../packages/integration-discord/src/buttons/server-overview.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+#: ../../packages/integration-discord/src/features/stats/index.ts
 msgctxt "discord-integration"
 msgid "_w61wP"
 msgstr "Zpět na server"
 
-#: ../../packages/integration-discord/src/buttons/show-in-portal.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "ORGv1Q"
+msgstr "Vytvořeno"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "agOXPD"
+msgstr "Velikost"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "oL0rU6"
+msgstr "Uzamčeno"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "a5msuh"
+msgstr "Ano"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "oUWADl"
+msgstr "Ne"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "zz6ObK"
+msgstr "Obnovit"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "qXCbgZ"
+msgstr "Odemknout"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "Zl4_y9"
+msgstr "Uzamknout"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "K3r6DQ"
+msgstr "Smazat"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "2u-6YO"
+msgstr "Zpět na zálohy"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "QPFWVq"
+msgstr "Server během zálohování běží dál. Může to trvat několik minut."
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "HAlOn1"
+msgstr "Název"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "Bvg3KH"
+msgstr "Podle čeho tuto zálohu později poznáš."
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "dQpBgM"
+msgstr "Před upgradem"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "C8rGez"
+msgstr "Obnovit tuto zálohu?"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "pcZWbD"
+msgstr "Vše, co je nyní na disku serveru, bude nahrazeno obsahem této zálohy. Server je po dobu obnovy zastaven a vše, co vzniklo od pořízení zálohy, bude ztraceno."
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "VgpYlr"
+msgstr "Smazat tuto zálohu?"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "Ho45g6"
+msgstr "Záloha bude odstraněna z úložiště a nelze ji obnovit."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "Bwqhmd"
+msgstr "Firewall"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "WybD0S"
+msgstr "Firewall je vždy zapnutý. Toto jsou výchozí akce použité na vše, co neodpovídá žádnému z pravidel níže."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "2Cuff9"
+msgstr "Příchozí: **{incoming}** · Odchozí: **{outgoing}**"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "0EJN6x"
+msgstr "Zobrazeno {shown} z {total} pravidel. Ostatní spravuj v zákaznickém portálu."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "ue2UOa"
+msgstr "Žádná pravidla"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "7SSws8"
+msgstr "Tento server nemá žádná pravidla firewallu. Se zapnutým firewallem a bez pravidel rozhodují o všem jen výchozí zásady výše."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "kAAlGL"
+msgstr "Pravidla"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "xpPI_5"
+msgstr "Vyber pravidlo ke smazání"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "Nqtcq5"
+msgstr "Výchozí zásady"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "gzM1em"
+msgstr "Přidat pravidlo"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "MHRs1u"
+msgstr "Přidat pravidlo firewallu"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "QlsDcr"
+msgstr "Akce"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "ATw7BX"
+msgstr "ACCEPT, DROP nebo REJECT. Přidává se na začátek, takže se kontroluje jako první."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "0QLzxo"
+msgstr "Protokol"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "8FY7Cm"
+msgstr "Například tcp, udp nebo icmp."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "WSxucy"
+msgstr "Cílový port"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "P4-ymJ"
+msgstr "Port, rozsah jako 8000:8100, nebo nech prázdné."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "EUpNeO"
+msgstr "Zdrojová adresa"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "21K9fI"
+msgstr "Adresa nebo síť. Prázdné znamená odkudkoli."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "LgbKvU"
+msgstr "Komentář"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "SI8jUB"
+msgstr "K čemu toto pravidlo slouží."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "vMpPa-"
+msgstr "Povolit HTTPS"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "ZLl_FA"
+msgstr "Smazat toto pravidlo firewallu?"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "q6DHpk"
+msgstr "Pravidlo #{pos} bude odstraněno. Pokud šlo o pravidlo umožňující tvůj vlastní přístup, můžeš si zablokovat cestu dovnitř."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "MdFdbd"
+msgstr "Smazat pravidlo"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "BSLmiO"
+msgstr "Paket propustit"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "nI-IU7"
+msgstr "Tiše zahodit"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "nkFaIe"
+msgstr "Zahodit a uvědomit odesílatele"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "YDAX4F"
+msgstr "Co se stane s paketem, kterému neodpovídá žádné pravidlo. Nech příchozí na **DROP**, pokud nevíš, proč to měníš."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "XumiMR"
+msgstr "Příchozí pakety"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "MMByL_"
+msgstr "Odchozí pakety"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "uyszcP"
+msgstr "Výchozí akce pro příchozí pakety"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "lOb0Lj"
+msgstr "Výchozí akce pro odchozí pakety"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "mxX1G1"
+msgstr "Zpět na firewall"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "XwWlMe"
+msgstr "Nastavení — {name}"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "db8X8t"
+msgstr "Vše, co mění to, čím tento server je."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "t2uvIi"
+msgstr "Operační systém"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "iXNbPf"
+msgstr "Přejmenovat"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "fz0z4c"
+msgstr "Plán"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "tPfumK"
+msgstr "Instalační obraz"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "3Rx6Qo"
+msgstr "Rozšířené"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "AQkpi3"
+msgstr "Přeinstalovat"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "A6VeUw"
+msgstr "Máš **{name}** — {cores, plural, =1 {# vCore} other {# vCores}}, {memory} RAM, {storage} úložiště."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "GXCHD8"
+msgstr "Tarif tohoto serveru se nepodařilo zjistit."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "LR754a"
+msgstr "Obnovuje se za"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "5NTPq8"
+msgstr "Dostupné upgrady"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "YbrRXR"
+msgstr " (upgradovat dnes za {price})"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "-nInAI"
+msgstr "Změnit tarif nebo prodloužit"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "07Xf2y"
+msgstr "Zpět na nastavení"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "b3LGQk"
+msgstr "**{name}** je připojen. Restartuj server, aby z něj nabootoval, nebo ho odpoj a vrať se k disku."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "BWwrKU"
+msgstr "Nemáš připravené žádné instalační obrazy. Přidej jeden v zákaznickém portálu a pak ho tady připoj."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "U7qHPh"
+msgstr "Nic není připojeno. Připojený obraz se přidá jako virtuální mechanika; poté server restartuj, aby z něj nabootoval."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "L2ufbn"
+msgstr "Vyprší {when}"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "LkI5V4"
+msgstr "Vyber obraz k připojení"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "UzHwi-"
+msgstr "Aktuálně připojeno"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "u9VaJ3"
+msgstr "Odpojit"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "jQVfJU"
+msgstr "Spravovat obrazy"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "mrzKVy"
+msgstr "Vyber operační systém k instalaci. **Vše, co je nyní na disku, bude zničeno** a server se postaví úplně znovu. Pokud si chceš něco ponechat, udělej nejdřív zálohu."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "kK9UBD"
+msgstr "Vyber operační systém"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+#: ../../packages/integration-discord/src/ui/confirm.ts
+msgctxt "discord-integration"
+msgid "47FYwb"
+msgstr "Zrušit"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "VLFQi1"
+msgstr "Nastavení firmwaru. Změna kteréhokoli z nich restartuje server a stroj nainstalovaný při jednom nastavení nemusí při druhém nabootovat."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "NjgW6o"
+msgstr "BIOS"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "AjQTa5"
+msgstr "UEFI"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "XHiVwa"
+msgstr "Legacy BIOS"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "KX3bZF"
+msgstr "TPM"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "450Fty"
+msgstr "Žádný"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "AhxnaN"
+msgstr "Pro tento server použijte legacy BIOS."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "_eGTDl"
+msgstr "UEFI BIOS"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "oZyWxo"
+msgstr "Pro tento server použijte novější UEFI BIOS."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "vl0-ZH"
+msgstr "Bez TPM"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "3TcT6l"
+msgstr "Žádný modul TPM."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "mPnVcE"
+msgstr "Vyžadováno Windows 11."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "9gz6MI"
+msgstr "Starší revize."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "_Z_CEb"
+msgstr "Přejmenovat server"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "UaxxLd"
+msgstr "Jak je tento server označen ve Virtbase."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "D02emF"
+msgstr "Přeinstalovat server"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "ve6iIJ"
+msgstr "Vše na disku bude zničeno. Pro pokračování zadej nové heslo roota."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "n1HGlP"
+msgstr "Heslo roota"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "LGDnPd"
+msgstr "Jedno velké písmeno, jedno malé, jedna číslice, minimálně 8 znaků."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "qM4VuW"
+msgstr "Přeinstalovat tento server?"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "u3HAkl"
+msgstr "Disk se smaže a operační systém se nainstaluje úplně znovu. Zálohy zůstanou zachovány, ale vše na běžícím serveru bude ztraceno."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "4W-hOr"
+msgstr "Zvolit heslo"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "QCv9lw"
+msgstr "Hlavní menu"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "gaUHYQ"
+msgstr "Vyber akci z menu níže."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "U2slxM"
+msgstr "Spravovat servery"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "wtXIUF"
+msgstr "Co tento bot umí?"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+#: ../../packages/integration-discord/src/features/stats/index.ts
 msgctxt "discord-integration"
 msgid "-uqHID"
 msgstr "Ukázat v portálu"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "dvr19k"
+msgstr "Nastavení"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "S0rNC0"
+msgstr "Vítej ve Virtbase!"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "Kh0E7j"
+msgstr "Tvůj účet Virtbase zatím není propojený s Discordem."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "u_Hev8"
+msgstr "Postupuj podle kroků níže a propoj účty:"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "ac8Iok"
+msgstr "1. Otevři zákaznický portál"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "f4ziLK"
+msgstr "Klikni na tlačítko níže a přihlas se účtem Virtbase."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "2ZTNN3"
+msgstr "2. Propoj účty"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "XnY6rW"
+msgstr "V zákaznickém portálu přejdi na svůj účet, v sekci **Zabezpečení** u **Ověřování**. Tam propoj svůj Discord účet."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "VRJHO_"
+msgstr "3. Zopakuj příkaz"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "gCSCoh"
+msgstr "Příkaz zopakuj, až budeš chtít něco udělat."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "baD-Vp"
+msgstr "Propojit můj účet"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "PrkyZZ"
+msgstr "Návod k nastavení"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "uXREGV"
+msgstr "Pozvi Virtbase na svůj server"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "B3qx3D"
+msgstr "Klikni na tlačítko níže a přidej integraci Virtbase na svůj Discord server:"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "e68Bcd"
+msgstr "Přidat na server"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "jWjN3Y"
+msgstr "Spravuj své servery z Discordu"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "lrRN8m"
+msgstr "Jednou propoj svůj účet Virtbase a pak pomocí **/menu** spravuj každý server, který si pronajímáš — bez otevírání portálu."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "_AFP30"
+msgstr "🖥️ Servery"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "Waq2D9"
+msgstr "Podívej se na každý pronajatý server včetně tarifu, operačního systému, uzlu a IP adres."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "kzrJPG"
+msgstr "⚡ Napájení"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "GTTrr5"
+msgstr "Spusť, restartuj, vypni nebo zastav server a přečti si jeho aktuální využití procesoru, paměti, disku a sítě."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "ufCiKc"
+msgstr "📈 Statistiky"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "6FCtEZ"
+msgstr "Podívej se na využití procesoru, paměti a sítě za poslední hodinu, den, týden, měsíc nebo rok."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "bqDCLE"
+msgstr "💾 Zálohy"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "XtvCXj"
+msgstr "Vytvářet, obnovovat a mazat zálohy."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "3uIWlF"
+msgstr "🛡️ Firewall a rDNS"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "f2U7no"
+msgstr "Zapni nebo vypni firewall, přidávej a odebírej pravidla a nastavuj reverzní DNS pro své adresy."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "imThHA"
+msgstr "🔧 Nastavení"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "YcmU1n"
+msgstr "Přejmenuj server, přeinstaluj ho s jiným operačním systémem, připoj instalační obraz a prohlédni si svůj tarif."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "OJkAII"
+msgstr "🔑 Přístup"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "TETrFT"
+msgstr "Otevři jednorázový odkaz na konzoli a resetuj heslo správce."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "ChtMnC"
+msgstr "🏅 Propojené role"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "HI_CMF"
+msgstr "Propoj svůj účet a Discord servery ti mohou udělovat role podle toho, jak dlouho jsi zákazníkem a kolik serverů provozuješ."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "hwV-OS"
+msgstr "Přečíst návod"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "hCh8lk"
+msgstr "Zákaznický portál"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "AgoOEq"
+msgstr "Zpět do menu"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "ngKlxe"
+msgstr "Napájení — {name}"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "tRnhH9"
+msgstr "CPU {bar}"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "JwRgMO"
+msgstr "RAM {bar} ({used} z {total})"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "AuSwGG"
+msgstr "Doba běhu: {uptime}"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "2mkNcb"
+msgstr "Aktuální stav se nepodařilo z uzlu načíst."
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "mOFG3K"
+msgstr "Spustit"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "9U7nUR"
+msgstr "Restartovat"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "CR9Lxh"
+msgstr "Vypnout"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "w6OTlP"
+msgstr "Vynutit zastavení"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "QP2DrP"
+msgstr "Tvrdý reset"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "MC4BZC"
+msgstr "Vynutit zastavení tohoto serveru?"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "5bZujk"
+msgstr "Provést tvrdý reset tohoto serveru?"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "gYaoFx"
+msgstr "Tím se okamžitě odpojí napájení, aniž by se operační systém stihl vypnout. Neuložená data mohou být ztracena."
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "kBgP-a"
+msgstr "Je to obdoba tlačítka reset. Operační systém není požádán o vypnutí a neuložená data mohou být ztracena."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "LWepl5"
+msgstr "Reverzní DNS"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "6o2MqQ"
+msgstr "Nejsou nastaveny žádné záznamy reverzního DNS. Zejména poštovní servery očekávají, že se adresa přeloží zpět na své jméno hostitele."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "U8lx56"
+msgstr "Tyto záznamy určují, na jaké jméno hostitele se každá z tvých adres překládá zpět."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "yYYenE"
+msgstr "Vyber záznam k úpravě nebo smazání"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "uObQkC"
+msgstr "Nastavit záznam"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "uPDgth"
+msgstr "Hostname"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "HdibrD"
+msgstr "Změnit jméno hostitele"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "xFAbZq"
+msgstr "Zpět na záznamy"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "DuV8PO"
+msgstr "Nastavit reverzní DNS"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "Sy9t2g"
+msgstr "Adresa musí být jedna z adres přidělených tomuto serveru."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "ZbWc-A"
+msgstr "IP adresa"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "zUMAxj"
+msgstr "Jedna z adres tohoto serveru."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "YE0dUp"
+msgstr "Na co se má tato adresa překládat zpět."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "gzzmN5"
+msgstr "Změnit reverzní DNS"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "Ai4Weg"
+msgstr "Smazat tento záznam reverzního DNS?"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "R61yfz"
+msgstr "Adresa se přestane překládat zpět na své jméno hostitele. Pošta z ní odeslaná bude pravděpodobně odmítnuta."
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "xl27nc"
+msgstr "Reset hesla"
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "Aev2Hy"
+msgstr "Tato akce selže, pokud není nainstalován balíček `qemu-guest-agent`."
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "JCIgkj"
+msgstr "Uživatelské jméno"
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "eREue0"
+msgstr "U Linuxu většinou `root`, u Windows `Administrator`."
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "Ev6SEF"
+msgstr "Nové heslo"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "pN8BlF"
+msgstr "Následující servery jsou přiřazené k tvému účtu a můžeš je spravovat."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "0ZPfix"
+msgstr "Vyber server, který chceš spravovat:"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "BGI16m"
+msgstr "{cores, plural, =0 {# vCore} =1 {# vCore} other {# vCore}}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "tpfEY0"
+msgstr "{memory} RAM"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "cenOuc"
+msgstr "{storage} NVMe SSD"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "7F86ji"
+msgstr "Zobrazit v portálu ↗"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "JGe_wh"
+msgstr "Vyber server"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "Vq3ifs"
+msgstr "Žádné servery k dispozici"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "fUXt5C"
+msgstr "Ještě sis nepronajal žádný server. Pronajmi si server a spravuj ho přes Discord integraci."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "67Bzc5"
+msgstr "Virtbase obchod"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "wbsq7O"
+msgstr "Využití"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "1-fy2I"
+msgstr "Disk {bar} ({used} z {total})"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "cvhvPu"
+msgstr "Provoz: {in} příchozí / {out} odchozí"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "ivkv_L"
+msgstr "Uzel"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "GaTcNW"
+msgstr "- Název: {hostname}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "M1WTIv"
+msgstr "- Datacentrum: {datacenter}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "SuwJeu"
+msgstr "- Uplink: {netrate}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "rnZkeW"
+msgstr "- CPU: {cpu_description}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "UlO1td"
+msgstr "Síťová rozhraní"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "1A_d7u"
+msgstr "Obnovuje se"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "YXoHk0"
+msgstr "Napájení"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "F-02_l"
+msgstr "rDNS"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "D3idYv"
+msgstr "Nastavení"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "gc-2Z2"
+msgstr "Konzole"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "Yy_yDL"
+msgstr "Resetovat heslo"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "H3eDAS"
+msgstr "Statistiky"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "NZAIyV"
+msgstr "Všechny servery"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "PlveeX"
+msgstr "Klikni na jednorázový odkaz níže pro přístup ke konzoli:"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "8rmkQD"
+msgstr "Tento odkaz vyprší za 10 sekund."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "ELISMh"
+msgstr "Otevřít konzoli"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "GyeODL"
+msgstr "Heslo bylo úspěšně resetováno."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "n_xfjW"
+msgstr "Heslo k tvému serveru bylo úspěšně resetováno."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "pJ2eg6"
+msgstr "Teď se můžeš na server přihlásit novým heslem."
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "s8HBot"
+msgstr "Poslední hodina"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "boa1qH"
+msgstr "Poslední den"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "ynWMp2"
+msgstr "Poslední týden"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "y9ZbeM"
+msgstr "Poslední měsíc"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "4RJ4Im"
+msgstr "Poslední rok"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "cQgU3V"
+msgstr "Statistiky — {name}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "JN-P22"
+msgstr "Za toto období zatím nejsou žádná data. Server hlásí využití, jen když běží."
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "txpTlM"
+msgstr "{timeframe}, nejstarší vlevo."
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "9COc9n"
+msgstr "CPU — nyní {now}, průměr {avg}, špička {peak}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "wBvha6"
+msgstr "Paměť — nyní {now}, průměr {avg}, špička {peak}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "xiYQvK"
+msgstr "Síť příchozí — špička {peak}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "b4azRB"
+msgstr "Síť odchozí — špička {peak}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "DZ-Egm"
+msgstr "Období"
 
 #: ../../packages/integration-discord/src/localize.ts
 msgid "FvmV6q"
@@ -81,230 +1252,40 @@ msgstr "Veřejný klíč"
 msgid "FYYjSc"
 msgstr "Slouží k ověření, že požadavky na interakce skutečně pocházejí z Discordu."
 
-#: ../../packages/integration-discord/src/messages/invite.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "uXREGV"
-msgstr "Pozvi Virtbase na svůj server"
+msgid "nDwv-3"
+msgstr "Něco se pokazilo. Zkus to prosím za chvíli znovu."
 
-#: ../../packages/integration-discord/src/messages/invite.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "yoX1pg"
-msgstr "Klikni na odkaz níže a přidej integraci Virtbase na svůj Discord server:"
+msgid "nRAtFh"
+msgstr "Tento server už neexistuje."
 
-#: ../../packages/integration-discord/src/messages/invite.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "6O3-aN"
-msgstr "Odkaz na pozvánku"
+msgid "Bu3w9U"
+msgstr "To ti není dovoleno."
 
-#: ../../packages/integration-discord/src/messages/main-menu.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "QCv9lw"
-msgstr "Hlavní menu"
+msgid "NAzXO_"
+msgstr "Některé ze zadaných údajů nejsou platné."
 
-#: ../../packages/integration-discord/src/messages/main-menu.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "gaUHYQ"
-msgstr "Vyber akci z menu níže."
+msgid "612Bxo"
+msgstr "Děláš to příliš často. Chvíli prosím počkej."
 
-#: ../../packages/integration-discord/src/messages/servers/actions/reset-server-password-success.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "GyeODL"
-msgstr "Heslo bylo úspěšně resetováno."
+msgid "eXkTwt"
+msgstr "Server je zaneprázdněn jinou úlohou. Počkej prosím, až skončí."
 
-#: ../../packages/integration-discord/src/messages/servers/actions/reset-server-password-success.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "n_xfjW"
-msgstr "Heslo k tvému serveru bylo úspěšně resetováno."
-
-#: ../../packages/integration-discord/src/messages/servers/actions/reset-server-password-success.ts
-msgctxt "discord-integration"
-msgid "pJ2eg6"
-msgstr "Teď se můžeš na server přihlásit novým heslem."
-
-#: ../../packages/integration-discord/src/messages/servers/actions/server-console-success.ts
-msgctxt "discord-integration"
-msgid "PlveeX"
-msgstr "Klikni na jednorázový odkaz níže pro přístup ke konzoli:"
-
-#: ../../packages/integration-discord/src/messages/servers/actions/server-console-success.ts
-msgctxt "discord-integration"
-msgid "8rmkQD"
-msgstr "Tento odkaz vyprší za 10 sekund."
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "t2uvIi"
-msgstr "Operační systém"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "ivkv_L"
-msgstr "Uzel"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "GaTcNW"
-msgstr "- Název: {hostname}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "M1WTIv"
-msgstr "- Datacentrum: {datacenter}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "SuwJeu"
-msgstr "- Uplink: {netrate}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "rnZkeW"
-msgstr "- CPU: {cpu_description}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "gs_Iys"
-msgstr "- RAM: {memory_description}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "9PSqfa"
-msgstr "- Úložiště: {storage_description}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "UlO1td"
-msgstr "Síťová rozhraní"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list-empty.ts
-msgctxt "discord-integration"
-msgid "Vq3ifs"
-msgstr "Žádné servery k dispozici"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list-empty.ts
-msgctxt "discord-integration"
-msgid "fUXt5C"
-msgstr "Ještě sis nepronajal žádný server. Pronajmi si server a spravuj ho přes Discord integraci."
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list-empty.ts
-msgctxt "discord-integration"
-msgid "67Bzc5"
-msgstr "Virtbase obchod"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "pN8BlF"
-msgstr "Následující servery jsou přiřazené k tvému účtu a můžeš je spravovat."
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "0ZPfix"
-msgstr "Vyber server, který chceš spravovat:"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "BGI16m"
-msgstr "{cores, plural, =0 {# vCore} =1 {# vCore} other {# vCore}}"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "tpfEY0"
-msgstr "{memory} RAM"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "cenOuc"
-msgstr "{storage} NVMe SSD"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "7F86ji"
-msgstr "Zobrazit v portálu ↗"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "JGe_wh"
-msgstr "Vyber server"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "dvr19k"
-msgstr "Nastavení"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "S0rNC0"
-msgstr "Vítej ve Virtbase!"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "Kh0E7j"
-msgstr "Tvůj účet Virtbase zatím není propojený s Discordem."
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "u_Hev8"
-msgstr "Postupuj podle kroků níže a propoj účty:"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "ac8Iok"
-msgstr "1. Otevři zákaznický portál"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "f4ziLK"
-msgstr "Klikni na tlačítko níže a přihlas se účtem Virtbase."
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "2ZTNN3"
-msgstr "2. Propoj účty"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "XnY6rW"
-msgstr "V zákaznickém portálu přejdi na svůj účet, v sekci **Zabezpečení** u **Ověřování**. Tam propoj svůj Discord účet."
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "VRJHO_"
-msgstr "3. Zopakuj příkaz"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "gCSCoh"
-msgstr "Příkaz zopakuj, až budeš chtít něco udělat."
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "xl27nc"
-msgstr "Reset hesla"
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "qHabR-"
-msgstr "Akce selže, pokud není nainstalovaný balíček `qemu-quest-agent`."
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "JCIgkj"
-msgstr "Uživatelské jméno"
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "eREue0"
-msgstr "U Linuxu většinou `root`, u Windows `Administrator`."
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "Ev6SEF"
-msgstr "Nové heslo"
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "LGDnPd"
-msgstr "Jedno velké písmeno, jedno malé, jedna číslice, minimálně 8 znaků."
+msgid "3ASDbq"
+msgstr "To se nepovedlo"
 
 #: ../../packages/integration-discord/src/utils/create-embed.ts
 msgctxt "discord-integration"
@@ -959,6 +1940,7 @@ msgstr "Rozšířené"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/backups/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/servers/components/backups/backups-card.tsx
 #: src/features/servers/components/server-nav.tsx
 msgid "T3lqx5"
@@ -972,6 +1954,7 @@ msgstr "Konzole"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/firewall/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/servers/components/server-nav.tsx
 msgid "Bwqhmd"
 msgstr "Firewall"
@@ -1003,6 +1986,7 @@ msgstr "Plán"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/rdns/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/servers/components/server-nav.tsx
 msgid "F-02_l"
 msgstr "rDNS"
@@ -1234,6 +2218,22 @@ msgstr "Potvrdit heslo"
 #: src/features/auth/components/reset-password-form.tsx
 msgid "5sg7KC"
 msgstr "Heslo"
+
+#: src/features/account/components/authentication/discord-bot-card.tsx
+msgid "jWjN3Y"
+msgstr "Spravuj své servery z Discordu"
+
+#: src/features/account/components/authentication/discord-bot-card.tsx
+msgid "0eStxB"
+msgstr "Spouštěj a zastavuj servery, vytvářej zálohy, upravuj pravidla firewallu a otevírej konzoli — bez opuštění chatu. Propoj níže svůj účet Discord a pak použij /menu."
+
+#: src/features/account/components/authentication/discord-bot-card.tsx
+msgid "vEF59U"
+msgstr "Návod"
+
+#: src/features/account/components/authentication/discord-bot-card.tsx
+msgid "2Rwx1x"
+msgstr "Přidat na Discord"
 
 #: src/features/account/components/authentication/regenerate-backup-codes-button.tsx
 msgid "6PgVSe"
@@ -2373,6 +3373,7 @@ msgid "17eYMk"
 msgstr "{usage} / ∞"
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/landing/components/server-stats-demo.tsx
 #: src/features/servers/components/server-graphs.tsx
 #: src/features/servers/components/server-stats-card.tsx
@@ -3079,6 +4080,58 @@ msgstr "Zaplaceno"
 msgid "TdTXXf"
 msgstr "Zjistit víc"
 
+#: src/features/landing/components/discord-bot-demo.tsx
+#: src/features/landing/components/server-stats-demo.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
+#: src/features/servers/components/server-graphs.tsx
+#: src/features/servers/components/server-stats-card.tsx
+msgid "QgBuiV"
+msgstr "CPU"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "zEgvvh"
+msgstr "SÍŤ"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "Ua-Cf7"
+msgstr "Spravuj své servery"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "b_Pq29"
+msgstr "Co tento bot umí"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "HiI_P4"
+msgstr "Přidej ho na další server"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "YXoHk0"
+msgstr "Napájení"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "H3eDAS"
+msgstr "Statistiky"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "2rUVsU"
+msgstr "APP"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "2ZWKh0"
+msgstr "Dnes v 21:04"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "Wbc21W"
+msgstr "Virtbase – hosting, ale bezpečně."
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "Ny1Wyk"
+msgstr "Vidíš to jen ty"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "TY8Ho1"
+msgstr "Příkazy"
+
 #: src/features/landing/components/server-firewall-demo.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
@@ -3123,13 +4176,6 @@ msgstr "Cílový port"
 #: src/features/servers/components/server-stats-card.tsx
 msgid "wbsq7O"
 msgstr "Využití"
-
-#: src/features/landing/components/server-stats-demo.tsx
-#: src/features/servers/components/overview/node-details-dialog.tsx
-#: src/features/servers/components/server-graphs.tsx
-#: src/features/servers/components/server-stats-card.tsx
-msgid "QgBuiV"
-msgstr "CPU"
 
 #: src/features/landing/components/server-stats-demo.tsx
 #: src/features/servers/components/server-graphs.tsx

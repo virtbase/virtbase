@@ -15,6 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { Suspense } from "react";
+import { DiscordBotCard } from "@/features/account/components/authentication/discord-bot-card";
 import { UserPasskeysCard } from "@/features/account/components/authentication/user-passkeys-card";
 import { UserProvidersCard } from "@/features/account/components/authentication/user-providers-card";
 import { UserSessionsCard } from "@/features/account/components/authentication/user-sessions-card";
@@ -23,6 +25,9 @@ import { UserTfaCard } from "@/features/account/components/authentication/user-t
 export default function Page() {
   return (
     <>
+      <Suspense>
+        <DiscordBotCard />
+      </Suspense>
       <UserProvidersCard />
       <UserTfaCard />
       <UserPasskeysCard />

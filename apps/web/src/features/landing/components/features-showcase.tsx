@@ -23,7 +23,7 @@ import type { ReactNode } from "react";
 export function FeaturesShowcase({ children }: { children?: ReactNode }) {
   return (
     <div className="grid grid-cols-1 border-grid-border md:grid-cols-2">
-      <div className="contents divide-grid-border max-md:divide-y md:divide-x">
+      <div className="contents divide-grid-border max-md:divide-y md:divide-x md:[&>*:nth-child(2n)]:border-r-0">
         {children}
       </div>
     </div>

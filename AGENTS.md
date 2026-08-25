@@ -204,11 +204,15 @@ application still boots and serves. Generate a key with
 
 Some credentials are still read from the environment because application code
 outside the registry reads them directly: `STRIPE_SECRET_KEY` and
-`STRIPE_WEBHOOK_SECRET` (the module-level client, checkout, the webhook route),
-the four `ANONPAY_*` variables (checkout and the webhook route), and
-`DISCORD_APP_ID` / `DISCORD_BOT_TOKEN` (the build-time registration scripts, the
-linked-role route, and the login scope decision). Those consumers have to move
-behind a port before the variables can go.
+`STRIPE_WEBHOOK_SECRET` (the module-level client, checkout, the webhook route)
+and the four `ANONPAY_*` variables (checkout and the webhook route). Those
+consumers have to move behind a port before the variables can go.
+
+Discord no longer has any. Its application id, bot token and public key live in
+the configuration store, and what used to be two hand-run registration scripts
+is now `onEnable` plus `health` — see `packages/integration-discord/README.md`.
+`DISCORD_CLIENT_ID` and `DISCORD_CLIENT_SECRET` remain, but they belong to
+better-auth's social login rather than to the integration.
 
 The admin console has a hub at `/admin.virtbase.com/integrations`, grouped by
 category, and a detail page at `/integrations/<id>` with the enable switch,

@@ -62,3 +62,24 @@ export const menuCommandDescriptionLocalizations = {
   "sv-SE": "Visa huvudmenyn med alla tillgängliga åtgärder",
   tr: "Tüm işlemlerle ana menüyü göster",
 } as const satisfies DescriptionLocalizations;
+
+export const helpCommandDescriptionLocalizations = {
+  cs: "Zjisti, co bot Virtbase umí a jak ho nastavit",
+  da: "Se hvad Virtbase-botten kan, og hvordan du sætter den op",
+  de: "Erfahre, was der Virtbase-Bot kann und wie du ihn einrichtest",
+  el: "Μάθε τι μπορεί να κάνει το bot Virtbase και πώς να το ρυθμίσεις",
+  "en-GB": "Learn what the Virtbase bot can do and how to set it up",
+  "es-419": "Descubre qué puede hacer el bot de Virtbase y cómo configurarlo",
+  "es-ES": "Descubre qué puede hacer el bot de Virtbase y cómo configurarlo",
+  fi: "Katso mitä Virtbase-botti osaa ja miten se otetaan käyttöön",
+  fr: "Découvre ce que le bot Virtbase peut faire et comment le configurer",
+  hu: "Nézd meg, mit tud a Virtbase bot és hogyan állítható be",
+  it: "Scopri cosa può fare il bot Virtbase e come configurarlo",
+  nl: "Ontdek wat de Virtbase-bot kan en hoe je hem instelt",
+  no: "Se hva Virtbase-botten kan, og hvordan du setter den opp",
+  pl: "Sprawdź, co potrafi bot Virtbase i jak go skonfigurować",
+  "pt-BR": "Descobre o que o bot Virtbase faz e como o configurar",
+  ro: "Află ce poate face botul Virtbase și cum se configurează",
+  "sv-SE": "Se vad Virtbase-botten kan och hur du ställer in den",
+  tr: "Virtbase botunun neler yapabildiğini ve nasıl kurulacağını öğren",
+} as const satisfies DescriptionLocalizations;

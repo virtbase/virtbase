@@ -16,9 +16,11 @@
  */
 
 import { defineIntegration } from "@virtbase/integration-sdk";
+import { createDiscordClient, getApplication } from "./api";
 import { secretsSchema, settingsSchema } from "./config";
 import { DiscordIdentityProvider } from "./identity";
 import { localizeDiscord } from "./localize";
+import { runDiscordSync, summarizeSync } from "./sync";
 import { handleInteractionsRequest } from "./webhooks/interactions";
 
 export default defineIntegration({
@@ -78,21 +80,42 @@ export default defineIntegration({
 
   localize: localizeDiscord,
 
-  health: async (ctx) => {
-    const response = await fetch(
-      "https://discord.com/api/v10/applications/@me",
-      { headers: { Authorization: `Bot ${ctx.secrets.botToken}` } },
-    );
+  /**
+   * Registers the slash commands, role-connection metadata and emojis.
+   *
+   * This is the whole setup: an admin fills in the credentials and flips the
+   * switch, and there is no script left to remember to run.
+   */
+  onEnable: async (ctx) => {
+    const results = await runDiscordSync(ctx);
 
-    if (!response.ok) {
+    const failed = results.filter((result) => result.error);
+    if (failed.length > 0) {
+      // Surfaced to the admin who pressed the switch, which is the only moment
+      // anyone is watching. The integration stays enabled: the health cron
+      // retries, and a half-registered bot is still better than none.
+      throw new Error(summarizeSync(results));
+    }
+  },
+
+  health: async (ctx) => {
+    const client = createDiscordClient({
+      appId: ctx.settings.appId,
+      botToken: ctx.secrets.botToken,
+      logger: ctx.logger,
+    });
+
+    let application: { id?: string };
+    try {
+      application = await getApplication(client);
+    } catch (error) {
       return {
         status: "error",
         checkedAt: new Date(),
-        message: `Discord API returned ${response.status} ${response.statusText}`,
+        message: error instanceof Error ? error.message : String(error),
       };
     }
 
-    const application = (await response.json()) as { id?: string };
     if (application.id !== ctx.settings.appId) {
       return {
         status: "degraded",
@@ -102,6 +125,20 @@ export default defineIntegration({
       };
     }
 
-    return { status: "ok", checkedAt: new Date() };
+    // Registration is verified on every probe rather than only on enable, so
+    // a command deleted in the developer portal or added by a deployment is
+    // repaired within the health cron's half hour.
+    const results = await runDiscordSync(ctx);
+    const summary = summarizeSync(results);
+
+    if (results.some((result) => result.error)) {
+      return { status: "degraded", checkedAt: new Date(), message: summary };
+    }
+
+    return {
+      status: "ok",
+      checkedAt: new Date(),
+      ...(summary ? { message: summary } : {}),
+    };
   },
 });

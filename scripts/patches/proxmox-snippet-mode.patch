@@ -1,0 +1,32 @@
+--- a/API2/Storage/Status.pm
++++ b/API2/Storage/Status.pm
+@@ -633,6 +633,20 @@
+         # best effort to match apl_download behaviour
+         chmod 0644, $tmpfilename;
+ 
++        # A snippet whose first line is a shebang is a guest hookscript, and
++        # PVE::GuestHelpers::check_hookscript refuses one that is not
++        # executable. The upload API has no way to express a mode, so the
++        # interpreter line is what distinguishes a script from a cloud-init
++        # snippet. Data snippets stay 0644.
++        if ($content eq 'snippets') {
++            my $head = '';
++            if (open(my $fh, '<', $tmpfilename)) {
++                $head = <$fh> // '';
++                close($fh);
++            }
++            chmod 0755, $tmpfilename if $head =~ m/^#!/;
++        }
++
+         my $err_cleanup = sub { unlink $dest or $! == ENOENT or die "cleanup failed: $!\n" };
+ 
+         my $cmd;
+@@ -667,7 +681,7 @@
+         } else {
+             PVE::Storage::activate_storage($cfg, $storage);
+             File::Path::make_path($dirname);
+-            $cmd = ['cp', '--', $tmpfilename, $dest];
++            $cmd = ['cp', '--preserve=mode', '--', $tmpfilename, $dest];
+         }
+ 
+         # NOTE: we simply overwrite the destination file if it already exists

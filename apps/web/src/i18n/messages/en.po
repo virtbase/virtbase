@@ -6,42 +6,1213 @@ msgstr ""
 "X-Generator: next-intl\n"
 "X-Crowdin-SourceKey: msgstr\n"
 
-#: ../../packages/integration-discord/src/buttons/main-menu.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration"
-msgid "AgoOEq"
-msgstr "Back to menu"
+msgid "T3lqx5"
+msgstr "Backups"
 
-#: ../../packages/integration-discord/src/buttons/manage-servers.ts
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration"
-msgid "U2slxM"
-msgstr "Manage servers"
+msgid "ugAt-k"
+msgstr "This server has no backups yet. Create one to be able to roll back to this point later."
 
-#: ../../packages/integration-discord/src/buttons/renew-server.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration"
-msgid "nWQFic"
-msgstr "Renew"
+msgid "dGAzhe"
+msgstr "A backup captures the whole server. Restoring one replaces everything on the disk."
 
-#: ../../packages/integration-discord/src/buttons/reset-server-password.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration"
-msgid "Yy_yDL"
-msgstr "Reset password"
+msgid "3kNr3U"
+msgstr "Page {page} of {totalPages}"
 
-#: ../../packages/integration-discord/src/buttons/server-console.ts
-#: ../../packages/integration-discord/src/messages/servers/actions/server-console-success.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration"
-msgid "gc-2Z2"
-msgstr "Console"
+msgid "b0Qt5R"
+msgstr "In progress…"
 
-#: ../../packages/integration-discord/src/buttons/server-overview.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "FFGk_G"
+msgstr "Failed {when}"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "ROJojP"
+msgstr "Created {when}"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "l1LOYZ"
+msgstr "Size: {size}"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "tABcGc"
+msgstr "Select a backup"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "iOPt-o"
+msgstr "Create backup"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "rELDbB"
+msgstr "Refresh"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "JJNc3c"
+msgstr "Previous"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "9-Ddtu"
+msgstr "Next"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+#: ../../packages/integration-discord/src/features/stats/index.ts
 msgctxt "discord-integration"
 msgid "_w61wP"
 msgstr "Back to server"
 
-#: ../../packages/integration-discord/src/buttons/show-in-portal.ts
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "ORGv1Q"
+msgstr "Created"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "agOXPD"
+msgstr "Size"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "oL0rU6"
+msgstr "Locked"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "a5msuh"
+msgstr "Yes"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "oUWADl"
+msgstr "No"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "zz6ObK"
+msgstr "Restore"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "qXCbgZ"
+msgstr "Unlock"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "Zl4_y9"
+msgstr "Lock"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "K3r6DQ"
+msgstr "Delete"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "2u-6YO"
+msgstr "Back to backups"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "QPFWVq"
+msgstr "The server keeps running while the backup is taken. It may take several minutes."
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "HAlOn1"
+msgstr "Name"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "Bvg3KH"
+msgstr "How you will recognise this backup later."
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "dQpBgM"
+msgstr "Before upgrade"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "C8rGez"
+msgstr "Restore this backup?"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "pcZWbD"
+msgstr "Everything currently on the server's disk will be replaced by the contents of this backup. The server is stopped while it is restored, and anything created since the backup was taken is lost."
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "VgpYlr"
+msgstr "Delete this backup?"
+
+#: ../../packages/integration-discord/src/features/backups/index.ts
+msgctxt "discord-integration"
+msgid "Ho45g6"
+msgstr "The backup is removed from the storage and cannot be recovered."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "Bwqhmd"
+msgstr "Firewall"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "WybD0S"
+msgstr "The firewall is always on. These are the default actions applied to anything no rule below matches."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "2Cuff9"
+msgstr "Incoming: **{incoming}** · Outgoing: **{outgoing}**"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "0EJN6x"
+msgstr "Showing {shown} of {total} rules. Manage the rest in the portal."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "ue2UOa"
+msgstr "No rules"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "7SSws8"
+msgstr "This server has no firewall rules. With the firewall on and no rules, the default policies above decide everything."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "kAAlGL"
+msgstr "Rules"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "xpPI_5"
+msgstr "Select a rule to delete"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "Nqtcq5"
+msgstr "Default policies"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "gzM1em"
+msgstr "Add rule"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "MHRs1u"
+msgstr "Add firewall rule"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "QlsDcr"
+msgstr "Action"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "ATw7BX"
+msgstr "ACCEPT, DROP or REJECT. Added at the top, so it is checked first."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "0QLzxo"
+msgstr "Protocol"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "8FY7Cm"
+msgstr "For example tcp, udp or icmp."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "WSxucy"
+msgstr "Destination port"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "P4-ymJ"
+msgstr "A port, a range like 8000:8100, or leave empty."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "EUpNeO"
+msgstr "Source address"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "21K9fI"
+msgstr "An address or network. Empty means anywhere."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "LgbKvU"
+msgstr "Comment"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "SI8jUB"
+msgstr "What this rule is for."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "vMpPa-"
+msgstr "Allow HTTPS"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "ZLl_FA"
+msgstr "Delete this firewall rule?"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "q6DHpk"
+msgstr "Rule #{pos} will be removed. If it was the rule allowing your own access, you may lock yourself out."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "MdFdbd"
+msgstr "Delete rule"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "BSLmiO"
+msgstr "Allow the packet through"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "nI-IU7"
+msgstr "Discard it silently"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "nkFaIe"
+msgstr "Discard it and tell the sender"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "YDAX4F"
+msgstr "What happens to a packet that no rule matches. Leave incoming on **DROP** unless you know why you are changing it."
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "XumiMR"
+msgstr "Incoming packets"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "MMByL_"
+msgstr "Outgoing packets"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "uyszcP"
+msgstr "Default action for incoming packets"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "lOb0Lj"
+msgstr "Default action for outgoing packets"
+
+#: ../../packages/integration-discord/src/features/firewall/index.ts
+msgctxt "discord-integration"
+msgid "mxX1G1"
+msgstr "Back to firewall"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "XwWlMe"
+msgstr "Settings — {name}"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "db8X8t"
+msgstr "Everything that changes what this server is."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "t2uvIi"
+msgstr "Operating System"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "iXNbPf"
+msgstr "Rename"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "fz0z4c"
+msgstr "Plan"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "tPfumK"
+msgstr "Installer image"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "3Rx6Qo"
+msgstr "Advanced"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "AQkpi3"
+msgstr "Reinstall"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "A6VeUw"
+msgstr "You are on **{name}** — {cores, plural, =1 {# vCore} other {# vCores}}, {memory} RAM, {storage} storage."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "GXCHD8"
+msgstr "This server's plan could not be determined."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "LR754a"
+msgstr "Renews at"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "5NTPq8"
+msgstr "Upgrades available"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "YbrRXR"
+msgstr " (upgrade today for {price})"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "-nInAI"
+msgstr "Change plan or renew"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "07Xf2y"
+msgstr "Back to settings"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "b3LGQk"
+msgstr "**{name}** is mounted. Reboot the server to boot from it, or unmount it to go back to the disk."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "BWwrKU"
+msgstr "You have no installer images ready. Add one in the customer portal, then mount it here."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "U7qHPh"
+msgstr "Nothing is mounted. Mounting an image attaches it as a virtual disc; reboot the server afterwards to boot from it."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "L2ufbn"
+msgstr "Expires {when}"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "LkI5V4"
+msgstr "Select an image to mount"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "UzHwi-"
+msgstr "Currently mounted"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "u9VaJ3"
+msgstr "Unmount"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "jQVfJU"
+msgstr "Manage images"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "mrzKVy"
+msgstr "Choose an operating system to install. **Everything currently on the disk is destroyed** and the server is rebuilt from scratch. Take a backup first if there is anything on it you want to keep."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "kK9UBD"
+msgstr "Select an operating system"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+#: ../../packages/integration-discord/src/ui/confirm.ts
+msgctxt "discord-integration"
+msgid "47FYwb"
+msgstr "Cancel"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "VLFQi1"
+msgstr "Firmware settings. Changing either of these reboots the server, and a machine installed under one setting may not boot under the other."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "NjgW6o"
+msgstr "BIOS"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "AjQTa5"
+msgstr "UEFI"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "XHiVwa"
+msgstr "Legacy BIOS"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "KX3bZF"
+msgstr "TPM"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "450Fty"
+msgstr "None"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "AhxnaN"
+msgstr "Use the legacy BIOS for this server."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "_eGTDl"
+msgstr "UEFI BIOS"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "oZyWxo"
+msgstr "Use the newer UEFI BIOS for this server."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "vl0-ZH"
+msgstr "No TPM"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "3TcT6l"
+msgstr "No trusted platform module."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "mPnVcE"
+msgstr "Required by Windows 11."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "9gz6MI"
+msgstr "The older revision."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "_Z_CEb"
+msgstr "Rename server"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "UaxxLd"
+msgstr "How this server is labelled in Virtbase."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "D02emF"
+msgstr "Reinstall server"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "ve6iIJ"
+msgstr "Everything on the disk will be destroyed. Type the new root password to continue."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "n1HGlP"
+msgstr "Root password"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "LGDnPd"
+msgstr "One uppercase letter, one lowercase letter, one number, and 8 characters minimum."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "qM4VuW"
+msgstr "Reinstall this server?"
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "u3HAkl"
+msgstr "The disk is wiped and the operating system installed from scratch. Backups are kept, but everything on the running server is lost."
+
+#: ../../packages/integration-discord/src/features/lifecycle/index.ts
+msgctxt "discord-integration"
+msgid "4W-hOr"
+msgstr "Choose a password"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "QCv9lw"
+msgstr "Main menu"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "gaUHYQ"
+msgstr "Please select an action from the menu below."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "U2slxM"
+msgstr "Manage servers"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "wtXIUF"
+msgstr "What can this bot do?"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+#: ../../packages/integration-discord/src/features/stats/index.ts
 msgctxt "discord-integration"
 msgid "-uqHID"
 msgstr "Show in portal"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "dvr19k"
+msgstr "Setup"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "S0rNC0"
+msgstr "Welcome to Virtbase!"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "Kh0E7j"
+msgstr "Your Virtbase account is currently not linked to your Discord account."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "u_Hev8"
+msgstr "Please follow the instructions below to link your accounts:"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "ac8Iok"
+msgstr "1. Open customer portal"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "f4ziLK"
+msgstr "Click the button below and sign in with your Virtbase account."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "2ZTNN3"
+msgstr "2. Link accounts"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "XnY6rW"
+msgstr "Navigate to your account in the customer portal, under **Security** in the **Authentication** section. Link your Discord account here."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "VRJHO_"
+msgstr "3. Repeat command"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "gCSCoh"
+msgstr "Repeat the command to perform actions."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "baD-Vp"
+msgstr "Link my account"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "PrkyZZ"
+msgstr "Setup guide"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "uXREGV"
+msgstr "Invite Virtbase to your server"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "B3qx3D"
+msgstr "Click the button below to add the Virtbase integration to your Discord server:"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "e68Bcd"
+msgstr "Add to server"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "jWjN3Y"
+msgstr "Manage your servers from Discord"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "lrRN8m"
+msgstr "Link your Virtbase account once, then run **/menu** to manage every server you rent — without opening the portal."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "_AFP30"
+msgstr "🖥️ Servers"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "Waq2D9"
+msgstr "See every server you rent, with its plan, operating system, node and IP addresses."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "kzrJPG"
+msgstr "⚡ Power"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "GTTrr5"
+msgstr "Start, reboot, shut down or stop a server, and read its live CPU, memory, disk and network usage."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "ufCiKc"
+msgstr "📈 Statistics"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "6FCtEZ"
+msgstr "See CPU, memory and network usage over the last hour, day, week, month or year."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "bqDCLE"
+msgstr "💾 Backups"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "XtvCXj"
+msgstr "Create, restore and delete backups."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "3uIWlF"
+msgstr "🛡️ Firewall & rDNS"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "f2U7no"
+msgstr "Turn the firewall on or off, add and remove rules, and set reverse DNS for your addresses."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "imThHA"
+msgstr "🔧 Settings"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "YcmU1n"
+msgstr "Rename a server, reinstall it with a different operating system, mount an installer image and review your plan."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "OJkAII"
+msgstr "🔑 Access"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "TETrFT"
+msgstr "Open a one-time console link and reset the administrator password."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "ChtMnC"
+msgstr "🏅 Linked roles"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "HI_CMF"
+msgstr "Link your account and Discord servers can grant you roles based on how long you have been a customer and how many servers you run."
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "hwV-OS"
+msgstr "Read the guide"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+msgctxt "discord-integration"
+msgid "hCh8lk"
+msgstr "Customer portal"
+
+#: ../../packages/integration-discord/src/features/menu/messages.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "AgoOEq"
+msgstr "Back to menu"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "ngKlxe"
+msgstr "Power — {name}"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "tRnhH9"
+msgstr "CPU {bar}"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "JwRgMO"
+msgstr "RAM {bar} ({used} of {total})"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "AuSwGG"
+msgstr "Uptime: {uptime}"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "2mkNcb"
+msgstr "The current state could not be read from the node."
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "mOFG3K"
+msgstr "Start"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "9U7nUR"
+msgstr "Reboot"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "CR9Lxh"
+msgstr "Shut down"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "w6OTlP"
+msgstr "Force stop"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "QP2DrP"
+msgstr "Hard reset"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "MC4BZC"
+msgstr "Force stop this server?"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "5bZujk"
+msgstr "Hard reset this server?"
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "gYaoFx"
+msgstr "This cuts the power immediately, without letting the operating system shut down. Unsaved data may be lost."
+
+#: ../../packages/integration-discord/src/features/power/index.ts
+msgctxt "discord-integration"
+msgid "kBgP-a"
+msgstr "This is the equivalent of the reset button. The operating system is not asked to shut down and unsaved data may be lost."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "LWepl5"
+msgstr "Reverse DNS"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "6o2MqQ"
+msgstr "No reverse DNS records are set. Mail servers in particular expect an address to resolve back to its hostname."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "U8lx56"
+msgstr "These records say which hostname each of your addresses resolves back to."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "yYYenE"
+msgstr "Select a record to edit or delete"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "uObQkC"
+msgstr "Set a record"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "uPDgth"
+msgstr "Hostname"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "HdibrD"
+msgstr "Change hostname"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "xFAbZq"
+msgstr "Back to records"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "DuV8PO"
+msgstr "Set reverse DNS"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "Sy9t2g"
+msgstr "The address has to be one of the addresses allocated to this server."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "ZbWc-A"
+msgstr "IP address"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "zUMAxj"
+msgstr "One of this server's addresses."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "YE0dUp"
+msgstr "What this address should resolve back to."
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "gzzmN5"
+msgstr "Change reverse DNS"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "Ai4Weg"
+msgstr "Delete this reverse DNS record?"
+
+#: ../../packages/integration-discord/src/features/rdns/index.ts
+msgctxt "discord-integration"
+msgid "R61yfz"
+msgstr "The address will stop resolving back to its hostname. Mail sent from it is likely to be rejected."
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "xl27nc"
+msgstr "Reset Password"
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "Aev2Hy"
+msgstr "This action will fail if the package `qemu-guest-agent` is not installed."
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "JCIgkj"
+msgstr "Username"
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "eREue0"
+msgstr "Mostly `root` for Linux and `Administrator` for Windows."
+
+#: ../../packages/integration-discord/src/features/servers/index.ts
+msgctxt "discord-integration"
+msgid "Ev6SEF"
+msgstr "New Password"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "pN8BlF"
+msgstr "The following servers are assigned to your account and can be managed."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "0ZPfix"
+msgstr "Select a server to manage it:"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "BGI16m"
+msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "tpfEY0"
+msgstr "{memory} RAM"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "cenOuc"
+msgstr "{storage} NVMe SSD"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "7F86ji"
+msgstr "View in portal ↗"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "JGe_wh"
+msgstr "Select a server"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "Vq3ifs"
+msgstr "No servers available"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "fUXt5C"
+msgstr "You have not rented any servers yet. Rent a server to manage it via the Discord integration."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "67Bzc5"
+msgstr "Virtbase Store"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "wbsq7O"
+msgstr "Usage"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "1-fy2I"
+msgstr "Disk {bar} ({used} of {total})"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "cvhvPu"
+msgstr "Traffic: {in} in / {out} out"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "ivkv_L"
+msgstr "Node"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "GaTcNW"
+msgstr "- Name: {hostname}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "M1WTIv"
+msgstr "- Datacenter: {datacenter}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "SuwJeu"
+msgstr "- Uplink: {netrate}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "rnZkeW"
+msgstr "- CPU: {cpu_description}"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "UlO1td"
+msgstr "Network Interfaces"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "1A_d7u"
+msgstr "Renews"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "YXoHk0"
+msgstr "Power"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "F-02_l"
+msgstr "rDNS"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "D3idYv"
+msgstr "Settings"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "gc-2Z2"
+msgstr "Console"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "Yy_yDL"
+msgstr "Reset password"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "H3eDAS"
+msgstr "Statistics"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "NZAIyV"
+msgstr "All servers"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "PlveeX"
+msgstr "Click the one-time link below to access the console:"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "8rmkQD"
+msgstr "This link will expire in 10 seconds."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "ELISMh"
+msgstr "Open console"
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "GyeODL"
+msgstr "Password reset successfully."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "n_xfjW"
+msgstr "The password for your server has been reset successfully."
+
+#: ../../packages/integration-discord/src/features/servers/messages.ts
+msgctxt "discord-integration"
+msgid "pJ2eg6"
+msgstr "You can now login to the server using the new password."
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "s8HBot"
+msgstr "Last hour"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "boa1qH"
+msgstr "Last day"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "ynWMp2"
+msgstr "Last week"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "y9ZbeM"
+msgstr "Last month"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "4RJ4Im"
+msgstr "Last year"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "cQgU3V"
+msgstr "Statistics — {name}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "JN-P22"
+msgstr "No data for this period yet. A server reports usage only while it is running."
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "txpTlM"
+msgstr "{timeframe}, oldest on the left."
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "9COc9n"
+msgstr "CPU — now {now}, average {avg}, peak {peak}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "wBvha6"
+msgstr "Memory — now {now}, average {avg}, peak {peak}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "xiYQvK"
+msgstr "Network in — peak {peak}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "b4azRB"
+msgstr "Network out — peak {peak}"
+
+#: ../../packages/integration-discord/src/features/stats/index.ts
+msgctxt "discord-integration"
+msgid "DZ-Egm"
+msgstr "Timeframe"
 
 #: ../../packages/integration-discord/src/localize.ts
 msgid "FvmV6q"
@@ -72,230 +1243,40 @@ msgstr "Public key"
 msgid "FYYjSc"
 msgstr "Used to verify that interaction requests really came from Discord."
 
-#: ../../packages/integration-discord/src/messages/invite.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "uXREGV"
-msgstr "Invite Virtbase to your server"
+msgid "nDwv-3"
+msgstr "Something went wrong. Please try again in a moment."
 
-#: ../../packages/integration-discord/src/messages/invite.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "yoX1pg"
-msgstr "Click the link below to add the Virtbase integration to your Discord server:"
+msgid "nRAtFh"
+msgstr "That server no longer exists."
 
-#: ../../packages/integration-discord/src/messages/invite.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "6O3-aN"
-msgstr "Invite URL"
+msgid "Bu3w9U"
+msgstr "You are not allowed to do that."
 
-#: ../../packages/integration-discord/src/messages/main-menu.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "QCv9lw"
-msgstr "Main menu"
+msgid "NAzXO_"
+msgstr "Some of the details you entered are not valid."
 
-#: ../../packages/integration-discord/src/messages/main-menu.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "gaUHYQ"
-msgstr "Please select an action from the menu below."
+msgid "612Bxo"
+msgstr "You are doing that too often. Please wait a moment."
 
-#: ../../packages/integration-discord/src/messages/servers/actions/reset-server-password-success.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "GyeODL"
-msgstr "Password reset successfully."
+msgid "eXkTwt"
+msgstr "The server is busy with another task. Please wait for it to finish."
 
-#: ../../packages/integration-discord/src/messages/servers/actions/reset-server-password-success.ts
+#: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration"
-msgid "n_xfjW"
-msgstr "The password for your server has been reset successfully."
-
-#: ../../packages/integration-discord/src/messages/servers/actions/reset-server-password-success.ts
-msgctxt "discord-integration"
-msgid "pJ2eg6"
-msgstr "You can now login to the server using the new password."
-
-#: ../../packages/integration-discord/src/messages/servers/actions/server-console-success.ts
-msgctxt "discord-integration"
-msgid "PlveeX"
-msgstr "Click the one-time link below to access the console:"
-
-#: ../../packages/integration-discord/src/messages/servers/actions/server-console-success.ts
-msgctxt "discord-integration"
-msgid "8rmkQD"
-msgstr "This link will expire in 10 seconds."
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "t2uvIi"
-msgstr "Operating System"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "ivkv_L"
-msgstr "Node"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "GaTcNW"
-msgstr "- Name: {hostname}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "M1WTIv"
-msgstr "- Datacenter: {datacenter}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "SuwJeu"
-msgstr "- Uplink: {netrate}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "rnZkeW"
-msgstr "- CPU: {cpu_description}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "gs_Iys"
-msgstr "- RAM: {memory_description}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "9PSqfa"
-msgstr "- Storage: {storage_description}"
-
-#: ../../packages/integration-discord/src/messages/servers/server-overview.ts
-msgctxt "discord-integration"
-msgid "UlO1td"
-msgstr "Network Interfaces"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list-empty.ts
-msgctxt "discord-integration"
-msgid "Vq3ifs"
-msgstr "No servers available"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list-empty.ts
-msgctxt "discord-integration"
-msgid "fUXt5C"
-msgstr "You have not rented any servers yet. Rent a server to manage it via the Discord integration."
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list-empty.ts
-msgctxt "discord-integration"
-msgid "67Bzc5"
-msgstr "Virtbase Store"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "pN8BlF"
-msgstr "The following servers are assigned to your account and can be managed."
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "0ZPfix"
-msgstr "Select a server to manage it:"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "BGI16m"
-msgstr "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "tpfEY0"
-msgstr "{memory} RAM"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "cenOuc"
-msgstr "{storage} NVMe SSD"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "7F86ji"
-msgstr "View in portal ↗"
-
-#: ../../packages/integration-discord/src/messages/servers/servers-list.ts
-msgctxt "discord-integration"
-msgid "JGe_wh"
-msgstr "Select a server"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "dvr19k"
-msgstr "Setup"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "S0rNC0"
-msgstr "Welcome to Virtbase!"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "Kh0E7j"
-msgstr "Your Virtbase account is currently not linked to your Discord account."
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "u_Hev8"
-msgstr "Please follow the instructions below to link your accounts:"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "ac8Iok"
-msgstr "1. Open customer portal"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "f4ziLK"
-msgstr "Click the button below and sign in with your Virtbase account."
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "2ZTNN3"
-msgstr "2. Link accounts"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "XnY6rW"
-msgstr "Navigate to your account in the customer portal, under **Security** in the **Authentication** section. Link your Discord account here."
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "VRJHO_"
-msgstr "3. Repeat command"
-
-#: ../../packages/integration-discord/src/messages/setup-menu.ts
-msgctxt "discord-integration"
-msgid "gCSCoh"
-msgstr "Repeat the command to perform actions."
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "xl27nc"
-msgstr "Reset Password"
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "qHabR-"
-msgstr "This action will fail if the package `qemu-quest-agent` is not installed."
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "JCIgkj"
-msgstr "Username"
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "eREue0"
-msgstr "Mostly `root` for Linux and `Administrator` for Windows."
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "Ev6SEF"
-msgstr "New Password"
-
-#: ../../packages/integration-discord/src/modals/reset-server-password.ts
-msgctxt "discord-integration"
-msgid "LGDnPd"
-msgstr "One uppercase letter, one lowercase letter, one number, and 8 characters minimum."
+msgid "3ASDbq"
+msgstr "That did not work"
 
 #: ../../packages/integration-discord/src/utils/create-embed.ts
 msgctxt "discord-integration"
@@ -950,6 +1931,7 @@ msgstr "Advanced"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/backups/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/servers/components/backups/backups-card.tsx
 #: src/features/servers/components/server-nav.tsx
 msgid "T3lqx5"
@@ -963,6 +1945,7 @@ msgstr "Console"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/firewall/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/servers/components/server-nav.tsx
 msgid "Bwqhmd"
 msgstr "Firewall"
@@ -994,6 +1977,7 @@ msgstr "Plan"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/rdns/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/servers/components/server-nav.tsx
 msgid "F-02_l"
 msgstr "rDNS"
@@ -1225,6 +2209,22 @@ msgstr "Confirm Password"
 #: src/features/auth/components/reset-password-form.tsx
 msgid "5sg7KC"
 msgstr "Password"
+
+#: src/features/account/components/authentication/discord-bot-card.tsx
+msgid "jWjN3Y"
+msgstr "Manage your servers from Discord"
+
+#: src/features/account/components/authentication/discord-bot-card.tsx
+msgid "0eStxB"
+msgstr "Start and stop servers, take backups, edit firewall rules and open a console — without leaving chat. Link your Discord account below, then run /menu."
+
+#: src/features/account/components/authentication/discord-bot-card.tsx
+msgid "vEF59U"
+msgstr "Guide"
+
+#: src/features/account/components/authentication/discord-bot-card.tsx
+msgid "2Rwx1x"
+msgstr "Add to Discord"
 
 #: src/features/account/components/authentication/regenerate-backup-codes-button.tsx
 msgid "6PgVSe"
@@ -2364,6 +3364,7 @@ msgid "17eYMk"
 msgstr "{usage} / ∞"
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/landing/components/server-stats-demo.tsx
 #: src/features/servers/components/server-graphs.tsx
 #: src/features/servers/components/server-stats-card.tsx
@@ -3070,6 +4071,58 @@ msgstr "Paid at"
 msgid "TdTXXf"
 msgstr "Learn more"
 
+#: src/features/landing/components/discord-bot-demo.tsx
+#: src/features/landing/components/server-stats-demo.tsx
+#: src/features/servers/components/overview/node-details-dialog.tsx
+#: src/features/servers/components/server-graphs.tsx
+#: src/features/servers/components/server-stats-card.tsx
+msgid "QgBuiV"
+msgstr "CPU"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "zEgvvh"
+msgstr "NET"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "Ua-Cf7"
+msgstr "Manage your servers"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "b_Pq29"
+msgstr "What this bot can do"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "HiI_P4"
+msgstr "Add it to another server"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "YXoHk0"
+msgstr "Power"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "H3eDAS"
+msgstr "Statistics"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "2rUVsU"
+msgstr "App"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "2ZWKh0"
+msgstr "Today at 21:04"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "Wbc21W"
+msgstr "Virtbase - Hosting, but secure."
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "Ny1Wyk"
+msgstr "Only you can see this"
+
+#: src/features/landing/components/discord-bot-demo.tsx
+msgid "TY8Ho1"
+msgstr "Commands"
+
 #: src/features/landing/components/server-firewall-demo.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
@@ -3114,13 +4167,6 @@ msgstr "Destination port"
 #: src/features/servers/components/server-stats-card.tsx
 msgid "wbsq7O"
 msgstr "Usage"
-
-#: src/features/landing/components/server-stats-demo.tsx
-#: src/features/servers/components/overview/node-details-dialog.tsx
-#: src/features/servers/components/server-graphs.tsx
-#: src/features/servers/components/server-stats-card.tsx
-msgid "QgBuiV"
-msgstr "CPU"
 
 #: src/features/landing/components/server-stats-demo.tsx
 #: src/features/servers/components/server-graphs.tsx

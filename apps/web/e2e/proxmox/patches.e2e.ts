@@ -20,17 +20,20 @@ import type { ClusterConfig } from "../support/cluster";
 import { clusterIsReachable, readClusterConfig } from "../support/cluster";
 
 /**
- * The two Proxmox patches in `scripts/patches` are what make provisioning work:
- * without them cloud-init snippets cannot be uploaded and `hookscript` is
- * rejected on VM config updates. They are applied when the node image is built,
- * so an upstream Proxmox bump that breaks them would otherwise surface as a
- * confusing provisioning failure rather than a failing test.
+ * The three Proxmox patches in `scripts/patches` are what make provisioning
+ * work: without them cloud-init snippets cannot be uploaded, an uploaded
+ * hookscript is not executable, and `hookscript` is rejected on VM config
+ * updates. They are applied when the node image is built, so an upstream
+ * Proxmox bump that breaks them would otherwise surface as a confusing
+ * provisioning failure rather than a failing test.
  */
 let cluster: ClusterConfig | null = null;
 let skipReason = "";
 
 const SNIPPET = "e2e-patch-probe.yml";
+const HOOKSCRIPT = "e2e-patch-probe.pl";
 const VMID = 9100;
+const HOOKSCRIPT_VMID = 9101;
 
 function auth(config: ClusterConfig) {
   return {
@@ -64,6 +67,12 @@ test.beforeEach(() => {
 });
 
 test.describe("proxmox patches", () => {
+  // Every test here creates a guest and writes to the one shared snippet
+  // storage on the same node. Run in parallel they race for the cluster's
+  // VMID lock and a create silently loses, leaving the config update to fail
+  // with "configuration file does not exist".
+  test.describe.configure({ mode: "serial" });
+
   test("snippets can be uploaded to shared storage", async () => {
     const config = cluster as ClusterConfig;
     const node = config.nodes[0]?.hostname ?? "pve1";
@@ -135,15 +144,70 @@ test.describe("proxmox patches", () => {
     expect(update.ok() || body.includes("is not executable")).toBe(true);
   });
 
+  test("an uploaded hookscript is executable", async ({ request }) => {
+    const config = cluster as ClusterConfig;
+    const node = config.nodes[0]?.hostname ?? "pve1";
+
+    const form = new FormData();
+    form.append("content", "snippets");
+    form.append(
+      "filename",
+      new Blob(["#!/usr/bin/perl\nexit(0);\n"], { type: "text/plain" }),
+      HOOKSCRIPT,
+    );
+
+    const upload = await fetch(
+      api(config, `/nodes/${node}/storage/${config.storage.snippet}/upload`),
+      { method: "POST", headers: auth(config), body: form },
+    );
+
+    expect(upload.status, await upload.text()).toBe(200);
+
+    await request.post(api(config, `/nodes/${node}/qemu`), {
+      headers: auth(config),
+      form: {
+        vmid: HOOKSCRIPT_VMID,
+        name: "e2e-hookscript-probe",
+        memory: 512,
+        cores: 1,
+      },
+    });
+
+    // `PVE::GuestHelpers::check_hookscript` refuses a script that is not
+    // executable, and the upload API cannot express a file mode. Only
+    // proxmox-snippet-mode.patch makes this succeed - without it the config
+    // update fails with "is not executable", which is what the whole
+    // provisioning flow hits at `applyHardwareConfigStep`.
+    await expect
+      .poll(
+        async () => {
+          const update = await request.put(
+            api(config, `/nodes/${node}/qemu/${HOOKSCRIPT_VMID}/config`),
+            {
+              headers: auth(config),
+              form: {
+                hookscript: `${config.storage.snippet}:snippets/${HOOKSCRIPT}`,
+              },
+            },
+          );
+          return update.ok() ? "ok" : await update.text();
+        },
+        { timeout: 20_000 },
+      )
+      .toBe("ok");
+  });
+
   test.afterAll(async ({ request }) => {
     if (!cluster) return;
     const config = cluster;
     const node = config.nodes[0]?.hostname ?? "pve1";
 
-    await request
-      .delete(api(config, `/nodes/${node}/qemu/${VMID}?purge=1`), {
-        headers: auth(config),
-      })
-      .catch(() => {});
+    for (const vmid of [VMID, HOOKSCRIPT_VMID]) {
+      await request
+        .delete(api(config, `/nodes/${node}/qemu/${vmid}?purge=1`), {
+          headers: auth(config),
+        })
+        .catch(() => {});
+    }
   });
 });

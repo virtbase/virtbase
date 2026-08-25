@@ -16,6 +16,7 @@ fi
 # Applied in this order; unapply reverses it.
 DEFAULT_PATCH_FILES=(
   "${SCRIPT_DIR}/proxmox-snippet-upload.patch"
+  "${SCRIPT_DIR}/proxmox-snippet-mode.patch"
   "${SCRIPT_DIR}/proxmox-hookscript.patch"
 )
 

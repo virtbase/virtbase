@@ -123,6 +123,21 @@ export interface IntegrationContext<TSettings = unknown, TSecrets = unknown> {
   readonly secrets: TSecrets;
   readonly logger: IntegrationLogger;
   readonly ports: PortAccessor;
+  /**
+   * Keeps work alive after the response has been sent.
+   *
+   * Some inbound protocols require an acknowledgement far sooner than the work
+   * they ask for can finish — Discord gives an interaction three seconds, which
+   * does not survive a hypervisor round trip. The integration answers
+   * immediately and finishes afterwards, and this is what stops the runtime
+   * from tearing the process down in between.
+   *
+   * Supplied per request by the dispatcher, because the underlying primitive
+   * (`after()` in a Next route) is only valid inside a request scope. The
+   * default is fire-and-forget with the rejection logged, which is correct on a
+   * long-lived server and merely unreliable on a serverless one.
+   */
+  readonly waitUntil: (promise: Promise<unknown>) => void;
 }
 
 /**

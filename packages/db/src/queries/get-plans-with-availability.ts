@@ -159,7 +159,11 @@ export const getPlansWithAvailability = (...filters: SQL[]) => {
                 isNull(proxmoxNodes.netrateLimit),
                 gte(
                   sql<number>`(${proxmoxNodes.netrateLimit} - COALESCE(${usage.usedNetrate}, 0))`,
-                  serverPlans.netrate,
+                  // A plan may leave `netrate` unset, and comparing against
+                  // NULL yields NULL — never true — which would mark such a
+                  // plan unavailable on every limited node. The usage sum
+                  // already counts an unset netrate as zero, so require zero.
+                  sql<number>`COALESCE(${serverPlans.netrate}, 0)`,
                 ),
               ),
               or(

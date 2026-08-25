@@ -1,6 +1,7 @@
 Proxmox VE patches used by Virtbase for snippet storage and VM hook scripts.
 
 Without the snippet-upload patch, custom cloud-init snippets cannot be uploaded for VMs.
+Without the snippet-mode patch, an uploaded hookscript is not executable and Proxmox refuses to reference it.
 Without the hookscript patch, the `hookscript` VM option is not accepted in general VM config updates.
 
 Reference issue (snippet upload):
@@ -14,12 +15,15 @@ Tested with:
 
 ## Patch files in this directory
 
-Both patches are unified diffs with `-U3` and share the same apply base (`/usr/share/perl5/PVE`, `-p1`).
+All patches are unified diffs with `-U3` and share the same apply base (`/usr/share/perl5/PVE`, `-p1`).
 
 | Patch | Target file(s) on Proxmox |
 | --- | --- |
 | `proxmox-snippet-upload.patch` | `API2/Storage/Status.pm`, `Storage.pm` |
+| `proxmox-snippet-mode.patch` | `API2/Storage/Status.pm` |
 | `proxmox-hookscript.patch` | `API2/Qemu.pm` |
+
+They are independent: `proxmox-snippet-mode.patch` only touches stock context, so it applies with or without the upload patch and in either order. Nothing has to be unapplied to pick it up - `patch.sh apply` on an already-patched node classifies the other two as `applied` and adds this one.
 
 ### Snippet upload (`proxmox-snippet-upload.patch`)
 
@@ -29,6 +33,17 @@ Updates:
 - `/usr/share/perl5/PVE/Storage.pm` — add `get_snippet_dir`
 
 Applying one patch for both files is expected and correct.
+
+### Snippet mode (`proxmox-snippet-mode.patch`)
+
+Updates `/usr/share/perl5/PVE/API2/Storage/Status.pm`:
+
+- an uploaded snippet whose first line is a shebang is given mode `0755`
+- the local copy uses `cp --preserve=mode`, so overwriting an existing snippet updates its mode too
+
+`PVE::GuestHelpers::check_hookscript` refuses a hookscript that is missing **or** not executable, and the upload API has no parameter for a file mode. Without this patch every guest creation fails at the config update with `script '<storage>:snippets/hookscript.pl' is not executable`.
+
+The shebang is what separates a hookscript from a cloud-init data snippet; snippets without one stay `0644`.
 
 ### Hookscript (`proxmox-hookscript.patch`)
 
@@ -69,6 +84,9 @@ Environment overrides:
 sudo patch --dry-run -d /usr/share/perl5/PVE -p1 < proxmox-snippet-upload.patch
 sudo patch -d /usr/share/perl5/PVE -p1 < proxmox-snippet-upload.patch
 
+sudo patch --dry-run -d /usr/share/perl5/PVE -p1 < proxmox-snippet-mode.patch
+sudo patch -d /usr/share/perl5/PVE -p1 < proxmox-snippet-mode.patch
+
 sudo patch --dry-run -d /usr/share/perl5/PVE -p1 < proxmox-hookscript.patch
 sudo patch -d /usr/share/perl5/PVE -p1 < proxmox-hookscript.patch
 
@@ -90,12 +108,13 @@ Apply on all cluster nodes.
 ./patch.sh unapply
 ```
 
-`patch.sh` reverts in reverse order (hookscript, then snippet upload) and restarts services only if anything was actually reverted.
+`patch.sh` reverts in reverse order (hookscript, then snippet mode, then snippet upload) and restarts services only if anything was actually reverted.
 
 ### Manual rollback
 
 ```bash
 sudo patch -R -d /usr/share/perl5/PVE -p1 < proxmox-hookscript.patch
+sudo patch -R -d /usr/share/perl5/PVE -p1 < proxmox-snippet-mode.patch
 sudo patch -R -d /usr/share/perl5/PVE -p1 < proxmox-snippet-upload.patch
 sudo systemctl restart pvedaemon pveproxy
 ```
@@ -109,6 +128,14 @@ Regenerate with context (`-U3`) and ignore CRLF/LF-only differences.
 ```bash
 diff --strip-trailing-cr -U3 --label a/API2/Storage/Status.pm --label b/API2/Storage/Status.pm Status.pm.bak Status.pm > proxmox-snippet-upload.patch
 diff --strip-trailing-cr -U3 --label a/Storage.pm --label b/Storage.pm Storage.pm.bak Storage.pm >> proxmox-snippet-upload.patch
+```
+
+### Snippet mode
+
+Generated against a tree that already has the snippet-upload patch applied, so the two do not overlap:
+
+```bash
+diff --strip-trailing-cr -U3 --label a/API2/Storage/Status.pm --label b/API2/Storage/Status.pm Status.pm.upload-patched Status.pm > proxmox-snippet-mode.patch
 ```
 
 ### Hookscript

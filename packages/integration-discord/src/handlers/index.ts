@@ -15,27 +15,106 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { APIInteraction } from "discord-api-types/v10";
-import { InteractionType } from "discord-api-types/v10";
-import { handleApplicationCommand } from "./application-command";
-import { handleMessageComponent } from "./message-component";
-import { handleModalSubmit } from "./modal-submit";
-import { handlePing } from "./ping";
-import type { InteractionHandler } from "./types";
+import type {
+  APIApplicationCommandInteraction,
+  APIInteraction,
+  APIInteractionResponse,
+  APIMessageComponentButtonInteraction,
+  APIMessageComponentInteraction,
+  APIMessageComponentSelectMenuInteraction,
+  APIModalSubmitInteraction,
+} from "discord-api-types/v10";
+import { ComponentType, InteractionType } from "discord-api-types/v10";
 
-const handlersMapping = {
-  [InteractionType.Ping]: handlePing,
+import {
+  buttonHandlers,
+  commandHandlers,
+  modalHandlers,
+  selectHandlers,
+} from "../features";
+import { SetupMenuMessage } from "../features/menu";
+import { runComponent } from "./dispatch";
+import type { InteractionContext, InteractionHandler } from "./types";
+
+export * from "./defer";
+export * from "./dispatch";
+export * from "./types";
+
+const handleApplicationCommand: InteractionHandler = async (ctx) => {
+  const { name } = (ctx.interaction as APIApplicationCommandInteraction).data;
+  const entry = commandHandlers.get(name);
+
+  if (!entry) {
+    throw new Error(
+      `[@virtbase/discord] Unhandled application command: ${name}`,
+    );
+  }
+
+  if (!entry.allowUnlinked && !ctx.user) {
+    return SetupMenuMessage({ locale: ctx.locale });
+  }
+
+  return entry.handle(
+    ctx as InteractionContext<APIApplicationCommandInteraction>,
+  );
+};
+
+const handleMessageComponent: InteractionHandler = async (ctx) => {
+  const interaction = ctx.interaction as APIMessageComponentInteraction;
+  const { custom_id, component_type } = interaction.data;
+
+  if (component_type === ComponentType.Button) {
+    return runComponent<APIMessageComponentButtonInteraction>(
+      ctx,
+      "button",
+      custom_id,
+      buttonHandlers,
+    );
+  }
+
+  if (component_type === ComponentType.StringSelect) {
+    return runComponent<APIMessageComponentSelectMenuInteraction>(
+      ctx,
+      "select",
+      custom_id,
+      selectHandlers,
+    );
+  }
+
+  throw new Error(
+    `[@virtbase/discord] Unhandled message component: ${custom_id}, type: ${component_type}`,
+  );
+};
+
+const handleModalSubmit: InteractionHandler = (ctx) =>
+  runComponent<APIModalSubmitInteraction>(
+    ctx,
+    "modal",
+    (ctx.interaction as APIModalSubmitInteraction).data.custom_id,
+    modalHandlers,
+  );
+
+/**
+ * Which of the three tables an interaction is routed through.
+ *
+ * `Ping` is absent on purpose: the webhook answers it before a context is ever
+ * built, so that Discord's endpoint verification does not depend on the
+ * database or on a capability being resolvable.
+ */
+const handlers: Partial<Record<InteractionType, InteractionHandler>> = {
   [InteractionType.ApplicationCommand]: handleApplicationCommand,
   [InteractionType.MessageComponent]: handleMessageComponent,
   [InteractionType.ModalSubmit]: handleModalSubmit,
-} as Partial<Record<InteractionType, InteractionHandler<APIInteraction>>>;
+};
 
 export const getInteractionHandler = (
   type: InteractionType,
-): InteractionHandler<APIInteraction> => {
-  const handler = handlersMapping[type];
+): InteractionHandler => {
+  const handler = handlers[type];
   if (!handler) {
     throw new Error(`[@virtbase/discord] Unhandled interaction type: ${type}`);
   }
   return handler;
 };
+
+export type { APIInteraction, APIInteractionResponse };

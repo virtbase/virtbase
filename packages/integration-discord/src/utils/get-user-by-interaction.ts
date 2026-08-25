@@ -38,32 +38,27 @@ export const getUserByInteraction = async (interaction: APIInteraction) => {
     );
   }
 
-  const user = await db.transaction(
-    async (tx) => {
-      return tx
-        .select({
-          id: users.id,
-          name: users.name,
-          email: users.email,
-          emailVerified: users.emailVerified,
-          image: users.image,
-          role: users.role,
-          stripeCustomerId: users.stripeCustomerId,
-          locale: users.locale,
-          createdAt: users.createdAt,
-          updatedAt: users.updatedAt,
-        })
-        .from(users)
-        .innerJoin(accounts, eq(users.id, accounts.userId))
-        .where(eq(accounts.accountId, discordAccountId))
-        .limit(1)
-        .then(([row]) => row);
-    },
-    {
-      accessMode: "read only",
-      isolationLevel: "read committed",
-    },
-  );
+  // A plain select rather than a transaction: this runs inside an interaction's
+  // three-second budget, and wrapping one read in BEGIN/COMMIT tripled the
+  // round trips to the database for no isolation anyone needed.
+  const user = await db
+    .select({
+      id: users.id,
+      name: users.name,
+      email: users.email,
+      emailVerified: users.emailVerified,
+      image: users.image,
+      role: users.role,
+      stripeCustomerId: users.stripeCustomerId,
+      locale: users.locale,
+      createdAt: users.createdAt,
+      updatedAt: users.updatedAt,
+    })
+    .from(users)
+    .innerJoin(accounts, eq(users.id, accounts.userId))
+    .where(eq(accounts.accountId, discordAccountId))
+    .limit(1)
+    .then(([row]) => row);
 
   return user ?? null;
 };

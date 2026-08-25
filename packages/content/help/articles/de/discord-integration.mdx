@@ -1,0 +1,83 @@
+---
+title: Wie verwalte ich meine Server über Discord?
+description: Füge den Virtbase-Bot zu Discord hinzu, verknüpfe dein Konto und verwalte alle deine Server, ohne den Chat zu verlassen.
+category: overview
+keywords: [discord, bot, integration, verknüpfte rollen, chat]
+---
+
+Mit dem Virtbase-Discord-Bot verwaltest du alle Server, die du mietest, direkt in Discord — starten und stoppen, Backups anlegen, Firewall-Regeln bearbeiten, eine Konsole öffnen — ohne das Kundenportal zu öffnen.
+
+Alles, was der Bot sendet, ist **nur für dich sichtbar**, auch in einem gemeinsam genutzten Kanal. Niemand sonst auf dem Server sieht deine Servernamen, Adressen oder Konsolen-Links.
+
+## Was kann der Bot?
+
+| Bereich | Was du tun kannst |
+| --- | --- |
+| **Server** | Alle gemieteten Server sehen, mit Tarif, Betriebssystem, Node und IP-Adressen |
+| **Power** | Starten, neu starten, herunterfahren, hart stoppen oder zurücksetzen, sowie CPU-, Arbeitsspeicher-, Festplatten- und Netzwerkauslastung live ablesen |
+| **Backups** | Backups erstellen, wiederherstellen, sperren und löschen |
+| **Firewall** | Regeln einsehen, hinzufügen und löschen sowie die Standardrichtlinien ändern |
+| **Reverse DNS** | Den Hostnamen setzen und entfernen, auf den deine Adressen zurückverweisen |
+| **Einstellungen** | Server umbenennen, mit einem anderen Betriebssystem neu installieren, ein Installationsabbild einbinden und den Tarif einsehen |
+| **Zugriff** | Einen einmaligen Konsolen-Link öffnen und das Administratorpasswort zurücksetzen |
+
+Alles, was Geld kostet — ein Tarif-Upgrade, eine Verlängerung — führt dich stattdessen ins Kundenportal. Der Bot stellt dir nie etwas in Rechnung.
+
+## Wie füge ich den Bot zu meinem Discord-Server hinzu?
+
+1. Führe **/invite** auf einem Discord-Server aus, auf dem der Bot bereits ist, oder nutze die Schaltfläche auf der Seite [Authentifizierung](https://app.virtbase.com/account/settings/authentication).
+2. Wähle den Discord-Server aus, zu dem du ihn hinzufügen möchtest.
+3. Bestätige. Der Bot fragt nur die Berechtigung ab, Nachrichten zu senden und Slash-Befehle zu beantworten.
+
+Du musst den Bot nicht zu einem eigenen Server hinzufügen. Wenn er bereits auf einem Server ist, auf dem du Mitglied bist, kannst du ihn dort nutzen — oder ihm direkt schreiben.
+
+## Wie verknüpfe ich mein Virtbase-Konto?
+
+Der Bot kann allein an deinem Discord-Konto nicht erkennen, wer du bist. Deshalb müssen beide einmalig verknüpft werden.
+
+1. Öffne im Kundenportal deine [Authentifizierungseinstellungen](https://app.virtbase.com/account/settings/authentication).
+2. Verknüpfe unter **Authentifizierung** dein Discord-Konto.
+3. Geh zurück zu Discord und führe **/menu** aus.
+
+Das war's. Von da an erkennt dich der Bot auf jedem Discord-Server, auf dem er ist, und in Direktnachrichten.
+
+Wenn du **/menu** vor der Verknüpfung ausführst, zeigt dir der Bot diese Schritte statt einer Fehlermeldung.
+
+## Was sind verknüpfte Rollen?
+
+Sobald dein Konto verknüpft ist, kann ein Discord-Server dir anhand deiner Virtbase-Daten automatisch Rollen zuweisen:
+
+- **Aktive Server** — wie viele Server du derzeit mietest
+- **E-Mail verifiziert** — ob deine E-Mail-Adresse bestätigt ist
+- **Tage seit Registrierung** — wie lange du bereits Kunde bist
+
+So kann eine Community langjährigen Kunden eine Rolle geben, ohne dass jemand manuell prüfen muss. Deine E-Mail-Adresse, Servernamen und Adressen werden **nie** an den Discord-Server weitergegeben — nur die drei Werte oben, und nur für die Rollen, für die er konfiguriert ist.
+
+Verknüpfte Rollen benötigen die Berechtigung `role_connections.write`, die beim Verknüpfen abgefragt wird. Wenn du dein Konto verknüpft hast, bevor dies verfügbar war, löse die Verknüpfung und verknüpfe erneut.
+
+## Welche Befehle gibt es?
+
+| Befehl | Was er tut |
+| --- | --- |
+| **/menu** | Das Hauptmenü — hier beginnt alles |
+| **/help** | Was der Bot kann, mit Links zu dieser Anleitung |
+| **/invite** | Ein Link, um den Bot zu einem weiteren Discord-Server hinzuzufügen |
+
+Fast alles andere sind Schaltflächen. Sobald du im Menü bist, musst du nie wieder einen Befehl tippen.
+
+## Ist das sicher?
+
+- Jede Antwort ist ephemer — nur du siehst sie, auch in einem öffentlichen Kanal.
+- Der Bot handelt ausschließlich als du. Er erreicht nur Server auf deinem eigenen Konto, und jede Aktion durchläuft dieselben Berechtigungsprüfungen wie das Kundenportal.
+- Destruktive Aktionen — ein Backup wiederherstellen, neu installieren, hart stoppen — fragen immer zuerst nach einer Bestätigung.
+- Konsolen-Links sind einmalig gültig und laufen nach zehn Sekunden ab.
+
+## Der Bot antwortet nicht
+
+Wenn ein Befehl nichts bewirkt, prüfe Folgendes:
+
+1. **Darf der Bot in diesem Kanal antworten?** Versuch es stattdessen mit einer Direktnachricht.
+2. **Ist dein Konto verknüpft?** Führe **/menu** aus — wenn nicht, siehst du die Einrichtungsschritte.
+3. **Hast du vor der Einrichtung der Integration verknüpft?** Löse die Verknüpfung deines Discord-Kontos auf der Seite [Authentifizierung](https://app.virtbase.com/account/settings/authentication) und verknüpfe erneut.
+
+Wenn nichts davon hilft, [kontaktiere bitte unser Support-Team](/de/contact).

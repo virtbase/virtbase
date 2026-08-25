@@ -16,11 +16,10 @@
     "build": "tsc",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "dev": "tsc",
-    "register-commands": "bun with-env src/scripts/register-commands.ts",
-    "register-connections-metadata": "bun with-env src/scripts/register-connections-metadata.ts",
+    "rasterize-emojis": "bun scripts/rasterize-emojis.ts",
+    "test": "bun --env-file=../../.env.test test --timeout 20000",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "with-env": "bun --env-file ../../.env --",
-    "test": "bun --env-file=../../.env.test test --timeout 20000"
+    "with-env": "bun --env-file ../../.env --"
   },
   "dependencies": {
     "@virtbase/db": "workspace:*",
@@ -34,6 +33,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:",
+    "@playwright/test": "^1.62.1",
     "@virtbase/tsconfig": "workspace:*",
     "typescript": "catalog:"
   }

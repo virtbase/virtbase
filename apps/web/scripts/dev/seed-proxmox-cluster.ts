@@ -17,6 +17,7 @@
 
 import { readFile } from "node:fs/promises";
 import { join } from "node:path";
+import { getProxmoxInstance } from "@virtbase/api/proxmox";
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import {
@@ -25,6 +26,7 @@ import {
   proxmoxNodes,
 } from "@virtbase/db/schema";
 import { createId } from "@virtbase/db/utils";
+import { uploadHookscript } from "@/features/admin/lib/proxmox-nodes/hookscript";
 
 interface ClusterConfig {
   fqdn: string;
@@ -52,6 +54,12 @@ const CLUSTER_JSON = join(
  * VM, so checkout offers everything as unavailable and provisioning cannot run.
  * Returns the number of nodes registered, or null when no cluster has been
  * bootstrapped - which is the normal case for someone who has not started it.
+ *
+ * This is the cluster's substitute for the admin "create node" action, so it
+ * owes the node the same setup that action performs - the guest hookscript
+ * included. Rows alone get provisioning as far as `applyHardwareConfigStep`,
+ * which then fails with `script '<storage>:snippets/hookscript.pl' does not
+ * exist`.
  */
 export async function seedProxmoxCluster(): Promise<number | null> {
   let cluster: ClusterConfig;
@@ -131,6 +139,48 @@ export async function seedProxmoxCluster(): Promise<number | null> {
         .insert(proxmoxNodes)
         .values({ id: createId({ prefix: "pn_" }), ...values });
     }
+  }
+
+  // CephFS is shared across the cluster, so one upload covers every node - but
+  // the storage is only mounted where it is active, so fall through the nodes
+  // until one accepts it rather than trusting the first.
+  const secret = process.env.CRON_SECRET;
+
+  if (!secret) {
+    throw new Error(
+      "CRON_SECRET is not set - the hookscript needs it to authenticate its " +
+        "webhook back to the app. Add it to .env.",
+    );
+  }
+
+  let uploaded = false;
+  const failures: string[] = [];
+
+  for (const node of cluster.nodes) {
+    try {
+      await uploadHookscript({
+        instance: getProxmoxInstance({
+          hostname: node.hostname,
+          fqdn: cluster.fqdn,
+          tokenID: cluster.tokenId,
+          tokenSecret: cluster.tokenSecret,
+        }),
+        storage: cluster.storage.snippet,
+        secret,
+      });
+      uploaded = true;
+      break;
+    } catch (error) {
+      failures.push(`${node.hostname}: ${(error as Error).message}`);
+    }
+  }
+
+  if (!uploaded) {
+    throw new Error(
+      `failed to upload the guest hookscript to '${cluster.storage.snippet}' ` +
+        `on any node - provisioning would fail at applyHardwareConfigStep.\n` +
+        failures.join("\n"),
+    );
   }
 
   return cluster.nodes.length;

@@ -238,3 +238,90 @@ describe("a configuration source that throws", () => {
     ).rejects.toBeInstanceOf(PortUnavailableError);
   });
 });
+
+describe("internal capabilities", () => {
+  /**
+   * What the composition root registers for `serverManagement`: a capability
+   * the platform hands to its plug-ins rather than something an admin installs.
+   */
+  const core = defineIntegration({
+    id: "core",
+    name: "Virtbase",
+    description: "Capabilities the application provides to its integrations.",
+    category: "platform",
+    internal: true,
+    provides: { dns: () => fakeDns("core") },
+  });
+
+  test("a configuration-free internal integration resolves with no stored row", async () => {
+    // It is hidden from the admin hub, so there is no switch to flip and no row
+    // to find. Asking the config source about it means it is off forever.
+    const registry = new IntegrationRegistry({
+      integrations: [core],
+      config: staticConfig({}),
+      logger: silentLogger,
+    });
+
+    expect(await registry.resolve("dns")).not.toBeNull();
+  });
+
+  test("it resolves even when the config store cannot be read at all", async () => {
+    // `DisabledConfigSource` is what runs without CONFIG_ENCRYPTION_KEY. A
+    // missing bootstrap key must not take server management down with it.
+    const registry = new IntegrationRegistry({
+      integrations: [core],
+      config: {
+        isEnabled: async () => false,
+        settings: async () => ({}),
+        secrets: async () => ({}),
+      },
+      logger: silentLogger,
+    });
+
+    await expect(registry.require("dns")).resolves.toBeDefined();
+  });
+
+  test("it reports healthy rather than 'Not enabled'", async () => {
+    const registry = new IntegrationRegistry({
+      integrations: [core],
+      config: staticConfig({}),
+      logger: silentLogger,
+    });
+
+    expect((await registry.health()).core?.status).toBe("ok");
+  });
+
+  test("an internal integration that declares configuration still needs a row", async () => {
+    // It has values that can be absent or wrong, so the source still decides.
+    const configurable = defineIntegration({
+      id: "configurable",
+      name: "configurable",
+      description: "internal, but with settings",
+      category: "platform",
+      internal: true,
+      settings: {
+        schema: z.object({ apiUrl: z.url() }),
+        fields: [{ key: "apiUrl", label: "API URL", widget: "url" }],
+      },
+      provides: { dns: () => fakeDns("configurable") },
+    });
+
+    const registry = new IntegrationRegistry({
+      integrations: [configurable],
+      config: staticConfig({}),
+      logger: silentLogger,
+    });
+
+    expect(await registry.resolve("dns")).toBeNull();
+  });
+
+  test("a non-internal integration is still off until enabled", async () => {
+    const registry = new IntegrationRegistry({
+      integrations: [dnsIntegration("powerdns")],
+      config: staticConfig({}),
+      logger: silentLogger,
+    });
+
+    expect(await registry.resolve("dns")).toBeNull();
+  });
+});

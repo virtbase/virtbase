@@ -21,9 +21,16 @@ import { db } from "@virtbase/db/client";
 import { users } from "@virtbase/db/schema";
 import { createId } from "@virtbase/db/utils";
 import type {
+  ServerBackupOperations,
+  ServerFirewallOperations,
+  ServerGraphOperations,
+  ServerLifecycleOperations,
   ServerManagementActor,
   ServerManagementErrorCode,
   ServerManagementPort,
+  ServerMountOperations,
+  ServerRdnsOperations,
+  ServerStatusOperations,
 } from "@virtbase/ports";
 import { ServerManagementError } from "@virtbase/ports";
 import type { AppRouter } from "../root";
@@ -56,109 +63,162 @@ const ERROR_CODES: Record<TRPCError["code"], ServerManagementErrorCode> = {
 };
 
 /**
- * Implements {@link ServerManagementPort} on top of the tRPC router.
- *
- * This lives in the composition layer on purpose: it is the only thing that
- * knows both the port and `appRouter`. Integrations that manage servers — the
- * Discord bot today — depend on the interface and can fake it in tests, which
- * is what removes `@virtbase/api` from their dependency list (finding F11).
- *
- * Fabricating the caller session also moves here. It used to live inside
- * `@virtbase/discord`, which meant a plug-in was minting sessions for itself.
+ * Builds a caller acting as the given user. The user is loaded fresh rather
+ * than taken from the caller's argument so an integration cannot assert an
+ * identity it did not look up.
  */
-export class TRPCServerManagement implements ServerManagementPort {
-  async list(
-    actor: ServerManagementActor,
-    input: Parameters<ServerManagementPort["list"]>[1],
-  ) {
-    const caller = await this.callerFor(actor);
-    return this.translate(() => caller.servers.list(input));
+const callerFor = async (actor: ServerManagementActor): Promise<Caller> => {
+  const user = await db
+    .select({
+      id: users.id,
+      name: users.name,
+      email: users.email,
+      emailVerified: users.emailVerified,
+      image: users.image,
+      role: users.role,
+      stripeCustomerId: users.stripeCustomerId,
+      locale: users.locale,
+      createdAt: users.createdAt,
+      updatedAt: users.updatedAt,
+    })
+    .from(users)
+    .where(eq(users.id, actor.userId))
+    .limit(1)
+    .then(([row]) => row);
+
+  if (!user) {
+    throw new ServerManagementError(
+      "unauthorized",
+      `No user with id ${actor.userId}`,
+    );
   }
 
-  async get(
-    actor: ServerManagementActor,
-    input: Parameters<ServerManagementPort["get"]>[1],
-  ) {
-    const caller = await this.callerFor(actor);
-    return this.translate(() => caller.servers.get(input));
-  }
-
-  async console(actor: ServerManagementActor, input: { server_id: string }) {
-    const caller = await this.callerFor(actor);
-    return this.translate(() => caller.servers.console.get(input));
-  }
-
-  async resetPassword(
-    actor: ServerManagementActor,
-    input: Parameters<ServerManagementPort["resetPassword"]>[1],
-  ) {
-    const caller = await this.callerFor(actor);
-    await this.translate(() => caller.servers.actions.resetPassword(input));
-  }
-
-  /**
-   * Builds a caller acting as the given user. The user is loaded fresh rather
-   * than taken from the caller's argument so an integration cannot assert an
-   * identity it did not look up.
-   */
-  private async callerFor(actor: ServerManagementActor): Promise<Caller> {
-    const user = await db
-      .select({
-        id: users.id,
-        name: users.name,
-        email: users.email,
-        emailVerified: users.emailVerified,
-        image: users.image,
-        role: users.role,
-        stripeCustomerId: users.stripeCustomerId,
-        locale: users.locale,
-        createdAt: users.createdAt,
-        updatedAt: users.updatedAt,
-      })
-      .from(users)
-      .where(eq(users.id, actor.userId))
-      .limit(1)
-      .then(([row]) => row);
-
-    if (!user) {
-      throw new ServerManagementError(
-        "unauthorized",
-        `No user with id ${actor.userId}`,
-      );
-    }
-
-    return appRouter.createCaller({
-      db,
-      authApi: {} as never,
-      headers: new Headers(),
-      setHeader: () => {},
-      apiKey: null,
+  return appRouter.createCaller({
+    db,
+    authApi: {} as never,
+    headers: new Headers(),
+    setHeader: () => {},
+    apiKey: null,
+    session: {
       session: {
-        session: {
-          id: createId({ prefix: "sess_" }),
-          token: "__unused_port_session_token__",
-          createdAt: new Date(),
-          expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
-          updatedAt: new Date(),
-          userId: user.id,
-        },
-        user,
+        id: createId({ prefix: "sess_" }),
+        token: "__unused_port_session_token__",
+        createdAt: new Date(),
+        expiresAt: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
+        updatedAt: new Date(),
+        userId: user.id,
       },
-    });
-  }
+      user,
+    },
+  });
+};
 
-  private async translate<T>(call: () => Promise<T>): Promise<T> {
+/**
+ * Every port method is the same three steps — build a caller, invoke one
+ * procedure, translate the error. `bind` turns that into a one-liner per
+ * method, which is what keeps this file a delegation table rather than a
+ * hundred near-identical blocks.
+ *
+ * `select` receives the caller and returns the procedure to invoke; the input
+ * is passed through untouched, so the port's `z.input` and the procedure's
+ * schema stay the single shared contract.
+ */
+const bind =
+  <TInput, TOutput>(
+    select: (caller: Caller) => (input: TInput) => Promise<TOutput>,
+  ) =>
+  async (actor: ServerManagementActor, input: TInput): Promise<TOutput> => {
+    const caller = await callerFor(actor);
+
     try {
-      return await call();
+      return await select(caller)(input);
     } catch (error) {
       if (error instanceof TRPCError) {
+        const cause = error.cause;
+        const detail =
+          cause instanceof Error && cause.message ? `: ${cause.message}` : "";
+
         throw new ServerManagementError(
           ERROR_CODES[error.code] ?? "internal",
-          error.message,
+          `${error.message}${detail}`,
           { cause: error },
         );
       }
       throw error;
     }
-  }
+  };
+
+/**
+ * Implements {@link ServerManagementPort} on top of the tRPC router.
+ *
+ * This lives in the composition layer on purpose: it is the only thing that
+ * knows both the port and `appRouter`. Integrations that manage servers — the
+ * Discord bot today — depend on the interface and can fake it in tests, which
+ * is what removes `@virtbase/api` from their dependency list.
+ *
+ * Fabricating the caller session also lives here. It used to live inside
+ * `@virtbase/discord`, which meant a plug-in was minting sessions for itself.
+ */
+export class TRPCServerManagement implements ServerManagementPort {
+  readonly list = bind((caller) => caller.servers.list);
+  readonly get = bind((caller) => caller.servers.get);
+  readonly console = bind((caller) => caller.servers.console.get);
+  readonly resetPassword = bind(
+    (caller) => caller.servers.actions.resetPassword,
+  );
+
+  readonly status: ServerStatusOperations = {
+    get: bind((caller) => caller.servers.status.get),
+    update: bind((caller) => caller.servers.status.update),
+  };
+
+  readonly graphs: ServerGraphOperations = {
+    get: bind((caller) => caller.servers.graphs.get),
+  };
+
+  readonly backups: ServerBackupOperations = {
+    list: bind((caller) => caller.servers.backups.list),
+    get: bind((caller) => caller.servers.backups.get),
+    create: bind((caller) => caller.servers.backups.create),
+    update: bind((caller) => caller.servers.backups.update),
+    delete: bind((caller) => caller.servers.backups.delete),
+    restore: bind((caller) => caller.servers.backups.restore),
+  };
+
+  readonly rdns: ServerRdnsOperations = {
+    list: bind((caller) => caller.servers.rdns.list),
+    upsert: bind((caller) => caller.servers.rdns.upsert),
+    delete: bind((caller) => caller.servers.rdns.delete),
+  };
+
+  readonly firewall: ServerFirewallOperations = {
+    options: {
+      get: bind((caller) => caller.servers.firewall.options.get),
+      update: bind((caller) => caller.servers.firewall.options.update),
+    },
+    rules: {
+      list: bind((caller) => caller.servers.firewall.rules.get),
+      create: bind((caller) => caller.servers.firewall.rules.create),
+      update: bind((caller) => caller.servers.firewall.rules.update),
+      delete: bind((caller) => caller.servers.firewall.rules.delete),
+      move: bind((caller) => caller.servers.firewall.rules.move),
+    },
+  };
+
+  readonly mounts: ServerMountOperations = {
+    list: bind((caller) => caller.iso.list),
+    mount: bind((caller) => caller.servers.mounts.mount),
+    unmount: bind((caller) => caller.servers.mounts.unmount),
+  };
+
+  readonly lifecycle: ServerLifecycleOperations = {
+    rename: bind((caller) => caller.servers.rename),
+    changeTemplate: bind((caller) => caller.servers.actions.changeTemplate),
+    plan: bind((caller) => caller.servers.plan.get),
+    templateGroups: bind((caller) => caller.servers.templateGroups.get),
+    advanced: {
+      get: bind((caller) => caller.servers.advanced.get),
+      update: bind((caller) => caller.servers.advanced.update),
+    },
+  };
 }

@@ -116,6 +116,25 @@ export async function selectProxmoxNodeStep({
     .groupBy(servers.proxmoxNodeId)
     .as("usage");
 
+  // A node that hosts no server has no row in `usage` at all, so the left
+  // join below leaves every aggregate NULL. `NULL + cores <= limit` evaluates
+  // to NULL rather than true, which would drop every empty node from the
+  // result and make an empty group unprovisionable. Coalesce at the join
+  // site — the COALESCE inside the subquery only covers an empty aggregate
+  // within a group that exists.
+  const used = {
+    servers: sql`COALESCE(${usageSubquery.serversCount}, 0)`,
+    cores: sql`COALESCE(${usageSubquery.usedCores}, 0)`,
+    memory: sql`COALESCE(${usageSubquery.usedMemory}, 0)`,
+    storage: sql`COALESCE(${usageSubquery.usedStorage}, 0)`,
+    netrate: sql`COALESCE(${usageSubquery.usedNetrate}, 0)`,
+  };
+
+  // A plan may leave `netrate` unset, which the usage sum already counts as
+  // zero because SUM() skips NULLs. Requiring zero here keeps the demand and
+  // the usage side of the comparison on the same footing.
+  const requiredNetrate = netrate ?? 0;
+
   // General selection criteria applied to all strategies
   // Check for coresLimit, memoryLimit, storageLimit, netrateLimit, guestLimit
   const where = and(
@@ -124,43 +143,36 @@ export async function selectProxmoxNodeStep({
     or(
       // Node must have enough cores
       isNull(proxmoxNodes.coresLimit),
-      lte(
-        sql`(${usageSubquery.usedCores} + ${cores})`,
-        proxmoxNodes.coresLimit,
-      ),
+      lte(sql`(${used.cores} + ${cores})`, proxmoxNodes.coresLimit),
     ),
     or(
       // Node must have enough memory
       isNull(proxmoxNodes.memoryLimit),
-      lte(
-        sql`(${usageSubquery.usedMemory} + ${memory})`,
-        proxmoxNodes.memoryLimit,
-      ),
+      lte(sql`(${used.memory} + ${memory})`, proxmoxNodes.memoryLimit),
     ),
     or(
       // Node must have enough storage
       isNull(proxmoxNodes.storageLimit),
-      lte(
-        sql`(${usageSubquery.usedStorage} + ${storage})`,
-        proxmoxNodes.storageLimit,
-      ),
+      lte(sql`(${used.storage} + ${storage})`, proxmoxNodes.storageLimit),
     ),
     or(
       // Node must have enough network rate
       isNull(proxmoxNodes.netrateLimit),
       lte(
-        sql`(${usageSubquery.usedNetrate} + ${netrate})`,
+        sql`(${used.netrate} + ${requiredNetrate})`,
         proxmoxNodes.netrateLimit,
       ),
     ),
     or(
       // Node must not have reached the guest limit
       isNull(proxmoxNodes.guestLimit),
-      lte(sql`(${usageSubquery.serversCount} + 1)`, proxmoxNodes.guestLimit),
+      lte(sql`(${used.servers} + 1)`, proxmoxNodes.guestLimit),
     ),
   );
 
-  const combinedUsage = sql`(${usageSubquery.usedCores} + ${usageSubquery.usedMemory} + ${usageSubquery.usedStorage} + ${usageSubquery.usedNetrate})`;
+  // Coalesced for the same reason as `where`: an empty node must rank as the
+  // least used one, not sort past every occupied node as NULL.
+  const combinedUsage = sql`(${used.cores} + ${used.memory} + ${used.storage} + ${used.netrate})`;
 
   let selectedNode:
     | Pick<

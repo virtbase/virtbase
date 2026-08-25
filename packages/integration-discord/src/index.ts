@@ -15,8 +15,14 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+export * from "./api";
 export * from "./config";
+export * from "./emoji";
+export * from "./features";
 export * from "./handlers";
 export * from "./identity";
 export { default } from "./integration";
+export * from "./routing";
+export * from "./sync";
+export * from "./ui";
 export * from "./utils";

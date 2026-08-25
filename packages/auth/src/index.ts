@@ -229,13 +229,7 @@ export function initAuth({
           !!process.env.DISCORD_CLIENT_SECRET,
         clientId: process.env.DISCORD_CLIENT_ID || "",
         clientSecret: process.env.DISCORD_CLIENT_SECRET,
-        scope: [
-          // Default scopes
-          "identify",
-          "email",
-          // Discord integration for linked roles
-          process.env.DISCORD_APP_ID ? "role_connections.write" : "",
-        ].filter(Boolean),
+        scope: ["identify", "email", "role_connections.write"],
       },
       github: {
         enabled:

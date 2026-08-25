@@ -24,9 +24,6 @@ import z4 from "zod/v4";
 const requiredWithAnonpayConfigured = (value: unknown) =>
   !process.env.NEXT_PUBLIC_STRIPE_ANONPAY_METHOD_ID || !!value;
 
-const requiredWithDiscordIntegration = (value: unknown) =>
-  !process.env.DISCORD_APP_ID || !!value;
-
 export const env = createEnv({
   extends: [authEnv(), vercel()],
   shared: {
@@ -85,15 +82,6 @@ export const env = createEnv({
         requiredWithAnonpayConfigured,
         "ANONPAY_WEBHOOK_SECRET is required if Anonpay is configured",
       ),
-    // Discord. The integration's own credentials live in the configuration
-    // store; these two remain because they are read directly — by the two
-    // build-time registration scripts, by the linked-role route, and to decide
-    // whether to request the `role_connections.write` scope at login.
-    DISCORD_APP_ID: z4.string().optional(),
-    DISCORD_BOT_TOKEN: z4
-      .string()
-      .optional()
-      .refine(requiredWithDiscordIntegration),
   },
   client: {
     // Sentry Configuration

@@ -234,6 +234,7 @@ export class IntegrationRegistry {
     integrationId: string,
     path: string,
     method: string,
+    options: { waitUntil?: (promise: Promise<unknown>) => void } = {},
   ): Promise<{
     webhook: IntegrationWebhook;
     context: IntegrationContext;
@@ -254,7 +255,14 @@ export class IntegrationRegistry {
     const { context } = await this.contextFor(integration);
     if (!context) return null;
 
-    return { webhook, context };
+    // Per request, not per context: `after()` is only valid inside the request
+    // that is being served, and contexts are cached across many of them.
+    return {
+      webhook,
+      context: options.waitUntil
+        ? { ...context, waitUntil: options.waitUntil }
+        : context,
+    };
   }
 
   /** Probes every enabled integration. Drives the admin console's status list. */
@@ -351,6 +359,23 @@ export class IntegrationRegistry {
     await integration[hook]?.(context);
   }
 
+  /**
+   * Fire-and-forget with the rejection logged. Replaced per request by the
+   * dispatcher, which backs it with a runtime primitive that actually keeps the
+   * process alive.
+   */
+  private defaultWaitUntil(
+    integrationId: string,
+  ): (promise: Promise<unknown>) => void {
+    return (promise) => {
+      void promise.catch((error: unknown) => {
+        this.logger.error(`[${integrationId}] Background work failed`, {
+          error: error instanceof Error ? error.message : String(error),
+        });
+      });
+    };
+  }
+
   private async adapterFor<K extends keyof PortMap>(
     integration: Integration,
     port: K,
@@ -389,9 +414,42 @@ export class IntegrationRegistry {
     return pending;
   }
 
+  /**
+   * Whether an integration needs an administrator to turn it on.
+   *
+   * An `internal` integration with no settings and no secrets is a capability
+   * the platform provides to its plug-ins, not something anyone installs. It is
+   * hidden from the admin hub, so there is no switch to flip and no row for the
+   * config source to find — asking the source about it means it is off forever,
+   * which is how `serverManagement` came to be unresolvable on every fresh
+   * database.
+   *
+   * An internal integration that *does* declare configuration still goes
+   * through the source: it has values that can be absent or wrong.
+   */
+  private isAlwaysOn(integration: Integration): boolean {
+    return Boolean(
+      integration.internal && !integration.settings && !integration.secrets,
+    );
+  }
+
   private async buildContext(
     integration: Integration,
   ): Promise<ResolvedIntegration> {
+    if (this.isAlwaysOn(integration)) {
+      return {
+        context: {
+          id: integration.id,
+          settings: {},
+          secrets: {},
+          logger: this.logger,
+          ports: this.portAccessor,
+          waitUntil: this.defaultWaitUntil(integration.id),
+        },
+        configError: null,
+      };
+    }
+
     let stored: { settings: unknown; secrets: unknown };
     try {
       if (!(await this.config.isEnabled(integration))) {
@@ -437,6 +495,7 @@ export class IntegrationRegistry {
         secrets: secrets?.success ? secrets.data : {},
         logger: this.logger,
         ports: this.portAccessor,
+        waitUntil: this.defaultWaitUntil(integration.id),
       },
       configError: null,
     };

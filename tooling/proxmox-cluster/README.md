@@ -15,6 +15,12 @@ bun cluster:up        # build, start and bootstrap
 bun script dev/cluster    # register the nodes with the dev database
 ```
 
+`dev/cluster` is the cluster's stand-in for the admin "create node" action, so
+it also uploads the guest hookscript to the snippet storage. Registering the
+rows by hand is not enough: provisioning then reaches
+`applyHardwareConfigStep` and fails with `script
+'<storage>:snippets/hookscript.pl' does not exist`.
+
 `bun cluster:reset` tears it down completely; `bun cluster:down` just stops it.
 
 The first run takes several minutes, most of it installing Ceph. Every run after
@@ -37,7 +43,7 @@ that is seconds: `bootstrap.sh` checks each stage and skips what is already done
 | Ceph | 3 mons, 3 mgrs, 3 OSDs, `vm-storage` (RBD) and `cephfs` |
 | Web UI | <https://127.0.0.1:8006>, `root` / `virtbase` (`8007`/`8008` for the others) |
 | Credentials | `cluster.json` - gitignored, holds a live API token |
-| Patches | `scripts/patches` applied at image build (snippet upload, hookscript) |
+| Patches | `scripts/patches` applied at image build (snippet upload, snippet mode, hookscript) |
 
 `cephfs` is **shared** and carries iso/backup/snippets, so every node sees the same
 ISO. That is the condition the `// TODO: Get correct storage node` in
@@ -115,11 +121,14 @@ happy path. Each workaround in `bootstrap.sh` is load-bearing:
 
 ## The Proxmox patches
 
-`scripts/patches` holds two patches to Proxmox's own Perl sources, and
+`scripts/patches` holds three patches to Proxmox's own Perl sources, and
 provisioning does not work without them:
 
 - **snippet upload** - stock Proxmox refuses `snippets` as an upload content
   type, so cloud-init snippets cannot be uploaded at all.
+- **snippet mode** - the upload API cannot express a file mode, and
+  `check_hookscript` refuses a hookscript that is not executable. An uploaded
+  snippet starting with a shebang is given mode `0755`.
 - **hookscript** - `hookscript` is not in `$generaloptions`, so the API rejects
   it on VM config updates.
 
@@ -131,4 +140,4 @@ image build rather than showing up later as a confusing provisioning error.
 docker exec virtbase-pve1 /opt/patches/patch.sh status
 ```
 
-`e2e/proxmox/patches.e2e.ts` covers both against the running cluster.
+`e2e/proxmox/patches.e2e.ts` covers all three against the running cluster.

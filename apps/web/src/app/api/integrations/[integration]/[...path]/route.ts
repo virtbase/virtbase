@@ -17,6 +17,7 @@
 
 import Sentry from "@sentry/nextjs";
 import { integrations } from "@virtbase/api/integrations";
+import { after } from "next/server";
 
 type RouteContext = {
   params: Promise<{ integration: string; path: string[] }>;
@@ -29,6 +30,12 @@ type RouteContext = {
  * The request is passed through untouched: signature schemes verify against the
  * exact bytes, so reading the body here would break every one of them.
  * Verification is the integration's job, not this route's.
+ *
+ * `after` is handed to the integration as `ctx.waitUntil` so a webhook that has
+ * to acknowledge before it can finish — a Discord interaction, with its
+ * three-second budget — can do the rest once the response is on the wire. It
+ * lives here rather than in the integration because it is a Next runtime
+ * primitive, and an integration package has no business importing one.
  */
 async function dispatch(
   request: Request,
@@ -40,6 +47,7 @@ async function dispatch(
     integrationId,
     path.join("/"),
     request.method,
+    { waitUntil: (promise) => after(() => promise) },
   );
 
   // Unknown, disabled, misconfigured and no-such-path all answer identically,
