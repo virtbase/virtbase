@@ -51,3 +51,20 @@ export const BACKUP_STALE_AFTER_HOURS = 12;
  * archive as gone.
  */
 export const BACKUP_ARCHIVE_GRACE_MINUTES = 10;
+
+/**
+ * How many days a downloaded template image may be kept before it is
+ * re-downloaded. Overridable per template via `imageRefreshDays`.
+ *
+ * A vendor repoints a `-latest-` alias on every point release, so an image is
+ * refreshed on a timer rather than only when its checksum changes - most
+ * template images deliberately carry no checksum for exactly that reason.
+ */
+export const TEMPLATE_IMAGE_REFRESH_DAYS = 7;
+
+/**
+ * The number of hours after which an unsettled template image download is
+ * considered unresolvable and marked as failed. A `download-url` task that has
+ * not finished within this has not survived the node's task index either.
+ */
+export const TEMPLATE_IMAGE_STALE_AFTER_HOURS = 6;

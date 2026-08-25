@@ -15,12 +15,12 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { eq, sql } from "@virtbase/db";
+import { and, eq, isNotNull, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import {
   proxmoxNodes as pn,
   proxmoxTemplates as pt,
-  proxmoxTemplatesToProxmoxNodes as pt2pn,
+  proxmoxTemplateImages as pti,
 } from "@virtbase/db/schema";
 import { cacheLife, cacheTag } from "next/cache";
 import { cache } from "react";
@@ -30,6 +30,7 @@ export const getTemplateGroups = cache(async (proxmoxNodeGroupId: string) => {
 
   cacheTag(
     "checkout",
+    "proxmox-template-images",
     "proxmox-template-groups",
     "template-groups",
     "proxmox-templates",
@@ -41,9 +42,18 @@ export const getTemplateGroups = cache(async (proxmoxNodeGroupId: string) => {
       const validTemplates = await tx
         .select({ id: pt.id })
         .from(pt)
-        .innerJoin(pt2pn, eq(pt.id, pt2pn.proxmoxTemplateId))
-        .innerJoin(pn, eq(pt2pn.proxmoxNodeId, pn.id))
-        .where(eq(pn.proxmoxNodeGroupId, proxmoxNodeGroupId))
+        .innerJoin(pti, eq(pt.id, pti.proxmoxTemplateId))
+        .innerJoin(pn, eq(pti.proxmoxNodeId, pn.id))
+        .where(
+          and(
+            eq(pn.proxmoxNodeGroupId, proxmoxNodeGroupId),
+            // Withdrawn by an operator, or not yet declared against an image.
+            eq(pt.enabled, true),
+            isNotNull(pt.imageUrl),
+            // The image has to be settled, not merely attempted.
+            isNotNull(pti.downloadedAt),
+          ),
+        )
         .groupBy(pt.id)
         .having(sql`
           COUNT(DISTINCT ${pn.id}) = (

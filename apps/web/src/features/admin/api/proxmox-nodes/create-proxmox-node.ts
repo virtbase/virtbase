@@ -46,6 +46,8 @@ export const createProxmoxNodeAction = actionClient
       backup_storage,
       snippet_storage,
       iso_download_storage,
+      import_storage,
+      vm_storage,
       netrate,
       cores_limit,
       netrate_limit,
@@ -199,6 +201,34 @@ export const createProxmoxNodeAction = actionClient
       });
     }
 
+    const hasValidVmStorage = storages.some(
+      (storage) =>
+        storage.storage === vm_storage &&
+        storage.active &&
+        storage.content.includes("images"),
+    );
+
+    if (!hasValidVmStorage) {
+      throw new TRPCError({
+        code: "BAD_REQUEST",
+        message: `VM storage \`${vm_storage}\` is not available or does not allow the \`images\` content type. Guest disks cannot be allocated on it.`,
+      });
+    }
+
+    const hasValidImportStorage = storages.some(
+      (storage) =>
+        storage.storage === import_storage &&
+        storage.active &&
+        storage.content.includes("import"),
+    );
+
+    if (!hasValidImportStorage) {
+      throw new TRPCError({
+        code: "BAD_REQUEST",
+        message: `Import storage \`${import_storage}\` is not available or does not allow the \`import\` content type. Template images cannot be downloaded to it.`,
+      });
+    }
+
     // Test if the snippet upload works
     // (requires a custom patch to be applied to the Proxmox VE node)
     // See: https://bugzilla.proxmox.com/show_bug.cgi?id=2208
@@ -260,6 +290,8 @@ export const createProxmoxNodeAction = actionClient
             backupStorage: backup_storage,
             snippetStorage: snippet_storage,
             isoDownloadStorage: iso_download_storage,
+            importStorage: import_storage,
+            vmStorage: vm_storage,
             netrate,
             coresLimit: cores_limit,
             netrateLimit: netrate_limit,

@@ -16,7 +16,14 @@
  */
 
 import { FatalError, sleep } from "workflow";
-import { cloneGuestStep, rollbackCloneGuestStep } from "../shared/clone-guest";
+import {
+  applyCloudInitStep,
+  rollbackApplyCloudInitStep,
+} from "../shared/apply-cloud-init";
+import {
+  createGuestFromImageStep,
+  rollbackCreateGuestFromImageStep,
+} from "../shared/create-guest-from-image";
 import { getHAFailoverNodesStep } from "../shared/get-ha-failover-nodes";
 import { getNetworkAdaptersStep } from "../shared/get-network-adapters";
 import { getTemplateStep } from "../shared/get-template";
@@ -72,7 +79,7 @@ export async function provisionServerWorkflow({
 
   const template = await getTemplateStep({
     proxmoxTemplateId,
-    proxmoxNodeId: selectedNode.id,
+    proxmoxNode: selectedNode,
   });
 
   const { adapters, allocations } = await getNetworkAdaptersStep({
@@ -83,27 +90,30 @@ export async function provisionServerWorkflow({
   const rollbacks: Array<() => Promise<void>> = [];
 
   try {
-    const { clonedVmid, clonedName, cloneUpid } = await cloneGuestStep({
+    const {
+      createdVmid: clonedVmid,
+      createdName: clonedName,
+      createUpid,
+    } = await createGuestFromImageStep({
       proxmoxNode: selectedNode,
-      vmid: template.vmid,
-      options: {
-        // TODO: Other storage per node
-        target: selectedNode.hostname,
-      },
+      volid: template.volid,
+      // TODO: Other storage per node
+      storage: selectedNode.vmStorage,
+      template,
     });
 
     await sleep("3s");
     await waitForProxmoxTaskStep({
       proxmoxNode: selectedNode,
-      upid: cloneUpid,
+      upid: createUpid,
       ignoreErrors: false,
     });
 
     rollbacks.push(() =>
-      rollbackCloneGuestStep({
+      rollbackCreateGuestFromImageStep({
         proxmoxNode: selectedNode,
-        newid: clonedVmid,
-        cloneUpid,
+        vmid: clonedVmid,
+        createUpid,
       }),
     );
 
@@ -149,6 +159,28 @@ export async function provisionServerWorkflow({
 
     rollbacks.push(() =>
       rollbackApplyHardwareConfigStep({
+        proxmoxNode: selectedNode,
+        vmid: clonedVmid,
+      }),
+    );
+
+    // Before the network step, because it owns `cicustom` and the guest should
+    // never be startable with a half-written cloud-init configuration.
+    const { cicustomUpid } = await applyCloudInitStep({
+      proxmoxNode: selectedNode,
+      vmid: clonedVmid,
+      proxmoxTemplateId,
+      adapters,
+    });
+
+    await waitForProxmoxTaskStep({
+      proxmoxNode: selectedNode,
+      upid: cicustomUpid,
+      ignoreErrors: false,
+    });
+
+    rollbacks.push(() =>
+      rollbackApplyCloudInitStep({
         proxmoxNode: selectedNode,
         vmid: clonedVmid,
       }),

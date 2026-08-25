@@ -17,15 +17,20 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { proxmoxNodes } from "./proxmox-nodes";
+import { cloudInitSnippets } from "./cloud-init-snippets";
 import { proxmoxTemplates } from "./proxmox-templates";
 
-export const proxmoxTemplatesToProxmoxNodes = d.snakeCase.table(
-  "proxmox_templates_to_proxmox_nodes",
+/**
+ * Per-template override of a snippet's selector.
+ *
+ * A snippet's `targets` decide the default; this table is the exception. A row
+ * with `attached = true` applies a snippet the selector would have skipped, and
+ * `attached = false` withdraws one it would have matched - so an awkward
+ * template never forces a selector to be contorted around it.
+ */
+export const templateSnippets = d.snakeCase.table(
+  "template_snippets",
   {
-    /**
-     * The ID of the Proxmox VE template this Proxmox VE template to Proxmox VE node association belongs to.
-     */
     proxmoxTemplateId: d
       .text()
       .notNull()
@@ -33,29 +38,25 @@ export const proxmoxTemplatesToProxmoxNodes = d.snakeCase.table(
         onDelete: "cascade",
         onUpdate: "cascade",
       }),
-    /**
-     * The ID of the Proxmox VE node this Proxmox VE template to Proxmox VE node association belongs to.
-     */
-    proxmoxNodeId: d
+    cloudInitSnippetId: d
       .text()
       .notNull()
-      .references(() => proxmoxNodes.id, {
+      .references(() => cloudInitSnippets.id, {
         onDelete: "cascade",
         onUpdate: "cascade",
       }),
     /**
-     * The VM ID of the Proxmox VE template on the Proxmox VE node.
+     * `true` forces the snippet on, `false` forces it off. There is no third
+     * state - absence of a row means "whatever the selector says".
      *
-     * @example 100
+     * @default true
      */
-    vmid: d.integer().notNull(),
+    attached: d.boolean().notNull().default(true),
     /**
-     * The storage this Proxmox VE template is available on
-     * at this specific Proxmox VE node.
-     *
-     * @example "local-lvm", "cephfs", "nfs"
+     * Overrides the snippet's own `priority` for this template only. Null keeps
+     * the snippet's ordering.
      */
-    storage: d.text().notNull(),
+    priority: d.smallint(),
     createdAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
@@ -67,11 +68,13 @@ export const proxmoxTemplatesToProxmoxNodes = d.snakeCase.table(
       .$onUpdate(() => sql`now()`),
   },
   (t) => [
-    // Combined primary key => implicit index on both columns
     d.primaryKey({
-      // Custom name otherwise it would be too long / truncated
-      name: "pt2pn_composite_pk",
-      columns: [t.proxmoxTemplateId, t.proxmoxNodeId],
+      // Custom name, otherwise it would be truncated
+      name: "ts_composite_pk",
+      columns: [t.proxmoxTemplateId, t.cloudInitSnippetId],
     }),
+    d.index().on(t.cloudInitSnippetId),
   ],
 );
+
+export type DatabaseTemplateSnippet = typeof templateSnippets.$inferSelect;

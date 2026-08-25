@@ -17,11 +17,10 @@
 
 import type { GetProxmoxInstanceParams, NetworkAdapter } from "../../proxmox";
 import { getProxmoxInstance } from "../../proxmox";
-import { generateCloudInitNetworkConfig } from "../../proxmox/generate-cloud-init-network-config";
 import { getNetworkAdapterConfig } from "../../proxmox/get-network-adapter-config";
 
 type ApplyNetworkConfigStepParams = {
-  proxmoxNode: GetProxmoxInstanceParams & { snippetStorage: string };
+  proxmoxNode: GetProxmoxInstanceParams;
   vmid: number;
   adapters: (NetworkAdapter & {
     vlan: number;
@@ -30,8 +29,16 @@ type ApplyNetworkConfigStepParams = {
   })[];
 };
 
+/**
+ * Applies the guest's network adapters, firewall options and anti-spoofing
+ * IP sets.
+ *
+ * The cloud-init *network config* is deliberately not written here any more:
+ * it shares the `cicustom` key with vendor data, and a single key written by
+ * two steps races. `applyCloudInitStep` owns both files and that key.
+ */
 export async function applyNetworkConfigStep({
-  proxmoxNode: { snippetStorage, ...proxmoxNode },
+  proxmoxNode,
   vmid,
   adapters,
 }: ApplyNetworkConfigStepParams) {
@@ -39,16 +46,6 @@ export async function applyNetworkConfigStep({
 
   const instance = getProxmoxInstance(proxmoxNode);
   const vm = instance.node.qemu.$(vmid);
-
-  const cinetwork = generateCloudInitNetworkConfig(adapters);
-
-  const filename = `ci-network-${vmid}.yml`;
-
-  await instance.uploadSnippet({
-    filename,
-    storage: snippetStorage,
-    contents: cinetwork,
-  });
 
   const [networkConfigUpid] = await Promise.all([
     vm.config.$post({
@@ -63,7 +60,6 @@ export async function applyNetworkConfigStep({
           }),
         })),
       ),
-      cicustom: `network=${snippetStorage}:snippets/${filename}`,
     }),
     vm.firewall.options.$put({
       // Firewall MUST always be enabled for the following IP filters to work
@@ -119,7 +115,7 @@ export async function applyNetworkConfigStep({
 }
 
 export async function rollbackApplyNetworkConfigStep({
-  proxmoxNode: { snippetStorage, ...proxmoxNode },
+  proxmoxNode,
   vmid,
 }: Omit<ApplyNetworkConfigStepParams, "adapters">) {
   "use step";
@@ -137,11 +133,8 @@ export async function rollbackApplyNetworkConfigStep({
       delete:
         "enable,policy_in,policy_out,log_level_in,log_level_out,ipfilter,macfilter,ndp,dhcp,radv",
     }),
-    // Delete created network configuration snippet
-    instance.node.storage
-      .$(snippetStorage)
-      .content.$(`${snippetStorage}:snippets/ci-network-${vmid}.yml`)
-      .$delete(),
+    // The network snippet and `cicustom` belong to `applyCloudInitStep`, whose
+    // own rollback removes them.
   ]);
 
   // Delete created firewall IP sets

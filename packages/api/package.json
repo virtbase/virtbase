@@ -7,6 +7,10 @@
       "types": "./dist/index.d.ts",
       "default": "./src/index.ts"
     },
+    "./cloud-init": {
+      "types": "./dist/cloud-init/index.d.ts",
+      "default": "./src/cloud-init/index.ts"
+    },
     "./backups": {
       "types": "./dist/backups.d.ts",
       "default": "./src/backups/index.ts"
@@ -22,6 +26,10 @@
     "./proxmox": {
       "types": "./dist/proxmox.d.ts",
       "default": "./src/proxmox/index.ts"
+    },
+    "./template-images": {
+      "types": "./dist/template-images/index.d.ts",
+      "default": "./src/template-images/index.ts"
     },
     "./workflows": {
       "types": "./dist/workflows.d.ts",

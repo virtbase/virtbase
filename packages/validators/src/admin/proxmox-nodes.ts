@@ -158,6 +158,24 @@ export const ProxmoxNodeSchema = z.object({
       examples: ["local-lvm"],
       internal: true,
     }),
+  vm_storage: z
+    .string()
+    .min(1)
+    .meta({
+      description:
+        "The name of the storage guest disks are allocated on. Must support the `images` content type.",
+      examples: ["local-lvm"],
+      internal: true,
+    }),
+  import_storage: z
+    .string()
+    .min(1)
+    .meta({
+      description:
+        "The name of the storage template images are downloaded to and imported from. Must support the `import` content type.",
+      examples: ["local"],
+      internal: true,
+    }),
   created_at: ObjectTimestampSchema.shape.created_at,
   updated_at: ObjectTimestampSchema.shape.updated_at,
 });

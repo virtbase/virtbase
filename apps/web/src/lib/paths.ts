@@ -96,8 +96,15 @@ export const paths = {
       },
     },
     templates: {
+      getHref: () => "/templates",
       overview: {
         getHref: (id: string) => `/templates/${id}`,
+      },
+    },
+    snippets: {
+      getHref: () => "/snippets",
+      overview: {
+        getHref: (id: string) => `/snippets/${id}`,
       },
     },
     subnets: {

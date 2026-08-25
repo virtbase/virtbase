@@ -28,6 +28,10 @@
     {
       "path": "/api/cron/reconcile-server-backups",
       "schedule": "*/10 * * * *"
+    },
+    {
+      "path": "/api/cron/refresh-template-images",
+      "schedule": "17 * * * *"
     }
   ]
 }

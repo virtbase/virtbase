@@ -152,6 +152,31 @@ export const proxmoxNodes = d.snakeCase.table(
      * @example "local-lvm", "cephfs", "nfs"
      */
     isoDownloadStorage: d.text().notNull(),
+    /**
+     * The name of the storage a guest's disks are allocated on. Must support
+     * the `images` content type.
+     *
+     * Only needed once guests are created from an image rather than cloned: a
+     * clone inherited its storage from the template it copied, so there was
+     * nothing to configure. Backfilled from whatever storage that node's
+     * templates used.
+     *
+     * @example "local-lvm", "vm-storage", "ceph-rbd"
+     */
+    vmStorage: d.text().notNull(),
+    /**
+     * The name of the storage template images are downloaded to, and imported
+     * from when a guest is created. Must declare the `import` content type,
+     * which restricts it to the file-based storages (dir, CephFS, NFS).
+     *
+     * Backfilled from `snippetStorage` for nodes that predate it: a snippet
+     * storage is necessarily file-based, so it is the one existing value that
+     * is a plausible import storage. It still has to declare `import` before
+     * it will work, which node validation checks.
+     *
+     * @example "local", "cephfs", "nfs"
+     */
+    importStorage: d.text().notNull(),
     createdAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()

@@ -304,10 +304,43 @@ create_storages() {
   # ends up missing with the cluster otherwise healthy.
   local tries=15
   until pve "$PRIMARY" bash -c 'pvesm status 2>/dev/null | grep -q "^cephfs "'; do
-    pve "$PRIMARY" pvesm add cephfs cephfs --content iso,backup,snippets,vztmpl >/dev/null 2>&1 || true
+    pve "$PRIMARY" pvesm add cephfs cephfs --content iso,backup,snippets,vztmpl,import >/dev/null 2>&1 || true
     tries=$((tries - 1))
     [ "$tries" -gt 0 ] || { warn "cephfs storage could not be registered"; break; }
     sleep 4
+  done
+
+  # `import` carries the cloud images that guests are built from via
+  # `import-from`. A cluster bootstrapped before it was added has the storage
+  # already, so `pvesm add` above is a no-op for it - set the content list
+  # explicitly so an existing cluster gains the type instead of silently
+  # lacking it.
+  pve "$PRIMARY" pvesm set cephfs --content iso,backup,snippets,vztmpl,import >/dev/null 2>&1 ||
+    warn "could not set cephfs content types"
+}
+
+# --------------------------------------------------------------- guest net ----
+
+# `vmbr0` exists with an address but no carrier and no route out, so a guest
+# gets a static IP whose gateway goes nowhere. Cloud-init then cannot reach a
+# mirror, which breaks anything installed at first boot - and `ciupgrade: true`
+# is already set on every provisioned server, so this is not new.
+#
+# Not persisted by Proxmox: the bridge and the nat rules live in the container's
+# kernel namespace and are lost on restart, so this runs on every bootstrap.
+enable_guest_networking() {
+  for node in "${NODES[@]}"; do
+    pve "$node" bash -c '
+      set -e
+      ip link set vmbr0 up 2>/dev/null || true
+      sysctl -qw net.ipv4.ip_forward=1
+      iptables -t nat -C POSTROUTING -s 172.30.0.0/24 ! -o vmbr0 -j MASQUERADE 2>/dev/null ||
+        iptables -t nat -A POSTROUTING -s 172.30.0.0/24 ! -o vmbr0 -j MASQUERADE
+      iptables -C FORWARD -i vmbr0 -j ACCEPT 2>/dev/null ||
+        iptables -I FORWARD 1 -i vmbr0 -j ACCEPT
+      iptables -C FORWARD -o vmbr0 -j ACCEPT 2>/dev/null ||
+        iptables -I FORWARD 1 -o vmbr0 -j ACCEPT
+    ' >/dev/null 2>&1 || warn "could not enable guest networking on $node"
   done
 }
 
@@ -342,7 +375,7 @@ write_cluster_json() {
   {
     printf '{\n  "fqdn": "127.0.0.1",\n  "tokenId": "%s",\n  "tokenSecret": "%s",\n' "$token_id" "$secret"
     printf '  "caFile": "tooling/proxmox-cluster/pve-root-ca.pem",\n'
-    printf '  "storage": { "vm": "vm-storage", "iso": "cephfs", "backup": "cephfs", "snippet": "cephfs" },\n'
+    printf '  "storage": { "vm": "vm-storage", "iso": "cephfs", "backup": "cephfs", "snippet": "cephfs", "import": "cephfs" },\n'
     printf '  "nodes": [\n'
     for i in "${!NODES[@]}"; do
       printf '    { "hostname": "%s", "ip": "%s" }%s\n' \
@@ -378,6 +411,7 @@ for attempt in 1 2; do
   sleep 10
 done
 
+enable_guest_networking
 write_cluster_json
 
 log "cluster ready"

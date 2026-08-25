@@ -21,4 +21,9 @@ export * from "./delete-server";
 export * from "./extend-server";
 export * from "./provision-server";
 export * from "./restore-server-backup";
+// Shared steps are exported so the dev verification scripts can drive the real
+// step implementations rather than a reimplementation of them.
+export * from "./shared/apply-cloud-init";
+export * from "./shared/create-guest-from-image";
+export * from "./shared/get-template";
 export * from "./upgrade-server";

@@ -108,6 +108,62 @@ export const getProxmoxInstance = (proxmoxNode: GetProxmoxInstanceParams) => {
         },
       },
     }),
+    // `proxmox-api`'s generated typings predate the `import` content type: they
+    // declare this endpoint's `content` as `'iso' | 'vztmpl'`, while PVE 9 also
+    // accepts `import` (verified in API2/Storage/Status.pm). Rather than cast at
+    // every call site, the endpoint is re-declared here with the enum Proxmox
+    // actually implements.
+    //
+    // Returns the UPID of the download task - the caller has to poll it.
+    downloadUrl: async ({
+      storage,
+      content,
+      filename,
+      url,
+      checksum,
+      checksumAlgorithm,
+      compression,
+      verifyCertificates = true,
+    }: {
+      storage: string;
+      content: "iso" | "vztmpl" | "import";
+      /**
+       * Caution: Proxmox normalizes this. It must already consist of
+       * `[a-zA-Z0-9-.+=_]` and carry an extension the content type accepts -
+       * for `import` that is `.ova`, `.ovf`, `.qcow2`, `.raw` or `.vmdk`
+       * (notably *not* `.img`).
+       */
+      filename: string;
+      url: string;
+      /** Requires `checksumAlgorithm`. Proxmox aborts the download on mismatch. */
+      checksum?: string;
+      checksumAlgorithm?:
+        | "md5"
+        | "sha1"
+        | "sha224"
+        | "sha256"
+        | "sha384"
+        | "sha512";
+      /** Decompress after download, e.g. `zst` or `gz`. */
+      compression?: string;
+      verifyCertificates?: boolean;
+    }): Promise<string> => {
+      return engine.doRequest(
+        "POST",
+        `/api2/json/nodes/${hostname}/storage/${storage}/download-url`,
+        "/api2/json/nodes/*/storage/*/download-url",
+        {
+          content,
+          filename,
+          url,
+          ...(checksum && checksumAlgorithm
+            ? { checksum, "checksum-algorithm": checksumAlgorithm }
+            : {}),
+          ...(compression ? { compression } : {}),
+          "verify-certificates": verifyCertificates,
+        },
+      );
+    },
     // Need to place this here because Proxmox team is too lazy to implement this
     // in the official Proxmox VE API.
     // See: https://bugzilla.proxmox.com/show_bug.cgi?id=2208

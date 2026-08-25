@@ -499,6 +499,7 @@ msgstr "Attiva/disattiva colonne"
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
 #: src/features/admin/components/servers/servers-table/columns.tsx
 #: src/features/admin/components/subnets/subnets-table/columns.tsx
 #: src/features/admin/components/users/users-table/columns.tsx
@@ -833,6 +834,12 @@ msgstr "Pannello di controllo"
 msgid "QOxktD"
 msgstr "Server"
 
+#: src/app/admin.virtbase.com/(dashboard)/snippets/[id]/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/snippets/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+msgid "TQRrlM"
+msgstr "Frammenti"
+
 #: src/app/admin.virtbase.com/(dashboard)/subnets/[id]/page.tsx
 #: src/app/admin.virtbase.com/(dashboard)/subnets/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
@@ -844,6 +851,13 @@ msgstr "Sottoreti"
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "aIwSug"
 msgstr "Gruppi di modelli"
+
+#: src/app/admin.virtbase.com/(dashboard)/templates/[id]/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/templates/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+msgid "A3ptul"
+msgstr "Modelli"
 
 #: src/app/admin.virtbase.com/(dashboard)/users/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
@@ -1084,10 +1098,14 @@ msgstr "Creato {date}"
 
 #: src/features/account/components/api-keys/api-keys-list.tsx
 #: src/features/account/components/ssh-keys/ssh-keys-list.tsx
+#: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/delete-template-dialog.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
 #: src/features/admin/components/servers/servers-table/columns.tsx
 #: src/features/admin/components/subnets/subnets-table/columns.tsx
 #: src/features/admin/components/users/users-table/columns.tsx
@@ -1113,10 +1131,14 @@ msgstr "Crea chiave API"
 #: src/features/account/components/authentication/two-factor-enable-dialog.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
+#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+#: src/features/admin/components/proxmox-templates/delete-template-dialog.tsx
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
@@ -1140,12 +1162,18 @@ msgstr "Questa chiave verrà visualizzata solo una volta. Si prega di salvarlo i
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
+#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
 #: src/features/admin/components/servers/servers-table/columns.tsx
 #: src/features/admin/components/users/users-table/columns.tsx
 #: src/features/servers/components/backups/backups-table/columns.tsx
@@ -1404,6 +1432,7 @@ msgid "ueVsqa"
 msgstr "Usa un'immagine personalizzata"
 
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
 msgid "bWjdfa"
 msgstr "URL"
 
@@ -1508,6 +1537,7 @@ msgstr "Inserisci un indirizzo email valido."
 #: src/features/account/components/user-name-card.tsx
 #: src/features/account/components/user-password-card.tsx
 #: src/features/admin/components/integrations/integration-settings-form.tsx
+#: src/features/admin/components/proxmox-templates/cards/settings-card.tsx
 msgid "jvo0vs"
 msgstr "Salva"
 
@@ -1691,6 +1721,230 @@ msgstr "Logo"
 msgid "y1Z3or"
 msgstr "Lingua"
 
+#: src/features/admin/components/cloud-init-snippets/create-snippet-button.tsx
+#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
+msgid "Wqu_Jt"
+msgstr "Crea frammento"
+
+#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
+msgid "I94XFH"
+msgstr "I frammenti confluiscono nei vendor-data cloud-init che l'ospite riceve al primo avvio. Il contenuto lo scrivi dopo."
+
+#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
+msgid "Ga3Fhc"
+msgstr "Installa fail2ban"
+
+#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+msgid "IoDlcd"
+msgstr "Slug"
+
+#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+msgid "e5x8FT"
+msgstr "Tipo"
+
+#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+msgid "8lCjAM"
+msgstr "Priorità"
+
+#: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
+msgid "1q_kua"
+msgstr "Frammento eliminato"
+
+#: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/snippet-actions-row.tsx
+msgid "DknRu4"
+msgstr "Elimina frammento"
+
+#: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
+msgid "DsyEUN"
+msgstr "I server provisionati da ora in poi non lo riceveranno più. Gli ospiti che lo hanno già non vengono toccati."
+
+#: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
+msgid "yIq0vr"
+msgstr "{name} si applica attualmente a {count} modelli."
+
+#: src/features/admin/components/cloud-init-snippets/snippet-editor.tsx
+msgid "p1Ueb1"
+msgstr "Riga {line}, colonna {column}: {message}"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "qkAb3H"
+msgstr "Frammento salvato"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+msgid "GlAH7l"
+msgstr "Famiglia OS"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "zn5r5q"
+msgstr "Gestore pacchetti"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "x8rLUO"
+msgstr "Sistema di init"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "YxVYs5"
+msgstr "Architettura"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "Jq3FDz"
+msgstr "Contenuto"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "9y0ZR5"
+msgstr "Uno script scritto sull'ospite ed eseguito una volta al primo avvio."
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "MPckmq"
+msgstr "Un frammento cloud-config. Elenchi come runcmd e packages si accumulano tra i frammenti."
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "HFhqDC"
+msgstr "Il salvataggio è bloccato finché il documento non può essere analizzato."
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "Lv0zJu"
+msgstr "Dettagli"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "KcKWtb"
+msgstr "Come questo frammento viene identificato e ordinato."
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "mfKcIm"
+msgstr "Le priorità più basse vengono composte per prime; in caso di parità vince lo slug."
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "Q8Qw5B"
+msgstr "Descrizione"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "V52jNn"
+msgstr "Abilitata"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+msgid "6WqHWi"
+msgstr "Si applica a"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "vqF8YB"
+msgstr "Quali modelli ricevono questo frammento. Ogni dimensione impostata deve corrispondere."
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "jCVBlf"
+msgstr "Lascia tutto deselezionato per applicarlo a tutti i modelli."
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "KkKVqf"
+msgstr "Intervallo di versioni"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "pKuvQ3"
+msgstr "Corrisponde a {count} di {total} modelli"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "0bKTrV"
+msgstr "Non è ancora definito nessun modello."
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
+msgid "94Fg25"
+msgstr "Seleziona tutto"
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
+msgid "4pJVaS"
+msgstr "Seleziona riga"
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+msgid "XPruqs"
+msgstr "Ordine"
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+msgid "tthToS"
+msgstr "Disattivato"
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+msgid "InWqys"
+msgstr "Facoltativo"
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+msgid "wFbsIt"
+msgstr "Cerca per nome..."
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+msgid "MT5QHi"
+msgstr "ogni modello"
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+msgid "ypl26d"
+msgstr "Modelli a cui questo frammento si applica attualmente"
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+#: src/features/servers/components/rdns/records-table/columns.tsx
+msgid "wFMlsH"
+msgstr "Aggiornato a"
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+msgid "bdcMGy"
+msgstr "Apri il menu"
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
+msgid "wEQDC6"
+msgstr "Modifica"
+
 #: src/features/admin/components/dashboard/activity-stats-row.tsx
 msgid "wCWFeb"
 msgstr "Server attivi"
@@ -1824,51 +2078,9 @@ msgstr "Nessun datacenter trovato."
 #: src/features/admin/components/servers/servers-table/columns.tsx
 #: src/features/admin/components/subnets/subnets-table/columns.tsx
 #: src/features/admin/components/users/users-table/columns.tsx
-#: src/features/invoices/components/invoices-table/columns.tsx
-msgid "94Fg25"
-msgstr "Seleziona tutto"
-
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
-#: src/features/admin/components/emails/emails-table/columns.tsx
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-#: src/features/admin/components/servers/servers-table/columns.tsx
-#: src/features/admin/components/subnets/subnets-table/columns.tsx
-#: src/features/admin/components/users/users-table/columns.tsx
-#: src/features/invoices/components/invoices-table/columns.tsx
-msgid "4pJVaS"
-msgstr "Seleziona riga"
-
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-#: src/features/admin/components/servers/servers-table/columns.tsx
-msgid "wFbsIt"
-msgstr "Cerca per nome..."
-
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
-#: src/features/admin/components/emails/emails-table/columns.tsx
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-#: src/features/admin/components/servers/servers-table/columns.tsx
-#: src/features/admin/components/subnets/subnets-table/columns.tsx
-#: src/features/admin/components/users/users-table/columns.tsx
 #: src/features/servers/components/rdns/records-table/columns.tsx
 msgid "AbXVP4"
 msgstr "Creato a"
-
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
-#: src/features/admin/components/emails/emails-table/columns.tsx
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-#: src/features/admin/components/servers/servers-table/columns.tsx
-#: src/features/admin/components/subnets/subnets-table/columns.tsx
-#: src/features/admin/components/users/users-table/columns.tsx
-msgid "bdcMGy"
-msgstr "Apri il menu"
 
 #: src/features/admin/components/emails/email-preview-dialog.tsx
 msgid "fg6AsA"
@@ -2058,6 +2270,14 @@ msgid "1gRCWa"
 msgstr "Segreto simbolico"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
+msgid "Yoiogm"
+msgstr "Archiviazione VM"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
+msgid "iLHHKM"
+msgstr "I dischi dei server su questo nodo vengono allocati qui. Deve consentire il tipo di contenuto `images`."
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "6o6hYT"
 msgstr "Archiviazione di frammenti"
 
@@ -2080,6 +2300,14 @@ msgstr "Archiviazione download ISO"
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "Us0NPD"
 msgstr "Le immagini ISO saranno memorizzate qui."
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
+msgid "02_Jy9"
+msgstr "Archiviazione di importazione"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
+msgid "-sKPmz"
+msgstr "Le immagini dei modelli vengono scaricate qui e importate da qui. Deve consentire il tipo di contenuto `import`."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 #: src/features/servers/components/overview/node-details-dialog.tsx
@@ -2164,19 +2392,233 @@ msgstr "Crea gruppo di modelli Proxmox"
 msgid "Fbkq0B"
 msgstr "Crea un nuovo gruppo di modelli Proxmox VE per i modelli Proxmox VE."
 
-#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-msgid "8lCjAM"
-msgstr "Priorità"
-
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
 msgid "lb_VMv"
 msgstr "Numero di modelli"
 
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-#: src/features/servers/components/rdns/records-table/columns.tsx
-msgid "wFMlsH"
-msgstr "Aggiornato a"
+#: src/features/admin/components/proxmox-templates/create-template-button.tsx
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+msgid "TAoX_m"
+msgstr "Crea modello Proxmox"
+
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+msgid "1GUBwn"
+msgstr "Modello creato"
+
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+msgid "UUO1lh"
+msgstr "Dichiara un sistema operativo dall'immagine da cui è costruito. I dettagli dell'ospite e i frammenti cloud-init si configurano dopo."
+
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+msgid "HpoDwk"
+msgstr "Gruppo"
+
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+msgid "FSfy2-"
+msgstr "Seleziona un gruppo di modelli"
+
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "kk4TVW"
+msgstr "Icona"
+
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+msgid "B9mB91"
+msgstr "URL dell'immagine"
+
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "p5LNtB"
+msgstr "Non impostato"
+
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+msgid "ClxHFU"
+msgstr "Versione OS"
+
+#: src/features/admin/components/proxmox-templates/delete-template-dialog.tsx
+msgid "s-6mz6"
+msgstr "Modello eliminato"
+
+#: src/features/admin/components/proxmox-templates/delete-template-dialog.tsx
+#: src/features/admin/components/proxmox-templates/template-actions-row.tsx
+msgid "AghqfS"
+msgstr "Elimina modello"
+
+#: src/features/admin/components/proxmox-templates/delete-template-dialog.tsx
+msgid "_SLxIn"
+msgstr "Questa azione non si può annullare. Un modello da cui è stato costruito un server non può essere eliminato: quel riferimento registra il sistema operativo scelto dal cliente."
+
+#: src/features/admin/components/proxmox-templates/template-actions-row.tsx
+msgid "qoyVoB"
+msgstr "Download avviato"
+
+#: src/features/admin/components/proxmox-templates/template-actions-row.tsx
+msgid "3Y9Iix"
+msgstr "Scarica immagine"
+
+#: src/features/admin/components/proxmox-templates/template-actions-row.tsx
+msgid "kxpfZc"
+msgstr "Forza nuovo download"
+
+#: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
+msgid "OZmJgO"
+msgstr "Disponibilità dell'immagine"
+
+#: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
+msgid "cwF_E3"
+msgstr "Download non riuscito su {count} di {total} nodi"
+
+#: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
+msgid "U9BwIT"
+msgstr "Il nodo non ha indicato il motivo."
+
+#: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
+msgid "NHmbQX"
+msgstr "Non scaricato su {count} di {total} nodi"
+
+#: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
+msgid "R7EsVm"
+msgstr "L'aggiornamento orario lo recupererà, oppure puoi avviare il download adesso."
+
+#: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
+msgid "87rP85"
+msgstr "Download in corso su {count} di {total} nodi"
+
+#: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
+msgid "GiODHE"
+msgstr "Ricarica più tardi per vedere a che punto è."
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "0fwVtw"
+msgstr "Modello salvato"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "oYmiAR"
+msgstr "Come questo sistema operativo viene presentato ai clienti."
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "Dc8lWq"
+msgstr "Le icone sono in /assets/static/distros. Un modello disattivato resta configurato ma non viene mai proposto."
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "qH5GMU"
+msgstr "Offri ai clienti"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+msgid "-0zv6g"
+msgstr "Immagine"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "5nV6L5"
+msgstr "L'immagine cloud da cui è costruito il disco dell'ospite. Viene scaricata su ogni nodo e importata al provisionamento."
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "Lj7fNF"
+msgstr "Lascia vuoto il checksum se il fornitore sostituisce il file dietro lo stesso URL."
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "I0HSpZ"
+msgstr "Checksum"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "u2OsFB"
+msgstr "Algoritmo"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "450Fty"
+msgstr "Nessuno"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "Wf4EEV"
+msgstr "Scarica di nuovo dopo"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "lKv8ex"
+msgstr "Predefinito"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "n8cyVk"
+msgstr "Sistema operativo"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "ivnHYK"
+msgstr "Descrive l'ospite così da applicarvi i frammenti cloud-init giusti."
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "gsmwHY"
+msgstr "I frammenti puntano a questi valori, non al nome del modello."
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "rzCvRt"
+msgstr "Famiglia"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "I3b4hn"
+msgstr "Versione"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "V8SPv5"
+msgstr "Hardware virtuale"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "LF-mzc"
+msgstr "Come l'ospite viene creato in Proxmox. I valori predefiniti vanno bene per ogni immagine attuale."
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "Ey_ap0"
+msgstr "Modificali solo per un'immagine che altrimenti non si avvia."
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "9kxMK5"
+msgstr "Tipo OS"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "3qev5E"
+msgstr "Tipo CPU"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+#: src/features/servers/components/advanced/advanced-bios-card.tsx
+msgid "NjgW6o"
+msgstr "BIOS"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "aCFQ7D"
+msgstr "Macchina"
+
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+msgid "zF7Cth"
+msgstr "Ospite"
+
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+msgid "gWRNWc"
+msgstr "non impostato"
+
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+msgid "VOiQJ7"
+msgstr "Un download non è riuscito."
+
+#: src/features/admin/components/proxmox-templates/vendor-data-preview.tsx
+msgid "iIwvLh"
+msgstr "Vendor-data cloud-init"
+
+#: src/features/admin/components/proxmox-templates/vendor-data-preview.tsx
+msgid "BqqgbN"
+msgstr "Nessun frammento corrisponde a questo modello."
+
+#: src/features/admin/components/proxmox-templates/vendor-data-preview.tsx
+msgid "KSAF83"
+msgstr "Frammenti saltati"
+
+#: src/features/admin/components/proxmox-templates/vendor-data-preview.tsx
+msgid "cLU7jm"
+msgstr "Chiavi sovrascritte"
+
+#: src/features/admin/components/proxmox-templates/vendor-data-preview.tsx
+msgid "KYJPkq"
+msgstr "Non verrebbe caricato nulla per questo modello."
 
 #: src/features/admin/components/servers/servers-table/columns.tsx
 msgid "XmTS6D"
@@ -2705,10 +3147,6 @@ msgstr "Rete"
 #: src/features/servers/components/server-stats-card.tsx
 msgid "yCCio2"
 msgstr "Ultimo riavvio"
-
-#: src/features/servers/components/advanced/advanced-bios-card.tsx
-msgid "NjgW6o"
-msgstr "BIOS"
 
 #: src/features/servers/components/advanced/advanced-bios-card.tsx
 msgid "4HNt5G"
@@ -3371,11 +3809,6 @@ msgstr "Tipo ICMP"
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
-msgid "V52jNn"
-msgstr "Abilitata"
-
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "aH4De2"
 msgstr "Origine"
 
@@ -3447,10 +3880,6 @@ msgstr "Vai su"
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
 msgid "H_r5m6"
 msgstr "Spostati giù"
-
-#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
-msgid "wEQDC6"
-msgstr "Modifica"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "AFkUOq"

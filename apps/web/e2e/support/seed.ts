@@ -101,6 +101,8 @@ async function seedProxmoxNodes() {
         tokenID: cluster.tokenId,
         tokenSecret: cluster.tokenSecret,
         isoDownloadStorage: cluster.storage.iso,
+        importStorage: cluster.storage.import,
+        vmStorage: cluster.storage.vm,
         backupStorage: cluster.storage.backup,
         snippetStorage: cluster.storage.snippet,
       })

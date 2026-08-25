@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+export * from "./cloud-init";
 export * from "./constants";
 export * from "./functions";
 export * from "./guest";

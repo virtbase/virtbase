@@ -27,6 +27,7 @@ import {
 } from "@virtbase/ui/field";
 import {
   LucideCircleQuestionMark,
+  LucideDatabase,
   LucideDisc3,
   LucideFileText,
   LucideHardDrive,
@@ -94,6 +95,8 @@ export default function CreateNodeDialog({
       snippet_storage: "",
       backup_storage: "",
       iso_download_storage: "",
+      import_storage: "",
+      vm_storage: "",
     },
     resolver: zodResolver(CreateProxmoxNodeInputSchema),
   });
@@ -309,6 +312,51 @@ export default function CreateNodeDialog({
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <Controller
+              name="vm_storage"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor={field.name}>
+                    {t("VM Storage")}
+                  </FieldLabel>
+                  <InputGroup>
+                    <InputGroupAddon align="inline-start">
+                      <LucideDatabase />
+                    </InputGroupAddon>
+                    <InputGroupInput
+                      id={field.name}
+                      aria-invalid={fieldState.invalid}
+                      autoComplete="off"
+                      type="text"
+                      minLength={1}
+                      placeholder="local-lvm"
+                      {...field}
+                    />
+                    <InputGroupAddon align="inline-end">
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <InputGroupButton
+                            size="icon-xs"
+                            className="rounded-full"
+                          >
+                            <LucideCircleQuestionMark />
+                          </InputGroupButton>
+                        </TooltipTrigger>
+                        <TooltipContent
+                          className="max-w-xs text-center"
+                          align="end"
+                        >
+                          {t(
+                            "Disks of servers on this node are allocated here. Must allow the `images` content type.",
+                          )}
+                        </TooltipContent>
+                      </Tooltip>
+                    </InputGroupAddon>
+                  </InputGroup>
+                </Field>
+              )}
+            />
+            <Controller
               name="snippet_storage"
               control={form.control}
               render={({ field, fieldState }) => (
@@ -434,6 +482,51 @@ export default function CreateNodeDialog({
                           align="end"
                         >
                           {t("ISO images will be stored here.")}
+                        </TooltipContent>
+                      </Tooltip>
+                    </InputGroupAddon>
+                  </InputGroup>
+                </Field>
+              )}
+            />
+            <Controller
+              name="import_storage"
+              control={form.control}
+              render={({ field, fieldState }) => (
+                <Field data-invalid={fieldState.invalid}>
+                  <FieldLabel htmlFor={field.name}>
+                    {t("Import Storage")}
+                  </FieldLabel>
+                  <InputGroup>
+                    <InputGroupAddon align="inline-start">
+                      <LucideDisc3 />
+                    </InputGroupAddon>
+                    <InputGroupInput
+                      id={field.name}
+                      aria-invalid={fieldState.invalid}
+                      autoComplete="off"
+                      type="text"
+                      minLength={1}
+                      placeholder="cephfs"
+                      {...field}
+                    />
+                    <InputGroupAddon align="inline-end">
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <InputGroupButton
+                            size="icon-xs"
+                            className="rounded-full"
+                          >
+                            <LucideCircleQuestionMark />
+                          </InputGroupButton>
+                        </TooltipTrigger>
+                        <TooltipContent
+                          className="max-w-xs text-center"
+                          align="end"
+                        >
+                          {t(
+                            "Template images are downloaded here and imported from here. Must allow the `import` content type.",
+                          )}
                         </TooltipContent>
                       </Tooltip>
                     </InputGroupAddon>

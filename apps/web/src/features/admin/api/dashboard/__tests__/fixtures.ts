@@ -66,6 +66,8 @@ export const mockProxmoxNode = {
   snippetStorage: "local",
   backupStorage: "local",
   isoDownloadStorage: "local",
+  importStorage: "local",
+  vmStorage: "local-lvm",
   createdAt: new Date(),
   updatedAt: new Date(),
 } satisfies typeof proxmoxNodes.$inferInsert;
@@ -99,6 +101,8 @@ export const mockProxmoxTemplateGroup = {
 } satisfies typeof proxmoxTemplateGroups.$inferInsert;
 
 export const mockProxmoxTemplate = {
+  imageUrl:
+    "https://cloud.debian.org/images/cloud/trixie/latest/debian-13-generic-amd64.qcow2",
   id: "temp_000000000000000000000001",
   proxmoxTemplateGroupId: mockProxmoxTemplateGroup.id,
   name: "Debian 12",

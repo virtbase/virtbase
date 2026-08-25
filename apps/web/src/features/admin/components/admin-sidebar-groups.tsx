@@ -20,12 +20,14 @@
 import {
   LucideBookTemplate,
   LucideBuilding2,
+  LucideFileCode2,
   LucideGroup,
   LucideLayoutDashboard,
   LucideMail,
   LucideNetwork,
   LucidePlug,
   LucideServer,
+  LucideShapes,
   LucideUsers,
 } from "@virtbase/ui/icons";
 import {
@@ -92,6 +94,16 @@ const useGroups = () => {
           title: t("Template Groups"),
           path: paths.admin.templateGroups,
           icon: LucideBookTemplate,
+        },
+        {
+          title: t("Templates"),
+          path: paths.admin.templates,
+          icon: LucideShapes,
+        },
+        {
+          title: t("Snippets"),
+          path: paths.admin.snippets,
+          icon: LucideFileCode2,
         },
       ],
     },

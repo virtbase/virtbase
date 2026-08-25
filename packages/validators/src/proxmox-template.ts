@@ -27,11 +27,18 @@ export const ProxmoxTemplateSchema = z.object({
       examples: ["temp_1KDR24RNF2WY69G0FG7YHDQ6T"],
     }),
   icon: z
-    .url()
+    .union([
+      // A same-origin path, which is what the bundled distro logos are and the
+      // only shape the CSP admits without naming another host: `img-src` is
+      // `'self'` plus the Virtbase domains.
+      z.string().regex(/^\/[^\s]*$/, "Must start with / or be an https URL"),
+      z.url(),
+    ])
     .nullable()
     .meta({
-      description: "The icon image URL of the Proxmox template.",
-      examples: ["https://example.com/icon.png"],
+      description:
+        "The icon shown for this operating system. A path under the site's public assets, or an absolute URL on a Virtbase domain.",
+      examples: ["/assets/static/distros/debian.svg"],
     }),
   name: z
     .string()

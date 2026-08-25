@@ -30,7 +30,13 @@ interface ClusterConfig {
   fqdn: string;
   tokenId: string;
   tokenSecret: string;
-  storage: { vm: string; iso: string; backup: string; snippet: string };
+  storage: {
+    vm: string;
+    iso: string;
+    backup: string;
+    snippet: string;
+    import: string;
+  };
   nodes: Array<{ hostname: string; ip: string }>;
 }
 
@@ -111,6 +117,8 @@ export async function seedProxmoxCluster(): Promise<number | null> {
       snippetStorage: cluster.storage.snippet,
       backupStorage: cluster.storage.backup,
       isoDownloadStorage: cluster.storage.iso,
+      importStorage: cluster.storage.import,
+      vmStorage: cluster.storage.vm,
     };
 
     if (existing[0]) {

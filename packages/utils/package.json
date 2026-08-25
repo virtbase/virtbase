@@ -15,7 +15,9 @@
     "test": "bun --env-file=../../.env.test test --timeout 20000",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
-  "dependencies": {},
+  "dependencies": {
+    "yaml": "catalog:"
+  },
   "devDependencies": {
     "@biomejs/biome": "catalog:",
     "@virtbase/tsconfig": "workspace:*",

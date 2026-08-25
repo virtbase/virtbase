@@ -17,11 +17,11 @@
 
 import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
-import { eq, sql } from "@virtbase/db";
+import { and, eq, isNotNull, sql } from "@virtbase/db";
 import {
   proxmoxNodes as pn,
   proxmoxTemplates as pt,
-  proxmoxTemplatesToProxmoxNodes as pt2pn,
+  proxmoxTemplateImages as pti,
   serverPlans,
   servers,
 } from "@virtbase/db/schema";
@@ -78,9 +78,18 @@ export const serversTemplateGroupsRouter = {
           const validTemplates = await tx
             .select({ id: pt.id })
             .from(pt)
-            .innerJoin(pt2pn, eq(pt.id, pt2pn.proxmoxTemplateId))
-            .innerJoin(pn, eq(pt2pn.proxmoxNodeId, pn.id))
-            .where(eq(pn.proxmoxNodeGroupId, plan.proxmoxNodeGroupId))
+            .innerJoin(pti, eq(pt.id, pti.proxmoxTemplateId))
+            .innerJoin(pn, eq(pti.proxmoxNodeId, pn.id))
+            .where(
+              and(
+                eq(pn.proxmoxNodeGroupId, plan.proxmoxNodeGroupId),
+                // Withdrawn by an operator, or not yet declared against an image.
+                eq(pt.enabled, true),
+                isNotNull(pt.imageUrl),
+                // The image has to be settled, not merely attempted.
+                isNotNull(pti.downloadedAt),
+              ),
+            )
             .groupBy(pt.id)
             .having(sql`
               COUNT(DISTINCT ${pn.id}) = (

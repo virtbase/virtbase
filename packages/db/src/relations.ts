@@ -139,16 +139,31 @@ export const relations = defineRelations(schema, (r) => ({
       from: r.proxmoxTemplates.proxmoxTemplateGroupId,
       to: r.proxmoxTemplateGroups.id,
     }),
-    proxmoxNodes: r.many.proxmoxNodes({
-      from: r.proxmoxTemplates.id.through(
-        r.proxmoxTemplatesToProxmoxNodes.proxmoxTemplateId,
-      ),
-      to: r.proxmoxNodes.id.through(
-        r.proxmoxTemplatesToProxmoxNodes.proxmoxNodeId,
-      ),
-    }),
     servers: r.many.servers(),
     serverBackups: r.many.serverBackups(),
+    images: r.many.proxmoxTemplateImages(),
+    snippets: r.many.cloudInitSnippets({
+      from: r.proxmoxTemplates.id.through(r.templateSnippets.proxmoxTemplateId),
+      to: r.cloudInitSnippets.id.through(r.templateSnippets.cloudInitSnippetId),
+    }),
+  },
+  proxmoxTemplateImages: {
+    proxmoxTemplate: r.one.proxmoxTemplates({
+      from: r.proxmoxTemplateImages.proxmoxTemplateId,
+      to: r.proxmoxTemplates.id,
+    }),
+    proxmoxNode: r.one.proxmoxNodes({
+      from: r.proxmoxTemplateImages.proxmoxNodeId,
+      to: r.proxmoxNodes.id,
+    }),
+  },
+  cloudInitSnippets: {
+    proxmoxTemplates: r.many.proxmoxTemplates({
+      from: r.cloudInitSnippets.id.through(
+        r.templateSnippets.cloudInitSnippetId,
+      ),
+      to: r.proxmoxTemplates.id.through(r.templateSnippets.proxmoxTemplateId),
+    }),
   },
   proxmoxTemplateGroups: {
     proxmoxTemplates: r.many.proxmoxTemplates(),
@@ -163,15 +178,8 @@ export const relations = defineRelations(schema, (r) => ({
       from: r.proxmoxNodes.proxmoxNodeGroupId,
       to: r.proxmoxNodeGroups.id,
     }),
-    proxmoxTemplates: r.many.proxmoxTemplates({
-      from: r.proxmoxNodes.id.through(
-        r.proxmoxTemplatesToProxmoxNodes.proxmoxNodeId,
-      ),
-      to: r.proxmoxTemplates.id.through(
-        r.proxmoxTemplatesToProxmoxNodes.proxmoxTemplateId,
-      ),
-    }),
     servers: r.many.servers(),
+    templateImages: r.many.proxmoxTemplateImages(),
     subnets: r.many.subnets({
       from: r.proxmoxNodes.id.through(r.subnetsToProxmoxNodes.proxmoxNodeId),
       to: r.subnets.id.through(r.subnetsToProxmoxNodes.subnetId),

@@ -499,6 +499,7 @@ msgstr "Slå på kolonner"
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
 #: src/features/admin/components/servers/servers-table/columns.tsx
 #: src/features/admin/components/subnets/subnets-table/columns.tsx
 #: src/features/admin/components/users/users-table/columns.tsx
@@ -833,6 +834,12 @@ msgstr "Dashbord"
 msgid "QOxktD"
 msgstr "Servere"
 
+#: src/app/admin.virtbase.com/(dashboard)/snippets/[id]/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/snippets/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+msgid "TQRrlM"
+msgstr "Snippets"
+
 #: src/app/admin.virtbase.com/(dashboard)/subnets/[id]/page.tsx
 #: src/app/admin.virtbase.com/(dashboard)/subnets/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
@@ -844,6 +851,13 @@ msgstr "Subnett"
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "aIwSug"
 msgstr "Malgrupper"
+
+#: src/app/admin.virtbase.com/(dashboard)/templates/[id]/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/templates/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+msgid "A3ptul"
+msgstr "Maler"
 
 #: src/app/admin.virtbase.com/(dashboard)/users/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
@@ -1084,10 +1098,14 @@ msgstr "Opprettet {date}"
 
 #: src/features/account/components/api-keys/api-keys-list.tsx
 #: src/features/account/components/ssh-keys/ssh-keys-list.tsx
+#: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/delete-template-dialog.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
 #: src/features/admin/components/servers/servers-table/columns.tsx
 #: src/features/admin/components/subnets/subnets-table/columns.tsx
 #: src/features/admin/components/users/users-table/columns.tsx
@@ -1113,10 +1131,14 @@ msgstr "Opprett API-nøkkel"
 #: src/features/account/components/authentication/two-factor-enable-dialog.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
+#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+#: src/features/admin/components/proxmox-templates/delete-template-dialog.tsx
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
@@ -1140,12 +1162,18 @@ msgstr "Denne tasten vises kun én gang. Vennligst lagre det sikkert, siden det 
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
+#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
 #: src/features/admin/components/servers/servers-table/columns.tsx
 #: src/features/admin/components/users/users-table/columns.tsx
 #: src/features/servers/components/backups/backups-table/columns.tsx
@@ -1404,6 +1432,7 @@ msgid "ueVsqa"
 msgstr "Bruk et tilpasset image"
 
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
 msgid "bWjdfa"
 msgstr "URL"
 
@@ -1508,6 +1537,7 @@ msgstr "Skriv inn en gyldig e-postadresse."
 #: src/features/account/components/user-name-card.tsx
 #: src/features/account/components/user-password-card.tsx
 #: src/features/admin/components/integrations/integration-settings-form.tsx
+#: src/features/admin/components/proxmox-templates/cards/settings-card.tsx
 msgid "jvo0vs"
 msgstr "Lagre"
 
@@ -1691,6 +1721,230 @@ msgstr "Logo"
 msgid "y1Z3or"
 msgstr "Språk"
 
+#: src/features/admin/components/cloud-init-snippets/create-snippet-button.tsx
+#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
+msgid "Wqu_Jt"
+msgstr "Opprett snippet"
+
+#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
+msgid "I94XFH"
+msgstr "Snippets settes sammen til cloud-init vendor-data som gjesten mottar ved første oppstart. Innholdet skriver du etterpå."
+
+#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
+msgid "Ga3Fhc"
+msgstr "Installer fail2ban"
+
+#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+msgid "IoDlcd"
+msgstr "Slug"
+
+#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+msgid "e5x8FT"
+msgstr "Type"
+
+#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+msgid "8lCjAM"
+msgstr "Prioritet"
+
+#: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
+msgid "1q_kua"
+msgstr "Snippet slettet"
+
+#: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/snippet-actions-row.tsx
+msgid "DknRu4"
+msgstr "Slett snippet"
+
+#: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
+msgid "DsyEUN"
+msgstr "Servere som provisioneres fra nå av, vil ikke lenger motta den. Gjester som allerede har den, påvirkes ikke."
+
+#: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
+msgid "yIq0vr"
+msgstr "{name} gjelder for øyeblikket {count} maler."
+
+#: src/features/admin/components/cloud-init-snippets/snippet-editor.tsx
+msgid "p1Ueb1"
+msgstr "Linje {line}, kolonne {column}: {message}"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "qkAb3H"
+msgstr "Snippet lagret"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+msgid "GlAH7l"
+msgstr "OS-familie"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "zn5r5q"
+msgstr "Pakkebehandler"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "x8rLUO"
+msgstr "Init-system"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "YxVYs5"
+msgstr "Arkitektur"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "Jq3FDz"
+msgstr "Innhold"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "9y0ZR5"
+msgstr "Et skript som skrives til gjesten og kjøres én gang ved første oppstart."
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "MPckmq"
+msgstr "Et cloud-config-fragment. Lister som runcmd og packages samles på tvers av snippets."
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "HFhqDC"
+msgstr "Lagring er blokkert så lenge dokumentet ikke kan parses."
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "Lv0zJu"
+msgstr "Detaljer"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "KcKWtb"
+msgstr "Hvordan denne snippeten identifiseres og ordnes."
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "mfKcIm"
+msgstr "Lavere prioritet settes sammen først; ved lik prioritet vinner slug."
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "Q8Qw5B"
+msgstr "Beskrivelse"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "V52jNn"
+msgstr "Aktivert"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+msgid "6WqHWi"
+msgstr "Gjelder for"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "vqF8YB"
+msgstr "Hvilke maler som mottar denne snippeten. Hver dimensjon du setter, må stemme."
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "jCVBlf"
+msgstr "La alt være uvalgt for å gjelde alle maler."
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "KkKVqf"
+msgstr "Versjonsområde"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "pKuvQ3"
+msgstr "Treffer {count} av {total} maler"
+
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "0bKTrV"
+msgstr "Ingen maler er definert ennå."
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
+msgid "94Fg25"
+msgstr "Velg alle"
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
+msgid "4pJVaS"
+msgstr "Velg rad"
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+msgid "XPruqs"
+msgstr "Rekkefølge"
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+msgid "tthToS"
+msgstr "Deaktivert"
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+msgid "InWqys"
+msgstr "Valgfritt"
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+msgid "wFbsIt"
+msgstr "Søk på navn..."
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+msgid "MT5QHi"
+msgstr "alle maler"
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+msgid "ypl26d"
+msgstr "Maler som denne snippeten gjelder for nå"
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+#: src/features/servers/components/rdns/records-table/columns.tsx
+msgid "wFMlsH"
+msgstr "Oppdatert kl"
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+msgid "bdcMGy"
+msgstr "Åpne menyen"
+
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
+msgid "wEQDC6"
+msgstr "Rediger"
+
 #: src/features/admin/components/dashboard/activity-stats-row.tsx
 msgid "wCWFeb"
 msgstr "Aktive servere"
@@ -1824,51 +2078,9 @@ msgstr "Ingen datasenter funnet."
 #: src/features/admin/components/servers/servers-table/columns.tsx
 #: src/features/admin/components/subnets/subnets-table/columns.tsx
 #: src/features/admin/components/users/users-table/columns.tsx
-#: src/features/invoices/components/invoices-table/columns.tsx
-msgid "94Fg25"
-msgstr "Velg alle"
-
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
-#: src/features/admin/components/emails/emails-table/columns.tsx
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-#: src/features/admin/components/servers/servers-table/columns.tsx
-#: src/features/admin/components/subnets/subnets-table/columns.tsx
-#: src/features/admin/components/users/users-table/columns.tsx
-#: src/features/invoices/components/invoices-table/columns.tsx
-msgid "4pJVaS"
-msgstr "Velg rad"
-
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-#: src/features/admin/components/servers/servers-table/columns.tsx
-msgid "wFbsIt"
-msgstr "Søk på navn..."
-
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
-#: src/features/admin/components/emails/emails-table/columns.tsx
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-#: src/features/admin/components/servers/servers-table/columns.tsx
-#: src/features/admin/components/subnets/subnets-table/columns.tsx
-#: src/features/admin/components/users/users-table/columns.tsx
 #: src/features/servers/components/rdns/records-table/columns.tsx
 msgid "AbXVP4"
 msgstr "Opprettet kl"
-
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
-#: src/features/admin/components/emails/emails-table/columns.tsx
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-#: src/features/admin/components/servers/servers-table/columns.tsx
-#: src/features/admin/components/subnets/subnets-table/columns.tsx
-#: src/features/admin/components/users/users-table/columns.tsx
-msgid "bdcMGy"
-msgstr "Åpne menyen"
 
 #: src/features/admin/components/emails/email-preview-dialog.tsx
 msgid "fg6AsA"
@@ -2058,6 +2270,14 @@ msgid "1gRCWa"
 msgstr "Token Secret"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
+msgid "Yoiogm"
+msgstr "VM-lagring"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
+msgid "iLHHKM"
+msgstr "Disker til servere på denne noden tildeles her. Må tillate innholdstypen `images`."
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "6o6hYT"
 msgstr "Snippet Storage"
 
@@ -2080,6 +2300,14 @@ msgstr "ISO-nedlastingslagring"
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgid "Us0NPD"
 msgstr "ISO-bilder lagres her."
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
+msgid "02_Jy9"
+msgstr "Importlagring"
+
+#: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
+msgid "-sKPmz"
+msgstr "Mal-images lastes ned her og importeres herfra. Må tillate innholdstypen `import`."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 #: src/features/servers/components/overview/node-details-dialog.tsx
@@ -2164,19 +2392,233 @@ msgstr "Opprett Proxmox-malgruppe"
 msgid "Fbkq0B"
 msgstr "Opprett en ny Proxmox VE-malgruppe for Proxmox VE-maler."
 
-#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-msgid "8lCjAM"
-msgstr "Prioritet"
-
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
 msgid "lb_VMv"
 msgstr "Antall maler"
 
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-#: src/features/servers/components/rdns/records-table/columns.tsx
-msgid "wFMlsH"
-msgstr "Oppdatert kl"
+#: src/features/admin/components/proxmox-templates/create-template-button.tsx
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+msgid "TAoX_m"
+msgstr "Opprett Proxmox-mal"
+
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+msgid "1GUBwn"
+msgstr "Mal opprettet"
+
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+msgid "UUO1lh"
+msgstr "Oppgi et operativsystem via imaget det bygges fra. Gjestedetaljer og cloud-init-snippets settes opp etterpå."
+
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+msgid "HpoDwk"
+msgstr "Gruppe"
+
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+msgid "FSfy2-"
+msgstr "Velg en malgruppe"
+
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "kk4TVW"
+msgstr "Ikon"
+
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+msgid "B9mB91"
+msgstr "Image-URL"
+
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "p5LNtB"
+msgstr "Ikke satt"
+
+#: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
+msgid "ClxHFU"
+msgstr "OS-versjon"
+
+#: src/features/admin/components/proxmox-templates/delete-template-dialog.tsx
+msgid "s-6mz6"
+msgstr "Mal slettet"
+
+#: src/features/admin/components/proxmox-templates/delete-template-dialog.tsx
+#: src/features/admin/components/proxmox-templates/template-actions-row.tsx
+msgid "AghqfS"
+msgstr "Slett mal"
+
+#: src/features/admin/components/proxmox-templates/delete-template-dialog.tsx
+msgid "_SLxIn"
+msgstr "Dette kan ikke angres. En mal en server ble bygget fra, kan ikke slettes - den referansen husker hvilket operativsystem kunden valgte."
+
+#: src/features/admin/components/proxmox-templates/template-actions-row.tsx
+msgid "qoyVoB"
+msgstr "Nedlasting startet"
+
+#: src/features/admin/components/proxmox-templates/template-actions-row.tsx
+msgid "3Y9Iix"
+msgstr "Last ned image"
+
+#: src/features/admin/components/proxmox-templates/template-actions-row.tsx
+msgid "kxpfZc"
+msgstr "Tving ny nedlasting"
+
+#: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
+msgid "OZmJgO"
+msgstr "Image-tilgjengelighet"
+
+#: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
+msgid "cwF_E3"
+msgstr "Nedlasting mislyktes på {count} av {total} noder"
+
+#: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
+msgid "U9BwIT"
+msgstr "Noden oppga ikke hvorfor."
+
+#: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
+msgid "NHmbQX"
+msgstr "Ikke lastet ned på {count} av {total} noder"
+
+#: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
+msgid "R7EsVm"
+msgstr "Den timevise oppdateringen henter det, eller du kan starte nedlastingen nå."
+
+#: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
+msgid "87rP85"
+msgstr "Laster ned på {count} av {total} noder"
+
+#: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
+msgid "GiODHE"
+msgstr "Last inn på nytt senere for å se hvor det står."
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "0fwVtw"
+msgstr "Mal lagret"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "oYmiAR"
+msgstr "Hvordan dette operativsystemet vises til kunder."
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "Dc8lWq"
+msgstr "Ikoner ligger under /assets/static/distros. En deaktivert mal forblir konfigurert, men tilbys aldri."
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "qH5GMU"
+msgstr "Tilby til kunder"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+msgid "-0zv6g"
+msgstr "Image"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "5nV6L5"
+msgstr "Cloud-imaget gjestens disk bygges fra. Det lastes ned til hver node og importeres ved provisionering."
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "Lj7fNF"
+msgstr "La sjekksummen stå tom for en URL leverandøren bytter på stedet."
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "I0HSpZ"
+msgstr "Sjekksum"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "u2OsFB"
+msgstr "Algoritme"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "450Fty"
+msgstr "Ingen"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "Wf4EEV"
+msgstr "Last ned på nytt etter"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "lKv8ex"
+msgstr "Standard"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "n8cyVk"
+msgstr "Operativsystem"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "ivnHYK"
+msgstr "Beskriver gjesten slik at de riktige cloud-init-snippets blir brukt."
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "gsmwHY"
+msgstr "Snippets treffer disse verdiene, ikke malnavnet."
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "rzCvRt"
+msgstr "Familie"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "I3b4hn"
+msgstr "Versjon"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "V8SPv5"
+msgstr "Virtuell maskinvare"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "LF-mzc"
+msgstr "Hvordan gjesten opprettes i Proxmox. Standardverdiene passer til alle gjeldende images."
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "Ey_ap0"
+msgstr "Endre disse bare for et image som ellers ikke starter."
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "9kxMK5"
+msgstr "OS-type"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "3qev5E"
+msgstr "CPU-type"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+#: src/features/servers/components/advanced/advanced-bios-card.tsx
+msgid "NjgW6o"
+msgstr "BIOS"
+
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "aCFQ7D"
+msgstr "Maskin"
+
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+msgid "zF7Cth"
+msgstr "Gjest"
+
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+msgid "gWRNWc"
+msgstr "ikke satt"
+
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+msgid "VOiQJ7"
+msgstr "En nedlasting mislyktes."
+
+#: src/features/admin/components/proxmox-templates/vendor-data-preview.tsx
+msgid "iIwvLh"
+msgstr "Cloud-init vendor-data"
+
+#: src/features/admin/components/proxmox-templates/vendor-data-preview.tsx
+msgid "BqqgbN"
+msgstr "Ingen snippets treffer denne malen."
+
+#: src/features/admin/components/proxmox-templates/vendor-data-preview.tsx
+msgid "KSAF83"
+msgstr "Utelatte snippets"
+
+#: src/features/admin/components/proxmox-templates/vendor-data-preview.tsx
+msgid "cLU7jm"
+msgstr "Overskrevne nøkler"
+
+#: src/features/admin/components/proxmox-templates/vendor-data-preview.tsx
+msgid "KYJPkq"
+msgstr "Ingenting ville blitt lastet opp for denne malen."
 
 #: src/features/admin/components/servers/servers-table/columns.tsx
 msgid "XmTS6D"
@@ -2705,10 +3147,6 @@ msgstr "Nettverk"
 #: src/features/servers/components/server-stats-card.tsx
 msgid "yCCio2"
 msgstr "Siste omstart"
-
-#: src/features/servers/components/advanced/advanced-bios-card.tsx
-msgid "NjgW6o"
-msgstr "BIOS"
 
 #: src/features/servers/components/advanced/advanced-bios-card.tsx
 msgid "4HNt5G"
@@ -3371,11 +3809,6 @@ msgstr "ICMP type"
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
-msgid "V52jNn"
-msgstr "Aktivert"
-
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "aH4De2"
 msgstr "Kilde"
 
@@ -3447,10 +3880,6 @@ msgstr "Flytt opp"
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
 msgid "H_r5m6"
 msgstr "Flytt ned"
-
-#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
-msgid "wEQDC6"
-msgstr "Rediger"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "AFkUOq"

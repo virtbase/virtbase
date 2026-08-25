@@ -33,6 +33,7 @@ const prefixes = [
   "png_", // proxmox node group
   "temp_", // proxmox template
   "ptg_", // proxmox template group
+  "snip_", // cloud-init snippet
   // IPAM
   "ipsub_", // ipam subnet
   "ipaddr_", // ipam address

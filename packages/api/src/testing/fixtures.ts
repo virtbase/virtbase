@@ -20,6 +20,8 @@ import type {
   datacenters,
   proxmoxNodeGroups,
   proxmoxNodes,
+  proxmoxTemplateGroups,
+  proxmoxTemplates,
   serverPlanPrices,
   serverPlans,
   servers,
@@ -105,9 +107,44 @@ export const mockProxmoxNode = {
   snippetStorage: "local-lvm",
   backupStorage: "local-lvm",
   isoDownloadStorage: "local-lvm",
+  importStorage: "local",
+  vmStorage: "local-lvm",
   createdAt: new Date(),
   updatedAt: new Date(),
 } satisfies typeof proxmoxNodes.$inferSelect;
+
+export const mockProxmoxTemplateGroup = {
+  id: "ptg_0000000000000000000000001",
+  name: "Debian",
+  priority: 0,
+  createdAt: new Date(),
+  updatedAt: new Date(),
+} satisfies typeof proxmoxTemplateGroups.$inferInsert;
+
+export const mockProxmoxTemplate = {
+  id: "temp_0000000000000000000000001",
+  proxmoxTemplateGroupId: mockProxmoxTemplateGroup.id,
+  name: "Debian 13 (Trixie)",
+  icon: null,
+  enabled: true,
+  imageUrl:
+    "https://cloud.debian.org/images/cloud/trixie/latest/debian-13-generic-amd64.qcow2",
+  imageChecksum: null,
+  imageChecksumAlgorithm: null,
+  imageCompression: null,
+  imageRefreshDays: null,
+  architecture: "amd64",
+  osFamily: "debian",
+  osVersion: "13",
+  packageManager: "apt",
+  initSystem: "systemd",
+  ostype: "l26",
+  cpuType: "host",
+  biosType: "seabios",
+  machine: "q35",
+  createdAt: new Date(),
+  updatedAt: new Date(),
+} satisfies typeof proxmoxTemplates.$inferInsert;
 
 export const mockServer = {
   id: "kvm_0000000000000000000000000",

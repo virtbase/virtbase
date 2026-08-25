@@ -29,4 +29,5 @@ export * from "./repair-firewall-rule";
 export * from "./safe-secret-compare";
 export * from "./server-state";
 export * from "./stripe-metadata";
+export * from "./template-image";
 export * from "./truncate";

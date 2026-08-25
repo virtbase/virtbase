@@ -17,11 +17,15 @@
 
 import { sleep } from "workflow";
 import type { GetProxmoxInstanceParams } from "../../proxmox/get-proxmox-instance";
+import { applyCloudInitStep } from "../shared/apply-cloud-init";
 import {
   applyGuestConfigStep,
   rollbackApplyGuestConfigStep,
 } from "../shared/apply-guest-config";
-import { cloneGuestStep, rollbackCloneGuestStep } from "../shared/clone-guest";
+import {
+  createGuestFromImageStep,
+  rollbackCreateGuestFromImageStep,
+} from "../shared/create-guest-from-image";
 import { destroyGuestStep } from "../shared/destroy-guest";
 import { getTemplateStep } from "../shared/get-template";
 import { moveDiskStep } from "../shared/move-disk";
@@ -43,7 +47,12 @@ type ChangeTempalateWorkflowParams = {
   /**
    * The Proxmox node where the server is located.
    */
-  proxmoxNode: GetProxmoxInstanceParams & { id: string };
+  proxmoxNode: GetProxmoxInstanceParams & {
+    id: string;
+    importStorage: string;
+    vmStorage: string;
+    snippetStorage: string;
+  };
   /**
    * The new template ID to use for the server.
    */
@@ -92,10 +101,10 @@ export async function changeTempalateWorkflow({
       }),
     );
 
-    // 1. Assert that template exists
+    // 1. Resolve the template and make sure its image is on the node
     const template = await getTemplateStep({
       proxmoxTemplateId,
-      proxmoxNodeId: proxmoxNode.id,
+      proxmoxNode,
     });
 
     // 2. Stop the guest
@@ -130,30 +139,29 @@ export async function changeTempalateWorkflow({
       }
     });
 
-    // 3. Clone the template to a temporary guest
-    const { clonedVmid, cloneUpid } = await cloneGuestStep({
-      proxmoxNode,
-      vmid: template.vmid,
-      options: {
+    // 3. Build a temporary guest from the new template's image
+    const { createdVmid: clonedVmid, createUpid } =
+      await createGuestFromImageStep({
+        proxmoxNode,
+        volid: template.volid,
+        storage: proxmoxNode.vmStorage,
+        template,
         name: `temp-os-change-${vmid}`,
         description: `Temporary guest for OS change of ${vmid}`,
-        // TODO: Other storage per node
-        target: proxmoxNode.hostname,
-      },
-    });
+      });
 
     await sleep("5s");
     await waitForProxmoxTaskStep({
       proxmoxNode,
-      upid: cloneUpid,
+      upid: createUpid,
       ignoreErrors: false,
     });
 
     rollbacks.push(() =>
-      rollbackCloneGuestStep({
+      rollbackCreateGuestFromImageStep({
         proxmoxNode,
-        newid: clonedVmid,
-        cloneUpid,
+        vmid: clonedVmid,
+        createUpid,
       }),
     );
 
@@ -259,9 +267,11 @@ export async function changeTempalateWorkflow({
       proxmoxNode,
       vmid,
       config: {
-        // Re-apply the previous cloud-init configuration with new password
+        // Re-apply the previous cloud-init configuration with new password.
+        // `cicustom` is deliberately *not* restored here: it points at the old
+        // template's vendor data, and the guest is now running a different OS.
+        // Step 7b re-renders it.
         ...{
-          cicustom: previousConfig.cicustom,
           ciuser: previousConfig.ciuser,
           cipassword: initialRootPassword,
           ciupgrade: previousConfig.ciupgrade,
@@ -273,6 +283,21 @@ export async function changeTempalateWorkflow({
         delete: "unused0",
       },
       mode: "sync",
+    });
+
+    // 7b. Re-render cloud-init for the *new* template. The network snippet is
+    //     left alone - the guest keeps its addresses - but the vendor data has
+    //     to match the OS that is now on the disk.
+    const { cicustomUpid } = await applyCloudInitStep({
+      proxmoxNode,
+      vmid,
+      proxmoxTemplateId,
+    });
+
+    await waitForProxmoxTaskStep({
+      proxmoxNode,
+      upid: cicustomUpid,
+      ignoreErrors: false,
     });
 
     // 8. Regenerate the cloud-init configuration to make password change effective

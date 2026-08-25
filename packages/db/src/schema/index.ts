@@ -16,6 +16,7 @@
  */
 
 export * from "./auth";
+export * from "./cloud-init-snippets";
 export * from "./datacenters";
 export * from "./discounts";
 export * from "./discounts-to-server-plans";
@@ -29,8 +30,8 @@ export * from "./proxmox-iso-downloads";
 export * from "./proxmox-node-groups";
 export * from "./proxmox-nodes";
 export * from "./proxmox-template-groups";
+export * from "./proxmox-template-images";
 export * from "./proxmox-templates";
-export * from "./proxmox-templates-to-proxmox-nodes";
 export * from "./server-backups";
 export * from "./server-plan-prices";
 export * from "./server-plans";
@@ -40,3 +41,4 @@ export * from "./ssh-keys";
 export * from "./subnet-allocations";
 export * from "./subnets";
 export * from "./subnets-to-proxmox-nodes";
+export * from "./template-snippets";

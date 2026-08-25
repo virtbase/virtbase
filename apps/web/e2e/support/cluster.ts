@@ -30,7 +30,13 @@ export interface ClusterConfig {
   tokenId: string;
   tokenSecret: string;
   caFile: string;
-  storage: { vm: string; iso: string; backup: string; snippet: string };
+  storage: {
+    vm: string;
+    iso: string;
+    backup: string;
+    snippet: string;
+    import: string;
+  };
   nodes: ClusterNode[];
 }
 

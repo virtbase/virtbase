@@ -71,6 +71,8 @@ beforeAll(async () => {
     snippetStorage: "local-lvm",
     backupStorage: "local-lvm",
     isoDownloadStorage: "local-lvm",
+    importStorage: "local",
+    vmStorage: "local-lvm",
   });
 });
 

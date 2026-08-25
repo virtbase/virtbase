@@ -88,6 +88,10 @@ export async function selectProxmoxNodeStep({
     tokenID: proxmoxNodes.tokenID,
     tokenSecret: proxmoxNodes.tokenSecret,
     snippetStorage: proxmoxNodes.snippetStorage,
+    // Needed by `getTemplateStep` (where the image lives) and
+    // `createGuestFromImageStep` (where the guest's disk is allocated).
+    importStorage: proxmoxNodes.importStorage,
+    vmStorage: proxmoxNodes.vmStorage,
   };
 
   const usageSubquery = db
@@ -167,6 +171,8 @@ export async function selectProxmoxNodeStep({
         | "tokenID"
         | "tokenSecret"
         | "snippetStorage"
+        | "importStorage"
+        | "vmStorage"
       >
     | undefined;
   switch (strategy) {
