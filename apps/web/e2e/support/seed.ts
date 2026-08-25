@@ -35,6 +35,7 @@ import {
   servers,
   users,
 } from "@virtbase/db/schema";
+import { readClusterConfig } from "./cluster";
 
 /**
  * Seed the fixtures the authenticated E2E projects need, against the real
@@ -57,7 +58,7 @@ export async function seedE2eFixtures() {
     .insert(proxmoxNodeGroups)
     .values(mockProxmoxNodeGroup)
     .onConflictDoNothing();
-  await db.insert(proxmoxNodes).values(mockProxmoxNode).onConflictDoNothing();
+  await seedProxmoxNodes();
   await db.insert(serverPlans).values(mockServerPlan).onConflictDoNothing();
   await db
     .insert(serverPlanPrices)
@@ -66,4 +67,43 @@ export async function seedE2eFixtures() {
   await db.insert(servers).values(mockServer).onConflictDoNothing();
 
   return { customer: mockSession.user, admin: mockAdminSession.user };
+}
+
+/**
+ * Point `proxmox_nodes` at the local cluster when one has been bootstrapped,
+ * and at the inert fixture otherwise.
+ *
+ * The fixture node has a hostname that resolves nowhere, which is exactly what
+ * is wanted for tests that never reach Proxmox - and useless for the ones that
+ * do. When `tooling/proxmox-cluster/cluster.json` exists, its real nodes,
+ * credentials and Ceph storages are written instead, so a `serverProcedure` can
+ * actually complete.
+ */
+async function seedProxmoxNodes() {
+  const cluster = await readClusterConfig();
+
+  if (!cluster) {
+    await db.insert(proxmoxNodes).values(mockProxmoxNode).onConflictDoNothing();
+    return;
+  }
+
+  for (const [index, node] of cluster.nodes.entries()) {
+    await db
+      .insert(proxmoxNodes)
+      .values({
+        ...mockProxmoxNode,
+        // Deterministic per-node ids so a re-run updates rather than duplicates.
+        id: `pxm_000000000000000000000000${index}`,
+        hostname: node.hostname,
+        // Every node is addressed through the same entry point; `hostname`
+        // selects the member and pveproxy forwards.
+        fqdn: cluster.fqdn,
+        tokenID: cluster.tokenId,
+        tokenSecret: cluster.tokenSecret,
+        isoDownloadStorage: cluster.storage.iso,
+        backupStorage: cluster.storage.backup,
+        snippetStorage: cluster.storage.snippet,
+      })
+      .onConflictDoNothing();
+  }
 }

@@ -81,6 +81,17 @@ export default defineConfig({
       },
     },
 
+    // Only meaningful against the local Proxmox cluster; the specs skip
+    // themselves when `tooling/proxmox-cluster/cluster.json` is absent or the
+    // cluster does not answer. No `storageState` - these drive the API directly
+    // rather than the browser.
+    {
+      name: "proxmox",
+      testDir: "./e2e/proxmox",
+      testMatch: /.*\.e2e\.ts/,
+      use: { ...devices["Desktop Chrome"] },
+    },
+
     {
       name: "admin",
       testDir: "./e2e/admin",

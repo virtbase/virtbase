@@ -4,6 +4,15 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PVE_BASE="${PVE_BASE:-/usr/share/perl5/PVE}"
 
+# Escalate only when we are not already root. A container image build and the
+# dockerised dev cluster both run as root and may not ship sudo at all, and
+# calling it there fails for no reason.
+if [[ "$(id -u)" -eq 0 ]]; then
+  SUDO=()
+else
+  SUDO=(sudo)
+fi
+
 # Applied in this order; unapply reverses it.
 DEFAULT_PATCH_FILES=(
   "${SCRIPT_DIR}/proxmox-snippet-upload.patch"
@@ -63,15 +72,19 @@ require_patch_files() {
 # Run `patch` non-interactively. `--batch` disables prompts entirely so a
 # patch that looks already-applied or reversed fails fast rather than waiting
 # on stdin. `-d` / `-p1` mirror what the README documents for manual use.
+# `--forward` (-N) is load-bearing, not decoration. Without it `--batch` detects
+# an already-applied patch, silently assumes `-R`, reverts it and exits 0 - so
+# `apply` run twice would leave the node unpatched. With it, a patch that is
+# already in place fails instead, which is what the classifier below relies on.
 run_patch() {
-  sudo patch --batch -d "${PVE_BASE}" -p1 "$@"
+  "${SUDO[@]}" patch --batch --forward -d "${PVE_BASE}" -p1 "$@"
 }
 
 # Silent variant for detection passes — we don't care about stdout, only the
 # exit code, but errors are still surfaced to stderr if something is really
 # wrong with the patch file itself.
 run_patch_quiet() {
-  sudo patch --batch --silent -d "${PVE_BASE}" -p1 "$@" >/dev/null
+  "${SUDO[@]}" patch --batch --forward --silent -d "${PVE_BASE}" -p1 "$@" >/dev/null
 }
 
 # Classify a patch against the current PVE source tree.
@@ -229,7 +242,7 @@ maybe_restart_services() {
     return 0
   fi
   echo "Restarting pvedaemon and pveproxy ..."
-  sudo systemctl restart pvedaemon pveproxy
+  "${SUDO[@]}" systemctl restart pvedaemon pveproxy
 }
 
 report_failures() {

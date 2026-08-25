@@ -29,5 +29,13 @@ const scriptArgs = process.argv.slice(3);
 
 Bun.spawnSync(["bun", scriptPath, ...scriptArgs], {
   stdio: ["ignore", "inherit", "inherit"],
+  env: {
+    ...process.env,
+    // These are development scripts by definition, and
+    // `packages/db/src/client.ts` only routes the Neon driver through the local
+    // proxy when NODE_ENV is exactly "development". Without this, `bun script
+    // dev/seed` fails with a TLS handshake error against db.localtest.me.
+    NODE_ENV: process.env.NODE_ENV ?? "development",
+  },
   onExit: (_, code) => process.exit(code ?? 0),
 });

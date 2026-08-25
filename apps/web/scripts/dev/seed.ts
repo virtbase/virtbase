@@ -26,6 +26,8 @@ import {
 import { createId } from "@virtbase/db/utils";
 import { sleep } from "bun";
 import { reset, seed } from "drizzle-seed";
+import { seedPlansAndNetworking } from "./seed-fixtures";
+import { seedProxmoxCluster } from "./seed-proxmox-cluster";
 
 const schema = {
   datacenters,
@@ -86,9 +88,6 @@ async function main() {
           values: ["RANDOM", "ROUND_ROBIN", "LEAST_USED", "FILL"],
         }),
       },
-      with: {
-        serverPlans: 4,
-      },
     },
     proxmoxTemplateGroups: {
       count: 5,
@@ -115,58 +114,28 @@ async function main() {
         role: f.default({ defaultValue: "ADMIN" }),
       },
     },
-    serverPlans: {
-      count: 4,
-      columns: {
-        id: f.valuesFromArray({
-          values: Array.from({ length: 16 }, () =>
-            createId({ prefix: "pck_" }),
-          ),
-          isUnique: true,
-        }),
-        name: f.valuesFromArray({
-          values: ["Plan 1", "Plan 2", "Plan 3", "Plan 4"],
-        }),
-        cores: f.valuesFromArray({
-          values: [1, 2, 4, 6],
-        }),
-        memory: f.valuesFromArray({
-          values: [1024, 2048, 4096, 8192],
-        }),
-        storage: f.valuesFromArray({
-          values: [10, 25, 50, 100],
-        }),
-        netrate: f.valuesFromArray({
-          values: [125, 125, 125, 125],
-        }),
-        price: f.valuesFromArray({
-          values: [119, 349, 699, 1399],
-        }),
-      },
-    },
-    subnets: {
-      count: 2,
-      columns: {
-        id: f.valuesFromArray({
-          values: Array.from({ length: 2 }, () =>
-            createId({ prefix: "ipsub_" }),
-          ),
-          isUnique: true,
-        }),
-        cidr: f.valuesFromArray({
-          values: ["192.168.1.0/24", "fd00::/48"],
-          isUnique: true,
-        }),
-        gateway: f.valuesFromArray({
-          values: ["192.168.1.1", "fd80::1"],
-          isUnique: true,
-        }),
-        vlan: f.valuesFromArray({
-          values: [1, 1],
-        }),
-      },
-    },
   }));
+
+  // Register the local Proxmox cluster if one has been bootstrapped. Without
+  // real nodes the seeded plans are never "available" and nothing can be
+  // provisioned, so the dev database looks populated but does not work.
+  const nodes = await seedProxmoxCluster();
+
+  // Plans, prices and IP space are inserted explicitly rather than generated:
+  // they must line up with the nodes above and with the exact prefix lengths
+  // provisioning asks for, which drizzle-seed has no way to express.
+  if (nodes !== null) {
+    const fixtures = await seedPlansAndNetworking();
+    console.log(
+      `\nSeeded ${fixtures.plans} plans, ${fixtures.subnets} subnets and ` +
+        `${fixtures.links} subnet/node links.`,
+    );
+  }
+  console.log(
+    nodes === null
+      ? "\nNo Proxmox cluster found. Start one with:\n  docker compose -f tooling/proxmox-cluster/docker-compose.yml up -d\n  ./tooling/proxmox-cluster/bootstrap.sh\n"
+      : `\nRegistered ${nodes} Proxmox node(s) from the local cluster.\n`,
+  );
 
   process.exit(0);
 }

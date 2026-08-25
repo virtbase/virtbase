@@ -1,0 +1,129 @@
+# A disposable three-node Proxmox VE 9 cluster for local development.
+#
+# Kept out of the root docker-compose.yml on purpose: this stack wants privileged
+# containers and /dev/kvm, costs several GB of RAM, and nobody should pay for it
+# just to run the app.
+#
+#   docker compose -f tooling/proxmox-cluster/docker-compose.yml up -d
+#   ./tooling/proxmox-cluster/bootstrap.sh
+name: virtbase-pve
+
+x-pve-node: &pve-node
+  # Built rather than pulled: the Dockerfile is `dockurr/proxmox` plus the Ceph
+  # server packages, so recreating a container does not mean reinstalling them.
+  build:
+    # Repository root: the image needs `scripts/patches`.
+    context: ../..
+    dockerfile: tooling/proxmox-cluster/Dockerfile
+  image: virtbase/proxmox-ceph
+  # Proxmox manages storage, networking and cgroups directly; the image runs
+  # systemd as PID 1 and documents privileged as a requirement.
+  privileged: true
+  devices:
+    - /dev/kvm
+  environment:
+    PASSWORD: ${PVE_PASSWORD:-virtbase}
+  # pmxcfs and corosync do not enjoy being killed.
+  stop_grace_period: 2m
+  restart: unless-stopped
+  # Every node must resolve every other node by name before corosync starts.
+  # Docker's embedded DNS is not reliably in place early enough in systemd boot.
+  extra_hosts:
+    - "pve1:172.28.0.11"
+    - "pve2:172.28.0.12"
+    - "pve3:172.28.0.13"
+
+services:
+  pve1:
+    <<: *pve-node
+    hostname: pve1
+    container_name: virtbase-pve1
+    ports:
+      # 443 is the entry point the app uses. `ProxmoxEngine` omits the port
+      # entirely when none is configured, and `getProxmoxInstance` never sets one
+      # - so the client always talks to https://<fqdn>/ on 443, mirroring the
+      # reverse-proxied production nodes.
+      - "127.0.0.1:443:8006"
+      # 8006 as well, for opening the web UI by hand.
+      - "127.0.0.1:8006:8006"
+    networks:
+      pve:
+        ipv4_address: 172.28.0.11
+    volumes:
+      - pve1-cluster:/var/lib/pve-cluster
+      - pve1-storage:/var/lib/vz
+      - pve1-corosync:/etc/corosync
+      - pve1-ssh:/etc/ssh
+      - pve1-ceph:/var/lib/ceph
+      - pve1-osd:/osd
+
+  pve2:
+    <<: *pve-node
+    hostname: pve2
+    container_name: virtbase-pve2
+    ports:
+      - "127.0.0.1:8007:8006"
+    networks:
+      pve:
+        ipv4_address: 172.28.0.12
+    volumes:
+      - pve2-cluster:/var/lib/pve-cluster
+      - pve2-storage:/var/lib/vz
+      - pve2-corosync:/etc/corosync
+      - pve2-ssh:/etc/ssh
+      - pve2-ceph:/var/lib/ceph
+      - pve2-osd:/osd
+
+  pve3:
+    <<: *pve-node
+    hostname: pve3
+    container_name: virtbase-pve3
+    ports:
+      - "127.0.0.1:8008:8006"
+    networks:
+      pve:
+        ipv4_address: 172.28.0.13
+    volumes:
+      - pve3-cluster:/var/lib/pve-cluster
+      - pve3-storage:/var/lib/vz
+      - pve3-corosync:/etc/corosync
+      - pve3-ssh:/etc/ssh
+      - pve3-ceph:/var/lib/ceph
+      - pve3-osd:/osd
+
+networks:
+  pve:
+    name: virtbase-pve
+    ipam:
+      config:
+        # Static addressing: corosync needs stable peers, and the API client in
+        # `getProxmoxInstance` always talks to :8006 with no port override, so
+        # each node has to be its own address rather than a published port.
+        - subnet: 172.28.0.0/24
+
+volumes:
+  # `/var/lib/pve-cluster` holds the pmxcfs config database - cluster membership
+  # actually lives there, so persisting it is what makes re-entry cheap.
+  pve1-cluster: {}
+  pve2-cluster: {}
+  pve3-cluster: {}
+  pve1-storage: {}
+  pve2-storage: {}
+  pve3-storage: {}
+  pve1-corosync: {}
+  pve2-corosync: {}
+  pve3-corosync: {}
+  # Stable SSH host keys: `pvecm add` joins over SSH and re-prompts on a changed key.
+  pve1-ssh: {}
+  pve2-ssh: {}
+  pve3-ssh: {}
+  # Ceph daemon state: mon, mgr, mds and osd metadata. Without this, recreating
+  # a container loses the monmap directory and the node drops out of Ceph even
+  # though the cluster itself is fine.
+  pve1-ceph: {}
+  pve2-ceph: {}
+  pve3-ceph: {}
+  # Backing files for the Ceph OSDs.
+  pve1-osd: {}
+  pve2-osd: {}
+  pve3-osd: {}
