@@ -1,0 +1,88 @@
+---
+title: Comment gérer mes serveurs depuis Discord ?
+description: Ajoutez le bot Virtbase à Discord, liez votre compte et gérez tous vos serveurs sans quitter la conversation.
+category: overview
+keywords:
+  - discord
+  - bot
+  - intégration
+  - rôles liés
+  - chat
+---
+
+Le bot Discord de Virtbase vous permet de gérer tous les serveurs que vous louez directement depuis Discord — les démarrer et les arrêter, créer des sauvegardes, modifier les règles de pare-feu, ouvrir une console — sans ouvrir l'espace client.
+
+Tout ce que le bot envoie n'est **visible que par vous**, même dans un salon partagé. Personne d'autre sur le serveur ne voit vos noms de serveurs, vos adresses ou vos liens de console.
+
+## Que peut faire le bot ?
+
+| Domaine          | Ce que vous pouvez faire                                                                                                                              |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Serveurs**     | Voir tous les serveurs que vous louez, avec leur offre, leur système d'exploitation, leur nœud et leurs adresses IP                                   |
+| **Alimentation** | Démarrer, redémarrer, éteindre, forcer l'arrêt ou réinitialiser, et lire l'utilisation en direct du processeur, de la mémoire, du disque et du réseau |
+| **Sauvegardes**  | Créer, restaurer, verrouiller et supprimer des sauvegardes                                                                                            |
+| **Pare-feu**     | Consulter vos règles, en ajouter et en supprimer, et modifier les politiques par défaut                                                               |
+| **DNS inversé**  | Définir et supprimer le nom d'hôte vers lequel chacune de vos adresses pointe en retour                                                               |
+| **Paramètres**   | Renommer un serveur, le réinstaller avec un autre système d'exploitation, monter une image d'installation et consulter votre offre                    |
+| **Accès**        | Ouvrir un lien de console à usage unique et réinitialiser le mot de passe administrateur                                                              |
+
+Tout ce qui coûte de l'argent — améliorer une offre, renouveler un serveur — vous renvoie vers l'espace client. Le bot ne vous facture jamais rien.
+
+## Comment ajouter le bot à mon serveur Discord ?
+
+1. Lancez **/invite** sur un serveur Discord où le bot est déjà présent, ou utilisez le bouton sur votre page [authentification](https://app.virtbase.com/account/settings/authentication).
+2. Choisissez le serveur Discord auquel vous souhaitez l'ajouter.
+3. Confirmez. Le bot demande uniquement l'autorisation d'envoyer des messages et de répondre aux commandes slash.
+
+Vous n'avez pas besoin d'ajouter le bot à votre propre serveur. S'il est déjà présent sur un serveur dont vous êtes membre, vous pouvez l'y utiliser — ou lui envoyer un message privé.
+
+## Comment lier mon compte Virtbase ?
+
+Le bot ne peut pas savoir qui vous êtes à partir de votre seul compte Discord : les deux doivent donc être liés une fois.
+
+1. Ouvrez vos [paramètres d'authentification](https://app.virtbase.com/account/settings/authentication) dans l'espace client.
+2. Sous **Authentification**, liez votre compte Discord.
+3. Retournez sur Discord et lancez **/menu**.
+
+C'est tout. À partir de là, le bot vous reconnaît sur tous les serveurs Discord où il se trouve, ainsi qu'en messages privés.
+
+Si vous lancez **/menu** avant la liaison, le bot vous affiche ces étapes plutôt qu'une erreur.
+
+## Que sont les rôles liés ?
+
+Une fois votre compte lié, un serveur Discord peut vous attribuer automatiquement des rôles à partir de vos données Virtbase :
+
+* **Serveurs actifs** — combien de serveurs vous louez actuellement
+* **E-mail vérifié** — si votre adresse e-mail est confirmée
+* **Jours depuis l'inscription** — depuis combien de temps vous êtes client
+
+C'est ainsi qu'une communauté peut attribuer un rôle à ses clients de longue date sans vérification manuelle. Votre adresse e-mail, vos noms de serveurs et vos adresses ne sont **jamais** transmis au serveur Discord — seules les trois valeurs ci-dessus le sont, et uniquement pour les rôles qu'il est configuré à attribuer.
+
+Les rôles liés nécessitent l'autorisation `role_connections.write`, demandée au moment de la liaison. Si vous avez lié votre compte avant que cela ne soit disponible, dissociez-le puis liez-le à nouveau.
+
+## Quelles sont les commandes ?
+
+| Commande    | Ce qu'elle fait                                        |
+| ----------- | ------------------------------------------------------ |
+| **/menu**   | Le menu principal — tout commence ici                  |
+| **/help**   | Ce que le bot sait faire, avec des liens vers ce guide |
+| **/invite** | Un lien pour ajouter le bot à un autre serveur Discord |
+
+Presque tout le reste passe par des boutons. Une fois dans le menu, vous n'avez plus jamais à taper de commande.
+
+## Est-ce sûr ?
+
+* Chaque réponse est éphémère — vous seul la voyez, même dans un salon public.
+* Le bot agit strictement en votre nom. Il ne peut atteindre que les serveurs de votre propre compte, et chaque action passe par les mêmes contrôles d'autorisation que l'espace client.
+* Les actions destructrices — restaurer une sauvegarde, réinstaller, forcer l'arrêt — demandent toujours une confirmation.
+* Les liens de console sont à usage unique et expirent au bout de dix secondes.
+
+## Le bot ne répond pas
+
+Si une commande ne fait rien, vérifiez les points suivants :
+
+1. **Le bot a-t-il l'autorisation de répondre dans ce salon ?** Essayez plutôt un message privé.
+2. **Votre compte est-il lié ?** Lancez **/menu** — si ce n'est pas le cas, vous verrez les étapes de configuration.
+3. **Avez-vous lié votre compte avant la mise en place de l'intégration ?** Dissociez puis reliez votre compte Discord sur votre page [authentification](https://app.virtbase.com/account/settings/authentication).
+
+Si rien de tout cela ne fonctionne, [contactez notre équipe d'assistance](/fr/contact).
