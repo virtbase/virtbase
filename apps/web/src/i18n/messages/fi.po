@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Finnish\n"
-"PO-Revision-Date: 2026-08-25 22:22\n"
+"PO-Revision-Date: 2026-08-26 09:39\n"
 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 #: ../../packages/integration-discord/src/features/servers/messages.ts
@@ -3630,6 +3630,17 @@ msgid "3JxaKs"
 msgstr "Malli"
 
 #: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/checkout/components/checkout-form.tsx
+#: src/features/servers/components/backups/backups-table/columns.tsx
+#: src/features/servers/components/overview/server-details-card.tsx
+msgid "t2uvIi"
+msgstr "Käyttöjärjestelmä"
+
+#: src/features/admin/components/servers/servers-table/columns.tsx
+msgid "ZIaeH7"
+msgstr "Ei luettu palvelimen sisältä"
+
+#: src/features/admin/components/servers/servers-table/columns.tsx
 msgid "EwRIOm"
 msgstr "Käyttäjä"
 
@@ -3853,12 +3864,6 @@ msgstr "Kirjaudu sisään"
 #: src/features/checkout/components/checkout-form.tsx
 msgid "7OW8BT"
 msgstr "Kokoonpano"
-
-#: src/features/checkout/components/checkout-form.tsx
-#: src/features/servers/components/backups/backups-table/columns.tsx
-#: src/features/servers/components/overview/server-details-card.tsx
-msgid "t2uvIi"
-msgstr "Käyttöjärjestelmä"
 
 #: src/features/checkout/components/checkout-form.tsx
 msgid "hE8w_g"
@@ -4481,16 +4486,32 @@ msgid "F_6VqP"
 msgstr "Palvelin"
 
 #: src/features/servers/components/overview/server-details-card.tsx
-msgid "4A__XV"
-msgstr "Mukautettu kuva"
-
-#: src/features/servers/components/overview/server-details-card.tsx
 msgid "RTw2Xk"
 msgstr "Näytä solmun tiedot"
 
 #: src/features/servers/components/overview/server-details-card.tsx
 msgid "8O64Ol"
 msgstr "Vaihda käyttöjärjestelmä"
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "13DVxF"
+msgstr "Luettu tämän palvelimen sisältä {when}."
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "OwWZ_b"
+msgstr "Luettu tämän palvelimen sisältä."
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "8WvXOD"
+msgstr "Asennettu lähteestä {template}."
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "wlld4G"
+msgstr "Otettu liitetystä levykuvasta. Asenna paketti {packageName}, jotta Virtbase voi lukea käyttöjärjestelmän palvelimesi sisältä."
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "lxp8MB"
+msgstr "Otettu mallista, josta tämä palvelin luotiin. Asenna paketti {packageName}, jotta Virtbase voi lukea käyttöjärjestelmän palvelimesi sisältä."
 
 #: src/features/servers/components/plan/plan-form.tsx
 msgid "Kng3Em"
