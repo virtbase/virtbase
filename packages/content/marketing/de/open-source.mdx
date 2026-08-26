@@ -1,0 +1,189 @@
+---
+title: Open-Source-VPS-Hosting
+description: Die Plattform, auf der dein Server läuft, ist öffentlich und AGPL-lizenziert. Lies den Code, der deine Daten verarbeitet, melde einen Bug oder schick einen Patch.
+keywords:
+  - Open Source Hosting
+  - Open Source VPS
+  - AGPL Hosting
+  - transparentes Hosting
+  - auditierbare Infrastruktur
+---
+
+<Hero>
+
+# Hosting, dessen Quelltext du lesen kannst
+
+Portal, API und Discord-Bot sind öffentlich. Wie dein Server behandelt wird, ist
+kein Betriebsgeheimnis.
+
+</Hero>
+
+<Split>
+  <SplitText>
+
+## Nicht Open Core. Offen.
+
+Es gibt hier keine Community-Edition und kein Feature, das für einen bezahlten
+Tarif zurückgehalten wird.
+Die Anwendung, die deinen Server bereitstellt, dich
+abrechnet und deine Daten speichert, ist die aus dem Repository.
+
+Lizenziert unter der **GNU Affero General Public License v3** – die strenge
+Wahl, mit Absicht. Die AGPL schließt die Lücke, durch die ein Unternehmen auf
+Open Source aufbauen, es als gehosteten Dienst betreiben und nie etwas
+zurückgeben kann. Wenn wir Virtbase verändern und für dich betreiben – und das
+tun wir täglich –, müssen wir diese Änderungen veröffentlichen.
+
+Genau diese Pflicht ist der Punkt. Sie sorgt dafür, dass der Code, den du heute
+liest, auch morgen der laufende ist.
+
+  </SplitText>
+  <SplitAside>
+
+```bash
+git clone https://github.com/virtbase/virtbase.git
+cd virtbase && cat LICENSE.md
+
+# GNU AFFERO GENERAL PUBLIC LICENSE
+# Version 3, 19 November 2007
+```
+
+  </SplitAside>
+</Split>
+
+<Stats>
+  <Stat value="AGPL-3.0" label="Lizenz">
+    Copyleft, auch über das Netz
+  </Stat>
+
+  <Stat value="4" label="Sprachen">
+    Übersetzt auf Crowdin
+  </Stat>
+
+  <Stat value="48 h" label="Reaktion auf Meldungen">
+    Bestätigt, und vergütet
+  </Stat>
+
+  <Stat value="Öffentlich" label="Issue-Tracker">
+    Bugs und Arbeit im Offenen
+  </Stat>
+</Stats>
+
+<Prose>
+
+## Warum das bei einem Hoster zählt
+
+Jeder Hoster macht Aussagen zur Sicherheit. Unsere stehen in
+[wie sicher ist Virtbase](/de/help/article/about-security): Festplatten mit
+LUKS2 verschlüsselt, Hosts beim Booten per TPM und BIOS-Passwort gesperrt, alles
+über TLS.
+
+Der Unterschied liegt darin, was passiert, wenn du das nachprüfen willst. Bei
+den meisten Anbietern ist die Antwort eine Vertrauensseite und ein
+Compliance-Siegel. Hier kannst du das Repository öffnen und nachlesen, wie eine
+Sitzung ausgestellt wird, wie ein API-Key geprüft wird, was ein Backup wirklich
+tut und welche Felder wir über dich speichern.
+
+Das ist mehr wert als jedes Siegel – und es ist auf eine Art unbequem, die uns
+ehrlich hält. Code, den jeder lesen kann, ist Code, den man verteidigen können
+muss.
+
+## Was es dir bringt, ihn lesen zu können
+
+Du kannst die Teile prüfen, die deine Daten berühren, bevor du sie ihnen
+anvertraust: Authentifizierung, die Firewall-Regeln, die wir anwenden, und was
+der Discord-Bot in deinem Namen darf.
+
+Du kannst auch etwas reparieren. Ein Issue landet bei denselben Leuten, die den
+Code schreiben, und ein Pull Request ist ein legitimer Weg zu einem Feature, das
+du brauchst. Mehrere Teile des Produkts existieren, weil jemand öffentlich
+danach gefragt hat.
+
+Sicherheitslücken bitte nicht als Issue, sondern vertraulich an
+[support@virtbase.com](mailto:support@virtbase.com). Wir bestätigen innerhalb
+von 48 Stunden und vergüten
+verantwortungsvolle Offenlegung.
+
+## Übersetzt von denen, die es benutzen
+
+Virtbase läuft auf Deutsch, Englisch, Französisch und Niederländisch, und die
+Übersetzungen liegen auf [Crowdin](https://crowdin.virtbase.com) statt in der
+Blackbox eines Dienstleisters.
+
+Fehlt deine Sprache, oder liest sich ein String wie maschinell übersetzt, kannst
+du es selbst korrigieren. Das ist keine Kleinigkeit bei einem Produkt, in dem
+das falsche Wort in einem Firewall-Dialog jemanden einen Nachmittag kostet.
+
+</Prose>
+
+<Split reverse>
+  <SplitText>
+
+## Built on things you already know
+
+Im Stack steckt nichts Exotisches, und das ist Absicht: Eine Codebasis, die man
+lesen kann, nützt nur, wenn man sich auch darin zurechtfindet.
+
+Next.js und TypeScript für die Anwendung, Tailwind fürs Styling, Drizzle gegen
+Postgres, Better Auth für Sitzungen und Turborepo als Klammer um das Monorepo. Integrationen sind Plug-ins gegen wenige Capability-Schnittstellen – einen DNS-
+oder Zahlungsanbieter zu ergänzen heißt also nicht, den Kern anzufassen.
+
+  </SplitText>
+  <SplitAside>
+
+```text
+apps/web            Website, Portal und API
+packages/api        Router und Workflows
+packages/auth       Sitzungen, 2FA, Passkeys
+packages/db         Schema und Queries
+packages/ports      Capability-Schnittstellen
+packages/integration-*  Plug-ins
+```
+
+  </SplitAside>
+</Split>
+
+<Faq title="Fragen zum Quelltext">
+  <Question title="Ist die ganze Plattform wirklich Open Source?">
+    Ja. Kundenportal, öffentliche API und Discord-Bot liegen im selben
+    öffentlichen Repository unter AGPL-3.0. Eine separate geschlossene Edition
+    gibt es nicht.
+  </Question>
+
+  <Question title="Was bedeutet die AGPL für mich als Kunde?">
+    Für die Nutzung von Virtbase nichts – du mietest einen Server, die Lizenz
+    ist unser Thema.
+    Garantiert wird dir damit, dass niemand, der einen Dienst
+    auf diesem Code betreibt, seine Änderungen geheim halten kann. Was du liest,
+    bleibt also ehrlich.
+  </Question>
+
+  <Question title="Kann ich Virtbase selbst hosten?">
+    Die Lizenz erlaubt es und der Code ist vollständig da, aber er ist für
+    unsere Infrastruktur gebaut und nicht als Produkt zum Ausrollen – rechne mit
+    echter Arbeit. Wer es versucht, fragt am besten im Issue-Tracker.
+  </Question>
+
+  <Question title="Kann ich beitragen?">
+    Gerne. Ein Issue für einen Bug, ein Pull Request für einen Fix oder ein
+    Feature, oder hilf beim Übersetzen auf
+    [Crowdin](https://crowdin.virtbase.com).
+  </Question>
+
+  <Question title="Wie melde ich eine Sicherheitslücke?">
+    Per E-Mail an [support@virtbase.com](mailto:support@virtbase.com), nicht als
+    öffentliches Issue. Du
+    bekommst innerhalb von 48 Stunden eine Bestätigung mit den nächsten
+    Schritten, und verantwortungsvolle Offenlegung wird vergütet.
+  </Question>
+
+  <Question title="Macht Open Source meinen Server unsicherer?">
+    Nein. Sicherheit, die darauf beruht, dass niemand den Code lesen kann, ist
+    keine Sicherheit, sondern eine Verzögerung. Veröffentlichter Code wird von
+    mehr Leuten angesehen als jede interne Prüfung erreicht, und was deinen
+    Server tatsächlich schützt, sind Schlüssel und Verschlüsselung – die sind
+    geheim, ob der Code es ist oder nicht.
+  </Question>
+</Faq>
+
+<Offers />
