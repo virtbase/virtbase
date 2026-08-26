@@ -42,7 +42,7 @@ export async function Footer({ className }: { className?: string }) {
       )}
     >
       <footer>
-        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+        <div className="xl:grid xl:grid-cols-4 xl:gap-8">
           <div className="flex flex-col gap-6">
             <div className="grow">
               <IntlLink href="/" className="block max-w-fit" prefetch={false}>
@@ -53,42 +53,86 @@ export async function Footer({ className }: { className?: string }) {
             <SocialsRow />
             <GetOnAppStore />
           </div>
-          <div className="mt-16 grid grid-cols-2 gap-4 xl:col-span-2 xl:mt-0">
+          <div className="mt-16 grid grid-cols-2 gap-4 xl:col-span-3 xl:mt-0">
             <div className="md:grid md:grid-cols-2">
               <div className="grid gap-8">
                 <div></div>
               </div>
-              {/*  className="mt-10 md:mt-0 */}
-              <div>
-                <h3 className={linkListHeaderClassName}>
-                  {t("Customer Portal")}
-                </h3>
-                <ul className={linkListClassName}>
-                  <li>
-                    <a
-                      href={`${APP_DOMAIN}/login`}
-                      className={linkListItemClassName}
-                    >
-                      {t("Login")}
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href={`${APP_DOMAIN}/register`}
-                      className={linkListItemClassName}
-                    >
-                      {t("Sign up")}
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      href={`${APP_DOMAIN}/forgot-password`}
-                      className={linkListItemClassName}
-                    >
-                      {t("Reset password")}
-                    </a>
-                  </li>
-                </ul>
+              <div className="grid gap-8">
+                <div>
+                  <h3 className={linkListHeaderClassName}>
+                    {t("Information")}
+                  </h3>
+                  <ul className={linkListClassName}>
+                    <li>
+                      <IntlLink
+                        href="/open-source"
+                        prefetch={false}
+                        className={linkListItemClassName}
+                      >
+                        {t("Open source")}
+                      </IntlLink>
+                    </li>
+                    <li>
+                      <IntlLink
+                        href="/public-api"
+                        prefetch={false}
+                        className={linkListItemClassName}
+                      >
+                        {t("Public API")}
+                      </IntlLink>
+                    </li>
+                    <li>
+                      <IntlLink
+                        href="/manage-from-discord"
+                        prefetch={false}
+                        className={linkListItemClassName}
+                      >
+                        {t("Discord bot")}
+                      </IntlLink>
+                    </li>
+                    <li>
+                      <IntlLink
+                        href="/ddos-protection"
+                        prefetch={false}
+                        className={linkListItemClassName}
+                      >
+                        {t("DDoS protection")}
+                      </IntlLink>
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <h3 className={linkListHeaderClassName}>
+                    {t("Customer Portal")}
+                  </h3>
+                  <ul className={linkListClassName}>
+                    <li>
+                      <a
+                        href={`${APP_DOMAIN}/login`}
+                        className={linkListItemClassName}
+                      >
+                        {t("Login")}
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href={`${APP_DOMAIN}/register`}
+                        className={linkListItemClassName}
+                      >
+                        {t("Sign up")}
+                      </a>
+                    </li>
+                    <li>
+                      <a
+                        href={`${APP_DOMAIN}/forgot-password`}
+                        className={linkListItemClassName}
+                      >
+                        {t("Reset password")}
+                      </a>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
             <div className="md:grid md:grid-cols-2">

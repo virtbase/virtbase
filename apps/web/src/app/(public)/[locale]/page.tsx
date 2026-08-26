@@ -54,7 +54,11 @@ export async function generateMetadata(): Promise<Metadata> {
   );
 
   return constructMetadata({
-    fullTitle: title,
+    // `title`, not `fullTitle`, so the brand is appended for the `<title>` tag
+    // and left off the OpenGraph image — which renders "Virtbase" in its own
+    // footer, and pushes a three-line headline into it. This matches how every
+    // other marketing document is built.
+    title,
     description,
     // When the requested locale has no file of its own the page is served
     // through the fallback, so the canonical points at the locale that owns the

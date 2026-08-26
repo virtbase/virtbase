@@ -1,0 +1,185 @@
+---
+title: Open source VPS-hosting
+description: Het platform waarop je server draait is openbaar en AGPL-gelicentieerd. Lees de code die je gegevens verwerkt, meld een bug of stuur een patch in.
+keywords:
+  - open source hosting
+  - open source VPS
+  - AGPL hosting
+  - transparante hosting
+  - controleerbare infrastructuur
+---
+
+<Hero>
+
+# Hosting waarvan je de broncode kunt lezen
+
+Het portaal, de API en de Discord-bot zijn allemaal openbaar. Hoe je server
+behandeld wordt is geen bedrijfsgeheim.
+
+</Hero>
+
+<Split>
+  <SplitText>
+
+## Geen open core. Open.
+
+Er is hier geen community-editie en geen functie die achter een betaald pakket
+wordt gehouden. De applicatie die je server uitrolt, je factureert en je
+gegevens opslaat, is die uit de repository.
+
+Ze valt onder de **GNU Affero General Public License v3**, en dat is met opzet
+de strenge keuze. De AGPL dicht het gat waardoor een bedrijf op open source kan
+bouwen, het als gehoste dienst kan draaien en nooit iets hoeft terug te geven.
+Passen wij Virtbase aan en draaien we het voor jou – en dat doen we dagelijks –
+dan zijn we verplicht die aanpassingen te publiceren.
+
+Die verplichting is precies het punt. Ze zorgt ervoor dat de code die je vandaag
+leest, morgen ook de draaiende code is.
+
+  </SplitText>
+  <SplitAside>
+
+```bash
+git clone https://github.com/virtbase/virtbase.git
+cd virtbase && cat LICENSE.md
+
+# GNU AFFERO GENERAL PUBLIC LICENSE
+# Version 3, 19 November 2007
+```
+
+  </SplitAside>
+</Split>
+
+<Stats>
+  <Stat value="AGPL-3.0" label="Licentie">
+    Copyleft, ook over het netwerk
+  </Stat>
+
+  <Stat value="4" label="Talen">
+    Vertaald op Crowdin
+  </Stat>
+
+  <Stat value="48 u" label="Reactie op meldingen">
+    Bevestigd, en beloond
+  </Stat>
+
+  <Stat value="Openbaar" label="Issue tracker">
+    Bugs en werk in de openbaarheid
+  </Stat>
+</Stats>
+
+<Prose>
+
+## Waarom dat telt bij een hostingpartij
+
+Elke hoster doet uitspraken over beveiliging. De onze staan in
+[hoe veilig is Virtbase](/nl/help/article/about-security): schijven versleuteld
+met LUKS2, hosts bij het opstarten vergrendeld met TPM- en BIOS-wachtwoorden,
+alles over TLS.
+
+Het verschil zit in wat er gebeurt als je dat wilt controleren. Bij de meeste
+aanbieders is het antwoord een vertrouwenspagina en een compliance-badge. Hier
+open je de repository en lees je na hoe een sessie wordt uitgegeven, hoe een
+API-sleutel wordt gecontroleerd, wat een back-up werkelijk doet en welke velden
+we over je bewaren.
+
+Dat is meer waard dan welke badge ook, en het is ongemakkelijk op een manier die
+ons eerlijk houdt. Code die iedereen kan lezen is code die je moet kunnen
+verdedigen.
+
+## Wat je eraan hebt dat je het kunt lezen
+
+Je kunt de onderdelen die je gegevens raken controleren voordat je ze
+toevertrouwt: authenticatie, de firewallregels die we toepassen, en wat de
+Discord-bot namens jou mag.
+
+Je kunt ook dingen repareren. Een issue komt bij dezelfde mensen terecht die de
+code schrijven, en een pull request is een legitieme manier om een functie te
+krijgen die je nodig hebt. Verschillende onderdelen bestaan omdat iemand er in
+de openbaarheid om vroeg.
+
+Vind je een beveiligingsprobleem, meld het dan vertrouwelijk op
+[support@virtbase.com](mailto:support@virtbase.com) en niet in een issue. We
+bevestigen binnen 48 uur en
+belonen verantwoorde openbaarmaking.
+
+## Vertaald door wie het gebruikt
+
+Virtbase draait in het Nederlands, Engels, Duits en Frans, en de vertalingen
+staan op [Crowdin](https://crowdin.virtbase.com) in plaats van in de black box
+van een leverancier.
+
+Ontbreekt jouw taal, of leest een tekst alsof een machine hem vertaald heeft,
+dan kun je het zelf verbeteren. Dat is geen kleinigheid bij een product waar het
+verkeerde woord in een firewalldialoog iemand een middag kost.
+
+</Prose>
+
+<Split reverse>
+  <SplitText>
+
+## Gebouwd op wat je al kent
+
+Er zit niets exotisch in de stack, en dat is bewust: een codebase die je kunt
+lezen is alleen nuttig als je er ook je weg in vindt.
+
+Next.js en TypeScript voor de applicatie, Tailwind voor de styling, Drizzle
+tegen Postgres, Better Auth voor sessies en Turborepo om de monorepo bijeen te
+houden. Integraties zijn plug-ins tegen een kleine set capability-interfaces,
+dus een DNS- of betaalprovider toevoegen betekent niet dat je de kern aanraakt.
+
+  </SplitText>
+  <SplitAside>
+
+```text
+apps/web            de site, het portaal en de API
+packages/api        routers en workflows
+packages/auth       sessies, 2FA, passkeys
+packages/db         schema en queries
+packages/ports      capability-interfaces
+packages/integration-*  plug-ins
+```
+
+  </SplitAside>
+</Split>
+
+<Faq title="Vragen over de broncode">
+  <Question title="Is het hele platform echt open source?">
+    Ja. Het klantenportaal, de publieke API en de Discord-bot zitten in dezelfde
+    openbare repository onder AGPL-3.0. Er is geen aparte gesloten editie.
+  </Question>
+
+  <Question title="Wat betekent de AGPL voor mij als klant?">
+    Voor het gebruik van Virtbase niets – je huurt een server, de licentie is
+    ons probleem. Wat het je garandeert, is dat wie een dienst op deze code
+    draait zijn aanpassingen niet privé kan houden. Wat je leest blijft dus
+    eerlijk.
+  </Question>
+
+  <Question title="Kan ik Virtbase zelf hosten?">
+    De licentie staat het toe en de code is er helemaal, maar hij is gebouwd
+    voor onze infrastructuur en niet als product om uit te rollen – reken op
+    echt werk. Probeer je het, stel je vragen dan in de issue tracker.
+  </Question>
+
+  <Question title="Kan ik bijdragen?">
+    Graag. Open een issue voor een bug, een pull request voor een fix of een
+    functie, of help vertalen op [Crowdin](https://crowdin.virtbase.com).
+  </Question>
+
+  <Question title="Hoe meld ik een beveiligingslek?">
+    Per e-mail aan [support@virtbase.com](mailto:support@virtbase.com), niet in
+    een openbaar issue. Je krijgt
+    binnen 48 uur een bevestiging met de vervolgstappen, en verantwoorde
+    openbaarmaking wordt beloond.
+  </Question>
+
+  <Question title="Maakt open source mijn server minder veilig?">
+    Nee. Beveiliging die erop leunt dat niemand de code kan lezen is geen
+    beveiliging maar uitstel. Gepubliceerde code wordt door meer mensen bekeken
+    dan welke interne review ook bereikt, en wat je server echt beschermt zijn
+    sleutels en versleuteling – die zijn geheim, of de code dat nu is of niet.
+  </Question>
+</Faq>
+
+<Offers />

@@ -17,6 +17,7 @@
 
 import { pickBestDiscount } from "@virtbase/db/queries";
 import { cn } from "@virtbase/ui";
+import { OffersJsonLd } from "@/ui/seo/offers-json-ld";
 import { getAvailablePlans } from "../api/get-available-plans";
 import { OfferCard } from "./offer-card";
 
@@ -25,6 +26,16 @@ export async function OfferRow() {
 
   return (
     <div className="@container overflow-hidden">
+      <OffersJsonLd
+        plans={plans.map((plan) => ({
+          ...plan,
+          purchasePrice: pickBestDiscount(
+            plan.price,
+            plan.activeDiscounts,
+            "purchase",
+          ).finalPrice,
+        }))}
+      />
       {Array.from(new Array(Math.ceil(plans.length / 4)), (_, index) =>
         plans.slice(index * 4, index * 4 + 4),
       ).map((chunk, index) => (

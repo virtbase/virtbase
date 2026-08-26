@@ -1,0 +1,160 @@
+---
+title: Je VPS beheren via Discord
+description: Start, stop, back-up en firewall elke Virtbase-server vanuit Discord. Antwoorden blijven privé, ook in een gedeeld kanaal, en de bot geeft nooit geld uit.
+keywords:
+  - VPS beheren via Discord
+  - Discord VPS bot
+  - Discord server beheren
+  - gameserver hosting
+  - server bot
+---
+
+<Hero>
+
+# Je server, in de chat die je toch al open hebt
+
+Power, back-ups, firewall en console voor elke server die je huurt – zonder een
+portaal te openen.
+
+</Hero>
+
+<Advantages>
+  <Advantage title="Alleen jij ziet het" icon="lock">
+    Elk antwoord verschijnt alleen voor jou, ook in een gedeeld kanaal.
+  </Advantage>
+
+  <Advantage title="Hij handelt als jou" icon="shield">
+    De bot bereikt alleen je eigen servers, met de rechten van het portaal.
+  </Advantage>
+
+  <Advantage title="Hij geeft geen geld uit" icon="server">
+    Upgrades en verlengingen leiden naar het portaal. Hier kost niets iets.
+  </Advantage>
+
+  <Advantage title="Waar je toch al bent" icon="network">
+    Je eigen Discord-server, elke server met de bot, of een privébericht.
+  </Advantage>
+</Advantages>
+
+<Features>
+  <Feature title="Eén menu, daarna knoppen" demo="discord-bot" wide href="/help/article/discord-integration">
+    Voer één keer **/menu** uit. Daarna is alles een knop – geen commando's om
+    te onthouden en geen syntaxis om fout te typen.
+  </Feature>
+</Features>
+
+<Prose>
+
+## Wat de bot echt kan
+
+De meeste hostingbots melden status. Deze bedient de server.
+
+Je kunt starten, herstarten, afsluiten, geforceerd stoppen en hard resetten – en
+ondertussen CPU, geheugen, schijf en netwerk live meelezen. Je kunt
+[back-ups](/nl/help/article/how-to-backup-server) maken, terugzetten,
+vergrendelen en verwijderen. Je kunt je
+[firewallregels](/nl/help/article/how-to-use-server-firewall) bekijken,
+toevoegen, verwijderen en het standaardbeleid wijzigen. Je kunt de reverse DNS
+van elk adres instellen, een server hernoemen,
+[opnieuw installeren](/nl/help/article/how-to-change-operating-system) met een
+ander besturingssysteem, een installatie-image koppelen, een eenmalige
+consolelink openen en het beheerderswachtwoord resetten.
+
+Dat is dezelfde functionaliteit als in het klantenportaal, minus de facturatie.
+Alles wat geld kost verwijst door naar het portaal – wie toegang tot de bot
+krijgt, krijgt dus geen toegang tot je betaalgegevens.
+
+## Waarom chat in plaats van een dashboard
+
+Een dashboard is een plek waar je naartoe gaat. Discord is een plek waar je al
+bent.
+
+Als een gameserver midden in een sessie niet meer reageert, is precies de
+afstand tussen opmerken en oplossen het probleem. Browser openen, tabblad
+zoeken, inloggen, naar de juiste server navigeren, herstart indrukken – dat zijn
+vier of vijf stappen waarin iedereen blijft wachten. **/menu** op je telefoon is
+er één.
+
+Dat telt het zwaarst voor wie iets samen met anderen draait: communityservers,
+gameservers, kleine teams. Degene die de machine moet herstarten is vaak niet
+degene van wie het hostingaccount is – en die persoon je portaalgegevens geven
+is daar een slecht antwoord op.
+
+## Privacy in een gedeeld kanaal
+
+Het voor de hand liggende bezwaar tegen infrastructuur in een openbare chat is
+dat een openbare chat openbaar is.
+
+Elk antwoord van de bot is ephemeral: het wordt alleen weergegeven voor wie de
+knop indrukte, en het is weg zodra diegene het sluit. Servernamen, IP-adressen,
+verbruiksgrafieken en consolelinks zijn voor niemand anders in het kanaal
+zichtbaar en komen nooit in de geschiedenis terecht.
+
+Destructieve acties vragen eerst om bevestiging. Een back-up terugzetten, een
+besturingssysteem opnieuw installeren en een machine geforceerd stoppen vereisen
+alle drie een bevestigingsstap, zodat een misgetikte knop op een telefoon geen
+productieserver neerhaalt. Consolelinks zijn eenmalig en verlopen na tien
+seconden: lang genoeg om te klikken, kort genoeg om een screenshot waardeloos te
+maken.
+
+## Rollen voor je community
+
+Draai je een Discord-community, dan kan de bot rollen toekennen op basis van je
+Virtbase-gegevens zonder dat iemand handmatig nakijkt: hoeveel servers een lid
+op dit moment huurt, of het e-mailadres bevestigd is, en hoe lang diegene al
+klant is.
+
+Gedeeld worden precies die drie waarden, en alleen voor de rollen waarvoor de
+server is ingesteld. E-mailadressen, servernamen en IP-adressen bereiken de
+Discord-server nooit.
+
+## Aan de slag
+
+Koppel je Discord-account eenmalig in je
+[aanmeldinstellingen](https://app.virtbase.com/account/settings/authentication)
+en voer daarna **/menu** uit. Doe je dat vóór het koppelen, dan legt de bot de
+installatie uit in plaats van een foutmelding te geven.
+
+Je hoeft de bot niet aan een eigen server toe te voegen – zit hij al in een
+server waar jij lid bent, dan werkt hij daar, en in privéberichten sowieso. De
+volledige uitleg staat in
+[hoe beheer ik mijn servers via Discord](/nl/help/article/discord-integration).
+
+</Prose>
+
+<Faq title="Vragen over de Discord-bot">
+  <Question title="Zien anderen in het kanaal mijn servers?">
+    Nee. Elk antwoord is ephemeral, dus Discord toont het alleen aan degene die
+    het opriep. Servernamen, adressen en consolelinks verschijnen voor niemand
+    anders in het kanaal en worden niet in de geschiedenis bewaard.
+  </Question>
+
+  <Question title="Heeft de bot beheerdersrechten nodig op mijn Discord-server?">
+    Nee. Hij vraagt toestemming om berichten te sturen en slash-commando's te
+    beantwoorden, en verder niets.
+  </Question>
+
+  <Question title="Kan de bot geld uitgeven op mijn account?">
+    Nee. Een pakket wijzigen en een server verlengen leiden allebei naar het
+    klantenportaal. Er is geen aankoop die de bot zelf kan afronden.
+  </Question>
+
+  <Question title="Moet ik de bot aan mijn eigen Discord-server toevoegen?">
+    Nee. Zit hij al in een server waar jij lid bent, dan kun je hem daar
+    gebruiken, en hij antwoordt ook in privéberichten. Zelf toevoegen hoeft
+    alleen als je hem aan je eigen community wilt aanbieden.
+  </Question>
+
+  <Question title="Wat gebeurt er als iemand anders de bot op mijn server gebruikt?">
+    Diegene ziet de eigen servers, niet die van jou. De bot herkent je aan je
+    gekoppelde Virtbase-account, en elke actie loopt door dezelfde
+    rechtencontroles als het klantenportaal.
+  </Question>
+
+  <Question title="Welke servers kan ik zo beheren?">
+    Alle servers op je account. De bot zit zonder meerprijs in elk pakket – er
+    valt niets te activeren en niets te betalen.
+  </Question>
+</Faq>
+
+<Offers />

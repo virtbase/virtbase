@@ -1,0 +1,217 @@
+---
+title: VPS met een publieke API
+description: Elke Virtbase-server is scriptbaar. Eén header om te authenticeren, REST en JSON over acht resources, 120 verzoeken per minuut, zonder duurder pakket.
+keywords:
+  - VPS API
+  - server API
+  - hosting REST API
+  - server automatiseren
+  - infrastructure as code
+---
+
+<Hero>
+
+# Elke server, scriptbaar
+
+Eén header om te authenticeren, REST en JSON voor alles wat ook in het portaal
+kan.
+
+</Hero>
+
+<Stats>
+  <Stat value="120/min" label="Rate limit">
+    Schuivend venster, in elk pakket
+  </Stat>
+
+  <Stat value="8" label="Resourcegroepen">
+    Servers, back-ups, firewall en meer
+  </Stat>
+
+  <Stat value="v1" label="Stabiele API">
+    Geversioneerd in de URL
+  </Stat>
+
+  <Stat value="€ 0" label="Wat het kost">
+    Inbegrepen, niets te activeren
+  </Stat>
+</Stats>
+
+<Split>
+  <SplitText>
+
+## Eén header, geen handshake
+
+Geen OAuth-dans en geen token om te vernieuwen. Maak een API-sleutel aan in je
+accountinstellingen, stuur hem mee in de header `X-Virtbase-API-Key`, en elk
+endpoint staat open.
+
+Sleutels verlopen niet. Ze worden precies één keer getoond, dus bewaar hem
+meteen – en verwijder hem zodra je hem niet meer nodig hebt.
+
+  </SplitText>
+  <SplitAside>
+
+```bash
+curl https://virtbase.com/api/v1/servers \
+  -H "X-Virtbase-API-Key: $VIRTBASE_API_KEY"
+```
+
+  </SplitAside>
+</Split>
+
+<Split reverse>
+  <SplitText>
+
+## Voorspelbare lijsten
+
+Alles wat een collectie teruggeeft, pagineert en sorteert hetzelfde. `page` en
+`per_page` bepalen het venster, `sort` neemt een veld met optioneel `:asc` of
+`:desc`, en meerdere velden zijn te combineren.
+
+De envelop heeft altijd dezelfde vorm, dus een client die tegen de ene collectie
+werkt, werkt ook tegen de volgende.
+
+  </SplitText>
+  <SplitAside>
+
+```json
+{
+  "ssh_keys": [],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "per_page": 10,
+      "previous_page": null,
+      "next_page": 2,
+      "last_page": 10,
+      "total_entries": 100
+    }
+  }
+}
+```
+
+  </SplitAside>
+</Split>
+
+<Split>
+  <SplitText>
+
+## Rate limits die je kunt aflezen
+
+De standaard is 120 verzoeken per minuut – twee per seconde – over een schuivend
+venster, dus korte pieken zijn prima zolang het venster het houdt.
+
+Elk antwoord draagt de actuele stand in de headers, dus een nette client hoeft
+nooit te gokken. Ga je eroverheen, dan krijg je een `429` en niet stilletjes
+niets.
+
+Meer nodig? [Vraag het support](/nl/contact). Hogere limieten worden op verzoek
+toegekend, niet als duurder pakket verkocht.
+
+  </SplitText>
+  <SplitAside>
+
+```http
+X-RateLimit-Limit: 120
+X-RateLimit-Remaining: 118
+X-RateLimit-Reset: 1787769600
+```
+
+  </SplitAside>
+</Split>
+
+<Prose>
+
+## Wat je kunt automatiseren
+
+De API dekt hetzelfde terrein als het klantenportaal: servers, back-ups,
+firewallregels, reverse DNS, SSH-sleutels, ISO-images, aanbiedingen en facturen.
+
+Daarmee is het hele leven van een machine scriptbaar. Een server aanmaken,
+wachten tot hij klaarstaat, een SSH-sleutel plaatsen, firewallregels schrijven,
+de reverse DNS op de adressen zetten, vóór een riskante deploy een
+[back-up](/nl/help/article/how-to-backup-server) maken en die daarna
+terugzetten – zonder dat er ergens een browser aan te pas komt.
+
+Het betekent ook dat de dingen die normaal blijven liggen scriptbaar worden.
+Reverse DNS voor een mailserver, een firewallregel die je kantoor-IP volgt, een
+nachtelijke back-up vóór je eigen migratie: het hoort in hetzelfde script als de
+rest van je infrastructuur.
+
+## Een sleutel aanmaken
+
+<Steps>
+
+<Step>
+
+### Open je API-instellingen
+
+Ga naar [accountinstellingen](https://app.virtbase.com/account/settings/api) in
+het klantenportaal en kies **API** in de navigatie.
+
+</Step>
+
+<Step>
+
+### Maak een sleutel
+
+Klik op **API-sleutel aanmaken**, geef hem een naam die je later herkent, en
+bevestig.
+
+</Step>
+
+<Step>
+
+### Bewaar hem meteen
+
+De sleutel wordt één keer getoond. Zet hem direct in je secret store of je
+CI-omgeving – later is hij niet meer uit te lezen.
+
+</Step>
+
+</Steps>
+
+De volledige referentie, met elke parameter en elk antwoord, staat op
+[virtbase.com/api/docs](https://virtbase.com/api/docs). Die is alleen in het
+Engels beschikbaar.
+
+</Prose>
+
+<Faq title="Vragen over de API">
+  <Question title="Kost de API extra?">
+    Nee. Hij zit in elk pakket, er valt niets te activeren, en de rate limit is
+    hetzelfde ongeacht wat je betaalt.
+  </Question>
+
+  <Question title="Hoe authenticeer ik?">
+    Met een API-sleutel in de header `X-Virtbase-API-Key` bij elk verzoek. Er is
+    geen OAuth-flow en geen token om te vernieuwen.
+  </Question>
+
+  <Question title="Verlopen API-sleutels?">
+    Nee, ze blijven geldig tot je ze verwijdert. Ze worden alleen bij het
+    aanmaken getoond, dus bewaar hem dan – ben je hem kwijt, maak dan een nieuwe
+    aan en verwijder de oude.
+  </Question>
+
+  <Question title="Wat is de rate limit?">
+    120 verzoeken per minuut per sleutel, over een schuivend venster, dus pieken
+    binnen het venster kunnen. Daarboven krijg je `429 Too Many Requests`, en de
+    headers `X-RateLimit-Remaining` en `X-RateLimit-Reset` vertellen je waar je
+    staat.
+  </Question>
+
+  <Question title="Kan ik een hogere rate limit krijgen?">
+    Ja, op verzoek. [Neem contact op met support](/nl/contact) en vertel wat je
+    bouwt.
+  </Question>
+
+  <Question title="Waar staat de endpointdocumentatie?">
+    Op [virtbase.com/api/docs](https://virtbase.com/api/docs), met elk endpoint,
+    elke parameter en elk antwoord. Er is ook een
+    [korte handleiding](/nl/help/article/how-to-use-public-api) voor je eerste
+    sleutel.
+  </Question>
+</Faq>
+
+<Offers />

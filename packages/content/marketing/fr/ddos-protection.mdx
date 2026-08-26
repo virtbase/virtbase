@@ -1,0 +1,183 @@
+---
+title: VPS avec protection anti-DDoS
+description: Chaque serveur Virtbase est derrière le filtrage d'aurologic, sur toutes les formules et sans supplément. Le trafic d'attaque est nettoyé en amont et n'atteint jamais votre lien.
+keywords:
+  - VPS anti-DDoS
+  - serveur protégé anti-DDoS
+  - hébergement anti-DDoS
+  - protection DDoS serveur de jeu
+  - serveur protégé
+---
+
+<Hero>
+
+# Le trafic d'attaque n'atteint jamais votre serveur
+
+Le filtrage se trouve en amont du réseau où vit votre machine, et il tourne avant
+même votre commande.
+
+</Hero>
+
+<Stats>
+  <Stat value="Toujours" label="Actif par défaut">
+    Rien à activer ni à régler
+  </Stat>
+
+  <Stat value="0 €" label="Ce que ça coûte">
+    Inclus dans toutes les formules
+  </Stat>
+
+  <Stat value="TCP + UDP" label="Protocoles filtrés">
+    Protocoles de jeu reconnus aussi
+  </Stat>
+
+  <Stat value="En amont" label="Où ça filtre">
+    Avant votre lien, pas dessus
+  </Stat>
+</Stats>
+
+<Prose>
+
+## Où se fait le filtrage
+
+Une protection qui tourne sur votre propre serveur n'est pas une protection.
+Quand un flot atteint la machine, il a déjà traversé votre lien – et un lien
+saturé jette le trafic légitime aussi efficacement qu'un processeur saturé.
+
+Les serveurs Virtbase sont derrière le filtrage d'**aurologic GmbH**, situé en
+amont du réseau où se trouve la machine. Le trafic d'attaque est nettoyé avant
+d'arriver : votre lien ne le transporte jamais, votre serveur ne le voit jamais.
+
+Cela veut dire aussi qu'il n'y a rien à faire tourner, à régler ou à maintenir à
+jour de votre côté. Aucun agent sur la machine, aucune règle à écrire, aucun
+seuil à deviner.
+
+</Prose>
+
+<Split>
+  <SplitText>
+
+## Précis, pas seulement massif
+
+Deux choses comptent en filtrage, et les fournisseurs ne parlent en général que
+de la première.
+
+La capacité encaisse un flot. La précision décide si vos joueurs restent
+connectés pendant ce temps. Le filtrage d'aurologic travaille au paquet, avec une
+granularité fine, et reconnaît spécifiquement les protocoles de serveurs de jeu
+au lieu de traiter tout l'UDP comme suspect – c'est précisément ce qui permet à
+un serveur de jeu de traverser une attaque plutôt que d'être protégé jusqu'à
+l'inaccessibilité.
+
+Là où le protocole le permet, un mécanisme de défi-réponse sépare un vrai client
+d'un client usurpé, pour que les sessions déjà établies continuent.
+
+  </SplitText>
+  <SplitAside>
+
+```text
+      trafic d'attaque
+              │
+              ▼
+   ┌──────────────────────┐
+   │ filtrage aurologic   │  TCP/UDP, par paquet
+   │    défi-réponse      │  protocoles de jeu connus
+   └──────────┬───────────┘
+              │  trafic propre uniquement
+              ▼
+   ┌──────────────────────┐
+   │ SkyLink, Eygelshoven │  DE-CIX · Speed-IX
+   └──────────┬───────────┘
+              ▼
+      votre lien ──▶ votre serveur
+```
+
+  </SplitAside>
+</Split>
+
+<Features>
+  <Feature title="Vos propres règles par-dessus" demo="server-firewall" href="/help/article/how-to-use-server-firewall">
+    Le filtrage décide de ce qui atteint le réseau. Le pare-feu décide de ce qui
+    atteint vos ports.
+  </Feature>
+
+  <Feature title="Une attaque, ou juste de l'affluence ?" demo="server-stats" href="/help">
+    Processeur, mémoire et réseau en direct : un pic de trafic se regarde au
+    lieu de se deviner.
+  </Feature>
+</Features>
+
+<Prose>
+
+## La protection anti-DDoS n'est pas un pare-feu
+
+On confond les deux en permanence, et la différence compte dès que quelque chose
+tourne mal.
+
+**Le filtrage anti-DDoS** est automatique, en amont, et porte sur le volume et la
+forme. Il n'a aucun avis sur les ports qui devraient être ouverts chez vous : il
+retire le trafic qui vous attaque et laisse passer le reste.
+
+**Le pare-feu** est le vôtre, il tourne à la lisière de votre serveur, et il
+porte sur la politique. C'est lui qui ferme le port SSH à tout le monde sauf à
+votre bureau, ou qui n'ouvre le 25565 qu'à ceux qui doivent atteindre votre
+serveur de jeu.
+
+Une attaque qui sature un lien relève du premier. Un port qui n'aurait jamais dû
+être ouvert relève du second. L'un ne remplace pas l'autre, et c'est pourquoi les
+deux sont inclus plutôt que vendus par paliers.
+
+## Ce qu'il reste à faire de votre côté
+
+Le filtrage n'est pas une raison de laisser la machine ouverte. Fermez les ports
+inutilisés avec des
+[règles de pare-feu](/fr/help/article/how-to-use-server-firewall), gardez vos
+services à jour, et prenez une
+[sauvegarde](/fr/help/article/how-to-backup-server) avant de changer quoi que ce
+soit d'important.
+
+Les attaques qui réussissent contre un serveur protégé ne réussissent presque
+jamais par le volume. Elles réussissent parce que quelque chose écoutait qui
+n'aurait pas dû.
+
+</Prose>
+
+<Faq title="Questions sur la protection anti-DDoS">
+  <Question title="Dois-je activer la protection anti-DDoS ?">
+    Non. Elle est active par défaut sur chaque serveur Virtbase et il n'y a rien
+    à configurer. Voir
+    [quelle protection anti-DDoS utilise Virtbase](/fr/help/article/about-ddos-protection).
+  </Question>
+
+  <Question title="Y a-t-il un supplément ?">
+    Non. Elle est incluse sans frais dans toutes les formules, et n'est facturée
+    ni comme option ni à l'attaque.
+  </Question>
+
+  <Question title="Quels protocoles sont protégés ?">
+    Tous les services et protocoles réseau courants, aussi bien sur TCP que sur
+    UDP. Les protocoles de serveurs de jeu sont reconnus et filtrés
+    spécifiquement plutôt que génériquement.
+  </Question>
+
+  <Question title="Mon serveur reste-t-il joignable pendant une attaque ?">
+    C'est tout l'objet. Le filtrage est optimisé pour les serveurs web et de jeu,
+    et le défi-réponse distingue les vrais clients du trafic usurpé : le serveur
+    reste utilisable pendant l'attaque.
+  </Question>
+
+  <Question title="Qui fournit le filtrage ?">
+    aurologic GmbH. Le filtrage est en amont du réseau de nos serveurs, donc le
+    trafic d'attaque est retiré avant d'atteindre notre
+    [centre de données](/fr/datacenter) et donc votre lien.
+  </Question>
+
+  <Question title="Est-ce la même chose que le pare-feu ?">
+    Non, et il vous faut les deux. Le filtrage anti-DDoS est automatique et en
+    amont, et décide de ce qui atteint le réseau. Le
+    [pare-feu](/fr/help/article/how-to-use-server-firewall) se configure de votre
+    côté, tourne sur votre serveur, et décide quels ports sont ouverts et à qui.
+  </Question>
+</Faq>
+
+<Offers />

@@ -28,6 +28,12 @@ import { FAQSection } from "@/features/landing/components/faq-section";
 import { Feature } from "@/features/landing/components/feature";
 import { FeaturesShowcase } from "@/features/landing/components/features-showcase";
 import { OperatingSystemShowcase } from "@/features/landing/components/operating-system-showcase";
+import {
+  SplitAside,
+  SplitSection,
+  SplitText,
+} from "@/features/landing/components/split-section";
+import { StatItem, StatsBand } from "@/features/landing/components/stats-band";
 import { BlockWrapper } from "@/ui/block-wrapper";
 import { Prose } from "@/ui/prose";
 
@@ -114,6 +120,37 @@ export const marketingMdxComponents = {
     </BlockWrapper>
   ),
   Advantage: AdvantageItem,
+  /**
+   * A band of hard figures. Reads at a glance where `<Advantages>` has to be
+   * read, so the two give a long page two different rhythms rather than one
+   * repeated twice.
+   */
+  Stats: ({ children }: { children?: ReactNode }) => (
+    <BlockWrapper className="py-4">
+      <div className="border-y">
+        <StatsBand>{children}</StatsBand>
+      </div>
+    </BlockWrapper>
+  ),
+  Stat: StatItem,
+  /**
+   * Prose beside the thing it describes. The only block that is not a
+   * full-width band, which is what keeps a page of several sections from
+   * reading as one column of stripes.
+   */
+  Split: ({
+    reverse,
+    children,
+  }: {
+    reverse?: boolean;
+    children?: ReactNode;
+  }) => (
+    <BlockWrapper>
+      <SplitSection reverse={reverse}>{children}</SplitSection>
+    </BlockWrapper>
+  ),
+  SplitText,
+  SplitAside,
   Faq: ({ title, children }: { title: string; children?: ReactNode }) => (
     <BlockWrapper>
       <FAQSection title={title}>{children}</FAQSection>

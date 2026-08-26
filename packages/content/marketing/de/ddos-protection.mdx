@@ -1,0 +1,177 @@
+---
+title: VPS mit DDoS-Schutz
+description: Jeder Virtbase-Server steht hinter der Filterung von aurologic, in jedem Paket und ohne Aufpreis. Angriffsverkehr wird vorgelagert entfernt und erreicht deinen Uplink nie.
+keywords:
+  - VPS mit DDoS-Schutz
+  - DDoS geschützter Server
+  - Anti-DDoS Hosting
+  - Gameserver DDoS-Schutz
+  - geschützter Server
+---
+
+<Hero>
+
+# Angriffsverkehr erreicht deinen Server nie
+
+Die Filterung sitzt vor dem Netz, in dem deine Maschine steht – und sie läuft,
+bevor du bestellst.
+
+</Hero>
+
+<Stats>
+  <Stat value="Immer" label="Standardmäßig an">
+    Nichts zu aktivieren, nichts einzustellen
+  </Stat>
+
+  <Stat value="0 €" label="Was er kostet">
+    In jedem Paket enthalten
+  </Stat>
+
+  <Stat value="TCP + UDP" label="Gefilterte Protokolle">
+    Spielprotokolle werden erkannt
+  </Stat>
+
+  <Stat value="Vorgelagert" label="Wo gefiltert wird">
+    Vor deinem Uplink, nicht auf ihm
+  </Stat>
+</Stats>
+
+<Prose>
+
+## Wo gefiltert wird
+
+Schutz, der auf dem eigenen Server läuft, ist kein Schutz. Bis eine Flut die
+Maschine erreicht, hat sie den Uplink längst passiert – und ein ausgelasteter
+Uplink verwirft legitimen Verkehr genauso zuverlässig wie eine ausgelastete CPU.
+
+Virtbase-Server stehen hinter der Filterung der **aurologic GmbH**, die dem Netz
+der Maschine vorgelagert ist. Angriffsverkehr wird entfernt, bevor er ankommt:
+Dein Uplink trägt ihn nie, dein Server sieht ihn nie.
+
+Damit gibt es auch nichts, was du betreiben, einstellen oder aktuell halten
+müsstest. Kein Agent auf der Maschine, keine Regel zu schreiben, kein Schwellwert
+zu raten.
+
+</Prose>
+
+<Split>
+  <SplitText>
+
+## Genau, nicht nur groß
+
+Bei Filterung zählen zwei Dinge, und Anbieter reden meist nur über das erste.
+
+Kapazität schluckt eine Flut. Genauigkeit entscheidet, ob deine Spieler währenddessen
+verbunden bleiben. Die Filterung von aurologic arbeitet paketgenau und
+feingranular und erkennt Gameserver-Protokolle gezielt, statt jedes UDP-Paket für
+verdächtig zu halten – genau das lässt einen Gameserver einen Angriff überstehen,
+anstatt in den Schutz hinein unerreichbar zu werden.
+
+Wo ein Protokoll es zulässt, trennt Challenge-Response echte Clients von
+gefälschten, damit bestehende Sitzungen weiterlaufen.
+
+  </SplitText>
+  <SplitAside>
+
+```text
+      Angriffsverkehr
+              │
+              ▼
+   ┌──────────────────────┐
+   │ aurologic-Filterung  │  TCP/UDP, pro Paket
+   │  Challenge-Response  │  Spielprotokolle bekannt
+   └──────────┬───────────┘
+              │  nur sauberer Verkehr
+              ▼
+   ┌──────────────────────┐
+   │ SkyLink, Eygelshoven │  DE-CIX · Speed-IX
+   └──────────┬───────────┘
+              ▼
+      dein Uplink ──▶ dein Server
+```
+
+  </SplitAside>
+</Split>
+
+<Features>
+  <Feature title="Deine eigenen Regeln obendrauf" demo="server-firewall" href="/help/article/how-to-use-server-firewall">
+    Die Filterung entscheidet, was ins Netz gelangt. Die Firewall entscheidet,
+    was deine Ports erreicht.
+  </Feature>
+
+  <Feature title="Angriff oder nur viel los?" demo="server-stats" href="/help">
+    CPU, Arbeitsspeicher und Netzwerk live im Diagramm – eine Lastspitze kannst
+    du dir ansehen, statt sie zu raten.
+  </Feature>
+</Features>
+
+<Prose>
+
+## DDoS-Schutz ist keine Firewall
+
+Beides wird ständig verwechselt, und der Unterschied zählt, sobald etwas
+schiefgeht.
+
+**DDoS-Filterung** läuft automatisch, vorgelagert, und dreht sich um Menge und
+Muster. Sie hat keine Meinung dazu, welche deiner Ports offen sein sollten – sie
+entfernt Verkehr, der dich angreift, und lässt den Rest durch.
+
+**Die Firewall** gehört dir, läuft am Rand deines Servers und dreht sich um
+Richtlinien. Sie schließt den SSH-Port für alle außer dem Büro, oder lässt 25565
+nur für die offen, die deinen Gameserver erreichen sollen.
+
+Ein Angriff, der eine Leitung auslastet, ist Aufgabe des Ersten. Ein Port, der
+nie offen sein durfte, ist Aufgabe der Zweiten. Das eine ersetzt das andere
+nicht – deshalb ist beides enthalten und nicht als Stufe verkauft.
+
+## Was du trotzdem tun solltest
+
+Filterung ist kein Grund, die Maschine offen zu lassen. Schließe ungenutzte Ports
+mit [Firewall-Regeln](/de/help/article/how-to-use-server-firewall), halte Dienste
+aktuell und lege ein [Backup](/de/help/article/how-to-backup-server) an, bevor du
+etwas Wichtiges änderst.
+
+Angriffe, die gegen einen geschützten Server Erfolg haben, gelingen fast nie über
+die Menge. Sie gelingen, weil etwas lauschte, das nicht hätte lauschen dürfen.
+
+</Prose>
+
+<Faq title="Fragen zum DDoS-Schutz">
+  <Question title="Muss ich den DDoS-Schutz aktivieren?">
+    Nein. Er ist auf jedem Virtbase-Server standardmäßig aktiv, und es gibt
+    nichts einzustellen. Mehr dazu unter
+    [welchen DDoS-Schutz nutzt Virtbase](/de/help/article/about-ddos-protection).
+  </Question>
+
+  <Question title="Kostet er extra?">
+    Nein. Er ist in jedem Paket ohne Aufpreis enthalten und wird weder als
+    Upgrade noch pro Angriff abgerechnet.
+  </Question>
+
+  <Question title="Welche Protokolle sind geschützt?">
+    Alle gängigen Netzdienste und Protokolle, sowohl TCP- als auch UDP-basiert.
+    Gameserver-Protokolle werden erkannt und gezielt gefiltert statt pauschal.
+  </Question>
+
+  <Question title="Bleibt mein Server während eines Angriffs erreichbar?">
+    Genau darum geht es. Die Filterung ist auf Web- und Gameserver optimiert, und
+    Challenge-Response unterscheidet echte Clients von gefälschtem Verkehr –
+    dein Server bleibt also nutzbar, während ein Angriff läuft.
+  </Question>
+
+  <Question title="Wer stellt die Filterung bereit?">
+    Die aurologic GmbH. Sie ist dem Netz unserer Server vorgelagert, sodass
+    Angriffsverkehr entfernt wird, bevor er unser
+    [Rechenzentrum](/de/datacenter) und damit deinen Uplink erreicht.
+  </Question>
+
+  <Question title="Ist das dasselbe wie die Firewall?">
+    Nein, und du willst beides. Die DDoS-Filterung läuft automatisch und
+    vorgelagert und entscheidet, was ins Netz gelangt. Die
+    [Firewall](/de/help/article/how-to-use-server-firewall) konfigurierst du
+    selbst, sie läuft an deinem Server und entscheidet, welche Ports für wen
+    offen sind.
+  </Question>
+</Faq>
+
+<Offers />

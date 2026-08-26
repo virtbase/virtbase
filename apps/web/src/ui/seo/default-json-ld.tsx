@@ -16,19 +16,36 @@
  */
 
 import { APP_NAME, PUBLIC_DOMAIN, SUPPORT_EMAIL } from "@virtbase/utils";
-import type { Organization, WithContext } from "schema-dts";
+import type { Organization, WebSite } from "schema-dts";
+import { locales } from "@/i18n/config";
 import { SOCIALS } from "@/lib/socials";
 import JsonLd from "./json-ld";
 
+/**
+ * Stable node identifiers for the site-wide graph.
+ *
+ * Without an `@id` a node cannot be referenced, so every other piece of
+ * structured data on the site has to restate the publisher inline and a crawler
+ * has no way to know the two describe the same company. Anything that names
+ * Virtbase as a brand or seller — `OffersJsonLd`, for one — points here instead.
+ */
+export const ORGANIZATION_ID = `${PUBLIC_DOMAIN}/#organization`;
+export const WEBSITE_ID = `${PUBLIC_DOMAIN}/#website`;
+
 export function DefaultJsonLd() {
-  const organization: WithContext<Organization> = {
+  const organization: Organization = {
     "@type": "Organization",
-    "@context": "https://schema.org",
+    "@id": ORGANIZATION_ID,
     url: PUBLIC_DOMAIN,
     logo: `${PUBLIC_DOMAIN}/web-app-manifest-512x512.png`,
     image: `${PUBLIC_DOMAIN}/web-app-manifest-512x512.png`,
     email: SUPPORT_EMAIL,
     name: APP_NAME,
+    // "Virtbase" collides with a crowded set of indexed entities — Virtuoso,
+    // Virtusa, VigiBase, virt-manager among them — so spell out the names this
+    // company is actually known by rather than leaving the match to string
+    // similarity.
+    alternateName: [`${APP_NAME} Hosting`, "BeastHost UG"],
     description: `${APP_NAME} is your provider for secure server hosting. Maximum performance with minimal effort.`,
     legalName: "BeastHost UG (haftungsbeschränkt)",
     address: {
@@ -63,11 +80,24 @@ export function DefaultJsonLd() {
     sameAs: SOCIALS.map(({ href }) => href),
   };
 
+  const website: WebSite = {
+    "@type": "WebSite",
+    "@id": WEBSITE_ID,
+    url: PUBLIC_DOMAIN,
+    name: APP_NAME,
+    // Google reads the site name for search results from the `WebSite` node,
+    // not the `Organization` one, so the disambiguating names have to be on
+    // both.
+    alternateName: [`${APP_NAME} Hosting`, "BeastHost UG"],
+    publisher: { "@id": ORGANIZATION_ID },
+    inLanguage: [...locales],
+  };
+
   return (
     <JsonLd
       schema={{
         "@context": "https://schema.org",
-        "@graph": [organization],
+        "@graph": [organization, website],
       }}
     />
   );

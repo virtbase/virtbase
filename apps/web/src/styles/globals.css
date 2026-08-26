@@ -19,10 +19,11 @@
 @import "tw-animate-css";
 @import "@virtbase/tailwind-config/theme";
 
-/* Fumadocs UI - used for help articles and legal pages */
+/* Fumadocs UI - used for help articles, legal pages and marketing documents */
 @import "fumadocs-ui/css/shadcn.css";
 @import "fumadocs-ui/css/lib/base.css";
 @import "fumadocs-ui/css/generated/shared.css";
+@import "fumadocs-ui/css/lib/shiki.css";
 
 @source "../../../../packages/ui/src/**/*.{ts,tsx}";
 

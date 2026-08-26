@@ -44,6 +44,7 @@ export async function generateMetadata(): Promise<Metadata> {
       subtitle: description,
       theme: "dark",
     }),
+    noIndex: true,
   });
 }
 

@@ -1,0 +1,189 @@
+---
+title: Hébergement VPS open source
+description: La plateforme qui fait tourner votre serveur est publique et sous licence AGPL. Lisez le code qui traite vos données, signalez un bug, proposez un correctif.
+keywords:
+  - hébergement open source
+  - VPS open source
+  - hébergement AGPL
+  - hébergement transparent
+  - infrastructure auditable
+---
+
+<Hero>
+
+# Un hébergement dont vous pouvez lire le code
+
+L'espace client, l'API et le bot Discord sont publics. La façon dont votre
+serveur est traité n'est pas un secret d'entreprise.
+
+</Hero>
+
+<Split>
+  <SplitText>
+
+## Pas open core. Ouvert.
+
+Il n'y a pas d'édition communautaire ici, ni de fonction retenue pour une
+formule payante. L'application qui met en service votre serveur, vous facture et
+stocke vos données est celle du dépôt.
+
+Elle est sous **GNU Affero General Public License v3**, et c'est délibérément le
+choix strict. L'AGPL ferme la faille qui permet à une entreprise de bâtir sur de
+l'open source, de l'exploiter en service hébergé et de ne jamais rien publier en
+retour. Si nous modifions Virtbase et l'exploitons pour vous – ce que nous
+faisons chaque jour – nous sommes tenus de publier ces modifications.
+
+Cette obligation est tout l'intérêt. C'est elle qui fait que le code lu
+aujourd'hui est celui qui tournera demain.
+
+  </SplitText>
+  <SplitAside>
+
+```bash
+git clone https://github.com/virtbase/virtbase.git
+cd virtbase && cat LICENSE.md
+
+# GNU AFFERO GENERAL PUBLIC LICENSE
+# Version 3, 19 November 2007
+```
+
+  </SplitAside>
+</Split>
+
+<Stats>
+  <Stat value="AGPL-3.0" label="Licence">
+    Copyleft, y compris via le réseau
+  </Stat>
+
+  <Stat value="4" label="Langues">
+    Traduites sur Crowdin
+  </Stat>
+
+  <Stat value="48 h" label="Réponse aux signalements">
+    Accusée, et récompensée
+  </Stat>
+
+  <Stat value="Public" label="Suivi des tickets">
+    Bugs et travaux à découvert
+  </Stat>
+</Stats>
+
+<Prose>
+
+## Pourquoi cela compte chez un hébergeur
+
+Tous les hébergeurs affirment des choses sur la sécurité. Les nôtres figurent
+dans [quelle est la sécurité de Virtbase](/fr/help/article/about-security) :
+disques chiffrés en LUKS2, hôtes verrouillés au démarrage par TPM et mot de
+passe BIOS, tout en TLS.
+
+La différence est ce qui se passe quand vous voulez vérifier. Chez la plupart
+des fournisseurs, la réponse est une page de confiance et un badge de
+conformité. Ici, vous ouvrez le dépôt et vous lisez comment une session est
+émise, comment une clé d'API est vérifiée, ce que fait réellement une sauvegarde
+et quels champs nous conservons sur vous.
+
+Cela vaut plus que n'importe quel badge, et c'est inconfortable d'une manière
+qui nous tient honnêtes. Du code que tout le monde peut lire est du code qu'il
+faut pouvoir défendre.
+
+## Ce que la lecture vous apporte
+
+Vous pouvez auditer les parties qui touchent à vos données avant de les leur
+confier : l'authentification, les règles de pare-feu que nous appliquons, et ce
+que le bot Discord a le droit de faire en votre nom.
+
+Vous pouvez aussi corriger. Un ticket arrive chez les mêmes personnes que celles
+qui écrivent le code, et une pull request est une façon légitime d'obtenir la
+fonction qui vous manque. Plusieurs parties du produit existent parce que
+quelqu'un l'a demandé publiquement.
+
+Si vous trouvez une faille, signalez-la en privé à
+[support@virtbase.com](mailto:support@virtbase.com) plutôt
+que dans un ticket. Nous accusons réception sous 48 heures et récompensons la
+divulgation responsable.
+
+## Traduit par ceux qui s'en servent
+
+Virtbase existe en français, anglais, allemand et néerlandais, et les
+traductions vivent sur [Crowdin](https://crowdin.virtbase.com) plutôt que dans
+la boîte noire d'un prestataire.
+
+Si votre langue manque, ou si une phrase sent la traduction automatique, vous
+pouvez la corriger vous-même. Ce n'est pas anodin pour un produit où un mot de
+travers dans une boîte de dialogue de pare-feu coûte un après-midi à quelqu'un.
+
+</Prose>
+
+<Split reverse>
+  <SplitText>
+
+## Construit sur ce que vous connaissez déjà
+
+Rien d'exotique dans la pile technique, et c'est volontaire : une base de code
+lisible n'est utile que si l'on peut aussi s'y retrouver.
+
+Next.js et TypeScript pour l'application, Tailwind pour le style, Drizzle sur
+Postgres, Better Auth pour les sessions et Turborepo pour tenir le monorepo.
+Les intégrations sont des greffons sur un petit jeu d'interfaces de capacités :
+ajouter un fournisseur DNS ou de paiement ne demande donc pas de toucher au
+cœur.
+
+  </SplitText>
+  <SplitAside>
+
+```text
+apps/web            le site, l'espace client et l'API
+packages/api        routeurs et workflows
+packages/auth       sessions, 2FA, passkeys
+packages/db         schéma et requêtes
+packages/ports      interfaces de capacités
+packages/integration-*  greffons
+```
+
+  </SplitAside>
+</Split>
+
+<Faq title="Questions sur le code source">
+  <Question title="Toute la plateforme est-elle vraiment open source ?">
+    Oui. L'espace client, l'API publique et le bot Discord sont dans le même
+    dépôt public, sous AGPL-3.0. Il n'existe pas d'édition fermée séparée.
+  </Question>
+
+  <Question title="Que change l'AGPL pour moi, client ?">
+    Pour utiliser Virtbase, rien : vous louez un serveur, la licence est notre
+    affaire. Ce qu'elle vous garantit, c'est que l'exploitant d'un service bâti
+    sur ce code ne peut pas garder ses modifications privées. Ce que vous lisez
+    reste donc honnête.
+  </Question>
+
+  <Question title="Puis-je héberger Virtbase moi-même ?">
+    La licence l'autorise et le code est entièrement là, mais il est conçu pour
+    notre infrastructure et non comme un produit à déployer ailleurs : attendez-
+    vous à du vrai travail. Si vous essayez, le suivi des tickets est le bon
+    endroit pour poser vos questions.
+  </Question>
+
+  <Question title="Puis-je contribuer ?">
+    Volontiers. Un ticket pour un bug, une pull request pour un correctif ou une
+    fonction, ou de l'aide à la traduction sur
+    [Crowdin](https://crowdin.virtbase.com).
+  </Question>
+
+  <Question title="Comment signaler une faille de sécurité ?">
+    Par e-mail à [support@virtbase.com](mailto:support@virtbase.com), pas dans
+    un ticket public. Vous recevez
+    un accusé sous 48 heures avec les étapes suivantes, et la divulgation
+    responsable est récompensée.
+  </Question>
+
+  <Question title="L'open source rend-il mon serveur moins sûr ?">
+    Non. Une sécurité qui repose sur le fait que personne ne peut lire le code
+    n'est pas une sécurité, c'est un délai. Du code publié est examiné par plus
+    de monde que n'importe quelle revue interne, et ce qui protège réellement
+    votre serveur, ce sont les clés et le chiffrement – secrets que le code le
+    soit ou non.
+  </Question>
+</Faq>
+
+<Offers />

@@ -1,0 +1,218 @@
+---
+title: VPS avec une API publique
+description: Chaque serveur Virtbase est scriptable. Un en-tête pour s'authentifier, REST et JSON sur huit ressources, 120 requêtes par minute, sans formule supérieure.
+keywords:
+  - API VPS
+  - API serveur
+  - API REST hébergement
+  - automatiser un serveur
+  - infrastructure as code
+---
+
+<Hero>
+
+# Chaque serveur, scriptable
+
+Un en-tête pour s'authentifier, REST et JSON pour tout ce que fait l'espace
+client.
+
+</Hero>
+
+<Stats>
+  <Stat value="120/min" label="Limite de débit">
+    Fenêtre glissante, sur toutes les formules
+  </Stat>
+
+  <Stat value="8" label="Groupes de ressources">
+    Serveurs, sauvegardes, pare-feu et plus
+  </Stat>
+
+  <Stat value="v1" label="API stable">
+    Versionnée dans l'URL
+  </Stat>
+
+  <Stat value="0 €" label="Ce qu'elle coûte">
+    Incluse, rien à activer
+  </Stat>
+</Stats>
+
+<Split>
+  <SplitText>
+
+## Un en-tête, aucune poignée de main
+
+Pas de danse OAuth, pas de jeton à rafraîchir. Créez une clé d'API dans vos
+paramètres de compte, envoyez-la dans l'en-tête `X-Virtbase-API-Key`, et tous
+les points de terminaison vous sont ouverts.
+
+Les clés n'expirent pas. Elles ne s'affichent qu'une seule fois : conservez-la
+dès sa création, et supprimez-la dès qu'elle ne sert plus.
+
+  </SplitText>
+  <SplitAside>
+
+```bash
+curl https://virtbase.com/api/v1/servers \
+  -H "X-Virtbase-API-Key: $VIRTBASE_API_KEY"
+```
+
+  </SplitAside>
+</Split>
+
+<Split reverse>
+  <SplitText>
+
+## Des listes prévisibles
+
+Tout ce qui renvoie une collection se pagine et se trie de la même façon. `page`
+et `per_page` contrôlent la fenêtre, `sort` prend un champ suivi éventuellement
+de `:asc` ou `:desc`, et plusieurs champs se combinent.
+
+L'enveloppe garde toujours la même forme : un client écrit pour une collection
+fonctionne sur la suivante.
+
+  </SplitText>
+  <SplitAside>
+
+```json
+{
+  "ssh_keys": [],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "per_page": 10,
+      "previous_page": null,
+      "next_page": 2,
+      "last_page": 10,
+      "total_entries": 100
+    }
+  }
+}
+```
+
+  </SplitAside>
+</Split>
+
+<Split>
+  <SplitText>
+
+## Des limites lisibles
+
+Par défaut, 120 requêtes par minute – deux par seconde – sur une fenêtre
+glissante : les courtes rafales passent tant que la fenêtre tient.
+
+Chaque réponse porte l'état courant dans ses en-têtes, un client correct n'a
+donc jamais à deviner. Au-delà, vous recevez un `429`, pas un abandon
+silencieux.
+
+Besoin de plus ? [Demandez au support](/fr/contact). Les limites supérieures
+s'accordent sur demande, elles ne se vendent pas.
+
+  </SplitText>
+  <SplitAside>
+
+```http
+X-RateLimit-Limit: 120
+X-RateLimit-Remaining: 118
+X-RateLimit-Reset: 1787769600
+```
+
+  </SplitAside>
+</Split>
+
+<Prose>
+
+## Ce que vous pouvez automatiser
+
+L'API couvre le même terrain que l'espace client : serveurs, sauvegardes, règles
+de pare-feu, DNS inverse, clés SSH, images ISO, offres et factures.
+
+Toute la vie d'une machine devient donc scriptable. Créer un serveur, attendre
+sa mise à disposition, y pousser une clé SSH, écrire des règles de pare-feu,
+définir le DNS inverse de ses adresses, prendre une
+[sauvegarde](/fr/help/article/how-to-backup-server) avant un déploiement risqué
+et la restaurer ensuite – sans navigateur nulle part.
+
+Cela rend aussi scriptables les tâches qu'on oublie d'habitude : le DNS inverse
+d'un serveur de messagerie, une règle de pare-feu qui suit l'IP du bureau, une
+sauvegarde nocturne avant votre propre migration. Tout cela a sa place dans le
+même script que le reste de votre infrastructure.
+
+## Obtenir une clé
+
+<Steps>
+
+<Step>
+
+### Ouvrez vos paramètres d'API
+
+Rendez-vous dans les
+[paramètres de compte](https://app.virtbase.com/account/settings/api) de
+l'espace client et choisissez **API** dans la navigation.
+
+</Step>
+
+<Step>
+
+### Créez une clé
+
+Cliquez sur **Créer une clé d'API**, donnez-lui un nom que vous reconnaîtrez
+plus tard, et confirmez.
+
+</Step>
+
+<Step>
+
+### Conservez-la tout de suite
+
+La clé ne s'affiche qu'une fois. Mettez-la immédiatement dans votre coffre à
+secrets ou votre environnement d'intégration continue – elle ne sera plus
+lisible ensuite.
+
+</Step>
+
+</Steps>
+
+La référence complète, avec chaque paramètre et chaque forme de réponse, se
+trouve sur [virtbase.com/api/docs](https://virtbase.com/api/docs). Elle n'existe
+qu'en anglais.
+
+</Prose>
+
+<Faq title="Questions sur l'API">
+  <Question title="L'API coûte-t-elle un supplément ?">
+    Non. Elle est incluse dans toutes les formules, il n'y a rien à activer, et
+    la limite de débit est la même quel que soit le prix payé.
+  </Question>
+
+  <Question title="Comment m'authentifier ?">
+    Avec une clé d'API dans l'en-tête `X-Virtbase-API-Key` à chaque requête. Il
+    n'y a ni flux OAuth ni jeton à rafraîchir.
+  </Question>
+
+  <Question title="Les clés d'API expirent-elles ?">
+    Non, elles restent valides jusqu'à ce que vous les supprimiez. Elles ne
+    s'affichent qu'une fois, à la création : conservez-la à ce moment-là. Si
+    vous la perdez, créez-en une nouvelle et supprimez l'ancienne.
+  </Question>
+
+  <Question title="Quelle est la limite de débit ?">
+    120 requêtes par minute et par clé, sur une fenêtre glissante : les rafales
+    passent dans la fenêtre. Au-delà, vous recevez `429 Too Many Requests`, et
+    les en-têtes `X-RateLimit-Remaining` et `X-RateLimit-Reset` vous situent.
+  </Question>
+
+  <Question title="Puis-je obtenir une limite plus élevée ?">
+    Oui, sur demande. [Contactez le support](/fr/contact) en expliquant ce que
+    vous construisez.
+  </Question>
+
+  <Question title="Où se trouve la documentation des points de terminaison ?">
+    Sur [virtbase.com/api/docs](https://virtbase.com/api/docs), avec chaque
+    point de terminaison, paramètre et réponse. Il existe aussi un
+    [guide court](/fr/help/article/how-to-use-public-api) pour créer votre
+    première clé.
+  </Question>
+</Faq>
+
+<Offers />
