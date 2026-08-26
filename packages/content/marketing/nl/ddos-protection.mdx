@@ -1,0 +1,175 @@
+---
+title: VPS met DDoS-bescherming
+description: Elke Virtbase-server staat achter de filtering van aurologic, in elk pakket en zonder meerprijs. Aanvalsverkeer wordt bovenstrooms weggefilterd en bereikt je uplink nooit.
+keywords:
+  - VPS met DDoS-bescherming
+  - DDoS beveiligde server
+  - anti-DDoS hosting
+  - gameserver DDoS-bescherming
+  - beschermde server
+---
+
+<Hero>
+
+# Aanvalsverkeer bereikt je server nooit
+
+De filtering zit vóór het netwerk waar je machine op staat, en staat aan voordat
+je bestelt.
+
+</Hero>
+
+<Stats>
+  <Stat value="Altijd" label="Standaard aan">
+    Niets te activeren of in te stellen
+  </Stat>
+
+  <Stat value="€ 0" label="Wat het kost">
+    Included on every plan
+  </Stat>
+
+  <Stat value="TCP + UDP" label="Gefilterde protocollen">
+    Ook gameprotocollen herkend
+  </Stat>
+
+  <Stat value="Upstream" label="Waar gefilterd wordt">
+    Vóór je uplink, niet erop
+  </Stat>
+</Stats>
+
+<Prose>
+
+## Waar de filtering gebeurt
+
+Bescherming die op je eigen server draait, is geen bescherming. Tegen de tijd dat
+een vloed de machine bereikt, is die al over je uplink gegaan – en een verzadigde
+uplink laat legitiem verkeer net zo hard vallen als een verzadigde CPU.
+
+Virtbase-servers staan achter de filtering van **aurologic GmbH**, die vóór het
+netwerk van de machine zit. Aanvalsverkeer wordt weggehaald voordat het aankomt:
+je uplink draagt het nooit, je server ziet het nooit.
+
+Dat betekent ook dat er niets is dat jij moet draaien, afstellen of bijwerken. Geen agent op de machine, geen regel om te schrijven, geen drempel om te raden.
+
+</Prose>
+
+<Split>
+  <SplitText>
+
+## Nauwkeurig, niet alleen groot
+
+Bij filtering tellen twee dingen, en aanbieders praten meestal alleen over het
+eerste.
+
+Capaciteit vangt een vloed op. Nauwkeurigheid bepaalt of je spelers ondertussen
+verbonden blijven. De filtering van aurologic werkt op pakketniveau en fijnmazig,
+en herkent gameserverprotocollen specifiek in plaats van alle UDP als verdacht te
+behandelen – precies dat laat een gameserver een aanval doorstaan in plaats van
+zich beschermd tot onbereikbaarheid.
+
+Waar een protocol het toelaat, scheidt challenge-response een echte client van
+een vervalste, zodat sessies die al liepen blijven lopen.
+
+  </SplitText>
+  <SplitAside>
+
+```text
+      aanvalsverkeer
+              │
+              ▼
+   ┌──────────────────────┐
+   │ aurologic-filtering  │  TCP/UDP, per pakket
+   │  challenge-response  │  gameprotocollen bekend
+   └──────────┬───────────┘
+              │  alleen schoon verkeer
+              ▼
+   ┌──────────────────────┐
+   │ SkyLink, Eygelshoven │  DE-CIX · Speed-IX
+   └──────────┬───────────┘
+              ▼
+      je uplink ──▶ je server
+```
+
+  </SplitAside>
+</Split>
+
+<Features>
+  <Feature title="Je eigen regels erbovenop" demo="server-firewall" href="/help/article/how-to-use-server-firewall">
+    De filtering bepaalt wat het netwerk bereikt. De firewall bepaalt wat je
+    poorten bereikt.
+  </Feature>
+
+  <Feature title="An attack, or just a busy day?" demo="server-stats" href="/help">
+    CPU, geheugen en netwerk live in grafieken, zodat je een piek kunt bekijken
+    in plaats van ernaar te raden.
+  </Feature>
+</Features>
+
+<Prose>
+
+## DDoS-bescherming is geen firewall
+
+Deze twee worden voortdurend door elkaar gehaald, en het verschil telt zodra er
+iets misgaat.
+
+**DDoS-filtering** is automatisch, bovenstrooms, en gaat over volume en vorm. Ze
+heeft geen mening over welke van je poorten open horen te staan – ze verwijdert
+verkeer dat je aanvalt en laat de rest door.
+
+**De firewall** is van jou, draait aan de rand van je server en gaat over beleid. Die sluit de SSH-poort voor iedereen behalve je kantoor, of laat 25565 alleen
+open voor wie je gameserver mag bereiken.
+
+Een aanval die een lijn verzadigt is werk voor de eerste. Een poort die nooit
+open had mogen staan is werk voor de tweede. De één vervangt de ander niet, en
+daarom zitten ze er allebei bij in plaats van als niveau verkocht te worden.
+
+## Wat je alsnog moet doen
+
+Filtering is geen excuus om de machine open te laten staan. Sluit poorten die je
+niet gebruikt met
+[firewallregels](/nl/help/article/how-to-use-server-firewall), houd diensten
+bijgewerkt, en maak een [back-up](/nl/help/article/how-to-backup-server) voordat
+je iets verandert dat ertoe doet.
+
+Aanvallen die tegen een beschermde server slagen, slagen bijna nooit op volume.
+Ze slagen omdat er iets luisterde dat dat niet had moeten doen.
+
+</Prose>
+
+<Faq title="Vragen over DDoS-bescherming">
+  <Question title="Moet ik DDoS-bescherming inschakelen?">
+    Nee. Ze staat standaard aan op elke Virtbase-server en er valt niets in te
+    stellen. Zie
+    [welke DDoS-bescherming gebruikt Virtbase](/nl/help/article/about-ddos-protection).
+  </Question>
+
+  <Question title="Kost het extra?">
+    Nee. Het zit zonder kosten in elk pakket, en wordt niet als upgrade of per
+    aanval afgerekend.
+  </Question>
+
+  <Question title="Welke protocollen zijn beschermd?">
+    Alle gangbare netwerkdiensten en protocollen, zowel op TCP als op UDP. Gameserverprotocollen worden herkend en gericht gefilterd in plaats van
+    generiek.
+  </Question>
+
+  <Question title="Blijft mijn server bereikbaar tijdens een aanval?">
+    Daar gaat het om. De filtering is geoptimaliseerd voor web- en gameservers,
+    en challenge-response onderscheidt echte clients van vervalst verkeer, zodat
+    een server bruikbaar blijft terwijl een aanval loopt.
+  </Question>
+
+  <Question title="Wie levert de filtering?">
+    aurologic GmbH. Die zit vóór het netwerk van onze servers, zodat
+    aanvalsverkeer wordt weggehaald voordat het ons
+    [datacenter](/nl/datacenter) en daarmee je uplink bereikt.
+  </Question>
+
+  <Question title="Is dit hetzelfde als de firewall?">
+    Nee, en je wilt allebei. DDoS-filtering is automatisch en bovenstrooms en
+    bepaalt wat het netwerk bereikt. De
+    [firewall](/nl/help/article/how-to-use-server-firewall) stel je zelf in,
+    draait op je server, en bepaalt welke poorten voor wie open staan.
+  </Question>
+</Faq>
+
+<Offers />
