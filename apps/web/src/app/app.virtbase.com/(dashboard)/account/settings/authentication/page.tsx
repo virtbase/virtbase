@@ -25,7 +25,7 @@ import { UserTfaCard } from "@/features/account/components/authentication/user-t
 export default function Page() {
   return (
     <>
-      <Suspense>
+      <Suspense fallback={null}>
         <DiscordBotCard />
       </Suspense>
       <UserProvidersCard />

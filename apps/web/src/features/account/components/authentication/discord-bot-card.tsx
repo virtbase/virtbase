@@ -25,6 +25,7 @@ import {
 } from "@virtbase/ui/icons";
 import { PUBLIC_DOMAIN } from "@virtbase/utils";
 import NextLink from "next/link";
+import { connection } from "next/server";
 import { getExtracted, getLocale } from "next-intl/server";
 
 /**
@@ -39,6 +40,8 @@ import { getExtracted, getLocale } from "next-intl/server";
  * invite link built from a missing application id would 404 on Discord.
  */
 export async function DiscordBotCard() {
+  await connection();
+
   const bot = await getDiscordBotInfo();
   if (!bot) return null;
 
