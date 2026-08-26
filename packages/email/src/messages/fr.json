@@ -1,4 +1,79 @@
 {
+  "account-inactivity-notice": {
+    "title": "Ton compte sera supprimé sauf si tu te connectes",
+    "preview": "Ton compte inactif est programmé pour suppression",
+    "heading": "Nous allons supprimer ton compte",
+    "greeting": "Bonjour {name} !",
+    "instructions": "Tu n'as pas utilisé ton compte {appName} depuis {months} mois et rien n'y tourne : il est donc programmé pour suppression le {date}.",
+    "stop": "Il suffit de te connecter pour le conserver. Rien d'autre n'est nécessaire.",
+    "cta": "Me connecter et conserver mon compte",
+    "download": "Si tu préfères d'abord récupérer une copie de tes données, tu peux la télécharger depuis ton compte avant cette date."
+  },
+  "account-inactivity-reminder": {
+    "title": "Dernier rappel : ton compte sera supprimé le {date}",
+    "preview": "Dernier rappel avant la suppression de ton compte",
+    "heading": "Dernier rappel",
+    "greeting": "Bonjour {name} !",
+    "instructions": "Ton compte {appName} sera définitivement supprimé le {date}. C'est le dernier e-mail que tu recevras à ce sujet.",
+    "stop": "Te connecter suffit à conserver ton compte. Rien d'autre n'est nécessaire.",
+    "cta": "Me connecter et conserver mon compte"
+  },
+  "account-deletion-requested": {
+    "title": "Confirme la suppression de ton compte",
+    "preview": "Confirme la suppression de ton compte",
+    "heading": "Confirme la suppression de ton compte",
+    "greeting": "Bonjour {name} !",
+    "instructions": "Tu as demandé la suppression de ton compte {appName}. Rien ne s'est encore passé : confirme avec le bouton ci-dessous.",
+    "confirm": "Confirmer la suppression",
+    "consequences": "Une fois confirmé, tu disposes de {days} jours pour changer d'avis. Passé ce délai, ton compte et tous tes serveurs sont supprimés définitivement.",
+    "ignore": "Si tu n'es pas à l'origine de cette demande, ignore cet e-mail et change ton mot de passe. Rien ne sera supprimé.",
+    "expiry": "Ce lien expire dans {hours} heures."
+  },
+  "account-deletion-scheduled": {
+    "title": "Ton compte sera supprimé le {date}",
+    "preview": "Ton compte est programmé pour suppression",
+    "heading": "Ton compte est programmé pour suppression",
+    "greeting": "Bonjour {name} !",
+    "instructions": "Ton compte {appName} et tous tes serveurs seront définitivement supprimés le {date}.",
+    "stop": "Tu as changé d'avis ? Tu peux tout arrêter jusqu'à cette date.",
+    "cancel": "Conserver mon compte",
+    "download": "Si tu veux une copie de tes données, télécharge-la avant cette date : ensuite elle aura disparu."
+  },
+  "account-deletion-cancelled": {
+    "title": "Ton compte ne sera pas supprimé",
+    "preview": "La suppression de ton compte a été annulée",
+    "heading": "Ton compte ne sera pas supprimé",
+    "greeting": "Bonjour {name} !",
+    "instructions": "La suppression de ton compte {appName} a été annulée. Rien n'a été supprimé et tout fonctionne comme avant.",
+    "hint": "Si ce n'est pas toi qui as annulé, change ton mot de passe et contacte le support."
+  },
+  "account-deleted": {
+    "title": "Ton compte a été supprimé",
+    "preview": "Ton compte Virtbase a été supprimé",
+    "heading": "Ton compte a été supprimé",
+    "greeting": "Bonjour {name} !",
+    "userRequest": "Ton compte et tous les serveurs qui s'y trouvaient ont été définitivement supprimés, comme tu l'as demandé. Il n'y a plus rien à restaurer.",
+    "inactivity": "Ton compte était inactif depuis longtemps : il a donc été définitivement supprimé, ainsi que tous les serveurs qui s'y trouvaient. Il n'y a plus rien à restaurer.",
+    "retained": "La législation fiscale allemande nous oblige à conserver tes factures et les pièces comptables correspondantes pendant {years} ans. Elles ne contiennent pas plus de données que la loi ne l'exige et sont supprimées à l'issue de cette période.",
+    "farewell": "Merci d'avoir été client."
+  },
+  "confirm-identity": {
+    "title": "Ton code de sécurité {appName}",
+    "preview": "Ton code de sécurité {appName}",
+    "heading": "Confirme que c'est bien toi",
+    "instructions": "Saisis ce code pour confirmer une modification sensible de ton compte {appName} :",
+    "hint": "Ce code expire dans 10 minutes. Si tu ne l'as pas demandé, ignore cet e-mail – rien ne sera modifié."
+  },
+  "data-export-ready": {
+    "title": "Ton export de données est prêt",
+    "preview": "Ton export de données est prêt à être téléchargé",
+    "heading": "Ton export de données est prêt",
+    "greeting": "Bonjour {name} !",
+    "instructions": "Tout ce que {appName} conserve à ton sujet est prêt à être téléchargé ({size}). Le fichier est un PDF : tu peux le lire comme un document, et il contient également tes données complètes au format JSON ainsi qu'une copie de chaque facture.",
+    "download": "Télécharger mes données",
+    "passphrase": "Tu auras besoin de la phrase secrète affichée au moment de ta demande. Nous ne l'envoyons pas par e-mail et ne pouvons pas la récupérer – si tu ne l'as plus, demande simplement un nouvel export.",
+    "expiry": "Ce téléchargement expire dans {days} jours, après quoi le fichier est supprimé."
+  },
   "email-updated": {
     "title": "Ton adresse e-mail a été modifiée",
     "preview": "Ton adresse e-mail a été mise à jour",
