@@ -1,4 +1,79 @@
 {
+  "account-inactivity-notice": {
+    "title": "Your account will be deleted unless you sign in",
+    "preview": "Your inactive account is scheduled for deletion",
+    "heading": "We are about to delete your account",
+    "greeting": "Hi {name}!",
+    "instructions": "You have not used your {appName} account for {months} months and there is nothing running on it, so we are scheduling it for deletion on {date}.",
+    "stop": "Signing in is all it takes to keep it. Nothing else is needed.",
+    "cta": "Sign in and keep my account",
+    "download": "If you would rather have a copy of your data first, you can download it from your account before that date."
+  },
+  "account-inactivity-reminder": {
+    "title": "Last reminder: your account will be deleted on {date}",
+    "preview": "Last reminder before your account is deleted",
+    "heading": "Last reminder",
+    "greeting": "Hi {name}!",
+    "instructions": "Your {appName} account will be permanently deleted on {date}. This is the last email you will get about it.",
+    "stop": "Signing in keeps your account. Nothing else is needed.",
+    "cta": "Sign in and keep my account"
+  },
+  "account-deletion-requested": {
+    "title": "Confirm you want to delete your account",
+    "preview": "Confirm your account deletion",
+    "heading": "Confirm you want to delete your account",
+    "greeting": "Hi {name}!",
+    "instructions": "You asked to delete your {appName} account. Nothing has happened yet - use the button below to confirm.",
+    "confirm": "Confirm deletion",
+    "consequences": "Once confirmed, you have {days} days to change your mind. After that your account and every server on it are permanently deleted.",
+    "ignore": "If you did not ask for this, ignore this email and change your password. Nothing will be deleted.",
+    "expiry": "This link expires in {hours} hours."
+  },
+  "account-deletion-scheduled": {
+    "title": "Your account will be deleted on {date}",
+    "preview": "Your account is scheduled for deletion",
+    "heading": "Your account is scheduled for deletion",
+    "greeting": "Hi {name}!",
+    "instructions": "Your {appName} account and every server on it will be permanently deleted on {date}.",
+    "stop": "Changed your mind? You can stop this at any time until then.",
+    "cancel": "Keep my account",
+    "download": "If you want a copy of your data, download it before that date - afterwards it is gone."
+  },
+  "account-deletion-cancelled": {
+    "title": "Your account will not be deleted",
+    "preview": "Your account deletion was cancelled",
+    "heading": "Your account will not be deleted",
+    "greeting": "Hi {name}!",
+    "instructions": "The deletion of your {appName} account has been cancelled. Nothing was removed and everything works as before.",
+    "hint": "If it was not you who cancelled it, change your password and contact support."
+  },
+  "account-deleted": {
+    "title": "Your account has been deleted",
+    "preview": "Your Virtbase account has been deleted",
+    "heading": "Your account has been deleted",
+    "greeting": "Hi {name}!",
+    "userRequest": "Your account and all servers on it have been permanently deleted, as you asked. There is nothing left to restore.",
+    "inactivity": "Your account had been inactive for a long time, so it and all servers on it have been permanently deleted. There is nothing left to restore.",
+    "retained": "We are required to keep your invoices and the accounting records behind them for {years} years under German tax law. They hold no more of your data than the law requires, and they are deleted once that period ends.",
+    "farewell": "Thank you for having been a customer."
+  },
+  "confirm-identity": {
+    "title": "Your {appName} security code",
+    "preview": "Your {appName} security code",
+    "heading": "Confirm it's really you",
+    "instructions": "Enter this code to confirm a sensitive change to your {appName} account:",
+    "hint": "This code expires in 10 minutes. If you didn't ask for it, ignore this email – nothing will change."
+  },
+  "data-export-ready": {
+    "title": "Your data export is ready",
+    "preview": "Your data export is ready to download",
+    "heading": "Your data export is ready",
+    "greeting": "Hi {name}!",
+    "instructions": "Everything {appName} holds about you is ready to download ({size}). The file is a PDF: it can be read as a document, and it carries your full records as JSON plus a copy of every invoice attached inside it.",
+    "download": "Download your data",
+    "passphrase": "You will need the passphrase shown when you asked for this export. We do not send it by email, and we cannot recover it - if you no longer have it, simply request a new export.",
+    "expiry": "This download expires in {days} days, after which the file is deleted."
+  },
   "email-updated": {
     "title": "Η διεύθυνση email σου άλλαξε",
     "preview": "Η διεύθυνση email σου ενημερώθηκε",
