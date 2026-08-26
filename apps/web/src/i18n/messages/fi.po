@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Finnish\n"
-"PO-Revision-Date: 2026-08-26 09:39\n"
+"PO-Revision-Date: 2026-08-26 13:44\n"
 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 #: ../../packages/integration-discord/src/features/servers/messages.ts
@@ -493,7 +493,7 @@ msgstr "Valitse käyttöjärjestelmä"
 #: ../../packages/integration-discord/src/ui/confirm.ts
 msgctxt "discord-integration"
 msgid "47FYwb"
-msgstr "Peruuttaa"
+msgstr "Peruuta"
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration"
@@ -2055,6 +2055,10 @@ msgstr "Tili"
 msgid "96Us9V"
 msgstr "ISO-levykuvat"
 
+#: src/features/account/components/account-nav.tsx
+msgid "cXBJ7U"
+msgstr "Tietosuoja"
+
 #: src/features/account/components/api-keys/api-keys-card.tsx
 msgid "jSp63j"
 msgstr "API-avaimet"
@@ -2114,7 +2118,9 @@ msgstr "Luo API-avain"
 #: src/features/account/components/authentication/confirm-password-dialog.tsx
 #: src/features/account/components/authentication/two-factor-enable-dialog.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
+#: src/features/account/components/privacy/delete-account-card.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
+#: src/features/account/components/step-up-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
@@ -2133,7 +2139,7 @@ msgstr "Luo API-avain"
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/ui/feedback-button.tsx
 msgid "47FYwb"
-msgstr "Peruuttaa"
+msgstr "Peruuta"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 msgid "fnMCvo"
@@ -2213,6 +2219,7 @@ msgid "vfG-nh"
 msgstr "Vahvista salasana"
 
 #: src/features/account/components/authentication/confirm-password-dialog.tsx
+#: src/features/account/components/step-up-dialog.tsx
 #: src/features/auth/components/email-sign-in.tsx
 #: src/features/auth/components/register/signup-email.tsx
 #: src/features/auth/components/reset-password-form.tsx
@@ -2248,6 +2255,7 @@ msgid "sDHrPA"
 msgstr "Skannaa QR-koodi tunnistautumissovelluksellasi. Syötä 6-numeroinen koodi viimeistelläksesi määrityksen, tai kopioi salaisuus, jos et voi skannata sitä."
 
 #: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+#: src/features/account/components/step-up-dialog.tsx
 #: src/features/auth/components/register/verify-email-form.tsx
 #: src/features/auth/components/verify-totp-form.tsx
 msgid "poE3OD"
@@ -2493,6 +2501,176 @@ msgstr "Vahvistettu"
 msgid "vnJUHh"
 msgstr "Julkaistu {date}"
 
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "KDZ1Pc"
+msgstr "Valmistellaan vientiäsi"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "_BDDTA"
+msgstr "Vientisi on valmis"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "KaoBdh"
+msgstr "Vientiäsi ei voitu luoda"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "UbALz0"
+msgstr "Vientisi on vanhentunut"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "vAr8U1"
+msgstr "Olet jo pyytänyt vientiä tänään. Yritä uudelleen huomenna."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+#: src/features/account/components/privacy/delete-account-card.tsx
+#: src/features/admin/components/integrations/integration-enable-button.tsx
+#: src/features/admin/components/integrations/integration-health-panel.tsx
+#: src/features/admin/components/integrations/integration-settings-form.tsx
+msgid "iuY8kx"
+msgstr "Jokin meni pieleen."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "OTYJAd"
+msgstr "Lataa tietosi"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "DnvVkK"
+msgstr "Pyydä kopio kaikesta, mitä tilistäsi on tallennettu, mukaan lukien PDF jokaisesta laskusta."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "DwA2gI"
+msgstr "Tallenna tämä salalause nyt"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "4orXO9"
+msgstr "Salalause kopioitu leikepöydälle!"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "tCrTYF"
+msgstr "Se avaa vientisi. Emme koskaan lähetä sitä sähköpostilla emmekä voi palauttaa sitä."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+#: src/features/dashboard/components/latest-invoices-list.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
+msgid "5q3qC0"
+msgstr "Lataa"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "andgeM"
+msgstr "{size}, saatavilla {date} asti"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "kK8l5a"
+msgstr "Yritä uudelleen tai ota yhteyttä tukeen."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "1A1Bpg"
+msgstr "Pyydetty {date}"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "dPn4sW"
+msgstr "Ei vientejä"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "Q9wr5F"
+msgstr "Et ole vielä pyytänyt vientiä tiedoistasi."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "BT534u"
+msgstr "Vientisi on salattu salalauseella, joka näytetään vain kerran."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "nOJeeA"
+msgstr "Pyydä vientiä"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "2Bj17g"
+msgstr "Vahvista sähköpostistasi."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "QTuT5V"
+msgstr "Maksa ensin avoimet laskusi."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "ja8jXT"
+msgstr "Poista tilisi"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "b3A411"
+msgstr "Sulkee tilisi pysyvästi ja poistaa kaikki sen palvelimet."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "qo_2co"
+msgstr "Tiliäsi poistetaan parhaillaan. Tätä ei voi enää pysäyttää."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "gw1VWq"
+msgstr "Kaikki poistetaan {date}. Voit vielä pysäyttää tämän."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "hpbtvd"
+msgstr "Sinulla on {count} maksamatonta laskua. Maksa ne ennen tilisi poistamista."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "i0KRJm"
+msgstr "Tilausta käsitellään edelleen. Tämä kestää yleensä muutaman minuutin."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "5LJNAt"
+msgstr "Palvelimesi"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "jqgj41"
+msgstr "{count} palvelinta poistetaan kaikkine tietoineen."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "H9DYw5"
+msgstr "Laskusi"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "hsIXhM"
+msgstr "Säilytetään {years} vuotta Saksan verolain vaatimusten mukaisesti. Ei mitään muuta."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "YgBqtj"
+msgstr "Harkinta-aikasi"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "4_kCYt"
+msgstr "{days} päivää muuttaa mielesi sähköpostivahvistuksen jälkeen."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "L42DOm"
+msgstr "Pelkkä kirjautuminen ei pysäytä tätä."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "c1QnT4"
+msgstr "Lähetämme sinulle ensin linkin. Mitään ei poisteta ennen kuin käytät sitä."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "qP4p8K"
+msgstr "Tilisi säilytetään."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "HB1He6"
+msgstr "Säilytä tilini"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "bbcaZO"
+msgstr "Poista tilini"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "UWklwU"
+msgstr "Lähetä minulle linkki"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "gaaCtO"
+msgstr "Lähetämme sinulle vahvistuslinkin sähköpostitse. Mitään ei poisteta ennen kuin käytät sitä."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "JK_HtK"
+msgstr "Kirjoita {phrase} jatkaaksesi"
+
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 msgid "KdsDOJ"
 msgstr "Luo SSH-avain"
@@ -2516,6 +2694,71 @@ msgstr "Ei SSH-avaimia"
 #: src/features/account/components/ssh-keys/ssh-keys-list.tsx
 msgid "6NcUU3"
 msgstr "SSH-avaimia ei ole vielä luotu."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "QNEwZD"
+msgstr "Salasana ei ole oikein."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "8wA5QT"
+msgstr "Emme voineet vahvistaa pääsyavaintasi."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "cQyeNU"
+msgstr "Koodia ei voitu lähettää. Yritä uudelleen."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "DwmHiL"
+msgstr "Lähetimme koodin sähköpostiosoitteeseesi."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "DQ_MLC"
+msgstr "Vahvista, että se olet sinä"
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "cyR7Kh"
+msgstr "Takaisin"
+
+#: src/features/account/components/step-up-dialog.tsx
+#: src/ui/feedback-button.tsx
+msgid "N2IrpM"
+msgstr "Vahvista"
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "16QY49"
+msgstr "Syötä salasanasi jatkaaksesi."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "EDR6i9"
+msgstr "Syötä 6-numeroinen koodi, jonka lähetimme sähköpostiisi."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "8KhNLL"
+msgstr "Tätä vaihetta ei voi perua, joten varmistamme, että se todella olet sinä."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "6UZgtI"
+msgstr "Salasana, jolla kirjaudut sisään."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "yqpcOa"
+msgstr "Käytä"
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "WYATYp"
+msgstr "Pääsyavain"
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "zLKYml"
+msgstr "Sormenjälkesi, kasvosi tai suojausavaimesi."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "qJvq7M"
+msgstr "Sähköpostikoodi"
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "9WRlF4"
+msgstr "Lähetä"
 
 #: src/features/account/components/user-email-card.tsx
 msgid "NMQtEq"
@@ -2589,120 +2832,6 @@ msgstr "Uusi salasana"
 #: src/features/account/components/user-password-card.tsx
 msgid "6admx4"
 msgstr "Käytä vähintään 8 merkkiä, yhtä isoa kirjainta, yhtä pientä kirjainta ja yhtä numeroa."
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "QZwgMJ"
-msgstr "Käyttäjätietoraportti"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "g26DD9"
-msgstr "Raporttiedot"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "NJOMwI"
-msgstr "Viennin aikaleima:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "To1Yq6"
-msgstr "Käyttäjätiedot"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "tmcdrp"
-msgstr "Tunnus:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "9ANu2O"
-msgstr "Näyttönimi:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "xpTPb3"
-msgstr "Sähköposti:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "axPF0j"
-msgstr "Sähköposti vahvistettu:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-#: src/features/admin/components/users/users-table/columns.tsx
-msgid "a5msuh"
-msgstr "Kyllä"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-#: src/features/admin/components/users/users-table/columns.tsx
-msgid "oUWADl"
-msgstr "Ei"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "fiNfmb"
-msgstr "Kieli:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "Ur-SeM"
-msgstr "Stripe-tunnus:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "vxMnwH"
-msgstr "Rekisteröitymispäivä:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "iXH4ox"
-msgstr "Viimeisin muutos:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "MEekj5"
-msgstr "Istuntotiedot"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "RQPliO"
-msgstr "Istuntoja ei ole tallennettu."
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "_7I9Fi"
-msgstr "IP-osoite:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "uK95OQ"
-msgstr "User-Agent:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "njqGJJ"
-msgstr "Linkitetyt tilit"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "nuEHW2"
-msgstr "Linkitettyjä tilejä ei ole tallennettu."
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "w6rwdu"
-msgstr "Palveluntarjoajan tunnus:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "a2VLth"
-msgstr "Käyttöoikeudet:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "71lPLk"
-msgstr "Luontipäivä:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "vtStU2"
-msgstr "Maksuhistoria"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "iPmh1t"
-msgstr "Veloituksia ei ole tallennettu."
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "C43FrR"
-msgstr "Määrä:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "3fVD9R"
-msgstr "Tila:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "BIoIM3"
-msgstr "Laskutustiedot:"
 
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "UcHtCB"
@@ -3119,12 +3248,6 @@ msgstr "Lue dokumentaatio"
 #: src/features/admin/components/integrations/integration-detail.tsx
 msgid "ZLrvCJ"
 msgstr "Tässä integraatiossa ei ole mitään määritettävää."
-
-#: src/features/admin/components/integrations/integration-enable-button.tsx
-#: src/features/admin/components/integrations/integration-health-panel.tsx
-#: src/features/admin/components/integrations/integration-settings-form.tsx
-msgid "iuY8kx"
-msgstr "Jokin meni pieleen."
 
 #: src/features/admin/components/integrations/integration-enable-button.tsx
 msgid "Rw7iI7"
@@ -3703,6 +3826,14 @@ msgid "DC8-TO"
 msgstr "Sähköposti vahvistettu"
 
 #: src/features/admin/components/users/users-table/columns.tsx
+msgid "a5msuh"
+msgstr "Kyllä"
+
+#: src/features/admin/components/users/users-table/columns.tsx
+msgid "oUWADl"
+msgstr "Ei"
+
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "hQZhn8"
 msgstr "Esiintyä"
 
@@ -4029,11 +4160,6 @@ msgstr "Ei laskuja"
 #: src/features/dashboard/components/latest-invoices-list.tsx
 msgid "GtDccr"
 msgstr "Laskuja ei ole vielä lähetetty."
-
-#: src/features/dashboard/components/latest-invoices-list.tsx
-#: src/features/invoices/components/invoices-table/columns.tsx
-msgid "5q3qC0"
-msgstr "Lataa"
 
 #: src/features/dashboard/components/latest-servers-card.tsx
 msgid "2AizOe"
@@ -5191,10 +5317,6 @@ msgstr "Lisää kuvakaappaus"
 #: src/ui/feedback-button.tsx
 msgid "wSZR47"
 msgstr "Lähetä"
-
-#: src/ui/feedback-button.tsx
-msgid "N2IrpM"
-msgstr "Vahvistaa"
 
 #: src/ui/feedback-button.tsx
 msgid "T7Ry38"
