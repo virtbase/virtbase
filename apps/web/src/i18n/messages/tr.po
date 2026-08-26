@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Turkish\n"
-"PO-Revision-Date: 2026-08-25 22:23\n"
+"PO-Revision-Date: 2026-08-26 09:39\n"
 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 #: ../../packages/integration-discord/src/features/servers/messages.ts
@@ -3630,6 +3630,17 @@ msgid "3JxaKs"
 msgstr "Şablon"
 
 #: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/checkout/components/checkout-form.tsx
+#: src/features/servers/components/backups/backups-table/columns.tsx
+#: src/features/servers/components/overview/server-details-card.tsx
+msgid "t2uvIi"
+msgstr "İşletim Sistemi"
+
+#: src/features/admin/components/servers/servers-table/columns.tsx
+msgid "ZIaeH7"
+msgstr "Sunucunun içinden okunmadı"
+
+#: src/features/admin/components/servers/servers-table/columns.tsx
 msgid "EwRIOm"
 msgstr "Kullanıcı"
 
@@ -3853,12 +3864,6 @@ msgstr "Oturum aç"
 #: src/features/checkout/components/checkout-form.tsx
 msgid "7OW8BT"
 msgstr "Yapılandırma"
-
-#: src/features/checkout/components/checkout-form.tsx
-#: src/features/servers/components/backups/backups-table/columns.tsx
-#: src/features/servers/components/overview/server-details-card.tsx
-msgid "t2uvIi"
-msgstr "İşletim Sistemi"
 
 #: src/features/checkout/components/checkout-form.tsx
 msgid "hE8w_g"
@@ -4481,16 +4486,32 @@ msgid "F_6VqP"
 msgstr "Sunucu"
 
 #: src/features/servers/components/overview/server-details-card.tsx
-msgid "4A__XV"
-msgstr "Özel Resim"
-
-#: src/features/servers/components/overview/server-details-card.tsx
 msgid "RTw2Xk"
 msgstr "Düğüm Ayrıntılarını Görüntüle"
 
 #: src/features/servers/components/overview/server-details-card.tsx
 msgid "8O64Ol"
 msgstr "İşletim Sistemini Değiştir"
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "13DVxF"
+msgstr "Bu sunucunun içinden okundu {when}."
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "OwWZ_b"
+msgstr "Bu sunucunun içinden okundu."
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "8WvXOD"
+msgstr "{template} üzerinden kuruldu."
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "wlld4G"
+msgstr "Bağlı imajdan alındı. Virtbase'in işletim sistemini sunucunuzun içinden okuyabilmesi için {packageName} paketini kurun."
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "lxp8MB"
+msgstr "Bu sunucunun oluşturulduğu şablondan alındı. Virtbase'in işletim sistemini sunucunuzun içinden okuyabilmesi için {packageName} paketini kurun."
 
 #: src/features/servers/components/plan/plan-form.tsx
 msgid "Kng3Em"
