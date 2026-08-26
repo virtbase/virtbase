@@ -17,6 +17,7 @@
 
 import { captureException } from "@sentry/core";
 import { db } from "@virtbase/db/client";
+import { touchLastSeen } from "@virtbase/db/queries";
 import * as schema from "@virtbase/db/schema";
 import { createId } from "@virtbase/db/utils";
 import { sendEmail } from "@virtbase/email";
@@ -121,6 +122,22 @@ export function initAuth({
         update: {
           after: async (account, ctx) => {
             await notifyAccountLinked(account, ctx, onAccountLinked);
+          },
+        },
+      },
+      session: {
+        create: {
+          after: async (session) => {
+            // Signing in is the clearest possible activity signal, and the one
+            // that has to call off a pending inactivity deletion.
+            await touchLastSeen(db, session.userId);
+          },
+        },
+        update: {
+          after: async (session) => {
+            // Fires on refresh, which is what keeps a long-lived browser
+            // session counting as activity rather than only its first minute.
+            if (session.userId) await touchLastSeen(db, session.userId);
           },
         },
       },

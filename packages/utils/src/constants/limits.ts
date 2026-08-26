@@ -68,3 +68,90 @@ export const TEMPLATE_IMAGE_REFRESH_DAYS = 7;
  * not finished within this has not survived the node's task index either.
  */
 export const TEMPLATE_IMAGE_STALE_AFTER_HOURS = 6;
+
+/**
+ * How long a re-authentication counts for.
+ *
+ * Sensitive actions - deleting the account, exporting every record we hold -
+ * require the customer to prove who they are again, and this is the width of
+ * the window that proof opens. Short enough that a walked-away-from laptop is
+ * not a standing authorisation, long enough to read a confirmation dialog and
+ * think about it.
+ *
+ * [!] This is deliberately *not* Better Auth's `session.freshAge`. That option
+ * is measured from the session's creation and never refreshes, and it gates
+ * `/list-sessions`, `/unlink-account` and passkey registration - none of which
+ * we want to restrict. See `packages/api/src/step-up`.
+ */
+export const STEP_UP_WINDOW_SECONDS = 10 * 60; // 10 minutes
+
+/**
+ * How long invoices and the booking documents behind them are kept after an
+ * account is erased.
+ *
+ * German tax and commercial law, counted from the end of the calendar year the
+ * document was issued. This is why erasure is anonymisation rather than
+ * deletion: the `users` row has to survive as a tombstone so these keep a
+ * valid foreign key. Once the window closes, the retention sweep takes the
+ * invoices and finally the tombstone with them.
+ */
+export const INVOICE_RETENTION_YEARS = 10;
+
+/**
+ * How long a finished data export stays downloadable.
+ *
+ * An export is a complete dossier on one person, so it is deliberately
+ * short-lived. Long enough to survive a weekend, short enough that a forgotten
+ * download link is not a standing liability.
+ */
+export const DATA_EXPORT_TTL_DAYS = 7;
+
+/**
+ * The shortest interval between two exports for the same customer.
+ *
+ * Article 12(5) permits refusing manifestly excessive repeat requests, and an
+ * unbounded export endpoint is a denial-of-service vector against the
+ * accounting provider's API as much as against us.
+ */
+export const DATA_EXPORT_MIN_INTERVAL_HOURS = 24;
+
+/** Length of the generated passphrase that opens an export. */
+export const DATA_EXPORT_PASSPHRASE_LENGTH = 24;
+
+/**
+ * How long an account sits scheduled before it is actually erased.
+ *
+ * The window in which a customer can change their mind - and, more to the
+ * point, in which someone whose account was taken over still receives the
+ * warning emails and can stop it. Short enough that "delete my account" does
+ * not feel like a suggestion.
+ */
+export const ACCOUNT_DELETION_GRACE_PERIOD_DAYS = 14;
+
+/**
+ * How long the emailed confirmation link stays valid.
+ *
+ * The link proves control of the mailbox, which is the one thing a stolen
+ * session cannot supply.
+ */
+export const ACCOUNT_DELETION_TOKEN_TTL_HOURS = 24;
+
+/**
+ * How long an account must go untouched before it is considered abandoned.
+ *
+ * The clock only starts once there is nothing left to bill: an account with a
+ * server is a customer with an unusual workflow, not an abandoned account, no
+ * matter how long since they last opened the dashboard.
+ */
+export const ACCOUNT_INACTIVITY_MONTHS = 6;
+
+/**
+ * How long an abandoned account is given after being told.
+ *
+ * Longer than the grace period for a deletion someone asked for, because this
+ * one arrives unrequested and has to survive a holiday.
+ */
+export const ACCOUNT_INACTIVITY_GRACE_PERIOD_DAYS = 30;
+
+/** How long before the deadline the second notice goes out. */
+export const ACCOUNT_INACTIVITY_REMINDER_DAYS = 7;

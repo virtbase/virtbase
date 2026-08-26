@@ -35,6 +35,7 @@ const handler = async (req: NextRequest) => {
         authApi: {
           verifyApiKey: auth.api.verifyApiKey,
           getSession: auth.api.getSession,
+          verifyPassword: auth.api.verifyPassword,
         },
         headers: req.headers,
         setHeader: (k, v) => (rateLimitHeaders[k] = v),

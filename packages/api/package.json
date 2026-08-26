@@ -27,6 +27,10 @@
       "types": "./dist/orders.d.ts",
       "default": "./src/orders/index.ts"
     },
+    "./privacy": {
+      "types": "./dist/privacy/index.d.ts",
+      "default": "./src/privacy/index.ts"
+    },
     "./proxmox": {
       "types": "./dist/proxmox.d.ts",
       "default": "./src/proxmox/index.ts"
@@ -76,6 +80,7 @@
     "@virtbase/utils": "workspace:*",
     "@virtbase/validators": "workspace:*",
     "ai": "7.0.55",
+    "pdfkit": "^0.19.1",
     "proxmox-api": "catalog:",
     "server-only": "^0.0.1",
     "superjson": "catalog:",
@@ -90,6 +95,7 @@
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:",
+    "@types/pdfkit": "^0.17.6",
     "@virtbase/tsconfig": "workspace:*",
     "typescript": "catalog:"
   }

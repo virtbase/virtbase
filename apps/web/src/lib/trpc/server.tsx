@@ -35,6 +35,7 @@ const createContext = cache(async () => {
     authApi: {
       verifyApiKey: auth.api.verifyApiKey,
       getSession: auth.api.getSession,
+      verifyPassword: auth.api.verifyPassword,
     },
   });
 });

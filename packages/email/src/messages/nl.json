@@ -1,4 +1,79 @@
 {
+  "account-inactivity-notice": {
+    "title": "Je account wordt verwijderd tenzij je inlogt",
+    "preview": "Je inactieve account staat gepland voor verwijdering",
+    "heading": "We gaan je account verwijderen",
+    "greeting": "Hoi {name}!",
+    "instructions": "Je hebt je {appName}-account al {months} maanden niet gebruikt en er draait niets op, dus staat het gepland voor verwijdering op {date}.",
+    "stop": "Even inloggen is genoeg om het te behouden. Meer is niet nodig.",
+    "cta": "Inloggen en mijn account behouden",
+    "download": "Wil je liever eerst een kopie van je gegevens? Die kun je tot die datum vanuit je account downloaden."
+  },
+  "account-inactivity-reminder": {
+    "title": "Laatste herinnering: je account wordt verwijderd op {date}",
+    "preview": "Laatste herinnering voordat je account wordt verwijderd",
+    "heading": "Laatste herinnering",
+    "greeting": "Hoi {name}!",
+    "instructions": "Je {appName}-account wordt op {date} definitief verwijderd. Dit is de laatste e-mail hierover.",
+    "stop": "Inloggen behoudt je account. Meer is niet nodig.",
+    "cta": "Inloggen en mijn account behouden"
+  },
+  "account-deletion-requested": {
+    "title": "Bevestig het verwijderen van je account",
+    "preview": "Bevestig het verwijderen van je account",
+    "heading": "Bevestig het verwijderen van je account",
+    "greeting": "Hoi {name}!",
+    "instructions": "Je hebt gevraagd om je {appName}-account te verwijderen. Er is nog niets gebeurd - bevestig het met de knop hieronder.",
+    "confirm": "Verwijderen bevestigen",
+    "consequences": "Na bevestiging heb je {days} dagen om je te bedenken. Daarna worden je account en alle servers daarop definitief verwijderd.",
+    "ignore": "Heb je dit niet aangevraagd? Negeer deze e-mail en wijzig je wachtwoord. Er wordt niets verwijderd.",
+    "expiry": "Deze link verloopt over {hours} uur."
+  },
+  "account-deletion-scheduled": {
+    "title": "Je account wordt verwijderd op {date}",
+    "preview": "Je account staat gepland voor verwijdering",
+    "heading": "Je account staat gepland voor verwijdering",
+    "greeting": "Hoi {name}!",
+    "instructions": "Je {appName}-account en alle servers daarop worden op {date} definitief verwijderd.",
+    "stop": "Toch bedacht? Je kunt dit tot die datum op elk moment stoppen.",
+    "cancel": "Mijn account behouden",
+    "download": "Wil je een kopie van je gegevens? Download die vóór die datum - daarna is ze weg."
+  },
+  "account-deletion-cancelled": {
+    "title": "Je account wordt niet verwijderd",
+    "preview": "Het verwijderen van je account is geannuleerd",
+    "heading": "Je account wordt niet verwijderd",
+    "greeting": "Hoi {name}!",
+    "instructions": "Het verwijderen van je {appName}-account is geannuleerd. Er is niets verwijderd en alles werkt zoals voorheen.",
+    "hint": "Heb jij dit niet geannuleerd? Wijzig je wachtwoord en neem contact op met support."
+  },
+  "account-deleted": {
+    "title": "Je account is verwijderd",
+    "preview": "Je Virtbase-account is verwijderd",
+    "heading": "Je account is verwijderd",
+    "greeting": "Hoi {name}!",
+    "userRequest": "Je account en alle servers daarop zijn definitief verwijderd, zoals je had gevraagd. Er valt niets meer te herstellen.",
+    "inactivity": "Je account was lange tijd niet gebruikt en is daarom samen met alle servers definitief verwijderd. Er valt niets meer te herstellen.",
+    "retained": "We zijn volgens de Duitse belastingwetgeving verplicht je facturen en de bijbehorende boekstukken {years} jaar te bewaren. Ze bevatten niet meer gegevens dan de wet vereist en worden na die periode verwijderd.",
+    "farewell": "Bedankt dat je klant was."
+  },
+  "confirm-identity": {
+    "title": "Je {appName}-beveiligingscode",
+    "preview": "Je {appName}-beveiligingscode",
+    "heading": "Bevestig dat jij het echt bent",
+    "instructions": "Voer deze code in om een gevoelige wijziging aan je {appName}-account te bevestigen:",
+    "hint": "Deze code verloopt over 10 minuten. Als je er niet om hebt gevraagd, negeer dan deze e-mail – er verandert niets."
+  },
+  "data-export-ready": {
+    "title": "Je gegevensexport is klaar",
+    "preview": "Je gegevensexport staat klaar om te downloaden",
+    "heading": "Je gegevensexport is klaar",
+    "greeting": "Hoi {name}!",
+    "instructions": "Alles wat {appName} over je bewaart, staat klaar om te downloaden ({size}). Het bestand is een pdf: je kunt het als document lezen, en het bevat daarnaast je volledige gegevens als JSON en een kopie van elke factuur.",
+    "download": "Mijn gegevens downloaden",
+    "passphrase": "Je hebt de wachtwoordzin nodig die werd getoond toen je deze export aanvroeg. We sturen die niet per e-mail en kunnen hem niet herstellen – als je hem niet meer hebt, vraag dan gewoon een nieuwe export aan.",
+    "expiry": "Deze download verloopt over {days} dagen, daarna wordt het bestand verwijderd."
+  },
   "email-updated": {
     "title": "Je e-mailadres is gewijzigd",
     "preview": "Je e-mailadres is bijgewerkt",

@@ -50,6 +50,14 @@ export function getEmailMessages(locale?: string | null) {
 
 export async function getEmailTitle(
   key:
+    | "account-deleted"
+    | "account-deletion-cancelled"
+    | "account-deletion-requested"
+    | "account-deletion-scheduled"
+    | "account-inactivity-notice"
+    | "account-inactivity-reminder"
+    | "confirm-identity"
+    | "data-export-ready"
     | "email-updated"
     | "invoice-created"
     | "login-link"

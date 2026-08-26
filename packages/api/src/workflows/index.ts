@@ -18,12 +18,18 @@
 export * from "./change-template";
 export * from "./create-invoice";
 export * from "./delete-server";
+export * from "./delete-server/reset-pointer-records";
+export * from "./delete-server/store-server-deletion";
+export * from "./export-user-data";
 export * from "./extend-server";
+export * from "./offboard-user";
 export * from "./provision-server";
 export * from "./restore-server-backup";
 // Shared steps are exported so the dev verification scripts can drive the real
 // step implementations rather than a reimplementation of them.
 export * from "./shared/apply-cloud-init";
 export * from "./shared/create-guest-from-image";
+export * from "./shared/delete-one-server";
+export * from "./shared/destroy-guest";
 export * from "./shared/get-template";
 export * from "./upgrade-server";

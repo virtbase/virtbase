@@ -1,4 +1,79 @@
 {
+  "account-inactivity-notice": {
+    "title": "Dein Konto wird gelöscht, wenn du dich nicht anmeldest",
+    "preview": "Dein inaktives Konto ist zur Löschung vorgemerkt",
+    "heading": "Wir löschen bald dein Konto",
+    "greeting": "Hallo {name}!",
+    "instructions": "Du hast dein {appName}-Konto seit {months} Monaten nicht genutzt und es läuft nichts darauf, deshalb ist es zum {date} zur Löschung vorgemerkt.",
+    "stop": "Eine Anmeldung genügt, um es zu behalten. Mehr ist nicht nötig.",
+    "cta": "Anmelden und Konto behalten",
+    "download": "Wenn du vorher lieber eine Kopie deiner Daten möchtest, kannst du sie bis dahin in deinem Konto herunterladen."
+  },
+  "account-inactivity-reminder": {
+    "title": "Letzte Erinnerung: Dein Konto wird am {date} gelöscht",
+    "preview": "Letzte Erinnerung vor der Löschung deines Kontos",
+    "heading": "Letzte Erinnerung",
+    "greeting": "Hallo {name}!",
+    "instructions": "Dein {appName}-Konto wird am {date} endgültig gelöscht. Dies ist die letzte E-Mail dazu.",
+    "stop": "Eine Anmeldung erhält dein Konto. Mehr ist nicht nötig.",
+    "cta": "Anmelden und Konto behalten"
+  },
+  "account-deletion-requested": {
+    "title": "Bestätige die Löschung deines Kontos",
+    "preview": "Bestätige die Löschung deines Kontos",
+    "heading": "Bestätige die Löschung deines Kontos",
+    "greeting": "Hallo {name}!",
+    "instructions": "Du hast die Löschung deines {appName}-Kontos angefordert. Bisher ist nichts passiert – bestätige sie über die Schaltfläche unten.",
+    "confirm": "Löschung bestätigen",
+    "consequences": "Nach der Bestätigung hast du {days} Tage Zeit, es dir anders zu überlegen. Danach werden dein Konto und alle darauf laufenden Server endgültig gelöscht.",
+    "ignore": "Falls du das nicht angefordert hast, ignoriere diese E-Mail und ändere dein Passwort. Es wird nichts gelöscht.",
+    "expiry": "Dieser Link läuft in {hours} Stunden ab."
+  },
+  "account-deletion-scheduled": {
+    "title": "Dein Konto wird am {date} gelöscht",
+    "preview": "Dein Konto ist zur Löschung vorgemerkt",
+    "heading": "Dein Konto ist zur Löschung vorgemerkt",
+    "greeting": "Hallo {name}!",
+    "instructions": "Dein {appName}-Konto und alle darauf laufenden Server werden am {date} endgültig gelöscht.",
+    "stop": "Anders überlegt? Du kannst das bis dahin jederzeit stoppen.",
+    "cancel": "Konto behalten",
+    "download": "Wenn du eine Kopie deiner Daten möchtest, lade sie vor diesem Datum herunter – danach ist sie weg."
+  },
+  "account-deletion-cancelled": {
+    "title": "Dein Konto wird nicht gelöscht",
+    "preview": "Die Löschung deines Kontos wurde abgebrochen",
+    "heading": "Dein Konto wird nicht gelöscht",
+    "greeting": "Hallo {name}!",
+    "instructions": "Die Löschung deines {appName}-Kontos wurde abgebrochen. Es wurde nichts entfernt und alles funktioniert wie zuvor.",
+    "hint": "Falls nicht du den Abbruch veranlasst hast, ändere dein Passwort und wende dich an den Support."
+  },
+  "account-deleted": {
+    "title": "Dein Konto wurde gelöscht",
+    "preview": "Dein Virtbase-Konto wurde gelöscht",
+    "heading": "Dein Konto wurde gelöscht",
+    "greeting": "Hallo {name}!",
+    "userRequest": "Dein Konto und alle darauf laufenden Server wurden wie gewünscht endgültig gelöscht. Es gibt nichts mehr wiederherzustellen.",
+    "inactivity": "Dein Konto war lange Zeit inaktiv und wurde daher zusammen mit allen darauf laufenden Servern endgültig gelöscht. Es gibt nichts mehr wiederherzustellen.",
+    "retained": "Deine Rechnungen und die zugehörigen Buchungsbelege müssen wir nach deutschem Steuerrecht {years} Jahre aufbewahren. Sie enthalten nicht mehr Daten als gesetzlich erforderlich und werden nach Ablauf dieser Frist gelöscht.",
+    "farewell": "Danke, dass du Kunde warst."
+  },
+  "confirm-identity": {
+    "title": "Dein {appName} Sicherheitscode",
+    "preview": "Dein {appName} Sicherheitscode",
+    "heading": "Bestätige, dass du es wirklich bist",
+    "instructions": "Gib diesen Code ein, um eine sicherheitsrelevante Änderung an deinem {appName}-Konto zu bestätigen:",
+    "hint": "Dieser Code läuft in 10 Minuten ab. Wenn du ihn nicht angefordert hast, ignoriere diese E-Mail – es ändert sich nichts."
+  },
+  "data-export-ready": {
+    "title": "Dein Datenexport ist bereit",
+    "preview": "Dein Datenexport steht zum Download bereit",
+    "heading": "Dein Datenexport ist bereit",
+    "greeting": "Hallo {name}!",
+    "instructions": "Alles, was {appName} über dich gespeichert hat, steht zum Download bereit ({size}). Die Datei ist ein PDF: Du kannst sie als Dokument lesen, und sie enthält zusätzlich deine vollständigen Daten als JSON sowie eine Kopie jeder Rechnung.",
+    "download": "Daten herunterladen",
+    "passphrase": "Du benötigst die Passphrase, die dir beim Anfordern des Exports angezeigt wurde. Wir versenden sie nicht per E-Mail und können sie nicht wiederherstellen – falls du sie nicht mehr hast, fordere einfach einen neuen Export an.",
+    "expiry": "Der Download läuft in {days} Tagen ab, danach wird die Datei gelöscht."
+  },
   "email-updated": {
     "title": "Deine E-Mail-Adresse wurde geändert",
     "preview": "Deine E-Mail-Adresse wurde aktualisiert",

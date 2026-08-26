@@ -19,4 +19,5 @@ export * from "./build-order-by";
 export * from "./create-id";
 export * from "./escaped-ilike";
 export * from "./get-date-interval-filter";
+export * from "./table-columns";
 export * from "./types";

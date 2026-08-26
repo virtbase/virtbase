@@ -22,6 +22,7 @@ import { buttonVariants } from "@virtbase/ui/button";
 import {
   LucideCreditCard,
   LucideDisc3,
+  LucideFileLock,
   LucideLock,
   LucideTerminal,
   LucideUser,
@@ -66,6 +67,11 @@ const useItems = () => {
       title: t("ISO Images"),
       path: paths.app.account.settings.customImages,
       icon: LucideDisc3,
+    },
+    {
+      title: t("Privacy"),
+      path: paths.app.account.settings.privacy,
+      icon: LucideFileLock,
     },
   ] as const;
 };

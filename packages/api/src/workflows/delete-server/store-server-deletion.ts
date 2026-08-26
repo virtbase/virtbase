@@ -61,7 +61,14 @@ export async function storeServerDeletionStep({
     },
   );
 
-  revalidateTag("checkout", "max");
+  try {
+    revalidateTag("checkout", "max");
+  } catch {
+    // A cache hint, not part of the deletion. `revalidateTag` needs Next's
+    // static generation store, which exists when a workflow step runs behind a
+    // route but not when the step is called from a script - and a stale plan
+    // listing is not a reason to fail a deletion whose disks are already gone.
+  }
 
   return {
     serverName: result.name,

@@ -58,6 +58,10 @@ const prefixes = [
   "otr_", // order status transition
   "pay_", // payment
   "pev_", // payment provider event
+  // Privacy
+  "adt_", // account deletion token
+  "exp_", // data export
+  "erl_", // erasure log entry
 ] as const;
 
 // ULID uses base32 encoding

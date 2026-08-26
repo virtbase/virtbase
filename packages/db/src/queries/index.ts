@@ -18,3 +18,4 @@
 export * from "./get-available-subnet";
 export * from "./get-plans-with-availability";
 export * from "./pick-best-discount";
+export * from "./touch-last-seen";

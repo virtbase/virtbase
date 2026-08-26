@@ -19,6 +19,18 @@ import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
 import { createId } from "../utils";
 
+/**
+ * Who started the clock on an account's deletion.
+ *
+ * Lives here rather than in `privacy.ts` because `users` is what carries it;
+ * the privacy tables import it from this side to avoid a circular module.
+ */
+export const accountDeletionReasonEnum = d.pgEnum("account_deletion_reasons", [
+  "inactivity",
+  "user_request",
+  "admin_request",
+]);
+
 export const users = d.snakeCase.table(
   "users",
   {
@@ -42,8 +54,90 @@ export const users = d.snakeCase.table(
     stripeCustomerId: d.text().unique(),
     role: d.text().notNull().default("CUSTOMER"),
     locale: d.text(),
+    // Account lifecycle
+    /**
+     * The last authenticated interaction of any kind - a session created or
+     * refreshed, an API key used.
+     *
+     * The input to the inactivity sweep, and the reason it is a column rather
+     * than a query over `sessions`: a session only lives three days, so the
+     * table cannot answer "when was this person last here" beyond that.
+     *
+     * @default null
+     */
+    lastSeenAt: d.timestamp({ withTimezone: true, mode: "date" }),
+    /**
+     * Why this account is scheduled for deletion. Null when it is not.
+     *
+     * @default null
+     */
+    deletionReason: accountDeletionReasonEnum(),
+    /**
+     * When the seven-day reminder went out.
+     *
+     * Separate from {@link deletionNotifiedAt} so the sweep can tell "told
+     * once, weeks ago" from "told again, recently" without arithmetic on the
+     * schedule. Mirrors `servers.renewal_reminder_sent_at`.
+     *
+     * @default null
+     */
+    deletionReminderSentAt: d.timestamp({ withTimezone: true, mode: "date" }),
+    /**
+     * When the customer was told their account will be deleted.
+     *
+     * Never null while {@link deletionScheduledAt} is set - notice before
+     * action is the point of the whole mechanism.
+     *
+     * @default null
+     */
+    deletionNotifiedAt: d.timestamp({ withTimezone: true, mode: "date" }),
+    /**
+     * When the customer asked for deletion, before confirming by email.
+     *
+     * @default null
+     */
+    deletionRequestedAt: d.timestamp({ withTimezone: true, mode: "date" }),
+    /**
+     * When the emailed confirmation token was consumed. Only now does the
+     * grace period start running.
+     *
+     * @default null
+     */
+    deletionConfirmedAt: d.timestamp({ withTimezone: true, mode: "date" }),
+    /**
+     * The moment the sweep may act. The one field every deletion cron reads,
+     * whichever reason put it there.
+     *
+     * @default null
+     */
+    deletionScheduledAt: d.timestamp({ withTimezone: true, mode: "date" }),
+    /**
+     * When the offboarding workflow claimed this account.
+     *
+     * Doubles as the idempotency latch: it is set in the same transaction that
+     * starts the run, so a second sweep passing over the same row finds it
+     * taken rather than destroying the same servers twice.
+     *
+     * @default null
+     */
+    offboardingStartedAt: d.timestamp({ withTimezone: true, mode: "date" }),
+    /**
+     * Terminal. The row has been scrubbed to a tombstone and is no longer
+     * personal data; it survives only so the retained financial rows keep a
+     * valid foreign key.
+     *
+     * @default null
+     */
+    anonymizedAt: d.timestamp({ withTimezone: true, mode: "date" }),
   },
-  (t) => [d.index().on(t.email), d.index().on(t.stripeCustomerId)],
+  (t) => [
+    d.index().on(t.email),
+    d.index().on(t.stripeCustomerId),
+    // Read by the deletion sweep on every run, over a table where almost every
+    // row has NULL here - so the index only carries accounts actually queued.
+    d.index().on(t.deletionScheduledAt),
+    d.index().on(t.lastSeenAt),
+  ],
 );
 
 export const sessions = d.snakeCase.table(

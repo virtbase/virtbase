@@ -36,6 +36,18 @@
     {
       "path": "/api/cron/detect-guest-os",
       "schedule": "*/30 * * * *"
+    },
+    {
+      "path": "/api/cron/purge-expired-exports",
+      "schedule": "23 3 * * *"
+    },
+    {
+      "path": "/api/cron/offboard-scheduled-accounts",
+      "schedule": "41 2 * * *"
+    },
+    {
+      "path": "/api/cron/notify-inactive-accounts",
+      "schedule": "13 4 * * *"
     }
   ]
 }

@@ -36,6 +36,20 @@ export const relations = defineRelations(schema, (r) => ({
     orders: r.many.orders(),
     payments: r.many.payments(),
     proxmoxIsoDownloads: r.many.proxmoxIsoDownloads(),
+    accountDeletionTokens: r.many.accountDeletionTokens(),
+    dataExports: r.many.dataExports(),
+  },
+  accountDeletionTokens: {
+    user: r.one.users({
+      from: r.accountDeletionTokens.userId,
+      to: r.users.id,
+    }),
+  },
+  dataExports: {
+    user: r.one.users({
+      from: r.dataExports.userId,
+      to: r.users.id,
+    }),
   },
   sessions: {
     user: r.one.users({

@@ -17,92 +17,36 @@
 
 "use server";
 
-import type { Session } from "@virtbase/auth";
-import { and, eq, isNull } from "@virtbase/db";
+import { buildExportDocument, collectSubjectData } from "@virtbase/api/privacy";
 import { db } from "@virtbase/db/client";
-import {
-  accounts as accountsTable,
-  sessions as sessionsTable,
-} from "@virtbase/db/schema";
-import type { Stripe } from "@virtbase/integration-stripe";
-import { stripe } from "@virtbase/integration-stripe";
 import { CreateUserExportInputSchema } from "@virtbase/validators/admin";
-import { headers } from "next/headers";
-import { hasLocale } from "use-intl";
-import { defaultLocale, locales } from "@/i18n/config";
-import { auth } from "@/lib/auth/server";
 import { actionClient } from "../../lib/action-client";
-import { generateInventoryPdf } from "./generator/generate-inventory-pdf";
 
+/**
+ * Builds an admin copy of a customer's data export.
+ *
+ * The same builder and the same enumeration the customer's own export uses -
+ * an access request answered by support and one answered by the self-service
+ * page must not produce different documents. The only difference is the
+ * absence of a passphrase, which makes this the tagged PDF/A-3a variant: an
+ * archival copy rather than something travelling over the wire.
+ */
 export const createUserExportAction = actionClient
   .inputSchema(CreateUserExportInputSchema)
   .action(async ({ parsedInput, ctx }) => {
     const { user: requester } = ctx;
     const { user_id: userId } = parsedInput;
 
-    const [user, sessions, accounts] = await Promise.all([
-      auth.api.getUser({
-        query: { id: userId },
-        headers: await headers(),
-      }) as Promise<Session["user"]>,
-      db
-        .select({
-          id: sessionsTable.id,
-          ipAddress: sessionsTable.ipAddress,
-          userAgent: sessionsTable.userAgent,
-          createdAt: sessionsTable.createdAt,
-        })
-        .from(sessionsTable)
-        .where(
-          and(
-            eq(sessionsTable.userId, userId),
-            isNull(sessionsTable.impersonatedBy),
-          ),
-        )
-        .orderBy(sessionsTable.createdAt),
-      db
-        .select({
-          id: accountsTable.id,
-          accountId: accountsTable.accountId,
-          providerId: accountsTable.providerId,
-          createdAt: accountsTable.createdAt,
-          updatedAt: accountsTable.updatedAt,
-          scope: accountsTable.scope,
-        })
-        .from(accountsTable)
-        .where(eq(accountsTable.userId, userId))
-        .orderBy(accountsTable.createdAt),
-    ]);
+    const data = await collectSubjectData({ db, userId });
 
-    const userWithStripeCustomerId = user as unknown as {
-      stripeCustomerId: string;
-    };
-    let charges: Stripe.Charge[] = [];
-    if (stripe && userWithStripeCustomerId.stripeCustomerId) {
-      try {
-        charges = await stripe.charges
-          .list({
-            customer: userWithStripeCustomerId.stripeCustomerId,
-            limit: 100,
-          })
-          .then((res) => res.data)
-          .then((data) => data.sort((a, b) => b.created - a.created));
-      } catch {
-        charges = [];
-      }
-    }
-
-    const locale = hasLocale(locales, requester.locale)
-      ? requester.locale
-      : defaultLocale;
-
-    const blob = await generateInventoryPdf({
-      user,
-      sessions,
-      accounts,
-      charges,
-      locale,
+    const pdf = await buildExportDocument({
+      data,
+      // Deliberately empty. Fetching every invoice PDF is a call to the
+      // accounting provider each, which belongs in the customer's background
+      // build rather than in an admin's click.
+      invoices: [],
+      locale: requester.locale,
     });
 
-    return blob;
+    return new Blob([pdf as BlobPart], { type: "application/pdf" });
   });

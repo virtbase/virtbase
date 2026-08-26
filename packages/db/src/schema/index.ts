@@ -26,6 +26,7 @@ export * from "./invoices";
 export * from "./orders";
 export * from "./payments";
 export * from "./pointer-records";
+export * from "./privacy";
 export * from "./proxmox-iso-downloads";
 export * from "./proxmox-node-groups";
 export * from "./proxmox-nodes";

@@ -1,0 +1,101 @@
+/*
+ *   Copyright (c) 2026 Janic Bellmann
+ *
+ *   This program is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+import { Footer } from "@virtbase/email/templates/footer";
+import {
+  DEFAULT_EMAIL_LOCALE,
+  getEmailMessages,
+  resolveEmailLocale,
+} from "@virtbase/email/translations";
+import {
+  APP_NAME,
+  INVOICE_RETENTION_YEARS,
+  VIRTBASE_WORDMARK,
+} from "@virtbase/utils";
+import {
+  Body,
+  Container,
+  Head,
+  Heading,
+  Html,
+  Img,
+  Preview,
+  Section,
+  Tailwind,
+  Text,
+} from "react-email";
+import { createTranslator } from "use-intl/core";
+
+/**
+ * The last message an account ever receives.
+ *
+ * Says what was kept as well as what was destroyed. A deletion notice that
+ * only mentions the deletion invites the follow-up question of why an invoice
+ * still exists, and answering it here is both kinder and what Article 13
+ * transparency asks for.
+ */
+export default async function AccountDeleted({
+  email = "janic@virtbase.com",
+  name = "Walter White",
+  reason = "user_request",
+  locale = DEFAULT_EMAIL_LOCALE,
+}: {
+  email: string;
+  name: string;
+  reason?: "inactivity" | "user_request" | "admin_request";
+  locale?: string | null;
+}) {
+  const resolvedLocale = resolveEmailLocale(locale);
+
+  const t = createTranslator({
+    messages: getEmailMessages(resolvedLocale),
+    locale: resolvedLocale,
+    namespace: "account-deleted",
+  });
+
+  return (
+    <Html>
+      <Head />
+      <Preview>{t("preview")}</Preview>
+      <Tailwind>
+        <Body className="mx-auto my-auto bg-white font-sans">
+          <Container className="mx-auto my-10 max-w-[600px] rounded border border-neutral-200 border-solid px-10 py-5">
+            <Section className="mt-8">
+              <Img src={VIRTBASE_WORDMARK} height="32" alt={APP_NAME} />
+            </Section>
+            <Heading className="mx-0 my-7 p-0 font-medium text-black text-xl">
+              {t("heading")}
+            </Heading>
+            <Text className="text-black text-sm leading-6">
+              {t("greeting", { name })}
+            </Text>
+            <Text className="mx-auto text-sm leading-6">
+              {reason === "inactivity" ? t("inactivity") : t("userRequest")}
+            </Text>
+            <Text className="text-neutral-500 text-sm leading-6">
+              {t("retained", { years: `${INVOICE_RETENTION_YEARS}` })}
+            </Text>
+            <Text className="text-black text-sm leading-6">
+              {t("farewell")}
+            </Text>
+            <Footer email={email} locale={locale} />
+          </Container>
+        </Body>
+      </Tailwind>
+    </Html>
+  );
+}

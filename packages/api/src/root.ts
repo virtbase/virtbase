@@ -19,13 +19,17 @@ import { authRouter } from "./router/auth";
 import { checkoutRouter } from "./router/checkout";
 import { invoicesRouter } from "./router/invoices";
 import { isoRouter } from "./router/iso";
+import { privacyRouter } from "./router/privacy";
 import { publicRouter } from "./router/public";
 import { serversRouter } from "./router/servers";
 import { sshKeysRouter } from "./router/ssh-keys";
+import { stepUpRouter } from "./router/step-up";
 import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   auth: authRouter,
+  stepUp: stepUpRouter,
+  privacy: privacyRouter,
   sshKeys: sshKeysRouter,
   invoices: invoicesRouter,
   iso: isoRouter,

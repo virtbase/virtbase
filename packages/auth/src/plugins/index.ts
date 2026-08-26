@@ -18,6 +18,7 @@
 import { apiKey } from "@better-auth/api-key";
 import { passkey } from "@better-auth/passkey";
 import { sendEmail } from "@virtbase/email";
+import ConfirmIdentity from "@virtbase/email/templates/confirm-identity";
 import LoginLink from "@virtbase/email/templates/login-link";
 import VerifyEmail from "@virtbase/email/templates/verify-email";
 import { getEmailTitle } from "@virtbase/email/translations";
@@ -69,8 +70,17 @@ export const plugins = [
   }),
   emailOTP({
     sendVerificationOnSignUp: true,
+    // [!] Required, now that `sign-in` OTPs are actually sent. Without it,
+    // `/sign-in/email-otp` creates a brand new user for any address that gets
+    // a code - a passwordless registration path that bypasses sign-up
+    // entirely. `magicLink` below disables it for the same reason.
+    disableSignUp: true,
     sendVerificationOTP: async ({ email, otp, type }, ctx) => {
-      if (type !== "email-verification") {
+      // `sign-in` doubles as the step-up challenge for accounts with neither a
+      // password nor a passkey: signing in again is the proof, and it mints a
+      // session young enough to satisfy `isStepUpSatisfied`. See
+      // `packages/api/src/step-up`.
+      if (type !== "email-verification" && type !== "sign-in") {
         console.info(
           `The following OTP type was requested, but is not yet implemented: ${type}. No email will be sent.`,
         );
@@ -85,10 +95,15 @@ export const plugins = [
       const fallbackLocale = ctx?.query?.locale;
       const locale = (await getUserLocaleByEmail(email)) ?? fallbackLocale;
 
+      const template = type === "sign-in" ? "confirm-identity" : "verify-email";
+
       await sendEmail({
         to: email,
-        subject: await getEmailTitle("verify-email", locale),
-        react: await VerifyEmail({ email, code: otp, locale }),
+        subject: await getEmailTitle(template, locale),
+        react:
+          type === "sign-in"
+            ? await ConfirmIdentity({ email, code: otp, locale })
+            : await VerifyEmail({ email, code: otp, locale }),
       });
     },
     expiresIn: 600, // 10 minutes

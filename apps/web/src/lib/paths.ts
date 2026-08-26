@@ -163,6 +163,9 @@ export const paths = {
         customImages: {
           getHref: () => "/account/settings/custom-images",
         },
+        privacy: {
+          getHref: () => "/account/settings/privacy",
+        },
       },
     },
   },

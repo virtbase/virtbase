@@ -20,6 +20,7 @@ import { initTRPC, TRPCError } from "@trpc/server";
 import type { Auth, Session } from "@virtbase/auth";
 import { and, eq, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
+import { touchLastSeen } from "@virtbase/db/queries";
 import {
   datacenters,
   proxmoxIsoDownloads,
@@ -44,12 +45,13 @@ import superjson from "superjson";
 import type { OpenApiMeta } from "trpc-to-openapi";
 import z, { ZodError } from "zod";
 import { getProxmoxInstance } from "./proxmox";
+import { isStepUpSatisfied } from "./step-up";
 import { defaultFingerprint, ratelimit } from "./upstash";
 
 type TRPCContext = {
   db: typeof db;
   // Only include the methods we need to avoid large type inference errors
-  authApi: Pick<Auth["api"], "verifyApiKey" | "getSession">;
+  authApi: Pick<Auth["api"], "verifyApiKey" | "getSession" | "verifyPassword">;
   headers: Headers;
   setHeader: (name: string, value: string) => void;
   apiKey: string | null;
@@ -211,8 +213,33 @@ const ratelimitMiddleware = t.middleware(
   },
 );
 
-// TODO: Add OAuth
+/**
+ * The API key behind a request, once verified.
+ *
+ * Derived from the endpoint rather than imported, so it tracks whatever Better
+ * Auth's api-key plugin returns without this file knowing its internals.
+ */
+type VerifiedApiKey = NonNullable<
+  Awaited<ReturnType<TRPCContext["authApi"]["verifyApiKey"]>>["key"]
+>;
+
+/**
+ * Authenticates a request by API key or by session, and hands both plus the
+ * resolved `userId` to everything downstream.
+ *
+ * [!] Exactly one `next()` call, deliberately. tRPC infers the context a
+ * middleware adds from the first `next()` it sees and takes that shape as the
+ * whole truth - so two calls with different shapes do not produce a union, they
+ * produce whichever came first. Building one object and returning it once is
+ * what keeps `ctx.session` and `ctx.apiKey` honest about being nullable.
+ *
+ * TODO: Add OAuth
+ */
 const authMiddleware = t.middleware(async ({ ctx, next, meta }) => {
+  let session: Session | null = null;
+  let apiKey: VerifiedApiKey | null = null;
+  let userId: string;
+
   if (ctx.apiKey) {
     const permissions = meta?.permissions;
     if (!permissions) {
@@ -229,41 +256,37 @@ const authMiddleware = t.middleware(async ({ ctx, next, meta }) => {
       },
     });
 
-    if (!result.valid || !result.key) {
+    if (!result.valid || !result.key?.referenceId) {
       throw new TRPCError({ code: "UNAUTHORIZED" });
     }
 
-    return next({
-      ctx: {
-        session: null,
-        apiKey: result.key,
-        userId: result.key.referenceId,
-      },
+    apiKey = result.key;
+    userId = result.key.referenceId;
+
+    // An API key in use is the account in use. Without this, a customer who
+    // drives everything through the API and never opens the dashboard reads as
+    // dormant to the inactivity sweep.
+    await touchLastSeen(ctx.db, userId);
+  } else {
+    if (!ctx.session?.user) {
+      throw new TRPCError({ code: "UNAUTHORIZED" });
+    }
+
+    Sentry.setUser({
+      id: ctx.session.user.id,
+      email: ctx.session.user.email,
+      username: ctx.session.user.name,
     });
+
+    // The spread is what makes `user` non-nullable.
+    session = {
+      ...ctx.session,
+      user: ctx.session.user,
+    };
+    userId = ctx.session.user.id;
   }
 
-  if (!ctx.session?.user) {
-    throw new TRPCError({ code: "UNAUTHORIZED" });
-  }
-
-  Sentry.setUser({
-    id: ctx.session.user.id,
-    email: ctx.session.user.email,
-    username: ctx.session.user.name,
-  });
-
-  return next({
-    ctx: {
-      apiKey: null,
-      // infers the `session` as non-nullable
-      session: {
-        ...ctx.session,
-        user: ctx.session.user,
-      },
-      // infers the `userId` as non-nullable
-      userId: ctx.session.user.id,
-    },
-  });
+  return next({ ctx: { session, apiKey, userId } });
 });
 
 const serverMiddleware = authMiddleware.unstable_pipe(
@@ -511,6 +534,40 @@ export const protectedProcedure = t.procedure
   .use(sentryMiddleware)
   .use(ratelimitMiddleware)
   .use(authMiddleware);
+
+/**
+ * A procedure that additionally requires a recent re-authentication.
+ *
+ * For the actions that cannot be taken back: erasing an account, or handing
+ * over an archive of everything we hold about someone. A valid session is not enough
+ * on its own, because a session is what an attacker who borrowed a laptop
+ * already has.
+ *
+ * API keys can never satisfy this. A key is a bearer credential with no human
+ * behind it at request time, so there is nobody to challenge - these actions
+ * stay in the browser on purpose.
+ */
+export const stepUpProcedure = t.procedure
+  .use(sentryMiddleware)
+  .use(ratelimitMiddleware)
+  .use(authMiddleware)
+  .use(async ({ ctx, next }) => {
+    if (!ctx.session) {
+      throw new TRPCError({
+        code: "FORBIDDEN",
+        message: "This action cannot be performed with an API key.",
+      });
+    }
+
+    if (!(await isStepUpSatisfied(ctx.session))) {
+      throw new TRPCError({
+        code: "FORBIDDEN",
+        message: "STEP_UP_REQUIRED",
+      });
+    }
+
+    return next({ ctx: { session: ctx.session } });
+  });
 
 export const serverProcedure = t.procedure
   .use(sentryMiddleware)

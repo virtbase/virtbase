@@ -15,16 +15,10 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { sleep } from "workflow";
 import type { GetProxmoxInstanceParams } from "../../proxmox/get-proxmox-instance";
-import { destroyGuestStep } from "../shared/destroy-guest";
+import { deleteOneServer } from "../shared/delete-one-server";
 import { getServerOwnerStep } from "../shared/get-server-owner";
-import { performGuestActionStep } from "../shared/perform-guest-action";
-import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task";
-import { purgeAllBackupsStep } from "./purge-all-backups";
-import { resetPointerRecordsStep } from "./reset-pointer-records";
 import { sendServerDeletedEmailStep } from "./send-server-deleted-email";
-import { storeServerDeletionStep } from "./store-server-deletion";
 
 type DeleteServerWorkflowParams = {
   vmid: number;
@@ -35,58 +29,14 @@ type DeleteServerWorkflowParams = {
 export async function deleteServerWorkflow(params: DeleteServerWorkflowParams) {
   "use workflow";
 
-  const { vmid, serverId, proxmoxNode } = params;
-
+  // Read before the row goes: `deleteOneServer` deletes the server, and with
+  // it the only join back to the person to tell about it.
   const user = await getServerOwnerStep({
-    serverId,
+    serverId: params.serverId,
   });
 
-  // 1. Stop the guest
-  const { upid: stopUpid } = await performGuestActionStep({
-    proxmoxNode,
-    vmid,
-    action: "stop",
-  });
+  const { serverName } = await deleteOneServer(params);
 
-  if (null !== stopUpid) {
-    await sleep("5s");
-    await waitForProxmoxTaskStep({
-      proxmoxNode,
-      upid: stopUpid,
-      ignoreErrors: false,
-    });
-  }
-
-  // 2. Destroy the VM in Proxmox
-  const { upid: destroyUpid } = await destroyGuestStep({
-    proxmoxNode,
-    vmid,
-  });
-
-  await sleep("5s");
-  await waitForProxmoxTaskStep({
-    proxmoxNode,
-    upid: destroyUpid,
-    ignoreErrors: false,
-  });
-
-  // 3. Purge all backups and reset pointer records
-  await Promise.all([
-    purgeAllBackupsStep({
-      proxmoxNode,
-      serverId,
-    }),
-    resetPointerRecordsStep({
-      serverId,
-    }),
-  ]);
-
-  // 4. Store the server deletion
-  const { serverName } = await storeServerDeletionStep({
-    serverId,
-  });
-
-  // 5. Send email to the user that the server has been deleted
   await sendServerDeletedEmailStep({
     user,
     serverName,
