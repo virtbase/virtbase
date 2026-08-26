@@ -396,4 +396,42 @@ describe("the report shows records, not counts", () => {
     expect(german).toContain("Nutzerdaten");
     expect(german).toContain("Sitzungsinformationen");
   });
+
+  test("with no locale given it uses the language of the account", async () => {
+    // The bug this guards: `buildDataExport` never passed a locale, so a
+    // customer downloading a record of their own account got it in English.
+    // The default now comes from the data itself, which a caller cannot forget.
+    const dutch = {
+      ...data,
+      account: { ...data.account, locale: "nl" },
+    } as unknown as SubjectExport;
+
+    expect(buildDocumentSections(dutch).map((s) => s.title)).toContain(
+      "Gebruikersgegevens",
+    );
+  });
+
+  test("an explicit locale still wins, for a different reader", async () => {
+    // The admin console renders the same document for whoever is reading it,
+    // not for the person it describes.
+    const dutch = {
+      ...data,
+      account: { ...data.account, locale: "nl" },
+    } as unknown as SubjectExport;
+
+    expect(buildDocumentSections(dutch, "de").map((s) => s.title)).toContain(
+      "Nutzerdaten",
+    );
+  });
+
+  test("an account with no locale falls back to the source language", async () => {
+    const none = {
+      ...data,
+      account: { ...data.account, locale: null },
+    } as unknown as SubjectExport;
+
+    expect(buildDocumentSections(none).map((s) => s.title)).toContain(
+      "User data",
+    );
+  });
 });

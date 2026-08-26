@@ -20,15 +20,24 @@ import { createUserExportAction } from "../../api/users/create-user-export";
 
 export function useExportUser() {
   const action = useAction(createUserExportAction, {
-    onSuccess: ({ data: blob, input }) => {
+    onSuccess: ({ data }) => {
+      if (!data) return;
+
+      // The action hands back base64 because a server action's return value
+      // must be JSON-serialisable; the blob is assembled here instead.
+      const bytes = Uint8Array.from(atob(data.content), (character) =>
+        character.charCodeAt(0),
+      );
+      const blob = new Blob([bytes], { type: data.content_type });
+
       const anchor = document.createElement("a");
 
-      anchor.style = "display: none";
+      anchor.style.display = "none";
       anchor.ariaHidden = "true";
 
       const url = window.URL.createObjectURL(blob);
       anchor.href = url;
-      anchor.download = `${input.user_id}.pdf`;
+      anchor.download = data.filename;
 
       document.body.appendChild(anchor);
       anchor.click();

@@ -48,5 +48,15 @@ export const createUserExportAction = actionClient
       locale: requester.locale,
     });
 
-    return new Blob([pdf as BlobPart], { type: "application/pdf" });
+    // [!] Base64, not a `Blob`.
+    //
+    // A server action's return value has to be JSON-serialisable - a `Blob`
+    // survives the trip as `{}`, and the download then fails silently in the
+    // client's success handler rather than erroring anywhere visible. The
+    // invoice download endpoint hands binary over the wire the same way.
+    return {
+      filename: `${userId}.pdf`,
+      content_type: "application/pdf",
+      content: Buffer.from(pdf).toString("base64"),
+    };
   });

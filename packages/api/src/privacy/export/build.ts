@@ -70,6 +70,8 @@ export async function buildDataExport({
       data,
       invoices: attachments,
       passphrase,
+      // No `locale` on purpose: the document defaults to the language of the
+      // person it is about, which is exactly who is downloading it here.
     });
 
     const recipient = await db

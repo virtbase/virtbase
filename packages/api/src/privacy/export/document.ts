@@ -64,7 +64,14 @@ export interface BuildExportDocumentInput {
    * made explicit and made once.
    */
   passphrase?: string;
-  /** BCP 47 tag. Falls back to English for anything outside the catalog. */
+  /**
+   * BCP 47 tag. Falls back to English for anything outside the catalog.
+   *
+   * Defaults to the locale of the person the document is *about*, read from
+   * the data itself - so a caller cannot accidentally hand a German customer
+   * an English record of their own account by forgetting to pass it. Override
+   * it only when someone else is the reader, as the admin console does.
+   */
   locale?: string | null;
 }
 
@@ -91,7 +98,7 @@ export async function buildExportDocument({
     readFile(FONT_HEADLINE),
   ]);
 
-  const resolvedLocale = resolveDocumentLocale(locale);
+  const resolvedLocale = resolveDocumentLocale(locale ?? data.account.locale);
   const t = getDocumentMessages(resolvedLocale);
   const encrypted = Boolean(passphrase);
 
@@ -147,7 +154,7 @@ export async function buildExportDocument({
   document.addStructure(root);
 
   renderHeader(document, root, t);
-  renderSections(document, root, t, data, locale);
+  renderSections(document, root, t, data, resolvedLocale);
 
   // The machine-readable half. Named so it is obvious in a reader's attachment
   // pane which file is the data and which are the invoices.
@@ -223,16 +230,16 @@ export function buildDocumentSections(
   data: SubjectExport,
   locale?: string | null,
 ): DocumentSection[] {
-  const t = getDocumentMessages(locale);
+  // Same default as `buildExportDocument`: the language of the person the
+  // document is about, unless the caller names another reader.
+  const resolved = resolveDocumentLocale(locale ?? data.account.locale);
+  const t = getDocumentMessages(resolved);
   // Pinned, not inherited. A records document has to say when something
   // happened without the reader guessing whose clock it was rendered on - and
   // left unset, `use-intl` falls back to whatever timezone the server process
   // happens to be in, which for a serverless function is nobody's. `timeStyle`
   // names the zone, so the output says UTC out loud.
-  const f = createFormatter({
-    locale: resolveDocumentLocale(locale),
-    timeZone: "UTC",
-  });
+  const f = createFormatter({ locale: resolved, timeZone: "UTC" });
 
   const sections: DocumentSection[] = [];
   const fields = (title: string, rows: Row[]) =>
