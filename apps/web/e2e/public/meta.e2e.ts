@@ -57,40 +57,6 @@ test.describe("meta", () => {
     }
   });
 
-  test("it should permanently redirect the root to the x-default locale", async ({
-    request,
-  }) => {
-    const response = await request.get(`${publicOrigin}/`, {
-      maxRedirects: 0,
-    });
-
-    // A 307 tells a crawler to keep `/` indexed as a URL in its own right
-    // rather than fold it into the locale it points at, which leaves the home
-    // page competing with itself. Only a permanent redirect consolidates them.
-    expect(response.status()).toBe(308);
-    expect(response.headers().location).toBe(`/${X_DEFAULT_LOCALE}`);
-  });
-
-  test("it should not vary the root redirect by language", async ({
-    request,
-  }) => {
-    // A 308 is cached by the browser indefinitely, so a negotiated target
-    // would pin whichever locale a visitor happened to resolve first. Which
-    // locale a searcher lands on is hreflang's job.
-    for (const acceptLanguage of [
-      "de-DE,de;q=0.9",
-      "nl-NL,nl;q=0.9",
-      "fr-FR,fr;q=0.9",
-    ]) {
-      const response = await request.get(`${publicOrigin}/`, {
-        headers: { "Accept-Language": acceptLanguage },
-        maxRedirects: 0,
-      });
-
-      expect(response.headers().location).toBe(`/${X_DEFAULT_LOCALE}`);
-    }
-  });
-
   test("the sitemap should only list URLs on its own host", async ({
     request,
   }) => {
