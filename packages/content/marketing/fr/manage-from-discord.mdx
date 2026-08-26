@@ -1,0 +1,164 @@
+---
+title: Gérer son VPS depuis Discord
+description: Démarrez, arrêtez, sauvegardez et pare-feu chaque serveur Virtbase depuis Discord. Les réponses restent privées, même en salon partagé, et le bot ne dépense rien.
+keywords:
+  - gérer un VPS depuis Discord
+  - bot Discord VPS
+  - gestion serveur Discord
+  - hébergement serveur de jeu
+  - bot serveur
+---
+
+<Hero>
+
+# Votre serveur, dans la conversation que vous avez déjà ouverte
+
+Alimentation, sauvegardes, pare-feu et console pour chaque serveur que vous
+louez, sans ouvrir de portail.
+
+</Hero>
+
+<Advantages>
+  <Advantage title="Vous seul le voyez" icon="lock">
+    Chaque réponse ne s'affiche que pour vous, même en salon partagé.
+  </Advantage>
+
+  <Advantage title="It acts as you" icon="shield">
+    The bot reaches only your own servers, with the portal's permission checks.
+  </Advantage>
+
+  <Advantage title="Il ne dépense rien" icon="server">
+    Formules et renouvellements renvoient au portail. Rien ici ne coûte.
+  </Advantage>
+
+  <Advantage title="Là où vous êtes déjà" icon="network">
+    Votre serveur Discord, tout serveur où il est, ou un message privé.
+  </Advantage>
+</Advantages>
+
+<Features>
+  <Feature title="Un menu, puis des boutons" demo="discord-bot" wide href="/help/article/discord-integration">
+    Lancez **/menu** une fois. Tout le reste se fait au bouton – aucune commande
+    à retenir, aucune syntaxe à rater.
+  </Feature>
+</Features>
+
+<Prose>
+
+## Ce que le bot fait vraiment
+
+La plupart des bots d'hébergement rapportent un état. Celui-ci pilote le
+serveur.
+
+Vous pouvez démarrer, redémarrer, éteindre, forcer l'arrêt et réinitialiser à
+chaud, tout en lisant en direct le processeur, la mémoire, le disque et le
+réseau. Vous pouvez créer, restaurer, verrouiller et supprimer des
+[sauvegardes](/fr/help/article/how-to-backup-server). Vous pouvez consulter vos
+[règles de pare-feu](/fr/help/article/how-to-use-server-firewall), en ajouter,
+en supprimer et changer les politiques par défaut. Vous pouvez définir le DNS
+inverse de chaque adresse, renommer un serveur, le
+[réinstaller](/fr/help/article/how-to-change-operating-system) avec un autre
+système d'exploitation, monter une image d'installation, ouvrir un lien de
+console à usage unique et réinitialiser le mot de passe administrateur.
+
+C'est la même étendue que l'espace client, la facturation en moins. Tout ce qui
+coûte de l'argent renvoie vers le portail : confier le bot à quelqu'un ne revient
+donc pas à lui confier votre moyen de paiement.
+
+## Pourquoi la conversation plutôt qu'un tableau de bord
+
+Un tableau de bord est un endroit où l'on se rend. Discord est un endroit où
+l'on est déjà.
+
+Quand un serveur de jeu cesse de répondre en pleine partie, c'est précisément la
+distance entre le constat et la correction qui pose problème. Ouvrir un
+navigateur, retrouver l'onglet, se connecter, naviguer jusqu'au bon serveur,
+cliquer sur redémarrer : quatre ou cinq étapes pendant lesquelles tout le monde
+attend. Taper **/menu** sur son téléphone, c'est une.
+
+Cela compte surtout pour ceux qui font tourner quelque chose avec d'autres :
+serveurs communautaires, serveurs de jeu, petites équipes. La personne qui doit
+redémarrer la machine n'est souvent pas celle à qui appartient le compte
+d'hébergement – et lui donner les identifiants du portail est une mauvaise
+réponse à ce problème.
+
+## La confidentialité en salon partagé
+
+The obvious objection to running infrastructure from a public chat is that a
+public chat is public.
+
+Chaque réponse du bot est éphémère : elle ne s'affiche que pour la personne qui
+a appuyé sur le bouton, et disparaît dès qu'elle la referme. Noms de serveurs,
+adresses IP, graphiques d'utilisation et liens de console ne sont visibles pour
+personne d'autre dans le salon, et n'entrent jamais dans l'historique.
+
+Les actions destructrices demandent confirmation. Restaurer une sauvegarde,
+réinstaller un système, forcer l'arrêt d'une machine : les trois exigent une
+étape de confirmation, pour qu'un bouton mal visé sur un téléphone ne mette pas
+un serveur de production à terre. Les liens de console sont à usage unique et
+expirent au bout de dix secondes – assez pour cliquer, trop peu pour qu'une
+capture d'écran serve à quoi que ce soit.
+
+## Des rôles pour votre communauté
+
+Si vous animez une communauté Discord, le bot peut attribuer des rôles à partir
+de vos données Virtbase sans vérification manuelle : combien de serveurs un
+membre loue actuellement, si son adresse e-mail est confirmée, et depuis combien
+de temps il est client.
+
+Ce qui est transmis, ce sont exactement ces trois valeurs, et uniquement pour
+les rôles que le serveur est configuré à accorder. Adresses e-mail, noms de
+serveurs et adresses IP n'atteignent jamais le serveur Discord.
+
+## Pour commencer
+
+Liez votre compte Discord une fois depuis vos
+[paramètres de connexion](https://app.virtbase.com/account/settings/authentication),
+puis lancez **/menu**. Si vous le lancez avant la liaison, le bot vous explique
+la marche à suivre au lieu d'afficher une erreur.
+
+Vous n'avez pas besoin d'ajouter le bot à un serveur à vous : s'il se trouve
+déjà sur un serveur dont vous êtes membre, il y fonctionne, et en message privé
+de toute façon.
+Le guide complet se trouve dans
+[comment gérer mes serveurs depuis Discord](/fr/help/article/discord-integration).
+
+</Prose>
+
+<Faq title="Questions sur le bot Discord">
+  <Question title="Les autres membres du salon voient-ils mes serveurs ?">
+    Non. Chaque réponse est éphémère, Discord ne l'affiche donc qu'à la personne
+    qui l'a déclenchée. Noms de serveurs, adresses et liens de console
+    n'apparaissent pour personne d'autre et ne sont pas conservés dans
+    l'historique.
+  </Question>
+
+  <Question title="Le bot a-t-il besoin des droits d'administrateur sur mon serveur Discord ?">
+    Non. Il demande l'autorisation d'envoyer des messages et de répondre aux
+    commandes slash, rien de plus.
+  </Question>
+
+  <Question title="Le bot peut-il dépenser de l'argent sur mon compte ?">
+    Non. Changer de formule et renouveler un serveur renvoient tous deux vers
+    l'espace client. Aucun achat ne peut être conclu par le bot seul.
+  </Question>
+
+  <Question title="Dois-je ajouter le bot à mon propre serveur Discord ?">
+    Non. S'il se trouve déjà sur un serveur dont vous êtes membre, vous pouvez
+    l'y utiliser, et il répond aussi en message privé. L'ajouter chez vous n'est
+    utile que pour le proposer à votre propre communauté.
+  </Question>
+
+  <Question title="Que se passe-t-il si quelqu'un d'autre utilise le bot sur mon serveur ?">
+    Cette personne voit ses propres serveurs, pas les vôtres. Le bot vous
+    identifie par votre compte Virtbase lié, et chaque action passe par les
+    mêmes contrôles de droits que l'espace client.
+  </Question>
+
+  <Question title="Quels serveurs puis-je gérer ainsi ?">
+    Tous les serveurs de votre compte. Le bot est inclus dans toutes les
+    formules sans supplément – il n'y a rien à activer et rien à payer.
+  </Question>
+</Faq>
+
+<Offers />
