@@ -1,0 +1,215 @@
+---
+title: VPS mit öffentlicher API
+description: Jeder Virtbase-Server ist skriptbar. Ein Header zur Authentifizierung, REST und JSON über acht Ressourcen, 120 Anfragen pro Minute – ohne Aufpreis-Tarif.
+keywords:
+  - VPS API
+  - Server API
+  - Hosting REST API
+  - Server automatisieren
+  - Infrastructure as Code
+---
+
+<Hero>
+
+# Jeder Server, skriptbar
+
+Ein Header zur Authentifizierung, REST und JSON für alles, was auch im Portal
+geht.
+
+</Hero>
+
+<Stats>
+  <Stat value="120/min" label="Rate-Limit">
+    Gleitendes Fenster, in jedem Paket
+  </Stat>
+
+  <Stat value="8" label="Ressourcengruppen">
+    Server, Backups, Firewall und mehr
+  </Stat>
+
+  <Stat value="v1" label="Stabile API">
+    Versioniert in der URL
+  </Stat>
+
+  <Stat value="0 €" label="Was sie kostet">
+    Enthalten, nichts zu aktivieren
+  </Stat>
+</Stats>
+
+<Split>
+  <SplitText>
+
+## Ein Header, kein Handshake
+
+Kein OAuth-Tanz, kein Token zum Erneuern. API-Key in den Kontoeinstellungen
+anlegen, im Header `X-Virtbase-API-Key` mitschicken – fertig.
+
+Keys laufen nicht ab. Sie werden genau einmal angezeigt, also gleich beim
+Anlegen sichern – und löschen, sobald sie nicht mehr gebraucht werden.
+
+  </SplitText>
+  <SplitAside>
+
+```bash
+curl https://virtbase.com/api/v1/servers \
+  -H "X-Virtbase-API-Key: $VIRTBASE_API_KEY"
+```
+
+  </SplitAside>
+</Split>
+
+<Split reverse>
+  <SplitText>
+
+## Predictable lists
+
+Alles, was eine Sammlung zurückgibt, paginiert und sortiert gleich. `page` und
+`per_page` steuern das Fenster, `sort` nimmt ein Feld mit optionalem `:asc` oder
+`:desc`, mehrere Felder lassen sich kombinieren.
+
+Der Umschlag hat immer dieselbe Form, ein Client gegen eine Sammlung
+funktioniert also auch gegen die nächste.
+
+  </SplitText>
+  <SplitAside>
+
+```json
+{
+  "ssh_keys": [],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "per_page": 10,
+      "previous_page": null,
+      "next_page": 2,
+      "last_page": 10,
+      "total_entries": 100
+    }
+  }
+}
+```
+
+  </SplitAside>
+</Split>
+
+<Split>
+  <SplitText>
+
+## Rate-Limits, die man ablesen kann
+
+Standard sind 120 Anfragen pro Minute – zwei pro Sekunde – über ein gleitendes
+Fenster. Kurze Bursts sind also in Ordnung, solange das Fenster hält.
+
+Jede Antwort trägt den aktuellen Stand in den Headern, ein sauberer Client muss
+also nie raten. Wer drüber ist, bekommt einen `429` und keinen stillen Verlust.
+
+Mehr nötig? [Support fragen](/de/contact). Höhere Limits gibt es auf Anfrage,
+nicht als Tarif-Upgrade.
+
+  </SplitText>
+  <SplitAside>
+
+```http
+X-RateLimit-Limit: 120
+X-RateLimit-Remaining: 118
+X-RateLimit-Reset: 1787769600
+```
+
+  </SplitAside>
+</Split>
+
+<Prose>
+
+## Was sich automatisieren lässt
+
+Die API deckt dasselbe Gebiet ab wie das Kundenportal: Server, Backups,
+Firewall-Regeln, Reverse DNS, SSH-Keys, ISO-Images, Angebote und Rechnungen.
+
+Damit ist das ganze Leben einer Maschine skriptbar. Server anlegen, auf die
+Bereitstellung warten, SSH-Key einspielen, Firewall-Regeln schreiben, Reverse
+DNS auf den Adressen setzen, vor einem riskanten Deploy ein
+[Backup](/de/help/article/how-to-backup-server) ziehen und danach
+zurückspielen – ohne Browser irgendwo dazwischen.
+
+It also means the parts that usually get forgotten are scriptable. Und damit werden auch die Dinge skriptbar, die sonst liegen bleiben: Reverse DNS
+für einen Mailserver, eine Firewall-Regel, die der Büro-IP folgt, ein
+nächtliches Backup vor der eigenen Migration. Alles gehört in dasselbe Skript
+wie der Rest der Infrastruktur.
+
+## Key anlegen
+
+<Steps>
+
+<Step>
+
+### API-Einstellungen öffnen
+
+In den [Kontoeinstellungen](https://app.virtbase.com/account/settings/api) im
+Kundenportal **API** in der Navigation wählen.
+
+</Step>
+
+<Step>
+
+### Key erstellen
+
+Auf **API-Key erstellen** klicken, einen Namen vergeben, den du später
+wiedererkennst, und bestätigen.
+
+</Step>
+
+<Step>
+
+### Store it now
+
+Der Key wird genau einmal angezeigt. Direkt in den Secret Store oder die
+CI-Umgebung übernehmen – später lässt er sich nicht mehr auslesen.
+
+</Step>
+
+</Steps>
+
+Die vollständige Referenz mit jedem Parameter und jeder Antwortform steht unter
+[virtbase.com/api/docs](https://virtbase.com/api/docs). Sie ist nur auf Englisch
+verfügbar.
+
+</Prose>
+
+<Faq title="Fragen zur API">
+  <Question title="Kostet die API extra?">
+    Nein. Sie ist in jedem Paket enthalten, es gibt nichts zu aktivieren, und
+    das Rate-Limit ist unabhängig vom Preis dasselbe.
+  </Question>
+
+  <Question title="How do I authenticate?">
+    Mit einem API-Key im Header `X-Virtbase-API-Key` bei jeder Anfrage. Es gibt
+    keinen OAuth-Flow und kein Token zum Erneuern.
+  </Question>
+
+  <Question title="Laufen API-Keys ab?">
+    Nein, sie gelten, bis du sie löschst. Angezeigt werden sie nur einmal beim
+    Anlegen – also dort sichern. Wer einen Key verliert, legt einen neuen an und
+    löscht den alten.
+  </Question>
+
+  <Question title="Wie hoch ist das Rate-Limit?">
+    120 Anfragen pro Minute je Key über ein gleitendes Fenster, Bursts innerhalb
+    des Fensters sind also möglich. Darüber kommt `429 Too Many Requests`, und
+    die Header `X-RateLimit-Remaining` und `X-RateLimit-Reset` sagen dir, wo du
+    stehst.
+  </Question>
+
+  <Question title="Kann ich ein höheres Rate-Limit bekommen?">
+    Ja, auf Anfrage. [Support kontaktieren](/de/contact) und kurz beschreiben,
+    was du baust.
+  </Question>
+
+  <Question title="Wo steht die Endpunkt-Dokumentation?">
+    Unter [virtbase.com/api/docs](https://virtbase.com/api/docs), mit jedem
+    Endpunkt, Parameter und Rückgabewert. Dazu gibt es eine
+    [kurze Anleitung](/de/help/article/how-to-use-public-api) für den ersten
+    Key.
+  </Question>
+</Faq>
+
+<Offers />
