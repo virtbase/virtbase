@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Portuguese\n"
-"PO-Revision-Date: 2026-08-25 22:23\n"
+"PO-Revision-Date: 2026-08-26 09:39\n"
 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 #: ../../packages/integration-discord/src/features/servers/messages.ts
@@ -3630,6 +3630,17 @@ msgid "3JxaKs"
 msgstr "Modelo"
 
 #: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/checkout/components/checkout-form.tsx
+#: src/features/servers/components/backups/backups-table/columns.tsx
+#: src/features/servers/components/overview/server-details-card.tsx
+msgid "t2uvIi"
+msgstr "Sistema operacional"
+
+#: src/features/admin/components/servers/servers-table/columns.tsx
+msgid "ZIaeH7"
+msgstr "Não lido a partir do interior do servidor"
+
+#: src/features/admin/components/servers/servers-table/columns.tsx
 msgid "EwRIOm"
 msgstr "Usuária"
 
@@ -3853,12 +3864,6 @@ msgstr "Entrar"
 #: src/features/checkout/components/checkout-form.tsx
 msgid "7OW8BT"
 msgstr "Configuração"
-
-#: src/features/checkout/components/checkout-form.tsx
-#: src/features/servers/components/backups/backups-table/columns.tsx
-#: src/features/servers/components/overview/server-details-card.tsx
-msgid "t2uvIi"
-msgstr "Sistema operacional"
 
 #: src/features/checkout/components/checkout-form.tsx
 msgid "hE8w_g"
@@ -4481,16 +4486,32 @@ msgid "F_6VqP"
 msgstr "Servidora"
 
 #: src/features/servers/components/overview/server-details-card.tsx
-msgid "4A__XV"
-msgstr "Imagem personalizada"
-
-#: src/features/servers/components/overview/server-details-card.tsx
 msgid "RTw2Xk"
 msgstr "Ver detalhes do nó"
 
 #: src/features/servers/components/overview/server-details-card.tsx
 msgid "8O64Ol"
 msgstr "Alterar sistema operacional"
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "13DVxF"
+msgstr "Lido a partir do interior deste servidor {when}."
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "OwWZ_b"
+msgstr "Lido a partir do interior deste servidor."
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "8WvXOD"
+msgstr "Instalado a partir de {template}."
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "wlld4G"
+msgstr "Obtido a partir da imagem montada. Instala o pacote {packageName} para que o Virtbase possa ler o sistema operativo a partir do interior do teu servidor."
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "lxp8MB"
+msgstr "Obtido a partir do modelo com que este servidor foi criado. Instala o pacote {packageName} para que o Virtbase possa ler o sistema operativo a partir do interior do teu servidor."
 
 #: src/features/servers/components/plan/plan-form.tsx
 msgid "Kng3Em"
