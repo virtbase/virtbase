@@ -1,0 +1,176 @@
+---
+title: DDoS protected VPS
+description: Every Virtbase server sits behind aurologic's filtering, on every plan, at no extra cost. Attack traffic is scrubbed upstream and never reaches your uplink.
+keywords:
+  - DDoS protected VPS
+  - VPS with DDoS protection
+  - anti-DDoS hosting
+  - game server DDoS protection
+  - protected server
+---
+
+<Hero>
+
+# Attack traffic never reaches your server
+
+Filtering sits upstream of the network your machine is on, and it is on before
+you order.
+
+</Hero>
+
+<Stats>
+  <Stat value="Always" label="On by default">
+    Nothing to enable or configure
+  </Stat>
+
+  <Stat value="€0" label="What it costs">
+    Included on every plan
+  </Stat>
+
+  <Stat value="TCP + UDP" label="Protocols filtered">
+    Game protocols recognised too
+  </Stat>
+
+  <Stat value="Upstream" label="Where it filters">
+    Before your uplink, not on it
+  </Stat>
+</Stats>
+
+<Prose>
+
+## Where the filtering happens
+
+Protection that runs on your own server is not protection. By the time a flood
+reaches the machine it has already crossed your uplink, and a saturated uplink
+drops legitimate traffic just as effectively as a saturated CPU does.
+
+Virtbase servers sit behind **aurologic GmbH**'s filtering, which is upstream of
+the network the machine is on. Attack traffic is scrubbed before it arrives, so
+your uplink never carries it and your server never sees it.
+
+That also means there is nothing for you to run, tune or keep patched. There is
+no agent on the machine, no rule to write, and no threshold to guess.
+
+</Prose>
+
+<Split>
+  <SplitText>
+
+## Accurate, not just large
+
+Two things matter in filtering and providers usually talk about only the first.
+
+Capacity absorbs a flood. Accuracy decides whether your players stay connected
+while it happens. aurologic's filtering is packet-level and fine-grained, and it
+recognises game server protocols specifically rather than treating all UDP as
+suspicious — which is what makes a game server survive an attack instead of
+being protected into unreachability.
+
+Where a protocol allows it, challenge-response separates a real client from a
+spoofed one, so sessions that were already working keep working.
+
+  </SplitText>
+  <SplitAside>
+
+```text
+       attacker traffic
+              │
+              ▼
+   ┌──────────────────────┐
+   │  aurologic filtering │  TCP/UDP, per-packet
+   │  challenge-response  │  game protocols known
+   └──────────┬───────────┘
+              │  clean traffic only
+              ▼
+   ┌──────────────────────┐
+   │  SkyLink, Eygelshoven│  DE-CIX · Speed-IX
+   └──────────┬───────────┘
+              ▼
+        your uplink ──▶ your server
+```
+
+  </SplitAside>
+</Split>
+
+<Features>
+  <Feature title="Your own rules, on top" demo="server-firewall" href="/help/article/how-to-use-server-firewall">
+    Filtering decides what reaches the network. The firewall decides what
+    reaches your ports.
+  </Feature>
+
+  <Feature title="An attack, or just a busy day?" demo="server-stats" href="/help">
+    Live CPU, memory and network graphs, so a traffic spike is something you can
+    look at rather than guess about.
+  </Feature>
+</Features>
+
+<Prose>
+
+## DDoS protection is not a firewall
+
+These get conflated constantly, and the difference matters when something goes
+wrong.
+
+**DDoS filtering** is automatic, upstream and about volume and shape. It has no
+opinion about which of your ports should be open — it removes traffic that is
+attacking you and passes the rest.
+
+**The firewall** is yours, it runs at your server's edge, and it is about
+policy. It is what closes the SSH port to everyone except your office, or leaves
+25565 open only to the people who should reach your game server.
+
+An attack that saturates a link is a job for the first. A port that should never
+have been open is a job for the second. Running one does not remove the need for
+the other, which is why both are included rather than sold as tiers.
+
+## What you should still do
+
+Filtering is not an excuse to leave the machine open. Close the ports you do not
+use with [firewall rules](/en/help/article/how-to-use-server-firewall), keep
+services patched, and take a [backup](/en/help/article/how-to-backup-server)
+before you change anything that matters.
+
+Attacks that succeed against a protected server almost never succeed by volume.
+They succeed because something was listening that should not have been.
+
+</Prose>
+
+<Faq title="Questions about DDoS protection">
+  <Question title="Do I have to enable DDoS protection?">
+    No. It is on by default for every Virtbase server, and there is nothing to
+    configure. See
+    [what DDoS protection does Virtbase use](/en/help/article/about-ddos-protection).
+  </Question>
+
+  <Question title="Does it cost extra?">
+    No. It is included on every plan at no charge, and it is not sold as an
+    upgrade or a per-attack fee.
+  </Question>
+
+  <Question title="Which protocols are protected?">
+    All common network services and protocols, both TCP and UDP based. Game
+    server protocols are recognised and filtered specifically rather than
+    generically.
+  </Question>
+
+  <Question title="Will my server stay reachable during an attack?">
+    That is the point of it. The filtering is optimised for web and game
+    servers, and challenge-response mechanisms distinguish real clients from
+    spoofed traffic, so a server stays usable while an attack is running.
+  </Question>
+
+  <Question title="Who provides the filtering?">
+    aurologic GmbH. It sits upstream of the network our servers are on, so
+    attack traffic is removed before it reaches our
+    [data center](/en/datacenter) and before it touches your uplink.
+  </Question>
+
+  <Question title="Is this the same as the firewall?">
+    No, and you want both. DDoS filtering is automatic and upstream, and decides
+    what reaches the network. The
+    [firewall](/en/help/article/how-to-use-server-firewall) is yours to
+    configure, runs at your server, and decides which ports are open to whom.
+  </Question>
+</Faq>
+
+<Offers />
