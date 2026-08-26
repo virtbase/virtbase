@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Greek\n"
-"PO-Revision-Date: 2026-08-25 22:22\n"
+"PO-Revision-Date: 2026-08-26 09:39\n"
 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 #: ../../packages/integration-discord/src/features/servers/messages.ts
@@ -3630,6 +3630,17 @@ msgid "3JxaKs"
 msgstr "Περίγραμμα"
 
 #: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/checkout/components/checkout-form.tsx
+#: src/features/servers/components/backups/backups-table/columns.tsx
+#: src/features/servers/components/overview/server-details-card.tsx
+msgid "t2uvIi"
+msgstr "Λειτουργικό σύστημα"
+
+#: src/features/admin/components/servers/servers-table/columns.tsx
+msgid "ZIaeH7"
+msgstr "Δεν διαβάστηκε από το εσωτερικό του διακομιστή"
+
+#: src/features/admin/components/servers/servers-table/columns.tsx
 msgid "EwRIOm"
 msgstr "Μεταχειριζόμενος"
 
@@ -3853,12 +3864,6 @@ msgstr "Συνδεθείτε"
 #: src/features/checkout/components/checkout-form.tsx
 msgid "7OW8BT"
 msgstr "Διαμόρφωση"
-
-#: src/features/checkout/components/checkout-form.tsx
-#: src/features/servers/components/backups/backups-table/columns.tsx
-#: src/features/servers/components/overview/server-details-card.tsx
-msgid "t2uvIi"
-msgstr "Λειτουργικό σύστημα"
 
 #: src/features/checkout/components/checkout-form.tsx
 msgid "hE8w_g"
@@ -4481,16 +4486,32 @@ msgid "F_6VqP"
 msgstr "Υπηρέτης"
 
 #: src/features/servers/components/overview/server-details-card.tsx
-msgid "4A__XV"
-msgstr "Προσαρμοσμένη εικόνα"
-
-#: src/features/servers/components/overview/server-details-card.tsx
 msgid "RTw2Xk"
 msgstr "Προβολή λεπτομερειών κόμβου"
 
 #: src/features/servers/components/overview/server-details-card.tsx
 msgid "8O64Ol"
 msgstr "Αλλαγή λειτουργικού συστήματος"
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "13DVxF"
+msgstr "Διαβάστηκε από το εσωτερικό αυτού του διακομιστή {when}."
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "OwWZ_b"
+msgstr "Διαβάστηκε από το εσωτερικό αυτού του διακομιστή."
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "8WvXOD"
+msgstr "Εγκαταστάθηκε από {template}."
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "wlld4G"
+msgstr "Προέρχεται από την προσαρτημένη εικόνα. Εγκατάστησε το πακέτο {packageName} ώστε το Virtbase να μπορεί να διαβάσει το λειτουργικό σύστημα από το εσωτερικό του διακομιστή σου."
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "lxp8MB"
+msgstr "Προέρχεται από το πρότυπο με το οποίο δημιουργήθηκε αυτός ο διακομιστής. Εγκατάστησε το πακέτο {packageName} ώστε το Virtbase να μπορεί να διαβάσει το λειτουργικό σύστημα από το εσωτερικό του διακομιστή σου."
 
 #: src/features/servers/components/plan/plan-form.tsx
 msgid "Kng3Em"
