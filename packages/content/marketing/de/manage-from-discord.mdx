@@ -1,0 +1,160 @@
+---
+title: vServer über Discord verwalten
+description: Starten, stoppen, sichern und Firewall-Regeln setzen direkt in Discord. Antworten sieht nur du, auch im geteilten Channel, und der Bot gibt kein Geld aus.
+keywords:
+  - vServer über Discord verwalten
+  - Discord VPS Bot
+  - Discord Server verwalten
+  - Gameserver hosten
+  - Server Bot
+---
+
+<Hero>
+
+# Dein Server, in dem Chat, den du sowieso offen hast
+
+Power, Backups, Firewall und Konsole für jeden Server, den du mietest – ohne ein
+Portal zu öffnen.
+
+</Hero>
+
+<Advantages>
+  <Advantage title="Nur du siehst es" icon="lock">
+    Jede Antwort wird nur für dich gerendert, auch im geteilten Channel.
+  </Advantage>
+
+  <Advantage title="Er handelt als du" icon="shield">
+    Der Bot erreicht nur deine Server, mit den Rechteprüfungen des Portals.
+  </Advantage>
+
+  <Advantage title="Er gibt kein Geld aus" icon="server">
+    Upgrades und Verlängerungen führen ins Portal. Hier kostet nichts etwas.
+  </Advantage>
+
+  <Advantage title="Da, wo du ohnehin bist" icon="network">
+    Dein Discord-Server, jeder Server mit dem Bot, oder eine Direktnachricht.
+  </Advantage>
+</Advantages>
+
+<Features>
+  <Feature title="Ein Menü, danach Buttons" demo="discord-bot" wide href="/help/article/discord-integration">
+    Einmal **/menu** ausführen. Alles danach sind Buttons – keine Befehle zum
+    Merken und keine Syntax, die man falsch tippen kann.
+  </Feature>
+</Features>
+
+<Prose>
+
+## Was der Bot wirklich kann
+
+Die meisten Hosting-Bots melden Status. Dieser bedient den Server.
+
+Du kannst starten, neu starten, herunterfahren, hart stoppen und zurücksetzen –
+und dabei CPU, Arbeitsspeicher, Festplatte und Netzwerk live mitlesen. Du kannst
+[Backups](/de/help/article/how-to-backup-server) anlegen, wiederherstellen,
+sperren und löschen. Du kannst deine
+[Firewall-Regeln](/de/help/article/how-to-use-server-firewall) ansehen, ergänzen,
+löschen und die Standardrichtlinien ändern. Du kannst den Reverse-DNS-Eintrag
+jeder Adresse setzen, einen Server umbenennen,
+[neu installieren](/de/help/article/how-to-change-operating-system), ein
+Installations-Image einhängen, einen einmaligen Konsolen-Link öffnen und das
+Administratorpasswort zurücksetzen.
+
+Das ist derselbe Funktionsumfang wie im Kundenportal, abzüglich der Abrechnung. Alles, was Geld kostet, verlinkt stattdessen ins Portal – wer also Zugriff auf
+den Bot bekommt, bekommt damit keinen Zugriff auf deine Zahlungsdaten.
+
+## Warum Chat statt Dashboard
+
+Ein Dashboard ist ein Ort, zu dem man geht. Discord ist ein Ort, an dem man
+schon ist.
+
+Wenn ein Gameserver mitten in der Runde nicht mehr reagiert, ist genau die
+Strecke zwischen Merken und Beheben das Problem. Browser öffnen, Tab suchen,
+anmelden, zum richtigen Server navigieren, Neustart drücken – das sind vier bis
+fünf Schritte, während alle weiter warten. **/menu** auf dem Handy ist einer.
+
+Am meisten zählt das für alle, die etwas mit anderen zusammen betreiben:
+Community-Server, Gameserver, kleine Teams. Wer die Maschine neu starten muss,
+ist oft nicht die Person, der der Hosting-Account gehört – und dieser Person die
+Portal-Zugangsdaten zu geben, ist eine schlechte Antwort darauf.
+
+## Privatsphäre im geteilten Channel
+
+Der naheliegende Einwand gegen Infrastruktur im öffentlichen Chat ist, dass ein
+öffentlicher Chat öffentlich ist.
+
+Jede Antwort des Bots ist ephemer: Sie wird nur für die Person gerendert, die
+den Button gedrückt hat, und ist weg, sobald sie geschlossen wird. Servernamen,
+IP-Adressen, Auslastungsgrafiken und Konsolen-Links sind für niemanden sonst im
+Channel sichtbar und landen nie im Verlauf.
+
+Destruktive Aktionen fragen vorher nach. Ein Backup wiederherstellen, ein
+Betriebssystem neu installieren, eine Maschine hart stoppen – alles drei
+verlangt eine Bestätigung, damit ein danebengetippter Button auf dem Handy
+keinen Produktivserver umlegt. Konsolen-Links sind einmalig und laufen nach zehn
+Sekunden ab: lang genug zum Klicken, kurz genug, dass ein Screenshot wertlos
+ist.
+
+## Rollen für deine Community
+
+Wenn du eine Discord-Community betreibst, kann der Bot Rollen anhand deiner
+Virtbase-Daten vergeben, ohne dass jemand von Hand nachsieht: wie viele Server
+ein Mitglied gerade mietet, ob die E-Mail-Adresse bestätigt ist und wie lange es
+schon Kunde ist.
+
+Weitergegeben werden genau diese drei Werte, und nur für die Rollen, für die der
+Server konfiguriert ist. E-Mail-Adressen, Servernamen und IP-Adressen erreichen
+den Discord-Server nie.
+
+## Erste Schritte
+
+Verknüpfe deinen Discord-Account einmalig in den
+[Anmelde-Einstellungen](https://app.virtbase.com/account/settings/authentication)
+und führe dann **/menu** aus. Wer das vor dem Verknüpfen tut, bekommt die
+Einrichtung erklärt statt einer Fehlermeldung.
+
+Du musst den Bot nicht auf einen eigenen Server einladen – ist er schon auf
+einem Server, auf dem du Mitglied bist, funktioniert er dort, und in
+Direktnachrichten ohnehin.
+Die vollständige Anleitung steht in
+[wie verwalte ich meine Server über Discord](/de/help/article/discord-integration).
+
+</Prose>
+
+<Faq title="Fragen zum Discord-Bot">
+  <Question title="Sehen andere im Channel meine Server?">
+    Nein. Jede Antwort ist ephemer, Discord rendert sie also nur für die Person,
+    die sie ausgelöst hat. Servernamen, Adressen und Konsolen-Links erscheinen
+    für niemanden sonst im Channel und werden nicht im Verlauf gespeichert.
+  </Question>
+
+  <Question title="Braucht der Bot Adminrechte auf meinem Discord-Server?">
+    Nein. Er fragt nach der Berechtigung, Nachrichten zu senden und
+    Slash-Befehle zu beantworten – mehr nicht.
+  </Question>
+
+  <Question title="Kann der Bot Geld auf meinem Konto ausgeben?">
+    Nein. Ein Paket wechseln und einen Server verlängern führen beide ins
+    Kundenportal. Es gibt keinen Kauf, den der Bot allein abschließen kann.
+  </Question>
+
+  <Question title="Muss ich den Bot auf meinen eigenen Discord-Server einladen?">
+    Nein. Ist er schon auf einem Server, auf dem du Mitglied bist, kannst du ihn
+    dort nutzen, und er antwortet auch in Direktnachrichten. Eine eigene
+    Einladung brauchst du nur, wenn du ihn deiner Community bereitstellen
+    willst.
+  </Question>
+
+  <Question title="Was passiert, wenn jemand anderes den Bot auf meinem Server benutzt?">
+    Diese Person sieht ihre eigenen Server, nicht deine. Der Bot erkennt dich an
+    deinem verknüpften Virtbase-Konto, und jede Aktion läuft durch dieselben
+    Berechtigungsprüfungen wie das Kundenportal.
+  </Question>
+
+  <Question title="Welche Server kann ich so verwalten?">
+    Alle Server deines Kontos. Der Bot ist in jedem Paket ohne Aufpreis
+    enthalten – es gibt nichts zu aktivieren und nichts zu bezahlen.
+  </Question>
+</Faq>
+
+<Offers />
