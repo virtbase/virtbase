@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Turkish\n"
-"PO-Revision-Date: 2026-08-26 09:39\n"
+"PO-Revision-Date: 2026-08-26 13:45\n"
 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 #: ../../packages/integration-discord/src/features/servers/messages.ts
@@ -493,7 +493,7 @@ msgstr "Bir işletim sistemi seç"
 #: ../../packages/integration-discord/src/ui/confirm.ts
 msgctxt "discord-integration"
 msgid "47FYwb"
-msgstr "İptal etmek"
+msgstr "İptal"
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration"
@@ -2055,6 +2055,10 @@ msgstr "Hesap"
 msgid "96Us9V"
 msgstr "ISO görüntüleri"
 
+#: src/features/account/components/account-nav.tsx
+msgid "cXBJ7U"
+msgstr "Gizlilik"
+
 #: src/features/account/components/api-keys/api-keys-card.tsx
 msgid "jSp63j"
 msgstr "API Anahtarları"
@@ -2114,7 +2118,9 @@ msgstr "API anahtarı oluştur"
 #: src/features/account/components/authentication/confirm-password-dialog.tsx
 #: src/features/account/components/authentication/two-factor-enable-dialog.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
+#: src/features/account/components/privacy/delete-account-card.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
+#: src/features/account/components/step-up-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
@@ -2133,7 +2139,7 @@ msgstr "API anahtarı oluştur"
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/ui/feedback-button.tsx
 msgid "47FYwb"
-msgstr "İptal etmek"
+msgstr "İptal"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 msgid "fnMCvo"
@@ -2213,11 +2219,12 @@ msgid "vfG-nh"
 msgstr "Şifreyi onayla"
 
 #: src/features/account/components/authentication/confirm-password-dialog.tsx
+#: src/features/account/components/step-up-dialog.tsx
 #: src/features/auth/components/email-sign-in.tsx
 #: src/features/auth/components/register/signup-email.tsx
 #: src/features/auth/components/reset-password-form.tsx
 msgid "5sg7KC"
-msgstr "Şifre"
+msgstr "Parola"
 
 #: src/features/account/components/authentication/discord-bot-card.tsx
 msgid "jWjN3Y"
@@ -2248,10 +2255,11 @@ msgid "sDHrPA"
 msgstr "QR kodunu kimlik doğrulama uygulamanla tara. Kurulumu tamamlamak için 6 haneli kodu gir veya tarayamıyorsan gizli anahtarı kopyala."
 
 #: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+#: src/features/account/components/step-up-dialog.tsx
 #: src/features/auth/components/register/verify-email-form.tsx
 #: src/features/auth/components/verify-totp-form.tsx
 msgid "poE3OD"
-msgstr "Geçersiz kod. Lütfen tekrar deneyin."
+msgstr "Geçersiz kod. Tekrar dene."
 
 #: src/features/account/components/authentication/two-factor-manage-button.tsx
 msgid "4xmgHd"
@@ -2493,6 +2501,176 @@ msgstr "Doğrulanmış"
 msgid "vnJUHh"
 msgstr "Yayınlandı: {date}"
 
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "KDZ1Pc"
+msgstr "Dışa aktarman hazırlanıyor"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "_BDDTA"
+msgstr "Dışa aktarman hazır"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "KaoBdh"
+msgstr "Dışa aktarman oluşturulamadı"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "UbALz0"
+msgstr "Dışa aktarmanın süresi doldu"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "vAr8U1"
+msgstr "Bugün zaten bir dışa aktarma istedin. Yarın tekrar dene."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+#: src/features/account/components/privacy/delete-account-card.tsx
+#: src/features/admin/components/integrations/integration-enable-button.tsx
+#: src/features/admin/components/integrations/integration-health-panel.tsx
+#: src/features/admin/components/integrations/integration-settings-form.tsx
+msgid "iuY8kx"
+msgstr "Bir şeyler ters gitti."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "OTYJAd"
+msgstr "Verilerini indir"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "DnvVkK"
+msgstr "Hesabınla ilgili saklanan her şeyin bir kopyasını iste — her faturanın PDF'i dahil."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "DwA2gI"
+msgstr "Bu parolayı şimdi kaydet"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "4orXO9"
+msgstr "Parola panoya kopyalandı!"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "tCrTYF"
+msgstr "Dışa aktarmanı açar. Bunu asla e-postayla göndermeyiz ve kurtaramayız."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+#: src/features/dashboard/components/latest-invoices-list.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
+msgid "5q3qC0"
+msgstr "İndir"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "andgeM"
+msgstr "{size}, {date} tarihine kadar kullanılabilir"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "kK8l5a"
+msgstr "Tekrar dene veya destek ekibine ulaş."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "1A1Bpg"
+msgstr "İstendi: {date}"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "dPn4sW"
+msgstr "Dışa aktarma yok"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "Q9wr5F"
+msgstr "Henüz verilerinin dışa aktarılmasını istemedin."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "BT534u"
+msgstr "Dışa aktarman, yalnızca bir kez gösterilen bir parolayla şifrelenir."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "nOJeeA"
+msgstr "Dışa aktarma iste"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "2Bj17g"
+msgstr "Onaylamak için e-postana bak."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "QTuT5V"
+msgstr "Önce ödenmemiş faturalarını öde."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "ja8jXT"
+msgstr "Hesabını sil"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "b3A411"
+msgstr "Hesabını kalıcı olarak kapatır ve üzerindeki tüm sunucuları siler."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "qo_2co"
+msgstr "Hesabın şu anda siliniyor. Bu artık durdurulamaz."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "gw1VWq"
+msgstr "Her şey {date} tarihinde silinecek. Bunu hâlâ durdurabilirsin."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "hpbtvd"
+msgstr "{count} ödenmemiş faturan var. Hesabını silmeden önce bunları öde."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "i0KRJm"
+msgstr "Bir sipariş hâlâ işleniyor. Bu genellikle birkaç dakika sürer."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "5LJNAt"
+msgstr "Sunucuların"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "jqgj41"
+msgstr "{count} sunucu, tüm verileriyle birlikte silinecek."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "H9DYw5"
+msgstr "Faturaların"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "hsIXhM"
+msgstr "Alman vergi mevzuatı gereği {years} yıl saklanır. Başka hiçbir şey saklanmaz."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "YgBqtj"
+msgstr "Vazgeçme süren"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "4_kCYt"
+msgstr "E-postayla onayladıktan sonra fikrini değiştirmek için {days} gün."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "L42DOm"
+msgstr "Yalnızca giriş yapmak bunu durdurmaz."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "c1QnT4"
+msgstr "Önce sana bir bağlantı göndeririz. Onu kullanana kadar hiçbir şey silinmez."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "qP4p8K"
+msgstr "Hesabın korunacak."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "HB1He6"
+msgstr "Hesabımı koru"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "bbcaZO"
+msgstr "Hesabımı sil"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "UWklwU"
+msgstr "Bağlantıyı bana gönder"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "gaaCtO"
+msgstr "Onay için sana e-postayla bir bağlantı göndereceğiz. Onu kullanana kadar hiçbir şey silinmez."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "JK_HtK"
+msgstr "Devam etmek için {phrase} yaz"
+
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 msgid "KdsDOJ"
 msgstr "SSH anahtarı oluştur"
@@ -2516,6 +2694,71 @@ msgstr "SSH anahtarı yok"
 #: src/features/account/components/ssh-keys/ssh-keys-list.tsx
 msgid "6NcUU3"
 msgstr "Henüz SSH anahtarı oluşturulmadı."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "QNEwZD"
+msgstr "Bu parola doğru değil."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "8wA5QT"
+msgstr "Geçiş anahtarını doğrulayamadık."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "cQyeNU"
+msgstr "Kodu gönderemedik. Tekrar dene."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "DwmHiL"
+msgstr "E-posta adresine bir kod gönderdik."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "DQ_MLC"
+msgstr "Sen olduğunu doğrula"
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "cyR7Kh"
+msgstr "Geri"
+
+#: src/features/account/components/step-up-dialog.tsx
+#: src/ui/feedback-button.tsx
+msgid "N2IrpM"
+msgstr "Onayla"
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "16QY49"
+msgstr "Devam etmek için parolanı gir."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "EDR6i9"
+msgstr "E-posta adresine gönderdiğimiz 6 haneli kodu gir."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "8KhNLL"
+msgstr "Bu adım geri alınamaz, bu yüzden gerçekten sen olduğunu doğrulamamız gerekiyor."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "6UZgtI"
+msgstr "Giriş yaparken kullandığın parola."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "yqpcOa"
+msgstr "Kullan"
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "WYATYp"
+msgstr "Geçiş anahtarı"
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "zLKYml"
+msgstr "Parmak izin, yüzün veya güvenlik anahtarın."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "qJvq7M"
+msgstr "E-posta kodu"
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "9WRlF4"
+msgstr "Gönder"
 
 #: src/features/account/components/user-email-card.tsx
 msgid "NMQtEq"
@@ -2589,120 +2832,6 @@ msgstr "Yeni parola"
 #: src/features/account/components/user-password-card.tsx
 msgid "6admx4"
 msgstr "En az 8 karakter, bir büyük harf, bir küçük harf ve bir rakam kullan."
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "QZwgMJ"
-msgstr "Kullanıcı veri raporu"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "g26DD9"
-msgstr "Rapor bilgileri"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "NJOMwI"
-msgstr "Dışa aktarma zamanı:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "To1Yq6"
-msgstr "Kullanıcı verileri"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "tmcdrp"
-msgstr "ID:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "9ANu2O"
-msgstr "Görünen ad:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "xpTPb3"
-msgstr "E-posta:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "axPF0j"
-msgstr "E-posta onaylandı:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-#: src/features/admin/components/users/users-table/columns.tsx
-msgid "a5msuh"
-msgstr "Evet"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-#: src/features/admin/components/users/users-table/columns.tsx
-msgid "oUWADl"
-msgstr "HAYIR"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "fiNfmb"
-msgstr "Dil:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "Ur-SeM"
-msgstr "Stripe kimliği:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "vxMnwH"
-msgstr "Kayıt tarihi:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "iXH4ox"
-msgstr "Son değişiklik:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "MEekj5"
-msgstr "Oturum bilgileri"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "RQPliO"
-msgstr "Kayıtlı oturum yok."
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "_7I9Fi"
-msgstr "IP adresi:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "uK95OQ"
-msgstr "User-Agent:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "njqGJJ"
-msgstr "Bağlı hesaplar"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "nuEHW2"
-msgstr "Kayıtlı bağlı hesap yok."
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "w6rwdu"
-msgstr "Sağlayıcı kimliği:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "a2VLth"
-msgstr "İzinler:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "71lPLk"
-msgstr "Oluşturulma tarihi:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "vtStU2"
-msgstr "Ödeme geçmişi"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "iPmh1t"
-msgstr "Kayıtlı ücret yok."
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "C43FrR"
-msgstr "Tutar:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "3fVD9R"
-msgstr "Durum:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "BIoIM3"
-msgstr "Fatura bilgileri:"
 
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "UcHtCB"
@@ -3119,12 +3248,6 @@ msgstr "Belgeleri okuyun"
 #: src/features/admin/components/integrations/integration-detail.tsx
 msgid "ZLrvCJ"
 msgstr "Bu entegrasyonda yapılandırılacak bir şey yok."
-
-#: src/features/admin/components/integrations/integration-enable-button.tsx
-#: src/features/admin/components/integrations/integration-health-panel.tsx
-#: src/features/admin/components/integrations/integration-settings-form.tsx
-msgid "iuY8kx"
-msgstr "Bir şeyler ters gitti."
 
 #: src/features/admin/components/integrations/integration-enable-button.tsx
 msgid "Rw7iI7"
@@ -3703,6 +3826,14 @@ msgid "DC8-TO"
 msgstr "E-posta doğrulandı"
 
 #: src/features/admin/components/users/users-table/columns.tsx
+msgid "a5msuh"
+msgstr "Evet"
+
+#: src/features/admin/components/users/users-table/columns.tsx
+msgid "oUWADl"
+msgstr "HAYIR"
+
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "hQZhn8"
 msgstr "Başkasının kimliğine bürün"
 
@@ -4029,11 +4160,6 @@ msgstr "Fatura yok"
 #: src/features/dashboard/components/latest-invoices-list.tsx
 msgid "GtDccr"
 msgstr "Henüz fatura düzenlenmedi."
-
-#: src/features/dashboard/components/latest-invoices-list.tsx
-#: src/features/invoices/components/invoices-table/columns.tsx
-msgid "5q3qC0"
-msgstr "İndirmek"
 
 #: src/features/dashboard/components/latest-servers-card.tsx
 msgid "2AizOe"
@@ -5191,10 +5317,6 @@ msgstr "Ekran görüntüsü ekle"
 #: src/ui/feedback-button.tsx
 msgid "wSZR47"
 msgstr "Göndermek"
-
-#: src/ui/feedback-button.tsx
-msgid "N2IrpM"
-msgstr "Onaylamak"
 
 #: src/ui/feedback-button.tsx
 msgid "T7Ry38"
