@@ -1,0 +1,181 @@
+---
+title: Open source VPS hosting
+description: The platform that runs your server is public and AGPL-licensed. Read the code that handles your data, file an issue, send a patch, or just check that we do what we say.
+keywords:
+  - open source VPS hosting
+  - open source hosting provider
+  - AGPL hosting
+  - transparent hosting
+  - auditable infrastructure
+---
+
+<Hero>
+
+# Hosting you can read the source of
+
+The portal, the API and the Discord bot are all public. Nothing about how your
+server is handled is a private detail.
+
+</Hero>
+
+<Split>
+  <SplitText>
+
+## Not open core. Open.
+
+There is no community edition here and no feature held back for a paid tier.
+The application that provisions your server, bills you and stores your data is
+the one in the repository.
+
+It is licensed under the **GNU Affero General Public License v3**, which is the
+strong choice on purpose. AGPL closes the loophole that lets a company build on
+open source, run it as a hosted service and never publish anything back. If we
+modify Virtbase and run it for you — which we do, every day — we are obliged to
+publish those modifications.
+
+That obligation is the point. It is what makes the code you can read today the
+same code running tomorrow.
+
+  </SplitText>
+  <SplitAside>
+
+```bash
+git clone https://github.com/virtbase/virtbase.git
+cd virtbase && cat LICENSE.md
+
+# GNU AFFERO GENERAL PUBLIC LICENSE
+# Version 3, 19 November 2007
+```
+
+  </SplitAside>
+</Split>
+
+<Stats>
+  <Stat value="AGPL-3.0" label="License">
+    Copyleft, including over a network
+  </Stat>
+
+  <Stat value="4" label="Languages">
+    Translated on Crowdin
+  </Stat>
+
+  <Stat value="48h" label="Disclosure response">
+    Acknowledged, and rewarded
+  </Stat>
+
+  <Stat value="Public" label="Issue tracker">
+    Bugs and work in the open
+  </Stat>
+</Stats>
+
+<Prose>
+
+## Why it matters for a hosting company
+
+Every host makes claims about security. Ours are in
+[how secure is Virtbase](/en/help/article/about-security): disks encrypted with
+LUKS2, hosts locked at boot with TPM and BIOS passwords, everything over TLS.
+
+The difference is what happens when you want to check. With most providers the
+answer is a trust-me page and a compliance badge. Here you can open the
+repository and read how a session is issued, how an API key is verified, what a
+backup actually does and which fields we store about you.
+
+That is worth more than any badge, and it is uncomfortable in a way that keeps
+us honest. Code that anyone can read is code you have to be able to defend.
+
+## What being able to read it gets you
+
+You can audit the parts that touch your data before you trust them with it —
+authentication, the firewall rules we apply, what the Discord bot is allowed to
+do on your behalf.
+
+You can also fix things. If you hit a bug, an issue on the tracker goes to the
+same people who write the code, and a pull request is a legitimate way to get a
+feature you need. Several parts of the product exist because someone asked for
+them in the open.
+
+If you find a security problem, please report it privately to
+[support@virtbase.com](mailto:support@virtbase.com) rather than in an issue. We
+acknowledge within 48 hours
+and compensate responsible disclosure.
+
+## Translated by the people who use it
+
+Virtbase runs in English, German, French and Dutch, and the translations live on
+[Crowdin](https://crowdin.virtbase.com) rather than in a vendor's black box.
+
+If your language is missing, or a string reads like it was translated by a
+machine, you can fix it yourself. That is not a small thing for a product where
+the wrong word in a firewall dialog costs somebody an afternoon.
+
+</Prose>
+
+<Split reverse>
+  <SplitText>
+
+## Built on things you already know
+
+There is nothing exotic in the stack, which is deliberate: a codebase you can
+read is only useful if you can also find your way around it.
+
+Next.js and TypeScript for the application, Tailwind for styling, Drizzle
+against Postgres, Better Auth for sessions and Turborepo to hold the monorepo
+together. Integrations are plug-ins against a small set of capability
+interfaces, so adding a DNS or payment provider does not mean touching the core.
+
+  </SplitText>
+  <SplitAside>
+
+```text
+apps/web            the site, portal and API
+packages/api        routers and workflows
+packages/auth       sessions, 2FA, passkeys
+packages/db         schema and queries
+packages/ports      capability interfaces
+packages/integration-*  plug-ins
+```
+
+  </SplitAside>
+</Split>
+
+<Faq title="Questions about the source">
+  <Question title="Is the whole platform really open source?">
+    Yes. The customer portal, the public API and the Discord bot are all in the
+    same public repository, under AGPL-3.0. There is no separate closed edition.
+  </Question>
+
+  <Question title="What does the AGPL mean for me as a customer?">
+    For using Virtbase, nothing — you rent a server, the licence is our problem.
+    What it guarantees you is that the operator of a service built on this code
+    cannot keep their modifications private, so what you can read stays honest.
+  </Question>
+
+  <Question title="Can I self-host Virtbase?">
+    The licence permits it and the code is all there, but it is built to run our
+    infrastructure rather than as a product for someone else to deploy, so
+    expect to do real work. If you try it, the issue tracker is the place to
+    ask.
+  </Question>
+
+  <Question title="Can I contribute?">
+    Please do. Open an issue for a bug, a pull request for a fix or a feature,
+    or help translate the product on [Crowdin](https://crowdin.virtbase.com).
+  </Question>
+
+  <Question title="How do I report a security vulnerability?">
+    By email to [support@virtbase.com](mailto:support@virtbase.com), not in a
+    public issue. You get an
+    acknowledgement within 48 hours with next steps, and responsible disclosure
+    is compensated.
+  </Question>
+
+  <Question title="Does open source make my server less secure?">
+    No. Security that depends on nobody being able to read the code is not
+    security — it is a delay. Published code gets looked at by more people than
+    any internal review reaches, and the things that actually protect your
+    server are keys and encryption, which are secret whether the code is or not.
+  </Question>
+</Faq>
+
+<Offers />
