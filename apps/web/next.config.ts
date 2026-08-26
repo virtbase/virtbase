@@ -205,17 +205,6 @@ const nextConfig: NextConfig = {
       destination: "/api/v1/servers/:path*",
     },
   ],
-  /**
-   * Fonts the export document reads at runtime.
-   *
-   * The path is resolved from `import.meta.url`, which a bundler cannot
-   * follow into a `readFile`, so without this the files are simply absent from
-   * the deployment and the first export to run in production is the one that
-   * finds out.
-   */
-  outputFileTracingIncludes: {
-    "/**": ["../../packages/api/src/privacy/export/fonts/**"],
-  },
   serverExternalPackages: ["pdfkit"],
   transpilePackages: ["@virtbase/email", "@virtbase/ui"],
   typescript: {

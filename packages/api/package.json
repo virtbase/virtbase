@@ -55,6 +55,7 @@
   "scripts": {
     "build": "tsc",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "embed-fonts": "bun scripts/embed-fonts.ts",
     "dev": "tsc",
     "test": "bun --env-file=../../.env.test test --timeout 20000",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",

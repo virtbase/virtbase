@@ -15,7 +15,6 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { readFile } from "node:fs/promises";
 import { APP_NAME } from "@virtbase/utils";
 import PDFDocument from "pdfkit";
 import { createFormatter } from "use-intl/core";
@@ -31,15 +30,28 @@ import type { DocumentMessages } from "./messages";
 import { getDocumentMessages, resolveDocumentLocale } from "./messages";
 
 /**
- * Resolved through `import.meta.url` rather than `process.cwd()`.
+ * The fonts, decompressed from a generated module rather than read off disk.
  *
- * A cwd-relative path only works when the process happens to start in the app
- * root, and is invisible to a bundler's file tracing - so the asset silently
- * fails to ship. `new URL(..., import.meta.url)` is understood by Webpack and
- * Turbopack, which emit the file alongside the chunk that references it.
+ * [!] Do not go back to the filesystem here. This document is rendered from a
+ * workflow step, an admin server action and the test suite, and each bundles
+ * this package differently. `process.cwd()` only resolves when the process
+ * started in the app root; `new URL(..., import.meta.url)` resolves to a chunk
+ * path where the `.ttf` is not, and hands `node:fs` a `URL` from a different
+ * realm than its own `instanceof` check - which fails with the memorable
+ * "must be an instance of URL. Received an instance of URL".
+ *
+ * Imported lazily so a quarter of a megabyte of font is only paid for by the
+ * requests that actually render a document.
  */
-const FONT_BODY = new URL("./fonts/arial.ttf", import.meta.url);
-const FONT_HEADLINE = new URL("./fonts/arial-black.ttf", import.meta.url);
+async function loadFonts() {
+  const [{ ARIAL_BLACK_GZIP_BASE64, ARIAL_GZIP_BASE64 }, { gunzipSync }] =
+    await Promise.all([import("./fonts.generated"), import("node:zlib")]);
+
+  return {
+    body: gunzipSync(Buffer.from(ARIAL_GZIP_BASE64, "base64")),
+    headline: gunzipSync(Buffer.from(ARIAL_BLACK_GZIP_BASE64, "base64")),
+  };
+}
 
 export interface InvoiceAttachment {
   /** Invoice number, used as the attachment's filename. */
@@ -93,10 +105,7 @@ export async function buildExportDocument({
   passphrase,
   locale,
 }: BuildExportDocumentInput): Promise<Uint8Array> {
-  const [body, headline] = await Promise.all([
-    readFile(FONT_BODY),
-    readFile(FONT_HEADLINE),
-  ]);
+  const { body, headline } = await loadFonts();
 
   const resolvedLocale = resolveDocumentLocale(locale ?? data.account.locale);
   const t = getDocumentMessages(resolvedLocale);
@@ -131,7 +140,6 @@ export async function buildExportDocument({
           },
         }
       : { pdfVersion: "1.7" as const, subset: "PDF/A-3a" as const }),
-    font: FONT_BODY.pathname,
   });
 
   const chunks: Buffer[] = [];
@@ -149,6 +157,10 @@ export async function buildExportDocument({
 
   document.registerFont("body", body);
   document.registerFont("headline", headline);
+  // Also the document's default. Left unset, pdfkit starts on Helvetica - a
+  // standard font it does not embed, which a PDF/A validator rejects and which
+  // silently mangles anything outside WinAnsi.
+  document.font("body");
 
   const root = document.struct("Document");
   document.addStructure(root);
