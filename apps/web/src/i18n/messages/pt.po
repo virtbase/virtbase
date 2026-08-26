@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Portuguese\n"
-"PO-Revision-Date: 2026-08-26 09:39\n"
+"PO-Revision-Date: 2026-08-26 13:45\n"
 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 #: ../../packages/integration-discord/src/features/servers/messages.ts
@@ -2055,6 +2055,10 @@ msgstr "Conta"
 msgid "96Us9V"
 msgstr "Imagens ISO"
 
+#: src/features/account/components/account-nav.tsx
+msgid "cXBJ7U"
+msgstr "Privacidade"
+
 #: src/features/account/components/api-keys/api-keys-card.tsx
 msgid "jSp63j"
 msgstr "Chaves de API"
@@ -2114,7 +2118,9 @@ msgstr "Criar chave de API"
 #: src/features/account/components/authentication/confirm-password-dialog.tsx
 #: src/features/account/components/authentication/two-factor-enable-dialog.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
+#: src/features/account/components/privacy/delete-account-card.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
+#: src/features/account/components/step-up-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
@@ -2213,11 +2219,12 @@ msgid "vfG-nh"
 msgstr "Confirmar palavra-passe"
 
 #: src/features/account/components/authentication/confirm-password-dialog.tsx
+#: src/features/account/components/step-up-dialog.tsx
 #: src/features/auth/components/email-sign-in.tsx
 #: src/features/auth/components/register/signup-email.tsx
 #: src/features/auth/components/reset-password-form.tsx
 msgid "5sg7KC"
-msgstr "Senha"
+msgstr "Palavra-passe"
 
 #: src/features/account/components/authentication/discord-bot-card.tsx
 msgid "jWjN3Y"
@@ -2248,10 +2255,11 @@ msgid "sDHrPA"
 msgstr "Lê o código QR com a tua aplicação de autenticação. Introduz o código de 6 dígitos para terminar a configuração, ou copia o segredo se não o conseguires ler."
 
 #: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+#: src/features/account/components/step-up-dialog.tsx
 #: src/features/auth/components/register/verify-email-form.tsx
 #: src/features/auth/components/verify-totp-form.tsx
 msgid "poE3OD"
-msgstr "Código inválido. Por favor, tente novamente."
+msgstr "Código inválido. Tenta novamente."
 
 #: src/features/account/components/authentication/two-factor-manage-button.tsx
 msgid "4xmgHd"
@@ -2493,6 +2501,176 @@ msgstr "Verificada"
 msgid "vnJUHh"
 msgstr "Lançada em {date}"
 
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "KDZ1Pc"
+msgstr "A preparar a tua exportação"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "_BDDTA"
+msgstr "A tua exportação está pronta"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "KaoBdh"
+msgstr "Não foi possível criar a tua exportação"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "UbALz0"
+msgstr "A tua exportação expirou"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "vAr8U1"
+msgstr "Já pediste uma exportação hoje. Tenta novamente amanhã."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+#: src/features/account/components/privacy/delete-account-card.tsx
+#: src/features/admin/components/integrations/integration-enable-button.tsx
+#: src/features/admin/components/integrations/integration-health-panel.tsx
+#: src/features/admin/components/integrations/integration-settings-form.tsx
+msgid "iuY8kx"
+msgstr "Algo correu mal."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "OTYJAd"
+msgstr "Transferir os teus dados"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "DnvVkK"
+msgstr "Pede uma cópia de tudo o que está guardado sobre a tua conta, incluindo um PDF de cada fatura."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "DwA2gI"
+msgstr "Guarda já esta frase-passe"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "4orXO9"
+msgstr "Frase-passe copiada para a área de transferência!"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "tCrTYF"
+msgstr "Abre a tua exportação. Nunca a enviamos por e-mail e não a conseguimos recuperar."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+#: src/features/dashboard/components/latest-invoices-list.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
+msgid "5q3qC0"
+msgstr "Transferir"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "andgeM"
+msgstr "{size}, disponível até {date}"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "kK8l5a"
+msgstr "Tenta novamente ou contacta o suporte."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "1A1Bpg"
+msgstr "Pedida {date}"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "dPn4sW"
+msgstr "Sem exportações"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "Q9wr5F"
+msgstr "Ainda não pediste uma exportação dos teus dados."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "BT534u"
+msgstr "A tua exportação está cifrada com uma frase-passe mostrada apenas uma vez."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "nOJeeA"
+msgstr "Pedir exportação"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "2Bj17g"
+msgstr "Verifica o teu e-mail para confirmar."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "QTuT5V"
+msgstr "Regulariza primeiro as tuas faturas em aberto."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "ja8jXT"
+msgstr "Eliminar a tua conta"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "b3A411"
+msgstr "Encerra a tua conta definitivamente e elimina todos os servidores que tem."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "qo_2co"
+msgstr "A tua conta está a ser eliminada neste momento. Já não é possível parar."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "gw1VWq"
+msgstr "Tudo será eliminado a {date}. Ainda podes parar."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "hpbtvd"
+msgstr "Tens {count} fatura(s) por pagar. Regulariza-as antes de eliminar a tua conta."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "i0KRJm"
+msgstr "Ainda há uma encomenda em processamento. Normalmente demora alguns minutos."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "5LJNAt"
+msgstr "Os teus servidores"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "jqgj41"
+msgstr "{count} servidor(es) serão eliminados, com todos os seus dados."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "H9DYw5"
+msgstr "As tuas faturas"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "hsIXhM"
+msgstr "Guardadas durante {years} anos, como exige a legislação fiscal alemã. Mais nada."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "YgBqtj"
+msgstr "O teu período de reflexão"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "4_kCYt"
+msgstr "{days} dias para mudares de ideias depois de confirmares por e-mail."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "L42DOm"
+msgstr "Iniciar sessão, por si só, não trava isto."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "c1QnT4"
+msgstr "Primeiro enviamos-te um link. Nada é eliminado até o usares."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "qP4p8K"
+msgstr "A tua conta será mantida."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "HB1He6"
+msgstr "Manter a minha conta"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "bbcaZO"
+msgstr "Eliminar a minha conta"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "UWklwU"
+msgstr "Enviar-me o link"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "gaaCtO"
+msgstr "Vamos enviar-te um link de confirmação por e-mail. Nada é eliminado até o usares."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "JK_HtK"
+msgstr "Escreve {phrase} para continuar"
+
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 msgid "KdsDOJ"
 msgstr "Criar chave SSH"
@@ -2516,6 +2694,71 @@ msgstr "Sem chaves SSH"
 #: src/features/account/components/ssh-keys/ssh-keys-list.tsx
 msgid "6NcUU3"
 msgstr "Nenhuma chave SSH foi criada ainda."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "QNEwZD"
+msgstr "Essa palavra-passe não está correta."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "8wA5QT"
+msgstr "Não conseguimos verificar a tua chave de acesso."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "cQyeNU"
+msgstr "Não conseguimos enviar o código. Tenta novamente."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "DwmHiL"
+msgstr "Enviámos um código para o teu e-mail."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "DQ_MLC"
+msgstr "Confirma que és tu"
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "cyR7Kh"
+msgstr "Voltar"
+
+#: src/features/account/components/step-up-dialog.tsx
+#: src/ui/feedback-button.tsx
+msgid "N2IrpM"
+msgstr "Confirmar"
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "16QY49"
+msgstr "Introduz a tua palavra-passe para continuar."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "EDR6i9"
+msgstr "Introduz o código de 6 dígitos que enviámos para o teu e-mail."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "8KhNLL"
+msgstr "Este passo não pode ser desfeito, por isso precisamos de confirmar que és mesmo tu."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "6UZgtI"
+msgstr "A palavra-passe com que inicias sessão."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "yqpcOa"
+msgstr "Usar"
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "WYATYp"
+msgstr "Chave de acesso"
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "zLKYml"
+msgstr "A tua impressão digital, o teu rosto ou a tua chave de segurança."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "qJvq7M"
+msgstr "Código por e-mail"
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "9WRlF4"
+msgstr "Enviar"
 
 #: src/features/account/components/user-email-card.tsx
 msgid "NMQtEq"
@@ -2589,120 +2832,6 @@ msgstr "Nova palavra-passe"
 #: src/features/account/components/user-password-card.tsx
 msgid "6admx4"
 msgstr "Utiliza pelo menos 8 caracteres, uma letra maiúscula, uma letra minúscula e um número."
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "QZwgMJ"
-msgstr "Relatório de dados do utilizador"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "g26DD9"
-msgstr "Informações do relatório"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "NJOMwI"
-msgstr "Data e hora de exportação:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "To1Yq6"
-msgstr "Dados do utilizador"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "tmcdrp"
-msgstr "ID:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "9ANu2O"
-msgstr "Nome de exibição:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "xpTPb3"
-msgstr "E-mail:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "axPF0j"
-msgstr "E-mail confirmado:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-#: src/features/admin/components/users/users-table/columns.tsx
-msgid "a5msuh"
-msgstr "Sim"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-#: src/features/admin/components/users/users-table/columns.tsx
-msgid "oUWADl"
-msgstr "Não"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "fiNfmb"
-msgstr "Idioma:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "Ur-SeM"
-msgstr "ID Stripe:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "vxMnwH"
-msgstr "Data de registo:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "iXH4ox"
-msgstr "Última alteração:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "MEekj5"
-msgstr "Informações da sessão"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "RQPliO"
-msgstr "Nenhuma sessão registada."
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "_7I9Fi"
-msgstr "Endereço IP:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "uK95OQ"
-msgstr "User-Agent:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "njqGJJ"
-msgstr "Contas associadas"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "nuEHW2"
-msgstr "Nenhuma conta associada registada."
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "w6rwdu"
-msgstr "ID do fornecedor:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "a2VLth"
-msgstr "Permissões:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "71lPLk"
-msgstr "Data de criação:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "vtStU2"
-msgstr "Histórico de pagamentos"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "iPmh1t"
-msgstr "Nenhuma cobrança registada."
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "C43FrR"
-msgstr "Valor:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "3fVD9R"
-msgstr "Estado:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "BIoIM3"
-msgstr "Dados de faturação:"
 
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "UcHtCB"
@@ -3119,12 +3248,6 @@ msgstr "Ler a documentação"
 #: src/features/admin/components/integrations/integration-detail.tsx
 msgid "ZLrvCJ"
 msgstr "Esta integração não tem nada para configurar."
-
-#: src/features/admin/components/integrations/integration-enable-button.tsx
-#: src/features/admin/components/integrations/integration-health-panel.tsx
-#: src/features/admin/components/integrations/integration-settings-form.tsx
-msgid "iuY8kx"
-msgstr "Ocorreu um erro."
 
 #: src/features/admin/components/integrations/integration-enable-button.tsx
 msgid "Rw7iI7"
@@ -3703,6 +3826,14 @@ msgid "DC8-TO"
 msgstr "E-mail verificado"
 
 #: src/features/admin/components/users/users-table/columns.tsx
+msgid "a5msuh"
+msgstr "Sim"
+
+#: src/features/admin/components/users/users-table/columns.tsx
+msgid "oUWADl"
+msgstr "Não"
+
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "hQZhn8"
 msgstr "Personificar"
 
@@ -4029,11 +4160,6 @@ msgstr "Sem faturas"
 #: src/features/dashboard/components/latest-invoices-list.tsx
 msgid "GtDccr"
 msgstr "Nenhuma fatura foi emitida ainda."
-
-#: src/features/dashboard/components/latest-invoices-list.tsx
-#: src/features/invoices/components/invoices-table/columns.tsx
-msgid "5q3qC0"
-msgstr "Download"
 
 #: src/features/dashboard/components/latest-servers-card.tsx
 msgid "2AizOe"
@@ -5191,10 +5317,6 @@ msgstr "Adicionar captura de tela"
 #: src/ui/feedback-button.tsx
 msgid "wSZR47"
 msgstr "Enviar"
-
-#: src/ui/feedback-button.tsx
-msgid "N2IrpM"
-msgstr "Confirmar"
 
 #: src/ui/feedback-button.tsx
 msgid "T7Ry38"
