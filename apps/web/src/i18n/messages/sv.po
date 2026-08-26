@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Swedish\n"
-"PO-Revision-Date: 2026-08-25 22:23\n"
+"PO-Revision-Date: 2026-08-26 09:39\n"
 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 #: ../../packages/integration-discord/src/features/servers/messages.ts
@@ -3630,6 +3630,17 @@ msgid "3JxaKs"
 msgstr "Mall"
 
 #: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/checkout/components/checkout-form.tsx
+#: src/features/servers/components/backups/backups-table/columns.tsx
+#: src/features/servers/components/overview/server-details-card.tsx
+msgid "t2uvIi"
+msgstr "Operativsystem"
+
+#: src/features/admin/components/servers/servers-table/columns.tsx
+msgid "ZIaeH7"
+msgstr "Inte avläst inifrån servern"
+
+#: src/features/admin/components/servers/servers-table/columns.tsx
 msgid "EwRIOm"
 msgstr "Användare"
 
@@ -3853,12 +3864,6 @@ msgstr "Logga in"
 #: src/features/checkout/components/checkout-form.tsx
 msgid "7OW8BT"
 msgstr "Konfiguration"
-
-#: src/features/checkout/components/checkout-form.tsx
-#: src/features/servers/components/backups/backups-table/columns.tsx
-#: src/features/servers/components/overview/server-details-card.tsx
-msgid "t2uvIi"
-msgstr "Operativsystem"
 
 #: src/features/checkout/components/checkout-form.tsx
 msgid "hE8w_g"
@@ -4481,16 +4486,32 @@ msgid "F_6VqP"
 msgstr "Server"
 
 #: src/features/servers/components/overview/server-details-card.tsx
-msgid "4A__XV"
-msgstr "Anpassad bild"
-
-#: src/features/servers/components/overview/server-details-card.tsx
 msgid "RTw2Xk"
 msgstr "Visa noddetaljer"
 
 #: src/features/servers/components/overview/server-details-card.tsx
 msgid "8O64Ol"
 msgstr "Byt operativsystem"
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "13DVxF"
+msgstr "Avläst inifrån den här servern {when}."
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "OwWZ_b"
+msgstr "Avläst inifrån den här servern."
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "8WvXOD"
+msgstr "Installerad från {template}."
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "wlld4G"
+msgstr "Hämtat från den monterade avbildningen. Installera paketet {packageName} så att Virtbase kan läsa av operativsystemet inifrån din server."
+
+#: src/features/servers/components/overview/server-operating-system.tsx
+msgid "lxp8MB"
+msgstr "Hämtat från mallen som den här servern skapades från. Installera paketet {packageName} så att Virtbase kan läsa av operativsystemet inifrån din server."
 
 #: src/features/servers/components/plan/plan-form.tsx
 msgid "Kng3Em"
