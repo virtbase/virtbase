@@ -20,7 +20,7 @@
 import { getSafeRedirectUrl } from "@virtbase/utils";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useContext, useEffect, useRef } from "react";
-import { authClient } from "@/lib/auth/client";
+import { authClient, isTwoFactorRedirect } from "@/lib/auth/client";
 import { LoginFormContext } from "./login-form";
 
 /**
@@ -66,8 +66,14 @@ export function PasskeyConditionalUI() {
         const response = await authClient.signIn.passkey({
           autoFill: true,
           fetchOptions: {
-            onSuccess: () => {
+            onSuccess: ({ data }) => {
               setClickedMethod("email");
+
+              // See `passkey-button.tsx` — the two-factor plugin is already
+              // navigating to the challenge.
+              if (isTwoFactorRedirect(data)) {
+                return;
+              }
 
               router.push(finalNext);
             },

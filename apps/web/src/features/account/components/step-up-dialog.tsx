@@ -39,7 +39,7 @@ import {
   useStepUpStatus,
   useVerifyStepUpPassword,
 } from "@/features/account/hooks/privacy/step-up";
-import { authClient } from "@/lib/auth/client";
+import { authClient, isTwoFactorRedirect } from "@/lib/auth/client";
 import { ShowPasswordAddon } from "@/ui/input-group-addons/show-password-addon";
 
 type Method = "password" | "passkey" | "emailOtp";
@@ -140,6 +140,13 @@ export function StepUpDialog({
       const result = await authClient.signIn.passkey();
       if (result?.error) {
         toast.error(t("We could not verify your passkey."));
+        return;
+      }
+      // The passkey alone did not settle it — the account owes a second factor
+      // and `onTwoFactorRedirect` is navigating to the challenge. Treating this
+      // as satisfied would open the gated action without the factor ever being
+      // presented.
+      if (isTwoFactorRedirect(result?.data)) {
         return;
       }
       await onSatisfied();

@@ -22,7 +22,7 @@ import { getSafeRedirectUrl } from "@virtbase/utils";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useContext } from "react";
-import { authClient } from "@/lib/auth/client";
+import { authClient, isTwoFactorRedirect } from "@/lib/auth/client";
 import { LoginFormContext } from "./login-form";
 
 export function PasskeyButton() {
@@ -44,7 +44,14 @@ export function PasskeyButton() {
           const response = await authClient.signIn.passkey({
             autoFill: false,
             fetchOptions: {
-              onSuccess: () => {
+              // This hook runs *before* the two-factor plugin's own, so an
+              // unguarded push here races the hard navigation that hook is
+              // about to start.
+              onSuccess: ({ data }) => {
+                if (isTwoFactorRedirect(data)) {
+                  return;
+                }
+
                 router.push(finalNext);
               },
             },

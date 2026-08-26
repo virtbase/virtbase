@@ -37,7 +37,7 @@ import { toast } from "sonner";
 import * as z from "zod/v4-mini";
 import { LoginFormContext } from "@/features/auth/components/login-form";
 import { PasskeyConditionalUI } from "@/features/auth/components/passkey-conditional-ui";
-import { authClient } from "@/lib/auth/client";
+import { authClient, isTwoFactorRedirect } from "@/lib/auth/client";
 import { useTRPC } from "@/lib/trpc/react";
 import { ShowPasswordAddon } from "@/ui/input-group-addons";
 
@@ -150,6 +150,14 @@ export const EmailSignIn = ({ next }: { next?: string }) => {
       toast.error(response.error.message);
 
       setClickedMethod(undefined);
+      return;
+    }
+
+    // The account owes a second factor. `onTwoFactorRedirect` is already
+    // navigating to `/two-factor`; pushing anywhere here would race it with a
+    // request that carries no session cookie yet. Keep the spinner — the page
+    // is on its way out.
+    if (isTwoFactorRedirect(response.data)) {
       return;
     }
 
