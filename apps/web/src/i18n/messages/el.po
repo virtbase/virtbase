@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Greek\n"
-"PO-Revision-Date: 2026-08-26 09:39\n"
+"PO-Revision-Date: 2026-08-26 13:44\n"
 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 #: ../../packages/integration-discord/src/features/servers/messages.ts
@@ -493,7 +493,7 @@ msgstr "Επίλεξε λειτουργικό σύστημα"
 #: ../../packages/integration-discord/src/ui/confirm.ts
 msgctxt "discord-integration"
 msgid "47FYwb"
-msgstr "Ματαίωση"
+msgstr "Άκυρο"
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration"
@@ -2055,6 +2055,10 @@ msgstr "Λογαριασμός"
 msgid "96Us9V"
 msgstr "Εικόνες ISO"
 
+#: src/features/account/components/account-nav.tsx
+msgid "cXBJ7U"
+msgstr "Απόρρητο"
+
 #: src/features/account/components/api-keys/api-keys-card.tsx
 msgid "jSp63j"
 msgstr "Κλειδιά API"
@@ -2114,7 +2118,9 @@ msgstr "Δημιουργία κλειδιού API"
 #: src/features/account/components/authentication/confirm-password-dialog.tsx
 #: src/features/account/components/authentication/two-factor-enable-dialog.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
+#: src/features/account/components/privacy/delete-account-card.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
+#: src/features/account/components/step-up-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
@@ -2133,7 +2139,7 @@ msgstr "Δημιουργία κλειδιού API"
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/ui/feedback-button.tsx
 msgid "47FYwb"
-msgstr "Ματαίωση"
+msgstr "Άκυρο"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 msgid "fnMCvo"
@@ -2213,11 +2219,12 @@ msgid "vfG-nh"
 msgstr "Επιβεβαίωση κωδικού πρόσβασης"
 
 #: src/features/account/components/authentication/confirm-password-dialog.tsx
+#: src/features/account/components/step-up-dialog.tsx
 #: src/features/auth/components/email-sign-in.tsx
 #: src/features/auth/components/register/signup-email.tsx
 #: src/features/auth/components/reset-password-form.tsx
 msgid "5sg7KC"
-msgstr "Σύνθημα"
+msgstr "Κωδικός πρόσβασης"
 
 #: src/features/account/components/authentication/discord-bot-card.tsx
 msgid "jWjN3Y"
@@ -2248,10 +2255,11 @@ msgid "sDHrPA"
 msgstr "Σάρωσε τον κωδικό QR με την εφαρμογή ελέγχου ταυτότητας. Πληκτρολόγησε τον 6ψήφιο κωδικό για να ολοκληρώσεις τη ρύθμιση ή αντέγραψε το μυστικό αν δεν μπορείς να τον σαρώσεις."
 
 #: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+#: src/features/account/components/step-up-dialog.tsx
 #: src/features/auth/components/register/verify-email-form.tsx
 #: src/features/auth/components/verify-totp-form.tsx
 msgid "poE3OD"
-msgstr "Μη έγκυρος κωδικός. Δοκιμάστε ξανά."
+msgstr "Μη έγκυρος κωδικός. Δοκίμασε ξανά."
 
 #: src/features/account/components/authentication/two-factor-manage-button.tsx
 msgid "4xmgHd"
@@ -2493,6 +2501,176 @@ msgstr "Επαληθευμένη"
 msgid "vnJUHh"
 msgstr "Κυκλοφόρησε στις {date}"
 
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "KDZ1Pc"
+msgstr "Ετοιμάζουμε την εξαγωγή σου"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "_BDDTA"
+msgstr "Η εξαγωγή σου είναι έτοιμη"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "KaoBdh"
+msgstr "Η εξαγωγή σου δεν μπόρεσε να δημιουργηθεί"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "UbALz0"
+msgstr "Η εξαγωγή σου έληξε"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "vAr8U1"
+msgstr "Έχεις ήδη ζητήσει εξαγωγή σήμερα. Δοκίμασε ξανά αύριο."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+#: src/features/account/components/privacy/delete-account-card.tsx
+#: src/features/admin/components/integrations/integration-enable-button.tsx
+#: src/features/admin/components/integrations/integration-health-panel.tsx
+#: src/features/admin/components/integrations/integration-settings-form.tsx
+msgid "iuY8kx"
+msgstr "Κάτι πήγε στραβά."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "OTYJAd"
+msgstr "Λήψη των δεδομένων σου"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "DnvVkK"
+msgstr "Ζήτησε ένα αντίγραφο όλων όσων έχουμε αποθηκευμένα για τον λογαριασμό σου, μαζί με PDF κάθε τιμολογίου."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "DwA2gI"
+msgstr "Αποθήκευσε τώρα αυτή τη φράση πρόσβασης"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "4orXO9"
+msgstr "Η φράση πρόσβασης αντιγράφηκε!"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "tCrTYF"
+msgstr "Ανοίγει την εξαγωγή σου. Δεν τη στέλνουμε ποτέ με email και δεν μπορούμε να την ανακτήσουμε."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+#: src/features/dashboard/components/latest-invoices-list.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
+msgid "5q3qC0"
+msgstr "Λήψη"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "andgeM"
+msgstr "{size}, διαθέσιμο έως {date}"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "kK8l5a"
+msgstr "Δοκίμασε ξανά ή επικοινώνησε με την υποστήριξη."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "1A1Bpg"
+msgstr "Ζητήθηκε {date}"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "dPn4sW"
+msgstr "Καμία εξαγωγή"
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "Q9wr5F"
+msgstr "Δεν έχεις ζητήσει ακόμη εξαγωγή των δεδομένων σου."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "BT534u"
+msgstr "Η εξαγωγή σου είναι κρυπτογραφημένη με φράση πρόσβασης που εμφανίζεται μόνο μία φορά."
+
+#: src/features/account/components/privacy/data-export-card.tsx
+msgid "nOJeeA"
+msgstr "Αίτημα εξαγωγής"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "2Bj17g"
+msgstr "Έλεγξε το email σου για επιβεβαίωση."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "QTuT5V"
+msgstr "Εξόφλησε πρώτα τα ανοιχτά τιμολόγιά σου."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "ja8jXT"
+msgstr "Διαγραφή λογαριασμού"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "b3A411"
+msgstr "Κλείνει οριστικά τον λογαριασμό σου και διαγράφει όλους τους διακομιστές του."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "qo_2co"
+msgstr "Ο λογαριασμός σου διαγράφεται αυτή τη στιγμή. Δεν μπορεί πλέον να σταματήσει."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "gw1VWq"
+msgstr "Όλα θα διαγραφούν στις {date}. Μπορείς ακόμη να το σταματήσεις."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "hpbtvd"
+msgstr "Έχεις {count} ανεξόφλητα τιμολόγια. Εξόφλησέ τα πριν διαγράψεις τον λογαριασμό σου."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "i0KRJm"
+msgstr "Μια παραγγελία επεξεργάζεται ακόμη. Συνήθως χρειάζονται λίγα λεπτά."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "5LJNAt"
+msgstr "Οι διακομιστές σου"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "jqgj41"
+msgstr "Θα διαγραφούν {count} διακομιστές, με όλα τους τα δεδομένα."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "H9DYw5"
+msgstr "Τα τιμολόγιά σου"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "hsIXhM"
+msgstr "Διατηρούνται για {years} χρόνια, όπως απαιτεί η γερμανική φορολογική νομοθεσία. Τίποτε άλλο."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "YgBqtj"
+msgstr "Η προθεσμία σου"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "4_kCYt"
+msgstr "{days} ημέρες για να αλλάξεις γνώμη μετά την επιβεβαίωση με email."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "L42DOm"
+msgstr "Η σύνδεση από μόνη της δεν το σταματά."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "c1QnT4"
+msgstr "Πρώτα σου στέλνουμε έναν σύνδεσμο. Τίποτα δεν διαγράφεται μέχρι να τον χρησιμοποιήσεις."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "qP4p8K"
+msgstr "Ο λογαριασμός σου θα διατηρηθεί."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "HB1He6"
+msgstr "Διατήρηση λογαριασμού"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "bbcaZO"
+msgstr "Διαγραφή λογαριασμού μου"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "UWklwU"
+msgstr "Στείλε μου τον σύνδεσμο"
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "gaaCtO"
+msgstr "Θα σου στείλουμε σύνδεσμο επιβεβαίωσης με email. Τίποτα δεν διαγράφεται μέχρι να τον χρησιμοποιήσεις."
+
+#: src/features/account/components/privacy/delete-account-card.tsx
+msgid "JK_HtK"
+msgstr "Πληκτρολόγησε {phrase} για να συνεχίσεις"
+
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 msgid "KdsDOJ"
 msgstr "Δημιουργία κλειδιού SSH"
@@ -2516,6 +2694,71 @@ msgstr "Χωρίς κλειδιά SSH"
 #: src/features/account/components/ssh-keys/ssh-keys-list.tsx
 msgid "6NcUU3"
 msgstr "Δεν έχουν δημιουργηθεί ακόμη κλειδιά SSH."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "QNEwZD"
+msgstr "Ο κωδικός δεν είναι σωστός."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "8wA5QT"
+msgstr "Δεν μπορέσαμε να επαληθεύσουμε το κλειδί πρόσβασής σου."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "cQyeNU"
+msgstr "Δεν μπορέσαμε να στείλουμε τον κωδικό. Δοκίμασε ξανά."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "DwmHiL"
+msgstr "Στείλαμε έναν κωδικό στο email σου."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "DQ_MLC"
+msgstr "Επιβεβαίωσε ότι είσαι εσύ"
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "cyR7Kh"
+msgstr "Πίσω"
+
+#: src/features/account/components/step-up-dialog.tsx
+#: src/ui/feedback-button.tsx
+msgid "N2IrpM"
+msgstr "Επιβεβαίωση"
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "16QY49"
+msgstr "Δώσε τον κωδικό σου για να συνεχίσεις."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "EDR6i9"
+msgstr "Δώσε τον 6ψήφιο κωδικό που στείλαμε στο email σου."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "8KhNLL"
+msgstr "Αυτό το βήμα δεν αναιρείται, γι' αυτό επιβεβαιώνουμε ότι είσαι πράγματι εσύ."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "6UZgtI"
+msgstr "Ο κωδικός με τον οποίο συνδέεσαι."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "yqpcOa"
+msgstr "Χρήση"
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "WYATYp"
+msgstr "Κλειδί πρόσβασης"
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "zLKYml"
+msgstr "Το δακτυλικό σου αποτύπωμα, το πρόσωπό σου ή το κλειδί ασφαλείας σου."
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "qJvq7M"
+msgstr "Κωδικός email"
+
+#: src/features/account/components/step-up-dialog.tsx
+msgid "9WRlF4"
+msgstr "Αποστολή"
 
 #: src/features/account/components/user-email-card.tsx
 msgid "NMQtEq"
@@ -2589,120 +2832,6 @@ msgstr "Νέος κωδικός πρόσβασης"
 #: src/features/account/components/user-password-card.tsx
 msgid "6admx4"
 msgstr "Χρησιμοποίησε τουλάχιστον 8 χαρακτήρες, ένα κεφαλαίο γράμμα, ένα πεζό γράμμα και έναν αριθμό."
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "QZwgMJ"
-msgstr "Αναφορά δεδομένων χρήστη"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "g26DD9"
-msgstr "Πληροφορίες αναφοράς"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "NJOMwI"
-msgstr "Χρονική σήμανση εξαγωγής:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "To1Yq6"
-msgstr "Δεδομένα χρήστη"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "tmcdrp"
-msgstr "ID:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "9ANu2O"
-msgstr "Εμφανιζόμενο όνομα:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "xpTPb3"
-msgstr "Email:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "axPF0j"
-msgstr "Επιβεβαιωμένο email:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-#: src/features/admin/components/users/users-table/columns.tsx
-msgid "a5msuh"
-msgstr "Ναί"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-#: src/features/admin/components/users/users-table/columns.tsx
-msgid "oUWADl"
-msgstr "Οχι"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "fiNfmb"
-msgstr "Γλώσσα:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "Ur-SeM"
-msgstr "Αναγν. Stripe:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "vxMnwH"
-msgstr "Ημερομηνία εγγραφής:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "iXH4ox"
-msgstr "Τελευταία αλλαγή:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "MEekj5"
-msgstr "Πληροφορίες συνεδρίας"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "RQPliO"
-msgstr "Δεν έχουν καταγραφεί συνεδρίες."
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "_7I9Fi"
-msgstr "Διεύθυνση IP:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "uK95OQ"
-msgstr "User-Agent:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "njqGJJ"
-msgstr "Συνδεδεμένοι λογαριασμοί"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "nuEHW2"
-msgstr "Δεν έχουν καταγραφεί συνδεδεμένοι λογαριασμοί."
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "w6rwdu"
-msgstr "Αναγν. παρόχου:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "a2VLth"
-msgstr "Δικαιώματα:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "71lPLk"
-msgstr "Ημερομηνία δημιουργίας:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "vtStU2"
-msgstr "Ιστορικό πληρωμών"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "iPmh1t"
-msgstr "Δεν έχουν καταγραφεί χρεώσεις."
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "C43FrR"
-msgstr "Ποσό:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "3fVD9R"
-msgstr "Κατάσταση:"
-
-#: src/features/admin/api/users/generator/generate-inventory-pdf.ts
-msgid "BIoIM3"
-msgstr "Στοιχεία χρέωσης:"
 
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "UcHtCB"
@@ -3119,12 +3248,6 @@ msgstr "Διαβάστε την τεκμηρίωση"
 #: src/features/admin/components/integrations/integration-detail.tsx
 msgid "ZLrvCJ"
 msgstr "Αυτή η ενσωμάτωση δεν έχει ρυθμίσεις."
-
-#: src/features/admin/components/integrations/integration-enable-button.tsx
-#: src/features/admin/components/integrations/integration-health-panel.tsx
-#: src/features/admin/components/integrations/integration-settings-form.tsx
-msgid "iuY8kx"
-msgstr "Κάτι πήγε στραβά."
 
 #: src/features/admin/components/integrations/integration-enable-button.tsx
 msgid "Rw7iI7"
@@ -3703,6 +3826,14 @@ msgid "DC8-TO"
 msgstr "Email επαληθευμένο"
 
 #: src/features/admin/components/users/users-table/columns.tsx
+msgid "a5msuh"
+msgstr "Ναί"
+
+#: src/features/admin/components/users/users-table/columns.tsx
+msgid "oUWADl"
+msgstr "Οχι"
+
+#: src/features/admin/components/users/users-table/columns.tsx
 msgid "hQZhn8"
 msgstr "Υποδύομαι"
 
@@ -4029,11 +4160,6 @@ msgstr "Χωρίς τιμολόγια"
 #: src/features/dashboard/components/latest-invoices-list.tsx
 msgid "GtDccr"
 msgstr "Δεν έχουν εκδοθεί ακόμη τιμολόγια."
-
-#: src/features/dashboard/components/latest-invoices-list.tsx
-#: src/features/invoices/components/invoices-table/columns.tsx
-msgid "5q3qC0"
-msgstr "Λήψη"
 
 #: src/features/dashboard/components/latest-servers-card.tsx
 msgid "2AizOe"
@@ -5191,10 +5317,6 @@ msgstr "Προσθήκη στιγμιότυπου οθόνης"
 #: src/ui/feedback-button.tsx
 msgid "wSZR47"
 msgstr "Υποτάσσομαι"
-
-#: src/ui/feedback-button.tsx
-msgid "N2IrpM"
-msgstr "Επιβεβαιώνω"
 
 #: src/ui/feedback-button.tsx
 msgid "T7Ry38"
