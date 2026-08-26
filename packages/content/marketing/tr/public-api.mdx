@@ -1,0 +1,215 @@
+---
+title: VPS hosting with a public API
+description: Every Virtbase server is scriptable. One header to authenticate, REST and JSON over eight resources, 120 requests a minute, and no plan that hides it behind an upgrade.
+keywords:
+  - VPS API
+  - VPS with API
+  - hosting REST API
+  - server automation
+  - infrastructure as code
+---
+
+<Hero>
+
+# Every server, scriptable
+
+One header to authenticate, REST and JSON for everything you can do in the
+portal.
+
+</Hero>
+
+<Stats>
+  <Stat value="120/min" label="Rate limit">
+    Sliding window, on every plan
+  </Stat>
+
+  <Stat value="8" label="Resource groups">
+    Servers, backups, firewall, and more
+  </Stat>
+
+  <Stat value="v1" label="Stable API">
+    Versioned in the URL
+  </Stat>
+
+  <Stat value="€0" label="What it costs">
+    Included, nothing to enable
+  </Stat>
+</Stats>
+
+<Split>
+  <SplitText>
+
+## One header, no handshake
+
+There is no OAuth dance and no token to refresh. Create an API key in your
+account settings, send it in the `X-Virtbase-API-Key` header, and every endpoint
+is open to you.
+
+Keys do not expire. They are shown once at creation, so store the key when you
+make it — and delete it the moment you no longer need it.
+
+  </SplitText>
+  <SplitAside>
+
+```bash
+curl https://virtbase.com/api/v1/servers \
+  -H "X-Virtbase-API-Key: $VIRTBASE_API_KEY"
+```
+
+  </SplitAside>
+</Split>
+
+<Split reverse>
+  <SplitText>
+
+## Predictable lists
+
+Anything that returns a collection paginates the same way and sorts the same
+way. `page` and `per_page` control the window, `sort` takes a field with an
+optional `:asc` or `:desc`, and several fields can be combined.
+
+The envelope is always the same shape, so a client written against one
+collection works against the next one.
+
+  </SplitText>
+  <SplitAside>
+
+```json
+{
+  "ssh_keys": [],
+  "meta": {
+    "pagination": {
+      "page": 1,
+      "per_page": 10,
+      "previous_page": null,
+      "next_page": 2,
+      "last_page": 10,
+      "total_entries": 100
+    }
+  }
+}
+```
+
+  </SplitAside>
+</Split>
+
+<Split>
+  <SplitText>
+
+## Rate limits you can read
+
+The default is 120 requests a minute — two a second — over a sliding window,
+which means short bursts are fine as long as the window holds.
+
+Every response carries the current state in its headers, so a well-behaved
+client never has to guess. Go over and you get a `429`, not a silent drop.
+
+Need more? [Ask support](/en/contact). Higher limits are granted on request
+rather than sold as an upgrade.
+
+  </SplitText>
+  <SplitAside>
+
+```http
+X-RateLimit-Limit: 120
+X-RateLimit-Remaining: 118
+X-RateLimit-Reset: 1787769600
+```
+
+  </SplitAside>
+</Split>
+
+<Prose>
+
+## What you can automate
+
+The API covers the same ground as the customer portal: servers, backups,
+firewall rules, reverse DNS, SSH keys, ISO images, offers and invoices.
+
+That means the whole life of a machine is scriptable. You can create a server,
+wait for it to provision, push an SSH key, write firewall rules, set the reverse
+DNS on its addresses, take a
+[backup](/en/help/article/how-to-backup-server) before a risky deploy and
+restore it afterwards — without a browser anywhere in the loop.
+
+It also means the parts that usually get forgotten are scriptable. Reverse DNS
+for a mail server, a firewall rule that follows your office IP, a nightly backup
+before your own migration runs: all of it belongs in the same script as the rest
+of your infrastructure.
+
+## Getting a key
+
+<Steps>
+
+<Step>
+
+### Open your API settings
+
+Go to [account settings](https://app.virtbase.com/account/settings/api) in the
+customer portal and pick **API** in the navigation.
+
+</Step>
+
+<Step>
+
+### Create a key
+
+Click **Create API key**, give it a name you will recognise later, and confirm.
+
+</Step>
+
+<Step>
+
+### Store it now
+
+The key is displayed once. Put it in your secret store or your CI environment
+straight away — there is no way to read it back later.
+
+</Step>
+
+</Steps>
+
+The full endpoint reference, with every parameter and response shape, is at
+[virtbase.com/api/docs](https://virtbase.com/api/docs). It is available in
+English only.
+
+</Prose>
+
+<Faq title="Questions about the API">
+  <Question title="Does the API cost extra?">
+    No. It is included on every plan, there is nothing to enable, and the rate
+    limit is the same regardless of what you pay.
+  </Question>
+
+  <Question title="How do I authenticate?">
+    With an API key in the `X-Virtbase-API-Key` header on every request. There
+    is no OAuth flow and no token to refresh.
+  </Question>
+
+  <Question title="Do API keys expire?">
+    No, they stay valid until you delete them. They are shown only once when
+    created, so store the key at that point — if you lose it, create a new one
+    and delete the old.
+  </Question>
+
+  <Question title="What is the rate limit?">
+    120 requests a minute per key, over a sliding window, so bursts are fine
+    within the window. Exceeding it returns `429 Too Many Requests`, and the
+    `X-RateLimit-Remaining` and `X-RateLimit-Reset` headers tell you where you
+    stand.
+  </Question>
+
+  <Question title="Can I get a higher rate limit?">
+    Yes, on request. [Contact support](/en/contact) and tell us what you are
+    building.
+  </Question>
+
+  <Question title="Where is the endpoint documentation?">
+    At [virtbase.com/api/docs](https://virtbase.com/api/docs), covering every
+    endpoint, parameter and response. There is also a
+    [short guide](/en/help/article/how-to-use-public-api) to creating your first
+    key.
+  </Question>
+</Faq>
+
+<Offers />
