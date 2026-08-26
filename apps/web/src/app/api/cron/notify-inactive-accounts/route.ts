@@ -99,6 +99,7 @@ const handler = withCronSecret(async () => {
       subject: await getEmailTitle(
         "account-inactivity-reminder",
         account.locale,
+        { date: account.scheduledAt },
       ),
       react: await InactivityReminder({
         email: account.email,

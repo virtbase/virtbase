@@ -199,6 +199,7 @@ export function initAuth({
     emailVerification: {
       expiresIn: 600, // 10 minutes
       autoSignInAfterVerification: true,
+      sendOnSignUp: false,
       sendVerificationEmail: async ({ user: providedUser, url }) => {
         const user = providedUser as UserWithLocale;
         if (process.env.NODE_ENV === "development") {

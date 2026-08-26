@@ -70,6 +70,7 @@ export async function GET(request: NextRequest) {
       subject: await getEmailTitle(
         "account-deletion-scheduled",
         account.locale,
+        { date: result.scheduledAt },
       ),
       react: await AccountDeletionScheduled({
         email: account.email,
