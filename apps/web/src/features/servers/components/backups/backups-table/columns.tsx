@@ -182,16 +182,15 @@ export function useBackupsTableColumns({
         />
       ),
       cell: ({ row }) => {
-        let template = row.original.template;
-        if (typeof template === "string") {
-          // Fallback to displaying unknown template if not expanded
-          template = null;
-        }
+        // What the archive holds, snapshotted when the backup was taken -
+        // not what the server runs now, which a reinstall since would have
+        // changed without changing this backup's contents.
+        const os = row.original.operating_system;
 
         return (
-          <div className="flex w-[160px] items-center gap-2 text-muted-foreground max-md:hidden">
-            <OperatingSystemIcon icon={template?.icon} />
-            <span className="truncate">{template?.name ?? t("Unknown")}</span>
+          <div className="flex w-40 items-center gap-2 text-muted-foreground max-md:hidden">
+            <OperatingSystemIcon icon={os.icon} />
+            <span className="truncate">{os.name ?? t("Unknown")}</span>
           </div>
         );
       },

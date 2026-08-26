@@ -25,7 +25,7 @@ import {
   RFC3339LINK,
 } from "../timestamps";
 import { preprocessQueryArray } from "../utils";
-import { ServerSchema } from "./shared";
+import { ServerOperatingSystemSchema, ServerSchema } from "./shared";
 
 export const ServerBackupSchema = z.object({
   id: z
@@ -135,6 +135,10 @@ export const GetServerBackupOutputSchema = z.object({
     finished_at: true,
   }).extend({
     template: ServerBackupTemplateField,
+    operating_system: ServerOperatingSystemSchema.meta({
+      description:
+        "The operating system the archive contains, as the server reported it when the backup was taken. Not re-read on request: a backup holds the disk as it was, so a server that has since been reinstalled does not change what its older backups contain.",
+    }),
   }),
 });
 
@@ -187,6 +191,10 @@ export const ListServerBackupsOutputSchema = z.object({
       finished_at: true,
     }).extend({
       template: ServerBackupTemplateField,
+      operating_system: ServerOperatingSystemSchema.meta({
+        description:
+          "The operating system the archive contains, as the server reported it when the backup was taken.",
+      }),
     }),
   ),
   meta: z.object({

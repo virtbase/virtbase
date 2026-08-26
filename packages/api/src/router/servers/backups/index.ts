@@ -21,6 +21,7 @@ import { restoreServerBackupWorkflow } from "@virtbase/api/workflows";
 import { and, count, eq, isNull } from "@virtbase/db";
 import { proxmoxTemplates, serverBackups, servers } from "@virtbase/db/schema";
 import { buildOrderBy, createId } from "@virtbase/db/utils";
+import { resolveServerOperatingSystem } from "@virtbase/utils";
 import { getPaginationMeta } from "@virtbase/validators";
 import {
   CreateServerBackupInputSchema,
@@ -40,6 +41,37 @@ import { start } from "workflow/api";
 import { reconcileServerBackups } from "../../../backups";
 import { serverProcedure } from "../../../trpc";
 import { serversBackupsStatusRouter } from "./status";
+
+/**
+ * The operating system an archive contains.
+ *
+ * A backup carries its own snapshot of what the guest reported when it was
+ * taken, so this never consults the server: restoring gives back the disk as
+ * it was, and a server reinstalled since must not change what its older
+ * backups claim to hold.
+ *
+ * The backup's start is what the snapshot was observed at, so it is what the
+ * resolver is given - which makes `detected_at` on the result mean the same
+ * thing it means everywhere else.
+ */
+const backupOperatingSystem = (
+  source: {
+    detectedOsId: string | null;
+    detectedOsName: string | null;
+    templateName: string | null;
+    templateIcon: string | null;
+  },
+  startedAt: Date,
+) =>
+  resolveServerOperatingSystem({
+    server: {
+      detectedOsId: source.detectedOsId,
+      detectedOsName: source.detectedOsName,
+      detectedOsAt:
+        source.detectedOsId || source.detectedOsName ? startedAt : null,
+    },
+    template: { name: source.templateName, icon: source.templateIcon },
+  });
 
 export const serversBackupsRouter = {
   status: serversBackupsStatusRouter,
@@ -81,6 +113,15 @@ export const serversBackupsRouter = {
                     icon: proxmoxTemplates.icon,
                     name: proxmoxTemplates.name,
                   },
+              // Selected unconditionally, unlike `template`: the operating
+              // system is always reported, so its fallback has to be readable
+              // even when the caller did not expand the template.
+              osSource: {
+                detectedOsId: serverBackups.detectedOsId,
+                detectedOsName: serverBackups.detectedOsName,
+                templateName: proxmoxTemplates.name,
+                templateIcon: proxmoxTemplates.icon,
+              },
             })
             .from(serverBackups)
             .leftJoin(
@@ -109,8 +150,13 @@ export const serversBackupsRouter = {
         });
       }
 
+      const { osSource, ...rest } = backup;
+
       return {
-        backup,
+        backup: {
+          ...rest,
+          operating_system: backupOperatingSystem(osSource, rest.started_at),
+        },
       };
     }),
   list: serverProcedure
@@ -164,6 +210,15 @@ export const serversBackupsRouter = {
                     icon: proxmoxTemplates.icon,
                     name: proxmoxTemplates.name,
                   },
+              // Selected unconditionally, unlike `template`: the operating
+              // system is always reported, so its fallback has to be readable
+              // even when the caller did not expand the template.
+              osSource: {
+                detectedOsId: serverBackups.detectedOsId,
+                detectedOsName: serverBackups.detectedOsName,
+                templateName: proxmoxTemplates.name,
+                templateIcon: proxmoxTemplates.icon,
+              },
             })
             .from(serverBackups)
             .leftJoin(
@@ -200,6 +255,10 @@ export const serversBackupsRouter = {
           failed_at: item.failed_at,
           finished_at: item.finished_at,
           template: item.template,
+          operating_system: backupOperatingSystem(
+            item.osSource,
+            item.started_at,
+          ),
         })),
         meta: {
           pagination: getPaginationMeta({
@@ -306,6 +365,12 @@ export const serversBackupsRouter = {
                 typeof server.template === "string" || server.template === null
                   ? server.template
                   : server.template.id,
+              // Snapshotted, not looked up on read: this archive holds the
+              // disk as it is now, so what it contains is what the guest
+              // reports now - not what the server happens to run whenever
+              // somebody next opens the backups page.
+              detectedOsId: server.detectedOsId,
+              detectedOsName: server.detectedOsName,
             })
             .returning({
               id: serverBackups.id,
@@ -334,7 +399,26 @@ export const serversBackupsRouter = {
       );
 
       return {
-        backup: created,
+        backup: {
+          ...created,
+          // The backup was just taken from this server, so the server's
+          // template is the backup's template - no second read needed.
+          operating_system: backupOperatingSystem(
+            {
+              detectedOsId: server.detectedOsId,
+              detectedOsName: server.detectedOsName,
+              templateName:
+                typeof server.template === "object" && server.template !== null
+                  ? server.template.name
+                  : null,
+              templateIcon:
+                typeof server.template === "object" && server.template !== null
+                  ? server.template.icon
+                  : null,
+            },
+            created.started_at,
+          ),
+        },
       };
     }),
   update: serverProcedure
@@ -434,6 +518,8 @@ export const serversBackupsRouter = {
               failed_at: serverBackups.failedAt,
               finished_at: serverBackups.finishedAt,
               template: serverBackups.proxmoxTemplateId,
+              detectedOsId: serverBackups.detectedOsId,
+              detectedOsName: serverBackups.detectedOsName,
             })
             .then(([row]) => row);
 
@@ -451,8 +537,24 @@ export const serversBackupsRouter = {
         },
       );
 
+      const { detectedOsId, detectedOsName, ...backup } = updated;
+
       return {
-        backup: updated,
+        backup: {
+          ...backup,
+          // The template is not joined here, so an archive whose own snapshot
+          // is missing falls back to nothing rather than to the server's
+          // current template - which, after a rebuild, would be the wrong one.
+          operating_system: backupOperatingSystem(
+            {
+              detectedOsId,
+              detectedOsName,
+              templateName: null,
+              templateIcon: null,
+            },
+            backup.started_at,
+          ),
+        },
       };
     }),
   delete: serverProcedure

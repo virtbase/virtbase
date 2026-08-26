@@ -27,7 +27,7 @@ import type { LinkedInteractionContext } from "../../handlers/types";
 import { actionButton, row, select } from "../../ui/components";
 import { ConfirmMessage } from "../../ui/confirm";
 import { EMOJI } from "../../ui/emoji";
-import { timestamp } from "../../ui/format";
+import { escapeMarkdown, timestamp } from "../../ui/format";
 import type { MessageResponse, ResponseType } from "../../ui/message";
 import { message } from "../../ui/message";
 import { modal, modalValue } from "../../ui/modal";
@@ -123,9 +123,14 @@ const BackupsListMessage = async ({
                 t("Size: {size}", {
                   size: formatBytes(backup.size, { formatter }),
                 }),
-              typeof backup.template === "object" &&
-                backup.template !== null &&
-                `${emojis.forTemplate(backup.template)} ${backup.template.name}`.trim(),
+              backup.operating_system?.name &&
+                `${emojis.forOperatingSystem(backup.operating_system)} ${
+                  // [!] Guest-controlled when detected: this is the guest's own
+                  // PRETTY_NAME, and an embed field renders markdown.
+                  escapeMarkdown(
+                    truncate(backup.operating_system.name, 200) as string,
+                  )
+                }`.trim(),
             ]
               .filter((line): line is string => typeof line === "string")
               .join("\n"),
@@ -287,7 +292,9 @@ const renderList = async (
     server_id: serverId,
     page,
     per_page: PAGE_SIZE,
-    expand: ["template"],
+    // No expand: the operating system an archive holds is resolved from the
+    // backup row itself, so nothing here needs the template joined.
+    expand: [],
     sort: ["id:desc"],
   });
 

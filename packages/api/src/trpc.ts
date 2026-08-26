@@ -465,6 +465,11 @@ const serverMiddleware = authMiddleware.unstable_pipe(
 
     const server = {
       ...row,
+      // The raw columns as well as the resolved object: detection needs the
+      // timestamp to decide whether to re-probe, and a backup snapshots the id
+      // and the name so it can still say what it contains years later.
+      detectedOsId: osSource.detectedOsId,
+      detectedOsName: osSource.detectedOsName,
       detectedOsAt: osSource.detectedOsAt,
       operating_system: resolveServerOperatingSystem({
         server: osSource,

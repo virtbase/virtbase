@@ -40,6 +40,32 @@ export const serverBackups = d.snakeCase.table(
       onUpdate: "cascade",
     }),
     /**
+     * The guest's `os-release` `ID` at the moment the backup was taken.
+     *
+     * Snapshotted rather than read from the server, because a backup restores
+     * the disk as it was: a customer who took a backup of Debian and has since
+     * installed Arch would otherwise be told the archive contains Arch, and
+     * find out otherwise only after restoring it.
+     *
+     * Null for a backup taken before detection existed, or of a server whose
+     * agent never answered - the template is the fallback, as everywhere else.
+     *
+     * @example "debian"
+     * @default null
+     */
+    detectedOsId: d.text(),
+    /**
+     * The guest's `os-release` `PRETTY_NAME` at the moment the backup was
+     * taken.
+     *
+     * [!] Guest-controlled, and already sanitised when it was stored on the
+     * server row - see `servers.detectedOsName`.
+     *
+     * @example "Debian GNU/Linux 13 (trixie)"
+     * @default null
+     */
+    detectedOsName: d.text(),
+    /**
      * The user-defined name of the backup.
      *
      * @example "My backup"

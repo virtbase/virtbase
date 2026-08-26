@@ -56,7 +56,10 @@ export default function RestoreBackupDialog({
 
   const action = t("Restore backup");
   const backup = row.original;
-  const template = typeof backup.template === "object" ? backup.template : null;
+  // What the archive holds, snapshotted when the backup was taken - this is a
+  // "here is what you will get" confirmation, so it has to describe the disk
+  // rather than whatever the server happens to run today.
+  const operatingSystem = backup.operating_system;
 
   return (
     <ResponsiveDialog
@@ -104,8 +107,10 @@ export default function RestoreBackupDialog({
         <div className="space-y-2">
           <p>{t("The following operating system will be restored:")}</p>
           <div className="flex items-center gap-2">
-            <OperatingSystemIcon icon={template?.icon} />
-            <span className="truncate">{template?.name ?? t("Unknown")}</span>
+            <OperatingSystemIcon icon={operatingSystem?.icon} />
+            <span className="truncate">
+              {operatingSystem?.name ?? t("Unknown")}
+            </span>
           </div>
         </div>
         <p>{t("Should the backup be restored?")}</p>

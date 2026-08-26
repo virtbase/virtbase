@@ -72,6 +72,15 @@ export const useCreateBackup = ({
                       failed_at: null,
                       finished_at: null,
                       template: null,
+                      // Unknown until the server answers: the placeholder row
+                      // only has to survive until the real one replaces it.
+                      operating_system: {
+                        slug: null,
+                        name: null,
+                        icon: null,
+                        source: "unknown" as const,
+                        detected_at: null,
+                      },
                       is_locked: input.is_locked ?? false,
                       name: input.name,
                     },
