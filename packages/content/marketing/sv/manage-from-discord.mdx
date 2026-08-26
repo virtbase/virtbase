@@ -1,0 +1,156 @@
+---
+title: Manage your VPS from Discord
+description: Start, stop, back up and firewall every Virtbase server from inside Discord. Replies stay private even in a shared channel, and the bot never charges you.
+keywords:
+  - manage VPS from Discord
+  - Discord VPS bot
+  - VPS Discord integration
+  - game server hosting
+  - server bot
+---
+
+<Hero>
+
+# Your server, in the chat you already have open
+
+Power, backups, firewall and console for every server you rent, without opening
+a portal.
+
+</Hero>
+
+<Advantages>
+  <Advantage title="Only you can see it" icon="lock">
+    Every reply renders for you alone, even in a shared channel.
+  </Advantage>
+
+  <Advantage title="It acts as you" icon="shield">
+    The bot reaches only your own servers, with the portal's permission checks.
+  </Advantage>
+
+  <Advantage title="It never spends money" icon="server">
+    Upgrades and renewals link out to the portal. Nothing here costs you.
+  </Advantage>
+
+  <Advantage title="Wherever you already are" icon="network">
+    Your own Discord server, any server the bot is in, or a direct message.
+  </Advantage>
+</Advantages>
+
+<Features>
+  <Feature title="One menu, then buttons" demo="discord-bot" wide href="/help/article/discord-integration">
+    Run **/menu** once. Everything after that is buttons — no commands to
+    memorise and no syntax to get wrong.
+  </Feature>
+</Features>
+
+<Prose>
+
+## What the bot can actually do
+
+Most hosting bots report status. This one runs the server.
+
+You can start, reboot, shut down, force stop and hard reset, and read live CPU,
+memory, disk and network usage while you do it. You can create, restore, lock
+and delete [backups](/en/help/article/how-to-backup-server). You can review your
+[firewall rules](/en/help/article/how-to-use-server-firewall), add and delete
+them, and change the default policies. You can set the reverse DNS for each of
+your addresses, rename a server,
+[reinstall it](/en/help/article/how-to-change-operating-system) with a different
+operating system, mount an installer image, open a one-time console link and
+reset the administrator password.
+
+That is the same surface the customer portal gives you, minus billing. Anything
+that would charge you links out to the portal instead, which means handing
+someone the bot is not handing them your payment method.
+
+## Why chat instead of a dashboard
+
+A dashboard is somewhere you go. Discord is somewhere you already are.
+
+When a game server stops responding mid-session, the distance between noticing
+and fixing it is the whole problem. Opening a browser, finding the tab, logging
+in, navigating to the right server and pressing reboot is four or five steps
+during which everyone is still waiting. Typing **/menu** on your phone is one.
+
+This matters most for the people who run something with other people in it —
+community servers, game servers, small teams. The person who needs to restart
+the machine is often not the person who owns the hosting account, and getting
+them portal credentials is a bad answer to that problem.
+
+## Privacy in a shared channel
+
+The obvious objection to running infrastructure from a public chat is that a
+public chat is public.
+
+Every reply the bot sends is ephemeral: it renders only for the person who
+pressed the button, and it is gone when they dismiss it. Server names, IP
+addresses, usage graphs and console links are never visible to anyone else in
+the channel, and they are never written into the channel history.
+
+Destructive actions ask first. Restoring a backup, reinstalling an operating
+system and force-stopping a machine all require a confirmation step, so a
+mis-tapped button on a phone does not take a production server down. Console
+links are single-use and expire after ten seconds — long enough to click, short
+enough that a screenshot is worthless.
+
+## Roles for your community
+
+If you run a Discord community, the bot can grant roles from your Virtbase data
+without anybody checking manually: how many servers a member currently rents,
+whether their email address is verified, and how long they have been a customer.
+
+What it shares is exactly those three values, and only for the roles the server
+is configured to grant. Email addresses, server names and IP addresses are never
+passed to the Discord server.
+
+## Getting started
+
+Link your Discord account once on your
+[authentication settings](https://app.virtbase.com/account/settings/authentication)
+page, then run **/menu**. If you run it before linking, the bot walks you
+through the setup rather than showing an error.
+
+You do not need to add the bot to a server of your own — if it is already in a
+server you are a member of, it works there, and it works in direct messages.
+The full walkthrough is in
+[how do I manage my servers from Discord](/en/help/article/discord-integration).
+
+</Prose>
+
+<Faq title="Questions about the Discord bot">
+  <Question title="Can other people in the channel see my servers?">
+    No. Every reply is ephemeral, which means Discord renders it only for the
+    person who triggered it. Server names, addresses and console links never
+    appear in the channel for anyone else, and they are not stored in the
+    channel history.
+  </Question>
+
+  <Question title="Does the bot need admin permissions in my Discord server?">
+    No. It asks for permission to send messages and to answer slash commands,
+    and nothing else.
+  </Question>
+
+  <Question title="Can the bot spend money on my account?">
+    No. Upgrading a plan and renewing a server both link you through to the
+    customer portal. There is no purchase the bot can complete on its own.
+  </Question>
+
+  <Question title="Do I have to add the bot to my own Discord server?">
+    No. If the bot is already in a server you are a member of you can use it
+    there, and it also answers in direct messages. Adding it to your own server
+    is only necessary if you want it available to your own community.
+  </Question>
+
+  <Question title="What happens if someone else uses the bot in my server?">
+    They see their own servers, not yours. The bot identifies you by your linked
+    Virtbase account, and every action runs through the same permission checks
+    as the customer portal.
+  </Question>
+
+  <Question title="Which servers can I manage this way?">
+    Every server on your account. The bot is included on all plans at no extra
+    cost — there is nothing to enable and nothing to pay for.
+  </Question>
+</Faq>
+
+<Offers />
