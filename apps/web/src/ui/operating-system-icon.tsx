@@ -21,16 +21,26 @@ import NextImage from "next/image";
 
 export const OperatingSystemIcon = ({
   icon,
+  label,
   className,
 }: {
   icon?: string | null;
+  /**
+   * The operating system's name, for assistive technology.
+   *
+   * Omit where the name is already rendered next to the logo - repeating it
+   * makes a screen reader say it twice. Pass it where the logo stands alone,
+   * as in the servers list, because there it is the only thing identifying the
+   * operating system.
+   */
+  label?: string | null;
   className?: string;
 }) => {
   if (icon) {
     return (
       <NextImage
         src={icon}
-        alt=""
+        alt={label ?? ""}
         width={20}
         height={20}
         unoptimized
@@ -38,8 +48,7 @@ export const OperatingSystemIcon = ({
           "pointer-events-none size-5 shrink-0 select-none",
           className,
         )}
-        aria-hidden="true"
-        role="presentation"
+        {...(label ? {} : { "aria-hidden": true, role: "presentation" })}
       />
     );
   }

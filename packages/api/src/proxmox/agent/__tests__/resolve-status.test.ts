@@ -30,6 +30,7 @@ const healthy: GuestAgentProbe = {
 const debian: GuestOsInfo = {
   id: "debian",
   prettyName: "Debian GNU/Linux 12 (bookworm)",
+  name: null,
   version: "12 (bookworm)",
   kernelRelease: "6.1.0-18-amd64",
 };
@@ -134,6 +135,7 @@ describe("resolveAgentStatus", () => {
         os: {
           id: "mswindows",
           prettyName: "Windows Server 2022",
+          name: null,
           version: null,
           kernelRelease: null,
         },
@@ -163,6 +165,7 @@ describe("resolveAgentStatus", () => {
         os: {
           id: "mswindows",
           prettyName: "Windows Server 2022",
+          name: null,
           version: null,
           kernelRelease: null,
         },

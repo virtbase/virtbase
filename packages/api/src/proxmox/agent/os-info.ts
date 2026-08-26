@@ -15,29 +15,33 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { sanitizeGuestOsName, WINDOWS_OS_ID } from "@virtbase/utils";
 import type { ProxmoxVm } from "./types";
 import { unwrapAgentResult } from "./unwrap-result";
 
-/**
- * The `id` QEMU reports for a Windows guest.
- *
- * Every guest inspection Virtbase does - listening sockets, firewall rules -
- * assumes POSIX tooling, so this is the flag that keeps those probes from
- * running commands that cannot exist.
- */
-export const WINDOWS_OS_ID = "mswindows";
+// Re-exported so the agent module stays the one import for guest inspection.
+// The definition lives in `@virtbase/utils` because the operating system
+// catalog needs it too, and layer 0 is the only place both can reach.
+export { WINDOWS_OS_ID };
 
 export interface GuestOsInfo {
   /** `os-release` ID, e.g. `debian`, `ubuntu`, `rocky`, or `mswindows`. */
   id: string | null;
   /** `os-release` PRETTY_NAME, e.g. `Debian GNU/Linux 12 (bookworm)`. */
   prettyName: string | null;
+  /** `os-release` NAME, e.g. `Debian GNU/Linux`. */
+  name: string | null;
   version: string | null;
   kernelRelease: string | null;
 }
 
+/**
+ * Every string here comes out of `/etc/os-release` inside the customer's
+ * server, so it is sanitised at the boundary rather than at each of the places
+ * that store or render it.
+ */
 const asString = (value: unknown): string | null =>
-  typeof value === "string" && value.length > 0 ? value : null;
+  typeof value === "string" ? sanitizeGuestOsName(value) : null;
 
 /**
  * Reads the guest's operating system through the agent.
@@ -67,6 +71,7 @@ export const getGuestOsInfo = async (
   return {
     id: asString(info.id),
     prettyName: asString(info["pretty-name"]),
+    name: asString(info.name),
     version: asString(info.version),
     kernelRelease: asString(info["kernel-release"]),
   };

@@ -16,7 +16,9 @@
  */
 
 export * from "./analyze-firewall";
+export * from "./operating-system";
 export * from "./parse-iptables";
 export * from "./parse-listening-sockets";
 export * from "./parse-ufw";
+export * from "./server-operating-system";
 export * from "./types";

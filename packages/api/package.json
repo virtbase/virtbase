@@ -15,6 +15,10 @@
       "types": "./dist/backups.d.ts",
       "default": "./src/backups/index.ts"
     },
+    "./guest-os": {
+      "types": "./dist/guest-os/index.d.ts",
+      "default": "./src/guest-os/index.ts"
+    },
     "./integrations": {
       "types": "./dist/integrations.d.ts",
       "default": "./src/integrations/index.ts"

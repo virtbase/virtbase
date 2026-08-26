@@ -108,6 +108,62 @@ export const servers = d.snakeCase.table(
      * @default null
      */
     suspendedAt: d.timestamp({ withTimezone: true, mode: "date" }),
+    /**
+     * What the `qemu-guest-agent` last reported as the guest's `os-release`
+     * `ID` - `debian`, `ubuntu`, `mswindows`.
+     *
+     * This is the operating system actually running inside the server, which
+     * is not necessarily the one its template installed: a customer is free to
+     * install something else over it, or to boot a custom ISO. Every OS name
+     * and logo Virtbase shows prefers this over the template.
+     *
+     * @default null
+     */
+    detectedOsId: d.text(),
+    /**
+     * The guest's `os-release` `PRETTY_NAME`.
+     *
+     * [!] Guest-controlled. `/etc/os-release` is a file inside the customer's
+     * own server, so this is untrusted text and is stored only after
+     * `sanitizeGuestOsName` has stripped formatting characters and capped it.
+     * Escape it again at any sink that interprets markup.
+     *
+     * @example "Debian GNU/Linux 13 (trixie)"
+     * @default null
+     */
+    detectedOsName: d.text(),
+    /**
+     * The guest's `os-release` `VERSION`. Same trust level as
+     * {@link detectedOsName}.
+     *
+     * @example "13 (trixie)"
+     * @default null
+     */
+    detectedOsVersion: d.text(),
+    /**
+     * The running kernel, as `uname -r` would report it. Same trust level as
+     * {@link detectedOsName}.
+     *
+     * @example "6.12.48+deb13-amd64"
+     * @default null
+     */
+    detectedOsKernel: d.text(),
+    /**
+     * When the operating system was last *successfully* observed.
+     *
+     * Only ever written by a probe that got an answer. A failed probe - a
+     * stopped server, an uninstalled agent, a guest still booting - leaves
+     * both this and the columns above untouched, so the last known operating
+     * system stays on screen instead of the row blanking out. It is the
+     * rebuild workflows that clear all five, because there the old value is
+     * known to be wrong.
+     *
+     * Compared against the guest's boot time (`now - uptime`) to decide
+     * whether a running server has restarted since we last looked.
+     *
+     * @default null
+     */
+    detectedOsAt: d.timestamp({ withTimezone: true, mode: "date" }),
     createdAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
@@ -124,6 +180,8 @@ export const servers = d.snakeCase.table(
     d.index().on(t.proxmoxNodeId),
     d.index().on(t.proxmoxTemplateId),
     d.index().on(t.proxmoxIsoDownloadId),
+    // The detection cron scans stale-and-null-first across every server.
+    d.index().on(t.detectedOsAt),
     d.unique().on(t.proxmoxNodeId, t.vmid),
   ],
 );

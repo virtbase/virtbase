@@ -30,6 +30,7 @@ import {
   LucideServerOff,
   LucideTag,
 } from "@virtbase/ui/icons";
+import { resolveServerOperatingSystem } from "@virtbase/utils";
 import NextLink from "next/link";
 import { useExtracted, useFormatter, useNow } from "next-intl";
 import { use } from "react";
@@ -68,13 +69,22 @@ export function LatestServersList({
     <div className="divide-y">
       {servers.map((server) => {
         const href = paths.admin.servers.getHref({ name: server.name });
+        const os = resolveServerOperatingSystem({
+          server,
+          template: server.template,
+        });
+
         return (
           <div
             key={server.id}
             className="flex items-center justify-between gap-2 py-4 first:pt-0 last:pb-0"
           >
             <div className="flex items-center gap-2">
-              <OperatingSystemIcon icon={server.icon} className="size-8" />
+              <OperatingSystemIcon
+                icon={os.icon}
+                label={os.name}
+                className="size-8"
+              />
               <div className="flex flex-col">
                 <div className="flex items-center space-x-1.5">
                   <NextLink

@@ -34,7 +34,7 @@ import type { LinkedInteractionContext } from "../../handlers/types";
 import { actionButton, linkButton, row, select } from "../../ui/components";
 import { ConfirmMessage } from "../../ui/confirm";
 import { EMOJI } from "../../ui/emoji";
-import { timestamp } from "../../ui/format";
+import { escapeMarkdown, timestamp } from "../../ui/format";
 import type { MessageResponse } from "../../ui/message";
 import { message } from "../../ui/message";
 import { modal, modalValue } from "../../ui/modal";
@@ -53,7 +53,9 @@ const SettingsMessage = async ({
   emojis: EmojiResolver;
 }): Promise<MessageResponse> => {
   const t = await getExtracted({ namespace: "discord-integration", locale });
-  const template = typeof server.template === "object" ? server.template : null;
+  // A partial server - a fixture, or a future field that has not shipped -
+  // must cost the logo, never the screen.
+  const operatingSystem = server.operating_system ?? null;
 
   return message({
     type: InteractionResponseType.UpdateMessage,
@@ -66,12 +68,17 @@ const SettingsMessage = async ({
         description: t("Everything that changes what this server is."),
         fields: [
           { name: t("Name"), value: server.name },
-          ...(template
+          ...(operatingSystem?.name
             ? [
                 {
                   name: t("Operating System"),
-                  value:
-                    `${emojis.forTemplate(template)} ${template.name}`.trim(),
+                  value: `${emojis.forOperatingSystem(operatingSystem)} ${
+                    // [!] Guest-controlled when detected: this is the guest's
+                    // own PRETTY_NAME, and an embed field renders markdown.
+                    escapeMarkdown(
+                      truncate(operatingSystem.name, 200) as string,
+                    )
+                  }`.trim(),
                 },
               ]
             : []),

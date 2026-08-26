@@ -27,7 +27,7 @@ import { SubnetAllocationSchema } from "../subnet-allocations";
 import { SubnetSchema } from "../subnets";
 import { preprocessQueryArray } from "../utils";
 import type { Server } from "./shared";
-import { ServerSchema } from "./shared";
+import { ServerOperatingSystemSchema, ServerSchema } from "./shared";
 
 export const ServerExpandSchema = z
   .enum([
@@ -170,6 +170,7 @@ export const GetServerOutputSchema = z.object({
   }).extend({
     plan: ServerPlanField,
     template: ServerTemplateField,
+    operating_system: ServerOperatingSystemSchema,
     price: ServerPriceField,
     datacenter: ServerDatacenterField,
     node: ServerNodeField,
@@ -215,6 +216,7 @@ export const ListServersOutputSchema = z.object({
       terminates_at: true,
     }).extend({
       template: ServerTemplateField,
+      operating_system: ServerOperatingSystemSchema,
       plan: ServerPlanField,
       price: ServerPriceField,
       datacenter: ServerDatacenterField,

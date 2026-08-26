@@ -180,6 +180,7 @@ describe("getGuestOsInfo", () => {
     expect(await getGuestOsInfo(vm)).toEqual({
       id: "debian",
       prettyName: "Debian GNU/Linux 12 (bookworm)",
+      name: "Debian GNU/Linux",
       version: "12 (bookworm)",
       kernelRelease: "6.1.0-18-amd64",
     });
@@ -197,6 +198,7 @@ describe("getGuestOsInfo", () => {
     expect(await getGuestOsInfo(vm)).toEqual({
       id: "alpine",
       prettyName: null,
+      name: null,
       version: null,
       kernelRelease: null,
     });
@@ -209,6 +211,7 @@ describe("isPosixGuest", () => {
       isPosixGuest({
         id: "mswindows",
         prettyName: "Windows Server 2022",
+        name: null,
         version: null,
         kernelRelease: null,
       }),
@@ -220,6 +223,7 @@ describe("isPosixGuest", () => {
       isPosixGuest({
         id: "ubuntu",
         prettyName: null,
+        name: null,
         version: null,
         kernelRelease: null,
       }),

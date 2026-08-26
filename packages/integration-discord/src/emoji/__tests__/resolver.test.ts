@@ -125,3 +125,37 @@ test("emptyEmojiResolver renders nothing at all", () => {
   ).toBeUndefined();
   expect(emptyEmojiResolver.byName("vb_debian")).toBe("");
 });
+
+describe("forOperatingSystem", () => {
+  test("it renders the emoji for a resolved slug", async () => {
+    const resolver = await createEmojiResolver(live);
+
+    expect(resolver.forOperatingSystem({ slug: "debian" })).toBe(
+      "<:vb_debian:1>",
+    );
+  });
+
+  test("it takes the slug at face value rather than re-guessing", async () => {
+    // The API already decided this server runs Ubuntu; the bot must agree with
+    // the dashboard instead of matching a name for itself.
+    const resolver = await createEmojiResolver(live);
+
+    expect(resolver.forOperatingSystem({ slug: "ubuntu" })).toBe(
+      "<:vb_ubuntu:2>",
+    );
+  });
+
+  test("an unresolved, absent or never-uploaded operating system renders nothing", async () => {
+    const resolver = await createEmojiResolver(live);
+
+    expect(resolver.forOperatingSystem({ slug: null })).toBe("");
+    expect(resolver.forOperatingSystem(null)).toBe("");
+    expect(resolver.forOperatingSystem(undefined)).toBe("");
+    // In the catalog, but no emoji was uploaded for it.
+    expect(resolver.forOperatingSystem({ slug: "kali" })).toBe("");
+  });
+
+  test("the empty resolver renders nothing", () => {
+    expect(emptyEmojiResolver.forOperatingSystem({ slug: "debian" })).toBe("");
+  });
+});

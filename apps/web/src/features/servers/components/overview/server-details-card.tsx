@@ -30,9 +30,9 @@ import { isOperational } from "@virtbase/utils";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { CopyButton } from "@/ui/copy-button";
-import { OperatingSystemIcon } from "@/ui/operating-system-icon";
 import { useServer } from "../../hooks/use-server";
 import { useServerActionState } from "../../hooks/use-server-action-state";
+import { ServerOperatingSystem } from "./server-operating-system";
 
 export function ServerDetailsCard() {
   const t = useExtracted();
@@ -98,15 +98,8 @@ export function ServerDetailsCard() {
           <div className="flex flex-row items-center gap-2 truncate font-medium text-sm">
             {isPending || isError || !server ? (
               <Skeleton className="h-5 w-24" />
-            ) : typeof server.template !== "string" ? (
-              <div className="flex items-center gap-2">
-                <OperatingSystemIcon icon={server.template?.icon} />
-                <span className="truncate">
-                  {server.template?.name ?? t("Custom Image")}
-                </span>
-              </div>
             ) : (
-              <span className="truncate">-</span>
+              <ServerOperatingSystem server={server} />
             )}
           </div>
         </div>

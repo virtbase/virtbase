@@ -22,6 +22,7 @@ import {
   GetServerAgentStatusInputSchema,
   GetServerAgentStatusOutputSchema,
 } from "@virtbase/validators/server";
+import { storeDetectedOperatingSystem } from "../../guest-os";
 // Imported from the agent module rather than the `proxmox` barrel: router
 // tests replace that barrel wholesale to inject a fake instance, which would
 // otherwise take these helpers with it.
@@ -117,6 +118,14 @@ export const serversAgentRouter = {
             probeGuestAgent(vm),
             getGuestOsInfo(vm),
           ]);
+
+          // This endpoint reads `guest-get-osinfo` to decide whether the guest
+          // is one the POSIX probes can inspect. That reply is also the only
+          // authoritative answer to what the server is running, so it is kept
+          // rather than thrown away - the dashboard's logo and OS name come
+          // from it. Wrapped in the same cache as the probe, so it costs
+          // nothing extra and cannot be hammered.
+          await storeDetectedOperatingSystem(ctx.db, server.id, os);
 
           return {
             status: resolveAgentStatus({ configured, running, probe, os }),

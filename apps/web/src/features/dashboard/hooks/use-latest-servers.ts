@@ -31,7 +31,9 @@ interface GetLatestServers extends GetLatestServersInput {
 export const defaultGetLatestServersQuery = {
   sort: ["id:desc"],
   per_page: 5,
-  expand: ["template"],
+  // No expands: the operating system this list shows is resolved from the
+  // server row itself and needs no join.
+  expand: [],
 } satisfies GetLatestServersInput;
 
 export const useLatestServers = ({

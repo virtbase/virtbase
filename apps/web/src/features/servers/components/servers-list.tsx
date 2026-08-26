@@ -104,12 +104,13 @@ export function ServersList() {
           >
             <div className="flex items-center gap-5 px-4 py-2.5 text-sm sm:gap-8 md:gap-12">
               <div className="min-w-0 grow">
-                <div className="flex h-[60px] items-center gap-3 transition-[height]">
+                <div className="flex h-15 items-center gap-3 transition-[height]">
                   <OperatingSystemIcon
                     className="size-9 rounded-full bg-muted p-2"
-                    icon={server.template?.icon}
+                    icon={server.operating_system.icon}
+                    label={server.operating_system.name}
                   />
-                  <div className="h-[46px] min-w-0 overflow-hidden transition-[height]">
+                  <div className="h-11.5 min-w-0 overflow-hidden transition-[height]">
                     <div className="flex items-center gap-2">
                       <div className="min-w-0 shrink grow-0">
                         <div className="flex items-center gap-2">

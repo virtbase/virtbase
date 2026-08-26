@@ -83,3 +83,74 @@ export const ServerSchema = z.object({
 });
 
 export type Server = z.infer<typeof ServerSchema>;
+
+/**
+ * Where the reported operating system came from.
+ *
+ * Worth exposing rather than flattening away: `detected` is what the server is
+ * running, while `iso` and `template` are only what it was installed from and
+ * may be wrong by the time anybody reads them.
+ */
+export const ServerOperatingSystemSourceSchema = z.enum([
+  /** Read out of the running guest through the `qemu-guest-agent`. */
+  "detected",
+  /** Guessed from the ISO image currently mounted. */
+  "iso",
+  /** Guessed from the template the server was provisioned from. */
+  "template",
+  /** Nothing to go on. */
+  "unknown",
+]);
+
+export type ServerOperatingSystemSource = z.infer<
+  typeof ServerOperatingSystemSourceSchema
+>;
+
+/**
+ * The operating system a server is running.
+ *
+ * Not an expand: it is resolved from columns on the server row itself, so it
+ * costs nothing to include and is always present.
+ */
+export const ServerOperatingSystemSchema = z
+  .object({
+    slug: z
+      .string()
+      .nullable()
+      .meta({
+        description:
+          "Stable identifier for the operating system, or `null` when it could not be recognised.",
+        examples: ["debian"],
+      }),
+    name: z
+      .string()
+      .nullable()
+      .meta({
+        description:
+          "The operating system's name. When `source` is `detected` this is the guest's own `PRETTY_NAME`, so it is written by whoever controls the server and is not a value to trust.",
+        examples: ["Debian GNU/Linux 13 (trixie)"],
+      }),
+    icon: z
+      .string()
+      .nullable()
+      .meta({
+        description:
+          "Path to the operating system's logo, relative to the Virtbase app.",
+        examples: ["/assets/static/distros/debian.svg"],
+      }),
+    source: ServerOperatingSystemSourceSchema.meta({
+      description: "Where this information came from.",
+      example: "detected",
+    }),
+    detected_at: z
+      .date()
+      .nullable()
+      .meta({
+        description: `The timestamp the operating system was last read out of the running server ${RFC3339LINK}. \`null\` when it never was.`,
+        examples: [EXAMPLE_DATE],
+      }),
+  })
+  .meta({
+    description:
+      "The operating system running inside the server. Read from the `qemu-guest-agent` where possible, so it reflects what is actually installed rather than what the server was provisioned with.",
+  });

@@ -32,6 +32,10 @@
     {
       "path": "/api/cron/refresh-template-images",
       "schedule": "17 * * * *"
+    },
+    {
+      "path": "/api/cron/detect-guest-os",
+      "schedule": "*/30 * * * *"
     }
   ]
 }

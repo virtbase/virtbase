@@ -160,6 +160,11 @@ export const mockServer = {
   terminatesAt: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
   renewalReminderSentAt: new Date(),
   suspendedAt: null,
+  detectedOsId: null,
+  detectedOsName: null,
+  detectedOsVersion: null,
+  detectedOsKernel: null,
+  detectedOsAt: null,
   createdAt: new Date(),
   updatedAt: new Date(),
 } satisfies typeof servers.$inferSelect;

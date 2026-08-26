@@ -94,7 +94,7 @@ describe("getLatestServers", () => {
     expect(result).toEqual([]);
   });
 
-  test("it returns the latest servers with plan name and template icon", async () => {
+  test("it returns the latest servers with plan name and template", async () => {
     await testDb.insert(servers).values({
       ...mockServer,
       proxmoxTemplateId: mockProxmoxTemplate.id,
@@ -105,16 +105,34 @@ describe("getLatestServers", () => {
     expect(result).toHaveLength(1);
     expect(result[0]?.name).toBe(mockServer.name);
     expect(result[0]?.plan).toBe(mockServerPlan.name);
-    expect(result[0]?.icon).toBe(mockProxmoxTemplate.icon);
+    expect(result[0]?.template?.icon).toBe(mockProxmoxTemplate.icon);
   });
 
-  test("it returns null icon when server has no template", async () => {
+  test("it returns no template when the server has none", async () => {
     await testDb.insert(servers).values(mockServer);
 
     const result = await getLatestServers();
 
     expect(result).toHaveLength(1);
-    expect(result[0]?.icon).toBeNull();
+    expect(result[0]?.template?.icon ?? null).toBeNull();
+  });
+
+  test("it carries the detected operating system, which the list prefers", async () => {
+    // The template says one thing, the guest another - the row has to expose
+    // both so the list can pick the guest.
+    await testDb.insert(servers).values({
+      ...mockServer,
+      proxmoxTemplateId: mockProxmoxTemplate.id,
+      detectedOsId: "arch",
+      detectedOsName: "Arch Linux",
+      detectedOsAt: new Date(),
+    });
+
+    const result = await getLatestServers();
+
+    expect(result[0]?.detectedOsId).toBe("arch");
+    expect(result[0]?.detectedOsName).toBe("Arch Linux");
+    expect(result[0]?.detectedOsAt).not.toBeNull();
   });
 
   test("it limits results to 5 and orders by id descending", async () => {

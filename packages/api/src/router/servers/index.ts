@@ -29,6 +29,7 @@ import {
   subnets,
 } from "@virtbase/db/schema";
 import { buildOrderBy } from "@virtbase/db/utils";
+import { resolveServerOperatingSystem } from "@virtbase/utils";
 import { getPaginationMeta } from "@virtbase/validators";
 import {
   GetServerInputSchema,
@@ -92,6 +93,7 @@ export const serversRouter = {
           plan: server.plan,
           price: server.price,
           template: server.template,
+          operating_system: server.operating_system,
           datacenter: server.datacenter,
           node: server.node,
           allocations: server.allocations,
@@ -170,6 +172,18 @@ export const serversRouter = {
                     icon: proxmoxTemplates.icon,
                     name: proxmoxTemplates.name,
                   },
+              // Selected unconditionally, unlike `template` and `mount`: the
+              // operating system is always reported, so its fallbacks have to
+              // be readable even when the caller expanded neither.
+              osSource: {
+                detectedOsId: servers.detectedOsId,
+                detectedOsName: servers.detectedOsName,
+                detectedOsAt: servers.detectedOsAt,
+                templateName: proxmoxTemplates.name,
+                templateIcon: proxmoxTemplates.icon,
+                mountName: proxmoxIsoDownloads.name,
+                mountUrl: proxmoxIsoDownloads.url,
+              },
               datacenter: !input.expand.includes("datacenter")
                 ? datacenters.id
                 : {
@@ -291,6 +305,17 @@ export const serversRouter = {
           id: item.id,
           name: item.name,
           template: item.template,
+          operating_system: resolveServerOperatingSystem({
+            server: item.osSource,
+            mount: {
+              name: item.osSource.mountName,
+              url: item.osSource.mountUrl,
+            },
+            template: {
+              name: item.osSource.templateName,
+              icon: item.osSource.templateIcon,
+            },
+          }),
           plan: item.plan,
           price: item.price,
           datacenter: item.datacenter,

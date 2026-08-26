@@ -38,9 +38,17 @@ export const getLatestServers = cache(async () => {
           .select({
             id: servers.id,
             name: servers.name,
-            icon: proxmoxTemplates.icon,
             createdAt: servers.createdAt,
             plan: serverPlans.name,
+            // What the server is running, which is not necessarily what its
+            // template installed - see `resolveServerOperatingSystem`.
+            detectedOsId: servers.detectedOsId,
+            detectedOsName: servers.detectedOsName,
+            detectedOsAt: servers.detectedOsAt,
+            template: {
+              name: proxmoxTemplates.name,
+              icon: proxmoxTemplates.icon,
+            },
           })
           .from(servers)
           .leftJoin(

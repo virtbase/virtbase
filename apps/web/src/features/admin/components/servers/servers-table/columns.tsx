@@ -37,6 +37,7 @@ import {
   LucideTrash2,
 } from "@virtbase/ui/icons/index";
 import type { DataTableRowAction } from "@virtbase/ui/types";
+import { resolveServerOperatingSystem } from "@virtbase/utils";
 import NextLink from "next/link";
 import { useExtracted, useFormatter } from "next-intl";
 import type { getServerTemplateCounts } from "@/features/admin/api/servers/get-server-template-counts";
@@ -170,6 +171,50 @@ export function useServersTableColumns({
         icon: LucideTag,
       },
       enableColumnFilter: true,
+    },
+    {
+      // Separate from `template` on purpose. That column is the foreign key an
+      // operator filters and navigates by; this one is what the server is
+      // actually running, which is only the same thing until a customer
+      // installs something else over it.
+      id: "operatingSystem",
+      accessorFn: (row) => row.detectedOsName,
+      header: ({ column }) => (
+        <DataTableColumnHeader column={column} label={t("Operating System")} />
+      ),
+      cell: ({ row }) => {
+        const os = resolveServerOperatingSystem({
+          server: row.original,
+          template: row.original.template,
+        });
+
+        if (!os.name) {
+          return <span className="text-muted-foreground">-</span>;
+        }
+
+        return (
+          <div className="flex items-center gap-1.5">
+            <OperatingSystemIcon icon={os.icon} />
+            <span className="line-clamp-1 max-w-48 truncate">{os.name}</span>
+            {os.source === "detected" ? null : (
+              // The template or the ISO, not the guest - worth flagging, since
+              // an operator reading this column is usually trying to find out
+              // what a server really is.
+              <span
+                className="text-muted-foreground text-xs"
+                title={t("Not read from inside the server")}
+              >
+                ?
+              </span>
+            )}
+          </div>
+        );
+      },
+      meta: {
+        label: t("Operating System"),
+        icon: LucideTag,
+      },
+      enableSorting: false,
     },
     {
       id: "user",

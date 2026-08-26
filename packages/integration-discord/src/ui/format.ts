@@ -84,3 +84,18 @@ export const timestamp = (
 
   return `<t:${Math.floor(date.getTime() / 1000)}:${style}>`;
 };
+
+/**
+ * Neutralises Discord markdown in text Virtbase did not write.
+ *
+ * Embed field values are rendered as markdown, so a string that came from
+ * outside - a server name the customer chose, an operating system name read
+ * out of `/etc/os-release` inside their guest - can otherwise style itself,
+ * or render as a link pointing anywhere. Mentions are not a concern inside an
+ * embed, because Discord does not resolve them there; formatting and links
+ * are.
+ *
+ * Escapes rather than strips, so the text still reads as what it says.
+ */
+export const escapeMarkdown = (value: string): string =>
+  value.replace(/[\\*_~`|<>[\]()#-]/g, (character) => `\\${character}`);

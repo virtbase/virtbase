@@ -16,13 +16,22 @@
  */
 
 import type { TRPCRouterRecord } from "@trpc/server";
-import { mapProxmoxServerStatus, mapProxmoxTaskStatus } from "@virtbase/utils";
+import {
+  mapProxmoxServerStatus,
+  mapProxmoxTaskStatus,
+  ProxmoxServerStatus,
+} from "@virtbase/utils";
 import {
   GetServerStatusInputSchema,
   GetServerStatusOutputSchema,
   UpdateServerStatusInputSchema,
   UpdateServerStatusOutputSchema,
 } from "@virtbase/validators/server";
+import {
+  invalidateDetectionGuard,
+  isDetectionStale,
+  refreshServerOperatingSystem,
+} from "../../guest-os";
 import { getLastTask, performPowerAction } from "../../proxmox";
 import { getDiskInfo } from "../../proxmox/get-disk-info";
 import { serverProcedure } from "../../trpc";
@@ -52,6 +61,32 @@ export const serversStatusRouter = {
         instance.vm.status.current.$get(),
         getLastTask(instance, server.vmid),
       ]);
+
+      const running =
+        mapProxmoxServerStatus(statusResponse) === ProxmoxServerStatus.RUNNING;
+
+      // This is the "queried at startup" path. Proxmox cannot tell us a guest
+      // rebooted, but it reports uptime, and a boot that happened after our
+      // last successful look means the server may have been reinstalled since.
+      // Checking it here rather than on a timer is what makes a customer who
+      // installs a different operating system see it appear on its own.
+      //
+      // The staleness test is free and runs first; only a stale server reaches
+      // the guarded probe, which is what keeps this poll - five seconds, from
+      // every open tab - off the customer's server.
+      if (
+        isDetectionStale({
+          server,
+          running,
+          uptime: statusResponse.uptime,
+        })
+      ) {
+        await refreshServerOperatingSystem({
+          db: ctx.db,
+          vm: instance.vm,
+          server,
+        });
+      }
 
       let disk: number | null = null;
       if (
@@ -129,5 +164,11 @@ export const serversStatusRouter = {
         vm: instance.vm,
         action,
       });
+
+      // A customer who just restarted their server may have installed
+      // something else while it was down. Dropping the guard means the next
+      // status poll re-reads the operating system straight away instead of
+      // waiting the rate limit out.
+      await invalidateDetectionGuard(ctx.server.id);
     }),
 } satisfies TRPCRouterRecord;

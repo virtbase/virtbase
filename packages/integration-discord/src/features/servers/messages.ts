@@ -40,7 +40,13 @@ import {
   select,
 } from "../../ui/components";
 import { EMOJI } from "../../ui/emoji";
-import { formatUptime, stateEmoji, timestamp, usageBar } from "../../ui/format";
+import {
+  escapeMarkdown,
+  formatUptime,
+  stateEmoji,
+  timestamp,
+  usageBar,
+} from "../../ui/format";
 import type { MessageResponse, ResponseType } from "../../ui/message";
 import { message } from "../../ui/message";
 import { createEmbed } from "../../utils/create-embed";
@@ -90,8 +96,8 @@ export const ServersListMessage = async ({
             }
           : {}),
         fields: servers.map((server) => ({
-          name: `${emojis.forTemplate(
-            typeof server.template === "object" ? server.template : null,
+          name: `${emojis.forOperatingSystem(
+            server.operating_system,
           )} ${truncate(server.name, 200)}`.trim(),
           value: [
             typeof server.plan === "object" &&
@@ -229,7 +235,9 @@ export const ServerOverviewMessage = async ({
   const t = await getExtracted({ namespace: "discord-integration", locale });
   const formatter = await getFormatter({ locale });
 
-  const template = typeof server.template === "object" ? server.template : null;
+  // A partial server - a fixture, or a future field that has not shipped -
+  // must cost the logo, never the screen.
+  const operatingSystem = server.operating_system ?? null;
   const stats = status?.stats;
 
   return message({
@@ -279,12 +287,17 @@ export const ServerOverviewMessage = async ({
               ]
             : []),
           { name: "ID", value: server.id },
-          ...(template
+          ...(operatingSystem?.name
             ? [
                 {
                   name: t("Operating System"),
-                  value:
-                    `${emojis.forTemplate(template)} ${template.name}`.trim(),
+                  value: `${emojis.forOperatingSystem(operatingSystem)} ${
+                    // [!] Guest-controlled when detected: this is the guest's
+                    // own PRETTY_NAME, and an embed field renders markdown.
+                    escapeMarkdown(
+                      truncate(operatingSystem.name, 200) as string,
+                    )
+                  }`.trim(),
                 },
               ]
             : []),

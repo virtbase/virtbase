@@ -92,3 +92,38 @@ export const invalidateCached = async (key: string): Promise<void> => {
     Sentry.captureException(error);
   }
 };
+
+/**
+ * Claims a key, returning whether the caller is the one that got it.
+ *
+ * The rate limiter for work that has no result worth caching - probing a
+ * customer's server for its operating system, say, where the answer goes to
+ * Postgres rather than to Redis. `SET NX EX` makes the claim atomic, so
+ * several tabs polling the same server at once produce one probe between them
+ * rather than one each.
+ *
+ * Fails **open**: an unreachable Redis returns `true` and the work runs. That
+ * is the opposite choice from {@link cached}, and deliberate - a guard that
+ * fails closed would silently stop detection entirely rather than merely stop
+ * throttling it.
+ *
+ * @param key - Unique per subject, e.g. `guest-os:kvm_123`.
+ * @param ttlSeconds - How long the claim is held before anyone may claim again.
+ */
+export const once = async (
+  key: string,
+  ttlSeconds: number,
+): Promise<boolean> => {
+  try {
+    const claimed = await redis.set(`${PREFIX}${key}`, Date.now(), {
+      nx: true,
+      ex: ttlSeconds,
+    });
+
+    return claimed === "OK";
+  } catch (error) {
+    Sentry.captureException(error);
+
+    return true;
+  }
+};

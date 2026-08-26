@@ -15,10 +15,11 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { resolveOperatingSystem } from "@virtbase/utils";
 import type { APIEmoji, APIMessageComponentEmoji } from "discord-api-types/v10";
 import type { DiscordClient } from "../api";
 import { listEmojis } from "../api";
-import { EMOJI_MANIFEST } from "./manifest";
+import { emojiNameForSlug } from "./manifest";
 
 /** What a template's logo is looked up from: its name, or its icon path. */
 type TemplateLike =
@@ -27,7 +28,16 @@ type TemplateLike =
   | undefined;
 
 /**
- * Turns a template into its distro logo.
+ * What a server's logo is looked up from: the slug the API already resolved.
+ *
+ * A server carries a detected operating system, which is the one the customer
+ * is actually running - so the bot reads that rather than guessing from the
+ * template, and gets the same answer the dashboard shows.
+ */
+type OperatingSystemLike = { slug?: string | null } | null | undefined;
+
+/**
+ * Turns an operating system into its distro logo.
  *
  * Never throws and never produces half-formed markup: an unknown OS, an emoji
  * that was never uploaded, and a Discord API that would not answer all degrade
@@ -35,6 +45,14 @@ type TemplateLike =
  */
 export interface EmojiResolver {
   /** `<:vb_debian:123>` for embed text, or `""` when nothing matches. */
+  forOperatingSystem(os: OperatingSystemLike): string;
+  /**
+   * A template's logo, guessed from its name and icon path.
+   *
+   * Only for the places that show a template rather than a server - the
+   * operating system picker, where nothing is installed yet. Anywhere a server
+   * exists, {@link EmojiResolver.forOperatingSystem} is the right question.
+   */
   forTemplate(template: TemplateLike): string;
   /**
    * The same emoji in the object form components take.
@@ -55,6 +73,7 @@ const render = (emoji: Pick<APIEmoji, "id" | "name" | "animated">): string =>
 
 /** A resolver that renders nothing. Used when the emoji list is unavailable. */
 export const emptyEmojiResolver: EmojiResolver = {
+  forOperatingSystem: () => "",
   forTemplate: () => "",
   componentForTemplate: () => undefined,
   byName: () => "",
@@ -98,24 +117,27 @@ export const createEmojiResolver = async (
     return emoji ? render(emoji) : "";
   };
 
+  /** The uploaded emoji for a catalog slug. */
+  const bySlug = (slug: string | null | undefined) =>
+    typeof slug === "string"
+      ? byEmojiName.get(emojiNameForSlug(slug))
+      : undefined;
+
   /** The uploaded emoji matching a template, by name then by icon path. */
   const match = (template: TemplateLike) => {
     if (!template) return undefined;
 
-    const haystack = [template.name, template.icon]
-      .filter((value): value is string => typeof value === "string")
-      .join(" ");
-    if (!haystack) return undefined;
-
-    const descriptor = EMOJI_MANIFEST.find((entry) =>
-      entry.match.test(haystack),
+    return bySlug(
+      resolveOperatingSystem({ text: [template.name, template.icon] })?.slug,
     );
-
-    return descriptor ? byEmojiName.get(descriptor.name) : undefined;
   };
 
   return {
     byName: lookup,
+    forOperatingSystem: (os) => {
+      const emoji = bySlug(os?.slug);
+      return emoji ? render(emoji) : "";
+    },
     forTemplate: (template) => {
       const emoji = match(template);
       return emoji ? render(emoji) : "";

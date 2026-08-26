@@ -31,7 +31,12 @@ import {
   subnetAllocations,
   subnets,
 } from "@virtbase/db/schema";
-import { isInstalling, isSuspended, isTerminated } from "@virtbase/utils";
+import {
+  isInstalling,
+  isSuspended,
+  isTerminated,
+  resolveServerOperatingSystem,
+} from "@virtbase/utils";
 import type { APIKeyPermissions } from "@virtbase/validators";
 import type { ServerExpand } from "@virtbase/validators/server";
 import { GetServerInputSchema } from "@virtbase/validators/server";
@@ -376,6 +381,18 @@ const serverMiddleware = authMiddleware.unstable_pipe(
                   finished_at: proxmoxIsoDownloads.finishedAt,
                   failed_at: proxmoxIsoDownloads.failedAt,
                 },
+            // Selected unconditionally, unlike `template` and `mount`: the
+            // operating system is always reported, so its fallbacks have to be
+            // readable even when the caller expanded neither.
+            osSource: {
+              detectedOsId: servers.detectedOsId,
+              detectedOsName: servers.detectedOsName,
+              detectedOsAt: servers.detectedOsAt,
+              templateName: proxmoxTemplates.name,
+              templateIcon: proxmoxTemplates.icon,
+              mountName: proxmoxIsoDownloads.name,
+              mountUrl: proxmoxIsoDownloads.url,
+            },
             proxmoxNode: {
               id: proxmoxNodes.id,
               hostname: proxmoxNodes.hostname,
@@ -444,7 +461,17 @@ const serverMiddleware = authMiddleware.unstable_pipe(
     );
 
     // [!] Split sensitive data from server data
-    const { proxmoxNode, ...server } = result;
+    const { proxmoxNode, osSource, ...row } = result;
+
+    const server = {
+      ...row,
+      detectedOsAt: osSource.detectedOsAt,
+      operating_system: resolveServerOperatingSystem({
+        server: osSource,
+        mount: { name: osSource.mountName, url: osSource.mountUrl },
+        template: { name: osSource.templateName, icon: osSource.templateIcon },
+      }),
+    };
 
     if (meta?.forbiddenStates && meta.forbiddenStates.length > 0) {
       if (

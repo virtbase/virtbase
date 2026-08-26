@@ -16,6 +16,9 @@
  */
 
 import { sleep } from "workflow";
+// Imported from the leaf rather than the `guest-os` barrel: that barrel
+// reaches Redis and therefore `node:crypto`, which a workflow cannot load.
+import { CLEARED_OPERATING_SYSTEM } from "../../guest-os/columns";
 import type { GetProxmoxInstanceParams } from "../../proxmox/get-proxmox-instance";
 import { applyCloudInitStep } from "../shared/apply-cloud-init";
 import {
@@ -89,6 +92,11 @@ export async function changeTempalateWorkflow({
       serverId,
       data: {
         installedAt: null,
+        // The disk is about to be replaced, so whatever operating system was
+        // detected on it is known to be wrong rather than merely old - the one
+        // case where forgetting it beats keeping it. The display falls back to
+        // the template until the rebuilt guest announces itself.
+        ...CLEARED_OPERATING_SYSTEM,
       },
     });
 

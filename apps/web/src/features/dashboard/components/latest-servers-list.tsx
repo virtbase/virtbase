@@ -58,12 +58,11 @@ export function LatestServersList() {
               >
                 {server.name}
               </NextLink>
-              {server.template && typeof server.template === "object" && (
-                <OperatingSystemIcon
-                  icon={server.template.icon}
-                  className="size-3"
-                />
-              )}
+              <OperatingSystemIcon
+                icon={server.operating_system.icon}
+                label={server.operating_system.name}
+                className="size-3"
+              />
             </div>
             <ServerStatusSmall server={server} />
           </div>

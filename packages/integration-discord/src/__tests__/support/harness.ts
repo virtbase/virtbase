@@ -176,6 +176,7 @@ export const silentLogger = {
 };
 
 export const noEmojis: EmojiResolver = {
+  forOperatingSystem: () => "",
   forTemplate: () => "",
   componentForTemplate: () => undefined,
   byName: () => "",

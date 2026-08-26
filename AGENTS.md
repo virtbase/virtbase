@@ -257,6 +257,59 @@ writes none, and an exit status of `WARNINGS: n` is treated as a success as
 long as the archive carrying the backup's id is on the storage. Deleting a
 failed backup therefore only drops the row.
 
+## Guest operating system
+
+The operating system Virtbase shows for a server is read out of the guest, not
+taken from the template it was provisioned with. A customer is free to install
+something else over the template, or to install a completely different system
+from a custom ISO, and neither shows up anywhere else.
+
+`servers.detected_os_*` holds the last successful reading of the guest's
+`os-release`, through `guest-get-osinfo` on the `qemu-guest-agent`.
+`packages/api/src/guest-os` owns all of it.
+
+**Precedence.** `resolveServerOperatingSystem()` answers detection first, then
+the mounted ISO, then the template, then nothing. Detection wins even when it
+is old: during a reinstall the agent stops answering, and holding the last
+known system until the new one announces itself is less wrong than flipping the
+logo to an installer that may never finish.
+
+**A failed probe never overwrites.** `detected_os_at` means *last successful
+observation*. A stopped server, an uninstalled agent, a guest still booting -
+all of them write nothing, so the last known system stays on screen instead of
+the row blanking out. The only things that clear the columns are the workflows
+that replace a server's disk (`change-template`, `restore-server-backup`, via
+`CLEARED_OPERATING_SYSTEM`), where the old value is known to be wrong rather
+than merely old.
+
+**Freshness comes from uptime, not a timer.** Proxmox cannot tell us a guest
+rebooted, but `status.current` reports `uptime`, so a boot later than the last
+successful reading means the server may have been reinstalled since -
+`isDetectionStale()`. The status endpoint is already polled every five seconds,
+so checking there catches a reinstall within a minute without a second poller.
+A Redis guard (`once()`, 60s) keeps that to one probe per server per minute,
+and doubles as the retry cadence while the agent is still coming up.
+`/api/cron/detect-guest-os` sweeps the servers nobody has open, which is what
+the Discord bot and the admin console read.
+
+**The logo is never guest-supplied.** `OPERATING_SYSTEMS` in
+`@virtbase/utils` maps an `os-release` ID - or, for a template or an ISO, free
+text - onto a slug, a label and a path under
+`apps/web/public/assets/static/distros`. A customer controls only the *name*,
+which is `PRETTY_NAME` out of a file inside their own server: untrusted text,
+sanitised by `sanitizeGuestOsName()` before it is stored and escaped again at
+any sink that renders markup, such as a Discord embed field.
+
+The catalog is also what the Discord emoji manifest is built from, so the bot's
+logos and the dashboard's cannot drift. Adding a distribution means adding a
+catalog entry, dropping `<slug>.svg` next to the others, and re-running
+`bun -F @virtbase/integration-discord rasterize-emojis`.
+
+`bun script dev/verify-guest-os` proves the whole path against the local
+cluster: it builds a Debian guest from a template that deliberately claims
+AlmaLinux, boots it, and checks that what ends up in the database and on screen
+is Debian.
+
 ## Secrets and Env Safety
 
 Always treat environment variable values as sensitive unless they are known test-mode flags.

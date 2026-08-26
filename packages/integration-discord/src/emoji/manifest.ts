@@ -15,19 +15,23 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { OPERATING_SYSTEMS } from "@virtbase/utils";
+
 /**
  * One application emoji this package owns.
  *
- * `match` is tried against a template's name and its icon path, so
- * "Debian 12 (Bookworm)" and "/assets/static/distros/debian.svg" both resolve
- * to the same emoji without the template table having to know about Discord.
+ * Derived from the shared operating system catalog rather than listed here, so
+ * the bot's logos and the dashboard's cannot drift apart: a distribution added
+ * to the catalog gets a Discord emoji by re-running the rasterizer, and one
+ * removed from it stops being uploaded.
  */
 export interface EmojiDescriptor {
   /** Discord emoji name: alphanumeric and underscores, 2-32 characters. */
   name: string;
   /** File under `assets/emoji`, produced by `scripts/rasterize-emojis.ts`. */
   file: string;
-  match: RegExp;
+  /** The catalog slug this emoji renders. */
+  slug: string;
 }
 
 /**
@@ -38,30 +42,13 @@ export interface EmojiDescriptor {
  */
 export const EMOJI_PREFIX = "vb_";
 
-const distro = (slug: string, match: RegExp): EmojiDescriptor => ({
-  name: `${EMOJI_PREFIX}${slug}`,
-  file: `${slug}.png`,
-  match,
-});
+/** The emoji name for a catalog slug. */
+export const emojiNameForSlug = (slug: string) => `${EMOJI_PREFIX}${slug}`;
 
-/**
- * Order matters: the first match wins, so a more specific pattern has to come
- * before the family it belongs to. `almalinux` and `rocky` before `centos`,
- * because both describe themselves as CentOS-compatible in their names.
- */
-export const EMOJI_MANIFEST: EmojiDescriptor[] = [
-  distro("almalinux", /alma/i),
-  distro("rocky", /rocky/i),
-  distro("centos", /cent\s*os/i),
-  distro("debian", /debian/i),
-  distro("ubuntu", /ubuntu/i),
-  distro("fedora", /fedora/i),
-  distro("alpine", /alpine/i),
-  distro("archlinux", /arch/i),
-  distro("kali", /kali/i),
-  distro("nixos", /nix/i),
-  distro("freebsd", /(free)?bsd/i),
-  distro("windows", /windows|win\s*(server|10|11)/i),
-  distro("proxmox", /proxmox/i),
-  distro("3cx", /3cx/i),
-];
+export const EMOJI_MANIFEST: EmojiDescriptor[] = OPERATING_SYSTEMS.map(
+  ({ slug }) => ({
+    name: emojiNameForSlug(slug),
+    file: `${slug}.png`,
+    slug,
+  }),
+);
