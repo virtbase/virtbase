@@ -147,6 +147,17 @@ const stripePolicy = {
   "img-src": ["https://*.stripe.com"],
 } satisfies SecurityPolicyEntry;
 
+/**
+ * The help articles' video embeds.
+ *
+ * Only `frame-src`, and only the no-cookie domain: the poster is served from
+ * this origin and the iframe is not mounted until the reader presses play, so
+ * nothing here is needed to render an article. See `ui/fumadocs/video.tsx`.
+ */
+const youtubePolicy = {
+  "frame-src": ["https://www.youtube-nocookie.com"],
+} satisfies SecurityPolicyEntry;
+
 const scalarApiReferencePolicy = {
   "object-src": ["blob:"],
   "frame-src": ["blob:"],
@@ -160,5 +171,6 @@ export const contentSecurityPolicy = generateCSPHeader([
   sentryPolicy,
   stripePolicy,
   noVNCPolicy,
+  youtubePolicy,
   scalarApiReferencePolicy,
 ]);

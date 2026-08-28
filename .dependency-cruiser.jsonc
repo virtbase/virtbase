@@ -12,10 +12,10 @@
   "forbidden": [
     {
       "name": "no-test-helpers-in-shipped-code",
-      "comment": "Test harnesses must never reach production code. `options.exclude.path` skips `__tests__`, and `apps/web/e2e` is exempted here, so anything that trips this rule is a real module that would ship a PGlite database, Testing Library or a fixture object to users.",
+      "comment": "Test harnesses must never reach production code. `options.exclude.path` skips `__tests__`, and `apps/web/e2e` and `apps/web/scripts` are exempted here - neither is bundled into the app, and the dev scripts deliberately drive the real fixtures and workflow steps rather than reimplementing them. Anything else that trips this rule is a real module that would ship a PGlite database, Testing Library or a fixture object to users.",
       "severity": "error",
       "from": {
-        "pathNot": "^(packages/(test-utils/src|api/src/testing)|apps/web/e2e)/"
+        "pathNot": "^(packages/(test-utils/src|api/src/testing)|apps/web/(e2e|scripts))/"
       },
       "to": {
         "path": "^packages/(test-utils/src|api/src/testing)/"

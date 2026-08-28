@@ -10,8 +10,9 @@ coverage
 test-results
 playwright-report
 
-# Playwright storage state: real session cookies, minted per run
-e2e/.auth
+# Playwright storage state: real session cookies, minted per run. Unanchored:
+# the files live in apps/web/e2e/.auth, which a root-relative pattern misses.
+**/e2e/.auth/
 playwright/.cache
 
 # next.js
@@ -73,3 +74,7 @@ apps/web/.source
 
 # Workflow SDK
 apps/web/public/.well-known/workflow
+
+# Recorded feature videos and their subtitles, plus the toolchain and frames
+# the recorder fetches. Large, regenerable, and never reviewed in a diff.
+videos/

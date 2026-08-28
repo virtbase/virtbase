@@ -43,6 +43,7 @@ import { constructAlternateLanguages } from "@/lib/hreflang";
 import { getDocumentLocales, helpArticles } from "@/lib/source";
 import { HelpHint } from "@/ui/fumadocs/help-hint";
 import { TableOfContents } from "@/ui/fumadocs/table-of-contents";
+import { Video } from "@/ui/fumadocs/video";
 import { BreadcrumbJsonLd } from "@/ui/seo/breadcrumb-json-ld";
 
 export async function generateStaticParams() {
@@ -176,6 +177,7 @@ export default async function HelpArticlePage({
                   />
                 ),
                 Hint: HelpHint,
+                Video,
               }}
             />
           </article>
