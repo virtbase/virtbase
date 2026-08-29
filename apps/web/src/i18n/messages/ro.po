@@ -13,7 +13,105 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Romanian\n"
-"PO-Revision-Date: 2026-08-28 08:56\n"
+"PO-Revision-Date: 2026-08-29 11:19\n"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "lYlalx"
+msgstr "AbuseIPDB"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "utGnBr"
+msgstr "Scanează propriile noastre intervale de adrese după raportări împotriva lor și verifică reputația unei adrese anume."
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "cZ2pIN"
+msgstr "Prag de încredere"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "KhnDzH"
+msgstr "Sub acest scor, o adresă raportată este ignorată."
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "osZi7I"
+msgstr "Vechimea raportărilor"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "5hDWuX"
+msgstr "Cât de departe în urmă să caute furnizorul, în zile."
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "6ijXWp"
+msgstr "Dimensiunea blocului"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "BVpDyn"
+msgstr "Cel mai mic bloc despre care întreabă o scanare. O cheie gratuită este limitată la /24."
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "1O6nNu"
+msgstr "Apeluri per rulare"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "O3o6j3"
+msgstr "Apeluri către furnizor pe care le poate face o scanare. Patru pe oră încap în cota zilnică a unei chei gratuite."
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "4aIITL"
+msgstr "Obține categoriile"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "jwnZSk"
+msgstr "Costă un apel în plus pentru fiecare rezultat, dar astfel cazul spune pentru ce a fost raportat, în loc de „altele”."
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "GDitI5"
+msgstr "Permite raportarea înapoi"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "kms48f"
+msgstr "Permite unui operator să publice o raportare când un caz este confirmat. Niciodată automat."
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+#: ../../packages/integration-lexware/src/localize.ts
+#: ../../packages/integration-powerdns/src/localize.ts
+msgid "KTNoOq"
+msgstr "Cheie API"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "EAEEtM"
+msgstr "Se trimite în antetul Key."
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "IbOv8i"
+msgstr "Alertmanager"
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "UUYX3B"
+msgstr "Primește alerte de la Prometheus Alertmanager sau Grafana și le transformă în cazuri de abuz și notificări pentru operatori."
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "_uIIli"
+msgstr "Formatul payloadului"
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "zVsF9H"
+msgstr "Ce format vorbește expeditorul. Grafana trimite formatul Alertmanager, cu câmpuri în plus."
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "rgPqeB"
+msgstr "Severitate implicită"
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "GtLzvO"
+msgstr "Se folosește când o alertă nu are etichetă de severitate."
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "2Ij319"
+msgstr "Token de ingestie"
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "ChfUsD"
+msgstr "Se trimite ca token Bearer în antetul Authorization. Generează unul cu `openssl rand -hex 32`."
 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 #: ../../packages/integration-discord/src/features/servers/messages.ts
@@ -1301,11 +1399,6 @@ msgid "iyNvec"
 msgstr "Emite facturi pentru clienți și generează PDF-urile trimise prin e-mail și descărcate."
 
 #: ../../packages/integration-lexware/src/localize.ts
-#: ../../packages/integration-powerdns/src/localize.ts
-msgid "KTNoOq"
-msgstr "Cheie API"
-
-#: ../../packages/integration-lexware/src/localize.ts
 msgid "gF5il8"
 msgstr "Se creează în Lexware Office la Extras → lexoffice API."
 
@@ -1376,6 +1469,14 @@ msgstr "Token de colectare"
 #: ../../packages/integration-prometheus/src/localize.ts
 msgid "NMkV81"
 msgstr "Prometheus îl trimite ca token Bearer. Generați unul cu `openssl rand -hex 32`."
+
+#: ../../packages/integration-webhook/src/localize.ts
+msgid "67UEhy"
+msgstr "Webhookuri de ieșire"
+
+#: ../../packages/integration-webhook/src/localize.ts
+msgid "R9xPr_"
+msgstr "Livrează notificările pentru operatori ca JSON semnat către orice endpoint. Modalitatea de a ajunge la Slack, Teams sau la un instrument de automatizare fără o integrare dedicată."
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "o_UJXc"
@@ -1767,6 +1868,24 @@ msgstr "Protecție activă împotriva DDoS"
 msgid "VI9ImX"
 msgstr "Serverul dumneavoastră este protejat fără costuri suplimentare"
 
+#: src/app/admin.virtbase.com/(dashboard)/abuse/[id]/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/abuse/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/abuse/rules/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+#: src/features/admin/components/integrations/integrations-hub.tsx
+msgid "1UwRXb"
+msgstr "Abuz"
+
+#: src/app/admin.virtbase.com/(dashboard)/abuse/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/abuse/rules/page.tsx
+msgid "kAAlGL"
+msgstr "Reguli"
+
+#: src/app/admin.virtbase.com/(dashboard)/abuse/rules/page.tsx
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "Jdawl3"
+msgstr "Reguli de abuz"
+
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/[id]/page.tsx
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
@@ -1797,6 +1916,11 @@ msgstr "Grupuri de noduri"
 #: src/app/admin.virtbase.com/(dashboard)/nodes/[id]/page.tsx
 msgid "n3j8M6"
 msgstr "Noduri Proxmox"
+
+#: src/app/admin.virtbase.com/(dashboard)/notifications/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+msgid "NAidKb"
+msgstr "Notificări"
 
 #: src/app/admin.virtbase.com/(dashboard)/page.tsx
 #: src/app/app.virtbase.com/(dashboard)/page.tsx
@@ -1927,6 +2051,22 @@ msgstr "Verifică codul de autentificare cu doi factori."
 msgid "Ldnbs0"
 msgstr "Introdu codul de șase cifre din aplicația de autentificare."
 
+#: src/app/app.virtbase.com/(dashboard)/abuse/[id]/page.tsx
+msgid "qA-192"
+msgstr "Raportare de abuz"
+
+#: src/app/app.virtbase.com/(dashboard)/abuse/[id]/page.tsx
+#: src/app/app.virtbase.com/(dashboard)/abuse/page.tsx
+#: src/features/dashboard/components/active-abuse-cases.tsx
+#: src/ui/app-sidebar-menu.tsx
+msgid "aCv9Tk"
+msgstr "Raportări de abuz"
+
+#: src/app/app.virtbase.com/(dashboard)/abuse/[id]/page.tsx
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "x5Tz6M"
+msgstr "Raportare"
+
 #: src/app/app.virtbase.com/(dashboard)/invoices/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/ui/app-sidebar-menu.tsx
@@ -2019,6 +2159,202 @@ msgstr "Nu sunteți autorizat să accesați această pagină. Este posibil ca se
 msgid "xXbJso"
 msgstr "Deconectare"
 
+#: src/features/abuse/components/abuse-case-conversation.tsx
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "TJfaf4"
+msgstr "Ce s-a raportat"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+msgid "VNF6eB"
+msgstr "Restricționat cât timp acesta rămâne deschis"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+msgid "kJ5W29"
+msgstr "Tu"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+msgid "M7BRRJ"
+msgstr "Echipa de abuz"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+#: src/features/abuse/components/abuse-cases-list.tsx
+#: src/features/account/components/privacy/data-export-card.tsx
+#: src/features/account/components/privacy/delete-account-card.tsx
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+#: src/features/admin/components/abuse/abuse-case-status-menu.tsx
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+#: src/features/admin/components/integrations/integration-enable-button.tsx
+#: src/features/admin/components/integrations/integration-health-panel.tsx
+#: src/features/admin/components/integrations/integration-settings-form.tsx
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "iuY8kx"
+msgstr "Ceva nu a mers bine."
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+#: src/features/abuse/components/abuse-cases-list.tsx
+#: src/features/dashboard/components/active-abuse-cases.tsx
+msgid "hqnGJq"
+msgstr "Răspuns întârziat"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+#: src/features/abuse/components/abuse-cases-list.tsx
+#: src/features/dashboard/components/active-abuse-cases.tsx
+msgid "h0mJFk"
+msgstr "Răspunde {when}"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+msgid "9WwANS"
+msgstr "Ce ai găsit și ce ai schimbat…"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "gKQnvi"
+msgstr "Am rezolvat"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+#: src/features/account/components/step-up-dialog.tsx
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "9WRlF4"
+msgstr "Trimite"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+msgid "UsgxfB"
+msgstr "Acest caz este închis. Contactează suportul dacă ceva tot nu e în regulă."
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "ARvE70"
+msgstr "Deschis {when}"
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/dashboard/components/active-abuse-cases.tsx
+msgid "OZvd3m"
+msgstr "Vezi cazul"
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "t2E4M8"
+msgstr "Nicio raportare de abuz"
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "i0Fqrz"
+msgstr "Nu s-a raportat nimic despre serverele tale. Dacă se întâmplă, găsești aici și primești un e-mail de la noi."
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "iXOvWu"
+msgstr "Nimic deschis"
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "whWnOP"
+msgstr "Toate raportările despre serverele tale au fost închise."
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "_busx6"
+msgstr "Ascunde raportările închise"
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "2Tt_xf"
+msgstr "{count, plural, one {Arată # raportare închisă} few {Arată # raportări închise} other {Arată # de raportări închise}}"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "lxtHzL"
+msgstr "În analiză"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "JfG49w"
+msgstr "Deschis"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "MytfoW"
+msgstr "Așteaptă răspunsul tău"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "s7iloU"
+msgstr "La echipa noastră"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "li9lHM"
+msgstr "În verificare"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "W6nSYE"
+msgstr "Rezolvat"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "1MnSfo"
+msgstr "Respins"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "477I0g"
+msgstr "Scăzută"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "ovJ26C"
+msgstr "Medie"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "AxMhQr"
+msgstr "Ridicată"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "2pzTGC"
+msgstr "Critică"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "LseLoM"
+msgstr "Spam"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "MRBNBk"
+msgstr "Phishing"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "skXxpV"
+msgstr "Malware"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "PTwdUz"
+msgstr "Scanare de porturi"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "oG9wJW"
+msgstr "Refuz de serviciu"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "Kvo3A0"
+msgstr "Drepturi de autor"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "tRmcwq"
+msgstr "Server compromis"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "_VnDMl"
+msgstr "Altele"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "oEQon6"
+msgstr "Sub observație"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "aYdv6s"
+msgstr "Rețea limitată"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "YrrBiK"
+msgstr "Rețea blocată"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "_gJC-l"
+msgstr "Oprit"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "-zz_NM"
+msgstr "Programat pentru ștergere"
+
 #: src/features/account/components/account-breadcrumb.tsx
 #: src/features/account/components/account-nav.tsx
 msgid "1iEPTM"
@@ -2086,9 +2422,11 @@ msgstr "Creat {date}"
 
 #: src/features/account/components/api-keys/api-keys-list.tsx
 #: src/features/account/components/ssh-keys/ssh-keys-list.tsx
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
 #: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/notifications/notification-targets-list.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
@@ -2121,9 +2459,12 @@ msgstr "Creați cheia API"
 #: src/features/account/components/privacy/delete-account-card.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 #: src/features/account/components/step-up-dialog.tsx
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
@@ -2152,11 +2493,13 @@ msgstr "Această cheie va fi afișată o singură dată. Salvați-l în siguran�
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
@@ -2522,14 +2865,6 @@ msgid "vAr8U1"
 msgstr "Ai cerut deja un export astăzi. Încearcă din nou mâine."
 
 #: src/features/account/components/privacy/data-export-card.tsx
-#: src/features/account/components/privacy/delete-account-card.tsx
-#: src/features/admin/components/integrations/integration-enable-button.tsx
-#: src/features/admin/components/integrations/integration-health-panel.tsx
-#: src/features/admin/components/integrations/integration-settings-form.tsx
-msgid "iuY8kx"
-msgstr "Ceva nu a mers bine."
-
-#: src/features/account/components/privacy/data-export-card.tsx
 msgid "OTYJAd"
 msgstr "Descarcă-ți datele"
 
@@ -2756,10 +3091,6 @@ msgstr "Amprenta, chipul sau cheia ta de securitate."
 msgid "qJvq7M"
 msgstr "Cod prin e-mail"
 
-#: src/features/account/components/step-up-dialog.tsx
-msgid "9WRlF4"
-msgstr "Trimite"
-
 #: src/features/account/components/user-email-card.tsx
 msgid "NMQtEq"
 msgstr "Un e-mail de confirmare a fost trimis la noua ta adresă de e-mail."
@@ -2779,7 +3110,9 @@ msgstr "Introdu o adresă de e-mail validă."
 #: src/features/account/components/user-email-card.tsx
 #: src/features/account/components/user-name-card.tsx
 #: src/features/account/components/user-password-card.tsx
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
 #: src/features/admin/components/integrations/integration-settings-form.tsx
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
 #: src/features/admin/components/proxmox-templates/cards/settings-card.tsx
 msgid "jvo0vs"
 msgstr "Salvează"
@@ -2833,6 +3166,584 @@ msgstr "Parolă nouă"
 msgid "6admx4"
 msgstr "Folosește cel puțin 8 caractere, o literă mare, o literă mică și o cifră."
 
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "jw6_u7"
+msgstr "{value}% încredere"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "_3Llo1"
+msgstr "văzut de {count} ori"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "I8vFC1"
+msgstr "Raportat de {reporter}"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "hkENym"
+msgstr "Client"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "b40Pr7"
+msgstr "Raportor"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "cxribA"
+msgstr "Triaj asistat"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "3yf2ND"
+msgstr "Operator"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "0kc5kM"
+msgstr "Notă internă"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "SbkDVk"
+msgstr "Notă internă. Nimeni din afara acestei pagini nu o vede vreodată."
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "gQsj5S"
+msgstr "Către raportor"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "_Ef3qB"
+msgstr "Către client"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "SzfJOJ"
+msgstr "Către raportor"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "BVm-D5"
+msgstr "Încă nimic"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "-WEbJY"
+msgstr "Pe acest caz nu a ajuns nicio raportare, niciun mesaj și nicio modificare."
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "93TAYW"
+msgstr "O notă pentru cine preia asta după tine…"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "cGMldc"
+msgstr "Ce trebuie să facă clientul și până când…"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "xnzW7C"
+msgstr "Ce află raportorul. Nu numi niciodată clientul…"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "WB274G"
+msgstr "{count} servere au fost blocate."
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "M0vCGv"
+msgstr "Întârziat"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "CPwbcO"
+msgstr "Atribuire învechită"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "YKuCIc"
+msgstr "Comenzi blocate"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "vzFCmc"
+msgstr "Încă neatribuit"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "grfUHB"
+msgstr "Raportat de"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "ltwDgq"
+msgstr "Fără confirmare de primire"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "QkSzvn"
+msgstr "Nimeni — acest caz nu a fost deschis de o raportare."
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "ADKsID"
+msgstr "Deschis"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "j6yXA6"
+msgstr "Termenul clientului"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "nhuhb8"
+msgstr "Se aplică"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "BBJeht"
+msgstr "Observarea se încheie"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "wLybjT"
+msgstr "Servere afectate"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "450Fty"
+msgstr "Niciuna"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "ueaDOK"
+msgstr "Închis ca"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "JB9XrR"
+msgstr "Acest caz aplică {level} când se încheie perioada de grație. Perioada este șansa clientului de a acționa primul."
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "1Dbd1Z"
+msgstr "Aplică acum"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "nVIEJ1"
+msgstr "Pe acest caz nu a fost restricționat nimic."
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "9YCbjf"
+msgstr "{level} este în vigoare."
+
+#: src/features/admin/components/abuse/abuse-case-status-menu.tsx
+msgid "gL381x"
+msgstr "Mută acest caz în"
+
+#: src/features/admin/components/abuse/abuse-case-status-menu.tsx
+msgid "rMqQLx"
+msgstr "Rezolvă ca…"
+
+#: src/features/admin/components/abuse/abuse-case-status-menu.tsx
+msgid "vpNlv2"
+msgstr "Respinge ca…"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+msgid "bdcMGy"
+msgstr "Deschide meniul"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "GqYb_y"
+msgstr "Vezi clientul"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "AfxJ0y"
+msgstr "Mută în"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/integrations/integration-health-panel.tsx
+#: src/features/servers/firewall/components/firewall-options-row.tsx
+msgid "tzMNF3"
+msgstr "Stare"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "5p20VJ"
+msgstr "Închide din pagina cazului…"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "9q3kR7"
+msgstr "Închis ca {reason}"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
+msgid "94Fg25"
+msgstr "Selectați toate"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
+msgid "4pJVaS"
+msgstr "Selectați rândul"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "KpN3WY"
+msgstr "Caz"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "P-Xihq"
+msgstr "Învechită"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "lWppu7"
+msgstr "Caută după caz, titlu sau client..."
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "vCAhII"
+msgstr "Severitate"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "ccXLVi"
+msgstr "Categorie"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "unZjqP"
+msgstr "Măsură"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "do627d"
+msgstr "{count} servere"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "lf-twp"
+msgstr "Nicio comandă"
+
+#: src/features/admin/components/abuse/create-abuse-case-button.tsx
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "ItE4vE"
+msgstr "Deschide caz"
+
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "pnGaMQ"
+msgstr "Creează un caz manual, așa cum ar face o raportare."
+
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "9a9-ww"
+msgstr "Titlu"
+
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "AbFa6r"
+msgstr "Spam de ieșire de la 203.0.113.5"
+
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "Xup5P8"
+msgstr "Ce s-a întâmplat"
+
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "_NRHKm"
+msgstr "Se arată clientului. Lasă pe dinafară identitatea raportorului."
+
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "8z6g8U"
+msgstr "Notifică acum"
+
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "8t9C2A"
+msgstr "Trimite un e-mail clientului și pornește un termen de 24 de ore."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "aduhuz"
+msgstr "Încă nu există semnale anterioare de reluat."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "cu0IDt"
+msgstr "Se potrivește cu {matched} din ultimele {considered} semnale și decide {wins} dintre ele."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "kPJDWv"
+msgstr "{count, plural, one {# server ar fi fost blocat} few {# servere ar fi fost blocate} other {# de servere ar fi fost blocate}}"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "ETXZfR"
+msgstr "Fără ca un operator să citească mai întâi raportarea."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "CutcjP"
+msgstr "Luate mai întâi de o regulă cu prioritate mai mare:"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "po9omj"
+msgstr "{name} (prioritate {priority}) · {count}"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "M0PEgf"
+msgstr "{source} · {type} · {when}"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "UE4WUO"
+msgstr "{count, plural, one {# potrivire avea atribuire învechită și nu ar aplica nimic} few {# potriviri aveau atribuire învechită și nu ar aplica nimic} other {# de potriviri aveau atribuire învechită și nu ar aplica nimic}}."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "sJFaF8"
+msgstr "Un `key=value` pe linie."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "v1vJ77"
+msgstr "Editează regula"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "gzM1em"
+msgstr "Adaugă regulă"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "jC476Z"
+msgstr "Ce provoacă un semnal care se potrivește."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "53G_x5"
+msgstr "Spam de ieșire, confirmat"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "Q8Qw5B"
+msgstr "Descriere"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "ENBExm"
+msgstr "De ce există această regulă, pentru cine o găsește după tine."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+msgid "8lCjAM"
+msgstr "Prioritate"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "4aBk2h"
+msgstr "Cele mai mici rulează primele. Decide doar prima regulă care se potrivește."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "V52jNn"
+msgstr "Activat"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "iudNd-"
+msgstr "Se potrivește"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "i0iJj7"
+msgstr "Fiecare condiție trebuie să fie îndeplinită. Una goală nu e o condiție."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "j4thrK"
+msgstr "Tip de semnal"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "LrZ7qa"
+msgstr "`abuse.*` se potrivește cu un spațiu de nume, `abuse.ddos` cu un singur tip."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "aH4De2"
+msgstr "Sursă"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "zi4cus"
+msgstr "Orice sursă"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "n9zn-R"
+msgstr "Surse care au trimis ceva până acum."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "XwCfRz"
+msgstr "Severitate minimă"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "k9Mysq"
+msgstr "Orice severitate"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "WNflxH"
+msgstr "Încredere minimă"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "ToO3_h"
+msgstr "Oricare"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "l0tGxO"
+msgstr "Un semnal dintr-o sursă care nu o exprimă nu îndeplinește niciodată asta."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "It6_YY"
+msgstr "Număr minim de cazuri anterioare"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "fAGjQr"
+msgstr "Cazuri pe care acest client le-a închis în ultimele 90 de zile."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "m3QEyd"
+msgstr "Etichete"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "g2YRMn"
+msgstr "Un `key=value` pe linie. Toate trebuie să fie prezente."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "mUSYMj"
+msgstr "Provoacă"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "mZqcqr"
+msgstr "Sursă de încredere"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "srt-Rb"
+msgstr "Acționează fără operator. Lasă dezactivat și fiecare potrivire așteaptă în triaj."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "hu7xvo"
+msgstr "Din tipul semnalului"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "K3e01Z"
+msgstr "Severitatea cazului"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "05BYVh"
+msgstr "Din severitatea semnalului"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "4XojnY"
+msgstr "Ștergerea unui server nu e niciodată automată; o face un operator din caz."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "hSwgoV"
+msgstr "Perioadă de grație (minute)"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "2BCcVZ"
+msgstr "Un caz închis în interiorul perioadei nu se aplică niciodată."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "ZSIvsq"
+msgstr "Termen de răspuns (ore)"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "uUrMpp"
+msgstr "Tăcerea dincolo de acest termen înăsprește măsura cu un nivel."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "Sc5eWh"
+msgstr "Blochează comenzile noi"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "92Ik-u"
+msgstr "Până când cazul se închide."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "Eylatv"
+msgstr "Notifică clientul"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "81AQjV"
+msgstr "Rulare de probă"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "K6cQYY"
+msgstr "Reia această regulă peste semnalele deja primite. Nu schimbă nimic."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "KiXNvz"
+msgstr "Rulează"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "PqUIzj"
+msgstr "{severity} și peste"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "C20CrC"
+msgstr "{count, plural, one {# caz anterior} few {# cazuri anterioare} other {# de cazuri anterioare}}"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "NNg0UR"
+msgstr "{count} semnale · ultimul {when}"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "QcpO4R"
+msgstr "Încă niciun semnal"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
+msgid "wEQDC6"
+msgstr "Editează"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "5EtNjc"
+msgstr "Prioritate {value}"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "wk2gIX"
+msgstr "De încredere"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "8RVq-l"
+msgstr "Blochează comenzile"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "Aa4K49"
+msgstr "Nimic nu se aplică automat"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "9oOZxT"
+msgstr "Nicio regulă activată nu e marcată ca sursă de încredere, așa că fiecare caz așteaptă un operator în triaj."
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "v89h-O"
+msgstr "Ce provoacă un semnal. Prima regulă care se potrivește, după prioritate, decide cazul."
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "ue2UOa"
+msgstr "Nicio regulă"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "dWdkfw"
+msgstr "Fiecare raportare ajunge în triaj până când o regulă i se potrivește."
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "ent4MP"
+msgstr "Doar o regulă marcată ca sursă de încredere poate acționa fără operator."
+
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "UcHtCB"
 msgstr "Proxmox VE"
@@ -2874,13 +3785,6 @@ msgstr "Slug"
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 msgid "e5x8FT"
 msgstr "Tip"
-
-#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
-#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
-#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-msgid "8lCjAM"
-msgstr "Prioritate"
 
 #: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
 msgid "1q_kua"
@@ -2957,16 +3861,6 @@ msgid "mfKcIm"
 msgstr "Prioritățile mai mici sunt compuse primele; la egalitate decide slug-ul."
 
 #: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
-msgid "Q8Qw5B"
-msgstr "Descriere"
-
-#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
-msgid "V52jNn"
-msgstr "Activat"
-
-#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 msgid "6WqHWi"
 msgstr "Se aplică la"
@@ -2992,38 +3886,11 @@ msgid "0bKTrV"
 msgstr "Nu este definit încă niciun șablon."
 
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
-#: src/features/admin/components/emails/emails-table/columns.tsx
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
-#: src/features/admin/components/servers/servers-table/columns.tsx
-#: src/features/admin/components/subnets/subnets-table/columns.tsx
-#: src/features/admin/components/users/users-table/columns.tsx
-#: src/features/invoices/components/invoices-table/columns.tsx
-msgid "94Fg25"
-msgstr "Selectați toate"
-
-#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
-#: src/features/admin/components/emails/emails-table/columns.tsx
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
-#: src/features/admin/components/servers/servers-table/columns.tsx
-#: src/features/admin/components/subnets/subnets-table/columns.tsx
-#: src/features/admin/components/users/users-table/columns.tsx
-#: src/features/invoices/components/invoices-table/columns.tsx
-msgid "4pJVaS"
-msgstr "Selectați rândul"
-
-#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 msgid "XPruqs"
 msgstr "Ordine"
 
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/notifications/notification-targets-list.tsx
 #: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
 msgid "tthToS"
 msgstr "Dezactivat"
@@ -3055,24 +3922,6 @@ msgstr "Șabloanele la care se aplică acum acest fragment"
 #: src/features/servers/components/rdns/records-table/columns.tsx
 msgid "wFMlsH"
 msgstr "Actualizat la"
-
-#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
-#: src/features/admin/components/emails/emails-table/columns.tsx
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
-#: src/features/admin/components/servers/servers-table/columns.tsx
-#: src/features/admin/components/subnets/subnets-table/columns.tsx
-#: src/features/admin/components/users/users-table/columns.tsx
-msgid "bdcMGy"
-msgstr "Deschide meniul"
-
-#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
-#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
-msgid "wEQDC6"
-msgstr "Editează"
 
 #: src/features/admin/components/dashboard/activity-stats-row.tsx
 msgid "wCWFeb"
@@ -3223,12 +4072,6 @@ msgstr "Subiect"
 msgid "EPGMwQ"
 msgstr "Caută după subiect..."
 
-#: src/features/admin/components/emails/emails-table/columns.tsx
-#: src/features/admin/components/integrations/integration-health-panel.tsx
-#: src/features/servers/firewall/components/firewall-options-row.tsx
-msgid "tzMNF3"
-msgstr "Stare"
-
 #: src/features/admin/components/integrations/integration-detail.tsx
 msgid "Q4e8bq"
 msgstr "Creat de"
@@ -3246,8 +4089,8 @@ msgid "Cm2_-V"
 msgstr "Citește documentația"
 
 #: src/features/admin/components/integrations/integration-detail.tsx
-msgid "ZLrvCJ"
-msgstr "Această integrare nu are nimic de configurat."
+msgid "bEhH0O"
+msgstr "Această integrare nu are nimic de configurat aici. Activarea e tot."
 
 #: src/features/admin/components/integrations/integration-enable-button.tsx
 msgid "Rw7iI7"
@@ -3306,10 +4149,6 @@ msgid "GZJpDf"
 msgstr "Analize"
 
 #: src/features/admin/components/integrations/integrations-hub.tsx
-msgid "1UwRXb"
-msgstr "Abuz"
-
-#: src/features/admin/components/integrations/integrations-hub.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "DUIDEq"
@@ -3318,6 +4157,107 @@ msgstr "Depozitare"
 #: src/features/admin/components/integrations/integrations-hub.tsx
 msgid "Mmuj1R"
 msgstr "Platformă"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "Ejgl5g"
+msgstr "Notificarea de test a fost livrată."
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "dqfX3I"
+msgstr "Adaugă cel puțin o cheie sau `*` pentru tot."
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "ndpxoL"
+msgstr "`{key}` nu este o cheie validă."
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "fI4Anf"
+msgstr "Editează ținta"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "HoiRnc"
+msgstr "Adaugă țintă"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "hNpFRN"
+msgstr "Unde ajunge o notificare și pe care le primește."
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "OssiM5"
+msgstr "Canal ops"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "KeO51o"
+msgstr "Canal"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "6uhSSw"
+msgstr "Alege un canal"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "YFT4rG"
+msgstr "Chei"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "d-LD1g"
+msgstr "Una pe linie. `abuse.*` se potrivește cu un spațiu de nume, `*` cu tot."
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "SihfVv"
+msgstr "Nimic sub acest nivel nu se livrează."
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "IQDO43"
+msgstr "Livrare de test"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "rCbiwG"
+msgstr "Trimite o notificare reală către această țintă."
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "Fx1Td_"
+msgstr "Trimite test"
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "dZkKpB"
+msgstr "Canal indisponibil"
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "e8Nx0r"
+msgstr "{keys} · {severity} și peste"
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "2wbxcK"
+msgstr "Ținte de notificare"
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "C--PO9"
+msgstr "Unde se livrează alertele pentru operatori. Clienții sunt notificați pe propriile canale."
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "WtPJhe"
+msgstr "Ținte indisponibile"
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "oJQo9b"
+msgstr "Niciun canal"
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "QHF7kT"
+msgstr "Nu e activată nicio integrare care să ofere un canal de notificare."
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "oX3LNh"
+msgstr "Nicio țintă"
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "tR7Qfj"
+msgstr "Nu a fost creată încă nicio țintă de notificare."
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "nIu1MB"
+msgstr "O țintă primește fiecare notificare care se potrivește cheilor ei și severității minime."
 
 #: src/features/admin/components/proxmox-node-groups/create-node-group-button.tsx
 msgid "8gJfol"
@@ -3650,10 +4590,6 @@ msgstr "Sumă de control"
 #: src/features/admin/components/proxmox-templates/template-settings.tsx
 msgid "u2OsFB"
 msgstr "Algoritm"
-
-#: src/features/admin/components/proxmox-templates/template-settings.tsx
-msgid "450Fty"
-msgstr "Niciuna"
 
 #: src/features/admin/components/proxmox-templates/template-settings.tsx
 msgid "Wf4EEV"
@@ -4132,6 +5068,18 @@ msgstr "Se procesează plata…"
 #: src/features/checkout/components/stripe-payment-form.tsx
 msgid "7tOz-m"
 msgstr "Plătește acum"
+
+#: src/features/dashboard/components/active-abuse-cases.tsx
+msgid "aZFiKP"
+msgstr "{count, plural, one {# raportare așteaptă răspunsul tău.} few {# raportări așteaptă răspunsul tău.} other {# de raportări așteaptă răspunsul tău.}}"
+
+#: src/features/dashboard/components/active-abuse-cases.tsx
+msgid "HGGtVU"
+msgstr "Raportări deschise despre serverele tale."
+
+#: src/features/dashboard/components/active-abuse-cases.tsx
+msgid "8sWND3"
+msgstr "{count, plural, one {# raportare în plus} few {# raportări în plus} other {# de raportări în plus}}"
 
 #: src/features/dashboard/components/empty-servers.tsx
 msgid "fmSs_a"
@@ -4999,11 +5947,6 @@ msgstr "Selectați direcția"
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "ubliHx"
 msgstr "tip ICMP"
-
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
-msgid "aH4De2"
-msgstr "Sursă"
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "c-r5qz"
