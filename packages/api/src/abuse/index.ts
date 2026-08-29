@@ -17,9 +17,11 @@
 
 export type { CaseDecision } from "./case";
 export {
+  awaitCustomerResponse,
   CASE_JOIN_WINDOW_HOURS,
   caseReference,
   countRecentResolvedCases,
+  DEFAULT_RESPONSE_HOURS,
   decideNewCase,
   linkCaseServer,
   openOrJoinAbuseCase,

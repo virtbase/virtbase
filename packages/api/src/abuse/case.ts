@@ -24,6 +24,7 @@ import {
   abuseCases,
 } from "@virtbase/db/schema";
 import type { SignalSeverity } from "@virtbase/ports";
+import { dispatchNotification } from "../notifications/dispatch";
 import type { RuleDefinition } from "./rules";
 
 type Database = typeof database;
@@ -57,6 +58,9 @@ const FROM_SIGNAL: Record<SignalSeverity, CaseSeverity> = {
   warning: "medium",
   critical: "critical",
 };
+
+/** Settled. Nothing moves a case out of one of these except an operator. */
+const TERMINAL_STATUSES: CaseStatus[] = ["resolved", "rejected"];
 
 /** Cases that can still absorb a new signal. */
 const LIVE_STATUSES: CaseStatus[] = [
@@ -173,6 +177,105 @@ export const decideNewCase = ({
     responseHours: rule?.actionResponseHours ?? 24,
     graceMinutes: rule?.actionGraceMinutes ?? 0,
   };
+};
+
+/** How long a customer gets to answer when an operator hands a case over. */
+export const DEFAULT_RESPONSE_HOURS = 24;
+
+/**
+ * Hands a case to the customer, and says so.
+ *
+ * Three things have to happen together or none of them should: the status
+ * moves, a deadline is written, and the customer is told.
+ *
+ * A status with no deadline never escalates - `reconcileAbuseCases` matches on
+ * `respond_by <= now()`, and NULL is never `<=` anything - so an operator who
+ * moved a case to `awaiting_customer` and waited would wait forever. A
+ * deadline with no notice is worse: it tightens enforcement over a silence
+ * nobody asked the customer to break.
+ *
+ * `escalated_at` is cleared because a new deadline is a new chance to miss
+ * one. The column exists to stop a single overdue case escalating again every
+ * five minutes, not to spend the ladder on the first miss.
+ *
+ * A settled case is never handed back. `setCaseStatus` refuses to move one and
+ * says why - "a late signal reopening a closed case behind an operator's back
+ * is how an audit trail stops meaning anything" - and this writes the same
+ * columns, so it owes the same guarantee. Without it, an operator answering a
+ * customer's thank-you on a resolved case would set a live deadline on a row
+ * that still carries `closed_at` and its last enforcement level; a day later
+ * the escalation sweep would re-lock their servers one rung *above* what was
+ * released, because `releaseCase` clears the per-server rows and leaves
+ * `abuse_cases.enforcement` alone.
+ *
+ * The reason comes back rather than a bare false, because "nobody to ask" and
+ * "already closed" need different answers on screen.
+ */
+export type AwaitCustomerResult =
+  | { handed: true }
+  | { handed: false; reason: "no_customer" | "settled" };
+
+export const awaitCustomerResponse = async ({
+  db,
+  caseId,
+  hours = DEFAULT_RESPONSE_HOURS,
+}: {
+  db: Database;
+  caseId: string;
+  hours?: number;
+}): Promise<AwaitCustomerResult> => {
+  const abuseCase = await db
+    .select({
+      number: abuseCases.number,
+      userId: abuseCases.userId,
+      category: abuseCases.category,
+      status: abuseCases.status,
+    })
+    .from(abuseCases)
+    .where(eq(abuseCases.id, caseId))
+    .limit(1)
+    .then(([first]) => first);
+
+  if (!abuseCase) return { handed: false, reason: "no_customer" };
+  if (TERMINAL_STATUSES.includes(abuseCase.status)) {
+    return { handed: false, reason: "settled" };
+  }
+  if (!abuseCase.userId) return { handed: false, reason: "no_customer" };
+
+  const [updated] = await db
+    .update(abuseCases)
+    .set({
+      status: "awaiting_customer",
+      respondBy: new Date(Date.now() + hours * 3_600_000),
+      escalatedAt: null,
+    })
+    // Repeated in the predicate rather than trusted from the read above: the
+    // notice below is an email, and a case closed in between must not get one.
+    .where(
+      and(
+        eq(abuseCases.id, caseId),
+        not(inArray(abuseCases.status, TERMINAL_STATUSES)),
+      ),
+    )
+    .returning({ id: abuseCases.id });
+
+  if (!updated) return { handed: false, reason: "settled" };
+
+  await dispatchNotification({
+    key: "abuse.case.notice",
+    audience: { kind: "user", userId: abuseCase.userId },
+    severity: "warning",
+    // No group key: every hand-over is a new thing to answer, and collapsing
+    // them onto the first would silently drop the conversation.
+    url: `/abuse/${caseId}`,
+    params: {
+      reference: caseReference(abuseCase.number),
+      category: abuseCase.category,
+      deadlineHours: hours,
+    },
+  });
+
+  return { handed: true };
 };
 
 export interface OpenOrJoinCaseInput {
@@ -383,7 +486,7 @@ export const setCaseStatus = async ({
     .where(
       and(
         eq(abuseCases.id, caseId),
-        not(inArray(abuseCases.status, ["resolved", "rejected"])),
+        not(inArray(abuseCases.status, TERMINAL_STATUSES)),
       ),
     )
     .returning({ id: abuseCases.id, status: abuseCases.status });

@@ -19,6 +19,7 @@
 
 import { TRPCError } from "@trpc/server";
 import {
+  awaitCustomerResponse,
   caseReference,
   enforceCase,
   notifyReportersResolved,
@@ -222,26 +223,14 @@ export const addAbuseCaseMessageAction = actionClient
       metadata: { audience: parsedInput.audience },
     });
 
-    // Only a message addressed to the customer restarts their clock.
-    if ("customer" === parsedInput.audience && abuseCase.userId) {
-      await db
-        .update(abuseCases)
-        .set({ status: "awaiting_customer" })
-        .where(eq(abuseCases.id, abuseCase.id));
-
-      await dispatchNotification({
-        key: "abuse.case.notice",
-        audience: { kind: "user", userId: abuseCase.userId },
-        severity: "warning",
-        // No group key: a reply is a new message every time, and collapsing
-        // them onto the first would silently drop the conversation.
-        url: `/abuse/${abuseCase.id}`,
-        params: {
-          reference: caseReference(abuseCase.number),
-          category: "other",
-          deadlineHours: 24,
-        },
-      });
+    // Only a message addressed to the customer restarts their clock - and it
+    // is a real clock: status, deadline and notice move together, or the
+    // customer is told about a deadline that will never elapse.
+    // A settled case still accepts a message - an operator answering a
+    // customer's follow-up is ordinary - it just does not get handed back or
+    // put on a clock, so `awaitCustomerResponse` declining is not an error.
+    if ("customer" === parsedInput.audience) {
+      await awaitCustomerResponse({ db, caseId: abuseCase.id });
     }
 
     revalidate();
@@ -312,6 +301,36 @@ export const setAbuseCaseStatusAction = actionClient
   .action(async ({ parsedInput, ctx }) => {
     const abuseCase = await loadCase(parsedInput.caseId);
     const terminal = ["resolved", "rejected"].includes(parsedInput.status);
+
+    // Handing the case over is not a label change. It writes a deadline and
+    // tells the customer, because the escalation sweep matches on
+    // `respond_by <= now()` and a case with no deadline waits forever.
+    if ("awaiting_customer" === parsedInput.status) {
+      const result = await awaitCustomerResponse({ db, caseId: abuseCase.id });
+
+      if (!result.handed) {
+        throw new TRPCError({
+          code: "PRECONDITION_FAILED",
+          message:
+            "settled" === result.reason
+              ? "This case is already closed."
+              : "This case has no customer yet. Attribute it before asking one to answer.",
+        });
+      }
+
+      await recordCaseEvent({
+        db,
+        caseId: abuseCase.id,
+        type: "status.changed",
+        actorKind: "operator",
+        actorUserId: ctx.user.id,
+        fromValue: abuseCase.status,
+        toValue: "awaiting_customer",
+      });
+
+      revalidate();
+      return { ok: true as const };
+    }
 
     const moved = await setCaseStatus({
       db,
