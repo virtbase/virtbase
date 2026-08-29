@@ -11,6 +11,10 @@
       "types": "./dist/cloud-init/index.d.ts",
       "default": "./src/cloud-init/index.ts"
     },
+    "./abuse": {
+      "types": "./dist/abuse/index.d.ts",
+      "default": "./src/abuse/index.ts"
+    },
     "./backups": {
       "types": "./dist/backups.d.ts",
       "default": "./src/backups/index.ts"
@@ -22,6 +26,10 @@
     "./integrations": {
       "types": "./dist/integrations.d.ts",
       "default": "./src/integrations/index.ts"
+    },
+    "./notifications": {
+      "types": "./dist/notifications/index.d.ts",
+      "default": "./src/notifications/index.ts"
     },
     "./orders": {
       "types": "./dist/orders.d.ts",
@@ -70,6 +78,8 @@
     "@virtbase/config": "workspace:*",
     "@virtbase/db": "workspace:*",
     "@virtbase/email": "workspace:*",
+    "@virtbase/integration-abuseipdb": "workspace:*",
+    "@virtbase/integration-alertmanager": "workspace:*",
     "@virtbase/integration-anonpay": "workspace:*",
     "@virtbase/integration-discord": "workspace:*",
     "@virtbase/integration-lexware": "workspace:*",
@@ -77,6 +87,7 @@
     "@virtbase/integration-prometheus": "workspace:*",
     "@virtbase/integration-sdk": "workspace:*",
     "@virtbase/integration-stripe": "workspace:*",
+    "@virtbase/integration-webhook": "workspace:*",
     "@virtbase/ports": "workspace:*",
     "@virtbase/utils": "workspace:*",
     "@virtbase/validators": "workspace:*",

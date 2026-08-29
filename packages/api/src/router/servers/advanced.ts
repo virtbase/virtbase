@@ -82,7 +82,12 @@ export const serversAdvancedRouter = {
         summary: "Update advanced settings",
         description: "Update the advanced settings for a server.",
       },
-      forbiddenStates: ["suspended", "terminated", "installing"],
+      forbiddenStates: [
+        "suspended",
+        "terminated",
+        "installing",
+        "abuse-locked",
+      ],
       permissions: {
         servers: ["write"],
       },

@@ -15,6 +15,104 @@ msgstr ""
 "Language-Team: Danish\n"
 "PO-Revision-Date: 2026-04-22 13:59\n"
 
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "lYlalx"
+msgstr "AbuseIPDB"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "utGnBr"
+msgstr "Gennemsøger vores egne adresseintervaller for anmeldelser mod dem og slår omdømmet op for en enkelt adresse."
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "cZ2pIN"
+msgstr "Konfidenstærskel"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "KhnDzH"
+msgstr "Under denne score ignoreres en anmeldt adresse."
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "osZi7I"
+msgstr "Anmeldelsernes alder"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "5hDWuX"
+msgstr "Hvor langt tilbage udbyderen skal kigge, i dage."
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "6ijXWp"
+msgstr "Blokstørrelse"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "BVpDyn"
+msgstr "Den mindste blok, en gennemsøgning spørger om. En gratis nøgle er begrænset til /24."
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "1O6nNu"
+msgstr "Kald pr. kørsel"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "O3o6j3"
+msgstr "Kald til udbyderen, som én gennemsøgning må foretage. Fire i timen holder sig inden for dagskvoten på en gratis nøgle."
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "4aIITL"
+msgstr "Hent kategorier"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "jwnZSk"
+msgstr "Koster et ekstra kald pr. fund, men så angiver sagen, hvad der er anmeldt, i stedet for “andet”."
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "GDitI5"
+msgstr "Tillad anmeldelse tilbage"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "kms48f"
+msgstr "Lader en operatør offentliggøre en anmeldelse, når en sag er bekræftet. Aldrig automatisk."
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+#: ../../packages/integration-lexware/src/localize.ts
+#: ../../packages/integration-powerdns/src/localize.ts
+msgid "KTNoOq"
+msgstr "API-nøgle"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "EAEEtM"
+msgstr "Sendes som Key-headeren."
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "IbOv8i"
+msgstr "Alertmanager"
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "UUYX3B"
+msgstr "Modtager alarmer fra Prometheus Alertmanager eller Grafana og laver dem om til misbrugssager og operatørnotifikationer."
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "_uIIli"
+msgstr "Payload-format"
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "zVsF9H"
+msgstr "Hvilket format afsenderen taler. Grafana sender Alertmanager-formatet med ekstra felter."
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "rgPqeB"
+msgstr "Standardalvorsgrad"
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "GtLzvO"
+msgstr "Bruges, når en alarm ikke har et alvorsgrad-label."
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "2Ij319"
+msgstr "Ingest-token"
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "ChfUsD"
+msgstr "Sendes som Bearer-token i Authorization-headeren. Generér et med `openssl rand -hex 32`."
+
 #: ../../packages/integration-discord/src/features/backups/index.ts
 #: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration"
@@ -1301,11 +1399,6 @@ msgid "iyNvec"
 msgstr "Udsteder kundefakturaer og genererer de PDF-filer, der sendes på e-mail og hentes."
 
 #: ../../packages/integration-lexware/src/localize.ts
-#: ../../packages/integration-powerdns/src/localize.ts
-msgid "KTNoOq"
-msgstr "API-nøgle"
-
-#: ../../packages/integration-lexware/src/localize.ts
 msgid "gF5il8"
 msgstr "Oprettes under Extras → lexoffice API i Lexware Office."
 
@@ -1376,6 +1469,14 @@ msgstr "Scrape-token"
 #: ../../packages/integration-prometheus/src/localize.ts
 msgid "NMkV81"
 msgstr "Prometheus sender det som bearer-token. Generér et med `openssl rand -hex 32`."
+
+#: ../../packages/integration-webhook/src/localize.ts
+msgid "67UEhy"
+msgstr "Udgående webhooks"
+
+#: ../../packages/integration-webhook/src/localize.ts
+msgid "R9xPr_"
+msgstr "Leverer operatørnotifikationer som signeret JSON til et vilkårligt endpoint. Måden at nå Slack, Teams eller et automatiseringsværktøj uden en dedikeret integration."
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "o_UJXc"
@@ -1767,6 +1868,24 @@ msgstr "Aktiv DDoS-beskyttelse"
 msgid "VI9ImX"
 msgstr "Din server er beskyttet uden ekstra omkostninger"
 
+#: src/app/admin.virtbase.com/(dashboard)/abuse/[id]/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/abuse/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/abuse/rules/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+#: src/features/admin/components/integrations/integrations-hub.tsx
+msgid "1UwRXb"
+msgstr "Misbrug"
+
+#: src/app/admin.virtbase.com/(dashboard)/abuse/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/abuse/rules/page.tsx
+msgid "kAAlGL"
+msgstr "Regler"
+
+#: src/app/admin.virtbase.com/(dashboard)/abuse/rules/page.tsx
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "Jdawl3"
+msgstr "Misbrugsregler"
+
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/[id]/page.tsx
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
@@ -1797,6 +1916,11 @@ msgstr "Nodegrupper"
 #: src/app/admin.virtbase.com/(dashboard)/nodes/[id]/page.tsx
 msgid "n3j8M6"
 msgstr "Proxmox noder"
+
+#: src/app/admin.virtbase.com/(dashboard)/notifications/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+msgid "NAidKb"
+msgstr "Notifikationer"
 
 #: src/app/admin.virtbase.com/(dashboard)/page.tsx
 #: src/app/app.virtbase.com/(dashboard)/page.tsx
@@ -1927,6 +2051,22 @@ msgstr "Bekræft din kode til totrinsgodkendelse."
 msgid "Ldnbs0"
 msgstr "Indtast den sekscifrede kode fra din godkendelsesapp."
 
+#: src/app/app.virtbase.com/(dashboard)/abuse/[id]/page.tsx
+msgid "qA-192"
+msgstr "Misbrugsanmeldelse"
+
+#: src/app/app.virtbase.com/(dashboard)/abuse/[id]/page.tsx
+#: src/app/app.virtbase.com/(dashboard)/abuse/page.tsx
+#: src/features/dashboard/components/active-abuse-cases.tsx
+#: src/ui/app-sidebar-menu.tsx
+msgid "aCv9Tk"
+msgstr "Misbrugsanmeldelser"
+
+#: src/app/app.virtbase.com/(dashboard)/abuse/[id]/page.tsx
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "x5Tz6M"
+msgstr "Anmeldelse"
+
 #: src/app/app.virtbase.com/(dashboard)/invoices/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/ui/app-sidebar-menu.tsx
@@ -2019,6 +2159,202 @@ msgstr "Du er ikke autoriseret til at få adgang til denne side. Din session kan
 msgid "xXbJso"
 msgstr "Log ud"
 
+#: src/features/abuse/components/abuse-case-conversation.tsx
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "TJfaf4"
+msgstr "Hvad der blev anmeldt"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+msgid "VNF6eB"
+msgstr "Begrænset, så længe denne er åben"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+msgid "kJ5W29"
+msgstr "Dig"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+msgid "M7BRRJ"
+msgstr "Misbrugsteamet"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+#: src/features/abuse/components/abuse-cases-list.tsx
+#: src/features/account/components/privacy/data-export-card.tsx
+#: src/features/account/components/privacy/delete-account-card.tsx
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+#: src/features/admin/components/abuse/abuse-case-status-menu.tsx
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+#: src/features/admin/components/integrations/integration-enable-button.tsx
+#: src/features/admin/components/integrations/integration-health-panel.tsx
+#: src/features/admin/components/integrations/integration-settings-form.tsx
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "iuY8kx"
+msgstr "Noget gik galt."
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+#: src/features/abuse/components/abuse-cases-list.tsx
+#: src/features/dashboard/components/active-abuse-cases.tsx
+msgid "hqnGJq"
+msgstr "Svar er forsinket"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+#: src/features/abuse/components/abuse-cases-list.tsx
+#: src/features/dashboard/components/active-abuse-cases.tsx
+msgid "h0mJFk"
+msgstr "Svar {when}"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+msgid "9WwANS"
+msgstr "Hvad du fandt, og hvad du har ændret…"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "gKQnvi"
+msgstr "Jeg har rettet det"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+#: src/features/account/components/step-up-dialog.tsx
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "9WRlF4"
+msgstr "Send"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+msgid "UsgxfB"
+msgstr "Denne sag er afsluttet. Kontakt supporten, hvis noget stadig ikke passer."
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "ARvE70"
+msgstr "Åbnet {when}"
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/dashboard/components/active-abuse-cases.tsx
+msgid "OZvd3m"
+msgstr "Se sagen"
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "t2E4M8"
+msgstr "Ingen misbrugsanmeldelser"
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "i0Fqrz"
+msgstr "Der er ikke anmeldt noget om dine servere. Sker det, finder du det her, og du hører fra os på e-mail."
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "iXOvWu"
+msgstr "Intet åbent"
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "whWnOP"
+msgstr "Alle anmeldelser om dine servere er afsluttet."
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "_busx6"
+msgstr "Skjul afsluttede anmeldelser"
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "2Tt_xf"
+msgstr "{count, plural, one {Vis # afsluttet anmeldelse} other {Vis # afsluttede anmeldelser}}"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "lxtHzL"
+msgstr "Under vurdering"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "JfG49w"
+msgstr "Åben"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "MytfoW"
+msgstr "Kræver dit svar"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "s7iloU"
+msgstr "Hos vores team"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "li9lHM"
+msgstr "Bliver verificeret"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "W6nSYE"
+msgstr "Løst"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "1MnSfo"
+msgstr "Afvist"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "477I0g"
+msgstr "Lav"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "ovJ26C"
+msgstr "Mellem"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "AxMhQr"
+msgstr "Høj"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "2pzTGC"
+msgstr "Kritisk"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "LseLoM"
+msgstr "Spam"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "MRBNBk"
+msgstr "Phishing"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "skXxpV"
+msgstr "Malware"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "PTwdUz"
+msgstr "Portskanning"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "oG9wJW"
+msgstr "Overbelastningsangreb"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "Kvo3A0"
+msgstr "Ophavsret"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "tRmcwq"
+msgstr "Kompromitteret server"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "_VnDMl"
+msgstr "Andet"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "oEQon6"
+msgstr "Overvåget"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "aYdv6s"
+msgstr "Netværk begrænset"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "YrrBiK"
+msgstr "Netværk blokeret"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "_gJC-l"
+msgstr "Slukket"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "-zz_NM"
+msgstr "Planlagt til sletning"
+
 #: src/features/account/components/account-breadcrumb.tsx
 #: src/features/account/components/account-nav.tsx
 msgid "1iEPTM"
@@ -2086,9 +2422,11 @@ msgstr "Oprettet {date}"
 
 #: src/features/account/components/api-keys/api-keys-list.tsx
 #: src/features/account/components/ssh-keys/ssh-keys-list.tsx
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
 #: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/notifications/notification-targets-list.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
@@ -2121,9 +2459,12 @@ msgstr "Opret API-nøgle"
 #: src/features/account/components/privacy/delete-account-card.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 #: src/features/account/components/step-up-dialog.tsx
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
@@ -2152,11 +2493,13 @@ msgstr "Denne tast vil kun blive vist én gang. Gem det sikkert, da det ikke kan
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
@@ -2522,14 +2865,6 @@ msgid "vAr8U1"
 msgstr "Du har allerede bedt om en eksport i dag. Prøv igen i morgen."
 
 #: src/features/account/components/privacy/data-export-card.tsx
-#: src/features/account/components/privacy/delete-account-card.tsx
-#: src/features/admin/components/integrations/integration-enable-button.tsx
-#: src/features/admin/components/integrations/integration-health-panel.tsx
-#: src/features/admin/components/integrations/integration-settings-form.tsx
-msgid "iuY8kx"
-msgstr "Noget gik galt."
-
-#: src/features/account/components/privacy/data-export-card.tsx
 msgid "OTYJAd"
 msgstr "Download dine data"
 
@@ -2756,10 +3091,6 @@ msgstr "Dit fingeraftryk, ansigt eller din sikkerhedsnøgle."
 msgid "qJvq7M"
 msgstr "E-mailkode"
 
-#: src/features/account/components/step-up-dialog.tsx
-msgid "9WRlF4"
-msgstr "Send"
-
 #: src/features/account/components/user-email-card.tsx
 msgid "NMQtEq"
 msgstr "Der er sendt en bekræftelsesmail til din nye e-mailadresse."
@@ -2779,7 +3110,9 @@ msgstr "Indtast en gyldig e-mailadresse."
 #: src/features/account/components/user-email-card.tsx
 #: src/features/account/components/user-name-card.tsx
 #: src/features/account/components/user-password-card.tsx
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
 #: src/features/admin/components/integrations/integration-settings-form.tsx
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
 #: src/features/admin/components/proxmox-templates/cards/settings-card.tsx
 msgid "jvo0vs"
 msgstr "Gem"
@@ -2833,6 +3166,584 @@ msgstr "Ny adgangskode"
 msgid "6admx4"
 msgstr "Brug mindst 8 tegn, ét stort bogstav, ét lille bogstav og ét tal."
 
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "jw6_u7"
+msgstr "{value} % konfidens"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "_3Llo1"
+msgstr "set {count} gange"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "I8vFC1"
+msgstr "Anmeldt af {reporter}"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "hkENym"
+msgstr "Kunde"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "b40Pr7"
+msgstr "Anmelder"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "cxribA"
+msgstr "Assisteret triage"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "3yf2ND"
+msgstr "Operatør"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "0kc5kM"
+msgstr "Intern note"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "SbkDVk"
+msgstr "Intern note. Ingen uden for denne side ser den nogensinde."
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "gQsj5S"
+msgstr "Til anmelderen"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "_Ef3qB"
+msgstr "Til kunden"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "SzfJOJ"
+msgstr "Til anmelderen"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "BVm-D5"
+msgstr "Intet endnu"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "-WEbJY"
+msgstr "Der er ikke landet nogen anmeldelse, besked eller ændring på denne sag."
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "93TAYW"
+msgstr "En note til den, der tager over næste gang…"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "cGMldc"
+msgstr "Hvad kunden skal gøre, og hvornår…"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "xnzW7C"
+msgstr "Hvad anmelderen får at vide. Nævn aldrig kunden…"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "WB274G"
+msgstr "{count} servere blev låst."
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "M0vCGv"
+msgstr "Forsinket"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "CPwbcO"
+msgstr "Forældet tilknytning"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "YKuCIc"
+msgstr "Bestillinger blokeret"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "vzFCmc"
+msgstr "Endnu ikke tilknyttet"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "grfUHB"
+msgstr "Anmeldt af"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "ltwDgq"
+msgstr "Ingen kvittering sendt"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "QkSzvn"
+msgstr "Ingen — denne sag blev ikke åbnet af en anmeldelse."
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "ADKsID"
+msgstr "Åbnet"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "j6yXA6"
+msgstr "Kundens frist"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "nhuhb8"
+msgstr "Håndhæves"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "BBJeht"
+msgstr "Overvågning slutter"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "wLybjT"
+msgstr "Berørte servere"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "450Fty"
+msgstr "Ingen"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "ueaDOK"
+msgstr "Afsluttet som"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "JB9XrR"
+msgstr "Denne sag anvender {level}, når henstandsperioden udløber. Perioden er kundens chance for at handle først."
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "1Dbd1Z"
+msgstr "Håndhæv nu"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "nVIEJ1"
+msgstr "Der er ikke begrænset noget på denne sag."
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "9YCbjf"
+msgstr "{level} er gældende."
+
+#: src/features/admin/components/abuse/abuse-case-status-menu.tsx
+msgid "gL381x"
+msgstr "Flyt denne sag til"
+
+#: src/features/admin/components/abuse/abuse-case-status-menu.tsx
+msgid "rMqQLx"
+msgstr "Løs som…"
+
+#: src/features/admin/components/abuse/abuse-case-status-menu.tsx
+msgid "vpNlv2"
+msgstr "Afvis som…"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+msgid "bdcMGy"
+msgstr "Åbn menuen"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "GqYb_y"
+msgstr "Se kunden"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "AfxJ0y"
+msgstr "Flyt til"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/integrations/integration-health-panel.tsx
+#: src/features/servers/firewall/components/firewall-options-row.tsx
+msgid "tzMNF3"
+msgstr "Status"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "5p20VJ"
+msgstr "Afslut på sagssiden…"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "9q3kR7"
+msgstr "Afsluttet som {reason}"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
+msgid "94Fg25"
+msgstr "Vælg alle"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
+msgid "4pJVaS"
+msgstr "Vælg række"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "KpN3WY"
+msgstr "Sag"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "P-Xihq"
+msgstr "Forældet"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "lWppu7"
+msgstr "Søg på sag, titel eller kunde..."
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "vCAhII"
+msgstr "Alvorsgrad"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "ccXLVi"
+msgstr "Kategori"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "unZjqP"
+msgstr "Håndhævelse"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "do627d"
+msgstr "{count} servere"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "lf-twp"
+msgstr "Ingen bestillinger"
+
+#: src/features/admin/components/abuse/create-abuse-case-button.tsx
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "ItE4vE"
+msgstr "Åbn sag"
+
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "pnGaMQ"
+msgstr "Opretter en sag i hånden, ligesom en anmeldelse ville gøre."
+
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "9a9-ww"
+msgstr "Titel"
+
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "AbFa6r"
+msgstr "Udgående spam fra 203.0.113.5"
+
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "Xup5P8"
+msgstr "Hvad der skete"
+
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "_NRHKm"
+msgstr "Vises for kunden. Udelad anmelderens identitet."
+
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "8z6g8U"
+msgstr "Underret nu"
+
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "8t9C2A"
+msgstr "Sender kunden en e-mail og starter en frist på 24 timer."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "aduhuz"
+msgstr "Ingen tidligere signaler at afspille endnu."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "cu0IDt"
+msgstr "Matcher {matched} af de seneste {considered} signaler og afgør {wins} af dem."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "kPJDWv"
+msgstr "{count, plural, one {# server ville være blevet låst} other {# servere ville være blevet låst}}"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "ETXZfR"
+msgstr "Uden at en operatør læser anmeldelsen først."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "CutcjP"
+msgstr "Taget først af en regel med højere prioritet:"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "po9omj"
+msgstr "{name} (prioritet {priority}) · {count}"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "M0PEgf"
+msgstr "{source} · {type} · {when}"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "UE4WUO"
+msgstr "{count, plural, one {# match havde forældet tilknytning og ville ikke håndhæve} other {# match havde forældet tilknytning og ville ikke håndhæve}}."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "sJFaF8"
+msgstr "Én `key=value` pr. linje."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "v1vJ77"
+msgstr "Rediger regel"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "gzM1em"
+msgstr "Tilføj regel"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "jC476Z"
+msgstr "Hvad et matchende signal udløser."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "53G_x5"
+msgstr "Udgående spam, bekræftet"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "Q8Qw5B"
+msgstr "Beskrivelse"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "ENBExm"
+msgstr "Hvorfor denne regel findes — til den, der finder den næste gang."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+msgid "8lCjAM"
+msgstr "Prioritet"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "4aBk2h"
+msgstr "Lavere kører først. Kun den første regel, der matcher, afgør."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "V52jNn"
+msgstr "Aktiveret"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "iudNd-"
+msgstr "Matcher"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "i0iJj7"
+msgstr "Hver betingelse skal være opfyldt. En tom er ikke en betingelse."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "j4thrK"
+msgstr "Signaltype"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "LrZ7qa"
+msgstr "`abuse.*` matcher et navnerum, `abuse.ddos` én type."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "aH4De2"
+msgstr "Kilde"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "zi4cus"
+msgstr "Enhver kilde"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "n9zn-R"
+msgstr "Kilder, der har sendt noget indtil nu."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "XwCfRz"
+msgstr "Mindste alvorsgrad"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "k9Mysq"
+msgstr "Enhver alvorsgrad"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "WNflxH"
+msgstr "Mindste konfidens"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "ToO3_h"
+msgstr "Enhver"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "l0tGxO"
+msgstr "Et signal fra en kilde, der ikke angiver nogen, opfylder aldrig dette."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "It6_YY"
+msgstr "Mindste antal tidligere sager"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "fAGjQr"
+msgstr "Sager, denne kunde har afsluttet de seneste 90 dage."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "m3QEyd"
+msgstr "Etiketter"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "g2YRMn"
+msgstr "Én `key=value` pr. linje. De skal alle være til stede."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "mUSYMj"
+msgstr "Udløser"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "mZqcqr"
+msgstr "Betroet kilde"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "srt-Rb"
+msgstr "Handler uden operatør. Lad den være slået fra, så venter hvert match i triage."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "hu7xvo"
+msgstr "Fra signaltypen"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "K3e01Z"
+msgstr "Sagens alvorsgrad"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "05BYVh"
+msgstr "Fra signalets alvorsgrad"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "4XojnY"
+msgstr "At slette en server sker aldrig automatisk; det gør en operatør på sagen."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "hSwgoV"
+msgstr "Henstandsperiode (minutter)"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "2BCcVZ"
+msgstr "En sag, der afsluttes inden for perioden, håndhæves aldrig."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "ZSIvsq"
+msgstr "Svarfrist (timer)"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "uUrMpp"
+msgstr "Tavshed efter det skærper håndhævelsen ét niveau."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "Sc5eWh"
+msgstr "Bloker nye bestillinger"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "92Ik-u"
+msgstr "Indtil sagen er afsluttet."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "Eylatv"
+msgstr "Underret kunden"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "81AQjV"
+msgstr "Prøvekørsel"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "K6cQYY"
+msgstr "Afspiller denne regel mod de signaler, der allerede er modtaget. Ændrer intet."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "KiXNvz"
+msgstr "Kør"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "PqUIzj"
+msgstr "{severity} og derover"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "C20CrC"
+msgstr "{count, plural, one {# tidligere sag} other {# tidligere sager}}"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "NNg0UR"
+msgstr "{count} signaler · senest {when}"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "QcpO4R"
+msgstr "Ingen signaler endnu"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
+msgid "wEQDC6"
+msgstr "Rediger"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "5EtNjc"
+msgstr "Prioritet {value}"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "wk2gIX"
+msgstr "Betroet"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "8RVq-l"
+msgstr "Blokerer bestillinger"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "Aa4K49"
+msgstr "Intet håndhæves automatisk"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "9oOZxT"
+msgstr "Ingen aktiveret regel er markeret som betroet kilde, så hver sag venter i triage på en operatør."
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "v89h-O"
+msgstr "Hvad et signal udløser. Den første regel, der matcher, efter prioritet, afgør sagen."
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "ue2UOa"
+msgstr "Ingen regler"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "dWdkfw"
+msgstr "Hver anmeldelse lander i triage, indtil en regel matcher den."
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "ent4MP"
+msgstr "Kun en regel, der er markeret som betroet kilde, må handle uden operatør."
+
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "UcHtCB"
 msgstr "Proxmox VE"
@@ -2874,13 +3785,6 @@ msgstr "Slug"
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 msgid "e5x8FT"
 msgstr "Type"
-
-#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
-#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
-#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-msgid "8lCjAM"
-msgstr "Prioritet"
 
 #: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
 msgid "1q_kua"
@@ -2957,16 +3861,6 @@ msgid "mfKcIm"
 msgstr "Lavere prioritet sammensættes først; ved uafgjort afgør slug."
 
 #: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
-msgid "Q8Qw5B"
-msgstr "Beskrivelse"
-
-#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
-msgid "V52jNn"
-msgstr "Aktiveret"
-
-#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 msgid "6WqHWi"
 msgstr "Gælder for"
@@ -2992,38 +3886,11 @@ msgid "0bKTrV"
 msgstr "Der er endnu ikke defineret nogen skabeloner."
 
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
-#: src/features/admin/components/emails/emails-table/columns.tsx
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
-#: src/features/admin/components/servers/servers-table/columns.tsx
-#: src/features/admin/components/subnets/subnets-table/columns.tsx
-#: src/features/admin/components/users/users-table/columns.tsx
-#: src/features/invoices/components/invoices-table/columns.tsx
-msgid "94Fg25"
-msgstr "Vælg alle"
-
-#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
-#: src/features/admin/components/emails/emails-table/columns.tsx
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
-#: src/features/admin/components/servers/servers-table/columns.tsx
-#: src/features/admin/components/subnets/subnets-table/columns.tsx
-#: src/features/admin/components/users/users-table/columns.tsx
-#: src/features/invoices/components/invoices-table/columns.tsx
-msgid "4pJVaS"
-msgstr "Vælg række"
-
-#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 msgid "XPruqs"
 msgstr "Rækkefølge"
 
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/notifications/notification-targets-list.tsx
 #: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
 msgid "tthToS"
 msgstr "Deaktiveret"
@@ -3055,24 +3922,6 @@ msgstr "Skabeloner, som dette uddrag i øjeblikket gælder for"
 #: src/features/servers/components/rdns/records-table/columns.tsx
 msgid "wFMlsH"
 msgstr "Opdateret kl"
-
-#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
-#: src/features/admin/components/emails/emails-table/columns.tsx
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
-#: src/features/admin/components/servers/servers-table/columns.tsx
-#: src/features/admin/components/subnets/subnets-table/columns.tsx
-#: src/features/admin/components/users/users-table/columns.tsx
-msgid "bdcMGy"
-msgstr "Åbn menuen"
-
-#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
-#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
-msgid "wEQDC6"
-msgstr "Rediger"
 
 #: src/features/admin/components/dashboard/activity-stats-row.tsx
 msgid "wCWFeb"
@@ -3223,12 +4072,6 @@ msgstr "Emne"
 msgid "EPGMwQ"
 msgstr "Søg efter emne..."
 
-#: src/features/admin/components/emails/emails-table/columns.tsx
-#: src/features/admin/components/integrations/integration-health-panel.tsx
-#: src/features/servers/firewall/components/firewall-options-row.tsx
-msgid "tzMNF3"
-msgstr "Status"
-
 #: src/features/admin/components/integrations/integration-detail.tsx
 msgid "Q4e8bq"
 msgstr "Bygget af"
@@ -3246,8 +4089,8 @@ msgid "Cm2_-V"
 msgstr "Læs dokumentationen"
 
 #: src/features/admin/components/integrations/integration-detail.tsx
-msgid "ZLrvCJ"
-msgstr "Denne integration har intet at konfigurere."
+msgid "bEhH0O"
+msgstr "Denne integration har intet at konfigurere her. At slå den til er det hele."
 
 #: src/features/admin/components/integrations/integration-enable-button.tsx
 msgid "Rw7iI7"
@@ -3306,10 +4149,6 @@ msgid "GZJpDf"
 msgstr "Analyse"
 
 #: src/features/admin/components/integrations/integrations-hub.tsx
-msgid "1UwRXb"
-msgstr "Misbrug"
-
-#: src/features/admin/components/integrations/integrations-hub.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "DUIDEq"
@@ -3318,6 +4157,107 @@ msgstr "Opbevaring"
 #: src/features/admin/components/integrations/integrations-hub.tsx
 msgid "Mmuj1R"
 msgstr "Platform"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "Ejgl5g"
+msgstr "Testnotifikation leveret."
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "dqfX3I"
+msgstr "Tilføj mindst én nøgle, eller `*` for alt."
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "ndpxoL"
+msgstr "`{key}` er ikke en gyldig nøgle."
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "fI4Anf"
+msgstr "Rediger mål"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "HoiRnc"
+msgstr "Tilføj mål"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "hNpFRN"
+msgstr "Hvor en notifikation havner, og hvilke den modtager."
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "OssiM5"
+msgstr "Ops-kanal"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "KeO51o"
+msgstr "Kanal"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "6uhSSw"
+msgstr "Vælg en kanal"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "YFT4rG"
+msgstr "Nøgler"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "d-LD1g"
+msgstr "Én pr. linje. `abuse.*` matcher et navnerum, `*` alt."
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "SihfVv"
+msgstr "Alt under dette leveres ikke."
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "IQDO43"
+msgstr "Testlevering"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "rCbiwG"
+msgstr "Sender en rigtig notifikation til dette mål."
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "Fx1Td_"
+msgstr "Send test"
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "dZkKpB"
+msgstr "Kanal utilgængelig"
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "e8Nx0r"
+msgstr "{keys} · {severity} og derover"
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "2wbxcK"
+msgstr "Notifikationsmål"
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "C--PO9"
+msgstr "Hvor operatøralarmer leveres. Kunder får besked via deres egne kanaler."
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "WtPJhe"
+msgstr "Mål utilgængelige"
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "oJQo9b"
+msgstr "Ingen kanaler"
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "QHF7kT"
+msgstr "Ingen integration, der leverer en notifikationskanal, er slået til."
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "oX3LNh"
+msgstr "Ingen mål"
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "tR7Qfj"
+msgstr "Der er endnu ikke oprettet nogen notifikationsmål."
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "nIu1MB"
+msgstr "Et mål modtager hver notifikation, der matcher dets nøgler og mindste alvorsgrad."
 
 #: src/features/admin/components/proxmox-node-groups/create-node-group-button.tsx
 msgid "8gJfol"
@@ -3650,10 +4590,6 @@ msgstr "Checksum"
 #: src/features/admin/components/proxmox-templates/template-settings.tsx
 msgid "u2OsFB"
 msgstr "Algoritme"
-
-#: src/features/admin/components/proxmox-templates/template-settings.tsx
-msgid "450Fty"
-msgstr "Ingen"
 
 #: src/features/admin/components/proxmox-templates/template-settings.tsx
 msgid "Wf4EEV"
@@ -4132,6 +5068,18 @@ msgstr "Behandler betaling..."
 #: src/features/checkout/components/stripe-payment-form.tsx
 msgid "7tOz-m"
 msgstr "Betal nu"
+
+#: src/features/dashboard/components/active-abuse-cases.tsx
+msgid "aZFiKP"
+msgstr "{count, plural, one {# anmeldelse venter på dit svar.} other {# anmeldelser venter på dit svar.}}"
+
+#: src/features/dashboard/components/active-abuse-cases.tsx
+msgid "HGGtVU"
+msgstr "Åbne anmeldelser om dine servere."
+
+#: src/features/dashboard/components/active-abuse-cases.tsx
+msgid "8sWND3"
+msgstr "{count, plural, one {# anmeldelse mere} other {# anmeldelser mere}}"
 
 #: src/features/dashboard/components/empty-servers.tsx
 msgid "fmSs_a"
@@ -4999,11 +5947,6 @@ msgstr "Vælg retning"
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "ubliHx"
 msgstr "ICMP type"
-
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
-msgid "aH4De2"
-msgstr "Kilde"
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "c-r5qz"

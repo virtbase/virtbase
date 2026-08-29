@@ -118,7 +118,9 @@ export interface TRPCMeta extends OpenApiMeta {
    * Restrict the procedure to only allow
    * certain server states.
    */
-  forbiddenStates?: Array<"suspended" | "terminated" | "installing">;
+  forbiddenStates?: Array<
+    "suspended" | "terminated" | "installing" | "abuse-locked"
+  >;
   /**
    * Additional fields to return with
    * the server data.
@@ -316,6 +318,8 @@ const serverMiddleware = authMiddleware.unstable_pipe(
             installed_at: servers.installedAt,
             suspended_at: servers.suspendedAt,
             terminates_at: servers.terminatesAt,
+            abuse_locked_at: servers.abuseLockedAt,
+            abuse_lock_level: servers.abuseLockLevel,
             created_at: servers.createdAt,
             plan: !expansions.has("plan")
               ? serverPlans.id
@@ -508,6 +512,19 @@ const serverMiddleware = authMiddleware.unstable_pipe(
         (meta.forbiddenStates.includes("installing") && isInstalling(server))
       ) {
         throw new TRPCError({ code: "FORBIDDEN" });
+      }
+
+      // Separate from the three above because it says why. A customer whose
+      // firewall edit is refused with a bare FORBIDDEN files a support ticket;
+      // one who is told there is an open abuse case goes and reads it.
+      if (
+        meta.forbiddenStates.includes("abuse-locked") &&
+        server.abuse_locked_at
+      ) {
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message: "ABUSE_LOCKED",
+        });
       }
     }
 

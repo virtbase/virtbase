@@ -219,10 +219,13 @@ const withNextIntl = createNextIntlPlugin({
       "./src/features",
       "./src/ui",
       "../../packages/ui/src",
+      "../../packages/integration-abuseipdb/src",
+      "../../packages/integration-alertmanager/src",
       "../../packages/integration-discord/src",
       "../../packages/integration-lexware/src",
       "../../packages/integration-powerdns/src",
       "../../packages/integration-prometheus/src",
+      "../../packages/integration-webhook/src",
     ],
     extract: true,
     messages: {

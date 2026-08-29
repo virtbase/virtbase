@@ -17,6 +17,11 @@
 
 export const RESEND_AUDIENCE_ID = "<uuid-placeholder>";
 
+/**
+ * The fixed sender identities. The abuse desk is deliberately absent: it sends
+ * as the per-case address on `ABUSE_MAILBOX_DOMAIN` and passes `from` itself,
+ * so that the domain it sends from and the one it receives on are one setting.
+ */
 export const VARIANT_TO_FROM_MAP = {
   primary: "Virtbase <system@account.virtbase.com>",
   notifications: "Virtbase <notifications@mail.virtbase.com>",

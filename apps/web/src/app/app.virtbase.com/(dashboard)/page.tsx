@@ -25,9 +25,12 @@ import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { useExtracted } from "next-intl";
 import { getExtracted } from "next-intl/server";
+import { ActiveAbuseCasesCard } from "@/features/dashboard/components/active-abuse-cases-card";
 import { LatestInvoicesCard } from "@/features/dashboard/components/latest-invoices-card";
 import { LatestServersCard } from "@/features/dashboard/components/latest-servers-card";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
+
+export const instant = false;
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();
@@ -54,6 +57,10 @@ export default function Page() {
       }
     >
       <div className="grid flex-1 auto-rows-max gap-4">
+        {/* Above the servers, and only when there is one: an open abuse case
+            outranks everything else on this page, because it is the only thing
+            here that can take a server away. */}
+        <ActiveAbuseCasesCard />
         <div className="grid gap-4 lg:grid-cols-[1fr_250px] xl:grid-cols-4">
           <div className="grid auto-rows-max items-start gap-4 lg:col-span-2">
             <LatestServersCard />

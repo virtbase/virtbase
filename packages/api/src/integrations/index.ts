@@ -17,6 +17,8 @@
 
 import { IntegrationConfigStore, parseMasterKey } from "@virtbase/config";
 import { db } from "@virtbase/db/client";
+import abuseipdb from "@virtbase/integration-abuseipdb";
+import alertmanager from "@virtbase/integration-alertmanager";
 import anonpay from "@virtbase/integration-anonpay";
 import discord from "@virtbase/integration-discord";
 import lexware from "@virtbase/integration-lexware";
@@ -29,6 +31,12 @@ import {
   IntegrationRegistry,
 } from "@virtbase/integration-sdk";
 import stripe from "@virtbase/integration-stripe";
+import webhook from "@virtbase/integration-webhook";
+import { AbuseSignalIntake } from "../abuse/port";
+// Imported from its own module rather than the `../notifications` barrel: the
+// barrel also exports the dispatcher, which imports this file to reach the
+// registry, and going through it would make the two modules circular.
+import { EmailNotificationChannel } from "../notifications/channels/email";
 import { DbConfigSource } from "./db-config-source";
 import { TRPCServerManagement } from "./server-management";
 
@@ -49,6 +57,8 @@ const core = defineIntegration({
   internal: true,
   provides: {
     serverManagement: () => new TRPCServerManagement(),
+    notifications: () => new EmailNotificationChannel(),
+    signals: () => new AbuseSignalIntake(),
   },
 });
 
@@ -89,7 +99,18 @@ const config: ConfigSource = integrationConfigStore
  * dependency; nothing else in this package changes.
  */
 export const integrations = new IntegrationRegistry({
-  integrations: [core, powerdns, discord, lexware, stripe, anonpay, prometheus],
+  integrations: [
+    core,
+    powerdns,
+    discord,
+    lexware,
+    stripe,
+    anonpay,
+    prometheus,
+    webhook,
+    alertmanager,
+    abuseipdb,
+  ],
   config,
 });
 

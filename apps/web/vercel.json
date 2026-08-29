@@ -48,6 +48,26 @@
     {
       "path": "/api/cron/notify-inactive-accounts",
       "schedule": "13 4 * * *"
+    },
+    {
+      "path": "/api/cron/retry-notifications",
+      "schedule": "*/10 * * * *"
+    },
+    {
+      "path": "/api/cron/reconcile-abuse-cases",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/cron/reconcile-abuse-locks",
+      "schedule": "*/5 * * * *"
+    },
+    {
+      "path": "/api/cron/poll-abuse-sources",
+      "schedule": "37 * * * *"
+    },
+    {
+      "path": "/api/cron/triage-abuse-reports",
+      "schedule": "*/5 * * * *"
     }
   ]
 }

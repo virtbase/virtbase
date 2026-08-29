@@ -20,6 +20,7 @@ import { createDiscordClient, getApplication } from "./api";
 import { secretsSchema, settingsSchema } from "./config";
 import { DiscordIdentityProvider } from "./identity";
 import { localizeDiscord } from "./localize";
+import { DiscordNotificationChannel } from "./notifications";
 import { runDiscordSync, summarizeSync } from "./sync";
 import { handleInteractionsRequest } from "./webhooks/interactions";
 
@@ -64,10 +65,10 @@ export default defineIntegration({
     ],
   },
 
-  // `notifications` follows once NotificationChannel has a dispatcher. Discord
-  // also consumes `serverManagement` rather than providing it.
+  // Discord also consumes `serverManagement` rather than providing it.
   provides: {
     identity: (ctx) => new DiscordIdentityProvider(ctx),
+    notifications: (ctx) => new DiscordNotificationChannel(ctx),
   },
 
   webhooks: [

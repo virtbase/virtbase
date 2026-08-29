@@ -115,6 +115,8 @@
         "@virtbase/config": "workspace:*",
         "@virtbase/db": "workspace:*",
         "@virtbase/email": "workspace:*",
+        "@virtbase/integration-abuseipdb": "workspace:*",
+        "@virtbase/integration-alertmanager": "workspace:*",
         "@virtbase/integration-anonpay": "workspace:*",
         "@virtbase/integration-discord": "workspace:*",
         "@virtbase/integration-lexware": "workspace:*",
@@ -122,6 +124,7 @@
         "@virtbase/integration-prometheus": "workspace:*",
         "@virtbase/integration-sdk": "workspace:*",
         "@virtbase/integration-stripe": "workspace:*",
+        "@virtbase/integration-webhook": "workspace:*",
         "@virtbase/ports": "workspace:*",
         "@virtbase/utils": "workspace:*",
         "@virtbase/validators": "workspace:*",
@@ -223,6 +226,36 @@
         "react-dom": "catalog:",
       },
     },
+    "packages/integration-abuseipdb": {
+      "name": "@virtbase/integration-abuseipdb",
+      "dependencies": {
+        "@virtbase/integration-sdk": "workspace:*",
+        "@virtbase/ports": "workspace:*",
+        "next-intl": "catalog:",
+        "zod": "catalog:",
+      },
+      "devDependencies": {
+        "@biomejs/biome": "catalog:",
+        "@virtbase/tsconfig": "workspace:*",
+        "typescript": "catalog:",
+      },
+    },
+    "packages/integration-alertmanager": {
+      "name": "@virtbase/integration-alertmanager",
+      "dependencies": {
+        "@virtbase/integration-sdk": "workspace:*",
+        "@virtbase/ports": "workspace:*",
+        "@virtbase/utils": "workspace:*",
+        "@virtbase/validators": "workspace:*",
+        "next-intl": "catalog:",
+        "zod": "catalog:",
+      },
+      "devDependencies": {
+        "@biomejs/biome": "catalog:",
+        "@virtbase/tsconfig": "workspace:*",
+        "typescript": "catalog:",
+      },
+    },
     "packages/integration-anonpay": {
       "name": "@virtbase/integration-anonpay",
       "dependencies": {
@@ -245,6 +278,7 @@
         "@virtbase/integration-sdk": "workspace:*",
         "@virtbase/ports": "workspace:*",
         "@virtbase/utils": "workspace:*",
+        "@virtbase/validators": "workspace:*",
         "discord-api-types": "^0.38.52",
         "next-intl": "catalog:",
         "tweetnacl": "^1.0.3",
@@ -308,6 +342,7 @@
       "name": "@virtbase/integration-sdk",
       "dependencies": {
         "@virtbase/ports": "workspace:*",
+        "@virtbase/validators": "workspace:*",
         "zod": "catalog:",
       },
       "devDependencies": {
@@ -325,6 +360,21 @@
         "@virtbase/utils": "workspace:*",
         "next-intl": "catalog:",
         "stripe": "^22.4.0",
+        "zod": "catalog:",
+      },
+      "devDependencies": {
+        "@biomejs/biome": "catalog:",
+        "@virtbase/tsconfig": "workspace:*",
+        "typescript": "catalog:",
+      },
+    },
+    "packages/integration-webhook": {
+      "name": "@virtbase/integration-webhook",
+      "dependencies": {
+        "@virtbase/integration-sdk": "workspace:*",
+        "@virtbase/ports": "workspace:*",
+        "@virtbase/validators": "workspace:*",
+        "next-intl": "catalog:",
         "zod": "catalog:",
       },
       "devDependencies": {
@@ -366,6 +416,7 @@
       "name": "@virtbase/ui",
       "dependencies": {
         "@daypicker/react": "^10.0.1",
+        "@shadcn/react": "^0.3.0",
         "@tanstack/react-table": "catalog:",
         "class-variance-authority": "^0.7.1",
         "clsx": "^2.1.1",
@@ -1341,6 +1392,8 @@
 
     "@sentry/webpack-plugin": ["@sentry/webpack-plugin@5.4.0", "", { "dependencies": { "@sentry/bundler-plugins": "^10.64.0" }, "peerDependencies": { "webpack": ">=5.0.0" } }, "sha512-J3a0BvUZ75Qxy+v/Ap3Hx4ZEcSjlPHZ/jDtxdRhXQCyNeEb8xq0uUBTI9VLtGk2eNeNucOxOEJ5ngqdNjnEH/A=="],
 
+    "@shadcn/react": ["@shadcn/react@0.3.0", "", { "peerDependencies": { "@types/react": ">=19", "react": ">=19" }, "optionalPeers": ["@types/react", "react"] }, "sha512-iKN0NuYe850VDHlxEfvppFrpa7CMV3zArTHusXlaSmeFeQhohGbIqclv6WwPTs/44I8EkXQpcuRt6sXEVKkWqQ=="],
+
     "@shikijs/core": ["@shikijs/core@4.4.2", "", { "dependencies": { "@shikijs/primitive": "4.4.2", "@shikijs/types": "4.4.2", "@shikijs/vscode-textmate": "^10.0.2", "@types/hast": "^3.0.5", "hast-util-to-html": "^9.0.5" } }, "sha512-StyzbAyxg2/tBGf78gwbBkGyeQ73lf8UiJArFaQhTQIDqQOCKPCQFanvrs4/Yv3Yfyc+ONInJM6K+FMIf+P+kA=="],
 
     "@shikijs/engine-javascript": ["@shikijs/engine-javascript@4.4.2", "", { "dependencies": { "@shikijs/types": "4.4.2", "@shikijs/vscode-textmate": "^10.0.2", "oniguruma-to-es": "^4.3.6" } }, "sha512-MnIkeqWdVPUWsxlx8gKLVCJFTsqrQJgpTPBPpQwaFeJ56lOnJxj5aN2LUFnfxUEcvOQuNocmbaMnVrCEln6rkw=="],
@@ -1649,6 +1702,10 @@
 
     "@virtbase/email": ["@virtbase/email@workspace:packages/email"],
 
+    "@virtbase/integration-abuseipdb": ["@virtbase/integration-abuseipdb@workspace:packages/integration-abuseipdb"],
+
+    "@virtbase/integration-alertmanager": ["@virtbase/integration-alertmanager@workspace:packages/integration-alertmanager"],
+
     "@virtbase/integration-anonpay": ["@virtbase/integration-anonpay@workspace:packages/integration-anonpay"],
 
     "@virtbase/integration-discord": ["@virtbase/integration-discord@workspace:packages/integration-discord"],
@@ -1662,6 +1719,8 @@
     "@virtbase/integration-sdk": ["@virtbase/integration-sdk@workspace:packages/integration-sdk"],
 
     "@virtbase/integration-stripe": ["@virtbase/integration-stripe@workspace:packages/integration-stripe"],
+
+    "@virtbase/integration-webhook": ["@virtbase/integration-webhook@workspace:packages/integration-webhook"],
 
     "@virtbase/novnc-proxy": ["@virtbase/novnc-proxy@workspace:apps/novnc-proxy"],
 

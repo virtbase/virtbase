@@ -667,7 +667,12 @@ export const serversBackupsRouter = {
       permissions: {
         backups: ["write"],
       },
-      forbiddenStates: ["suspended", "terminated", "installing"],
+      forbiddenStates: [
+        "suspended",
+        "terminated",
+        "installing",
+        "abuse-locked",
+      ],
       ratelimit: {
         requests: 5,
         seconds: "1 d",

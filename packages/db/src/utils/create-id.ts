@@ -62,6 +62,19 @@ const prefixes = [
   "adt_", // account deletion token
   "exp_", // data export
   "erl_", // erasure log entry
+  // Abuse
+  "absig_", // abuse signal
+  "abus_", // abuse case
+  "absrv_", // abuse case server
+  "abmsg_", // abuse case message
+  "abcon_", // abuse case contact
+  "abevt_", // abuse case event
+  "abrul_", // abuse rule
+  "abcur_", // abuse source cursor
+  // Notifications
+  "ntft_", // notification target
+  "ntfs_", // notification target secret
+  "ntfd_", // notification delivery
 ] as const;
 
 // ULID uses base32 encoding

@@ -40,7 +40,12 @@ export const serversMountsRouter = {
         summary: "Mount an ISO image",
         description: "Mount a downloaded ISO image to a server.",
       },
-      forbiddenStates: ["installing", "suspended", "terminated"],
+      forbiddenStates: [
+        "installing",
+        "suspended",
+        "terminated",
+        "abuse-locked",
+      ],
       permissions: {
         servers: ["write"],
         iso: ["read"],
@@ -143,7 +148,12 @@ export const serversMountsRouter = {
         summary: "Unmount an ISO image",
         description: "Unmount a mounted ISO image from a server.",
       },
-      forbiddenStates: ["installing", "suspended", "terminated"],
+      forbiddenStates: [
+        "installing",
+        "suspended",
+        "terminated",
+        "abuse-locked",
+      ],
       permissions: {
         servers: ["write"],
         iso: ["read"],

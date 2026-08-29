@@ -16,12 +16,28 @@
  */
 
 import * as Sentry from "@sentry/nextjs";
+import { receiveAbuseEmail } from "@virtbase/api/abuse";
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { emails } from "@virtbase/db/schema";
 import { resend } from "@virtbase/email/resend";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+
+/**
+ * Every address the message actually arrived for.
+ *
+ * `received_for` is the envelope recipient, taken from the `for` clause of the
+ * `Received` headers, and it is the only place the original address survives a
+ * forward. `abuse@virtbase.com` is published in whois and forwarded into the
+ * Resend domain, so a reply to a case address that goes the long way round
+ * still carries its `abuse+<number>.<tag>` tag here even though `To:` has been
+ * rewritten to the forwarding address.
+ */
+const recipientsOf = (email: {
+  to: string[];
+  received_for: string[];
+}): string[] => [...new Set([...email.to, ...email.received_for])];
 
 export async function POST(req: NextRequest) {
   try {
@@ -67,9 +83,90 @@ export async function POST(req: NextRequest) {
     });
 
     switch (result.type) {
-      case "email.sent":
-      case "email.scheduled":
+      // Inbound mail is a different resource, not a different event on the
+      // same one: `emails.get` addresses what we sent, `emails.receiving.get`
+      // what arrived. The webhook itself carries only metadata - no body, no
+      // headers, no attachments - so that a large message still fits inside a
+      // serverless request body, which is why the content is fetched here and
+      // not read off `result.data`. Headers in particular arrive nowhere else,
+      // and both the `In-Reply-To` routing step and the automated-mail loop
+      // guard are blind without them.
       case "email.received": {
+        const externalId = result.data.email_id;
+        const received = await resend.emails.receiving.get(externalId);
+
+        if (received.error) {
+          throw new Error(received.error.message);
+        }
+
+        const {
+          from,
+          to,
+          bcc,
+          cc,
+          reply_to: replyTo,
+          received_for: receivedFor,
+          subject,
+          html,
+          text,
+          headers,
+          created_at: createdAt,
+        } = received.data;
+
+        await db.transaction(
+          async (tx) => {
+            await tx
+              .insert(emails)
+              .values({
+                externalId,
+                from,
+                to,
+                bcc,
+                cc,
+                replyTo,
+                subject,
+                html,
+                text,
+                lastEvent: "received",
+                createdAt: new Date(createdAt),
+              })
+              .onConflictDoUpdate({
+                target: [emails.externalId],
+                set: { lastEvent: "received" },
+              });
+          },
+          {
+            accessMode: "read write",
+            isolationLevel: "read committed",
+          },
+        );
+
+        // Everything addressed to the abuse mailbox is filed against a case.
+        // Deliberately after the row exists, so the case message can point at
+        // it, and deliberately swallowed: a routing failure must not make
+        // Resend retry a webhook whose only job was to store the message.
+        await receiveAbuseEmail({
+          db,
+          email: {
+            emailId: externalId,
+            from,
+            to: recipientsOf({ to, received_for: receivedFor }),
+            subject,
+            text,
+            html,
+            headers,
+          },
+        }).catch((error: unknown) => {
+          console.error("[abuse] Failed to route received mail", error);
+          Sentry.captureException(error, {
+            tags: { "abuse.mailbox.route": "true" },
+          });
+        });
+
+        break;
+      }
+      case "email.sent":
+      case "email.scheduled": {
         const externalId = result.data.email_id;
         const email = await resend.emails.get(externalId);
 
@@ -119,6 +216,7 @@ export async function POST(req: NextRequest) {
             isolationLevel: "read committed",
           },
         );
+
         break;
       }
       case "email.bounced":

@@ -129,6 +129,23 @@ export const users = d.snakeCase.table(
      * @default null
      */
     anonymizedAt: d.timestamp({ withTimezone: true, mode: "date" }),
+    /**
+     * When this account was blocked from placing new orders.
+     *
+     * Deliberately not `banned`, which better-auth uses to refuse logins: a
+     * customer who cannot log in cannot answer the abuse case that blocked
+     * them, which is the opposite of what the process needs. Renewals,
+     * payments and invoices stay open too - blocking a renewal ends in
+     * deletion, which is a data-loss penalty applied by side effect.
+     *
+     * A denormalisation of `abuse_cases.blocks_ordering`, written in the same
+     * transaction, and also settable by an operator with no case at all.
+     *
+     * @default null
+     */
+    orderingBlockedAt: d.timestamp({ withTimezone: true, mode: "date" }),
+    /** Shown to the customer at checkout, with the case reference. */
+    orderingBlockReason: d.text(),
   },
   (t) => [
     d.index().on(t.email),

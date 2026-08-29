@@ -16,6 +16,7 @@
  */
 
 import type { TRPCRouterRecord } from "@trpc/server";
+import { TRPCError } from "@trpc/server";
 import {
   mapProxmoxServerStatus,
   mapProxmoxTaskStatus,
@@ -35,6 +36,14 @@ import {
 import { getLastTask, performPowerAction } from "../../proxmox";
 import { getDiskInfo } from "../../proxmox/get-disk-info";
 import { serverProcedure } from "../../trpc";
+
+/** Anything that would bring a powered-off guest back up. */
+const POWER_ON_ACTIONS: readonly string[] = [
+  "start",
+  "resume",
+  "reboot",
+  "reset",
+];
 
 export const serversStatusRouter = {
   get: serverProcedure
@@ -156,8 +165,22 @@ export const serversStatusRouter = {
     .input(UpdateServerStatusInputSchema)
     .output(UpdateServerStatusOutputSchema)
     .mutation(async ({ ctx, input }) => {
-      const { instance } = ctx;
+      const { instance, server } = ctx;
       const { action } = input;
+
+      // Level-aware rather than a blanket `forbiddenStates` entry, because the
+      // other locks leave the guest running and rebooting is part of fixing
+      // it. Only `power_off` means the machine is meant to stay down, and
+      // powering it back on is the one action that undoes that lock.
+      if (
+        "power_off" === server.abuse_lock_level &&
+        POWER_ON_ACTIONS.includes(action)
+      ) {
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message: "ABUSE_LOCKED",
+        });
+      }
 
       // Asynchronous operation, result ignored
       await performPowerAction({

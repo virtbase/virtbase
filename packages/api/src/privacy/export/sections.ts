@@ -44,6 +44,11 @@ export const EXPORT_SECTIONS = {
   payments: "payments",
   invoices: "invoices",
   emails: "emails",
+  abuse_cases: "abuse_cases",
+  // Nested inside each case, like order items inside an order: a message or a
+  // lock detached from the case it belongs to says nothing.
+  abuse_case_messages: "abuse_cases",
+  abuse_case_servers: "abuse_cases",
 } as const satisfies Partial<Record<SubjectTableName, string>>;
 
 export type ExportSection =

@@ -26,6 +26,22 @@ export const paths = {
     integrations: {
       getHref: () => "/integrations",
     },
+    notifications: {
+      getHref: () => "/notifications",
+    },
+    abuse: {
+      getHref: () => "/abuse",
+    },
+    /**
+     * A static segment beside `/abuse/[id]`, which Next resolves first. Safe
+     * because a case id is a prefixed `abus_` string and can never be "rules".
+     */
+    abuseRules: {
+      getHref: () => "/abuse/rules",
+    },
+    abuseCase: {
+      getHref: (id: string) => `/abuse/${id}`,
+    },
     integration: {
       getHref: (id: string) => `/integrations/${id}`,
     },
@@ -144,6 +160,12 @@ export const paths = {
     },
     invoices: {
       getHref: () => "/invoices",
+    },
+    abuse: {
+      getHref: () => "/abuse",
+    },
+    abuseCase: {
+      getHref: (id: string) => `/abuse/${id}`,
     },
     account: {
       settings: {

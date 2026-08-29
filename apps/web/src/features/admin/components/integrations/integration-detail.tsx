@@ -37,6 +37,11 @@ export async function IntegrationDetail({
   const t = await getExtracted();
 
   const { descriptor } = item;
+  // Whether there is a form to render, not whether the integration may be
+  // switched on. Some integrations carry no installation-level configuration
+  // at all - the outgoing webhook keeps its URL and signing secret on each
+  // notification target - and refusing to enable those makes them
+  // unreachable.
   const configurable =
     descriptor.settingsFields.length > 0 || descriptor.secretFields.length > 0;
 
@@ -100,7 +105,6 @@ export async function IntegrationDetail({
           <IntegrationEnableButton
             integrationId={descriptor.id}
             enabled={item.enabled}
-            disabled={!configurable}
           />
         </div>
       </div>
@@ -112,7 +116,9 @@ export async function IntegrationDetail({
       ) : (
         <Card>
           <CardContent className="py-6 text-muted-foreground text-sm">
-            {t("This integration has nothing to configure.")}
+            {t(
+              "This integration has nothing to configure here. Switching it on is all there is.",
+            )}
           </CardContent>
         </Card>
       )}

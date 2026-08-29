@@ -1,0 +1,2 @@
+ALTER TABLE "abuse_cases" ADD COLUMN "classified_at" timestamp with time zone;--> statement-breakpoint
+CREATE INDEX "abuse_cases_status_classified_at_index" ON "abuse_cases" ("status","classified_at");

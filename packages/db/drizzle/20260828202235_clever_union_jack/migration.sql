@@ -1,0 +1,1 @@
+ALTER TABLE "abuse_case_servers" ADD COLUMN "previous_state" jsonb;

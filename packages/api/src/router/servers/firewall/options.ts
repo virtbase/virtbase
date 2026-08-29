@@ -66,6 +66,7 @@ export const serverFirewallOptionsRouter = {
     }),
   update: serverProcedure
     .meta({
+      forbiddenStates: ["abuse-locked"],
       openapi: {
         method: "PUT",
         path: "/servers/{server_id}/firewall/options",

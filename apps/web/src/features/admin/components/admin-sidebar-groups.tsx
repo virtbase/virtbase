@@ -18,6 +18,7 @@
 "use client";
 
 import {
+  LucideBell,
   LucideBookTemplate,
   LucideBuilding2,
   LucideFileCode2,
@@ -28,6 +29,7 @@ import {
   LucidePlug,
   LucideServer,
   LucideShapes,
+  LucideShieldAlert,
   LucideUsers,
 } from "@virtbase/ui/icons";
 import {
@@ -74,6 +76,16 @@ const useGroups = () => {
           title: t("Integrations"),
           path: paths.admin.integrations,
           icon: LucidePlug,
+        },
+        {
+          title: t("Notifications"),
+          path: paths.admin.notifications,
+          icon: LucideBell,
+        },
+        {
+          title: t("Abuse"),
+          path: paths.admin.abuse,
+          icon: LucideShieldAlert,
         },
       ],
     },

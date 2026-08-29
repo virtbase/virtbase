@@ -178,6 +178,25 @@
     "verifyEmailLink": "E-Mail-Adresse bestätigen",
     "copyAndPaste": "oder kopiere diese URL in deinen Browser:"
   },
+  "abuse-case-notice": {
+    "title": "Missbrauchsmeldung zu deinem Dienst ({reference})",
+    "body": "Wir haben eine Missbrauchsmeldung zu deinem Dienst erhalten.\n\nFall {reference}, gemeldet als {category}. Bitte öffne den Fall, prüfe den betroffenen Server und antworte innerhalb von {deadlineHours} Stunden. Ohne Rückmeldung müssen wir den Dienst möglicherweise einschränken, um den Missbrauch zu stoppen."
+  },
+  "abuse-case-resolved": {
+    "title": "Missbrauchsfall {reference} ist abgeschlossen",
+    "body": "Der Missbrauchsfall {reference} wurde abgeschlossen. Von deiner Seite ist nichts weiter zu tun. Bei Rückfragen antworte einfach im Fall, wir melden uns."
+  },
+  "abuse-case-restricted": {
+    "title": "Dein Dienst wurde eingeschränkt ({reference})",
+    "body_throttle": "Wegen des offenen Missbrauchsfalls {reference} wurde die Netzwerkgeschwindigkeit des betroffenen Servers begrenzt. Du kannst dich weiterhin anmelden und das Problem beheben. Antworte im Fall, sobald das erledigt ist, dann heben wir die Begrenzung auf.",
+    "body_isolate": "Wegen des offenen Missbrauchsfalls {reference} wurde der ausgehende Netzwerkverkehr des betroffenen Servers blockiert. Deine Daten sind unangetastet und du erreichst den Server weiterhin über die Konsole. Antworte im Fall, sobald das Problem behoben ist, dann heben wir die Sperre auf.",
+    "body_power_off": "Wegen des offenen Missbrauchsfalls {reference} wurde der betroffene Server heruntergefahren. Deine Daten sind unangetastet. Antworte im Fall, dann starten wir ihn wieder, sobald die Sache geklärt ist.",
+    "body_terminate": "Wegen des offenen Missbrauchsfalls {reference} wurde die Kündigung des betroffenen Servers eingeleitet. Antworte sofort im Fall, falls das ein Irrtum ist."
+  },
+  "notification": {
+    "greeting": "Hallo {name}!",
+    "viewButton": "Details ansehen"
+  },
   "footer": {
     "thisEmailWasIntendedFor": "Diese E-Mail ist für <strong>{email}</strong> bestimmt.",
     "securityConcerns": "Falls du diese E-Mail nicht erwartet hast, kannst du sie ignorieren. Solltest du dir Sorgen um die Sicherheit deines Accounts machen, dann <link>kontaktiere uns</link>.",

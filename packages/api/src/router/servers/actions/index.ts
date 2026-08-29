@@ -46,7 +46,12 @@ export const serversActionsRouter = {
       permissions: {
         servers: ["write"],
       },
-      forbiddenStates: ["suspended", "terminated", "installing"],
+      forbiddenStates: [
+        "suspended",
+        "terminated",
+        "installing",
+        "abuse-locked",
+      ],
       expand: ["plan"],
       ratelimit: {
         requests: 2,

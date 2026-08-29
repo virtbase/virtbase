@@ -15,10 +15,13 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+export * from "./abuse";
 export * from "./api-keys";
 export * from "./checkout";
 export * from "./discounts";
+export * from "./field-descriptor";
 export * from "./invoices";
+export * from "./notifications";
 export * from "./pagination";
 export * from "./proxmox-iso-downloads";
 export * from "./proxy";

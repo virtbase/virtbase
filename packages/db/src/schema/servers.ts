@@ -18,6 +18,7 @@
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
 import { createId } from "../utils/create-id";
+import { abuseEnforcementLevelEnum } from "./abuse-enums";
 import { users } from "./auth";
 import { proxmoxIsoDownloads } from "./proxmox-iso-downloads";
 import { proxmoxNodes } from "./proxmox-nodes";
@@ -109,6 +110,30 @@ export const servers = d.snakeCase.table(
      */
     suspendedAt: d.timestamp({ withTimezone: true, mode: "date" }),
     /**
+     * When an abuse case locked this server, if one currently does.
+     *
+     * Deliberately not {@link suspendedAt}: that column starts the deletion
+     * clock, and `/api/cron/delete-suspended-servers` destroys anything
+     * carrying it for longer than the grace period. An abuse lock is
+     * reversible and must survive a dispute the customer may well win, so it
+     * gets its own column and its own release path.
+     *
+     * A denormalisation of `abuse_case_servers`, written in the same
+     * transaction. It exists because `serverMiddleware` already selects this
+     * row on every server call and must not grow a join to answer "is this
+     * locked"; `abuse_case_servers` stays the record of which case and why.
+     *
+     * @default null
+     */
+    abuseLockedAt: d.timestamp({ withTimezone: true, mode: "date" }),
+    /**
+     * What kind of lock is in force. Null exactly when
+     * {@link abuseLockedAt} is.
+     *
+     * @default null
+     */
+    abuseLockLevel: abuseEnforcementLevelEnum(),
+    /**
      * What the `qemu-guest-agent` last reported as the guest's `os-release`
      * `ID` - `debian`, `ubuntu`, `mswindows`.
      *
@@ -182,6 +207,9 @@ export const servers = d.snakeCase.table(
     d.index().on(t.proxmoxIsoDownloadId),
     // The detection cron scans stale-and-null-first across every server.
     d.index().on(t.detectedOsAt),
+    // Read by the lock reconciliation cron, over a table where almost every
+    // row has NULL here - so the index only carries servers actually locked.
+    d.index().on(t.abuseLockedAt),
     d.unique().on(t.proxmoxNodeId, t.vmid),
   ],
 );

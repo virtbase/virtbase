@@ -1,0 +1,1 @@
+ALTER TYPE "signal_subject_kinds" ADD VALUE 'vm' BEFORE 'user';

@@ -54,6 +54,7 @@ import {
   OrderServerPlanInputSchema,
   OrderServerPlanOutputSchema,
 } from "@virtbase/validators";
+import { getOrderingBlock } from "../abuse";
 import { calculateProRataUpgrade } from "../lib/pricing";
 import { createOrder, recordBillingDetails } from "../orders";
 import { protectedProcedure } from "../trpc";
@@ -79,6 +80,19 @@ export const checkoutRouter = {
         // Additional security layer to block API key users from creating checkout sessions
         // Should be handled by middleware but just in case
         throw new TRPCError({ code: "FORBIDDEN" });
+      }
+
+      // An open abuse case can stop a customer buying more of what they are
+      // already misusing. Their existing services, renewals and invoices are
+      // untouched - see `getOrderingBlock`.
+      const block = await getOrderingBlock({ db: ctx.db, userId: ctx.userId });
+      if (block) {
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message:
+            block.reason ??
+            "New orders are on hold while an abuse case is open.",
+        });
       }
 
       if (!stripe) {
@@ -521,6 +535,19 @@ export const checkoutRouter = {
         // Additional security layer to block API key users from creating checkout sessions
         // Should be handled by middleware but just in case
         throw new TRPCError({ code: "FORBIDDEN" });
+      }
+
+      // An open abuse case can stop a customer buying more of what they are
+      // already misusing. Their existing services, renewals and invoices are
+      // untouched - see `getOrderingBlock`.
+      const block = await getOrderingBlock({ db: ctx.db, userId: ctx.userId });
+      if (block) {
+        throw new TRPCError({
+          code: "FORBIDDEN",
+          message:
+            block.reason ??
+            "New orders are on hold while an abuse case is open.",
+        });
       }
 
       const order = await ctx.db

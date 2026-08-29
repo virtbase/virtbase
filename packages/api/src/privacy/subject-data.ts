@@ -42,6 +42,8 @@ export type Ownership =
   | { via: "server" }
   /** Reached through `orders`. */
   | { via: "order" }
+  /** Reached through `abuse_cases`, which is the thing that carries `user_id`. */
+  | { via: "abuse_case" }
   /** Reached through `subnet_allocations`, itself reached through `servers`. */
   | { via: "subnet_allocation" }
   /** Keyed by email address rather than by id. */
@@ -216,6 +218,47 @@ export const SUBJECT_DATA = {
     ownership: { via: "user_id" },
     disposition: "erase",
     reason: "Spent once the deletion they authorise has happened.",
+    exportable: false,
+  },
+  abuse_cases: {
+    ownership: { via: "user_id" },
+    disposition: "erase",
+    reason:
+      "The customer's own side of a dispute about them. Goes with the account; the reporter's identity never appears in it.",
+    exportable: true,
+  },
+  abuse_case_servers: {
+    ownership: { via: "abuse_case" },
+    disposition: "erase",
+    reason: "Which of their machines a case locked, and for how long.",
+    exportable: true,
+  },
+  abuse_case_messages: {
+    ownership: { via: "abuse_case" },
+    disposition: "erase",
+    reason:
+      "The correspondence. Exported without internal notes and without the reporter's address, both of which are somebody else's data.",
+    exportable: true,
+  },
+  abuse_case_events: {
+    ownership: { via: "abuse_case" },
+    disposition: "erase",
+    reason:
+      "Internal audit of operator actions on the case. Erased with it; `erasure_log` is what outlives the account.",
+    exportable: false,
+  },
+  abuse_signals: {
+    ownership: { via: "user_id" },
+    disposition: "erase",
+    reason:
+      "Raw inbound reports, carrying the reporter's identity and the provider's payload verbatim. The customer-facing account of the same events is the case and its thread.",
+    exportable: false,
+  },
+  notification_deliveries: {
+    ownership: { via: "user_id" },
+    disposition: "erase",
+    reason:
+      "Delivery metadata for messages whose content is already exported under `emails`.",
     exportable: false,
   },
   erasure_log: {

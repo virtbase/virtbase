@@ -15,9 +15,12 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { eq, inArray } from "@virtbase/db";
+import { and, eq, inArray } from "@virtbase/db";
 import type { db as database } from "@virtbase/db/client";
 import {
+  abuseCaseMessages,
+  abuseCaseServers,
+  abuseCases,
   accounts,
   apiKeys,
   emails,
@@ -144,6 +147,62 @@ export async function collectSubjectData({
             })
             .from(orderItems)
             .where(inArray(orderItems.orderId, orderIds))
+        : [];
+
+      const ownedCases = await tx
+        .select({
+          id: abuseCases.id,
+          reference: abuseCases.number,
+          category: abuseCases.category,
+          severity: abuseCases.severity,
+          status: abuseCases.status,
+          title: abuseCases.title,
+          summary: abuseCases.summary,
+          enforcement: abuseCases.enforcement,
+          enforced_at: abuseCases.enforcedAt,
+          released_at: abuseCases.releasedAt,
+          respond_by: abuseCases.respondBy,
+          resolution: abuseCases.resolution,
+          closed_at: abuseCases.closedAt,
+          created_at: abuseCases.createdAt,
+        })
+        .from(abuseCases)
+        .where(eq(abuseCases.userId, userId));
+
+      const caseIds = ownedCases.map((abuseCase) => abuseCase.id);
+
+      // [!] `audience` and `author_email` are the redaction. An internal
+      // note is an operator talking to another operator, and the reporter's
+      // address is a third party's data - neither belongs in a file we hand
+      // to the person the case is about.
+      const caseMessages = caseIds.length
+        ? await tx
+            .select({
+              case_id: abuseCaseMessages.caseId,
+              author: abuseCaseMessages.authorKind,
+              body: abuseCaseMessages.body,
+              created_at: abuseCaseMessages.createdAt,
+            })
+            .from(abuseCaseMessages)
+            .where(
+              and(
+                inArray(abuseCaseMessages.caseId, caseIds),
+                eq(abuseCaseMessages.audience, "customer"),
+              ),
+            )
+        : [];
+
+      const caseServers = caseIds.length
+        ? await tx
+            .select({
+              case_id: abuseCaseServers.caseId,
+              server_id: abuseCaseServers.serverId,
+              lock_level: abuseCaseServers.lockLevel,
+              locked_at: abuseCaseServers.lockedAt,
+              released_at: abuseCaseServers.releasedAt,
+            })
+            .from(abuseCaseServers)
+            .where(inArray(abuseCaseServers.caseId, caseIds))
         : [];
 
       const allocations = serverIds.length
@@ -330,6 +389,15 @@ export async function collectSubjectData({
         payments: settledPayments,
         invoices: issuedInvoices,
         emails: sentEmails,
+        abuse_cases: ownedCases.map((abuseCase) => ({
+          ...abuseCase,
+          servers: caseServers.filter(
+            (entry) => entry.case_id === abuseCase.id,
+          ),
+          messages: caseMessages.filter(
+            (message) => message.case_id === abuseCase.id,
+          ),
+        })),
       };
     },
     {

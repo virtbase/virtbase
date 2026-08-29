@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { abuseRouter } from "./router/abuse";
 import { authRouter } from "./router/auth";
 import { checkoutRouter } from "./router/checkout";
 import { invoicesRouter } from "./router/invoices";
@@ -28,6 +29,7 @@ import { createTRPCRouter } from "./trpc";
 
 export const appRouter = createTRPCRouter({
   auth: authRouter,
+  abuse: abuseRouter,
   stepUp: stepUpRouter,
   privacy: privacyRouter,
   sshKeys: sshKeysRouter,

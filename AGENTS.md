@@ -228,6 +228,36 @@ installs — are hidden from the hub.
 the result, so the status shown in admin is not just whatever the last person to
 press "Check now" saw. Cron schedules live in `apps/web/vercel.json`.
 
+## The abuse desk
+
+Abuse reports arrive from an alerting stack, from AbuseIPDB, from `abuse@` and
+from operators. All four are normalised into one `InboundSignal`, attributed to
+a customer, run past `abuse_rules`, and turned into a case that can lock the
+customer's servers and block further orders until it settles.
+
+`packages/api/src/abuse/README.md` is the reference. The four things worth
+knowing before touching any of it:
+
+- **Attribution reads the allocation table as it stood at `occurred_at`**, not
+  now. A late report about a reallocated address must not land on whoever holds
+  it today, and a case whose attribution is stale never enforces automatically.
+- **Enforcement is graduated and reversible** — throttle, isolate, power off —
+  and every level stores what it replaced, because a release has to restore the
+  customer's own firewall policy rather than a default. `terminate` hands over
+  to the existing `terminates_at` lifecycle and is operator-only.
+- **A lock is re-asserted, not applied once.** The customer's own API can undo
+  it, so `/api/cron/reconcile-abuse-locks` checks the real hypervisor state and
+  counts the drift.
+- **Nothing untrusted enforces.** A rule has to opt a source in with
+  `trusted_source`; assisted triage emits no signal at all, so no rule can ever
+  act on it. On a fresh database every case lands in `triage` and waits for a
+  person.
+
+Notifications are a general facility rather than an abuse feature:
+`packages/api/src/notifications` dispatches to email, Discord and signed
+webhooks, routed by key glob and severity through `notification_targets`.
+Abuse is its first caller; orders, nodes and IPAM are the intended next ones.
+
 ## Server backups
 
 A backup is a Proxmox `vzdump` task. `servers.backups.create` starts it and

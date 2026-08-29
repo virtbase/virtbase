@@ -160,6 +160,8 @@ export const mockServer = {
   terminatesAt: new Date(Date.now() + 1000 * 60 * 60 * 24 * 30),
   renewalReminderSentAt: new Date(),
   suspendedAt: null,
+  abuseLockedAt: null,
+  abuseLockLevel: null,
   detectedOsId: null,
   detectedOsName: null,
   detectedOsVersion: null,

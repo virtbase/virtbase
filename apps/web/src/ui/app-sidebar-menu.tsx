@@ -21,6 +21,7 @@ import {
   LayoutDashboardIcon,
   ListIcon,
   LucideServer,
+  LucideShieldAlert,
 } from "@virtbase/ui/icons";
 import {
   SidebarMenu,
@@ -50,6 +51,14 @@ const useItems = () => {
       title: t("Invoices"),
       path: paths.app.invoices,
       icon: ListIcon,
+    },
+    // Always present rather than appearing the day a case is opened: a
+    // customer who has been emailed about one needs somewhere to go, and a
+    // nav item that materialises under them is worse than one that is quiet.
+    {
+      title: t("Abuse reports"),
+      path: paths.app.abuse,
+      icon: LucideShieldAlert,
     },
   ] as const;
 };

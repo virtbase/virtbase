@@ -17,5 +17,6 @@
 
 export * from "./crypto";
 export * from "./integration-store";
+export * from "./notification-target-store";
 export * from "./settings-store";
 export * from "./types";

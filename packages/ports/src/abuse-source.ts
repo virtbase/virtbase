@@ -15,40 +15,59 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import type { InboundSignal } from "./signal";
+
 export type AbuseCategory =
   | "spam"
   | "phishing"
   | "malware"
-  | "port-scan"
+  | "port_scan"
   | "ddos"
   | "copyright"
+  | "compromised"
   | "other";
 
-export interface AbuseReport {
+export interface AbusePollRequest {
+  /** The source's watermark. Records older than this are already known. */
+  since: Date;
   /**
-   * Source-scoped id used for deduplication — a mailbox message id, an
-   * AbuseIPDB report id. The abuse pipeline keys cases on `(sourceId, id)`.
+   * The ranges to look at, chosen by the poller from our own subnets.
+   *
+   * Handed in rather than discovered, because an integration must not read
+   * the database - and because a source that picked its own targets could be
+   * pointed at somebody else's address space.
    */
-  id: string;
-  /** The reported address; resolved to a server through subnet allocations. */
-  ip: string;
-  category: AbuseCategory;
-  reportedAt: Date;
-  /** Free-text body as received, retained verbatim for the case record. */
-  body: string;
-  reporter?: { name?: string; email?: string };
+  targets: { cidr: string }[];
+  /**
+   * Hard cap on provider calls for this run, derived from what is left of the
+   * daily quota. A source that would exceed it stops and reports what it
+   * covered instead.
+   */
+  budget: number;
+}
+
+export interface AbusePollResult {
+  signals: InboundSignal[];
+  /**
+   * The targets actually covered, as CIDR strings.
+   *
+   * Only these advance their watermark. A run cut short by the budget has not
+   * seen the rest of the ranges, and pretending otherwise would silently skip
+   * a window that is never looked at again.
+   */
+  covered: string[];
+  /** Provider-reported quota left, so the next run can size its own budget. */
+  quotaRemaining?: number;
 }
 
 /**
- * Somewhere abuse reports come from: a polled mailbox, the AbuseIPDB API, or
- * the public report form.
+ * Somewhere abuse reports have to be fetched from.
  *
- * Pull-based sources implement `poll` and are driven by the worker; push-based
- * sources hand reports to the pipeline through their own webhook and implement
- * only `id`.
+ * Only for sources with no push side - AbuseIPDB is the reason this exists.
+ * Anything that can call us implements an integration webhook instead and
+ * submits through the `signals` port, which is cheaper for everyone.
  */
 export interface AbuseSource {
   readonly id: string;
-  /** Fetch reports newer than the last processed watermark. */
-  poll?(since: Date): Promise<AbuseReport[]>;
+  poll?(request: AbusePollRequest): Promise<AbusePollResult>;
 }

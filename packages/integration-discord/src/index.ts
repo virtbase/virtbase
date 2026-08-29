@@ -22,6 +22,7 @@ export * from "./features";
 export * from "./handlers";
 export * from "./identity";
 export { default } from "./integration";
+export * from "./notifications";
 export * from "./routing";
 export * from "./sync";
 export * from "./ui";

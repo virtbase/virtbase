@@ -178,6 +178,25 @@
     "verifyEmailLink": "E-mailadres verifiëren",
     "copyAndPaste": "of kopieer en plak deze URL in je browser:"
   },
+  "abuse-case-notice": {
+    "title": "Misbruikmelding over je dienst ({reference})",
+    "body": "We hebben een misbruikmelding over je dienst ontvangen.\n\nZaak {reference}, gemeld als {category}. Open de zaak, controleer de betrokken server en reageer binnen {deadlineHours} uur. Horen we niets, dan moeten we de dienst mogelijk beperken om het misbruik te stoppen."
+  },
+  "abuse-case-resolved": {
+    "title": "Misbruikzaak {reference} is gesloten",
+    "body": "Misbruikzaak {reference} is gesloten. Je hoeft verder niets te doen. Heb je vragen, reageer dan in de zaak en we pakken het op."
+  },
+  "abuse-case-restricted": {
+    "title": "Je dienst is beperkt ({reference})",
+    "body_throttle": "Vanwege de open misbruikzaak {reference} is de netwerksnelheid van de betrokken server begrensd. Je kunt nog steeds inloggen en het probleem oplossen. Reageer in de zaak zodra dat gelukt is, dan halen we de begrenzing weg.",
+    "body_isolate": "Vanwege de open misbruikzaak {reference} is uitgaand netwerkverkeer van de betrokken server geblokkeerd. Je data blijft ongemoeid en je bereikt de server nog via de console. Reageer in de zaak zodra het probleem is opgelost, dan halen we de blokkade weg.",
+    "body_power_off": "Vanwege de open misbruikzaak {reference} is de betrokken server uitgeschakeld. Je data blijft ongemoeid. Reageer in de zaak, dan starten we hem weer zodra de zaak is afgehandeld.",
+    "body_terminate": "Vanwege de open misbruikzaak {reference} is de opzegging van de betrokken server ingezet. Reageer direct in de zaak als dit een vergissing is."
+  },
+  "notification": {
+    "greeting": "Hoi {name}!",
+    "viewButton": "Details bekijken"
+  },
   "footer": {
     "thisEmailWasIntendedFor": "Deze e-mail was bedoeld voor <strong>{email}</strong>.",
     "securityConcerns": "Als je deze e-mail niet verwachtte, kun je hem negeren. Als je je zorgen maakt over de veiligheid van je account, <link>neem dan contact op om het ons te laten weten</link>.",

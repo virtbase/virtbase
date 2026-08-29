@@ -1,0 +1,1 @@
+ALTER TABLE "abuse_cases" ALTER COLUMN "user_id" DROP NOT NULL;

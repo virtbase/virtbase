@@ -16,29 +16,15 @@
  */
 
 import type { PortMap } from "@virtbase/ports";
+import type { FieldDescriptor } from "@virtbase/validators";
 import type * as z from "zod";
 
-/** Widget the admin console renders for a field. */
-export type FieldWidget =
-  | "text"
-  | "textarea"
-  | "password"
-  | "number"
-  | "switch"
-  | "select"
-  | "url";
-
-export interface FieldDescriptor<TKey extends string = string> {
-  /** Must match a key of the sibling schema. */
-  key: TKey;
-  label: string;
-  help?: string;
-  widget: FieldWidget;
-  placeholder?: string;
-  optional?: boolean;
-  /** Required when `widget` is `"select"`. */
-  options?: { value: string; label: string }[];
-}
+/**
+ * Re-exported so integration authors keep importing form metadata from the
+ * SDK. The types themselves live in `@virtbase/validators`, because
+ * `@virtbase/ports` needs them as well and may not import Layer 4.
+ */
+export type { FieldDescriptor, FieldWidget } from "@virtbase/validators";
 
 /**
  * Field keys for a schema, falling back to `string` when the schema type has

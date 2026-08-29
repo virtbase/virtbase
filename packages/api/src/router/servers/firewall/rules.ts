@@ -86,6 +86,7 @@ export const serverFirewallRulesRouter = {
     }),
   create: serverProcedure
     .meta({
+      forbiddenStates: ["abuse-locked"],
       openapi: {
         method: "POST",
         path: "/servers/{server_id}/firewall/rules",
@@ -122,6 +123,7 @@ export const serverFirewallRulesRouter = {
     }),
   delete: serverProcedure
     .meta({
+      forbiddenStates: ["abuse-locked"],
       openapi: {
         method: "DELETE",
         path: "/servers/{server_id}/firewall/rules",
@@ -146,6 +148,7 @@ export const serverFirewallRulesRouter = {
     }),
   update: serverProcedure
     .meta({
+      forbiddenStates: ["abuse-locked"],
       openapi: {
         method: "PUT",
         path: "/servers/{server_id}/firewall/rules",
@@ -190,6 +193,7 @@ export const serverFirewallRulesRouter = {
     }),
   move: serverProcedure
     .meta({
+      forbiddenStates: ["abuse-locked"],
       openapi: {
         method: "PUT",
         path: "/servers/{server_id}/firewall/rules/{pos}/move",

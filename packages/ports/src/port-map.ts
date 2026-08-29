@@ -21,11 +21,13 @@ import type { DnsProvider } from "./dns-provider";
 import type { EventSubscriber } from "./event-subscriber";
 import type { IdentityProvider } from "./identity-provider";
 import type { InvoiceProvider } from "./invoice-provider";
+import type { IpReputationProvider } from "./ip-reputation";
 import type { MetricsSink } from "./metrics-sink";
 import type { NotificationChannel } from "./notification-channel";
 import type { ObjectStore } from "./object-store";
 import type { PaymentProvider } from "./payment-provider";
 import type { ServerManagementPort } from "./server-management";
+import type { SignalIntake } from "./signal";
 
 /**
  * The one place that says which interface each capability slot expects. The
@@ -39,6 +41,8 @@ export interface PortMap {
   dns: DnsProvider;
   metrics: MetricsSink;
   abuse: AbuseSource;
+  ipReputation: IpReputationProvider;
+  signals: SignalIntake;
   objectStore: ObjectStore;
   events: EventSubscriber;
   identity: IdentityProvider;
