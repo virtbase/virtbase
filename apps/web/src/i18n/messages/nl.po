@@ -13,7 +13,105 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Dutch\n"
-"PO-Revision-Date: 2026-08-28 08:57\n"
+"PO-Revision-Date: 2026-08-29 11:20\n"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "lYlalx"
+msgstr "AbuseIPDB"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "utGnBr"
+msgstr "Doorzoekt onze eigen adresreeksen op meldingen die ertegen zijn ingediend, en zoekt de reputatie van één adres op."
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "cZ2pIN"
+msgstr "Betrouwbaarheidsdrempel"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "KhnDzH"
+msgstr "Onder deze score wordt een gemeld adres genegeerd."
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "osZi7I"
+msgstr "Leeftijd van meldingen"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "5hDWuX"
+msgstr "Hoe ver de provider moet terugkijken, in dagen."
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "6ijXWp"
+msgstr "Blokgrootte"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "BVpDyn"
+msgstr "Het kleinste blok waar een scan naar vraagt. Een gratis sleutel is beperkt tot /24."
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "1O6nNu"
+msgstr "Aanroepen per run"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "O3o6j3"
+msgstr "Aanroepen bij de provider die één scan mag doen. Vier per uur past binnen de daglimiet van een gratis sleutel."
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "4aIITL"
+msgstr "Categorieën opzoeken"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "jwnZSk"
+msgstr "Kost een extra aanroep per bevinding, zodat een zaak vermeldt waarvoor er is gemeld in plaats van ‘overig’."
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "GDitI5"
+msgstr "Terugmelden toestaan"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "kms48f"
+msgstr "Laat een operator een melding publiceren zodra een zaak bevestigd is. Nooit automatisch."
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+#: ../../packages/integration-lexware/src/localize.ts
+#: ../../packages/integration-powerdns/src/localize.ts
+msgid "KTNoOq"
+msgstr "API-sleutel"
+
+#: ../../packages/integration-abuseipdb/src/localize.ts
+msgid "EAEEtM"
+msgstr "Wordt verstuurd als de Key-header."
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "IbOv8i"
+msgstr "Alertmanager"
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "UUYX3B"
+msgstr "Ontvangt alerts van Prometheus Alertmanager of Grafana en maakt er misbruikzaken en operatormeldingen van."
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "_uIIli"
+msgstr "Payload-formaat"
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "zVsF9H"
+msgstr "Welk formaat de afzender spreekt. Grafana stuurt het Alertmanager-formaat met extra's."
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "rgPqeB"
+msgstr "Standaard ernst"
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "GtLzvO"
+msgstr "Wordt gebruikt als een alert geen severity-label heeft."
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "2Ij319"
+msgstr "Ingest-token"
+
+#: ../../packages/integration-alertmanager/src/localize.ts
+msgid "ChfUsD"
+msgstr "Wordt verstuurd als Authorization-bearertoken. Genereer er een met `openssl rand -hex 32`."
 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 #: ../../packages/integration-discord/src/features/servers/messages.ts
@@ -1301,11 +1399,6 @@ msgid "iyNvec"
 msgstr "Stelt klantfacturen op en genereert de pdf's die per e-mail worden verstuurd en gedownload."
 
 #: ../../packages/integration-lexware/src/localize.ts
-#: ../../packages/integration-powerdns/src/localize.ts
-msgid "KTNoOq"
-msgstr "API-sleutel"
-
-#: ../../packages/integration-lexware/src/localize.ts
 msgid "gF5il8"
 msgstr "Aan te maken in Lexware Office onder Extras → lexoffice API."
 
@@ -1376,6 +1469,14 @@ msgstr "Scrape-token"
 #: ../../packages/integration-prometheus/src/localize.ts
 msgid "NMkV81"
 msgstr "Prometheus stuurt dit als bearertoken. Genereer er een met `openssl rand -hex 32`."
+
+#: ../../packages/integration-webhook/src/localize.ts
+msgid "67UEhy"
+msgstr "Uitgaande webhooks"
+
+#: ../../packages/integration-webhook/src/localize.ts
+msgid "R9xPr_"
+msgstr "Levert operatormeldingen als ondertekende JSON aan elk endpoint. De manier om Slack, Teams of een automatiseringstool te bereiken zonder eigen integratie."
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgid "o_UJXc"
@@ -1767,6 +1868,24 @@ msgstr "Actieve DDoS-bescherming"
 msgid "VI9ImX"
 msgstr "Uw server is beschermd zonder extra kosten"
 
+#: src/app/admin.virtbase.com/(dashboard)/abuse/[id]/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/abuse/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/abuse/rules/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+#: src/features/admin/components/integrations/integrations-hub.tsx
+msgid "1UwRXb"
+msgstr "Misbruik"
+
+#: src/app/admin.virtbase.com/(dashboard)/abuse/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/abuse/rules/page.tsx
+msgid "kAAlGL"
+msgstr "Regels"
+
+#: src/app/admin.virtbase.com/(dashboard)/abuse/rules/page.tsx
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "Jdawl3"
+msgstr "Misbruikregels"
+
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/[id]/page.tsx
 #: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
@@ -1797,6 +1916,11 @@ msgstr "Knooppuntgroepen"
 #: src/app/admin.virtbase.com/(dashboard)/nodes/[id]/page.tsx
 msgid "n3j8M6"
 msgstr "Proxmox-knooppunten"
+
+#: src/app/admin.virtbase.com/(dashboard)/notifications/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+msgid "NAidKb"
+msgstr "Meldingen"
 
 #: src/app/admin.virtbase.com/(dashboard)/page.tsx
 #: src/app/app.virtbase.com/(dashboard)/page.tsx
@@ -1927,6 +2051,22 @@ msgstr "Verifieer je tweefactorauthenticatiecode."
 msgid "Ldnbs0"
 msgstr "Voer de zescijferige code uit je authenticator-app in."
 
+#: src/app/app.virtbase.com/(dashboard)/abuse/[id]/page.tsx
+msgid "qA-192"
+msgstr "Misbruikmelding"
+
+#: src/app/app.virtbase.com/(dashboard)/abuse/[id]/page.tsx
+#: src/app/app.virtbase.com/(dashboard)/abuse/page.tsx
+#: src/features/dashboard/components/active-abuse-cases.tsx
+#: src/ui/app-sidebar-menu.tsx
+msgid "aCv9Tk"
+msgstr "Misbruikmeldingen"
+
+#: src/app/app.virtbase.com/(dashboard)/abuse/[id]/page.tsx
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "x5Tz6M"
+msgstr "Melding"
+
 #: src/app/app.virtbase.com/(dashboard)/invoices/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/ui/app-sidebar-menu.tsx
@@ -2019,6 +2159,202 @@ msgstr "U heeft geen toegang tot deze pagina. Mogelijk is uw sessie verlopen. Me
 msgid "xXbJso"
 msgstr "Meld u af"
 
+#: src/features/abuse/components/abuse-case-conversation.tsx
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "TJfaf4"
+msgstr "Wat er is gemeld"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+msgid "VNF6eB"
+msgstr "Beperkt zolang dit openstaat"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+msgid "kJ5W29"
+msgstr "Jij"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+msgid "M7BRRJ"
+msgstr "Abuse-team"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+#: src/features/abuse/components/abuse-cases-list.tsx
+#: src/features/account/components/privacy/data-export-card.tsx
+#: src/features/account/components/privacy/delete-account-card.tsx
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+#: src/features/admin/components/abuse/abuse-case-status-menu.tsx
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+#: src/features/admin/components/integrations/integration-enable-button.tsx
+#: src/features/admin/components/integrations/integration-health-panel.tsx
+#: src/features/admin/components/integrations/integration-settings-form.tsx
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "iuY8kx"
+msgstr "Er is iets misgegaan."
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+#: src/features/abuse/components/abuse-cases-list.tsx
+#: src/features/dashboard/components/active-abuse-cases.tsx
+msgid "hqnGJq"
+msgstr "Antwoord te laat"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+#: src/features/abuse/components/abuse-cases-list.tsx
+#: src/features/dashboard/components/active-abuse-cases.tsx
+msgid "h0mJFk"
+msgstr "Antwoord verwacht {when}"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+msgid "9WwANS"
+msgstr "Wat je hebt gevonden en wat je hebt aangepast…"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "gKQnvi"
+msgstr "Ik heb dit opgelost"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+#: src/features/account/components/step-up-dialog.tsx
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "9WRlF4"
+msgstr "Versturen"
+
+#: src/features/abuse/components/abuse-case-conversation.tsx
+msgid "UsgxfB"
+msgstr "Deze zaak is afgehandeld. Neem contact op met support als er nog iets niet klopt."
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "ARvE70"
+msgstr "Geopend {when}"
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/dashboard/components/active-abuse-cases.tsx
+msgid "OZvd3m"
+msgstr "Zaak bekijken"
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "t2E4M8"
+msgstr "Geen misbruikmeldingen"
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "i0Fqrz"
+msgstr "Er is niets gemeld over je servers. Gebeurt dat wel, dan vind je het hier en hoor je van ons per e-mail."
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "iXOvWu"
+msgstr "Niets openstaand"
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "whWnOP"
+msgstr "Elke melding over je servers is afgehandeld."
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "_busx6"
+msgstr "Afgehandelde meldingen verbergen"
+
+#: src/features/abuse/components/abuse-cases-list.tsx
+msgid "2Tt_xf"
+msgstr "{count, plural, one {# afgehandelde melding tonen} other {# afgehandelde meldingen tonen}}"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "lxtHzL"
+msgstr "In behandeling"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "JfG49w"
+msgstr "Open"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "MytfoW"
+msgstr "Wacht op jouw antwoord"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "s7iloU"
+msgstr "Bij ons team"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "li9lHM"
+msgstr "Wordt geverifieerd"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "W6nSYE"
+msgstr "Opgelost"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "1MnSfo"
+msgstr "Afgewezen"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "477I0g"
+msgstr "Laag"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "ovJ26C"
+msgstr "Middel"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "AxMhQr"
+msgstr "Hoog"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "2pzTGC"
+msgstr "Kritiek"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "LseLoM"
+msgstr "Spam"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "MRBNBk"
+msgstr "Phishing"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "skXxpV"
+msgstr "Malware"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "PTwdUz"
+msgstr "Portscannen"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "oG9wJW"
+msgstr "Denial of service"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "Kvo3A0"
+msgstr "Auteursrecht"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "tRmcwq"
+msgstr "Gecompromitteerde server"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "_VnDMl"
+msgstr "Overig"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "oEQon6"
+msgstr "Gemonitord"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "aYdv6s"
+msgstr "Netwerk beperkt"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "YrrBiK"
+msgstr "Netwerk geblokkeerd"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "_gJC-l"
+msgstr "Uitgeschakeld"
+
+#: src/features/abuse/hooks/use-case-labels.ts
+msgid "-zz_NM"
+msgstr "Ingepland voor verwijdering"
+
 #: src/features/account/components/account-breadcrumb.tsx
 #: src/features/account/components/account-nav.tsx
 msgid "1iEPTM"
@@ -2086,9 +2422,11 @@ msgstr "{date} aangemaakt"
 
 #: src/features/account/components/api-keys/api-keys-list.tsx
 #: src/features/account/components/ssh-keys/ssh-keys-list.tsx
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
 #: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/notifications/notification-targets-list.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
@@ -2121,9 +2459,12 @@ msgstr "Maak een API-sleutel"
 #: src/features/account/components/privacy/delete-account-card.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 #: src/features/account/components/step-up-dialog.tsx
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
@@ -2152,11 +2493,13 @@ msgstr "Deze sleutel wordt slechts één keer weergegeven. Bewaar het veilig, wa
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
 #: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
@@ -2522,14 +2865,6 @@ msgid "vAr8U1"
 msgstr "Je hebt vandaag al een export aangevraagd. Probeer het morgen opnieuw."
 
 #: src/features/account/components/privacy/data-export-card.tsx
-#: src/features/account/components/privacy/delete-account-card.tsx
-#: src/features/admin/components/integrations/integration-enable-button.tsx
-#: src/features/admin/components/integrations/integration-health-panel.tsx
-#: src/features/admin/components/integrations/integration-settings-form.tsx
-msgid "iuY8kx"
-msgstr "Er is iets misgegaan."
-
-#: src/features/account/components/privacy/data-export-card.tsx
 msgid "OTYJAd"
 msgstr "Je gegevens downloaden"
 
@@ -2756,10 +3091,6 @@ msgstr "Je vingerafdruk, gezicht of beveiligingssleutel."
 msgid "qJvq7M"
 msgstr "E-mailcode"
 
-#: src/features/account/components/step-up-dialog.tsx
-msgid "9WRlF4"
-msgstr "Versturen"
-
 #: src/features/account/components/user-email-card.tsx
 msgid "NMQtEq"
 msgstr "Er is een bevestigingsmail naar je nieuwe e-mailadres gestuurd."
@@ -2779,7 +3110,9 @@ msgstr "Voer een geldig e-mailadres in."
 #: src/features/account/components/user-email-card.tsx
 #: src/features/account/components/user-name-card.tsx
 #: src/features/account/components/user-password-card.tsx
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
 #: src/features/admin/components/integrations/integration-settings-form.tsx
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
 #: src/features/admin/components/proxmox-templates/cards/settings-card.tsx
 msgid "jvo0vs"
 msgstr "Opslaan"
@@ -2833,6 +3166,584 @@ msgstr "Nieuw wachtwoord"
 msgid "6admx4"
 msgstr "Gebruik minimaal 8 tekens, één hoofdletter, één kleine letter en één cijfer."
 
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "jw6_u7"
+msgstr "{value}% zekerheid"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "_3Llo1"
+msgstr "{count}× gezien"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "I8vFC1"
+msgstr "Gemeld door {reporter}"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "hkENym"
+msgstr "Klant"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "b40Pr7"
+msgstr "Melder"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "cxribA"
+msgstr "Ondersteunde triage"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "3yf2ND"
+msgstr "Operator"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "0kc5kM"
+msgstr "Interne notitie"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "SbkDVk"
+msgstr "Interne notitie. Niemand buiten deze pagina ziet die ooit."
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "gQsj5S"
+msgstr "Aan melder"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "_Ef3qB"
+msgstr "Aan de klant"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "SzfJOJ"
+msgstr "Aan de melder"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "BVm-D5"
+msgstr "Nog niets"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "-WEbJY"
+msgstr "Er is nog geen melding, bericht of wijziging op deze zaak binnengekomen."
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "93TAYW"
+msgstr "Een notitie voor wie dit hierna oppakt…"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "cGMldc"
+msgstr "Wat de klant moet doen, en voor wanneer…"
+
+#: src/features/admin/components/abuse/abuse-case-conversation.tsx
+msgid "xnzW7C"
+msgstr "Wat de melder te horen krijgt. Noem nooit de klant…"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "WB274G"
+msgstr "{count} servers vergrendeld."
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "M0vCGv"
+msgstr "Te laat"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "CPwbcO"
+msgstr "Verouderde toewijzing"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "YKuCIc"
+msgstr "Bestellingen geblokkeerd"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "vzFCmc"
+msgstr "Nog niet toegewezen"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "grfUHB"
+msgstr "Gemeld door"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "ltwDgq"
+msgstr "Geen ontvangstbevestiging"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "QkSzvn"
+msgstr "Niemand — deze zaak is niet door een melding geopend."
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "ADKsID"
+msgstr "Geopend"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "j6yXA6"
+msgstr "Deadline klant"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "nhuhb8"
+msgstr "Handhaving"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "BBJeht"
+msgstr "Monitoring eindigt"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "wLybjT"
+msgstr "Betrokken servers"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+msgid "450Fty"
+msgstr "Geen"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "ueaDOK"
+msgstr "Afgesloten als"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "JB9XrR"
+msgstr "Deze zaak past {level} toe zodra de respijtperiode afloopt. Die periode is de kans van de klant om zelf eerst iets te doen."
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "1Dbd1Z"
+msgstr "Nu handhaven"
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "nVIEJ1"
+msgstr "Er is niets beperkt op deze zaak."
+
+#: src/features/admin/components/abuse/abuse-case-detail.tsx
+msgid "9YCbjf"
+msgstr "{level} is van kracht."
+
+#: src/features/admin/components/abuse/abuse-case-status-menu.tsx
+msgid "gL381x"
+msgstr "Verplaats deze zaak naar"
+
+#: src/features/admin/components/abuse/abuse-case-status-menu.tsx
+msgid "rMqQLx"
+msgstr "Oplossen als…"
+
+#: src/features/admin/components/abuse/abuse-case-status-menu.tsx
+msgid "vpNlv2"
+msgstr "Afwijzen als…"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+msgid "bdcMGy"
+msgstr "Menu openen"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "GqYb_y"
+msgstr "Klant bekijken"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "AfxJ0y"
+msgstr "Verplaatsen naar"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/integrations/integration-health-panel.tsx
+#: src/features/servers/firewall/components/firewall-options-row.tsx
+msgid "tzMNF3"
+msgstr "Status"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "5p20VJ"
+msgstr "Afsluiten op de zaakpagina…"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "9q3kR7"
+msgstr "Afgesloten als {reason}"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
+msgid "94Fg25"
+msgstr "Selecteer alles"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
+#: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
+#: src/features/admin/components/servers/servers-table/columns.tsx
+#: src/features/admin/components/subnets/subnets-table/columns.tsx
+#: src/features/admin/components/users/users-table/columns.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
+msgid "4pJVaS"
+msgstr "Selecteer rij"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "KpN3WY"
+msgstr "Zaak"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "P-Xihq"
+msgstr "Verouderd"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "lWppu7"
+msgstr "Zoek op zaak, titel of klant..."
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "vCAhII"
+msgstr "Ernst"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "ccXLVi"
+msgstr "Categorie"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "unZjqP"
+msgstr "Handhaving"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "do627d"
+msgstr "{count} servers"
+
+#: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+msgid "lf-twp"
+msgstr "Geen bestellingen"
+
+#: src/features/admin/components/abuse/create-abuse-case-button.tsx
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "ItE4vE"
+msgstr "Zaak openen"
+
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "pnGaMQ"
+msgstr "Legt een zaak met de hand aan, zoals een melding dat zou doen."
+
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "9a9-ww"
+msgstr "Titel"
+
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "AbFa6r"
+msgstr "Uitgaande spam vanaf 203.0.113.5"
+
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "Xup5P8"
+msgstr "Wat er is gebeurd"
+
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "_NRHKm"
+msgstr "Wordt aan de klant getoond. Laat de identiteit van de melder weg."
+
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "8z6g8U"
+msgstr "Nu informeren"
+
+#: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+msgid "8t9C2A"
+msgstr "Stuurt de klant een e-mail en start een deadline van 24 uur."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "aduhuz"
+msgstr "Nog geen eerdere signalen om opnieuw af te spelen."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "cu0IDt"
+msgstr "Matcht {matched} van de laatste {considered} signalen en beslist er {wins}."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "kPJDWv"
+msgstr "{count, plural, one {# server zou vergrendeld zijn} other {# servers zouden vergrendeld zijn}}"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "ETXZfR"
+msgstr "Zonder dat een operator de melding eerst leest."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "CutcjP"
+msgstr "Eerst opgepakt door een regel met hogere prioriteit:"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "po9omj"
+msgstr "{name} (prioriteit {priority}) · {count}"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "M0PEgf"
+msgstr "{source} · {type} · {when}"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "UE4WUO"
+msgstr "{count, plural, one {# match had een verouderde toewijzing en zou niet handhaven} other {# matches hadden een verouderde toewijzing en zouden niet handhaven}}."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "sJFaF8"
+msgstr "Eén `key=value` per regel."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "v1vJ77"
+msgstr "Regel bewerken"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "gzM1em"
+msgstr "Regel toevoegen"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "jC476Z"
+msgstr "Wat een passend signaal veroorzaakt."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "53G_x5"
+msgstr "Uitgaande spam, bevestigd"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+msgid "Q8Qw5B"
+msgstr "Beschrijving"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "ENBExm"
+msgstr "Waarom deze regel bestaat, voor wie hem later tegenkomt."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
+#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
+msgid "8lCjAM"
+msgstr "Prioriteit"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "4aBk2h"
+msgstr "Lager loopt eerst. Alleen de eerste passende regel beslist."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "V52jNn"
+msgstr "Ingeschakeld"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "iudNd-"
+msgstr "Matcht op"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "i0iJj7"
+msgstr "Elke voorwaarde moet gelden. Een lege is geen voorwaarde."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "j4thrK"
+msgstr "Signaaltype"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "LrZ7qa"
+msgstr "`abuse.*` matcht een namespace, `abuse.ddos` één type."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "aH4De2"
+msgstr "Bron"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "zi4cus"
+msgstr "Elke bron"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "n9zn-R"
+msgstr "Bronnen die tot nu toe iets hebben gestuurd."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "XwCfRz"
+msgstr "Minimale ernst"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "k9Mysq"
+msgstr "Elke ernst"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "WNflxH"
+msgstr "Minimale zekerheid"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "ToO3_h"
+msgstr "Elke"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "l0tGxO"
+msgstr "Een signaal van een bron die er geen uitdrukt, haalt dit nooit."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "It6_YY"
+msgstr "Minimaal aantal eerdere zaken"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "fAGjQr"
+msgstr "Zaken die deze klant in de laatste 90 dagen heeft afgehandeld."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "m3QEyd"
+msgstr "Labels"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "g2YRMn"
+msgstr "Eén `key=value` per regel. Ze moeten allemaal aanwezig zijn."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "mUSYMj"
+msgstr "Veroorzaakt"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "mZqcqr"
+msgstr "Vertrouwde bron"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "srt-Rb"
+msgstr "Handelt zonder operator. Laat dit uit en elke match wacht in triage."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "hu7xvo"
+msgstr "Uit het signaaltype"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "K3e01Z"
+msgstr "Ernst van de zaak"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "05BYVh"
+msgstr "Uit de ernst van het signaal"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "4XojnY"
+msgstr "Een server verwijderen gebeurt nooit automatisch; dat doet een operator op de zaak."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "hSwgoV"
+msgstr "Respijtperiode (minuten)"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "2BCcVZ"
+msgstr "Een zaak die binnen die periode wordt afgehandeld, wordt nooit gehandhaafd."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "ZSIvsq"
+msgstr "Reactiedeadline (uren)"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "uUrMpp"
+msgstr "Stilte daarna verscherpt de handhaving met één niveau."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "Sc5eWh"
+msgstr "Nieuwe bestellingen blokkeren"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "92Ik-u"
+msgstr "Totdat de zaak is afgehandeld."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "Eylatv"
+msgstr "De klant informeren"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "81AQjV"
+msgstr "Testrun"
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "K6cQYY"
+msgstr "Speelt deze regel opnieuw af tegen de al ontvangen signalen. Verandert niets."
+
+#: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+msgid "KiXNvz"
+msgstr "Uitvoeren"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "PqUIzj"
+msgstr "{severity} en hoger"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "C20CrC"
+msgstr "{count, plural, one {# eerdere zaak} other {# eerdere zaken}}"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "NNg0UR"
+msgstr "{count} signalen · laatst {when}"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "QcpO4R"
+msgstr "Nog geen signalen"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
+msgid "wEQDC6"
+msgstr "Bewerken"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "5EtNjc"
+msgstr "Prioriteit {value}"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "wk2gIX"
+msgstr "Vertrouwd"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "8RVq-l"
+msgstr "Blokkeert bestellingen"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "Aa4K49"
+msgstr "Er wordt niets automatisch gehandhaafd"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "9oOZxT"
+msgstr "Geen enkele ingeschakelde regel is als vertrouwde bron gemarkeerd, dus elke zaak wacht in triage op een operator."
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "v89h-O"
+msgstr "Wat een signaal veroorzaakt. De eerste regel die matcht, op prioriteit, beslist de zaak."
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "ue2UOa"
+msgstr "Geen regels"
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "dWdkfw"
+msgstr "Elke melding komt in triage terecht totdat een regel erop matcht."
+
+#: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
+msgid "ent4MP"
+msgstr "Alleen een regel die als vertrouwde bron is gemarkeerd, mag zonder operator handelen."
+
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgid "UcHtCB"
 msgstr "Proxmox VE"
@@ -2874,13 +3785,6 @@ msgstr "Slug"
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 msgid "e5x8FT"
 msgstr "Soort"
-
-#: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
-#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
-#: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-msgid "8lCjAM"
-msgstr "Prioriteit"
 
 #: src/features/admin/components/cloud-init-snippets/delete-snippet-dialog.tsx
 msgid "1q_kua"
@@ -2957,16 +3861,6 @@ msgid "mfKcIm"
 msgstr "Lagere prioriteiten worden eerst samengesteld; bij gelijke stand wint de slug."
 
 #: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
-msgid "Q8Qw5B"
-msgstr "Beschrijving"
-
-#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
-msgid "V52jNn"
-msgstr "Ingeschakeld"
-
-#: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 msgid "6WqHWi"
 msgstr "Geldt voor"
@@ -2992,38 +3886,11 @@ msgid "0bKTrV"
 msgstr "Er zijn nog geen sjablonen gedefinieerd."
 
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
-#: src/features/admin/components/emails/emails-table/columns.tsx
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
-#: src/features/admin/components/servers/servers-table/columns.tsx
-#: src/features/admin/components/subnets/subnets-table/columns.tsx
-#: src/features/admin/components/users/users-table/columns.tsx
-#: src/features/invoices/components/invoices-table/columns.tsx
-msgid "94Fg25"
-msgstr "Selecteer alles"
-
-#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
-#: src/features/admin/components/emails/emails-table/columns.tsx
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
-#: src/features/admin/components/servers/servers-table/columns.tsx
-#: src/features/admin/components/subnets/subnets-table/columns.tsx
-#: src/features/admin/components/users/users-table/columns.tsx
-#: src/features/invoices/components/invoices-table/columns.tsx
-msgid "4pJVaS"
-msgstr "Selecteer rij"
-
-#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 msgid "XPruqs"
 msgstr "Volgorde"
 
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/notifications/notification-targets-list.tsx
 #: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
 msgid "tthToS"
 msgstr "Uitgeschakeld"
@@ -3055,24 +3922,6 @@ msgstr "Sjablonen waarop dit fragment momenteel van toepassing is"
 #: src/features/servers/components/rdns/records-table/columns.tsx
 msgid "wFMlsH"
 msgstr "Bijgewerkt op"
-
-#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
-#: src/features/admin/components/datacenters/datacenters-table/columns.tsx
-#: src/features/admin/components/emails/emails-table/columns.tsx
-#: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-#: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
-#: src/features/admin/components/proxmox-templates/templates-table/columns.tsx
-#: src/features/admin/components/servers/servers-table/columns.tsx
-#: src/features/admin/components/subnets/subnets-table/columns.tsx
-#: src/features/admin/components/users/users-table/columns.tsx
-msgid "bdcMGy"
-msgstr "Menu openen"
-
-#: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
-#: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
-msgid "wEQDC6"
-msgstr "Bewerken"
 
 #: src/features/admin/components/dashboard/activity-stats-row.tsx
 msgid "wCWFeb"
@@ -3223,12 +4072,6 @@ msgstr "Onderwerp"
 msgid "EPGMwQ"
 msgstr "Zoeken op onderwerp..."
 
-#: src/features/admin/components/emails/emails-table/columns.tsx
-#: src/features/admin/components/integrations/integration-health-panel.tsx
-#: src/features/servers/firewall/components/firewall-options-row.tsx
-msgid "tzMNF3"
-msgstr "Status"
-
 #: src/features/admin/components/integrations/integration-detail.tsx
 msgid "Q4e8bq"
 msgstr "Gemaakt door"
@@ -3246,8 +4089,8 @@ msgid "Cm2_-V"
 msgstr "Lees de documentatie"
 
 #: src/features/admin/components/integrations/integration-detail.tsx
-msgid "ZLrvCJ"
-msgstr "Deze integratie heeft niets om in te stellen."
+msgid "bEhH0O"
+msgstr "Deze integratie heeft hier niets in te stellen. Aanzetten is alles."
 
 #: src/features/admin/components/integrations/integration-enable-button.tsx
 msgid "Rw7iI7"
@@ -3306,10 +4149,6 @@ msgid "GZJpDf"
 msgstr "Analyse"
 
 #: src/features/admin/components/integrations/integrations-hub.tsx
-msgid "1UwRXb"
-msgstr "Misbruik"
-
-#: src/features/admin/components/integrations/integrations-hub.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/servers/components/overview/node-details-dialog.tsx
 msgid "DUIDEq"
@@ -3318,6 +4157,107 @@ msgstr "Opslag"
 #: src/features/admin/components/integrations/integrations-hub.tsx
 msgid "Mmuj1R"
 msgstr "Platform"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "Ejgl5g"
+msgstr "Testmelding afgeleverd."
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "dqfX3I"
+msgstr "Voeg minstens één key toe, of `*` voor alles."
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "ndpxoL"
+msgstr "`{key}` is geen geldige key."
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "fI4Anf"
+msgstr "Doel bewerken"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "HoiRnc"
+msgstr "Doel toevoegen"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "hNpFRN"
+msgstr "Waar een melding heen gaat, en welke het ontvangt."
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "OssiM5"
+msgstr "Ops-kanaal"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "KeO51o"
+msgstr "Kanaal"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "6uhSSw"
+msgstr "Kies een kanaal"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "YFT4rG"
+msgstr "Keys"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "d-LD1g"
+msgstr "Eén per regel. `abuse.*` matcht een namespace, `*` alles."
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "SihfVv"
+msgstr "Alles daaronder wordt niet afgeleverd."
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "IQDO43"
+msgstr "Testaflevering"
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "rCbiwG"
+msgstr "Stuurt een echte melding naar dit doel."
+
+#: src/features/admin/components/notifications/notification-target-dialog.tsx
+msgid "Fx1Td_"
+msgstr "Test versturen"
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "dZkKpB"
+msgstr "Kanaal niet beschikbaar"
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "e8Nx0r"
+msgstr "{keys} · {severity} en hoger"
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "2wbxcK"
+msgstr "Meldingsdoelen"
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "C--PO9"
+msgstr "Waar operatorwaarschuwingen worden afgeleverd. Klanten worden via hun eigen kanalen geïnformeerd."
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "WtPJhe"
+msgstr "Doelen niet beschikbaar"
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "oJQo9b"
+msgstr "Geen kanalen"
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "QHF7kT"
+msgstr "Er staat geen integratie aan die een meldingskanaal levert."
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "oX3LNh"
+msgstr "Geen doelen"
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "tR7Qfj"
+msgstr "Er zijn nog geen meldingsdoelen aangemaakt."
+
+#: src/features/admin/components/notifications/notification-targets-list.tsx
+msgid "nIu1MB"
+msgstr "Een doel ontvangt elke melding die past bij zijn keys en minimale ernst."
 
 #: src/features/admin/components/proxmox-node-groups/create-node-group-button.tsx
 msgid "8gJfol"
@@ -3650,10 +4590,6 @@ msgstr "Checksum"
 #: src/features/admin/components/proxmox-templates/template-settings.tsx
 msgid "u2OsFB"
 msgstr "Algoritme"
-
-#: src/features/admin/components/proxmox-templates/template-settings.tsx
-msgid "450Fty"
-msgstr "Geen"
 
 #: src/features/admin/components/proxmox-templates/template-settings.tsx
 msgid "Wf4EEV"
@@ -4132,6 +5068,18 @@ msgstr "Betaling verwerken…"
 #: src/features/checkout/components/stripe-payment-form.tsx
 msgid "7tOz-m"
 msgstr "Betaal nu"
+
+#: src/features/dashboard/components/active-abuse-cases.tsx
+msgid "aZFiKP"
+msgstr "{count, plural, one {# melding wacht op je antwoord.} other {# meldingen wachten op je antwoord.}}"
+
+#: src/features/dashboard/components/active-abuse-cases.tsx
+msgid "HGGtVU"
+msgstr "Open meldingen over je servers."
+
+#: src/features/dashboard/components/active-abuse-cases.tsx
+msgid "8sWND3"
+msgstr "{count, plural, one {# melding meer} other {# meldingen meer}}"
 
 #: src/features/dashboard/components/empty-servers.tsx
 msgid "fmSs_a"
@@ -4999,11 +5947,6 @@ msgstr "Selecteer richting"
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "ubliHx"
 msgstr "ICMP-type"
-
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
-msgid "aH4De2"
-msgstr "Bron"
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgid "c-r5qz"
