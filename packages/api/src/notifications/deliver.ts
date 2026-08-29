@@ -22,6 +22,7 @@ import type { NotificationDelivery } from "@virtbase/db/schema";
 import { notificationDeliveries, users } from "@virtbase/db/schema";
 import { DEFAULT_EMAIL_LOCALE } from "@virtbase/email/translations";
 import type { Notification, NotificationChannel } from "@virtbase/ports";
+import { ADMIN_DOMAIN, APP_DOMAIN } from "@virtbase/utils";
 import { notificationTargetStore } from "./store";
 import type { NotificationParams } from "./text";
 import { renderNotification } from "./text";
@@ -158,6 +159,29 @@ const markSkipped = async (id: string, reason: string) => {
  * Re-derives everything it needs from the row, which is what lets the retry
  * cron call it months later with nothing but a database id.
  */
+/**
+ * The stored path, as something a channel can actually link to.
+ *
+ * Urls are stored as paths because one case is `/abuse/<id>` on both consoles
+ * and which console depends on who is being told - the customer gets the app,
+ * an operator gets admin. Resolving that here rather than at every dispatch
+ * site keeps a caller from having to know its own audience's host.
+ *
+ * Absolute matters: Discord rejects an embed whose `url` is not a full URL,
+ * with a 400 and `{"embeds": ["0"]}`, and an email link would render as a dead
+ * relative href - which fails more quietly and is therefore worse.
+ */
+export const absoluteNotificationUrl = (
+  url: string | null | undefined,
+  audience: "user" | "operator",
+): string | null => {
+  if (!url) return null;
+  if (/^https?:\/\//i.test(url)) return url;
+
+  const base = "user" === audience ? APP_DOMAIN : ADMIN_DOMAIN;
+  return `${base}${url.startsWith("/") ? url : `/${url}`}`;
+};
+
 export const deliverNotification = async (
   row: NotificationDelivery,
 ): Promise<"delivered" | "skipped" | "failed"> => {
@@ -185,19 +209,23 @@ export const deliverNotification = async (
         }
       : undefined;
 
+    const audience: Notification["audience"] =
+      "user" === row.audience && row.userId
+        ? { kind: "user", userId: row.userId }
+        : {
+            kind: "operator",
+            ...(row.targetId ? { targetId: row.targetId } : {}),
+          };
+
+    const url = absoluteNotificationUrl(row.url, audience.kind);
+
     const notification: Notification = {
       id: row.id,
       key: row.notificationKey,
-      audience:
-        "user" === row.audience && row.userId
-          ? { kind: "user", userId: row.userId }
-          : {
-              kind: "operator",
-              ...(row.targetId ? { targetId: row.targetId } : {}),
-            },
+      audience,
       severity: row.severity,
       params: { ...params, title: text.title, body: text.body },
-      ...(row.url ? { url: row.url } : {}),
+      ...(url ? { url } : {}),
       ...(row.groupKey ? { groupKey: row.groupKey } : {}),
       ...(target ? { target } : {}),
       locale,

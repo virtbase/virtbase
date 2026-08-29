@@ -94,7 +94,8 @@ export class EmailNotificationChannel implements NotificationChannel {
       await sendEmail(
         {
           to: user.email,
-          variant: "notifications",
+          //variant: "notifications",
+          variant: "primary",
           subject: title,
           react: await NotificationEmail({
             email: user.email,
@@ -126,7 +127,8 @@ export class EmailNotificationChannel implements NotificationChannel {
       await Promise.all(
         recipients.map(async (recipient) => ({
           to: recipient,
-          variant: "notifications" as const,
+          //variant: "notifications" as const,
+          variant: "primary" as const,
           subject: title,
           replyTo: "noreply",
           react: await NotificationEmail({
