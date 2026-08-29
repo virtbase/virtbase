@@ -178,6 +178,25 @@
     "verifyEmailLink": "Verifică adresa de e-mail",
     "copyAndPaste": "sau copiază și lipește acest URL în browser:"
   },
+  "abuse-case-notice": {
+    "title": "Abuse report about your service ({reference})",
+    "body": "We have received an abuse report about your service.\n\nCase {reference}, reported as {category}. Please open the case, check the affected server and reply within {deadlineHours} hours. If we do not hear from you, we may have to restrict the service to stop the abuse."
+  },
+  "abuse-case-resolved": {
+    "title": "Abuse case {reference} is closed",
+    "body": "The abuse case {reference} has been closed. No further action is needed from you. If you have questions about it, reply to the case and we will pick it up."
+  },
+  "abuse-case-restricted": {
+    "title": "Your service has been restricted ({reference})",
+    "body_throttle": "Because of the open abuse case {reference}, the network speed of the affected server has been limited. You can still log in and fix the problem. Reply to the case once you have, and we will lift the limit.",
+    "body_isolate": "Because of the open abuse case {reference}, outbound network traffic from the affected server has been blocked. Your data is untouched and you can still reach the server through the console. Reply to the case once the problem is fixed, and we will lift the block.",
+    "body_power_off": "Because of the open abuse case {reference}, the affected server has been shut down. Your data is untouched. Reply to the case and we will start it again as soon as the problem is settled.",
+    "body_terminate": "Because of the open abuse case {reference}, the affected server has been scheduled for termination. Reply to the case immediately if you believe this is a mistake."
+  },
+  "notification": {
+    "greeting": "Hi {name}!",
+    "viewButton": "View details"
+  },
   "footer": {
     "thisEmailWasIntendedFor": "Acest e-mail era destinat pentru <strong>{email}</strong>.",
     "securityConcerns": "Dacă nu te așteptai la acest e-mail, îl poți ignora. Dacă ești îngrijorat de siguranța contului tău, <link>contactează-ne ca să ne spui</link>.",
