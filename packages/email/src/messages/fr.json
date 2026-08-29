@@ -178,6 +178,25 @@
     "verifyEmailLink": "Vérifier l’adresse e-mail",
     "copyAndPaste": "ou copie-colle cette URL dans ton navigateur :"
   },
+  "abuse-case-notice": {
+    "title": "Signalement d'abus concernant ton service ({reference})",
+    "body": "Nous avons reçu un signalement d'abus concernant ton service.\n\nDossier {reference}, signalé comme {category}. Ouvre le dossier, vérifie le serveur concerné et réponds sous {deadlineHours} heures. Sans réponse de ta part, nous pourrions devoir restreindre le service pour mettre fin à l'abus."
+  },
+  "abuse-case-resolved": {
+    "title": "Le dossier d'abus {reference} est clos",
+    "body": "Le dossier d'abus {reference} a été clos. Tu n'as rien de plus à faire. Si tu as des questions, réponds dans le dossier et nous y reviendrons."
+  },
+  "abuse-case-restricted": {
+    "title": "Ton service a été restreint ({reference})",
+    "body_throttle": "En raison du dossier d'abus ouvert {reference}, le débit réseau du serveur concerné a été limité. Tu peux toujours te connecter et corriger le problème. Réponds dans le dossier une fois que c'est fait et nous lèverons la limite.",
+    "body_isolate": "En raison du dossier d'abus ouvert {reference}, le trafic réseau sortant du serveur concerné a été bloqué. Tes données sont intactes et tu gardes l'accès par la console. Réponds dans le dossier une fois le problème corrigé et nous lèverons le blocage.",
+    "body_power_off": "En raison du dossier d'abus ouvert {reference}, le serveur concerné a été arrêté. Tes données sont intactes. Réponds dans le dossier et nous le redémarrerons dès que la situation sera réglée.",
+    "body_terminate": "En raison du dossier d'abus ouvert {reference}, la résiliation du serveur concerné a été engagée. Réponds immédiatement dans le dossier si tu penses qu'il s'agit d'une erreur."
+  },
+  "notification": {
+    "greeting": "Salut {name} !",
+    "viewButton": "Voir les détails"
+  },
   "footer": {
     "thisEmailWasIntendedFor": "Cet e-mail était destiné à <strong>{email}</strong>.",
     "securityConcerns": "Si tu n'attendais pas cet e-mail, tu peux l'ignorer. Si la sécurité de ton compte t'inquiète, <link>contacte-nous pour nous le dire</link>.",
