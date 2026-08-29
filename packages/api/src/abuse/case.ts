@@ -16,7 +16,7 @@
  */
 
 import { and, desc, eq, gte, inArray, not, sql } from "@virtbase/db";
-import type { db as database } from "@virtbase/db/client";
+import type { db as database, Executor } from "@virtbase/db/client";
 import type { AbuseCase, AbuseRule } from "@virtbase/db/schema";
 import {
   abuseCaseEvents,
@@ -68,7 +68,8 @@ const LIVE_STATUSES: CaseStatus[] = [
 ];
 
 export interface RecordCaseEventInput {
-  db: Database;
+  /** Takes a transaction too, so a caller can make its writes atomic. */
+  db: Executor;
   caseId: string;
   type: string;
   actorKind: "customer" | "operator" | "system" | "source";

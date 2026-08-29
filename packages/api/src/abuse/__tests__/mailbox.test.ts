@@ -19,8 +19,10 @@ import { afterEach, beforeEach, describe, expect, mock, test } from "bun:test";
 import { eq } from "@virtbase/db";
 import {
   abuseCaseContacts,
+  abuseCaseEvents,
   abuseCaseMessages,
   abuseCases,
+  emails,
   users,
 } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
@@ -413,5 +415,75 @@ describe("acknowledgeReporters", () => {
 
     expect(result.sent).toEqual([]);
     expect(sent).toHaveLength(0);
+  });
+});
+
+describe("the emails row a message points at", () => {
+  /**
+   * A regression, and an expensive one.
+   *
+   * `abuse_case_messages.email_id` references `emails.id` - a prefixed
+   * identifier this application generates - while the inbound webhook has the
+   * provider's id, which lives in `emails.external_id`. Passing the latter
+   * straight through violated the foreign key, and because the case row was
+   * already committed by then, every inbound report produced a case with no
+   * message, no contact, no event and no operator notification: assisted
+   * triage read it, found no report, and marked it triaged anyway.
+   */
+  test("resolves the provider id to the internal row", async () => {
+    const [row] = await testDb
+      .insert(emails)
+      .values({
+        externalId: "e113264e-b9e3-4a99-8fbb-6b00405e548e",
+        from: REPORTER,
+        to: ["abuse@virtbase.com"],
+        subject: "Complaint",
+        lastEvent: "received",
+      })
+      .returning({ id: emails.id });
+
+    const outcome = await receiveAbuseEmail({
+      db: testDb as never,
+      email: email({ externalId: "e113264e-b9e3-4a99-8fbb-6b00405e548e" }),
+    });
+
+    expect(outcome.routed).toBe("new-case");
+
+    const [message] = await testDb.select().from(abuseCaseMessages);
+    expect(message?.emailId).toBe(row?.id as string);
+    expect(message?.body).toContain("sustained scanning");
+  });
+
+  test("files the report even when no emails row exists", async () => {
+    // A provider whose webhook stores nothing, a replay, a different inbound
+    // path. Losing an abuse report over a missing cross-reference would be the
+    // wrong trade.
+    const outcome = await receiveAbuseEmail({
+      db: testDb as never,
+      email: email({ externalId: "not-a-stored-message" }),
+    });
+
+    expect(outcome.routed).toBe("new-case");
+
+    const [message] = await testDb.select().from(abuseCaseMessages);
+    expect(message?.emailId).toBeNull();
+  });
+
+  test("a new case arrives complete or not at all", async () => {
+    // The four rows assisted triage, the acknowledgement and the queue all
+    // depend on. Before they were one transaction, a failure on any of them
+    // left the case behind as a title with nothing under it.
+    await receiveAbuseEmail({ db: testDb as never, email: email() });
+
+    const [abuseCase] = await testDb.select().from(abuseCases);
+    expect(abuseCase).toBeDefined();
+
+    // Two: the report, and the acknowledgement sent back to the reporter.
+    const messages = await testDb.select().from(abuseCaseMessages);
+    expect(messages.filter((m) => "reporter" === m.authorKind)).toHaveLength(1);
+    expect(await testDb.select().from(abuseCaseContacts)).toHaveLength(1);
+
+    const events = await testDb.select().from(abuseCaseEvents);
+    expect(events.map((event) => event.type)).toContain("case.opened");
   });
 });

@@ -148,7 +148,7 @@ export async function POST(req: NextRequest) {
         await receiveAbuseEmail({
           db,
           email: {
-            emailId: externalId,
+            externalId,
             from,
             to: recipientsOf({ to, received_for: receivedFor }),
             subject,

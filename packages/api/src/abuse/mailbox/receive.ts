@@ -17,11 +17,12 @@
 
 import * as Sentry from "@sentry/node";
 import { and, desc, eq, inArray, sql } from "@virtbase/db";
-import type { db as database } from "@virtbase/db/client";
+import type { db as database, Executor } from "@virtbase/db/client";
 import {
   abuseCaseContacts,
   abuseCaseMessages,
   abuseCases,
+  emails,
 } from "@virtbase/db/schema";
 import { dispatchNotification } from "../../notifications/dispatch";
 import { once } from "../../upstash";
@@ -45,8 +46,16 @@ type Database = typeof database;
  * provider does not expose them.
  */
 export interface InboundAbuseEmail {
-  /** The row in `emails`, so the case message can point back at it. */
-  emailId?: string | null;
+  /**
+   * The **provider's** id for this message, as it appears in
+   * `emails.external_id`.
+   *
+   * Not `emails.id`, which is a prefixed identifier this application
+   * generates. The case message's foreign key wants the latter, so it is
+   * resolved here rather than assumed - passing the provider's id straight
+   * through is what broke every inbound report before it was named properly.
+   */
+  externalId?: string | null;
   from: string;
   to: string[];
   subject: string;
@@ -201,7 +210,8 @@ export const upsertCaseContact = async ({
   email,
   name,
 }: {
-  db: Database;
+  /** Takes a transaction too, so a caller can make its writes atomic. */
+  db: Executor;
   caseId: string;
   email: string;
   name?: string | null;
@@ -293,6 +303,28 @@ export const receiveAbuseEmail = async ({
   return { routed: "new-case", caseId };
 };
 
+/**
+ * The `emails` row this message was stored as, if there is one.
+ *
+ * Null rather than an error when it is missing: the link is a convenience for
+ * whoever reads the case later, and losing an abuse report over a missing
+ * cross-reference is the wrong trade every time. A provider whose webhook
+ * stores nothing, a replay, a test - all of them still file the report.
+ */
+const resolveEmailRowId = async (
+  db: Database,
+  externalId: string | null | undefined,
+): Promise<string | null> => {
+  if (!externalId) return null;
+
+  return await db
+    .select({ id: emails.id })
+    .from(emails)
+    .where(eq(emails.externalId, externalId))
+    .limit(1)
+    .then(([row]) => row?.id ?? null);
+};
+
 const appendReporterMessage = async ({
   db,
   caseId,
@@ -305,29 +337,38 @@ const appendReporterMessage = async ({
   body: string;
 }): Promise<void> => {
   const sender = bareAddress(email.from);
+  const emailRowId = await resolveEmailRowId(db, email.externalId);
 
-  await db.insert(abuseCaseMessages).values({
-    caseId,
-    authorKind: "reporter",
-    authorEmail: sender,
-    // Not `customer`: this is a third party's wording and identity, and the
-    // customer's view filters on the audience rather than on a component.
-    audience: "reporter",
-    body,
-    messageId: header(email, "message-id") ?? null,
-    inReplyTo: header(email, "in-reply-to") ?? null,
-    emailId: email.emailId ?? null,
-  });
+  // Atomic for the same reason the open path is: a reply recorded without its
+  // contact row is a reporter who silently stops being acknowledged.
+  await db.transaction(
+    async (tx) => {
+      await tx.insert(abuseCaseMessages).values({
+        caseId,
+        authorKind: "reporter",
+        authorEmail: sender,
+        // Not `customer`: this is a third party's wording and identity, and
+        // the customer's view filters on the audience rather than on a
+        // component.
+        audience: "reporter",
+        body,
+        messageId: header(email, "message-id") ?? null,
+        inReplyTo: header(email, "in-reply-to") ?? null,
+        emailId: emailRowId,
+      });
 
-  await upsertCaseContact({ db, caseId, email: sender });
+      await upsertCaseContact({ db: tx, caseId, email: sender });
 
-  await recordCaseEvent({
-    db,
-    caseId,
-    type: "reporter.replied",
-    actorKind: "source",
-    metadata: { from: sender },
-  });
+      await recordCaseEvent({
+        db: tx,
+        caseId,
+        type: "reporter.replied",
+        actorKind: "source",
+        metadata: { from: sender },
+      });
+    },
+    { accessMode: "read write", isolationLevel: "read committed" },
+  );
 
   const abuseCase = await db
     .select({ number: abuseCases.number })
@@ -373,46 +414,61 @@ const openCaseFromEmail = async ({
     sanitizeAbuseText(email.subject, { maxLength: 500 }) ??
     `Abuse report from ${sender}`;
 
-  const [created] = await db
-    .insert(abuseCases)
-    .values({
-      // No customer yet. Somebody has to read the message and say who it is
-      // about, which is exactly what `triage` means.
-      userId: null,
-      category: "other",
-      severity: "medium",
-      status: "triage",
-      title,
-      summary: body,
-    })
-    .returning({ id: abuseCases.id, number: abuseCases.number })
+  const emailRowId = await resolveEmailRowId(db, email.externalId);
+
+  // One transaction, because a case without its report is worse than no case
+  // at all: assisted triage reads the first reporter message and gives up
+  // without one, the acknowledgement has no contact to reply to, and the case
+  // sits in the queue as a title with nothing behind it. All four rows land,
+  // or the report stays unfiled and the error is visible.
+  const created = await db
+    .transaction(
+      async (tx) => {
+        const [row] = await tx
+          .insert(abuseCases)
+          .values({
+            // No customer yet. Somebody has to read the message and say who it
+            // is about, which is exactly what `triage` means.
+            userId: null,
+            category: "other",
+            severity: "medium",
+            status: "triage",
+            title,
+            summary: body,
+          })
+          .returning({ id: abuseCases.id, number: abuseCases.number });
+
+        if (!row) throw new Error("Failed to open abuse case from email");
+
+        await tx.insert(abuseCaseMessages).values({
+          caseId: row.id,
+          authorKind: "reporter",
+          authorEmail: sender,
+          audience: "reporter",
+          body,
+          messageId: header(email, "message-id") ?? null,
+          emailId: emailRowId,
+        });
+
+        await upsertCaseContact({ db: tx, caseId: row.id, email: sender });
+
+        await recordCaseEvent({
+          db: tx,
+          caseId: row.id,
+          type: "case.opened",
+          actorKind: "source",
+          toValue: "triage",
+          metadata: { via: "mailbox", from: sender },
+        });
+
+        return row;
+      },
+      { accessMode: "read write", isolationLevel: "read committed" },
+    )
     .catch((error: unknown) => {
       Sentry.captureException(error);
       throw error;
     });
-
-  if (!created) throw new Error("Failed to open abuse case from email");
-
-  await db.insert(abuseCaseMessages).values({
-    caseId: created.id,
-    authorKind: "reporter",
-    authorEmail: sender,
-    audience: "reporter",
-    body,
-    messageId: header(email, "message-id") ?? null,
-    emailId: email.emailId ?? null,
-  });
-
-  await upsertCaseContact({ db, caseId: created.id, email: sender });
-
-  await recordCaseEvent({
-    db,
-    caseId: created.id,
-    type: "case.opened",
-    actorKind: "source",
-    toValue: "triage",
-    metadata: { via: "mailbox", from: sender },
-  });
 
   await dispatchNotification({
     key: "abuse.report.received",

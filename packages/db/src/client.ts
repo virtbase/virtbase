@@ -54,3 +54,17 @@ export const db = drizzle({
   client: pool,
   relations,
 });
+
+/** A transaction on {@link db}, as its callback receives it. */
+export type Transaction = Parameters<Parameters<typeof db.transaction>[0]>[0];
+
+/**
+ * The database, or a transaction on it.
+ *
+ * A helper that only reads and writes rows should take this rather than the
+ * client, so it can be called from inside a `db.transaction()` block. Without
+ * it, wrapping a sequence of writes in a transaction is a type error, and the
+ * easy way out of a type error is not wrapping them - which is how a failed
+ * insert halfway through leaves a half-built record behind.
+ */
+export type Executor = typeof db | Transaction;
