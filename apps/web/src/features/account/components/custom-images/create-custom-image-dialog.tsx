@@ -83,7 +83,7 @@ export default function CreateCustomImageDialog({
     return () => {
       form.reset();
     };
-  }, []);
+  }, [form.reset]);
 
   const action = t("Create Custom Image");
 

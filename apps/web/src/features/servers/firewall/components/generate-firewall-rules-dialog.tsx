@@ -116,7 +116,7 @@ export default function GenerateFirewallRulesDialog(
       setDescription(null);
       form.reset();
     };
-  }, []);
+  }, [form.reset]);
 
   /**
    * Applies one or more of the generated rules.

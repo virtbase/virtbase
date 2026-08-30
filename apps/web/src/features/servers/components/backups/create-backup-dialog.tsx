@@ -83,7 +83,7 @@ export default function CreateBackupDialog(
     return () => {
       form.reset();
     };
-  }, []);
+  }, [form.reset]);
 
   return (
     <ResponsiveDialog

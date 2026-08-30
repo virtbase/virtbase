@@ -68,7 +68,7 @@ export default function UpsertRecordDialog(
     return () => {
       form.reset();
     };
-  }, []);
+  }, [form.reset]);
 
   const action = t("Update PTR Record");
 

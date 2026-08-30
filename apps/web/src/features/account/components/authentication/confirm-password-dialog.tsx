@@ -57,7 +57,9 @@ export default function ConfirmPasswordDialog({
       await onSubmit(password);
     });
 
-  // Reset the form when the dialog is closed
+  // Reset the form when the dialog is closed.
+  //
+  // biome-ignore lint/correctness/useExhaustiveDependencies: `props.open` is the trigger rather than a value the body reads, which is why the rule calls it unnecessary. Dropping it would run this once on mount and leave a typed password sitting in state after the dialog closes.
   useEffect(() => {
     setPassword("");
     setIsPasswordVisible(false);

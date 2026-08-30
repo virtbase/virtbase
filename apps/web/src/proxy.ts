@@ -39,7 +39,7 @@ export const config: ProxyConfig = {
 const intlMiddleware = createMiddleware(routing);
 
 export default async function proxy(req: NextRequest) {
-  const { domain, path, searchParamsString } = parse(req);
+  const { domain } = parse(req);
 
   if (APP_HOSTNAMES.has(domain)) {
     return AppMiddleware(req);

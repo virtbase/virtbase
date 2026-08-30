@@ -81,7 +81,7 @@ export default function ResetServerPasswordDialog(
     return () => {
       form.reset();
     };
-  }, []);
+  }, [form.reset]);
 
   return (
     <ResponsiveDialog

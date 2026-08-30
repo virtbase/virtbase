@@ -5130,6 +5130,15 @@ msgid "Number of VMs"
 msgstr ""
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
+#: src/features/landing/components/discord-bot-demo.tsx
+#: src/features/landing/components/server-stats-demo.tsx
+#: src/features/servers/components/server-graphs.tsx
+#: src/features/servers/components/server-stats-card.tsx
+msgctxt "LjglgP"
+msgid "RAM"
+msgstr ""
+
+#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 msgctxt "EWGm_3"
 msgid "{usage} / {limit}"
 msgstr ""
@@ -5137,15 +5146,6 @@ msgstr ""
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 msgctxt "17eYMk"
 msgid "{usage} / ∞"
-msgstr ""
-
-#: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
-#: src/features/landing/components/discord-bot-demo.tsx
-#: src/features/landing/components/server-stats-demo.tsx
-#: src/features/servers/components/server-graphs.tsx
-#: src/features/servers/components/server-stats-card.tsx
-msgctxt "LjglgP"
-msgid "RAM"
 msgstr ""
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
@@ -6291,6 +6291,15 @@ msgid "Size/Status"
 msgstr ""
 
 #: src/features/servers/components/backups/backups-table/columns.tsx
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+#: src/features/servers/components/backups/restore-backup-dialog.tsx
+#: src/features/servers/hooks/use-status-mapping.ts
+#: src/features/servers/hooks/use-task-mapping.ts
+msgctxt "5jeq8P"
+msgid "Unknown"
+msgstr ""
+
+#: src/features/servers/components/backups/backups-table/columns.tsx
 #: src/features/servers/components/server-custom-image-select.tsx
 msgctxt "vXCeIi"
 msgid "Failed"
@@ -6299,15 +6308,6 @@ msgstr ""
 #: src/features/servers/components/backups/backups-table/columns.tsx
 msgctxt "mRL9Vh"
 msgid "Creating..."
-msgstr ""
-
-#: src/features/servers/components/backups/backups-table/columns.tsx
-#: src/features/servers/components/backups/delete-backup-dialog.tsx
-#: src/features/servers/components/backups/restore-backup-dialog.tsx
-#: src/features/servers/hooks/use-status-mapping.ts
-#: src/features/servers/hooks/use-task-mapping.ts
-msgctxt "5jeq8P"
-msgid "Unknown"
 msgstr ""
 
 #: src/features/servers/components/backups/backups-table/index.tsx

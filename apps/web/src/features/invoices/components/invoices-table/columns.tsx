@@ -27,7 +27,7 @@ import {
   LucideDownload,
 } from "@virtbase/ui/icons";
 import { Spinner } from "@virtbase/ui/spinner";
-import type { ColumnDef } from "@virtbase/ui/types";
+import type { ColumnDef, Row } from "@virtbase/ui/types";
 import type { ListInvoicesOutput } from "@virtbase/validators";
 import { useExtracted, useFormatter } from "next-intl";
 import { useDownloadInvoice } from "@/features/dashboard/hooks/use-download-invoice";
@@ -144,27 +144,30 @@ export function useInvoicesTableColumns(): Array<ColumnDef<ListInvoice>> {
     },
     {
       id: "actions",
-      cell: ({ row }) => {
-        const { mutate: downloadInvoice, isPending: isDownloadingInvoice } =
-          useDownloadInvoice();
-
-        return (
-          <Button
-            variant="ghost"
-            className="flex size-8 p-0 data-[state=open]:bg-muted"
-            aria-label={t("Download")}
-            onClick={() => downloadInvoice({ id: row.original.id })}
-            disabled={isDownloadingInvoice}
-          >
-            {isDownloadingInvoice ? (
-              <Spinner />
-            ) : (
-              <LucideDownload aria-hidden="true" />
-            )}
-          </Button>
-        );
-      },
+      cell: InvoiceActionsCell,
       size: 40,
     },
   ];
+}
+
+function InvoiceActionsCell({ row }: { row: Row<ListInvoice> }) {
+  const t = useExtracted();
+  const { mutate: downloadInvoice, isPending: isDownloadingInvoice } =
+    useDownloadInvoice();
+
+  return (
+    <Button
+      variant="ghost"
+      className="flex size-8 p-0 data-[state=open]:bg-muted"
+      aria-label={t("Download")}
+      onClick={() => downloadInvoice({ id: row.original.id })}
+      disabled={isDownloadingInvoice}
+    >
+      {isDownloadingInvoice ? (
+        <Spinner />
+      ) : (
+        <LucideDownload aria-hidden="true" />
+      )}
+    </Button>
+  );
 }

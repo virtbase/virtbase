@@ -33,7 +33,7 @@ import {
   LucideTrash2,
 } from "@virtbase/ui/icons/index";
 import { Progress } from "@virtbase/ui/progress";
-import type { ColumnDef, DataTableRowAction } from "@virtbase/ui/types";
+import type { Cell, ColumnDef, DataTableRowAction } from "@virtbase/ui/types";
 import { formatBits, formatBytes } from "@virtbase/utils";
 import NextLink from "next/link";
 import { useExtracted, useFormatter } from "next-intl";
@@ -110,31 +110,7 @@ export function useNodesTableColumns({
       header: ({ column }) => (
         <DataTableColumnHeader column={column} label={t("Number of VMs")} />
       ),
-      cell: ({ cell }) => {
-        const count = cell.getValue<number>();
-        const limit = cell.row.original.guestLimit;
-
-        const format = useFormatter();
-
-        if (limit) {
-          return (
-            <div className="flex max-w-40 flex-col items-center gap-2">
-              <Progress
-                value={Math.min((count / limit) * 100, 100)}
-                max={100}
-              />
-              <span className="text-muted-foreground text-xs">
-                {t("{usage} / {limit}", {
-                  usage: format.number(count),
-                  limit: format.number(limit),
-                })}
-              </span>
-            </div>
-          );
-        }
-
-        return <span>{t("{usage} / ∞", { usage: format.number(count) })}</span>;
-      },
+      cell: GuestCountCell,
       enableColumnFilter: true,
       meta: {
         label: "Anzahl der VMs",
@@ -379,4 +355,40 @@ export function useNodesTableColumns({
       size: 40,
     },
   ];
+}
+
+/**
+ * A cell that calls hooks has to be a component.
+ *
+ * `flexRender` mounts a function cell through `createElement`, so this always
+ * ran correctly - but an arrow inside a column definition gives neither the
+ * linter nor React Compiler anything to prove that with, so the hook read as a
+ * rules-of-hooks violation and the cell went unoptimized.
+ *
+ * The translator is resolved here rather than passed in: the message extractor
+ * only sees literals at a `useExtracted` call site and cannot follow a `t`
+ * handed over as a prop.
+ */
+function GuestCountCell({ cell }: { cell: Cell<NodesTableColumn> }) {
+  const t = useExtracted();
+  const format = useFormatter();
+
+  const count = cell.getValue<number>();
+  const limit = cell.row.original.guestLimit;
+
+  if (limit) {
+    return (
+      <div className="flex max-w-40 flex-col items-center gap-2">
+        <Progress value={Math.min((count / limit) * 100, 100)} max={100} />
+        <span className="text-muted-foreground text-xs">
+          {t("{usage} / {limit}", {
+            usage: format.number(count),
+            limit: format.number(limit),
+          })}
+        </span>
+      </div>
+    );
+  }
+
+  return <span>{t("{usage} / ∞", { usage: format.number(count) })}</span>;
 }

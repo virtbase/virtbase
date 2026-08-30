@@ -123,7 +123,7 @@ export default function FirewallRuleDialog({
         ? createRule(data as CreateServerFirewallRuleInput)
         : updateRule(data as UpdateServerFirewallRuleInput);
     },
-    [mode],
+    [mode, createRule, updateRule],
   );
 
   const proto = form.watch("proto");
@@ -146,7 +146,7 @@ export default function FirewallRuleDialog({
     return () => {
       form.reset();
     };
-  }, []);
+  }, [form.reset]);
 
   const action =
     mode === "create" ? t("Create Firewall Rule") : t("Update Firewall Rule");

@@ -70,7 +70,7 @@ export default function CreateTemplateGroupDialog(
       form.reset();
       reset();
     };
-  }, []);
+  }, [form.reset, reset]);
 
   const action = t("Create Proxmox Template Group");
 

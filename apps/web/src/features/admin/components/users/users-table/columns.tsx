@@ -43,7 +43,7 @@ import {
   Mail,
   Text,
 } from "@virtbase/ui/icons";
-import type { ColumnDef, DataTableRowAction } from "@virtbase/ui/types";
+import type { ColumnDef, DataTableRowAction, Row } from "@virtbase/ui/types";
 import { APP_DOMAIN } from "@virtbase/utils";
 import NextLink from "next/link";
 import { useRouter } from "next/navigation";
@@ -242,127 +242,153 @@ export function useUsersTableColumns({
     },
     {
       id: "actions",
-      cell: ({ row }) => {
-        const router = useRouter();
-        const user = row.original;
-
-        const { executeAsync: exportUser, isPending: isExportingUser } =
-          useExportUser();
-
-        return (
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button
-                aria-label={t("Open menu")}
-                variant="ghost"
-                className="flex size-8 p-0 data-[state=open]:bg-muted"
-              >
-                <Ellipsis className="size-4" aria-hidden="true" />
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuItem asChild>
-                <NextLink
-                  href={paths.admin.users.overview.getHref(user.id)}
-                  prefetch={false}
-                >
-                  <LucideEye aria-hidden="true" />
-                  <span>{t("View")}</span>
-                </NextLink>
-              </DropdownMenuItem>
-              {!user.banned && (
-                <DropdownMenuItem
-                  onSelect={() =>
-                    authClient.admin.impersonateUser({
-                      userId: user.id,
-                      fetchOptions: {
-                        onSuccess: () => {
-                          router.push(APP_DOMAIN);
-                        },
-                      },
-                    })
-                  }
-                  disabled={user.banned}
-                >
-                  <LucideLogIn aria-hidden="true" />
-                  <span>{t("Impersonate")}</span>
-                </DropdownMenuItem>
-              )}
-              {user.stripeCustomerId && (
-                <DropdownMenuItem asChild>
-                  <a
-                    href={`https://dashboard.stripe.com/customers/${user.stripeCustomerId}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <LucideExternalLink aria-hidden="true" />
-                    <span>{t("View in Stripe")}</span>
-                  </a>
-                </DropdownMenuItem>
-              )}
-
-              {user.banned && (
-                <DropdownMenuItem
-                  onSelect={() => {
-                    authClient.admin.unbanUser({
-                      userId: user.id,
-                      fetchOptions: {
-                        onSuccess: () => {
-                          toast.success(`${user.name} has been unbanned.`);
-
-                          router.refresh();
-                        },
-                      },
-                    });
-                  }}
-                  disabled={!user.banned}
-                >
-                  <LucideUnlock aria-hidden="true" />
-                  <span>{t("Unlock")}</span>
-                </DropdownMenuItem>
-              )}
-              <DropdownMenuSeparator />
-              <DropdownMenuItem
-                onSelect={() => exportUser({ user_id: user.id })}
-                disabled={isExportingUser}
-              >
-                <LucideScale aria-hidden="true" />
-                <span>{t("Export")}</span>
-              </DropdownMenuItem>
-              {!user.banned && (
-                <DropdownMenuItem
-                  variant="destructive"
-                  onSelect={() => {
-                    authClient.admin.banUser({
-                      userId: user.id,
-                      fetchOptions: {
-                        onSuccess: () => {
-                          toast.success(`${user.name} has been banned.`);
-
-                          router.refresh();
-                        },
-                      },
-                    });
-                  }}
-                  disabled={user.banned}
-                >
-                  <LucideBan aria-hidden="true" />
-                  <span>{t("Ban")}</span>
-                </DropdownMenuItem>
-              )}
-              <DropdownMenuSeparator />
-              <DropdownMenuItem
-                variant="destructive"
-                onSelect={() => setRowAction({ row, variant: "delete" })}
-              >
-                <LucideTrash2 aria-hidden="true" />
-                <span>{t("Delete")}</span>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
-        );
-      },
+      cell: ({ row }) => (
+        <UserActionsCell row={row} setRowAction={setRowAction} />
+      ),
       size: 40,
     },
   ];
+}
+
+/**
+ * The actions cell is a component, not an inline renderer.
+ *
+ * `flexRender` mounts a function cell through `createElement`, so its hooks
+ * always ran correctly - but an arrow inside a column definition gives neither
+ * the linter nor React Compiler anything to prove that with. It still needs
+ * `setRowAction` from the enclosing hook, so the column keeps a thin arrow that
+ * only forwards props and calls nothing.
+ *
+ * `useExtracted()` is called here rather than the translator being passed in:
+ * the message extractor only sees literals at a `useExtracted` call site and
+ * cannot follow a `t` handed over as a prop.
+ */
+function UserActionsCell({
+  row,
+  setRowAction,
+}: {
+  row: Row<UsersTableColumn>;
+  setRowAction: React.Dispatch<
+    React.SetStateAction<DataTableRowAction<UsersTableColumn, "delete"> | null>
+  >;
+}) {
+  const t = useExtracted();
+  const router = useRouter();
+  const user = row.original;
+
+  const { executeAsync: exportUser, isPending: isExportingUser } =
+    useExportUser();
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button
+          aria-label={t("Open menu")}
+          variant="ghost"
+          className="flex size-8 p-0 data-[state=open]:bg-muted"
+        >
+          <Ellipsis className="size-4" aria-hidden="true" />
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem asChild>
+          <NextLink
+            href={paths.admin.users.overview.getHref(user.id)}
+            prefetch={false}
+          >
+            <LucideEye aria-hidden="true" />
+            <span>{t("View")}</span>
+          </NextLink>
+        </DropdownMenuItem>
+        {!user.banned && (
+          <DropdownMenuItem
+            onSelect={() =>
+              authClient.admin.impersonateUser({
+                userId: user.id,
+                fetchOptions: {
+                  onSuccess: () => {
+                    router.push(APP_DOMAIN);
+                  },
+                },
+              })
+            }
+            disabled={user.banned}
+          >
+            <LucideLogIn aria-hidden="true" />
+            <span>{t("Impersonate")}</span>
+          </DropdownMenuItem>
+        )}
+        {user.stripeCustomerId && (
+          <DropdownMenuItem asChild>
+            <a
+              href={`https://dashboard.stripe.com/customers/${user.stripeCustomerId}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <LucideExternalLink aria-hidden="true" />
+              <span>{t("View in Stripe")}</span>
+            </a>
+          </DropdownMenuItem>
+        )}
+
+        {user.banned && (
+          <DropdownMenuItem
+            onSelect={() => {
+              authClient.admin.unbanUser({
+                userId: user.id,
+                fetchOptions: {
+                  onSuccess: () => {
+                    toast.success(`${user.name} has been unbanned.`);
+
+                    router.refresh();
+                  },
+                },
+              });
+            }}
+            disabled={!user.banned}
+          >
+            <LucideUnlock aria-hidden="true" />
+            <span>{t("Unlock")}</span>
+          </DropdownMenuItem>
+        )}
+        <DropdownMenuSeparator />
+        <DropdownMenuItem
+          onSelect={() => exportUser({ user_id: user.id })}
+          disabled={isExportingUser}
+        >
+          <LucideScale aria-hidden="true" />
+          <span>{t("Export")}</span>
+        </DropdownMenuItem>
+        {!user.banned && (
+          <DropdownMenuItem
+            variant="destructive"
+            onSelect={() => {
+              authClient.admin.banUser({
+                userId: user.id,
+                fetchOptions: {
+                  onSuccess: () => {
+                    toast.success(`${user.name} has been banned.`);
+
+                    router.refresh();
+                  },
+                },
+              });
+            }}
+            disabled={user.banned}
+          >
+            <LucideBan aria-hidden="true" />
+            <span>{t("Ban")}</span>
+          </DropdownMenuItem>
+        )}
+        <DropdownMenuSeparator />
+        <DropdownMenuItem
+          variant="destructive"
+          onSelect={() => setRowAction({ row, variant: "delete" })}
+        >
+          <LucideTrash2 aria-hidden="true" />
+          <span>{t("Delete")}</span>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
 }

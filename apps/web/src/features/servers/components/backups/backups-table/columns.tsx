@@ -26,7 +26,12 @@ import {
   LucideLockOpen,
   LucideX,
 } from "@virtbase/ui/icons";
-import type { ColumnDef, DataTableRowAction } from "@virtbase/ui/types";
+import type {
+  Cell,
+  ColumnDef,
+  DataTableRowAction,
+  Row,
+} from "@virtbase/ui/types";
 import { formatBytes } from "@virtbase/utils";
 import { useParams } from "next/navigation";
 import { useExtracted, useFormatter, useNow } from "next-intl";
@@ -56,7 +61,6 @@ export function useBackupsTableColumns({
   >;
 }): Array<ColumnDef<BackupsTableColumn>> {
   const t = useExtracted();
-  const format = useFormatter();
 
   return [
     {
@@ -90,15 +94,7 @@ export function useBackupsTableColumns({
           label={t("Timestamp")}
         />
       ),
-      cell: ({ cell }) => {
-        const now = useNow({ updateInterval: 1000 });
-
-        return (
-          <div className="w-[160px] text-muted-foreground max-md:hidden">
-            {format.relativeTime(cell.getValue<Date>(), { now })}
-          </div>
-        );
-      },
+      cell: BackupTimestampCell,
     },
     {
       id: "size",
@@ -110,68 +106,7 @@ export function useBackupsTableColumns({
           label={t("Size/Status")}
         />
       ),
-      cell: ({ row }) => {
-        const queryClient = useQueryClient();
-        const trpc = useTRPC();
-
-        const { id: serverId } = useParams<{ id: string }>();
-
-        // TODO: Fix loading state
-        const { data: { status } = {} } = useBackupStatus({
-          backup_id: row.original.id,
-          server_id: serverId,
-          queryConfig: {
-            enabled:
-              !row.original.finished_at &&
-              row.original.id !== "kbu_0000000000000000000000000",
-            refetchInterval: 5_000,
-          },
-        });
-
-        useEffect(() => {
-          if (!row.original.finished_at && status?.finished_at) {
-            void queryClient.invalidateQueries(
-              trpc.servers.backups.list.queryFilter({
-                server_id: serverId,
-              }),
-            );
-          }
-        }, [
-          status?.finished_at,
-          row.original.finished_at,
-          queryClient,
-          serverId,
-          trpc,
-        ]);
-
-        return (
-          <div className="w-[160px] text-muted-foreground max-md:hidden">
-            {row.original.finished_at ? (
-              !row.original.failed_at ? (
-                formatBytes(row.original.size as number, {
-                  formatter: format,
-                })
-              ) : (
-                <Badge variant="destructive">
-                  <LucideX aria-hidden />
-                  {t("Failed")}
-                </Badge>
-              )
-            ) : (
-              <Badge variant="outline">
-                <LucideLoaderCircle
-                  className="animate-spin"
-                  aria-hidden="true"
-                />
-                {t("Creating...")}{" "}
-                {status?.percentage
-                  ? `(${format.number(status.percentage / 100, { style: "percent" })})`
-                  : null}
-              </Badge>
-            )}
-          </div>
-        );
-      },
+      cell: BackupSizeCell,
     },
     {
       id: "template",
@@ -211,4 +146,87 @@ export function useBackupsTableColumns({
       size: 40,
     },
   ];
+}
+
+/**
+ * The two cells below are components rather than inline renderers.
+ *
+ * `flexRender` mounts a function cell through `createElement`, so their hooks
+ * always ran correctly - but an arrow inside a column definition gives neither
+ * the linter nor React Compiler anything to prove that with, so they read as
+ * rules-of-hooks violations and went unoptimized.
+ *
+ * Each resolves its own translator: the message extractor only sees literals at
+ * a `useExtracted` call site and cannot follow a `t` handed over as a prop.
+ */
+function BackupTimestampCell({ cell }: { cell: Cell<BackupsTableColumn> }) {
+  const format = useFormatter();
+  const now = useNow({ updateInterval: 1000 });
+
+  return (
+    <div className="w-40 text-muted-foreground max-md:hidden">
+      {format.relativeTime(cell.getValue<Date>(), { now })}
+    </div>
+  );
+}
+
+function BackupSizeCell({ row }: { row: Row<BackupsTableColumn> }) {
+  const t = useExtracted();
+  const format = useFormatter();
+
+  const queryClient = useQueryClient();
+  const trpc = useTRPC();
+
+  const { id: serverId } = useParams<{ id: string }>();
+
+  // TODO: Fix loading state
+  const { data: { status } = {} } = useBackupStatus({
+    backup_id: row.original.id,
+    server_id: serverId,
+    queryConfig: {
+      enabled:
+        !row.original.finished_at &&
+        row.original.id !== "kbu_0000000000000000000000000",
+      refetchInterval: 5_000,
+    },
+  });
+
+  useEffect(() => {
+    if (!row.original.finished_at && status?.finished_at) {
+      void queryClient.invalidateQueries(
+        trpc.servers.backups.list.queryFilter({
+          server_id: serverId,
+        }),
+      );
+    }
+  }, [
+    status?.finished_at,
+    row.original.finished_at,
+    queryClient,
+    serverId,
+    trpc,
+  ]);
+
+  return (
+    <div className="w-40 text-muted-foreground max-md:hidden">
+      {row.original.finished_at ? (
+        !row.original.failed_at ? (
+          formatBytes(row.original.size as number, { formatter: format })
+        ) : (
+          <Badge variant="destructive">
+            <LucideX aria-hidden />
+            {t("Failed")}
+          </Badge>
+        )
+      ) : (
+        <Badge variant="outline">
+          <LucideLoaderCircle className="animate-spin" aria-hidden="true" />
+          {t("Creating...")}{" "}
+          {status?.percentage
+            ? `(${format.number(status.percentage / 100, { style: "percent" })})`
+            : null}
+        </Badge>
+      )}
+    </div>
+  );
 }

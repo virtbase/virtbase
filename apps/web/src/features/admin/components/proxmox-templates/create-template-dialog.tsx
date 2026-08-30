@@ -121,7 +121,7 @@ export default function CreateTemplateDialog({
       form.reset();
       reset();
     };
-  }, []);
+  }, [form.reset, reset]);
 
   const action = t("Create Proxmox Template");
 

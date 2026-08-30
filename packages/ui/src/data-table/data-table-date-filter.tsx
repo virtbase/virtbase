@@ -186,7 +186,7 @@ export function DataTableDateFilter<TData extends RowData>({
         )}
       </span>
     );
-  }, [selectedDates, multiple, formatDateRange, title]);
+  }, [selectedDates, multiple, formatDateRange, title, t]);
 
   return (
     <Popover>

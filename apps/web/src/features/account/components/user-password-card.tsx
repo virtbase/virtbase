@@ -34,7 +34,7 @@ import {
 } from "@virtbase/ui/input-group";
 import { Spinner } from "@virtbase/ui/spinner";
 import { useExtracted } from "next-intl";
-import { useEffect, useState, useTransition } from "react";
+import { useState, useTransition } from "react";
 import { toast } from "sonner";
 import { authClient } from "@/lib/auth/client";
 import { ShowPasswordAddon } from "@/ui/input-group-addons/show-password-addon";
@@ -79,13 +79,6 @@ export function UserPasswordCard() {
       });
     });
   };
-
-  // Reset the form when the component unmounts
-  useEffect(() => {
-    return () => {
-      resetForm();
-    };
-  }, []);
 
   return (
     <form

@@ -28,15 +28,11 @@ export function useResizeObserver(
 ): ResizeObserverEntry | undefined {
   const [entry, setEntry] = useState<ResizeObserverEntry>();
 
-  const updateEntry = ([entry]: ResizeObserverEntry[]): void => {
-    setEntry(entry);
-  };
-
   useEffect(() => {
     const node = elementRef?.current;
     if (!node) return;
 
-    const observer = new ResizeObserver(updateEntry);
+    const observer = new ResizeObserver(([entry]) => setEntry(entry));
 
     observer.observe(node);
 

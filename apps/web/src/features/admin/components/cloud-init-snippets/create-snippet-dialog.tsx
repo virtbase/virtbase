@@ -108,7 +108,7 @@ export default function CreateSnippetDialog(props: CreateSnippetDialogProps) {
       form.reset();
       reset();
     };
-  }, []);
+  }, [form.reset, reset]);
 
   const action = t("Create Snippet");
 

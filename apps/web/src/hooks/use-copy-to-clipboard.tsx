@@ -29,12 +29,12 @@ export const useCopyToClipboard = (
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [copied, setCopied] = useState(false);
 
-  const clearTimer = () => {
+  const clearTimer = useCallback(() => {
     if (timer.current) {
       clearTimeout(timer.current);
       timer.current = null;
     }
-  };
+  }, []);
 
   const copyToClipboard = useCallback(
     async (
@@ -63,13 +63,13 @@ export const useCopyToClipboard = (
         if (throwOnError) throw error;
       }
     },
-    [timeout],
+    [timeout, clearTimer],
   );
 
   // Cleanup the timer when the component unmounts
   useEffect(() => {
     return () => clearTimer();
-  }, []);
+  }, [clearTimer]);
 
   return [copied, copyToClipboard];
 };

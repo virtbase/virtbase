@@ -189,7 +189,7 @@ export function StripePaymentForm({
       setIsPending(false);
       onProcessingChangeRef.current?.(false);
     },
-    [stripe, elements, locale, orderId, createCustomCheckout],
+    [stripe, elements, locale, orderId, createCustomCheckout, t],
   );
 
   return (

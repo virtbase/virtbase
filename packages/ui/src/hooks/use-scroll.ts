@@ -29,13 +29,13 @@ export function useScroll(
       (container?.current ? container.current.scrollTop : window.scrollY) >
         threshold,
     );
-  }, [threshold]);
+  }, [threshold, container]);
 
   useEffect(() => {
     const element = container?.current ?? window;
     element.addEventListener("scroll", onScroll);
     return () => element.removeEventListener("scroll", onScroll);
-  }, [onScroll]);
+  }, [onScroll, container]);
 
   // also check on first load
   useEffect(() => {
