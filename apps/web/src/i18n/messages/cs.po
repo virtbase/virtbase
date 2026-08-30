@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Czech\n"
-"PO-Revision-Date: 2026-08-29 11:19\n"
+"PO-Revision-Date: 2026-08-30 09:14\n"
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
 msgid "lYlalx"
@@ -2472,11 +2472,14 @@ msgstr "Vytvořit API klíč"
 #: src/features/admin/components/proxmox-templates/delete-template-dialog.tsx
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx
 #: src/features/servers/components/backups/create-backup-dialog.tsx
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
 #: src/features/servers/components/overview/change-template-dialog.tsx
 #: src/features/servers/components/overview/rename-server-dialog.tsx
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/ui/feedback-button.tsx
 msgid "47FYwb"
@@ -3567,6 +3570,7 @@ msgid "LrZ7qa"
 msgstr "`abuse.*` odpovídá jmennému prostoru, `abuse.ddos` jednomu typu."
 
 #: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "aH4De2"
@@ -5212,6 +5216,7 @@ msgid "TY8Ho1"
 msgstr "Příkazy"
 
 #: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "DZ2Koj"
@@ -5225,6 +5230,7 @@ msgid "YDkqMJ"
 msgstr "Příchozí"
 
 #: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "QlsDcr"
@@ -5236,6 +5242,7 @@ msgid "VzIOKf"
 msgstr "Odmítnout"
 
 #: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "0QLzxo"
@@ -5375,6 +5382,7 @@ msgid "mRL9Vh"
 msgstr "Vytváření..."
 
 #: src/features/servers/components/backups/backups-table/columns.tsx
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
 #: src/features/servers/hooks/use-status-mapping.ts
 #: src/features/servers/hooks/use-task-mapping.ts
@@ -5433,6 +5441,26 @@ msgstr "Zapnout ochranu proti smazání"
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "I9XNiI"
 msgstr "Nově vytvořenou zálohu lze smazat až po vypnutí ochrany proti smazání."
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "zkk3nZ"
+msgstr "Smazat zálohu"
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "3pdwu9"
+msgstr "Smaž zálohu svého serveru."
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "wl5Juv"
+msgstr "Záloha z {date} bude smazána z node. Tuto akci nelze vrátit zpět."
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "ijaxLm"
+msgstr "Následující operační systém bude ztracen:"
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "SKjLPj"
+msgstr "Smazat tuto zálohu?"
 
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
 msgid "MW7EBt"
@@ -5674,6 +5702,23 @@ msgstr "Změnit plán"
 msgid "YeQq19"
 msgstr "Příprava platby…"
 
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
+#: src/features/servers/components/rdns/records-table/columns.tsx
+msgid "LUHXQL"
+msgstr "Smazat PTR záznam"
+
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
+msgid "LuQ-pB"
+msgstr "Smaž PTR záznam svého serveru."
+
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
+msgid "2VDNVp"
+msgstr "Zpětné vyhledávání pro {ip} už nebude překládat na {hostname}. Pošta odeslaná z této adresy může být odmítnuta."
+
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
+msgid "uoUX6n"
+msgstr "Smazat tento PTR záznam?"
+
 #: src/features/servers/components/rdns/records-card.tsx
 msgid "Z2vqA3"
 msgstr "PTR záznamy"
@@ -5685,10 +5730,6 @@ msgstr "{count, plural, =1 {# PTR záznam} other {# PTR záznamů}}"
 #: src/features/servers/components/rdns/records-table/columns.tsx
 msgid "99tjyG"
 msgstr "IP"
-
-#: src/features/servers/components/rdns/records-table/columns.tsx
-msgid "LUHXQL"
-msgstr "Smazat PTR záznam"
 
 #: src/features/servers/components/rdns/records-table/index.tsx
 msgid "q9ZR74"
@@ -5813,10 +5854,6 @@ msgid "lgSmVl"
 msgstr "Obraz ISO byl úspěšně připojen. Změna se projeví při příštím spuštění."
 
 #: src/features/servers/components/server-mount-dialog.tsx
-msgid "bmliQK"
-msgstr "Obraz ISO se nepodařilo připojit."
-
-#: src/features/servers/components/server-mount-dialog.tsx
 msgid "1INFXA"
 msgstr "Obraz ISO byl úspěšně odpojen. Změna se projeví při příštím spuštění."
 
@@ -5879,6 +5916,32 @@ msgstr "Kopírovat IP"
 #: src/features/servers/components/servers-list.tsx
 msgid "nWQFic"
 msgstr "Prodloužit"
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "rWbrOx"
+msgstr "Smazat pravidlo firewallu"
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "JfwSAy"
+msgstr "Smaž pravidlo ze svého firewallu."
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "wTEfoa"
+msgstr "Pravidlo {position} bude odstraněno z firewallu Virtbase. Tuto akci nelze vrátit zpět."
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "rsSUP3"
+msgstr "Port"
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "LgbKvU"
+msgstr "Komentář"
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "pc6aEi"
+msgstr "Smazat toto pravidlo?"
 
 #: src/features/servers/firewall/components/firewall-action-select.tsx
 msgid "ObQE5T"
@@ -5956,11 +6019,6 @@ msgstr "Jakákoli adresa"
 msgid "08nIQL"
 msgstr "Zachycovat pouze přenosy z této adresy nebo sítě, například 10.0.0.0/8. Ponechat prázdné pro zachycení jakékoli adresy."
 
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
-msgid "LgbKvU"
-msgstr "Komentář"
-
 #: src/features/servers/firewall/components/firewall-rules-card.tsx
 msgid "Qov8tl"
 msgstr "Pravidla firewallu"
@@ -6018,14 +6076,6 @@ msgid "H_r5m6"
 msgstr "Posunout dolů"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
-msgid "AFkUOq"
-msgstr "Nebylo možné vygenerovat pravidla. Zkuste to prosím znovu."
-
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
-msgid "N8n7F4"
-msgstr "Nepodařilo se vytvořit pravidlo. Zkuste to prosím znovu."
-
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "w-tZ4Z"
 msgstr "Generovat pravidla firewallu"
 
@@ -6072,6 +6122,14 @@ msgstr "Provoz musí projít oběma firewally. Virtbase zatím neumí přečíst
 #: src/features/servers/firewall/components/guest-firewall-alert.tsx
 msgid "C03sMA"
 msgstr "Provoz musí projít oběma firewally. Jeho pravidla jsou uvedena níže."
+
+#: src/features/servers/firewall/hooks/use-create-firewall-rule.ts
+msgid "mJ0yAx"
+msgstr "Pravidlo firewallu se nepodařilo vytvořit."
+
+#: src/features/servers/firewall/hooks/use-delete-firewall-rule.ts
+msgid "3Kd2EU"
+msgstr "Pravidlo firewallu se nepodařilo smazat."
 
 #: src/features/servers/firewall/hooks/use-finding-mapping.ts
 msgid "6tQJAd"
@@ -6125,6 +6183,62 @@ msgstr "Přijmout"
 msgid "j8RTUO"
 msgstr "Zahodit"
 
+#: src/features/servers/firewall/hooks/use-generate-firewall-rule.ts
+msgid "AFkUOq"
+msgstr "Nebylo možné vygenerovat pravidla. Zkuste to prosím znovu."
+
+#: src/features/servers/firewall/hooks/use-move-firewall-rule.ts
+msgid "AocbVN"
+msgstr "Pravidla firewallu se nepodařilo přeuspořádat."
+
+#: src/features/servers/firewall/hooks/use-update-firewall-options.ts
+msgid "gUdmaM"
+msgstr "Nastavení firewallu se nepodařilo aktualizovat."
+
+#: src/features/servers/firewall/hooks/use-update-firewall-rule.ts
+msgid "HixF5T"
+msgstr "Pravidlo firewallu se nepodařilo aktualizovat."
+
+#: src/features/servers/hooks/advanced/use-update-advanced-settings.ts
+msgid "TLEvHC"
+msgstr "Pokročilá nastavení se nepodařilo aktualizovat."
+
+#: src/features/servers/hooks/backups/use-create-backup.ts
+msgid "VEvlmq"
+msgstr "Zálohu se nepodařilo vytvořit."
+
+#: src/features/servers/hooks/backups/use-delete-backup.ts
+msgid "VZShzt"
+msgstr "Zálohu se nepodařilo smazat."
+
+#: src/features/servers/hooks/backups/use-restore-backup.ts
+msgid "lFzlNs"
+msgstr "Zálohu se nepodařilo obnovit."
+
+#: src/features/servers/hooks/backups/use-update-backup.ts
+msgid "GwAFh4"
+msgstr "Zálohu se nepodařilo aktualizovat."
+
+#: src/features/servers/hooks/overview/use-change-template.ts
+msgid "8g0ePs"
+msgstr "Operační systém se nepodařilo změnit."
+
+#: src/features/servers/hooks/overview/use-rename-server.ts
+msgid "WkH31C"
+msgstr "Server se nepodařilo přejmenovat."
+
+#: src/features/servers/hooks/overview/use-reset-server-password.ts
+msgid "afiU1l"
+msgstr "Heslo se nepodařilo resetovat."
+
+#: src/features/servers/hooks/rdns/use-delete-pointer-record.ts
+msgid "OqBG_o"
+msgstr "PTR záznam se nepodařilo smazat."
+
+#: src/features/servers/hooks/rdns/use-upsert-pointer-record.ts
+msgid "v_PJM7"
+msgstr "PTR záznam se nepodařilo uložit."
+
 #: src/features/servers/hooks/use-agent-status-mapping.ts
 msgid "D7fMMu"
 msgstr "Agent hosta běží"
@@ -6177,6 +6291,10 @@ msgstr "Stav agenta hosta není k dispozici"
 msgid "XiMFvI"
 msgstr "Virtbase teď nemohl agenta hosta zkontrolovat. Zkus to prosím později."
 
+#: src/features/servers/hooks/use-mount-image.ts
+msgid "bmliQK"
+msgstr "Obraz ISO se nepodařilo připojit."
+
 #: src/features/servers/hooks/use-status-mapping.ts
 msgid "ccU6l_"
 msgstr "Online"
@@ -6228,6 +6346,14 @@ msgstr "Zálohování..."
 #: src/features/servers/hooks/use-task-mapping.ts
 msgid "98thq0"
 msgstr "Obnovování zálohy..."
+
+#: src/features/servers/hooks/use-unmount-image.ts
+msgid "D6e_ae"
+msgstr "ISO obraz se nepodařilo odpojit."
+
+#: src/features/servers/hooks/use-update-server-status.ts
+msgid "TpRHA3"
+msgstr "Stav serveru se nepodařilo změnit."
 
 #: src/ui/app-footer.tsx
 msgid "4XCigB"
