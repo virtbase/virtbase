@@ -16,7 +16,7 @@
  */
 
 import { deleteServerWorkflow } from "@virtbase/api/workflows";
-import { and, eq, gte, isNotNull, sql } from "@virtbase/db";
+import { and, eq, gte, isNotNull, lte, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { proxmoxNodes, servers } from "@virtbase/db/schema";
 import { SERVER_DELETION_GRACE_PERIOD_DAYS } from "@virtbase/utils";
@@ -26,6 +26,14 @@ import { withCronSecret } from "@/lib/with-cron-secret";
 /**
  * Checks for suspended servers that are past the deletion grace
  * period and queues them for deletion.
+ *
+ * `terminatesAt` is re-read rather than trusted to `suspendedAt` alone.
+ * Suspension and renewal race: `/api/cron/suspend-terminated-servers` stamps
+ * `suspended_at` in a trailing update that runs after a bulk shutdown, so a
+ * renewal landing in between — which clears `suspended_at` and pushes
+ * `terminates_at` out — can be overwritten by it. Without this predicate the
+ * customer has paid, the term is live, and five days later the server is
+ * destroyed anyway.
  */
 const handler = withCronSecret(async () => {
   console.log(
@@ -56,6 +64,11 @@ const handler = withCronSecret(async () => {
               sql`now()`,
               sql`(${servers.suspendedAt} + INTERVAL '${sql.raw(`${SERVER_DELETION_GRACE_PERIOD_DAYS}`)} days')`,
             ),
+            // Still genuinely out of term. A server whose term has been pushed
+            // back into the future has been paid for and must survive, however
+            // old its `suspended_at` is.
+            isNotNull(servers.terminatesAt),
+            lte(servers.terminatesAt, sql`now()`),
           ),
         );
     },

@@ -20,6 +20,7 @@ export * from "./create-order";
 export * from "./fulfill-order";
 export * from "./legacy-snapshot";
 export * from "./order-secrets";
+export * from "./reconcile-orders";
 export * from "./record-billing-details";
 export * from "./settle-anonpay-payment";
 export * from "./settle-stripe-payment";

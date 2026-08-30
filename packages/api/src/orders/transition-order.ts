@@ -34,6 +34,21 @@ export interface TransitionOptions {
    * fault — and throwing would make the provider retry the delivery forever.
    */
   idempotent?: boolean;
+  /**
+   * Refuse the transition unless the order is still exactly as the caller last
+   * read it.
+   *
+   * Optimistic concurrency, for callers that decided *outside* the row lock
+   * that a transition is warranted. Reconciliation is the one that needs it:
+   * releasing an abandoned `fulfilling` claim is only safe if nothing has
+   * touched the order since it was seen abandoned — otherwise it would tear a
+   * live fulfilment out from under whoever legitimately re-claimed it, and two
+   * servers would be provisioned for one payment.
+   *
+   * Refusal is reported as `changed: false`, not thrown: losing this race is
+   * ordinary, and the next run will look again.
+   */
+  guard?: (order: { status: OrderStatus; updatedAt: Date }) => boolean;
 }
 
 export interface TransitionResult {
@@ -68,6 +83,7 @@ export const transitionOrder = async (
           id: orders.id,
           status: orders.status,
           paidAt: orders.paidAt,
+          updatedAt: orders.updatedAt,
         })
         .from(orders)
         .where(eq(orders.id, orderId))
@@ -77,6 +93,15 @@ export const transitionOrder = async (
 
       if (!order) {
         throw new Error(`Order ${orderId} does not exist.`);
+      }
+
+      // Checked under the lock, which is the only place it means anything.
+      if (options.guard && !options.guard(order)) {
+        return {
+          status: order.status,
+          changed: false,
+          paid: order.paidAt !== null,
+        };
       }
 
       // Self-transitions are legal for `fulfilling` (a retry), so ask the

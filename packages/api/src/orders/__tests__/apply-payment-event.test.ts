@@ -185,24 +185,56 @@ describe("applyPaymentEvent", () => {
     expect(claims.filter(Boolean)).toHaveLength(1);
   });
 
-  test("a redelivery retries an order whose fulfilment never ran", async () => {
-    // The failure this exists for: the event is claimed, then fulfilment throws
-    // before it starts. The order sits at `paid` and the provider's retry is
-    // the only thing left that can rescue it.
+  test("a redelivery cannot retry an order whose fulfilment never ran", async () => {
+    // The failure this file has to be honest about: the event is claimed, then
+    // fulfilment throws before it starts. The order sits at `paid`, and the
+    // redelivery — the *same* event, which is all Stripe sends for one intent —
+    // loses the idempotency claim and reports nothing to do.
+    //
+    // The order is still owed a server. `reconcileOrders` is what rescues it;
+    // see `reconcile-orders.test.ts`. Two earlier versions of these two tests
+    // used a second event id and so asserted a rescue that does not happen.
     const orderId = await seedOrder();
     await applyPaymentEvent(event(orderId));
 
-    const retry = await applyPaymentEvent(event(orderId, { eventId: "evt_2" }));
+    const redelivery = await applyPaymentEvent(event(orderId));
 
-    expect(retry.shouldFulfil).toBe(true);
+    expect(redelivery).toMatchObject({ applied: false, shouldFulfil: false });
+
+    // Nothing is holding the order back except the fact that nobody looks: the
+    // claim itself is still willing.
     expect(await claimOrderForFulfilment(orderId)).toBe(true);
   });
 
-  test("a redelivery retries an order whose fulfilment failed after payment", async () => {
+  test("a redelivery cannot retry an order whose fulfilment failed after payment", async () => {
     const orderId = await seedOrder();
     await applyPaymentEvent(event(orderId));
 
     // What `fulfilOrder`'s catch block leaves behind.
+    await testDb
+      .update(orders)
+      .set({ status: "failed", failureReason: "workflow queue unavailable" })
+      .where(eq(orders.id, orderId));
+
+    const redelivery = await applyPaymentEvent(event(orderId));
+
+    expect(redelivery).toMatchObject({ applied: false, shouldFulfil: false });
+
+    const stranded = await testDb
+      .select({ status: orders.status })
+      .from(orders)
+      .where(eq(orders.id, orderId))
+      .then(([row]) => row);
+
+    expect(stranded?.status).toBe("failed");
+  });
+
+  test("a second, distinct event does retry an order whose fulfilment failed", async () => {
+    // Anonpay keys on the trade id, so a re-quoted payment really can arrive
+    // as a new event. When one does, it must be allowed to rescue the order.
+    const orderId = await seedOrder();
+    await applyPaymentEvent(event(orderId));
+
     await testDb
       .update(orders)
       .set({ status: "failed", failureReason: "workflow queue unavailable" })

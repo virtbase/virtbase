@@ -24,7 +24,13 @@
  * they drifted apart.
  */
 
-/** A billing term is treated as a flat 30 days. */
+/**
+ * A billing term is treated as a flat 30 days.
+ *
+ * Renewals add `INTERVAL '1 month'`, which is a calendar month, so the two
+ * disagree by up to a day and a half per month. Reconciling them needs the
+ * term's start date — which is not an input here — so the flat month stays.
+ */
 export const MONTH_MS = 30 * 24 * 60 * 60 * 1000;
 
 /**
@@ -64,7 +70,14 @@ export interface ProRataUpgrade {
    * exists to make visible.
    */
   chargeable: boolean;
-  /** How much of the term is left, as a fraction between 0 and 1. */
+  /**
+   * How much of the term is left, counted in billing months.
+   *
+   * `1` is a full month. It is deliberately *not* clamped to 1: a customer may
+   * buy any number of monthly extensions, and an upgrade leaves `terminatesAt`
+   * where it is, so a six-month term really does hand the customer six months
+   * of the more expensive plan.
+   */
   remainingTermFraction: number;
 }
 
@@ -74,6 +87,11 @@ export interface ProRataUpgrade {
  * The customer keeps their existing term — `terminatesAt` does not move — so
  * the only money that changes hands today is the difference between the two
  * renewal prices, scaled by how much of the term is still unused.
+ *
+ * That scale used to be capped at one month, which priced a term of any length
+ * as a single month: buying six extensions and then upgrading handed the
+ * customer five months of the dearer plan for nothing. The remaining term is
+ * now measured for what it is.
  */
 export const calculateProRataUpgrade = ({
   currentRenewalPrice,
@@ -85,10 +103,9 @@ export const calculateProRataUpgrade = ({
   const remainingMs = terminatesAt
     ? Math.max(0, terminatesAt.getTime() - now.getTime())
     : 0;
-  const remainingTermFraction = Math.max(
-    0,
-    Math.min(1, remainingMs / MONTH_MS),
-  );
+  // Lower-bounded only. A lapsed term is worth nothing; a long one is worth
+  // every month of it.
+  const remainingTermFraction = Math.max(0, remainingMs / MONTH_MS);
 
   // A cheaper target plan is not a refund; it simply costs nothing today.
   const difference = Math.max(0, newRenewalPrice - currentRenewalPrice);

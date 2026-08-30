@@ -55,11 +55,25 @@ describe("calculateProRataUpgrade", () => {
     });
   });
 
-  test("never charges more than a full term even if the term is longer", () => {
-    // Terms are treated as a flat 30 days; a longer one must not scale above 1.
+  test("charges every remaining month of a multi-month term", () => {
+    // Extensions each add a month and nothing caps how many a customer may
+    // buy, while an upgrade leaves `terminatesAt` alone — so three months left
+    // is three months of the dearer plan, and must be priced as three.
+    // Clamping this to one month was how six extensions bought five months of
+    // the more expensive plan for free.
     expect(upgrade({ terminatesAt: inDays(90) })).toMatchObject({
-      rawAmount: 1_000,
-      remainingTermFraction: 1,
+      rawAmount: 3_000,
+      amount: 3_000,
+      chargeable: true,
+      remainingTermFraction: 3,
+    });
+  });
+
+  test("prices a part-used multi-month term by what is left of it", () => {
+    // Half a month into a two-month term: 1.5 months of the difference.
+    expect(upgrade({ terminatesAt: inDays(45) })).toMatchObject({
+      rawAmount: 1_500,
+      remainingTermFraction: 1.5,
     });
   });
 

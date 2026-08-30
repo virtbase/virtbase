@@ -23,6 +23,7 @@ import { stripe } from "@virtbase/integration-stripe";
 import { applyPaymentEvent } from "../orders/apply-payment-event";
 import { fulfilOrder } from "../orders/fulfill-order";
 import { resolveOrderId } from "../orders/legacy-snapshot";
+import type { OrderBillingAddress } from "../orders/record-billing-details";
 
 /**
  * Handles a successful Stripe payment.
@@ -85,29 +86,50 @@ export const handlePaymentIntentSucceeded = async (event: Stripe.Event) => {
   });
 };
 
+/** What is known about a customer before Stripe has told us anything. */
+const EMPTY_BILLING_DETAILS: OrderBillingAddress = {
+  name: null,
+  email: null,
+  address: {
+    line1: null,
+    line2: null,
+    city: null,
+    postal_code: null,
+    country: null,
+  },
+};
+
+/**
+ * Asks Stripe again for the billing address of a payment we have already
+ * recorded.
+ *
+ * Only reconciliation needs this. Retrieving the charge is the call whose
+ * failure strands an order between "the money is in" and "anything was
+ * provisioned", so the retry has to be able to make it without the original
+ * event in hand — a webhook redelivery cannot help, the event id is spent.
+ */
+export const readStripeBillingDetails = async (
+  paymentIntentId: string,
+): Promise<OrderBillingAddress> => {
+  if (!stripe) return EMPTY_BILLING_DETAILS;
+
+  const paymentIntent = await stripe.paymentIntents.retrieve(paymentIntentId);
+  return readBillingDetails(paymentIntent);
+};
+
 /**
  * Stripe records the billing address on the charge rather than the intent, so
  * it has to be fetched separately.
  */
-const readBillingDetails = async (paymentIntent: Stripe.PaymentIntent) => {
-  const empty = {
-    name: null,
-    email: null,
-    address: {
-      line1: null,
-      line2: null,
-      city: null,
-      postal_code: null,
-      country: null,
-    },
-  };
-
+const readBillingDetails = async (
+  paymentIntent: Stripe.PaymentIntent,
+): Promise<OrderBillingAddress> => {
   if (
     !stripe ||
     !paymentIntent.latest_charge ||
     typeof paymentIntent.latest_charge !== "string"
   ) {
-    return empty;
+    return EMPTY_BILLING_DETAILS;
   }
 
   const charge = await stripe.charges.retrieve(paymentIntent.latest_charge);
