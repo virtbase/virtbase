@@ -226,22 +226,29 @@ describe("resolveSignalSubject", () => {
     });
   });
 
-  test("two live allocations for one address are ambiguous, not a guess", async () => {
+  test("two allocations covering one moment are ambiguous, not a guess", async () => {
     // `subnets.cidr` is unique, so the way this really happens is one subnet
-    // allocated twice without the first being released.
+    // allocated to a second server before the first was released. A partial
+    // unique index stops both rows being live *now*, but it cannot stop their
+    // windows overlapping in the past - and a report is always about the past.
     await testDb.insert(subnets).values({
       id: "ipsub_f",
       cidr: "203.0.113.14/32",
       gateway: "203.0.113.1",
     });
     await testDb.insert(subnetAllocations).values([
-      { subnetId: "ipsub_f", serverId: SERVER_A, allocatedAt: hoursAgo(48) },
+      {
+        subnetId: "ipsub_f",
+        serverId: SERVER_A,
+        allocatedAt: hoursAgo(48),
+        deallocatedAt: hoursAgo(1),
+      },
       { subnetId: "ipsub_f", serverId: SERVER_B, allocatedAt: hoursAgo(48) },
     ]);
 
     // An IPAM error, not an abuse question. Picking one would suspend a coin
     // flip.
-    expect(await resolve("203.0.113.14", now())).toMatchObject({
+    expect(await resolve("203.0.113.14", hoursAgo(24))).toMatchObject({
       attribution: "ambiguous",
       serverId: null,
       userId: null,

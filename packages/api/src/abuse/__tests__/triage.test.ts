@@ -62,6 +62,7 @@ import {
   mockServerPlanPrice,
   mockSession,
 } from "../../testing";
+import { enforceCase } from "../enforce";
 import { verifiedAddresses } from "../triage/addresses";
 import { classifyAbuseCase, sweepUntriagedCases } from "../triage/apply";
 
@@ -277,6 +278,72 @@ describe("classifyAbuseCase", () => {
     expect(result.classified).toBe(false);
     // No timestamp, so the next sweep picks it up again.
     expect((await readCase())?.classifiedAt).toBeNull();
+  });
+
+  test("marks an attribution the address has since moved on from as stale", async () => {
+    // The report describes a moment the customer held the address; somebody
+    // else - or nobody - holds it now. Attribution still lands on whoever held
+    // it then, and the case has to say so.
+    const reportedAt = new Date(Date.now() - 10 * 86_400_000);
+
+    await testDb
+      .update(abuseCaseMessages)
+      .set({ createdAt: reportedAt })
+      .where(eq(abuseCaseMessages.caseId, CASE_ID));
+    await testDb
+      .update(subnetAllocations)
+      .set({ deallocatedAt: new Date(Date.now() - 5 * 86_400_000) })
+      .where(eq(subnetAllocations.subnetId, "ipsub_a"));
+
+    const result = await classifyAbuseCase({
+      db: testDb as never,
+      caseId: CASE_ID,
+    });
+
+    expect(result.attributedTo).toBe(mockSession.user.id);
+
+    const abuseCase = await readCase();
+    expect(abuseCase?.userId).toBe(mockSession.user.id);
+    // The column `enforceCase` reads before it touches anything. Without it a
+    // case the model filled in from a reallocated address is indistinguishable
+    // from one nobody had any doubt about.
+    expect(abuseCase?.staleAttribution).toBe(true);
+  });
+
+  test("a case triage attributed from a stale reading is never auto-enforced", async () => {
+    await testDb
+      .update(abuseCaseMessages)
+      .set({ createdAt: new Date(Date.now() - 10 * 86_400_000) })
+      .where(eq(abuseCaseMessages.caseId, CASE_ID));
+    await testDb
+      .update(subnetAllocations)
+      .set({ deallocatedAt: new Date(Date.now() - 5 * 86_400_000) })
+      .where(eq(subnetAllocations.subnetId, "ipsub_a"));
+
+    await classifyAbuseCase({ db: testDb as never, caseId: CASE_ID });
+
+    // An operator hands it over, the customer misses the deadline and the
+    // sweep tightens the level. This is where the guard has to hold.
+    await testDb
+      .update(abuseCases)
+      .set({ enforcement: "throttle" })
+      .where(eq(abuseCases.id, CASE_ID));
+
+    const outcome = await enforceCase({
+      db: testDb as never,
+      caseId: CASE_ID,
+      resolveVm: (() => {
+        throw new Error("the hypervisor must never be reached");
+      }) as never,
+    });
+
+    expect(outcome).toMatchObject({ locked: 0, level: "none" });
+
+    const events = await testDb
+      .select()
+      .from(abuseCaseEvents)
+      .where(eq(abuseCaseEvents.caseId, CASE_ID));
+    expect(events.map((event) => event.type)).toContain("enforcement.skipped");
   });
 
   test("does not attribute when the address moved on since the report", async () => {

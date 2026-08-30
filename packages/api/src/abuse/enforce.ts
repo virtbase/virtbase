@@ -18,6 +18,7 @@
 import * as Sentry from "@sentry/node";
 import { and, eq, inArray, isNotNull, isNull, ne, sql } from "@virtbase/db";
 import type { db as database } from "@virtbase/db/client";
+import type { AbuseCase } from "@virtbase/db/schema";
 import {
   abuseCaseServers,
   abuseCases,
@@ -28,7 +29,7 @@ import {
 import type { EnforcementLevel } from "@virtbase/ports";
 import { dispatchNotification } from "../notifications/dispatch";
 import { getProxmoxInstance } from "../proxmox";
-import { caseReference, recordCaseEvent } from "./case";
+import { caseReference, recordCaseEvent, TERMINAL_STATUSES } from "./case";
 import type { ProxmoxVm, ServerLockPreviousState } from "./lock";
 import {
   applyServerLock,
@@ -90,6 +91,57 @@ const caseServersToLock = (db: Database, caseId: string) =>
         isNull(abuseCaseServers.releasedAt),
       ),
     );
+
+/** The columns every release needs, whichever query found the row. */
+interface ReleaseTarget {
+  id: string;
+  serverId: string;
+  lockLevel: EnforcementLevel;
+  previousState: unknown;
+  vmid: number;
+  proxmoxNode: NodeCredentials;
+}
+
+/**
+ * Puts one server back and records that it is no longer locked.
+ *
+ * Shared by {@link releaseCase} and the retry inside
+ * {@link reconcileAbuseLocks} so the two cannot answer "what does releasing a
+ * server mean" differently - a retry that forgot to clear
+ * `servers.abuse_locked_at` would leave the customer's API rejecting every
+ * call on a case that is closed.
+ *
+ * Throws when the node cannot be reached, leaving the row untouched for the
+ * next sweep to try again.
+ */
+const releaseCaseServer = async ({
+  db,
+  target,
+  resolveVm,
+}: {
+  db: Database;
+  target: ReleaseTarget;
+  resolveVm: VmResolver;
+}): Promise<void> => {
+  if (isApplied(target.lockLevel)) {
+    await releaseServerLock({
+      vm: resolveVm({ vmid: target.vmid, proxmoxNode: target.proxmoxNode }),
+      level: target.lockLevel,
+      previous:
+        (target.previousState as ServerLockPreviousState | null) ?? null,
+    });
+  }
+
+  await db
+    .update(abuseCaseServers)
+    .set({ lockLevel: "none", releasedAt: sql`now()`, previousState: null })
+    .where(eq(abuseCaseServers.id, target.id));
+
+  await db
+    .update(servers)
+    .set({ abuseLockedAt: null, abuseLockLevel: null })
+    .where(eq(servers.id, target.serverId));
+};
 
 export interface EnforceCaseResult {
   locked: number;
@@ -314,37 +366,21 @@ export const releaseCase = async ({
 
   const targets = await caseServersToLock(db, caseId);
 
+  // Before the guests are touched, not after. `reconcileAbuseLocks` treats a
+  // released case as one whose remaining locked rows are waiting to come off,
+  // so writing this first is what stops a reconciliation landing mid-release
+  // and putting back a lock this call is in the middle of lifting.
+  await db
+    .update(abuseCases)
+    .set({ releasedAt: sql`now()` })
+    .where(eq(abuseCases.id, caseId));
+
   let released = 0;
   let failed = 0;
 
   for (const target of targets) {
     try {
-      if (isApplied(target.lockLevel)) {
-        await releaseServerLock({
-          vm: resolveVm({
-            vmid: target.vmid,
-            proxmoxNode: target.proxmoxNode,
-          }),
-          level: target.lockLevel,
-          previous:
-            (target.previousState as ServerLockPreviousState | null) ?? null,
-        });
-      }
-
-      await db
-        .update(abuseCaseServers)
-        .set({
-          lockLevel: "none",
-          releasedAt: sql`now()`,
-          previousState: null,
-        })
-        .where(eq(abuseCaseServers.id, target.id));
-
-      await db
-        .update(servers)
-        .set({ abuseLockedAt: null, abuseLockLevel: null })
-        .where(eq(servers.id, target.serverId));
-
+      await releaseCaseServer({ db, target, resolveVm });
       released += 1;
     } catch (error) {
       failed += 1;
@@ -353,11 +389,6 @@ export const releaseCase = async ({
       });
     }
   }
-
-  await db
-    .update(abuseCases)
-    .set({ releasedAt: sql`now()` })
-    .where(eq(abuseCases.id, caseId));
 
   // Nothing to unblock on a case that never had a customer.
   if (!abuseCase.userId) {
@@ -415,11 +446,36 @@ export const releaseCase = async ({
 export interface ReconcileLocksResult {
   checked: number;
   drifted: number;
+  /** Locks left behind by a release that could not reach the node. */
+  released: number;
   failed: number;
 }
 
 /**
- * Re-asserts every lock that is no longer in force.
+ * Whether a still-locked row belongs to a case that no longer wants it.
+ *
+ * Two ways that happens, and neither is drift. The case settled - `resolved`
+ * or `rejected` - or a release ran and this row was the one whose node was
+ * unreachable at the time. Both mean the lock has to come off rather than be
+ * put back, and without the distinction a five-second blip while an operator
+ * closes a case leaves a paying customer isolated for good, re-locked every
+ * five minutes by a reconciliation blaming them for removing it.
+ *
+ * `released_at` is cleared by {@link enforceCase} whenever a case locks
+ * something again, so re-enforcing a case that had been released is not read
+ * as a release still pending. A settled case is answered on its status alone,
+ * which errs towards handing the customer their server back - the only
+ * direction this sweep is allowed to be wrong in.
+ */
+const awaitsRelease = (row: {
+  caseStatus: AbuseCase["status"];
+  caseReleasedAt: Date | null;
+}): boolean =>
+  TERMINAL_STATUSES.includes(row.caseStatus) || null !== row.caseReleasedAt;
+
+/**
+ * Re-asserts every lock that is no longer in force, and finishes every release
+ * that could not be finished at the time.
  *
  * A lock the customer can delete is not a lock, and they can: the firewall
  * options and the network device are both on their own API. Applying once and
@@ -428,6 +484,11 @@ export interface ReconcileLocksResult {
  * Drift is counted rather than merely corrected. A customer removing the same
  * lock three times is not a bug report, it is evidence, and the count is what
  * an operator escalates on.
+ *
+ * The release retry lives here rather than on a cron of its own because the
+ * two halves read the same rows and ask the same question of the same node.
+ * Splitting them would mean two schedules that can disagree about whether a
+ * server is supposed to be locked.
  */
 export const reconcileAbuseLocks = async ({
   db,
@@ -447,6 +508,8 @@ export const reconcileAbuseLocks = async ({
       previousState: abuseCaseServers.previousState,
       driftCount: abuseCaseServers.driftCount,
       caseNumber: abuseCases.number,
+      caseStatus: abuseCases.status,
+      caseReleasedAt: abuseCases.releasedAt,
       vmid: servers.vmid,
       proxmoxNode: {
         hostname: proxmoxNodes.hostname,
@@ -471,11 +534,35 @@ export const reconcileAbuseLocks = async ({
   const result: ReconcileLocksResult = {
     checked: locked.length,
     drifted: 0,
+    released: 0,
     failed: 0,
   };
 
   for (const row of locked) {
     if (!isApplied(row.lockLevel)) continue;
+
+    if (awaitsRelease(row)) {
+      try {
+        await releaseCaseServer({ db, target: row, resolveVm });
+        result.released += 1;
+
+        await recordCaseEvent({
+          db,
+          caseId: row.caseId,
+          type: "enforcement.released",
+          actorKind: "system",
+          toValue: row.lockLevel,
+          metadata: { serverId: row.serverId, reason: "release_retried" },
+        });
+      } catch (error) {
+        result.failed += 1;
+        Sentry.captureException(error, {
+          tags: { "abuse.release": row.lockLevel, "abuse.case": row.caseId },
+        });
+      }
+
+      continue;
+    }
 
     try {
       const vm = resolveVm({ vmid: row.vmid, proxmoxNode: row.proxmoxNode });

@@ -54,10 +54,16 @@ export type {
 } from "./enforce";
 export { enforceCase, reconcileAbuseLocks, releaseCase } from "./enforce";
 export { submitSignal, submitSignals } from "./intake";
-export type { ServerLockPreviousState } from "./lock";
+export type {
+  ServerLockCapture,
+  ServerLockLevel,
+  ServerLockPreviousState,
+  ServerLockStateByLevel,
+} from "./lock";
 export {
   applyServerLock,
   isServerLockInForce,
+  normalizeLockState,
   releaseServerLock,
   THROTTLE_RATE_MBPS,
 } from "./lock";

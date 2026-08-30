@@ -63,6 +63,15 @@ re-reads the real hypervisor state every five minutes and puts back anything
 that drifted, counting each occurrence on `abuse_case_servers.drift_count`.
 Drift is evidence, not a bug report.
 
+It re-asserts for **live cases only**, and finishes the releases that could not
+be finished at the time. A settled case whose release met an unreachable node
+leaves a row that still says "locked", and reading that as drift would re-lock
+a paying customer every five minutes on a `resolved` case while the audit trail
+blamed them for removing it. So a row belonging to a case that is `resolved` or
+`rejected`, or to one whose release has already run, is released here instead -
+which is also the retry, since a release is otherwise reached only from an
+operator settling the case.
+
 ## What can happen to a server
 
 | Level | Mechanism | Customer keeps |
@@ -77,6 +86,16 @@ Every level below `terminate` is reversible and stores what it replaced in
 `abuse_case_servers.previous_state`, so a release restores the customer's
 actual prior firewall policy rather than a default. A guest that was stopped
 before the lock is not started by the release.
+
+The column is **keyed by level** - `{ throttle, isolate, power_off }` - because
+the ladder is climbed rather than swapped. A case that escalates from
+`throttle` to `isolate` has replaced two different things, and each level
+records what it found; the release then undoes every level that was applied, in
+reverse. Keying it is what stops the second level from reading the first one's
+capture as "already recorded" and overwriting nothing, which would leave the
+customer's firewall policy unrecorded and their rate limit permanent. Rows
+written before the column was keyed hold one bare capture and are still read
+correctly: which level took it is decided by which key it carries.
 
 Six router files carry `forbiddenStates: ["abuse-locked"]` — firewall rules and
 options, advanced, mounts, template change, backup restore — rejecting with
@@ -169,9 +188,13 @@ operator would set by hand and resolves the reported address to a customer.
 produces one cannot cause an enforcement whatever a rule is configured to do —
 a structural guarantee rather than a confidence cap someone could later change.
 An address it names is discarded unless it appears verbatim in the report,
-which makes the model a highlighter rather than a source of facts. Its output
-lands as an **internal** note; a machine's reading of an accusation is not
-something to put in front of the accused.
+which makes the model a highlighter rather than a source of facts. The lookup
+it then runs is the ordinary time-scoped one, and its answer is carried through
+whole: a case it attributes from an address that has been reallocated since
+carries `stale_attribution` exactly as a signal's would, so the guard in
+`enforceCase` covers a model's reading too. Its output lands as an **internal**
+note; a machine's reading of an accusation is not something to put in front of
+the accused.
 
 `triage/eval/` measures it against ten real report shapes and exits non-zero on
 a miss, so it can gate a prompt or model change:
@@ -473,7 +496,11 @@ The reasoning behind the shape, which matters more than the numbers:
 - **A third party gets trusted only with corroboration.** Rule 30 is the same
   source as rule 40 and enforces, because `>= 1 prior case` means we already
   settled something against this customer inside 90 days. One stranger is an
-  accusation; a stranger plus our own history is a pattern.
+  accusation; a stranger plus our own history is a pattern. Cases we closed as
+  `false_positive` or `not_our_range` are excluded from that count: a report we
+  ourselves rejected is not corroboration, and counting it would let a reporter
+  manufacture the very history that arms the rule - file once, have it thrown
+  out, file again and watch the second one throttle.
 - **The ladder is short.** `isolate` is the harshest thing in this set. It
   leaves the customer their data, their console, and the ability to fix the
   problem — everything except the ability to keep causing it. `power_off` is
@@ -590,7 +617,9 @@ knowing about:
   and a report dated before the current allocation.
 - `enforce.test.ts` — an unreachable node leaves the row unlocked, a release
   restores the prior policy rather than a default, drift is re-asserted without
-  overwriting `previous_state`.
+  overwriting `previous_state`, an escalation records what each level replaced
+  and the release undoes both, a settled case is released rather than re-locked,
+  and a release that met an unreachable node is retried until it settles.
 - `triage.test.ts` — the classifier emits no signal, never leaves `triage`,
   and discards an address the report does not contain.
 - `dry-run.test.ts` — a draft replaces its stored twin rather than being

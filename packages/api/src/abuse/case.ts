@@ -15,7 +15,18 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { and, desc, eq, gte, inArray, not, sql } from "@virtbase/db";
+import {
+  and,
+  desc,
+  eq,
+  gte,
+  inArray,
+  isNull,
+  not,
+  notInArray,
+  or,
+  sql,
+} from "@virtbase/db";
 import type { db as database, Executor } from "@virtbase/db/client";
 import type { AbuseCase, AbuseRule } from "@virtbase/db/schema";
 import {
@@ -60,7 +71,7 @@ const FROM_SIGNAL: Record<SignalSeverity, CaseSeverity> = {
 };
 
 /** Settled. Nothing moves a case out of one of these except an operator. */
-const TERMINAL_STATUSES: CaseStatus[] = ["resolved", "rejected"];
+export const TERMINAL_STATUSES: CaseStatus[] = ["resolved", "rejected"];
 
 /** Cases that can still absorb a new signal. */
 const LIVE_STATUSES: CaseStatus[] = [
@@ -111,6 +122,21 @@ export const recordCaseEvent = async ({
   });
 };
 
+/**
+ * Resolutions that settle a case without holding the customer responsible.
+ *
+ * They are not offences and must never read as corroboration:
+ * `match_repeat_count_min` is what lets a rule trust a third-party report on
+ * the grounds that "we already settled something against this customer", and a
+ * report we ourselves decided was wrong is the opposite of that. Counting them
+ * would hand a malicious reporter the second half of a two-step - file once,
+ * have it thrown out, file again and watch it enforce.
+ */
+const EXONERATING_RESOLUTIONS: NonNullable<AbuseCase["resolution"]>[] = [
+  "false_positive",
+  "not_our_range",
+];
+
 /** How many settled cases this customer already has behind them. */
 export const countRecentResolvedCases = async ({
   db,
@@ -129,6 +155,12 @@ export const countRecentResolvedCases = async ({
         eq(abuseCases.userId, userId),
         eq(abuseCases.status, "resolved"),
         gte(abuseCases.createdAt, since),
+        // A resolved case with no reason recorded still counts: it was closed
+        // against the customer, and `NOT IN` on a NULL would silently drop it.
+        or(
+          isNull(abuseCases.resolution),
+          notInArray(abuseCases.resolution, EXONERATING_RESOLUTIONS),
+        ),
       ),
     );
 

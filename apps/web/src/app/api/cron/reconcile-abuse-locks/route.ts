@@ -41,6 +41,8 @@ const handler = withCronSecret(async () => {
     "abuse locks:",
     result.drifted,
     "re-applied,",
+    result.released,
+    "released,",
     result.failed,
     "unreachable.",
   );

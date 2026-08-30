@@ -63,6 +63,7 @@ import {
   mockServerPlanPrice,
   mockSession,
 } from "../../testing";
+import { countRecentResolvedCases } from "../case";
 import { submitSignal } from "../intake";
 
 let testDb: TestDb;
@@ -327,5 +328,59 @@ describe("submitSignal", () => {
         }),
       }),
     ).rejects.toThrow();
+  });
+});
+
+describe("countRecentResolvedCases", () => {
+  const settled = (values: Record<string, unknown>) =>
+    testDb.insert(abuseCases).values({
+      userId: mockSession.user.id,
+      category: "spam",
+      severity: "high",
+      status: "resolved",
+      title: "Settled",
+      closedAt: new Date(),
+      ...values,
+    } as never);
+
+  const count = () =>
+    countRecentResolvedCases({
+      db: testDb as never,
+      userId: mockSession.user.id,
+    });
+
+  test("counts a case that was actually settled against the customer", async () => {
+    await settled({ resolution: "fixed_by_customer" });
+    expect(await count()).toBe(1);
+  });
+
+  test("a case we closed as a false positive is not a prior offence", async () => {
+    // The corroboration a malicious reporter would otherwise manufacture: file
+    // a plausible report, have it thrown out, file again and watch the repeat
+    // count let a trusted rule enforce on the second one.
+    await settled({ resolution: "false_positive" });
+    await settled({ resolution: "not_our_range" });
+
+    expect(await count()).toBe(0);
+  });
+
+  test("still counts a resolved case with no reason recorded", async () => {
+    // Closed against the customer, just without the column filled in. A
+    // `NOT IN` on a NULL would silently drop it.
+    await settled({ resolution: null });
+    expect(await count()).toBe(1);
+  });
+
+  test("a rule gated on prior cases does not fire on a false positive", async () => {
+    await settled({ resolution: "false_positive", createdAt: hoursAgo(48) });
+    await trustedRule({ matchRepeatCountMin: 1 });
+
+    const result = await submit();
+    const abuseCase = await readCase(result.caseId as string);
+
+    // No rule matched, so the case waits for a person instead of isolating a
+    // server on the strength of a report we ourselves rejected.
+    expect(abuseCase?.status).toBe("triage");
+    expect(abuseCase?.enforcement).toBe("none");
   });
 });

@@ -144,7 +144,7 @@ export const classifyAbuseCase = async ({
   // The model can only point at an address the reporter actually wrote.
   const addresses = verifiedAddresses(classification, report.body);
 
-  const holders = new Map<string, string>();
+  const holders = new Map<string, { serverId: string; stale: boolean }>();
   for (const address of addresses) {
     const subject = await resolveSignalSubject({
       db,
@@ -155,12 +155,19 @@ export const classifyAbuseCase = async ({
     });
 
     if (subject.userId && subject.serverId) {
-      holders.set(subject.userId, subject.serverId);
+      holders.set(subject.userId, {
+        serverId: subject.serverId,
+        // A `stale` resolution names a customer as well, and carrying that
+        // through is the whole point: whoever holds the address today is
+        // somebody else, and the case must not enforce on its own.
+        stale: "stale" === subject.attribution,
+      });
     }
   }
 
   const [only] = [...holders.entries()];
   const single = 1 === holders.size && only;
+  const stale = Boolean(single && only[1].stale);
 
   await db
     .update(abuseCases)
@@ -176,12 +183,20 @@ export const classifyAbuseCase = async ({
         : {}),
       // Attribution is the useful part, and it is deterministic: the address
       // came from the reporter and the lookup is the allocation table.
-      ...(single && !abuseCase.userId ? { userId: only[0] } : {}),
+      //
+      // The staleness comes with it. `enforceCase` refuses to act on a stale
+      // attribution, and that guard reads this column - so attributing a case
+      // without it would leave a case the model filled in from a reallocated
+      // address looking exactly like one nobody had any doubt about, ready for
+      // a missed deadline to escalate onto the wrong customer's server.
+      ...(single && !abuseCase.userId
+        ? { userId: only[0], staleAttribution: stale }
+        : {}),
     })
     .where(eq(abuseCases.id, caseId));
 
   if (single && !abuseCase.userId) {
-    await linkCaseServer({ db, caseId, serverId: only[1] });
+    await linkCaseServer({ db, caseId, serverId: only[1].serverId });
   }
 
   await note({
@@ -190,7 +205,9 @@ export const classifyAbuseCase = async ({
     classification,
     addresses,
     extra: single
-      ? null
+      ? stale
+        ? "The address was reallocated after the moment this report describes, so it is filed against whoever held it then. Nothing will be enforced automatically; somebody has to decide."
+        : null
       : holders.size > 1
         ? "The addresses in this report belong to more than one customer. Somebody has to decide which case this is."
         : addresses.length > 0
@@ -209,6 +226,7 @@ export const classifyAbuseCase = async ({
       severity: classification.severity,
       addresses,
       attributed: Boolean(single && !abuseCase.userId),
+      ...(stale ? { staleAttribution: true } : {}),
     },
   });
 

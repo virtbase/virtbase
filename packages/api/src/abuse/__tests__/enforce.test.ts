@@ -192,9 +192,10 @@ describe("enforceCase", () => {
     const link = await readLink();
     expect(link?.lockLevel).toBe("isolate");
     expect(link?.lockedAt).not.toBeNull();
-    // The state to put back, not the state we just wrote.
+    // The state to put back, not the state we just wrote, keyed by the level
+    // that replaced it so an escalation can record its own.
     expect(link?.previousState).toEqual({
-      firewall: { enable: false, policyOut: "ACCEPT" },
+      isolate: { firewall: { enable: false, policyOut: "ACCEPT" } },
     });
 
     const server = await readServer();
@@ -230,6 +231,39 @@ describe("enforceCase", () => {
     expect(guest.running).toBe(false);
     // Without this a node rebooting would bring the abuse straight back.
     expect(guest.config.onboot).toBe(false);
+  });
+
+  test("an escalation records what it replaces instead of trusting the last level", async () => {
+    // The customer's own firewall policy, set long before the case existed.
+    const guest = createGuest({
+      firewall: { enable: true, policy_out: "REJECT" },
+    });
+    await seedCase({ enforcement: "throttle" });
+
+    const resolveVm = resolverFor(guest);
+    await enforceCase({ db: testDb as never, caseId: CASE_ID, resolveVm });
+
+    // The response deadline elapses and the sweep tightens one level, which
+    // enforces again with the state the first level captured already on the row.
+    await testDb
+      .update(abuseCases)
+      .set({ enforcement: "isolate" })
+      .where(eq(abuseCases.id, CASE_ID));
+    await enforceCase({ db: testDb as never, caseId: CASE_ID, resolveVm });
+
+    expect(guest.firewall).toEqual({ enable: true, policy_out: "DROP" });
+
+    // Each level records what it replaced. Without the second entry the
+    // customer's REJECT policy is simply gone.
+    expect((await readLink())?.previousState).toEqual({
+      throttle: {
+        network: {
+          device: "net0",
+          value: "virtio=AA:BB:CC:DD:EE:FF,bridge=vmbr0",
+        },
+      },
+      isolate: { firewall: { enable: true, policyOut: "REJECT" } },
+    });
   });
 
   test("a stale attribution is never enforced", async () => {
@@ -352,6 +386,96 @@ describe("releaseCase", () => {
     expect(guest.running).toBe(true);
   });
 
+  test("undoes every level the case applied, in reverse", async () => {
+    const guest = createGuest({
+      firewall: { enable: true, policy_out: "REJECT" },
+    });
+    await seedCase({ enforcement: "throttle" });
+
+    const resolveVm = resolverFor(guest);
+    await enforceCase({ db: testDb as never, caseId: CASE_ID, resolveVm });
+
+    await testDb
+      .update(abuseCases)
+      .set({ enforcement: "isolate" })
+      .where(eq(abuseCases.id, CASE_ID));
+    await enforceCase({ db: testDb as never, caseId: CASE_ID, resolveVm });
+
+    await releaseCase({ db: testDb as never, caseId: CASE_ID, resolveVm });
+
+    // The policy the customer chose, not the default a release is tempted to
+    // guess at.
+    expect(guest.firewall).toEqual({ enable: true, policy_out: "REJECT" });
+    // And the rate limit the case's first level put on. Releasing only the
+    // level the row happens to be at leaves the customer capped at 1 MB/s on a
+    // case that is closed.
+    expect(guest.config.net0).toBe("virtio=AA:BB:CC:DD:EE:FF,bridge=vmbr0");
+  });
+
+  test("a previous_state written before it was keyed by level still releases", async () => {
+    const guest = createGuest({
+      firewall: { enable: true, policy_out: "DROP" },
+    });
+    await seedCase();
+
+    // A row locked by the code that stored one bare capture per server.
+    await testDb
+      .update(abuseCaseServers)
+      .set({
+        lockLevel: "isolate",
+        lockedAt: new Date(),
+        previousState: { firewall: { enable: true, policyOut: "REJECT" } },
+      })
+      .where(eq(abuseCaseServers.caseId, CASE_ID));
+
+    await releaseCase({
+      db: testDb as never,
+      caseId: CASE_ID,
+      resolveVm: resolverFor(guest),
+    });
+
+    expect(guest.firewall).toEqual({ enable: true, policy_out: "REJECT" });
+    expect((await readLink())?.lockLevel).toBe("none");
+  });
+
+  test("a legacy row whose escalation lost the firewall still loses the rate limit", async () => {
+    // Exactly what the old escalation left behind: an `isolate` row carrying
+    // the capture the `throttle` before it took. The firewall policy it
+    // overwrote was never recorded and cannot be recovered, but the throttle
+    // still has to come off.
+    const guest = createGuest({
+      config: {
+        onboot: true,
+        net0: "virtio=AA:BB:CC:DD:EE:FF,bridge=vmbr0,rate=1",
+      },
+      firewall: { enable: true, policy_out: "DROP" },
+    });
+    await seedCase();
+
+    await testDb
+      .update(abuseCaseServers)
+      .set({
+        lockLevel: "isolate",
+        lockedAt: new Date(),
+        previousState: {
+          network: {
+            device: "net0",
+            value: "virtio=AA:BB:CC:DD:EE:FF,bridge=vmbr0",
+          },
+        },
+      })
+      .where(eq(abuseCaseServers.caseId, CASE_ID));
+
+    await releaseCase({
+      db: testDb as never,
+      caseId: CASE_ID,
+      resolveVm: resolverFor(guest),
+    });
+
+    expect(guest.config.net0).toBe("virtio=AA:BB:CC:DD:EE:FF,bridge=vmbr0");
+    expect(guest.firewall.policy_out).toBe("ACCEPT");
+  });
+
   test("the ordering block survives while another case still needs it", async () => {
     const guest = createGuest();
     await seedCase({ blocksOrdering: true });
@@ -404,7 +528,7 @@ describe("reconcileAbuseLocks", () => {
     // The original state survives the re-assert; otherwise the release would
     // restore the lock instead of what came before it.
     expect(link?.previousState).toEqual({
-      firewall: { enable: false, policyOut: "ACCEPT" },
+      isolate: { firewall: { enable: false, policyOut: "ACCEPT" } },
     });
 
     const events = await testDb
@@ -429,6 +553,98 @@ describe("reconcileAbuseLocks", () => {
     expect(result).toMatchObject({ checked: 1, drifted: 0 });
     expect((await readLink())?.driftCount).toBe(0);
     expect((await readLink())?.lastAssertedAt).not.toBeNull();
+  });
+
+  test("a settled case is never re-locked", async () => {
+    const guest = createGuest();
+    await seedCase();
+
+    const resolveVm = resolverFor(guest);
+    await enforceCase({ db: testDb as never, caseId: CASE_ID, resolveVm });
+
+    // Resolved, but the release did not finish putting the guest back - the
+    // node was unreachable for the few seconds it took.
+    await testDb
+      .update(abuseCases)
+      .set({
+        status: "resolved",
+        resolution: "false_positive",
+        closedAt: new Date(),
+      })
+      .where(eq(abuseCases.id, CASE_ID));
+    guest.firewall = { enable: false, policy_out: "ACCEPT" };
+
+    const result = await reconcileAbuseLocks({
+      db: testDb as never,
+      resolveVm,
+    });
+
+    // Not drift. Nobody removed this lock behind our back; the case is closed.
+    expect(result.drifted).toBe(0);
+    expect(guest.firewall.policy_out).toBe("ACCEPT");
+
+    const link = await readLink();
+    expect(link?.driftCount).toBe(0);
+    expect(link?.lockLevel).toBe("none");
+    expect(link?.releasedAt).not.toBeNull();
+
+    const events = await testDb
+      .select()
+      .from(abuseCaseEvents)
+      .where(eq(abuseCaseEvents.caseId, CASE_ID));
+    expect(events.map((event) => event.type)).not.toContain("lock.drift");
+  });
+
+  test("a release that could not reach the node is retried until it settles", async () => {
+    const guest = createGuest({
+      firewall: { enable: true, policy_out: "REJECT" },
+    });
+    await seedCase();
+
+    const resolveVm = resolverFor(guest);
+    await enforceCase({ db: testDb as never, caseId: CASE_ID, resolveVm });
+
+    await testDb
+      .update(abuseCases)
+      .set({
+        status: "resolved",
+        resolution: "false_positive",
+        closedAt: new Date(),
+      })
+      .where(eq(abuseCases.id, CASE_ID));
+
+    guest.unreachable = true;
+    const release = await releaseCase({
+      db: testDb as never,
+      caseId: CASE_ID,
+      resolveVm,
+    });
+
+    // Nothing came off, and the row still says the customer is locked.
+    expect(release).toMatchObject({ released: 0, failed: 1 });
+    expect((await readLink())?.lockLevel).toBe("isolate");
+    expect(guest.firewall).toEqual({ enable: true, policy_out: "DROP" });
+
+    // The node is still down on the next sweep, and the row waits rather than
+    // being abandoned or re-locked.
+    const first = await reconcileAbuseLocks({ db: testDb as never, resolveVm });
+    expect(first).toMatchObject({ released: 0, drifted: 0, failed: 1 });
+    expect((await readLink())?.releasedAt).toBeNull();
+
+    guest.unreachable = false;
+    const second = await reconcileAbuseLocks({
+      db: testDb as never,
+      resolveVm,
+    });
+
+    expect(second).toMatchObject({ released: 1, drifted: 0, failed: 0 });
+    expect(guest.firewall).toEqual({ enable: true, policy_out: "REJECT" });
+
+    const link = await readLink();
+    expect(link?.lockLevel).toBe("none");
+    expect(link?.releasedAt).not.toBeNull();
+    expect(link?.driftCount).toBe(0);
+    expect((await readServer())?.abuseLockedAt).toBeNull();
   });
 
   test("a released lock is not reconciled back into place", async () => {
