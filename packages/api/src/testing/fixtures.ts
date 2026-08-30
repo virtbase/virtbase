@@ -192,15 +192,16 @@ export const mockAdminSession = {
 } satisfies Session;
 
 /**
- * Insert the object graph a server actually needs to exist.
+ * Insert everything a server hangs off, but no user and no server.
  *
- * `servers` has foreign keys reaching all the way back to a datacenter, so a
- * test that wants one row ends up writing six. Every router test that touches
- * servers was assembling this chain by hand; the order below is the insert
- * order the constraints require.
+ * This is the half of {@link seedServerGraph} a test wants when it writes its
+ * own servers - the admin dashboard suites each assert over a fleet they
+ * compose per test, so a `mockServer` seeded underneath them would be an extra
+ * row in every count.
+ *
+ * The order below is the insert order the constraints require.
  */
-export async function seedServerGraph(db: TestDb) {
-  await db.insert(schema.users).values(mockSession.user).onConflictDoNothing();
+export async function seedServerInfrastructure(db: TestDb) {
   await db
     .insert(schema.datacenters)
     .values(mockDatacenter)
@@ -221,15 +222,31 @@ export async function seedServerGraph(db: TestDb) {
     .insert(schema.serverPlanPrices)
     .values(mockServerPlanPrice)
     .onConflictDoNothing();
-  await db.insert(schema.servers).values(mockServer).onConflictDoNothing();
 
   return {
-    user: mockSession.user,
     datacenter: mockDatacenter,
     proxmoxNodeGroup: mockProxmoxNodeGroup,
     proxmoxNode: mockProxmoxNode,
     serverPlan: mockServerPlan,
     serverPlanPrice: mockServerPlanPrice,
+  };
+}
+
+/**
+ * Insert the object graph a server actually needs to exist.
+ *
+ * `servers` has foreign keys reaching all the way back to a datacenter, so a
+ * test that wants one row ends up writing six. Every router test that touches
+ * servers was assembling this chain by hand.
+ */
+export async function seedServerGraph(db: TestDb) {
+  await db.insert(schema.users).values(mockSession.user).onConflictDoNothing();
+  const infrastructure = await seedServerInfrastructure(db);
+  await db.insert(schema.servers).values(mockServer).onConflictDoNothing();
+
+  return {
+    user: mockSession.user,
+    ...infrastructure,
     server: mockServer,
   };
 }

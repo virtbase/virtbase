@@ -23,15 +23,8 @@ import {
   abuseCaseServers,
   abuseCases,
   abuseSignals,
-  datacenters,
-  proxmoxNodeGroups,
-  proxmoxNodes,
-  serverPlanPrices,
-  serverPlans,
-  servers,
   subnetAllocations,
   subnets,
-  users,
 } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
@@ -53,15 +46,7 @@ mock.module("../triage/classify", () => ({
   classifyAbuseReport: async () => answer,
 }));
 
-import {
-  mockDatacenter,
-  mockProxmoxNode,
-  mockProxmoxNodeGroup,
-  mockServer,
-  mockServerPlan,
-  mockServerPlanPrice,
-  mockSession,
-} from "../../testing";
+import { mockServer, mockSession, seedServerGraph } from "../../testing";
 import { enforceCase } from "../enforce";
 import { verifiedAddresses } from "../triage/addresses";
 import { classifyAbuseCase, sweepUntriagedCases } from "../triage/apply";
@@ -114,13 +99,7 @@ beforeEach(async () => {
   answer = classification();
   testDb = await createTestDb();
 
-  await testDb.insert(users).values(mockSession.user);
-  await testDb.insert(datacenters).values(mockDatacenter);
-  await testDb.insert(proxmoxNodeGroups).values(mockProxmoxNodeGroup);
-  await testDb.insert(serverPlans).values(mockServerPlan);
-  await testDb.insert(serverPlanPrices).values(mockServerPlanPrice);
-  await testDb.insert(proxmoxNodes).values(mockProxmoxNode);
-  await testDb.insert(servers).values(mockServer);
+  await seedServerGraph(testDb);
   await testDb.insert(subnets).values({
     id: "ipsub_a",
     cidr: `${REPORTED_IP}/32`,

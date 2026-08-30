@@ -16,27 +16,10 @@
  */
 
 import { afterAll, beforeAll, describe, expect, mock, test } from "bun:test";
-import {
-  datacenters,
-  proxmoxNodeGroups,
-  proxmoxNodes,
-  serverPlanPrices,
-  serverPlans,
-  servers,
-  users,
-} from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
 import { appRouter } from "../../../root";
-import {
-  mockDatacenter,
-  mockProxmoxNode,
-  mockProxmoxNodeGroup,
-  mockServer,
-  mockServerPlan,
-  mockServerPlanPrice,
-  mockSession,
-} from "../../../testing";
+import { mockServer, mockSession, seedServerGraph } from "../../../testing";
 
 let testDb: TestDb;
 let caller: ReturnType<typeof appRouter.createCaller>;
@@ -45,25 +28,7 @@ let _unauthenticatedCaller: ReturnType<typeof appRouter.createCaller>;
 beforeAll(async () => {
   testDb = await createTestDb();
 
-  // Create a test user, required for linking ssh keys
-  await testDb.insert(users).values(mockSession.user).onConflictDoNothing();
-
-  // Create the necessary database entities
-  await testDb.insert(datacenters).values(mockDatacenter).onConflictDoNothing();
-  await testDb
-    .insert(proxmoxNodeGroups)
-    .values(mockProxmoxNodeGroup)
-    .onConflictDoNothing();
-  await testDb.insert(serverPlans).values(mockServerPlan).onConflictDoNothing();
-  await testDb
-    .insert(serverPlanPrices)
-    .values(mockServerPlanPrice)
-    .onConflictDoNothing();
-  await testDb
-    .insert(proxmoxNodes)
-    .values(mockProxmoxNode)
-    .onConflictDoNothing();
-  await testDb.insert(servers).values(mockServer).onConflictDoNothing();
+  await seedServerGraph(testDb);
 
   const sharedContext = {
     db: testDb as never,

@@ -27,6 +27,8 @@ import type {
   servers,
   users,
 } from "@virtbase/db/schema";
+import * as schema from "@virtbase/db/schema";
+import type { TestDb } from "@virtbase/db/test-client";
 
 export const mockUser = {
   id: "usr_0000000000000000000000001",
@@ -142,3 +144,46 @@ export const mockInvoice = {
   createdAt: new Date(),
   updatedAt: new Date(),
 } satisfies typeof invoices.$inferInsert;
+
+/**
+ * Insert the infrastructure a dashboard server hangs off, but no user and no
+ * server.
+ *
+ * The dashboard suites each compose their own fleet - a seeded `mockServer`
+ * would be an extra row in every count - so this stops short of one, and each
+ * test writes the servers its assertion is about.
+ *
+ * These fixtures are deliberately not the ones in `@virtbase/api/testing`:
+ * the plan name and price are what the sales and activity assertions read, so
+ * they belong to this suite rather than to the shared graph.
+ */
+export async function seedDashboardInfrastructure(db: TestDb) {
+  await db
+    .insert(schema.proxmoxNodeGroups)
+    .values(mockProxmoxNodeGroup)
+    .onConflictDoNothing();
+  await db
+    .insert(schema.datacenters)
+    .values(mockDatacenter)
+    .onConflictDoNothing();
+  await db
+    .insert(schema.proxmoxNodes)
+    .values(mockProxmoxNode)
+    .onConflictDoNothing();
+  await db
+    .insert(schema.serverPlans)
+    .values(mockServerPlan)
+    .onConflictDoNothing();
+  await db
+    .insert(schema.serverPlanPrices)
+    .values(mockServerPlanPrice)
+    .onConflictDoNothing();
+
+  return {
+    proxmoxNodeGroup: mockProxmoxNodeGroup,
+    datacenter: mockDatacenter,
+    proxmoxNode: mockProxmoxNode,
+    serverPlan: mockServerPlan,
+    serverPlanPrice: mockServerPlanPrice,
+  };
+}

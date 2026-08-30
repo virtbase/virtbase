@@ -35,28 +35,20 @@ mock.module("../../verify-session", () => ({
 }));
 
 import {
-  datacenters,
-  proxmoxNodeGroups,
-  proxmoxNodes,
   proxmoxTemplateGroups,
   proxmoxTemplates,
-  serverPlanPrices,
-  serverPlans,
   servers,
   users,
 } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
 import {
-  mockDatacenter,
-  mockProxmoxNode,
-  mockProxmoxNodeGroup,
   mockProxmoxTemplate,
   mockProxmoxTemplateGroup,
   mockServer,
   mockServerPlan,
-  mockServerPlanPrice,
   mockUser,
+  seedDashboardInfrastructure,
 } from "./fixtures";
 
 let testDb: TestDb;
@@ -69,11 +61,7 @@ beforeAll(async () => {
   const mod = await import("../get-latest-servers");
   getLatestServers = mod.getLatestServers;
 
-  await testDb.insert(proxmoxNodeGroups).values(mockProxmoxNodeGroup);
-  await testDb.insert(datacenters).values(mockDatacenter);
-  await testDb.insert(proxmoxNodes).values(mockProxmoxNode);
-  await testDb.insert(serverPlans).values(mockServerPlan);
-  await testDb.insert(serverPlanPrices).values(mockServerPlanPrice);
+  await seedDashboardInfrastructure(testDb);
   await testDb.insert(proxmoxTemplateGroups).values(mockProxmoxTemplateGroup);
   await testDb.insert(proxmoxTemplates).values(mockProxmoxTemplate);
   await testDb.insert(users).values(mockUser);

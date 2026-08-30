@@ -24,27 +24,10 @@ import {
   mock,
   test,
 } from "bun:test";
-import {
-  datacenters,
-  proxmoxNodeGroups,
-  proxmoxNodes,
-  serverPlanPrices,
-  serverPlans,
-  servers,
-  users,
-} from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
 import { appRouter } from "../../../root";
-import {
-  mockDatacenter,
-  mockProxmoxNode,
-  mockProxmoxNodeGroup,
-  mockServer,
-  mockServerPlan,
-  mockServerPlanPrice,
-  mockSession,
-} from "../../../testing";
+import { mockServer, mockSession, seedServerGraph } from "../../../testing";
 
 const cacheStore = new Map<string, unknown>();
 
@@ -138,22 +121,7 @@ function createProxmoxMock({
 beforeAll(async () => {
   testDb = await createTestDb();
 
-  await testDb.insert(users).values(mockSession.user).onConflictDoNothing();
-  await testDb.insert(datacenters).values(mockDatacenter).onConflictDoNothing();
-  await testDb
-    .insert(proxmoxNodeGroups)
-    .values(mockProxmoxNodeGroup)
-    .onConflictDoNothing();
-  await testDb.insert(serverPlans).values(mockServerPlan).onConflictDoNothing();
-  await testDb
-    .insert(serverPlanPrices)
-    .values(mockServerPlanPrice)
-    .onConflictDoNothing();
-  await testDb
-    .insert(proxmoxNodes)
-    .values(mockProxmoxNode)
-    .onConflictDoNothing();
-  await testDb.insert(servers).values(mockServer).onConflictDoNothing();
+  await seedServerGraph(testDb);
 
   caller = appRouter.createCaller({
     db: testDb as never,

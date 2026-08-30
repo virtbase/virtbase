@@ -17,16 +17,7 @@
 
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import { eq } from "@virtbase/db";
-import {
-  datacenters,
-  proxmoxNodeGroups,
-  proxmoxNodes,
-  serverBackups,
-  serverPlanPrices,
-  serverPlans,
-  servers,
-  users,
-} from "@virtbase/db/schema";
+import { serverBackups } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
 import {
@@ -34,15 +25,7 @@ import {
   BACKUP_STALE_AFTER_HOURS,
 } from "@virtbase/utils";
 import type { ProxmoxInstance } from "../../proxmox";
-import {
-  mockDatacenter,
-  mockProxmoxNode,
-  mockProxmoxNodeGroup,
-  mockServer,
-  mockServerPlan,
-  mockServerPlanPrice,
-  mockSession,
-} from "../../testing";
+import { mockProxmoxNode, mockServer, seedServerGraph } from "../../testing";
 import { reconcileServerBackup } from "../reconcile-backup";
 import { reconcileServerBackups } from "../reconcile-server-backups";
 
@@ -156,13 +139,7 @@ const reconcile = (
 beforeEach(async () => {
   testDb = await createTestDb();
 
-  await testDb.insert(users).values(mockSession.user);
-  await testDb.insert(datacenters).values(mockDatacenter);
-  await testDb.insert(proxmoxNodeGroups).values(mockProxmoxNodeGroup);
-  await testDb.insert(serverPlans).values(mockServerPlan);
-  await testDb.insert(serverPlanPrices).values(mockServerPlanPrice);
-  await testDb.insert(proxmoxNodes).values(mockProxmoxNode);
-  await testDb.insert(servers).values(mockServer);
+  await seedServerGraph(testDb);
 });
 
 afterEach(async () => {

@@ -34,25 +34,14 @@ mock.module("../../verify-session", () => ({
   verifySession: async () => {},
 }));
 
-import {
-  datacenters,
-  proxmoxNodeGroups,
-  proxmoxNodes,
-  serverPlanPrices,
-  serverPlans,
-  servers,
-  users,
-} from "@virtbase/db/schema";
+import { serverPlans, servers, users } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
 import {
-  mockDatacenter,
-  mockProxmoxNode,
-  mockProxmoxNodeGroup,
   mockServer,
   mockServerPlan,
-  mockServerPlanPrice,
   mockUser,
+  seedDashboardInfrastructure,
 } from "./fixtures";
 
 let testDb: TestDb;
@@ -65,19 +54,14 @@ beforeAll(async () => {
   const mod = await import("../get-sales-by-plan");
   getSalesByPlan = mod.getSalesByPlan;
 
-  await testDb.insert(proxmoxNodeGroups).values(mockProxmoxNodeGroup);
-  await testDb.insert(datacenters).values(mockDatacenter);
-  await testDb.insert(proxmoxNodes).values(mockProxmoxNode);
-  await testDb.insert(serverPlans).values([
-    mockServerPlan,
-    {
-      ...mockServerPlan,
-      id: "pck_0000000000000000000000002",
-      name: "Pro",
-      price: 1500,
-    },
-  ]);
-  await testDb.insert(serverPlanPrices).values(mockServerPlanPrice);
+  await seedDashboardInfrastructure(testDb);
+  // A second plan, so the grouping has more than one bucket to sort into.
+  await testDb.insert(serverPlans).values({
+    ...mockServerPlan,
+    id: "pck_0000000000000000000000002",
+    name: "Pro",
+    price: 1500,
+  });
   await testDb.insert(users).values(mockUser);
 });
 

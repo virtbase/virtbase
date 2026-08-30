@@ -21,11 +21,6 @@ import {
   abuseCaseEvents,
   abuseCaseServers,
   abuseCases,
-  datacenters,
-  proxmoxNodeGroups,
-  proxmoxNodes,
-  serverPlanPrices,
-  serverPlans,
   servers,
   users,
 } from "@virtbase/db/schema";
@@ -42,15 +37,7 @@ mock.module("../../notifications/dispatch", () => ({
   }),
 }));
 
-import {
-  mockDatacenter,
-  mockProxmoxNode,
-  mockProxmoxNodeGroup,
-  mockServer,
-  mockServerPlan,
-  mockServerPlanPrice,
-  mockSession,
-} from "../../testing";
+import { mockServer, mockSession, seedServerGraph } from "../../testing";
 import type { VmResolver } from "../enforce";
 import { enforceCase, reconcileAbuseLocks, releaseCase } from "../enforce";
 
@@ -162,13 +149,7 @@ const readServer = () =>
 beforeEach(async () => {
   testDb = await createTestDb();
 
-  await testDb.insert(users).values(mockSession.user);
-  await testDb.insert(datacenters).values(mockDatacenter);
-  await testDb.insert(proxmoxNodeGroups).values(mockProxmoxNodeGroup);
-  await testDb.insert(serverPlans).values(mockServerPlan);
-  await testDb.insert(serverPlanPrices).values(mockServerPlanPrice);
-  await testDb.insert(proxmoxNodes).values(mockProxmoxNode);
-  await testDb.insert(servers).values(mockServer);
+  await seedServerGraph(testDb);
 });
 
 afterEach(async () => {

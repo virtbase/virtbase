@@ -17,11 +17,6 @@
 
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import {
-  datacenters,
-  proxmoxNodeGroups,
-  proxmoxNodes,
-  serverPlanPrices,
-  serverPlans,
   servers,
   subnetAllocations,
   subnets,
@@ -30,13 +25,10 @@ import {
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
 import {
-  mockDatacenter,
   mockProxmoxNode,
-  mockProxmoxNodeGroup,
   mockServer,
-  mockServerPlan,
-  mockServerPlanPrice,
   mockSession,
+  seedServerGraph,
 } from "../../testing";
 import { resolveSignalSubject } from "../resolve-subject";
 
@@ -60,16 +52,10 @@ const resolve = (value: string, occurredAt: Date) =>
 beforeEach(async () => {
   testDb = await createTestDb();
 
-  await testDb.insert(users).values(mockSession.user);
+  await seedServerGraph(testDb);
   await testDb
     .insert(users)
     .values({ ...mockSession.user, id: OTHER_USER, email: "other@test.dev" });
-  await testDb.insert(datacenters).values(mockDatacenter);
-  await testDb.insert(proxmoxNodeGroups).values(mockProxmoxNodeGroup);
-  await testDb.insert(serverPlans).values(mockServerPlan);
-  await testDb.insert(serverPlanPrices).values(mockServerPlanPrice);
-  await testDb.insert(proxmoxNodes).values(mockProxmoxNode);
-  await testDb.insert(servers).values(mockServer);
   await testDb.insert(servers).values({
     ...mockServer,
     id: SERVER_B,

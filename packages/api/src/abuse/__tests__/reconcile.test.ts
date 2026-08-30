@@ -17,17 +17,7 @@
 
 import { afterEach, beforeEach, describe, expect, mock, test } from "bun:test";
 import { eq } from "@virtbase/db";
-import {
-  abuseCaseServers,
-  abuseCases,
-  datacenters,
-  proxmoxNodeGroups,
-  proxmoxNodes,
-  serverPlanPrices,
-  serverPlans,
-  servers,
-  users,
-} from "@virtbase/db/schema";
+import { abuseCaseServers, abuseCases } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
 
@@ -41,15 +31,7 @@ mock.module("../../notifications/dispatch", () => ({
   }),
 }));
 
-import {
-  mockDatacenter,
-  mockProxmoxNode,
-  mockProxmoxNodeGroup,
-  mockServer,
-  mockServerPlan,
-  mockServerPlanPrice,
-  mockSession,
-} from "../../testing";
+import { mockServer, mockSession, seedServerGraph } from "../../testing";
 import type { VmResolver } from "../enforce";
 import { reconcileAbuseCases } from "../reconcile";
 
@@ -124,13 +106,7 @@ beforeEach(async () => {
   guest.running = true;
   guest.config = { onboot: true, net0: "virtio=AA:BB,bridge=vmbr0" };
 
-  await testDb.insert(users).values(mockSession.user);
-  await testDb.insert(datacenters).values(mockDatacenter);
-  await testDb.insert(proxmoxNodeGroups).values(mockProxmoxNodeGroup);
-  await testDb.insert(serverPlans).values(mockServerPlan);
-  await testDb.insert(serverPlanPrices).values(mockServerPlanPrice);
-  await testDb.insert(proxmoxNodes).values(mockProxmoxNode);
-  await testDb.insert(servers).values(mockServer);
+  await seedServerGraph(testDb);
 });
 
 afterEach(async () => {

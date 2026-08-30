@@ -21,15 +21,8 @@ import {
   abuseCases,
   abuseSignals,
   abuseSourceCursors,
-  datacenters,
-  proxmoxNodeGroups,
-  proxmoxNodes,
-  serverPlanPrices,
-  serverPlans,
-  servers,
   subnetAllocations,
   subnets,
-  users,
 } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
@@ -45,15 +38,7 @@ mock.module("../../notifications/dispatch", () => ({
   }),
 }));
 
-import {
-  mockDatacenter,
-  mockProxmoxNode,
-  mockProxmoxNodeGroup,
-  mockServer,
-  mockServerPlan,
-  mockServerPlanPrice,
-  mockSession,
-} from "../../testing";
+import { mockServer, seedServerGraph } from "../../testing";
 import { isPublicIpv4, supernet } from "../cidr";
 import { collectPollTargets, pollAbuseSources } from "../poll";
 
@@ -117,13 +102,7 @@ const allocate = async (
 beforeEach(async () => {
   testDb = await createTestDb();
 
-  await testDb.insert(users).values(mockSession.user);
-  await testDb.insert(datacenters).values(mockDatacenter);
-  await testDb.insert(proxmoxNodeGroups).values(mockProxmoxNodeGroup);
-  await testDb.insert(serverPlans).values(mockServerPlan);
-  await testDb.insert(serverPlanPrices).values(mockServerPlanPrice);
-  await testDb.insert(proxmoxNodes).values(mockProxmoxNode);
-  await testDb.insert(servers).values(mockServer);
+  await seedServerGraph(testDb);
 });
 
 afterEach(async () => {
