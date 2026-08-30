@@ -2472,11 +2472,14 @@ msgstr "Δημιουργία κλειδιού API"
 #: src/features/admin/components/proxmox-templates/delete-template-dialog.tsx
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx
 #: src/features/servers/components/backups/create-backup-dialog.tsx
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
 #: src/features/servers/components/overview/change-template-dialog.tsx
 #: src/features/servers/components/overview/rename-server-dialog.tsx
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/ui/feedback-button.tsx
 msgid "47FYwb"
@@ -3567,6 +3570,7 @@ msgid "LrZ7qa"
 msgstr "Το `abuse.*` ταιριάζει σε έναν χώρο ονομάτων, το `abuse.ddos` σε έναν τύπο."
 
 #: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "aH4De2"
@@ -5212,6 +5216,7 @@ msgid "TY8Ho1"
 msgstr "Εντολές"
 
 #: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "DZ2Koj"
@@ -5225,6 +5230,7 @@ msgid "YDkqMJ"
 msgstr "Εισερχόμενος"
 
 #: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "QlsDcr"
@@ -5236,6 +5242,7 @@ msgid "VzIOKf"
 msgstr "Απορρίπτω"
 
 #: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "0QLzxo"
@@ -5375,6 +5382,7 @@ msgid "mRL9Vh"
 msgstr "Δημιουργία..."
 
 #: src/features/servers/components/backups/backups-table/columns.tsx
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
 #: src/features/servers/hooks/use-status-mapping.ts
 #: src/features/servers/hooks/use-task-mapping.ts
@@ -5433,6 +5441,26 @@ msgstr "Ενεργοποίηση προστασίας διαγραφής"
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "I9XNiI"
 msgstr "Το αντίγραφο ασφαλείας που δημιουργήθηκε πρόσφατα μπορεί να διαγραφεί μόνο αφού απενεργοποιηθεί η προστασία διαγραφής."
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "zkk3nZ"
+msgstr "Διαγραφή αντιγράφου ασφαλείας"
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "3pdwu9"
+msgstr "Διαγράψτε ένα αντίγραφο ασφαλείας του διακομιστή σας."
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "wl5Juv"
+msgstr "Το αντίγραφο ασφαλείας από {date} θα διαγραφεί από τον κόμβο. Αυτό δεν μπορεί να αναιρεθεί."
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "ijaxLm"
+msgstr "Το παρακάτω λειτουργικό σύστημα θα χαθεί:"
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "SKjLPj"
+msgstr "Πρέπει να διαγραφεί το αντίγραφο ασφαλείας;"
 
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
 msgid "MW7EBt"
@@ -5674,6 +5702,23 @@ msgstr "Αλλαγή σχεδίου"
 msgid "YeQq19"
 msgstr "Προετοιμασία ολοκλήρωσης αγοράς…"
 
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
+#: src/features/servers/components/rdns/records-table/columns.tsx
+msgid "LUHXQL"
+msgstr "Διαγραφή εγγραφής PTR"
+
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
+msgid "LuQ-pB"
+msgstr "Διαγράψτε μια εγγραφή PTR του διακομιστή σας."
+
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
+msgid "2VDNVp"
+msgstr "Η αντίστροφη αναζήτηση για {ip} δεν θα επιλύεται πλέον σε {hostname}. Η αλληλογραφία από αυτή τη διεύθυνση ενδέχεται να απορρίπτεται."
+
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
+msgid "uoUX6n"
+msgstr "Πρέπει να διαγραφεί η εγγραφή PTR;"
+
 #: src/features/servers/components/rdns/records-card.tsx
 msgid "Z2vqA3"
 msgstr "Εγγραφές PTR"
@@ -5685,10 +5730,6 @@ msgstr "{count, plural, =1 {# εγγραφή PTR} other {# εγγραφές PTR}
 #: src/features/servers/components/rdns/records-table/columns.tsx
 msgid "99tjyG"
 msgstr "IP"
-
-#: src/features/servers/components/rdns/records-table/columns.tsx
-msgid "LUHXQL"
-msgstr "Διαγραφή εγγραφής PTR"
 
 #: src/features/servers/components/rdns/records-table/index.tsx
 msgid "q9ZR74"
@@ -5813,10 +5854,6 @@ msgid "lgSmVl"
 msgstr "Η εικόνα ISO προσαρτήθηκε επιτυχώς. Η αλλαγή θα ισχύσει στην επόμενη εκκίνηση."
 
 #: src/features/servers/components/server-mount-dialog.tsx
-msgid "bmliQK"
-msgstr "Δεν ήταν δυνατή η προσάρτηση εικόνας ISO."
-
-#: src/features/servers/components/server-mount-dialog.tsx
 msgid "1INFXA"
 msgstr "Η εικόνα ISO αποπροσαρτήθηκε επιτυχώς. Η αλλαγή θα ισχύσει στην επόμενη εκκίνηση."
 
@@ -5879,6 +5916,32 @@ msgstr "Αντιγραφή IP"
 #: src/features/servers/components/servers-list.tsx
 msgid "nWQFic"
 msgstr "Ανανεώνω"
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "rWbrOx"
+msgstr "Διαγραφή κανόνα τείχους προστασίας"
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "JfwSAy"
+msgstr "Διαγράψτε έναν κανόνα από το τείχος προστασίας σας."
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "wTEfoa"
+msgstr "Ο κανόνας {position} θα αφαιρεθεί από το τείχος προστασίας Virtbase. Αυτό δεν μπορεί να αναιρεθεί."
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "rsSUP3"
+msgstr "Θύρα"
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "LgbKvU"
+msgstr "Σχόλιο"
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "pc6aEi"
+msgstr "Πρέπει να διαγραφεί ο κανόνας;"
 
 #: src/features/servers/firewall/components/firewall-action-select.tsx
 msgid "ObQE5T"
@@ -5956,11 +6019,6 @@ msgstr "Οποιαδήποτε διεύθυνση"
 msgid "08nIQL"
 msgstr "Ταιριάστε μόνο την κίνηση από αυτή τη διεύθυνση ή το δίκτυο, για παράδειγμα 10.0.0.0/8. Αφήστε κενό για να ταιριάσετε οποιαδήποτε διεύθυνση."
 
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
-msgid "LgbKvU"
-msgstr "Σχόλιο"
-
 #: src/features/servers/firewall/components/firewall-rules-card.tsx
 msgid "Qov8tl"
 msgstr "Κανόνες τείχους προστασίας"
@@ -6018,14 +6076,6 @@ msgid "H_r5m6"
 msgstr "Μετακίνηση προς τα κάτω"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
-msgid "AFkUOq"
-msgstr "Δεν ήταν δυνατή η δημιουργία κανόνων. Προσπαθήστε ξανά."
-
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
-msgid "N8n7F4"
-msgstr "Δεν ήταν δυνατή η δημιουργία του κανόνα. Προσπαθήστε ξανά."
-
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "w-tZ4Z"
 msgstr "Δημιουργία κανόνων τείχους προστασίας"
 
@@ -6072,6 +6122,14 @@ msgstr "Η κίνηση πρέπει να περάσει και από τα δύ
 #: src/features/servers/firewall/components/guest-firewall-alert.tsx
 msgid "C03sMA"
 msgstr "Η κίνηση πρέπει να περάσει και από τα δύο τείχη προστασίας. Οι κανόνες του παρατίθενται παρακάτω."
+
+#: src/features/servers/firewall/hooks/use-create-firewall-rule.ts
+msgid "mJ0yAx"
+msgstr "Δεν ήταν δυνατή η δημιουργία του κανόνα τείχους προστασίας."
+
+#: src/features/servers/firewall/hooks/use-delete-firewall-rule.ts
+msgid "3Kd2EU"
+msgstr "Δεν ήταν δυνατή η διαγραφή του κανόνα τείχους προστασίας."
 
 #: src/features/servers/firewall/hooks/use-finding-mapping.ts
 msgid "6tQJAd"
@@ -6125,6 +6183,62 @@ msgstr "Αποδέχομαι"
 msgid "j8RTUO"
 msgstr "Πτώση"
 
+#: src/features/servers/firewall/hooks/use-generate-firewall-rule.ts
+msgid "AFkUOq"
+msgstr "Δεν ήταν δυνατή η δημιουργία κανόνων. Προσπαθήστε ξανά."
+
+#: src/features/servers/firewall/hooks/use-move-firewall-rule.ts
+msgid "AocbVN"
+msgstr "Δεν ήταν δυνατή η αναδιάταξη των κανόνων τείχους προστασίας."
+
+#: src/features/servers/firewall/hooks/use-update-firewall-options.ts
+msgid "gUdmaM"
+msgstr "Δεν ήταν δυνατή η ενημέρωση των επιλογών τείχους προστασίας."
+
+#: src/features/servers/firewall/hooks/use-update-firewall-rule.ts
+msgid "HixF5T"
+msgstr "Δεν ήταν δυνατή η ενημέρωση του κανόνα τείχους προστασίας."
+
+#: src/features/servers/hooks/advanced/use-update-advanced-settings.ts
+msgid "TLEvHC"
+msgstr "Δεν ήταν δυνατή η ενημέρωση των σύνθετων ρυθμίσεων."
+
+#: src/features/servers/hooks/backups/use-create-backup.ts
+msgid "VEvlmq"
+msgstr "Δεν ήταν δυνατή η δημιουργία του αντιγράφου ασφαλείας."
+
+#: src/features/servers/hooks/backups/use-delete-backup.ts
+msgid "VZShzt"
+msgstr "Δεν ήταν δυνατή η διαγραφή του αντιγράφου ασφαλείας."
+
+#: src/features/servers/hooks/backups/use-restore-backup.ts
+msgid "lFzlNs"
+msgstr "Δεν ήταν δυνατή η επαναφορά του αντιγράφου ασφαλείας."
+
+#: src/features/servers/hooks/backups/use-update-backup.ts
+msgid "GwAFh4"
+msgstr "Δεν ήταν δυνατή η ενημέρωση του αντιγράφου ασφαλείας."
+
+#: src/features/servers/hooks/overview/use-change-template.ts
+msgid "8g0ePs"
+msgstr "Δεν ήταν δυνατή η αλλαγή του λειτουργικού συστήματος."
+
+#: src/features/servers/hooks/overview/use-rename-server.ts
+msgid "WkH31C"
+msgstr "Δεν ήταν δυνατή η μετονομασία του διακομιστή."
+
+#: src/features/servers/hooks/overview/use-reset-server-password.ts
+msgid "afiU1l"
+msgstr "Δεν ήταν δυνατή η επαναφορά του κωδικού πρόσβασης."
+
+#: src/features/servers/hooks/rdns/use-delete-pointer-record.ts
+msgid "OqBG_o"
+msgstr "Δεν ήταν δυνατή η διαγραφή της εγγραφής PTR."
+
+#: src/features/servers/hooks/rdns/use-upsert-pointer-record.ts
+msgid "v_PJM7"
+msgstr "Δεν ήταν δυνατή η αποθήκευση της εγγραφής PTR."
+
 #: src/features/servers/hooks/use-agent-status-mapping.ts
 msgid "D7fMMu"
 msgstr "Ο πράκτορας επισκέπτη εκτελείται"
@@ -6177,6 +6291,10 @@ msgstr "Η κατάσταση του πράκτορα επισκέπτη δεν 
 msgid "XiMFvI"
 msgstr "Το Virtbase δεν μπόρεσε να ελέγξει τον πράκτορα επισκέπτη αυτή τη στιγμή. Δοκίμασε ξανά αργότερα."
 
+#: src/features/servers/hooks/use-mount-image.ts
+msgid "bmliQK"
+msgstr "Δεν ήταν δυνατή η προσάρτηση εικόνας ISO."
+
 #: src/features/servers/hooks/use-status-mapping.ts
 msgid "ccU6l_"
 msgstr "Διαδικτυακά"
@@ -6228,6 +6346,14 @@ msgstr "Δημιουργία αντιγράφων ασφαλείας..."
 #: src/features/servers/hooks/use-task-mapping.ts
 msgid "98thq0"
 msgstr "Επαναφορά αντιγράφου ασφαλείας..."
+
+#: src/features/servers/hooks/use-unmount-image.ts
+msgid "D6e_ae"
+msgstr "Δεν ήταν δυνατή η αποπροσάρτηση της εικόνας ISO."
+
+#: src/features/servers/hooks/use-update-server-status.ts
+msgid "TpRHA3"
+msgstr "Δεν ήταν δυνατή η αλλαγή της κατάστασης του διακομιστή."
 
 #: src/ui/app-footer.tsx
 msgid "4XCigB"
