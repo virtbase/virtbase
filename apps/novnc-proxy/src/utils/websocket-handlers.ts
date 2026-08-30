@@ -33,8 +33,18 @@ import { constructWebsocketUrl } from "./construct-websocket-url";
  * `index.ts` passes the real `WebSocket`.
  */
 
-/** Anything either side of the bridge can carry. */
-export type Frame = string | ArrayBufferLike | ArrayBufferView;
+/**
+ * Anything either side of the bridge can carry.
+ *
+ * `Bun.BufferSource` rather than the DOM's `ArrayBufferView`: this type is the
+ * parameter of `ClientSocket.send`, and Bun's own `ServerWebSocket.send` takes
+ * `string | BufferSource | Blob`. Parameters being contravariant, a wider
+ * `Frame` is what stops a real `ServerWebSocket` from satisfying
+ * `ClientSocket` - the DOM's structural `ArrayBufferView` is not one of the
+ * concrete typed arrays Bun names, so the handlers no longer fit
+ * `WebSocketHandler` at all.
+ */
+export type Frame = string | Bun.BufferSource;
 
 /** Bounded so a client that talks before the upstream answers cannot grow the heap. */
 const MAX_BUFFERED_FRAMES = 64;

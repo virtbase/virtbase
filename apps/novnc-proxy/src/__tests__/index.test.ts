@@ -15,7 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { beforeAll, describe, expect, it } from "bun:test";
+import { afterAll, beforeAll, describe, expect, it } from "bun:test";
 import { encryptPayload } from "@virtbase/utils";
 import type { WebSocketData } from "@virtbase/validators";
 import { WebsocketDataSchema } from "@virtbase/validators";
@@ -38,167 +38,133 @@ const validData = (overrides: Partial<WebSocketData> = {}): WebSocketData => ({
 });
 
 describe("Server API", () => {
-  beforeAll(() => {
-    // Set test environment
+  /**
+   * One server for the whole block.
+   *
+   * `../index` starts listening as a side effect of being imported, and an ESM
+   * import is cached - so the module body runs once, no matter how many tests
+   * import it. Stopping it in one test therefore left every later test talking
+   * to a closed port rather than restarting anything.
+   */
+  let server: typeof import("../index")["server"];
+
+  beforeAll(async () => {
+    // Set before the import: the module reads both at evaluation time.
     process.env.PORT = "8444";
     process.env.NOVNC_PROXY_SECRET = SECRET;
+
+    ({ server } = await import("../index"));
+  });
+
+  afterAll(() => {
+    server.stop(true);
   });
 
   it("should return status endpoint with uptime", async () => {
-    const { server } = await import("../index");
+    const response = await fetch(
+      `http://localhost:${process.env.PORT}/api/status`,
+    );
+    expect(response.status).toBe(200);
+    expect(response.headers.get("content-type")).toContain("application/json");
 
-    try {
-      const response = await fetch(
-        `http://localhost:${process.env.PORT}/api/status`,
-      );
-      expect(response.status).toBe(200);
-      expect(response.headers.get("content-type")).toContain(
-        "application/json",
-      );
-
-      const data = await response.json();
-      expect(data).toHaveProperty("uptime");
-      // @ts-expect-error - unknown type
-      expect(typeof data.uptime).toBe("number");
-      // @ts-expect-error - unknown type
-      expect(data.uptime).toBeGreaterThanOrEqual(0);
-    } finally {
-      server.stop();
-    }
+    const data = await response.json();
+    expect(data).toHaveProperty("uptime");
+    // @ts-expect-error - unknown type
+    expect(typeof data.uptime).toBe("number");
+    // @ts-expect-error - unknown type
+    expect(data.uptime).toBeGreaterThanOrEqual(0);
   });
 
   it("should reject non-GET requests", async () => {
-    const { server } = await import("../index");
+    const response = await fetch(`http://localhost:${process.env.PORT}/test`, {
+      method: "POST",
+    });
+    expect(response.status).toBe(405);
 
-    try {
-      const response = await fetch(
-        `http://localhost:${process.env.PORT}/test`,
-        {
-          method: "POST",
-        },
-      );
-      expect(response.status).toBe(405);
-
-      const data = await response.json();
-      // @ts-expect-error - unknown type
-      expect(data.error).toBe("Method not allowed. Supported methods: GET");
-      // @ts-expect-error - unknown type
-      expect(data.code).toBe(405);
-    } finally {
-      server.stop();
-    }
+    const data = await response.json();
+    // @ts-expect-error - unknown type
+    expect(data.error).toBe("Method not allowed. Supported methods: GET");
+    // @ts-expect-error - unknown type
+    expect(data.code).toBe(405);
   });
 
   it("should reject requests without payload parameter", async () => {
-    const { server } = await import("../index");
+    const response = await fetch(`http://localhost:${process.env.PORT}/test`);
+    expect(response.status).toBe(400);
 
-    try {
-      const response = await fetch(`http://localhost:${process.env.PORT}/test`);
-      expect(response.status).toBe(400);
-
-      const data = await response.json();
-      // @ts-expect-error - unknown type
-      expect(data.error).toBe("Missing payload");
-      // @ts-expect-error - unknown type
-      expect(data.code).toBe(400);
-    } finally {
-      server.stop();
-    }
+    const data = await response.json();
+    // @ts-expect-error - unknown type
+    expect(data.error).toBe("Missing payload");
+    // @ts-expect-error - unknown type
+    expect(data.code).toBe(400);
   });
 
   it("should reject an expired payload before upgrading", async () => {
-    const { server } = await import("../index");
+    const payload = await encryptPayload(
+      JSON.stringify(validData({ exp: Math.floor(Date.now() / 1000) - 600 })),
+      SECRET,
+    );
 
-    try {
-      const payload = await encryptPayload(
-        JSON.stringify(validData({ exp: Math.floor(Date.now() / 1000) - 600 })),
-        SECRET,
-      );
+    const response = await fetch(
+      `http://localhost:${process.env.PORT}/?payload=${payload}`,
+    );
 
-      const response = await fetch(
-        `http://localhost:${process.env.PORT}/?payload=${payload}`,
-      );
-
-      expect(response.status).toBe(400);
-      expect(await response.json()).toEqual({
-        error: "Invalid payload",
-        code: 400,
-        issues: [],
-      });
-    } finally {
-      server.stop();
-    }
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({
+      error: "Invalid payload",
+      code: 400,
+      issues: [],
+    });
   });
 
   it("should reject a tampered payload", async () => {
-    const { server } = await import("../index");
+    const original = await encryptPayload(JSON.stringify(validData()), SECRET);
+    const [prefix, iv, body] = original.split(":") as [string, string, string];
+    const bytes = Buffer.from(body, "hex");
+    // biome-ignore lint/style/noNonNullAssertion: the buffer is non-empty
+    bytes[0] = bytes[0]! ^ 0x01;
 
-    try {
-      const original = await encryptPayload(
-        JSON.stringify(validData()),
-        SECRET,
-      );
-      const [prefix, iv, body] = original.split(":") as [
-        string,
-        string,
-        string,
-      ];
-      const bytes = Buffer.from(body, "hex");
-      // biome-ignore lint/style/noNonNullAssertion: the buffer is non-empty
-      bytes[0] = bytes[0]! ^ 0x01;
+    const response = await fetch(
+      `http://localhost:${process.env.PORT}/?payload=${prefix}:${iv}:${bytes.toString("hex")}`,
+    );
 
-      const response = await fetch(
-        `http://localhost:${process.env.PORT}/?payload=${prefix}:${iv}:${bytes.toString("hex")}`,
-      );
-
-      expect(response.status).toBe(400);
-      expect(await response.json()).toEqual({
-        error: "Invalid payload",
-        code: 400,
-        issues: [],
-      });
-    } finally {
-      server.stop();
-    }
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({
+      error: "Invalid payload",
+      code: 400,
+      issues: [],
+    });
   });
 
   it("should answer every bad payload identically", async () => {
-    const { server } = await import("../index");
+    const expired = await encryptPayload(
+      JSON.stringify(validData({ exp: Math.floor(Date.now() / 1000) - 600 })),
+      SECRET,
+    );
+    const wrongShape = await encryptPayload(
+      JSON.stringify({ nonsense: true }),
+      SECRET,
+    );
+    const undecryptable = await encryptPayload(
+      JSON.stringify(validData()),
+      "fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210",
+    );
 
-    try {
-      const expired = await encryptPayload(
-        JSON.stringify(validData({ exp: Math.floor(Date.now() / 1000) - 600 })),
-        SECRET,
+    const responses: (readonly [number, string])[] = [];
+    for (const payload of [expired, wrongShape, undecryptable, "garbage"]) {
+      const response = await fetch(
+        `http://localhost:${process.env.PORT}/?payload=${payload}`,
       );
-      const wrongShape = await encryptPayload(
-        JSON.stringify({ nonsense: true }),
-        SECRET,
-      );
-      const undecryptable = await encryptPayload(
-        JSON.stringify(validData()),
-        "fedcba9876543210fedcba9876543210fedcba9876543210fedcba9876543210",
-      );
-
-      // Sequentially: `server.stop()` in the tests above is graceful, so only
-      // the pooled keep-alive connection is still usable.
-      const responses: (readonly [number, string])[] = [];
-      for (const payload of [expired, wrongShape, undecryptable, "garbage"]) {
-        const response = await fetch(
-          `http://localhost:${process.env.PORT}/?payload=${payload}`,
-        );
-        responses.push([response.status, await response.text()] as const);
-      }
-
-      // A three-way oracle used to tell an attacker which part of a forgery
-      // failed: schema errors came back as a 400 listing the offending fields,
-      // decryption failures as a 500.
-      for (const response of responses) {
-        expect(response).toEqual(responses[0] as (typeof responses)[number]);
-      }
-      expect(responses[0]?.[0]).toBe(400);
-    } finally {
-      server.stop();
+      responses.push([response.status, await response.text()] as const);
     }
+
+    // A three-way oracle used to tell an attacker which part of a forgery
+    // failed: schema errors came back as a 400 listing the offending fields,
+    // decryption failures as a 500.
+    for (const response of responses) {
+      expect(response).toEqual(responses[0] as (typeof responses)[number]);
+    }
+    expect(responses[0]?.[0]).toBe(400);
   });
 });
 
