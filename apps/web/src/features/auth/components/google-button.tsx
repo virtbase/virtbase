@@ -25,7 +25,7 @@ import { useSearchParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useContext } from "react";
 import { authClient } from "@/lib/auth/client";
-import { LoginFormContext } from "./login-form";
+import { LoginFormContext } from "./login-form-context";
 
 export function GoogleButton({ next }: { next?: string }) {
   const t = useExtracted();

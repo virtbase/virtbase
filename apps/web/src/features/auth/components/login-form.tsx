@@ -20,41 +20,19 @@
 import { AnimatedSizeContainer } from "@virtbase/ui/animated-size-container";
 import { Button } from "@virtbase/ui/button";
 import { useExtracted } from "next-intl";
-import type { Dispatch, SetStateAction } from "react";
-import { createContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { AuthMethodsSeparator } from "@/features/auth/components/auth-methods-separator";
 import { DiscordButton } from "@/features/auth/components/discord-button";
 import { EmailSignIn } from "@/features/auth/components/email-sign-in";
 import { GitHubButton } from "@/features/auth/components/github-button";
 import { GoogleButton } from "@/features/auth/components/google-button";
+import type { AuthMethod } from "@/features/auth/components/login-form-context";
+import {
+  authMethods,
+  LoginFormContext,
+} from "@/features/auth/components/login-form-context";
 import { PasskeyButton } from "@/features/auth/components/passkey-button";
 import { authClient } from "@/lib/auth/client";
-
-const authMethods = [
-  "google",
-  "github",
-  "discord",
-  "email",
-  "passkey",
-] as const;
-
-type AuthMethod = (typeof authMethods)[number];
-
-export const LoginFormContext = createContext<{
-  authMethod: AuthMethod | undefined;
-  setAuthMethod: Dispatch<SetStateAction<AuthMethod | undefined>>;
-  clickedMethod: AuthMethod | undefined;
-  showPasswordField: boolean;
-  setShowPasswordField: Dispatch<SetStateAction<boolean>>;
-  setClickedMethod: Dispatch<SetStateAction<AuthMethod | undefined>>;
-}>({
-  authMethod: undefined,
-  setAuthMethod: () => {},
-  clickedMethod: undefined,
-  showPasswordField: false,
-  setShowPasswordField: () => {},
-  setClickedMethod: () => {},
-});
 
 export default function LoginForm({
   methods = [...authMethods],

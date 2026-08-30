@@ -23,7 +23,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useContext } from "react";
 import { authClient, isTwoFactorRedirect } from "@/lib/auth/client";
-import { LoginFormContext } from "./login-form";
+import { LoginFormContext } from "./login-form-context";
 
 export function PasskeyButton() {
   const t = useExtracted();

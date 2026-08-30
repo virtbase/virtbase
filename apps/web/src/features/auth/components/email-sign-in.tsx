@@ -35,7 +35,7 @@ import { useContext, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import * as z from "zod/v4-mini";
-import { LoginFormContext } from "@/features/auth/components/login-form";
+import { LoginFormContext } from "@/features/auth/components/login-form-context";
 import { PasskeyConditionalUI } from "@/features/auth/components/passkey-conditional-ui";
 import { authClient, isTwoFactorRedirect } from "@/lib/auth/client";
 import { useTRPC } from "@/lib/trpc/react";
