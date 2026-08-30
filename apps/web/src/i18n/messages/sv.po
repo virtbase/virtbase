@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Swedish\n"
-"PO-Revision-Date: 2026-08-29 11:20\n"
+"PO-Revision-Date: 2026-08-30 09:15\n"
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
 msgid "lYlalx"
@@ -2472,11 +2472,14 @@ msgstr "Skapa API-nyckel"
 #: src/features/admin/components/proxmox-templates/delete-template-dialog.tsx
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx
 #: src/features/servers/components/backups/create-backup-dialog.tsx
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
 #: src/features/servers/components/overview/change-template-dialog.tsx
 #: src/features/servers/components/overview/rename-server-dialog.tsx
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/ui/feedback-button.tsx
 msgid "47FYwb"
@@ -3567,6 +3570,7 @@ msgid "LrZ7qa"
 msgstr "`abuse.*` matchar en namnrymd, `abuse.ddos` en enda typ."
 
 #: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "aH4De2"
@@ -5212,6 +5216,7 @@ msgid "TY8Ho1"
 msgstr "Kommandon"
 
 #: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "DZ2Koj"
@@ -5225,6 +5230,7 @@ msgid "YDkqMJ"
 msgstr "Inkommande"
 
 #: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "QlsDcr"
@@ -5236,6 +5242,7 @@ msgid "VzIOKf"
 msgstr "Avvisa"
 
 #: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "0QLzxo"
@@ -5375,6 +5382,7 @@ msgid "mRL9Vh"
 msgstr "Skapande..."
 
 #: src/features/servers/components/backups/backups-table/columns.tsx
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
 #: src/features/servers/hooks/use-status-mapping.ts
 #: src/features/servers/hooks/use-task-mapping.ts
@@ -5433,6 +5441,26 @@ msgstr "Aktivera raderingsskydd"
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "I9XNiI"
 msgstr "Den nyskapade säkerhetskopian kan bara tas bort efter att raderingsskyddet har inaktiverats."
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "zkk3nZ"
+msgstr "Ta bort säkerhetskopia"
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "3pdwu9"
+msgstr "Ta bort en säkerhetskopia av din server."
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "wl5Juv"
+msgstr "Säkerhetskopian från {date} tas bort från noden. Detta kan inte ångras."
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "ijaxLm"
+msgstr "Följande operativsystem går förlorat:"
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "SKjLPj"
+msgstr "Bör säkerhetskopian tas bort?"
 
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
 msgid "MW7EBt"
@@ -5674,6 +5702,23 @@ msgstr "Ändra plan"
 msgid "YeQq19"
 msgstr "Förbereder kassan..."
 
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
+#: src/features/servers/components/rdns/records-table/columns.tsx
+msgid "LUHXQL"
+msgstr "Ta bort PTR-post"
+
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
+msgid "LuQ-pB"
+msgstr "Ta bort en PTR-post för din server."
+
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
+msgid "2VDNVp"
+msgstr "Omvänd uppslagning för {ip} pekar inte längre på {hostname}. E-post som skickas från den här adressen kan avvisas."
+
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
+msgid "uoUX6n"
+msgstr "Bör PTR-posten tas bort?"
+
 #: src/features/servers/components/rdns/records-card.tsx
 msgid "Z2vqA3"
 msgstr "PTR Records"
@@ -5685,10 +5730,6 @@ msgstr "{count, plural, =1 {# PTR-post} other {# PTR-poster}}"
 #: src/features/servers/components/rdns/records-table/columns.tsx
 msgid "99tjyG"
 msgstr "IP"
-
-#: src/features/servers/components/rdns/records-table/columns.tsx
-msgid "LUHXQL"
-msgstr "Ta bort PTR-post"
 
 #: src/features/servers/components/rdns/records-table/index.tsx
 msgid "q9ZR74"
@@ -5813,10 +5854,6 @@ msgid "lgSmVl"
 msgstr "ISO-avbildning monterad. Ändringen träder i kraft vid nästa start."
 
 #: src/features/servers/components/server-mount-dialog.tsx
-msgid "bmliQK"
-msgstr "Det gick inte att montera ISO-avbildningen."
-
-#: src/features/servers/components/server-mount-dialog.tsx
 msgid "1INFXA"
 msgstr "ISO-avbildning avmonterad. Ändringen träder i kraft vid nästa start."
 
@@ -5879,6 +5916,32 @@ msgstr "Kopiera IP"
 #: src/features/servers/components/servers-list.tsx
 msgid "nWQFic"
 msgstr "Förnya"
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "rWbrOx"
+msgstr "Ta bort brandväggsregel"
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "JfwSAy"
+msgstr "Ta bort en regel från din brandvägg."
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "wTEfoa"
+msgstr "Regel {position} tas bort från Virtbase-brandväggen. Detta kan inte ångras."
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "rsSUP3"
+msgstr "Port"
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "LgbKvU"
+msgstr "Kommentar"
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "pc6aEi"
+msgstr "Bör regeln tas bort?"
 
 #: src/features/servers/firewall/components/firewall-action-select.tsx
 msgid "ObQE5T"
@@ -5956,11 +6019,6 @@ msgstr "Vilken adress som helst"
 msgid "08nIQL"
 msgstr "Matcha endast trafik från denna adress eller nätverk, till exempel 10.0.0.0/8. Lämna tomt för att matcha vilken adress som helst."
 
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
-msgid "LgbKvU"
-msgstr "Kommentar"
-
 #: src/features/servers/firewall/components/firewall-rules-card.tsx
 msgid "Qov8tl"
 msgstr "Brandväggsregler"
@@ -6018,14 +6076,6 @@ msgid "H_r5m6"
 msgstr "Flytta ner"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
-msgid "AFkUOq"
-msgstr "Kunde inte generera regler. Försök igen."
-
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
-msgid "N8n7F4"
-msgstr "Kunde inte skapa regeln. Försök igen."
-
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "w-tZ4Z"
 msgstr "Generera brandväggsregler"
 
@@ -6072,6 +6122,14 @@ msgstr "Trafiken måste passera båda brandväggarna. Virtbase kan ännu inte l�
 #: src/features/servers/firewall/components/guest-firewall-alert.tsx
 msgid "C03sMA"
 msgstr "Trafiken måste passera båda brandväggarna. Reglerna listas nedan."
+
+#: src/features/servers/firewall/hooks/use-create-firewall-rule.ts
+msgid "mJ0yAx"
+msgstr "Brandväggsregeln kunde inte skapas."
+
+#: src/features/servers/firewall/hooks/use-delete-firewall-rule.ts
+msgid "3Kd2EU"
+msgstr "Brandväggsregeln kunde inte tas bort."
 
 #: src/features/servers/firewall/hooks/use-finding-mapping.ts
 msgid "6tQJAd"
@@ -6125,6 +6183,62 @@ msgstr "Acceptera"
 msgid "j8RTUO"
 msgstr "Släppa"
 
+#: src/features/servers/firewall/hooks/use-generate-firewall-rule.ts
+msgid "AFkUOq"
+msgstr "Kunde inte generera regler. Försök igen."
+
+#: src/features/servers/firewall/hooks/use-move-firewall-rule.ts
+msgid "AocbVN"
+msgstr "Brandväggsreglerna kunde inte ordnas om."
+
+#: src/features/servers/firewall/hooks/use-update-firewall-options.ts
+msgid "gUdmaM"
+msgstr "Brandväggsinställningarna kunde inte uppdateras."
+
+#: src/features/servers/firewall/hooks/use-update-firewall-rule.ts
+msgid "HixF5T"
+msgstr "Brandväggsregeln kunde inte uppdateras."
+
+#: src/features/servers/hooks/advanced/use-update-advanced-settings.ts
+msgid "TLEvHC"
+msgstr "De avancerade inställningarna kunde inte uppdateras."
+
+#: src/features/servers/hooks/backups/use-create-backup.ts
+msgid "VEvlmq"
+msgstr "Säkerhetskopian kunde inte skapas."
+
+#: src/features/servers/hooks/backups/use-delete-backup.ts
+msgid "VZShzt"
+msgstr "Säkerhetskopian kunde inte tas bort."
+
+#: src/features/servers/hooks/backups/use-restore-backup.ts
+msgid "lFzlNs"
+msgstr "Säkerhetskopian kunde inte återställas."
+
+#: src/features/servers/hooks/backups/use-update-backup.ts
+msgid "GwAFh4"
+msgstr "Säkerhetskopian kunde inte uppdateras."
+
+#: src/features/servers/hooks/overview/use-change-template.ts
+msgid "8g0ePs"
+msgstr "Operativsystemet kunde inte ändras."
+
+#: src/features/servers/hooks/overview/use-rename-server.ts
+msgid "WkH31C"
+msgstr "Servern kunde inte byta namn."
+
+#: src/features/servers/hooks/overview/use-reset-server-password.ts
+msgid "afiU1l"
+msgstr "Lösenordet kunde inte återställas."
+
+#: src/features/servers/hooks/rdns/use-delete-pointer-record.ts
+msgid "OqBG_o"
+msgstr "PTR-posten kunde inte tas bort."
+
+#: src/features/servers/hooks/rdns/use-upsert-pointer-record.ts
+msgid "v_PJM7"
+msgstr "PTR-posten kunde inte sparas."
+
 #: src/features/servers/hooks/use-agent-status-mapping.ts
 msgid "D7fMMu"
 msgstr "Gästagenten körs"
@@ -6177,6 +6291,10 @@ msgstr "Gästagentens status är inte tillgänglig"
 msgid "XiMFvI"
 msgstr "Virtbase kunde inte kontrollera gästagenten just nu. Försök igen senare."
 
+#: src/features/servers/hooks/use-mount-image.ts
+msgid "bmliQK"
+msgstr "Det gick inte att montera ISO-avbildningen."
+
 #: src/features/servers/hooks/use-status-mapping.ts
 msgid "ccU6l_"
 msgstr "Online"
@@ -6228,6 +6346,14 @@ msgstr "Säkerhetskopierar..."
 #: src/features/servers/hooks/use-task-mapping.ts
 msgid "98thq0"
 msgstr "Återställer säkerhetskopian..."
+
+#: src/features/servers/hooks/use-unmount-image.ts
+msgid "D6e_ae"
+msgstr "ISO-avbildningen kunde inte avmonteras."
+
+#: src/features/servers/hooks/use-update-server-status.ts
+msgid "TpRHA3"
+msgstr "Serverns tillstånd kunde inte ändras."
 
 #: src/ui/app-footer.tsx
 msgid "4XCigB"
