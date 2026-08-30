@@ -23,7 +23,6 @@ import { formatBits, formatBytes } from "@virtbase/utils";
 import type { OrderConfigurationSnapshot } from "@virtbase/validators";
 import { createFormatter, createTranslator } from "use-intl/core";
 import { FatalError } from "workflow";
-import { integrations } from "../../integrations";
 import type { InvoiceCountry } from "../../lib/invoicing";
 import {
   EU_VAT_RATES,
@@ -59,6 +58,12 @@ export async function generateInvoiceStep({
     );
   }
 
+  // Loaded here rather than imported: `integrations` is a module-level
+  // const inside an import cycle, and a static import of it from a step
+  // module can be evaluated while that module is still initialising -
+  // which fails the whole step bundle with a TDZ error, not just this
+  // step. `notifications/dispatch.ts` breaks the same cycle the same way.
+  const { integrations } = await import("../../integrations");
   const invoiceProvider = await integrations.resolve("invoice");
   if (!invoiceProvider) {
     throw new FatalError(

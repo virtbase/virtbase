@@ -22,7 +22,6 @@ import {
   subnetAllocations,
   subnets,
 } from "@virtbase/db/schema";
-import { integrations } from "../../integrations";
 
 type ResetPointerRecordsStepParams = {
   serverId: string;
@@ -33,6 +32,12 @@ export async function resetPointerRecordsStep({
 }: ResetPointerRecordsStepParams) {
   "use step";
 
+  // Loaded here rather than imported: `integrations` is a module-level
+  // const inside an import cycle, and a static import of it from a step
+  // module can be evaluated while that module is still initialising -
+  // which fails the whole step bundle with a TDZ error, not just this
+  // step. `notifications/dispatch.ts` breaks the same cycle the same way.
+  const { integrations } = await import("../../integrations");
   const dns = await integrations.resolve("dns");
   if (!dns) {
     console.warn(

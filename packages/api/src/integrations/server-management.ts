@@ -33,8 +33,20 @@ import type {
   ServerStatusOperations,
 } from "@virtbase/ports";
 import { ServerManagementError } from "@virtbase/ports";
+// [!] Type-only, and `appRouter` itself is loaded lazily in `callerFor`.
+//
+// A value import here closes a cycle: `root.ts` imports every router, several
+// of which import `../integrations` to reach the registry, and this module is
+// registered *by* that file. The cycle is survivable while nothing reads
+// `integrations` during module initialisation - but it also drags the whole
+// router tree, and with it Stripe and the composition root, into every bundle
+// that touches an integration, including the workflow step bundle. There it
+// only takes one ordering where `integrations` is read before its `const` is
+// initialised to produce `Cannot access 'd' before initialization` at runtime.
+//
+// `notifications/dispatch.ts`, `notifications/deliver.ts` and `abuse/poll.ts`
+// already break the same cycle the same way.
 import type { AppRouter } from "../root";
-import { appRouter } from "../root";
 
 type Caller = ReturnType<AppRouter["createCaller"]>;
 
@@ -92,6 +104,8 @@ const callerFor = async (actor: ServerManagementActor): Promise<Caller> => {
       `No user with id ${actor.userId}`,
     );
   }
+
+  const { appRouter } = await import("../root");
 
   return appRouter.createCaller({
     db,
