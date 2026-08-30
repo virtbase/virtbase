@@ -36,7 +36,32 @@ Original snippet-upload patch:
 https://bugzilla.proxmox.com/attachment.cgi?id=389
 
 Tested with:
-- Proxmox VE 9.1.5
+- `libpve-storage-perl` 9.1.8 (snippet upload, snippet mode)
+- `qemu-server` 9.2.7 (hookscript)
+
+Pin the *package* versions, not the `pve-manager` version. They move
+independently - a node reporting `pve-manager/9.2.10` can be carrying
+`libpve-storage-perl` 9.1.8, and it is the package that owns the patched file.
+
+## Editing a patch desynchronises already-patched nodes
+
+`patch.sh` decides that a patch is `applied` by reverse-applying it, so a patch
+only recognises trees it produced itself. Change what a patch *writes* - even
+the indentation of one line - and every node carrying the old output classifies
+as `unknown`: the forward dry-run fails because the other hunks are already
+there, and the reverse fails on the line that moved.
+
+Nothing is broken, and the machinery is right to refuse: it cannot tell that
+drift apart from a genuine version mismatch. But it does not self-heal, so
+after editing a patch, restore the stock file on each node and let the trigger
+reapply:
+
+```bash
+apt-get install --reinstall -y libpve-storage-perl   # or qemu-server
+```
+
+That wipes the old output, and the dpkg trigger reapplies every patch from the
+current package in one step. Verify with `patch.sh status`.
 
 ## Patch files in this directory
 
