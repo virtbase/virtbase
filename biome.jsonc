@@ -70,6 +70,7 @@
       "preset": "recommended",
       "suspicious": {
         "noArrayIndexKey": "off",
+        "noImportCycles": "warn",
         "noImplicitAnyLet": "warn",
         "noDuplicateObjectKeys": "warn",
         "noTsIgnore": "error",
