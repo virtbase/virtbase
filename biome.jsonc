@@ -26,6 +26,23 @@
   "assist": { "actions": { "source": { "organizeImports": "on" } } },
   "linter": {
     "enabled": true,
+    // Every domain is named explicitly because auto-detection cannot see this
+    // repo's dependencies, in two separate ways:
+    //
+    //  - it reads a version out of package.json and cannot parse bun's
+    //    `catalog:` protocol, which hides react, next and tailwindcss;
+    //  - it reads the *nearest* package.json, so `turbo` in the root
+    //    devDependencies does not enable anything for files under `apps/web`.
+    //
+    // The react and next domains were therefore silently off despite
+    // `recommended` being on, and `test` would never fire at all - it is
+    // detected from jest/mocha/ava/vitest, and this repo runs `bun:test`.
+    "domains": {
+      "react": "recommended",
+      "next": "recommended",
+      "turborepo": "recommended",
+      "test": "recommended"
+    },
     "rules": {
       "style": {
         "noRestrictedImports": {
@@ -52,6 +69,7 @@
       },
       "preset": "recommended",
       "suspicious": {
+        "noArrayIndexKey": "off",
         "noImplicitAnyLet": "warn",
         "noDuplicateObjectKeys": "warn",
         "noTsIgnore": "error",
@@ -67,11 +85,24 @@
       },
       "correctness": {
         "noUnusedImports": "warn",
-        "noUnusedVariables": "warn"
+        "noUnusedVariables": "warn",
+        "useExhaustiveDependencies": "warn",
+        // Every current hit is a hook inside a `cell:` renderer in a
+        // `*-table/columns.tsx`. Those run correctly - `flexRender` mounts a
+        // function cell through `createElement`, so React treats it as a
+        // component - but neither this rule nor React Compiler can see that
+        // statically, which is also why the compiler declines to optimize them.
+        "useHookAtTopLevel": "warn"
       },
       "nursery": {
         "noMisusedPromises": "error",
         "noFloatingPromises": "error",
+        // Inert today, deliberately. On top of the domain this rule checks the
+        // nearest package.json for react >= 19 itself, and `domains` does not
+        // lift that - so under `"react": "catalog:"` it reports nothing. Left
+        // enabled so it starts working by itself once biome understands
+        // catalogs, rather than us having to remember it exists.
+        "useReactCompiler": "warn",
         "useSortedClasses": {
           "level": "warn",
           "fix": "safe",

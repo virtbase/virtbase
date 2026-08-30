@@ -18,14 +18,6 @@
 import { expect, test } from "@playwright/test";
 import { appOrigin, appUrl, publicOrigin, publicUrl } from "../support/urls";
 
-/**
- * The locale `/` redirects to, and the one every `x-default` advertises.
- * Hard-coded rather than imported from `@/i18n/config`: moving the default is a
- * deliberate search decision, and it should not be possible to make it without
- * this test failing.
- */
-const X_DEFAULT_LOCALE = "en";
-
 test.describe("meta", () => {
   // robots, sitemap and security.txt must be served on both hosts.
   const origins = [publicOrigin, appOrigin];

@@ -107,6 +107,7 @@ const ChartStyle = ({ id, config }: { id: string; config: ChartConfig }) => {
 
   return (
     <style
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: the only way to emit per-chart CSS custom properties. Every interpolated value comes from a developer-authored `ChartConfig`, not from rendered data.
       dangerouslySetInnerHTML={{
         __html: Object.entries(THEMES)
           .map(

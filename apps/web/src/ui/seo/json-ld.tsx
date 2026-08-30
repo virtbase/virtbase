@@ -25,6 +25,7 @@ export default function JsonLd({
   return (
     <script
       type="application/ld+json"
+      // biome-ignore lint/security/noDangerouslySetInnerHtml: a JSON-LD block has to be the script's text content, and `schema` is a typed `schema-dts` value built in app code - never markup, and never anything a visitor supplies.
       dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
     />
   );

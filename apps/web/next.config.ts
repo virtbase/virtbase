@@ -30,6 +30,7 @@ const nextConfig: NextConfig = {
   allowedDevOrigins: ["*.virtbase.localhost"],
   cacheComponents: true,
   crossOrigin: "anonymous",
+  reactCompiler: true,
   devIndicators: {
     position: "bottom-right",
   },
