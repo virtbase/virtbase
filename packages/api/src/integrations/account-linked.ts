@@ -16,7 +16,6 @@
  */
 
 import type { AccountLinkedHandler } from "@virtbase/auth";
-import { integrations } from "./index";
 
 /**
  * Fans a linked social account out to every integration that implements the
@@ -30,6 +29,13 @@ import { integrations } from "./index";
  * the login: errors are logged and dropped.
  */
 export const dispatchAccountLinked: AccountLinkedHandler = async (account) => {
+  // [!] Loaded here, not imported. `./index` re-exports this module, so a
+  // static `import { integrations } from "./index"` makes this file evaluate
+  // *during* that module's own initialisation - before `integrations` is
+  // assigned. That is a temporal dead zone, and because it throws while the
+  // module graph is still initialising it fails every consumer of the bundle,
+  // not just this handler.
+  const { integrations } = await import("./index");
   const providers = await integrations.resolveAll("identity");
 
   await Promise.all(

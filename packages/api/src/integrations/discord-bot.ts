@@ -16,7 +16,6 @@
  */
 
 import { buildInviteUrl } from "@virtbase/integration-discord/utils";
-import { integrationConfigStore } from "./index";
 
 /** What the customer portal needs to advertise the bot. */
 export interface DiscordBotInfo {
@@ -36,6 +35,11 @@ export interface DiscordBotInfo {
  * application id yet, so a card built on it simply does not render.
  */
 export const getDiscordBotInfo = async (): Promise<DiscordBotInfo | null> => {
+  // [!] Loaded here, not imported. `./index` re-exports this module, so a
+  // static import of its `integrationConfigStore` const makes this file
+  // evaluate during that module's own initialisation, before the const is
+  // assigned - a temporal dead zone that fails the whole bundle.
+  const { integrationConfigStore } = await import("./index");
   const store = integrationConfigStore;
   if (!store) return null;
 

@@ -22,7 +22,13 @@ import { SubnetAllocationSchema } from "../subnet-allocations";
 import { SubnetSchema } from "../subnets";
 import { ObjectTimestampSchema } from "../timestamps";
 import { preprocessQueryArray } from "../utils";
-import { ServerSchema } from ".";
+// [!] From the leaf, not the barrel. `./index` re-exports this module, so
+// importing through it makes this file evaluate during that barrel's own
+// initialisation - and `ServerSchema` is read at module scope below, before
+// the re-export binding exists. That is a temporal dead zone which throws
+// while the graph is still initialising, taking the whole bundle with it.
+// `./index` itself imports `ServerSchema` from `./shared` for the same reason.
+import { ServerSchema } from "./shared";
 
 export const PointerRecordSchema = z.object({
   id: z
