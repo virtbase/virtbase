@@ -1,0 +1,14 @@
+[Unit]
+Description=Reapply the Virtbase Proxmox VE patches
+Documentation=file:/usr/share/doc/virtbase-pve-patches/README.md
+# The patches are only meaningful against an installed Proxmox tree.
+ConditionPathIsDirectory=/usr/share/perl5/PVE
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/usr/sbin/virtbase-pve-repatch apply
+# No Restart=. A patch that no longer fits cannot be fixed by running again,
+# and leaving the unit in `failed` is the point: node_exporter's systemd
+# collector exports that state, so a drifted node is visible to the fleet
+# without anything else being configured.

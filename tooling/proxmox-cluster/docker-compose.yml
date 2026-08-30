@@ -12,7 +12,7 @@ x-pve-node: &pve-node
   # Built rather than pulled: the Dockerfile is `dockurr/proxmox` plus the Ceph
   # server packages, so recreating a container does not mean reinstalling them.
   build:
-    # Repository root: the image needs `scripts/patches`.
+    # Repository root: the image needs `tooling/pve-patches`.
     context: ../..
     dockerfile: tooling/proxmox-cluster/Dockerfile
   image: virtbase/proxmox-ceph

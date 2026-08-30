@@ -1,0 +1,24 @@
+#!/bin/sh
+#
+# Leave the node on stock Proxmox when the package is removed.
+
+set -e
+
+case "$1" in
+  remove)
+    # `remove` only. On `upgrade` the new version's postinst reapplies anyway,
+    # and reverting here would leave the node unpatched in between.
+    if [ -x /usr/share/virtbase-pve-patches/patch.sh ]; then
+      /usr/share/virtbase-pve-patches/patch.sh unapply || true
+    fi
+    ;;
+  upgrade | deconfigure | failed-upgrade) ;;
+  *)
+    echo "prerm called with unknown argument \`$1'" >&2
+    exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

@@ -1,0 +1,46 @@
+#!/bin/sh
+#
+# Reapply the patches on install and whenever the file trigger fires.
+
+set -e
+
+case "$1" in
+  configure | triggered)
+    # Deliberately not allowed to fail the transaction.
+    #
+    # `virtbase-pve-repatch` exits non-zero when a patch no longer fits, which
+    # is right for the timer and for a human running it. Propagating that here
+    # would leave dpkg half-configured on a hypervisor in the middle of an
+    # unattended upgrade, and block every later apt run - a worse outage than
+    # the one it would be reporting. The failure still reaches the journal and
+    # the metrics file, and the alert fires from there.
+    if [ -x /usr/sbin/virtbase-pve-repatch ]; then
+      if ! virtbase-pve-repatch apply; then
+        # Re-run through systemd so the failure is recorded as unit state,
+        # which the fleet's Alloy already scrapes. Without this a drift found
+        # by the trigger stays invisible until the daily timer next runs.
+        #
+        # On a first install the unit is not registered yet, because the
+        # debhelper-generated section below runs after this one, so this is a
+        # no-op there and the timer picks it up. The journal has the reason
+        # either way.
+        #
+        # Do not write the debhelper substitution token in a comment: it is a
+        # plain string replacement, and it would splice generated code into the
+        # middle of this block.
+        if [ -d /run/systemd/system ]; then
+          systemctl start --no-block virtbase-pve-repatch.service || true
+        fi
+      fi
+    fi
+    ;;
+  abort-upgrade | abort-remove | abort-deconfigure) ;;
+  *)
+    echo "postinst called with unknown argument \`$1'" >&2
+    exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

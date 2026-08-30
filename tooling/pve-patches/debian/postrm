@@ -1,0 +1,20 @@
+#!/bin/sh
+#
+# Drop the metrics file, so a removed package stops reporting a stale state.
+
+set -e
+
+case "$1" in
+  remove | purge)
+    rm -f /var/lib/prometheus/node-exporter/virtbase_pve_patches.prom
+    ;;
+  upgrade | failed-upgrade | abort-install | abort-upgrade | disappear) ;;
+  *)
+    echo "postrm called with unknown argument \`$1'" >&2
+    exit 1
+    ;;
+esac
+
+#DEBHELPER#
+
+exit 0

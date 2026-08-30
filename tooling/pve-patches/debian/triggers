@@ -1,0 +1,8 @@
+# libpve-storage-perl owns Storage.pm and API2/Storage/Status.pm, qemu-server
+# owns API2/Qemu.pm. Watching the directory rather than naming the files means
+# a Proxmox reorganisation cannot quietly stop the trigger from firing.
+#
+# noawait: nothing upstream needs to wait for us to finish, and making
+# qemu-server's configured state depend on our postinst would turn a failed
+# rebase into a broken dpkg state on a hypervisor.
+interest-noawait /usr/share/perl5/PVE

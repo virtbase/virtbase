@@ -20,7 +20,7 @@ import type { ClusterConfig } from "../support/cluster";
 import { clusterIsReachable, readClusterConfig } from "../support/cluster";
 
 /**
- * The three Proxmox patches in `scripts/patches` are what make provisioning
+ * The three Proxmox patches in `tooling/pve-patches` are what make provisioning
  * work: without them cloud-init snippets cannot be uploaded, an uploaded
  * hookscript is not executable, and `hookscript` is rejected on VM config
  * updates. They are applied when the node image is built, so an upstream

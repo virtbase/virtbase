@@ -34,7 +34,7 @@ const HOOKSCRIPT_DIR = "src/features/admin/assets/proxmox-nodes";
  * and `PVE::GuestHelpers::check_hookscript` rejects a config referring to a
  * script that is missing *or* not executable - so a node without this file
  * cannot run `applyHardwareConfigStep` at all. The upload API cannot express a
- * file mode, which is what `scripts/patches/proxmox-snippet-mode.patch` is
+ * file mode, which is what `tooling/pve-patches/proxmox-snippet-mode.patch` is
  * for: it gives an uploaded snippet starting with a shebang mode 0755.
  *
  * Shared by the admin "create node" action and the dev-cluster seed, because

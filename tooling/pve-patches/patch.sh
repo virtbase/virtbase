@@ -33,6 +33,7 @@ Usage:
   ./patch.sh apply              apply all patches (idempotent)
   ./patch.sh unapply            revert all patches (idempotent)
   ./patch.sh status             show applied / pending state per patch
+  ./patch.sh status --json      the same, as JSON (used by virtbase-pve-repatch)
   ./patch.sh dry-run-apply      check that apply would succeed
   ./patch.sh dry-run-unapply    check that unapply would succeed
 
@@ -207,6 +208,25 @@ dry_run_unapply_patch_file() {
   esac
 }
 
+# Machine-readable form of `status`, for `virtbase-pve-repatch` to turn into
+# Prometheus metrics. It lives here rather than in the wrapper so there is one
+# classifier: a state the alert fires on is the same state a human reading
+# `status` is shown.
+#
+# Patch names come from this directory, so no JSON escaping is needed.
+status_json() {
+  local first=1 f label state
+  printf '{"base":"%s","patches":[' "${PVE_BASE}"
+  for f in "${PATCH_FILES[@]}"; do
+    label="$(basename "${f}")"
+    state="$(classify_patch "${f}")"
+    [[ "${first}" -eq 1 ]] || printf ','
+    first=0
+    printf '{"patch":"%s","state":"%s"}' "${label}" "${state}"
+  done
+  printf ']}\n'
+}
+
 status_patch_file() {
   local patch_file="$1"
   local label
@@ -283,7 +303,11 @@ main() {
       report_failures
       ;;
     status)
-      iterate_forward status_patch_file
+      if [[ "${2:-}" == "--json" ]]; then
+        status_json
+      else
+        iterate_forward status_patch_file
+      fi
       ;;
     *)
       usage

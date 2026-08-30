@@ -11,7 +11,7 @@
 #     executable, and `hookscript` is rejected on VM config updates - which is
 #     to say provisioning does not work.
 #
-# Build context is the repository root so `scripts/patches` is reachable.
+# Build context is the repository root so `tooling/pve-patches` is reachable.
 FROM dockurr/proxmox
 
 ARG CEPH_RELEASE=squid
@@ -24,7 +24,7 @@ RUN echo "deb http://download.proxmox.com/debian/ceph-${CEPH_RELEASE} trixie no-
     && rm -rf /var/lib/apt/lists/*
 
 # Kept in the image so `patch.sh status` / `unapply` still work on a running node.
-COPY scripts/patches /opt/patches
+COPY tooling/pve-patches /opt/patches
 
 # Fails the build if a patch stops applying - which is what should happen when
 # the upstream image moves to a Proxmox version these no longer fit.

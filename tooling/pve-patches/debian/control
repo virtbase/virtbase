@@ -1,0 +1,29 @@
+Source: virtbase-pve-patches
+Section: admin
+Priority: optional
+Maintainer: Janic Bellmann <contact@janic.dev>
+Build-Depends: debhelper-compat (= 13)
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+Homepage: https://virtbase.com
+
+Package: virtbase-pve-patches
+Architecture: all
+Depends: ${misc:Depends},
+         patch,
+         libpve-storage-perl,
+         qemu-server
+Description: Virtbase patches for Proxmox VE
+ Virtbase needs three changes to Proxmox VE that are not upstream: uploading
+ snippets through the storage API, giving an uploaded hookscript its executable
+ bit, and accepting the hookscript option on a general VM config update.
+ Without them guest provisioning does not work.
+ .
+ The patched files belong to libpve-storage-perl and qemu-server, so upgrading
+ either one reverts the patches. This package carries a dpkg file trigger on
+ /usr/share/perl5/PVE and reapplies them whenever anything writes there, which
+ is what makes unattended-upgrades safe.
+ .
+ It also publishes the per-patch state to the node_exporter textfile collector.
+ A patch that no longer fits its context after a Proxmox upgrade cannot be
+ reapplied by anyone, so that state is alerted on rather than retried.

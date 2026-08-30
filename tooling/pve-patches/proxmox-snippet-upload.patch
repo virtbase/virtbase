@@ -14,7 +14,7 @@
  
              $path = PVE::Storage::get_import_dir($cfg, $storage);
 +        } elsif ($content eq 'snippets') {
-+          $path = PVE::Storage::get_snippet_dir($cfg, $storage); 
++            $path = PVE::Storage::get_snippet_dir($cfg, $storage);
          } else {
              raise_param_exc({ content => "upload content type '$content' not allowed" });
          }
@@ -44,7 +44,7 @@
  
 +sub get_snippet_dir {
 +    my ($cfg, $storeid) = @_;
-++
++
 +    my $scfg = storage_config($cfg, $storeid);
 +    my $plugin = PVE::Storage::Plugin->lookup($scfg->{type});
 +

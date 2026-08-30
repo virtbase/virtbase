@@ -43,7 +43,7 @@ that is seconds: `bootstrap.sh` checks each stage and skips what is already done
 | Ceph | 3 mons, 3 mgrs, 3 OSDs, `vm-storage` (RBD) and `cephfs` |
 | Web UI | <https://127.0.0.1:8006>, `root` / `virtbase` (`8007`/`8008` for the others) |
 | Credentials | `cluster.json` - gitignored, holds a live API token |
-| Patches | `scripts/patches` applied at image build (snippet upload, snippet mode, hookscript) |
+| Patches | `tooling/pve-patches` applied at image build (snippet upload, snippet mode, hookscript) |
 
 `cephfs` is **shared** and carries iso/backup/snippets, so every node sees the same
 ISO. That is the condition the `// TODO: Get correct storage node` in
@@ -121,7 +121,7 @@ happy path. Each workaround in `bootstrap.sh` is load-bearing:
 
 ## The Proxmox patches
 
-`scripts/patches` holds three patches to Proxmox's own Perl sources, and
+`tooling/pve-patches` holds three patches to Proxmox's own Perl sources, and
 provisioning does not work without them:
 
 - **snippet upload** - stock Proxmox refuses `snippets` as an upload content

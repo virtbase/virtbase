@@ -1,0 +1,13 @@
+[Unit]
+Description=Daily check that the Virtbase Proxmox VE patches are still applied
+Documentation=file:/usr/share/doc/virtbase-pve-patches/README.md
+
+[Timer]
+OnCalendar=daily
+# Spread the fleet out so a cluster does not restart pvedaemon in lockstep.
+RandomizedDelaySec=30m
+# Catch up after a node was down at the scheduled time.
+Persistent=true
+
+[Install]
+WantedBy=timers.target

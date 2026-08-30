@@ -1,0 +1,21 @@
+#!/usr/bin/make -f
+
+%:
+	dh $@
+
+# The patches and patch.sh have to stay adjacent: patch.sh resolves its default
+# patch list relative to its own location.
+override_dh_auto_install:
+	install -d debian/virtbase-pve-patches/usr/share/virtbase-pve-patches
+	install -m 0755 patch.sh \
+	  debian/virtbase-pve-patches/usr/share/virtbase-pve-patches/patch.sh
+	install -m 0644 proxmox-snippet-upload.patch proxmox-snippet-mode.patch \
+	  proxmox-hookscript.patch \
+	  debian/virtbase-pve-patches/usr/share/virtbase-pve-patches/
+	install -D -m 0755 virtbase-pve-repatch \
+	  debian/virtbase-pve-patches/usr/sbin/virtbase-pve-repatch
+
+# The timer is a safety net for edits that do not go through dpkg, so it should
+# start on install without anyone enabling it.
+override_dh_installsystemd:
+	dh_installsystemd --name=virtbase-pve-repatch --no-restart-after-upgrade

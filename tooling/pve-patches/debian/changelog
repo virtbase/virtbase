@@ -1,0 +1,8 @@
+virtbase-pve-patches (1.0.0) stable; urgency=medium
+
+  * Initial release. Ships the snippet-upload, snippet-mode and hookscript
+    patches with a dpkg trigger that reapplies them after any package writes
+    under /usr/share/perl5/PVE, and publishes their state as Prometheus
+    textfile metrics.
+
+ -- Janic Bellmann <contact@janic.dev>  Sat, 30 Aug 2026 12:00:00 +0000
