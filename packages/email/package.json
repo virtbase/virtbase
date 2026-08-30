@@ -28,6 +28,7 @@
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "email": "email dev --dir ./src/templates -p 3333",
+    "test": "bun --env-file=../../.env.test test --timeout 20000",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

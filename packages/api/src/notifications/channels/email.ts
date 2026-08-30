@@ -73,6 +73,17 @@ export class EmailNotificationChannel implements NotificationChannel {
     return true;
   }
 
+  /**
+   * Sends, and lets a failure out.
+   *
+   * Nothing here catches on purpose. `sendEmail` raises an
+   * `EmailDeliveryError` when the provider refuses the message or when none is
+   * configured, and `deliverNotification` turns that into a failed row with a
+   * backoff that `/api/cron/retry-notifications` sweeps. Returning a receipt
+   * regardless - which is what this did while `sendEmail` swallowed its own
+   * errors - marked the delivery delivered and put the message beyond the
+   * retry machinery entirely.
+   */
   async send(notification: Notification): Promise<NotificationReceipt> {
     const title = String(notification.params.title ?? notification.key);
     const body = String(notification.params.body ?? "");

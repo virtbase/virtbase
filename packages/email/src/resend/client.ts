@@ -17,6 +17,32 @@
 
 import { Resend } from "resend";
 
-export const resend = process.env.RESEND_API_KEY
-  ? new Resend(process.env.RESEND_API_KEY)
-  : null;
+let cached: { apiKey: string; client: Resend } | null = null;
+
+/**
+ * The Resend client, or null when no API key is configured.
+ *
+ * Read at call time rather than captured at module load, so that "is there a
+ * provider at all?" is answered by the environment the send actually runs in.
+ * The instance is memoised on the key, so this stays one construction per
+ * process in the normal case.
+ */
+export const getResendClient = (): Resend | null => {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return null;
+
+  if (cached?.apiKey !== apiKey) {
+    cached = { apiKey, client: new Resend(apiKey) };
+  }
+
+  return cached.client;
+};
+
+/**
+ * The same client, bound once at module load.
+ *
+ * Kept for consumers that hold the instance directly - the Resend webhook
+ * route reads inbound mail through it. Sending goes through
+ * {@link getResendClient}.
+ */
+export const resend = getResendClient();

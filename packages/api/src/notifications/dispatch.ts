@@ -143,6 +143,73 @@ const resolveCandidates = async (
 };
 
 /**
+ * The channel a notification that reached no channel is filed under.
+ *
+ * A placeholder rather than a real id, and never resolvable: `findChannel`
+ * answers null for it, so a row carrying it can only ever be skipped.
+ */
+const NO_CHANNEL = "none";
+
+const noCandidateReason = (input: DispatchNotificationInput): string =>
+  "user" === input.audience.kind
+    ? "No enabled integration provides a notification channel that can reach this customer."
+    : `No enabled operator target accepts "${input.key}" at severity "${input.severity}".`;
+
+/**
+ * Files a notification that had nowhere to go.
+ *
+ * Returning early instead left no trace at all: no delivery row, no log line,
+ * nothing for anyone to find later. The abuse desk puts a customer on a
+ * 24-hour response clock and escalates enforcement on their silence off this
+ * same table, so "we can see we never reached them" has to be answerable, and
+ * the answer cannot be an absence.
+ *
+ * The row is `skipped` - the existing status for "this delivery was not
+ * attempted" - with the reason in `error`, and it takes the same dedupe key a
+ * real candidate would have, so a repeated dispatch about one case does not
+ * fill the log with copies of the same dead end.
+ *
+ * It is terminal. `retryFailedNotifications` selects `failed`, and even if it
+ * did not, a retry re-sends one row through one channel; it never asks again
+ * whether a channel exists. Making "nobody could be reached" recoverable
+ * means re-resolving candidates on the retry path, which is a change to the
+ * retry design rather than a use of it.
+ */
+const recordNoCandidates = async (
+  input: DispatchNotificationInput,
+  empty: DispatchResult,
+): Promise<DispatchResult> => {
+  const reason = noCandidateReason(input);
+  console.warn(`[notifications] "${input.key}" reached nobody. ${reason}`);
+
+  const rows = await db
+    .insert(notificationDeliveries)
+    .values({
+      notificationKey: input.key,
+      dedupeKey: derivedDedupeKey(input, {
+        channel: NO_CHANNEL,
+        targetId: null,
+      }),
+      audience: input.audience.kind,
+      userId: "user" === input.audience.kind ? input.audience.userId : null,
+      targetId: null,
+      channel: NO_CHANNEL,
+      severity: input.severity,
+      groupKey: input.groupKey ?? null,
+      params: input.params ?? {},
+      url: input.url ?? null,
+      status: "skipped" as const,
+      error: reason,
+    })
+    .onConflictDoNothing({ target: notificationDeliveries.dedupeKey })
+    .returning();
+
+  return 0 === rows.length
+    ? { ...empty, deduplicated: 1 }
+    : { ...empty, created: 1, skipped: 1 };
+};
+
+/**
  * Records a notification and sends it.
  *
  * The row is written before anything leaves the building, so "did the customer
@@ -172,7 +239,7 @@ export const dispatchNotification = async (
     return empty;
   }
 
-  if (0 === candidates.length) return empty;
+  if (0 === candidates.length) return await recordNoCandidates(input, empty);
 
   const userId = "user" === input.audience.kind ? input.audience.userId : null;
 

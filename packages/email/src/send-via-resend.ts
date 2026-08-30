@@ -18,12 +18,33 @@
 import { APP_DOMAIN, SUPPORT_EMAIL } from "@virtbase/utils";
 import { render } from "react-email";
 import type { CreateEmailOptions } from "resend";
-import { resend } from "./resend";
+import { EmailDeliveryError } from "./errors";
+import { getResendClient } from "./resend";
 import { TRUSTPILOT_AFS_EMAIL, VARIANT_TO_FROM_MAP } from "./resend/constants";
 import type {
   ResendBulkEmailOptions,
   ResendEmailOptions,
 } from "./resend/types";
+
+/**
+ * Turns one send into a thrown error, so that no failure can be mistaken for
+ * a delivery. Resend answers a revoked key, an unverified domain and a
+ * network fault the same way - `{ data: null, error }` - and never throws.
+ */
+const throwOnProviderError = (
+  result: { error?: { name?: string; message?: string } | null },
+  subject: string | undefined,
+): void => {
+  if (!result.error) return;
+
+  const { name, message } = result.error;
+  throw new EmailDeliveryError(
+    `Resend refused the email "${subject ?? "(no subject)"}": ${message ?? "unknown error"}${
+      name ? ` (${name})` : ""
+    }`,
+    { cause: result.error },
+  );
+};
 
 const resendEmailForOptions = async (
   opts: ResendEmailOptions,
@@ -43,6 +64,17 @@ const resendEmailForOptions = async (
     tags,
     unsubscribeUrl,
     trustpilotAfs = false,
+    // Held back because it selects the other half of `CreateEmailOptions`: a
+    // templated send carries no html, text or react, so it cannot simply ride
+    // along with them.
+    template,
+    // Everything else the provider understands travels through untouched -
+    // `attachments` above all, which used to be dropped here, so every invoice
+    // email went out announcing an invoice it did not carry. `cc` went the
+    // same way. Only the fields destructured above are Virtbase's own or need
+    // rewriting; the rest are Resend's and are none of this function's
+    // business.
+    ...passthrough
   } = opts;
 
   const isProdEnv = process.env.NEXT_PUBLIC_VERCEL_ENV === "production";
@@ -51,6 +83,7 @@ const resendEmailForOptions = async (
   // Build base options without rendered outputs (react/text)
   // CreateEmailOptions requires at least one of react or text
   const baseOptions = {
+    ...passthrough,
     to: isProdEnv ? to : "delivered@resend.dev",
     from: from || VARIANT_TO_FROM_MAP[variant],
     subject: `${!isProdEnv && gitBranch ? `[${gitBranch}] ` : ""}${subject}`,
@@ -71,6 +104,10 @@ const resendEmailForOptions = async (
       : headers && { headers }),
   };
 
+  // A templated send is rendered by the provider, so it takes no body at all.
+  if (template) {
+    return { ...baseOptions, template };
+  }
   // Add render options (html, react, or text) - at least one must be present
   if (html) {
     return { ...baseOptions, html };
@@ -101,34 +138,34 @@ export const sendEmailViaResend = async (
   opts: ResendEmailOptions,
   settings?: { idempotencyKey?: string },
 ) => {
+  const resend = getResendClient();
   if (!resend) {
-    console.info(
-      "RESEND_API_KEY is not set in the .env. Skipping sending email.",
+    throw new EmailDeliveryError(
+      "RESEND_API_KEY is not set, so no email could be sent through Resend.",
     );
-    return;
   }
 
   const idempotencyKey = settings?.idempotencyKey || undefined;
 
-  return await resend.emails.send(
+  const result = await resend.emails.send(
     await resendEmailForOptions(opts),
     idempotencyKey ? { idempotencyKey } : undefined,
   );
+
+  throwOnProviderError(result, opts.subject);
+
+  return result;
 };
 
 export const sendBatchEmailViaResend = async (
   emails: ResendBulkEmailOptions,
   options?: { idempotencyKey?: string },
 ) => {
+  const resend = getResendClient();
   if (!resend) {
-    console.info(
-      "RESEND_API_KEY is not set in the .env. Skipping sending email.",
+    throw new EmailDeliveryError(
+      "RESEND_API_KEY is not set, so no email could be sent through Resend.",
     );
-
-    return {
-      data: null,
-      error: null,
-    };
   }
 
   if (emails.length === 0) {
@@ -157,8 +194,15 @@ export const sendBatchEmailViaResend = async (
 
   const idempotencyKey = options?.idempotencyKey || undefined;
 
-  return await resend.batch.send(
+  const result = await resend.batch.send(
     filteredBatch,
     idempotencyKey ? { idempotencyKey } : undefined,
   );
+
+  throwOnProviderError(
+    result,
+    `${filteredBatch.length} message(s) starting "${emails[0]?.subject ?? ""}"`,
+  );
+
+  return result;
 };

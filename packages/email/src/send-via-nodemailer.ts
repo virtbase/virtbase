@@ -18,6 +18,7 @@
 import nodemailer from "nodemailer";
 import { pretty, render } from "react-email";
 import type { CreateEmailOptions } from "resend";
+import { EmailDeliveryError } from "./errors";
 import { TRUSTPILOT_AFS_EMAIL } from "./resend/constants";
 
 // Send email using NodeMailer (Recommended for local development)
@@ -38,10 +39,12 @@ export const sendViaNodeMailer = async ({
     !process.env.SMTP_USER ||
     !process.env.SMTP_PASSWORD
   ) {
-    console.info(
-      "SMTP_HOST, SMTP_PORT, SMTP_USER, and SMTP_PASSWORD must be set in the environment variables to use nodemailer. No email was sent.",
+    // A half-configured transport is a configuration error, not a delivery.
+    // `sendEmail` already refuses to route here unless all four are present,
+    // so reaching this means someone called the transport directly.
+    throw new EmailDeliveryError(
+      "SMTP_HOST, SMTP_PORT, SMTP_USER and SMTP_PASSWORD must all be set to send through nodemailer. No email was sent.",
     );
-    return;
   }
 
   const transporter = nodemailer.createTransport({
