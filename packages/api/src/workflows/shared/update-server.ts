@@ -18,8 +18,8 @@
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { servers } from "@virtbase/db/schema";
-import { revalidateTag } from "next/cache";
 import { FatalError } from "workflow";
+import { revalidateCheckout } from "./revalidate-checkout";
 
 type UpdateServerStepParams = {
   serverId: string;
@@ -53,5 +53,5 @@ export async function updateServerStep({
     },
   );
 
-  revalidateTag("checkout", "max");
+  revalidateCheckout();
 }

@@ -29,6 +29,7 @@ import {
   rollbackPerformGuestActionStep,
 } from "../shared/perform-guest-action";
 import { resizeDiskStep } from "../shared/resize-disk";
+import { runRollbacks } from "../shared/run-rollbacks";
 import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task";
 import {
   rollbackStoreServerUpgradeStep,
@@ -210,9 +211,9 @@ export async function upgradeServerWorkflow({
 
     // 8. TODO: Optionally send email to the user that the server has been upgraded
   } catch (error) {
-    for (const rollback of rollbacks.reverse()) {
-      await rollback();
-    }
+    // Every compensation is attempted, even if an earlier one throws - see
+    // `runRollbacks`. The original error is what the caller gets.
+    await runRollbacks(rollbacks, "upgradeServerWorkflow");
     throw error;
   }
 }

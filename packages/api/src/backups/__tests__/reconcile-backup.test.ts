@@ -284,6 +284,48 @@ describe("reconcileServerBackup", () => {
     expect((await readBackup()).finishedAt).toBeNull();
   });
 
+  test("fails a task Proxmox still reports as running once it is stale", async () => {
+    // A `vzdump` wedged on storage that stopped answering keeps reporting
+    // `running` forever. The row it leaves behind is not inert: it blocks every
+    // further backup of the server and cannot be deleted, so the customer's
+    // backup feature is dead until somebody edits the database. Past the
+    // staleness threshold this branch has to settle it like every other.
+    const backup = await insertBackup({
+      startedAt: minutesAgo(BACKUP_STALE_AFTER_HOURS * 60 + 1),
+    });
+
+    const result = await reconcile(
+      backup,
+      createInstance({
+        task: { status: "running" },
+        log: [{ t: "INFO:   1% (100.0 MiB of 10.0 GiB) in 3s" }],
+      }),
+    );
+
+    expect(result.failedAt).not.toBeNull();
+    expect(result.finishedAt).not.toBeNull();
+
+    const stored = await readBackup();
+    expect(stored.failedAt).not.toBeNull();
+    expect(stored.finishedAt).not.toBeNull();
+  });
+
+  test("leaves a running task alone until it is stale", async () => {
+    // The mirror of the test above: one minute short of the threshold is still
+    // a backup in progress, and settling it would throw away a working archive.
+    const backup = await insertBackup({
+      startedAt: minutesAgo(BACKUP_STALE_AFTER_HOURS * 60 - 1),
+    });
+
+    const result = await reconcile(
+      backup,
+      createInstance({ task: { status: "running" } }),
+    );
+
+    expect(result.finishedAt).toBeNull();
+    expect((await readBackup()).finishedAt).toBeNull();
+  });
+
   test("survives a log that cannot be read", async () => {
     const backup = await insertBackup();
 

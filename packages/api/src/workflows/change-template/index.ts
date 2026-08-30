@@ -38,6 +38,7 @@ import {
 } from "../shared/perform-guest-action";
 import { regenerateCloudInitStep } from "../shared/regenerate-cloud-init";
 import { resizeDiskStep, rollbackResizeDiskStep } from "../shared/resize-disk";
+import { runRollbacks } from "../shared/run-rollbacks";
 import { updateServerStep } from "../shared/update-server";
 import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task";
 
@@ -382,9 +383,9 @@ export async function changeTempalateWorkflow({
       );
     }
   } catch (error) {
-    for (const rollback of rollbacks.reverse()) {
-      await rollback();
-    }
+    // Every compensation is attempted, even if an earlier one throws - see
+    // `runRollbacks`. The original error is what the caller gets.
+    await runRollbacks(rollbacks, "changeTempalateWorkflow");
     throw error;
   }
 }

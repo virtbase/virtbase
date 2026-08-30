@@ -18,8 +18,8 @@
 import { eq, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { servers, subnetAllocations } from "@virtbase/db/schema";
-import { revalidateTag } from "next/cache";
 import { FatalError } from "workflow";
+import { revalidateCheckout } from "../shared/revalidate-checkout";
 
 type StoreServerDeletionStepParams = {
   serverId: string;
@@ -32,8 +32,13 @@ export async function storeServerDeletionStep({
 
   const result = await db.transaction(
     async (tx) => {
-      // Deallocate all subnets
-      await db
+      // Deallocate all subnets.
+      // [!] `tx`, never `db`. A bare `db` here commits on its own connection:
+      // the addresses would be released even when the `FatalError` below rolls
+      // the deletion back, leaving a live server with no allocation - and the
+      // outer transaction holding one pooled client while this asked for a
+      // second is how concurrent deletions starve the pool.
+      await tx
         .update(subnetAllocations)
         .set({
           deallocatedAt: sql`now()`,
@@ -61,14 +66,7 @@ export async function storeServerDeletionStep({
     },
   );
 
-  try {
-    revalidateTag("checkout", "max");
-  } catch {
-    // A cache hint, not part of the deletion. `revalidateTag` needs Next's
-    // static generation store, which exists when a workflow step runs behind a
-    // route but not when the step is called from a script - and a stale plan
-    // listing is not a reason to fail a deletion whose disks are already gone.
-  }
+  revalidateCheckout();
 
   return {
     serverName: result.name,

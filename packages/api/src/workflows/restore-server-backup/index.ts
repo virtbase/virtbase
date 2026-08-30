@@ -31,7 +31,8 @@ import {
   performGuestActionStep,
   rollbackPerformGuestActionStep,
 } from "../shared/perform-guest-action";
-import { resizeDiskStep, rollbackResizeDiskStep } from "../shared/resize-disk";
+import { resizeDiskStep } from "../shared/resize-disk";
+import { runRollbacks } from "../shared/run-rollbacks";
 import { updateServerStep } from "../shared/update-server";
 import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task";
 import { restoreBackupStep, rollbackRestoreBackupStep } from "./restore-backup";
@@ -54,7 +55,17 @@ type RestoreServerBackupWorkflowParams = {
  * This preserves the original guest's configuration (cloud-init, network,
  * hardware, hookscript, ...) — the restore only replaces the disk contents.
  *
- * Mirrors the disk-swap pattern used by the change-template workflow.
+ * Mirrors the disk-swap pattern used by the change-template workflow, with one
+ * deliberate difference: there, destroying the disk that was swapped out is the
+ * point - the customer asked for a different operating system. Here it is the
+ * customer's live data, and a restore that fails must not have eaten it.
+ *
+ * [!] The customer's pre-restore volume is destroyed in exactly one place,
+ * step 8, and only after step 7 has watched the restored disk boot. Until then
+ * it sits at `unused0`, and every compensation in the stack either leaves it
+ * there or puts it straight back on `scsi0`. Fail anywhere before step 8 and
+ * the customer keeps their data; the worst outcome is a restored volume
+ * orphaned on the storage.
  */
 export async function restoreServerBackupWorkflow({
   proxmoxNode,
@@ -162,8 +173,9 @@ export async function restoreServerBackupWorkflow({
     );
 
     // 4. Detach `scsi0` from the original guest. Proxmox moves the old
-    //    volume to `unused0`. We capture `previousConfig` so we can
-    //    re-attach the old disk if anything between here and step 5 fails.
+    //    volume to `unused0`, where it stays - untouched and re-attachable -
+    //    until step 8 proves the restored disk boots. We capture
+    //    `previousConfig` so the volume can be put back where it was.
     const { previousConfig, addedKeys } = await applyGuestConfigStep({
       proxmoxNode,
       vmid,
@@ -173,9 +185,10 @@ export async function restoreServerBackupWorkflow({
       },
     });
 
-    // Only safe to use BEFORE step 5 completes: once the new disk occupies
-    // `scsi0`, re-applying the old `scsi0` value would clash. We pop this
-    // entry as soon as the move succeeds.
+    // Only safe to use BEFORE step 5 completes: once the restored disk
+    // occupies `scsi0`, re-applying the old `scsi0` value would clash. We swap
+    // this entry for `swapBackOriginalDiskRollback` as soon as the move
+    // succeeds.
     const restorePreMoveConfigRollback = async () => {
       await rollbackApplyGuestConfigStep({
         proxmoxNode,
@@ -186,6 +199,30 @@ export async function restoreServerBackupWorkflow({
       });
     };
     rollbacks.push(restorePreMoveConfigRollback);
+
+    // The post-move compensation: free the `scsi0` slot again (the restored
+    // disk drops to the next `unusedN`) and re-attach the customer's own
+    // volume in its place. Valid from the moment the move lands until step 8
+    // destroys the original - which is exactly the window in which the
+    // customer's data still exists and the restored disk is not yet proven.
+    const swapBackOriginalDiskRollback = async () => {
+      await applyGuestConfigStep({
+        proxmoxNode,
+        vmid,
+        mode: "sync",
+        config: {
+          delete: "scsi0",
+        },
+      });
+
+      await rollbackApplyGuestConfigStep({
+        proxmoxNode,
+        vmid,
+        previousConfig,
+        addedKeys,
+        mode: "sync",
+      });
+    };
 
     // 5. Move the restored disk from the temporary guest into the original
     //    guest's freed `scsi0` slot.
@@ -208,17 +245,28 @@ export async function restoreServerBackupWorkflow({
       ignoreErrors: false,
     });
 
-    // Past the point of no return for the pre-move rollback.
+    // Past the point of no return for the pre-move rollback: `scsi0` is
+    // occupied now, so putting the original back means detaching the restored
+    // disk first. Swap the one compensation for the other.
     const preMoveRollbackIndex = rollbacks.indexOf(
       restorePreMoveConfigRollback,
     );
     if (preMoveRollbackIndex !== -1) {
       rollbacks.splice(preMoveRollbackIndex, 1);
     }
+    rollbacks.push(swapBackOriginalDiskRollback);
 
     // 6. Resize the restored disk back to the original size. The backup's
     //    disk may be smaller than what the customer is currently paying for
     //    (they could have upgraded after the backup was taken).
+    //
+    //    [!] No `rollbackResizeDiskStep` is pushed here, deliberately. That
+    //    step detaches `scsi0` - which, between the move and step 8, is the
+    //    restored disk sitting in front of a guest whose only other volume is
+    //    the customer's original at `unused0`. Running it would leave the
+    //    server with no boot disk at all. `swapBackOriginalDiskRollback`
+    //    already discards the restored disk wholesale, resized or not, so the
+    //    resize needs no compensation of its own.
     if (originalDiskSize && Number.isFinite(originalDiskSize)) {
       const { resizeUpid } = await resizeDiskStep({
         proxmoxNode,
@@ -233,32 +281,13 @@ export async function restoreServerBackupWorkflow({
           upid: resizeUpid,
           ignoreErrors: false,
         });
-
-        rollbacks.push(() =>
-          rollbackResizeDiskStep({
-            proxmoxNode,
-            vmid,
-            disk: "scsi0",
-            resizeUpid,
-          }),
-        );
       }
     }
 
-    // 7. Delete the customer's previous disk that is now sitting at
-    //    `unused0` after step 4.
-    await applyGuestConfigStep({
-      proxmoxNode,
-      vmid,
-      mode: "sync",
-      config: {
-        delete: "unused0",
-      },
-    });
-
-    // 8. Start the original guest. We wait for the start task so a broken
-    //    backup surfaces here (workflow fails -> rollbacks run) rather than
-    //    leaving the customer with a server they cannot boot.
+    // 7. Start the original guest on the restored disk. We wait for the start
+    //    task so a broken backup surfaces here (workflow fails -> rollbacks
+    //    run, and the customer's own volume is still at `unused0` to go back
+    //    to) rather than leaving the customer with a server they cannot boot.
     const { upid: startUpid } = await performGuestActionStep({
       proxmoxNode,
       vmid,
@@ -271,6 +300,17 @@ export async function restoreServerBackupWorkflow({
         upid: startUpid,
         ignoreErrors: false,
       });
+    }
+
+    // The restored disk has demonstrably booted. Going back to the original
+    // is no longer the right answer - and step 8 is about to make it
+    // impossible - so drop that compensation before it can run against a
+    // volume that no longer exists.
+    const swapBackRollbackIndex = rollbacks.indexOf(
+      swapBackOriginalDiskRollback,
+    );
+    if (swapBackRollbackIndex !== -1) {
+      rollbacks.splice(swapBackRollbackIndex, 1);
     }
 
     rollbacks.push(async () => {
@@ -287,6 +327,20 @@ export async function restoreServerBackupWorkflow({
           ignoreErrors: true,
         });
       }
+    });
+
+    // 8. Destroy the customer's pre-restore volume, still sitting at
+    //    `unused0` since step 4. This is the one irreversible act in the
+    //    workflow, and it happens only now: the restored disk has been moved
+    //    in, resized and booted. Everything before this point leaves the
+    //    original recoverable.
+    await applyGuestConfigStep({
+      proxmoxNode,
+      vmid,
+      mode: "sync",
+      config: {
+        delete: "unused0",
+      },
     });
 
     // 9. Mark the server installed and switch the recorded template to the
@@ -326,9 +380,9 @@ export async function restoreServerBackupWorkflow({
       );
     }
   } catch (error) {
-    for (const rollback of rollbacks.reverse()) {
-      await rollback();
-    }
+    // Every compensation is attempted, even if an earlier one throws - see
+    // `runRollbacks`. The original error is what the caller gets.
+    await runRollbacks(rollbacks, "restoreServerBackupWorkflow");
     throw error;
   }
 }

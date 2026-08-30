@@ -20,6 +20,7 @@ import { anonymizeUserStep } from "./anonymize-user";
 import { claimAccountStep } from "./claim-account";
 import { countRetainedStep } from "./count-retained";
 import { detachExternalServicesStep } from "./detach-external-services";
+import { eraseSubjectDataStep } from "./erase-subject-data";
 import { getServersToDestroyStep } from "./get-servers-to-destroy";
 import { purgeIsoDownloadsStep } from "./purge-iso-downloads";
 import { recordErasureStep } from "./record-erasure";
@@ -81,27 +82,32 @@ export async function offboardUserWorkflow({
   // 5. Third parties holding a copy.
   await detachExternalServicesStep({ userId, email });
 
-  // 6. Count what survives, while it can still be attributed.
+  // 6. Everything else `SUBJECT_DATA` marks for erasure and no other step
+  //    takes: the abuse thread, the signals behind it, the delivery log.
+  const erased = await eraseSubjectDataStep({ userId });
+
+  // 7. Count what survives, while it can still be attributed.
   const retained = await countRetainedStep({ userId });
 
-  // 7. The terminal write.
+  // 8. The terminal write.
   const destroyed = await anonymizeUserStep({ userId, email });
 
-  // 8. Tell them it is done, using the address captured in step 1 - by now the
+  // 9. Tell them it is done, using the address captured in step 1 - by now the
   //    row no longer has it.
   await sendAccountDeletedEmailStep({
     user: { name, email, locale },
     reason: reason ?? "user_request",
   });
 
-  // 9. Record what happened. Last, because it reports what the steps above
-  //    actually did rather than what they were asked to do.
+  // 10. Record what happened. Last, because it reports what the steps above
+  //     actually did rather than what they were asked to do.
   await recordErasureStep({
     userId,
     reason: reason ?? "user_request",
     startedAt,
     destroyed: {
       ...destroyed,
+      ...erased,
       servers: servers.length,
       customImages: purged,
       revokedGrants: revoked,
@@ -114,6 +120,7 @@ export { anonymizeUserStep } from "./anonymize-user";
 export { claimAccountStep } from "./claim-account";
 export { countRetainedStep } from "./count-retained";
 export { detachExternalServicesStep } from "./detach-external-services";
+export { eraseSubjectDataStep } from "./erase-subject-data";
 export { getServersToDestroyStep } from "./get-servers-to-destroy";
 export { purgeIsoDownloadsStep } from "./purge-iso-downloads";
 export { recordErasureStep } from "./record-erasure";

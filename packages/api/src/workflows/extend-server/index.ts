@@ -24,6 +24,8 @@ import {
   performGuestActionStep,
   rollbackPerformGuestActionStep,
 } from "../shared/perform-guest-action";
+import { reportSwallowedFailureStep } from "../shared/report-swallowed-failure";
+import { runRollbacks } from "../shared/run-rollbacks";
 import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task";
 import { sendServerExtendedEmailStep } from "./send-server-extended-email";
 import {
@@ -111,17 +113,29 @@ export async function extendServerWorkflow({
       }
     });
 
+    // [!] Post-success side effect, and not compensable. The extension is paid
+    // for and already written; `sendEmail` throws on a delivery failure, and
+    // letting it escape would run `rollbackStoreServerExtensionStep` and revert
+    // a term the customer bought. Report it and keep the extension.
     if (null !== newTerminatesAt) {
-      await sendServerExtendedEmailStep({
-        user,
-        serverName: server.name,
-        newTerminatesAt,
-      });
+      try {
+        await sendServerExtendedEmailStep({
+          user,
+          serverName: server.name,
+          newTerminatesAt,
+        });
+      } catch (error) {
+        await reportSwallowedFailureStep({
+          workflow: "extendServerWorkflow",
+          operation: "sendServerExtendedEmailStep",
+          reason: error instanceof Error ? error.message : String(error),
+        });
+      }
     }
   } catch (error) {
-    for (const rollback of rollbacks.reverse()) {
-      await rollback();
-    }
+    // Every compensation is attempted, even if an earlier one throws - see
+    // `runRollbacks`. The original error is what the caller gets.
+    await runRollbacks(rollbacks, "extendServerWorkflow");
     throw error;
   }
 }

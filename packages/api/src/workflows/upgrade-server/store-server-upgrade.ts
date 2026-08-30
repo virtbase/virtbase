@@ -18,7 +18,7 @@
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { servers } from "@virtbase/db/schema";
-import { revalidateTag } from "next/cache";
+import { revalidateCheckout } from "../shared/revalidate-checkout";
 
 export async function storeServerUpgradeStep({
   serverId,
@@ -51,7 +51,7 @@ export async function storeServerUpgradeStep({
     },
   );
 
-  revalidateTag("checkout", "max");
+  revalidateCheckout();
 }
 
 export async function rollbackStoreServerUpgradeStep({
@@ -81,5 +81,5 @@ export async function rollbackStoreServerUpgradeStep({
     },
   );
 
-  revalidateTag("checkout", "max");
+  revalidateCheckout();
 }

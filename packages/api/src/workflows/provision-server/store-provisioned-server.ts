@@ -15,11 +15,11 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { eq, sql } from "@virtbase/db";
+import { and, eq, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { servers, subnetAllocations } from "@virtbase/db/schema";
-import { revalidateTag } from "next/cache";
 import { FatalError } from "workflow";
+import { revalidateCheckout } from "../shared/revalidate-checkout";
 
 type StoreProvisionedServerStepParams = {
   vmid: number;
@@ -46,6 +46,34 @@ export async function storeProvisionedServerStep({
 
   const result = await db.transaction(
     async (tx) => {
+      // [!] Idempotence, not defensiveness. A step that committed and then lost
+      // its acknowledgement is re-run by the workflow runtime, and `servers`
+      // carries a unique `(proxmox_node_id, vmid)` - so the retry used to die
+      // on a constraint violation, after the first run had already written the
+      // row and its allocations and before any rollback existed to undo them.
+      // The guest really is provisioned; adopting the row is the honest answer.
+      const existing = await tx
+        .select({ id: servers.id, userId: servers.userId })
+        .from(servers)
+        .where(
+          and(eq(servers.proxmoxNodeId, proxmoxNodeId), eq(servers.vmid, vmid)),
+        )
+        .limit(1)
+        .then(([row]) => row);
+
+      if (existing) {
+        if (existing.userId !== userId) {
+          // Not a retry. A vmid that has been reused while somebody else's
+          // server still holds it is a bug upstream, and writing anything here
+          // would hand one customer another customer's machine.
+          throw new FatalError(
+            `Guest ${vmid} on node ${proxmoxNodeId} already belongs to another account.`,
+          );
+        }
+
+        return { serverId: existing.id };
+      }
+
       const created = await tx
         .insert(servers)
         .values({
@@ -87,7 +115,7 @@ export async function storeProvisionedServerStep({
     },
   );
 
-  revalidateTag("checkout", "max");
+  revalidateCheckout();
 
   return {
     serverId: result.serverId,
@@ -103,16 +131,28 @@ export async function rollbackStoreProvisionedServerStep({
 
   await db.transaction(
     async (tx) => {
-      await Promise.all([
-        tx.delete(servers).where(eq(servers.id, serverId)),
-        tx
-          .update(subnetAllocations)
-          .set({
-            allocatedAt: sql`now()`,
-            serverId: null,
-          })
-          .where(eq(subnetAllocations.serverId, serverId)),
-      ]);
+      // [!] Order matters, and so does `deallocated_at`.
+      //
+      // `subnet_allocations.server_id` cascades from `servers`, so issuing
+      // these two together left the outcome to whichever query the driver sent
+      // first: detach-then-delete keeps the rows, delete-then-detach destroys
+      // them. Detaching first is the one that keeps the record of which address
+      // was handed out when, which has an abuse-handling basis of its own.
+      //
+      // Keeping the row is only safe with `deallocated_at` set.
+      // `getAvailableSubnet` treats every allocation whose `deallocated_at` is
+      // null as taken, so a row detached from its server but never deallocated
+      // holds the subnet out of the pool for good - an address leaked by a
+      // provision that failed, which is the case this step exists to clean up.
+      await tx
+        .update(subnetAllocations)
+        .set({
+          deallocatedAt: sql`now()`,
+          serverId: null,
+        })
+        .where(eq(subnetAllocations.serverId, serverId));
+
+      await tx.delete(servers).where(eq(servers.id, serverId));
     },
     {
       accessMode: "read write",
@@ -120,5 +160,5 @@ export async function rollbackStoreProvisionedServerStep({
     },
   );
 
-  revalidateTag("checkout", "max");
+  revalidateCheckout();
 }

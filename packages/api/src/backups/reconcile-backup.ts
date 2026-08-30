@@ -211,6 +211,23 @@ export async function reconcileServerBackup({
   }
 
   if (task.status === "running") {
+    // [!] A `vzdump` that Proxmox is still reporting as running long after the
+    // staleness threshold is not making progress - it is wedged, typically on
+    // storage that stopped answering. Left alone it never settles, and an
+    // unsettled row is not a cosmetic problem: it blocks every further backup
+    // of that server (`create` throws CONFLICT) and cannot be deleted
+    // (`delete` throws BAD_REQUEST), so the customer's backup feature stays
+    // dead until somebody edits the database by hand. Declaring it failed is
+    // the only branch that gives them the feature back, and it is what every
+    // other branch here already does at this age.
+    if (isStale) {
+      Sentry.captureMessage(
+        `[reconcileServerBackup] Task for backup ${backup.id} is still running after ${BACKUP_STALE_AFTER_HOURS}h and is being marked as failed.`,
+      );
+
+      return markFailed(db, backup);
+    }
+
     return unchanged(backup, await readProgress(instance, backup.upid));
   }
 
