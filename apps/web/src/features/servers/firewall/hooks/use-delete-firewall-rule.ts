@@ -16,6 +16,7 @@
  */
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useExtracted } from "next-intl";
 import { useTRPC } from "@/lib/trpc/react";
 import { invalidateFirewallAnalysis } from "../lib/invalidate-analysis";
 
@@ -31,6 +32,7 @@ interface DeleteFirewallRuleOptions {
 export const useDeleteFirewallRule = ({
   mutationConfig,
 }: DeleteFirewallRuleOptions = {}) => {
+  const t = useExtracted();
   const trpc = useTRPC();
   const queryClient = useQueryClient();
 
@@ -38,6 +40,7 @@ export const useDeleteFirewallRule = ({
 
   return useMutation(
     trpc.servers.firewall.rules.delete.mutationOptions({
+      meta: { errorMessage: t("Could not delete the firewall rule.") },
       ...rest,
       onMutate: async (input, ...args) => {
         await queryClient.cancelQueries(

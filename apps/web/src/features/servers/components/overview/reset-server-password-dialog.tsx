@@ -40,7 +40,6 @@ import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { toast } from "sonner";
 import { PasswordRequirements } from "@/features/auth/components/password-requirements";
 import {
   RandomPasswordAddon,
@@ -61,9 +60,6 @@ export default function ResetServerPasswordDialog(
     mutationConfig: {
       onSuccess: () => {
         props.onOpenChange?.(false);
-      },
-      onError: (error) => {
-        toast.error(error.message);
       },
     },
   });

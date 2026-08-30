@@ -33,10 +33,18 @@ import {
   TableHeader,
   TableRow,
 } from "@virtbase/ui/table";
+import type { DataTableRowAction } from "@virtbase/ui/types";
+import dynamic from "next/dynamic";
 import { useExtracted } from "next-intl";
+import { useState } from "react";
 import type { GetPointerRecordsListOutput } from "@/features/servers/hooks/rdns/use-pointer-records-list";
 import { AnimatedEmptyState } from "@/ui/animated-empty-state";
+import type { RecordsTableColumn } from "./columns";
 import { useRecordsTableColumns } from "./columns";
+
+const DeleteRecordDialog = dynamic(() => import("../delete-record-dialog"), {
+  ssr: false,
+});
 
 export function RecordsTable({
   data,
@@ -51,7 +59,12 @@ export function RecordsTable({
   };
 
   const t = useExtracted();
-  const columns = useRecordsTableColumns();
+
+  const [rowAction, setRowAction] = useState<DataTableRowAction<
+    RecordsTableColumn,
+    "delete"
+  > | null>(null);
+  const columns = useRecordsTableColumns({ rowAction, setRowAction });
 
   const table = useReactTable({
     data: records,
@@ -65,82 +78,94 @@ export function RecordsTable({
   });
 
   return (
-    <ScrollArea className="h-96 w-full">
-      <Table>
-        <TableHeader className="sticky top-0 z-20 bg-accent">
-          {table.getHeaderGroups().map((group) => (
-            <TableRow key={group.id}>
-              {group.headers.map((header) => (
-                <TableHead
-                  className="px-6"
-                  key={header.id}
-                  colSpan={header.colSpan}
-                >
-                  {header.isPlaceholder
-                    ? null
-                    : flexRender(
-                        header.column.columnDef.header,
-                        header.getContext(),
-                      )}
-                </TableHead>
-              ))}
-            </TableRow>
-          ))}
-        </TableHeader>
-        <TableBody className="bg-card">
-          {table.getRowModel().rows?.length ? (
-            table.getRowModel().rows.map((row) => (
-              <TableRow
-                key={row.id}
-                data-state={row.getIsSelected() && "selected"}
-                className="hover:bg-transparent"
-              >
-                {row.getVisibleCells().map((cell) => (
-                  <TableCell className="px-6 py-4" key={cell.id}>
-                    {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </TableCell>
+    <>
+      <ScrollArea className="h-96 w-full">
+        <Table>
+          <TableHeader className="sticky top-0 z-20 bg-accent">
+            {table.getHeaderGroups().map((group) => (
+              <TableRow key={group.id}>
+                {group.headers.map((header) => (
+                  <TableHead
+                    className="px-6"
+                    key={header.id}
+                    colSpan={header.colSpan}
+                  >
+                    {header.isPlaceholder
+                      ? null
+                      : flexRender(
+                          header.column.columnDef.header,
+                          header.getContext(),
+                        )}
+                  </TableHead>
                 ))}
               </TableRow>
-            ))
-          ) : !isPending ? (
-            <TableRow>
-              <TableCell
-                colSpan={table.getVisibleFlatColumns().length}
-                className="pointer-events-none"
-              >
-                <AnimatedEmptyState
-                  className="border-none md:pb-0"
-                  cardContent={() => (
-                    <>
-                      <LucideGlobe aria-hidden="true" />
-                      <div className="h-2.5 w-24 min-w-0 rounded-sm bg-muted" />
-                      <div className="hidden grow items-center justify-end gap-1.5 sm:flex">
-                        <LucideCloudSync className="size-3.5 text-muted-foreground" />
-                      </div>
-                    </>
-                  )}
-                  title={t("No PTR records")}
-                  description={t("No PTR records have been created yet.")}
-                />
-              </TableCell>
-            </TableRow>
-          ) : (
-            Array.from({ length: 4 }).map((_, index) => {
-              return (
-                <TableRow key={index}>
-                  <TableCell
-                    colSpan={table.getVisibleFlatColumns().length}
-                    className="pointer-events-none"
-                  >
-                    <Skeleton className="h-10" />
-                  </TableCell>
+            ))}
+          </TableHeader>
+          <TableBody className="bg-card">
+            {table.getRowModel().rows?.length ? (
+              table.getRowModel().rows.map((row) => (
+                <TableRow
+                  key={row.id}
+                  data-state={row.getIsSelected() && "selected"}
+                  className="hover:bg-transparent"
+                >
+                  {row.getVisibleCells().map((cell) => (
+                    <TableCell className="px-6 py-4" key={cell.id}>
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext(),
+                      )}
+                    </TableCell>
+                  ))}
                 </TableRow>
-              );
-            })
-          )}
-        </TableBody>
-      </Table>
-      <ScrollBar orientation="horizontal" />
-    </ScrollArea>
+              ))
+            ) : !isPending ? (
+              <TableRow>
+                <TableCell
+                  colSpan={table.getVisibleFlatColumns().length}
+                  className="pointer-events-none"
+                >
+                  <AnimatedEmptyState
+                    className="border-none md:pb-0"
+                    cardContent={() => (
+                      <>
+                        <LucideGlobe aria-hidden="true" />
+                        <div className="h-2.5 w-24 min-w-0 rounded-sm bg-muted" />
+                        <div className="hidden grow items-center justify-end gap-1.5 sm:flex">
+                          <LucideCloudSync className="size-3.5 text-muted-foreground" />
+                        </div>
+                      </>
+                    )}
+                    title={t("No PTR records")}
+                    description={t("No PTR records have been created yet.")}
+                  />
+                </TableCell>
+              </TableRow>
+            ) : (
+              Array.from({ length: 4 }).map((_, index) => {
+                return (
+                  <TableRow key={index}>
+                    <TableCell
+                      colSpan={table.getVisibleFlatColumns().length}
+                      className="pointer-events-none"
+                    >
+                      <Skeleton className="h-10" />
+                    </TableCell>
+                  </TableRow>
+                );
+              })
+            )}
+          </TableBody>
+        </Table>
+        <ScrollBar orientation="horizontal" />
+      </ScrollArea>
+      {rowAction?.variant === "delete" && (
+        <DeleteRecordDialog
+          row={rowAction.row}
+          open
+          onOpenChange={(open) => setRowAction(open ? rowAction : null)}
+        />
+      )}
+    </>
   );
 }

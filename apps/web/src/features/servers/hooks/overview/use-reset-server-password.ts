@@ -16,6 +16,7 @@
  */
 
 import { useMutation } from "@tanstack/react-query";
+import { useExtracted } from "next-intl";
 import { useTRPC } from "@/lib/trpc/react";
 
 type TRPC = ReturnType<typeof useTRPC>;
@@ -30,9 +31,13 @@ interface ResetServerPasswordOptions {
 export const useResetServerPassword = ({
   mutationConfig,
 }: ResetServerPasswordOptions = {}) => {
+  const t = useExtracted();
   const trpc = useTRPC();
 
   return useMutation(
-    trpc.servers.actions.resetPassword.mutationOptions(mutationConfig),
+    trpc.servers.actions.resetPassword.mutationOptions({
+      meta: { errorMessage: t("Could not reset the password.") },
+      ...mutationConfig,
+    }),
   );
 };

@@ -34,6 +34,7 @@ import {
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
+import { GenericError } from "@/ui/generic-error";
 import { useFirewallRules } from "../hooks/use-firewall-rules";
 import { useGuestFirewall } from "../hooks/use-guest-firewall";
 import { CreateFirewallRuleButton } from "./create-firewall-rule-button";
@@ -44,7 +45,7 @@ export function FirewallRulesCard() {
   const t = useExtracted();
 
   const { id: serverId } = useParams<{ id: string }>();
-  const { data, isPending, isRefetching, refetch } = useFirewallRules({
+  const { data, isPending, isError, isRefetching, refetch } = useFirewallRules({
     server_id: serverId,
   });
 
@@ -85,37 +86,45 @@ export function FirewallRulesCard() {
         </div>
       </CardHeader>
       <CardContent className="p-0">
-        <FirewallRulesTable
-          hostRules={data?.rules}
-          guestRules={guestRules}
-          guestManager={guestManager}
-          isPending={isPending}
-        />
+        {/* An empty table and a table that could not be loaded look the same,
+            and a customer who reads "no rules" acts on it. */}
+        {isError ? (
+          <GenericError className="border-t" reset={refetch} />
+        ) : (
+          <FirewallRulesTable
+            hostRules={data?.rules}
+            guestRules={guestRules}
+            guestManager={guestManager}
+            isPending={isPending}
+          />
+        )}
       </CardContent>
-      <CardFooter className="border-t [.border-t]:py-4">
-        <div className="flex flex-wrap items-center gap-2">
-          {isPending || !data?.rules ? (
-            <Skeleton className="h-4 w-24" />
-          ) : (
-            <span className="text-muted-foreground text-sm">
-              {t(
-                "{count, plural, =1 {# rule} other {# rules}}, {activeCount} active",
-                {
-                  count: data.rules.length,
-                  activeCount: String(
-                    data.rules.filter((rule) => rule.enabled).length,
-                  ),
-                },
-              )}
-              {guestRules.length > 0 &&
-                ` · ${t(
-                  "{count, plural, =1 {# rule} other {# rules}} inside your server",
-                  { count: guestRules.length },
-                )}`}
-            </span>
-          )}
-        </div>
-      </CardFooter>
+      {!isError && (
+        <CardFooter className="border-t [.border-t]:py-4">
+          <div className="flex flex-wrap items-center gap-2">
+            {isPending || !data?.rules ? (
+              <Skeleton className="h-4 w-24" />
+            ) : (
+              <span className="text-muted-foreground text-sm">
+                {t(
+                  "{count, plural, =1 {# rule} other {# rules}}, {activeCount} active",
+                  {
+                    count: data.rules.length,
+                    activeCount: String(
+                      data.rules.filter((rule) => rule.enabled).length,
+                    ),
+                  },
+                )}
+                {guestRules.length > 0 &&
+                  ` · ${t(
+                    "{count, plural, =1 {# rule} other {# rules}} inside your server",
+                    { count: guestRules.length },
+                  )}`}
+              </span>
+            )}
+          </div>
+        </CardFooter>
+      )}
     </Card>
   );
 }

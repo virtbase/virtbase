@@ -17,6 +17,7 @@
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ProxmoxTaskStatus } from "@virtbase/utils";
+import { useExtracted } from "next-intl";
 import { useTRPC } from "@/lib/trpc/react";
 
 type TRPC = ReturnType<typeof useTRPC>;
@@ -31,6 +32,7 @@ interface RestoreBackupOptions {
 export const useRestoreBackup = ({
   mutationConfig,
 }: RestoreBackupOptions = {}) => {
+  const t = useExtracted();
   const trpc = useTRPC();
   const queryClient = useQueryClient();
 
@@ -38,6 +40,7 @@ export const useRestoreBackup = ({
 
   return useMutation(
     trpc.servers.backups.restore.mutationOptions({
+      meta: { errorMessage: t("Could not restore the backup.") },
       ...rest,
       onMutate: async (input, ...args) => {
         await queryClient.cancelQueries(

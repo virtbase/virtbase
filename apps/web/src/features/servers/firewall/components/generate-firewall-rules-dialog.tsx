@@ -43,7 +43,6 @@ import { useExtracted, useLocale } from "next-intl";
 import type React from "react";
 import { useEffect, useState, useTransition } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { toast } from "sonner";
 import { ItemRow } from "@/features/account/components/item-row";
 import { useCreateFirewallRule } from "../hooks/use-create-firewall-rule";
 import { useGenerateFirewallRule } from "../hooks/use-generate-firewall-rule";
@@ -100,9 +99,6 @@ export default function GenerateFirewallRulesDialog(
           );
           setDescription(data.description);
         },
-        onError: () => {
-          toast.error(t("Could not generate rules. Please try again."));
-        },
       },
     });
 
@@ -145,9 +141,9 @@ export default function GenerateFirewallRulesDialog(
             ...tracked.rule,
           });
         } catch {
-          toast.error(t("Could not create the rule. Please try again."));
-
-          // Stop here: carrying on would apply the rest out of order.
+          // The failure is already on screen - `useCreateFirewallRule`
+          // declares an `errorMessage`. Stop here: carrying on would apply the
+          // rest out of order.
           return;
         }
 

@@ -56,6 +56,11 @@ const FirewallRuleDialog = dynamic(() => import("../firewall-rule-dialog"), {
   ssr: false,
 });
 
+const DeleteFirewallRuleDialog = dynamic(
+  () => import("../delete-firewall-rule-dialog"),
+  { ssr: false },
+);
+
 export function FirewallRulesTable({
   hostRules,
   guestRules,
@@ -235,6 +240,14 @@ export function FirewallRulesTable({
           <FirewallRuleDialog
             mode="update"
             defaultValues={rowAction.row.original.rule}
+            open
+            onOpenChange={(open) => setRowAction(open ? rowAction : null)}
+          />
+        )}
+      {rowAction?.variant === "delete" &&
+        rowAction.row.original.layer === "host" && (
+          <DeleteFirewallRuleDialog
+            hostRow={rowAction.row.original}
             open
             onOpenChange={(open) => setRowAction(open ? rowAction : null)}
           />

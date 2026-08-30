@@ -16,6 +16,7 @@
  */
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useExtracted } from "next-intl";
 import { useTRPC } from "@/lib/trpc/react";
 import { invalidateFirewallAnalysis } from "../lib/invalidate-analysis";
 
@@ -31,6 +32,7 @@ interface MoveFirewallRuleOptions {
 export const useMoveFirewallRule = ({
   mutationConfig,
 }: MoveFirewallRuleOptions = {}) => {
+  const t = useExtracted();
   const trpc = useTRPC();
   const queryClient = useQueryClient();
 
@@ -38,6 +40,7 @@ export const useMoveFirewallRule = ({
 
   return useMutation(
     trpc.servers.firewall.rules.move.mutationOptions({
+      meta: { errorMessage: t("Could not reorder the firewall rules.") },
       ...rest,
       onMutate: async (input, ...args) => {
         await queryClient.cancelQueries(

@@ -46,7 +46,6 @@ import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { toast } from "sonner";
 import { useCreateBackup } from "../../hooks/backups/use-create-backup";
 
 export default function CreateBackupDialog(
@@ -63,9 +62,6 @@ export default function CreateBackupDialog(
     mutationConfig: {
       onSuccess: () => {
         props.onOpenChange?.(false);
-      },
-      onError: (error) => {
-        toast.error(error.message);
       },
     },
   });

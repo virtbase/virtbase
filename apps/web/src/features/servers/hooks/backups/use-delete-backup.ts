@@ -16,6 +16,7 @@
  */
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useExtracted } from "next-intl";
 import { useTRPC } from "@/lib/trpc/react";
 import { defaultBackupListQuery } from "./use-backup-list";
 
@@ -31,6 +32,7 @@ interface DeleteBackupOptions {
 export const useDeleteBackup = ({
   mutationConfig,
 }: DeleteBackupOptions = {}) => {
+  const t = useExtracted();
   const trpc = useTRPC();
   const queryClient = useQueryClient();
 
@@ -38,6 +40,7 @@ export const useDeleteBackup = ({
 
   return useMutation(
     trpc.servers.backups.delete.mutationOptions({
+      meta: { errorMessage: t("Could not delete the backup.") },
       ...rest,
       onMutate: async (input, ...args) => {
         await queryClient.cancelQueries(
@@ -56,6 +59,7 @@ export const useDeleteBackup = ({
 
         queryClient.setQueryData(
           trpc.servers.backups.list.queryKey({
+            ...defaultBackupListQuery,
             server_id: input.server_id,
           }),
           (old) =>

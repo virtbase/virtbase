@@ -16,6 +16,7 @@
  */
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useExtracted } from "next-intl";
 import { useTRPC } from "@/lib/trpc/react";
 import { defaultBackupListQuery } from "./use-backup-list";
 
@@ -31,6 +32,7 @@ interface CreateBackupOptions {
 export const useCreateBackup = ({
   mutationConfig,
 }: CreateBackupOptions = {}) => {
+  const t = useExtracted();
   const trpc = useTRPC();
   const queryClient = useQueryClient();
 
@@ -38,6 +40,7 @@ export const useCreateBackup = ({
 
   return useMutation(
     trpc.servers.backups.create.mutationOptions({
+      meta: { errorMessage: t("Could not create the backup.") },
       ...rest,
       onMutate: async (input, ...args) => {
         await queryClient.cancelQueries(

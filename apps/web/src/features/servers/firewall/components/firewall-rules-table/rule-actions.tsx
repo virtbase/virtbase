@@ -39,7 +39,6 @@ import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import type { Dispatch, SetStateAction } from "react";
 import { useCallback } from "react";
-import { useDeleteFirewallRule } from "../../hooks/use-delete-firewall-rule";
 import { useMoveFirewallRule } from "../../hooks/use-move-firewall-rule";
 import type { FirewallTableRow, HostFirewallRow } from "../../lib/table-rows";
 
@@ -75,8 +74,6 @@ export function RuleActions({
   const { id: serverId } = useParams<{ id: string }>();
 
   const { mutate: moveRule, isPending: isMovePending } = useMoveFirewallRule();
-  const { mutate: deleteRule, isPending: isDeletePending } =
-    useDeleteFirewallRule();
 
   const { pos } = hostRow;
   const isFirst = pos === 0;
@@ -96,8 +93,9 @@ export function RuleActions({
     [isFirst, isLast, moveRule, pos, serverId],
   );
 
-  const isActionsDisabled =
-    isMovePending || isDeletePending || rowAction !== null;
+  // Deleting runs in the dialog the row action opens, so `rowAction !== null`
+  // already covers it.
+  const isActionsDisabled = isMovePending || rowAction !== null;
 
   return (
     <div className={cn("flex items-center gap-2", className)} {...props}>
@@ -141,7 +139,7 @@ export function RuleActions({
           </DropdownMenuItem>
           <DropdownMenuSeparator />
           <DropdownMenuItem
-            onSelect={() => deleteRule({ server_id: serverId, pos })}
+            onSelect={() => setRowAction({ row, variant: "delete" })}
             variant="destructive"
           >
             <LucideTrash2 aria-hidden="true" />

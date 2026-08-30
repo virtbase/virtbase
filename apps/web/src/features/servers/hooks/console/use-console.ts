@@ -40,6 +40,7 @@ export const useServerConsole = ({
     isPending: isServerStatusPending,
     isLoading: isServerStatusLoading,
     isError: isServerStatusError,
+    refetch: refetchServerStatus,
   } = useServerStatus({
     server_id: input.server_id,
   });
@@ -67,5 +68,6 @@ export const useServerConsole = ({
     isServerStatusPending,
     isServerStatusLoading,
     isServerStatusError,
+    refetchServerStatus,
   };
 };

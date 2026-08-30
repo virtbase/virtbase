@@ -16,6 +16,7 @@
  */
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useExtracted } from "next-intl";
 import { useTRPC } from "@/lib/trpc/react";
 
 type TRPC = ReturnType<typeof useTRPC>;
@@ -28,6 +29,7 @@ interface RenameServerOptions {
 export const useRenameServer = ({
   mutationConfig,
 }: RenameServerOptions = {}) => {
+  const t = useExtracted();
   const trpc = useTRPC();
   const queryClient = useQueryClient();
 
@@ -35,6 +37,7 @@ export const useRenameServer = ({
 
   return useMutation(
     trpc.servers.rename.mutationOptions({
+      meta: { errorMessage: t("Could not rename the server.") },
       ...rest,
       onMutate: async (input, ...args) => {
         await queryClient.cancelQueries(

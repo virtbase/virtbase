@@ -30,6 +30,7 @@ import { LucidePencil, LucideRefreshCw } from "@virtbase/ui/icons";
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
+import { GenericError } from "@/ui/generic-error";
 import { usePointerRecordsList } from "../../hooks/rdns/use-pointer-records-list";
 import { RecordsTable } from "./records-table";
 import { UpsertRecordButton } from "./upsert-record-button";
@@ -38,9 +39,10 @@ export function RecordsCard() {
   const t = useExtracted();
 
   const { id: serverId } = useParams<{ id: string }>();
-  const { data, isPending, isRefetching, refetch } = usePointerRecordsList({
-    server_id: serverId,
-  });
+  const { data, isPending, isError, isRefetching, refetch } =
+    usePointerRecordsList({
+      server_id: serverId,
+    });
 
   return (
     <Card className="gap-0 overflow-hidden pb-0">
@@ -66,21 +68,29 @@ export function RecordsCard() {
         </div>
       </CardHeader>
       <CardContent className="p-0">
-        <RecordsTable data={data} isPending={isPending} />
+        {/* Without this a failed request renders as "no PTR records", which
+            reads as a fact about the server rather than about the request. */}
+        {isError ? (
+          <GenericError className="border-t" reset={refetch} />
+        ) : (
+          <RecordsTable data={data} isPending={isPending} />
+        )}
       </CardContent>
-      <CardFooter className="border-t [.border-t]:py-4">
-        <div className="flex flex-wrap items-center gap-2">
-          {isPending || !data?.meta ? (
-            <Skeleton className="h-4 w-24" />
-          ) : (
-            <span className="text-muted-foreground text-sm">
-              {t("{count, plural, =1 {# PTR record} other {# PTR records}}", {
-                count: data.meta.pagination.total_entries,
-              })}
-            </span>
-          )}
-        </div>
-      </CardFooter>
+      {!isError && (
+        <CardFooter className="border-t [.border-t]:py-4">
+          <div className="flex flex-wrap items-center gap-2">
+            {isPending || !data?.meta ? (
+              <Skeleton className="h-4 w-24" />
+            ) : (
+              <span className="text-muted-foreground text-sm">
+                {t("{count, plural, =1 {# PTR record} other {# PTR records}}", {
+                  count: data.meta.pagination.total_entries,
+                })}
+              </span>
+            )}
+          </div>
+        </CardFooter>
+      )}
     </Card>
   );
 }

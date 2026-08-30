@@ -16,6 +16,7 @@
  */
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useExtracted } from "next-intl";
 import { useTRPC } from "@/lib/trpc/react";
 
 type TRPC = ReturnType<typeof useTRPC>;
@@ -28,6 +29,7 @@ interface MountImageOptions {
 }
 
 export const useMountImage = ({ mutationConfig }: MountImageOptions = {}) => {
+  const t = useExtracted();
   const trpc = useTRPC();
   const queryClient = useQueryClient();
 
@@ -35,6 +37,7 @@ export const useMountImage = ({ mutationConfig }: MountImageOptions = {}) => {
 
   return useMutation(
     trpc.servers.mounts.mount.mutationOptions({
+      meta: { errorMessage: t("Could not mount ISO image.") },
       onSuccess: async (data, input, ...args) => {
         await queryClient.invalidateQueries(
           trpc.servers.get.queryFilter({

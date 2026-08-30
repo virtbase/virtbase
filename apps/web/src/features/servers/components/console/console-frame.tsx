@@ -42,6 +42,7 @@ import {
 } from "@virtbase/utils";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
+import { GenericError } from "@/ui/generic-error";
 import { useServerConsole } from "../../hooks/console/use-console";
 
 export function ConsoleFrame() {
@@ -53,13 +54,22 @@ export function ConsoleFrame() {
     data: url,
     isPending,
     isError,
+    refetch,
     isServerStatusPending,
     isServerStatusError,
+    refetchServerStatus,
   } = useServerConsole({
     server_id: serverId,
   });
 
-  if (isServerStatusPending || isServerStatusError || !serverStatus) {
+  // Both failures used to render the same skeleton the loading state uses, so
+  // a console that could not be opened was indistinguishable from one that
+  // was still opening - forever.
+  if (isServerStatusError) {
+    return <GenericError className="size-full" reset={refetchServerStatus} />;
+  }
+
+  if (isServerStatusPending || !serverStatus) {
     return <Skeleton className="size-full" />;
   }
 
@@ -134,7 +144,11 @@ export function ConsoleFrame() {
     );
   }
 
-  if (!url || isPending || isError) {
+  if (isError) {
+    return <GenericError className="size-full" reset={refetch} />;
+  }
+
+  if (!url || isPending) {
     return <Skeleton className="size-full" />;
   }
 

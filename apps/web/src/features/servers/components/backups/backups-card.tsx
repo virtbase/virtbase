@@ -40,6 +40,10 @@ const RestoreBackupDialog = dynamic(() => import("./restore-backup-dialog"), {
   ssr: false,
 });
 
+const DeleteBackupDialog = dynamic(() => import("./delete-backup-dialog"), {
+  ssr: false,
+});
+
 export function BackupsCard() {
   const t = useExtracted();
 
@@ -85,6 +89,13 @@ export function BackupsCard() {
             row={rowAction.row}
             onOpenChange={(open) => setRowAction(open ? rowAction : null)}
             open={rowAction.variant === "restore"}
+          />
+        )}
+        {rowAction && rowAction.variant === "delete" && (
+          <DeleteBackupDialog
+            row={rowAction.row}
+            onOpenChange={(open) => setRowAction(open ? rowAction : null)}
+            open={rowAction.variant === "delete"}
           />
         )}
       </CardContent>

@@ -16,6 +16,7 @@
  */
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useExtracted } from "next-intl";
 import { useTRPC } from "@/lib/trpc/react";
 
 type TRPC = ReturnType<typeof useTRPC>;
@@ -30,6 +31,7 @@ interface UnmountImageOptions {
 export const useUnmountImage = ({
   mutationConfig,
 }: UnmountImageOptions = {}) => {
+  const t = useExtracted();
   const trpc = useTRPC();
   const queryClient = useQueryClient();
 
@@ -37,6 +39,7 @@ export const useUnmountImage = ({
 
   return useMutation(
     trpc.servers.mounts.unmount.mutationOptions({
+      meta: { errorMessage: t("Could not unmount ISO image.") },
       onSuccess: async (data, input, ...args) => {
         await queryClient.invalidateQueries(
           trpc.servers.get.queryFilter({

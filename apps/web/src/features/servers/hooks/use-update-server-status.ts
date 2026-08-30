@@ -18,6 +18,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ProxmoxTaskStatus } from "@virtbase/utils";
 import type { UpdateServerStatusInput } from "@virtbase/validators/server";
+import { useExtracted } from "next-intl";
 import { useTRPC } from "@/lib/trpc/react";
 
 type TRPC = ReturnType<typeof useTRPC>;
@@ -43,6 +44,7 @@ const actionToTaskStatusMapping = {
 export const useUpdateServerStatus = ({
   mutationConfig,
 }: UpdateServerStatusOptions = {}) => {
+  const t = useExtracted();
   const trpc = useTRPC();
   const queryClient = useQueryClient();
 
@@ -50,6 +52,7 @@ export const useUpdateServerStatus = ({
 
   return useMutation(
     trpc.servers.status.update.mutationOptions({
+      meta: { errorMessage: t("Could not change the server state.") },
       ...rest,
       onMutate: async (input, ...args) => {
         await queryClient.cancelQueries(

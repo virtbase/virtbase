@@ -16,6 +16,7 @@
  */
 
 import { useMutation } from "@tanstack/react-query";
+import { useExtracted } from "next-intl";
 import { useTRPC } from "@/lib/trpc/react";
 
 type TRPC = ReturnType<typeof useTRPC>;
@@ -30,9 +31,15 @@ interface GenerateFirewallRuleOptions {
 export const useGenerateFirewallRule = ({
   mutationConfig,
 }: GenerateFirewallRuleOptions = {}) => {
+  const t = useExtracted();
   const trpc = useTRPC();
 
   return useMutation(
-    trpc.servers.firewall.rules.generate.mutationOptions(mutationConfig),
+    trpc.servers.firewall.rules.generate.mutationOptions({
+      meta: {
+        errorMessage: t("Could not generate rules. Please try again."),
+      },
+      ...mutationConfig,
+    }),
   );
 };

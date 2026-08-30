@@ -48,7 +48,7 @@ export function ServerStatusBar() {
   const states = [
     {
       icon: LucideServerOff,
-      variant: "destructive",
+      variant: "destructive" as const,
       title: t("Server suspended"),
       description: t(
         "This server has been suspended and will be deleted at {date}, if not renewed.",
@@ -64,7 +64,7 @@ export function ServerStatusBar() {
     {
       icon: LucideLoader,
       iconClassName: "animate-spin",
-      variant: "warning",
+      variant: "warning" as const,
       title: t("Server is installing"),
       description: t(
         "This server is being installed. Some features may not be available yet.",
@@ -73,7 +73,7 @@ export function ServerStatusBar() {
     },
     {
       icon: LucideBan,
-      variant: "warning",
+      variant: "warning" as const,
       title: t("Server is expiring"),
       description: t(
         "This server is expiring {expiry} and will be deleted after, if not renewed",
@@ -92,7 +92,7 @@ export function ServerStatusBar() {
 
   return (
     <ClientOnly>
-      <Alert variant="warning">
+      <Alert variant={state.variant}>
         <state.icon className={state.iconClassName} />
         <AlertTitle>{state.title}</AlertTitle>
         <AlertDescription>{state.description}</AlertDescription>

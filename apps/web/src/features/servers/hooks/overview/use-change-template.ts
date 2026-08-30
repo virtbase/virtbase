@@ -16,6 +16,7 @@
  */
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useExtracted } from "next-intl";
 import { useTRPC } from "@/lib/trpc/react";
 
 type TRPC = ReturnType<typeof useTRPC>;
@@ -30,6 +31,7 @@ interface ChangeTemplateOptions {
 export const useChangeTemplate = ({
   mutationConfig,
 }: ChangeTemplateOptions = {}) => {
+  const t = useExtracted();
   const trpc = useTRPC();
   const queryClient = useQueryClient();
 
@@ -37,6 +39,7 @@ export const useChangeTemplate = ({
 
   return useMutation(
     trpc.servers.actions.changeTemplate.mutationOptions({
+      meta: { errorMessage: t("Could not change the operating system.") },
       ...rest,
       onSuccess: async (data, input, ...args) => {
         // Update the server status for top bar update

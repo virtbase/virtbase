@@ -72,9 +72,6 @@ export default function ServerMountDialog(
             ),
           );
         },
-        onError: () => {
-          toast.error(t("Could not mount ISO image."));
-        },
       },
     },
   );

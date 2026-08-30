@@ -21,14 +21,22 @@ import type { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@virtbase/ui/button";
 import { DataTableColumnHeader } from "@virtbase/ui/data-table/data-table-column-header";
 import { LucideTrash2 } from "@virtbase/ui/icons/index";
-import { useParams } from "next/navigation";
+import type { DataTableRowAction } from "@virtbase/ui/types";
 import { useExtracted, useFormatter } from "next-intl";
-import { useDeletePointerRecord } from "@/features/servers/hooks/rdns/use-delete-pointer-record";
+import type { Dispatch, SetStateAction } from "react";
 import type { GetPointerRecordsListOutput } from "@/features/servers/hooks/rdns/use-pointer-records-list";
 
 export type RecordsTableColumn = GetPointerRecordsListOutput["records"][number];
 
-export function useRecordsTableColumns(): Array<ColumnDef<RecordsTableColumn>> {
+export function useRecordsTableColumns({
+  rowAction,
+  setRowAction,
+}: {
+  rowAction: DataTableRowAction<RecordsTableColumn, "delete"> | null;
+  setRowAction: Dispatch<
+    SetStateAction<DataTableRowAction<RecordsTableColumn, "delete"> | null>
+  >;
+}): Array<ColumnDef<RecordsTableColumn>> {
   const t = useExtracted();
   const formatter = useFormatter();
 
@@ -83,28 +91,22 @@ export function useRecordsTableColumns(): Array<ColumnDef<RecordsTableColumn>> {
     },
     {
       id: "actions",
-      cell: ({ row }) => {
-        const { id: serverId } = useParams<{ id: string }>();
-        const { mutate, isPending } = useDeletePointerRecord();
-
-        return (
-          <Button
-            variant="destructive"
-            size="icon"
-            className="h-8"
-            onClick={() =>
-              mutate({
-                server_id: serverId,
-                id: row.original.id,
-              })
-            }
-            disabled={isPending}
-            aria-label={t("Delete PTR record")}
-          >
-            <LucideTrash2 aria-hidden="true" />
-          </Button>
-        );
-      },
+      // Deleting a record used to fire straight off this button. It goes
+      // through a confirmation dialog now, which also takes the mutation out
+      // of a `cell` callback - hooks were being called from something that is
+      // not a component.
+      cell: ({ row }) => (
+        <Button
+          variant="destructive"
+          size="icon"
+          className="h-8"
+          onClick={() => setRowAction({ row, variant: "delete" })}
+          disabled={rowAction !== null}
+          aria-label={t("Delete PTR record")}
+        >
+          <LucideTrash2 aria-hidden="true" />
+        </Button>
+      ),
       size: 40,
     },
   ];

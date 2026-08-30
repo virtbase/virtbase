@@ -28,7 +28,6 @@ import { RenameServerInputSchema } from "@virtbase/validators/server";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { Controller, useForm } from "react-hook-form";
-import { toast } from "sonner";
 import { useRenameServer } from "../../hooks/overview/use-rename-server";
 
 export default function RenameServerDialog(
@@ -53,9 +52,6 @@ export default function RenameServerDialog(
       onSuccess: () => {
         form.reset();
         props.onOpenChange?.(false);
-      },
-      onError: (error) => {
-        toast.error(error.message);
       },
     },
   });

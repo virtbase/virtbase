@@ -45,11 +45,14 @@ export function useBackupsTableColumns({
   rowAction,
   setRowAction,
 }: {
-  rowAction: DataTableRowAction<BackupsTableColumn, "restore"> | null;
+  rowAction: DataTableRowAction<
+    BackupsTableColumn,
+    "restore" | "delete"
+  > | null;
   setRowAction: React.Dispatch<
     React.SetStateAction<DataTableRowAction<
       BackupsTableColumn,
-      "restore"
+      "restore" | "delete"
     > | null>
   >;
 }): Array<ColumnDef<BackupsTableColumn>> {

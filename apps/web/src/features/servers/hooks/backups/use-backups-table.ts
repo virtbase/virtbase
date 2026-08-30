@@ -30,7 +30,7 @@ import { useBackupsTableColumns } from "../../components/backups/backups-table/c
 export function useBackupsTable({ data }: { data: BackupsTableColumn[] }) {
   const [rowAction, setRowAction] = useState<DataTableRowAction<
     BackupsTableColumn,
-    "restore"
+    "restore" | "delete"
   > | null>(null);
   const columns = useBackupsTableColumns({
     rowAction,

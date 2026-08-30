@@ -39,18 +39,20 @@ import { isBusy, isOperational } from "@virtbase/utils";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import type React from "react";
-import { useDeleteBackup } from "@/features/servers/hooks/backups/use-delete-backup";
 import { useUpdateBackup } from "@/features/servers/hooks/backups/use-update-backup";
 import { useServerStatus } from "@/features/servers/hooks/use-server-status";
 import type { BackupsTableColumn } from "./columns";
 
 interface BackupActionsProps extends React.ComponentProps<"div"> {
   row: Row<BackupsTableColumn>;
-  rowAction: DataTableRowAction<BackupsTableColumn, "restore"> | null;
+  rowAction: DataTableRowAction<
+    BackupsTableColumn,
+    "restore" | "delete"
+  > | null;
   setRowAction: React.Dispatch<
     React.SetStateAction<DataTableRowAction<
       BackupsTableColumn,
-      "restore"
+      "restore" | "delete"
     > | null>
   >;
 }
@@ -73,16 +75,14 @@ export function BackupActions({
   const { mutate: updateBackup, isPending: isUpdatePending } =
     useUpdateBackup();
 
-  const { mutate: deleteBackup, isPending: isDeletePending } =
-    useDeleteBackup();
-
   const isActionsDisabled =
     isServerStatusPending ||
     !status ||
     !isOperational(status) ||
     isBusy(status) ||
     isUpdatePending ||
-    isDeletePending ||
+    // Covers deleting too: it runs in the dialog the row action opens, and a
+    // row action of any kind already closes the menu down.
     rowAction !== null;
 
   const {
@@ -149,9 +149,7 @@ export function BackupActions({
             disabled={
               (isLocked && !failedAt) || !finishedAt || isActionsDisabled
             }
-            onSelect={() =>
-              deleteBackup({ server_id: serverId, backup_id: backupId })
-            }
+            onSelect={() => setRowAction({ row, variant: "delete" })}
           >
             <LucideTrash2 aria-hidden="true" />
             <span>{t("Delete")}</span>

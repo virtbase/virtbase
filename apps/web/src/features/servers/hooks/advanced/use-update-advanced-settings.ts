@@ -16,6 +16,7 @@
  */
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useExtracted } from "next-intl";
 import { useTRPC } from "@/lib/trpc/react";
 
 type TRPC = ReturnType<typeof useTRPC>;
@@ -30,6 +31,7 @@ interface UpdateAdvancedSettingsOptions {
 export const useUpdateAdvancedSettings = ({
   mutationConfig,
 }: UpdateAdvancedSettingsOptions = {}) => {
+  const t = useExtracted();
   const trpc = useTRPC();
   const queryClient = useQueryClient();
 
@@ -37,6 +39,7 @@ export const useUpdateAdvancedSettings = ({
 
   return useMutation(
     trpc.servers.advanced.update.mutationOptions({
+      meta: { errorMessage: t("Could not update the advanced settings.") },
       ...rest,
       onMutate: async (input, ...args) => {
         await queryClient.cancelQueries(

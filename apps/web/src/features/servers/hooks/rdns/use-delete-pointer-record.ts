@@ -16,6 +16,7 @@
  */
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useExtracted } from "next-intl";
 import { useTRPC } from "@/lib/trpc/react";
 import { defaultPointerRecordsListQuery } from "./use-pointer-records-list";
 
@@ -31,6 +32,7 @@ interface DeletePointerRecordOptions {
 export const useDeletePointerRecord = ({
   mutationConfig,
 }: DeletePointerRecordOptions = {}) => {
+  const t = useExtracted();
   const trpc = useTRPC();
   const queryClient = useQueryClient();
 
@@ -38,6 +40,7 @@ export const useDeletePointerRecord = ({
 
   return useMutation(
     trpc.servers.rdns.delete.mutationOptions({
+      meta: { errorMessage: t("Could not delete the PTR record.") },
       ...rest,
       onMutate: async (input, ...args) => {
         await queryClient.cancelQueries(
