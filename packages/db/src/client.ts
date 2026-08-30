@@ -33,7 +33,17 @@ if (!connectionString) {
 
 // Configuring Neon for local development
 // See https://neon.com/guides/local-development-with-neon#local-postgresql
-if (process.env.NODE_ENV === "development") {
+//
+// [!] Keyed on the host, not on NODE_ENV. Every branch below already asks
+// whether the host is the local proxy, so `NODE_ENV` only decided whether to
+// ask - and it made a production-mode build impossible to run locally, because
+// `next build` is never "development". That is why a full `next build` could
+// only ever be exercised on Vercel, and why a bundling fault that appears only
+// under the production optimiser could not be reproduced here.
+//
+// A deployed environment points `DATABASE_URL` at a real Neon host, so this is
+// inert there.
+if (new URL(connectionString).hostname === "db.localtest.me") {
   neonConfig.fetchEndpoint = (host) => {
     const [protocol, port] =
       host === "db.localtest.me" ? ["http", 4444] : ["https", 443];

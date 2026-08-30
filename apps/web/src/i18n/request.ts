@@ -21,7 +21,21 @@ import * as rootParams from "next/root-params";
 import { hasLocale } from "next-intl";
 import { getRequestConfig } from "next-intl/server";
 import { cache } from "react";
-import { auth } from "@/lib/auth/server";
+// [!] `auth` is loaded inside `getUserLocale` below, not imported here.
+//
+// This module is next-intl's request config, so next-intl loads it whenever
+// something asks for a translator. `@/lib/auth/server` pulls in
+// `@virtbase/api/integrations`, whose registry evaluates every integration
+// package - and one of them, `@virtbase/integration-abuseipdb`, imports
+// `getExtracted` from `next-intl/server` for its admin-console labels. That
+// sends next-intl back here while this module is still initialising, and the
+// half-built binding it finds throws `Cannot access '<binding>' before
+// initialization` - failing every workflow step and, at build time, page-data
+// collection for the whole route.
+//
+// Deferring the import breaks the cycle at the only edge that is not load
+// bearing: nothing here needs `auth` until a request actually asks for a
+// locale.
 import { COOKIE_NAME, defaultLocale, locales } from "./config";
 
 const getUserLocale = cache(async () => {
@@ -34,6 +48,7 @@ const getUserLocale = cache(async () => {
   }
 
   try {
+    const { auth } = await import("@/lib/auth/server");
     const session = await auth.api.getSession({
       headers: await headers(),
     });
