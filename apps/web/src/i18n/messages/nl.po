@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Dutch\n"
-"PO-Revision-Date: 2026-08-29 11:20\n"
+"PO-Revision-Date: 2026-08-30 09:15\n"
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
 msgid "lYlalx"
@@ -2472,11 +2472,14 @@ msgstr "Maak een API-sleutel"
 #: src/features/admin/components/proxmox-templates/delete-template-dialog.tsx
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx
 #: src/features/servers/components/backups/create-backup-dialog.tsx
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
 #: src/features/servers/components/overview/change-template-dialog.tsx
 #: src/features/servers/components/overview/rename-server-dialog.tsx
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/ui/feedback-button.tsx
 msgid "47FYwb"
@@ -3567,6 +3570,7 @@ msgid "LrZ7qa"
 msgstr "`abuse.*` matcht een namespace, `abuse.ddos` één type."
 
 #: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "aH4De2"
@@ -5212,6 +5216,7 @@ msgid "TY8Ho1"
 msgstr "Opdrachten"
 
 #: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "DZ2Koj"
@@ -5225,6 +5230,7 @@ msgid "YDkqMJ"
 msgstr "Inkomend"
 
 #: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "QlsDcr"
@@ -5236,6 +5242,7 @@ msgid "VzIOKf"
 msgstr "Afwijzen"
 
 #: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "0QLzxo"
@@ -5375,6 +5382,7 @@ msgid "mRL9Vh"
 msgstr "Creëren..."
 
 #: src/features/servers/components/backups/backups-table/columns.tsx
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
 #: src/features/servers/hooks/use-status-mapping.ts
 #: src/features/servers/hooks/use-task-mapping.ts
@@ -5433,6 +5441,26 @@ msgstr "Schakel verwijderingsbeveiliging in"
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "I9XNiI"
 msgstr "De nieuw gemaakte back-up kan alleen worden verwijderd nadat de verwijderbeveiliging is uitgeschakeld."
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "zkk3nZ"
+msgstr "Back-up verwijderen"
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "3pdwu9"
+msgstr "Verwijder een back-up van uw server."
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "wl5Juv"
+msgstr "De back-up van {date} wordt van de node verwijderd. Dit kan niet ongedaan worden gemaakt."
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "ijaxLm"
+msgstr "Het volgende besturingssysteem gaat verloren:"
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "SKjLPj"
+msgstr "Moet de back-up worden verwijderd?"
 
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
 msgid "MW7EBt"
@@ -5674,6 +5702,23 @@ msgstr "Plan wijzigen"
 msgid "YeQq19"
 msgstr "Afrekenen voorbereiden…"
 
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
+#: src/features/servers/components/rdns/records-table/columns.tsx
+msgid "LUHXQL"
+msgstr "PTR-record verwijderen"
+
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
+msgid "LuQ-pB"
+msgstr "Verwijder een PTR-record van uw server."
+
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
+msgid "2VDNVp"
+msgstr "De reverse lookup voor {ip} verwijst niet langer naar {hostname}. E-mail vanaf dit adres kan worden geweigerd."
+
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
+msgid "uoUX6n"
+msgstr "Moet de PTR-record worden verwijderd?"
+
 #: src/features/servers/components/rdns/records-card.tsx
 msgid "Z2vqA3"
 msgstr "PTR-records"
@@ -5685,10 +5730,6 @@ msgstr "{count, plural, =1 {# PTR-record} other {# PTR-records}}"
 #: src/features/servers/components/rdns/records-table/columns.tsx
 msgid "99tjyG"
 msgstr "IP"
-
-#: src/features/servers/components/rdns/records-table/columns.tsx
-msgid "LUHXQL"
-msgstr "PTR-record verwijderen"
 
 #: src/features/servers/components/rdns/records-table/index.tsx
 msgid "q9ZR74"
@@ -5813,10 +5854,6 @@ msgid "lgSmVl"
 msgstr "ISO-image succesvol gekoppeld. De wijziging wordt van kracht bij de volgende keer opstarten."
 
 #: src/features/servers/components/server-mount-dialog.tsx
-msgid "bmliQK"
-msgstr "ISO-image kon niet worden gekoppeld."
-
-#: src/features/servers/components/server-mount-dialog.tsx
 msgid "1INFXA"
 msgstr "ISO-image succesvol ontkoppeld. De wijziging wordt van kracht bij de volgende keer opstarten."
 
@@ -5879,6 +5916,32 @@ msgstr "Kopieer IP"
 #: src/features/servers/components/servers-list.tsx
 msgid "nWQFic"
 msgstr "Vernieuwen"
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "rWbrOx"
+msgstr "Firewallregel verwijderen"
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "JfwSAy"
+msgstr "Verwijder een regel uit uw firewall."
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "wTEfoa"
+msgstr "Regel {position} wordt uit de Virtbase-firewall verwijderd. Dit kan niet ongedaan worden gemaakt."
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "rsSUP3"
+msgstr "Poort"
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "LgbKvU"
+msgstr "Opmerking"
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "pc6aEi"
+msgstr "Moet de regel worden verwijderd?"
 
 #: src/features/servers/firewall/components/firewall-action-select.tsx
 msgid "ObQE5T"
@@ -5956,11 +6019,6 @@ msgstr "Elk adres"
 msgid "08nIQL"
 msgstr "Komt alleen overeen met verkeer van dit adres of netwerk, bijvoorbeeld 10.0.0.0/8. Laat leeg om overeen te komen met elk adres."
 
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
-msgid "LgbKvU"
-msgstr "Opmerking"
-
 #: src/features/servers/firewall/components/firewall-rules-card.tsx
 msgid "Qov8tl"
 msgstr "Firewall-regels"
@@ -6018,14 +6076,6 @@ msgid "H_r5m6"
 msgstr "Ga naar beneden"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
-msgid "AFkUOq"
-msgstr "Regels kunnen niet gegenereerd worden. Probeer het opnieuw."
-
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
-msgid "N8n7F4"
-msgstr "Regel kan niet gemaakt worden. Probeer het opnieuw."
-
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "w-tZ4Z"
 msgstr "Firewallregels genereren"
 
@@ -6072,6 +6122,14 @@ msgstr "Verkeer moet beide firewalls passeren. Virtbase kan {label}-regels nog n
 #: src/features/servers/firewall/components/guest-firewall-alert.tsx
 msgid "C03sMA"
 msgstr "Verkeer moet beide firewalls passeren. De regels staan hieronder."
+
+#: src/features/servers/firewall/hooks/use-create-firewall-rule.ts
+msgid "mJ0yAx"
+msgstr "De firewallregel kon niet worden aangemaakt."
+
+#: src/features/servers/firewall/hooks/use-delete-firewall-rule.ts
+msgid "3Kd2EU"
+msgstr "De firewallregel kon niet worden verwijderd."
 
 #: src/features/servers/firewall/hooks/use-finding-mapping.ts
 msgid "6tQJAd"
@@ -6125,6 +6183,62 @@ msgstr "Accepteren"
 msgid "j8RTUO"
 msgstr "Druppel"
 
+#: src/features/servers/firewall/hooks/use-generate-firewall-rule.ts
+msgid "AFkUOq"
+msgstr "Regels kunnen niet gegenereerd worden. Probeer het opnieuw."
+
+#: src/features/servers/firewall/hooks/use-move-firewall-rule.ts
+msgid "AocbVN"
+msgstr "De firewallregels konden niet opnieuw worden geordend."
+
+#: src/features/servers/firewall/hooks/use-update-firewall-options.ts
+msgid "gUdmaM"
+msgstr "De firewallopties konden niet worden bijgewerkt."
+
+#: src/features/servers/firewall/hooks/use-update-firewall-rule.ts
+msgid "HixF5T"
+msgstr "De firewallregel kon niet worden bijgewerkt."
+
+#: src/features/servers/hooks/advanced/use-update-advanced-settings.ts
+msgid "TLEvHC"
+msgstr "De geavanceerde instellingen konden niet worden bijgewerkt."
+
+#: src/features/servers/hooks/backups/use-create-backup.ts
+msgid "VEvlmq"
+msgstr "De back-up kon niet worden gemaakt."
+
+#: src/features/servers/hooks/backups/use-delete-backup.ts
+msgid "VZShzt"
+msgstr "De back-up kon niet worden verwijderd."
+
+#: src/features/servers/hooks/backups/use-restore-backup.ts
+msgid "lFzlNs"
+msgstr "De back-up kon niet worden hersteld."
+
+#: src/features/servers/hooks/backups/use-update-backup.ts
+msgid "GwAFh4"
+msgstr "De back-up kon niet worden bijgewerkt."
+
+#: src/features/servers/hooks/overview/use-change-template.ts
+msgid "8g0ePs"
+msgstr "Het besturingssysteem kon niet worden gewijzigd."
+
+#: src/features/servers/hooks/overview/use-rename-server.ts
+msgid "WkH31C"
+msgstr "De server kon niet worden hernoemd."
+
+#: src/features/servers/hooks/overview/use-reset-server-password.ts
+msgid "afiU1l"
+msgstr "Het wachtwoord kon niet worden gereset."
+
+#: src/features/servers/hooks/rdns/use-delete-pointer-record.ts
+msgid "OqBG_o"
+msgstr "De PTR-record kon niet worden verwijderd."
+
+#: src/features/servers/hooks/rdns/use-upsert-pointer-record.ts
+msgid "v_PJM7"
+msgstr "De PTR-record kon niet worden opgeslagen."
+
 #: src/features/servers/hooks/use-agent-status-mapping.ts
 msgid "D7fMMu"
 msgstr "Gastagent draait"
@@ -6177,6 +6291,10 @@ msgstr "Status van gastagent niet beschikbaar"
 msgid "XiMFvI"
 msgstr "Virtbase kon de gastagent nu niet controleren. Probeer het later opnieuw."
 
+#: src/features/servers/hooks/use-mount-image.ts
+msgid "bmliQK"
+msgstr "ISO-image kon niet worden gekoppeld."
+
 #: src/features/servers/hooks/use-status-mapping.ts
 msgid "ccU6l_"
 msgstr "Online"
@@ -6228,6 +6346,14 @@ msgstr "Back-up maken..."
 #: src/features/servers/hooks/use-task-mapping.ts
 msgid "98thq0"
 msgstr "Back-up herstellen..."
+
+#: src/features/servers/hooks/use-unmount-image.ts
+msgid "D6e_ae"
+msgstr "De ISO-image kon niet worden ontkoppeld."
+
+#: src/features/servers/hooks/use-update-server-status.ts
+msgid "TpRHA3"
+msgstr "De serverstatus kon niet worden gewijzigd."
 
 #: src/ui/app-footer.tsx
 msgid "4XCigB"
