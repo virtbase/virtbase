@@ -85,7 +85,13 @@ export const proxmoxIsoDownloads = d.snakeCase.table(
       .notNull()
       .$onUpdate(() => sql`now()`),
   },
-  (t) => [d.index().on(t.userId), d.index().on(t.proxmoxNodeId)],
+  (t) => [
+    d.index().on(t.userId),
+    d.index().on(t.proxmoxNodeId),
+    // The five-minute expiry cron asks `expires_at < now()` and nothing else,
+    // so without this it reads every ISO download ever requested.
+    d.index().on(t.expiresAt),
+  ],
 );
 
 export type DatabaseProxmoxIsoDownload =

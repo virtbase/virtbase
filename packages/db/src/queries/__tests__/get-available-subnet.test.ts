@@ -25,6 +25,7 @@ import {
   test,
 } from "bun:test";
 
+import { eq, isNull } from "drizzle-orm";
 import {
   datacenters,
   proxmoxNodeGroups,
@@ -311,5 +312,114 @@ describe("findFirstAvailableSubnet - no parent", () => {
     const result = await findFirstAvailableSubnet(4, 32, PROXMOX_NODE_ID);
 
     expect(result).toBeNull();
+  });
+});
+
+describe("findFirstAvailableSubnet - concurrent claims", () => {
+  test("never hands the same released subnet to two callers", async () => {
+    // The reuse path: three /32s exist with nothing live against them, which
+    // is what a deletion leaves behind. Selecting one used to write no claim
+    // at all - the allocation row appeared minutes later, at the end of
+    // provisioning - so concurrent callers were reliably handed the same one.
+    const parentId = await seedParent({
+      cidr: "5.231.248.208/29",
+      gateway: "5.231.248.209",
+    });
+    await seedChild(parentId, "5.231.248.210/32", "5.231.248.209", {
+      allocated: false,
+    });
+    await seedChild(parentId, "5.231.248.211/32", "5.231.248.209", {
+      allocated: false,
+    });
+    await seedChild(parentId, "5.231.248.212/32", "5.231.248.209", {
+      allocated: false,
+    });
+
+    const results = await Promise.all([
+      findFirstAvailableSubnet(4, 32, PROXMOX_NODE_ID),
+      findFirstAvailableSubnet(4, 32, PROXMOX_NODE_ID),
+      findFirstAvailableSubnet(4, 32, PROXMOX_NODE_ID),
+    ]);
+
+    const ids = results.map((r) => r?.id);
+    expect(ids.every(Boolean)).toBe(true);
+    expect(new Set(ids).size).toBe(3);
+
+    const cidrs = results.map((r) => r?.cidr);
+    expect(new Set(cidrs).size).toBe(3);
+  });
+
+  test("never hands the same freshly carved subnet to two callers", async () => {
+    // The carve path, and the reason a unique `cidr` was not enough on its
+    // own: the winner's brand-new child has no allocation against it either,
+    // so the next caller used to pick it straight back up.
+    await seedParent({ cidr: "5.231.248.208/29", gateway: "5.231.248.209" });
+
+    const results = await Promise.all([
+      findFirstAvailableSubnet(4, 32, PROXMOX_NODE_ID),
+      findFirstAvailableSubnet(4, 32, PROXMOX_NODE_ID),
+      findFirstAvailableSubnet(4, 32, PROXMOX_NODE_ID),
+    ]);
+
+    const cidrs = results.map((r) => r?.cidr);
+    expect(cidrs.every(Boolean)).toBe(true);
+    expect(new Set(cidrs).size).toBe(3);
+  });
+
+  test("the claim survives long enough to be turned into an allocation", async () => {
+    // What the caller actually does: it comes back minutes later and inserts
+    // the allocation row. Every claim has to still be its own by then.
+    await seedParent({ cidr: "5.231.248.208/29", gateway: "5.231.248.209" });
+
+    const results = await Promise.all([
+      findFirstAvailableSubnet(4, 32, PROXMOX_NODE_ID),
+      findFirstAvailableSubnet(4, 32, PROXMOX_NODE_ID),
+      findFirstAvailableSubnet(4, 32, PROXMOX_NODE_ID),
+    ]);
+
+    for (const result of results) {
+      if (!result) throw new Error("expected a subnet");
+      await testDb
+        .insert(subnetAllocations)
+        .values({ subnetId: result.id, description: "provisioned" });
+    }
+
+    const live = await testDb
+      .select({ subnetId: subnetAllocations.subnetId })
+      .from(subnetAllocations)
+      .where(isNull(subnetAllocations.deallocatedAt));
+
+    expect(new Set(live.map((row) => row.subnetId)).size).toBe(live.length);
+  });
+
+  test("a reservation is not permanent - an abandoned claim expires", async () => {
+    // An abandoned checkout or a crashed workflow must not take the address
+    // out of circulation forever, which is why the claim is a deadline rather
+    // than a flag. Nothing has to sweep it up.
+    const parentId = await seedParent({
+      cidr: "5.231.248.208/29",
+      gateway: "5.231.248.209",
+    });
+    const childId = await seedChild(
+      parentId,
+      "5.231.248.210/32",
+      "5.231.248.209",
+      { allocated: false },
+    );
+
+    const claimed = await findFirstAvailableSubnet(4, 32, PROXMOX_NODE_ID);
+    expect(claimed?.id).toBe(childId);
+
+    // Held: the next caller has to carve rather than take it.
+    const whileHeld = await findFirstAvailableSubnet(4, 32, PROXMOX_NODE_ID);
+    expect(whileHeld?.id).not.toBe(childId);
+
+    await testDb
+      .update(subnets)
+      .set({ reservedUntil: new Date(Date.now() - 60_000) })
+      .where(eq(subnets.id, childId));
+
+    const afterExpiry = await findFirstAvailableSubnet(4, 32, PROXMOX_NODE_ID);
+    expect(afterExpiry?.id).toBe(childId);
   });
 });

@@ -125,6 +125,10 @@ export const serverBackups = d.snakeCase.table(
     d.index().on(t.proxmoxTemplateId),
     d.index().on(t.upid),
     d.index().on(t.volid),
+    // The ten-minute reconciler sweeps exactly this predicate, oldest first,
+    // over a table that only ever grows. Partial, because a settled backup is
+    // never a candidate and almost every row is settled.
+    d.index().on(t.startedAt).where(sql`${t.finishedAt} IS NULL`),
   ],
 );
 

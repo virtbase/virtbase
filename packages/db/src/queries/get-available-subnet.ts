@@ -15,17 +15,109 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { and, desc, eq, isNull, sql } from "drizzle-orm";
+import { and, asc, desc, eq, isNull, notExists, or, sql } from "drizzle-orm";
 import { db } from "../client";
 import { subnetAllocations, subnets, subnetsToProxmoxNodes } from "../schema";
 
+/**
+ * How long a subnet is held for the caller before it returns to the pool.
+ *
+ * The caller does not write its `subnet_allocations` row here - it writes it
+ * once the server exists, after the clone, the disk resize, the cloud-init
+ * upload and the network config. This window has to comfortably outlast that,
+ * because losing a reservation mid-provision is worse than holding an address
+ * for an hour: the winner would take the address and the original run would
+ * fail at its insert.
+ *
+ * It is a ceiling, not a schedule. A run that finishes writes its allocation
+ * and the reservation stops mattering; a run that dies leaves the address to
+ * expire on its own, so there is nothing to reap.
+ */
+export const SUBNET_RESERVATION_MINUTES = 60;
+
+/**
+ * How many times a carve is retried when another caller took the address
+ * first.
+ *
+ * Two callers under the same parent compute the same next free address, and
+ * `subnets.cidr` is unique, so exactly one wins. The loser re-reads the
+ * obstacles - which now include the winner's row - and computes the next one
+ * down. Bounded, because a caller that loses this often is contending with
+ * more concurrent provisions than the parent has space for.
+ */
+const CARVE_ATTEMPTS = 5;
+
+/** Sentinel: this attempt lost a race and the caller should try again. */
+const RETRY = Symbol("retry");
+
+const reservationExpiry = sql`now() + ${sql.raw(`INTERVAL '${SUBNET_RESERVATION_MINUTES} minutes'`)}`;
+
+/**
+ * Finds a subnet that nobody holds, and claims it in the same transaction.
+ *
+ * Selecting and claiming used to be separate: this returned a subnet id having
+ * written nothing, and the allocation row appeared minutes later, at the end of
+ * provisioning. Two concurrent provisions were therefore handed the same
+ * address - reliably, because the query had no `ORDER BY` and no lock - and two
+ * customers ended up configured with one IP.
+ *
+ * The claim is `subnets.reserved_until`. It is advisory: what actually forbids
+ * two live allocations of one subnet is the partial unique index on
+ * `subnet_allocations (subnet_id) WHERE deallocated_at IS NULL`. That ordering
+ * matters - if a reservation ever does expire under a run that is still going,
+ * the run fails at its insert instead of quietly duplicating an address.
+ */
 export async function findFirstAvailableSubnet(
+  family: 4 | 6,
+  targetPrefix: number,
+  proxmoxNodeId: string,
+) {
+  for (let attempt = 0; attempt < CARVE_ATTEMPTS; attempt++) {
+    const result = await claimFirstAvailableSubnet(
+      family,
+      targetPrefix,
+      proxmoxNodeId,
+    );
+
+    if (result !== RETRY) {
+      return result;
+    }
+  }
+
+  return null;
+}
+
+async function claimFirstAvailableSubnet(
   family: 4 | 6,
   targetPrefix: number,
   proxmoxNodeId: string,
 ) {
   return db.transaction(
     async (tx) => {
+      /** A subnet nobody holds: no live allocation and no live reservation. */
+      const isUnheld = and(
+        notExists(
+          tx
+            .select({ one: sql`1` })
+            .from(subnetAllocations)
+            .where(
+              and(
+                eq(subnetAllocations.subnetId, subnets.id),
+                isNull(subnetAllocations.deallocatedAt),
+              ),
+            ),
+        ),
+        or(
+          isNull(subnets.reservedUntil),
+          sql`${subnets.reservedUntil} <= now()`,
+        ),
+      );
+
+      // `skip locked` is what makes this safe: a second caller arriving while
+      // this row is locked moves straight past it rather than waiting for it
+      // and then being handed the same subnet. The `order by` is what makes it
+      // deterministic - without one, every caller raced for whichever row the
+      // planner happened to return first.
       const existing = await tx
         .select({
           id: subnets.id,
@@ -42,27 +134,30 @@ export async function findFirstAvailableSubnet(
             eq(subnetsToProxmoxNodes.proxmoxNodeId, proxmoxNodeId),
           ),
         )
-        .leftJoin(
-          subnetAllocations,
-          and(
-            eq(subnetAllocations.subnetId, subnets.id),
-            isNull(subnetAllocations.deallocatedAt),
-          ),
-        )
         .where(
           and(
-            isNull(subnetAllocations.id),
+            isUnheld,
             sql`family(${subnets.cidr}) = ${family}`,
             sql`masklen(${subnets.cidr}) = ${targetPrefix}`,
           ),
         )
+        .orderBy(asc(subnets.cidr))
         .limit(1)
+        .for("update", { of: subnets, skipLocked: true })
         .then(([res]) => res);
 
       if (existing) {
+        await tx
+          .update(subnets)
+          .set({ reservedUntil: reservationExpiry })
+          .where(eq(subnets.id, existing.id));
+
         return existing;
       }
 
+      // A held subnet is not a candidate parent either: a reserved /64 belongs
+      // to a provisioning run, and carving a /128 out of it would hand away
+      // part of an address somebody is already being given.
       const parent = await tx
         .select({
           id: subnets.id,
@@ -80,21 +175,14 @@ export async function findFirstAvailableSubnet(
             eq(subnetsToProxmoxNodes.proxmoxNodeId, proxmoxNodeId),
           ),
         )
-        .leftJoin(
-          subnetAllocations,
-          and(
-            eq(subnetAllocations.subnetId, subnets.id),
-            isNull(subnetAllocations.deallocatedAt),
-          ),
-        )
         .where(
           and(
-            isNull(subnetAllocations.id),
+            isUnheld,
             sql`family(${subnets.cidr}) = ${family}`,
             sql`masklen(${subnets.cidr}) < ${targetPrefix}`,
           ),
         )
-        .orderBy(desc(sql`masklen(${subnets.cidr})`))
+        .orderBy(desc(sql`masklen(${subnets.cidr})`), asc(subnets.cidr))
         .limit(1)
         .then(([res]) => res);
 
@@ -162,6 +250,9 @@ export async function findFirstAvailableSubnet(
         return null;
       }
 
+      // The carved subnet is reserved as it is created. Without that, a caller
+      // arriving a moment later would find a brand-new child with no
+      // allocation against it and hand out the same address again.
       const insertedSubnet = await tx
         .insert(subnets)
         .values({
@@ -170,7 +261,12 @@ export async function findFirstAvailableSubnet(
           vlan: parent.vlan,
           dnsReverseZone: parent.dnsReverseZone,
           parentId: parent.id,
+          reservedUntil: reservationExpiry,
         })
+        // `subnets.cidr` is unique, so a concurrent carve of the same address
+        // lands here rather than throwing. Nothing inserted means somebody
+        // else took it; the retry sees their row as an obstacle.
+        .onConflictDoNothing()
         .returning({
           id: subnets.id,
           cidr: subnets.cidr,
@@ -180,7 +276,7 @@ export async function findFirstAvailableSubnet(
         .then(([res]) => res);
 
       if (!insertedSubnet) {
-        return null;
+        return RETRY;
       }
 
       await tx.insert(subnetsToProxmoxNodes).values({

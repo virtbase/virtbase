@@ -64,6 +64,23 @@ export const subnets = d.snakeCase.table(
      * @example "10.10.10.in-addr.arpa"
      */
     dnsReverseZone: d.varchar({ length: 255 }),
+    /**
+     * Until when this subnet is held for a provisioning run that has not yet
+     * written its allocation row.
+     *
+     * Selecting a free subnet and claiming it has to be atomic, but the real
+     * `subnet_allocations` row cannot be written until the server exists —
+     * minutes later, after the clone, the disk resize and cloud-init. Without
+     * a claim in between, two concurrent provisions were reliably handed the
+     * same address.
+     *
+     * A timestamp rather than a boolean so an abandoned run cannot leak the
+     * address forever: the reservation simply expires and the subnet returns
+     * to the pool on its own, with no reaper to schedule or forget.
+     *
+     * @default null
+     */
+    reservedUntil: d.timestamp({ withTimezone: true, mode: "date" }),
     createdAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
@@ -74,7 +91,14 @@ export const subnets = d.snakeCase.table(
       .notNull()
       .$onUpdate(() => sql`now()`),
   },
-  (t) => [d.index().on(t.parentId)],
+  (t) => [
+    d.index().on(t.parentId),
+    // Abuse attribution asks `cidr >>= $address` twice per signal, over a
+    // table that gains a row per address ever carved and never loses one. A
+    // btree - which is all the unique constraint on `cidr` gives - cannot
+    // answer containment, so that was a sequential scan of the whole table.
+    d.index("subnets_cidr_gist_index").using("gist", t.cidr.op("inet_ops")),
+  ],
 );
 
 export type DatabaseSubnets = typeof subnets.$inferSelect;

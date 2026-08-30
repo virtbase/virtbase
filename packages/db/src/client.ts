@@ -48,7 +48,52 @@ if (process.env.NODE_ENV === "development") {
 }
 neonConfig.webSocketConstructor = WebSocketConstructor;
 
-const pool = new Pool({ connectionString });
+/**
+ * Bounds on the connection pool.
+ *
+ * The numbers are deliberately conservative rather than generous. Several call
+ * sites hold a transaction open across a Proxmox HTTP call, so a saturated
+ * pool is a normal condition here, not an exotic one - and the defaults turn
+ * that into an outage: `connectionTimeoutMillis` of `0` means a checkout waits
+ * forever, so requests queue without limit and the instance wedges instead of
+ * shedding load.
+ *
+ * - `max` keeps the previous effective ceiling (node-postgres defaults to 10),
+ *   now written down. It is per instance, and serverless runs many instances
+ *   against one Postgres, so raising it multiplies straight into the server's
+ *   connection limit.
+ * - `connectionTimeoutMillis` is what makes a saturated pool fail loudly. Ten
+ *   seconds is longer than any healthy checkout and far shorter than the
+ *   Proxmox calls that cause the saturation.
+ * - `idleTimeoutMillis` is raised above the 10s default because a Neon
+ *   connection costs a WebSocket handshake to re-establish; 30s spans the gaps
+ *   between requests without holding connections open across idle periods.
+ * - `maxUses` recycles a connection periodically, which is the documented
+ *   advice for pooling through a proxy - as everything reaching Neon does.
+ */
+const POOL_CONFIG = {
+  max: 10,
+  connectionTimeoutMillis: 10_000,
+  idleTimeoutMillis: 30_000,
+  maxUses: 7_500,
+} as const;
+
+/**
+ * Next's dev server re-evaluates this module on every hot reload. Without a
+ * cache that leaks a whole pool per edit, and the leaked pools keep their
+ * connections, so a long editing session exhausts the database rather than the
+ * process.
+ */
+const globalForDb = globalThis as unknown as {
+  virtbasePool?: Pool;
+};
+
+const pool =
+  globalForDb.virtbasePool ?? new Pool({ connectionString, ...POOL_CONFIG });
+
+if (process.env.NODE_ENV !== "production") {
+  globalForDb.virtbasePool = pool;
+}
 
 export const db = drizzle({
   client: pool,

@@ -72,7 +72,19 @@ export const subnetAllocations = d.snakeCase.table(
       .notNull()
       .$onUpdate(() => sql`now()`),
   },
-  (t) => [d.index().on(t.subnetId), d.index().on(t.serverId)],
+  (t) => [
+    d.index().on(t.subnetId),
+    d.index().on(t.serverId),
+    // One live allocation per subnet, enforced by the database rather than by
+    // whoever remembers to check first. Two customers handed the same address
+    // breaks networking for both, and leaves every later abuse report about
+    // that address unattributable, because point-in-time attribution finds two
+    // holders at equal mask length and refuses to guess.
+    d
+      .uniqueIndex("subnet_allocations_subnet_id_live_index")
+      .on(t.subnetId)
+      .where(sql`${t.deallocatedAt} IS NULL`),
+  ],
 );
 
 export type DatabaseSubnetAllocations = typeof subnetAllocations.$inferSelect;

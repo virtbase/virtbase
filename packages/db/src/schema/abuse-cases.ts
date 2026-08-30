@@ -249,7 +249,17 @@ export const abuseCaseServers = d.snakeCase.table(
       .notNull()
       .$onUpdate(() => sql`now()`),
   },
-  (t) => [d.unique().on(t.caseId, t.serverId), d.index().on(t.serverId)],
+  (t) => [
+    d.unique().on(t.caseId, t.serverId),
+    d.index().on(t.serverId),
+    // The five-minute lock reconciler reads the locks still in force. Partial
+    // on the reconciler's own predicate, so the index holds only those rows -
+    // a released case stays in the table forever and must not be scanned.
+    d
+      .index()
+      .on(t.lockedAt)
+      .where(sql`${t.releasedAt} IS NULL AND ${t.lockLevel} <> 'none'`),
+  ],
 );
 
 /**

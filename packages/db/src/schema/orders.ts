@@ -167,11 +167,19 @@ export const orderItems = d.snakeCase.table(
     /**
      * Percentage, e.g. `19` for German standard VAT.
      *
+     * Numeric rather than integer because rates are not whole numbers: Finland
+     * charges 25.5%. An `int4` column rejected that outright, so every Finnish
+     * order failed after the customer had already paid.
+     *
+     * `mode: "number"` is load-bearing. Drizzle hands back `numeric` as a
+     * string by default, and every consumer of this column — the invoice port,
+     * the Lexware adapter, the privacy export — is typed `number`.
+     *
      * Null until the billing country is known — which is not at order time.
      * Distinguishing "not yet known" from a genuine zero rate matters, because
      * zero is a legitimate rate.
      */
-    taxRatePercentage: d.integer(),
+    taxRatePercentage: d.numeric({ precision: 5, scale: 2, mode: "number" }),
     createdAt: d
       .timestamp({ withTimezone: true, mode: "date" })
       .defaultNow()
