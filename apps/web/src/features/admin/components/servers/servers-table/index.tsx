@@ -55,7 +55,7 @@ export function ServersTable({ promises }: ServersTableProps) {
     clearOnDefault: true,
     initialState: {
       sorting: [{ id: "name", desc: false }],
-      columnPinning: { right: ["actions"] },
+      columnPinning: { start: [], end: ["actions"] },
     },
   });
 

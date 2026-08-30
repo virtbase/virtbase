@@ -54,7 +54,7 @@ export function SnippetsTable({ promises }: SnippetsTableProps) {
     clearOnDefault: true,
     initialState: {
       sorting: [{ id: "priority", desc: false }],
-      columnPinning: { right: ["actions"] },
+      columnPinning: { start: [], end: ["actions"] },
     },
   });
 

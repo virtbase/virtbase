@@ -48,7 +48,7 @@ export function InvoicesTable({ search }: InvoicesTableProps) {
     clearOnDefault: true,
     initialState: {
       sorting: [{ id: "id", desc: true }],
-      columnPinning: { right: ["actions"] },
+      columnPinning: { start: [], end: ["actions"] },
     },
   });
 

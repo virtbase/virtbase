@@ -52,7 +52,7 @@ export function DatacentersTable({ promises }: DatacentersTableProps) {
     clearOnDefault: true,
     initialState: {
       sorting: [{ id: "name", desc: false }],
-      columnPinning: { right: ["actions"] },
+      columnPinning: { start: [], end: ["actions"] },
     },
   });
 

@@ -17,11 +17,7 @@
 
 "use client";
 
-import {
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
+import { flexRender, useTable } from "@tanstack/react-table";
 import type { LucideIcon } from "@virtbase/ui/icons";
 import {
   LucideBrickWallShield,
@@ -29,6 +25,7 @@ import {
   LucideShieldCheck,
   LucideShieldX,
 } from "@virtbase/ui/icons";
+import { dataTableFeatures } from "@virtbase/ui/lib";
 import { ScrollArea, ScrollBar } from "@virtbase/ui/scroll-area";
 import { Skeleton } from "@virtbase/ui/skeleton";
 import {
@@ -89,16 +86,16 @@ export function FirewallRulesTable({
     setRowAction,
   });
 
-  const table = useReactTable({
+  const table = useTable({
+    features: dataTableFeatures,
     data: rows,
     columns,
     pageCount: 1,
-    getCoreRowModel: getCoreRowModel(),
     enableHiding: false,
     enableSorting: false,
     getRowId: (row) => row.key,
     initialState: {
-      columnPinning: { right: ["actions"] },
+      columnPinning: { start: [], end: ["actions"] },
     },
   });
 

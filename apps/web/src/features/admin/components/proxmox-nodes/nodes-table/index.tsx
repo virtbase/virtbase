@@ -50,7 +50,7 @@ export function NodesTable({ promises }: NodesTableProps) {
     clearOnDefault: true,
     initialState: {
       sorting: [{ id: "hostname", desc: false }],
-      columnPinning: { right: ["actions"] },
+      columnPinning: { start: [], end: ["actions"] },
     },
   });
 

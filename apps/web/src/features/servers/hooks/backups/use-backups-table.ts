@@ -16,12 +16,8 @@
  */
 
 import type { ColumnFiltersState, SortingState } from "@tanstack/react-table";
-import {
-  getCoreRowModel,
-  getFilteredRowModel,
-  getSortedRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
+import { useTable } from "@tanstack/react-table";
+import { dataTableFeatures } from "@virtbase/ui/lib";
 import type { DataTableRowAction } from "@virtbase/ui/types";
 import { useState } from "react";
 import type { BackupsTableColumn } from "../../components/backups/backups-table/columns";
@@ -40,12 +36,10 @@ export function useBackupsTable({ data }: { data: BackupsTableColumn[] }) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
-  const table = useReactTable({
+  const table = useTable({
+    features: dataTableFeatures,
     data,
     columns,
-    getCoreRowModel: getCoreRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
     onColumnFiltersChange: setColumnFilters,
     onSortingChange: setSorting,
     state: {
@@ -55,7 +49,7 @@ export function useBackupsTable({ data }: { data: BackupsTableColumn[] }) {
     enableHiding: false,
     initialState: {
       sorting: [{ id: "id", desc: true }],
-      columnPinning: { right: ["actions"] },
+      columnPinning: { start: [], end: ["actions"] },
     },
   });
 

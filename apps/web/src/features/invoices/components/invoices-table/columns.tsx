@@ -17,10 +17,8 @@
 
 "use client";
 
-import type { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@virtbase/ui/button";
 import { Checkbox } from "@virtbase/ui/checkbox";
-
 import { DataTableColumnHeader } from "@virtbase/ui/data-table";
 import {
   CalendarIcon,
@@ -29,6 +27,7 @@ import {
   LucideDownload,
 } from "@virtbase/ui/icons";
 import { Spinner } from "@virtbase/ui/spinner";
+import type { ColumnDef } from "@virtbase/ui/types";
 import type { ListInvoicesOutput } from "@virtbase/validators";
 import { useExtracted, useFormatter } from "next-intl";
 import { useDownloadInvoice } from "@/features/dashboard/hooks/use-download-invoice";

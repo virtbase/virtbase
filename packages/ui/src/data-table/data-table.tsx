@@ -15,7 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { Table as TanstackTable } from "@tanstack/react-table";
+import type { RowData } from "@tanstack/react-table";
 import { flexRender } from "@tanstack/react-table";
 import { cn } from "@virtbase/ui";
 import { useExtracted } from "next-intl";
@@ -29,14 +29,16 @@ import {
   TableHeader,
   TableRow,
 } from "../table";
+import type { Table as TanstackTable } from "../types/data-table";
 import { DataTablePagination } from "./data-table-pagination";
 
-interface DataTableProps<TData> extends React.ComponentProps<"div"> {
+interface DataTableProps<TData extends RowData>
+  extends React.ComponentProps<"div"> {
   table: TanstackTable<TData>;
   actionBar?: React.ReactNode;
 }
 
-export function DataTable<TData>({
+export function DataTable<TData extends RowData>({
   table,
   actionBar,
   children,

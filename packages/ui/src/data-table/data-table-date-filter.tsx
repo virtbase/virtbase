@@ -18,7 +18,7 @@
 "use client";
 
 import type { DateRange } from "@daypicker/react";
-import type { Column } from "@tanstack/react-table";
+import type { RowData } from "@tanstack/react-table";
 import { CalendarIcon, XCircle } from "lucide-react";
 import { useExtracted } from "next-intl";
 import * as React from "react";
@@ -27,6 +27,7 @@ import { Calendar } from "../calendar";
 import { formatDate } from "../lib/format";
 import { Popover, PopoverContent, PopoverTrigger } from "../popover";
 import { Separator } from "../separator";
+import type { Column } from "../types/data-table";
 
 type DateSelection = Date[] | DateRange;
 
@@ -63,13 +64,13 @@ function parseColumnFilterValue(value: unknown) {
   return [];
 }
 
-interface DataTableDateFilterProps<TData> {
+interface DataTableDateFilterProps<TData extends RowData> {
   column: Column<TData, unknown>;
   title?: string;
   multiple?: boolean;
 }
 
-export function DataTableDateFilter<TData>({
+export function DataTableDateFilter<TData extends RowData>({
   column,
   title,
   multiple,

@@ -63,7 +63,7 @@ export function SubnetsTable({ promises }: SubnetsTableProps) {
     clearOnDefault: true,
     initialState: {
       sorting: [{ id: "cidr", desc: false }],
-      columnPinning: { right: ["actions"] },
+      columnPinning: { start: [], end: ["actions"] },
     },
   });
 

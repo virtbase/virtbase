@@ -17,7 +17,6 @@
 
 "use client";
 
-import type { ColumnDef } from "@tanstack/react-table";
 import { Badge } from "@virtbase/ui/badge";
 import { Button } from "@virtbase/ui/button";
 import { Checkbox } from "@virtbase/ui/checkbox";
@@ -46,6 +45,7 @@ import {
   LucideText,
   LucideTriangleAlert,
 } from "@virtbase/ui/icons/index";
+import type { ColumnDef } from "@virtbase/ui/types";
 import NextLink from "next/link";
 import { useExtracted, useFormatter } from "next-intl";
 import type { getAbuseCasesList } from "@/features/admin/api/abuse/get-abuse-cases-list";

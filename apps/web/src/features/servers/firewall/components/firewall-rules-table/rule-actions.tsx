@@ -17,7 +17,6 @@
 
 "use client";
 
-import type { Row } from "@tanstack/react-table";
 import { cn } from "@virtbase/ui";
 import { Button } from "@virtbase/ui/button";
 import {
@@ -34,7 +33,7 @@ import {
   LucideMoreVertical,
   LucideTrash2,
 } from "@virtbase/ui/icons/index";
-import type { DataTableRowAction } from "@virtbase/ui/types";
+import type { DataTableRowAction, Row } from "@virtbase/ui/types";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import type { Dispatch, SetStateAction } from "react";

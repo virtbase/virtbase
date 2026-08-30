@@ -15,10 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@virtbase/ui/button";
 import { Checkbox } from "@virtbase/ui/checkbox";
-
 import { DataTableColumnHeader } from "@virtbase/ui/data-table";
 import {
   DropdownMenu,
@@ -27,7 +25,7 @@ import {
   DropdownMenuTrigger,
 } from "@virtbase/ui/dropdown-menu";
 import { CalendarIcon, Ellipsis, LucideEye, Text } from "@virtbase/ui/icons";
-import type { DataTableRowAction } from "@virtbase/ui/types";
+import type { ColumnDef, DataTableRowAction } from "@virtbase/ui/types";
 import { useExtracted, useFormatter } from "next-intl";
 import type React from "react";
 import type { getEmailsList } from "@/features/admin/api/emails/get-emails-list";

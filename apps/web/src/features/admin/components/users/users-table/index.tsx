@@ -64,7 +64,7 @@ export function UsersTable({ promises }: UsersTableProps) {
     clearOnDefault: true,
     initialState: {
       sorting: [{ id: "name", desc: false }],
-      columnPinning: { right: ["actions"] },
+      columnPinning: { start: [], end: ["actions"] },
     },
   });
 

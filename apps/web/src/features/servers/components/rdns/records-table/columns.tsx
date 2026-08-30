@@ -17,11 +17,10 @@
 
 "use client";
 
-import type { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@virtbase/ui/button";
 import { DataTableColumnHeader } from "@virtbase/ui/data-table/data-table-column-header";
 import { LucideTrash2 } from "@virtbase/ui/icons/index";
-import type { DataTableRowAction } from "@virtbase/ui/types";
+import type { ColumnDef, DataTableRowAction } from "@virtbase/ui/types";
 import { useExtracted, useFormatter } from "next-intl";
 import type { Dispatch, SetStateAction } from "react";
 import type { GetPointerRecordsListOutput } from "@/features/servers/hooks/rdns/use-pointer-records-list";

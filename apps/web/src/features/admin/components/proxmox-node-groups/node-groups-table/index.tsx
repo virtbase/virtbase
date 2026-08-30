@@ -52,7 +52,7 @@ export function NodeGroupsTable({ promises }: NodeGroupsTableProps) {
     clearOnDefault: true,
     initialState: {
       sorting: [{ id: "name", desc: false }],
-      columnPinning: { right: ["actions"] },
+      columnPinning: { start: [], end: ["actions"] },
     },
   });
 

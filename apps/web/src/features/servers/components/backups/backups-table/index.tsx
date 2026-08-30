@@ -15,7 +15,6 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { Table as TableType } from "@tanstack/react-table";
 import { flexRender } from "@tanstack/react-table";
 import { LucideDatabaseBackup, LucideRefreshCcw } from "@virtbase/ui/icons";
 import { ScrollArea, ScrollBar } from "@virtbase/ui/scroll-area";
@@ -28,6 +27,7 @@ import {
   TableHeader,
   TableRow,
 } from "@virtbase/ui/table";
+import type { Table as TableType } from "@virtbase/ui/types";
 import { useExtracted } from "next-intl";
 import { AnimatedEmptyState } from "@/ui/animated-empty-state";
 import type { BackupsTableColumn } from "./columns";

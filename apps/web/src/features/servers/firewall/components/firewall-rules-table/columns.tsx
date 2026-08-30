@@ -17,7 +17,6 @@
 
 "use client";
 
-import type { ColumnDef } from "@tanstack/react-table";
 import { Checkbox } from "@virtbase/ui/checkbox";
 import { DataTableColumnHeader } from "@virtbase/ui/data-table/data-table-column-header";
 import { LucideLock } from "@virtbase/ui/icons/index";
@@ -27,7 +26,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@virtbase/ui/tooltip";
-import type { DataTableRowAction } from "@virtbase/ui/types";
+import type { ColumnDef, DataTableRowAction } from "@virtbase/ui/types";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import type { Dispatch, SetStateAction } from "react";

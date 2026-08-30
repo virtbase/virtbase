@@ -55,7 +55,7 @@ export function EmailsTable({ promises }: EmailsTableProps) {
     clearOnDefault: true,
     initialState: {
       sorting: [{ id: "createdAt", desc: true }],
-      columnPinning: { right: ["actions"] },
+      columnPinning: { start: [], end: ["actions"] },
     },
   });
 

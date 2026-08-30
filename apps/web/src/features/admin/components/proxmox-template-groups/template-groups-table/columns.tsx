@@ -15,7 +15,6 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { ColumnDef } from "@tanstack/react-table";
 import { Button } from "@virtbase/ui/button";
 import { Checkbox } from "@virtbase/ui/checkbox";
 import { DataTableColumnHeader } from "@virtbase/ui/data-table/data-table-column-header";
@@ -33,7 +32,7 @@ import {
   LucideText,
   LucideTrash2,
 } from "@virtbase/ui/icons/index";
-import type { DataTableRowAction } from "@virtbase/ui/types";
+import type { ColumnDef, DataTableRowAction } from "@virtbase/ui/types";
 import NextLink from "next/link";
 import { useExtracted, useFormatter } from "next-intl";
 import type { getProxmoxTemplateGroupsList } from "@/features/admin/api/proxmox-template-groups/get-proxmox-template-groups-list";

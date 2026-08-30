@@ -15,37 +15,41 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { Column } from "@tanstack/react-table";
+import type { RowData } from "@tanstack/react-table";
 import { dataTableConfig } from "../config/data-table";
 import type {
+  Column,
   ExtendedColumnFilter,
   FilterOperator,
   FilterVariant,
 } from "../types/data-table";
 
-export function getColumnPinningStyle<TData>({
+export function getColumnPinningStyle<TData extends RowData>({
   column,
   withBorder = false,
 }: {
   column: Column<TData>;
   withBorder?: boolean;
 }): React.CSSProperties {
+  // v9 pins to logical regions rather than physical sides. The CSS below stays
+  // physical because these tables are laid out left-to-right; only the table
+  // API moved from "left"/"right" to "start"/"end".
   const isPinned = column.getIsPinned();
-  const isLastLeftPinnedColumn =
-    isPinned === "left" && column.getIsLastColumn("left");
-  const isFirstRightPinnedColumn =
-    isPinned === "right" && column.getIsFirstColumn("right");
+  const isLastStartPinnedColumn =
+    isPinned === "start" && column.getIsLastColumn("start");
+  const isFirstEndPinnedColumn =
+    isPinned === "end" && column.getIsFirstColumn("end");
 
   return {
     boxShadow: withBorder
-      ? isLastLeftPinnedColumn
+      ? isLastStartPinnedColumn
         ? "-4px 0 4px -4px var(--border) inset"
-        : isFirstRightPinnedColumn
+        : isFirstEndPinnedColumn
           ? "4px 0 4px -4px var(--border) inset"
           : undefined
       : undefined,
-    left: isPinned === "left" ? `${column.getStart("left")}px` : undefined,
-    right: isPinned === "right" ? `${column.getAfter("right")}px` : undefined,
+    left: isPinned === "start" ? `${column.getStart("start")}px` : undefined,
+    right: isPinned === "end" ? `${column.getAfter("end")}px` : undefined,
     opacity: isPinned ? 0.97 : 1,
     position: isPinned ? "sticky" : "relative",
     background: isPinned ? "var(--background)" : "var(--background)",

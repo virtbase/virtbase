@@ -15,7 +15,6 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { ColumnDef } from "@tanstack/react-table";
 import { Avatar, AvatarFallback, AvatarImage } from "@virtbase/ui/avatar";
 import { Badge } from "@virtbase/ui/badge";
 import { Button } from "@virtbase/ui/button";
@@ -44,7 +43,7 @@ import {
   Mail,
   Text,
 } from "@virtbase/ui/icons";
-import type { DataTableRowAction } from "@virtbase/ui/types";
+import type { ColumnDef, DataTableRowAction } from "@virtbase/ui/types";
 import { APP_DOMAIN } from "@virtbase/utils";
 import NextLink from "next/link";
 import { useRouter } from "next/navigation";

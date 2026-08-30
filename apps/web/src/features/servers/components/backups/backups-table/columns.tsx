@@ -18,7 +18,6 @@
 "use client";
 
 import { useQueryClient } from "@tanstack/react-query";
-import type { ColumnDef } from "@tanstack/react-table";
 import { Badge } from "@virtbase/ui/badge";
 import { DataTableColumnHeader } from "@virtbase/ui/data-table";
 import {
@@ -27,7 +26,7 @@ import {
   LucideLockOpen,
   LucideX,
 } from "@virtbase/ui/icons";
-import type { DataTableRowAction } from "@virtbase/ui/types";
+import type { ColumnDef, DataTableRowAction } from "@virtbase/ui/types";
 import { formatBytes } from "@virtbase/utils";
 import { useParams } from "next/navigation";
 import { useExtracted, useFormatter, useNow } from "next-intl";

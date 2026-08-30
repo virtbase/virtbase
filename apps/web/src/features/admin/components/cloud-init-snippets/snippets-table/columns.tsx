@@ -15,7 +15,6 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { ColumnDef } from "@tanstack/react-table";
 import { Badge } from "@virtbase/ui/badge";
 import { Button } from "@virtbase/ui/button";
 import { Checkbox } from "@virtbase/ui/checkbox";
@@ -35,7 +34,7 @@ import {
   LucideTrash2,
 } from "@virtbase/ui/icons/index";
 import { Tooltip, TooltipContent, TooltipTrigger } from "@virtbase/ui/tooltip";
-import type { DataTableRowAction } from "@virtbase/ui/types";
+import type { ColumnDef, DataTableRowAction } from "@virtbase/ui/types";
 import NextLink from "next/link";
 import { useExtracted, useFormatter } from "next-intl";
 import type { getSnippetsList } from "@/features/admin/api/cloud-init-snippets/get-snippets-list";

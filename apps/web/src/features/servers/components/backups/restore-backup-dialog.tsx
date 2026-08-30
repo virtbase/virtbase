@@ -17,11 +17,11 @@
 
 "use client";
 
-import type { Row } from "@tanstack/react-table";
 import { Button } from "@virtbase/ui/button";
 import { useIsMobile } from "@virtbase/ui/hooks";
 import { ResponsiveDialog } from "@virtbase/ui/responsive-dialog";
 import { Spinner } from "@virtbase/ui/spinner";
+import type { Row } from "@virtbase/ui/types";
 import { useParams } from "next/navigation";
 import { useExtracted, useFormatter } from "next-intl";
 import { OperatingSystemIcon } from "@/ui/operating-system-icon";

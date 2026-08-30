@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import type { RowData } from "@tanstack/react-table";
 import { createParser } from "nuqs/server";
 import * as z from "zod";
 import { dataTableConfig } from "../config/data-table";
@@ -28,7 +29,7 @@ const sortingItemSchema = z.object({
   desc: z.boolean(),
 });
 
-export const getSortingStateParser = <TData>(
+export const getSortingStateParser = <TData extends RowData>(
   columnIds?: string[] | Set<string>,
 ) => {
   const validKeys = columnIds
@@ -74,7 +75,7 @@ const filterItemSchema = z.object({
 
 export type FilterItemSchema = z.infer<typeof filterItemSchema>;
 
-export const getFiltersStateParser = <TData>(
+export const getFiltersStateParser = <TData extends RowData>(
   columnIds?: string[] | Set<string>,
 ) => {
   const validKeys = columnIds

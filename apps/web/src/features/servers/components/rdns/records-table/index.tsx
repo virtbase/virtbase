@@ -17,12 +17,9 @@
 
 "use client";
 
-import {
-  flexRender,
-  getCoreRowModel,
-  useReactTable,
-} from "@tanstack/react-table";
+import { flexRender, useTable } from "@tanstack/react-table";
 import { LucideCloudSync, LucideGlobe } from "@virtbase/ui/icons";
+import { dataTableFeatures } from "@virtbase/ui/lib";
 import { ScrollArea, ScrollBar } from "@virtbase/ui/scroll-area";
 import { Skeleton } from "@virtbase/ui/skeleton";
 import {
@@ -66,14 +63,14 @@ export function RecordsTable({
   > | null>(null);
   const columns = useRecordsTableColumns({ rowAction, setRowAction });
 
-  const table = useReactTable({
+  const table = useTable({
+    features: dataTableFeatures,
     data: records,
     columns,
     pageCount: meta.pagination.last_page ?? -1,
-    getCoreRowModel: getCoreRowModel(),
     enableHiding: false,
     initialState: {
-      columnPinning: { right: ["actions"] },
+      columnPinning: { start: [], end: ["actions"] },
     },
   });
 

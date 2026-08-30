@@ -17,7 +17,7 @@
 
 "use client";
 
-import type { Column } from "@tanstack/react-table";
+import type { RowData } from "@tanstack/react-table";
 import { PlusCircle, XCircle } from "lucide-react";
 import { useExtracted } from "next-intl";
 import * as React from "react";
@@ -28,6 +28,7 @@ import { Label } from "../label";
 import { Popover, PopoverContent, PopoverTrigger } from "../popover";
 import { Separator } from "../separator";
 import { Slider } from "../slider";
+import type { Column } from "../types/data-table";
 
 interface Range {
   min: number;
@@ -60,12 +61,12 @@ function parseValuesAsNumbers(value: unknown): RangeValue | undefined {
   return undefined;
 }
 
-interface DataTableSliderFilterProps<TData> {
+interface DataTableSliderFilterProps<TData extends RowData> {
   column: Column<TData, unknown>;
   title?: string;
 }
 
-export function DataTableSliderFilter<TData>({
+export function DataTableSliderFilter<TData extends RowData>({
   column,
   title,
 }: DataTableSliderFilterProps<TData>) {
