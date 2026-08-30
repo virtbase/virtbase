@@ -10,6 +10,7 @@
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "test": "bun --env-file=../../.env.test test --timeout 20000",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -20,6 +21,7 @@
     "@virtbase/db": "workspace:*",
     "@virtbase/email": "workspace:*",
     "@virtbase/utils": "workspace:*",
+    "@virtbase/validators": "workspace:*",
     "better-auth": "catalog:",
     "zod": "catalog:"
   },

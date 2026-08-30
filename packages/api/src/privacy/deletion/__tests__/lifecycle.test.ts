@@ -279,3 +279,27 @@ describe("getDeletionBlockers", () => {
     ).toBe(false);
   });
 });
+
+describe("re-requesting a deletion, behaviourally", () => {
+  test("the link from the first request no longer confirms anything", async () => {
+    // The same invariant as "asking again invalidates the previous link", read
+    // out of behaviour rather than out of a hash comparison. Comparing digests
+    // only proves the two are different; what actually matters is that the
+    // superseded link is dead, and this is the assertion that says so.
+    const first = await requestAccountDeletion({ db: db(), userId: USER_ID });
+    const second = await requestAccountDeletion({ db: db(), userId: USER_ID });
+
+    expect(first.token).not.toBe(second.token);
+    expect(
+      await confirmAccountDeletion({ db: db(), token: first.token }),
+    ).toBeNull();
+
+    // ...and the one that replaced it still does, so "invalidated" has not
+    // quietly become "broke the feature".
+    expect(
+      await confirmAccountDeletion({ db: db(), token: second.token }),
+    ).not.toBeNull();
+
+    await cancelAccountDeletion({ db: db(), userId: USER_ID });
+  });
+});

@@ -25,6 +25,19 @@ import {
 } from "@virtbase/validators/server";
 import { serverProcedure } from "../../trpc";
 
+/**
+ * How long a minted console payload stays usable, in seconds.
+ *
+ * The payload travels through the customer's browser and is handed straight
+ * back to the noVNC proxy, so without an expiry it is replayable for as long as
+ * the Proxmox vncticket inside it lives. Only the gap between minting the URL
+ * and the browser opening the websocket needs covering — a few seconds in
+ * practice — but the console query refetches every ten minutes, so five leaves
+ * plenty of slack for a slow page load while still ending well before the next
+ * payload is minted.
+ */
+const CONSOLE_PAYLOAD_TTL_SECONDS = 5 * 60;
+
 export const serversConsoleRouter = {
   get: serverProcedure
     .meta({
@@ -45,7 +58,7 @@ export const serversConsoleRouter = {
     .input(GetServerConsoleInputSchema)
     .output(GetServerConsoleOutputSchema)
     .query(async ({ ctx }) => {
-      const { instance, server, proxmoxNode } = ctx;
+      const { instance, server, proxmoxNode, userId } = ctx;
 
       const [ticket, data] = await Promise.all([
         instance.engine.getTicket().then(({ ticket }) => ticket),
@@ -79,6 +92,12 @@ export const serversConsoleRouter = {
         ticket,
         vncticket,
         port,
+        // Bound to the session it was minted for. The ciphertext is
+        // authenticated, so these claims cannot be edited by whoever holds the
+        // URL, and the expiry bounds how long a leaked one stays useful.
+        serverId: server.id,
+        userId,
+        exp: Math.floor(Date.now() / 1000) + CONSOLE_PAYLOAD_TTL_SECONDS,
       } satisfies WebSocketData;
       const encryptedPayload = await encryptPayload(
         JSON.stringify(payload),

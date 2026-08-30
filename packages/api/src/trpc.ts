@@ -31,6 +31,7 @@ import {
   servers,
   subnetAllocations,
   subnets,
+  users,
 } from "@virtbase/db/schema";
 import {
   isInstalling,
@@ -226,6 +227,48 @@ type VerifiedApiKey = NonNullable<
 >;
 
 /**
+ * The owner's account state, as far as authentication cares.
+ *
+ * Session authentication gets this for free: the admin plugin refuses to mint a
+ * session for a banned user in `session.create.before`, and banning deletes the
+ * sessions that already exist. An API key reaches neither - it is verified
+ * against the `apiKey` table alone and holds no session to delete - so without
+ * the lookup below, banning an abusive customer takes away their browser and
+ * leaves their key with the run of the API.
+ */
+type ApiKeyOwner = {
+  banned: boolean | null;
+  banExpires: Date | null;
+  offboardingStartedAt: Date | null;
+  anonymizedAt: Date | null;
+};
+
+/**
+ * Whether this account may authenticate at all.
+ *
+ * The ban half mirrors Better Auth exactly, expiry included: a ban with a date
+ * that has passed is no ban, and lifting it is left to the sign-in path that
+ * already does so rather than duplicated here. The other two are the point of
+ * no return - once offboarding has claimed the account its servers are being
+ * destroyed, and once it is anonymised there is no customer left to act as.
+ *
+ * A pending deletion is deliberately *not* on this list. A customer inside the
+ * grace period can still sign in, precisely so they can call it off, and an API
+ * key that stopped working days before the account did would say nothing about
+ * why.
+ */
+const isLockedOut = ({
+  banned,
+  banExpires,
+  offboardingStartedAt,
+  anonymizedAt,
+}: ApiKeyOwner): boolean => {
+  if (offboardingStartedAt || anonymizedAt) return true;
+
+  return Boolean(banned) && (!banExpires || banExpires.getTime() > Date.now());
+};
+
+/**
  * Authenticates a request by API key or by session, and hands both plus the
  * resolved `userId` to everything downstream.
  *
@@ -265,9 +308,31 @@ const authMiddleware = t.middleware(async ({ ctx, next, meta }) => {
     apiKey = result.key;
     userId = result.key.referenceId;
 
+    // [!] Authorization: a valid key is not enough - the account behind it has
+    // to still be allowed in. See `isLockedOut`.
+    const owner = await ctx.db
+      .select({
+        banned: users.banned,
+        banExpires: users.banExpires,
+        offboardingStartedAt: users.offboardingStartedAt,
+        anonymizedAt: users.anonymizedAt,
+      })
+      .from(users)
+      .where(eq(users.id, userId))
+      .limit(1)
+      .then(([row]) => row);
+
+    if (!owner || isLockedOut(owner)) {
+      throw new TRPCError({ code: "UNAUTHORIZED" });
+    }
+
     // An API key in use is the account in use. Without this, a customer who
     // drives everything through the API and never opens the dashboard reads as
     // dormant to the inactivity sweep.
+    //
+    // After the check rather than beside it: `touchLastSeen` also calls off a
+    // pending inactivity deletion, and a banned key being retried by a script
+    // must not keep resurrecting the account it belongs to.
     await touchLastSeen(ctx.db, userId);
   } else {
     if (!ctx.session?.user) {

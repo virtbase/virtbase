@@ -40,6 +40,11 @@ import { betterAuth } from "better-auth/minimal";
 import type { UserWithRole } from "better-auth/plugins";
 import type { AccountLinkedHandler } from "./account-linked";
 import { notifyAccountLinked } from "./account-linked";
+import {
+  PASSWORD_MAX_LENGTH,
+  PASSWORD_MIN_LENGTH,
+  passwordPolicyHook,
+} from "./password-policy";
 import { plugins } from "./plugins";
 
 export function initAuth({
@@ -60,7 +65,22 @@ export function initAuth({
         enabled: true,
         allowDifferentEmails: true,
         allowUnlinkingAll: true,
-        trustedProviders: ["google", "github", "discord"],
+        /**
+         * [!] A provider listed here has its own `emailVerified` flag ignored:
+         * Better Auth links its identity to an existing account with the same
+         * address without asking whether the provider believes that address.
+         * That is only safe for a provider that will not hand out an
+         * unverified one. Google reports `email_verified` from a signed ID
+         * token; GitHub reports the `verified` flag of the address itself, and
+         * Discord reports the account's `verified` flag - both of which can be
+         * false, and either would otherwise be enough to take over a Virtbase
+         * account by registering the victim's address there.
+         *
+         * The consequence of leaving them out is narrow: a GitHub or Discord
+         * identity whose email the provider has verified still links exactly as
+         * before, because the check it now falls back to passes.
+         */
+        trustedProviders: ["google"],
       },
     },
     advanced: {
@@ -160,6 +180,10 @@ export function initAuth({
     emailAndPassword: {
       enabled: true,
       requireEmailVerification: true,
+      // The coarse half of the policy; `hooks.before` applies the rest. See
+      // `./password-policy`.
+      minPasswordLength: PASSWORD_MIN_LENGTH,
+      maxPasswordLength: PASSWORD_MAX_LENGTH,
       revokeSessionsOnPasswordReset: true,
       resetPasswordTokenExpiresIn: 600, // 10 minutes
       sendResetPassword: async ({ url, user: providedUser }) => {
@@ -186,14 +210,36 @@ export function initAuth({
           return;
         }
 
-        await sendEmail({
-          to: user.email,
-          subject: await getEmailTitle("password-updated", user.locale),
-          react: await PasswordUpdated({
-            email: user.email,
-            locale: user.locale,
-          }),
-        });
+        // [!] Swallowed on purpose, unlike every other send in this file.
+        //
+        // This one is a courtesy notice, and by the time it runs the reset has
+        // already happened: `/reset-password` spends the token, writes the new
+        // password and only then calls this. Letting a delivery failure out
+        // would abort the endpoint after the change was committed - so the
+        // customer is told the reset failed while their old password no longer
+        // works, and the link they would retry with is already spent.
+        //
+        // Worse, the throw would land before `revokeSessionsOnPasswordReset`,
+        // skipping the session revocation. A reset done to evict an intruder
+        // would leave that intruder signed in and tell the owner it had not
+        // worked. A missing "your password changed" email is the smaller loss.
+        try {
+          await sendEmail({
+            to: user.email,
+            subject: await getEmailTitle("password-updated", user.locale),
+            react: await PasswordUpdated({
+              email: user.email,
+              locale: user.locale,
+            }),
+          });
+        } catch (error) {
+          captureException(error, {
+            tags: {
+              "better-auth.error": "true",
+              "email.template": "password-updated",
+            },
+          });
+        }
       },
     },
     emailVerification: {
@@ -217,6 +263,15 @@ export function initAuth({
           }),
         });
       },
+    },
+    /**
+     * The password policy, applied server-side.
+     *
+     * `hooks.before` runs for every dispatch - the HTTP router and `auth.api.*`
+     * alike - which is what makes it reach a request that skipped the form.
+     */
+    hooks: {
+      before: passwordPolicyHook,
     },
     onAPIError: {
       onError: (error) => {
@@ -300,5 +355,24 @@ export function initAuth({
 
 export type { AccountLinkedHandler, LinkedAccountInfo } from "./account-linked";
 export type Auth = ReturnType<typeof initAuth>;
-export type Session = Auth["$Infer"]["Session"];
+
+/**
+ * A session, as the database actually stores it.
+ *
+ * The intersection is not decoration. `initAuth` spreads its plugin list into
+ * `BetterAuthPlugin[]` so callers can append their own, and that widening
+ * erases every field the individual plugins declare from `$Infer`. The admin
+ * plugin's `impersonatedBy` is one of them: the column exists, Better Auth
+ * writes it on every impersonation, and the inferred type does not mention it -
+ * which is how a support session came to look exactly like the customer's own
+ * to anything that only reads the type. Adding it back here is narrower than
+ * making `initAuth` generic over its plugins, and it puts the correction next
+ * to the widening that causes it.
+ */
+export type Session = Auth["$Infer"]["Session"] & {
+  session: {
+    /** The admin who is wearing this account, when someone is. */
+    impersonatedBy?: string | null;
+  };
+};
 export type UserWithLocale = UserWithRole & { locale?: string | null };

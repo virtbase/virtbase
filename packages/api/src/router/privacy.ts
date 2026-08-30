@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import * as Sentry from "@sentry/node";
 import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
 import { and, desc, eq, gte, sql } from "@virtbase/db";
@@ -290,18 +291,30 @@ export const privacyRouter = {
       .then(([row]) => row);
 
     if (account) {
-      await sendEmail({
-        to: account.email,
-        subject: await getEmailTitle(
-          "account-deletion-cancelled",
-          account.locale,
-        ),
-        react: await AccountDeletionCancelled({
-          email: account.email,
-          name: account.name,
-          locale: account.locale,
-        }),
-      });
+      // The cancellation is already committed. `sendEmail` rejects on a
+      // provider failure, and failing the mutation over a courtesy notice
+      // would tell the customer their deletion is still scheduled when it is
+      // not - the more alarming of the two wrong answers.
+      try {
+        await sendEmail({
+          to: account.email,
+          subject: await getEmailTitle(
+            "account-deletion-cancelled",
+            account.locale,
+          ),
+          react: await AccountDeletionCancelled({
+            email: account.email,
+            name: account.name,
+            locale: account.locale,
+          }),
+        });
+      } catch (error) {
+        console.error(
+          "[@virtbase/api] Failed to send the deletion-cancelled notice: ",
+          error,
+        );
+        Sentry.captureException(error);
+      }
     }
 
     return { cancelled: true };

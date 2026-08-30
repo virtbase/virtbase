@@ -23,6 +23,19 @@ import { redis } from "../upstash";
 const PREFIX = "vb:stepup:";
 
 /**
+ * Namespace for the other half of the contract: a session whose challenge has
+ * already been spent.
+ *
+ * Separate from {@link PREFIX} because it says the opposite thing. The marker
+ * above is written by a challenge and read as "proven"; this one is written by
+ * {@link revokeStepUp} and read as "already used". It exists because most
+ * logins never write a marker at all - a passkey or an email code satisfies
+ * step-up by minting a young session - so deleting the marker on its own left
+ * the freshness path free to authorise a second irreversible action.
+ */
+const SPENT_PREFIX = "vb:stepup-spent:";
+
+/**
  * Records that the holder of this session has just re-authenticated.
  *
  * Keyed on the session token rather than the user, so proving yourself in one
@@ -55,15 +68,44 @@ export const hasStepUp = async (sessionToken: string): Promise<boolean> => {
 };
 
 /**
- * Spends the marker.
+ * Whether this session's challenge has already been spent.
+ *
+ * [!] Fails **closed**, for the same reason {@link hasStepUp} does: unable to
+ * tell whether a challenge was already used, the safe answer is that it was.
+ * The customer is sent back through a challenge they can pass; the alternative
+ * is a Redis outage silently restoring the behaviour this exists to remove.
+ */
+export const isStepUpSpent = async (sessionToken: string): Promise<boolean> => {
+  try {
+    return (await redis.get(`${SPENT_PREFIX}${sessionToken}`)) !== null;
+  } catch (error) {
+    Sentry.captureException(error);
+
+    return true;
+  }
+};
+
+/**
+ * Spends the challenge.
  *
  * Called once the guarded action has actually happened, so a single
  * re-authentication authorises a single deletion rather than everything the
  * customer clicks in the next ten minutes.
+ *
+ * Two writes, because there are two ways to satisfy step-up. Deleting the
+ * marker only spends the password challenge; the note is what spends a session
+ * that qualified on its own youth, which is how most sign-ins qualify. It
+ * outlives the freshness window on purpose - once that has lapsed the session
+ * cannot satisfy step-up by age anyway, so there is nothing left to record.
  */
 export const revokeStepUp = async (sessionToken: string): Promise<void> => {
   try {
-    await redis.del(`${PREFIX}${sessionToken}`);
+    await Promise.all([
+      redis.del(`${PREFIX}${sessionToken}`),
+      redis.set(`${SPENT_PREFIX}${sessionToken}`, Date.now(), {
+        ex: STEP_UP_WINDOW_SECONDS,
+      }),
+    ]);
   } catch (error) {
     // The marker expires on its own; failing to spend it early is survivable.
     Sentry.captureException(error);

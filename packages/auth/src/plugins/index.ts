@@ -41,6 +41,44 @@ import { getUserLocaleByEmail } from "../get-user-locale-by-email";
 
 const accessControl = createAccessControl(defaultStatements);
 
+/**
+ * How long a new API key lives when its creator names no expiry.
+ *
+ * A year rather than a month: these keys drive automation, and a rotation the
+ * customer never sees coming is an outage. It is also the ceiling Better Auth
+ * allows a caller to request (`keyExpiration.maxExpiresIn`, in days), so this
+ * is the longest life a key can have rather than a default anyone can talk
+ * their way past.
+ */
+const API_KEY_DEFAULT_EXPIRY_SECONDS = 60 * 60 * 24 * 365;
+
+/**
+ * Exported so the configuration itself can be asserted on. The plugin object
+ * Better Auth hands back keeps none of this, so a test has no other way to
+ * notice that the expiry below has gone missing again.
+ */
+export const apiKeyOptions = {
+  enableMetadata: false,
+  enableSessionForAPIKeys: false,
+  keyExpiration: {
+    // Better Auth defaults this to `null`, which mints keys that never
+    // expire. A bearer credential with no end date is one that outlives the
+    // laptop, the CI job and the employee it was created for, so every key
+    // gets a life unless its creator asks for a shorter one.
+    defaultExpiresIn: API_KEY_DEFAULT_EXPIRY_SECONDS,
+  },
+  rateLimit: {
+    // Handled by QStash Ratelimit in our API
+    enabled: false,
+  },
+  references: "user",
+  schema: {
+    apikey: {
+      modelName: "apiKey",
+    },
+  },
+} satisfies Parameters<typeof apiKey>[0];
+
 const customerRole = accessControl.newRole(userAc.statements);
 const adminRole = accessControl.newRole(adminAc.statements);
 
@@ -54,20 +92,7 @@ export const plugins = [
       CUSTOMER: customerRole,
     },
   }),
-  apiKey({
-    enableMetadata: false,
-    enableSessionForAPIKeys: false,
-    rateLimit: {
-      // Handled by QStash Ratelimit in our API
-      enabled: false,
-    },
-    references: "user",
-    schema: {
-      apikey: {
-        modelName: "apiKey",
-      },
-    },
-  }),
+  apiKey(apiKeyOptions),
   emailOTP({
     sendVerificationOnSignUp: true,
     // [!] Required, now that `sign-in` OTPs are actually sent. Without it,

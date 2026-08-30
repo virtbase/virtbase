@@ -31,5 +31,25 @@ export const createDeletionToken = () => {
   return { token, tokenHash: hashDeletionToken(token) };
 };
 
-export const hashDeletionToken = (token: string) =>
-  createHash("sha256").update(token).digest("hex");
+/** A SHA-256 digest, rendered as hex: exactly 64 characters, nothing else. */
+const SHA256_HEX = /^[0-9a-f]{64}$/;
+
+export const hashDeletionToken = (token: string) => {
+  const digest = createHash("sha256").update(token).digest("hex");
+
+  // [!] Fails **closed**. The hash is not a convenience here, it is the whole
+  // comparison: `confirmAccountDeletion` matches a supplied token against the
+  // stored digest with a plain equality test. A hashing function that ever
+  // degenerated - to an empty string, to a constant, to anything not injective
+  // - would therefore make every token match every pending deletion, turning
+  // the one control that stops a borrowed session from erasing an account into
+  // a formality. That failure is silent by nature, so it is asserted rather
+  // than trusted.
+  if (!SHA256_HEX.test(digest)) {
+    throw new Error(
+      "Deletion token hashing is broken: SHA-256 did not return a hex digest.",
+    );
+  }
+
+  return digest;
+};
