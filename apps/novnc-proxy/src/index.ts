@@ -15,16 +15,52 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { decryptPayload } from "@virtbase/utils";
-import type { WebSocketData } from "@virtbase/validators";
-import { WebsocketDataSchema } from "@virtbase/validators";
-import z4 from "zod/v4";
-import { constructWebsocketUrl } from "./utils/construct-websocket-url";
+import { InvalidPayloadError, verifyPayload } from "./utils/verify-payload";
+import type {
+  ConnectionData,
+  ConnectUpstream,
+  Frame,
+} from "./utils/websocket-handlers";
+import {
+  createConnectionData,
+  createWebsocketHandlers,
+} from "./utils/websocket-handlers";
 
 const PORT = process.env.PORT || 8443;
 const NOVNC_PROXY_SECRET = process.env.NOVNC_PROXY_SECRET;
 
-const sockets = new Map<number, WebSocket>();
+/** Production wiring: a real websocket to the Proxmox node. */
+const connectUpstream: ConnectUpstream = (url, headers, listeners) => {
+  const pws = new WebSocket(url, { headers });
+
+  pws.addEventListener("open", () => listeners.onOpen());
+  pws.addEventListener("message", ({ data }) =>
+    listeners.onMessage(data as Frame),
+  );
+  pws.addEventListener("error", () => listeners.onError());
+  pws.addEventListener("close", ({ code }) => listeners.onClose(code));
+
+  return pws;
+};
+
+const handlers = createWebsocketHandlers({ connect: connectUpstream });
+
+/**
+ * One generic refusal for every way a payload can be bad.
+ *
+ * Tampering, an outdated schema and an expired ticket all look identical from
+ * outside, so probing the endpoint tells an attacker nothing about which part
+ * of their forgery failed.
+ */
+const invalidPayload = () =>
+  Response.json(
+    {
+      error: "Invalid payload",
+      code: 400,
+      issues: [],
+    },
+    { status: 400 },
+  );
 
 export const server = Bun.serve({
   port: PORT,
@@ -65,18 +101,34 @@ export const server = Bun.serve({
       }
 
       if (!NOVNC_PROXY_SECRET) {
-        throw new Error("NOVNC_PROXY_SECRET environment variable is not set.");
+        // A misconfigured proxy, not a bad request. Kept distinct from the
+        // payload failures because it says nothing about the payload.
+        console.error("NOVNC_PROXY_SECRET environment variable is not set.");
+        return Response.json(
+          {
+            error: "Internal server error",
+            code: 500,
+            issues: [],
+          },
+          { status: 500 },
+        );
       }
 
-      const decryptedPayload = await decryptPayload(
-        encryptedPayload,
-        NOVNC_PROXY_SECRET,
-      );
-      const json = JSON.parse(decryptedPayload);
+      let payload: Awaited<ReturnType<typeof verifyPayload>>;
+      try {
+        payload = await verifyPayload({
+          payload: encryptedPayload,
+          secret: NOVNC_PROXY_SECRET,
+        });
+      } catch (error) {
+        console.error(
+          "Rejected a console payload:",
+          error instanceof InvalidPayloadError ? error.reason : error,
+        );
+        return invalidPayload();
+      }
 
-      const data = await WebsocketDataSchema.parseAsync(json);
-
-      server.upgrade(request, { data });
+      server.upgrade(request, { data: createConnectionData(payload) });
 
       return undefined;
     } catch (error) {
@@ -85,17 +137,6 @@ export const server = Bun.serve({
         `An error occurred while trying to process a request:`,
         error,
       );
-
-      if (error instanceof z4.ZodError) {
-        return Response.json(
-          {
-            error: "Invalid payload",
-            code: 400,
-            issues: error.issues,
-          },
-          { status: 400 },
-        );
-      }
 
       return Response.json(
         {
@@ -110,55 +151,8 @@ export const server = Bun.serve({
   websocket: {
     perMessageDeflate: false,
     sendPings: false,
-    data: {} as WebSocketData,
-    message(ws, message) {
-      const socket = sockets.get(ws.data.vmid);
-      if (!socket) {
-        console.error(
-          `Received a message for VM ${ws.data.vmid} but no socket found. This should not happen.`,
-        );
-        ws.close(1011, "Upstream websocket not found");
-        return;
-      }
-
-      // Forward the message to the upstream websocket
-      socket.send(message);
-    },
-    async open(ws) {
-      const { ticket, ...data } = ws.data;
-      const url = constructWebsocketUrl(data);
-
-      const headers = ticket.startsWith("PVEAPIToken=")
-        ? {
-            authorization: ticket,
-          }
-        : {
-            authorization: `PVEAuthCookie=${ticket}`,
-          };
-
-      const pws = new WebSocket(url, { headers });
-
-      pws.addEventListener("open", () => {
-        sockets.set(ws.data.vmid, pws);
-      });
-      pws.addEventListener("message", ({ data }) => {
-        ws.send(data);
-      });
-      pws.addEventListener("error", () => {
-        ws.close(1011, "Upstream websocket error");
-      });
-      pws.addEventListener("close", ({ code }) => {
-        ws.close(code, "Upstream websocket closed");
-      });
-    },
-    close(ws, code, reason) {
-      const socket = sockets.get(ws.data.vmid);
-      if (socket) {
-        // Socket may already be closed
-        socket.close(code, reason);
-        sockets.delete(ws.data.vmid);
-      }
-    },
+    data: {} as ConnectionData,
+    ...handlers,
   },
 });
 
