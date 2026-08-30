@@ -66,6 +66,32 @@ export const WebsocketDataSchema = z4.object({
    * @example "5900"
    */
   port: z4.union([z4.string(), z4.number()]),
+  /**
+   * The id of the server this payload was minted for.
+   *
+   * The payload round-trips through the browser, so it carries who and what it
+   * was issued for. The proxy has no database of its own and therefore cannot
+   * check the claim against an independent source, but binding it into the
+   * authenticated ciphertext means a payload cannot be re-pointed at another
+   * server without the shared key, and it gives the proxy something to log.
+   *
+   * @example "kvm_01hzy..."
+   */
+  serverId: z4.string().min(1),
+  /**
+   * The id of the user the payload was minted for. See `serverId`.
+   */
+  userId: z4.string().min(1),
+  /**
+   * Absolute expiry, as a Unix timestamp in seconds.
+   *
+   * Without it the blob stays usable for as long as the Proxmox vncticket it
+   * carries, so anyone who once saw the console URL could reconnect. The proxy
+   * rejects an expired payload before upgrading the connection.
+   *
+   * @example 1767225600
+   */
+  exp: z4.int().positive(),
 });
 
 export type WebSocketData = z4.infer<typeof WebsocketDataSchema>;

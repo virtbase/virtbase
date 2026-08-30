@@ -15,8 +15,20 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { describe, expect, mock, test } from "bun:test";
+import { afterAll, describe, expect, mock, test } from "bun:test";
+import * as nodeCrypto from "node:crypto";
 import { parsePublicKey } from "../parse-public-key";
+
+// `mock.module` patches the module registry process-wide and is never undone -
+// `mock.restore()` does not touch it. Without restoring `node:crypto` by hand,
+// the stub in the last test below hands every later test file in the same run a
+// `createHash` whose `digest()` is the empty string. That silently broke the
+// account-deletion token tests, whose own assertions then compared "" to "".
+const realCrypto = { ...nodeCrypto };
+
+afterAll(() => {
+  mock.module("node:crypto", () => realCrypto);
+});
 
 // Generic public key with comment (needs to be sanitzed by the API)
 const mockPublicKey =
@@ -54,6 +66,6 @@ describe("parsePublicKey", () => {
       }),
     }));
 
-    expect(parsePublicKey("ssh-ed25519 AAAA")).rejects.toThrow(Error);
+    await expect(parsePublicKey("ssh-ed25519 AAAA")).rejects.toThrow(Error);
   });
 });
