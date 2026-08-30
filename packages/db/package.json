@@ -44,16 +44,16 @@
     "@neondatabase/serverless": "^1.1.0",
     "base-x": "^5.0.1",
     "drizzle-orm": "1.0.0-rc.4",
-    "ws": "^8.21.2",
+    "ws": "^8.21.3",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:",
-    "@electric-sql/pglite": "^0.5.4",
+    "@electric-sql/pglite": "^0.5.8",
     "@types/ws": "^8.18.1",
     "@virtbase/tsconfig": "workspace:*",
     "drizzle-kit": "1.0.0-rc.4",
-    "pg": "^8.22.0",
+    "pg": "^8.23.0",
     "typescript": "catalog:"
   }
 }

@@ -16,7 +16,6 @@
  */
 
 import { captureException } from "@sentry/nextjs";
-import type { Stripe } from "@virtbase/integration-stripe";
 import { stripe } from "@virtbase/integration-stripe";
 import { buttonVariants } from "@virtbase/ui/button";
 import {
@@ -62,6 +61,31 @@ export async function generateMetadata(): Promise<Metadata> {
     noIndex: true,
   });
 }
+
+/**
+ * The payment intent statuses this page has copy for.
+ *
+ * `Stripe.PaymentIntent.Status` became an open union in SDK 22.6 - every
+ * enum-like union now ends in `string & {}` so a client keeps compiling against
+ * a status the API grows later. That forward compatibility is welcome, but it
+ * also means the type can no longer prove the map below is exhaustive. The set
+ * is therefore spelled out here, `satisfies` keeps the map and this list in
+ * step, and `getPaymentIntentStatus` folds anything outside it into `canceled`.
+ */
+const KNOWN_STATUSES = [
+  "canceled",
+  "processing",
+  "requires_action",
+  "requires_capture",
+  "requires_confirmation",
+  "requires_payment_method",
+  "succeeded",
+] as const;
+
+type KnownStatus = (typeof KNOWN_STATUSES)[number];
+
+const isKnownStatus = (status: string): status is KnownStatus =>
+  (KNOWN_STATUSES as readonly string[]).includes(status);
 
 const getStatusMap = cache(async () => {
   const t = await getExtracted();
@@ -136,7 +160,7 @@ const getStatusMap = cache(async () => {
         "We will send an email with all the details once the booked products are set up.",
       ),
     },
-  } satisfies Record<Stripe.PaymentIntent.Status, unknown>;
+  } satisfies Record<KnownStatus, unknown>;
 });
 
 const getPaymentIntentStatus = cache(async (payment_intent: string) => {
@@ -146,9 +170,15 @@ const getPaymentIntentStatus = cache(async (payment_intent: string) => {
   cacheTag(payment_intent);
 
   try {
-    return stripe
-      ? (await stripe.paymentIntents.retrieve(payment_intent)).status
-      : "canceled";
+    if (!stripe) {
+      return "canceled";
+    }
+
+    const { status } = await stripe.paymentIntents.retrieve(payment_intent);
+
+    // Same fallback as the error path below, and for the same reason: a status
+    // this build has no copy for is not one to fire the confetti over.
+    return isKnownStatus(status) ? status : "canceled";
   } catch (error) {
     captureException(error);
 
