@@ -207,9 +207,6 @@ const nextConfig: NextConfig = {
   ],
   serverExternalPackages: ["pdfkit"],
   transpilePackages: ["@virtbase/email", "@virtbase/ui"],
-  typescript: {
-    ignoreBuildErrors: true,
-  },
 };
 
 const withNextIntl = createNextIntlPlugin({

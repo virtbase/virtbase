@@ -10,7 +10,7 @@
     <a href="https://virtbase.com"><strong>Learn more »</strong></a>
     <br />
     <br />
-    <a href="#introduction"><strong>Introduction</strong></a> ·
+    <a href="#getting-started"><strong>Getting Started</strong></a> ·
     <a href="#tech-stack"><strong>Tech Stack</strong></a> ·
     <a href="#contributing"><strong>Contributing</strong></a>
 </p>
@@ -26,6 +26,89 @@
     <img src="https://badges.crowdin.net/virtbase/localized.svg" alt="Crowdin" />
   </a>
 </p>
+
+## Getting Started
+
+You need [Bun](https://bun.com) and Docker. `scripts/setup.sh` does the rest and
+is safe to re-run - every step checks whether it is already done.
+
+```bash
+bun install
+bun setup
+```
+
+`bun setup` copies `.env.example` to `.env`, starts Postgres, the Neon proxy and
+Redis from `docker-compose.yml`, applies the migrations and seeds the database.
+Use `bun setup:cluster` to also build and bootstrap the local Proxmox cluster in
+`tooling/proxmox-cluster` (it needs `/dev/kvm`) - nothing can be provisioned
+without one.
+
+### Filling in `.env`
+
+The copied example does not boot as it stands. `@t3-oss/env` validates the
+environment when the app starts, and an **empty** value fails exactly like a
+missing one, so every key the example leaves blank has to be given a value or
+commented out.
+
+- Give a value to `BETTER_AUTH_SECRET`, `CRON_SECRET`, `STRIPE_SECRET_KEY`,
+  `STRIPE_WEBHOOK_SECRET`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`,
+  `NOVNC_PROXY_URL` and `NOVNC_PROXY_SECRET`. Any non-empty string will do for
+  the ones you are not exercising; the feature behind it simply stays broken.
+- Point Redis at the container `docker-compose.yml` already runs:
+  `UPSTASH_REDIS_REST_URL=http://localhost:8079` and
+  `UPSTASH_REDIS_REST_TOKEN=example_token`.
+- Comment out the optional keys you are not using rather than leaving them
+  empty: `DISCORD_CLIENT_ID`, `DISCORD_CLIENT_SECRET`, `GITHUB_CLIENT_ID`,
+  `GITHUB_CLIENT_SECRET`, `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`,
+  `NEXT_PUBLIC_SENTRY_DSN` and `SENTRY_URL`.
+
+`CONFIG_ENCRYPTION_KEY` is worth generating too (`openssl rand -base64 32`).
+Without it every integration reports as disabled, because integration
+credentials live encrypted in Postgres and are configured in the admin console
+rather than here.
+
+```bash
+bun dev
+```
+
+### The database is not a plain Postgres
+
+`packages/db/src/client.ts` speaks the Neon serverless protocol, not the
+Postgres wire protocol, so `docker-compose.yml` runs a `neon-proxy` container in
+front of Postgres. `DATABASE_URL` points at `db.localtest.me`, which the client
+recognises and rewrites onto the proxy on port 4444. Pointing it at a bare local
+Postgres does not work.
+
+### One app, four hostnames
+
+The marketing site, the dashboard, the admin console and the public API are
+served on separate hosts, and the session is a cookie scoped to
+`.virtbase.localhost`:
+
+| | |
+| --- | --- |
+| <http://virtbase.localhost:3000> | marketing site |
+| <http://app.virtbase.localhost:3000> | customer dashboard |
+| <http://admin.virtbase.localhost:3000> | admin console |
+| <http://api.virtbase.localhost:3000> | public API |
+
+`http://localhost:3000` never receives that cookie, so signing in there appears
+to do nothing. Most systems resolve `*.localhost` to loopback on their own; if
+yours does not, add the four names to `/etc/hosts`.
+
+### Everyday commands
+
+```bash
+bun dev              # all packages in watch mode
+bun check:write      # lint and format
+bun typecheck        # TypeScript
+bun run test         # unit and integration tests
+bun test:e2e         # Playwright
+```
+
+`bun run test`, not `bun test`: the bare form is Bun's own runner, which starts
+from the repository root and so misses the per-package `bunfig.toml` and
+`.env.test` that the `test` script points it at.
 
 ## Tech Stack
 

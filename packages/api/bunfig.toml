@@ -1,0 +1,6 @@
+[test]
+
+# The test harness itself: fixtures and the tRPC caller factory. They are
+# exercised by every suite here, so they read as fully covered and inflate the
+# number without anything being tested.
+coveragePathIgnorePatterns = ["src/testing/**"]

@@ -1,0 +1,4 @@
+[test]
+
+# Static constants - the distro catalog, domains, cookie names.
+coveragePathIgnorePatterns = ["src/constants/**"]

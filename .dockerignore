@@ -18,6 +18,13 @@
 **/dist/
 **/dist-docs/
 
+# VCS
+.git
+
+# Recorded feature videos and the frames the recorder fetches: ~120 MB,
+# gitignored, and nothing in the image reads them.
+videos
+
 # Miscellaneous
 **/.tmp
 **/.vscode
@@ -42,6 +49,11 @@
 **/.prettiercache
 **/.eslintcache
 **/.vercel
+# `.cache/` holds tsbuildinfo and, once the video tooling has run, the ffmpeg
+# and browser downloads it fetches - tens of gigabytes on a developer machine.
+# Both are gitignored, but `docker-compose.yml` builds with `context: .`, so
+# without this they are uploaded to the daemon on every build.
+**/.cache
 
 # Docker specific
 **/.cliff-jumperrc.json

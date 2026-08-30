@@ -75,6 +75,7 @@
       "persistent": true
     }
   },
+  "globalDependencies": [".env", ".env.test"],
   "globalEnv": [
     "AI_GATEWAY_API_KEY",
     "NEXT_PUBLIC_APP_NAME",
@@ -103,6 +104,7 @@
     "CRON_SECRET",
     "NOVNC_PROXY_URL",
     "NOVNC_PROXY_SECRET",
+    "PORT",
     "DISCORD_CLIENT_ID",
     "DISCORD_CLIENT_SECRET",
     "GITHUB_CLIENT_ID",
@@ -110,6 +112,7 @@
     "GOOGLE_CLIENT_ID",
     "GOOGLE_CLIENT_SECRET",
     "NEXT_PUBLIC_SENTRY_DSN",
+    "NEXT_PUBLIC_SENTRY_CSP_REPORT_URI",
     "SENTRY_ORG",
     "SENTRY_PROJECT",
     "SENTRY_URL",

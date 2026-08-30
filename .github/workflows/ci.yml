@@ -14,6 +14,7 @@ env:
   # when CI is set, so no application secrets are needed for these jobs.
   CI: "true"
   TURBO_TELEMETRY_DISABLED: "1"
+  NEXT_TELEMETRY_DISABLED: "1"
 
 jobs:
   check:
@@ -27,8 +28,24 @@ jobs:
         with:
           bun-version-file: package.json
 
+      # `setup-bun` caches the bun binary, not the packages it downloads. The
+      # tarball cache is what makes `bun install` cheap on a rerun.
+      - name: Cache the bun install cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: bun-install-${{ runner.os }}-${{ hashFiles('bun.lock') }}
+          restore-keys: bun-install-${{ runner.os }}-
+
       - name: Install dependencies
         run: bun install --frozen-lockfile
+
+      - name: Cache the turbo artefacts
+        uses: actions/cache@v4
+        with:
+          path: .turbo/cache
+          key: turbo-check-${{ runner.os }}-${{ github.sha }}
+          restore-keys: turbo-check-${{ runner.os }}-
 
       - name: Lint
         run: bun check
@@ -38,8 +55,23 @@ jobs:
 
       # dependency-cruiser runs through bun because it refuses to start on
       # node 25; see AGENTS.md.
+      #
+      # `--output-type err` prints violations only, so the green tick is the
+      # whole message a reader takes away - including when the cruise ran half
+      # blind. dependency-cruiser reaches for its own `typescript` (>=2 <7) and
+      # silently gives up when there isn't a compatible one: `extract-ts-config`
+      # returns an empty config, so `tsConfig` does nothing and
+      # `tsPreCompilationDeps` cannot see type-only imports, which are exactly
+      # the imports that cross a layer boundary most easily. Treat that warning
+      # as a failure rather than let a tick stand for a graph nobody looked at.
       - name: Architecture boundaries
-        run: bun check:boundaries
+        run: |
+          set -o pipefail
+          bun check:boundaries 2>&1 | tee "$RUNNER_TEMP/boundaries.log"
+          if grep -q 'missing-typescript-transpiler' "$RUNNER_TEMP/boundaries.log"; then
+            echo "::error title=dependency-cruiser ran degraded::No TypeScript compiler in the range dependency-cruiser supports (>=2.0.0 <7.0.0), so type-only imports and the @/* path alias were not resolved. The layer rules above proved nothing. Add a supported typescript for it to load - see AGENTS.md."
+            exit 1
+          fi
 
   test:
     name: Unit and integration tests
@@ -51,6 +83,13 @@ jobs:
       - uses: oven-sh/setup-bun@v2
         with:
           bun-version-file: package.json
+
+      - name: Cache the bun install cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: bun-install-${{ runner.os }}-${{ hashFiles('bun.lock') }}
+          restore-keys: bun-install-${{ runner.os }}-
 
       - name: Install dependencies
         run: bun install --frozen-lockfile
@@ -87,3 +126,72 @@ jobs:
           path: "**/coverage/lcov.info"
           retention-days: 14
           if-no-files-found: warn
+
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v6
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version-file: package.json
+
+      - name: Cache the bun install cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: bun-install-${{ runner.os }}-${{ hashFiles('bun.lock') }}
+          restore-keys: bun-install-${{ runner.os }}-
+
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+
+      - name: Cache the turbo artefacts
+        uses: actions/cache@v4
+        with:
+          path: |
+            .turbo/cache
+            apps/web/.next/cache
+          key: turbo-build-${{ runner.os }}-${{ github.sha }}
+          restore-keys: turbo-build-${{ runner.os }}-
+
+      # Every package script reads its configuration through
+      # `bun --env-file ../../.env`, and `.env` is not committed. The values
+      # below are placeholders and none of them is reachable: t3-env validation
+      # is skipped under CI, but `packages/db/src/client.ts` throws at module
+      # evaluation when DATABASE_URL is merely *unset*, and page data collection
+      # imports it. CONFIG_ENCRYPTION_KEY is left out on purpose - without it
+      # the registry falls back to DisabledConfigSource and every integration
+      # reports as disabled, so no third-party credentials are needed.
+      - name: Write the environment file
+        run: |
+          cat > .env <<'ENVFILE'
+          DATABASE_URL=postgresql://postgres:password@db.localtest.me:5432/virtbase
+          NEXT_PUBLIC_APP_NAME=Virtbase
+          NEXT_PUBLIC_APP_DOMAIN=virtbase.com
+          BETTER_AUTH_SECRET=ci-only-secret-not-used-outside-ci
+          NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_00000000000000000000000000
+          ENVFILE
+
+      - name: Build the workspace packages
+        run: bun turbo run build --filter='!@virtbase/web'
+
+      # The web app is built on its own and stops after bundling.
+      #
+      # A full `next build` ends in a prerender pass that evaluates pages, and
+      # several of them read the database - through the Neon serverless
+      # protocol, which needs the proxy `docker-compose.yml` runs plus TLS in
+      # front of it, and `packages/db/src/client.ts` only routes to that proxy
+      # while NODE_ENV is development, which `next build` never is. Prerender is
+      # therefore left to Vercel and to `e2e.yml`, which runs the real stack.
+      #
+      # `--experimental-build-mode compile` still runs Turbopack over every
+      # route, so it catches broken imports, server/client boundary mistakes,
+      # MDX that will not compile and message extraction - none of which any
+      # other job runs. It skips the TypeScript pass, which `bun typecheck` in
+      # the check job covers (`next typegen && tsc --noEmit`, same sources).
+      - name: Compile the web app
+        working-directory: apps/web
+        run: bun run with-env next build --experimental-build-mode compile

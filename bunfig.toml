@@ -1,13 +1,24 @@
 [test]
 
-coveragePathIgnorePatterns = [
-    # Test harness: fixtures, the tRPC caller factory and the DOM preload
-    "packages/api/src/testing/**.ts",
-    "packages/test-utils/src/**.ts",
-    # Static constants
-    "packages/utils/src/constants/**.ts",
-    # Static zod schemas
-    "packages/validators/src/**.ts",
-    # Drizzle database schemas
-    "packages/db/src/schema/**.ts"
-]
+# Nothing here is read by `bun run test`. Turbo runs each package's `test`
+# script with cwd set to that package, and bun reads `./bunfig.toml` from cwd
+# without walking up, so the settings that shape a run live in the package's own
+# `bunfig.toml`. The `coveragePathIgnorePatterns` that used to sit here were
+# written repo-root-relative and never applied to a single coverage report;
+# they now live next to the code they exclude:
+#
+#   packages/api        src/testing/**        fixtures and the tRPC caller
+#   packages/utils      src/constants/**      static constants
+#   packages/ui         ../test-utils/src/**  the DOM preload and render helper
+#   apps/web            ../../packages/test-utils/src/**
+#
+# Two of the original entries were deliberately not carried over.
+# `packages/validators/src/**` and `packages/db/src/schema/**` were written when
+# both were pure declarations; each now has its own `__tests__`, so excluding
+# them would hide the coverage of behaviour somebody wrote tests for. Add them
+# back in the package's own bunfig if that is the intent.
+#
+# A DOM `preload` is deliberately absent, here and in most packages: happy-dom's
+# `GlobalRegistrator` replaces `fetch`, which breaks every suite that drives a
+# real server or installs its own mock. Only packages that render components
+# opt in.
