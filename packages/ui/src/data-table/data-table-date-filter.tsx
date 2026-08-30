@@ -75,6 +75,13 @@ export function DataTableDateFilter<TData extends RowData>({
   title,
   multiple,
 }: DataTableDateFilterProps<TData>) {
+  // React Compiler caches values keyed on the identity of what they are read
+  // from, and `column` is a stable instance whose methods read mutable table
+  // state. `column.getFilterValue()` would be cached for the life of the column
+  // and the control would freeze on its first value.
+  // https://react.dev/learn/react-compiler/debugging#temporarily-disable-compilation
+  "use no memo";
+
   const t = useExtracted();
 
   const columnFilterValue = column.getFilterValue();

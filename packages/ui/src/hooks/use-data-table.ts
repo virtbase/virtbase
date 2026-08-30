@@ -40,7 +40,11 @@ import { useDebouncedCallback } from "../hooks/use-debounced-callback";
 import { getSortingStateParser } from "../lib/parsers";
 import type { DataTableFeatures } from "../lib/table-features";
 import { dataTableFeatures } from "../lib/table-features";
-import type { ExtendedColumnSort, QueryKeys } from "../types/data-table";
+import type {
+  ExtendedColumnSort,
+  FilterVariant,
+  QueryKeys,
+} from "../types/data-table";
 
 const PAGE_KEY = "page";
 const PER_PAGE_KEY = "perPage";
@@ -50,6 +54,23 @@ const JOIN_OPERATOR_KEY = "joinOperator";
 const ARRAY_SEPARATOR = ",";
 const DEBOUNCE_MS = 300;
 const THROTTLE_MS = 50;
+
+/**
+ * The filter variants whose value is a list rather than a single scalar.
+ *
+ * A column's parser has to match the shape its own control writes: the faceted
+ * filters write an array of option values, the slider and the date *range*
+ * write `[from, to]`, and everything else - a text or number box, a single
+ * date - writes one scalar. Reading the shape back off the value instead used
+ * to split any text search that contained a separator, so `foo bar` returned
+ * from the URL as `foo,bar` and `1.5` as `1,5`.
+ */
+const MULTI_VALUE_VARIANTS = new Set<FilterVariant>([
+  "dateRange",
+  "multiSelect",
+  "range",
+  "select",
+]);
 
 interface UseDataTableProps<TData extends RowData>
   extends Omit<
@@ -200,14 +221,14 @@ export function useDataTable<TData extends RowData>(
     return filterableColumns.reduce<
       Record<string, SingleParser<string> | SingleParser<string[]>>
     >((acc, column) => {
-      if (column.meta?.options) {
-        acc[column.id ?? ""] = parseAsArrayOf(
-          parseAsString,
-          ARRAY_SEPARATOR,
-        ).withOptions(queryStateOptions);
-      } else {
-        acc[column.id ?? ""] = parseAsString.withOptions(queryStateOptions);
-      }
+      const variant = column.meta?.variant;
+
+      acc[column.id ?? ""] =
+        column.meta?.options || (variant && MULTI_VALUE_VARIANTS.has(variant))
+          ? parseAsArrayOf(parseAsString, ARRAY_SEPARATOR).withOptions(
+              queryStateOptions,
+            )
+          : parseAsString.withOptions(queryStateOptions);
       return acc;
     }, {});
   }, [filterableColumns, queryStateOptions, enableAdvancedFilter]);
@@ -227,17 +248,10 @@ export function useDataTable<TData extends RowData>(
 
     return Object.entries(filterValues).reduce<ColumnFiltersState>(
       (filters, [key, value]) => {
+        // No reshaping: `filterParsers` already parsed each key into the shape
+        // its control writes, so what comes back out of the URL is what went in.
         if (value !== null) {
-          const processedValue = Array.isArray(value)
-            ? value
-            : typeof value === "string" && /[^a-zA-Z0-9]/.test(value)
-              ? value.split(/[^a-zA-Z0-9]+/).filter(Boolean)
-              : [value];
-
-          filters.push({
-            id: key,
-            value: processedValue,
-          });
+          filters.push({ id: key, value });
         }
         return filters;
       },
@@ -262,7 +276,12 @@ export function useDataTable<TData extends RowData>(
           Record<string, string | string[] | null>
         >((acc, filter) => {
           if (filterableColumns.find((column) => column.id === filter.id)) {
-            acc[filter.id] = filter.value as string | string[];
+            // `parseAsArrayOf` serializes every item on its own, so an
+            // open-ended range - a date range whose end is not picked yet -
+            // has to write an empty slot rather than the string "undefined".
+            acc[filter.id] = Array.isArray(filter.value)
+              ? filter.value.map((item) => (item == null ? "" : String(item)))
+              : (filter.value as string);
           }
           return acc;
         }, {});

@@ -48,6 +48,13 @@ export function DataTableColumnHeader<TData extends RowData, TValue>({
   className,
   ...props
 }: DataTableColumnHeaderProps<TData, TValue>) {
+  // React Compiler caches values keyed on the identity of what they are read
+  // from, and `column` is a stable instance whose methods read mutable table
+  // state. `column.getIsSorted()` would be cached for the life of the column
+  // and the sort indicator would freeze on its first direction.
+  // https://react.dev/learn/react-compiler/debugging#temporarily-disable-compilation
+  "use no memo";
+
   const t = useExtracted();
 
   if (!column.getCanSort() && !column.getCanHide()) {
