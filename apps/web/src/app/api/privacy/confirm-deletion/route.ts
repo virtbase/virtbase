@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import * as Sentry from "@sentry/nextjs";
 import { confirmAccountDeletion } from "@virtbase/api/privacy";
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
@@ -65,20 +66,33 @@ export async function GET(request: NextRequest) {
     .then(([row]) => row);
 
   if (account) {
-    await sendEmail({
-      to: account.email,
-      subject: await getEmailTitle(
-        "account-deletion-scheduled",
-        account.locale,
-        { date: result.scheduledAt },
-      ),
-      react: await AccountDeletionScheduled({
-        email: account.email,
-        name: account.name,
-        locale: account.locale,
-        scheduledAt: result.scheduledAt,
-      }),
-    });
+    // The deletion is already scheduled by the time we get here. `sendEmail`
+    // rejects on a provider failure, so letting it propagate would answer a
+    // request that genuinely succeeded with an error page - and the customer
+    // would have no way to tell that their account is, in fact, going away.
+    // Report the lost notice and confirm the outcome that actually happened.
+    try {
+      await sendEmail({
+        to: account.email,
+        subject: await getEmailTitle(
+          "account-deletion-scheduled",
+          account.locale,
+          { date: result.scheduledAt },
+        ),
+        react: await AccountDeletionScheduled({
+          email: account.email,
+          name: account.name,
+          locale: account.locale,
+          scheduledAt: result.scheduledAt,
+        }),
+      });
+    } catch (error) {
+      console.error(
+        "[@virtbase/web] Failed to send the deletion-scheduled notice: ",
+        error,
+      );
+      Sentry.captureException(error);
+    }
   }
 
   return redirect("confirmed");

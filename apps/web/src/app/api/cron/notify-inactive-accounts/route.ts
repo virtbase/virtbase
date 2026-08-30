@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import * as Sentry from "@sentry/nextjs";
 import {
   findAccountsToRemind,
   findInactivityCandidates,
@@ -73,19 +74,34 @@ const handler = withCronSecret(async () => {
   for (const { candidate } of eligible) {
     const scheduledAt = await scheduleInactivityDeletion(candidate.userId);
 
-    await sendEmail({
-      to: candidate.email,
-      subject: await getEmailTitle(
-        "account-inactivity-notice",
-        candidate.locale,
-      ),
-      react: await InactivityNotice({
-        email: candidate.email,
-        name: candidate.name,
-        locale: candidate.locale,
-        scheduledAt,
-      }),
-    });
+    // The schedule is already written, and a scheduled account is no longer a
+    // candidate - so an unsent notice is never retried. `sendEmail` rejects on
+    // a provider failure, and letting that escape would abandon every account
+    // after this one in the batch as well. Report it and keep going: the
+    // remaining customers still get told.
+    try {
+      await sendEmail({
+        to: candidate.email,
+        subject: await getEmailTitle(
+          "account-inactivity-notice",
+          candidate.locale,
+        ),
+        react: await InactivityNotice({
+          email: candidate.email,
+          name: candidate.name,
+          locale: candidate.locale,
+          scheduledAt,
+        }),
+      });
+    } catch (error) {
+      console.error(
+        "[CRON] Failed to notify",
+        candidate.userId,
+        "of scheduled deletion: ",
+        error,
+      );
+      Sentry.captureException(error);
+    }
   }
 
   const toRemind = await findAccountsToRemind();
@@ -94,20 +110,34 @@ const handler = withCronSecret(async () => {
   for (const account of toRemind) {
     if (!account.scheduledAt) continue;
 
-    await sendEmail({
-      to: account.email,
-      subject: await getEmailTitle(
-        "account-inactivity-reminder",
-        account.locale,
-        { date: account.scheduledAt },
-      ),
-      react: await InactivityReminder({
-        email: account.email,
-        name: account.name,
-        locale: account.locale,
-        scheduledAt: account.scheduledAt,
-      }),
-    });
+    try {
+      await sendEmail({
+        to: account.email,
+        subject: await getEmailTitle(
+          "account-inactivity-reminder",
+          account.locale,
+          { date: account.scheduledAt },
+        ),
+        react: await InactivityReminder({
+          email: account.email,
+          name: account.name,
+          locale: account.locale,
+          scheduledAt: account.scheduledAt,
+        }),
+      });
+    } catch (error) {
+      // Deliberately left unmarked, so this customer's reminder is retried on
+      // the next run - the existing contract below. Caught only so that one
+      // undeliverable address cannot starve every reminder behind it.
+      console.error(
+        "[CRON] Failed to remind",
+        account.userId,
+        "of scheduled deletion: ",
+        error,
+      );
+      Sentry.captureException(error);
+      continue;
+    }
 
     // After sending, so a failure to send retries next run rather than
     // silently consuming the customer's last warning.

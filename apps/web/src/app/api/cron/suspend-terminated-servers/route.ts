@@ -143,21 +143,35 @@ const handler = withCronSecret(async () => {
     },
   );
 
-  await sendBatchEmail(
-    await Promise.all(
-      notificationTargets.map(async ({ user, ...server }) => ({
-        to: user.email,
-        subject: await getEmailTitle("server-suspended", user.locale),
-        react: await ServerSuspended({
-          serverName: server.serverName,
-          serverId: server.serverId,
-          name: user.name,
-          email: user.email,
-          locale: user.locale,
-        }),
-      })),
-    ),
-  );
+  // The suspensions are already committed, and a suspended server is not a
+  // candidate on the next run - so failing the request here would lose these
+  // notices for good and report a run that did most of its work as a failure.
+  // `sendBatchEmail` rejects on a provider failure, so report and carry on.
+  try {
+    await sendBatchEmail(
+      await Promise.all(
+        notificationTargets.map(async ({ user, ...server }) => ({
+          to: user.email,
+          subject: await getEmailTitle("server-suspended", user.locale),
+          react: await ServerSuspended({
+            serverName: server.serverName,
+            serverId: server.serverId,
+            name: user.name,
+            email: user.email,
+            locale: user.locale,
+          }),
+        })),
+      ),
+    );
+  } catch (error) {
+    console.error(
+      "[CRON] Failed to send",
+      notificationTargets.length,
+      "suspension notice(s): ",
+      error,
+    );
+    Sentry.captureException(error);
+  }
 
   return new Response("OK", {
     status: 200,
