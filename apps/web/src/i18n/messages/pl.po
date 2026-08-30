@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Polish\n"
-"PO-Revision-Date: 2026-08-29 11:20\n"
+"PO-Revision-Date: 2026-08-30 09:15\n"
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
 msgid "lYlalx"
@@ -2472,11 +2472,14 @@ msgstr "Utwórz klucz API"
 #: src/features/admin/components/proxmox-templates/delete-template-dialog.tsx
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx
 #: src/features/servers/components/backups/create-backup-dialog.tsx
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
 #: src/features/servers/components/overview/change-template-dialog.tsx
 #: src/features/servers/components/overview/rename-server-dialog.tsx
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/ui/feedback-button.tsx
 msgid "47FYwb"
@@ -3567,6 +3570,7 @@ msgid "LrZ7qa"
 msgstr "`abuse.*` pasuje do przestrzeni nazw, `abuse.ddos` do jednego typu."
 
 #: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "aH4De2"
@@ -5212,6 +5216,7 @@ msgid "TY8Ho1"
 msgstr "Polecenia"
 
 #: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "DZ2Koj"
@@ -5225,6 +5230,7 @@ msgid "YDkqMJ"
 msgstr "Przybywający"
 
 #: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "QlsDcr"
@@ -5236,6 +5242,7 @@ msgid "VzIOKf"
 msgstr "Odrzucić"
 
 #: src/features/landing/components/server-firewall-demo.tsx
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgid "0QLzxo"
@@ -5375,6 +5382,7 @@ msgid "mRL9Vh"
 msgstr "Tworzenie..."
 
 #: src/features/servers/components/backups/backups-table/columns.tsx
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
 #: src/features/servers/hooks/use-status-mapping.ts
 #: src/features/servers/hooks/use-task-mapping.ts
@@ -5433,6 +5441,26 @@ msgstr "Włącz ochronę przed usunięciem"
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 msgid "I9XNiI"
 msgstr "Nowo utworzoną kopię zapasową można usunąć dopiero po wyłączeniu zabezpieczenia przed usunięciem."
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "zkk3nZ"
+msgstr "Usuń kopię zapasową"
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "3pdwu9"
+msgstr "Usuń kopię zapasową swojego serwera."
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "wl5Juv"
+msgstr "Kopia zapasowa z {date} zostanie usunięta z node'a. Tej operacji nie można cofnąć."
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "ijaxLm"
+msgstr "Następujący system operacyjny zostanie utracony:"
+
+#: src/features/servers/components/backups/delete-backup-dialog.tsx
+msgid "SKjLPj"
+msgstr "Czy usunąć kopię zapasową?"
 
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
 msgid "MW7EBt"
@@ -5674,6 +5702,23 @@ msgstr "Zmień plan"
 msgid "YeQq19"
 msgstr "Przygotowuję płatność…"
 
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
+#: src/features/servers/components/rdns/records-table/columns.tsx
+msgid "LUHXQL"
+msgstr "Usuń rekord PTR"
+
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
+msgid "LuQ-pB"
+msgstr "Usuń rekord PTR swojego serwera."
+
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
+msgid "2VDNVp"
+msgstr "Odwrotne wyszukiwanie dla {ip} nie będzie już wskazywać na {hostname}. Poczta wysyłana z tego adresu może zostać odrzucona."
+
+#: src/features/servers/components/rdns/delete-record-dialog.tsx
+msgid "uoUX6n"
+msgstr "Czy usunąć rekord PTR?"
+
 #: src/features/servers/components/rdns/records-card.tsx
 msgid "Z2vqA3"
 msgstr "Rekordy PTR"
@@ -5685,10 +5730,6 @@ msgstr "{count, plural, =1 {# rekord PTR} other {# rekordy PTR}}"
 #: src/features/servers/components/rdns/records-table/columns.tsx
 msgid "99tjyG"
 msgstr "IP"
-
-#: src/features/servers/components/rdns/records-table/columns.tsx
-msgid "LUHXQL"
-msgstr "Usuń rekord PTR"
 
 #: src/features/servers/components/rdns/records-table/index.tsx
 msgid "q9ZR74"
@@ -5813,10 +5854,6 @@ msgid "lgSmVl"
 msgstr "Obraz ISO został pomyślnie zamontowany. Zmiana zostanie zastosowana przy następnym uruchomieniu."
 
 #: src/features/servers/components/server-mount-dialog.tsx
-msgid "bmliQK"
-msgstr "Nie udało się zamontować obrazu ISO."
-
-#: src/features/servers/components/server-mount-dialog.tsx
 msgid "1INFXA"
 msgstr "Obraz ISO został pomyślnie odmontowany. Zmiana zostanie zastosowana przy następnym uruchomieniu."
 
@@ -5879,6 +5916,32 @@ msgstr "Skopiuj adres IP"
 #: src/features/servers/components/servers-list.tsx
 msgid "nWQFic"
 msgstr "Odnowić"
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "rWbrOx"
+msgstr "Usuń regułę zapory"
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "JfwSAy"
+msgstr "Usuń regułę ze swojej zapory."
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "wTEfoa"
+msgstr "Reguła {position} zostanie usunięta z zapory Virtbase. Tej operacji nie można cofnąć."
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "rsSUP3"
+msgstr "Port"
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
+#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
+msgid "LgbKvU"
+msgstr "Komentarz"
+
+#: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
+msgid "pc6aEi"
+msgstr "Czy usunąć regułę?"
 
 #: src/features/servers/firewall/components/firewall-action-select.tsx
 msgid "ObQE5T"
@@ -5956,11 +6019,6 @@ msgstr "Dowolny adres"
 msgid "08nIQL"
 msgstr "Dopasuj tylko ruch z tego adresu lub sieci, na przykład 10.0.0.0/8. Pozostaw puste, aby dopasować dowolny adres."
 
-#: src/features/servers/firewall/components/firewall-rule-dialog.tsx
-#: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
-msgid "LgbKvU"
-msgstr "Komentarz"
-
 #: src/features/servers/firewall/components/firewall-rules-card.tsx
 msgid "Qov8tl"
 msgstr "Zasady zapory sieciowej"
@@ -6018,14 +6076,6 @@ msgid "H_r5m6"
 msgstr "Opuszczać"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
-msgid "AFkUOq"
-msgstr "Nie udało się wygenerować reguł. Spróbuj ponownie."
-
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
-msgid "N8n7F4"
-msgstr "Nie udało się utworzyć reguły. Spróbuj ponownie."
-
-#: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgid "w-tZ4Z"
 msgstr "Generuj reguły zapory"
 
@@ -6072,6 +6122,14 @@ msgstr "Ruch musi przejść przez obie zapory. Virtbase nie potrafi jeszcze odcz
 #: src/features/servers/firewall/components/guest-firewall-alert.tsx
 msgid "C03sMA"
 msgstr "Ruch musi przejść przez obie zapory. Jej reguły są wymienione poniżej."
+
+#: src/features/servers/firewall/hooks/use-create-firewall-rule.ts
+msgid "mJ0yAx"
+msgstr "Nie udało się utworzyć reguły zapory."
+
+#: src/features/servers/firewall/hooks/use-delete-firewall-rule.ts
+msgid "3Kd2EU"
+msgstr "Nie udało się usunąć reguły zapory."
 
 #: src/features/servers/firewall/hooks/use-finding-mapping.ts
 msgid "6tQJAd"
@@ -6125,6 +6183,62 @@ msgstr "Przyjąć"
 msgid "j8RTUO"
 msgstr "Upuszczać"
 
+#: src/features/servers/firewall/hooks/use-generate-firewall-rule.ts
+msgid "AFkUOq"
+msgstr "Nie udało się wygenerować reguł. Spróbuj ponownie."
+
+#: src/features/servers/firewall/hooks/use-move-firewall-rule.ts
+msgid "AocbVN"
+msgstr "Nie udało się zmienić kolejności reguł zapory."
+
+#: src/features/servers/firewall/hooks/use-update-firewall-options.ts
+msgid "gUdmaM"
+msgstr "Nie udało się zaktualizować opcji zapory."
+
+#: src/features/servers/firewall/hooks/use-update-firewall-rule.ts
+msgid "HixF5T"
+msgstr "Nie udało się zaktualizować reguły zapory."
+
+#: src/features/servers/hooks/advanced/use-update-advanced-settings.ts
+msgid "TLEvHC"
+msgstr "Nie udało się zaktualizować ustawień zaawansowanych."
+
+#: src/features/servers/hooks/backups/use-create-backup.ts
+msgid "VEvlmq"
+msgstr "Nie udało się utworzyć kopii zapasowej."
+
+#: src/features/servers/hooks/backups/use-delete-backup.ts
+msgid "VZShzt"
+msgstr "Nie udało się usunąć kopii zapasowej."
+
+#: src/features/servers/hooks/backups/use-restore-backup.ts
+msgid "lFzlNs"
+msgstr "Nie udało się przywrócić kopii zapasowej."
+
+#: src/features/servers/hooks/backups/use-update-backup.ts
+msgid "GwAFh4"
+msgstr "Nie udało się zaktualizować kopii zapasowej."
+
+#: src/features/servers/hooks/overview/use-change-template.ts
+msgid "8g0ePs"
+msgstr "Nie udało się zmienić systemu operacyjnego."
+
+#: src/features/servers/hooks/overview/use-rename-server.ts
+msgid "WkH31C"
+msgstr "Nie udało się zmienić nazwy serwera."
+
+#: src/features/servers/hooks/overview/use-reset-server-password.ts
+msgid "afiU1l"
+msgstr "Nie udało się zresetować hasła."
+
+#: src/features/servers/hooks/rdns/use-delete-pointer-record.ts
+msgid "OqBG_o"
+msgstr "Nie udało się usunąć rekordu PTR."
+
+#: src/features/servers/hooks/rdns/use-upsert-pointer-record.ts
+msgid "v_PJM7"
+msgstr "Nie udało się zapisać rekordu PTR."
+
 #: src/features/servers/hooks/use-agent-status-mapping.ts
 msgid "D7fMMu"
 msgstr "Agent gościa działa"
@@ -6177,6 +6291,10 @@ msgstr "Status agenta gościa jest niedostępny"
 msgid "XiMFvI"
 msgstr "Virtbase nie mógł teraz sprawdzić agenta gościa. Spróbuj ponownie później."
 
+#: src/features/servers/hooks/use-mount-image.ts
+msgid "bmliQK"
+msgstr "Nie udało się zamontować obrazu ISO."
+
 #: src/features/servers/hooks/use-status-mapping.ts
 msgid "ccU6l_"
 msgstr "W Internecie"
@@ -6228,6 +6346,14 @@ msgstr "Tworzenie kopii zapasowej..."
 #: src/features/servers/hooks/use-task-mapping.ts
 msgid "98thq0"
 msgstr "Przywracam kopię zapasową..."
+
+#: src/features/servers/hooks/use-unmount-image.ts
+msgid "D6e_ae"
+msgstr "Nie udało się odmontować obrazu ISO."
+
+#: src/features/servers/hooks/use-update-server-status.ts
+msgid "TpRHA3"
+msgstr "Nie udało się zmienić stanu serwera."
 
 #: src/ui/app-footer.tsx
 msgid "4XCigB"
