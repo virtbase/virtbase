@@ -197,6 +197,51 @@
     "greeting": "Hi {name}!",
     "viewButton": "View details"
   },
+  "payment-decline-reason": {
+    "expiredCard": "The card we have on file has expired.",
+    "insufficientFunds": "There were not enough funds available to cover the payment.",
+    "cardDetails": "The card details we have on file were not accepted.",
+    "noPaymentMethod": "There is no payment method saved on your account for us to charge.",
+    "cardUnusable": "The payment method we have on file can no longer be used.",
+    "authenticationExpired": "The payment had to be confirmed with your bank, and the confirmation window closed before that happened.",
+    "temporary": "The payment could not be processed. Problems like this usually clear on their own.",
+    "declinedByBank": "Your bank declined the payment. They do not tell us why, so they are the ones who can say.",
+    "unknown": "The payment did not go through, and we were not told why. In most cases this is a temporary hold rather than anything wrong with your account."
+  },
+  "renewal-payment-failed": {
+    "title": "We couldn't take payment for your server",
+    "preview": "We couldn't take payment for {serverName}",
+    "heading": "We couldn't take payment for your server",
+    "greeting": "Hi {name}!",
+    "description": "We tried to charge <strong>{amount}</strong> to renew <strong>{serverName}</strong>, and the payment did not go through.",
+    "card": "We used the card ending in {last4} ({brand}).",
+    "nextAttempt": "We will try again on <strong>{date}</strong>. If you update your payment method before then, we will use the new one.",
+    "reassurance": "<strong>{serverName} is still running</strong> and nothing has been deleted. There is time to sort this out.",
+    "updatePaymentButton": "Update payment method"
+  },
+  "renewal-final-warning": {
+    "title": "Your server will be suspended on {date}",
+    "preview": "{serverName} will be suspended unless the payment goes through",
+    "heading": "Your server is about to be suspended",
+    "greeting": "Hi {name}!",
+    "description": "We still have not been able to collect <strong>{amount}</strong> to renew <strong>{serverName}</strong>.",
+    "card": "We used the card ending in {last4} ({brand}).",
+    "lastAttempt": "We will make <strong>one final attempt</strong> on {date}.",
+    "noFurtherAttempt": "<strong>We will not try this payment method again.</strong> Your bank has told us it cannot be charged, so nothing further will happen until you add another one.",
+    "deadline": "If the payment is not settled, <strong>{serverName}</strong> will be suspended and switched off on <strong>{date}</strong>.",
+    "retention": "Your data is kept for <strong>{days} days</strong> after that. If the payment is still outstanding then, the server and everything on it is deleted permanently and cannot be recovered.",
+    "updatePaymentButton": "Update payment method"
+  },
+  "payment-method-invalid": {
+    "title": "Your payment method needs replacing",
+    "preview": "Your saved payment method can no longer be used",
+    "heading": "Your payment method needs replacing",
+    "greeting": "Hi {name}!",
+    "descriptionCard": "The <strong>card ending in {last4}</strong> ({brand}) saved on your account can no longer be used for payments.",
+    "description": "The payment method saved on your account can no longer be used for payments.",
+    "hint": "Adding a replacement takes a minute and keeps your servers renewing without interruption. Until then, every renewal that falls due will fail.",
+    "updatePaymentButton": "Add a payment method"
+  },
   "footer": {
     "thisEmailWasIntendedFor": "Tämä sähköposti oli tarkoitettu osoitteelle <strong>{email}</strong>.",
     "securityConcerns": "Jos et odottanut tätä sähköpostia, voit jättää sen huomiotta. Jos olet huolissasi tilisi turvallisuudesta, <link>ota yhteyttä ja kerro meille</link>.",
