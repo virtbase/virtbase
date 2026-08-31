@@ -197,6 +197,51 @@
     "greeting": "Hallo {name}!",
     "viewButton": "Details ansehen"
   },
+  "payment-decline-reason": {
+    "expiredCard": "Die bei uns hinterlegte Karte ist abgelaufen.",
+    "insufficientFunds": "Es war nicht genug Guthaben für die Zahlung verfügbar.",
+    "cardDetails": "Die bei uns hinterlegten Kartendaten wurden nicht akzeptiert.",
+    "noPaymentMethod": "In deinem Konto ist keine Zahlungsmethode hinterlegt, die wir belasten könnten.",
+    "cardUnusable": "Die bei uns hinterlegte Zahlungsmethode kann nicht mehr verwendet werden.",
+    "authenticationExpired": "Die Zahlung musste bei deiner Bank bestätigt werden, und das Zeitfenster dafür ist abgelaufen.",
+    "temporary": "Die Zahlung konnte nicht verarbeitet werden. So etwas löst sich meist von selbst.",
+    "declinedByBank": "Deine Bank hat die Zahlung abgelehnt. Den Grund teilt sie uns nicht mit, deshalb kann nur sie ihn nennen.",
+    "unknown": "Die Zahlung ist nicht durchgegangen, und uns wurde kein Grund genannt. Meistens ist das eine vorübergehende Sperre und kein Problem mit deinem Konto."
+  },
+  "renewal-payment-failed": {
+    "title": "Wir konnten die Zahlung für deinen Server nicht einziehen",
+    "preview": "Wir konnten die Zahlung für {serverName} nicht einziehen",
+    "heading": "Wir konnten die Zahlung für deinen Server nicht einziehen",
+    "greeting": "Hi {name}!",
+    "description": "Wir haben versucht, <strong>{amount}</strong> für die Verlängerung von <strong>{serverName}</strong> einzuziehen, und die Zahlung ist nicht durchgegangen.",
+    "card": "Verwendet haben wir die Karte mit den Endziffern {last4} ({brand}).",
+    "nextAttempt": "Wir versuchen es am <strong>{date}</strong> erneut. Wenn du vorher eine andere Zahlungsmethode hinterlegst, nutzen wir die neue.",
+    "reassurance": "<strong>{serverName} läuft weiterhin</strong> und es wurde nichts gelöscht. Es bleibt Zeit, das in Ordnung zu bringen.",
+    "updatePaymentButton": "Zahlungsmethode aktualisieren"
+  },
+  "renewal-final-warning": {
+    "title": "Dein Server wird am {date} deaktiviert",
+    "preview": "{serverName} wird deaktiviert, wenn die Zahlung nicht durchgeht",
+    "heading": "Dein Server wird bald deaktiviert",
+    "greeting": "Hi {name}!",
+    "description": "Wir konnten <strong>{amount}</strong> für die Verlängerung von <strong>{serverName}</strong> weiterhin nicht einziehen.",
+    "card": "Verwendet haben wir die Karte mit den Endziffern {last4} ({brand}).",
+    "lastAttempt": "Wir unternehmen am {date} <strong>einen letzten Versuch</strong>.",
+    "noFurtherAttempt": "<strong>Wir versuchen es mit dieser Zahlungsmethode nicht noch einmal.</strong> Deine Bank hat uns mitgeteilt, dass sie nicht belastet werden kann. Es passiert nichts weiter, bis du eine andere hinterlegst.",
+    "deadline": "Wenn die Zahlung offen bleibt, wird <strong>{serverName}</strong> am <strong>{date}</strong> deaktiviert und abgeschaltet.",
+    "retention": "Deine Daten bleiben danach noch <strong>{days} Tage</strong> erhalten. Ist die Zahlung dann immer noch offen, werden der Server und alle Daten darauf endgültig gelöscht und können nicht wiederhergestellt werden.",
+    "updatePaymentButton": "Zahlungsmethode aktualisieren"
+  },
+  "payment-method-invalid": {
+    "title": "Deine Zahlungsmethode muss ersetzt werden",
+    "preview": "Deine hinterlegte Zahlungsmethode kann nicht mehr verwendet werden",
+    "heading": "Deine Zahlungsmethode muss ersetzt werden",
+    "greeting": "Hi {name}!",
+    "descriptionCard": "Die in deinem Konto hinterlegte <strong>Karte mit den Endziffern {last4}</strong> ({brand}) kann für Zahlungen nicht mehr verwendet werden.",
+    "description": "Die in deinem Konto hinterlegte Zahlungsmethode kann für Zahlungen nicht mehr verwendet werden.",
+    "hint": "Eine neue zu hinterlegen dauert eine Minute und sorgt dafür, dass deine Server ohne Unterbrechung verlängert werden. Bis dahin schlägt jede fällige Verlängerung fehl.",
+    "updatePaymentButton": "Zahlungsmethode hinzufügen"
+  },
   "footer": {
     "thisEmailWasIntendedFor": "Diese E-Mail ist für <strong>{email}</strong> bestimmt.",
     "securityConcerns": "Falls du diese E-Mail nicht erwartet hast, kannst du sie ignorieren. Solltest du dir Sorgen um die Sicherheit deines Accounts machen, dann <link>kontaktiere uns</link>.",
