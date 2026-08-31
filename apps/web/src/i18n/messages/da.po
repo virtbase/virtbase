@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Danish\n"
-"PO-Revision-Date: 2026-08-30 19:08\n"
+"PO-Revision-Date: 2026-08-31 13:45\n"
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
 msgctxt "lYlalx"
@@ -2110,6 +2110,13 @@ msgctxt "9lr8v8"
 msgid "Subnets"
 msgstr "Undernet"
 
+#: src/app/admin.virtbase.com/(dashboard)/subscriptions/[id]/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/subscriptions/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+msgctxt "J-dIsA"
+msgid "Subscriptions"
+msgstr "Abonnementer"
+
 #: src/app/admin.virtbase.com/(dashboard)/template-groups/[id]/page.tsx
 #: src/app/admin.virtbase.com/(dashboard)/template-groups/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
@@ -2312,7 +2319,6 @@ msgid "Overview"
 msgstr "Oversigt"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/plan/page.tsx
-#: src/features/servers/components/plan/plan-form.tsx
 #: src/features/servers/components/server-nav.tsx
 msgctxt "fz0z4c"
 msgid "Plan"
@@ -2339,6 +2345,7 @@ msgid "An unexpected error occurred while loading the server details."
 msgstr "Der opstod en uventet fejl under indlæsning af serveroplysningerne."
 
 #: src/app/app.virtbase.com/(dashboard)/servers/error.tsx
+#: src/features/account/components/billing/add-payment-method.tsx
 #: src/ui/generic-error.tsx
 msgctxt "FazwRl"
 msgid "Try again"
@@ -2717,6 +2724,9 @@ msgstr "Opret API-nøgle"
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/account/components/authentication/confirm-password-dialog.tsx
 #: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+#: src/features/account/components/billing/add-payment-method-form.tsx
+#: src/features/account/components/billing/add-payment-method.tsx
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 #: src/features/account/components/privacy/delete-account-card.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
@@ -2736,9 +2746,11 @@ msgstr "Opret API-nøgle"
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 #: src/features/servers/components/backups/delete-backup-dialog.tsx
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
+#: src/features/servers/components/billing/mandate-dialog.tsx
 #: src/features/servers/components/overview/change-template-dialog.tsx
 #: src/features/servers/components/overview/rename-server-dialog.tsx
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
+#: src/features/servers/components/plan/plan-order-dialog.tsx
 #: src/features/servers/components/rdns/delete-record-dialog.tsx
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx
 #: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
@@ -2934,13 +2946,12 @@ msgid "Passkey #{number}"
 msgstr "Adgangsnøgle #{number}"
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx
-#: src/features/account/components/billing/payment-methods-list.tsx
 msgctxt "jUqYir"
 msgid "Added {date}"
 msgstr "Tilføjet {date}"
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx
-#: src/features/account/components/billing/payment-methods-list.tsx
+#: src/features/account/components/billing/payment-method-item.tsx
 msgctxt "G_yZLu"
 msgid "Remove"
 msgstr "Fjerne"
@@ -3071,15 +3082,216 @@ msgctxt "w-q8k4"
 msgid "Single-use codes in case you lose access to your other factors."
 msgstr "Engangskoder, hvis du mister adgang til dine andre faktorer."
 
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "F-ixiD"
+msgid "Your card details could not be checked. Try again."
+msgstr "Dine kortoplysninger kunne ikke kontrolleres. Prøv igen."
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "ofKlJp"
+msgid "Your bank did not approve this card. Check the details, or try a different card."
+msgstr "Din bank godkendte ikke dette kort. Kontrollér oplysningerne, eller prøv et andet kort."
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "fIib8k"
+msgid "Your bank still has to confirm this card. Finish the check it sent you, then add the card again."
+msgstr "Din bank skal stadig bekræfte dette kort. Gennemfør den kontrol, den har sendt dig, og tilføj derefter kortet igen."
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "5Me-m9"
+msgid "The card was not saved and nothing was charged. Check the details, or try a different card."
+msgstr "Kortet blev ikke gemt, og der blev ikke trukket noget. Kontrollér oplysningerne, eller prøv et andet kort."
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "vf0_Um"
+msgid "We only ever see the brand and the last four digits."
+msgstr "Vi ser kun korttypen og de sidste fire cifre."
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "BFfES6"
+msgid "The card was not saved"
+msgstr "Kortet blev ikke gemt"
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "AfTYM9"
+msgid "Confirming with your bank…"
+msgstr "Bekræfter med din bank…"
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "rfC1Zq"
+msgid "Save card"
+msgstr "Gem kort"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "oLpiKz"
+msgid "Add a card"
+msgstr "Tilføj et kort"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "lnbUY-"
+msgid "Opening a secure form…"
+msgstr "Åbner en sikker formular…"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "9V1fHT"
+msgid "The card form could not be opened"
+msgstr "Kortformularen kunne ikke åbnes"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "BdZO9K"
+msgid "Nothing was saved and nothing was charged. Try again in a moment."
+msgstr "Der blev ikke gemt noget, og der blev ikke trukket noget. Prøv igen om et øjeblik."
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "HejwTp"
+msgid "Your bank is confirming the mandate"
+msgstr "Din bank bekræfter mandatet"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "mHaiI3"
+msgid "Card saved"
+msgstr "Kortet er gemt"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "uVPfNA"
+msgid "This can take a day or two. Nothing is charged in the meantime."
+msgstr "Det kan tage en dag eller to. Der trækkes ikke noget i mellemtiden."
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "jcLmIR"
+msgid "It appears in the list above in a few seconds."
+msgstr "Det vises på listen ovenfor om få sekunder."
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "rELDbB"
+msgid "Refresh"
+msgstr "Opdater"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "weEvBW"
+msgid "Nothing is charged when you add a card."
+msgstr "Der trækkes ikke noget, når du tilføjer et kort."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+#: src/features/servers/components/billing/mandate-dialog.tsx
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "hmnIY5"
+msgid "Card"
+msgstr "Kort"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "tFLiQ2"
+msgid "SEPA Direct Debit"
+msgstr "SEPA-direkte debitering"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "wbtiQC"
+msgid "PayPal"
+msgstr ""
+
+#: src/features/account/components/billing/payment-method-item.tsx
+#: src/features/checkout/components/stripe-payment-form.tsx
+msgctxt "BVTni9"
+msgid "Payment method"
+msgstr "Betalingsmetode"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "1qYrxy"
+msgid "{instrument} ending {last4}"
+msgstr "{instrument} der ender på {last4}"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "NgmFCU"
+msgid "Use {card} for renewals"
+msgstr "Brug {card} til fornyelser"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "b0Sa3V"
+msgid "Use for renewals"
+msgstr "Brug til fornyelser"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "37qTXK"
+msgid "Remove {card}"
+msgstr "Fjern {card}"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "lKv8ex"
+msgid "Default"
+msgstr "Standard"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "_VQpyO"
+msgid "Expires {date}"
+msgstr "Udløber {date}"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "kn3VHJ"
+msgid "Charged when a subscription renews."
+msgstr "Trækkes, når et abonnement fornyes."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "qsrtPX"
+msgid "Expired — replace it to keep automatic renewal"
+msgstr "Udløbet — udskift det for at bevare automatisk fornyelse"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "KR85kZ"
+msgid "This card expired in {date}. Add a new one, choose it for renewals, and then remove this one."
+msgstr "Dette kort udløb i {date}. Tilføj et nyt, vælg det til fornyelser, og fjern derefter dette."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "fME4OR"
+msgid "This card has expired. Add a new one, choose it for renewals, and then remove this one."
+msgstr "Dette kort er udløbet. Tilføj et nyt, vælg det til fornyelser, og fjern derefter dette."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "EAhUyM"
+msgid "Stopped by your bank — replace it to keep automatic renewal"
+msgstr "Spærret af din bank — udskift det for at bevare automatisk fornyelse"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "JD3g_M"
+msgid "Refused — replace it to keep automatic renewal"
+msgstr "Afvist — udskift det for at bevare automatisk fornyelse"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "zWgq8B"
+msgid "It was reported lost, so renewals can no longer be charged to it. Add another card and choose it for renewals."
+msgstr "Det er meldt tabt, så fornyelser ikke længere kan trækkes på det. Tilføj et andet kort, og vælg det til fornyelser."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "yZt1Z4"
+msgid "It was reported stolen, so renewals can no longer be charged to it. Add another card and choose it for renewals."
+msgstr "Det er meldt stjålet, så fornyelser ikke længere kan trækkes på det. Tilføj et andet kort, og vælg det til fornyelser."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "CSGj9j"
+msgid "The permission to charge it was withdrawn, so renewals can no longer use it. Add another card and choose it for renewals."
+msgstr "Tilladelsen til at trække på det er tilbagekaldt, så fornyelser ikke længere kan bruge det. Tilføj et andet kort, og vælg det til fornyelser."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "Hn4fZn"
+msgid "Your bank does not accept this kind of payment from us. Add another card and choose it for renewals."
+msgstr "Din bank accepterer ikke denne type betaling fra os. Tilføj et andet kort, og vælg det til fornyelser."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "2kKGxe"
+msgid "Your bank refused the last renewal and told us not to try again. Add another card and choose it for renewals, or ask your bank why it was refused."
+msgstr "Din bank afviste den seneste fornyelse og bad os om ikke at forsøge igen. Tilføj et andet kort, og vælg det til fornyelser, eller spørg din bank, hvorfor den blev afvist."
+
 #: src/features/account/components/billing/payment-methods-card.tsx
 msgctxt "xuTqgN"
 msgid "Payment Methods"
 msgstr "Betalingsmetoder"
 
 #: src/features/account/components/billing/payment-methods-card.tsx
-msgctxt "oBsxme"
-msgid "The following payment methods are stored and can be used for billing."
-msgstr "Følgende betalingsmetoder er gemt og kan bruges til fakturering."
+msgctxt "1r9dHK"
+msgid "The cards your subscriptions renew on."
+msgstr "De kort, dine abonnementer fornyes på."
 
 #: src/features/account/components/billing/payment-methods-list.tsx
 msgctxt "qyRflV"
@@ -3087,14 +3299,74 @@ msgid "No payment methods"
 msgstr "Ingen betalingsmetoder"
 
 #: src/features/account/components/billing/payment-methods-list.tsx
-msgctxt "gL_ZgG"
-msgid "No payment methods have been linked to your account."
-msgstr "Der er ikke knyttet nogen betalingsmetoder til din konto."
+msgctxt "uc7KVl"
+msgid "No cards have been saved yet. A subscription cannot renew without one."
+msgstr "Der er endnu ikke gemt nogen kort. Et abonnement kan ikke fornyes uden et."
 
 #: src/features/account/components/billing/payment-methods-list.tsx
-msgctxt "3MBRV5"
-msgid "No name"
-msgstr "Intet navn angivet"
+msgctxt "O7KbvF"
+msgid "No card is chosen for renewals"
+msgstr "Der er ikke valgt et kort til fornyelser"
+
+#: src/features/account/components/billing/payment-methods-list.tsx
+msgctxt "bXjwnf"
+msgid "A renewal has nothing to charge, so the subscription ends when its period does. Pick a card below with “Use for renewals”."
+msgstr "En fornyelse har intet at trække på, så abonnementet slutter, når perioden gør. Vælg et kort nedenfor med “Brug til fornyelser”."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "hguqnC"
+msgid "Remove this card?"
+msgstr "Fjern dette kort?"
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "5PZkYP"
+msgid "Remove card"
+msgstr "Fjern kort"
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "mLXaQO"
+msgid "It is detached from our payment provider straight away and can never be charged again. Receipts for payments you have already made are unaffected."
+msgstr "Det afkobles fra vores betalingsudbyder med det samme og kan aldrig trækkes på igen. Kvitteringer for betalinger, du allerede har foretaget, er upåvirkede."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "JtXgPI"
+msgid "Automatic renewal will stop"
+msgstr "Automatisk fornyelse stopper"
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "XuZcbZ"
+msgid "This is the only card on your account, and {count} subscription(s) renew automatically. Once it is gone there is nothing left to charge them to."
+msgstr "Dette er det eneste kort på din konto, og {count} abonnement(er) fornyes automatisk. Når det er væk, er der intet tilbage at trække dem på."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "KZqy-S"
+msgid "This is the card renewals are charged to, and removing it leaves your account without one. {count} subscription(s) renew automatically and would have nothing to charge."
+msgstr "Det er dette kort, fornyelser trækkes på, og fjerner du det, står din konto uden et. {count} abonnement(er) fornyes automatisk og ville intet have at trække på."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "YFs9Ts"
+msgid "Nothing is switched off today: each one runs to the end of the period you have already paid for — the first on {date} — and then ends instead of renewing."
+msgstr "Der slukkes ikke for noget i dag: hvert enkelt kører til udgangen af den periode, du allerede har betalt for — det første den {date} — og slutter derefter i stedet for at blive fornyet."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "DX5sBC"
+msgid "Nothing is switched off today: each one runs to the end of the period you have already paid for, and then ends instead of renewing."
+msgstr "Der slukkes ikke for noget i dag: hvert enkelt kører til udgangen af den periode, du allerede har betalt for, og slutter derefter i stedet for at blive fornyet."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "sfngf8"
+msgid "You can still remove it. Add another card before then and renewals carry on as before."
+msgstr "Du kan stadig fjerne det. Tilføj et andet kort inden da, så fortsætter fornyelserne som før."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "uz-t0Q"
+msgid "Renewals move to your default card"
+msgstr "Fornyelser flyttes til dit standardkort"
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "OL4fV7"
+msgid "{count} subscription(s) renew on this card. They will be charged to the card you have chosen for renewals instead."
+msgstr "{count} abonnement(er) fornyes på dette kort. De trækkes i stedet på det kort, du har valgt til fornyelser."
 
 #: src/features/account/components/custom-images/create-custom-image-button.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
@@ -3589,6 +3861,16 @@ msgctxt "6admx4"
 msgid "Please use at least 8 characters, one uppercase letter, one lowercase letter and one number."
 msgstr "Brug mindst 8 tegn, ét stort bogstav, ét lille bogstav og ét tal."
 
+#: src/features/account/hooks/billing/remove-payment-method.ts
+msgctxt "hBp-IX"
+msgid "Could not remove the card. It is still on your account — try again in a moment."
+msgstr "Kortet kunne ikke fjernes. Det er stadig på din konto — prøv igen om et øjeblik."
+
+#: src/features/account/hooks/billing/set-default-payment-method.ts
+msgctxt "Hxr4zr"
+msgid "Could not change the default card. Nothing changed — try again."
+msgstr "Standardkortet kunne ikke ændres. Intet blev ændret — prøv igen."
+
 #: src/features/admin/components/abuse/abuse-case-conversation.tsx
 #: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
 msgctxt "jw6_u7"
@@ -3609,6 +3891,8 @@ msgstr "Anmeldt af {reporter}"
 #: src/features/admin/components/abuse/abuse-case-detail.tsx
 #: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
 #: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
 msgctxt "hkENym"
 msgid "Customer"
 msgstr "Kunde"
@@ -3722,6 +4006,7 @@ msgstr "Ingen — denne sag blev ikke åbnet af en anmeldelse."
 
 #: src/features/admin/components/abuse/abuse-case-detail.tsx
 #: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "ADKsID"
 msgid "Opened"
 msgstr "Åbnet"
@@ -3748,6 +4033,7 @@ msgstr "Berørte servere"
 
 #: src/features/admin/components/abuse/abuse-case-detail.tsx
 #: src/features/admin/components/proxmox-templates/template-settings.tsx
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
 msgctxt "450Fty"
 msgid "None"
 msgstr "Ingen"
@@ -3820,6 +4106,8 @@ msgstr "Flyt til"
 #: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
 #: src/features/admin/components/emails/emails-table/columns.tsx
 #: src/features/admin/components/integrations/integration-health-panel.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgctxt "tzMNF3"
 msgid "Status"
@@ -4470,6 +4758,7 @@ msgid "No templates are defined yet."
 msgstr "Der er endnu ikke defineret nogen skabeloner."
 
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "XPruqs"
 msgid "Order"
 msgstr "Rækkefølge"
@@ -4688,6 +4977,8 @@ msgid "Email preview"
 msgstr "Forhåndsvisning af e-mail"
 
 #: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
 msgctxt "LLtKhp"
 msgid "Subject"
 msgstr "Emne"
@@ -4773,6 +5064,7 @@ msgid "Stored encrypted and never shown again. Leave a field blank to keep its c
 msgstr "Gemmes krypteret og vises aldrig igen. Lad et felt stå tomt for at beholde den nuværende værdi."
 
 #: src/features/admin/components/integrations/integrations-hub.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "iYc3Ld"
 msgid "Payments"
 msgstr "Betalinger"
@@ -5346,11 +5638,6 @@ msgid "Re-download after"
 msgstr "Download igen efter"
 
 #: src/features/admin/components/proxmox-templates/template-settings.tsx
-msgctxt "lKv8ex"
-msgid "Default"
-msgstr "Standard"
-
-#: src/features/admin/components/proxmox-templates/template-settings.tsx
 msgctxt "n8cyVk"
 msgid "Operating system"
 msgstr "Operativsystem"
@@ -5535,6 +5822,256 @@ msgstr ""
 msgctxt "PLUhm9"
 msgid "VLAN ID"
 msgstr "VLAN-id"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "SKenPE"
+msgid "Renewal history"
+msgstr "Fornyelseshistorik"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "oS8byb"
+msgid "Every period this subscription has tried to collect, newest first. The decline code is the provider's own, stored exactly as it was returned."
+msgstr "Hver periode, dette abonnement har forsøgt at opkræve, nyeste først. Afvisningskoden er udbyderens egen og gemmes præcis, som den blev returneret."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "jgEHx0"
+msgid "No renewals yet"
+msgstr "Ingen fornyelser endnu"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "kuTig1"
+msgid "Nothing has fallen due on this subscription. A row appears here the moment a period is claimed for collection."
+msgstr "Der er ikke forfaldet noget på dette abonnement. Der vises en række her, så snart en periode tages til opkrævning."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "jCNpEL"
+msgid "Period"
+msgstr "Periode"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
+msgctxt "_0TOL5"
+msgid "Amount"
+msgstr "Beløb"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "fVG1Ff"
+msgid "Attempt"
+msgstr "Forsøg"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "DnMTTO"
+msgid "Decline code"
+msgstr "Afvisningskode"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "r68Vd2"
+msgid "Next attempt"
+msgstr "Næste forsøg"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "4GVMfk"
+msgid "The charges behind those renewals, reached through the orders they produced. The transaction id is what to look up with the provider."
+msgstr "De træk, der ligger bag disse fornyelser, nået via de ordrer, de gav anledning til. Transaktions-id'et er det, du slår op hos udbyderen."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "5_cvkc"
+msgid "No payments recorded"
+msgstr "Ingen betalinger registreret"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "P1SIjh"
+msgid "No renewal on this subscription has reached a charge yet, so there is nothing to look up with the provider."
+msgstr "Ingen fornyelse på dette abonnement er nået til et træk endnu, så der er intet at slå op hos udbyderen."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "xaj9Ba"
+msgid "Provider"
+msgstr "Udbyder"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "92e4Pu"
+msgid "Transaction id"
+msgstr "Transaktions-id"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "ORGv1Q"
+msgid "Created"
+msgstr "Oprettet"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "7Sb0xt"
+msgid "{amount} refunded"
+msgstr "{amount} refunderet"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "nQHVOl"
+msgid "Payment methods on file"
+msgstr "Gemte betalingsmetoder"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "zT_kqh"
+msgid "Display material only. The credential token these point at is never shown."
+msgstr "Kun til visning. Det legitimationstoken, disse peger på, vises aldrig."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "VvlhCa"
+msgid "Nothing on file"
+msgstr "Intet gemt"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "4epRjy"
+msgid "This customer has no stored credential, so an automatic renewal has nothing to charge."
+msgstr "Denne kunde har ingen gemt legitimation, så en automatisk fornyelse har intet at trække på."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "AaiUD0"
+msgid "no last four"
+msgstr "ingen sidste fire"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "l0VcDL"
+msgid "expires {month}/{year}"
+msgstr "udløber {month}/{year}"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "XJ5FR9"
+msgid "Named"
+msgstr "Angivet"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "2im1Il"
+msgid "Detached"
+msgstr "Afkoblet"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "rBcVFE"
+msgid "Invalid since {date}"
+msgstr "Ugyldig siden {date}"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "yrIdiE"
+msgid "Auto-renew on"
+msgstr "Automatisk fornyelse til"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "zzzrqz"
+msgid "Auto-renew off"
+msgstr "Automatisk fornyelse fra"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "KsFKQy"
+msgid "No mandate"
+msgstr "Intet mandat"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "AXyFb3"
+msgid "Gone — the subject no longer exists"
+msgstr "Væk — objektet findes ikke længere"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "3uJDrU"
+msgid "Current period"
+msgstr "Nuværende periode"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/servers/components/server-graphs.tsx
+msgctxt "6m3w-3"
+msgid "Interval"
+msgstr ""
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "GM3YzV"
+msgid "{months} months"
+msgstr "{months} måneder"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "cK9cxa"
+msgid "Agreed price"
+msgstr "Aftalt pris"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "IfymNN"
+msgid "{amount} on renewal"
+msgstr "{amount} ved fornyelse"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "se3ldP"
+msgid "{amount} at signup"
+msgstr "{amount} ved oprettelse"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "ODSPeV"
+msgid "What was agreed at signup. A renewal is quoted from the price locked to the server."
+msgstr "Det, der blev aftalt ved oprettelsen. En fornyelse prissættes ud fra den pris, der er låst til serveren."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "AQZ9EK"
+msgid "Mandate"
+msgstr "Mandat"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "SsoKGP"
+msgid "wording {version}"
+msgstr "ordlyd {version}"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "eTs2vO"
+msgid "No consent recorded to charge off-session."
+msgstr "Der er ikke registreret samtykke til at trække betaling, uden at kunden er til stede."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "3wsVWF"
+msgid "Cancelled"
+msgstr "Opsagt"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "TP_cMX"
+msgid "Ended"
+msgstr "Afsluttet"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "WqaNWU"
+msgid "This page is read-only. Retrying a collection, granting time or cancelling all happen elsewhere."
+msgstr "Denne side er skrivebeskyttet. Nyt opkrævningsforsøg, forlængelse af frist og opsigelse sker andre steder."
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "laPj3K"
+msgid "Search by server, customer or id..."
+msgstr "Søg efter server, kunde eller id..."
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "WZ-2C3"
+msgid "Period ends"
+msgstr "Perioden slutter"
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "KSguPh"
+msgid "every {months} months"
+msgstr "hver {months}. måned"
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "evMlX9"
+msgid "Auto-renew"
+msgstr "Automatisk fornyelse"
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "Zh-5A6"
+msgid "On"
+msgstr "Til"
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "OvzONl"
+msgid "Off"
+msgstr "Fra"
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "pGCLGL"
+msgid "Recorded"
+msgstr "Registreret"
 
 #: src/features/admin/components/users/users-table/columns.tsx
 msgctxt "BzHQ0A"
@@ -5779,7 +6316,6 @@ msgid "If left blank, a secure random password will be generated and sent by ema
 msgstr "Hvis det efterlades tomt, vil en sikker tilfældig adgangskode blive genereret og sendt via e-mail."
 
 #: src/features/checkout/components/checkout-form.tsx
-#: src/features/servers/components/plan/plan-summary.tsx
 msgctxt "-g-0OK"
 msgid "Continue to payment"
 msgstr "Fortsæt med betaling"
@@ -5837,8 +6373,7 @@ msgstr "om måneden"
 
 #: src/features/checkout/components/offer-card.tsx
 #: src/features/checkout/components/order-summary.tsx
-#: src/features/servers/components/plan/plan-radio-group.tsx
-#: src/features/servers/components/plan/plan-summary.tsx
+#: src/features/servers/components/plan/plan-specs.tsx
 #: src/features/servers/components/servers-list.tsx
 msgctxt "BGI16m"
 msgid "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
@@ -5882,7 +6417,7 @@ msgid "Configure now"
 msgstr "Konfigurer nu"
 
 #: src/features/checkout/components/offer-card.tsx
-#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/plan-list.tsx
 msgctxt "spsPUc"
 msgid "Sold out"
 msgstr "Udsolgt"
@@ -5908,11 +6443,6 @@ msgid "Used for invoicing and VAT calculation."
 msgstr "Anvendes til fakturering og momsberegning."
 
 #: src/features/checkout/components/stripe-payment-form.tsx
-msgctxt "BVTni9"
-msgid "Payment method"
-msgstr "Betalingsmetode"
-
-#: src/features/checkout/components/stripe-payment-form.tsx
 msgctxt "11yeGk"
 msgid "Payments are securely processed by Stripe."
 msgstr "Betalinger behandles sikkert af Stripe."
@@ -5923,11 +6453,13 @@ msgid "Payment could not be completed"
 msgstr "Betalingen kunne ikke gennemføres"
 
 #: src/features/checkout/components/stripe-payment-form.tsx
+#: src/features/servers/components/plan/plan-order-dialog.tsx
 msgctxt "ddCkDY"
 msgid "Processing payment…"
 msgstr "Behandler betaling..."
 
 #: src/features/checkout/components/stripe-payment-form.tsx
+#: src/features/servers/components/plan/plan-order-dialog.tsx
 msgctxt "7tOz-m"
 msgid "Pay now"
 msgstr "Betal nu"
@@ -5993,6 +6525,7 @@ msgid "Expired (will be deleted {date})"
 msgstr "Udløbet (vil blive slettet {date})"
 
 #: src/features/dashboard/components/server-status-small.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
 #: src/features/servers/hooks/use-status-mapping.ts
 msgctxt "oJsHQW"
 msgid "Suspended"
@@ -6022,11 +6555,6 @@ msgstr "Fakturanummer"
 msgctxt "cIAuzz"
 msgid "Search invoice number..."
 msgstr "Søg fakturanummer..."
-
-#: src/features/invoices/components/invoices-table/columns.tsx
-msgctxt "_0TOL5"
-msgid "Amount"
-msgstr "Beløb"
 
 #: src/features/invoices/components/invoices-table/columns.tsx
 msgctxt "dULmbA"
@@ -6435,6 +6963,203 @@ msgctxt "pFmRJS"
 msgid "Should the backup be restored?"
 msgstr "Skal sikkerhedskopien gendannes?"
 
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "tYBzXd"
+msgid "Automatic renewal"
+msgstr "Automatisk fornyelse"
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "3d6fWf"
+msgid "Your server renews by itself. We charge {price} at the end of each term."
+msgstr "Din server fornyes af sig selv. Vi trækker {price} ved udgangen af hver periode."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "Owt71Z"
+msgid "Your server renews by itself at the end of each term."
+msgstr "Din server fornyes af sig selv ved udgangen af hver periode."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "DTMKLg"
+msgid "Your server will not renew by itself. It stops at the end of the current term unless you extend it."
+msgstr "Din server fornyes ikke af sig selv. Den standser ved udgangen af den nuværende periode, medmindre du forlænger den."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "bByVFS"
+msgid "Resume this subscription before turning automatic renewal back on."
+msgstr "Genoptag dette abonnement, før du slår automatisk fornyelse til igen."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "fANfrY"
+msgid "This subscription can no longer renew."
+msgstr "Dette abonnement kan ikke længere fornyes."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "Up6lw2"
+msgid "The payment method we would charge cannot be used. Pick a different default on the payment methods page, then turn automatic renewal on."
+msgstr "Den betalingsmetode, vi ville trække på, kan ikke bruges. Vælg en anden standard på siden med betalingsmetoder, og slå derefter automatisk fornyelse til."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "4wd5lv"
+msgid "Add a payment method first. Automatic renewal needs a card we can charge when your term ends."
+msgstr "Tilføj først en betalingsmetode. Automatisk fornyelse kræver et kort, vi kan trække på, når din periode udløber."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "99eSnZ"
+msgid "Manage payment methods"
+msgstr "Administrer betalingsmetoder"
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "zdTT0e"
+msgid "Cancelling your subscription"
+msgstr "Opsigelse af dit abonnement"
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "UaMo5U"
+msgid "Confirm that you want to cancel this subscription."
+msgstr "Bekræft, at du vil opsige dette abonnement."
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "orvpWh"
+msgid "Go back"
+msgstr "Gå tilbage"
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "LhY9Hz"
+msgid "Cancel subscription now"
+msgstr "Opsig abonnementet nu"
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "Hcq5-Y"
+msgid "The subscription for {name} will be cancelled."
+msgstr "Abonnementet for {name} bliver opsagt."
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "LQS043"
+msgid "This subscription will be cancelled."
+msgstr "Dette abonnement bliver opsagt."
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "SWNin3"
+msgid "Your server keeps running until {date}, the end of the term you have already paid for. Nothing is switched off today and you will not be charged again."
+msgstr "Din server kører videre indtil {date}, som er udgangen af den periode, du allerede har betalt for. Der slukkes ikke for noget i dag, og du bliver ikke trukket igen."
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "zbAQsT"
+msgid "After {date} the server is not renewed and is shut down."
+msgstr "Efter den {date} fornyes serveren ikke og lukkes ned."
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "5SyDDF"
+msgid "Subscription cancelled"
+msgstr "Abonnementet er opsagt"
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "vU7iFi"
+msgid "Your server keeps running until {date} and will not be renewed."
+msgstr "Din server kører videre indtil {date} og bliver ikke fornyet."
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "wIfHh6"
+msgid "The paid-for term ended on {date}."
+msgstr "Den betalte periode sluttede den {date}."
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "9CnHy1"
+msgid "Resume subscription"
+msgstr "Genoptag abonnement"
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "5kfntb"
+msgid "Cancellation"
+msgstr "Opsigelse"
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "mYShCs"
+msgid "Your server keeps running until {date}. Cancelling only stops it being renewed after that."
+msgstr "Din server kører videre indtil {date}. En opsigelse betyder kun, at den ikke fornyes derefter."
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "UWVETE"
+msgid "Cancel subscription"
+msgstr "Opsig abonnement"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "HS8EXa"
+msgid "{price} every month"
+msgstr "{price} hver måned"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "GmZa3s"
+msgid "{price} every {months} months"
+msgstr "{price} hver {months}. måned"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "lVjU8T"
+msgid "your saved payment method"
+msgstr "din gemte betalingsmetode"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "x36plV"
+msgid "Agree to automatic payments"
+msgstr "Godkend automatiske betalinger"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "AwY5G0"
+msgid "Read and accept the terms under which Virtbase may charge your saved payment method."
+msgstr "Læs og accepter de vilkår, hvorunder Virtbase må trække på din gemte betalingsmetode."
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "vVdCCw"
+msgid "Agree and turn on automatic renewal"
+msgstr "Accepter og slå automatisk fornyelse til"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "Wi3JqI"
+msgid "Virtbase will charge {cadence} to {card}, starting on {date} when your current term ends."
+msgstr "Virtbase trækker {cadence} fra {card} fra og med den {date}, hvor din nuværende periode udløber."
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "Bs-2A3"
+msgid "This happens automatically. You will not be asked to approve each payment and you do not have to do anything for your server to keep running. If the price of your plan changes, we will tell you before the next payment."
+msgstr "Det sker automatisk. Du bliver ikke bedt om at godkende hver enkelt betaling, og du skal ikke gøre noget for, at din server bliver ved med at køre. Ændres prisen på din plan, giver vi dig besked inden næste betaling."
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "8HQobB"
+msgid "You can turn automatic renewal off again at any time with the switch you just used, and you can end the subscription altogether with the “Cancel subscription” button on this page. Either way, your server keeps running until the end of the term you have already paid for."
+msgstr "Du kan når som helst slå automatisk fornyelse fra igen med den kontakt, du lige brugte, og du kan afslutte abonnementet helt med knappen “Opsig abonnement” på denne side. Uanset hvad kører din server videre til udgangen af den periode, du allerede har betalt for."
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "SCQaYd"
+msgid "I agree that Virtbase may charge {cadence} to my saved payment method, automatically and without asking again, until I turn this off or cancel."
+msgstr "Jeg accepterer, at Virtbase må trække {cadence} fra min gemte betalingsmetode, automatisk og uden at spørge igen, indtil jeg slår dette fra eller opsiger."
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "Yqvd5-"
+msgid "Agreement version {version}"
+msgstr "Aftaleversion {version}"
+
+#: src/features/servers/components/billing/past-due-alert.tsx
+msgctxt "9k3Wi4"
+msgid "A payment for this server failed"
+msgstr "En betaling for denne server mislykkedes"
+
+#: src/features/servers/components/billing/past-due-alert.tsx
+msgctxt "XZ2cEy"
+msgid "We could not collect the payment for your next term. We will try again automatically over the coming days. If it keeps failing, your server is suspended after {date} and deleted once the grace period has passed."
+msgstr "Vi kunne ikke opkræve betalingen for din næste periode. Vi prøver automatisk igen i løbet af de kommende dage. Bliver den ved med at mislykkes, suspenderes din server efter den {date} og slettes, når henstandsperioden er udløbet."
+
+#: src/features/servers/components/billing/past-due-alert.tsx
+msgctxt "Ty5fKl"
+msgid "If you have just replaced your payment method, you do not have to wait for the next attempt."
+msgstr "Har du lige udskiftet din betalingsmetode, behøver du ikke vente på næste forsøg."
+
+#: src/features/servers/components/billing/past-due-alert.tsx
+msgctxt "f6dOFt"
+msgid "Retry now"
+msgstr "Prøv igen nu"
+
 #: src/features/servers/components/console/console-frame.tsx
 msgctxt "lptya2"
 msgid "Server is suspended"
@@ -6600,113 +7325,333 @@ msgctxt "lxp8MB"
 msgid "Taken from the template this server was created from. Install the {packageName} package to have Virtbase read the operating system from inside the server."
 msgstr "Taget fra den skabelon, denne server blev oprettet ud fra. Installér pakken {packageName}, så Virtbase kan læse styresystemet inde fra din server."
 
-#: src/features/servers/components/plan/plan-form.tsx
-msgctxt "Kng3Em"
-msgid "Select a new plan or extend your current plan. Downgrading to a smaller storage plan is not supported."
-msgstr "Vælg en ny plan, eller forlæng din nuværende plan. Nedgradering til en mindre lagerplan understøttes ikke."
-
-#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
+#: src/features/servers/components/plan/plan-list.tsx
 #: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "tpfEY0"
-msgid "{memory} RAM"
-msgstr ""
-
-#: src/features/servers/components/plan/plan-radio-group.tsx
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "cenOuc"
-msgid "{storage} NVMe SSD"
-msgstr ""
-
-#: src/features/servers/components/plan/plan-radio-group.tsx
-msgctxt "uPG29C"
-msgid "{price} today"
-msgstr "{price} i dag"
-
-#: src/features/servers/components/plan/plan-radio-group.tsx
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "9H3YQm"
-msgid "then {price} / month"
-msgstr "derefter {price} / måned"
-
-#: src/features/servers/components/plan/plan-radio-group.tsx
 msgctxt "JxjC5u"
 msgid "{price} / month"
 msgstr "{price} / måned"
 
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "aG7JgP"
-msgid "Downgrading to a smaller storage plan isn't supported. Pick a plan with at least {size} of storage."
-msgstr "Nedgradering til en mindre lagerplan understøttes ikke. Vælg en plan med mindst {size} lagerplads."
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "3XuHC5"
-msgid "{name} is sold out right now. Try again later or pick a different plan."
-msgstr "{name} er udsolgt lige nu. Prøv igen senere, eller vælg en anden plan."
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "1p9GGF"
-msgid "This plan is sold out. Please pick a different plan."
-msgstr "Denne plan er udsolgt. Vælg venligst en anden plan."
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "fOZyRZ"
-msgid "Your current term has expired. Please renew your server first, then upgrade."
-msgstr "Din nuværende periode er udløbet. Forny først din server, og opgrader derefter."
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "ZjhoiP"
-msgid "Select a plan"
-msgstr "Vælg en plan"
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "SB__YQ"
-msgid "Order summary"
-msgstr "Ordreoversigt"
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "RrCui3"
-msgid "Summary"
-msgstr "Oversigt"
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "6WPC9q"
-msgid "Plan change"
-msgstr "Planændring"
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "kkpP2k"
-msgid "today"
-msgstr "i dag"
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "Vn2ud4"
-msgid "/ month"
-msgstr "/ måned"
-
+#: src/features/servers/components/plan/current-plan-card.tsx
 #: src/features/servers/components/plan/plan-summary.tsx
 msgctxt "LQbES8"
 msgid "Incl. statutory VAT, if applicable"
 msgstr "Inkl. evt. lovpligtig moms"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "qV-TFm"
+msgid "Payment failed"
+msgstr "Betaling mislykkedes"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "CrEhnK"
+msgid "No end date"
+msgstr "Ingen slutdato"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "zvApHY"
+msgid "Ends on {date}"
+msgstr "Slutter den {date}"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "uk8hUQ"
+msgid "Runs until {date}, then ends"
+msgstr "Kører indtil {date} og slutter derefter"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "L7pwLO"
+msgid "Ended on {date}"
+msgstr "Sluttede den {date}"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "CkSYU4"
+msgid "Cancelled. It will not be renewed."
+msgstr "Opsagt. Den fornyes ikke."
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "mYEBl9"
+msgid "The server is suspended until this is paid."
+msgstr "Serveren er suspenderet, indtil dette er betalt."
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "TiBG0-"
+msgid "Renews automatically on {date}"
+msgstr "Fornyes automatisk den {date}"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "h5ziTq"
+msgid "Nothing renews by itself unless you turn it on below."
+msgstr "Intet fornyes af sig selv, medmindre du slår det til nedenfor."
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "g1lN9B"
+msgid "Automatic renewal is not set up"
+msgstr "Automatisk fornyelse er ikke sat op"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "US-mpc"
+msgid "This server is paid for one term at a time, so nothing is charged without you. It keeps running until {date} — extend it before then and it carries on."
+msgstr "Denne server betales én periode ad gangen, så der trækkes ikke noget uden dig. Den kører indtil {date} — forlæng den inden da, så fortsætter den."
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "se4Js1"
+msgid "This server is paid for one term at a time, so nothing is charged without you. Extend it below to keep it running."
+msgstr "Denne server betales én periode ad gangen, så der trækkes ikke noget uden dig. Forlæng den nedenfor for at holde den kørende."
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "6zkPH-"
+msgid "Extend or change your plan"
+msgstr "Forlæng eller skift din plan"
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "ktNrBh"
+msgid "Payment submitted. It can take a moment to go through."
+msgstr "Betalingen er sendt. Det kan tage et øjeblik, før den går igennem."
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "YTQMmP"
+msgid "Your bank wants you to confirm this payment. Check your banking app."
+msgstr "Din bank vil have dig til at bekræfte denne betaling. Tjek din bankapp."
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "80-bz2"
+msgid "The payment was declined again. We will try again automatically."
+msgstr "Betalingen blev afvist igen. Vi prøver automatisk igen."
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "SE531V"
+msgid "The payment was declined and there are no attempts left. Add a working payment method and extend the server."
+msgstr "Betalingen blev afvist, og der er ikke flere forsøg tilbage. Tilføj en betalingsmetode, der virker, og forlæng serveren."
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "NLD2EM"
+msgid "Nothing to retry right now."
+msgstr "Der er intet at prøve igen lige nu."
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "rnp477"
+msgid "Could not change automatic renewal."
+msgstr "Automatisk fornyelse kunne ikke ændres."
+
+#: src/features/servers/components/plan/plan-catalog.tsx
+msgctxt "_E4Era"
+msgid "An order is waiting to be paid"
+msgstr "En ordre venter på at blive betalt"
+
+#: src/features/servers/components/plan/plan-catalog.tsx
+msgctxt "IZp69Q"
+msgid "You closed the payment for {name} before it went through. Nothing has been charged and this server is still on its current plan."
+msgstr "Du lukkede betalingen for {name}, før den gik igennem. Der er ikke trukket noget, og denne server er stadig på sin nuværende plan."
+
+#: src/features/servers/components/plan/plan-catalog.tsx
+msgctxt "yg3np8"
+msgid "You closed a payment before it went through. Nothing has been charged and this server is still on its current plan."
+msgstr "Du lukkede en betaling, før den gik igennem. Der er ikke trukket noget, og denne server er stadig på sin nuværende plan."
+
+#: src/features/servers/components/plan/plan-catalog.tsx
+msgctxt "BoV-ik"
+msgid "Resume payment"
+msgstr "Genoptag betaling"
+
+#: src/features/servers/components/plan/plan-catalog.tsx
+msgctxt "j6UwBH"
+msgid "Discard it"
+msgstr "Kassér den"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "PEpK64"
+msgid "No plans available"
+msgstr "Ingen planer tilgængelige"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "EAyjS-"
+msgid "There is nothing to extend or upgrade to right now."
+msgstr "Der er intet at forlænge eller opgradere til lige nu."
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "r45xAO"
+msgid "Less storage than your plan"
+msgstr "Mindre lagerplads end din plan"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "uPG29C"
+msgid "{price} today"
+msgstr "{price} i dag"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "BLAy25"
+msgid "Extend"
+msgstr "Forlæng"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "0h_lPM"
+msgid "Upgrade"
+msgstr "Opgrader"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "ZBALng"
+msgid "Current plan"
+msgstr "Nuværende plan"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "nYOcNC"
+msgid "This plan has less storage than yours. Pick one with at least {size}."
+msgstr "Denne plan har mindre lagerplads end din. Vælg en med mindst {size}."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "3XuHC5"
+msgid "{name} is sold out right now. Try again later or pick a different plan."
+msgstr "{name} er udsolgt lige nu. Prøv igen senere, eller vælg en anden plan."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "2r_Ri2"
+msgid "This plan is sold out. Pick a different plan."
+msgstr "Denne plan er udsolgt. Vælg en anden plan."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "SA17Op"
+msgid "Your current term has expired. Renew your server first, then upgrade."
+msgstr "Din nuværende periode er udløbet. Forny først din server, og opgrader derefter."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "162kF7"
+msgid "Try again in a moment."
+msgstr "Prøv igen om et øjeblik."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "Ivyv4G"
+msgid "Complete your payment"
+msgstr "Gennemfør din betaling"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "vUdsUw"
+msgid "Extend {name}"
+msgstr "Forlæng {name}"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "wtdexo"
+msgid "Upgrade to {name}"
+msgstr "Opgrader til {name}"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "92pgFA"
+msgid "Extend for {price}"
+msgstr "Forlæng for {price}"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "fEC_2P"
+msgid "Upgrade for {price}"
+msgstr "Opgrader for {price}"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "JLzn_f"
+msgid "Pay for the order you just placed."
+msgstr "Betal for den ordre, du lige har afgivet."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "scgCv_"
+msgid "Extend your plan by one month."
+msgstr "Forlæng din plan med en måned."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "UAUyG-"
+msgid "Move this server onto a bigger plan."
+msgstr "Flyt denne server over på en større plan."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "So9-9-"
+msgid "Change plan"
+msgstr "Skift plan"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "YeQq19"
+msgid "Preparing checkout…"
+msgstr "Forbereder kassen..."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "f8Zxmj"
+msgid "The order could not be started"
+msgstr "Ordren kunne ikke startes"
+
+#: src/features/servers/components/plan/plan-specs.tsx
+msgctxt "tpfEY0"
+msgid "{memory} RAM"
+msgstr ""
+
+#: src/features/servers/components/plan/plan-specs.tsx
+msgctxt "cenOuc"
+msgid "{storage} NVMe SSD"
+msgstr ""
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgctxt "QUXFCm"
+msgid "Due today"
+msgstr "Til betaling i dag"
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgctxt "WnjgPN"
+msgid "From your next renewal"
+msgstr "Fra din næste fornyelse"
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgctxt "LR754a"
+msgid "Renews at"
+msgstr "Fornyes til"
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgctxt "mCArsW"
+msgid "Only the difference is charged today. Your term is unchanged."
+msgstr "Kun differencen trækkes i dag. Din periode er uændret."
 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgctxt "N387FB"
 msgid "Your current plan will be extended by one month."
 msgstr "Din nuværende plan vil blive forlænget med en måned."
 
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "6Mawmq"
-msgid "The plan will be changed to {name}. You only pay the prorated difference today — your current term stays the same."
-msgstr "Planen ændres til {name}. Du betaler kun den forholdsmæssige forskel i dag — din nuværende periode forbliver den samme."
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "AiQP5M"
+msgid "Add a payment method"
+msgstr "Tilføj en betalingsmetode"
 
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "So9-9-"
-msgid "Change plan"
-msgstr "Skift plan"
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "6NfKWq"
+msgid "None chosen"
+msgstr "Ingen valgt"
 
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "YeQq19"
-msgid "Preparing checkout…"
-msgstr "Forbereder kassen..."
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "Mjlx26"
+msgid "A renewal has nothing to charge until you choose a card."
+msgstr "En fornyelse har intet at trække på, før du vælger et kort."
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "BY343C"
+msgid "Change"
+msgstr "Skift"
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "Ob6Cyo"
+msgid "Charged when this server renews."
+msgstr "Trækkes, når denne server fornyes."
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "hPxO4K"
+msgid "Expired {date}. Replace it or the next renewal fails."
+msgstr "Udløbet {date}. Udskift det, ellers mislykkes næste fornyelse."
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "ZIzf2A"
+msgid "This card has expired. The next renewal will fail."
+msgstr "Dette kort er udløbet. Næste fornyelse vil mislykkes."
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "IODZRQ"
+msgid "Your bank withdrew permission to charge this card. The next renewal will fail."
+msgstr "Din bank har tilbagekaldt tilladelsen til at trække på dette kort. Næste fornyelse vil mislykkes."
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "zDOS2t"
+msgid "Your bank refused this card. The next renewal will fail until you choose another."
+msgstr "Din bank afviste dette kort. Næste fornyelse vil mislykkes, indtil du vælger et andet."
 
 #: src/features/servers/components/rdns/delete-record-dialog.tsx
 #: src/features/servers/components/rdns/records-table/columns.tsx
@@ -6880,11 +7825,6 @@ msgstr "Maks"
 msgctxt "Arxl88"
 msgid "Outgoing"
 msgstr "Udgående"
-
-#: src/features/servers/components/server-graphs.tsx
-msgctxt "6m3w-3"
-msgid "Interval"
-msgstr ""
 
 #: src/features/servers/components/server-mount-badge.tsx
 msgctxt "Han16c"
@@ -7352,6 +8292,21 @@ msgstr "Sikkerhedskopien kunne ikke gendannes."
 msgctxt "GwAFh4"
 msgid "Could not update the backup."
 msgstr "Sikkerhedskopien kunne ikke opdateres."
+
+#: src/features/servers/hooks/billing/use-cancel-subscription.ts
+msgctxt "fAsW3r"
+msgid "Could not cancel the subscription."
+msgstr "Abonnementet kunne ikke opsiges."
+
+#: src/features/servers/hooks/billing/use-resume-subscription.ts
+msgctxt "YTM7YS"
+msgid "Could not resume the subscription."
+msgstr "Abonnementet kunne ikke genoptages."
+
+#: src/features/servers/hooks/billing/use-retry-renewal.ts
+msgctxt "wjP1kX"
+msgid "Could not retry the payment."
+msgstr "Betalingen kunne ikke forsøges igen."
 
 #: src/features/servers/hooks/overview/use-change-template.ts
 msgctxt "8g0ePs"
