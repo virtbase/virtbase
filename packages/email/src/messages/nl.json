@@ -197,6 +197,51 @@
     "greeting": "Hoi {name}!",
     "viewButton": "Details bekijken"
   },
+  "payment-decline-reason": {
+    "expiredCard": "De bij ons opgeslagen kaart is verlopen.",
+    "insufficientFunds": "Er was niet genoeg saldo beschikbaar voor de betaling.",
+    "cardDetails": "De kaartgegevens die wij hebben opgeslagen zijn niet geaccepteerd.",
+    "noPaymentMethod": "Er is geen betaalmethode op je account opgeslagen die wij kunnen belasten.",
+    "cardUnusable": "De bij ons opgeslagen betaalmethode kan niet meer worden gebruikt.",
+    "authenticationExpired": "De betaling moest bij je bank worden bevestigd en het tijdvenster daarvoor is verlopen.",
+    "temporary": "De betaling kon niet worden verwerkt. Dit soort problemen lost zich meestal vanzelf op.",
+    "declinedByBank": "Je bank heeft de betaling geweigerd. De reden geeft zij ons niet, alleen zij kan die vertellen.",
+    "unknown": "De betaling is niet gelukt en er is ons geen reden gegeven. Meestal gaat het om een tijdelijke blokkade en niet om iets mis met je account."
+  },
+  "renewal-payment-failed": {
+    "title": "We konden de betaling voor je server niet innen",
+    "preview": "We konden de betaling voor {serverName} niet innen",
+    "heading": "We konden de betaling voor je server niet innen",
+    "greeting": "Hoi {name}!",
+    "description": "We hebben geprobeerd <strong>{amount}</strong> af te schrijven om <strong>{serverName}</strong> te verlengen, en de betaling is niet gelukt.",
+    "card": "We hebben de kaart gebruikt die eindigt op {last4} ({brand}).",
+    "nextAttempt": "We proberen het opnieuw op <strong>{date}</strong>. Werk je je betaalmethode daarvoor bij, dan gebruiken we de nieuwe.",
+    "reassurance": "<strong>{serverName} draait nog steeds</strong> en er is niets verwijderd. Er is tijd om dit op te lossen.",
+    "updatePaymentButton": "Betaalmethode bijwerken"
+  },
+  "renewal-final-warning": {
+    "title": "Je server wordt op {date} opgeschort",
+    "preview": "{serverName} wordt opgeschort als de betaling niet lukt",
+    "heading": "Je server wordt binnenkort opgeschort",
+    "greeting": "Hoi {name}!",
+    "description": "We hebben <strong>{amount}</strong> voor de verlenging van <strong>{serverName}</strong> nog steeds niet kunnen innen.",
+    "card": "We hebben de kaart gebruikt die eindigt op {last4} ({brand}).",
+    "lastAttempt": "We doen op {date} <strong>een laatste poging</strong>.",
+    "noFurtherAttempt": "<strong>We proberen deze betaalmethode niet opnieuw.</strong> Je bank heeft ons laten weten dat er niet van kan worden afgeschreven, dus er gebeurt niets meer totdat je een andere toevoegt.",
+    "deadline": "Als de betaling niet wordt voldaan, wordt <strong>{serverName}</strong> op <strong>{date}</strong> opgeschort en uitgeschakeld.",
+    "retention": "Je gegevens worden daarna nog <strong>{days} dagen</strong> bewaard. Staat de betaling dan nog open, dan worden de server en alles wat erop staat definitief verwijderd en kunnen ze niet worden hersteld.",
+    "updatePaymentButton": "Betaalmethode bijwerken"
+  },
+  "payment-method-invalid": {
+    "title": "Je betaalmethode moet worden vervangen",
+    "preview": "Je opgeslagen betaalmethode kan niet meer worden gebruikt",
+    "heading": "Je betaalmethode moet worden vervangen",
+    "greeting": "Hoi {name}!",
+    "descriptionCard": "De op je account opgeslagen <strong>kaart die eindigt op {last4}</strong> ({brand}) kan niet meer worden gebruikt voor betalingen.",
+    "description": "De betaalmethode die op je account is opgeslagen kan niet meer worden gebruikt voor betalingen.",
+    "hint": "Een nieuwe toevoegen kost een minuut en zorgt ervoor dat je servers zonder onderbreking worden verlengd. Tot die tijd mislukt elke verlenging die vervalt.",
+    "updatePaymentButton": "Betaalmethode toevoegen"
+  },
   "footer": {
     "thisEmailWasIntendedFor": "Deze e-mail was bedoeld voor <strong>{email}</strong>.",
     "securityConcerns": "Als je deze e-mail niet verwachtte, kun je hem negeren. Als je je zorgen maakt over de veiligheid van je account, <link>neem dan contact op om het ons te laten weten</link>.",
