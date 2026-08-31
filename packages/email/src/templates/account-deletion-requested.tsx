@@ -73,7 +73,7 @@ export default async function AccountDeletionRequested({
       <Preview>{t("preview")}</Preview>
       <Tailwind>
         <Body className="mx-auto my-auto bg-white font-sans">
-          <Container className="mx-auto my-10 max-w-[600px] rounded border border-neutral-200 border-solid px-10 py-5">
+          <Container className="mx-auto my-10 max-w-150 rounded border border-neutral-200 border-solid px-10 py-5">
             <Section className="mt-8">
               <Img src={VIRTBASE_WORDMARK} height="32" alt={APP_NAME} />
             </Section>

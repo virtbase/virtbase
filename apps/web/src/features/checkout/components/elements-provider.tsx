@@ -32,12 +32,28 @@ const stripePromise = loadStripe(
   process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY || "",
 );
 
+/**
+ * A SetupIntent secret, which is confirmed rather than paid.
+ *
+ * Stripe prefixes its client secrets by intent type. The account page saves a
+ * credential without charging it, so there is no amount to look up and no
+ * custom payment method to offer - crypto cannot be stored for a later
+ * renewal.
+ */
+const isSetupIntent = (clientSecret: string) =>
+  clientSecret.startsWith("seti_");
+
 export function ElementsProvider({
   children,
   customerSessionClientSecret,
   clientSecret,
 }: PropsWithChildren<{
-  customerSessionClientSecret: string;
+  /**
+   * Optional: only a checkout has a customer session behind it. Saving a card
+   * from the account page mounts the same Elements without one.
+   */
+  customerSessionClientSecret?: string;
+  /** A PaymentIntent secret when paying, a SetupIntent secret when saving. */
   clientSecret: string;
 }>) {
   const t = useExtracted();
@@ -46,6 +62,14 @@ export function ElementsProvider({
   const [amount, setAmount] = useState<number | null>(null);
 
   useEffect(() => {
+    if (isSetupIntent(clientSecret)) {
+      // Nothing is being charged, so there is no amount and the anonpay
+      // threshold below can never be met. Asking Stripe for a PaymentIntent
+      // with a SetupIntent secret is a request that only ever fails.
+      setAmount(0);
+      return;
+    }
+
     let cancelled = false;
     void (async () => {
       try {
@@ -86,7 +110,7 @@ export function ElementsProvider({
               ],
             }
           : {}),
-        customerSessionClientSecret,
+        ...(customerSessionClientSecret ? { customerSessionClientSecret } : {}),
         clientSecret,
         fonts: [
           {

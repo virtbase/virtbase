@@ -24,7 +24,12 @@ type RecordErasureStepParams = {
   reason: "inactivity" | "user_request" | "admin_request";
   startedAt: string;
   destroyed: Record<string, number>;
-  retained: { invoices: number; orders: number; payments: number };
+  retained: {
+    invoices: number;
+    orders: number;
+    payments: number;
+    subscriptions: number;
+  };
 };
 
 /**
@@ -63,6 +68,11 @@ export async function recordErasureStep({
       },
       payments: {
         count: retained.payments,
+        basis: "statutory-retention",
+        untilYear,
+      },
+      subscriptions: {
+        count: retained.subscriptions,
         basis: "statutory-retention",
         untilYear,
       },

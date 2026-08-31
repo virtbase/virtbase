@@ -15,7 +15,15 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { afterAll, beforeAll, describe, expect, mock, test } from "bun:test";
+import {
+  afterAll,
+  beforeAll,
+  beforeEach,
+  describe,
+  expect,
+  mock,
+  test,
+} from "bun:test";
 import { eq } from "@virtbase/db";
 import * as schema from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
@@ -42,6 +50,20 @@ class ForcedRollback extends Error {}
  * abort without having to fake an impossible database.
  */
 let rollbackNextTransaction = false;
+
+/**
+ * Whether the post-commit `transitionSubjectSubscription` should throw.
+ *
+ * It is the real function otherwise, so the test that asserts a subscription
+ * actually ends still exercises the real transition. What it stands in for is
+ * anything that can fail *after* the deletion has committed - a pool timeout,
+ * a lock on the subscription row - which is a failure of a call the deletion no
+ * longer depends on.
+ */
+let failTransition = false;
+
+/** How many times the step reached `revalidateCheckout()`. */
+let revalidations = 0;
 
 beforeAll(async () => {
   db = await createTestDb();
@@ -72,6 +94,33 @@ beforeAll(async () => {
   });
 
   mock.module("@virtbase/db/client", () => ({ db: client }));
+
+  // Imported before it is mocked, and the real function held in a local rather
+  // than read off the namespace: `mock.module` rebinds the namespace, so
+  // delegating through it calls the mock and recurses until the stack is gone.
+  const subjectSubscription = await import(
+    "../../../subscriptions/subject-subscription"
+  );
+  const realTransition = subjectSubscription.transitionSubjectSubscription;
+
+  mock.module("../../../subscriptions/subject-subscription", () => ({
+    ...subjectSubscription,
+    transitionSubjectSubscription: async (
+      ...args: Parameters<typeof realTransition>
+    ) => {
+      if (failTransition) {
+        throw new Error("timeout acquiring a connection from the pool");
+      }
+      return realTransition(...args);
+    },
+  }));
+
+  mock.module("../../shared/revalidate-checkout", () => ({
+    revalidateCheckout: () => {
+      revalidations++;
+    },
+  }));
+
   ({ storeServerDeletionStep } = await import("../store-server-deletion"));
 
   await seedServerGraph(db);
@@ -105,6 +154,11 @@ const readAllocation = () =>
 
 const countServers = () =>
   db.$count(schema.servers, eq(schema.servers.id, mockServer.id));
+
+beforeEach(() => {
+  failTransition = false;
+  revalidations = 0;
+});
 
 describe("storeServerDeletionStep", () => {
   test("the deallocation is part of the deletion transaction", async () => {
@@ -150,5 +204,103 @@ describe("storeServerDeletionStep", () => {
     // What matters is that it was deallocated in the same transaction rather
     // than on a connection of its own.
     expect(allocation).toBeUndefined();
+  });
+
+  test("the server's subscription ends with it", async () => {
+    // [!] Nothing in the database does this. `subscriptions.subject_id` is
+    // deliberately not a foreign key - the billing history has to survive the
+    // machine - so a deletion that does not say so here leaves a live
+    // subscription pointing at a server that no longer exists, which is a
+    // standing instruction to charge for nothing.
+    await seedServerGraph(db);
+
+    const [subscription] = await db
+      .insert(schema.subscriptions)
+      .values({
+        userId: mockServer.userId,
+        subjectId: mockServer.id,
+        serverPlanPriceId: mockServer.serverPlanPriceId,
+        currentPeriodStart: new Date("2026-01-15T00:00:00.000Z"),
+        currentPeriodEnd: new Date("2026-02-15T00:00:00.000Z"),
+        status: "past_due",
+      })
+      .returning();
+
+    await storeServerDeletionStep({ serverId: mockServer.id });
+
+    const [after] = await db
+      .select()
+      .from(schema.subscriptions)
+      .where(eq(schema.subscriptions.id, subscription?.id ?? ""));
+
+    expect(after?.status).toBe("ended");
+    expect(after?.endedAt).not.toBeNull();
+    expect(after?.cancelReason).toBe("server_deleted");
+    // The row itself stays: it is what a dispute over the last renewal is
+    // argued from.
+    expect(after?.subjectId).toBe(mockServer.id);
+  });
+
+  test("a server with no subscription deletes without one", async () => {
+    await seedServerGraph(db);
+
+    const result = await storeServerDeletionStep({ serverId: mockServer.id });
+
+    expect(result.serverName).toBe(mockServer.name);
+    expect(await db.$count(schema.subscriptions)).toBe(1);
+  });
+
+  test("a failure after the commit does not fail a deletion that worked", async () => {
+    // [!] The regression. `transitionSubjectSubscription` ran unguarded after
+    // the transaction had committed, so a pool timeout or a lock on the
+    // subscription row escaped the step. The workflow runtime then replayed it,
+    // the `DELETE ... RETURNING` matched nothing - the row is already gone -
+    // and `!deleted` raised `FatalError("Failed to store server deletion.")`,
+    // permanently failing a deletion that had actually succeeded and never
+    // reaching `revalidateCheckout()`.
+    await seedServerGraph(db);
+
+    const [subscription] = await db
+      .insert(schema.subscriptions)
+      .values({
+        userId: mockServer.userId,
+        subjectId: mockServer.id,
+        serverPlanPriceId: mockServer.serverPlanPriceId,
+        currentPeriodStart: new Date("2026-01-15T00:00:00.000Z"),
+        currentPeriodEnd: new Date("2026-02-15T00:00:00.000Z"),
+        status: "past_due",
+      })
+      .returning();
+
+    failTransition = true;
+
+    const result = await storeServerDeletionStep({ serverId: mockServer.id });
+
+    expect(result.serverName).toBe(mockServer.name);
+    expect(await countServers()).toBe(0);
+    // Still reached, so the checkout listing is not left holding a plan for a
+    // server that no longer exists.
+    expect(revalidations).toBe(1);
+
+    // The failure really did happen: the subscription is untouched, which is
+    // the visible, repairable state the crons and `claimRenewal` already
+    // tolerate - and the same call from `/api/cron/delete-suspended-servers`
+    // and `/api/cron/suspend-terminated-servers` runs before this one anyway.
+    const [after] = await db
+      .select()
+      .from(schema.subscriptions)
+      .where(eq(schema.subscriptions.id, subscription?.id ?? ""));
+
+    expect(after?.status).toBe("past_due");
+  });
+
+  test("a replay of the step after such a failure is not needed", async () => {
+    // The corollary, and why swallowing is the right call rather than merely a
+    // convenient one: the step is not idempotent. Running it a second time on
+    // a server that is already gone is exactly what the runtime used to do,
+    // and it is what raised the fatal error.
+    await expect(
+      storeServerDeletionStep({ serverId: mockServer.id }),
+    ).rejects.toThrow("Failed to store server deletion.");
   });
 });

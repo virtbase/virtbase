@@ -155,3 +155,56 @@ export const ACCOUNT_INACTIVITY_GRACE_PERIOD_DAYS = 30;
 
 /** How long before the deadline the second notice goes out. */
 export const ACCOUNT_INACTIVITY_REMINDER_DAYS = 7;
+
+/**
+ * When a declined renewal is charged again, in days from the first decline.
+ *
+ * Five attempts in all: the one that runs when the period falls due, then one
+ * at each of these offsets. After the last of them declines, the ladder is out
+ * of rungs and the subscription is suspended.
+ *
+ * The window is deliberately as long as the deletion grace period is short: a
+ * card that fails on the 1st is very often a card that works on the 8th - a
+ * replaced card, a topped-up account, a fraud hold cleared by a phone call -
+ * and every rung is a customer who keeps their server instead of losing it to
+ * a bank's Saturday. It stops at seven days because
+ * `SERVER_DELETION_GRACE_PERIOD_DAYS` is what governs after that, and dunning
+ * past the point where the machine is being deleted asks for money for
+ * something that will not exist.
+ *
+ * Offsets from the first decline rather than gaps between attempts, because
+ * that is the promise made to the customer in the emails: the schedule is
+ * absolute, not a function of when a worker happened to run.
+ */
+export const RENEWAL_RETRY_SCHEDULE_DAYS = [1, 3, 5, 7] as const;
+
+/**
+ * How long a renewal may wait for the customer to authenticate before it is
+ * treated as a declined attempt.
+ *
+ * 3-D Secure and a SEPA pre-notification both park a charge that nobody has
+ * refused, so this is not a decline and does not spend a rung while it runs.
+ * Three days is long enough to survive a weekend and short enough that the
+ * ladder still has rungs left afterwards.
+ */
+export const RENEWAL_AUTHENTICATION_WINDOW_HOURS = 72;
+
+/**
+ * How long a server whose term has run out is left running while automatic
+ * renewal is still trying to pay for it.
+ *
+ * `subscriptions.current_period_end` is written equal to `servers.terminates_at`,
+ * so both fall due in the same instant and `suspend-terminated-servers` would
+ * otherwise power the machine off within fifteen minutes — before the hourly
+ * renewal sweep has even looked at it, and while the customer's card is
+ * perfectly good. Worse, the suspension moves the subscription out of the only
+ * statuses a claim accepts, so the renewal would never be attempted at all.
+ *
+ * Derived from the ladder rather than written down twice: it is one day past
+ * the last rung, so a renewal system that has stopped running cannot hand out
+ * unbounded free service. Once dunning gives up, the subscription leaves
+ * `active`/`past_due` and the suspension sweep picks the server up on its very
+ * next run.
+ */
+export const RENEWAL_SUSPENSION_GRACE_DAYS =
+  Math.max(...RENEWAL_RETRY_SCHEDULE_DAYS) + 1;

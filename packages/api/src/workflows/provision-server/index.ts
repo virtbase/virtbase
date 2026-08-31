@@ -44,6 +44,10 @@ import {
   applyNetworkConfigStep,
   rollbackApplyNetworkConfigStep,
 } from "./apply-network-config";
+import {
+  createServerSubscriptionStep,
+  rollbackCreateServerSubscriptionStep,
+} from "./create-server-subscription";
 import { selectProxmoxNodeStep } from "./select-proxmox-node";
 import { sendServerReadyEmailStep } from "./send-server-ready-email";
 import {
@@ -223,6 +227,30 @@ export async function provisionServerWorkflow({
         serverId,
       }),
     );
+
+    // The server row exists and carries its term, so the subscription can be
+    // written against the same dates. Inert by construction - `autoRenew` is
+    // false and there is no mandate - see the step for why that is a decision
+    // rather than a default waiting to be flipped.
+    //
+    // [!] Swallowed, and compensated only once it has succeeded. The customer
+    // has paid, the guest is built and the row is written by this point; a
+    // bookkeeping row that failed to insert is recoverable later, while
+    // letting the throw reach the `catch` below would unwind the whole stack
+    // and destroy a paid-for server over it. Same reasoning as the ready email
+    // further down, and the same reason `extend-server` refuses to roll a
+    // paid term back over a mail outage.
+    try {
+      await createServerSubscriptionStep({ serverId });
+
+      rollbacks.push(() => rollbackCreateServerSubscriptionStep({ serverId }));
+    } catch (error) {
+      await reportSwallowedFailureStep({
+        workflow: "provisionServerWorkflow",
+        operation: "createServerSubscriptionStep",
+        reason: error instanceof Error ? error.message : String(error),
+      });
+    }
 
     const { upid: startUpid } = await performGuestActionStep({
       proxmoxNode: selectedNode,

@@ -17,6 +17,11 @@
 
 import * as Sentry from "@sentry/nextjs";
 import { handlePaymentIntentSucceeded } from "@virtbase/api/orders";
+import {
+  handlePaymentMethodAttached,
+  handlePaymentMethodDetached,
+  handleSetupIntentSucceeded,
+} from "@virtbase/api/payment-methods";
 import type { Stripe } from "@virtbase/integration-stripe";
 import { stripe } from "@virtbase/integration-stripe";
 import type { NextRequest } from "next/server";
@@ -53,6 +58,28 @@ export async function POST(req: NextRequest) {
     switch (event.type) {
       case "payment_intent.succeeded":
         await handlePaymentIntentSucceeded(event);
+        break;
+      // How a card saved at *checkout* arrives, which is the main way anyone
+      // saves one: the customer session is created with `payment_method_save`,
+      // so Stripe saves the card off the payment intent and attaches it - no
+      // setup intent is created and no setup-intent event is ever sent.
+      // Without this the billing page shows "no payment methods" to a customer
+      // who has a perfectly good card at Stripe.
+      case "payment_method.attached":
+        await handlePaymentMethodAttached(event);
+        break;
+      // A card removed anywhere other than our own UI - the Stripe dashboard,
+      // a deleted customer, an issuer withdrawing it. Left unhandled, the row
+      // stays live here and renewals keep being charged against a token Stripe
+      // has already thrown away.
+      case "payment_method.detached":
+        await handlePaymentMethodDetached(event);
+        break;
+      // The other half of "add a payment method" on the account page. The
+      // browser confirms the setup intent at Stripe, so this is the only
+      // moment this application learns that credential exists.
+      case "setup_intent.succeeded":
+        await handleSetupIntentSucceeded(event);
         break;
       default:
         // Unhandled event type

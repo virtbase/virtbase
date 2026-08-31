@@ -15,11 +15,20 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { afterAll, beforeAll, describe, expect, mock, test } from "bun:test";
+import {
+  afterAll,
+  beforeAll,
+  describe,
+  expect,
+  mock,
+  spyOn,
+  test,
+} from "bun:test";
 import { eq } from "@virtbase/db";
 import * as schema from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
+import { integrations } from "../../../integrations";
 import { collectSubjectData } from "../../../privacy/export/collect";
 import type { ExportSection } from "../../../privacy/export/sections";
 import { EXPORT_SECTIONS } from "../../../privacy/export/sections";
@@ -28,6 +37,7 @@ import { tablesToErase } from "../../../privacy/subject-data";
 import {
   mockProxmoxNode,
   mockServer,
+  mockServerPlanPrice,
   mockSession,
   seedServerGraph,
 } from "../../../testing/fixtures";
@@ -37,6 +47,7 @@ let db: TestDb;
 type Steps = {
   anonymizeUser: typeof import("../anonymize-user").anonymizeUserStep;
   claimAccount: typeof import("../claim-account").claimAccountStep;
+  detachPaymentMethods: typeof import("../detach-payment-methods").detachPaymentMethodsStep;
   eraseSubjectData: typeof import("../erase-subject-data").eraseSubjectDataStep;
   unplannedErasures: typeof import("../erasure-plan").unplannedErasures;
   getServersToDestroy: typeof import("../get-servers-to-destroy").getServersToDestroyStep;
@@ -59,6 +70,28 @@ const CASE_ID = "abus_0000000000000000000000001";
 const BYSTANDER_CASE_ID = "abus_0000000000000000000000002";
 const SUBNET_ID = "ipsub_0000000000000000000000001";
 const ALLOCATION_ID = "ipalloc_000000000000000000001";
+
+/** Every external id this suite's fake provider was asked to release. */
+const detachedAtProvider: string[] = [];
+
+/**
+ * A payment provider reduced to the one method the erasure needs.
+ *
+ * Only `payment` is answered: `resetPointerRecordsStep` asks the same registry
+ * for a `dns` provider and has to keep getting nothing, the way it does on a
+ * database with no integrations configured.
+ */
+const resolveFakePaymentProvider = () =>
+  spyOn(integrations, "resolve").mockImplementation((async (
+    capability: string,
+  ) =>
+    capability === "payment"
+      ? {
+          detachPaymentMethod: async (externalId: string) => {
+            detachedAtProvider.push(externalId);
+          },
+        }
+      : null) as never);
 
 /**
  * The footprint of somebody who actually used the product: a server with a
@@ -125,6 +158,36 @@ const seedFootprint = async (userId: string, caseId: string) => {
     expiresAt: new Date(Date.now() + 86_400_000),
   });
 
+  await db.insert(schema.paymentMethods).values({
+    id: `pm-${userId}`,
+    userId,
+    provider: "stripe",
+    externalId: `pm_external_${userId}`,
+    type: "card",
+    brand: "visa",
+    last4: "4242",
+    isDefault: true,
+  });
+  await db.insert(schema.subscriptions).values({
+    id: `sub-${userId}`,
+    userId,
+    subjectId: `srv-${userId}`,
+    serverPlanPriceId: mockServerPlanPrice.id,
+    // The pointer that makes the delete below a foreign key violation unless
+    // the erasure clears it first.
+    paymentMethodId: `pm-${userId}`,
+    currentPeriodStart: new Date("2026-08-01T00:00:00.000Z"),
+    currentPeriodEnd: new Date("2026-09-01T00:00:00.000Z"),
+    mandateAcceptedAt: new Date("2026-08-01T00:00:00.000Z"),
+    mandateTextVersion: "2026-08-01",
+  });
+  await db.insert(schema.subscriptionRenewals).values({
+    subscriptionId: `sub-${userId}`,
+    periodStart: new Date("2026-09-01T00:00:00.000Z"),
+    periodEnd: new Date("2026-10-01T00:00:00.000Z"),
+    amount: 3499,
+  });
+
   await db.insert(schema.abuseCases).values({
     id: caseId,
     userId,
@@ -171,10 +234,13 @@ const seedFootprint = async (userId: string, caseId: string) => {
 beforeAll(async () => {
   db = await createTestDb();
   mock.module("@virtbase/db/client", () => ({ db }));
+  resolveFakePaymentProvider();
 
   steps = {
     anonymizeUser: (await import("../anonymize-user")).anonymizeUserStep,
     claimAccount: (await import("../claim-account")).claimAccountStep,
+    detachPaymentMethods: (await import("../detach-payment-methods"))
+      .detachPaymentMethodsStep,
     eraseSubjectData: (await import("../erase-subject-data"))
       .eraseSubjectDataStep,
     unplannedErasures: (await import("../erasure-plan")).unplannedErasures,
@@ -311,6 +377,12 @@ const remaining: Record<SubjectTableName, (userId: string) => Promise<number>> =
     order_transitions: async () => 0,
     payments: async () => 0,
     payment_events: async () => 0,
+    payment_methods: (id) =>
+      db.$count(schema.paymentMethods, eq(schema.paymentMethods.userId, id)),
+    // Retained, like the payments they were taken under, so "how many are
+    // left" is not the question this map answers for them.
+    subscriptions: async () => 0,
+    subscription_renewals: async () => 0,
     invoices: async () => 0,
     emails: async () => 0,
     data_exports: (id) =>
@@ -367,10 +439,14 @@ const remaining: Record<SubjectTableName, (userId: string) => Promise<number>> =
  * it.
  *
  * The Proxmox-facing steps around it - stopping and destroying the guest,
- * revoking OAuth grants, detaching the payment provider - reach services this
+ * revoking OAuth grants, deleting the Stripe customer - reach services this
  * suite has no business calling and delete nothing of their own. What is left
  * is every step that writes to the database, which is exactly what a claim
  * about erasure is about.
+ *
+ * `detachPaymentMethodsStep` is in, against a fake provider, because it is the
+ * one of those that does delete rows - and because the order it does them in
+ * is the whole point of it.
  */
 const offboard = async () => {
   const { email } = await steps.claimAccount({ userId: USER_ID });
@@ -387,11 +463,13 @@ const offboard = async () => {
 
   await steps.purgeIsoDownloads({ userId: USER_ID });
 
+  const cards = await steps.detachPaymentMethods({ userId: USER_ID });
+
   const erased = await steps.eraseSubjectData({ userId: USER_ID });
 
   await steps.anonymizeUser({ userId: USER_ID, email });
 
-  return erased;
+  return { ...erased, ...cards };
 };
 
 describe("eraseSubjectDataStep", () => {
@@ -431,6 +509,12 @@ describe("eraseSubjectDataStep", () => {
     expect(erased.abuseCaseEvents).toBe(1);
     expect(erased.abuseSignals).toBe(1);
     expect(erased.notificationDeliveries).toBe(1);
+    expect(erased.paymentMethods).toBe(1);
+
+    // The credential was given back before the row was dropped. A row deleted
+    // without this having happened is a card still chargeable at the provider
+    // for an account that no longer exists.
+    expect(detachedAtProvider).toEqual([`pm_external_${USER_ID}`]);
 
     const after = await Promise.all(
       tablesToErase().map(async (name) => [
@@ -463,6 +547,32 @@ describe("eraseSubjectDataStep", () => {
         rows: data[section as keyof typeof data],
       }).toEqual({ section, rows: [] });
     }
+  });
+
+  test("the retained subscription survives, no longer naming a card", async () => {
+    // `subscriptions` is `retain` - it is the agreement the retained charges
+    // were taken under - so it outlives the erasure. Its pointer at the
+    // deleted credential cannot: the foreign key would refuse the delete.
+    const subscription = await db
+      .select({
+        id: schema.subscriptions.id,
+        paymentMethodId: schema.subscriptions.paymentMethodId,
+        userId: schema.subscriptions.userId,
+        mandateAcceptedAt: schema.subscriptions.mandateAcceptedAt,
+      })
+      .from(schema.subscriptions)
+      .where(eq(schema.subscriptions.userId, USER_ID))
+      .then(([row]) => row);
+
+    expect(subscription?.paymentMethodId).toBeNull();
+    // The reason it is kept at all is still there.
+    expect(subscription?.mandateAcceptedAt).not.toBeNull();
+
+    const renewals = await db.$count(
+      schema.subscriptionRenewals,
+      eq(schema.subscriptionRenewals.subscriptionId, `sub-${USER_ID}`),
+    );
+    expect(renewals).toBe(1);
   });
 
   test("it does not reach past the account being erased", async () => {

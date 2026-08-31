@@ -42,6 +42,11 @@ export const EXPORT_SECTIONS = {
   // a line item means nothing detached from what it was a line of.
   order_items: "orders",
   payments: "payments",
+  payment_methods: "payment_methods",
+  subscriptions: "subscriptions",
+  // Nested inside each subscription, like order items inside an order: a
+  // collection attempt detached from what it was renewing says nothing.
+  subscription_renewals: "subscriptions",
   invoices: "invoices",
   emails: "emails",
   abuse_cases: "abuse_cases",

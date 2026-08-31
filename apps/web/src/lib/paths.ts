@@ -42,6 +42,12 @@ export const paths = {
     abuseCase: {
       getHref: (id: string) => `/abuse/${id}`,
     },
+    subscriptions: {
+      getHref: () => "/subscriptions",
+    },
+    subscription: {
+      getHref: (id: string) => `/subscriptions/${id}`,
+    },
     integration: {
       getHref: (id: string) => `/integrations/${id}`,
     },

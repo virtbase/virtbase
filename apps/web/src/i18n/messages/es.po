@@ -2110,6 +2110,13 @@ msgctxt "9lr8v8"
 msgid "Subnets"
 msgstr "Subredes"
 
+#: src/app/admin.virtbase.com/(dashboard)/subscriptions/[id]/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/subscriptions/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+msgctxt "J-dIsA"
+msgid "Subscriptions"
+msgstr "Suscripciones"
+
 #: src/app/admin.virtbase.com/(dashboard)/template-groups/[id]/page.tsx
 #: src/app/admin.virtbase.com/(dashboard)/template-groups/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
@@ -2312,7 +2319,6 @@ msgid "Overview"
 msgstr "Descripción general"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/plan/page.tsx
-#: src/features/servers/components/plan/plan-form.tsx
 #: src/features/servers/components/server-nav.tsx
 msgctxt "fz0z4c"
 msgid "Plan"
@@ -2339,6 +2345,7 @@ msgid "An unexpected error occurred while loading the server details."
 msgstr "Se produjo un error inesperado al cargar los detalles del servidor."
 
 #: src/app/app.virtbase.com/(dashboard)/servers/error.tsx
+#: src/features/account/components/billing/add-payment-method.tsx
 #: src/ui/generic-error.tsx
 msgctxt "FazwRl"
 msgid "Try again"
@@ -2717,6 +2724,9 @@ msgstr "Crear clave API"
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/account/components/authentication/confirm-password-dialog.tsx
 #: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+#: src/features/account/components/billing/add-payment-method-form.tsx
+#: src/features/account/components/billing/add-payment-method.tsx
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 #: src/features/account/components/privacy/delete-account-card.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
@@ -2736,9 +2746,11 @@ msgstr "Crear clave API"
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 #: src/features/servers/components/backups/delete-backup-dialog.tsx
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
+#: src/features/servers/components/billing/mandate-dialog.tsx
 #: src/features/servers/components/overview/change-template-dialog.tsx
 #: src/features/servers/components/overview/rename-server-dialog.tsx
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
+#: src/features/servers/components/plan/plan-order-dialog.tsx
 #: src/features/servers/components/rdns/delete-record-dialog.tsx
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx
 #: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
@@ -2934,13 +2946,12 @@ msgid "Passkey #{number}"
 msgstr "Clave de acceso #{number}"
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx
-#: src/features/account/components/billing/payment-methods-list.tsx
 msgctxt "jUqYir"
 msgid "Added {date}"
 msgstr "Añadido {date}"
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx
-#: src/features/account/components/billing/payment-methods-list.tsx
+#: src/features/account/components/billing/payment-method-item.tsx
 msgctxt "G_yZLu"
 msgid "Remove"
 msgstr "Eliminar"
@@ -3071,15 +3082,216 @@ msgctxt "w-q8k4"
 msgid "Single-use codes in case you lose access to your other factors."
 msgstr "Códigos de un solo uso por si pierdes el acceso a tus otros factores."
 
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "F-ixiD"
+msgid "Your card details could not be checked. Try again."
+msgstr "No se han podido verificar los datos de tu tarjeta. Inténtalo de nuevo."
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "ofKlJp"
+msgid "Your bank did not approve this card. Check the details, or try a different card."
+msgstr "Tu banco no ha aprobado esta tarjeta. Comprueba los datos o prueba con otra tarjeta."
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "fIib8k"
+msgid "Your bank still has to confirm this card. Finish the check it sent you, then add the card again."
+msgstr "Tu banco todavía tiene que confirmar esta tarjeta. Completa la verificación que te ha enviado y vuelve a añadir la tarjeta."
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "5Me-m9"
+msgid "The card was not saved and nothing was charged. Check the details, or try a different card."
+msgstr "La tarjeta no se ha guardado y no se ha cobrado nada. Comprueba los datos o prueba con otra tarjeta."
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "vf0_Um"
+msgid "We only ever see the brand and the last four digits."
+msgstr "Solo vemos la marca de la tarjeta y los cuatro últimos dígitos."
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "BFfES6"
+msgid "The card was not saved"
+msgstr "La tarjeta no se ha guardado"
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "AfTYM9"
+msgid "Confirming with your bank…"
+msgstr "Confirmando con tu banco…"
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "rfC1Zq"
+msgid "Save card"
+msgstr "Guardar tarjeta"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "oLpiKz"
+msgid "Add a card"
+msgstr "Añadir una tarjeta"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "lnbUY-"
+msgid "Opening a secure form…"
+msgstr "Abriendo un formulario seguro…"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "9V1fHT"
+msgid "The card form could not be opened"
+msgstr "No se ha podido abrir el formulario de la tarjeta"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "BdZO9K"
+msgid "Nothing was saved and nothing was charged. Try again in a moment."
+msgstr "No se ha guardado ni cobrado nada. Inténtalo de nuevo en un momento."
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "HejwTp"
+msgid "Your bank is confirming the mandate"
+msgstr "Tu banco está confirmando el mandato"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "mHaiI3"
+msgid "Card saved"
+msgstr "Tarjeta guardada"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "uVPfNA"
+msgid "This can take a day or two. Nothing is charged in the meantime."
+msgstr "Esto puede tardar uno o dos días. Mientras tanto no se cobra nada."
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "jcLmIR"
+msgid "It appears in the list above in a few seconds."
+msgstr "Aparece en la lista de arriba en unos segundos."
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "rELDbB"
+msgid "Refresh"
+msgstr "Actualizar"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "weEvBW"
+msgid "Nothing is charged when you add a card."
+msgstr "No se cobra nada al añadir una tarjeta."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+#: src/features/servers/components/billing/mandate-dialog.tsx
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "hmnIY5"
+msgid "Card"
+msgstr "Tarjeta"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "tFLiQ2"
+msgid "SEPA Direct Debit"
+msgstr "Domiciliación bancaria SEPA"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "wbtiQC"
+msgid "PayPal"
+msgstr "PayPal"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+#: src/features/checkout/components/stripe-payment-form.tsx
+msgctxt "BVTni9"
+msgid "Payment method"
+msgstr "Método de pago"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "1qYrxy"
+msgid "{instrument} ending {last4}"
+msgstr "{instrument} que termina en {last4}"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "NgmFCU"
+msgid "Use {card} for renewals"
+msgstr "Usar {card} para las renovaciones"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "b0Sa3V"
+msgid "Use for renewals"
+msgstr "Usar para las renovaciones"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "37qTXK"
+msgid "Remove {card}"
+msgstr "Eliminar {card}"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "lKv8ex"
+msgid "Default"
+msgstr "Predeterminado"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "_VQpyO"
+msgid "Expires {date}"
+msgstr "Caduca {date}"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "kn3VHJ"
+msgid "Charged when a subscription renews."
+msgstr "Se cobra cuando se renueva una suscripción."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "qsrtPX"
+msgid "Expired — replace it to keep automatic renewal"
+msgstr "Caducada — sustitúyela para mantener la renovación automática"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "KR85kZ"
+msgid "This card expired in {date}. Add a new one, choose it for renewals, and then remove this one."
+msgstr "Esta tarjeta caducó en {date}. Añade una nueva, elígela para las renovaciones y luego elimina esta."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "fME4OR"
+msgid "This card has expired. Add a new one, choose it for renewals, and then remove this one."
+msgstr "Esta tarjeta ha caducado. Añade una nueva, elígela para las renovaciones y luego elimina esta."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "EAhUyM"
+msgid "Stopped by your bank — replace it to keep automatic renewal"
+msgstr "Bloqueada por tu banco — sustitúyela para mantener la renovación automática"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "JD3g_M"
+msgid "Refused — replace it to keep automatic renewal"
+msgstr "Rechazada — sustitúyela para mantener la renovación automática"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "zWgq8B"
+msgid "It was reported lost, so renewals can no longer be charged to it. Add another card and choose it for renewals."
+msgstr "Se ha declarado perdida, así que las renovaciones ya no se pueden cobrar en ella. Añade otra tarjeta y elígela para las renovaciones."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "yZt1Z4"
+msgid "It was reported stolen, so renewals can no longer be charged to it. Add another card and choose it for renewals."
+msgstr "Se ha declarado robada, así que las renovaciones ya no se pueden cobrar en ella. Añade otra tarjeta y elígela para las renovaciones."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "CSGj9j"
+msgid "The permission to charge it was withdrawn, so renewals can no longer use it. Add another card and choose it for renewals."
+msgstr "Se ha retirado la autorización para cobrar en ella, así que las renovaciones ya no pueden usarla. Añade otra tarjeta y elígela para las renovaciones."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "Hn4fZn"
+msgid "Your bank does not accept this kind of payment from us. Add another card and choose it for renewals."
+msgstr "Tu banco no acepta este tipo de pago por nuestra parte. Añade otra tarjeta y elígela para las renovaciones."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "2kKGxe"
+msgid "Your bank refused the last renewal and told us not to try again. Add another card and choose it for renewals, or ask your bank why it was refused."
+msgstr "Tu banco rechazó la última renovación y nos indicó que no lo intentáramos de nuevo. Añade otra tarjeta y elígela para las renovaciones, o pregunta a tu banco por qué se rechazó."
+
 #: src/features/account/components/billing/payment-methods-card.tsx
 msgctxt "xuTqgN"
 msgid "Payment Methods"
 msgstr "Métodos de pago"
 
 #: src/features/account/components/billing/payment-methods-card.tsx
-msgctxt "oBsxme"
-msgid "The following payment methods are stored and can be used for billing."
-msgstr "Los siguientes métodos de pago se almacenan y se pueden utilizar para la facturación."
+msgctxt "1r9dHK"
+msgid "The cards your subscriptions renew on."
+msgstr "Las tarjetas con las que se renuevan tus suscripciones."
 
 #: src/features/account/components/billing/payment-methods-list.tsx
 msgctxt "qyRflV"
@@ -3087,14 +3299,74 @@ msgid "No payment methods"
 msgstr "Sin métodos de pago"
 
 #: src/features/account/components/billing/payment-methods-list.tsx
-msgctxt "gL_ZgG"
-msgid "No payment methods have been linked to your account."
-msgstr "No se han vinculado ningún método de pago a su cuenta."
+msgctxt "uc7KVl"
+msgid "No cards have been saved yet. A subscription cannot renew without one."
+msgstr "Todavía no has guardado ninguna tarjeta. Una suscripción no se puede renovar sin una."
 
 #: src/features/account/components/billing/payment-methods-list.tsx
-msgctxt "3MBRV5"
-msgid "No name"
-msgstr "Nombre no indicado"
+msgctxt "O7KbvF"
+msgid "No card is chosen for renewals"
+msgstr "No hay ninguna tarjeta elegida para las renovaciones"
+
+#: src/features/account/components/billing/payment-methods-list.tsx
+msgctxt "bXjwnf"
+msgid "A renewal has nothing to charge, so the subscription ends when its period does. Pick a card below with “Use for renewals”."
+msgstr "Una renovación no tiene nada que cobrar, así que la suscripción termina cuando termina su periodo. Elige una tarjeta abajo con «Usar para las renovaciones»."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "hguqnC"
+msgid "Remove this card?"
+msgstr "¿Eliminar esta tarjeta?"
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "5PZkYP"
+msgid "Remove card"
+msgstr "Eliminar tarjeta"
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "mLXaQO"
+msgid "It is detached from our payment provider straight away and can never be charged again. Receipts for payments you have already made are unaffected."
+msgstr "Se desvincula de inmediato de nuestro proveedor de pagos y no se le podrá volver a cobrar nunca. Los recibos de los pagos que ya has hecho no se ven afectados."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "JtXgPI"
+msgid "Automatic renewal will stop"
+msgstr "La renovación automática se detendrá"
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "XuZcbZ"
+msgid "This is the only card on your account, and {count} subscription(s) renew automatically. Once it is gone there is nothing left to charge them to."
+msgstr "Es la única tarjeta de tu cuenta y {count} suscripción(es) se renuevan automáticamente. Una vez eliminada no quedará nada donde cobrarlas."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "KZqy-S"
+msgid "This is the card renewals are charged to, and removing it leaves your account without one. {count} subscription(s) renew automatically and would have nothing to charge."
+msgstr "Es la tarjeta en la que se cobran las renovaciones, y al eliminarla tu cuenta se quedaría sin ninguna. {count} suscripción(es) se renuevan automáticamente y no tendrían nada donde cobrarse."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "YFs9Ts"
+msgid "Nothing is switched off today: each one runs to the end of the period you have already paid for — the first on {date} — and then ends instead of renewing."
+msgstr "Hoy no se desactiva nada: cada una sigue hasta el final del periodo que ya has pagado —la primera el {date}— y luego termina en vez de renovarse."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "DX5sBC"
+msgid "Nothing is switched off today: each one runs to the end of the period you have already paid for, and then ends instead of renewing."
+msgstr "Hoy no se desactiva nada: cada una sigue hasta el final del periodo que ya has pagado y luego termina en vez de renovarse."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "sfngf8"
+msgid "You can still remove it. Add another card before then and renewals carry on as before."
+msgstr "Aun así puedes eliminarla. Añade otra tarjeta antes de esa fecha y las renovaciones seguirán como hasta ahora."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "uz-t0Q"
+msgid "Renewals move to your default card"
+msgstr "Las renovaciones pasarán a tu tarjeta predeterminada"
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "OL4fV7"
+msgid "{count} subscription(s) renew on this card. They will be charged to the card you have chosen for renewals instead."
+msgstr "{count} suscripción(es) se renuevan con esta tarjeta. En su lugar se cobrarán en la tarjeta que has elegido para las renovaciones."
 
 #: src/features/account/components/custom-images/create-custom-image-button.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
@@ -3589,6 +3861,16 @@ msgctxt "6admx4"
 msgid "Please use at least 8 characters, one uppercase letter, one lowercase letter and one number."
 msgstr "Usa al menos 8 caracteres, una letra mayúscula, una letra minúscula y un número."
 
+#: src/features/account/hooks/billing/remove-payment-method.ts
+msgctxt "hBp-IX"
+msgid "Could not remove the card. It is still on your account — try again in a moment."
+msgstr "No se ha podido eliminar la tarjeta. Sigue en tu cuenta: inténtalo de nuevo en un momento."
+
+#: src/features/account/hooks/billing/set-default-payment-method.ts
+msgctxt "Hxr4zr"
+msgid "Could not change the default card. Nothing changed — try again."
+msgstr "No se ha podido cambiar la tarjeta predeterminada. No ha cambiado nada: inténtalo de nuevo."
+
 #: src/features/admin/components/abuse/abuse-case-conversation.tsx
 #: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
 msgctxt "jw6_u7"
@@ -3609,6 +3891,8 @@ msgstr "Denunciado por {reporter}"
 #: src/features/admin/components/abuse/abuse-case-detail.tsx
 #: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
 #: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
 msgctxt "hkENym"
 msgid "Customer"
 msgstr "Cliente"
@@ -3722,6 +4006,7 @@ msgstr "Nadie — este caso no lo abrió una denuncia."
 
 #: src/features/admin/components/abuse/abuse-case-detail.tsx
 #: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "ADKsID"
 msgid "Opened"
 msgstr "Abierto"
@@ -3748,6 +4033,7 @@ msgstr "Servidores afectados"
 
 #: src/features/admin/components/abuse/abuse-case-detail.tsx
 #: src/features/admin/components/proxmox-templates/template-settings.tsx
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
 msgctxt "450Fty"
 msgid "None"
 msgstr "Ninguno"
@@ -3820,6 +4106,8 @@ msgstr "Mover a"
 #: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
 #: src/features/admin/components/emails/emails-table/columns.tsx
 #: src/features/admin/components/integrations/integration-health-panel.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgctxt "tzMNF3"
 msgid "Status"
@@ -4470,6 +4758,7 @@ msgid "No templates are defined yet."
 msgstr "Aún no hay plantillas definidas."
 
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "XPruqs"
 msgid "Order"
 msgstr "Orden"
@@ -4688,6 +4977,8 @@ msgid "Email preview"
 msgstr "Vista previa del correo"
 
 #: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
 msgctxt "LLtKhp"
 msgid "Subject"
 msgstr "Asunto"
@@ -4773,6 +5064,7 @@ msgid "Stored encrypted and never shown again. Leave a field blank to keep its c
 msgstr "Se almacenan cifrados y no se vuelven a mostrar. Deja un campo vacío para conservar su valor actual."
 
 #: src/features/admin/components/integrations/integrations-hub.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "iYc3Ld"
 msgid "Payments"
 msgstr "Pagos"
@@ -5346,11 +5638,6 @@ msgid "Re-download after"
 msgstr "Volver a descargar después de"
 
 #: src/features/admin/components/proxmox-templates/template-settings.tsx
-msgctxt "lKv8ex"
-msgid "Default"
-msgstr "Predeterminado"
-
-#: src/features/admin/components/proxmox-templates/template-settings.tsx
 msgctxt "n8cyVk"
 msgid "Operating system"
 msgstr "Sistema operativo"
@@ -5535,6 +5822,256 @@ msgstr "Tipo"
 msgctxt "PLUhm9"
 msgid "VLAN ID"
 msgstr "ID de VLAN"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "SKenPE"
+msgid "Renewal history"
+msgstr "Historial de renovaciones"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "oS8byb"
+msgid "Every period this subscription has tried to collect, newest first. The decline code is the provider's own, stored exactly as it was returned."
+msgstr "Todos los periodos en los que esta suscripción ha intentado cobrar, del más reciente al más antiguo. El código de rechazo es el del proveedor, guardado exactamente como se devolvió."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "jgEHx0"
+msgid "No renewals yet"
+msgstr "Todavía no hay renovaciones"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "kuTig1"
+msgid "Nothing has fallen due on this subscription. A row appears here the moment a period is claimed for collection."
+msgstr "En esta suscripción todavía no ha vencido nada. Aparecerá una fila aquí en cuanto se reclame un periodo para cobro."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "jCNpEL"
+msgid "Period"
+msgstr "Periodo"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
+msgctxt "_0TOL5"
+msgid "Amount"
+msgstr "Importe"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "fVG1Ff"
+msgid "Attempt"
+msgstr "Intento"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "DnMTTO"
+msgid "Decline code"
+msgstr "Código de rechazo"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "r68Vd2"
+msgid "Next attempt"
+msgstr "Próximo intento"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "4GVMfk"
+msgid "The charges behind those renewals, reached through the orders they produced. The transaction id is what to look up with the provider."
+msgstr "Los cobros que hay detrás de esas renovaciones, alcanzados a través de los pedidos que generaron. El ID de transacción es lo que hay que buscar en el proveedor."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "5_cvkc"
+msgid "No payments recorded"
+msgstr "No hay pagos registrados"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "P1SIjh"
+msgid "No renewal on this subscription has reached a charge yet, so there is nothing to look up with the provider."
+msgstr "Ninguna renovación de esta suscripción ha llegado todavía a un cobro, así que no hay nada que buscar en el proveedor."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "xaj9Ba"
+msgid "Provider"
+msgstr "Proveedor"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "92e4Pu"
+msgid "Transaction id"
+msgstr "ID de transacción"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "ORGv1Q"
+msgid "Created"
+msgstr "Creada"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "7Sb0xt"
+msgid "{amount} refunded"
+msgstr "{amount} reembolsado"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "nQHVOl"
+msgid "Payment methods on file"
+msgstr "Métodos de pago registrados"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "zT_kqh"
+msgid "Display material only. The credential token these point at is never shown."
+msgstr "Solo material de visualización. El token de credencial al que apuntan nunca se muestra."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "VvlhCa"
+msgid "Nothing on file"
+msgstr "Nada registrado"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "4epRjy"
+msgid "This customer has no stored credential, so an automatic renewal has nothing to charge."
+msgstr "Este cliente no tiene ninguna credencial guardada, así que una renovación automática no tiene nada que cobrar."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "AaiUD0"
+msgid "no last four"
+msgstr "sin últimos cuatro dígitos"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "l0VcDL"
+msgid "expires {month}/{year}"
+msgstr "caduca {month}/{year}"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "XJ5FR9"
+msgid "Named"
+msgstr "Designado"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "2im1Il"
+msgid "Detached"
+msgstr "Desvinculado"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "rBcVFE"
+msgid "Invalid since {date}"
+msgstr "No válido desde {date}"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "yrIdiE"
+msgid "Auto-renew on"
+msgstr "Renovación automática activada"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "zzzrqz"
+msgid "Auto-renew off"
+msgstr "Renovación automática desactivada"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "KsFKQy"
+msgid "No mandate"
+msgstr "Sin mandato"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "AXyFb3"
+msgid "Gone — the subject no longer exists"
+msgstr "Desaparecido — el asunto ya no existe"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "3uJDrU"
+msgid "Current period"
+msgstr "Periodo actual"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/servers/components/server-graphs.tsx
+msgctxt "6m3w-3"
+msgid "Interval"
+msgstr "Intervalo"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "GM3YzV"
+msgid "{months} months"
+msgstr "{months} meses"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "cK9cxa"
+msgid "Agreed price"
+msgstr "Precio acordado"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "IfymNN"
+msgid "{amount} on renewal"
+msgstr "{amount} en la renovación"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "se3ldP"
+msgid "{amount} at signup"
+msgstr "{amount} en el alta"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "ODSPeV"
+msgid "What was agreed at signup. A renewal is quoted from the price locked to the server."
+msgstr "Lo que se acordó en el alta. Una renovación se calcula a partir del precio fijado en el servidor."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "AQZ9EK"
+msgid "Mandate"
+msgstr "Mandato"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "SsoKGP"
+msgid "wording {version}"
+msgstr "redacción {version}"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "eTs2vO"
+msgid "No consent recorded to charge off-session."
+msgstr "No hay consentimiento registrado para cobrar fuera de sesión."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "3wsVWF"
+msgid "Cancelled"
+msgstr "Cancelada"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "TP_cMX"
+msgid "Ended"
+msgstr "Finalizada"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "WqaNWU"
+msgid "This page is read-only. Retrying a collection, granting time or cancelling all happen elsewhere."
+msgstr "Esta página es de solo lectura. Reintentar un cobro, conceder plazo o cancelar se hacen en otro sitio."
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "laPj3K"
+msgid "Search by server, customer or id..."
+msgstr "Buscar por servidor, cliente o ID..."
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "WZ-2C3"
+msgid "Period ends"
+msgstr "Fin del periodo"
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "KSguPh"
+msgid "every {months} months"
+msgstr "cada {months} meses"
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "evMlX9"
+msgid "Auto-renew"
+msgstr "Renovación automática"
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "Zh-5A6"
+msgid "On"
+msgstr "Activada"
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "OvzONl"
+msgid "Off"
+msgstr "Desactivada"
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "pGCLGL"
+msgid "Recorded"
+msgstr "Registrado"
 
 #: src/features/admin/components/users/users-table/columns.tsx
 msgctxt "BzHQ0A"
@@ -5779,7 +6316,6 @@ msgid "If left blank, a secure random password will be generated and sent by ema
 msgstr "Si se deja en blanco, se generará una contraseña aleatoria segura y se enviará por correo electrónico."
 
 #: src/features/checkout/components/checkout-form.tsx
-#: src/features/servers/components/plan/plan-summary.tsx
 msgctxt "-g-0OK"
 msgid "Continue to payment"
 msgstr "Continuar con el pago"
@@ -5837,8 +6373,7 @@ msgstr "por mes"
 
 #: src/features/checkout/components/offer-card.tsx
 #: src/features/checkout/components/order-summary.tsx
-#: src/features/servers/components/plan/plan-radio-group.tsx
-#: src/features/servers/components/plan/plan-summary.tsx
+#: src/features/servers/components/plan/plan-specs.tsx
 #: src/features/servers/components/servers-list.tsx
 msgctxt "BGI16m"
 msgid "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
@@ -5882,7 +6417,7 @@ msgid "Configure now"
 msgstr "Configurar ahora"
 
 #: src/features/checkout/components/offer-card.tsx
-#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/plan-list.tsx
 msgctxt "spsPUc"
 msgid "Sold out"
 msgstr "Agotado"
@@ -5908,11 +6443,6 @@ msgid "Used for invoicing and VAT calculation."
 msgstr "Se utiliza para facturación y cálculo del IVA."
 
 #: src/features/checkout/components/stripe-payment-form.tsx
-msgctxt "BVTni9"
-msgid "Payment method"
-msgstr "Método de pago"
-
-#: src/features/checkout/components/stripe-payment-form.tsx
 msgctxt "11yeGk"
 msgid "Payments are securely processed by Stripe."
 msgstr "Stripe procesa los pagos de forma segura."
@@ -5923,11 +6453,13 @@ msgid "Payment could not be completed"
 msgstr "No se pudo completar el pago"
 
 #: src/features/checkout/components/stripe-payment-form.tsx
+#: src/features/servers/components/plan/plan-order-dialog.tsx
 msgctxt "ddCkDY"
 msgid "Processing payment…"
 msgstr "Procesando pago…"
 
 #: src/features/checkout/components/stripe-payment-form.tsx
+#: src/features/servers/components/plan/plan-order-dialog.tsx
 msgctxt "7tOz-m"
 msgid "Pay now"
 msgstr "Paga ahora"
@@ -5993,6 +6525,7 @@ msgid "Expired (will be deleted {date})"
 msgstr "Caducada (se eliminará {date})"
 
 #: src/features/dashboard/components/server-status-small.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
 #: src/features/servers/hooks/use-status-mapping.ts
 msgctxt "oJsHQW"
 msgid "Suspended"
@@ -6022,11 +6555,6 @@ msgstr "Número de factura"
 msgctxt "cIAuzz"
 msgid "Search invoice number..."
 msgstr "Buscar número de factura..."
-
-#: src/features/invoices/components/invoices-table/columns.tsx
-msgctxt "_0TOL5"
-msgid "Amount"
-msgstr "Importe"
 
 #: src/features/invoices/components/invoices-table/columns.tsx
 msgctxt "dULmbA"
@@ -6435,6 +6963,203 @@ msgctxt "pFmRJS"
 msgid "Should the backup be restored?"
 msgstr "¿Se debe restaurar la copia de seguridad?"
 
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "tYBzXd"
+msgid "Automatic renewal"
+msgstr "Renovación automática"
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "3d6fWf"
+msgid "Your server renews by itself. We charge {price} at the end of each term."
+msgstr "Tu servidor se renueva solo. Cobramos {price} al final de cada periodo."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "Owt71Z"
+msgid "Your server renews by itself at the end of each term."
+msgstr "Tu servidor se renueva solo al final de cada periodo."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "DTMKLg"
+msgid "Your server will not renew by itself. It stops at the end of the current term unless you extend it."
+msgstr "Tu servidor no se renovará solo. Se detiene al final del periodo actual si no lo amplías."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "bByVFS"
+msgid "Resume this subscription before turning automatic renewal back on."
+msgstr "Reanuda esta suscripción antes de volver a activar la renovación automática."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "fANfrY"
+msgid "This subscription can no longer renew."
+msgstr "Esta suscripción ya no se puede renovar."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "Up6lw2"
+msgid "The payment method we would charge cannot be used. Pick a different default on the payment methods page, then turn automatic renewal on."
+msgstr "El método de pago que cobraríamos no se puede usar. Elige otro predeterminado en la página de métodos de pago y luego activa la renovación automática."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "4wd5lv"
+msgid "Add a payment method first. Automatic renewal needs a card we can charge when your term ends."
+msgstr "Añade primero un método de pago. La renovación automática necesita una tarjeta que podamos cobrar cuando termine tu periodo."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "99eSnZ"
+msgid "Manage payment methods"
+msgstr "Gestionar métodos de pago"
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "zdTT0e"
+msgid "Cancelling your subscription"
+msgstr "Cancelar tu suscripción"
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "UaMo5U"
+msgid "Confirm that you want to cancel this subscription."
+msgstr "Confirma que quieres cancelar esta suscripción."
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "orvpWh"
+msgid "Go back"
+msgstr "Volver"
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "LhY9Hz"
+msgid "Cancel subscription now"
+msgstr "Cancelar la suscripción ahora"
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "Hcq5-Y"
+msgid "The subscription for {name} will be cancelled."
+msgstr "Se cancelará la suscripción de {name}."
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "LQS043"
+msgid "This subscription will be cancelled."
+msgstr "Se cancelará esta suscripción."
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "SWNin3"
+msgid "Your server keeps running until {date}, the end of the term you have already paid for. Nothing is switched off today and you will not be charged again."
+msgstr "Tu servidor sigue funcionando hasta el {date}, el final del periodo que ya has pagado. Hoy no se desactiva nada y no se te volverá a cobrar."
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "zbAQsT"
+msgid "After {date} the server is not renewed and is shut down."
+msgstr "Después del {date} el servidor no se renueva y se apaga."
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "5SyDDF"
+msgid "Subscription cancelled"
+msgstr "Suscripción cancelada"
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "vU7iFi"
+msgid "Your server keeps running until {date} and will not be renewed."
+msgstr "Tu servidor sigue funcionando hasta el {date} y no se renovará."
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "wIfHh6"
+msgid "The paid-for term ended on {date}."
+msgstr "El periodo pagado terminó el {date}."
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "9CnHy1"
+msgid "Resume subscription"
+msgstr "Reanudar la suscripción"
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "5kfntb"
+msgid "Cancellation"
+msgstr "Cancelación"
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "mYShCs"
+msgid "Your server keeps running until {date}. Cancelling only stops it being renewed after that."
+msgstr "Tu servidor sigue funcionando hasta el {date}. Cancelar solo impide que se renueve después de esa fecha."
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "UWVETE"
+msgid "Cancel subscription"
+msgstr "Cancelar la suscripción"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "HS8EXa"
+msgid "{price} every month"
+msgstr "{price} cada mes"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "GmZa3s"
+msgid "{price} every {months} months"
+msgstr "{price} cada {months} meses"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "lVjU8T"
+msgid "your saved payment method"
+msgstr "tu método de pago guardado"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "x36plV"
+msgid "Agree to automatic payments"
+msgstr "Aceptar los pagos automáticos"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "AwY5G0"
+msgid "Read and accept the terms under which Virtbase may charge your saved payment method."
+msgstr "Lee y acepta las condiciones bajo las que Virtbase puede cobrar en tu método de pago guardado."
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "vVdCCw"
+msgid "Agree and turn on automatic renewal"
+msgstr "Aceptar y activar la renovación automática"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "Wi3JqI"
+msgid "Virtbase will charge {cadence} to {card}, starting on {date} when your current term ends."
+msgstr "Virtbase cobrará {cadence} en {card}, a partir del {date}, cuando termine tu periodo actual."
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "Bs-2A3"
+msgid "This happens automatically. You will not be asked to approve each payment and you do not have to do anything for your server to keep running. If the price of your plan changes, we will tell you before the next payment."
+msgstr "Esto ocurre automáticamente. No se te pedirá que apruebes cada pago y no tienes que hacer nada para que tu servidor siga funcionando. Si el precio de tu plan cambia, te lo diremos antes del siguiente pago."
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "8HQobB"
+msgid "You can turn automatic renewal off again at any time with the switch you just used, and you can end the subscription altogether with the “Cancel subscription” button on this page. Either way, your server keeps running until the end of the term you have already paid for."
+msgstr "Puedes volver a desactivar la renovación automática en cualquier momento con el interruptor que acabas de usar, y puedes terminar la suscripción por completo con el botón «Cancelar la suscripción» de esta página. En ambos casos, tu servidor sigue funcionando hasta el final del periodo que ya has pagado."
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "SCQaYd"
+msgid "I agree that Virtbase may charge {cadence} to my saved payment method, automatically and without asking again, until I turn this off or cancel."
+msgstr "Acepto que Virtbase cobre {cadence} en mi método de pago guardado, de forma automática y sin volver a preguntar, hasta que lo desactive o lo cancele."
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "Yqvd5-"
+msgid "Agreement version {version}"
+msgstr "Versión del acuerdo {version}"
+
+#: src/features/servers/components/billing/past-due-alert.tsx
+msgctxt "9k3Wi4"
+msgid "A payment for this server failed"
+msgstr "Ha fallado un pago de este servidor"
+
+#: src/features/servers/components/billing/past-due-alert.tsx
+msgctxt "XZ2cEy"
+msgid "We could not collect the payment for your next term. We will try again automatically over the coming days. If it keeps failing, your server is suspended after {date} and deleted once the grace period has passed."
+msgstr "No hemos podido cobrar el pago de tu próximo periodo. Lo intentaremos de nuevo automáticamente durante los próximos días. Si sigue fallando, tu servidor se suspenderá después del {date} y se eliminará cuando pase el periodo de gracia."
+
+#: src/features/servers/components/billing/past-due-alert.tsx
+msgctxt "Ty5fKl"
+msgid "If you have just replaced your payment method, you do not have to wait for the next attempt."
+msgstr "Si acabas de sustituir tu método de pago, no tienes que esperar al siguiente intento."
+
+#: src/features/servers/components/billing/past-due-alert.tsx
+msgctxt "f6dOFt"
+msgid "Retry now"
+msgstr "Reintentar ahora"
+
 #: src/features/servers/components/console/console-frame.tsx
 msgctxt "lptya2"
 msgid "Server is suspended"
@@ -6600,113 +7325,333 @@ msgctxt "lxp8MB"
 msgid "Taken from the template this server was created from. Install the {packageName} package to have Virtbase read the operating system from inside the server."
 msgstr "Obtenido de la plantilla con la que se creó este servidor. Instala el paquete {packageName} para que Virtbase pueda leer el sistema operativo desde dentro de tu servidor."
 
-#: src/features/servers/components/plan/plan-form.tsx
-msgctxt "Kng3Em"
-msgid "Select a new plan or extend your current plan. Downgrading to a smaller storage plan is not supported."
-msgstr "Seleccione un nuevo plan o amplíe su plan actual. No se admite la degradación a un plan de almacenamiento más pequeño."
-
-#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
+#: src/features/servers/components/plan/plan-list.tsx
 #: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "tpfEY0"
-msgid "{memory} RAM"
-msgstr "RAM {memory}"
-
-#: src/features/servers/components/plan/plan-radio-group.tsx
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "cenOuc"
-msgid "{storage} NVMe SSD"
-msgstr "SSD NVMe {storage}"
-
-#: src/features/servers/components/plan/plan-radio-group.tsx
-msgctxt "uPG29C"
-msgid "{price} today"
-msgstr "{price} hoy"
-
-#: src/features/servers/components/plan/plan-radio-group.tsx
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "9H3YQm"
-msgid "then {price} / month"
-msgstr "luego {price} / mes"
-
-#: src/features/servers/components/plan/plan-radio-group.tsx
 msgctxt "JxjC5u"
 msgid "{price} / month"
 msgstr "{price} / mes"
 
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "aG7JgP"
-msgid "Downgrading to a smaller storage plan isn't supported. Pick a plan with at least {size} of storage."
-msgstr "No se admite la degradación a un plan de almacenamiento más pequeño. Elija un plan con al menos {size} de almacenamiento."
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "3XuHC5"
-msgid "{name} is sold out right now. Try again later or pick a different plan."
-msgstr "{name} está agotado en este momento. Vuelve a intentarlo más tarde o elige un plan diferente."
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "1p9GGF"
-msgid "This plan is sold out. Please pick a different plan."
-msgstr "Este plan está agotado. Elija un plan diferente."
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "fOZyRZ"
-msgid "Your current term has expired. Please renew your server first, then upgrade."
-msgstr "Tu periodo actual ha expirado. Renueva primero tu servidor y luego realiza la actualización."
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "ZjhoiP"
-msgid "Select a plan"
-msgstr "Selecciona un plan"
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "SB__YQ"
-msgid "Order summary"
-msgstr "Resumen del pedido"
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "RrCui3"
-msgid "Summary"
-msgstr "Resumen"
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "6WPC9q"
-msgid "Plan change"
-msgstr "cambio de plan"
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "kkpP2k"
-msgid "today"
-msgstr "hoy"
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "Vn2ud4"
-msgid "/ month"
-msgstr "/ mes"
-
+#: src/features/servers/components/plan/current-plan-card.tsx
 #: src/features/servers/components/plan/plan-summary.tsx
 msgctxt "LQbES8"
 msgid "Incl. statutory VAT, if applicable"
 msgstr "incluido IVA legal, si corresponde"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "qV-TFm"
+msgid "Payment failed"
+msgstr "Pago fallido"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "CrEhnK"
+msgid "No end date"
+msgstr "Sin fecha de finalización"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "zvApHY"
+msgid "Ends on {date}"
+msgstr "Termina el {date}"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "uk8hUQ"
+msgid "Runs until {date}, then ends"
+msgstr "Funciona hasta el {date} y luego termina"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "L7pwLO"
+msgid "Ended on {date}"
+msgstr "Finalizada el {date}"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "CkSYU4"
+msgid "Cancelled. It will not be renewed."
+msgstr "Cancelada. No se renovará."
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "mYEBl9"
+msgid "The server is suspended until this is paid."
+msgstr "El servidor está suspendido hasta que esto se pague."
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "TiBG0-"
+msgid "Renews automatically on {date}"
+msgstr "Se renueva automáticamente el {date}"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "h5ziTq"
+msgid "Nothing renews by itself unless you turn it on below."
+msgstr "Nada se renueva solo a menos que lo actives abajo."
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "g1lN9B"
+msgid "Automatic renewal is not set up"
+msgstr "La renovación automática no está configurada"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "US-mpc"
+msgid "This server is paid for one term at a time, so nothing is charged without you. It keeps running until {date} — extend it before then and it carries on."
+msgstr "Este servidor se paga periodo a periodo, así que no se cobra nada sin ti. Sigue funcionando hasta el {date}: amplíalo antes de esa fecha y continúa."
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "se4Js1"
+msgid "This server is paid for one term at a time, so nothing is charged without you. Extend it below to keep it running."
+msgstr "Este servidor se paga periodo a periodo, así que no se cobra nada sin ti. Amplíalo abajo para que siga funcionando."
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "6zkPH-"
+msgid "Extend or change your plan"
+msgstr "Ampliar o cambiar tu plan"
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "ktNrBh"
+msgid "Payment submitted. It can take a moment to go through."
+msgstr "Pago enviado. Puede tardar un momento en procesarse."
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "YTQMmP"
+msgid "Your bank wants you to confirm this payment. Check your banking app."
+msgstr "Tu banco quiere que confirmes este pago. Revisa tu aplicación bancaria."
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "80-bz2"
+msgid "The payment was declined again. We will try again automatically."
+msgstr "El pago se ha rechazado otra vez. Lo intentaremos de nuevo automáticamente."
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "SE531V"
+msgid "The payment was declined and there are no attempts left. Add a working payment method and extend the server."
+msgstr "El pago se ha rechazado y no quedan intentos. Añade un método de pago que funcione y amplía el servidor."
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "NLD2EM"
+msgid "Nothing to retry right now."
+msgstr "No hay nada que reintentar ahora mismo."
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "rnp477"
+msgid "Could not change automatic renewal."
+msgstr "No se ha podido cambiar la renovación automática."
+
+#: src/features/servers/components/plan/plan-catalog.tsx
+msgctxt "_E4Era"
+msgid "An order is waiting to be paid"
+msgstr "Hay un pedido pendiente de pago"
+
+#: src/features/servers/components/plan/plan-catalog.tsx
+msgctxt "IZp69Q"
+msgid "You closed the payment for {name} before it went through. Nothing has been charged and this server is still on its current plan."
+msgstr "Cerraste el pago de {name} antes de que se completara. No se ha cobrado nada y este servidor sigue en su plan actual."
+
+#: src/features/servers/components/plan/plan-catalog.tsx
+msgctxt "yg3np8"
+msgid "You closed a payment before it went through. Nothing has been charged and this server is still on its current plan."
+msgstr "Cerraste un pago antes de que se completara. No se ha cobrado nada y este servidor sigue en su plan actual."
+
+#: src/features/servers/components/plan/plan-catalog.tsx
+msgctxt "BoV-ik"
+msgid "Resume payment"
+msgstr "Reanudar el pago"
+
+#: src/features/servers/components/plan/plan-catalog.tsx
+msgctxt "j6UwBH"
+msgid "Discard it"
+msgstr "Descartarlo"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "PEpK64"
+msgid "No plans available"
+msgstr "No hay planes disponibles"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "EAyjS-"
+msgid "There is nothing to extend or upgrade to right now."
+msgstr "Ahora mismo no hay nada que ampliar ni a lo que mejorar."
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "r45xAO"
+msgid "Less storage than your plan"
+msgstr "Menos almacenamiento que tu plan"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "uPG29C"
+msgid "{price} today"
+msgstr "{price} hoy"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "BLAy25"
+msgid "Extend"
+msgstr "Ampliar"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "0h_lPM"
+msgid "Upgrade"
+msgstr "Mejorar"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "ZBALng"
+msgid "Current plan"
+msgstr "Plan actual"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "nYOcNC"
+msgid "This plan has less storage than yours. Pick one with at least {size}."
+msgstr "Este plan tiene menos almacenamiento que el tuyo. Elige uno con al menos {size}."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "3XuHC5"
+msgid "{name} is sold out right now. Try again later or pick a different plan."
+msgstr "{name} está agotado en este momento. Vuelve a intentarlo más tarde o elige un plan diferente."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "2r_Ri2"
+msgid "This plan is sold out. Pick a different plan."
+msgstr "Este plan está agotado. Elige otro plan."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "SA17Op"
+msgid "Your current term has expired. Renew your server first, then upgrade."
+msgstr "Tu periodo actual ha caducado. Renueva primero tu servidor y luego mejóralo."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "162kF7"
+msgid "Try again in a moment."
+msgstr "Inténtalo de nuevo en un momento."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "Ivyv4G"
+msgid "Complete your payment"
+msgstr "Completa tu pago"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "vUdsUw"
+msgid "Extend {name}"
+msgstr "Ampliar {name}"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "wtdexo"
+msgid "Upgrade to {name}"
+msgstr "Mejorar a {name}"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "92pgFA"
+msgid "Extend for {price}"
+msgstr "Ampliar por {price}"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "fEC_2P"
+msgid "Upgrade for {price}"
+msgstr "Mejorar por {price}"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "JLzn_f"
+msgid "Pay for the order you just placed."
+msgstr "Paga el pedido que acabas de hacer."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "scgCv_"
+msgid "Extend your plan by one month."
+msgstr "Amplía tu plan un mes."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "UAUyG-"
+msgid "Move this server onto a bigger plan."
+msgstr "Pasa este servidor a un plan más grande."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "So9-9-"
+msgid "Change plan"
+msgstr "Cambiar de plan"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "YeQq19"
+msgid "Preparing checkout…"
+msgstr "Preparando el pago..."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "f8Zxmj"
+msgid "The order could not be started"
+msgstr "No se ha podido iniciar el pedido"
+
+#: src/features/servers/components/plan/plan-specs.tsx
+msgctxt "tpfEY0"
+msgid "{memory} RAM"
+msgstr "RAM {memory}"
+
+#: src/features/servers/components/plan/plan-specs.tsx
+msgctxt "cenOuc"
+msgid "{storage} NVMe SSD"
+msgstr "SSD NVMe {storage}"
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgctxt "QUXFCm"
+msgid "Due today"
+msgstr "A pagar hoy"
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgctxt "WnjgPN"
+msgid "From your next renewal"
+msgstr "A partir de tu próxima renovación"
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgctxt "LR754a"
+msgid "Renews at"
+msgstr "Se renueva por"
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgctxt "mCArsW"
+msgid "Only the difference is charged today. Your term is unchanged."
+msgstr "Hoy solo se cobra la diferencia. Tu periodo no cambia."
 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgctxt "N387FB"
 msgid "Your current plan will be extended by one month."
 msgstr "Su plan actual se ampliará por un mes."
 
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "6Mawmq"
-msgid "The plan will be changed to {name}. You only pay the prorated difference today — your current term stays the same."
-msgstr "El plan se cambiará a {name}. Hoy solo pagas la diferencia prorrateada — tu periodo actual se mantiene igual."
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "AiQP5M"
+msgid "Add a payment method"
+msgstr "Añadir un método de pago"
 
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "So9-9-"
-msgid "Change plan"
-msgstr "Cambiar de plan"
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "6NfKWq"
+msgid "None chosen"
+msgstr "Ninguno elegido"
 
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "YeQq19"
-msgid "Preparing checkout…"
-msgstr "Preparando el pago..."
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "Mjlx26"
+msgid "A renewal has nothing to charge until you choose a card."
+msgstr "Una renovación no tiene nada que cobrar hasta que elijas una tarjeta."
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "BY343C"
+msgid "Change"
+msgstr "Cambiar"
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "Ob6Cyo"
+msgid "Charged when this server renews."
+msgstr "Se cobra cuando se renueva este servidor."
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "hPxO4K"
+msgid "Expired {date}. Replace it or the next renewal fails."
+msgstr "Caducada el {date}. Sustitúyela o fallará la próxima renovación."
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "ZIzf2A"
+msgid "This card has expired. The next renewal will fail."
+msgstr "Esta tarjeta ha caducado. La próxima renovación fallará."
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "IODZRQ"
+msgid "Your bank withdrew permission to charge this card. The next renewal will fail."
+msgstr "Tu banco ha retirado la autorización para cobrar en esta tarjeta. La próxima renovación fallará."
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "zDOS2t"
+msgid "Your bank refused this card. The next renewal will fail until you choose another."
+msgstr "Tu banco ha rechazado esta tarjeta. La próxima renovación fallará hasta que elijas otra."
 
 #: src/features/servers/components/rdns/delete-record-dialog.tsx
 #: src/features/servers/components/rdns/records-table/columns.tsx
@@ -6880,11 +7825,6 @@ msgstr "máx."
 msgctxt "Arxl88"
 msgid "Outgoing"
 msgstr "Extrovertida"
-
-#: src/features/servers/components/server-graphs.tsx
-msgctxt "6m3w-3"
-msgid "Interval"
-msgstr "Intervalo"
 
 #: src/features/servers/components/server-mount-badge.tsx
 msgctxt "Han16c"
@@ -7352,6 +8292,21 @@ msgstr "No se pudo restaurar la copia de seguridad."
 msgctxt "GwAFh4"
 msgid "Could not update the backup."
 msgstr "No se pudo actualizar la copia de seguridad."
+
+#: src/features/servers/hooks/billing/use-cancel-subscription.ts
+msgctxt "fAsW3r"
+msgid "Could not cancel the subscription."
+msgstr "No se ha podido cancelar la suscripción."
+
+#: src/features/servers/hooks/billing/use-resume-subscription.ts
+msgctxt "YTM7YS"
+msgid "Could not resume the subscription."
+msgstr "No se ha podido reanudar la suscripción."
+
+#: src/features/servers/hooks/billing/use-retry-renewal.ts
+msgctxt "wjP1kX"
+msgid "Could not retry the payment."
+msgstr "No se ha podido reintentar el pago."
 
 #: src/features/servers/hooks/overview/use-change-template.ts
 msgctxt "8g0ePs"

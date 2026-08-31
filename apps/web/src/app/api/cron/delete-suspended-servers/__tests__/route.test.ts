@@ -28,6 +28,9 @@ const testDb: TestDb = await createTestDb();
 /** Every deletion the route asked for, in the order it asked. */
 const started: { serverId: string }[] = [];
 
+// The route reports a subscription that failed to close and carries on; the
+// real client cannot be loaded under the DOM preload this package registers.
+mock.module("@sentry/nextjs", () => ({ captureException: () => {} }));
 mock.module("@virtbase/db/client", () => ({ db: testDb }));
 // The route's own authentication is exercised by `withCronSecret`; here it
 // would only mean building an env just to hand the handler a header back.

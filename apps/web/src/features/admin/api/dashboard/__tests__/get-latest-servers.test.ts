@@ -25,7 +25,14 @@ import {
   test,
 } from "bun:test";
 
+// Spread the real module rather than replacing it. `mock.module` is
+// process-wide in bun, so a bare object here strips `createContext` and every
+// other export for whichever suites happen to run afterwards - which is a
+// failure in someone else's file, with no clue pointing back to this line.
+const actualReact = await import("react");
 mock.module("react", () => ({
+  ...actualReact,
+  default: actualReact,
   cache: (fn: (...args: never) => unknown) => fn,
 }));
 mock.module("next/cache", () => ({ cacheLife: () => {}, cacheTag: () => {} }));

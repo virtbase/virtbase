@@ -14,11 +14,9 @@
  *   You should have received a copy of the GNU General Public License
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-
 "use client";
 
-import type { Stripe } from "@virtbase/integration-stripe";
-import { Button } from "@virtbase/ui/button";
+import { Alert, AlertDescription, AlertTitle } from "@virtbase/ui/alert";
 import {
   Empty,
   EmptyDescription,
@@ -26,22 +24,45 @@ import {
   EmptyMedia,
   EmptyTitle,
 } from "@virtbase/ui/empty";
-import type { LucideIcon } from "@virtbase/ui/icons/index";
-import { LucideCreditCard, LucideLandmark } from "@virtbase/ui/icons/index";
-import { Spinner } from "@virtbase/ui/spinner";
-import { useRouter } from "next/navigation";
-import { useExtracted, useFormatter, useNow } from "next-intl";
-import { startTransition, use, useActionState } from "react";
-import { detatchPaymentMethodAction } from "../../api/billing/detach-payment-method";
-import { ItemRow } from "../item-row";
+import { LucideCreditCard, LucideTriangleAlert } from "@virtbase/ui/icons";
+import { useExtracted } from "next-intl";
+import { useState } from "react";
+import { useAutoRenewingSubscriptions } from "@/features/account/hooks/billing/auto-renewing-subscriptions";
+import type { PaymentMethodSummary } from "@/features/account/hooks/billing/payment-methods-list";
+import { usePaymentMethodsList } from "@/features/account/hooks/billing/payment-methods-list";
+import { useRemovePaymentMethod } from "@/features/account/hooks/billing/remove-payment-method";
+import { useSetDefaultPaymentMethod } from "@/features/account/hooks/billing/set-default-payment-method";
+import { PaymentMethodItem } from "./payment-method-item";
+import type { AffectedSubscription } from "./remove-payment-method-dialog";
+import { RemovePaymentMethodDialog } from "./remove-payment-method-dialog";
 
-export function PaymentMethodsList({
-  promise,
-}: {
-  promise: Promise<Stripe.PaymentMethod[]>;
-}) {
+/**
+ * The saved credentials on the account, and the two things you can do to one.
+ *
+ * This is the component that knows the whole set, which is why the remove
+ * confirmation is owned here rather than by the row: whether a removal leaves
+ * renewals with nothing to charge is a question about the other rows and about
+ * the subscriptions, not about the card being removed.
+ */
+export function PaymentMethodsList() {
   const t = useExtracted();
-  const paymentMethods = use(promise);
+
+  const {
+    data: { payment_methods: paymentMethods },
+  } = usePaymentMethodsList();
+
+  const { subscriptions: autoRenewing } = useAutoRenewingSubscriptions();
+
+  const [pendingRemoval, setPendingRemoval] =
+    useState<PaymentMethodSummary | null>(null);
+
+  const {
+    mutate: setDefault,
+    variables: setDefaultVariables,
+    isPending: isSettingDefault,
+  } = useSetDefaultPaymentMethod();
+
+  const { mutate: removePaymentMethod } = useRemovePaymentMethod();
 
   if (!paymentMethods.length) {
     return (
@@ -52,129 +73,93 @@ export function PaymentMethodsList({
           </EmptyMedia>
           <EmptyTitle>{t("No payment methods")}</EmptyTitle>
           <EmptyDescription>
-            {t("No payment methods have been linked to your account.")}
+            {t(
+              "No cards have been saved yet. A subscription cannot renew without one.",
+            )}
           </EmptyDescription>
         </EmptyHeader>
       </Empty>
     );
   }
 
-  return paymentMethods.map((paymentMethod) => {
-    return (
-      <PaymentMethodItem key={paymentMethod.id} paymentMethod={paymentMethod} />
-    );
-  });
-}
+  // `removePaymentMethod` never promotes the next card, on purpose, so an
+  // account can sit here with cards and nothing chosen. Renewals then have
+  // nothing to charge, and the only place that can say so is this list.
+  const hasDefault = paymentMethods.some((method) => method.is_default);
 
-type PaymentMethodType = Extract<
-  Stripe.PaymentMethod.Type,
-  keyof Stripe.PaymentMethod
->;
+  const affectedSubscriptions: AffectedSubscription[] = pendingRemoval
+    ? autoRenewing
+        // `payment_method` is already resolved server-side to the credential a
+        // renewal would actually charge - the one the subscription names, or
+        // the account default when it names none - so this one comparison
+        // covers both.
+        .filter(
+          (subscription) =>
+            subscription.payment_method?.id === pendingRemoval.id,
+        )
+        .map((subscription) => ({
+          id: subscription.id,
+          name: subscription.subject_name,
+          endsAt: subscription.current_period_end,
+        }))
+    : [];
 
-const paymentMethodMapping = {
-  card: {
-    icon: LucideCreditCard,
-    render: (method) => {
-      return [`•••• ${method.last4}`];
-    },
-  },
-  sepa_debit: {
-    icon: LucideLandmark,
-    render: (method) => {
-      return [`•••• ${method.last4}`];
-    },
-  },
-  paypal: {
-    render: (method) => {
-      return [method.payer_email];
-    },
-  },
-  ideal: {
-    icon: LucideLandmark,
-    render: (method) => {
-      return [method.bic];
-    },
-  },
-} satisfies Partial<{
-  [T in PaymentMethodType]: {
-    icon?: LucideIcon;
-    render: (method: NonNullable<Stripe.PaymentMethod[T]>) => (string | null)[];
-  };
-}>;
-
-type MappedPaymentMethod = keyof typeof paymentMethodMapping;
-
-function PaymentMethodItem({
-  paymentMethod,
-}: {
-  paymentMethod: Stripe.PaymentMethod;
-}) {
-  const t = useExtracted();
-  const router = useRouter();
-
-  const format = useFormatter();
-  const now = useNow({ updateInterval: 1_000 });
-
-  const method =
-    paymentMethodMapping[paymentMethod.type as MappedPaymentMethod];
-  const Icon = method && "icon" in method ? method.icon : LucideCreditCard;
-
-  const [, disptachAction, isPending] = useActionState(
-    detatchPaymentMethodAction.bind(null, paymentMethod.id),
-    null,
-  );
-
-  const removePaymentMethod = () =>
-    startTransition(() => {
-      disptachAction();
-      router.refresh();
-    });
+  const hasSurvivingDefault = pendingRemoval
+    ? paymentMethods.some(
+        (method) => method.id !== pendingRemoval.id && method.is_default,
+      )
+    : false;
 
   return (
-    <ItemRow
-      data-testid="payment-method-item"
-      icon={<Icon className="size-6 shrink-0" />}
-      rightSide={
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
-          <p
-            className="whitespace-nowrap text-sm"
-            data-testid="passkey-created-at"
-            suppressHydrationWarning
-          >
-            {t("Added {date}", {
-              date: format.relativeTime(paymentMethod.created * 1000, now),
-            })}
-          </p>
-          <Button
-            variant="outline"
-            onClick={removePaymentMethod}
-            disabled={isPending}
-            data-testid="payment-method-remove-button"
-          >
-            {isPending ? <Spinner /> : t("Remove")}
-          </Button>
-        </div>
-      }
-    >
-      <p className="font-medium text-sm">
-        {paymentMethod.billing_details.name || t("No name")}
-      </p>
-      <div className="flex items-center gap-2">
-        {method
-          ? method
-              // @ts-expect-error - different payment method types have different properties
-              .render(paymentMethod[paymentMethod.type])
-              .filter((text): text is string => text !== null)
-              .map((text, index) => (
-                <span
-                  key={index}
-                  className="text-muted-foreground text-sm leading-none"
-                >
-                  {text}
-                </span>
-              ))
-          : null}
-      </div>
-    </ItemRow>
+    <>
+      {!hasDefault && (
+        <Alert
+          variant="warning"
+          className="mb-4"
+          data-testid="no-default-payment-method"
+        >
+          <LucideTriangleAlert aria-hidden="true" />
+          <AlertTitle className="line-clamp-none">
+            {t("No card is chosen for renewals")}
+          </AlertTitle>
+          <AlertDescription>
+            {t(
+              "A renewal has nothing to charge, so the subscription ends when its period does. Pick a card below with “Use for renewals”.",
+            )}
+          </AlertDescription>
+        </Alert>
+      )}
+
+      {paymentMethods.map((paymentMethod) => (
+        <PaymentMethodItem
+          key={paymentMethod.id}
+          paymentMethod={paymentMethod}
+          isSettingDefault={
+            isSettingDefault && setDefaultVariables?.id === paymentMethod.id
+          }
+          onSetDefault={() => setDefault({ id: paymentMethod.id })}
+          onRemove={() => setPendingRemoval(paymentMethod)}
+        />
+      ))}
+
+      <RemovePaymentMethodDialog
+        open={pendingRemoval !== null}
+        onOpenChange={(open) => {
+          if (!open) setPendingRemoval(null);
+        }}
+        // The mutation is optimistic and rolls back with a toast of its own, so
+        // the dialog closes on the press rather than holding the customer in
+        // front of a spinner for a round trip they cannot influence.
+        isPending={false}
+        onConfirm={() => {
+          if (!pendingRemoval) return;
+          removePaymentMethod({ id: pendingRemoval.id });
+          setPendingRemoval(null);
+        }}
+        isLastPaymentMethod={paymentMethods.length === 1}
+        hasSurvivingDefault={hasSurvivingDefault}
+        affectedSubscriptions={affectedSubscriptions}
+      />
+    </>
   );
 }

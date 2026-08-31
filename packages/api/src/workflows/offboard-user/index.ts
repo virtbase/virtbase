@@ -20,6 +20,7 @@ import { anonymizeUserStep } from "./anonymize-user";
 import { claimAccountStep } from "./claim-account";
 import { countRetainedStep } from "./count-retained";
 import { detachExternalServicesStep } from "./detach-external-services";
+import { detachPaymentMethodsStep } from "./detach-payment-methods";
 import { eraseSubjectDataStep } from "./erase-subject-data";
 import { getServersToDestroyStep } from "./get-servers-to-destroy";
 import { purgeIsoDownloadsStep } from "./purge-iso-downloads";
@@ -39,12 +40,15 @@ type OffboardUserWorkflowParams = {
  * post. Building them separately would guarantee they drift, and a drift here
  * is a data-protection incident on one side or a tax problem on the other.
  *
- * The order is not cosmetic. Three constraints fix it:
+ * The order is not cosmetic. Four constraints fix it:
  *
  * - The email address must be read before the step that scrubs it, because the
  *   final message is sent afterwards.
  * - ISO downloads must go before anything writes to `users`: that foreign key
  *   is `restrict`, so the account cannot be touched while they exist.
+ * - Saved credentials must be detached before the Stripe customer that holds
+ *   them is deleted, or the detach is asking a provider to release something
+ *   it no longer has.
  * - Nothing is erased until every VM is confirmed destroyed. A Proxmox outage
  *   should leave a recoverable half-state, not a customer with no account and
  *   a server still running on somebody's node.
@@ -79,27 +83,33 @@ export async function offboardUserWorkflow({
   // 4. Hand back the OAuth grants before the rows holding them disappear.
   const { revoked } = await revokeExternalIdentitiesStep({ userId });
 
-  // 5. Third parties holding a copy.
+  // 5. Hand the saved credentials back to the payment provider, before the
+  //    step below deletes the customer they are attached to. Unlike its
+  //    neighbours this one is not best effort: a card that is still attached
+  //    is a card that can still be charged.
+  const cards = await detachPaymentMethodsStep({ userId });
+
+  // 6. Third parties holding a copy.
   await detachExternalServicesStep({ userId, email });
 
-  // 6. Everything else `SUBJECT_DATA` marks for erasure and no other step
+  // 7. Everything else `SUBJECT_DATA` marks for erasure and no other step
   //    takes: the abuse thread, the signals behind it, the delivery log.
   const erased = await eraseSubjectDataStep({ userId });
 
-  // 7. Count what survives, while it can still be attributed.
+  // 8. Count what survives, while it can still be attributed.
   const retained = await countRetainedStep({ userId });
 
-  // 8. The terminal write.
+  // 9. The terminal write.
   const destroyed = await anonymizeUserStep({ userId, email });
 
-  // 9. Tell them it is done, using the address captured in step 1 - by now the
-  //    row no longer has it.
+  // 10. Tell them it is done, using the address captured in step 1 - by now the
+  //     row no longer has it.
   await sendAccountDeletedEmailStep({
     user: { name, email, locale },
     reason: reason ?? "user_request",
   });
 
-  // 10. Record what happened. Last, because it reports what the steps above
+  // 11. Record what happened. Last, because it reports what the steps above
   //     actually did rather than what they were asked to do.
   await recordErasureStep({
     userId,
@@ -108,6 +118,7 @@ export async function offboardUserWorkflow({
     destroyed: {
       ...destroyed,
       ...erased,
+      ...cards,
       servers: servers.length,
       customImages: purged,
       revokedGrants: revoked,
@@ -120,6 +131,7 @@ export { anonymizeUserStep } from "./anonymize-user";
 export { claimAccountStep } from "./claim-account";
 export { countRetainedStep } from "./count-retained";
 export { detachExternalServicesStep } from "./detach-external-services";
+export { detachPaymentMethodsStep } from "./detach-payment-methods";
 export { eraseSubjectDataStep } from "./erase-subject-data";
 export { getServersToDestroyStep } from "./get-servers-to-destroy";
 export { purgeIsoDownloadsStep } from "./purge-iso-downloads";

@@ -17,7 +17,7 @@
 
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
-import { invoices, orders, payments } from "@virtbase/db/schema";
+import { invoices, orders, payments, subscriptions } from "@virtbase/db/schema";
 
 type CountRetainedStepParams = {
   userId: string;
@@ -35,16 +35,24 @@ export async function countRetainedStep({ userId }: CountRetainedStepParams) {
 
   return db.transaction(
     async (tx) => {
-      const [invoiceCount, orderCount, paymentCount] = await Promise.all([
-        tx.$count(invoices, eq(invoices.userId, userId)),
-        tx.$count(orders, eq(orders.userId, userId)),
-        tx.$count(payments, eq(payments.userId, userId)),
-      ]);
+      const [invoiceCount, orderCount, paymentCount, subscriptionCount] =
+        await Promise.all([
+          tx.$count(invoices, eq(invoices.userId, userId)),
+          tx.$count(orders, eq(orders.userId, userId)),
+          tx.$count(payments, eq(payments.userId, userId)),
+          // Kept for the same reason as the charges they were taken under: a
+          // dispute raised after the account is gone is answered by
+          // `mandate_accepted_at` and the wording version beside it. Its
+          // renewals are not counted separately, any more than order items
+          // are - they hang off the row counted here.
+          tx.$count(subscriptions, eq(subscriptions.userId, userId)),
+        ]);
 
       return {
         invoices: invoiceCount,
         orders: orderCount,
         payments: paymentCount,
+        subscriptions: subscriptionCount,
       };
     },
     {

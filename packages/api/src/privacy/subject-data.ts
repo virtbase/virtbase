@@ -42,6 +42,8 @@ export type Ownership =
   | { via: "server" }
   /** Reached through `orders`. */
   | { via: "order" }
+  /** Reached through `subscriptions`, which is the thing that carries `user_id`. */
+  | { via: "subscription" }
   /** Reached through `abuse_cases`, which is the thing that carries `user_id`. */
   | { via: "abuse_case" }
   /** Reached through `subnet_allocations`, itself reached through `servers`. */
@@ -192,6 +194,29 @@ export const SUBJECT_DATA = {
     basis: `Statutory retention, ${INVOICE_RETENTION_YEARS} years`,
     exportable: false,
   },
+  payment_methods: {
+    ownership: { via: "user_id" },
+    disposition: "erase",
+    reason:
+      "A token that can still take money. Nothing justifies keeping a chargeable credential for someone who has asked to be forgotten, and the four digits beside it identify a card they still hold.",
+    exportable: true,
+  },
+  subscriptions: {
+    ownership: { via: "user_id" },
+    disposition: "retain",
+    reason:
+      "The standing agreement the retained charges were taken under. `mandate_accepted_at` and its wording version are what answer a dispute raised after the account is gone; without them every past charge is undefended.",
+    basis: `Statutory retention, ${INVOICE_RETENTION_YEARS} years`,
+    exportable: true,
+  },
+  subscription_renewals: {
+    ownership: { via: "subscription" },
+    disposition: "retain",
+    reason:
+      "Per-period collection history. No personal data beyond the link to the subscription, and it is the only record of why a period went uncollected.",
+    basis: `Statutory retention, ${INVOICE_RETENTION_YEARS} years`,
+    exportable: true,
+  },
   invoices: {
     ownership: { via: "user_id" },
     disposition: "retain",
@@ -307,6 +332,12 @@ export const NEVER_EXPORTED_COLUMNS = [
   "token_id",
   "token_secret",
   "artifact",
+  // A provider's own handle on something of ours. On `payment_methods` it is
+  // the token an off-session charge is made against - a credential in every
+  // sense that matters, in a file the customer is expected to download and
+  // keep. `payments.provider` and `linked_accounts.account_id` are exported
+  // deliberately and are not this: neither can take money.
+  "external_id",
 ] as const;
 
 /** Tables whose rows are destroyed outright. */

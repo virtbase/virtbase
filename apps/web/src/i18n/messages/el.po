@@ -2110,6 +2110,13 @@ msgctxt "9lr8v8"
 msgid "Subnets"
 msgstr "Υποδίκτυα"
 
+#: src/app/admin.virtbase.com/(dashboard)/subscriptions/[id]/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/subscriptions/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+msgctxt "J-dIsA"
+msgid "Subscriptions"
+msgstr "Συνδρομές"
+
 #: src/app/admin.virtbase.com/(dashboard)/template-groups/[id]/page.tsx
 #: src/app/admin.virtbase.com/(dashboard)/template-groups/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
@@ -2312,7 +2319,6 @@ msgid "Overview"
 msgstr "Επισκόπηση"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/plan/page.tsx
-#: src/features/servers/components/plan/plan-form.tsx
 #: src/features/servers/components/server-nav.tsx
 msgctxt "fz0z4c"
 msgid "Plan"
@@ -2339,6 +2345,7 @@ msgid "An unexpected error occurred while loading the server details."
 msgstr "Παρουσιάστηκε μη αναμενόμενο σφάλμα κατά τη φόρτωση των στοιχείων του διακομιστή."
 
 #: src/app/app.virtbase.com/(dashboard)/servers/error.tsx
+#: src/features/account/components/billing/add-payment-method.tsx
 #: src/ui/generic-error.tsx
 msgctxt "FazwRl"
 msgid "Try again"
@@ -2717,6 +2724,9 @@ msgstr "Δημιουργία κλειδιού API"
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/account/components/authentication/confirm-password-dialog.tsx
 #: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+#: src/features/account/components/billing/add-payment-method-form.tsx
+#: src/features/account/components/billing/add-payment-method.tsx
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 #: src/features/account/components/privacy/delete-account-card.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
@@ -2736,9 +2746,11 @@ msgstr "Δημιουργία κλειδιού API"
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 #: src/features/servers/components/backups/delete-backup-dialog.tsx
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
+#: src/features/servers/components/billing/mandate-dialog.tsx
 #: src/features/servers/components/overview/change-template-dialog.tsx
 #: src/features/servers/components/overview/rename-server-dialog.tsx
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
+#: src/features/servers/components/plan/plan-order-dialog.tsx
 #: src/features/servers/components/rdns/delete-record-dialog.tsx
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx
 #: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
@@ -2934,13 +2946,12 @@ msgid "Passkey #{number}"
 msgstr "Κωδικός πρόσβασης #{number}"
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx
-#: src/features/account/components/billing/payment-methods-list.tsx
 msgctxt "jUqYir"
 msgid "Added {date}"
 msgstr "Προστέθηκε {date}"
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx
-#: src/features/account/components/billing/payment-methods-list.tsx
+#: src/features/account/components/billing/payment-method-item.tsx
 msgctxt "G_yZLu"
 msgid "Remove"
 msgstr "Αφαιρώ"
@@ -3071,15 +3082,216 @@ msgctxt "w-q8k4"
 msgid "Single-use codes in case you lose access to your other factors."
 msgstr "Κωδικοί μίας χρήσης σε περίπτωση που χάσεις την πρόσβαση στους άλλους παράγοντες."
 
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "F-ixiD"
+msgid "Your card details could not be checked. Try again."
+msgstr "Δεν ήταν δυνατός ο έλεγχος των στοιχείων της κάρτας σου. Δοκίμασε ξανά."
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "ofKlJp"
+msgid "Your bank did not approve this card. Check the details, or try a different card."
+msgstr "Η τράπεζά σου δεν ενέκρινε αυτή την κάρτα. Έλεγξε τα στοιχεία ή δοκίμασε άλλη κάρτα."
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "fIib8k"
+msgid "Your bank still has to confirm this card. Finish the check it sent you, then add the card again."
+msgstr "Η τράπεζά σου πρέπει ακόμη να επιβεβαιώσει αυτή την κάρτα. Ολοκλήρωσε τον έλεγχο που σου έστειλε και μετά πρόσθεσε ξανά την κάρτα."
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "5Me-m9"
+msgid "The card was not saved and nothing was charged. Check the details, or try a different card."
+msgstr "Η κάρτα δεν αποθηκεύτηκε και δεν χρεώθηκε τίποτα. Έλεγξε τα στοιχεία ή δοκίμασε άλλη κάρτα."
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "vf0_Um"
+msgid "We only ever see the brand and the last four digits."
+msgstr "Βλέπουμε πάντα μόνο τον τύπο της κάρτας και τα τέσσερα τελευταία ψηφία."
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "BFfES6"
+msgid "The card was not saved"
+msgstr "Η κάρτα δεν αποθηκεύτηκε"
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "AfTYM9"
+msgid "Confirming with your bank…"
+msgstr "Επιβεβαίωση με την τράπεζά σου…"
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "rfC1Zq"
+msgid "Save card"
+msgstr "Αποθήκευση κάρτας"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "oLpiKz"
+msgid "Add a card"
+msgstr "Προσθήκη κάρτας"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "lnbUY-"
+msgid "Opening a secure form…"
+msgstr "Άνοιγμα ασφαλούς φόρμας…"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "9V1fHT"
+msgid "The card form could not be opened"
+msgstr "Δεν ήταν δυνατό το άνοιγμα της φόρμας κάρτας"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "BdZO9K"
+msgid "Nothing was saved and nothing was charged. Try again in a moment."
+msgstr "Δεν αποθηκεύτηκε και δεν χρεώθηκε τίποτα. Δοκίμασε ξανά σε λίγο."
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "HejwTp"
+msgid "Your bank is confirming the mandate"
+msgstr "Η τράπεζά σου επιβεβαιώνει την εντολή"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "mHaiI3"
+msgid "Card saved"
+msgstr "Η κάρτα αποθηκεύτηκε"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "uVPfNA"
+msgid "This can take a day or two. Nothing is charged in the meantime."
+msgstr "Αυτό μπορεί να πάρει μία ή δύο ημέρες. Στο μεταξύ δεν χρεώνεται τίποτα."
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "jcLmIR"
+msgid "It appears in the list above in a few seconds."
+msgstr "Θα εμφανιστεί στη λίστα παραπάνω σε λίγα δευτερόλεπτα."
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "rELDbB"
+msgid "Refresh"
+msgstr "Ανανέωση"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "weEvBW"
+msgid "Nothing is charged when you add a card."
+msgstr "Δεν χρεώνεται τίποτα όταν προσθέτεις κάρτα."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+#: src/features/servers/components/billing/mandate-dialog.tsx
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "hmnIY5"
+msgid "Card"
+msgstr "Κάρτα"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "tFLiQ2"
+msgid "SEPA Direct Debit"
+msgstr "Άμεση χρέωση SEPA"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "wbtiQC"
+msgid "PayPal"
+msgstr "PayPal"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+#: src/features/checkout/components/stripe-payment-form.tsx
+msgctxt "BVTni9"
+msgid "Payment method"
+msgstr "Τρόπος πληρωμής"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "1qYrxy"
+msgid "{instrument} ending {last4}"
+msgstr "{instrument} που λήγει σε {last4}"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "NgmFCU"
+msgid "Use {card} for renewals"
+msgstr "Χρήση για τις ανανεώσεις: {card}"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "b0Sa3V"
+msgid "Use for renewals"
+msgstr "Χρήση για ανανεώσεις"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "37qTXK"
+msgid "Remove {card}"
+msgstr "Αφαίρεση: {card}"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "lKv8ex"
+msgid "Default"
+msgstr "Προεπιλογή"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "_VQpyO"
+msgid "Expires {date}"
+msgstr "Λήγει {date}"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "kn3VHJ"
+msgid "Charged when a subscription renews."
+msgstr "Χρεώνεται όταν ανανεώνεται μια συνδρομή."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "qsrtPX"
+msgid "Expired — replace it to keep automatic renewal"
+msgstr "Έληξε — αντικατάστησέ την για να συνεχιστεί η αυτόματη ανανέωση"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "KR85kZ"
+msgid "This card expired in {date}. Add a new one, choose it for renewals, and then remove this one."
+msgstr "Αυτή η κάρτα έληξε {date}. Πρόσθεσε μια νέα, επίλεξέ την για τις ανανεώσεις και μετά αφαίρεσε αυτή."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "fME4OR"
+msgid "This card has expired. Add a new one, choose it for renewals, and then remove this one."
+msgstr "Αυτή η κάρτα έχει λήξει. Πρόσθεσε μια νέα, επίλεξέ την για τις ανανεώσεις και μετά αφαίρεσε αυτή."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "EAhUyM"
+msgid "Stopped by your bank — replace it to keep automatic renewal"
+msgstr "Σταματήθηκε από την τράπεζά σου — αντικατάστησέ την για να συνεχιστεί η αυτόματη ανανέωση"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "JD3g_M"
+msgid "Refused — replace it to keep automatic renewal"
+msgstr "Απορρίφθηκε — αντικατάστησέ την για να συνεχιστεί η αυτόματη ανανέωση"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "zWgq8B"
+msgid "It was reported lost, so renewals can no longer be charged to it. Add another card and choose it for renewals."
+msgstr "Δηλώθηκε ως χαμένη, οπότε οι ανανεώσεις δεν μπορούν πλέον να χρεωθούν σε αυτήν. Πρόσθεσε άλλη κάρτα και επίλεξέ την για τις ανανεώσεις."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "yZt1Z4"
+msgid "It was reported stolen, so renewals can no longer be charged to it. Add another card and choose it for renewals."
+msgstr "Δηλώθηκε ως κλεμμένη, οπότε οι ανανεώσεις δεν μπορούν πλέον να χρεωθούν σε αυτήν. Πρόσθεσε άλλη κάρτα και επίλεξέ την για τις ανανεώσεις."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "CSGj9j"
+msgid "The permission to charge it was withdrawn, so renewals can no longer use it. Add another card and choose it for renewals."
+msgstr "Η άδεια χρέωσής της ανακλήθηκε, οπότε οι ανανεώσεις δεν μπορούν πλέον να τη χρησιμοποιήσουν. Πρόσθεσε άλλη κάρτα και επίλεξέ την για τις ανανεώσεις."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "Hn4fZn"
+msgid "Your bank does not accept this kind of payment from us. Add another card and choose it for renewals."
+msgstr "Η τράπεζά σου δεν δέχεται αυτό το είδος πληρωμής από εμάς. Πρόσθεσε άλλη κάρτα και επίλεξέ την για τις ανανεώσεις."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "2kKGxe"
+msgid "Your bank refused the last renewal and told us not to try again. Add another card and choose it for renewals, or ask your bank why it was refused."
+msgstr "Η τράπεζά σου απέρριψε την τελευταία ανανέωση και μας ζήτησε να μην ξαναπροσπαθήσουμε. Πρόσθεσε άλλη κάρτα και επίλεξέ την για τις ανανεώσεις ή ρώτησε την τράπεζά σου γιατί απορρίφθηκε."
+
 #: src/features/account/components/billing/payment-methods-card.tsx
 msgctxt "xuTqgN"
 msgid "Payment Methods"
 msgstr "Τρόποι Πληρωμής"
 
 #: src/features/account/components/billing/payment-methods-card.tsx
-msgctxt "oBsxme"
-msgid "The following payment methods are stored and can be used for billing."
-msgstr "Οι παρακάτω τρόποι πληρωμής αποθηκεύονται και μπορούν να χρησιμοποιηθούν για τη χρέωση."
+msgctxt "1r9dHK"
+msgid "The cards your subscriptions renew on."
+msgstr "Οι κάρτες από τις οποίες ανανεώνονται οι συνδρομές σου."
 
 #: src/features/account/components/billing/payment-methods-list.tsx
 msgctxt "qyRflV"
@@ -3087,14 +3299,74 @@ msgid "No payment methods"
 msgstr "Δεν υπάρχουν τρόποι πληρωμής"
 
 #: src/features/account/components/billing/payment-methods-list.tsx
-msgctxt "gL_ZgG"
-msgid "No payment methods have been linked to your account."
-msgstr "Δεν έχουν συνδεθεί τρόποι πληρωμής με τον λογαριασμό σας."
+msgctxt "uc7KVl"
+msgid "No cards have been saved yet. A subscription cannot renew without one."
+msgstr "Δεν έχει αποθηκευτεί ακόμη καμία κάρτα. Χωρίς κάρτα μια συνδρομή δεν μπορεί να ανανεωθεί."
 
 #: src/features/account/components/billing/payment-methods-list.tsx
-msgctxt "3MBRV5"
-msgid "No name"
-msgstr "Δεν έχει δοθεί όνομα"
+msgctxt "O7KbvF"
+msgid "No card is chosen for renewals"
+msgstr "Δεν έχει επιλεγεί κάρτα για τις ανανεώσεις"
+
+#: src/features/account/components/billing/payment-methods-list.tsx
+msgctxt "bXjwnf"
+msgid "A renewal has nothing to charge, so the subscription ends when its period does. Pick a card below with “Use for renewals”."
+msgstr "Η ανανέωση δεν έχει τι να χρεώσει, οπότε η συνδρομή λήγει μαζί με την περίοδό της. Διάλεξε παρακάτω μια κάρτα με το «Χρήση για ανανεώσεις»."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "hguqnC"
+msgid "Remove this card?"
+msgstr "Αφαίρεση αυτής της κάρτας;"
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "5PZkYP"
+msgid "Remove card"
+msgstr "Αφαίρεση κάρτας"
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "mLXaQO"
+msgid "It is detached from our payment provider straight away and can never be charged again. Receipts for payments you have already made are unaffected."
+msgstr "Αποσυνδέεται αμέσως από τον πάροχο πληρωμών μας και δεν μπορεί ποτέ ξανά να χρεωθεί. Οι αποδείξεις για πληρωμές που έχεις ήδη κάνει δεν επηρεάζονται."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "JtXgPI"
+msgid "Automatic renewal will stop"
+msgstr "Η αυτόματη ανανέωση θα σταματήσει"
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "XuZcbZ"
+msgid "This is the only card on your account, and {count} subscription(s) renew automatically. Once it is gone there is nothing left to charge them to."
+msgstr "Αυτή είναι η μόνη κάρτα στον λογαριασμό σου. Συνδρομές που ανανεώνονται αυτόματα: {count}. Μόλις φύγει, δεν μένει τίποτα για να χρεωθούν."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "KZqy-S"
+msgid "This is the card renewals are charged to, and removing it leaves your account without one. {count} subscription(s) renew automatically and would have nothing to charge."
+msgstr "Σε αυτή την κάρτα χρεώνονται οι ανανεώσεις και, αν την αφαιρέσεις, ο λογαριασμός σου μένει χωρίς καμία. Συνδρομές που ανανεώνονται αυτόματα: {count} — δεν θα είχαν τι να χρεώσουν."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "YFs9Ts"
+msgid "Nothing is switched off today: each one runs to the end of the period you have already paid for — the first on {date} — and then ends instead of renewing."
+msgstr "Σήμερα δεν απενεργοποιείται τίποτα: καθεμία τρέχει μέχρι το τέλος της περιόδου που έχεις ήδη πληρώσει — η πρώτη στις {date} — και μετά λήγει αντί να ανανεωθεί."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "DX5sBC"
+msgid "Nothing is switched off today: each one runs to the end of the period you have already paid for, and then ends instead of renewing."
+msgstr "Σήμερα δεν απενεργοποιείται τίποτα: καθεμία τρέχει μέχρι το τέλος της περιόδου που έχεις ήδη πληρώσει και μετά λήγει αντί να ανανεωθεί."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "sfngf8"
+msgid "You can still remove it. Add another card before then and renewals carry on as before."
+msgstr "Μπορείς και πάλι να την αφαιρέσεις. Πρόσθεσε μέχρι τότε άλλη κάρτα και οι ανανεώσεις συνεχίζονται όπως πριν."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "uz-t0Q"
+msgid "Renewals move to your default card"
+msgstr "Οι ανανεώσεις μεταφέρονται στην προεπιλεγμένη σου κάρτα"
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "OL4fV7"
+msgid "{count} subscription(s) renew on this card. They will be charged to the card you have chosen for renewals instead."
+msgstr "Συνδρομές που ανανεώνονται με αυτή την κάρτα: {count}. Θα χρεώνονται στην κάρτα που έχεις επιλέξει για τις ανανεώσεις."
 
 #: src/features/account/components/custom-images/create-custom-image-button.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
@@ -3589,6 +3861,16 @@ msgctxt "6admx4"
 msgid "Please use at least 8 characters, one uppercase letter, one lowercase letter and one number."
 msgstr "Χρησιμοποίησε τουλάχιστον 8 χαρακτήρες, ένα κεφαλαίο γράμμα, ένα πεζό γράμμα και έναν αριθμό."
 
+#: src/features/account/hooks/billing/remove-payment-method.ts
+msgctxt "hBp-IX"
+msgid "Could not remove the card. It is still on your account — try again in a moment."
+msgstr "Δεν ήταν δυνατή η αφαίρεση της κάρτας. Παραμένει στον λογαριασμό σου — δοκίμασε ξανά σε λίγο."
+
+#: src/features/account/hooks/billing/set-default-payment-method.ts
+msgctxt "Hxr4zr"
+msgid "Could not change the default card. Nothing changed — try again."
+msgstr "Δεν ήταν δυνατή η αλλαγή της προεπιλεγμένης κάρτας. Δεν άλλαξε τίποτα — δοκίμασε ξανά."
+
 #: src/features/admin/components/abuse/abuse-case-conversation.tsx
 #: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
 msgctxt "jw6_u7"
@@ -3609,6 +3891,8 @@ msgstr "Αναφέρθηκε από {reporter}"
 #: src/features/admin/components/abuse/abuse-case-detail.tsx
 #: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
 #: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
 msgctxt "hkENym"
 msgid "Customer"
 msgstr "Πελάτης"
@@ -3722,6 +4006,7 @@ msgstr "Κανείς — αυτή η υπόθεση δεν άνοιξε από �
 
 #: src/features/admin/components/abuse/abuse-case-detail.tsx
 #: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "ADKsID"
 msgid "Opened"
 msgstr "Άνοιξε"
@@ -3748,6 +4033,7 @@ msgstr "Επηρεαζόμενοι διακομιστές"
 
 #: src/features/admin/components/abuse/abuse-case-detail.tsx
 #: src/features/admin/components/proxmox-templates/template-settings.tsx
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
 msgctxt "450Fty"
 msgid "None"
 msgstr "Κανένα"
@@ -3820,6 +4106,8 @@ msgstr "Μετακίνηση σε"
 #: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
 #: src/features/admin/components/emails/emails-table/columns.tsx
 #: src/features/admin/components/integrations/integration-health-panel.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgctxt "tzMNF3"
 msgid "Status"
@@ -4470,6 +4758,7 @@ msgid "No templates are defined yet."
 msgstr "Δεν έχουν οριστεί ακόμη πρότυπα."
 
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "XPruqs"
 msgid "Order"
 msgstr "Σειρά"
@@ -4688,6 +4977,8 @@ msgid "Email preview"
 msgstr "Προεπισκόπηση email"
 
 #: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
 msgctxt "LLtKhp"
 msgid "Subject"
 msgstr "Θέμα"
@@ -4773,6 +5064,7 @@ msgid "Stored encrypted and never shown again. Leave a field blank to keep its c
 msgstr "Αποθηκεύονται κρυπτογραφημένα και δεν εμφανίζονται ποτέ ξανά. Αφήστε ένα πεδίο κενό για να διατηρήσετε την τρέχουσα τιμή του."
 
 #: src/features/admin/components/integrations/integrations-hub.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "iYc3Ld"
 msgid "Payments"
 msgstr "Πληρωμές"
@@ -5346,11 +5638,6 @@ msgid "Re-download after"
 msgstr "Επανάληψη λήψης μετά"
 
 #: src/features/admin/components/proxmox-templates/template-settings.tsx
-msgctxt "lKv8ex"
-msgid "Default"
-msgstr "Προεπιλογή"
-
-#: src/features/admin/components/proxmox-templates/template-settings.tsx
 msgctxt "n8cyVk"
 msgid "Operating system"
 msgstr "Λειτουργικό σύστημα"
@@ -5535,6 +5822,256 @@ msgstr "Τύπος"
 msgctxt "PLUhm9"
 msgid "VLAN ID"
 msgstr "ID VLAN"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "SKenPE"
+msgid "Renewal history"
+msgstr "Ιστορικό ανανεώσεων"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "oS8byb"
+msgid "Every period this subscription has tried to collect, newest first. The decline code is the provider's own, stored exactly as it was returned."
+msgstr "Κάθε περίοδος για την οποία αυτή η συνδρομή επιχείρησε είσπραξη, με πρώτη την πιο πρόσφατη. Ο κωδικός απόρριψης είναι του παρόχου, αποθηκευμένος ακριβώς όπως επιστράφηκε."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "jgEHx0"
+msgid "No renewals yet"
+msgstr "Καμία ανανέωση ακόμη"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "kuTig1"
+msgid "Nothing has fallen due on this subscription. A row appears here the moment a period is claimed for collection."
+msgstr "Σε αυτή τη συνδρομή δεν έχει καταστεί ακόμη τίποτα ληξιπρόθεσμο. Μια γραμμή εμφανίζεται εδώ τη στιγμή που μια περίοδος διεκδικείται για είσπραξη."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "jCNpEL"
+msgid "Period"
+msgstr "Περίοδος"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
+msgctxt "_0TOL5"
+msgid "Amount"
+msgstr "Ποσό"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "fVG1Ff"
+msgid "Attempt"
+msgstr "Προσπάθεια"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "DnMTTO"
+msgid "Decline code"
+msgstr "Κωδικός απόρριψης"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "r68Vd2"
+msgid "Next attempt"
+msgstr "Επόμενη προσπάθεια"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "4GVMfk"
+msgid "The charges behind those renewals, reached through the orders they produced. The transaction id is what to look up with the provider."
+msgstr "Οι χρεώσεις πίσω από αυτές τις ανανεώσεις, μέσω των παραγγελιών που δημιούργησαν. Στον πάροχο η αναζήτηση γίνεται με το αναγνωριστικό συναλλαγής."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "5_cvkc"
+msgid "No payments recorded"
+msgstr "Δεν έχουν καταγραφεί πληρωμές"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "P1SIjh"
+msgid "No renewal on this subscription has reached a charge yet, so there is nothing to look up with the provider."
+msgstr "Καμία ανανέωση αυτής της συνδρομής δεν έχει φτάσει ακόμη σε χρέωση, οπότε δεν υπάρχει τίποτα να αναζητηθεί στον πάροχο."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "xaj9Ba"
+msgid "Provider"
+msgstr "Πάροχος"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "92e4Pu"
+msgid "Transaction id"
+msgstr "Αναγνωριστικό συναλλαγής"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "ORGv1Q"
+msgid "Created"
+msgstr "Δημιουργήθηκε"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "7Sb0xt"
+msgid "{amount} refunded"
+msgstr "Επιστράφηκαν {amount}"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "nQHVOl"
+msgid "Payment methods on file"
+msgstr "Καταχωρημένοι τρόποι πληρωμής"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "zT_kqh"
+msgid "Display material only. The credential token these point at is never shown."
+msgstr "Μόνο στοιχεία εμφάνισης. Το διακριτικό διαπιστευτηρίων στο οποίο δείχνουν δεν εμφανίζεται ποτέ."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "VvlhCa"
+msgid "Nothing on file"
+msgstr "Τίποτα καταχωρημένο"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "4epRjy"
+msgid "This customer has no stored credential, so an automatic renewal has nothing to charge."
+msgstr "Αυτός ο πελάτης δεν έχει αποθηκευμένα στοιχεία πληρωμής, οπότε μια αυτόματη ανανέωση δεν έχει τι να χρεώσει."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "AaiUD0"
+msgid "no last four"
+msgstr "χωρίς τέσσερα τελευταία ψηφία"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "l0VcDL"
+msgid "expires {month}/{year}"
+msgstr "λήγει {month}/{year}"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "XJ5FR9"
+msgid "Named"
+msgstr "Ορισμένη"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "2im1Il"
+msgid "Detached"
+msgstr "Αποσυνδεδεμένη"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "rBcVFE"
+msgid "Invalid since {date}"
+msgstr "Άκυρη από {date}"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "yrIdiE"
+msgid "Auto-renew on"
+msgstr "Αυτόματη ανανέωση ενεργή"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "zzzrqz"
+msgid "Auto-renew off"
+msgstr "Αυτόματη ανανέωση ανενεργή"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "KsFKQy"
+msgid "No mandate"
+msgstr "Χωρίς εντολή"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "AXyFb3"
+msgid "Gone — the subject no longer exists"
+msgstr "Χάθηκε — το θέμα δεν υπάρχει πλέον"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "3uJDrU"
+msgid "Current period"
+msgstr "Τρέχουσα περίοδος"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/servers/components/server-graphs.tsx
+msgctxt "6m3w-3"
+msgid "Interval"
+msgstr "Διάστημα"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "GM3YzV"
+msgid "{months} months"
+msgstr "{months} μήν."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "cK9cxa"
+msgid "Agreed price"
+msgstr "Συμφωνημένη τιμή"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "IfymNN"
+msgid "{amount} on renewal"
+msgstr "{amount} στην ανανέωση"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "se3ldP"
+msgid "{amount} at signup"
+msgstr "{amount} κατά την εγγραφή"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "ODSPeV"
+msgid "What was agreed at signup. A renewal is quoted from the price locked to the server."
+msgstr "Τι συμφωνήθηκε κατά την εγγραφή. Η ανανέωση τιμολογείται από την τιμή που είναι κλειδωμένη στον διακομιστή."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "AQZ9EK"
+msgid "Mandate"
+msgstr "Εντολή"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "SsoKGP"
+msgid "wording {version}"
+msgstr "διατύπωση {version}"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "eTs2vO"
+msgid "No consent recorded to charge off-session."
+msgstr "Δεν έχει καταγραφεί συγκατάθεση για χρέωση εκτός συνεδρίας."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "3wsVWF"
+msgid "Cancelled"
+msgstr "Ακυρώθηκε"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "TP_cMX"
+msgid "Ended"
+msgstr "Έληξε"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "WqaNWU"
+msgid "This page is read-only. Retrying a collection, granting time or cancelling all happen elsewhere."
+msgstr "Αυτή η σελίδα είναι μόνο για ανάγνωση. Η επανάληψη μιας είσπραξης, η παροχή χρόνου και η ακύρωση γίνονται αλλού."
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "laPj3K"
+msgid "Search by server, customer or id..."
+msgstr "Αναζήτηση κατά διακομιστή, πελάτη ή αναγνωριστικό..."
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "WZ-2C3"
+msgid "Period ends"
+msgstr "Λήξη περιόδου"
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "KSguPh"
+msgid "every {months} months"
+msgstr "κάθε {months} μήν."
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "evMlX9"
+msgid "Auto-renew"
+msgstr "Αυτόματη ανανέωση"
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "Zh-5A6"
+msgid "On"
+msgstr "Ενεργό"
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "OvzONl"
+msgid "Off"
+msgstr "Ανενεργό"
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "pGCLGL"
+msgid "Recorded"
+msgstr "Καταγράφηκε"
 
 #: src/features/admin/components/users/users-table/columns.tsx
 msgctxt "BzHQ0A"
@@ -5779,7 +6316,6 @@ msgid "If left blank, a secure random password will be generated and sent by ema
 msgstr "Εάν μείνει κενό, θα δημιουργηθεί ένας ασφαλής τυχαίος κωδικός πρόσβασης και θα σταλεί μέσω email."
 
 #: src/features/checkout/components/checkout-form.tsx
-#: src/features/servers/components/plan/plan-summary.tsx
 msgctxt "-g-0OK"
 msgid "Continue to payment"
 msgstr "Συνεχίστε την πληρωμή"
@@ -5837,8 +6373,7 @@ msgstr "ανά μήνα"
 
 #: src/features/checkout/components/offer-card.tsx
 #: src/features/checkout/components/order-summary.tsx
-#: src/features/servers/components/plan/plan-radio-group.tsx
-#: src/features/servers/components/plan/plan-summary.tsx
+#: src/features/servers/components/plan/plan-specs.tsx
 #: src/features/servers/components/servers-list.tsx
 msgctxt "BGI16m"
 msgid "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
@@ -5882,7 +6417,7 @@ msgid "Configure now"
 msgstr "Διαμόρφωση τώρα"
 
 #: src/features/checkout/components/offer-card.tsx
-#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/plan-list.tsx
 msgctxt "spsPUc"
 msgid "Sold out"
 msgstr "Εξαντλημένα"
@@ -5908,11 +6443,6 @@ msgid "Used for invoicing and VAT calculation."
 msgstr "Χρησιμοποιείται για την τιμολόγηση και τον υπολογισμό του ΦΠΑ."
 
 #: src/features/checkout/components/stripe-payment-form.tsx
-msgctxt "BVTni9"
-msgid "Payment method"
-msgstr "Τρόπος πληρωμής"
-
-#: src/features/checkout/components/stripe-payment-form.tsx
 msgctxt "11yeGk"
 msgid "Payments are securely processed by Stripe."
 msgstr "Οι πληρωμές επεξεργάζονται με ασφάλεια από το Stripe."
@@ -5923,11 +6453,13 @@ msgid "Payment could not be completed"
 msgstr "Δεν ήταν δυνατή η ολοκλήρωση της πληρωμής"
 
 #: src/features/checkout/components/stripe-payment-form.tsx
+#: src/features/servers/components/plan/plan-order-dialog.tsx
 msgctxt "ddCkDY"
 msgid "Processing payment…"
 msgstr "Επεξεργασία πληρωμής…"
 
 #: src/features/checkout/components/stripe-payment-form.tsx
+#: src/features/servers/components/plan/plan-order-dialog.tsx
 msgctxt "7tOz-m"
 msgid "Pay now"
 msgstr "Πληρώστε τώρα"
@@ -5993,6 +6525,7 @@ msgid "Expired (will be deleted {date})"
 msgstr "Έληξε (θα διαγραφεί {date})"
 
 #: src/features/dashboard/components/server-status-small.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
 #: src/features/servers/hooks/use-status-mapping.ts
 msgctxt "oJsHQW"
 msgid "Suspended"
@@ -6022,11 +6555,6 @@ msgstr "Αριθμός τιμολογίου"
 msgctxt "cIAuzz"
 msgid "Search invoice number..."
 msgstr "Αναζήτηση αριθμού τιμολογίου..."
-
-#: src/features/invoices/components/invoices-table/columns.tsx
-msgctxt "_0TOL5"
-msgid "Amount"
-msgstr "Ποσό"
 
 #: src/features/invoices/components/invoices-table/columns.tsx
 msgctxt "dULmbA"
@@ -6435,6 +6963,203 @@ msgctxt "pFmRJS"
 msgid "Should the backup be restored?"
 msgstr "Πρέπει να γίνει επαναφορά του αντιγράφου ασφαλείας;"
 
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "tYBzXd"
+msgid "Automatic renewal"
+msgstr "Αυτόματη ανανέωση"
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "3d6fWf"
+msgid "Your server renews by itself. We charge {price} at the end of each term."
+msgstr "Ο διακομιστής σου ανανεώνεται μόνος του. Στο τέλος κάθε περιόδου χρεώνουμε {price}."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "Owt71Z"
+msgid "Your server renews by itself at the end of each term."
+msgstr "Ο διακομιστής σου ανανεώνεται μόνος του στο τέλος κάθε περιόδου."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "DTMKLg"
+msgid "Your server will not renew by itself. It stops at the end of the current term unless you extend it."
+msgstr "Ο διακομιστής σου δεν θα ανανεωθεί μόνος του. Σταματά στο τέλος της τρέχουσας περιόδου, εκτός αν τον παρατείνεις."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "bByVFS"
+msgid "Resume this subscription before turning automatic renewal back on."
+msgstr "Συνέχισε αυτή τη συνδρομή πριν ενεργοποιήσεις ξανά την αυτόματη ανανέωση."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "fANfrY"
+msgid "This subscription can no longer renew."
+msgstr "Αυτή η συνδρομή δεν μπορεί πλέον να ανανεωθεί."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "Up6lw2"
+msgid "The payment method we would charge cannot be used. Pick a different default on the payment methods page, then turn automatic renewal on."
+msgstr "Ο τρόπος πληρωμής που θα χρεώναμε δεν μπορεί να χρησιμοποιηθεί. Επίλεξε άλλον προεπιλεγμένο στη σελίδα τρόπων πληρωμής και μετά ενεργοποίησε την αυτόματη ανανέωση."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "4wd5lv"
+msgid "Add a payment method first. Automatic renewal needs a card we can charge when your term ends."
+msgstr "Πρόσθεσε πρώτα έναν τρόπο πληρωμής. Η αυτόματη ανανέωση χρειάζεται μια κάρτα που μπορούμε να χρεώσουμε όταν λήγει η περίοδός σου."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "99eSnZ"
+msgid "Manage payment methods"
+msgstr "Διαχείριση τρόπων πληρωμής"
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "zdTT0e"
+msgid "Cancelling your subscription"
+msgstr "Ακύρωση της συνδρομής σου"
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "UaMo5U"
+msgid "Confirm that you want to cancel this subscription."
+msgstr "Επιβεβαίωσε ότι θέλεις να ακυρώσεις αυτή τη συνδρομή."
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "orvpWh"
+msgid "Go back"
+msgstr "Πίσω"
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "LhY9Hz"
+msgid "Cancel subscription now"
+msgstr "Ακύρωση συνδρομής τώρα"
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "Hcq5-Y"
+msgid "The subscription for {name} will be cancelled."
+msgstr "Η συνδρομή για {name} θα ακυρωθεί."
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "LQS043"
+msgid "This subscription will be cancelled."
+msgstr "Αυτή η συνδρομή θα ακυρωθεί."
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "SWNin3"
+msgid "Your server keeps running until {date}, the end of the term you have already paid for. Nothing is switched off today and you will not be charged again."
+msgstr "Ο διακομιστής σου συνεχίζει να λειτουργεί μέχρι {date}, το τέλος της περιόδου που έχεις ήδη πληρώσει. Σήμερα δεν απενεργοποιείται τίποτα και δεν θα χρεωθείς ξανά."
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "zbAQsT"
+msgid "After {date} the server is not renewed and is shut down."
+msgstr "Μετά τις {date} ο διακομιστής δεν ανανεώνεται και τερματίζεται."
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "5SyDDF"
+msgid "Subscription cancelled"
+msgstr "Η συνδρομή ακυρώθηκε"
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "vU7iFi"
+msgid "Your server keeps running until {date} and will not be renewed."
+msgstr "Ο διακομιστής σου συνεχίζει να λειτουργεί μέχρι {date} και δεν θα ανανεωθεί."
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "wIfHh6"
+msgid "The paid-for term ended on {date}."
+msgstr "Η πληρωμένη περίοδος έληξε στις {date}."
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "9CnHy1"
+msgid "Resume subscription"
+msgstr "Συνέχιση συνδρομής"
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "5kfntb"
+msgid "Cancellation"
+msgstr "Ακύρωση"
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "mYShCs"
+msgid "Your server keeps running until {date}. Cancelling only stops it being renewed after that."
+msgstr "Ο διακομιστής σου συνεχίζει να λειτουργεί μέχρι {date}. Η ακύρωση απλώς σταματά την ανανέωσή του μετά από αυτό."
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "UWVETE"
+msgid "Cancel subscription"
+msgstr "Ακύρωση συνδρομής"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "HS8EXa"
+msgid "{price} every month"
+msgstr "{price} κάθε μήνα"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "GmZa3s"
+msgid "{price} every {months} months"
+msgstr "{price} κάθε {months} μήνες"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "lVjU8T"
+msgid "your saved payment method"
+msgstr "ο αποθηκευμένος τρόπος πληρωμής σου"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "x36plV"
+msgid "Agree to automatic payments"
+msgstr "Συμφωνία για αυτόματες πληρωμές"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "AwY5G0"
+msgid "Read and accept the terms under which Virtbase may charge your saved payment method."
+msgstr "Διάβασε και αποδέξου τους όρους υπό τους οποίους η Virtbase μπορεί να χρεώνει τον αποθηκευμένο τρόπο πληρωμής σου."
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "vVdCCw"
+msgid "Agree and turn on automatic renewal"
+msgstr "Συμφωνώ και ενεργοποιώ την αυτόματη ανανέωση"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "Wi3JqI"
+msgid "Virtbase will charge {cadence} to {card}, starting on {date} when your current term ends."
+msgstr "Η Virtbase θα χρεώνει {cadence}, με πρώτη χρέωση στις {date}, όταν λήγει η τρέχουσα περίοδός σου. Τρόπος πληρωμής: {card}."
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "Bs-2A3"
+msgid "This happens automatically. You will not be asked to approve each payment and you do not have to do anything for your server to keep running. If the price of your plan changes, we will tell you before the next payment."
+msgstr "Αυτό γίνεται αυτόματα. Δεν θα σου ζητηθεί να εγκρίνεις κάθε πληρωμή και δεν χρειάζεται να κάνεις τίποτα για να συνεχίσει να λειτουργεί ο διακομιστής σου. Αν αλλάξει η τιμή του πακέτου σου, θα σου το πούμε πριν από την επόμενη πληρωμή."
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "8HQobB"
+msgid "You can turn automatic renewal off again at any time with the switch you just used, and you can end the subscription altogether with the “Cancel subscription” button on this page. Either way, your server keeps running until the end of the term you have already paid for."
+msgstr "Μπορείς να απενεργοποιήσεις ξανά την αυτόματη ανανέωση οποιαδήποτε στιγμή με τον διακόπτη που μόλις χρησιμοποίησες, και μπορείς να τερματίσεις εντελώς τη συνδρομή με το κουμπί «Ακύρωση συνδρομής» σε αυτή τη σελίδα. Σε κάθε περίπτωση, ο διακομιστής σου συνεχίζει να λειτουργεί μέχρι το τέλος της περιόδου που έχεις ήδη πληρώσει."
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "SCQaYd"
+msgid "I agree that Virtbase may charge {cadence} to my saved payment method, automatically and without asking again, until I turn this off or cancel."
+msgstr "Συμφωνώ ότι η Virtbase μπορεί να χρεώνει {cadence} στον αποθηκευμένο τρόπο πληρωμής μου, αυτόματα και χωρίς να ρωτά ξανά, μέχρι να το απενεργοποιήσω ή να ακυρώσω."
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "Yqvd5-"
+msgid "Agreement version {version}"
+msgstr "Έκδοση συμφωνίας {version}"
+
+#: src/features/servers/components/billing/past-due-alert.tsx
+msgctxt "9k3Wi4"
+msgid "A payment for this server failed"
+msgstr "Μια πληρωμή για αυτόν τον διακομιστή απέτυχε"
+
+#: src/features/servers/components/billing/past-due-alert.tsx
+msgctxt "XZ2cEy"
+msgid "We could not collect the payment for your next term. We will try again automatically over the coming days. If it keeps failing, your server is suspended after {date} and deleted once the grace period has passed."
+msgstr "Δεν καταφέραμε να εισπράξουμε την πληρωμή για την επόμενη περίοδό σου. Θα ξαναπροσπαθήσουμε αυτόματα τις επόμενες ημέρες. Αν συνεχίσει να αποτυγχάνει, ο διακομιστής σου τίθεται σε αναστολή μετά τις {date} και διαγράφεται μόλις περάσει η περίοδος χάριτος."
+
+#: src/features/servers/components/billing/past-due-alert.tsx
+msgctxt "Ty5fKl"
+msgid "If you have just replaced your payment method, you do not have to wait for the next attempt."
+msgstr "Αν μόλις άλλαξες τον τρόπο πληρωμής σου, δεν χρειάζεται να περιμένεις την επόμενη προσπάθεια."
+
+#: src/features/servers/components/billing/past-due-alert.tsx
+msgctxt "f6dOFt"
+msgid "Retry now"
+msgstr "Επανάληψη τώρα"
+
 #: src/features/servers/components/console/console-frame.tsx
 msgctxt "lptya2"
 msgid "Server is suspended"
@@ -6600,113 +7325,333 @@ msgctxt "lxp8MB"
 msgid "Taken from the template this server was created from. Install the {packageName} package to have Virtbase read the operating system from inside the server."
 msgstr "Προέρχεται από το πρότυπο με το οποίο δημιουργήθηκε αυτός ο διακομιστής. Εγκατάστησε το πακέτο {packageName} ώστε το Virtbase να μπορεί να διαβάσει το λειτουργικό σύστημα από το εσωτερικό του διακομιστή σου."
 
-#: src/features/servers/components/plan/plan-form.tsx
-msgctxt "Kng3Em"
-msgid "Select a new plan or extend your current plan. Downgrading to a smaller storage plan is not supported."
-msgstr "Επιλέξτε ένα νέο πρόγραμμα ή επεκτείνετε το τρέχον πρόγραμμα. Η υποβάθμιση σε μικρότερο πακέτο αποθηκευτικού χώρου δεν υποστηρίζεται."
-
-#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
+#: src/features/servers/components/plan/plan-list.tsx
 #: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "tpfEY0"
-msgid "{memory} RAM"
-msgstr "{memory} RAM"
-
-#: src/features/servers/components/plan/plan-radio-group.tsx
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "cenOuc"
-msgid "{storage} NVMe SSD"
-msgstr "{storage} NVMe SSD"
-
-#: src/features/servers/components/plan/plan-radio-group.tsx
-msgctxt "uPG29C"
-msgid "{price} today"
-msgstr "{price} σήμερα"
-
-#: src/features/servers/components/plan/plan-radio-group.tsx
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "9H3YQm"
-msgid "then {price} / month"
-msgstr "έπειτα {price} / μήνα"
-
-#: src/features/servers/components/plan/plan-radio-group.tsx
 msgctxt "JxjC5u"
 msgid "{price} / month"
 msgstr "{price} / μήνα"
 
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "aG7JgP"
-msgid "Downgrading to a smaller storage plan isn't supported. Pick a plan with at least {size} of storage."
-msgstr "Η υποβάθμιση σε μικρότερο πακέτο αποθηκευτικού χώρου δεν υποστηρίζεται. Επιλέξτε ένα πρόγραμμα με τουλάχιστον {size} αποθηκευτικό χώρο."
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "3XuHC5"
-msgid "{name} is sold out right now. Try again later or pick a different plan."
-msgstr "Το {name} έχει εξαντληθεί αυτή τη στιγμή. Δοκιμάστε ξανά αργότερα ή επιλέξτε ένα διαφορετικό σχέδιο."
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "1p9GGF"
-msgid "This plan is sold out. Please pick a different plan."
-msgstr "Αυτό το σχέδιο έχει εξαντληθεί. Επιλέξτε ένα διαφορετικό σχέδιο."
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "fOZyRZ"
-msgid "Your current term has expired. Please renew your server first, then upgrade."
-msgstr "Η τρέχουσα περίοδός σας έχει λήξει. Παρακαλώ ανανεώστε πρώτα τον διακομιστή σας και στη συνέχεια κάντε αναβάθμιση."
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "ZjhoiP"
-msgid "Select a plan"
-msgstr "Επιλέξτε ένα σχέδιο"
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "SB__YQ"
-msgid "Order summary"
-msgstr "Περίληψη παραγγελίας"
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "RrCui3"
-msgid "Summary"
-msgstr "Περίληψη"
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "6WPC9q"
-msgid "Plan change"
-msgstr "Αλλαγή σχεδίου"
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "kkpP2k"
-msgid "today"
-msgstr "σήμερα"
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "Vn2ud4"
-msgid "/ month"
-msgstr "/ μήνα"
-
+#: src/features/servers/components/plan/current-plan-card.tsx
 #: src/features/servers/components/plan/plan-summary.tsx
 msgctxt "LQbES8"
 msgid "Incl. statutory VAT, if applicable"
 msgstr "Συμπ. νόμιμο ΦΠΑ, εάν ισχύει"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "qV-TFm"
+msgid "Payment failed"
+msgstr "Η πληρωμή απέτυχε"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "CrEhnK"
+msgid "No end date"
+msgstr "Χωρίς ημερομηνία λήξης"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "zvApHY"
+msgid "Ends on {date}"
+msgstr "Λήγει στις {date}"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "uk8hUQ"
+msgid "Runs until {date}, then ends"
+msgstr "Λειτουργεί μέχρι {date} και μετά λήγει"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "L7pwLO"
+msgid "Ended on {date}"
+msgstr "Έληξε στις {date}"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "CkSYU4"
+msgid "Cancelled. It will not be renewed."
+msgstr "Ακυρώθηκε. Δεν θα ανανεωθεί."
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "mYEBl9"
+msgid "The server is suspended until this is paid."
+msgstr "Ο διακομιστής είναι σε αναστολή μέχρι να πληρωθεί αυτό."
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "TiBG0-"
+msgid "Renews automatically on {date}"
+msgstr "Ανανεώνεται αυτόματα στις {date}"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "h5ziTq"
+msgid "Nothing renews by itself unless you turn it on below."
+msgstr "Τίποτα δεν ανανεώνεται από μόνο του, εκτός αν το ενεργοποιήσεις παρακάτω."
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "g1lN9B"
+msgid "Automatic renewal is not set up"
+msgstr "Η αυτόματη ανανέωση δεν έχει ρυθμιστεί"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "US-mpc"
+msgid "This server is paid for one term at a time, so nothing is charged without you. It keeps running until {date} — extend it before then and it carries on."
+msgstr "Αυτός ο διακομιστής πληρώνεται μία περίοδο τη φορά, οπότε δεν χρεώνεται τίποτα χωρίς εσένα. Λειτουργεί μέχρι {date} — παράτεινέ τον πριν από τότε και συνεχίζει."
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "se4Js1"
+msgid "This server is paid for one term at a time, so nothing is charged without you. Extend it below to keep it running."
+msgstr "Αυτός ο διακομιστής πληρώνεται μία περίοδο τη φορά, οπότε δεν χρεώνεται τίποτα χωρίς εσένα. Παράτεινέ τον παρακάτω για να συνεχίσει να λειτουργεί."
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "6zkPH-"
+msgid "Extend or change your plan"
+msgstr "Παράταση ή αλλαγή πακέτου"
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "ktNrBh"
+msgid "Payment submitted. It can take a moment to go through."
+msgstr "Η πληρωμή υποβλήθηκε. Μπορεί να χρειαστεί λίγη ώρα να ολοκληρωθεί."
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "YTQMmP"
+msgid "Your bank wants you to confirm this payment. Check your banking app."
+msgstr "Η τράπεζά σου θέλει να επιβεβαιώσεις αυτή την πληρωμή. Έλεγξε την εφαρμογή της τράπεζάς σου."
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "80-bz2"
+msgid "The payment was declined again. We will try again automatically."
+msgstr "Η πληρωμή απορρίφθηκε ξανά. Θα ξαναπροσπαθήσουμε αυτόματα."
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "SE531V"
+msgid "The payment was declined and there are no attempts left. Add a working payment method and extend the server."
+msgstr "Η πληρωμή απορρίφθηκε και δεν απομένουν άλλες προσπάθειες. Πρόσθεσε έναν τρόπο πληρωμής που λειτουργεί και παράτεινε τον διακομιστή."
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "NLD2EM"
+msgid "Nothing to retry right now."
+msgstr "Δεν υπάρχει τίποτα για επανάληψη αυτή τη στιγμή."
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "rnp477"
+msgid "Could not change automatic renewal."
+msgstr "Δεν ήταν δυνατή η αλλαγή της αυτόματης ανανέωσης."
+
+#: src/features/servers/components/plan/plan-catalog.tsx
+msgctxt "_E4Era"
+msgid "An order is waiting to be paid"
+msgstr "Μια παραγγελία περιμένει να πληρωθεί"
+
+#: src/features/servers/components/plan/plan-catalog.tsx
+msgctxt "IZp69Q"
+msgid "You closed the payment for {name} before it went through. Nothing has been charged and this server is still on its current plan."
+msgstr "Έκλεισες την πληρωμή για {name} πριν ολοκληρωθεί. Δεν χρεώθηκε τίποτα και αυτός ο διακομιστής παραμένει στο τρέχον πακέτο του."
+
+#: src/features/servers/components/plan/plan-catalog.tsx
+msgctxt "yg3np8"
+msgid "You closed a payment before it went through. Nothing has been charged and this server is still on its current plan."
+msgstr "Έκλεισες μια πληρωμή πριν ολοκληρωθεί. Δεν χρεώθηκε τίποτα και αυτός ο διακομιστής παραμένει στο τρέχον πακέτο του."
+
+#: src/features/servers/components/plan/plan-catalog.tsx
+msgctxt "BoV-ik"
+msgid "Resume payment"
+msgstr "Συνέχιση πληρωμής"
+
+#: src/features/servers/components/plan/plan-catalog.tsx
+msgctxt "j6UwBH"
+msgid "Discard it"
+msgstr "Απόρριψη"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "PEpK64"
+msgid "No plans available"
+msgstr "Δεν υπάρχουν διαθέσιμα πακέτα"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "EAyjS-"
+msgid "There is nothing to extend or upgrade to right now."
+msgstr "Αυτή τη στιγμή δεν υπάρχει τίποτα για παράταση ή αναβάθμιση."
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "r45xAO"
+msgid "Less storage than your plan"
+msgstr "Λιγότερος αποθηκευτικός χώρος από το πακέτο σου"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "uPG29C"
+msgid "{price} today"
+msgstr "{price} σήμερα"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "BLAy25"
+msgid "Extend"
+msgstr "Παράταση"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "0h_lPM"
+msgid "Upgrade"
+msgstr "Αναβάθμιση"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "ZBALng"
+msgid "Current plan"
+msgstr "Τρέχον πακέτο"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "nYOcNC"
+msgid "This plan has less storage than yours. Pick one with at least {size}."
+msgstr "Αυτό το πακέτο έχει λιγότερο αποθηκευτικό χώρο από το δικό σου. Διάλεξε ένα με τουλάχιστον {size}."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "3XuHC5"
+msgid "{name} is sold out right now. Try again later or pick a different plan."
+msgstr "Το {name} έχει εξαντληθεί αυτή τη στιγμή. Δοκιμάστε ξανά αργότερα ή επιλέξτε ένα διαφορετικό σχέδιο."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "2r_Ri2"
+msgid "This plan is sold out. Pick a different plan."
+msgstr "Αυτό το πακέτο έχει εξαντληθεί. Διάλεξε άλλο πακέτο."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "SA17Op"
+msgid "Your current term has expired. Renew your server first, then upgrade."
+msgstr "Η τρέχουσα περίοδός σου έχει λήξει. Ανανέωσε πρώτα τον διακομιστή σου και μετά αναβάθμισε."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "162kF7"
+msgid "Try again in a moment."
+msgstr "Δοκίμασε ξανά σε λίγο."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "Ivyv4G"
+msgid "Complete your payment"
+msgstr "Ολοκλήρωσε την πληρωμή σου"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "vUdsUw"
+msgid "Extend {name}"
+msgstr "Παράταση: {name}"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "wtdexo"
+msgid "Upgrade to {name}"
+msgstr "Αναβάθμιση σε {name}"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "92pgFA"
+msgid "Extend for {price}"
+msgstr "Παράταση με {price}"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "fEC_2P"
+msgid "Upgrade for {price}"
+msgstr "Αναβάθμιση με {price}"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "JLzn_f"
+msgid "Pay for the order you just placed."
+msgstr "Πλήρωσε την παραγγελία που μόλις καταχώρησες."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "scgCv_"
+msgid "Extend your plan by one month."
+msgstr "Παράτεινε το πακέτο σου κατά έναν μήνα."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "UAUyG-"
+msgid "Move this server onto a bigger plan."
+msgstr "Μετέφερε αυτόν τον διακομιστή σε μεγαλύτερο πακέτο."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "So9-9-"
+msgid "Change plan"
+msgstr "Αλλαγή σχεδίου"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "YeQq19"
+msgid "Preparing checkout…"
+msgstr "Προετοιμασία ολοκλήρωσης αγοράς…"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "f8Zxmj"
+msgid "The order could not be started"
+msgstr "Δεν ήταν δυνατή η έναρξη της παραγγελίας"
+
+#: src/features/servers/components/plan/plan-specs.tsx
+msgctxt "tpfEY0"
+msgid "{memory} RAM"
+msgstr "{memory} RAM"
+
+#: src/features/servers/components/plan/plan-specs.tsx
+msgctxt "cenOuc"
+msgid "{storage} NVMe SSD"
+msgstr "{storage} NVMe SSD"
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgctxt "QUXFCm"
+msgid "Due today"
+msgstr "Πληρωτέο σήμερα"
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgctxt "WnjgPN"
+msgid "From your next renewal"
+msgstr "Από την επόμενη ανανέωσή σου"
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgctxt "LR754a"
+msgid "Renews at"
+msgstr "Ανανεώνεται στα"
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgctxt "mCArsW"
+msgid "Only the difference is charged today. Your term is unchanged."
+msgstr "Σήμερα χρεώνεται μόνο η διαφορά. Η περίοδός σου παραμένει ίδια."
 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgctxt "N387FB"
 msgid "Your current plan will be extended by one month."
 msgstr "Το τρέχον πρόγραμμά σας θα παραταθεί κατά ένα μήνα."
 
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "6Mawmq"
-msgid "The plan will be changed to {name}. You only pay the prorated difference today — your current term stays the same."
-msgstr "Το πλάνο θα αλλάξει σε {name}. Σήμερα πληρώνετε μόνο τη χρονικά αναλογική διαφορά — η τρέχουσα περίοδός σας παραμένει η ίδια."
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "AiQP5M"
+msgid "Add a payment method"
+msgstr "Προσθήκη τρόπου πληρωμής"
 
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "So9-9-"
-msgid "Change plan"
-msgstr "Αλλαγή σχεδίου"
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "6NfKWq"
+msgid "None chosen"
+msgstr "Δεν έχει επιλεγεί καμία"
 
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "YeQq19"
-msgid "Preparing checkout…"
-msgstr "Προετοιμασία ολοκλήρωσης αγοράς…"
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "Mjlx26"
+msgid "A renewal has nothing to charge until you choose a card."
+msgstr "Μέχρι να διαλέξεις κάρτα, η ανανέωση δεν έχει τι να χρεώσει."
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "BY343C"
+msgid "Change"
+msgstr "Αλλαγή"
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "Ob6Cyo"
+msgid "Charged when this server renews."
+msgstr "Χρεώνεται όταν ανανεώνεται αυτός ο διακομιστής."
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "hPxO4K"
+msgid "Expired {date}. Replace it or the next renewal fails."
+msgstr "Έληξε {date}. Αντικατάστησέ την, αλλιώς η επόμενη ανανέωση θα αποτύχει."
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "ZIzf2A"
+msgid "This card has expired. The next renewal will fail."
+msgstr "Αυτή η κάρτα έχει λήξει. Η επόμενη ανανέωση θα αποτύχει."
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "IODZRQ"
+msgid "Your bank withdrew permission to charge this card. The next renewal will fail."
+msgstr "Η τράπεζά σου ανακάλεσε την άδεια χρέωσης αυτής της κάρτας. Η επόμενη ανανέωση θα αποτύχει."
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "zDOS2t"
+msgid "Your bank refused this card. The next renewal will fail until you choose another."
+msgstr "Η τράπεζά σου απέρριψε αυτή την κάρτα. Η επόμενη ανανέωση θα αποτυγχάνει μέχρι να διαλέξεις άλλη."
 
 #: src/features/servers/components/rdns/delete-record-dialog.tsx
 #: src/features/servers/components/rdns/records-table/columns.tsx
@@ -6880,11 +7825,6 @@ msgstr "Μέγ"
 msgctxt "Arxl88"
 msgid "Outgoing"
 msgstr "Εξερχόμενος"
-
-#: src/features/servers/components/server-graphs.tsx
-msgctxt "6m3w-3"
-msgid "Interval"
-msgstr "Διάστημα"
 
 #: src/features/servers/components/server-mount-badge.tsx
 msgctxt "Han16c"
@@ -7352,6 +8292,21 @@ msgstr "Δεν ήταν δυνατή η επαναφορά του αντιγρά
 msgctxt "GwAFh4"
 msgid "Could not update the backup."
 msgstr "Δεν ήταν δυνατή η ενημέρωση του αντιγράφου ασφαλείας."
+
+#: src/features/servers/hooks/billing/use-cancel-subscription.ts
+msgctxt "fAsW3r"
+msgid "Could not cancel the subscription."
+msgstr "Δεν ήταν δυνατή η ακύρωση της συνδρομής."
+
+#: src/features/servers/hooks/billing/use-resume-subscription.ts
+msgctxt "YTM7YS"
+msgid "Could not resume the subscription."
+msgstr "Δεν ήταν δυνατή η συνέχιση της συνδρομής."
+
+#: src/features/servers/hooks/billing/use-retry-renewal.ts
+msgctxt "wjP1kX"
+msgid "Could not retry the payment."
+msgstr "Δεν ήταν δυνατή η επανάληψη της πληρωμής."
 
 #: src/features/servers/hooks/overview/use-change-template.ts
 msgctxt "8g0ePs"

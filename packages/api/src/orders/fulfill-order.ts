@@ -123,7 +123,13 @@ export const fulfilOrder = async ({
         break;
       case "extend_server":
         await start(extendServerWorkflow, [
-          { serverId: configuration.server_id },
+          {
+            serverId: configuration.server_id,
+            // Carried through so the extension can settle the renewal that
+            // produced this order, if one did. `subscription_renewals.order_id`
+            // is the only link back, and this is the last point that knows it.
+            orderId: order.id,
+          },
         ]);
         break;
       default:

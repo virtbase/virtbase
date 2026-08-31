@@ -59,6 +59,7 @@ import {
 } from "@/ui/input-group-addons";
 import { OperatingSystemSelect } from "@/ui/operating-system-select";
 import type { getTemplateGroups } from "../api/get-template-groups";
+import { PAYMENT_FORM_ID } from "../constants";
 import { useCheckoutState } from "../hooks/use-checkout-state";
 import { CheckoutPublicKeySelect } from "./checkout-public-key-select";
 import { CheckoutWaivers } from "./checkout-waivers";
@@ -113,7 +114,7 @@ export function CheckoutForm({
 
   return (
     <form
-      id="checkout-form"
+      id={PAYMENT_FORM_ID}
       onSubmit={form.handleSubmit((data) => createOrder(data))}
     >
       <FieldGroup>
@@ -212,7 +213,7 @@ export function CheckoutForm({
         <CheckoutWaivers control={form.control} external={false} />
         <FieldSeparator />
         <div className="flex justify-end">
-          <Button type="submit" form="checkout-form" disabled={isPending}>
+          <Button type="submit" form={PAYMENT_FORM_ID} disabled={isPending}>
             {isPending ? (
               <Spinner />
             ) : (

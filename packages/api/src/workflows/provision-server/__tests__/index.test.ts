@@ -147,6 +147,15 @@ beforeAll(async () => {
       undefined,
     ),
   }));
+  mock.module("../create-server-subscription", () => ({
+    createServerSubscriptionStep: step("createServerSubscriptionStep", {
+      id: "sub_1",
+    }),
+    rollbackCreateServerSubscriptionStep: step(
+      "rollbackCreateServerSubscriptionStep",
+      undefined,
+    ),
+  }));
   mock.module("../../shared/perform-guest-action", () => ({
     // A null upid keeps the workflow out of the task wait.
     performGuestActionStep: step("performGuestActionStep", { upid: null }),
@@ -194,8 +203,27 @@ describe("provisionServerWorkflow", () => {
     await provision();
 
     expect(calls).toContain("storeProvisionedServerStep");
+    expect(calls).toContain("createServerSubscriptionStep");
     expect(calls).toContain("sendServerReadyEmailStep");
     expect(calls).not.toContain("rollbackStoreProvisionedServerStep");
+  });
+
+  test("a subscription that could not be written does not cost the customer their server", async () => {
+    // The subscription is a bookkeeping row that instructs nothing -
+    // `autoRenew` is false and there is no mandate - and it can be written
+    // later. The guest is built, running and paid for by this point, so
+    // letting the failure reach the `catch` that unwinds the compensation
+    // stack would destroy a real machine over a row nobody is charged from.
+    failing.add("createServerSubscriptionStep");
+
+    await provision();
+
+    expect(calls).toContain("reportSwallowedFailureStep");
+    expect(calls).toContain("sendServerReadyEmailStep");
+    expect(calls).not.toContain("rollbackStoreProvisionedServerStep");
+    expect(calls).not.toContain("rollbackCreateGuestFromImageStep");
+    // Nothing was created, so nothing is compensated either.
+    expect(calls).not.toContain("rollbackCreateServerSubscriptionStep");
   });
 
   test("a mail outage does not tear down the server the customer paid for", async () => {
@@ -226,6 +254,10 @@ describe("provisionServerWorkflow", () => {
 
     expect(calls).toContain("rollbackStoreProvisionedServerStep");
     expect(calls).toContain("rollbackCreateGuestFromImageStep");
+    // `subscriptions.subject_id` is not a foreign key, so the server row going
+    // away takes nothing with it - the subscription has to be closed here or
+    // it is left pointing at a machine that never existed.
+    expect(calls).toContain("rollbackCreateServerSubscriptionStep");
   });
 
   test("one failing compensation does not orphan the guest", async () => {

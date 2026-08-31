@@ -32,6 +32,12 @@ interface CheckoutStateValue {
   customerSessionClientSecret: string | null;
   createOrder: (input: OrderServerPlanInput) => void;
   isPending: boolean;
+  /**
+   * Whatever the server refused the order with, for a caller that has a place
+   * to show it. Nothing declares `meta.errorMessage` on this mutation, so
+   * without a caller reading this a failed order says nothing at all.
+   */
+  error: Error | null;
   resetCheckoutSession: () => void;
 }
 
@@ -42,8 +48,8 @@ const CheckoutStateContext = createContext<CheckoutStateValue | null>(null);
  *
  * Keeping the mutation + URL state in a single provider means every
  * consumer sees the same `isPending` / `data` — critical when the submit
- * button and the form that submits it live in sibling components (e.g.
- * `PlanSummary` triggers `plan-form` which lives inside `PlanForm`).
+ * button and the form that submits it live in sibling components (e.g. the
+ * plan dialog's footer button submits the consent form in its body).
  *
  * Client secrets live in the URL so the user can refresh during checkout
  * without losing their in-progress payment intent. They always move as a
@@ -94,6 +100,7 @@ function useCreateOrder(): CheckoutStateValue {
   const {
     mutate: createOrder,
     isPending,
+    error,
     reset: resetMutation,
   } = useMutation(
     trpc.checkout.order.mutationOptions({
@@ -126,6 +133,10 @@ function useCreateOrder(): CheckoutStateValue {
       customerSessionClientSecret: customer_session_client_secret,
       createOrder,
       isPending,
+      // `useMutation` types this as `TRPCClientErrorLike`, the structural
+      // subset; what actually arrives is a `TRPCClientError`, which is an
+      // `Error`.
+      error: error as Error | null,
       resetCheckoutSession,
     }),
     [
@@ -135,6 +146,7 @@ function useCreateOrder(): CheckoutStateValue {
       customer_session_client_secret,
       createOrder,
       isPending,
+      error,
       resetCheckoutSession,
     ],
   );

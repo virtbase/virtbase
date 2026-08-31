@@ -28,6 +28,7 @@ import {
   orderItems,
   orders,
   passkeys,
+  paymentMethods,
   payments,
   pointerRecords,
   proxmoxIsoDownloads,
@@ -37,6 +38,8 @@ import {
   sshKeys,
   subnetAllocations,
   subnets,
+  subscriptionRenewals,
+  subscriptions,
   users,
 } from "@virtbase/db/schema";
 
@@ -45,8 +48,11 @@ import {
  *
  * Written into every file so somebody holding an export from two years ago can
  * tell what they are looking at.
+ *
+ * 2 - saved payment methods and subscriptions, the latter carrying its own
+ * renewal attempts, the way an order carries its items.
  */
-export const EXPORT_SCHEMA_VERSION = 1;
+export const EXPORT_SCHEMA_VERSION = 2;
 
 export type SubjectExport = Awaited<ReturnType<typeof collectSubjectData>>;
 
@@ -149,6 +155,68 @@ export async function collectSubjectData({
             .where(inArray(orderItems.orderId, orderIds))
         : [];
 
+      const ownedSubscriptions = await tx
+        .select({
+          id: subscriptions.id,
+          // The thing being paid for. Deliberately not a foreign key on the
+          // table, so a subscription outlives the server it renewed - which
+          // means an export can name a machine that no longer exists.
+          subject_type: subscriptions.subjectType,
+          subject_id: subscriptions.subjectId,
+          status: subscriptions.status,
+          interval_months: subscriptions.intervalMonths,
+          currency: subscriptions.currency,
+          current_period_start: subscriptions.currentPeriodStart,
+          current_period_end: subscriptions.currentPeriodEnd,
+          auto_renew: subscriptions.autoRenew,
+          // Resolves against the `payment_methods` section below. Null means
+          // "whatever is default when the renewal runs".
+          payment_method_id: subscriptions.paymentMethodId,
+          // The consent artefact: when they agreed we may charge them while
+          // they are not present, and against which wording.
+          mandate_accepted_at: subscriptions.mandateAcceptedAt,
+          mandate_text_version: subscriptions.mandateTextVersion,
+          cancelled_at: subscriptions.cancelledAt,
+          cancel_reason: subscriptions.cancelReason,
+          ended_at: subscriptions.endedAt,
+          created_at: subscriptions.createdAt,
+        })
+        .from(subscriptions)
+        .where(eq(subscriptions.userId, userId));
+
+      const subscriptionIds = ownedSubscriptions.map(
+        (subscription) => subscription.id,
+      );
+
+      // Nested into their subscription below, the way order items are nested
+      // into their order: a collection attempt read on its own says nothing
+      // about what was being renewed.
+      const renewals = subscriptionIds.length
+        ? await tx
+            .select({
+              subscription_id: subscriptionRenewals.subscriptionId,
+              period_start: subscriptionRenewals.periodStart,
+              period_end: subscriptionRenewals.periodEnd,
+              amount: subscriptionRenewals.amount,
+              currency: subscriptionRenewals.currency,
+              status: subscriptionRenewals.status,
+              attempt: subscriptionRenewals.attempt,
+              next_attempt_at: subscriptionRenewals.nextAttemptAt,
+              // Why a period went uncollected, in the provider's own words.
+              // The customer's side of a failed renewal, and the only record
+              // of it there is.
+              failure_code: subscriptionRenewals.failureCode,
+              failure_message: subscriptionRenewals.failureMessage,
+              order_id: subscriptionRenewals.orderId,
+              settled_at: subscriptionRenewals.settledAt,
+              created_at: subscriptionRenewals.createdAt,
+            })
+            .from(subscriptionRenewals)
+            .where(
+              inArray(subscriptionRenewals.subscriptionId, subscriptionIds),
+            )
+        : [];
+
       const ownedCases = await tx
         .select({
           id: abuseCases.id,
@@ -231,6 +299,7 @@ export async function collectSubjectData({
         reverseDns,
         customImages,
         settledPayments,
+        savedPaymentMethods,
         issuedInvoices,
         sentEmails,
       ] = await Promise.all([
@@ -342,6 +411,34 @@ export async function collectSubjectData({
           })
           .from(payments)
           .where(eq(payments.userId, userId)),
+        // [!] `provider` and `external_id` are the redaction, and they are
+        // the reason this names columns rather than reusing the row. The
+        // external id is the token an off-session charge is made against: a
+        // credential, in a file the customer is expected to download, keep and
+        // forward. Everything here is display material - what a dunning email
+        // needs to name the card, and no more. `payment-methods/list.ts`
+        // withholds the same two columns from the browser for the same reason;
+        // its projection is not reused here only because the wire format is
+        // snake_case and this section carries `created_at` and `detached_at`,
+        // which the billing page has no use for.
+        tx
+          .select({
+            id: paymentMethods.id,
+            type: paymentMethods.type,
+            brand: paymentMethods.brand,
+            last4: paymentMethods.last4,
+            exp_month: paymentMethods.expMonth,
+            exp_year: paymentMethods.expYear,
+            is_default: paymentMethods.isDefault,
+            invalid_at: paymentMethods.invalidAt,
+            created_at: paymentMethods.createdAt,
+            // Detached rows are included: a credential the customer removed is
+            // still something we hold, and the date they removed it is part of
+            // the answer to what we hold.
+            detached_at: paymentMethods.detachedAt,
+          })
+          .from(paymentMethods)
+          .where(eq(paymentMethods.userId, userId)),
         tx
           .select({
             id: invoices.id,
@@ -387,6 +484,13 @@ export async function collectSubjectData({
           items: items.filter((item) => item.order_id === order.id),
         })),
         payments: settledPayments,
+        payment_methods: savedPaymentMethods,
+        subscriptions: ownedSubscriptions.map((subscription) => ({
+          ...subscription,
+          renewals: renewals.filter(
+            (renewal) => renewal.subscription_id === subscription.id,
+          ),
+        })),
         invoices: issuedInvoices,
         emails: sentEmails,
         abuse_cases: ownedCases.map((abuseCase) => ({

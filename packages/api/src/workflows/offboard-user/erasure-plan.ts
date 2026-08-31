@@ -68,6 +68,9 @@ export const ERASURE_PLAN: Partial<
   pointer_records: "resetPointerRecordsStep / the servers cascade",
   // Blocks the `users` row until it is gone - the foreign key is `restrict`.
   proxmox_iso_downloads: "purgeIsoDownloadsStep",
+  // Detached at the provider first, because deleting the row on its own leaves
+  // a credential that can still be charged.
+  payment_methods: "detachPaymentMethodsStep",
   // The rest is `eraseSubjectDataStep`'s job.
   abuse_signals: HERE,
   abuse_cases: HERE,

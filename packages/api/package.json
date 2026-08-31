@@ -15,9 +15,17 @@
       "types": "./dist/abuse/index.d.ts",
       "default": "./src/abuse/index.ts"
     },
+    "./backfill": {
+      "types": "./dist/backfill/index.d.ts",
+      "default": "./src/backfill/index.ts"
+    },
     "./backups": {
       "types": "./dist/backups.d.ts",
       "default": "./src/backups/index.ts"
+    },
+    "./billing": {
+      "types": "./dist/billing/index.d.ts",
+      "default": "./src/billing/index.ts"
     },
     "./guest-os": {
       "types": "./dist/guest-os/index.d.ts",
@@ -31,6 +39,10 @@
       "types": "./dist/notifications/index.d.ts",
       "default": "./src/notifications/index.ts"
     },
+    "./payment-methods": {
+      "types": "./dist/payment-methods/index.d.ts",
+      "default": "./src/payment-methods/index.ts"
+    },
     "./orders": {
       "types": "./dist/orders.d.ts",
       "default": "./src/orders/index.ts"
@@ -42,6 +54,10 @@
     "./proxmox": {
       "types": "./dist/proxmox.d.ts",
       "default": "./src/proxmox/index.ts"
+    },
+    "./subscriptions": {
+      "types": "./dist/subscriptions/index.d.ts",
+      "default": "./src/subscriptions/index.ts"
     },
     "./template-images": {
       "types": "./dist/template-images/index.d.ts",

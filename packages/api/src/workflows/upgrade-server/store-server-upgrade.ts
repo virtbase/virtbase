@@ -17,7 +17,8 @@
 
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
-import { servers } from "@virtbase/db/schema";
+import { servers, subscriptions } from "@virtbase/db/schema";
+import { liveSubscriptionFor } from "../../subscriptions/subject-subscription";
 import { revalidateCheckout } from "../shared/revalidate-checkout";
 
 export async function storeServerUpgradeStep({
@@ -44,6 +45,26 @@ export async function storeServerUpgradeStep({
           serverPlanPriceId,
         })
         .where(eq(servers.id, serverId));
+
+      // The subscription follows the server onto the new price row, in the
+      // same transaction that moves the server onto it.
+      //
+      // Bookkeeping today rather than a change in what anybody is charged:
+      // `resolveServerRenewalPrice` quotes from the row locked to the
+      // *server*, which is what a manual extension charges and what already
+      // follows an upgrade. Leaving `subscriptions.server_plan_price_id`
+      // behind would not misprice anything yet - but it would leave two
+      // columns that are supposed to describe the same agreement disagreeing,
+      // and the schema note on that column describes re-pointing it here as
+      // the step that lets the server's copy eventually go. The day something
+      // does price against it, it has to already be right.
+      //
+      // `notNull` on the column, so this is an update of an existing row and
+      // never an insert: a server with no subscription simply matches nothing.
+      await tx
+        .update(subscriptions)
+        .set({ serverPlanPriceId })
+        .where(liveSubscriptionFor(serverId));
     },
     {
       accessMode: "read write",
@@ -74,6 +95,17 @@ export async function rollbackStoreServerUpgradeStep({
           serverPlanPriceId: previousServerPlanPriceId,
         })
         .where(eq(servers.id, serverId));
+
+      // Back onto whatever the server is going back onto, in the same
+      // transaction. Restored to the server's previous row rather than to
+      // whatever the subscription happened to hold before, because the
+      // invariant being kept is that the two agree - and a subscription that
+      // had drifted off the server's row before this upgrade is a row that was
+      // already wrong.
+      await tx
+        .update(subscriptions)
+        .set({ serverPlanPriceId: previousServerPlanPriceId })
+        .where(liveSubscriptionFor(serverId));
     },
     {
       accessMode: "read write",

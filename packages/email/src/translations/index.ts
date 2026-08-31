@@ -60,7 +60,10 @@ export type EmailTitleKey =
   | "email-updated"
   | "invoice-created"
   | "login-link"
+  | "payment-method-invalid"
   | "password-updated"
+  | "renewal-final-warning"
+  | "renewal-payment-failed"
   | "reset-password-link"
   | "server-deleted"
   | "server-extended"
@@ -79,7 +82,8 @@ export type EmailTitleKey =
  */
 export type EmailTitleKeyWithDate =
   | "account-deletion-scheduled"
-  | "account-inactivity-reminder";
+  | "account-inactivity-reminder"
+  | "renewal-final-warning";
 
 export async function getEmailTitle(
   key: EmailTitleKeyWithDate,

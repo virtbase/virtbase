@@ -35,6 +35,7 @@ import { PUBLIC_DOMAIN } from "@virtbase/utils";
 import { useExtracted, useLocale } from "next-intl";
 import type { FormEvent } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { PAYMENT_FORM_ID } from "../constants";
 import { useCustomCheckout } from "../hooks/use-custom-checkout";
 
 export const countries = [
@@ -69,6 +70,8 @@ export const countries = [
 export function StripePaymentForm({
   orderId,
   onProcessingChange,
+  onReadyChange,
+  hideActions = false,
 }: {
   orderId: string | null;
   /**
@@ -78,6 +81,18 @@ export function StripePaymentForm({
    * payment so the session can't be pulled out from under them.
    */
   onProcessingChange?: (isProcessing: boolean) => void;
+  /**
+   * Fires when Stripe.js and Elements have finished loading. A caller that
+   * renders the submit button itself needs this, or it shows an enabled button
+   * whose press `handleSubmit` drops on the floor.
+   */
+  onReadyChange?: (isReady: boolean) => void;
+  /**
+   * Leaves the action row off, for a caller that renders the buttons in a
+   * dialog footer instead - see {@link PAYMENT_FORM_ID}. The form still owns
+   * submission; only the controls move.
+   */
+  hideActions?: boolean;
 }) {
   const stripe = useStripe();
   const elements = useElements();
@@ -132,6 +147,24 @@ export function StripePaymentForm({
 
   const isReady = Boolean(stripe && elements);
   const isSubmitDisabled = isPending || isCustomCheckoutPending || !isReady;
+
+  const onReadyChangeRef = useRef(onReadyChange);
+  useEffect(() => {
+    onReadyChangeRef.current = onReadyChange;
+  }, [onReadyChange]);
+
+  useEffect(() => {
+    onReadyChangeRef.current?.(isReady);
+  }, [isReady]);
+
+  // Flushed on unmount as well, or a caller that leaves the payment step and
+  // comes back keeps a submit button enabled over an Elements tree that has
+  // not loaded yet.
+  useEffect(() => {
+    return () => {
+      onReadyChangeRef.current?.(false);
+    };
+  }, []);
 
   const handleSubmit = useCallback(
     async (event: FormEvent) => {
@@ -193,7 +226,7 @@ export function StripePaymentForm({
   );
 
   return (
-    <form id="checkout-form" onSubmit={handleSubmit} className="space-y-6">
+    <form id={PAYMENT_FORM_ID} onSubmit={handleSubmit} className="space-y-6">
       {/**
        * A single <fieldset disabled> disables every embedded Stripe iframe
        * control in one go, preventing partial edits during confirmPayment.
@@ -270,21 +303,23 @@ export function StripePaymentForm({
         )}
       </div>
 
-      <div className="flex flex-col items-stretch gap-2 sm:flex-row sm:items-center sm:justify-end">
-        <Button
-          type="submit"
-          form="checkout-form"
-          disabled={isSubmitDisabled}
-          aria-busy={isPending}
-        >
-          {isPending ? (
-            <Spinner />
-          ) : (
-            <LucideLock aria-hidden="true" strokeWidth={1.75} />
-          )}
-          {isPending ? t("Processing payment…") : t("Pay now")}
-        </Button>
-      </div>
+      {!hideActions && (
+        <div className="flex flex-col-reverse gap-2 sm:flex-row sm:justify-end">
+          <Button
+            type="submit"
+            form={PAYMENT_FORM_ID}
+            disabled={isSubmitDisabled}
+            aria-busy={isPending}
+          >
+            {isPending ? (
+              <Spinner />
+            ) : (
+              <LucideLock aria-hidden="true" strokeWidth={1.75} />
+            )}
+            {isPending ? t("Processing payment…") : t("Pay now")}
+          </Button>
+        </div>
+      )}
     </form>
   );
 }

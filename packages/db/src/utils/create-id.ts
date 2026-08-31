@@ -58,6 +58,10 @@ const prefixes = [
   "otr_", // order status transition
   "pay_", // payment
   "pev_", // payment provider event
+  "pm_", // payment method
+  // Subscriptions
+  "sub_", // subscription
+  "sre_", // subscription renewal
   // Privacy
   "adt_", // account deletion token
   "exp_", // data export

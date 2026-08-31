@@ -12,6 +12,10 @@
       "import": "./src/resend/*.ts",
       "require": "./src/resend/*.ts"
     },
+    "./templates/decline-reason": {
+      "import": "./src/templates/decline-reason.ts",
+      "require": "./src/templates/decline-reason.ts"
+    },
     "./templates/*": {
       "import": "./src/templates/*.tsx",
       "require": "./src/templates/*.tsx"

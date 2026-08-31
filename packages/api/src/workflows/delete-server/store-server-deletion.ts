@@ -15,10 +15,12 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import * as Sentry from "@sentry/node";
 import { eq, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { servers, subnetAllocations } from "@virtbase/db/schema";
 import { FatalError } from "workflow";
+import { transitionSubjectSubscription } from "../../subscriptions/subject-subscription";
 import { revalidateCheckout } from "../shared/revalidate-checkout";
 
 type StoreServerDeletionStepParams = {
@@ -65,6 +67,53 @@ export async function storeServerDeletionStep({
       isolationLevel: "read committed",
     },
   );
+
+  // [!] After the commit, and it has to happen here rather than being left to
+  // the database.
+  //
+  // `subscriptions.subject_id` is deliberately not a foreign key - a
+  // subscription outlives the server it paid for, so the last renewal, the
+  // last invoice and any dispute over either survive the machine being
+  // destroyed. Nothing cascades, which means nothing stops a live subscription
+  // pointing at a server that no longer exists, and a live subscription with
+  // no subject is a standing instruction to charge for nothing.
+  //
+  // Deliberately not inside the transaction above: `transitionSubscription`
+  // opens its own and takes its own row lock. Running it after the commit also
+  // gets the ordering right - a deletion that rolls back must not have ended
+  // the subscription of a server that is still there.
+  //
+  // This is the step every deletion route goes through, `deleteOneServer` and
+  // therefore account offboarding included, so there is one place to keep
+  // correct rather than one per caller.
+  //
+  // [!] Reported, never thrown, for the same reason `storeServerExtensionStep`
+  // swallows its own post-commit transition. The `servers` row is gone and
+  // committed, and this step is not idempotent: a `DELETE ... RETURNING` that
+  // is replayed matches nothing, `!deleted` is true, and the `FatalError` above
+  // permanently fails a deletion that in fact succeeded - and skips
+  // `revalidateCheckout()` on the way out. A pool timeout or a lock on the
+  // subscription would be enough to trigger it.
+  //
+  // A subscription left live against a deleted server is visible and
+  // repairable, and three other things already look for exactly that:
+  // `/api/cron/delete-suspended-servers` and
+  // `/api/cron/suspend-terminated-servers` make this identical call - both of
+  // them wrapped like this - before the deletion is ever queued, and
+  // `claimRenewal` refuses to claim a subscription whose subject cannot be
+  // priced.
+  try {
+    await transitionSubjectSubscription(serverId, "ended", {
+      reason: "server_deleted",
+    });
+  } catch (error) {
+    console.error(
+      "[workflow] Failed to end the subscription for deleted server",
+      serverId,
+      error,
+    );
+    Sentry.captureException(error);
+  }
 
   revalidateCheckout();
 

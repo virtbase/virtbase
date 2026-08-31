@@ -19,13 +19,19 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import type { TestingLibraryMatchers } from "@testing-library/jest-dom/matchers";
 import type { RenderOptions, RenderResult } from "@testing-library/react";
 import { render } from "@testing-library/react";
+import type { Locale } from "next-intl";
 import { NextIntlClientProvider } from "next-intl";
 import { ThemeProvider } from "next-themes";
 import type { ReactElement, ReactNode } from "react";
 
 export interface RenderWithProvidersOptions
   extends Omit<RenderOptions, "wrapper"> {
-  locale?: string;
+  /**
+   * Typed as the app's own locale union rather than `string`: a consuming
+   * package that augments next-intl's `AppConfig` narrows `Locale`, and a
+   * plain `string` default then fails to typecheck inside that package.
+   */
+  locale?: Locale;
   /**
    * Messages for the `next-intl` provider. Components written with
    * `useExtracted()` pass the English source string as the key, so an empty

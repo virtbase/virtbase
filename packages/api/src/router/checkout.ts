@@ -56,6 +56,7 @@ import {
 } from "@virtbase/validators";
 import { getOrderingBlock } from "../abuse";
 import { calculateProRataUpgrade } from "../lib/pricing";
+import { resolveServerRenewalPrice } from "../lib/renewal-price";
 import { createOrder, recordBillingDetails } from "../orders";
 import { protectedProcedure } from "../trpc";
 
@@ -212,28 +213,16 @@ export const checkoutRouter = {
       // price because we keep the existing term length intact).
       let upgradeCharge: number | null = null;
       if (input.type === "extend_server") {
+        // Shared with the automatic renewal claim, so that a renewal the
+        // system takes and an extension the customer clicks quote the same
+        // number from the same row. See `lib/renewal-price.ts`.
         const existing = await db.transaction(
-          async (tx) => {
-            return tx
-              .select({
-                id: serverPlanPrices.id,
-                renewalPrice: serverPlanPrices.renewalPrice,
-              })
-              .from(servers)
-              .innerJoin(
-                serverPlanPrices,
-                eq(servers.serverPlanPriceId, serverPlanPrices.id),
-              )
-              .where(
-                and(
-                  eq(servers.id, input.server_id),
-                  // Re-check ownership for defense in depth
-                  eq(servers.userId, userId),
-                ),
-              )
-              .limit(1)
-              .then(([res]) => res);
-          },
+          (tx) =>
+            resolveServerRenewalPrice(tx, {
+              serverId: input.server_id,
+              // Re-check ownership for defense in depth
+              userId,
+            }),
           {
             accessMode: "read only",
             isolationLevel: "read committed",
@@ -244,7 +233,7 @@ export const checkoutRouter = {
           throw new TRPCError({ code: "NOT_FOUND" });
         }
 
-        serverPlanPriceId = existing.id;
+        serverPlanPriceId = existing.serverPlanPriceId;
         chargedAmount = existing.renewalPrice;
       } else {
         // `new_server` or `upgrade_server`: evaluate discounts and create

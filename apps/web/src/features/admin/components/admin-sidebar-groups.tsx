@@ -27,6 +27,7 @@ import {
   LucideMail,
   LucideNetwork,
   LucidePlug,
+  LucideRefreshCw,
   LucideServer,
   LucideShapes,
   LucideShieldAlert,
@@ -81,6 +82,11 @@ const useGroups = () => {
           title: t("Notifications"),
           path: paths.admin.notifications,
           icon: LucideBell,
+        },
+        {
+          title: t("Subscriptions"),
+          path: paths.admin.subscriptions,
+          icon: LucideRefreshCw,
         },
         {
           title: t("Abuse"),

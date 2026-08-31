@@ -18,10 +18,9 @@
 import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
-import { PlanProvider } from "@/features/servers/components/plan/plan-context";
-import { PlanForm } from "@/features/servers/components/plan/plan-form";
-import { PlanSummary } from "@/features/servers/components/plan/plan-summary";
-import { BlockWrapper } from "@/ui/block-wrapper";
+import { CancellationSection } from "@/features/servers/components/plan/cancellation-section";
+import { ChangePlanCard } from "@/features/servers/components/plan/change-plan-card";
+import { CurrentPlanSection } from "@/features/servers/components/plan/current-plan-section";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();
@@ -32,27 +31,28 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default async function Page() {
+/**
+ * Everything a customer can do about what their server costs, in one page.
+ *
+ * Ordered by what they came to do rather than by how the data is stored:
+ *
+ * 1. **What they have** - the plan, when it renews, what pays for it, and the
+ *    two things that are actionable on sight: the renewal switch and a failing
+ *    payment.
+ * 2. **What they could have** - the catalogue, where extending and upgrading
+ *    both start. Choosing is a decision rather than a status, so it sits below
+ *    the status and commits in a dialog.
+ * 3. **Cancellation** - last, quieter, and permanently visible. § 312k BGB
+ *    requires the control to be directly and easily reachable, so it is never
+ *    behind a disclosure and the server overview links here. See
+ *    {@link CancellationSection}.
+ */
+export default function Page() {
   return (
-    <main>
-      <BlockWrapper variant="hero" width="full">
-        <div className="pt-8" />
-      </BlockWrapper>
-      <BlockWrapper width="full">
-        <div className="grid grid-cols-12 gap-px bg-border">
-          <PlanProvider>
-            <div className="col-span-12 flex flex-col gap-4 bg-background p-5 xl:col-span-8">
-              <PlanForm />
-            </div>
-            <div className="col-span-12 bg-background xl:col-span-4">
-              <PlanSummary />
-            </div>
-          </PlanProvider>
-        </div>
-      </BlockWrapper>
-      <BlockWrapper variant="hero" width="full" direction="reverse">
-        <div className="py-8" />
-      </BlockWrapper>
-    </main>
+    <div className="flex flex-col gap-4">
+      <CurrentPlanSection />
+      <ChangePlanCard />
+      <CancellationSection />
+    </div>
   );
 }

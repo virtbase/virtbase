@@ -40,9 +40,30 @@ const USER_ID = mockSession.user.id;
 const collect = (userId: string, now?: Date) =>
   collectSubjectData({ db: db as never, userId, now });
 
+/**
+ * The provider's own handle on a saved card, seeded so a test can go looking
+ * for it in the finished file. It is the token an off-session charge is made
+ * against; nothing that leaves this server may contain it.
+ */
+const CARD_TOKEN = "pm_1TokenThatMustNeverLeaveTheServer";
+
+/** Exactly what a payment method is allowed to say in an export. */
+const PAYMENT_METHOD_FIELDS = [
+  "brand",
+  "created_at",
+  "detached_at",
+  "exp_month",
+  "exp_year",
+  "id",
+  "invalid_at",
+  "is_default",
+  "last4",
+  "type",
+];
+
 beforeAll(async () => {
   db = await createTestDb();
-  const { server } = await seedServerGraph(db);
+  const { server, serverPlanPrice } = await seedServerGraph(db);
 
   // Enough of a footprint that every section has something in it - an empty
   // export would pass a completeness test without proving anything.
@@ -95,6 +116,37 @@ beforeAll(async () => {
     subject: "Your server is ready",
     html: "<p>hello</p>",
   });
+  await db.insert(schema.paymentMethods).values({
+    id: "pm_test",
+    userId: USER_ID,
+    provider: "stripe",
+    externalId: CARD_TOKEN,
+    type: "card",
+    brand: "visa",
+    last4: "4242",
+    expMonth: 12,
+    expYear: 2030,
+    isDefault: true,
+  });
+  await db.insert(schema.subscriptions).values({
+    id: "sub_test",
+    userId: USER_ID,
+    subjectId: server.id,
+    serverPlanPriceId: serverPlanPrice.id,
+    paymentMethodId: "pm_test",
+    currentPeriodStart: new Date("2026-08-01T00:00:00.000Z"),
+    currentPeriodEnd: new Date("2026-09-01T00:00:00.000Z"),
+    mandateAcceptedAt: new Date("2026-08-01T00:00:00.000Z"),
+    mandateTextVersion: "2026-08-01",
+  });
+  await db.insert(schema.subscriptionRenewals).values({
+    subscriptionId: "sub_test",
+    periodStart: new Date("2026-09-01T00:00:00.000Z"),
+    periodEnd: new Date("2026-10-01T00:00:00.000Z"),
+    amount: 3499,
+    status: "failed",
+    failureCode: "card_declined",
+  });
 });
 
 afterAll(async () => {
@@ -134,6 +186,27 @@ describe("collectSubjectData", () => {
     expect(result.orders[0]?.items[0]?.name).toBe("VPS S");
   });
 
+  test("it nests renewal attempts inside the subscription they belong to", async () => {
+    const result = await collect(USER_ID);
+
+    expect(result.subscriptions).toHaveLength(1);
+    expect(result.subscriptions[0]?.mandate_text_version).toBe("2026-08-01");
+    expect(result.subscriptions[0]?.renewals).toHaveLength(1);
+    // The customer's side of a renewal that did not happen, which exists
+    // nowhere else.
+    expect(result.subscriptions[0]?.renewals[0]?.failure_code).toBe(
+      "card_declined",
+    );
+  });
+
+  test("it returns the saved card as display material", async () => {
+    const result = await collect(USER_ID);
+
+    expect(result.payment_methods).toHaveLength(1);
+    expect(result.payment_methods[0]?.brand).toBe("visa");
+    expect(result.payment_methods[0]?.last4).toBe("4242");
+  });
+
   test("it holds up for a customer who has nothing", async () => {
     // The empty case reaches every `inArray` guard at once. Without them this
     // is where the collector would throw rather than return empty lists.
@@ -150,6 +223,10 @@ describe("collectSubjectData", () => {
     expect(result.backups).toEqual([]);
     expect(result.ip_addresses).toEqual([]);
     expect(result.reverse_dns).toEqual([]);
+    expect(result.payment_methods).toEqual([]);
+    // The `inArray` guard the renewals query needs: without it this is where
+    // the collector would throw rather than return an empty list.
+    expect(result.subscriptions).toEqual([]);
   });
 
   test("one customer's export never contains another's records", async () => {
@@ -181,6 +258,29 @@ describe("the export never leaks credentials", () => {
     expect(leaked).toEqual([]);
   });
 
+  test("a saved card's provider token never reaches the file", async () => {
+    // The one that matters. `external_id` is the token an off-session charge
+    // is made against and `provider` names the processor behind it; an export
+    // is a file the customer downloads, keeps and forwards, so neither may be
+    // in it. Asserted three ways so that adding either column back fails here
+    // however it is spelled: the value is not in the bytes, the section's rows
+    // carry exactly the fields they are allowed to carry, and no row admits a
+    // `provider` or an `external_id` key.
+    const result = await collect(USER_ID);
+
+    expect(JSON.stringify(result)).not.toContain(CARD_TOKEN);
+
+    for (const method of result.payment_methods) {
+      expect(Object.keys(method).sort()).toEqual(PAYMENT_METHOD_FIELDS);
+      expect(method).not.toHaveProperty("provider");
+      expect(method).not.toHaveProperty("external_id");
+      expect(method).not.toHaveProperty("externalId");
+    }
+
+    // Not vacuous: there really is a card in this export.
+    expect(result.payment_methods).toHaveLength(1);
+  });
+
   test("no seeded secret value survives serialisation", async () => {
     // The stronger of the two: a column renamed on its way out would slip past
     // the key check above but not past this one.
@@ -192,6 +292,7 @@ describe("the export never leaks credentials", () => {
       "$argon2id$super-secret-hash",
       "a-session-token-nobody-should-see",
       "very-secret-ciphertext",
+      CARD_TOKEN,
     ]) {
       expect(serialised).not.toContain(secret);
     }

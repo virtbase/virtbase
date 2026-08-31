@@ -15,31 +15,26 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import * as Sentry from "@sentry/nextjs";
+import type { SearchParams } from "nuqs";
 import {
-  getOrCreateStripeCustomer,
-  stripe,
-} from "@virtbase/integration-stripe";
-import { headers } from "next/headers";
-import { cache } from "react";
-import { auth } from "@/lib/auth/server";
+  getSubscriptionStatusCounts,
+  getSubscriptionsList,
+} from "../../api/subscriptions/get-subscriptions-list";
+import { searchParamsCache } from "../../lib/subscriptions/validations";
+import { SubscriptionsTable } from "./subscriptions-table";
 
-export const getPaymentMethodList = cache(async () => {
-  try {
-    const session = await auth.api.getSession({ headers: await headers() });
-    if (!session || !stripe) {
-      return [];
-    }
+export async function SubscriptionsTableCard(props: {
+  searchParams: Promise<SearchParams>;
+}) {
+  const searchParams = await props.searchParams;
+  const search = await searchParamsCache.parse(searchParams);
 
-    const customer = await getOrCreateStripeCustomer(session.user.id);
-    const paymentMethods = await stripe.customers.listPaymentMethods(customer, {
-      limit: 50,
-    });
-
-    return paymentMethods.data;
-  } catch (error) {
-    Sentry.captureException(error);
-
-    return [];
-  }
-});
+  return (
+    <SubscriptionsTable
+      promises={Promise.all([
+        getSubscriptionsList(search),
+        getSubscriptionStatusCounts(),
+      ])}
+    />
+  );
+}

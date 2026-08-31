@@ -35,23 +35,52 @@ import {
 
 type ExtendServerWorkflowParams = {
   serverId: string;
+  /**
+   * The order that paid for the extension, when it came from one.
+   *
+   * Passed through to the store step, which uses it to find and settle the
+   * `subscription_renewals` row this extension answers. Optional: an extension
+   * started by hand, by a script, or by anything other than order fulfilment
+   * has no order behind it, and neither does any server whose customer has
+   * never had a subscription.
+   */
+  orderId?: string | null;
 };
 
 export async function extendServerWorkflow({
   serverId,
+  orderId,
 }: ExtendServerWorkflowParams) {
   "use workflow";
 
   const rollbacks: Array<() => Promise<void>> = [];
 
   try {
-    const { server, proxmoxNode, newTerminatesAt, user } =
-      await storeServerExtensionStep({ serverId });
+    const {
+      server,
+      proxmoxNode,
+      newTerminatesAt,
+      user,
+      previousTerminatesAt,
+      previousSubscriptionPeriod,
+      settledRenewalId,
+    } = await storeServerExtensionStep({ serverId, orderId });
 
     rollbacks.push(() =>
       rollbackStoreServerExtensionStep({
         serverId,
         suspendedAt: server.suspendedAt,
+        // All three captured by the forward step, and all three have to go
+        // back together. The term is restored rather than recomputed, because
+        // a renewal-backed extension grants the renewal's own period rather
+        // than a flat month; the subscription's period comes back with it, or
+        // the two diverge in the direction that bills a customer for a term
+        // they do not have; and the renewal is un-settled, or the period it
+        // holds can never be claimed again and the subscription is never
+        // charged again at all.
+        previousTerminatesAt,
+        previousSubscriptionPeriod,
+        settledRenewalId,
       }),
     );
 

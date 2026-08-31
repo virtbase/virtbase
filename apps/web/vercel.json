@@ -30,6 +30,18 @@
       "schedule": "*/10 * * * *"
     },
     {
+      "path": "/api/cron/renew-subscriptions",
+      "schedule": "7 * * * *"
+    },
+    {
+      "path": "/api/cron/retry-renewals",
+      "schedule": "*/30 * * * *"
+    },
+    {
+      "path": "/api/cron/reconcile-renewals",
+      "schedule": "*/10 * * * *"
+    },
+    {
       "path": "/api/cron/reconcile-server-backups",
       "schedule": "*/10 * * * *"
     },

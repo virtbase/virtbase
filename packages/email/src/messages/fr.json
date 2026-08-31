@@ -197,6 +197,51 @@
     "greeting": "Salut {name} !",
     "viewButton": "Voir les détails"
   },
+  "payment-decline-reason": {
+    "expiredCard": "La carte enregistrée chez nous a expiré.",
+    "insufficientFunds": "Les fonds disponibles n'étaient pas suffisants pour couvrir le paiement.",
+    "cardDetails": "Les informations de carte que nous avons enregistrées n'ont pas été acceptées.",
+    "noPaymentMethod": "Aucun moyen de paiement n'est enregistré sur ton compte pour que nous puissions le débiter.",
+    "cardUnusable": "Le moyen de paiement enregistré chez nous ne peut plus être utilisé.",
+    "authenticationExpired": "Le paiement devait être confirmé auprès de ta banque, et le délai de confirmation a expiré avant que ce soit fait.",
+    "temporary": "Le paiement n'a pas pu être traité. Ce genre de problème se règle généralement tout seul.",
+    "declinedByBank": "Ta banque a refusé le paiement. Elle ne nous en donne pas la raison, elle seule peut te la dire.",
+    "unknown": "Le paiement n'est pas passé et aucune raison ne nous a été communiquée. Dans la plupart des cas, il s'agit d'un blocage temporaire et non d'un problème sur ton compte."
+  },
+  "renewal-payment-failed": {
+    "title": "Nous n'avons pas pu encaisser le paiement de ton serveur",
+    "preview": "Nous n'avons pas pu encaisser le paiement de {serverName}",
+    "heading": "Nous n'avons pas pu encaisser le paiement de ton serveur",
+    "greeting": "Salut {name} !",
+    "description": "Nous avons tenté de débiter <strong>{amount}</strong> pour renouveler <strong>{serverName}</strong>, et le paiement n'est pas passé.",
+    "card": "Nous avons utilisé la carte se terminant par {last4} ({brand}).",
+    "nextAttempt": "Nous réessaierons le <strong>{date}</strong>. Si tu mets à jour ton moyen de paiement avant, nous utiliserons le nouveau.",
+    "reassurance": "<strong>{serverName} fonctionne toujours</strong> et rien n'a été supprimé. Tu as le temps de régler cela.",
+    "updatePaymentButton": "Mettre à jour le moyen de paiement"
+  },
+  "renewal-final-warning": {
+    "title": "Ton serveur sera suspendu le {date}",
+    "preview": "{serverName} sera suspendu si le paiement ne passe pas",
+    "heading": "Ton serveur est sur le point d'être suspendu",
+    "greeting": "Salut {name} !",
+    "description": "Nous n'avons toujours pas pu encaisser <strong>{amount}</strong> pour renouveler <strong>{serverName}</strong>.",
+    "card": "Nous avons utilisé la carte se terminant par {last4} ({brand}).",
+    "lastAttempt": "Nous ferons <strong>une dernière tentative</strong> le {date}.",
+    "noFurtherAttempt": "<strong>Nous ne réessaierons pas avec ce moyen de paiement.</strong> Ta banque nous a indiqué qu'il ne peut pas être débité, donc rien ne se passera tant que tu n'en auras pas ajouté un autre.",
+    "deadline": "Si le paiement n'est pas réglé, <strong>{serverName}</strong> sera suspendu et éteint le <strong>{date}</strong>.",
+    "retention": "Tes données sont conservées <strong>{days} jours</strong> après cela. Si le paiement est toujours en attente à ce moment-là, le serveur et tout ce qu'il contient seront supprimés définitivement et ne pourront pas être récupérés.",
+    "updatePaymentButton": "Mettre à jour le moyen de paiement"
+  },
+  "payment-method-invalid": {
+    "title": "Ton moyen de paiement doit être remplacé",
+    "preview": "Ton moyen de paiement enregistré ne peut plus être utilisé",
+    "heading": "Ton moyen de paiement doit être remplacé",
+    "greeting": "Salut {name} !",
+    "descriptionCard": "La <strong>carte se terminant par {last4}</strong> ({brand}) enregistrée sur ton compte ne peut plus être utilisée pour les paiements.",
+    "description": "Le moyen de paiement enregistré sur ton compte ne peut plus être utilisé pour les paiements.",
+    "hint": "En ajouter un nouveau prend une minute et permet à tes serveurs de se renouveler sans interruption. D'ici là, chaque renouvellement dû échouera.",
+    "updatePaymentButton": "Ajouter un moyen de paiement"
+  },
   "footer": {
     "thisEmailWasIntendedFor": "Cet e-mail était destiné à <strong>{email}</strong>.",
     "securityConcerns": "Si tu n'attendais pas cet e-mail, tu peux l'ignorer. Si la sécurité de ton compte t'inquiète, <link>contacte-nous pour nous le dire</link>.",
