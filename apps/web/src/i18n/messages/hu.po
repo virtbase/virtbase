@@ -13,7 +13,7 @@ msgstr ""
 "X-Crowdin-File-ID: 14\n"
 "Project-Id-Version: virtbase\n"
 "Language-Team: Hungarian\n"
-"PO-Revision-Date: 2026-08-30 19:08\n"
+"PO-Revision-Date: 2026-08-31 13:45\n"
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
 msgctxt "lYlalx"
@@ -2110,6 +2110,13 @@ msgctxt "9lr8v8"
 msgid "Subnets"
 msgstr "Alhálózatok"
 
+#: src/app/admin.virtbase.com/(dashboard)/subscriptions/[id]/page.tsx
+#: src/app/admin.virtbase.com/(dashboard)/subscriptions/page.tsx
+#: src/features/admin/components/admin-sidebar-groups.tsx
+msgctxt "J-dIsA"
+msgid "Subscriptions"
+msgstr "Előfizetések"
+
 #: src/app/admin.virtbase.com/(dashboard)/template-groups/[id]/page.tsx
 #: src/app/admin.virtbase.com/(dashboard)/template-groups/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
@@ -2312,7 +2319,6 @@ msgid "Overview"
 msgstr "Áttekintés"
 
 #: src/app/app.virtbase.com/(dashboard)/servers/[id]/plan/page.tsx
-#: src/features/servers/components/plan/plan-form.tsx
 #: src/features/servers/components/server-nav.tsx
 msgctxt "fz0z4c"
 msgid "Plan"
@@ -2339,6 +2345,7 @@ msgid "An unexpected error occurred while loading the server details."
 msgstr "Váratlan hiba történt a szerver adatainak betöltése közben."
 
 #: src/app/app.virtbase.com/(dashboard)/servers/error.tsx
+#: src/features/account/components/billing/add-payment-method.tsx
 #: src/ui/generic-error.tsx
 msgctxt "FazwRl"
 msgid "Try again"
@@ -2717,6 +2724,9 @@ msgstr "API-kulcs létrehozása"
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/account/components/authentication/confirm-password-dialog.tsx
 #: src/features/account/components/authentication/two-factor-enable-dialog.tsx
+#: src/features/account/components/billing/add-payment-method-form.tsx
+#: src/features/account/components/billing/add-payment-method.tsx
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 #: src/features/account/components/privacy/delete-account-card.tsx
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
@@ -2736,9 +2746,11 @@ msgstr "API-kulcs létrehozása"
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 #: src/features/servers/components/backups/delete-backup-dialog.tsx
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
+#: src/features/servers/components/billing/mandate-dialog.tsx
 #: src/features/servers/components/overview/change-template-dialog.tsx
 #: src/features/servers/components/overview/rename-server-dialog.tsx
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
+#: src/features/servers/components/plan/plan-order-dialog.tsx
 #: src/features/servers/components/rdns/delete-record-dialog.tsx
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx
 #: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
@@ -2934,13 +2946,12 @@ msgid "Passkey #{number}"
 msgstr "azonosító: #{number}"
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx
-#: src/features/account/components/billing/payment-methods-list.tsx
 msgctxt "jUqYir"
 msgid "Added {date}"
 msgstr "Hozzáadott {date}"
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx
-#: src/features/account/components/billing/payment-methods-list.tsx
+#: src/features/account/components/billing/payment-method-item.tsx
 msgctxt "G_yZLu"
 msgid "Remove"
 msgstr "Távolítsa el"
@@ -3071,15 +3082,216 @@ msgctxt "w-q8k4"
 msgid "Single-use codes in case you lose access to your other factors."
 msgstr "Egyszer használatos kódok arra az esetre, ha elveszíted a hozzáférést a többi faktorodhoz."
 
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "F-ixiD"
+msgid "Your card details could not be checked. Try again."
+msgstr "A kártyaadatokat nem sikerült ellenőrizni. Próbáld újra."
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "ofKlJp"
+msgid "Your bank did not approve this card. Check the details, or try a different card."
+msgstr "A bankod nem hagyta jóvá ezt a kártyát. Ellenőrizd az adatokat, vagy próbálj másik kártyát."
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "fIib8k"
+msgid "Your bank still has to confirm this card. Finish the check it sent you, then add the card again."
+msgstr "A bankodnak még meg kell erősítenie ezt a kártyát. Fejezd be az általa küldött ellenőrzést, majd add hozzá újra a kártyát."
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "5Me-m9"
+msgid "The card was not saved and nothing was charged. Check the details, or try a different card."
+msgstr "A kártya nem lett elmentve, és semmi nem lett terhelve. Ellenőrizd az adatokat, vagy próbálj másik kártyát."
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "vf0_Um"
+msgid "We only ever see the brand and the last four digits."
+msgstr "Csak a kártyatípust és az utolsó négy számjegyet látjuk."
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "BFfES6"
+msgid "The card was not saved"
+msgstr "A kártya nem lett elmentve"
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "AfTYM9"
+msgid "Confirming with your bank…"
+msgstr "Megerősítés a bankodnál…"
+
+#: src/features/account/components/billing/add-payment-method-form.tsx
+msgctxt "rfC1Zq"
+msgid "Save card"
+msgstr "Kártya mentése"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "oLpiKz"
+msgid "Add a card"
+msgstr "Kártya hozzáadása"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "lnbUY-"
+msgid "Opening a secure form…"
+msgstr "Biztonságos űrlap megnyitása…"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "9V1fHT"
+msgid "The card form could not be opened"
+msgstr "A kártyaűrlapot nem sikerült megnyitni"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "BdZO9K"
+msgid "Nothing was saved and nothing was charged. Try again in a moment."
+msgstr "Semmi nem lett elmentve, és semmi nem lett terhelve. Próbáld újra kicsit később."
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "HejwTp"
+msgid "Your bank is confirming the mandate"
+msgstr "A bankod megerősíti a felhatalmazást"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "mHaiI3"
+msgid "Card saved"
+msgstr "Kártya elmentve"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "uVPfNA"
+msgid "This can take a day or two. Nothing is charged in the meantime."
+msgstr "Ez egy-két napig is eltarthat. Addig semmit nem terhelünk."
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "jcLmIR"
+msgid "It appears in the list above in a few seconds."
+msgstr "Néhány másodperc múlva megjelenik a fenti listában."
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "rELDbB"
+msgid "Refresh"
+msgstr "Frissítés"
+
+#: src/features/account/components/billing/add-payment-method.tsx
+msgctxt "weEvBW"
+msgid "Nothing is charged when you add a card."
+msgstr "A kártya hozzáadásakor semmit nem terhelünk."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+#: src/features/servers/components/billing/mandate-dialog.tsx
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "hmnIY5"
+msgid "Card"
+msgstr "Kártya"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "tFLiQ2"
+msgid "SEPA Direct Debit"
+msgstr "SEPA csoportos beszedés"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "wbtiQC"
+msgid "PayPal"
+msgstr ""
+
+#: src/features/account/components/billing/payment-method-item.tsx
+#: src/features/checkout/components/stripe-payment-form.tsx
+msgctxt "BVTni9"
+msgid "Payment method"
+msgstr "Fizetési mód"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "1qYrxy"
+msgid "{instrument} ending {last4}"
+msgstr "{instrument}, végződés: {last4}"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "NgmFCU"
+msgid "Use {card} for renewals"
+msgstr "Használat megújításokhoz: {card}"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "b0Sa3V"
+msgid "Use for renewals"
+msgstr "Használat megújításokhoz"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "37qTXK"
+msgid "Remove {card}"
+msgstr "Eltávolítás: {card}"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+#: src/features/admin/components/proxmox-templates/template-settings.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "lKv8ex"
+msgid "Default"
+msgstr "Alapértelmezett"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "_VQpyO"
+msgid "Expires {date}"
+msgstr "Lejár: {date}"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "kn3VHJ"
+msgid "Charged when a subscription renews."
+msgstr "Előfizetés megújításakor terheljük."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "qsrtPX"
+msgid "Expired — replace it to keep automatic renewal"
+msgstr "Lejárt — cseréld le, hogy az automatikus megújítás megmaradjon"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "KR85kZ"
+msgid "This card expired in {date}. Add a new one, choose it for renewals, and then remove this one."
+msgstr "Ez a kártya lejárt: {date}. Adj hozzá egy újat, válaszd ki a megújításokhoz, majd távolítsd el ezt."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "fME4OR"
+msgid "This card has expired. Add a new one, choose it for renewals, and then remove this one."
+msgstr "Ez a kártya lejárt. Adj hozzá egy újat, válaszd ki a megújításokhoz, majd távolítsd el ezt."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "EAhUyM"
+msgid "Stopped by your bank — replace it to keep automatic renewal"
+msgstr "A bankod leállította — cseréld le, hogy az automatikus megújítás megmaradjon"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "JD3g_M"
+msgid "Refused — replace it to keep automatic renewal"
+msgstr "Elutasítva — cseréld le, hogy az automatikus megújítás megmaradjon"
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "zWgq8B"
+msgid "It was reported lost, so renewals can no longer be charged to it. Add another card and choose it for renewals."
+msgstr "Elveszettként jelentették be, ezért a megújításokat már nem lehet róla terhelni. Adj hozzá másik kártyát, és válaszd ki a megújításokhoz."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "yZt1Z4"
+msgid "It was reported stolen, so renewals can no longer be charged to it. Add another card and choose it for renewals."
+msgstr "Lopottként jelentették be, ezért a megújításokat már nem lehet róla terhelni. Adj hozzá másik kártyát, és válaszd ki a megújításokhoz."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "CSGj9j"
+msgid "The permission to charge it was withdrawn, so renewals can no longer use it. Add another card and choose it for renewals."
+msgstr "A kártya terhelésére adott engedélyt visszavonták, így a megújítások már nem használhatják. Adj hozzá másik kártyát, és válaszd ki a megújításokhoz."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "Hn4fZn"
+msgid "Your bank does not accept this kind of payment from us. Add another card and choose it for renewals."
+msgstr "A bankod nem fogadja el tőlünk ezt a fizetéstípust. Adj hozzá másik kártyát, és válaszd ki a megújításokhoz."
+
+#: src/features/account/components/billing/payment-method-item.tsx
+msgctxt "2kKGxe"
+msgid "Your bank refused the last renewal and told us not to try again. Add another card and choose it for renewals, or ask your bank why it was refused."
+msgstr "A bankod elutasította a legutóbbi megújítást, és azt kérte, ne próbálkozzunk újra. Adj hozzá másik kártyát, és válaszd ki a megújításokhoz, vagy kérdezd meg a bankodat, miért utasította el."
+
 #: src/features/account/components/billing/payment-methods-card.tsx
 msgctxt "xuTqgN"
 msgid "Payment Methods"
 msgstr "Fizetési módok"
 
 #: src/features/account/components/billing/payment-methods-card.tsx
-msgctxt "oBsxme"
-msgid "The following payment methods are stored and can be used for billing."
-msgstr "A következő fizetési módok kerülnek tárolásra és számlázásra használhatók."
+msgctxt "1r9dHK"
+msgid "The cards your subscriptions renew on."
+msgstr "A kártyák, amelyekről az előfizetéseid megújulnak."
 
 #: src/features/account/components/billing/payment-methods-list.tsx
 msgctxt "qyRflV"
@@ -3087,14 +3299,74 @@ msgid "No payment methods"
 msgstr "Nincsenek fizetési módok"
 
 #: src/features/account/components/billing/payment-methods-list.tsx
-msgctxt "gL_ZgG"
-msgid "No payment methods have been linked to your account."
-msgstr "Nincsenek fizetési módok összekapcsolva a fiókjával."
+msgctxt "uc7KVl"
+msgid "No cards have been saved yet. A subscription cannot renew without one."
+msgstr "Még nincs elmentett kártya. Nélküle egy előfizetés nem tud megújulni."
 
 #: src/features/account/components/billing/payment-methods-list.tsx
-msgctxt "3MBRV5"
-msgid "No name"
-msgstr "Nincs megadva név"
+msgctxt "O7KbvF"
+msgid "No card is chosen for renewals"
+msgstr "Nincs kártya kiválasztva a megújításokhoz"
+
+#: src/features/account/components/billing/payment-methods-list.tsx
+msgctxt "bXjwnf"
+msgid "A renewal has nothing to charge, so the subscription ends when its period does. Pick a card below with “Use for renewals”."
+msgstr "A megújításnak nincs miből terhelnie, ezért az előfizetés az időszakával együtt véget ér. Válassz alább egy kártyát a „Használat megújításokhoz” lehetőséggel."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "hguqnC"
+msgid "Remove this card?"
+msgstr "Eltávolítod ezt a kártyát?"
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "5PZkYP"
+msgid "Remove card"
+msgstr "Kártya eltávolítása"
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "mLXaQO"
+msgid "It is detached from our payment provider straight away and can never be charged again. Receipts for payments you have already made are unaffected."
+msgstr "Azonnal leválasztjuk a fizetési szolgáltatónkról, és soha többé nem terhelhető. A már teljesített fizetések bizonylatait ez nem érinti."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "JtXgPI"
+msgid "Automatic renewal will stop"
+msgstr "Az automatikus megújítás leáll"
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "XuZcbZ"
+msgid "This is the only card on your account, and {count} subscription(s) renew automatically. Once it is gone there is nothing left to charge them to."
+msgstr "Ez az egyetlen kártya a fiókodban, és {count} előfizetés újul meg automatikusan. Ha eltűnik, nem marad miből terhelni őket."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "KZqy-S"
+msgid "This is the card renewals are charged to, and removing it leaves your account without one. {count} subscription(s) renew automatically and would have nothing to charge."
+msgstr "Erről a kártyáról terheljük a megújításokat, és az eltávolításával a fiókod kártya nélkül marad. {count} előfizetés újul meg automatikusan, és nem lenne miből terhelni őket."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "YFs9Ts"
+msgid "Nothing is switched off today: each one runs to the end of the period you have already paid for — the first on {date} — and then ends instead of renewing."
+msgstr "Ma semmi nem áll le: mindegyik a már kifizetett időszak végéig fut — az első eddig: {date} —, majd megújítás helyett véget ér."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "DX5sBC"
+msgid "Nothing is switched off today: each one runs to the end of the period you have already paid for, and then ends instead of renewing."
+msgstr "Ma semmi nem áll le: mindegyik a már kifizetett időszak végéig fut, majd megújítás helyett véget ér."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "sfngf8"
+msgid "You can still remove it. Add another card before then and renewals carry on as before."
+msgstr "Ettől még eltávolíthatod. Addig adj hozzá másik kártyát, és a megújítások a régi módon folytatódnak."
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "uz-t0Q"
+msgid "Renewals move to your default card"
+msgstr "A megújítások az alapértelmezett kártyádra kerülnek"
+
+#: src/features/account/components/billing/remove-payment-method-dialog.tsx
+msgctxt "OL4fV7"
+msgid "{count} subscription(s) renew on this card. They will be charged to the card you have chosen for renewals instead."
+msgstr "{count} előfizetés újul meg erről a kártyáról. Ehelyett a megújításokhoz kiválasztott kártyáról terheljük őket."
 
 #: src/features/account/components/custom-images/create-custom-image-button.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
@@ -3589,6 +3861,16 @@ msgctxt "6admx4"
 msgid "Please use at least 8 characters, one uppercase letter, one lowercase letter and one number."
 msgstr "Használj legalább 8 karaktert, egy nagybetűt, egy kisbetűt és egy számot."
 
+#: src/features/account/hooks/billing/remove-payment-method.ts
+msgctxt "hBp-IX"
+msgid "Could not remove the card. It is still on your account — try again in a moment."
+msgstr "A kártyát nem sikerült eltávolítani. Továbbra is a fiókodban van — próbáld újra kicsit később."
+
+#: src/features/account/hooks/billing/set-default-payment-method.ts
+msgctxt "Hxr4zr"
+msgid "Could not change the default card. Nothing changed — try again."
+msgstr "Az alapértelmezett kártyát nem sikerült módosítani. Semmi nem változott — próbáld újra."
+
 #: src/features/admin/components/abuse/abuse-case-conversation.tsx
 #: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
 msgctxt "jw6_u7"
@@ -3609,6 +3891,8 @@ msgstr "Bejelentő: {reporter}"
 #: src/features/admin/components/abuse/abuse-case-detail.tsx
 #: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
 #: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
 msgctxt "hkENym"
 msgid "Customer"
 msgstr "Ügyfél"
@@ -3722,6 +4006,7 @@ msgstr "Senki — ezt az ügyet nem bejelentés nyitotta."
 
 #: src/features/admin/components/abuse/abuse-case-detail.tsx
 #: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "ADKsID"
 msgid "Opened"
 msgstr "Megnyitva"
@@ -3748,6 +4033,7 @@ msgstr "Érintett szerverek"
 
 #: src/features/admin/components/abuse/abuse-case-detail.tsx
 #: src/features/admin/components/proxmox-templates/template-settings.tsx
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
 msgctxt "450Fty"
 msgid "None"
 msgstr "Nincs"
@@ -3820,6 +4106,8 @@ msgstr "Áthelyezés ide"
 #: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
 #: src/features/admin/components/emails/emails-table/columns.tsx
 #: src/features/admin/components/integrations/integration-health-panel.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
 #: src/features/servers/firewall/components/firewall-options-row.tsx
 msgctxt "tzMNF3"
 msgid "Status"
@@ -4470,6 +4758,7 @@ msgid "No templates are defined yet."
 msgstr "Még nincsenek sablonok."
 
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "XPruqs"
 msgid "Order"
 msgstr "Sorrend"
@@ -4688,6 +4977,8 @@ msgid "Email preview"
 msgstr "E-mail előnézete"
 
 #: src/features/admin/components/emails/emails-table/columns.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
 msgctxt "LLtKhp"
 msgid "Subject"
 msgstr "Tárgy"
@@ -4773,6 +5064,7 @@ msgid "Stored encrypted and never shown again. Leave a field blank to keep its c
 msgstr "Titkosítva tárolódik, és többé nem jelenik meg. Hagyja üresen a mezőt a jelenlegi érték megtartásához."
 
 #: src/features/admin/components/integrations/integrations-hub.tsx
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "iYc3Ld"
 msgid "Payments"
 msgstr "Fizetések"
@@ -5346,11 +5638,6 @@ msgid "Re-download after"
 msgstr "Újraletöltés ennyi után"
 
 #: src/features/admin/components/proxmox-templates/template-settings.tsx
-msgctxt "lKv8ex"
-msgid "Default"
-msgstr "Alapértelmezett"
-
-#: src/features/admin/components/proxmox-templates/template-settings.tsx
 msgctxt "n8cyVk"
 msgid "Operating system"
 msgstr "Operációs rendszer"
@@ -5535,6 +5822,256 @@ msgstr "Típus"
 msgctxt "PLUhm9"
 msgid "VLAN ID"
 msgstr "VLAN-azonosító"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "SKenPE"
+msgid "Renewal history"
+msgstr "Megújítási előzmények"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "oS8byb"
+msgid "Every period this subscription has tried to collect, newest first. The decline code is the provider's own, stored exactly as it was returned."
+msgstr "Minden időszak, amelyre ez az előfizetés beszedést kísérelt meg, a legújabbal kezdve. Az elutasítási kód a szolgáltatóé, pontosan úgy tárolva, ahogy visszaérkezett."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "jgEHx0"
+msgid "No renewals yet"
+msgstr "Még nincs megújítás"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "kuTig1"
+msgid "Nothing has fallen due on this subscription. A row appears here the moment a period is claimed for collection."
+msgstr "Ezen az előfizetésen még semmi nem vált esedékessé. Egy sor abban a pillanatban jelenik meg itt, amikor egy időszakot beszedésre igényelnek."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "jCNpEL"
+msgid "Period"
+msgstr "Időszak"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/invoices/components/invoices-table/columns.tsx
+msgctxt "_0TOL5"
+msgid "Amount"
+msgstr "Összeg"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "fVG1Ff"
+msgid "Attempt"
+msgstr "Kísérlet"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "DnMTTO"
+msgid "Decline code"
+msgstr "Elutasítási kód"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "r68Vd2"
+msgid "Next attempt"
+msgstr "Következő kísérlet"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "4GVMfk"
+msgid "The charges behind those renewals, reached through the orders they produced. The transaction id is what to look up with the provider."
+msgstr "A megújítások mögötti terhelések, a belőlük létrejött rendeléseken keresztül. A szolgáltatónál a tranzakcióazonosító alapján lehet visszakeresni."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "5_cvkc"
+msgid "No payments recorded"
+msgstr "Nincs rögzített fizetés"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "P1SIjh"
+msgid "No renewal on this subscription has reached a charge yet, so there is nothing to look up with the provider."
+msgstr "Ezen az előfizetésen még egyetlen megújítás sem jutott el terhelésig, így a szolgáltatónál nincs mit visszakeresni."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "xaj9Ba"
+msgid "Provider"
+msgstr "Szolgáltató"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "92e4Pu"
+msgid "Transaction id"
+msgstr "Tranzakcióazonosító"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "ORGv1Q"
+msgid "Created"
+msgstr "Létrehozva"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "7Sb0xt"
+msgid "{amount} refunded"
+msgstr "{amount} visszatérítve"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "nQHVOl"
+msgid "Payment methods on file"
+msgstr "Nyilvántartott fizetési módok"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "zT_kqh"
+msgid "Display material only. The credential token these point at is never shown."
+msgstr "Csak megjelenítési adatok. A mögöttük álló hitelesítő token soha nem jelenik meg."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "VvlhCa"
+msgid "Nothing on file"
+msgstr "Nincs nyilvántartva semmi"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "4epRjy"
+msgid "This customer has no stored credential, so an automatic renewal has nothing to charge."
+msgstr "Ennek az ügyfélnek nincs tárolt fizetési adata, így az automatikus megújításnak nincs miből terhelnie."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "AaiUD0"
+msgid "no last four"
+msgstr "nincs utolsó négy számjegy"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "l0VcDL"
+msgid "expires {month}/{year}"
+msgstr "lejár: {month}/{year}"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "XJ5FR9"
+msgid "Named"
+msgstr "Kijelölt"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "2im1Il"
+msgid "Detached"
+msgstr "Leválasztva"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "rBcVFE"
+msgid "Invalid since {date}"
+msgstr "Érvénytelen ettől: {date}"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "yrIdiE"
+msgid "Auto-renew on"
+msgstr "Automatikus megújítás bekapcsolva"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "zzzrqz"
+msgid "Auto-renew off"
+msgstr "Automatikus megújítás kikapcsolva"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "KsFKQy"
+msgid "No mandate"
+msgstr "Nincs felhatalmazás"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "AXyFb3"
+msgid "Gone — the subject no longer exists"
+msgstr "Eltűnt — a tárgy már nem létezik"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "3uJDrU"
+msgid "Current period"
+msgstr "Jelenlegi időszak"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/servers/components/server-graphs.tsx
+msgctxt "6m3w-3"
+msgid "Interval"
+msgstr "Intervallum"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "GM3YzV"
+msgid "{months} months"
+msgstr "{months} hónap"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "cK9cxa"
+msgid "Agreed price"
+msgstr "Megállapodott ár"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "IfymNN"
+msgid "{amount} on renewal"
+msgstr "{amount} megújításkor"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "se3ldP"
+msgid "{amount} at signup"
+msgstr "{amount} a megrendeléskor"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "ODSPeV"
+msgid "What was agreed at signup. A renewal is quoted from the price locked to the server."
+msgstr "Ami a megrendeléskor megállapodásra került. A megújítás árát a szerverhez rögzített árból számoljuk."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "AQZ9EK"
+msgid "Mandate"
+msgstr "Felhatalmazás"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "SsoKGP"
+msgid "wording {version}"
+msgstr "szöveg: {version}"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "eTs2vO"
+msgid "No consent recorded to charge off-session."
+msgstr "Nincs rögzített hozzájárulás az ügyfél jelenléte nélküli terheléshez."
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "3wsVWF"
+msgid "Cancelled"
+msgstr "Lemondva"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "TP_cMX"
+msgid "Ended"
+msgstr "Véget ért"
+
+#: src/features/admin/components/subscriptions/subscription-detail.tsx
+msgctxt "WqaNWU"
+msgid "This page is read-only. Retrying a collection, granting time or cancelling all happen elsewhere."
+msgstr "Ez az oldal csak olvasható. A beszedés újrapróbálása, a haladék adása és a lemondás máshol történik."
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "laPj3K"
+msgid "Search by server, customer or id..."
+msgstr "Keresés szerver, ügyfél vagy azonosító szerint..."
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "WZ-2C3"
+msgid "Period ends"
+msgstr "Időszak vége"
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "KSguPh"
+msgid "every {months} months"
+msgstr "{months} hónaponta"
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "evMlX9"
+msgid "Auto-renew"
+msgstr "Automatikus megújítás"
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "Zh-5A6"
+msgid "On"
+msgstr "Be"
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "OvzONl"
+msgid "Off"
+msgstr "Ki"
+
+#: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
+msgctxt "pGCLGL"
+msgid "Recorded"
+msgstr "Rögzítve"
 
 #: src/features/admin/components/users/users-table/columns.tsx
 msgctxt "BzHQ0A"
@@ -5779,7 +6316,6 @@ msgid "If left blank, a secure random password will be generated and sent by ema
 msgstr "Ha üresen hagyja, a rendszer egy biztonságos véletlenszerű jelszót generál és e-mailben elküldi."
 
 #: src/features/checkout/components/checkout-form.tsx
-#: src/features/servers/components/plan/plan-summary.tsx
 msgctxt "-g-0OK"
 msgid "Continue to payment"
 msgstr "Tovább a fizetéshez"
@@ -5837,8 +6373,7 @@ msgstr "havonta"
 
 #: src/features/checkout/components/offer-card.tsx
 #: src/features/checkout/components/order-summary.tsx
-#: src/features/servers/components/plan/plan-radio-group.tsx
-#: src/features/servers/components/plan/plan-summary.tsx
+#: src/features/servers/components/plan/plan-specs.tsx
 #: src/features/servers/components/servers-list.tsx
 msgctxt "BGI16m"
 msgid "{cores, plural, =0 {# vCores} =1 {# vCore} other {# vCores}}"
@@ -5882,7 +6417,7 @@ msgid "Configure now"
 msgstr "Konfigurálja most"
 
 #: src/features/checkout/components/offer-card.tsx
-#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/plan-list.tsx
 msgctxt "spsPUc"
 msgid "Sold out"
 msgstr "Elfogyott"
@@ -5908,11 +6443,6 @@ msgid "Used for invoicing and VAT calculation."
 msgstr "Számlázáshoz és ÁFA számításhoz használják."
 
 #: src/features/checkout/components/stripe-payment-form.tsx
-msgctxt "BVTni9"
-msgid "Payment method"
-msgstr "Fizetési mód"
-
-#: src/features/checkout/components/stripe-payment-form.tsx
 msgctxt "11yeGk"
 msgid "Payments are securely processed by Stripe."
 msgstr "A kifizetéseket a Stripe biztonságosan feldolgozza."
@@ -5923,11 +6453,13 @@ msgid "Payment could not be completed"
 msgstr "A fizetés nem hajtható végre"
 
 #: src/features/checkout/components/stripe-payment-form.tsx
+#: src/features/servers/components/plan/plan-order-dialog.tsx
 msgctxt "ddCkDY"
 msgid "Processing payment…"
 msgstr "Fizetés feldolgozása…"
 
 #: src/features/checkout/components/stripe-payment-form.tsx
+#: src/features/servers/components/plan/plan-order-dialog.tsx
 msgctxt "7tOz-m"
 msgid "Pay now"
 msgstr "Fizessen most"
@@ -5993,6 +6525,7 @@ msgid "Expired (will be deleted {date})"
 msgstr "Lejárt (törölve lesz {date})"
 
 #: src/features/dashboard/components/server-status-small.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
 #: src/features/servers/hooks/use-status-mapping.ts
 msgctxt "oJsHQW"
 msgid "Suspended"
@@ -6022,11 +6555,6 @@ msgstr "Számlaszám"
 msgctxt "cIAuzz"
 msgid "Search invoice number..."
 msgstr "Számlaszám keresése..."
-
-#: src/features/invoices/components/invoices-table/columns.tsx
-msgctxt "_0TOL5"
-msgid "Amount"
-msgstr "Összeg"
 
 #: src/features/invoices/components/invoices-table/columns.tsx
 msgctxt "dULmbA"
@@ -6435,6 +6963,203 @@ msgctxt "pFmRJS"
 msgid "Should the backup be restored?"
 msgstr "Vissza kell állítani a biztonsági másolatot?"
 
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "tYBzXd"
+msgid "Automatic renewal"
+msgstr "Automatikus megújítás"
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "3d6fWf"
+msgid "Your server renews by itself. We charge {price} at the end of each term."
+msgstr "A szervered magától megújul. Minden időszak végén {price} összeget terhelünk."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "Owt71Z"
+msgid "Your server renews by itself at the end of each term."
+msgstr "A szervered minden időszak végén magától megújul."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "DTMKLg"
+msgid "Your server will not renew by itself. It stops at the end of the current term unless you extend it."
+msgstr "A szervered nem újul meg magától. A jelenlegi időszak végén leáll, hacsak nem hosszabbítod meg."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "bByVFS"
+msgid "Resume this subscription before turning automatic renewal back on."
+msgstr "Folytasd ezt az előfizetést, mielőtt újra bekapcsolod az automatikus megújítást."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "fANfrY"
+msgid "This subscription can no longer renew."
+msgstr "Ez az előfizetés már nem tud megújulni."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "Up6lw2"
+msgid "The payment method we would charge cannot be used. Pick a different default on the payment methods page, then turn automatic renewal on."
+msgstr "A terhelendő fizetési mód nem használható. Válassz másik alapértelmezettet a fizetési módok oldalán, majd kapcsold be az automatikus megújítást."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "4wd5lv"
+msgid "Add a payment method first. Automatic renewal needs a card we can charge when your term ends."
+msgstr "Először adj hozzá egy fizetési módot. Az automatikus megújításhoz kell egy kártya, amelyet az időszakod végén terhelhetünk."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "99eSnZ"
+msgid "Manage payment methods"
+msgstr "Fizetési módok kezelése"
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "zdTT0e"
+msgid "Cancelling your subscription"
+msgstr "Az előfizetésed lemondása"
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "UaMo5U"
+msgid "Confirm that you want to cancel this subscription."
+msgstr "Erősítsd meg, hogy le akarod mondani ezt az előfizetést."
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "orvpWh"
+msgid "Go back"
+msgstr "Vissza"
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "LhY9Hz"
+msgid "Cancel subscription now"
+msgstr "Előfizetés lemondása most"
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "Hcq5-Y"
+msgid "The subscription for {name} will be cancelled."
+msgstr "A(z) {name} előfizetése lemondásra kerül."
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "LQS043"
+msgid "This subscription will be cancelled."
+msgstr "Ez az előfizetés lemondásra kerül."
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "SWNin3"
+msgid "Your server keeps running until {date}, the end of the term you have already paid for. Nothing is switched off today and you will not be charged again."
+msgstr "A szervered eddig fut: {date} — a már kifizetett időszak vége. Ma semmi nem áll le, és többé nem terhelünk semmit."
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "zbAQsT"
+msgid "After {date} the server is not renewed and is shut down."
+msgstr "{date} után a szerver nem újul meg, és leállítjuk."
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "5SyDDF"
+msgid "Subscription cancelled"
+msgstr "Előfizetés lemondva"
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "vU7iFi"
+msgid "Your server keeps running until {date} and will not be renewed."
+msgstr "A szervered eddig fut: {date}, és nem újul meg."
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "wIfHh6"
+msgid "The paid-for term ended on {date}."
+msgstr "A kifizetett időszak véget ért: {date}."
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "9CnHy1"
+msgid "Resume subscription"
+msgstr "Előfizetés folytatása"
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "5kfntb"
+msgid "Cancellation"
+msgstr "Lemondás"
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "mYShCs"
+msgid "Your server keeps running until {date}. Cancelling only stops it being renewed after that."
+msgstr "A szervered eddig fut: {date}. A lemondás csak azt akadályozza meg, hogy utána megújuljon."
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "UWVETE"
+msgid "Cancel subscription"
+msgstr "Előfizetés lemondása"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "HS8EXa"
+msgid "{price} every month"
+msgstr "havonta {price}"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "GmZa3s"
+msgid "{price} every {months} months"
+msgstr "{months} hónaponta {price}"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "lVjU8T"
+msgid "your saved payment method"
+msgstr "a mentett fizetési módod"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "x36plV"
+msgid "Agree to automatic payments"
+msgstr "Hozzájárulás az automatikus fizetésekhez"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "AwY5G0"
+msgid "Read and accept the terms under which Virtbase may charge your saved payment method."
+msgstr "Olvasd el és fogadd el a feltételeket, amelyek mellett a Virtbase megterhelheti a mentett fizetési módodat."
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "vVdCCw"
+msgid "Agree and turn on automatic renewal"
+msgstr "Elfogadom, és bekapcsolom az automatikus megújítást"
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "Wi3JqI"
+msgid "Virtbase will charge {cadence} to {card}, starting on {date} when your current term ends."
+msgstr "A Virtbase terhelése: {cadence}. Az első terhelés ekkor: {date}, amikor a jelenlegi időszakod véget ér. Fizetési mód: {card}."
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "Bs-2A3"
+msgid "This happens automatically. You will not be asked to approve each payment and you do not have to do anything for your server to keep running. If the price of your plan changes, we will tell you before the next payment."
+msgstr "Ez automatikusan történik. Nem kérjük minden fizetés jóváhagyását, és semmit nem kell tenned azért, hogy a szervered tovább fusson. Ha a csomagod ára változik, a következő fizetés előtt szólunk."
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "8HQobB"
+msgid "You can turn automatic renewal off again at any time with the switch you just used, and you can end the subscription altogether with the “Cancel subscription” button on this page. Either way, your server keeps running until the end of the term you have already paid for."
+msgstr "Az automatikus megújítást bármikor kikapcsolhatod ugyanazzal a kapcsolóval, amelyet az imént használtál, az előfizetést pedig teljesen megszüntetheted az oldal „Előfizetés lemondása” gombjával. Bármelyiket választod, a szervered a már kifizetett időszak végéig fut."
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "SCQaYd"
+msgid "I agree that Virtbase may charge {cadence} to my saved payment method, automatically and without asking again, until I turn this off or cancel."
+msgstr "Hozzájárulok, hogy a Virtbase automatikusan és külön rákérdezés nélkül megterhelje a mentett fizetési módomat ennyivel: {cadence}, amíg ezt ki nem kapcsolom vagy le nem mondom."
+
+#: src/features/servers/components/billing/mandate-dialog.tsx
+msgctxt "Yqvd5-"
+msgid "Agreement version {version}"
+msgstr "Megállapodás verziója: {version}"
+
+#: src/features/servers/components/billing/past-due-alert.tsx
+msgctxt "9k3Wi4"
+msgid "A payment for this server failed"
+msgstr "Egy fizetés meghiúsult ehhez a szerverhez"
+
+#: src/features/servers/components/billing/past-due-alert.tsx
+msgctxt "XZ2cEy"
+msgid "We could not collect the payment for your next term. We will try again automatically over the coming days. If it keeps failing, your server is suspended after {date} and deleted once the grace period has passed."
+msgstr "A következő időszakod díját nem tudtuk beszedni. A következő napokban automatikusan újrapróbáljuk. Ha továbbra is meghiúsul, a szervered {date} után felfüggesztésre kerül, a türelmi idő letelte után pedig töröljük."
+
+#: src/features/servers/components/billing/past-due-alert.tsx
+msgctxt "Ty5fKl"
+msgid "If you have just replaced your payment method, you do not have to wait for the next attempt."
+msgstr "Ha épp most cserélted le a fizetési módodat, nem kell megvárnod a következő kísérletet."
+
+#: src/features/servers/components/billing/past-due-alert.tsx
+msgctxt "f6dOFt"
+msgid "Retry now"
+msgstr "Újrapróbálás most"
+
 #: src/features/servers/components/console/console-frame.tsx
 msgctxt "lptya2"
 msgid "Server is suspended"
@@ -6600,113 +7325,333 @@ msgctxt "lxp8MB"
 msgid "Taken from the template this server was created from. Install the {packageName} package to have Virtbase read the operating system from inside the server."
 msgstr "Abból a sablonból származik, amelyből ez a szerver készült. Telepítsd a(z) {packageName} csomagot, hogy a Virtbase ki tudja olvasni az operációs rendszert a szervered belsejéből."
 
-#: src/features/servers/components/plan/plan-form.tsx
-msgctxt "Kng3Em"
-msgid "Select a new plan or extend your current plan. Downgrading to a smaller storage plan is not supported."
-msgstr "Válasszon új csomagot, vagy hosszabbítsa meg jelenlegi tervét. A kisebb tárhelycsomagra való visszaváltás nem támogatott."
-
-#: src/features/servers/components/plan/plan-radio-group.tsx
+#: src/features/servers/components/plan/current-plan-card.tsx
+#: src/features/servers/components/plan/plan-list.tsx
 #: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "tpfEY0"
-msgid "{memory} RAM"
-msgstr ""
-
-#: src/features/servers/components/plan/plan-radio-group.tsx
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "cenOuc"
-msgid "{storage} NVMe SSD"
-msgstr ""
-
-#: src/features/servers/components/plan/plan-radio-group.tsx
-msgctxt "uPG29C"
-msgid "{price} today"
-msgstr "{price} ma"
-
-#: src/features/servers/components/plan/plan-radio-group.tsx
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "9H3YQm"
-msgid "then {price} / month"
-msgstr "majd {price} / hónap"
-
-#: src/features/servers/components/plan/plan-radio-group.tsx
 msgctxt "JxjC5u"
 msgid "{price} / month"
 msgstr "{price} / hó"
 
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "aG7JgP"
-msgid "Downgrading to a smaller storage plan isn't supported. Pick a plan with at least {size} of storage."
-msgstr "A kisebb tárhelycsomagra való visszaváltás nem támogatott. Válasszon legalább {size} tárhellyel rendelkező tervet."
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "3XuHC5"
-msgid "{name} is sold out right now. Try again later or pick a different plan."
-msgstr "A {name} most elkelt. Próbálja újra később, vagy válasszon másik tervet."
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "1p9GGF"
-msgid "This plan is sold out. Please pick a different plan."
-msgstr "Ez a terv elkelt. Kérjük, válasszon másik tervet."
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "fOZyRZ"
-msgid "Your current term has expired. Please renew your server first, then upgrade."
-msgstr "A jelenlegi időszakod lejárt. Kérjük, először újítsd meg a szervert, majd hajtsd végre a frissítést."
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "ZjhoiP"
-msgid "Select a plan"
-msgstr "Válasszon egy tervet"
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "SB__YQ"
-msgid "Order summary"
-msgstr "Megrendelés összefoglalója"
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "RrCui3"
-msgid "Summary"
-msgstr "Összegzés"
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "6WPC9q"
-msgid "Plan change"
-msgstr "Tervváltás"
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "kkpP2k"
-msgid "today"
-msgstr "ma"
-
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "Vn2ud4"
-msgid "/ month"
-msgstr "/ hónap"
-
+#: src/features/servers/components/plan/current-plan-card.tsx
 #: src/features/servers/components/plan/plan-summary.tsx
 msgctxt "LQbES8"
 msgid "Incl. statutory VAT, if applicable"
 msgstr "Incl. törvényes áfa, ha van ilyen"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "qV-TFm"
+msgid "Payment failed"
+msgstr "Sikertelen fizetés"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "CrEhnK"
+msgid "No end date"
+msgstr "Nincs végdátum"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "zvApHY"
+msgid "Ends on {date}"
+msgstr "Vége: {date}"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "uk8hUQ"
+msgid "Runs until {date}, then ends"
+msgstr "Eddig fut: {date}, aztán véget ér"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "L7pwLO"
+msgid "Ended on {date}"
+msgstr "Véget ért: {date}"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "CkSYU4"
+msgid "Cancelled. It will not be renewed."
+msgstr "Lemondva. Nem újul meg."
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "mYEBl9"
+msgid "The server is suspended until this is paid."
+msgstr "A szerver felfüggesztve marad, amíg ez ki nem lesz fizetve."
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "TiBG0-"
+msgid "Renews automatically on {date}"
+msgstr "Automatikusan megújul: {date}"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "h5ziTq"
+msgid "Nothing renews by itself unless you turn it on below."
+msgstr "Semmi nem újul meg magától, amíg lent be nem kapcsolod."
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "g1lN9B"
+msgid "Automatic renewal is not set up"
+msgstr "Az automatikus megújítás nincs beállítva"
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "US-mpc"
+msgid "This server is paid for one term at a time, so nothing is charged without you. It keeps running until {date} — extend it before then and it carries on."
+msgstr "Ezt a szervert időszakonként fizeted, így nélküled semmit nem terhelünk. Eddig fut: {date} — hosszabbítsd meg addig, és tovább működik."
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "se4Js1"
+msgid "This server is paid for one term at a time, so nothing is charged without you. Extend it below to keep it running."
+msgstr "Ezt a szervert időszakonként fizeted, így nélküled semmit nem terhelünk. Hosszabbítsd meg lent, hogy tovább működjön."
+
+#: src/features/servers/components/plan/current-plan-card.tsx
+msgctxt "6zkPH-"
+msgid "Extend or change your plan"
+msgstr "Csomag meghosszabbítása vagy módosítása"
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "ktNrBh"
+msgid "Payment submitted. It can take a moment to go through."
+msgstr "A fizetés elküldve. A feldolgozás eltarthat egy ideig."
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "YTQMmP"
+msgid "Your bank wants you to confirm this payment. Check your banking app."
+msgstr "A bankod kéri, hogy erősítsd meg ezt a fizetést. Nézd meg a banki alkalmazásodat."
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "80-bz2"
+msgid "The payment was declined again. We will try again automatically."
+msgstr "A fizetést ismét elutasították. Automatikusan újrapróbáljuk."
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "SE531V"
+msgid "The payment was declined and there are no attempts left. Add a working payment method and extend the server."
+msgstr "A fizetést elutasították, és nincs több kísérlet. Adj hozzá működő fizetési módot, és hosszabbítsd meg a szervert."
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "NLD2EM"
+msgid "Nothing to retry right now."
+msgstr "Most nincs mit újrapróbálni."
+
+#: src/features/servers/components/plan/current-plan-section.tsx
+msgctxt "rnp477"
+msgid "Could not change automatic renewal."
+msgstr "Az automatikus megújítást nem sikerült módosítani."
+
+#: src/features/servers/components/plan/plan-catalog.tsx
+msgctxt "_E4Era"
+msgid "An order is waiting to be paid"
+msgstr "Egy rendelés fizetésre vár"
+
+#: src/features/servers/components/plan/plan-catalog.tsx
+msgctxt "IZp69Q"
+msgid "You closed the payment for {name} before it went through. Nothing has been charged and this server is still on its current plan."
+msgstr "Bezártad a(z) {name} fizetését, mielőtt lement volna. Semmi nem lett terhelve, és ez a szerver továbbra is a jelenlegi csomagján van."
+
+#: src/features/servers/components/plan/plan-catalog.tsx
+msgctxt "yg3np8"
+msgid "You closed a payment before it went through. Nothing has been charged and this server is still on its current plan."
+msgstr "Bezártál egy fizetést, mielőtt lement volna. Semmi nem lett terhelve, és ez a szerver továbbra is a jelenlegi csomagján van."
+
+#: src/features/servers/components/plan/plan-catalog.tsx
+msgctxt "BoV-ik"
+msgid "Resume payment"
+msgstr "Fizetés folytatása"
+
+#: src/features/servers/components/plan/plan-catalog.tsx
+msgctxt "j6UwBH"
+msgid "Discard it"
+msgstr "Elvetés"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "PEpK64"
+msgid "No plans available"
+msgstr "Nincs elérhető csomag"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "EAyjS-"
+msgid "There is nothing to extend or upgrade to right now."
+msgstr "Jelenleg nincs mit meghosszabbítani vagy mire bővíteni."
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "r45xAO"
+msgid "Less storage than your plan"
+msgstr "Kevesebb tárhely, mint a csomagodban"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "uPG29C"
+msgid "{price} today"
+msgstr "{price} ma"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "BLAy25"
+msgid "Extend"
+msgstr "Meghosszabbítás"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "0h_lPM"
+msgid "Upgrade"
+msgstr "Bővítés"
+
+#: src/features/servers/components/plan/plan-list.tsx
+msgctxt "ZBALng"
+msgid "Current plan"
+msgstr "Jelenlegi csomag"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "nYOcNC"
+msgid "This plan has less storage than yours. Pick one with at least {size}."
+msgstr "Ennek a csomagnak kevesebb a tárhelye, mint a tiédnek. Válassz olyat, amelyben legalább {size} van."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "3XuHC5"
+msgid "{name} is sold out right now. Try again later or pick a different plan."
+msgstr "A {name} most elkelt. Próbálja újra később, vagy válasszon másik tervet."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "2r_Ri2"
+msgid "This plan is sold out. Pick a different plan."
+msgstr "Ez a csomag elfogyott. Válassz másik csomagot."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "SA17Op"
+msgid "Your current term has expired. Renew your server first, then upgrade."
+msgstr "A jelenlegi időszakod lejárt. Előbb újítsd meg a szervert, aztán bővíts."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "162kF7"
+msgid "Try again in a moment."
+msgstr "Próbáld újra kicsit később."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "Ivyv4G"
+msgid "Complete your payment"
+msgstr "Fejezd be a fizetést"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "vUdsUw"
+msgid "Extend {name}"
+msgstr "{name} meghosszabbítása"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "wtdexo"
+msgid "Upgrade to {name}"
+msgstr "Bővítés erre: {name}"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "92pgFA"
+msgid "Extend for {price}"
+msgstr "Meghosszabbítás {price} összegért"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "fEC_2P"
+msgid "Upgrade for {price}"
+msgstr "Bővítés {price} összegért"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "JLzn_f"
+msgid "Pay for the order you just placed."
+msgstr "Fizesd ki az imént leadott rendelést."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "scgCv_"
+msgid "Extend your plan by one month."
+msgstr "Hosszabbítsd meg a csomagodat egy hónappal."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "UAUyG-"
+msgid "Move this server onto a bigger plan."
+msgstr "Tedd át ezt a szervert egy nagyobb csomagra."
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "So9-9-"
+msgid "Change plan"
+msgstr "Terv módosítása"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "YeQq19"
+msgid "Preparing checkout…"
+msgstr "Fizetés előkészítése…"
+
+#: src/features/servers/components/plan/plan-order-dialog.tsx
+msgctxt "f8Zxmj"
+msgid "The order could not be started"
+msgstr "A rendelést nem sikerült elindítani"
+
+#: src/features/servers/components/plan/plan-specs.tsx
+msgctxt "tpfEY0"
+msgid "{memory} RAM"
+msgstr ""
+
+#: src/features/servers/components/plan/plan-specs.tsx
+msgctxt "cenOuc"
+msgid "{storage} NVMe SSD"
+msgstr ""
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgctxt "QUXFCm"
+msgid "Due today"
+msgstr "Ma fizetendő"
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgctxt "WnjgPN"
+msgid "From your next renewal"
+msgstr "A következő megújítástól"
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgctxt "LR754a"
+msgid "Renews at"
+msgstr "Megújul ennyiért"
+
+#: src/features/servers/components/plan/plan-summary.tsx
+msgctxt "mCArsW"
+msgid "Only the difference is charged today. Your term is unchanged."
+msgstr "Ma csak a különbözetet terheljük. Az időszakod nem változik."
 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgctxt "N387FB"
 msgid "Your current plan will be extended by one month."
 msgstr "Jelenlegi tervét egy hónappal meghosszabbítják."
 
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "6Mawmq"
-msgid "The plan will be changed to {name}. You only pay the prorated difference today — your current term stays the same."
-msgstr "A csomag {name} csomagra változik. Ma csak az időarányos különbözetet fizeted — a jelenlegi időszakod változatlan marad."
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "AiQP5M"
+msgid "Add a payment method"
+msgstr "Fizetési mód hozzáadása"
 
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "So9-9-"
-msgid "Change plan"
-msgstr "Terv módosítása"
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "6NfKWq"
+msgid "None chosen"
+msgstr "Nincs kiválasztva"
 
-#: src/features/servers/components/plan/plan-summary.tsx
-msgctxt "YeQq19"
-msgid "Preparing checkout…"
-msgstr "Fizetés előkészítése…"
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "Mjlx26"
+msgid "A renewal has nothing to charge until you choose a card."
+msgstr "Amíg nem választasz kártyát, a megújításnak nincs miből terhelnie."
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "BY343C"
+msgid "Change"
+msgstr "Módosítás"
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "Ob6Cyo"
+msgid "Charged when this server renews."
+msgstr "Ennek a szervernek a megújításakor terheljük."
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "hPxO4K"
+msgid "Expired {date}. Replace it or the next renewal fails."
+msgstr "Lejárt: {date}. Cseréld le, különben a következő megújítás meghiúsul."
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "ZIzf2A"
+msgid "This card has expired. The next renewal will fail."
+msgstr "Ez a kártya lejárt. A következő megújítás meghiúsul."
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "IODZRQ"
+msgid "Your bank withdrew permission to charge this card. The next renewal will fail."
+msgstr "A bankod visszavonta a kártya terhelésére adott engedélyt. A következő megújítás meghiúsul."
+
+#: src/features/servers/components/plan/renewal-payment-method.tsx
+msgctxt "zDOS2t"
+msgid "Your bank refused this card. The next renewal will fail until you choose another."
+msgstr "A bankod elutasította ezt a kártyát. A következő megújítás meghiúsul, amíg nem választasz másikat."
 
 #: src/features/servers/components/rdns/delete-record-dialog.tsx
 #: src/features/servers/components/rdns/records-table/columns.tsx
@@ -6880,11 +7825,6 @@ msgstr ""
 msgctxt "Arxl88"
 msgid "Outgoing"
 msgstr "Kimenő"
-
-#: src/features/servers/components/server-graphs.tsx
-msgctxt "6m3w-3"
-msgid "Interval"
-msgstr "Intervallum"
 
 #: src/features/servers/components/server-mount-badge.tsx
 msgctxt "Han16c"
@@ -7352,6 +8292,21 @@ msgstr "A biztonsági másolat visszaállítása nem sikerült."
 msgctxt "GwAFh4"
 msgid "Could not update the backup."
 msgstr "A biztonsági másolat frissítése nem sikerült."
+
+#: src/features/servers/hooks/billing/use-cancel-subscription.ts
+msgctxt "fAsW3r"
+msgid "Could not cancel the subscription."
+msgstr "Az előfizetést nem sikerült lemondani."
+
+#: src/features/servers/hooks/billing/use-resume-subscription.ts
+msgctxt "YTM7YS"
+msgid "Could not resume the subscription."
+msgstr "Az előfizetést nem sikerült folytatni."
+
+#: src/features/servers/hooks/billing/use-retry-renewal.ts
+msgctxt "wjP1kX"
+msgid "Could not retry the payment."
+msgstr "A fizetést nem sikerült újrapróbálni."
 
 #: src/features/servers/hooks/overview/use-change-template.ts
 msgctxt "8g0ePs"
