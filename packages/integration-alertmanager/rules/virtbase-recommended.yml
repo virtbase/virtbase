@@ -1,0 +1,937 @@
+# Recommended Prometheus rules for the Virtbase abuse desk.
+#
+# Drop this file into the directory `rule_files` already globs
+# (`/etc/prometheus/rules/*.yml`) and point an Alertmanager receiver at
+# `POST /api/integrations/alertmanager/alerts`. Every alert below carries the
+# labels `packages/integration-alertmanager` reads, so a firing alert becomes a
+# signal, and a signal whose type starts with `abuse.` becomes a case.
+#
+# Validate before reloading — one bad rule rejects the whole directory:
+#
+#   promtool check rules virtbase-recommended.yml
+#
+# `keep_firing_for` needs Prometheus >= 2.42. Delete those lines if the server
+# is older, and expect more flapping.
+#
+#
+# ── The label contract ───────────────────────────────────────────────────────
+#
+# `subjectFromLabels()` resolves in this order: `virtbase_server_id`,
+# `virtbase_ip`, `virtbase_vmid` + node, `virtbase_user_id`, node. The node is
+# taken from `virtbase_node`, then `node`, then `instance`.
+#
+# The recording rules below emit `virtbase_vmid` and `node` together, and the
+# node label is the Proxmox node's own hostname, because that is what
+# `resolveSignalSubject()` joins against (`proxmox_nodes.hostname`). Do **not**
+# substitute `instance` for it: this deployment relabels `instance` to the
+# API address (`10.255.255.100`), which matches no row.
+#
+# `virtbase_type` must be `abuse.<category>` for a case to open, and the
+# category has to be one the enum knows — spam, phishing, malware, port_scan,
+# ddos, copyright, compromised, other. Anything else lands in `other`.
+# A type that does not start with `abuse.` is recorded and sent to the operator
+# notification targets without opening a case, which is what the
+# `alert.*` rules at the bottom of this file are for.
+#
+# `virtbase_detector` is not read by the parser. It is carried so an
+# `abuse_rules` entry can trust one detection path and not another —
+# `match_labels: {"virtbase_detector": "guest_nic"}`.
+#
+#
+# ── Two things that will silently give you wrong answers ─────────────────────
+#
+# **Direction is inverted on tap interfaces.** `tapXiY` is the *host's* end of
+# the guest's NIC, so the host *receives* what the guest sends. A rule written
+# on `node_network_transmit_*{device=~"tap.*"}` measures the guest's **inbound**
+# traffic and will file DDoS cases against victims. The recording rules below
+# are named `egress`/`ingress` from the guest's point of view for exactly this
+# reason: the tap ones invert, the `pve_*` ones do not (Proxmox `netin`/`netout`
+# are already guest-relative).
+#
+# **pve-exporter metrics arrive three times.** `prometheus.yml` scrapes all
+# three cluster members with `cluster=1`, and each returns the whole cluster's
+# resources under a different `instance`. Every `pve_*` expression here
+# aggregates `instance` away with `max by (id)` before doing anything else.
+# Without that you get three alerts, three signals and three fingerprints per
+# incident.
+#
+#
+# ── Prerequisites ────────────────────────────────────────────────────────────
+#
+# Group 1 (`pve_*`) works with the stack as configured today.
+#
+# Groups 2, 4, 5 need per-guest NIC counters, which means node_exporter on the
+# hypervisors with `tap*` not excluded. The Alloy role's current
+# `common_alloy_net_exclude` is
+#
+#   ^(veth.*|cali.*|[a-f0-9]{15})$
+#
+# which matches none of `tap100i0`, `fwbr100i0`, `fwpr100p0` or `vmbr0`, so
+# guest taps are collected today and these groups work as written. It is one
+# edit away from not being true — adding `tap.*` to that regex would disable
+# five rules with no error anywhere — so `VirtbaseGuestNicMetricsAbsent` in
+# the last group watches for it. Confirm at any time with:
+#
+#   count(node_network_receive_packets_total{device=~"tap[0-9]+i[0-9]+"})
+#
+# Nothing here reads Alloy's own metrics, because `common_alloy_self_monitoring`
+# is off. Worth turning on: without it a hypervisor whose agent has stopped
+# remote-writing is indistinguishable from a quiet one, and the fleet-wide
+# `absent()` guard only notices when *every* hypervisor has gone dark.
+#
+# Group 7 needs `akvorado-abuse.sql_exporter.yml`, the file next to this one.
+# It is a sql_exporter config, not a Prometheus one — do not put it in the
+# directory `rule_files` globs. It runs the ClickHouse queries behind Akvorado
+# and publishes the offending addresses as gauges for the rules here to fire
+# on, and its header carries the deployment and the ClickHouse-side detail.
+#
+#
+# ── The three detection paths ────────────────────────────────────────────────
+#
+# | Path | Detector label | Sees | Attributes by |
+# | ---- | -------------- | ---- | ------------- |
+# | pve-exporter    | `pve`       | bytes and CPU per guest | vmid + node |
+# | hypervisor taps | `guest_nic` | packets and packet size per guest | vmid + node |
+# | Akvorado flows  | `flow`      | addresses, ports, protocols, fan-out | IP, at the time it happened |
+#
+# They are not redundant, and the ordering is not a quality ranking. Flow data
+# knows what the traffic *was* — port 25 to two hundred MXes is spam in a way
+# no byte counter can express — but it is sampled, it arrives late, and it
+# resolves to an address rather than a machine. The hypervisor counters are
+# exact, immediate, and name the guest directly, but they cannot tell a
+# download from a flood.
+#
+# So the same incident can raise a signal on more than one path. That is
+# wanted: they share a subject and a category once attribution has run, so
+# they land on **one case** and corroborate each other rather than opening two.
+# `virtbase_detector` is what lets an `abuse_rules` entry trust one path and
+# not another.
+#
+# One consequence of the flow path worth knowing: its subject is
+# `virtbase_ip`, and attribution reads the allocation table **as it stood at
+# `occurredAt`**. `occurredAt` comes from the alert's `startsAt`, which is
+# already five to fifteen minutes behind the traffic — the SQL window plus
+# `for`. That is far inside the churn rate of an allocation table, so it is
+# fine; it is worth knowing before anyone shortens the window and expects the
+# attribution to get sharper.
+#
+# ── Category coverage ────────────────────────────────────────────────────────
+#
+# | Category    | Covered | Detector                                            |
+# | ----------- | ------- | --------------------------------------------------- |
+# | ddos        | yes     | egress bytes (pve), egress packets (taps, flows), reflection by source port (flows) |
+# | port_scan   | yes     | address fan-out with small packets, port fan-out (flows); packet size (taps) |
+# | spam        | yes     | distinct port-25 destinations (flows)               |
+# | compromised | yes     | remote-access brute-force fan-out (flows); CPU pinned on a guest idle for a week (pve) |
+# | malware     | partly  | reached through `compromised`; a payload is not visible in traffic shape |
+# | phishing    | **no**  | a hosted page is content, and content is not a flow  |
+# | copyright   | **no**  | see below                                            |
+# | other       | —       | nothing is filed here deliberately                   |
+#
+# phishing and copyright get no rule, deliberately. A phishing page is HTTPS to
+# a webserver and is indistinguishable from every other page on the fleet.
+# Copyright is closer to detectable — flow data can show BitTorrent — but
+# modern clients pick random ports, and traffic that does sit on 6881-6889 is
+# as often a Linux ISO as anything actionable. Filing a copyright case on a
+# port number would be wrong. Both arrive through the `abuse@` mailbox and
+# `@virtbase/integration-abuseipdb`, which is the correct instrument for them;
+# flow data's job there is corroborating a notice after it lands, which is a
+# query an operator runs rather than an alert. The one in
+# `akvorado-abuse.sql_exporter.yml` is ready to paste.
+#
+#
+# ── Calibration ──────────────────────────────────────────────────────────────
+#
+# The thresholds below are starting points for a 1 Gbit/s fleet, not measured
+# values. Before promoting any rule from `warning` to `critical`, plot the
+# quantile it sits on:
+#
+#   quantile_over_time(0.999, virtbase:guest_egress_bytes:rate5m[30d])
+#
+# | Constant            | Value        | Meaning                              |
+# | ------------------- | ------------ | ------------------------------------ |
+# | egress warn         | 31.25 MB/s   | 250 Mbit/s sustained                 |
+# | egress critical     | 87.5 MB/s    | 700 Mbit/s sustained                 |
+# | packets warn        | 100 kpps     | ~7x a saturated 1 Gbit/s link of real traffic |
+# | packets critical    | 300 kpps     | only reachable with small frames     |
+# | scan packet size    | < 120 bytes  | bare SYNs; also matches VoIP and busy DNS |
+# | idle baseline       | < 15% CPU    | over the trailing week               |
+# | flow scan probes    | 20k / 200k   | packets sent, sampling-corrected     |
+#
+# Which addresses count as ours is not configured here at all: it is
+# `SrcNetRole = 'customer'`, read from Akvorado's `networks:` config. Adding a
+# prefix is one entry there and no change to either of these files.
+# | flow SMTP volume    | 5k packets   | packets to port 25 in five minutes   |
+# | flow brute-force    | 5k / 50k     | packets to remote-access ports       |
+#
+# The flow thresholds are counts of packets *actually sent*, recovered with
+# `sum(Packets * SamplingRate)`, not counts of sampled records. They therefore
+# mean the same thing at 1:1000 and at 1:8000, and survive the switch changing
+# its rate under load. Distinct-destination counts cannot be corrected that way
+# — the deflation depends on how many packets each destination saw — so they
+# survive only as low shape tests inside the collector, never as thresholds.
+#
+# The flow thresholds live here, in PromQL, on purpose. `HAVING` in the
+# sql_exporter config is a cardinality floor that keeps the metric from
+# carrying one series per active address; it is set well below every threshold
+# below, and the real decision is made where `promtool` can check it and where
+# an operator tuning a rule will look. Raising a threshold here is safe.
+# Lowering one below the floor in the collector config silently disables it.
+#
+#
+# ── Companion `abuse_rules` ──────────────────────────────────────────────────
+#
+# A fresh database has no rules, so every alert below lands in `triage` and
+# enforces nothing until somebody writes one. That is the safe default; leave
+# it that way for a few weeks and read what arrives.
+#
+# `packages/api/src/abuse/README.md` carries the recommended starting set and
+# the reasoning, including a SQL seed. It is the authority — this is a summary
+# so the two do not drift:
+#
+# | priority | match_type        | severity_min | virtbase_detector | trusted | enforcement |
+# | -------- | ----------------- | ------------ | ----------------- | ------- | ----------- |
+# | 10       | abuse.ddos        | critical     | flow              | yes     | isolate     |
+# | 20       | abuse.ddos        | critical     | guest_nic         | yes     | isolate     |
+# | 30       | abuse.compromised | critical     | flow              | yes     | throttle    |
+# | 40       | abuse.port_scan   | critical     | flow              | yes     | throttle    |
+#
+# Trust is granted per **detector**, which is what `virtbase_detector` is for.
+# The trusted entries are the ones whose detector answers what the traffic
+# *was* rather than how much of it there was: a memcached reflector and a
+# bare-SYN sweep have no benign reading, whereas 700 Mbit/s does. So no `pve`
+# signal is trusted — that path counts bytes, and a mirror, a backup target or
+# a media server produces the same shape as an attack at the same severity.
+#
+# `abuse.spam` is deliberately absent. Its only detector counts outbound
+# port-25 traffic, a legitimate mailing list looks identical in a flow record,
+# and it never emits above `warning`. It belongs in `triage`.
+#
+# **Nothing releases a lock automatically.** `abuse_signals.resolved_at` is
+# written when an alert resolves and is read by nothing, and
+# `action_auto_close_hours` is read by nothing either. A case a trusted rule
+# enforced stays enforced until an operator settles it, or until the fixed
+# 24-hour observation window elapses on one they marked `mitigated`. Turning on
+# a trusted rule is a commitment to reading the queue daily.
+#
+#
+# ── Alertmanager wiring ──────────────────────────────────────────────────────
+#
+#   route:
+#     receiver: virtbase
+#     group_by: [virtbase_vmid, node, alertname]
+#     group_wait: 30s
+#     group_interval: 5m
+#     repeat_interval: 1h
+#     routes:
+#       # Detection health cannot go through the webhook it is reporting on.
+#       - matchers: ['virtbase_type = alert.detection_degraded']
+#         receiver: operators-direct
+#
+#   receivers:
+#     - name: virtbase
+#       webhook_configs:
+#         - url: https://virtbase.com/api/integrations/alertmanager/alerts
+#           send_resolved: true
+#           max_alerts: 200
+#           http_config:
+#             authorization: { type: Bearer, credentials: "<ingest token>" }
+#
+# `repeat_interval` is cheap: intake upserts on `(source, fingerprint)`, so a
+# repeat bumps `occurrences` instead of opening a second case.
+#
+# One caveat about `send_resolved`, which the integration README slightly
+# oversells today: a resolved alert is recorded — `abuse_signals.resolved_at`
+# is set — but nothing reads that column yet, so a transient flood does **not**
+# release the throttle it caused on its own. Until it does, a lock clears when
+# an operator settles the case, or when the observation window on a `mitigated`
+# case elapses — `action_auto_close_hours` is read by nothing and will not do
+# it for you.
+
+groups:
+  # ───────────────────────────────────────────────────────────────────────────
+  # 1. Per-guest series from pve-exporter.
+  #
+  # Available with no changes to the fleet. `instance` is aggregated away, the
+  # vmid is lifted out of `id`, and `node` is joined in from `pve_guest_info`
+  # because that is the label the subject resolver needs.
+  #
+  # `qemu/[0-9]+` on purpose: it drops node, storage and pool rows from
+  # `/cluster/resources`, which carry no guest and no owner.
+  # ───────────────────────────────────────────────────────────────────────────
+  - name: virtbase-guest-recording
+    interval: 30s
+    rules:
+      - record: virtbase:guest_egress_bytes:rate5m
+        expr: |
+          label_replace(
+            max by (id) (rate(pve_network_transmit_bytes_total{id=~"qemu/[0-9]+"}[5m]))
+              * on (id) group_left(node)
+            max by (id, node) (pve_guest_info{id=~"qemu/[0-9]+"}),
+            "virtbase_vmid", "$1", "id", "qemu/([0-9]+)"
+          )
+
+      - record: virtbase:guest_ingress_bytes:rate5m
+        expr: |
+          label_replace(
+            max by (id) (rate(pve_network_receive_bytes_total{id=~"qemu/[0-9]+"}[5m]))
+              * on (id) group_left(node)
+            max by (id, node) (pve_guest_info{id=~"qemu/[0-9]+"}),
+            "virtbase_vmid", "$1", "id", "qemu/([0-9]+)"
+          )
+
+      # Proxmox reports `cpu` already normalised across the guest's vCPUs, so
+      # this is 0..1 whatever the core count. `pve_cpu_usage_limit` is the vCPU
+      # count and is not part of the ratio.
+      - record: virtbase:guest_cpu_ratio
+        expr: |
+          label_replace(
+            max by (id) (pve_cpu_usage_ratio{id=~"qemu/[0-9]+"})
+              * on (id) group_left(node)
+            max by (id, node) (pve_guest_info{id=~"qemu/[0-9]+"}),
+            "virtbase_vmid", "$1", "id", "qemu/([0-9]+)"
+          )
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 2. Per-guest series from the hypervisor's tap interfaces.
+  #
+  # Needs node_exporter on the hypervisors with `tap*` not excluded. This is
+  # the higher-fidelity path: packet rates and mean packet size are what
+  # separate a flood from a download and a scan from a busy server, and
+  # pve-exporter reports neither.
+  #
+  # Direction is inverted here — see the header. `receive` on the tap is the
+  # guest's egress. A guest with several NICs contributes several tap devices,
+  # so they are summed.
+  # ───────────────────────────────────────────────────────────────────────────
+  - name: virtbase-guest-nic-recording
+    interval: 30s
+    rules:
+      - record: virtbase:guest_nic_egress_packets:rate2m
+        expr: |
+          sum by (virtbase_vmid, node) (
+            label_replace(
+              label_replace(
+                rate(node_network_receive_packets_total{device=~"tap[0-9]+i[0-9]+"}[2m]),
+                "virtbase_vmid", "$1", "device", "tap([0-9]+)i[0-9]+"),
+              "node", "$1", "instance", "(.+)")
+          )
+
+      - record: virtbase:guest_nic_ingress_packets:rate2m
+        expr: |
+          sum by (virtbase_vmid, node) (
+            label_replace(
+              label_replace(
+                rate(node_network_transmit_packets_total{device=~"tap[0-9]+i[0-9]+"}[2m]),
+                "virtbase_vmid", "$1", "device", "tap([0-9]+)i[0-9]+"),
+              "node", "$1", "instance", "(.+)")
+          )
+
+      - record: virtbase:guest_nic_egress_bytes:rate2m
+        expr: |
+          sum by (virtbase_vmid, node) (
+            label_replace(
+              label_replace(
+                rate(node_network_receive_bytes_total{device=~"tap[0-9]+i[0-9]+"}[2m]),
+                "virtbase_vmid", "$1", "device", "tap([0-9]+)i[0-9]+"),
+              "node", "$1", "instance", "(.+)")
+          )
+
+      - record: virtbase:guest_nic_ingress_bytes:rate2m
+        expr: |
+          sum by (virtbase_vmid, node) (
+            label_replace(
+              label_replace(
+                rate(node_network_transmit_bytes_total{device=~"tap[0-9]+i[0-9]+"}[2m]),
+                "virtbase_vmid", "$1", "device", "tap([0-9]+)i[0-9]+"),
+              "node", "$1", "instance", "(.+)")
+          )
+
+      # Mean bytes per egress packet. ~64 is a bare SYN, ~1400 is a download.
+      # `clamp_min` keeps an idle guest out of the result rather than making it
+      # NaN.
+      - record: virtbase:guest_nic_egress_packet_bytes:rate2m
+        expr: |
+          virtbase:guest_nic_egress_bytes:rate2m
+            / clamp_min(virtbase:guest_nic_egress_packets:rate2m, 1)
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 3. Behavioural baselines.
+  #
+  # Two stages, and both groups are deliberately slow. A single
+  # `avg_over_time(...[7d])` at the 30s evaluation interval reads twenty
+  # thousand points per guest every thirty seconds; averaging hourly averages
+  # every half hour reads two thousand, and the answer is the same to three
+  # decimal places.
+  #
+  # Nothing here can fire until Prometheus holds seven days of history.
+  # ───────────────────────────────────────────────────────────────────────────
+  - name: virtbase-guest-baseline-hourly
+    interval: 5m
+    rules:
+      - record: virtbase:guest_cpu_ratio:avg1h
+        expr: avg_over_time(virtbase:guest_cpu_ratio[1h])
+
+  - name: virtbase-guest-baseline-weekly
+    interval: 30m
+    rules:
+      - record: virtbase:guest_cpu_ratio:avg7d
+        expr: avg_over_time(virtbase:guest_cpu_ratio:avg1h[7d])
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 4. abuse.ddos — the guest is sourcing an attack.
+  # ───────────────────────────────────────────────────────────────────────────
+  - name: virtbase-abuse-ddos
+    rules:
+      # Volume alone. Coarse, but it is the one detector that works without
+      # touching the hypervisors, and a guest holding 250 Mbit/s of egress for
+      # ten minutes is worth a person looking at it either way.
+      - alert: VirtbaseGuestEgressFlood
+        expr: virtbase:guest_egress_bytes:rate5m > 31250000
+        for: 10m
+        keep_firing_for: 15m
+        labels:
+          severity: warning
+          virtbase_type: abuse.ddos
+          virtbase_detector: pve
+        annotations:
+          summary: "Sustained outbound traffic from VM {{ $labels.virtbase_vmid }} on {{ $labels.node }}"
+          description: "{{ $value | humanize1024 }}B/s outbound, sustained for 10 minutes. Legitimate at this level for mirrors, backup targets and media; check the customer's plan before acting."
+
+      - alert: VirtbaseGuestEgressFloodCritical
+        expr: virtbase:guest_egress_bytes:rate5m > 87500000
+        for: 5m
+        keep_firing_for: 15m
+        labels:
+          severity: critical
+          virtbase_type: abuse.ddos
+          virtbase_detector: pve
+        annotations:
+          summary: "Outbound flood from VM {{ $labels.virtbase_vmid }} on {{ $labels.node }}"
+          description: "{{ $value | humanize1024 }}B/s outbound, sustained for 5 minutes — close to saturating a 1 Gbit/s port."
+
+      # Packet rate is the honest DDoS signal. A saturated 1 Gbit/s link of
+      # real traffic is ~85 kpps; reaching 300 kpps means the frames are small,
+      # which is a flood and not a workload.
+      - alert: VirtbaseGuestPacketFlood
+        expr: virtbase:guest_nic_egress_packets:rate2m > 100000
+        for: 5m
+        keep_firing_for: 15m
+        labels:
+          severity: warning
+          virtbase_type: abuse.ddos
+          virtbase_detector: guest_nic
+        annotations:
+          summary: "High outbound packet rate from VM {{ $labels.virtbase_vmid }} on {{ $labels.node }}"
+          description: "{{ $value | humanize }} packets/s outbound, sustained for 5 minutes. Compare against virtbase:guest_nic_egress_packet_bytes:rate2m — under 120 bytes a packet makes this a flood rather than a transfer."
+
+      - alert: VirtbaseGuestPacketFloodCritical
+        expr: virtbase:guest_nic_egress_packets:rate2m > 300000
+        for: 3m
+        keep_firing_for: 15m
+        labels:
+          severity: critical
+          virtbase_type: abuse.ddos
+          virtbase_detector: guest_nic
+        annotations:
+          summary: "Outbound packet flood from VM {{ $labels.virtbase_vmid }} on {{ $labels.node }}"
+          description: "{{ $value | humanize }} packets/s outbound, sustained for 3 minutes. No customer workload produces this."
+
+      # Reflection is detected on the flow path instead — see
+      # VirtbaseFlowReflection in group 7. The tap counters can only express it
+      # as "egress bytes far exceed ingress bytes at similar packet rates",
+      # which is also what a video server behind a CDN looks like. Akvorado
+      # knows the source port, so it can say *memcached* rather than
+      # *lopsided*, and that is the difference between a rule worth trusting
+      # and a rule worth ignoring.
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 5. abuse.port_scan — the guest is sweeping.
+  #
+  # A scan is many tiny packets: bare SYNs at 54–74 bytes on the wire. Mean
+  # egress packet size below 120 bytes at a sustained rate is the signature,
+  # and it is a shape no file transfer or web workload holds for ten minutes.
+  #
+  # The band has a ceiling because above ~50 kpps the same signature is a SYN
+  # flood rather than a sweep, and that is `abuse.ddos` — covered by the packet
+  # rules in group 4. Crossing the ceiling resolves this alert and fires that
+  # one; `keep_firing_for` on both keeps a ramping attack from oscillating.
+  #
+  # Known false positives: authoritative DNS, VoIP media, and game servers all
+  # emit small packets at rate. So does any guest downloading through a proxy
+  # or VPN: its egress is almost entirely ACKs, and an IPv6 ACK carrying
+  # timestamps is exactly 72 bytes — the same size as a bare SYN. The flow
+  # detector separates those by packets-per-destination, but this tap-based one
+  # has no destination dimension at all and cannot. Treat it as corroboration
+  # for a flow signal rather than as grounds on its own.
+  #
+  # If a customer legitimately runs one, exclude that vmid on an `abuse_rules`
+  # entry rather than raising the threshold for the whole fleet.
+  # ───────────────────────────────────────────────────────────────────────────
+  - name: virtbase-abuse-port-scan
+    rules:
+      - alert: VirtbaseGuestPortScan
+        expr: |
+          virtbase:guest_nic_egress_packets:rate2m > 2000
+            and virtbase:guest_nic_egress_packets:rate2m < 50000
+            and virtbase:guest_nic_egress_packet_bytes:rate2m < 120
+        for: 10m
+        keep_firing_for: 15m
+        labels:
+          severity: warning
+          virtbase_type: abuse.port_scan
+          virtbase_detector: guest_nic
+        annotations:
+          summary: "Scan-shaped outbound traffic from VM {{ $labels.virtbase_vmid }} on {{ $labels.node }}"
+          description: "{{ $value | humanize }} packets/s outbound with a mean size under 120 bytes, sustained for 10 minutes."
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 6. abuse.compromised — the guest is not doing what it used to.
+  #
+  # A miner dropped on a compromised VPS is the one post-compromise behaviour
+  # these metrics see clearly: CPU goes to the ceiling and stays there on a
+  # machine that has been idle for a week.
+  #
+  # Sustained CPU on its own is *not* filed as abuse. A customer who bought the
+  # machine to run a compute job is entitled to use all of it, and an abuse
+  # case against them is a bug. The baseline comparison is what turns "busy"
+  # into "changed", and even then this only reaches `warning` — a person
+  # decides.
+  # ───────────────────────────────────────────────────────────────────────────
+  - name: virtbase-abuse-compromise
+    rules:
+      - alert: VirtbaseGuestCpuPinnedAfterIdle
+        expr: |
+          virtbase:guest_cpu_ratio > 0.9
+            and virtbase:guest_cpu_ratio:avg7d < 0.15
+        for: 2h
+        keep_firing_for: 1h
+        labels:
+          severity: warning
+          virtbase_type: abuse.compromised
+          virtbase_detector: pve
+        annotations:
+          summary: "VM {{ $labels.virtbase_vmid }} on {{ $labels.node }} pinned at full CPU after a week idle"
+          description: "CPU at {{ $value | humanizePercentage }} for two hours against a weekly baseline under 15%. Usually a miner; sometimes a customer who started using the machine."
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 7. The Akvorado flow path.
+  #
+  # Everything here reads a gauge published by sql_exporter from the ClickHouse
+  # `flows` table — see `akvorado-abuse.sql_exporter.yml`. A gauge exists only
+  # while an address is above the collector's cardinality floor, so these
+  # expressions are thresholds applied to a handful of series, not scans over
+  # the fleet.
+  #
+  # The subject is `virtbase_ip`, carried as a label by the metric itself, so
+  # nothing here templates it. Attribution resolves it against the allocation
+  # table as it stood when the alert started.
+  #
+  # This is the only path that knows what the traffic *was*. Ports and protocol
+  # are what let a rule say "memcached reflection" or "port 25 to two hundred
+  # MXes" instead of "a lot of bytes" — and that is why these are the detectors
+  # worth trusting with automatic enforcement.
+  # ───────────────────────────────────────────────────────────────────────────
+  - name: virtbase-abuse-flows
+    rules:
+      # ── abuse.ddos ────────────────────────────────────────────────────────
+      - alert: VirtbaseFlowEgressPacketFlood
+        expr: virtbase_flow_egress_pps > 50000
+        for: 3m
+        keep_firing_for: 15m
+        labels:
+          severity: warning
+          virtbase_type: abuse.ddos
+          virtbase_detector: flow
+        annotations:
+          summary: "High outbound packet rate from {{ $labels.virtbase_ip }}"
+          description: "{{ $value | humanize }} packets/s leaving an external interface, averaged over five minutes and corrected for sampling."
+
+      - alert: VirtbaseFlowEgressPacketFloodCritical
+        expr: virtbase_flow_egress_pps > 200000
+        for: 3m
+        keep_firing_for: 15m
+        labels:
+          severity: critical
+          virtbase_type: abuse.ddos
+          virtbase_detector: flow
+        annotations:
+          summary: "Outbound packet flood from {{ $labels.virtbase_ip }}"
+          description: "{{ $value | humanize }} packets/s outbound. No customer workload on a 1 Gbit/s port produces this."
+
+      # Reflection, split by whether the source port has a legitimate public
+      # server role. Nothing answers on chargen, SSDP or memcached by
+      # accident, and 50 Mbit/s of it is an attack in progress.
+      - alert: VirtbaseFlowReflection
+        expr: virtbase_flow_amplification_bps{src_port!~"53|123"} > 50000000
+        for: 3m
+        keep_firing_for: 15m
+        labels:
+          severity: critical
+          virtbase_type: abuse.ddos
+          virtbase_detector: flow
+        annotations:
+          summary: "{{ $labels.virtbase_ip }} is reflecting traffic from UDP/{{ $labels.src_port }}"
+          description: "{{ $value | humanize }} bits/s of UDP responses sourced from port {{ $labels.src_port }}. The service is exposed and is being used to amplify an attack against somebody else."
+
+      # DNS and NTP get their own rule at warning. A customer may legitimately
+      # run an authoritative nameserver or a public time server, and a
+      # `critical` here would auto-throttle them under the trusted rule.
+      - alert: VirtbaseFlowReflectionServicePort
+        expr: virtbase_flow_amplification_bps{src_port=~"53|123"} > 100000000
+        for: 5m
+        keep_firing_for: 15m
+        labels:
+          severity: warning
+          virtbase_type: abuse.ddos
+          virtbase_detector: flow
+        annotations:
+          summary: "{{ $labels.virtbase_ip }} is sourcing {{ $value | humanize }} bits/s from UDP/{{ $labels.src_port }}"
+          description: "An open resolver or NTP server being amplified, or a customer legitimately running one at scale. Check whether the service is recursive before acting."
+
+      # SYN flood: the same measurement pointed the other way. Unanswered SYNs
+      # concentrated on five destinations or fewer is a flood, not a sweep.
+      - alert: VirtbaseFlowSynFlood
+        expr: virtbase_flow_synflood_syns > 200000
+        for: 3m
+        keep_firing_for: 15m
+        labels:
+          severity: critical
+          virtbase_type: abuse.ddos
+          virtbase_detector: flow
+        annotations:
+          summary: "{{ $labels.virtbase_ip }} is SYN-flooding a small number of targets"
+          description: "{{ $value | humanize }} SYNs in five minutes at five destinations or fewer. There is no benign reading of this."
+
+      # ── abuse.port_scan ───────────────────────────────────────────────────
+      #
+      # Measured with TCP flags: SYN set, ACK clear, and fewer than one attempt
+      # in five answered by a SYN-ACK. That is a connection attempt that went
+      # nowhere, which is what scanning is, and it needs no inference from
+      # packet size — the test that filed a customer's VPN as a port scan
+      # because an IPv6 pure ACK is 72 bytes, the same as a bare SYN.
+      #
+      # A proxy or VPN opens many connections to many hosts too, and is told
+      # apart by the answer rate alone: real services answer, scanned hosts do
+      # not. Requires `TCPFlags` in Akvorado's schema.
+      - alert: VirtbaseFlowPortScan
+        expr: virtbase_flow_scan_syns > 20000
+        for: 5m
+        keep_firing_for: 15m
+        labels:
+          severity: warning
+          virtbase_type: abuse.port_scan
+          virtbase_detector: flow
+        annotations:
+          summary: "{{ $labels.virtbase_ip }} sent {{ $value | humanize }} unanswered connection attempts in five minutes"
+          description: "SYN without ACK, across more than ten destinations, with under 20% answered by a SYN-ACK. A proxy or VPN reaching real services answers near 100% and does not appear here."
+
+      - alert: VirtbaseFlowPortScanCritical
+        expr: virtbase_flow_scan_syns > 200000
+        for: 5m
+        keep_firing_for: 15m
+        labels:
+          severity: critical
+          virtbase_type: abuse.port_scan
+          virtbase_detector: flow
+        annotations:
+          summary: "{{ $labels.virtbase_ip }} is sweeping the internet"
+          description: "{{ $value | humanize }} unanswered SYNs in five minutes across many destinations. Confirm in the customer drill-down before enforcing — thousands of packets to a handful of destinations would be a conversation, not a sweep."
+
+      # ── abuse.spam ────────────────────────────────────────────────────────
+      #
+      # Port 25 only. Submission ports carry a customer reading their own mail,
+      # and counting them would file cases against people using their server
+      # normally. A legitimate mail server sends a few hundred packets to a
+      # handful of correspondents in five minutes; a bot working a list sends
+      # thousands to hundreds.
+      - alert: VirtbaseFlowOutboundSpam
+        expr: virtbase_flow_smtp_packets > 5000
+        for: 10m
+        keep_firing_for: 30m
+        labels:
+          severity: warning
+          virtbase_type: abuse.spam
+          virtbase_detector: flow
+        annotations:
+          summary: "{{ $labels.virtbase_ip }} sent {{ $value | humanize }} packets to port 25 in five minutes"
+          description: "Sustained for ten minutes, to more than a handful of mail servers. A legitimate bulk sender looks the same from here, which is why this stays at warning — but a legitimate bulk sender on a VPS is worth a conversation either way."
+
+      # ── abuse.compromised ─────────────────────────────────────────────────
+      #
+      # The highest-confidence signal in the file. A VPS that suddenly tries
+      # SSH or RDP against hundreds of strangers has been taken over and is
+      # spreading; there is no benign version of it. The collector requires a
+      # mean packet size above 128 bytes here, so a sweep of port 445 is filed
+      # as scanning rather than opening a second case for the same traffic.
+      - alert: VirtbaseFlowBruteForceFanout
+        expr: virtbase_flow_bruteforce_packets > 5000
+        for: 5m
+        keep_firing_for: 30m
+        labels:
+          severity: warning
+          virtbase_type: abuse.compromised
+          virtbase_detector: flow
+        annotations:
+          summary: "{{ $labels.virtbase_ip }} is attempting logins on port {{ $labels.dst_port }}"
+          description: "{{ $value | humanize }} packets to that port across more than a handful of destinations, at a packet size that means completed handshakes rather than a SYN sweep. Usually a compromised guest spreading rather than a customer's tool."
+
+      - alert: VirtbaseFlowBruteForceFanoutCritical
+        expr: virtbase_flow_bruteforce_packets > 50000
+        for: 5m
+        keep_firing_for: 30m
+        labels:
+          severity: critical
+          virtbase_type: abuse.compromised
+          virtbase_detector: flow
+        annotations:
+          summary: "{{ $labels.virtbase_ip }} is running a credential attack on port {{ $labels.dst_port }}"
+          description: "{{ $value | humanize }} credential-attempt packets in five minutes. The guest is compromised."
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 8. Operator signals. No `abuse.` prefix, so these open no case.
+  #
+  # Intake records them, attributes them, and hands them to the notification
+  # targets. That is the right destination for "somebody is attacking our
+  # customer" and "the edge is under load": neither is a dispute with an
+  # account, and filing one as a case would put a customer through a response
+  # deadline for being a victim.
+  # ───────────────────────────────────────────────────────────────────────────
+  - name: virtbase-operator-signals
+    rules:
+      # The counterpart to VirtbaseGuestEgressFloodCritical. Worth having
+      # explicitly: without it, the first sign of an inbound attack is the
+      # node's uplink, and the guess about who is responsible goes the wrong
+      # way.
+      - alert: VirtbaseGuestInboundFlood
+        expr: virtbase:guest_ingress_bytes:rate5m > 87500000
+        for: 5m
+        keep_firing_for: 15m
+        labels:
+          severity: warning
+          virtbase_type: alert.guest_inbound_flood
+          virtbase_detector: pve
+        annotations:
+          summary: "VM {{ $labels.virtbase_vmid }} on {{ $labels.node }} is taking {{ $value | humanize1024 }}B/s inbound"
+          description: "Inbound, not outbound — the customer is the target. Consider a null route before the node's uplink is the thing that degrades."
+
+      # The same event from the flow side. Both are kept: the pve rule names
+      # the guest, which is what you act on at the hypervisor, and this one
+      # names the address, which is what you hand upstream for a null route.
+      # Neither opens a case, so the cost of the overlap is one extra
+      # notification.
+      - alert: VirtbaseFlowInboundFlood
+        expr: virtbase_flow_ingress_bps > 500000000
+        for: 3m
+        keep_firing_for: 15m
+        labels:
+          severity: warning
+          virtbase_type: alert.guest_inbound_flood
+          virtbase_detector: flow
+        annotations:
+          summary: "{{ $labels.virtbase_ip }} is taking {{ $value | humanize }} bits/s inbound"
+          description: "Inbound, not outbound — the customer is the target. Consider a null route before the node's uplink is the thing that degrades."
+
+      # Deliberately not `abuse.compromised`. The ports are ambiguous — 4444
+      # and 8888 belong to plenty of other things — and mining is not
+      # necessarily against the terms a customer agreed to. An operator is
+      # told and decides; nothing is filed against anybody automatically.
+      - alert: VirtbaseFlowMiningPoolTraffic
+        expr: virtbase_flow_mining_bytes > 5000000
+        for: 30m
+        keep_firing_for: 1h
+        labels:
+          severity: info
+          virtbase_type: alert.mining_pool_traffic
+          virtbase_detector: flow
+        annotations:
+          summary: "{{ $labels.virtbase_ip }} is talking to a stratum port"
+          description: "{{ $value | humanize1024 }}B over five minutes to one or two hosts on a known mining port, sustained for half an hour. Corroborate with VirtbaseGuestCpuPinnedAfterIdle before treating it as a compromise."
+
+      # Insert failures are threshold-free: the state table is full and
+      # connections are being dropped, which is a fact rather than a guess.
+      - alert: VirtbaseEdgeConntrackInsertFailing
+        expr: rate(node_nf_conntrack_stat_insert_failed[5m]) > 0
+        for: 5m
+        labels:
+          severity: critical
+          virtbase_type: alert.edge_conntrack_saturated
+        annotations:
+          summary: "Connection tracking table full on {{ $labels.instance }}"
+          description: "{{ $value | humanize }} failed inserts/s. New connections are being dropped for everyone behind this host — usually a scan or a flood filling the table."
+
+      - alert: VirtbaseEdgeConntrackPressure
+        expr: |
+          node_nf_conntrack_entries / node_nf_conntrack_entries_limit > 0.8
+        for: 10m
+        labels:
+          severity: warning
+          virtbase_type: alert.edge_conntrack_pressure
+        annotations:
+          summary: "Connection tracking {{ $value | humanizePercentage }} full on {{ $labels.instance }}"
+          description: "Raise nf_conntrack_max, or find the guest filling it — VirtbaseGuestPortScan usually names it."
+
+      # Our own hosts, not a customer's. A hypervisor whose auditd or fail2ban
+      # has stopped is a host that is no longer producing the evidence an abuse
+      # case is built from.
+      #
+      # The test is "not active" rather than "failed", which is the whole
+      # point: the Alloy role enables the systemd collector precisely because
+      # these four "go quiet without anyone noticing", and a unit somebody
+      # stopped reports `inactive`, not `failed`. Matching only `failed` would
+      # miss exactly the case the collector was turned on for. `for: 5m` rides
+      # out an ordinary restart.
+      - alert: VirtbaseHostSecurityUnitDown
+        expr: |
+          max by (instance, name) (
+            node_systemd_unit_state{name=~"(ssh|sshd|fail2ban|auditd|alloy)\\.service", state="active"}
+          ) == 0
+        for: 5m
+        labels:
+          severity: critical
+          virtbase_type: alert.host_security_unit_down
+        annotations:
+          summary: "{{ $labels.name }} is not running on {{ $labels.instance }}"
+          description: "Stopped or failed for five minutes. Restart it, then find out why — on a hardened host these are the services that go quiet without anyone noticing."
+
+  # ───────────────────────────────────────────────────────────────────────────
+  # 9. Detection health.
+  #
+  # The most important group in the file. Everything above is a silent no-op if
+  # the exporters stop, the join breaks, or the webhook stops delivering — and
+  # a quiet abuse desk looks exactly like a fleet with no abuse on it.
+  #
+  # `VirtbaseAbuseIngestFailing` must not be routed through the webhook it is
+  # reporting on. Give it its own receiver — see the route in the header.
+  # ───────────────────────────────────────────────────────────────────────────
+  - name: virtbase-detection-health
+    rules:
+      - alert: VirtbasePveExporterDown
+        expr: up{job="pve"} == 0
+        for: 5m
+        labels:
+          severity: critical
+          virtbase_type: alert.detection_degraded
+        annotations:
+          summary: "pve-exporter is not answering for {{ $labels.instance }}"
+          description: "Per-guest abuse detection is blind for this cluster member."
+
+      # The exporter answering with nothing looks identical to a quiet fleet.
+      - alert: VirtbaseGuestMetricsAbsent
+        expr: absent(pve_guest_info{id=~"qemu/[0-9]+"})
+        for: 10m
+        labels:
+          severity: critical
+          virtbase_type: alert.detection_degraded
+        annotations:
+          summary: "No guest metrics from pve-exporter"
+          description: "`pve_guest_info` returned nothing for ten minutes. Either the cluster has no guests, or the exporter's credentials lost their permission to read /cluster/resources."
+
+      # The join in group 1 depends on `pve_guest_info` carrying a `node`
+      # label. If a pve-exporter upgrade renames it, every recording rule
+      # silently produces an empty vector and every alert above stops firing.
+      # This is the guard for that.
+      - alert: VirtbaseGuestRecordingRulesEmpty
+        expr: absent(virtbase:guest_egress_bytes:rate5m)
+        for: 15m
+        labels:
+          severity: critical
+          virtbase_type: alert.detection_degraded
+        annotations:
+          summary: "Virtbase guest recording rules are producing nothing"
+          description: "`pve_guest_info` exists but the join against it is empty — check that it still carries a `node` label and that ids are still `qemu/<vmid>`."
+
+      # The prerequisite for groups 2, 4 and 5, checked continuously rather
+      # than assumed. Fires if the Alloy role's `net_exclude` starts swallowing
+      # tap devices, which is a one-line change on a machine nobody was
+      # thinking about abuse detection at the time.
+      - alert: VirtbaseGuestNicMetricsAbsent
+        expr: absent(node_network_receive_packets_total{device=~"tap[0-9]+i[0-9]+"})
+        for: 15m
+        labels:
+          severity: warning
+          virtbase_type: alert.detection_degraded
+        annotations:
+          summary: "No per-guest NIC counters from any hypervisor"
+          description: "Packet-rate and packet-size detection is off. Check `common_alloy_net_exclude` in the Alloy role — it must not exclude `tap*`."
+
+      - alert: VirtbaseSqlExporterDown
+        expr: up{job="sql-exporter"} == 0
+        for: 5m
+        labels:
+          severity: critical
+          virtbase_type: alert.detection_degraded
+        annotations:
+          summary: "sql_exporter is not answering"
+          description: "Every flow-based detector is off — spam, scanning, reflection and brute-force fan-out all go unnoticed. Check that ClickHouse is reachable and that the query timeout still fits inside the scrape timeout."
+
+      # Every other flow metric is absent when nothing is wrong, which is
+      # indistinguishable from a broken query, an empty table, or flow export
+      # having stopped at the router. This one always returns a row, so it is
+      # the only thing that can tell those apart.
+      - alert: VirtbaseFlowIngestionStopped
+        expr: virtbase_flow_total_pps == 0 or absent(virtbase_flow_total_pps)
+        for: 15m
+        labels:
+          severity: critical
+          virtbase_type: alert.detection_degraded
+        annotations:
+          summary: "No flows reaching Akvorado"
+          description: "The `flows` table has had nothing in it for fifteen minutes. Either the exporters stopped sampling, or Akvorado stopped ingesting — and the flow detectors are silently reporting a clean fleet either way."
+
+      # Akvorado is receiving flows, but none are sourced from our own address
+      # space. Either the prefix list in the collector config is wrong, or
+      # Akvorado's interface classifiers are — and in both cases every flow
+      # detector reports a clean fleet while looking at somebody else's
+      # traffic. This is the guard for the failure that `up`, the scrape, the
+      # query and the other heartbeat all survive.
+      - alert: VirtbaseFlowAttributionEmpty
+        expr: virtbase_flow_total_pps > 0 and virtbase_flow_customer_pps == 0
+        for: 15m
+        labels:
+          severity: critical
+          virtbase_type: alert.detection_degraded
+        annotations:
+          summary: "Flows are arriving but none are ours"
+          description: "Akvorado is ingesting normally and not one packet in five minutes carried SrcNetRole=customer. Either the `networks:` prefixes in Akvorado are wrong or missing, or the outlet has not been restarted since they were added — enrichment is not retroactive. Check with: SELECT SrcNetRole, count() FROM flows WHERE TimeReceived >= now() - INTERVAL 5 MINUTE GROUP BY SrcNetRole"
+
+      # Both scan detectors read `TCPFlags`. If that column is not enabled in
+      # Akvorado's schema the queries return nothing at all, which is
+      # indistinguishable from a fleet with no scanning on it. Flow ingestion
+      # healthy plus zero SYNs seen anywhere means the column is missing.
+      - alert: VirtbaseFlowScanDetectorBlind
+        expr: |
+          virtbase_flow_customer_pps > 0
+            and absent(virtbase_flow_scan_syns)
+            and absent(virtbase_flow_synflood_syns)
+        for: 6h
+        labels:
+          severity: warning
+          virtbase_type: alert.detection_degraded
+        annotations:
+          summary: "No SYN counts from the flow path in six hours"
+          description: "Customer traffic is being seen but neither scan detector has produced a series. Most likely `TCPFlags` is not enabled in Akvorado's schema; it can also mean genuinely no scanning, which is why this waits six hours."
+
+      - alert: VirtbaseAbuseIngestFailing
+        expr: |
+          sum by (integration) (
+            rate(alertmanager_notifications_failed_total{integration="webhook"}[10m])
+          ) > 0
+        for: 15m
+        labels:
+          severity: critical
+          virtbase_type: alert.detection_degraded
+        annotations:
+          summary: "Alertmanager cannot deliver to the Virtbase abuse endpoint"
+          description: "{{ $value | humanize }} failures/s for 15 minutes. A 404 here means the ingest token is wrong or the integration is disabled — that endpoint answers 404 rather than 401 by design. Alerts are being dropped, not queued indefinitely."
+
+      - alert: VirtbaseRuleEvaluationFailing
+        expr: |
+          sum by (rule_group) (rate(prometheus_rule_evaluation_failures_total[10m])) > 0
+        for: 10m
+        labels:
+          severity: critical
+          virtbase_type: alert.detection_degraded
+        annotations:
+          summary: "Rule group {{ $labels.rule_group }} is failing to evaluate"
+          description: "Alerts in this group are not being produced."

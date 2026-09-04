@@ -1,0 +1,608 @@
+# sql_exporter config for the Akvorado flow table.
+#
+# Turns the ClickHouse `flows` table into Prometheus gauges that the alert
+# rules in `virtbase-recommended.yml` fire on. This file belongs to
+# burningalchemist/sql_exporter, not to Prometheus — do not put it in the
+# directory `rule_files` globs.
+#
+# ── This runs on the Akvorado host, not next to Prometheus ───────────────────
+#
+# sql_exporter's `clickhouse://` DSN always speaks ClickHouse's **native
+# protocol on 9000**. `?protocol=http` is accepted and then ignored — the
+# connection is made and the handshake fails with `unexpected packet [72]`,
+# which is the HTTP response being read as a native frame. There is no DSN that
+# makes it use 8123, so it cannot travel the HTTPS path Grafana uses, and
+# Akvorado's compose does not publish 9000 anywhere.
+#
+# Rather than exposing the native port, run the exporter *inside* Akvorado's
+# compose project, where `clickhouse:9000` is a service name on the internal
+# network. Add to `/srv/akvorado/docker-compose.yml`:
+#
+#   sql-exporter:
+#     image: burningalchemist/sql_exporter:latest
+#     restart: unless-stopped
+#     depends_on:
+#       clickhouse:
+#         condition: service_healthy
+#     command: ["-config.file=/etc/sql_exporter/sql_exporter.yml"]
+#     volumes:
+#       - ./config/akvorado-abuse.sql_exporter.yml:/etc/sql_exporter/sql_exporter.yml:ro
+#     ports:
+#       # Bound to the management address rather than 0.0.0.0. Prometheus
+#       # scrapes this directly and the firewall is the access control.
+#       - "10.255.255.204:9399:9399"
+#
+# `-config.file` is not optional. The binary defaults to `sql_exporter.yml` in
+# its working directory and exits if it is not there, so a bind mount without
+# the flag never starts.
+#
+# The credential never leaves the Akvorado host, and what crosses the network
+# is nine aggregates rather than a SQL interface.
+#
+# **Deliberately not through Traefik.** `akvorado.internal.virtbase.com`
+# resolves to the OPNsense box at 10.255.255.2, where Caddy terminates TLS and
+# proxies to Traefik on the Akvorado VM. Traefik therefore sees Caddy as the
+# client for every request, and its `ipallowlist` cannot tell Prometheus from
+# anything else Caddy forwards — the `10.255.255.2/32` entry on the
+# `clickhouse-grafana` router is Caddy's address, not a monitoring host's.
+# Machine-to-machine scraping on a management VLAN has no use for either proxy,
+# and going direct matches how `prometheus.yml` already reaches the PVE nodes,
+# OPNsense and the IPMI controllers: by address, over plain HTTP, with the
+# firewall deciding who may connect.
+#
+#   - job_name: sql-exporter
+#     # Well above the 15s global default: each scrape runs nine aggregations
+#     # over the raw flow table.
+#     scrape_interval: 60s
+#     # Must exceed the slowest query and stay under scrape_interval. The
+#     # global default is 10s, which these queries will outlive on a busy
+#     # fleet, and a timed-out scrape reports no abuse rather than an error.
+#     scrape_timeout: 45s
+#     static_configs:
+#       - targets: ["10.255.255.204:9399"]
+#
+# Pair that with a firewall rule permitting only 10.255.255.203 to reach
+# 10.255.255.204:9399.
+#
+#
+# ── The ClickHouse user ──────────────────────────────────────────────────────
+#
+# Akvorado's compose sets `CLICKHOUSE_SKIP_USER_SETUP: 1`, which leaves the
+# packaged `default` user with no password and full access. That is safe only
+# because nothing reaches the port; the Traefik allowlist is doing the
+# authenticating. Do not point this exporter — or Grafana — at `default`.
+# Create a user that can read one table and nothing else:
+#
+#   CREATE USER virtbase_abuse IDENTIFIED BY '<password>';
+#   GRANT SELECT ON default.flows TO virtbase_abuse;
+#
+# Then a dropped credential reads flow records, rather than being able to
+# DROP TABLE flows.
+#
+# Measure before trusting those numbers, on a busy hour rather than a quiet
+# one:
+#
+#   curl -s localhost:9399/metrics -o /dev/null -w '%{time_total}\n'
+#
+# The scrape adds an `instance="sql-exporter:9399"` label to every metric.
+# That is harmless here: `subjectFromLabels()` only reaches `instance` when
+# nothing better is present, and every metric below carries `virtbase_ip`.
+#
+#
+# ── `no_prepared_statement` is required, not an optimisation ─────────────────
+#
+# Every metric sets it. sql_exporter prepares its queries by default, and
+# clickhouse-go only supports prepared statements for INSERT — so without the
+# flag every query here fails with `invalid INSERT query`, on every version,
+# including `SELECT 1`. The exporter still starts, still answers /metrics, and
+# still reports `up 1`; the failure appears only as an error line in its log
+# and as metrics that are silently never published.
+#
+# That is the same shape as a fleet with no abuse on it, which is why
+# `VirtbaseFlowIngestionStopped` in the rules file watches the heartbeat
+# rather than trusting `up`.
+#
+#
+# ── Why the thresholds are split between here and the rules file ─────────────
+#
+# `HAVING` in these queries is a **cardinality floor**, not the alert
+# threshold. Each metric is labelled by customer address, so a query with no
+# floor would return one series per active address on the fleet; with one, it
+# returns only addresses already doing something unusual, which is normally a
+# handful and often none.
+#
+# The actual alert thresholds live in `virtbase-recommended.yml`, where
+# `promtool` checks them and where an operator tuning a rule expects to find
+# them. Keep every floor here comfortably *below* the alert threshold that
+# reads it — a floor above the alert threshold silently disables the alert.
+#
+#
+# ── Whose traffic this is ────────────────────────────────────────────────────
+#
+# Every outbound query carries two filters, and they are not interchangeable.
+#
+# `SrcNetRole = 'customer'` decides whose traffic it is, and it is the
+# load-bearing one: without it these queries report on anything the switches
+# can see, including traffic that merely crosses them. It reads the enrichment
+# Akvorado attaches at ingest from its own `networks:` config:
+#
+#   outlet:
+#     networks:
+#       networks:
+#         5.231.248.0/24:
+#           name: virtbase
+#           role: customer
+#           tenant: virtbase
+#
+# So the prefix list lives in one place, beside the rest of the network's
+# description, and adding a range is one entry there rather than an edit to
+# every query in this file.
+#
+# `role` rather than `name` on purpose: a second prefix tagged
+# `role: customer` is picked up with no change here, while space that is ours
+# but not a customer's — management, IPMI, Ceph — can be tagged something else
+# and stays out of the abuse pipeline entirely.
+#
+# **This is enrichment, so it is not retroactive.** `SrcNetRole` is written
+# when a flow is ingested; rows that arrived before the `networks:` config was
+# in place carry an empty role forever, and switching to this filter before
+# the outlet has restarted makes every detector return nothing. Confirm the
+# column is populated first:
+#
+#   SELECT SrcNetRole, count() FROM flows
+#   WHERE TimeReceived >= now() - INTERVAL 5 MINUTE GROUP BY SrcNetRole
+#
+# `VirtbaseFlowAttributionEmpty` is the guard for exactly that state: flows
+# arriving, none of them ours.
+#
+# `OutIfBoundary = 'external'` is defence in depth on top of that, and only as
+# good as Akvorado's `interface-classifiers`. Verify rather than assume:
+#
+#   SELECT OutIfBoundary, InIfBoundary, count()
+#   FROM flows WHERE TimeReceived >= now() - INTERVAL 5 MINUTE
+#   GROUP BY OutIfBoundary, InIfBoundary
+#
+# Classifier rules are read left to right and short-circuit on `&&`, and the
+# first rule to set a boundary wins — so the condition comes first and
+# `ClassifyExternal()` last. Written the other way round it runs
+# unconditionally, every interface is marked external, `ClassifyInternal()`
+# never gets a say, and the predicate silently matches everything in both
+# directions.
+#
+# Getting the source filter wrong in the permissive direction is survivable:
+# an address outside the allocation table resolves to nobody, and intake sends
+# an "unattributed signal" notice to operators instead of opening a case
+# against anyone. Getting the *direction* wrong is not — that files cases
+# against the targets of attacks rather than their source.
+#
+#
+# ── Addresses ────────────────────────────────────────────────────────────────
+#
+# Akvorado stores IPv4 as IPv4-mapped IPv6 (`::ffff:192.0.2.1`). Postgres
+# compares `inet` values within an address family, so `subnets.cidr >>= ...`
+# is false for a mapped address against an IPv4 CIDR, and attribution would
+# find nobody for every IPv4 signal. `replaceRegexpOne(..., '^::ffff:', '')`
+# is what Akvorado's own `SrcNetPrefix` alias does, and it is not optional.
+#
+# The label is named `virtbase_ip` in SQL so it reaches the alert, and the
+# signal, without any templating in between.
+#
+#
+# ── Sampling ─────────────────────────────────────────────────────────────────
+#
+# These are sampled flows. `Bytes` and `Packets` are per-record and must be
+# multiplied by `SamplingRate` to mean anything. `greatest(SamplingRate, 1)`
+# guards the case where an exporter reports 0, which would otherwise silently
+# zero every count and make the fleet look idle.
+#
+# Sampling also sets a floor on what is visible: at 1:1000, a scan of 500
+# hosts contributes a handful of records, so `uniq(DstAddr)` undercounts. The
+# fan-out thresholds below assume a rate around 1:1000 or finer. Divide them
+# by your rate ratio if yours is coarser.
+
+global:
+  scrape_timeout: 40s
+  scrape_timeout_offset: 500ms
+  min_interval: 0s
+  max_connections: 3
+  max_idle_connections: 3
+
+target:
+  # Read-only user. This exporter needs SELECT on one table and nothing else.
+  data_source_name: 'clickhouse://virtbase_abuse:<password>@clickhouse:9000/default?dial_timeout=5s&read_timeout=35s'
+  collectors: [akvorado_abuse]
+
+collectors:
+  - collector_name: akvorado_abuse
+    # Results are cached for this long, so the queries run once per scrape
+    # rather than once per concurrent scraper.
+    min_interval: 60s
+
+    metrics:
+      # ─────────────────────────────────────────────────────────────────────
+      # abuse.ddos
+      # ─────────────────────────────────────────────────────────────────────
+
+      # Outbound packet rate per source. Packets rather than bytes: a flood of
+      # 64-byte frames saturates a link's forwarding capacity long before its
+      # bit rate looks unusual, and bytes are already covered per-guest by
+      # pve-exporter.
+      - metric_name: virtbase_flow_egress_pps
+        type: gauge
+        help: 'Outbound packets/s per source address over the trailing five minutes.'
+        key_labels: [virtbase_ip]
+        values: [pps]
+        no_prepared_statement: true
+        query: |
+          SELECT
+            replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') AS virtbase_ip,
+            sum(Packets * greatest(SamplingRate, 1)) / 300 AS pps
+          FROM flows
+          WHERE TimeReceived >= now() - INTERVAL 5 MINUTE
+            AND OutIfBoundary = 'external'
+            -- Our customers' space, from Akvorado's `networks:` config.
+            -- Tagging a new prefix `role: customer` there is the whole change;
+            -- nothing here needs editing. See the header.
+            AND SrcNetRole = 'customer'
+          GROUP BY virtbase_ip
+          HAVING pps > 10000
+          ORDER BY pps DESC
+          LIMIT 100
+
+      # Reflection and amplification: UDP leaving the fleet *sourced from* a
+      # service port. The customer's VM is the reflector — it received small
+      # requests and answered with large replies — so the tell is the source
+      # port, not the destination.
+      #
+      # `src_port` is a label so the rules file can band by it: 53 and 123
+      # have legitimate high-volume server uses and stay at warning, the rest
+      # do not and go straight to critical.
+      - metric_name: virtbase_flow_amplification_bps
+        type: gauge
+        help: 'Outbound UDP bits/s per source address and reflector port over the trailing five minutes.'
+        key_labels: [virtbase_ip, src_port]
+        values: [bps]
+        no_prepared_statement: true
+        query: |
+          SELECT
+            replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') AS virtbase_ip,
+            toString(SrcPort) AS src_port,
+            sum(Bytes * greatest(SamplingRate, 1)) * 8 / 300 AS bps
+          FROM flows
+          WHERE TimeReceived >= now() - INTERVAL 5 MINUTE
+            AND OutIfBoundary = 'external'
+            -- Our customers' space, from Akvorado's `networks:` config.
+            -- Tagging a new prefix `role: customer` there is the whole change;
+            -- nothing here needs editing. See the header.
+            AND SrcNetRole = 'customer'
+            AND Proto = 17
+            AND SrcPort IN (
+              19,    -- chargen
+              53,    -- DNS
+              111,   -- portmap
+              123,   -- NTP
+              137,   -- NetBIOS
+              161,   -- SNMP
+              389,   -- CLDAP
+              520,   -- RIP
+              1900,  -- SSDP
+              3283,  -- Apple Remote Desktop
+              5093,  -- Sentinel
+              5353,  -- mDNS
+              11211, -- memcached
+              27015  -- Source engine
+            )
+          GROUP BY virtbase_ip, src_port
+          HAVING bps > 10000000
+          ORDER BY bps DESC
+          LIMIT 100
+
+      # ─────────────────────────────────────────────────────────────────────
+      # abuse.port_scan
+      # ─────────────────────────────────────────────────────────────────────
+
+      # A sweep, measured with TCP flags rather than inferred from packet size.
+      #
+      # `bitAnd(TCPFlags, 18) = 2` is SYN set and ACK clear — a connection
+      # attempt, and nothing else. That is exact, so none of the old proxies
+      # are needed: no mean-packet-size test, no packets-per-destination ratio.
+      # Both existed only to guess at what the flags now state outright, and
+      # both were fooled by a customer's VPN, whose egress is pure ACKs at
+      # exactly 72 bytes on IPv6 — the same size as a bare SYN.
+      #
+      # The second condition is what separates a scanner from a busy proxy,
+      # which also opens many connections to many hosts: **a scanner's SYNs go
+      # unanswered.** Counting inbound SYN-ACK against outbound SYN gives the
+      # answer rate directly. Both directions are sampled at the same rate, so
+      # the ratio is unbiased. A proxy sits near 1.0; a sweep sits near zero.
+      #
+      # Needs `TCPFlags` in Akvorado's schema. Without it this returns nothing,
+      # which `VirtbaseFlowScanDetectorBlind` in the rules file watches for.
+      - metric_name: virtbase_flow_scan_syns
+        type: gauge
+        help: 'Outbound TCP SYNs from an address whose connection attempts mostly go unanswered.'
+        key_labels: [virtbase_ip]
+        values: [syns]
+        no_prepared_statement: true
+        query: |
+          SELECT
+            replaceRegexpOne(toString(if(OutIfBoundary = 'external', SrcAddr, DstAddr)),
+                             '^::ffff:', '') AS virtbase_ip,
+            sumIf(Packets * greatest(SamplingRate, 1),
+                  OutIfBoundary = 'external' AND bitAnd(TCPFlags, 18) = 2) AS syns
+          FROM flows
+          WHERE TimeReceived >= now() - INTERVAL 5 MINUTE
+            AND Proto = 6
+            AND ((OutIfBoundary = 'external' AND SrcNetRole = 'customer')
+              OR (InIfBoundary  = 'external' AND DstNetRole = 'customer'))
+          GROUP BY virtbase_ip
+          HAVING syns > 2000
+             -- Fewer than one attempt in five answered. A proxy or VPN reaching
+             -- real services sits near 1.0 and never appears here.
+             AND sumIf(Packets * greatest(SamplingRate, 1),
+                       InIfBoundary = 'external' AND bitAnd(TCPFlags, 18) = 18)
+               / greatest(syns, 1) < 0.2
+             -- Spread across hosts. Concentrated on a few is a SYN flood, which
+             -- is abuse.ddos and belongs to the metric below.
+             AND uniq(if(OutIfBoundary = 'external', DstAddr, SrcAddr)) > 10
+          ORDER BY syns DESC
+          LIMIT 100
+
+      # ─────────────────────────────────────────────────────────────────────
+      # abuse.ddos, continued — SYN flood
+      #
+      # The same measurement pointed the other way: a torrent of unanswered
+      # SYNs at *few* destinations is a flood, not a sweep. Before TCP flags
+      # this was indistinguishable from a sweep and both fell out of one
+      # packet-rate threshold.
+      # ─────────────────────────────────────────────────────────────────────
+      - metric_name: virtbase_flow_synflood_syns
+        type: gauge
+        help: 'Outbound TCP SYNs concentrated on a handful of destinations and mostly unanswered.'
+        key_labels: [virtbase_ip]
+        values: [syns]
+        no_prepared_statement: true
+        query: |
+          SELECT
+            replaceRegexpOne(toString(if(OutIfBoundary = 'external', SrcAddr, DstAddr)),
+                             '^::ffff:', '') AS virtbase_ip,
+            sumIf(Packets * greatest(SamplingRate, 1),
+                  OutIfBoundary = 'external' AND bitAnd(TCPFlags, 18) = 2) AS syns
+          FROM flows
+          WHERE TimeReceived >= now() - INTERVAL 5 MINUTE
+            AND Proto = 6
+            AND ((OutIfBoundary = 'external' AND SrcNetRole = 'customer')
+              OR (InIfBoundary  = 'external' AND DstNetRole = 'customer'))
+          GROUP BY virtbase_ip
+          HAVING syns > 20000
+             -- Concentrated. Spread across many hosts is a sweep, above.
+             AND uniq(if(OutIfBoundary = 'external', DstAddr, SrcAddr)) <= 5
+             -- Half the attempts unanswered. Without this, a guest doing heavy
+             -- DNS-over-HTTPS is identical in shape: thousands of connections
+             -- to three or four resolvers on 443. Those get answered; a flood
+             -- does not, because the source is spoofed or the target's backlog
+             -- is full. Looser than the sweep's 0.2 so a flood against a target
+             -- still answering some of the time is not missed.
+             --
+             -- Computed in this aggregate, not a subquery: ClickHouse evaluated
+             -- a correlated subquery here as an uncorrelated one, silently, and
+             -- the resulting fleet-wide ratio let every address through.
+             AND sumIf(Packets * greatest(SamplingRate, 1),
+                       InIfBoundary = 'external' AND bitAnd(TCPFlags, 18) = 18)
+               / greatest(syns, 1) < 0.5
+          ORDER BY syns DESC
+          LIMIT 50
+
+      # ─────────────────────────────────────────────────────────────────────
+      # abuse.spam
+      # ─────────────────────────────────────────────────────────────────────
+
+      # Port 25 only, and deliberately not 465 or 587: those are submission
+      # ports a customer's own mail client uses, and counting them would flag
+      # anyone who reads their email on their server. Mail to port 25 goes to
+      # somebody else's MX, and the number of distinct MXes is the signal — a
+      # real mail server has a handful of correspondents in five minutes, a
+      # bot working a list has hundreds.
+      - metric_name: virtbase_flow_smtp_packets
+        type: gauge
+        help: 'Estimated packets to port 25 per source over five minutes.'
+        key_labels: [virtbase_ip]
+        values: [packets]
+        no_prepared_statement: true
+        query: |
+          SELECT
+            replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') AS virtbase_ip,
+            sum(Packets * greatest(SamplingRate, 1)) AS packets
+          FROM flows
+          WHERE TimeReceived >= now() - INTERVAL 5 MINUTE
+            AND OutIfBoundary = 'external'
+            AND SrcNetRole = 'customer'
+            AND Proto = 6
+            AND DstPort = 25
+          GROUP BY virtbase_ip
+          HAVING packets > 1000
+             AND uniq(DstAddr) > 3
+          ORDER BY packets DESC
+          LIMIT 100
+
+      # ─────────────────────────────────────────────────────────────────────
+      # abuse.compromised
+      # ─────────────────────────────────────────────────────────────────────
+
+      # Credential brute-force fan-out. The highest-confidence compromise
+      # signal in this file: a VPS that suddenly tries SSH or RDP against
+      # hundreds of strangers has been taken over and is spreading, and there
+      # is no benign version of it.
+      #
+      # `dst_port` is kept so the case says which service without an operator
+      # going back to Grafana.
+      #
+      # The mean-packet-size floor is what keeps this from double-filing a
+      # sweep. A sweep of port 445 matches `virtbase_flow_scan_peers` too, and
+      # the two carry different categories, so one incident would open one
+      # `port_scan` case and one `compromised` case against the same customer.
+      # A real brute-force attempt completes a handshake and sends
+      # credentials; a sweep is bare SYNs and never reaches 128 bytes a
+      # packet. Scanning is filed as scanning, and only traffic that actually
+      # tried to log in is filed as compromise.
+      - metric_name: virtbase_flow_bruteforce_packets
+        type: gauge
+        help: 'Estimated packets to remote-access ports per source and port over five minutes.'
+        key_labels: [virtbase_ip, dst_port]
+        values: [packets]
+        no_prepared_statement: true
+        query: |
+          SELECT
+            replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') AS virtbase_ip,
+            toString(DstPort) AS dst_port,
+            sum(Packets * greatest(SamplingRate, 1)) AS packets
+          FROM flows
+          WHERE TimeReceived >= now() - INTERVAL 5 MINUTE
+            AND OutIfBoundary = 'external'
+            AND SrcNetRole = 'customer'
+            AND Proto = 6
+            AND DstPort IN (22, 23, 445, 1433, 3306, 3389, 5432, 5900, 6379)
+          GROUP BY virtbase_ip, dst_port
+          HAVING packets > 2000
+             AND uniq(DstAddr) > 3
+             AND sum(Bytes * greatest(SamplingRate, 1))
+               / sum(Packets * greatest(SamplingRate, 1)) >= 128
+             -- Packets per destination. Credential attempts spread thin across
+             -- many hosts; a backup or deploy system rsyncing over SSH pours
+             -- hundreds of thousands of packets into a dozen known ones. SYNs
+             -- would say this outright but are too rare to survive sampling at
+             -- these volumes -- see the header -- so the ratio stands in.
+             AND sum(Packets * greatest(SamplingRate, 1))
+               / greatest(uniq(DstAddr), 1) < 2 * avg(greatest(SamplingRate, 1))
+          ORDER BY packets DESC
+          LIMIT 100
+
+      # ─────────────────────────────────────────────────────────────────────
+      # Operator notices — these open no case. See the rules file.
+      # ─────────────────────────────────────────────────────────────────────
+
+      # Stratum mining ports. Low confidence on purpose: 4444 and 8888 are
+      # generic, and mining is not necessarily against the terms a customer
+      # agreed to. It is reported to operators and never filed as abuse.
+      #
+      # The shape that makes it worth reporting is a long-lived connection to
+      # one or two hosts, which is why the destination fan-out is capped
+      # rather than floored.
+      - metric_name: virtbase_flow_mining_bytes
+        type: gauge
+        help: 'Bytes to known stratum ports per source over five minutes.'
+        key_labels: [virtbase_ip]
+        values: [bytes]
+        no_prepared_statement: true
+        query: |
+          SELECT
+            replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') AS virtbase_ip,
+            sum(Bytes * greatest(SamplingRate, 1)) AS bytes
+          FROM flows
+          WHERE TimeReceived >= now() - INTERVAL 5 MINUTE
+            AND OutIfBoundary = 'external'
+            -- Our customers' space, from Akvorado's `networks:` config.
+            -- Tagging a new prefix `role: customer` there is the whole change;
+            -- nothing here needs editing. See the header.
+            AND SrcNetRole = 'customer'
+            AND Proto = 6
+            AND DstPort IN (3333, 4444, 5555, 7777, 8888, 14444, 45560, 45700)
+          GROUP BY virtbase_ip
+          HAVING bytes > 500000
+             AND uniq(DstAddr) <= 5
+          ORDER BY bytes DESC
+          LIMIT 50
+
+      # Inbound flood, keyed by the address being hit. The customer is the
+      # target, not the source, so this must never carry an `abuse.` type —
+      # and having it named separately is what stops the first sign of an
+      # attack being a node's uplink and the blame going the wrong way.
+      - metric_name: virtbase_flow_ingress_bps
+        type: gauge
+        help: 'Inbound bits/s per destination address over the trailing five minutes.'
+        key_labels: [virtbase_ip]
+        values: [bps]
+        no_prepared_statement: true
+        query: |
+          SELECT
+            replaceRegexpOne(toString(DstAddr), '^::ffff:', '') AS virtbase_ip,
+            sum(Bytes * greatest(SamplingRate, 1)) * 8 / 300 AS bps
+          FROM flows
+          WHERE TimeReceived >= now() - INTERVAL 5 MINUTE
+            AND InIfBoundary = 'external'
+            -- Destination side: this metric is about a customer being
+            -- attacked, so the role is tested on where the traffic is going.
+            AND DstNetRole = 'customer'
+          GROUP BY virtbase_ip
+          HAVING bps > 100000000
+          ORDER BY bps DESC
+          LIMIT 100
+
+      # ─────────────────────────────────────────────────────────────────────
+      # Heartbeat.
+      #
+      # Every metric above is absent when nothing is wrong, which is
+      # indistinguishable from a broken exporter, an empty table, or a
+      # ClickHouse the exporter cannot reach. This one always returns a row,
+      # and `VirtbaseFlowIngestionStopped` in the rules file watches it.
+      # ─────────────────────────────────────────────────────────────────────
+      - metric_name: virtbase_flow_total_pps
+        type: gauge
+        help: 'Total packets/s across all flows over the trailing five minutes.'
+        values: [pps]
+        no_prepared_statement: true
+        query: |
+          SELECT
+            sum(Packets * greatest(SamplingRate, 1)) / 300 AS pps
+          FROM flows
+          WHERE TimeReceived >= now() - INTERVAL 5 MINUTE
+
+      # The second half of the heartbeat, and the one that would have caught
+      # the misconfiguration the source filter exists for. `total_pps` says
+      # Akvorado is receiving flows; this says some of them are ours. If the
+      # first is healthy and this one is zero, either the prefix list is wrong
+      # or the interface classifiers are, and every detector is looking at
+      # somebody else's traffic — or at nothing.
+      - metric_name: virtbase_flow_customer_pps
+        type: gauge
+        help: 'Packets/s sourced from our own address space over the trailing five minutes.'
+        values: [pps]
+        no_prepared_statement: true
+        query: |
+          SELECT
+            sum(Packets * greatest(SamplingRate, 1)) / 300 AS pps
+          FROM flows
+          WHERE TimeReceived >= now() - INTERVAL 5 MINUTE
+            AND SrcNetRole = 'customer'
+
+# ── Not covered, and why ─────────────────────────────────────────────────────
+#
+# **phishing** has no flow signature. A phishing page is HTTPS to a webserver
+# and looks exactly like every other page on the fleet. It arrives through the
+# `abuse@` mailbox.
+#
+# **copyright** has no flow signature either — modern clients pick random
+# ports, and the traffic that does sit on 6881-6889 is as often a Linux ISO as
+# anything actionable. Filing a copyright case on a port number would be
+# wrong. What flow data *is* good for is corroborating a DMCA notice after it
+# arrives, which is an operator running one query rather than an alert:
+#
+#   SELECT TimeReceived, DstAddr, DstPort, Bytes * greatest(SamplingRate,1)
+#   FROM flows
+#   WHERE SrcAddr = toIPv6('::ffff:198.51.100.42')
+#     AND TimeReceived BETWEEN '2026-08-30 14:00:00' AND '2026-08-30 15:00:00'
+#   ORDER BY TimeReceived
+#
+# **Spoofed source addresses** — egress carrying a source that is not ours —
+# are the one detector worth adding that this file cannot write blind, since
+# it needs your prefix list. If Akvorado's `networks:` config tags your ranges,
+# an egress flow with an empty `SrcNetName` is spoofed, which is unambiguous
+# attack traffic with no false-positive class at all. It cannot be attributed
+# to a customer by address, so send it to operators as `alert.spoofed_egress`
+# and find the port from the exporter interface:
+#
+#   SELECT ExporterName, InIfName, sum(Packets * greatest(SamplingRate,1)) / 300 AS pps
+#   FROM flows
+#   WHERE TimeReceived >= now() - INTERVAL 5 MINUTE
+#     AND OutIfBoundary = 'external' AND SrcNetName = ''
+#   GROUP BY ExporterName, InIfName HAVING pps > 1000

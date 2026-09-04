@@ -1,0 +1,2072 @@
+{
+  "uid": "virtbase-traffic",
+  "title": "Virtbase \u2014 Traffic & 95th Percentile",
+  "description": "Transit usage from Akvorado's ClickHouse. Set the range to a calendar month for the billing figure.",
+  "tags": [
+    "virtbase",
+    "traffic",
+    "akvorado",
+    "billing"
+  ],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "editable": true,
+  "graphTooltip": 1,
+  "refresh": "5m",
+  "time": {
+    "from": "now-30d",
+    "to": "now"
+  },
+  "templating": {
+    "list": [
+      {
+        "type": "datasource",
+        "name": "DS_CH",
+        "label": "ClickHouse",
+        "query": "grafana-clickhouse-datasource",
+        "hide": 0,
+        "refresh": 1,
+        "current": {},
+        "options": []
+      },
+      {
+        "type": "custom",
+        "name": "table",
+        "label": "Source table",
+        "description": "flows_5m0s: 3 months at 5-minute resolution, what billing wants. Pair with $bucket.",
+        "query": "flows_5m0s,flows_1h0s,flows_1m0s,flows",
+        "hide": 0,
+        "current": {
+          "text": "flows_5m0s",
+          "value": "flows_5m0s",
+          "selected": true
+        },
+        "options": [
+          {
+            "text": "flows_5m0s",
+            "value": "flows_5m0s",
+            "selected": true
+          },
+          {
+            "text": "flows_1h0s",
+            "value": "flows_1h0s",
+            "selected": false
+          },
+          {
+            "text": "flows_1m0s",
+            "value": "flows_1m0s",
+            "selected": false
+          },
+          {
+            "text": "flows",
+            "value": "flows",
+            "selected": false
+          }
+        ]
+      },
+      {
+        "type": "custom",
+        "name": "bucket",
+        "label": "Bucket (s)",
+        "description": "Match to $table: 300 / 3600 / 60. Billing panels always use 300.",
+        "query": "300,3600,60",
+        "hide": 0,
+        "current": {
+          "text": "300",
+          "value": "300",
+          "selected": true
+        },
+        "options": [
+          {
+            "text": "300",
+            "value": "300",
+            "selected": true
+          },
+          {
+            "text": "3600",
+            "value": "3600",
+            "selected": false
+          },
+          {
+            "text": "60",
+            "value": "60",
+            "selected": false
+          }
+        ]
+      },
+      {
+        "type": "custom",
+        "name": "sr",
+        "label": "Sampling multiplier",
+        "description": "Verified: Akvorado does NOT pre-scale consolidated tables. Leave on SamplingRate.",
+        "query": "SamplingRate,1",
+        "hide": 0,
+        "current": {
+          "text": "SamplingRate",
+          "value": "SamplingRate",
+          "selected": true
+        },
+        "options": [
+          {
+            "text": "SamplingRate",
+            "value": "SamplingRate",
+            "selected": true
+          },
+          {
+            "text": "1",
+            "value": "1",
+            "selected": false
+          }
+        ]
+      }
+    ]
+  },
+  "panels": [
+    {
+      "type": "row",
+      "title": "95th percentile \u2014 the number the transit bill is written against",
+      "id": 1,
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "panels": []
+    },
+    {
+      "type": "stat",
+      "title": "95th percentile OUT",
+      "id": 2,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 1
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT quantileExact(0.95)(bps) AS p95 FROM (\nSELECT toStartOfInterval(TimeReceived, INTERVAL 300 second) AS t,\n       sum(if(OutIfBoundary = 'external', Bytes, 0) * $sr) * 8 / 300 AS bps\nFROM $table\nWHERE $__timeFilter(TimeReceived)\nGROUP BY t\n)",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "decimals": 2,
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "description": "Egress on every interface classified external, 5-minute buckets, over the dashboard range. Set the range to a calendar month for the billing figure. quantileExact, not quantile: the approximate one drifts ~0.1% over a month and a carrier computes this exactly.",
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      }
+    },
+    {
+      "type": "stat",
+      "title": "95th percentile IN",
+      "id": 3,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 4,
+        "y": 1
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT quantileExact(0.95)(bps) AS p95 FROM (\nSELECT toStartOfInterval(TimeReceived, INTERVAL 300 second) AS t,\n       sum(if(InIfBoundary = 'external', Bytes, 0) * $sr) * 8 / 300 AS bps\nFROM $table\nWHERE $__timeFilter(TimeReceived)\nGROUP BY t\n)",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "decimals": 2,
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Billable (higher of the two)",
+      "id": 4,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 8,
+        "y": 1
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT greatest(\n (SELECT quantileExact(0.95)(bps) FROM (\nSELECT toStartOfInterval(TimeReceived, INTERVAL 300 second) AS t,\n       sum(if(OutIfBoundary = 'external', Bytes, 0) * $sr) * 8 / 300 AS bps\nFROM $table\nWHERE $__timeFilter(TimeReceived)\nGROUP BY t\n )),\n (SELECT quantileExact(0.95)(bps) FROM (\nSELECT toStartOfInterval(TimeReceived, INTERVAL 300 second) AS t,\n       sum(if(InIfBoundary = 'external', Bytes, 0) * $sr) * 8 / 300 AS bps\nFROM $table\nWHERE $__timeFilter(TimeReceived)\nGROUP BY t\n ))\n) AS billable",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "orange",
+                "value": 700000000
+              },
+              {
+                "color": "red",
+                "value": 900000000
+              }
+            ]
+          },
+          "decimals": 2,
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "description": "Most transit contracts bill the higher direction.",
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Peak OUT",
+      "id": 5,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 12,
+        "y": 1
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT max(bps) AS peak FROM (\nSELECT toStartOfInterval(TimeReceived, INTERVAL 300 second) AS t,\n       sum(if(OutIfBoundary = 'external', Bytes, 0) * $sr) * 8 / 300 AS bps\nFROM $table\nWHERE $__timeFilter(TimeReceived)\nGROUP BY t\n)",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "decimals": 2,
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "description": "What the percentile discards. A wide gap to the 95th means short bursts you are not billed for.",
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Volume OUT",
+      "id": 6,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 16,
+        "y": 1
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT sum(if(OutIfBoundary='external', Bytes, 0) * $sr) AS v FROM $table WHERE $__timeFilter(TimeReceived)",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "decimals": 1,
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Volume IN",
+      "id": 7,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 20,
+        "y": 1
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT sum(if(InIfBoundary='external', Bytes, 0) * $sr) AS v FROM $table WHERE $__timeFilter(TimeReceived)",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "decimals": 1,
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Transit throughput, 5-minute buckets, with the 95th percentile",
+      "id": 8,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 16,
+        "x": 0,
+        "y": 5
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "WITH b AS (\n  SELECT toStartOfInterval(TimeReceived, INTERVAL 300 second) AS t,\n         sum(if(OutIfBoundary = 'external', Bytes, 0) * $sr) * 8 / 300 AS out_bps,\n         sum(if(InIfBoundary  = 'external', Bytes, 0) * $sr) * 8 / 300 AS in_bps\n  FROM $table WHERE $__timeFilter(TimeReceived) GROUP BY t\n)\nSELECT t AS time, out_bps AS \"out\", -in_bps AS \"in (mirrored)\",\n       (SELECT quantileExact(0.95)(out_bps) FROM b) AS \"95th out\",\n       -(SELECT quantileExact(0.95)(in_bps) FROM b) AS \"95th in\"\nFROM b ORDER BY t",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 12,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "description": "Inbound mirrored below the axis, the usual way to read a transit graph. Flat lines are each direction's 95th over the whole range.",
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Daily 95th percentile",
+      "id": 9,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 8,
+        "x": 16,
+        "y": 5
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "WITH b AS (\n  SELECT toStartOfInterval(TimeReceived, INTERVAL 300 second) AS t,\n         sum(if(OutIfBoundary = 'external', Bytes, 0) * $sr) * 8 / 300 AS out_bps,\n         sum(if(InIfBoundary  = 'external', Bytes, 0) * $sr) * 8 / 300 AS in_bps\n  FROM $table WHERE $__timeFilter(TimeReceived) GROUP BY t\n)\nSELECT toStartOfDay(t) AS time,\n       quantileExact(0.95)(out_bps) AS \"out\",\n       quantileExact(0.95)(in_bps)  AS \"in\"\nFROM b GROUP BY time ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 12,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "description": "Which days actually drive the monthly figure. One tall day can set the bill for the whole month.",
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "row",
+      "title": "Who we exchange traffic with",
+      "id": 10,
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "panels": []
+    },
+    {
+      "type": "timeseries",
+      "title": "Top 10 destination AS, outbound",
+      "id": 11,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 15
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       if(DstNetName != '', DstNetName, concat('AS', toString(DstAS))) AS series,\n       sum(Bytes * $sr) * 8 / $bucket AS bps\nFROM $table\nWHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external'\n  AND DstAS IN (SELECT DstAS FROM $table WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external'\n      GROUP BY DstAS ORDER BY sum(Bytes * $sr) DESC LIMIT 10)\nGROUP BY time, series ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 25,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "displayName": "${__field.labels.series}"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Top 10 source AS, inbound",
+      "id": 12,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 15
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       if(SrcNetName != '', SrcNetName, concat('AS', toString(SrcAS))) AS series,\n       sum(Bytes * $sr) * 8 / $bucket AS bps\nFROM $table\nWHERE $__timeFilter(TimeReceived) AND InIfBoundary = 'external'\n  AND SrcAS IN (SELECT SrcAS FROM $table WHERE $__timeFilter(TimeReceived) AND InIfBoundary = 'external'\n      GROUP BY SrcAS ORDER BY sum(Bytes * $sr) DESC LIMIT 10)\nGROUP BY time, series ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 25,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "displayName": "${__field.labels.series}"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Top 10 destination countries, outbound",
+      "id": 13,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 23
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       DstCountry AS series,\n       sum(Bytes * $sr) * 8 / $bucket AS bps\nFROM $table\nWHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND DstCountry != ''\n  AND DstCountry IN (SELECT DstCountry FROM $table WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND DstCountry != ''\n      GROUP BY DstCountry ORDER BY sum(Bytes * $sr) DESC LIMIT 10)\nGROUP BY time, series ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 25,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "displayName": "${__field.labels.series}"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "piechart",
+      "title": "Volume share by destination country",
+      "id": 14,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 23
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT DstCountry AS country, sum(Bytes * $sr) AS bytes\nFROM $table WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND DstCountry != ''\nGROUP BY country ORDER BY bytes DESC LIMIT 12",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": true
+        },
+        "pieType": "donut",
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "values": [
+            "percent"
+          ]
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      }
+    },
+    {
+      "type": "table",
+      "title": "Top 20 destination networks",
+      "id": 15,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 31
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT if(DstNetName != '', DstNetName, concat('AS', toString(DstAS))) AS \"network\",\n       DstAS AS \"ASN\",\n       sum(Bytes * $sr) AS \"bytes\",\n       sum(Bytes * $sr) * 8 / dateDiff('second', $__fromTime, $__toTime) AS \"avg bits/s\",\n       round(100 * sum(Bytes * $sr) / (SELECT sum(Bytes * $sr) FROM $table\n             WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external'), 2) AS \"share %\"\nFROM $table WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external'\nGROUP BY DstNetName, DstAS ORDER BY \"bytes\" DESC LIMIT 20",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "align": "auto",
+            "filterable": true
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ASN"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg bits/s"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "bps"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "share %"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "footer": {
+          "show": false,
+          "reducer": [
+            "sum"
+          ],
+          "countRows": false,
+          "fields": ""
+        }
+      }
+    },
+    {
+      "type": "row",
+      "title": "Ports and protocols \u2014 these read the raw flows table, which keeps ports (15-day TTL)",
+      "id": 16,
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 40
+      },
+      "panels": []
+    },
+    {
+      "type": "timeseries",
+      "title": "Top 15 destination ports, outbound",
+      "id": 17,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 41
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       concat(if(Proto=6,'tcp/',if(Proto=17,'udp/',concat('proto', toString(Proto), '/'))), toString(DstPort)) AS series,\n       sum(Bytes * $sr) * 8 / $bucket AS bps\nFROM flows\nWHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external'\n  AND DstPort IN (SELECT DstPort FROM flows WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external'\n      GROUP BY DstPort ORDER BY sum(Bytes * $sr) DESC LIMIT 15)\nGROUP BY time, series ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 25,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "displayName": "${__field.labels.series}"
+        },
+        "overrides": []
+      },
+      "description": "SrcPort and DstPort exist only on the raw flows table \u2014 Akvorado drops them from every consolidated table. This panel therefore ignores $table and is bounded by the raw TTL.",
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Top 15 destination ports, inbound",
+      "id": 18,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 41
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       concat(if(Proto=6,'tcp/',if(Proto=17,'udp/',concat('proto', toString(Proto), '/'))), toString(DstPort)) AS series,\n       sum(Bytes * $sr) * 8 / $bucket AS bps\nFROM flows\nWHERE $__timeFilter(TimeReceived) AND InIfBoundary = 'external'\n  AND DstPort IN (SELECT DstPort FROM flows WHERE $__timeFilter(TimeReceived) AND InIfBoundary = 'external'\n      GROUP BY DstPort ORDER BY sum(Bytes * $sr) DESC LIMIT 15)\nGROUP BY time, series ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 25,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "displayName": "${__field.labels.series}"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "By protocol, outbound",
+      "id": 19,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 49
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       if(Proto=6,'TCP',if(Proto=17,'UDP',if(Proto=1,'ICMP',if(Proto=58,'ICMPv6',concat('proto ',toString(Proto)))))) AS series,\n       sum(Bytes * $sr) * 8 / $bucket AS bps\nFROM $table WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external'\nGROUP BY time, series ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 25,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "displayName": "${__field.labels.series}"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Packet size distribution, outbound",
+      "id": 20,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 49
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       PacketSizeBucket AS series,\n       sum(Packets * $sr) / $bucket AS pps\nFROM $table WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external'\nGROUP BY time, series ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "pps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 25,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "displayName": "${__field.labels.series}"
+        },
+        "overrides": []
+      },
+      "description": "A fleet skewing to the 0-63 and 64-127 buckets is being used to flood somebody. Pairs with the abuse dashboard's scan detector.",
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "row",
+      "title": "Interfaces and capacity",
+      "id": 21,
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 57
+      },
+      "panels": []
+    },
+    {
+      "type": "timeseries",
+      "title": "By exporter and external interface, outbound",
+      "id": 22,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 58
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       concat(ExporterName, ' ', OutIfName, if(OutIfProvider='','',concat(' (',OutIfProvider,')'))) AS series,\n       sum(Bytes * $sr) * 8 / $bucket AS bps\nFROM $table WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external'\nGROUP BY time, series ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 25,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "displayName": "${__field.labels.series}"
+        },
+        "overrides": []
+      },
+      "description": "One series means single-homed transit. Interfaces with no SNMP description show as a bare name \u2014 worth fixing on the switch.",
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "External link utilisation",
+      "id": 23,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 58
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       sum(if(OutIfBoundary='external', Bytes, 0) * $sr) * 8 / $bucket\n         / nullIf(max(if(OutIfBoundary='external', OutIfSpeed, 0)) * 1000000, 0) AS \"out %\",\n       sum(if(InIfBoundary='external', Bytes, 0) * $sr) * 8 / $bucket\n         / nullIf(max(if(InIfBoundary='external', InIfSpeed, 0)) * 1000000, 0) AS \"in %\"\nFROM $table WHERE $__timeFilter(TimeReceived) GROUP BY time ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 12,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "description": "Throughput against the interface speed SNMP reports. Blank if the exporter does not report ifSpeed.",
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "IPv4 vs IPv6, outbound",
+      "id": 24,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 66
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       sumIf(Bytes * $sr, EType = 2048)  * 8 / $bucket AS \"IPv4\",\n       sumIf(Bytes * $sr, EType = 34525) * 8 / $bucket AS \"IPv6\"\nFROM $table WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external'\nGROUP BY time ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 25,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "normal"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Traffic by boundary pair",
+      "id": 25,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 66
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       concat(toString(InIfBoundary), ' -> ', toString(OutIfBoundary)) AS series,\n       sum(Bytes * $sr) * 8 / $bucket AS bps\nFROM $table WHERE $__timeFilter(TimeReceived)\nGROUP BY time, series ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 25,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "displayName": "${__field.labels.series}"
+        },
+        "overrides": []
+      },
+      "description": "external->internal is inbound, internal->external is outbound. Anything external->external is transiting the network, which you are probably not being paid for. undefined means interface classifiers are not set.",
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "row",
+      "title": "Customers",
+      "id": 26,
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 74
+      },
+      "panels": []
+    },
+    {
+      "type": "timeseries",
+      "title": "Outbound by network role",
+      "id": 27,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 75
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       if(SrcNetRole = '', 'untagged', toString(SrcNetRole)) AS series,\n       sum(Bytes * $sr) * 8 / $bucket AS bps\nFROM $table WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external'\nGROUP BY time, series ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 25,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "displayName": "${__field.labels.series}"
+        },
+        "overrides": []
+      },
+      "description": "From Akvorado's networks: config. A large 'untagged' band means prefixes are missing there \u2014 the same tagging the abuse detectors depend on.",
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Top 10 customer addresses, outbound",
+      "id": 28,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 83
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') AS series,\n       sum(Bytes * $sr) * 8 / $bucket AS bps\nFROM flows\nWHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND SrcNetRole = 'customer'\n  AND SrcAddr IN (SELECT SrcAddr FROM flows WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND SrcNetRole = 'customer'\n      GROUP BY SrcAddr ORDER BY sum(Bytes * $sr) DESC LIMIT 10)\nGROUP BY time, series ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 25,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "displayName": "${__field.labels.series}"
+        },
+        "overrides": []
+      },
+      "description": "Raw table only \u2014 addresses are dropped from consolidated tables.",
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "table",
+      "title": "95th percentile per customer address",
+      "id": 29,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 83
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT addr AS \"address\",\n       quantileExact(0.95)(bps) AS \"95th bits/s\",\n       max(bps) AS \"peak bits/s\",\n       sum(bps) * 300 / 8 AS \"bytes\"\nFROM (\n  SELECT replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') AS addr,\n         toStartOfInterval(TimeReceived, INTERVAL 300 second) AS t,\n         sum(Bytes * SamplingRate) * 8 / 300 AS bps\n  FROM flows\n  WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND SrcNetRole = 'customer'\n  GROUP BY addr, t\n)\nGROUP BY addr ORDER BY \"95th bits/s\" DESC LIMIT 30",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "align": "auto",
+            "filterable": true
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "bytes"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "bytes"
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "address"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "title": "Drill into this address",
+                    "url": "/d/virtbase-customer/virtbase-customer?var-addr=${__value.text}&${__url_time_range}"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "description": "Raw flows, because consolidated tables drop SrcAddr. Capped at the raw TTL (15 days by default), so it cannot produce a full monthly figure without raising it. SamplingRate is hard-coded rather than $sr: the raw table is unambiguously not pre-scaled.",
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "footer": {
+          "show": false,
+          "reducer": [
+            "sum"
+          ],
+          "countRows": false,
+          "fields": ""
+        }
+      }
+    },
+    {
+      "type": "table",
+      "title": "Who drove the bill \u2014 traffic during the 20 busiest 5-minute buckets",
+      "id": 30,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 99
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "WITH peak AS (\n  SELECT toStartOfInterval(TimeReceived, INTERVAL 300 second) AS t\n  FROM flows\n  WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external'\n  GROUP BY t ORDER BY sum(Bytes * SamplingRate) DESC LIMIT 20\n)\nSELECT replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') AS \"address\",\n       if(SrcNetRole = '', 'untagged', toString(SrcNetRole)) AS \"role\",\n       sum(Bytes * SamplingRate) * 8 / 6000 AS \"mean bits/s at peak\",\n       max(Bytes * SamplingRate) * 8 / 300 AS \"burst bits/s\",\n       round(100 * sum(Bytes * SamplingRate) / nullIf((\n         SELECT sum(Bytes * SamplingRate) FROM flows\n         WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external'\n           AND toStartOfInterval(TimeReceived, INTERVAL 300 second) IN (SELECT t FROM peak)), 0), 2) AS \"share of peak %\"\nFROM flows\nWHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external'\n  AND toStartOfInterval(TimeReceived, INTERVAL 300 second) IN (SELECT t FROM peak)\nGROUP BY \"address\", \"role\" ORDER BY \"mean bits/s at peak\" DESC LIMIT 30",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "align": "auto",
+            "filterable": true
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "role"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "share of peak %"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              },
+              {
+                "id": "decimals",
+                "value": 2
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "address"
+            },
+            "properties": [
+              {
+                "id": "links",
+                "value": [
+                  {
+                    "title": "Drill into this address",
+                    "url": "/d/virtbase-customer/virtbase-customer?var-addr=${__value.text}&${__url_time_range}"
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "description": "The 95th percentile is set by the busiest five-minute buckets, so this is the answer to 'who is responsible for the bill' \u2014 not who moved the most bytes overall, but who was sending when the link was at its fullest. A customer at the top here costs you money even if their monthly volume is modest. Raw flows, so bounded by the 15-day TTL.",
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "footer": {
+          "show": false,
+          "reducer": [
+            "sum"
+          ],
+          "countRows": false,
+          "fields": ""
+        }
+      }
+    },
+    {
+      "type": "row",
+      "title": "Sampling and ingestion",
+      "id": 31,
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 99
+      },
+      "panels": []
+    },
+    {
+      "type": "timeseries",
+      "title": "Flow records ingested and sampling rate",
+      "id": 32,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 100
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       count() / $bucket AS \"records/s\",\n       avg(SamplingRate) AS \"mean sampling rate\"\nFROM $table WHERE $__timeFilter(TimeReceived) GROUP BY time ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "short",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 12,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "description": "Records/s is sampled flow records, not packets. A change in mean sampling rate silently rescales every other panel on this dashboard.",
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "text",
+      "title": "Sampling, and why $sr is set the way it is",
+      "id": 33,
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 100
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "\nAkvorado stores **raw sampled counts** in every table, consolidated ones included:\n`Bytes` is per sampled record and must be multiplied by `SamplingRate`. That was\nverified against this deployment by comparing one hour three ways \u2014\n\n| query | result |\n| --- | --- |\n| `sum(Bytes*SamplingRate)` on `flows` | 573,047,081,000 |\n| `sum(Bytes*SamplingRate)` on `flows_5m0s` | 510,153,821,000 |\n| `sum(Bytes)` on `flows_5m0s` | 510,153,821 |\n\nThe aggregated table matches the raw one only when multiplied, and is exactly\n1000&times; short without it. **Leave `$sr` on `SamplingRate`.** The `1` option\nexists only in case a future Akvorado version starts pre-scaling; re-run the\ncomparison after any upgrade that touches the schema.\n\n`$bucket` should match `$table`: 300 for `flows_5m0s`, 3600 for `flows_1h0s`,\n60 for `flows_1m0s`. The billing panels above ignore it and always use 300,\nbecause five minutes is the interval the percentile is defined on.\n\nPanels reading **ports or addresses** ignore `$table` and always read raw\n`flows` \u2014 Akvorado drops `SrcAddr`, `DstAddr`, `SrcPort` and `DstPort` from\nevery consolidated table, so those panels are bounded by the raw TTL, 15 days\nby default.\n"
+      }
+    }
+  ]
+}

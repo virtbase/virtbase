@@ -482,77 +482,133 @@ thresholds to the fleet — these are shapes, not numbers that transfer.
 
 | # | Rule | Matches | Trusted | Does |
 | --- | --- | --- | --- | --- |
-| 10 | Confirmed flood, our own alerting | `abuse.ddos` · source `alertmanager` · severity ≥ `critical` | **yes** | `isolate` after 15 min, answer within 12 h |
-| 20 | Outbound spam, our own alerting | `abuse.spam` · source `alertmanager` · severity ≥ `warning` | **yes** | `throttle` after 60 min, answer within 24 h |
-| 30 | Repeat offender, third-party report | source `abuseipdb` · confidence ≥ 90 · ≥ 1 prior case | **yes** | `throttle` after 4 h, answer within 48 h |
-| 40 | Third-party report, first offence | source `abuseipdb` · confidence ≥ 75 | no | opens at `high`, waits for a person |
+| 10 | Attack traffic, flow-confirmed | `abuse.ddos` · source `alertmanager` · severity ≥ `critical` · `virtbase_detector = flow` | **yes** | `isolate` after 15 min, answer within 12 h |
+| 20 | Attack traffic, hypervisor-confirmed | `abuse.ddos` · `alertmanager` · ≥ `critical` · `virtbase_detector = guest_nic` | **yes** | `isolate` after 15 min, answer within 12 h |
+| 30 | Compromised guest spreading | `abuse.compromised` · `alertmanager` · ≥ `critical` · `virtbase_detector = flow` | **yes** | `throttle` after 15 min, answer within 24 h |
+| 40 | Sustained scanning | `abuse.port_scan` · `alertmanager` · ≥ `critical` · `virtbase_detector = flow` | **yes** | `throttle` after 60 min, answer within 24 h |
+| 50 | Repeat offender, third-party report | source `abuseipdb` · confidence ≥ 90 · ≥ 1 prior case | **yes** | `throttle` after 4 h, answer within 48 h |
+| 60 | Third-party report, first offence | source `abuseipdb` · confidence ≥ 75 | no | opens at `high`, waits for a person |
 
 The reasoning behind the shape, which matters more than the numbers:
 
-- **Our own alerting is trusted; a third party is not.** Rules 10 and 20 act
-  on a stack we run, watching interfaces we own. Rule 40 acts on strangers
-  agreeing with each other, and a competitor filing plausible reports must not
-  be able to suspend a customer.
-- **A third party gets trusted only with corroboration.** Rule 30 is the same
-  source as rule 40 and enforces, because `>= 1 prior case` means we already
+- **Trust is granted per detector, not per source.** `virtbase_detector` names
+  the path that produced the signal, and the three do not deserve equal weight.
+  `flow` reads Akvorado's records and knows ports and protocols, so it can say
+  *memcached reflection* or *bare-SYN sweep* rather than *a lot of traffic*.
+  `guest_nic` counts packets on the guest's tap interface, which is what
+  separates a flood from a download. `pve` counts only bytes — and a customer
+  running a mirror, a backup target or a media server produces the same shape
+  as an attack at the same severity. So a `pve` signal opens a case and never
+  enforces, whatever its severity says.
+
+  That is why `abuse.ddos` needs two trusted rules rather than one:
+  `match_labels` is exact equality with no `OR`, so every detector allowed to
+  enforce needs its own row. It is also the safety property worth understanding
+  — a real packet flood trips `flow` and `guest_nic` together, while a busy
+  legitimate customer trips only `pve`, so the discrimination happens before
+  any rule is consulted.
+
+- **Our own alerting is trusted; a third party is not.** Rules 10–40 act on a
+  stack we run, watching interfaces we own. Rule 60 acts on strangers agreeing
+  with each other, and a competitor filing plausible reports must not be able
+  to suspend a customer.
+
+- **A third party gets trusted only with corroboration.** Rule 50 is the same
+  source as rule 60 and enforces, because `>= 1 prior case` means we already
   settled something against this customer inside 90 days. One stranger is an
   accusation; a stranger plus our own history is a pattern. Cases we closed as
   `false_positive` or `not_our_range` are excluded from that count: a report we
   ourselves rejected is not corroboration, and counting it would let a reporter
-  manufacture the very history that arms the rule - file once, have it thrown
+  manufacture the very history that arms the rule — file once, have it thrown
   out, file again and watch the second one throttle.
+
+- **`abuse.spam` is deliberately absent, and that is not a gap.** The only
+  detector producing it counts outbound port-25 traffic, and a customer running
+  a legitimate mailing list looks identical in a flow record. It emits
+  `warning` and never anything above, so no rule here matches it and it lands
+  in `triage` for a person to read. Spam is a category where the mailbox and
+  AbuseIPDB are better witnesses than a packet counter.
+
 - **The ladder is short.** `isolate` is the harshest thing in this set. It
   leaves the customer their data, their console, and the ability to fix the
-  problem — everything except the ability to keep causing it. `power_off` is
-  for cases an operator has read.
+  problem — everything except the ability to keep causing it. It is reserved
+  for the two rules whose detectors say what the traffic *was*, because
+  throttling a reflection attack leaves it amplifying at a lower rate against
+  somebody else. `power_off` is for cases an operator has read.
+
 - **`terminate` is absent, and cannot be added.** It is not in the rule schema
   at all: deleting a customer's server is the one irreversible level, and an
   operator signs it on the case.
+
 - **Grace windows are not politeness.** A case settled inside its window is
   never enforced at all, so 15 minutes on a flood is the difference between a
   customer who killed their own runaway process and a customer who has to open
   a ticket. Set it to zero only when the abuse is actively costing the network.
+
+- **A lock a rule applies is not released by a rule.** Nothing reads
+  `abuse_signals.resolved_at`, so a `resolved` alert records that the flood
+  stopped and releases nothing; `action_auto_close_hours` is read by nothing
+  either. A case a trusted rule enforced stays enforced until an operator
+  settles it, or until the fixed 24-hour observation window elapses on one they
+  marked `mitigated`. Enabling rule 10 is a commitment to reading the queue
+  daily, not a way to stop having to.
+
 - **Anything not matched falls through to `triage`.** There is no catch-all
   rule in this set and none is needed — a signal with no matching rule opens a
   case that waits for a person, which is the same thing an untrusted rule
-  produces.
+  produces. What lands there on purpose: every `warning`, every `pve`-detector
+  signal, all of `abuse.spam`, and `abuse.compromised` from the CPU-baseline
+  detector, whose own description admits it is sometimes just a customer who
+  started using the machine.
 
 Seeded directly, for a deployment that would rather diff a migration than
 click. `id` is supplied explicitly because the prefixed identifier is generated
 in application code — the column is a bare `text PRIMARY KEY` with no database
 default, so an insert that omits it fails. Readable seed ids are worth having
 anyway: `abuse_signals.matched_rule_id` points at them, and
-`abrul_seed_flood` reads better in a year than a random string.
+`abrul_seed_ddos_flow` reads better in a year than a random string.
 
 ```sql
 insert into abuse_rules (
   id, name, priority, enabled, trusted_source,
-  match_type, match_source, match_severity_min,
+  match_type, match_source, match_severity_min, match_labels,
   match_confidence_min, match_repeat_count_min,
   action_case_severity, action_enforcement, action_grace_minutes,
   action_block_orders, action_notify_user, action_response_hours
 ) values
-  ('abrul_seed_flood',  'Confirmed flood (our alerting)', 10, true, true,
-   'abuse.ddos', 'alertmanager', 'critical', null, null,
-   'critical', 'isolate',   15, false, true, 12),
+  ('abrul_seed_ddos_flow', 'Attack traffic (flow-confirmed)',        10, true, true,
+   'abuse.ddos',        'alertmanager', 'critical', '{"virtbase_detector":"flow"}',
+   null, null, 'critical', 'isolate',   15, false, true, 12),
 
-  ('abrul_seed_spam',   'Outbound spam (our alerting)',   20, true, true,
-   'abuse.spam', 'alertmanager', 'warning',  null, null,
-   'high',     'throttle',  60, false, true, 24),
+  ('abrul_seed_ddos_nic',  'Attack traffic (hypervisor-confirmed)',  20, true, true,
+   'abuse.ddos',        'alertmanager', 'critical', '{"virtbase_detector":"guest_nic"}',
+   null, null, 'critical', 'isolate',   15, false, true, 12),
 
-  ('abrul_seed_repeat', 'Repeat offender (AbuseIPDB)',    30, true, true,
-   'abuse.*',    'abuseipdb',    null,         90,    1,
-   'high',     'throttle', 240, false, true, 48),
+  ('abrul_seed_compromised', 'Compromised guest spreading',          30, true, true,
+   'abuse.compromised', 'alertmanager', 'critical', '{"virtbase_detector":"flow"}',
+   null, null, 'critical', 'throttle',  15, false, true, 24),
 
-  ('abrul_seed_third',  'Third-party report (AbuseIPDB)', 40, true, false,
-   'abuse.*',    'abuseipdb',    null,         75, null,
-   'high',     'none',       0, false, true, 48);
+  ('abrul_seed_scan',      'Sustained scanning',                     40, true, true,
+   'abuse.port_scan',   'alertmanager', 'critical', '{"virtbase_detector":"flow"}',
+   null, null, 'high',     'throttle',  60, false, true, 24),
+
+  ('abrul_seed_repeat',    'Repeat offender (AbuseIPDB)',            50, true, true,
+   'abuse.*',           'abuseipdb',    null,       '{}',
+     90,    1, 'high',     'throttle', 240, false, true, 48),
+
+  ('abrul_seed_third',     'Third-party report (AbuseIPDB)',         60, true, false,
+   'abuse.*',           'abuseipdb',    null,       '{}',
+     75, null, 'high',     'none',       0, false, true, 48);
 ```
 
-Everything left out takes its column default: `match_labels` is `{}`,
-`action_category` is null so the category comes from the signal type, and
-`action_open_case` / `action_auto_close_hours` are the two columns nothing
-reads.
+Everything left out takes its column default: `action_category` is null so the
+category comes from the signal type, and `action_open_case` /
+`action_auto_close_hours` are the two columns nothing reads.
+
+`match_labels` is a subset test, not an equality test on the whole label set —
+the signal carries `alertname`, `severity` and everything else the alert was
+labelled with, and the rule only requires the keys it names. It is also exact:
+there is no glob and no `OR`, which is why one detector means one rule.
 
 Enable them one at a time, newest last, and dry-run each against real traffic
 before saving. A rule that has been live for a week with `trusted_source` off

@@ -1,0 +1,1644 @@
+{
+  "uid": "virtbase-customer",
+  "title": "Virtbase \u2014 Customer Address Drill-down",
+  "description": "Everything one address did: throughput, peers, ports, conversations. Reads the raw flows table, so bounded by its TTL.",
+  "tags": [
+    "virtbase",
+    "traffic",
+    "akvorado",
+    "abuse"
+  ],
+  "timezone": "browser",
+  "schemaVersion": 39,
+  "version": 1,
+  "editable": true,
+  "graphTooltip": 1,
+  "refresh": "",
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "templating": {
+    "list": [
+      {
+        "type": "datasource",
+        "name": "DS_CH",
+        "label": "ClickHouse",
+        "query": "grafana-clickhouse-datasource",
+        "hide": 0,
+        "refresh": 1,
+        "current": {},
+        "options": []
+      },
+      {
+        "type": "textbox",
+        "name": "addr",
+        "label": "Address",
+        "hide": 0,
+        "description": "Any IPv4 or IPv6 address, dotted-quad or plain v6. Filled in automatically when you arrive from the traffic dashboard.",
+        "query": "",
+        "current": {
+          "text": "",
+          "value": "",
+          "selected": false
+        },
+        "options": []
+      },
+      {
+        "type": "custom",
+        "name": "bucket",
+        "label": "Bucket (s)",
+        "description": "60 for a close look at a short window, 300 to match the billing buckets. Summary panels always use 300.",
+        "query": "60,300,3600",
+        "hide": 0,
+        "current": {
+          "text": "60",
+          "value": "60",
+          "selected": true
+        },
+        "options": [
+          {
+            "text": "60",
+            "value": "60",
+            "selected": true
+          },
+          {
+            "text": "300",
+            "value": "300",
+            "selected": false
+          },
+          {
+            "text": "3600",
+            "value": "3600",
+            "selected": false
+          }
+        ]
+      }
+    ]
+  },
+  "panels": [
+    {
+      "type": "row",
+      "title": "$addr \u2014 summary over the selected range",
+      "id": 1,
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "panels": []
+    },
+    {
+      "type": "stat",
+      "title": "95th percentile OUT",
+      "id": 2,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 0,
+        "y": 1
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT quantileExact(0.95)(bps) AS p95 FROM (\n  SELECT toStartOfInterval(TimeReceived, INTERVAL 300 second) AS t,\n         sum(Bytes * SamplingRate) * 8 / 300 AS bps\n  FROM flows WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr' GROUP BY t)",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "decimals": 2,
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "description": "Same 5-minute-bucket method as the fleet figure, so this address's number is comparable to the transit bill it contributes to.",
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      }
+    },
+    {
+      "type": "stat",
+      "title": "95th percentile IN",
+      "id": 3,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 4,
+        "y": 1
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT quantileExact(0.95)(bps) AS p95 FROM (\n  SELECT toStartOfInterval(TimeReceived, INTERVAL 300 second) AS t,\n         sum(Bytes * SamplingRate) * 8 / 300 AS bps\n  FROM flows WHERE $__timeFilter(TimeReceived) AND InIfBoundary = 'external' AND replaceRegexpOne(toString(DstAddr), '^::ffff:', '') = '$addr' GROUP BY t)",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "decimals": 2,
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Peak OUT",
+      "id": 4,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 8,
+        "y": 1
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT max(bps) AS peak FROM (\n  SELECT toStartOfInterval(TimeReceived, INTERVAL 300 second) AS t,\n         sum(Bytes * SamplingRate) * 8 / 300 AS bps\n  FROM flows WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr' GROUP BY t)",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "decimals": 2,
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Volume OUT",
+      "id": 5,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 12,
+        "y": 1
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT sum(Bytes * SamplingRate) AS v FROM flows WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr'",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "decimals": 2,
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Volume IN",
+      "id": 6,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 16,
+        "y": 1
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT sum(Bytes * SamplingRate) AS v FROM flows WHERE $__timeFilter(TimeReceived) AND InIfBoundary = 'external' AND replaceRegexpOne(toString(DstAddr), '^::ffff:', '') = '$addr'",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "decimals": 2,
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      }
+    },
+    {
+      "type": "stat",
+      "title": "Distinct destinations",
+      "id": 7,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 4,
+        "w": 4,
+        "x": 20,
+        "y": 1
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT uniq(DstAddr) AS d FROM flows WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr'",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "none",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "decimals": 0,
+          "mappings": []
+        },
+        "overrides": []
+      },
+      "description": "Sampled distinct destinations, so heavily deflated at 1:1000 \u2014 read it as a shape, not a count. A number in the thousands here is a sweep.",
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "orientation": "auto",
+        "textMode": "auto",
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto"
+      }
+    },
+    {
+      "type": "row",
+      "title": "What it did, over time",
+      "id": 8,
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 5
+      },
+      "panels": []
+    },
+    {
+      "type": "timeseries",
+      "title": "Throughput",
+      "id": 9,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 6
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       sumIf(Bytes * SamplingRate, OutIfBoundary = 'external' AND replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr') * 8 / $bucket AS \"out\",\n       -sumIf(Bytes * SamplingRate, InIfBoundary = 'external' AND replaceRegexpOne(toString(DstAddr), '^::ffff:', '') = '$addr') * 8 / $bucket AS \"in (mirrored)\"\nFROM flows\nWHERE $__timeFilter(TimeReceived) AND ((replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr') OR (replaceRegexpOne(toString(DstAddr), '^::ffff:', '') = '$addr'))\nGROUP BY time ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 12,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Packet rate",
+      "id": 10,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 6
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       sumIf(Packets * SamplingRate, OutIfBoundary = 'external' AND replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr') / $bucket AS \"out\",\n       -sumIf(Packets * SamplingRate, InIfBoundary = 'external' AND replaceRegexpOne(toString(DstAddr), '^::ffff:', '') = '$addr') / $bucket AS \"in (mirrored)\"\nFROM flows\nWHERE $__timeFilter(TimeReceived) AND ((replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr') OR (replaceRegexpOne(toString(DstAddr), '^::ffff:', '') = '$addr'))\nGROUP BY time ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "pps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 12,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "description": "Compare against throughput. High packets with low bytes is a scan or a flood; the abuse dashboard thresholds on exactly this.",
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Mean packet size, outbound",
+      "id": 11,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 14
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       sum(Bytes * SamplingRate) / nullIf(sum(Packets * SamplingRate), 0) AS \"bytes/packet\"\nFROM flows WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr' GROUP BY time ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 12,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "description": "Under 128 bytes sustained is bare SYNs \u2014 a sweep rather than sessions.",
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Traffic by network role of the far end",
+      "id": 12,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 14
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       if(DstNetRole = '', 'internet', toString(DstNetRole)) AS series,\n       sum(Bytes * SamplingRate) * 8 / $bucket AS bps\nFROM flows WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr' GROUP BY time, series ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 25,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "displayName": "${__field.labels.series}"
+        },
+        "overrides": []
+      },
+      "description": "Whether this address talks to the internet, to other customers, or to infrastructure. East-west traffic to another customer is not transit.",
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Connection attempts and whether they were answered",
+      "id": 25,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 0,
+        "y": 21
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       sumIf(Packets * SamplingRate, OutIfBoundary = 'external' AND bitAnd(TCPFlags, 18) = 2) / $bucket AS \"SYN sent\",\n       sumIf(Packets * SamplingRate, InIfBoundary = 'external' AND bitAnd(TCPFlags, 18) = 18) / $bucket AS \"SYN-ACK received\",\n       sumIf(Packets * SamplingRate, OutIfBoundary = 'external' AND TCPFlags = 16) / $bucket AS \"pure ACK sent\"\nFROM flows\nWHERE $__timeFilter(TimeReceived) AND Proto = 6 AND ((replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr') OR (replaceRegexpOne(toString(DstAddr), '^::ffff:', '') = '$addr'))\nGROUP BY time ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "pps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 12,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "description": "The panel that settles a scan accusation. SYNs answered by SYN-ACKs at roughly the same rate means real conversations. SYNs with no answer is scanning. A wall of pure ACKs with few SYNs is a proxy or VPN pulling downloads \u2014 its egress is ACK-dominated, and an IPv6 ACK is 72 bytes, the same as a bare SYN, which is what fooled the size-based detector. Empty until TCPFlags is enabled in Akvorado's schema."
+    },
+    {
+      "type": "timeseries",
+      "title": "Answer rate",
+      "id": 26,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 12,
+        "x": 12,
+        "y": 21
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       sumIf(Packets * SamplingRate, InIfBoundary = 'external' AND bitAnd(TCPFlags, 18) = 18)\n         / nullIf(sumIf(Packets * SamplingRate, OutIfBoundary = 'external' AND bitAnd(TCPFlags, 18) = 2), 0) AS \"answered\"\nFROM flows\nWHERE $__timeFilter(TimeReceived) AND Proto = 6 AND ((replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr') OR (replaceRegexpOne(toString(DstAddr), '^::ffff:', '') = '$addr'))\nGROUP BY time ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "percentunit",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 12,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "none"
+            }
+          }
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      },
+      "description": "Near 1.0 is a client reaching real services. Near 0 is a scanner. This is the single number the port-scan detector now gates on."
+    },
+    {
+      "type": "row",
+      "title": "Who it talks to",
+      "id": 13,
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
+      "panels": []
+    },
+    {
+      "type": "timeseries",
+      "title": "Top 10 destination networks",
+      "id": 14,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 29
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       if(DstNetName != '', DstNetName, concat('AS', toString(DstAS))) AS series,\n       sum(Bytes * SamplingRate) * 8 / $bucket AS bps\nFROM flows\nWHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr'\n  AND DstAS IN (SELECT DstAS FROM flows WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr'\n      GROUP BY DstAS ORDER BY sum(Bytes * SamplingRate) DESC LIMIT 10)\nGROUP BY time, series ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 25,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "displayName": "${__field.labels.series}"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Top 10 destination countries",
+      "id": 15,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 29
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       DstCountry AS series,\n       sum(Bytes * SamplingRate) * 8 / $bucket AS bps\nFROM flows\nWHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr' AND DstCountry != ''\n  AND DstCountry IN (SELECT DstCountry FROM flows WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr' AND DstCountry != ''\n      GROUP BY DstCountry ORDER BY sum(Bytes * SamplingRate) DESC LIMIT 10)\nGROUP BY time, series ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 25,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "displayName": "${__field.labels.series}"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "table",
+      "title": "Top 30 destination addresses",
+      "id": 16,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 24,
+        "x": 0,
+        "y": 37
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT replaceRegexpOne(toString(DstAddr), '^::ffff:', '') AS \"destination\",\n       if(DstNetName != '', DstNetName, concat('AS', toString(DstAS))) AS \"network\",\n       DstCountry AS \"cc\",\n       sum(Bytes * SamplingRate) AS \"bytes\",\n       sum(Packets * SamplingRate) AS \"packets\",\n       sum(Bytes * SamplingRate) * 8 / dateDiff('second', $__fromTime, $__toTime) AS \"avg bits/s\"\nFROM flows WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr'\nGROUP BY \"destination\", \"network\", \"cc\"\nORDER BY \"bytes\" DESC LIMIT 30",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "align": "auto",
+            "filterable": true
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "packets"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "avg bits/s"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "bps"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "network"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "cc"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "footer": {
+          "show": false,
+          "reducer": [
+            "sum"
+          ],
+          "countRows": false,
+          "fields": ""
+        }
+      }
+    },
+    {
+      "type": "row",
+      "title": "What it does",
+      "id": 17,
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 46
+      },
+      "panels": []
+    },
+    {
+      "type": "timeseries",
+      "title": "Top 15 destination ports, outbound",
+      "id": 18,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 0,
+        "y": 47
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       concat(if(Proto=6,'tcp/',if(Proto=17,'udp/',concat('proto',toString(Proto),'/'))), toString(DstPort)) AS series,\n       sum(Bytes * SamplingRate) * 8 / $bucket AS bps\nFROM flows\nWHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr'\n  AND DstPort IN (SELECT DstPort FROM flows WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr'\n      GROUP BY DstPort ORDER BY sum(Bytes * SamplingRate) DESC LIMIT 15)\nGROUP BY time, series ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 25,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "displayName": "${__field.labels.series}"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Top 15 destination ports, inbound",
+      "id": 19,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 47
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       concat(if(Proto=6,'tcp/',if(Proto=17,'udp/',concat('proto',toString(Proto),'/'))), toString(DstPort)) AS series,\n       sum(Bytes * SamplingRate) * 8 / $bucket AS bps\nFROM flows\nWHERE $__timeFilter(TimeReceived) AND InIfBoundary = 'external' AND replaceRegexpOne(toString(DstAddr), '^::ffff:', '') = '$addr'\n  AND DstPort IN (SELECT DstPort FROM flows WHERE $__timeFilter(TimeReceived) AND InIfBoundary = 'external' AND replaceRegexpOne(toString(DstAddr), '^::ffff:', '') = '$addr'\n      GROUP BY DstPort ORDER BY sum(Bytes * SamplingRate) DESC LIMIT 15)\nGROUP BY time, series ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 25,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "displayName": "${__field.labels.series}"
+        },
+        "overrides": []
+      },
+      "description": "What the world connects to on this address \u2014 its exposed services.",
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "By protocol, outbound",
+      "id": 20,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 0,
+        "y": 55
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       if(Proto=6,'TCP',if(Proto=17,'UDP',if(Proto=1,'ICMP',if(Proto=58,'ICMPv6',concat('proto ',toString(Proto)))))) AS series,\n       sum(Bytes * SamplingRate) * 8 / $bucket AS bps\nFROM flows WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr' GROUP BY time, series ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 25,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "displayName": "${__field.labels.series}"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Packet size distribution, outbound",
+      "id": 21,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 8,
+        "y": 55
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       PacketSizeBucket AS series,\n       sum(Packets * SamplingRate) / $bucket AS pps\nFROM flows WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr' GROUP BY time, series ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "pps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 25,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "displayName": "${__field.labels.series}"
+        },
+        "overrides": []
+      },
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "timeseries",
+      "title": "Source ports used, outbound",
+      "id": 22,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 8,
+        "x": 16,
+        "y": 55
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT toStartOfInterval(TimeReceived, INTERVAL $bucket second) AS time,\n       toString(SrcPort) AS series,\n       sum(Bytes * SamplingRate) * 8 / $bucket AS bps\nFROM flows\nWHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr'\n  AND SrcPort IN (SELECT SrcPort FROM flows WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr'\n      GROUP BY SrcPort ORDER BY sum(Bytes * SamplingRate) DESC LIMIT 10)\nGROUP BY time, series ORDER BY time",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bps",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "lineWidth": 1,
+            "fillOpacity": 25,
+            "showPoints": "never",
+            "stacking": {
+              "mode": "normal"
+            }
+          },
+          "displayName": "${__field.labels.series}"
+        },
+        "overrides": []
+      },
+      "description": "A handful of source ports means a server answering; thousands of ephemeral ones means it is initiating, which is what a scanner or a spam bot does.",
+      "options": {
+        "legend": {
+          "displayMode": "table",
+          "placement": "right",
+          "showLegend": true,
+          "calcs": [
+            "mean",
+            "max",
+            "lastNotNull"
+          ]
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "desc"
+        }
+      }
+    },
+    {
+      "type": "table",
+      "title": "Top 30 conversations",
+      "id": 23,
+      "datasource": {
+        "type": "grafana-clickhouse-datasource",
+        "uid": "${DS_CH}"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 24,
+        "x": 0,
+        "y": 63
+      },
+      "targets": [
+        {
+          "refId": "A",
+          "datasource": {
+            "type": "grafana-clickhouse-datasource",
+            "uid": "${DS_CH}"
+          },
+          "editorType": "sql",
+          "rawSql": "SELECT replaceRegexpOne(toString(DstAddr), '^::ffff:', '') AS \"destination\",\n       if(Proto=6,'tcp',if(Proto=17,'udp',concat('proto',toString(Proto)))) AS \"proto\",\n       DstPort AS \"port\",\n       sum(Bytes * SamplingRate) AS \"bytes\",\n       sum(Packets * SamplingRate) AS \"packets\",\n       round(sum(Bytes * SamplingRate) / nullIf(sum(Packets * SamplingRate), 0)) AS \"bytes/pkt\",\n       toString(min(TimeReceived)) AS \"first seen\",\n       toString(max(TimeReceived)) AS \"last seen\"\nFROM flows WHERE $__timeFilter(TimeReceived) AND OutIfBoundary = 'external' AND replaceRegexpOne(toString(SrcAddr), '^::ffff:', '') = '$addr'\nGROUP BY \"destination\", \"proto\", \"port\"\nORDER BY \"bytes\" DESC LIMIT 30",
+          "format": 0,
+          "queryType": "sql",
+          "pluginVersion": "4.0.0"
+        }
+      ],
+      "fieldConfig": {
+        "defaults": {
+          "unit": "bytes",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "text",
+                "value": null
+              }
+            ]
+          },
+          "custom": {
+            "align": "auto",
+            "filterable": true
+          }
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "packets"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "port"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "bytes/pkt"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "bytes"
+              },
+              {
+                "id": "decimals",
+                "value": 0
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "proto"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "description": "The evidence table. This is what to paste into an abuse case, or to answer a DMCA notice asking what a given address was doing at a given hour.",
+      "options": {
+        "showHeader": true,
+        "cellHeight": "sm",
+        "footer": {
+          "show": false,
+          "reducer": [
+            "sum"
+          ],
+          "countRows": false,
+          "fields": ""
+        }
+      }
+    },
+    {
+      "type": "text",
+      "title": "Reading this dashboard",
+      "id": 24,
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 73
+      },
+      "options": {
+        "mode": "markdown",
+        "content": "\nEvery panel here reads the **raw `flows` table**, because it is the only one that\nkeeps `SrcAddr`, `DstAddr`, `SrcPort` and `DstPort` \u2014 Akvorado drops all four\nfrom `flows_1m0s`, `flows_5m0s` and `flows_1h0s`. That bounds this whole\ndashboard to the raw TTL, **15 days by default**. Widen\n`clickhouse.resolutions[0].ttl` in Akvorado if you need to answer questions\nolder than that.\n\n`$addr` is a plain text box rather than a dropdown, so it takes any address \u2014\nincluding one from an abuse report that has never appeared here before. The\ncustomer tables on **Traffic & 95th Percentile** link straight into this\ndashboard with the address and time range carried over.\n\n**Counts are sampled.** At 1:1000 a destination only appears if one of its\npackets was sampled, so \"distinct destinations\" and the conversation table are\nsystematically short. Bytes and packets are corrected by `SamplingRate` and are\nunbiased; distinct counts are not correctable and should be read as shape.\n\nNothing here filters by `SrcNetRole`, on purpose: an address that ought to be a\ncustomer but is not tagged in Akvorado's `networks:` config would otherwise\nsilently return nothing.\n"
+      }
+    }
+  ]
+}
