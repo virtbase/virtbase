@@ -143,7 +143,7 @@ export const isoStatusRouter = {
             // ISO download is still running.
             //
             // The Proxmox task log grows chronologically (oldest first) and
-            // the `proxmox-api` client does not expose the `Total-Count`
+            // the `@virtbase/proxmox-api` client does not expose the `Total-Count`
             // header, so we cannot jump straight to the tail. We therefore
             // page through every batch and keep overwriting `percentage`
             // with the newest match we find, so the value we return reflects

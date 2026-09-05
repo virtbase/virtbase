@@ -37,6 +37,18 @@ import { getLastTask, performPowerAction } from "../../proxmox";
 import { getDiskInfo } from "../../proxmox/get-disk-info";
 import { serverProcedure } from "../../trpc";
 
+/**
+ * Read `freemem` off a QEMU status response.
+ *
+ * Proxmox sets it in `vmstatus()` from the balloon driver's callback, but it is
+ * not in the endpoint's declared return schema, so the generated model does not
+ * carry it. It is only present when the guest runs the balloon driver and
+ * reports; the field is absent otherwise, which is why the result is optional
+ * both here and in `GetServerStatusOutputSchema`.
+ */
+const readBalloonFreeMemory = (status: object): number | undefined =>
+  (status as { freemem?: number }).freemem;
+
 /** Anything that would bring a powered-off guest back up. */
 const POWER_ON_ACTIONS: readonly string[] = [
   "start",
@@ -122,14 +134,15 @@ export const serversStatusRouter = {
               // Normalize memory usage
               Math.min(
                 statusResponse.mem ?? 0,
-                statusResponse.maxmem ?? statusResponse.mem,
+                statusResponse.maxmem ?? statusResponse.mem ?? 0,
               ),
-            freemem: statusResponse.freemem,
+            freemem: readBalloonFreeMemory(statusResponse),
             maxmem: statusResponse.maxmem,
-            // Normalize disk usage
-            disk: disk
-              ? Math.min(disk, statusResponse.maxdisk ?? disk)
-              : (statusResponse.disk ?? 0),
+            // Normalize disk usage. Proxmox's own `disk` is hardcoded to 0 for
+            // a QEMU guest - it has no view inside the disk - so there is
+            // nothing to fall back to but 0. A real figure only comes from
+            // `getDiskInfo()`, which asks the guest agent.
+            disk: disk ? Math.min(disk, statusResponse.maxdisk ?? disk) : 0,
             cpu: statusResponse.cpu,
             maxdisk: statusResponse.maxdisk,
             cpus: statusResponse.cpus,

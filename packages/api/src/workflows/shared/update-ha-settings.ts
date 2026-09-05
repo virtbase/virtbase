@@ -16,7 +16,7 @@
  */
 
 import type { GetProxmoxInstanceParams } from "../../proxmox";
-import { getProxmoxInstance } from "../../proxmox";
+import { createHaRule, getProxmoxInstance } from "../../proxmox";
 
 type UpdateHASettingsStepParams = {
   proxmoxNode: GetProxmoxInstanceParams;
@@ -30,7 +30,7 @@ export async function updateHASettingsStep(params: UpdateHASettingsStepParams) {
 
   const { proxmoxNode, vmid, mode, nodes = [] } = params;
 
-  const { cluster } = getProxmoxInstance(proxmoxNode);
+  const { cluster, engine } = getProxmoxInstance(proxmoxNode);
 
   const resources = await cluster.ha.resources.$get({
     type: "vm",
@@ -56,7 +56,7 @@ export async function updateHASettingsStep(params: UpdateHASettingsStepParams) {
     });
 
     // Create a separate rule for the given VM
-    await cluster.ha.rules.$post({
+    await createHaRule(engine, {
       rule: `ha-rule-${vmid}`,
       type: "node-affinity",
       comment: "System generated HA rule",
@@ -82,11 +82,10 @@ export async function updateHASettingsStep(params: UpdateHASettingsStepParams) {
       return;
     }
 
-    // @ts-expect-error - purge is not available in proxmox-api
     await cluster.ha.resources.$(sid).$delete({
       // Remove this resource from rules that reference it
       // This should delte the custom rule as well
-      purge: 1,
+      purge: true,
     });
   }
 }

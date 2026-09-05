@@ -634,7 +634,7 @@ async function resetFirewall(node: Node, vmid: number): Promise<void> {
   const existing = await vm.firewall.rules.$get();
   /* Back to front: deleting by position renumbers everything below it. */
   for (const rule of [...existing].sort((a, b) => b.pos - a.pos)) {
-    await vm.firewall.rules.$(String(rule.pos)).$delete({});
+    await vm.firewall.rules.$(rule.pos).$delete({});
   }
 
   await vm.firewall.options.$put({

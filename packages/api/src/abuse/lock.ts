@@ -133,10 +133,8 @@ export const normalizeLockState = (
   return keyed;
 };
 
-interface VmConfig {
-  onboot?: boolean | number;
-  [key: string]: unknown;
-}
+/** The guest config as the client returns it, rather than a retyped subset. */
+type VmConfig = Awaited<ReturnType<ProxmoxVm["config"]["$get"]>>;
 
 /** The policy union the client accepts, taken from the client rather than retyped. */
 type FirewallPolicy = NonNullable<
@@ -149,9 +147,15 @@ type FirewallPolicy = NonNullable<
 const findNetDevice = (
   config: VmConfig,
 ): { device: string; value: string } | null => {
-  for (const key of Object.keys(config).sort()) {
-    if (/^net\d+$/.test(key) && "string" === typeof config[key]) {
-      return { device: key, value: config[key] as string };
+  // Read through the entries rather than by key: the slot in use is decided by
+  // the guest, and `net0`..`net31` are 32 separate properties on the config.
+  const entries = Object.entries(config).sort(([a], [b]) =>
+    a < b ? -1 : a > b ? 1 : 0,
+  );
+
+  for (const [key, value] of entries) {
+    if (/^net\d+$/.test(key) && "string" === typeof value) {
+      return { device: key, value };
     }
   }
   return null;
@@ -200,7 +204,7 @@ export const applyServerLock = async ({
 
   switch (level) {
     case "throttle": {
-      const config = (await vm.config.$get()) as VmConfig;
+      const config = await vm.config.$get();
       const net = findNetDevice(config);
 
       if (!net) return state;
@@ -244,7 +248,7 @@ export const applyServerLock = async ({
 
     case "power_off": {
       const [config, status] = await Promise.all([
-        vm.config.$get() as Promise<VmConfig>,
+        vm.config.$get(),
         vm.status.current.$get(),
       ]);
 
@@ -360,7 +364,7 @@ export const isServerLockInForce = async ({
 }): Promise<boolean> => {
   switch (level) {
     case "throttle": {
-      const net = findNetDevice((await vm.config.$get()) as VmConfig);
+      const net = findNetDevice(await vm.config.$get());
       return Boolean(net && hasRateLimit(net.value));
     }
 
@@ -371,7 +375,7 @@ export const isServerLockInForce = async ({
 
     case "power_off": {
       const [config, status] = await Promise.all([
-        vm.config.$get() as Promise<VmConfig>,
+        vm.config.$get(),
         vm.status.current.$get(),
       ]);
 

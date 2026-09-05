@@ -17,7 +17,8 @@
 
 //import "server-only";
 
-import proxmoxApi, { ProxmoxEngine } from "proxmox-api";
+import type { Proxmox } from "@virtbase/proxmox-api";
+import proxmoxApi, { ProxmoxEngine } from "@virtbase/proxmox-api";
 
 export type GetProxmoxInstanceParams = {
   hostname: string;
@@ -26,7 +27,64 @@ export type GetProxmoxInstanceParams = {
   tokenSecret: string;
 };
 
-export const getProxmoxInstance = (proxmoxNode: GetProxmoxInstanceParams) => {
+/**
+ * Subtrees of the generated client, named so they can be written down.
+ *
+ * `Proxmox.Api` is one interface of inline anonymous objects - there is no
+ * `Proxmox.nodesNode` to import. Every type below therefore reaches into it by
+ * index rather than restating its shape, which is also what keeps the
+ * declaration emit small: the PVE 9 model expands `net0`..`net31`,
+ * `scsi0`..`scsi30` and `mp0`..`mp255`, so a single node subtree written out
+ * structurally exceeds what the compiler will serialize (TS7056).
+ */
+export type ProxmoxNode = ReturnType<Proxmox.Api["nodes"]["$"]>;
+export type ProxmoxCluster = Proxmox.Api["cluster"];
+
+export type DownloadUrlParams = {
+  storage: string;
+  content: "iso" | "vztmpl" | "import";
+  /**
+   * Caution: Proxmox normalizes this. It must already consist of
+   * `[a-zA-Z0-9-.+=_]` and carry an extension the content type accepts -
+   * for `import` that is `.ova`, `.ovf`, `.qcow2`, `.raw` or `.vmdk`
+   * (notably *not* `.img`).
+   */
+  filename: string;
+  url: string;
+  /** Requires `checksumAlgorithm`. Proxmox aborts the download on mismatch. */
+  checksum?: string;
+  checksumAlgorithm?:
+    | "md5"
+    | "sha1"
+    | "sha224"
+    | "sha256"
+    | "sha384"
+    | "sha512";
+  /** Decompress after download, e.g. `zst` or `gz`. */
+  compression?: string;
+  verifyCertificates?: boolean;
+};
+
+export type UploadSnippetParams = {
+  filename: string;
+  storage: string;
+  contents: string;
+};
+
+export type ProxmoxInstance = {
+  proxmox: Proxmox.Api;
+  engine: ProxmoxEngine;
+  node: ProxmoxNode;
+  hostname: string;
+  cluster: ProxmoxCluster;
+  /** Returns the UPID of the download task - the caller has to poll it. */
+  downloadUrl: (params: DownloadUrlParams) => Promise<string>;
+  uploadSnippet: (params: UploadSnippetParams) => Promise<void>;
+};
+
+export const getProxmoxInstance = (
+  proxmoxNode: GetProxmoxInstanceParams,
+): ProxmoxInstance => {
   const { hostname, fqdn, tokenID, tokenSecret } = proxmoxNode;
   const engine = new ProxmoxEngine({
     host: fqdn,
@@ -43,78 +101,10 @@ export const getProxmoxInstance = (proxmoxNode: GetProxmoxInstanceParams) => {
     engine,
     node,
     hostname,
-    // Extend the proxmox-api client with additional methods that are not part of the package
-    cluster: Object.assign(cluster, {
-      "bulk-action": {
-        guest: {
-          shutdown: {
-            async $post(params: {
-              "force-stop"?: boolean;
-              maxworkers?: number;
-              timeout?: number;
-              vms?: number[];
-            }): Promise<string> {
-              return engine.doRequest(
-                "POST",
-                "/api2/json/cluster/bulk-action/guest/shutdown",
-                "/api2/json/cluster/bulk-action/guest/shutdown",
-                params,
-              );
-            },
-          },
-        },
-      },
-      ha: {
-        rules: {
-          $post(params: {
-            type: "node-affinity" | "resource-affinity";
-            rule: string;
-            resources: string;
-            strict?: boolean | 0 | 1;
-            affinity?: "positive" | "negative";
-            comment?: string;
-            disable?: boolean | 0 | 1;
-            nodes?: string;
-          }): Promise<null> {
-            return engine.doRequest(
-              "POST",
-              "/api2/json/cluster/ha/rules",
-              "/api2/json/cluster/ha/rules",
-              params,
-            );
-          },
-          $(rule: string) {
-            return {
-              async $put(params: {
-                type: "node-affinity" | "resource-affinity";
-                affinity?: "positive" | "negative";
-                comment?: string;
-                delete?: string;
-                digest?: string;
-                disable?: boolean | 0 | 1;
-                nodes?: string;
-                resources?: string;
-                strict?: boolean | 0 | 1;
-              }): Promise<null> {
-                return engine.doRequest(
-                  "PUT",
-                  `/api2/json/cluster/ha/rules/${rule}`,
-                  "/api2/json/cluster/ha/rules/*",
-                  params,
-                );
-              },
-            };
-          },
-        },
-      },
-    }),
-    // `proxmox-api`'s generated typings predate the `import` content type: they
-    // declare this endpoint's `content` as `'iso' | 'vztmpl'`, while PVE 9 also
-    // accepts `import` (verified in API2/Storage/Status.pm). Rather than cast at
-    // every call site, the endpoint is re-declared here with the enum Proxmox
-    // actually implements.
-    //
-    // Returns the UPID of the download task - the caller has to poll it.
+    cluster,
+    // A thin adapter over the generated endpoint: camelCase names, and the two
+    // parameters Proxmox couples (`checksum`/`checksum-algorithm`) passed as a
+    // pair or not at all.
     downloadUrl: async ({
       storage,
       content,
@@ -124,45 +114,17 @@ export const getProxmoxInstance = (proxmoxNode: GetProxmoxInstanceParams) => {
       checksumAlgorithm,
       compression,
       verifyCertificates = true,
-    }: {
-      storage: string;
-      content: "iso" | "vztmpl" | "import";
-      /**
-       * Caution: Proxmox normalizes this. It must already consist of
-       * `[a-zA-Z0-9-.+=_]` and carry an extension the content type accepts -
-       * for `import` that is `.ova`, `.ovf`, `.qcow2`, `.raw` or `.vmdk`
-       * (notably *not* `.img`).
-       */
-      filename: string;
-      url: string;
-      /** Requires `checksumAlgorithm`. Proxmox aborts the download on mismatch. */
-      checksum?: string;
-      checksumAlgorithm?:
-        | "md5"
-        | "sha1"
-        | "sha224"
-        | "sha256"
-        | "sha384"
-        | "sha512";
-      /** Decompress after download, e.g. `zst` or `gz`. */
-      compression?: string;
-      verifyCertificates?: boolean;
-    }): Promise<string> => {
-      return engine.doRequest(
-        "POST",
-        `/api2/json/nodes/${hostname}/storage/${storage}/download-url`,
-        "/api2/json/nodes/*/storage/*/download-url",
-        {
-          content,
-          filename,
-          url,
-          ...(checksum && checksumAlgorithm
-            ? { checksum, "checksum-algorithm": checksumAlgorithm }
-            : {}),
-          ...(compression ? { compression } : {}),
-          "verify-certificates": verifyCertificates,
-        },
-      );
+    }: DownloadUrlParams): Promise<string> => {
+      return node.storage.$(storage)["download-url"].$post({
+        content,
+        filename,
+        url,
+        ...(checksum && checksumAlgorithm
+          ? { checksum, "checksum-algorithm": checksumAlgorithm }
+          : {}),
+        ...(compression ? { compression } : {}),
+        "verify-certificates": verifyCertificates,
+      });
     },
     // Need to place this here because Proxmox team is too lazy to implement this
     // in the official Proxmox VE API.
@@ -174,11 +136,7 @@ export const getProxmoxInstance = (proxmoxNode: GetProxmoxInstanceParams) => {
       filename,
       storage,
       contents,
-    }: {
-      filename: string;
-      storage: string;
-      contents: string;
-    }) => {
+    }: UploadSnippetParams): Promise<void> => {
       let ticket: string | undefined;
       try {
         const ticketResponse = await engine.getTicket();
@@ -225,5 +183,3 @@ export const getProxmoxInstance = (proxmoxNode: GetProxmoxInstanceParams) => {
     },
   };
 };
-
-export type ProxmoxInstance = Awaited<ReturnType<typeof getProxmoxInstance>>;

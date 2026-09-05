@@ -53,6 +53,13 @@ export async function applyGuestConfigStep(params: ApplyGuestConfigStepParams) {
   // Include pending changes so the diff reflects the state the guest will
   // actually be in when the PUT/POST is applied.
   const currentConfig = await vm.config.$get({ current: true });
+  // The diff below is by key - the caller names whichever config keys it wants
+  // changed - while the generated config type declares each of the ~250 keys
+  // Proxmox accepts as its own property, with no index signature to read them
+  // through.
+  const currentValues: Record<string, unknown> = Object.fromEntries(
+    Object.entries(currentConfig),
+  );
 
   const func = mode === "sync" ? vm.config.$put : vm.config.$post;
   const upid = await func(config);
@@ -65,7 +72,7 @@ export async function applyGuestConfigStep(params: ApplyGuestConfigStepParams) {
 
   for (const key in config) {
     if (key === "delete") continue;
-    const currentValue = currentConfig[key];
+    const currentValue = currentValues[key];
     // @ts-expect-error - Type mismatch between string and enums
     const nextValue = config[key];
     if (normalizeConfigValue(currentValue) === normalizeConfigValue(nextValue))
@@ -87,7 +94,7 @@ export async function applyGuestConfigStep(params: ApplyGuestConfigStepParams) {
       .map((k) => k.trim())
       .filter(Boolean);
     for (const key of deletedKeys) {
-      const currentValue = currentConfig[key];
+      const currentValue = currentValues[key];
       if (currentValue === undefined) continue;
       // @ts-expect-error - Type mismatch between string and enums
       previousConfig[key] = currentValue;

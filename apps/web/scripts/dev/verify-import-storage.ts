@@ -21,9 +21,8 @@ import { proxmoxNodes } from "@virtbase/db/schema";
 
 /**
  * Exercises the import-storage path against the local cluster, end to end:
- * a node row's `importStorage`, the `downloadUrl` helper's re-declared
- * `content: "import"`, checksum enforcement, and the content listing that
- * freshness checks will read.
+ * a node row's `importStorage`, `content: "import"`, checksum enforcement, and
+ * the content listing that freshness checks will read.
  *
  * Uses CirrOS (~21 MB) rather than a real distro image so it costs seconds.
  * Note the stored filename ends in `.qcow2` while the source URL ends in

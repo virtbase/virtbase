@@ -78,7 +78,7 @@ export async function upgradeServerWorkflow({
         memory: `${plan.memory}`,
         balloon: plan.memory,
         ...Object.fromEntries(
-          ["net0", "net1"]
+          (["net0", "net1"] as const)
             .filter((adapter) => Boolean(currentConfig[adapter]))
             .map((adapter) => [
               adapter,

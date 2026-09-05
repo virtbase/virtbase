@@ -15,9 +15,10 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export type { Proxmox } from "proxmox-api";
+export type { Proxmox } from "@virtbase/proxmox-api";
 export * from "./agent";
 export * from "./change-adapter-netrate";
+export * from "./create-ha-rule";
 export * from "./find-follow-up-guest-power-task";
 export * from "./generate-cloud-init-network-config";
 export * from "./get-last-task";

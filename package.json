@@ -1,15 +1,67 @@
 {
   "name": "virtbase",
-  "type": "module",
-  "private": true,
-  "license": "AGPL-3.0-or-later",
   "author": "Janic Bellmann <contact@janic.dev>",
   "repository": {
     "type": "git",
     "url": "https://github.com/virtbase/virtbase"
   },
+  "devDependencies": {
+    "@biomejs/biome": "catalog:",
+    "@commitlint/cli": "^21.2.2",
+    "@commitlint/config-conventional": "^21.2.2",
+    "@types/bun": "catalog:",
+    "dependency-cruiser": "^18.2.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^17.4.1",
+    "turbo": "^2.10.12"
+  },
+  "peerDependencies": {
+    "typescript": "catalog:"
+  },
   "bugs": {
     "url": "https://github.com/virtbase/virtbase/issues"
+  },
+  "catalog": {
+    "@better-auth/api-key": "^1.7.2",
+    "@better-auth/passkey": "^1.7.2",
+    "@biomejs/biome": "2.5.11",
+    "@tailwindcss/postcss": "^4.3.3",
+    "@tanstack/react-query": "^5.102.8",
+    "@tanstack/react-table": "^9.2.4",
+    "@trpc/client": "^11.18.0",
+    "@trpc/server": "^11.18.0",
+    "@trpc/tanstack-react-query": "^11.18.0",
+    "@types/bun": "1.4.0",
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.5",
+    "@virtbase/proxmox-api": "^2.0.0",
+    "better-auth": "^1.7.2",
+    "next": "^16.3.3",
+    "next-intl": "^4.14.1",
+    "nuqs": "^2.10.1",
+    "postcss": "^8.5.25",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8",
+    "recharts": "^3.10.1",
+    "sonner": "^2.0.8",
+    "superjson": "^2.2.6",
+    "tailwindcss": "^4.3.3",
+    "typescript": "^7.0.2",
+    "use-intl": "^4.14.1",
+    "workflow": "^4.8.5",
+    "yaml": "^2.8.1",
+    "zod": "^4.5.4"
+  },
+  "catalogs": {
+    "sentry": {
+      "@sentry/core": "10.72.0",
+      "@sentry/nextjs": "10.72.0",
+      "@sentry/node": "10.72.0"
+    }
+  },
+  "engines": {
+    "bun": ">=1.3.14",
+    "node": ">=24.15.0"
   },
   "homepage": "https://virtbase.com",
   "keywords": [
@@ -17,16 +69,18 @@
     "cloud",
     "hosting"
   ],
-  "engines": {
-    "bun": ">=1.3.14",
-    "node": ">=24.15.0"
+  "license": "AGPL-3.0-or-later",
+  "overrides": {
+    "undici@>=7.0.0 <7.29.0": "7.29.0",
+    "nanoid@>=4.0.0 <5.1.16": "5.1.16",
+    "next@<16.2.11": "16.3.3",
+    "esbuild@>=0.27.3 <0.28.1": "0.28.2"
   },
   "packageManager": "bun@1.3.14",
-  "workspaces": [
-    "apps/*",
-    "packages/*",
-    "tooling/*"
-  ],
+  "patchedDependencies": {
+    "@ai-sdk/provider-utils@5.0.34": "patches/@ai-sdk%2Fprovider-utils@5.0.34.patch"
+  },
+  "private": true,
   "scripts": {
     "build": "turbo run build",
     "check": "biome check .",
@@ -59,65 +113,10 @@
     "typecheck": "turbo run typecheck",
     "ui-add": "turbo run ui-add"
   },
-  "catalog": {
-    "@better-auth/api-key": "^1.7.2",
-    "@better-auth/passkey": "^1.7.2",
-    "@biomejs/biome": "2.5.11",
-    "@tailwindcss/postcss": "^4.3.3",
-    "@tanstack/react-query": "^5.102.8",
-    "@tanstack/react-table": "^9.2.4",
-    "@trpc/client": "^11.18.0",
-    "@trpc/server": "^11.18.0",
-    "@trpc/tanstack-react-query": "^11.18.0",
-    "@types/bun": "1.4.0",
-    "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.5",
-    "better-auth": "^1.7.2",
-    "next": "^16.3.3",
-    "next-intl": "^4.14.1",
-    "nuqs": "^2.10.1",
-    "postcss": "^8.5.25",
-    "proxmox-api": "^1.1.1",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
-    "recharts": "^3.10.1",
-    "sonner": "^2.0.8",
-    "superjson": "^2.2.6",
-    "tailwindcss": "^4.3.3",
-    "typescript": "^7.0.2",
-    "use-intl": "^4.14.1",
-    "workflow": "^4.8.5",
-    "yaml": "^2.8.1",
-    "zod": "^4.5.4"
-  },
-  "catalogs": {
-    "sentry": {
-      "@sentry/core": "10.72.0",
-      "@sentry/nextjs": "10.72.0",
-      "@sentry/node": "10.72.0"
-    }
-  },
-  "devDependencies": {
-    "@biomejs/biome": "catalog:",
-    "@commitlint/cli": "^21.2.2",
-    "@commitlint/config-conventional": "^21.2.2",
-    "@types/bun": "catalog:",
-    "dependency-cruiser": "^18.2.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^17.4.1",
-    "turbo": "^2.10.12"
-  },
-  "peerDependencies": {
-    "typescript": "catalog:"
-  },
-  "patchedDependencies": {
-    "@ai-sdk/provider-utils@5.0.34": "patches/@ai-sdk%2Fprovider-utils@5.0.34.patch",
-    "proxmox-api@1.1.1": "patches/proxmox-api@1.1.1.patch"
-  },
-  "overrides": {
-    "undici@>=7.0.0 <7.29.0": "7.29.0",
-    "nanoid@>=4.0.0 <5.1.16": "5.1.16",
-    "next@<16.2.11": "16.3.3",
-    "esbuild@>=0.27.3 <0.28.1": "0.28.2"
-  }
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*",
+    "tooling/*"
+  ]
 }

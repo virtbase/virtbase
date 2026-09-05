@@ -17,6 +17,7 @@
 
 import type { TRPCRouterRecord } from "@trpc/server";
 import { TRPCError } from "@trpc/server";
+import type { FirewallIcmpType, FirewallProtocol } from "@virtbase/utils";
 import {
   CreateServerFirewallRuleInputSchema,
   CreateServerFirewallRuleOutputSchema,
@@ -38,6 +39,7 @@ import {
 } from "../../../firewall-ai";
 import { inspectGuest } from "../../../guest-firewall";
 import { serverProcedure } from "../../../trpc";
+import { readFirewallDigest } from "./digest";
 import {
   FIREWALL_AI_MODEL,
   GENERATION_TIMEOUT_MS,
@@ -73,14 +75,17 @@ export const serverFirewallRulesRouter = {
           action: rule.action as "ACCEPT" | "DROP" | "REJECT",
           direction: rule.type as "out" | "in" | undefined,
           pos: rule.pos,
-          proto: rule.proto,
+          // Proxmox types these as free-form strings; the output schema pins
+          // them to the enums the UI knows, the same way `action` and
+          // `direction` are pinned above.
+          proto: rule.proto as FirewallProtocol | undefined,
           dport: rule.dport,
           sport: rule.sport,
           comment: rule.comment,
-          icmp_type: rule["icmp-type"],
+          icmp_type: rule["icmp-type"] as FirewallIcmpType | undefined,
           source: rule.source,
           dest: rule.dest,
-          digest: rule.digest,
+          digest: readFirewallDigest(rule),
         })),
       };
     }),
@@ -142,7 +147,7 @@ export const serverFirewallRulesRouter = {
     .mutation(async ({ ctx, input }) => {
       const { instance } = ctx;
 
-      await instance.vm.firewall.rules.$(`${input.pos}`).$delete({
+      await instance.vm.firewall.rules.$(input.pos).$delete({
         digest: input.digest,
       });
     }),
@@ -181,7 +186,7 @@ export const serverFirewallRulesRouter = {
         ...rest,
       }).filter(([_, value]) => value === undefined);
 
-      await instance.vm.firewall.rules.$(`${pos}`).$put({
+      await instance.vm.firewall.rules.$(pos).$put({
         ...rest,
         enable: enabled ? 1 : 0,
         ...(icmp_type && { "icmp-type": icmp_type }),
@@ -213,7 +218,7 @@ export const serverFirewallRulesRouter = {
       const { instance } = ctx;
       const { pos, moveto, digest } = input;
 
-      await instance.vm.firewall.rules.$(`${pos}`).$put({
+      await instance.vm.firewall.rules.$(pos).$put({
         moveto: pos > moveto ? moveto : moveto + 1,
         digest,
       });

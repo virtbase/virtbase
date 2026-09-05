@@ -600,7 +600,6 @@ const serverMiddleware = authMiddleware.unstable_pipe(
         server,
         proxmoxNode,
         instance: {
-          // biome-ignore lint/nursery/noMisusedPromises: wrong detection
           ...instance,
           vm: instance.node.qemu.$(server.vmid),
         },

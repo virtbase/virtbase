@@ -15,7 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { Proxmox } from "proxmox-api";
+import type { Proxmox } from "@virtbase/proxmox-api";
 import { ProxmoxServerStatus } from "../constants";
 
 export const mapProxmoxServerStatus = (

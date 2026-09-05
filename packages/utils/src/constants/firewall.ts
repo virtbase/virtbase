@@ -161,6 +161,18 @@ export const ICMPV6_TYPE_NAMES = [
 ] as const;
 
 /**
+ * An ICMP type name a firewall rule may carry, for either IP version.
+ *
+ * Which of the two lists applies is decided by the rule's protocol - `icmp`
+ * takes the v4 names, `ipv6-icmp` the v6 ones - so the pair is only ever a
+ * union at the point where a rule is read back and the protocol is not yet
+ * known.
+ */
+export type FirewallIcmpType =
+  | (typeof ICMP_TYPE_NAMES)[number]
+  | (typeof ICMPV6_TYPE_NAMES)[number];
+
+/**
  * Severity of a finding about a server's exposure.
  *
  * `critical` is reserved for services that are dangerous the moment they are

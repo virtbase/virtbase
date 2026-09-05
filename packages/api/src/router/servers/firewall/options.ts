@@ -23,6 +23,7 @@ import {
   UpdateServerFirewallOptionsOutputSchema,
 } from "@virtbase/validators/server";
 import { serverProcedure } from "../../../trpc";
+import { readFirewallDigest } from "./digest";
 
 export const serverFirewallOptionsRouter = {
   get: serverProcedure
@@ -60,7 +61,7 @@ export const serverFirewallOptionsRouter = {
             | "DROP"
             | "REJECT"
             | undefined,
-          digest: options.digest,
+          digest: readFirewallDigest(options),
         },
       };
     }),

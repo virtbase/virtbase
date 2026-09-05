@@ -18,8 +18,9 @@
 import type { GuestAgentFailure } from "./types";
 
 /**
- * `proxmox-api` throws a plain `Error` whose message is the only carrier of the
- * HTTP status - there is no `status` field to branch on. The two shapes are:
+ * `@virtbase/proxmox-api` throws a plain `Error` whose message is the only
+ * carrier of the HTTP status - there is no `status` field to branch on. The two
+ * shapes are:
  *
  *   `GET <url> return Error 500 <statusText>: {"errors":...}`          (400/401/500)
  *   `GET <url> connection failed with 403 Forbidden return: {...}`     (everything else)
@@ -27,7 +28,7 @@ import type { GuestAgentFailure } from "./types";
  * plus `FaILED to call <method> <url> cause by:<reason>` for transport
  * failures, which never carries a status at all.
  *
- * @see https://github.com/EmilienLeroy/proxmox-api `ProxmoxEngine.doRequest`
+ * @see https://github.com/virtbase/proxmox-api `ProxmoxEngine.doRequest`
  */
 const STATUS_PATTERN = /return Error (\d{3})|connection failed with (\d{3})/;
 
