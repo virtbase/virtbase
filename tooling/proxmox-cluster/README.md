@@ -66,20 +66,43 @@ serves the whole cluster - which is the only shape that works here, because
 `ProxmoxEngine` omits the port entirely when none is set and therefore always
 talks to **443**.
 
-## Known rough edge: restarting containers
+## Coming back after a stop
 
-A **cold start is reliable** - `reset.sh` then `bootstrap.sh` gives a healthy
-cluster in about 100 seconds, and re-running `bootstrap.sh` against a healthy
-cluster is a ~10 second no-op.
+**Re-run `bootstrap.sh`.** Starting the containers is not enough on its own, and
+it is not meant to be - the script is the recovery path, and against a cluster
+that is merely stopped it costs seconds.
 
-**Restarting the containers is not reliable.** Ceph OSDs frequently do not come
-back, because loop devices, device-mapper nodes and LVM metadata all live in the
-host kernel and are shared by all three containers - so after a restart a node
-can find its block device unreadable, or worse, see another node's volume group.
-`bootstrap.sh` tries to rebuild an OSD that does not return, but that path is not
-dependable.
+Two things do not survive on their own, both because they live in the container
+filesystem rather than on a volume:
 
-If the cluster comes back unhealthy, rebuild it:
+- **Systemd enablement.** `/etc/systemd/system/ceph-*.target.wants` is lost
+  whenever a container is *recreated* rather than restarted - which
+  `docker compose up -d --build` does on any image rebuild. The daemons' data
+  survives on `/var/lib/ceph`, so it looks like Ceph is installed and configured
+  while no mon is actually running, and `ceph -s` then hangs forever rather than
+  failing. `bootstrap.sh` reasserts enablement from the data directories on
+  every run.
+- **The loop device an OSD is built on.** Loop devices are host state, so this
+  one *outlives* the container - but the path it records does not, because the
+  volume is remounted somewhere else. `losetup` then still lists the device
+  while naming a file that no longer resolves, and because `losetup -j` matches
+  by inode it still finds it: the device looks attached while the
+  device-mapper nodes stacked on it are stale. `ceph-volume` fails to read the
+  logical volume's label with "Operation not permitted", leaves an empty tmpfs
+  over `/var/lib/ceph/osd/ceph-N`, and the daemon starts with no keyring.
+  `bootstrap.sh` compares the recorded path and rebuilds the stack when it has
+  gone stale.
+
+An OSD that still does not come back is rebuilt rather than nursed: `heal_osds`
+purges it and Ceph backfills from the other two replicas. It identifies the OSD
+from its own LVM tags rather than from `ceph osd tree`, which omits the `CLASS`
+column for an OSD that never got one and so hides exactly the half-built OSD
+worth rebuilding.
+
+Measured on a recreate of all three containers: one `bootstrap.sh` run, about
+100 seconds, back to `HEALTH_OK`.
+
+If the cluster is genuinely wedged, rebuild it:
 
 ```bash
 ./tooling/proxmox-cluster/reset.sh && ./tooling/proxmox-cluster/bootstrap.sh

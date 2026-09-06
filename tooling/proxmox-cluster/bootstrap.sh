@@ -117,6 +117,49 @@ install_ceph() {
   done
 }
 
+# Re-enable and start the Ceph daemons this node's data says it should run.
+#
+# `/etc/systemd/system` is container filesystem, so recreating a container - an
+# image rebuild, a compose change - drops every `ceph-*.target.wants` symlink
+# while the daemon's data directory survives on its volume. Every check in this
+# file is data-based, so without this they all report "already there" for
+# daemons that are not running, and the cluster comes back with no mon at all -
+# which looks exactly like the LVM breakage below, but is not.
+#
+# The data directories are the record of what this node is supposed to run, so
+# enablement is reasserted from them rather than tracked separately.
+reassert_ceph_units() {
+  local node=$1
+  shift
+  pve "$node" bash -c '
+    for kind in "$@"; do
+      for dir in /var/lib/ceph/"$kind"/ceph-*; do
+        [ -d "$dir" ] || continue
+        unit="ceph-$kind@${dir##*/ceph-}"
+        systemctl is-enabled --quiet "$unit" 2>/dev/null ||
+          systemctl enable "$unit" >/dev/null 2>&1 || true
+        systemctl is-active --quiet "$unit" 2>/dev/null || {
+          # A unit that failed repeatedly sits behind its start rate limit and
+          # refuses to start again until the failure is cleared.
+          systemctl reset-failed "$unit" >/dev/null 2>&1 || true
+          systemctl start "$unit" >/dev/null 2>&1 || true
+        }
+      done
+    done
+  ' _ "$@" || true
+}
+
+# `ceph` has no connect timeout of its own - with no mon serving it blocks
+# forever rather than failing - so every wait on it has to impose one.
+wait_for_ceph() {
+  local tries=45
+  until pve "$PRIMARY" timeout 5 ceph -s >/dev/null 2>&1; do
+    tries=$((tries - 1))
+    [ "$tries" -gt 0 ] || { warn "no ceph mon answered"; return 1; }
+    sleep 2
+  done
+}
+
 ceph_initialised() { pve "$PRIMARY" test -f /etc/pve/ceph.conf; }
 
 init_ceph() {
@@ -139,6 +182,12 @@ init_ceph() {
     ' || true
   done
 
+  # Before the checks below, which would otherwise mistake surviving data for a
+  # running daemon.
+  for node in "${NODES[@]}"; do
+    reassert_ceph_units "$node" mon mgr
+  done
+
   for node in "${NODES[@]}"; do
     if pve "$node" test -d "/var/lib/ceph/mon/ceph-$node"; then
       log "mon already on $node"
@@ -147,6 +196,21 @@ init_ceph() {
     log "creating mon on $node"
     # The first join races mon quorum; one retry is enough in practice.
     pve "$node" pveceph mon create || { sleep 10; pve "$node" pveceph mon create; }
+  done
+
+  wait_for_ceph || return 1
+
+  # `pveceph init` leaves a manager on the first node only. One manager means
+  # recreating that one container takes the whole management plane with it -
+  # `pvesm status` starts reporting the Ceph storages inactive - so the other
+  # two run standbys.
+  for node in "${NODES[@]}"; do
+    if pve "$node" test -d "/var/lib/ceph/mgr/ceph-$node"; then
+      log "mgr already on $node"
+      continue
+    fi
+    log "creating mgr on $node"
+    pve "$node" pveceph mgr create || warn "could not create mgr on $node"
   done
 }
 
@@ -168,12 +232,40 @@ create_osds() {
   done
 
   for node in "${NODES[@]}"; do
-    # Re-attach the backing file first: loop devices are host state and do not
-    # survive a container restart, so the LVM volume group is invisible until it
-    # is back.
+    # Put the loop device and the device-mapper nodes on top of it back.
+    #
+    # A loop device is host state and outlives the container, but its recorded
+    # backing path does not: the volume is remounted somewhere else, so after a
+    # recreate `losetup` still lists the device while naming a path (`/osd.img`)
+    # that no longer resolves. `losetup -j` matches by device and inode, so it
+    # still finds it - which means a bare "is it attached?" test passes while
+    # the device-mapper stack layered on it is stale. `ceph-volume` then fails
+    # to read the logical volume's label with "Operation not permitted", leaves
+    # an empty tmpfs over `/var/lib/ceph/osd/ceph-N`, and the daemon starts
+    # without a keyring. That is the failure this whole block exists to avoid,
+    # and it is indistinguishable from a missing OSD unless the path is checked.
+    #
+    # Rebuilding costs a second, so a stale binding is torn down rather than
+    # trusted. An OSD that is already serving is left strictly alone.
     pve "$node" bash -c "
       [ -f /osd/osd.img ] || truncate -s $OSD_SIZE /osd/osd.img
-      if ! losetup -j /osd/osd.img | grep -q .; then
+
+      systemctl list-units 'ceph-osd@*' --no-legend --state=active 2>/dev/null |
+        grep -q . && exit 0
+
+      backing=\$(losetup -l -n -O BACK-FILE -j /osd/osd.img 2>/dev/null | head -1 | tr -d ' ')
+      dev=\$(losetup -j /osd/osd.img 2>/dev/null | cut -d: -f1 | head -1)
+
+      if [ -n \"\$dev\" ] && [ \"\$backing\" != /osd/osd.img ]; then
+        for vg in \$(pvs --noheadings -o vg_name \"\$dev\" 2>/dev/null | tr -d ' '); do
+          vgchange --config '$LVM_CONF' -an \"\$vg\" >/dev/null 2>&1 || true
+        done
+        umount /var/lib/ceph/osd/ceph-* >/dev/null 2>&1 || true
+        losetup -d \"\$dev\" >/dev/null 2>&1 || true
+        dev=
+      fi
+
+      if [ -z \"\$dev\" ]; then
         # `losetup -f` prints '/dev/loop8 (lost)' when the node is missing, so
         # take only the path.
         dev=\$(losetup -f | awk '{print \$1}')
@@ -183,12 +275,13 @@ create_osds() {
         [ -b \"\$dev\" ] || mknod \"\$dev\" b 7 \"\${dev#/dev/loop}\"
         losetup \"\$dev\" /osd/osd.img
       fi
+
       vgchange --config '$LVM_CONF' -ay >/dev/null 2>&1 || true
       # udev is what normally creates /dev/mapper entries, and it does not run
       # here - so LVM reports success while ceph-volume then fails with
       # '/dev/mapper/... not found'. This materialises the nodes by hand.
       dmsetup mknodes >/dev/null 2>&1 || true
-    "
+    " || true
 
     # `/var/lib/ceph` lives in the container filesystem, so recreating a
     # container loses the OSD's metadata directory even though its data is safe
@@ -232,9 +325,7 @@ create_osds() {
       "
     fi
 
-    pve "$node" bash -c 'for id in $(ls /var/lib/ceph/osd 2>/dev/null | sed "s/ceph-//"); do
-      systemctl is-active --quiet "ceph-osd@$id" || systemctl start "ceph-osd@$id" || true
-    done'
+    reassert_ceph_units "$node" osd
   done
 }
 
@@ -247,16 +338,40 @@ create_osds() {
 # replicas and the cluster is healthy again in seconds. On a real cluster this
 # would of course be the wrong instinct entirely.
 heal_osds() {
+  # Let the daemons that were just started settle. One that is going to fail
+  # does so in well under a second; one that is still coming up must not be
+  # mistaken for one that never will.
+  sleep 5
+
   for node in "${NODES[@]}"; do
+    # The id comes from this node's own LV tags, for the same reason
+    # `create_osds` reads them: `ceph osd tree` has to be parsed, and it drops
+    # the CLASS column for an OSD that never got one - which shifts every field
+    # after it and hides exactly the half-built OSD this function exists to
+    # rebuild.
     local id
-    id=$(pve "$PRIMARY" bash -c "ceph osd tree 2>/dev/null | awk -v h=$node '
-      \$3 == \"host\" { inhost = (\$4 == h) }
-      inhost && \$1 ~ /^[0-9]+\$/ && \$5 == \"down\" { print \$1; exit }'" || true)
+    id=$(pve "$node" bash -c '
+      dev=$(losetup -j /osd/osd.img 2>/dev/null | cut -d: -f1 | head -1)
+      [ -n "$dev" ] || exit 0
+      vg=$(pvs --noheadings -o vg_name "$dev" 2>/dev/null | tr -d " ")
+      [ -n "$vg" ] || exit 0
+      lvs --noheadings -o lv_tags "$vg" 2>/dev/null | tr "," "\n" |
+        sed -n "s/.*ceph.osd_id=\([0-9]*\).*/\1/p" | head -1
+    ' 2>/dev/null | tr -d ' \r\n')
     [ -n "$id" ] || continue
 
+    # A serving daemon is never a candidate, whatever the mon currently thinks.
+    pve "$node" systemctl is-active --quiet "ceph-osd@$id" 2>/dev/null && continue
+
     warn "osd.$id on $node did not come back - rebuilding it"
-    pve "$PRIMARY" ceph osd purge "$id" --yes-i-really-mean-it >/dev/null 2>&1 || true
+    # `purge` also drops the auth entry, so a rebuild that stops half way leaves
+    # data the mon will no longer authenticate - which is why everything below
+    # runs to completion rather than bailing on the first error.
+    pve "$PRIMARY" timeout 60 ceph osd purge "$id" --yes-i-really-mean-it >/dev/null 2>&1 || true
     pve "$node" bash -c "
+      systemctl stop ceph-osd@$id >/dev/null 2>&1 || true
+      systemctl reset-failed ceph-osd@$id >/dev/null 2>&1 || true
+      umount /var/lib/ceph/osd/ceph-$id >/dev/null 2>&1 || true
       rm -rf /var/lib/ceph/osd/ceph-$id
       dev=\$(losetup -j /osd/osd.img | cut -d: -f1)
       for vg in \$(pvs --noheadings -o vg_name \"\$dev\" 2>/dev/null | tr -d ' ' || true); do
@@ -275,6 +390,10 @@ heal_osds() {
       ceph-volume lvm create --data \"\$vg/osd-block-\$uuid\" >/dev/null 2>&1
     " || warn "could not rebuild the osd on $node"
   done
+
+  # Best-effort by design: a node that could not be healed is reported and left
+  # alone, never a reason to fail the caller's `&&` chain into a retry.
+  return 0
 }
 
 create_storages() {
@@ -284,6 +403,14 @@ create_storages() {
     log "creating rbd pool"
     pve "$PRIMARY" pveceph pool create vm-storage --application rbd --pg_num 32 --add_storages 1
   fi
+
+  # Same as the mons: the MDS data directories outlive their systemd units, and
+  # the mon's fsmap keeps reporting daemons that are no longer running - so
+  # `ceph -s` shows standbys that do not exist until something asks one to take
+  # over. Reasserted before the check below, which only looks at the filesystem.
+  for node in "${NODES[@]}"; do
+    reassert_ceph_units "$node" mds
+  done
 
   # CephFS backs iso/backup/snippets: those need a filesystem, and making it
   # shared is what lets every node see the same ISO - the open TODO in
@@ -297,6 +424,16 @@ create_storages() {
     log "creating cephfs"
     # Default pg_num of 128 exceeds mon_max_pg_per_osd on a three-OSD cluster.
     pve "$PRIMARY" pveceph fs create --pg_num 32
+  fi
+
+  # A rank whose daemon disappeared - the container was recreated while the mon
+  # still had it in the fsmap - stays `failed` even once a standby is running
+  # again, and the filesystem stays offline with it. `ceph fs reset` hands the
+  # rank back to a live daemon. Safe here because the metadata itself was never
+  # lost, only the daemon that was serving it.
+  if pve "$PRIMARY" timeout 10 ceph fs status cephfs 2>/dev/null | grep -qw failed; then
+    warn "cephfs rank 0 has no daemon - handing it to a standby"
+    pve "$PRIMARY" timeout 30 ceph fs reset cephfs --yes-i-really-mean-it >/dev/null 2>&1 || true
   fi
 
   # Retried: the filesystem is reported before its MDS is serving, and an add
@@ -317,6 +454,23 @@ create_storages() {
   # lacking it.
   pve "$PRIMARY" pvesm set cephfs --content iso,backup,snippets,vztmpl,import >/dev/null 2>&1 ||
     warn "could not set cephfs content types"
+
+  # Do not report success on a cluster that cannot store anything yet. After the
+  # OSDs come back their placement groups have to peer and the MDS has to replay
+  # its journal before CephFS will mount, which takes a minute or two on a
+  # cluster that was stopped - and a run that returns inside that window ends by
+  # printing `cephfs inactive`, which reads as a failure it is not.
+  local tries=60
+  until pve "$PRIMARY" bash -c 'pvesm status 2>/dev/null | grep -qE "^cephfs +cephfs +active"'; do
+    tries=$((tries - 1))
+    [ "$tries" -gt 0 ] || {
+      warn "cephfs is still not online - 'ceph -s' on $PRIMARY will say why"
+      break
+    }
+    sleep 5
+  done
+
+  return 0
 }
 
 # --------------------------------------------------------------- guest net ----
