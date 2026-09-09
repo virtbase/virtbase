@@ -50,7 +50,7 @@ jobs:
       TURBO_TELEMETRY_DISABLED: "1"
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - uses: oven-sh/setup-bun@v2
         with:
@@ -99,7 +99,7 @@ jobs:
       # `playwright-report/` embeds the trace, video and screenshot for every
       # failure, so it is self-contained. `test-results/` is kept alongside it
       # for anyone who wants the raw trace.zip without unpacking the report.
-      - uses: actions/upload-artifact@v5
+      - uses: actions/upload-artifact@v7
         if: ${{ !cancelled() }}
         with:
           name: playwright-report
