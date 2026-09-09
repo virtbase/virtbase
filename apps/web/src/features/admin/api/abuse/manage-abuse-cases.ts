@@ -42,7 +42,8 @@ import { revalidatePath } from "next/cache";
 import * as z from "zod";
 import { actionClient } from "../../lib/action-client";
 
-const revalidate = () => revalidatePath("/admin.virtbase.com");
+const revalidate = () =>
+  revalidatePath("/admin.virtbase.com/[locale]", "layout");
 
 const loadCase = async (caseId: string) => {
   const row = await db

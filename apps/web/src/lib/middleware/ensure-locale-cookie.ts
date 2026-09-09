@@ -17,13 +17,21 @@
 
 import { COOKIE_DOMAIN } from "@virtbase/utils";
 import type { NextRequest, NextResponse } from "next/server";
-import { COOKIE_MAX_AGE, COOKIE_NAME } from "@/i18n/config";
+import { hasLocale } from "next-intl";
+import { COOKIE_MAX_AGE, COOKIE_NAME, locales } from "@/i18n/config";
 
 export function ensureLocaleCookie(
   request: NextRequest,
   response: NextResponse,
-  locale: string,
+  locale: string | undefined,
 ) {
+  // The caller reads this off a pathname, which yields an empty segment for
+  // `/` when the response carries no locale anywhere. Writing that through
+  // would leave a cookie holding `""`, which every reader then has to treat as
+  // absent - so treat it as absent here instead, and let the next document
+  // request set a real one.
+  if (!hasLocale(locales, locale)) return;
+
   const hasCookie =
     request.cookies.has(COOKIE_NAME) || response.cookies.has(COOKIE_NAME);
 
@@ -32,5 +40,7 @@ export function ensureLocaleCookie(
   response.cookies.set(COOKIE_NAME, locale, {
     domain: COOKIE_DOMAIN,
     maxAge: COOKIE_MAX_AGE,
+    path: "/",
+    sameSite: "lax",
   });
 }

@@ -15,98 +15,37 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-"use client";
+import { Suspense } from "react";
+import { ServerNavView } from "./server-nav-view";
 
-import { cn } from "@virtbase/ui";
-import { buttonVariants } from "@virtbase/ui/button";
-import {
-  LucideBrickWallFire,
-  LucideCreditCard,
-  LucideDatabaseBackup,
-  LucideGlobe,
-  LucideLayoutDashboard,
-  LucideTerminalSquare,
-  LucideWrench,
-} from "@virtbase/ui/icons";
-import { ScrollArea } from "@virtbase/ui/scroll-area";
-import NextLink from "next/link";
-import { useParams, useSelectedLayoutSegment } from "next/navigation";
-import { useExtracted } from "next-intl";
-import { paths } from "@/lib/paths";
+/**
+ * The server tab bar, resolved from the route rather than from a client hook.
+ *
+ * Reading the id with `await params` instead of `useParams()` is what lets this
+ * subtree be prerendered. A build-time fallback shell has no id, so a client
+ * hook could only block the whole route; awaiting it suspends just this one
+ * component, and the shell ships with the nav already drawn by
+ * `ServerNavFallback`.
+ */
+async function ResolvedServerNav({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
 
-const useItems = () => {
-  const t = useExtracted();
-  const { id: kvmId } = useParams<{ id: string }>();
+  return <ServerNavView serverId={id} />;
+}
 
-  return [
-    {
-      title: t("Overview"),
-      value: "overview",
-      path: paths.app.servers.overview.getHref(kvmId),
-      icon: LucideLayoutDashboard,
-    },
-    {
-      title: t("Console"),
-      value: "console",
-      path: paths.app.servers.console.getHref(kvmId),
-      icon: LucideTerminalSquare,
-    },
-    {
-      title: t("Firewall"),
-      value: "firewall",
-      path: paths.app.servers.firewall.getHref(kvmId),
-      icon: LucideBrickWallFire,
-    },
-    {
-      title: t("Backups"),
-      value: "backups",
-      path: paths.app.servers.backups.getHref(kvmId),
-      icon: LucideDatabaseBackup,
-    },
-    {
-      title: t("rDNS"),
-      value: "rdns",
-      path: paths.app.servers.rdns.getHref(kvmId),
-      icon: LucideGlobe,
-    },
-    {
-      title: t("Advanced"),
-      value: "advanced",
-      path: paths.app.servers.advanced.getHref(kvmId),
-      icon: LucideWrench,
-    },
-    {
-      title: t("Plan"),
-      value: "plan",
-      path: paths.app.servers.plan.getHref(kvmId),
-      icon: LucideCreditCard,
-    },
-  ] as const;
-};
+/** The nav as it appears before the id is known - complete, but inert. */
+function ServerNavFallback() {
+  return <ServerNavView serverId={null} />;
+}
 
-export function ServerNav() {
-  const segment = useSelectedLayoutSegment();
-  const items = useItems();
-
+export function ServerNav({ params }: { params: Promise<{ id: string }> }) {
   return (
-    <ScrollArea>
-      <nav className="flex w-full flex-row gap-1 max-md:flex-wrap">
-        {items.map((item) => (
-          <NextLink
-            key={item.title}
-            href={item.path}
-            prefetch={false}
-            className={cn(
-              buttonVariants({ variant: "outline" }),
-              "text-muted-foreground hover:text-foreground",
-              segment === item.value && "text-foreground [&>svg]:text-primary",
-            )}
-          >
-            <item.icon size={20} strokeWidth={1.5} aria-hidden />
-            {item.title}
-          </NextLink>
-        ))}
-      </nav>
-    </ScrollArea>
+    <Suspense fallback={<ServerNavFallback />}>
+      <ResolvedServerNav params={params} />
+    </Suspense>
   );
 }

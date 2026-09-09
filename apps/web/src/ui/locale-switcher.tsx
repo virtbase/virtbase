@@ -31,7 +31,10 @@ import {
   useSidebar,
 } from "@virtbase/ui/sidebar";
 import NextImage from "next/image";
+import { useRouter } from "next/navigation";
+import type { Locale } from "next-intl";
 import { useFormatter, useLocale } from "next-intl";
+import { useTransition } from "react";
 import { locales } from "@/i18n/config";
 import { getLocaleFlag } from "@/i18n/utils";
 import { updateLocaleAction } from "./locale-switcher-action";
@@ -39,6 +42,24 @@ import { updateLocaleAction } from "./locale-switcher-action";
 export function LocaleSwitcher() {
   const activeLocale = useLocale();
   const format = useFormatter();
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+
+  /**
+   * The console reads its language from the segment the proxy injected, and
+   * that was chosen before this action ran. Writing the preference therefore
+   * changes nothing on screen by itself - only a fresh request through the
+   * proxy can, which is what `refresh()` is for.
+   */
+  const onSelect = (locale: Locale) => {
+    const data = new FormData();
+    data.set("locale", locale);
+
+    startTransition(async () => {
+      await updateLocaleAction(data);
+      router.refresh();
+    });
+  };
 
   const { isMobile, open: isSidebarOpen } = useSidebar();
 
@@ -72,35 +93,30 @@ export function LocaleSwitcher() {
             side={isMobile || isSidebarOpen ? "bottom" : "right"}
             className="w-(--radix-dropdown-menu-trigger-width) min-w-56"
           >
-            <form action={updateLocaleAction}>
-              {locales
-                .filter((locale) => locale !== activeLocale)
-                .map((locale) => {
-                  const label = format.displayName(locale, {
-                    type: "language",
-                  });
+            {locales
+              .filter((locale) => locale !== activeLocale)
+              .map((locale) => {
+                const label = format.displayName(locale, {
+                  type: "language",
+                });
 
-                  return (
-                    <DropdownMenuItem key={locale} asChild>
-                      <button
-                        className="w-full"
-                        name="locale"
-                        value={locale}
-                        type="submit"
-                      >
-                        <NextImage
-                          src={getLocaleFlag(locale)}
-                          alt={label}
-                          width={20}
-                          height={20}
-                          unoptimized
-                        />
-                        {label}
-                      </button>
-                    </DropdownMenuItem>
-                  );
-                })}
-            </form>
+                return (
+                  <DropdownMenuItem
+                    key={locale}
+                    disabled={isPending}
+                    onSelect={() => onSelect(locale)}
+                  >
+                    <NextImage
+                      src={getLocaleFlag(locale)}
+                      alt={label}
+                      width={20}
+                      height={20}
+                      unoptimized
+                    />
+                    {label}
+                  </DropdownMenuItem>
+                );
+              })}
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>

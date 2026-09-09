@@ -38,7 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
   "use cache";
 
   const locale = await getLocale();
-  const t = await getExtracted({ locale });
+  const t = await getExtracted();
 
   cacheLife("max");
   cacheTag("home", locale);
@@ -66,7 +66,7 @@ export default async function HelpPage() {
   "use cache";
 
   const locale = await getLocale();
-  const t = await getExtracted({ locale });
+  const t = await getExtracted();
 
   cacheLife("max");
   cacheTag("home", locale);

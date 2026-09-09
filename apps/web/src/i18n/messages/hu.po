@@ -1933,6 +1933,18 @@ msgctxt "PPnkha"
 msgid "Find answers to all your Virtbase-related questions in one place with our comprehensive Help Center."
 msgstr "Átfogó Súgónk segítségével egy helyen találhat választ a Virtbase-szal kapcsolatos összes kérdésére."
 
+#: src/app/(public)/[locale]/not-found.tsx
+#: src/app/global-not-found.tsx
+msgctxt "wSitvf"
+msgid "The requested page was not found."
+msgstr "A kért oldal nem található."
+
+#: src/app/(public)/[locale]/not-found.tsx
+#: src/app/global-not-found.tsx
+msgctxt "72ui7O"
+msgid "Go to home"
+msgstr "Menj a főoldalra"
+
 #: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgctxt "t1DCfI"
 msgid "Upgrade to a more powerful server"
@@ -2013,72 +2025,72 @@ msgctxt "VI9ImX"
 msgid "Your server is protected without additional charges"
 msgstr "A szervered további költség nélkül védett"
 
-#: src/app/admin.virtbase.com/(dashboard)/abuse/[id]/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/abuse/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/abuse/rules/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/abuse/[id]/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/abuse/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/abuse/rules/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 #: src/features/admin/components/integrations/integrations-hub.tsx
 msgctxt "1UwRXb"
 msgid "Abuse"
 msgstr "Visszaélés"
 
-#: src/app/admin.virtbase.com/(dashboard)/abuse/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/abuse/rules/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/abuse/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/abuse/rules/page.tsx
 msgctxt "kAAlGL"
 msgid "Rules"
 msgstr "Szabályok"
 
-#: src/app/admin.virtbase.com/(dashboard)/abuse/rules/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/abuse/rules/page.tsx
 #: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
 msgctxt "Jdawl3"
 msgid "Abuse rules"
 msgstr "Visszaélési szabályok"
 
-#: src/app/admin.virtbase.com/(dashboard)/datacenters/[id]/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/datacenters/[id]/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/datacenters/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "NoQGSk"
 msgid "Datacenters"
 msgstr "Adatközpontok"
 
-#: src/app/admin.virtbase.com/(dashboard)/emails/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/emails/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "AdAi3x"
 msgid "Emails"
 msgstr "E-mailek"
 
-#: src/app/admin.virtbase.com/(dashboard)/integrations/[id]/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/integrations/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/integrations/[id]/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/integrations/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "6cBDhe"
 msgid "Integrations"
 msgstr "Integrációk"
 
-#: src/app/admin.virtbase.com/(dashboard)/layout.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/layout.tsx
 msgctxt "iHN12u"
 msgid "Admin"
 msgstr "Admin"
 
-#: src/app/admin.virtbase.com/(dashboard)/node-groups/[id]/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/node-groups/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/node-groups/[id]/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/node-groups/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "rcBiKK"
 msgid "Node Groups"
 msgstr "Csomópontcsoportok"
 
-#: src/app/admin.virtbase.com/(dashboard)/nodes/[id]/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/nodes/[id]/page.tsx
 msgctxt "n3j8M6"
 msgid "Proxmox Nodes"
 msgstr "Proxmox csomópontok"
 
-#: src/app/admin.virtbase.com/(dashboard)/notifications/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/notifications/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "NAidKb"
 msgid "Notifications"
 msgstr "Értesítések"
 
-#: src/app/admin.virtbase.com/(dashboard)/page.tsx
-#: src/app/app.virtbase.com/(dashboard)/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 #: src/ui/app-sidebar-menu.tsx
 #: src/ui/nav-user.tsx
@@ -2087,8 +2099,8 @@ msgctxt "hzSNj4"
 msgid "Dashboard"
 msgstr "Műszerfal"
 
-#: src/app/admin.virtbase.com/(dashboard)/servers/page.tsx
-#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/servers/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 #: src/ui/app-sidebar-menu.tsx
@@ -2096,85 +2108,85 @@ msgctxt "QOxktD"
 msgid "Servers"
 msgstr "Szerverek"
 
-#: src/app/admin.virtbase.com/(dashboard)/snippets/[id]/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/snippets/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/snippets/[id]/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/snippets/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "TQRrlM"
 msgid "Snippets"
 msgstr "Kivonatok"
 
-#: src/app/admin.virtbase.com/(dashboard)/subnets/[id]/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/subnets/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/subnets/[id]/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/subnets/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "9lr8v8"
 msgid "Subnets"
 msgstr "Alhálózatok"
 
-#: src/app/admin.virtbase.com/(dashboard)/subscriptions/[id]/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/subscriptions/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/subscriptions/[id]/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/subscriptions/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "J-dIsA"
 msgid "Subscriptions"
 msgstr "Előfizetések"
 
-#: src/app/admin.virtbase.com/(dashboard)/template-groups/[id]/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/template-groups/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/template-groups/[id]/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/template-groups/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "aIwSug"
 msgid "Template Groups"
 msgstr "Sabloncsoportok"
 
-#: src/app/admin.virtbase.com/(dashboard)/templates/[id]/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/templates/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/templates/[id]/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/templates/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 msgctxt "A3ptul"
 msgid "Templates"
 msgstr "Sablonok"
 
-#: src/app/admin.virtbase.com/(dashboard)/users/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/users/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "YDMrKK"
 msgid "Users"
 msgstr "Felhasználók"
 
-#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/forgot-password/page.tsx
 msgctxt "2znpSL"
 msgid "Forgot password for {appName}"
 msgstr "Elfelejtett jelszó a {appName}-hez"
 
-#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/forgot-password/page.tsx
 msgctxt "knQkcB"
 msgid "Reset the password of your {appName} account."
 msgstr "Állítsa vissza a {appName} fiók jelszavát."
 
-#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx
-#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/forgot-password/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/reset-password/page.tsx
 msgctxt "p-kmJg"
 msgid "Reset your password"
 msgstr "Állítsa vissza jelszavát"
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/login/page.tsx
 msgctxt "VquSDh"
 msgid "Sign in to {appName}"
 msgstr "Jelentkezzen be a {appName}-be"
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/login/page.tsx
 msgctxt "VGUFk-"
 msgid "Sign in to your {appName} account to manage your virtual servers."
 msgstr "Jelentkezzen be {appName} fiókjába a virtuális szerverek kezeléséhez."
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/login/page.tsx
 msgctxt "TKG18n"
 msgid "Log in to your {appName} account"
 msgstr "Jelentkezzen be {appName} fiókjába"
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/login/page.tsx
 msgctxt "25WwxF"
 msgid "Don't have an account?"
 msgstr "Nincs fiókod?"
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/login/page.tsx
 #: src/features/checkout/components/checkout-auth-wrapper.tsx
 #: src/ui/footer.tsx
 #: src/ui/nav.tsx
@@ -2182,186 +2194,186 @@ msgctxt "8HJxXG"
 msgid "Sign up"
 msgstr "Regisztráljon"
 
-#: src/app/app.virtbase.com/(auth)/register/page-client.tsx
-#: src/app/app.virtbase.com/(auth)/register/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/register/page-client.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/register/page.tsx
 msgctxt "LcaCOE"
 msgid "Create your {appName} account"
 msgstr "Hozza létre {appName} fiókját"
 
-#: src/app/app.virtbase.com/(auth)/register/page-client.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/register/page-client.tsx
 msgctxt "uCk8r-"
 msgid "Already have an account?"
 msgstr "Már van fiókja?"
 
-#: src/app/app.virtbase.com/(auth)/register/page-client.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/register/page-client.tsx
 msgctxt "odXlk8"
 msgid "Log in"
 msgstr "Jelentkezzen be"
 
-#: src/app/app.virtbase.com/(auth)/register/page-client.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/register/page-client.tsx
 msgctxt "rEdUqQ"
 msgid "Verify your email address"
 msgstr "Igazolja e-mail címét"
 
-#: src/app/app.virtbase.com/(auth)/register/page-client.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/register/page-client.tsx
 msgctxt "H2tEgm"
 msgid "Enter the six digit verification code sent to <strong>{email}</strong>"
 msgstr "Írja be a <strong>{email}</strong> címre küldött hatjegyű ellenőrző kódot"
 
-#: src/app/app.virtbase.com/(auth)/register/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/register/page.tsx
 msgctxt "PcjZtc"
 msgid "Create your {appName} account to order your first virtual server."
 msgstr "Hozzon létre {appName} fiókot az első virtuális szerver megrendeléséhez."
 
-#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/reset-password/page.tsx
 msgctxt "D2Np7X"
 msgid "Reset your password for {appName}"
 msgstr "Állítsa vissza a {appName} jelszavát"
 
-#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/reset-password/page.tsx
 msgctxt "tNqFr9"
 msgid "Reset your password for your {appName} account."
 msgstr "Állítsa vissza jelszavát {appName} fiókjához."
 
-#: src/app/app.virtbase.com/(auth)/two-factor/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/two-factor/page.tsx
 #: src/features/account/components/authentication/user-tfa-card.tsx
 msgctxt "AJyYQz"
 msgid "Two-Factor Authentication"
 msgstr "Kétfaktoros hitelesítés"
 
-#: src/app/app.virtbase.com/(auth)/two-factor/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/two-factor/page.tsx
 msgctxt "Wfg5YD"
 msgid "Verify your two-factor authentication code."
 msgstr "Ellenőrizd a kétfaktoros hitelesítési kódodat."
 
-#: src/app/app.virtbase.com/(auth)/two-factor/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/two-factor/page.tsx
 msgctxt "Ldnbs0"
 msgid "Enter the six digit code from your authenticator app."
 msgstr "Add meg a hatjegyű kódot a hitelesítő alkalmazásodból."
 
-#: src/app/app.virtbase.com/(dashboard)/abuse/[id]/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/abuse/[id]/page.tsx
 msgctxt "qA-192"
 msgid "Abuse report"
 msgstr "Visszaélési bejelentés"
 
-#: src/app/app.virtbase.com/(dashboard)/abuse/[id]/page.tsx
-#: src/app/app.virtbase.com/(dashboard)/abuse/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/abuse/[id]/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/abuse/page.tsx
 #: src/features/dashboard/components/active-abuse-cases.tsx
 #: src/ui/app-sidebar-menu.tsx
 msgctxt "aCv9Tk"
 msgid "Abuse reports"
 msgstr "Visszaélési bejelentések"
 
-#: src/app/app.virtbase.com/(dashboard)/abuse/[id]/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/abuse/[id]/page.tsx
 #: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
 msgctxt "x5Tz6M"
 msgid "Report"
 msgstr "Bejelentés"
 
-#: src/app/app.virtbase.com/(dashboard)/invoices/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/invoices/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/ui/app-sidebar-menu.tsx
 msgctxt "6dqYnF"
 msgid "Invoices"
 msgstr "Számlák"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/advanced/page.tsx
-#: src/features/servers/components/server-nav.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/advanced/page.tsx
+#: src/features/servers/components/server-nav-view.tsx
 msgctxt "3Rx6Qo"
 msgid "Advanced"
 msgstr "Speciális"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/backups/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/backups/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/servers/components/backups/backups-card.tsx
-#: src/features/servers/components/server-nav.tsx
+#: src/features/servers/components/server-nav-view.tsx
 msgctxt "T3lqx5"
 msgid "Backups"
 msgstr "Biztonsági mentések"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/console/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/console/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
-#: src/features/servers/components/server-nav.tsx
+#: src/features/servers/components/server-nav-view.tsx
 msgctxt "gc-2Z2"
 msgid "Console"
 msgstr "Konzol"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/firewall/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/firewall/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/landing/components/discord-bot-demo.tsx
-#: src/features/servers/components/server-nav.tsx
+#: src/features/servers/components/server-nav-view.tsx
 msgctxt "Bwqhmd"
 msgid "Firewall"
 msgstr "Tűzfal"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/not-found.tsx
 msgctxt "E-4Rfd"
 msgid "Server not found"
 msgstr "A szerver nem található"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/not-found.tsx
 msgctxt "bdn_TR"
 msgid "The server you are looking for does not exist."
 msgstr "A keresett szerver nem létezik."
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/not-found.tsx
 msgctxt "43U065"
 msgid "Go to servers"
 msgstr "Menjen a szerverekre"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/overview/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/overview/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
-#: src/features/servers/components/server-nav.tsx
+#: src/features/servers/components/server-nav-view.tsx
 #: src/ui/app-sidebar.tsx
 msgctxt "9uOFF3"
 msgid "Overview"
 msgstr "Áttekintés"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/plan/page.tsx
-#: src/features/servers/components/server-nav.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/plan/page.tsx
+#: src/features/servers/components/server-nav-view.tsx
 msgctxt "fz0z4c"
 msgid "Plan"
 msgstr "Terv"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/rdns/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/rdns/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/landing/components/discord-bot-demo.tsx
-#: src/features/servers/components/server-nav.tsx
+#: src/features/servers/components/server-nav-view.tsx
 msgctxt "F-02_l"
 msgid "rDNS"
 msgstr "rDNS"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/error.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/error.tsx
 #: src/ui/generic-error-inline.tsx
 #: src/ui/generic-error.tsx
 msgctxt "ox304v"
 msgid "An error occurred"
 msgstr "Hiba történt"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/error.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/error.tsx
 msgctxt "HkQfvt"
 msgid "An unexpected error occurred while loading the server details."
 msgstr "Váratlan hiba történt a szerver adatainak betöltése közben."
 
-#: src/app/app.virtbase.com/(dashboard)/servers/error.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/error.tsx
 #: src/features/account/components/billing/add-payment-method.tsx
 #: src/ui/generic-error.tsx
 msgctxt "FazwRl"
 msgid "Try again"
 msgstr "Próbáld újra"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/page.tsx
 msgctxt "FgwBWh"
 msgid "Rent a new server"
 msgstr "Béreljen egy új szervert"
 
-#: src/app/app.virtbase.com/unauthorized.tsx
+#: src/app/app.virtbase.com/[locale]/unauthorized.tsx
 msgctxt "srept4"
 msgid "You are not authorized to access this page. Your session may have expired, please sign in again."
 msgstr "Nincs jogosultsága ennek az oldalnak a elérésére. Lehet, hogy a munkamenet lejárt, kérjük, jelentkezzen be újra."
 
-#: src/app/app.virtbase.com/unauthorized.tsx
+#: src/app/app.virtbase.com/[locale]/unauthorized.tsx
 #: src/features/account/components/authentication/user-sessions-list.tsx
 msgctxt "xXbJso"
 msgid "Sign out"
@@ -3259,29 +3271,14 @@ msgid "Refused — replace it to keep automatic renewal"
 msgstr "Elutasítva — cseréld le, hogy az automatikus megújítás megmaradjon"
 
 #: src/features/account/components/billing/payment-method-item.tsx
-msgctxt "zWgq8B"
-msgid "It was reported lost, so renewals can no longer be charged to it. Add another card and choose it for renewals."
-msgstr "Elveszettként jelentették be, ezért a megújításokat már nem lehet róla terhelni. Adj hozzá másik kártyát, és válaszd ki a megújításokhoz."
-
-#: src/features/account/components/billing/payment-method-item.tsx
-msgctxt "yZt1Z4"
-msgid "It was reported stolen, so renewals can no longer be charged to it. Add another card and choose it for renewals."
-msgstr "Lopottként jelentették be, ezért a megújításokat már nem lehet róla terhelni. Adj hozzá másik kártyát, és válaszd ki a megújításokhoz."
-
-#: src/features/account/components/billing/payment-method-item.tsx
 msgctxt "CSGj9j"
 msgid "The permission to charge it was withdrawn, so renewals can no longer use it. Add another card and choose it for renewals."
 msgstr "A kártya terhelésére adott engedélyt visszavonták, így a megújítások már nem használhatják. Adj hozzá másik kártyát, és válaszd ki a megújításokhoz."
 
 #: src/features/account/components/billing/payment-method-item.tsx
-msgctxt "Hn4fZn"
-msgid "Your bank does not accept this kind of payment from us. Add another card and choose it for renewals."
-msgstr "A bankod nem fogadja el tőlünk ezt a fizetéstípust. Adj hozzá másik kártyát, és válaszd ki a megújításokhoz."
-
-#: src/features/account/components/billing/payment-method-item.tsx
-msgctxt "2kKGxe"
-msgid "Your bank refused the last renewal and told us not to try again. Add another card and choose it for renewals, or ask your bank why it was refused."
-msgstr "A bankod elutasította a legutóbbi megújítást, és azt kérte, ne próbálkozzunk újra. Adj hozzá másik kártyát, és válaszd ki a megújításokhoz, vagy kérdezd meg a bankodat, miért utasította el."
+msgctxt "YNh9Pm"
+msgid "Your bank refused the last renewal and told us not to try again. They do not tell us why, so they are the ones who can say. Add another card and choose it for renewals."
+msgstr "A bankod elutasította a legutóbbi megújítást, és azt kérte, ne próbáljuk újra. Az okot nem árulja el nekünk, így csak ő tudja megmondani. Adj hozzá másik kártyát, és válaszd ki a megújításokhoz."
 
 #: src/features/account/components/billing/payment-methods-card.tsx
 msgctxt "xuTqgN"
@@ -6994,6 +6991,11 @@ msgid "This subscription can no longer renew."
 msgstr "Ez az előfizetés már nem tud megújulni."
 
 #: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "AZ5E0d"
+msgid "We are still checking which card would be charged. Give it a moment, then try again."
+msgstr "Még ellenőrizzük, melyik kártyát terhelnénk. Várj egy pillanatot, majd próbáld újra."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
 msgctxt "Up6lw2"
 msgid "The payment method we would charge cannot be used. Pick a different default on the payment methods page, then turn automatic renewal on."
 msgstr "A terhelendő fizetési mód nem használható. Válassz másik alapértelmezettet a fizetési módok oldalán, majd kapcsold be az automatikus megújítást."
@@ -7008,6 +7010,11 @@ msgstr "Először adj hozzá egy fizetési módot. Az automatikus megújításho
 msgctxt "99eSnZ"
 msgid "Manage payment methods"
 msgstr "Fizetési módok kezelése"
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "7Io4wF"
+msgid "We cannot work out what this renewal would cost right now, and we will not ask you to agree to an amount we cannot show you. Give it a moment, then try again - or reload the page."
+msgstr "Most nem tudjuk kiszámolni, mennyibe kerülne ez a megújítás, és nem kérünk jóváhagyást olyan összeghez, amelyet nem tudunk megmutatni. Várj egy pillanatot, majd próbáld újra — vagy töltsd újra az oldalt."
 
 #: src/features/servers/components/billing/cancel-subscription-dialog.tsx
 msgctxt "zdTT0e"
@@ -7040,6 +7047,16 @@ msgid "This subscription will be cancelled."
 msgstr "Ez az előfizetés lemondásra kerül."
 
 #: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "p7ppXv"
+msgid "This server is suspended and was switched off when the term ended on {date}."
+msgstr "Ez a szerver fel van függesztve, és akkor kapcsoltuk ki, amikor az időszak véget ért: {date}."
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "S3yQqh"
+msgid "Cancelling stops it being renewed. You will not be charged again, and it does not switch the server back on."
+msgstr "A lemondás megakadályozza a megújítást. Többé nem terhelünk semmit, és ettől a szerver nem kapcsol vissza."
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
 msgctxt "SWNin3"
 msgid "Your server keeps running until {date}, the end of the term you have already paid for. Nothing is switched off today and you will not be charged again."
 msgstr "A szervered eddig fut: {date} — a már kifizetett időszak vége. Ma semmi nem áll le, és többé nem terhelünk semmit."
@@ -7070,9 +7087,24 @@ msgid "Resume subscription"
 msgstr "Előfizetés folytatása"
 
 #: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "VrlKo7"
+msgid "Subscription ended"
+msgstr "Előfizetés véget ért"
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "EJxeXq"
+msgid "The paid-for term ended on {date}. There is nothing left to cancel and you will not be charged again."
+msgstr "A kifizetett időszak véget ért: {date}. Nincs mit lemondani, és többé nem terhelünk semmit."
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
 msgctxt "5kfntb"
 msgid "Cancellation"
 msgstr "Lemondás"
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "AzvUFD"
+msgid "This server is suspended and the term you paid for ended on {date}. Cancelling stops it being renewed; it does not switch the server back on."
+msgstr "Ez a szerver fel van függesztve, és a kifizetett időszakod véget ért: {date}. A lemondás megakadályozza a megújítást; ettől a szerver nem kapcsol vissza."
 
 #: src/features/servers/components/billing/cancel-subscription-section.tsx
 msgctxt "mYShCs"

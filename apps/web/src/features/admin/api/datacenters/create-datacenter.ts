@@ -48,5 +48,5 @@ export const createDatacenterAction = actionClient
     }
 
     revalidateTag("datacenters", "max");
-    revalidatePath("/admin.virtbase.com");
+    revalidatePath("/admin.virtbase.com/[locale]", "layout");
   });

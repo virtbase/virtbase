@@ -55,7 +55,7 @@ const requireIntegration = (integrationId: string) => {
  */
 const applyLocally = (integrationId: string) => {
   integrations.invalidate(integrationId);
-  revalidatePath("/admin.virtbase.com");
+  revalidatePath("/admin.virtbase.com/[locale]", "layout");
 };
 
 export const saveIntegrationSettingsAction = actionClient
@@ -182,7 +182,7 @@ export const checkIntegrationHealthAction = actionClient
       checkedAt: health.checkedAt,
     });
 
-    revalidatePath("/admin.virtbase.com");
+    revalidatePath("/admin.virtbase.com/[locale]", "layout");
 
     return {
       status: health.status,

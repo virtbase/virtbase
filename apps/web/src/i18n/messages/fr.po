@@ -1933,6 +1933,18 @@ msgctxt "PPnkha"
 msgid "Find answers to all your Virtbase-related questions in one place with our comprehensive Help Center."
 msgstr "Trouvez les réponses à toutes vos questions liées à Virtbase en un seul endroit grâce à notre centre d'aide complet."
 
+#: src/app/(public)/[locale]/not-found.tsx
+#: src/app/global-not-found.tsx
+msgctxt "wSitvf"
+msgid "The requested page was not found."
+msgstr "La page demandée est introuvable."
+
+#: src/app/(public)/[locale]/not-found.tsx
+#: src/app/global-not-found.tsx
+msgctxt "72ui7O"
+msgid "Go to home"
+msgstr "Aller à l'accueil"
+
 #: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgctxt "t1DCfI"
 msgid "Upgrade to a more powerful server"
@@ -2013,72 +2025,72 @@ msgctxt "VI9ImX"
 msgid "Your server is protected without additional charges"
 msgstr "Votre serveur est protégé sans frais supplémentaires"
 
-#: src/app/admin.virtbase.com/(dashboard)/abuse/[id]/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/abuse/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/abuse/rules/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/abuse/[id]/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/abuse/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/abuse/rules/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 #: src/features/admin/components/integrations/integrations-hub.tsx
 msgctxt "1UwRXb"
 msgid "Abuse"
 msgstr "Abus"
 
-#: src/app/admin.virtbase.com/(dashboard)/abuse/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/abuse/rules/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/abuse/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/abuse/rules/page.tsx
 msgctxt "kAAlGL"
 msgid "Rules"
 msgstr "Règles"
 
-#: src/app/admin.virtbase.com/(dashboard)/abuse/rules/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/abuse/rules/page.tsx
 #: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
 msgctxt "Jdawl3"
 msgid "Abuse rules"
 msgstr "Règles d'abus"
 
-#: src/app/admin.virtbase.com/(dashboard)/datacenters/[id]/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/datacenters/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/datacenters/[id]/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/datacenters/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "NoQGSk"
 msgid "Datacenters"
 msgstr "Centres de données"
 
-#: src/app/admin.virtbase.com/(dashboard)/emails/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/emails/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "AdAi3x"
 msgid "Emails"
 msgstr "E-mails"
 
-#: src/app/admin.virtbase.com/(dashboard)/integrations/[id]/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/integrations/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/integrations/[id]/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/integrations/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "6cBDhe"
 msgid "Integrations"
 msgstr "Intégrations"
 
-#: src/app/admin.virtbase.com/(dashboard)/layout.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/layout.tsx
 msgctxt "iHN12u"
 msgid "Admin"
 msgstr "Administratrice"
 
-#: src/app/admin.virtbase.com/(dashboard)/node-groups/[id]/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/node-groups/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/node-groups/[id]/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/node-groups/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "rcBiKK"
 msgid "Node Groups"
 msgstr "Groupes de nœuds"
 
-#: src/app/admin.virtbase.com/(dashboard)/nodes/[id]/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/nodes/[id]/page.tsx
 msgctxt "n3j8M6"
 msgid "Proxmox Nodes"
 msgstr "Nœuds Proxmox"
 
-#: src/app/admin.virtbase.com/(dashboard)/notifications/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/notifications/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "NAidKb"
 msgid "Notifications"
 msgstr "Notifications"
 
-#: src/app/admin.virtbase.com/(dashboard)/page.tsx
-#: src/app/app.virtbase.com/(dashboard)/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 #: src/ui/app-sidebar-menu.tsx
 #: src/ui/nav-user.tsx
@@ -2087,8 +2099,8 @@ msgctxt "hzSNj4"
 msgid "Dashboard"
 msgstr "Tableau de bord"
 
-#: src/app/admin.virtbase.com/(dashboard)/servers/page.tsx
-#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/servers/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 #: src/ui/app-sidebar-menu.tsx
@@ -2096,85 +2108,85 @@ msgctxt "QOxktD"
 msgid "Servers"
 msgstr "Serveuses"
 
-#: src/app/admin.virtbase.com/(dashboard)/snippets/[id]/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/snippets/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/snippets/[id]/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/snippets/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "TQRrlM"
 msgid "Snippets"
 msgstr "Extraits"
 
-#: src/app/admin.virtbase.com/(dashboard)/subnets/[id]/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/subnets/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/subnets/[id]/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/subnets/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "9lr8v8"
 msgid "Subnets"
 msgstr "Sous-réseaux"
 
-#: src/app/admin.virtbase.com/(dashboard)/subscriptions/[id]/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/subscriptions/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/subscriptions/[id]/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/subscriptions/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "J-dIsA"
 msgid "Subscriptions"
 msgstr "Abonnements"
 
-#: src/app/admin.virtbase.com/(dashboard)/template-groups/[id]/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/template-groups/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/template-groups/[id]/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/template-groups/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "aIwSug"
 msgid "Template Groups"
 msgstr "Groupes de modèles"
 
-#: src/app/admin.virtbase.com/(dashboard)/templates/[id]/page.tsx
-#: src/app/admin.virtbase.com/(dashboard)/templates/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/templates/[id]/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/templates/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 msgctxt "A3ptul"
 msgid "Templates"
 msgstr "Modèles"
 
-#: src/app/admin.virtbase.com/(dashboard)/users/page.tsx
+#: src/app/admin.virtbase.com/[locale]/(dashboard)/users/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "YDMrKK"
 msgid "Users"
 msgstr "Utilisatrices"
 
-#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/forgot-password/page.tsx
 msgctxt "2znpSL"
 msgid "Forgot password for {appName}"
 msgstr "Mot de passe oublié pour {appName}"
 
-#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/forgot-password/page.tsx
 msgctxt "knQkcB"
 msgid "Reset the password of your {appName} account."
 msgstr "Réinitialisez le mot de passe de votre compte {appName}."
 
-#: src/app/app.virtbase.com/(auth)/forgot-password/page.tsx
-#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/forgot-password/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/reset-password/page.tsx
 msgctxt "p-kmJg"
 msgid "Reset your password"
 msgstr "Réinitialisez votre mot de passe"
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/login/page.tsx
 msgctxt "VquSDh"
 msgid "Sign in to {appName}"
 msgstr "Connectez-vous à {appName}"
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/login/page.tsx
 msgctxt "VGUFk-"
 msgid "Sign in to your {appName} account to manage your virtual servers."
 msgstr "Connectez-vous à votre compte {appName} pour gérer vos serveurs virtuels."
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/login/page.tsx
 msgctxt "TKG18n"
 msgid "Log in to your {appName} account"
 msgstr "Connectez-vous à votre compte {appName}"
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/login/page.tsx
 msgctxt "25WwxF"
 msgid "Don't have an account?"
 msgstr "Vous n'avez pas de compte?"
 
-#: src/app/app.virtbase.com/(auth)/login/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/login/page.tsx
 #: src/features/checkout/components/checkout-auth-wrapper.tsx
 #: src/ui/footer.tsx
 #: src/ui/nav.tsx
@@ -2182,186 +2194,186 @@ msgctxt "8HJxXG"
 msgid "Sign up"
 msgstr "S'inscrire"
 
-#: src/app/app.virtbase.com/(auth)/register/page-client.tsx
-#: src/app/app.virtbase.com/(auth)/register/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/register/page-client.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/register/page.tsx
 msgctxt "LcaCOE"
 msgid "Create your {appName} account"
 msgstr "Créez votre compte {appName}"
 
-#: src/app/app.virtbase.com/(auth)/register/page-client.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/register/page-client.tsx
 msgctxt "uCk8r-"
 msgid "Already have an account?"
 msgstr "Vous avez déjà un compte?"
 
-#: src/app/app.virtbase.com/(auth)/register/page-client.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/register/page-client.tsx
 msgctxt "odXlk8"
 msgid "Log in"
 msgstr "Se connecter"
 
-#: src/app/app.virtbase.com/(auth)/register/page-client.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/register/page-client.tsx
 msgctxt "rEdUqQ"
 msgid "Verify your email address"
 msgstr "Vérifiez votre adresse e-mail"
 
-#: src/app/app.virtbase.com/(auth)/register/page-client.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/register/page-client.tsx
 msgctxt "H2tEgm"
 msgid "Enter the six digit verification code sent to <strong>{email}</strong>"
 msgstr "Entrez le code de vérification à six chiffres envoyé à <strong>{email}</strong>"
 
-#: src/app/app.virtbase.com/(auth)/register/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/register/page.tsx
 msgctxt "PcjZtc"
 msgid "Create your {appName} account to order your first virtual server."
 msgstr "Créez votre compte {appName} pour commander votre premier serveur virtuel."
 
-#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/reset-password/page.tsx
 msgctxt "D2Np7X"
 msgid "Reset your password for {appName}"
 msgstr "Réinitialisez votre mot de passe pour {appName}"
 
-#: src/app/app.virtbase.com/(auth)/reset-password/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/reset-password/page.tsx
 msgctxt "tNqFr9"
 msgid "Reset your password for your {appName} account."
 msgstr "Réinitialisez votre mot de passe pour votre compte {appName}."
 
-#: src/app/app.virtbase.com/(auth)/two-factor/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/two-factor/page.tsx
 #: src/features/account/components/authentication/user-tfa-card.tsx
 msgctxt "AJyYQz"
 msgid "Two-Factor Authentication"
 msgstr "Authentification à deux facteurs"
 
-#: src/app/app.virtbase.com/(auth)/two-factor/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/two-factor/page.tsx
 msgctxt "Wfg5YD"
 msgid "Verify your two-factor authentication code."
 msgstr "Vérifie ton code d’authentification à deux facteurs."
 
-#: src/app/app.virtbase.com/(auth)/two-factor/page.tsx
+#: src/app/app.virtbase.com/[locale]/(auth)/two-factor/page.tsx
 msgctxt "Ldnbs0"
 msgid "Enter the six digit code from your authenticator app."
 msgstr "Saisis le code à six chiffres de ton application d’authentification."
 
-#: src/app/app.virtbase.com/(dashboard)/abuse/[id]/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/abuse/[id]/page.tsx
 msgctxt "qA-192"
 msgid "Abuse report"
 msgstr "Signalement d'abus"
 
-#: src/app/app.virtbase.com/(dashboard)/abuse/[id]/page.tsx
-#: src/app/app.virtbase.com/(dashboard)/abuse/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/abuse/[id]/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/abuse/page.tsx
 #: src/features/dashboard/components/active-abuse-cases.tsx
 #: src/ui/app-sidebar-menu.tsx
 msgctxt "aCv9Tk"
 msgid "Abuse reports"
 msgstr "Signalements d'abus"
 
-#: src/app/app.virtbase.com/(dashboard)/abuse/[id]/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/abuse/[id]/page.tsx
 #: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
 msgctxt "x5Tz6M"
 msgid "Report"
 msgstr "Signalement"
 
-#: src/app/app.virtbase.com/(dashboard)/invoices/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/invoices/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/ui/app-sidebar-menu.tsx
 msgctxt "6dqYnF"
 msgid "Invoices"
 msgstr "Factures"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/advanced/page.tsx
-#: src/features/servers/components/server-nav.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/advanced/page.tsx
+#: src/features/servers/components/server-nav-view.tsx
 msgctxt "3Rx6Qo"
 msgid "Advanced"
 msgstr "Avancé"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/backups/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/backups/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/servers/components/backups/backups-card.tsx
-#: src/features/servers/components/server-nav.tsx
+#: src/features/servers/components/server-nav-view.tsx
 msgctxt "T3lqx5"
 msgid "Backups"
 msgstr "Sauvegardes"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/console/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/console/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
-#: src/features/servers/components/server-nav.tsx
+#: src/features/servers/components/server-nav-view.tsx
 msgctxt "gc-2Z2"
 msgid "Console"
 msgstr "Console"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/firewall/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/firewall/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/landing/components/discord-bot-demo.tsx
-#: src/features/servers/components/server-nav.tsx
+#: src/features/servers/components/server-nav-view.tsx
 msgctxt "Bwqhmd"
 msgid "Firewall"
 msgstr "Pare-feu"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/not-found.tsx
 msgctxt "E-4Rfd"
 msgid "Server not found"
 msgstr "Serveur introuvable"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/not-found.tsx
 msgctxt "bdn_TR"
 msgid "The server you are looking for does not exist."
 msgstr "Le serveur que vous recherchez n'existe pas."
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/not-found.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/not-found.tsx
 msgctxt "43U065"
 msgid "Go to servers"
 msgstr "Aller sur les serveurs"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/overview/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/overview/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
-#: src/features/servers/components/server-nav.tsx
+#: src/features/servers/components/server-nav-view.tsx
 #: src/ui/app-sidebar.tsx
 msgctxt "9uOFF3"
 msgid "Overview"
 msgstr "Aperçu"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/plan/page.tsx
-#: src/features/servers/components/server-nav.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/plan/page.tsx
+#: src/features/servers/components/server-nav-view.tsx
 msgctxt "fz0z4c"
 msgid "Plan"
 msgstr "Plan"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/[id]/rdns/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/rdns/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/landing/components/discord-bot-demo.tsx
-#: src/features/servers/components/server-nav.tsx
+#: src/features/servers/components/server-nav-view.tsx
 msgctxt "F-02_l"
 msgid "rDNS"
 msgstr "DNSr"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/error.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/error.tsx
 #: src/ui/generic-error-inline.tsx
 #: src/ui/generic-error.tsx
 msgctxt "ox304v"
 msgid "An error occurred"
 msgstr "Une erreur s'est produite"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/error.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/error.tsx
 msgctxt "HkQfvt"
 msgid "An unexpected error occurred while loading the server details."
 msgstr "Une erreur inattendue s'est produite lors du chargement des détails du serveur."
 
-#: src/app/app.virtbase.com/(dashboard)/servers/error.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/error.tsx
 #: src/features/account/components/billing/add-payment-method.tsx
 #: src/ui/generic-error.tsx
 msgctxt "FazwRl"
 msgid "Try again"
 msgstr "Essayer à nouveau"
 
-#: src/app/app.virtbase.com/(dashboard)/servers/page.tsx
+#: src/app/app.virtbase.com/[locale]/(dashboard)/servers/page.tsx
 msgctxt "FgwBWh"
 msgid "Rent a new server"
 msgstr "Louer un nouveau serveur"
 
-#: src/app/app.virtbase.com/unauthorized.tsx
+#: src/app/app.virtbase.com/[locale]/unauthorized.tsx
 msgctxt "srept4"
 msgid "You are not authorized to access this page. Your session may have expired, please sign in again."
 msgstr "Vous n'êtes pas autorisé à accéder à cette page. Votre session a peut-être expiré, veuillez vous reconnecter."
 
-#: src/app/app.virtbase.com/unauthorized.tsx
+#: src/app/app.virtbase.com/[locale]/unauthorized.tsx
 #: src/features/account/components/authentication/user-sessions-list.tsx
 msgctxt "xXbJso"
 msgid "Sign out"
@@ -3259,29 +3271,14 @@ msgid "Refused — replace it to keep automatic renewal"
 msgstr "Refusée — remplacez-la pour conserver le renouvellement automatique"
 
 #: src/features/account/components/billing/payment-method-item.tsx
-msgctxt "zWgq8B"
-msgid "It was reported lost, so renewals can no longer be charged to it. Add another card and choose it for renewals."
-msgstr "Elle a été déclarée perdue, les renouvellements ne peuvent donc plus y être prélevés. Ajoutez une autre carte et choisissez-la pour les renouvellements."
-
-#: src/features/account/components/billing/payment-method-item.tsx
-msgctxt "yZt1Z4"
-msgid "It was reported stolen, so renewals can no longer be charged to it. Add another card and choose it for renewals."
-msgstr "Elle a été déclarée volée, les renouvellements ne peuvent donc plus y être prélevés. Ajoutez une autre carte et choisissez-la pour les renouvellements."
-
-#: src/features/account/components/billing/payment-method-item.tsx
 msgctxt "CSGj9j"
 msgid "The permission to charge it was withdrawn, so renewals can no longer use it. Add another card and choose it for renewals."
 msgstr "L'autorisation de prélèvement a été retirée, les renouvellements ne peuvent donc plus l'utiliser. Ajoutez une autre carte et choisissez-la pour les renouvellements."
 
 #: src/features/account/components/billing/payment-method-item.tsx
-msgctxt "Hn4fZn"
-msgid "Your bank does not accept this kind of payment from us. Add another card and choose it for renewals."
-msgstr "Votre banque n'accepte pas ce type de paiement de notre part. Ajoutez une autre carte et choisissez-la pour les renouvellements."
-
-#: src/features/account/components/billing/payment-method-item.tsx
-msgctxt "2kKGxe"
-msgid "Your bank refused the last renewal and told us not to try again. Add another card and choose it for renewals, or ask your bank why it was refused."
-msgstr "Votre banque a refusé le dernier renouvellement et nous a demandé de ne pas réessayer. Ajoutez une autre carte et choisissez-la pour les renouvellements, ou demandez à votre banque le motif du refus."
+msgctxt "YNh9Pm"
+msgid "Your bank refused the last renewal and told us not to try again. They do not tell us why, so they are the ones who can say. Add another card and choose it for renewals."
+msgstr "Votre banque a refusé le dernier renouvellement et nous a demandé de ne pas réessayer. Elle ne nous dit pas pourquoi, c'est donc à elle de vous répondre. Ajoutez une autre carte et choisissez-la pour les renouvellements."
 
 #: src/features/account/components/billing/payment-methods-card.tsx
 msgctxt "xuTqgN"
@@ -6994,6 +6991,11 @@ msgid "This subscription can no longer renew."
 msgstr "Cet abonnement ne peut plus se renouveler."
 
 #: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "AZ5E0d"
+msgid "We are still checking which card would be charged. Give it a moment, then try again."
+msgstr "Nous vérifions encore quelle carte nous prélèverions. Patientez un instant, puis réessayez."
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
 msgctxt "Up6lw2"
 msgid "The payment method we would charge cannot be used. Pick a different default on the payment methods page, then turn automatic renewal on."
 msgstr "Le mode de paiement que nous prélèverions ne peut pas être utilisé. Choisissez une autre carte par défaut sur la page des modes de paiement, puis activez le renouvellement automatique."
@@ -7008,6 +7010,11 @@ msgstr "Ajoutez d'abord un mode de paiement. Le renouvellement automatique néce
 msgctxt "99eSnZ"
 msgid "Manage payment methods"
 msgstr "Gérer les modes de paiement"
+
+#: src/features/servers/components/billing/auto-renew-section.tsx
+msgctxt "7Io4wF"
+msgid "We cannot work out what this renewal would cost right now, and we will not ask you to agree to an amount we cannot show you. Give it a moment, then try again - or reload the page."
+msgstr "Nous n'arrivons pas à déterminer le coût de ce renouvellement pour le moment, et nous ne vous demanderons pas d'accepter un montant que nous ne pouvons pas vous afficher. Patientez un instant, puis réessayez — ou rechargez la page."
 
 #: src/features/servers/components/billing/cancel-subscription-dialog.tsx
 msgctxt "zdTT0e"
@@ -7040,6 +7047,16 @@ msgid "This subscription will be cancelled."
 msgstr "Cet abonnement sera annulé."
 
 #: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "p7ppXv"
+msgid "This server is suspended and was switched off when the term ended on {date}."
+msgstr "Ce serveur est suspendu et a été arrêté lorsque la période s'est terminée le {date}."
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
+msgctxt "S3yQqh"
+msgid "Cancelling stops it being renewed. You will not be charged again, and it does not switch the server back on."
+msgstr "L'annulation empêche son renouvellement. Vous ne serez plus prélevé, et cela ne remet pas le serveur en marche."
+
+#: src/features/servers/components/billing/cancel-subscription-dialog.tsx
 msgctxt "SWNin3"
 msgid "Your server keeps running until {date}, the end of the term you have already paid for. Nothing is switched off today and you will not be charged again."
 msgstr "Votre serveur continue de fonctionner jusqu'au {date}, la fin de la période que vous avez déjà payée. Rien n'est désactivé aujourd'hui et vous ne serez plus prélevé."
@@ -7070,9 +7087,24 @@ msgid "Resume subscription"
 msgstr "Reprendre l'abonnement"
 
 #: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "VrlKo7"
+msgid "Subscription ended"
+msgstr "Abonnement terminé"
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "EJxeXq"
+msgid "The paid-for term ended on {date}. There is nothing left to cancel and you will not be charged again."
+msgstr "La période payée s'est terminée le {date}. Il n'y a plus rien à annuler et vous ne serez plus prélevé."
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
 msgctxt "5kfntb"
 msgid "Cancellation"
 msgstr "Annulation"
+
+#: src/features/servers/components/billing/cancel-subscription-section.tsx
+msgctxt "AzvUFD"
+msgid "This server is suspended and the term you paid for ended on {date}. Cancelling stops it being renewed; it does not switch the server back on."
+msgstr "Ce serveur est suspendu et la période que vous avez payée s'est terminée le {date}. L'annulation empêche son renouvellement ; elle ne remet pas le serveur en marche."
 
 #: src/features/servers/components/billing/cancel-subscription-section.tsx
 msgctxt "mYShCs"

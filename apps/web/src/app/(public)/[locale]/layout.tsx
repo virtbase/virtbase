@@ -16,7 +16,8 @@
  */
 
 import { NextProvider } from "fumadocs-core/framework/next";
-import { NextIntlClientProvider } from "next-intl";
+import { notFound } from "next/navigation";
+import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
 import { locales } from "@/i18n/config";
@@ -37,7 +38,19 @@ export function generateStaticParams() {
 
 export default async function LocaleLayout({
   children,
+  params,
 }: LayoutProps<"/[locale]">) {
+  // `[locale]` is the catch-all for unknown top-level paths, so an unmatched
+  // segment is a 404 rather than a reason to serve English under a URL that
+  // claims to be another language. Checked here rather than in
+  // `i18n/request.ts`, which the 404 page itself has to be able to call, and
+  // rather than with `dynamicParams = false`, which Cache Components rejects.
+  const { locale: segment } = await params;
+
+  if (!hasLocale(locales, segment)) {
+    notFound();
+  }
+
   const locale = await getLocale();
 
   return (

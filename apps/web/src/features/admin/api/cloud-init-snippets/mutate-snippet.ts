@@ -53,7 +53,7 @@ const assertParses = (content: string, kind: "cloud-config" | "shell") => {
 
 const revalidate = () => {
   revalidateTag("cloud-init-snippets", "max");
-  revalidatePath("/admin.virtbase.com");
+  revalidatePath("/admin.virtbase.com/[locale]", "layout");
 };
 
 export const createSnippetAction = actionClient

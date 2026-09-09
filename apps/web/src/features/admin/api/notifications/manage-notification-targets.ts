@@ -82,7 +82,8 @@ const partition = (
   return { plainConfig, toWrite };
 };
 
-const revalidate = () => revalidatePath("/admin.virtbase.com");
+const revalidate = () =>
+  revalidatePath("/admin.virtbase.com/[locale]", "layout");
 
 export const createNotificationTargetAction = actionClient
   .inputSchema(CreateNotificationTargetInputSchema)

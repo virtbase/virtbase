@@ -47,7 +47,7 @@ export async function generateMetadata(): Promise<Metadata> {
   "use cache";
 
   const locale = await getLocale();
-  const t = await getExtracted({ locale });
+  const t = await getExtracted();
 
   cacheLife("max");
   cacheTag("home", locale);

@@ -27,8 +27,10 @@ import { routing } from "@/i18n/routing.public";
 import { contentSecurityPolicy } from "@/lib/csp";
 
 const nextConfig: NextConfig = {
+  agentRules: false,
   allowedDevOrigins: ["*.virtbase.localhost"],
   cacheComponents: true,
+  partialPrefetching: true,
   crossOrigin: "anonymous",
   reactCompiler: true,
   devIndicators: {

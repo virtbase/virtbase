@@ -101,7 +101,7 @@ export const downloadTemplateImageAction = actionClient
     }
 
     revalidateTag("proxmox-template-images", "max");
-    revalidatePath("/admin.virtbase.com");
+    revalidatePath("/admin.virtbase.com/[locale]", "layout");
 
     if (failures.length === nodes.length) {
       throw new TRPCError({

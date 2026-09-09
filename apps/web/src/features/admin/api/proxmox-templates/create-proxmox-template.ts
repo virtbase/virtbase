@@ -105,7 +105,7 @@ const revalidate = () => {
   revalidateTag("proxmox-template-groups", "max");
   revalidateTag("proxmox-templates", "max");
   revalidateTag("checkout", "max");
-  revalidatePath("/admin.virtbase.com");
+  revalidatePath("/admin.virtbase.com/[locale]", "layout");
 };
 
 export const createProxmoxTemplateAction = actionClient

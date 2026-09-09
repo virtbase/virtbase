@@ -55,5 +55,5 @@ export const createSubnetAction = actionClient
     }
 
     revalidateTag("subnets", "max");
-    revalidatePath("/admin.virtbase.com");
+    revalidatePath("/admin.virtbase.com/[locale]", "layout");
   });

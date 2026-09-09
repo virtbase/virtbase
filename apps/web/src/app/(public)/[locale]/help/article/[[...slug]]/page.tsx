@@ -115,8 +115,8 @@ export default async function HelpArticlePage({
 
   const { title, description, lastModified } = page.data;
 
-  const t = await getExtracted({ locale });
-  const format = await getFormatter({ locale });
+  const t = await getExtracted();
+  const format = await getFormatter();
 
   return (
     <main className="relative border-border border-t">

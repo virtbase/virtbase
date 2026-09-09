@@ -84,7 +84,7 @@ export async function generateMetadata({
   const { from, to } = await params;
 
   const locale = await getLocale();
-  const t = await getExtracted({ locale });
+  const t = await getExtracted();
 
   cacheLife("max");
   cacheTag("home", locale);
@@ -133,7 +133,7 @@ export default async function Page({
   }
 
   const locale = await getLocale();
-  const t = await getExtracted({ locale });
+  const t = await getExtracted();
 
   cacheLife("max");
   cacheTag("home", locale);

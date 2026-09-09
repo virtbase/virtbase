@@ -28,7 +28,8 @@ import { revalidatePath } from "next/cache";
 import * as z from "zod";
 import { actionClient } from "../../lib/action-client";
 
-const revalidate = () => revalidatePath("/admin.virtbase.com");
+const revalidate = () =>
+  revalidatePath("/admin.virtbase.com/[locale]", "layout");
 
 const IdSchema = z.object({ id: z.string().min(1) });
 

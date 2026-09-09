@@ -97,8 +97,8 @@ export default async function LegalPage({
     notFound();
   }
 
-  const format = await getFormatter({ locale });
-  const t = await getExtracted({ locale });
+  const format = await getFormatter();
+  const t = await getExtracted();
 
   const lastModified = page.data.lastModified;
 

@@ -21,6 +21,7 @@ import { createTRPCOptionsProxy } from "@trpc/tanstack-react-query";
 import type { AppRouter } from "@virtbase/api";
 import { appRouter, createTRPCContext } from "@virtbase/api";
 import { headers } from "next/headers";
+import { connection } from "next/server";
 import { cache } from "react";
 import { auth } from "@/lib/auth/server";
 import { createQueryClient } from "@/lib/trpc/query-client";
@@ -48,7 +49,9 @@ export const trpc = createTRPCOptionsProxy<AppRouter>({
   queryClient: getQueryClient,
 });
 
-export function HydrateClient(props: { children: React.ReactNode }) {
+export async function HydrateClient(props: { children: React.ReactNode }) {
+  await connection();
+
   const queryClient = getQueryClient();
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>

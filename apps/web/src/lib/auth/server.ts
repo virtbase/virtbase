@@ -18,9 +18,13 @@
 import { dispatchAccountLinked } from "@virtbase/api/integrations";
 import { initAuth } from "@virtbase/auth";
 import { nextCookies } from "better-auth/next-js";
+import { localeCookiePlugin } from "./locale-cookie";
 
 export const auth = initAuth({
-  additionalPlugins: [nextCookies()],
+  // `nextCookies()` copies accumulated `set-cookie` headers onto the Next.js
+  // response, so it has to stay last: anything that sets a cookie of its own
+  // belongs above it.
+  additionalPlugins: [localeCookiePlugin, nextCookies()],
   // Fans social logins out to integrations implementing the `identity` port.
   onAccountLinked: dispatchAccountLinked,
 });

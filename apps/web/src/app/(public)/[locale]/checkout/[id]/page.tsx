@@ -68,7 +68,7 @@ export async function generateMetadata({
   "use cache";
 
   const locale = await getLocale();
-  const t = await getExtracted({ locale });
+  const t = await getExtracted();
 
   cacheLife("max");
   cacheTag("home", locale);

@@ -20,10 +20,11 @@ import { getSessionCookie } from "better-auth/cookies";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
+import { resolveConsoleLocale } from "@/lib/middleware/utils/console-locale";
 import { parse } from "@/lib/middleware/utils/parse";
 
 export async function AppMiddleware(req: NextRequest) {
-  const { path, fullPath, searchParamsObj } = parse(req);
+  const { path, fullPath, searchParamsObj, searchParamsString } = parse(req);
 
   // Check if we have an exisiting session cookie
   const sessionCookie = getSessionCookie(req.headers);
@@ -57,6 +58,16 @@ export async function AppMiddleware(req: NextRequest) {
     }
   }
 
-  // otherwise, rewrite the path to /app
-  return NextResponse.rewrite(new URL(`/app.virtbase.com${fullPath}`, req.url));
+  // otherwise, rewrite the path to /app, under the locale segment its root
+  // layout needs. The segment never reaches the browser.
+  const { locale, applyCookies } = await resolveConsoleLocale(req);
+
+  return applyCookies(
+    NextResponse.rewrite(
+      new URL(
+        `/app.virtbase.com/${locale}${path === "/" ? searchParamsString : fullPath}`,
+        req.url,
+      ),
+    ),
+  );
 }

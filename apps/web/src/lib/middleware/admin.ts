@@ -21,10 +21,11 @@ import { getCookieCache, getSessionCookie } from "better-auth/cookies";
 import type { UserWithRole } from "better-auth/plugins";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
+import { resolveConsoleLocale } from "@/lib/middleware/utils/console-locale";
 import { parse } from "@/lib/middleware/utils/parse";
 
 export async function AdminMiddleware(req: NextRequest) {
-  const { path, fullPath, searchParamsObj } = parse(req);
+  const { path, fullPath, searchParamsObj, searchParamsString } = parse(req);
 
   // Check if we have an exisiting session cookie
   const sessionCookie = getSessionCookie(req.headers);
@@ -63,8 +64,18 @@ export async function AdminMiddleware(req: NextRequest) {
     }
   }
 
-  // otherwise, rewrite the path to /admin
-  return NextResponse.rewrite(
-    new URL(`/admin.virtbase.com${fullPath}`, req.url),
+  // otherwise, rewrite the path to /admin, under the locale segment its root
+  // layout needs. The segment never reaches the browser - it exists so the
+  // layout can read the locale from the route instead of from the request,
+  // which is what lets the whole console be prerendered.
+  const { locale, applyCookies } = await resolveConsoleLocale(req);
+
+  return applyCookies(
+    NextResponse.rewrite(
+      new URL(
+        `/admin.virtbase.com/${locale}${path === "/" ? searchParamsString : fullPath}`,
+        req.url,
+      ),
+    ),
   );
 }

@@ -52,5 +52,5 @@ export const createProxmoxTemplateGroupAction = actionClient
     }
 
     revalidateTag("proxmox-template-groups", "max");
-    revalidatePath("/admin.virtbase.com");
+    revalidatePath("/admin.virtbase.com/[locale]", "layout");
   });
