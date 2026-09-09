@@ -72,7 +72,6 @@ describe("auth.checkAccountExists", () => {
       accountId: mockSession.user.id,
       userId: mockSession.user.id,
       providerId: "credential",
-      issuer: "local:credential",
       password: "__mock_password__",
     });
 

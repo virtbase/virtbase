@@ -137,7 +137,7 @@ We love our contributors! Here's how you can contribute:
 | Package |   Version    |
 |---------|--------------|
 | node    | >= v24.15.0  |
-| bun     | >= v1.3.14   |
+| bun     | >= v1.4.2    |
 
 ## Repo Activity
 

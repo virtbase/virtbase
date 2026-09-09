@@ -2,11 +2,7 @@
   "uid": "virtbase-abuse",
   "title": "Virtbase \u2014 Abuse Desk",
   "description": "Detection health first, then live signals, then the traffic behind them. Panels read the recording rules and sql_exporter metrics defined in packages/integration-alertmanager/rules/.",
-  "tags": [
-    "virtbase",
-    "abuse",
-    "security"
-  ],
+  "tags": ["virtbase", "abuse", "security"],
   "timezone": "browser",
   "schemaVersion": 39,
   "version": 1,
@@ -69,9 +65,7 @@
       ],
       "options": {
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -127,9 +121,7 @@
       ],
       "options": {
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -189,9 +181,7 @@
       ],
       "options": {
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -262,9 +252,7 @@
       ],
       "options": {
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -335,9 +323,7 @@
       ],
       "options": {
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -393,9 +379,7 @@
       ],
       "options": {
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -481,9 +465,7 @@
         "cellHeight": "sm",
         "footer": {
           "show": false,
-          "reducer": [
-            "sum"
-          ],
+          "reducer": ["sum"],
           "countRows": false,
           "fields": ""
         }
@@ -546,9 +528,7 @@
       ],
       "options": {
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -608,9 +588,7 @@
       ],
       "options": {
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -672,10 +650,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ]
+          "calcs": ["lastNotNull", "max"]
         },
         "tooltip": {
           "mode": "multi",
@@ -732,10 +707,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ]
+          "calcs": ["lastNotNull", "max"]
         },
         "tooltip": {
           "mode": "multi",
@@ -834,9 +806,7 @@
         "cellHeight": "sm",
         "footer": {
           "show": false,
-          "reducer": [
-            "sum"
-          ],
+          "reducer": ["sum"],
           "countRows": false,
           "fields": ""
         }
@@ -901,10 +871,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ]
+          "calcs": ["lastNotNull", "max"]
         },
         "tooltip": {
           "mode": "multi",
@@ -962,10 +929,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ]
+          "calcs": ["lastNotNull", "max"]
         },
         "tooltip": {
           "mode": "multi",
@@ -1023,10 +987,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ]
+          "calcs": ["lastNotNull", "max"]
         },
         "tooltip": {
           "mode": "multi",
@@ -1083,10 +1044,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ]
+          "calcs": ["lastNotNull", "max"]
         },
         "tooltip": {
           "mode": "multi",
@@ -1180,9 +1138,7 @@
         "cellHeight": "sm",
         "footer": {
           "show": false,
-          "reducer": [
-            "sum"
-          ],
+          "reducer": ["sum"],
           "countRows": false,
           "fields": ""
         }
@@ -1271,9 +1227,7 @@
         "cellHeight": "sm",
         "footer": {
           "show": false,
-          "reducer": [
-            "sum"
-          ],
+          "reducer": ["sum"],
           "countRows": false,
           "fields": ""
         }
@@ -1338,10 +1292,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ]
+          "calcs": ["lastNotNull", "max"]
         },
         "tooltip": {
           "mode": "multi",
@@ -1399,10 +1350,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ]
+          "calcs": ["lastNotNull", "max"]
         },
         "tooltip": {
           "mode": "multi",
@@ -1460,10 +1408,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ]
+          "calcs": ["lastNotNull", "max"]
         },
         "tooltip": {
           "mode": "multi",
@@ -1557,9 +1502,7 @@
         "cellHeight": "sm",
         "footer": {
           "show": false,
-          "reducer": [
-            "sum"
-          ],
+          "reducer": ["sum"],
           "countRows": false,
           "fields": ""
         }
@@ -1616,10 +1559,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ]
+          "calcs": ["lastNotNull", "max"]
         },
         "tooltip": {
           "mode": "multi",
@@ -1689,10 +1629,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ]
+          "calcs": ["lastNotNull", "max"]
         },
         "tooltip": {
           "mode": "multi",
@@ -1750,10 +1687,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ]
+          "calcs": ["lastNotNull", "max"]
         },
         "tooltip": {
           "mode": "multi",
@@ -1810,10 +1744,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ]
+          "calcs": ["lastNotNull", "max"]
         },
         "tooltip": {
           "mode": "multi",
@@ -1883,10 +1814,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "lastNotNull",
-            "max"
-          ]
+          "calcs": ["lastNotNull", "max"]
         },
         "tooltip": {
           "mode": "multi",
@@ -1941,9 +1869,7 @@
       ],
       "options": {
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -1995,9 +1921,7 @@
       ],
       "options": {
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -2049,9 +1973,7 @@
       ],
       "options": {
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -2106,9 +2028,7 @@
       ],
       "options": {
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },

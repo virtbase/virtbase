@@ -2,12 +2,7 @@
   "uid": "virtbase-traffic",
   "title": "Virtbase \u2014 Traffic & 95th Percentile",
   "description": "Transit usage from Akvorado's ClickHouse. Set the range to a calendar month for the billing figure.",
-  "tags": [
-    "virtbase",
-    "traffic",
-    "akvorado",
-    "billing"
-  ],
+  "tags": ["virtbase", "traffic", "akvorado", "billing"],
   "timezone": "browser",
   "schemaVersion": 39,
   "version": 1,
@@ -184,9 +179,7 @@
       "description": "Egress on every interface classified external, 5-minute buckets, over the dashboard range. Set the range to a calendar month for the billing figure. quantileExact, not quantile: the approximate one drifts ~0.1% over a month and a carrier computes this exactly.",
       "options": {
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -244,9 +237,7 @@
       },
       "options": {
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -313,9 +304,7 @@
       "description": "Most transit contracts bill the higher direction.",
       "options": {
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -374,9 +363,7 @@
       "description": "What the percentile discards. A wide gap to the 95th means short bursts you are not billed for.",
       "options": {
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -434,9 +421,7 @@
       },
       "options": {
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -494,9 +479,7 @@
       },
       "options": {
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -564,11 +547,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "mean",
-            "max",
-            "lastNotNull"
-          ]
+          "calcs": ["mean", "max", "lastNotNull"]
         },
         "tooltip": {
           "mode": "multi",
@@ -633,11 +612,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "mean",
-            "max",
-            "lastNotNull"
-          ]
+          "calcs": ["mean", "max", "lastNotNull"]
         },
         "tooltip": {
           "mode": "multi",
@@ -715,11 +690,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "mean",
-            "max",
-            "lastNotNull"
-          ]
+          "calcs": ["mean", "max", "lastNotNull"]
         },
         "tooltip": {
           "mode": "multi",
@@ -784,11 +755,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "mean",
-            "max",
-            "lastNotNull"
-          ]
+          "calcs": ["mean", "max", "lastNotNull"]
         },
         "tooltip": {
           "mode": "multi",
@@ -853,11 +820,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "mean",
-            "max",
-            "lastNotNull"
-          ]
+          "calcs": ["mean", "max", "lastNotNull"]
         },
         "tooltip": {
           "mode": "multi",
@@ -910,9 +873,7 @@
       },
       "options": {
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": true
         },
@@ -921,9 +882,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "values": [
-            "percent"
-          ]
+          "values": ["percent"]
         },
         "tooltip": {
           "mode": "single"
@@ -1027,9 +986,7 @@
         "cellHeight": "sm",
         "footer": {
           "show": false,
-          "reducer": [
-            "sum"
-          ],
+          "reducer": ["sum"],
           "countRows": false,
           "fields": ""
         }
@@ -1106,11 +1063,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "mean",
-            "max",
-            "lastNotNull"
-          ]
+          "calcs": ["mean", "max", "lastNotNull"]
         },
         "tooltip": {
           "mode": "multi",
@@ -1175,11 +1128,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "mean",
-            "max",
-            "lastNotNull"
-          ]
+          "calcs": ["mean", "max", "lastNotNull"]
         },
         "tooltip": {
           "mode": "multi",
@@ -1244,11 +1193,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "mean",
-            "max",
-            "lastNotNull"
-          ]
+          "calcs": ["mean", "max", "lastNotNull"]
         },
         "tooltip": {
           "mode": "multi",
@@ -1314,11 +1259,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "mean",
-            "max",
-            "lastNotNull"
-          ]
+          "calcs": ["mean", "max", "lastNotNull"]
         },
         "tooltip": {
           "mode": "multi",
@@ -1397,11 +1338,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "mean",
-            "max",
-            "lastNotNull"
-          ]
+          "calcs": ["mean", "max", "lastNotNull"]
         },
         "tooltip": {
           "mode": "multi",
@@ -1466,11 +1403,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "mean",
-            "max",
-            "lastNotNull"
-          ]
+          "calcs": ["mean", "max", "lastNotNull"]
         },
         "tooltip": {
           "mode": "multi",
@@ -1534,11 +1467,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "mean",
-            "max",
-            "lastNotNull"
-          ]
+          "calcs": ["mean", "max", "lastNotNull"]
         },
         "tooltip": {
           "mode": "multi",
@@ -1604,11 +1533,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "mean",
-            "max",
-            "lastNotNull"
-          ]
+          "calcs": ["mean", "max", "lastNotNull"]
         },
         "tooltip": {
           "mode": "multi",
@@ -1687,11 +1612,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "mean",
-            "max",
-            "lastNotNull"
-          ]
+          "calcs": ["mean", "max", "lastNotNull"]
         },
         "tooltip": {
           "mode": "multi",
@@ -1757,11 +1678,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "mean",
-            "max",
-            "lastNotNull"
-          ]
+          "calcs": ["mean", "max", "lastNotNull"]
         },
         "tooltip": {
           "mode": "multi",
@@ -1856,9 +1773,7 @@
         "cellHeight": "sm",
         "footer": {
           "show": false,
-          "reducer": [
-            "sum"
-          ],
+          "reducer": ["sum"],
           "countRows": false,
           "fields": ""
         }
@@ -1963,9 +1878,7 @@
         "cellHeight": "sm",
         "footer": {
           "show": false,
-          "reducer": [
-            "sum"
-          ],
+          "reducer": ["sum"],
           "countRows": false,
           "fields": ""
         }
@@ -2041,11 +1954,7 @@
           "displayMode": "table",
           "placement": "right",
           "showLegend": true,
-          "calcs": [
-            "mean",
-            "max",
-            "lastNotNull"
-          ]
+          "calcs": ["mean", "max", "lastNotNull"]
         },
         "tooltip": {
           "mode": "multi",

@@ -44,7 +44,6 @@ beforeAll(async () => {
   await db.insert(schema.accounts).values({
     accountId: "discord-1",
     providerId: "discord",
-    issuer: "https://discord.com",
     userId: USER_ID,
     accessToken: "a-live-token",
     password: "$argon2id$hash",

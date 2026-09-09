@@ -246,7 +246,7 @@ const configWithMDX = withMDX(configWithNextIntl);
 
 let configWithOrWithoutSentry = configWithMDX;
 if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
-  const { withSentryConfig } = require("@sentry/nextjs");
+  const { withSentryConfig } = require("@sentry/nextjs/config");
 
   configWithOrWithoutSentry = withSentryConfig(configWithMDX, {
     org: process.env.SENTRY_ORG,

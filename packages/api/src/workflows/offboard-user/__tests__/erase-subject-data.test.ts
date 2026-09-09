@@ -111,7 +111,6 @@ const seedFootprint = async (userId: string, caseId: string) => {
   await db.insert(schema.accounts).values({
     accountId: `discord-${userId}`,
     providerId: "discord",
-    issuer: "https://discord.com",
     userId,
     accessToken: "a-live-token",
   });

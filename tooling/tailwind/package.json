@@ -11,9 +11,9 @@
     "typecheck": "tsc --noEmit --emitDeclarationOnly false"
   },
   "dependencies": {
-    "@tailwindcss/postcss": "catalog:",
-    "postcss": "catalog:",
-    "tailwindcss": "catalog:"
+    "@tailwindcss/postcss": "catalog:tailwind",
+    "postcss": "catalog:tailwind",
+    "tailwindcss": "catalog:tailwind"
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:",

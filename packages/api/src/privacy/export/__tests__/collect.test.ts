@@ -76,7 +76,6 @@ beforeAll(async () => {
   await db.insert(schema.accounts).values({
     accountId: "discord-123",
     providerId: "discord",
-    issuer: "https://discord.com",
     userId: USER_ID,
     accessToken: "super-secret-access-token",
     refreshToken: "super-secret-refresh-token",

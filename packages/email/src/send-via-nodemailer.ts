@@ -48,7 +48,6 @@ export const sendViaNodeMailer = async ({
   }
 
   const transporter = nodemailer.createTransport({
-    // @ts-expect-error host is not a valid property of the TransportOptions interface
     host: process.env.SMTP_HOST,
     port: process.env.SMTP_PORT,
     auth: {

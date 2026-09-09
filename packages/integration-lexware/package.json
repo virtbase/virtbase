@@ -19,8 +19,8 @@
     "@virtbase/integration-sdk": "workspace:*",
     "@virtbase/ports": "workspace:*",
     "@virtbase/utils": "workspace:*",
-    "next-intl": "catalog:",
-    "use-intl": "catalog:",
+    "next-intl": "catalog:intl",
+    "use-intl": "catalog:intl",
     "zod": "catalog:"
   },
   "devDependencies": {

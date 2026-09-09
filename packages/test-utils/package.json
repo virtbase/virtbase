@@ -12,17 +12,17 @@
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:",
-    "@happy-dom/global-registrator": "^20.12.0",
+    "@happy-dom/global-registrator": "^20.14.0",
     "@tanstack/react-query": "catalog:",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
-    "@testing-library/user-event": "^14.6.1",
-    "@types/react": "catalog:",
+    "@testing-library/user-event": "^14.6.7",
+    "@types/react": "catalog:react",
     "@virtbase/tsconfig": "workspace:*",
-    "next-intl": "catalog:",
-    "next-themes": "^0.4.6",
-    "react": "catalog:",
+    "next-intl": "catalog:intl",
+    "next-themes": "catalog:",
+    "react": "catalog:react",
     "typescript": "catalog:"
   }
 }

@@ -27,14 +27,14 @@
     "@virtbase/ports": "workspace:*",
     "@virtbase/validators": "workspace:*",
     "@virtbase/utils": "workspace:*",
-    "discord-api-types": "^0.38.54",
-    "next-intl": "catalog:",
+    "discord-api-types": "^0.38.55",
+    "next-intl": "catalog:intl",
     "tweetnacl": "^1.0.3",
     "zod": "catalog:"
   },
   "devDependencies": {
     "@biomejs/biome": "catalog:",
-    "@playwright/test": "^1.62.1",
+    "@playwright/test": "catalog:",
     "@virtbase/tsconfig": "workspace:*",
     "typescript": "catalog:"
   }

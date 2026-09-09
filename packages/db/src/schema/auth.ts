@@ -194,7 +194,6 @@ export const accounts = d.snakeCase.table(
       .$default(() => createId({ prefix: "acc_" })),
     accountId: d.text().notNull(),
     providerId: d.text().notNull(),
-    issuer: d.text().notNull(),
     userId: d
       .text()
       .notNull()
@@ -212,7 +211,7 @@ export const accounts = d.snakeCase.table(
       .$onUpdate(() => sql`now()`)
       .notNull(),
   },
-  (t) => [d.index().on(t.userId), d.uniqueIndex().on(t.issuer, t.accountId)],
+  (t) => [d.index().on(t.userId)],
 );
 
 export const verifications = d.snakeCase.table(
@@ -242,6 +241,7 @@ export const passkeys = d.snakeCase.table(
       .text()
       .primaryKey()
       .$default(() => createId({ prefix: "passkey_" })),
+    name: d.text(),
     userId: d
       .text()
       .notNull()
