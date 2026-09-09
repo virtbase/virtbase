@@ -1,7 +1,228 @@
 version: 2
+
+# [!] Dependabot cannot see this repo's catalogs, and that is most of it.
+#
+# Versions for the shared dependencies live in `catalog` / `catalogs` in the
+# root package.json, and every workspace references them as `catalog:` or
+# `catalog:<group>`. Dependabot has no support for bun's catalog protocol:
+#
+#   - it does not check catalog entries for updates
+#     (dependabot-core#14320, open)
+#   - it has been observed stripping the `catalog`/`catalogs` fields when it
+#     rewrites the root package.json (dependabot-core#12522, open)
+#   - the fix, dependabot-core#14418, has been open since March 2026
+#
+# So 34 of the ~108 third-party dependencies are invisible here, including the
+# ones that matter most: react, next, typescript, zod, better-auth, the tRPC
+# trio, tailwind and sentry. Those stay a manual sweep until catalog support
+# lands upstream. The remaining 74 are declared inline in a workspace manifest
+# and are what this file actually manages.
+#
+# The stripping bug fails loudly rather than silently: a root package.json
+# without `catalog` leaves every `catalog:` reference unresolvable, so
+# `bun install` - and therefore CI - dies on the pull request. Review a bump
+# that touches the root manifest anyway.
+#
+# The groups below still name the catalog-managed packages. They match nothing
+# today and are listed deliberately, so the grouping starts working on its own
+# once dependabot understands catalogs, rather than someone having to remember
+# this file exists.
+
 updates:
-  - package-ecosystem: "npm"
-    directory: "/"
+  # `bun`, not `npm`. They are separate ecosystems to dependabot, and pointing
+  # a bun repo at `npm` is accepted and then quietly does nothing.
+  - package-ecosystem: bun
+    directory: /
     schedule:
-      interval: "weekly"
-    open-pull-requests-limit: 10
+      interval: weekly
+      day: monday
+    open-pull-requests-limit: 5
+
+    # Raise the declared floor rather than only the lockfile. A range left at
+    # `^5.102.8` while 5.105.2 is installed says something untrue about the
+    # baseline the code is tested against.
+    versioning-strategy: increase
+
+    # `@commitlint/config-conventional` with no type-enum override, so the
+    # valid types are build/chore/ci/docs/feat/fix/perf/refactor/revert/style/
+    # test. `deps:` is *not* among them - it is rejected outright. The scope
+    # carries that meaning instead, giving `chore(deps):` and
+    # `chore(deps-dev):`, which is what this repo's history already uses.
+    commit-message:
+      prefix: chore
+      prefix-development: chore
+      include: scope
+
+    # Nothing here is urgent enough to be worth being the first to find out a
+    # release is broken. Majors wait a fortnight; a nodemailer 10 or a same-day
+    # ORM build gets looked at deliberately rather than landing on a Monday.
+    cooldown:
+      default-days: 3
+      semver-patch-days: 3
+      semver-minor-days: 7
+      semver-major-days: 14
+
+    ignore:
+      # Pinned to an exact 1.0 release-candidate build, and all three must move
+      # together. The npm `latest` tag on this line is 0.45.2 - older than what
+      # is installed - so an automated bump is a downgrade off the 1.0 train.
+      - dependency-name: drizzle-orm
+      - dependency-name: drizzle-kit
+      - dependency-name: drizzle-seed
+
+      # Pinned exact on purpose: `ai` pins `@ai-sdk/provider-utils` to an exact
+      # version transitively, and `patchedDependencies` keys the patch by that
+      # exact version. Bumping `ai` moves provider-utils and silently stops the
+      # patch applying, so the patch has to be regenerated in the same commit.
+      - dependency-name: ai
+
+      # `@better-auth/passkey` depends on `^13.3.1` directly, so taking 14 here
+      # installs a second copy rather than upgrading anything. Minors and
+      # patches are still welcome. Drop this once better-auth moves to 14.
+      - dependency-name: "@simplewebauthn/server"
+        update-types: ["version-update:semver-major"]
+
+    # One pull request per concern, so a failing update is obvious rather than
+    # buried among a dozen unrelated bumps. React is listed before dev-tooling
+    # so its type packages land with react itself.
+    #
+    # `zod`, `workflow`, `yaml` and `@virtbase/proxmox-api` are deliberately in
+    # no group. Each sits under most of the codebase on its own, so a bump to
+    # one is worth reading by itself rather than sharing a pull request.
+    groups:
+      react:
+        patterns:
+          - react
+          - react-dom
+          - "@types/react"
+          - "@types/react-dom"
+          - react-hook-form
+          - "@hookform/*"
+          - react-error-boundary
+          - babel-plugin-react-compiler
+      next:
+        patterns:
+          - next
+          - next-intl
+          - use-intl
+          - next-safe-action
+          - next-themes
+          - nuqs
+          - server-only
+          - "@t3-oss/*"
+      tanstack:
+        patterns:
+          - "@tanstack/*"
+      trpc:
+        patterns:
+          - "@trpc/*"
+          - trpc-to-openapi
+          - superjson
+      auth:
+        patterns:
+          - better-auth
+          - "@better-auth/*"
+          - "@simplewebauthn/*"
+      database:
+        patterns:
+          - "@neondatabase/*"
+          - "@upstash/*"
+          - "@electric-sql/*"
+          - pg
+          - ws
+          - "@types/ws"
+          - base-x
+      styling:
+        patterns:
+          - tailwindcss
+          - "@tailwindcss/*"
+          - postcss
+          - tailwind-merge
+          - tailwind-scrollbar
+          - tw-animate-css
+      ui:
+        patterns:
+          - radix-ui
+          - shadcn
+          - "@shadcn/*"
+          - "@daypicker/*"
+          - lucide-react
+          - motion
+          - cmdk
+          - vaul
+          - input-otp
+          - sonner
+          - recharts
+          - class-variance-authority
+          - clsx
+          - date-fns
+          - qrcode.react
+          - canvas-confetti
+          - "@types/canvas-confetti"
+      email:
+        patterns:
+          - react-email
+          - "@react-email/*"
+          - resend
+          - nodemailer
+      docs:
+        patterns:
+          - fumadocs-*
+          - "@scalar/*"
+      editor:
+        patterns:
+          - "@codemirror/*"
+          - "@uiw/*"
+      payments:
+        patterns:
+          - stripe
+          - "@stripe/*"
+          - pdfkit
+          - "@types/pdfkit"
+      observability:
+        patterns:
+          - "@sentry/*"
+          - prom-client
+      integrations:
+        patterns:
+          - discord-api-types
+          - tweetnacl
+      testing:
+        patterns:
+          - "@testing-library/*"
+          - "@happy-dom/*"
+          - "@playwright/test"
+      dev-tooling:
+        patterns:
+          - "@biomejs/*"
+          - "@commitlint/*"
+          - dependency-cruiser
+          - husky
+          - lint-staged
+          - turbo
+          - typescript
+          - schema-dts
+          - "@types/*"
+        # Claimed by the react group above; excluded explicitly rather than
+        # relying on group-ordering semantics.
+        exclude-patterns:
+          - "@types/react"
+          - "@types/react-dom"
+
+  # Only four actions are in use and all are pinned to a major tag, so a
+  # monthly sweep in one pull request is the whole job.
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+    commit-message:
+      prefix: ci
+    groups:
+      actions:
+        patterns: ["*"]
+# Docker is deliberately absent. Every image this repo builds on is a floating
+# tag - `oven/bun:1`, `dockurr/proxmox`, `redis:latest`,
+# `local-neon-http-proxy:main` - which dependabot cannot advance. The single
+# pinned image, `postgres:16-alpine` in the root compose file, backs local
+# development only, and bumping it would drift local Postgres away from the
+# Neon version production runs against.
