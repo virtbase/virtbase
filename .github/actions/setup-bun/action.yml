@@ -12,17 +12,17 @@ runs:
     - name: Connect the Turborepo Remote Cache
       if: inputs.remote-cache == 'true' && (github.event_name != 'pull_request' || (github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.user.login != 'dependabot[bot]'))
       continue-on-error: true
-      uses: vercel/setup-turborepo-remote-cache-action@v1.1.0
+      uses: vercel/setup-turborepo-remote-cache-action@49d7b1b46ba4c9251e1977986bfe18336feabc8f # v1.1.0
       with:
         team: bw-edv
 
-    - uses: oven-sh/setup-bun@v2
+    - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
       with:
         bun-version-file: package.json
 
     - name: Restore the bun install cache
       id: cache
-      uses: actions/cache/restore@v6
+      uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
       with:
         path: ~/.bun/install/cache
         key: bun-install-${{ runner.os }}-${{ hashFiles('bun.lock') }}
@@ -34,7 +34,7 @@ runs:
 
     - name: Save the bun install cache
       if: github.ref == 'refs/heads/main' && steps.cache.outputs.cache-hit != 'true'
-      uses: actions/cache/save@v6
+      uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
       with:
         path: ~/.bun/install/cache
         key: ${{ steps.cache.outputs.cache-primary-key }}
