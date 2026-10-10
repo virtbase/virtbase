@@ -7,34 +7,27 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".cache/tsbuildinfo.json", "dist/**"]
+      "outputs": ["dist/**"]
     },
     "dev": {
-      "dependsOn": ["^dev"],
       "cache": false,
-      "persistent": false
+      "persistent": true
     },
     "//#check": {},
     "//#check:boundaries": {},
     "test": {
-      "dependsOn": ["^topo", "^build"],
-      "outputs": [],
-      "inputs": [
-        "src/**",
-        "e2e/**",
-        "bunfig.toml",
-        "package.json",
-        "tsconfig.json",
-        "$TURBO_DEFAULT$"
-      ]
+      "dependsOn": ["^topo"],
+      "outputs": ["coverage/**"],
+      "inputs": ["$TURBO_DEFAULT$", "!e2e/**", "$TURBO_ROOT$/.env.test"]
     },
     "test:e2e": {
-      "dependsOn": ["^topo", "^build"],
+      "dependsOn": ["^topo"],
       "cache": false,
+      "passThroughEnv": ["PORT", "VERCEL_AUTOMATION_BYPASS_SECRET"],
       "outputs": ["playwright-report/**", "test-results/**", "blob-report/**"]
     },
     "typecheck": {
-      "dependsOn": ["^topo", "^build"],
+      "dependsOn": ["^topo"],
       "outputs": [".cache/tsbuildinfo.json"]
     },
     "clean": {
@@ -45,18 +38,22 @@
     },
     "db:push": {
       "cache": false,
-      "interactive": true
+      "interactive": true,
+      "passThroughEnv": ["DATABASE_URL"]
     },
     "db:studio": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "passThroughEnv": ["DATABASE_URL"]
     },
     "db:generate": {
       "cache": false,
-      "interactive": true
+      "interactive": true,
+      "passThroughEnv": ["DATABASE_URL"]
     },
     "db:migrate": {
-      "cache": false
+      "cache": false,
+      "passThroughEnv": ["DATABASE_URL"]
     },
     "ui-add": {
       "cache": false,
@@ -75,50 +72,6 @@
       "persistent": true
     }
   },
-  "globalDependencies": [".env", ".env.test"],
-  "globalEnv": [
-    "AI_GATEWAY_API_KEY",
-    "NEXT_PUBLIC_APP_NAME",
-    "NEXT_PUBLIC_APP_DOMAIN",
-    "BETTER_AUTH_SECRET",
-    "CONFIG_ENCRYPTION_KEY",
-    "DATABASE_URL",
-    "UPSTASH_REDIS_REST_URL",
-    "UPSTASH_REDIS_REST_TOKEN",
-    "RESEND_API_KEY",
-    "RESEND_WEBHOOK_SECRET",
-    "ABUSE_MAILBOX_DOMAIN",
-    "ABUSE_MAILBOX_SECRET",
-    "SMTP_HOST",
-    "SMTP_PORT",
-    "SMTP_USER",
-    "SMTP_PASSWORD",
-    "STRIPE_SECRET_KEY",
-    "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
-    "STRIPE_WEBHOOK_SECRET",
-    "NEXT_PUBLIC_STRIPE_ANONPAY_METHOD_ID",
-    "ANONPAY_TICKER_TO",
-    "ANONPAY_NETWORK_TO",
-    "ANONPAY_ADDRESS",
-    "ANONPAY_WEBHOOK_SECRET",
-    "CRON_SECRET",
-    "NOVNC_PROXY_URL",
-    "NOVNC_PROXY_SECRET",
-    "PORT",
-    "DISCORD_CLIENT_ID",
-    "DISCORD_CLIENT_SECRET",
-    "GITHUB_CLIENT_ID",
-    "GITHUB_CLIENT_SECRET",
-    "GOOGLE_CLIENT_ID",
-    "GOOGLE_CLIENT_SECRET",
-    "NEXT_PUBLIC_SENTRY_DSN",
-    "NEXT_PUBLIC_SENTRY_CSP_REPORT_URI",
-    "SENTRY_ORG",
-    "SENTRY_PROJECT",
-    "SENTRY_URL",
-    "VERCEL_AUTOMATION_BYPASS_SECRET",
-    "NEXT_PUBLIC_VERCEL_ENV"
-  ],
   "globalPassThroughEnv": [
     "NODE_ENV",
     "CI",

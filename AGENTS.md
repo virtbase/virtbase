@@ -30,15 +30,54 @@ Before editing or creating files in any subdirectory (e.g., `packages/*`, `apps/
 ## Linting and Types
 
 ```bash
-bun check              # Full lint
+bun check              # Lint and format (editor rule set)
+bun check:ci           # As CI runs it: adds the type-aware rules (~15 s)
 bun check:write        # Auto-fix lint issues
 bun typecheck          # TypeScript type checking
 bun check:boundaries   # Architecture layer rules (dependency-cruiser)
 ```
 
-`check:boundaries` runs dependency-cruiser through bun rather than node, because
-dependency-cruiser only supports node `^22||^24||>=26` and refuses to start on
-node 25.
+`biome.jsonc` leaves out `noFloatingPromises`, `noMisusedPromises` and
+`noImportCycles`: they need type inference and a scan of the whole module
+graph, which kept the editor's language server above 1.8 GB. `biome.ci.jsonc`
+extends it with those rules, and CI runs `bun check:ci`.
+
+`check:boundaries` runs dependency-cruiser from `tooling/boundaries`, a
+standalone install that pins TypeScript 6 - dependency-cruiser cannot load
+TypeScript 7 and otherwise skips every `.ts` file. See
+`tooling/boundaries/README.md`.
+
+Everything runs on Bun, Next.js included: the `with-env` scripts pass `--bun`,
+so a `#!/usr/bin/env node` binary never falls back to Node, and Vercel runs the
+functions on Bun through `bunVersion` in `apps/web/vercel.json`. V8 flags such
+as `--max-old-space-size` have no effect.
+
+## Testing
+
+```bash
+bun run test           # every package, through turbo (cached)
+bun run test:coverage  # what CI runs
+bun test:e2e           # Playwright
+```
+
+Use `bun run test`, not `bun test`: each package's script sets its own
+`.env.test`, `bunfig.toml` and isolation flags.
+
+- **Isolation.** A package whose tests use `mock.module` runs every test file
+  in a fresh global (`--isolate`, or `--parallel=N`, which implies it). Module
+  mocks are process-wide in Bun and otherwise leak into the files that run
+  after them. Add the flag to a package's `test` script as soon as one of its
+  tests mocks a module.
+- **Databases.** `createTestDb()` restores an in-memory PGlite from a snapshot
+  of the schema. The snapshot is built once and cached in
+  `packages/db/.cache/test-db/`, keyed by the schema sources and `bun.lock`;
+  delete that directory to force a rebuild.
+- **Fixtures.** IDs in `packages/api/src/testing/fixtures.ts` must use the
+  prefixes in `packages/db/src/utils/create-id.ts`; tRPC output validation
+  rejects anything else, which surfaces as an empty list in E2E.
+- **E2E.** CI runs Playwright against a production build (`next build`, then
+  `next start`) with two workers. Locally, `bun test:e2e` starts `next dev`, or
+  reuses a server that is already running.
 
 ## Architecture layering
 
@@ -181,6 +220,25 @@ loader with a fallback reports every locale whether or not the file is there.
 
 `hreflang` and the sitemap must use `getDocumentLocales()`. Advertising a locale
 that silently serves English is worse than advertising nothing.
+
+### Not-found responses
+
+With Cache Components the static shell, and with it the status code, is sent
+before a page runs. A `notFound()` in a page or layout therefore renders the 404
+UI with HTTP 200 and a `noindex` tag - a soft 404. Real 404s are decided in the
+proxy, before anything renders:
+
+- `lib/middleware/utils/missing-content.ts` checks a locale-prefixed public path
+  against the Fumadocs document lists (`.source/browser.ts`, which lists files
+  without loading them).
+- `rewriteToNotFound()` rewrites to `/`, the one path no route matches, so Next
+  answers with `global-not-found.tsx` and a 404. Adding an `app/page.tsx` would
+  break every 404 on the site.
+- A new static folder under `(public)/[locale]` must be listed in
+  `ROUTED_SEGMENTS`, or the proxy treats it as a missing marketing page. A test
+  fails until it is.
+- The admin console uses the same rewrite for signed-in non-admins, reading the
+  session itself when Better Auth's cookie cache has expired.
 
 ## Configuration platform
 
@@ -364,10 +422,7 @@ Always treat environment variable values as sensitive unless they are known test
 - **Choose the right verification method for each change.** This may include running unit tests, integration tests, type checking, linting, building the project, or inspecting runtime behavior depending on what was changed.
 - **When unclear how to verify a change, ask the user.** If there is no obvious test or verification method for a particular change, ask the user how they would like it verified before moving on.
 
-**Pre-validate before committing** to avoid slow lint-staged failures (~2 min each):
-
-```bash
-# Run exactly what the pre-commit hook runs on your changed files:
-bun biome check --write --no-errors-on-unmatched --files-ignore-unknown=true
-```
+The pre-commit hook only runs lint-staged (Biome on the staged files). Tests,
+types, boundaries and the type-aware lint rules run in CI; run the matching
+`bun` command locally when a change touches them.
 

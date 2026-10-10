@@ -17,7 +17,7 @@
 
 import baseX from "base-x";
 
-const prefixes = [
+export const prefixes = [
   // Auth
   "usr_", // user
   "sess_", // session

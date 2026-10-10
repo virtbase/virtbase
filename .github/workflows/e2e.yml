@@ -10,15 +10,14 @@ concurrency:
   group: e2e-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   playwright:
     name: Playwright
     runs-on: ubuntu-latest
     timeout-minutes: 45
-    # Deliberately advisory. E2E is the slowest and flakiest layer, and a browser
-    # timeout should not block a merge - `ci.yml` is the gate. Remove this once
-    # the suite has a track record.
-    continue-on-error: true
 
     services:
       postgres:
@@ -37,27 +36,19 @@ jobs:
       # `packages/db/src/client.ts` speaks the Neon serverless protocol, not
       # plain Postgres, so a bare postgres service is not enough on its own.
       neon-proxy:
-        image: ghcr.io/timowilhelm/local-neon-http-proxy:main
+        image: ghcr.io/timowilhelm/local-neon-http-proxy:main@sha256:cd2ae14edf2feafbc3330492de5c80506f77274c3bd013154cdef697bdeb768a
         env:
           PG_CONNECTION_STRING: postgres://postgres:password@postgres:5432/virtbase
         ports: ["4444:4444"]
 
     env:
       CI: "true"
-      # Not `test`: `packages/auth/env.ts` only accepts development | production,
-      # and `client.ts` only routes through the Neon proxy under development.
-      NODE_ENV: development
       TURBO_TELEMETRY_DISABLED: "1"
 
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version-file: package.json
-
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
+      - uses: ./.github/actions/setup-bun
 
       # Cookies are scoped to `.virtbase.localhost`, so the suite must drive the
       # real hostnames; `localhost:3000` would never receive the session cookie.
@@ -88,10 +79,14 @@ jobs:
       - name: Run migrations
         run: bun db:migrate
 
+      - name: Build the web app
+        run: bun turbo run build -F @virtbase/web
+
       # Playwright's own docs advise against caching browser binaries: restoring
       # the cache costs about as much as downloading them.
       - name: Install Playwright browsers
-        run: bunx playwright install --with-deps chromium
+        working-directory: apps/web
+        run: bun x playwright install --with-deps chromium
 
       - name: Run Playwright
         run: bun run test:e2e
@@ -99,7 +94,7 @@ jobs:
       # `playwright-report/` embeds the trace, video and screenshot for every
       # failure, so it is self-contained. `test-results/` is kept alongside it
       # for anyone who wants the raw trace.zip without unpacking the report.
-      - uses: actions/upload-artifact@v7
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: ${{ !cancelled() }}
         with:
           name: playwright-report

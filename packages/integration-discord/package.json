@@ -3,23 +3,15 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./src/index.ts"
-    },
-    "./utils": {
-      "types": "./dist/utils/index.d.ts",
-      "default": "./src/utils/index.ts"
-    }
+    ".": "./src/index.ts",
+    "./utils": "./src/utils/index.ts"
   },
   "scripts": {
-    "build": "tsc",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "dev": "tsc",
     "rasterize-emojis": "bun scripts/rasterize-emojis.ts",
-    "test": "bun --env-file=../../.env.test test --timeout 20000",
-    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "with-env": "bun --env-file ../../.env --"
+    "test": "bun --env-file=../../.env.test test --timeout 20000 --isolate",
+    "typecheck": "tsc --noEmit",
+    "with-env": "bun --bun --env-file ../../.env --"
   },
   "dependencies": {
     "@virtbase/db": "workspace:*",
@@ -33,7 +25,6 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@biomejs/biome": "catalog:",
     "@playwright/test": "catalog:",
     "@virtbase/tsconfig": "workspace:*",
     "typescript": "catalog:"

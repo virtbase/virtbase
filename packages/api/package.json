@@ -3,87 +3,31 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "default": "./src/index.ts"
-    },
-    "./cloud-init": {
-      "types": "./dist/cloud-init/index.d.ts",
-      "default": "./src/cloud-init/index.ts"
-    },
-    "./abuse": {
-      "types": "./dist/abuse/index.d.ts",
-      "default": "./src/abuse/index.ts"
-    },
-    "./backfill": {
-      "types": "./dist/backfill/index.d.ts",
-      "default": "./src/backfill/index.ts"
-    },
-    "./backups": {
-      "types": "./dist/backups.d.ts",
-      "default": "./src/backups/index.ts"
-    },
-    "./billing": {
-      "types": "./dist/billing/index.d.ts",
-      "default": "./src/billing/index.ts"
-    },
-    "./guest-os": {
-      "types": "./dist/guest-os/index.d.ts",
-      "default": "./src/guest-os/index.ts"
-    },
-    "./integrations": {
-      "types": "./dist/integrations.d.ts",
-      "default": "./src/integrations/index.ts"
-    },
-    "./notifications": {
-      "types": "./dist/notifications/index.d.ts",
-      "default": "./src/notifications/index.ts"
-    },
-    "./payment-methods": {
-      "types": "./dist/payment-methods/index.d.ts",
-      "default": "./src/payment-methods/index.ts"
-    },
-    "./orders": {
-      "types": "./dist/orders.d.ts",
-      "default": "./src/orders/index.ts"
-    },
-    "./privacy": {
-      "types": "./dist/privacy/index.d.ts",
-      "default": "./src/privacy/index.ts"
-    },
-    "./proxmox": {
-      "types": "./dist/proxmox.d.ts",
-      "default": "./src/proxmox/index.ts"
-    },
-    "./subscriptions": {
-      "types": "./dist/subscriptions/index.d.ts",
-      "default": "./src/subscriptions/index.ts"
-    },
-    "./template-images": {
-      "types": "./dist/template-images/index.d.ts",
-      "default": "./src/template-images/index.ts"
-    },
-    "./workflows": {
-      "types": "./dist/workflows.d.ts",
-      "default": "./src/workflows/index.ts"
-    },
-    "./testing": {
-      "types": "./dist/testing/index.d.ts",
-      "default": "./src/testing/index.ts"
-    },
-    "./testing/fixtures": {
-      "types": "./dist/testing/fixtures.d.ts",
-      "default": "./src/testing/fixtures.ts"
-    }
+    ".": "./src/index.ts",
+    "./cloud-init": "./src/cloud-init/index.ts",
+    "./abuse": "./src/abuse/index.ts",
+    "./backfill": "./src/backfill/index.ts",
+    "./backups": "./src/backups/index.ts",
+    "./billing": "./src/billing/index.ts",
+    "./guest-os": "./src/guest-os/index.ts",
+    "./integrations": "./src/integrations/index.ts",
+    "./notifications": "./src/notifications/index.ts",
+    "./payment-methods": "./src/payment-methods/index.ts",
+    "./orders": "./src/orders/index.ts",
+    "./privacy": "./src/privacy/index.ts",
+    "./proxmox": "./src/proxmox/index.ts",
+    "./subscriptions": "./src/subscriptions/index.ts",
+    "./template-images": "./src/template-images/index.ts",
+    "./workflows": "./src/workflows/index.ts",
+    "./testing": "./src/testing/index.ts",
+    "./testing/fixtures": "./src/testing/fixtures.ts"
   },
   "scripts": {
-    "build": "tsc",
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "embed-fonts": "bun scripts/embed-fonts.ts",
-    "dev": "tsc",
-    "test": "bun --env-file=../../.env.test test --timeout 20000",
-    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "with-env": "bun --env-file ../../.env --"
+    "test": "bun --env-file=../../.env.test test --timeout 20000 --parallel=2",
+    "typecheck": "tsc --noEmit",
+    "with-env": "bun --bun --env-file ../../.env --"
   },
   "dependencies": {
     "@sentry/node": "catalog:sentry",
@@ -122,7 +66,6 @@
     "next": "catalog:"
   },
   "devDependencies": {
-    "@biomejs/biome": "catalog:",
     "@types/pdfkit": "^0.17.6",
     "@virtbase/tsconfig": "workspace:*",
     "typescript": "catalog:"

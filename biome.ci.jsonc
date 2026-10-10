@@ -1,0 +1,15 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "extends": ["./biome.jsonc"],
+  "linter": {
+    "rules": {
+      "suspicious": {
+        "noImportCycles": "warn"
+      },
+      "nursery": {
+        "noMisusedPromises": "error",
+        "noFloatingPromises": "error"
+      }
+    }
+  }
+}

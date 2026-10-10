@@ -93,7 +93,7 @@ async function seedProxmoxNodes() {
       .values({
         ...mockProxmoxNode,
         // Deterministic per-node ids so a re-run updates rather than duplicates.
-        id: `pxm_000000000000000000000000${index}`,
+        id: `pn_000000000000000000000000${index}`,
         hostname: node.hostname,
         // Every node is addressed through the same entry point; `hostname`
         // selects the member and pveproxy forwards.

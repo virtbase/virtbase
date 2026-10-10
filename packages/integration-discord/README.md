@@ -123,7 +123,7 @@ Discord only delivers interactions to a public HTTPS URL, so local development
 needs a tunnel:
 
 ```bash
-bun dev                 # or bun dev:next
+bun dev
 bun run discord:tunnel  # prints the public URL
 ```
 

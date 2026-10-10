@@ -22,7 +22,9 @@ import type { UserWithRole } from "better-auth/plugins";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import { resolveConsoleLocale } from "@/lib/middleware/utils/console-locale";
+import { rewriteToNotFound } from "@/lib/middleware/utils/not-found";
 import { parse } from "@/lib/middleware/utils/parse";
+import { readSession } from "@/lib/middleware/utils/read-session";
 
 export async function AdminMiddleware(req: NextRequest) {
   const { path, fullPath, searchParamsObj, searchParamsString } = parse(req);
@@ -41,12 +43,14 @@ export async function AdminMiddleware(req: NextRequest) {
 
     // if there's a session cookie
   } else if (sessionCookie) {
-    // Cookie cache may be empty so we just use this as an additional check
-    const cookieCache = await getCookieCache(req.headers);
-    if (cookieCache && !isAdmin(cookieCache.user as unknown as UserWithRole)) {
-      if (!cookieCache.session.impersonatedBy) {
+    // The cookie cache expires after a few minutes, so read the session when
+    // it is gone rather than letting a customer through to the console
+    const session =
+      (await getCookieCache(req.headers)) ?? (await readSession(req.headers));
+    if (session && !isAdmin(session.user as unknown as UserWithRole)) {
+      if (!session.session.impersonatedBy) {
         // throw 404 page
-        return NextResponse.next();
+        return rewriteToNotFound(req);
       }
 
       // If the user is currently being impersonated, redirect to the app domain

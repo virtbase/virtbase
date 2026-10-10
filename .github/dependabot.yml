@@ -99,7 +99,6 @@ updates:
           - react-hook-form
           - "@hookform/*"
           - react-error-boundary
-          - babel-plugin-react-compiler
       next:
         patterns:
           - next
@@ -209,10 +208,11 @@ updates:
           - "@types/react"
           - "@types/react-dom"
 
-  # Only four actions are in use and all are pinned to a major tag, so a
-  # monthly sweep in one pull request is the whole job.
+  # Actions are pinned to commit SHAs with the version in a trailing comment,
+  # which dependabot updates together. A monthly sweep in one pull request is
+  # the whole job.
   - package-ecosystem: github-actions
-    directory: /
+    directories: ["/", "/.github/actions/*"]
     schedule:
       interval: monthly
     commit-message:

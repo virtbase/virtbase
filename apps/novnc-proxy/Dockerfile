@@ -8,12 +8,12 @@
 # on distroless/base: glibc, CA certificates and a non-root user, no shell and
 # no package manager. The executable needs nothing from the image but libc.
 
-FROM oven/bun:1.4.2 AS pruner
+FROM oven/bun:1.4.2@sha256:9114c058aeae42162ee16dd5084b95fe9473970bb6bcb5b232ab1630f0546895 AS pruner
 WORKDIR /app
 COPY . .
 RUN bunx turbo@2.10.12 prune @virtbase/novnc-proxy --docker
 
-FROM oven/bun:1.4.2 AS builder
+FROM oven/bun:1.4.2@sha256:9114c058aeae42162ee16dd5084b95fe9473970bb6bcb5b232ab1630f0546895 AS builder
 WORKDIR /app
 COPY --from=pruner /app/out/json/ .
 RUN bun install --frozen-lockfile --ignore-scripts
@@ -28,7 +28,7 @@ RUN bun run compile && cp dist/novnc-proxy /novnc-proxy
 FROM scratch AS binary
 COPY --from=builder /novnc-proxy /novnc-proxy
 
-FROM gcr.io/distroless/base-debian13:nonroot
+FROM gcr.io/distroless/base-debian13:nonroot@sha256:a0d70d6a97cd697d9362bc2aae4a6560dd65817e365d0043b07325a97975dc91
 COPY --from=builder /novnc-proxy /usr/local/bin/novnc-proxy
 ENV PORT=8443
 EXPOSE 8443

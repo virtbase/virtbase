@@ -9,6 +9,9 @@ concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 env:
   # `apps/web/src/env.ts` and `packages/auth/env.ts` both skip t3-env validation
   # when CI is set, so no application secrets are needed for these jobs.
@@ -17,59 +20,55 @@ env:
   NEXT_TELEMETRY_DISABLED: "1"
 
 jobs:
+  commits:
+    name: Commit messages
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 0
+
+      - uses: ./.github/actions/setup-bun
+
+      - name: Lint commit messages
+        env:
+          FROM: ${{ github.event.pull_request.base.sha || github.event.before }}
+          TO: ${{ github.event.pull_request.head.sha || github.sha }}
+        run: bun commitlint --from "$FROM" --to "$TO" --verbose
+
   check:
     name: Lint, types and boundaries
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - uses: oven-sh/setup-bun@v2
+      - uses: ./.github/actions/setup-bun
         with:
-          bun-version-file: package.json
-
-      # `setup-bun` caches the bun binary, not the packages it downloads. The
-      # tarball cache is what makes `bun install` cheap on a rerun.
-      - name: Cache the bun install cache
-        uses: actions/cache@v6
-        with:
-          path: ~/.bun/install/cache
-          key: bun-install-${{ runner.os }}-${{ hashFiles('bun.lock') }}
-          restore-keys: bun-install-${{ runner.os }}-
-
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
-
-      - name: Cache the turbo artefacts
-        uses: actions/cache@v6
-        with:
-          path: .turbo/cache
-          key: turbo-check-${{ runner.os }}-${{ github.sha }}
-          restore-keys: turbo-check-${{ runner.os }}-
+          remote-cache: "true"
 
       - name: Lint
-        run: bun check
+        run: bun check:ci
 
       - name: Typecheck
         run: bun typecheck
 
-      # dependency-cruiser runs through bun because it refuses to start on
-      # node 25; see AGENTS.md.
-      #
       # `--output-type err` prints violations only, so the green tick is the
       # whole message a reader takes away - including when the cruise ran half
-      # blind. dependency-cruiser reaches for its own `typescript` (>=2 <7) and
-      # silently gives up when there isn't a compatible one: `extract-ts-config`
-      # returns an empty config, so `tsConfig` does nothing and
-      # `tsPreCompilationDeps` cannot see type-only imports, which are exactly
-      # the imports that cross a layer boundary most easily. Treat that warning
-      # as a failure rather than let a tick stand for a graph nobody looked at.
+      # blind. dependency-cruiser needs a `typescript` it can load (>=2 <7);
+      # without one it skips every `.ts` file and reports a clean graph.
+      # `tooling/boundaries` pins one. Treat the warning as a failure in case
+      # that ever regresses.
       - name: Architecture boundaries
         run: |
           set -o pipefail
           bun check:boundaries 2>&1 | tee "$RUNNER_TEMP/boundaries.log"
           if grep -q 'missing-typescript-transpiler' "$RUNNER_TEMP/boundaries.log"; then
-            echo "::error title=dependency-cruiser ran degraded::No TypeScript compiler in the range dependency-cruiser supports (>=2.0.0 <7.0.0), so type-only imports and the @/* path alias were not resolved. The layer rules above proved nothing. Add a supported typescript for it to load - see AGENTS.md."
+            echo "::error title=dependency-cruiser ran degraded::No TypeScript compiler in the range dependency-cruiser supports (>=2.0.0 <7.0.0), so type-only imports were not resolved. The layer rules above proved nothing. See tooling/boundaries/README.md."
             exit 1
           fi
 
@@ -77,22 +76,15 @@ jobs:
     name: Unit and integration tests
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - uses: oven-sh/setup-bun@v2
+      - uses: ./.github/actions/setup-bun
         with:
-          bun-version-file: package.json
-
-      - name: Cache the bun install cache
-        uses: actions/cache@v6
-        with:
-          path: ~/.bun/install/cache
-          key: bun-install-${{ runner.os }}-${{ hashFiles('bun.lock') }}
-          restore-keys: bun-install-${{ runner.os }}-
-
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
+          remote-cache: "true"
 
       # No database service: `createTestDb()` is PGlite, an in-process Postgres.
       # Placeholder env comes from the committed `.env.test`.
@@ -106,24 +98,26 @@ jobs:
             echo "## Coverage"
             echo
             echo '```'
-            find . -path ./node_modules -prune -o -name 'lcov.info' -print \
-              | while read -r file; do
-                  package=$(dirname "$(dirname "$file")")
-                  lines=$(grep -c '^DA:' "$file" || echo 0)
-                  hit=$(grep '^DA:' "$file" | grep -vc ',0$' || echo 0)
-                  if [ "$lines" -gt 0 ]; then
-                    printf '%-44s %s%%\n' "${package#./}" "$((hit * 100 / lines))"
-                  fi
-                done
+            for file in apps/*/coverage/lcov.info packages/*/coverage/lcov.info; do
+              [ -f "$file" ] || continue
+              package=$(dirname "$(dirname "$file")")
+              lines=$(grep -c '^DA:' "$file" || echo 0)
+              hit=$(grep '^DA:' "$file" | grep -vc ',0$' || echo 0)
+              if [ "$lines" -gt 0 ]; then
+                printf '%-44s %s%%\n' "$package" "$((hit * 100 / lines))"
+              fi
+            done
             echo '```'
           } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload coverage
         if: ${{ !cancelled() }}
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: coverage
-          path: "**/coverage/lcov.info"
+          path: |
+            apps/*/coverage/lcov.info
+            packages/*/coverage/lcov.info
           retention-days: 14
           if-no-files-found: warn
 
@@ -131,31 +125,23 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      contents: read
+      id-token: write
     steps:
-      - uses: actions/checkout@v7
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - uses: oven-sh/setup-bun@v2
+      - uses: ./.github/actions/setup-bun
         with:
-          bun-version-file: package.json
+          remote-cache: "true"
 
-      - name: Cache the bun install cache
-        uses: actions/cache@v6
+      - name: Restore the Next.js build cache
+        id: next-cache
+        uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
-          path: ~/.bun/install/cache
-          key: bun-install-${{ runner.os }}-${{ hashFiles('bun.lock') }}
-          restore-keys: bun-install-${{ runner.os }}-
-
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
-
-      - name: Cache the turbo artefacts
-        uses: actions/cache@v6
-        with:
-          path: |
-            .turbo/cache
-            apps/web/.next/cache
-          key: turbo-build-${{ runner.os }}-${{ github.sha }}
-          restore-keys: turbo-build-${{ runner.os }}-
+          path: apps/web/.next/cache
+          key: next-${{ runner.os }}-${{ hashFiles('bun.lock') }}-${{ github.sha }}
+          restore-keys: next-${{ runner.os }}-${{ hashFiles('bun.lock') }}-
 
       # Every package script reads its configuration through
       # `bun --env-file ../../.env`, and `.env` is not committed. The values
@@ -175,9 +161,6 @@ jobs:
           NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_00000000000000000000000000
           ENVFILE
 
-      - name: Build the workspace packages
-        run: bun turbo run build --filter='!@virtbase/web'
-
       # The web app is built on its own and stops after bundling.
       #
       # A full `next build` ends in a prerender pass that evaluates pages, and
@@ -195,3 +178,18 @@ jobs:
       - name: Compile the web app
         working-directory: apps/web
         run: bun run with-env next build --experimental-build-mode compile
+
+      - name: Translation catalogs are committed
+        run: |
+          if [ -n "$(git status --porcelain -- apps/web/src/i18n/messages)" ]; then
+            git status --short -- apps/web/src/i18n/messages
+            echo "::error title=Stale translation catalogs::The build extracted messages that are not committed. Run the web app locally and commit apps/web/src/i18n/messages."
+            exit 1
+          fi
+
+      - name: Save the Next.js build cache
+        if: github.ref == 'refs/heads/main' && steps.next-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: apps/web/.next/cache
+          key: ${{ steps.next-cache.outputs.cache-primary-key }}

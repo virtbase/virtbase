@@ -102,7 +102,7 @@ yours does not, add the four names to `/etc/hosts`.
 ### Everyday commands
 
 ```bash
-bun dev              # all packages in watch mode
+bun dev              # the web app; packages are compiled from source
 bun check:write      # lint and format
 bun typecheck        # TypeScript
 bun run test         # unit and integration tests
@@ -139,8 +139,9 @@ We love our contributors! Here's how you can contribute:
 
 | Package |   Version    |
 |---------|--------------|
-| node    | >= v24.15.0  |
 | bun     | >= v1.4.2    |
+
+Node.js is not needed: everything, Next.js included, runs on Bun.
 
 ## Repo Activity
 

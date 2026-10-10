@@ -10,7 +10,6 @@
     "@commitlint/cli": "^21.2.2",
     "@commitlint/config-conventional": "^21.2.2",
     "@types/bun": "catalog:",
-    "dependency-cruiser": "^18.2.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.5.0",
     "turbo": "^2.10.12"
@@ -28,7 +27,7 @@
     "@tanstack/react-table": "^9.2.4",
     "@types/bun": "1.4.2",
     "@virtbase/proxmox-api": "^2.0.0",
-    "next": "^16.3.4",
+    "next": "^16.3.8",
     "next-themes": "^0.4.6",
     "nuqs": "^2.10.1",
     "recharts": "^3.10.1",
@@ -83,11 +82,12 @@
   ],
   "license": "AGPL-3.0-or-later",
   "overrides": {
-    "undici@>=7.0.0 <7.29.0": "7.29.0",
+    "undici@>=7.0.0 <7.29.1": "7.29.1",
     "nanoid@>=4.0.0 <5.1.16": "5.1.16",
-    "next@<16.2.11": "16.3.4",
+    "next@<16.3.8": "16.3.8",
     "esbuild@>=0.27.3 <0.28.1": "0.28.2",
-    "@ai-sdk/provider-utils@>=4.0.0-beta.10 <4.0.33": "4.0.33"
+    "@ai-sdk/provider-utils@>=4.0.0-beta.10 <4.0.33": "4.0.33",
+    "devalue@<5.9.3": "5.9.3"
   },
   "packageManager": "bun@1.4.2",
   "patchedDependencies": {
@@ -97,7 +97,8 @@
   "scripts": {
     "build": "turbo run build",
     "check": "biome check .",
-    "check:boundaries": "bun node_modules/dependency-cruiser/bin/dependency-cruise.mjs packages apps --config .dependency-cruiser.jsonc --output-type err",
+    "check:boundaries": "bun install --cwd tooling/boundaries --frozen-lockfile --silent && bun tooling/boundaries/node_modules/dependency-cruiser/bin/dependency-cruise.mjs packages apps --config .dependency-cruiser.jsonc --output-type err",
+    "check:ci": "biome ci --config-path=biome.ci.jsonc .",
     "check:unsafe": "biome check --write --unsafe .",
     "check:write": "biome check --write .",
     "clean": "git clean -xdf node_modules",
@@ -109,8 +110,7 @@
     "db:migrate": "turbo -F @virtbase/db db:migrate",
     "db:push": "turbo -F @virtbase/db db:push",
     "db:studio": "turbo -F @virtbase/db db:studio",
-    "dev": "turbo watch dev --continue",
-    "dev:next": "turbo watch dev -F @virtbase/web...",
+    "dev": "turbo run dev",
     "discord:emojis": "turbo -F @virtbase/integration-discord rasterize-emojis",
     "discord:tunnel": "bunx localtunnel --port 3000 --subdomain virtbase-dev --print-requests",
     "email": "turbo run email",
@@ -121,7 +121,7 @@
     "setup:cluster": "./scripts/setup.sh --cluster",
     "stripe:listen": "turbo -F @virtbase/web stripe:listen",
     "test": "turbo run test",
-    "test:coverage": "turbo run test --force -- --coverage --coverage-reporter=text --coverage-reporter=lcov",
+    "test:coverage": "turbo run test -- --coverage --coverage-reporter=text --coverage-reporter=lcov",
     "test:e2e": "turbo -F @virtbase/web test:e2e",
     "typecheck": "turbo run typecheck",
     "ui-add": "turbo run ui-add"
@@ -130,6 +130,7 @@
   "workspaces": [
     "apps/*",
     "packages/*",
-    "tooling/*"
+    "tooling/tailwind",
+    "tooling/typescript"
   ]
 }

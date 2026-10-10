@@ -15,7 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { SortableColumns } from "@virtbase/db/utils";
+import type { SortableColumns } from "@virtbase/utils";
 import type { Invoice } from "@virtbase/validators";
 import type { SearchParams } from "nuqs";
 import { InvoicesTable } from "@/features/invoices/components/invoices-table";

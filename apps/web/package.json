@@ -5,15 +5,15 @@
   "scripts": {
     "build": "bun with-env next build",
     "clean": "git clean -xdf .cache .next .turbo node_modules src/app/.well-known",
-    "dev": "NODE_OPTIONS='--max-old-space-size=4096' bun with-env next dev",
+    "dev": "bun with-env next dev",
     "script": "bun with-env scripts/run.ts",
     "start": "bun with-env next start",
     "stripe:listen": "stripe listen --forward-to localhost:3000/api/stripe/webhook",
-    "test": "bun --env-file=../../.env.test test --timeout 20000",
+    "test": "bun --env-file=../../.env.test test --timeout 20000 --isolate",
     "test:codegen": "playwright codegen app.virtbase.localhost:3000",
     "test:e2e": "playwright test",
     "typecheck": "bun with-env next typegen && tsc --noEmit",
-    "with-env": "bun --env-file ../../.env --"
+    "with-env": "bun --bun --env-file ../../.env --"
   },
   "dependencies": {
     "@better-auth/api-key": "catalog:auth",
@@ -65,7 +65,6 @@
     "zod": "catalog:"
   },
   "devDependencies": {
-    "@biomejs/biome": "catalog:",
     "@playwright/test": "catalog:",
     "@tailwindcss/postcss": "catalog:tailwind",
     "@tailwindcss/typography": "^0.5.20",
@@ -77,7 +76,6 @@
     "@virtbase/tailwind-config": "workspace:*",
     "@virtbase/test-utils": "workspace:*",
     "@virtbase/tsconfig": "workspace:*",
-    "babel-plugin-react-compiler": "^1.0.0",
     "drizzle-seed": "1.0.0-rc.5-5935859",
     "postcss": "catalog:tailwind",
     "schema-dts": "^2.0.0",

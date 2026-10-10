@@ -1,0 +1,10 @@
+{
+  "name": "@virtbase/boundaries",
+  "private": true,
+  "description": "dependency-cruiser with a TypeScript it can load. Deliberately not a workspace member: see README.md.",
+  "type": "module",
+  "dependencies": {
+    "dependency-cruiser": "18.2.0",
+    "typescript": "6.0.3"
+  }
+}

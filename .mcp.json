@@ -1,0 +1,12 @@
+{
+  "servers": {
+    "next-devtools": {
+      "command": "bunx",
+      "args": ["-y", "next-devtools-mcp@latest"]
+    },
+    "proxbase": {
+      "command": "proxbase",
+      "args": ["mcp"]
+    }
+  }
+}
