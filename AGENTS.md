@@ -52,6 +52,33 @@ so a `#!/usr/bin/env node` binary never falls back to Node, and Vercel runs the
 functions on Bun through `bunVersion` in `apps/web/vercel.json`. V8 flags such
 as `--max-old-space-size` have no effect.
 
+## Testing
+
+```bash
+bun run test           # every package, through turbo (cached)
+bun run test:coverage  # what CI runs
+bun test:e2e           # Playwright
+```
+
+Use `bun run test`, not `bun test`: each package's script sets its own
+`.env.test`, `bunfig.toml` and isolation flags.
+
+- **Isolation.** A package whose tests use `mock.module` runs every test file
+  in a fresh global (`--isolate`, or `--parallel=N`, which implies it). Module
+  mocks are process-wide in Bun and otherwise leak into the files that run
+  after them. Add the flag to a package's `test` script as soon as one of its
+  tests mocks a module.
+- **Databases.** `createTestDb()` restores an in-memory PGlite from a snapshot
+  of the schema. The snapshot is built once and cached in
+  `packages/db/.cache/test-db/`, keyed by the schema sources and `bun.lock`;
+  delete that directory to force a rebuild.
+- **Fixtures.** IDs in `packages/api/src/testing/fixtures.ts` must use the
+  prefixes in `packages/db/src/utils/create-id.ts`; tRPC output validation
+  rejects anything else, which surfaces as an empty list in E2E.
+- **E2E.** CI runs Playwright against a production build (`next build`, then
+  `next start`) with two workers. Locally, `bun test:e2e` starts `next dev`, or
+  reuses a server that is already running.
+
 ## Architecture layering
 
 Imports point downward only. The rules are enforced by `bun check:boundaries`

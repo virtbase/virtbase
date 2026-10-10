@@ -43,9 +43,6 @@ jobs:
 
     env:
       CI: "true"
-      # Not `test`: `packages/auth/env.ts` only accepts development | production,
-      # and `client.ts` only routes through the Neon proxy under development.
-      NODE_ENV: development
       TURBO_TELEMETRY_DISABLED: "1"
 
     steps:
@@ -81,6 +78,9 @@ jobs:
 
       - name: Run migrations
         run: bun db:migrate
+
+      - name: Build the web app
+        run: bun turbo run build -F @virtbase/web
 
       # Playwright's own docs advise against caching browser binaries: restoring
       # the cache costs about as much as downloading them.

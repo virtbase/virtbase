@@ -27,8 +27,8 @@ export default defineConfig({
   testDir: "./e2e",
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 0,
-  workers: process.env.CI ? 1 : undefined,
+  retries: process.env.CI ? 1 : 0,
+  workers: process.env.CI ? 2 : undefined,
   // The HTML report embeds the traces, videos and screenshots, so it is the one
   // artifact worth downloading. `github` adds inline annotations on the PR diff.
   // If this suite is ever sharded, add `["blob"]` here and a merge step - blob
@@ -106,7 +106,9 @@ export default defineConfig({
   webServer: process.env.E2E_SKIP_WEB_SERVER
     ? undefined
     : {
-        command: `bun with-env next dev --turbo --port ${PORT}`,
+        command: process.env.CI
+          ? `bun with-env next start --port ${PORT}`
+          : `bun with-env next dev --port ${PORT}`,
         timeout: 240 * 1000,
         port: PORT,
         reuseExistingServer: !process.env.CI,

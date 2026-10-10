@@ -58,7 +58,7 @@ export const mockProxmoxNodeGroup = {
 } satisfies typeof proxmoxNodeGroups.$inferInsert;
 
 export const mockServerPlan = {
-  id: "srv_0000000000000000000000000",
+  id: "pck_0000000000000000000000000",
   proxmoxNodeGroupId: mockProxmoxNodeGroup.id,
   name: "My server plan",
   price: 100,
@@ -88,7 +88,7 @@ export const mockDatacenter = {
 } satisfies typeof datacenters.$inferInsert;
 
 export const mockProxmoxNode = {
-  id: "pxm_0000000000000000000000000",
+  id: "pn_0000000000000000000000000",
   datacenterId: mockDatacenter.id,
   proxmoxNodeGroupId: mockProxmoxNodeGroup.id,
   hostname: "my-proxmox-node.example.com",
