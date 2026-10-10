@@ -82,7 +82,7 @@
     "embed-fonts": "bun scripts/embed-fonts.ts",
     "dev": "tsc",
     "test": "bun --env-file=../../.env.test test --timeout 20000 --parallel=2",
-    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false --tsBuildInfoFile .cache/tsbuildinfo.json",
     "with-env": "bun --bun --env-file ../../.env --"
   },
   "dependencies": {
