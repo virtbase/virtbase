@@ -15,6 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { dataCollection } from "@/lib/sentry";
+
 declare global {
   interface Window {
     hasLoggedCustomMessage: boolean;
@@ -68,10 +70,9 @@ if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
     // - feedbackIntegration (lazy loaded via feedback-button.tsx)
     integrations: [],
     tracesSampleRate: 1,
-    enableLogs: true,
     replaysSessionSampleRate: 0.1,
     replaysOnErrorSampleRate: 1.0,
-    sendDefaultPii: false,
+    dataCollection,
   });
 }
 

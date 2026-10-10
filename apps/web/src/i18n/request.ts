@@ -15,7 +15,9 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { captureException } from "@sentry/nextjs";
 import { cookies, headers } from "next/headers";
+import { unstable_rethrow } from "next/navigation";
 import * as rootParams from "next/root-params";
 import type { Locale } from "next-intl";
 import { hasLocale } from "next-intl";
@@ -41,20 +43,20 @@ import { COOKIE_NAME, defaultLocale, locales } from "./config";
 /**
  * The two ways `next/root-params` fails that are not our mistake.
  *
- * `E1014` is a Server Action and `E1043` a Route Handler. Neither is tied to a
- * single route - an action can be submitted from any page - so Next refuses to
- * guess which `[locale]` segment applies rather than returning a wrong one.
+ * A Server Action and a Route Handler. Neither is tied to a single route - an
+ * action can be submitted from any page - so Next refuses to guess which
+ * `[locale]` segment applies rather than returning a wrong one.
  *
  * Every other failure (a client component, `unstable_cache`, a call outside a
  * Server Component) means `next/root-params` was reached from somewhere it was
  * never meant to be. Those still fall through to the user's own locale, which
  * is a perfectly good answer, but they are reported rather than swallowed.
  *
- * The codes are internal to Next, so they are used only to decide whether to
- * report. If a future version renumbers them the worst case is noise in Sentry,
- * never a broken request.
+ * Next identifies them only by message, so the pattern is used only to decide
+ * whether to report. If a future version rewords them the worst case is noise
+ * in Sentry, never a broken request.
  */
-const ROUTELESS_ROOT_PARAM_CODES = new Set(["E1014", "E1043"]);
+const ROUTELESS_ROOT_PARAM_ERROR = /inside a (Server Action|Route Handler)/;
 
 /**
  * The `[locale]` segment of the route being rendered, or `undefined` when the
@@ -68,19 +70,21 @@ async function getRouteLocale(): Promise<string | undefined> {
   try {
     return await rootParams.locale();
   } catch (error) {
-    const code = (error as { __NEXT_ERROR_CODE?: string } | null)
-      ?.__NEXT_ERROR_CODE;
+    // Framework control flow belongs to the caller. Next signals a stalled
+    // fallback shell by rejecting this promise with a
+    // `HangingPromiseRejectionError` - swallowing it would bake a guessed
+    // locale into a shell that was supposed to stall.
+    unstable_rethrow(error);
 
-    if (code && ROUTELESS_ROOT_PARAM_CODES.has(code)) {
-      return undefined;
+    if (
+      !(
+        error instanceof Error && ROUTELESS_ROOT_PARAM_ERROR.test(error.message)
+      )
+    ) {
+      captureException(error);
     }
 
-    // Everything else belongs to the caller. Next signals a stalled fallback
-    // shell by rejecting this promise with a `HangingPromiseRejectionError`,
-    // which carries a `digest` but no error code - swallowing it would report
-    // a phantom error and then bake a guessed locale into a shell that was
-    // supposed to stall. Framework control flow travels the same way.
-    throw error;
+    return undefined;
   }
 }
 

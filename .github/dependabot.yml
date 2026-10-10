@@ -70,12 +70,6 @@ updates:
       - dependency-name: drizzle-kit
       - dependency-name: drizzle-seed
 
-      # Pinned exact on purpose: `ai` pins `@ai-sdk/provider-utils` to an exact
-      # version transitively, and `patchedDependencies` keys the patch by that
-      # exact version. Bumping `ai` moves provider-utils and silently stops the
-      # patch applying, so the patch has to be regenerated in the same commit.
-      - dependency-name: ai
-
       # `@better-auth/passkey` depends on `^13.3.1` directly, so taking 14 here
       # installs a second copy rather than upgrading anything. Minors and
       # patches are still welcome. Drop this once better-auth moves to 14.

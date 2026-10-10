@@ -95,11 +95,6 @@
         "useHookAtTopLevel": "warn"
       },
       "nursery": {
-        // Inert today, deliberately. On top of the domain this rule checks the
-        // nearest package.json for react >= 19 itself, and `domains` does not
-        // lift that - so under `"react": "catalog:"` it reports nothing. Left
-        // enabled so it starts working by itself once biome understands
-        // catalogs, rather than us having to remember it exists.
         "useReactCompiler": "warn",
         "useSortedClasses": {
           "level": "warn",
