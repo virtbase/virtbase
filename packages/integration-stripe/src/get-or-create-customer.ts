@@ -66,7 +66,7 @@ const accountIds = new WeakMap<Stripe, Promise<string>>();
 const accountIdOf = (client: Stripe): Promise<string> => {
   const cached = accountIds.get(client);
 
-  if (cached) return cached;
+  if (cached !== undefined) return cached;
 
   const pending = client.accounts
     .retrieveCurrent()

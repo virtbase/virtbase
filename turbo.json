@@ -1,5 +1,5 @@
 {
-  "$schema": "https://v2-10-12.turborepo.dev/schema.json",
+  "$schema": "https://v2-11-7.turborepo.dev/schema.json",
   "ui": "tui",
   "tasks": {
     "topo": {
@@ -7,7 +7,48 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**"]
+      "outputs": ["dist/**"],
+      "env": [
+        "AI_GATEWAY_API_KEY",
+        "NEXT_PUBLIC_APP_NAME",
+        "NEXT_PUBLIC_APP_DOMAIN",
+        "BETTER_AUTH_SECRET",
+        "CONFIG_ENCRYPTION_KEY",
+        "DATABASE_URL",
+        "UPSTASH_REDIS_REST_URL",
+        "UPSTASH_REDIS_REST_TOKEN",
+        "RESEND_API_KEY",
+        "RESEND_WEBHOOK_SECRET",
+        "ABUSE_MAILBOX_DOMAIN",
+        "ABUSE_MAILBOX_SECRET",
+        "SMTP_HOST",
+        "SMTP_PORT",
+        "SMTP_USER",
+        "SMTP_PASSWORD",
+        "STRIPE_SECRET_KEY",
+        "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
+        "STRIPE_WEBHOOK_SECRET",
+        "NEXT_PUBLIC_STRIPE_ANONPAY_METHOD_ID",
+        "ANONPAY_TICKER_TO",
+        "ANONPAY_NETWORK_TO",
+        "ANONPAY_ADDRESS",
+        "ANONPAY_WEBHOOK_SECRET",
+        "CRON_SECRET",
+        "NOVNC_PROXY_URL",
+        "NOVNC_PROXY_SECRET",
+        "DISCORD_CLIENT_ID",
+        "DISCORD_CLIENT_SECRET",
+        "GITHUB_CLIENT_ID",
+        "GITHUB_CLIENT_SECRET",
+        "GOOGLE_CLIENT_ID",
+        "GOOGLE_CLIENT_SECRET",
+        "NEXT_PUBLIC_SENTRY_DSN",
+        "NEXT_PUBLIC_SENTRY_CSP_REPORT_URI",
+        "SENTRY_ORG",
+        "SENTRY_PROJECT",
+        "SENTRY_URL",
+        "NEXT_PUBLIC_VERCEL_ENV"
+      ]
     },
     "dev": {
       "cache": false,
