@@ -17,27 +17,26 @@
 
 import type { WebSocketData } from "@virtbase/validators";
 
-/**
- * Constructs a websocket URL (wss://) for a given Proxmox VE server and VM.
- * The URL can be used to the noVNC websocket endpoint of Proxmox VE.
- *
- * @returns The constructed websocket URL
- */
-export const constructWebsocketUrl = ({
-  host,
-  node,
-  vmid,
-  type,
-  port,
-  vncticket,
-}: Pick<WebSocketData, "host" | "node" | "vmid" | "type"> & {
-  port: number | string;
-  vncticket: string;
-}): URL => {
-  const url = new URL(`wss://${host}`);
-  url.pathname = `/api2/json/nodes/${node}/${type}/${vmid}/vncwebsocket`;
-  url.searchParams.set("port", `${port}`);
-  url.searchParams.set("vncticket", vncticket);
+type LogContext = Pick<WebSocketData, "serverId" | "userId" | "node" | "vmid">;
 
-  return url;
+/**
+ * The proxy's only way to write a log line.
+ *
+ * Callers may hand over a whole console payload: only these four fields are
+ * read out of it, so the tickets it also carries never reach the log.
+ */
+export const log = (
+  level: "info" | "warn" | "error",
+  message: string,
+  context?: LogContext,
+): void => {
+  if (!context) {
+    console[level](message);
+    return;
+  }
+
+  const { serverId, userId, node, vmid } = context;
+  console[level](
+    `${message} (server=${serverId} user=${userId} node=${node} vmid=${vmid})`,
+  );
 };

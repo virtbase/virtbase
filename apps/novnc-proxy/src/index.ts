@@ -15,145 +15,76 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { InvalidPayloadError, verifyPayload } from "./utils/verify-payload";
-import type {
-  ConnectionData,
-  ConnectUpstream,
-  Frame,
-} from "./utils/websocket-handlers";
-import {
-  createConnectionData,
-  createWebsocketHandlers,
-} from "./utils/websocket-handlers";
+/**
+ * The entrypoint, and the executable's command line:
+ *
+ *   novnc-proxy              serve consoles
+ *   novnc-proxy healthcheck  exit 0 if the proxy on PORT answers, 1 if not
+ *
+ * The image has no shell and no curl, so the executable is its own Docker
+ * `HEALTHCHECK`. Nothing here awaits at the top level, which `--bytecode`
+ * builds do not allow.
+ */
 
-const PORT = process.env.PORT || 8443;
-const NOVNC_PROXY_SECRET = process.env.NOVNC_PROXY_SECRET;
+import * as z from "zod";
+import { ConfigSchema, PortSchema } from "./config";
+import { log } from "./log";
+import { startServer } from "./server";
 
-/** Production wiring: a real websocket to the Proxmox node. */
-const connectUpstream: ConnectUpstream = (url, headers, listeners) => {
-  const pws = new WebSocket(url, { headers });
+/** Inside the 5s Docker gives a `HEALTHCHECK` before counting it as failed. */
+const HEALTHCHECK_TIMEOUT_MS = 3_000;
 
-  pws.addEventListener("open", () => listeners.onOpen());
-  pws.addEventListener("message", ({ data }) =>
-    listeners.onMessage(data as Frame),
-  );
-  pws.addEventListener("error", () => listeners.onError());
-  pws.addEventListener("close", ({ code }) => listeners.onClose(code));
+// A declaration rather than an arrow function, so that TypeScript knows
+// nothing runs after a call to it.
+function fail(message: string): never {
+  log("error", message);
+  return process.exit(1);
+}
 
-  return pws;
+const serve = (): void => {
+  const config = ConfigSchema.safeParse(process.env);
+  if (!config.success) {
+    fail(`Invalid configuration:\n${z.prettifyError(config.error)}`);
+  }
+
+  const { server, shutdown } = startServer(config.data);
+  log("info", `Listening on port ${server.port}`);
+
+  // SIGTERM is what `docker stop` sends.
+  const stop = (signal: NodeJS.Signals): void => {
+    log("info", `${signal} received, closing open consoles`);
+    void shutdown().then(() => process.exit(0));
+  };
+  process.once("SIGTERM", stop);
+  process.once("SIGINT", stop);
 };
 
-const handlers = createWebsocketHandlers({ connect: connectUpstream });
+const healthcheck = async (): Promise<never> => {
+  const port = PortSchema.safeParse(process.env.PORT);
+  if (!port.success) {
+    return fail(`Invalid PORT:\n${z.prettifyError(port.error)}`);
+  }
 
-/**
- * One generic refusal for every way a payload can be bad.
- *
- * Tampering, an outdated schema and an expired ticket all look identical from
- * outside, so probing the endpoint tells an attacker nothing about which part
- * of their forgery failed.
- */
-const invalidPayload = () =>
-  Response.json(
-    {
-      error: "Invalid payload",
-      code: 400,
-      issues: [],
-    },
-    { status: 400 },
-  );
+  try {
+    const response = await fetch(`http://127.0.0.1:${port.data}/api/status`, {
+      signal: AbortSignal.timeout(HEALTHCHECK_TIMEOUT_MS),
+    });
+    return response.ok
+      ? process.exit(0)
+      : fail(`Unhealthy: status ${response.status}`);
+  } catch (error) {
+    return fail(`Unhealthy: ${String(error)}`);
+  }
+};
 
-export const server = Bun.serve({
-  port: PORT,
-  routes: {
-    "/api/status": {
-      GET: () => {
-        return Response.json({
-          uptime: Math.round(Bun.nanoseconds() / 1e9),
-        });
-      },
-    },
-  },
-  async fetch(request, server) {
-    if (request.method !== "GET") {
-      return Response.json(
-        {
-          error: "Method not allowed. Supported methods: GET",
-          code: 405,
-          issues: [],
-        },
-        { status: 405 },
-      );
-    }
+// `Bun.argv` is `[bun, entrypoint, ...args]` under `bun run` and in the
+// compiled executable alike.
+const args = Bun.argv.slice(2);
 
-    try {
-      const params = new URL(request.url).searchParams;
-      const encryptedPayload = params.get("payload");
-
-      if (!encryptedPayload) {
-        return Response.json(
-          {
-            error: "Missing payload",
-            code: 400,
-            issues: [],
-          },
-          { status: 400 },
-        );
-      }
-
-      if (!NOVNC_PROXY_SECRET) {
-        // A misconfigured proxy, not a bad request. Kept distinct from the
-        // payload failures because it says nothing about the payload.
-        console.error("NOVNC_PROXY_SECRET environment variable is not set.");
-        return Response.json(
-          {
-            error: "Internal server error",
-            code: 500,
-            issues: [],
-          },
-          { status: 500 },
-        );
-      }
-
-      let payload: Awaited<ReturnType<typeof verifyPayload>>;
-      try {
-        payload = await verifyPayload({
-          payload: encryptedPayload,
-          secret: NOVNC_PROXY_SECRET,
-        });
-      } catch (error) {
-        console.error(
-          "Rejected a console payload:",
-          error instanceof InvalidPayloadError ? error.reason : error,
-        );
-        return invalidPayload();
-      }
-
-      server.upgrade(request, { data: createConnectionData(payload) });
-
-      return undefined;
-    } catch (error) {
-      // Prevent any crashes and hide the error to the client
-      console.error(
-        `An error occurred while trying to process a request:`,
-        error,
-      );
-
-      return Response.json(
-        {
-          error: "Internal server error",
-          code: 500,
-          issues: [],
-        },
-        { status: 500 },
-      );
-    }
-  },
-  websocket: {
-    perMessageDeflate: false,
-    sendPings: false,
-    data: {} as ConnectionData,
-    ...handlers,
-  },
-});
-
-console.log(`> Server is running on port ${PORT}`);
+if (args.length === 0) {
+  serve();
+} else if (args.length === 1 && args[0] === "healthcheck") {
+  void healthcheck();
+} else {
+  fail(`Unknown command "${args.join(" ")}"; expected none or "healthcheck"`);
+}

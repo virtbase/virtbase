@@ -51,9 +51,12 @@ missing one, so every key the example leaves blank has to be given a value or
 commented out.
 
 - Give a value to `BETTER_AUTH_SECRET`, `CRON_SECRET`, `STRIPE_SECRET_KEY`,
-  `STRIPE_WEBHOOK_SECRET`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY`,
-  `NOVNC_PROXY_URL` and `NOVNC_PROXY_SECRET`. Any non-empty string will do for
-  the ones you are not exercising; the feature behind it simply stays broken.
+  `STRIPE_WEBHOOK_SECRET`, `NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY` and
+  `NOVNC_PROXY_URL`. Any non-empty string will do for the ones you are not
+  exercising; the feature behind it simply stays broken.
+- `NOVNC_PROXY_SECRET` is the exception: it must be 64 hex characters, because
+  the noVNC proxy refuses to start with anything else. `bun setup` generates
+  one; otherwise use `openssl rand -hex 32`.
 - Point Redis at the container `docker-compose.yml` already runs:
   `UPSTASH_REDIS_REST_URL=http://localhost:8079` and
   `UPSTASH_REDIS_REST_TOKEN=example_token`.

@@ -4,6 +4,8 @@
   "type": "module",
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "compile": "bun build ./src/index.ts --compile --minify --sourcemap --bytecode --no-compile-autoload-dotenv --no-compile-autoload-bunfig --outfile dist/novnc-proxy",
+    "start": "bun --env-file=../../.env src/index.ts",
     "test": "bun --env-file=../../.env.test test --timeout 20000",
     "typecheck": "tsc --noEmit"
   },

@@ -1,0 +1,50 @@
+name: Release
+
+# release-please keeps one pull request per component open, built from the
+# conventional commits since that component's last release. Merging it bumps
+# the version, writes the changelog, tags `<component>-v<version>` and creates
+# the GitHub release. See release-please-config.json for the components.
+#
+# Publishing happens here rather than in a workflow triggered by the tag:
+# tags pushed with GITHUB_TOKEN do not start other workflows.
+
+on:
+  push:
+    branches: [main]
+
+concurrency:
+  group: release
+  cancel-in-progress: false
+
+jobs:
+  release-please:
+    name: Release pull requests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: write
+    outputs:
+      novnc-proxy-released: ${{ steps.release.outputs['apps/novnc-proxy--release_created'] }}
+      novnc-proxy-version: ${{ steps.release.outputs['apps/novnc-proxy--version'] }}
+      novnc-proxy-tag: ${{ steps.release.outputs['apps/novnc-proxy--tag_name'] }}
+    steps:
+      - uses: googleapis/release-please-action@v5
+        id: release
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json
+
+  novnc-proxy:
+    name: Publish novnc-proxy
+    needs: release-please
+    if: needs.release-please.outputs.novnc-proxy-released == 'true'
+    permissions:
+      contents: write
+      packages: write
+      id-token: write
+      attestations: write
+    uses: ./.github/workflows/novnc-proxy.yml
+    with:
+      version: ${{ needs.release-please.outputs.novnc-proxy-version }}
+      tag: ${{ needs.release-please.outputs.novnc-proxy-tag }}

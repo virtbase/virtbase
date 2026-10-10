@@ -1,0 +1,13 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "bootstrap-sha": "0199e1e5f44e0b2da010112a430b1b4120411820",
+  "include-component-in-tag": true,
+  "include-v-in-tag": true,
+  "packages": {
+    "apps/novnc-proxy": {
+      "release-type": "simple",
+      "component": "novnc-proxy",
+      "changelog-path": "CHANGELOG.md"
+    }
+  }
+}

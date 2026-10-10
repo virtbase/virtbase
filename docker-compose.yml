@@ -1,6 +1,10 @@
 name: "virtbase-dev"
 services:
+  # Pulls the published image; `docker compose build novnc-proxy` builds it from
+  # source instead. Pin a release with NOVNC_PROXY_VERSION, or use `edge` for
+  # the latest main.
   novnc-proxy:
+    image: ghcr.io/virtbase/novnc-proxy:${NOVNC_PROXY_VERSION:-latest}
     build:
       context: .
       dockerfile: apps/novnc-proxy/Dockerfile

@@ -1,0 +1,142 @@
+name: novnc-proxy image
+
+# One workflow, three ways in:
+#
+#   pull_request   build the image, push nothing - proves the Dockerfile works
+#   push to main   publish `edge` and `sha-<short>`, so unreleased changes can
+#                  be pulled before a release exists
+#   workflow_call  `release.yml` hands over a version: publish `X.Y.Z`, `X.Y`,
+#                  `X` and `latest`, and attach the binary to the GitHub release
+#
+# The proxy's tests and typecheck run in ci.yml with the rest of the
+# workspace, which gates merges. This workflow only builds and ships.
+
+on:
+  pull_request:
+    paths: &paths
+      - apps/novnc-proxy/**
+      # Compiled into the executable.
+      - packages/utils/**
+      - packages/validators/**
+      - bun.lock
+      - package.json
+      - .dockerignore
+      - .github/workflows/novnc-proxy.yml
+  push:
+    branches: [main]
+    paths: *paths
+  workflow_call:
+    inputs:
+      version:
+        description: The released version, without a leading v.
+        type: string
+        required: true
+      tag:
+        description: The git tag of the GitHub release to attach the binary to.
+        type: string
+        required: true
+
+concurrency:
+  group: novnc-proxy-image-${{ github.event_name }}-${{ github.ref }}-${{ inputs.version }}
+  # A release must never be cancelled half-way through publishing.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  IMAGE: ghcr.io/${{ github.repository_owner }}/novnc-proxy
+
+jobs:
+  image:
+    name: Build${{ github.event_name != 'pull_request' && ' and publish' || '' }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write # upload the binary to a release
+      packages: write # push to ghcr.io
+      id-token: write # sign the provenance attestation
+      attestations: write
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: docker/setup-buildx-action@v4
+
+      - name: Log in to ghcr.io
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v4
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # Release tags only when a version was handed over; `edge` and the sha tag
+      # only for pushes to main. Neither for pull requests, which push nothing.
+      - name: Compute tags and labels
+        id: meta
+        uses: docker/metadata-action@v6
+        with:
+          images: ${{ env.IMAGE }}
+          flavor: latest=false
+          tags: |
+            type=semver,pattern={{version}},value=${{ inputs.version }},enable=${{ inputs.version != '' }}
+            type=semver,pattern={{major}}.{{minor}},value=${{ inputs.version }},enable=${{ inputs.version != '' }}
+            type=semver,pattern={{major}},value=${{ inputs.version }},enable=${{ inputs.version != '' && !startsWith(inputs.version, '0.') }}
+            type=raw,value=latest,enable=${{ inputs.version != '' }}
+            type=edge,branch=main,enable=${{ github.event_name == 'push' }}
+            type=sha,format=short,enable=${{ github.event_name == 'push' }}
+          labels: |
+            org.opencontainers.image.title=novnc-proxy
+            org.opencontainers.image.description=Bridges noVNC browser consoles to Proxmox VE
+
+      - name: Build${{ github.event_name != 'pull_request' && ' and push' || '' }} the image
+        id: build
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: apps/novnc-proxy/Dockerfile
+          platforms: linux/amd64
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          provenance: mode=max
+          sbom: true
+          cache-from: type=gha,scope=novnc-proxy
+          cache-to: type=gha,scope=novnc-proxy,mode=max
+
+      - name: Attest the image
+        if: github.event_name != 'pull_request'
+        uses: actions/attest-build-provenance@v4
+        with:
+          subject-name: ${{ env.IMAGE }}
+          subject-digest: ${{ steps.build.outputs.digest }}
+          push-to-registry: true
+
+      # The `binary` stage of the same Dockerfile, so the attached binary is
+      # byte-for-byte the one inside the image - and comes from the warm cache.
+      - name: Export the binary
+        if: inputs.version != ''
+        uses: docker/build-push-action@v7
+        with:
+          context: .
+          file: apps/novnc-proxy/Dockerfile
+          platforms: linux/amd64
+          target: binary
+          outputs: type=local,dest=dist
+          cache-from: type=gha,scope=novnc-proxy
+
+      - name: Attach the binary to the release
+        if: inputs.version != ''
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAG: ${{ inputs.tag }}
+        run: |
+          name="novnc-proxy-${TAG#novnc-proxy-}-linux-x64"
+          mkdir "$name"
+          cp dist/novnc-proxy LICENSE.md "$name/"
+          tar -czf "$name.tar.gz" "$name"
+          sha256sum "$name.tar.gz" > "$name.tar.gz.sha256"
+          gh release upload "$TAG" "$name.tar.gz" "$name.tar.gz.sha256" --clobber
+
+      - name: Attest the binary
+        if: inputs.version != ''
+        uses: actions/attest-build-provenance@v4
+        with:
+          subject-path: novnc-proxy-*.tar.gz

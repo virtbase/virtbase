@@ -27,6 +27,15 @@ if [[ ! -f .env ]]; then
   warn "Resend or OAuth stays disabled until you fill them in."
 fi
 
+# The proxy refuses to start without a real 256-bit key, and the web app needs
+# the same value to mint console payloads, so generate one rather than leave a
+# placeholder that breaks both.
+if grep -q '^NOVNC_PROXY_SECRET=$' .env || grep -q '^NOVNC_PROXY_SECRET=""$' .env; then
+  log "generating NOVNC_PROXY_SECRET"
+  secret="$(openssl rand -hex 32)"
+  sed -i.bak "s/^NOVNC_PROXY_SECRET=.*/NOVNC_PROXY_SECRET=\"$secret\"/" .env && rm -f .env.bak
+fi
+
 # The cluster serves its API with its own CA, and the Proxmox client has no way
 # to skip verification. Recorded in .env so `bun dev` picks it up.
 CA_PATH="$ROOT/tooling/proxmox-cluster/pve-root-ca.pem"

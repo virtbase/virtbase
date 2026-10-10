@@ -220,9 +220,21 @@ updates:
     groups:
       actions:
         patterns: ["*"]
-# Docker is deliberately absent. Every image this repo builds on is a floating
-# tag - `oven/bun:1`, `dockurr/proxmox`, `redis:latest`,
-# `local-neon-http-proxy:main` - which dependabot cannot advance. The single
-# pinned image, `postgres:16-alpine` in the root compose file, backs local
+  # The novnc-proxy image: `oven/bun` builds the executable and distroless runs
+  # it. Both are pinned. A bump is a `fix` so release-please cuts a patch release
+  # carrying the new base. Keep `oven/bun` in step with `packageManager` in the
+  # root package.json - the executable embeds whichever Bun built it.
+  - package-ecosystem: docker
+    directory: /apps/novnc-proxy
+    schedule:
+      interval: weekly
+      day: monday
+    commit-message:
+      prefix: fix
+      include: scope
+
+# The other images this repo uses are floating tags - `dockurr/proxmox`,
+# `redis:latest`, `local-neon-http-proxy:main` - which dependabot cannot
+# advance. `postgres:16-alpine` in the root compose file backs local
 # development only, and bumping it would drift local Postgres away from the
 # Neon version production runs against.
