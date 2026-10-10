@@ -18,8 +18,6 @@ env:
   CI: "true"
   TURBO_TELEMETRY_DISABLED: "1"
   NEXT_TELEMETRY_DISABLED: "1"
-  TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-  TURBO_TEAM: ${{ vars.TURBO_TEAM }}
 
 jobs:
   commits:
@@ -43,10 +41,15 @@ jobs:
     name: Lint, types and boundaries
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v7
 
       - uses: ./.github/actions/setup-bun
+        with:
+          remote-cache: "true"
 
       - name: Lint
         run: bun check:ci
@@ -73,10 +76,15 @@ jobs:
     name: Unit and integration tests
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v7
 
       - uses: ./.github/actions/setup-bun
+        with:
+          remote-cache: "true"
 
       # No database service: `createTestDb()` is PGlite, an in-process Postgres.
       # Placeholder env comes from the committed `.env.test`.
@@ -117,10 +125,15 @@ jobs:
     name: Build
     runs-on: ubuntu-latest
     timeout-minutes: 30
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - uses: actions/checkout@v7
 
       - uses: ./.github/actions/setup-bun
+        with:
+          remote-cache: "true"
 
       - name: Restore the Next.js build cache
         id: next-cache
