@@ -1,5 +1,6 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "bunVersion": "1.4.x",
   "crons": [
     {
       "path": "/api/cron/delete-expired-iso-images",

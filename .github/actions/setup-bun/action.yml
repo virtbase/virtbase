@@ -1,0 +1,28 @@
+name: Set up Bun
+description: Installs the Bun version pinned in package.json and the workspace dependencies.
+
+runs:
+  using: composite
+  steps:
+    - uses: oven-sh/setup-bun@v2
+      with:
+        bun-version-file: package.json
+
+    - name: Restore the bun install cache
+      id: cache
+      uses: actions/cache/restore@v6
+      with:
+        path: ~/.bun/install/cache
+        key: bun-install-${{ runner.os }}-${{ hashFiles('bun.lock') }}
+        restore-keys: bun-install-${{ runner.os }}-
+
+    - name: Install dependencies
+      shell: bash
+      run: bun install --frozen-lockfile
+
+    - name: Save the bun install cache
+      if: github.ref == 'refs/heads/main' && steps.cache.outputs.cache-hit != 'true'
+      uses: actions/cache/save@v6
+      with:
+        path: ~/.bun/install/cache
+        key: ${{ steps.cache.outputs.cache-primary-key }}

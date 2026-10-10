@@ -19,7 +19,7 @@
     "rasterize-emojis": "bun scripts/rasterize-emojis.ts",
     "test": "bun --env-file=../../.env.test test --timeout 20000 --isolate",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
-    "with-env": "bun --env-file ../../.env --"
+    "with-env": "bun --bun --env-file ../../.env --"
   },
   "dependencies": {
     "@virtbase/db": "workspace:*",

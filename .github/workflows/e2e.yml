@@ -10,15 +10,14 @@ concurrency:
   group: e2e-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
+permissions:
+  contents: read
+
 jobs:
   playwright:
     name: Playwright
     runs-on: ubuntu-latest
     timeout-minutes: 45
-    # Deliberately advisory. E2E is the slowest and flakiest layer, and a browser
-    # timeout should not block a merge - `ci.yml` is the gate. Remove this once
-    # the suite has a track record.
-    continue-on-error: true
 
     services:
       postgres:
@@ -52,12 +51,7 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      - uses: oven-sh/setup-bun@v2
-        with:
-          bun-version-file: package.json
-
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
+      - uses: ./.github/actions/setup-bun
 
       # Cookies are scoped to `.virtbase.localhost`, so the suite must drive the
       # real hostnames; `localhost:3000` would never receive the session cookie.
@@ -91,7 +85,8 @@ jobs:
       # Playwright's own docs advise against caching browser binaries: restoring
       # the cache costs about as much as downloading them.
       - name: Install Playwright browsers
-        run: bunx playwright install --with-deps chromium
+        working-directory: apps/web
+        run: bun x playwright install --with-deps chromium
 
       - name: Run Playwright
         run: bun run test:e2e

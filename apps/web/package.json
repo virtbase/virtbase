@@ -5,7 +5,7 @@
   "scripts": {
     "build": "bun with-env next build",
     "clean": "git clean -xdf .cache .next .turbo node_modules src/app/.well-known",
-    "dev": "NODE_OPTIONS='--max-old-space-size=4096' bun with-env next dev",
+    "dev": "bun with-env next dev",
     "script": "bun with-env scripts/run.ts",
     "start": "bun with-env next start",
     "stripe:listen": "stripe listen --forward-to localhost:3000/api/stripe/webhook",
@@ -13,7 +13,7 @@
     "test:codegen": "playwright codegen app.virtbase.localhost:3000",
     "test:e2e": "playwright test",
     "typecheck": "bun with-env next typegen && tsc --noEmit",
-    "with-env": "bun --env-file ../../.env --"
+    "with-env": "bun --bun --env-file ../../.env --"
   },
   "dependencies": {
     "@better-auth/api-key": "catalog:auth",
