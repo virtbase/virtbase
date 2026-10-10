@@ -1,8 +1,0 @@
-{
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "buildCommand": "turbo -F @virtbase/db db:migrate && turbo build",
-  "github": {
-    "silent": true,
-    "autoJobCancelation": true
-  }
-}

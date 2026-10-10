@@ -1,6 +1,7 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "bunVersion": "1.4.x",
+  "buildCommand": "turbo -F @virtbase/db db:migrate && turbo build",
   "crons": [
     {
       "path": "/api/cron/delete-expired-iso-images",
