@@ -21,18 +21,18 @@
     "with-env": "bun --bun --env-file ../../.env --"
   },
   "dependencies": {
-    "@neondatabase/serverless": "^1.1.0",
+    "@neondatabase/serverless": "^1.2.0",
     "@virtbase/utils": "workspace:*",
     "base-x": "^5.0.1",
     "drizzle-orm": "1.0.0-rc.5-5935859",
-    "ws": "^8.21.3"
+    "ws": "^8.22.0"
   },
   "devDependencies": {
     "@electric-sql/pglite": "^0.5.8",
-    "@types/ws": "^8.18.1",
+    "@types/ws": "^8.18.2",
     "@virtbase/tsconfig": "workspace:*",
     "drizzle-kit": "1.0.0-rc.5-5935859",
-    "pg": "^8.23.0",
+    "pg": "^8.23.1",
     "typescript": "catalog:"
   }
 }
