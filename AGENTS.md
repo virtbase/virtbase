@@ -52,6 +52,13 @@ so a `#!/usr/bin/env node` binary never falls back to Node, and Vercel runs the
 functions on Bun through `bunVersion` in `apps/web/vercel.json`. V8 flags such
 as `--max-old-space-size` have no effect.
 
+Next traces a function's files with Node's export conditions, but Bun resolves
+the `bun` condition first. A server-external package whose `exports` has a
+`bun` entry therefore ships without the file Bun loads, and fails at runtime
+with `Cannot find module`. `outputFileTracingIncludes` in
+`apps/web/next.config.ts` adds those files back; `jose`, reached through
+`@vercel/oidc`, is the case today.
+
 ## Testing
 
 ```bash

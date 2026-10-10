@@ -161,6 +161,11 @@ const nextConfig: NextConfig = {
     deviceSizes: [640, 768, 1024, 1280, 1536],
     minimumCacheTTL: 2678400, // 31 days
   },
+  outputFileTracingIncludes: {
+    "/*": [
+      "../../node_modules/.bun/jose@*/node_modules/jose/dist/browser/**/*",
+    ],
+  },
   poweredByHeader: false,
   redirects: async () => [
     {
