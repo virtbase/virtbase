@@ -16,12 +16,17 @@
  */
 
 import { ADMIN_HOSTNAMES, API_HOSTNAMES, APP_HOSTNAMES } from "@virtbase/utils";
+import contentCollections from "fdx-source/browser";
 import type { NextRequest, ProxyConfig } from "next/server";
+import { hasLocale } from "next-intl";
 import createMiddleware from "next-intl/middleware";
+import { locales } from "@/i18n/config";
 import { routing } from "@/i18n/routing.public";
 import { AdminMiddleware } from "@/lib/middleware/admin";
 import { ApiMiddleware } from "@/lib/middleware/api";
 import { AppMiddleware } from "@/lib/middleware/app";
+import { isMissingContent } from "@/lib/middleware/utils/missing-content";
+import { rewriteToNotFound } from "@/lib/middleware/utils/not-found";
 import { parse } from "@/lib/middleware/utils/parse";
 import { ensureLocaleCookie } from "./lib/middleware/ensure-locale-cookie";
 
@@ -36,6 +41,12 @@ export const config: ProxyConfig = {
 };
 
 const intlMiddleware = createMiddleware(routing);
+
+const content = {
+  marketing: contentCollections.marketingCollection.raw,
+  legal: contentCollections.legalCollection.raw,
+  help: contentCollections.helpArticleCollection.raw,
+};
 
 export default async function proxy(req: NextRequest) {
   const { domain } = parse(req);
@@ -53,6 +64,14 @@ export default async function proxy(req: NextRequest) {
   }
 
   // for public pages
+  const [locale, ...segments] = req.nextUrl.pathname.split("/").filter(Boolean);
+  if (
+    hasLocale(locales, locale) &&
+    isMissingContent(content, locale, segments)
+  ) {
+    return rewriteToNotFound(req, locale);
+  }
+
   const res = intlMiddleware(req);
 
   // Ensure that the locale cookie is set the first time the user visits the

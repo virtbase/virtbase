@@ -221,6 +221,25 @@ loader with a fallback reports every locale whether or not the file is there.
 `hreflang` and the sitemap must use `getDocumentLocales()`. Advertising a locale
 that silently serves English is worse than advertising nothing.
 
+### Not-found responses
+
+With Cache Components the static shell, and with it the status code, is sent
+before a page runs. A `notFound()` in a page or layout therefore renders the 404
+UI with HTTP 200 and a `noindex` tag - a soft 404. Real 404s are decided in the
+proxy, before anything renders:
+
+- `lib/middleware/utils/missing-content.ts` checks a locale-prefixed public path
+  against the Fumadocs document lists (`.source/browser.ts`, which lists files
+  without loading them).
+- `rewriteToNotFound()` rewrites to `/`, the one path no route matches, so Next
+  answers with `global-not-found.tsx` and a 404. Adding an `app/page.tsx` would
+  break every 404 on the site.
+- A new static folder under `(public)/[locale]` must be listed in
+  `ROUTED_SEGMENTS`, or the proxy treats it as a missing marketing page. A test
+  fails until it is.
+- The admin console uses the same rewrite for signed-in non-admins, reading the
+  session itself when Better Auth's cookie cache has expired.
+
 ## Configuration platform
 
 Integration configuration lives in Postgres, not in the environment.
