@@ -161,9 +161,6 @@ jobs:
           NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_00000000000000000000000000
           ENVFILE
 
-      - name: Build the workspace packages
-        run: bun turbo run build --filter='!@virtbase/web'
-
       # The web app is built on its own and stops after bundling.
       #
       # A full `next build` ends in a prerender pass that evaluates pages, and

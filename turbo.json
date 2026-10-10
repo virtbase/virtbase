@@ -7,12 +7,11 @@
     },
     "build": {
       "dependsOn": ["^build"],
-      "outputs": [".cache/build.tsbuildinfo", "dist/**"]
+      "outputs": ["dist/**"]
     },
     "dev": {
-      "dependsOn": ["^dev"],
       "cache": false,
-      "persistent": false
+      "persistent": true
     },
     "//#check": {},
     "//#check:boundaries": {},
@@ -28,7 +27,7 @@
       "outputs": ["playwright-report/**", "test-results/**", "blob-report/**"]
     },
     "typecheck": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["^topo"],
       "outputs": [".cache/tsbuildinfo.json"]
     },
     "clean": {

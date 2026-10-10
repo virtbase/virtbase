@@ -124,8 +124,6 @@
     // Workspace packages expose their entry points through "exports" only, and
     // dependency-cruiser disables that field by default — without this, every
     // cross-package import silently fails to resolve and no layer rule fires.
-    // "types" is deliberately absent from conditionNames: the exports maps
-    // point it at paths tsc does not actually emit, which breaks resolution.
     "enhancedResolveOptions": {
       "exportsFields": ["exports"],
       "conditionNames": ["import", "require", "node", "default"]

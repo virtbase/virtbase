@@ -102,7 +102,7 @@ yours does not, add the four names to `/etc/hosts`.
 ### Everyday commands
 
 ```bash
-bun dev              # all packages in watch mode
+bun dev              # the web app; packages are compiled from source
 bun check:write      # lint and format
 bun typecheck        # TypeScript
 bun run test         # unit and integration tests
