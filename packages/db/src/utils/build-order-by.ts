@@ -15,9 +15,9 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import type { SortableColumns } from "@virtbase/utils";
 import type { AnyColumn, SQL, Table } from "drizzle-orm";
 import { asc, desc, getTableColumns } from "drizzle-orm";
-import type { SortableColumns } from "./types";
 
 /**
  * Converts snake_case to camelCase for column lookup.

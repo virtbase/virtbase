@@ -66,6 +66,16 @@
       }
     },
     {
+      "name": "foundation-imports-nothing",
+      "comment": "Layer 0 is the foundation every other layer builds on. @virtbase/validators and @virtbase/utils may depend on each other and nothing else in the repository.",
+      "severity": "error",
+      "from": { "path": "^packages/(validators|utils)/" },
+      "to": {
+        "path": "^(packages|apps)/",
+        "pathNot": "^packages/(validators|utils)/"
+      }
+    },
+    {
       "name": "ports-are-leaves",
       "comment": "Layer 2 is interfaces only. @virtbase/ports may depend on contracts and utils and nothing else — a runtime dependency here would leak into every integration.",
       "severity": "error",

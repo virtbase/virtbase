@@ -19,3 +19,4 @@ export * from "./cloud-init";
 export * from "./constants";
 export * from "./functions";
 export * from "./guest";
+export * from "./types";

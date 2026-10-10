@@ -15,7 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { SortableColumns } from "@virtbase/db/utils";
+import type { SortableColumns } from "@virtbase/utils";
 import * as z from "zod";
 import { PaginationSchema } from "./pagination";
 import { ObjectTimestampSchema } from "./timestamps";
