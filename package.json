@@ -121,7 +121,7 @@
     "setup:cluster": "./scripts/setup.sh --cluster",
     "stripe:listen": "turbo -F @virtbase/web stripe:listen",
     "test": "turbo run test",
-    "test:coverage": "turbo run test --force -- --coverage --coverage-reporter=text --coverage-reporter=lcov",
+    "test:coverage": "turbo run test -- --coverage --coverage-reporter=text --coverage-reporter=lcov",
     "test:e2e": "turbo -F @virtbase/web test:e2e",
     "typecheck": "turbo run typecheck",
     "ui-add": "turbo run ui-add"
