@@ -139,8 +139,9 @@ We love our contributors! Here's how you can contribute:
 
 | Package |   Version    |
 |---------|--------------|
-| node    | >= v24.15.0  |
 | bun     | >= v1.4.2    |
+
+Node.js is not needed: everything, Next.js included, runs on Bun.
 
 ## Repo Activity
 

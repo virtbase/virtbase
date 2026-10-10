@@ -30,15 +30,27 @@ Before editing or creating files in any subdirectory (e.g., `packages/*`, `apps/
 ## Linting and Types
 
 ```bash
-bun check              # Full lint
+bun check              # Lint and format (editor rule set)
+bun check:ci           # As CI runs it: adds the type-aware rules (~15 s)
 bun check:write        # Auto-fix lint issues
 bun typecheck          # TypeScript type checking
 bun check:boundaries   # Architecture layer rules (dependency-cruiser)
 ```
 
-`check:boundaries` runs dependency-cruiser through bun rather than node, because
-dependency-cruiser only supports node `^22||^24||>=26` and refuses to start on
-node 25.
+`biome.jsonc` leaves out `noFloatingPromises`, `noMisusedPromises` and
+`noImportCycles`: they need type inference and a scan of the whole module
+graph, which kept the editor's language server above 1.8 GB. `biome.ci.jsonc`
+extends it with those rules, and CI runs `bun check:ci`.
+
+`check:boundaries` runs dependency-cruiser from `tooling/boundaries`, a
+standalone install that pins TypeScript 6 - dependency-cruiser cannot load
+TypeScript 7 and otherwise skips every `.ts` file. See
+`tooling/boundaries/README.md`.
+
+Everything runs on Bun, Next.js included: the `with-env` scripts pass `--bun`,
+so a `#!/usr/bin/env node` binary never falls back to Node, and Vercel runs the
+functions on Bun through `bunVersion` in `apps/web/vercel.json`. V8 flags such
+as `--max-old-space-size` have no effect.
 
 ## Architecture layering
 
@@ -364,10 +376,7 @@ Always treat environment variable values as sensitive unless they are known test
 - **Choose the right verification method for each change.** This may include running unit tests, integration tests, type checking, linting, building the project, or inspecting runtime behavior depending on what was changed.
 - **When unclear how to verify a change, ask the user.** If there is no obvious test or verification method for a particular change, ask the user how they would like it verified before moving on.
 
-**Pre-validate before committing** to avoid slow lint-staged failures (~2 min each):
-
-```bash
-# Run exactly what the pre-commit hook runs on your changed files:
-bun biome check --write --no-errors-on-unmatched --files-ignore-unknown=true
-```
+The pre-commit hook only runs lint-staged (Biome on the staged files). Tests,
+types, boundaries and the type-aware lint rules run in CI; run the matching
+`bun` command locally when a change touches them.
 
