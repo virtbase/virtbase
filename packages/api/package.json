@@ -81,7 +81,7 @@
     "clean": "git clean -xdf .cache .turbo dist node_modules",
     "embed-fonts": "bun scripts/embed-fonts.ts",
     "dev": "tsc",
-    "test": "bun --env-file=../../.env.test test --timeout 20000",
+    "test": "bun --env-file=../../.env.test test --timeout 20000 --parallel=2",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false",
     "with-env": "bun --env-file ../../.env --"
   },
