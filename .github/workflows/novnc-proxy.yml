@@ -8,8 +8,8 @@ name: novnc-proxy image
 #   workflow_call  `release.yml` hands over a version: publish `X.Y.Z`, `X.Y`,
 #                  `X` and `latest`, and attach the binary to the GitHub release
 #
-# The proxy's tests and typecheck run in ci.yml with the rest of the
-# workspace, which gates merges. This workflow only builds and ships.
+# The proxy's tests and typecheck run first, in a job without write access,
+# so nothing is published from a commit that fails them.
 
 on:
   pull_request:
@@ -22,6 +22,7 @@ on:
       - package.json
       - .dockerignore
       - .github/workflows/novnc-proxy.yml
+      - .github/actions/setup-bun/**
   push:
     branches: [main]
     paths: *paths
@@ -45,7 +46,25 @@ env:
   IMAGE: ghcr.io/${{ github.repository_owner }}/novnc-proxy
 
 jobs:
+  verify:
+    name: Typecheck and test
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: ./.github/actions/setup-bun
+
+      - name: Typecheck and test the proxy and what it compiles in
+        env:
+          CI: "true"
+          TURBO_TELEMETRY_DISABLED: "1"
+        run: bun turbo run typecheck test --filter=@virtbase/novnc-proxy...
+
   image:
+    needs: verify
     name: Build${{ github.event_name != 'pull_request' && ' and publish' || '' }}
     runs-on: ubuntu-latest
     timeout-minutes: 30
