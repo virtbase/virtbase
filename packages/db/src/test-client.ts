@@ -63,7 +63,7 @@ function schemaTemplate() {
     const path = await templatePath();
     const cached = Bun.file(path);
     if (await cached.exists()) {
-      return new Blob([await cached.bytes()]);
+      return cached;
     }
 
     // drizzle-kit v1 splits APIs by driver (`api-postgres` replaces `api`). Load lazily
@@ -83,7 +83,7 @@ function schemaTemplate() {
     // `link` rather than `rename`: the first finished build wins and the file is
     // never replaced while another process may be reading it.
     const partial = `${path}.${process.pid}`;
-    await Bun.write(partial, dump);
+    await Bun.write(partial, await dump.arrayBuffer());
     await link(partial, path).catch((error) => {
       if (error.code !== "EEXIST") throw error;
     });
