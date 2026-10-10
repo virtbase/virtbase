@@ -27,7 +27,7 @@
     "@tanstack/react-table": "^9.2.4",
     "@types/bun": "1.4.2",
     "@virtbase/proxmox-api": "^2.0.0",
-    "next": "^16.3.4",
+    "next": "^16.3.8",
     "next-themes": "^0.4.6",
     "nuqs": "^2.10.1",
     "recharts": "^3.10.1",
@@ -82,11 +82,12 @@
   ],
   "license": "AGPL-3.0-or-later",
   "overrides": {
-    "undici@>=7.0.0 <7.29.0": "7.29.0",
+    "undici@>=7.0.0 <7.29.1": "7.29.1",
     "nanoid@>=4.0.0 <5.1.16": "5.1.16",
-    "next@<16.2.11": "16.3.4",
+    "next@<16.3.8": "16.3.8",
     "esbuild@>=0.27.3 <0.28.1": "0.28.2",
-    "@ai-sdk/provider-utils@>=4.0.0-beta.10 <4.0.33": "4.0.33"
+    "@ai-sdk/provider-utils@>=4.0.0-beta.10 <4.0.33": "4.0.33",
+    "devalue@<5.9.3": "5.9.3"
   },
   "packageManager": "bun@1.4.2",
   "patchedDependencies": {
