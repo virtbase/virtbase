@@ -10,7 +10,6 @@
     "@commitlint/cli": "^21.2.2",
     "@commitlint/config-conventional": "^21.2.2",
     "@types/bun": "catalog:",
-    "dependency-cruiser": "^18.2.0",
     "husky": "^9.1.7",
     "lint-staged": "^17.5.0",
     "turbo": "^2.10.12"
@@ -97,7 +96,8 @@
   "scripts": {
     "build": "turbo run build",
     "check": "biome check .",
-    "check:boundaries": "bun node_modules/dependency-cruiser/bin/dependency-cruise.mjs packages apps --config .dependency-cruiser.jsonc --output-type err",
+    "check:boundaries": "bun install --cwd tooling/boundaries --frozen-lockfile --silent && bun tooling/boundaries/node_modules/dependency-cruiser/bin/dependency-cruise.mjs packages apps --config .dependency-cruiser.jsonc --output-type err",
+    "check:ci": "biome ci --config-path=biome.ci.jsonc .",
     "check:unsafe": "biome check --write --unsafe .",
     "check:write": "biome check --write .",
     "clean": "git clean -xdf node_modules",
@@ -130,6 +130,7 @@
   "workspaces": [
     "apps/*",
     "packages/*",
-    "tooling/*"
+    "tooling/tailwind",
+    "tooling/typescript"
   ]
 }

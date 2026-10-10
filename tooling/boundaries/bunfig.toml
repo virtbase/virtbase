@@ -1,0 +1,4 @@
+# A flat node_modules, so `typescript` sits next to `dependency-cruiser` and its
+# runtime `require("typescript")` finds 6.x instead of the repository's 7.x.
+[install]
+linker = "hoisted"

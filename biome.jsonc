@@ -70,7 +70,6 @@
       "preset": "recommended",
       "suspicious": {
         "noArrayIndexKey": "off",
-        "noImportCycles": "warn",
         "noImplicitAnyLet": "warn",
         "noDuplicateObjectKeys": "warn",
         "noTsIgnore": "error",
@@ -96,8 +95,6 @@
         "useHookAtTopLevel": "warn"
       },
       "nursery": {
-        "noMisusedPromises": "error",
-        "noFloatingPromises": "error",
         // Inert today, deliberately. On top of the domain this rule checks the
         // nearest package.json for react >= 19 itself, and `domains` does not
         // lift that - so under `"react": "catalog:"` it reports nothing. Left
