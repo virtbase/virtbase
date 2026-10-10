@@ -31,6 +31,7 @@ import {
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import { useExtracted } from "next-intl";
+import { Suspense } from "react";
 import { paths } from "@/lib/paths";
 
 const useItems = () => {
@@ -63,8 +64,7 @@ const useItems = () => {
   ] as const;
 };
 
-export function AppSidebarMenu() {
-  const pathname = usePathname();
+function AppSidebarMenuItems({ pathname }: { pathname: string | null }) {
   const items = useItems();
 
   return (
@@ -72,7 +72,8 @@ export function AppSidebarMenu() {
       {items.map((item, index) => {
         const href = item.path.getHref();
         const isActive =
-          href === "/" ? pathname === href : pathname.startsWith(href);
+          pathname !== null &&
+          (href === "/" ? pathname === href : pathname.startsWith(href));
 
         return (
           <SidebarMenuItem key={index}>
@@ -82,7 +83,7 @@ export function AppSidebarMenu() {
               tooltip={item.title}
               isActive={isActive}
             >
-              <NextLink href={item.path.getHref()} prefetch={false}>
+              <NextLink href={item.path.getHref()}>
                 <item.icon
                   className="text-muted-foreground/65 group-data-[active=true]/menu-button:text-primary"
                   size={22}
@@ -95,5 +96,17 @@ export function AppSidebarMenu() {
         );
       })}
     </SidebarMenu>
+  );
+}
+
+function ActiveAppSidebarMenu() {
+  return <AppSidebarMenuItems pathname={usePathname()} />;
+}
+
+export function AppSidebarMenu() {
+  return (
+    <Suspense fallback={<AppSidebarMenuItems pathname={null} />}>
+      <ActiveAppSidebarMenu />
+    </Suspense>
   );
 }

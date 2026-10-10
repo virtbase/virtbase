@@ -404,7 +404,6 @@ function NoRenewalEmpty({ endDate }: { endDate: string | null }) {
         </a>
         <NextLink
           href={paths.app.account.settings.billing.getHref()}
-          prefetch={false}
           className="text-muted-foreground text-sm underline underline-offset-4 hover:text-primary"
         >
           {t("Manage payment methods")}

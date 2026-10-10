@@ -91,7 +91,6 @@ export function AbuseCaseRow({ abuseCase }: { abuseCase: AbuseCaseSummary }) {
           <div className="flex min-w-0 items-center gap-2">
             <NextLink
               href={href}
-              prefetch={false}
               className="min-w-0 truncate font-semibold leading-6"
             >
               {abuseCase.title}
@@ -151,7 +150,7 @@ export function AbuseCaseRow({ abuseCase }: { abuseCase: AbuseCaseSummary }) {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               <DropdownMenuItem asChild>
-                <NextLink href={href} prefetch={false}>
+                <NextLink href={href}>
                   <LucideEye aria-hidden="true" />
                   <span>{t("View case")}</span>
                 </NextLink>

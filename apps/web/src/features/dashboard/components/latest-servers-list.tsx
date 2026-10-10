@@ -54,7 +54,6 @@ export function LatestServersList() {
               <NextLink
                 href={paths.app.servers.overview.getHref(server.id)}
                 className="truncate font-medium text-sm outline-none transition-all duration-300 hover:text-accent-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
-                prefetch={false}
               >
                 {server.name}
               </NextLink>
@@ -78,7 +77,6 @@ export function LatestServersList() {
             <NextLink
               href={paths.app.servers.overview.getHref(server.id)}
               className="shrink-0 outline-none transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
-              prefetch={false}
             >
               <LucideChevronRight
                 aria-hidden="true"

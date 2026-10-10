@@ -16,7 +16,6 @@
  */
 
 import { Skeleton } from "@virtbase/ui/skeleton";
-import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
 import { ActiveAbuseCases } from "./active-abuse-cases";
@@ -32,14 +31,12 @@ export function ActiveAbuseCasesCard() {
   void prefetch(trpc.abuse.list.queryOptions());
 
   return (
-    <HydrateClient>
-      {/* No error fallback: this card is not what the dashboard is for, and a
-          failed abuse query should not put an error box above the servers. */}
-      <ErrorBoundary fallback={null}>
-        <Suspense fallback={<Skeleton className="h-28 w-full" />}>
-          <ActiveAbuseCases />
-        </Suspense>
-      </ErrorBoundary>
-    </HydrateClient>
+    // No error fallback: this card is not what the dashboard is for, and a
+    // failed abuse query should not put an error box above the servers.
+    <ErrorBoundary fallback={null}>
+      <HydrateClient fallback={<Skeleton className="h-28 w-full" />}>
+        <ActiveAbuseCases />
+      </HydrateClient>
+    </ErrorBoundary>
   );
 }

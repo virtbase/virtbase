@@ -47,7 +47,7 @@ import { Skeleton } from "@virtbase/ui/skeleton";
 import { Spinner } from "@virtbase/ui/spinner";
 import { formatBytes } from "@virtbase/utils";
 import { useExtracted, useFormatter, useNow } from "next-intl";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import { toast } from "sonner";
 import { ItemRow } from "@/features/account/components/item-row";
 import { StepUpDialog } from "@/features/account/components/step-up-dialog";
@@ -57,10 +57,17 @@ import {
 } from "@/features/account/hooks/privacy/data-export";
 import { CopyButton } from "@/ui/copy-button";
 
-export function DataExportCard() {
+function RequestedAt({ date }: { date: Date }) {
   const t = useExtracted();
   const format = useFormatter();
   const now = useNow({ updateInterval: 60_000 });
+
+  return t("Requested {date}", { date: format.relativeTime(date, now) });
+}
+
+export function DataExportCard() {
+  const t = useExtracted();
+  const format = useFormatter();
 
   const { data, isPending: isLoading } = useLatestDataExport();
   const requestExport = useRequestDataExport();
@@ -183,20 +190,22 @@ export function DataExportCard() {
                 {statusLabels[current.status]}
               </p>
               <p className="text-muted-foreground text-sm leading-none">
-                {current.status === "ready" && current.byte_size
-                  ? t("{size}, available until {date}", {
-                      size: formatBytes(current.byte_size, {
-                        formatter: format,
-                      }),
-                      date: format.dateTime(current.expires_at, {
-                        dateStyle: "long",
-                      }),
-                    })
-                  : current.status === "failed"
-                    ? t("Please try again, or contact support.")
-                    : t("Requested {date}", {
-                        date: format.relativeTime(current.created_at, now),
-                      })}
+                {current.status === "ready" && current.byte_size ? (
+                  t("{size}, available until {date}", {
+                    size: formatBytes(current.byte_size, {
+                      formatter: format,
+                    }),
+                    date: format.dateTime(current.expires_at, {
+                      dateStyle: "long",
+                    }),
+                  })
+                ) : current.status === "failed" ? (
+                  t("Please try again, or contact support.")
+                ) : (
+                  <Suspense>
+                    <RequestedAt date={current.created_at} />
+                  </Suspense>
+                )}
               </p>
             </ItemRow>
           ) : (

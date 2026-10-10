@@ -24,7 +24,6 @@ import {
 } from "@virtbase/ui/card";
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { useExtracted } from "next-intl";
-import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { LatestInvoicesList } from "@/features/dashboard/components/latest-invoices-list";
 import { defaultGetLatestInvoicesQuery } from "@/features/dashboard/hooks/use-latest-invoices";
@@ -45,13 +44,11 @@ export function LatestInvoicesCard() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <HydrateClient>
-          <ErrorBoundary fallback={<GenericError className="border" />}>
-            <Suspense fallback={<Skeleton className="h-48 w-full" />}>
-              <LatestInvoicesList />
-            </Suspense>
-          </ErrorBoundary>
-        </HydrateClient>
+        <ErrorBoundary fallback={<GenericError className="border" />}>
+          <HydrateClient fallback={<Skeleton className="h-48 w-full" />}>
+            <LatestInvoicesList />
+          </HydrateClient>
+        </ErrorBoundary>
       </CardContent>
     </Card>
   );

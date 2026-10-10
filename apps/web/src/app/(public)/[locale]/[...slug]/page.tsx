@@ -52,6 +52,9 @@ export async function generateStaticParams() {
     }));
 }
 
+// instant = false: kept on purpose - the whole page is one cached document for this URL, so there is no shared shell to prefetch
+export const instant = false;
+
 export async function generateMetadata({
   params,
 }: PageProps<"/[locale]/[...slug]">): Promise<Metadata> {

@@ -15,8 +15,15 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { ServerActionsRow } from "@/features/servers/components/server-actions-row";
-import { ServerLabel } from "@/features/servers/components/server-label";
+import { Suspense } from "react";
+import {
+  ServerActionsRow,
+  ServerActionsRowSkeleton,
+} from "@/features/servers/components/server-actions-row";
+import {
+  ServerLabel,
+  ServerLabelSkeleton,
+} from "@/features/servers/components/server-label";
 import { ServerNav } from "@/features/servers/components/server-nav";
 import { ServerStatusBar } from "@/features/servers/components/server-status-bar";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
@@ -27,12 +34,22 @@ export default function ServersLayout({
 }: LayoutProps<"/app.virtbase.com/[locale]/servers/[id]">) {
   return (
     <DashboardLayout
-      leftSide={<ServerLabel />}
-      rightSide={<ServerActionsRow />}
+      leftSide={
+        <Suspense fallback={<ServerLabelSkeleton />}>
+          <ServerLabel />
+        </Suspense>
+      }
+      rightSide={
+        <Suspense fallback={<ServerActionsRowSkeleton />}>
+          <ServerActionsRow />
+        </Suspense>
+      }
     >
       <div className="space-y-4 overflow-clip">
         <ServerNav params={params} />
-        <ServerStatusBar />
+        <Suspense>
+          <ServerStatusBar />
+        </Suspense>
         {children}
       </div>
     </DashboardLayout>

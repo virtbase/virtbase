@@ -56,6 +56,10 @@ const ServerMountDialog = dynamic(() => import("./server-mount-dialog"), {
   ssr: false,
 });
 
+export function ServerActionsRowSkeleton() {
+  return <Skeleton className="h-9 w-32" />;
+}
+
 export function ServerActionsRow() {
   const t = useExtracted();
   const { action, setAction } = useServerActionState();
@@ -68,7 +72,7 @@ export function ServerActionsRow() {
   const { mutate: changeStatus } = useUpdateServerStatus();
 
   if (isPending || !status) {
-    return <Skeleton className="h-9 w-32" />;
+    return <ServerActionsRowSkeleton />;
   }
 
   return (

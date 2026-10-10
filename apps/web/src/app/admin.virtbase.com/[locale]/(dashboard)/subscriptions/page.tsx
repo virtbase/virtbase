@@ -33,8 +33,6 @@ import { SubscriptionsTableCard } from "@/features/admin/components/subscription
 import { GenericError } from "@/ui/generic-error";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
 
-export const instant = false;
-
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();
 

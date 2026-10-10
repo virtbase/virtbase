@@ -15,12 +15,24 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { DataTableSkeleton } from "@virtbase/ui/data-table";
 import type { SortableColumns } from "@virtbase/utils";
 import type { Invoice } from "@virtbase/validators";
 import type { SearchParams } from "nuqs";
 import { InvoicesTable } from "@/features/invoices/components/invoices-table";
 import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
 import { searchParamsCache } from "../lib/validations";
+
+export function InvoicesCardSkeleton() {
+  return (
+    <DataTableSkeleton
+      columnCount={4}
+      filterCount={2}
+      cellWidths={["10rem", "10rem", "10rem", "6rem"]}
+      shrinkZero
+    />
+  );
+}
 
 export async function InvoicesCard(props: {
   searchParams: Promise<SearchParams>;
@@ -39,7 +51,7 @@ export async function InvoicesCard(props: {
   prefetch(trpc.invoices.list.queryOptions(refinedSearch));
 
   return (
-    <HydrateClient>
+    <HydrateClient fallback={<InvoicesCardSkeleton />}>
       <InvoicesTable search={refinedSearch} />
     </HydrateClient>
   );

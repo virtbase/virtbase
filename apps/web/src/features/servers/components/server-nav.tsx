@@ -16,7 +16,7 @@
  */
 
 import { Suspense } from "react";
-import { ServerNavView } from "./server-nav-view";
+import { ServerNavItems, ServerNavView } from "./server-nav-view";
 
 /**
  * The server tab bar, resolved from the route rather than from a client hook.
@@ -39,7 +39,7 @@ async function ResolvedServerNav({
 
 /** The nav as it appears before the id is known - complete, but inert. */
 function ServerNavFallback() {
-  return <ServerNavView serverId={null} />;
+  return <ServerNavItems serverId={null} segment={null} />;
 }
 
 export function ServerNav({ params }: { params: Promise<{ id: string }> }) {

@@ -21,13 +21,15 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
 } from "@virtbase/ui/breadcrumb";
-import { DataTableSkeleton } from "@virtbase/ui/data-table";
 import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { useExtracted } from "next-intl";
 import { getExtracted } from "next-intl/server";
 import { Suspense } from "react";
-import { InvoicesCard } from "@/features/invoices/components/invoices-card";
+import {
+  InvoicesCard,
+  InvoicesCardSkeleton,
+} from "@/features/invoices/components/invoices-card";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
 
 export async function generateMetadata(): Promise<Metadata> {
@@ -56,16 +58,7 @@ export default function Page({
         </Breadcrumb>
       }
     >
-      <Suspense
-        fallback={
-          <DataTableSkeleton
-            columnCount={4}
-            filterCount={2}
-            cellWidths={["10rem", "10rem", "10rem", "6rem"]}
-            shrinkZero
-          />
-        }
-      >
+      <Suspense fallback={<InvoicesCardSkeleton />}>
         <InvoicesCard searchParams={searchParams} />
       </Suspense>
     </DashboardLayout>

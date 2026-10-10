@@ -117,7 +117,6 @@ export function ServersList() {
                           <Link
                             href={paths.app.servers.overview.getHref(server.id)}
                             className="min-w-0 truncate font-semibold text-sm leading-6"
-                            prefetch={false}
                           >
                             {server.name}
                           </Link>
@@ -189,7 +188,6 @@ export function ServersList() {
                       <Link
                         href={paths.app.servers.overview.getHref(server.id)}
                         className="flex items-center gap-2"
-                        prefetch={false}
                       >
                         <LucideEye aria-hidden="true" />
                         <span>{t("View")}</span>
@@ -227,7 +225,6 @@ export function ServersList() {
                       <Link
                         href={paths.app.servers.plan.getHref(server.id)}
                         className="flex items-center gap-2"
-                        prefetch={false}
                       >
                         <LucideClock aria-hidden="true" />
                         <span>{t("Renew")}</span>

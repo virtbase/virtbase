@@ -22,6 +22,9 @@ import { getExtracted } from "next-intl/server";
 import { verifyRenderSession } from "@/features/admin/api/verify-session";
 import { AdminSidebar } from "@/features/admin/components/admin-sidebar";
 
+// instant = false: kept on purpose - the session gate runs before any admin chrome renders
+export const instant = false;
+
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();
 

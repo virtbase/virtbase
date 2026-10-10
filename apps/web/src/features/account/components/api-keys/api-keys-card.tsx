@@ -30,7 +30,6 @@ import { Skeleton } from "@virtbase/ui/skeleton";
 import { PUBLIC_DOMAIN } from "@virtbase/utils";
 import { headers } from "next/headers";
 import { useExtracted } from "next-intl";
-import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { auth } from "@/lib/auth/server";
 import { HydrateClient } from "@/lib/trpc/server";
@@ -67,19 +66,15 @@ export function APIKeysCard() {
         </CardAction>
       </CardHeader>
       <CardContent>
-        <HydrateClient>
-          <ErrorBoundary fallback={<GenericError className="border" />}>
-            <Suspense fallback={<Skeleton className="-m-px h-72 w-full" />}>
-              <ApiKeysList
-                promise={headersPromise.then((headers) =>
-                  auth.api
-                    .listApiKeys({ headers })
-                    .then((data) => data.apiKeys),
-                )}
-              />
-            </Suspense>
-          </ErrorBoundary>
-        </HydrateClient>
+        <ErrorBoundary fallback={<GenericError className="border" />}>
+          <HydrateClient fallback={<Skeleton className="-m-px h-72 w-full" />}>
+            <ApiKeysList
+              promise={headersPromise.then((headers) =>
+                auth.api.listApiKeys({ headers }).then((data) => data.apiKeys),
+              )}
+            />
+          </HydrateClient>
+        </ErrorBoundary>
       </CardContent>
       <CardFooter className="border-t bg-background [.border-t]:p-6">
         <div className="flex w-full flex-col items-center justify-center gap-4 lg:flex-row lg:justify-between">

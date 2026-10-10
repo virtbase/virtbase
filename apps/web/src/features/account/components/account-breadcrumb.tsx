@@ -68,10 +68,7 @@ export function AccountBreadcrumb() {
       <BreadcrumbList>
         <BreadcrumbItem>
           <BreadcrumbLink asChild>
-            <NextLink
-              href={paths.app.account.settings.getHref()}
-              prefetch={false}
-            >
+            <NextLink href={paths.app.account.settings.getHref()}>
               {t("Account")}
             </NextLink>
           </BreadcrumbLink>

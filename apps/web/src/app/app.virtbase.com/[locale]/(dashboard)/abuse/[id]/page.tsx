@@ -35,8 +35,6 @@ import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
 import { GenericError } from "@/ui/generic-error";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
 
-export const instant = false;
-
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();
 
@@ -46,13 +44,26 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
+const fallback = <Skeleton className="h-[32rem] w-full" />;
+
+async function AbuseCaseById({
+  params,
+}: Pick<PageProps<"/app.virtbase.com/[locale]/abuse/[id]">, "params">) {
+  const { id } = await params;
+
+  void prefetch(trpc.abuse.get.queryOptions({ id }));
+
+  return (
+    <HydrateClient fallback={fallback}>
+      <AbuseCase id={id} />
+    </HydrateClient>
+  );
+}
+
 export default async function Page({
   params,
 }: PageProps<"/app.virtbase.com/[locale]/abuse/[id]">) {
-  const { id } = await params;
   const t = await getExtracted();
-
-  void prefetch(trpc.abuse.get.queryOptions({ id }));
 
   return (
     <DashboardLayout
@@ -72,13 +83,11 @@ export default async function Page({
         </Breadcrumb>
       }
     >
-      <HydrateClient>
-        <ErrorBoundary fallback={<GenericError className="border" />}>
-          <Suspense fallback={<Skeleton className="h-[32rem] w-full" />}>
-            <AbuseCase id={id} />
-          </Suspense>
-        </ErrorBoundary>
-      </HydrateClient>
+      <ErrorBoundary fallback={<GenericError className="border" />}>
+        <Suspense fallback={fallback}>
+          <AbuseCaseById params={params} />
+        </Suspense>
+      </ErrorBoundary>
     </DashboardLayout>
   );
 }

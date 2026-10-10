@@ -33,6 +33,7 @@ import { AbuseCaseDetailView } from "@/features/admin/components/abuse/abuse-cas
 import { paths } from "@/lib/paths";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
 
+// instant = false: kept on purpose - the record is resolved up front so a missing one 404s before any chrome
 export const instant = false;
 
 export async function generateMetadata({

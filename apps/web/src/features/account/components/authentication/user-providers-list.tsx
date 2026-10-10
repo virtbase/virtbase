@@ -70,10 +70,7 @@ export function UserProvidersList({
         icon={<LucideMail className="size-6 shrink-0" />}
         rightSide={
           <Button size="sm" variant="outline" asChild>
-            <NextLink
-              href={`${paths.app.account.settings.getHref()}#email`}
-              prefetch={false}
-            >
+            <NextLink href={`${paths.app.account.settings.getHref()}#email`}>
               {manageLabel}
             </NextLink>
           </Button>

@@ -28,6 +28,18 @@ import { useTaskMapping } from "../hooks/use-task-mapping";
 import { ServerMountBadge } from "./server-mount-badge";
 import { ServerTerminatesBadge } from "./server-terminates-badge";
 
+export function ServerLabelSkeleton() {
+  return (
+    <div className="flex flex-wrap items-center gap-2">
+      <Skeleton className="h-7 w-32" />
+      <div className="flex items-center gap-1">
+        <Skeleton className="h-5 w-16 rounded-full" />
+        <Skeleton className="h-5 w-16 rounded-full" />
+      </div>
+    </div>
+  );
+}
+
 export function ServerLabel() {
   const { id: serverId } = useParams<{ id: string }>();
 
@@ -44,15 +56,7 @@ export function ServerLabel() {
   const taskMapping = useTaskMapping();
 
   if (isServerPending || isServerStatusPending || !server || !status) {
-    return (
-      <div className="flex flex-wrap items-center gap-2">
-        <Skeleton className="h-7 w-32" />
-        <div className="flex items-center gap-1">
-          <Skeleton className="h-5 w-16 rounded-full" />
-          <Skeleton className="h-5 w-16 rounded-full" />
-        </div>
-      </div>
-    );
+    return <ServerLabelSkeleton />;
   }
 
   const currentTask = status.task ? taskMapping[status.task] : null;

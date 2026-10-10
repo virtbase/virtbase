@@ -34,9 +34,7 @@ export function EmptyServers() {
       )}
       addButton={
         <Button variant="default" size="sm" asChild>
-          <NextLink href={PUBLIC_DOMAIN} prefetch={false}>
-            {t("Rent a server")}
-          </NextLink>
+          <NextLink href={PUBLIC_DOMAIN}>{t("Rent a server")}</NextLink>
         </Button>
       }
       cardCount={4}

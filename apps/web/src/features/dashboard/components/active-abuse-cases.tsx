@@ -90,7 +90,6 @@ export function ActiveAbuseCases() {
                 <div className="flex min-w-0 flex-col gap-0.5">
                   <NextLink
                     href={paths.app.abuseCase.getHref(abuseCase.id)}
-                    prefetch={false}
                     className="truncate font-medium text-sm outline-none transition-colors hover:text-accent-foreground focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
                   >
                     {abuseCase.title}
@@ -116,7 +115,6 @@ export function ActiveAbuseCases() {
                   ) : null}
                   <NextLink
                     href={paths.app.abuseCase.getHref(abuseCase.id)}
-                    prefetch={false}
                     className="outline-none transition-all focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50"
                     aria-label={t("View case")}
                   >
@@ -133,7 +131,7 @@ export function ActiveAbuseCases() {
 
         {active.length > SHOWN ? (
           <Button variant="outline" asChild className="self-start">
-            <NextLink href={paths.app.abuse.getHref()} prefetch={false}>
+            <NextLink href={paths.app.abuse.getHref()}>
               {t(
                 "{count, plural, one {# more report} other {# more reports}}",
                 {

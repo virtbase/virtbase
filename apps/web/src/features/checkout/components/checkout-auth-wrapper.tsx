@@ -27,6 +27,7 @@ import {
 import { LucideUser } from "@virtbase/ui/icons";
 import { APP_DOMAIN, PUBLIC_DOMAIN } from "@virtbase/utils";
 import { headers } from "next/headers";
+import { connection } from "next/server";
 import { getExtracted, getLocale } from "next-intl/server";
 import { auth } from "@/lib/auth/server";
 
@@ -39,6 +40,8 @@ export async function CheckoutAuthWrapper({
 }) {
   const t = await getExtracted();
   const locale = await getLocale();
+
+  await connection();
 
   const session = await auth.api.getSession({ headers: await headers() });
 

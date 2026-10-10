@@ -15,6 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { Skeleton } from "@virtbase/ui/skeleton";
+
 export default function Loading() {
-  return null;
+  return <Skeleton className="h-96 w-full" />;
 }

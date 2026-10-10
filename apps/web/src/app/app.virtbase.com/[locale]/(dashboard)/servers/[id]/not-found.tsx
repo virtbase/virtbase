@@ -45,7 +45,7 @@ export default function ServerNotFound() {
       </EmptyHeader>
       <EmptyContent>
         <Button asChild>
-          <NextLink href={paths.app.servers.getHref()} prefetch={false}>
+          <NextLink href={paths.app.servers.getHref()}>
             {t("Go to servers")}
           </NextLink>
         </Button>

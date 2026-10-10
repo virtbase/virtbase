@@ -262,7 +262,6 @@ export function AutoRenewSection({
               </p>
               <NextLink
                 href={paths.app.account.settings.billing.getHref()}
-                prefetch={false}
                 className={cn(
                   buttonVariants({ variant: "outline", size: "sm" }),
                   "mt-2",

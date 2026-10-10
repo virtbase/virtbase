@@ -44,6 +44,7 @@ import {
 import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import { useExtracted } from "next-intl";
+import { Suspense } from "react";
 import { paths } from "@/lib/paths";
 
 const useGroups = () => {
@@ -138,9 +139,8 @@ const useGroups = () => {
   ] as const;
 };
 
-export function AdminSidebarGroups() {
+function AdminSidebarGroupsItems({ pathname }: { pathname: string | null }) {
   const groups = useGroups();
-  const pathname = usePathname();
 
   return groups.map(({ items, label }, index) => (
     <SidebarGroup key={index}>
@@ -156,9 +156,10 @@ export function AdminSidebarGroups() {
                 className="group/menu-button h-9 gap-3 font-medium text-muted-foreground group-data-[collapsible=icon]:px-[5px]! [&>svg]:size-auto"
                 tooltip={item.title}
                 isActive={
-                  item.path.getHref() === "/"
+                  pathname !== null &&
+                  (item.path.getHref() === "/"
                     ? pathname === item.path.getHref()
-                    : pathname.startsWith(item.path.getHref())
+                    : pathname.startsWith(item.path.getHref()))
                 }
               >
                 <NextLink href={item.path.getHref()} prefetch={false}>
@@ -176,4 +177,16 @@ export function AdminSidebarGroups() {
       </SidebarGroupContent>
     </SidebarGroup>
   ));
+}
+
+function ActiveAdminSidebarGroups() {
+  return <AdminSidebarGroupsItems pathname={usePathname()} />;
+}
+
+export function AdminSidebarGroups() {
+  return (
+    <Suspense fallback={<AdminSidebarGroupsItems pathname={null} />}>
+      <ActiveAdminSidebarGroups />
+    </Suspense>
+  );
 }

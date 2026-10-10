@@ -156,7 +156,6 @@ function AffectedServers({
             >
               <NextLink
                 href={paths.app.servers.overview.getHref(server.server_id)}
-                prefetch={false}
                 className="truncate font-medium"
               >
                 {server.server_name}

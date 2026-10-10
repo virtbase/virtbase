@@ -55,13 +55,11 @@ export function PaymentMethodsCard() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <HydrateClient>
-          <ErrorBoundary fallback={<GenericError className="border" />}>
-            <Suspense fallback={<Skeleton className="-m-px h-48 w-full" />}>
-              <PaymentMethodsList />
-            </Suspense>
-          </ErrorBoundary>
-        </HydrateClient>
+        <ErrorBoundary fallback={<GenericError className="border" />}>
+          <HydrateClient fallback={<Skeleton className="-m-px h-48 w-full" />}>
+            <PaymentMethodsList />
+          </HydrateClient>
+        </ErrorBoundary>
       </CardContent>
       <CardFooter className="border-t bg-background [.border-t]:p-6">
         <Suspense fallback={<Skeleton className="h-9 w-full" />}>

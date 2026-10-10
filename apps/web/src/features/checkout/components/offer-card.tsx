@@ -272,7 +272,6 @@ export function OfferCard({
                   ? `/upsell/${plan.id}/${plan.upsellTo}`
                   : `/checkout/${plan.id}`
               }
-              prefetch={false}
               aria-label={t("Configure {name} now", {
                 name: plan.name,
               })}

@@ -70,7 +70,6 @@ export async function DiscordBotCard() {
           <Button size="sm" variant="outline" asChild>
             <NextLink
               href={`${PUBLIC_DOMAIN}/${locale}/help/article/discord-integration`}
-              prefetch={false}
             >
               <LucideBookOpen aria-hidden="true" />
               {t("Guide")}

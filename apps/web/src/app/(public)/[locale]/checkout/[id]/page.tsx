@@ -36,6 +36,7 @@ import { CheckoutAuthWrapper } from "@/features/checkout/components/checkout-aut
 import { CheckoutForm } from "@/features/checkout/components/checkout-form";
 import { CheckoutFormSkeleton } from "@/features/checkout/components/checkout-form-skeleton";
 import { OrderSummary } from "@/features/checkout/components/order-summary";
+import { OrderSummarySkeleton } from "@/features/checkout/components/order-summary-skeleton";
 import { CheckoutStateProvider } from "@/features/checkout/hooks/use-checkout-state";
 import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
 import { BlockWrapper } from "@/ui/block-wrapper";
@@ -105,20 +106,53 @@ export async function generateMetadata({
   });
 }
 
-export default async function Page({ params }: PageProps) {
+async function getPlan(params: PageProps["params"]) {
   const id = (await params).id;
   if (id === "__placeholder__") {
     notFound();
   }
 
-  const t = await getExtracted();
   const plan = await getServerPlan(id);
-
   if (!plan) {
     notFound();
   }
 
+  return plan;
+}
+
+async function PlanSummary({ params }: PageProps) {
+  const plan = await getPlan(params);
+
+  return (
+    <OrderSummary
+      plan={plan}
+      datacenter={{
+        id: "dc_1",
+        name: "SkyLink Data Center",
+        country: "NL",
+      }}
+    />
+  );
+}
+
+async function PlanCheckout({ params }: PageProps) {
+  const plan = await getPlan(params);
+
   void prefetch(trpc.sshKeys.list.queryOptions(defaultGetSSHKeysListQuery));
+
+  return (
+    <CheckoutAuthWrapper planId={plan.id}>
+      <CheckoutStateProvider>
+        <HydrateClient fallback={<CheckoutFormSkeleton />}>
+          <CheckoutForm promise={getTemplateGroups(plan.proxmoxNodeGroupId)} />
+        </HydrateClient>
+      </CheckoutStateProvider>
+    </CheckoutAuthWrapper>
+  );
+}
+
+export default async function Page({ params }: PageProps) {
+  const t = await getExtracted();
 
   return (
     <main>
@@ -129,27 +163,14 @@ export default async function Page({ params }: PageProps) {
         <div className="grid grid-cols-12 gap-px bg-border">
           <div className="col-span-12 bg-background md:col-span-4">
             <div className="flex flex-col gap-4 p-5 md:sticky md:top-20">
-              <OrderSummary
-                plan={plan}
-                datacenter={{
-                  id: "dc_1",
-                  name: "SkyLink Data Center",
-                  country: "NL",
-                }}
-              />
+              <Suspense fallback={<OrderSummarySkeleton />}>
+                <PlanSummary params={params} />
+              </Suspense>
             </div>
           </div>
           <div className="col-span-12 flex flex-col gap-4 bg-background p-5 md:col-span-8">
             <Suspense fallback={<CheckoutFormSkeleton />}>
-              <CheckoutAuthWrapper planId={id}>
-                <CheckoutStateProvider>
-                  <HydrateClient>
-                    <CheckoutForm
-                      promise={getTemplateGroups(plan.proxmoxNodeGroupId)}
-                    />
-                  </HydrateClient>
-                </CheckoutStateProvider>
-              </CheckoutAuthWrapper>
+              <PlanCheckout params={params} />
             </Suspense>
           </div>
         </div>

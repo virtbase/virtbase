@@ -25,19 +25,34 @@ import {
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { Switch } from "@virtbase/ui/switch";
 import { useExtracted } from "next-intl";
-import { Suspense, use } from "react";
+import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
 import { GenericErrorInline } from "@/ui/generic-error-inline";
 import { FirewallActionState } from "./firewall-action-state";
 
-export function FirewallOptionsRow({ promise }: { promise: Promise<string> }) {
-  const t = useExtracted();
-  const serverId = use(promise);
+async function FirewallPolicy({
+  promise,
+  policy,
+}: {
+  promise: Promise<string>;
+  policy: "policy_in" | "policy_out";
+}) {
+  const serverId = await promise;
 
   prefetch(
     trpc.servers.firewall.options.get.queryOptions({ server_id: serverId }),
   );
+
+  return (
+    <HydrateClient fallback={<Skeleton className="h-8 w-32" />}>
+      <FirewallActionState serverId={serverId} policy={policy} />
+    </HydrateClient>
+  );
+}
+
+export function FirewallOptionsRow({ promise }: { promise: Promise<string> }) {
+  const t = useExtracted();
 
   return (
     <div className="grid auto-rows-min @2xl:grid-cols-3 gap-2">
@@ -60,13 +75,11 @@ export function FirewallOptionsRow({ promise }: { promise: Promise<string> }) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <HydrateClient>
-            <ErrorBoundary fallback={<GenericErrorInline />}>
-              <Suspense fallback={<Skeleton className="h-8 w-32" />}>
-                <FirewallActionState serverId={serverId} policy="policy_in" />
-              </Suspense>
-            </ErrorBoundary>
-          </HydrateClient>
+          <ErrorBoundary fallback={<GenericErrorInline />}>
+            <Suspense fallback={<Skeleton className="h-8 w-32" />}>
+              <FirewallPolicy promise={promise} policy="policy_in" />
+            </Suspense>
+          </ErrorBoundary>
         </CardContent>
       </Card>
       <Card>
@@ -77,13 +90,11 @@ export function FirewallOptionsRow({ promise }: { promise: Promise<string> }) {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <HydrateClient>
-            <ErrorBoundary fallback={<GenericErrorInline />}>
-              <Suspense fallback={<Skeleton className="h-8 w-32" />}>
-                <FirewallActionState serverId={serverId} policy="policy_out" />
-              </Suspense>
-            </ErrorBoundary>
-          </HydrateClient>
+          <ErrorBoundary fallback={<GenericErrorInline />}>
+            <Suspense fallback={<Skeleton className="h-8 w-32" />}>
+              <FirewallPolicy promise={promise} policy="policy_out" />
+            </Suspense>
+          </ErrorBoundary>
         </CardContent>
       </Card>
     </div>

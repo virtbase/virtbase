@@ -45,11 +45,7 @@ export function AppSidebar() {
       <SidebarHeader className="mb-2 h-16 justify-center max-md:mt-2">
         {/* Logo */}
         <div className="flex gap-2 px-2 transition-[padding] duration-200 ease-in-out group-data-[collapsible=icon]:px-0">
-          <NextLink
-            href="/"
-            className="group/logo inline-flex"
-            prefetch={false}
-          >
+          <NextLink href="/" className="group/logo inline-flex">
             <span className="sr-only">Logo</span>
             <div className="size-9 transition-[width,height] duration-200 ease-in-out group-data-[collapsible=icon]:size-8">
               <Logo className="size-full" />

@@ -38,16 +38,26 @@ import { paths } from "@/lib/paths";
  * The tab bar itself, rendered identically whether or not the server's id is
  * known yet.
  *
- * Only the `href` needs the id. The labels, the icons and which tab is
- * highlighted do not - `useSelectedLayoutSegment()` is fixed for each
- * prerendered page - so with `serverId` still unresolved this renders the same
- * seven buttons in the same places, merely not yet clickable. That is what lets
- * the Suspense fallback be the finished nav rather than a skeleton, so nothing
+ * Only the `href` and the highlighted tab need the URL. The labels and the
+ * icons do not, so with `serverId` still unresolved this renders the same seven
+ * buttons in the same places, merely not yet clickable. That is what lets the
+ * Suspense fallback be the finished nav rather than a skeleton, so nothing
  * moves when the id arrives.
  */
-export function ServerNavView({ serverId }: { serverId: string | null }) {
+export function ServerNavView({ serverId }: { serverId: string }) {
+  return (
+    <ServerNavItems serverId={serverId} segment={useSelectedLayoutSegment()} />
+  );
+}
+
+export function ServerNavItems({
+  serverId,
+  segment,
+}: {
+  serverId: string | null;
+  segment: string | null;
+}) {
   const t = useExtracted();
-  const segment = useSelectedLayoutSegment();
 
   const items = [
     {
@@ -118,7 +128,6 @@ export function ServerNavView({ serverId }: { serverId: string | null }) {
             <NextLink
               key={item.value}
               href={item.href(serverId)}
-              prefetch={false}
               className={className}
             >
               {content}

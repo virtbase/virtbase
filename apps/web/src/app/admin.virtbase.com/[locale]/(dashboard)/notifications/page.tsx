@@ -30,8 +30,6 @@ import { NotificationTargets } from "@/features/admin/components/notifications/n
 import { NotificationTargetsSkeleton } from "@/features/admin/components/notifications/notification-targets-skeleton";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
 
-export const instant = false;
-
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();
 

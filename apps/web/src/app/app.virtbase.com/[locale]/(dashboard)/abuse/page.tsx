@@ -25,14 +25,11 @@ import { Skeleton } from "@virtbase/ui/skeleton";
 import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
-import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { AbuseCasesList } from "@/features/abuse/components/abuse-cases-list";
 import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
 import { GenericError } from "@/ui/generic-error";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
-
-export const instant = false;
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();
@@ -60,21 +57,19 @@ export default async function Page() {
         </Breadcrumb>
       }
     >
-      <HydrateClient>
-        <ErrorBoundary fallback={<GenericError className="border" />}>
-          <Suspense
-            fallback={
-              <div className="grid gap-4">
-                {Array.from({ length: 3 }).map((_, index) => (
-                  <Skeleton key={index} className="h-16 w-full" />
-                ))}
-              </div>
-            }
-          >
-            <AbuseCasesList />
-          </Suspense>
-        </ErrorBoundary>
-      </HydrateClient>
+      <ErrorBoundary fallback={<GenericError className="border" />}>
+        <HydrateClient
+          fallback={
+            <div className="grid gap-4">
+              {Array.from({ length: 3 }).map((_, index) => (
+                <Skeleton key={index} className="h-16 w-full" />
+              ))}
+            </div>
+          }
+        >
+          <AbuseCasesList />
+        </HydrateClient>
+      </ErrorBoundary>
     </DashboardLayout>
   );
 }

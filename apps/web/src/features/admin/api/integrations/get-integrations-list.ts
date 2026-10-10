@@ -23,6 +23,7 @@ import {
 import { db } from "@virtbase/db/client";
 import { integrationInstallations } from "@virtbase/db/schema";
 import type { IntegrationDescription } from "@virtbase/integration-sdk";
+import { connection } from "next/server";
 import { verifySession } from "../verify-session";
 
 export interface IntegrationListItem {
@@ -53,6 +54,7 @@ export interface IntegrationListItem {
  * explicit re-check instead.
  */
 export async function getIntegrationsList(): Promise<IntegrationListItem[]> {
+  await connection();
   await verifySession();
 
   const descriptors = await integrations.describeAll();

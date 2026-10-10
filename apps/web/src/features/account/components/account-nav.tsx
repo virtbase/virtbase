@@ -93,7 +93,6 @@ export function AccountNav({
           <NextLink
             key={index}
             href={item.path.getHref()}
-            prefetch={false}
             className={cn(
               buttonVariants({ variant: "outline" }),
               "text-muted-foreground hover:text-foreground",

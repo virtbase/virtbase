@@ -30,8 +30,6 @@ import { IntegrationsHub } from "@/features/admin/components/integrations/integr
 import { IntegrationsHubSkeleton } from "@/features/admin/components/integrations/integrations-hub-skeleton";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
 
-export const instant = false;
-
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();
 

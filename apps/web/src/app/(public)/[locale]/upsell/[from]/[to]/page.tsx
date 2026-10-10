@@ -76,6 +76,9 @@ export async function generateStaticParams() {
   return plans;
 }
 
+// instant = false: kept on purpose - both plans are validated before anything renders, so there is no shared shell to prefetch
+export const instant = false;
+
 export async function generateMetadata({
   params,
 }: PageProps<"/[locale]/upsell/[from]/[to]">) {

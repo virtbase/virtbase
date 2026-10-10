@@ -30,8 +30,6 @@ import { LatestInvoicesCard } from "@/features/dashboard/components/latest-invoi
 import { LatestServersCard } from "@/features/dashboard/components/latest-servers-card";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
 
-export const instant = false;
-
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();
 

@@ -42,6 +42,9 @@ import { VendorDataPreview } from "@/features/admin/components/proxmox-templates
 import { paths } from "@/lib/paths";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
 
+// instant = false: kept on purpose - the record is resolved up front so a missing one 404s before any chrome
+export const instant = false;
+
 export async function generateMetadata({
   params,
 }: PageProps<"/admin.virtbase.com/[locale]/templates/[id]">): Promise<Metadata> {

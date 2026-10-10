@@ -34,8 +34,6 @@ import { IntegrationDetail } from "@/features/admin/components/integrations/inte
 import { paths } from "@/lib/paths";
 import DashboardLayout from "@/ui/layout/dashboard-layout";
 
-export const instant = false;
-
 export async function generateMetadata({
   params,
 }: PageProps<"/admin.virtbase.com/[locale]/integrations/[id]">): Promise<Metadata> {
@@ -48,14 +46,30 @@ export async function generateMetadata({
   });
 }
 
+type Params = Pick<
+  PageProps<"/admin.virtbase.com/[locale]/integrations/[id]">,
+  "params"
+>;
+
+async function IntegrationName({ params }: Params) {
+  const { id } = await params;
+  const item = await getIntegration(id);
+
+  return item?.descriptor.name ?? id;
+}
+
+async function ResolvedIntegrationDetail({ params }: Params) {
+  const { id } = await params;
+
+  return <IntegrationDetail integrationId={id} />;
+}
+
 export default async function Page({
   params,
 }: PageProps<"/admin.virtbase.com/[locale]/integrations/[id]">) {
   await verifyRenderSession();
 
-  const { id } = await params;
   const t = await getExtracted();
-  const item = await getIntegration(id);
 
   return (
     <DashboardLayout
@@ -69,7 +83,11 @@ export default async function Page({
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage>{item?.descriptor.name ?? id}</BreadcrumbPage>
+              <BreadcrumbPage>
+                <Suspense fallback={<Skeleton className="h-5 w-24" />}>
+                  <IntegrationName params={params} />
+                </Suspense>
+              </BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
@@ -77,7 +95,7 @@ export default async function Page({
     >
       <div className="mx-auto mt-12 flex w-full max-w-3xl flex-col gap-6">
         <Suspense fallback={<Skeleton className="h-96 w-full" />}>
-          <IntegrationDetail integrationId={id} />
+          <ResolvedIntegrationDetail params={params} />
         </Suspense>
       </div>
     </DashboardLayout>

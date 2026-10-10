@@ -24,7 +24,6 @@ import {
 } from "@virtbase/ui/card";
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { useExtracted } from "next-intl";
-import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { defaultGetLatestServersQuery } from "@/features/dashboard/hooks/use-latest-servers";
 import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
@@ -45,21 +44,19 @@ export function LatestServersCard() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <HydrateClient>
-          <ErrorBoundary fallback={<GenericError className="border" />}>
-            <Suspense
-              fallback={
-                <div className="space-y-2">
-                  {Array.from({ length: 3 }).map((_, index) => (
-                    <Skeleton key={index} className="h-12" />
-                  ))}
-                </div>
-              }
-            >
-              <LatestServersList />
-            </Suspense>
-          </ErrorBoundary>
-        </HydrateClient>
+        <ErrorBoundary fallback={<GenericError className="border" />}>
+          <HydrateClient
+            fallback={
+              <div className="space-y-2">
+                {Array.from({ length: 3 }).map((_, index) => (
+                  <Skeleton key={index} className="h-12" />
+                ))}
+              </div>
+            }
+          >
+            <LatestServersList />
+          </HydrateClient>
+        </ErrorBoundary>
       </CardContent>
     </Card>
   );

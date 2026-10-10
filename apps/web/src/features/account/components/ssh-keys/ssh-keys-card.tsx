@@ -25,7 +25,6 @@ import {
 } from "@virtbase/ui/card";
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { useExtracted } from "next-intl";
-import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { defaultGetSSHKeysListQuery } from "@/features/account/hooks/ssh-keys/ssh-keys-list";
 import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
@@ -47,13 +46,11 @@ export function SSHKeysCard() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <HydrateClient>
-          <ErrorBoundary fallback={<GenericError className="border" />}>
-            <Suspense fallback={<Skeleton className="-m-px h-72 w-full" />}>
-              <SSHKeysList />
-            </Suspense>
-          </ErrorBoundary>
-        </HydrateClient>
+        <ErrorBoundary fallback={<GenericError className="border" />}>
+          <HydrateClient fallback={<Skeleton className="-m-px h-72 w-full" />}>
+            <SSHKeysList />
+          </HydrateClient>
+        </ErrorBoundary>
       </CardContent>
       <CardFooter className="border-t bg-background [.border-t]:p-6">
         <div className="flex w-full flex-col items-center justify-center gap-4 lg:flex-row lg:justify-between">

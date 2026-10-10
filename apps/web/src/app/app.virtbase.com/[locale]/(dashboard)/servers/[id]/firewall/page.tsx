@@ -18,6 +18,7 @@
 import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
+import { Suspense } from "react";
 import { GuestAgentNotice } from "@/features/servers/components/guest-agent-notice";
 import { FirewallFindingsCard } from "@/features/servers/firewall/components/firewall-findings-card";
 import { FirewallOptionsRow } from "@/features/servers/firewall/components/firewall-options-row";
@@ -33,17 +34,30 @@ export async function generateMetadata(): Promise<Metadata> {
   });
 }
 
-export default async function Page({
-  params,
-}: PageProps<"/app.virtbase.com/[locale]/servers/[id]/firewall">) {
+type Params = Pick<
+  PageProps<"/app.virtbase.com/[locale]/servers/[id]/firewall">,
+  "params"
+>;
+
+async function ServerFirewallNotices({ params }: Params) {
   const { id } = await params;
 
   return (
-    <div className="grid auto-rows-min grid-cols-1 gap-4">
-      <FirewallOptionsRow promise={Promise.resolve(id)} />
+    <>
       <GuestAgentNotice serverId={id} />
       <GuestFirewallAlert serverId={id} />
       <FirewallFindingsCard serverId={id} />
+    </>
+  );
+}
+
+export default function Page({ params }: Params) {
+  return (
+    <div className="grid auto-rows-min grid-cols-1 gap-4">
+      <FirewallOptionsRow promise={params.then(({ id }) => id)} />
+      <Suspense>
+        <ServerFirewallNotices params={params} />
+      </Suspense>
       <FirewallRulesCard />
     </div>
   );

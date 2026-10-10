@@ -95,10 +95,7 @@ export function RenewalPaymentMethod({
         }
         rightSide={
           <Button variant="outline" asChild>
-            <NextLink
-              href={paths.app.account.settings.billing.getHref()}
-              prefetch={false}
-            >
+            <NextLink href={paths.app.account.settings.billing.getHref()}>
               {t("Add a payment method")}
             </NextLink>
           </Button>
@@ -129,10 +126,7 @@ export function RenewalPaymentMethod({
       icon={<LucideCreditCard className="size-6 shrink-0" aria-hidden="true" />}
       rightSide={
         <Button variant="outline" asChild>
-          <NextLink
-            href={paths.app.account.settings.billing.getHref()}
-            prefetch={false}
-          >
+          <NextLink href={paths.app.account.settings.billing.getHref()}>
             {t("Change")}
           </NextLink>
         </Button>

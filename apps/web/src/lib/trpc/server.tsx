@@ -22,7 +22,7 @@ import type { AppRouter } from "@virtbase/api";
 import { appRouter, createTRPCContext } from "@virtbase/api";
 import { headers } from "next/headers";
 import { connection } from "next/server";
-import { cache } from "react";
+import { cache, Suspense } from "react";
 import { auth } from "@/lib/auth/server";
 import { createQueryClient } from "@/lib/trpc/query-client";
 
@@ -49,7 +49,7 @@ export const trpc = createTRPCOptionsProxy<AppRouter>({
   queryClient: getQueryClient,
 });
 
-export async function HydrateClient(props: { children: React.ReactNode }) {
+async function DehydratedState(props: { children: React.ReactNode }) {
   await connection();
 
   const queryClient = getQueryClient();
@@ -57,6 +57,17 @@ export async function HydrateClient(props: { children: React.ReactNode }) {
     <HydrationBoundary state={dehydrate(queryClient)}>
       {props.children}
     </HydrationBoundary>
+  );
+}
+
+export function HydrateClient(props: {
+  children: React.ReactNode;
+  fallback?: React.ReactNode;
+}) {
+  return (
+    <Suspense fallback={props.fallback}>
+      <DehydratedState>{props.children}</DehydratedState>
+    </Suspense>
   );
 }
 

@@ -144,7 +144,6 @@ export default function ServerMountDialog(
                   link: (chunks) => (
                     <NextLink
                       href={paths.app.account.settings.customImages.getHref()}
-                      prefetch={false}
                       className="text-foreground underline decoration-dotted transition-colors hover:text-foreground/80"
                     >
                       {chunks}

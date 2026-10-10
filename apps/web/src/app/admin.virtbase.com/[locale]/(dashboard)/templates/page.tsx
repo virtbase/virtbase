@@ -38,13 +38,7 @@ export async function generateMetadata(): Promise<Metadata> {
   return constructMetadata({ title: t("Templates"), noIndex: true });
 }
 
-export default async function Page({
-  searchParams,
-}: PageProps<"/admin.virtbase.com/[locale]/templates">) {
-  await verifyRenderSession();
-
-  const t = await getExtracted();
-
+async function CreateTemplateButtonWithGroups() {
   // A template must belong to a group, so the create dialog needs them up
   // front - and the button stays disabled while there are none.
   const groups = await getProxmoxTemplateGroupsList({
@@ -60,6 +54,23 @@ export default async function Page({
   });
 
   return (
+    <CreateTemplateButton
+      groups={groups.data.map((group) => ({
+        id: group.id,
+        name: group.name,
+      }))}
+    />
+  );
+}
+
+export default async function Page({
+  searchParams,
+}: PageProps<"/admin.virtbase.com/[locale]/templates">) {
+  await verifyRenderSession();
+
+  const t = await getExtracted();
+
+  return (
     <DashboardLayout
       leftSide={
         <Breadcrumb>
@@ -71,12 +82,9 @@ export default async function Page({
         </Breadcrumb>
       }
       rightSide={
-        <CreateTemplateButton
-          groups={groups.data.map((group) => ({
-            id: group.id,
-            name: group.name,
-          }))}
-        />
+        <Suspense fallback={<CreateTemplateButton groups={[]} />}>
+          <CreateTemplateButtonWithGroups />
+        </Suspense>
       }
     >
       <Suspense

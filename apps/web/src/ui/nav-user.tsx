@@ -130,7 +130,7 @@ export function NavUser() {
                   typeof window !== "undefined" &&
                   !ADMIN_HOSTNAMES.has(window.location.hostname) && (
                     <DropdownMenuItem asChild>
-                      <NextLink href={ADMIN_DOMAIN} prefetch={false}>
+                      <NextLink href={ADMIN_DOMAIN}>
                         <LucideCrown className="size-5" aria-hidden="true" />
                         <span>{t("Administration")}</span>
                       </NextLink>
@@ -138,7 +138,7 @@ export function NavUser() {
                   )
               }
               <DropdownMenuItem asChild>
-                <NextLink href={PUBLIC_DOMAIN} prefetch={false}>
+                <NextLink href={PUBLIC_DOMAIN}>
                   <LucideLink className="size-5" aria-hidden="true" />
                   <span>{t("Homepage")}</span>
                 </NextLink>
