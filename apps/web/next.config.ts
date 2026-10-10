@@ -49,7 +49,8 @@ const nextConfig: NextConfig = {
       algorithm: "sha384",
     },
     useTypeScriptCli: true,
-    turbopackPluginRuntimeStrategy: "workerThreads",
+    // Keep off until vercel/next.js#96761 ships
+    // turbopackPluginRuntimeStrategy: "workerThreads",
     turbopackRustReactCompiler: true,
   },
   headers: async () => [
