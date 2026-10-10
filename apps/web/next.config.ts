@@ -49,7 +49,8 @@ const nextConfig: NextConfig = {
       algorithm: "sha384",
     },
     useTypeScriptCli: true,
-    // turbopackFileSystemCacheForDev: true,
+    turbopackPluginRuntimeStrategy: "workerThreads",
+    turbopackRustReactCompiler: true,
   },
   headers: async () => [
     {
