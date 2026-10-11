@@ -15,8 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { isHeldOffByAbuseLock } from "@virtbase/utils";
 import { sleep } from "workflow";
+import { isHeldOffByAbuseLock } from "../../abuse/held-off-by-lock";
 import {
   applyGuestConfigStep,
   rollbackApplyGuestConfigStep,

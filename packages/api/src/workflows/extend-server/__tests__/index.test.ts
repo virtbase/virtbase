@@ -49,7 +49,7 @@ const storedServer: {
   name: string;
   suspendedAt: Date | null;
   abuseLockedAt: Date | null;
-  abuseLockLevel: string | null;
+  abuseLockLevel: "throttle" | "isolate" | "power_off" | null;
 } = {
   vmid: 100,
   name: "My server",
@@ -132,9 +132,8 @@ describe("extendServerWorkflow", () => {
   });
 
   test("it keeps a guest powered off while an abuse lock holds it off", async () => {
-    // [!] Risk C13: the extension used to set onboot and start the guest
-    // regardless, undoing a power_off lock until the reconciliation re-locked
-    // it and counted the customer as drifting.
+    // Risk C13: an abuse lock that holds the guest off is not lifted by a
+    // renewal; only releasing the case restores power.
     storedServer.abuseLockedAt = new Date("2026-10-01T00:00:00.000Z");
     storedServer.abuseLockLevel = "power_off";
 

@@ -15,16 +15,20 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import type { servers } from "@virtbase/db/schema";
+
 /**
  * Whether an abuse lock requires the guest to stay powered off.
  *
  * `power_off` is the only lock level that owns the guest's run state: the lock
  * reconciliation (`reconcileAbuseLocks`) re-applies it and counts a running
  * guest as drift. `throttle` and `isolate` leave power to the customer and the
- * workflows. A released lock clears `abuseLockedAt`.
+ * workflows. Releasing a case clears `abuseLockedAt` (`releaseCaseServer` in
+ * `enforce.ts`).
+ *
+ * Free of runtime imports, so workflow functions may call it.
  */
-export const isHeldOffByAbuseLock = (server: {
-  abuseLockedAt: Date | null;
-  abuseLockLevel: string | null;
-}): boolean =>
+export const isHeldOffByAbuseLock = (
+  server: Pick<typeof servers.$inferSelect, "abuseLockedAt" | "abuseLockLevel">,
+): boolean =>
   server.abuseLockedAt !== null && server.abuseLockLevel === "power_off";

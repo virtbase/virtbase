@@ -15,8 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { isHeldOffByAbuseLock } from "@virtbase/utils";
 import { sleep } from "workflow";
+import { isHeldOffByAbuseLock } from "../../abuse/held-off-by-lock";
 import { changeAdapterNetrate } from "../../proxmox/change-adapter-netrate";
 import {
   applyGuestConfigStep,
@@ -148,9 +148,9 @@ export async function upgradeServerWorkflow({
       });
     });
 
-    // [!] A guest held off by an abuse lock is already off, and its stop's
-    // compensation would start it. The new hardware applies at the guest's next
-    // boot (risk C13).
+    // [!] A guest held off by an abuse lock stays off: the start below would
+    // power it on through the lock (risk C13), and the guest is already off,
+    // so the stop has nothing to do.
     if (!isHeldOffByAbuseLock(server)) {
       // 6. Stop the guest to apply the new hardware config
       const { upid: stopUpid } = await performGuestActionStep({

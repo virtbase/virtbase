@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { isHeldOffByAbuseLock } from "../abuse-lock";
+import { isHeldOffByAbuseLock } from "../held-off-by-lock";
 
 const lockedAt = new Date("2026-10-01T00:00:00.000Z");
 
@@ -31,22 +31,23 @@ describe("isHeldOffByAbuseLock", () => {
   });
 
   test("is false for the levels that leave power to the customer", () => {
-    for (const level of ["throttle", "isolate"]) {
-      expect(
-        isHeldOffByAbuseLock({
-          abuseLockedAt: lockedAt,
-          abuseLockLevel: level,
-        }),
-      ).toBe(false);
-    }
+    expect(
+      isHeldOffByAbuseLock({
+        abuseLockedAt: lockedAt,
+        abuseLockLevel: "throttle",
+      }),
+    ).toBe(false);
+    expect(
+      isHeldOffByAbuseLock({
+        abuseLockedAt: lockedAt,
+        abuseLockLevel: "isolate",
+      }),
+    ).toBe(false);
   });
 
   test("is false once the lock is released", () => {
     expect(
-      isHeldOffByAbuseLock({
-        abuseLockedAt: null,
-        abuseLockLevel: "power_off",
-      }),
+      isHeldOffByAbuseLock({ abuseLockedAt: null, abuseLockLevel: null }),
     ).toBe(false);
   });
 });

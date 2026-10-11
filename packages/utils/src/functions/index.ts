@@ -15,7 +15,6 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./abuse-lock";
 export * from "./aes-encryption";
 export * from "./construct-metadata";
 export * from "./construct-opengraph-url";

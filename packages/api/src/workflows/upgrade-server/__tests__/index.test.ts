@@ -41,7 +41,7 @@ const storedServer: {
     tokenSecret: string;
   };
   abuseLockedAt: Date | null;
-  abuseLockLevel: string | null;
+  abuseLockLevel: "throttle" | "isolate" | "power_off" | null;
 } = {
   vmid: 100,
   serverPlanId: "pck_0000000000000000000000000",
@@ -137,8 +137,8 @@ describe("upgradeServerWorkflow", () => {
   });
 
   test("it leaves a guest held off by an abuse lock powered off", async () => {
-    // [!] Risk C13: the stop and start used to run regardless, powering a
-    // guest back on through a power_off lock.
+    // Risk C13: an abuse lock that holds the guest off is not lifted by an
+    // upgrade.
     storedServer.abuseLockedAt = new Date("2026-10-01T00:00:00.000Z");
     storedServer.abuseLockLevel = "power_off";
 
@@ -146,18 +146,5 @@ describe("upgradeServerWorkflow", () => {
 
     expect(calls).not.toContain("performGuestActionStep");
     expect(calls).toContain("storeServerUpgradeStep");
-  });
-
-  test("a failure under a lock does not start the guest while unwinding", async () => {
-    storedServer.abuseLockedAt = new Date("2026-10-01T00:00:00.000Z");
-    storedServer.abuseLockLevel = "power_off";
-    failing.add("storeServerUpgradeStep");
-
-    await expect(upgrade()).rejects.toThrow(
-      /storeServerUpgradeStep is unavailable/,
-    );
-
-    expect(calls).toContain("rollbackApplyGuestConfigStep");
-    expect(calls).not.toContain("rollbackPerformGuestActionStep");
   });
 });

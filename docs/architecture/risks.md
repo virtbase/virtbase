@@ -112,6 +112,7 @@ the rows marked **hotfix**, which ship first, on their own.
 | C43 | Template hardware settings never reach the VM: the same workflow overwrites them | `packages/api/src/workflows/shared/create-guest-from-image.ts:76-79`, `packages/api/src/workflows/provision-server/apply-hardware-config.ts:91,101,106` | low | 6 |
 | C44 | Runtime secrets are part of the turbo build hash, so rotating one invalidates the build cache | `turbo.json:11-51`, `apps/web/turbo.json:13` | low | 2.9 |
 | C45 | An Anonpay payment leaves the order's Stripe PaymentIntent open; a second successful payment on the same order is recorded but never refunded | `packages/api/src/router/checkout.ts:438-464`, `packages/api/src/orders/apply-payment-event.ts` | medium | 2.6 (checkout through the payment port) |
+| C46 | A guest suspended for non-payment and then abuse-locked stays off after the case is released, although its term was paid in between: the lock captured the run state before the renewal, and the renewal leaves a held-off guest off (C13) | `packages/api/src/abuse/lock.ts` (release), `packages/api/src/workflows/extend-server/index.ts` | medium | 6 (the release consults the service status) |
 
 ## Rollback plan
 
