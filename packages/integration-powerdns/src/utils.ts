@@ -63,40 +63,50 @@ const zoneMismatch = (ip: string, zone: string) =>
     params: { ip, zone },
   });
 
+/** Whether `name` is `zone` or a name inside it, compared label by label. */
+const isInZone = (name: string, zone: string) =>
+  name === zone || name.endsWith(`.${zone}`);
+
+/** An RFC 2317 zone's first label: the delegated range as `<first>/<prefix length>`. */
+const CLASSLESS_LABEL = /^(\d+)\/(\d+)$/;
+
 /**
  * Builds the fully-qualified PTR record name for `ip` within `dnsReverseZone`.
+ * Throws a `powerdns.zone_mismatch` {@link IntegrationError} when the IP is not
+ * in the zone; zones are compared label by label, so `0.10.in-addr.arpa` does
+ * not hold `10.10.0.5`.
  *
  * Supports:
- * - Standard IPv4 and IPv6 reverse zones
- * - RFC 2317 classless IPv4 delegation (zones containing `/`, e.g. `0/25.1.168.192.in-addr.arpa`)
+ * - standard IPv4 and IPv6 reverse zones;
+ * - RFC 2317 classless IPv4 delegation, such as `0/25.1.168.192.in-addr.arpa`:
+ *   the rest of the zone must be the IP's parent zone, and the host must lie in
+ *   the delegated range, here 0 to 127.
  */
 export function buildPtrName(ip: string, dnsReverseZone: string): string {
   const zone = dnsReverseZone.toLowerCase().replace(/\.$/, "");
+  const full = (
+    ip.includes(":") ? ipv6ToReverseArpa(ip) : ipv4ToReverseArpa(ip)
+  ).toLowerCase();
 
-  if (ip.includes(":")) {
-    const full = ipv6ToReverseArpa(ip);
-    if (!full.endsWith(zone)) {
-      throw zoneMismatch(ip, dnsReverseZone);
-    }
-    const prefix = full.slice(0, full.length - zone.length - 1);
-    return prefix ? `${prefix}.${zone}` : zone;
-  }
-
-  const full = ipv4ToReverseArpa(ip);
-  const [hostLabel, ...parentParts] = full.split(".");
-  const parentZone = parentParts.join(".");
-
-  // RFC 2317 classless delegation — zone contains a slash (e.g. "0/25.1.168.192.in-addr.arpa")
-  if (zone.includes("/")) {
-    if (!zone.endsWith(parentZone)) {
+  const [firstLabel = "", ...rest] = zone.split(".");
+  const classless = ip.includes(":") ? null : CLASSLESS_LABEL.exec(firstLabel);
+  if (classless) {
+    const [hostLabel = "", ...parentParts] = full.split(".");
+    const first = Number(classless[1]);
+    const size = 2 ** (32 - Number(classless[2]));
+    const host = Number(hostLabel);
+    if (
+      parentParts.join(".") !== rest.join(".") ||
+      host < first ||
+      host >= first + size
+    ) {
       throw zoneMismatch(ip, dnsReverseZone);
     }
     return `${hostLabel}.${zone}`;
   }
 
-  if (!full.endsWith(zone)) {
+  if (!isInZone(full, zone)) {
     throw zoneMismatch(ip, dnsReverseZone);
   }
-  const prefix = full.slice(0, full.length - zone.length - 1);
-  return prefix ? `${prefix}.${zone}` : zone;
+  return full;
 }
