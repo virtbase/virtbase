@@ -18,6 +18,12 @@
 import type { PointerRecord } from "@virtbase/integration-testing/ports/dns";
 import * as z from "zod";
 
+/** Undoes PowerDNS's zone id escaping: `=2F` back to `/`. */
+const fromZoneId = (id: string) =>
+  id.replace(/=([0-9A-F]{2})/g, (_, hex: string) =>
+    String.fromCharCode(Number.parseInt(hex, 16)),
+  );
+
 const ZONE_PATH = /^\/api\/v1\/servers\/localhost\/zones\/([^/]+)$/;
 
 const PatchSchema = z.object({
@@ -34,12 +40,14 @@ const PatchSchema = z.object({
 /**
  * A fake PowerDNS HTTP API as a `fetch`: `GET /api/v1/servers/localhost` and
  * `PATCH .../zones/<zone>` with PTR rrsets, behind the `X-API-Key` header.
- * Zones exist on first use. `failWith` makes every request answer that
- * status.
+ * Unlike PowerDNS, which answers 404 for a zone it does not serve, the fake
+ * creates a zone on first use. `failWith` makes every request answer that
+ * status, and `answerServerInfo` replaces the server-info body.
  */
 export const createFakePowerDns = (apiKey: string) => {
   const zones = new Map<string, Map<string, string>>();
   let failure: number | null = null;
+  let serverInfo: unknown = { id: "localhost", version: "4.9.0" };
   const zone = (name: string) => {
     const key = name.replace(/\.$/, "");
     const records = zones.get(key) ?? new Map<string, string>();
@@ -59,12 +67,12 @@ export const createFakePowerDns = (apiKey: string) => {
 
   const route = (pathname: string, init?: RequestInit) => {
     if (pathname === "/api/v1/servers/localhost" && init?.method === "GET") {
-      return Response.json({ id: "localhost", version: "4.9.0" });
+      return Response.json(serverInfo);
     }
     const match = ZONE_PATH.exec(pathname);
     if (match?.[1] && init?.method === "PATCH") {
       return patchZone(
-        decodeURIComponent(match[1]),
+        fromZoneId(decodeURIComponent(match[1])),
         JSON.parse(String(init.body)),
       );
     }
@@ -91,6 +99,9 @@ export const createFakePowerDns = (apiKey: string) => {
       })),
     failWith: (status: number | null) => {
       failure = status;
+    },
+    answerServerInfo: (body: unknown) => {
+      serverInfo = body;
     },
   };
 };
