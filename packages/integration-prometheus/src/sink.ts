@@ -17,6 +17,7 @@
 
 import type { IntegrationLogger } from "@virtbase/integration-sdk";
 import type { MetricSample, MetricsSink } from "@virtbase/ports";
+import { PLATFORM_GAUGE_SUFFIXES } from "./collectors";
 import {
   projectLabels,
   toCounterName,
@@ -86,7 +87,8 @@ export class PrometheusMetricsSink implements MetricsSink {
   }
 
   /**
-   * The parts every method shares: name translation, value validation, the
+   * The parts every method shares: name translation, the names reserved for
+   * the platform gauges (`PLATFORM_GAUGE_SUFFIXES`), value validation, the
    * label set a metric was created with, and the promise not to throw.
    */
   private record(
@@ -110,6 +112,19 @@ export class PrometheusMetricsSink implements MetricsSink {
         return;
       }
 
+      if (
+        PLATFORM_GAUGE_SUFFIXES.some(
+          (suffix) => this.runtime.name(suffix) === name,
+        )
+      ) {
+        this.runtime.warnOnce(
+          `platform:${name}`,
+          this.logger,
+          `Dropped "${name}": the name belongs to a platform gauge.`,
+        );
+        return;
+      }
+
       if (!Number.isFinite(value)) {
         this.runtime.warnOnce(
           `value:${name}`,
@@ -128,7 +143,7 @@ export class PrometheusMetricsSink implements MetricsSink {
         this.runtime.warnOnce(
           `kind:${name}`,
           this.logger,
-          `Dropped "${name}": already recorded as a different metric type. Use one of increment/gauge/observe per name.`,
+          `Dropped "${name}": already recorded as a different metric type, or registered by the runtime metrics. Use one of increment/gauge/observe per name.`,
         );
       }
     } catch (error) {

@@ -17,97 +17,52 @@
 
 import { defineIntegration } from "@virtbase/integration-sdk";
 import { collectPlatformMetrics } from "./collectors";
-import {
-  secretFields,
-  secretsSchema,
-  settingsFields,
-  settingsSchema,
-} from "./config";
 import { localizePrometheus } from "./localize";
+import { manifest } from "./manifest";
 import { runtimeFor } from "./runtime";
 import { PrometheusMetricsSink } from "./sink";
 import { handleScrapeRequest } from "./webhook";
 
-export * from "./collectors";
-export * from "./config";
-export * from "./names";
-export * from "./runtime";
-export * from "./sink";
-export * from "./webhook";
-
-export default defineIntegration({
-  id: "prometheus",
-  name: "Prometheus",
-  description:
-    "Exposes platform and runtime metrics on an authenticated scrape endpoint for Prometheus and Grafana.",
-
-  category: "analytics",
-  icon: "prometheus",
-  author: "Virtbase",
-  website: "https://prometheus.io",
-  docsUrl:
-    "https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config",
-
-  settings: {
-    schema: settingsSchema,
-    fields: settingsFields,
-  },
-
-  secrets: {
-    schema: secretsSchema,
-    fields: secretFields,
-  },
-
+/** Prometheus's runtime (ADR 0003); its static half is `./manifest`. */
+export default defineIntegration(manifest, {
   provides: {
     metrics: (ctx) =>
       new PrometheusMetricsSink(runtimeFor(ctx.settings), ctx.logger),
   },
-
   /**
-   * The scrape endpoint is a webhook rather than a route of its own because it
-   * is inbound HTTP that this integration owns: mounting it here means it
-   * appears and disappears with the enable switch, and answers 404 when the
-   * integration is off, without `apps/web` knowing Prometheus exists.
+   * The scrape endpoint is a webhook because it is inbound HTTP this
+   * integration owns: it appears and disappears with the enable switch, and
+   * answers 404 when the integration is off, without `apps/web` knowing
+   * Prometheus exists.
    */
   webhooks: [
-    {
-      path: "metrics",
-      methods: ["GET"],
-      handler: handleScrapeRequest,
-    },
+    { path: "metrics", methods: ["GET"], handler: handleScrapeRequest },
   ],
-
-  localize: localizePrometheus,
-
   /**
-   * There is no remote service to reach, so health is about whether this
-   * deployment could actually answer a scrape: the registry has to serialise,
-   * and the database has to answer if platform metrics are switched on.
+   * There is no remote service to reach, so health is whether this deployment
+   * could answer a scrape: the registry has to serialise, and the
+   * `platformMetrics` port has to answer when platform metrics are on.
    */
-  health: async (ctx) => {
-    const runtime = runtimeFor(ctx.settings);
-
-    try {
-      if (ctx.settings.collectPlatformMetrics) {
-        const collected = await collectPlatformMetrics(runtime, ctx.logger);
-        if (!collected) {
-          return {
-            status: "degraded",
-            checkedAt: new Date(),
-            message:
-              "Platform metrics could not be read from the database. Runtime metrics are still being served.",
-          };
-        }
+  health: {
+    check: async (ctx) => {
+      const runtime = runtimeFor(ctx.settings);
+      if (
+        ctx.settings.collectPlatformMetrics &&
+        !(await collectPlatformMetrics(runtime, {
+          reader: () => ctx.ports.require("platformMetrics"),
+          logger: ctx.logger,
+        }))
+      ) {
+        return {
+          status: "degraded",
+          checkedAt: new Date(),
+          message:
+            "Platform metrics could not be read from the database. Runtime metrics are still being served.",
+        };
       }
-
       await runtime.registry.metrics();
       return { status: "ok", checkedAt: new Date() };
-    } catch (error) {
-      return {
-        status: "error",
-        checkedAt: new Date(),
-        message: error instanceof Error ? error.message : String(error),
-      };
-    }
+    },
   },
+  localize: localizePrometheus,
 });

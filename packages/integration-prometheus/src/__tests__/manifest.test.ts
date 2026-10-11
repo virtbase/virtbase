@@ -21,7 +21,7 @@ import {
   DEFAULT_PREFIX,
   secretsSchema,
   settingsSchema,
-} from "../config";
+} from "../manifest";
 
 /** What the admin form submits: every field a string, blanks for the untouched. */
 const form = (overrides: Record<string, string> = {}) => ({

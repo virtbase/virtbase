@@ -17,9 +17,11 @@
 
 import { beforeEach, describe, expect, test } from "bun:test";
 import type { IntegrationLogger } from "@virtbase/integration-sdk";
-import { DEFAULT_DURATION_BUCKETS_MS } from "../config";
+import { collectPlatformMetrics } from "../collectors";
+import { DEFAULT_DURATION_BUCKETS_MS } from "../manifest";
 import { MetricsRuntime } from "../runtime";
 import { PrometheusMetricsSink } from "../sink";
+import { createFakeReader, SNAPSHOT } from "./fake-core";
 
 const warnings: string[] = [];
 
@@ -116,6 +118,41 @@ describe("recording never throws", () => {
     expect(warnings.join()).toContain(
       "already recorded as a different metric type",
     );
+  });
+
+  test("drops a sample under a platform gauge's name, so the next collection still succeeds", async () => {
+    sink.gauge({ name: "servers" }, 3);
+    sink.observe({ name: "platform.collector.up" }, 1);
+
+    expect(await scrape()).not.toContain("virtbase_servers 3");
+    expect(warnings.join()).toContain(
+      'Dropped "virtbase_servers": the name belongs to a platform gauge.',
+    );
+    expect(warnings.join()).toContain(
+      'Dropped "virtbase_platform_collector_up": the name belongs to a platform gauge.',
+    );
+    expect(
+      await collectPlatformMetrics(runtime, {
+        reader: async () => createFakeReader(SNAPSHOT),
+        logger,
+      }),
+    ).toBe(true);
+  });
+
+  test("drops a name the runtime metrics registered", () => {
+    const withDefaults = new MetricsRuntime({
+      prefix: "virtbase_",
+      collectDefaultMetrics: true,
+      durationBucketsMs: DEFAULT_DURATION_BUCKETS_MS,
+    });
+
+    expect(() =>
+      new PrometheusMetricsSink(withDefaults, logger).gauge(
+        { name: "process.resident.memory.bytes" },
+        1,
+      ),
+    ).not.toThrow();
+    expect(warnings.join()).toContain("registered by the runtime metrics");
   });
 
   test("keeps a later sample when it carries an undeclared dimension", async () => {
