@@ -1,6 +1,7 @@
 # Virtbase Development Guide
 
-> **Note:** `CLAUDE.md` is a symlink to `AGENTS.md`. They are the same file.
+> **Note:** `CLAUDE.md` contains the single line `@AGENTS.md`, which makes Claude
+> Code load this file. Edit this file, never `CLAUDE.md`.
 
 ## Codebase structure
 
@@ -26,6 +27,89 @@ Before editing or creating files in any subdirectory (e.g., `packages/*`, `apps/
 - `packages/api/README.md` (if exists)
 - `packages/api/src/README.md` (if exists)
 - `packages/api/src/router/README.md` (if exists - closest to target file)
+
+## Rules for every change
+
+These rules apply to every change, whether a person or an agent makes it.
+
+- The coding rules they refer to are in [`docs/style/`](docs/style/README.md).
+- The target architecture, its decisions and its known defects are in
+  [`docs/architecture/`](docs/architecture/README.md).
+- Cite rules by ID (`CMP-15`, `CMT-8`) in reviews and PR descriptions.
+
+1. **Read before you write.** Before the first edit, read:
+   - the READMEs on the path (above);
+   - the style guides for the area (table below);
+   - the ADRs of the current phase;
+   - the code you change, and every caller of it. Find callers with the language
+     server's references, not with text search.
+2. **Write composable code.** New code is built from decisions, operations,
+   orchestrators and adapters, as [`composition.md`](docs/style/composition.md)
+   defines them:
+   - dependencies are passed in;
+   - one transaction per state change;
+   - no network inside a transaction;
+   - side effects after commit;
+   - retries are harmless;
+   - every loop that does I/O is bounded.
+3. **Repair the surrounding code.** The surrounding code of a change is:
+   - every function in a file you modify;
+   - every function one call away from your change, in either direction, within
+     the same package.
+
+   Recode every defect in it into the same composable shape, in the same PR,
+   test first (CMP-15 to CMP-20). A defect is any of:
+   - an entry in [`risks.md`](docs/architecture/risks.md);
+   - a broken rule marked **(defect)**;
+   - a forbidden comment.
+
+   Never copy a defective pattern into new code. If a repair would change what a
+   customer or operator sees beyond decision D9, stop and ask.
+4. **Write unambiguous comments.** A comment states why, a constraint or a
+   hazard. It names its subject, and every claim in it is enforced by code and
+   tested ([`comments.md`](docs/style/comments.md)).
+   - No hedging: "should", "might", "for now", "temporary", and the rest of the
+     CMT-8 list.
+   - No `TODO` without an open issue.
+   - No commented-out code.
+   - When you change code, update or delete every comment that describes it.
+5. **Never:**
+   - `git commit --no-verify`;
+   - `gh pr ready`;
+   - attribution footers;
+   - a bare `bun test`;
+   - a new `process.env` read outside the bootstrap allowlist;
+   - moving or renaming an existing workflow file;
+   - comments in configuration or CI files;
+   - a secret in any output;
+   - `notFound()` to decide a route-level 404;
+   - a new dependency without its reason in the PR description.
+6. **Prove each step before the next one**
+   ([Task Decomposition and Verification](#task-decomposition-and-verification)).
+   Before opening a PR, run `bun check`, `bun typecheck`, `bun check:boundaries`
+   and `bun run test` for the touched packages, plus Playwright when a page or
+   route changed.
+7. **Review before you open a PR.** In Claude Code:
+   - run the `neighbourhood-auditor` and `style-reviewer` agents
+     (`.claude/agents/`);
+   - run `/code-review`;
+   - run `/security-review` once per phase.
+
+   Other agents follow the same checklists by reading those files. Fix the
+   findings, or answer each one in the PR.
+8. **Report honestly**, in the PR template of [`git.md`](docs/style/git.md): every
+   gate and its result, every behaviour change, every repair.
+
+| Area you touch | Read |
+| --- | --- |
+| any TypeScript | [composition](docs/style/composition.md), [typescript](docs/style/typescript.md), [comments](docs/style/comments.md) |
+| `packages/db`, `src/schema.ts`, migrations, backfills | [data](docs/style/data.md) |
+| procedures, server actions, route handlers, crons, workflows, events | [server](docs/style/server.md) |
+| `apps/web` | [web](docs/style/web.md), and the matching Next.js skill in `.claude/skills/` |
+| `packages/integration-*` | [integrations](docs/style/integrations.md) |
+| tests | [testing](docs/style/testing.md) |
+| secrets, auth, personal data, webhooks, outbound HTTP | [security](docs/style/security.md) |
+| commits and PRs | [git](docs/style/git.md) |
 
 ## Linting and Types
 
@@ -421,6 +505,7 @@ Always treat environment variable values as sensitive unless they are known test
 - Keep commit messages concise and descriptive
 - PR descriptions should focus on what changed and why
 - Do NOT mark PRs as "ready for review" (`gh pr ready`) - leave PRs in draft mode and let the user decide when to mark them ready
+- The branch, commit and PR rules, including the PR description template, are in [`docs/style/git.md`](docs/style/git.md)
 
 ## Task Decomposition and Verification
 
