@@ -26,7 +26,7 @@ import { getExtracted } from "next-intl/server";
  * argument is invisible to it.
  */
 export const localizeLexware = async (): Promise<LocalizedIntegrationText> => {
-  const t = await getExtracted();
+  const t = await getExtracted("lexware-integration");
 
   return {
     name: t("Lexware"),

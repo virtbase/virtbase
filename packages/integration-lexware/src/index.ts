@@ -16,67 +16,30 @@
  */
 
 import { defineIntegration } from "@virtbase/integration-sdk";
-import * as z from "zod";
 import { LexwareInvoiceProvider } from "./adapter";
 import { LexwareClient } from "./client";
 import { COUNTRY_CONTACTS, HOME_COUNTRY } from "./constants";
 import { localizeLexware } from "./localize";
+import { manifest } from "./manifest";
 
-export * from "./adapter";
-export * from "./client";
-export * from "./constants";
-export * from "./messages";
-export * from "./types";
-
-const secretsSchema = z.object({
-  apiKey: z.string().min(1),
-});
-
-export default defineIntegration({
-  id: "lexware",
-  name: "Lexware",
-  description:
-    "Issues customer invoices, and renders the PDFs that are emailed and downloaded.",
-
-  category: "billing",
-  icon: "lexware",
-  author: "Virtbase",
-  website: "https://www.lexware.de",
-  docsUrl: "https://developers.lexware.io/docs/",
-
-  secrets: {
-    schema: secretsSchema,
-    fields: [
-      {
-        key: "apiKey",
-        label: "API key",
-        help: "Created under Extras → lexoffice API in Lexware Office.",
-        widget: "password",
-      },
-    ],
-  },
-
+/** Lexware's runtime (ADR 0003); its static half is `./manifest`. */
+export default defineIntegration(manifest, {
   provides: {
     invoice: (ctx) =>
-      new LexwareInvoiceProvider(new LexwareClient(ctx.secrets.apiKey)),
+      new LexwareInvoiceProvider(
+        new LexwareClient({ apiKey: ctx.secrets.apiKey, http: ctx.http }),
+      ),
   },
-
-  localize: localizeLexware,
-
-  health: async (ctx) => {
-    const client = new LexwareClient(ctx.secrets.apiKey);
-
-    try {
-      // Cheapest authenticated call: resolve the collective contact that home
-      // country invoices are billed against.
-      await client.retrieveContact(COUNTRY_CONTACTS[HOME_COUNTRY]);
+  health: {
+    check: async (ctx) => {
+      // A read that needs the key and the collective contact every
+      // home-country invoice is billed against; a GET, so it changes nothing.
+      await new LexwareClient({
+        apiKey: ctx.secrets.apiKey,
+        http: ctx.http,
+      }).retrieveContact(COUNTRY_CONTACTS[HOME_COUNTRY]);
       return { status: "ok", checkedAt: new Date() };
-    } catch (error) {
-      return {
-        status: "error",
-        checkedAt: new Date(),
-        message: error instanceof Error ? error.message : String(error),
-      };
-    }
+    },
   },
+  localize: localizeLexware,
 });
