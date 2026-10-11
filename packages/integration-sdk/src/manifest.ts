@@ -24,7 +24,7 @@
  * workspace imports, and `manifest-imports.test.ts` for every import.
  */
 
-import type { PortMap } from "@virtbase/ports";
+import type { FormDescriptor, PortMap } from "@virtbase/ports";
 import type { FieldDescriptor } from "@virtbase/validators";
 import * as z from "zod";
 
@@ -50,7 +50,8 @@ export type FieldKeyOf<TSchema extends z.ZodType> = [
  * it. One descriptor drives both server-side validation and the UI, so adding
  * a setting never means hand-writing a form.
  */
-export interface ValueDescriptor<TSchema extends z.ZodType = z.ZodType> {
+export interface ValueDescriptor<TSchema extends z.ZodType = z.ZodType>
+  extends FormDescriptor {
   schema: TSchema;
   fields: FieldDescriptor<FieldKeyOf<TSchema>>[];
 }

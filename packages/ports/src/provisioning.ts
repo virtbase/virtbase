@@ -31,9 +31,6 @@ export type ProductKind = string;
 /**
  * A Zod schema plus the field descriptors the admin console and checkout
  * render a form from, one field per key of `schema`.
- *
- * Structurally the `ValueDescriptor` of `@virtbase/integration-sdk/manifest`,
- * which a port cannot import: `ports` is Layer 2 and the SDK is Layer 4.
  */
 export interface FormDescriptor {
   readonly schema: z.ZodType;
