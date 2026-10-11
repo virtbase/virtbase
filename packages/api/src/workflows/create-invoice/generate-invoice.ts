@@ -204,7 +204,7 @@ export async function generateInvoiceStep({
       },
     ],
     locale,
-    finalize: isProductionDeployment(process.env),
+    finalize: isProductionDeployment(process.env.NEXT_PUBLIC_VERCEL_ENV),
   });
 
   return {

@@ -20,20 +20,14 @@ import { isProductionDeployment } from "../is-production-deployment";
 
 describe("isProductionDeployment", () => {
   test("is true for the production deployment", () => {
-    expect(
-      isProductionDeployment({ NEXT_PUBLIC_VERCEL_ENV: "production" }),
-    ).toBe(true);
+    expect(isProductionDeployment("production")).toBe(true);
   });
 
   test("is false for a preview, although its build runs with NODE_ENV=production", () => {
-    const previewBuild = {
-      NEXT_PUBLIC_VERCEL_ENV: "preview",
-      NODE_ENV: "production",
-    };
-    expect(isProductionDeployment(previewBuild)).toBe(false);
+    expect(isProductionDeployment("preview")).toBe(false);
   });
 
   test("is false when the deployment environment is not set", () => {
-    expect(isProductionDeployment({})).toBe(false);
+    expect(isProductionDeployment(undefined)).toBe(false);
   });
 });

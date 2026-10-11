@@ -139,10 +139,10 @@ allowed, and nothing new is. It becomes this list at the end of Phase 2.
    which a production browser rejects. Likely latent bug (not executed here);
    the server action path (apps/web/src/ui/locale-switcher-action.ts:48) is
    unaffected.
-6. **`NODE_ENV === "production"` is also true on Vercel previews**, and it decides
-   whether Lexware invoices are finalized
-   (packages/api/src/workflows/create-invoice/generate-invoice.ts:203). A preview
-   deployment with Lexware enabled finalizes real invoices.
+6. **`NODE_ENV === "production"` is also true on Vercel previews.** It decided
+   whether Lexware invoices are finalized until risk C32 was fixed; the step now
+   calls `isProductionDeployment(process.env.NEXT_PUBLIC_VERCEL_ENV)`
+   (packages/api/src/workflows/create-invoice/generate-invoice.ts).
 7. **`CRON_SECRET` is baked into every Proxmox node.** It is uploaded as the
    hookscript's `{{HOOKSCRIPT_SECRET}}` together with `{{PUBLIC_DOMAIN}}`
    (apps/web/src/features/admin/lib/proxmox-nodes/hookscript.ts:62-66; callers
@@ -384,8 +384,6 @@ is derived from it.
   (per call: in development, auth emails are logged instead of sent);
   packages/email/src/index.ts:64 (per send: missing provider tolerated in
   development); packages/db/src/client.ts:104 (module load, HMR pool cache);
-  packages/api/src/workflows/create-invoice/generate-invoice.ts:203 (step:
-  finalize Lexware invoice only in production - finding 6);
   apps/web/src/lib/csp/index.ts:66,75 (module load -> next.config headers);
   apps/web/src/app/api/trpc/[trpc]/route.ts:42 (`env.NODE_ENV`, error logging);
   apps/web/src/lib/trpc/react.tsx:116 (`env.NODE_ENV`, client logger link);
@@ -825,7 +823,7 @@ already work.
 | provision-server/apply-hardware-config (step at :44) | `NEXT_PUBLIC_VERCEL_ENV` -> VM tag | packages/api/src/workflows/provision-server/apply-hardware-config.ts:112-116 |
 | shared/clone-guest (step at :40, **dead code**) | `NEXT_PUBLIC_VERCEL_ENV` -> VM name prefix | packages/api/src/workflows/shared/clone-guest.ts:48-53 |
 | shared/create-guest-from-image (step at :57) | `NEXT_PUBLIC_VERCEL_ENV` -> VM name prefix | packages/api/src/workflows/shared/create-guest-from-image.ts:63-68 |
-| create-invoice/generate-invoice (step at :53) | `NODE_ENV` -> Lexware `finalize`; Stripe client (`STRIPE_SECRET_KEY`) at :55 | packages/api/src/workflows/create-invoice/generate-invoice.ts:55,203 |
+| create-invoice/generate-invoice (step at :53) | `NEXT_PUBLIC_VERCEL_ENV` -> Lexware `finalize` (C32); Stripe client (`STRIPE_SECRET_KEY`) at :55 | packages/api/src/workflows/create-invoice/generate-invoice.ts:55,203 |
 | offboard-user/revoke-external-identities (step at :49) | `BETTER_AUTH_SECRET` | packages/api/src/workflows/offboard-user/revoke-external-identities.ts:72 |
 | offboard-user/detach-external-services | Stripe client | packages/api/src/workflows/offboard-user/detach-external-services.ts:52-57 |
 | any step that sends mail | `RESEND_API_KEY`/`SMTP_*` via `sendEmail` | packages/email/src/index.ts:74-96 |

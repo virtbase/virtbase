@@ -16,13 +16,15 @@
  */
 
 /**
- * Whether `env` describes the production deployment, as opposed to a preview or
- * a local one.
+ * Whether `vercelEnv`, the value of `NEXT_PUBLIC_VERCEL_ENV`, names the
+ * production deployment rather than a preview or a local one.
  *
- * Decided by `NEXT_PUBLIC_VERCEL_ENV`, the switch the domain constants in
- * `constants/main.ts` already use. `NODE_ENV` cannot decide it: `next build`
- * sets it to `production` for preview deployments too.
+ * Callers pass `process.env.NEXT_PUBLIC_VERCEL_ENV` written out literally, as
+ * the domain constants in `constants/main.ts` read it: Next.js inlines a
+ * `NEXT_PUBLIC_` variable only where its full name appears in the source.
+ * `NODE_ENV` cannot decide this, because `next build` sets it to `production`
+ * for preview deployments too.
  */
 export const isProductionDeployment = (
-  env: Record<string, string | undefined>,
-): boolean => env.NEXT_PUBLIC_VERCEL_ENV === "production";
+  vercelEnv: string | undefined,
+): boolean => vercelEnv === "production";

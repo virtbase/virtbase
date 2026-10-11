@@ -98,7 +98,7 @@ the rows marked **hotfix**, which ship first, on their own.
 | C29 | `storeServerExtensionStep` and `storeServerDeletionStep` are not replay-safe | `packages/api/src/workflows/extend-server/store-server-extension.ts`, `packages/api/src/workflows/delete-server/store-server-deletion.ts` | medium | 4.3 |
 | C30 | Test database snapshots (about 44 MB each) are never evicted | `packages/db/.cache/test-db/` | low | 1.2 |
 | C31 | E2E has no encryption key, so no integration can be configured, and all specs share one database in full parallel | `e2e.yml:65-77`, `playwright.config.ts:28,31` | medium | 3.6 |
-| C32 | Preview deployments finalize real Lexware invoices, because `finalize` is `NODE_ENV === "production"` | `packages/api/src/workflows/create-invoice/generate-invoice.ts:203` | high | **hotfix** (then `APP_ENV` in 2.4) |
+| C32 | Preview deployments finalized real Lexware invoices, because `finalize` was `NODE_ENV === "production"` | `packages/api/src/workflows/create-invoice/generate-invoice.ts` | high | **fixed** in `fix/invoice-finalize-on-preview` |
 | C33 | Outside Vercel, every origin falls back to `*.virtbase.localhost` and every email goes to `delivered@resend.dev`, silently | `packages/utils/src/constants/main.ts:35-89`, `packages/email/src/send-via-resend.ts:80-87` | medium | 2.4 (`APP_ENV`) |
 | C34 | The locale cookie domain is computed in the browser, where `VERCEL_URL` is undefined, so a client-side locale switch writes a cookie a production browser rejects | `apps/web/src/i18n/routing.public.ts:24-28`, `packages/utils/src/constants/cookies.ts:18-20` | medium | 2.4 |
 | C35 | The SMTP fallback drops reply-to, cc and attachments, so invoice PDFs are not attached | `packages/email/src/index.ts:82-92` | medium | 2.5 |
