@@ -45,6 +45,12 @@ interface Captured {
   body: string;
 }
 
+/**
+ * What the fake endpoint answers with. A receiver may echo the notification
+ * back, so the tests assert that no error carries this text.
+ */
+const ENDPOINT_BODY = "endpoint-body-echo: Case AB-1042 opened";
+
 /** A channel on a fake endpoint that answers `status` and records each request. */
 const channelOn = (status = 200, fetch?: FetchLike) => {
   const calls: Captured[] = [];
@@ -54,7 +60,7 @@ const channelOn = (status = 200, fetch?: FetchLike) => {
       headers: new Headers(init?.headers),
       body: String(init?.body),
     });
-    return new Response("", { status });
+    return new Response(ENDPOINT_BODY, { status });
   };
   const channel = new WebhookNotificationChannel(
     createIntegrationHttp({
@@ -142,7 +148,7 @@ describe("WebhookNotificationChannel", () => {
     );
   });
 
-  test("rejects a 5xx answer as retryable, without the endpoint's body", async () => {
+  test("rejects a 5xx answer as retryable", async () => {
     const { channel } = channelOn(503);
 
     const error = await channel
@@ -155,6 +161,22 @@ describe("WebhookNotificationChannel", () => {
       retryable: true,
       message: "The endpoint answered 503",
     });
+  });
+
+  test("leaves the endpoint's body out of the error, because a receiver may echo the notification", async () => {
+    const { channel } = channelOn(422);
+
+    const error = await channel
+      .send(notification({ url: "https://hooks.test/virtbase" }))
+      .catch((caught: unknown) => caught);
+
+    if (!(error instanceof IntegrationError)) {
+      throw new Error("the channel did not reject with an IntegrationError");
+    }
+    expect(error.code).toBe("webhook.endpoint_rejected");
+    expect(error.message).not.toContain("endpoint-body-echo");
+    expect(JSON.stringify(error.params)).not.toContain("endpoint-body-echo");
+    expect(String(error.cause)).not.toContain("endpoint-body-echo");
   });
 
   test("rejects a 4xx answer as not retryable", async () => {
@@ -181,20 +203,32 @@ describe("WebhookNotificationChannel", () => {
       )
       .catch((caught: unknown) => caught);
 
-    const text =
-      error instanceof Error ? `${error.message} ${String(error.cause)}` : "";
-    expect(text).not.toContain("token-3");
-    expect(text).not.toContain("topsecret");
+    if (!(error instanceof IntegrationError)) {
+      throw new Error("the channel did not reject with an IntegrationError");
+    }
+    expect(error.code).toBe("webhook.http_unreachable");
+    for (const part of [
+      error.message,
+      JSON.stringify(error.params),
+      String(error.cause),
+    ]) {
+      expect(part).not.toContain("token-3");
+      expect(part).not.toContain("topsecret");
+    }
   });
 });
+
+const CONTRACT_URL = "https://hooks.test/services/contract-url-token";
 
 describeNotificationChannel("Outgoing webhooks", async () => {
   let delivered = 0;
   let failNext = false;
-  const { channel } = channelOn(200, async () => {
+  // The forced failure is a network error whose message names the URL, so the
+  // contract's leak check runs on the error `ctx.http` builds and redacts.
+  const { channel } = channelOn(200, async (input) => {
     if (failNext) {
       failNext = false;
-      return new Response("", { status: 500 });
+      throw new TypeError(`fetch failed: ECONNREFUSED ${String(input)}`);
     }
     delivered++;
     return new Response("", { status: 200 });
@@ -204,10 +238,10 @@ describeNotificationChannel("Outgoing webhooks", async () => {
     supported: [{ kind: "operator" }],
     unsupported: [{ kind: "user", userId: "usr_contract" }],
     target: {
-      url: "https://hooks.test/contract",
+      url: CONTRACT_URL,
       signingSecret: "contract-signing-secret",
     },
-    secrets: [],
+    secrets: [CONTRACT_URL],
     deliveries: () => delivered,
     failNextDelivery: () => {
       failNext = true;
