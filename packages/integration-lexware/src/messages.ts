@@ -63,10 +63,17 @@ export const invoiceMessages = {
 export type InvoiceMessageLocale = keyof typeof invoiceMessages;
 
 /**
+ * An own-property check, because `"constructor" in invoiceMessages` is true
+ * and would select copy that does not exist.
+ */
+const isInvoiceMessageLocale = (base: string): base is InvoiceMessageLocale =>
+  Object.hasOwn(invoiceMessages, base);
+
+/**
  * Narrows an arbitrary BCP 47 tag to a locale this provider has copy for,
  * falling back to English.
  */
 export const resolveInvoiceLocale = (locale: string): InvoiceMessageLocale => {
   const base = locale.split("-")[0] ?? "";
-  return base in invoiceMessages ? (base as InvoiceMessageLocale) : "en";
+  return isInvoiceMessageLocale(base) ? base : "en";
 };
