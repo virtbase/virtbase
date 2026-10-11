@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import * as Sentry from "@sentry/node";
 import { IntegrationConfigStore, parseMasterKey } from "@virtbase/config";
 import { db } from "@virtbase/db/client";
 import abuseipdb from "@virtbase/integration-abuseipdb";
@@ -38,6 +39,7 @@ import { AbuseSignalIntake } from "../abuse/port";
 // registry, and going through it would make the two modules circular.
 import { EmailNotificationChannel } from "../notifications/channels/email";
 import { DbConfigSource } from "./db-config-source";
+import { toHttpBreadcrumb } from "./http-breadcrumb";
 import { TRPCServerManagement } from "./server-management";
 
 /**
@@ -112,6 +114,7 @@ export const integrations = new IntegrationRegistry({
     abuseipdb,
   ],
   config,
+  onHttpRequest: (event) => Sentry.addBreadcrumb(toHttpBreadcrumb(event)),
 });
 
 export { dispatchAccountLinked } from "./account-linked";

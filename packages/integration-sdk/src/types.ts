@@ -18,6 +18,7 @@
 import type { PortMap } from "@virtbase/ports";
 import type { FieldDescriptor } from "@virtbase/validators";
 import type * as z from "zod";
+import type { IntegrationHttp } from "./http";
 
 /**
  * Re-exported so integration authors keep importing form metadata from the
@@ -107,7 +108,10 @@ export interface IntegrationContext<TSettings = unknown, TSecrets = unknown> {
   readonly id: string;
   readonly settings: TSettings;
   readonly secrets: TSecrets;
+  /** Prefixed with the integration, and redacting its secrets (INT-6). */
   readonly logger: IntegrationLogger;
+  /** Outbound HTTP with a timeout, retries and redaction (INT-4). */
+  readonly http: IntegrationHttp;
   readonly ports: PortAccessor;
   /**
    * Keeps work alive after the response has been sent.
@@ -242,13 +246,21 @@ export interface IntegrationDefinition<
    */
   localize?: () => Promise<LocalizedIntegrationText>;
 
-  /** Probed by the admin console and by the worker on a schedule. */
+  /**
+   * Probed by the admin console and by the worker on a schedule, within
+   * {@link healthBudgetMs}.
+   */
   health?: (
     ctx: IntegrationContext<
       z.output<TSettingsSchema>,
       z.output<TSecretsSchema>
     >,
   ) => Promise<IntegrationHealth>;
+  /**
+   * How long {@link health} may take, in milliseconds: 5000 by default, at
+   * most 15000. A probe that takes longer reports `error`.
+   */
+  healthBudgetMs?: number;
 }
 
 /**

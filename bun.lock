@@ -326,6 +326,7 @@
       "name": "@virtbase/integration-sdk",
       "dependencies": {
         "@virtbase/ports": "workspace:*",
+        "@virtbase/utils": "workspace:*",
         "@virtbase/validators": "workspace:*",
         "zod": "catalog:",
       },

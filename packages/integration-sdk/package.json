@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@virtbase/ports": "workspace:*",
+    "@virtbase/utils": "workspace:*",
     "@virtbase/validators": "workspace:*",
     "zod": "catalog:"
   },
@@ -21,8 +22,8 @@
   },
   "virtbase": {
     "coverage": {
-      "lines": 0.55,
-      "functions": 0.53
+      "lines": 0.8,
+      "functions": 0.76
     }
   }
 }
