@@ -68,7 +68,7 @@ the rows marked **hotfix**, which ship first, on their own.
 | ID | Defect | Evidence | Severity | Fix in |
 | --- | --- | --- | --- | --- |
 | C1 | CI "Compile the web app" timed out at 30 minutes on every push to `main` since `736beedc`: it restored a Turbopack cache written under the `workerThreads` plugin runtime, on which the default runtime hangs | `.github/workflows/ci.yml` (cache key) | high | **fixed** in #70 |
-| C2 | `bun script` always exited 0, ignored stdin and dropped shell environment variables | `apps/web/scripts/run.ts:30-41`, `turbo.json` `script` task | medium | **fixed** in `fix/bun-script-exit-code` |
+| C2 | `bun script` always exited 0, ignored stdin and dropped shell environment variables | `apps/web/scripts/run.ts:30-41`, `turbo.json` `script` task | medium | **fixed** in #71 |
 | C3 | `onDisable` never runs | `packages/integration-sdk/src/registry.ts:351-357,455-457` | medium | 1.3 |
 | C4 | "Check now" probes every integration, including Discord's sync, which writes to Discord | `apps/web/src/features/admin/api/integrations/update-integration.ts:171` | low | 1.3 |
 | C5 | AbuseIPDB: switches cannot be turned off (`z.coerce.boolean("false")` is `true`); a blank threshold becomes 0, not 50; `blockPrefixLength` is never read; the health probe spends quota | `packages/integration-abuseipdb/src/index.ts`, `packages/api/src/abuse/poll.ts:188` | medium | 1 (AbuseIPDB PR) |
