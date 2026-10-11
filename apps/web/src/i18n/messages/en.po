@@ -7,85 +7,84 @@ msgstr ""
 "X-Message-Key: msgctxt\n"
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "lYlalx"
+msgctxt "abuseipdb-integration.lYlalx"
 msgid "AbuseIPDB"
-msgstr ""
+msgstr "AbuseIPDB"
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "utGnBr"
+msgctxt "abuseipdb-integration.utGnBr"
 msgid "Sweeps our own address ranges for reports filed against them, and looks up the reputation of a single address."
-msgstr ""
+msgstr "Sweeps our own address ranges for reports filed against them, and looks up the reputation of a single address."
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "cZ2pIN"
+msgctxt "abuseipdb-integration.cZ2pIN"
 msgid "Confidence threshold"
-msgstr ""
+msgstr "Confidence threshold"
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "KhnDzH"
+msgctxt "abuseipdb-integration.KhnDzH"
 msgid "Below this score, a reported address is ignored."
-msgstr ""
+msgstr "Below this score, a reported address is ignored."
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "osZi7I"
+msgctxt "abuseipdb-integration.osZi7I"
 msgid "Report age"
-msgstr ""
+msgstr "Report age"
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "5hDWuX"
+msgctxt "abuseipdb-integration.5hDWuX"
 msgid "How far back the provider should look, in days."
-msgstr ""
+msgstr "How far back the provider should look, in days."
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "6ijXWp"
+msgctxt "abuseipdb-integration.6ijXWp"
 msgid "Block size"
-msgstr ""
+msgstr "Block size"
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "BVpDyn"
-msgid "The smallest block a sweep asks about. A free key is limited to /24."
-msgstr ""
+msgctxt "abuseipdb-integration.vXtwmK"
+msgid "The largest block one call asks about, as a prefix length. Wider targets are split into blocks of this size. Targets are /24, so a value below 24 changes nothing and each step above 24 doubles the calls per target."
+msgstr "The largest block one call asks about, as a prefix length. Wider targets are split into blocks of this size. Targets are /24, so a value below 24 changes nothing and each step above 24 doubles the calls per target."
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "1O6nNu"
+msgctxt "abuseipdb-integration.1O6nNu"
 msgid "Calls per run"
-msgstr ""
+msgstr "Calls per run"
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "O3o6j3"
+msgctxt "abuseipdb-integration.O3o6j3"
 msgid "Provider calls one sweep may make. Four per hour fits inside a free key's daily allowance."
-msgstr ""
+msgstr "Provider calls one sweep may make. Four per hour fits inside a free key's daily allowance."
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "4aIITL"
+msgctxt "abuseipdb-integration.4aIITL"
 msgid "Look up categories"
-msgstr ""
+msgstr "Look up categories"
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "jwnZSk"
+msgctxt "abuseipdb-integration.jwnZSk"
 msgid "Spends an extra call per finding so a case says what it was reported for instead of “other”."
-msgstr ""
+msgstr "Spends an extra call per finding so a case says what it was reported for instead of “other”."
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "GDitI5"
+msgctxt "abuseipdb-integration.GDitI5"
 msgid "Allow reporting back"
-msgstr ""
+msgstr "Allow reporting back"
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "kms48f"
-msgid "Lets an operator publish a report when a case is confirmed. Never automatic."
-msgstr ""
+msgctxt "abuseipdb-integration.i4cIpi"
+msgid "Allows reports to be published back to AbuseIPDB. While off, every report is refused."
+msgstr "Allows reports to be published back to AbuseIPDB. While off, every report is refused."
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-#: ../../packages/integration-lexware/src/localize.ts
-msgctxt "KTNoOq"
+msgctxt "abuseipdb-integration.KTNoOq"
 msgid "API key"
-msgstr ""
+msgstr "API key"
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "EAEEtM"
+msgctxt "abuseipdb-integration.EAEEtM"
 msgid "Sent as the Key header."
-msgstr ""
+msgstr "Sent as the Key header."
 
 #: ../../packages/integration-alertmanager/src/localize.ts
 msgctxt "alertmanager-integration.IbOv8i"
@@ -1412,19 +1411,24 @@ msgid "Virtbase - Hosting, but secure."
 msgstr ""
 
 #: ../../packages/integration-lexware/src/localize.ts
-msgctxt "XPQ6rZ"
+msgctxt "lexware-integration.XPQ6rZ"
 msgid "Lexware"
-msgstr ""
+msgstr "Lexware"
 
 #: ../../packages/integration-lexware/src/localize.ts
-msgctxt "iyNvec"
+msgctxt "lexware-integration.iyNvec"
 msgid "Issues customer invoices, and renders the PDFs that are emailed and downloaded."
-msgstr ""
+msgstr "Issues customer invoices, and renders the PDFs that are emailed and downloaded."
 
 #: ../../packages/integration-lexware/src/localize.ts
-msgctxt "gF5il8"
+msgctxt "lexware-integration.KTNoOq"
+msgid "API key"
+msgstr "API key"
+
+#: ../../packages/integration-lexware/src/localize.ts
+msgctxt "lexware-integration.gF5il8"
 msgid "Created under Extras → lexoffice API in Lexware Office."
-msgstr ""
+msgstr "Created under Extras → lexoffice API in Lexware Office."
 
 #: ../../packages/integration-powerdns/src/localize.ts
 msgctxt "powerdns-integration.NU8d67"

@@ -16,85 +16,84 @@ msgstr ""
 "X-Message-Key: msgctxt\n"
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "lYlalx"
+msgctxt "abuseipdb-integration.lYlalx"
 msgid "AbuseIPDB"
-msgstr "AbuseIPDB"
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "utGnBr"
+msgctxt "abuseipdb-integration.utGnBr"
 msgid "Sweeps our own address ranges for reports filed against them, and looks up the reputation of a single address."
-msgstr "Rastrea nuestros propios rangos de direcciones en busca de denuncias contra ellas y consulta la reputación de una dirección concreta."
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "cZ2pIN"
+msgctxt "abuseipdb-integration.cZ2pIN"
 msgid "Confidence threshold"
-msgstr "Umbral de confianza"
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "KhnDzH"
+msgctxt "abuseipdb-integration.KhnDzH"
 msgid "Below this score, a reported address is ignored."
-msgstr "Por debajo de esta puntuación, una dirección denunciada se ignora."
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "osZi7I"
+msgctxt "abuseipdb-integration.osZi7I"
 msgid "Report age"
-msgstr "Antigüedad de las denuncias"
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "5hDWuX"
+msgctxt "abuseipdb-integration.5hDWuX"
 msgid "How far back the provider should look, in days."
-msgstr "Cuánto debe retroceder el proveedor, en días."
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "6ijXWp"
+msgctxt "abuseipdb-integration.6ijXWp"
 msgid "Block size"
-msgstr "Tamaño de bloque"
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "BVpDyn"
-msgid "The smallest block a sweep asks about. A free key is limited to /24."
-msgstr "El bloque más pequeño que consulta un barrido. Una clave gratuita está limitada a /24."
+msgctxt "abuseipdb-integration.vXtwmK"
+msgid "The largest block one call asks about, as a prefix length. Wider targets are split into blocks of this size. Targets are /24, so a value below 24 changes nothing and each step above 24 doubles the calls per target."
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "1O6nNu"
+msgctxt "abuseipdb-integration.1O6nNu"
 msgid "Calls per run"
-msgstr "Llamadas por ejecución"
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "O3o6j3"
+msgctxt "abuseipdb-integration.O3o6j3"
 msgid "Provider calls one sweep may make. Four per hour fits inside a free key's daily allowance."
-msgstr "Llamadas al proveedor que puede hacer un barrido. Cuatro por hora caben en el cupo diario de una clave gratuita."
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "4aIITL"
+msgctxt "abuseipdb-integration.4aIITL"
 msgid "Look up categories"
-msgstr "Consultar categorías"
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "jwnZSk"
+msgctxt "abuseipdb-integration.jwnZSk"
 msgid "Spends an extra call per finding so a case says what it was reported for instead of “other”."
-msgstr "Gasta una llamada extra por hallazgo para que un caso indique el motivo de la denuncia en lugar de «otro»."
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "GDitI5"
+msgctxt "abuseipdb-integration.GDitI5"
 msgid "Allow reporting back"
-msgstr "Permitir denunciar de vuelta"
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "kms48f"
-msgid "Lets an operator publish a report when a case is confirmed. Never automatic."
-msgstr "Permite que un operador publique una denuncia cuando un caso se confirma. Nunca es automático."
+msgctxt "abuseipdb-integration.i4cIpi"
+msgid "Allows reports to be published back to AbuseIPDB. While off, every report is refused."
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-#: ../../packages/integration-lexware/src/localize.ts
-msgctxt "KTNoOq"
+msgctxt "abuseipdb-integration.KTNoOq"
 msgid "API key"
-msgstr "Clave de API"
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "EAEEtM"
+msgctxt "abuseipdb-integration.EAEEtM"
 msgid "Sent as the Key header."
-msgstr "Se envía en la cabecera Key."
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
 msgctxt "alertmanager-integration.IbOv8i"
@@ -1421,19 +1420,24 @@ msgid "Virtbase - Hosting, but secure."
 msgstr "Virtbase: hosting, pero seguro."
 
 #: ../../packages/integration-lexware/src/localize.ts
-msgctxt "XPQ6rZ"
+msgctxt "lexware-integration.XPQ6rZ"
 msgid "Lexware"
-msgstr "Lexware"
+msgstr ""
 
 #: ../../packages/integration-lexware/src/localize.ts
-msgctxt "iyNvec"
+msgctxt "lexware-integration.iyNvec"
 msgid "Issues customer invoices, and renders the PDFs that are emailed and downloaded."
-msgstr "Emite facturas de clientes y genera los PDF que se envían por correo y se descargan."
+msgstr ""
 
 #: ../../packages/integration-lexware/src/localize.ts
-msgctxt "gF5il8"
+msgctxt "lexware-integration.KTNoOq"
+msgid "API key"
+msgstr ""
+
+#: ../../packages/integration-lexware/src/localize.ts
+msgctxt "lexware-integration.gF5il8"
 msgid "Created under Extras → lexoffice API in Lexware Office."
-msgstr "Se crea en Lexware Office en Extras → lexoffice API."
+msgstr ""
 
 #: ../../packages/integration-powerdns/src/localize.ts
 msgctxt "powerdns-integration.NU8d67"
