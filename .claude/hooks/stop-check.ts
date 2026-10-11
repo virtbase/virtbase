@@ -23,9 +23,13 @@ import {
 } from "./shared";
 
 /**
- * Claude Code `Stop` hook. Before Claude ends its turn, runs Biome over every
- * changed and untracked file, and keeps Claude working while Biome reports a
- * problem.
+ * Claude Code `Stop` hook. Before Claude ends its turn, it runs:
+ *
+ * - Biome over every changed and untracked file;
+ * - the comment gate over every comment line added since the branch left
+ *   `origin/main`.
+ *
+ * It keeps Claude working while either reports a problem.
  *
  * Claude Code sets `stop_hook_active` when Claude is already continuing because
  * of this hook. The hook then lets Claude stop, so a problem Claude cannot fix
@@ -39,6 +43,22 @@ const gitPaths = (...args: string[]): string[] =>
     .split("\n")
     .filter((path) => path.length > 0);
 
+/**
+ * Runs `tooling/comment-gate/check.ts` against `origin/main`, with its
+ * findings on stderr. Returns 2, which blocks, when the gate reports a
+ * violation (exit code 1). Returns 0 when it passes, and when it could not run
+ * (exit code 2), such as without an `origin/main`: a broken setup is not a
+ * comment Claude can fix.
+ */
+const checkComments = (): number =>
+  Bun.spawnSync(["bun", "tooling/comment-gate/check.ts", "origin/main"], {
+    cwd: PROJECT_ROOT,
+    stdout: "ignore",
+    stderr: "inherit",
+  }).exitCode === 1
+    ? 2
+    : 0;
+
 const { stopHookActive } = await readHookInput();
 
 if (!stopHookActive) {
@@ -47,5 +67,6 @@ if (!stopHookActive) {
     ...gitPaths("ls-files", "--others", "--exclude-standard"),
   ].filter((path) => CHECKED_EXTENSIONS.test(path));
 
-  if (changed.length > 0) process.exit(runBiome([], changed));
+  const biome = changed.length > 0 ? runBiome([], changed) : 0;
+  process.exit(Math.max(biome, checkComments()));
 }
