@@ -466,6 +466,18 @@
         "typescript": "catalog:",
       },
     },
+    "tooling/env-gate": {
+      "name": "@virtbase/env-gate",
+      "dependencies": {
+        "@babel/parser": "^7.29.8",
+        "@babel/types": "^7.29.8",
+        "zod": "catalog:",
+      },
+      "devDependencies": {
+        "@virtbase/tsconfig": "workspace:*",
+        "typescript": "catalog:",
+      },
+    },
     "tooling/tailwind": {
       "name": "@virtbase/tailwind-config",
       "dependencies": {
@@ -1739,6 +1751,8 @@
     "@virtbase/db": ["@virtbase/db@workspace:packages/db"],
 
     "@virtbase/email": ["@virtbase/email@workspace:packages/email"],
+
+    "@virtbase/env-gate": ["@virtbase/env-gate@workspace:tooling/env-gate"],
 
     "@virtbase/integration-abuseipdb": ["@virtbase/integration-abuseipdb@workspace:packages/integration-abuseipdb"],
 

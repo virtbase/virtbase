@@ -71,6 +71,11 @@ Rows 1–21 of §1.1:
 The gate starts in Phase 1 as a ratchet: every read that exists today is
 allowed, and nothing new is. It becomes this list at the end of Phase 2.
 
+`bun run env:check` ([`tooling/env-gate`](../../tooling/env-gate/README.md))
+enforces it. The reads outside this list that the gate found on 2026-10-11 are
+in `tooling/env-gate/baseline.json`. No command adds an entry to it; an
+addition is a hand edit whose reason its PR gives.
+
 ## When each value moves
 
 | Values | Moves to | Phase |
