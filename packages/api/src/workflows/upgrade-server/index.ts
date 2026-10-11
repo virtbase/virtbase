@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { isHeldOffByAbuseLock } from "@virtbase/utils";
 import { sleep } from "workflow";
 import { changeAdapterNetrate } from "../../proxmox/change-adapter-netrate";
 import {
@@ -147,67 +148,72 @@ export async function upgradeServerWorkflow({
       });
     });
 
-    // 6. Stop the guest to apply the new hardware config
-    const { upid: stopUpid } = await performGuestActionStep({
-      proxmoxNode: server.proxmoxNode,
-      vmid: server.vmid,
-      action: "stop",
-    });
-    if (stopUpid) {
-      await sleep("3s");
-      await waitForProxmoxTaskStep({
-        proxmoxNode: server.proxmoxNode,
-        upid: stopUpid,
-        ignoreErrors: false,
-      });
-    }
-
-    rollbacks.push(async () => {
-      const { upid: startUpid } = await rollbackPerformGuestActionStep({
+    // [!] A guest held off by an abuse lock is already off, and its stop's
+    // compensation would start it. The new hardware applies at the guest's next
+    // boot (risk C13).
+    if (!isHeldOffByAbuseLock(server)) {
+      // 6. Stop the guest to apply the new hardware config
+      const { upid: stopUpid } = await performGuestActionStep({
         proxmoxNode: server.proxmoxNode,
         vmid: server.vmid,
-        initialAction: "stop",
-        upid: stopUpid,
+        action: "stop",
       });
-      if (null !== startUpid) {
-        await waitForProxmoxTaskStep({
-          proxmoxNode: server.proxmoxNode,
-          upid: startUpid,
-          ignoreErrors: true,
-        });
-      }
-    });
-
-    // 7. Start the guest to apply the new hardware config
-    const { upid: startUpid } = await performGuestActionStep({
-      proxmoxNode: server.proxmoxNode,
-      vmid: server.vmid,
-      action: "start",
-    });
-    if (startUpid) {
-      await sleep("5s");
-      await waitForProxmoxTaskStep({
-        proxmoxNode: server.proxmoxNode,
-        upid: startUpid,
-        ignoreErrors: false,
-      });
-    }
-
-    rollbacks.push(async () => {
-      const { upid: stopUpid } = await rollbackPerformGuestActionStep({
-        proxmoxNode: server.proxmoxNode,
-        vmid: server.vmid,
-        initialAction: "start",
-        upid: startUpid,
-      });
-      if (null !== stopUpid) {
+      if (stopUpid) {
+        await sleep("3s");
         await waitForProxmoxTaskStep({
           proxmoxNode: server.proxmoxNode,
           upid: stopUpid,
-          ignoreErrors: true,
+          ignoreErrors: false,
         });
       }
-    });
+
+      rollbacks.push(async () => {
+        const { upid: startUpid } = await rollbackPerformGuestActionStep({
+          proxmoxNode: server.proxmoxNode,
+          vmid: server.vmid,
+          initialAction: "stop",
+          upid: stopUpid,
+        });
+        if (null !== startUpid) {
+          await waitForProxmoxTaskStep({
+            proxmoxNode: server.proxmoxNode,
+            upid: startUpid,
+            ignoreErrors: true,
+          });
+        }
+      });
+
+      // 7. Start the guest to apply the new hardware config
+      const { upid: startUpid } = await performGuestActionStep({
+        proxmoxNode: server.proxmoxNode,
+        vmid: server.vmid,
+        action: "start",
+      });
+      if (startUpid) {
+        await sleep("5s");
+        await waitForProxmoxTaskStep({
+          proxmoxNode: server.proxmoxNode,
+          upid: startUpid,
+          ignoreErrors: false,
+        });
+      }
+
+      rollbacks.push(async () => {
+        const { upid: stopUpid } = await rollbackPerformGuestActionStep({
+          proxmoxNode: server.proxmoxNode,
+          vmid: server.vmid,
+          initialAction: "start",
+          upid: startUpid,
+        });
+        if (null !== stopUpid) {
+          await waitForProxmoxTaskStep({
+            proxmoxNode: server.proxmoxNode,
+            upid: stopUpid,
+            ignoreErrors: true,
+          });
+        }
+      });
+    }
 
     // 8. TODO: Optionally send email to the user that the server has been upgraded
   } catch (error) {
