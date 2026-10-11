@@ -75,7 +75,12 @@ export interface OrderIssue {
    * (§4.5 of integration-first.md), which the integration translates.
    */
   code: string;
-  /** The key of the {@link OrderForm} field the issue is about, when it is about one. */
+  /**
+   * The key of the {@link OrderForm} field the issue is about, when it is
+   * about one. ADR 0012 gives an issue no field; it is this port's choice, so
+   * that checkout shows the issue next to the field the customer has to
+   * change.
+   */
   field?: string;
 }
 
@@ -116,17 +121,20 @@ export interface ServiceRef {
 }
 
 /**
- * A call that changes a service at the provider.
+ * A call that changes a service at the provider: `suspend`, `unsuspend`,
+ * `terminate`, `renew`, `changePlan` or `runAction`, and through
+ * {@link ProvisionInput} `provision`.
  *
- * The same command can arrive more than once, because the workflow step that
- * sends it is retried.
+ * The same command can arrive more than once, because the workflow step or
+ * the dashboard request that sends it is retried.
  */
 export interface ServiceCommand extends ServiceRef {
   /**
-   * The caller must derive it from the service, the operation and the
-   * workflow step, never from the clock (CMP-6). A provider must make a
-   * command repeated with the same key a no-op that answers as the first one
-   * did.
+   * For `provision`, `suspend`, `unsuspend`, `terminate`, `renew` and
+   * `changePlan`, the caller must derive it from the service, the operation
+   * and the workflow step, never from the clock (CMP-6). For `runAction` it
+   * comes from the dashboard request, one key per request. A provider must
+   * make a command repeated with the same key a no-op.
    */
   idempotencyKey: string;
 }
@@ -168,7 +176,13 @@ export interface PendingAnswer {
 export type ProvisionResult =
   | { status: "active"; providerRef: string }
   | (PendingAnswer & {
-      /** The provider's id for the service, when it has one before the work finishes. */
+      /**
+       * The provider's id for the service, when it has one before the work
+       * finishes, such as the UUID Pelican returns for a server that is still
+       * installing. ADR 0012 has `pending` carry only the wait; reporting the
+       * id early is this port's choice, so that `services.provider_ref` is set
+       * while the work runs.
+       */
       providerRef: string | null;
     });
 
@@ -209,23 +223,33 @@ export type ProviderStatus =
   | { status: "failed"; code: string };
 
 /**
- * Who is asking for, or running, a service action. A provider may offer an
- * operator other actions than a customer.
+ * The customer asking for, or running, a service action. ADR 0012: "`actions()`
+ * and `runAction()` cover what a customer can do with a service."
  */
 export interface ServiceActor {
-  kind: "customer" | "operator";
+  /** The customer's id, `usr_…`. */
   userId: string;
 }
 
 /**
- * How firmly the dashboard confirms an action before running it: not at all,
- * with a confirmation dialog, or by typing the service's name.
+ * How firmly the dashboard confirms an action before running it. ADR 0012
+ * describes each action with "a confirmation level" and names no levels, so
+ * the three are this port's choice, from the least friction to the most:
+ *
+ * - `none`: the action runs on click, for an action that changes nothing at
+ *   the provider, such as Pelican's panel login (ADR 0015).
+ * - `confirm`: a dialog asks first, for an action the customer can recover
+ *   from, such as a restart.
+ * - `typed`: the customer types the service's name, for an action that
+ *   destroys data, because a dialog is too easy to click by accident; the
+ *   dashboard's account deletion asks for a typed confirmation for the same
+ *   reason.
  */
 export type ActionConfirmation = "none" | "confirm" | "typed";
 
 /**
- * Something a customer or an operator can do with a service, described so
- * the dashboard renders it without provider code (ADR 0012).
+ * Something a customer can do with a service, described so the dashboard
+ * renders it without provider code (ADR 0012).
  */
 export interface ServiceAction {
   /** Unique among the service's actions; passed back to `runAction()`. */
@@ -246,13 +270,14 @@ export interface ServiceAction {
  *
  * Only the generic workflows of ADR 0012 (`provision-service`,
  * `suspend-service`, `unsuspend-service`, `terminate-service`,
- * `renew-service` and `change-service-plan`) may call the mutating methods.
+ * `renew-service` and `change-service-plan`) may call the mutating methods
+ * `provision`, `suspend`, `unsuspend`, `terminate`, `renew` and `changePlan`.
  * They must poll a `pending` answer with `status()` (ADR 0012).
  *
- * Every mutating method takes an idempotency key, and a command repeated with
- * the same key must change nothing at the provider and must answer as the
- * first one did ({@link ServiceCommand}). The `provisioning` contract suite of
- * `@virtbase/integration-testing` checks this for every mutating method.
+ * Each mutating method and `runAction` takes an idempotency key, and a command
+ * repeated with the same key must change nothing at the provider
+ * ({@link ServiceCommand}). The `provisioning` contract suite of
+ * `@virtbase/integration-testing` checks this for each of them.
  *
  * @experimental The port stays open to change until Phase 6 of
  * integration-first.md ends (risk R21): AutoDNS exercises `quote`, `pending`
@@ -292,18 +317,24 @@ export interface ProvisioningProvider {
     periodMonths: number;
   }): Promise<Money>;
 
-  /** Creates the service at the provider. */
+  /**
+   * Creates the service at the provider. A provision that fails must either
+   * reject with a `PortError` or an `IntegrationError`, or answer `pending`
+   * and have `status()` settle `failed`.
+   */
   provision(input: ProvisionInput): Promise<ProvisionResult>;
   /** Reads the service's state at the provider, and must change nothing there. */
   status(input: ServiceRef): Promise<ProviderStatus>;
   /**
    * Suspends the service for `reason`. Resolves once `status()` reports the
-   * suspension.
+   * suspension. On a terminated service it may reject, and the service must
+   * stay terminated.
    */
   suspend(input: ServiceCommand & { reason: SuspensionReason }): Promise<void>;
   /**
    * Lifts the suspension for `reason`, and only that one: the service runs
-   * again once no suspension is left. Resolves once `status()` reports it.
+   * again once no suspension is left. Resolves once `status()` reports it. On
+   * a terminated service it may reject, and the service must stay terminated.
    */
   unsuspend(
     input: ServiceCommand & { reason: SuspensionReason },
@@ -312,7 +343,7 @@ export interface ProvisioningProvider {
   terminate(input: ServiceCommand): Promise<OperationResult>;
   /**
    * Renews the service at the provider for `periodMonths`, as a registry
-   * renews a domain. Optional: a server's term is core's alone.
+   * renews a domain. Optional.
    */
   renew?(
     input: ServiceCommand & { periodMonths: number },

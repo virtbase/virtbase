@@ -65,6 +65,8 @@ interface Defects {
   quotesFloats?: boolean;
   /** Never finishes pending work. */
   neverFinishes?: boolean;
+  /** Rejects an order it cannot carry out with a plain `Error`. */
+  rejectsWithPlainError?: boolean;
 }
 
 interface Options {
@@ -211,7 +213,9 @@ const referenceProvider = async (
       provisionOnce(idempotencyKey, defects.provisionsTwice, () => {
         const { hostname } = OrderConfigSchema.parse(config);
         if (immediate && hostname === TAKEN_HOSTNAME) {
-          throw portError(`${hostname} is taken`);
+          throw defects.rejectsWithPlainError
+            ? new Error(`${hostname} is taken`)
+            : portError(`${hostname} is taken`);
         }
         const service: FakeService = {
           serviceId,
@@ -463,6 +467,16 @@ describe("runProvisioningContract", () => {
         action: undefined,
       })),
     ).toEqual(["runAction() repeated with the same key has no further effect"]);
+  });
+
+  test("fails a provider that rejects a failed provision with a plain Error", async () => {
+    expect(
+      await failedTitles(() =>
+        referenceProvider({ rejectsWithPlainError: true }, { immediate: true }),
+      ),
+    ).toEqual([
+      "validateOrder() rejects, with a code for each issue, an order provision() fails on",
+    ]);
   });
 
   test("fails a provider whose pending work never finishes", async () => {

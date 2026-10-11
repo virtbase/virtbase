@@ -16,6 +16,7 @@
  */
 
 import { expect } from "bun:test";
+import { isIntegrationError } from "@virtbase/integration-sdk";
 import type {
   ActionConfirmation,
   ActionResult,
@@ -27,6 +28,7 @@ import type {
   ServiceActor,
   ServiceRef,
 } from "@virtbase/ports";
+import { PortError } from "@virtbase/ports";
 import { checkFormDescriptor } from "../checks/fields";
 import type { Check } from "../checks/run";
 import { describeChecks, runChecks } from "../checks/run";
@@ -62,7 +64,7 @@ export interface ProvisioningContractSetup {
 
 const SERVICE_ID = "svc_contract1";
 const USER_ID = "usr_contract1";
-const ACTOR: ServiceActor = { kind: "customer", userId: USER_ID };
+const ACTOR: ServiceActor = { userId: USER_ID };
 
 /** How often the suite asks `status()` before it gives up on a `pending` answer. */
 const MAX_STATUS_POLLS = 5;
@@ -236,17 +238,25 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
       expect(issues.length).toBeGreaterThan(0);
       for (const issue of issues) expect(issue.code).toMatch(CODE_PATTERN);
 
-      // A provider may reject the provision or settle it `failed`; either
-      // proves that setup.rejectedConfig is an order provision() fails on.
+      // provision() fails in one of the two ways its TSDoc allows: a
+      // rejection with a PortError or an IntegrationError, or a `failed`
+      // status.
       const settled = await provisionSettled(setup, {
         config: setup.rejectedConfig,
       }).then(
         ({ status }) => status,
-        () => null,
+        (error: unknown) => {
+          expect(error instanceof PortError || isIntegrationError(error)).toBe(
+            true,
+          );
+          return null;
+        },
       );
-      expect(settled?.status).not.toBe("active");
-      if (settled?.status === "failed") {
-        expect(settled.code).toMatch(CODE_PATTERN);
+      if (settled !== null) {
+        expect(settled.status).toBe("failed");
+        if (settled.status === "failed") {
+          expect(settled.code).toMatch(CODE_PATTERN);
+        }
       }
     },
   },
