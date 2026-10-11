@@ -18,6 +18,7 @@
 import type { AbuseSource } from "./abuse-source";
 import type { PortName } from "./common";
 import type { DnsProvider } from "./dns-provider";
+import type { DnsZoneProvider } from "./dns-zones";
 import type { EventSubscriber } from "./event-subscriber";
 import type { IdentityProvider } from "./identity-provider";
 import type { InvoiceProvider } from "./invoice-provider";
@@ -27,6 +28,7 @@ import type { NotificationChannel } from "./notification-channel";
 import type { ObjectStore } from "./object-store";
 import type { PaymentProvider } from "./payment-provider";
 import type { PlatformMetricsReader } from "./platform-metrics";
+import type { ProvisioningProvider } from "./provisioning";
 import type { ServerManagementPort } from "./server-management";
 import type { SignalIntake } from "./signal";
 
@@ -40,6 +42,7 @@ export interface PortMap {
   invoice: InvoiceProvider;
   notifications: NotificationChannel;
   dns: DnsProvider;
+  dnsZones: DnsZoneProvider;
   metrics: MetricsSink;
   platformMetrics: PlatformMetricsReader;
   abuse: AbuseSource;
@@ -49,6 +52,7 @@ export interface PortMap {
   events: EventSubscriber;
   identity: IdentityProvider;
   serverManagement: ServerManagementPort;
+  provisioning: ProvisioningProvider;
 }
 
 /**

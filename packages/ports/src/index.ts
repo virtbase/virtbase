@@ -18,6 +18,7 @@
 export * from "./abuse-source";
 export * from "./common";
 export * from "./dns-provider";
+export * from "./dns-zones";
 export * from "./event-subscriber";
 export * from "./identity-provider";
 export * from "./invoice-provider";
@@ -28,5 +29,6 @@ export * from "./object-store";
 export * from "./payment-provider";
 export * from "./platform-metrics";
 export * from "./port-map";
+export * from "./provisioning";
 export * from "./server-management";
 export * from "./signal";
