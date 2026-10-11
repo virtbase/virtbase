@@ -24,6 +24,8 @@ authoring guide is the reference, and this page links to it.
 
 - It never imports `@virtbase/api`, an app, or another integration.
 - It never imports `@virtbase/db/schema`. Core data reaches it through ports.
+  The `integration-no-core-tables` rule of `bun check:boundaries` enforces it;
+  its exceptions are the direct reads in ADR 0010's table.
 - `bun check:boundaries` enforces this.
 
 **INT-2 Each entry point holds one kind of thing:**

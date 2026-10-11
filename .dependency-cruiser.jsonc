@@ -48,6 +48,16 @@
       }
     },
     {
+      "name": "integration-no-core-tables",
+      "comment": "An integration reaches its own tables through ctx.db and core data through ports, never through @virtbase/db/schema (ADR 0010). pathNot holds the reads that existed on 2026-10-11, from ADR 0010's table of existing direct reads; an entry leaves when the phase that table names replaces it, and nothing joins it.",
+      "severity": "error",
+      "from": {
+        "path": "^packages/integration-",
+        "pathNot": "^packages/(integration-discord/src/(utils/get-user-by-interaction|notifications/index|identity/push-linked-role-metadata)|integration-prometheus/src/collectors|integration-stripe/src/get-or-create-customer)\\.ts$"
+      },
+      "to": { "path": "^packages/db/src/schema/" }
+    },
+    {
       "name": "sdk-no-integrations",
       "comment": "The SDK defines the plug-in contract and must not know any implementation of it.",
       "severity": "error",
