@@ -25,7 +25,7 @@ import type { ConfigSource } from "./config-source";
 import type { IntegrationDescription } from "./describe";
 import { describeIntegration, localizeDescription } from "./describe";
 import { probeWithinBudget } from "./health";
-import type { HttpRequestEvent } from "./http";
+import type { FetchLike, HttpRequestEvent } from "./http";
 import { createIntegrationHttp } from "./http";
 import type { LogSink } from "./logger";
 import { consoleLogger, createIntegrationLogger } from "./logger";
@@ -69,6 +69,11 @@ export interface IntegrationRegistryOptions {
   onHttpRequest?: (event: HttpRequestEvent) => void;
   /** Where integration loggers write; `console` unless a test passes its own. */
   logSink?: LogSink;
+  /**
+   * The `fetch` behind every `ctx.http`; the global one unless a test plays an
+   * integration's back end, as the conformance suite does.
+   */
+  fetch?: FetchLike;
 }
 
 /** How many health probes run at once (CMP-7). */
@@ -97,6 +102,7 @@ export class IntegrationRegistry {
   private readonly configTtlMs: number;
   private readonly onHttpRequest?: (event: HttpRequestEvent) => void;
   private readonly logSink?: LogSink;
+  private readonly fetch?: FetchLike;
 
   private readonly resolved = new Map<
     string,
@@ -134,6 +140,7 @@ export class IntegrationRegistry {
     this.configTtlMs = options.configTtlMs ?? 30_000;
     this.onHttpRequest = options.onHttpRequest;
     this.logSink = options.logSink;
+    this.fetch = options.fetch;
 
     this.config.onChange?.((integrationId) => this.invalidate(integrationId));
   }
@@ -608,6 +615,7 @@ export class IntegrationRegistry {
           redactor,
           timeoutMs: integration.httpTimeoutMs,
           onRequest: this.onHttpRequest,
+          fetch: this.fetch,
         }),
         ports: this.portAccessor,
         waitUntil: this.defaultWaitUntil(integration.id),

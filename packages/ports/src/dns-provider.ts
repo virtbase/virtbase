@@ -41,6 +41,11 @@ export interface DeletePointerRecordsInput {
  * The port speaks IPs rather than PTR record names: turning `1.2.3.4` into
  * `4.3.2.1.in-addr.arpa` is provider-adjacent detail that belongs in the
  * adapter, not in the routers that call it.
+ *
+ * Every implementation must make `upsertPointerRecord` idempotent, replacing
+ * the hostname of an existing record, and must let `deletePointerRecords`
+ * succeed for records that do not exist; the `dns` contract suite of
+ * `@virtbase/integration-testing` checks both.
  */
 export interface DnsProvider {
   upsertPointerRecord(input: UpsertPointerRecordInput): Promise<void>;

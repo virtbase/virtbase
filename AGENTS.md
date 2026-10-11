@@ -217,6 +217,9 @@ integration.
    root and the only file that knows both an integration and a port.
 4. Consume it as a capability: `await integrations.resolve("dns")`. Never import
    the integration package from a router or workflow.
+5. Test it with `@virtbase/integration-testing`: `describeIntegration` (the
+   conformance suite) and the contract suite of every port it provides. The
+   package then runs its tests with `--isolate`.
 
 `packages/integration-powerdns` is the smallest reference implementation;
 `packages/integration-discord` shows webhooks and port consumption;

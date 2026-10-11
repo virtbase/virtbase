@@ -1,0 +1,5 @@
+{
+  "extends": "@virtbase/tsconfig/base.json",
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}

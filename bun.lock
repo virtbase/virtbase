@@ -349,6 +349,19 @@
         "typescript": "catalog:",
       },
     },
+    "packages/integration-testing": {
+      "name": "@virtbase/integration-testing",
+      "dependencies": {
+        "@virtbase/integration-sdk": "workspace:*",
+        "@virtbase/ports": "workspace:*",
+        "zod": "catalog:",
+      },
+      "devDependencies": {
+        "@virtbase/tsconfig": "workspace:*",
+        "next-intl": "catalog:intl",
+        "typescript": "catalog:",
+      },
+    },
     "packages/integration-webhook": {
       "name": "@virtbase/integration-webhook",
       "dependencies": {
@@ -1758,6 +1771,8 @@
     "@virtbase/integration-sdk": ["@virtbase/integration-sdk@workspace:packages/integration-sdk"],
 
     "@virtbase/integration-stripe": ["@virtbase/integration-stripe@workspace:packages/integration-stripe"],
+
+    "@virtbase/integration-testing": ["@virtbase/integration-testing@workspace:packages/integration-testing"],
 
     "@virtbase/integration-webhook": ["@virtbase/integration-webhook@workspace:packages/integration-webhook"],
 
