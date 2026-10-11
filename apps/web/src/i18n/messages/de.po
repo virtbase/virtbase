@@ -87,7 +87,6 @@ msgstr "Erlaubt einem Operator, bei einem bestätigten Fall eine Meldung zu ver�
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
 #: ../../packages/integration-lexware/src/localize.ts
-#: ../../packages/integration-powerdns/src/localize.ts
 msgctxt "KTNoOq"
 msgid "API key"
 msgstr "API-Schlüssel"
@@ -1437,29 +1436,34 @@ msgid "Created under Extras → lexoffice API in Lexware Office."
 msgstr "Wird in Lexware Office unter Extras → lexoffice API erstellt."
 
 #: ../../packages/integration-powerdns/src/localize.ts
-msgctxt "NU8d67"
+msgctxt "powerdns-integration.NU8d67"
 msgid "PowerDNS"
-msgstr "PowerDNS"
+msgstr ""
 
 #: ../../packages/integration-powerdns/src/localize.ts
-msgctxt "fJnA_T"
+msgctxt "powerdns-integration.fJnA_T"
 msgid "Reverse DNS (PTR) management for customer IP allocations, used by the rDNS API and by server deletion."
-msgstr "Reverse-DNS-Verwaltung (PTR) für IP-Zuweisungen von Kunden, genutzt von der rDNS-API und beim Löschen von Servern."
+msgstr ""
 
 #: ../../packages/integration-powerdns/src/localize.ts
-msgctxt "lOgYVy"
+msgctxt "powerdns-integration.lOgYVy"
 msgid "API URL"
-msgstr "API-URL"
+msgstr ""
 
 #: ../../packages/integration-powerdns/src/localize.ts
-msgctxt "LF6AoR"
+msgctxt "powerdns-integration.LF6AoR"
 msgid "Base URL of the PowerDNS HTTP API, without a trailing slash."
-msgstr "Basis-URL der PowerDNS-HTTP-API, ohne abschließenden Schrägstrich."
+msgstr ""
 
 #: ../../packages/integration-powerdns/src/localize.ts
-msgctxt "KSXj3s"
+msgctxt "powerdns-integration.KTNoOq"
+msgid "API key"
+msgstr ""
+
+#: ../../packages/integration-powerdns/src/localize.ts
+msgctxt "powerdns-integration.KSXj3s"
 msgid "Sent as the X-API-Key header."
-msgstr "Wird als X-API-Key-Header gesendet."
+msgstr ""
 
 #: ../../packages/integration-prometheus/src/localize.ts
 msgctxt "AMCq17"
