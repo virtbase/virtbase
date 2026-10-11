@@ -43,7 +43,9 @@ Where the rest of the code goes:
 - A configuration value a client needs, such as the Stripe publishable key, is
   read by a server component and passed down as a prop.
 - A client component imports an integration package only through its `/ui`
-  entry. Today's Anonpay import in `elements-provider.tsx` is the counterexample.
+  entry. `apps/web/src/lib/__tests__/client-imports.test.ts` fails otherwise;
+  its one exception, the Anonpay import in `elements-provider.tsx` (risk S9),
+  leaves with the Anonpay migration.
 
 ## Rendering and caching
 
