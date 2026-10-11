@@ -21,5 +21,11 @@
   "devDependencies": {
     "@virtbase/tsconfig": "workspace:*",
     "typescript": "catalog:"
+  },
+  "virtbase": {
+    "coverage": {
+      "lines": 0.59,
+      "functions": 0.5
+    }
   }
 }

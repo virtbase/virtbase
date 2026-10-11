@@ -44,7 +44,7 @@ const FORBIDDEN: readonly { segment: RegExp; rule: string }[] = [
     rule: "GIT-6: never force-push to main.",
   },
   {
-    segment: /^bun\s+test\b/,
+    segment: /^bun\s+test(?=\s|$)/,
     rule: "TST-1: run `bun run test`, never bare `bun test`.",
   },
 ];
