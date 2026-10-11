@@ -446,6 +446,16 @@
         "typescript": "catalog:",
       },
     },
+    "tooling/coverage-gate": {
+      "name": "@virtbase/coverage-gate",
+      "dependencies": {
+        "zod": "catalog:",
+      },
+      "devDependencies": {
+        "@virtbase/tsconfig": "workspace:*",
+        "typescript": "catalog:",
+      },
+    },
     "tooling/tailwind": {
       "name": "@virtbase/tailwind-config",
       "dependencies": {
@@ -1711,6 +1721,8 @@
     "@virtbase/config": ["@virtbase/config@workspace:packages/config"],
 
     "@virtbase/content": ["@virtbase/content@workspace:packages/content"],
+
+    "@virtbase/coverage-gate": ["@virtbase/coverage-gate@workspace:tooling/coverage-gate"],
 
     "@virtbase/db": ["@virtbase/db@workspace:packages/db"],
 
