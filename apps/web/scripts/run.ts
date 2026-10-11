@@ -27,15 +27,16 @@ const scriptPath = `./scripts/${command}.ts`;
 // Get all arguments after the command (e.g., --truncate)
 const scriptArgs = process.argv.slice(3);
 
-Bun.spawnSync(["bun", scriptPath, ...scriptArgs], {
-  stdio: ["ignore", "inherit", "inherit"],
+const result = Bun.spawnSync(["bun", scriptPath, ...scriptArgs], {
+  stdio: ["inherit", "inherit", "inherit"],
   env: {
     ...process.env,
-    // These are development scripts by definition, and
-    // `packages/db/src/client.ts` only routes the Neon driver through the local
-    // proxy when NODE_ENV is exactly "development". Without this, `bun script
-    // dev/seed` fails with a TLS handshake error against db.localtest.me.
+    // Scripts are development tools, and run as `next dev` does unless the
+    // caller sets NODE_ENV itself.
     NODE_ENV: process.env.NODE_ENV ?? "development",
   },
-  onExit: (_, code) => process.exit(code ?? 0),
 });
+
+// `spawnSync` reports the exit through its result; it never calls `onExit`.
+// A script that fails must fail `bun script` too, so callers can branch on it.
+process.exit(result.exitCode ?? 1);
