@@ -104,6 +104,7 @@
     "cluster:up": "docker compose -f tooling/proxmox-cluster/docker-compose.yml up -d --build && ./tooling/proxmox-cluster/bootstrap.sh",
     "comment:check": "bun tooling/comment-gate/check.ts",
     "coverage:check": "bun tooling/coverage-gate/check.ts",
+    "db:check": "turbo -F @virtbase/db db:check",
     "db:generate": "turbo -F @virtbase/db db:generate",
     "db:migrate": "turbo -F @virtbase/db db:migrate",
     "db:push": "turbo -F @virtbase/db db:push",

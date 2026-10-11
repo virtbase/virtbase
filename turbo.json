@@ -87,6 +87,9 @@
       "persistent": true,
       "passThroughEnv": ["DATABASE_URL"]
     },
+    "db:check": {
+      "cache": false
+    },
     "db:generate": {
       "cache": false,
       "interactive": true,

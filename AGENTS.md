@@ -166,6 +166,15 @@ Use `bun run test`, not `bun test`: each package's script sets its own
   ignores `../**` and `**/__tests__/**`, so the report holds its own files
   only. `coverage:check` also counts the files no test loads, as uncovered. A
   new package with tests gets both; see `tooling/coverage-gate/README.md`.
+- **Migrations.** `bun run db:check` fails when the schema has changes no
+  migration holds, or when the migration snapshots disagree. It gives
+  drizzle-kit a placeholder `DATABASE_URL`, because neither command connects.
+  `packages/db/src/__tests__/migrations.test.ts` applies every migration in
+  order to an empty PGlite and expects the declared schema. From 2026-10-11
+  on, the migrations run in one transaction, as a deploy applies them, and one
+  that moves data, rewrites rows or constrains existing rows
+  (`src/migration-gate/classify.ts`) needs a fixture in `FIXTURES` that seeds
+  rows before it and checks them after.
 - **Databases.** `createTestDb()` restores an in-memory PGlite from a snapshot
   of the schema. The snapshot is built once and cached in
   `packages/db/.cache/test-db/`, keyed by the schema sources and `bun.lock`;
