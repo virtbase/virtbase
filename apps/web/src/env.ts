@@ -101,6 +101,5 @@ export const env = createEnv({
     NEXT_PUBLIC_STRIPE_ANONPAY_METHOD_ID:
       process.env.NEXT_PUBLIC_STRIPE_ANONPAY_METHOD_ID,
   },
-  skipValidation:
-    !!process.env.CI || process.env.npm_lifecycle_event === "lint",
+  skipValidation: !!process.env.CI,
 });

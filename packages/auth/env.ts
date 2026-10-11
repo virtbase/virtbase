@@ -34,7 +34,6 @@ export function authEnv() {
       GOOGLE_CLIENT_SECRET: z.string().min(1).optional(),
     },
     runtimeEnv: process.env,
-    skipValidation:
-      !!process.env.CI || process.env.npm_lifecycle_event === "lint",
+    skipValidation: !!process.env.CI,
   });
 }
