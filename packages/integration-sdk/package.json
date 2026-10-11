@@ -3,7 +3,8 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./manifest": "./src/manifest.ts"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
@@ -22,8 +23,8 @@
   },
   "virtbase": {
     "coverage": {
-      "lines": 0.8,
-      "functions": 0.76
+      "lines": 0.9,
+      "functions": 0.79
     }
   }
 }

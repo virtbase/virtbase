@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+export * from "./compose";
 export * from "./config-source";
 export * from "./define-integration";
 export * from "./describe";
@@ -22,6 +23,7 @@ export * from "./errors";
 export * from "./health";
 export * from "./http";
 export * from "./logger";
+export * from "./manifest";
 export * from "./redact";
 export * from "./registry";
 export * from "./types";

@@ -16,9 +16,13 @@
  */
 
 import type { PortMap } from "@virtbase/ports";
-import type { FieldDescriptor } from "@virtbase/validators";
 import type * as z from "zod";
 import type { IntegrationHttp } from "./http";
+import type {
+  IntegrationCategory,
+  IntegrationManifest,
+  ValueDescriptor,
+} from "./manifest";
 
 /**
  * Re-exported so integration authors keep importing form metadata from the
@@ -27,43 +31,11 @@ import type { IntegrationHttp } from "./http";
  */
 export type { FieldDescriptor, FieldWidget } from "@virtbase/validators";
 
-/**
- * Field keys for a schema, falling back to `string` when the schema type has
- * been erased.
- *
- * `Integration` widens both schemas to `z.ZodType`, whose output is `unknown`;
- * without this fallback every field key on a stored integration collapses to
- * `never` and nothing can read `field.key`.
- */
-export type FieldKeyOf<TSchema extends z.ZodType> = [
-  Extract<keyof z.output<TSchema>, string>,
-] extends [never]
-  ? string
-  : Extract<keyof z.output<TSchema>, string>;
-
-/**
- * A Zod schema plus the metadata the admin console needs to render a form for
- * it. One descriptor drives both server-side validation and the UI, so adding
- * a setting never means hand-writing a form.
- */
-export interface ValueDescriptor<TSchema extends z.ZodType = z.ZodType> {
-  schema: TSchema;
-  fields: FieldDescriptor<FieldKeyOf<TSchema>>[];
-}
-
-/**
- * Grouping on the integrations hub. Purely presentational — nothing resolves a
- * capability by category.
- */
-export type IntegrationCategory =
-  | "payments"
-  | "billing"
-  | "infrastructure"
-  | "communication"
-  | "analytics"
-  | "abuse"
-  | "storage"
-  | "platform";
+export type {
+  FieldKeyOf,
+  IntegrationCategory,
+  ValueDescriptor,
+} from "./manifest";
 
 export type IntegrationHealth =
   | { status: "ok"; checkedAt: Date }
@@ -261,6 +233,10 @@ export interface IntegrationDefinition<
    * most 15000. A probe that takes longer reports `error`.
    */
   healthBudgetMs?: number;
+  /** Raises `ctx.http`'s timeout above 10 s, to at most 30 s; from a v2 manifest. */
+  httpTimeoutMs?: number;
+  /** The manifest of an integration declared with `defineIntegration(manifest, runtime)`. */
+  manifest?: IntegrationManifest;
 }
 
 /**
