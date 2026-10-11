@@ -92,7 +92,7 @@ the rows marked **hotfix**, which ship first, on their own.
 | C23 | The renewal reminder is sent before its marker is written; the suspension mail is lost if sending fails | `apps/web/src/app/api/cron/send-renewal-notifications/route.ts:112`, `apps/web/src/app/api/cron/suspend-terminated-servers/route.ts:218` | low | 4.5 |
 | C24 | `vzdump.$post` runs inside a database transaction | `packages/api/src/router/servers/backups/index.ts:331` | medium | 4.2 (before in-transaction hooks) |
 | C25 | The Proxmox client retries a timed-out POST once, whatever the method | `@virtbase/proxmox-api` `proxmox-engine.js:163-176` | medium | 2.8 |
-| C26 | No test runs the migrations; 8 of 35 contain data SQL that has never run against data | `packages/db/src/test-client.ts:71-78` | medium | 1.2 (migration gate) |
+| C26 | No test runs the migrations; 8 of 35 contain data SQL that has never run against data | `packages/db/src/test-client.ts:71-78` | medium | **fixed** in #79 and #80 |
 | C27 | Discord's application ID is configured twice with no check; `role_connections.write` is always requested | `DISCORD_CLIENT_ID` versus `settings.appId` | low | 2 (D4 interim) |
 | C28 | Login buttons for unconfigured providers are shown, and fail | `login-form-context.tsx:34-40`, `signup-form.tsx:26` | low | 2 (D4 interim) |
 | C29 | `storeServerExtensionStep` and `storeServerDeletionStep` are not replay-safe | `packages/api/src/workflows/extend-server/store-server-extension.ts`, `packages/api/src/workflows/delete-server/store-server-deletion.ts` | medium | 4.3 |
