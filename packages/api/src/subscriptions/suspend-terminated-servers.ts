@@ -20,7 +20,7 @@ import { and, eq, gte, inArray, isNotNull, isNull, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { proxmoxNodes, servers, subscriptions } from "@virtbase/db/schema";
 import { mapSettled, RENEWAL_SUSPENSION_GRACE_DAYS } from "@virtbase/utils";
-import type { GetProxmoxInstanceParams } from "../proxmox";
+import type { GetProxmoxInstanceParams, ProxmoxInstance } from "../proxmox";
 import { getProxmoxInstance } from "../proxmox";
 import { transitionSubjectSubscription } from "./subject-subscription";
 
@@ -30,14 +30,19 @@ export const SUSPENSION_BATCH_SIZE = 200;
 /** The most Proxmox nodes one run talks to at the same time. */
 export const SUSPENSION_NODE_CONCURRENCY = 4;
 
+/**
+ * How long one node may take to power off its servers before the run counts it
+ * as failed and leaves its servers for the next run.
+ */
+export const NODE_POWER_OFF_TIMEOUT_MS = 60_000;
+
+/** A Proxmox node and the credentials to reach it, as the sweep selects it. */
 export interface SuspensionNode extends GetProxmoxInstanceParams {
   proxmoxNodeId: string;
 }
 
-export interface DueServer {
-  id: string;
-  vmid: number;
-}
+/** A server whose term has run out. */
+export type DueServer = Pick<typeof servers.$inferSelect, "id" | "vmid">;
 
 /** The due servers of one node, powered off together. */
 export interface NodeBatch {
@@ -54,11 +59,17 @@ export type PowerOffServers = (batch: NodeBatch) => Promise<void>;
 export interface SuspensionResult {
   /** Servers powered off and marked suspended by this run. */
   suspendedServerIds: string[];
-  /** Nodes whose power-off failed. Their servers stay due for the next run. */
+  /** Servers on nodes whose power-off failed or timed out. Still due next run. */
+  failedServerIds: string[];
+  /** The nodes those servers are on. */
   failedNodeIds: string[];
+  /** Subscriptions moved to `suspended`, this run's and earlier runs' alike. */
+  subscriptionsSuspended: number;
+  /** Subscriptions whose move failed. The next run selects them again. */
+  subscriptionsFailed: number;
 }
 
-/** Groups due servers by their node, preserving the order of `rows`. */
+/** Groups due servers by their node, in the order the nodes first appear. */
 export const groupByNode = (
   rows: readonly (DueServer & { node: SuspensionNode })[],
 ): NodeBatch[] => {
@@ -72,14 +83,15 @@ export const groupByNode = (
 };
 
 /**
- * Disables autostart on every server of the batch, then shuts them all down in
- * one bulk action. A failed autostart change is reported and does not stop the
+ * Disables autostart on every server, then shuts them all down in one bulk
+ * action. A failed autostart change is reported and does not stop the
  * shutdown; a failed shutdown rejects.
  */
-export const powerOffOnProxmox: PowerOffServers = async ({ node, servers }) => {
-  const instance = getProxmoxInstance(node);
-
-  await mapSettled(servers, { concurrency: 10 }, async (server) => {
+export const powerOffServers = async (
+  instance: ProxmoxInstance,
+  dueServers: readonly DueServer[],
+): Promise<void> => {
+  await mapSettled(dueServers, { concurrency: 10 }, async (server) => {
     try {
       await instance.node.qemu.$(server.vmid).config.$put({ onboot: false });
     } catch (error) {
@@ -92,10 +104,34 @@ export const powerOffOnProxmox: PowerOffServers = async ({ node, servers }) => {
   });
 
   await instance.cluster["bulk-action"].guest.shutdown.$post({
-    vms: servers.map((server) => server.vmid),
+    vms: dueServers.map((server) => server.vmid),
     "force-stop": true,
     maxworkers: 10,
   });
+};
+
+/** {@link powerOffServers} on the node the batch belongs to. */
+export const powerOffOnProxmox: PowerOffServers = ({ node, servers }) =>
+  powerOffServers(getProxmoxInstance(node), servers);
+
+/** `promise`, or a rejection naming `operation` once `ms` have passed. */
+const withTimeout = async <T>(
+  promise: Promise<T>,
+  ms: number,
+  operation: string,
+): Promise<T> => {
+  let timer: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<never>((_, reject) => {
+    timer = setTimeout(
+      () => reject(new Error(`${operation} timed out after ${ms} ms`)),
+      ms,
+    );
+  });
+  try {
+    return await Promise.race([promise, timeout]);
+  } finally {
+    clearTimeout(timer);
+  }
 };
 
 const selectDueServers = (limit: number) =>
@@ -150,92 +186,135 @@ const selectDueServers = (limit: number) =>
     .limit(limit);
 
 /**
- * Powers off and suspends the servers whose term has run out.
+ * Suspended servers whose live subscription is still `active` or `past_due`:
+ * the subscription has not followed the server yet, either because this run
+ * just suspended the server or because an earlier run failed to move it.
+ */
+const selectSubscriptionsToFollow = (limit: number) =>
+  db
+    .select({ serverId: servers.id })
+    .from(servers)
+    .where(
+      and(
+        isNotNull(servers.suspendedAt),
+        sql`EXISTS (
+          SELECT 1
+            FROM ${subscriptions}
+           WHERE ${subscriptions.subjectType} = 'server'
+             AND ${subscriptions.subjectId} = ${servers.id}
+             AND ${subscriptions.status} IN ('active', 'past_due')
+        )`,
+      ),
+    )
+    .limit(limit);
+
+const markSuspended = (serverIds: string[]) =>
+  db.transaction(
+    async (tx) => {
+      await tx
+        .update(servers)
+        .set({ suspendedAt: sql`now()` })
+        .where(
+          and(inArray(servers.id, serverIds), isNull(servers.suspendedAt)),
+        );
+    },
+    { accessMode: "read write", isolationLevel: "read committed" },
+  );
+
+/**
+ * Moves the server's live subscription to `suspended`. Returns whether it did;
+ * a failure is reported, and the next run selects the subscription again.
  *
- * Each node is handled on its own: a node that cannot be reached is reported
- * and its servers stay due, while every other node's servers are suspended.
- * A run handles at most `limit` servers, oldest term first.
+ * Suspended, not ended. The customer's term has run out and the machine is
+ * off, but they have the deletion grace period to pay and get it back -
+ * `suspended` is the one non-terminal state money can still fix, and `ended`
+ * is terminal for every route in. Closing the subscription is what
+ * `delete-suspended-servers` does once the grace period proves they did not
+ * pay.
+ */
+const followSubscription = async (serverId: string): Promise<boolean> => {
+  try {
+    await transitionSubjectSubscription(serverId, "suspended", {
+      reason: "term_elapsed",
+    });
+    return true;
+  } catch (error) {
+    console.error("[suspension] Failed to suspend the subscription", {
+      serverId,
+      error,
+    });
+    Sentry.captureException(error);
+    return false;
+  }
+};
+
+/**
+ * Powers off and suspends the servers whose term has run out, then moves their
+ * subscriptions to `suspended`.
+ *
+ * Each node is handled on its own, within `timeoutMs`, and its servers are
+ * marked suspended as soon as its power-off succeeds. A node that fails or
+ * hangs is reported, and its servers stay due for the next run. A run handles
+ * at most `limit` servers, oldest term first.
  */
 export const suspendTerminatedServers = async ({
   powerOff = powerOffOnProxmox,
   limit = SUSPENSION_BATCH_SIZE,
   concurrency = SUSPENSION_NODE_CONCURRENCY,
+  timeoutMs = NODE_POWER_OFF_TIMEOUT_MS,
 }: {
   powerOff?: PowerOffServers;
   limit?: number;
   concurrency?: number;
+  timeoutMs?: number;
 } = {}): Promise<SuspensionResult> => {
   const batches = groupByNode(await selectDueServers(limit));
-  const outcomes = await mapSettled(batches, { concurrency }, powerOff);
+
+  const outcomes = await mapSettled(batches, { concurrency }, async (batch) => {
+    await withTimeout(
+      powerOff(batch),
+      timeoutMs,
+      `Powering off servers on ${batch.node.proxmoxNodeId}`,
+    );
+    await markSuspended(batch.servers.map((server) => server.id));
+  });
 
   const suspendedServerIds: string[] = [];
+  const failedServerIds: string[] = [];
   const failedNodeIds: string[] = [];
 
   for (const [index, batch] of batches.entries()) {
+    const serverIds = batch.servers.map((server) => server.id);
     const outcome = outcomes[index];
     if (outcome?.status === "fulfilled") {
-      suspendedServerIds.push(...batch.servers.map((server) => server.id));
+      suspendedServerIds.push(...serverIds);
       continue;
     }
 
+    failedServerIds.push(...serverIds);
     failedNodeIds.push(batch.node.proxmoxNodeId);
-    console.error("[suspension] Failed to power off servers on a node", {
+    console.error("[suspension] Failed to suspend the servers of a node", {
       proxmoxNodeId: batch.node.proxmoxNodeId,
       error: outcome?.reason,
     });
     Sentry.captureException(outcome?.reason);
   }
 
-  if (suspendedServerIds.length > 0) {
-    await db.transaction(
-      async (tx) => {
-        await tx
-          .update(servers)
-          .set({ suspendedAt: sql`now()` })
-          .where(
-            and(
-              inArray(servers.id, suspendedServerIds),
-              isNull(servers.suspendedAt),
-            ),
-          );
-      },
-      { accessMode: "read write", isolationLevel: "read committed" },
-    );
+  // Sequential rather than concurrent: each transition opens its own
+  // transaction and takes a row lock, and up to SUSPENSION_BATCH_SIZE of them
+  // at once would starve the connection pool.
+  let subscriptionsSuspended = 0;
+  let subscriptionsFailed = 0;
+  for (const { serverId } of await selectSubscriptionsToFollow(limit)) {
+    if (await followSubscription(serverId)) subscriptionsSuspended += 1;
+    else subscriptionsFailed += 1;
   }
 
-  // Suspended, not ended. The customer's term has run out and the machine is
-  // off, but they have the deletion grace period to pay and get it back -
-  // `suspended` is the one non-terminal state money can still fix, and
-  // `ended` is terminal for every route in. Ending here would close a
-  // subscription the customer may be about to rescue, and closing it is what
-  // `delete-suspended-servers` does once the grace period proves they did not.
-  //
-  // Sequential rather than concurrent: each of these opens its own
-  // transaction and takes a row lock, and a fleet-wide suspension sweep firing
-  // hundreds of them at once is how the connection pool starves. The
-  // suspensions themselves are already committed by this point, so nothing
-  // downstream is waiting on this.
-  for (const serverId of suspendedServerIds) {
-    try {
-      // Idempotent inside: a re-run finds a subscription already `suspended`,
-      // which the state machine will not move to itself, and treats it as the
-      // no-op it is. A subscription that has ended, or a server that never had
-      // one, matches nothing at all.
-      await transitionSubjectSubscription(serverId, "suspended", {
-        reason: "term_elapsed",
-      });
-    } catch (error) {
-      // The server is already suspended and committed; a subscription that
-      // failed to follow is worth reporting, not worth failing a run that did
-      // its actual work and will not see these servers again.
-      console.error(
-        "[suspension] Failed to suspend the subscription for server",
-        serverId,
-        error,
-      );
-      Sentry.captureException(error);
-    }
-  }
-
-  return { suspendedServerIds, failedNodeIds };
+  return {
+    suspendedServerIds,
+    failedServerIds,
+    failedNodeIds,
+    subscriptionsSuspended,
+    subscriptionsFailed,
+  };
 };

@@ -17,6 +17,7 @@
 
 export * from "./claim-renewal";
 export * from "./create-subscription";
+export * from "./notify-suspended-customers";
 export * from "./period";
 export * from "./subject-subscription";
 export * from "./suspend-terminated-servers";

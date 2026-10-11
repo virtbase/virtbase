@@ -1857,7 +1857,7 @@ Proposed setting keys, about 50 in total:
   - server-custom-image-select.tsx:50 (3 s)
 - **features/admin/api/verify-session.ts:61 (300 s admin verdict cache):** coupled to Better Auth's cookie cache.
 - **Admin list caches such as get-users-list.ts:30:** technical.
-- **Cron throughput tuning:** batch sizes in detect-guest-os/route.ts:36 and reconcile-server-backups/route.ts:30 (200 each); `maxworkers` 10 in suspend-terminated-servers/route.ts:131.
+- **Cron throughput tuning:** batch sizes in detect-guest-os/route.ts:36 and reconcile-server-backups/route.ts:30 (200 each); `maxworkers` 10 and `SUSPENSION_BATCH_SIZE` 200 in packages/api/src/subscriptions/suspend-terminated-servers.ts.
 - **i18n/config.ts:29, 31 (locale cookie name, 1-year lifetime) and i18n/utils.ts:21 (en shows the US flag):** code.
 - **random-password-addon.tsx:26 (generated password length 12):** could become a security setting later.
 - **feedback-button.tsx:52-62 and lib/sentry.ts:18 (scrubbed-header list):** code.
@@ -1974,7 +1974,7 @@ Proposed setting keys, about 50 in total:
 | U37 | ACCOUNT_INACTIVITY_REMINDER_DAYS | limits.ts:157 | number 7 | api/privacy/inactivity/sweep.ts:177 [srv] | app setting: accounts.inactivity.reminderDays | Account lifecycle policy. |
 | U38 | RENEWAL_RETRY_SCHEDULE_DAYS | limits.ts:179 | number[] [1,3,5,7] (day offsets) | limits.ts:210 (U40); api/billing/retry-schedule.ts:33,60 (module-level RENEWAL_LADDER_RUNGS and _EXHAUSTED_AFTER_DAYS, read by api/billing/dunning-mail.ts:122,154) and :84,88 (sync) [srv]; tests | app setting: billing.renewalRetryScheduleDays | Dunning policy quoted in emails. AWKWARD: two derivations at module load plus sync pure functions. |
 | U39 | RENEWAL_AUTHENTICATION_WINDOW_HOURS | limits.ts:190 | number 72 | api/billing/record-outcome.ts:379, api/billing/reconcile-renewals.ts:520 [srv] | app setting: billing.renewalAuthenticationWindowHours | Billing policy. |
-| U40 | RENEWAL_SUSPENSION_GRACE_DAYS | limits.ts:209-210 | derived: max(U38)+1 = 8 | web/app/api/cron/suspend-terminated-servers/route.ts:95 [route]; tests | keep as code constant | A derivation rule; becomes a function of U38. AWKWARD: computed at module load. |
+| U40 | RENEWAL_SUSPENSION_GRACE_DAYS | limits.ts:209-210 | derived: max(U38)+1 = 8 | api/subscriptions/suspend-terminated-servers.ts (`selectDueServers`) [cron]; tests | keep as code constant | A derivation rule; becomes a function of U38. AWKWARD: computed at module load. |
 | U41 | DEFAULT_PAGE / DEFAULT_PER_PAGE / MAX_ENTRIES_PER_PAGE | utils/constants/pagination.ts:21,26,31 | 1 / 10 / 100 | val/pagination.ts:33,38,39 [zod]; MAX also in web hooks use-custom-image-list.ts:33, ssh-keys-list.ts:33, use-backup-list.ts:35, use-pointer-records-list.ts:35, use-server-list.ts:33 [cli] | keep as code constant | Public API contract. |
 | U42 | ISO_CATALOG | utils/constants/iso-catalog.ts:77-272 | array of 23 entries {id, name, icon, url, sha256, releasedAt}: vendor ISO URLs (Debian, Ubuntu, Alma, Rocky, CentOS, Fedora, Alpine, Arch, NixOS, FreeBSD, Windows eval, virtio, Proxmox ×3, Kali) | `findIsoCatalogEntry` (:287), called from api/router/iso/index.ts:312 [srv] and web/ui/custom-image-icon.tsx:37 [cli]; web/features/account/components/custom-images/iso-catalog-grid.tsx:76,79 [cli]; web-scripts/video/iso.ts:271,567; api/lib/__tests__/iso-catalog.test.ts | app setting: servers.isoCatalog (an admin-managed table like proxmox_templates would fit better) | Per the comment, a point release is a code change (:67-72). AWKWARD: client grid and a sync URL match; changing a URL breaks matching for existing rows (:283-284). |
 | U43 | SENSITIVE_PORTS | utils/constants/firewall.ts:203-261 | 27 entries {port, proto, service, severity} | firewall.ts:270 (`findSensitivePort`, called from utils/guest/analyze-firewall.ts:359) [srv] | keep as code constant | Product security knowledge shown to customers. Could later become security.sensitivePorts. |
@@ -2247,7 +2247,7 @@ There is no Origin or host allow-list. The proxy dials whatever host the authent
 13. **billing.renewalRetryScheduleDays**
     - utils: limits.ts:179,210.
     - api: billing/retry-schedule.ts, billing/dunning-mail.ts.
-    - web: cron suspend-terminated-servers/route.ts:95.
+    - api: subscriptions/suspend-terminated-servers.ts (`selectDueServers`), run by the `suspend-terminated-servers` cron.
 14. **trustpilot.\***
     - utils: urls.ts:39-43.
     - email: constants.ts:31-32; footer.tsx:110; server-ready.tsx:114-123.

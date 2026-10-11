@@ -15,91 +15,28 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import * as Sentry from "@sentry/nextjs";
-import { suspendTerminatedServers } from "@virtbase/api/subscriptions";
-import { eq, inArray } from "@virtbase/db";
-import { db } from "@virtbase/db/client";
-import { servers, users } from "@virtbase/db/schema";
-import { sendBatchEmail } from "@virtbase/email";
-import ServerSuspended from "@virtbase/email/templates/server-suspended";
-import { getEmailTitle } from "@virtbase/email/translations";
+import {
+  notifySuspendedCustomers,
+  suspendTerminatedServers,
+} from "@virtbase/api/subscriptions";
 import { withCronSecret } from "@/lib/with-cron-secret";
 
-/**
- * Emails each customer whose server this run suspended.
- *
- * The suspensions are already committed, and a suspended server is not a
- * candidate on the next run - so failing the request here would lose these
- * notices for good and report a run that did most of its work as a failure.
- * `sendBatchEmail` rejects on a provider failure, so report and carry on.
- */
-const notifySuspendedCustomers = async (serverIds: string[]) => {
-  if (serverIds.length === 0) return;
-
-  const notificationTargets = await db.transaction(
-    async (tx) => {
-      return tx
-        .select({
-          serverName: servers.name,
-          serverId: servers.id,
-          user: {
-            name: users.name,
-            email: users.email,
-            locale: users.locale,
-          },
-        })
-        .from(servers)
-        .innerJoin(users, eq(servers.userId, users.id))
-        .where(inArray(servers.id, serverIds));
-    },
-    {
-      accessMode: "read only",
-      isolationLevel: "read committed",
-    },
-  );
-
-  try {
-    await sendBatchEmail(
-      await Promise.all(
-        notificationTargets.map(async ({ user, ...server }) => ({
-          to: user.email,
-          subject: await getEmailTitle("server-suspended", user.locale),
-          react: await ServerSuspended({
-            serverName: server.serverName,
-            serverId: server.serverId,
-            name: user.name,
-            email: user.email,
-            locale: user.locale,
-          }),
-        })),
-      ),
-    );
-  } catch (error) {
-    console.error(
-      "[CRON] Failed to send",
-      notificationTargets.length,
-      "suspension notice(s): ",
-      error,
-    );
-    Sentry.captureException(error);
-  }
-};
+export const maxDuration = 300;
 
 /**
- * Powers off and suspends the servers whose term has run out, at most
- * `SUSPENSION_BATCH_SIZE` per run, and emails their owners. A node that cannot
- * be reached is reported and retried by the next run; it does not stop the
- * other nodes (`suspendTerminatedServers`).
+ * Powers off and suspends the servers whose term has run out, moves their
+ * subscriptions to `suspended`, and emails their owners. A node that fails or
+ * hangs is reported, and its servers are suspended by a later run.
  */
 const handler = withCronSecret(async () => {
-  const { suspendedServerIds, failedNodeIds } =
-    await suspendTerminatedServers();
-
-  await notifySuspendedCustomers(suspendedServerIds);
+  const result = await suspendTerminatedServers();
+  await notifySuspendedCustomers(result.suspendedServerIds);
 
   return Response.json({
-    suspended: suspendedServerIds.length,
-    failedNodes: failedNodeIds.length,
+    processed: result.suspendedServerIds.length + result.failedServerIds.length,
+    settled: result.suspendedServerIds.length,
+    failed: result.failedServerIds.length,
+    skipped: 0,
   });
 });
 

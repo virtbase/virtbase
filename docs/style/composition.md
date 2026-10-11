@@ -93,8 +93,7 @@ behind a retry. Do it with:
 
 An unbounded `Promise.all` over rows read from the database is a defect. Use
 `mapSettled(items, { concurrency }, fn)` from `@virtbase/utils`. It returns one
-settled result per item. It does not exist yet: the first change that needs
-bounded fan-out adds it, with tests.
+settled result per item, in input order.
 
 **CMP-8 Settle every outcome. (defect)**
 
