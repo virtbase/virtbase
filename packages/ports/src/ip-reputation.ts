@@ -47,9 +47,9 @@ export interface IpReputationProvider {
   /**
    * Publishes a report. Optional, because not every provider accepts them.
    *
-   * Never called automatically. Reporting an address is a commercial act with
-   * consequences for the whole range's reputation, so it stays behind an
-   * operator's explicit confirmation on a resolved case.
+   * Reporting an address affects the whole range's reputation, so a caller
+   * must call it only on an operator's explicit confirmation, never
+   * automatically.
    */
   report?(input: {
     ip: string;
