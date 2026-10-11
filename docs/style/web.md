@@ -110,7 +110,8 @@ confirmation first.
 - Numbers, dates and money are formatted with next-intl's formatters.
 
 **WEB-10 A package that renders translated strings is listed in
-`experimental.srcPath`.** From Phase 1, the `srcPath` test fails otherwise.
+`experimental.srcPath`,** through `MESSAGE_SOURCE_PATHS` in
+`apps/web/src/i18n/source-paths.ts`. `source-paths.test.ts` fails otherwise.
 
 **WEB-11 Commit the regenerated `.po` catalogues with the change.** CI fails when
 they are not committed. Non-English catalogues are edited only through Crowdin.

@@ -24,6 +24,7 @@ import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 import { withWorkflow } from "workflow/next";
 import { routing } from "@/i18n/routing.public";
+import { MESSAGE_SOURCE_PATHS } from "@/i18n/source-paths";
 import { contentSecurityPolicy } from "@/lib/csp";
 
 const nextConfig: NextConfig = {
@@ -221,19 +222,7 @@ const nextConfig: NextConfig = {
 
 const withNextIntl = createNextIntlPlugin({
   experimental: {
-    srcPath: [
-      "./src/app",
-      "./src/features",
-      "./src/ui",
-      "../../packages/ui/src",
-      "../../packages/integration-abuseipdb/src",
-      "../../packages/integration-alertmanager/src",
-      "../../packages/integration-discord/src",
-      "../../packages/integration-lexware/src",
-      "../../packages/integration-powerdns/src",
-      "../../packages/integration-prometheus/src",
-      "../../packages/integration-webhook/src",
-    ],
+    srcPath: MESSAGE_SOURCE_PATHS,
     extract: true,
     messages: {
       path: "./src/i18n/messages",
