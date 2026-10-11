@@ -60,6 +60,7 @@ per failure; the suite's own tests use it against broken fixtures.
 | Import | Proves |
 | --- | --- |
 | `@virtbase/integration-testing/ports/dns` | the record name is derived from the IPv4 or IPv6 address; upserts are idempotent and replace the hostname; a zone with or without a trailing dot is the same zone, for upserts and deletes; delete removes only the listed records, IPv6 ones included, and succeeds for absent ones |
+| `@virtbase/integration-testing/ports/dns-zones` | `ensureZone()` creates a listed zone and keeps an existing zone's records; a domain's case and trailing dot do not change the zone; records round-trip through `exportZone()`; `upsertRecords()` is idempotent per name, type and content and keeps other content of the same name and type; `deleteRecords()` removes exactly what its filter matches, and succeeds when that is nothing |
 | `@virtbase/integration-testing/ports/abuse` | `covered` is a subset of the targets; the budget caps provider calls, and a budget of zero calls nothing; every signal names its source and carries an external id that a repeated poll reproduces |
 | `@virtbase/integration-testing/ports/invoice` | `createInvoice()` finalises with a number and an issue date; the gross amount is the sum of the gross line items in minor units, and net plus tax make it up; `retrieveInvoice()` returns what the create returned; a draft has no number; a locale without copy still issues the invoice; `downloadInvoice()` returns bytes; an unknown invoice rejects with a `PortError` of the `invoice` port |
 | `@virtbase/integration-testing/ports/ip-reputation` | `check()` answers for the asked address, with a 0-100 score, a report count, category names and a `Date` or null as the last report |
@@ -68,7 +69,7 @@ per failure; the suite's own tests use it against broken fixtures.
 
 Each `describe*` takes a setup function that returns the adapter on a fresh
 fake provider, plus what its checks need from that fake; each matching `run*`
-function (`runDnsContract`, `runAbuseContract`, `runIpReputationContract`,
+function (`runDnsContract`, `runDnsZonesContract`, `runAbuseContract`, `runIpReputationContract`,
 `runInvoiceContract`, `runMetricsContract`, `runNotificationContract`) returns the failures instead.
 
 The other ports' suites are added with the first integration that provides

@@ -6,6 +6,7 @@
     ".": "./src/index.ts",
     "./ports/abuse": "./src/ports/abuse.ts",
     "./ports/dns": "./src/ports/dns.ts",
+    "./ports/dns-zones": "./src/ports/dns-zones.ts",
     "./ports/invoice": "./src/ports/invoice.ts",
     "./ports/ip-reputation": "./src/ports/ip-reputation.ts",
     "./ports/metrics": "./src/ports/metrics.ts",
