@@ -65,7 +65,10 @@
         "useNodejsImportProtocol": "error",
         "useConst": "error",
         "noRestrictedTypes": "off",
-        "noRestrictedGlobals": "off"
+        "noRestrictedGlobals": "off",
+        "noNonNullAssertion": "error",
+        "noDefaultExport": "warn",
+        "noProcessEnv": "warn"
       },
       "preset": "recommended",
       "suspicious": {
@@ -79,6 +82,14 @@
         "noDelete": "error"
       },
       "complexity": {
+        "noExcessiveCognitiveComplexity": {
+          "level": "warn",
+          "options": { "maxAllowedComplexity": 15 }
+        },
+        "noExcessiveLinesPerFunction": {
+          "level": "warn",
+          "options": { "maxLines": 60 }
+        },
         "useDateNow": "error",
         "noUselessSwitchCase": "warn",
         "noUselessTypeConstraint": "warn"
@@ -95,6 +106,7 @@
         "useHookAtTopLevel": "warn"
       },
       "nursery": {
+        "useExhaustiveSwitchCases": "error",
         "useReactCompiler": "warn",
         "useSortedClasses": {
           "level": "warn",
@@ -105,5 +117,37 @@
         }
       }
     }
-  }
+  },
+  "overrides": [
+    {
+      "includes": [
+        "**/src/app/**",
+        "**/integration-*/src/index.ts",
+        "**/*.config.ts",
+        "**/*.config.js",
+        "**/*.config.mjs"
+      ],
+      "linter": { "rules": { "style": { "noDefaultExport": "off" } } }
+    },
+    {
+      "includes": [
+        "**/env.ts",
+        "**/*.config.ts",
+        "**/__tests__/**",
+        "**/src/instrumentation.ts",
+        "**/src/instrumentation-client.ts",
+        "tooling/**",
+        ".claude/**"
+      ],
+      "linter": { "rules": { "style": { "noProcessEnv": "off" } } }
+    },
+    {
+      "includes": ["**/integration-*/src/**"],
+      "linter": { "rules": { "suspicious": { "noConsole": "warn" } } }
+    },
+    {
+      "includes": ["**/integration-sdk/src/**"],
+      "linter": { "rules": { "suspicious": { "noConsole": "off" } } }
+    }
+  ]
 }

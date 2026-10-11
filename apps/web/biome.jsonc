@@ -1,4 +1,16 @@
 {
   "root": false,
-  "extends": "//"
+  "extends": "//",
+  "overrides": [
+    {
+      "includes": ["e2e/**", "scripts/**"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noProcessEnv": "off"
+          }
+        }
+      }
+    }
+  ]
 }

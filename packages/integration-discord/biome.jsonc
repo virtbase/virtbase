@@ -17,5 +17,17 @@
         }
       }
     }
-  }
+  },
+  "overrides": [
+    {
+      "includes": ["src/index.ts", "src/integration.ts"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noDefaultExport": "off"
+          }
+        }
+      }
+    }
+  ]
 }
