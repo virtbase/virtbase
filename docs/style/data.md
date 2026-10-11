@@ -90,9 +90,12 @@ run through `apps/web/scripts/backfill-*.ts`. A backfill:
 
 **DB-14 Every migration and backfill is tested** by the migration gate:
 
-- generation produces no diff;
-- the migrations apply in order to PGlite seeded with representative data;
-- a backfill run twice changes nothing.
+- generation produces no diff (`bun run db:check`);
+- the migrations apply in order to PGlite, and every migration that moves
+  data, rewrites rows or constrains existing rows is seeded with representative
+  data before it and checked after it
+  (`packages/db/src/__tests__/migrations.test.ts`);
+- a backfill run twice changes nothing (each backfill's own tests).
 
 ## Queries
 
