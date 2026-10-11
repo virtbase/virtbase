@@ -16,36 +16,8 @@
  */
 
 import type { IntegrationContext } from "@virtbase/integration-sdk";
-import * as z from "zod";
-
-export const PAYLOAD_FORMATS = ["alertmanager", "grafana", "generic"] as const;
-
-export const settingsSchema = z.object({
-  /**
-   * Which shape the sender speaks.
-   *
-   * `grafana` is `alertmanager` plus the extras Grafana adds - it is a separate
-   * option rather than sniffing, because guessing wrong on an alerting path
-   * fails silently and at the worst possible moment.
-   */
-  payloadFormat: z.enum(PAYLOAD_FORMATS).default("alertmanager"),
-  /**
-   * The severity used when an alert carries no `severity` label.
-   *
-   * Defaults to `warning` rather than `critical`: an alert nobody labelled is
-   * more often a rule somebody forgot to finish than an emergency.
-   */
-  defaultSeverity: z.enum(["info", "warning", "critical"]).default("warning"),
-});
-
-export const secretsSchema = z.object({
-  /**
-   * Sent as `Authorization: Bearer`. Required rather than optional - this
-   * endpoint opens abuse cases, and an unauthenticated one would let anybody
-   * suspend a customer.
-   */
-  ingestToken: z.string().min(16),
-});
+import type * as z from "zod";
+import type { secretsSchema, settingsSchema } from "./manifest";
 
 export type AlertmanagerSettings = z.output<typeof settingsSchema>;
 export type AlertmanagerSecrets = z.output<typeof secretsSchema>;

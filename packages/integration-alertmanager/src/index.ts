@@ -16,79 +16,19 @@
  */
 
 import { defineIntegration } from "@virtbase/integration-sdk";
-import { PAYLOAD_FORMATS, secretsSchema, settingsSchema } from "./config";
 import { localizeAlertmanager } from "./localize";
+import { manifest } from "./manifest";
 import { handleAlertsRequest } from "./webhook";
 
-export * from "./config";
-export * from "./parse";
-
-export default defineIntegration({
-  id: "alertmanager",
-  name: "Alertmanager",
-  description:
-    "Receives alerts from Prometheus Alertmanager or Grafana and turns them into abuse cases and operator notifications.",
-
-  category: "abuse",
-  icon: "alertmanager",
-  author: "Virtbase",
-  website: "https://prometheus.io/docs/alerting/latest/alertmanager/",
-  docsUrl:
-    "https://prometheus.io/docs/alerting/latest/configuration/#webhook_config",
-
-  settings: {
-    schema: settingsSchema,
-    fields: [
-      {
-        key: "payloadFormat",
-        label: "Payload format",
-        help: "Which shape the sender speaks. Grafana sends the Alertmanager shape with extras.",
-        widget: "select",
-        options: PAYLOAD_FORMATS.map((value) => ({ value, label: value })),
-      },
-      {
-        key: "defaultSeverity",
-        label: "Default severity",
-        help: "Used when an alert carries no severity label.",
-        widget: "select",
-        options: ["info", "warning", "critical"].map((value) => ({
-          value,
-          label: value,
-        })),
-      },
-    ],
-  },
-
-  secrets: {
-    schema: secretsSchema,
-    fields: [
-      {
-        key: "ingestToken",
-        label: "Ingest token",
-        help: "Sent as an Authorization bearer token. Generate one with `openssl rand -hex 32`.",
-        widget: "password",
-      },
-    ],
-  },
-
-  // Nothing. This integration receives rather than provides: alerts arrive on
-  // its webhook and are submitted through the `signals` port it consumes.
+/**
+ * Alertmanager's runtime (ADR 0003); its static half is `./manifest`. It has
+ * no health probe: it owns no outbound connection, and its configuration is
+ * validated by the registry, which reports an invalid one.
+ */
+export default defineIntegration(manifest, {
   provides: {},
-
   webhooks: [
-    {
-      path: "alerts",
-      methods: ["POST"],
-      handler: handleAlertsRequest,
-    },
+    { path: "alerts", methods: ["POST"], handler: handleAlertsRequest },
   ],
-
   localize: localizeAlertmanager,
-
-  /**
-   * There is nothing to probe. The integration owns no outbound connection -
-   * it waits to be called - so the only thing that could be wrong is
-   * configuration, which the registry already validates and reports.
-   */
-  health: async () => ({ status: "ok", checkedAt: new Date() }),
 });

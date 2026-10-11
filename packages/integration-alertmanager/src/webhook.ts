@@ -98,7 +98,7 @@ export const handleAlertsRequest: AlertsWebhook["handler"] = async (
   // A retry is harmless: ingest is an upsert keyed on the fingerprint.
   ctx.waitUntil(
     intake.submitMany(signals).catch((error: unknown) => {
-      ctx.logger.error("[alertmanager] Failed to ingest alerts", {
+      ctx.logger.error("Failed to ingest alerts", {
         error: error instanceof Error ? error.message : String(error),
         count: signals.length,
       });
