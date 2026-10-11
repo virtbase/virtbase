@@ -313,7 +313,6 @@
     "packages/integration-prometheus": {
       "name": "@virtbase/integration-prometheus",
       "dependencies": {
-        "@virtbase/db": "workspace:*",
         "@virtbase/integration-sdk": "workspace:*",
         "@virtbase/ports": "workspace:*",
         "@virtbase/utils": "workspace:*",
@@ -322,6 +321,7 @@
         "zod": "catalog:",
       },
       "devDependencies": {
+        "@virtbase/integration-testing": "workspace:*",
         "@virtbase/tsconfig": "workspace:*",
         "typescript": "catalog:",
       },

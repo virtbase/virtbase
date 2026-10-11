@@ -28,6 +28,7 @@ export const PORTS = {
   notifications: "notifications",
   dns: "dns",
   metrics: "metrics",
+  platformMetrics: "platformMetrics",
   abuse: "abuse",
   ipReputation: "ipReputation",
   signals: "signals",

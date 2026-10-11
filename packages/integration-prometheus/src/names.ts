@@ -48,7 +48,7 @@ function collapse(input: string): string {
  * A dotted sample name as a Prometheus metric name, prefixed.
  *
  * Returns `""` when nothing legal survives sanitising — `increment({ name:
- * "..." })` should lose its sample and produce a warning, not invent a series
+ * "..." })` loses its sample and logs a warning rather than inventing a series
  * called `virtbase_`.
  */
 export function toMetricName(name: string, prefix: string): string {
@@ -96,8 +96,10 @@ export function toLabelName(name: string): string {
  * Sorted so that the set a metric is created with does not depend on key order
  * in the first sample that happened to arrive.
  */
-export function toLabelNames(labels: Record<string, string> | undefined) {
-  if (!labels) return [] as string[];
+export function toLabelNames(
+  labels: Record<string, string> | undefined,
+): string[] {
+  if (!labels) return [];
 
   const names = new Set<string>();
   for (const key of Object.keys(labels)) {

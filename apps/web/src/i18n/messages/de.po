@@ -1470,64 +1470,64 @@ msgid "Sent as the X-API-Key header."
 msgstr ""
 
 #: ../../packages/integration-prometheus/src/localize.ts
-msgctxt "AMCq17"
+msgctxt "prometheus-integration.AMCq17"
 msgid "Prometheus"
-msgstr "Prometheus"
+msgstr ""
 
 #: ../../packages/integration-prometheus/src/localize.ts
-msgctxt "5VMIS_"
+msgctxt "prometheus-integration.5VMIS_"
 msgid "Exposes platform and runtime metrics on an authenticated scrape endpoint for Prometheus and Grafana."
-msgstr "Stellt Plattform- und Laufzeitmetriken über einen authentifizierten Scrape-Endpunkt für Prometheus und Grafana bereit."
+msgstr ""
 
 #: ../../packages/integration-prometheus/src/localize.ts
-msgctxt "pJ6LWb"
+msgctxt "prometheus-integration.pJ6LWb"
 msgid "Metric prefix"
-msgstr "Metrik-Präfix"
+msgstr ""
 
 #: ../../packages/integration-prometheus/src/localize.ts
-msgctxt "shWZET"
+msgctxt "prometheus-integration.shWZET"
 msgid "Prepended to every metric name, including the Node.js runtime metrics."
-msgstr "Wird jedem Metriknamen vorangestellt, auch den Node.js-Laufzeitmetriken."
+msgstr ""
 
 #: ../../packages/integration-prometheus/src/localize.ts
-msgctxt "eQ6FCA"
+msgctxt "prometheus-integration.eQ6FCA"
 msgid "Node.js runtime metrics"
-msgstr "Node.js-Laufzeitmetriken"
+msgstr ""
 
 #: ../../packages/integration-prometheus/src/localize.ts
-msgctxt "3V_aL1"
+msgctxt "prometheus-integration.3V_aL1"
 msgid "Event loop lag, heap usage, garbage collection and open handles for the instance being scraped."
-msgstr "Event-Loop-Verzögerung, Heap-Auslastung, Garbage Collection und offene Handles der abgefragten Instanz."
+msgstr ""
 
 #: ../../packages/integration-prometheus/src/localize.ts
-msgctxt "GIgXZF"
+msgctxt "prometheus-integration.GIgXZF"
 msgid "Platform metrics"
-msgstr "Plattformmetriken"
+msgstr ""
 
 #: ../../packages/integration-prometheus/src/localize.ts
-msgctxt "igJLap"
+msgctxt "prometheus-integration.igJLap"
 msgid "Servers, backups, orders, payments and IP allocations, counted in the database at scrape time."
-msgstr "Server, Backups, Bestellungen, Zahlungen und IP-Zuweisungen, zum Zeitpunkt der Abfrage in der Datenbank gezählt."
+msgstr ""
 
 #: ../../packages/integration-prometheus/src/localize.ts
-msgctxt "5z4qH1"
+msgctxt "prometheus-integration.5z4qH1"
 msgid "Histogram buckets (ms)"
-msgstr "Histogramm-Buckets (ms)"
+msgstr ""
 
 #: ../../packages/integration-prometheus/src/localize.ts
-msgctxt "3rCYri"
+msgctxt "prometheus-integration.3rCYri"
 msgid "Comma-separated upper bounds for recorded durations. Leave blank for the default range of 5ms to 5 minutes."
-msgstr "Kommagetrennte Obergrenzen für erfasste Laufzeiten. Leer lassen für den Standardbereich von 5 ms bis 5 Minuten."
+msgstr ""
 
 #: ../../packages/integration-prometheus/src/localize.ts
-msgctxt "AfjPfR"
+msgctxt "prometheus-integration.AfjPfR"
 msgid "Scrape token"
-msgstr "Scrape-Token"
+msgstr ""
 
 #: ../../packages/integration-prometheus/src/localize.ts
-msgctxt "NMkV81"
+msgctxt "prometheus-integration.NMkV81"
 msgid "Prometheus sends this as a bearer token. Generate one with `openssl rand -hex 32`."
-msgstr "Wird von Prometheus als Bearer-Token gesendet. Mit `openssl rand -hex 32` erzeugen."
+msgstr ""
 
 #: ../../packages/integration-webhook/src/localize.ts
 msgctxt "webhook-integration.67UEhy"

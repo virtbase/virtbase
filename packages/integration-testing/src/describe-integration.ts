@@ -50,10 +50,21 @@ export interface ConformanceOptions {
   config: { settings: unknown; secrets: unknown };
   /**
    * Plays a working provider behind `ctx.http`. Required when the integration
-   * has a health probe. A probe that talks to its provider through an SDK
-   * client of its own (Stripe) is not served by it.
+   * has a health probe that reaches its provider. A probe that talks to its
+   * provider through an SDK client of its own (Stripe) is not served by it.
    */
   backend?: FetchLike;
+  /**
+   * False for a health probe that reaches no provider (Prometheus): the
+   * failing-provider checks then do not apply, and the probe must report ok
+   * while every outbound request fails.
+   */
+  healthReachesProvider?: boolean;
+  /**
+   * Integrations composed next to it, such as a stub providing the core ports
+   * it consumes through `ctx.ports`.
+   */
+  alongside?: Integration[];
 }
 
 /** A provider that never answers, until the request's own signal aborts it. */
@@ -231,7 +242,10 @@ const createContext = (
   options,
   registry: (backend, overrides) =>
     new IntegrationRegistry({
-      integrations: [{ ...definition, ...overrides }],
+      integrations: [
+        { ...definition, ...overrides },
+        ...(options.alongside ?? []),
+      ],
       config: {
         isEnabled: async () => true,
         settings: async () => options.config.settings,
@@ -256,8 +270,19 @@ const createContext = (
   },
 });
 
-const checksFor = (definition: Integration) =>
-  definition.health ? [...BASE_CHECKS, ...HEALTH_CHECKS] : BASE_CHECKS;
+const LOCAL_HEALTH_CHECKS: Check<ConformanceContext>[] = [
+  {
+    title: "health reports ok while every outbound request fails",
+    run: (context) => expectHealth(context, failsAtOnce, "ok"),
+  },
+];
+
+const checksFor = (definition: Integration, options: ConformanceOptions) => {
+  if (!definition.health) return BASE_CHECKS;
+  return options.healthReachesProvider === false
+    ? [...BASE_CHECKS, ...LOCAL_HEALTH_CHECKS]
+    : [...BASE_CHECKS, ...HEALTH_CHECKS];
+};
 
 /**
  * The conformance suite (§4.7 of integration-first.md, TST-11). Every
@@ -289,7 +314,7 @@ export const describeIntegration = (
   const context = createContext(definition, options);
   describeChecks(
     `${definition.id} conformance`,
-    checksFor(definition),
+    checksFor(definition, options),
     async () => context,
   );
 };
@@ -303,5 +328,5 @@ export const runConformance = (
   options: ConformanceOptions,
 ): Promise<string[]> => {
   const context = createContext(definition, options);
-  return runChecks(checksFor(definition), async () => context);
+  return runChecks(checksFor(definition, options), async () => context);
 };

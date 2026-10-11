@@ -53,7 +53,7 @@
       "severity": "error",
       "from": {
         "path": "^packages/integration-",
-        "pathNot": "^packages/(integration-discord/src/(utils/get-user-by-interaction|notifications/index|identity/push-linked-role-metadata)|integration-prometheus/src/collectors|integration-stripe/src/get-or-create-customer)\\.ts$"
+        "pathNot": "^packages/(integration-discord/src/(utils/get-user-by-interaction|notifications/index|identity/push-linked-role-metadata)|integration-stripe/src/get-or-create-customer)\\.ts$"
       },
       "to": { "path": "^packages/db/src/schema/" }
     },

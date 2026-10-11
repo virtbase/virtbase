@@ -18,7 +18,7 @@
 import type { IntegrationWebhook } from "@virtbase/integration-sdk";
 import { safeSecretCompare } from "@virtbase/utils";
 import { collectPlatformMetrics } from "./collectors";
-import type { PrometheusSecrets, PrometheusSettings } from "./config";
+import type { PrometheusSecrets, PrometheusSettings } from "./manifest";
 import { runtimeFor } from "./runtime";
 
 type ScrapeWebhook = IntegrationWebhook<PrometheusSettings, PrometheusSecrets>;
@@ -26,9 +26,9 @@ type ScrapeWebhook = IntegrationWebhook<PrometheusSettings, PrometheusSecrets>;
 /**
  * `GET /api/integrations/prometheus/metrics` — what Prometheus scrapes.
  *
- * The platform gauges are read from the database here rather than on a timer,
- * so a value is only ever computed because someone asked for it, and is exactly
- * as old as the scrape that carries it.
+ * The platform gauges are read through the `platformMetrics` port here rather
+ * than on a timer, so a value is only ever computed because someone asked for
+ * it, and is exactly as old as the scrape that carries it.
  */
 export const handleScrapeRequest: ScrapeWebhook["handler"] = async (
   request,
@@ -49,7 +49,10 @@ export const handleScrapeRequest: ScrapeWebhook["handler"] = async (
     // `<prefix>platform_collector_up 0` inside the response body, so the
     // runtime metrics still reach Prometheus and the failure is itself
     // alertable.
-    await collectPlatformMetrics(runtime, ctx.logger);
+    await collectPlatformMetrics(runtime, {
+      reader: () => ctx.ports.require("platformMetrics"),
+      logger: ctx.logger,
+    });
   }
 
   return new Response(await runtime.registry.metrics(), {
@@ -64,8 +67,8 @@ export const handleScrapeRequest: ScrapeWebhook["handler"] = async (
 };
 
 /**
- * Checks the bearer token Prometheus sends from `bearer_token` in its scrape
- * config, in constant time.
+ * Checks, in constant time, the bearer token Prometheus sends from the
+ * `authorization` credentials of its scrape config.
  */
 function isAuthorized(request: Request, expected: string): boolean {
   const header = request.headers.get("authorization");

@@ -55,6 +55,18 @@ Rows 1–21 of §1.1:
 `VERCEL_GIT_COMMIT_REF`, `VERCEL_GIT_PREVIOUS_SHA`, `NEXT_RUNTIME`, `PORT`,
 `NODE_EXTRA_CA_CERTS`.
 
+### Bootstrap modules
+
+The modules that may read the environment and build a singleton at import
+([CMP-10](../style/composition.md#rules)). Each holds its singleton on
+`globalThis`, so a hot reload in Next's dev server does not build it again.
+
+- `packages/db/src/client.ts`: the connection pool, from `DATABASE_URL`; it
+  reads `NODE_ENV` to skip the `globalThis` holder in production.
+- `packages/api/src/integrations/index.ts`: `integrationConfigStore` and the
+  `integrations` registry, from `CONFIG_ENCRYPTION_KEY`, held on `globalThis`
+  in every environment since 2026-10-11.
+
 ### Test and CI only
 
 `CI`, `VERCEL_AUTOMATION_BYPASS_SECRET`, `E2E_*`, `PATH`.

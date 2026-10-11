@@ -15,7 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { FieldDescriptor } from "@virtbase/integration-sdk";
+import { defineManifest } from "@virtbase/integration-sdk/manifest";
 import * as z from "zod";
 
 /**
@@ -81,8 +81,8 @@ const bucketList = z
   .default("")
   .transform((value, ctx) => {
     // An array is this schema's own output being read back from storage. It is
-    // re-normalised rather than trusted, and a stored value that has somehow
-    // become unusable falls back to the defaults instead of erroring — the
+    // re-normalised rather than trusted, and a stored array with no usable
+    // bound falls back to the defaults instead of erroring — the
     // integration failing to load is a worse outcome than the wrong buckets.
     if (Array.isArray(value)) {
       return normalizeBuckets(value) ?? DEFAULT_DURATION_BUCKETS_MS;
@@ -136,44 +136,69 @@ export const secretsSchema = z.object({
 export type PrometheusSettings = z.output<typeof settingsSchema>;
 export type PrometheusSecrets = z.output<typeof secretsSchema>;
 
-export const settingsFields: FieldDescriptor<keyof PrometheusSettings>[] = [
-  {
-    key: "prefix",
-    label: "Metric prefix",
-    help: "Prepended to every metric name, including the Node.js runtime metrics.",
-    widget: "text",
-    placeholder: DEFAULT_PREFIX,
-    optional: true,
+/** Prometheus's static half (ADR 0003); the runtime is `./index.ts`. */
+export const manifest = defineManifest({
+  apiVersion: 2,
+  id: "prometheus",
+  version: "2.0.0",
+  name: "Prometheus",
+  description:
+    "Exposes platform and runtime metrics on an authenticated scrape endpoint for Prometheus and Grafana.",
+  category: "analytics",
+  icon: "prometheus",
+  author: "Virtbase",
+  links: {
+    website: "https://prometheus.io",
+    providerDocs:
+      "https://prometheus.io/docs/prometheus/latest/configuration/configuration/#scrape_config",
   },
-  {
-    key: "collectDefaultMetrics",
-    label: "Node.js runtime metrics",
-    help: "Event loop lag, heap usage, garbage collection and open handles for the instance being scraped.",
-    widget: "switch",
-    optional: true,
+  docs: "./docs",
+  requires: { apiVersion: "^2.0.0" },
+  provides: ["metrics"],
+  settings: {
+    schema: settingsSchema,
+    fields: [
+      {
+        key: "prefix",
+        label: "Metric prefix",
+        help: "Prepended to every metric name, including the Node.js runtime metrics.",
+        widget: "text",
+        placeholder: DEFAULT_PREFIX,
+        optional: true,
+      },
+      {
+        key: "collectDefaultMetrics",
+        label: "Node.js runtime metrics",
+        help: "Event loop lag, heap usage, garbage collection and open handles for the instance being scraped.",
+        widget: "switch",
+        optional: true,
+      },
+      {
+        key: "collectPlatformMetrics",
+        label: "Platform metrics",
+        help: "Servers, backups, orders, payments and IP allocations, counted in the database at scrape time.",
+        widget: "switch",
+        optional: true,
+      },
+      {
+        key: "durationBucketsMs",
+        label: "Histogram buckets (ms)",
+        help: "Comma-separated upper bounds for recorded durations. Leave blank for the default range of 5ms to 5 minutes.",
+        widget: "text",
+        placeholder: DEFAULT_DURATION_BUCKETS_MS.join(", "),
+        optional: true,
+      },
+    ],
   },
-  {
-    key: "collectPlatformMetrics",
-    label: "Platform metrics",
-    help: "Servers, backups, orders, payments and IP allocations, counted in the database at scrape time.",
-    widget: "switch",
-    optional: true,
+  secrets: {
+    schema: secretsSchema,
+    fields: [
+      {
+        key: "scrapeToken",
+        label: "Scrape token",
+        help: "Prometheus sends this as a bearer token. Generate one with `openssl rand -hex 32`.",
+        widget: "password",
+      },
+    ],
   },
-  {
-    key: "durationBucketsMs",
-    label: "Histogram buckets (ms)",
-    help: "Comma-separated upper bounds for recorded durations. Leave blank for the default range of 5ms to 5 minutes.",
-    widget: "text",
-    placeholder: DEFAULT_DURATION_BUCKETS_MS.join(", "),
-    optional: true,
-  },
-];
-
-export const secretFields: FieldDescriptor<keyof PrometheusSecrets>[] = [
-  {
-    key: "scrapeToken",
-    label: "Scrape token",
-    help: "Prometheus sends this as a bearer token. Generate one with `openssl rand -hex 32`.",
-    widget: "password",
-  },
-];
+});

@@ -118,6 +118,52 @@ describe("runConformance", () => {
     ]);
   });
 
+  test("passes a probe that reaches no provider, with the port it consumes composed alongside", async () => {
+    const coreStub = defineIntegration({
+      id: "core-stub",
+      name: "Core",
+      description: "Provides the ports the example consumes.",
+      category: "platform",
+      internal: true,
+      provides: {
+        ipReputation: () => ({
+          id: "core-stub",
+          check: async (ip) => ({
+            ip,
+            score: 0,
+            categories: [],
+            totalReports: 0,
+            lastReportedAt: null,
+          }),
+        }),
+      },
+    });
+    const local = defineIntegration(exampleManifest, {
+      provides: { dns: () => noopDns },
+      health: {
+        check: async (ctx) => {
+          await (await ctx.ports.require("ipReputation")).check("192.0.2.1");
+          return ok();
+        },
+      },
+      localize: translate,
+    });
+
+    expect(
+      await failedTitles(local, {
+        backend: undefined,
+        healthReachesProvider: false,
+        alongside: [coreStub],
+      }),
+    ).toEqual([]);
+  });
+
+  test("fails a probe declared local that reaches its provider", async () => {
+    expect(
+      await failedTitles(example, { healthReachesProvider: false }),
+    ).toEqual(["health reports ok while every outbound request fails"]);
+  });
+
   test("fails a packageDir without a package.json", async () => {
     expect(
       await failedTitles(example, {

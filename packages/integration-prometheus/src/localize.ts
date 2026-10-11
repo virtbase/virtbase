@@ -29,7 +29,7 @@ import { getExtracted } from "next-intl/server";
  */
 export const localizePrometheus =
   async (): Promise<LocalizedIntegrationText> => {
-    const t = await getExtracted();
+    const t = await getExtracted("prometheus-integration");
 
     return {
       name: t("Prometheus"),

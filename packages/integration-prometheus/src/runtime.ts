@@ -23,7 +23,7 @@ import {
   Histogram,
   Registry,
 } from "prom-client";
-import type { PrometheusSettings } from "./config";
+import type { PrometheusSettings } from "./manifest";
 
 export interface RuntimeOptions {
   prefix: string;
@@ -31,7 +31,17 @@ export interface RuntimeOptions {
   durationBucketsMs: number[];
 }
 
-type MetricKind = "counter" | "gauge" | "histogram";
+/** The metric half of {@link MetricEntry}, keyed by its prom-client kind. */
+type ClaimedMetric =
+  | { kind: "counter"; metric: Counter }
+  | { kind: "gauge"; metric: Gauge }
+  | { kind: "histogram"; metric: Histogram };
+
+/** A registered metric, tagged with the prom-client kind it was registered as. */
+type MetricEntry = { labelNames: readonly string[] } & ClaimedMetric;
+
+/** The constructor options every prom-client metric kind shares. */
+type MetricConfig = ReturnType<MetricsRuntime["toMetricConfig"]>;
 
 /**
  * The process-wide prom-client state.
@@ -54,10 +64,7 @@ export class MetricsRuntime {
   /** Identity of the configuration this runtime was built for. */
   readonly signature: string;
 
-  private readonly metrics = new Map<
-    string,
-    { kind: MetricKind; metric: Counter | Gauge | Histogram }
-  >();
+  private readonly metrics = new Map<string, MetricEntry>();
 
   /** Names already complained about, so a bad call site logs once, not per sample. */
   private readonly warned = new Set<string>();
@@ -80,16 +87,36 @@ export class MetricsRuntime {
     return `${this.prefix}${suffix}`;
   }
 
+  /**
+   * The counter named `spec.name`, created on first use. Returns null when the
+   * name is registered as another kind, or by `collectDefaultMetrics`, through
+   * {@link claim}. {@link gauge} and {@link histogram} behave the same.
+   */
   counter(spec: MetricSpec): Counter | null {
-    return this.getOrCreate(spec, "counter") as Counter | null;
+    return this.claim(spec, {
+      pick: (entry) => (entry.kind === "counter" ? entry.metric : null),
+      create: (config) => ({ kind: "counter", metric: new Counter(config) }),
+    });
   }
 
   gauge(spec: MetricSpec): Gauge | null {
-    return this.getOrCreate(spec, "gauge") as Gauge | null;
+    return this.claim(spec, {
+      pick: (entry) => (entry.kind === "gauge" ? entry.metric : null),
+      create: (config) => ({ kind: "gauge", metric: new Gauge(config) }),
+    });
   }
 
   histogram(spec: MetricSpec & { buckets?: number[] }): Histogram | null {
-    return this.getOrCreate(spec, "histogram") as Histogram | null;
+    return this.claim(spec, {
+      pick: (entry) => (entry.kind === "histogram" ? entry.metric : null),
+      create: (config) => ({
+        kind: "histogram",
+        metric: new Histogram({
+          ...config,
+          buckets: spec.buckets ?? this.durationBucketsMs,
+        }),
+      }),
+    });
   }
 
   /**
@@ -102,49 +129,53 @@ export class MetricsRuntime {
    * a later, labelled sample be applied to a metric that rejects labels.
    */
   labelNamesOf(name: string): readonly string[] | null {
-    const entry = this.metrics.get(name);
-    if (!entry) return null;
-    // prom-client keeps the constructor's label names on the instance.
-    return (entry.metric as { labelNames?: string[] }).labelNames ?? [];
+    return this.metrics.get(name)?.labelNames ?? null;
   }
 
   warnOnce(key: string, logger: IntegrationLogger, message: string): void {
     if (this.warned.has(key)) return;
     this.warned.add(key);
-    logger.warn(`[prometheus] ${message}`);
+    logger.warn(message);
   }
 
-  private getOrCreate(
-    spec: MetricSpec & { buckets?: number[] },
-    kind: MetricKind,
-  ): Counter | Gauge | Histogram | null {
+  /**
+   * The metric named `spec.name` if `pick` accepts its kind, registering it
+   * through `create` when no metric has the name.
+   *
+   * Returns null when the name is held by another kind, or by a metric this
+   * runtime did not register, such as one of `collectDefaultMetrics`: prom-client
+   * throws on a second registration of a name, and the port promises never to
+   * throw at its caller.
+   */
+  private claim<M>(
+    spec: MetricSpec,
+    {
+      pick,
+      create,
+    }: {
+      pick: (entry: MetricEntry) => M | null;
+      create: (config: MetricConfig) => ClaimedMetric;
+    },
+  ): M | null {
     const existing = this.metrics.get(spec.name);
-    if (existing) {
-      // A name recorded through two different sink methods. prom-client would
-      // throw on the second registration; the port promises never to throw at
-      // its caller, so the loser is dropped and the call site is told once.
-      return existing.kind === kind ? existing.metric : null;
-    }
+    if (existing) return pick(existing);
+    if (this.registry.getSingleMetric(spec.name)) return null;
 
-    const config = {
+    const entry: MetricEntry = {
+      ...create(this.toMetricConfig(spec)),
+      labelNames: spec.labelNames ?? [],
+    };
+    this.metrics.set(spec.name, entry);
+    return pick(entry);
+  }
+
+  private toMetricConfig(spec: MetricSpec) {
+    return {
       name: spec.name,
       help: spec.help,
-      labelNames: spec.labelNames ?? [],
+      labelNames: [...(spec.labelNames ?? [])],
       registers: [this.registry],
     };
-
-    const metric =
-      kind === "counter"
-        ? new Counter(config)
-        : kind === "gauge"
-          ? new Gauge(config)
-          : new Histogram({
-              ...config,
-              buckets: spec.buckets ?? this.durationBucketsMs,
-            });
-
-    this.metrics.set(spec.name, { kind, metric });
-    return metric;
   }
 }
 
@@ -169,9 +200,9 @@ function signatureOf(options: RuntimeOptions): string {
  * would be re-created behind the sink's back and every metric would vanish on
  * the next edit.
  */
-const RUNTIME_KEY = Symbol.for("virtbase.integration-prometheus.runtime");
-
-type RuntimeHolder = { [RUNTIME_KEY]?: MetricsRuntime };
+declare global {
+  var virtbasePrometheusRuntime: MetricsRuntime | undefined;
+}
 
 /**
  * The runtime for this configuration, building it on first use.
@@ -183,19 +214,17 @@ type RuntimeHolder = { [RUNTIME_KEY]?: MetricsRuntime };
  * alternative is a registry serving series under two different prefixes.
  */
 export function getRuntime(options: RuntimeOptions): MetricsRuntime {
-  const holder = globalThis as RuntimeHolder;
-  const current = holder[RUNTIME_KEY];
-
+  const current = globalThis.virtbasePrometheusRuntime;
   if (current && current.signature === signatureOf(options)) return current;
 
   const runtime = new MetricsRuntime(options);
-  holder[RUNTIME_KEY] = runtime;
+  globalThis.virtbasePrometheusRuntime = runtime;
   return runtime;
 }
 
 /** Drops the process-wide runtime. Tests only. */
 export function resetRuntime(): void {
-  delete (globalThis as RuntimeHolder)[RUNTIME_KEY];
+  globalThis.virtbasePrometheusRuntime = undefined;
 }
 
 /**
