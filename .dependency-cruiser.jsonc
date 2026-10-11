@@ -58,6 +58,31 @@
       "to": { "path": "^packages/db/src/schema/" }
     },
     {
+      "name": "sdk-manifest-is-pure",
+      "comment": "The SDK manifest module must stay importable without runtime code (ADR 0003): zod, port types and validators only.",
+      "severity": "error",
+      "from": { "path": "^packages/integration-sdk/src/manifest\\.ts$" },
+      "to": {
+        "pathNot": ["^packages/ports/", "^packages/validators/"]
+      }
+    },
+    {
+      "name": "integration-manifest-is-pure",
+      "comment": "An integration manifest is static data (ADR 0003, INT-2): the SDK manifest, port types, validators, utils and zod only.",
+      "severity": "error",
+      "from": {
+        "path": "^packages/integration-(?!sdk)[^/]+/src/manifest\\.ts$"
+      },
+      "to": {
+        "pathNot": [
+          "^packages/integration-sdk/src/manifest\\.ts$",
+          "^packages/ports/",
+          "^packages/validators/",
+          "^packages/utils/"
+        ]
+      }
+    },
+    {
       "name": "sdk-no-integrations",
       "comment": "The SDK defines the plug-in contract and must not know any implementation of it.",
       "severity": "error",

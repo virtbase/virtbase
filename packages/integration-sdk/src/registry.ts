@@ -17,6 +17,10 @@
 
 import type { PortMap } from "@virtbase/ports";
 import { mapSettled } from "@virtbase/utils";
+import {
+  findCompositionProblems,
+  IntegrationCompositionError,
+} from "./compose";
 import type { ConfigSource } from "./config-source";
 import type { IntegrationDescription } from "./describe";
 import { describeIntegration, localizeDescription } from "./describe";
@@ -110,7 +114,18 @@ export class IntegrationRegistry {
     require: (port, options) => this.require(port, options),
   };
 
+  /**
+   * Throws an {@link IntegrationCompositionError} listing every problem
+   * {@link findCompositionProblems} finds, so a broken composition fails at
+   * boot rather than on the first request that reaches it.
+   */
   constructor(options: IntegrationRegistryOptions) {
+    const problems = findCompositionProblems(options.integrations);
+    if (problems.length > 0) {
+      throw new IntegrationCompositionError(
+        `Integrations cannot be composed:\n${problems.join("\n")}`,
+      );
+    }
     this.integrations = new Map(
       options.integrations.map((integration) => [integration.id, integration]),
     );
@@ -591,6 +606,7 @@ export class IntegrationRegistry {
         http: createIntegrationHttp({
           integrationId: integration.id,
           redactor,
+          timeoutMs: integration.httpTimeoutMs,
           onRequest: this.onHttpRequest,
         }),
         ports: this.portAccessor,

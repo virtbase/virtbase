@@ -199,11 +199,20 @@ integration.
 
 1. Create `packages/integration-<name>/` depending on `@virtbase/ports` and
    `@virtbase/integration-sdk`.
-2. Default-export `defineIntegration({ id, name, description, category,
-   settings, secrets, provides, webhooks, health })`. Each entry in `provides`
-   is a factory that receives the parsed settings and secrets and returns a port
-   implementation. `category` groups it on the admin hub; the optional `icon`,
-   `author`, `website` and `docsUrl` fill in its detail page.
+2. Declare it in two halves (ADR 0003):
+   - `src/manifest.ts`, the `./manifest` entry: `defineManifest({ apiVersion: 2,
+     id, version, name, description, category, docs: "./docs", provides,
+     settings, secrets })`, with `links`, `icon` and `author` for its detail
+     page. It imports only zod, port types, validators, utils and
+     `@virtbase/integration-sdk/manifest`; `bun check:boundaries` enforces it.
+   - `src/index.ts`, the runtime: default-export `defineIntegration(manifest, {
+     provides, webhooks, health, lifecycle, localize })`. Each entry in
+     `provides` is a factory that receives the parsed settings and secrets and
+     returns a port implementation, one per port the manifest lists.
+
+   Code inside uses `ctx.http`, `ctx.logger` and `IntegrationError` (INT-4 to
+   INT-6). Integrations written before 2026-10-11 use the one-argument v1 form
+   until their Phase 1 migration; PR 1.14 deletes it.
 3. Register it in `packages/api/src/integrations/index.ts` — the composition
    root and the only file that knows both an integration and a port.
 4. Consume it as a capability: `await integrations.resolve("dns")`. Never import
@@ -241,7 +250,8 @@ must be added there or its whole namespace silently disappears from
 `getExtracted` call outside the list, and for an entry that holds no call.
 
 Integration name, description and field labels are translated through the
-optional `localize()` hook, which resolves its own translator:
+`localize()` hook, required in the v2 runtime and optional in the v1 form,
+which resolves its own translator:
 
 ```ts
 localize: async () => {
