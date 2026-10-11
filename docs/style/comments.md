@@ -149,12 +149,19 @@ placeholders.
 
 ## Enforcement
 
-- **The comment gate.** It runs in CI from Phase 1, PR 1.2. It inspects only the
-  comment lines a PR adds or changes in `.ts`, `.tsx`, `.js` and `.mjs` files, so
-  it applies to future code without rewriting history. It fails on:
-  - the CMT-8 list;
-  - `TODO` without an issue reference;
+- **The comment gate.** `bun run comment:check [base]`
+  ([`tooling/comment-gate`](../../tooling/comment-gate/README.md)) inspects only
+  the comment lines added or changed since `base` (default `origin/main`) in
+  `.ts`, `.tsx`, `.js` and `.mjs` files, so it applies to new code without
+  rewriting history. CI runs it on every pull request, and the Claude Code stop
+  hook runs it before a turn ends, unless Claude is already continuing for the
+  hook. It fails on:
+  - the CMT-8 list, outside backticks and URLs; a domain term that contains a
+    listed word, such as `magic link`, goes in backticks;
+  - `TODO` without an issue reference, written `TODO(#123):`;
   - `FIXME`, `HACK` and `XXX`;
-  - lines that are commented-out code.
+  - lines that are commented-out code, outside TSDoc comments.
+
+  It never checks the licence header CMT-16 requires.
 - **Review.** The `style-reviewer` agent checks CMT-1 to CMT-7, CMT-9 and CMT-12,
   which a pattern cannot judge.

@@ -32,11 +32,10 @@ to Claude, with stderr as the message.
 | --- | --- | --- |
 | `guard-bash.ts` | before every Bash command | blocks skipping the git hooks (GIT-5), marking a PR ready (GIT-7), force pushes to `main` (GIT-6), bare `bun test` (TST-1), and attribution footers in commits and PRs (GIT-4). It checks each segment of a command by the command the segment starts with, so text that only mentions a flag is not blocked. |
 | `check-edited-file.ts` | after every Edit or Write | runs `biome check --write` on the edited file when it is inside the repository, and returns what Biome cannot fix |
-| `stop-check.ts` | before Claude ends its turn | runs `biome check` on every changed and untracked file; when Claude is already continuing for this hook, it lets Claude stop |
+| `stop-check.ts` | before Claude ends its turn | runs `biome check` on every changed and untracked file, and the comment gate (`bun run comment:check`) against `origin/main`, blocking on a violation but not when the gate cannot run; when Claude is already continuing for this hook, it lets Claude stop |
 
 `.claude/hooks/tsconfig.json` gives the scripts the repository's Bun types.
-Check them with `bunx tsc -p .claude/hooks`. From Phase 1, PR 1.2,
-`stop-check.ts` also runs the comment gate.
+Check them with `bunx tsc -p .claude/hooks`.
 
 ## Not yet enabled
 

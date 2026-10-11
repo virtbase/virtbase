@@ -46,6 +46,8 @@ jobs:
       id-token: write
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          fetch-depth: 2
 
       - uses: ./.github/actions/setup-bun
         with:
@@ -53,6 +55,10 @@ jobs:
 
       - name: Lint
         run: bun check:ci
+
+      - name: Comments on changed lines
+        if: github.event_name == 'pull_request'
+        run: bun run --silent comment:check HEAD^1
 
       - name: Typecheck
         run: bun typecheck
