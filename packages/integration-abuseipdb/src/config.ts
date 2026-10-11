@@ -16,53 +16,15 @@
  */
 
 import type { IntegrationContext } from "@virtbase/integration-sdk";
-import * as z from "zod";
+import type * as z from "zod";
+import type { secretsSchema, settingsSchema } from "./manifest";
 
-export const settingsSchema = z.object({
-  /** Below this, a reported address is not worth a case. */
-  confidenceThreshold: z.coerce.number().int().min(0).max(100).default(50),
-  /** How far back the provider should look. */
-  maxAgeInDays: z.coerce.number().int().min(1).max(365).default(30),
-  /**
-   * The smallest block the sweep asks about.
-   *
-   * `check-block` is capped by plan - /24 on a free key, wider on a paid one -
-   * and asking for something wider than the key allows fails the call rather
-   * than degrading.
-   */
-  blockPrefixLength: z.coerce.number().int().min(16).max(32).default(24),
-  /**
-   * Provider calls one sweep may make.
-   *
-   * Four per hourly run is 96 a day, which fits inside a free key's daily
-   * `check-block` allowance with room to spare. Raise it with the plan.
-   */
-  callsPerRun: z.coerce.number().int().min(1).max(500).default(4),
-  /**
-   * Spend an extra call per finding to learn what it was reported for.
-   *
-   * Off by default: it doubles the cost of every finding. On, a case says
-   * "port scan" instead of "other", which is the difference between a customer
-   * knowing what to fix and writing back to ask.
-   */
-  enrichCategories: z.coerce.boolean().default(false),
-  /**
-   * Offer to report confirmed abuse back to AbuseIPDB.
-   *
-   * Only ever an offer. Publishing a report against an address has
-   * consequences for the whole range's reputation, so it stays behind an
-   * operator's explicit confirmation on a resolved case.
-   */
-  allowReporting: z.coerce.boolean().default(false),
-});
-
-export const secretsSchema = z.object({
-  apiKey: z.string().min(20),
-});
-
+/** The parsed settings of an AbuseIPDB installation ({@link settingsSchema}). */
 export type AbuseIpDbSettings = z.output<typeof settingsSchema>;
+/** The parsed secrets of an AbuseIPDB installation ({@link secretsSchema}). */
 export type AbuseIpDbSecrets = z.output<typeof secretsSchema>;
 
+/** The context the registry hands this package's factories and hooks. */
 export type AbuseIpDbContext = IntegrationContext<
   AbuseIpDbSettings,
   AbuseIpDbSecrets

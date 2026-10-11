@@ -15,18 +15,22 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { IntegrationError } from "@virtbase/integration-sdk";
 import type { IpReputation, IpReputationProvider } from "@virtbase/ports";
 import { categoryNames, REPORTABLE_CATEGORIES } from "./categories";
 import type { AbuseIpDbClient } from "./client";
 import { createAbuseIpDbClient } from "./client";
 import type { AbuseIpDbContext } from "./config";
 
+/** {@link REPORTABLE_CATEGORIES}, indexable by any category name. */
+const REPORTABLE_BY_NAME: Readonly<Record<string, readonly number[]>> =
+  REPORTABLE_CATEGORIES;
+
 /**
- * One address, asked about directly.
+ * One address, asked about directly, and the path to publish a report back.
  *
- * Separate from the sweep because it is synchronous and bidirectional: triage
- * asks about a reported address while an operator is looking at it, and a
- * resolved case may offer to report one of ours back.
+ * Separate from the sweep because it answers about one address at a time and
+ * can write to AbuseIPDB. No core code calls `ipReputation` (2026-10-11).
  */
 export class AbuseIpDbReputation implements IpReputationProvider {
   readonly id = "abuseipdb";
@@ -40,6 +44,7 @@ export class AbuseIpDbReputation implements IpReputationProvider {
       client ??
       createAbuseIpDbClient({
         apiKey: ctx.secrets.apiKey,
+        http: ctx.http,
         logger: ctx.logger,
       });
   }
@@ -71,40 +76,54 @@ export class AbuseIpDbReputation implements IpReputationProvider {
     };
   }
 
+  /**
+   * Publishes a report against `input.ip` under the AbuseIPDB categories
+   * {@link REPORTABLE_CATEGORIES} maps `input.categories` to.
+   *
+   * A caller must only call it after an operator confirmed the case: a
+   * published report affects the whole range's reputation.
+   *
+   * @throws IntegrationError `abuseipdb.reporting_disabled` while
+   * `allowReporting` is off, and `abuseipdb.no_matching_category` when no
+   * category maps to an AbuseIPDB one.
+   */
   async report(input: {
     ip: string;
     categories: string[];
     comment: string;
   }): Promise<{ externalId?: string }> {
     if (!this.ctx.settings.allowReporting) {
-      throw new Error(
-        "Reporting back to AbuseIPDB is switched off for this integration.",
-      );
+      throw new IntegrationError({
+        code: "abuseipdb.reporting_disabled",
+        message:
+          "Reporting back to AbuseIPDB is switched off for this integration.",
+      });
     }
 
     const numeric = [
       ...new Set(
-        input.categories.flatMap(
-          (category) =>
-            REPORTABLE_CATEGORIES[
-              category as keyof typeof REPORTABLE_CATEGORIES
-            ] ?? [],
+        input.categories.flatMap((category) =>
+          Object.hasOwn(REPORTABLE_CATEGORIES, category)
+            ? (REPORTABLE_BY_NAME[category] ?? [])
+            : [],
         ),
       ),
     ];
 
     if (0 === numeric.length) {
-      throw new Error(
-        `AbuseIPDB has no category matching ${input.categories.join(", ")}.`,
-      );
+      throw new IntegrationError({
+        code: "abuseipdb.no_matching_category",
+        message: `AbuseIPDB has no category matching ${input.categories.join(", ")}.`,
+        params: { categories: input.categories.join(", ") },
+      });
     }
 
     const result = await this.client.report({
       ip: input.ip,
       categories: numeric,
-      // [!] The comment is published. It must never carry the customer's
-      // identity - that is a policy the composing caller enforces, and the cap
-      // here only stops the provider rejecting an over-long one.
+      // [!] AbuseIPDB publishes the comment, so a caller must never put a
+      // customer's identity in it: this adapter does not inspect the text,
+      // and only cuts it to 1024 characters.
       comment: input.comment.slice(0, 1024),
     });
 

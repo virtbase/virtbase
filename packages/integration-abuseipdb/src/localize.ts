@@ -27,7 +27,7 @@ import { getExtracted } from "next-intl/server";
  */
 export const localizeAbuseIpDb =
   async (): Promise<LocalizedIntegrationText> => {
-    const t = await getExtracted();
+    const t = await getExtracted("abuseipdb-integration");
 
     return {
       name: t("AbuseIPDB"),
@@ -46,7 +46,7 @@ export const localizeAbuseIpDb =
         blockPrefixLength: {
           label: t("Block size"),
           help: t(
-            "The smallest block a sweep asks about. A free key is limited to /24.",
+            "The largest block one call asks about, as a prefix length. Wider targets are split into blocks of this size. Targets are /24, so a value below 24 changes nothing and each step above 24 doubles the calls per target.",
           ),
         },
         callsPerRun: {
@@ -64,7 +64,7 @@ export const localizeAbuseIpDb =
         allowReporting: {
           label: t("Allow reporting back"),
           help: t(
-            "Lets an operator publish a report when a case is confirmed. Never automatic.",
+            "Allows reports to be published back to AbuseIPDB. While off, every report is refused.",
           ),
         },
         apiKey: {
