@@ -25,6 +25,7 @@ export * from "./get-safe-redirect-url";
 export * from "./is-production-deployment";
 export * from "./map-proxmox-server-status";
 export * from "./map-proxmox-task-status";
+export * from "./map-settled";
 export * from "./parse-public-key";
 export * from "./repair-firewall-rule";
 export * from "./safe-secret-compare";

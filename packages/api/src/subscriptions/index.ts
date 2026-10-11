@@ -19,4 +19,5 @@ export * from "./claim-renewal";
 export * from "./create-subscription";
 export * from "./period";
 export * from "./subject-subscription";
+export * from "./suspend-terminated-servers";
 export * from "./transition-subscription";
