@@ -258,7 +258,7 @@ which resolves its own translator:
 
 ```ts
 localize: async () => {
-  const t = await getExtracted();
+  const t = await getExtracted("powerdns-integration");
   return { name: t("PowerDNS"), fields: { apiKey: { label: t("API key") } } };
 },
 ```

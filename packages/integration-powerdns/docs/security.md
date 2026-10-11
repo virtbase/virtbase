@@ -2,8 +2,9 @@
 
 ## What it trusts
 
-PowerDNS's answers are trusted only for their status codes; no response body
-reaches a customer.
+PowerDNS's answers are trusted for their status codes, and the health probe
+parses the server-info body's `id` and `version`. No response body reaches a
+customer; the health status reaches administrators only.
 
 ## Untrusted input
 
