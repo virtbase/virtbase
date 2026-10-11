@@ -66,6 +66,12 @@ export interface IntegrationHttp {
   request(url: string | URL, init?: IntegrationHttpInit): Promise<Response>;
 }
 
+/** The `fetch` behind `ctx.http`: the global one, or a test's fake provider. */
+export type FetchLike = (
+  input: string | URL,
+  init?: RequestInit,
+) => Promise<Response>;
+
 /** One attempt, as reported to `onRequest`; the URL is already redacted. */
 export interface HttpRequestEvent {
   integrationId: string;
@@ -93,7 +99,7 @@ interface HttpOptions {
   redactor: Redactor;
   timeoutMs?: number;
   onRequest?: (event: HttpRequestEvent) => void;
-  fetch?: (input: string | URL, init?: RequestInit) => Promise<Response>;
+  fetch?: FetchLike;
   sleep?: (ms: number) => Promise<unknown>;
   random?: () => number;
 }

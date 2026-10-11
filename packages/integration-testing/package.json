@@ -1,0 +1,31 @@
+{
+  "name": "@virtbase/integration-testing",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./ports/dns": "./src/ports/dns.ts",
+    "./ports/notifications": "./src/ports/notifications.ts"
+  },
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo coverage node_modules",
+    "test": "bun --env-file=../../.env.test test --timeout 20000 --isolate",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@virtbase/integration-sdk": "workspace:*",
+    "@virtbase/ports": "workspace:*",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@virtbase/tsconfig": "workspace:*",
+    "next-intl": "catalog:intl",
+    "typescript": "catalog:"
+  },
+  "virtbase": {
+    "coverage": {
+      "lines": 0.99,
+      "functions": 0.94
+    }
+  }
+}
