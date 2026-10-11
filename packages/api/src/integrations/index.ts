@@ -75,23 +75,73 @@ const core = defineIntegration({
  * readable" and "the application is broken", and only the second deserves a
  * crash — the site still serves, and admin shows why.
  */
-export const integrationConfigStore = process.env.CONFIG_ENCRYPTION_KEY
-  ? new IntegrationConfigStore({
-      db,
-      masterKey: parseMasterKey(process.env.CONFIG_ENCRYPTION_KEY),
-    })
-  : null;
+const createIntegrationConfigStore = (): IntegrationConfigStore | null => {
+  const key = process.env.CONFIG_ENCRYPTION_KEY;
+  if (key)
+    return new IntegrationConfigStore({ db, masterKey: parseMasterKey(key) });
 
-if (!integrationConfigStore) {
   console.warn(
     "[integrations] CONFIG_ENCRYPTION_KEY is not set. Every integration will " +
       "report as disabled until it is configured.",
   );
+  return null;
+};
+
+/** The two singletons this module builds, held together on `globalThis`. */
+interface IntegrationsRoot {
+  integrationConfigStore: IntegrationConfigStore | null;
+  integrations: IntegrationRegistry;
 }
 
-const config: ConfigSource = integrationConfigStore
-  ? new DbConfigSource({ store: integrationConfigStore })
-  : new DisabledConfigSource();
+const createIntegrationsRoot = (): IntegrationsRoot => {
+  const integrationConfigStore = createIntegrationConfigStore();
+  const config: ConfigSource = integrationConfigStore
+    ? new DbConfigSource({ store: integrationConfigStore })
+    : new DisabledConfigSource();
+
+  return {
+    integrationConfigStore,
+    integrations: new IntegrationRegistry({
+      integrations: [
+        core,
+        powerdns,
+        discord,
+        lexware,
+        stripe,
+        anonpay,
+        prometheus,
+        webhook,
+        alertmanager,
+        abuseipdb,
+      ],
+      config,
+      onHttpRequest: (event) => Sentry.addBreadcrumb(toHttpBreadcrumb(event)),
+    }),
+  };
+};
+
+/**
+ * Next's dev server evaluates this module again on every hot reload. Held on
+ * `globalThis`, the store and the registry are built, and the missing-key
+ * warning is logged, once per process, as `packages/db/src/client.ts` does for
+ * its pool.
+ *
+ * [!] The registry keeps the integration definitions it was built with, so an
+ * edit to an integration package takes effect only after the dev server
+ * restarts.
+ */
+declare global {
+  var virtbaseIntegrationsRoot: IntegrationsRoot | undefined;
+}
+
+globalThis.virtbaseIntegrationsRoot ??= createIntegrationsRoot();
+const root = globalThis.virtbaseIntegrationsRoot;
+
+/**
+ * The integration configuration store, or null when `CONFIG_ENCRYPTION_KEY` is
+ * not set (see `createIntegrationConfigStore`).
+ */
+export const integrationConfigStore = root.integrationConfigStore;
 
 /**
  * The composition root for integrations — the single place where concrete
@@ -102,22 +152,7 @@ const config: ConfigSource = integrationConfigStore
  * directly. Adding an integration is one line here plus a workspace
  * dependency; nothing else in this package changes.
  */
-export const integrations = new IntegrationRegistry({
-  integrations: [
-    core,
-    powerdns,
-    discord,
-    lexware,
-    stripe,
-    anonpay,
-    prometheus,
-    webhook,
-    alertmanager,
-    abuseipdb,
-  ],
-  config,
-  onHttpRequest: (event) => Sentry.addBreadcrumb(toHttpBreadcrumb(event)),
-});
+export const integrations = root.integrations;
 
 export { dispatchAccountLinked } from "./account-linked";
 export { type DiscordBotInfo, getDiscordBotInfo } from "./discord-bot";
