@@ -15,57 +15,71 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type {
-  IntegrationManifest,
-  ValueDescriptor,
-} from "@virtbase/integration-sdk/manifest";
+import type { IntegrationManifest } from "@virtbase/integration-sdk/manifest";
+import type { FormDescriptor } from "@virtbase/ports";
 import * as z from "zod";
 
 /**
  * The problems of a manifest's settings and secrets descriptors (§4.7, check 2
- * of integration-first.md):
- *
- * - a schema key without a field, or a field without a schema key;
- * - a `select` field whose options differ from its schema's enum values;
- * - a secret field that does not use the `password` widget (INT-7).
+ * of integration-first.md), as {@link checkFormDescriptor} finds them, with
+ * every secret field held to the `password` widget (INT-7).
  */
 export const checkFields = (manifest: IntegrationManifest): string[] => [
-  ...checkDescriptor("settings", manifest.settings),
-  ...checkDescriptor("secrets", manifest.secrets),
+  ...checkFormDescriptor("settings", manifest.settings),
+  ...checkFormDescriptor(
+    "secrets",
+    manifest.secrets,
+    manifest.secrets?.fields.map((field) => field.key),
+  ),
 ];
 
-const checkDescriptor = (
-  kind: "settings" | "secrets",
-  descriptor: ValueDescriptor | undefined,
+/**
+ * The problems of one form descriptor, each prefixed with `label`:
+ *
+ * - a schema that is not a `z.object`;
+ * - a schema key without a field, or a field without a schema key;
+ * - a `select` field whose options differ from its schema's enum values;
+ * - a key of `secretKeys` that has no field, or whose field does not use the
+ *   `password` widget.
+ */
+export const checkFormDescriptor = (
+  label: string,
+  descriptor: FormDescriptor | undefined,
+  secretKeys: readonly string[] = [],
 ): string[] => {
   if (!descriptor) return [];
   const shape = readShape(descriptor.schema);
-  if (!shape) return [`${kind}: the schema must be a z.object`];
+  if (!shape) return [`${label}: the schema must be a z.object`];
 
   const schemaKeys = Object.keys(shape).sort();
   const fieldKeys = descriptor.fields.map((field) => field.key).sort();
   const problems = [
     ...schemaKeys
       .filter((key) => !fieldKeys.includes(key))
-      .map((key) => `${kind}: schema key ${key} has no field`),
+      .map((key) => `${label}: schema key ${key} has no field`),
     ...fieldKeys
       .filter((key) => !schemaKeys.includes(key))
-      .map((key) => `${kind}: field ${key} has no schema key`),
+      .map((key) => `${label}: field ${key} has no schema key`),
+    ...secretKeys
+      .filter((key) => !fieldKeys.includes(key))
+      .map((key) => `${label}: secret key ${key} has no field`),
   ];
 
   for (const field of descriptor.fields) {
-    if (kind === "secrets" && field.widget !== "password") {
-      problems.push(`secrets: field ${field.key} must use the password widget`);
+    if (secretKeys.includes(field.key) && field.widget !== "password") {
+      problems.push(
+        `${label}: field ${field.key} must use the password widget`,
+      );
     }
     const entry = shape[field.key];
     if (field.widget !== "select" || !entry) continue;
     const values = readEnumValues(entry);
     const options = (field.options ?? []).map((option) => option.value).sort();
     if (!values) {
-      problems.push(`${kind}: select field ${field.key} needs an enum schema`);
+      problems.push(`${label}: select field ${field.key} needs an enum schema`);
     } else if (values.join(",") !== options.join(",")) {
       problems.push(
-        `${kind}: select field ${field.key} offers [${options.join(", ")}] but the schema allows [${values.join(", ")}]`,
+        `${label}: select field ${field.key} offers [${options.join(", ")}] but the schema allows [${values.join(", ")}]`,
       );
     }
   }
