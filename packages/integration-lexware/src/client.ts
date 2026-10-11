@@ -15,83 +15,127 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type {
-  ContactRetrieveResponse,
-  InvoiceCreateResponse,
-  InvoiceForCreate,
-  InvoiceRetrieveResponse,
-} from "./types";
+import type { IntegrationHttp } from "@virtbase/integration-sdk";
+import { IntegrationError } from "@virtbase/integration-sdk";
+import * as z from "zod";
+import type { InvoiceForCreate } from "./payload";
 
+const BASE_URL = "https://api.lexware.io/v1";
+
+/** The fields of a Lexware invoice the adapter reads. */
+const InvoiceSchema = z.object({
+  voucherNumber: z.string().nullish(),
+  voucherDate: z.string().nullish(),
+  totalPrice: z
+    .object({
+      totalNetAmount: z.number().nullish(),
+      totalTaxAmount: z.number().nullish(),
+      totalGrossAmount: z.number().nullish(),
+    })
+    .nullish(),
+});
+
+const CreatedSchema = z.object({ id: z.string() });
+const ContactSchema = z.object({ id: z.string() });
+
+/** A Lexware invoice, as far as {@link LexwareClient.retrieveInvoice} reads it. */
+export type LexwareInvoice = z.output<typeof InvoiceSchema>;
+
+/**
+ * The parts of the Lexware Office API this integration uses, over `ctx.http`
+ * (INT-4). It throws `IntegrationError`s: `lexware.request_failed` for an
+ * answer other than 2xx, retryable for 429 and 5xx, and
+ * `lexware.unexpected_response` for a body that is not Lexware's. Creating an
+ * invoice is a POST, which `ctx.http` never retries: a retried create could
+ * issue the invoice twice. Whether a caller may repeat a failed create is
+ * decided by `isCreateRetryable` in the adapter, not by this flag.
+ */
 export class LexwareClient {
-  private readonly baseUrl = "https://api.lexware.io/v1";
   private readonly apiKey: string;
+  private readonly http: IntegrationHttp;
 
-  constructor(apiKey: string) {
+  constructor({ apiKey, http }: { apiKey: string; http: IntegrationHttp }) {
     this.apiKey = apiKey;
+    this.http = http;
   }
 
-  async _request(url: string, options: RequestInit = {}) {
-    const response = await fetch(this.baseUrl + url, {
-      ...options,
-      headers: {
-        Authorization: `Bearer ${this.apiKey}`,
-        Accept: "application/json",
-        ...options.headers,
-      },
-    });
-    if (!response.ok) {
-      throw new Error(
-        `[LexwareClient] Failed to request ${url}: ${response.statusText}`,
-      );
-    }
-
-    return response;
+  /** Reads a contact; the health probe and the collective-contact check. */
+  async retrieveContact(id: string): Promise<{ id: string }> {
+    return this.json(
+      `/contacts/${encodeURIComponent(id)}`,
+      { method: "GET" },
+      ContactSchema,
+    );
   }
 
-  async retrieveContact(id: string): Promise<ContactRetrieveResponse> {
-    const response = await this._request(`/contacts/${id}`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-      },
-    });
-    return response.json() as Promise<ContactRetrieveResponse>;
-  }
-
-  async retrieveInvoice(id: string): Promise<InvoiceRetrieveResponse> {
-    const response = await this._request(`/invoices/${id}`, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-      },
-    });
-    return response.json() as Promise<InvoiceRetrieveResponse>;
+  async retrieveInvoice(id: string): Promise<LexwareInvoice> {
+    return this.json(
+      `/invoices/${encodeURIComponent(id)}`,
+      { method: "GET" },
+      InvoiceSchema,
+    );
   }
 
   async createInvoice(
     invoice: InvoiceForCreate,
     params: { finalize?: boolean } = {},
-  ): Promise<InvoiceCreateResponse> {
-    const url = !params.finalize ? "/invoices" : "/invoices?finalize=true";
-    const response = await this._request(url, {
-      method: "POST",
-      body: JSON.stringify(invoice),
-      headers: {
-        "Content-Type": "application/json",
+  ): Promise<{ id: string }> {
+    return this.json(
+      params.finalize ? "/invoices?finalize=true" : "/invoices",
+      {
+        method: "POST",
+        body: JSON.stringify(invoice),
+        headers: { "Content-Type": "application/json" },
       },
-    });
-
-    return response.json() as Promise<InvoiceCreateResponse>;
+      CreatedSchema,
+    );
   }
 
-  async downloadInvoice(invoiceId: string): Promise<ArrayBuffer> {
-    const response = await this._request(`/invoices/${invoiceId}/file`, {
-      method: "GET",
+  async downloadInvoice(id: string): Promise<ArrayBuffer> {
+    const response = await this.request(
+      `/invoices/${encodeURIComponent(id)}/file`,
+      {
+        method: "GET",
+        headers: { Accept: "*/*" },
+      },
+    );
+    return response.arrayBuffer();
+  }
+
+  private async json<T>(
+    path: string,
+    init: RequestInit,
+    schema: z.ZodType<T>,
+  ): Promise<T> {
+    const response = await this.request(path, init);
+    const parsed = schema.safeParse(await response.json().catch(() => null));
+    if (!parsed.success) {
+      throw new IntegrationError({
+        code: "lexware.unexpected_response",
+        message: `${init.method} ${path} answered with a body that is not Lexware's`,
+      });
+    }
+    return parsed.data;
+  }
+
+  private async request(path: string, init: RequestInit): Promise<Response> {
+    const response = await this.http.request(BASE_URL + path, {
+      ...init,
       headers: {
-        Accept: "*/*",
+        Accept: "application/json",
+        ...init.headers,
+        Authorization: `Bearer ${this.apiKey}`,
       },
     });
-
-    return response.arrayBuffer();
+    if (!response.ok) {
+      await response.body?.cancel();
+      throw new IntegrationError({
+        code: "lexware.request_failed",
+        message: `${init.method} ${path.split("?")[0]} answered ${response.status}`,
+        retryable: response.status === 429 || response.status >= 500,
+        params: { status: response.status },
+      });
+    }
+    return response;
   }
 }

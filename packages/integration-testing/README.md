@@ -58,16 +58,19 @@ per failure; the suite's own tests use it against broken fixtures.
 | Import | Proves |
 | --- | --- |
 | `@virtbase/integration-testing/ports/dns` | the record name is derived from the IPv4 or IPv6 address; upserts are idempotent and replace the hostname; a zone with or without a trailing dot is the same zone, for upserts and deletes; delete removes only the listed records, IPv6 ones included, and succeeds for absent ones |
+| `@virtbase/integration-testing/ports/abuse` | `covered` is a subset of the targets; the budget caps provider calls, and a budget of zero calls nothing; every signal names its source and carries an external id that a repeated poll reproduces |
+| `@virtbase/integration-testing/ports/invoice` | `createInvoice()` finalises with a number and an issue date; the gross amount is the sum of the gross line items in minor units, and net plus tax make it up; `retrieveInvoice()` returns what the create returned; a draft has no number; a locale without copy still issues the invoice; `downloadInvoice()` returns bytes; an unknown invoice rejects with a `PortError` of the `invoice` port |
+| `@virtbase/integration-testing/ports/ip-reputation` | `check()` answers for the asked address, with a 0-100 score, a report count, category names and a `Date` or null as the last report |
 | `@virtbase/integration-testing/ports/notifications` | `supports()` is honest for the listed audiences; `send()` delivers once and resolves with a receipt; a failed delivery rejects with no secret in the error or its cause chain. That target secrets never reach the logs rests on `ctx.logger`'s redaction, which the suite cannot see. |
 
-Each takes a setup function that returns the adapter on a fresh fake provider,
-and a view of that provider; `runDnsContract` and `runNotificationContract`
-return the failures instead.
+Each `describe*` takes a setup function that returns the adapter on a fresh
+fake provider, plus what its checks need from that fake; each matching `run*`
+function (`runDnsContract`, `runAbuseContract`, `runIpReputationContract`,
+`runInvoiceContract`, `runNotificationContract`) returns the failures instead.
 
 The other ports' suites are added with the first integration that provides
-them: `invoice` with Lexware, `metrics` with Prometheus, `payment` with Stripe,
-`identity`, `abuse` and `ipReputation` with Discord and AbuseIPDB, and
-`provisioning` in Phase 6.
+them: `metrics` with Prometheus, `payment` with Stripe, `identity` with
+Discord, and `provisioning` in Phase 6.
 
 ## Templates
 

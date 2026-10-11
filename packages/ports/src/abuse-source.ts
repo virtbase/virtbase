@@ -39,9 +39,9 @@ export interface AbusePollRequest {
    */
   targets: { cidr: string }[];
   /**
-   * Hard cap on provider calls for this run, derived from what is left of the
-   * daily quota. A source that would exceed it stops and reports what it
-   * covered instead.
+   * Hard cap on provider calls for this run, failed calls included. The
+   * poller sets it from the number of targets it offers. A source that would
+   * exceed it stops and reports what it covered instead.
    */
   budget: number;
 }

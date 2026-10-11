@@ -101,10 +101,9 @@ export const categoryNames = (numeric: readonly number[]): string[] => [
 ];
 
 /**
- * What to send when reporting one of our own addresses back.
- *
- * Reverse of the map above, picking the category a human would choose. Only
- * ever used behind an operator's explicit confirmation.
+ * What to send when reporting one of our own addresses back: the reverse of
+ * {@link ABUSEIPDB_CATEGORIES}, picking the category a human would choose.
+ * `AbuseIpDbReputation.report` sends these.
  */
 export const REPORTABLE_CATEGORIES: Record<AbuseCategory, number[]> = {
   spam: [11],

@@ -16,85 +16,84 @@ msgstr ""
 "X-Message-Key: msgctxt\n"
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "lYlalx"
+msgctxt "abuseipdb-integration.lYlalx"
 msgid "AbuseIPDB"
-msgstr "AbuseIPDB"
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "utGnBr"
+msgctxt "abuseipdb-integration.utGnBr"
 msgid "Sweeps our own address ranges for reports filed against them, and looks up the reputation of a single address."
-msgstr "Prochází naše vlastní rozsahy adres a hledá hlášení podaná proti nim; u jedné adresy umí zjistit její reputaci."
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "cZ2pIN"
+msgctxt "abuseipdb-integration.cZ2pIN"
 msgid "Confidence threshold"
-msgstr "Práh spolehlivosti"
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "KhnDzH"
+msgctxt "abuseipdb-integration.KhnDzH"
 msgid "Below this score, a reported address is ignored."
-msgstr "Pod tímto skóre se nahlášená adresa ignoruje."
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "osZi7I"
+msgctxt "abuseipdb-integration.osZi7I"
 msgid "Report age"
-msgstr "Stáří hlášení"
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "5hDWuX"
+msgctxt "abuseipdb-integration.5hDWuX"
 msgid "How far back the provider should look, in days."
-msgstr "Jak daleko zpět má poskytovatel hledat, ve dnech."
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "6ijXWp"
+msgctxt "abuseipdb-integration.6ijXWp"
 msgid "Block size"
-msgstr "Velikost bloku"
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "BVpDyn"
-msgid "The smallest block a sweep asks about. A free key is limited to /24."
-msgstr "Nejmenší blok, na který se průchod ptá. Bezplatný klíč je omezen na /24."
+msgctxt "abuseipdb-integration.vXtwmK"
+msgid "The largest block one call asks about, as a prefix length. Wider targets are split into blocks of this size. Targets are /24, so a value below 24 changes nothing and each step above 24 doubles the calls per target."
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "1O6nNu"
+msgctxt "abuseipdb-integration.1O6nNu"
 msgid "Calls per run"
-msgstr "Volání na průchod"
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "O3o6j3"
+msgctxt "abuseipdb-integration.O3o6j3"
 msgid "Provider calls one sweep may make. Four per hour fits inside a free key's daily allowance."
-msgstr "Volání poskytovatele, která smí jeden průchod udělat. Čtyři za hodinu se vejdou do denního limitu bezplatného klíče."
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "4aIITL"
+msgctxt "abuseipdb-integration.4aIITL"
 msgid "Look up categories"
-msgstr "Načítat kategorie"
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "jwnZSk"
+msgctxt "abuseipdb-integration.jwnZSk"
 msgid "Spends an extra call per finding so a case says what it was reported for instead of “other”."
-msgstr "Stojí jedno volání navíc za každý nález, zato případ uvede důvod hlášení místo „ostatní“."
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "GDitI5"
+msgctxt "abuseipdb-integration.GDitI5"
 msgid "Allow reporting back"
-msgstr "Povolit hlášení zpět"
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "kms48f"
-msgid "Lets an operator publish a report when a case is confirmed. Never automatic."
-msgstr "Umožní operátorovi zveřejnit hlášení, když je případ potvrzený. Nikdy automaticky."
+msgctxt "abuseipdb-integration.i4cIpi"
+msgid "Allows reports to be published back to AbuseIPDB. While off, every report is refused."
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-#: ../../packages/integration-lexware/src/localize.ts
-msgctxt "KTNoOq"
+msgctxt "abuseipdb-integration.KTNoOq"
 msgid "API key"
-msgstr "API klíč"
+msgstr ""
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
-msgctxt "EAEEtM"
+msgctxt "abuseipdb-integration.EAEEtM"
 msgid "Sent as the Key header."
-msgstr "Odesílá se v hlavičce Key."
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
 msgctxt "alertmanager-integration.IbOv8i"
@@ -1421,19 +1420,24 @@ msgid "Virtbase - Hosting, but secure."
 msgstr "Virtbase – hosting, ale bezpečně."
 
 #: ../../packages/integration-lexware/src/localize.ts
-msgctxt "XPQ6rZ"
+msgctxt "lexware-integration.XPQ6rZ"
 msgid "Lexware"
-msgstr "Lexware"
+msgstr ""
 
 #: ../../packages/integration-lexware/src/localize.ts
-msgctxt "iyNvec"
+msgctxt "lexware-integration.iyNvec"
 msgid "Issues customer invoices, and renders the PDFs that are emailed and downloaded."
-msgstr "Vystavuje zákaznické faktury a generuje PDF, která se odesílají e-mailem a stahují."
+msgstr ""
 
 #: ../../packages/integration-lexware/src/localize.ts
-msgctxt "gF5il8"
+msgctxt "lexware-integration.KTNoOq"
+msgid "API key"
+msgstr ""
+
+#: ../../packages/integration-lexware/src/localize.ts
+msgctxt "lexware-integration.gF5il8"
 msgid "Created under Extras → lexoffice API in Lexware Office."
-msgstr "Vytvoříte v Lexware Office v sekci Extras → lexoffice API."
+msgstr ""
 
 #: ../../packages/integration-powerdns/src/localize.ts
 msgctxt "powerdns-integration.NU8d67"
