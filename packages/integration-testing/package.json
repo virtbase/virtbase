@@ -10,7 +10,8 @@
     "./ports/invoice": "./src/ports/invoice.ts",
     "./ports/ip-reputation": "./src/ports/ip-reputation.ts",
     "./ports/metrics": "./src/ports/metrics.ts",
-    "./ports/notifications": "./src/ports/notifications.ts"
+    "./ports/notifications": "./src/ports/notifications.ts",
+    "./ports/provisioning": "./src/ports/provisioning.ts"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo coverage node_modules",
@@ -30,7 +31,7 @@
   "virtbase": {
     "coverage": {
       "lines": 0.99,
-      "functions": 0.96
+      "functions": 0.97
     }
   }
 }

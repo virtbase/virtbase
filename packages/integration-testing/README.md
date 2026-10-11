@@ -66,15 +66,23 @@ per failure; the suite's own tests use it against broken fixtures.
 | `@virtbase/integration-testing/ports/ip-reputation` | `check()` answers for the asked address, with a 0-100 score, a report count, category names and a `Date` or null as the last report |
 | `@virtbase/integration-testing/ports/metrics` | `increment()`, `gauge()` and `observe()` never throw: not for a valid sample, a name the backend cannot store, a value that is not finite, one name through two methods, or labels that change between samples; `flush()`, where present, resolves |
 | `@virtbase/integration-testing/ports/notifications` | `supports()` is honest for the listed audiences; `send()` delivers once and resolves with a receipt; a failed delivery rejects with no secret in the error or its cause chain. That target secrets never reach the logs rests on `ctx.logger`'s redaction, which the suite cannot see. |
+| `@virtbase/integration-testing/ports/provisioning` | `kinds` lists the product's kind; `productConfig` and `describeOrder()` are complete forms that accept the product's and the order's configuration, with password fields for the order's secret keys; `validateOrder()` accepts an order the provider carries out and rejects, with an `<id>.<reason>` code per issue, one `provision()` fails on; `provision()` settles active through `status()` while it answers `pending`, and every `pending` waits a finite, non-negative time; `provision()`, `suspend()`, `unsuspend()`, `terminate()`, `renew()`, `changePlan()` and `runAction()` repeated with the same key leave the fake unchanged; `status()` changes nothing; a suspension is lifted per reason and leaves another reason's in place; `terminate()` settles terminated, and the service stays terminated; `quote()` prices in integer minor units with an ISO 4217 currency; `actions()` describes each action with a unique key, a label, a complete form and a confirmation level |
 
 Each `describe*` takes a setup function that returns the adapter on a fresh
 fake provider, plus what its checks need from that fake; each matching `run*`
-function (`runDnsContract`, `runDnsZonesContract`, `runAbuseContract`, `runIpReputationContract`,
-`runInvoiceContract`, `runMetricsContract`, `runNotificationContract`) returns the failures instead.
+function (`runDnsContract`, `runDnsZonesContract`, `runAbuseContract`,
+`runIpReputationContract`, `runInvoiceContract`, `runMetricsContract`,
+`runNotificationContract`, `runProvisioningContract`) returns the failures
+instead.
+
+The `provisioning` suite also needs, from the setup: a product and an order
+configuration the fake carries out, one it fails to provision, another product
+when the provider has `changePlan()`, an action with its input when
+`actions()` lists any, `finishPendingWork()` to finish what the fake answered
+`pending` for, and `snapshot()`, which a repeated command must leave unchanged.
 
 The other ports' suites are added with the first integration that provides
-them: `payment` with Stripe, `identity` with Discord, and `provisioning` in
-Phase 6.
+them: `payment` with Stripe, and `identity` with Discord.
 
 ## Templates
 
@@ -85,4 +93,5 @@ lines are the placeholders the docs check looks for, not tasks.
 
 Every check and suite runs against a reference implementation that passes and
 against broken ones that must fail: a conforming example integration with
-written docs, an in-memory DNS adapter and a fake notification channel.
+written docs, in-memory DNS, zone and provisioning providers, and a fake
+notification channel.
