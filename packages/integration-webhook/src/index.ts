@@ -18,26 +18,12 @@
 import { defineIntegration } from "@virtbase/integration-sdk";
 import { WebhookNotificationChannel } from "./channel";
 import { localizeWebhook } from "./localize";
+import { manifest } from "./manifest";
 
-export * from "./channel";
-
-export default defineIntegration({
-  id: "webhook",
-  name: "Outgoing webhooks",
-  description:
-    "Delivers operator notifications as signed JSON to any endpoint. The way to reach Slack, Teams or an automation tool without a dedicated integration.",
-
-  category: "communication",
-  icon: "webhook",
-  author: "Virtbase",
-
-  // No settings and no secrets of its own: everything a webhook needs is per
-  // destination, and destinations are notification targets rather than
-  // installation configuration. The switch on this page is the on/off for the
-  // whole channel.
+/** The outgoing-webhooks runtime (ADR 0003); its static half is `./manifest`. */
+export default defineIntegration(manifest, {
   provides: {
-    notifications: () => new WebhookNotificationChannel(),
+    notifications: (ctx) => new WebhookNotificationChannel(ctx.http),
   },
-
   localize: localizeWebhook,
 });

@@ -3,11 +3,12 @@
   "private": true,
   "type": "module",
   "exports": {
-    ".": "./src/index.ts"
+    ".": "./src/index.ts",
+    "./manifest": "./src/manifest.ts"
   },
   "scripts": {
     "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "test": "bun --env-file=../../.env.test test --timeout 20000",
+    "test": "bun --env-file=../../.env.test test --timeout 20000 --isolate",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
@@ -17,13 +18,14 @@
     "next-intl": "catalog:intl"
   },
   "devDependencies": {
+    "@virtbase/integration-testing": "workspace:*",
     "@virtbase/tsconfig": "workspace:*",
     "typescript": "catalog:"
   },
   "virtbase": {
     "coverage": {
-      "lines": 0.81,
-      "functions": 0.6
+      "lines": 1,
+      "functions": 0.9
     }
   }
 }
