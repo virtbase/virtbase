@@ -231,10 +231,13 @@ Integrations use capabilities as well as provide them:
 
 ### Message extraction
 
-`apps/web/next.config.ts` lists the directories next-intl scans in
+`MESSAGE_SOURCE_PATHS` in `apps/web/src/i18n/source-paths.ts` lists the
+directories next-intl scans; `next.config.ts` passes it as
 `experimental.srcPath`. An integration package that renders translated strings
 must be added there or its whole namespace silently disappears from
 `apps/web/src/i18n/messages/en.po` — including when a package is renamed.
+`src/i18n/__tests__/source-paths.test.ts` fails for a `useExtracted` or
+`getExtracted` call outside the list, and for an entry that holds no call.
 
 Integration name, description and field labels are translated through the
 optional `localize()` hook, which resolves its own translator:
