@@ -19,7 +19,11 @@ import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { serverPlanPrices, serverPlans } from "@virtbase/db/schema";
 import { stripe } from "@virtbase/integration-stripe";
-import { formatBits, formatBytes } from "@virtbase/utils";
+import {
+  formatBits,
+  formatBytes,
+  isProductionDeployment,
+} from "@virtbase/utils";
 import type { OrderConfigurationSnapshot } from "@virtbase/validators";
 import { createFormatter, createTranslator } from "use-intl/core";
 import { FatalError } from "workflow";
@@ -200,7 +204,7 @@ export async function generateInvoiceStep({
       },
     ],
     locale,
-    finalize: process.env.NODE_ENV === "production",
+    finalize: isProductionDeployment(process.env),
   });
 
   return {
