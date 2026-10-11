@@ -21,6 +21,7 @@ import {
   IntegrationRegistry,
 } from "@virtbase/integration-sdk";
 import type { InboundSignal, SignalIntake } from "@virtbase/ports";
+import type { AlertmanagerSettings } from "../config";
 import alertmanager from "../index";
 
 const TOKEN = "alertmanager-ingest-token-0123";
@@ -51,19 +52,32 @@ const FIRING = {
   ],
 };
 
+interface LogLine {
+  level: string;
+  message: string;
+  fields: Record<string, unknown>;
+}
+
 /**
  * Serves the alerts webhook with `payloadFormat`, and a fake `signals` port
- * that records what it was handed.
+ * that records what it was handed, or rejects every batch with `failIngest`.
  */
 const serve = async (
-  payloadFormat: "alertmanager" | "generic" = "alertmanager",
+  payloadFormat: AlertmanagerSettings["payloadFormat"] = "alertmanager",
+  { failIngest = false }: { failIngest?: boolean } = {},
 ) => {
   const submitted: InboundSignal[][] = [];
   const pending: Promise<unknown>[] = [];
+  const logs: LogLine[] = [];
+  const record =
+    (level: string) => (message: string, fields: Record<string, unknown>) => {
+      logs.push({ level, message, fields });
+    };
   const intake: SignalIntake = {
     id: "fake-signals",
     submit: async () => ({ signalId: "sig_fake", deduplicated: false }),
     submitMany: async (signals) => {
+      if (failIngest) throw new Error("signal store unavailable");
       submitted.push(signals);
       return signals.map(() => ({ signalId: "sig_fake", deduplicated: false }));
     },
@@ -82,6 +96,12 @@ const serve = async (
       isEnabled: async () => true,
       settings: async () => ({ payloadFormat, defaultSeverity: "warning" }),
       secrets: async () => ({ ingestToken: TOKEN }),
+    },
+    logSink: {
+      debug: record("debug"),
+      info: record("info"),
+      warn: record("warn"),
+      error: record("error"),
     },
   });
   const resolved = await registry.resolveWebhook(
@@ -108,7 +128,7 @@ const serve = async (
     await Promise.all(pending);
     return response;
   };
-  return { post, submitted };
+  return { post, submitted, logs };
 };
 
 describe("the alerts webhook", () => {
@@ -152,6 +172,77 @@ describe("the alerts webhook", () => {
     }));
 
     expect((await post({ ...FIRING, alerts })).status).toBe(413);
+  });
+
+  test("accepts a Grafana batch and carries its evaluated value into the signal", async () => {
+    const { post, submitted } = await serve("grafana");
+    const [alert] = FIRING.alerts;
+
+    const response = await post({
+      ...FIRING,
+      alerts: [
+        {
+          ...alert,
+          values: { A: 61234 },
+          valueString: "[ var='A' labels={} value=61234 ]",
+          dashboardURL: "https://grafana.example.com/d/abc",
+          panelURL: "https://grafana.example.com/d/abc?viewPanel=2",
+        },
+      ],
+    });
+
+    expect(await response.json()).toEqual({ accepted: 1 });
+    expect(submitted).toHaveLength(1);
+    expect(submitted[0]?.[0]?.body).toContain("value=61234");
+  });
+
+  test("accepts a generic signal and fixes its source to the integration", async () => {
+    const { post, submitted } = await serve("generic");
+
+    const response = await post({
+      externalId: "report-2026-10-11-001",
+      type: "abuse.spam",
+      severity: "warning",
+      subject: { kind: "ip", value: "203.0.113.7" },
+      title: "Spam from 203.0.113.7",
+      occurredAt: "2026-10-11T00:00:00Z",
+    });
+
+    expect(await response.json()).toEqual({ accepted: 1 });
+    expect(submitted[0]?.[0]).toMatchObject({
+      source: "alertmanager",
+      externalId: "report-2026-10-11-001",
+      type: "abuse.spam",
+    });
+  });
+
+  test("answers 200 and logs the failure when ingest fails after the response", async () => {
+    const { post, logs } = await serve("alertmanager", { failIngest: true });
+
+    const response = await post(FIRING);
+
+    expect(response.status).toBe(200);
+    expect(logs).toContainEqual({
+      level: "error",
+      message: "[integrations:alertmanager] Failed to ingest alerts",
+      fields: {
+        error: "signal store unavailable",
+        count: 1,
+        integration: "alertmanager",
+      },
+    });
+  });
+
+  test("hands the same alert over with the same external id when Alertmanager sends it twice", async () => {
+    const { post, submitted } = await serve();
+
+    await post(FIRING);
+    await post(FIRING);
+
+    expect(submitted).toHaveLength(2);
+    const [first, second] = submitted.map((batch) => batch[0]?.externalId);
+    expect(first).toBe("a1b2c3");
+    expect(second).toBe(first);
   });
 
   test("answers 400 to a generic payload that is not a signal", async () => {
