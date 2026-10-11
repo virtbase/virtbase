@@ -62,6 +62,7 @@ the rows marked **hotfix**, which ship first, on their own.
 | S13 | The SMTP transport disables TLS certificate verification and sends as `noreply@example.com` in every environment | `packages/email/src/send-via-nodemailer.ts:57-64` | medium | 2.5 |
 | S14 | The abuse-mailbox signing key falls back to `CONFIG_ENCRYPTION_KEY`, used raw as an HMAC key; rotating the master key silently re-tags every case address | `packages/api/src/abuse/mailbox/address.ts:41-42` | medium | 2.7 |
 | S15 | The server-side env schema (names, not values) is shipped to browsers through the tRPC client | `apps/web/src/lib/trpc/react.tsx:36` | low | 2.9 |
+| S16 | An operator webhook URL that carries a credential (a Slack incoming webhook's path is its token) is stored in plaintext and sent to the admin console without step-up (SEC-1, SEC-9) | `packages/db/src/schema/notifications.ts:73`, `apps/web/src/features/admin/api/notifications/get-notification-settings.ts:89` | medium | 2.3 (step-up) |
 
 ### Correctness
 

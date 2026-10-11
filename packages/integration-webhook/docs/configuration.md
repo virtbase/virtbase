@@ -14,4 +14,7 @@ receiver can use to drop a repeated delivery.
 ## Verifying a request
 
 Recompute the HMAC over `<timestamp>.<body>` with the signing secret, compare it
-in constant time, and reject a timestamp older than a few minutes.
+in constant time, and reject a timestamp older than a tolerance the receiver
+chooses. Virtbase enforces no tolerance of its own. Every attempt, a retry
+included, is signed with the time it is sent, so the tolerance has to cover
+only clock skew and transit time.

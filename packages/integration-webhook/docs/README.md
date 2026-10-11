@@ -1,8 +1,9 @@
 # Outgoing webhooks
 
-Delivers operator notifications as signed JSON to any HTTPS endpoint: the way to
-reach Slack, Teams, a paging service or an automation tool without a dedicated
-integration. It provides the `notifications` port for operator audiences only.
+Delivers operator notifications as JSON, signed when the target has a signing
+secret, to the endpoint URL an operator configures: the way to reach Slack,
+Teams, a paging service or an automation tool without a dedicated integration.
+It provides the `notifications` port for operator audiences only.
 
 ## Quick start
 
