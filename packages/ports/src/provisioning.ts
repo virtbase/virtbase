@@ -48,7 +48,7 @@ export interface ProvisioningProduct {
   /**
    * The product's stored configuration, as admin saved it against
    * {@link ProvisioningProvider.productConfig}: an egg and limits for a game
-   * server, a quota for a mail domain. The provider parses it with that
+   * server, a quota for a mail domain. The provider must parse it with that
    * schema before reading it.
    */
   config: unknown;
@@ -83,7 +83,7 @@ export interface OrderIssue {
  * Whether a provider can carry out an order, asked before payment.
  *
  * `invalid` is an answer, not a failure: the domain is taken, the location is
- * full, the template no longer exists. The method rejects only when the
+ * full, the template no longer exists. The method must reject only when the
  * provider cannot answer at all.
  */
 export type OrderValidation =
@@ -94,9 +94,9 @@ export type OrderValidation =
  * Why a service is suspended: the values of `services.status_reason`
  * (ADR 0012).
  *
- * A provider keeps one suspension per reason. A guest suspended for
- * non-payment and then abuse-locked stays off until both are lifted, which is
- * the defect C46 records against the Proxmox code.
+ * A provider must keep one suspension per reason. A guest suspended for
+ * non-payment and then abuse-locked stays off until both are lifted, and no
+ * longer; C46 records the Proxmox code keeping it off after both were lifted.
  */
 export type SuspensionReason = "billing" | "abuse" | "customer" | "operator";
 
@@ -123,19 +123,19 @@ export interface ServiceRef {
  */
 export interface ServiceCommand extends ServiceRef {
   /**
-   * Derived by the caller from the service, the operation and the workflow
-   * step, never from the clock (CMP-6). A provider must make a command
-   * repeated with the same key a no-op that answers as the first one did.
+   * The caller must derive it from the service, the operation and the
+   * workflow step, never from the clock (CMP-6). A provider must make a
+   * command repeated with the same key a no-op that answers as the first one
+   * did.
    */
   idempotencyKey: string;
 }
 
 /** The input of {@link ProvisioningProvider.provision}. */
-export interface ProvisionInput {
-  /** The service's id, `svc_…`. */
-  serviceId: string;
-  /** See {@link ServiceCommand.idempotencyKey}. */
-  idempotencyKey: string;
+export type ProvisionInput = Pick<
+  ServiceCommand,
+  "serviceId" | "idempotencyKey"
+> & {
   /**
    * The customer who owns the service. ADR 0012 has Pelican create the
    * customer's panel account on their first provision.
@@ -148,37 +148,35 @@ export interface ProvisionInput {
    * before payment.
    */
   config: unknown;
+};
+
+/**
+ * The answer that the provider accepted the work and it is still running: the
+ * caller asks {@link ProvisioningProvider.status} again after `checkAfterMs`.
+ */
+export interface PendingAnswer {
+  status: "pending";
+  /** How long the caller waits before the next `status()`, in milliseconds. */
+  checkAfterMs: number;
 }
 
 /**
- * The answer to a provision.
- *
- * `pending` means the provider accepted the work and the caller asks
- * {@link ProvisioningProvider.status} again after `checkAfterMs`. One shape
+ * The answer to a provision: `active`, or a {@link PendingAnswer}. One shape
  * covers a Proxmox clone that takes seconds, a Pelican install that takes
  * minutes, and a domain transfer that takes days (ADR 0012).
  */
 export type ProvisionResult =
   | { status: "active"; providerRef: string }
-  | {
-      status: "pending";
-      /** How long the caller waits before the next `status()`, in milliseconds. */
-      checkAfterMs: number;
+  | (PendingAnswer & {
       /** The provider's id for the service, when it has one before the work finishes. */
       providerRef: string | null;
-    };
+    });
 
 /**
- * The answer to a command other than a provision: `done`, or `pending` in the
- * sense of {@link ProvisionResult}.
+ * The answer to a command other than a provision: `done`, or a
+ * {@link PendingAnswer}.
  */
-export type OperationResult =
-  | { status: "done" }
-  | {
-      status: "pending";
-      /** How long the caller waits before the next `status()`, in milliseconds. */
-      checkAfterMs: number;
-    };
+export type OperationResult = { status: "done" } | PendingAnswer;
 
 /**
  * The answer to {@link ProvisioningProvider.runAction}: an
@@ -204,11 +202,7 @@ export type ActionResult =
  *   service; `code` is `<integration id>.<reason>`, as in {@link OrderIssue}.
  */
 export type ProviderStatus =
-  | {
-      status: "pending";
-      /** How long the caller waits before the next `status()`, in milliseconds. */
-      checkAfterMs: number;
-    }
+  | PendingAnswer
   | { status: "active"; providerRef: string }
   | { status: "suspended"; reasons: readonly SuspensionReason[] }
   | { status: "terminated" }
@@ -253,12 +247,12 @@ export interface ServiceAction {
  * Only the generic workflows of ADR 0012 (`provision-service`,
  * `suspend-service`, `unsuspend-service`, `terminate-service`,
  * `renew-service` and `change-service-plan`) may call the mutating methods.
- * They poll a `pending` answer with `status()`.
+ * They must poll a `pending` answer with `status()` (ADR 0012).
  *
  * Every mutating method takes an idempotency key, and a command repeated with
- * the same key must change nothing at the provider ({@link ServiceCommand}).
- * The `provisioning` contract suite of `@virtbase/integration-testing` checks
- * it for every command, together with the other promises made here.
+ * the same key must change nothing at the provider and must answer as the
+ * first one did ({@link ServiceCommand}). The `provisioning` contract suite of
+ * `@virtbase/integration-testing` checks this for every mutating method.
  *
  * @experimental The port stays open to change until Phase 6 of
  * integration-first.md ends (risk R21): AutoDNS exercises `quote`, `pending`
@@ -332,8 +326,8 @@ export interface ProvisioningProvider {
     input: ServiceRef & { actor: ServiceActor },
   ): Promise<ServiceAction[]>;
   /**
-   * Runs the action `action`, a key from `actions()`, with `input` parsed
-   * against its form.
+   * Runs the action `action`, a key from `actions()`, with `input`. The caller
+   * must parse `input` against the action's form before the call.
    */
   runAction(
     input: ServiceCommand & {

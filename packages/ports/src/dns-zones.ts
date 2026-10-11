@@ -83,8 +83,8 @@ export interface DnsZoneProvider {
    */
   deleteRecords(zone: string, filter: ZoneRecordFilter): Promise<void>;
   /**
-   * Every record of the zone, including those the provider creates itself,
-   * such as SOA and NS.
+   * Every record of the zone. It must include the records the provider
+   * creates itself, such as SOA and NS.
    */
   exportZone(zone: string): Promise<ZoneRecord[]>;
 }
