@@ -38,6 +38,7 @@ import { AbuseSignalIntake } from "../abuse/port";
 // barrel also exports the dispatcher, which imports this file to reach the
 // registry, and going through it would make the two modules circular.
 import { EmailNotificationChannel } from "../notifications/channels/email";
+import { createDbPlatformMetrics } from "../platform-metrics/db-platform-metrics";
 import { DbConfigSource } from "./db-config-source";
 import { toHttpBreadcrumb } from "./http-breadcrumb";
 import { TRPCServerManagement } from "./server-management";
@@ -61,6 +62,7 @@ const core = defineIntegration({
     serverManagement: () => new TRPCServerManagement(),
     notifications: () => new EmailNotificationChannel(),
     signals: () => new AbuseSignalIntake(),
+    platformMetrics: () => createDbPlatformMetrics({ db }),
   },
 });
 
