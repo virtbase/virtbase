@@ -84,6 +84,8 @@ export async function storeServerExtensionStep(
           },
           suspendedAt: servers.suspendedAt,
           terminatesAt: servers.terminatesAt,
+          abuseLockedAt: servers.abuseLockedAt,
+          abuseLockLevel: servers.abuseLockLevel,
         })
         .from(servers)
         .innerJoin(proxmoxNodes, eq(servers.proxmoxNodeId, proxmoxNodes.id))

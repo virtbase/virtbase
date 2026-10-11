@@ -16,6 +16,7 @@
  */
 
 import { sleep } from "workflow";
+import { isHeldOffByAbuseLock } from "../../abuse/held-off-by-lock";
 import {
   applyGuestConfigStep,
   rollbackApplyGuestConfigStep,
@@ -84,63 +85,70 @@ export async function extendServerWorkflow({
       }),
     );
 
-    const { previousConfig, addedKeys } = await applyGuestConfigStep({
-      proxmoxNode,
-      vmid: server.vmid,
-      config: {
-        // Re-enable the server to boot on host node boot.
-        onboot: true,
-      },
-      mode: "sync",
-    });
-
-    rollbacks.push(async () => {
-      const { upid } = await rollbackApplyGuestConfigStep({
+    // [!] A guest held off by an abuse lock stays off: the extension pays for
+    // the term, not for lifting the lock, and starting it here is undone by
+    // the lock reconciliation and counted as drift (risk C13). Releasing the
+    // case restores the boot flag and run state the lock captured.
+    if (!isHeldOffByAbuseLock(server)) {
+      const { previousConfig, addedKeys } = await applyGuestConfigStep({
         proxmoxNode,
         vmid: server.vmid,
-        previousConfig,
-        addedKeys,
+        config: {
+          // Re-enable the server to boot on host node boot.
+          onboot: true,
+        },
         mode: "sync",
       });
-      if (null !== upid) {
-        await waitForProxmoxTaskStep({
+
+      rollbacks.push(async () => {
+        const { upid } = await rollbackApplyGuestConfigStep({
           proxmoxNode,
-          upid,
-          ignoreErrors: true,
+          vmid: server.vmid,
+          previousConfig,
+          addedKeys,
+          mode: "sync",
         });
-      }
-    });
-
-    const { upid: startUpid } = await performGuestActionStep({
-      action: "start",
-      proxmoxNode,
-      vmid: server.vmid,
-    });
-
-    if (null !== startUpid) {
-      await sleep("5s");
-      await waitForProxmoxTaskStep({
-        proxmoxNode,
-        upid: startUpid,
-        ignoreErrors: false,
+        if (null !== upid) {
+          await waitForProxmoxTaskStep({
+            proxmoxNode,
+            upid,
+            ignoreErrors: true,
+          });
+        }
       });
-    }
 
-    rollbacks.push(async () => {
-      const { upid: rollbackStartUpid } = await rollbackPerformGuestActionStep({
+      const { upid: startUpid } = await performGuestActionStep({
+        action: "start",
         proxmoxNode,
         vmid: server.vmid,
-        initialAction: "start",
-        upid: startUpid,
       });
-      if (null !== rollbackStartUpid) {
+
+      if (null !== startUpid) {
+        await sleep("5s");
         await waitForProxmoxTaskStep({
           proxmoxNode,
-          upid: rollbackStartUpid,
-          ignoreErrors: true,
+          upid: startUpid,
+          ignoreErrors: false,
         });
       }
-    });
+
+      rollbacks.push(async () => {
+        const { upid: rollbackStartUpid } =
+          await rollbackPerformGuestActionStep({
+            proxmoxNode,
+            vmid: server.vmid,
+            initialAction: "start",
+            upid: startUpid,
+          });
+        if (null !== rollbackStartUpid) {
+          await waitForProxmoxTaskStep({
+            proxmoxNode,
+            upid: rollbackStartUpid,
+            ignoreErrors: true,
+          });
+        }
+      });
+    }
 
     // [!] Post-success side effect, and not compensable. The extension is paid
     // for and already written; `sendEmail` throws on a delivery failure, and

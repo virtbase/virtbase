@@ -16,6 +16,7 @@
  */
 
 import { sleep } from "workflow";
+import { isHeldOffByAbuseLock } from "../../abuse/held-off-by-lock";
 import { changeAdapterNetrate } from "../../proxmox/change-adapter-netrate";
 import {
   applyGuestConfigStep,
@@ -147,67 +148,72 @@ export async function upgradeServerWorkflow({
       });
     });
 
-    // 6. Stop the guest to apply the new hardware config
-    const { upid: stopUpid } = await performGuestActionStep({
-      proxmoxNode: server.proxmoxNode,
-      vmid: server.vmid,
-      action: "stop",
-    });
-    if (stopUpid) {
-      await sleep("3s");
-      await waitForProxmoxTaskStep({
-        proxmoxNode: server.proxmoxNode,
-        upid: stopUpid,
-        ignoreErrors: false,
-      });
-    }
-
-    rollbacks.push(async () => {
-      const { upid: startUpid } = await rollbackPerformGuestActionStep({
+    // [!] A guest held off by an abuse lock stays off: the start below would
+    // power it on through the lock (risk C13), and the guest is already off,
+    // so the stop has nothing to do.
+    if (!isHeldOffByAbuseLock(server)) {
+      // 6. Stop the guest to apply the new hardware config
+      const { upid: stopUpid } = await performGuestActionStep({
         proxmoxNode: server.proxmoxNode,
         vmid: server.vmid,
-        initialAction: "stop",
-        upid: stopUpid,
+        action: "stop",
       });
-      if (null !== startUpid) {
-        await waitForProxmoxTaskStep({
-          proxmoxNode: server.proxmoxNode,
-          upid: startUpid,
-          ignoreErrors: true,
-        });
-      }
-    });
-
-    // 7. Start the guest to apply the new hardware config
-    const { upid: startUpid } = await performGuestActionStep({
-      proxmoxNode: server.proxmoxNode,
-      vmid: server.vmid,
-      action: "start",
-    });
-    if (startUpid) {
-      await sleep("5s");
-      await waitForProxmoxTaskStep({
-        proxmoxNode: server.proxmoxNode,
-        upid: startUpid,
-        ignoreErrors: false,
-      });
-    }
-
-    rollbacks.push(async () => {
-      const { upid: stopUpid } = await rollbackPerformGuestActionStep({
-        proxmoxNode: server.proxmoxNode,
-        vmid: server.vmid,
-        initialAction: "start",
-        upid: startUpid,
-      });
-      if (null !== stopUpid) {
+      if (stopUpid) {
+        await sleep("3s");
         await waitForProxmoxTaskStep({
           proxmoxNode: server.proxmoxNode,
           upid: stopUpid,
-          ignoreErrors: true,
+          ignoreErrors: false,
         });
       }
-    });
+
+      rollbacks.push(async () => {
+        const { upid: startUpid } = await rollbackPerformGuestActionStep({
+          proxmoxNode: server.proxmoxNode,
+          vmid: server.vmid,
+          initialAction: "stop",
+          upid: stopUpid,
+        });
+        if (null !== startUpid) {
+          await waitForProxmoxTaskStep({
+            proxmoxNode: server.proxmoxNode,
+            upid: startUpid,
+            ignoreErrors: true,
+          });
+        }
+      });
+
+      // 7. Start the guest to apply the new hardware config
+      const { upid: startUpid } = await performGuestActionStep({
+        proxmoxNode: server.proxmoxNode,
+        vmid: server.vmid,
+        action: "start",
+      });
+      if (startUpid) {
+        await sleep("5s");
+        await waitForProxmoxTaskStep({
+          proxmoxNode: server.proxmoxNode,
+          upid: startUpid,
+          ignoreErrors: false,
+        });
+      }
+
+      rollbacks.push(async () => {
+        const { upid: stopUpid } = await rollbackPerformGuestActionStep({
+          proxmoxNode: server.proxmoxNode,
+          vmid: server.vmid,
+          initialAction: "start",
+          upid: startUpid,
+        });
+        if (null !== stopUpid) {
+          await waitForProxmoxTaskStep({
+            proxmoxNode: server.proxmoxNode,
+            upid: stopUpid,
+            ignoreErrors: true,
+          });
+        }
+      });
+    }
 
     // 8. TODO: Optionally send email to the user that the server has been upgraded
   } catch (error) {

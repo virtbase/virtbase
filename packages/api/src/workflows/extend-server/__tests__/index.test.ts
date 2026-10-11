@@ -43,10 +43,25 @@ const step =
     return result;
   };
 
+/** The stored server the mocked store step returns; tests set its abuse lock. */
+const storedServer: {
+  vmid: number;
+  name: string;
+  suspendedAt: Date | null;
+  abuseLockedAt: Date | null;
+  abuseLockLevel: "throttle" | "isolate" | "power_off" | null;
+} = {
+  vmid: 100,
+  name: "My server",
+  suspendedAt: null,
+  abuseLockedAt: null,
+  abuseLockLevel: null,
+};
+
 beforeAll(async () => {
   mock.module("../store-server-extension", () => ({
     storeServerExtensionStep: step("storeServerExtensionStep", {
-      server: { vmid: 100, name: "My server", suspendedAt: null },
+      server: storedServer,
       proxmoxNode: {
         hostname: "node",
         fqdn: "node",
@@ -103,6 +118,8 @@ beforeAll(async () => {
 beforeEach(() => {
   calls.length = 0;
   failing = new Set();
+  storedServer.abuseLockedAt = null;
+  storedServer.abuseLockLevel = null;
 });
 
 describe("extendServerWorkflow", () => {
@@ -112,6 +129,30 @@ describe("extendServerWorkflow", () => {
     expect(calls).toContain("storeServerExtensionStep");
     expect(calls).toContain("sendServerExtendedEmailStep");
     expect(calls).not.toContain("rollbackStoreServerExtensionStep");
+  });
+
+  test("it keeps a guest powered off while an abuse lock holds it off", async () => {
+    // Risk C13: an abuse lock that holds the guest off is not lifted by a
+    // renewal; only releasing the case restores power.
+    storedServer.abuseLockedAt = new Date("2026-10-01T00:00:00.000Z");
+    storedServer.abuseLockLevel = "power_off";
+
+    await extendServerWorkflow({ serverId: "kvm_1" });
+
+    expect(calls).not.toContain("applyGuestConfigStep");
+    expect(calls).not.toContain("performGuestActionStep");
+    expect(calls).toContain("sendServerExtendedEmailStep");
+    expect(calls).not.toContain("rollbackStoreServerExtensionStep");
+  });
+
+  test("it powers a guest on under a lock level that leaves power alone", async () => {
+    storedServer.abuseLockedAt = new Date("2026-10-01T00:00:00.000Z");
+    storedServer.abuseLockLevel = "isolate";
+
+    await extendServerWorkflow({ serverId: "kvm_1" });
+
+    expect(calls).toContain("applyGuestConfigStep");
+    expect(calls).toContain("performGuestActionStep");
   });
 
   test("a mail outage does not revert the extension the customer paid for", async () => {
