@@ -26,6 +26,7 @@ export * from "./metrics-sink";
 export * from "./notification-channel";
 export * from "./object-store";
 export * from "./payment-provider";
+export * from "./platform-metrics";
 export * from "./port-map";
 export * from "./server-management";
 export * from "./signal";

@@ -26,6 +26,7 @@ import type { MetricsSink } from "./metrics-sink";
 import type { NotificationChannel } from "./notification-channel";
 import type { ObjectStore } from "./object-store";
 import type { PaymentProvider } from "./payment-provider";
+import type { PlatformMetricsReader } from "./platform-metrics";
 import type { ServerManagementPort } from "./server-management";
 import type { SignalIntake } from "./signal";
 
@@ -40,6 +41,7 @@ export interface PortMap {
   notifications: NotificationChannel;
   dns: DnsProvider;
   metrics: MetricsSink;
+  platformMetrics: PlatformMetricsReader;
   abuse: AbuseSource;
   ipReputation: IpReputationProvider;
   signals: SignalIntake;
