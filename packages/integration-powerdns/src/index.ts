@@ -16,87 +16,32 @@
  */
 
 import { defineIntegration } from "@virtbase/integration-sdk";
-import * as z from "zod";
 import { PowerDnsAdapter } from "./adapter";
 import { PowerDNSClient } from "./client";
 import { localizePowerDns } from "./localize";
+import { manifest } from "./manifest";
 
-export * from "./adapter";
-export * from "./client";
-export * from "./utils";
-
-const settingsSchema = z.object({
-  apiUrl: z.url(),
-});
-
-const secretsSchema = z.object({
-  apiKey: z.string().min(1),
-});
-
-export default defineIntegration({
-  id: "powerdns",
-  name: "PowerDNS",
-  description:
-    "Reverse DNS (PTR) management for customer IP allocations, used by the rDNS API and by server deletion.",
-
-  category: "infrastructure",
-  icon: "powerdns",
-  author: "Virtbase",
-  website: "https://www.powerdns.com",
-  docsUrl: "https://doc.powerdns.com/authoritative/http-api/",
-
-  settings: {
-    schema: settingsSchema,
-    fields: [
-      {
-        key: "apiUrl",
-        label: "API URL",
-        help: "Base URL of the PowerDNS HTTP API, without a trailing slash.",
-        widget: "url",
-        placeholder: "https://ns1.example.com:8081",
-      },
-    ],
-  },
-
-  secrets: {
-    schema: secretsSchema,
-    fields: [
-      {
-        key: "apiKey",
-        label: "API key",
-        help: "Sent as the X-API-Key header.",
-        widget: "password",
-      },
-    ],
-  },
-
+/** PowerDNS's runtime (ADR 0003); its static half is `./manifest`. */
+export default defineIntegration(manifest, {
   provides: {
     dns: (ctx) =>
       new PowerDnsAdapter(
         new PowerDNSClient({
           apiUrl: ctx.settings.apiUrl,
           apiKey: ctx.secrets.apiKey,
+          http: ctx.http,
         }),
       ),
   },
-
-  localize: localizePowerDns,
-
-  health: async (ctx) => {
-    const client = new PowerDNSClient({
-      apiUrl: ctx.settings.apiUrl,
-      apiKey: ctx.secrets.apiKey,
-    });
-
-    try {
-      await client.getServerInfo();
+  health: {
+    check: async (ctx) => {
+      await new PowerDNSClient({
+        apiUrl: ctx.settings.apiUrl,
+        apiKey: ctx.secrets.apiKey,
+        http: ctx.http,
+      }).getServerInfo();
       return { status: "ok", checkedAt: new Date() };
-    } catch (error) {
-      return {
-        status: "error",
-        checkedAt: new Date(),
-        message: error instanceof Error ? error.message : String(error),
-      };
-    }
+    },
   },
+  localize: localizePowerDns,
 });

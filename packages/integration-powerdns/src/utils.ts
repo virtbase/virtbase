@@ -15,6 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { IntegrationError } from "@virtbase/integration-sdk";
+
 /**
  * Expands a potentially abbreviated IPv6 address into its full 8-group form.
  * Handles `::` zero-compression and IPv4-embedded addresses (e.g. `::ffff:192.168.1.1`).
@@ -53,6 +55,14 @@ function ipv6ToReverseArpa(ip: string): string {
   return `${expandIPv6Address(ip).replace(/:/g, "").split("").reverse().join(".")}.ip6.arpa`;
 }
 
+/** The error for an IP outside the reverse zone it was given; a caller bug, never retryable. */
+const zoneMismatch = (ip: string, zone: string) =>
+  new IntegrationError({
+    code: "powerdns.zone_mismatch",
+    message: `${ip} is not in the reverse zone ${zone}`,
+    params: { ip, zone },
+  });
+
 /**
  * Builds the fully-qualified PTR record name for `ip` within `dnsReverseZone`.
  *
@@ -66,7 +76,7 @@ export function buildPtrName(ip: string, dnsReverseZone: string): string {
   if (ip.includes(":")) {
     const full = ipv6ToReverseArpa(ip);
     if (!full.endsWith(zone)) {
-      throw new Error("IP does not belong to reverse zone");
+      throw zoneMismatch(ip, dnsReverseZone);
     }
     const prefix = full.slice(0, full.length - zone.length - 1);
     return prefix ? `${prefix}.${zone}` : zone;
@@ -79,13 +89,13 @@ export function buildPtrName(ip: string, dnsReverseZone: string): string {
   // RFC 2317 classless delegation — zone contains a slash (e.g. "0/25.1.168.192.in-addr.arpa")
   if (zone.includes("/")) {
     if (!zone.endsWith(parentZone)) {
-      throw new Error("Zone does not match IP parent zone");
+      throw zoneMismatch(ip, dnsReverseZone);
     }
     return `${hostLabel}.${zone}`;
   }
 
   if (!full.endsWith(zone)) {
-    throw new Error("IP does not belong to reverse zone");
+    throw zoneMismatch(ip, dnsReverseZone);
   }
   const prefix = full.slice(0, full.length - zone.length - 1);
   return prefix ? `${prefix}.${zone}` : zone;

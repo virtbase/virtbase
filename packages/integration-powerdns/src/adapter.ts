@@ -15,6 +15,7 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { isIntegrationError } from "@virtbase/integration-sdk";
 import type {
   DeletePointerRecordsInput,
   DnsProvider,
@@ -25,10 +26,10 @@ import type { PowerDNSClient } from "./client";
 import { buildPtrName } from "./utils";
 
 /**
- * Maps the {@link DnsProvider} port onto PowerDNS' zone API.
- *
- * Turning an IP into a PTR record name lives here rather than at the call
- * sites, which previously each imported `buildPtrName` alongside the client.
+ * Maps the {@link DnsProvider} port onto PowerDNS's zone API. The adapter
+ * derives the record name from the IP, and translates every failure into a
+ * {@link PortError} for callers (ADR 0003), retryable when the underlying
+ * `IntegrationError` is.
  */
 export class PowerDnsAdapter implements DnsProvider {
   private readonly client: PowerDNSClient;
@@ -49,7 +50,7 @@ export class PowerDnsAdapter implements DnsProvider {
         name: buildPtrName(ip, zone),
       });
     } catch (error) {
-      throw this.wrap(error, `Failed to upsert PTR record for ${ip}`);
+      throw this.toPortError(error, `Failed to upsert PTR record for ${ip}`);
     }
   }
 
@@ -57,27 +58,23 @@ export class PowerDnsAdapter implements DnsProvider {
     zone,
     ips,
   }: DeletePointerRecordsInput): Promise<void> {
-    if (0 === ips.length) return;
+    if (ips.length === 0) return;
 
     try {
-      await this.client.deleteReverseDNSRecord({
+      await this.client.deleteReverseDNSRecords({
         zone,
-        name: ips.map((ip) => buildPtrName(ip, zone)),
+        names: ips.map((ip) => buildPtrName(ip, zone)),
       });
     } catch (error) {
-      throw this.wrap(error, `Failed to delete PTR records in ${zone}`);
+      throw this.toPortError(error, `Failed to delete PTR records in ${zone}`);
     }
   }
 
-  private wrap(error: unknown, message: string): PortError {
+  private toPortError(error: unknown, message: string): PortError {
     return new PortError(message, {
       port: "dns",
       integrationId: "powerdns",
-      // A zone mismatch is a caller bug and will fail again identically;
-      // anything else is a transport or server error worth retrying.
-      retryable: !(
-        error instanceof Error && error.message.includes("reverse zone")
-      ),
+      retryable: isIntegrationError(error) && error.retryable,
       cause: error,
     });
   }
