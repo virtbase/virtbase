@@ -16,10 +16,17 @@
  */
 
 import type { PortMap } from "@virtbase/ports";
+import { mapSettled } from "@virtbase/utils";
 import type { ConfigSource } from "./config-source";
 import type { IntegrationDescription } from "./describe";
 import { describeIntegration, localizeDescription } from "./describe";
-import { consoleLogger } from "./logger";
+import { probeWithinBudget } from "./health";
+import type { HttpRequestEvent } from "./http";
+import { createIntegrationHttp } from "./http";
+import type { LogSink } from "./logger";
+import { consoleLogger, createIntegrationLogger } from "./logger";
+import type { Redactor } from "./redact";
+import { collectSecretValues, createRedactor } from "./redact";
 import type {
   Integration,
   IntegrationContext,
@@ -54,10 +61,19 @@ export interface IntegrationRegistryOptions {
    * instance re-reads on its own schedule and the TTL bounds the staleness.
    */
   configTtlMs?: number;
+  /** Sees every outbound request of every integration; the composition root adds a Sentry breadcrumb. */
+  onHttpRequest?: (event: HttpRequestEvent) => void;
+  /** Where integration loggers write; `console` unless a test passes its own. */
+  logSink?: LogSink;
 }
+
+/** How many health probes run at once (CMP-7). */
+export const HEALTH_PROBE_CONCURRENCY = 4;
 
 interface ResolvedIntegration {
   context: IntegrationContext | null;
+  /** Redacts the secrets of `context`; null without a context. */
+  redactor: Redactor | null;
   /** Set when the integration is installed but its configuration is invalid. */
   configError: string | null;
 }
@@ -75,6 +91,8 @@ export class IntegrationRegistry {
   private readonly logger: IntegrationLogger;
 
   private readonly configTtlMs: number;
+  private readonly onHttpRequest?: (event: HttpRequestEvent) => void;
+  private readonly logSink?: LogSink;
 
   private readonly resolved = new Map<
     string,
@@ -99,6 +117,8 @@ export class IntegrationRegistry {
     this.config = options.config;
     this.logger = options.logger ?? consoleLogger;
     this.configTtlMs = options.configTtlMs ?? 30_000;
+    this.onHttpRequest = options.onHttpRequest;
+    this.logSink = options.logSink;
 
     this.config.onChange?.((integrationId) => this.invalidate(integrationId));
   }
@@ -265,61 +285,64 @@ export class IntegrationRegistry {
     };
   }
 
-  /** Probes every enabled integration. Drives the admin console's status list. */
+  /**
+   * Probes every integration, {@link HEALTH_PROBE_CONCURRENCY} at a time, each
+   * within its budget. Drives the admin console's status list and the health
+   * cron.
+   */
   async health(): Promise<Record<string, IntegrationHealth>> {
-    const entries = await Promise.all(
-      this.list().map(
-        async (integration): Promise<[string, IntegrationHealth]> => {
-          const { context, configError } = await this.contextFor(integration);
-
-          if (configError) {
-            return [
-              integration.id,
-              { status: "error", checkedAt: new Date(), message: configError },
-            ];
-          }
-          if (!context) {
-            return [
-              integration.id,
-              {
-                status: "degraded",
-                checkedAt: new Date(),
-                message: "Not enabled",
-              },
-            ];
-          }
-          if (!integration.health) {
-            return [integration.id, { status: "ok", checkedAt: new Date() }];
-          }
-
-          try {
-            return [integration.id, await integration.health(context)];
-          } catch (error) {
-            return [
-              integration.id,
-              {
-                status: "error",
-                checkedAt: new Date(),
-                message: error instanceof Error ? error.message : String(error),
-              },
-            ];
-          }
-        },
-      ),
+    const integrations = this.list();
+    const results = await mapSettled(
+      integrations,
+      { concurrency: HEALTH_PROBE_CONCURRENCY },
+      (integration) => this.probe(integration),
     );
-
-    return Object.fromEntries(entries);
+    return Object.fromEntries(
+      integrations.map((integration, index) => {
+        const result = results[index];
+        return [
+          integration.id,
+          result?.status === "fulfilled"
+            ? result.value
+            : {
+                status: "error" as const,
+                checkedAt: new Date(),
+                message: String(result?.reason),
+              },
+        ];
+      }),
+    );
   }
 
   /**
-   * Runs an integration's `onEnable` hook. The caller is responsible for having
-   * already flipped the enabled flag in the config source — the hook is the
-   * side effect, not the switch.
+   * Probes one integration within its budget. "Check now" in the admin console
+   * calls this, so it never runs another integration's probe. Throws for an
+   * unknown id; any other failure is reported as `error`.
+   */
+  async healthOf(integrationId: string): Promise<IntegrationHealth> {
+    const integration = this.integrations.get(integrationId);
+    if (!integration) {
+      throw new Error(`Unknown integration "${integrationId}"`);
+    }
+    return this.probe(integration);
+  }
+
+  /**
+   * Runs an integration's `onEnable` hook. The context is built from the stored
+   * configuration whatever the enabled flag reads; the admin flow stores the
+   * flag first (ADR 0003). Throws with the hook's error message, its secrets
+   * redacted.
    */
   async runEnableHook(integrationId: string): Promise<void> {
     await this.runLifecycleHook(integrationId, "onEnable");
   }
 
+  /**
+   * Runs an integration's `onDisable` hook. The context is built from the
+   * stored configuration whatever the enabled flag reads; the admin flow runs
+   * this before it clears the flag (ADR 0003). Throws with the hook's error
+   * message, its secrets redacted.
+   */
   async runDisableHook(integrationId: string): Promise<void> {
     await this.runLifecycleHook(integrationId, "onDisable");
   }
@@ -337,6 +360,11 @@ export class IntegrationRegistry {
     }
   }
 
+  /**
+   * Runs a lifecycle hook with a context built from the stored configuration,
+   * whether or not the integration is enabled (ADR 0003). An integration
+   * without the hook needs no configuration for it, so nothing is read.
+   */
   private async runLifecycleHook(
     integrationId: string,
     hook: "onEnable" | "onDisable",
@@ -348,15 +376,50 @@ export class IntegrationRegistry {
 
     this.invalidate(integrationId);
 
-    const { context, configError } = await this.contextFor(integration);
+    const run = integration[hook];
+    if (!run) return;
+
+    const { context, redactor, configError } = this.isAlwaysOn(integration)
+      ? this.resolveWith(integration, {}, {})
+      : await this.loadStoredContext(integration);
     if (configError) {
       throw new Error(
         `Cannot run ${hook} for "${integrationId}": ${configError}`,
       );
     }
-    if (!context) return;
+    if (!context || !redactor) return;
 
-    await integration[hook]?.(context);
+    try {
+      await run(context);
+    } catch (error) {
+      throw new Error(
+        redactor.text(error instanceof Error ? error.message : String(error)),
+      );
+    }
+  }
+
+  private async probe(integration: Integration): Promise<IntegrationHealth> {
+    const { context, redactor, configError } =
+      await this.contextFor(integration);
+    if (configError) {
+      return { status: "error", checkedAt: new Date(), message: configError };
+    }
+    if (!context || !redactor) {
+      return {
+        status: "degraded",
+        checkedAt: new Date(),
+        message: "Not enabled",
+      };
+    }
+    const check = integration.health;
+    if (!check) return { status: "ok", checkedAt: new Date() };
+    const health = await probeWithinBudget({
+      probe: () => check(context),
+      budgetMs: integration.healthBudgetMs,
+    });
+    return "message" in health
+      ? { ...health, message: redactor.text(health.message) }
+      : health;
   }
 
   /**
@@ -437,42 +500,41 @@ export class IntegrationRegistry {
     integration: Integration,
   ): Promise<ResolvedIntegration> {
     if (this.isAlwaysOn(integration)) {
-      return {
-        context: {
-          id: integration.id,
-          settings: {},
-          secrets: {},
-          logger: this.logger,
-          ports: this.portAccessor,
-          waitUntil: this.defaultWaitUntil(integration.id),
-        },
-        configError: null,
-      };
+      return this.resolveWith(integration, {}, {});
     }
 
-    let stored: { settings: unknown; secrets: unknown };
     try {
       if (!(await this.config.isEnabled(integration))) {
-        return { context: null, configError: null };
+        return { context: null, redactor: null, configError: null };
       }
+    } catch (error) {
+      return this.reportUnreadableConfiguration(integration, error);
+    }
+    return this.loadStoredContext(integration);
+  }
 
+  /**
+   * Reads and parses the stored settings and secrets, without looking at the
+   * enabled flag. A misconfigured optional integration must not take the
+   * process down the way a boot-time env check does; it reports through
+   * health() instead.
+   */
+  private async loadStoredContext(
+    integration: Integration,
+  ): Promise<ResolvedIntegration> {
+    let stored: { settings: unknown; secrets: unknown };
+    try {
       stored = {
         settings: await this.config.settings(integration),
         secrets: await this.config.secrets(integration),
       };
     } catch (error) {
-      const message = `Configuration could not be read: ${
-        error instanceof Error ? error.message : String(error)
-      }`;
-      this.logger.error(`[${integration.id}] ${message}`);
-      return { context: null, configError: message };
+      return this.reportUnreadableConfiguration(integration, error);
     }
 
     const settings = integration.settings?.schema.safeParse(stored.settings);
     const secrets = integration.secrets?.schema.safeParse(stored.secrets);
 
-    // A misconfigured optional integration must not take the process down the
-    // way a boot-time env check does; it reports through health() instead.
     for (const [kind, result] of [
       ["settings", settings],
       ["secrets", secrets],
@@ -484,19 +546,57 @@ export class IntegrationRegistry {
           )
           .join("; ")}`;
         this.logger.error(`[${integration.id}] ${message}`);
-        return { context: null, configError: message };
+        return { context: null, redactor: null, configError: message };
       }
     }
 
+    return this.resolveWith(
+      integration,
+      settings?.success ? settings.data : {},
+      secrets?.success ? secrets.data : {},
+    );
+  }
+
+  private reportUnreadableConfiguration(
+    integration: Integration,
+    error: unknown,
+  ): ResolvedIntegration {
+    const message = `Configuration could not be read: ${
+      error instanceof Error ? error.message : String(error)
+    }`;
+    this.logger.error(`[${integration.id}] ${message}`);
+    return { context: null, redactor: null, configError: message };
+  }
+
+  /**
+   * The context an integration's code receives, with the redactor that both its
+   * logger and its `http` use: every string value of the parsed secrets.
+   */
+  private resolveWith(
+    integration: Integration,
+    settings: unknown,
+    secrets: unknown,
+  ): ResolvedIntegration {
+    const redactor = createRedactor(collectSecretValues(secrets));
     return {
       context: {
         id: integration.id,
-        settings: settings?.success ? settings.data : {},
-        secrets: secrets?.success ? secrets.data : {},
-        logger: this.logger,
+        settings,
+        secrets,
+        logger: createIntegrationLogger({
+          integrationId: integration.id,
+          redactor,
+          sink: this.logSink,
+        }),
+        http: createIntegrationHttp({
+          integrationId: integration.id,
+          redactor,
+          onRequest: this.onHttpRequest,
+        }),
         ports: this.portAccessor,
         waitUntil: this.defaultWaitUntil(integration.id),
       },
+      redactor,
       configError: null,
     };
   }

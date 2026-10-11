@@ -137,18 +137,32 @@ export const setIntegrationEnabledAction = actionClient
     const store = requireStore();
     requireIntegration(integrationId);
 
+    // onEnable runs after the flag is stored and onDisable before it is
+    // cleared, so each hook sees the integration enabled (ADR 0003). A failing
+    // hook never blocks the switch: a broken integration must always be
+    // switchable off.
+    type HookOutcome = { failed: false } | { failed: true; error: unknown };
+    const runHook = async (): Promise<HookOutcome> => {
+      try {
+        await (enabled
+          ? integrations.runEnableHook(integrationId)
+          : integrations.runDisableHook(integrationId));
+        return { failed: false };
+      } catch (error) {
+        return { failed: true, error };
+      }
+    };
+
+    let outcome: HookOutcome = { failed: false };
+    if (!enabled) outcome = await runHook();
     await store.upsert({ integrationId, enabled });
     integrations.invalidate(integrationId);
+    if (enabled) outcome = await runHook();
 
-    // The flag is the switch; the hook is the side effect. Flip first so the
-    // hook runs against the state it is meant to observe.
-    try {
-      if (enabled) {
-        await integrations.runEnableHook(integrationId);
-      } else {
-        await integrations.runDisableHook(integrationId);
-      }
-    } catch (error) {
+    applyLocally(integrationId);
+
+    if (outcome.failed) {
+      const { error } = outcome;
       throw new TRPCError({
         code: "INTERNAL_SERVER_ERROR",
         message: `Saved, but the ${enabled ? "enable" : "disable"} hook failed: ${
@@ -156,8 +170,6 @@ export const setIntegrationEnabledAction = actionClient
         }`,
       });
     }
-
-    applyLocally(integrationId);
   });
 
 export const checkIntegrationHealthAction = actionClient
@@ -168,13 +180,7 @@ export const checkIntegrationHealthAction = actionClient
 
     integrations.invalidate(integrationId);
 
-    const health = (await integrations.health())[integrationId];
-    if (!health) {
-      throw new TRPCError({
-        code: "NOT_FOUND",
-        message: `No health result for "${integrationId}".`,
-      });
-    }
+    const health = await integrations.healthOf(integrationId);
 
     await store.recordHealth(integrationId, {
       status: health.status,

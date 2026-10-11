@@ -86,7 +86,7 @@ conflicts with `docs/style`, the guide wins.
 | `style/noDefaultExport` | warn | TS-10 | `src/app/**` (Next.js route files), integration roots, React Email templates, configuration files |
 | `style/noProcessEnv` | warn | the env gate, in the editor | `env.ts` files, configuration files, tests, `apps/web/e2e`, `apps/web/scripts`, the instrumentation files, `tooling`, `.claude` |
 | `complexity/noExcessiveCognitiveComplexity` (15) | warn | CMP-14 | — |
-| `complexity/noExcessiveLinesPerFunction` (60) | warn | CMP-14 | — |
+| `complexity/noExcessiveLinesPerFunction` (60) | warn | CMP-14 | `__tests__`, where a `describe` block groups tests rather than holding one function |
 | `suspicious/noConsole` in `packages/integration-*` | warn | INT-6 | `integration-sdk`, which provides the logger |
 
 A nested `biome.jsonc` resolves its `overrides` paths from its own directory,
@@ -95,7 +95,7 @@ so the exemptions for `apps/web`, `packages/email`, `integration-discord` and
 
 A rule is a warning while existing code breaks it, and becomes an error in the
 PR that clears its last warning. On 2026-10-11 that was 43 default exports, 107
-environment reads outside the exempt files, 82 complex and 407 long functions,
+environment reads outside the exempt files, 82 complex and 407 long functions (281 once `__tests__` was exempted on 2026-10-11),
 and one `console` call in an integration. `noConsole` becomes an error with
 `ctx.logger` in PR 1.3. The env gate (`bun run env:check`) enforces environment
 reads in CI whatever `noProcessEnv`'s level.
