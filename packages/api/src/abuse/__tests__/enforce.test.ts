@@ -22,6 +22,7 @@ import {
   abuseCaseServers,
   abuseCases,
   servers,
+  subscriptions,
   users,
 } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
@@ -320,6 +321,38 @@ describe("enforceCase", () => {
     expect(server?.terminatesAt).not.toBeNull();
     // No hypervisor lock: the existing suspend-then-delete path takes it now.
     expect(guest.firewall.policy_out).toBe("ACCEPT");
+  });
+  test("terminate cancels the live subscription so no renewal moves the term again", async () => {
+    // Risk C14: an auto-renewing subscription kept the server out of the
+    // suspension sweep for the renewal grace, and a renewal reset the term.
+    await seedCase({ enforcement: "terminate" });
+    await testDb.insert(subscriptions).values({
+      userId: mockServer.userId,
+      subjectId: mockServer.id,
+      serverPlanPriceId: mockServer.serverPlanPriceId,
+      status: "active",
+      autoRenew: true,
+      currentPeriodStart: new Date(Date.now() - 86_400_000),
+      currentPeriodEnd: new Date(Date.now() + 29 * 86_400_000),
+    });
+
+    await enforceCase({
+      db: testDb as never,
+      caseId: CASE_ID,
+      resolveVm: resolverFor(createGuest()),
+    });
+
+    const [subscription] = await testDb
+      .select({
+        status: subscriptions.status,
+        cancelReason: subscriptions.cancelReason,
+      })
+      .from(subscriptions)
+      .where(eq(subscriptions.subjectId, mockServer.id));
+    expect(subscription).toEqual({
+      status: "cancelled",
+      cancelReason: "abuse",
+    });
   });
 });
 
