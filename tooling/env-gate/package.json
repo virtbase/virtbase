@@ -1,0 +1,25 @@
+{
+  "name": "@virtbase/env-gate",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "clean": "git clean -xdf .cache .turbo coverage node_modules",
+    "test": "bun test --timeout 20000",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@babel/parser": "^7.29.8",
+    "@babel/types": "^7.29.8",
+    "zod": "catalog:"
+  },
+  "devDependencies": {
+    "@virtbase/tsconfig": "workspace:*",
+    "typescript": "catalog:"
+  },
+  "virtbase": {
+    "coverage": {
+      "lines": 0.99,
+      "functions": 1
+    }
+  }
+}

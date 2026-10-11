@@ -1,0 +1,82 @@
+{
+  "apps/novnc-proxy/src/index.ts": ["*"],
+  "apps/web/e2e/auth.setup.ts": ["*"],
+  "apps/web/scripts/run.ts": ["*"],
+  "apps/web/scripts/video/lib/voice.ts": ["*"],
+  "apps/web/src/app/api/anonpay/webhook/route.ts": ["ANONPAY_WEBHOOK_SECRET"],
+  "apps/web/src/app/api/resend/webhook/route.ts": ["RESEND_WEBHOOK_SECRET"],
+  "apps/web/src/app/api/stripe/webhook/route.ts": ["STRIPE_WEBHOOK_SECRET"],
+  "apps/web/src/env.ts": [
+    "AI_GATEWAY_API_KEY",
+    "ANONPAY_ADDRESS",
+    "ANONPAY_NETWORK_TO",
+    "ANONPAY_TICKER_TO",
+    "ANONPAY_WEBHOOK_SECRET",
+    "NEXT_PUBLIC_STRIPE_ANONPAY_METHOD_ID",
+    "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY",
+    "NOVNC_PROXY_SECRET",
+    "NOVNC_PROXY_URL",
+    "RESEND_API_KEY",
+    "RESEND_WEBHOOK_SECRET",
+    "SMTP_HOST",
+    "SMTP_PASSWORD",
+    "SMTP_PORT",
+    "SMTP_USER",
+    "STRIPE_SECRET_KEY",
+    "STRIPE_WEBHOOK_SECRET"
+  ],
+  "apps/web/src/features/checkout/components/elements-provider.tsx": [
+    "NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY"
+  ],
+  "packages/api/src/abuse/__tests__/mailbox.test.ts": ["ABUSE_MAILBOX_SECRET"],
+  "packages/api/src/abuse/mailbox/address.ts": [
+    "ABUSE_MAILBOX_DOMAIN",
+    "ABUSE_MAILBOX_SECRET"
+  ],
+  "packages/api/src/abuse/mailbox/send.ts": ["ABUSE_MAILBOX_DOMAIN"],
+  "packages/api/src/abuse/triage/classify.ts": ["AI_GATEWAY_API_KEY"],
+  "packages/api/src/firewall-ai/eval/run.ts": ["AI_GATEWAY_API_KEY"],
+  "packages/api/src/notifications/__tests__/dispatch.test.ts": [
+    "*",
+    "<dynamic>",
+    "RESEND_API_KEY"
+  ],
+  "packages/api/src/orders/legacy-snapshot.ts": ["STRIPE_SECRET_KEY"],
+  "packages/api/src/router/checkout.ts": [
+    "ANONPAY_ADDRESS",
+    "ANONPAY_NETWORK_TO",
+    "ANONPAY_TICKER_TO",
+    "ANONPAY_WEBHOOK_SECRET"
+  ],
+  "packages/api/src/router/servers/console.ts": [
+    "NOVNC_PROXY_SECRET",
+    "NOVNC_PROXY_URL"
+  ],
+  "packages/api/src/router/servers/firewall/rules.ts": ["AI_GATEWAY_API_KEY"],
+  "packages/auth/env.ts": ["*"],
+  "packages/email/src/__tests__/send-email.test.ts": [
+    "*",
+    "<dynamic>",
+    "RESEND_API_KEY",
+    "SMTP_HOST",
+    "SMTP_PORT"
+  ],
+  "packages/email/src/index.ts": [
+    "SMTP_HOST",
+    "SMTP_PASSWORD",
+    "SMTP_PORT",
+    "SMTP_USER"
+  ],
+  "packages/email/src/resend/client.ts": ["RESEND_API_KEY"],
+  "packages/email/src/send-via-nodemailer.ts": [
+    "SMTP_HOST",
+    "SMTP_PASSWORD",
+    "SMTP_PORT",
+    "SMTP_USER"
+  ],
+  "packages/integration-anonpay/src/constants.ts": [
+    "NEXT_PUBLIC_STRIPE_ANONPAY_METHOD_ID"
+  ],
+  "packages/integration-stripe/src/client.ts": ["STRIPE_SECRET_KEY"],
+  "packages/utils/src/constants/main.ts": ["NEXT_PUBLIC_APP_NAME"]
+}

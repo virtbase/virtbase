@@ -120,6 +120,7 @@ bun check:write        # Auto-fix lint issues
 bun typecheck          # TypeScript type checking
 bun check:boundaries   # Architecture layer rules (dependency-cruiser)
 bun run comment:check  # Comment lines added since origin/main (CMT-8, CMT-10, CMT-11)
+bun run env:check      # No environment read outside the allowlist and the baseline
 ```
 
 `biome.jsonc` leaves out `noFloatingPromises`, `noMisusedPromises` and

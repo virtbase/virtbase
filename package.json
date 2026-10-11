@@ -112,6 +112,7 @@
     "discord:emojis": "turbo -F @virtbase/integration-discord rasterize-emojis",
     "discord:tunnel": "bunx localtunnel --port 3000 --subdomain virtbase-dev --print-requests",
     "email": "turbo run email",
+    "env:check": "bun tooling/env-gate/check.ts",
     "eval:firewall-ai": "bun --env-file .env packages/api/src/firewall-ai/eval/run.ts",
     "prepare": "husky",
     "script": "turbo -F @virtbase/web script --",
@@ -131,6 +132,7 @@
     "tooling/tailwind",
     "tooling/typescript",
     "tooling/coverage-gate",
-    "tooling/comment-gate"
+    "tooling/comment-gate",
+    "tooling/env-gate"
   ]
 }

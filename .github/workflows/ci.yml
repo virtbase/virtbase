@@ -60,6 +60,9 @@ jobs:
         if: github.event_name == 'pull_request'
         run: bun run --silent comment:check HEAD^1
 
+      - name: Environment reads
+        run: bun run --silent env:check
+
       - name: Typecheck
         run: bun typecheck
 
