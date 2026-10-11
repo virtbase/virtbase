@@ -97,44 +97,44 @@ msgid "Sent as the Key header."
 msgstr "Αποστέλλεται ως κεφαλίδα Key."
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "IbOv8i"
+msgctxt "alertmanager-integration.IbOv8i"
 msgid "Alertmanager"
-msgstr "Alertmanager"
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "UUYX3B"
+msgctxt "alertmanager-integration.UUYX3B"
 msgid "Receives alerts from Prometheus Alertmanager or Grafana and turns them into abuse cases and operator notifications."
-msgstr "Λαμβάνει ειδοποιήσεις από το Prometheus Alertmanager ή το Grafana και τις μετατρέπει σε υποθέσεις κατάχρησης και ειδοποιήσεις χειριστών."
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "_uIIli"
+msgctxt "alertmanager-integration._uIIli"
 msgid "Payload format"
-msgstr "Μορφή payload"
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "zVsF9H"
+msgctxt "alertmanager-integration.zVsF9H"
 msgid "Which shape the sender speaks. Grafana sends the Alertmanager shape with extras."
-msgstr "Ποια μορφή μιλάει ο αποστολέας. Το Grafana στέλνει τη μορφή του Alertmanager με επιπλέον πεδία."
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "rgPqeB"
+msgctxt "alertmanager-integration.rgPqeB"
 msgid "Default severity"
-msgstr "Προεπιλεγμένη σοβαρότητα"
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "GtLzvO"
+msgctxt "alertmanager-integration.GtLzvO"
 msgid "Used when an alert carries no severity label."
-msgstr "Χρησιμοποιείται όταν μια ειδοποίηση δεν έχει ετικέτα σοβαρότητας."
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "2Ij319"
+msgctxt "alertmanager-integration.2Ij319"
 msgid "Ingest token"
-msgstr "Token εισαγωγής"
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "ChfUsD"
+msgctxt "alertmanager-integration.ChfUsD"
 msgid "Sent as an Authorization bearer token. Generate one with `openssl rand -hex 32`."
-msgstr "Αποστέλλεται ως Bearer token στην κεφαλίδα Authorization. Δημιούργησε ένα με `openssl rand -hex 32`."
+msgstr ""
 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 #: ../../packages/integration-discord/src/features/servers/messages.ts
@@ -1526,14 +1526,14 @@ msgid "Prometheus sends this as a bearer token. Generate one with `openssl rand 
 msgstr "Το Prometheus το στέλνει ως διακριτικό Bearer. Δημιουργήστε ένα με `openssl rand -hex 32`."
 
 #: ../../packages/integration-webhook/src/localize.ts
-msgctxt "67UEhy"
+msgctxt "webhook-integration.67UEhy"
 msgid "Outgoing webhooks"
-msgstr "Εξερχόμενα webhooks"
+msgstr ""
 
 #: ../../packages/integration-webhook/src/localize.ts
-msgctxt "R9xPr_"
+msgctxt "webhook-integration.R9xPr_"
 msgid "Delivers operator notifications as signed JSON to any endpoint. The way to reach Slack, Teams or an automation tool without a dedicated integration."
-msgstr "Παραδίδει ειδοποιήσεις χειριστών ως υπογεγραμμένο JSON σε οποιοδήποτε endpoint. Ο τρόπος να φτάσεις στο Slack, στο Teams ή σε ένα εργαλείο αυτοματισμού χωρίς ειδική ενσωμάτωση."
+msgstr ""
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgctxt "o_UJXc"
