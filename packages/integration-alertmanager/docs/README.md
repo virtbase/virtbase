@@ -1,8 +1,10 @@
 # Alertmanager
 
 Receives alerts from Prometheus Alertmanager, or from Grafana, and hands them to
-Virtbase's abuse desk as signals. Abuse rules decide what becomes a case; an
-alert never enforces anything unless a rule opts its source in.
+Virtbase's abuse desk as signals. An alert of an `abuse.` type that is
+attributed to a customer opens a case, in `triage` unless an abuse rule with
+`trusted_source` matches it; every other alert only notifies operators
+(`events.md`). Only a `trusted_source` rule lets an alert enforce anything.
 
 It provides no port. It owns one webhook,
 `POST /api/integrations/alertmanager/alerts`, and consumes the `signals` port

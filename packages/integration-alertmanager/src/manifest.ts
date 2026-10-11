@@ -18,8 +18,10 @@
 import { defineManifest } from "@virtbase/integration-sdk/manifest";
 import * as z from "zod";
 
+/** The body shapes the alerts webhook parses, one per value of `payloadFormat`. */
 export const PAYLOAD_FORMATS = ["alertmanager", "grafana", "generic"] as const;
 
+/** The installation's settings: the payload format and the fallback severity. */
 export const settingsSchema = z.object({
   /**
    * Which shape the sender speaks.
@@ -38,6 +40,7 @@ export const settingsSchema = z.object({
   defaultSeverity: z.enum(["info", "warning", "critical"]).default("warning"),
 });
 
+/** The installation's secrets: the bearer token every alerts request must carry. */
 export const secretsSchema = z.object({
   /**
    * Sent as `Authorization: Bearer`. Required rather than optional - this

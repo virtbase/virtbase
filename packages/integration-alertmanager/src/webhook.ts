@@ -93,9 +93,11 @@ export const handleAlertsRequest: AlertsWebhook["handler"] = async (
 
   const intake = await ctx.ports.require("signals");
 
-  // Alertmanager's own timeout is short and it retries on anything but a 2xx,
-  // so the acknowledgement goes out now and the pipeline finishes afterwards.
-  // A retry is harmless: ingest is an upsert keyed on the fingerprint.
+  // The abuse pipeline runs after the response, so the time Alertmanager waits
+  // excludes it. A failure there is only logged: Alertmanager has counted the
+  // 200 as delivered and sends the alert again after `repeat_interval`. A
+  // repeated alert is harmless, because ingest upserts on
+  // `(source, externalId)` and `externalId` is the alert's fingerprint.
   ctx.waitUntil(
     intake.submitMany(signals).catch((error: unknown) => {
       ctx.logger.error("Failed to ingest alerts", {
