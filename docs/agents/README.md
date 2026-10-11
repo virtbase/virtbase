@@ -42,7 +42,6 @@ Check them with `bunx tsc -p .claude/hooks`. From Phase 1, PR 1.2,
 
 | What | When | Enforces |
 | --- | --- | --- |
-| [Biome rules](#biome-rules) | Phase 1, PR 1.2, as warnings first and errors once the existing code passes | TS-3, TS-4, TS-10, CMP-14, INT-6, the env gate in the editor |
 | [GitHub Actions](#github-actions) | when the `ANTHROPIC_API_KEY` and `CLAUDE_API_KEY` secrets exist | on-demand review against `docs/style`; a security pass on PRs from collaborators |
 | Sentry and Vercel MCP servers (optional) | any time: `claude mcp add --transport http sentry https://mcp.sentry.dev/mcp` and `claude mcp add --transport http vercel https://mcp.vercel.com` | errors and build logs after each deploy (risks R15, R19) |
 
@@ -78,31 +77,29 @@ conflicts with `docs/style`, the guide wins.
 
 ### Biome rules
 
-These go into `biome.jsonc` in Phase 1, PR 1.2:
+`biome.jsonc` holds the rules that enforce these guides in the editor and in
+`bun check`:
 
-```jsonc
-"complexity": {
-  "noExcessiveCognitiveComplexity": { "level": "warn", "options": { "maxAllowedComplexity": 15 } },
-  "noExcessiveLinesPerFunction": { "level": "warn", "options": { "maxLines": 60 } }
-},
-"style": {
-  "noNonNullAssertion": "error",
-  "noDefaultExport": "error",
-  "noProcessEnv": "error"
-},
-"nursery": { "useExhaustiveSwitchCases": "error" }
-```
+| Rule | Level | Enforces | Exempt |
+| --- | --- | --- | --- |
+| `style/noNonNullAssertion` | error | TS-3 | — |
+| `nursery/useExhaustiveSwitchCases` | error | TS-4 | — |
+| `style/noDefaultExport` | warn | TS-10 | `src/app/**` (Next.js route files), integration roots, React Email templates, configuration files |
+| `style/noProcessEnv` | warn | the env gate, in the editor | `env.ts` files, configuration files, tests, `apps/web/e2e`, `apps/web/scripts`, the instrumentation files, `tooling`, `.claude` |
+| `complexity/noExcessiveCognitiveComplexity` (15) | warn | CMP-14 | — |
+| `complexity/noExcessiveLinesPerFunction` (60) | warn | CMP-14 | — |
+| `suspicious/noConsole` in `packages/integration-*` | warn | INT-6 | `integration-sdk`, which provides the logger |
 
-**Overrides:**
+A nested `biome.jsonc` resolves its `overrides` paths from its own directory,
+so the exemptions for `apps/web`, `packages/email`, `integration-discord` and
+`tooling/tailwind` sit in those packages' configs.
 
-- `noDefaultExport` is off for Next.js route files, integration roots and
-  configuration files (TS-10).
-- `noProcessEnv` is off for the bootstrap modules in the
-  [env inventory](../architecture/env-inventory.md#bootstrap-allowlist).
-- `suspicious/noConsole` is on for `packages/integration-*` (INT-6).
-
-**Strictness.** The two complexity rules start as warnings, because today's
-code exceeds them. They become errors when the code they flag has been split.
+A rule is a warning while existing code breaks it, and becomes an error in the
+PR that clears its last warning. On 2026-10-11 that was 43 default exports, 107
+environment reads outside the exempt files, 82 complex and 407 long functions,
+and one `console` call in an integration. `noConsole` becomes an error with
+`ctx.logger` in PR 1.3. The env gate (`bun run env:check`) enforces environment
+reads in CI whatever `noProcessEnv`'s level.
 
 ### GitHub Actions
 

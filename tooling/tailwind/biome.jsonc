@@ -1,4 +1,16 @@
 {
   "root": false,
-  "extends": "//"
+  "extends": "//",
+  "overrides": [
+    {
+      "includes": ["postcss-config.js"],
+      "linter": {
+        "rules": {
+          "style": {
+            "noDefaultExport": "off"
+          }
+        }
+      }
+    }
+  ]
 }
