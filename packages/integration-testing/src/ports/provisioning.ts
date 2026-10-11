@@ -18,6 +18,8 @@
 import { expect } from "bun:test";
 import type {
   ActionConfirmation,
+  ActionResult,
+  OperationResult,
   ProviderStatus,
   ProvisioningProduct,
   ProvisioningProvider,
@@ -108,14 +110,29 @@ const settle = async (
   );
 };
 
-/** The status once a command's answer has settled. */
-const settleAnswer = (
+/** The answer of a command; `suspend()` and `unsuspend()` answer nothing. */
+type CommandAnswer =
+  | ProvisionResult
+  | OperationResult
+  | ActionResult
+  | undefined;
+
+/**
+ * The status once a command's answer has settled. `waits` collects the
+ * answer's `checkAfterMs`, and every one `status()` answers while it settles.
+ */
+const settleAnswer = async (
   setup: ProvisioningContractSetup,
-  { ref, answer }: { ref: ServiceRef; answer: { status: string } | undefined },
-): Promise<ProviderStatus> =>
-  answer?.status === "pending"
-    ? settle(setup, { ref })
-    : readStatus(setup, ref);
+  {
+    ref,
+    answer,
+    waits = [],
+  }: { ref: ServiceRef; answer: CommandAnswer; waits?: number[] },
+): Promise<ProviderStatus> => {
+  if (answer?.status !== "pending") return readStatus(setup, ref);
+  waits.push(answer.checkAfterMs);
+  return settle(setup, { ref, waits });
+};
 
 /** Provisions `config` under the provision key and waits for it to settle. */
 const provisionSettled = async (
@@ -129,14 +146,10 @@ const provisionSettled = async (
     product: setup.product,
     config,
   });
-  if (result.status === "pending") waits.push(result.checkAfterMs);
   const ref = { serviceId: SERVICE_ID, providerRef: result.providerRef };
   return {
     result,
-    status:
-      result.status === "pending"
-        ? await settle(setup, { ref, waits })
-        : await readStatus(setup, ref),
+    status: await settleAnswer(setup, { ref, answer: result, waits }),
   };
 };
 
@@ -157,13 +170,7 @@ const provisionActive = async (
  */
 const expectNoSecondEffect = async (
   setup: ProvisioningContractSetup,
-  {
-    ref,
-    command,
-  }: {
-    ref: ServiceRef;
-    command: () => Promise<{ status: string } | undefined>;
-  },
+  { ref, command }: { ref: ServiceRef; command: () => Promise<CommandAnswer> },
 ): Promise<void> => {
   await settleAnswer(setup, { ref, answer: await command() });
   const afterFirst = await setup.snapshot();
@@ -261,6 +268,7 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
   {
     title: "every pending answer waits a finite, non-negative time",
     run: async (setup) => {
+      const { provider, otherProduct, action } = setup;
       const waits: number[] = [];
       const { status } = await provisionSettled(setup, {
         config: setup.config,
@@ -268,12 +276,41 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
       });
       if (status.status === "active") {
         const ref = { serviceId: SERVICE_ID, providerRef: status.providerRef };
-        const answer = await setup.provider.terminate({
+        if (provider.renew !== undefined) {
+          const answer = await provider.renew({
+            ...ref,
+            idempotencyKey: deriveKey("renew"),
+            periodMonths: 12,
+          });
+          await settleAnswer(setup, { ref, answer, waits });
+        }
+        if (provider.changePlan !== undefined && otherProduct !== undefined) {
+          const answer = await provider.changePlan({
+            ...ref,
+            idempotencyKey: deriveKey("change-plan"),
+            toProduct: otherProduct,
+          });
+          await settleAnswer(setup, { ref, answer, waits });
+        }
+        const actions = await provider.actions({ ...ref, actor: ACTOR });
+        if (
+          action !== undefined &&
+          actions.some(({ key }) => key === action.key)
+        ) {
+          const answer = await provider.runAction({
+            ...ref,
+            idempotencyKey: deriveKey(`action-${action.key}`),
+            action: action.key,
+            input: action.input,
+            actor: ACTOR,
+          });
+          await settleAnswer(setup, { ref, answer, waits });
+        }
+        const answer = await provider.terminate({
           ...ref,
           idempotencyKey: deriveKey("terminate"),
         });
-        if (answer.status === "pending") waits.push(answer.checkAfterMs);
-        await settle(setup, { ref, waits });
+        await settleAnswer(setup, { ref, answer, waits });
       }
       for (const wait of waits) {
         expect(Number.isFinite(wait)).toBe(true);
@@ -562,7 +599,8 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
  * It proves the promises of `ProvisioningProvider`: the product and order
  * forms are complete; `validateOrder` accepts what the provider carries out
  * and rejects what `provision` fails on; a `pending` answer settles through
- * `status()` after a finite wait; every command repeated with the same key
+ * `status()`, and every `pending` answer of a command or of `status()` waits
+ * a finite, non-negative time; every command repeated with the same key
  * has no further effect; `status()` changes nothing; suspensions are held
  * per reason and lifted per reason; `terminate` is final; `quote` prices in
  * integer minor units; and `actions()` describes every action.

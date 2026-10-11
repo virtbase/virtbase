@@ -53,6 +53,8 @@ interface Defects {
   revivesTerminated?: boolean;
   /** Renews again for a repeated renew. */
   renewsTwice?: boolean;
+  /** Answers a renew `pending` with a negative wait. */
+  renewWaitsNegative?: boolean;
   /** Changes the plan again for a repeated change. */
   changesPlanTwice?: boolean;
   /** Runs the action again for a repeated one. */
@@ -290,7 +292,11 @@ const referenceProvider = async (
     renew: ({ idempotencyKey, periodMonths, ...ref }) =>
       renewOnce(idempotencyKey, defects.renewsTwice, () => {
         find(ref).renewedMonths += periodMonths;
-        return { status: "done" };
+        if (immediate) return { status: "done" };
+        return {
+          status: "pending",
+          checkAfterMs: defects.renewWaitsNegative ? -1 : checkAfterMs,
+        };
       }),
     changePlan: ({ idempotencyKey, toProduct, ...ref }) =>
       changePlanOnce(idempotencyKey, defects.changesPlanTwice, () => {
@@ -403,6 +409,11 @@ describe("runProvisioningContract", () => {
       "renews again for a repeated key",
       { renewsTwice: true },
       "renew(), where present, repeated with the same key has no further effect",
+    ],
+    [
+      "answers a renew pending with a negative wait",
+      { renewWaitsNegative: true },
+      "every pending answer waits a finite, non-negative time",
     ],
     [
       "changes the plan again for a repeated key",
