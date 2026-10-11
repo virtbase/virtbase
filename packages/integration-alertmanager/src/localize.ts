@@ -27,7 +27,7 @@ import { getExtracted } from "next-intl/server";
  */
 export const localizeAlertmanager =
   async (): Promise<LocalizedIntegrationText> => {
-    const t = await getExtracted();
+    const t = await getExtracted("alertmanager-integration");
 
     return {
       name: t("Alertmanager"),

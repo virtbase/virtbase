@@ -97,44 +97,44 @@ msgid "Sent as the Key header."
 msgstr "A Key fejlécben megy el."
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "IbOv8i"
+msgctxt "alertmanager-integration.IbOv8i"
 msgid "Alertmanager"
-msgstr "Alertmanager"
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "UUYX3B"
+msgctxt "alertmanager-integration.UUYX3B"
 msgid "Receives alerts from Prometheus Alertmanager or Grafana and turns them into abuse cases and operator notifications."
-msgstr "Fogadja a Prometheus Alertmanager vagy a Grafana riasztásait, és visszaélési ügyekké, illetve operátori értesítésekké alakítja őket."
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "_uIIli"
+msgctxt "alertmanager-integration._uIIli"
 msgid "Payload format"
-msgstr "Payload formátuma"
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "zVsF9H"
+msgctxt "alertmanager-integration.zVsF9H"
 msgid "Which shape the sender speaks. Grafana sends the Alertmanager shape with extras."
-msgstr "Milyen formátumot beszél a küldő. A Grafana az Alertmanager formátumát küldi, kiegészítésekkel."
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "rgPqeB"
+msgctxt "alertmanager-integration.rgPqeB"
 msgid "Default severity"
-msgstr "Alapértelmezett súlyosság"
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "GtLzvO"
+msgctxt "alertmanager-integration.GtLzvO"
 msgid "Used when an alert carries no severity label."
-msgstr "Akkor használjuk, ha egy riasztáson nincs súlyossági címke."
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "2Ij319"
+msgctxt "alertmanager-integration.2Ij319"
 msgid "Ingest token"
-msgstr "Betöltési token"
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "ChfUsD"
+msgctxt "alertmanager-integration.ChfUsD"
 msgid "Sent as an Authorization bearer token. Generate one with `openssl rand -hex 32`."
-msgstr "Bearer tokenként megy az Authorization fejlécben. Generálj egyet az `openssl rand -hex 32` paranccsal."
+msgstr ""
 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 #: ../../packages/integration-discord/src/features/servers/messages.ts
@@ -1526,14 +1526,14 @@ msgid "Prometheus sends this as a bearer token. Generate one with `openssl rand 
 msgstr "A Prometheus Bearer tokenként küldi. Hozzon létre egyet az `openssl rand -hex 32` paranccsal."
 
 #: ../../packages/integration-webhook/src/localize.ts
-msgctxt "67UEhy"
+msgctxt "webhook-integration.67UEhy"
 msgid "Outgoing webhooks"
-msgstr "Kimenő webhookok"
+msgstr ""
 
 #: ../../packages/integration-webhook/src/localize.ts
-msgctxt "R9xPr_"
+msgctxt "webhook-integration.R9xPr_"
 msgid "Delivers operator notifications as signed JSON to any endpoint. The way to reach Slack, Teams or an automation tool without a dedicated integration."
-msgstr "Aláírt JSON-ként kézbesíti az operátori értesítéseket bármely végpontra. Így érhető el a Slack, a Teams vagy egy automatizálási eszköz külön integráció nélkül."
+msgstr ""
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgctxt "o_UJXc"

@@ -97,44 +97,44 @@ msgid "Sent as the Key header."
 msgstr "Enviada no cabeçalho Key."
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "IbOv8i"
+msgctxt "alertmanager-integration.IbOv8i"
 msgid "Alertmanager"
-msgstr "Alertmanager"
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "UUYX3B"
+msgctxt "alertmanager-integration.UUYX3B"
 msgid "Receives alerts from Prometheus Alertmanager or Grafana and turns them into abuse cases and operator notifications."
-msgstr "Recebe alertas do Prometheus Alertmanager ou do Grafana e transforma-os em casos de abuso e notificações para operadores."
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "_uIIli"
+msgctxt "alertmanager-integration._uIIli"
 msgid "Payload format"
-msgstr "Formato do payload"
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "zVsF9H"
+msgctxt "alertmanager-integration.zVsF9H"
 msgid "Which shape the sender speaks. Grafana sends the Alertmanager shape with extras."
-msgstr "Que formato o remetente fala. O Grafana envia o formato do Alertmanager com extras."
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "rgPqeB"
+msgctxt "alertmanager-integration.rgPqeB"
 msgid "Default severity"
-msgstr "Gravidade predefinida"
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "GtLzvO"
+msgctxt "alertmanager-integration.GtLzvO"
 msgid "Used when an alert carries no severity label."
-msgstr "Usada quando um alerta não traz etiqueta de gravidade."
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "2Ij319"
+msgctxt "alertmanager-integration.2Ij319"
 msgid "Ingest token"
-msgstr "Token de ingestão"
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "ChfUsD"
+msgctxt "alertmanager-integration.ChfUsD"
 msgid "Sent as an Authorization bearer token. Generate one with `openssl rand -hex 32`."
-msgstr "Enviado como token Bearer no cabeçalho Authorization. Gera um com `openssl rand -hex 32`."
+msgstr ""
 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 #: ../../packages/integration-discord/src/features/servers/messages.ts
@@ -1526,14 +1526,14 @@ msgid "Prometheus sends this as a bearer token. Generate one with `openssl rand 
 msgstr "Enviado pelo Prometheus como token Bearer. Gere um com `openssl rand -hex 32`."
 
 #: ../../packages/integration-webhook/src/localize.ts
-msgctxt "67UEhy"
+msgctxt "webhook-integration.67UEhy"
 msgid "Outgoing webhooks"
-msgstr "Webhooks de saída"
+msgstr ""
 
 #: ../../packages/integration-webhook/src/localize.ts
-msgctxt "R9xPr_"
+msgctxt "webhook-integration.R9xPr_"
 msgid "Delivers operator notifications as signed JSON to any endpoint. The way to reach Slack, Teams or an automation tool without a dedicated integration."
-msgstr "Entrega notificações de operador como JSON assinado em qualquer endpoint. A forma de chegar ao Slack, ao Teams ou a uma ferramenta de automação sem uma integração dedicada."
+msgstr ""
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgctxt "o_UJXc"

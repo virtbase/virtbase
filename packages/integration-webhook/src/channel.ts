@@ -15,6 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import type { IntegrationHttp } from "@virtbase/integration-sdk";
+import { IntegrationError } from "@virtbase/integration-sdk";
 import type {
   Notification,
   NotificationAudience,
@@ -70,6 +72,12 @@ const hmac = async (secret: string, message: string): Promise<string> => {
 export class WebhookNotificationChannel implements NotificationChannel {
   readonly id = "webhook";
 
+  private readonly http: IntegrationHttp;
+
+  constructor(http: IntegrationHttp) {
+    this.http = http;
+  }
+
   readonly targetFields: FieldDescriptor[] = [
     {
       key: "url",
@@ -96,9 +104,11 @@ export class WebhookNotificationChannel implements NotificationChannel {
   async send(notification: Notification): Promise<NotificationReceipt> {
     const url = notification.target?.url;
     if ("string" !== typeof url || 0 === url.length) {
-      throw new Error(
-        "This webhook target has no endpoint URL configured. Add one in the notification settings.",
-      );
+      throw new IntegrationError({
+        code: "webhook.no_endpoint",
+        message:
+          "This webhook target has no endpoint URL configured. Add one in the notification settings.",
+      });
     }
 
     const payload: WebhookNotificationPayload = {
@@ -116,8 +126,12 @@ export class WebhookNotificationChannel implements NotificationChannel {
     const body = JSON.stringify(payload);
     const timestamp = Math.floor(Date.now() / 1000).toString();
     const secret = notification.target?.signingSecret;
+    const signed = "string" === typeof secret && secret.length > 0;
 
-    const response = await fetch(url, {
+    // The endpoint URL is a credential for some receivers (a Slack incoming
+    // webhook's path is its token), so it is redacted with the signing secret.
+    const response = await this.http.request(url, {
+      redact: signed ? [url, secret] : [url],
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -126,7 +140,7 @@ export class WebhookNotificationChannel implements NotificationChannel {
         // Signed over the timestamp as well as the body, so a captured
         // request cannot be replayed a week later against a receiver that
         // checks the age.
-        ...("string" === typeof secret && secret.length > 0
+        ...(signed
           ? {
               "X-Virtbase-Signature": `sha256=${await hmac(
                 secret,
@@ -139,11 +153,15 @@ export class WebhookNotificationChannel implements NotificationChannel {
     });
 
     if (!response.ok) {
-      throw new Error(
-        `Endpoint answered ${response.status}: ${await response
-          .text()
-          .catch(() => "")}`,
-      );
+      // The endpoint's own body is left out: it is untrusted text, and a
+      // receiver may echo the notification back.
+      await response.body?.cancel();
+      throw new IntegrationError({
+        code: "webhook.endpoint_rejected",
+        message: `The endpoint answered ${response.status}`,
+        retryable: response.status === 429 || response.status >= 500,
+        params: { status: response.status },
+      });
     }
 
     return {};

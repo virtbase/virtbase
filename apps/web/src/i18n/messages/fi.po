@@ -97,44 +97,44 @@ msgid "Sent as the Key header."
 msgstr "Lähetetään Key-otsakkeena."
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "IbOv8i"
+msgctxt "alertmanager-integration.IbOv8i"
 msgid "Alertmanager"
-msgstr "Alertmanager"
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "UUYX3B"
+msgctxt "alertmanager-integration.UUYX3B"
 msgid "Receives alerts from Prometheus Alertmanager or Grafana and turns them into abuse cases and operator notifications."
-msgstr "Vastaanottaa hälytykset Prometheus Alertmanagerista tai Grafanasta ja muuttaa ne väärinkäyttötapauksiksi ja operaattori-ilmoituksiksi."
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "_uIIli"
+msgctxt "alertmanager-integration._uIIli"
 msgid "Payload format"
-msgstr "Payloadin muoto"
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "zVsF9H"
+msgctxt "alertmanager-integration.zVsF9H"
 msgid "Which shape the sender speaks. Grafana sends the Alertmanager shape with extras."
-msgstr "Mitä muotoa lähettäjä puhuu. Grafana lähettää Alertmanagerin muodon lisäkentillä."
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "rgPqeB"
+msgctxt "alertmanager-integration.rgPqeB"
 msgid "Default severity"
-msgstr "Oletusvakavuus"
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "GtLzvO"
+msgctxt "alertmanager-integration.GtLzvO"
 msgid "Used when an alert carries no severity label."
-msgstr "Käytetään, kun hälytyksellä ei ole vakavuustunnistetta."
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "2Ij319"
+msgctxt "alertmanager-integration.2Ij319"
 msgid "Ingest token"
-msgstr "Ingest-token"
+msgstr ""
 
 #: ../../packages/integration-alertmanager/src/localize.ts
-msgctxt "ChfUsD"
+msgctxt "alertmanager-integration.ChfUsD"
 msgid "Sent as an Authorization bearer token. Generate one with `openssl rand -hex 32`."
-msgstr "Lähetetään Bearer-tokenina Authorization-otsakkeessa. Luo sellainen komennolla `openssl rand -hex 32`."
+msgstr ""
 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 #: ../../packages/integration-discord/src/features/servers/messages.ts
@@ -1526,14 +1526,14 @@ msgid "Prometheus sends this as a bearer token. Generate one with `openssl rand 
 msgstr "Prometheus lähettää sen Bearer-tunnuksena. Luo sellainen komennolla `openssl rand -hex 32`."
 
 #: ../../packages/integration-webhook/src/localize.ts
-msgctxt "67UEhy"
+msgctxt "webhook-integration.67UEhy"
 msgid "Outgoing webhooks"
-msgstr "Lähtevät webhookit"
+msgstr ""
 
 #: ../../packages/integration-webhook/src/localize.ts
-msgctxt "R9xPr_"
+msgctxt "webhook-integration.R9xPr_"
 msgid "Delivers operator notifications as signed JSON to any endpoint. The way to reach Slack, Teams or an automation tool without a dedicated integration."
-msgstr "Toimittaa operaattori-ilmoitukset allekirjoitettuna JSONina mihin tahansa päätepisteeseen. Tapa tavoittaa Slack, Teams tai automaatiotyökalu ilman omaa integraatiota."
+msgstr ""
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgctxt "o_UJXc"
