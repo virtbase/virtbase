@@ -16,12 +16,13 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import type { Transaction } from "@electric-sql/pglite";
 import { PGlite } from "@electric-sql/pglite";
 import { drizzle } from "drizzle-orm/pglite";
 import { classifyMigration } from "../migration-gate/classify";
 import { relations } from "../relations";
 import * as schema from "../schema";
+import type { Executor, Fixture } from "./migration-fixtures";
+import { FIXTURES } from "./migration-fixtures";
 
 const MIGRATIONS = `${import.meta.dir}/../../drizzle`;
 
@@ -36,20 +37,6 @@ interface Migration {
   name: string;
   sql: string;
 }
-
-type Executor = Pick<Transaction, "exec" | "query">;
-
-/**
- * Data a migration is tested with (DB-14): `seed` runs before the migration,
- * `verify` after it, in the same transaction.
- */
-interface Fixture {
-  seed: (db: Executor) => Promise<void>;
-  verify: (db: Executor) => Promise<void>;
-}
-
-/** The fixture of a migration, keyed by its folder name. */
-const FIXTURES: Record<string, Fixture> = {};
 
 const readMigrations = async (): Promise<Migration[]> => {
   const files = await Array.fromAsync(

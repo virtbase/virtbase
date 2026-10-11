@@ -42,8 +42,8 @@ the table and never fails, and a package with thresholds fails when:
 Every package with tests started at its share of 2026-10-11, rounded down to a
 whole percent. Raise a threshold in the PR that earns it; never lower one.
 
-`packages/db` measures higher when `.cache/test-db` is absent, because
-`createTestDb()` then builds the schema snapshot, which runs code a warm cache
-skips (95 % of lines instead of 87 % on 2026-10-11). CI always starts without
-the cache. Set `db`'s thresholds from a run with the cache present, so they hold
-in both cases.
+`packages/db` measures about the same with and without `.cache/test-db`
+(95.5 % and 95.2 % of lines on 2026-10-11): `migrations.test.ts` loads the
+schema on every run, so building the test-database snapshot no longer adds
+coverage a warm cache misses. Set thresholds from a run with the cache present,
+the lower of the two.
