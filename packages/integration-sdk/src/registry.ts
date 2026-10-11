@@ -288,9 +288,7 @@ export class IntegrationRegistry {
     const webhook = integration.webhooks?.find(
       (candidate) =>
         candidate.path.replace(/^\/+|\/+$/g, "") === normalized &&
-        candidate.methods.includes(
-          method.toUpperCase() as IntegrationWebhook["methods"][number],
-        ),
+        candidate.methods.some((allowed) => allowed === method.toUpperCase()),
     );
     if (!webhook) return null;
 
