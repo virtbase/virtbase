@@ -17,7 +17,7 @@
 
 import * as Sentry from "@sentry/node";
 import { and, eq, inArray, isNotNull, isNull, ne, sql } from "@virtbase/db";
-import type { db as database } from "@virtbase/db/client";
+import type { db as database, Transaction } from "@virtbase/db/client";
 import type { AbuseCase } from "@virtbase/db/schema";
 import {
   abuseCaseServers,
@@ -152,47 +152,38 @@ export interface EnforceCaseResult {
 
 /**
  * Hands a server to the term lifecycle that suspends and then deletes it, grace
- * period included, and cancels its live subscription so that no renewal moves
- * the term again (risk C14).
+ * period included, and cancels its live subscription (risk C14).
  *
- * Cancelling is what stops both renewal paths: a new claim needs an `active` or
- * `past_due` subscription (`renewDueSubscriptions`), a retry abandons a renewal
- * whose subscription is not collectable (`retryRenewal`), and the suspension
- * sweep's renewal grace applies only to `active` and `past_due`. Both writes
- * commit together, so a failure leaves the server untouched for the next
- * enforcement to retry.
+ * A `cancelled` subscription is outside every renewal path: a new claim needs
+ * an `active` or `past_due` subscription (`renewDueSubscriptions`), a retry
+ * abandons a renewal whose subscription is not collectable (`retryRenewal`),
+ * and the suspension sweep's renewal grace applies only to `active` and
+ * `past_due`. The term only ever moves earlier, so enforcing a case again does
+ * not push it back.
  */
-const terminateServerForAbuse = async ({
-  db,
-  serverId,
-}: {
-  db: Database;
-  serverId: string;
-}): Promise<void> => {
-  await db.transaction(
-    async (tx) => {
-      await tx
-        .update(subscriptions)
-        .set({
-          status: "cancelled",
-          cancelledAt: sql`now()`,
-          cancelReason: "abuse",
-        })
-        .where(
-          and(
-            eq(subscriptions.subjectType, "server"),
-            eq(subscriptions.subjectId, serverId),
-            inArray(subscriptions.status, ["active", "past_due"]),
-          ),
-        );
+const terminateServerForAbuse = async (
+  tx: Transaction,
+  serverId: string,
+): Promise<void> => {
+  await tx
+    .update(subscriptions)
+    .set({
+      status: "cancelled",
+      cancelledAt: sql`now()`,
+      cancelReason: "abuse",
+    })
+    .where(
+      and(
+        eq(subscriptions.subjectType, "server"),
+        eq(subscriptions.subjectId, serverId),
+        inArray(subscriptions.status, ["active", "past_due"]),
+      ),
+    );
 
-      await tx
-        .update(servers)
-        .set({ terminatesAt: sql`now()` })
-        .where(eq(servers.id, serverId));
-    },
-    { accessMode: "read write", isolationLevel: "read committed" },
-  );
+  await tx
+    .update(servers)
+    .set({ terminatesAt: sql`LEAST(${servers.terminatesAt}, now())` })
+    .where(eq(servers.id, serverId));
 };
 
 /**
@@ -259,7 +250,10 @@ export const enforceCase = async ({
   for (const target of targets) {
     try {
       if ("terminate" === level) {
-        await terminateServerForAbuse({ db, serverId: target.serverId });
+        await db.transaction(
+          (tx) => terminateServerForAbuse(tx, target.serverId),
+          { accessMode: "read write", isolationLevel: "read committed" },
+        );
       } else if (isApplied(level)) {
         const vm = resolveVm({
           vmid: target.vmid,

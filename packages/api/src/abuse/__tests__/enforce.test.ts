@@ -322,7 +322,7 @@ describe("enforceCase", () => {
     // No hypervisor lock: the existing suspend-then-delete path takes it now.
     expect(guest.firewall.policy_out).toBe("ACCEPT");
   });
-  test("terminate cancels the live subscription so no renewal moves the term again", async () => {
+  test("terminate cancels the live subscription and keeps the term on a second run", async () => {
     // Risk C14: an auto-renewing subscription kept the server out of the
     // suspension sweep for the renewal grace, and a renewal reset the term.
     await seedCase({ enforcement: "terminate" });
@@ -336,12 +336,18 @@ describe("enforceCase", () => {
       currentPeriodEnd: new Date(Date.now() + 29 * 86_400_000),
     });
 
-    await enforceCase({
-      db: testDb as never,
-      caseId: CASE_ID,
-      resolveVm: resolverFor(createGuest()),
-    });
+    const enforce = () =>
+      enforceCase({
+        db: testDb as never,
+        caseId: CASE_ID,
+        resolveVm: resolverFor(createGuest()),
+      });
 
+    await enforce();
+    const terminatesAt = (await readServer())?.terminatesAt;
+    await enforce();
+
+    expect((await readServer())?.terminatesAt).toEqual(terminatesAt);
     const [subscription] = await testDb
       .select({
         status: subscriptions.status,
