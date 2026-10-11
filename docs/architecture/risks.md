@@ -41,7 +41,7 @@ Likelihood and impact are rated L(ow), M(edium) or H(igh).
 
 Discovery found these defects in today's code. Decision D11 puts all of them in
 this programme: each is fixed in the phase that touches the code anyway, except
-the four marked **hotfix**, which ship first, on their own.
+the rows marked **hotfix**, which ship first, on their own.
 
 ### Security
 
