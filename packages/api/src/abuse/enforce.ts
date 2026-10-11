@@ -17,13 +17,14 @@
 
 import * as Sentry from "@sentry/node";
 import { and, eq, inArray, isNotNull, isNull, ne, sql } from "@virtbase/db";
-import type { db as database } from "@virtbase/db/client";
+import type { db as database, Transaction } from "@virtbase/db/client";
 import type { AbuseCase } from "@virtbase/db/schema";
 import {
   abuseCaseServers,
   abuseCases,
   proxmoxNodes,
   servers,
+  subscriptions,
   users,
 } from "@virtbase/db/schema";
 import type { EnforcementLevel } from "@virtbase/ports";
@@ -150,6 +151,42 @@ export interface EnforceCaseResult {
 }
 
 /**
+ * Hands a server to the term lifecycle that suspends and then deletes it, grace
+ * period included, and cancels its live subscription (risk C14).
+ *
+ * A `cancelled` subscription is outside every renewal path: a new claim needs
+ * an `active` or `past_due` subscription (`renewDueSubscriptions`), a retry
+ * abandons a renewal whose subscription is not collectable (`retryRenewal`),
+ * and the suspension sweep's renewal grace applies only to `active` and
+ * `past_due`. The term only ever moves earlier, so enforcing a case again does
+ * not push it back.
+ */
+const terminateServerForAbuse = async (
+  tx: Transaction,
+  serverId: string,
+): Promise<void> => {
+  await tx
+    .update(subscriptions)
+    .set({
+      status: "cancelled",
+      cancelledAt: sql`now()`,
+      cancelReason: "abuse",
+    })
+    .where(
+      and(
+        eq(subscriptions.subjectType, "server"),
+        eq(subscriptions.subjectId, serverId),
+        inArray(subscriptions.status, ["active", "past_due"]),
+      ),
+    );
+
+  await tx
+    .update(servers)
+    .set({ terminatesAt: sql`LEAST(${servers.terminatesAt}, now())` })
+    .where(eq(servers.id, serverId));
+};
+
+/**
  * Applies whatever a case decided to every server it implicates.
  *
  * Separate from the intake that decided it, and deliberately so: deciding is a
@@ -213,12 +250,10 @@ export const enforceCase = async ({
   for (const target of targets) {
     try {
       if ("terminate" === level) {
-        // Not a hypervisor lock. It hands the server to the lifecycle that
-        // already suspends and then deletes, grace period included.
-        await db
-          .update(servers)
-          .set({ terminatesAt: sql`now()` })
-          .where(eq(servers.id, target.serverId));
+        await db.transaction(
+          (tx) => terminateServerForAbuse(tx, target.serverId),
+          { accessMode: "read write", isolationLevel: "read committed" },
+        );
       } else if (isApplied(level)) {
         const vm = resolveVm({
           vmid: target.vmid,

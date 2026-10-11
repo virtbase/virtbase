@@ -106,7 +106,8 @@
     },
     "script": {
       "cache": false,
-      "persistent": true
+      "persistent": true,
+      "passThroughEnv": ["*"]
     },
     "stripe:listen": {
       "cache": false,

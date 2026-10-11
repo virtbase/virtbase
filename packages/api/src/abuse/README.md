@@ -80,7 +80,7 @@ operator settling the case.
 | `throttle` | `rate=` on the guest NIC | network, console, data |
 | `isolate` | firewall `enable: 1, policy_out: DROP` | data, console, the ability to fix it |
 | `power_off` | `onboot: false`, then stop | data, console once released |
-| `terminate` | sets `terminates_at`, hands over to the existing deletion lifecycle | the normal deletion grace period |
+| `terminate` | moves `terminates_at` to now (never later) and cancels the live subscription with `cancel_reason = 'abuse'`, so no renewal extends the term; hands over to the existing deletion lifecycle | the normal deletion grace period |
 
 Every level below `terminate` is reversible and stores what it replaced in
 `abuse_case_servers.previous_state`, so a release restores the customer's
