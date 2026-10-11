@@ -140,8 +140,8 @@ jobs:
         uses: actions/cache/restore@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: apps/web/.next/cache
-          key: next-${{ runner.os }}-${{ hashFiles('bun.lock') }}-${{ github.sha }}
-          restore-keys: next-${{ runner.os }}-${{ hashFiles('bun.lock') }}-
+          key: next-${{ runner.os }}-${{ hashFiles('bun.lock', 'apps/web/next.config.ts') }}-${{ github.sha }}
+          restore-keys: next-${{ runner.os }}-${{ hashFiles('bun.lock', 'apps/web/next.config.ts') }}-
 
       # Every package script reads its configuration through
       # `bun --env-file ../../.env`, and `.env` is not committed. The values
