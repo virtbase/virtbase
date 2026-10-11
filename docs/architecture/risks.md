@@ -113,6 +113,7 @@ the rows marked **hotfix**, which ship first, on their own.
 | C44 | Runtime secrets are part of the turbo build hash, so rotating one invalidates the build cache | `turbo.json:11-51`, `apps/web/turbo.json:13` | low | 2.9 |
 | C45 | An Anonpay payment leaves the order's Stripe PaymentIntent open; a second successful payment on the same order is recorded but never refunded | `packages/api/src/router/checkout.ts:438-464`, `packages/api/src/orders/apply-payment-event.ts` | medium | 2.6 (checkout through the payment port) |
 | C46 | A guest suspended for non-payment and then abuse-locked stays off after the case is released, although its term was paid in between: the lock captured the run state before the renewal, and the renewal leaves a held-off guest off (C13) | `packages/api/src/abuse/lock.ts` (release), `packages/api/src/workflows/extend-server/index.ts` | medium | 6 (the release consults the service status) |
+| C47 | The rDNS router and the server-deletion step call the DNS provider inside a database transaction, so a slow PowerDNS holds a pooled connection for the whole request (CMP-4) | `packages/api/src/router/servers/rdns.ts:348,427`, `packages/api/src/workflows/delete-server/reset-pointer-records.ts:82` | medium | Phase 1, a fix PR after 1.5 |
 
 ## Rollback plan
 
