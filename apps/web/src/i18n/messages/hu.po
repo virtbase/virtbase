@@ -87,7 +87,6 @@ msgstr "Lehetővé teszi, hogy egy operátor bejelentést tegyen közzé, ha egy
 
 #: ../../packages/integration-abuseipdb/src/localize.ts
 #: ../../packages/integration-lexware/src/localize.ts
-#: ../../packages/integration-powerdns/src/localize.ts
 msgctxt "KTNoOq"
 msgid "API key"
 msgstr "API-kulcs"
@@ -1437,29 +1436,34 @@ msgid "Created under Extras → lexoffice API in Lexware Office."
 msgstr "A Lexware Office-ban az Extras → lexoffice API menüpontban hozható létre."
 
 #: ../../packages/integration-powerdns/src/localize.ts
-msgctxt "NU8d67"
+msgctxt "powerdns-integration.NU8d67"
 msgid "PowerDNS"
-msgstr "PowerDNS"
+msgstr ""
 
 #: ../../packages/integration-powerdns/src/localize.ts
-msgctxt "fJnA_T"
+msgctxt "powerdns-integration.fJnA_T"
 msgid "Reverse DNS (PTR) management for customer IP allocations, used by the rDNS API and by server deletion."
-msgstr "Fordított DNS (PTR) kezelése az ügyfelek IP-címeihez; az rDNS API és a kiszolgáló törlése használja."
+msgstr ""
 
 #: ../../packages/integration-powerdns/src/localize.ts
-msgctxt "lOgYVy"
+msgctxt "powerdns-integration.lOgYVy"
 msgid "API URL"
-msgstr "API URL"
+msgstr ""
 
 #: ../../packages/integration-powerdns/src/localize.ts
-msgctxt "LF6AoR"
+msgctxt "powerdns-integration.LF6AoR"
 msgid "Base URL of the PowerDNS HTTP API, without a trailing slash."
-msgstr "A PowerDNS HTTP API alap-URL-je, záró perjel nélkül."
+msgstr ""
 
 #: ../../packages/integration-powerdns/src/localize.ts
-msgctxt "KSXj3s"
+msgctxt "powerdns-integration.KTNoOq"
+msgid "API key"
+msgstr ""
+
+#: ../../packages/integration-powerdns/src/localize.ts
+msgctxt "powerdns-integration.KSXj3s"
 msgid "Sent as the X-API-Key header."
-msgstr "X-API-Key fejlécként kerül elküldésre."
+msgstr ""
 
 #: ../../packages/integration-prometheus/src/localize.ts
 msgctxt "AMCq17"

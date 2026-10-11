@@ -15,6 +15,8 @@
  *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { IntegrationError } from "@virtbase/integration-sdk";
+
 /**
  * Expands a potentially abbreviated IPv6 address into its full 8-group form.
  * Handles `::` zero-compression and IPv4-embedded addresses (e.g. `::ffff:192.168.1.1`).
@@ -53,40 +55,58 @@ function ipv6ToReverseArpa(ip: string): string {
   return `${expandIPv6Address(ip).replace(/:/g, "").split("").reverse().join(".")}.ip6.arpa`;
 }
 
+/** The error for an IP outside the reverse zone it was given; a caller bug, never retryable. */
+const zoneMismatch = (ip: string, zone: string) =>
+  new IntegrationError({
+    code: "powerdns.zone_mismatch",
+    message: `${ip} is not in the reverse zone ${zone}`,
+    params: { ip, zone },
+  });
+
+/** Whether `name` is `zone` or a name inside it, compared label by label. */
+const isInZone = (name: string, zone: string) =>
+  name === zone || name.endsWith(`.${zone}`);
+
+/** An RFC 2317 zone's first label: the delegated range as `<first>/<prefix length>`. */
+const CLASSLESS_LABEL = /^(\d+)\/(\d+)$/;
+
 /**
  * Builds the fully-qualified PTR record name for `ip` within `dnsReverseZone`.
+ * Throws a `powerdns.zone_mismatch` {@link IntegrationError} when the IP is not
+ * in the zone; zones are compared label by label, so `0.10.in-addr.arpa` does
+ * not hold `10.10.0.5`.
  *
  * Supports:
- * - Standard IPv4 and IPv6 reverse zones
- * - RFC 2317 classless IPv4 delegation (zones containing `/`, e.g. `0/25.1.168.192.in-addr.arpa`)
+ * - standard IPv4 and IPv6 reverse zones;
+ * - RFC 2317 classless IPv4 delegation, such as `0/25.1.168.192.in-addr.arpa`:
+ *   the rest of the zone must be the IP's parent zone, and the host must lie in
+ *   the delegated range, here 0 to 127.
  */
 export function buildPtrName(ip: string, dnsReverseZone: string): string {
   const zone = dnsReverseZone.toLowerCase().replace(/\.$/, "");
+  const full = (
+    ip.includes(":") ? ipv6ToReverseArpa(ip) : ipv4ToReverseArpa(ip)
+  ).toLowerCase();
 
-  if (ip.includes(":")) {
-    const full = ipv6ToReverseArpa(ip);
-    if (!full.endsWith(zone)) {
-      throw new Error("IP does not belong to reverse zone");
-    }
-    const prefix = full.slice(0, full.length - zone.length - 1);
-    return prefix ? `${prefix}.${zone}` : zone;
-  }
-
-  const full = ipv4ToReverseArpa(ip);
-  const [hostLabel, ...parentParts] = full.split(".");
-  const parentZone = parentParts.join(".");
-
-  // RFC 2317 classless delegation — zone contains a slash (e.g. "0/25.1.168.192.in-addr.arpa")
-  if (zone.includes("/")) {
-    if (!zone.endsWith(parentZone)) {
-      throw new Error("Zone does not match IP parent zone");
+  const [firstLabel = "", ...rest] = zone.split(".");
+  const classless = ip.includes(":") ? null : CLASSLESS_LABEL.exec(firstLabel);
+  if (classless) {
+    const [hostLabel = "", ...parentParts] = full.split(".");
+    const first = Number(classless[1]);
+    const size = 2 ** (32 - Number(classless[2]));
+    const host = Number(hostLabel);
+    if (
+      parentParts.join(".") !== rest.join(".") ||
+      host < first ||
+      host >= first + size
+    ) {
+      throw zoneMismatch(ip, dnsReverseZone);
     }
     return `${hostLabel}.${zone}`;
   }
 
-  if (!full.endsWith(zone)) {
-    throw new Error("IP does not belong to reverse zone");
+  if (!isInZone(full, zone)) {
+    throw zoneMismatch(ip, dnsReverseZone);
   }
-  const prefix = full.slice(0, full.length - zone.length - 1);
-  return prefix ? `${prefix}.${zone}` : zone;
+  return full;
 }
