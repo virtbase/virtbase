@@ -163,6 +163,18 @@ describe("IntegrationRegistry", () => {
     registry.invalidate("alpha");
     expect(await registry.resolve("dns")).not.toBe(first);
   });
+
+  test("keeps another integration's adapter when one integration is invalidated", async () => {
+    const registry = registryWith(
+      { alpha: configured("alpha"), beta: configured("beta") },
+      ["alpha", "beta"],
+    );
+
+    const beta = await registry.resolve("dns", { integrationId: "beta" });
+    registry.invalidate("alpha");
+
+    expect(await registry.resolve("dns", { integrationId: "beta" })).toBe(beta);
+  });
 });
 
 /**

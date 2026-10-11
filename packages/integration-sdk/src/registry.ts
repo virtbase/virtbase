@@ -79,6 +79,9 @@ export interface IntegrationRegistryOptions {
 /** How many health probes run at once (CMP-7). */
 export const HEALTH_PROBE_CONCURRENCY = 4;
 
+/** The adapters built for one integration, by the port each fills. */
+type AdapterCache = { [K in keyof PortMap]?: PortMap[K] };
+
 interface ResolvedIntegration {
   context: IntegrationContext | null;
   /** Redacts the secrets of `context`; null without a context. */
@@ -108,7 +111,7 @@ export class IntegrationRegistry {
     string,
     { value: Promise<ResolvedIntegration>; expiresAt: number }
   >();
-  private readonly adapters = new Map<string, unknown>();
+  private readonly adapters = new Map<string, AdapterCache>();
 
   /**
    * Handed to every integration context. Bound to the registry's own methods so
@@ -375,9 +378,7 @@ export class IntegrationRegistry {
       return;
     }
     this.resolved.delete(integrationId);
-    for (const key of this.adapters.keys()) {
-      if (key.startsWith(`${integrationId}:`)) this.adapters.delete(key);
-    }
+    this.adapters.delete(integrationId);
   }
 
   /**
@@ -472,12 +473,16 @@ export class IntegrationRegistry {
     const { context } = await this.contextFor(integration);
     if (!context) return null;
 
-    const cacheKey = `${integration.id}:${String(port)}`;
-    const cached = this.adapters.get(cacheKey);
-    if (cached) return cached as PortMap[K];
+    let cache = this.adapters.get(integration.id);
+    if (!cache) {
+      cache = {};
+      this.adapters.set(integration.id, cache);
+    }
+    const cached = cache[port];
+    if (cached) return cached;
 
     const adapter = factory(context);
-    this.adapters.set(cacheKey, adapter);
+    cache[port] = adapter;
     return adapter;
   }
 
