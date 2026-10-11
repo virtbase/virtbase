@@ -76,10 +76,10 @@ const CONFIRMATIONS: Record<ActionConfirmation, true> = {
 };
 
 /** A stable idempotency key per operation, as a workflow step derives it. */
-const keyFor = (operation: string) => `${SERVICE_ID}:${operation}:step-1`;
+const deriveKey = (operation: string) => `${SERVICE_ID}:${operation}:step-1`;
 
 /** The status with its suspension reasons sorted, so it compares by `toEqual`. */
-const statusOf = async (
+const readStatus = async (
   setup: ProvisioningContractSetup,
   ref: ServiceRef,
 ): Promise<ProviderStatus> => {
@@ -95,11 +95,10 @@ const statusOf = async (
  */
 const settle = async (
   setup: ProvisioningContractSetup,
-  ref: ServiceRef,
-  waits: number[] = [],
+  { ref, waits = [] }: { ref: ServiceRef; waits?: number[] },
 ): Promise<ProviderStatus> => {
   for (let poll = 0; poll < MAX_STATUS_POLLS; poll += 1) {
-    const status = await statusOf(setup, ref);
+    const status = await readStatus(setup, ref);
     if (status.status !== "pending") return status;
     waits.push(status.checkAfterMs);
     await setup.finishPendingWork();
@@ -112,20 +111,20 @@ const settle = async (
 /** The status once a command's answer has settled. */
 const settleAnswer = (
   setup: ProvisioningContractSetup,
-  ref: ServiceRef,
-  answer: { status: string } | undefined,
+  { ref, answer }: { ref: ServiceRef; answer: { status: string } | undefined },
 ): Promise<ProviderStatus> =>
-  answer?.status === "pending" ? settle(setup, ref) : statusOf(setup, ref);
+  answer?.status === "pending"
+    ? settle(setup, { ref })
+    : readStatus(setup, ref);
 
 /** Provisions `config` under the provision key and waits for it to settle. */
 const provisionSettled = async (
   setup: ProvisioningContractSetup,
-  config: unknown,
-  waits: number[] = [],
+  { config, waits = [] }: { config: unknown; waits?: number[] },
 ): Promise<{ result: ProvisionResult; status: ProviderStatus }> => {
   const result = await setup.provider.provision({
     serviceId: SERVICE_ID,
-    idempotencyKey: keyFor("provision"),
+    idempotencyKey: deriveKey("provision"),
     userId: USER_ID,
     product: setup.product,
     config,
@@ -136,8 +135,8 @@ const provisionSettled = async (
     result,
     status:
       result.status === "pending"
-        ? await settle(setup, ref, waits)
-        : await statusOf(setup, ref),
+        ? await settle(setup, { ref, waits })
+        : await readStatus(setup, ref),
   };
 };
 
@@ -145,7 +144,7 @@ const provisionSettled = async (
 const provisionActive = async (
   setup: ProvisioningContractSetup,
 ): Promise<ServiceRef & { providerRef: string }> => {
-  const { status } = await provisionSettled(setup, setup.config);
+  const { status } = await provisionSettled(setup, { config: setup.config });
   if (status.status !== "active") {
     throw new Error(`provision() settled ${status.status}, not active`);
   }
@@ -158,12 +157,17 @@ const provisionActive = async (
  */
 const expectNoSecondEffect = async (
   setup: ProvisioningContractSetup,
-  ref: ServiceRef,
-  command: () => Promise<{ status: string } | undefined>,
+  {
+    ref,
+    command,
+  }: {
+    ref: ServiceRef;
+    command: () => Promise<{ status: string } | undefined>;
+  },
 ): Promise<void> => {
-  await settleAnswer(setup, ref, await command());
+  await settleAnswer(setup, { ref, answer: await command() });
   const afterFirst = await setup.snapshot();
-  await settleAnswer(setup, ref, await command());
+  await settleAnswer(setup, { ref, answer: await command() });
   expect(await setup.snapshot()).toEqual(afterFirst);
 };
 
@@ -178,7 +182,10 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
     title: "productConfig is a complete form that accepts the product's config",
     run: ({ provider, product }) => {
       expect(
-        checkFormDescriptor("productConfig", provider.productConfig),
+        checkFormDescriptor({
+          label: "productConfig",
+          descriptor: provider.productConfig,
+        }),
       ).toEqual([]);
       expect(
         provider.productConfig.schema.safeParse(product.config).success,
@@ -191,7 +198,11 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
     run: async ({ provider, product, config }) => {
       const form = await provider.describeOrder({ product });
       expect(
-        checkFormDescriptor("describeOrder()", form, form.secretKeys),
+        checkFormDescriptor({
+          label: "describeOrder()",
+          descriptor: form,
+          secretKeys: form.secretKeys,
+        }),
       ).toEqual([]);
       expect(form.schema.safeParse(config).success).toBe(true);
     },
@@ -220,7 +231,9 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
 
       // A provider may reject the provision or settle it `failed`; either
       // proves that setup.rejectedConfig is an order provision() fails on.
-      const settled = await provisionSettled(setup, setup.rejectedConfig).then(
+      const settled = await provisionSettled(setup, {
+        config: setup.rejectedConfig,
+      }).then(
         ({ status }) => status,
         () => null,
       );
@@ -234,7 +247,9 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
     title:
       "provision() settles active, through status() while it answers pending",
     run: async (setup) => {
-      const { result, status } = await provisionSettled(setup, setup.config);
+      const { result, status } = await provisionSettled(setup, {
+        config: setup.config,
+      });
       expect(status.status).toBe("active");
       const providerRef = status.status === "active" ? status.providerRef : "";
       expect(providerRef).not.toBe("");
@@ -247,15 +262,18 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
     title: "every pending answer waits a finite, non-negative time",
     run: async (setup) => {
       const waits: number[] = [];
-      const { status } = await provisionSettled(setup, setup.config, waits);
+      const { status } = await provisionSettled(setup, {
+        config: setup.config,
+        waits,
+      });
       if (status.status === "active") {
         const ref = { serviceId: SERVICE_ID, providerRef: status.providerRef };
         const answer = await setup.provider.terminate({
           ...ref,
-          idempotencyKey: keyFor("terminate"),
+          idempotencyKey: deriveKey("terminate"),
         });
         if (answer.status === "pending") waits.push(answer.checkAfterMs);
-        await settle(setup, ref, waits);
+        await settle(setup, { ref, waits });
       }
       for (const wait of waits) {
         expect(Number.isFinite(wait)).toBe(true);
@@ -266,9 +284,9 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
   {
     title: "provision() repeated with the same key provisions once",
     run: async (setup) => {
-      const first = await provisionSettled(setup, setup.config);
+      const first = await provisionSettled(setup, { config: setup.config });
       const afterFirst = await setup.snapshot();
-      const second = await provisionSettled(setup, setup.config);
+      const second = await provisionSettled(setup, { config: setup.config });
       expect(second.status).toEqual(first.status);
       expect(await setup.snapshot()).toEqual(afterFirst);
     },
@@ -290,19 +308,19 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
       const ref = await provisionActive(setup);
       await provider.suspend({
         ...ref,
-        idempotencyKey: keyFor("suspend-billing"),
+        idempotencyKey: deriveKey("suspend-billing"),
         reason: "billing",
       });
-      expect(await statusOf(setup, ref)).toEqual({
+      expect(await readStatus(setup, ref)).toEqual({
         status: "suspended",
         reasons: ["billing"],
       });
       await provider.unsuspend({
         ...ref,
-        idempotencyKey: keyFor("unsuspend-billing"),
+        idempotencyKey: deriveKey("unsuspend-billing"),
         reason: "billing",
       });
-      expect(await statusOf(setup, ref)).toEqual({
+      expect(await readStatus(setup, ref)).toEqual({
         status: "active",
         providerRef: ref.providerRef,
       });
@@ -317,20 +335,20 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
       for (const reason of ["billing", "abuse"] as const) {
         await provider.suspend({
           ...ref,
-          idempotencyKey: keyFor(`suspend-${reason}`),
+          idempotencyKey: deriveKey(`suspend-${reason}`),
           reason,
         });
       }
-      expect(await statusOf(setup, ref)).toEqual({
+      expect(await readStatus(setup, ref)).toEqual({
         status: "suspended",
         reasons: ["abuse", "billing"],
       });
       await provider.unsuspend({
         ...ref,
-        idempotencyKey: keyFor("unsuspend-billing"),
+        idempotencyKey: deriveKey("unsuspend-billing"),
         reason: "billing",
       });
-      expect(await statusOf(setup, ref)).toEqual({
+      expect(await readStatus(setup, ref)).toEqual({
         status: "suspended",
         reasons: ["abuse"],
       });
@@ -340,15 +358,17 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
     title: "suspend() repeated with the same key has no further effect",
     run: async (setup) => {
       const ref = await provisionActive(setup);
-      await expectNoSecondEffect(setup, ref, () =>
-        setup.provider
-          .suspend({
-            ...ref,
-            idempotencyKey: keyFor("suspend"),
-            reason: "billing",
-          })
-          .then(() => undefined),
-      );
+      await expectNoSecondEffect(setup, {
+        ref,
+        command: () =>
+          setup.provider
+            .suspend({
+              ...ref,
+              idempotencyKey: deriveKey("suspend"),
+              reason: "billing",
+            })
+            .then(() => undefined),
+      });
     },
   },
   {
@@ -357,18 +377,20 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
       const ref = await provisionActive(setup);
       await setup.provider.suspend({
         ...ref,
-        idempotencyKey: keyFor("suspend"),
+        idempotencyKey: deriveKey("suspend"),
         reason: "billing",
       });
-      await expectNoSecondEffect(setup, ref, () =>
-        setup.provider
-          .unsuspend({
-            ...ref,
-            idempotencyKey: keyFor("unsuspend"),
-            reason: "billing",
-          })
-          .then(() => undefined),
-      );
+      await expectNoSecondEffect(setup, {
+        ref,
+        command: () =>
+          setup.provider
+            .unsuspend({
+              ...ref,
+              idempotencyKey: deriveKey("unsuspend"),
+              reason: "billing",
+            })
+            .then(() => undefined),
+      });
     },
   },
   {
@@ -377,9 +399,9 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
       const ref = await provisionActive(setup);
       const answer = await setup.provider.terminate({
         ...ref,
-        idempotencyKey: keyFor("terminate"),
+        idempotencyKey: deriveKey("terminate"),
       });
-      expect(await settleAnswer(setup, ref, answer)).toEqual({
+      expect(await settleAnswer(setup, { ref, answer })).toEqual({
         status: "terminated",
       });
     },
@@ -388,12 +410,14 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
     title: "terminate() repeated with the same key has no further effect",
     run: async (setup) => {
       const ref = await provisionActive(setup);
-      await expectNoSecondEffect(setup, ref, () =>
-        setup.provider.terminate({
-          ...ref,
-          idempotencyKey: keyFor("terminate"),
-        }),
-      );
+      await expectNoSecondEffect(setup, {
+        ref,
+        command: () =>
+          setup.provider.terminate({
+            ...ref,
+            idempotencyKey: deriveKey("terminate"),
+          }),
+      });
     },
   },
   {
@@ -401,27 +425,30 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
     run: async (setup) => {
       const { provider } = setup;
       const ref = await provisionActive(setup);
-      await settleAnswer(
-        setup,
+      await settleAnswer(setup, {
         ref,
-        await provider.terminate({
+        answer: await provider.terminate({
           ...ref,
-          idempotencyKey: keyFor("terminate"),
+          idempotencyKey: deriveKey("terminate"),
         }),
-      );
+      });
       // A provider may reject a command for a terminated service; the check
       // reads only the status afterwards.
       await provider
-        .suspend({ ...ref, idempotencyKey: keyFor("suspend"), reason: "abuse" })
+        .suspend({
+          ...ref,
+          idempotencyKey: deriveKey("suspend"),
+          reason: "abuse",
+        })
         .catch(() => undefined);
       await provider
         .unsuspend({
           ...ref,
-          idempotencyKey: keyFor("unsuspend"),
+          idempotencyKey: deriveKey("unsuspend"),
           reason: "abuse",
         })
         .catch(() => undefined);
-      expect(await statusOf(setup, ref)).toEqual({ status: "terminated" });
+      expect(await readStatus(setup, ref)).toEqual({ status: "terminated" });
     },
   },
   {
@@ -431,13 +458,15 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
       const { provider } = setup;
       if (provider.renew === undefined) return;
       const ref = await provisionActive(setup);
-      await expectNoSecondEffect(setup, ref, async () =>
-        provider.renew?.({
-          ...ref,
-          idempotencyKey: keyFor("renew"),
-          periodMonths: 12,
-        }),
-      );
+      await expectNoSecondEffect(setup, {
+        ref,
+        command: async () =>
+          provider.renew?.({
+            ...ref,
+            idempotencyKey: deriveKey("renew"),
+            periodMonths: 12,
+          }),
+      });
     },
   },
   {
@@ -452,13 +481,15 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
         );
       }
       const ref = await provisionActive(setup);
-      await expectNoSecondEffect(setup, ref, async () =>
-        provider.changePlan?.({
-          ...ref,
-          idempotencyKey: keyFor("change-plan"),
-          toProduct: otherProduct,
-        }),
-      );
+      await expectNoSecondEffect(setup, {
+        ref,
+        command: async () =>
+          provider.changePlan?.({
+            ...ref,
+            idempotencyKey: deriveKey("change-plan"),
+            toProduct: otherProduct,
+          }),
+      });
     },
   },
   {
@@ -484,7 +515,10 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
         expect(action.key).not.toBe("");
         expect(action.label).not.toBe("");
         expect(
-          checkFormDescriptor(`action ${action.key}`, action.form),
+          checkFormDescriptor({
+            label: `action ${action.key}`,
+            descriptor: action.form,
+          }),
         ).toEqual([]);
         expect(Object.hasOwn(CONFIRMATIONS, action.confirmation)).toBe(true);
         expect(typeof action.longRunning).toBe("boolean");
@@ -505,15 +539,17 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
       }
       const described = actions.find(({ key }) => key === action.key);
       expect(described?.form.schema.safeParse(action.input).success).toBe(true);
-      await expectNoSecondEffect(setup, ref, () =>
-        provider.runAction({
-          ...ref,
-          idempotencyKey: keyFor(`action-${action.key}`),
-          action: action.key,
-          input: action.input,
-          actor: ACTOR,
-        }),
-      );
+      await expectNoSecondEffect(setup, {
+        ref,
+        command: () =>
+          provider.runAction({
+            ...ref,
+            idempotencyKey: deriveKey(`action-${action.key}`),
+            action: action.key,
+            input: action.input,
+            actor: ACTOR,
+          }),
+      });
     },
   },
 ];

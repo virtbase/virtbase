@@ -25,12 +25,12 @@ import * as z from "zod";
  * every secret field held to the `password` widget (INT-7).
  */
 export const checkFields = (manifest: IntegrationManifest): string[] => [
-  ...checkFormDescriptor("settings", manifest.settings),
-  ...checkFormDescriptor(
-    "secrets",
-    manifest.secrets,
-    manifest.secrets?.fields.map((field) => field.key),
-  ),
+  ...checkFormDescriptor({ label: "settings", descriptor: manifest.settings }),
+  ...checkFormDescriptor({
+    label: "secrets",
+    descriptor: manifest.secrets,
+    secretKeys: manifest.secrets?.fields.map((field) => field.key),
+  }),
 ];
 
 /**
@@ -42,11 +42,15 @@ export const checkFields = (manifest: IntegrationManifest): string[] => [
  * - a key of `secretKeys` that has no field, or whose field does not use the
  *   `password` widget.
  */
-export const checkFormDescriptor = (
-  label: string,
-  descriptor: FormDescriptor | undefined,
-  secretKeys: readonly string[] = [],
-): string[] => {
+export const checkFormDescriptor = ({
+  label,
+  descriptor,
+  secretKeys = [],
+}: {
+  label: string;
+  descriptor: FormDescriptor | undefined;
+  secretKeys?: readonly string[];
+}): string[] => {
   if (!descriptor) return [];
   const shape = readShape(descriptor.schema);
   if (!shape) return [`${label}: the schema must be a z.object`];

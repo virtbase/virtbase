@@ -56,7 +56,7 @@ const DMARC: ZoneRecord = {
  */
 const WRITTEN_TYPES = new Set(["A", "MX", "TXT"]);
 
-const byKey = (a: ZoneRecord, b: ZoneRecord) =>
+const compareRecords = (a: ZoneRecord, b: ZoneRecord) =>
   `${a.name} ${a.type} ${a.content}`.localeCompare(
     `${b.name} ${b.type} ${b.content}`,
   );
@@ -65,7 +65,7 @@ const byKey = (a: ZoneRecord, b: ZoneRecord) =>
  * The records of `zone` the checks wrote, with names lowercased and stripped
  * of their trailing dot, sorted.
  */
-const written = async (
+const readWrittenRecords = async (
   provider: DnsZoneProvider,
   zone: string,
 ): Promise<ZoneRecord[]> =>
@@ -76,9 +76,10 @@ const written = async (
       type: record.type,
       content: record.content,
     }))
-    .sort(byKey);
+    .sort(compareRecords);
 
-const sorted = (records: ZoneRecord[]) => [...records].sort(byKey);
+const sortRecords = (records: ZoneRecord[]) =>
+  [...records].sort(compareRecords);
 
 const DNS_ZONES_CHECKS: Check<DnsZonesContractSetup>[] = [
   {
@@ -95,7 +96,7 @@ const DNS_ZONES_CHECKS: Check<DnsZonesContractSetup>[] = [
       await provider.upsertRecords(ZONE, [APEX_A]);
       await provider.ensureZone(ZONE);
       expect(await provider.listZones()).toEqual([{ name: ZONE }]);
-      expect(await written(provider, ZONE)).toEqual([APEX_A]);
+      expect(await readWrittenRecords(provider, ZONE)).toEqual([APEX_A]);
     },
   },
   {
@@ -107,7 +108,7 @@ const DNS_ZONES_CHECKS: Check<DnsZonesContractSetup>[] = [
       await provider.ensureZone(ZONE);
       await provider.upsertRecords(`${ZONE}.`, [APEX_A]);
       expect(await provider.listZones()).toEqual([{ name: ZONE }]);
-      expect(await written(provider, ZONE)).toEqual([APEX_A]);
+      expect(await readWrittenRecords(provider, ZONE)).toEqual([APEX_A]);
     },
   },
   {
@@ -115,8 +116,8 @@ const DNS_ZONES_CHECKS: Check<DnsZonesContractSetup>[] = [
     run: async ({ provider }) => {
       await provider.ensureZone(ZONE);
       await provider.upsertRecords(ZONE, [APEX_A, APEX_MX, APEX_SPF, DMARC]);
-      expect(await written(provider, ZONE)).toEqual(
-        sorted([APEX_A, APEX_MX, APEX_SPF, DMARC]),
+      expect(await readWrittenRecords(provider, ZONE)).toEqual(
+        sortRecords([APEX_A, APEX_MX, APEX_SPF, DMARC]),
       );
     },
   },
@@ -126,7 +127,9 @@ const DNS_ZONES_CHECKS: Check<DnsZonesContractSetup>[] = [
       await provider.ensureZone(ZONE);
       await provider.upsertRecords(ZONE, [APEX_MX, DMARC]);
       await provider.upsertRecords(ZONE, [APEX_MX, DMARC]);
-      expect(await written(provider, ZONE)).toEqual(sorted([APEX_MX, DMARC]));
+      expect(await readWrittenRecords(provider, ZONE)).toEqual(
+        sortRecords([APEX_MX, DMARC]),
+      );
     },
   },
   {
@@ -136,8 +139,8 @@ const DNS_ZONES_CHECKS: Check<DnsZonesContractSetup>[] = [
       await provider.ensureZone(ZONE);
       await provider.upsertRecords(ZONE, [APEX_MX]);
       await provider.upsertRecords(ZONE, [SECOND_MX]);
-      expect(await written(provider, ZONE)).toEqual(
-        sorted([APEX_MX, SECOND_MX]),
+      expect(await readWrittenRecords(provider, ZONE)).toEqual(
+        sortRecords([APEX_MX, SECOND_MX]),
       );
     },
   },
@@ -148,7 +151,9 @@ const DNS_ZONES_CHECKS: Check<DnsZonesContractSetup>[] = [
       await provider.ensureZone(ZONE);
       await provider.upsertRecords(ZONE, [APEX_A, APEX_SPF, DMARC]);
       await provider.deleteRecords(ZONE, { name: ZONE, type: "TXT" });
-      expect(await written(provider, ZONE)).toEqual(sorted([APEX_A, DMARC]));
+      expect(await readWrittenRecords(provider, ZONE)).toEqual(
+        sortRecords([APEX_A, DMARC]),
+      );
     },
   },
   {
@@ -161,7 +166,7 @@ const DNS_ZONES_CHECKS: Check<DnsZonesContractSetup>[] = [
         type: "MX",
         content: SECOND_MX.content,
       });
-      expect(await written(provider, ZONE)).toEqual([APEX_MX]);
+      expect(await readWrittenRecords(provider, ZONE)).toEqual([APEX_MX]);
     },
   },
   {
@@ -169,7 +174,7 @@ const DNS_ZONES_CHECKS: Check<DnsZonesContractSetup>[] = [
     run: async ({ provider }) => {
       await provider.ensureZone(ZONE);
       await provider.deleteRecords(ZONE, { name: `absent.${ZONE}` });
-      expect(await written(provider, ZONE)).toEqual([]);
+      expect(await readWrittenRecords(provider, ZONE)).toEqual([]);
     },
   },
 ];

@@ -112,30 +112,30 @@ describe("checkFields", () => {
 describe("checkFormDescriptor", () => {
   test("accepts a form whose secret keys use the password widget", () => {
     expect(
-      checkFormDescriptor(
-        "order",
-        {
+      checkFormDescriptor({
+        label: "order",
+        descriptor: {
           schema: z.object({ domain: z.string(), authCode: z.string() }),
           fields: [
             { key: "domain", label: "Domain", widget: "text" },
             { key: "authCode", label: "Auth code", widget: "password" },
           ],
         },
-        ["authCode"],
-      ),
+        secretKeys: ["authCode"],
+      }),
     ).toEqual([]);
   });
 
   test("reports a secret key without a field", () => {
     expect(
-      checkFormDescriptor(
-        "order",
-        {
+      checkFormDescriptor({
+        label: "order",
+        descriptor: {
           schema: z.object({ domain: z.string() }),
           fields: [{ key: "domain", label: "Domain", widget: "text" }],
         },
-        ["authCode"],
-      ),
+        secretKeys: ["authCode"],
+      }),
     ).toEqual(["order: secret key authCode has no field"]);
   });
 });
