@@ -176,6 +176,12 @@ Use `bun run test`, not `bun test`: each package's script sets its own
 - **E2E.** CI runs Playwright against a production build (`next build`, then
   `next start`) with two workers. Locally, `bun test:e2e` starts `next dev`, or
   reuses a server that is already running.
+- **Integration E2E.** The `integrations` project (`apps/web/e2e/integrations`)
+  switches integrations on and off in the shared database, so it runs on one
+  worker, one test after another (TST-13). It needs `CONFIG_ENCRYPTION_KEY` in
+  `.env`: `e2e.yml` writes a fixed test key, and a local run without one skips
+  the project. Its fake providers listen on `127.0.0.1` in the Playwright
+  process, so the project only runs against a web server on the same host.
 
 ## Architecture layering
 

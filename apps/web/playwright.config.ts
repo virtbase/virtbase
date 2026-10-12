@@ -102,6 +102,19 @@ export default defineConfig({
         storageState: "e2e/.auth/admin.json",
       },
     },
+
+    {
+      name: "integrations",
+      testDir: "./e2e/integrations",
+      testMatch: /.*\.e2e\.ts/,
+      dependencies: ["setup"],
+      fullyParallel: false,
+      workers: 1,
+      use: {
+        ...devices["Desktop Chrome"],
+        storageState: "e2e/.auth/admin.json",
+      },
+    },
   ],
   webServer: process.env.E2E_SKIP_WEB_SERVER
     ? undefined
