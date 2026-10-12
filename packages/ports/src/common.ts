@@ -27,6 +27,7 @@ export const PORTS = {
   invoice: "invoice",
   notifications: "notifications",
   dns: "dns",
+  dnsZones: "dnsZones",
   metrics: "metrics",
   platformMetrics: "platformMetrics",
   abuse: "abuse",
@@ -36,6 +37,7 @@ export const PORTS = {
   events: "events",
   identity: "identity",
   serverManagement: "serverManagement",
+  provisioning: "provisioning",
 } as const;
 
 export type PortName = (typeof PORTS)[keyof typeof PORTS];

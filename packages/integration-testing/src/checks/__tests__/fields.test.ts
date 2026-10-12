@@ -18,7 +18,7 @@
 import { describe, expect, test } from "bun:test";
 import * as z from "zod";
 import { exampleManifest } from "../../__tests__/example/integration";
-import { checkFields } from "../fields";
+import { checkFields, checkFormDescriptor } from "../fields";
 
 describe("checkFields", () => {
   test("accepts descriptors that match their schemas", () => {
@@ -106,5 +106,36 @@ describe("checkFields", () => {
         settings: { schema: z.string(), fields: [] },
       }),
     ).toEqual(["settings: the schema must be a z.object"]);
+  });
+});
+
+describe("checkFormDescriptor", () => {
+  test("accepts a form whose secret keys use the password widget", () => {
+    expect(
+      checkFormDescriptor({
+        label: "order",
+        descriptor: {
+          schema: z.object({ domain: z.string(), authCode: z.string() }),
+          fields: [
+            { key: "domain", label: "Domain", widget: "text" },
+            { key: "authCode", label: "Auth code", widget: "password" },
+          ],
+        },
+        secretKeys: ["authCode"],
+      }),
+    ).toEqual([]);
+  });
+
+  test("reports a secret key without a field", () => {
+    expect(
+      checkFormDescriptor({
+        label: "order",
+        descriptor: {
+          schema: z.object({ domain: z.string() }),
+          fields: [{ key: "domain", label: "Domain", widget: "text" }],
+        },
+        secretKeys: ["authCode"],
+      }),
+    ).toEqual(["order: secret key authCode has no field"]);
   });
 });
