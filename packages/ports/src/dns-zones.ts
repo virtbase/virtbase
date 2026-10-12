@@ -49,18 +49,37 @@ export interface ZoneRecordFilter {
   content?: string;
 }
 
+/** The input of {@link DnsZoneProvider.upsertRecords}. */
+export interface UpsertZoneRecordsInput {
+  /** The zone's domain, as {@link DnsZoneProvider.ensureZone} takes it. */
+  zone: string;
+  records: readonly ZoneRecord[];
+}
+
+/** The input of {@link DnsZoneProvider.deleteRecords}. */
+export interface DeleteZoneRecordsInput {
+  /** The zone's domain, as {@link DnsZoneProvider.ensureZone} takes it. */
+  zone: string;
+  filter: ZoneRecordFilter;
+}
+
 /**
  * Forward DNS zones and their records, for the integrations that write DNS
  * for a service: a mail domain's MX, SPF, DKIM and DMARC records (§11.3 of
  * integration-first.md). Reverse DNS stays with the `dns` port.
  *
- * A zone is named by its domain, and a domain with or without its trailing
- * dot names the same zone.
+ * A zone is named by its domain, and neither the domain's case nor its
+ * trailing dot changes the zone it names.
+ *
+ * `upsertRecords`, `deleteRecords` and `exportZone` must reject with a
+ * `PortError` of the `dnsZones` port for a zone that does not exist, so a
+ * caller must call `ensureZone` first.
  *
  * Every implementation must make `ensureZone` and `upsertRecords` idempotent,
  * and must let `deleteRecords` succeed for records that do not exist; the
  * `dnsZones` contract suite of `@virtbase/integration-testing` checks these
- * promises and the round trip through `exportZone`.
+ * promises, the rejection for a missing zone, the case and trailing dot of
+ * zone and record names, and the round trip through `exportZone`.
  */
 export interface DnsZoneProvider {
   /** Every zone the provider serves under this installation's credentials. */
@@ -75,16 +94,16 @@ export interface DnsZoneProvider {
    * exists. Records of the same name and type with other content stay, so a
    * second MX is added next to the first rather than replacing it.
    */
-  upsertRecords(zone: string, records: readonly ZoneRecord[]): Promise<void>;
+  upsertRecords(input: UpsertZoneRecordsInput): Promise<void>;
   /**
    * Removes the records `filter` matches. Succeeds when it matches none, so a
    * cleanup that is repeated, or runs after someone else removed the records,
    * does not fail.
    */
-  deleteRecords(zone: string, filter: ZoneRecordFilter): Promise<void>;
+  deleteRecords(input: DeleteZoneRecordsInput): Promise<void>;
   /**
-   * Every record of the zone. It must include the records the provider
-   * creates itself, such as SOA and NS.
+   * Every record of the zone. It must include the SOA record the provider
+   * creates with the zone.
    */
   exportZone(zone: string): Promise<ZoneRecord[]>;
 }
