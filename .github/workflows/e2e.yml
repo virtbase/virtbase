@@ -63,9 +63,7 @@ jobs:
           HOSTS
 
       # `packages/db`'s scripts run through `bun --env-file ../../.env`, so the
-      # file has to exist. CONFIG_ENCRYPTION_KEY is left out on purpose: without
-      # it the registry falls back to DisabledConfigSource and every integration
-      # reports as unavailable, so no third-party credentials are needed.
+      # file has to exist.
       - name: Write the environment file
         run: |
           cat > .env <<'ENVFILE'
@@ -74,6 +72,7 @@ jobs:
           NEXT_PUBLIC_APP_DOMAIN=virtbase.com
           BETTER_AUTH_SECRET=e2e-only-secret-not-used-outside-ci
           NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_test_00000000000000000000000000
+          CONFIG_ENCRYPTION_KEY=ZTJlLW9ubHktY29uZmlnLWtleS1uZXZlci1zZWNyZXQ=
           ENVFILE
 
       - name: Run migrations

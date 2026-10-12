@@ -303,9 +303,11 @@ inlined into a browser bundle; *proxy* = `apps/web/src/proxy.ts` and
   (module load); packages/api/src/orders/order-secrets.ts:30-33 (per call -
   encrypts the customer's initial root password); packages/api/src/abuse/mailbox/address.ts:42
   (per call, fallback HMAC key for case addresses).
-- Set in: .env.example:26 (empty), turbo.json:16. Deliberately absent from CI
-  (ci.yml:151-153, e2e.yml:66-68). Local `.env`: **not present** (integrations
-  run disabled locally).
+- Set in: .env.example:26 (empty), turbo.json:16, e2e.yml:75 (a fixed test
+  key that is the base64 of an ASCII string, so the integration specs can
+  configure integrations). Deliberately absent from ci.yml:151-153. Local
+  `.env`: **not present** (integrations run disabled locally, and the
+  `integrations` Playwright project skips).
 - Why bootstrap: needed to decrypt anything in `integration_secrets`; it is the
   root of R7's envelope encryption.
 
