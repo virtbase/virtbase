@@ -17,12 +17,14 @@
 
 import { describe, expect, test } from "bun:test";
 import type {
+  ActionConfirmation,
   ActionResult,
   OperationResult,
   ProviderStatus,
   ProvisioningProduct,
   ProvisioningProvider,
   ProvisionResult,
+  ServiceAction,
   ServiceRef,
   SuspensionReason,
 } from "@virtbase/ports";
@@ -35,6 +37,37 @@ import {
 } from "../provisioning";
 
 interface Defects {
+  /** Lists no product kind. */
+  servesNoKind?: boolean;
+  /** Describes a product field the product schema has no key for. */
+  productFieldWithoutKey?: boolean;
+  /** Renders the root password, a secret key, as a text field. */
+  secretAsText?: boolean;
+  /** Describes an order schema that rejects every hostname it is given. */
+  orderSchemaRejectsConfig?: boolean;
+  /** Rejects every order, a valid one included. */
+  rejectsEverything?: boolean;
+  /**
+   * Answers `pending` with a provider ref that `status()` later reports
+   * differently.
+   */
+  reportsOtherProviderRef?: boolean;
+  /** Counts a read of an active service that directly follows another one. */
+  countsRepeatedReads?: boolean;
+  /** Lifts the last suspension without powering the guest on. */
+  neverPowersOn?: boolean;
+  /** Suspends the service for good instead of terminating it. */
+  terminateSuspends?: boolean;
+  /** Describes two actions under one key. */
+  duplicatesActionKey?: boolean;
+  /** Describes an action field its schema has no key for. */
+  actionFieldWithoutKey?: boolean;
+  /** Describes an action with a confirmation level the port does not know. */
+  unknownConfirmation?: boolean;
+  /** Describes `longRunning` as text. */
+  longRunningAsText?: boolean;
+  /** Quotes in a currency ISO 4217 does not list. */
+  quotesUnknownCurrency?: boolean;
   /** Creates another service for a repeated provision. */
   provisionsTwice?: boolean;
   /** Answers `pending` with a negative wait. */
@@ -104,7 +137,9 @@ interface FakeService {
   productId: string;
   state: "installing" | "running" | "failed" | "terminating" | "terminated";
   suspensions: SuspensionReason[];
+  poweredOn: boolean;
   powerOns: number;
+  repeatedReads: number;
   terminations: number;
   renewedMonths: number;
   planChanges: number;
@@ -122,13 +157,18 @@ const referenceProvider = async (
   const services: FakeService[] = [];
   const checkAfterMs = defects.waitsNegative ? -1 : 1_000;
 
+  /** The provider ref a `pending` provision answers, under `reportsOtherProviderRef`. */
+  const earlyRef = (service: FakeService) => `${service.providerRef}-early`;
+
   const find = ({ serviceId, providerRef }: ServiceRef): FakeService => {
     const service = [...services]
       .reverse()
       .find(
         (candidate) =>
           candidate.serviceId === serviceId &&
-          (providerRef === null || candidate.providerRef === providerRef),
+          (providerRef === null ||
+            candidate.providerRef === providerRef ||
+            earlyRef(candidate) === providerRef),
       );
     if (!service) throw portError(`no service ${serviceId}`);
     return service;
@@ -139,8 +179,14 @@ const referenceProvider = async (
     const index = service.suspensions.indexOf(reason);
     if (defects.liftsEveryReason) service.suspensions = [];
     else if (index >= 0) service.suspensions.splice(index, 1);
-    if (service.suspensions.length === 0) service.powerOns += 1;
+    if (service.suspensions.length === 0 && !defects.neverPowersOn) {
+      service.poweredOn = true;
+      service.powerOns += 1;
+    }
   };
+
+  /** Whether the last call to the provider was a read of an active service. */
+  let lastCallReadActive = false;
 
   /**
    * One command's answers by idempotency key: the effect runs once per key,
@@ -169,10 +215,13 @@ const referenceProvider = async (
   const actionOnce = answersOf<ActionResult>();
 
   const full: ProvisioningProvider = {
-    kinds: ["game_server"],
+    kinds: defects.servesNoKind ? [] : ["game_server"],
     productConfig: {
       schema: ProductConfigSchema,
       fields: [
+        ...(defects.productFieldWithoutKey
+          ? [{ key: "region", label: "Region", widget: "text" as const }]
+          : []),
         {
           key: "location",
           label: "Location",
@@ -185,20 +234,23 @@ const referenceProvider = async (
       ],
     },
     describeOrder: async () => ({
-      schema: OrderConfigSchema,
+      schema: defects.orderSchemaRejectsConfig
+        ? OrderConfigSchema.extend({ hostname: z.string().min(100) })
+        : OrderConfigSchema,
       fields: [
         { key: "hostname", label: "Hostname", widget: "text" },
         {
           key: "rootPassword",
           label: "Root password",
-          widget: "password",
+          widget: defects.secretAsText ? "text" : "password",
           optional: true,
         },
       ],
       secretKeys: ["rootPassword"],
     }),
     validateOrder: async ({ config }) =>
-      OrderConfigSchema.parse(config).hostname === TAKEN_HOSTNAME &&
+      (OrderConfigSchema.parse(config).hostname === TAKEN_HOSTNAME ||
+        defects.rejectsEverything) &&
       !defects.approvesEverything
         ? {
             status: "invalid",
@@ -207,7 +259,7 @@ const referenceProvider = async (
         : { status: "valid" },
     quote: async () => ({
       amount: defects.quotesFloats ? 12.5 : 1250,
-      currency: "EUR",
+      currency: defects.quotesUnknownCurrency ? "EUX" : "EUR",
     }),
     provision: ({ serviceId, idempotencyKey, product, config }) =>
       provisionOnce(idempotencyKey, defects.provisionsTwice, () => {
@@ -223,7 +275,9 @@ const referenceProvider = async (
           productId: product.id,
           state: hostname === TAKEN_HOSTNAME ? "failed" : "installing",
           suspensions: [],
+          poweredOn: true,
           powerOns: 0,
+          repeatedReads: 0,
           terminations: 0,
           renewedMonths: 0,
           planChanges: 0,
@@ -234,10 +288,24 @@ const referenceProvider = async (
           service.state = "running";
           return { status: "active", providerRef: service.providerRef };
         }
-        return { status: "pending", checkAfterMs, providerRef: null };
+        return {
+          status: "pending",
+          checkAfterMs,
+          providerRef: defects.reportsOtherProviderRef
+            ? earlyRef(service)
+            : null,
+        };
       }),
     status: async (ref): Promise<ProviderStatus> => {
       const service = find(ref);
+      const readActive =
+        service.state === "running" &&
+        service.poweredOn &&
+        service.suspensions.length === 0;
+      if (defects.countsRepeatedReads && readActive && lastCallReadActive) {
+        service.repeatedReads += 1;
+      }
+      lastCallReadActive = readActive;
       switch (service.state) {
         case "installing":
         case "terminating":
@@ -247,7 +315,7 @@ const referenceProvider = async (
         case "terminated":
           return { status: "terminated" };
         case "running":
-          return service.suspensions.length > 0
+          return service.suspensions.length > 0 || !service.poweredOn
             ? {
                 status: "suspended",
                 reasons: [...new Set(service.suspensions)],
@@ -269,6 +337,7 @@ const referenceProvider = async (
         ) {
           service.suspensions.push(reason);
         }
+        service.poweredOn = false;
         return true;
       });
     },
@@ -287,6 +356,11 @@ const referenceProvider = async (
       terminateOnce(idempotencyKey, defects.terminatesTwice, () => {
         const service = find(ref);
         service.terminations += 1;
+        if (defects.terminateSuspends) {
+          service.suspensions = ["operator"];
+          service.poweredOn = false;
+          return { status: "done" };
+        }
         if (service.state === "terminated") return { status: "done" };
         service.state = immediate ? "terminated" : "terminating";
         return immediate
@@ -309,15 +383,27 @@ const referenceProvider = async (
         service.planChanges += 1;
         return { status: "done" };
       }),
-    actions: async () => [
-      {
+    actions: async () => {
+      const panelLogin: ServiceAction = {
         key: "panel-login",
         label: defects.unlabelledAction ? "" : "Open the panel",
-        form: { schema: z.object({}), fields: [] },
-        confirmation: "none",
-        longRunning: false,
-      },
-    ],
+        form: {
+          schema: z.object({}),
+          fields: defects.actionFieldWithoutKey
+            ? [{ key: "reason", label: "Reason", widget: "text" }]
+            : [],
+        },
+        confirmation: defects.unknownConfirmation
+          ? ("maybe" as unknown as ActionConfirmation)
+          : "none",
+        longRunning: defects.longRunningAsText
+          ? ("no" as unknown as boolean)
+          : false,
+      };
+      return defects.duplicatesActionKey
+        ? [panelLogin, { ...panelLogin, label: "Open the panel again" }]
+        : [panelLogin];
+    },
     runAction: ({ idempotencyKey, ...ref }) =>
       actionOnce(idempotencyKey, defects.runsActionTwice, () => {
         find(ref).actionRuns += 1;
@@ -326,9 +412,21 @@ const referenceProvider = async (
   };
 
   const { renew, changePlan, quote, ...required } = full;
-  const provider: ProvisioningProvider = minimal
+  const chosen: ProvisioningProvider = minimal
     ? { ...required, actions: async () => [] }
     : full;
+  // Every call but status() breaks a run of reads for countsRepeatedReads.
+  const provider = Object.fromEntries(
+    Object.entries(chosen).map(([name, member]) => [
+      name,
+      typeof member === "function" && name !== "status"
+        ? (...args: unknown[]) => {
+            lastCallReadActive = false;
+            return (member as (...args: unknown[]) => unknown)(...args);
+          }
+        : member,
+    ]),
+  ) as unknown as ProvisioningProvider;
 
   return {
     provider,
@@ -369,6 +467,76 @@ describeProvisioningProvider("a provider without optional methods", () =>
 
 describe("runProvisioningContract", () => {
   const cases: [string, Defects, string][] = [
+    [
+      "lists no product kind",
+      { servesNoKind: true },
+      "kinds lists the product's kind",
+    ],
+    [
+      "describes a product field without a schema key",
+      { productFieldWithoutKey: true },
+      "productConfig is a complete form that accepts the product's config",
+    ],
+    [
+      "renders a secret key as a text field",
+      { secretAsText: true },
+      "describeOrder() uses the password widget for each secret key",
+    ],
+    [
+      "describes an order schema that rejects the order configuration",
+      { orderSchemaRejectsConfig: true },
+      "describeOrder() accepts the order configuration",
+    ],
+    [
+      "rejects a valid order",
+      { rejectsEverything: true },
+      "validateOrder() accepts an order the provider carries out",
+    ],
+    [
+      "answers pending with a provider ref status() contradicts",
+      { reportsOtherProviderRef: true },
+      "provision() settles active, through status() while it answers pending",
+    ],
+    [
+      "changes its state when an active service is read twice",
+      { countsRepeatedReads: true },
+      "status() changes nothing at the provider",
+    ],
+    [
+      "never powers the guest on again",
+      { neverPowersOn: true },
+      "unsuspend() lifts what suspend() did for the same reason",
+    ],
+    [
+      "suspends a service it was told to terminate",
+      { terminateSuspends: true },
+      "terminate() settles terminated",
+    ],
+    [
+      "describes two actions under one key",
+      { duplicatesActionKey: true },
+      "actions() gives each action a unique, non-empty key",
+    ],
+    [
+      "describes an action field without a schema key",
+      { actionFieldWithoutKey: true },
+      "actions() gives each action a complete form",
+    ],
+    [
+      "describes an action with an unknown confirmation level",
+      { unknownConfirmation: true },
+      "actions() gives each action a known confirmation level",
+    ],
+    [
+      "describes longRunning as text",
+      { longRunningAsText: true },
+      "actions() says of each action whether it is long-running",
+    ],
+    [
+      "quotes in a currency ISO 4217 does not list",
+      { quotesUnknownCurrency: true },
+      "quote(), where present, prices in integer minor units with an ISO 4217 currency",
+    ],
     [
       "provisions again for a repeated key",
       { provisionsTwice: true },
@@ -432,7 +600,7 @@ describe("runProvisioningContract", () => {
     [
       "describes an action without a label",
       { unlabelledAction: true },
-      "actions() describes each action with a unique key, a label, a complete form and a confirmation level",
+      "actions() gives each action a label",
     ],
     [
       "quotes in major units",

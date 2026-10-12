@@ -25,6 +25,7 @@ import type {
   ProvisioningProduct,
   ProvisioningProvider,
   ProvisionResult,
+  ServiceAction,
   ServiceActor,
   ServiceRef,
 } from "@virtbase/ports";
@@ -166,6 +167,14 @@ const provisionActive = async (
   return { serviceId: SERVICE_ID, providerRef: status.providerRef };
 };
 
+/** The actions the customer may run on a freshly provisioned, active service. */
+const listActions = async (
+  setup: ProvisioningContractSetup,
+): Promise<ServiceAction[]> => {
+  const ref = await provisionActive(setup);
+  return setup.provider.actions({ ...ref, actor: ACTOR });
+};
+
 /**
  * Runs `command` twice, letting each run settle, and expects the second run
  * to leave the fake as the first one left it.
@@ -202,17 +211,28 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
     },
   },
   {
-    title:
-      "describeOrder() is a complete form, with password fields for its secret keys, that accepts the order configuration",
-    run: async ({ provider, product, config }) => {
+    title: "describeOrder() is a complete form",
+    run: async ({ provider, product }) => {
       const form = await provider.describeOrder({ product });
       expect(
-        checkFormDescriptor({
-          label: "describeOrder()",
-          descriptor: form,
-          secretKeys: form.secretKeys,
-        }),
+        checkFormDescriptor({ label: "describeOrder()", descriptor: form }),
       ).toEqual([]);
+    },
+  },
+  {
+    title: "describeOrder() uses the password widget for each secret key",
+    run: async ({ provider, product }) => {
+      const form = await provider.describeOrder({ product });
+      for (const key of form.secretKeys) {
+        const field = form.fields.find((candidate) => candidate.key === key);
+        expect(field?.widget).toBe("password");
+      }
+    },
+  },
+  {
+    title: "describeOrder() accepts the order configuration",
+    run: async ({ provider, product, config }) => {
+      const form = await provider.describeOrder({ product });
       expect(form.schema.safeParse(config).success).toBe(true);
     },
   },
@@ -472,13 +492,16 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
     run: async (setup) => {
       const { provider } = setup;
       const ref = await provisionActive(setup);
-      await settleAnswer(setup, {
+      const settled = await settleAnswer(setup, {
         ref,
         answer: await provider.terminate({
           ...ref,
           idempotencyKey: deriveKey("terminate"),
         }),
       });
+      // "terminate() settles terminated" fails a provider that does not, so
+      // this check starts only from a terminated service.
+      if (settled.status !== "terminated") return;
       // A provider may reject a command for a terminated service; the check
       // reads only the status afterwards.
       await provider
@@ -547,27 +570,50 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
       const price = await provider.quote({ product, config, periodMonths: 12 });
       expect(Number.isInteger(price.amount)).toBe(true);
       expect(price.amount).toBeGreaterThanOrEqual(0);
-      expect(price.currency).toMatch(/^[A-Z]{3}$/);
+      expect(Intl.supportedValuesOf("currency")).toContain(price.currency);
     },
   },
   {
-    title:
-      "actions() describes each action with a unique key, a label, a complete form and a confirmation level",
+    title: "actions() gives each action a unique, non-empty key",
     run: async (setup) => {
-      const ref = await provisionActive(setup);
-      const actions = await setup.provider.actions({ ...ref, actor: ACTOR });
-      const keys = actions.map((action) => action.key);
+      const keys = (await listActions(setup)).map((action) => action.key);
       expect(new Set(keys).size).toBe(keys.length);
-      for (const action of actions) {
-        expect(action.key).not.toBe("");
+      expect(keys).not.toContain("");
+    },
+  },
+  {
+    title: "actions() gives each action a label",
+    run: async (setup) => {
+      for (const action of await listActions(setup)) {
         expect(action.label).not.toBe("");
+      }
+    },
+  },
+  {
+    title: "actions() gives each action a complete form",
+    run: async (setup) => {
+      for (const action of await listActions(setup)) {
         expect(
           checkFormDescriptor({
             label: `action ${action.key}`,
             descriptor: action.form,
           }),
         ).toEqual([]);
+      }
+    },
+  },
+  {
+    title: "actions() gives each action a known confirmation level",
+    run: async (setup) => {
+      for (const action of await listActions(setup)) {
         expect(Object.hasOwn(CONFIRMATIONS, action.confirmation)).toBe(true);
+      }
+    },
+  },
+  {
+    title: "actions() says of each action whether it is long-running",
+    run: async (setup) => {
+      for (const action of await listActions(setup)) {
         expect(typeof action.longRunning).toBe("boolean");
       }
     },
@@ -607,13 +653,16 @@ const PROVISIONING_CHECKS: Check<ProvisioningContractSetup>[] = [
  * must return a provider on a fake that holds no service.
  *
  * It proves the promises of `ProvisioningProvider`: the product and order
- * forms are complete; `validateOrder` accepts what the provider carries out
- * and rejects what `provision` fails on; a `pending` answer settles through
- * `status()`, and every `pending` answer of a command or of `status()` waits
- * a finite, non-negative time; every command repeated with the same key
- * has no further effect; `status()` changes nothing; suspensions are held
- * per reason and lifted per reason; `terminate` is final; `quote` prices in
- * integer minor units; and `actions()` describes every action.
+ * forms are complete, and the order form's secret keys use the password
+ * widget; `validateOrder` accepts what the provider carries out and rejects
+ * what `provision` fails on; a `pending` answer settles through `status()`,
+ * and every `pending` answer of a command or of `status()` waits a finite,
+ * non-negative time; every command repeated with the same key has no further
+ * effect; `status()` changes nothing; suspensions are held per reason and
+ * lifted per reason; `terminate` is final; `quote` prices in integer minor
+ * units with an ISO 4217 currency; and `actions()` gives every action a
+ * unique key, a label, a complete form, a known confirmation level and
+ * whether it is long-running.
  */
 export const describeProvisioningProvider = (
   name: string,
