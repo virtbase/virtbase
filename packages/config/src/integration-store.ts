@@ -156,20 +156,31 @@ export class IntegrationConfigStore {
     enabled?: boolean;
     settings?: Record<string, unknown>;
   }): Promise<void> {
-    await this.db
-      .insert(integrationInstallations)
-      .values({
-        integrationId: input.integrationId,
-        enabled: input.enabled ?? false,
-        settings: input.settings ?? {},
-      })
-      .onConflictDoUpdate({
+    const set = {
+      ...(input.enabled === undefined ? {} : { enabled: input.enabled }),
+      ...(input.settings === undefined ? {} : { settings: input.settings }),
+    };
+
+    const insert = this.db.insert(integrationInstallations).values({
+      integrationId: input.integrationId,
+      enabled: input.enabled ?? false,
+      settings: input.settings ?? {},
+    });
+
+    // Drizzle throws "No values to set" for an `onConflictDoUpdate` with an
+    // empty `set`, which is what `saveIntegrationSecretsAction` passes when it
+    // creates the row before the first secret.
+    if (0 === Object.keys(set).length) {
+      await insert.onConflictDoNothing({
         target: integrationInstallations.integrationId,
-        set: {
-          ...(input.enabled === undefined ? {} : { enabled: input.enabled }),
-          ...(input.settings === undefined ? {} : { settings: input.settings }),
-        },
       });
+      return;
+    }
+
+    await insert.onConflictDoUpdate({
+      target: integrationInstallations.integrationId,
+      set,
+    });
   }
 
   /**

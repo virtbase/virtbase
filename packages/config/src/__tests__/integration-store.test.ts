@@ -76,6 +76,27 @@ describe("IntegrationConfigStore", () => {
     });
   });
 
+  test("creates an installation from its id alone, as the secrets form does before the first secret", async () => {
+    await store.upsert({ integrationId: "lexware" });
+
+    expect(await store.find("lexware")).toEqual({
+      integrationId: "lexware",
+      enabled: false,
+      settings: {},
+    });
+  });
+
+  test("leaves an existing installation unchanged when given its id alone, however often", async () => {
+    await store.upsert({ integrationId: "powerdns" });
+    await store.upsert({ integrationId: "powerdns" });
+
+    expect(await store.find("powerdns")).toEqual({
+      integrationId: "powerdns",
+      enabled: false,
+      settings: { apiUrl: "https://ns1.example.com:8081" },
+    });
+  });
+
   test("round-trips secrets through envelope encryption", async () => {
     await store.setSecrets("powerdns", { apiKey: "not-a-real-key" });
 
