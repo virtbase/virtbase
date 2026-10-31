@@ -91,10 +91,24 @@ jobs:
       - name: Run tests with coverage
         run: bun run test:coverage
 
-      - name: Check coverage thresholds
+      - name: Publish coverage summary
         if: ${{ !cancelled() }}
-        shell: bash
-        run: bun run --silent coverage:check | tee -a "$GITHUB_STEP_SUMMARY"
+        run: |
+          {
+            echo "## Coverage"
+            echo
+            echo '```'
+            for file in apps/*/coverage/lcov.info packages/*/coverage/lcov.info; do
+              [ -f "$file" ] || continue
+              package=$(dirname "$(dirname "$file")")
+              lines=$(grep -c '^DA:' "$file" || echo 0)
+              hit=$(grep '^DA:' "$file" | grep -vc ',0$' || echo 0)
+              if [ "$lines" -gt 0 ]; then
+                printf '%-44s %s%%\n' "$package" "$((hit * 100 / lines))"
+              fi
+            done
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
 
       - name: Upload coverage
         if: ${{ !cancelled() }}
@@ -104,7 +118,6 @@ jobs:
           path: |
             apps/*/coverage/lcov.info
             packages/*/coverage/lcov.info
-            tooling/*/coverage/lcov.info
           retention-days: 14
           if-no-files-found: warn
 

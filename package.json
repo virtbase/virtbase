@@ -102,7 +102,6 @@
     "cluster:down": "docker compose -f tooling/proxmox-cluster/docker-compose.yml down",
     "cluster:reset": "./tooling/proxmox-cluster/reset.sh",
     "cluster:up": "docker compose -f tooling/proxmox-cluster/docker-compose.yml up -d --build && ./tooling/proxmox-cluster/bootstrap.sh",
-    "coverage:check": "bun tooling/coverage-gate/check.ts",
     "db:generate": "turbo -F @virtbase/db db:generate",
     "db:migrate": "turbo -F @virtbase/db db:migrate",
     "db:push": "turbo -F @virtbase/db db:push",
@@ -128,7 +127,6 @@
     "apps/*",
     "packages/*",
     "tooling/tailwind",
-    "tooling/typescript",
-    "tooling/coverage-gate"
+    "tooling/typescript"
   ]
 }

@@ -5,4 +5,6 @@
 # as `fetch`, which breaks the suites that install their own `fetch` mock.
 preload = ["@virtbase/test-utils/preload"]
 
-coveragePathIgnorePatterns = ["../**", "**/__tests__/**"]
+# The DOM preload and the render helper are harness, not this app's code,
+# but they land in its coverage report because it imports them.
+coveragePathIgnorePatterns = ["../../packages/test-utils/src/**"]

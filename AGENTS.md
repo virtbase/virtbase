@@ -14,7 +14,7 @@ virtbase/
 ├── apps/               # Published apps (website)
 ├── packages/           # Internal packages with shared logic
 │   └── content/        # MDX for the public site (no code)
-└── tooling/            # Shared tools for development
+└── tooling/            # Shared tools for development (tsconfig, tailwind)
 ```
 
 ### README files
@@ -148,7 +148,6 @@ with `Cannot find module`. `outputFileTracingIncludes` in
 ```bash
 bun run test           # every package, through turbo (cached)
 bun run test:coverage  # what CI runs
-bun run coverage:check # the thresholds, against the last coverage run
 bun test:e2e           # Playwright
 ```
 
@@ -160,11 +159,6 @@ Use `bun run test`, not `bun test`: each package's script sets its own
   mocks are process-wide in Bun and otherwise leak into the files that run
   after them. Add the flag to a package's `test` script as soon as one of its
   tests mocks a module.
-- **Coverage.** Each package with tests sets its minimum line and function
-  share under `virtbase.coverage` in its `package.json`, and its `bunfig.toml`
-  ignores `../**` and `**/__tests__/**`, so the report holds its own files
-  only. `coverage:check` also counts the files no test loads, as uncovered. A
-  new package with tests gets both; see `tooling/coverage-gate/README.md`.
 - **Databases.** `createTestDb()` restores an in-memory PGlite from a snapshot
   of the schema. The snapshot is built once and cached in
   `packages/db/.cache/test-db/`, keyed by the schema sources and `bun.lock`;

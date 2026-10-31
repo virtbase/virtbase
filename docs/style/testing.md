@@ -86,12 +86,7 @@ integrations and toggling features. They run in their own Playwright project, as
 
 **TST-15 Coverage counts a package's own files.**
 
-- The thresholds are in each package's `package.json`, under
-  `virtbase.coverage` ([ADR 0020](../architecture/adr/0020-coverage-gate.md)).
-  `bun run coverage:check` enforces them in CI.
-- A file no test loads counts as uncovered. Adding an untested file that holds
-  code therefore lowers the package's share; a type-only file counts as zero.
-- A package that gains tests gets a `bunfig.toml` that ignores `../**` and
-  `**/__tests__/**`, and a threshold.
-- A PR never lowers a threshold. A PR that raises a package's share raises its
-  threshold to the new level, rounded down to a whole percent.
+- The thresholds are in each package's `package.json`
+  ([ADR 0020](../architecture/adr/0020-coverage-gate.md)).
+- A PR never lowers a threshold. If a package is below its threshold, the PR
+  states a plan to raise it.

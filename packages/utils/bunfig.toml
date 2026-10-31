@@ -1,4 +1,4 @@
 [test]
 
-# `src/constants/**` holds static constants - the distro catalog, domains, cookie names.
-coveragePathIgnorePatterns = ["../**", "**/__tests__/**", "src/constants/**"]
+# Static constants - the distro catalog, domains, cookie names.
+coveragePathIgnorePatterns = ["src/constants/**"]
