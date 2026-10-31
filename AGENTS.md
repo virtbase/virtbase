@@ -1,7 +1,6 @@
 # Virtbase Development Guide
 
-> **Note:** `CLAUDE.md` contains the single line `@AGENTS.md`, which makes Claude
-> Code load this file. Edit this file, never `CLAUDE.md`.
+> **Note:** `CLAUDE.md` is a symlink to `AGENTS.md`. They are the same file.
 
 ## Codebase structure
 
