@@ -22,10 +22,10 @@ import type {
   NotificationAudience,
   NotificationSeverity,
 } from "@virtbase/ports";
-import { deliverNotification } from "./deliver";
-import { matchesAnyKey, meetsSeverity } from "./match";
-import { notificationTargetStore } from "./store";
-import type { NotificationParams } from "./text";
+import { deliverNotification } from "./deliver.ts";
+import { matchesAnyKey, meetsSeverity } from "./match.ts";
+import { notificationTargetStore } from "./store.ts";
+import type { NotificationParams } from "./text.ts";
 
 export interface DispatchNotificationInput {
   /** Dotted key, e.g. `abuse.case.opened`. Must have text registered for it. */
@@ -99,7 +99,7 @@ const resolveCandidates = async (
 ): Promise<Candidate[]> => {
   // See `deliver.ts`: the registry reaches back into this module, so it is
   // resolved at call time rather than imported.
-  const { integrations } = await import("../integrations");
+  const { integrations } = await import("../integrations/index.ts");
   const channels = await integrations.resolveAll("notifications");
 
   if ("user" === input.audience.kind) {

@@ -17,17 +17,17 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils/create-id";
-import { abuseCases } from "./abuse-cases";
+import { createId } from "../utils/create-id.ts";
+import { abuseCases } from "./abuse-cases.ts";
 import {
   signalAttributionEnum,
   signalSeverityEnum,
   signalStateEnum,
   signalSubjectKindEnum,
-} from "./abuse-enums";
-import { abuseRules } from "./abuse-rules";
-import { users } from "./auth";
-import { servers } from "./servers";
+} from "./abuse-enums.ts";
+import { abuseRules } from "./abuse-rules.ts";
+import { users } from "./auth.ts";
+import { servers } from "./servers.ts";
 
 /**
  * Every normalised inbound signal, from every source, kept.

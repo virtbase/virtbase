@@ -21,7 +21,7 @@ import { Alert, AlertDescription, AlertTitle } from "@virtbase/ui/alert";
 import { ClientOnly } from "@virtbase/ui/client-only";
 import { LucideTriangleAlert } from "@virtbase/ui/icons/index";
 import { useExtracted } from "next-intl";
-import { useGuestFirewall } from "../hooks/use-guest-firewall";
+import { useGuestFirewall } from "../hooks/use-guest-firewall.ts";
 
 /**
  * Warns that a second firewall is running inside the server.

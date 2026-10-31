@@ -36,7 +36,7 @@ const testDb: TestDb = await createTestDb();
 mock.module("@virtbase/db/client", () => ({ db: testDb }));
 mock.module("workflow/api", () => ({ start: async () => {} }));
 
-const billing = await import("../index");
+const billing = await import("../index.ts");
 
 afterAll(async () => {
   await testDb.$client.close();

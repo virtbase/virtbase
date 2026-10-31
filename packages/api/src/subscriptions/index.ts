@@ -15,10 +15,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./claim-renewal";
-export * from "./create-subscription";
-export * from "./notify-suspended-customers";
-export * from "./period";
-export * from "./subject-subscription";
-export * from "./suspend-terminated-servers";
-export * from "./transition-subscription";
+export * from "./claim-renewal.ts";
+export * from "./create-subscription.ts";
+export * from "./notify-suspended-customers.ts";
+export * from "./period.ts";
+export * from "./subject-subscription.ts";
+export * from "./suspend-terminated-servers.ts";
+export * from "./transition-subscription.ts";

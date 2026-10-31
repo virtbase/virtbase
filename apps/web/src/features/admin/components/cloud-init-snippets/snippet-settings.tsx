@@ -46,13 +46,13 @@ import { useExtracted } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
-import { updateSnippetAction } from "../../api/cloud-init-snippets/mutate-snippet";
-import { definedSnippetTargets } from "../../lib/cloud-init-snippets/targets";
-import { SettingsCard } from "../proxmox-templates/cards/settings-card";
+import { updateSnippetAction } from "../../api/cloud-init-snippets/mutate-snippet.ts";
+import { definedSnippetTargets } from "../../lib/cloud-init-snippets/targets.ts";
+import { SettingsCard } from "../proxmox-templates/cards/settings-card.tsx";
 
 // CodeMirror is ~200 KB gzipped and is wanted on exactly this route, so it is
 // loaded on demand rather than bundled into every admin page.
-const SnippetEditor = dynamic(() => import("./snippet-editor"), {
+const SnippetEditor = dynamic(() => import("./snippet-editor.tsx"), {
   ssr: false,
   loading: () => <Skeleton className="h-[420px] w-full" />,
 });

@@ -37,9 +37,9 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@virtbase/ui/tooltip";
 import type { ColumnDef, DataTableRowAction } from "@virtbase/ui/types";
 import NextLink from "next/link";
 import { useExtracted, useFormatter } from "next-intl";
-import type { getTemplatesList } from "@/features/admin/api/proxmox-templates/get-templates-list";
-import { paths } from "@/lib/paths";
-import { OperatingSystemIcon } from "@/ui/operating-system-icon";
+import type { getTemplatesList } from "@/features/admin/api/proxmox-templates/get-templates-list.ts";
+import { paths } from "@/lib/paths.ts";
+import { OperatingSystemIcon } from "@/ui/operating-system-icon.tsx";
 
 export type TemplatesTableColumn = Awaited<
   ReturnType<typeof getTemplatesList>

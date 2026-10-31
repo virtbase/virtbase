@@ -29,7 +29,7 @@ import { ResponsiveDialog } from "@virtbase/ui/responsive-dialog";
 import { Spinner } from "@virtbase/ui/spinner";
 import { useExtracted } from "next-intl";
 import { useEffect, useState, useTransition } from "react";
-import { ShowPasswordAddon } from "@/ui/input-group-addons";
+import { ShowPasswordAddon } from "@/ui/input-group-addons/index.tsx";
 
 export default function ConfirmPasswordDialog({
   onSubmit,

@@ -28,7 +28,7 @@ import {
   SetDefaultPaymentMethodInputSchema,
   SetDefaultPaymentMethodOutputSchema,
 } from "@virtbase/validators";
-import type { PaymentMethodSummary } from "../payment-methods";
+import type { PaymentMethodSummary } from "../payment-methods/index.ts";
 import {
   listPaymentMethods,
   PaymentCapabilityUnavailableError,
@@ -36,8 +36,8 @@ import {
   requirePaymentCapability,
   SAVED_CREDENTIAL_PROVIDER_ID,
   setDefaultPaymentMethod,
-} from "../payment-methods";
-import { protectedProcedure } from "../trpc";
+} from "../payment-methods/index.ts";
+import { protectedProcedure } from "../trpc.ts";
 
 /**
  * Where the provider sends the customer once the credential is saved.

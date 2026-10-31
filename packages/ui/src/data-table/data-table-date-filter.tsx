@@ -22,12 +22,12 @@ import type { RowData } from "@tanstack/react-table";
 import { CalendarIcon, XCircle } from "lucide-react";
 import { useExtracted } from "next-intl";
 import * as React from "react";
-import { Button } from "../button";
-import { Calendar } from "../calendar";
-import { formatDate } from "../lib/format";
-import { Popover, PopoverContent, PopoverTrigger } from "../popover";
-import { Separator } from "../separator";
-import type { Column } from "../types/data-table";
+import { Button } from "../button.tsx";
+import { Calendar } from "../calendar.tsx";
+import { formatDate } from "../lib/format.ts";
+import { Popover, PopoverContent, PopoverTrigger } from "../popover.tsx";
+import { Separator } from "../separator.tsx";
+import type { Column } from "../types/data-table.ts";
 
 type DateSelection = Date[] | DateRange;
 

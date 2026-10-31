@@ -16,7 +16,7 @@
  */
 
 import { expect, test } from "@playwright/test";
-import { appUrl } from "../support/urls";
+import { appUrl } from "../support/urls.ts";
 
 /**
  * The redirect is a cookie-presence check in the proxy, so it needs no session

@@ -29,8 +29,8 @@ import { db } from "@virtbase/db/client";
 import { subnets } from "@virtbase/db/schema";
 import { escapedIlike, getDateIntervalFilter } from "@virtbase/db/utils";
 import { cacheLife, cacheTag } from "next/cache";
-import type { GetSubnetsSchema } from "../../lib/subnets/validations";
-import { verifySession } from "../verify-session";
+import type { GetSubnetsSchema } from "../../lib/subnets/validations.ts";
+import { verifySession } from "../verify-session.ts";
 
 export async function getSubnetsList(input: GetSubnetsSchema) {
   "use cache: private";

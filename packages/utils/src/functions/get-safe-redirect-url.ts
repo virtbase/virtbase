@@ -19,7 +19,7 @@ import {
   ADMIN_HOSTNAMES,
   APP_HOSTNAMES,
   PUBLIC_HOSTNAMES,
-} from "../constants/main";
+} from "../constants/main.ts";
 
 const TRUSTED_REDIRECT_HOSTNAMES = new Set(
   [...PUBLIC_HOSTNAMES, ...APP_HOSTNAMES, ...ADMIN_HOSTNAMES].filter(

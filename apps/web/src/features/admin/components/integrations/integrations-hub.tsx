@@ -18,10 +18,10 @@
 import type { IntegrationCategory } from "@virtbase/integration-sdk";
 import Link from "next/link";
 import { getExtracted } from "next-intl/server";
-import { paths } from "@/lib/paths";
-import type { IntegrationListItem } from "../../api/integrations/get-integrations-list";
-import { getIntegrationsList } from "../../api/integrations/get-integrations-list";
-import { IntegrationIcon } from "./integration-icon";
+import { paths } from "@/lib/paths.ts";
+import type { IntegrationListItem } from "../../api/integrations/get-integrations-list.ts";
+import { getIntegrationsList } from "../../api/integrations/get-integrations-list.ts";
+import { IntegrationIcon } from "./integration-icon.tsx";
 
 /** Section order on the hub. Categories not listed here fall to the end. */
 const CATEGORY_ORDER: IntegrationCategory[] = [

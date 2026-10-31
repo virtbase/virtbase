@@ -27,14 +27,14 @@ import {
 import { LucideCreditCard, LucideTriangleAlert } from "@virtbase/ui/icons";
 import { useExtracted } from "next-intl";
 import { useState } from "react";
-import { useAutoRenewingSubscriptions } from "@/features/account/hooks/billing/auto-renewing-subscriptions";
-import type { PaymentMethodSummary } from "@/features/account/hooks/billing/payment-methods-list";
-import { usePaymentMethodsList } from "@/features/account/hooks/billing/payment-methods-list";
-import { useRemovePaymentMethod } from "@/features/account/hooks/billing/remove-payment-method";
-import { useSetDefaultPaymentMethod } from "@/features/account/hooks/billing/set-default-payment-method";
-import { PaymentMethodItem } from "./payment-method-item";
-import type { AffectedSubscription } from "./remove-payment-method-dialog";
-import { RemovePaymentMethodDialog } from "./remove-payment-method-dialog";
+import { useAutoRenewingSubscriptions } from "@/features/account/hooks/billing/auto-renewing-subscriptions.ts";
+import type { PaymentMethodSummary } from "@/features/account/hooks/billing/payment-methods-list.ts";
+import { usePaymentMethodsList } from "@/features/account/hooks/billing/payment-methods-list.ts";
+import { useRemovePaymentMethod } from "@/features/account/hooks/billing/remove-payment-method.ts";
+import { useSetDefaultPaymentMethod } from "@/features/account/hooks/billing/set-default-payment-method.ts";
+import { PaymentMethodItem } from "./payment-method-item.tsx";
+import type { AffectedSubscription } from "./remove-payment-method-dialog.tsx";
+import { RemovePaymentMethodDialog } from "./remove-payment-method-dialog.tsx";
 
 /**
  * The saved credentials on the account, and the two things you can do to one.

@@ -16,7 +16,7 @@
  */
 
 import { renewDueSubscriptions } from "@virtbase/api/billing";
-import { withCronSecret } from "@/lib/with-cron-secret";
+import { withCronSecret } from "@/lib/with-cron-secret.ts";
 
 /**
  * Collects every subscription whose paid-for period has run out.

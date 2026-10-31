@@ -15,8 +15,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { getAbuseRules } from "../../../api/abuse/get-abuse-rules";
-import { AbuseRulesList } from "./abuse-rules-list";
+import { getAbuseRules } from "../../../api/abuse/get-abuse-rules.ts";
+import { AbuseRulesList } from "./abuse-rules-list.tsx";
 
 export async function AbuseRules() {
   const { rules, knownSources, noTrustedRule } = await getAbuseRules();

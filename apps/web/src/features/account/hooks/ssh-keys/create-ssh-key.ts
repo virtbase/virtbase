@@ -16,8 +16,8 @@
  */
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useTRPC } from "@/lib/trpc/react";
-import { defaultGetSSHKeysListQuery } from "./ssh-keys-list";
+import { useTRPC } from "@/lib/trpc/react.tsx";
+import { defaultGetSSHKeysListQuery } from "./ssh-keys-list.ts";
 
 type TRPC = ReturnType<typeof useTRPC>;
 type Options = Parameters<TRPC["sshKeys"]["create"]["mutationOptions"]>[0];

@@ -29,7 +29,7 @@ import {
   GetServerTemplateGroupsInputSchema,
   GetServerTemplateGroupsOutputSchema,
 } from "@virtbase/validators/server";
-import { serverProcedure } from "../../trpc";
+import { serverProcedure } from "../../trpc.ts";
 
 export const serversTemplateGroupsRouter = {
   get: serverProcedure

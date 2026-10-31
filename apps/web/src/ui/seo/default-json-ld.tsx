@@ -17,9 +17,9 @@
 
 import { APP_NAME, PUBLIC_DOMAIN, SUPPORT_EMAIL } from "@virtbase/utils";
 import type { Organization, WebSite } from "schema-dts";
-import { locales } from "@/i18n/config";
-import { SOCIALS } from "@/lib/socials";
-import JsonLd from "./json-ld";
+import { locales } from "@/i18n/config.ts";
+import { SOCIALS } from "@/lib/socials.ts";
+import JsonLd from "./json-ld.tsx";
 
 /**
  * Stable node identifiers for the site-wide graph.

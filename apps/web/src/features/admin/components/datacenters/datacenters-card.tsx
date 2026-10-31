@@ -17,9 +17,9 @@
 
 import { getValidFilters } from "@virtbase/ui/lib";
 import type { SearchParams } from "nuqs";
-import { getDatacentersList } from "../../api/datacenters/get-datacenters-list";
-import { searchParamsCache } from "../../lib/datacenters/validations";
-import { DatacentersTable } from "./datacenters-table";
+import { getDatacentersList } from "../../api/datacenters/get-datacenters-list.ts";
+import { searchParamsCache } from "../../lib/datacenters/validations.ts";
+import { DatacentersTable } from "./datacenters-table/index.tsx";
 
 export async function DatacentersCard(props: {
   searchParams: Promise<SearchParams>;

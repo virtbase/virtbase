@@ -24,8 +24,8 @@ import {
 } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { mockSession } from "../../testing";
-import { dryRunAbuseRules } from "../dry-run";
+import { mockSession } from "../../testing/index.ts";
+import { dryRunAbuseRules } from "../dry-run.ts";
 
 let testDb: TestDb;
 

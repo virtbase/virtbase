@@ -20,7 +20,7 @@ import type { BetterAuthPlugin } from "better-auth";
 import { createAuthMiddleware } from "better-auth/api";
 import { getSessionCookie } from "better-auth/cookies";
 import { hasLocale } from "next-intl";
-import { COOKIE_MAX_AGE, COOKIE_NAME, locales } from "@/i18n/config";
+import { COOKIE_MAX_AGE, COOKIE_NAME, locales } from "@/i18n/config.ts";
 
 /**
  * Stamps the signed-in user's stored language onto the locale cookie.

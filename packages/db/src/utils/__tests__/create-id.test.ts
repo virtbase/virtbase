@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { createId } from "../create-id";
+import { createId } from "../create-id.ts";
 
 describe("createId", () => {
   test("it returns a string with the correct format", () => {

@@ -16,7 +16,7 @@
  */
 
 import * as z from "zod";
-import { ObjectTimestampSchema } from "./timestamps";
+import { ObjectTimestampSchema } from "./timestamps.ts";
 
 export const DiscountTypeSchema = z
   .enum(["PERCENTAGE", "FIXED"])

@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { isProductionDeployment } from "../is-production-deployment";
+import { isProductionDeployment } from "../is-production-deployment.ts";
 
 describe("isProductionDeployment", () => {
   test("is true for the production deployment", () => {

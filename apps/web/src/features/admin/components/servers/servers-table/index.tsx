@@ -21,10 +21,10 @@ import { DataTable, DataTableToolbar } from "@virtbase/ui/data-table";
 import { useDataTable } from "@virtbase/ui/hooks";
 import type { DataTableRowAction } from "@virtbase/ui/types";
 import React, { use } from "react";
-import type { getServerTemplateCounts } from "@/features/admin/api/servers/get-server-template-counts";
-import type { getServersList } from "@/features/admin/api/servers/get-servers-list";
-import type { ServersTableColumn } from "./columns";
-import { useServersTableColumns } from "./columns";
+import type { getServerTemplateCounts } from "@/features/admin/api/servers/get-server-template-counts.ts";
+import type { getServersList } from "@/features/admin/api/servers/get-servers-list.ts";
+import type { ServersTableColumn } from "./columns.tsx";
+import { useServersTableColumns } from "./columns.tsx";
 
 interface ServersTableProps {
   promises: Promise<

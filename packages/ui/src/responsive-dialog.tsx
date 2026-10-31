@@ -33,7 +33,7 @@ import {
 } from "@virtbase/ui/drawer";
 import { useMediaQuery } from "@virtbase/ui/hooks";
 import type React from "react";
-import { cn } from ".";
+import { cn } from "./index.ts";
 
 interface ResponsiveDialogProps extends React.ComponentProps<typeof Dialog> {
   title: string;

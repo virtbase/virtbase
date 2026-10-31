@@ -20,8 +20,8 @@ import { parse } from "yaml";
 import {
   renderVendorData,
   validateSnippetContent,
-} from "../render-vendor-data";
-import type { RenderableSnippet, SnippetTargetContext } from "../types";
+} from "../render-vendor-data.ts";
+import type { RenderableSnippet, SnippetTargetContext } from "../types.ts";
 
 const debian13: SnippetTargetContext = {
   osFamily: "debian",

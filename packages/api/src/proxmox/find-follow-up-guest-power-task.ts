@@ -16,7 +16,7 @@
  */
 
 import type { Proxmox } from "@virtbase/proxmox-api";
-import type { ProxmoxInstance } from "./get-proxmox-instance";
+import type { ProxmoxInstance } from "./get-proxmox-instance.ts";
 
 /**
  * Proxmox HA task types issued by `POST /nodes/{node}/qemu/{vmid}/status/*`

@@ -24,7 +24,7 @@ import { getSafeRedirectUrl } from "@virtbase/utils";
 import { useSearchParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useEffect, useState } from "react";
-import { authClient } from "@/lib/auth/client";
+import { authClient } from "@/lib/auth/client.ts";
 
 export const SignUpOAuth = ({
   methods,

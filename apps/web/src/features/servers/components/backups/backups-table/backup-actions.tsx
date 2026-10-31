@@ -38,9 +38,9 @@ import { isBusy, isOperational } from "@virtbase/utils";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import type React from "react";
-import { useUpdateBackup } from "@/features/servers/hooks/backups/use-update-backup";
-import { useServerStatus } from "@/features/servers/hooks/use-server-status";
-import type { BackupsTableColumn } from "./columns";
+import { useUpdateBackup } from "@/features/servers/hooks/backups/use-update-backup.ts";
+import { useServerStatus } from "@/features/servers/hooks/use-server-status.ts";
+import type { BackupsTableColumn } from "./columns.tsx";
 
 interface BackupActionsProps extends React.ComponentProps<"div"> {
   row: Row<BackupsTableColumn>;

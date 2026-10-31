@@ -35,9 +35,9 @@ import { useRouter } from "next/navigation";
 import type { Locale } from "next-intl";
 import { useFormatter, useLocale } from "next-intl";
 import { useTransition } from "react";
-import { locales } from "@/i18n/config";
-import { getLocaleFlag } from "@/i18n/utils";
-import { updateLocaleAction } from "./locale-switcher-action";
+import { locales } from "@/i18n/config.ts";
+import { getLocaleFlag } from "@/i18n/utils.ts";
+import { updateLocaleAction } from "./locale-switcher-action.ts";
 
 export function LocaleSwitcher() {
   const activeLocale = useLocale();

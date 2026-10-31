@@ -21,7 +21,7 @@ import type {
   Integration,
   IntegrationCategory,
   LocalizedIntegrationText,
-} from "./types";
+} from "./types.ts";
 
 /**
  * A plain, serialisable view of an integration.

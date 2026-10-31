@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { resolveServerOperatingSystem } from "../server-operating-system";
+import { resolveServerOperatingSystem } from "../server-operating-system.ts";
 
 const DETECTED_AT = new Date("2026-08-26T10:00:00.000Z");
 

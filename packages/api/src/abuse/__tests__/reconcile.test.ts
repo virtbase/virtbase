@@ -21,7 +21,7 @@ import { abuseCaseServers, abuseCases } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
 
-mock.module("../../notifications/dispatch", () => ({
+mock.module("../../notifications/dispatch.ts", () => ({
   dispatchNotification: async () => ({
     created: 0,
     deduplicated: 0,
@@ -31,9 +31,13 @@ mock.module("../../notifications/dispatch", () => ({
   }),
 }));
 
-import { mockServer, mockSession, seedServerGraph } from "../../testing";
-import type { VmResolver } from "../enforce";
-import { reconcileAbuseCases } from "../reconcile";
+import {
+  mockServer,
+  mockSession,
+  seedServerGraph,
+} from "../../testing/index.ts";
+import type { VmResolver } from "../enforce.ts";
+import { reconcileAbuseCases } from "../reconcile.ts";
 
 let testDb: TestDb;
 

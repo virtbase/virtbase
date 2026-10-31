@@ -19,12 +19,12 @@ import * as Sentry from "@sentry/node";
 import { eq } from "@virtbase/db";
 import type { db as database } from "@virtbase/db/client";
 import { servers } from "@virtbase/db/schema";
-import type { GuestOsInfo } from "../proxmox/agent";
-import { getGuestOsInfo } from "../proxmox/agent";
-import type { ProxmoxVm } from "../proxmox/agent/types";
-import { invalidateCached, once } from "../upstash";
-import type { DetectedOperatingSystem } from "./detect";
-import { toDetectedOperatingSystem } from "./detect";
+import type { GuestOsInfo } from "../proxmox/agent/index.ts";
+import { getGuestOsInfo } from "../proxmox/agent/index.ts";
+import type { ProxmoxVm } from "../proxmox/agent/types.ts";
+import { invalidateCached, once } from "../upstash/index.ts";
+import type { DetectedOperatingSystem } from "./detect.ts";
+import { toDetectedOperatingSystem } from "./detect.ts";
 
 type Database = typeof database;
 

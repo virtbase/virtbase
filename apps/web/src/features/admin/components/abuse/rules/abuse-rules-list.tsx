@@ -47,14 +47,14 @@ import { useExtracted, useFormatter } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import { useState } from "react";
 import { toast } from "sonner";
-import { ItemRow } from "@/features/account/components/item-row";
-import { ENFORCEMENT_ICONS, humanise } from "@/ui/abuse/case-meta";
-import type { AbuseRuleListItem } from "../../../api/abuse/get-abuse-rules";
+import { ItemRow } from "@/features/account/components/item-row.tsx";
+import { ENFORCEMENT_ICONS, humanise } from "@/ui/abuse/case-meta.tsx";
+import type { AbuseRuleListItem } from "../../../api/abuse/get-abuse-rules.ts";
 import {
   deleteAbuseRuleAction,
   setAbuseRuleEnabledAction,
-} from "../../../api/abuse/manage-abuse-rules";
-import { AbuseRuleDialog } from "./abuse-rule-dialog";
+} from "../../../api/abuse/manage-abuse-rules.ts";
+import { AbuseRuleDialog } from "./abuse-rule-dialog.tsx";
 
 /**
  * The rule's conditions as one line.

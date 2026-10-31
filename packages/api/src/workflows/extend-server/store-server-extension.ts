@@ -26,8 +26,8 @@ import {
   users,
 } from "@virtbase/db/schema";
 import { FatalError } from "workflow";
-import { liveSubscriptionFor } from "../../subscriptions/subject-subscription";
-import { transitionSubscription } from "../../subscriptions/transition-subscription";
+import { liveSubscriptionFor } from "../../subscriptions/subject-subscription.ts";
+import { transitionSubscription } from "../../subscriptions/transition-subscription.ts";
 
 type StoreServerExtensionStepParams = {
   serverId: string;

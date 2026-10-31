@@ -20,17 +20,17 @@ import { notFound } from "next/navigation";
 import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
-import { locales } from "@/i18n/config";
-import { TRPCReactProvider } from "@/lib/trpc/react";
-import Document from "@/ui/document";
-import { Footer } from "@/ui/footer";
-import { Nav } from "@/ui/nav";
-import { DefaultJsonLd } from "@/ui/seo/default-json-ld";
+import { locales } from "@/i18n/config.ts";
+import { TRPCReactProvider } from "@/lib/trpc/react.tsx";
+import Document from "@/ui/document.tsx";
+import { Footer } from "@/ui/footer.tsx";
+import { Nav } from "@/ui/nav.tsx";
+import { DefaultJsonLd } from "@/ui/seo/default-json-ld.tsx";
 
 export {
   defaultMetadata as metadata,
   defaultViewport as viewport,
-} from "@/ui/document";
+} from "@/ui/document.tsx";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));

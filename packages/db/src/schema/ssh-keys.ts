@@ -17,8 +17,8 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils";
-import { users } from "./auth";
+import { createId } from "../utils/index.ts";
+import { users } from "./auth.ts";
 
 export const sshKeys = d.snakeCase.table(
   "ssh_keys",

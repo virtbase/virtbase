@@ -17,7 +17,7 @@
 
 import { describe, expect, test } from "bun:test";
 
-import { sparkline, summarize } from "../chart";
+import { sparkline, summarize } from "../chart.ts";
 
 describe("sparkline", () => {
   test("it is exactly as wide as it was asked to be", () => {

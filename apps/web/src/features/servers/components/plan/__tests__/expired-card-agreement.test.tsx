@@ -47,10 +47,10 @@ type Rendered = typeof import("@virtbase/test-utils/react");
 let renderWithProviders: Rendered["renderWithProviders"];
 let screen: Rendered["screen"];
 let userEvent: Rendered["userEvent"];
-let PaymentMethodItem: typeof import("@/features/account/components/billing/payment-method-item").PaymentMethodItem;
-let CurrentPlanCard: typeof import("../current-plan-card").CurrentPlanCard;
-let resolvePaymentMethodState: typeof import("@/features/account/utils/payment-method").resolvePaymentMethodState;
-let resolvePaymentMethodHealth: typeof import("@/features/account/utils/payment-method").resolvePaymentMethodHealth;
+let PaymentMethodItem: typeof import("@/features/account/components/billing/payment-method-item.tsx").PaymentMethodItem;
+let CurrentPlanCard: typeof import("../current-plan-card.tsx").CurrentPlanCard;
+let resolvePaymentMethodState: typeof import("@/features/account/utils/payment-method.ts").resolvePaymentMethodState;
+let resolvePaymentMethodHealth: typeof import("@/features/account/utils/payment-method.ts").resolvePaymentMethodHealth;
 let IntlEnvironment: (props: { children: React.ReactNode }) => React.ReactNode;
 
 beforeAll(async () => {
@@ -60,11 +60,13 @@ beforeAll(async () => {
   userEvent = rendered.userEvent;
 
   PaymentMethodItem = (
-    await import("@/features/account/components/billing/payment-method-item")
+    await import(
+      "@/features/account/components/billing/payment-method-item.tsx"
+    )
   ).PaymentMethodItem;
-  CurrentPlanCard = (await import("../current-plan-card")).CurrentPlanCard;
+  CurrentPlanCard = (await import("../current-plan-card.tsx")).CurrentPlanCard;
 
-  const utils = await import("@/features/account/utils/payment-method");
+  const utils = await import("@/features/account/utils/payment-method.ts");
   resolvePaymentMethodState = utils.resolvePaymentMethodState;
   resolvePaymentMethodHealth = utils.resolvePaymentMethodHealth;
 

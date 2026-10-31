@@ -16,8 +16,8 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import type { SubjectExport } from "../collect";
-import { buildDocumentSections, buildExportDocument } from "../document";
+import type { SubjectExport } from "../collect.ts";
+import { buildDocumentSections, buildExportDocument } from "../document.ts";
 
 const data = {
   schema_version: 1,

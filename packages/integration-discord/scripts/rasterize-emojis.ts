@@ -43,7 +43,7 @@ import { basename, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { chromium } from "@playwright/test";
 
-import { EMOJI_MANIFEST } from "../src/emoji/manifest";
+import { EMOJI_MANIFEST } from "../src/emoji/manifest.ts";
 
 /** Discord renders emoji small; 128px is the size it asks for. */
 const SIZE = 128;

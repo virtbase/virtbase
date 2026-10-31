@@ -28,7 +28,7 @@ import {
   UpdateProxmoxTemplateInputSchema,
 } from "@virtbase/validators/admin";
 import { revalidatePath, revalidateTag } from "next/cache";
-import { actionClient } from "../../lib/action-client";
+import { actionClient } from "../../lib/action-client.ts";
 
 /**
  * Maps the snake_case wire shape onto the camelCase columns. One place, so a

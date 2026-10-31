@@ -46,7 +46,7 @@ import { useExtracted, useFormatter } from "next-intl";
 import { parseAsStringEnum, useQueryState } from "nuqs";
 import type React from "react";
 import { Fragment } from "react";
-import { useServerGraphs } from "../hooks/use-server-graphs";
+import { useServerGraphs } from "../hooks/use-server-graphs.ts";
 
 type ServerGraphsChartConfig = Record<
   "cpu" | "memory" | "disk" | "network",

@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { billingAnchorDay, nextPeriodEnd } from "../period";
+import { billingAnchorDay, nextPeriodEnd } from "../period.ts";
 
 const at = (iso: string) => new Date(iso);
 const iso = (date: Date) => date.toISOString();

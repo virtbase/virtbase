@@ -17,7 +17,7 @@
 
 import type { BreadcrumbList, WithContext } from "schema-dts";
 
-import JsonLd from "./json-ld";
+import JsonLd from "./json-ld.tsx";
 
 export type BreadcrumbJsonLdItem = {
   /**

@@ -17,8 +17,8 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { cloudInitSnippets } from "./cloud-init-snippets";
-import { proxmoxTemplates } from "./proxmox-templates";
+import { cloudInitSnippets } from "./cloud-init-snippets.ts";
+import { proxmoxTemplates } from "./proxmox-templates.ts";
 
 /**
  * Per-template override of a snippet's selector.

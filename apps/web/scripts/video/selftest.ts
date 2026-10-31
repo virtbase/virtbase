@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { recordEpisode } from "./lib/studio";
+import { recordEpisode } from "./lib/studio.ts";
 
 /**
  * Records fifteen seconds against a page that is not the app.

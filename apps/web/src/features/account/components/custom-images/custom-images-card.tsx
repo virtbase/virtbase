@@ -27,11 +27,11 @@ import { Skeleton } from "@virtbase/ui/skeleton";
 import { MAX_ACTIVE_ISO_DOWNLOADS_PER_USER } from "@virtbase/utils";
 import { useExtracted } from "next-intl";
 import { ErrorBoundary } from "react-error-boundary";
-import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
-import { GenericError } from "@/ui/generic-error";
-import { defaultGetCustomImagesListQuery } from "../../hooks/custom-images/use-custom-image-list";
-import { CreateCustomImageButton } from "./create-custom-image-button";
-import { CustomImagesList } from "./custom-images-list";
+import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server.tsx";
+import { GenericError } from "@/ui/generic-error.tsx";
+import { defaultGetCustomImagesListQuery } from "../../hooks/custom-images/use-custom-image-list.ts";
+import { CreateCustomImageButton } from "./create-custom-image-button.tsx";
+import { CustomImagesList } from "./custom-images-list.tsx";
 
 export function CustomImagesCard() {
   const t = useExtracted();

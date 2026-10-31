@@ -39,7 +39,7 @@ export const getDiscordBotInfo = async (): Promise<DiscordBotInfo | null> => {
   // static import of its `integrationConfigStore` const makes this file
   // evaluate during that module's own initialisation, before the const is
   // assigned - a temporal dead zone that fails the whole bundle.
-  const { integrationConfigStore } = await import("./index");
+  const { integrationConfigStore } = await import("./index.ts");
   const store = integrationConfigStore;
   if (!store) return null;
 

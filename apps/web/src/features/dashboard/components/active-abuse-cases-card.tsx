@@ -17,8 +17,8 @@
 
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { ErrorBoundary } from "react-error-boundary";
-import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
-import { ActiveAbuseCases } from "./active-abuse-cases";
+import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server.tsx";
+import { ActiveAbuseCases } from "./active-abuse-cases.tsx";
 
 /**
  * The dashboard's abuse card, when there is one.

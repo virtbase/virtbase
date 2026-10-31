@@ -32,12 +32,12 @@ import { useExtracted } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import { useState } from "react";
 import { toast } from "sonner";
-import type { IntegrationListItem } from "../../api/integrations/get-integrations-list";
+import type { IntegrationListItem } from "../../api/integrations/get-integrations-list.ts";
 import {
   saveIntegrationSecretsAction,
   saveIntegrationSettingsAction,
-} from "../../api/integrations/update-integration";
-import { IntegrationField } from "./integration-field";
+} from "../../api/integrations/update-integration.ts";
+import { IntegrationField } from "./integration-field.tsx";
 
 const toFormValues = (
   keys: string[],

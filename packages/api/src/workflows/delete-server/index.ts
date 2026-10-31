@@ -15,10 +15,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { GetProxmoxInstanceParams } from "../../proxmox/get-proxmox-instance";
-import { deleteOneServer } from "../shared/delete-one-server";
-import { getServerOwnerStep } from "../shared/get-server-owner";
-import { sendServerDeletedEmailStep } from "./send-server-deleted-email";
+import type { GetProxmoxInstanceParams } from "../../proxmox/get-proxmox-instance.ts";
+import { deleteOneServer } from "../shared/delete-one-server.ts";
+import { getServerOwnerStep } from "../shared/get-server-owner.ts";
+import { sendServerDeletedEmailStep } from "./send-server-deleted-email.ts";
 
 type DeleteServerWorkflowParams = {
   vmid: number;

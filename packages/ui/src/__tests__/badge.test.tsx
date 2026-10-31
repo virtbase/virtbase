@@ -17,7 +17,7 @@
 
 import { describe, expect, test } from "bun:test";
 import { renderWithProviders, screen } from "@virtbase/test-utils/react";
-import { Badge } from "../badge";
+import { Badge } from "../badge.tsx";
 
 describe("Badge", () => {
   test("it renders its children", () => {

@@ -23,7 +23,7 @@ import {
   LucideCloudDownload,
 } from "@virtbase/ui/icons/index";
 import { getExtracted } from "next-intl/server";
-import { ItemRow } from "@/features/account/components/item-row";
+import { ItemRow } from "@/features/account/components/item-row.tsx";
 
 type NodeImage = {
   proxmoxNodeId: string;

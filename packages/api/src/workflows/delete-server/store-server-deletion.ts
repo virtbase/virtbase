@@ -20,8 +20,8 @@ import { eq, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { servers, subnetAllocations } from "@virtbase/db/schema";
 import { FatalError } from "workflow";
-import { transitionSubjectSubscription } from "../../subscriptions/subject-subscription";
-import { revalidateCheckout } from "../shared/revalidate-checkout";
+import { transitionSubjectSubscription } from "../../subscriptions/subject-subscription.ts";
+import { revalidateCheckout } from "../shared/revalidate-checkout.ts";
 
 type StoreServerDeletionStepParams = {
   serverId: string;

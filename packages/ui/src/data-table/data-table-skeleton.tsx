@@ -16,7 +16,7 @@
  */
 
 import { cn } from "@virtbase/ui";
-import { Skeleton } from "../skeleton";
+import { Skeleton } from "../skeleton.tsx";
 import {
   Table,
   TableBody,
@@ -24,7 +24,7 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../table";
+} from "../table.tsx";
 
 interface DataTableSkeletonProps extends React.ComponentProps<"div"> {
   columnCount: number;

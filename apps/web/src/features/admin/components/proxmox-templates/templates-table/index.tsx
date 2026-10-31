@@ -22,12 +22,12 @@ import { useDataTable } from "@virtbase/ui/hooks";
 import type { DataTableRowAction } from "@virtbase/ui/types";
 import dynamic from "next/dynamic";
 import React, { use } from "react";
-import type { getTemplatesList } from "@/features/admin/api/proxmox-templates/get-templates-list";
-import type { TemplatesTableColumn } from "./columns";
-import { useTemplatesTableColumns } from "./columns";
+import type { getTemplatesList } from "@/features/admin/api/proxmox-templates/get-templates-list.ts";
+import type { TemplatesTableColumn } from "./columns.tsx";
+import { useTemplatesTableColumns } from "./columns.tsx";
 
 const DeleteTemplateDialog = dynamic(
-  () => import("../delete-template-dialog"),
+  () => import("../delete-template-dialog.tsx"),
   { ssr: false },
 );
 

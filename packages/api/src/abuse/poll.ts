@@ -24,9 +24,9 @@ import {
   subnets,
 } from "@virtbase/db/schema";
 import type { AbuseSource } from "@virtbase/ports";
-import { dispatchNotification } from "../notifications/dispatch";
-import { isPublicIpv4, supernet } from "./cidr";
-import { submitSignals } from "./intake";
+import { dispatchNotification } from "../notifications/dispatch.ts";
+import { isPublicIpv4, supernet } from "./cidr.ts";
+import { submitSignals } from "./intake.ts";
 
 type Database = typeof database;
 
@@ -167,7 +167,9 @@ export const pollAbuseSources = async ({
 }): Promise<PollSourceResult[]> => {
   const resolved =
     sources ??
-    (await (await import("../integrations")).integrations.resolveAll("abuse"));
+    (await (
+      await import("../integrations/index.ts")
+    ).integrations.resolveAll("abuse"));
 
   const results: PollSourceResult[] = [];
 

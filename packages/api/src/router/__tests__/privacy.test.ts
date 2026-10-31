@@ -21,9 +21,9 @@ import type { Session } from "@virtbase/auth";
 import { eq } from "@virtbase/db";
 import { dataExports, invoices, users } from "@virtbase/db/schema";
 import { STEP_UP_WINDOW_SECONDS } from "@virtbase/utils";
-import { appRouter } from "../../root";
-import type { TestCaller, TestCallerResult } from "../../testing";
-import { createTestCaller, mockSession } from "../../testing";
+import { appRouter } from "../../root.ts";
+import type { TestCaller, TestCallerResult } from "../../testing/index.ts";
+import { createTestCaller, mockSession } from "../../testing/index.ts";
 
 // Neither reaches anything real in a test: the workflow engine would try to
 // enqueue a run, and the step-up marker would try to reach Redis.
@@ -37,7 +37,7 @@ mock.module("@virtbase/email", () => ({
   sendEmail: async () => {},
   sendBatchEmail: async () => {},
 }));
-mock.module("../../upstash/redis", () => ({
+mock.module("../../upstash/redis.ts", () => ({
   redis: {
     get: async () => null,
     set: async () => "OK",

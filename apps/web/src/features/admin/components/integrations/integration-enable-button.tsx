@@ -23,7 +23,7 @@ import { Spinner } from "@virtbase/ui/spinner";
 import { useExtracted } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import { toast } from "sonner";
-import { setIntegrationEnabledAction } from "../../api/integrations/update-integration";
+import { setIntegrationEnabledAction } from "../../api/integrations/update-integration.ts";
 
 export function IntegrationEnableButton({
   integrationId,

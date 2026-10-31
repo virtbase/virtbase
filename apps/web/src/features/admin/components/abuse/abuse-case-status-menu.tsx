@@ -45,9 +45,9 @@ import { Spinner } from "@virtbase/ui/spinner";
 import { useExtracted } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import { toast } from "sonner";
-import { humanise, STATUS_ICONS } from "@/ui/abuse/case-meta";
-import type { AbuseCaseDetail } from "../../api/abuse/get-abuse-cases";
-import { setAbuseCaseStatusAction } from "../../api/abuse/manage-abuse-cases";
+import { humanise, STATUS_ICONS } from "@/ui/abuse/case-meta.tsx";
+import type { AbuseCaseDetail } from "../../api/abuse/get-abuse-cases.ts";
+import { setAbuseCaseStatusAction } from "../../api/abuse/manage-abuse-cases.ts";
 
 type Status = AbuseCaseDetail["status"];
 type Resolution = NonNullable<AbuseCaseDetail["resolution"]>;

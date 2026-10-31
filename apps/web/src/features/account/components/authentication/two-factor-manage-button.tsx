@@ -24,17 +24,17 @@ import { useExtracted } from "next-intl";
 import type React from "react";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
-import { authClient } from "@/lib/auth/client";
+import { authClient } from "@/lib/auth/client.ts";
 
 const ConfirmPasswordDialog = dynamic(
-  () => import("./confirm-password-dialog"),
+  () => import("./confirm-password-dialog.tsx"),
   { ssr: false },
 );
 const TwoFactorEnableDialog = dynamic(
-  () => import("./two-factor-enable-dialog"),
+  () => import("./two-factor-enable-dialog.tsx"),
   { ssr: false },
 );
-const BackupCodesDialog = dynamic(() => import("./backup-codes-dialog"), {
+const BackupCodesDialog = dynamic(() => import("./backup-codes-dialog.tsx"), {
   ssr: false,
 });
 

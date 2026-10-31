@@ -23,8 +23,8 @@ import {
 import type { Metadata } from "next";
 import { useExtracted } from "next-intl";
 import { getExtracted } from "next-intl/server";
-import { VerifyTotpForm } from "@/features/auth/components/verify-totp-form";
-import { AuthLayout } from "@/ui/layout/auth-layout";
+import { VerifyTotpForm } from "@/features/auth/components/verify-totp-form.tsx";
+import { AuthLayout } from "@/ui/layout/auth-layout.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();

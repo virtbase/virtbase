@@ -21,7 +21,7 @@ import type {
   ListeningSocket,
   SocketProcess,
   SocketProtocol,
-} from "./types";
+} from "./types.ts";
 
 /**
  * The prefix of an IPv4-mapped IPv6 address.

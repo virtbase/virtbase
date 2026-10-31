@@ -17,11 +17,11 @@
 
 import { describe, expect, test } from "bun:test";
 import { ACCOUNT_INACTIVITY_MONTHS } from "@virtbase/utils";
-import type { AccountActivity } from "../eligibility";
+import type { AccountActivity } from "../eligibility.ts";
 import {
   inactiveBefore,
   isEligibleForInactivityDeletion,
-} from "../eligibility";
+} from "../eligibility.ts";
 
 const NOW = new Date("2026-08-26T12:00:00.000Z");
 

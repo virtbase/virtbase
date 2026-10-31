@@ -38,9 +38,9 @@ import {
   UpdateServerBackupOutputSchema,
 } from "@virtbase/validators/server";
 import { start } from "workflow/api";
-import { reconcileServerBackups } from "../../../backups";
-import { serverProcedure } from "../../../trpc";
-import { serversBackupsStatusRouter } from "./status";
+import { reconcileServerBackups } from "../../../backups/index.ts";
+import { serverProcedure } from "../../../trpc.ts";
+import { serversBackupsStatusRouter } from "./status.ts";
 
 /**
  * The operating system an archive contains.

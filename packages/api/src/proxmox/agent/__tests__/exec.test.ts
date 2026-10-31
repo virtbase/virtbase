@@ -16,8 +16,8 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { runGuestCommand } from "../exec";
-import type { ProxmoxVm } from "../types";
+import { runGuestCommand } from "../exec.ts";
+import type { ProxmoxVm } from "../types.ts";
 
 interface ExecStatusFrame {
   exited?: boolean | number;

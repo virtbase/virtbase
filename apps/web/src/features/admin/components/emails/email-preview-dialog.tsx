@@ -20,7 +20,7 @@
 import { ResponsiveDialog } from "@virtbase/ui/responsive-dialog";
 import type { DataTableRowAction } from "@virtbase/ui/types";
 import { useExtracted } from "next-intl";
-import type { EmailsTableColumn } from "./emails-table/columns";
+import type { EmailsTableColumn } from "./emails-table/columns.tsx";
 
 interface EmailPreviewDialogProps
   extends Omit<

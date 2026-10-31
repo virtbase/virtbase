@@ -30,14 +30,14 @@ import {
 import type { ColumnDef } from "@virtbase/ui/types";
 import NextLink from "next/link";
 import { useExtracted, useFormatter } from "next-intl";
-import type { getSubscriptionsList } from "@/features/admin/api/subscriptions/get-subscriptions-list";
-import { SUBSCRIPTION_STATUSES } from "@/features/admin/lib/subscriptions/validations";
-import { paths } from "@/lib/paths";
-import { UserAvatar } from "@/ui/user-avatar";
+import type { getSubscriptionsList } from "@/features/admin/api/subscriptions/get-subscriptions-list.ts";
+import { SUBSCRIPTION_STATUSES } from "@/features/admin/lib/subscriptions/validations.ts";
+import { paths } from "@/lib/paths.ts";
+import { UserAvatar } from "@/ui/user-avatar.tsx";
 import {
   humaniseSubscriptionTerm,
   SUBSCRIPTION_STATUS_ICONS,
-} from "../subscription-meta";
+} from "../subscription-meta.ts";
 
 export type SubscriptionsTableColumn = Awaited<
   ReturnType<typeof getSubscriptionsList>

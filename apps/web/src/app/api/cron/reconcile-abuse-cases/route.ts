@@ -17,7 +17,7 @@
 
 import { reconcileAbuseCases } from "@virtbase/api/abuse";
 import { db } from "@virtbase/db/client";
-import { withCronSecret } from "@/lib/with-cron-secret";
+import { withCronSecret } from "@/lib/with-cron-secret.ts";
 
 /**
  * Advances every clock an abuse case runs on: grace windows that have expired,

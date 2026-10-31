@@ -31,16 +31,19 @@ import { Skeleton } from "@virtbase/ui/skeleton";
 import dynamic from "next/dynamic";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
-import { useBackupList } from "../../hooks/backups/use-backup-list";
-import { useBackupsTable } from "../../hooks/backups/use-backups-table";
-import { BackupsTable } from "./backups-table";
-import { CreateBackupButton } from "./create-backup-button";
+import { useBackupList } from "../../hooks/backups/use-backup-list.ts";
+import { useBackupsTable } from "../../hooks/backups/use-backups-table.ts";
+import { BackupsTable } from "./backups-table/index.tsx";
+import { CreateBackupButton } from "./create-backup-button.tsx";
 
-const RestoreBackupDialog = dynamic(() => import("./restore-backup-dialog"), {
-  ssr: false,
-});
+const RestoreBackupDialog = dynamic(
+  () => import("./restore-backup-dialog.tsx"),
+  {
+    ssr: false,
+  },
+);
 
-const DeleteBackupDialog = dynamic(() => import("./delete-backup-dialog"), {
+const DeleteBackupDialog = dynamic(() => import("./delete-backup-dialog.tsx"), {
   ssr: false,
 });
 

@@ -29,9 +29,9 @@ import { useEffect, useState, useTransition } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import type z from "zod";
-import { PasswordRequirements } from "@/features/auth/components/password-requirements";
-import { authClient } from "@/lib/auth/client";
-import { useRegisterContext } from "./context";
+import { PasswordRequirements } from "@/features/auth/components/password-requirements.tsx";
+import { authClient } from "@/lib/auth/client.ts";
+import { useRegisterContext } from "./context.tsx";
 
 type SignUpProps = z.infer<typeof SignUpSchema>;
 

@@ -29,7 +29,7 @@ import { useExtracted } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { createDatacenterAction } from "../../api/datacenters/create-datacenter";
+import { createDatacenterAction } from "../../api/datacenters/create-datacenter.ts";
 
 export default function CreateDatacenterDialog(
   props: Omit<

@@ -16,13 +16,13 @@
  */
 
 import { defineIntegration } from "@virtbase/integration-sdk";
-import { createDiscordClient, getApplication } from "./api";
-import { secretsSchema, settingsSchema } from "./config";
-import { DiscordIdentityProvider } from "./identity";
-import { localizeDiscord } from "./localize";
-import { DiscordNotificationChannel } from "./notifications";
-import { runDiscordSync, summarizeSync } from "./sync";
-import { handleInteractionsRequest } from "./webhooks/interactions";
+import { createDiscordClient, getApplication } from "./api/index.ts";
+import { secretsSchema, settingsSchema } from "./config.ts";
+import { DiscordIdentityProvider } from "./identity/index.ts";
+import { localizeDiscord } from "./localize.ts";
+import { DiscordNotificationChannel } from "./notifications/index.ts";
+import { runDiscordSync, summarizeSync } from "./sync/index.ts";
+import { handleInteractionsRequest } from "./webhooks/interactions.ts";
 
 export default defineIntegration({
   id: "discord",

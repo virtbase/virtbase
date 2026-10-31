@@ -15,8 +15,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { GetProxmoxInstanceParams } from "../../proxmox/get-proxmox-instance";
-import { getProxmoxInstance } from "../../proxmox/get-proxmox-instance";
+import type { GetProxmoxInstanceParams } from "../../proxmox/get-proxmox-instance.ts";
+import { getProxmoxInstance } from "../../proxmox/get-proxmox-instance.ts";
 
 type DestroyGuestStepParams = {
   proxmoxNode: GetProxmoxInstanceParams;

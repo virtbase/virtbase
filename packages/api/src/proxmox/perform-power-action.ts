@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { ProxmoxInstance } from "./get-proxmox-instance";
+import type { ProxmoxInstance } from "./get-proxmox-instance.ts";
 
 type PerformPowerActionParams = {
   vm: ReturnType<ProxmoxInstance["node"]["qemu"]["$"]>;

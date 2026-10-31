@@ -34,11 +34,11 @@ mock.module("@virtbase/db/client", () => ({ db: testDb }));
  * `mock.module` is global to the whole test run: a bare object here would
  * strip `PaymentMethodOwnershipConflictError` out from under `record.test.ts`.
  */
-const realRecord = { ...(await import("../record")) };
+const realRecord = { ...(await import("../record.ts")) };
 
 let armedRecordFailure: Error | null = null;
 
-mock.module("../record", () => ({
+mock.module("../record.ts", () => ({
   ...realRecord,
   recordPaymentMethod: async (
     input: Parameters<typeof realRecord.recordPaymentMethod>[0],
@@ -56,7 +56,7 @@ mock.module("../record", () => ({
 }));
 
 const { handlePaymentMethodAttached, handlePaymentMethodDetached } =
-  await import("../settle-stripe-payment-method");
+  await import("../settle-stripe-payment-method.ts");
 
 const USER_ID = "usr_00000000000000000000000041";
 /** Somebody else, who owns the credential in the ownership-conflict test. */

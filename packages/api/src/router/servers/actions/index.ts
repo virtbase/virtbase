@@ -29,7 +29,7 @@ import {
   ResetServerPasswordServerOutputSchema,
 } from "@virtbase/validators/server";
 import { start } from "workflow/api";
-import { serverProcedure } from "../../../trpc";
+import { serverProcedure } from "../../../trpc.ts";
 
 export const serversActionsRouter = {
   changeTemplate: serverProcedure

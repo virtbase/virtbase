@@ -23,9 +23,12 @@ import dynamic from "next/dynamic";
 import { useExtracted } from "next-intl";
 import { useState } from "react";
 
-const CreateTemplateDialog = dynamic(() => import("./create-template-dialog"), {
-  ssr: false,
-});
+const CreateTemplateDialog = dynamic(
+  () => import("./create-template-dialog.tsx"),
+  {
+    ssr: false,
+  },
+);
 
 export function CreateTemplateButton({
   groups,

@@ -32,9 +32,13 @@ import {
   MarkAbuseCaseMitigatedInputSchema,
   ReplyToAbuseCaseInputSchema,
 } from "@virtbase/validators";
-import { caseReference, recordCaseEvent, sanitizeAbuseBody } from "../abuse";
-import { dispatchNotification } from "../notifications/dispatch";
-import { protectedProcedure } from "../trpc";
+import {
+  caseReference,
+  recordCaseEvent,
+  sanitizeAbuseBody,
+} from "../abuse/index.ts";
+import { dispatchNotification } from "../notifications/dispatch.ts";
+import { protectedProcedure } from "../trpc.ts";
 
 /**
  * A case a customer may still act on.

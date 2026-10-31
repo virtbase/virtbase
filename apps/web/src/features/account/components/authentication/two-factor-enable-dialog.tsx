@@ -28,8 +28,8 @@ import { Spinner } from "@virtbase/ui/spinner";
 import { useExtracted } from "next-intl";
 import { QRCodeSVG } from "qrcode.react";
 import { useState, useTransition } from "react";
-import { authClient } from "@/lib/auth/client";
-import { CopyButton } from "@/ui/copy-button";
+import { authClient } from "@/lib/auth/client.ts";
+import { CopyButton } from "@/ui/copy-button.tsx";
 
 export default function TwoFactorEnableDialog({
   totpUri,

@@ -19,8 +19,8 @@ import { existsSync } from "node:fs";
 import { mkdir, rename, unlink } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
-import type { Tools, VoiceName } from "./tools";
-import { ensureQwen } from "./tools";
+import type { Tools, VoiceName } from "./tools.ts";
+import { ensureQwen } from "./tools.ts";
 
 /**
  * German narration, synthesised ahead of the recording.

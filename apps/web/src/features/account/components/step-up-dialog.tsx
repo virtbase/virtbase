@@ -38,9 +38,9 @@ import { toast } from "sonner";
 import {
   useStepUpStatus,
   useVerifyStepUpPassword,
-} from "@/features/account/hooks/privacy/step-up";
-import { authClient, isTwoFactorRedirect } from "@/lib/auth/client";
-import { ShowPasswordAddon } from "@/ui/input-group-addons/show-password-addon";
+} from "@/features/account/hooks/privacy/step-up.ts";
+import { authClient, isTwoFactorRedirect } from "@/lib/auth/client.ts";
+import { ShowPasswordAddon } from "@/ui/input-group-addons/show-password-addon.tsx";
 
 type Method = "password" | "passkey" | "emailOtp";
 

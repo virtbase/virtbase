@@ -17,8 +17,8 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { proxmoxNodes } from "./proxmox-nodes";
-import { proxmoxTemplates } from "./proxmox-templates";
+import { proxmoxNodes } from "./proxmox-nodes.ts";
+import { proxmoxTemplates } from "./proxmox-templates.ts";
 
 /**
  * Tracks whether a template's image is present and fresh on one node's import

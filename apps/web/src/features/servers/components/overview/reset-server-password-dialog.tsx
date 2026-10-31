@@ -40,12 +40,12 @@ import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { PasswordRequirements } from "@/features/auth/components/password-requirements";
+import { PasswordRequirements } from "@/features/auth/components/password-requirements.tsx";
 import {
   RandomPasswordAddon,
   ShowPasswordAddon,
-} from "@/ui/input-group-addons";
-import { useResetServerPassword } from "../../hooks/overview/use-reset-server-password";
+} from "@/ui/input-group-addons/index.tsx";
+import { useResetServerPassword } from "../../hooks/overview/use-reset-server-password.ts";
 
 export default function ResetServerPasswordDialog(
   props: Omit<

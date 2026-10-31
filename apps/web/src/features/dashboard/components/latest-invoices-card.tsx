@@ -25,10 +25,10 @@ import {
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { useExtracted } from "next-intl";
 import { ErrorBoundary } from "react-error-boundary";
-import { LatestInvoicesList } from "@/features/dashboard/components/latest-invoices-list";
-import { defaultGetLatestInvoicesQuery } from "@/features/dashboard/hooks/use-latest-invoices";
-import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
-import { GenericError } from "@/ui/generic-error";
+import { LatestInvoicesList } from "@/features/dashboard/components/latest-invoices-list.tsx";
+import { defaultGetLatestInvoicesQuery } from "@/features/dashboard/hooks/use-latest-invoices.ts";
+import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server.tsx";
+import { GenericError } from "@/ui/generic-error.tsx";
 
 export function LatestInvoicesCard() {
   const t = useExtracted();

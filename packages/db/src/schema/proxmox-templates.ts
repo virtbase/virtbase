@@ -17,8 +17,8 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils/create-id";
-import { proxmoxTemplateGroups } from "./proxmox-template-groups";
+import { createId } from "../utils/create-id.ts";
+import { proxmoxTemplateGroups } from "./proxmox-template-groups.ts";
 
 /**
  * The checksum algorithms Proxmox VE accepts on

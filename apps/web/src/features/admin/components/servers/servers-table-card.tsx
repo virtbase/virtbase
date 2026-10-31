@@ -17,10 +17,10 @@
 
 import { getValidFilters } from "@virtbase/ui/lib";
 import type { SearchParams } from "nuqs";
-import { getServerTemplateCounts } from "../../api/servers/get-server-template-counts";
-import { getServersList } from "../../api/servers/get-servers-list";
-import { searchParamsCache } from "../../lib/servers/validations";
-import { ServersTable } from "./servers-table";
+import { getServerTemplateCounts } from "../../api/servers/get-server-template-counts.ts";
+import { getServersList } from "../../api/servers/get-servers-list.ts";
+import { searchParamsCache } from "../../lib/servers/validations.ts";
+import { ServersTable } from "./servers-table/index.tsx";
 
 export async function ServersTableCard(props: {
   searchParams: Promise<SearchParams>;

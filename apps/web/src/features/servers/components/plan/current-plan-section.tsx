@@ -23,16 +23,16 @@ import type { RetrySubscriptionRenewalOutcome } from "@virtbase/validators";
 import { useParams } from "next/navigation";
 import { useExtracted, useNow } from "next-intl";
 import { toast } from "sonner";
-import { resolvePaymentMethodState } from "@/features/account/utils/payment-method";
-import { useAcceptMandate } from "@/features/servers/hooks/billing/use-accept-mandate";
-import { usePaymentMethods } from "@/features/servers/hooks/billing/use-payment-methods";
-import { useRetryRenewal } from "@/features/servers/hooks/billing/use-retry-renewal";
-import { useServerSubscription } from "@/features/servers/hooks/billing/use-server-subscription";
-import { useSetAutoRenew } from "@/features/servers/hooks/billing/use-set-auto-renew";
-import { useServerPlans } from "@/features/servers/hooks/plan/use-server-plans";
-import { useServer } from "@/features/servers/hooks/use-server";
-import { getMutationErrorDetail } from "@/lib/trpc/query-client";
-import { CurrentPlanCard } from "./current-plan-card";
+import { resolvePaymentMethodState } from "@/features/account/utils/payment-method.ts";
+import { useAcceptMandate } from "@/features/servers/hooks/billing/use-accept-mandate.ts";
+import { usePaymentMethods } from "@/features/servers/hooks/billing/use-payment-methods.ts";
+import { useRetryRenewal } from "@/features/servers/hooks/billing/use-retry-renewal.ts";
+import { useServerSubscription } from "@/features/servers/hooks/billing/use-server-subscription.ts";
+import { useSetAutoRenew } from "@/features/servers/hooks/billing/use-set-auto-renew.ts";
+import { useServerPlans } from "@/features/servers/hooks/plan/use-server-plans.ts";
+import { useServer } from "@/features/servers/hooks/use-server.ts";
+import { getMutationErrorDetail } from "@/lib/trpc/query-client.ts";
+import { CurrentPlanCard } from "./current-plan-card.tsx";
 
 /**
  * The data behind the plan card, and nothing else.

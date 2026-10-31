@@ -17,9 +17,9 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils/create-id";
-import { proxmoxTemplates } from "./proxmox-templates";
-import { servers } from "./servers";
+import { createId } from "../utils/create-id.ts";
+import { proxmoxTemplates } from "./proxmox-templates.ts";
+import { servers } from "./servers.ts";
 
 export const serverBackups = d.snakeCase.table(
   "server_backups",

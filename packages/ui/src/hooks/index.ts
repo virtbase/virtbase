@@ -15,8 +15,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./use-data-table";
-export * from "./use-debounced-callback";
-export * from "./use-is-mobile";
-export * from "./use-media-query";
-export * from "./use-scroll";
+export * from "./use-data-table.ts";
+export * from "./use-debounced-callback.ts";
+export * from "./use-is-mobile.ts";
+export * from "./use-media-query.ts";
+export * from "./use-scroll.ts";

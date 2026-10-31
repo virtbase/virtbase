@@ -23,7 +23,7 @@ import {
   Histogram,
   Registry,
 } from "prom-client";
-import type { PrometheusSettings } from "./config";
+import type { PrometheusSettings } from "./config.ts";
 
 export interface RuntimeOptions {
   prefix: string;

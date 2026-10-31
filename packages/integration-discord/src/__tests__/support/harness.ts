@@ -21,7 +21,7 @@ import type {
   ServerManagementPort,
 } from "@virtbase/ports";
 
-import type { EmojiResolver } from "../../emoji";
+import type { EmojiResolver } from "../../emoji/index.ts";
 
 /**
  * next-intl's server entry needs a Next.js request scope and a resolved i18n

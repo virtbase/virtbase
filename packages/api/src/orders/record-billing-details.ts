@@ -18,8 +18,8 @@
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { orderItems, orders } from "@virtbase/db/schema";
-import type { InvoiceCountry } from "../lib/invoicing";
-import { EU_VAT_RATES } from "../lib/invoicing";
+import type { InvoiceCountry } from "../lib/invoicing.ts";
+import { EU_VAT_RATES } from "../lib/invoicing.ts";
 
 export interface OrderBillingAddress {
   name: string | null;

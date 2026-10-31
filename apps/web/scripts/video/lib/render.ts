@@ -17,9 +17,9 @@
 
 import { mkdir, rm, symlink } from "node:fs/promises";
 import { dirname, join } from "node:path";
-import type { Tools } from "./tools";
-import { repoRoot } from "./tools";
-import type { Spoken } from "./voice";
+import type { Tools } from "./tools.ts";
+import { repoRoot } from "./tools.ts";
+import type { Spoken } from "./voice.ts";
 
 /**
  * Turning a screencast into a file.

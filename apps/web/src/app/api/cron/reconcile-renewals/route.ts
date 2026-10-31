@@ -16,7 +16,7 @@
  */
 
 import { reconcileRenewals } from "@virtbase/api/billing";
-import { withCronSecret } from "@/lib/with-cron-secret";
+import { withCronSecret } from "@/lib/with-cron-secret.ts";
 
 /**
  * Finishes the renewals whose attempt was left hanging.

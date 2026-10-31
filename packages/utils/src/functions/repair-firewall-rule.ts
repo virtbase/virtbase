@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { FIRWALL_PROTOCOLS_WITH_PORTS } from "../constants/firewall";
+import { FIRWALL_PROTOCOLS_WITH_PORTS } from "../constants/firewall.ts";
 
 export interface RepairableFirewallRule {
   proto?: string | null | undefined;

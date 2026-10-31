@@ -28,8 +28,11 @@ import {
   ACCOUNT_INACTIVITY_GRACE_PERIOD_DAYS,
   ACCOUNT_INACTIVITY_REMINDER_DAYS,
 } from "@virtbase/utils";
-import type { AccountActivity } from "./eligibility";
-import { inactiveBefore, isEligibleForInactivityDeletion } from "./eligibility";
+import type { AccountActivity } from "./eligibility.ts";
+import {
+  inactiveBefore,
+  isEligibleForInactivityDeletion,
+} from "./eligibility.ts";
 
 export interface SweepCandidate {
   userId: string;

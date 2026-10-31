@@ -21,9 +21,9 @@ import { cn } from "@virtbase/ui";
 import { Badge } from "@virtbase/ui/badge";
 import { LucideArrowRight } from "@virtbase/ui/icons";
 import { useExtracted, useFormatter } from "next-intl";
-import { formatDiscountLabel } from "@/features/checkout/utils/format-discount";
-import type { Plan, PlanAction } from "./plan-context";
-import { PlanSpecs } from "./plan-specs";
+import { formatDiscountLabel } from "@/features/checkout/utils/format-discount.ts";
+import type { Plan, PlanAction } from "./plan-context.tsx";
+import { PlanSpecs } from "./plan-specs.tsx";
 
 /**
  * The two numbers an order comes down to, in cents.

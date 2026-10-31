@@ -20,8 +20,8 @@ import { getSessionCookie } from "better-auth/cookies";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 
-import { resolveConsoleLocale } from "@/lib/middleware/utils/console-locale";
-import { parse } from "@/lib/middleware/utils/parse";
+import { resolveConsoleLocale } from "@/lib/middleware/utils/console-locale.ts";
+import { parse } from "@/lib/middleware/utils/parse.ts";
 
 export async function AppMiddleware(req: NextRequest) {
   const { path, fullPath, searchParamsObj, searchParamsString } = parse(req);

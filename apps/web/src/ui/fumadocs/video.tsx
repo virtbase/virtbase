@@ -21,7 +21,7 @@ import { LucidePlay } from "@virtbase/ui/icons";
 import Image from "next/image";
 import { useExtracted } from "next-intl";
 import { useState } from "react";
-import { IntlLink } from "@/i18n/navigation.public";
+import { IntlLink } from "@/i18n/navigation.public.ts";
 
 interface VideoProps {
   /** The YouTube video id, the part after `youtu.be/`. */

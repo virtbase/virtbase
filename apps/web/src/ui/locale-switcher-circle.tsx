@@ -28,9 +28,9 @@ import NextImage from "next/image";
 import type { Locale } from "next-intl";
 import { useFormatter, useLocale } from "next-intl";
 import { useTransition } from "react";
-import { locales } from "@/i18n/config";
-import { useIntlPathname, useIntlRouter } from "@/i18n/navigation.public";
-import { getLocaleFlag } from "@/i18n/utils";
+import { locales } from "@/i18n/config.ts";
+import { useIntlPathname, useIntlRouter } from "@/i18n/navigation.public.ts";
+import { getLocaleFlag } from "@/i18n/utils.ts";
 
 export function LocaleSwitcherCircle() {
   const activeLocale = useLocale();

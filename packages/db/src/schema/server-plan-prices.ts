@@ -17,9 +17,9 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils/create-id";
-import { discounts } from "./discounts";
-import { serverPlans } from "./server-plans";
+import { createId } from "../utils/create-id.ts";
+import { discounts } from "./discounts.ts";
+import { serverPlans } from "./server-plans.ts";
 
 export const serverPlanPrices = d.snakeCase.table(
   "server_plan_prices",

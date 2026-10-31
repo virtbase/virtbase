@@ -55,17 +55,17 @@ import {
   ENFORCEMENT_ICONS,
   humanise,
   SEVERITY_ICONS,
-} from "@/ui/abuse/case-meta";
-import type { AbuseRuleListItem } from "../../../api/abuse/get-abuse-rules";
+} from "@/ui/abuse/case-meta.tsx";
+import type { AbuseRuleListItem } from "../../../api/abuse/get-abuse-rules.ts";
 import {
   createAbuseRuleAction,
   dryRunAbuseRuleAction,
   updateAbuseRuleAction,
-} from "../../../api/abuse/manage-abuse-rules";
+} from "../../../api/abuse/manage-abuse-rules.ts";
 import {
   CASE_CATEGORIES,
   CASE_SEVERITIES,
-} from "../../../lib/abuse/validations";
+} from "../../../lib/abuse/validations.ts";
 
 /** A `Select` cannot hold an empty value, and "no condition" needs one. */
 const ANY = "__any__";

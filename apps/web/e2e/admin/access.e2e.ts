@@ -16,7 +16,7 @@
  */
 
 import { expect, test } from "@playwright/test";
-import { adminUrl } from "../support/urls";
+import { adminUrl } from "../support/urls.ts";
 
 test.describe("admin access", () => {
   test("it lets an admin reach the console", async ({ page }) => {

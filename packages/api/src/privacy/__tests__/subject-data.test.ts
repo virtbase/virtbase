@@ -18,7 +18,7 @@
 import { describe, expect, test } from "bun:test";
 import * as schema from "@virtbase/db/schema";
 import { listTableNames, listTablesWithColumn } from "@virtbase/db/utils";
-import type { SubjectTableName } from "../subject-data";
+import type { SubjectTableName } from "../subject-data.ts";
 import {
   NEVER_EXPORTED_COLUMNS,
   SUBJECT_DATA,
@@ -26,7 +26,7 @@ import {
   tablesToAnonymise,
   tablesToErase,
   tablesToRetain,
-} from "../subject-data";
+} from "../subject-data.ts";
 
 const declared = new Set(Object.keys(SUBJECT_DATA));
 

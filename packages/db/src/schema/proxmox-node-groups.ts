@@ -17,7 +17,7 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils/create-id";
+import { createId } from "../utils/create-id.ts";
 
 export const proxmoxNodeGroupStrategyEnum = d.pgEnum(
   "proxmox_node_group_strategy",

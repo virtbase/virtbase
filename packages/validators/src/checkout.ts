@@ -16,11 +16,11 @@
  */
 
 import * as z from "zod";
-import { ProxmoxTemplateSchema } from "./proxmox-template";
-import { ServerSchema } from "./server";
-import { ServerPlanSchema } from "./server-plan";
-import { ServerPlanPriceSchema } from "./server-plan-prices";
-import { SSHKeySchema } from "./ssh-keys";
+import { ProxmoxTemplateSchema } from "./proxmox-template.ts";
+import { ServerSchema } from "./server/index.ts";
+import { ServerPlanSchema } from "./server-plan.ts";
+import { ServerPlanPriceSchema } from "./server-plan-prices.ts";
+import { SSHKeySchema } from "./ssh-keys.ts";
 
 const orderType = z.enum(["new_server", "extend_server", "upgrade_server"]);
 

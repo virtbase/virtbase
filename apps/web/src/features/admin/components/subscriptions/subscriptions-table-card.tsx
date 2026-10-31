@@ -19,9 +19,9 @@ import type { SearchParams } from "nuqs";
 import {
   getSubscriptionStatusCounts,
   getSubscriptionsList,
-} from "../../api/subscriptions/get-subscriptions-list";
-import { searchParamsCache } from "../../lib/subscriptions/validations";
-import { SubscriptionsTable } from "./subscriptions-table";
+} from "../../api/subscriptions/get-subscriptions-list.ts";
+import { searchParamsCache } from "../../lib/subscriptions/validations.ts";
+import { SubscriptionsTable } from "./subscriptions-table/index.tsx";
 
 export async function SubscriptionsTableCard(props: {
   searchParams: Promise<SearchParams>;

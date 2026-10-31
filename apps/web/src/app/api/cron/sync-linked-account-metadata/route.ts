@@ -20,8 +20,8 @@ import { decryptStoredOAuthTokenIfNeeded } from "@virtbase/auth/stored-oauth-tok
 import { and, eq, gte, ilike, isNotNull, isNull, or, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { accounts } from "@virtbase/db/schema";
-import { env } from "@/env";
-import { withCronSecret } from "@/lib/with-cron-secret";
+import { env } from "@/env.ts";
+import { withCronSecret } from "@/lib/with-cron-secret.ts";
 
 /**
  * Re-pushes linked-account metadata for every integration implementing the

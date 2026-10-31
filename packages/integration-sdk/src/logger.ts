@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { IntegrationLogger } from "./types";
+import type { IntegrationLogger } from "./types.ts";
 
 /**
  * Stand-in until `@virtbase/observability` exists. Matches the `console.*`

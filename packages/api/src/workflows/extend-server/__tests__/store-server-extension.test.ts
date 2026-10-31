@@ -28,18 +28,21 @@ import { and, eq, lte, sql } from "@virtbase/db";
 import * as schema from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { billingAnchorDay, nextPeriodEnd } from "../../../subscriptions/period";
+import {
+  billingAnchorDay,
+  nextPeriodEnd,
+} from "../../../subscriptions/period.ts";
 import {
   mockServer,
   mockServerPlanPrice,
   mockSession,
   seedServerGraph,
-} from "../../../testing/fixtures";
+} from "../../../testing/fixtures.ts";
 
 let db: TestDb;
-let store: typeof import("../store-server-extension").storeServerExtensionStep;
-let rollback: typeof import("../store-server-extension").rollbackStoreServerExtensionStep;
-let claimRenewal: typeof import("../../../subscriptions/claim-renewal").claimRenewal;
+let store: typeof import("../store-server-extension.ts").storeServerExtensionStep;
+let rollback: typeof import("../store-server-extension.ts").rollbackStoreServerExtensionStep;
+let claimRenewal: typeof import("../../../subscriptions/claim-renewal.ts").claimRenewal;
 
 const SERVER_ID = mockServer.id;
 const USER_ID = mockSession.user.id;
@@ -55,8 +58,8 @@ beforeAll(async () => {
   ({
     storeServerExtensionStep: store,
     rollbackStoreServerExtensionStep: rollback,
-  } = await import("../store-server-extension"));
-  ({ claimRenewal } = await import("../../../subscriptions/claim-renewal"));
+  } = await import("../store-server-extension.ts"));
+  ({ claimRenewal } = await import("../../../subscriptions/claim-renewal.ts"));
 
   await seedServerGraph(db);
 });

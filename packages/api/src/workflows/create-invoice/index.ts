@@ -16,9 +16,9 @@
  */
 
 import type { OrderConfigurationSnapshot } from "@virtbase/validators";
-import { generateInvoiceStep } from "./generate-invoice";
-import { sendInvoiceStep } from "./send-invoice";
-import { storeInvoiceStep } from "./store-invoice";
+import { generateInvoiceStep } from "./generate-invoice.ts";
+import { sendInvoiceStep } from "./send-invoice.ts";
+import { storeInvoiceStep } from "./store-invoice.ts";
 
 type CreateInvoiceWorkflowInput = {
   configuration: OrderConfigurationSnapshot;

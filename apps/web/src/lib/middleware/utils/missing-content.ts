@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { defaultLocale } from "@/i18n/config";
+import { defaultLocale } from "@/i18n/config.ts";
 
 export const ROUTED_SEGMENTS: ReadonlySet<string> = new Set([
   "checkout",

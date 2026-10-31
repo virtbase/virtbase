@@ -27,14 +27,14 @@ import {
   selectData,
   testContext,
   textOf,
-} from "../../__tests__/support/context";
-import { fakePort, stubNextIntl } from "../../__tests__/support/harness";
+} from "../../__tests__/support/context.ts";
+import { fakePort, stubNextIntl } from "../../__tests__/support/harness.ts";
 
 beforeAll(stubNextIntl);
 
-const { runComponent } = await import("../../handlers/dispatch");
+const { runComponent } = await import("../../handlers/dispatch.ts");
 const { buttonHandlers, modalHandlers, selectHandlers } = await import(
-  "../index"
+  "../index.ts"
 );
 
 const SERVER = "srv_1KECN6RQ2MHEMQV0E62050P88";
@@ -449,7 +449,7 @@ describe("regressions", () => {
     // `⏻` (U+23FB) is a technical symbol, not an emoji. Discord answered
     // COMPONENT_INVALID_EMOJI and discarded the whole message, which the
     // customer saw as "did not respond in time".
-    const { isRenderableEmoji } = await import("../../ui/emoji");
+    const { isRenderableEmoji } = await import("../../ui/emoji.ts");
     const { settled } = await press(`button:power:menu:${SERVER}`);
 
     const emojis = componentsOf(settled)

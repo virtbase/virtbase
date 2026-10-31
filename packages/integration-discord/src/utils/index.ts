@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./get-user-by-interaction";
-export * from "./invite-url";
-export * from "./snowflake";
-export * from "./verify-incoming-request";
+export * from "./get-user-by-interaction.ts";
+export * from "./invite-url.ts";
+export * from "./snowflake.ts";
+export * from "./verify-incoming-request.ts";

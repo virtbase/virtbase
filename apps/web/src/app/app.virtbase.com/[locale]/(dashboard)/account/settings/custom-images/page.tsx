@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { CustomImagesCard } from "@/features/account/components/custom-images/custom-images-card";
+import { CustomImagesCard } from "@/features/account/components/custom-images/custom-images-card.tsx";
 
 export default function Page() {
   return <CustomImagesCard />;

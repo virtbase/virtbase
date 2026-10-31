@@ -22,8 +22,8 @@ import { cn } from "@virtbase/ui";
 import { Check, PlusCircle, XCircle } from "lucide-react";
 import { useExtracted } from "next-intl";
 import * as React from "react";
-import { Badge } from "../badge";
-import { Button } from "../button";
+import { Badge } from "../badge.tsx";
+import { Button } from "../button.tsx";
 import {
   Command,
   CommandEmpty,
@@ -32,10 +32,10 @@ import {
   CommandItem,
   CommandList,
   CommandSeparator,
-} from "../command";
-import { Popover, PopoverContent, PopoverTrigger } from "../popover";
-import { Separator } from "../separator";
-import type { Column, Option } from "../types/data-table";
+} from "../command.tsx";
+import { Popover, PopoverContent, PopoverTrigger } from "../popover.tsx";
+import { Separator } from "../separator.tsx";
+import type { Column, Option } from "../types/data-table.ts";
 
 interface DataTableFacetedFilterProps<TData extends RowData, TValue> {
   column?: Column<TData, TValue>;

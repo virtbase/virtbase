@@ -45,7 +45,7 @@ import {
 import { useExtracted } from "next-intl";
 import { cache, useState, useTransition } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { createApiKeyAction } from "../../api/create-api-key";
+import { createApiKeyAction } from "../../api/create-api-key.ts";
 
 const usePermissionLocalizations = cache(() => {
   const t = useExtracted();

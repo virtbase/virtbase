@@ -33,8 +33,8 @@ import {
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { APP_NAME } from "@virtbase/utils";
 import { useExtracted } from "next-intl";
-import { authClient } from "@/lib/auth/client";
-import { CopyButton } from "@/ui/copy-button";
+import { authClient } from "@/lib/auth/client.ts";
+import { CopyButton } from "@/ui/copy-button.tsx";
 
 export function UserIdCard() {
   const t = useExtracted();

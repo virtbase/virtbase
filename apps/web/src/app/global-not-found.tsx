@@ -25,14 +25,14 @@ import {
 } from "@virtbase/ui/empty";
 import NextLink from "next/link";
 import { getExtracted, getLocale } from "next-intl/server";
-import Document from "@/ui/document";
-import ColoredLayout from "@/ui/layout/colored-layout";
-import { UserIndicator } from "@/ui/user-indicator";
+import Document from "@/ui/document.tsx";
+import ColoredLayout from "@/ui/layout/colored-layout.tsx";
+import { UserIndicator } from "@/ui/user-indicator.tsx";
 
 export {
   defaultMetadata as metadata,
   defaultViewport as viewport,
-} from "@/ui/document";
+} from "@/ui/document.tsx";
 
 /**
  * The locale is read from the request, and the `lang` attribute it feeds sits

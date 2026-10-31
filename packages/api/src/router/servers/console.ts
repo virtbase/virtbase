@@ -23,7 +23,7 @@ import {
   GetServerConsoleInputSchema,
   GetServerConsoleOutputSchema,
 } from "@virtbase/validators/server";
-import { serverProcedure } from "../../trpc";
+import { serverProcedure } from "../../trpc.ts";
 
 /**
  * How long a minted console payload stays usable, in seconds.

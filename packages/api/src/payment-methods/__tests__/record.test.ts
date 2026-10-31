@@ -27,12 +27,12 @@ import { eq } from "@virtbase/db";
 import { paymentMethods, users } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { mockSession } from "../../testing";
-import { listPaymentMethods } from "../list";
+import { mockSession } from "../../testing/index.ts";
+import { listPaymentMethods } from "../list.ts";
 import {
   PaymentMethodOwnershipConflictError,
   recordPaymentMethod,
-} from "../record";
+} from "../record.ts";
 
 const USER_A = mockSession.user.id;
 const USER_B = "usr_0000000000000000000000001";

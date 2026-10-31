@@ -19,15 +19,15 @@ import { afterAll, beforeAll, describe, expect, test } from "bun:test";
 import * as schema from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { mockSession, seedServerGraph } from "../../../testing/fixtures";
-import type { SubjectTableName } from "../../subject-data";
+import { mockSession, seedServerGraph } from "../../../testing/fixtures.ts";
+import type { SubjectTableName } from "../../subject-data.ts";
 import {
   NEVER_EXPORTED_COLUMNS,
   SUBJECT_DATA,
   subjectTables,
-} from "../../subject-data";
-import { collectSubjectData, EXPORT_SCHEMA_VERSION } from "../collect";
-import { EXPORT_SECTIONS } from "../sections";
+} from "../../subject-data.ts";
+import { collectSubjectData, EXPORT_SCHEMA_VERSION } from "../collect.ts";
+import { EXPORT_SECTIONS } from "../sections.ts";
 
 let db: TestDb;
 const USER_ID = mockSession.user.id;

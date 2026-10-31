@@ -27,8 +27,8 @@ import { constructMetadata, PUBLIC_DOMAIN } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { useExtracted } from "next-intl";
 import { getExtracted } from "next-intl/server";
-import { ServersList } from "@/features/servers/components/servers-list";
-import DashboardLayout from "@/ui/layout/dashboard-layout";
+import { ServersList } from "@/features/servers/components/servers-list.tsx";
+import DashboardLayout from "@/ui/layout/dashboard-layout.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();

@@ -15,11 +15,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { DnsLookup } from "../lib/safe-iso-download-url";
+import type { DnsLookup } from "../lib/safe-iso-download-url.ts";
 import {
   assertSafeIsoDownloadUrl,
   UnsafeIsoDownloadUrlError,
-} from "../lib/safe-iso-download-url";
+} from "../lib/safe-iso-download-url.ts";
 
 /**
  * Validates a template image URL before it is handed to a Proxmox node.

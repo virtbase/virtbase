@@ -21,8 +21,8 @@ import { db } from "@virtbase/db/client";
 import { users } from "@virtbase/db/schema";
 import { escapedIlike, getDateIntervalFilter } from "@virtbase/db/utils";
 import { cacheLife, cacheTag } from "next/cache";
-import type { GetUsersSchema } from "@/features/admin/lib/users/validations";
-import { verifySession } from "../verify-session";
+import type { GetUsersSchema } from "@/features/admin/lib/users/validations.ts";
+import { verifySession } from "../verify-session.ts";
 
 export async function getUsersList(input: GetUsersSchema) {
   "use cache: private";

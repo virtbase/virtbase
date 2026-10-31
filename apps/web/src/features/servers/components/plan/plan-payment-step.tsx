@@ -17,9 +17,9 @@
 
 "use client";
 
-import { ElementsProvider } from "@/features/checkout/components/elements-provider";
-import { StripePaymentForm } from "@/features/checkout/components/stripe-payment-form";
-import { usePlanContext } from "./plan-context";
+import { ElementsProvider } from "@/features/checkout/components/elements-provider.tsx";
+import { StripePaymentForm } from "@/features/checkout/components/stripe-payment-form.tsx";
+import { usePlanContext } from "./plan-context.tsx";
 
 /**
  * Stripe Elements, inside the dialog the customer opened.

@@ -46,7 +46,7 @@ import { ServerManagementError } from "@virtbase/ports";
 //
 // `notifications/dispatch.ts`, `notifications/deliver.ts` and `abuse/poll.ts`
 // already break the same cycle the same way.
-import type { AppRouter } from "../root";
+import type { AppRouter } from "../root.ts";
 
 type Caller = ReturnType<AppRouter["createCaller"]>;
 
@@ -105,7 +105,7 @@ const callerFor = async (actor: ServerManagementActor): Promise<Caller> => {
     );
   }
 
-  const { appRouter } = await import("../root");
+  const { appRouter } = await import("../root.ts");
 
   return appRouter.createCaller({
     db,

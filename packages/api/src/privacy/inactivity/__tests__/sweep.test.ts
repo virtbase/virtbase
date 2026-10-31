@@ -21,13 +21,13 @@ import { touchLastSeen } from "@virtbase/db/queries";
 import * as schema from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { mockSession, seedServerGraph } from "../../../testing/fixtures";
-import { isEligibleForInactivityDeletion } from "../eligibility";
+import { mockSession, seedServerGraph } from "../../../testing/fixtures.ts";
+import { isEligibleForInactivityDeletion } from "../eligibility.ts";
 
 let db: TestDb;
-let findInactivityCandidates: typeof import("../sweep").findInactivityCandidates;
-let scheduleInactivityDeletion: typeof import("../sweep").scheduleInactivityDeletion;
-let findAccountsToRemind: typeof import("../sweep").findAccountsToRemind;
+let findInactivityCandidates: typeof import("../sweep.ts").findInactivityCandidates;
+let scheduleInactivityDeletion: typeof import("../sweep.ts").scheduleInactivityDeletion;
+let findAccountsToRemind: typeof import("../sweep.ts").findAccountsToRemind;
 
 const LONG_AGO = new Date("2024-01-01T00:00:00.000Z");
 
@@ -43,7 +43,7 @@ beforeAll(async () => {
     findInactivityCandidates,
     scheduleInactivityDeletion,
     findAccountsToRemind,
-  } = await import("../sweep"));
+  } = await import("../sweep.ts"));
 
   await seedServerGraph(db);
 

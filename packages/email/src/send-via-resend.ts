@@ -18,13 +18,16 @@
 import { APP_DOMAIN, SUPPORT_EMAIL } from "@virtbase/utils";
 import { render } from "react-email";
 import type { CreateEmailOptions } from "resend";
-import { EmailDeliveryError } from "./errors";
-import { getResendClient } from "./resend";
-import { TRUSTPILOT_AFS_EMAIL, VARIANT_TO_FROM_MAP } from "./resend/constants";
+import { EmailDeliveryError } from "./errors.ts";
+import {
+  TRUSTPILOT_AFS_EMAIL,
+  VARIANT_TO_FROM_MAP,
+} from "./resend/constants.ts";
+import { getResendClient } from "./resend/index.ts";
 import type {
   ResendBulkEmailOptions,
   ResendEmailOptions,
-} from "./resend/types";
+} from "./resend/types.ts";
 
 /**
  * Turns one send into a thrown error, so that no failure can be mistaken for

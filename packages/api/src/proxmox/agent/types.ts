@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { ProxmoxInstance } from "../get-proxmox-instance";
+import type { ProxmoxInstance } from "../get-proxmox-instance.ts";
 
 /**
  * The Proxmox VM accessor, i.e. `instance.node.qemu.$(vmid)`.

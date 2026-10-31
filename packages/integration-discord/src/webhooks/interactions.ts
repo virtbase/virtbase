@@ -17,16 +17,16 @@
 
 import { InteractionType } from "discord-api-types/v10";
 
-import { createDiscordClient } from "../api";
-import type { DiscordContext } from "../config";
-import { getEmojiResolver } from "../emoji";
-import { getInteractionHandler } from "../handlers";
-import { createDeferred } from "../handlers/defer";
-import type { InteractionContext } from "../handlers/types";
-import { getUserByInteraction } from "../utils/get-user-by-interaction";
-import { mapDiscordLocale } from "../utils/map-discord-locale";
-import { millisecondsSince } from "../utils/snowflake";
-import { verifyInteractionRequest } from "../utils/verify-incoming-request";
+import { createDiscordClient } from "../api/index.ts";
+import type { DiscordContext } from "../config.ts";
+import { getEmojiResolver } from "../emoji/index.ts";
+import { createDeferred } from "../handlers/defer.ts";
+import { getInteractionHandler } from "../handlers/index.ts";
+import type { InteractionContext } from "../handlers/types.ts";
+import { getUserByInteraction } from "../utils/get-user-by-interaction.ts";
+import { mapDiscordLocale } from "../utils/map-discord-locale.ts";
+import { millisecondsSince } from "../utils/snowflake.ts";
+import { verifyInteractionRequest } from "../utils/verify-incoming-request.ts";
 
 /**
  * Discord's interactions endpoint.

@@ -38,12 +38,12 @@ import {
   mockServerPlanPrice,
   mockSession,
   seedServerInfrastructure,
-} from "../../testing/fixtures";
+} from "../../testing/fixtures.ts";
 import {
   backfillSubscriptions,
   findBackfillCandidates,
   periodStartFor,
-} from "../subscriptions";
+} from "../subscriptions.ts";
 
 let testDb: TestDb;
 

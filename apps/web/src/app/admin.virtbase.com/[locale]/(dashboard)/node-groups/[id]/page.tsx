@@ -26,12 +26,12 @@ import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
 import { Suspense } from "react";
-import { getLinkableDatacenters } from "@/features/admin/api/datacenters/get-linkable-datacenters";
-import { getLinkableProxmoxNodeGroups } from "@/features/admin/api/proxmox-node-groups/get-linkable-proxmox-node-groups";
-import { verifyRenderSession } from "@/features/admin/api/verify-session";
-import { CreateNodeButton } from "@/features/admin/components/proxmox-nodes/create-datacenter-button";
-import { NodesTableCard } from "@/features/admin/components/proxmox-nodes/nodes-table-card";
-import DashboardLayout from "@/ui/layout/dashboard-layout";
+import { getLinkableDatacenters } from "@/features/admin/api/datacenters/get-linkable-datacenters.ts";
+import { getLinkableProxmoxNodeGroups } from "@/features/admin/api/proxmox-node-groups/get-linkable-proxmox-node-groups.ts";
+import { verifyRenderSession } from "@/features/admin/api/verify-session.ts";
+import { CreateNodeButton } from "@/features/admin/components/proxmox-nodes/create-datacenter-button.tsx";
+import { NodesTableCard } from "@/features/admin/components/proxmox-nodes/nodes-table-card.tsx";
+import DashboardLayout from "@/ui/layout/dashboard-layout.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();

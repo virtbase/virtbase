@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { truncate } from "../truncate";
+import { truncate } from "../truncate.ts";
 
 describe("truncate", () => {
   test("it truncates a string to the given length", () => {

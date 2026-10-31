@@ -16,13 +16,13 @@
  */
 
 import { sleep } from "workflow";
-import type { GetProxmoxInstanceParams } from "../../proxmox/get-proxmox-instance";
-import { purgeAllBackupsStep } from "../delete-server/purge-all-backups";
-import { resetPointerRecordsStep } from "../delete-server/reset-pointer-records";
-import { storeServerDeletionStep } from "../delete-server/store-server-deletion";
-import { destroyGuestStep } from "./destroy-guest";
-import { performGuestActionStep } from "./perform-guest-action";
-import { waitForProxmoxTaskStep } from "./wait-for-proxmox-task";
+import type { GetProxmoxInstanceParams } from "../../proxmox/get-proxmox-instance.ts";
+import { purgeAllBackupsStep } from "../delete-server/purge-all-backups.ts";
+import { resetPointerRecordsStep } from "../delete-server/reset-pointer-records.ts";
+import { storeServerDeletionStep } from "../delete-server/store-server-deletion.ts";
+import { destroyGuestStep } from "./destroy-guest.ts";
+import { performGuestActionStep } from "./perform-guest-action.ts";
+import { waitForProxmoxTaskStep } from "./wait-for-proxmox-task.ts";
 
 type DeleteOneServerParams = {
   vmid: number;

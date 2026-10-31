@@ -54,11 +54,11 @@ import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useCallback, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { useCreateFirewallRule } from "../hooks/use-create-firewall-rule";
-import { useUpdateFirewallRule } from "../hooks/use-update-firewall-rule";
-import { getICMPTypes, isICMP, isProtocolWithPorts } from "../lib/utils";
-import { FirewallActionSelect } from "./firewall-action-select";
-import { FirewallProtocolSelect } from "./firewall-protocol-select";
+import { useCreateFirewallRule } from "../hooks/use-create-firewall-rule.ts";
+import { useUpdateFirewallRule } from "../hooks/use-update-firewall-rule.ts";
+import { getICMPTypes, isICMP, isProtocolWithPorts } from "../lib/utils.ts";
+import { FirewallActionSelect } from "./firewall-action-select.tsx";
+import { FirewallProtocolSelect } from "./firewall-protocol-select.tsx";
 
 interface FirewallRuleDialogProps
   extends Omit<

@@ -29,7 +29,7 @@ import {
 } from "@virtbase/validators";
 import { revalidatePath } from "next/cache";
 import * as z from "zod";
-import { actionClient } from "../../lib/action-client";
+import { actionClient } from "../../lib/action-client.ts";
 
 const requireStore = () => {
   if (!notificationTargetStore) {

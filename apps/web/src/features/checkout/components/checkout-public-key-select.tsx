@@ -34,7 +34,7 @@ import { useExtracted } from "next-intl";
 import React from "react";
 import type { UseFormReturn } from "react-hook-form";
 import { Controller } from "react-hook-form";
-import type { GetSSHKeysListOutput } from "@/features/account/hooks/ssh-keys/ssh-keys-list";
+import type { GetSSHKeysListOutput } from "@/features/account/hooks/ssh-keys/ssh-keys-list.ts";
 
 interface CheckoutPublicKeySelectProps {
   form: UseFormReturn<OrderNewServerPlanInput>;

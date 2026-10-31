@@ -15,8 +15,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { getNotificationSettings } from "../../api/notifications/get-notification-settings";
-import { NotificationTargetsList } from "./notification-targets-list";
+import { getNotificationSettings } from "../../api/notifications/get-notification-settings.ts";
+import { NotificationTargetsList } from "./notification-targets-list.tsx";
 
 export async function NotificationTargets() {
   const { targets, channels, error } = await getNotificationSettings();

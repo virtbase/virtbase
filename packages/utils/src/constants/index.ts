@@ -15,11 +15,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./cookies";
-export * from "./firewall";
-export * from "./iso-catalog";
-export * from "./limits";
-export * from "./main";
-export * from "./pagination";
-export * from "./proxmox";
-export * from "./urls";
+export * from "./cookies.ts";
+export * from "./firewall.ts";
+export * from "./iso-catalog.ts";
+export * from "./limits.ts";
+export * from "./main.ts";
+export * from "./pagination.ts";
+export * from "./proxmox.ts";
+export * from "./urls.ts";

@@ -17,7 +17,7 @@
 
 import { describe, expect, test } from "bun:test";
 
-import { millisecondsSince, snowflakeCreatedAt } from "../snowflake";
+import { millisecondsSince, snowflakeCreatedAt } from "../snowflake.ts";
 
 /** Builds the snowflake Discord would have minted at a given moment. */
 const snowflakeAt = (date: Date): string =>

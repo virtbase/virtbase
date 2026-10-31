@@ -16,7 +16,7 @@
  */
 
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils/create-id";
+import { createId } from "../utils/create-id.ts";
 
 export const emails = d.snakeCase.table(
   "emails",

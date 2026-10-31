@@ -37,7 +37,7 @@ mock.module("react", () => ({
 }));
 mock.module("next/cache", () => ({ cacheLife: () => {}, cacheTag: () => {} }));
 mock.module("@sentry/nextjs", () => ({ captureException: () => {} }));
-mock.module("../../verify-session", () => ({
+mock.module("../../verify-session.ts", () => ({
   verifySession: async () => {},
 }));
 
@@ -49,16 +49,16 @@ import {
   mockServerPlan,
   mockUser,
   seedDashboardInfrastructure,
-} from "./fixtures";
+} from "./fixtures.ts";
 
 let testDb: TestDb;
-let getSalesByPlan: typeof import("../get-sales-by-plan").getSalesByPlan;
+let getSalesByPlan: typeof import("../get-sales-by-plan.ts").getSalesByPlan;
 
 beforeAll(async () => {
   testDb = await createTestDb();
   mock.module("@virtbase/db/client", () => ({ db: testDb }));
 
-  const mod = await import("../get-sales-by-plan");
+  const mod = await import("../get-sales-by-plan.ts");
   getSalesByPlan = mod.getSalesByPlan;
 
   await seedDashboardInfrastructure(testDb);

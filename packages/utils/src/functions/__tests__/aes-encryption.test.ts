@@ -21,7 +21,7 @@ import {
   deriveKeyHex,
   encryptPayload,
   isAuthenticatedPayload,
-} from "../aes-encryption";
+} from "../aes-encryption.ts";
 
 const KEY = "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";
 const OTHER_KEY =

@@ -16,13 +16,13 @@
  */
 
 import type { RowData } from "@tanstack/react-table";
-import { dataTableConfig } from "../config/data-table";
+import { dataTableConfig } from "../config/data-table.ts";
 import type {
   Column,
   ExtendedColumnFilter,
   FilterOperator,
   FilterVariant,
-} from "../types/data-table";
+} from "../types/data-table.ts";
 
 export function getColumnPinningStyle<TData extends RowData>({
   column,

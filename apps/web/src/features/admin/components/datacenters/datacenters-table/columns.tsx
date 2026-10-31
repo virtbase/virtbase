@@ -37,8 +37,8 @@ import type { ColumnDef, DataTableRowAction } from "@virtbase/ui/types";
 import NextLink from "next/link";
 import { useExtracted, useFormatter } from "next-intl";
 import type React from "react";
-import type { getDatacentersList } from "@/features/admin/api/datacenters/get-datacenters-list";
-import { paths } from "@/lib/paths";
+import type { getDatacentersList } from "@/features/admin/api/datacenters/get-datacenters-list.ts";
+import { paths } from "@/lib/paths.ts";
 
 export type DatacentersTableColumn = Awaited<
   ReturnType<typeof getDatacentersList>

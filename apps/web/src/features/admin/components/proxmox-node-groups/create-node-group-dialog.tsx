@@ -29,7 +29,7 @@ import { useExtracted } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { createProxmoxNodeGroupAction } from "../../api/proxmox-node-groups/create-proxmox-node-group";
+import { createProxmoxNodeGroupAction } from "../../api/proxmox-node-groups/create-proxmox-node-group.ts";
 
 export default function CreateNodeGroupDialog(
   props: Omit<

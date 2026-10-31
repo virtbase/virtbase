@@ -18,13 +18,13 @@
 import type { IntegrationWebhook } from "@virtbase/integration-sdk";
 import type { InboundSignal } from "@virtbase/ports";
 import { safeSecretCompare } from "@virtbase/utils";
-import type { AlertmanagerSecrets, AlertmanagerSettings } from "./config";
+import type { AlertmanagerSecrets, AlertmanagerSettings } from "./config.ts";
 import {
   alertmanagerPayloadSchema,
   genericPayloadSchema,
   parseAlertmanagerPayload,
   parseGenericPayload,
-} from "./parse";
+} from "./parse.ts";
 
 type AlertsWebhook = IntegrationWebhook<
   AlertmanagerSettings,

@@ -29,9 +29,9 @@ import {
 import { db } from "@virtbase/db/client";
 import type { OrderStatus } from "@virtbase/db/schema";
 import { orders, payments } from "@virtbase/db/schema";
-import { fulfilOrder } from "./fulfill-order";
-import type { OrderBillingAddress } from "./record-billing-details";
-import { transitionOrder } from "./transition-order";
+import { fulfilOrder } from "./fulfill-order.ts";
+import type { OrderBillingAddress } from "./record-billing-details.ts";
+import { transitionOrder } from "./transition-order.ts";
 
 /**
  * How long an order may sit untouched after its payment settled before
@@ -134,7 +134,7 @@ const readRecordedBillingDetails: OrderBillingResolver = async (order) => {
 
   if (payment?.provider === "stripe") {
     const { readStripeBillingDetails } = await import(
-      "./settle-stripe-payment"
+      "./settle-stripe-payment.ts"
     );
     return readStripeBillingDetails(payment.externalId);
   }

@@ -18,14 +18,14 @@
 import { db } from "@virtbase/db/client";
 import type { Subscription } from "@virtbase/db/schema";
 import { subscriptions } from "@virtbase/db/schema";
-import { nextPeriodEnd } from "./period";
+import { nextPeriodEnd } from "./period.ts";
 // The exported helper rather than a local one. A second `findLiveSubscription`
 // in this directory - with its two subject arguments the other way round, as
 // the one that used to live here had - is a copy-paste trap: called backwards
 // it looks for a subscription whose `subject_type` is a server id, matches
 // nothing, and opens a duplicate subscription instead of adopting the existing
 // one.
-import { findLiveSubscription } from "./subject-subscription";
+import { findLiveSubscription } from "./subject-subscription.ts";
 
 export interface CreateSubscriptionInput {
   userId: string;

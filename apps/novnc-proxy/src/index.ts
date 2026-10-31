@@ -27,9 +27,9 @@
  */
 
 import * as z from "zod";
-import { ConfigSchema, PortSchema } from "./config";
-import { log } from "./log";
-import { startServer } from "./server";
+import { ConfigSchema, PortSchema } from "./config.ts";
+import { log } from "./log.ts";
+import { startServer } from "./server.ts";
 
 /** Inside the 5s Docker gives a `HEALTHCHECK` before counting it as failed. */
 const HEALTHCHECK_TIMEOUT_MS = 3_000;

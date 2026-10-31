@@ -16,7 +16,7 @@
  */
 
 import type { APIApplication } from "discord-api-types/v10";
-import type { DiscordClient } from "./client";
+import type { DiscordClient } from "./client.ts";
 
 /** The application the bot token belongs to. Used to verify configuration. */
 export const getApplication = (client: DiscordClient) =>

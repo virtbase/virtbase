@@ -31,15 +31,15 @@ import {
   sql,
 } from "drizzle-orm";
 import { alias } from "drizzle-orm/pg-core";
-import { db } from "../client";
-import type { DatabaseDiscount } from "../schema";
+import { db } from "../client.ts";
+import type { DatabaseDiscount } from "../schema/index.ts";
 import {
   discounts,
   discountsToServerPlans,
   proxmoxNodes,
   serverPlans,
   servers,
-} from "../schema";
+} from "../schema/index.ts";
 
 /**
  * Returns server plans together with an `isAvailable` flag indicating

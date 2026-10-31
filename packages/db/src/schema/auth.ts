@@ -17,7 +17,7 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils";
+import { createId } from "../utils/index.ts";
 
 /**
  * Who started the clock on an account's deletion.

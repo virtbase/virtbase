@@ -16,7 +16,7 @@
  */
 
 import { Suspense } from "react";
-import { ServerNavItems, ServerNavView } from "./server-nav-view";
+import { ServerNavItems, ServerNavView } from "./server-nav-view.tsx";
 
 /**
  * The server tab bar, resolved from the route rather than from a client hook.

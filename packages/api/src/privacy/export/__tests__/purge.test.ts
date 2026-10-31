@@ -20,10 +20,10 @@ import { eq } from "@virtbase/db";
 import { dataExports } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { mockSession, seedServerGraph } from "../../../testing/fixtures";
+import { mockSession, seedServerGraph } from "../../../testing/fixtures.ts";
 
 let db: TestDb;
-let purgeExpiredExports: typeof import("../build").purgeExpiredExports;
+let purgeExpiredExports: typeof import("../build.ts").purgeExpiredExports;
 
 const NOW = new Date("2026-08-26T12:00:00.000Z");
 const daysFromNow = (days: number) =>
@@ -33,7 +33,7 @@ beforeAll(async () => {
   db = await createTestDb();
   mock.module("@virtbase/db/client", () => ({ db }));
 
-  ({ purgeExpiredExports } = await import("../build"));
+  ({ purgeExpiredExports } = await import("../build.ts"));
 
   await seedServerGraph(db);
 

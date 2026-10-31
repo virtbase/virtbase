@@ -18,7 +18,7 @@
 import { and, eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { orders, paymentEvents, payments } from "@virtbase/db/schema";
-import { transitionOrder } from "./transition-order";
+import { transitionOrder } from "./transition-order.ts";
 
 export type NormalisedPaymentEventType =
   | "payment.succeeded"

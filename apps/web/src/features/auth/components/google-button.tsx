@@ -24,8 +24,8 @@ import { getSafeRedirectUrl } from "@virtbase/utils";
 import { useSearchParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useContext } from "react";
-import { authClient } from "@/lib/auth/client";
-import { LoginFormContext } from "./login-form-context";
+import { authClient } from "@/lib/auth/client.ts";
+import { LoginFormContext } from "./login-form-context.tsx";
 
 export function GoogleButton({ next }: { next?: string }) {
   const t = useExtracted();

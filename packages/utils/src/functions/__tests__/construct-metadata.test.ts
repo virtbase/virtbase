@@ -16,8 +16,8 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { APP_NAME } from "../../constants";
-import { constructMetadata } from "../construct-metadata";
+import { APP_NAME } from "../../constants/index.ts";
+import { constructMetadata } from "../construct-metadata.ts";
 
 describe("constructMetadata", () => {
   test("it constructs the correct metadata with title and description", () => {

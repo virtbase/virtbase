@@ -16,8 +16,8 @@
  */
 
 import { mapProxmoxServerStatus, ProxmoxServerStatus } from "@virtbase/utils";
-import type { GetProxmoxInstanceParams } from "../../proxmox";
-import { getProxmoxInstance, performPowerAction } from "../../proxmox";
+import type { GetProxmoxInstanceParams } from "../../proxmox/index.ts";
+import { getProxmoxInstance, performPowerAction } from "../../proxmox/index.ts";
 
 type PerformGuestActionStepParams = {
   proxmoxNode: GetProxmoxInstanceParams;

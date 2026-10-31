@@ -15,8 +15,11 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { GetProxmoxInstanceParams, ProxmoxInstance } from "../../proxmox";
-import { getProxmoxInstance } from "../../proxmox";
+import type {
+  GetProxmoxInstanceParams,
+  ProxmoxInstance,
+} from "../../proxmox/index.ts";
+import { getProxmoxInstance } from "../../proxmox/index.ts";
 
 type ConfigInput = NonNullable<
   Parameters<

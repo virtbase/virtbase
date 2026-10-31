@@ -56,13 +56,13 @@ import type React from "react";
 import { Suspense, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { ShowPasswordAddon } from "@/ui/input-group-addons";
-import type { getLinkableDatacenters } from "../../api/datacenters/get-linkable-datacenters";
-import type { getLinkableProxmoxNodeGroups } from "../../api/proxmox-node-groups/get-linkable-proxmox-node-groups";
-import { createProxmoxNodeAction } from "../../api/proxmox-nodes/create-proxmox-node";
-import { transformTextField } from "../../lib/transform-text-field";
-import { DatacenterSelect } from "../datacenters/datacenter-select";
-import { NodeGroupSelect } from "../proxmox-node-groups/node-group-select";
+import { ShowPasswordAddon } from "@/ui/input-group-addons/index.tsx";
+import type { getLinkableDatacenters } from "../../api/datacenters/get-linkable-datacenters.ts";
+import type { getLinkableProxmoxNodeGroups } from "../../api/proxmox-node-groups/get-linkable-proxmox-node-groups.ts";
+import { createProxmoxNodeAction } from "../../api/proxmox-nodes/create-proxmox-node.ts";
+import { transformTextField } from "../../lib/transform-text-field.ts";
+import { DatacenterSelect } from "../datacenters/datacenter-select.tsx";
+import { NodeGroupSelect } from "../proxmox-node-groups/node-group-select.tsx";
 
 interface CreateNodeDialogProps
   extends Omit<

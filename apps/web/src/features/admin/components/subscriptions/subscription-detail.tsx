@@ -49,19 +49,19 @@ import {
 } from "@virtbase/ui/table";
 import NextLink from "next/link";
 import { useExtracted, useFormatter, useNow } from "next-intl";
-import { paths } from "@/lib/paths";
-import { CopyButton } from "@/ui/copy-button";
+import { paths } from "@/lib/paths.ts";
+import { CopyButton } from "@/ui/copy-button.tsx";
 import type {
   SubscriptionDetail,
   SubscriptionPaymentRow,
   SubscriptionRenewalRow,
-} from "../../api/subscriptions/get-subscription";
+} from "../../api/subscriptions/get-subscription.ts";
 import {
   humaniseSubscriptionTerm,
   PAYMENT_STATUS_ICONS,
   RENEWAL_STATUS_ICONS,
   SUBSCRIPTION_STATUS_ICONS,
-} from "./subscription-meta";
+} from "./subscription-meta.ts";
 
 /**
  * Minor units to a formatted amount. The database stores cents everywhere.

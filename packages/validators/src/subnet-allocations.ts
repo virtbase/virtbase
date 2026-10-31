@@ -16,9 +16,13 @@
  */
 
 import * as z from "zod";
-import { ServerSchema } from "./server/shared";
-import { SubnetSchema } from "./subnets";
-import { EXAMPLE_DATE, ObjectTimestampSchema, RFC3339LINK } from "./timestamps";
+import { ServerSchema } from "./server/shared.ts";
+import { SubnetSchema } from "./subnets.ts";
+import {
+  EXAMPLE_DATE,
+  ObjectTimestampSchema,
+  RFC3339LINK,
+} from "./timestamps.ts";
 
 export const SubnetAllocationSchema = z.object({
   id: z

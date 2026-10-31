@@ -29,10 +29,10 @@ import { TRPCError } from "@trpc/server";
 import type { Session } from "@virtbase/auth";
 import { eq } from "@virtbase/db";
 import { paymentMethods, users } from "@virtbase/db/schema";
-import { integrations } from "../../integrations";
-import { appRouter } from "../../root";
-import type { TestCaller, TestCallerResult } from "../../testing";
-import { createTestCaller, mockSession } from "../../testing";
+import { integrations } from "../../integrations/index.ts";
+import { appRouter } from "../../root.ts";
+import type { TestCaller, TestCallerResult } from "../../testing/index.ts";
+import { createTestCaller, mockSession } from "../../testing/index.ts";
 
 const USER_A = mockSession.user.id;
 const USER_B = "usr_0000000000000000000000001";

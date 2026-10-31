@@ -29,11 +29,11 @@ import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { AbuseCase } from "@/features/abuse/components/abuse-case";
-import { paths } from "@/lib/paths";
-import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
-import { GenericError } from "@/ui/generic-error";
-import DashboardLayout from "@/ui/layout/dashboard-layout";
+import { AbuseCase } from "@/features/abuse/components/abuse-case.tsx";
+import { paths } from "@/lib/paths.ts";
+import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server.tsx";
+import { GenericError } from "@/ui/generic-error.tsx";
+import DashboardLayout from "@/ui/layout/dashboard-layout.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();

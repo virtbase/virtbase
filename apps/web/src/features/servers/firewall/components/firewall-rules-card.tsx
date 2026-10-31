@@ -34,12 +34,12 @@ import {
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
-import { GenericError } from "@/ui/generic-error";
-import { useFirewallRules } from "../hooks/use-firewall-rules";
-import { useGuestFirewall } from "../hooks/use-guest-firewall";
-import { CreateFirewallRuleButton } from "./create-firewall-rule-button";
-import { FirewallRulesTable } from "./firewall-rules-table";
-import { GenerateFirewallRulesButton } from "./generate-firewall-rules-button";
+import { GenericError } from "@/ui/generic-error.tsx";
+import { useFirewallRules } from "../hooks/use-firewall-rules.ts";
+import { useGuestFirewall } from "../hooks/use-guest-firewall.ts";
+import { CreateFirewallRuleButton } from "./create-firewall-rule-button.tsx";
+import { FirewallRulesTable } from "./firewall-rules-table/index.tsx";
+import { GenerateFirewallRulesButton } from "./generate-firewall-rules-button.tsx";
 
 export function FirewallRulesCard() {
   const t = useExtracted();

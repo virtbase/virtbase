@@ -22,5 +22,5 @@
  * `apps/web/scripts`, so the logic can be tested against PGlite rather than
  * only against whatever database the operator happened to point at.
  */
-export * from "./payment-methods";
-export * from "./subscriptions";
+export * from "./payment-methods.ts";
+export * from "./subscriptions.ts";

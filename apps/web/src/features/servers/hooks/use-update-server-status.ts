@@ -19,7 +19,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ProxmoxTaskStatus } from "@virtbase/utils";
 import type { UpdateServerStatusInput } from "@virtbase/validators/server";
 import { useExtracted } from "next-intl";
-import { useTRPC } from "@/lib/trpc/react";
+import { useTRPC } from "@/lib/trpc/react.tsx";
 
 type TRPC = ReturnType<typeof useTRPC>;
 type Options = Parameters<

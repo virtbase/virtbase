@@ -35,7 +35,7 @@ import {
   UpdateSSHKeyInputSchema,
   UpdateSSHKeyOutputSchema,
 } from "@virtbase/validators";
-import { protectedProcedure } from "../trpc";
+import { protectedProcedure } from "../trpc.ts";
 
 export const sshKeysRouter = {
   get: protectedProcedure

@@ -17,8 +17,8 @@
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useExtracted } from "next-intl";
-import { useTRPC } from "@/lib/trpc/react";
-import { invalidateFirewallAnalysis } from "../lib/invalidate-analysis";
+import { useTRPC } from "@/lib/trpc/react.tsx";
+import { invalidateFirewallAnalysis } from "../lib/invalidate-analysis.ts";
 
 type TRPC = ReturnType<typeof useTRPC>;
 type Options = Parameters<

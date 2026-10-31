@@ -17,7 +17,7 @@
 
 import { expect, test } from "@playwright/test";
 import { mockServer } from "@virtbase/api/testing/fixtures";
-import { appUrl } from "../support/urls";
+import { appUrl } from "../support/urls.ts";
 
 test.describe("authenticated dashboard", () => {
   test("it does not bounce a signed-in user to the login page", async ({

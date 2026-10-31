@@ -16,12 +16,12 @@
  */
 
 import { FatalError, getStepMetadata, RetryableError } from "workflow";
-import type { GetProxmoxInstanceParams } from "../../proxmox";
+import type { GetProxmoxInstanceParams } from "../../proxmox/index.ts";
 import {
   findFollowUpGuestPowerTask,
   getProxmoxInstance,
   isHaPowerTask,
-} from "../../proxmox";
+} from "../../proxmox/index.ts";
 
 interface WaitForProxmoxTaskStepParams {
   proxmoxNode: GetProxmoxInstanceParams;

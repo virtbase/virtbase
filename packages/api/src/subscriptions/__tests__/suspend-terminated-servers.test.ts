@@ -20,17 +20,20 @@ import { eq } from "@virtbase/db";
 import * as schema from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import type { ProxmoxInstance } from "../../proxmox";
+import type { ProxmoxInstance } from "../../proxmox/index.ts";
 import {
   mockProxmoxNode,
   mockServer,
   mockServerPlanPrice,
   mockSession,
   seedServerGraph,
-} from "../../testing/fixtures";
-import type { NodeBatch, SuspensionNode } from "../suspend-terminated-servers";
+} from "../../testing/fixtures.ts";
+import type {
+  NodeBatch,
+  SuspensionNode,
+} from "../suspend-terminated-servers.ts";
 
-type Module = typeof import("../suspend-terminated-servers");
+type Module = typeof import("../suspend-terminated-servers.ts");
 
 let db: TestDb;
 let suspendTerminatedServers: Module["suspendTerminatedServers"];
@@ -66,7 +69,7 @@ beforeAll(async () => {
   db = await createTestDb();
   mock.module("@virtbase/db/client", () => ({ db }));
   ({ suspendTerminatedServers, groupByNode, powerOffServers } = await import(
-    "../suspend-terminated-servers"
+    "../suspend-terminated-servers.ts"
   ));
 });
 

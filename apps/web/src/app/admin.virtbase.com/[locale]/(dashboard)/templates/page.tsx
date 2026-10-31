@@ -26,11 +26,11 @@ import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
 import { Suspense } from "react";
-import { getProxmoxTemplateGroupsList } from "@/features/admin/api/proxmox-template-groups/get-proxmox-template-groups-list";
-import { verifyRenderSession } from "@/features/admin/api/verify-session";
-import { CreateTemplateButton } from "@/features/admin/components/proxmox-templates/create-template-button";
-import { TemplatesTableCard } from "@/features/admin/components/proxmox-templates/templates-table-card";
-import DashboardLayout from "@/ui/layout/dashboard-layout";
+import { getProxmoxTemplateGroupsList } from "@/features/admin/api/proxmox-template-groups/get-proxmox-template-groups-list.ts";
+import { verifyRenderSession } from "@/features/admin/api/verify-session.ts";
+import { CreateTemplateButton } from "@/features/admin/components/proxmox-templates/create-template-button.tsx";
+import { TemplatesTableCard } from "@/features/admin/components/proxmox-templates/templates-table-card.tsx";
+import DashboardLayout from "@/ui/layout/dashboard-layout.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();

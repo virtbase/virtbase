@@ -26,8 +26,8 @@
  * Nothing here is imported by shipped code; `.dependency-cruiser.jsonc` enforces
  * that.
  */
-export * from "./caller";
-export * from "./fixtures";
+export * from "./caller.ts";
+export * from "./fixtures.ts";
 
 // `./fixtures` is also exported on its own as `@virtbase/api/testing/fixtures`.
 // The Playwright suite runs under Node and needs the fixture objects without

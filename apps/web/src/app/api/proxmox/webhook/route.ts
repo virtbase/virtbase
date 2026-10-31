@@ -22,7 +22,7 @@ import { safeSecretCompare } from "@virtbase/utils";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
 import * as z from "zod";
-import { env } from "@/env";
+import { env } from "@/env.ts";
 
 const schema = z.object({
   vmid: z.coerce.number().int().positive(),

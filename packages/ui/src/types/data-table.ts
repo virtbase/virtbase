@@ -25,9 +25,9 @@ import type {
   Row as TanstackRow,
   Table as TanstackTable,
 } from "@tanstack/react-table";
-import type { DataTableConfig } from "../config/data-table";
-import type { FilterItemSchema } from "../lib/parsers";
-import type { DataTableFeatures } from "../lib/table-features";
+import type { DataTableConfig } from "../config/data-table.ts";
+import type { FilterItemSchema } from "../lib/parsers.ts";
+import type { DataTableFeatures } from "../lib/table-features.ts";
 
 /**
  * The table types, with the app's feature set already applied.

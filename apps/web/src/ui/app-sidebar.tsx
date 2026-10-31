@@ -32,10 +32,10 @@ import {
 import { SUPPORT_EMAIL } from "@virtbase/utils";
 import NextLink from "next/link";
 import { useExtracted } from "next-intl";
-import { AppSidebarMenu } from "@/ui/app-sidebar-menu";
-import { NavUser } from "@/ui/nav-user";
-import FeedbackButton from "./feedback-button";
-import { LocaleSwitcher } from "./locale-switcher";
+import { AppSidebarMenu } from "@/ui/app-sidebar-menu.tsx";
+import { NavUser } from "@/ui/nav-user.tsx";
+import FeedbackButton from "./feedback-button.tsx";
+import { LocaleSwitcher } from "./locale-switcher.tsx";
 
 export function AppSidebar() {
   const t = useExtracted();

@@ -16,8 +16,8 @@
  */
 
 import { sanitizeGuestOsName, WINDOWS_OS_ID } from "@virtbase/utils";
-import type { ProxmoxVm } from "./types";
-import { unwrapAgentResult } from "./unwrap-result";
+import type { ProxmoxVm } from "./types.ts";
+import { unwrapAgentResult } from "./unwrap-result.ts";
 
 // Re-exported so the agent module stays the one import for guest inspection.
 // The definition lives in `@virtbase/utils` because the operating system

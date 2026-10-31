@@ -15,8 +15,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { GetProxmoxInstanceParams } from "../../proxmox";
-import { createHaRule, getProxmoxInstance } from "../../proxmox";
+import type { GetProxmoxInstanceParams } from "../../proxmox/index.ts";
+import { createHaRule, getProxmoxInstance } from "../../proxmox/index.ts";
 
 type UpdateHASettingsStepParams = {
   proxmoxNode: GetProxmoxInstanceParams;

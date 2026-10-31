@@ -22,8 +22,8 @@ import {
   BreadcrumbPage,
 } from "@virtbase/ui/breadcrumb";
 import { getExtracted } from "next-intl/server";
-import { verifyRenderSession } from "@/features/admin/api/verify-session";
-import DashboardLayout from "@/ui/layout/dashboard-layout";
+import { verifyRenderSession } from "@/features/admin/api/verify-session.ts";
+import DashboardLayout from "@/ui/layout/dashboard-layout.tsx";
 
 export default async function Page({
   searchParams: _,

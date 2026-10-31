@@ -18,7 +18,7 @@
 import Sentry from "@sentry/nextjs";
 import { integrations } from "@virtbase/api/integrations";
 import { connection, NextResponse } from "next/server";
-import { auth } from "@/lib/auth/server";
+import { auth } from "@/lib/auth/server.ts";
 
 /**
  * Route configured in the Discord developer console which facilitates the

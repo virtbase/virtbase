@@ -20,7 +20,7 @@ import {
   integrationConfigStore,
   integrations,
 } from "@virtbase/api/integrations";
-import { withCronSecret } from "@/lib/with-cron-secret";
+import { withCronSecret } from "@/lib/with-cron-secret.ts";
 
 /**
  * Probes every enabled integration and stores the result.

@@ -39,11 +39,11 @@ import { Popover, PopoverContent, PopoverTrigger } from "@virtbase/ui/popover";
 import { useExtracted, useFormatter } from "next-intl";
 import type React from "react";
 import { useEffect, useState } from "react";
-import type { GetCustomImagesListOutput } from "@/features/account/hooks/custom-images/use-custom-image-list";
-import { defaultGetCustomImagesListQuery } from "@/features/account/hooks/custom-images/use-custom-image-list";
-import { useCustomImageStatus } from "@/features/account/hooks/custom-images/use-custom-image-status";
-import { useTRPC } from "@/lib/trpc/react";
-import { CustomImageIcon } from "@/ui/custom-image-icon";
+import type { GetCustomImagesListOutput } from "@/features/account/hooks/custom-images/use-custom-image-list.ts";
+import { defaultGetCustomImagesListQuery } from "@/features/account/hooks/custom-images/use-custom-image-list.ts";
+import { useCustomImageStatus } from "@/features/account/hooks/custom-images/use-custom-image-status.ts";
+import { useTRPC } from "@/lib/trpc/react.tsx";
+import { CustomImageIcon } from "@/ui/custom-image-icon.tsx";
 
 type CustomImage = GetCustomImagesListOutput["iso_downloads"][number];
 

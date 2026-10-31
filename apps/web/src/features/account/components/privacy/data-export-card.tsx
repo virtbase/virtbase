@@ -49,13 +49,13 @@ import { formatBytes } from "@virtbase/utils";
 import { useExtracted, useFormatter, useNow } from "next-intl";
 import { Suspense, useState } from "react";
 import { toast } from "sonner";
-import { ItemRow } from "@/features/account/components/item-row";
-import { StepUpDialog } from "@/features/account/components/step-up-dialog";
+import { ItemRow } from "@/features/account/components/item-row.tsx";
+import { StepUpDialog } from "@/features/account/components/step-up-dialog.tsx";
 import {
   useLatestDataExport,
   useRequestDataExport,
-} from "@/features/account/hooks/privacy/data-export";
-import { CopyButton } from "@/ui/copy-button";
+} from "@/features/account/hooks/privacy/data-export.ts";
+import { CopyButton } from "@/ui/copy-button.tsx";
 
 function RequestedAt({ date }: { date: Date }) {
   const t = useExtracted();

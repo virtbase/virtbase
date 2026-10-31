@@ -30,8 +30,8 @@ import { db } from "@virtbase/db/client";
 import { proxmoxNodes, serverPlans, servers } from "@virtbase/db/schema";
 import { escapedIlike, getDateIntervalFilter } from "@virtbase/db/utils";
 import { cacheLife, cacheTag } from "next/cache";
-import type { GetProxmoxNodesSchema } from "../../lib/proxmox-nodes/validations";
-import { verifySession } from "../verify-session";
+import type { GetProxmoxNodesSchema } from "../../lib/proxmox-nodes/validations.ts";
+import { verifySession } from "../verify-session.ts";
 
 const extras = {
   guestCount: count(serverPlans.id).as("guest_count"),

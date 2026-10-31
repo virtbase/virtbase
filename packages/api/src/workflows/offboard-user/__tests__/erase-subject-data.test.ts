@@ -28,33 +28,33 @@ import { eq } from "@virtbase/db";
 import * as schema from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { integrations } from "../../../integrations";
-import { collectSubjectData } from "../../../privacy/export/collect";
-import type { ExportSection } from "../../../privacy/export/sections";
-import { EXPORT_SECTIONS } from "../../../privacy/export/sections";
-import type { SubjectTableName } from "../../../privacy/subject-data";
-import { tablesToErase } from "../../../privacy/subject-data";
+import { integrations } from "../../../integrations/index.ts";
+import { collectSubjectData } from "../../../privacy/export/collect.ts";
+import type { ExportSection } from "../../../privacy/export/sections.ts";
+import { EXPORT_SECTIONS } from "../../../privacy/export/sections.ts";
+import type { SubjectTableName } from "../../../privacy/subject-data.ts";
+import { tablesToErase } from "../../../privacy/subject-data.ts";
 import {
   mockProxmoxNode,
   mockServer,
   mockServerPlanPrice,
   mockSession,
   seedServerGraph,
-} from "../../../testing/fixtures";
+} from "../../../testing/fixtures.ts";
 
 let db: TestDb;
 
 type Steps = {
-  anonymizeUser: typeof import("../anonymize-user").anonymizeUserStep;
-  claimAccount: typeof import("../claim-account").claimAccountStep;
-  detachPaymentMethods: typeof import("../detach-payment-methods").detachPaymentMethodsStep;
-  eraseSubjectData: typeof import("../erase-subject-data").eraseSubjectDataStep;
-  unplannedErasures: typeof import("../erasure-plan").unplannedErasures;
-  getServersToDestroy: typeof import("../get-servers-to-destroy").getServersToDestroyStep;
-  purgeAllBackups: typeof import("../../delete-server/purge-all-backups").purgeAllBackupsStep;
-  purgeIsoDownloads: typeof import("../purge-iso-downloads").purgeIsoDownloadsStep;
-  resetPointerRecords: typeof import("../../delete-server/reset-pointer-records").resetPointerRecordsStep;
-  storeServerDeletion: typeof import("../../delete-server/store-server-deletion").storeServerDeletionStep;
+  anonymizeUser: typeof import("../anonymize-user.ts").anonymizeUserStep;
+  claimAccount: typeof import("../claim-account.ts").claimAccountStep;
+  detachPaymentMethods: typeof import("../detach-payment-methods.ts").detachPaymentMethodsStep;
+  eraseSubjectData: typeof import("../erase-subject-data.ts").eraseSubjectDataStep;
+  unplannedErasures: typeof import("../erasure-plan.ts").unplannedErasures;
+  getServersToDestroy: typeof import("../get-servers-to-destroy.ts").getServersToDestroyStep;
+  purgeAllBackups: typeof import("../../delete-server/purge-all-backups.ts").purgeAllBackupsStep;
+  purgeIsoDownloads: typeof import("../purge-iso-downloads.ts").purgeIsoDownloadsStep;
+  resetPointerRecords: typeof import("../../delete-server/reset-pointer-records.ts").resetPointerRecordsStep;
+  storeServerDeletion: typeof import("../../delete-server/store-server-deletion.ts").storeServerDeletionStep;
 };
 
 let steps: Steps;
@@ -236,24 +236,24 @@ beforeAll(async () => {
   resolveFakePaymentProvider();
 
   steps = {
-    anonymizeUser: (await import("../anonymize-user")).anonymizeUserStep,
-    claimAccount: (await import("../claim-account")).claimAccountStep,
-    detachPaymentMethods: (await import("../detach-payment-methods"))
+    anonymizeUser: (await import("../anonymize-user.ts")).anonymizeUserStep,
+    claimAccount: (await import("../claim-account.ts")).claimAccountStep,
+    detachPaymentMethods: (await import("../detach-payment-methods.ts"))
       .detachPaymentMethodsStep,
-    eraseSubjectData: (await import("../erase-subject-data"))
+    eraseSubjectData: (await import("../erase-subject-data.ts"))
       .eraseSubjectDataStep,
-    unplannedErasures: (await import("../erasure-plan")).unplannedErasures,
-    getServersToDestroy: (await import("../get-servers-to-destroy"))
+    unplannedErasures: (await import("../erasure-plan.ts")).unplannedErasures,
+    getServersToDestroy: (await import("../get-servers-to-destroy.ts"))
       .getServersToDestroyStep,
-    purgeAllBackups: (await import("../../delete-server/purge-all-backups"))
+    purgeAllBackups: (await import("../../delete-server/purge-all-backups.ts"))
       .purgeAllBackupsStep,
-    purgeIsoDownloads: (await import("../purge-iso-downloads"))
+    purgeIsoDownloads: (await import("../purge-iso-downloads.ts"))
       .purgeIsoDownloadsStep,
     resetPointerRecords: (
-      await import("../../delete-server/reset-pointer-records")
+      await import("../../delete-server/reset-pointer-records.ts")
     ).resetPointerRecordsStep,
     storeServerDeletion: (
-      await import("../../delete-server/store-server-deletion")
+      await import("../../delete-server/store-server-deletion.ts")
     ).storeServerDeletionStep,
   };
 

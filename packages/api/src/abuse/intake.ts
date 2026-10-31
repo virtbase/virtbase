@@ -25,22 +25,22 @@ import type {
   SignalIngestResult,
 } from "@virtbase/ports";
 import { ABUSE_SIGNAL_PREFIX, InboundSignalSchema } from "@virtbase/validators";
-import { dispatchNotification } from "../notifications/dispatch";
+import { dispatchNotification } from "../notifications/dispatch.ts";
 import {
   caseReference,
   countRecentResolvedCases,
   openOrJoinAbuseCase,
   recordCaseEvent,
   setCaseStatus,
-} from "./case";
-import { ensureCaseMailbox } from "./mailbox/send";
-import { resolveSignalSubject } from "./resolve-subject";
-import { findMatchingRule } from "./rules";
+} from "./case.ts";
+import { ensureCaseMailbox } from "./mailbox/send.ts";
+import { resolveSignalSubject } from "./resolve-subject.ts";
+import { findMatchingRule } from "./rules.ts";
 import {
   sanitizeAbuseBody,
   sanitizeAbuseText,
   sanitizeAbuseTitle,
-} from "./sanitize";
+} from "./sanitize.ts";
 
 type Database = typeof database;
 type CaseCategory = AbuseCase["category"];

@@ -24,7 +24,7 @@ import {
   mock,
   test,
 } from "bun:test";
-import * as realReportRollbackFailure from "../../shared/report-rollback-failure";
+import * as realReportRollbackFailure from "../../shared/report-rollback-failure.ts";
 
 // `beforeAll` below replaces this shared module for the whole process -
 // `mock.module` is never undone by `mock.restore()`. `run-rollbacks.test.ts`
@@ -33,7 +33,7 @@ const realRollbackReporter = { ...realReportRollbackFailure };
 
 afterAll(() => {
   mock.module(
-    "../../shared/report-rollback-failure",
+    "../../shared/report-rollback-failure.ts",
     () => realRollbackReporter,
   );
 });
@@ -46,7 +46,7 @@ afterAll(() => {
  * which failures are allowed to reach them - can be driven directly. That
  * orchestration is what is under test, not what any individual step does.
  */
-let provisionServerWorkflow: typeof import("../index").provisionServerWorkflow;
+let provisionServerWorkflow: typeof import("../index.ts").provisionServerWorkflow;
 
 const calls: string[] = [];
 
@@ -81,22 +81,22 @@ beforeAll(async () => {
     FatalError: class FatalError extends Error {},
   }));
 
-  mock.module("../select-proxmox-node", () => ({
+  mock.module("../select-proxmox-node.ts", () => ({
     selectProxmoxNodeStep: step("selectProxmoxNodeStep", {
       plan: { netrate: 1000, storage: 100, proxmoxNodeGroupId: "png_1" },
       selectedNode: NODE,
     }),
   }));
-  mock.module("../../shared/get-template", () => ({
+  mock.module("../../shared/get-template.ts", () => ({
     getTemplateStep: step("getTemplateStep", { volid: "local:iso/deb.img" }),
   }));
-  mock.module("../../shared/get-network-adapters", () => ({
+  mock.module("../../shared/get-network-adapters.ts", () => ({
     getNetworkAdaptersStep: step("getNetworkAdaptersStep", {
       adapters: [],
       allocations: ["ipsub_1"],
     }),
   }));
-  mock.module("../../shared/create-guest-from-image", () => ({
+  mock.module("../../shared/create-guest-from-image.ts", () => ({
     createGuestFromImageStep: step("createGuestFromImageStep", {
       createdVmid: 100,
       createdName: "vm-100",
@@ -107,11 +107,11 @@ beforeAll(async () => {
       undefined,
     ),
   }));
-  mock.module("../../shared/resize-disk", () => ({
+  mock.module("../../shared/resize-disk.ts", () => ({
     resizeDiskStep: step("resizeDiskStep", { resizeUpid: null }),
     rollbackResizeDiskStep: step("rollbackResizeDiskStep", undefined),
   }));
-  mock.module("../apply-hardware-config", () => ({
+  mock.module("../apply-hardware-config.ts", () => ({
     applyHardwareConfigStep: step("applyHardwareConfigStep", {
       configUpid: "UPID:config",
       rootPassword: "hunter2",
@@ -123,13 +123,13 @@ beforeAll(async () => {
       undefined,
     ),
   }));
-  mock.module("../../shared/apply-cloud-init", () => ({
+  mock.module("../../shared/apply-cloud-init.ts", () => ({
     applyCloudInitStep: step("applyCloudInitStep", {
       cicustomUpid: "UPID:ci",
     }),
     rollbackApplyCloudInitStep: step("rollbackApplyCloudInitStep", undefined),
   }));
-  mock.module("../apply-network-config", () => ({
+  mock.module("../apply-network-config.ts", () => ({
     applyNetworkConfigStep: step("applyNetworkConfigStep", {
       networkConfigUpid: "UPID:net",
     }),
@@ -138,7 +138,7 @@ beforeAll(async () => {
       undefined,
     ),
   }));
-  mock.module("../store-provisioned-server", () => ({
+  mock.module("../store-provisioned-server.ts", () => ({
     storeProvisionedServerStep: step("storeProvisionedServerStep", {
       serverId: "kvm_1",
     }),
@@ -147,7 +147,7 @@ beforeAll(async () => {
       undefined,
     ),
   }));
-  mock.module("../create-server-subscription", () => ({
+  mock.module("../create-server-subscription.ts", () => ({
     createServerSubscriptionStep: step("createServerSubscriptionStep", {
       id: "sub_1",
     }),
@@ -156,33 +156,33 @@ beforeAll(async () => {
       undefined,
     ),
   }));
-  mock.module("../../shared/perform-guest-action", () => ({
+  mock.module("../../shared/perform-guest-action.ts", () => ({
     // A null upid keeps the workflow out of the task wait.
     performGuestActionStep: step("performGuestActionStep", { upid: null }),
     rollbackPerformGuestActionStep: step("rollbackPerformGuestActionStep", {
       upid: null,
     }),
   }));
-  mock.module("../../shared/wait-for-proxmox-task", () => ({
+  mock.module("../../shared/wait-for-proxmox-task.ts", () => ({
     waitForProxmoxTaskStep: step("waitForProxmoxTaskStep", undefined),
   }));
-  mock.module("../send-server-ready-email", () => ({
+  mock.module("../send-server-ready-email.ts", () => ({
     sendServerReadyEmailStep: step("sendServerReadyEmailStep", undefined),
   }));
-  mock.module("../../shared/get-ha-failover-nodes", () => ({
+  mock.module("../../shared/get-ha-failover-nodes.ts", () => ({
     getHAFailoverNodesStep: step("getHAFailoverNodesStep", { hostnames: [] }),
   }));
-  mock.module("../../shared/update-ha-settings", () => ({
+  mock.module("../../shared/update-ha-settings.ts", () => ({
     updateHASettingsStep: step("updateHASettingsStep", undefined),
   }));
-  mock.module("../../shared/report-swallowed-failure", () => ({
+  mock.module("../../shared/report-swallowed-failure.ts", () => ({
     reportSwallowedFailureStep: step("reportSwallowedFailureStep", undefined),
   }));
-  mock.module("../../shared/report-rollback-failure", () => ({
+  mock.module("../../shared/report-rollback-failure.ts", () => ({
     reportRollbackFailureStep: step("reportRollbackFailureStep", undefined),
   }));
 
-  ({ provisionServerWorkflow } = await import("../index"));
+  ({ provisionServerWorkflow } = await import("../index.ts"));
 });
 
 const provision = () =>

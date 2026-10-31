@@ -21,8 +21,8 @@ import {
   matchesTargets,
   satisfiesVersionRange,
   selectSnippets,
-} from "../match-snippet";
-import type { RenderableSnippet, SnippetTargetContext } from "../types";
+} from "../match-snippet.ts";
+import type { RenderableSnippet, SnippetTargetContext } from "../types.ts";
 
 const debian13: SnippetTargetContext = {
   osFamily: "debian",

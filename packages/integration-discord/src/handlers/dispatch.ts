@@ -21,11 +21,11 @@ import type {
 } from "discord-api-types/v10";
 import { InteractionResponseType } from "discord-api-types/v10";
 
-import type { ResolvedEntry } from "../features";
-import { MainMenuMessage, SetupMenuMessage } from "../features/menu";
-import type { ComponentKind } from "../routing";
-import { decodeCustomId, routeKey } from "../routing";
-import type { InteractionContext } from "./types";
+import type { ResolvedEntry } from "../features/index.ts";
+import { MainMenuMessage, SetupMenuMessage } from "../features/menu/index.ts";
+import type { ComponentKind } from "../routing/index.ts";
+import { decodeCustomId, routeKey } from "../routing/index.ts";
+import type { InteractionContext } from "./types.ts";
 
 /**
  * Runs one handler from a routing table.

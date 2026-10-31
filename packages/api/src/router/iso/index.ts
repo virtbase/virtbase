@@ -39,10 +39,10 @@ import {
   assertSafeIsoDownloadUrl,
   getSafeIsoDownloadSizeBytes,
   UnsafeIsoDownloadUrlError,
-} from "../../lib/safe-iso-download-url";
-import { getProxmoxInstance } from "../../proxmox";
-import { protectedProcedure } from "../../trpc";
-import { isoStatusRouter } from "./status";
+} from "../../lib/safe-iso-download-url.ts";
+import { getProxmoxInstance } from "../../proxmox/index.ts";
+import { protectedProcedure } from "../../trpc.ts";
+import { isoStatusRouter } from "./status.ts";
 
 export const isoRouter = {
   status: isoStatusRouter,

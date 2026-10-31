@@ -23,7 +23,7 @@ import {
   parseMasterKey,
   unwrapDataKey,
   wrapDataKey,
-} from "../crypto";
+} from "../crypto.ts";
 
 describe("parseMasterKey", () => {
   test("accepts 32 bytes as hex or base64", () => {

@@ -16,12 +16,12 @@
  */
 
 export type { Proxmox } from "@virtbase/proxmox-api";
-export * from "./agent";
-export * from "./change-adapter-netrate";
-export * from "./create-ha-rule";
-export * from "./find-follow-up-guest-power-task";
-export * from "./generate-cloud-init-network-config";
-export * from "./get-last-task";
-export * from "./get-network-adapter-config";
-export * from "./get-proxmox-instance";
-export * from "./perform-power-action";
+export * from "./agent/index.ts";
+export * from "./change-adapter-netrate.ts";
+export * from "./create-ha-rule.ts";
+export * from "./find-follow-up-guest-power-task.ts";
+export * from "./generate-cloud-init-network-config.ts";
+export * from "./get-last-task.ts";
+export * from "./get-network-adapter-config.ts";
+export * from "./get-proxmox-instance.ts";
+export * from "./perform-power-action.ts";

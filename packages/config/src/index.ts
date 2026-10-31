@@ -15,8 +15,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./crypto";
-export * from "./integration-store";
-export * from "./notification-target-store";
-export * from "./settings-store";
-export * from "./types";
+export * from "./crypto.ts";
+export * from "./integration-store.ts";
+export * from "./notification-target-store.ts";
+export * from "./settings-store.ts";
+export * from "./types.ts";

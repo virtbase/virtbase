@@ -18,8 +18,8 @@
 import { useQuery } from "@tanstack/react-query";
 import type { RouterInputs, RouterOutputs } from "@virtbase/api";
 import { canAccessConsole } from "@virtbase/utils";
-import { useTRPC } from "@/lib/trpc/react";
-import { useServerStatus } from "../use-server-status";
+import { useTRPC } from "@/lib/trpc/react.tsx";
+import { useServerStatus } from "../use-server-status.ts";
 
 export type GetServerConsoleInput = RouterInputs["servers"]["console"]["get"];
 

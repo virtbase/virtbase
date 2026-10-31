@@ -17,7 +17,7 @@
 
 import { describe, expect, test } from "bun:test";
 import type { WebSocketData } from "@virtbase/validators";
-import { authorization, sendableCloseCode, upstreamUrl } from "../bridge";
+import { authorization, sendableCloseCode, upstreamUrl } from "../bridge.ts";
 
 /**
  * The pure parts of the bridge. How it behaves with real sockets is in

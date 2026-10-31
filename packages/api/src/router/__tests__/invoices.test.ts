@@ -27,9 +27,9 @@ import {
 import { TRPCError } from "@trpc/server";
 import { invoices, users } from "@virtbase/db/schema";
 import type { InvoiceProvider } from "@virtbase/ports";
-import { integrations } from "../../integrations";
-import type { TestCaller, TestCallerResult } from "../../testing";
-import { createTestCaller, mockSession } from "../../testing";
+import { integrations } from "../../integrations/index.ts";
+import type { TestCaller, TestCallerResult } from "../../testing/index.ts";
+import { createTestCaller, mockSession } from "../../testing/index.ts";
 
 let harness: TestCallerResult;
 let testDb: TestCallerResult["db"];

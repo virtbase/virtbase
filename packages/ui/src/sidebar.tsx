@@ -22,25 +22,25 @@ import { cva } from "class-variance-authority";
 import { PanelLeftIcon } from "lucide-react";
 import { Slot } from "radix-ui";
 import * as React from "react";
-import { Button } from "./button";
-import { useIsMobile } from "./hooks/use-mobile";
-import { cn } from "./index";
-import { Input } from "./input";
-import { Separator } from "./separator";
+import { Button } from "./button.tsx";
+import { useIsMobile } from "./hooks/use-mobile.ts";
+import { cn } from "./index.ts";
+import { Input } from "./input.tsx";
+import { Separator } from "./separator.tsx";
 import {
   Sheet,
   SheetContent,
   SheetDescription,
   SheetHeader,
   SheetTitle,
-} from "./sheet";
-import { Skeleton } from "./skeleton";
+} from "./sheet.tsx";
+import { Skeleton } from "./skeleton.tsx";
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
-} from "./tooltip";
+} from "./tooltip.tsx";
 
 const SIDEBAR_COOKIE_NAME = "sidebar_state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;

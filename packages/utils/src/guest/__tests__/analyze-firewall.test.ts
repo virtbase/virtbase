@@ -19,18 +19,18 @@ import { describe, expect, test } from "bun:test";
 import type {
   GuestFirewallInput,
   HostFirewallRuleInput,
-} from "../analyze-firewall";
+} from "../analyze-firewall.ts";
 import {
   analyzeFirewall,
   evaluateGuestReachability,
   evaluateHostReachability,
   matchesPortSpec,
-} from "../analyze-firewall";
+} from "../analyze-firewall.ts";
 import type {
   GuestFirewallRule,
   ListeningSocket,
   SocketProtocol,
-} from "../types";
+} from "../types.ts";
 
 const hostRule = (
   overrides: Partial<HostFirewallRuleInput> = {},

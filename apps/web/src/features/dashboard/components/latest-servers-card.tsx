@@ -25,10 +25,10 @@ import {
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { useExtracted } from "next-intl";
 import { ErrorBoundary } from "react-error-boundary";
-import { defaultGetLatestServersQuery } from "@/features/dashboard/hooks/use-latest-servers";
-import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
-import { GenericError } from "@/ui/generic-error";
-import { LatestServersList } from "./latest-servers-list";
+import { defaultGetLatestServersQuery } from "@/features/dashboard/hooks/use-latest-servers.ts";
+import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server.tsx";
+import { GenericError } from "@/ui/generic-error.tsx";
+import { LatestServersList } from "./latest-servers-list.tsx";
 
 export function LatestServersCard() {
   const t = useExtracted();

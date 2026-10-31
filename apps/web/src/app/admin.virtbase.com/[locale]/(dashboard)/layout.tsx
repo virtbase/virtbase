@@ -19,8 +19,8 @@ import { SidebarInset, SidebarProvider } from "@virtbase/ui/sidebar";
 import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
-import { verifyRenderSession } from "@/features/admin/api/verify-session";
-import { AdminSidebar } from "@/features/admin/components/admin-sidebar";
+import { verifyRenderSession } from "@/features/admin/api/verify-session.ts";
+import { AdminSidebar } from "@/features/admin/components/admin-sidebar.tsx";
 
 // instant = false: kept on purpose - the session gate runs before any admin chrome renders
 export const instant = false;

@@ -17,7 +17,7 @@
 
 import type { RESTPatchAPIInteractionOriginalResponseJSONBody } from "discord-api-types/v10";
 
-import type { DiscordClient } from "./client";
+import type { DiscordClient } from "./client.ts";
 
 /**
  * Replaces the placeholder sent by a deferred response.

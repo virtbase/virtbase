@@ -17,8 +17,8 @@
 
 import { SidebarInset, SidebarProvider } from "@virtbase/ui/sidebar";
 import { constructMetadata } from "@virtbase/utils";
-import { AppFooter } from "@/ui/app-footer";
-import { AppSidebar } from "@/ui/app-sidebar";
+import { AppFooter } from "@/ui/app-footer.tsx";
+import { AppSidebar } from "@/ui/app-sidebar.tsx";
 
 export const metadata = constructMetadata({
   noIndex: true,

@@ -25,9 +25,9 @@ import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import { getLocale } from "next-intl/server";
 
-import { constructAlternateLanguages } from "@/lib/hreflang";
-import { getDocumentLocales, marketing } from "@/lib/source";
-import { marketingMdxComponents } from "@/ui/mdx/marketing-components";
+import { constructAlternateLanguages } from "@/lib/hreflang.ts";
+import { getDocumentLocales, marketing } from "@/lib/source.ts";
+import { marketingMdxComponents } from "@/ui/mdx/marketing-components.tsx";
 
 /** The home page is `marketing/<locale>/index.mdx`, which has no slug. */
 const HOME_SLUGS: string[] = [];

@@ -37,23 +37,23 @@ mock.module("react", () => ({
 }));
 mock.module("next/cache", () => ({ cacheLife: () => {}, cacheTag: () => {} }));
 mock.module("@sentry/nextjs", () => ({ captureException: () => {} }));
-mock.module("../../verify-session", () => ({
+mock.module("../../verify-session.ts", () => ({
   verifySession: async () => {},
 }));
 
 import { users } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { mockUser } from "./fixtures";
+import { mockUser } from "./fixtures.ts";
 
 let testDb: TestDb;
-let getLatestCustomers: typeof import("../get-latest-customers").getLatestCustomers;
+let getLatestCustomers: typeof import("../get-latest-customers.ts").getLatestCustomers;
 
 beforeAll(async () => {
   testDb = await createTestDb();
   mock.module("@virtbase/db/client", () => ({ db: testDb }));
 
-  const mod = await import("../get-latest-customers");
+  const mod = await import("../get-latest-customers.ts");
   getLatestCustomers = mod.getLatestCustomers;
 });
 

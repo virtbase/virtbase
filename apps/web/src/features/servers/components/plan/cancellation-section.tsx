@@ -19,10 +19,10 @@
 
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { useParams } from "next/navigation";
-import { useCancelSubscription } from "@/features/servers/hooks/billing/use-cancel-subscription";
-import { useResumeSubscription } from "@/features/servers/hooks/billing/use-resume-subscription";
-import { useServerSubscription } from "@/features/servers/hooks/billing/use-server-subscription";
-import { CancellationCard } from "./cancellation-card";
+import { useCancelSubscription } from "@/features/servers/hooks/billing/use-cancel-subscription.ts";
+import { useResumeSubscription } from "@/features/servers/hooks/billing/use-resume-subscription.ts";
+import { useServerSubscription } from "@/features/servers/hooks/billing/use-server-subscription.ts";
+import { CancellationCard } from "./cancellation-card.tsx";
 
 /**
  * The § 312k BGB cancellation control, and the data behind it.

@@ -17,17 +17,17 @@
 
 import type { SortableColumns } from "@virtbase/utils";
 import * as z from "zod";
-import { DatacenterSchema, ProxmoxNodeSchema } from "../admin";
-import { PaginationSchema } from "../pagination";
-import { ProxmoxIsoDownloadSchema } from "../proxmox-iso-downloads";
-import { ProxmoxTemplateSchema } from "../proxmox-template";
-import { ServerPlanSchema } from "../server-plan";
-import { ServerPlanPriceSchema } from "../server-plan-prices";
-import { SubnetAllocationSchema } from "../subnet-allocations";
-import { SubnetSchema } from "../subnets";
-import { preprocessQueryArray } from "../utils";
-import type { Server } from "./shared";
-import { ServerOperatingSystemSchema, ServerSchema } from "./shared";
+import { DatacenterSchema, ProxmoxNodeSchema } from "../admin/index.ts";
+import { PaginationSchema } from "../pagination.ts";
+import { ProxmoxIsoDownloadSchema } from "../proxmox-iso-downloads.ts";
+import { ProxmoxTemplateSchema } from "../proxmox-template.ts";
+import { ServerPlanSchema } from "../server-plan.ts";
+import { ServerPlanPriceSchema } from "../server-plan-prices.ts";
+import { SubnetAllocationSchema } from "../subnet-allocations.ts";
+import { SubnetSchema } from "../subnets.ts";
+import { preprocessQueryArray } from "../utils/index.ts";
+import type { Server } from "./shared.ts";
+import { ServerOperatingSystemSchema, ServerSchema } from "./shared.ts";
 
 export const ServerExpandSchema = z
   .enum([
@@ -239,16 +239,16 @@ export type RenameServerInput = z.infer<typeof RenameServerInputSchema>;
 
 export const RenameServerOutputSchema = z.void();
 
-export * from "./actions";
-export * from "./advanced";
-export * from "./agent";
-export * from "./backups";
-export * from "./console";
-export * from "./firewall";
-export * from "./graphs";
-export * from "./mounts";
-export * from "./plan";
-export * from "./pointer-records";
-export * from "./shared";
-export * from "./status";
-export * from "./template-groups";
+export * from "./actions.ts";
+export * from "./advanced.ts";
+export * from "./agent.ts";
+export * from "./backups.ts";
+export * from "./console.ts";
+export * from "./firewall.ts";
+export * from "./graphs.ts";
+export * from "./mounts.ts";
+export * from "./plan.ts";
+export * from "./pointer-records.ts";
+export * from "./shared.ts";
+export * from "./status.ts";
+export * from "./template-groups.ts";

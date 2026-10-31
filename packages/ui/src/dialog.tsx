@@ -20,8 +20,8 @@
 import { XIcon } from "lucide-react";
 import { Dialog as DialogPrimitive } from "radix-ui";
 import type * as React from "react";
-import { Button } from "./button";
-import { cn } from "./index";
+import { Button } from "./button.tsx";
+import { cn } from "./index.ts";
 
 function Dialog({
   ...props

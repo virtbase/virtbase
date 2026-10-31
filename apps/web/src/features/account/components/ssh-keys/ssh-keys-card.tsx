@@ -26,11 +26,11 @@ import {
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { useExtracted } from "next-intl";
 import { ErrorBoundary } from "react-error-boundary";
-import { defaultGetSSHKeysListQuery } from "@/features/account/hooks/ssh-keys/ssh-keys-list";
-import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
-import { GenericError } from "@/ui/generic-error";
-import { CreateSSHKeyButton } from "./create-ssh-key-button";
-import { SSHKeysList } from "./ssh-keys-list";
+import { defaultGetSSHKeysListQuery } from "@/features/account/hooks/ssh-keys/ssh-keys-list.ts";
+import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server.tsx";
+import { GenericError } from "@/ui/generic-error.tsx";
+import { CreateSSHKeyButton } from "./create-ssh-key-button.tsx";
+import { SSHKeysList } from "./ssh-keys-list.tsx";
 
 export function SSHKeysCard() {
   const t = useExtracted();

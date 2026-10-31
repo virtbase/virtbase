@@ -18,7 +18,7 @@
 import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
-import { RecordsCard } from "@/features/servers/components/rdns/records-card";
+import { RecordsCard } from "@/features/servers/components/rdns/records-card.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();

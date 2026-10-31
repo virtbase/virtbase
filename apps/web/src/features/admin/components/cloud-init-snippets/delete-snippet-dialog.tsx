@@ -23,7 +23,7 @@ import { Spinner } from "@virtbase/ui/spinner";
 import { useExtracted } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import { toast } from "sonner";
-import { deleteSnippetAction } from "../../api/cloud-init-snippets/mutate-snippet";
+import { deleteSnippetAction } from "../../api/cloud-init-snippets/mutate-snippet.ts";
 
 interface DeleteSnippetDialogProps
   extends Omit<

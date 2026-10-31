@@ -19,10 +19,10 @@ import * as Sentry from "@sentry/node";
 import { and, eq, lte } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { dataExports, invoices, users } from "@virtbase/db/schema";
-import { integrations } from "../../integrations";
-import { collectSubjectData } from "./collect";
-import type { InvoiceAttachment } from "./document";
-import { buildExportDocument } from "./document";
+import { integrations } from "../../integrations/index.ts";
+import { collectSubjectData } from "./collect.ts";
+import type { InvoiceAttachment } from "./document.ts";
+import { buildExportDocument } from "./document.ts";
 
 /**
  * Builds the archive for one requested export and stores it on the row.

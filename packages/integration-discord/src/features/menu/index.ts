@@ -17,16 +17,16 @@
 
 import { InteractionResponseType } from "discord-api-types/v10";
 
-import type { DiscordFeature } from "../types";
-import { unlinked } from "../types";
+import type { DiscordFeature } from "../types.ts";
+import { unlinked } from "../types.ts";
 import {
   HelpMessage,
   InviteMessage,
   MainMenuMessage,
   SetupMenuMessage,
-} from "./messages";
+} from "./messages.ts";
 
-export * from "./messages";
+export * from "./messages.ts";
 
 /**
  * The hub, and everything reachable without an account.

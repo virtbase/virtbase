@@ -29,10 +29,10 @@ import { LucideDownload, LucideReceiptText } from "@virtbase/ui/icons";
 import { Separator } from "@virtbase/ui/separator";
 import { Spinner } from "@virtbase/ui/spinner";
 import { useExtracted, useFormatter } from "next-intl";
-import { ItemRow } from "@/features/account/components/item-row";
-import { GenericError } from "@/ui/generic-error";
-import { useDownloadInvoice } from "../hooks/use-download-invoice";
-import { useLatestInvoices } from "../hooks/use-latest-invoices";
+import { ItemRow } from "@/features/account/components/item-row.tsx";
+import { GenericError } from "@/ui/generic-error.tsx";
+import { useDownloadInvoice } from "../hooks/use-download-invoice.ts";
+import { useLatestInvoices } from "../hooks/use-latest-invoices.ts";
 
 export function LatestInvoicesList() {
   const t = useExtracted();

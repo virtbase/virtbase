@@ -33,9 +33,11 @@ const testDb: TestDb = await createTestDb();
 
 mock.module("@virtbase/db/client", () => ({ db: testDb }));
 
-const { transitionSubscription } = await import("../transition-subscription");
+const { transitionSubscription } = await import(
+  "../transition-subscription.ts"
+);
 const { IllegalSubscriptionTransitionError } = await import(
-  "../../lib/subscription-status"
+  "../../lib/subscription-status.ts"
 );
 
 const USER_ID = "usr_00000000000000000000000021";

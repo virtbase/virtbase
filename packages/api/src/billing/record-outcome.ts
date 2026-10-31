@@ -28,14 +28,14 @@ import {
 } from "@virtbase/db/schema";
 import type { OffSessionResult, PaymentStatus } from "@virtbase/ports";
 import { RENEWAL_AUTHENTICATION_WINDOW_HOURS } from "@virtbase/utils";
-import { transitionSubscription } from "../subscriptions/transition-subscription";
-import type { RenewalCollection, RenewalPaymentMethod } from "./collect";
-import { notifyRenewalDecline } from "./dunning-mail";
-import type { RenewalOutcome } from "./renewal-outcome";
+import { transitionSubscription } from "../subscriptions/transition-subscription.ts";
+import type { RenewalCollection, RenewalPaymentMethod } from "./collect.ts";
+import { notifyRenewalDecline } from "./dunning-mail.ts";
+import type { RenewalOutcome } from "./renewal-outcome.ts";
 import {
   exhaustedRenewalAttempt,
   nextRenewalAttemptAt,
-} from "./retry-schedule";
+} from "./retry-schedule.ts";
 
 /** Who the transition log names when a collection moves a subscription. */
 const COLLECTOR_ACTOR = "system:renewals";

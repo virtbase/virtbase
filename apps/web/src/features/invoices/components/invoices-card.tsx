@@ -19,9 +19,9 @@ import { DataTableSkeleton } from "@virtbase/ui/data-table";
 import type { SortableColumns } from "@virtbase/utils";
 import type { Invoice } from "@virtbase/validators";
 import type { SearchParams } from "nuqs";
-import { InvoicesTable } from "@/features/invoices/components/invoices-table";
-import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
-import { searchParamsCache } from "../lib/validations";
+import { InvoicesTable } from "@/features/invoices/components/invoices-table/index.tsx";
+import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server.tsx";
+import { searchParamsCache } from "../lib/validations.ts";
 
 export function InvoicesCardSkeleton() {
   return (

@@ -16,11 +16,11 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import type { ProxmoxVm } from "../../proxmox/agent";
-import { DETECT_SCRIPT, shell } from "../commands";
-import { detectGuestFirewalls, parseDetectionOutput } from "../detect";
-import { readGuestFirewallRules } from "../read-rules";
-import { readListeningSockets } from "../read-sockets";
+import type { ProxmoxVm } from "../../proxmox/agent/index.ts";
+import { DETECT_SCRIPT, shell } from "../commands.ts";
+import { detectGuestFirewalls, parseDetectionOutput } from "../detect.ts";
+import { readGuestFirewallRules } from "../read-rules.ts";
+import { readListeningSockets } from "../read-sockets.ts";
 
 /** A VM whose guest-exec returns fixed output for any command. */
 const createVm = ({

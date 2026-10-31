@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { AnonpayCreateInput, AnonpayCreateResponse } from "./types";
+import type { AnonpayCreateInput, AnonpayCreateResponse } from "./types.ts";
 
 export class AnonpayClient {
   private readonly baseUrl = "https://trocador.app/anonpay";

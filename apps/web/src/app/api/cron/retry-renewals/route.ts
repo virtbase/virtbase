@@ -16,7 +16,7 @@
  */
 
 import { retryDueRenewals } from "@virtbase/api/billing";
-import { withCronSecret } from "@/lib/with-cron-secret";
+import { withCronSecret } from "@/lib/with-cron-secret.ts";
 
 /**
  * Climbs the dunning ladder: every renewal whose `next_attempt_at` has passed.

@@ -48,21 +48,21 @@ import {
 import type { ColumnDef } from "@virtbase/ui/types";
 import NextLink from "next/link";
 import { useExtracted, useFormatter } from "next-intl";
-import type { getAbuseCasesList } from "@/features/admin/api/abuse/get-abuse-cases-list";
-import { setAbuseCaseStatusAction } from "@/features/admin/api/abuse/manage-abuse-cases";
+import type { getAbuseCasesList } from "@/features/admin/api/abuse/get-abuse-cases-list.ts";
+import { setAbuseCaseStatusAction } from "@/features/admin/api/abuse/manage-abuse-cases.ts";
 import {
   ALL_CASE_STATUSES,
   CASE_CATEGORIES,
   CASE_SEVERITIES,
-} from "@/features/admin/lib/abuse/validations";
-import { paths } from "@/lib/paths";
+} from "@/features/admin/lib/abuse/validations.ts";
+import { paths } from "@/lib/paths.ts";
 import {
   CATEGORY_ICONS,
   humanise,
   SEVERITY_ICONS,
   STATUS_ICONS,
-} from "@/ui/abuse/case-meta";
-import { UserAvatar } from "@/ui/user-avatar";
+} from "@/ui/abuse/case-meta.tsx";
+import { UserAvatar } from "@/ui/user-avatar.tsx";
 
 export type AbuseCasesTableColumn = Awaited<
   ReturnType<typeof getAbuseCasesList>

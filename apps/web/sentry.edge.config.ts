@@ -16,7 +16,7 @@
  */
 
 import * as Sentry from "@sentry/nextjs";
-import { dataCollection } from "@/lib/sentry";
+import { dataCollection } from "@/lib/sentry.ts";
 
 if (process.env.NEXT_PUBLIC_SENTRY_DSN) {
   Sentry.init({

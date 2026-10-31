@@ -41,8 +41,8 @@ import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import type * as z from "zod";
-import { paths } from "@/lib/paths";
-import { createSnippetAction } from "../../api/cloud-init-snippets/mutate-snippet";
+import { paths } from "@/lib/paths.ts";
+import { createSnippetAction } from "../../api/cloud-init-snippets/mutate-snippet.ts";
 
 type CreateSnippetFormValues = z.input<
   typeof CreateCloudInitSnippetInputSchema

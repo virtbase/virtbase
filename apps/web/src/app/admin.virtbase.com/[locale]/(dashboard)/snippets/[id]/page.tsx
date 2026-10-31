@@ -30,12 +30,12 @@ import { getExtracted } from "next-intl/server";
 import {
   getSnippet,
   getSnippetTemplates,
-} from "@/features/admin/api/cloud-init-snippets/get-snippets-list";
-import { verifyRenderSession } from "@/features/admin/api/verify-session";
-import { SnippetActionsRow } from "@/features/admin/components/cloud-init-snippets/snippet-actions-row";
-import { SnippetSettings } from "@/features/admin/components/cloud-init-snippets/snippet-settings";
-import { paths } from "@/lib/paths";
-import DashboardLayout from "@/ui/layout/dashboard-layout";
+} from "@/features/admin/api/cloud-init-snippets/get-snippets-list.ts";
+import { verifyRenderSession } from "@/features/admin/api/verify-session.ts";
+import { SnippetActionsRow } from "@/features/admin/components/cloud-init-snippets/snippet-actions-row.tsx";
+import { SnippetSettings } from "@/features/admin/components/cloud-init-snippets/snippet-settings.tsx";
+import { paths } from "@/lib/paths.ts";
+import DashboardLayout from "@/ui/layout/dashboard-layout.tsx";
 
 export async function generateMetadata({
   params,

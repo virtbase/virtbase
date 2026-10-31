@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { startServer } from "../server";
+import { startServer } from "../server.ts";
 
 /**
  * The entrypoint as the executable runs it: a child process with its own

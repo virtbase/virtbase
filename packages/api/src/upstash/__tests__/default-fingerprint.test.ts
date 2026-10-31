@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { defaultFingerprint } from "../default-fingerprint";
+import { defaultFingerprint } from "../default-fingerprint.ts";
 
 describe("defaultFingerprint", () => {
   test("it uses the x-forwarded-for header if it is present", () => {

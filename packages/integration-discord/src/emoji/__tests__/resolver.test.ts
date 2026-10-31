@@ -17,8 +17,8 @@
 
 import { describe, expect, test } from "bun:test";
 
-import type { DiscordClient } from "../../api";
-import { createEmojiResolver, emptyEmojiResolver } from "../resolver";
+import type { DiscordClient } from "../../api/index.ts";
+import { createEmojiResolver, emptyEmojiResolver } from "../resolver.ts";
 
 const clientWith = (answer: unknown | (() => never)): DiscordClient => ({
   appId: "app_1",

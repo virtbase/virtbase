@@ -16,11 +16,11 @@
  */
 
 import type { Server } from "bun";
-import type { BridgeOptions } from "./bridge";
-import { Bridge, CloseCode } from "./bridge";
-import type { Config } from "./config";
-import { log } from "./log";
-import { verifyPayload } from "./payload";
+import type { BridgeOptions } from "./bridge.ts";
+import { Bridge, CloseCode } from "./bridge.ts";
+import type { Config } from "./config.ts";
+import { log } from "./log.ts";
+import { verifyPayload } from "./payload.ts";
 
 export const Timeouts = {
   /** The node's TCP, TLS and websocket handshake. */

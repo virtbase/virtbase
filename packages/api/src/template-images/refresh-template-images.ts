@@ -19,9 +19,9 @@ import * as Sentry from "@sentry/node";
 import { eq } from "@virtbase/db";
 import type { db as database } from "@virtbase/db/client";
 import { proxmoxNodes, proxmoxTemplates } from "@virtbase/db/schema";
-import { getProxmoxInstance } from "../proxmox";
-import type { EnsureTemplateImageResult } from "./ensure-template-image";
-import { ensureTemplateImage } from "./ensure-template-image";
+import { getProxmoxInstance } from "../proxmox/index.ts";
+import type { EnsureTemplateImageResult } from "./ensure-template-image.ts";
+import { ensureTemplateImage } from "./ensure-template-image.ts";
 
 type Database = typeof database;
 

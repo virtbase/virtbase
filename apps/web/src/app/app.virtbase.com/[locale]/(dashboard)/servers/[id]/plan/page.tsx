@@ -18,9 +18,9 @@
 import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
-import { CancellationSection } from "@/features/servers/components/plan/cancellation-section";
-import { ChangePlanCard } from "@/features/servers/components/plan/change-plan-card";
-import { CurrentPlanSection } from "@/features/servers/components/plan/current-plan-section";
+import { CancellationSection } from "@/features/servers/components/plan/cancellation-section.tsx";
+import { ChangePlanCard } from "@/features/servers/components/plan/change-plan-card.tsx";
+import { CurrentPlanSection } from "@/features/servers/components/plan/current-plan-section.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();

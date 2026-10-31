@@ -18,8 +18,8 @@
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { servers, subscriptions } from "@virtbase/db/schema";
-import { liveSubscriptionFor } from "../../subscriptions/subject-subscription";
-import { revalidateCheckout } from "../shared/revalidate-checkout";
+import { liveSubscriptionFor } from "../../subscriptions/subject-subscription.ts";
+import { revalidateCheckout } from "../shared/revalidate-checkout.ts";
 
 export async function storeServerUpgradeStep({
   serverId,

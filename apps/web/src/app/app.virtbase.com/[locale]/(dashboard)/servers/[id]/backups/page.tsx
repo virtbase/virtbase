@@ -18,7 +18,7 @@
 import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
-import { BackupsCard } from "@/features/servers/components/backups/backups-card";
+import { BackupsCard } from "@/features/servers/components/backups/backups-card.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();

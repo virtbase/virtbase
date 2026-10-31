@@ -17,13 +17,13 @@
 
 import { defineIntegration } from "@virtbase/integration-sdk";
 import * as z from "zod";
-import { AnonpayPaymentProvider } from "./adapter";
-import { AnonpayClient } from "./client";
+import { AnonpayPaymentProvider } from "./adapter.ts";
+import { AnonpayClient } from "./client.ts";
 
-export * from "./adapter";
-export * from "./client";
-export * from "./constants";
-export * from "./types";
+export * from "./adapter.ts";
+export * from "./client.ts";
+export * from "./constants.ts";
+export * from "./types.ts";
 
 const settingsSchema = z.object({
   tickerTo: z.string().min(1),

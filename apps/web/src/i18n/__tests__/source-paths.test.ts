@@ -17,7 +17,7 @@
 
 import { describe, expect, test } from "bun:test";
 import { relative, resolve, sep } from "node:path";
-import { MESSAGE_SOURCE_PATHS } from "../source-paths";
+import { MESSAGE_SOURCE_PATHS } from "../source-paths.ts";
 
 const WEB = resolve(import.meta.dir, "../../..");
 const ROOT = resolve(WEB, "../..");

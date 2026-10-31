@@ -35,7 +35,7 @@ import {
   servers,
   users,
 } from "@virtbase/db/schema";
-import { readClusterConfig } from "./cluster";
+import { readClusterConfig } from "./cluster.ts";
 
 /**
  * Seed the fixtures the authenticated E2E projects need, against the real

@@ -16,8 +16,8 @@
  */
 
 import * as z from "zod";
-import { ProxmoxTemplateSchema } from "../proxmox-template";
-import { ProxmoxTemplateGroupSchema } from "./proxmox-template-group";
+import { ProxmoxTemplateSchema } from "../proxmox-template.ts";
+import { ProxmoxTemplateGroupSchema } from "./proxmox-template-group.ts";
 
 export const CHECKSUM_ALGORITHMS = [
   "md5",

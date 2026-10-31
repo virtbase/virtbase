@@ -34,14 +34,17 @@ import type { DataTableRowAction } from "@virtbase/ui/types";
 import dynamic from "next/dynamic";
 import { useExtracted } from "next-intl";
 import { useState } from "react";
-import type { GetPointerRecordsListOutput } from "@/features/servers/hooks/rdns/use-pointer-records-list";
-import { AnimatedEmptyState } from "@/ui/animated-empty-state";
-import type { RecordsTableColumn } from "./columns";
-import { useRecordsTableColumns } from "./columns";
+import type { GetPointerRecordsListOutput } from "@/features/servers/hooks/rdns/use-pointer-records-list.ts";
+import { AnimatedEmptyState } from "@/ui/animated-empty-state.tsx";
+import type { RecordsTableColumn } from "./columns.tsx";
+import { useRecordsTableColumns } from "./columns.tsx";
 
-const DeleteRecordDialog = dynamic(() => import("../delete-record-dialog"), {
-  ssr: false,
-});
+const DeleteRecordDialog = dynamic(
+  () => import("../delete-record-dialog.tsx"),
+  {
+    ssr: false,
+  },
+);
 
 export function RecordsTable({
   data,

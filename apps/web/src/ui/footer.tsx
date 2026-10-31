@@ -20,11 +20,11 @@ import { LucideExternalLink } from "@virtbase/ui/icons";
 import { Logo } from "@virtbase/ui/logo";
 import { APP_DOMAIN, APP_NAME, LOOKING_GLASS_URL } from "@virtbase/utils";
 import { getExtracted } from "next-intl/server";
-import { IntlLink } from "@/i18n/navigation.public";
-import { GetOnAppStore } from "@/ui/get-on-app-store";
-import { MaxWidthWrapper } from "@/ui/max-width-wrapper";
-import { SocialsRow } from "@/ui/socials-row";
-import { ThemeSwitcher } from "./theme-switcher";
+import { IntlLink } from "@/i18n/navigation.public.ts";
+import { GetOnAppStore } from "@/ui/get-on-app-store.tsx";
+import { MaxWidthWrapper } from "@/ui/max-width-wrapper.tsx";
+import { SocialsRow } from "@/ui/socials-row.tsx";
+import { ThemeSwitcher } from "./theme-switcher.tsx";
 
 const linkListHeaderClassName = "text-sm font-medium text-foreground";
 const linkListClassName = "flex flex-col mt-2.5 gap-3.5";

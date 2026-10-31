@@ -20,7 +20,7 @@ import type {
   GuestFirewallPolicy,
   GuestFirewallRule,
   GuestFirewallState,
-} from "./types";
+} from "./types.ts";
 
 /**
  * The only table that decides whether traffic is allowed in.

@@ -16,7 +16,7 @@
  */
 
 import { purgeExpiredExports } from "@virtbase/api/privacy";
-import { withCronSecret } from "@/lib/with-cron-secret";
+import { withCronSecret } from "@/lib/with-cron-secret.ts";
 
 /**
  * Deletes data exports whose retention window has closed.

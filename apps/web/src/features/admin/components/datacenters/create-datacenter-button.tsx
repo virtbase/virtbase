@@ -24,7 +24,7 @@ import { useExtracted } from "next-intl";
 import { useState } from "react";
 
 const CreateDatacenterDialog = dynamic(
-  () => import("./create-datacenter-dialog"),
+  () => import("./create-datacenter-dialog.tsx"),
   {
     ssr: false,
   },

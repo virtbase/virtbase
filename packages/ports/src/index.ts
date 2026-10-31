@@ -15,17 +15,17 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./abuse-source";
-export * from "./common";
-export * from "./dns-provider";
-export * from "./event-subscriber";
-export * from "./identity-provider";
-export * from "./invoice-provider";
-export * from "./ip-reputation";
-export * from "./metrics-sink";
-export * from "./notification-channel";
-export * from "./object-store";
-export * from "./payment-provider";
-export * from "./port-map";
-export * from "./server-management";
-export * from "./signal";
+export * from "./abuse-source.ts";
+export * from "./common.ts";
+export * from "./dns-provider.ts";
+export * from "./event-subscriber.ts";
+export * from "./identity-provider.ts";
+export * from "./invoice-provider.ts";
+export * from "./ip-reputation.ts";
+export * from "./metrics-sink.ts";
+export * from "./notification-channel.ts";
+export * from "./object-store.ts";
+export * from "./payment-provider.ts";
+export * from "./port-map.ts";
+export * from "./server-management.ts";
+export * from "./signal.ts";

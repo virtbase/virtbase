@@ -16,11 +16,11 @@
  */
 
 import { Suspense } from "react";
-import { DiscordBotCard } from "@/features/account/components/authentication/discord-bot-card";
-import { UserPasskeysCard } from "@/features/account/components/authentication/user-passkeys-card";
-import { UserProvidersCard } from "@/features/account/components/authentication/user-providers-card";
-import { UserSessionsCard } from "@/features/account/components/authentication/user-sessions-card";
-import { UserTfaCard } from "@/features/account/components/authentication/user-tfa-card";
+import { DiscordBotCard } from "@/features/account/components/authentication/discord-bot-card.tsx";
+import { UserPasskeysCard } from "@/features/account/components/authentication/user-passkeys-card.tsx";
+import { UserProvidersCard } from "@/features/account/components/authentication/user-providers-card.tsx";
+import { UserSessionsCard } from "@/features/account/components/authentication/user-sessions-card.tsx";
+import { UserTfaCard } from "@/features/account/components/authentication/user-tfa-card.tsx";
 
 export default function Page() {
   return (

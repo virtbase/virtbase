@@ -21,11 +21,11 @@ import {
   FIREWALL_AI_MODEL,
   GENERATION_TIMEOUT_MS,
   repairGeneratedText,
-} from "../../router/servers/firewall/generation";
-import { buildGenerationContext } from "../build-context";
-import { buildSystemPrompt } from "../system-prompt";
-import type { EvalCase } from "./cases";
-import { defaultServer, EVAL_CASES, matchesExpectation } from "./cases";
+} from "../../router/servers/firewall/generation.ts";
+import { buildGenerationContext } from "../build-context.ts";
+import { buildSystemPrompt } from "../system-prompt.ts";
+import type { EvalCase } from "./cases.ts";
+import { defaultServer, EVAL_CASES, matchesExpectation } from "./cases.ts";
 
 /**
  * Measures rule generation against a fixed set of prompts.

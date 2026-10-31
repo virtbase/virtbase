@@ -30,10 +30,10 @@ import { LucidePencil, LucideRefreshCw } from "@virtbase/ui/icons";
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
-import { GenericError } from "@/ui/generic-error";
-import { usePointerRecordsList } from "../../hooks/rdns/use-pointer-records-list";
-import { RecordsTable } from "./records-table";
-import { UpsertRecordButton } from "./upsert-record-button";
+import { GenericError } from "@/ui/generic-error.tsx";
+import { usePointerRecordsList } from "../../hooks/rdns/use-pointer-records-list.ts";
+import { RecordsTable } from "./records-table/index.tsx";
+import { UpsertRecordButton } from "./upsert-record-button.tsx";
 
 export function RecordsCard() {
   const t = useExtracted();

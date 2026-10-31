@@ -18,7 +18,7 @@
 import { afterEach, describe, expect, test } from "bun:test";
 import { createHmac } from "node:crypto";
 import type { Notification } from "@virtbase/ports";
-import { WebhookNotificationChannel } from "../channel";
+import { WebhookNotificationChannel } from "../channel.ts";
 
 const channel = new WebhookNotificationChannel();
 

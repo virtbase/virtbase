@@ -34,10 +34,10 @@ import { Skeleton } from "@virtbase/ui/skeleton";
 import { isBusy, isOperational } from "@virtbase/utils";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
-import { GenericError } from "@/ui/generic-error";
-import { useAdvancedSettings } from "../../hooks/advanced/use-advanced-settings";
-import { useUpdateAdvancedSettings } from "../../hooks/advanced/use-update-advanced-settings";
-import { useServerStatus } from "../../hooks/use-server-status";
+import { GenericError } from "@/ui/generic-error.tsx";
+import { useAdvancedSettings } from "../../hooks/advanced/use-advanced-settings.ts";
+import { useUpdateAdvancedSettings } from "../../hooks/advanced/use-update-advanced-settings.ts";
+import { useServerStatus } from "../../hooks/use-server-status.ts";
 
 export function AdvancedTpmSelector() {
   const t = useExtracted();

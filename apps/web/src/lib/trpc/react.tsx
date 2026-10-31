@@ -33,9 +33,9 @@ import { APP_DOMAIN } from "@virtbase/utils";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import SuperJSON from "superjson";
-import { env } from "@/env";
-import { authClient } from "../auth/client";
-import { createQueryClient } from "./query-client";
+import { env } from "@/env.ts";
+import { authClient } from "../auth/client.ts";
+import { createQueryClient } from "./query-client.ts";
 
 let clientQueryClientSingleton: QueryClient | undefined;
 const getQueryClient = () => {

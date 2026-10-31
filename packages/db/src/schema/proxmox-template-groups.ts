@@ -17,7 +17,7 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils/create-id";
+import { createId } from "../utils/create-id.ts";
 
 /**
  * A Proxmox VE template group represents a logical grouping of Proxmox VE templates

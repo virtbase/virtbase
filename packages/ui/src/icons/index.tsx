@@ -16,9 +16,9 @@
  */
 
 export * from "lucide-react";
-export * from "./discord";
-export { Github as GithubCustom } from "./github";
-export * from "./google";
-export { Instagram as InstagramCustom } from "./instagram";
-export { Twitter as TwitterCustom } from "./twitter";
-export * from "./youtube";
+export * from "./discord.tsx";
+export { Github as GithubCustom } from "./github.tsx";
+export * from "./google.tsx";
+export { Instagram as InstagramCustom } from "./instagram.tsx";
+export { Twitter as TwitterCustom } from "./twitter.tsx";
+export * from "./youtube.tsx";

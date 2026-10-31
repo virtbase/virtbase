@@ -23,8 +23,8 @@ import { use } from "react";
 import type {
   getAbuseCaseStatusCounts,
   getAbuseCasesList,
-} from "@/features/admin/api/abuse/get-abuse-cases-list";
-import { useAbuseCasesTableColumns } from "./columns";
+} from "@/features/admin/api/abuse/get-abuse-cases-list.ts";
+import { useAbuseCasesTableColumns } from "./columns.tsx";
 
 interface AbuseCasesTableProps {
   promises: Promise<

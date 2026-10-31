@@ -39,11 +39,11 @@ import type { ColumnDef, DataTableRowAction } from "@virtbase/ui/types";
 import { resolveServerOperatingSystem } from "@virtbase/utils";
 import NextLink from "next/link";
 import { useExtracted, useFormatter } from "next-intl";
-import type { getServerTemplateCounts } from "@/features/admin/api/servers/get-server-template-counts";
-import type { getServersList } from "@/features/admin/api/servers/get-servers-list";
-import { paths } from "@/lib/paths";
-import { OperatingSystemIcon } from "@/ui/operating-system-icon";
-import { UserAvatar } from "@/ui/user-avatar";
+import type { getServerTemplateCounts } from "@/features/admin/api/servers/get-server-template-counts.ts";
+import type { getServersList } from "@/features/admin/api/servers/get-servers-list.ts";
+import { paths } from "@/lib/paths.ts";
+import { OperatingSystemIcon } from "@/ui/operating-system-icon.tsx";
+import { UserAvatar } from "@/ui/user-avatar.tsx";
 
 export type ServersTableColumn = Awaited<
   ReturnType<typeof getServersList>

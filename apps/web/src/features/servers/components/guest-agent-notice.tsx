@@ -20,8 +20,8 @@
 import { Alert, AlertDescription, AlertTitle } from "@virtbase/ui/alert";
 import { ClientOnly } from "@virtbase/ui/client-only";
 import type { ReactNode } from "react";
-import { useAgentStatus } from "../hooks/use-agent-status";
-import { useAgentStatusMapping } from "../hooks/use-agent-status-mapping";
+import { useAgentStatus } from "../hooks/use-agent-status.ts";
+import { useAgentStatusMapping } from "../hooks/use-agent-status-mapping.ts";
 
 interface GuestAgentNoticeProps {
   serverId: string;

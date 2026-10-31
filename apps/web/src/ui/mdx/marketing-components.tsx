@@ -20,22 +20,25 @@ import { Step, Steps } from "fumadocs-ui/components/steps";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { ComponentProps, ReactNode } from "react";
 
-import { OfferRow } from "@/features/checkout/components/offer-row";
-import { AdvantageItem } from "@/features/landing/components/advantage-item";
-import { AdvantagesRow } from "@/features/landing/components/advantages-row";
-import { Question } from "@/features/landing/components/faq-question";
-import { FAQSection } from "@/features/landing/components/faq-section";
-import { Feature } from "@/features/landing/components/feature";
-import { FeaturesShowcase } from "@/features/landing/components/features-showcase";
-import { OperatingSystemShowcase } from "@/features/landing/components/operating-system-showcase";
+import { OfferRow } from "@/features/checkout/components/offer-row.tsx";
+import { AdvantageItem } from "@/features/landing/components/advantage-item.tsx";
+import { AdvantagesRow } from "@/features/landing/components/advantages-row.tsx";
+import { Question } from "@/features/landing/components/faq-question.tsx";
+import { FAQSection } from "@/features/landing/components/faq-section.tsx";
+import { Feature } from "@/features/landing/components/feature.tsx";
+import { FeaturesShowcase } from "@/features/landing/components/features-showcase.tsx";
+import { OperatingSystemShowcase } from "@/features/landing/components/operating-system-showcase.tsx";
 import {
   SplitAside,
   SplitSection,
   SplitText,
-} from "@/features/landing/components/split-section";
-import { StatItem, StatsBand } from "@/features/landing/components/stats-band";
-import { BlockWrapper } from "@/ui/block-wrapper";
-import { Prose } from "@/ui/prose";
+} from "@/features/landing/components/split-section.tsx";
+import {
+  StatItem,
+  StatsBand,
+} from "@/features/landing/components/stats-band.tsx";
+import { BlockWrapper } from "@/ui/block-wrapper.tsx";
+import { Prose } from "@/ui/prose.tsx";
 
 /**
  * The centered opening block of a marketing page. The `#` heading and the

@@ -42,8 +42,8 @@ import {
 } from "@virtbase/utils";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
-import { GenericError } from "@/ui/generic-error";
-import { useServerConsole } from "../../hooks/console/use-console";
+import { GenericError } from "@/ui/generic-error.tsx";
+import { useServerConsole } from "../../hooks/console/use-console.ts";
 
 export function ConsoleFrame() {
   const t = useExtracted();

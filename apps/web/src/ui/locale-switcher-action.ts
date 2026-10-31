@@ -21,8 +21,8 @@ import { captureException } from "@sentry/nextjs";
 import { COOKIE_DOMAIN } from "@virtbase/utils";
 import { cookies, headers } from "next/headers";
 import { hasLocale } from "next-intl";
-import { COOKIE_MAX_AGE, COOKIE_NAME, locales } from "@/i18n/config";
-import { auth } from "@/lib/auth/server";
+import { COOKIE_MAX_AGE, COOKIE_NAME, locales } from "@/i18n/config.ts";
+import { auth } from "@/lib/auth/server.ts";
 
 /**
  * Records the language a signed-in customer picked.

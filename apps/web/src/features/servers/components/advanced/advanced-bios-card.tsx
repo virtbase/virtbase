@@ -24,7 +24,7 @@ import {
   CardTitle,
 } from "@virtbase/ui/card";
 import { useExtracted } from "next-intl";
-import { AdvancedBiosSelector } from "./advanced-bios-selector";
+import { AdvancedBiosSelector } from "./advanced-bios-selector.tsx";
 
 export function AdvancedBiosCard() {
   const t = useExtracted();

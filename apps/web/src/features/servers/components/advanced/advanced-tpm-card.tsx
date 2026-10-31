@@ -24,7 +24,7 @@ import {
   CardTitle,
 } from "@virtbase/ui/card";
 import { useExtracted } from "next-intl";
-import { AdvancedTpmSelector } from "./advanced-tpm-selector";
+import { AdvancedTpmSelector } from "./advanced-tpm-selector.tsx";
 
 export function AdvancedTpmCard() {
   const t = useExtracted();

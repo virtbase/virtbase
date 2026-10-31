@@ -20,14 +20,18 @@ import { join } from "node:path";
    lower-case string - so it is compared against the constant rather than a
    literal that looked right and silently never matched. */
 import { ProxmoxServerStatus } from "@virtbase/utils";
-import { appUrl } from "../../e2e/support/urls";
-import { prependCover } from "./lib/render";
-import { CUSTOMER_ID, ensureSession, prepareBackupsScene } from "./lib/scene";
-import type { Beat, Stage, Take } from "./lib/studio";
-import { recordEpisode } from "./lib/studio";
-import { renderThumbnail } from "./lib/thumbnail";
-import { ensureTools, workspaceFor } from "./lib/tools";
-import { captions } from "./lib/voice";
+import { appUrl } from "../../e2e/support/urls.ts";
+import { prependCover } from "./lib/render.ts";
+import {
+  CUSTOMER_ID,
+  ensureSession,
+  prepareBackupsScene,
+} from "./lib/scene.ts";
+import type { Beat, Stage, Take } from "./lib/studio.ts";
+import { recordEpisode } from "./lib/studio.ts";
+import { renderThumbnail } from "./lib/thumbnail.ts";
+import { ensureTools, workspaceFor } from "./lib/tools.ts";
+import { captions } from "./lib/voice.ts";
 
 /**
  * Episode three: backups.

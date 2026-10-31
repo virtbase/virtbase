@@ -29,18 +29,18 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getExtracted } from "next-intl/server";
 import { Suspense } from "react";
-import { getProxmoxTemplateGroupsList } from "@/features/admin/api/proxmox-template-groups/get-proxmox-template-groups-list";
+import { getProxmoxTemplateGroupsList } from "@/features/admin/api/proxmox-template-groups/get-proxmox-template-groups-list.ts";
 import {
   getTemplate,
   getTemplateImageStatus,
-} from "@/features/admin/api/proxmox-templates/get-templates-list";
-import { verifyRenderSession } from "@/features/admin/api/verify-session";
-import { TemplateActionsRow } from "@/features/admin/components/proxmox-templates/template-actions-row";
-import { TemplateImageIssuesCard } from "@/features/admin/components/proxmox-templates/template-image-issues-card";
-import { TemplateSettings } from "@/features/admin/components/proxmox-templates/template-settings";
-import { VendorDataPreview } from "@/features/admin/components/proxmox-templates/vendor-data-preview";
-import { paths } from "@/lib/paths";
-import DashboardLayout from "@/ui/layout/dashboard-layout";
+} from "@/features/admin/api/proxmox-templates/get-templates-list.ts";
+import { verifyRenderSession } from "@/features/admin/api/verify-session.ts";
+import { TemplateActionsRow } from "@/features/admin/components/proxmox-templates/template-actions-row.tsx";
+import { TemplateImageIssuesCard } from "@/features/admin/components/proxmox-templates/template-image-issues-card.tsx";
+import { TemplateSettings } from "@/features/admin/components/proxmox-templates/template-settings.tsx";
+import { VendorDataPreview } from "@/features/admin/components/proxmox-templates/vendor-data-preview.tsx";
+import { paths } from "@/lib/paths.ts";
+import DashboardLayout from "@/ui/layout/dashboard-layout.tsx";
 
 // instant = false: kept on purpose - the record is resolved up front so a missing one 404s before any chrome
 export const instant = false;

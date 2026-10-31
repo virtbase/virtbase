@@ -15,8 +15,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import ColoredLayout from "@/ui/layout/colored-layout";
-import { DefaultJsonLd } from "@/ui/seo/default-json-ld";
+import ColoredLayout from "@/ui/layout/colored-layout.tsx";
+import { DefaultJsonLd } from "@/ui/seo/default-json-ld.tsx";
 
 export default function Layout({
   children,

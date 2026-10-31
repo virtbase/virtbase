@@ -31,11 +31,11 @@ import { PUBLIC_DOMAIN } from "@virtbase/utils";
 import { headers } from "next/headers";
 import { useExtracted } from "next-intl";
 import { ErrorBoundary } from "react-error-boundary";
-import { auth } from "@/lib/auth/server";
-import { HydrateClient } from "@/lib/trpc/server";
-import { GenericError } from "@/ui/generic-error";
-import { ApiKeysList } from "./api-keys-list";
-import { CreateApiKeyButton } from "./create-api-key-button";
+import { auth } from "@/lib/auth/server.ts";
+import { HydrateClient } from "@/lib/trpc/server.tsx";
+import { GenericError } from "@/ui/generic-error.tsx";
+import { ApiKeysList } from "./api-keys-list.tsx";
+import { CreateApiKeyButton } from "./create-api-key-button.tsx";
 
 export function APIKeysCard() {
   const t = useExtracted();

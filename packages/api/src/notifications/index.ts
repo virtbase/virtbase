@@ -15,25 +15,25 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export type { NotificationChannelDescription } from "./channels";
-export { listNotificationChannels } from "./channels";
-export { deliverNotification, MAX_DELIVERY_ATTEMPTS } from "./deliver";
+export type { NotificationChannelDescription } from "./channels/index.ts";
+export { listNotificationChannels } from "./channels/index.ts";
+export { deliverNotification, MAX_DELIVERY_ATTEMPTS } from "./deliver.ts";
 export type {
   DispatchNotificationInput,
   DispatchResult,
-} from "./dispatch";
-export { dispatchNotification } from "./dispatch";
+} from "./dispatch.ts";
+export { dispatchNotification } from "./dispatch.ts";
 export {
   matchesAnyKey,
   matchesKey,
   meetsSeverity,
   SEVERITY_RANK,
-} from "./match";
-export { type RetryResult, retryFailedNotifications } from "./retry";
-export { notificationTargetStore } from "./store";
+} from "./match.ts";
+export { type RetryResult, retryFailedNotifications } from "./retry.ts";
+export { notificationTargetStore } from "./store.ts";
 export type {
   NotificationParams,
   NotificationRenderer,
   NotificationText,
-} from "./text";
-export { NOTIFICATION_TEXT, renderNotification } from "./text";
+} from "./text.ts";
+export { NOTIFICATION_TEXT, renderNotification } from "./text.ts";

@@ -16,7 +16,7 @@
  */
 
 import { expect, test } from "@playwright/test";
-import { appUrl } from "../support/urls";
+import { appUrl } from "../support/urls.ts";
 
 test.describe("login page", () => {
   test("it should render the login page", async ({ page }) => {

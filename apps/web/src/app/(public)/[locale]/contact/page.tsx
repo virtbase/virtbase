@@ -32,9 +32,9 @@ import {
 import type { Metadata } from "next";
 import { cacheLife, cacheTag } from "next/cache";
 import { getExtracted, getLocale } from "next-intl/server";
-import { IntlLink } from "@/i18n/navigation.public";
-import { constructAlternateLanguages } from "@/lib/hreflang";
-import { BlockWrapper } from "@/ui/block-wrapper";
+import { IntlLink } from "@/i18n/navigation.public.ts";
+import { constructAlternateLanguages } from "@/lib/hreflang.ts";
+import { BlockWrapper } from "@/ui/block-wrapper.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
   "use cache";

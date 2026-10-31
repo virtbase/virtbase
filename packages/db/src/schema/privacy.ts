@@ -17,8 +17,8 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils/create-id";
-import { accountDeletionReasonEnum, users } from "./auth";
+import { createId } from "../utils/create-id.ts";
+import { accountDeletionReasonEnum, users } from "./auth.ts";
 
 /**
  * A single-use token proving control of the mailbox behind an account.

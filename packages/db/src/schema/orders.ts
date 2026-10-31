@@ -17,11 +17,11 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils/create-id";
-import { users } from "./auth";
-import { serverPlanPrices } from "./server-plan-prices";
-import { serverPlans } from "./server-plans";
-import { servers } from "./servers";
+import { createId } from "../utils/create-id.ts";
+import { users } from "./auth.ts";
+import { serverPlanPrices } from "./server-plan-prices.ts";
+import { serverPlans } from "./server-plans.ts";
+import { servers } from "./servers.ts";
 
 export const orderTypeEnum = d.pgEnum("order_types", [
   "new_server",

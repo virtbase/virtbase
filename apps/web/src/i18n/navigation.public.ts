@@ -17,7 +17,7 @@
 
 import { createNavigation } from "next-intl/navigation";
 
-import { routing } from "@/i18n/routing.public";
+import { routing } from "@/i18n/routing.public.ts";
 
 export const {
   Link: IntlLink,

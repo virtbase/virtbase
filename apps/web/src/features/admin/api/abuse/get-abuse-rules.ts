@@ -19,7 +19,7 @@ import { asc, count, isNotNull, max } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import type { AbuseRule } from "@virtbase/db/schema";
 import { abuseRules, abuseSignals } from "@virtbase/db/schema";
-import { verifySession } from "../verify-session";
+import { verifySession } from "../verify-session.ts";
 
 export interface AbuseRuleListItem extends AbuseRule {
   /** Signals this rule has actually decided since it was created. */

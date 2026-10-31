@@ -36,15 +36,15 @@ import {
   useQueryStates,
 } from "nuqs";
 import * as React from "react";
-import { useDebouncedCallback } from "../hooks/use-debounced-callback";
-import { getSortingStateParser } from "../lib/parsers";
-import type { DataTableFeatures } from "../lib/table-features";
-import { dataTableFeatures } from "../lib/table-features";
+import { useDebouncedCallback } from "../hooks/use-debounced-callback.ts";
+import { getSortingStateParser } from "../lib/parsers.ts";
+import type { DataTableFeatures } from "../lib/table-features.ts";
+import { dataTableFeatures } from "../lib/table-features.ts";
 import type {
   ExtendedColumnSort,
   FilterVariant,
   QueryKeys,
-} from "../types/data-table";
+} from "../types/data-table.ts";
 
 const PAGE_KEY = "page";
 const PER_PAGE_KEY = "perPage";

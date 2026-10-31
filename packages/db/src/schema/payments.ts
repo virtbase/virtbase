@@ -17,9 +17,9 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils/create-id";
-import { users } from "./auth";
-import { orders } from "./orders";
+import { createId } from "../utils/create-id.ts";
+import { users } from "./auth.ts";
+import { orders } from "./orders.ts";
 
 export const paymentStatusEnum = d.pgEnum("payment_statuses", [
   "pending",

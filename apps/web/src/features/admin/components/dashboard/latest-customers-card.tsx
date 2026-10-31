@@ -30,10 +30,10 @@ import NextLink from "next/link";
 import { useExtracted } from "next-intl";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { getLatestCustomers } from "@/features/admin/api/dashboard/get-latest-customers";
-import { LatestCustomersList } from "@/features/admin/components/dashboard/latest-customers-list";
-import { paths } from "@/lib/paths";
-import { GenericError } from "@/ui/generic-error";
+import { getLatestCustomers } from "@/features/admin/api/dashboard/get-latest-customers.ts";
+import { LatestCustomersList } from "@/features/admin/components/dashboard/latest-customers-list.tsx";
+import { paths } from "@/lib/paths.ts";
+import { GenericError } from "@/ui/generic-error.tsx";
 
 export function LatestCustomersCard() {
   const t = useExtracted();

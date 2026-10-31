@@ -38,11 +38,14 @@ import { useExtracted } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import { useState } from "react";
 import { toast } from "sonner";
-import { downloadTemplateImageAction } from "../../api/proxmox-templates/download-template-image";
+import { downloadTemplateImageAction } from "../../api/proxmox-templates/download-template-image.ts";
 
-const DeleteTemplateDialog = dynamic(() => import("./delete-template-dialog"), {
-  ssr: false,
-});
+const DeleteTemplateDialog = dynamic(
+  () => import("./delete-template-dialog.tsx"),
+  {
+    ssr: false,
+  },
+);
 
 interface TemplateActionsRowProps {
   template: { id: string; name: string };

@@ -20,7 +20,7 @@
 import { TRPCError } from "@trpc/server";
 import type { CreateAPIKeyInput } from "@virtbase/validators";
 import { headers } from "next/headers";
-import { auth } from "@/lib/auth/server";
+import { auth } from "@/lib/auth/server.ts";
 
 // Creating API keys is only possible via server actions
 export const createApiKeyAction = async (input: CreateAPIKeyInput) => {

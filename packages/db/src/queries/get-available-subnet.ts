@@ -16,8 +16,12 @@
  */
 
 import { and, asc, desc, eq, isNull, notExists, or, sql } from "drizzle-orm";
-import { db } from "../client";
-import { subnetAllocations, subnets, subnetsToProxmoxNodes } from "../schema";
+import { db } from "../client.ts";
+import {
+  subnetAllocations,
+  subnets,
+  subnetsToProxmoxNodes,
+} from "../schema/index.ts";
 
 /**
  * How long a subnet is held for the caller before it returns to the pool.

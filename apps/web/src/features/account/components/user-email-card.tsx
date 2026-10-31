@@ -32,8 +32,8 @@ import { Spinner } from "@virtbase/ui/spinner";
 import { useExtracted } from "next-intl";
 import { useEffect, useState, useTransition } from "react";
 import { toast } from "sonner";
-import { authClient } from "@/lib/auth/client";
-import { paths } from "@/lib/paths";
+import { authClient } from "@/lib/auth/client.ts";
+import { paths } from "@/lib/paths.ts";
 
 export function UserEmailCard() {
   const t = useExtracted();

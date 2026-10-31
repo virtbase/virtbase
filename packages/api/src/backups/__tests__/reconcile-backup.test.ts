@@ -24,10 +24,14 @@ import {
   BACKUP_ARCHIVE_GRACE_MINUTES,
   BACKUP_STALE_AFTER_HOURS,
 } from "@virtbase/utils";
-import type { ProxmoxInstance } from "../../proxmox";
-import { mockProxmoxNode, mockServer, seedServerGraph } from "../../testing";
-import { reconcileServerBackup } from "../reconcile-backup";
-import { reconcileServerBackups } from "../reconcile-server-backups";
+import type { ProxmoxInstance } from "../../proxmox/index.ts";
+import {
+  mockProxmoxNode,
+  mockServer,
+  seedServerGraph,
+} from "../../testing/index.ts";
+import { reconcileServerBackup } from "../reconcile-backup.ts";
+import { reconcileServerBackups } from "../reconcile-server-backups.ts";
 
 const BACKUP_ID = "kbu_0000000000000000000000001";
 const UPID =

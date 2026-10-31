@@ -16,7 +16,7 @@
  */
 
 import z from "zod";
-import { ObjectTimestampSchema } from "../timestamps";
+import { ObjectTimestampSchema } from "../timestamps.ts";
 
 export const ProxmoxTemplateGroupSchema = z.object({
   id: z.string().regex(/^ptg_[A-Z0-9]{25}$/),

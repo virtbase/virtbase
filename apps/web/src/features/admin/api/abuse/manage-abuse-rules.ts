@@ -26,7 +26,7 @@ import { abuseRules } from "@virtbase/db/schema";
 import { AbuseRuleInputSchema } from "@virtbase/validators";
 import { revalidatePath } from "next/cache";
 import * as z from "zod";
-import { actionClient } from "../../lib/action-client";
+import { actionClient } from "../../lib/action-client.ts";
 
 const revalidate = () =>
   revalidatePath("/admin.virtbase.com/[locale]", "layout");

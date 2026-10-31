@@ -22,7 +22,7 @@ import { Spinner } from "@virtbase/ui/spinner";
 import { useRouter } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useTransition } from "react";
-import { authClient } from "@/lib/auth/client";
+import { authClient } from "@/lib/auth/client.ts";
 
 export function AddPasskeyButton() {
   const t = useExtracted();

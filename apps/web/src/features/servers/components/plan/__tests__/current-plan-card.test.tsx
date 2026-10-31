@@ -36,7 +36,7 @@ type Rendered = typeof import("@virtbase/test-utils/react");
 let renderWithProviders: Rendered["renderWithProviders"];
 let screen: Rendered["screen"];
 let userEvent: Rendered["userEvent"];
-let CurrentPlanCard: typeof import("../current-plan-card").CurrentPlanCard;
+let CurrentPlanCard: typeof import("../current-plan-card.tsx").CurrentPlanCard;
 let IntlEnvironment: (props: { children: React.ReactNode }) => React.ReactNode;
 
 beforeAll(async () => {
@@ -45,7 +45,7 @@ beforeAll(async () => {
   screen = rendered.screen;
   userEvent = rendered.userEvent;
 
-  CurrentPlanCard = (await import("../current-plan-card")).CurrentPlanCard;
+  CurrentPlanCard = (await import("../current-plan-card.tsx")).CurrentPlanCard;
 
   const { NextIntlClientProvider } = actualNextIntl;
   IntlEnvironment = ({ children }) => (

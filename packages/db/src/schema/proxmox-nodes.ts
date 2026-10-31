@@ -17,9 +17,9 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils/create-id";
-import { datacenters } from "./datacenters";
-import { proxmoxNodeGroups } from "./proxmox-node-groups";
+import { createId } from "../utils/create-id.ts";
+import { datacenters } from "./datacenters.ts";
+import { proxmoxNodeGroups } from "./proxmox-node-groups.ts";
 
 /**
  * A Proxmox VE node represents a physical machine within a datacenter

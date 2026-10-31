@@ -33,7 +33,7 @@ import {
 import type { Metadata } from "next";
 import { cacheLife, cacheTag } from "next/cache";
 import { cache } from "react";
-import Document from "@/ui/document";
+import Document from "@/ui/document.tsx";
 
 /**
  * Read a markdown file from the `src/app/api/docs` directory

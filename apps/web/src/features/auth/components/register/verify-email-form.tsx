@@ -28,9 +28,9 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
-import { authClient } from "@/lib/auth/client";
-import { useRegisterContext } from "./context";
-import { ResendOtp } from "./resend-otp";
+import { authClient } from "@/lib/auth/client.ts";
+import { useRegisterContext } from "./context.tsx";
+import { ResendOtp } from "./resend-otp.tsx";
 
 export const VerifyEmailForm = ({ next }: { next?: string }) => {
   const t = useExtracted();

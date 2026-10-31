@@ -19,8 +19,8 @@ import { createHash } from "node:crypto";
 import { link, unlink } from "node:fs/promises";
 import { PGlite } from "@electric-sql/pglite";
 import { drizzle } from "drizzle-orm/pglite";
-import { relations } from "./relations";
-import * as schema from "./schema";
+import { relations } from "./relations.ts";
+import * as schema from "./schema/index.ts";
 
 export type TestDb = Awaited<ReturnType<typeof createTestDb>>;
 

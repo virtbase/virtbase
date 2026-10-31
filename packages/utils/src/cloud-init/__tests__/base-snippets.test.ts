@@ -17,12 +17,12 @@
 
 import { describe, expect, test } from "bun:test";
 import { parse } from "yaml";
-import { BASE_SNIPPETS } from "../base-snippets";
+import { BASE_SNIPPETS } from "../base-snippets.ts";
 import {
   renderVendorData,
   validateSnippetContent,
-} from "../render-vendor-data";
-import type { SnippetTargetContext } from "../types";
+} from "../render-vendor-data.ts";
+import type { SnippetTargetContext } from "../types.ts";
 
 /**
  * Golden-file coverage for the snippets every guest receives.

@@ -17,7 +17,7 @@
 
 import { pollAbuseSources } from "@virtbase/api/abuse";
 import { db } from "@virtbase/db/client";
-import { withCronSecret } from "@/lib/with-cron-secret";
+import { withCronSecret } from "@/lib/with-cron-secret.ts";
 
 /**
  * Asks every pull source what has been reported about our own ranges.

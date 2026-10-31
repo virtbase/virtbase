@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { searchParamsCache } from "../validations";
+import { searchParamsCache } from "../validations.ts";
 
 /**
  * What the operator's URL turns into.

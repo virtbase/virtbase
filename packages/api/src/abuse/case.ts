@@ -35,8 +35,8 @@ import {
   abuseCases,
 } from "@virtbase/db/schema";
 import type { SignalSeverity } from "@virtbase/ports";
-import { dispatchNotification } from "../notifications/dispatch";
-import type { RuleDefinition } from "./rules";
+import { dispatchNotification } from "../notifications/dispatch.ts";
+import type { RuleDefinition } from "./rules.ts";
 
 type Database = typeof database;
 

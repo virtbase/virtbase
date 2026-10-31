@@ -17,9 +17,9 @@
 
 import type { IntegrationWebhook } from "@virtbase/integration-sdk";
 import { safeSecretCompare } from "@virtbase/utils";
-import { collectPlatformMetrics } from "./collectors";
-import type { PrometheusSecrets, PrometheusSettings } from "./config";
-import { runtimeFor } from "./runtime";
+import { collectPlatformMetrics } from "./collectors.ts";
+import type { PrometheusSecrets, PrometheusSettings } from "./config.ts";
+import { runtimeFor } from "./runtime.ts";
 
 type ScrapeWebhook = IntegrationWebhook<PrometheusSettings, PrometheusSecrets>;
 

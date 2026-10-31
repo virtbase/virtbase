@@ -23,13 +23,13 @@ import { useMemo } from "react";
 import {
   CheckoutStateProvider,
   useCheckoutState,
-} from "@/features/checkout/hooks/use-checkout-state";
-import { useServerPlans } from "../../hooks/plan/use-server-plans";
-import { CHANGE_PLAN_ANCHOR } from "./anchors";
-import { PlanCatalog } from "./plan-catalog";
-import { PlanProvider } from "./plan-context";
-import { PlanOrderDialog } from "./plan-order-dialog";
-import { PlanPaymentStep } from "./plan-payment-step";
+} from "@/features/checkout/hooks/use-checkout-state.tsx";
+import { useServerPlans } from "../../hooks/plan/use-server-plans.ts";
+import { CHANGE_PLAN_ANCHOR } from "./anchors.ts";
+import { PlanCatalog } from "./plan-catalog.tsx";
+import { PlanProvider } from "./plan-context.tsx";
+import { PlanOrderDialog } from "./plan-order-dialog.tsx";
+import { PlanPaymentStep } from "./plan-payment-step.tsx";
 
 /**
  * The catalogue, and nothing above it.

@@ -20,7 +20,7 @@ import { db } from "@virtbase/db/client";
 import type { SubscriptionRenewal } from "@virtbase/db/schema";
 import { orderItems, paymentMethods, subscriptions } from "@virtbase/db/schema";
 import type { OffSessionResult } from "@virtbase/ports";
-import { requirePaymentCapability } from "../payment-methods/provider";
+import { requirePaymentCapability } from "../payment-methods/provider.ts";
 
 /**
  * The credential a renewal is charged against.

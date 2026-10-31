@@ -32,7 +32,7 @@ import {
 import { useExtracted } from "next-intl";
 import type React from "react";
 
-import { IntlLink } from "@/i18n/navigation.public";
+import { IntlLink } from "@/i18n/navigation.public.ts";
 
 /**
  * The icons an advantage can carry by name. Named so MDX stays declarative and

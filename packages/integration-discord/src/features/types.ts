@@ -23,7 +23,7 @@ import type {
   APIModalSubmitInteraction,
 } from "discord-api-types/v10";
 
-import type { InteractionHandler, LinkedHandler } from "../handlers/types";
+import type { InteractionHandler, LinkedHandler } from "../handlers/types.ts";
 
 /**
  * A handler that needs no linked Virtbase account.

@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { BlockWrapper } from "@/ui/block-wrapper";
+import { BlockWrapper } from "@/ui/block-wrapper.tsx";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (

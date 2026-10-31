@@ -20,7 +20,7 @@
 import { Button } from "@virtbase/ui/button";
 import { ResponsiveDialog } from "@virtbase/ui/responsive-dialog";
 import { useExtracted } from "next-intl";
-import { CopyButton } from "@/ui/copy-button";
+import { CopyButton } from "@/ui/copy-button.tsx";
 
 export default function BackupCodesDialog({
   backupCodes,

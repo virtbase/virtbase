@@ -35,7 +35,7 @@ import {
   users,
 } from "@virtbase/db/schema";
 import { cache } from "react";
-import { verifySession } from "../verify-session";
+import { verifySession } from "../verify-session.ts";
 
 /** See the note in `get-subscriptions-list.ts`. */
 const SERVER_SUBJECT_TYPE = "server";

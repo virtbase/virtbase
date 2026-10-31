@@ -36,8 +36,8 @@ import { Spinner } from "@virtbase/ui/spinner";
 import { useExtracted } from "next-intl";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
-import { authClient } from "@/lib/auth/client";
-import { ShowPasswordAddon } from "@/ui/input-group-addons/show-password-addon";
+import { authClient } from "@/lib/auth/client.ts";
+import { ShowPasswordAddon } from "@/ui/input-group-addons/show-password-addon.tsx";
 
 export function UserPasswordCard() {
   const t = useExtracted();

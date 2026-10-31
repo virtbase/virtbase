@@ -18,7 +18,7 @@
 import { useSuspenseQuery } from "@tanstack/react-query";
 import type { RouterInputs, RouterOutputs } from "@virtbase/api";
 import { isInstalling } from "@virtbase/utils";
-import { useTRPC } from "@/lib/trpc/react";
+import { useTRPC } from "@/lib/trpc/react.tsx";
 
 export type GetLatestServersInput = RouterInputs["servers"]["list"];
 

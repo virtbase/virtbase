@@ -16,16 +16,16 @@
  */
 
 import type { Session } from "@virtbase/auth";
-import { isSessionFreshEnough } from "./freshness";
-import { hasStepUp, isStepUpSpent } from "./marker";
+import { isSessionFreshEnough } from "./freshness.ts";
+import { hasStepUp, isStepUpSpent } from "./marker.ts";
 
-export { isSessionFreshEnough } from "./freshness";
+export { isSessionFreshEnough } from "./freshness.ts";
 export {
   grantStepUp,
   hasStepUp,
   isStepUpSpent,
   revokeStepUp,
-} from "./marker";
+} from "./marker.ts";
 
 /**
  * Whether this session may perform an irreversible action right now.

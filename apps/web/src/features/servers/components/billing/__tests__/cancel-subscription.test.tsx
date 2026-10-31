@@ -46,8 +46,8 @@ let renderWithProviders: Rendered["renderWithProviders"];
 let screen: Rendered["screen"];
 let within: Rendered["within"];
 let userEvent: Rendered["userEvent"];
-let CancelSubscriptionDialog: typeof import("../cancel-subscription-dialog").CancelSubscriptionDialog;
-let CancelSubscriptionSection: typeof import("../cancel-subscription-section").CancelSubscriptionSection;
+let CancelSubscriptionDialog: typeof import("../cancel-subscription-dialog.tsx").CancelSubscriptionDialog;
+let CancelSubscriptionSection: typeof import("../cancel-subscription-section.tsx").CancelSubscriptionSection;
 let IntlEnvironment: (props: { children: React.ReactNode }) => React.ReactNode;
 
 beforeAll(async () => {
@@ -59,10 +59,11 @@ beforeAll(async () => {
   within = rendered.within;
   userEvent = rendered.userEvent;
 
-  CancelSubscriptionDialog = (await import("../cancel-subscription-dialog"))
+  CancelSubscriptionDialog = (await import("../cancel-subscription-dialog.tsx"))
     .CancelSubscriptionDialog;
-  CancelSubscriptionSection = (await import("../cancel-subscription-section"))
-    .CancelSubscriptionSection;
+  CancelSubscriptionSection = (
+    await import("../cancel-subscription-section.tsx")
+  ).CancelSubscriptionSection;
 
   // Pins the time zone the dates below are formatted in. Without it `use-intl`
   // falls back to the machine's, which turns a UTC midnight into the previous

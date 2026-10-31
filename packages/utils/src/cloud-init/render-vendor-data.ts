@@ -16,14 +16,14 @@
  */
 
 import { parse, stringify, YAMLParseError } from "yaml";
-import { selectSnippets } from "./match-snippet";
+import { selectSnippets } from "./match-snippet.ts";
 import type {
   RenderableSnippet,
   RenderConflict,
   RenderError,
   RenderVendorDataResult,
   SnippetTargetContext,
-} from "./types";
+} from "./types.ts";
 
 /**
  * Keys whose lists accumulate across snippets instead of replacing each other.

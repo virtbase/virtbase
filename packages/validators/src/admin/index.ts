@@ -15,10 +15,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./cloud-init-snippets";
-export * from "./datacenters";
-export * from "./proxmox-node-group";
-export * from "./proxmox-nodes";
-export * from "./proxmox-template-group";
-export * from "./proxmox-templates";
-export * from "./users";
+export * from "./cloud-init-snippets.ts";
+export * from "./datacenters.ts";
+export * from "./proxmox-node-group.ts";
+export * from "./proxmox-nodes.ts";
+export * from "./proxmox-template-group.ts";
+export * from "./proxmox-templates.ts";
+export * from "./users.ts";

@@ -15,13 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { locales } from "@/i18n/config";
-import ConsoleLayout from "@/ui/layout/console-layout";
+import { locales } from "@/i18n/config.ts";
+import ConsoleLayout from "@/ui/layout/console-layout.tsx";
 
 export {
   defaultMetadata as metadata,
   defaultViewport as viewport,
-} from "@/ui/document";
+} from "@/ui/document.tsx";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));

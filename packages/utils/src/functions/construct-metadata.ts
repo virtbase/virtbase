@@ -16,8 +16,8 @@
  */
 
 import type { Metadata } from "next";
-import { APPLE_APP_STORE_ID } from "../constants";
-import { APP_NAME, PUBLIC_DOMAIN } from "../constants/main";
+import { APPLE_APP_STORE_ID } from "../constants/index.ts";
+import { APP_NAME, PUBLIC_DOMAIN } from "../constants/main.ts";
 
 export function constructMetadata({
   title,

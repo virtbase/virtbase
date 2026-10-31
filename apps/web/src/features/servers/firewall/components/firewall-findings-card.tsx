@@ -26,13 +26,13 @@ import { Spinner } from "@virtbase/ui/spinner";
 import dynamic from "next/dynamic";
 import { useExtracted } from "next-intl";
 import { useState } from "react";
-import { ItemRow } from "@/features/account/components/item-row";
-import { useDeleteFirewallRule } from "../hooks/use-delete-firewall-rule";
-import { useFindingMapping } from "../hooks/use-finding-mapping";
-import type { FirewallFinding } from "../hooks/use-firewall-analysis";
-import { useFirewallAnalysis } from "../hooks/use-firewall-analysis";
+import { ItemRow } from "@/features/account/components/item-row.tsx";
+import { useDeleteFirewallRule } from "../hooks/use-delete-firewall-rule.ts";
+import { useFindingMapping } from "../hooks/use-finding-mapping.ts";
+import type { FirewallFinding } from "../hooks/use-firewall-analysis.ts";
+import { useFirewallAnalysis } from "../hooks/use-firewall-analysis.ts";
 
-const FirewallRuleDialog = dynamic(() => import("./firewall-rule-dialog"), {
+const FirewallRuleDialog = dynamic(() => import("./firewall-rule-dialog.tsx"), {
   ssr: false,
 });
 

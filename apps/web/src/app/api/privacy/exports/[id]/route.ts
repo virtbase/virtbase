@@ -20,7 +20,7 @@ import { db } from "@virtbase/db/client";
 import { dataExports } from "@virtbase/db/schema";
 import { headers } from "next/headers";
 import type { NextRequest } from "next/server";
-import { auth } from "@/lib/auth/server";
+import { auth } from "@/lib/auth/server.ts";
 
 /**
  * Serves a finished data export.

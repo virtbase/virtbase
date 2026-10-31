@@ -23,7 +23,7 @@ import {
   parseGenericPayload,
   slugify,
   subjectFromLabels,
-} from "../parse";
+} from "../parse.ts";
 
 const settings = { defaultSeverity: "warning" } as const;
 

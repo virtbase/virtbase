@@ -18,9 +18,9 @@
 "use client";
 
 import { AnimatedSizeContainer } from "@virtbase/ui/animated-size-container";
-import { AuthMethodsSeparator } from "../auth-methods-separator";
-import { SignUpEmail } from "./signup-email";
-import { SignUpOAuth } from "./signup-oauth";
+import { AuthMethodsSeparator } from "../auth-methods-separator.tsx";
+import { SignUpEmail } from "./signup-email.tsx";
+import { SignUpOAuth } from "./signup-oauth.tsx";
 
 export const SignUpForm = ({
   methods = ["email", "google", "github", "discord"],

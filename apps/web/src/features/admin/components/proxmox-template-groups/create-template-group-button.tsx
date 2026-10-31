@@ -24,7 +24,7 @@ import { useExtracted } from "next-intl";
 import { useState } from "react";
 
 const CreateTemplateGroupDialog = dynamic(
-  () => import("./create-template-group-dialog"),
+  () => import("./create-template-group-dialog.tsx"),
   {
     ssr: false,
   },

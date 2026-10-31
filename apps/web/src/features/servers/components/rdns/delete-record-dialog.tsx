@@ -24,8 +24,8 @@ import { Spinner } from "@virtbase/ui/spinner";
 import type { Row } from "@virtbase/ui/types";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
-import { useDeletePointerRecord } from "@/features/servers/hooks/rdns/use-delete-pointer-record";
-import type { RecordsTableColumn } from "./records-table/columns";
+import { useDeletePointerRecord } from "@/features/servers/hooks/rdns/use-delete-pointer-record.ts";
+import type { RecordsTableColumn } from "./records-table/columns.tsx";
 
 interface DeleteRecordDialogProps
   extends Omit<

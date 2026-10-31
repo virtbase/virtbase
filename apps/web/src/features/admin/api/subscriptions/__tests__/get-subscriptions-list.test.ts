@@ -30,7 +30,7 @@ mock.module("next/cache", () => ({ cacheLife: () => {}, cacheTag: () => {} }));
 mock.module("@sentry/nextjs", () => ({ captureException: () => {} }));
 
 let refusal: Error | null = null;
-mock.module("../../verify-session", () => ({
+mock.module("../../verify-session.ts", () => ({
   verifySession: async () => {
     if (refusal) throw refusal;
 
@@ -42,13 +42,13 @@ import { mockServer, seedServerGraph } from "@virtbase/api/testing/fixtures";
 import { subscriptions } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import type { GetSubscriptionsSchema } from "../../../lib/subscriptions/validations";
-import { searchParamsCache } from "../../../lib/subscriptions/validations";
-import { insertSubscription, MONTH } from "./fixtures";
+import type { GetSubscriptionsSchema } from "../../../lib/subscriptions/validations.ts";
+import { searchParamsCache } from "../../../lib/subscriptions/validations.ts";
+import { insertSubscription, MONTH } from "./fixtures.ts";
 
 let testDb: TestDb;
-let getSubscriptionsList: typeof import("../get-subscriptions-list").getSubscriptionsList;
-let getSubscriptionStatusCounts: typeof import("../get-subscriptions-list").getSubscriptionStatusCounts;
+let getSubscriptionsList: typeof import("../get-subscriptions-list.ts").getSubscriptionsList;
+let getSubscriptionStatusCounts: typeof import("../get-subscriptions-list.ts").getSubscriptionStatusCounts;
 
 /** The shape `searchParamsCache.parse` hands over, with nothing filtered. */
 const query = (
@@ -73,7 +73,7 @@ beforeAll(async () => {
 
   await seedServerGraph(testDb);
 
-  const mod = await import("../get-subscriptions-list");
+  const mod = await import("../get-subscriptions-list.ts");
   getSubscriptionsList = mod.getSubscriptionsList;
   getSubscriptionStatusCounts = mod.getSubscriptionStatusCounts;
 });

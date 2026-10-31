@@ -17,9 +17,9 @@
 
 import { getValidFilters } from "@virtbase/ui/lib";
 import type { SearchParams } from "nuqs";
-import { getNodeGroupsList } from "../../api/proxmox-node-groups/get-node-groups-list";
-import { searchParamsCache } from "../../lib/node-groups/validations";
-import { NodeGroupsTable } from "./node-groups-table";
+import { getNodeGroupsList } from "../../api/proxmox-node-groups/get-node-groups-list.ts";
+import { searchParamsCache } from "../../lib/node-groups/validations.ts";
+import { NodeGroupsTable } from "./node-groups-table/index.tsx";
 
 export async function NodeGroupsCard(props: {
   searchParams: Promise<SearchParams>;

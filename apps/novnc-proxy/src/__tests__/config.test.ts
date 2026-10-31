@@ -17,7 +17,7 @@
 
 import { describe, expect, test } from "bun:test";
 import * as z from "zod";
-import { ConfigSchema } from "../config";
+import { ConfigSchema } from "../config.ts";
 
 const SECRET =
   "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";

@@ -22,13 +22,13 @@ import { cn } from "@virtbase/ui";
 import { X } from "lucide-react";
 import { useExtracted } from "next-intl";
 import * as React from "react";
-import { Button } from "../button";
-import { Input } from "../input";
-import type { Column, Table } from "../types/data-table";
-import { DataTableDateFilter } from "./data-table-date-filter";
-import { DataTableFacetedFilter } from "./data-table-faceted-filter";
-import { DataTableSliderFilter } from "./data-table-slider-filter";
-import { DataTableViewOptions } from "./data-table-view-options";
+import { Button } from "../button.tsx";
+import { Input } from "../input.tsx";
+import type { Column, Table } from "../types/data-table.ts";
+import { DataTableDateFilter } from "./data-table-date-filter.tsx";
+import { DataTableFacetedFilter } from "./data-table-faceted-filter.tsx";
+import { DataTableSliderFilter } from "./data-table-slider-filter.tsx";
+import { DataTableViewOptions } from "./data-table-view-options.tsx";
 
 interface DataTableToolbarProps<TData extends RowData>
   extends React.ComponentProps<"div"> {

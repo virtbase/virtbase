@@ -28,10 +28,10 @@ import {
 import { LucideUserKey } from "@virtbase/ui/icons";
 import { Spinner } from "@virtbase/ui/spinner";
 import { useExtracted, useFormatter, useNow } from "next-intl";
-import { ItemRow } from "@/features/account/components/item-row";
-import { useDeleteSSHKey } from "@/features/account/hooks/ssh-keys/delete-ssh-key";
-import type { GetSSHKeysListOutput } from "@/features/account/hooks/ssh-keys/ssh-keys-list";
-import { useSSHKeysList } from "@/features/account/hooks/ssh-keys/ssh-keys-list";
+import { ItemRow } from "@/features/account/components/item-row.tsx";
+import { useDeleteSSHKey } from "@/features/account/hooks/ssh-keys/delete-ssh-key.ts";
+import type { GetSSHKeysListOutput } from "@/features/account/hooks/ssh-keys/ssh-keys-list.ts";
+import { useSSHKeysList } from "@/features/account/hooks/ssh-keys/ssh-keys-list.ts";
 
 export function SSHKeysList() {
   const t = useExtracted();

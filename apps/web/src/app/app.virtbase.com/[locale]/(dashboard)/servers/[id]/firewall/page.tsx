@@ -19,11 +19,11 @@ import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
 import { Suspense } from "react";
-import { GuestAgentNotice } from "@/features/servers/components/guest-agent-notice";
-import { FirewallFindingsCard } from "@/features/servers/firewall/components/firewall-findings-card";
-import { FirewallOptionsRow } from "@/features/servers/firewall/components/firewall-options-row";
-import { FirewallRulesCard } from "@/features/servers/firewall/components/firewall-rules-card";
-import { GuestFirewallAlert } from "@/features/servers/firewall/components/guest-firewall-alert";
+import { GuestAgentNotice } from "@/features/servers/components/guest-agent-notice.tsx";
+import { FirewallFindingsCard } from "@/features/servers/firewall/components/firewall-findings-card.tsx";
+import { FirewallOptionsRow } from "@/features/servers/firewall/components/firewall-options-row.tsx";
+import { FirewallRulesCard } from "@/features/servers/firewall/components/firewall-rules-card.tsx";
+import { GuestFirewallAlert } from "@/features/servers/firewall/components/guest-firewall-alert.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();

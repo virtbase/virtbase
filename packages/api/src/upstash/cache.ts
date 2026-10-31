@@ -16,7 +16,7 @@
  */
 
 import * as Sentry from "@sentry/node";
-import { redis } from "./redis";
+import { redis } from "./redis.ts";
 
 /** Namespace, so cache keys cannot collide with the ratelimiter's. */
 const PREFIX = "vb:cache:";

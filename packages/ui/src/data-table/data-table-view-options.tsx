@@ -22,7 +22,7 @@ import { cn } from "@virtbase/ui";
 import { Check, Settings2 } from "lucide-react";
 import { useExtracted } from "next-intl";
 import * as React from "react";
-import { Button } from "../button";
+import { Button } from "../button.tsx";
 import {
   Command,
   CommandEmpty,
@@ -30,9 +30,9 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "../command";
-import { Popover, PopoverContent, PopoverTrigger } from "../popover";
-import type { Table } from "../types/data-table";
+} from "../command.tsx";
+import { Popover, PopoverContent, PopoverTrigger } from "../popover.tsx";
+import type { Table } from "../types/data-table.ts";
 
 interface DataTableViewOptionsProps<TData extends RowData>
   extends React.ComponentProps<typeof PopoverContent> {

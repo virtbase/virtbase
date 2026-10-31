@@ -18,8 +18,8 @@
 import { sql } from "drizzle-orm";
 import type { AnyPgColumn } from "drizzle-orm/pg-core";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils/create-id";
-import { proxmoxNodeGroups } from "./proxmox-node-groups";
+import { createId } from "../utils/create-id.ts";
+import { proxmoxNodeGroups } from "./proxmox-node-groups.ts";
 
 export const serverPlans = d.snakeCase.table(
   "server_plans",

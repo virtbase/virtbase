@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { matchesAnyKey, matchesKey, meetsSeverity } from "../match";
+import { matchesAnyKey, matchesKey, meetsSeverity } from "../match.ts";
 
 describe("matchesKey", () => {
   test("matches everything for a bare star", () => {

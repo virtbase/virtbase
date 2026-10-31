@@ -16,8 +16,8 @@
  */
 
 import * as z from "zod";
-import { ProxmoxTemplateSchema } from "../proxmox-template";
-import { ServerSchema } from "./shared";
+import { ProxmoxTemplateSchema } from "../proxmox-template.ts";
+import { ServerSchema } from "./shared.ts";
 
 const RootPasswordSchema = z
   .string()

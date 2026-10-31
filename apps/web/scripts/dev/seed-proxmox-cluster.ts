@@ -26,7 +26,7 @@ import {
   proxmoxNodes,
 } from "@virtbase/db/schema";
 import { createId } from "@virtbase/db/utils";
-import { uploadHookscript } from "@/features/admin/lib/proxmox-nodes/hookscript";
+import { uploadHookscript } from "@/features/admin/lib/proxmox-nodes/hookscript.ts";
 
 interface ClusterConfig {
   fqdn: string;

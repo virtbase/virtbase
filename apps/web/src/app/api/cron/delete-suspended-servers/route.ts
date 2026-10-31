@@ -23,7 +23,7 @@ import { db } from "@virtbase/db/client";
 import { proxmoxNodes, servers } from "@virtbase/db/schema";
 import { SERVER_DELETION_GRACE_PERIOD_DAYS } from "@virtbase/utils";
 import { start } from "workflow/api";
-import { withCronSecret } from "@/lib/with-cron-secret";
+import { withCronSecret } from "@/lib/with-cron-secret.ts";
 
 /**
  * Checks for suspended servers that are past the deletion grace

@@ -16,7 +16,7 @@
  */
 
 import { reconcileOrders } from "@virtbase/api/orders";
-import { withCronSecret } from "@/lib/with-cron-secret";
+import { withCronSecret } from "@/lib/with-cron-secret.ts";
 
 /**
  * Fulfils the orders that were paid for and then dropped.

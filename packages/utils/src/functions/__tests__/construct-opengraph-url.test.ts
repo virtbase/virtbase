@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { constructOpengraphUrl } from "../construct-opengraph-url";
+import { constructOpengraphUrl } from "../construct-opengraph-url.ts";
 
 describe("constructOpengraphUrl", () => {
   test("it constructs the correct opengraph URL with title, subtitle, slug, and theme", () => {

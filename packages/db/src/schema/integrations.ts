@@ -17,7 +17,7 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils/create-id";
+import { createId } from "../utils/create-id.ts";
 
 export const integrationHealthStatusEnum = d.pgEnum(
   "integration_health_statuses",

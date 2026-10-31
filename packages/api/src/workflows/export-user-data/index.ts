@@ -15,8 +15,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { buildExportArtifactStep } from "./build-artifact";
-import { sendExportReadyEmailStep } from "./send-export-ready-email";
+import { buildExportArtifactStep } from "./build-artifact.ts";
+import { sendExportReadyEmailStep } from "./send-export-ready-email.ts";
 
 type ExportUserDataWorkflowParams = {
   exportId: string;

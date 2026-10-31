@@ -18,7 +18,7 @@
 import { and, eq, isNotNull, lte, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { notificationDeliveries } from "@virtbase/db/schema";
-import { deliverNotification, MAX_DELIVERY_ATTEMPTS } from "./deliver";
+import { deliverNotification, MAX_DELIVERY_ATTEMPTS } from "./deliver.ts";
 
 /** Bounds the runtime of one cron invocation. */
 const BATCH_SIZE = 100;

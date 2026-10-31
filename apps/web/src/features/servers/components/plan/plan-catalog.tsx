@@ -22,8 +22,8 @@ import { Button } from "@virtbase/ui/button";
 import { LucideCircleAlert } from "@virtbase/ui/icons";
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { useExtracted } from "next-intl";
-import { usePlanContext } from "./plan-context";
-import { PlanList } from "./plan-list";
+import { usePlanContext } from "./plan-context.tsx";
+import { PlanList } from "./plan-list.tsx";
 
 /**
  * The card's whole content: the list of plans, and what to do about an order

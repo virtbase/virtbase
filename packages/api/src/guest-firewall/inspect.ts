@@ -23,13 +23,13 @@ import type {
 } from "@virtbase/utils";
 import { mapProxmoxServerStatus, ProxmoxServerStatus } from "@virtbase/utils";
 import type { GuestFirewallStatus } from "@virtbase/validators/server";
-import type { ProxmoxVm } from "../proxmox/agent";
-import { getGuestOsInfo, isPosixGuest } from "../proxmox/agent";
-import { cached } from "../upstash";
-import type { DetectedManager } from "./detect";
-import { detectGuestFirewalls } from "./detect";
-import { canReadRules, readGuestFirewallRules } from "./read-rules";
-import { readListeningSockets } from "./read-sockets";
+import type { ProxmoxVm } from "../proxmox/agent/index.ts";
+import { getGuestOsInfo, isPosixGuest } from "../proxmox/agent/index.ts";
+import { cached } from "../upstash/index.ts";
+import type { DetectedManager } from "./detect.ts";
+import { detectGuestFirewalls } from "./detect.ts";
+import { canReadRules, readGuestFirewallRules } from "./read-rules.ts";
+import { readListeningSockets } from "./read-sockets.ts";
 
 /**
  * How long one inspection is reused.

@@ -16,10 +16,10 @@
  */
 
 import type { IpReputation, IpReputationProvider } from "@virtbase/ports";
-import { categoryNames, REPORTABLE_CATEGORIES } from "./categories";
-import type { AbuseIpDbClient } from "./client";
-import { createAbuseIpDbClient } from "./client";
-import type { AbuseIpDbContext } from "./config";
+import { categoryNames, REPORTABLE_CATEGORIES } from "./categories.ts";
+import type { AbuseIpDbClient } from "./client.ts";
+import { createAbuseIpDbClient } from "./client.ts";
+import type { AbuseIpDbContext } from "./config.ts";
 
 /**
  * One address, asked about directly.

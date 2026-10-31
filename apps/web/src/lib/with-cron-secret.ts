@@ -17,7 +17,7 @@
 
 import { safeSecretCompare } from "@virtbase/utils";
 import type { NextRequest } from "next/server";
-import { env } from "@/env";
+import { env } from "@/env.ts";
 
 export function withCronSecret(
   handler: (request: NextRequest) => Promise<Response>,

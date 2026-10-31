@@ -30,11 +30,11 @@ import type { ColumnDef, DataTableRowAction } from "@virtbase/ui/types";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import type { Dispatch, SetStateAction } from "react";
-import { useFirewallActionMapping } from "../../hooks/use-firewall-action-mapping";
-import { useFirewallDirectionMapping } from "../../hooks/use-firewall-direction-mapping";
-import { useUpdateFirewallRule } from "../../hooks/use-update-firewall-rule";
-import type { FirewallTableRow } from "../../lib/table-rows";
-import { RuleActions } from "./rule-actions";
+import { useFirewallActionMapping } from "../../hooks/use-firewall-action-mapping.ts";
+import { useFirewallDirectionMapping } from "../../hooks/use-firewall-direction-mapping.ts";
+import { useUpdateFirewallRule } from "../../hooks/use-update-firewall-rule.ts";
+import type { FirewallTableRow } from "../../lib/table-rows.ts";
+import { RuleActions } from "./rule-actions.tsx";
 
 export type FirewallRulesTableColumn = FirewallTableRow;
 

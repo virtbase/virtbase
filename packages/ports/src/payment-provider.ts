@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { Money } from "./common";
+import type { Money } from "./common.ts";
 
 export type PaymentStatus =
   | "pending"

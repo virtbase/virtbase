@@ -16,7 +16,10 @@
  */
 
 import type { Proxmox } from "@virtbase/proxmox-api";
-import { PROXMOX_TASK_STATUS_MAPPING, ProxmoxTaskStatus } from "../constants";
+import {
+  PROXMOX_TASK_STATUS_MAPPING,
+  ProxmoxTaskStatus,
+} from "../constants/index.ts";
 
 export const mapProxmoxTaskStatus = (
   task: Proxmox.nodesTasksNodeTasks,

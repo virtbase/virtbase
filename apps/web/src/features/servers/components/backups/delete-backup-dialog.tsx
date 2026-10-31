@@ -24,9 +24,9 @@ import { Spinner } from "@virtbase/ui/spinner";
 import type { Row } from "@virtbase/ui/types";
 import { useParams } from "next/navigation";
 import { useExtracted, useFormatter } from "next-intl";
-import { OperatingSystemIcon } from "@/ui/operating-system-icon";
-import { useDeleteBackup } from "../../hooks/backups/use-delete-backup";
-import type { BackupsTableColumn } from "./backups-table/columns";
+import { OperatingSystemIcon } from "@/ui/operating-system-icon.tsx";
+import { useDeleteBackup } from "../../hooks/backups/use-delete-backup.ts";
+import type { BackupsTableColumn } from "./backups-table/columns.tsx";
 
 interface DeleteBackupDialogProps
   extends Omit<

@@ -16,8 +16,8 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { toDetectedOperatingSystem } from "../detect";
-import { DETECTION_MAX_AGE_HOURS, isDetectionStale } from "../refresh";
+import { toDetectedOperatingSystem } from "../detect.ts";
+import { DETECTION_MAX_AGE_HOURS, isDetectionStale } from "../refresh.ts";
 
 const NOW = new Date("2026-08-26T12:00:00.000Z");
 

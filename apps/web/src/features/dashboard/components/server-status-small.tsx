@@ -31,7 +31,7 @@ import {
   isTerminated,
 } from "@virtbase/utils";
 import { useExtracted, useFormatter, useNow } from "next-intl";
-import type { GetLatestServersOutput } from "../hooks/use-latest-servers";
+import type { GetLatestServersOutput } from "../hooks/use-latest-servers.ts";
 
 type Server = GetLatestServersOutput["servers"][number];
 

@@ -54,25 +54,25 @@ import {
   SetSubscriptionAutoRenewOutputSchema,
   SUBSCRIPTION_MANDATE_TEXT_VERSION,
 } from "@virtbase/validators";
-// The collector, reached the same way `servers/backups` reaches
-// `reconcileServerBackup`: through the package's own module, not through
-// `@virtbase/api/billing`, which would be this package importing itself.
-import type { RenewSubscriptionOutcome } from "../billing";
-import { retryRenewal } from "../billing";
 // By path, and deliberately: `./collect` is kept out of the `@virtbase/api/billing`
 // barrel because it reads `payment_methods.external_id`, and the barrel is an
 // entry point `apps/web` imports. Reaching in is the sanctioned way to want it -
 // see the note on that barrel. `usablePaymentMethodId` is the only caller here,
 // it returns an id the customer can already see, and the credential never
 // leaves it.
-import { resolveRenewalPaymentMethod } from "../billing/collect";
+import { resolveRenewalPaymentMethod } from "../billing/collect.ts";
+// The collector, reached the same way `servers/backups` reaches
+// `reconcileServerBackup`: through the package's own module, not through
+// `@virtbase/api/billing`, which would be this package importing itself.
+import type { RenewSubscriptionOutcome } from "../billing/index.ts";
+import { retryRenewal } from "../billing/index.ts";
 import {
   isRenewableSubscriptionStatus,
   RENEWABLE_SUBSCRIPTION_STATUSES,
-} from "../lib/subscription-status";
-import { SERVER_SUBJECT_TYPE } from "../subscriptions/subject-subscription";
-import { transitionSubscription } from "../subscriptions/transition-subscription";
-import { protectedProcedure } from "../trpc";
+} from "../lib/subscription-status.ts";
+import { SERVER_SUBJECT_TYPE } from "../subscriptions/subject-subscription.ts";
+import { transitionSubscription } from "../subscriptions/transition-subscription.ts";
+import { protectedProcedure } from "../trpc.ts";
 
 type Database = Parameters<
   Parameters<typeof protectedProcedure.query>[0]

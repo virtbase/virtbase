@@ -18,8 +18,8 @@
 import { mkdir } from "node:fs/promises";
 import { dirname } from "node:path";
 import { mockAdminSession, mockSession } from "@virtbase/api/testing/fixtures";
-import { sessionCookies } from "./auth";
-import { seedE2eFixtures } from "./seed";
+import { sessionCookies } from "./auth.ts";
+import { seedE2eFixtures } from "./seed.ts";
 
 /**
  * Seed the database and write Playwright storage states.

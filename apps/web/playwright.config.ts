@@ -16,7 +16,7 @@
  */
 
 import { defineConfig, devices } from "@playwright/test";
-import { appOrigin } from "./e2e/support/urls";
+import { appOrigin } from "./e2e/support/urls.ts";
 
 const PORT = Number(process.env.E2E_PORT ?? 3000);
 

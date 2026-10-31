@@ -38,8 +38,8 @@ const USER_ID = "usr_00000000000000000000000001";
 
 mock.module("@virtbase/db/client", () => ({ db: testDb }));
 
-const { applyPaymentEvent } = await import("../apply-payment-event");
-const { claimOrderForFulfilment } = await import("../transition-order");
+const { applyPaymentEvent } = await import("../apply-payment-event.ts");
+const { claimOrderForFulfilment } = await import("../transition-order.ts");
 
 const seedOrder = async (
   status: "awaiting_payment" | "paid" = "awaiting_payment",

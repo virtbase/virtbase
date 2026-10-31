@@ -18,7 +18,7 @@
 import { useQuery } from "@tanstack/react-query";
 import type { RouterOutputs } from "@virtbase/api";
 import { useMemo } from "react";
-import { useTRPC } from "@/lib/trpc/react";
+import { useTRPC } from "@/lib/trpc/react.tsx";
 
 type Subscription =
   RouterOutputs["subscriptions"]["list"]["subscriptions"][number];

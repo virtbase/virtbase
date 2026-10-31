@@ -23,9 +23,9 @@ import {
 } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { generateKey } from "../crypto";
-import { IntegrationConfigStore } from "../integration-store";
-import type { ConfigDatabase } from "../types";
+import { generateKey } from "../crypto.ts";
+import { IntegrationConfigStore } from "../integration-store.ts";
+import type { ConfigDatabase } from "../types.ts";
 
 let db: TestDb;
 let store: IntegrationConfigStore;

@@ -24,8 +24,8 @@ import {
   ICMPV6_TYPE_NAMES,
 } from "@virtbase/utils";
 import * as z from "zod";
-import { EXAMPLE_DATE, RFC3339LINK } from "../timestamps";
-import { ServerSchema } from "./shared";
+import { EXAMPLE_DATE, RFC3339LINK } from "../timestamps.ts";
+import { ServerSchema } from "./shared.ts";
 
 export const GetServerFirewallOptionsInputSchema = z.object({
   server_id: ServerSchema.shape.id,

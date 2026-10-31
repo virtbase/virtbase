@@ -15,10 +15,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./analyze-firewall";
-export * from "./operating-system";
-export * from "./parse-iptables";
-export * from "./parse-listening-sockets";
-export * from "./parse-ufw";
-export * from "./server-operating-system";
-export * from "./types";
+export * from "./analyze-firewall.ts";
+export * from "./operating-system.ts";
+export * from "./parse-iptables.ts";
+export * from "./parse-listening-sockets.ts";
+export * from "./parse-ufw.ts";
+export * from "./server-operating-system.ts";
+export * from "./types.ts";

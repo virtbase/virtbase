@@ -17,14 +17,14 @@
 
 import { beforeAll, describe, expect, test } from "bun:test";
 
-import { stubNextIntl } from "../../__tests__/support/harness";
+import { stubNextIntl } from "../../__tests__/support/harness.ts";
 
 beforeAll(stubNextIntl);
 
 const { buttonHandlers, commandHandlers, modalHandlers, selectHandlers } =
-  await import("../index");
-const { FEATURES } = await import("../index");
-const { encodeCustomId } = await import("../../routing");
+  await import("../index.ts");
+const { FEATURES } = await import("../index.ts");
+const { encodeCustomId } = await import("../../routing/index.ts");
 
 describe("the routing tables", () => {
   test("every registered route encodes to a legal custom id", () => {
@@ -88,7 +88,7 @@ describe("the routing tables", () => {
   });
 
   test("the declared slash commands are exactly the handled ones", async () => {
-    const { commands } = await import("../../commands");
+    const { commands } = await import("../../commands.ts");
 
     expect([...commandHandlers.keys()].sort()).toEqual(
       Object.values(commands)

@@ -43,8 +43,8 @@ import type {
   getSubnetsList,
   getSubnetTypeCounts,
   getSubnetVlanCounts,
-} from "@/features/admin/api/subnets/get-subnets-list";
-import { paths } from "@/lib/paths";
+} from "@/features/admin/api/subnets/get-subnets-list.ts";
+import { paths } from "@/lib/paths.ts";
 
 export type SubnetsTableColumn = Awaited<
   ReturnType<typeof getSubnetsList>

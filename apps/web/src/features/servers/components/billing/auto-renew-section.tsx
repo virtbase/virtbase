@@ -26,10 +26,10 @@ import { Switch } from "@virtbase/ui/switch";
 import NextLink from "next/link";
 import { useExtracted, useFormatter } from "next-intl";
 import { useId, useState } from "react";
-import type { PaymentMethodState } from "@/features/account/utils/payment-method";
-import type { Subscription } from "@/features/servers/hooks/billing/use-server-subscription";
-import { paths } from "@/lib/paths";
-import { MandateDialog } from "./mandate-dialog";
+import type { PaymentMethodState } from "@/features/account/utils/payment-method.ts";
+import type { Subscription } from "@/features/servers/hooks/billing/use-server-subscription.ts";
+import { paths } from "@/lib/paths.ts";
+import { MandateDialog } from "./mandate-dialog.tsx";
 
 /**
  * Re-exported, not declared.

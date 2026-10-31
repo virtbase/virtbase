@@ -37,23 +37,23 @@ mock.module("react", () => ({
 }));
 mock.module("next/cache", () => ({ cacheLife: () => {}, cacheTag: () => {} }));
 mock.module("@sentry/nextjs", () => ({ captureException: () => {} }));
-mock.module("../../verify-session", () => ({
+mock.module("../../verify-session.ts", () => ({
   verifySession: async () => {},
 }));
 
 import { users } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { mockUser } from "./fixtures";
+import { mockUser } from "./fixtures.ts";
 
 let testDb: TestDb;
-let getCustomersOverTime: typeof import("../get-customers-over-time").getCustomersOverTime;
+let getCustomersOverTime: typeof import("../get-customers-over-time.ts").getCustomersOverTime;
 
 beforeAll(async () => {
   testDb = await createTestDb();
   mock.module("@virtbase/db/client", () => ({ db: testDb }));
 
-  const mod = await import("../get-customers-over-time");
+  const mod = await import("../get-customers-over-time.ts");
   getCustomersOverTime = mod.getCustomersOverTime;
 });
 

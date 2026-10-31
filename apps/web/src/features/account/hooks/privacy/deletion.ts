@@ -16,7 +16,7 @@
  */
 
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useTRPC } from "@/lib/trpc/react";
+import { useTRPC } from "@/lib/trpc/react.tsx";
 
 export const useDeletionStatus = () => {
   const trpc = useTRPC();

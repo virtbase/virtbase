@@ -17,8 +17,8 @@
 
 import type { Proxmox } from "@virtbase/proxmox-api";
 import { PROXMOX_TASK_STATUS_MAPPING } from "@virtbase/utils";
-import { isHaPowerTask } from "./find-follow-up-guest-power-task";
-import type { getProxmoxInstance } from "./get-proxmox-instance";
+import { isHaPowerTask } from "./find-follow-up-guest-power-task.ts";
+import type { getProxmoxInstance } from "./get-proxmox-instance.ts";
 
 /**
  * How long after a `hastart`/`hastop` task finishes we still surface it as the

@@ -18,8 +18,8 @@
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { serverBackups } from "@virtbase/db/schema";
-import type { GetProxmoxInstanceParams } from "../../proxmox/get-proxmox-instance";
-import { getProxmoxInstance } from "../../proxmox/get-proxmox-instance";
+import type { GetProxmoxInstanceParams } from "../../proxmox/get-proxmox-instance.ts";
+import { getProxmoxInstance } from "../../proxmox/get-proxmox-instance.ts";
 
 type PurgeAllBackupsStepParams = {
   proxmoxNode: GetProxmoxInstanceParams;

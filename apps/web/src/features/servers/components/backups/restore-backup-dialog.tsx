@@ -24,9 +24,9 @@ import { Spinner } from "@virtbase/ui/spinner";
 import type { Row } from "@virtbase/ui/types";
 import { useParams } from "next/navigation";
 import { useExtracted, useFormatter } from "next-intl";
-import { OperatingSystemIcon } from "@/ui/operating-system-icon";
-import { useRestoreBackup } from "../../hooks/backups/use-restore-backup";
-import type { BackupsTableColumn } from "./backups-table/columns";
+import { OperatingSystemIcon } from "@/ui/operating-system-icon.tsx";
+import { useRestoreBackup } from "../../hooks/backups/use-restore-backup.ts";
+import type { BackupsTableColumn } from "./backups-table/columns.tsx";
 
 interface RestoreBackupDialogProps
   extends Omit<

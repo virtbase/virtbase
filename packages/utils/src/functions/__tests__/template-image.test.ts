@@ -16,13 +16,13 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { TEMPLATE_IMAGE_REFRESH_DAYS } from "../../constants/limits";
+import { TEMPLATE_IMAGE_REFRESH_DAYS } from "../../constants/limits.ts";
 import {
   deriveTemplateImageFilename,
   isTemplateImageFresh,
   resolveImageCompression,
   resolveImportImageExtension,
-} from "../template-image";
+} from "../template-image.ts";
 
 const TEMPLATE_ID = "temp_1KDR24RNF2WY69G0FG7YHDQ6T";
 const CHECKSUM =

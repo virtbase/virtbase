@@ -36,7 +36,7 @@ import {
   Text,
 } from "react-email";
 import { createTranslator } from "use-intl/core";
-import { declineReasonKey } from "./decline-reason";
+import { declineReasonKey } from "./decline-reason.ts";
 
 /**
  * A credential rather than a charge: the provider has told us this payment

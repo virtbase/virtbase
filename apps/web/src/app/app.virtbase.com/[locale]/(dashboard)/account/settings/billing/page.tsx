@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { PaymentMethodsCard } from "@/features/account/components/billing/payment-methods-card";
+import { PaymentMethodsCard } from "@/features/account/components/billing/payment-methods-card.tsx";
 
 export default function Page() {
   return <PaymentMethodsCard />;

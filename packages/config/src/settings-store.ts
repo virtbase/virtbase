@@ -18,7 +18,7 @@
 import { eq } from "@virtbase/db";
 import { settings as settingsTable } from "@virtbase/db/schema";
 import type * as z from "zod";
-import type { ConfigDatabase } from "./types";
+import type { ConfigDatabase } from "./types.ts";
 
 export interface SettingDescriptor<TSchema extends z.ZodType = z.ZodType> {
   schema: TSchema;

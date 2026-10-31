@@ -19,9 +19,9 @@ import { Toaster } from "@virtbase/ui/sonner";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale } from "next-intl/server";
 import { NuqsAdapter } from "nuqs/adapters/next/app";
-import { TRPCReactProvider } from "@/lib/trpc/react";
-import Document from "@/ui/document";
-import SentryReplayIntegration from "@/ui/sentry-replay-integration";
+import { TRPCReactProvider } from "@/lib/trpc/react.tsx";
+import Document from "@/ui/document.tsx";
+import SentryReplayIntegration from "@/ui/sentry-replay-integration.tsx";
 
 /**
  * The shell both signed-in consoles render: `app.` and `admin.`.

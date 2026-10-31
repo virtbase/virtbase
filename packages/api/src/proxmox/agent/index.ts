@@ -15,9 +15,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./classify-agent-error";
-export * from "./exec";
-export * from "./os-info";
-export * from "./probe";
-export * from "./resolve-status";
-export * from "./types";
+export * from "./classify-agent-error.ts";
+export * from "./exec.ts";
+export * from "./os-info.ts";
+export * from "./probe.ts";
+export * from "./resolve-status.ts";
+export * from "./types.ts";

@@ -31,7 +31,7 @@ import type { Stripe } from "@virtbase/integration-stripe";
 import {
   backfillPaymentMethods,
   findPaymentMethodBackfillCustomers,
-} from "../payment-methods";
+} from "../payment-methods.ts";
 
 let testDb: TestDb;
 

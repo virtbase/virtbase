@@ -39,7 +39,7 @@ import { ISO_CATALOG } from "@virtbase/utils";
 import { useExtracted, useFormatter } from "next-intl";
 import { parseAsString, useQueryState } from "nuqs";
 import { useMemo, useState } from "react";
-import { OperatingSystemIcon } from "@/ui/operating-system-icon";
+import { OperatingSystemIcon } from "@/ui/operating-system-icon.tsx";
 
 const SEARCH_DEBOUNCE_MS = 300;
 

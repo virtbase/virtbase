@@ -23,7 +23,7 @@ import { useExtracted } from "next-intl";
 import { useState } from "react";
 
 const CreateCustomImageDialog = dynamic(
-  () => import("./create-custom-image-dialog"),
+  () => import("./create-custom-image-dialog.tsx"),
   {
     ssr: false,
   },

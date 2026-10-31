@@ -22,7 +22,7 @@ import type {
 } from "@virtbase/ports";
 import { InboundSignalSchema } from "@virtbase/validators";
 import * as z from "zod";
-import type { AlertmanagerSettings } from "./config";
+import type { AlertmanagerSettings } from "./config.ts";
 
 /** The integration id, and therefore the `source` every signal carries. */
 export const SOURCE = "alertmanager";

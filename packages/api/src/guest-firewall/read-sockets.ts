@@ -17,9 +17,9 @@
 
 import type { ListeningSocket } from "@virtbase/utils";
 import { parseListeningSockets } from "@virtbase/utils";
-import type { GuestAgentFailure, ProxmoxVm } from "../proxmox/agent";
-import { runGuestCommand } from "../proxmox/agent";
-import { LISTENING_SOCKETS_SCRIPT, shell } from "./commands";
+import type { GuestAgentFailure, ProxmoxVm } from "../proxmox/agent/index.ts";
+import { runGuestCommand } from "../proxmox/agent/index.ts";
+import { LISTENING_SOCKETS_SCRIPT, shell } from "./commands.ts";
 
 export type ListeningSocketsResult =
   | { status: "ok"; sockets: ListeningSocket[] }

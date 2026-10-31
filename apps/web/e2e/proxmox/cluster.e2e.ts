@@ -17,8 +17,8 @@
 
 import { expect, test } from "@playwright/test";
 import { getProxmoxInstance } from "@virtbase/api/proxmox";
-import type { ClusterConfig } from "../support/cluster";
-import { clusterIsReachable, readClusterConfig } from "../support/cluster";
+import type { ClusterConfig } from "../support/cluster.ts";
+import { clusterIsReachable, readClusterConfig } from "../support/cluster.ts";
 
 /**
  * Runs only against the local cluster from `tooling/proxmox-cluster`.

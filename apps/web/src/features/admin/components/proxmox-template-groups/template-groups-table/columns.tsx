@@ -35,8 +35,8 @@ import {
 import type { ColumnDef, DataTableRowAction } from "@virtbase/ui/types";
 import NextLink from "next/link";
 import { useExtracted, useFormatter } from "next-intl";
-import type { getProxmoxTemplateGroupsList } from "@/features/admin/api/proxmox-template-groups/get-proxmox-template-groups-list";
-import { paths } from "@/lib/paths";
+import type { getProxmoxTemplateGroupsList } from "@/features/admin/api/proxmox-template-groups/get-proxmox-template-groups-list.ts";
+import { paths } from "@/lib/paths.ts";
 
 export type TemplateGroupsTableColumn = Awaited<
   ReturnType<typeof getProxmoxTemplateGroupsList>

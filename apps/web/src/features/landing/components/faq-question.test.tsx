@@ -18,8 +18,8 @@
 import { describe, expect, test } from "bun:test";
 import { createElement } from "react";
 
-import { toPlainText } from "@/ui/mdx/plain-text";
-import { collectQuestions, Question } from "./faq-question";
+import { toPlainText } from "@/ui/mdx/plain-text.ts";
+import { collectQuestions, Question } from "./faq-question.tsx";
 
 /** What the MDX compiler produces for `<Question title="…">prose</Question>`. */
 function question(title: string, answer: string) {

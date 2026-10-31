@@ -23,7 +23,7 @@ import {
   BACKUP_ARCHIVE_GRACE_MINUTES,
   BACKUP_STALE_AFTER_HOURS,
 } from "@virtbase/utils";
-import type { ProxmoxInstance } from "../proxmox";
+import type { ProxmoxInstance } from "../proxmox/index.ts";
 
 type Database = typeof database;
 

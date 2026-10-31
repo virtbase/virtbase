@@ -15,5 +15,5 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./random-password-addon";
-export * from "./show-password-addon";
+export * from "./random-password-addon.tsx";
+export * from "./show-password-addon.tsx";

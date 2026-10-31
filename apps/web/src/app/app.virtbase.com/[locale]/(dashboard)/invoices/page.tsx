@@ -29,8 +29,8 @@ import { Suspense } from "react";
 import {
   InvoicesCard,
   InvoicesCardSkeleton,
-} from "@/features/invoices/components/invoices-card";
-import DashboardLayout from "@/ui/layout/dashboard-layout";
+} from "@/features/invoices/components/invoices-card.tsx";
+import DashboardLayout from "@/ui/layout/dashboard-layout.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();

@@ -17,7 +17,7 @@
 
 import { describe, expect, test } from "bun:test";
 import { ADMIN_DOMAIN, APP_DOMAIN } from "@virtbase/utils";
-import { absoluteNotificationUrl } from "../deliver";
+import { absoluteNotificationUrl } from "../deliver.ts";
 
 /**
  * A regression.

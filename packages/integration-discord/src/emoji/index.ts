@@ -15,6 +15,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./cache";
-export * from "./manifest";
-export * from "./resolver";
+export * from "./cache.ts";
+export * from "./manifest.ts";
+export * from "./resolver.ts";

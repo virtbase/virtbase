@@ -18,7 +18,7 @@
 import * as Sentry from "@sentry/nextjs";
 import { refreshTemplateImages } from "@virtbase/api/template-images";
 import { db } from "@virtbase/db/client";
-import { withCronSecret } from "@/lib/with-cron-secret";
+import { withCronSecret } from "@/lib/with-cron-secret.ts";
 
 /**
  * Keeps every enabled template's image present and fresh on every node's

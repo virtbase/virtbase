@@ -25,10 +25,13 @@ import {
   extendServerWorkflow,
   provisionServerWorkflow,
   upgradeServerWorkflow,
-} from "../workflows";
-import { decryptOrderSecret } from "./order-secrets";
-import { recordBillingDetails } from "./record-billing-details";
-import { claimOrderForFulfilment, transitionOrder } from "./transition-order";
+} from "../workflows/index.ts";
+import { decryptOrderSecret } from "./order-secrets.ts";
+import { recordBillingDetails } from "./record-billing-details.ts";
+import {
+  claimOrderForFulfilment,
+  transitionOrder,
+} from "./transition-order.ts";
 
 export interface FulfilOrderInput {
   orderId: string;

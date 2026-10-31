@@ -16,14 +16,14 @@
  */
 
 import { constructMetadata } from "@virtbase/utils";
-import { locales } from "@/i18n/config";
-import ConsoleLayout from "@/ui/layout/console-layout";
+import { locales } from "@/i18n/config.ts";
+import ConsoleLayout from "@/ui/layout/console-layout.tsx";
 
 export const metadata = constructMetadata({
   noIndex: true,
 });
 
-export { defaultViewport as viewport } from "@/ui/document";
+export { defaultViewport as viewport } from "@/ui/document.tsx";
 
 /**
  * The admin console's root layout, and the reason its routes can be prerendered.

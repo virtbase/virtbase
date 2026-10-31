@@ -38,14 +38,14 @@ import type { BetterAuthOptions, BetterAuthPlugin } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { betterAuth } from "better-auth/minimal";
 import type { UserWithRole } from "better-auth/plugins";
-import type { AccountLinkedHandler } from "./account-linked";
-import { notifyAccountLinked } from "./account-linked";
+import type { AccountLinkedHandler } from "./account-linked.ts";
+import { notifyAccountLinked } from "./account-linked.ts";
 import {
   PASSWORD_MAX_LENGTH,
   PASSWORD_MIN_LENGTH,
   passwordPolicyHook,
-} from "./password-policy";
-import { plugins } from "./plugins";
+} from "./password-policy.ts";
+import { plugins } from "./plugins/index.ts";
 
 export function initAuth({
   additionalPlugins,
@@ -353,7 +353,10 @@ export function initAuth({
   return betterAuth(config);
 }
 
-export type { AccountLinkedHandler, LinkedAccountInfo } from "./account-linked";
+export type {
+  AccountLinkedHandler,
+  LinkedAccountInfo,
+} from "./account-linked.ts";
 export type Auth = ReturnType<typeof initAuth>;
 
 /**

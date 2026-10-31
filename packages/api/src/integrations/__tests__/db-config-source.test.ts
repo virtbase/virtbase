@@ -22,7 +22,7 @@ import { createTestDb } from "@virtbase/db/test-client";
 import type { Integration } from "@virtbase/integration-sdk";
 import { defineIntegration } from "@virtbase/integration-sdk";
 import * as z from "zod";
-import { DbConfigSource } from "../db-config-source";
+import { DbConfigSource } from "../db-config-source.ts";
 
 const acme: Integration = defineIntegration({
   id: "acme",

@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { SubjectTableName } from "../subject-data";
+import type { SubjectTableName } from "../subject-data.ts";
 
 /**
  * Which section of the export each table's rows end up in.

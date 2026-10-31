@@ -16,9 +16,9 @@
  */
 
 import z from "zod";
-import { ObjectTimestampSchema } from "../timestamps";
-import { DatacenterSchema } from "./datacenters";
-import { ProxmoxNodeGroupSchema } from "./proxmox-node-group";
+import { ObjectTimestampSchema } from "../timestamps.ts";
+import { DatacenterSchema } from "./datacenters.ts";
+import { ProxmoxNodeGroupSchema } from "./proxmox-node-group.ts";
 
 export const ProxmoxNodeSchema = z.object({
   id: z

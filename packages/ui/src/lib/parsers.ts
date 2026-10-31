@@ -18,11 +18,11 @@
 import type { RowData } from "@tanstack/react-table";
 import { createParser } from "nuqs/server";
 import * as z from "zod";
-import { dataTableConfig } from "../config/data-table";
+import { dataTableConfig } from "../config/data-table.ts";
 import type {
   ExtendedColumnFilter,
   ExtendedColumnSort,
-} from "../types/data-table";
+} from "../types/data-table.ts";
 
 const sortingItemSchema = z.object({
   id: z.string(),

@@ -16,7 +16,7 @@
  */
 
 import type { EnforcementLevel } from "@virtbase/ports";
-import type { ProxmoxInstance } from "../proxmox";
+import type { ProxmoxInstance } from "../proxmox/index.ts";
 
 /** The VM handle every function here operates on. */
 export type ProxmoxVm = ReturnType<ProxmoxInstance["node"]["qemu"]["$"]>;

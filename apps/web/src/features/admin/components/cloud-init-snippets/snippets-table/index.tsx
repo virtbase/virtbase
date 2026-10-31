@@ -22,13 +22,16 @@ import { useDataTable } from "@virtbase/ui/hooks";
 import type { DataTableRowAction } from "@virtbase/ui/types";
 import dynamic from "next/dynamic";
 import React, { use } from "react";
-import type { getSnippetsList } from "@/features/admin/api/cloud-init-snippets/get-snippets-list";
-import type { SnippetsTableColumn } from "./columns";
-import { useSnippetsTableColumns } from "./columns";
+import type { getSnippetsList } from "@/features/admin/api/cloud-init-snippets/get-snippets-list.ts";
+import type { SnippetsTableColumn } from "./columns.tsx";
+import { useSnippetsTableColumns } from "./columns.tsx";
 
-const DeleteSnippetDialog = dynamic(() => import("../delete-snippet-dialog"), {
-  ssr: false,
-});
+const DeleteSnippetDialog = dynamic(
+  () => import("../delete-snippet-dialog.tsx"),
+  {
+    ssr: false,
+  },
+);
 
 interface SnippetsTableProps {
   promises: Promise<[Awaited<ReturnType<typeof getSnippetsList>>]>;

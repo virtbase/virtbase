@@ -33,11 +33,11 @@ import {
   mockServerPlanPrice,
   mockSession,
   seedServerGraph,
-} from "../../../testing/fixtures";
+} from "../../../testing/fixtures.ts";
 
 let db: TestDb;
-let create: typeof import("../create-server-subscription").createServerSubscriptionStep;
-let rollback: typeof import("../create-server-subscription").rollbackCreateServerSubscriptionStep;
+let create: typeof import("../create-server-subscription.ts").createServerSubscriptionStep;
+let rollback: typeof import("../create-server-subscription.ts").rollbackCreateServerSubscriptionStep;
 
 const SERVER_ID = mockServer.id;
 const TERM_START = new Date("2026-01-15T09:14:03.000Z");
@@ -49,7 +49,7 @@ beforeAll(async () => {
   ({
     createServerSubscriptionStep: create,
     rollbackCreateServerSubscriptionStep: rollback,
-  } = await import("../create-server-subscription"));
+  } = await import("../create-server-subscription.ts"));
 
   await seedServerGraph(db);
 });

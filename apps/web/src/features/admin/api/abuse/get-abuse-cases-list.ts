@@ -22,8 +22,8 @@ import { db } from "@virtbase/db/client";
 import { abuseCaseServers, abuseCases, users } from "@virtbase/db/schema";
 import { escapedIlike, getDateIntervalFilter } from "@virtbase/db/utils";
 import { cacheLife, cacheTag } from "next/cache";
-import type { GetAbuseCasesSchema } from "../../lib/abuse/validations";
-import { verifySession } from "../verify-session";
+import type { GetAbuseCasesSchema } from "../../lib/abuse/validations.ts";
+import { verifySession } from "../verify-session.ts";
 
 type CaseStatus = (typeof abuseCases.$inferSelect)["status"];
 type CaseSeverity = (typeof abuseCases.$inferSelect)["severity"];

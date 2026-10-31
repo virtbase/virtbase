@@ -21,8 +21,8 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import { DataTable, DataTableToolbar } from "@virtbase/ui/data-table";
 import { useDataTable } from "@virtbase/ui/hooks";
 import type { ListInvoicesInput } from "@virtbase/validators";
-import { useInvoicesTableColumns } from "@/features/invoices/components/invoices-table/columns";
-import { useTRPC } from "@/lib/trpc/react";
+import { useInvoicesTableColumns } from "@/features/invoices/components/invoices-table/columns.tsx";
+import { useTRPC } from "@/lib/trpc/react.tsx";
 
 interface InvoicesTableProps {
   search: ListInvoicesInput;

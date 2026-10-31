@@ -29,8 +29,8 @@ import {
   mockServer,
   mockSession,
   seedServerGraph,
-} from "../../testing";
-import { resolveSignalSubject } from "../resolve-subject";
+} from "../../testing/index.ts";
+import { resolveSignalSubject } from "../resolve-subject.ts";
 
 let testDb: TestDb;
 

@@ -16,7 +16,7 @@
  */
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useTRPC } from "@/lib/trpc/react";
+import { useTRPC } from "@/lib/trpc/react.tsx";
 
 /**
  * Both writes the customer can make, invalidating the same two queries.

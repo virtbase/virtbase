@@ -15,9 +15,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./application";
-export * from "./client";
-export * from "./commands";
-export * from "./emojis";
-export * from "./interactions";
-export * from "./role-connections";
+export * from "./application.ts";
+export * from "./client.ts";
+export * from "./commands.ts";
+export * from "./emojis.ts";
+export * from "./interactions.ts";
+export * from "./role-connections.ts";

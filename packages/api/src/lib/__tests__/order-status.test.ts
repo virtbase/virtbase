@@ -23,7 +23,7 @@ import {
   IllegalOrderTransitionError,
   isTerminalOrderStatus,
   nextOrderStatuses,
-} from "../order-status";
+} from "../order-status.ts";
 
 const ALL: OrderStatus[] = [
   "draft",

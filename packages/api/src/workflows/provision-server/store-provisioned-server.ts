@@ -19,7 +19,7 @@ import { and, eq, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { servers, subnetAllocations } from "@virtbase/db/schema";
 import { FatalError } from "workflow";
-import { revalidateCheckout } from "../shared/revalidate-checkout";
+import { revalidateCheckout } from "../shared/revalidate-checkout.ts";
 
 type StoreProvisionedServerStepParams = {
   vmid: number;

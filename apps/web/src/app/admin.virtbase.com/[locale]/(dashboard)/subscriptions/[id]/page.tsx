@@ -28,12 +28,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getExtracted } from "next-intl/server";
 import { ErrorBoundary } from "react-error-boundary";
-import { getSubscription } from "@/features/admin/api/subscriptions/get-subscription";
-import { verifyRenderSession } from "@/features/admin/api/verify-session";
-import { SubscriptionDetailView } from "@/features/admin/components/subscriptions/subscription-detail";
-import { paths } from "@/lib/paths";
-import { GenericError } from "@/ui/generic-error";
-import DashboardLayout from "@/ui/layout/dashboard-layout";
+import { getSubscription } from "@/features/admin/api/subscriptions/get-subscription.ts";
+import { verifyRenderSession } from "@/features/admin/api/verify-session.ts";
+import { SubscriptionDetailView } from "@/features/admin/components/subscriptions/subscription-detail.tsx";
+import { paths } from "@/lib/paths.ts";
+import { GenericError } from "@/ui/generic-error.tsx";
+import DashboardLayout from "@/ui/layout/dashboard-layout.tsx";
 
 // instant = false: kept on purpose - the record is resolved up front so a missing one 404s before any chrome
 export const instant = false;

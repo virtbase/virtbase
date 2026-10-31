@@ -20,7 +20,7 @@ import type { db as database } from "@virtbase/db/client";
 import type { AbuseRule } from "@virtbase/db/schema";
 import { abuseRules } from "@virtbase/db/schema";
 import type { SignalSeverity } from "@virtbase/ports";
-import { matchesKey, meetsSeverity } from "../notifications/match";
+import { matchesKey, meetsSeverity } from "../notifications/match.ts";
 
 type Database = typeof database;
 

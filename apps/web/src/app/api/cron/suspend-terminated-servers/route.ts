@@ -19,7 +19,7 @@ import {
   notifySuspendedCustomers,
   suspendTerminatedServers,
 } from "@virtbase/api/subscriptions";
-import { withCronSecret } from "@/lib/with-cron-secret";
+import { withCronSecret } from "@/lib/with-cron-secret.ts";
 
 export const maxDuration = 300;
 

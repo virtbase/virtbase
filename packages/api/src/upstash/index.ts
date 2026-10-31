@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./cache";
-export * from "./default-fingerprint";
-export * from "./ratelimit";
-export * from "./redis";
+export * from "./cache.ts";
+export * from "./default-fingerprint.ts";
+export * from "./ratelimit.ts";
+export * from "./redis.ts";

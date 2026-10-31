@@ -18,8 +18,8 @@
 import { mkdir } from "node:fs/promises";
 import { dirname, join } from "node:path";
 import { chromium } from "@playwright/test";
-import type { Tools } from "./tools";
-import { repoRoot } from "./tools";
+import type { Tools } from "./tools.ts";
+import { repoRoot } from "./tools.ts";
 
 /**
  * Cover art, drawn in a browser.

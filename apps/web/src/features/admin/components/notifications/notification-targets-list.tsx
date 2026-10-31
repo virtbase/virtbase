@@ -45,10 +45,10 @@ import { useExtracted } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import { useState } from "react";
 import { toast } from "sonner";
-import { ItemRow } from "@/features/account/components/item-row";
-import type { NotificationTargetListItem } from "../../api/notifications/get-notification-settings";
-import { deleteNotificationTargetAction } from "../../api/notifications/manage-notification-targets";
-import { NotificationTargetDialog } from "./notification-target-dialog";
+import { ItemRow } from "@/features/account/components/item-row.tsx";
+import type { NotificationTargetListItem } from "../../api/notifications/get-notification-settings.ts";
+import { deleteNotificationTargetAction } from "../../api/notifications/manage-notification-targets.ts";
+import { NotificationTargetDialog } from "./notification-target-dialog.tsx";
 
 const CHANNEL_ICONS: Record<
   string,

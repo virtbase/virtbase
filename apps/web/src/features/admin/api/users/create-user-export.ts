@@ -20,7 +20,7 @@
 import { buildExportDocument, collectSubjectData } from "@virtbase/api/privacy";
 import { db } from "@virtbase/db/client";
 import { CreateUserExportInputSchema } from "@virtbase/validators/admin";
-import { actionClient } from "../../lib/action-client";
+import { actionClient } from "../../lib/action-client.ts";
 
 /**
  * Builds an admin copy of a customer's data export.

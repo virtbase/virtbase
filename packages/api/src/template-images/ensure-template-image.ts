@@ -24,10 +24,10 @@ import {
   isTemplateImageFresh,
   resolveImageCompression,
 } from "@virtbase/utils";
-import type { ProxmoxInstance } from "../proxmox";
-import type { TemplateImageReconciliation } from "./reconcile-template-image";
-import { reconcileTemplateImage } from "./reconcile-template-image";
-import { assertSafeImageUrl } from "./safe-image-url";
+import type { ProxmoxInstance } from "../proxmox/index.ts";
+import type { TemplateImageReconciliation } from "./reconcile-template-image.ts";
+import { reconcileTemplateImage } from "./reconcile-template-image.ts";
+import { assertSafeImageUrl } from "./safe-image-url.ts";
 
 type Database = typeof database;
 

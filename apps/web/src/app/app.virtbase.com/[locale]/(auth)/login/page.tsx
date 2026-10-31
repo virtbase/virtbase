@@ -25,8 +25,8 @@ import type { Metadata } from "next";
 import NextLink from "next/link";
 import { useExtracted } from "next-intl";
 import { getExtracted } from "next-intl/server";
-import LoginForm from "@/features/auth/components/login-form";
-import { AuthLayout } from "@/ui/layout/auth-layout";
+import LoginForm from "@/features/auth/components/login-form.tsx";
+import { AuthLayout } from "@/ui/layout/auth-layout.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();

@@ -28,7 +28,7 @@ import {
 } from "@virtbase/utils";
 import { useParams } from "next/navigation";
 import { useExtracted, useFormatter, useNow } from "next-intl";
-import { useServerStatus } from "../hooks/use-server-status";
+import { useServerStatus } from "../hooks/use-server-status.ts";
 
 export function ServerStatusBar() {
   const t = useExtracted();

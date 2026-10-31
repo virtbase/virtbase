@@ -17,8 +17,8 @@
 
 import { describe, expect, test } from "bun:test";
 import type { ListeningSocket } from "@virtbase/utils";
-import { buildGenerationContext } from "../build-context";
-import { buildSystemPrompt } from "../system-prompt";
+import { buildGenerationContext } from "../build-context.ts";
+import { buildSystemPrompt } from "../system-prompt.ts";
 
 const socket = (
   port: number,

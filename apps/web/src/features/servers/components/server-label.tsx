@@ -21,12 +21,12 @@ import { Badge } from "@virtbase/ui/badge";
 import { LucideLoaderCircle } from "@virtbase/ui/icons";
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { useParams } from "next/navigation";
-import { useServer } from "../hooks/use-server";
-import { useServerStatus } from "../hooks/use-server-status";
-import { useStatusMapping } from "../hooks/use-status-mapping";
-import { useTaskMapping } from "../hooks/use-task-mapping";
-import { ServerMountBadge } from "./server-mount-badge";
-import { ServerTerminatesBadge } from "./server-terminates-badge";
+import { useServer } from "../hooks/use-server.ts";
+import { useServerStatus } from "../hooks/use-server-status.ts";
+import { useStatusMapping } from "../hooks/use-status-mapping.ts";
+import { useTaskMapping } from "../hooks/use-task-mapping.ts";
+import { ServerMountBadge } from "./server-mount-badge.tsx";
+import { ServerTerminatesBadge } from "./server-terminates-badge.tsx";
 
 export function ServerLabelSkeleton() {
   return (

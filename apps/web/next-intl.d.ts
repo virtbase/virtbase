@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { locales } from "@/i18n/config";
+import type { locales } from "@/i18n/config.ts";
 
 declare module "next-intl" {
   interface AppConfig {

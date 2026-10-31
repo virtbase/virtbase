@@ -23,7 +23,7 @@ import dynamic from "next/dynamic";
 import { useExtracted } from "next-intl";
 import { useState } from "react";
 
-const CreateSubnetDialog = dynamic(() => import("./create-subnet-dialog"), {
+const CreateSubnetDialog = dynamic(() => import("./create-subnet-dialog.tsx"), {
   ssr: false,
 });
 

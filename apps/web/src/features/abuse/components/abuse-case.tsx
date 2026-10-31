@@ -17,8 +17,8 @@
 
 "use client";
 
-import { useAbuseCase } from "../hooks/use-abuse-cases";
-import { AbuseCaseConversation } from "./abuse-case-conversation";
+import { useAbuseCase } from "../hooks/use-abuse-cases.ts";
+import { AbuseCaseConversation } from "./abuse-case-conversation.tsx";
 
 /**
  * Reads the case the page prefetched.

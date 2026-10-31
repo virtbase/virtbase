@@ -44,7 +44,7 @@ mock.module("@virtbase/email", () => ({
   sendBatchEmail: async () => {},
 }));
 
-const { initAuth } = await import("../index");
+const { initAuth } = await import("../index.ts");
 
 const { emailAndPassword } = initAuth().options;
 

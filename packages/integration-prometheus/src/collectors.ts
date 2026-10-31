@@ -31,7 +31,7 @@ import {
 } from "@virtbase/db/schema";
 import type { IntegrationLogger } from "@virtbase/integration-sdk";
 import type { Gauge } from "prom-client";
-import type { MetricsRuntime } from "./runtime";
+import type { MetricsRuntime } from "./runtime.ts";
 
 /**
  * The metrics worth putting on a dashboard: how much of the fleet exists, what

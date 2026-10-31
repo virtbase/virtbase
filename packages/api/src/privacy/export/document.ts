@@ -24,10 +24,10 @@ import {
   renderDivider,
   renderWordmark,
   WORDMARK_ALT,
-} from "./brand";
-import type { SubjectExport } from "./collect";
-import type { DocumentMessages } from "./messages";
-import { getDocumentMessages, resolveDocumentLocale } from "./messages";
+} from "./brand.ts";
+import type { SubjectExport } from "./collect.ts";
+import type { DocumentMessages } from "./messages.ts";
+import { getDocumentMessages, resolveDocumentLocale } from "./messages.ts";
 
 /**
  * The fonts, decompressed from a generated module rather than read off disk.
@@ -45,7 +45,7 @@ import { getDocumentMessages, resolveDocumentLocale } from "./messages";
  */
 async function loadFonts() {
   const [{ ARIAL_BLACK_GZIP_BASE64, ARIAL_GZIP_BASE64 }, { gunzipSync }] =
-    await Promise.all([import("./fonts.generated"), import("node:zlib")]);
+    await Promise.all([import("./fonts.generated.ts"), import("node:zlib")]);
 
   return {
     body: gunzipSync(Buffer.from(ARIAL_GZIP_BASE64, "base64")),

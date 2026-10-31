@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { cn } from "./index";
+import { cn } from "./index.ts";
 
 function Skeleton({ className, ...props }: React.ComponentProps<"div">) {
   return (

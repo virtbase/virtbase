@@ -17,13 +17,13 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils/create-id";
+import { createId } from "../utils/create-id.ts";
 import {
   abuseCaseSeverityEnum,
   abuseCategoryEnum,
   abuseEnforcementLevelEnum,
   signalSeverityEnum,
-} from "./abuse-enums";
+} from "./abuse-enums.ts";
 
 /**
  * What to do about a signal.

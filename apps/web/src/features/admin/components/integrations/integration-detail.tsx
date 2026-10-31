@@ -19,11 +19,11 @@ import { Card, CardContent } from "@virtbase/ui/card";
 import { LucideBookOpen, LucideGlobe } from "@virtbase/ui/icons";
 import { notFound } from "next/navigation";
 import { getExtracted } from "next-intl/server";
-import { getIntegration } from "../../api/integrations/get-integrations-list";
-import { IntegrationEnableButton } from "./integration-enable-button";
-import { IntegrationHealthPanel } from "./integration-health-panel";
-import { IntegrationIcon } from "./integration-icon";
-import { IntegrationSettingsForm } from "./integration-settings-form";
+import { getIntegration } from "../../api/integrations/get-integrations-list.ts";
+import { IntegrationEnableButton } from "./integration-enable-button.tsx";
+import { IntegrationHealthPanel } from "./integration-health-panel.tsx";
+import { IntegrationIcon } from "./integration-icon.tsx";
+import { IntegrationSettingsForm } from "./integration-settings-form.tsx";
 
 export async function IntegrationDetail({
   integrationId,

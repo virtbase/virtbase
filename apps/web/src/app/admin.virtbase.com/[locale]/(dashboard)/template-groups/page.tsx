@@ -26,10 +26,10 @@ import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
 import { Suspense } from "react";
-import { verifyRenderSession } from "@/features/admin/api/verify-session";
-import { CreateTemplateGroupButton } from "@/features/admin/components/proxmox-template-groups/create-template-group-button";
-import { TemplateGroupsTableCard } from "@/features/admin/components/proxmox-template-groups/template-groups-table-card";
-import DashboardLayout from "@/ui/layout/dashboard-layout";
+import { verifyRenderSession } from "@/features/admin/api/verify-session.ts";
+import { CreateTemplateGroupButton } from "@/features/admin/components/proxmox-template-groups/create-template-group-button.tsx";
+import { TemplateGroupsTableCard } from "@/features/admin/components/proxmox-template-groups/template-groups-table-card.tsx";
+import DashboardLayout from "@/ui/layout/dashboard-layout.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();

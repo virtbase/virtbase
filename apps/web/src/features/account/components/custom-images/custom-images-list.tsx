@@ -26,10 +26,10 @@ import {
 } from "@virtbase/ui/empty";
 import { LucideDisc3 } from "@virtbase/ui/icons";
 import { useExtracted, useFormatter, useNow } from "next-intl";
-import { CustomImageIcon } from "@/ui/custom-image-icon";
-import type { GetCustomImagesListOutput } from "../../hooks/custom-images/use-custom-image-list";
-import { useCustomImagesList } from "../../hooks/custom-images/use-custom-image-list";
-import { ItemRow } from "../item-row";
+import { CustomImageIcon } from "@/ui/custom-image-icon.tsx";
+import type { GetCustomImagesListOutput } from "../../hooks/custom-images/use-custom-image-list.ts";
+import { useCustomImagesList } from "../../hooks/custom-images/use-custom-image-list.ts";
+import { ItemRow } from "../item-row.tsx";
 
 export function CustomImagesList() {
   const t = useExtracted();

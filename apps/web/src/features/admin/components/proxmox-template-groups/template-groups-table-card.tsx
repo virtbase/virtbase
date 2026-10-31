@@ -17,9 +17,9 @@
 
 import { getValidFilters } from "@virtbase/ui/lib";
 import type { SearchParams } from "nuqs";
-import { getProxmoxTemplateGroupsList } from "../../api/proxmox-template-groups/get-proxmox-template-groups-list";
-import { searchParamsCache } from "../../lib/template-groups/validations";
-import { TemplateGroupsTable } from "./template-groups-table";
+import { getProxmoxTemplateGroupsList } from "../../api/proxmox-template-groups/get-proxmox-template-groups-list.ts";
+import { searchParamsCache } from "../../lib/template-groups/validations.ts";
+import { TemplateGroupsTable } from "./template-groups-table/index.tsx";
 
 export async function TemplateGroupsTableCard(props: {
   searchParams: Promise<SearchParams>;

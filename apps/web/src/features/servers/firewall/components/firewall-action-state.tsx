@@ -17,9 +17,9 @@
 
 "use client";
 
-import { useFirewallOptions } from "../hooks/use-firewall-options";
-import { useUpdateFirewallOptions } from "../hooks/use-update-firewall-options";
-import { FirewallActionSelect } from "./firewall-action-select";
+import { useFirewallOptions } from "../hooks/use-firewall-options.ts";
+import { useUpdateFirewallOptions } from "../hooks/use-update-firewall-options.ts";
+import { FirewallActionSelect } from "./firewall-action-select.tsx";
 
 export function FirewallActionState({
   serverId,

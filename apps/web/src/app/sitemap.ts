@@ -18,10 +18,10 @@
 import { PUBLIC_DOMAIN } from "@virtbase/utils";
 import type { MetadataRoute } from "next";
 import { cacheLife, cacheTag } from "next/cache";
-import { routing } from "@/i18n/routing.public";
-import { constructAlternateLanguages } from "@/lib/hreflang";
-import type { ContentCollection, TranslatedPage } from "@/lib/source";
-import { getDocumentLocales, getTranslatedPages } from "@/lib/source";
+import { routing } from "@/i18n/routing.public.ts";
+import { constructAlternateLanguages } from "@/lib/hreflang.ts";
+import type { ContentCollection, TranslatedPage } from "@/lib/source.ts";
+import { getDocumentLocales, getTranslatedPages } from "@/lib/source.ts";
 
 type SitemapPage = MetadataRoute.Sitemap[number];
 

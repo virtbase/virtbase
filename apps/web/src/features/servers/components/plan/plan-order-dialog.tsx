@@ -29,11 +29,11 @@ import { Spinner } from "@virtbase/ui/spinner";
 import { formatBytes } from "@virtbase/utils";
 import { useExtracted, useFormatter } from "next-intl";
 import type React from "react";
-import { CheckoutWaivers } from "@/features/checkout/components/checkout-waivers";
-import { PAYMENT_FORM_ID } from "@/features/checkout/constants";
-import { getMutationErrorDetail } from "@/lib/trpc/query-client";
-import { usePlanContext } from "./plan-context";
-import { getPlanCharge, PlanSummary } from "./plan-summary";
+import { CheckoutWaivers } from "@/features/checkout/components/checkout-waivers.tsx";
+import { PAYMENT_FORM_ID } from "@/features/checkout/constants.ts";
+import { getMutationErrorDetail } from "@/lib/trpc/query-client.ts";
+import { usePlanContext } from "./plan-context.tsx";
+import { getPlanCharge, PlanSummary } from "./plan-summary.tsx";
 
 /** The consent form lives in the body; the confirm button lives in the footer. */
 const PLAN_ORDER_FORM_ID = "plan-order-form";

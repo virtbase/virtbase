@@ -17,9 +17,9 @@
 
 import type { GuestFirewallManager, GuestFirewallState } from "@virtbase/utils";
 import { parseIptablesSave, parseUfwStatus } from "@virtbase/utils";
-import type { GuestAgentFailure, ProxmoxVm } from "../proxmox/agent";
-import { runGuestCommand } from "../proxmox/agent";
-import { RULE_DUMP_SCRIPTS, shell } from "./commands";
+import type { GuestAgentFailure, ProxmoxVm } from "../proxmox/agent/index.ts";
+import { runGuestCommand } from "../proxmox/agent/index.ts";
+import { RULE_DUMP_SCRIPTS, shell } from "./commands.ts";
 
 /**
  * The managers whose rules Virtbase can read today.

@@ -20,10 +20,10 @@ import type { db as database } from "@virtbase/db/client";
 import { abuseRules, abuseSignals } from "@virtbase/db/schema";
 import type { SignalSeverity } from "@virtbase/ports";
 import { ABUSE_SIGNAL_PREFIX } from "@virtbase/validators";
-import type { CaseDecision } from "./case";
-import { countRecentResolvedCases, decideNewCase } from "./case";
-import type { RuleDefinition } from "./rules";
-import { ruleMatches } from "./rules";
+import type { CaseDecision } from "./case.ts";
+import { countRecentResolvedCases, decideNewCase } from "./case.ts";
+import type { RuleDefinition } from "./rules.ts";
+import { ruleMatches } from "./rules.ts";
 
 type Database = typeof database;
 

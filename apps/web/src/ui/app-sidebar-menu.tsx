@@ -32,7 +32,7 @@ import NextLink from "next/link";
 import { usePathname } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { Suspense } from "react";
-import { paths } from "@/lib/paths";
+import { paths } from "@/lib/paths.ts";
 
 const useItems = () => {
   const t = useExtracted();

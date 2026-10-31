@@ -22,7 +22,7 @@ import { db } from "@virtbase/db/client";
 import { proxmoxNodeGroups } from "@virtbase/db/schema";
 import { CreateProxmoxNodeGroupInputSchema } from "@virtbase/validators/admin";
 import { revalidatePath, revalidateTag } from "next/cache";
-import { actionClient } from "../../lib/action-client";
+import { actionClient } from "../../lib/action-client.ts";
 
 export const createProxmoxNodeGroupAction = actionClient
   .inputSchema(CreateProxmoxNodeGroupInputSchema)

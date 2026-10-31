@@ -23,8 +23,8 @@ import { appRouter, createTRPCContext } from "@virtbase/api";
 import { headers } from "next/headers";
 import { connection } from "next/server";
 import { cache, Suspense } from "react";
-import { auth } from "@/lib/auth/server";
-import { createQueryClient } from "@/lib/trpc/query-client";
+import { auth } from "@/lib/auth/server.ts";
+import { createQueryClient } from "@/lib/trpc/query-client.ts";
 
 const createContext = cache(async () => {
   const heads = new Headers(await headers());

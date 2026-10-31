@@ -17,7 +17,7 @@
 
 import { afterAll, describe, expect, mock, test } from "bun:test";
 import * as nodeCrypto from "node:crypto";
-import { parsePublicKey } from "../parse-public-key";
+import { parsePublicKey } from "../parse-public-key.ts";
 
 // `mock.module` patches the module registry process-wide and is never undone -
 // `mock.restore()` does not touch it. Without restoring `node:crypto` by hand,

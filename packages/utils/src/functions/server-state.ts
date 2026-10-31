@@ -19,7 +19,7 @@ import {
   ProxmoxServerStatus,
   ProxmoxTaskStatus,
   SERVER_DELETION_GRACE_PERIOD_DAYS,
-} from "../constants";
+} from "../constants/index.ts";
 
 /**
  * Short-hand for checking if a server is terminated

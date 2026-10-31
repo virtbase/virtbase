@@ -25,8 +25,8 @@ import {
 } from "@virtbase/db/schema";
 import { sendEmail } from "@virtbase/email";
 import AbuseReportReply from "@virtbase/email/templates/abuse-report-reply";
-import { caseReference, recordCaseEvent } from "../case";
-import { bareAbuseAddress, mintCaseAddress, subjectToken } from "./address";
+import { caseReference, recordCaseEvent } from "../case.ts";
+import { bareAbuseAddress, mintCaseAddress, subjectToken } from "./address.ts";
 
 type Database = typeof database;
 

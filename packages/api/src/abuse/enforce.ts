@@ -28,15 +28,15 @@ import {
   users,
 } from "@virtbase/db/schema";
 import type { EnforcementLevel } from "@virtbase/ports";
-import { dispatchNotification } from "../notifications/dispatch";
-import { getProxmoxInstance } from "../proxmox";
-import { caseReference, recordCaseEvent, TERMINAL_STATUSES } from "./case";
-import type { ProxmoxVm, ServerLockPreviousState } from "./lock";
+import { dispatchNotification } from "../notifications/dispatch.ts";
+import { getProxmoxInstance } from "../proxmox/index.ts";
+import { caseReference, recordCaseEvent, TERMINAL_STATUSES } from "./case.ts";
+import type { ProxmoxVm, ServerLockPreviousState } from "./lock.ts";
 import {
   applyServerLock,
   isServerLockInForce,
   releaseServerLock,
-} from "./lock";
+} from "./lock.ts";
 
 type Database = typeof database;
 

@@ -16,7 +16,7 @@
  */
 
 import { afterEach, beforeEach, describe, expect, spyOn, test } from "bun:test";
-import { runRollbacks } from "../run-rollbacks";
+import { runRollbacks } from "../run-rollbacks.ts";
 
 let errors: string[];
 let consoleError: ReturnType<typeof spyOn>;

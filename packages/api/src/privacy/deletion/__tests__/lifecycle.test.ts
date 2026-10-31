@@ -21,14 +21,14 @@ import * as schema from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
 import { ACCOUNT_DELETION_GRACE_PERIOD_DAYS } from "@virtbase/utils";
-import { mockSession, seedServerGraph } from "../../../testing/fixtures";
-import { getDeletionBlockers, hasBlockers } from "../blockers";
+import { mockSession, seedServerGraph } from "../../../testing/fixtures.ts";
+import { getDeletionBlockers, hasBlockers } from "../blockers.ts";
 import {
   cancelAccountDeletion,
   confirmAccountDeletion,
   requestAccountDeletion,
-} from "../lifecycle";
-import { hashDeletionToken } from "../tokens";
+} from "../lifecycle.ts";
+import { hashDeletionToken } from "../tokens.ts";
 
 let testDb: TestDb;
 const USER_ID = mockSession.user.id;

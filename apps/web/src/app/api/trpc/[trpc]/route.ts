@@ -18,8 +18,8 @@
 import { fetchRequestHandler } from "@trpc/server/adapters/fetch";
 import { appRouter, createTRPCContext } from "@virtbase/api";
 import type { NextRequest } from "next/server";
-import { env } from "@/env";
-import { auth } from "@/lib/auth/server";
+import { env } from "@/env.ts";
+import { auth } from "@/lib/auth/server.ts";
 
 const handler = async (req: NextRequest) => {
   const rateLimitHeaders: Record<string, string> = {};

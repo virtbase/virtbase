@@ -21,8 +21,8 @@ import { db } from "@virtbase/db/client";
 import { emails } from "@virtbase/db/schema";
 import { escapedIlike, getDateIntervalFilter } from "@virtbase/db/utils";
 import { cacheLife, cacheTag } from "next/cache";
-import type { GetEmailsSchema } from "../../lib/emails/validations";
-import { verifySession } from "../verify-session";
+import type { GetEmailsSchema } from "../../lib/emails/validations.ts";
+import { verifySession } from "../verify-session.ts";
 
 export async function getEmailsList(input: GetEmailsSchema) {
   "use cache: private";

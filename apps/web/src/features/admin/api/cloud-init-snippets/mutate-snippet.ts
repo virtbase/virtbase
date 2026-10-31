@@ -28,8 +28,8 @@ import {
   UpdateCloudInitSnippetInputSchema,
 } from "@virtbase/validators/admin";
 import { revalidatePath, revalidateTag } from "next/cache";
-import { actionClient } from "../../lib/action-client";
-import { definedSnippetTargets } from "../../lib/cloud-init-snippets/targets";
+import { actionClient } from "../../lib/action-client.ts";
+import { definedSnippetTargets } from "../../lib/cloud-init-snippets/targets.ts";
 
 /**
  * Parses the body exactly as the renderer will.

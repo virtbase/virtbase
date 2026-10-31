@@ -18,8 +18,8 @@
 import type { Session } from "@virtbase/auth";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { appRouter } from "../root";
-import { mockSession } from "./fixtures";
+import { appRouter } from "../root.ts";
+import { mockSession } from "./fixtures.ts";
 
 export type TestCaller = ReturnType<typeof appRouter.createCaller>;
 

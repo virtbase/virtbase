@@ -36,7 +36,7 @@ type Rendered = typeof import("@virtbase/test-utils/react");
 let renderWithProviders: Rendered["renderWithProviders"];
 let screen: Rendered["screen"];
 let userEvent: Rendered["userEvent"];
-let AutoRenewSection: typeof import("../auto-renew-section").AutoRenewSection;
+let AutoRenewSection: typeof import("../auto-renew-section.tsx").AutoRenewSection;
 let MANDATE_VERSION: string;
 let IntlEnvironment: (props: { children: React.ReactNode }) => React.ReactNode;
 
@@ -46,7 +46,8 @@ beforeAll(async () => {
   screen = rendered.screen;
   userEvent = rendered.userEvent;
 
-  AutoRenewSection = (await import("../auto-renew-section")).AutoRenewSection;
+  AutoRenewSection = (await import("../auto-renew-section.tsx"))
+    .AutoRenewSection;
   MANDATE_VERSION = (await import("@virtbase/validators"))
     .SUBSCRIPTION_MANDATE_TEXT_VERSION;
 

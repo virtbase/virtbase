@@ -16,9 +16,9 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { parseListeningSockets } from "../parse-listening-sockets";
-import type { ListeningSocket } from "../types";
-import { SS_DEBIAN, SS_MINIMAL } from "./fixtures";
+import { parseListeningSockets } from "../parse-listening-sockets.ts";
+import type { ListeningSocket } from "../types.ts";
+import { SS_DEBIAN, SS_MINIMAL } from "./fixtures.ts";
 
 const find = (
   sockets: ListeningSocket[],

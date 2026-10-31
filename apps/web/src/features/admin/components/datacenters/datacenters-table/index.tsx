@@ -21,9 +21,9 @@ import { DataTable, DataTableToolbar } from "@virtbase/ui/data-table";
 import { useDataTable } from "@virtbase/ui/hooks";
 import type { DataTableRowAction } from "@virtbase/ui/types";
 import React, { use } from "react";
-import type { getDatacentersList } from "@/features/admin/api/datacenters/get-datacenters-list";
-import type { DatacentersTableColumn } from "@/features/admin/components/datacenters/datacenters-table/columns";
-import { useDatacentersTableColumns } from "@/features/admin/components/datacenters/datacenters-table/columns";
+import type { getDatacentersList } from "@/features/admin/api/datacenters/get-datacenters-list.ts";
+import type { DatacentersTableColumn } from "@/features/admin/components/datacenters/datacenters-table/columns.tsx";
+import { useDatacentersTableColumns } from "@/features/admin/components/datacenters/datacenters-table/columns.tsx";
 
 interface DatacentersTableProps {
   promises: Promise<[Awaited<ReturnType<typeof getDatacentersList>>]>;

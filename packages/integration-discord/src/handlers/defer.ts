@@ -24,10 +24,10 @@ import type {
 import { InteractionResponseType, MessageFlags } from "discord-api-types/v10";
 import type { Locale } from "next-intl";
 
-import type { DiscordClient } from "../api";
-import { editOriginalResponse } from "../api";
-import { ErrorMessage } from "../messages/error";
-import type { Deferred } from "./types";
+import type { DiscordClient } from "../api/index.ts";
+import { editOriginalResponse } from "../api/index.ts";
+import { ErrorMessage } from "../messages/error.ts";
+import type { Deferred } from "./types.ts";
 
 /**
  * Builds the {@link Deferred} put on every interaction context.

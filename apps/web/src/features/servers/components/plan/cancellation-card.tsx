@@ -18,8 +18,8 @@
 "use client";
 
 import { Card, CardContent } from "@virtbase/ui/card";
-import { CancelSubscriptionSection } from "@/features/servers/components/billing/cancel-subscription-section";
-import type { Subscription } from "@/features/servers/hooks/billing/use-server-subscription";
+import { CancelSubscriptionSection } from "@/features/servers/components/billing/cancel-subscription-section.tsx";
+import type { Subscription } from "@/features/servers/hooks/billing/use-server-subscription.ts";
 
 /**
  * The frame the § 312k BGB cancellation control sits in, and the whole of it.

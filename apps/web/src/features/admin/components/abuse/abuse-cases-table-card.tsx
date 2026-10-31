@@ -19,9 +19,9 @@ import type { SearchParams } from "nuqs";
 import {
   getAbuseCaseStatusCounts,
   getAbuseCasesList,
-} from "../../api/abuse/get-abuse-cases-list";
-import { searchParamsCache } from "../../lib/abuse/validations";
-import { AbuseCasesTable } from "./abuse-cases-table";
+} from "../../api/abuse/get-abuse-cases-list.ts";
+import { searchParamsCache } from "../../lib/abuse/validations.ts";
+import { AbuseCasesTable } from "./abuse-cases-table/index.tsx";
 
 export async function AbuseCasesTableCard(props: {
   searchParams: Promise<SearchParams>;

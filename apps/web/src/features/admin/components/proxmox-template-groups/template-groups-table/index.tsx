@@ -21,9 +21,9 @@ import { DataTable, DataTableToolbar } from "@virtbase/ui/data-table";
 import { useDataTable } from "@virtbase/ui/hooks";
 import type { DataTableRowAction } from "@virtbase/ui/types";
 import React, { use } from "react";
-import type { getProxmoxTemplateGroupsList } from "@/features/admin/api/proxmox-template-groups/get-proxmox-template-groups-list";
-import type { TemplateGroupsTableColumn } from "./columns";
-import { useTemplateGroupsTableColumns } from "./columns";
+import type { getProxmoxTemplateGroupsList } from "@/features/admin/api/proxmox-template-groups/get-proxmox-template-groups-list.ts";
+import type { TemplateGroupsTableColumn } from "./columns.tsx";
+import { useTemplateGroupsTableColumns } from "./columns.tsx";
 
 interface TemplateGroupsTableProps {
   promises: Promise<[Awaited<ReturnType<typeof getProxmoxTemplateGroupsList>>]>;

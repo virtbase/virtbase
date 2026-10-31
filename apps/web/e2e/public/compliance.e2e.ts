@@ -16,7 +16,7 @@
  */
 
 import { expect, test } from "@playwright/test";
-import { publicUrl } from "../support/urls";
+import { publicUrl } from "../support/urls.ts";
 
 test.describe("compliance", () => {
   test("it should render the legal notice", async ({ page }) => {

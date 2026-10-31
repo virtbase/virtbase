@@ -40,7 +40,7 @@ mock.module("@virtbase/integration-stripe", () => ({
 }));
 
 const { handleSetupIntentSucceeded } = await import(
-  "../settle-stripe-setup-intent"
+  "../settle-stripe-setup-intent.ts"
 );
 
 const USER_ID = "usr_00000000000000000000000040";

@@ -35,8 +35,8 @@ import type { ColumnDef, DataTableRowAction } from "@virtbase/ui/types";
 import NextLink from "next/link";
 import { useExtracted, useFormatter } from "next-intl";
 import type React from "react";
-import type { getNodeGroupsList } from "@/features/admin/api/proxmox-node-groups/get-node-groups-list";
-import { paths } from "@/lib/paths";
+import type { getNodeGroupsList } from "@/features/admin/api/proxmox-node-groups/get-node-groups-list.ts";
+import { paths } from "@/lib/paths.ts";
 
 export type NodeGroupsTableColumn = Awaited<
   ReturnType<typeof getNodeGroupsList>

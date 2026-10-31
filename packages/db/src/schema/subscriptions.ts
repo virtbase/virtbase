@@ -17,11 +17,11 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils/create-id";
-import { users } from "./auth";
-import { orders } from "./orders";
-import { paymentMethods } from "./payment-methods";
-import { serverPlanPrices } from "./server-plan-prices";
+import { createId } from "../utils/create-id.ts";
+import { users } from "./auth.ts";
+import { orders } from "./orders.ts";
+import { paymentMethods } from "./payment-methods.ts";
+import { serverPlanPrices } from "./server-plan-prices.ts";
 
 /**
  * `active → past_due → suspended → ended`, with `cancelled` as the branch the

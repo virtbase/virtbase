@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { isHeldOffByAbuseLock } from "../held-off-by-lock";
+import { isHeldOffByAbuseLock } from "../held-off-by-lock.ts";
 
 const lockedAt = new Date("2026-10-01T00:00:00.000Z");
 

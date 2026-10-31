@@ -23,7 +23,7 @@ import {
   SelectValue,
 } from "@virtbase/ui/select";
 import { useExtracted } from "next-intl";
-import { useFirewallActionMapping } from "../hooks/use-firewall-action-mapping";
+import { useFirewallActionMapping } from "../hooks/use-firewall-action-mapping.ts";
 
 interface FirewallActionSelectProps
   extends React.ComponentProps<typeof Select> {

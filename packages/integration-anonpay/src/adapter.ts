@@ -25,9 +25,9 @@ import type {
 } from "@virtbase/ports";
 import { PortError } from "@virtbase/ports";
 import { APP_NAME, SUPPORT_EMAIL, safeSecretCompare } from "@virtbase/utils";
-import type { AnonpayClient } from "./client";
-import { ANONPAY_MIN_AMOUNT } from "./constants";
-import { AnonpayWebhookSchema } from "./types";
+import type { AnonpayClient } from "./client.ts";
+import { ANONPAY_MIN_AMOUNT } from "./constants.ts";
+import { AnonpayWebhookSchema } from "./types.ts";
 
 type Settings = { tickerTo: string; networkTo: string; address: string };
 type Secrets = { webhookSecret: string };

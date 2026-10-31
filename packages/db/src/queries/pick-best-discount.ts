@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { DatabaseDiscount } from "../schema";
+import type { DatabaseDiscount } from "../schema/index.ts";
 
 /**
  * Minimal shape needed to evaluate a discount. Accepts both the full

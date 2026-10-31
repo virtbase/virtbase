@@ -16,7 +16,7 @@
  */
 
 import type { PaymentProvider } from "@virtbase/ports";
-import { integrations } from "../integrations";
+import { integrations } from "../integrations/index.ts";
 
 /**
  * The integration that holds saved credentials today.

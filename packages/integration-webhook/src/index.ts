@@ -16,10 +16,10 @@
  */
 
 import { defineIntegration } from "@virtbase/integration-sdk";
-import { WebhookNotificationChannel } from "./channel";
-import { localizeWebhook } from "./localize";
+import { WebhookNotificationChannel } from "./channel.ts";
+import { localizeWebhook } from "./localize.ts";
 
-export * from "./channel";
+export * from "./channel.ts";
 
 export default defineIntegration({
   id: "webhook",

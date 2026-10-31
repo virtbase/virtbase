@@ -17,8 +17,8 @@
 
 import { describe, expect, test } from "bun:test";
 import type { AbuseRule } from "@virtbase/db/schema";
-import type { RuleMatchInput } from "../rules";
-import { ruleMatches } from "../rules";
+import type { RuleMatchInput } from "../rules.ts";
+import { ruleMatches } from "../rules.ts";
 
 const makeRule = (overrides: Partial<AbuseRule> = {}): AbuseRule =>
   ({

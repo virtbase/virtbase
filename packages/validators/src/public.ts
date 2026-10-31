@@ -16,7 +16,7 @@
  */
 
 import * as z from "zod";
-import { ServerPlanSchema } from "./server-plan";
+import { ServerPlanSchema } from "./server-plan.ts";
 
 export const GetOfferListOutputSchema = z.array(
   z.object({

@@ -20,8 +20,8 @@ import type { Executor } from "@virtbase/db/client";
 import { db } from "@virtbase/db/client";
 import type { Subscription, SubscriptionStatus } from "@virtbase/db/schema";
 import { subscriptions } from "@virtbase/db/schema";
-import type { SubscriptionTransitionResult } from "./transition-subscription";
-import { transitionSubscription } from "./transition-subscription";
+import type { SubscriptionTransitionResult } from "./transition-subscription.ts";
+import { transitionSubscription } from "./transition-subscription.ts";
 
 /** The only subject type sold today. Matches the schema's check constraint. */
 export const SERVER_SUBJECT_TYPE = "server";

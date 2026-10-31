@@ -24,7 +24,7 @@ import { InteractionResponseType, MessageFlags } from "discord-api-types/v10";
 import type { Locale } from "next-intl";
 import { getExtracted } from "next-intl/server";
 
-import { createEmbed } from "../utils/create-embed";
+import { createEmbed } from "../utils/create-embed.ts";
 
 /**
  * What went wrong, in terms the customer can act on.

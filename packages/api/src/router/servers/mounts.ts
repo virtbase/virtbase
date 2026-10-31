@@ -26,7 +26,7 @@ import {
   UnmountServerImageInputSchema,
   UnmountServerImageOutputSchema,
 } from "@virtbase/validators/server";
-import { serverProcedure } from "../../trpc";
+import { serverProcedure } from "../../trpc.ts";
 
 export const serversMountsRouter = {
   mount: serverProcedure

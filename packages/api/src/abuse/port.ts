@@ -21,7 +21,7 @@ import type {
   SignalIngestResult,
   SignalIntake,
 } from "@virtbase/ports";
-import { submitSignal, submitSignals } from "./intake";
+import { submitSignal, submitSignals } from "./intake.ts";
 
 /**
  * The pipeline, as an integration sees it.

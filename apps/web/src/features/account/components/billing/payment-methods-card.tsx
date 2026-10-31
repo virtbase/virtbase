@@ -26,10 +26,10 @@ import { Skeleton } from "@virtbase/ui/skeleton";
 import { useExtracted } from "next-intl";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
-import { GenericError } from "@/ui/generic-error";
-import { AddPaymentMethod } from "./add-payment-method";
-import { PaymentMethodsList } from "./payment-methods-list";
+import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server.tsx";
+import { GenericError } from "@/ui/generic-error.tsx";
+import { AddPaymentMethod } from "./add-payment-method.tsx";
+import { PaymentMethodsList } from "./payment-methods-list.tsx";
 
 /**
  * The saved payment methods surface, on `/account/settings/billing`.

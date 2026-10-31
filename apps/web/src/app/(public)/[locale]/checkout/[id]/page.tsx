@@ -29,17 +29,17 @@ import { notFound } from "next/navigation";
 import type { Locale } from "next-intl";
 import { getExtracted, getLocale } from "next-intl/server";
 import { Suspense } from "react";
-import { defaultGetSSHKeysListQuery } from "@/features/account/hooks/ssh-keys/ssh-keys-list";
-import { getServerPlan } from "@/features/checkout/api/get-server-plan";
-import { getTemplateGroups } from "@/features/checkout/api/get-template-groups";
-import { CheckoutAuthWrapper } from "@/features/checkout/components/checkout-auth-wrapper";
-import { CheckoutForm } from "@/features/checkout/components/checkout-form";
-import { CheckoutFormSkeleton } from "@/features/checkout/components/checkout-form-skeleton";
-import { OrderSummary } from "@/features/checkout/components/order-summary";
-import { OrderSummarySkeleton } from "@/features/checkout/components/order-summary-skeleton";
-import { CheckoutStateProvider } from "@/features/checkout/hooks/use-checkout-state";
-import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
-import { BlockWrapper } from "@/ui/block-wrapper";
+import { defaultGetSSHKeysListQuery } from "@/features/account/hooks/ssh-keys/ssh-keys-list.ts";
+import { getServerPlan } from "@/features/checkout/api/get-server-plan.ts";
+import { getTemplateGroups } from "@/features/checkout/api/get-template-groups.ts";
+import { CheckoutAuthWrapper } from "@/features/checkout/components/checkout-auth-wrapper.tsx";
+import { CheckoutForm } from "@/features/checkout/components/checkout-form.tsx";
+import { CheckoutFormSkeleton } from "@/features/checkout/components/checkout-form-skeleton.tsx";
+import { OrderSummary } from "@/features/checkout/components/order-summary.tsx";
+import { OrderSummarySkeleton } from "@/features/checkout/components/order-summary-skeleton.tsx";
+import { CheckoutStateProvider } from "@/features/checkout/hooks/use-checkout-state.tsx";
+import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server.tsx";
+import { BlockWrapper } from "@/ui/block-wrapper.tsx";
 
 type PageProps = {
   params: Promise<{ locale: Locale; id: string }>;

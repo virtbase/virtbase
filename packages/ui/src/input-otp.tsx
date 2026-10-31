@@ -21,7 +21,7 @@ import { OTPInput, OTPInputContext, REGEXP_ONLY_DIGITS } from "input-otp";
 import { MinusIcon } from "lucide-react";
 import * as React from "react";
 
-import { cn } from "./index";
+import { cn } from "./index.ts";
 
 function InputOTP({
   className,

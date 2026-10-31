@@ -20,12 +20,12 @@ import { InteractionResponseType } from "discord-api-types/v10";
 import type { Locale } from "next-intl";
 import { getExtracted } from "next-intl/server";
 
-import { actionButton, linkButton, row } from "../../ui/components";
-import { EMOJI } from "../../ui/emoji";
-import type { MessageResponse, ResponseType } from "../../ui/message";
-import { message } from "../../ui/message";
-import { createEmbed } from "../../utils/create-embed";
-import { buildInviteUrl } from "../../utils/invite-url";
+import { actionButton, linkButton, row } from "../../ui/components.ts";
+import { EMOJI } from "../../ui/emoji.ts";
+import type { MessageResponse, ResponseType } from "../../ui/message.ts";
+import { message } from "../../ui/message.ts";
+import { createEmbed } from "../../utils/create-embed.ts";
+import { buildInviteUrl } from "../../utils/invite-url.ts";
 
 /** Where the guide lives. One constant, linked from four different screens. */
 export const helpArticleUrl = (locale: Locale) =>

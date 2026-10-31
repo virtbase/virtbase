@@ -25,9 +25,9 @@ import type {
   getSubnetsList,
   getSubnetTypeCounts,
   getSubnetVlanCounts,
-} from "@/features/admin/api/subnets/get-subnets-list";
-import type { SubnetsTableColumn } from "@/features/admin/components/subnets/subnets-table/columns";
-import { useSubnetsTableColumns } from "@/features/admin/components/subnets/subnets-table/columns";
+} from "@/features/admin/api/subnets/get-subnets-list.ts";
+import type { SubnetsTableColumn } from "@/features/admin/components/subnets/subnets-table/columns.tsx";
+import { useSubnetsTableColumns } from "@/features/admin/components/subnets/subnets-table/columns.tsx";
 
 interface SubnetsTableProps {
   promises: Promise<

@@ -30,8 +30,8 @@ import {
   ListInvoicesInputSchema,
   ListInvoicesOutputSchema,
 } from "@virtbase/validators";
-import { integrations } from "../integrations";
-import { protectedProcedure } from "../trpc";
+import { integrations } from "../integrations/index.ts";
+import { protectedProcedure } from "../trpc.ts";
 
 export const invoicesRouter = {
   get: protectedProcedure

@@ -34,11 +34,11 @@ import {
   mockServerPlanPrice,
   mockSession,
   seedServerGraph,
-} from "../../../testing/fixtures";
+} from "../../../testing/fixtures.ts";
 
 let db: TestDb;
-let store: typeof import("../store-provisioned-server").storeProvisionedServerStep;
-let rollback: typeof import("../store-provisioned-server").rollbackStoreProvisionedServerStep;
+let store: typeof import("../store-provisioned-server.ts").storeProvisionedServerStep;
+let rollback: typeof import("../store-provisioned-server.ts").rollbackStoreProvisionedServerStep;
 
 const USER_ID = mockSession.user.id;
 const SUBNET_ID = "ipsub_0000000000000000000000009";
@@ -50,7 +50,7 @@ beforeAll(async () => {
   ({
     storeProvisionedServerStep: store,
     rollbackStoreProvisionedServerStep: rollback,
-  } = await import("../store-provisioned-server"));
+  } = await import("../store-provisioned-server.ts"));
 
   await seedServerGraph(db);
   await db.insert(schema.users).values({

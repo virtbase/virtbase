@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./ensure-template-image";
-export * from "./reconcile-template-image";
-export * from "./refresh-template-images";
-export * from "./safe-image-url";
+export * from "./ensure-template-image.ts";
+export * from "./reconcile-template-image.ts";
+export * from "./refresh-template-images.ts";
+export * from "./safe-image-url.ts";

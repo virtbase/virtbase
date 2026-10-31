@@ -16,7 +16,7 @@
  */
 
 import z from "zod";
-import { ObjectTimestampSchema } from "../timestamps";
+import { ObjectTimestampSchema } from "../timestamps.ts";
 
 export const ProxmoxNodeGroupSchema = z.object({
   id: z.string().regex(/^png_[A-Z0-9]{25}$/),

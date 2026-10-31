@@ -25,7 +25,7 @@ import { and, eq, isNotNull, isNull, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { proxmoxNodes, servers } from "@virtbase/db/schema";
 import { mapProxmoxServerStatus, ProxmoxServerStatus } from "@virtbase/utils";
-import { withCronSecret } from "@/lib/with-cron-secret";
+import { withCronSecret } from "@/lib/with-cron-secret.ts";
 
 /**
  * The maximum number of servers inspected per run.

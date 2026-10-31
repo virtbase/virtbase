@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { getGravatarImage } from "../get-gravatar-image";
+import { getGravatarImage } from "../get-gravatar-image.ts";
 
 describe("getGravatarImage", () => {
   test("it returns the correct gravatar image", async () => {

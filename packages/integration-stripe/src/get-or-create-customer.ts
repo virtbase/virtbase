@@ -19,7 +19,7 @@ import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { users } from "@virtbase/db/schema";
 import type Stripe from "stripe";
-import { stripe } from "./client";
+import { stripe } from "./client.ts";
 
 /**
  * The two Stripe keys this application holds are on different accounts.

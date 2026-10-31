@@ -23,8 +23,8 @@ import {
   GetServerBackupStatusInputSchema,
   GetServerBackupStatusOutputSchema,
 } from "@virtbase/validators/server";
-import { reconcileServerBackup } from "../../../backups";
-import { serverProcedure } from "../../../trpc";
+import { reconcileServerBackup } from "../../../backups/index.ts";
+import { serverProcedure } from "../../../trpc.ts";
 
 export const serversBackupsStatusRouter = {
   get: serverProcedure

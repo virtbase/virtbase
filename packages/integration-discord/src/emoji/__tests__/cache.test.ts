@@ -17,12 +17,12 @@
 
 import { beforeEach, describe, expect, test } from "bun:test";
 
-import type { DiscordClient } from "../../api";
+import type { DiscordClient } from "../../api/index.ts";
 import {
   getEmojiResolver,
   invalidateEmojiCache,
   refreshEmojiCache,
-} from "../cache";
+} from "../cache.ts";
 
 const clientCounting = (
   items: { id: string; name: string }[] = [{ id: "1", name: "vb_debian" }],

@@ -15,13 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./apply-payment-event";
-export * from "./create-order";
-export * from "./fulfill-order";
-export * from "./legacy-snapshot";
-export * from "./order-secrets";
-export * from "./reconcile-orders";
-export * from "./record-billing-details";
-export * from "./settle-anonpay-payment";
-export * from "./settle-stripe-payment";
-export * from "./transition-order";
+export * from "./apply-payment-event.ts";
+export * from "./create-order.ts";
+export * from "./fulfill-order.ts";
+export * from "./legacy-snapshot.ts";
+export * from "./order-secrets.ts";
+export * from "./reconcile-orders.ts";
+export * from "./record-billing-details.ts";
+export * from "./settle-anonpay-payment.ts";
+export * from "./settle-stripe-payment.ts";
+export * from "./transition-order.ts";

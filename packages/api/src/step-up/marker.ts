@@ -17,7 +17,7 @@
 
 import * as Sentry from "@sentry/node";
 import { STEP_UP_WINDOW_SECONDS } from "@virtbase/utils";
-import { redis } from "../upstash";
+import { redis } from "../upstash/index.ts";
 
 /** Namespace, so these cannot collide with the cache or the ratelimiter. */
 const PREFIX = "vb:stepup:";

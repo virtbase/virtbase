@@ -20,10 +20,10 @@
 import { Button } from "@virtbase/ui/button";
 import dynamic from "next/dynamic";
 import type React from "react";
-import { useServerActionState } from "../../hooks/use-server-action-state";
+import { useServerActionState } from "../../hooks/use-server-action-state.ts";
 
 const GenerateFirewallRulesDialog = dynamic(
-  () => import("./generate-firewall-rules-dialog"),
+  () => import("./generate-firewall-rules-dialog.tsx"),
   {
     ssr: false,
   },

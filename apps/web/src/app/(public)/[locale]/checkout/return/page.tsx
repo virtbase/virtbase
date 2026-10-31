@@ -40,8 +40,8 @@ import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import { getExtracted, getLocale } from "next-intl/server";
 import { cache } from "react";
-import { ConfettiFireworks } from "@/features/checkout/components/confetti-fireworks";
-import { IntlLink } from "@/i18n/navigation.public";
+import { ConfettiFireworks } from "@/features/checkout/components/confetti-fireworks.tsx";
+import { IntlLink } from "@/i18n/navigation.public.ts";
 
 export async function generateMetadata(): Promise<Metadata> {
   "use cache";

@@ -16,9 +16,9 @@
  */
 
 import type { ServerAgentStatus } from "@virtbase/validators/server";
-import type { GuestOsInfo } from "./os-info";
-import { isPosixGuest } from "./os-info";
-import type { GuestAgentProbe } from "./probe";
+import type { GuestOsInfo } from "./os-info.ts";
+import { isPosixGuest } from "./os-info.ts";
+import type { GuestAgentProbe } from "./probe.ts";
 
 export interface ResolveAgentStatusParams {
   /** Whether the server's Proxmox configuration enables the agent. */

@@ -26,10 +26,10 @@ import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
 import { Suspense } from "react";
-import { verifyRenderSession } from "@/features/admin/api/verify-session";
-import { CreateSnippetButton } from "@/features/admin/components/cloud-init-snippets/create-snippet-button";
-import { SnippetsTableCard } from "@/features/admin/components/cloud-init-snippets/snippets-table-card";
-import DashboardLayout from "@/ui/layout/dashboard-layout";
+import { verifyRenderSession } from "@/features/admin/api/verify-session.ts";
+import { CreateSnippetButton } from "@/features/admin/components/cloud-init-snippets/create-snippet-button.tsx";
+import { SnippetsTableCard } from "@/features/admin/components/cloud-init-snippets/snippets-table-card.tsx";
+import DashboardLayout from "@/ui/layout/dashboard-layout.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();

@@ -45,9 +45,9 @@ import { useExtracted } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import { useState } from "react";
 import { toast } from "sonner";
-import { OperatingSystemIcon } from "@/ui/operating-system-icon";
-import { updateProxmoxTemplateAction } from "../../api/proxmox-templates/create-proxmox-template";
-import { SettingsCard } from "./cards/settings-card";
+import { OperatingSystemIcon } from "@/ui/operating-system-icon.tsx";
+import { updateProxmoxTemplateAction } from "../../api/proxmox-templates/create-proxmox-template.ts";
+import { SettingsCard } from "./cards/settings-card.tsx";
 
 interface TemplateSettingsProps {
   template: UpdateProxmoxTemplateInput;

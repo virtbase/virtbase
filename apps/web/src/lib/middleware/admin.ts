@@ -21,10 +21,10 @@ import { getCookieCache, getSessionCookie } from "better-auth/cookies";
 import type { UserWithRole } from "better-auth/plugins";
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import { resolveConsoleLocale } from "@/lib/middleware/utils/console-locale";
-import { rewriteToNotFound } from "@/lib/middleware/utils/not-found";
-import { parse } from "@/lib/middleware/utils/parse";
-import { readSession } from "@/lib/middleware/utils/read-session";
+import { resolveConsoleLocale } from "@/lib/middleware/utils/console-locale.ts";
+import { rewriteToNotFound } from "@/lib/middleware/utils/not-found.ts";
+import { parse } from "@/lib/middleware/utils/parse.ts";
+import { readSession } from "@/lib/middleware/utils/read-session.ts";
 
 export async function AdminMiddleware(req: NextRequest) {
   const { path, fullPath, searchParamsObj, searchParamsString } = parse(req);

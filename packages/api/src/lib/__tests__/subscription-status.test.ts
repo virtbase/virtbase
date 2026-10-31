@@ -24,7 +24,7 @@ import {
   isRenewableSubscriptionStatus,
   isTerminalSubscriptionStatus,
   nextSubscriptionStatuses,
-} from "../subscription-status";
+} from "../subscription-status.ts";
 
 const ALL: SubscriptionStatus[] = [
   "active",

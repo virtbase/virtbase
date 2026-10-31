@@ -48,11 +48,11 @@ import {
 import dynamic from "next/dynamic";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
-import { useServerActionState } from "../hooks/use-server-action-state";
-import { useServerStatus } from "../hooks/use-server-status";
-import { useUpdateServerStatus } from "../hooks/use-update-server-status";
+import { useServerActionState } from "../hooks/use-server-action-state.ts";
+import { useServerStatus } from "../hooks/use-server-status.ts";
+import { useUpdateServerStatus } from "../hooks/use-update-server-status.ts";
 
-const ServerMountDialog = dynamic(() => import("./server-mount-dialog"), {
+const ServerMountDialog = dynamic(() => import("./server-mount-dialog.tsx"), {
   ssr: false,
 });
 

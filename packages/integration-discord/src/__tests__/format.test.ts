@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { escapeMarkdown } from "../ui/format";
+import { escapeMarkdown } from "../ui/format.ts";
 
 describe("escapeMarkdown", () => {
   test("it leaves an ordinary operating system name alone", () => {

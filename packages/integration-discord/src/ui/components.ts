@@ -26,7 +26,7 @@ import type {
 } from "discord-api-types/v10";
 import { ButtonStyle, ComponentType } from "discord-api-types/v10";
 
-import { encodeCustomId } from "../routing";
+import { encodeCustomId } from "../routing/index.ts";
 
 /** Discord's own caps. Exceeding one drops the whole message, silently. */
 const LABEL_MAX = 80;

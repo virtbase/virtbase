@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { getPaginationMeta } from "../../pagination";
+import { getPaginationMeta } from "../../pagination.ts";
 
 describe("getPaginationMeta", () => {
   test("it returns the pagination meta for a list endpoint", () => {

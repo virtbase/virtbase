@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { Integration } from "./types";
+import type { Integration } from "./types.ts";
 
 /**
  * Where an integration's configuration comes from.

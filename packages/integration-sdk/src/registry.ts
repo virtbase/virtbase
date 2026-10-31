@@ -16,10 +16,10 @@
  */
 
 import type { PortMap } from "@virtbase/ports";
-import type { ConfigSource } from "./config-source";
-import type { IntegrationDescription } from "./describe";
-import { describeIntegration, localizeDescription } from "./describe";
-import { consoleLogger } from "./logger";
+import type { ConfigSource } from "./config-source.ts";
+import type { IntegrationDescription } from "./describe.ts";
+import { describeIntegration, localizeDescription } from "./describe.ts";
+import { consoleLogger } from "./logger.ts";
 import type {
   Integration,
   IntegrationContext,
@@ -27,7 +27,7 @@ import type {
   IntegrationLogger,
   IntegrationWebhook,
   PortAccessor,
-} from "./types";
+} from "./types.ts";
 
 /** Thrown when a caller requires a capability nothing currently provides. */
 export class PortUnavailableError extends Error {

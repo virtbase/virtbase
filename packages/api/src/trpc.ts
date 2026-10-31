@@ -45,9 +45,9 @@ import { GetServerInputSchema } from "@virtbase/validators/server";
 import superjson from "superjson";
 import type { OpenApiMeta } from "trpc-to-openapi";
 import z, { ZodError } from "zod";
-import { getProxmoxInstance } from "./proxmox";
-import { isStepUpSatisfied } from "./step-up";
-import { defaultFingerprint, ratelimit } from "./upstash";
+import { getProxmoxInstance } from "./proxmox/index.ts";
+import { isStepUpSatisfied } from "./step-up/index.ts";
+import { defaultFingerprint, ratelimit } from "./upstash/index.ts";
 
 type TRPCContext = {
   db: typeof db;

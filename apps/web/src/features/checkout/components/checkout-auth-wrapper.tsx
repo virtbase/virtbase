@@ -29,7 +29,7 @@ import { APP_DOMAIN, PUBLIC_DOMAIN } from "@virtbase/utils";
 import { headers } from "next/headers";
 import { connection } from "next/server";
 import { getExtracted, getLocale } from "next-intl/server";
-import { auth } from "@/lib/auth/server";
+import { auth } from "@/lib/auth/server.ts";
 
 export async function CheckoutAuthWrapper({
   children,

@@ -19,7 +19,7 @@
 
 import type * as React from "react";
 import { Drawer as DrawerPrimitive } from "vaul";
-import { cn } from "./index";
+import { cn } from "./index.ts";
 
 function Drawer({
   ...props

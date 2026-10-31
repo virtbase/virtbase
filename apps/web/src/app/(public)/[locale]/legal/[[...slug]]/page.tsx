@@ -27,11 +27,11 @@ import type { Metadata } from "next";
 import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import { getExtracted, getFormatter, getLocale } from "next-intl/server";
-import { defaultLocale } from "@/i18n/config";
-import { constructAlternateLanguages } from "@/lib/hreflang";
-import { getDocumentLocales, legal } from "@/lib/source";
-import { BlockWrapper } from "@/ui/block-wrapper";
-import { TableOfContents } from "@/ui/fumadocs/table-of-contents";
+import { defaultLocale } from "@/i18n/config.ts";
+import { constructAlternateLanguages } from "@/lib/hreflang.ts";
+import { getDocumentLocales, legal } from "@/lib/source.ts";
+import { BlockWrapper } from "@/ui/block-wrapper.tsx";
+import { TableOfContents } from "@/ui/fumadocs/table-of-contents.tsx";
 
 export async function generateStaticParams() {
   return legal.getPages().map((page) => ({

@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./base-snippets";
-export * from "./match-snippet";
-export * from "./render-vendor-data";
-export * from "./types";
+export * from "./base-snippets.ts";
+export * from "./match-snippet.ts";
+export * from "./render-vendor-data.ts";
+export * from "./types.ts";

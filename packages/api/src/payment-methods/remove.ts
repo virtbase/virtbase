@@ -18,9 +18,9 @@
 import { and, eq, isNull } from "@virtbase/db";
 import type { db as database } from "@virtbase/db/client";
 import { paymentMethods } from "@virtbase/db/schema";
-import type { PaymentMethodSummary } from "./list";
-import { paymentMethodSummaryColumns } from "./list";
-import { requirePaymentCapability } from "./provider";
+import type { PaymentMethodSummary } from "./list.ts";
+import { paymentMethodSummaryColumns } from "./list.ts";
+import { requirePaymentCapability } from "./provider.ts";
 
 type Database = typeof database;
 

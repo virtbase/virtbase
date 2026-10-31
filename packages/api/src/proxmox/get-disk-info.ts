@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { getProxmoxInstance } from "./get-proxmox-instance";
+import type { getProxmoxInstance } from "./get-proxmox-instance.ts";
 
 type GetDiskInfoResult =
   | {

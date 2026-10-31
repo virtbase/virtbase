@@ -24,9 +24,9 @@ import { db } from "@virtbase/db/client";
 import { proxmoxNodes } from "@virtbase/db/schema";
 import { CreateProxmoxNodeInputSchema } from "@virtbase/validators/admin";
 import { revalidatePath, revalidateTag } from "next/cache";
-import { env } from "@/env";
-import { actionClient } from "../../lib/action-client";
-import { uploadHookscript } from "../../lib/proxmox-nodes/hookscript";
+import { env } from "@/env.ts";
+import { actionClient } from "../../lib/action-client.ts";
+import { uploadHookscript } from "../../lib/proxmox-nodes/hookscript.ts";
 
 export const createProxmoxNodeAction = actionClient
   .inputSchema(CreateProxmoxNodeInputSchema)

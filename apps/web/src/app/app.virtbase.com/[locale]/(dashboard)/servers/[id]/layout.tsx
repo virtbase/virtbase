@@ -19,14 +19,14 @@ import { Suspense } from "react";
 import {
   ServerActionsRow,
   ServerActionsRowSkeleton,
-} from "@/features/servers/components/server-actions-row";
+} from "@/features/servers/components/server-actions-row.tsx";
 import {
   ServerLabel,
   ServerLabelSkeleton,
-} from "@/features/servers/components/server-label";
-import { ServerNav } from "@/features/servers/components/server-nav";
-import { ServerStatusBar } from "@/features/servers/components/server-status-bar";
-import DashboardLayout from "@/ui/layout/dashboard-layout";
+} from "@/features/servers/components/server-label.tsx";
+import { ServerNav } from "@/features/servers/components/server-nav.tsx";
+import { ServerStatusBar } from "@/features/servers/components/server-status-bar.tsx";
+import DashboardLayout from "@/ui/layout/dashboard-layout.tsx";
 
 export default function ServersLayout({
   children,

@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { safeSecretCompare } from "../safe-secret-compare";
+import { safeSecretCompare } from "../safe-secret-compare.ts";
 
 describe("safeSecretCompare", () => {
   test("it returns true when the secrets are the same", () => {

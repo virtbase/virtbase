@@ -23,7 +23,7 @@ import {
   resolveBrandName,
   resolvePaymentMethodHealth,
   resolvePaymentMethodState,
-} from "../payment-method";
+} from "../payment-method.ts";
 
 const card = {
   type: "card",

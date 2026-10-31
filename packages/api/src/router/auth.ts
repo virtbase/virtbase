@@ -20,7 +20,7 @@ import { TRPCError } from "@trpc/server";
 import { and, count, eq, isNotNull } from "@virtbase/db";
 import { accounts, users } from "@virtbase/db/schema";
 import * as z from "zod";
-import { publicProcedure } from "../trpc";
+import { publicProcedure } from "../trpc.ts";
 
 export const authRouter = {
   checkAccountExists: publicProcedure

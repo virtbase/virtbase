@@ -15,5 +15,5 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./build-context";
-export * from "./system-prompt";
+export * from "./build-context.ts";
+export * from "./system-prompt.ts";

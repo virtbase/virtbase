@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { APIKeysCard } from "@/features/account/components/api-keys/api-keys-card";
+import { APIKeysCard } from "@/features/account/components/api-keys/api-keys-card.tsx";
 
 export default function Page() {
   return <APIKeysCard />;

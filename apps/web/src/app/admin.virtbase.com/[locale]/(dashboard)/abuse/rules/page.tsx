@@ -27,11 +27,11 @@ import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
 import { Suspense } from "react";
-import { verifyRenderSession } from "@/features/admin/api/verify-session";
-import { AbuseRules } from "@/features/admin/components/abuse/rules/abuse-rules";
-import { AbuseRulesSkeleton } from "@/features/admin/components/abuse/rules/abuse-rules-skeleton";
-import { paths } from "@/lib/paths";
-import DashboardLayout from "@/ui/layout/dashboard-layout";
+import { verifyRenderSession } from "@/features/admin/api/verify-session.ts";
+import { AbuseRules } from "@/features/admin/components/abuse/rules/abuse-rules.tsx";
+import { AbuseRulesSkeleton } from "@/features/admin/components/abuse/rules/abuse-rules-skeleton.tsx";
+import { paths } from "@/lib/paths.ts";
+import DashboardLayout from "@/ui/layout/dashboard-layout.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();

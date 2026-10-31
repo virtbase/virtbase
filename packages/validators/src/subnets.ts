@@ -16,7 +16,7 @@
  */
 
 import * as z from "zod";
-import { ObjectTimestampSchema } from "./timestamps";
+import { ObjectTimestampSchema } from "./timestamps.ts";
 
 const subnetIdSchema = z.string().regex(/^ipsub_[A-Z0-9]{25}$/);
 

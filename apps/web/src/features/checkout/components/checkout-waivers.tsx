@@ -22,7 +22,7 @@ import { Field, FieldLabel } from "@virtbase/ui/field";
 import { PUBLIC_DOMAIN } from "@virtbase/utils";
 import { useExtracted } from "next-intl";
 import { Controller } from "react-hook-form";
-import { IntlLink } from "@/i18n/navigation.public";
+import { IntlLink } from "@/i18n/navigation.public.ts";
 
 const linkClassName = "font-semibold underline decoration-dotted";
 

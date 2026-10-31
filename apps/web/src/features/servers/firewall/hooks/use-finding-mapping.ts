@@ -25,7 +25,7 @@ import {
   LucideTriangleAlert,
 } from "@virtbase/ui/icons/index";
 import { useExtracted } from "next-intl";
-import type { FirewallFinding } from "./use-firewall-analysis";
+import type { FirewallFinding } from "./use-firewall-analysis.ts";
 
 export interface FindingDescriptor {
   title: string;

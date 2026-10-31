@@ -19,9 +19,9 @@ import { describe, expect, test } from "bun:test";
 import { eq } from "@virtbase/db";
 import { integrationInstallations } from "@virtbase/db/schema";
 import { createTestDb } from "@virtbase/db/test-client";
-import { generateKey } from "../crypto";
-import { IntegrationConfigStore } from "../integration-store";
-import type { ConfigDatabase } from "../types";
+import { generateKey } from "../crypto.ts";
+import { IntegrationConfigStore } from "../integration-store.ts";
+import type { ConfigDatabase } from "../types.ts";
 
 const newStore = async () => {
   const db = await createTestDb();

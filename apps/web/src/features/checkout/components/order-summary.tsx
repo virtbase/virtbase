@@ -32,7 +32,7 @@ import {
 } from "@virtbase/ui/icons";
 import { formatBits, formatBytes } from "@virtbase/utils";
 import { useExtracted, useFormatter } from "next-intl";
-import { formatDiscountLabel } from "../utils/format-discount";
+import { formatDiscountLabel } from "../utils/format-discount.ts";
 
 export function OrderSummary({
   plan,

@@ -19,7 +19,7 @@ import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { servers } from "@virtbase/db/schema";
 import { FatalError } from "workflow";
-import { revalidateCheckout } from "./revalidate-checkout";
+import { revalidateCheckout } from "./revalidate-checkout.ts";
 
 type UpdateServerStepParams = {
   serverId: string;

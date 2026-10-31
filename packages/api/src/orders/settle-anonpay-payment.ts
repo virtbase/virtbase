@@ -19,9 +19,9 @@ import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { orders } from "@virtbase/db/schema";
 import type { AnonpayWebhookResponse } from "@virtbase/integration-anonpay";
-import { applyPaymentEvent } from "../orders/apply-payment-event";
-import { fulfilOrder } from "../orders/fulfill-order";
-import type { OrderBillingAddress } from "../orders/record-billing-details";
+import { applyPaymentEvent } from "../orders/apply-payment-event.ts";
+import { fulfilOrder } from "../orders/fulfill-order.ts";
+import type { OrderBillingAddress } from "../orders/record-billing-details.ts";
 
 /**
  * Handles a finished Anonpay payment.

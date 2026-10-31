@@ -20,11 +20,11 @@ import { InteractionResponseType } from "discord-api-types/v10";
 import type { Locale } from "next-intl";
 import { getExtracted } from "next-intl/server";
 
-import type { LinkedInteractionContext } from "../../handlers/types";
-import type { MessageResponse } from "../../ui/message";
-import { modal, modalValue } from "../../ui/modal";
-import { actorFor } from "../../utils/actor";
-import type { DiscordFeature } from "../types";
+import type { LinkedInteractionContext } from "../../handlers/types.ts";
+import type { MessageResponse } from "../../ui/message.ts";
+import { modal, modalValue } from "../../ui/modal.ts";
+import { actorFor } from "../../utils/actor.ts";
+import type { DiscordFeature } from "../types.ts";
 import {
   PAGE_SIZE,
   ResetPasswordSuccessMessage,
@@ -32,9 +32,9 @@ import {
   ServerOverviewMessage,
   ServersListEmptyMessage,
   ServersListMessage,
-} from "./messages";
+} from "./messages.ts";
 
-export * from "./messages";
+export * from "./messages.ts";
 
 /**
  * The server overview, rebuilt from scratch.

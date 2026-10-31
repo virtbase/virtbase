@@ -17,9 +17,9 @@
 
 import type { SortableColumns } from "@virtbase/utils";
 import * as z from "zod";
-import { PaginationSchema } from "./pagination";
-import { ObjectTimestampSchema } from "./timestamps";
-import { preprocessQueryArray } from "./utils";
+import { PaginationSchema } from "./pagination.ts";
+import { ObjectTimestampSchema } from "./timestamps.ts";
+import { preprocessQueryArray } from "./utils/index.ts";
 
 const MD5_FINGERPRINT_REGEX = /^[a-f0-9]{2}(:[a-f0-9]{2}){15}$/;
 

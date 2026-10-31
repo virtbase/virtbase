@@ -16,7 +16,7 @@
  */
 
 import { useMutation } from "@tanstack/react-query";
-import { useTRPC } from "@/lib/trpc/react";
+import { useTRPC } from "@/lib/trpc/react.tsx";
 
 type TRPC = ReturnType<typeof useTRPC>;
 type Options = Parameters<

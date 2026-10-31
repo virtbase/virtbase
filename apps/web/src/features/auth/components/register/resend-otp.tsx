@@ -21,7 +21,7 @@ import { cn } from "@virtbase/ui";
 import { Spinner } from "@virtbase/ui/spinner";
 import { useExtracted } from "next-intl";
 import { useEffect, useState, useTransition } from "react";
-import { authClient } from "@/lib/auth/client";
+import { authClient } from "@/lib/auth/client.ts";
 
 export const ResendOtp = ({ email }: { email: string }) => {
   const t = useExtracted();

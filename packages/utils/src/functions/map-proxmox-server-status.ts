@@ -16,7 +16,7 @@
  */
 
 import type { Proxmox } from "@virtbase/proxmox-api";
-import { ProxmoxServerStatus } from "../constants";
+import { ProxmoxServerStatus } from "../constants/index.ts";
 
 export const mapProxmoxServerStatus = (
   currentStatus: Proxmox.nodesQemuStatusCurrentVmStatus,

@@ -34,7 +34,7 @@ import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { useUpsertPointerRecord } from "../../hooks/rdns/use-upsert-pointer-record";
+import { useUpsertPointerRecord } from "../../hooks/rdns/use-upsert-pointer-record.ts";
 
 export default function UpsertRecordDialog(
   props: Omit<

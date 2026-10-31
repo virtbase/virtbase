@@ -16,9 +16,9 @@
  */
 
 import * as z from "zod";
-import { ProxmoxTemplateGroupSchema } from "../admin";
-import { ProxmoxTemplateSchema } from "../proxmox-template";
-import { ServerSchema } from "./shared";
+import { ProxmoxTemplateGroupSchema } from "../admin/index.ts";
+import { ProxmoxTemplateSchema } from "../proxmox-template.ts";
+import { ServerSchema } from "./shared.ts";
 
 export const GetServerTemplateGroupsInputSchema = z.object({
   server_id: ServerSchema.shape.id,

@@ -24,9 +24,9 @@ import {
 import type { ReactNode } from "react";
 import type { FAQPage, WithContext } from "schema-dts";
 
-import { toPlainText } from "@/ui/mdx/plain-text";
-import JsonLd from "@/ui/seo/json-ld";
-import { collectQuestions } from "./faq-question";
+import { toPlainText } from "@/ui/mdx/plain-text.ts";
+import JsonLd from "@/ui/seo/json-ld.tsx";
+import { collectQuestions } from "./faq-question.tsx";
 
 /**
  * An accordion of `<Question>` blocks, plus the `FAQPage` structured data for

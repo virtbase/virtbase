@@ -54,11 +54,11 @@ import {
   OrderServerPlanInputSchema,
   OrderServerPlanOutputSchema,
 } from "@virtbase/validators";
-import { getOrderingBlock } from "../abuse";
-import { calculateProRataUpgrade } from "../lib/pricing";
-import { resolveServerRenewalPrice } from "../lib/renewal-price";
-import { createOrder, recordBillingDetails } from "../orders";
-import { protectedProcedure } from "../trpc";
+import { getOrderingBlock } from "../abuse/index.ts";
+import { calculateProRataUpgrade } from "../lib/pricing.ts";
+import { resolveServerRenewalPrice } from "../lib/renewal-price.ts";
+import { createOrder, recordBillingDetails } from "../orders/index.ts";
+import { protectedProcedure } from "../trpc.ts";
 
 // Pro-rata math reference period. We bill against a flat 30-day month so
 // the upgrade charge is stable regardless of which calendar month the

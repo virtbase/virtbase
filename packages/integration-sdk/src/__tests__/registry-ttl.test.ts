@@ -18,10 +18,10 @@
 import { describe, expect, test } from "bun:test";
 import type { DnsProvider } from "@virtbase/ports";
 import * as z from "zod";
-import type { ConfigSource } from "../config-source";
-import { defineIntegration } from "../define-integration";
-import { IntegrationRegistry } from "../registry";
-import type { IntegrationLogger } from "../types";
+import type { ConfigSource } from "../config-source.ts";
+import { defineIntegration } from "../define-integration.ts";
+import { IntegrationRegistry } from "../registry.ts";
+import type { IntegrationLogger } from "../types.ts";
 
 const silentLogger: IntegrationLogger = {
   debug: () => {},

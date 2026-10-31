@@ -33,8 +33,8 @@ const USER_ID = "usr_00000000000000000000000002";
 
 mock.module("@virtbase/db/client", () => ({ db: testDb }));
 
-const { createOrder } = await import("../create-order");
-const { recordBillingDetails } = await import("../record-billing-details");
+const { createOrder } = await import("../create-order.ts");
+const { recordBillingDetails } = await import("../record-billing-details.ts");
 
 const PLAN_ID = "pck_00000000000000000000000001";
 const PRICE_ID = "price_00000000000000000000001";

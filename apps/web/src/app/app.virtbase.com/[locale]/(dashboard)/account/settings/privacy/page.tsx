@@ -15,8 +15,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { DataExportCard } from "@/features/account/components/privacy/data-export-card";
-import { DeleteAccountCard } from "@/features/account/components/privacy/delete-account-card";
+import { DataExportCard } from "@/features/account/components/privacy/data-export-card.tsx";
+import { DeleteAccountCard } from "@/features/account/components/privacy/delete-account-card.tsx";
 
 export default function Page() {
   return (

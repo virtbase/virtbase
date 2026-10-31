@@ -33,9 +33,9 @@ import {
 import NextLink from "next/link";
 import { useExtracted, useFormatter, useNow } from "next-intl";
 import { use } from "react";
-import type { getLatestCustomers } from "@/features/admin/api/dashboard/get-latest-customers";
-import { paths } from "@/lib/paths";
-import { UserAvatar } from "@/ui/user-avatar";
+import type { getLatestCustomers } from "@/features/admin/api/dashboard/get-latest-customers.ts";
+import { paths } from "@/lib/paths.ts";
+import { UserAvatar } from "@/ui/user-avatar.tsx";
 
 export function LatestCustomersList({
   promise,

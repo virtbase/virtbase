@@ -27,8 +27,8 @@ import {
 } from "@virtbase/ui/empty";
 import { useRouter } from "next/navigation";
 import { useExtracted } from "next-intl";
-import { authClient } from "@/lib/auth/client";
-import ColoredLayout from "@/ui/layout/colored-layout";
+import { authClient } from "@/lib/auth/client.ts";
+import ColoredLayout from "@/ui/layout/colored-layout.tsx";
 
 export default function Unauthorized() {
   const t = useExtracted();

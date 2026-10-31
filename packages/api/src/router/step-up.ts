@@ -20,9 +20,9 @@ import { TRPCError } from "@trpc/server";
 import { and, eq, isNotNull } from "@virtbase/db";
 import { accounts, passkeys } from "@virtbase/db/schema";
 import * as z from "zod";
-import { isStepUpSatisfied } from "../step-up";
-import { grantStepUp } from "../step-up/marker";
-import { protectedProcedure } from "../trpc";
+import { isStepUpSatisfied } from "../step-up/index.ts";
+import { grantStepUp } from "../step-up/marker.ts";
+import { protectedProcedure } from "../trpc.ts";
 
 /**
  * Re-authentication for actions that cannot be taken back.

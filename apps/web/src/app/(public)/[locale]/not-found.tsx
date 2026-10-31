@@ -24,7 +24,7 @@ import {
   EmptyTitle,
 } from "@virtbase/ui/empty";
 import { getExtracted } from "next-intl/server";
-import { IntlLink } from "@/i18n/navigation.public";
+import { IntlLink } from "@/i18n/navigation.public.ts";
 
 /**
  * The 404 for everything under `(public)/[locale]`.

@@ -28,7 +28,7 @@ import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
 import type { AbusePollRequest, AbuseSource } from "@virtbase/ports";
 
-mock.module("../../notifications/dispatch", () => ({
+mock.module("../../notifications/dispatch.ts", () => ({
   dispatchNotification: async () => ({
     created: 0,
     deduplicated: 0,
@@ -38,9 +38,9 @@ mock.module("../../notifications/dispatch", () => ({
   }),
 }));
 
-import { mockServer, seedServerGraph } from "../../testing";
-import { isPublicIpv4, supernet } from "../cidr";
-import { collectPollTargets, pollAbuseSources } from "../poll";
+import { mockServer, seedServerGraph } from "../../testing/index.ts";
+import { isPublicIpv4, supernet } from "../cidr.ts";
+import { collectPollTargets, pollAbuseSources } from "../poll.ts";
 
 let testDb: TestDb;
 

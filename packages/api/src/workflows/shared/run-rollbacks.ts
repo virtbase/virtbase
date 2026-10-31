@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { reportRollbackFailureStep } from "./report-rollback-failure";
+import { reportRollbackFailureStep } from "./report-rollback-failure.ts";
 
 /**
  * A compensation stack: the undo of every forward step that has already run,

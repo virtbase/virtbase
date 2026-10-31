@@ -37,8 +37,8 @@ import type { Cell, ColumnDef, DataTableRowAction } from "@virtbase/ui/types";
 import { formatBits, formatBytes } from "@virtbase/utils";
 import NextLink from "next/link";
 import { useExtracted, useFormatter } from "next-intl";
-import type { getProxmoxNodesList } from "@/features/admin/api/proxmox-nodes/get-proxmox-nodes-list";
-import { paths } from "@/lib/paths";
+import type { getProxmoxNodesList } from "@/features/admin/api/proxmox-nodes/get-proxmox-nodes-list.ts";
+import { paths } from "@/lib/paths.ts";
 
 export type NodesTableColumn = Awaited<
   ReturnType<typeof getProxmoxNodesList>

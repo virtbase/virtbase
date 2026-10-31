@@ -17,8 +17,8 @@
 
 import { findFirstAvailableSubnet } from "@virtbase/db/queries";
 import { FatalError } from "workflow";
-import type { NetworkAdapter } from "../../proxmox/generate-cloud-init-network-config";
-import { generateRandomMacAddress } from "../../proxmox/generate-random-mac-address";
+import type { NetworkAdapter } from "../../proxmox/generate-cloud-init-network-config.ts";
+import { generateRandomMacAddress } from "../../proxmox/generate-random-mac-address.ts";
 
 type GetNetworkAdaptersStepParams = {
   proxmoxNodeId: string;

@@ -21,9 +21,9 @@ import { NextRequest } from "next/server";
 const SECRET = "cron-secret-for-tests";
 
 const env: { CRON_SECRET?: string | undefined } = {};
-mock.module("@/env", () => ({ env }));
+mock.module("@/env.ts", () => ({ env }));
 
-const { withCronSecret } = await import("../with-cron-secret");
+const { withCronSecret } = await import("../with-cron-secret.ts");
 
 const handled: NextRequest[] = [];
 const route = withCronSecret(async (request) => {

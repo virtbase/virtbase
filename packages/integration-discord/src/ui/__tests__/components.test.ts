@@ -23,7 +23,7 @@ import {
   linkButton,
   row,
   select,
-} from "../components";
+} from "../components.ts";
 
 describe("isLinkableUrl", () => {
   test("it accepts the URLs the bot really links to", () => {

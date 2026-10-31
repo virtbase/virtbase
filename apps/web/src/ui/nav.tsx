@@ -26,10 +26,10 @@ import { LayoutGroup } from "@virtbase/ui/motion";
 import { APP_DOMAIN, APP_NAME } from "@virtbase/utils";
 import { useExtracted } from "next-intl";
 import { useId } from "react";
-import { IntlLink } from "@/i18n/navigation.public";
-import { authClient } from "@/lib/auth/client";
-import { MaxWidthWrapper } from "@/ui/max-width-wrapper";
-import { LocaleSwitcherCircle } from "./locale-switcher-circle";
+import { IntlLink } from "@/i18n/navigation.public.ts";
+import { authClient } from "@/lib/auth/client.ts";
+import { MaxWidthWrapper } from "@/ui/max-width-wrapper.tsx";
+import { LocaleSwitcherCircle } from "./locale-switcher-circle.tsx";
 
 export function Nav({ className }: { className?: string }) {
   const t = useExtracted();

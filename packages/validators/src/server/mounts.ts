@@ -16,8 +16,8 @@
  */
 
 import * as z from "zod";
-import { ProxmoxIsoDownloadSchema } from "../proxmox-iso-downloads";
-import { ServerSchema } from "./shared";
+import { ProxmoxIsoDownloadSchema } from "../proxmox-iso-downloads.ts";
+import { ServerSchema } from "./shared.ts";
 
 export const MountServerImageInputSchema = z.object({
   server_id: ServerSchema.shape.id,

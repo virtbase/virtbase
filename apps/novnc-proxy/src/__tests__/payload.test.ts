@@ -18,7 +18,7 @@
 import { describe, expect, test } from "bun:test";
 import { encryptPayload } from "@virtbase/utils";
 import type { WebSocketData } from "@virtbase/validators";
-import { verifyPayload } from "../payload";
+import { verifyPayload } from "../payload.ts";
 
 const SECRET =
   "0123456789abcdef0123456789abcdef0123456789abcdef0123456789abcdef";

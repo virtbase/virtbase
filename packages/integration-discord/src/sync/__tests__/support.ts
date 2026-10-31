@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { DiscordClient } from "../../api";
+import type { DiscordClient } from "../../api/index.ts";
 
 export interface RecordedRequest {
   method: string;

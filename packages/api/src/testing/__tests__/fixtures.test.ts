@@ -17,7 +17,7 @@
 
 import { expect, test } from "bun:test";
 import { prefixes } from "@virtbase/db/utils";
-import * as fixtures from "../fixtures";
+import * as fixtures from "../fixtures.ts";
 
 const ID = new RegExp(`^(${prefixes.join("|")})[A-Z0-9]{25}$`);
 

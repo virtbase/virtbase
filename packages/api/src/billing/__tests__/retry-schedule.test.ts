@@ -22,7 +22,7 @@ import {
   isRenewalLadderExhausted,
   nextRenewalAttemptAt,
   renewalRetryDelayDays,
-} from "../retry-schedule";
+} from "../retry-schedule.ts";
 
 const DAY = 24 * 60 * 60 * 1000;
 

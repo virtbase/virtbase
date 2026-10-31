@@ -27,9 +27,9 @@ import {
 } from "@virtbase/ui/sidebar";
 import NextLink from "next/link";
 import { useExtracted } from "next-intl";
-import { AdminSidebarGroups } from "@/features/admin/components/admin-sidebar-groups";
-import { LocaleSwitcher } from "@/ui/locale-switcher";
-import { NavUser } from "@/ui/nav-user";
+import { AdminSidebarGroups } from "@/features/admin/components/admin-sidebar-groups.tsx";
+import { LocaleSwitcher } from "@/ui/locale-switcher.tsx";
+import { NavUser } from "@/ui/nav-user.tsx";
 
 export function AdminSidebar() {
   const t = useExtracted();

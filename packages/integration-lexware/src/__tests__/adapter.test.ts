@@ -18,10 +18,10 @@
 import { describe, expect, test } from "bun:test";
 import type { CreateInvoiceInput } from "@virtbase/ports";
 import { PortError } from "@virtbase/ports";
-import { LexwareInvoiceProvider } from "../adapter";
-import type { LexwareClient } from "../client";
-import { COUNTRY_CONTACTS } from "../constants";
-import type { CustomLineItem, InvoiceForCreate } from "../types";
+import { LexwareInvoiceProvider } from "../adapter.ts";
+import type { LexwareClient } from "../client.ts";
+import { COUNTRY_CONTACTS } from "../constants.ts";
+import type { CustomLineItem, InvoiceForCreate } from "../types.ts";
 
 /**
  * These pin the exact Lexware payload the adapter builds.

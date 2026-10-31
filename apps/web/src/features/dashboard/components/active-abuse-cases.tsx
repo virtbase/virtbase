@@ -33,10 +33,10 @@ import {
   isActive,
   needsAnswer,
   useAbuseCases,
-} from "@/features/abuse/hooks/use-abuse-cases";
-import { useCaseLabels } from "@/features/abuse/hooks/use-case-labels";
-import { paths } from "@/lib/paths";
-import { STATUS_ICONS } from "@/ui/abuse/case-meta";
+} from "@/features/abuse/hooks/use-abuse-cases.ts";
+import { useCaseLabels } from "@/features/abuse/hooks/use-case-labels.ts";
+import { paths } from "@/lib/paths.ts";
+import { STATUS_ICONS } from "@/ui/abuse/case-meta.tsx";
 
 /** How many fit before the card stops being a summary. */
 const SHOWN = 3;

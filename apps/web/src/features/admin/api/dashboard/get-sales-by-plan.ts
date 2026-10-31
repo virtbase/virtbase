@@ -21,7 +21,7 @@ import { db } from "@virtbase/db/client";
 import { serverPlans, servers } from "@virtbase/db/schema";
 import { cacheLife, cacheTag } from "next/cache";
 import { cache } from "react";
-import { verifySession } from "../verify-session";
+import { verifySession } from "../verify-session.ts";
 
 export const getSalesByPlan = cache(async () => {
   "use cache: private";

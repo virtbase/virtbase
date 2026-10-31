@@ -32,7 +32,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@virtbase/ui/popover";
 import { useExtracted } from "next-intl";
 import type React from "react";
 import { use, useState } from "react";
-import type { getLinkableDatacenters } from "../../api/datacenters/get-linkable-datacenters";
+import type { getLinkableDatacenters } from "../../api/datacenters/get-linkable-datacenters.ts";
 
 interface DatacenterSelectProps
   extends Pick<React.ComponentProps<typeof Popover>, "modal">,

@@ -35,8 +35,8 @@ import {
   UpsertPointerRecordInputSchema,
   UpsertPointerRecordOutputSchema,
 } from "@virtbase/validators/server";
-import { integrations } from "../../integrations";
-import { serverProcedure } from "../../trpc";
+import { integrations } from "../../integrations/index.ts";
+import { serverProcedure } from "../../trpc.ts";
 
 export const serversRdnsRouter = {
   get: serverProcedure

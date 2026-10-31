@@ -20,10 +20,10 @@ import { db } from "@virtbase/db/client";
 import { users } from "@virtbase/db/schema";
 import type { Stripe } from "@virtbase/integration-stripe";
 import { stripe } from "@virtbase/integration-stripe";
-import { applyPaymentEvent } from "../orders/apply-payment-event";
-import { fulfilOrder } from "../orders/fulfill-order";
-import { resolveOrderId } from "../orders/legacy-snapshot";
-import type { OrderBillingAddress } from "../orders/record-billing-details";
+import { applyPaymentEvent } from "../orders/apply-payment-event.ts";
+import { fulfilOrder } from "../orders/fulfill-order.ts";
+import { resolveOrderId } from "../orders/legacy-snapshot.ts";
+import type { OrderBillingAddress } from "../orders/record-billing-details.ts";
 
 /**
  * Handles a successful Stripe payment.

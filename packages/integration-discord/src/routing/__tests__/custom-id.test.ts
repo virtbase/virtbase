@@ -23,7 +23,7 @@ import {
   encodeCustomId,
   MAX_CUSTOM_ID_LENGTH,
   routeKey,
-} from "../custom-id";
+} from "../custom-id.ts";
 
 describe("encodeCustomId", () => {
   test("round-trips a route with parameters", () => {

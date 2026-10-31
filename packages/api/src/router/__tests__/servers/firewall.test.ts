@@ -18,8 +18,12 @@
 import { afterAll, beforeAll, describe, expect, mock, test } from "bun:test";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { appRouter } from "../../../root";
-import { mockServer, mockSession, seedServerGraph } from "../../../testing";
+import { appRouter } from "../../../root.ts";
+import {
+  mockServer,
+  mockSession,
+  seedServerGraph,
+} from "../../../testing/index.ts";
 
 let testDb: TestDb;
 let caller: ReturnType<typeof appRouter.createCaller>;
@@ -130,7 +134,7 @@ describe("server.firewall.options.get", () => {
       digest: undefined,
     };
 
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         $get: () => Promise.resolve(mockFirewallOptions),
       }),
@@ -155,7 +159,7 @@ describe("server.firewall.options.update", () => {
   test("it updates the firewall settings if the user is authenticated and the server exists", async () => {
     const $put = mock(() => Promise.resolve());
 
-    mock.module("../../../proxmox", () => createProxmoxMock({ $put }));
+    mock.module("../../../proxmox/index.ts", () => createProxmoxMock({ $put }));
 
     const result = await caller.servers.firewall.options.update({
       server_id: mockServer.id,
@@ -189,7 +193,7 @@ describe("server.firewall.rules.get", () => {
       },
     ];
 
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         rules: {
           $get: () => Promise.resolve(mockRules),
@@ -224,7 +228,7 @@ describe("server.firewall.rules.create", () => {
   test("it creates a firewall rule with the expected Proxmox payload", async () => {
     const $post = mock(() => Promise.resolve());
 
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         rules: { $post },
       }),
@@ -262,7 +266,7 @@ describe("server.firewall.rules.delete", () => {
   test("it deletes a firewall rule at the given position", async () => {
     const $delete = mock(() => Promise.resolve());
 
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         rules: {
           $: () => ({ $delete }),
@@ -285,7 +289,7 @@ describe("server.firewall.rules.update", () => {
   test("it updates a firewall rule with log and digest", async () => {
     const $put = mock(() => Promise.resolve());
 
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         rules: {
           $: () => ({ $put }),
@@ -315,7 +319,7 @@ describe("server.firewall.rules.move", () => {
   test("it passes moveto unchanged when moving a rule down (higher pos to lower index)", async () => {
     const $put = mock(() => Promise.resolve());
 
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         rules: {
           $: () => ({ $put }),
@@ -336,7 +340,7 @@ describe("server.firewall.rules.move", () => {
   test("it passes moveto + 1 when moving a rule up (lower pos to higher index)", async () => {
     const $put = mock(() => Promise.resolve());
 
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         rules: {
           $: () => ({ $put }),

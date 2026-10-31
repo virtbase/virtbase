@@ -17,7 +17,7 @@
 
 import { ProxmoxServerStatus, ProxmoxTaskStatus } from "@virtbase/utils";
 import * as z from "zod";
-import { ServerSchema } from "./shared";
+import { ServerSchema } from "./shared.ts";
 
 export const GetServerStatusInputSchema = z.object({
   server_id: ServerSchema.shape.id,

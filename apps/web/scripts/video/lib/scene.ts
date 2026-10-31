@@ -38,7 +38,7 @@ import {
   servers,
   users,
 } from "@virtbase/db/schema";
-import { sessionCookies } from "../../../e2e/support/auth";
+import { sessionCookies } from "../../../e2e/support/auth.ts";
 
 /**
  * The server the episodes are filmed on.

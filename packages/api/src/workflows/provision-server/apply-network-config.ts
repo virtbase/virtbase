@@ -15,9 +15,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { GetProxmoxInstanceParams, NetworkAdapter } from "../../proxmox";
-import { getProxmoxInstance } from "../../proxmox";
-import { getNetworkAdapterConfig } from "../../proxmox/get-network-adapter-config";
+import { getNetworkAdapterConfig } from "../../proxmox/get-network-adapter-config.ts";
+import type {
+  GetProxmoxInstanceParams,
+  NetworkAdapter,
+} from "../../proxmox/index.ts";
+import { getProxmoxInstance } from "../../proxmox/index.ts";
 
 type ApplyNetworkConfigStepParams = {
   proxmoxNode: GetProxmoxInstanceParams;

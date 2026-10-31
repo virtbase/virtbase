@@ -21,14 +21,14 @@ import type { RowData } from "@tanstack/react-table";
 import { PlusCircle, XCircle } from "lucide-react";
 import { useExtracted } from "next-intl";
 import * as React from "react";
-import { Button } from "../button";
-import { cn } from "../index";
-import { Input } from "../input";
-import { Label } from "../label";
-import { Popover, PopoverContent, PopoverTrigger } from "../popover";
-import { Separator } from "../separator";
-import { Slider } from "../slider";
-import type { Column } from "../types/data-table";
+import { Button } from "../button.tsx";
+import { cn } from "../index.ts";
+import { Input } from "../input.tsx";
+import { Label } from "../label.tsx";
+import { Popover, PopoverContent, PopoverTrigger } from "../popover.tsx";
+import { Separator } from "../separator.tsx";
+import { Slider } from "../slider.tsx";
+import type { Column } from "../types/data-table.ts";
 
 interface Range {
   min: number;

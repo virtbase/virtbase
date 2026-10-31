@@ -24,8 +24,8 @@ import {
 } from "@virtbase/db/schema";
 import { escapedIlike, getDateIntervalFilter } from "@virtbase/db/utils";
 import { cacheLife, cacheTag } from "next/cache";
-import type { GetTemplateGroupsSchema } from "../../lib/template-groups/validations";
-import { verifySession } from "../verify-session";
+import type { GetTemplateGroupsSchema } from "../../lib/template-groups/validations.ts";
+import { verifySession } from "../verify-session.ts";
 
 const extras = {
   templatesCount: count(pt.id).as("templates_count"),

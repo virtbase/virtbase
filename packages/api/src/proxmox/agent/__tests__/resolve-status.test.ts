@@ -16,9 +16,9 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import type { GuestOsInfo } from "../os-info";
-import type { GuestAgentProbe } from "../probe";
-import { resolveAgentStatus } from "../resolve-status";
+import type { GuestOsInfo } from "../os-info.ts";
+import type { GuestAgentProbe } from "../probe.ts";
+import { resolveAgentStatus } from "../resolve-status.ts";
 
 const healthy: GuestAgentProbe = {
   reachable: true,

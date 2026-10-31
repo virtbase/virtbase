@@ -50,7 +50,7 @@ import {
   mockServerPlanPrice,
   mockSession,
   seedServerGraph,
-} from "../../testing/fixtures";
+} from "../../testing/fixtures.ts";
 
 /**
  * As in `subscriptions/__tests__/claim-renewal.test.ts`: every module in the
@@ -64,9 +64,9 @@ mock.module("@virtbase/db/client", () => ({ db: testDb }));
 // through the orders barrel and a real `start` would try to talk to a queue.
 mock.module("workflow/api", () => ({ start: async () => {} }));
 
-const { integrations } = await import("../../integrations");
+const { integrations } = await import("../../integrations/index.ts");
 const { renewSubscription, retryRenewal, driveRenewalAttempt } = await import(
-  "../renew-subscription"
+  "../renew-subscription.ts"
 );
 
 const USER_ID = mockSession.user.id;

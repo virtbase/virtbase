@@ -17,7 +17,12 @@
 
 import { COOKIE_DOMAIN } from "@virtbase/utils";
 import { defineRouting } from "next-intl/routing";
-import { COOKIE_MAX_AGE, COOKIE_NAME, defaultLocale, locales } from "./config";
+import {
+  COOKIE_MAX_AGE,
+  COOKIE_NAME,
+  defaultLocale,
+  locales,
+} from "./config.ts";
 
 export const routing = defineRouting({
   locales,

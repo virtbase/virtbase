@@ -19,7 +19,7 @@ import { describe, expect, test } from "bun:test";
 import { readdirSync, readFileSync, statSync } from "node:fs";
 import { join } from "node:path";
 
-import { EMOJI, isRenderableEmoji } from "../emoji";
+import { EMOJI, isRenderableEmoji } from "../emoji.ts";
 
 describe("isRenderableEmoji", () => {
   test("it accepts emoji from the emoji planes", () => {

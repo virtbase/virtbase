@@ -16,7 +16,7 @@
  */
 
 import { useQuery } from "@tanstack/react-query";
-import { useTRPC } from "@/lib/trpc/react";
+import { useTRPC } from "@/lib/trpc/react.tsx";
 
 /**
  * The customer's saved credentials, as the renewal opt-in needs to see them.

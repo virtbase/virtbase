@@ -22,7 +22,7 @@ import {
   ACCOUNT_DELETION_GRACE_PERIOD_DAYS,
   ACCOUNT_DELETION_TOKEN_TTL_HOURS,
 } from "@virtbase/utils";
-import { createDeletionToken, hashDeletionToken } from "./tokens";
+import { createDeletionToken, hashDeletionToken } from "./tokens.ts";
 
 /**
  * Records that a customer has asked to be deleted, and mints the token that

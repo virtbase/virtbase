@@ -27,12 +27,12 @@ import {
 import type { OrderConfigurationSnapshot } from "@virtbase/validators";
 import { createFormatter, createTranslator } from "use-intl/core";
 import { FatalError } from "workflow";
-import type { InvoiceCountry } from "../../lib/invoicing";
+import type { InvoiceCountry } from "../../lib/invoicing.ts";
 import {
   EU_VAT_RATES,
   mapCountryToInvoiceLocale,
   upgradeLineItemNames,
-} from "../../lib/invoicing";
+} from "../../lib/invoicing.ts";
 
 type GenerateInvoiceStepInput = {
   billingDetails: {
@@ -67,7 +67,7 @@ export async function generateInvoiceStep({
   // module can be evaluated while that module is still initialising -
   // which fails the whole step bundle with a TDZ error, not just this
   // step. `notifications/dispatch.ts` breaks the same cycle the same way.
-  const { integrations } = await import("../../integrations");
+  const { integrations } = await import("../../integrations/index.ts");
   const invoiceProvider = await integrations.resolve("invoice");
   if (!invoiceProvider) {
     throw new FatalError(

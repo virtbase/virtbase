@@ -16,15 +16,15 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { dominantCategory } from "../categories";
+import { dominantCategory } from "../categories.ts";
 import type {
   AbuseIpDbCheck,
   AbuseIpDbCheckBlock,
   AbuseIpDbClient,
-} from "../client";
-import { AbuseIpDbQuotaError } from "../client";
-import type { AbuseIpDbContext, AbuseIpDbSettings } from "../config";
-import { AbuseIpDbSource } from "../source";
+} from "../client.ts";
+import { AbuseIpDbQuotaError } from "../client.ts";
+import type { AbuseIpDbContext, AbuseIpDbSettings } from "../config.ts";
+import { AbuseIpDbSource } from "../source.ts";
 
 const settings = (overrides: Partial<AbuseIpDbSettings> = {}) =>
   ({

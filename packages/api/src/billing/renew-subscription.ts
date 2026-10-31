@@ -29,15 +29,15 @@ import { subscriptionRenewals, subscriptions } from "@virtbase/db/schema";
 import {
   claimRenewal,
   createRenewalOrder,
-} from "../subscriptions/claim-renewal";
-import type { CollectableRenewal } from "./collect";
-import { collectForRenewal } from "./collect";
-import type { RenewalOutcome } from "./record-outcome";
+} from "../subscriptions/claim-renewal.ts";
+import type { CollectableRenewal } from "./collect.ts";
+import { collectForRenewal } from "./collect.ts";
+import type { RenewalOutcome } from "./record-outcome.ts";
 import {
   markRenewalCollecting,
   recordCollectionResult,
   rescheduleAfterTransportError,
-} from "./record-outcome";
+} from "./record-outcome.ts";
 
 /**
  * Subscription statuses a *claimed* renewal may still be charged in.

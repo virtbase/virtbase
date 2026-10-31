@@ -18,8 +18,8 @@
 import { and, eq, isNull, ne } from "@virtbase/db";
 import type { db as database } from "@virtbase/db/client";
 import { paymentMethods } from "@virtbase/db/schema";
-import type { PaymentMethodSummary } from "./list";
-import { paymentMethodSummaryColumns } from "./list";
+import type { PaymentMethodSummary } from "./list.ts";
+import { paymentMethodSummaryColumns } from "./list.ts";
 
 type Database = typeof database;
 

@@ -29,8 +29,8 @@ import {
 } from "@virtbase/ui/table";
 import type { Table as TableType } from "@virtbase/ui/types";
 import { useExtracted } from "next-intl";
-import { AnimatedEmptyState } from "@/ui/animated-empty-state";
-import type { BackupsTableColumn } from "./columns";
+import { AnimatedEmptyState } from "@/ui/animated-empty-state.tsx";
+import type { BackupsTableColumn } from "./columns.tsx";
 
 export function BackupsTable({
   table,

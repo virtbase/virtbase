@@ -27,7 +27,7 @@ import { sendEmail } from "@virtbase/email";
 import InactivityNotice from "@virtbase/email/templates/account-inactivity-notice";
 import InactivityReminder from "@virtbase/email/templates/account-inactivity-reminder";
 import { getEmailTitle } from "@virtbase/email/translations";
-import { withCronSecret } from "@/lib/with-cron-secret";
+import { withCronSecret } from "@/lib/with-cron-secret.ts";
 
 /**
  * Schedules abandoned accounts for deletion, and reminds the ones already

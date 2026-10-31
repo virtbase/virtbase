@@ -29,7 +29,7 @@ import {
 } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { appRouter } from "../../../root";
+import { appRouter } from "../../../root.ts";
 import {
   mockDatacenter,
   mockProxmoxNode,
@@ -38,7 +38,7 @@ import {
   mockServerPlan,
   mockServerPlanPrice,
   mockSession,
-} from "../../../testing";
+} from "../../../testing/index.ts";
 
 let testDb: TestDb;
 let caller: ReturnType<typeof appRouter.createCaller>;

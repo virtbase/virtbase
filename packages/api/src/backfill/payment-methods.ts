@@ -20,8 +20,8 @@ import type { db as database, Executor } from "@virtbase/db/client";
 import { paymentMethods, users } from "@virtbase/db/schema";
 import type { Stripe } from "@virtbase/integration-stripe";
 import { stripe } from "@virtbase/integration-stripe";
-import { recordPaymentMethod } from "../payment-methods/record";
-import { describeStripePaymentMethod } from "../payment-methods/settle-stripe-payment-method";
+import { recordPaymentMethod } from "../payment-methods/record.ts";
+import { describeStripePaymentMethod } from "../payment-methods/settle-stripe-payment-method.ts";
 
 /**
  * The cards customers saved before this application wrote them down.

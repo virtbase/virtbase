@@ -25,7 +25,7 @@ import { useState } from "react";
 
 const CreateAbuseCaseDialog = dynamic(
   () =>
-    import("./create-abuse-case-dialog").then((mod) => ({
+    import("./create-abuse-case-dialog.tsx").then((mod) => ({
       default: mod.CreateAbuseCaseDialog,
     })),
   { ssr: false },

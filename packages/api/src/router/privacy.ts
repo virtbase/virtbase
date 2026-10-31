@@ -37,14 +37,17 @@ import {
 } from "@virtbase/utils";
 import { start } from "workflow/api";
 import * as z from "zod";
-import { getDeletionBlockers, hasBlockers } from "../privacy/deletion/blockers";
+import {
+  getDeletionBlockers,
+  hasBlockers,
+} from "../privacy/deletion/blockers.ts";
 import {
   cancelAccountDeletion,
   requestAccountDeletion,
-} from "../privacy/deletion/lifecycle";
-import { revokeStepUp } from "../step-up/marker";
-import { protectedProcedure, stepUpProcedure } from "../trpc";
-import { exportUserDataWorkflow } from "../workflows/export-user-data";
+} from "../privacy/deletion/lifecycle.ts";
+import { revokeStepUp } from "../step-up/marker.ts";
+import { protectedProcedure, stepUpProcedure } from "../trpc.ts";
+import { exportUserDataWorkflow } from "../workflows/export-user-data/index.ts";
 
 export const privacyRouter = {
   /**

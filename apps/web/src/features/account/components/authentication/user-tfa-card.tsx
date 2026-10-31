@@ -35,10 +35,10 @@ import {
 import { Skeleton } from "@virtbase/ui/skeleton";
 import { useExtracted } from "next-intl";
 import { useState } from "react";
-import { authClient } from "@/lib/auth/client";
-import { ItemRow } from "../item-row";
-import { RegenerateBackupCodesButton } from "./regenerate-backup-codes-button";
-import { TwoFactorManageButton } from "./two-factor-manage-button";
+import { authClient } from "@/lib/auth/client.ts";
+import { ItemRow } from "../item-row.tsx";
+import { RegenerateBackupCodesButton } from "./regenerate-backup-codes-button.tsx";
+import { TwoFactorManageButton } from "./two-factor-manage-button.tsx";
 
 export function UserTfaCard() {
   const t = useExtracted();

@@ -29,7 +29,7 @@ import {
   TextInputStyle,
 } from "discord-api-types/v10";
 
-import { encodeCustomId } from "../routing";
+import { encodeCustomId } from "../routing/index.ts";
 
 const TITLE_MAX = 45;
 /**

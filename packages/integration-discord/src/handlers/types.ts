@@ -23,9 +23,9 @@ import type {
 } from "discord-api-types/v10";
 import type { Locale } from "next-intl";
 
-import type { DiscordClient } from "../api";
-import type { EmojiResolver } from "../emoji";
-import type { UserByInteraction } from "../utils/get-user-by-interaction";
+import type { DiscordClient } from "../api/index.ts";
+import type { EmojiResolver } from "../emoji/index.ts";
+import type { UserByInteraction } from "../utils/get-user-by-interaction.ts";
 
 /**
  * Acknowledges the interaction now and edits the message when `work` resolves.

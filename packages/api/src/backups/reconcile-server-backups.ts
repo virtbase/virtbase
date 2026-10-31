@@ -18,8 +18,8 @@
 import { and, eq, isNull } from "@virtbase/db";
 import type { db as database } from "@virtbase/db/client";
 import { serverBackups } from "@virtbase/db/schema";
-import type { ProxmoxInstance } from "../proxmox";
-import { reconcileServerBackup } from "./reconcile-backup";
+import type { ProxmoxInstance } from "../proxmox/index.ts";
+import { reconcileServerBackup } from "./reconcile-backup.ts";
 
 type Database = typeof database;
 

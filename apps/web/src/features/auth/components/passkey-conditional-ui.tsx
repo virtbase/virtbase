@@ -20,8 +20,8 @@
 import { getSafeRedirectUrl } from "@virtbase/utils";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useContext, useEffect, useRef } from "react";
-import { authClient, isTwoFactorRedirect } from "@/lib/auth/client";
-import { LoginFormContext } from "./login-form-context";
+import { authClient, isTwoFactorRedirect } from "@/lib/auth/client.ts";
+import { LoginFormContext } from "./login-form-context.tsx";
 
 /**
  * This component will automatically trigger the passkey login flow

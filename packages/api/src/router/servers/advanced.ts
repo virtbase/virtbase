@@ -24,7 +24,7 @@ import {
   UpdateServerAdvancedInputSchema,
   UpdateServerAdvancedOutputSchema,
 } from "@virtbase/validators/server";
-import { serverProcedure } from "../../trpc";
+import { serverProcedure } from "../../trpc.ts";
 
 export const serversAdvancedRouter = {
   get: serverProcedure

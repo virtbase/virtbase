@@ -29,8 +29,8 @@ import { useAction } from "next-safe-action/hooks";
 import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { createProxmoxTemplateGroupAction } from "../../api/proxmox-template-groups/create-proxmox-template-group";
-import { transformTextField } from "../../lib/transform-text-field";
+import { createProxmoxTemplateGroupAction } from "../../api/proxmox-template-groups/create-proxmox-template-group.ts";
+import { transformTextField } from "../../lib/transform-text-field.ts";
 
 interface CreateTemplateGroupDialogProps
   extends Omit<

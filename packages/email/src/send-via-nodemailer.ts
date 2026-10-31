@@ -18,8 +18,8 @@
 import nodemailer from "nodemailer";
 import { pretty, render } from "react-email";
 import type { CreateEmailOptions } from "resend";
-import { EmailDeliveryError } from "./errors";
-import { TRUSTPILOT_AFS_EMAIL } from "./resend/constants";
+import { EmailDeliveryError } from "./errors.ts";
+import { TRUSTPILOT_AFS_EMAIL } from "./resend/constants.ts";
 
 // Send email using NodeMailer (Recommended for local development)
 export const sendViaNodeMailer = async ({

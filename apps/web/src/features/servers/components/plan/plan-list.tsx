@@ -28,10 +28,10 @@ import {
 } from "@virtbase/ui/empty";
 import { LucideServer } from "@virtbase/ui/icons";
 import { useExtracted, useFormatter } from "next-intl";
-import { ItemRow } from "@/features/account/components/item-row";
-import { formatDiscountLabel } from "@/features/checkout/utils/format-discount";
-import type { Plan } from "./plan-context";
-import { PlanSpecs } from "./plan-specs";
+import { ItemRow } from "@/features/account/components/item-row.tsx";
+import { formatDiscountLabel } from "@/features/checkout/utils/format-discount.ts";
+import type { Plan } from "./plan-context.tsx";
+import { PlanSpecs } from "./plan-specs.tsx";
 
 interface PlanListProps {
   plans: Plan[];

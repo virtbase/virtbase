@@ -26,7 +26,7 @@ import {
   notificationDeliveries,
 } from "@virtbase/db/schema";
 import { FatalError } from "workflow";
-import { unplannedErasures } from "./erasure-plan";
+import { unplannedErasures } from "./erasure-plan.ts";
 
 type EraseSubjectDataStepParams = {
   userId: string;

@@ -17,10 +17,13 @@
 
 import * as Sentry from "@sentry/node";
 import { db } from "@virtbase/db/client";
-import { renderTemplateVendorData } from "../../cloud-init";
-import type { GetProxmoxInstanceParams, NetworkAdapter } from "../../proxmox";
-import { getProxmoxInstance } from "../../proxmox";
-import { generateCloudInitNetworkConfig } from "../../proxmox/generate-cloud-init-network-config";
+import { renderTemplateVendorData } from "../../cloud-init/index.ts";
+import { generateCloudInitNetworkConfig } from "../../proxmox/generate-cloud-init-network-config.ts";
+import type {
+  GetProxmoxInstanceParams,
+  NetworkAdapter,
+} from "../../proxmox/index.ts";
+import { getProxmoxInstance } from "../../proxmox/index.ts";
 
 type ApplyCloudInitStepParams = {
   proxmoxNode: GetProxmoxInstanceParams & { snippetStorage: string };

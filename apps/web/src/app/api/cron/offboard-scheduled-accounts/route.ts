@@ -20,7 +20,7 @@ import { and, isNotNull, isNull, lte, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { users } from "@virtbase/db/schema";
 import { start } from "workflow/api";
-import { withCronSecret } from "@/lib/with-cron-secret";
+import { withCronSecret } from "@/lib/with-cron-secret.ts";
 
 /**
  * Erases accounts whose grace period has run out.

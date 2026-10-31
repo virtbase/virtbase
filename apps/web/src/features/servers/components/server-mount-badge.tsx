@@ -25,8 +25,8 @@ import {
 } from "@virtbase/ui/hover-card";
 import { LucideDisc3 } from "@virtbase/ui/icons";
 import { useExtracted, useFormatter, useNow } from "next-intl";
-import { CustomImageIcon } from "@/ui/custom-image-icon";
-import type { GetServerOutput } from "../hooks/use-server";
+import { CustomImageIcon } from "@/ui/custom-image-icon.tsx";
+import type { GetServerOutput } from "../hooks/use-server.ts";
 
 export function ServerMountBadge({
   mount,

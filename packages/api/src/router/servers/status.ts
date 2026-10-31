@@ -32,10 +32,10 @@ import {
   invalidateDetectionGuard,
   isDetectionStale,
   refreshServerOperatingSystem,
-} from "../../guest-os";
-import { getLastTask, performPowerAction } from "../../proxmox";
-import { getDiskInfo } from "../../proxmox/get-disk-info";
-import { serverProcedure } from "../../trpc";
+} from "../../guest-os/index.ts";
+import { getDiskInfo } from "../../proxmox/get-disk-info.ts";
+import { getLastTask, performPowerAction } from "../../proxmox/index.ts";
+import { serverProcedure } from "../../trpc.ts";
 
 /**
  * Read `freemem` off a QEMU status response.

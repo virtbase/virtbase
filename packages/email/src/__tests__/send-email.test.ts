@@ -17,7 +17,7 @@
 
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
 import type { CreateEmailResponse } from "resend";
-import { EmailDeliveryError, sendBatchEmail, sendEmail } from "../index";
+import { EmailDeliveryError, sendBatchEmail, sendEmail } from "../index.ts";
 
 /**
  * The provider is stubbed at `fetch`, not at a module boundary.

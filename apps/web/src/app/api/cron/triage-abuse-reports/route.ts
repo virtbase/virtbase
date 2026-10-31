@@ -17,7 +17,7 @@
 
 import { sweepUntriagedCases } from "@virtbase/api/abuse";
 import { db } from "@virtbase/db/client";
-import { withCronSecret } from "@/lib/with-cron-secret";
+import { withCronSecret } from "@/lib/with-cron-secret.ts";
 
 /**
  * Reads the abuse reports nobody has looked at yet.

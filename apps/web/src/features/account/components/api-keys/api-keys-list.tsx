@@ -31,8 +31,8 @@ import { Spinner } from "@virtbase/ui/spinner";
 import { useRouter } from "next/navigation";
 import { useExtracted, useFormatter, useNow } from "next-intl";
 import { use, useTransition } from "react";
-import { authClient } from "@/lib/auth/client";
-import { ItemRow } from "../item-row";
+import { authClient } from "@/lib/auth/client.ts";
+import { ItemRow } from "../item-row.tsx";
 
 export function ApiKeysList({
   promise,

@@ -37,14 +37,14 @@ import type { Metadata } from "next";
 import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import { getExtracted, getFormatter, getLocale } from "next-intl/server";
-import { defaultLocale } from "@/i18n/config";
-import { IntlLink } from "@/i18n/navigation.public";
-import { constructAlternateLanguages } from "@/lib/hreflang";
-import { getDocumentLocales, helpArticles } from "@/lib/source";
-import { HelpHint } from "@/ui/fumadocs/help-hint";
-import { TableOfContents } from "@/ui/fumadocs/table-of-contents";
-import { Video } from "@/ui/fumadocs/video";
-import { BreadcrumbJsonLd } from "@/ui/seo/breadcrumb-json-ld";
+import { defaultLocale } from "@/i18n/config.ts";
+import { IntlLink } from "@/i18n/navigation.public.ts";
+import { constructAlternateLanguages } from "@/lib/hreflang.ts";
+import { getDocumentLocales, helpArticles } from "@/lib/source.ts";
+import { HelpHint } from "@/ui/fumadocs/help-hint.tsx";
+import { TableOfContents } from "@/ui/fumadocs/table-of-contents.tsx";
+import { Video } from "@/ui/fumadocs/video.tsx";
+import { BreadcrumbJsonLd } from "@/ui/seo/breadcrumb-json-ld.tsx";
 
 export async function generateStaticParams() {
   return helpArticles.getPages().map((page) => ({

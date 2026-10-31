@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { resolveOperatingSystem } from "./operating-system";
+import { resolveOperatingSystem } from "./operating-system.ts";
 
 /**
  * Where the operating system on screen came from.

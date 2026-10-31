@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { InboundSignal } from "./signal";
+import type { InboundSignal } from "./signal.ts";
 
 export type AbuseCategory =
   | "spam"

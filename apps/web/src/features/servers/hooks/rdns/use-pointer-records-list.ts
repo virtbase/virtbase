@@ -18,7 +18,7 @@
 import { useQuery } from "@tanstack/react-query";
 import type { RouterInputs, RouterOutputs } from "@virtbase/api";
 import { MAX_ENTRIES_PER_PAGE } from "@virtbase/utils";
-import { useTRPC } from "@/lib/trpc/react";
+import { useTRPC } from "@/lib/trpc/react.tsx";
 
 export type GetPointerRecordsListInput =
   RouterInputs["servers"]["rdns"]["list"];

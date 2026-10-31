@@ -33,7 +33,7 @@ import { sendBatchEmail } from "@virtbase/email";
 import ServerRenewalReminder from "@virtbase/email/templates/server-renewal-reminder";
 import { getEmailTitle } from "@virtbase/email/translations";
 import { SERVER_DELETION_GRACE_PERIOD_DAYS } from "@virtbase/utils";
-import { withCronSecret } from "@/lib/with-cron-secret";
+import { withCronSecret } from "@/lib/with-cron-secret.ts";
 
 /**
  * Checks for servers that are about to terminate and

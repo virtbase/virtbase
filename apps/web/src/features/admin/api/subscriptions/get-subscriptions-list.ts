@@ -31,8 +31,8 @@ import { db } from "@virtbase/db/client";
 import { servers, subscriptions, users } from "@virtbase/db/schema";
 import { escapedIlike, getDateIntervalFilter } from "@virtbase/db/utils";
 import { cacheLife, cacheTag } from "next/cache";
-import type { GetSubscriptionsSchema } from "../../lib/subscriptions/validations";
-import { verifySession } from "../verify-session";
+import type { GetSubscriptionsSchema } from "../../lib/subscriptions/validations.ts";
+import { verifySession } from "../verify-session.ts";
 
 /**
  * The `server` subject type, spelled out rather than imported.

@@ -16,8 +16,8 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import type { DiscountInput } from "../pick-best-discount";
-import { applyDiscount, pickBestDiscount } from "../pick-best-discount";
+import type { DiscountInput } from "../pick-best-discount.ts";
+import { applyDiscount, pickBestDiscount } from "../pick-best-discount.ts";
 
 const discount = (overrides: Partial<DiscountInput> = {}): DiscountInput => ({
   id: "dsc_test",

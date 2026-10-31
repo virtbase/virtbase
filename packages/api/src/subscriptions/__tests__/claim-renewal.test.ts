@@ -40,7 +40,7 @@ import {
   mockServerPlanPrice,
   mockSession,
   seedServerGraph,
-} from "../../testing/fixtures";
+} from "../../testing/fixtures.ts";
 
 /**
  * As in `orders/__tests__/reconcile-orders.test.ts`: the module binds `db` at
@@ -50,7 +50,9 @@ const testDb: TestDb = await createTestDb();
 
 mock.module("@virtbase/db/client", () => ({ db: testDb }));
 
-const { claimRenewal, createRenewalOrder } = await import("../claim-renewal");
+const { claimRenewal, createRenewalOrder } = await import(
+  "../claim-renewal.ts"
+);
 
 const USER_ID = mockSession.user.id;
 const SERVER_ID = mockServer.id;

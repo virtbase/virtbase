@@ -17,9 +17,9 @@
 
 import { beforeEach, describe, expect, test } from "bun:test";
 import type { IntegrationLogger } from "@virtbase/integration-sdk";
-import { DEFAULT_DURATION_BUCKETS_MS } from "../config";
-import { MetricsRuntime } from "../runtime";
-import { PrometheusMetricsSink } from "../sink";
+import { DEFAULT_DURATION_BUCKETS_MS } from "../config.ts";
+import { MetricsRuntime } from "../runtime.ts";
+import { PrometheusMetricsSink } from "../sink.ts";
 
 const warnings: string[] = [];
 

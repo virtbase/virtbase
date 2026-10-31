@@ -40,21 +40,24 @@ import type { DataTableRowAction } from "@virtbase/ui/types";
 import dynamic from "next/dynamic";
 import { useExtracted } from "next-intl";
 import { Fragment, useMemo, useState } from "react";
-import { AnimatedEmptyState } from "@/ui/animated-empty-state";
+import { AnimatedEmptyState } from "@/ui/animated-empty-state.tsx";
 import type {
   FirewallTableRow,
   GuestRule,
   HostRule,
-} from "../../lib/table-rows";
-import { buildFirewallTableRows, countHostRows } from "../../lib/table-rows";
-import { useFirewallRulesTableColumns } from "./columns";
+} from "../../lib/table-rows.ts";
+import { buildFirewallTableRows, countHostRows } from "../../lib/table-rows.ts";
+import { useFirewallRulesTableColumns } from "./columns.tsx";
 
-const FirewallRuleDialog = dynamic(() => import("../firewall-rule-dialog"), {
-  ssr: false,
-});
+const FirewallRuleDialog = dynamic(
+  () => import("../firewall-rule-dialog.tsx"),
+  {
+    ssr: false,
+  },
+);
 
 const DeleteFirewallRuleDialog = dynamic(
-  () => import("../delete-firewall-rule-dialog"),
+  () => import("../delete-firewall-rule-dialog.tsx"),
   { ssr: false },
 );
 

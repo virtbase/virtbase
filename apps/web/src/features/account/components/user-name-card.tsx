@@ -31,7 +31,7 @@ import { Skeleton } from "@virtbase/ui/skeleton";
 import { Spinner } from "@virtbase/ui/spinner";
 import { useExtracted } from "next-intl";
 import { useEffect, useState, useTransition } from "react";
-import { authClient } from "@/lib/auth/client";
+import { authClient } from "@/lib/auth/client.ts";
 
 export function UserNameCard() {
   const t = useExtracted();

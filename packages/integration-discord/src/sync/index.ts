@@ -15,15 +15,15 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { createDiscordClient } from "../api";
-import type { DiscordContext } from "../config";
-import { reconcileCommands } from "./commands";
-import { reconcileEmojis } from "./emojis";
-import { reconcileRoleConnections } from "./role-connections";
-import type { Reconciler, SyncResult } from "./types";
+import { createDiscordClient } from "../api/index.ts";
+import type { DiscordContext } from "../config.ts";
+import { reconcileCommands } from "./commands.ts";
+import { reconcileEmojis } from "./emojis.ts";
+import { reconcileRoleConnections } from "./role-connections.ts";
+import type { Reconciler, SyncResult } from "./types.ts";
 
-export * from "./canonical";
-export * from "./types";
+export * from "./canonical.ts";
+export * from "./types.ts";
 
 /**
  * Everything this package owns on Discord's side. Adding a resource is adding

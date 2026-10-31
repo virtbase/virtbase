@@ -18,8 +18,8 @@
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { servers } from "@virtbase/db/schema";
-import { createSubscription } from "../../subscriptions/create-subscription";
-import { transitionSubjectSubscription } from "../../subscriptions/subject-subscription";
+import { createSubscription } from "../../subscriptions/create-subscription.ts";
+import { transitionSubjectSubscription } from "../../subscriptions/subject-subscription.ts";
 
 type CreateServerSubscriptionStepParams = {
   serverId: string;

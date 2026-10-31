@@ -17,8 +17,8 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils/create-id";
-import { subnetAllocations } from "./subnet-allocations";
+import { createId } from "../utils/create-id.ts";
+import { subnetAllocations } from "./subnet-allocations.ts";
 
 export const pointerRecords = d.snakeCase.table(
   "pointer_records",

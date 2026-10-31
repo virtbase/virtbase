@@ -17,7 +17,7 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils";
+import { createId } from "../utils/index.ts";
 
 /**
  * A datacenter represents a physical location where one ore more

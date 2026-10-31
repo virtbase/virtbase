@@ -26,7 +26,7 @@ import {
 import { useExtracted, useFormatter } from "next-intl";
 import React, { use } from "react";
 import { Label, Pie, PieChart } from "recharts";
-import type { getSalesByPlan } from "../../api/dashboard/get-sales-by-plan";
+import type { getSalesByPlan } from "../../api/dashboard/get-sales-by-plan.ts";
 
 export function SalesByPlan({
   promise,

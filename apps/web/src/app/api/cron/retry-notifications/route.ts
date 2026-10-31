@@ -16,7 +16,7 @@
  */
 
 import { retryFailedNotifications } from "@virtbase/api/notifications";
-import { withCronSecret } from "@/lib/with-cron-secret";
+import { withCronSecret } from "@/lib/with-cron-secret.ts";
 
 /**
  * Re-sends notifications whose channel was unavailable.

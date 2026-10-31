@@ -18,7 +18,7 @@
 import { PUBLIC_DOMAIN } from "@virtbase/utils";
 import type { Locale } from "next-intl";
 
-import { defaultLocale, locales } from "@/i18n/config";
+import { defaultLocale, locales } from "@/i18n/config.ts";
 
 /**
  * Builds the `hreflang` map for a locale-agnostic path, for use as

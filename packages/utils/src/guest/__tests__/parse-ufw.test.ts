@@ -16,8 +16,8 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { parseUfwStatus } from "../parse-ufw";
-import { UFW_INACTIVE, UFW_NUMBERED, UFW_VERBOSE } from "./fixtures";
+import { parseUfwStatus } from "../parse-ufw.ts";
+import { UFW_INACTIVE, UFW_NUMBERED, UFW_VERBOSE } from "./fixtures.ts";
 
 describe("parseUfwStatus", () => {
   test("it reads the active flag and the default policy", () => {

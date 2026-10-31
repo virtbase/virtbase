@@ -27,7 +27,7 @@ import {
 import { LucideSearchX } from "@virtbase/ui/icons";
 import NextLink from "next/link";
 import { useExtracted } from "next-intl";
-import { paths } from "@/lib/paths";
+import { paths } from "@/lib/paths.ts";
 
 export default function ServerNotFound() {
   const t = useExtracted();

@@ -23,9 +23,9 @@ import { useExtracted } from "next-intl";
 import {
   RegisterProvider,
   useRegisterContext,
-} from "@/features/auth/components/register/context";
-import { SignUpForm } from "@/features/auth/components/register/signup-form";
-import { VerifyEmailForm } from "@/features/auth/components/register/verify-email-form";
+} from "@/features/auth/components/register/context.tsx";
+import { SignUpForm } from "@/features/auth/components/register/signup-form.tsx";
+import { VerifyEmailForm } from "@/features/auth/components/register/verify-email-form.tsx";
 
 export default function RegisterPageClient() {
   return (

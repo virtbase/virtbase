@@ -93,7 +93,7 @@ export async function detachPaymentMethodsStep({
 
   for (const method of live) {
     const { requirePaymentCapability } = await import(
-      "../../payment-methods/provider"
+      "../../payment-methods/provider.ts"
     );
 
     const detachPaymentMethod = await requirePaymentCapability(

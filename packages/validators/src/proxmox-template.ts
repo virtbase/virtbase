@@ -16,7 +16,7 @@
  */
 
 import * as z from "zod";
-import { ObjectTimestampSchema } from "./timestamps";
+import { ObjectTimestampSchema } from "./timestamps.ts";
 
 export const ProxmoxTemplateSchema = z.object({
   id: z

@@ -41,8 +41,8 @@ import {
 import { formatBits, formatBytes } from "@virtbase/utils";
 import { useExtracted, useFormatter } from "next-intl";
 import type React from "react";
-import { IntlLink } from "@/i18n/navigation.public";
-import { formatDiscountLabel } from "../utils/format-discount";
+import { IntlLink } from "@/i18n/navigation.public.ts";
+import { formatDiscountLabel } from "../utils/format-discount.ts";
 
 type OfferCardProps = React.ComponentProps<"div"> & {
   plan: {

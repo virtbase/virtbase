@@ -16,8 +16,8 @@
  */
 
 import { FatalError } from "workflow";
-import type { GetProxmoxInstanceParams } from "../../proxmox";
-import { getProxmoxInstance } from "../../proxmox";
+import type { GetProxmoxInstanceParams } from "../../proxmox/index.ts";
+import { getProxmoxInstance } from "../../proxmox/index.ts";
 
 type ResizeDiskStepParams = {
   proxmoxNode: GetProxmoxInstanceParams;

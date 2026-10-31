@@ -15,8 +15,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { ExposureSeverity } from "../constants/firewall";
-import { findSensitivePort } from "../constants/firewall";
+import type { ExposureSeverity } from "../constants/firewall.ts";
+import { findSensitivePort } from "../constants/firewall.ts";
 import type {
   FirewallAction,
   GuestFirewallManager,
@@ -24,7 +24,7 @@ import type {
   GuestFirewallRule,
   ListeningSocket,
   SocketProtocol,
-} from "./types";
+} from "./types.ts";
 
 /**
  * What a firewall does to a packet arriving from an arbitrary internet host.

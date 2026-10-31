@@ -30,8 +30,8 @@ import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import type z4 from "zod/v4";
-import { PasswordRequirements } from "@/features/auth/components/password-requirements";
-import { authClient } from "@/lib/auth/client";
+import { PasswordRequirements } from "@/features/auth/components/password-requirements.tsx";
+import { authClient } from "@/lib/auth/client.ts";
 
 export const ResetPasswordForm = () => {
   const t = useExtracted();

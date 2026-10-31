@@ -23,7 +23,7 @@ import { Spinner } from "@virtbase/ui/spinner";
 import { useExtracted } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import { toast } from "sonner";
-import { deleteProxmoxTemplateAction } from "../../api/proxmox-templates/create-proxmox-template";
+import { deleteProxmoxTemplateAction } from "../../api/proxmox-templates/create-proxmox-template.ts";
 
 interface DeleteTemplateDialogProps
   extends Omit<

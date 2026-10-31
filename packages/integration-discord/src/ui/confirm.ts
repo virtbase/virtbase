@@ -18,11 +18,11 @@
 import { ButtonStyle, InteractionResponseType } from "discord-api-types/v10";
 import type { Locale } from "next-intl";
 import { getExtracted } from "next-intl/server";
-import { createEmbed } from "../utils/create-embed";
-import { actionButton, row } from "./components";
-import { EMOJI } from "./emoji";
-import type { MessageResponse, ResponseType } from "./message";
-import { message } from "./message";
+import { createEmbed } from "../utils/create-embed.ts";
+import { actionButton, row } from "./components.ts";
+import { EMOJI } from "./emoji.ts";
+import type { MessageResponse, ResponseType } from "./message.ts";
+import { message } from "./message.ts";
 
 /**
  * The screen that stands between a customer and something irreversible.

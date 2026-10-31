@@ -15,4 +15,4 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export { default } from "@/app/app.virtbase.com/[locale]/(auth)/layout";
+export { default } from "@/app/app.virtbase.com/[locale]/(auth)/layout.tsx";

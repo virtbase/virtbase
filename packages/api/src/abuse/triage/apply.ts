@@ -20,13 +20,13 @@ import { and, asc, eq, isNull, sql } from "@virtbase/db";
 import type { db as database } from "@virtbase/db/client";
 import type { AbuseCase } from "@virtbase/db/schema";
 import { abuseCaseMessages, abuseCases } from "@virtbase/db/schema";
-import { dispatchNotification } from "../../notifications/dispatch";
-import { caseReference, linkCaseServer, recordCaseEvent } from "../case";
-import { resolveSignalSubject } from "../resolve-subject";
-import { verifiedAddresses } from "./addresses";
-import type { AbuseClassification } from "./classify";
-import { classifyAbuseReport, isTriageAvailable } from "./classify";
-import { MAX_TRIAGE_BODY_CHARS, TRIAGE_BATCH_SIZE } from "./model";
+import { dispatchNotification } from "../../notifications/dispatch.ts";
+import { caseReference, linkCaseServer, recordCaseEvent } from "../case.ts";
+import { resolveSignalSubject } from "../resolve-subject.ts";
+import { verifiedAddresses } from "./addresses.ts";
+import type { AbuseClassification } from "./classify.ts";
+import { classifyAbuseReport, isTriageAvailable } from "./classify.ts";
+import { MAX_TRIAGE_BODY_CHARS, TRIAGE_BATCH_SIZE } from "./model.ts";
 
 type Database = typeof database;
 

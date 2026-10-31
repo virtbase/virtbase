@@ -27,9 +27,9 @@ import { Switch } from "@virtbase/ui/switch";
 import { useExtracted } from "next-intl";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server";
-import { GenericErrorInline } from "@/ui/generic-error-inline";
-import { FirewallActionState } from "./firewall-action-state";
+import { HydrateClient, prefetch, trpc } from "@/lib/trpc/server.tsx";
+import { GenericErrorInline } from "@/ui/generic-error-inline.tsx";
+import { FirewallActionState } from "./firewall-action-state.tsx";
 
 async function FirewallPolicy({
   promise,

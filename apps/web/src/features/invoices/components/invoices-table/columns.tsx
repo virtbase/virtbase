@@ -30,7 +30,7 @@ import { Spinner } from "@virtbase/ui/spinner";
 import type { ColumnDef, Row } from "@virtbase/ui/types";
 import type { ListInvoicesOutput } from "@virtbase/validators";
 import { useExtracted, useFormatter } from "next-intl";
-import { useDownloadInvoice } from "@/features/dashboard/hooks/use-download-invoice";
+import { useDownloadInvoice } from "@/features/dashboard/hooks/use-download-invoice.ts";
 
 type ListInvoice = ListInvoicesOutput["invoices"][number];
 

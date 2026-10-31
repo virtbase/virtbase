@@ -25,7 +25,7 @@ import { db } from "@virtbase/db/client";
 import { proxmoxNodes, proxmoxTemplates } from "@virtbase/db/schema";
 import { DownloadProxmoxTemplateImageInputSchema } from "@virtbase/validators/admin";
 import { revalidatePath, revalidateTag } from "next/cache";
-import { actionClient } from "../../lib/action-client";
+import { actionClient } from "../../lib/action-client.ts";
 
 /**
  * Downloads one template's image onto every node, now, rather than waiting for

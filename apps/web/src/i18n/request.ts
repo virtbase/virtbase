@@ -38,7 +38,7 @@ import { cache } from "react";
 // Deferring the import breaks the cycle at the only edge that is not load
 // bearing: nothing here needs `auth` until a request actually asks for a
 // locale.
-import { COOKIE_NAME, defaultLocale, locales } from "./config";
+import { COOKIE_NAME, defaultLocale, locales } from "./config.ts";
 
 /**
  * The two ways `next/root-params` fails that are not our mistake.
@@ -105,7 +105,7 @@ async function getRouteLocale(): Promise<string | undefined> {
  */
 const getStoredLocale = cache(async (): Promise<Locale | undefined> => {
   try {
-    const { auth } = await import("@/lib/auth/server");
+    const { auth } = await import("@/lib/auth/server.ts");
     const session = await auth.api.getSession({ headers: await headers() });
 
     if (session && hasLocale(locales, session.user.locale)) {

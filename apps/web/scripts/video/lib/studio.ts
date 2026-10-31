@@ -19,13 +19,13 @@ import { mkdir, rm } from "node:fs/promises";
 import { join } from "node:path";
 import type { CDPSession, Locator, Page } from "@playwright/test";
 import { chromium } from "@playwright/test";
-import { installStage } from "./overlay";
-import type { Cue, Frame } from "./render";
-import { render } from "./render";
-import type { VoiceName } from "./tools";
-import { ensureTools, workspaceFor } from "./tools";
-import type { VoiceEngine } from "./voice";
-import { DEFAULT_VOICE_OPTIONS, speakAll, subtitles } from "./voice";
+import { installStage } from "./overlay.ts";
+import type { Cue, Frame } from "./render.ts";
+import { render } from "./render.ts";
+import type { VoiceName } from "./tools.ts";
+import { ensureTools, workspaceFor } from "./tools.ts";
+import type { VoiceEngine } from "./voice.ts";
+import { DEFAULT_VOICE_OPTIONS, speakAll, subtitles } from "./voice.ts";
 
 /**
  * The recording studio: one browser, one narrator, one take.

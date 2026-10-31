@@ -15,8 +15,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { resend } from "./client";
-import { RESEND_AUDIENCE_ID } from "./constants";
+import { resend } from "./client.ts";
+import { RESEND_AUDIENCE_ID } from "./constants.ts";
 
 export async function subscribe({
   email,

@@ -16,7 +16,7 @@
  */
 
 import z from "zod";
-import { ObjectTimestampSchema } from "../timestamps";
+import { ObjectTimestampSchema } from "../timestamps.ts";
 
 export const DatacenterSchema = z.object({
   id: z

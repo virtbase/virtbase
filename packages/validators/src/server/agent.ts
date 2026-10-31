@@ -16,8 +16,8 @@
  */
 
 import * as z from "zod";
-import { EXAMPLE_DATE, RFC3339LINK } from "../timestamps";
-import { ServerSchema } from "./shared";
+import { EXAMPLE_DATE, RFC3339LINK } from "../timestamps.ts";
+import { ServerSchema } from "./shared.ts";
 
 /**
  * The single field a client switches on.

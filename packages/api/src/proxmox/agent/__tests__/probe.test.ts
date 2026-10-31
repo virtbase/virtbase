@@ -16,9 +16,9 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { getGuestOsInfo, isPosixGuest } from "../os-info";
-import { probeGuestAgent } from "../probe";
-import type { ProxmoxVm } from "../types";
+import { getGuestOsInfo, isPosixGuest } from "../os-info.ts";
+import { probeGuestAgent } from "../probe.ts";
+import type { ProxmoxVm } from "../types.ts";
 
 const createVm = ({
   info,

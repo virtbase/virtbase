@@ -15,5 +15,5 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./reconcile-backup";
-export * from "./reconcile-server-backups";
+export * from "./reconcile-backup.ts";
+export * from "./reconcile-server-backups.ts";

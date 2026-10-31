@@ -33,9 +33,9 @@ import NextLink from "next/link";
 import { useRouter } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { Suspense, use, useTransition } from "react";
-import { ItemRow } from "@/features/account/components/item-row";
-import { authClient } from "@/lib/auth/client";
-import { paths } from "@/lib/paths";
+import { ItemRow } from "@/features/account/components/item-row.tsx";
+import { authClient } from "@/lib/auth/client.ts";
+import { paths } from "@/lib/paths.ts";
 
 const providers = [
   {

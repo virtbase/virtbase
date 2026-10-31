@@ -17,7 +17,7 @@
 
 import { constructMetadata } from "@virtbase/utils";
 import { getExtracted } from "next-intl/server";
-import { ConsoleCard } from "@/features/servers/components/console/console-card";
+import { ConsoleCard } from "@/features/servers/components/console/console-card.tsx";
 
 export async function generateMetadata() {
   const t = await getExtracted();

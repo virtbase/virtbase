@@ -16,9 +16,9 @@
  */
 
 import type { GuestFirewallManager } from "@virtbase/utils";
-import type { GuestAgentFailure, ProxmoxVm } from "../proxmox/agent";
-import { runGuestCommand } from "../proxmox/agent";
-import { DETECT_SCRIPT, shell } from "./commands";
+import type { GuestAgentFailure, ProxmoxVm } from "../proxmox/agent/index.ts";
+import { runGuestCommand } from "../proxmox/agent/index.ts";
+import { DETECT_SCRIPT, shell } from "./commands.ts";
 
 /**
  * Which manager owns the ruleset when several are present.

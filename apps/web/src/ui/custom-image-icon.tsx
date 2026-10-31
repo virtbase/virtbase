@@ -18,7 +18,7 @@
 import { cn } from "@virtbase/ui";
 import { LucideDisc3 } from "@virtbase/ui/icons";
 import { findIsoCatalogEntry } from "@virtbase/utils";
-import { OperatingSystemIcon } from "./operating-system-icon";
+import { OperatingSystemIcon } from "./operating-system-icon.tsx";
 
 /**
  * The logo of the catalog entry an ISO download came from, falling back to the

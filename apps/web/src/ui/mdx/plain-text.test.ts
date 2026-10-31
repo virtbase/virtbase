@@ -19,7 +19,7 @@ import { describe, expect, test } from "bun:test";
 import type { ReactNode } from "react";
 import { createElement, Fragment } from "react";
 
-import { toPlainText } from "./plain-text";
+import { toPlainText } from "./plain-text.ts";
 
 describe("toPlainText", () => {
   test("it returns a bare string unchanged", () => {

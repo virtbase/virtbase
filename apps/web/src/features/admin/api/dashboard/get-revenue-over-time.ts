@@ -21,7 +21,7 @@ import { db } from "@virtbase/db/client";
 import { invoices } from "@virtbase/db/schema";
 import { cacheLife, cacheTag } from "next/cache";
 import { cache } from "react";
-import { verifySession } from "../verify-session";
+import { verifySession } from "../verify-session.ts";
 
 export const getRevenueOverTime = cache(async () => {
   "use cache: private";

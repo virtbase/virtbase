@@ -17,9 +17,9 @@
 
 import { pickBestDiscount } from "@virtbase/db/queries";
 import { cn } from "@virtbase/ui";
-import { OffersJsonLd } from "@/ui/seo/offers-json-ld";
-import { getAvailablePlans } from "../api/get-available-plans";
-import { OfferCard } from "./offer-card";
+import { OffersJsonLd } from "@/ui/seo/offers-json-ld.tsx";
+import { getAvailablePlans } from "../api/get-available-plans.ts";
+import { OfferCard } from "./offer-card.tsx";
 
 export async function OfferRow() {
   const plans = await getAvailablePlans();

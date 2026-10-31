@@ -44,8 +44,8 @@ type Rendered = typeof import("@virtbase/test-utils/react");
 let renderWithProviders: Rendered["renderWithProviders"];
 let screen: Rendered["screen"];
 let userEvent: Rendered["userEvent"];
-let PaymentMethodItem: typeof import("../payment-method-item").PaymentMethodItem;
-let RemovePaymentMethodDialog: typeof import("../remove-payment-method-dialog").RemovePaymentMethodDialog;
+let PaymentMethodItem: typeof import("../payment-method-item.tsx").PaymentMethodItem;
+let RemovePaymentMethodDialog: typeof import("../remove-payment-method-dialog.tsx").RemovePaymentMethodDialog;
 let IntlEnvironment: (props: { children: React.ReactNode }) => React.ReactNode;
 
 beforeAll(async () => {
@@ -56,10 +56,11 @@ beforeAll(async () => {
   screen = rendered.screen;
   userEvent = rendered.userEvent;
 
-  PaymentMethodItem = (await import("../payment-method-item"))
+  PaymentMethodItem = (await import("../payment-method-item.tsx"))
     .PaymentMethodItem;
-  RemovePaymentMethodDialog = (await import("../remove-payment-method-dialog"))
-    .RemovePaymentMethodDialog;
+  RemovePaymentMethodDialog = (
+    await import("../remove-payment-method-dialog.tsx")
+  ).RemovePaymentMethodDialog;
 
   // Pins the time zone the dates below are formatted in. Without it `use-intl`
   // falls back to the machine's, which turns a UTC midnight into the previous

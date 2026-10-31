@@ -20,7 +20,7 @@ import {
   calculateProRataUpgrade,
   MIN_CHARGE_EUR_CENTS,
   MONTH_MS,
-} from "../pricing";
+} from "../pricing.ts";
 
 const now = new Date("2026-08-09T12:00:00.000Z");
 const inDays = (days: number) =>

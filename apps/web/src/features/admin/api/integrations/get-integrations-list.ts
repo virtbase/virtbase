@@ -24,7 +24,7 @@ import { db } from "@virtbase/db/client";
 import { integrationInstallations } from "@virtbase/db/schema";
 import type { IntegrationDescription } from "@virtbase/integration-sdk";
 import { connection } from "next/server";
-import { verifySession } from "../verify-session";
+import { verifySession } from "../verify-session.ts";
 
 export interface IntegrationListItem {
   descriptor: IntegrationDescription;

@@ -22,15 +22,15 @@ import { LucideCreditCard } from "@virtbase/ui/icons";
 import { Skeleton } from "@virtbase/ui/skeleton";
 import NextLink from "next/link";
 import { useExtracted, useNow } from "next-intl";
-import { ItemRow } from "@/features/account/components/item-row";
-import type { PaymentMethodDisplayFields } from "@/features/account/utils/payment-method";
+import { ItemRow } from "@/features/account/components/item-row.tsx";
+import type { PaymentMethodDisplayFields } from "@/features/account/utils/payment-method.ts";
 import {
   classifyInvalidReason,
   formatExpiry,
   resolveBrandName,
   resolvePaymentMethodHealth,
-} from "@/features/account/utils/payment-method";
-import { paths } from "@/lib/paths";
+} from "@/features/account/utils/payment-method.ts";
+import { paths } from "@/lib/paths.ts";
 
 /** A saved credential, as this component needs to see one. */
 export type SavedPaymentMethod = PaymentMethodDisplayFields & { id: string };

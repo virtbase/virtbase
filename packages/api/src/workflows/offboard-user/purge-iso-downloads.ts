@@ -19,7 +19,7 @@ import * as Sentry from "@sentry/node";
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { proxmoxIsoDownloads, proxmoxNodes } from "@virtbase/db/schema";
-import { getProxmoxInstance } from "../../proxmox";
+import { getProxmoxInstance } from "../../proxmox/index.ts";
 
 type PurgeIsoDownloadsStepParams = {
   userId: string;

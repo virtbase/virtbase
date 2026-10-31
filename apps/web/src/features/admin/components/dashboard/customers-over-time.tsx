@@ -26,7 +26,7 @@ import { UsersIcon } from "@virtbase/ui/icons";
 import { useExtracted, useFormatter } from "next-intl";
 import { use } from "react";
 import { Bar, BarChart, CartesianGrid, LabelList, XAxis } from "recharts";
-import type { getCustomersOverTime } from "../../api/dashboard/get-customers-over-time";
+import type { getCustomersOverTime } from "../../api/dashboard/get-customers-over-time.ts";
 
 export function CustomersOverTime({
   promise,

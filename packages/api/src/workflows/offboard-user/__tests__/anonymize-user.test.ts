@@ -20,10 +20,10 @@ import { eq } from "@virtbase/db";
 import * as schema from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { mockSession, seedServerGraph } from "../../../testing/fixtures";
+import { mockSession, seedServerGraph } from "../../../testing/fixtures.ts";
 
 let db: TestDb;
-let anonymizeUserStep: typeof import("../anonymize-user").anonymizeUserStep;
+let anonymizeUserStep: typeof import("../anonymize-user.ts").anonymizeUserStep;
 
 const USER_ID = mockSession.user.id;
 const EMAIL = mockSession.user.email;
@@ -31,7 +31,7 @@ const EMAIL = mockSession.user.email;
 beforeAll(async () => {
   db = await createTestDb();
   mock.module("@virtbase/db/client", () => ({ db }));
-  ({ anonymizeUserStep } = await import("../anonymize-user"));
+  ({ anonymizeUserStep } = await import("../anonymize-user.ts"));
 
   await seedServerGraph(db);
 

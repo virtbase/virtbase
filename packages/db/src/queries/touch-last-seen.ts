@@ -16,8 +16,8 @@
  */
 
 import { and, eq, isNull, or, sql } from "drizzle-orm";
-import type { db as database } from "../client";
-import { users } from "../schema";
+import type { db as database } from "../client.ts";
+import { users } from "../schema/index.ts";
 
 /**
  * How stale `last_seen_at` may get before another write is worth it.

@@ -26,9 +26,9 @@ import { headers } from "next/headers";
 import { useExtracted } from "next-intl";
 import { cache } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { auth } from "@/lib/auth/server";
-import { GenericError } from "@/ui/generic-error";
-import { UserProvidersList } from "./user-providers-list";
+import { auth } from "@/lib/auth/server.ts";
+import { GenericError } from "@/ui/generic-error.tsx";
+import { UserProvidersList } from "./user-providers-list.tsx";
 
 const getProvidersList = cache((headers: Headers) => {
   return Promise.all([

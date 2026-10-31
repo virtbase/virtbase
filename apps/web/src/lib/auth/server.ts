@@ -18,7 +18,7 @@
 import { dispatchAccountLinked } from "@virtbase/api/integrations";
 import { initAuth } from "@virtbase/auth";
 import { nextCookies } from "better-auth/next-js";
-import { localeCookiePlugin } from "./locale-cookie";
+import { localeCookiePlugin } from "./locale-cookie.ts";
 
 export const auth = initAuth({
   // `nextCookies()` copies accumulated `set-cookie` headers onto the Next.js

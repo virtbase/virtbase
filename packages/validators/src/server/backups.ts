@@ -17,15 +17,15 @@
 
 import type { SortableColumns } from "@virtbase/utils";
 import * as z from "zod";
-import { PaginationSchema } from "../pagination";
-import { ProxmoxTemplateSchema } from "../proxmox-template";
+import { PaginationSchema } from "../pagination.ts";
+import { ProxmoxTemplateSchema } from "../proxmox-template.ts";
 import {
   EXAMPLE_DATE,
   ObjectTimestampSchema,
   RFC3339LINK,
-} from "../timestamps";
-import { preprocessQueryArray } from "../utils";
-import { ServerOperatingSystemSchema, ServerSchema } from "./shared";
+} from "../timestamps.ts";
+import { preprocessQueryArray } from "../utils/index.ts";
+import { ServerOperatingSystemSchema, ServerSchema } from "./shared.ts";
 
 export const ServerBackupSchema = z.object({
   id: z

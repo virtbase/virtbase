@@ -32,8 +32,8 @@ import { useExtracted, useNow } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import { toast } from "sonner";
 import { useFormatter } from "use-intl";
-import type { IntegrationListItem } from "../../api/integrations/get-integrations-list";
-import { checkIntegrationHealthAction } from "../../api/integrations/update-integration";
+import type { IntegrationListItem } from "../../api/integrations/get-integrations-list.ts";
+import { checkIntegrationHealthAction } from "../../api/integrations/update-integration.ts";
 
 export function IntegrationHealthPanel({
   item,

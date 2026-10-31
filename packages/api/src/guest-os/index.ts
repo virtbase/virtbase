@@ -15,6 +15,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./columns";
-export * from "./detect";
-export * from "./refresh";
+export * from "./columns.ts";
+export * from "./detect.ts";
+export * from "./refresh.ts";

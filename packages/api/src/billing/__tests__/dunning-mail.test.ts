@@ -53,7 +53,7 @@ import {
   mockServerPlanPrice,
   mockSession,
   seedServerGraph,
-} from "../../testing/fixtures";
+} from "../../testing/fixtures.ts";
 
 /**
  * What the customer is actually told, over the real ladder and the real
@@ -91,13 +91,13 @@ mock.module("@virtbase/email", () => ({
 
 mock.module("workflow/api", () => ({ start: async () => {} }));
 
-const { integrations } = await import("../../integrations");
+const { integrations } = await import("../../integrations/index.ts");
 const { renewSubscription, retryRenewal } = await import(
-  "../renew-subscription"
+  "../renew-subscription.ts"
 );
-const { recordCollectionResult } = await import("../record-outcome");
-const { renewalSuspensionDate } = await import("../dunning-mail");
-const { nextRenewalAttemptAt } = await import("../retry-schedule");
+const { recordCollectionResult } = await import("../record-outcome.ts");
+const { renewalSuspensionDate } = await import("../dunning-mail.ts");
+const { nextRenewalAttemptAt } = await import("../retry-schedule.ts");
 
 const USER_ID = mockSession.user.id;
 const SERVER_ID = mockServer.id;

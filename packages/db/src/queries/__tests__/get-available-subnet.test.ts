@@ -33,12 +33,12 @@ import {
   subnetAllocations,
   subnets,
   subnetsToProxmoxNodes,
-} from "../../schema";
-import type { TestDb } from "../../test-client";
-import { createTestDb } from "../../test-client";
+} from "../../schema/index.ts";
+import type { TestDb } from "../../test-client.ts";
+import { createTestDb } from "../../test-client.ts";
 
 let testDb: TestDb;
-let findFirstAvailableSubnet: typeof import("../get-available-subnet").findFirstAvailableSubnet;
+let findFirstAvailableSubnet: typeof import("../get-available-subnet.ts").findFirstAvailableSubnet;
 
 const DATACENTER_ID = "dc_test";
 const NODE_GROUP_ID = "png_test";
@@ -47,9 +47,9 @@ const BRIDGE = "vmbr0";
 
 beforeAll(async () => {
   testDb = await createTestDb();
-  mock.module("../../client", () => ({ db: testDb }));
+  mock.module("../../client.ts", () => ({ db: testDb }));
 
-  const mod = await import("../get-available-subnet");
+  const mod = await import("../get-available-subnet.ts");
   findFirstAvailableSubnet = mod.findFirstAvailableSubnet;
 
   await testDb.insert(datacenters).values({

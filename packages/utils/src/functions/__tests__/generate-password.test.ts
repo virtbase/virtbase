@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { generatePassword } from "../generate-password";
+import { generatePassword } from "../generate-password.ts";
 
 describe("generatePassword", () => {
   test("generates a password with the correct length", () => {

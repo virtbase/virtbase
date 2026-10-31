@@ -43,17 +43,17 @@ import NextLink from "next/link";
 import { useExtracted, useFormatter, useNow } from "next-intl";
 import { useState } from "react";
 import { toast } from "sonner";
-import { paths } from "@/lib/paths";
+import { paths } from "@/lib/paths.ts";
 import {
   CATEGORY_ICONS,
   SEVERITY_ICONS,
   STATUS_ICONS,
-} from "@/ui/abuse/case-meta";
-import { GenericError } from "@/ui/generic-error";
-import { useMarkAbuseCaseFixed } from "../hooks/use-abuse-actions";
-import type { AbuseCaseSummary } from "../hooks/use-abuse-cases";
-import { isActive, useAbuseCases } from "../hooks/use-abuse-cases";
-import { useCaseLabels } from "../hooks/use-case-labels";
+} from "@/ui/abuse/case-meta.tsx";
+import { GenericError } from "@/ui/generic-error.tsx";
+import { useMarkAbuseCaseFixed } from "../hooks/use-abuse-actions.ts";
+import type { AbuseCaseSummary } from "../hooks/use-abuse-cases.ts";
+import { isActive, useAbuseCases } from "../hooks/use-abuse-cases.ts";
+import { useCaseLabels } from "../hooks/use-case-labels.ts";
 
 /** Statuses where claiming it is fixed still means something. */
 const CAN_CLAIM_FIXED = new Set([

@@ -18,7 +18,7 @@
 import { neonConfig, Pool } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-serverless";
 import ws from "ws";
-import { relations } from "./relations";
+import { relations } from "./relations.ts";
 
 // Bun's native WebSocket handles the neon proxy handshake correctly on Linux,
 // whereas the `ws` npm package fails with "Unexpected server response: 101".

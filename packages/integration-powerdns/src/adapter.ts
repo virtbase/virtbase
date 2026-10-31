@@ -21,8 +21,8 @@ import type {
   UpsertPointerRecordInput,
 } from "@virtbase/ports";
 import { PortError } from "@virtbase/ports";
-import type { PowerDNSClient } from "./client";
-import { buildPtrName } from "./utils";
+import type { PowerDNSClient } from "./client.ts";
+import { buildPtrName } from "./utils.ts";
 
 /**
  * Maps the {@link DnsProvider} port onto PowerDNS' zone API.

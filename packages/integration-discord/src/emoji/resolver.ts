@@ -17,9 +17,9 @@
 
 import { resolveOperatingSystem } from "@virtbase/utils";
 import type { APIEmoji, APIMessageComponentEmoji } from "discord-api-types/v10";
-import type { DiscordClient } from "../api";
-import { listEmojis } from "../api";
-import { emojiNameForSlug } from "./manifest";
+import type { DiscordClient } from "../api/index.ts";
+import { listEmojis } from "../api/index.ts";
+import { emojiNameForSlug } from "./manifest.ts";
 
 /** What a template's logo is looked up from: its name, or its icon path. */
 type TemplateLike =

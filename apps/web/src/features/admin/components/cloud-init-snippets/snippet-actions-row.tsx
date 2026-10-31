@@ -30,9 +30,12 @@ import dynamic from "next/dynamic";
 import { useExtracted } from "next-intl";
 import { useState } from "react";
 
-const DeleteSnippetDialog = dynamic(() => import("./delete-snippet-dialog"), {
-  ssr: false,
-});
+const DeleteSnippetDialog = dynamic(
+  () => import("./delete-snippet-dialog.tsx"),
+  {
+    ssr: false,
+  },
+);
 
 export function SnippetActionsRow({
   snippet,

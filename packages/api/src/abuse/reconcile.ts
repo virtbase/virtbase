@@ -20,10 +20,10 @@ import { and, eq, inArray, isNull, lte, ne, sql } from "@virtbase/db";
 import type { db as database } from "@virtbase/db/client";
 import { abuseCases } from "@virtbase/db/schema";
 import type { EnforcementLevel } from "@virtbase/ports";
-import { dispatchNotification } from "../notifications/dispatch";
-import { caseReference, recordCaseEvent, setCaseStatus } from "./case";
-import type { VmResolver } from "./enforce";
-import { enforceCase, releaseCase } from "./enforce";
+import { dispatchNotification } from "../notifications/dispatch.ts";
+import { caseReference, recordCaseEvent, setCaseStatus } from "./case.ts";
+import type { VmResolver } from "./enforce.ts";
+import { enforceCase, releaseCase } from "./enforce.ts";
 
 type Database = typeof database;
 

@@ -52,19 +52,19 @@ import NextLink from "next/link";
 import { useExtracted, useFormatter, useNow } from "next-intl";
 import { useState } from "react";
 import { toast } from "sonner";
-import { paths } from "@/lib/paths";
+import { paths } from "@/lib/paths.ts";
 import {
   CATEGORY_ICONS,
   ENFORCEMENT_ICONS,
   SEVERITY_ICONS,
   STATUS_ICONS,
-} from "@/ui/abuse/case-meta";
+} from "@/ui/abuse/case-meta.tsx";
 import {
   useMarkAbuseCaseFixed,
   useReplyToAbuseCase,
-} from "../hooks/use-abuse-actions";
-import type { CustomerAbuseCase } from "../hooks/use-abuse-cases";
-import { useCaseLabels } from "../hooks/use-case-labels";
+} from "../hooks/use-abuse-actions.ts";
+import type { CustomerAbuseCase } from "../hooks/use-abuse-cases.ts";
+import { useCaseLabels } from "../hooks/use-case-labels.ts";
 
 /** Statuses the customer can still write into. */
 const OPEN_TO_CUSTOMER = new Set([

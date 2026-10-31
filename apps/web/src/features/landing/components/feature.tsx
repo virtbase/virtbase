@@ -20,10 +20,10 @@ import { Button } from "@virtbase/ui/button";
 import { getExtracted } from "next-intl/server";
 import type { ReactNode } from "react";
 
-import { IntlLink } from "@/i18n/navigation.public";
-import DiscordBotDemo from "./discord-bot-demo";
-import ServerFirewallDemo from "./server-firewall-demo";
-import ServerStatsDemo from "./server-stats-demo";
+import { IntlLink } from "@/i18n/navigation.public.ts";
+import DiscordBotDemo from "./discord-bot-demo.tsx";
+import ServerFirewallDemo from "./server-firewall-demo.tsx";
+import ServerStatsDemo from "./server-stats-demo.tsx";
 
 /**
  * The interactive previews a feature can show. Named rather than passed as a

@@ -63,11 +63,11 @@ const testDb: TestDb = await createTestDb();
 
 mock.module("@virtbase/db/client", () => ({ db: testDb }));
 
-const { integrations } = await import("../../integrations");
-const { dispatchNotification } = await import("../dispatch");
-const { retryFailedNotifications } = await import("../retry");
-const { EmailNotificationChannel } = await import("../channels/email");
-const { notificationTargetStore } = await import("../store");
+const { integrations } = await import("../../integrations/index.ts");
+const { dispatchNotification } = await import("../dispatch.ts");
+const { retryFailedNotifications } = await import("../retry.ts");
+const { EmailNotificationChannel } = await import("../channels/email.ts");
+const { notificationTargetStore } = await import("../store.ts");
 
 const USER_ID = "usr_00000000000000000000000042";
 

@@ -20,7 +20,7 @@ import type {
   GuestFirewallPolicy,
   GuestFirewallRule,
   GuestFirewallState,
-} from "./types";
+} from "./types.ts";
 
 /**
  * `[ 1] 22/tcp                     ALLOW IN    Anywhere`

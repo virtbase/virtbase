@@ -15,10 +15,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./chart";
-export * from "./components";
-export * from "./confirm";
-export * from "./emoji";
-export * from "./format";
-export * from "./message";
-export * from "./modal";
+export * from "./chart.ts";
+export * from "./components.ts";
+export * from "./confirm.ts";
+export * from "./emoji.ts";
+export * from "./format.ts";
+export * from "./message.ts";
+export * from "./modal.ts";

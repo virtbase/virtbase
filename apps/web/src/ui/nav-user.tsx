@@ -46,9 +46,9 @@ import { ADMIN_DOMAIN, ADMIN_HOSTNAMES, PUBLIC_DOMAIN } from "@virtbase/utils";
 import NextLink from "next/link";
 import { useRouter } from "next/navigation";
 import { useExtracted } from "next-intl";
-import { authClient } from "@/lib/auth/client";
-import { paths } from "@/lib/paths";
-import { UserAvatar } from "@/ui/user-avatar";
+import { authClient } from "@/lib/auth/client.ts";
+import { paths } from "@/lib/paths.ts";
+import { UserAvatar } from "@/ui/user-avatar.tsx";
 
 export function NavUser() {
   const t = useExtracted();

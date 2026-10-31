@@ -26,8 +26,8 @@ import {
 import { createId } from "@virtbase/db/utils";
 import { sleep } from "bun";
 import { reset, seed } from "drizzle-seed";
-import { seedPlansAndNetworking } from "./seed-fixtures";
-import { seedProxmoxCluster } from "./seed-proxmox-cluster";
+import { seedPlansAndNetworking } from "./seed-fixtures.ts";
+import { seedProxmoxCluster } from "./seed-proxmox-cluster.ts";
 
 const schema = {
   datacenters,

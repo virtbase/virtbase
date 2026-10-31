@@ -16,16 +16,16 @@
  */
 
 // Import env files to validate at build time
-import "@/env";
+import "@/env.ts";
 
 import { ADMIN_DOMAIN, APP_DOMAIN, PUBLIC_DOMAIN } from "@virtbase/utils";
 import { createMDX } from "fumadocs-mdx/next";
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 import { withWorkflow } from "workflow/next";
-import { routing } from "@/i18n/routing.public";
-import { MESSAGE_SOURCE_PATHS } from "@/i18n/source-paths";
-import { contentSecurityPolicy } from "@/lib/csp";
+import { routing } from "@/i18n/routing.public.ts";
+import { MESSAGE_SOURCE_PATHS } from "@/i18n/source-paths.ts";
+import { contentSecurityPolicy } from "@/lib/csp/index.ts";
 
 const nextConfig: NextConfig = {
   agentRules: false,

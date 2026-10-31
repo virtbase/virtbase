@@ -17,7 +17,7 @@
 
 import type { FieldDescriptor } from "@virtbase/validators";
 
-export * from "./email";
+export * from "./email.ts";
 
 /**
  * A channel as the admin console sees it: enough to render the form for one
@@ -45,7 +45,7 @@ export const listNotificationChannels = async (): Promise<
 > => {
   // Resolved at call time; see `deliver.ts` for why a static import here
   // would be circular.
-  const { integrations } = await import("../../integrations");
+  const { integrations } = await import("../../integrations/index.ts");
   const channels = await integrations.resolveAll("notifications");
 
   return channels.map((channel) => ({

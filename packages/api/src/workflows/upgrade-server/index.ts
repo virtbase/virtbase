@@ -16,26 +16,26 @@
  */
 
 import { sleep } from "workflow";
-import { isHeldOffByAbuseLock } from "../../abuse/held-off-by-lock";
-import { changeAdapterNetrate } from "../../proxmox/change-adapter-netrate";
+import { isHeldOffByAbuseLock } from "../../abuse/held-off-by-lock.ts";
+import { changeAdapterNetrate } from "../../proxmox/change-adapter-netrate.ts";
 import {
   applyGuestConfigStep,
   rollbackApplyGuestConfigStep,
-} from "../shared/apply-guest-config";
-import { getGuestConfigStep } from "../shared/get-guest-config";
-import { getServerStep } from "../shared/get-server";
-import { getServerPlanStep } from "../shared/get-server-plan";
+} from "../shared/apply-guest-config.ts";
+import { getGuestConfigStep } from "../shared/get-guest-config.ts";
+import { getServerStep } from "../shared/get-server.ts";
+import { getServerPlanStep } from "../shared/get-server-plan.ts";
 import {
   performGuestActionStep,
   rollbackPerformGuestActionStep,
-} from "../shared/perform-guest-action";
-import { resizeDiskStep } from "../shared/resize-disk";
-import { runRollbacks } from "../shared/run-rollbacks";
-import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task";
+} from "../shared/perform-guest-action.ts";
+import { resizeDiskStep } from "../shared/resize-disk.ts";
+import { runRollbacks } from "../shared/run-rollbacks.ts";
+import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task.ts";
 import {
   rollbackStoreServerUpgradeStep,
   storeServerUpgradeStep,
-} from "./store-server-upgrade";
+} from "./store-server-upgrade.ts";
 
 export async function upgradeServerWorkflow({
   serverId,

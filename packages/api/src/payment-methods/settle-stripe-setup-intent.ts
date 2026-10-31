@@ -21,7 +21,7 @@ import {
   recordStripePaymentMethod,
   stripeCustomerIdOf,
   userIdForStripeCustomer,
-} from "./settle-stripe-payment-method";
+} from "./settle-stripe-payment-method.ts";
 
 /**
  * Writes down a credential saved through the account page.

@@ -17,7 +17,7 @@
 
 import { describe, expect, test } from "bun:test";
 import { GenerateServerFirewallRuleOutputSchema } from "@virtbase/validators/server";
-import { repairGeneratedText } from "../generation";
+import { repairGeneratedText } from "../generation.ts";
 
 /**
  * Runs a raw model response through the pipeline the router uses.

@@ -16,24 +16,24 @@
  */
 
 import { defineIntegration } from "@virtbase/integration-sdk";
-import { collectPlatformMetrics } from "./collectors";
+import { collectPlatformMetrics } from "./collectors.ts";
 import {
   secretFields,
   secretsSchema,
   settingsFields,
   settingsSchema,
-} from "./config";
-import { localizePrometheus } from "./localize";
-import { runtimeFor } from "./runtime";
-import { PrometheusMetricsSink } from "./sink";
-import { handleScrapeRequest } from "./webhook";
+} from "./config.ts";
+import { localizePrometheus } from "./localize.ts";
+import { runtimeFor } from "./runtime.ts";
+import { PrometheusMetricsSink } from "./sink.ts";
+import { handleScrapeRequest } from "./webhook.ts";
 
-export * from "./collectors";
-export * from "./config";
-export * from "./names";
-export * from "./runtime";
-export * from "./sink";
-export * from "./webhook";
+export * from "./collectors.ts";
+export * from "./config.ts";
+export * from "./names.ts";
+export * from "./runtime.ts";
+export * from "./sink.ts";
+export * from "./webhook.ts";
 
 export default defineIntegration({
   id: "prometheus",

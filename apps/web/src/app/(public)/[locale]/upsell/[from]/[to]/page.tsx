@@ -37,11 +37,11 @@ import {
 import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import { getExtracted, getFormatter, getLocale } from "next-intl/server";
-import { getServerPlan } from "@/features/checkout/api/get-server-plan";
-import { OfferCard } from "@/features/checkout/components/offer-card";
-import { AdvantageItem } from "@/features/landing/components/advantage-item";
-import { AdvantagesRow } from "@/features/landing/components/advantages-row";
-import { BlockWrapper } from "@/ui/block-wrapper";
+import { getServerPlan } from "@/features/checkout/api/get-server-plan.ts";
+import { OfferCard } from "@/features/checkout/components/offer-card.tsx";
+import { AdvantageItem } from "@/features/landing/components/advantage-item.tsx";
+import { AdvantagesRow } from "@/features/landing/components/advantages-row.tsx";
+import { BlockWrapper } from "@/ui/block-wrapper.tsx";
 
 const PLACEHOLDER_ID = "__placeholder__";
 

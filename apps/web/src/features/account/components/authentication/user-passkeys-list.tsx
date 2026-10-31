@@ -33,8 +33,8 @@ import { useRouter } from "next/navigation";
 import { useExtracted, useFormatter, useNow } from "next-intl";
 import { cache, use, useTransition } from "react";
 import aaguidsMap from "@/features/account/assets/aaguid.json";
-import { ItemRow } from "@/features/account/components/item-row";
-import { authClient } from "@/lib/auth/client";
+import { ItemRow } from "@/features/account/components/item-row.tsx";
+import { authClient } from "@/lib/auth/client.ts";
 
 export function UserPasskeysList({ promise }: { promise: Promise<Passkey[]> }) {
   const t = useExtracted();

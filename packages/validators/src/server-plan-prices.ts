@@ -16,9 +16,9 @@
  */
 
 import * as z from "zod";
-import { DiscountSchema } from "./discounts";
-import { ServerPlanSchema } from "./server-plan";
-import { ObjectTimestampSchema } from "./timestamps";
+import { DiscountSchema } from "./discounts.ts";
+import { ServerPlanSchema } from "./server-plan.ts";
+import { ObjectTimestampSchema } from "./timestamps.ts";
 
 export const ServerPlanPriceSchema = z.object({
   id: z

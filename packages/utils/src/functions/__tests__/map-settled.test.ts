@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { mapSettled } from "../map-settled";
+import { mapSettled } from "../map-settled.ts";
 
 const delay = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
 

@@ -54,11 +54,14 @@ import type {
   getUserRoleCounts,
   getUsersList,
   getUserVerifiedCounts,
-} from "@/features/admin/api/users/get-users-list";
-import { useExportUser } from "@/features/admin/hooks/users/use-export-user";
-import { getRoleIcon, getRoleLabel } from "@/features/admin/lib/users/labels";
-import { authClient } from "@/lib/auth/client";
-import { paths } from "@/lib/paths";
+} from "@/features/admin/api/users/get-users-list.ts";
+import { useExportUser } from "@/features/admin/hooks/users/use-export-user.ts";
+import {
+  getRoleIcon,
+  getRoleLabel,
+} from "@/features/admin/lib/users/labels.ts";
+import { authClient } from "@/lib/auth/client.ts";
+import { paths } from "@/lib/paths.ts";
 
 export type UsersTableColumn = Awaited<
   ReturnType<typeof getUsersList>

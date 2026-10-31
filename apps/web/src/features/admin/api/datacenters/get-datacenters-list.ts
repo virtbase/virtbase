@@ -21,8 +21,8 @@ import { db } from "@virtbase/db/client";
 import { datacenters } from "@virtbase/db/schema";
 import { escapedIlike, getDateIntervalFilter } from "@virtbase/db/utils";
 import { cacheLife, cacheTag } from "next/cache";
-import type { GetDatacentersSchema } from "../../lib/datacenters/validations";
-import { verifySession } from "../verify-session";
+import type { GetDatacentersSchema } from "../../lib/datacenters/validations.ts";
+import { verifySession } from "../verify-session.ts";
 
 export async function getDatacentersList(input: GetDatacentersSchema) {
   "use cache: private";

@@ -30,10 +30,10 @@ import NextLink from "next/link";
 import { useExtracted } from "next-intl";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { getLatestServers } from "@/features/admin/api/dashboard/get-latest-servers";
-import { paths } from "@/lib/paths";
-import { GenericError } from "@/ui/generic-error";
-import { LatestServersList } from "./latest-servers-list";
+import { getLatestServers } from "@/features/admin/api/dashboard/get-latest-servers.ts";
+import { paths } from "@/lib/paths.ts";
+import { GenericError } from "@/ui/generic-error.tsx";
+import { LatestServersList } from "./latest-servers-list.tsx";
 
 export function LatestServersCard() {
   const t = useExtracted();

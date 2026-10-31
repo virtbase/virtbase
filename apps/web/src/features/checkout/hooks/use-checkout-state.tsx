@@ -22,7 +22,7 @@ import type { OrderServerPlanInput } from "@virtbase/validators";
 import { parseAsString, useQueryStates } from "nuqs";
 import type { PropsWithChildren } from "react";
 import { createContext, useCallback, useContext, useMemo } from "react";
-import { useTRPC } from "@/lib/trpc/react";
+import { useTRPC } from "@/lib/trpc/react.tsx";
 
 interface CheckoutStateValue {
   /** The order being paid for. Alternative payment methods settle against it. */

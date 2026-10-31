@@ -30,7 +30,7 @@ mock.module("@sentry/nextjs", () => ({ captureException: () => {} }));
 mock.module("@virtbase/db/client", () => ({ db: testDb }));
 // The route's own authentication is exercised by `withCronSecret`; here it
 // would only mean building an env just to hand the handler a header back.
-mock.module("@/lib/with-cron-secret", () => ({
+mock.module("@/lib/with-cron-secret.ts", () => ({
   withCronSecret: (handler: (request: NextRequest) => Promise<Response>) =>
     handler,
 }));
@@ -47,7 +47,7 @@ mock.module("@virtbase/email", () => ({
   sendBatchEmail: async () => {},
 }));
 
-const { GET } = await import("../route");
+const { GET } = await import("../route.ts");
 
 const SERVER_ID = mockServer.id;
 

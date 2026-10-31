@@ -17,7 +17,7 @@
 
 import type { APIEmoji } from "discord-api-types/v10";
 
-import type { DiscordClient } from "./client";
+import type { DiscordClient } from "./client.ts";
 
 /**
  * Application emojis are usable in every server the app is in, without the app

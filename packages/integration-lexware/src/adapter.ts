@@ -23,11 +23,11 @@ import type {
 import { PortError } from "@virtbase/ports";
 import { APP_NAME } from "@virtbase/utils";
 import { createTranslator } from "use-intl/core";
-import type { LexwareClient } from "./client";
-import type { ContactCountry } from "./constants";
-import { COUNTRY_CONTACTS, HOME_COUNTRY } from "./constants";
-import { invoiceMessages, resolveInvoiceLocale } from "./messages";
-import type { InvoiceForCreate, InvoiceRetrieveResponse } from "./types";
+import type { LexwareClient } from "./client.ts";
+import type { ContactCountry } from "./constants.ts";
+import { COUNTRY_CONTACTS, HOME_COUNTRY } from "./constants.ts";
+import { invoiceMessages, resolveInvoiceLocale } from "./messages.ts";
+import type { InvoiceForCreate, InvoiceRetrieveResponse } from "./types.ts";
 
 const EUR = "EUR";
 

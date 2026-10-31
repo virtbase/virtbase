@@ -21,8 +21,8 @@ import { db } from "@virtbase/db/client";
 import { proxmoxNodeGroups } from "@virtbase/db/schema";
 import { escapedIlike, getDateIntervalFilter } from "@virtbase/db/utils";
 import { cacheLife, cacheTag } from "next/cache";
-import type { GetNodeGroupsSchema } from "../../lib/node-groups/validations";
-import { verifySession } from "../verify-session";
+import type { GetNodeGroupsSchema } from "../../lib/node-groups/validations.ts";
+import { verifySession } from "../verify-session.ts";
 
 export async function getNodeGroupsList(input: GetNodeGroupsSchema) {
   "use cache: private";

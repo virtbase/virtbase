@@ -17,8 +17,8 @@
 
 import { describe, expect, test } from "bun:test";
 import { asc, desc } from "drizzle-orm";
-import { sshKeys } from "../../schema/ssh-keys";
-import { buildOrderBy } from "../build-order-by";
+import { sshKeys } from "../../schema/ssh-keys.ts";
+import { buildOrderBy } from "../build-order-by.ts";
 
 describe("buildOrderBy", () => {
   test("it throws an error if the column is not found", () => {

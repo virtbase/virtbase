@@ -17,7 +17,7 @@
 
 import { describe, expect, test } from "bun:test";
 import { STEP_UP_WINDOW_SECONDS } from "@virtbase/utils";
-import { isSessionFreshEnough } from "../freshness";
+import { isSessionFreshEnough } from "../freshness.ts";
 
 const NOW = new Date("2026-08-26T12:00:00.000Z");
 

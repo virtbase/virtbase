@@ -31,14 +31,14 @@ import { db } from "@virtbase/db/client";
 import { payments, subscriptionRenewals } from "@virtbase/db/schema";
 import type { Payment } from "@virtbase/ports";
 import { RENEWAL_AUTHENTICATION_WINDOW_HOURS } from "@virtbase/utils";
-import { applyPaymentEvent } from "../orders/apply-payment-event";
-import { fulfilOrder } from "../orders/fulfill-order";
-import type { OrderBillingAddress } from "../orders/record-billing-details";
-import { requirePaymentCapability } from "../payment-methods/provider";
+import { applyPaymentEvent } from "../orders/apply-payment-event.ts";
+import { fulfilOrder } from "../orders/fulfill-order.ts";
+import type { OrderBillingAddress } from "../orders/record-billing-details.ts";
+import { requirePaymentCapability } from "../payment-methods/provider.ts";
 import {
   markRenewalCollecting,
   recordCollectionResult,
-} from "./record-outcome";
+} from "./record-outcome.ts";
 
 /**
  * How long a renewal may sit in `collecting` before the worker holding it is
@@ -178,7 +178,7 @@ const readBillingDetails: RenewalBillingResolver = async (payment) => {
   if (payment.provider !== "stripe") return EMPTY_BILLING_DETAILS;
 
   const { readStripeBillingDetails } = await import(
-    "../orders/settle-stripe-payment"
+    "../orders/settle-stripe-payment.ts"
   );
 
   return readStripeBillingDetails(payment.externalId);

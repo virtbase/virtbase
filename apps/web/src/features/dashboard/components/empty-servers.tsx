@@ -20,8 +20,8 @@ import { LucidePlay } from "@virtbase/ui/icons";
 import { PUBLIC_DOMAIN } from "@virtbase/utils";
 import NextLink from "next/link";
 import { useExtracted } from "next-intl";
-import { AnimatedEmptyState } from "@/ui/animated-empty-state";
-import { OperatingSystemIcon } from "@/ui/operating-system-icon";
+import { AnimatedEmptyState } from "@/ui/animated-empty-state.tsx";
+import { OperatingSystemIcon } from "@/ui/operating-system-icon.tsx";
 
 export function EmptyServers() {
   const t = useExtracted();

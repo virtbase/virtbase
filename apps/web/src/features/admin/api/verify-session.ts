@@ -21,7 +21,7 @@ import { cacheLife } from "next/cache";
 import { headers } from "next/headers";
 import { notFound, unauthorized } from "next/navigation";
 import { cache } from "react";
-import { auth } from "@/lib/auth/server";
+import { auth } from "@/lib/auth/server.ts";
 
 /**
  * Applies the console's access rules to a session that has already been read.

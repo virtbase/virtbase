@@ -16,13 +16,13 @@
  */
 
 import { afterEach, describe, expect, mock, test } from "bun:test";
-import type { DnsLookup } from "../safe-iso-download-url";
+import type { DnsLookup } from "../safe-iso-download-url.ts";
 import {
   assertSafeIsoDownloadUrl,
   getSafeIsoDownloadSizeBytes,
   isBlockedIpAddress,
   UnsafeIsoDownloadUrlError,
-} from "../safe-iso-download-url";
+} from "../safe-iso-download-url.ts";
 
 const publicLookup: DnsLookup = async () => [
   { address: "93.184.216.34", family: 4 },

@@ -22,7 +22,7 @@ import {
   toLabelName,
   toLabelNames,
   toMetricName,
-} from "../names";
+} from "../names.ts";
 
 describe("toMetricName", () => {
   test("turns a dotted port name into a prefixed snake_case name", () => {

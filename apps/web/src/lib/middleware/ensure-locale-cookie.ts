@@ -18,7 +18,7 @@
 import { COOKIE_DOMAIN } from "@virtbase/utils";
 import type { NextRequest, NextResponse } from "next/server";
 import { hasLocale } from "next-intl";
-import { COOKIE_MAX_AGE, COOKIE_NAME, locales } from "@/i18n/config";
+import { COOKIE_MAX_AGE, COOKIE_NAME, locales } from "@/i18n/config.ts";
 
 export function ensureLocaleCookie(
   request: NextRequest,

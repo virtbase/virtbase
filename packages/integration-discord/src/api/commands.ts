@@ -16,7 +16,7 @@
  */
 
 import type { APIApplicationCommand } from "discord-api-types/v10";
-import type { DiscordClient } from "./client";
+import type { DiscordClient } from "./client.ts";
 
 export const listCommands = (client: DiscordClient) =>
   client.request<APIApplicationCommand[]>(

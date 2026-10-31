@@ -39,19 +39,19 @@ import {
   RenameServerInputSchema,
   RenameServerOutputSchema,
 } from "@virtbase/validators/server";
-import { protectedProcedure, serverProcedure } from "../../trpc";
-import { serversActionsRouter } from "./actions";
-import { serversAdvancedRouter } from "./advanced";
-import { serversAgentRouter } from "./agent";
-import { serversBackupsRouter } from "./backups";
-import { serversConsoleRouter } from "./console";
-import { serverFirewallRouter } from "./firewall";
-import { serversGraphsRouter } from "./graphs";
-import { serversMountsRouter } from "./mounts";
-import { serversPlanRouter } from "./plan";
-import { serversRdnsRouter } from "./rdns";
-import { serversStatusRouter } from "./status";
-import { serversTemplateGroupsRouter } from "./template-groups";
+import { protectedProcedure, serverProcedure } from "../../trpc.ts";
+import { serversActionsRouter } from "./actions/index.ts";
+import { serversAdvancedRouter } from "./advanced.ts";
+import { serversAgentRouter } from "./agent.ts";
+import { serversBackupsRouter } from "./backups/index.ts";
+import { serversConsoleRouter } from "./console.ts";
+import { serverFirewallRouter } from "./firewall/index.ts";
+import { serversGraphsRouter } from "./graphs.ts";
+import { serversMountsRouter } from "./mounts.ts";
+import { serversPlanRouter } from "./plan.ts";
+import { serversRdnsRouter } from "./rdns.ts";
+import { serversStatusRouter } from "./status.ts";
+import { serversTemplateGroupsRouter } from "./template-groups.ts";
 
 export const serversRouter = {
   actions: serversActionsRouter,

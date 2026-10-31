@@ -32,8 +32,8 @@ import {
   GetServerPlanInputSchema,
   GetServerPlanOutputSchema,
 } from "@virtbase/validators/server";
-import { calculateProRataUpgrade } from "../../lib/pricing";
-import { serverProcedure } from "../../trpc";
+import { calculateProRataUpgrade } from "../../lib/pricing.ts";
+import { serverProcedure } from "../../trpc.ts";
 
 // Pro-rata math reference period. Postgres `INTERVAL '1 month'` is variable
 // length (28-31 days), but for charge calculations we use a flat 30-day

@@ -18,7 +18,7 @@
 import * as Sentry from "@sentry/nextjs";
 import { TRPCError } from "@trpc/server";
 import { createSafeActionClient } from "next-safe-action";
-import { verifySession } from "../api/verify-session";
+import { verifySession } from "../api/verify-session.ts";
 
 export const actionClient = createSafeActionClient({
   handleServerError: (error) => {

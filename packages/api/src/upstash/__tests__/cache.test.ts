@@ -22,7 +22,7 @@ const calls = { get: 0, set: 0, del: 0 };
 let getError: Error | null = null;
 let setError: Error | null = null;
 
-mock.module("../redis", () => ({
+mock.module("../redis.ts", () => ({
   redis: {
     get: async (key: string) => {
       calls.get++;
@@ -41,7 +41,7 @@ mock.module("../redis", () => ({
   },
 }));
 
-const { cached, invalidateCached } = await import("../cache");
+const { cached, invalidateCached } = await import("../cache.ts");
 
 beforeEach(() => {
   store.clear();

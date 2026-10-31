@@ -32,7 +32,7 @@ import { Popover, PopoverContent, PopoverTrigger } from "@virtbase/ui/popover";
 import { useExtracted } from "next-intl";
 import type React from "react";
 import { use, useState } from "react";
-import type { getLinkableProxmoxNodeGroups } from "../../api/proxmox-node-groups/get-linkable-proxmox-node-groups";
+import type { getLinkableProxmoxNodeGroups } from "../../api/proxmox-node-groups/get-linkable-proxmox-node-groups.ts";
 
 interface NodeGroupSelectProps
   extends Pick<React.ComponentProps<typeof Popover>, "modal">,

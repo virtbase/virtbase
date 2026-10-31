@@ -17,7 +17,7 @@
 
 import { describe, expect, test } from "bun:test";
 
-import { canonical } from "../canonical";
+import { canonical } from "../canonical.ts";
 
 describe("canonical", () => {
   test("key order is not a difference", () => {

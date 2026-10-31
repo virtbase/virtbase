@@ -46,7 +46,7 @@ import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { useCreateBackup } from "../../hooks/backups/use-create-backup";
+import { useCreateBackup } from "../../hooks/backups/use-create-backup.ts";
 
 export default function CreateBackupDialog(
   props: Omit<

@@ -16,9 +16,9 @@
  */
 
 import * as z from "zod";
-import { DiscountSchema } from "../discounts";
-import { ServerPlanSchema } from "../server-plan";
-import { ServerSchema } from "./shared";
+import { DiscountSchema } from "../discounts.ts";
+import { ServerPlanSchema } from "../server-plan.ts";
+import { ServerSchema } from "./shared.ts";
 
 export const GetServerPlanInputSchema = z.object({
   server_id: ServerSchema.shape.id,

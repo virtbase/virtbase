@@ -23,8 +23,8 @@ import {
 } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
-import { AuthLayout } from "@/ui/layout/auth-layout";
-import RegisterPageClient from "./page-client";
+import { AuthLayout } from "@/ui/layout/auth-layout.tsx";
+import RegisterPageClient from "./page-client.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();

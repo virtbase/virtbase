@@ -24,7 +24,7 @@ import {
   emailVerifiedNameLocalizations,
   registrationDateDescriptionLocalizations,
   registrationDateNameLocalizations,
-} from "./role-connections-localizations";
+} from "./role-connections-localizations.ts";
 
 export const roleConnectionsMetadata: APIApplicationRoleConnectionMetadata[] = [
   {

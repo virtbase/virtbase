@@ -61,7 +61,7 @@ mock.module("next/navigation", () => ({
 
 let currentSession: unknown = null;
 
-mock.module("@/lib/auth/server", () => ({
+mock.module("@/lib/auth/server.ts", () => ({
   auth: {
     api: {
       getSession: async () => currentSession,
@@ -69,7 +69,7 @@ mock.module("@/lib/auth/server", () => ({
   },
 }));
 
-const { verifySession } = await import("../verify-session");
+const { verifySession } = await import("../verify-session.ts");
 
 const sessionFor = (role: string) => ({
   session: { id: "sess_1", userId: "usr_1" },

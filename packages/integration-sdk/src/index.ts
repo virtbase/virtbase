@@ -15,9 +15,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./config-source";
-export * from "./define-integration";
-export * from "./describe";
-export * from "./logger";
-export * from "./registry";
-export * from "./types";
+export * from "./config-source.ts";
+export * from "./define-integration.ts";
+export * from "./describe.ts";
+export * from "./logger.ts";
+export * from "./registry.ts";
+export * from "./types.ts";

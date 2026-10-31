@@ -24,7 +24,7 @@ import {
 } from "@virtbase/api/integrations";
 import { revalidatePath } from "next/cache";
 import * as z from "zod";
-import { actionClient } from "../../lib/action-client";
+import { actionClient } from "../../lib/action-client.ts";
 
 const requireStore = () => {
   if (!integrationConfigStore) {

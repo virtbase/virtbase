@@ -27,9 +27,9 @@ import type {
 } from "@virtbase/ports";
 import type { FieldDescriptor } from "@virtbase/validators";
 import type { APIEmbed } from "discord-api-types/v10";
-import { createDiscordClient } from "../api";
-import type { DiscordContext } from "../config";
-import { escapeMarkdown } from "../ui/format";
+import { createDiscordClient } from "../api/index.ts";
+import type { DiscordContext } from "../config.ts";
+import { escapeMarkdown } from "../ui/format.ts";
 
 /** Discord's own palette, so a notification looks native next to the bot. */
 const SEVERITY_COLOR: Record<NotificationSeverity, number> = {

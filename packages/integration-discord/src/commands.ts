@@ -21,7 +21,7 @@ import {
   helpCommandDescriptionLocalizations,
   inviteCommandDescriptionLocalizations,
   menuCommandDescriptionLocalizations,
-} from "./command-description-localizations";
+} from "./command-description-localizations.ts";
 
 type Command = Omit<
   APIApplicationCommand,

@@ -24,10 +24,10 @@ import type {
 } from "discord-api-types/v10";
 import { ComponentType, InteractionResponseType } from "discord-api-types/v10";
 
-import type { DiscordClient } from "../../api";
-import { createDeferred } from "../../handlers/defer";
-import type { InteractionContext } from "../../handlers/types";
-import { noEmojis, silentLogger } from "./harness";
+import type { DiscordClient } from "../../api/index.ts";
+import { createDeferred } from "../../handlers/defer.ts";
+import type { InteractionContext } from "../../handlers/types.ts";
+import { noEmojis, silentLogger } from "./harness.ts";
 
 export interface TestContext {
   ctx: InteractionContext;

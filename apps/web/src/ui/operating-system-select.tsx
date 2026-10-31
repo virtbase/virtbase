@@ -38,8 +38,8 @@ import { formatBytes } from "@virtbase/utils";
 import { useExtracted, useFormatter } from "next-intl";
 import type React from "react";
 import { useState } from "react";
-import type { getTemplateGroups } from "@/features/checkout/api/get-template-groups";
-import { OperatingSystemIcon } from "@/ui/operating-system-icon";
+import type { getTemplateGroups } from "@/features/checkout/api/get-template-groups.ts";
+import { OperatingSystemIcon } from "@/ui/operating-system-icon.tsx";
 
 export function OperatingSystemSelect({
   className,

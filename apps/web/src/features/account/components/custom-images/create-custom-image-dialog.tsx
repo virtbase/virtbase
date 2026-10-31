@@ -41,8 +41,8 @@ import { UploadProxmoxIsoInputSchema } from "@virtbase/validators";
 import { useExtracted, useFormatter } from "next-intl";
 import { useEffect, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { useUploadCustomImage } from "../../hooks/custom-images/upload-custom-image";
-import { IsoCatalogGrid } from "./iso-catalog-grid";
+import { useUploadCustomImage } from "../../hooks/custom-images/upload-custom-image.ts";
+import { IsoCatalogGrid } from "./iso-catalog-grid.tsx";
 
 export default function CreateCustomImageDialog({
   ...props

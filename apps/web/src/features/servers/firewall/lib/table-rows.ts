@@ -15,8 +15,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { GetFirewallRulesOutput } from "../hooks/use-firewall-rules";
-import type { GetGuestFirewallOutput } from "../hooks/use-guest-firewall";
+import type { GetFirewallRulesOutput } from "../hooks/use-firewall-rules.ts";
+import type { GetGuestFirewallOutput } from "../hooks/use-guest-firewall.ts";
 
 export type HostRule = GetFirewallRulesOutput["rules"][number];
 export type GuestRule = GetGuestFirewallOutput["guest"]["rules"][number];

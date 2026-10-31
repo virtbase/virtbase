@@ -19,8 +19,8 @@ import { getCookieCache } from "better-auth/cookies";
 import type { NextRequest, NextResponse } from "next/server";
 import { hasLocale } from "next-intl";
 import createMiddleware from "next-intl/middleware";
-import { defaultLocale, locales } from "@/i18n/config";
-import { consoleRouting } from "@/i18n/routing.console";
+import { defaultLocale, locales } from "@/i18n/config.ts";
+import { consoleRouting } from "@/i18n/routing.console.ts";
 
 const negotiate = createMiddleware(consoleRouting);
 

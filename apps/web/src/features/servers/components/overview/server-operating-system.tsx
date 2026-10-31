@@ -25,8 +25,8 @@ import {
 } from "@virtbase/ui/tooltip";
 import { resolveOperatingSystem } from "@virtbase/utils";
 import { useExtracted, useFormatter, useNow } from "next-intl";
-import { OperatingSystemIcon } from "@/ui/operating-system-icon";
-import type { GetServerOutput } from "../../hooks/use-server";
+import { OperatingSystemIcon } from "@/ui/operating-system-icon.tsx";
+import type { GetServerOutput } from "../../hooks/use-server.ts";
 
 type Server = GetServerOutput["server"];
 

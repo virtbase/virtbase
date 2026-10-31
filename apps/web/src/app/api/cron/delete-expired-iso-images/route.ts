@@ -20,7 +20,7 @@ import { getProxmoxInstance } from "@virtbase/api/proxmox";
 import { eq, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { proxmoxIsoDownloads, servers } from "@virtbase/db/schema";
-import { withCronSecret } from "@/lib/with-cron-secret";
+import { withCronSecret } from "@/lib/with-cron-secret.ts";
 
 /**
  * Checks for expired ISO images and deletes them.

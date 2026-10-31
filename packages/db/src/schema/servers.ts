@@ -17,14 +17,14 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils/create-id";
-import { abuseEnforcementLevelEnum } from "./abuse-enums";
-import { users } from "./auth";
-import { proxmoxIsoDownloads } from "./proxmox-iso-downloads";
-import { proxmoxNodes } from "./proxmox-nodes";
-import { proxmoxTemplates } from "./proxmox-templates";
-import { serverPlanPrices } from "./server-plan-prices";
-import { serverPlans } from "./server-plans";
+import { createId } from "../utils/create-id.ts";
+import { abuseEnforcementLevelEnum } from "./abuse-enums.ts";
+import { users } from "./auth.ts";
+import { proxmoxIsoDownloads } from "./proxmox-iso-downloads.ts";
+import { proxmoxNodes } from "./proxmox-nodes.ts";
+import { proxmoxTemplates } from "./proxmox-templates.ts";
+import { serverPlanPrices } from "./server-plan-prices.ts";
+import { serverPlans } from "./server-plans.ts";
 
 export const servers = d.snakeCase.table(
   "servers",

@@ -16,8 +16,8 @@
  */
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { defaultGetSSHKeysListQuery } from "@/features/account/hooks/ssh-keys/ssh-keys-list";
-import { useTRPC } from "@/lib/trpc/react";
+import { defaultGetSSHKeysListQuery } from "@/features/account/hooks/ssh-keys/ssh-keys-list.ts";
+import { useTRPC } from "@/lib/trpc/react.tsx";
 
 interface DeleteSSHKeyOptions {
   mutationConfig?: Parameters<

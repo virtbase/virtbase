@@ -45,8 +45,8 @@ import { useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import type * as z from "zod";
-import { OperatingSystemIcon } from "@/ui/operating-system-icon";
-import { createProxmoxTemplateAction } from "../../api/proxmox-templates/create-proxmox-template";
+import { OperatingSystemIcon } from "@/ui/operating-system-icon.tsx";
+import { createProxmoxTemplateAction } from "../../api/proxmox-templates/create-proxmox-template.ts";
 
 type CreateTemplateFormValues = z.input<
   typeof CreateProxmoxTemplateInputSchema

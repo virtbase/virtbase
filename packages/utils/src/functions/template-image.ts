@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { TEMPLATE_IMAGE_REFRESH_DAYS } from "../constants/limits";
+import { TEMPLATE_IMAGE_REFRESH_DAYS } from "../constants/limits.ts";
 
 /**
  * The file extensions Proxmox accepts as `import` content, from

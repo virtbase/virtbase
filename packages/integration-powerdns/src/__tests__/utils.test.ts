@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { buildPtrName } from "../utils";
+import { buildPtrName } from "../utils.ts";
 
 describe("buildPtrName", () => {
   test("builds a PTR name for an IPv4 address", () => {

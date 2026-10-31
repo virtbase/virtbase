@@ -19,7 +19,7 @@ import { describe, expect, test } from "bun:test";
 import {
   readChunkedStripeMetadata,
   writeChunkedStripeMetadata,
-} from "../stripe-metadata";
+} from "../stripe-metadata.ts";
 
 describe("stripe metadata chunking", () => {
   test("short values are written as a single chunk", () => {

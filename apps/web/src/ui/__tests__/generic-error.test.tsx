@@ -16,7 +16,7 @@
  */
 
 import { beforeEach, describe, expect, mock, test } from "bun:test";
-import { resolveRetry } from "../generic-error";
+import { resolveRetry } from "../generic-error.tsx";
 
 const reset = mock(() => {});
 const resetBoundary = mock(() => {});

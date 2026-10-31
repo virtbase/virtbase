@@ -28,7 +28,7 @@ import { RenameServerInputSchema } from "@virtbase/validators/server";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { Controller, useForm } from "react-hook-form";
-import { useRenameServer } from "../../hooks/overview/use-rename-server";
+import { useRenameServer } from "../../hooks/overview/use-rename-server.ts";
 
 export default function RenameServerDialog(
   props: Omit<

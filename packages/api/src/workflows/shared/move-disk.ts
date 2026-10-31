@@ -18,8 +18,8 @@
 import type {
   GetProxmoxInstanceParams,
   ProxmoxInstance,
-} from "../../proxmox/get-proxmox-instance";
-import { getProxmoxInstance } from "../../proxmox/get-proxmox-instance";
+} from "../../proxmox/get-proxmox-instance.ts";
+import { getProxmoxInstance } from "../../proxmox/get-proxmox-instance.ts";
 
 type MoveDiskParams = Parameters<
   ReturnType<ProxmoxInstance["node"]["qemu"]["$"]>["move_disk"]["$post"]

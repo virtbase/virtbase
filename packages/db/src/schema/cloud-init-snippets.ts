@@ -17,13 +17,13 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils/create-id";
+import { createId } from "../utils/create-id.ts";
 import type {
   proxmoxTemplateArchitectureEnum,
   proxmoxTemplateInitSystemEnum,
   proxmoxTemplateOsFamilyEnum,
   proxmoxTemplatePackageManagerEnum,
-} from "./proxmox-templates";
+} from "./proxmox-templates.ts";
 
 export const cloudInitSnippetKindEnum = d.pgEnum("cloud_init_snippet_kind", [
   /** A cloud-config fragment, parsed as YAML and deep-merged. */

@@ -18,8 +18,8 @@
 import { cn } from "@virtbase/ui";
 import { LucideDollarSign, LucideServer, LucideUser } from "@virtbase/ui/icons";
 import { useExtracted } from "next-intl";
-import type { getActivityStats } from "../../api/dashboard/get-activity-stats";
-import { StatsCard } from "./stats-card";
+import type { getActivityStats } from "../../api/dashboard/get-activity-stats.ts";
+import { StatsCard } from "./stats-card.tsx";
 
 export function ActivityStatsRow({
   promise,

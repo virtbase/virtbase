@@ -24,16 +24,16 @@ import {
   abuseCases,
   emails,
 } from "@virtbase/db/schema";
-import { dispatchNotification } from "../../notifications/dispatch";
-import { once } from "../../upstash";
-import { caseReference, recordCaseEvent } from "../case";
-import { sanitizeAbuseBody, sanitizeAbuseText } from "../sanitize";
+import { dispatchNotification } from "../../notifications/dispatch.ts";
+import { once } from "../../upstash/index.ts";
+import { caseReference, recordCaseEvent } from "../case.ts";
+import { sanitizeAbuseBody, sanitizeAbuseText } from "../sanitize.ts";
 import {
   isBareAbuseAddress,
   parseCaseAddress,
   parseSubjectToken,
-} from "./address";
-import { acknowledgeReporters } from "./send";
+} from "./address.ts";
+import { acknowledgeReporters } from "./send.ts";
 
 type Database = typeof database;
 

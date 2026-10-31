@@ -18,8 +18,8 @@
 import { afterAll, beforeAll, describe, expect, test } from "bun:test";
 import { TRPCError } from "@trpc/server";
 import { accounts, users } from "@virtbase/db/schema";
-import type { TestCaller, TestCallerResult } from "../../testing";
-import { createTestCaller, mockSession } from "../../testing";
+import type { TestCaller, TestCallerResult } from "../../testing/index.ts";
+import { createTestCaller, mockSession } from "../../testing/index.ts";
 
 let harness: TestCallerResult;
 let testDb: TestCallerResult["db"];

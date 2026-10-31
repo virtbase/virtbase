@@ -16,17 +16,17 @@
  */
 
 import { defineIntegration } from "@virtbase/integration-sdk";
-import { createAbuseIpDbClient } from "./client";
-import { secretsSchema, settingsSchema } from "./config";
-import { localizeAbuseIpDb } from "./localize";
-import { AbuseIpDbReputation } from "./reputation";
-import { AbuseIpDbSource } from "./source";
+import { createAbuseIpDbClient } from "./client.ts";
+import { secretsSchema, settingsSchema } from "./config.ts";
+import { localizeAbuseIpDb } from "./localize.ts";
+import { AbuseIpDbReputation } from "./reputation.ts";
+import { AbuseIpDbSource } from "./source.ts";
 
-export * from "./categories";
-export * from "./client";
-export * from "./config";
-export * from "./reputation";
-export * from "./source";
+export * from "./categories.ts";
+export * from "./client.ts";
+export * from "./config.ts";
+export * from "./reputation.ts";
+export * from "./source.ts";
 
 export default defineIntegration({
   id: "abuseipdb",

@@ -32,7 +32,7 @@ import { ScrollArea } from "@virtbase/ui/scroll-area";
 import NextLink from "next/link";
 import { useSelectedLayoutSegment } from "next/navigation";
 import { useExtracted } from "next-intl";
-import { paths } from "@/lib/paths";
+import { paths } from "@/lib/paths.ts";
 
 /**
  * The tab bar itself, rendered identically whether or not the server's id is

@@ -37,7 +37,7 @@ export async function resetPointerRecordsStep({
   // module can be evaluated while that module is still initialising -
   // which fails the whole step bundle with a TDZ error, not just this
   // step. `notifications/dispatch.ts` breaks the same cycle the same way.
-  const { integrations } = await import("../../integrations");
+  const { integrations } = await import("../../integrations/index.ts");
   const dns = await integrations.resolve("dns");
   if (!dns) {
     console.warn(

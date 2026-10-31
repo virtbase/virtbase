@@ -23,9 +23,12 @@ import dynamic from "next/dynamic";
 import { useExtracted } from "next-intl";
 import { useState } from "react";
 
-const CreateSnippetDialog = dynamic(() => import("./create-snippet-dialog"), {
-  ssr: false,
-});
+const CreateSnippetDialog = dynamic(
+  () => import("./create-snippet-dialog.tsx"),
+  {
+    ssr: false,
+  },
+);
 
 export function CreateSnippetButton() {
   const t = useExtracted();

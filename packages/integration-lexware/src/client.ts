@@ -20,7 +20,7 @@ import type {
   InvoiceCreateResponse,
   InvoiceForCreate,
   InvoiceRetrieveResponse,
-} from "./types";
+} from "./types.ts";
 
 export class LexwareClient {
   private readonly baseUrl = "https://api.lexware.io/v1";

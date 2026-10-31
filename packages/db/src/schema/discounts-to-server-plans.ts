@@ -16,8 +16,8 @@
  */
 
 import * as d from "drizzle-orm/pg-core";
-import { discounts } from "./discounts";
-import { serverPlans } from "./server-plans";
+import { discounts } from "./discounts.ts";
+import { serverPlans } from "./server-plans.ts";
 
 export const discountsToServerPlans = d.snakeCase.table(
   "discounts_to_server_plans",

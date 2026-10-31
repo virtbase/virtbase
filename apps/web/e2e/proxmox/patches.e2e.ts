@@ -16,8 +16,8 @@
  */
 
 import { expect, test } from "@playwright/test";
-import type { ClusterConfig } from "../support/cluster";
-import { clusterIsReachable, readClusterConfig } from "../support/cluster";
+import type { ClusterConfig } from "../support/cluster.ts";
+import { clusterIsReachable, readClusterConfig } from "../support/cluster.ts";
 
 /**
  * The three Proxmox patches in `tooling/pve-patches` are what make provisioning

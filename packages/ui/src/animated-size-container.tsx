@@ -28,7 +28,7 @@ import type {
   RefAttributes,
 } from "react";
 import { forwardRef, useRef } from "react";
-import { useResizeObserver } from "./hooks/use-resize-observer";
+import { useResizeObserver } from "./hooks/use-resize-observer.tsx";
 
 type AnimatedSizeContainerProps = PropsWithChildren<{
   width?: boolean;

@@ -20,8 +20,8 @@ import { useTable } from "@tanstack/react-table";
 import { dataTableFeatures } from "@virtbase/ui/lib";
 import type { DataTableRowAction } from "@virtbase/ui/types";
 import { useState } from "react";
-import type { BackupsTableColumn } from "../../components/backups/backups-table/columns";
-import { useBackupsTableColumns } from "../../components/backups/backups-table/columns";
+import type { BackupsTableColumn } from "../../components/backups/backups-table/columns.tsx";
+import { useBackupsTableColumns } from "../../components/backups/backups-table/columns.tsx";
 
 export function useBackupsTable({ data }: { data: BackupsTableColumn[] }) {
   const [rowAction, setRowAction] = useState<DataTableRowAction<

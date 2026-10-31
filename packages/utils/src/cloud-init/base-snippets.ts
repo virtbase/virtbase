@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { RenderableSnippet } from "./types";
+import type { RenderableSnippet } from "./types.ts";
 
 /**
  * The snippets that replace what `scripts/create-templates.sh` used to bake

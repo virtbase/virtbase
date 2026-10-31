@@ -20,7 +20,7 @@ import {
   EXAMPLE_DATE,
   ObjectTimestampSchema,
   RFC3339LINK,
-} from "../timestamps";
+} from "../timestamps.ts";
 
 export const ServerSchema = z.object({
   id: z

@@ -24,9 +24,9 @@ import {
   test,
 } from "bun:test";
 import { eq } from "drizzle-orm";
-import { orderItems, orders, users } from "../../schema";
-import type { TestDb } from "../../test-client";
-import { createTestDb } from "../../test-client";
+import { orderItems, orders, users } from "../../schema/index.ts";
+import type { TestDb } from "../../test-client.ts";
+import { createTestDb } from "../../test-client.ts";
 
 let testDb: TestDb;
 

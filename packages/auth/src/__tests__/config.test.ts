@@ -16,8 +16,8 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { initAuth } from "../index";
-import { apiKeyOptions } from "../plugins";
+import { initAuth } from "../index.ts";
+import { apiKeyOptions } from "../plugins/index.ts";
 
 /**
  * Providers that report an email address they have not verified.

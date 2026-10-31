@@ -21,7 +21,7 @@ import {
   listNotificationChannels,
   notificationTargetStore,
 } from "@virtbase/api/notifications";
-import { verifySession } from "../verify-session";
+import { verifySession } from "../verify-session.ts";
 
 export interface NotificationTargetListItem {
   id: string;

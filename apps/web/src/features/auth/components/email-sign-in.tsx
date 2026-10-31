@@ -35,11 +35,11 @@ import { useContext, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import * as z from "zod/v4-mini";
-import { LoginFormContext } from "@/features/auth/components/login-form-context";
-import { PasskeyConditionalUI } from "@/features/auth/components/passkey-conditional-ui";
-import { authClient, isTwoFactorRedirect } from "@/lib/auth/client";
-import { useTRPC } from "@/lib/trpc/react";
-import { ShowPasswordAddon } from "@/ui/input-group-addons";
+import { LoginFormContext } from "@/features/auth/components/login-form-context.tsx";
+import { PasskeyConditionalUI } from "@/features/auth/components/passkey-conditional-ui.tsx";
+import { authClient, isTwoFactorRedirect } from "@/lib/auth/client.ts";
+import { useTRPC } from "@/lib/trpc/react.tsx";
+import { ShowPasswordAddon } from "@/ui/input-group-addons/index.tsx";
 
 export const EmailSignIn = ({ next }: { next?: string }) => {
   const t = useExtracted();

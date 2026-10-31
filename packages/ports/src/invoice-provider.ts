@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { Money } from "./common";
+import type { Money } from "./common.ts";
 
 export interface InvoiceAddress {
   /** Falls back to the application name when the customer supplied none. */

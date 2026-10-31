@@ -22,19 +22,19 @@ import { ButtonStyle, InteractionResponseType } from "discord-api-types/v10";
 import type { Locale } from "next-intl";
 import { getExtracted, getFormatter } from "next-intl/server";
 
-import type { EmojiResolver } from "../../emoji";
-import type { LinkedInteractionContext } from "../../handlers/types";
-import { actionButton, row, select } from "../../ui/components";
-import { ConfirmMessage } from "../../ui/confirm";
-import { EMOJI } from "../../ui/emoji";
-import { escapeMarkdown, timestamp } from "../../ui/format";
-import type { MessageResponse, ResponseType } from "../../ui/message";
-import { message } from "../../ui/message";
-import { modal, modalValue } from "../../ui/modal";
-import { actorFor } from "../../utils/actor";
-import { createEmbed } from "../../utils/create-embed";
-import { requireServerId } from "../servers";
-import type { DiscordFeature } from "../types";
+import type { EmojiResolver } from "../../emoji/index.ts";
+import type { LinkedInteractionContext } from "../../handlers/types.ts";
+import { actionButton, row, select } from "../../ui/components.ts";
+import { ConfirmMessage } from "../../ui/confirm.ts";
+import { EMOJI } from "../../ui/emoji.ts";
+import { escapeMarkdown, timestamp } from "../../ui/format.ts";
+import type { MessageResponse, ResponseType } from "../../ui/message.ts";
+import { message } from "../../ui/message.ts";
+import { modal, modalValue } from "../../ui/modal.ts";
+import { actorFor } from "../../utils/actor.ts";
+import { createEmbed } from "../../utils/create-embed.ts";
+import { requireServerId } from "../servers/index.ts";
+import type { DiscordFeature } from "../types.ts";
 
 const PAGE_SIZE = 10;
 

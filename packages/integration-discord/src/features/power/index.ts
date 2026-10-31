@@ -21,17 +21,17 @@ import { ButtonStyle, InteractionResponseType } from "discord-api-types/v10";
 import type { Locale } from "next-intl";
 import { getExtracted, getFormatter } from "next-intl/server";
 
-import { actionButton, row } from "../../ui/components";
-import { ConfirmMessage } from "../../ui/confirm";
-import { EMOJI } from "../../ui/emoji";
-import { formatUptime, stateEmoji, usageBar } from "../../ui/format";
-import type { MessageResponse, ResponseType } from "../../ui/message";
-import { message } from "../../ui/message";
-import { actorFor } from "../../utils/actor";
-import { createEmbed } from "../../utils/create-embed";
-import type { renderOverview } from "../servers";
-import { requireServerId } from "../servers";
-import type { DiscordFeature } from "../types";
+import { actionButton, row } from "../../ui/components.ts";
+import { ConfirmMessage } from "../../ui/confirm.ts";
+import { EMOJI } from "../../ui/emoji.ts";
+import { formatUptime, stateEmoji, usageBar } from "../../ui/format.ts";
+import type { MessageResponse, ResponseType } from "../../ui/message.ts";
+import { message } from "../../ui/message.ts";
+import { actorFor } from "../../utils/actor.ts";
+import { createEmbed } from "../../utils/create-embed.ts";
+import type { renderOverview } from "../servers/index.ts";
+import { requireServerId } from "../servers/index.ts";
+import type { DiscordFeature } from "../types.ts";
 
 /**
  * The power actions the port accepts.

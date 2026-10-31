@@ -21,8 +21,8 @@ import { Button } from "@virtbase/ui/button";
 import { Spinner } from "@virtbase/ui/spinner";
 import { useExtracted, useFormatter } from "next-intl";
 import { useState } from "react";
-import type { Subscription } from "@/features/servers/hooks/billing/use-server-subscription";
-import { CancelSubscriptionDialog } from "./cancel-subscription-dialog";
+import type { Subscription } from "@/features/servers/hooks/billing/use-server-subscription.ts";
+import { CancelSubscriptionDialog } from "./cancel-subscription-dialog.tsx";
 
 interface CancelSubscriptionSectionProps {
   subscription: Subscription;

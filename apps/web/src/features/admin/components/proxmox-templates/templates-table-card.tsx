@@ -17,9 +17,9 @@
 
 import { getValidFilters } from "@virtbase/ui/lib";
 import type { SearchParams } from "nuqs";
-import { getTemplatesList } from "../../api/proxmox-templates/get-templates-list";
-import { searchParamsCache } from "../../lib/proxmox-templates/validations";
-import { TemplatesTable } from "./templates-table";
+import { getTemplatesList } from "../../api/proxmox-templates/get-templates-list.ts";
+import { searchParamsCache } from "../../lib/proxmox-templates/validations.ts";
+import { TemplatesTable } from "./templates-table/index.tsx";
 
 export async function TemplatesTableCard(props: {
   searchParams: Promise<SearchParams>;

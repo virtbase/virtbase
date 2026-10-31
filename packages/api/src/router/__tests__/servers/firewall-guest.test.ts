@@ -26,12 +26,16 @@ import {
 } from "bun:test";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { appRouter } from "../../../root";
-import { mockServer, mockSession, seedServerGraph } from "../../../testing";
+import { appRouter } from "../../../root.ts";
+import {
+  mockServer,
+  mockSession,
+  seedServerGraph,
+} from "../../../testing/index.ts";
 
 const cacheStore = new Map<string, unknown>();
 
-mock.module("../../../upstash/redis", () => ({
+mock.module("../../../upstash/redis.ts", () => ({
   redis: {
     get: async (key: string) => cacheStore.get(key) ?? null,
     set: async (key: string, value: unknown) => {
@@ -146,7 +150,7 @@ const get = () =>
 
 describe("servers.firewall.guest.get", () => {
   test("it reads an active ufw and its rules", async () => {
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         scripts: {
           "command -v ufw": "ufw present\nufw active\niptables present\n",
@@ -175,7 +179,7 @@ describe("servers.firewall.guest.get", () => {
   });
 
   test("it reports a server with nothing filtering as no_firewall", async () => {
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         scripts: { "command -v ufw": "ufw present\niptables present\n" },
       }),
@@ -197,7 +201,7 @@ describe("servers.firewall.guest.get", () => {
     // The distinction that matters most in this router: `unavailable` must
     // never collapse into `no_firewall`, or a customer reads "nothing is
     // filtering" when in truth nobody checked.
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         execError: new Error(
           'POST https://n/x return Error 500 Internal Server Error: {"errors":"No QEMU guest agent configured"}',
@@ -213,7 +217,7 @@ describe("servers.firewall.guest.get", () => {
   });
 
   test("it reports a stopped server as unavailable rather than unprotected", async () => {
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         current: { status: "stopped", qmpstatus: "stopped", agent: true },
       }),
@@ -225,7 +229,7 @@ describe("servers.firewall.guest.get", () => {
   test("it does not run POSIX probes against a Windows guest", async () => {
     let ran = false;
 
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         osinfo: { result: { id: "mswindows" } },
         onScript: () => {
@@ -241,7 +245,7 @@ describe("servers.firewall.guest.get", () => {
   test("it warns about a firewall it cannot read yet", async () => {
     // firewalld has no parser, but its rules still apply to the customer's
     // traffic - saying nothing would be worse than saying "we found this".
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         scripts: {
           "command -v ufw": "firewalld present\nfirewalld active\n",
@@ -258,7 +262,7 @@ describe("servers.firewall.guest.get", () => {
   });
 
   test("it prefers ufw over the backend it compiles to", async () => {
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         scripts: {
           "command -v ufw":
@@ -277,7 +281,7 @@ describe("servers.firewall.guest.get", () => {
   test("it caches the inspection and re-runs it only on refresh", async () => {
     let inspections = 0;
 
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         scripts: {
           "command -v ufw": "ufw present\nufw active\n",
@@ -303,7 +307,7 @@ describe("servers.firewall.guest.get", () => {
   });
 
   test("it returns a Date on a cache hit", async () => {
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         scripts: {
           "command -v ufw": "ufw present\nufw active\n",
@@ -320,7 +324,7 @@ describe("servers.firewall.guest.get", () => {
   });
 
   test("it keeps the raw line of every rule", async () => {
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         scripts: {
           "command -v ufw": "ufw present\nufw active\n",

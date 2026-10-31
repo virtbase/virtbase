@@ -19,13 +19,13 @@
 
 import { LucideChevronRight } from "@virtbase/ui/icons";
 import NextLink from "next/link";
-import { ServerTerminatesBadge } from "@/features/servers/components/server-terminates-badge";
-import { paths } from "@/lib/paths";
-import { GenericError } from "@/ui/generic-error";
-import { OperatingSystemIcon } from "@/ui/operating-system-icon";
-import { useLatestServers } from "../hooks/use-latest-servers";
-import { EmptyServers } from "./empty-servers";
-import { ServerStatusSmall } from "./server-status-small";
+import { ServerTerminatesBadge } from "@/features/servers/components/server-terminates-badge.tsx";
+import { paths } from "@/lib/paths.ts";
+import { GenericError } from "@/ui/generic-error.tsx";
+import { OperatingSystemIcon } from "@/ui/operating-system-icon.tsx";
+import { useLatestServers } from "../hooks/use-latest-servers.ts";
+import { EmptyServers } from "./empty-servers.tsx";
+import { ServerStatusSmall } from "./server-status-small.tsx";
 
 export function LatestServersList() {
   const {

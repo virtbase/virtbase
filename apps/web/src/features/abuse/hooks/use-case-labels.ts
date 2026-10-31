@@ -16,7 +16,7 @@
  */
 
 import { useExtracted } from "next-intl";
-import type { AbuseCaseSummary, CustomerAbuseCase } from "./use-abuse-cases";
+import type { AbuseCaseSummary, CustomerAbuseCase } from "./use-abuse-cases.ts";
 
 /**
  * The internal vocabulary, said the way it would be said to the person it is

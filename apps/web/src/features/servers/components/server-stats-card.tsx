@@ -31,7 +31,7 @@ import { Progress } from "@virtbase/ui/progress";
 import { formatBytes } from "@virtbase/utils";
 import { useParams } from "next/navigation";
 import { useExtracted, useFormatter, useNow } from "next-intl";
-import { useServerStatus } from "../hooks/use-server-status";
+import { useServerStatus } from "../hooks/use-server-status.ts";
 
 export function ServerStatsCard(props: React.ComponentProps<typeof Card>) {
   const t = useExtracted();

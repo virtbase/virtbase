@@ -17,13 +17,13 @@
 
 import { describe, expect, test } from "bun:test";
 
-import { commands } from "../../commands";
-import { EMOJI_MANIFEST, EMOJI_PREFIX } from "../../emoji/manifest";
-import { roleConnectionsMetadata } from "../../role-connections-metadata";
-import { reconcileCommands } from "../commands";
-import { reconcileEmojis } from "../emojis";
-import { reconcileRoleConnections } from "../role-connections";
-import { fakeClient } from "./support";
+import { commands } from "../../commands.ts";
+import { EMOJI_MANIFEST, EMOJI_PREFIX } from "../../emoji/manifest.ts";
+import { roleConnectionsMetadata } from "../../role-connections-metadata.ts";
+import { reconcileCommands } from "../commands.ts";
+import { reconcileEmojis } from "../emojis.ts";
+import { reconcileRoleConnections } from "../role-connections.ts";
+import { fakeClient } from "./support.ts";
 
 const COMMANDS_PATH = "/applications/app_1/commands";
 const METADATA_PATH = "/applications/app_1/role-connections/metadata";

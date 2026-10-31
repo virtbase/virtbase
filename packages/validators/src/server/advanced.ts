@@ -16,7 +16,7 @@
  */
 
 import * as z from "zod";
-import { ServerSchema } from "./shared";
+import { ServerSchema } from "./shared.ts";
 
 export const GetServerAdvancedInputSchema = z.object({
   server_id: ServerSchema.shape.id,

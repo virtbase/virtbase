@@ -18,26 +18,29 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useServerActionState } from "../../hooks/use-server-action-state";
+import { useServerActionState } from "../../hooks/use-server-action-state.ts";
 
-const RenameServerDialog = dynamic(() => import("./rename-server-dialog"), {
+const RenameServerDialog = dynamic(() => import("./rename-server-dialog.tsx"), {
   ssr: false,
 });
 
-const NodeDetailsDialog = dynamic(() => import("./node-details-dialog"), {
+const NodeDetailsDialog = dynamic(() => import("./node-details-dialog.tsx"), {
   ssr: false,
 });
 
 const ResetServerPasswordDialog = dynamic(
-  () => import("./reset-server-password-dialog"),
+  () => import("./reset-server-password-dialog.tsx"),
   {
     ssr: false,
   },
 );
 
-const ChangeTemplateDialog = dynamic(() => import("./change-template-dialog"), {
-  ssr: false,
-});
+const ChangeTemplateDialog = dynamic(
+  () => import("./change-template-dialog.tsx"),
+  {
+    ssr: false,
+  },
+);
 
 export function ServerDetailsActions() {
   const { action, setAction } = useServerActionState();

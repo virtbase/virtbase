@@ -15,10 +15,10 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { listCommands, putCommands } from "../api";
-import { commands } from "../commands";
-import { canonical } from "./canonical";
-import type { Reconciler } from "./types";
+import { listCommands, putCommands } from "../api/index.ts";
+import { commands } from "../commands.ts";
+import { canonical } from "./canonical.ts";
+import type { Reconciler } from "./types.ts";
 
 /** Fields Discord accepts on a command; everything else it adds itself. */
 const COMPARED = [

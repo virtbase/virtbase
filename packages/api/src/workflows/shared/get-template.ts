@@ -19,9 +19,9 @@ import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { proxmoxTemplates } from "@virtbase/db/schema";
 import { FatalError, getStepMetadata, RetryableError } from "workflow";
-import type { GetProxmoxInstanceParams } from "../../proxmox";
-import { getProxmoxInstance } from "../../proxmox";
-import { ensureTemplateImage } from "../../template-images";
+import type { GetProxmoxInstanceParams } from "../../proxmox/index.ts";
+import { getProxmoxInstance } from "../../proxmox/index.ts";
+import { ensureTemplateImage } from "../../template-images/index.ts";
 
 type GetTemplateStepParams = {
   proxmoxTemplateId: string;

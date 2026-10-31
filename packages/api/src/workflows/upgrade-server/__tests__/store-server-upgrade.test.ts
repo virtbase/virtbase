@@ -33,11 +33,11 @@ import {
   mockServerPlan,
   mockServerPlanPrice,
   seedServerGraph,
-} from "../../../testing/fixtures";
+} from "../../../testing/fixtures.ts";
 
 let db: TestDb;
-let store: typeof import("../store-server-upgrade").storeServerUpgradeStep;
-let rollback: typeof import("../store-server-upgrade").rollbackStoreServerUpgradeStep;
+let store: typeof import("../store-server-upgrade.ts").storeServerUpgradeStep;
+let rollback: typeof import("../store-server-upgrade.ts").rollbackStoreServerUpgradeStep;
 
 const SERVER_ID = mockServer.id;
 /** The row an upgrade mints for the plan the customer moves onto. */
@@ -47,7 +47,7 @@ beforeAll(async () => {
   db = await createTestDb();
   mock.module("@virtbase/db/client", () => ({ db }));
   ({ storeServerUpgradeStep: store, rollbackStoreServerUpgradeStep: rollback } =
-    await import("../store-server-upgrade"));
+    await import("../store-server-upgrade.ts"));
 
   await seedServerGraph(db);
   await db

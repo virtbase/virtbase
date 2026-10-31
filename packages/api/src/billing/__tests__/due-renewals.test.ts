@@ -51,16 +51,16 @@ import {
   mockServerPlanPrice,
   mockSession,
   seedServerGraph,
-} from "../../testing/fixtures";
+} from "../../testing/fixtures.ts";
 
 const testDb: TestDb = await createTestDb();
 
 mock.module("@virtbase/db/client", () => ({ db: testDb }));
 mock.module("workflow/api", () => ({ start: async () => {} }));
 
-const { integrations } = await import("../../integrations");
+const { integrations } = await import("../../integrations/index.ts");
 const { renewDueSubscriptions, retryDueRenewals } = await import(
-  "../due-renewals"
+  "../due-renewals.ts"
 );
 
 const USER_ID = mockSession.user.id;

@@ -18,7 +18,7 @@
 import type { TRPCRouterRecord } from "@trpc/server";
 import { getPlansWithAvailability } from "@virtbase/db/queries";
 import { GetOfferListOutputSchema } from "@virtbase/validators";
-import { publicProcedure } from "../trpc";
+import { publicProcedure } from "../trpc.ts";
 
 export const publicRouter = {
   getOfferList: publicProcedure

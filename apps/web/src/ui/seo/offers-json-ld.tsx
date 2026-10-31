@@ -19,8 +19,8 @@ import type { DatabaseServerPlan } from "@virtbase/db/schema";
 import { formatBits, formatBytes, PUBLIC_DOMAIN } from "@virtbase/utils";
 import { getFormatter } from "next-intl/server";
 import type { ItemList, WithContext } from "schema-dts";
-import { ORGANIZATION_ID } from "./default-json-ld";
-import JsonLd from "./json-ld";
+import { ORGANIZATION_ID } from "./default-json-ld.tsx";
+import JsonLd from "./json-ld.tsx";
 
 /** Every currency the plan prices are quoted in. */
 const CURRENCY = "EUR";

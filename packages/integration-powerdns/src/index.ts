@@ -17,13 +17,13 @@
 
 import { defineIntegration } from "@virtbase/integration-sdk";
 import * as z from "zod";
-import { PowerDnsAdapter } from "./adapter";
-import { PowerDNSClient } from "./client";
-import { localizePowerDns } from "./localize";
+import { PowerDnsAdapter } from "./adapter.ts";
+import { PowerDNSClient } from "./client.ts";
+import { localizePowerDns } from "./localize.ts";
 
-export * from "./adapter";
-export * from "./client";
-export * from "./utils";
+export * from "./adapter.ts";
+export * from "./client.ts";
+export * from "./utils.ts";
 
 const settingsSchema = z.object({
   apiUrl: z.url(),

@@ -23,10 +23,10 @@ import { ResponsiveDialog } from "@virtbase/ui/responsive-dialog";
 import { Spinner } from "@virtbase/ui/spinner";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
-import { useDeleteFirewallRule } from "../hooks/use-delete-firewall-rule";
-import { useFirewallActionMapping } from "../hooks/use-firewall-action-mapping";
-import { useFirewallDirectionMapping } from "../hooks/use-firewall-direction-mapping";
-import type { HostFirewallRow } from "../lib/table-rows";
+import { useDeleteFirewallRule } from "../hooks/use-delete-firewall-rule.ts";
+import { useFirewallActionMapping } from "../hooks/use-firewall-action-mapping.ts";
+import { useFirewallDirectionMapping } from "../hooks/use-firewall-direction-mapping.ts";
+import type { HostFirewallRow } from "../lib/table-rows.ts";
 
 interface DeleteFirewallRuleDialogProps
   extends Omit<

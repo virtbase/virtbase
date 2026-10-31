@@ -51,20 +51,20 @@ import { Controller, useForm } from "react-hook-form";
 import {
   defaultGetSSHKeysListQuery,
   useSSHKeysList,
-} from "@/features/account/hooks/ssh-keys/ssh-keys-list";
-import { PasswordRequirements } from "@/features/auth/components/password-requirements";
+} from "@/features/account/hooks/ssh-keys/ssh-keys-list.ts";
+import { PasswordRequirements } from "@/features/auth/components/password-requirements.tsx";
 import {
   RandomPasswordAddon,
   ShowPasswordAddon,
-} from "@/ui/input-group-addons";
-import { OperatingSystemSelect } from "@/ui/operating-system-select";
-import type { getTemplateGroups } from "../api/get-template-groups";
-import { PAYMENT_FORM_ID } from "../constants";
-import { useCheckoutState } from "../hooks/use-checkout-state";
-import { CheckoutPublicKeySelect } from "./checkout-public-key-select";
-import { CheckoutWaivers } from "./checkout-waivers";
-import { ElementsProvider } from "./elements-provider";
-import { StripePaymentForm } from "./stripe-payment-form";
+} from "@/ui/input-group-addons/index.tsx";
+import { OperatingSystemSelect } from "@/ui/operating-system-select.tsx";
+import type { getTemplateGroups } from "../api/get-template-groups.ts";
+import { PAYMENT_FORM_ID } from "../constants.ts";
+import { useCheckoutState } from "../hooks/use-checkout-state.tsx";
+import { CheckoutPublicKeySelect } from "./checkout-public-key-select.tsx";
+import { CheckoutWaivers } from "./checkout-waivers.tsx";
+import { ElementsProvider } from "./elements-provider.tsx";
+import { StripePaymentForm } from "./stripe-payment-form.tsx";
 
 export function CheckoutForm({
   promise,

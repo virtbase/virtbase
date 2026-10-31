@@ -22,10 +22,10 @@ import type {
   InboundSignal,
   SignalSeverity,
 } from "@virtbase/ports";
-import { categoryNames, dominantCategory } from "./categories";
-import type { AbuseIpDbClient } from "./client";
-import { AbuseIpDbQuotaError, createAbuseIpDbClient } from "./client";
-import type { AbuseIpDbContext } from "./config";
+import { categoryNames, dominantCategory } from "./categories.ts";
+import type { AbuseIpDbClient } from "./client.ts";
+import { AbuseIpDbQuotaError, createAbuseIpDbClient } from "./client.ts";
+import type { AbuseIpDbContext } from "./config.ts";
 
 export const SOURCE = "abuseipdb";
 

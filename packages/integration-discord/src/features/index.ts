@@ -23,19 +23,19 @@ import type {
   APIModalSubmitInteraction,
 } from "discord-api-types/v10";
 
-import { routeKey } from "../routing";
-import { backupsFeature } from "./backups";
-import { firewallFeature } from "./firewall";
-import { lifecycleFeature } from "./lifecycle";
-import { menuFeature } from "./menu";
-import { powerFeature } from "./power";
-import { rdnsFeature } from "./rdns";
-import { serversFeature } from "./servers";
-import { statsFeature } from "./stats";
-import type { DiscordFeature, Entry, ResolvedEntry } from "./types";
-import { resolveEntry } from "./types";
+import { routeKey } from "../routing/index.ts";
+import { backupsFeature } from "./backups/index.ts";
+import { firewallFeature } from "./firewall/index.ts";
+import { lifecycleFeature } from "./lifecycle/index.ts";
+import { menuFeature } from "./menu/index.ts";
+import { powerFeature } from "./power/index.ts";
+import { rdnsFeature } from "./rdns/index.ts";
+import { serversFeature } from "./servers/index.ts";
+import { statsFeature } from "./stats/index.ts";
+import type { DiscordFeature, Entry, ResolvedEntry } from "./types.ts";
+import { resolveEntry } from "./types.ts";
 
-export * from "./types";
+export * from "./types.ts";
 
 /**
  * Everything the bot can do. Adding a capability is adding a line here and a

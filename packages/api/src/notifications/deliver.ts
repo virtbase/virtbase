@@ -23,9 +23,9 @@ import { notificationDeliveries, users } from "@virtbase/db/schema";
 import { DEFAULT_EMAIL_LOCALE } from "@virtbase/email/translations";
 import type { Notification, NotificationChannel } from "@virtbase/ports";
 import { ADMIN_DOMAIN, APP_DOMAIN } from "@virtbase/utils";
-import { notificationTargetStore } from "./store";
-import type { NotificationParams } from "./text";
-import { renderNotification } from "./text";
+import { notificationTargetStore } from "./store.ts";
+import type { NotificationParams } from "./text.ts";
+import { renderNotification } from "./text.ts";
 
 /**
  * How long one channel gets before the delivery is failed and left to the
@@ -77,7 +77,7 @@ const withTimeout = async <T>(
 const findChannel = async (
   channelId: string,
 ): Promise<NotificationChannel | null> => {
-  const { integrations } = await import("../integrations");
+  const { integrations } = await import("../integrations/index.ts");
   const channels = await integrations.resolveAll("notifications");
   return channels.find((channel) => channel.id === channelId) ?? null;
 };

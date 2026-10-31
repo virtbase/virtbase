@@ -29,7 +29,7 @@ import type {
 } from "@virtbase/ports";
 import { PortError } from "@virtbase/ports";
 import Stripe from "stripe";
-import { getOrCreateStripeCustomer } from "./get-or-create-customer";
+import { getOrCreateStripeCustomer } from "./get-or-create-customer.ts";
 
 type Secrets = { secretKey: string; webhookSecret: string };
 

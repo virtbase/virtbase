@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { sanitizeAbuseBody, sanitizeAbuseTitle } from "../sanitize";
+import { sanitizeAbuseBody, sanitizeAbuseTitle } from "../sanitize.ts";
 
 // Built from code points rather than pasted in: an invisible character in a
 // test file is unreviewable, and half of these are invisible by definition.

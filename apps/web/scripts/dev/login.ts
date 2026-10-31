@@ -18,7 +18,7 @@
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { servers, users } from "@virtbase/db/schema";
-import { auth } from "@/lib/auth/server";
+import { auth } from "@/lib/auth/server.ts";
 
 /**
  * Signs a development account in and prints its session cookie.

@@ -22,7 +22,7 @@ import { Button } from "@virtbase/ui/button";
 import { LucideCircleAlert } from "@virtbase/ui/icons";
 import { Spinner } from "@virtbase/ui/spinner";
 import { useExtracted, useFormatter } from "next-intl";
-import type { Subscription } from "@/features/servers/hooks/billing/use-server-subscription";
+import type { Subscription } from "@/features/servers/hooks/billing/use-server-subscription.ts";
 
 interface PastDueAlertProps {
   subscription: Subscription;

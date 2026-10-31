@@ -26,8 +26,8 @@ import {
 } from "@virtbase/db/schema";
 import { escapedIlike, getDateIntervalFilter } from "@virtbase/db/utils";
 import { cacheLife, cacheTag } from "next/cache";
-import type { GetProxmoxTemplatesSchema } from "../../lib/proxmox-templates/validations";
-import { verifySession } from "../verify-session";
+import type { GetProxmoxTemplatesSchema } from "../../lib/proxmox-templates/validations.ts";
+import { verifySession } from "../verify-session.ts";
 
 export async function getTemplatesList(input: GetProxmoxTemplatesSchema) {
   "use cache: private";

@@ -18,29 +18,32 @@
 import { sleep } from "workflow";
 // Imported from the leaf rather than the `guest-os` barrel: that barrel
 // reaches Redis and therefore `node:crypto`, which a workflow cannot load.
-import { CLEARED_OPERATING_SYSTEM } from "../../guest-os/columns";
-import type { GetProxmoxInstanceParams } from "../../proxmox/get-proxmox-instance";
-import { applyCloudInitStep } from "../shared/apply-cloud-init";
+import { CLEARED_OPERATING_SYSTEM } from "../../guest-os/columns.ts";
+import type { GetProxmoxInstanceParams } from "../../proxmox/get-proxmox-instance.ts";
+import { applyCloudInitStep } from "../shared/apply-cloud-init.ts";
 import {
   applyGuestConfigStep,
   rollbackApplyGuestConfigStep,
-} from "../shared/apply-guest-config";
+} from "../shared/apply-guest-config.ts";
 import {
   createGuestFromImageStep,
   rollbackCreateGuestFromImageStep,
-} from "../shared/create-guest-from-image";
-import { destroyGuestStep } from "../shared/destroy-guest";
-import { getTemplateStep } from "../shared/get-template";
-import { moveDiskStep } from "../shared/move-disk";
+} from "../shared/create-guest-from-image.ts";
+import { destroyGuestStep } from "../shared/destroy-guest.ts";
+import { getTemplateStep } from "../shared/get-template.ts";
+import { moveDiskStep } from "../shared/move-disk.ts";
 import {
   performGuestActionStep,
   rollbackPerformGuestActionStep,
-} from "../shared/perform-guest-action";
-import { regenerateCloudInitStep } from "../shared/regenerate-cloud-init";
-import { resizeDiskStep, rollbackResizeDiskStep } from "../shared/resize-disk";
-import { runRollbacks } from "../shared/run-rollbacks";
-import { updateServerStep } from "../shared/update-server";
-import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task";
+} from "../shared/perform-guest-action.ts";
+import { regenerateCloudInitStep } from "../shared/regenerate-cloud-init.ts";
+import {
+  resizeDiskStep,
+  rollbackResizeDiskStep,
+} from "../shared/resize-disk.ts";
+import { runRollbacks } from "../shared/run-rollbacks.ts";
+import { updateServerStep } from "../shared/update-server.ts";
+import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task.ts";
 
 type ChangeTempalateWorkflowParams = {
   /**

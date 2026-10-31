@@ -17,8 +17,8 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { proxmoxNodes } from "./proxmox-nodes";
-import { subnets } from "./subnets";
+import { proxmoxNodes } from "./proxmox-nodes.ts";
+import { subnets } from "./subnets.ts";
 
 /**
  * A subnet to Proxmox VE node association represents a relationship

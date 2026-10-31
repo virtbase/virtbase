@@ -32,12 +32,12 @@ import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { Suspense } from "react";
 import { toast } from "sonner";
-import { useCustomImagesList } from "@/features/account/hooks/custom-images/use-custom-image-list";
-import { paths } from "@/lib/paths";
-import { useMountImage } from "../hooks/use-mount-image";
-import { useServer } from "../hooks/use-server";
-import { useUnmountImage } from "../hooks/use-unmount-image";
-import { ServerCustomImageSelect } from "./server-custom-image-select";
+import { useCustomImagesList } from "@/features/account/hooks/custom-images/use-custom-image-list.ts";
+import { paths } from "@/lib/paths.ts";
+import { useMountImage } from "../hooks/use-mount-image.ts";
+import { useServer } from "../hooks/use-server.ts";
+import { useUnmountImage } from "../hooks/use-unmount-image.ts";
+import { ServerCustomImageSelect } from "./server-custom-image-select.tsx";
 
 // TODO: Rework this component
 export default function ServerMountDialog(

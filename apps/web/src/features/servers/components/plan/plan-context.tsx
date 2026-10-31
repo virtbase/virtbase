@@ -30,7 +30,7 @@ import {
 } from "react";
 import type { UseFormReturn } from "react-hook-form";
 import { FormProvider, useForm } from "react-hook-form";
-import type { PlanSpecsShape } from "./plan-specs";
+import type { PlanSpecsShape } from "./plan-specs.tsx";
 
 /**
  * A plan as this surface reads one.

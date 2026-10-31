@@ -16,7 +16,7 @@
  */
 
 import { useAction } from "next-safe-action/hooks";
-import { createUserExportAction } from "../../api/users/create-user-export";
+import { createUserExportAction } from "../../api/users/create-user-export.ts";
 
 export function useExportUser() {
   const action = useAction(createUserExportAction, {

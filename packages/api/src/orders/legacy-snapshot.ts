@@ -21,7 +21,7 @@ import {
   readChunkedStripeMetadata,
 } from "@virtbase/utils";
 import type { OrderConfigurationSnapshot } from "@virtbase/validators";
-import { createOrder } from "./create-order";
+import { createOrder } from "./create-order.ts";
 
 /**
  * Reads the pre-order configuration snapshot out of Stripe metadata.

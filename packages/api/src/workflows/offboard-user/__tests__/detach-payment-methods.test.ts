@@ -29,15 +29,15 @@ import { eq } from "@virtbase/db";
 import * as schema from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { integrations } from "../../../integrations";
+import { integrations } from "../../../integrations/index.ts";
 import {
   mockServerPlanPrice,
   mockSession,
   seedServerGraph,
-} from "../../../testing/fixtures";
+} from "../../../testing/fixtures.ts";
 
 let db: TestDb;
-let detachPaymentMethods: typeof import("../detach-payment-methods").detachPaymentMethodsStep;
+let detachPaymentMethods: typeof import("../detach-payment-methods.ts").detachPaymentMethodsStep;
 
 const USER_ID = mockSession.user.id;
 const OTHER_ID = "usr_0000000000000000000000009";
@@ -108,7 +108,7 @@ beforeAll(async () => {
   db = await createTestDb();
   mock.module("@virtbase/db/client", () => ({ db }));
 
-  detachPaymentMethods = (await import("../detach-payment-methods"))
+  detachPaymentMethods = (await import("../detach-payment-methods.ts"))
     .detachPaymentMethodsStep;
 
   await seedServerGraph(db);

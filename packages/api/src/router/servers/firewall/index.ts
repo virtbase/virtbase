@@ -17,10 +17,10 @@
 
 import type { TRPCRouterRecord } from "@trpc/server";
 
-import { serverFirewallAnalysisRouter } from "./analysis";
-import { serverFirewallGuestRouter } from "./guest";
-import { serverFirewallOptionsRouter } from "./options";
-import { serverFirewallRulesRouter } from "./rules";
+import { serverFirewallAnalysisRouter } from "./analysis.ts";
+import { serverFirewallGuestRouter } from "./guest.ts";
+import { serverFirewallOptionsRouter } from "./options.ts";
+import { serverFirewallRulesRouter } from "./rules.ts";
 
 export const serverFirewallRouter = {
   analysis: serverFirewallAnalysisRouter,

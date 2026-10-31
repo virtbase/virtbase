@@ -27,11 +27,11 @@ import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getExtracted } from "next-intl/server";
-import { getAbuseCase } from "@/features/admin/api/abuse/get-abuse-cases";
-import { verifyRenderSession } from "@/features/admin/api/verify-session";
-import { AbuseCaseDetailView } from "@/features/admin/components/abuse/abuse-case-detail";
-import { paths } from "@/lib/paths";
-import DashboardLayout from "@/ui/layout/dashboard-layout";
+import { getAbuseCase } from "@/features/admin/api/abuse/get-abuse-cases.ts";
+import { verifyRenderSession } from "@/features/admin/api/verify-session.ts";
+import { AbuseCaseDetailView } from "@/features/admin/components/abuse/abuse-case-detail.tsx";
+import { paths } from "@/lib/paths.ts";
+import DashboardLayout from "@/ui/layout/dashboard-layout.tsx";
 
 // instant = false: kept on purpose - the record is resolved up front so a missing one 404s before any chrome
 export const instant = false;

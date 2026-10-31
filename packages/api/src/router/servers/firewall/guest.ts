@@ -20,8 +20,8 @@ import {
   GetGuestFirewallInputSchema,
   GetGuestFirewallOutputSchema,
 } from "@virtbase/validators/server";
-import { inspectGuest } from "../../../guest-firewall";
-import { serverProcedure } from "../../../trpc";
+import { inspectGuest } from "../../../guest-firewall/index.ts";
+import { serverProcedure } from "../../../trpc.ts";
 
 export const serverFirewallGuestRouter = {
   get: serverProcedure

@@ -23,10 +23,10 @@
  * in this module returns `provider` or `external_id`; see
  * {@link PaymentMethodSummary}.
  */
-export * from "./list";
-export * from "./provider";
-export * from "./record";
-export * from "./remove";
-export * from "./set-default";
-export * from "./settle-stripe-payment-method";
-export * from "./settle-stripe-setup-intent";
+export * from "./list.ts";
+export * from "./provider.ts";
+export * from "./record.ts";
+export * from "./remove.ts";
+export * from "./set-default.ts";
+export * from "./settle-stripe-payment-method.ts";
+export * from "./settle-stripe-setup-intent.ts";

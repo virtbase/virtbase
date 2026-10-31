@@ -34,9 +34,9 @@ import { resolveServerOperatingSystem } from "@virtbase/utils";
 import NextLink from "next/link";
 import { useExtracted, useFormatter, useNow } from "next-intl";
 import { use } from "react";
-import type { getLatestServers } from "@/features/admin/api/dashboard/get-latest-servers";
-import { paths } from "@/lib/paths";
-import { OperatingSystemIcon } from "@/ui/operating-system-icon";
+import type { getLatestServers } from "@/features/admin/api/dashboard/get-latest-servers.ts";
+import { paths } from "@/lib/paths.ts";
+import { OperatingSystemIcon } from "@/ui/operating-system-icon.tsx";
 
 export function LatestServersList({
   promise,

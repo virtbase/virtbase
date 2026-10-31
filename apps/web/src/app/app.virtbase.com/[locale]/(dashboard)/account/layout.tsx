@@ -16,9 +16,9 @@
  */
 
 import { constructMetadata } from "@virtbase/utils";
-import { AccountBreadcrumb } from "@/features/account/components/account-breadcrumb";
-import { AccountNav } from "@/features/account/components/account-nav";
-import DashboardLayout from "@/ui/layout/dashboard-layout";
+import { AccountBreadcrumb } from "@/features/account/components/account-breadcrumb.tsx";
+import { AccountNav } from "@/features/account/components/account-nav.tsx";
+import DashboardLayout from "@/ui/layout/dashboard-layout.tsx";
 
 export const metadata = constructMetadata({
   title: "Account",

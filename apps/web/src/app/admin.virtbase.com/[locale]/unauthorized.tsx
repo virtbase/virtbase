@@ -17,4 +17,4 @@
 
 "use client";
 
-export { default } from "@/app/app.virtbase.com/[locale]/unauthorized";
+export { default } from "@/app/app.virtbase.com/[locale]/unauthorized.tsx";

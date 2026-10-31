@@ -22,8 +22,8 @@ import { subscriptionRenewals, subscriptions } from "@virtbase/db/schema";
 import type {
   RenewSubscriptionOutcome,
   RenewSubscriptionResult,
-} from "./renew-subscription";
-import { renewSubscription, retryRenewal } from "./renew-subscription";
+} from "./renew-subscription.ts";
+import { renewSubscription, retryRenewal } from "./renew-subscription.ts";
 
 /**
  * The maximum number of subscriptions collected per run.

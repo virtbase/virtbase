@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./get-available-subnet";
-export * from "./get-plans-with-availability";
-export * from "./pick-best-discount";
-export * from "./touch-last-seen";
+export * from "./get-available-subnet.ts";
+export * from "./get-plans-with-availability.ts";
+export * from "./pick-best-discount.ts";
+export * from "./touch-last-seen.ts";

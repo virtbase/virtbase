@@ -15,10 +15,13 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { getRoleConnectionMetadata, putRoleConnectionMetadata } from "../api";
-import { roleConnectionsMetadata } from "../role-connections-metadata";
-import { canonical } from "./canonical";
-import type { Reconciler } from "./types";
+import {
+  getRoleConnectionMetadata,
+  putRoleConnectionMetadata,
+} from "../api/index.ts";
+import { roleConnectionsMetadata } from "../role-connections-metadata.ts";
+import { canonical } from "./canonical.ts";
+import type { Reconciler } from "./types.ts";
 
 const COMPARED = [
   "key",

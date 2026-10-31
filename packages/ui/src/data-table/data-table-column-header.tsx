@@ -33,8 +33,8 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "../dropdown-menu";
-import type { Column } from "../types/data-table";
+} from "../dropdown-menu.tsx";
+import type { Column } from "../types/data-table.ts";
 
 interface DataTableColumnHeaderProps<TData extends RowData, TValue>
   extends React.ComponentProps<typeof DropdownMenuTrigger> {

@@ -27,8 +27,8 @@ import {
 import { TRPCError } from "@trpc/server";
 import { sshKeys, users } from "@virtbase/db/schema";
 import { MAX_SSH_KEYS_PER_USER } from "@virtbase/utils";
-import type { TestCaller, TestCallerResult } from "../../testing";
-import { createTestCaller, mockSession } from "../../testing";
+import type { TestCaller, TestCallerResult } from "../../testing/index.ts";
+import { createTestCaller, mockSession } from "../../testing/index.ts";
 
 let harness: TestCallerResult;
 let testDb: TestCallerResult["db"];

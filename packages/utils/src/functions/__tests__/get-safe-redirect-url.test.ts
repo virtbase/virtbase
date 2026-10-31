@@ -20,8 +20,8 @@ import {
   ADMIN_HOSTNAMES,
   APP_HOSTNAMES,
   PUBLIC_HOSTNAMES,
-} from "../../constants/main";
-import { getSafeRedirectUrl } from "../get-safe-redirect-url";
+} from "../../constants/main.ts";
+import { getSafeRedirectUrl } from "../get-safe-redirect-url.ts";
 
 describe("getSafeRedirectUrl", () => {
   test("returns fallback for empty values", () => {

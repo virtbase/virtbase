@@ -35,7 +35,7 @@ export const dispatchAccountLinked: AccountLinkedHandler = async (account) => {
   // assigned. That is a temporal dead zone, and because it throws while the
   // module graph is still initialising it fails every consumer of the bundle,
   // not just this handler.
-  const { integrations } = await import("./index");
+  const { integrations } = await import("./index.ts");
   const providers = await integrations.resolveAll("identity");
 
   await Promise.all(

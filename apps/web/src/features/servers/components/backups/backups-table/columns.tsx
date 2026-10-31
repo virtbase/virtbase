@@ -37,11 +37,11 @@ import { useParams } from "next/navigation";
 import { useExtracted, useFormatter, useNow } from "next-intl";
 import type React from "react";
 import { useEffect } from "react";
-import type { GetBackupListOutput } from "@/features/servers/hooks/backups/use-backup-list";
-import { useBackupStatus } from "@/features/servers/hooks/backups/use-backup-status";
-import { useTRPC } from "@/lib/trpc/react";
-import { OperatingSystemIcon } from "@/ui/operating-system-icon";
-import { BackupActions } from "./backup-actions";
+import type { GetBackupListOutput } from "@/features/servers/hooks/backups/use-backup-list.ts";
+import { useBackupStatus } from "@/features/servers/hooks/backups/use-backup-status.ts";
+import { useTRPC } from "@/lib/trpc/react.tsx";
+import { OperatingSystemIcon } from "@/ui/operating-system-icon.tsx";
+import { BackupActions } from "./backup-actions.tsx";
 
 export type BackupsTableColumn = GetBackupListOutput["backups"][number];
 

@@ -28,7 +28,7 @@ import { CalendarIcon, Ellipsis, LucideEye, Text } from "@virtbase/ui/icons";
 import type { ColumnDef, DataTableRowAction } from "@virtbase/ui/types";
 import { useExtracted, useFormatter } from "next-intl";
 import type React from "react";
-import type { getEmailsList } from "@/features/admin/api/emails/get-emails-list";
+import type { getEmailsList } from "@/features/admin/api/emails/get-emails-list.ts";
 
 export type EmailsTableColumn = Awaited<
   ReturnType<typeof getEmailsList>

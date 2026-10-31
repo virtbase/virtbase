@@ -22,8 +22,8 @@ import {
   UpdateServerFirewallOptionsInputSchema,
   UpdateServerFirewallOptionsOutputSchema,
 } from "@virtbase/validators/server";
-import { serverProcedure } from "../../../trpc";
-import { readFirewallDigest } from "./digest";
+import { serverProcedure } from "../../../trpc.ts";
+import { readFirewallDigest } from "./digest.ts";
 
 export const serverFirewallOptionsRouter = {
   get: serverProcedure

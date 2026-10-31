@@ -38,17 +38,17 @@ import {
 import { Skeleton } from "@virtbase/ui/skeleton";
 import NextLink from "next/link";
 import { useExtracted, useFormatter } from "next-intl";
-import { ItemRow } from "@/features/account/components/item-row";
-import type { PaymentMethodState } from "@/features/servers/components/billing/auto-renew-section";
-import { AutoRenewSection } from "@/features/servers/components/billing/auto-renew-section";
-import { PastDueAlert } from "@/features/servers/components/billing/past-due-alert";
-import type { Subscription } from "@/features/servers/hooks/billing/use-server-subscription";
-import { paths } from "@/lib/paths";
-import { CHANGE_PLAN_ANCHOR } from "./anchors";
-import type { PlanSpecsShape } from "./plan-specs";
-import { PlanSpecs } from "./plan-specs";
-import type { SavedPaymentMethod } from "./renewal-payment-method";
-import { RenewalPaymentMethod } from "./renewal-payment-method";
+import { ItemRow } from "@/features/account/components/item-row.tsx";
+import type { PaymentMethodState } from "@/features/servers/components/billing/auto-renew-section.tsx";
+import { AutoRenewSection } from "@/features/servers/components/billing/auto-renew-section.tsx";
+import { PastDueAlert } from "@/features/servers/components/billing/past-due-alert.tsx";
+import type { Subscription } from "@/features/servers/hooks/billing/use-server-subscription.ts";
+import { paths } from "@/lib/paths.ts";
+import { CHANGE_PLAN_ANCHOR } from "./anchors.ts";
+import type { PlanSpecsShape } from "./plan-specs.tsx";
+import { PlanSpecs } from "./plan-specs.tsx";
+import type { SavedPaymentMethod } from "./renewal-payment-method.tsx";
+import { RenewalPaymentMethod } from "./renewal-payment-method.tsx";
 
 interface CurrentPlanCardProps {
   /**

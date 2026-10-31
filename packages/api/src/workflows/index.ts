@@ -15,21 +15,21 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./change-template";
-export * from "./create-invoice";
-export * from "./delete-server";
-export * from "./delete-server/reset-pointer-records";
-export * from "./delete-server/store-server-deletion";
-export * from "./export-user-data";
-export * from "./extend-server";
-export * from "./offboard-user";
-export * from "./provision-server";
-export * from "./restore-server-backup";
+export * from "./change-template/index.ts";
+export * from "./create-invoice/index.ts";
+export * from "./delete-server/index.ts";
+export * from "./delete-server/reset-pointer-records.ts";
+export * from "./delete-server/store-server-deletion.ts";
+export * from "./export-user-data/index.ts";
+export * from "./extend-server/index.ts";
+export * from "./offboard-user/index.ts";
+export * from "./provision-server/index.ts";
+export * from "./restore-server-backup/index.ts";
 // Shared steps are exported so the dev verification scripts can drive the real
 // step implementations rather than a reimplementation of them.
-export * from "./shared/apply-cloud-init";
-export * from "./shared/create-guest-from-image";
-export * from "./shared/delete-one-server";
-export * from "./shared/destroy-guest";
-export * from "./shared/get-template";
-export * from "./upgrade-server";
+export * from "./shared/apply-cloud-init.ts";
+export * from "./shared/create-guest-from-image.ts";
+export * from "./shared/delete-one-server.ts";
+export * from "./shared/destroy-guest.ts";
+export * from "./shared/get-template.ts";
+export * from "./upgrade-server/index.ts";

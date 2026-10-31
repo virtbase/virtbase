@@ -15,19 +15,19 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { abuseRouter } from "./router/abuse";
-import { authRouter } from "./router/auth";
-import { checkoutRouter } from "./router/checkout";
-import { invoicesRouter } from "./router/invoices";
-import { isoRouter } from "./router/iso";
-import { paymentMethodsRouter } from "./router/payment-methods";
-import { privacyRouter } from "./router/privacy";
-import { publicRouter } from "./router/public";
-import { serversRouter } from "./router/servers";
-import { sshKeysRouter } from "./router/ssh-keys";
-import { stepUpRouter } from "./router/step-up";
-import { subscriptionsRouter } from "./router/subscriptions";
-import { createTRPCRouter } from "./trpc";
+import { abuseRouter } from "./router/abuse.ts";
+import { authRouter } from "./router/auth.ts";
+import { checkoutRouter } from "./router/checkout.ts";
+import { invoicesRouter } from "./router/invoices.ts";
+import { isoRouter } from "./router/iso/index.ts";
+import { paymentMethodsRouter } from "./router/payment-methods.ts";
+import { privacyRouter } from "./router/privacy.ts";
+import { publicRouter } from "./router/public.ts";
+import { serversRouter } from "./router/servers/index.ts";
+import { sshKeysRouter } from "./router/ssh-keys.ts";
+import { stepUpRouter } from "./router/step-up.ts";
+import { subscriptionsRouter } from "./router/subscriptions.ts";
+import { createTRPCRouter } from "./trpc.ts";
 
 export const appRouter = createTRPCRouter({
   auth: authRouter,

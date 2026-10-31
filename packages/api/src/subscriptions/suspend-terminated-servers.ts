@@ -20,9 +20,12 @@ import { and, eq, gte, inArray, isNotNull, isNull, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { proxmoxNodes, servers, subscriptions } from "@virtbase/db/schema";
 import { mapSettled, RENEWAL_SUSPENSION_GRACE_DAYS } from "@virtbase/utils";
-import type { GetProxmoxInstanceParams, ProxmoxInstance } from "../proxmox";
-import { getProxmoxInstance } from "../proxmox";
-import { transitionSubjectSubscription } from "./subject-subscription";
+import type {
+  GetProxmoxInstanceParams,
+  ProxmoxInstance,
+} from "../proxmox/index.ts";
+import { getProxmoxInstance } from "../proxmox/index.ts";
+import { transitionSubjectSubscription } from "./subject-subscription.ts";
 
 /** The most servers one run suspends. The rest are suspended by the next run. */
 export const SUSPENSION_BATCH_SIZE = 200;

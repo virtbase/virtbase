@@ -17,16 +17,16 @@
 
 import { defineIntegration } from "@virtbase/integration-sdk";
 import * as z from "zod";
-import { LexwareInvoiceProvider } from "./adapter";
-import { LexwareClient } from "./client";
-import { COUNTRY_CONTACTS, HOME_COUNTRY } from "./constants";
-import { localizeLexware } from "./localize";
+import { LexwareInvoiceProvider } from "./adapter.ts";
+import { LexwareClient } from "./client.ts";
+import { COUNTRY_CONTACTS, HOME_COUNTRY } from "./constants.ts";
+import { localizeLexware } from "./localize.ts";
 
-export * from "./adapter";
-export * from "./client";
-export * from "./constants";
-export * from "./messages";
-export * from "./types";
+export * from "./adapter.ts";
+export * from "./client.ts";
+export * from "./constants.ts";
+export * from "./messages.ts";
+export * from "./types.ts";
 
 const secretsSchema = z.object({
   apiKey: z.string().min(1),

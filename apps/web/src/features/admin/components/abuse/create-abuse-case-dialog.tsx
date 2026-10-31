@@ -42,8 +42,8 @@ import { useExtracted } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import { useState } from "react";
 import { toast } from "sonner";
-import { paths } from "@/lib/paths";
-import { createAbuseCaseAction } from "../../api/abuse/manage-abuse-cases";
+import { paths } from "@/lib/paths.ts";
+import { createAbuseCaseAction } from "../../api/abuse/manage-abuse-cases.ts";
 
 const CATEGORIES = [
   "spam",

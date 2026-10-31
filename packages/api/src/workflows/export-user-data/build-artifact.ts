@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { buildDataExport } from "../../privacy/export/build";
+import { buildDataExport } from "../../privacy/export/build.ts";
 
 type BuildExportArtifactStepParams = {
   exportId: string;

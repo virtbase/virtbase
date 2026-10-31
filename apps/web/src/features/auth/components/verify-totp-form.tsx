@@ -28,7 +28,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useState, useTransition } from "react";
 import { toast } from "sonner";
-import { authClient } from "@/lib/auth/client";
+import { authClient } from "@/lib/auth/client.ts";
 
 export const VerifyTotpForm = ({ next }: { next?: string }) => {
   const t = useExtracted();

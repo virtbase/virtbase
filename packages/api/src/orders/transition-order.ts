@@ -19,7 +19,10 @@ import { eq, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import type { OrderStatus } from "@virtbase/db/schema";
 import { orders, orderTransitions } from "@virtbase/db/schema";
-import { assertOrderTransition, canTransitionOrder } from "../lib/order-status";
+import {
+  assertOrderTransition,
+  canTransitionOrder,
+} from "../lib/order-status.ts";
 
 export interface TransitionOptions {
   /** `system`, `provider:stripe`, `admin:<user id>`. */

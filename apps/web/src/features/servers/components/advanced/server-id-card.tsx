@@ -33,7 +33,7 @@ import {
 import { APP_NAME } from "@virtbase/utils";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
-import { CopyButton } from "@/ui/copy-button";
+import { CopyButton } from "@/ui/copy-button.tsx";
 
 export function ServerIdCard() {
   const t = useExtracted();

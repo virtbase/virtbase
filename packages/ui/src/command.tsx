@@ -26,8 +26,8 @@ import {
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from "./dialog";
-import { cn } from "./index";
+} from "./dialog.tsx";
+import { cn } from "./index.ts";
 
 function Command({
   className,

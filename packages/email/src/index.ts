@@ -15,16 +15,19 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { EmailDeliveryError } from "./errors";
-import { getResendClient } from "./resend";
+import { EmailDeliveryError } from "./errors.ts";
+import { getResendClient } from "./resend/index.ts";
 import type {
   ResendBulkEmailOptions,
   ResendEmailOptions,
-} from "./resend/types";
-import { sendViaNodeMailer } from "./send-via-nodemailer";
-import { sendBatchEmailViaResend, sendEmailViaResend } from "./send-via-resend";
+} from "./resend/types.ts";
+import { sendViaNodeMailer } from "./send-via-nodemailer.ts";
+import {
+  sendBatchEmailViaResend,
+  sendEmailViaResend,
+} from "./send-via-resend.ts";
 
-export { EmailDeliveryError } from "./errors";
+export { EmailDeliveryError } from "./errors.ts";
 
 const NO_PROVIDER_MESSAGE =
   "No email provider is configured. Set RESEND_API_KEY, or all of SMTP_HOST, SMTP_PORT, SMTP_USER and SMTP_PASSWORD.";

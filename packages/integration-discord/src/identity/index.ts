@@ -16,10 +16,10 @@
  */
 
 import type { IdentityProvider, LinkedAccount } from "@virtbase/ports";
-import type { DiscordContext } from "../config";
-import { pushDiscordLinkedRoleMetadata } from "./push-linked-role-metadata";
+import type { DiscordContext } from "../config.ts";
+import { pushDiscordLinkedRoleMetadata } from "./push-linked-role-metadata.ts";
 
-export * from "./push-linked-role-metadata";
+export * from "./push-linked-role-metadata.ts";
 
 /**
  * Pushes role-connection metadata to Discord after an account is linked, which

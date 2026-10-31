@@ -24,11 +24,11 @@ import PaymentMethodInvalid from "@virtbase/email/templates/payment-method-inval
 import RenewalFinalWarning from "@virtbase/email/templates/renewal-final-warning";
 import RenewalPaymentFailed from "@virtbase/email/templates/renewal-payment-failed";
 import { getEmailTitle } from "@virtbase/email/translations";
-import type { RenewalOutcome } from "./renewal-outcome";
+import type { RenewalOutcome } from "./renewal-outcome.ts";
 import {
   RENEWAL_LADDER_EXHAUSTED_AFTER_DAYS,
   RENEWAL_LADDER_RUNGS,
-} from "./retry-schedule";
+} from "./retry-schedule.ts";
 
 /**
  * Telling the customer, which is the only part of dunning that recovers money.

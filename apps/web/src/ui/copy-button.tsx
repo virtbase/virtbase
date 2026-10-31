@@ -21,7 +21,7 @@ import type { LucideIcon } from "@virtbase/ui/icons";
 import { CheckIcon, CopyIcon } from "@virtbase/ui/icons";
 import { useExtracted } from "next-intl";
 import { toast } from "sonner";
-import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard.tsx";
 
 export function CopyButton({
   value,

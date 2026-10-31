@@ -76,9 +76,9 @@ import { useExtracted, useFormatter, useNow } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import { useState } from "react";
 import { toast } from "sonner";
-import type { AbuseCaseDetail } from "../../api/abuse/get-abuse-cases";
-import { addAbuseCaseMessageAction } from "../../api/abuse/manage-abuse-cases";
-import { AbuseCaseStatusMenu } from "./abuse-case-status-menu";
+import type { AbuseCaseDetail } from "../../api/abuse/get-abuse-cases.ts";
+import { addAbuseCaseMessageAction } from "../../api/abuse/manage-abuse-cases.ts";
+import { AbuseCaseStatusMenu } from "./abuse-case-status-menu.tsx";
 
 const humanise = (value: string) => value.replace(/_/g, " ");
 

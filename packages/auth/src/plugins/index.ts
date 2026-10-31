@@ -37,7 +37,7 @@ import {
   defaultStatements,
   userAc,
 } from "better-auth/plugins/admin/access";
-import { getUserLocaleByEmail } from "../get-user-locale-by-email";
+import { getUserLocaleByEmail } from "../get-user-locale-by-email.ts";
 
 const accessControl = createAccessControl(defaultStatements);
 

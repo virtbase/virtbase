@@ -15,8 +15,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./cloud-init";
-export * from "./constants";
-export * from "./functions";
-export * from "./guest";
-export * from "./types";
+export * from "./cloud-init/index.ts";
+export * from "./constants/index.ts";
+export * from "./functions/index.ts";
+export * from "./guest/index.ts";
+export * from "./types.ts";

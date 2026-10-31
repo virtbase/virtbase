@@ -23,8 +23,8 @@ import { use } from "react";
 import type {
   getSubscriptionStatusCounts,
   getSubscriptionsList,
-} from "@/features/admin/api/subscriptions/get-subscriptions-list";
-import { useSubscriptionsTableColumns } from "./columns";
+} from "@/features/admin/api/subscriptions/get-subscriptions-list.ts";
+import { useSubscriptionsTableColumns } from "./columns.tsx";
 
 interface SubscriptionsTableProps {
   promises: Promise<

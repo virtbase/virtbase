@@ -23,16 +23,16 @@ import {
   ChevronsRight,
 } from "lucide-react";
 import { useExtracted } from "next-intl";
-import { Button } from "../button";
-import { cn } from "../index";
+import { Button } from "../button.tsx";
+import { cn } from "../index.ts";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "../select";
-import type { Table } from "../types/data-table";
+} from "../select.tsx";
+import type { Table } from "../types/data-table.ts";
 
 interface DataTablePaginationProps<TData extends RowData>
   extends React.ComponentProps<"div"> {

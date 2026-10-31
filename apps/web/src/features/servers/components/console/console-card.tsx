@@ -16,7 +16,7 @@
  */
 
 import { Card, CardContent } from "@virtbase/ui/card";
-import { ConsoleFrame } from "./console-frame";
+import { ConsoleFrame } from "./console-frame.tsx";
 
 export function ConsoleCard() {
   return (

@@ -17,7 +17,7 @@
 
 import { createFromSource } from "fumadocs-core/search/server";
 
-import { helpArticles } from "@/lib/source";
+import { helpArticles } from "@/lib/source.ts";
 
 export const { GET } = createFromSource(helpArticles, {
   localeMap: {

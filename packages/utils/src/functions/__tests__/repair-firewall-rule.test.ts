@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { repairFirewallRule } from "../repair-firewall-rule";
+import { repairFirewallRule } from "../repair-firewall-rule.ts";
 
 describe("repairFirewallRule", () => {
   test("it drops an ICMP type from a TCP rule", () => {

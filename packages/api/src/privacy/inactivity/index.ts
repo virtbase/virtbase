@@ -21,11 +21,11 @@ export {
   type IneligibleReason,
   inactiveBefore,
   isEligibleForInactivityDeletion,
-} from "./eligibility";
+} from "./eligibility.ts";
 export {
   findAccountsToRemind,
   findInactivityCandidates,
   markReminderSent,
   type SweepCandidate,
   scheduleInactivityDeletion,
-} from "./sweep";
+} from "./sweep.ts";

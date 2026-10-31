@@ -28,7 +28,7 @@ import {
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
 
-mock.module("../../notifications/dispatch", () => ({
+mock.module("../../notifications/dispatch.ts", () => ({
   dispatchNotification: async () => ({
     created: 0,
     deduplicated: 0,
@@ -52,7 +52,7 @@ mock.module("@virtbase/email", () => ({
 
 // Every sender gets its own claim, so the per-sender rate limit does not make
 // one test's mail suppress the next one's.
-mock.module("../../upstash", () => ({ once: async () => true }));
+mock.module("../../upstash/index.ts", () => ({ once: async () => true }));
 
 // Without a signing secret no address can be minted and no tag verified, which
 // is the documented behaviour rather than a test-only concern - see
@@ -60,21 +60,21 @@ mock.module("../../upstash", () => ({ once: async () => true }));
 process.env.ABUSE_MAILBOX_SECRET = "test-mailbox-secret";
 process.env.NEXT_PUBLIC_APP_DOMAIN = "virtbase.com";
 
-import { mockSession } from "../../testing";
+import { mockSession } from "../../testing/index.ts";
 import {
   isBareAbuseAddress,
   mintCaseAddress,
   parseCaseAddress,
   parseSubjectToken,
-} from "../mailbox/address";
-import type { InboundAbuseEmail } from "../mailbox/receive";
+} from "../mailbox/address.ts";
+import type { InboundAbuseEmail } from "../mailbox/receive.ts";
 import {
   bareAddress,
   isAutomated,
   receiveAbuseEmail,
   routeInboundEmail,
-} from "../mailbox/receive";
-import { acknowledgeReporters, ensureCaseMailbox } from "../mailbox/send";
+} from "../mailbox/receive.ts";
+import { acknowledgeReporters, ensureCaseMailbox } from "../mailbox/send.ts";
 
 let testDb: TestDb;
 

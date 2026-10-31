@@ -18,7 +18,7 @@
 import { Separator } from "@virtbase/ui/separator";
 import { PUBLIC_DOMAIN } from "@virtbase/utils";
 import { useExtracted } from "next-intl";
-import { SocialsRow } from "@/ui/socials-row";
+import { SocialsRow } from "@/ui/socials-row.tsx";
 
 export function AppFooter() {
   const t = useExtracted();

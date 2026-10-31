@@ -28,14 +28,14 @@ import {
 } from "@virtbase/ui/icons";
 import { Spinner } from "@virtbase/ui/spinner";
 import { useExtracted, useNow } from "next-intl";
-import { ItemRow } from "@/features/account/components/item-row";
-import type { PaymentMethodSummary } from "@/features/account/hooks/billing/payment-methods-list";
+import { ItemRow } from "@/features/account/components/item-row.tsx";
+import type { PaymentMethodSummary } from "@/features/account/hooks/billing/payment-methods-list.ts";
 import {
   classifyInvalidReason,
   formatExpiry,
   resolveBrandName,
   resolvePaymentMethodHealth,
-} from "@/features/account/utils/payment-method";
+} from "@/features/account/utils/payment-method.ts";
 
 /**
  * One saved credential.

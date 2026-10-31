@@ -17,8 +17,8 @@
 
 import { Grid } from "@virtbase/ui/grid";
 import { RootProvider } from "fumadocs-ui/provider/next";
-import { FakeSearchButton } from "@/ui/fumadocs/fake-search-button";
-import HelpSearch from "@/ui/fumadocs/help-search";
+import { FakeSearchButton } from "@/ui/fumadocs/fake-search-button.tsx";
+import HelpSearch from "@/ui/fumadocs/help-search.tsx";
 
 export default function HelpLayout({
   children,

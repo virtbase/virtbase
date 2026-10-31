@@ -32,7 +32,7 @@ import { Skeleton } from "@virtbase/ui/skeleton";
 import { formatBits } from "@virtbase/utils";
 import { useParams } from "next/navigation";
 import { useExtracted, useFormatter } from "next-intl";
-import { useServer } from "../../hooks/use-server";
+import { useServer } from "../../hooks/use-server.ts";
 
 export default function NodeDetailsDialog(
   props: Omit<

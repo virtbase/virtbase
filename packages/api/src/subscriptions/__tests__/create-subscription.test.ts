@@ -34,7 +34,7 @@ import {
   mockServerPlanPrice,
   mockSession,
   seedServerGraph,
-} from "../../testing/fixtures";
+} from "../../testing/fixtures.ts";
 
 const testDb: TestDb = await createTestDb();
 
@@ -43,8 +43,8 @@ mock.module("@virtbase/db/client", () => ({ db: testDb }));
 // The mocked client, so the helper below is handed the same `Executor` the
 // production code passes it rather than a PGlite handle the types refuse.
 const { db } = await import("@virtbase/db/client");
-const { createSubscription } = await import("../create-subscription");
-const { findLiveSubscription } = await import("../subject-subscription");
+const { createSubscription } = await import("../create-subscription.ts");
+const { findLiveSubscription } = await import("../subject-subscription.ts");
 
 const USER_ID = mockSession.user.id;
 const SERVER_ID = mockServer.id;

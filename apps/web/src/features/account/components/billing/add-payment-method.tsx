@@ -26,12 +26,12 @@ import { APP_DOMAIN } from "@virtbase/utils";
 import { useSearchParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { useCreatePaymentMethodSetupSession } from "@/features/account/hooks/billing/create-payment-method-setup-session";
-import { ElementsProvider } from "@/features/checkout/components/elements-provider";
-import { paths } from "@/lib/paths";
-import { useTRPC } from "@/lib/trpc/react";
-import type { SetupOutcome } from "./add-payment-method-form";
-import { AddPaymentMethodForm } from "./add-payment-method-form";
+import { useCreatePaymentMethodSetupSession } from "@/features/account/hooks/billing/create-payment-method-setup-session.ts";
+import { ElementsProvider } from "@/features/checkout/components/elements-provider.tsx";
+import { paths } from "@/lib/paths.ts";
+import { useTRPC } from "@/lib/trpc/react.tsx";
+import type { SetupOutcome } from "./add-payment-method-form.tsx";
+import { AddPaymentMethodForm } from "./add-payment-method-form.tsx";
 
 /**
  * Where a provider that can only confirm by redirecting sends the customer.

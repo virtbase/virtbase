@@ -29,7 +29,7 @@ import {
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
 
-mock.module("../../notifications/dispatch", () => ({
+mock.module("../../notifications/dispatch.ts", () => ({
   dispatchNotification: async () => ({
     created: 0,
     deduplicated: 0,
@@ -41,15 +41,19 @@ mock.module("../../notifications/dispatch", () => ({
 
 /** What the model would have said, without paying a model to say it. */
 let answer: Record<string, unknown> | null = null;
-mock.module("../triage/classify", () => ({
+mock.module("../triage/classify.ts", () => ({
   isTriageAvailable: () => true,
   classifyAbuseReport: async () => answer,
 }));
 
-import { mockServer, mockSession, seedServerGraph } from "../../testing";
-import { enforceCase } from "../enforce";
-import { verifiedAddresses } from "../triage/addresses";
-import { classifyAbuseCase, sweepUntriagedCases } from "../triage/apply";
+import {
+  mockServer,
+  mockSession,
+  seedServerGraph,
+} from "../../testing/index.ts";
+import { enforceCase } from "../enforce.ts";
+import { verifiedAddresses } from "../triage/addresses.ts";
+import { classifyAbuseCase, sweepUntriagedCases } from "../triage/apply.ts";
 
 let testDb: TestDb;
 

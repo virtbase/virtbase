@@ -37,8 +37,8 @@ import { Tooltip, TooltipContent, TooltipTrigger } from "@virtbase/ui/tooltip";
 import type { ColumnDef, DataTableRowAction } from "@virtbase/ui/types";
 import NextLink from "next/link";
 import { useExtracted, useFormatter } from "next-intl";
-import type { getSnippetsList } from "@/features/admin/api/cloud-init-snippets/get-snippets-list";
-import { paths } from "@/lib/paths";
+import type { getSnippetsList } from "@/features/admin/api/cloud-init-snippets/get-snippets-list.ts";
+import { paths } from "@/lib/paths.ts";
 
 export type SnippetsTableColumn = Awaited<
   ReturnType<typeof getSnippetsList>

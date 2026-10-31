@@ -17,9 +17,9 @@
 
 import { getValidFilters } from "@virtbase/ui/lib";
 import type { SearchParams } from "nuqs";
-import { getEmailsList } from "@/features/admin/api/emails/get-emails-list";
-import { searchParamsCache } from "@/features/admin/lib/emails/validations";
-import { EmailsTable } from "./emails-table";
+import { getEmailsList } from "@/features/admin/api/emails/get-emails-list.ts";
+import { searchParamsCache } from "@/features/admin/lib/emails/validations.ts";
+import { EmailsTable } from "./emails-table/index.tsx";
 
 export async function EmailsCard(props: {
   searchParams: Promise<SearchParams>;

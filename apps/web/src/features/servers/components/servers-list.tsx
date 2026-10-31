@@ -40,14 +40,14 @@ import { formatBytes } from "@virtbase/utils";
 import Link from "next/link";
 import { useExtracted, useFormatter } from "next-intl";
 import { toast } from "sonner";
-import { EmptyServers } from "@/features/dashboard/components/empty-servers";
-import { useServerList } from "@/features/dashboard/hooks/use-server-list";
-import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard";
-import { paths } from "@/lib/paths";
-import { CopyButton } from "@/ui/copy-button";
-import { GenericError } from "@/ui/generic-error";
-import { OperatingSystemIcon } from "@/ui/operating-system-icon";
-import { ServerTerminatesBadge } from "./server-terminates-badge";
+import { EmptyServers } from "@/features/dashboard/components/empty-servers.tsx";
+import { useServerList } from "@/features/dashboard/hooks/use-server-list.ts";
+import { useCopyToClipboard } from "@/hooks/use-copy-to-clipboard.tsx";
+import { paths } from "@/lib/paths.ts";
+import { CopyButton } from "@/ui/copy-button.tsx";
+import { GenericError } from "@/ui/generic-error.tsx";
+import { OperatingSystemIcon } from "@/ui/operating-system-icon.tsx";
+import { ServerTerminatesBadge } from "./server-terminates-badge.tsx";
 
 export function ServersList() {
   const t = useExtracted();

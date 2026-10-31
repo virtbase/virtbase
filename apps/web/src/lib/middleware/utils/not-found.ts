@@ -17,7 +17,7 @@
 
 import type { NextRequest } from "next/server";
 import { NextResponse } from "next/server";
-import { COOKIE_NAME } from "@/i18n/config";
+import { COOKIE_NAME } from "@/i18n/config.ts";
 
 export function rewriteToNotFound(req: NextRequest, locale?: string) {
   if (locale) {

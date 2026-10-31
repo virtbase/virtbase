@@ -31,9 +31,9 @@ import {
   subscriptionRenewals,
   subscriptions,
   users,
-} from "../../schema";
-import type { TestDb } from "../../test-client";
-import { createTestDb } from "../../test-client";
+} from "../../schema/index.ts";
+import type { TestDb } from "../../test-client.ts";
+import { createTestDb } from "../../test-client.ts";
 
 let testDb: TestDb;
 

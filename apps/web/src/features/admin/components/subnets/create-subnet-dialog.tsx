@@ -28,8 +28,8 @@ import { useExtracted } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { transformTextField } from "@/features/admin/lib/transform-text-field";
-import { createSubnetAction } from "../../api/subnets/create-subnet";
+import { transformTextField } from "@/features/admin/lib/transform-text-field.ts";
+import { createSubnetAction } from "../../api/subnets/create-subnet.ts";
 
 export default function CreateSubnetDialog(
   props: Omit<

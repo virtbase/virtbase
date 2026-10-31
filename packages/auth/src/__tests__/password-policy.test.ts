@@ -17,13 +17,13 @@
 
 import { describe, expect, test } from "bun:test";
 import { PasswordSchema } from "@virtbase/validators/auth";
-import { initAuth } from "../index";
+import { initAuth } from "../index.ts";
 import {
   assertPasswordPolicy,
   PASSWORD_MAX_LENGTH,
   PASSWORD_MIN_LENGTH,
   PASSWORD_POLICY_ERROR_CODE,
-} from "../password-policy";
+} from "../password-policy.ts";
 
 /** Passes `PasswordSchema`: mixed case, a digit, inside the length bounds. */
 const STRONG = "Str0ngPassw0rd";

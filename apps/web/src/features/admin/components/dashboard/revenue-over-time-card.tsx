@@ -26,9 +26,9 @@ import { Skeleton } from "@virtbase/ui/skeleton";
 import { useExtracted } from "next-intl";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { GenericError } from "@/ui/generic-error";
-import { getRevenueOverTime } from "../../api/dashboard/get-revenue-over-time";
-import { RevenueOverTime } from "./revenue-over-time";
+import { GenericError } from "@/ui/generic-error.tsx";
+import { getRevenueOverTime } from "../../api/dashboard/get-revenue-over-time.ts";
+import { RevenueOverTime } from "./revenue-over-time.tsx";
 
 export function RevenueOverTimeCard() {
   const t = useExtracted();

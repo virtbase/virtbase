@@ -35,14 +35,14 @@ import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { PasswordRequirements } from "@/features/auth/components/password-requirements";
+import { PasswordRequirements } from "@/features/auth/components/password-requirements.tsx";
 import {
   RandomPasswordAddon,
   ShowPasswordAddon,
-} from "@/ui/input-group-addons";
-import { OperatingSystemSelect } from "@/ui/operating-system-select";
-import { useChangeTemplate } from "../../hooks/overview/use-change-template";
-import { useServerTemplateGroups } from "../../hooks/overview/use-template-groups";
+} from "@/ui/input-group-addons/index.tsx";
+import { OperatingSystemSelect } from "@/ui/operating-system-select.tsx";
+import { useChangeTemplate } from "../../hooks/overview/use-change-template.ts";
+import { useServerTemplateGroups } from "../../hooks/overview/use-template-groups.ts";
 
 interface ChangeTemplateDialogProps
   extends Omit<

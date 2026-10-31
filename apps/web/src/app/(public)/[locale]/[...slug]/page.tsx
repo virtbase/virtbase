@@ -25,10 +25,10 @@ import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import { getLocale } from "next-intl/server";
 
-import { defaultLocale } from "@/i18n/config";
-import { constructAlternateLanguages } from "@/lib/hreflang";
-import { getDocumentLocales, marketing } from "@/lib/source";
-import { marketingMdxComponents } from "@/ui/mdx/marketing-components";
+import { defaultLocale } from "@/i18n/config.ts";
+import { constructAlternateLanguages } from "@/lib/hreflang.ts";
+import { getDocumentLocales, marketing } from "@/lib/source.ts";
+import { marketingMdxComponents } from "@/ui/mdx/marketing-components.tsx";
 
 /**
  * Marketing pages — company, team, hardware and the like — rendered from

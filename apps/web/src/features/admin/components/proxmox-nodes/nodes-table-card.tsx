@@ -17,9 +17,9 @@
 
 import { getValidFilters } from "@virtbase/ui/lib";
 import type { SearchParams } from "nuqs";
-import { getProxmoxNodesList } from "../../api/proxmox-nodes/get-proxmox-nodes-list";
-import { searchParamsCache } from "../../lib/proxmox-nodes/validations";
-import { NodesTable } from "./nodes-table";
+import { getProxmoxNodesList } from "../../api/proxmox-nodes/get-proxmox-nodes-list.ts";
+import { searchParamsCache } from "../../lib/proxmox-nodes/validations.ts";
+import { NodesTable } from "./nodes-table/index.tsx";
 
 export async function NodesTableCard(props: {
   searchParams: Promise<SearchParams>;

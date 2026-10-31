@@ -23,7 +23,7 @@ import { subscriptions } from "@virtbase/db/schema";
 import {
   assertSubscriptionTransition,
   canTransitionSubscription,
-} from "../lib/subscription-status";
+} from "../lib/subscription-status.ts";
 
 export interface SubscriptionTransitionOptions {
   /** `system`, `provider:stripe`, `admin:<user id>`, `customer:<user id>`. */

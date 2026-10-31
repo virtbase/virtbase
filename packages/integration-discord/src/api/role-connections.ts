@@ -16,7 +16,7 @@
  */
 
 import type { APIApplicationRoleConnectionMetadata } from "discord-api-types/v10";
-import type { DiscordClient } from "./client";
+import type { DiscordClient } from "./client.ts";
 
 export const getRoleConnectionMetadata = (client: DiscordClient) =>
   client.request<APIApplicationRoleConnectionMetadata[]>(

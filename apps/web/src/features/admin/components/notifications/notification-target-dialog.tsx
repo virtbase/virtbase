@@ -45,13 +45,13 @@ import { useExtracted } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import { useState } from "react";
 import { toast } from "sonner";
-import type { NotificationTargetListItem } from "../../api/notifications/get-notification-settings";
+import type { NotificationTargetListItem } from "../../api/notifications/get-notification-settings.ts";
 import {
   createNotificationTargetAction,
   testNotificationTargetAction,
   updateNotificationTargetAction,
-} from "../../api/notifications/manage-notification-targets";
-import { IntegrationField } from "../integrations/integration-field";
+} from "../../api/notifications/manage-notification-targets.ts";
+import { IntegrationField } from "../integrations/integration-field.tsx";
 
 const SEVERITIES = ["info", "warning", "critical"] as const;
 

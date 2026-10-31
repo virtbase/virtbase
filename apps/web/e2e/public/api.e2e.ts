@@ -17,7 +17,7 @@
 
 import { expect, test } from "@playwright/test";
 import { APP_NAME } from "@virtbase/utils";
-import { publicUrl } from "../support/urls";
+import { publicUrl } from "../support/urls.ts";
 
 test("it should render the public API documentation", async ({ page }) => {
   await page.goto(publicUrl(`/api/docs`), {

@@ -22,10 +22,10 @@ import { isBusy, isOperational } from "@virtbase/utils";
 import dynamic from "next/dynamic";
 import { useParams } from "next/navigation";
 import type React from "react";
-import { useServerActionState } from "../../hooks/use-server-action-state";
-import { useServerStatus } from "../../hooks/use-server-status";
+import { useServerActionState } from "../../hooks/use-server-action-state.ts";
+import { useServerStatus } from "../../hooks/use-server-status.ts";
 
-const CreateBackupDialog = dynamic(() => import("./create-backup-dialog"), {
+const CreateBackupDialog = dynamic(() => import("./create-backup-dialog.tsx"), {
   ssr: false,
 });
 

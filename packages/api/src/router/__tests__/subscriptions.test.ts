@@ -44,7 +44,7 @@ import {
   mockServerPlanPrice,
   mockSession,
   seedServerInfrastructure,
-} from "../../testing/fixtures";
+} from "../../testing/fixtures.ts";
 
 /**
  * `transitionSubscription` binds `db` at import time and the router calls it,
@@ -72,12 +72,12 @@ mock.module("@virtbase/db/client", () => ({ db: testDb }));
  * infinite recursion, and returning a bare object would strip every other
  * export out from under the billing suites.
  */
-const realCollect = { ...(await import("../../billing/collect")) };
+const realCollect = { ...(await import("../../billing/collect.ts")) };
 
 /** Armed by one test, fired once, immediately after the collector answers. */
 let afterResolvingPaymentMethod: (() => Promise<void>) | null = null;
 
-mock.module("../../billing/collect", () => ({
+mock.module("../../billing/collect.ts", () => ({
   ...realCollect,
   resolveRenewalPaymentMethod: async (subscriptionId: string) => {
     const resolved =
@@ -91,7 +91,7 @@ mock.module("../../billing/collect", () => ({
   },
 }));
 
-const { appRouter } = await import("../../root");
+const { appRouter } = await import("../../root.ts");
 
 type Caller = ReturnType<typeof appRouter.createCaller>;
 

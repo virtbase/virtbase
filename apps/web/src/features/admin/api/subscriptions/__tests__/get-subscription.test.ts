@@ -50,7 +50,7 @@ mock.module("@sentry/nextjs", () => ({ captureException: () => {} }));
  * page.
  */
 let refusal: Error | null = null;
-mock.module("../../verify-session", () => ({
+mock.module("../../verify-session.ts", () => ({
   verifySession: async () => {
     if (refusal) throw refusal;
 
@@ -76,10 +76,10 @@ import {
   insertRenewal,
   insertSubscription,
   MONTH,
-} from "./fixtures";
+} from "./fixtures.ts";
 
 let testDb: TestDb;
-let getSubscription: typeof import("../get-subscription").getSubscription;
+let getSubscription: typeof import("../get-subscription.ts").getSubscription;
 
 beforeAll(async () => {
   testDb = await createTestDb();
@@ -87,7 +87,7 @@ beforeAll(async () => {
 
   await seedServerGraph(testDb);
 
-  const mod = await import("../get-subscription");
+  const mod = await import("../get-subscription.ts");
   getSubscription = mod.getSubscription;
 });
 

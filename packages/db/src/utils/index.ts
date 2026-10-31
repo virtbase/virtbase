@@ -15,8 +15,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./build-order-by";
-export * from "./create-id";
-export * from "./escaped-ilike";
-export * from "./get-date-interval-filter";
-export * from "./table-columns";
+export * from "./build-order-by.ts";
+export * from "./create-id.ts";
+export * from "./escaped-ilike.ts";
+export * from "./get-date-interval-filter.ts";
+export * from "./table-columns.ts";

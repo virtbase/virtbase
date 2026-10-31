@@ -27,9 +27,9 @@ import { headers } from "next/headers";
 import { useExtracted } from "next-intl";
 import { cache, Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { auth } from "@/lib/auth/server";
-import { GenericError } from "@/ui/generic-error";
-import { UserSessionsList } from "./user-sessions-list";
+import { auth } from "@/lib/auth/server.ts";
+import { GenericError } from "@/ui/generic-error.tsx";
+import { UserSessionsList } from "./user-sessions-list.tsx";
 
 const getSessionsList = cache((headers: Headers) => {
   return Promise.all([

@@ -35,7 +35,7 @@ import {
   servers,
 } from "@virtbase/db/schema";
 import { FatalError, getStepMetadata, RetryableError } from "workflow";
-import { getProxmoxInstance } from "../../proxmox";
+import { getProxmoxInstance } from "../../proxmox/index.ts";
 
 type SelectProxmoxNodeStepParams = {
   serverPlanId: string;

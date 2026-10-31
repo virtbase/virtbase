@@ -17,9 +17,9 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils/create-id";
-import { users } from "./auth";
-import { proxmoxNodes } from "./proxmox-nodes";
+import { createId } from "../utils/create-id.ts";
+import { users } from "./auth.ts";
+import { proxmoxNodes } from "./proxmox-nodes.ts";
 
 export const proxmoxIsoDownloads = d.snakeCase.table(
   "proxmox_iso_downloads",

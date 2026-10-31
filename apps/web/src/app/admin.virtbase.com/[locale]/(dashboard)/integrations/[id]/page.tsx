@@ -28,11 +28,11 @@ import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
 import { Suspense } from "react";
-import { getIntegration } from "@/features/admin/api/integrations/get-integrations-list";
-import { verifyRenderSession } from "@/features/admin/api/verify-session";
-import { IntegrationDetail } from "@/features/admin/components/integrations/integration-detail";
-import { paths } from "@/lib/paths";
-import DashboardLayout from "@/ui/layout/dashboard-layout";
+import { getIntegration } from "@/features/admin/api/integrations/get-integrations-list.ts";
+import { verifyRenderSession } from "@/features/admin/api/verify-session.ts";
+import { IntegrationDetail } from "@/features/admin/components/integrations/integration-detail.tsx";
+import { paths } from "@/lib/paths.ts";
+import DashboardLayout from "@/ui/layout/dashboard-layout.tsx";
 
 export async function generateMetadata({
   params,

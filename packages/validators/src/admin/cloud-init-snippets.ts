@@ -21,7 +21,7 @@ import {
   TEMPLATE_INIT_SYSTEMS,
   TEMPLATE_OS_FAMILIES,
   TEMPLATE_PACKAGE_MANAGERS,
-} from "./proxmox-templates";
+} from "./proxmox-templates.ts";
 
 export const SNIPPET_KINDS = ["cloud-config", "shell"] as const;
 export const SNIPPET_SCOPES = ["base", "optional"] as const;

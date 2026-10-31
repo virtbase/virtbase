@@ -19,41 +19,44 @@ import { FatalError, sleep } from "workflow";
 import {
   applyCloudInitStep,
   rollbackApplyCloudInitStep,
-} from "../shared/apply-cloud-init";
+} from "../shared/apply-cloud-init.ts";
 import {
   createGuestFromImageStep,
   rollbackCreateGuestFromImageStep,
-} from "../shared/create-guest-from-image";
-import { getHAFailoverNodesStep } from "../shared/get-ha-failover-nodes";
-import { getNetworkAdaptersStep } from "../shared/get-network-adapters";
-import { getTemplateStep } from "../shared/get-template";
+} from "../shared/create-guest-from-image.ts";
+import { getHAFailoverNodesStep } from "../shared/get-ha-failover-nodes.ts";
+import { getNetworkAdaptersStep } from "../shared/get-network-adapters.ts";
+import { getTemplateStep } from "../shared/get-template.ts";
 import {
   performGuestActionStep,
   rollbackPerformGuestActionStep,
-} from "../shared/perform-guest-action";
-import { reportSwallowedFailureStep } from "../shared/report-swallowed-failure";
-import { resizeDiskStep, rollbackResizeDiskStep } from "../shared/resize-disk";
-import { runRollbacks } from "../shared/run-rollbacks";
-import { updateHASettingsStep } from "../shared/update-ha-settings";
-import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task";
+} from "../shared/perform-guest-action.ts";
+import { reportSwallowedFailureStep } from "../shared/report-swallowed-failure.ts";
+import {
+  resizeDiskStep,
+  rollbackResizeDiskStep,
+} from "../shared/resize-disk.ts";
+import { runRollbacks } from "../shared/run-rollbacks.ts";
+import { updateHASettingsStep } from "../shared/update-ha-settings.ts";
+import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task.ts";
 import {
   applyHardwareConfigStep,
   rollbackApplyHardwareConfigStep,
-} from "./apply-hardware-config";
+} from "./apply-hardware-config.ts";
 import {
   applyNetworkConfigStep,
   rollbackApplyNetworkConfigStep,
-} from "./apply-network-config";
+} from "./apply-network-config.ts";
 import {
   createServerSubscriptionStep,
   rollbackCreateServerSubscriptionStep,
-} from "./create-server-subscription";
-import { selectProxmoxNodeStep } from "./select-proxmox-node";
-import { sendServerReadyEmailStep } from "./send-server-ready-email";
+} from "./create-server-subscription.ts";
+import { selectProxmoxNodeStep } from "./select-proxmox-node.ts";
+import { sendServerReadyEmailStep } from "./send-server-ready-email.ts";
 import {
   rollbackStoreProvisionedServerStep,
   storeProvisionedServerStep,
-} from "./store-provisioned-server";
+} from "./store-provisioned-server.ts";
 
 type ProvisionServerWorkflowParams = {
   serverPlanId: string;

@@ -27,7 +27,7 @@ import {
 } from "@virtbase/utils";
 import { Hr, Link, Text } from "react-email";
 import { createTranslator } from "use-intl/core";
-import { Socials } from "./socials";
+import { Socials } from "./socials.tsx";
 
 /**
  * Legal documents live in `packages/content/legal/<locale>/<slug>.mdx` and are

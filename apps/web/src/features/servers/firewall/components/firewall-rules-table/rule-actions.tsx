@@ -38,8 +38,11 @@ import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import type { Dispatch, SetStateAction } from "react";
 import { useCallback } from "react";
-import { useMoveFirewallRule } from "../../hooks/use-move-firewall-rule";
-import type { FirewallTableRow, HostFirewallRow } from "../../lib/table-rows";
+import { useMoveFirewallRule } from "../../hooks/use-move-firewall-rule.ts";
+import type {
+  FirewallTableRow,
+  HostFirewallRow,
+} from "../../lib/table-rows.ts";
 
 interface RuleActionsProps extends React.ComponentProps<"div"> {
   row: Row<FirewallTableRow>;

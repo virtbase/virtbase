@@ -24,8 +24,8 @@ import {
 import type { Metadata } from "next";
 import { useExtracted } from "next-intl";
 import { getExtracted } from "next-intl/server";
-import { ForgotPasswordForm } from "@/features/auth/components/forgot-password-form";
-import { AuthLayout } from "@/ui/layout/auth-layout";
+import { ForgotPasswordForm } from "@/features/auth/components/forgot-password-form.tsx";
+import { AuthLayout } from "@/ui/layout/auth-layout.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();

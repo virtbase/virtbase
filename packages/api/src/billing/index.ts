@@ -50,9 +50,9 @@
  * It reduces the answer to a boolean and never lets the credential out. Any
  * further reach-in deserves the same scrutiny.
  */
-export * from "./due-renewals";
-export * from "./dunning-mail";
-export * from "./reconcile-renewals";
-export * from "./record-outcome";
-export * from "./renew-subscription";
-export * from "./retry-schedule";
+export * from "./due-renewals.ts";
+export * from "./dunning-mail.ts";
+export * from "./reconcile-renewals.ts";
+export * from "./record-outcome.ts";
+export * from "./renew-subscription.ts";
+export * from "./retry-schedule.ts";

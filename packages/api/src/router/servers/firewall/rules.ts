@@ -36,15 +36,15 @@ import { generateObject } from "ai";
 import {
   buildGenerationContext,
   buildSystemPrompt,
-} from "../../../firewall-ai";
-import { inspectGuest } from "../../../guest-firewall";
-import { serverProcedure } from "../../../trpc";
-import { readFirewallDigest } from "./digest";
+} from "../../../firewall-ai/index.ts";
+import { inspectGuest } from "../../../guest-firewall/index.ts";
+import { serverProcedure } from "../../../trpc.ts";
+import { readFirewallDigest } from "./digest.ts";
 import {
   FIREWALL_AI_MODEL,
   GENERATION_TIMEOUT_MS,
   repairGeneratedText,
-} from "./generation";
+} from "./generation.ts";
 
 export const serverFirewallRulesRouter = {
   get: serverProcedure

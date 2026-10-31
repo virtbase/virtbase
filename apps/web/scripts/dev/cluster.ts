@@ -16,8 +16,8 @@
  */
 
 import { getPlansWithAvailability } from "@virtbase/db/queries";
-import { seedPlansAndNetworking } from "./seed-fixtures";
-import { seedProxmoxCluster } from "./seed-proxmox-cluster";
+import { seedPlansAndNetworking } from "./seed-fixtures.ts";
+import { seedProxmoxCluster } from "./seed-proxmox-cluster.ts";
 
 /**
  * Register the local Proxmox cluster with the dev database.

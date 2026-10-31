@@ -19,14 +19,14 @@ import {
   helpArticleCollection,
   legalCollection,
   marketingCollection,
-} from "fdx-source/server";
+} from "fdx-source/server.ts";
 import type { I18nConfig } from "fumadocs-core/i18n";
 import { defineI18n } from "fumadocs-core/i18n";
 import { loader } from "fumadocs-core/source";
 import { toFumadocsSource } from "fumadocs-mdx/runtime/server";
 import type { Locale } from "next-intl";
 
-import { defaultLocale, locales } from "@/i18n/config";
+import { defaultLocale, locales } from "@/i18n/config.ts";
 
 const i18nConfig: I18nConfig = {
   languages: [...locales],

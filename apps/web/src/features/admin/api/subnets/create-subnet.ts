@@ -22,7 +22,7 @@ import { db } from "@virtbase/db/client";
 import { subnets } from "@virtbase/db/schema";
 import { CreateSubnetInputSchema } from "@virtbase/validators";
 import { revalidatePath, revalidateTag } from "next/cache";
-import { actionClient } from "../../lib/action-client";
+import { actionClient } from "../../lib/action-client.ts";
 
 export const createSubnetAction = actionClient
   .inputSchema(CreateSubnetInputSchema)

@@ -23,16 +23,16 @@ import { InteractionResponseType } from "discord-api-types/v10";
 import type { Locale } from "next-intl";
 import { getExtracted, getFormatter } from "next-intl/server";
 
-import type { LinkedInteractionContext } from "../../handlers/types";
-import { sparkline, summarize } from "../../ui/chart";
-import { actionButton, linkButton, row, select } from "../../ui/components";
-import { EMOJI } from "../../ui/emoji";
-import type { MessageResponse } from "../../ui/message";
-import { message } from "../../ui/message";
-import { actorFor } from "../../utils/actor";
-import { createEmbed } from "../../utils/create-embed";
-import { requireServerId } from "../servers";
-import type { DiscordFeature } from "../types";
+import type { LinkedInteractionContext } from "../../handlers/types.ts";
+import { sparkline, summarize } from "../../ui/chart.ts";
+import { actionButton, linkButton, row, select } from "../../ui/components.ts";
+import { EMOJI } from "../../ui/emoji.ts";
+import type { MessageResponse } from "../../ui/message.ts";
+import { message } from "../../ui/message.ts";
+import { actorFor } from "../../utils/actor.ts";
+import { createEmbed } from "../../utils/create-embed.ts";
+import { requireServerId } from "../servers/index.ts";
+import type { DiscordFeature } from "../types.ts";
 
 /** The timeframes Proxmox's RRD keeps, in the order a customer thinks of them. */
 const TIMEFRAMES = ["hour", "day", "week", "month", "year"] as const;

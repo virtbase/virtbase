@@ -16,12 +16,12 @@
  */
 
 import { defineIntegration } from "@virtbase/integration-sdk";
-import { PAYLOAD_FORMATS, secretsSchema, settingsSchema } from "./config";
-import { localizeAlertmanager } from "./localize";
-import { handleAlertsRequest } from "./webhook";
+import { PAYLOAD_FORMATS, secretsSchema, settingsSchema } from "./config.ts";
+import { localizeAlertmanager } from "./localize.ts";
+import { handleAlertsRequest } from "./webhook.ts";
 
-export * from "./config";
-export * from "./parse";
+export * from "./config.ts";
+export * from "./parse.ts";
 
 export default defineIntegration({
   id: "alertmanager",

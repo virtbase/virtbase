@@ -18,8 +18,8 @@
 // Imported from the leaf rather than the `privacy` barrel: that barrel reaches
 // the export builder and through it PDFKit and the embedded fonts, none of
 // which an offboarding has any business loading.
-import type { SubjectTableName } from "../../privacy/subject-data";
-import { tablesToErase } from "../../privacy/subject-data";
+import type { SubjectTableName } from "../../privacy/subject-data.ts";
+import { tablesToErase } from "../../privacy/subject-data.ts";
 
 /** Marks a table `eraseSubjectDataStep` deletes itself. */
 export const HERE = Symbol("erased-by-this-step");

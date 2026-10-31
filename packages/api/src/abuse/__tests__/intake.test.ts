@@ -34,7 +34,7 @@ import type { InboundSignal } from "@virtbase/ports";
 // integration registry; neither belongs in a test of the pipeline that calls
 // it. What is asserted here is that it is called, and with what.
 const dispatched: { key: string; audience: unknown }[] = [];
-mock.module("../../notifications/dispatch", () => ({
+mock.module("../../notifications/dispatch.ts", () => ({
   dispatchNotification: async (input: { key: string; audience: unknown }) => {
     dispatched.push({ key: input.key, audience: input.audience });
     return {
@@ -52,9 +52,9 @@ import {
   mockServer,
   mockSession,
   seedServerGraph,
-} from "../../testing";
-import { countRecentResolvedCases } from "../case";
-import { submitSignal } from "../intake";
+} from "../../testing/index.ts";
+import { countRecentResolvedCases } from "../case.ts";
+import { submitSignal } from "../intake.ts";
 
 let testDb: TestDb;
 

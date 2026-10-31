@@ -22,7 +22,7 @@ import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
 
 const dispatched: { key: string; params: Record<string, unknown> }[] = [];
-mock.module("../../notifications/dispatch", () => ({
+mock.module("../../notifications/dispatch.ts", () => ({
   dispatchNotification: async (input: {
     key: string;
     params: Record<string, unknown>;
@@ -32,8 +32,8 @@ mock.module("../../notifications/dispatch", () => ({
   },
 }));
 
-import { mockSession } from "../../testing";
-import { awaitCustomerResponse, DEFAULT_RESPONSE_HOURS } from "../case";
+import { mockSession } from "../../testing/index.ts";
+import { awaitCustomerResponse, DEFAULT_RESPONSE_HOURS } from "../case.ts";
 
 let testDb: TestDb;
 

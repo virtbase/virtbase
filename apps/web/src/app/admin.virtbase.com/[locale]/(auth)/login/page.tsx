@@ -16,7 +16,7 @@
  */
 
 import type { Metadata } from "next";
-import { generateMetadata as generateAuthMetadata } from "@/app/app.virtbase.com/[locale]/(auth)/login/page";
+import { generateMetadata as generateAuthMetadata } from "@/app/app.virtbase.com/[locale]/(auth)/login/page.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
   const meta = await generateAuthMetadata();
@@ -30,4 +30,4 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
-export { default } from "@/app/app.virtbase.com/[locale]/(auth)/login/page";
+export { default } from "@/app/app.virtbase.com/[locale]/(auth)/login/page.tsx";

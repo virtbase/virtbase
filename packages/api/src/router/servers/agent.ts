@@ -22,7 +22,7 @@ import {
   GetServerAgentStatusInputSchema,
   GetServerAgentStatusOutputSchema,
 } from "@virtbase/validators/server";
-import { storeDetectedOperatingSystem } from "../../guest-os";
+import { storeDetectedOperatingSystem } from "../../guest-os/index.ts";
 // Imported from the agent module rather than the `proxmox` barrel: router
 // tests replace that barrel wholesale to inject a fake instance, which would
 // otherwise take these helpers with it.
@@ -30,9 +30,9 @@ import {
   getGuestOsInfo,
   probeGuestAgent,
   resolveAgentStatus,
-} from "../../proxmox/agent";
-import { serverProcedure } from "../../trpc";
-import { cached } from "../../upstash";
+} from "../../proxmox/agent/index.ts";
+import { serverProcedure } from "../../trpc.ts";
+import { cached } from "../../upstash/index.ts";
 
 /**
  * How long a probe result is reused.

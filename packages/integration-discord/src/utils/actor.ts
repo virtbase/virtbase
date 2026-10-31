@@ -16,7 +16,7 @@
  */
 
 import type { ServerManagementActor } from "@virtbase/ports";
-import type { UserByInteraction } from "./get-user-by-interaction";
+import type { UserByInteraction } from "./get-user-by-interaction.ts";
 
 /** The acting user, in the shape {@link ServerManagementPort} expects. */
 export const actorFor = (user: UserByInteraction): ServerManagementActor => ({

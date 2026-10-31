@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { dataCollection } from "@/lib/sentry";
+import { dataCollection } from "@/lib/sentry.ts";
 
 declare global {
   interface Window {

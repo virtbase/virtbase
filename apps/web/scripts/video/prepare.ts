@@ -18,7 +18,7 @@
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { users } from "@virtbase/db/schema";
-import { CUSTOMER_ID, prepareFirewallScene } from "./lib/scene";
+import { CUSTOMER_ID, prepareFirewallScene } from "./lib/scene.ts";
 
 /**
  * Puts the cluster into the state an episode is filmed in, and stops.

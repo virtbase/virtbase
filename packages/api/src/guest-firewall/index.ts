@@ -15,8 +15,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./commands";
-export * from "./detect";
-export * from "./inspect";
-export * from "./read-rules";
-export * from "./read-sockets";
+export * from "./commands.ts";
+export * from "./detect.ts";
+export * from "./inspect.ts";
+export * from "./read-rules.ts";
+export * from "./read-sockets.ts";

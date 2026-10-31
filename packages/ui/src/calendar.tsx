@@ -25,8 +25,8 @@ import {
   ChevronRightIcon,
 } from "lucide-react";
 import * as React from "react";
-import { Button, buttonVariants } from "./button";
-import { cn } from "./index";
+import { Button, buttonVariants } from "./button.tsx";
+import { cn } from "./index.ts";
 
 function Calendar({
   className,

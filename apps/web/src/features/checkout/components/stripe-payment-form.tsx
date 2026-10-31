@@ -35,8 +35,8 @@ import { PUBLIC_DOMAIN } from "@virtbase/utils";
 import { useExtracted, useLocale } from "next-intl";
 import type { FormEvent } from "react";
 import { useCallback, useEffect, useRef, useState } from "react";
-import { PAYMENT_FORM_ID } from "../constants";
-import { useCustomCheckout } from "../hooks/use-custom-checkout";
+import { PAYMENT_FORM_ID } from "../constants.ts";
+import { useCustomCheckout } from "../hooks/use-custom-checkout.ts";
 
 export const countries = [
   "AT",

@@ -17,7 +17,7 @@
 
 import { useSuspenseQuery } from "@tanstack/react-query";
 import type { RouterOutputs } from "@virtbase/api";
-import { useTRPC } from "@/lib/trpc/react";
+import { useTRPC } from "@/lib/trpc/react.tsx";
 
 export type AbuseCaseSummary = RouterOutputs["abuse"]["list"]["cases"][number];
 

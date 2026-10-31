@@ -48,11 +48,11 @@ mock.module("workflow/api", () => ({
   },
 }));
 
-const { applyPaymentEvent } = await import("../apply-payment-event");
-const { fulfilOrder } = await import("../fulfill-order");
-const { reconcileOrders } = await import("../reconcile-orders");
+const { applyPaymentEvent } = await import("../apply-payment-event.ts");
+const { fulfilOrder } = await import("../fulfill-order.ts");
+const { reconcileOrders } = await import("../reconcile-orders.ts");
 const { claimOrderForFulfilment, transitionOrder } = await import(
-  "../transition-order"
+  "../transition-order.ts"
 );
 
 const BILLING = {

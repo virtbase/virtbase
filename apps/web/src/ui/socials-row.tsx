@@ -16,7 +16,7 @@
  */
 
 import { cn } from "@virtbase/ui";
-import { SOCIALS } from "@/lib/socials";
+import { SOCIALS } from "@/lib/socials.ts";
 
 export function SocialsRow({
   className,

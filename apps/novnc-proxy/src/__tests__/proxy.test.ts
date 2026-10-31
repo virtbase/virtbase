@@ -19,8 +19,8 @@ import { afterEach, beforeEach, describe, expect, spyOn, test } from "bun:test";
 import { encryptPayload } from "@virtbase/utils";
 import type { WebSocketData } from "@virtbase/validators";
 import type { ServerWebSocket } from "bun";
-import type { ServerOptions } from "../server";
-import { startServer } from "../server";
+import type { ServerOptions } from "../server.ts";
+import { startServer } from "../server.ts";
 
 /**
  * The proxy with real sockets: a real server, browser websockets, and a local

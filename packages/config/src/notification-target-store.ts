@@ -26,8 +26,8 @@ import {
   generateKey,
   unwrapDataKey,
   wrapDataKey,
-} from "./crypto";
-import type { ConfigDatabase } from "./types";
+} from "./crypto.ts";
+import type { ConfigDatabase } from "./types.ts";
 
 export type NotificationAudience = "user" | "operator";
 export type NotificationSeverity = "info" | "warning" | "critical";

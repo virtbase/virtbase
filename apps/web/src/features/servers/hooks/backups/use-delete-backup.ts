@@ -17,8 +17,8 @@
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useExtracted } from "next-intl";
-import { useTRPC } from "@/lib/trpc/react";
-import { defaultBackupListQuery } from "./use-backup-list";
+import { useTRPC } from "@/lib/trpc/react.tsx";
+import { defaultBackupListQuery } from "./use-backup-list.ts";
 
 type TRPC = ReturnType<typeof useTRPC>;
 type Options = Parameters<

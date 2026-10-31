@@ -23,7 +23,7 @@ import type { Stripe } from "@virtbase/integration-stripe";
 import {
   PaymentMethodOwnershipConflictError,
   recordPaymentMethod,
-} from "./record";
+} from "./record.ts";
 
 /**
  * Display material for a saved credential, whatever kind it is.

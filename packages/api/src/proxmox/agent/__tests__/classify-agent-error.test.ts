@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { classifyAgentError } from "../classify-agent-error";
+import { classifyAgentError } from "../classify-agent-error.ts";
 
 /** Reproduces the message `ProxmoxEngine` builds for a handled status. */
 const engineError = (status: number, statusText: string, body: unknown) =>

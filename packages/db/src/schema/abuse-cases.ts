@@ -17,7 +17,7 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils/create-id";
+import { createId } from "../utils/create-id.ts";
 import {
   abuseCaseResolutionEnum,
   abuseCaseSeverityEnum,
@@ -28,10 +28,10 @@ import {
   abuseEventActorEnum,
   abuseMessageAudienceEnum,
   abuseMessageAuthorEnum,
-} from "./abuse-enums";
-import { users } from "./auth";
-import { emails } from "./emails";
-import { servers } from "./servers";
+} from "./abuse-enums.ts";
+import { users } from "./auth.ts";
+import { emails } from "./emails.ts";
+import { servers } from "./servers.ts";
 
 /**
  * One dispute with one customer.

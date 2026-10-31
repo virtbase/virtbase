@@ -28,10 +28,10 @@ import { eq } from "@virtbase/db";
 import * as schema from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { mockServer, seedServerGraph } from "../../../testing/fixtures";
+import { mockServer, seedServerGraph } from "../../../testing/fixtures.ts";
 
 let db: TestDb;
-let storeServerDeletionStep: typeof import("../store-server-deletion").storeServerDeletionStep;
+let storeServerDeletionStep: typeof import("../store-server-deletion.ts").storeServerDeletionStep;
 
 const SUBNET_ID = "ipsub_0000000000000000000000001";
 const ALLOCATION_ID = "ipalloc_000000000000000000001";
@@ -99,11 +99,11 @@ beforeAll(async () => {
   // than read off the namespace: `mock.module` rebinds the namespace, so
   // delegating through it calls the mock and recurses until the stack is gone.
   const subjectSubscription = await import(
-    "../../../subscriptions/subject-subscription"
+    "../../../subscriptions/subject-subscription.ts"
   );
   const realTransition = subjectSubscription.transitionSubjectSubscription;
 
-  mock.module("../../../subscriptions/subject-subscription", () => ({
+  mock.module("../../../subscriptions/subject-subscription.ts", () => ({
     ...subjectSubscription,
     transitionSubjectSubscription: async (
       ...args: Parameters<typeof realTransition>
@@ -115,13 +115,13 @@ beforeAll(async () => {
     },
   }));
 
-  mock.module("../../shared/revalidate-checkout", () => ({
+  mock.module("../../shared/revalidate-checkout.ts", () => ({
     revalidateCheckout: () => {
       revalidations++;
     },
   }));
 
-  ({ storeServerDeletionStep } = await import("../store-server-deletion"));
+  ({ storeServerDeletionStep } = await import("../store-server-deletion.ts"));
 
   await seedServerGraph(db);
   await db.insert(schema.subnets).values({

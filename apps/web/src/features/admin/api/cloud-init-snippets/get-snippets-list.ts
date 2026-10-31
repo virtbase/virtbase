@@ -22,8 +22,8 @@ import { cloudInitSnippets, proxmoxTemplates } from "@virtbase/db/schema";
 import { escapedIlike, getDateIntervalFilter } from "@virtbase/db/utils";
 import { matchesTargets } from "@virtbase/utils";
 import { cacheLife, cacheTag } from "next/cache";
-import type { GetCloudInitSnippetsSchema } from "../../lib/cloud-init-snippets/validations";
-import { verifySession } from "../verify-session";
+import type { GetCloudInitSnippetsSchema } from "../../lib/cloud-init-snippets/validations.ts";
+import { verifySession } from "../verify-session.ts";
 
 export async function getSnippetsList(input: GetCloudInitSnippetsSchema) {
   "use cache: private";

@@ -17,9 +17,9 @@
 
 import { sql } from "drizzle-orm";
 import * as d from "drizzle-orm/pg-core";
-import { createId } from "../utils/create-id";
-import { servers } from "./servers";
-import { subnets } from "./subnets";
+import { createId } from "../utils/create-id.ts";
+import { servers } from "./servers.ts";
+import { subnets } from "./subnets.ts";
 
 export const subnetAllocations = d.snakeCase.table(
   "subnet_allocations",

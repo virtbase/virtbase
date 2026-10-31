@@ -19,12 +19,12 @@ import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import dynamic from "next/dynamic";
 import { getExtracted } from "next-intl/server";
-import { ServerDetailsActions } from "@/features/servers/components/overview/server-details-actions";
-import { ServerDetailsCard } from "@/features/servers/components/overview/server-details-card";
-import { ServerStatsCard } from "@/features/servers/components/server-stats-card";
+import { ServerDetailsActions } from "@/features/servers/components/overview/server-details-actions.tsx";
+import { ServerDetailsCard } from "@/features/servers/components/overview/server-details-card.tsx";
+import { ServerStatsCard } from "@/features/servers/components/server-stats-card.tsx";
 
 const ServerGraphs = dynamic(
-  () => import("@/features/servers/components/server-graphs"),
+  () => import("@/features/servers/components/server-graphs.tsx"),
 );
 
 export async function generateMetadata(): Promise<Metadata> {

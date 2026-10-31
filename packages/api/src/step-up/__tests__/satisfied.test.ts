@@ -18,7 +18,7 @@
 import { beforeEach, describe, expect, mock, test } from "bun:test";
 import type { Session } from "@virtbase/auth";
 import { STEP_UP_WINDOW_SECONDS } from "@virtbase/utils";
-import { mockSession } from "../../testing/fixtures";
+import { mockSession } from "../../testing/fixtures.ts";
 
 /** A stand-in Redis, so the marker and the spent note are observable. */
 const store = new Map<string, unknown>();
@@ -34,7 +34,7 @@ const refuseWhenDown = () => {
   if (redisIsDown) throw new Error("redis is down");
 };
 
-mock.module("../../upstash/redis", () => ({
+mock.module("../../upstash/redis.ts", () => ({
   redis: {
     get: async (key: string) => {
       refuseWhenDown();
@@ -53,7 +53,7 @@ mock.module("../../upstash/redis", () => ({
 }));
 
 const { grantStepUp, isStepUpSatisfied, revokeStepUp } = await import(
-  "../index"
+  "../index.ts"
 );
 
 const sessionWith = (overrides: Partial<Session["session"]>): Session => ({

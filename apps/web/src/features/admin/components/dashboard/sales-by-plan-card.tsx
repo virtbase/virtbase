@@ -26,9 +26,9 @@ import { Skeleton } from "@virtbase/ui/skeleton";
 import { useExtracted } from "next-intl";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { GenericError } from "@/ui/generic-error";
-import { getSalesByPlan } from "../../api/dashboard/get-sales-by-plan";
-import { SalesByPlan } from "./sales-by-plan";
+import { GenericError } from "@/ui/generic-error.tsx";
+import { getSalesByPlan } from "../../api/dashboard/get-sales-by-plan.ts";
+import { SalesByPlan } from "./sales-by-plan.tsx";
 
 export function SalesByPlanCard() {
   const t = useExtracted();

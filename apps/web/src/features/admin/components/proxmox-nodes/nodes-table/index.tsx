@@ -21,9 +21,9 @@ import { DataTable, DataTableToolbar } from "@virtbase/ui/data-table";
 import { useDataTable } from "@virtbase/ui/hooks";
 import type { DataTableRowAction } from "@virtbase/ui/types";
 import React, { use } from "react";
-import type { getProxmoxNodesList } from "@/features/admin/api/proxmox-nodes/get-proxmox-nodes-list";
-import type { NodesTableColumn } from "./columns";
-import { useNodesTableColumns } from "./columns";
+import type { getProxmoxNodesList } from "@/features/admin/api/proxmox-nodes/get-proxmox-nodes-list.ts";
+import type { NodesTableColumn } from "./columns.tsx";
+import { useNodesTableColumns } from "./columns.tsx";
 
 interface NodesTableProps {
   promises: Promise<[Awaited<ReturnType<typeof getProxmoxNodesList>>]>;

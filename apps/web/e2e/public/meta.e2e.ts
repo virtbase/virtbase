@@ -16,7 +16,7 @@
  */
 
 import { expect, test } from "@playwright/test";
-import { appOrigin, appUrl, publicOrigin, publicUrl } from "../support/urls";
+import { appOrigin, appUrl, publicOrigin, publicUrl } from "../support/urls.ts";
 
 test.describe("meta", () => {
   // robots, sitemap and security.txt must be served on both hosts.

@@ -17,8 +17,8 @@
 
 import { generateObject } from "ai";
 import * as z from "zod";
-import { ABUSE_TRIAGE_MODEL, TRIAGE_TIMEOUT_MS } from "./model";
-import { buildTriageSystemPrompt } from "./system-prompt";
+import { ABUSE_TRIAGE_MODEL, TRIAGE_TIMEOUT_MS } from "./model.ts";
+import { buildTriageSystemPrompt } from "./system-prompt.ts";
 
 /**
  * What the model is asked for.

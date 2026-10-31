@@ -29,7 +29,7 @@ import {
   servers,
   users,
 } from "@virtbase/db/schema";
-import { verifySession } from "../verify-session";
+import { verifySession } from "../verify-session.ts";
 
 export interface AbuseCaseDetail {
   id: string;

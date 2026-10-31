@@ -15,22 +15,22 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export { verifiedAddresses } from "./addresses";
-export type { ClassifyCaseResult, TriageSweepResult } from "./apply";
-export { classifyAbuseCase, sweepUntriagedCases } from "./apply";
+export { verifiedAddresses } from "./addresses.ts";
+export type { ClassifyCaseResult, TriageSweepResult } from "./apply.ts";
+export { classifyAbuseCase, sweepUntriagedCases } from "./apply.ts";
 export type {
   AbuseClassification,
   ClassifyAbuseReportInput,
-} from "./classify";
+} from "./classify.ts";
 export {
   AbuseClassificationSchema,
   classifyAbuseReport,
   isTriageAvailable,
-} from "./classify";
+} from "./classify.ts";
 export {
   ABUSE_TRIAGE_MODEL,
   MAX_TRIAGE_BODY_CHARS,
   TRIAGE_BATCH_SIZE,
   TRIAGE_TIMEOUT_MS,
-} from "./model";
-export { buildTriageSystemPrompt } from "./system-prompt";
+} from "./model.ts";
+export { buildTriageSystemPrompt } from "./system-prompt.ts";

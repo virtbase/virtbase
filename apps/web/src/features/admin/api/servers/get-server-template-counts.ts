@@ -20,7 +20,7 @@ import { count, eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { proxmoxTemplates as pt, servers } from "@virtbase/db/schema";
 import { cacheLife, cacheTag } from "next/cache";
-import { verifySession } from "../verify-session";
+import { verifySession } from "../verify-session.ts";
 
 export async function getServerTemplateCounts() {
   "use cache: private";

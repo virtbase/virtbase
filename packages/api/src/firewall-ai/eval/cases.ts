@@ -16,7 +16,7 @@
  */
 
 import type { GeneratedFirewallRule } from "@virtbase/validators/server";
-import type { BuildContextInput } from "../build-context";
+import type { BuildContextInput } from "../build-context.ts";
 
 /** What a generated rule has to look like for a case to count as matched. */
 export interface ExpectedRule {

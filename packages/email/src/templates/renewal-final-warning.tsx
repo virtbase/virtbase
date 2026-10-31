@@ -41,7 +41,7 @@ import {
   Text,
 } from "react-email";
 import { createFormatter, createTranslator } from "use-intl/core";
-import { declineReasonKey } from "./decline-reason";
+import { declineReasonKey } from "./decline-reason.ts";
 
 /**
  * The last contact before the server goes off, and the one that has to

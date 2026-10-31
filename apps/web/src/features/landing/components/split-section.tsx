@@ -18,7 +18,7 @@
 import { cn } from "@virtbase/ui";
 import type { ReactNode } from "react";
 
-import { Prose } from "@/ui/prose";
+import { Prose } from "@/ui/prose.tsx";
 
 /**
  * An explanation beside the thing it explains.

@@ -22,13 +22,16 @@ import { useDataTable } from "@virtbase/ui/hooks";
 import type { DataTableRowAction } from "@virtbase/ui/types";
 import dynamic from "next/dynamic";
 import React, { use } from "react";
-import type { getEmailsList } from "@/features/admin/api/emails/get-emails-list";
-import type { EmailsTableColumn } from "@/features/admin/components/emails/emails-table/columns";
-import { useEmailsTableColumns } from "@/features/admin/components/emails/emails-table/columns";
+import type { getEmailsList } from "@/features/admin/api/emails/get-emails-list.ts";
+import type { EmailsTableColumn } from "@/features/admin/components/emails/emails-table/columns.tsx";
+import { useEmailsTableColumns } from "@/features/admin/components/emails/emails-table/columns.tsx";
 
-const EmailPreviewDialog = dynamic(() => import("../email-preview-dialog"), {
-  ssr: false,
-});
+const EmailPreviewDialog = dynamic(
+  () => import("../email-preview-dialog.tsx"),
+  {
+    ssr: false,
+  },
+);
 
 interface EmailsTableProps {
   promises: Promise<[Awaited<ReturnType<typeof getEmailsList>>]>;

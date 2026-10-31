@@ -30,7 +30,7 @@ import { useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 import type z4 from "zod/v4";
-import { useCreateSSHKey } from "@/features/account/hooks/ssh-keys/create-ssh-key";
+import { useCreateSSHKey } from "@/features/account/hooks/ssh-keys/create-ssh-key.ts";
 
 export function CreateSSHKeyButton() {
   const t = useExtracted();

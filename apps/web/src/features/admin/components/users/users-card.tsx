@@ -21,9 +21,9 @@ import {
   getUserRoleCounts,
   getUsersList,
   getUserVerifiedCounts,
-} from "@/features/admin/api/users/get-users-list";
-import { UsersTable } from "@/features/admin/components/users/users-table";
-import { searchParamsCache } from "../../lib/users/validations";
+} from "@/features/admin/api/users/get-users-list.ts";
+import { UsersTable } from "@/features/admin/components/users/users-table/index.tsx";
+import { searchParamsCache } from "../../lib/users/validations.ts";
 
 export async function UsersCard(props: {
   searchParams: Promise<SearchParams>;

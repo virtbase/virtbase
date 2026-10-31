@@ -16,7 +16,7 @@
  */
 
 import type * as z from "zod";
-import type { Integration, IntegrationDefinition } from "./types";
+import type { Integration, IntegrationDefinition } from "./types.ts";
 
 /**
  * Declares an integration. The only job of this function is inference: it keeps

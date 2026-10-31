@@ -87,7 +87,8 @@
         "noUnusedImports": "warn",
         "noUnusedVariables": "warn",
         "useExhaustiveDependencies": "warn",
-        "useHookAtTopLevel": "warn"
+        "useHookAtTopLevel": "warn",
+        "useImportExtensions": "error"
       },
       "nursery": {
         "useExhaustiveSwitchCases": "error",

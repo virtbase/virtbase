@@ -29,7 +29,7 @@ import {
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
 import { TEMPLATE_IMAGE_STALE_AFTER_HOURS } from "@virtbase/utils";
-import type { ProxmoxInstance } from "../../proxmox";
+import type { ProxmoxInstance } from "../../proxmox/index.ts";
 import {
   mockDatacenter,
   mockProxmoxNode,
@@ -37,8 +37,8 @@ import {
   mockProxmoxTemplate,
   mockProxmoxTemplateGroup,
   mockSession,
-} from "../../testing";
-import { reconcileTemplateImage } from "../reconcile-template-image";
+} from "../../testing/index.ts";
+import { reconcileTemplateImage } from "../reconcile-template-image.ts";
 
 const STORAGE = mockProxmoxNode.importStorage;
 const VOLID = `${STORAGE}:import/${mockProxmoxTemplate.id}-ae204682c015.qcow2`;

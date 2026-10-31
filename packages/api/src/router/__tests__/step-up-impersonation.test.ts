@@ -18,9 +18,9 @@
 import { afterAll, beforeAll, describe, expect, mock, test } from "bun:test";
 import type { Session } from "@virtbase/auth";
 import { users } from "@virtbase/db/schema";
-import { appRouter } from "../../root";
-import type { TestCaller, TestCallerResult } from "../../testing";
-import { createTestCaller, mockSession } from "../../testing";
+import { appRouter } from "../../root.ts";
+import type { TestCaller, TestCallerResult } from "../../testing/index.ts";
+import { createTestCaller, mockSession } from "../../testing/index.ts";
 
 // As in `privacy.test.ts`: neither reaches anything real in a test.
 mock.module("workflow/api", () => ({ start: async () => {} }));
@@ -28,7 +28,7 @@ mock.module("@virtbase/email", () => ({
   sendEmail: async () => {},
   sendBatchEmail: async () => {},
 }));
-mock.module("../../upstash/redis", () => ({
+mock.module("../../upstash/redis.ts", () => ({
   redis: {
     get: async () => null,
     set: async () => "OK",

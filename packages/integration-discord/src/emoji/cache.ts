@@ -15,9 +15,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { DiscordClient } from "../api";
-import type { EmojiResolver } from "./resolver";
-import { createEmojiResolver, emptyEmojiResolver } from "./resolver";
+import type { DiscordClient } from "../api/index.ts";
+import type { EmojiResolver } from "./resolver.ts";
+import { createEmojiResolver, emptyEmojiResolver } from "./resolver.ts";
 
 /**
  * How long a fetched emoji list is reused. The set only changes when the sync

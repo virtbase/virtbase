@@ -16,12 +16,12 @@
  */
 
 import { generateObject } from "ai";
-import { verifiedAddresses } from "../addresses";
-import { AbuseClassificationSchema } from "../classify";
-import { ABUSE_TRIAGE_MODEL, TRIAGE_TIMEOUT_MS } from "../model";
-import { buildTriageSystemPrompt } from "../system-prompt";
-import type { TriageEvalCase } from "./cases";
-import { evaluateCase, TRIAGE_EVAL_CASES } from "./cases";
+import { verifiedAddresses } from "../addresses.ts";
+import { AbuseClassificationSchema } from "../classify.ts";
+import { ABUSE_TRIAGE_MODEL, TRIAGE_TIMEOUT_MS } from "../model.ts";
+import { buildTriageSystemPrompt } from "../system-prompt.ts";
+import type { TriageEvalCase } from "./cases.ts";
+import { evaluateCase, TRIAGE_EVAL_CASES } from "./cases.ts";
 
 /**
  * Measures report triage against a fixed set of reports.

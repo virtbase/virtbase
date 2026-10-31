@@ -18,7 +18,7 @@
 import { db } from "@virtbase/db/client";
 import { orderItems, orders, orderTransitions } from "@virtbase/db/schema";
 import type { OrderConfigurationSnapshot } from "@virtbase/validators";
-import { encryptOrderSecret } from "./order-secrets";
+import { encryptOrderSecret } from "./order-secrets.ts";
 
 export interface CreateOrderInput {
   userId: string;

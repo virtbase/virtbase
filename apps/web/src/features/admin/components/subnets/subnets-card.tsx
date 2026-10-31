@@ -21,9 +21,9 @@ import {
   getSubnetsList,
   getSubnetTypeCounts,
   getSubnetVlanCounts,
-} from "@/features/admin/api/subnets/get-subnets-list";
-import { SubnetsTable } from "@/features/admin/components/subnets/subnets-table";
-import { searchParamsCache } from "@/features/admin/lib/subnets/validations";
+} from "@/features/admin/api/subnets/get-subnets-list.ts";
+import { SubnetsTable } from "@/features/admin/components/subnets/subnets-table/index.tsx";
+import { searchParamsCache } from "@/features/admin/lib/subnets/validations.ts";
 
 export async function SubnetsCard(props: {
   searchParams: Promise<SearchParams>;

@@ -16,23 +16,23 @@
  */
 
 import { sleep } from "workflow";
-import { isHeldOffByAbuseLock } from "../../abuse/held-off-by-lock";
+import { isHeldOffByAbuseLock } from "../../abuse/held-off-by-lock.ts";
 import {
   applyGuestConfigStep,
   rollbackApplyGuestConfigStep,
-} from "../shared/apply-guest-config";
+} from "../shared/apply-guest-config.ts";
 import {
   performGuestActionStep,
   rollbackPerformGuestActionStep,
-} from "../shared/perform-guest-action";
-import { reportSwallowedFailureStep } from "../shared/report-swallowed-failure";
-import { runRollbacks } from "../shared/run-rollbacks";
-import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task";
-import { sendServerExtendedEmailStep } from "./send-server-extended-email";
+} from "../shared/perform-guest-action.ts";
+import { reportSwallowedFailureStep } from "../shared/report-swallowed-failure.ts";
+import { runRollbacks } from "../shared/run-rollbacks.ts";
+import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task.ts";
+import { sendServerExtendedEmailStep } from "./send-server-extended-email.ts";
 import {
   rollbackStoreServerExtensionStep,
   storeServerExtensionStep,
-} from "./store-server-extension";
+} from "./store-server-extension.ts";
 
 type ExtendServerWorkflowParams = {
   serverId: string;

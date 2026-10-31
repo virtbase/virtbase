@@ -36,7 +36,7 @@ import {
   Text,
 } from "react-email";
 import { createFormatter, createTranslator } from "use-intl/core";
-import { declineReasonKey } from "./decline-reason";
+import { declineReasonKey } from "./decline-reason.ts";
 
 /**
  * The first contact of the dunning ladder: one charge has been refused and

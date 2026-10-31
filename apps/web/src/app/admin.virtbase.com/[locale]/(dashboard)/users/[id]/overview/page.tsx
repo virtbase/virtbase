@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { verifyRenderSession } from "@/features/admin/api/verify-session";
+import { verifyRenderSession } from "@/features/admin/api/verify-session.ts";
 
 export default async function Page({
   params: _,

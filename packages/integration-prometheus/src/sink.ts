@@ -22,8 +22,8 @@ import {
   toCounterName,
   toLabelNames,
   toMetricName,
-} from "./names";
-import type { MetricsRuntime } from "./runtime";
+} from "./names.ts";
+import type { MetricsRuntime } from "./runtime.ts";
 
 /**
  * The `metrics` port, backed by a Prometheus registry this process serves on

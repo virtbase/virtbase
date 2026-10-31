@@ -16,19 +16,19 @@
  */
 
 import { ADMIN_HOSTNAMES, API_HOSTNAMES, APP_HOSTNAMES } from "@virtbase/utils";
-import contentCollections from "fdx-source/browser";
+import contentCollections from "fdx-source/browser.ts";
 import type { NextRequest, ProxyConfig } from "next/server";
 import { hasLocale } from "next-intl";
 import createMiddleware from "next-intl/middleware";
-import { locales } from "@/i18n/config";
-import { routing } from "@/i18n/routing.public";
-import { AdminMiddleware } from "@/lib/middleware/admin";
-import { ApiMiddleware } from "@/lib/middleware/api";
-import { AppMiddleware } from "@/lib/middleware/app";
-import { isMissingContent } from "@/lib/middleware/utils/missing-content";
-import { rewriteToNotFound } from "@/lib/middleware/utils/not-found";
-import { parse } from "@/lib/middleware/utils/parse";
-import { ensureLocaleCookie } from "./lib/middleware/ensure-locale-cookie";
+import { locales } from "@/i18n/config.ts";
+import { routing } from "@/i18n/routing.public.ts";
+import { AdminMiddleware } from "@/lib/middleware/admin.ts";
+import { ApiMiddleware } from "@/lib/middleware/api.ts";
+import { AppMiddleware } from "@/lib/middleware/app.ts";
+import { isMissingContent } from "@/lib/middleware/utils/missing-content.ts";
+import { rewriteToNotFound } from "@/lib/middleware/utils/not-found.ts";
+import { parse } from "@/lib/middleware/utils/parse.ts";
+import { ensureLocaleCookie } from "./lib/middleware/ensure-locale-cookie.ts";
 
 export const config: ProxyConfig = {
   // Match all pathnames except for

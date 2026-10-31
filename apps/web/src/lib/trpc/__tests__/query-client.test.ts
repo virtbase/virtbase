@@ -30,7 +30,7 @@ mock.module("sonner", () => ({
 }));
 
 const { createQueryClient, getMutationErrorDetail } = await import(
-  "../query-client"
+  "../query-client.ts"
 );
 
 /** Runs one mutation through a real client and lets it fail. */

@@ -31,14 +31,14 @@ import {
   commandHandlers,
   modalHandlers,
   selectHandlers,
-} from "../features";
-import { SetupMenuMessage } from "../features/menu";
-import { runComponent } from "./dispatch";
-import type { InteractionContext, InteractionHandler } from "./types";
+} from "../features/index.ts";
+import { SetupMenuMessage } from "../features/menu/index.ts";
+import { runComponent } from "./dispatch.ts";
+import type { InteractionContext, InteractionHandler } from "./types.ts";
 
-export * from "./defer";
-export * from "./dispatch";
-export * from "./types";
+export * from "./defer.ts";
+export * from "./dispatch.ts";
+export * from "./types.ts";
 
 const handleApplicationCommand: InteractionHandler = async (ctx) => {
   const { name } = (ctx.interaction as APIApplicationCommandInteraction).data;

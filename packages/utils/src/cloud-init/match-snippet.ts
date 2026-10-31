@@ -19,7 +19,7 @@ import type {
   RenderableSnippet,
   SnippetTargetContext,
   SnippetTargets,
-} from "./types";
+} from "./types.ts";
 
 /**
  * Compares two dotted version strings numerically, segment by segment.

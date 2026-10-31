@@ -17,7 +17,7 @@
 
 import { reconcileAbuseLocks } from "@virtbase/api/abuse";
 import { db } from "@virtbase/db/client";
-import { withCronSecret } from "@/lib/with-cron-secret";
+import { withCronSecret } from "@/lib/with-cron-secret.ts";
 
 /**
  * Puts back every abuse lock that is no longer in force.

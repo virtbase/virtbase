@@ -16,9 +16,9 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { parseIptablesSave } from "../parse-iptables";
-import type { GuestFirewallRule } from "../types";
-import { IPTABLES_EMPTY, IPTABLES_SAVE } from "./fixtures";
+import { parseIptablesSave } from "../parse-iptables.ts";
+import type { GuestFirewallRule } from "../types.ts";
+import { IPTABLES_EMPTY, IPTABLES_SAVE } from "./fixtures.ts";
 
 const byPort = (
   rules: GuestFirewallRule[],

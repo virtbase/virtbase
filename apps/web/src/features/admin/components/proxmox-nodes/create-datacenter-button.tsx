@@ -22,10 +22,10 @@ import { LucidePlus } from "@virtbase/ui/icons";
 import dynamic from "next/dynamic";
 import { useExtracted } from "next-intl";
 import { useState } from "react";
-import type { getLinkableDatacenters } from "../../api/datacenters/get-linkable-datacenters";
-import type { getLinkableProxmoxNodeGroups } from "../../api/proxmox-node-groups/get-linkable-proxmox-node-groups";
+import type { getLinkableDatacenters } from "../../api/datacenters/get-linkable-datacenters.ts";
+import type { getLinkableProxmoxNodeGroups } from "../../api/proxmox-node-groups/get-linkable-proxmox-node-groups.ts";
 
-const CreateNodeDialog = dynamic(() => import("./create-node-dialog"), {
+const CreateNodeDialog = dynamic(() => import("./create-node-dialog.tsx"), {
   ssr: false,
 });
 

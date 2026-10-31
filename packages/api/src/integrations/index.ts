@@ -32,13 +32,13 @@ import {
 } from "@virtbase/integration-sdk";
 import stripe from "@virtbase/integration-stripe";
 import webhook from "@virtbase/integration-webhook";
-import { AbuseSignalIntake } from "../abuse/port";
+import { AbuseSignalIntake } from "../abuse/port.ts";
 // Imported from its own module rather than the `../notifications` barrel: the
 // barrel also exports the dispatcher, which imports this file to reach the
 // registry, and going through it would make the two modules circular.
-import { EmailNotificationChannel } from "../notifications/channels/email";
-import { DbConfigSource } from "./db-config-source";
-import { TRPCServerManagement } from "./server-management";
+import { EmailNotificationChannel } from "../notifications/channels/email.ts";
+import { DbConfigSource } from "./db-config-source.ts";
+import { TRPCServerManagement } from "./server-management.ts";
 
 /**
  * Capabilities the application itself provides to integrations, exposed through
@@ -114,5 +114,5 @@ export const integrations = new IntegrationRegistry({
   config,
 });
 
-export { dispatchAccountLinked } from "./account-linked";
-export { type DiscordBotInfo, getDiscordBotInfo } from "./discord-bot";
+export { dispatchAccountLinked } from "./account-linked.ts";
+export { type DiscordBotInfo, getDiscordBotInfo } from "./discord-bot.ts";

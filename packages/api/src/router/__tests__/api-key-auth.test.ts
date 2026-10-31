@@ -26,9 +26,9 @@ import {
 import { TRPCError } from "@trpc/server";
 import { eq } from "@virtbase/db";
 import { users } from "@virtbase/db/schema";
-import { appRouter } from "../../root";
-import type { TestCallerResult } from "../../testing";
-import { createTestCaller, mockSession } from "../../testing";
+import { appRouter } from "../../root.ts";
+import type { TestCallerResult } from "../../testing/index.ts";
+import { createTestCaller, mockSession } from "../../testing/index.ts";
 
 const USER_ID = mockSession.user.id;
 

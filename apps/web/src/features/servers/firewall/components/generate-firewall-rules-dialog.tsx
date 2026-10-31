@@ -43,10 +43,10 @@ import { useExtracted, useLocale } from "next-intl";
 import type React from "react";
 import { useEffect, useState, useTransition } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { ItemRow } from "@/features/account/components/item-row";
-import { useCreateFirewallRule } from "../hooks/use-create-firewall-rule";
-import { useGenerateFirewallRule } from "../hooks/use-generate-firewall-rule";
-import { isProtocolWithPorts } from "../lib/utils";
+import { ItemRow } from "@/features/account/components/item-row.tsx";
+import { useCreateFirewallRule } from "../hooks/use-create-firewall-rule.ts";
+import { useGenerateFirewallRule } from "../hooks/use-generate-firewall-rule.ts";
+import { isProtocolWithPorts } from "../lib/utils.ts";
 
 type GeneratedRule = GenerateServerFirewallRuleOutput["rules"][number];
 

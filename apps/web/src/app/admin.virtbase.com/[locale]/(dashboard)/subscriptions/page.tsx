@@ -28,10 +28,10 @@ import { getExtracted } from "next-intl/server";
 import type { SearchParams } from "nuqs";
 import { Suspense } from "react";
 import { ErrorBoundary } from "react-error-boundary";
-import { verifyRenderSession } from "@/features/admin/api/verify-session";
-import { SubscriptionsTableCard } from "@/features/admin/components/subscriptions/subscriptions-table-card";
-import { GenericError } from "@/ui/generic-error";
-import DashboardLayout from "@/ui/layout/dashboard-layout";
+import { verifyRenderSession } from "@/features/admin/api/verify-session.ts";
+import { SubscriptionsTableCard } from "@/features/admin/components/subscriptions/subscriptions-table-card.tsx";
+import { GenericError } from "@/ui/generic-error.tsx";
+import DashboardLayout from "@/ui/layout/dashboard-layout.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();

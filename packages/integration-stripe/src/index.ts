@@ -17,13 +17,13 @@
 
 import { defineIntegration } from "@virtbase/integration-sdk";
 import * as z from "zod";
-import { StripePaymentProvider } from "./adapter";
-import { stripe } from "./client";
+import { StripePaymentProvider } from "./adapter.ts";
+import { stripe } from "./client.ts";
 
 export type { Stripe } from "stripe";
-export * from "./adapter";
-export * from "./client";
-export * from "./get-or-create-customer";
+export * from "./adapter.ts";
+export * from "./client.ts";
+export * from "./get-or-create-customer.ts";
 
 const secretsSchema = z.object({
   secretKey: z.string().min(1),

@@ -47,11 +47,11 @@ let renderWithProviders: Rendered["renderWithProviders"];
 let screen: Rendered["screen"];
 let within: Rendered["within"];
 let userEvent: Rendered["userEvent"];
-let PlanProvider: typeof import("../plan-context").PlanProvider;
-let PlanCatalog: typeof import("../plan-catalog").PlanCatalog;
-let PlanOrderDialog: typeof import("../plan-order-dialog").PlanOrderDialog;
-type PlanCheckoutState = import("../plan-context").PlanCheckoutState;
-type Plan = import("../plan-context").Plan;
+let PlanProvider: typeof import("../plan-context.tsx").PlanProvider;
+let PlanCatalog: typeof import("../plan-catalog.tsx").PlanCatalog;
+let PlanOrderDialog: typeof import("../plan-order-dialog.tsx").PlanOrderDialog;
+type PlanCheckoutState = import("../plan-context.tsx").PlanCheckoutState;
+type Plan = import("../plan-context.tsx").Plan;
 let IntlEnvironment: (props: { children: React.ReactNode }) => React.ReactNode;
 
 beforeAll(async () => {
@@ -61,9 +61,9 @@ beforeAll(async () => {
   within = rendered.within;
   userEvent = rendered.userEvent;
 
-  PlanProvider = (await import("../plan-context")).PlanProvider;
-  PlanCatalog = (await import("../plan-catalog")).PlanCatalog;
-  PlanOrderDialog = (await import("../plan-order-dialog")).PlanOrderDialog;
+  PlanProvider = (await import("../plan-context.tsx")).PlanProvider;
+  PlanCatalog = (await import("../plan-catalog.tsx")).PlanCatalog;
+  PlanOrderDialog = (await import("../plan-order-dialog.tsx")).PlanOrderDialog;
 
   const { NextIntlClientProvider } = actualNextIntl;
   IntlEnvironment = ({ children }) => (

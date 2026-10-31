@@ -15,8 +15,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { classifyAgentError } from "./classify-agent-error";
-import type { GuestCommandResult, ProxmoxVm } from "./types";
+import { classifyAgentError } from "./classify-agent-error.ts";
+import type { GuestCommandResult, ProxmoxVm } from "./types.ts";
 
 /**
  * How long the whole call may take, including the initial `exec`.

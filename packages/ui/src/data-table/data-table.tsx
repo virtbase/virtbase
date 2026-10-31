@@ -20,7 +20,7 @@ import { flexRender } from "@tanstack/react-table";
 import { cn } from "@virtbase/ui";
 import { useExtracted } from "next-intl";
 import type * as React from "react";
-import { getColumnPinningStyle } from "../lib/data-table";
+import { getColumnPinningStyle } from "../lib/data-table.ts";
 import {
   Table,
   TableBody,
@@ -28,9 +28,9 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "../table";
-import type { Table as TanstackTable } from "../types/data-table";
-import { DataTablePagination } from "./data-table-pagination";
+} from "../table.tsx";
+import type { Table as TanstackTable } from "../types/data-table.ts";
+import { DataTablePagination } from "./data-table-pagination.tsx";
 
 interface DataTableProps<TData extends RowData>
   extends React.ComponentProps<"div"> {

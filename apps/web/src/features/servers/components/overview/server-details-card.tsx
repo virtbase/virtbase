@@ -29,10 +29,10 @@ import { Skeleton } from "@virtbase/ui/skeleton";
 import { isOperational } from "@virtbase/utils";
 import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
-import { CopyButton } from "@/ui/copy-button";
-import { useServer } from "../../hooks/use-server";
-import { useServerActionState } from "../../hooks/use-server-action-state";
-import { ServerOperatingSystem } from "./server-operating-system";
+import { CopyButton } from "@/ui/copy-button.tsx";
+import { useServer } from "../../hooks/use-server.ts";
+import { useServerActionState } from "../../hooks/use-server-action-state.ts";
+import { ServerOperatingSystem } from "./server-operating-system.tsx";
 
 export function ServerDetailsCard() {
   const t = useExtracted();

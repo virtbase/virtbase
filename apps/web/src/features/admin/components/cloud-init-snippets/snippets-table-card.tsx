@@ -17,9 +17,9 @@
 
 import { getValidFilters } from "@virtbase/ui/lib";
 import type { SearchParams } from "nuqs";
-import { getSnippetsList } from "../../api/cloud-init-snippets/get-snippets-list";
-import { searchParamsCache } from "../../lib/cloud-init-snippets/validations";
-import { SnippetsTable } from "./snippets-table";
+import { getSnippetsList } from "../../api/cloud-init-snippets/get-snippets-list.ts";
+import { searchParamsCache } from "../../lib/cloud-init-snippets/validations.ts";
+import { SnippetsTable } from "./snippets-table/index.tsx";
 
 export async function SnippetsTableCard(props: {
   searchParams: Promise<SearchParams>;

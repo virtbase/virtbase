@@ -25,9 +25,9 @@ import type {
   getUserRoleCounts,
   getUsersList,
   getUserVerifiedCounts,
-} from "@/features/admin/api/users/get-users-list";
-import type { UsersTableColumn } from "@/features/admin/components/users/users-table/columns";
-import { useUsersTableColumns } from "./columns";
+} from "@/features/admin/api/users/get-users-list.ts";
+import type { UsersTableColumn } from "@/features/admin/components/users/users-table/columns.tsx";
+import { useUsersTableColumns } from "./columns.tsx";
 
 interface UsersTableProps {
   promises: Promise<

@@ -26,7 +26,7 @@ import { LucideEuro } from "@virtbase/ui/icons";
 import { useExtracted, useFormatter } from "next-intl";
 import { use } from "react";
 import { CartesianGrid, Line, LineChart, XAxis, YAxis } from "recharts";
-import type { getRevenueOverTime } from "../../api/dashboard/get-revenue-over-time";
+import type { getRevenueOverTime } from "../../api/dashboard/get-revenue-over-time.ts";
 
 export function RevenueOverTime({
   promise,

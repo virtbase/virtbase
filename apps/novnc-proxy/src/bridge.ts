@@ -17,7 +17,7 @@
 
 import type { WebSocketData } from "@virtbase/validators";
 import type { ServerWebSocket } from "bun";
-import { log } from "./log";
+import { log } from "./log.ts";
 
 /** A websocket message as Bun hands it over, on either side of the bridge. */
 export type Frame = string | Buffer<ArrayBuffer>;

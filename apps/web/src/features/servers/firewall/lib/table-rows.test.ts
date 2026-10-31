@@ -16,8 +16,8 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import type { GuestRule, HostRule } from "./table-rows";
-import { buildFirewallTableRows, countHostRows } from "./table-rows";
+import type { GuestRule, HostRule } from "./table-rows.ts";
+import { buildFirewallTableRows, countHostRows } from "./table-rows.ts";
 
 const hostRule = (overrides: Partial<HostRule> = {}): HostRule =>
   ({

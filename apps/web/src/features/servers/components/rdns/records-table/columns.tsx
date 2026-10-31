@@ -23,7 +23,7 @@ import { LucideTrash2 } from "@virtbase/ui/icons/index";
 import type { ColumnDef, DataTableRowAction } from "@virtbase/ui/types";
 import { useExtracted, useFormatter } from "next-intl";
 import type { Dispatch, SetStateAction } from "react";
-import type { GetPointerRecordsListOutput } from "@/features/servers/hooks/rdns/use-pointer-records-list";
+import type { GetPointerRecordsListOutput } from "@/features/servers/hooks/rdns/use-pointer-records-list.ts";
 
 export type RecordsTableColumn = GetPointerRecordsListOutput["records"][number];
 

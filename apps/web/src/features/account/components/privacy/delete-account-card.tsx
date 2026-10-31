@@ -46,13 +46,13 @@ import {
 import { useExtracted, useFormatter } from "next-intl";
 import { useState } from "react";
 import { toast } from "sonner";
-import { ItemRow } from "@/features/account/components/item-row";
-import { StepUpDialog } from "@/features/account/components/step-up-dialog";
+import { ItemRow } from "@/features/account/components/item-row.tsx";
+import { StepUpDialog } from "@/features/account/components/step-up-dialog.tsx";
 import {
   useCancelDeletion,
   useDeletionStatus,
   useRequestDeletion,
-} from "@/features/account/hooks/privacy/deletion";
+} from "@/features/account/hooks/privacy/deletion.ts";
 
 /** Typed in full to confirm. A checkbox is too easy to click by accident. */
 const CONFIRMATION_PHRASE = "DELETE";

@@ -31,25 +31,25 @@ import { ButtonStyle, InteractionResponseType } from "discord-api-types/v10";
 import type { Locale } from "next-intl";
 import { getExtracted, getFormatter } from "next-intl/server";
 
-import type { EmojiResolver } from "../../emoji";
+import type { EmojiResolver } from "../../emoji/index.ts";
 import {
   actionButton,
   linkButton,
   row,
   SELECT_OPTIONS_MAX,
   select,
-} from "../../ui/components";
-import { EMOJI } from "../../ui/emoji";
+} from "../../ui/components.ts";
+import { EMOJI } from "../../ui/emoji.ts";
 import {
   escapeMarkdown,
   formatUptime,
   stateEmoji,
   timestamp,
   usageBar,
-} from "../../ui/format";
-import type { MessageResponse, ResponseType } from "../../ui/message";
-import { message } from "../../ui/message";
-import { createEmbed } from "../../utils/create-embed";
+} from "../../ui/format.ts";
+import type { MessageResponse, ResponseType } from "../../ui/message.ts";
+import { message } from "../../ui/message.ts";
+import { createEmbed } from "../../utils/create-embed.ts";
 
 /** Servers per page. Discord renders at most 25 select options. */
 export const PAGE_SIZE = SELECT_OPTIONS_MAX;

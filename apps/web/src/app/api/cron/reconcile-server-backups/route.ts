@@ -21,7 +21,7 @@ import { getProxmoxInstance } from "@virtbase/api/proxmox";
 import { asc, eq, isNull } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { proxmoxNodes, serverBackups, servers } from "@virtbase/db/schema";
-import { withCronSecret } from "@/lib/with-cron-secret";
+import { withCronSecret } from "@/lib/with-cron-secret.ts";
 
 /**
  * The maximum number of backups settled per run. Reconciling one backup costs

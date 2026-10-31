@@ -22,7 +22,7 @@ import {
   resolveOperatingSystem,
   sanitizeGuestOsName,
   WINDOWS_OS_ID,
-} from "../operating-system";
+} from "../operating-system.ts";
 
 describe("OPERATING_SYSTEMS", () => {
   test("every slug is unique", () => {

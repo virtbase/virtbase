@@ -54,7 +54,7 @@ import {
   mockServerPlanPrice,
   mockSession,
   seedServerGraph,
-} from "../../testing/fixtures";
+} from "../../testing/fixtures.ts";
 
 const testDb: TestDb = await createTestDb();
 
@@ -69,9 +69,9 @@ mock.module("workflow/api", () => ({
   },
 }));
 
-const { integrations } = await import("../../integrations");
-const { renewSubscription } = await import("../renew-subscription");
-const { reconcileRenewals } = await import("../reconcile-renewals");
+const { integrations } = await import("../../integrations/index.ts");
+const { renewSubscription } = await import("../renew-subscription.ts");
+const { reconcileRenewals } = await import("../reconcile-renewals.ts");
 
 const USER_ID = mockSession.user.id;
 const SERVER_ID = mockServer.id;

@@ -16,8 +16,8 @@
  */
 
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useTRPC } from "@/lib/trpc/react";
-import { defaultGetCustomImagesListQuery } from "./use-custom-image-list";
+import { useTRPC } from "@/lib/trpc/react.tsx";
+import { defaultGetCustomImagesListQuery } from "./use-custom-image-list.ts";
 
 type TRPC = ReturnType<typeof useTRPC>;
 type Options = Parameters<TRPC["iso"]["upload"]["mutationOptions"]>[0];

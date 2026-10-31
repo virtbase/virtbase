@@ -16,7 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
-import { preprocessQueryArray } from "../preprocess-query-array";
+import { preprocessQueryArray } from "../preprocess-query-array.ts";
 
 describe("preprocessQueryArray", () => {
   test("it splits a comma-separated string into an array", () => {

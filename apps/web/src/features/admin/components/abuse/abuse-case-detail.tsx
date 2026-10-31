@@ -25,17 +25,17 @@ import NextLink from "next/link";
 import { useExtracted, useFormatter, useNow } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import { toast } from "sonner";
-import { paths } from "@/lib/paths";
+import { paths } from "@/lib/paths.ts";
 import {
   CATEGORY_ICONS,
   ENFORCEMENT_ICONS,
   humanise,
   SEVERITY_ICONS,
   STATUS_ICONS,
-} from "@/ui/abuse/case-meta";
-import type { AbuseCaseDetail } from "../../api/abuse/get-abuse-cases";
-import { enforceAbuseCaseAction } from "../../api/abuse/manage-abuse-cases";
-import { AbuseCaseConversation } from "./abuse-case-conversation";
+} from "@/ui/abuse/case-meta.tsx";
+import type { AbuseCaseDetail } from "../../api/abuse/get-abuse-cases.ts";
+import { enforceAbuseCaseAction } from "../../api/abuse/manage-abuse-cases.ts";
+import { AbuseCaseConversation } from "./abuse-case-conversation.tsx";
 
 function Row({
   label,

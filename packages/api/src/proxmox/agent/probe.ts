@@ -15,9 +15,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { classifyAgentError } from "./classify-agent-error";
-import type { GuestAgentFailure, ProxmoxVm } from "./types";
-import { unwrapAgentResult } from "./unwrap-result";
+import { classifyAgentError } from "./classify-agent-error.ts";
+import type { GuestAgentFailure, ProxmoxVm } from "./types.ts";
+import { unwrapAgentResult } from "./unwrap-result.ts";
 
 /** The QGA command every exec-based feature depends on. */
 const EXEC_COMMAND = "guest-exec";

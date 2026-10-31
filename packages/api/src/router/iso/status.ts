@@ -26,8 +26,8 @@ import {
   GetProxmoxIsoDownloadStatusInputSchema,
   GetProxmoxIsoDownloadStatusOutputSchema,
 } from "@virtbase/validators";
-import { getProxmoxInstance } from "../../proxmox";
-import { protectedProcedure } from "../../trpc";
+import { getProxmoxInstance } from "../../proxmox/index.ts";
+import { protectedProcedure } from "../../trpc.ts";
 
 export const isoStatusRouter = {
   get: protectedProcedure

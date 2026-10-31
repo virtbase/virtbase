@@ -18,7 +18,7 @@
 "use client";
 
 import { ClientOnly } from "@virtbase/ui/client-only";
-import { authClient } from "@/lib/auth/client";
+import { authClient } from "@/lib/auth/client.ts";
 
 export function UserIndicator() {
   const { data: session, isPending } = authClient.useSession();
