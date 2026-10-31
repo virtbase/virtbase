@@ -37,9 +37,9 @@ bun typecheck          # TypeScript type checking
 bun check:boundaries   # Architecture layer rules (dependency-cruiser)
 ```
 
-`biome.jsonc` leaves out `noFloatingPromises`, `noMisusedPromises` and
+`biome.json` leaves out `noFloatingPromises`, `noMisusedPromises` and
 `noImportCycles`: they need type inference and a scan of the whole module
-graph, which kept the editor's language server above 1.8 GB. `biome.ci.jsonc`
+graph, which kept the editor's language server above 1.8 GB. `biome.ci.json`
 extends it with those rules, and CI runs `bun check:ci`.
 
 `check:boundaries` runs dependency-cruiser from `tooling/boundaries`, a

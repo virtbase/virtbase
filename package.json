@@ -94,7 +94,7 @@
     "build": "turbo run build",
     "check": "biome check .",
     "check:boundaries": "bun install --cwd tooling/boundaries --frozen-lockfile --silent && bun tooling/boundaries/node_modules/.bin/depcruise packages apps --config .dependency-cruiser.jsonc --output-type err",
-    "check:ci": "biome ci --config-path=biome.ci.jsonc .",
+    "check:ci": "biome ci --config-path=biome.ci.json .",
     "check:unsafe": "biome check --write --unsafe .",
     "check:write": "biome check --write .",
     "clean": "git clean -xdf node_modules",
