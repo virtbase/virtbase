@@ -186,8 +186,7 @@ Three collections, each loaded in `apps/web/src/lib/source.ts`:
 | `helpArticles` | `help/articles/<locale>/<slug>.mdx` | `/<locale>/help/article/<slug>` |
 
 Locales are **directories**, not filename suffixes, so Fumadocs is configured
-with `parser: "dir"`. That is the only layout Crowdin can map onto a translation
-path — it has no placeholder that strips `.en` from the middle of a filename.
+with `parser: "dir"`.
 
 The home page is `marketing/<locale>/index.mdx`. Its prose is MDX rather than
 next-intl messages. Anything backed by live data — plans, prices, specs — stays

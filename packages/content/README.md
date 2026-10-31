@@ -17,9 +17,8 @@ marketing/<locale>/index.mdx       → /<locale>
 marketing/<locale>/<slug>.mdx      → /<locale>/<slug>
 ```
 
-Locales are directories, not filename suffixes, because that is the layout
-Crowdin can map (see `crowdin.yml` at the repo root). Fumadocs is configured
-with `parser: "dir"` in `apps/web/src/lib/source.ts` to match.
+Locales are directories, not filename suffixes. Fumadocs is configured with
+`parser: "dir"` in `apps/web/src/lib/source.ts` to match.
 
 `en` is the source locale. A document that is missing a translation falls back
 to `en` at render time (`fallbackLanguage`), and is left out of that locale's
@@ -30,7 +29,7 @@ serves the wrong language.
 
 1. Write `<collection>/en/<slug>.mdx` with the frontmatter its collection's
    schema requires (`apps/web/source.config.ts`).
-2. Leave the other locales to Crowdin, or add them by hand.
+2. Add the other locales by hand, or leave them to fall back to `en`.
 
 Frontmatter `title` and `description` feed page metadata, so treat them as the
 `<title>` and meta description rather than as internal labels.

@@ -31,8 +31,7 @@ import { defaultLocale, locales } from "@/i18n/config";
 const i18nConfig: I18nConfig = {
   languages: [...locales],
   defaultLanguage: defaultLocale,
-  // Locales are directories (`en/terms.mdx`), not filename suffixes — the only
-  // layout Crowdin can map onto a translation path.
+  // Locales are directories (`en/terms.mdx`), not filename suffixes.
   parser: "dir",
 };
 

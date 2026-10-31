@@ -22,9 +22,6 @@
   <a href="https://github.com/virtbase/virtbase/blob/main/LICENSE.md">
     <img src="https://img.shields.io/github/license/virtbase/virtbase?label=license&logo=github&color=f80&logoColor=fff" alt="License" />
   </a>
-  <a href="https://crowdin.com/project/virtbase" target="_blank" title="Crowdin">
-    <img src="https://badges.crowdin.net/virtbase/localized.svg" alt="Crowdin" />
-  </a>
 </p>
 
 ## Getting Started
@@ -133,7 +130,7 @@ We love our contributors! Here's how you can contribute:
 
 - [Open an issue](https://github.com/virtbase/virtbase/issues) if you believe you've encountered a bug.
 - Make a [pull request](https://github.com/virtbase/virtbase/pull) to add new features, make quality-of-life improvements, or fix bugs.
-- Help translate Virtbase into your language on [Crowdin](https://crowdin.virtbase.com).
+- Fix or improve a translation with a pull request: the catalogs are in `apps/web/src/i18n/messages`, the website content in `packages/content`.
 
 ### Recommended Versions
 
