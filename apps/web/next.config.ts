@@ -226,7 +226,7 @@ const withNextIntl = createNextIntlPlugin({
     extract: true,
     messages: {
       path: "./src/i18n/messages",
-      locales: "infer",
+      locales: routing.locales,
       sourceLocale: "en",
       format: "po",
       // Keep runtime ICU formatting available for non-precompiled messages

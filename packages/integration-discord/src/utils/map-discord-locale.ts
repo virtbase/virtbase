@@ -22,25 +22,11 @@ const defaultLocale = "en" satisfies Locale;
 
 /** Discord `Locale` string → Virtbase `*.po` basename (only where both exist). */
 const discordLocaleMapping: Partial<Record<DiscordLocale, Locale>> = {
-  // cs: "cs",
-  // da: "da",
   de: "de",
-  // el: "el",
   "en-GB": "en",
   "en-US": "en",
-  // "es-419": "es",
-  // "es-ES": "es",
-  // fi: "fi",
   fr: "fr",
-  // hu: "hu",
-  // it: "it",
   nl: "nl",
-  // no: "no",
-  // pl: "pl",
-  // "pt-BR": "pt",
-  // ro: "ro",
-  // "sv-SE": "sv",
-  // tr: "tr",
 };
 
 /**
