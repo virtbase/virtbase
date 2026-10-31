@@ -156,5 +156,5 @@ placeholders.
   - `TODO` without an issue reference;
   - `FIXME`, `HACK` and `XXX`;
   - lines that are commented-out code.
-- **Review.** The `style-reviewer` agent checks CMT-1 to CMT-7, CMT-9 and CMT-12,
-  which a pattern cannot judge.
+- **Review.** CMT-1 to CMT-7, CMT-9 and CMT-12 are checked in review, because a
+  pattern cannot judge them.

@@ -90,13 +90,10 @@ These rules apply to every change, whether a person or an agent makes it.
    and `bun run test` for the touched packages, plus Playwright when a page or
    route changed.
 7. **Review before you open a PR.** In Claude Code:
-   - run the `neighbourhood-auditor` and `style-reviewer` agents
-     (`.claude/agents/`);
    - run `/code-review`;
    - run `/security-review` once per phase.
 
-   Other agents follow the same checklists by reading those files. Fix the
-   findings, or answer each one in the PR.
+   Fix the findings, or answer each one in the PR.
 8. **Report honestly**, in the PR template of [`git.md`](docs/style/git.md): every
    gate and its result, every behaviour change, every repair.
 

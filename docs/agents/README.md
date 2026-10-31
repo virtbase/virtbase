@@ -10,33 +10,14 @@ what is planned, and when each piece is used in a PR.
 | --- | --- | --- |
 | Working rules | `AGENTS.md`, section "Rules for every change"; `CLAUDE.md` imports `AGENTS.md` | every agent (Claude Code, Cursor) reads them first |
 | Coding rules | `docs/style/*.md`, rule IDs `CMP`, `TS`, `CMT`, `DB`, `SRV`, `WEB`, `INT`, `TST`, `SEC`, `GIT` | what code must look like |
-| Path-scoped rules | `.claude/rules/*.md`, symlinks to the guides in `docs/style/` | Claude Code loads a guide when it reads or edits a file matching the guide's `paths` frontmatter; `git.md` loads in every session |
-| Hooks | `.claude/hooks/*.ts`, registered in `.claude/settings.json` | see [Hooks](#hooks) |
 | No attribution | `.claude/settings.json`, key `attribution` | commits and PRs carry no co-author footer (GIT-4) |
 | Plugins | `.claude/settings.json`, key `enabledPlugins`: `pr-review-toolkit`, `security-guidance` | review agents for comments, silent failures, types and tests; vulnerability warnings while editing |
-| Reviewer agents | `.claude/agents/neighbourhood-auditor.md`, `.claude/agents/style-reviewer.md` | defects to repair in the surrounding code (CMP-15); a diff checked against the rules, comments included |
 | Skills | `.agents/skills/*`, linked into `.claude/skills/`, pinned in `skills-lock.json` | six Next.js skills, `better-auth-best-practices`, `playwright-best-practices` |
 | MCP servers | `.mcp.json`: `next-devtools`, `proxbase` | the running Next.js app; Proxmox test clusters |
 
 The language server comes from the `typescript-lsp` plugin. Each developer
 installs it at user scope, with the `typescript-language-server` binary on the
 path (`bun add -g typescript-language-server typescript`).
-
-### Hooks
-
-Each hook is a Bun script that reads its event as JSON on stdin through
-`.claude/hooks/shared.ts`. Exit code 2 blocks the action, or returns the problem
-to Claude, with stderr as the message.
-
-| Hook | Event | Effect |
-| --- | --- | --- |
-| `guard-bash.ts` | before every Bash command | blocks skipping the git hooks (GIT-5), marking a PR ready (GIT-7), force pushes to `main` (GIT-6), bare `bun test` (TST-1), and attribution footers in commits and PRs (GIT-4). It checks each segment of a command by the command the segment starts with, so text that only mentions a flag is not blocked. |
-| `check-edited-file.ts` | after every Edit or Write | runs `biome check --write` on the edited file when it is inside the repository, and returns what Biome cannot fix |
-| `stop-check.ts` | before Claude ends its turn | runs `biome check` on every changed and untracked file; when Claude is already continuing for this hook, it lets Claude stop |
-
-`.claude/hooks/tsconfig.json` gives the scripts the repository's Bun types.
-Check them with `bunx tsc -p .claude/hooks`. From Phase 1, PR 1.2,
-`stop-check.ts` also runs the comment gate.
 
 ## Not yet enabled
 
@@ -65,13 +46,13 @@ conflicts with `docs/style`, the guide wins.
 
 | Step | Tool |
 | --- | --- |
-| 1. Read the rules and the code | `AGENTS.md`, the guides the path-scoped rules load, the language server for callers |
-| 2. Find what must be repaired | `neighbourhood-auditor` agent, on the planned change |
-| 3. Pin defects, then write the code | tests first (CMP-16, TST-3); the edit hook runs Biome on every change |
+| 1. Read the rules and the code | `AGENTS.md`, the guides in its area table, the language server for callers |
+| 2. Find what must be repaired | the surrounding code of the planned change, against `risks.md` and the rules marked **(defect)** |
+| 3. Pin defects, then write the code | tests first (CMP-16, TST-3) |
 | 4. Verify | `bun check`, `bun typecheck`, `bun check:boundaries`, `bun run test`, Playwright where pages changed; the `next-dev-loop` skill for runtime behaviour |
-| 5. Review | `style-reviewer` agent; `pr-review-toolkit` agents; `/code-review high` |
+| 5. Review | `pr-review-toolkit` agents; `/code-review high` |
 | 6. Security | `/security-review`, once per phase (SEC-14) |
-| 7. Open the PR | a draft PR with the GIT-8 template; the guard hook keeps it a draft |
+| 7. Open the PR | a draft PR with the GIT-8 template |
 
 ## Configuration for later
 

@@ -1,1 +1,0 @@
-../../docs/style/testing.md

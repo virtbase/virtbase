@@ -43,20 +43,11 @@ it is unless the change rewrites it anyway.
 | Types | `bun typecheck` |
 | Behaviour | `bun run test`, the conformance and contract suites, Playwright |
 | Environment reads, coverage, comments in new code | the gates in [integration-first.md §13](../architecture/integration-first.md#13-quality-gates) |
-| Everything else | review: the `style-reviewer` and `neighbourhood-auditor` agents in `.claude/agents/`, then a human |
+| Everything else | review: `/code-review`, then a human |
 
 ## How agents load the guides
 
-Each guide except this index is linked into `.claude/rules/` as a symlink, so
-Claude Code loads it as a rule:
-
-- a guide with a `paths` list in its frontmatter loads when Claude reads or
-  edits a file matching one of those globs;
-- `git.md` has no `paths` list and loads at the start of every session.
-
-Changing a guide's `paths` changes when it loads. A new guide gets a symlink in
-`.claude/rules/` in the same PR. Other agents reach the guides through the area
-table in `AGENTS.md`.
+Agents reach the guides through the area table in `AGENTS.md`.
 
 ## Changing a rule
 
