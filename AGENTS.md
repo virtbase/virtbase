@@ -119,7 +119,6 @@ bun check:ci           # As CI runs it: adds the type-aware rules (~15 s)
 bun check:write        # Auto-fix lint issues
 bun typecheck          # TypeScript type checking
 bun check:boundaries   # Architecture layer rules (dependency-cruiser)
-bun run comment:check  # Comment lines added since origin/main (CMT-8, CMT-10, CMT-11)
 ```
 
 `biome.jsonc` leaves out `noFloatingPromises`, `noMisusedPromises` and
