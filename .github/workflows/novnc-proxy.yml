@@ -149,7 +149,7 @@ jobs:
         run: |
           name="novnc-proxy-${TAG#novnc-proxy-}-linux-x64"
           mkdir "$name"
-          cp dist/novnc-proxy LICENSE.md "$name/"
+          cp dist/novnc-proxy LICENSE "$name/"
           tar -czf "$name.tar.gz" "$name"
           sha256sum "$name.tar.gz" > "$name.tar.gz.sha256"
           gh release upload "$TAG" "$name.tar.gz" "$name.tar.gz.sha256" --clobber

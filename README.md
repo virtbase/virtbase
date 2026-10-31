@@ -19,7 +19,7 @@
   <a href="https://twitter.com/virtbasecom">
     <img src="https://img.shields.io/twitter/follow/virtbasecom?style=flat&label=%40virtbasecom&logo=twitter&color=0bf&logoColor=fff" alt="Twitter" />
   </a>
-  <a href="https://github.com/virtbase/virtbase/blob/main/LICENSE.md">
+  <a href="https://github.com/virtbase/virtbase/blob/main/LICENSE">
     <img src="https://img.shields.io/github/license/virtbase/virtbase?label=license&logo=github&color=f80&logoColor=fff" alt="License" />
   </a>
 </p>
