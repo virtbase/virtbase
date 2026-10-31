@@ -193,7 +193,9 @@ export default function FirewallRuleDialog({
                   <Select
                     name={field.name}
                     onValueChange={field.onChange}
-                    value={field.value}
+                    {...(field.value === undefined
+                      ? {}
+                      : { value: field.value })}
                   >
                     <SelectTrigger
                       id={field.name}
@@ -224,7 +226,9 @@ export default function FirewallRuleDialog({
                   <FirewallActionSelect
                     name={field.name}
                     onValueChange={field.onChange}
-                    value={field.value}
+                    {...(field.value === undefined
+                      ? {}
+                      : { value: field.value })}
                     triggerProps={{
                       id: field.name,
                       "aria-invalid": fieldState.invalid,
@@ -324,7 +328,9 @@ export default function FirewallRuleDialog({
                 <Checkbox
                   id={field.name}
                   name={field.name}
-                  checked={field.value}
+                  {...(field.value === undefined
+                    ? {}
+                    : { checked: field.value })}
                   onCheckedChange={field.onChange}
                   aria-invalid={fieldState.invalid}
                 />

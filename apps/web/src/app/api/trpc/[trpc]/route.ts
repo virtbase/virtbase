@@ -38,14 +38,15 @@ const handler = async (req: NextRequest) => {
         headers: req.headers,
         setHeader: (k, v) => (rateLimitHeaders[k] = v),
       }),
-    onError:
-      env.NODE_ENV === "development"
-        ? ({ path, error }) => {
+    ...(env.NODE_ENV === "development"
+      ? {
+          onError: ({ path, error }) => {
             console.error(
               `❌ tRPC failed on ${path ?? "<no-path>"}: ${error.message}`,
             );
-          }
-        : undefined,
+          },
+        }
+      : {}),
   });
 
   const newHeaders = new Headers(response.headers);

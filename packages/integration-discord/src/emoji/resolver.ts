@@ -145,7 +145,13 @@ export const createEmojiResolver = async (
     componentForTemplate: (template) => {
       const emoji = match(template);
       return emoji
-        ? { id: emoji.id, name: emoji.name, animated: emoji.animated }
+        ? {
+            id: emoji.id,
+            name: emoji.name,
+            ...(emoji.animated === undefined
+              ? {}
+              : { animated: emoji.animated }),
+          }
         : undefined;
     },
   };

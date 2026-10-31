@@ -34,7 +34,7 @@ export const OperatingSystemIcon = ({
    * operating system.
    */
   label?: string | null;
-  className?: string;
+  className?: string | undefined;
 }) => {
   if (icon) {
     return (

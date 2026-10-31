@@ -66,8 +66,8 @@ export function resolveRetry({
   refresh,
   startTransition,
 }: {
-  reset?: () => void;
-  resetBoundary?: (...args: unknown[]) => void;
+  reset?: (() => void) | undefined;
+  resetBoundary?: ((...args: unknown[]) => void) | undefined;
   resetQueryErrors: () => void;
   refresh: () => void;
   startTransition: (callback: () => void) => void;

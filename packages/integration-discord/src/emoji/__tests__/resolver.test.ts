@@ -105,7 +105,6 @@ describe("createEmojiResolver", () => {
     expect(resolver.componentForTemplate({ name: "Ubuntu 24.04" })).toEqual({
       id: "2",
       name: "vb_ubuntu",
-      animated: undefined,
     });
     expect(resolver.componentForTemplate({ name: "TempleOS" })).toBeUndefined();
   });

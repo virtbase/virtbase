@@ -64,10 +64,10 @@ export function FirewallRulesTable({
   guestManager,
   isPending,
 }: {
-  hostRules?: HostRule[];
-  guestRules?: GuestRule[];
+  hostRules?: HostRule[] | undefined;
+  guestRules?: GuestRule[] | undefined;
   /** The in-VM firewall the guest rules came from, for the group heading. */
-  guestManager?: string | null;
+  guestManager?: string | null | undefined;
   isPending: boolean;
 }) {
   const t = useExtracted();

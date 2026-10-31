@@ -57,7 +57,7 @@ export const encodeCustomId = ({
   feature,
   action,
   params = [],
-}: Omit<CustomId, "params"> & { params?: string[] }): string => {
+}: Omit<CustomId, "params"> & { params?: string[] | undefined }): string => {
   for (const [label, value] of [
     ["feature", feature],
     ["action", action],

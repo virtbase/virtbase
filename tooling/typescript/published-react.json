@@ -1,0 +1,7 @@
+{
+  "extends": "./published.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "lib": ["ES2024", "DOM", "DOM.Iterable"]
+  }
+}

@@ -25,7 +25,7 @@ type ApplyNetworkConfigStepParams = {
   adapters: (NetworkAdapter & {
     vlan: number;
     bridge: string;
-    netrate?: number | null;
+    netrate?: number | null | undefined;
   })[];
 };
 

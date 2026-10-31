@@ -43,7 +43,7 @@ export default async function AccountDeletionCancelled({
 }: {
   email: string;
   name: string;
-  locale?: string | null;
+  locale?: string | null | undefined;
 }) {
   const resolvedLocale = resolveEmailLocale(locale);
   const t = createTranslator({

@@ -124,7 +124,13 @@ const handler = withCronSecret(async () => {
 
           // The same staleness rule the status endpoint applies, so a server
           // being watched in a browser is not probed twice for no reason.
-          if (!isDetectionStale({ server, running, uptime: status.uptime })) {
+          if (
+            !isDetectionStale({
+              server,
+              running,
+              ...(status.uptime === undefined ? {} : { uptime: status.uptime }),
+            })
+          ) {
             continue;
           }
 

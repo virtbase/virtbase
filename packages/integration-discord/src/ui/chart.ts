@@ -37,7 +37,7 @@ export interface SparklineOptions {
    * which exaggerates noise on an idle server — pass the real ceiling
    * (1 for a ratio, total bytes for memory) whenever there is one.
    */
-  max?: number;
+  max?: number | undefined;
 }
 
 /**

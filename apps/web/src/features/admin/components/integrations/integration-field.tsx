@@ -69,7 +69,11 @@ export function IntegrationField({
           onCheckedChange={(checked) => onChange(String(checked))}
         />
       ) : field.widget === "select" ? (
-        <Select value={value} disabled={disabled} onValueChange={onChange}>
+        <Select
+          value={value}
+          {...(disabled === undefined ? {} : { disabled })}
+          onValueChange={onChange}
+        >
           <SelectTrigger id={id}>
             <SelectValue placeholder={field.placeholder ?? t("Select…")} />
           </SelectTrigger>

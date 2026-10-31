@@ -349,7 +349,9 @@ export const serversBackupsRouter = {
             "notes-template": `Created by Virtbase system - server_id: ${input.server_id}, backup_id: ${newBackupId}, vmid: {{vmid}}`,
             // Don't stop other running backup jobs
             stop: false,
-            protected: input.is_locked,
+            ...(input.is_locked === undefined
+              ? {}
+              : { protected: input.is_locked }),
             quiet: true,
           });
 

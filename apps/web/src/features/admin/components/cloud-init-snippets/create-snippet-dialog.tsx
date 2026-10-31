@@ -210,7 +210,9 @@ export default function CreateSnippetDialog(props: CreateSnippetDialogProps) {
                 <Field>
                   <FieldLabel htmlFor={field.name}>{t("Kind")}</FieldLabel>
                   <Select
-                    value={field.value}
+                    {...(field.value === undefined
+                      ? {}
+                      : { value: field.value })}
                     onValueChange={(value) => {
                       field.onChange(value);
                       form.setValue(

@@ -34,10 +34,17 @@ export const createApiKeyAction = async (input: CreateAPIKeyInput) => {
     throw new TRPCError({ code: "UNAUTHORIZED" });
   }
 
+  const permissions: Record<string, string[]> = {};
+  for (const [resource, actions] of Object.entries(input.permissions)) {
+    if (actions !== undefined) {
+      permissions[resource] = actions;
+    }
+  }
+
   const response = await auth.api.createApiKey({
     body: {
       name: input.name,
-      permissions: input.permissions,
+      permissions,
       userId: session.user.id,
     },
   });

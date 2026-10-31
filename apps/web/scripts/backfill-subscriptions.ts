@@ -94,11 +94,13 @@ async function main() {
     "Every row: auto_renew=false, mandate_accepted_at=null. Always.\n",
   );
 
+  const limit = number("limit");
+
   const result = await backfillSubscriptions({
     db,
     dryRun: !apply,
     batchSize: number("batch-size") ?? BACKFILL_BATCH_SIZE,
-    limit: number("limit"),
+    ...(limit === undefined ? {} : { limit }),
     after: option("after") ?? null,
     // One line per batch rather than per row, so a fleet of thousands does not
     // bury the summary.
@@ -106,9 +108,11 @@ async function main() {
       console.log(
         `  scanned ${scanned}, ${apply ? "created" : "would create"} ${created}, skipped ${skipped} (at ${cursor})`,
       ),
-    onCandidate: verbose
-      ? (candidate) => console.log(`  ${describe(candidate)}`)
-      : undefined,
+    ...(verbose
+      ? {
+          onCandidate: (candidate) => console.log(`  ${describe(candidate)}`),
+        }
+      : {}),
   });
 
   console.log(

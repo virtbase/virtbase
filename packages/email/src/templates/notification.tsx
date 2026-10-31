@@ -63,7 +63,7 @@ export default async function NotificationEmail({
   title: string;
   body: string;
   url?: string;
-  locale?: string | null;
+  locale?: string | null | undefined;
 }) {
   const resolvedLocale = resolveEmailLocale(locale);
 

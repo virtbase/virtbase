@@ -99,11 +99,13 @@ async function main() {
     "Credentials already recorded are skipped, never rewritten. Nothing here turns on automatic renewal.\n",
   );
 
+  const limit = number("limit");
+
   const result = await backfillPaymentMethods({
     db,
     dryRun: !apply,
     batchSize: number("batch-size") ?? PAYMENT_METHOD_BACKFILL_BATCH_SIZE,
-    limit: number("limit"),
+    ...(limit === undefined ? {} : { limit }),
     after: option("after") ?? null,
     // One line per batch rather than per customer, so a large customer base
     // does not bury the summary.
@@ -113,9 +115,11 @@ async function main() {
           apply ? "recorded" : "would record"
         } ${created}, skipped ${skipped}, failed ${failed} (at ${cursor})`,
       ),
-    onCandidate: verbose
-      ? (candidate) => console.log(`  ${describe(candidate)}`)
-      : undefined,
+    ...(verbose
+      ? {
+          onCandidate: (candidate) => console.log(`  ${describe(candidate)}`),
+        }
+      : {}),
     onFailure: ({ userId, stripeCustomerId, error }) =>
       console.warn(
         `  ! ${userId} (${stripeCustomerId}): ${

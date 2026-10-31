@@ -60,9 +60,9 @@ type FirewallRuleRaw = {
   pos: number;
   proto?: string;
   dport?: string;
-  sport?: string;
+  sport?: string | undefined;
   comment?: string;
-  "icmp-type"?: string;
+  "icmp-type"?: string | undefined;
   digest?: string;
 };
 
@@ -81,7 +81,7 @@ function createProxmoxMock(vm: {
     enable: number;
     policy_in?: string;
     policy_out?: string;
-    digest?: string;
+    digest?: string | undefined;
   }>;
   $put?: (params: { policy_in?: string; policy_out?: string }) => Promise<void>;
   rules?: FirewallRulesMock;

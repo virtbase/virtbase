@@ -89,7 +89,7 @@ export const inspectGuest = ({
 }: {
   vm: ProxmoxVm;
   serverId: string;
-  refresh?: boolean;
+  refresh?: boolean | undefined;
 }): Promise<GuestInspection> =>
   cached<GuestInspection>(
     `guest-inspection:${serverId}`,

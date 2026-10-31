@@ -72,7 +72,7 @@ export default async function RenewalPaymentFailed({
   nextAttemptAt: Date;
   cardBrand?: string | null;
   cardLast4?: string | null;
-  locale?: string | null;
+  locale?: string | null | undefined;
 }) {
   const resolvedLocale = resolveEmailLocale(locale);
   const messages = getEmailMessages(resolvedLocale);

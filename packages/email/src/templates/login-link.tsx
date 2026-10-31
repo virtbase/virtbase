@@ -44,7 +44,7 @@ export default async function LoginLink({
 }: {
   email: string;
   url: string;
-  locale?: string | null;
+  locale?: string | null | undefined;
 }) {
   const resolvedLocale = resolveEmailLocale(locale);
 

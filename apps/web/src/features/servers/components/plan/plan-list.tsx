@@ -40,7 +40,7 @@ interface PlanListProps {
   onUpgrade: (planId: string) => void;
   /** "Extend" on the current row. */
   onExtend: (planId: string) => void;
-  disabled?: boolean;
+  disabled?: boolean | undefined;
 }
 
 /**

@@ -20,7 +20,7 @@ import { NextRequest } from "next/server";
 
 const SECRET = "cron-secret-for-tests";
 
-const env: { CRON_SECRET?: string } = {};
+const env: { CRON_SECRET?: string | undefined } = {};
 mock.module("@/env", () => ({ env }));
 
 const { withCronSecret } = await import("../with-cron-secret");

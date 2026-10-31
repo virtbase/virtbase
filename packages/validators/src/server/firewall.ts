@@ -156,10 +156,10 @@ export const GetServerFirewallRulesOutputSchema = z.object({
 
 export const refineFirewallRule = (
   input: {
-    proto?: string;
-    sport?: string;
-    dport?: string;
-    icmp_type?: string;
+    proto?: string | undefined;
+    sport?: string | undefined;
+    dport?: string | undefined;
+    icmp_type?: string | undefined;
   },
   ctx: z.RefinementCtx,
 ): void => {

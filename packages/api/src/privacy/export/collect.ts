@@ -76,7 +76,7 @@ export async function collectSubjectData({
 }: {
   db: typeof database;
   userId: string;
-  now?: Date;
+  now?: Date | undefined;
 }) {
   return db.transaction(
     async (tx) => {

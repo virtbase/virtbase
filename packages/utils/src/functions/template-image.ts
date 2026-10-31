@@ -140,12 +140,12 @@ export function deriveTemplateImageFilename({
 export interface IsTemplateImageFreshParams {
   downloadedAt: Date | null;
   /** The template's override, or null to use the global default. */
-  refreshDays?: number | null;
+  refreshDays?: number | null | undefined;
   /** The checksum the image was downloaded with. */
-  storedChecksum?: string | null;
+  storedChecksum?: string | null | undefined;
   /** The checksum the template currently expects. */
-  expectedChecksum?: string | null;
-  now?: Date;
+  expectedChecksum?: string | null | undefined;
+  now?: Date | undefined;
 }
 
 /**

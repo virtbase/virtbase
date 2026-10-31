@@ -31,8 +31,8 @@ export function CustomImageIcon({
   url,
   className,
 }: {
-  url?: string;
-  className?: string;
+  url?: string | undefined;
+  className?: string | undefined;
 }) {
   const icon = url ? findIsoCatalogEntry(url)?.icon : null;
 

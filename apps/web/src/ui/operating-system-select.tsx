@@ -67,7 +67,11 @@ export function OperatingSystemSelect({
 
   return (
     <div className="flex flex-col gap-2">
-      <Popover open={isOpen} onOpenChange={setIsOpen} modal={modal}>
+      <Popover
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        {...(modal === undefined ? {} : { modal })}
+      >
         <PopoverTrigger asChild>
           <Button
             variant="outline"

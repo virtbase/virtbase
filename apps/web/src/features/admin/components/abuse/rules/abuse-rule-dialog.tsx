@@ -258,8 +258,11 @@ export function AbuseRuleDialog({
   const [error, setError] = useState<string | null>(null);
   const [labelsError, setLabelsError] = useState<string | null>(null);
 
-  const onError = ({ error: failure }: { error: { serverError?: string } }) =>
-    toast.error(failure.serverError ?? t("Something went wrong."));
+  const onError = ({
+    error: failure,
+  }: {
+    error: { serverError?: string | undefined };
+  }) => toast.error(failure.serverError ?? t("Something went wrong."));
 
   // No success toast: the dialog closes and the row appears or changes.
   const close = () => onOpenChange(false);

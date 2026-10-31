@@ -239,7 +239,7 @@ async function main() {
       !isDetectionStale({
         server,
         running: status.status === "running",
-        uptime: status.uptime,
+        ...(status.uptime === undefined ? {} : { uptime: status.uptime }),
       }),
     );
 
@@ -301,7 +301,7 @@ async function main() {
       isDetectionStale({
         server,
         running: status.status === "running",
-        uptime: status.uptime,
+        ...(status.uptime === undefined ? {} : { uptime: status.uptime }),
       }),
     );
 
@@ -368,7 +368,11 @@ async function main() {
 
     check(
       "fresh detection on a long-running guest is not stale",
-      !isDetectionStale({ server, running: true, uptime: status.uptime }),
+      !isDetectionStale({
+        server,
+        running: true,
+        ...(status.uptime === undefined ? {} : { uptime: status.uptime }),
+      }),
     );
     // `uptime: 0` puts the boot at exactly now, so any detection - including
     // one written a moment ago - predates it. A small non-zero uptime would

@@ -30,7 +30,7 @@ interface RegisterContextType {
   setName: (name: string) => void;
   setPassword: (password: string) => void;
   setStep: (step: "signup" | "verify") => void;
-  lockEmail?: boolean;
+  lockEmail?: boolean | undefined;
 }
 
 const RegisterContext = createContext<RegisterContextType | undefined>(

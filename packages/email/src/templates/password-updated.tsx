@@ -41,7 +41,7 @@ export default async function PasswordUpdated({
   locale = DEFAULT_EMAIL_LOCALE,
 }: {
   email: string;
-  locale?: string | null;
+  locale?: string | null | undefined;
 }) {
   const resolvedLocale = resolveEmailLocale(locale);
 

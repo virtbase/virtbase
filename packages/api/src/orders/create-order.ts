@@ -28,7 +28,7 @@ export interface CreateOrderInput {
   /** Plan name as it read at order time. */
   planName: string;
   /** Stripped out of the stored configuration and encrypted separately. */
-  rootPassword?: string | null;
+  rootPassword?: string | null | undefined;
 }
 
 /**

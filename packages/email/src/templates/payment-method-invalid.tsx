@@ -68,7 +68,7 @@ export default async function PaymentMethodInvalid({
   reasonCode: string | null;
   cardBrand?: string | null;
   cardLast4?: string | null;
-  locale?: string | null;
+  locale?: string | null | undefined;
 }) {
   const resolvedLocale = resolveEmailLocale(locale);
   const messages = getEmailMessages(resolvedLocale);

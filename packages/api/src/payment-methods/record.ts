@@ -55,10 +55,13 @@ export interface RecordPaymentMethodInput {
  * customer there too - so it is loud rather than silently corrective.
  */
 export class PaymentMethodOwnershipConflictError extends Error {
-  constructor(readonly provider: string) {
+  readonly provider: string;
+
+  constructor(provider: string) {
     super(
       `A ${provider} payment method is already recorded against a different customer.`,
     );
+    this.provider = provider;
     this.name = "PaymentMethodOwnershipConflictError";
   }
 }

@@ -60,7 +60,7 @@ export default async function ServerReady({
     recipientName: string;
     referenceId: string;
   };
-  locale?: string | null;
+  locale?: string | null | undefined;
 }) {
   const resolvedLocale = resolveEmailLocale(locale);
 

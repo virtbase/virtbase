@@ -130,7 +130,7 @@ export const findPaymentMethodBackfillCustomers = async (
   {
     after = null,
     limit = PAYMENT_METHOD_BACKFILL_BATCH_SIZE,
-  }: { after?: string | null; limit?: number } = {},
+  }: { after?: string | null | undefined; limit?: number } = {},
 ): Promise<PaymentMethodBackfillCustomer[]> => {
   const rows = await executor
     .select({ userId: users.id, stripeCustomerId: users.stripeCustomerId })

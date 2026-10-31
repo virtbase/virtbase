@@ -23,6 +23,7 @@ import {
   CardTitle,
 } from "@virtbase/ui/card";
 import { Skeleton } from "@virtbase/ui/skeleton";
+import type { NumberFormatOptions } from "next-intl";
 import { useFormatter } from "next-intl";
 import type React from "react";
 import { Suspense, use } from "react";
@@ -40,7 +41,7 @@ export function StatsCard<T extends Record<string, number | bigint>>({
   title: string;
   promise: Promise<T>;
   accessorKey: keyof T;
-  formatOptions?: Intl.NumberFormatOptions;
+  formatOptions?: NumberFormatOptions;
   icon: React.ReactNode;
   description: string;
   subtext?: string;
@@ -79,7 +80,7 @@ export function StatsCardCount<T extends Record<string, number | bigint>>({
 }: {
   promise: Promise<T>;
   accessorKey: keyof T;
-  formatOptions?: Intl.NumberFormatOptions;
+  formatOptions?: NumberFormatOptions | undefined;
 }) {
   const data = use<T>(promise);
   const formatter = useFormatter();

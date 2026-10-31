@@ -58,7 +58,7 @@ export default async function AccountDeletionRequested({
   email: string;
   name: string;
   url: string;
-  locale?: string | null;
+  locale?: string | null | undefined;
 }) {
   const resolvedLocale = resolveEmailLocale(locale);
   const t = createTranslator({

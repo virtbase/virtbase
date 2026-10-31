@@ -155,7 +155,7 @@ export const findBackfillCandidates = async (
   {
     after = null,
     limit = BACKFILL_BATCH_SIZE,
-  }: { after?: string | null; limit?: number } = {},
+  }: { after?: string | null | undefined; limit?: number } = {},
 ): Promise<BackfillCandidate[]> => {
   const rows = await executor
     .select({

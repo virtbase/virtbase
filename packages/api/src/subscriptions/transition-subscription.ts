@@ -27,8 +27,8 @@ import {
 
 export interface SubscriptionTransitionOptions {
   /** `system`, `provider:stripe`, `admin:<user id>`, `customer:<user id>`. */
-  actor?: string;
-  reason?: string;
+  actor?: string | undefined;
+  reason?: string | undefined;
   /**
    * Treat a transition that is not currently legal as a no-op rather than an
    * error.

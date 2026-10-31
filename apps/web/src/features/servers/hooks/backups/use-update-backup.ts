@@ -72,6 +72,8 @@ export const useUpdateBackup = ({
                       ? {
                           ...backup,
                           ...input,
+                          name: input.name ?? backup.name,
+                          is_locked: input.is_locked ?? backup.is_locked,
                         }
                       : backup,
                   ),

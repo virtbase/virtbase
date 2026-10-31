@@ -53,7 +53,7 @@ export default async function ServerRenewalReminder({
   name: string;
   serverName: string;
   serverId: string;
-  locale?: string | null;
+  locale?: string | null | undefined;
 }) {
   const resolvedLocale = resolveEmailLocale(locale);
 

@@ -30,8 +30,8 @@ type ApplyHardwareConfigStepParams = {
     memory: number;
     storage: number;
   };
-  initialRootPassword?: string | null;
-  initialSSHKeyId?: string | null;
+  initialRootPassword?: string | null | undefined;
+  initialSSHKeyId?: string | null | undefined;
 };
 
 export async function applyHardwareConfigStep({

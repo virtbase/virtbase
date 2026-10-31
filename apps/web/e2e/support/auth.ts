@@ -29,7 +29,19 @@ import { testUtils } from "better-auth/plugins";
  * over the same database adapter instead of touching
  * `apps/web/src/lib/auth/server.ts`.
  */
-const testAuth = initAuth({ additionalPlugins: [testUtils()] });
+const testUtilsPlugin = testUtils();
+
+const testAuth = initAuth({
+  additionalPlugins: [
+    {
+      ...testUtilsPlugin,
+      init(ctx) {
+        const { context, options } = testUtilsPlugin.init(ctx);
+        return { context, ...(options === undefined ? {} : { options }) };
+      },
+    },
+  ],
+});
 
 /**
  * Mint a real session for `userId` and return it as Playwright cookies.

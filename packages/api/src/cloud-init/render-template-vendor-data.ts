@@ -127,13 +127,16 @@ export async function renderTemplateVendorData({
 
   const result = renderVendorData({
     snippets: renderable,
-    context: {
-      osFamily: template?.osFamily,
-      osVersion: template?.osVersion,
-      packageManager: template?.packageManager,
-      initSystem: template?.initSystem,
-      architecture: template?.architecture,
-    },
+    context:
+      template === undefined
+        ? {}
+        : {
+            osFamily: template.osFamily,
+            osVersion: template.osVersion,
+            packageManager: template.packageManager,
+            initSystem: template.initSystem,
+            architecture: template.architecture,
+          },
     ...(template?.name ? { templateName: template.name } : {}),
   });
 

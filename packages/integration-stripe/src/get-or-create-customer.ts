@@ -38,14 +38,16 @@ import { stripe } from "./client";
  * client altogether.
  */
 export class StripeAccountMismatchError extends Error {
-  constructor(
-    readonly moduleAccountId: string,
-    readonly clientAccountId: string,
-  ) {
+  readonly moduleAccountId: string;
+  readonly clientAccountId: string;
+
+  constructor(moduleAccountId: string, clientAccountId: string) {
     super(
       `Stripe customer ids are minted on account ${moduleAccountId} (STRIPE_SECRET_KEY) but this caller's client speaks to account ${clientAccountId} (integration_secrets). Every stored customer id is meaningless on that account. Point both at the same Stripe account.`,
     );
     this.name = "StripeAccountMismatchError";
+    this.moduleAccountId = moduleAccountId;
+    this.clientAccountId = clientAccountId;
   }
 }
 

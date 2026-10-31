@@ -42,7 +42,7 @@ export async function cloneGuestStep({
   const { node, cluster } = getProxmoxInstance(proxmoxNode);
 
   const nextId = await cluster.nextid.$get({
-    vmid: newid,
+    ...(newid === undefined ? {} : { vmid: newid }),
   });
 
   const defaultName =

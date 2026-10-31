@@ -47,7 +47,7 @@ export default async function ServerExtended({
   name: string;
   serverName: string;
   newTerminatesAt: Date;
-  locale?: string | null;
+  locale?: string | null | undefined;
 }) {
   const resolvedLocale = resolveEmailLocale(locale);
 

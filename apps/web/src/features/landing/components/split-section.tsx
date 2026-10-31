@@ -46,7 +46,7 @@ export function SplitSection({
   children,
 }: {
   /** Put the aside on the left. Alternate it down a page with several splits. */
-  reverse?: boolean;
+  reverse?: boolean | undefined;
   children?: ReactNode;
 }) {
   return (

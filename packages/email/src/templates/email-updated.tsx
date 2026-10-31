@@ -44,7 +44,7 @@ export default async function EmailUpdated({
 }: {
   oldEmail: string;
   newEmail: string;
-  locale?: string | null;
+  locale?: string | null | undefined;
 }) {
   const resolvedLocale = resolveEmailLocale(locale);
 

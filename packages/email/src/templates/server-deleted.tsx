@@ -49,7 +49,7 @@ export default async function ServerDeleted({
   email: string;
   name: string;
   serverName: string;
-  locale?: string | null;
+  locale?: string | null | undefined;
 }) {
   const resolvedLocale = resolveEmailLocale(locale);
 

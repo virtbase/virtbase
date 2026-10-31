@@ -42,7 +42,7 @@ export function FirewallActionState({
           [policy]: value,
         })
       }
-      value={options[policy]}
+      {...(options[policy] === undefined ? {} : { value: options[policy] })}
       triggerProps={{
         size: "sm",
       }}

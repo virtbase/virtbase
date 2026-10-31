@@ -47,6 +47,7 @@ import { useAction } from "next-safe-action/hooks";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
 import { updateSnippetAction } from "../../api/cloud-init-snippets/mutate-snippet";
+import { definedSnippetTargets } from "../../lib/cloud-init-snippets/targets";
 import { SettingsCard } from "../proxmox-templates/cards/settings-card";
 
 // CodeMirror is ~200 KB gzipped and is wanted on exactly this route, so it is
@@ -115,7 +116,9 @@ export function SnippetSettings({ snippet, templates }: SnippetSettingsProps) {
     () =>
       new Set(
         templates
-          .filter((template) => matchesTargets(draft.targets, template))
+          .filter((template) =>
+            matchesTargets(definedSnippetTargets(draft.targets), template),
+          )
           .map((template) => template.id),
       ),
     [draft.targets, templates],

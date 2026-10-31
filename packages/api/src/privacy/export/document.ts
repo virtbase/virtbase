@@ -84,7 +84,7 @@ export interface BuildExportDocumentInput {
    * an English record of their own account by forgetting to pass it. Override
    * it only when someone else is the reader, as the admin console does.
    */
-  locale?: string | null;
+  locale?: string | null | undefined;
 }
 
 /**

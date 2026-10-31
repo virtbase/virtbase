@@ -39,7 +39,7 @@ type StoreServerExtensionStepParams = {
    * pressing the button, an operator, the dev scripts - and because every
    * server sold before subscriptions existed has no subscription at all.
    */
-  orderId?: string | null;
+  orderId?: string | null | undefined;
 };
 
 /**

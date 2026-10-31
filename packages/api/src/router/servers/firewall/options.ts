@@ -87,8 +87,12 @@ export const serverFirewallOptionsRouter = {
       const { instance } = ctx;
 
       await instance.vm.firewall.options.$put({
-        policy_in: input.policy_in,
-        policy_out: input.policy_out,
+        ...(input.policy_in === undefined
+          ? {}
+          : { policy_in: input.policy_in }),
+        ...(input.policy_out === undefined
+          ? {}
+          : { policy_out: input.policy_out }),
       });
     }),
 } satisfies TRPCRouterRecord;

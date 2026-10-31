@@ -29,9 +29,13 @@ export const sendViaNodeMailer = async ({
   react,
   bcc,
   trustpilotAfs = false,
-}: Pick<CreateEmailOptions, "subject" | "text" | "react" | "bcc"> & {
+}: {
   to: string;
-  trustpilotAfs?: boolean;
+  subject?: CreateEmailOptions["subject"] | undefined;
+  text?: CreateEmailOptions["text"] | undefined;
+  react?: CreateEmailOptions["react"] | undefined;
+  bcc?: CreateEmailOptions["bcc"] | undefined;
+  trustpilotAfs?: boolean | undefined;
 }) => {
   if (
     !process.env.SMTP_HOST ||

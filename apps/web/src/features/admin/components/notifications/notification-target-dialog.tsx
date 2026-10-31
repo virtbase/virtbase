@@ -99,8 +99,11 @@ export function NotificationTargetDialog({
   const channel = channels.find((candidate) => candidate.id === channelId);
   const secretKeys = new Set(channel?.secretKeys ?? []);
 
-  const onError = ({ error }: { error: { serverError?: string } }) =>
-    toast.error(error.serverError ?? t("Something went wrong."));
+  const onError = ({
+    error,
+  }: {
+    error: { serverError?: string | undefined };
+  }) => toast.error(error.serverError ?? t("Something went wrong."));
 
   // No success toast: the dialog closes and the row appears or changes, which
   // says it better than a message that has to be read.

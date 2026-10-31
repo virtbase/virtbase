@@ -60,7 +60,11 @@ export function NodeGroupSelect({
   );
 
   return (
-    <Popover open={isOpen} onOpenChange={setIsOpen} modal={modal}>
+    <Popover
+      open={isOpen}
+      onOpenChange={setIsOpen}
+      {...(modal === undefined ? {} : { modal })}
+    >
       <PopoverTrigger asChild>
         <Button
           variant="outline"

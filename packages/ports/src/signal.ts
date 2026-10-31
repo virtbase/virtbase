@@ -106,12 +106,18 @@ export interface InboundSignal {
    * Same trust level as `servers.detected_os_name`: sanitised on the way in,
    * and escaped again at every sink that interprets markup.
    */
-  body?: string;
+  body?: string | undefined;
   /** Low-cardinality routing labels only - `alertname`, `job`. Never PII. */
-  labels?: Record<string, string>;
+  labels?: Record<string, string> | undefined;
   /** 0-100 where the source expresses one. AbuseIPDB does. */
-  confidence?: number;
-  reporter?: { name?: string; email?: string; organization?: string };
+  confidence?: number | undefined;
+  reporter?:
+    | {
+        name?: string | undefined;
+        email?: string | undefined;
+        organization?: string | undefined;
+      }
+    | undefined;
   /**
    * When the reported thing happened - not when we heard about it.
    *

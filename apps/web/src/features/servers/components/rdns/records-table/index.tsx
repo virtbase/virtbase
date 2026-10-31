@@ -47,7 +47,7 @@ export function RecordsTable({
   data,
   isPending,
 }: {
-  data?: GetPointerRecordsListOutput;
+  data?: GetPointerRecordsListOutput | undefined;
   isPending: boolean;
 }) {
   const { records, meta } = data || {

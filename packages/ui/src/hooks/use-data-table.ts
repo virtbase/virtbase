@@ -133,7 +133,7 @@ export function useDataTable<TData extends RowData>(
       throttleMs,
       debounceMs,
       clearOnDefault,
-      startTransition,
+      ...(startTransition === undefined ? {} : { startTransition }),
     }),
     [
       history,
@@ -303,7 +303,7 @@ export function useDataTable<TData extends RowData>(
     ...tableProps,
     features: dataTableFeatures,
     columns,
-    initialState,
+    ...(initialState === undefined ? {} : { initialState }),
     pageCount,
     state: {
       pagination,

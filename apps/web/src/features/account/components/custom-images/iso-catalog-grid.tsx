@@ -164,7 +164,7 @@ function IsoCatalogCard({
 }: {
   entry: IsoCatalogEntry;
   selected: boolean;
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   onSelect: () => void;
 }) {
   const t = useExtracted();

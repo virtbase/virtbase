@@ -93,7 +93,7 @@ export async function generateMetadata({
       slug: page.url,
       theme: "dark",
     }),
-    keywords,
+    ...(keywords === undefined ? {} : { keywords }),
   });
 }
 

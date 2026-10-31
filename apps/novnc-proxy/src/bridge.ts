@@ -156,7 +156,7 @@ type State =
 
 export interface BridgeOptions {
   /** Dialled instead of `wss://<host>`. Tests point it at a local node. */
-  upstreamBaseUrl?: string;
+  upstreamBaseUrl?: string | undefined;
   /** How long the node gets for TCP, TLS and the websocket handshake. */
   handshakeMs: number;
   /** How long a node that has fallen behind gets to catch up before its close. */

@@ -263,8 +263,12 @@ const sendFirstFailure = async (
       currency: notice.currency,
       failureCode: notice.failureCode,
       nextAttemptAt,
-      cardBrand: notice.card?.brand,
-      cardLast4: notice.card?.last4,
+      ...(notice.card?.brand === undefined
+        ? {}
+        : { cardBrand: notice.card.brand }),
+      ...(notice.card?.last4 === undefined
+        ? {}
+        : { cardLast4: notice.card.last4 }),
     }),
   });
 };
@@ -292,8 +296,12 @@ const sendFinalWarning = async (
       // attempt, and saying there is would make the mail ignorable.
       lastAttemptAt: notice.nextAttemptAt,
       suspendsAt,
-      cardBrand: notice.card?.brand,
-      cardLast4: notice.card?.last4,
+      ...(notice.card?.brand === undefined
+        ? {}
+        : { cardBrand: notice.card.brand }),
+      ...(notice.card?.last4 === undefined
+        ? {}
+        : { cardLast4: notice.card.last4 }),
     }),
   });
 };
@@ -310,8 +318,12 @@ const sendCredentialNotice = async (
       name: recipient.name,
       locale: recipient.locale,
       reasonCode: notice.failureCode,
-      cardBrand: notice.card?.brand,
-      cardLast4: notice.card?.last4,
+      ...(notice.card?.brand === undefined
+        ? {}
+        : { cardBrand: notice.card.brand }),
+      ...(notice.card?.last4 === undefined
+        ? {}
+        : { cardLast4: notice.card.last4 }),
     }),
   });
 };

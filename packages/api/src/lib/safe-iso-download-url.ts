@@ -59,7 +59,7 @@ export type AssertSafeIsoDownloadUrlOptions = {
    * Redirect hops often lose the suffix (CDN signed URLs), so those skip it.
    */
   requireIsoSuffix?: boolean;
-  lookup?: DnsLookup;
+  lookup?: DnsLookup | undefined;
 };
 
 /**

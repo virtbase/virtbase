@@ -64,7 +64,13 @@ export const useUpdateFirewallRule = ({
               ? undefined
               : {
                   rules: old.rules.map((rule) =>
-                    rule.pos === input.pos ? { ...rule, ...input } : rule,
+                    rule.pos === input.pos
+                      ? {
+                          ...rule,
+                          ...input,
+                          action: input.action ?? rule.action,
+                        }
+                      : rule,
                   ),
                 },
         );

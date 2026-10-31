@@ -24,7 +24,7 @@ import { assertOrderTransition, canTransitionOrder } from "../lib/order-status";
 export interface TransitionOptions {
   /** `system`, `provider:stripe`, `admin:<user id>`. */
   actor?: string;
-  reason?: string;
+  reason?: string | undefined;
   /**
    * Treat a transition that is not currently legal as a no-op rather than an
    * error.

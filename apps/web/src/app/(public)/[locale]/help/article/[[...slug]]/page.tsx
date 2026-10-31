@@ -172,10 +172,11 @@ export default async function HelpArticlePage({
                 ...defaultMdxComponents,
                 Steps,
                 Step,
-                img: ({ src, ...props }) => (
+                img: ({ src, sizes, ...props }) => (
                   <ImageZoom
                     className="rounded-lg border border-border"
                     src={src as string}
+                    {...(sizes === undefined ? {} : { sizes })}
                     {...props}
                   />
                 ),

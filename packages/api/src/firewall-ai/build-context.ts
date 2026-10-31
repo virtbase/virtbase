@@ -22,11 +22,11 @@ export interface ContextRule {
   enabled: boolean;
   direction?: string;
   action: string;
-  proto?: string;
-  dport?: string;
-  sport?: string;
-  source?: string;
-  comment?: string;
+  proto?: string | undefined;
+  dport?: string | undefined;
+  sport?: string | undefined;
+  source?: string | undefined;
+  comment?: string | undefined;
 }
 
 export interface BuildContextInput {

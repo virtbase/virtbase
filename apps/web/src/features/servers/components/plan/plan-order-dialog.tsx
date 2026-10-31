@@ -169,7 +169,7 @@ export function PlanOrderDialog({
       // The payment step is the tall one. Letting the body take the height
       // that is left and scroll inside it is what keeps the footer - and with
       // it "Pay now" - pinned on a phone, where the dialog is a drawer.
-      containerClassName={isPaymentStep ? "min-h-0 flex-1" : undefined}
+      {...(isPaymentStep ? { containerClassName: "min-h-0 flex-1" } : {})}
       description={
         isPaymentStep
           ? t("Pay for the order you just placed.")

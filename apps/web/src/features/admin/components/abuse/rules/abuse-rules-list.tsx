@@ -112,8 +112,11 @@ function RuleItem({
   const format = useFormatter();
   const [editing, setEditing] = useState(false);
 
-  const onError = ({ error }: { error: { serverError?: string } }) =>
-    toast.error(error.serverError ?? t("Something went wrong."));
+  const onError = ({
+    error,
+  }: {
+    error: { serverError?: string | undefined };
+  }) => toast.error(error.serverError ?? t("Something went wrong."));
 
   // No success toast on either: the switch moves and the row disappears.
   const toggle = useAction(setAbuseRuleEnabledAction, { onError });

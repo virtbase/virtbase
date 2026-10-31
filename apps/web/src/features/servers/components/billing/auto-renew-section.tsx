@@ -52,7 +52,7 @@ interface AutoRenewSectionProps {
   onSetAutoRenew: (enabled: boolean) => void;
   isPending: boolean;
   /** Whatever the server refused with, verbatim. */
-  errorMessage?: string | null;
+  errorMessage?: string | null | undefined;
 }
 
 /**

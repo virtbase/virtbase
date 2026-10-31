@@ -235,7 +235,9 @@ export default function CreateBackupDialog(
                 <Switch
                   id={field.name}
                   name={field.name}
-                  checked={field.value}
+                  {...(field.value === undefined
+                    ? {}
+                    : { checked: field.value })}
                   onCheckedChange={field.onChange}
                   aria-invalid={fieldState.invalid}
                 />

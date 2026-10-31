@@ -38,10 +38,13 @@ import type { MetricsRuntime } from "./runtime";
  * scrapes them, so there is nothing buffered for a caller to push.
  */
 export class PrometheusMetricsSink implements MetricsSink {
-  constructor(
-    private readonly runtime: MetricsRuntime,
-    private readonly logger: IntegrationLogger,
-  ) {}
+  private readonly runtime: MetricsRuntime;
+  private readonly logger: IntegrationLogger;
+
+  constructor(runtime: MetricsRuntime, logger: IntegrationLogger) {
+    this.runtime = runtime;
+    this.logger = logger;
+  }
 
   increment(sample: MetricSample, by = 1): void {
     this.record("increment", sample, by, (name, labelNames) => {

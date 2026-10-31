@@ -68,7 +68,7 @@ const daysInUtcMonth = (year: number, month: number): number =>
  */
 export const billingAnchorDay = (period: {
   currentPeriodStart: Date;
-  currentPeriodEnd?: Date | null;
+  currentPeriodEnd?: Date | null | undefined;
 }): number =>
   Math.max(
     period.currentPeriodStart.getUTCDate(),

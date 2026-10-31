@@ -46,7 +46,7 @@ export default async function AccountDeletionScheduled({
   email: string;
   name: string;
   scheduledAt: Date;
-  locale?: string | null;
+  locale?: string | null | undefined;
 }) {
   const resolvedLocale = resolveEmailLocale(locale);
   const t = createTranslator({

@@ -26,7 +26,7 @@ export interface CachedOptions {
    * Ignore any stored value and recompute. The fresh value is still written
    * back, so an explicit "Check now" also refreshes what everyone else sees.
    */
-  refresh?: boolean;
+  refresh?: boolean | undefined;
 }
 
 /**

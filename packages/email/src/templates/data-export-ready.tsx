@@ -62,7 +62,7 @@ export default async function DataExportReady({
   name: string;
   exportId: string;
   byteSize: number;
-  locale?: string | null;
+  locale?: string | null | undefined;
 }) {
   const resolvedLocale = resolveEmailLocale(locale);
 

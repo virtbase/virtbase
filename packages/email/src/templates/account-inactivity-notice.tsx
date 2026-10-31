@@ -58,7 +58,7 @@ export default async function InactivityEmail({
   email: string;
   name: string;
   scheduledAt: Date;
-  locale?: string | null;
+  locale?: string | null | undefined;
 }) {
   const resolvedLocale = resolveEmailLocale(locale);
   const t = createTranslator({

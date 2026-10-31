@@ -395,9 +395,10 @@ export class StripePaymentProvider implements PaymentProvider {
    * browser by Elements, which is handed the return URL client-side; the port
    * carries it for providers that redirect instead.
    */
-  async createSetupSession(
-    input: CreateSetupSessionInput,
-  ): Promise<{ clientSecret?: string; redirectUrl?: string }> {
+  async createSetupSession(input: CreateSetupSessionInput): Promise<{
+    clientSecret?: string | undefined;
+    redirectUrl?: string | undefined;
+  }> {
     // Same account for the customer as for the credential saved against it.
     const customer = await getOrCreateStripeCustomer(input.userId, this.client);
 

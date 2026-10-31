@@ -45,7 +45,7 @@ interface MandateDialogProps
   onAccept: (version: string) => void;
   isPending: boolean;
   /** A refusal from the server, shown where the wording is. */
-  errorMessage?: string | null;
+  errorMessage?: string | null | undefined;
 }
 
 /**
@@ -168,7 +168,7 @@ export function MandateDialog({
           </Button>
         </>
       }
-      open={open}
+      {...(open === undefined ? {} : { open })}
       {...props}
     >
       <div className="flex flex-col gap-4 text-sm" data-testid="mandate-text">

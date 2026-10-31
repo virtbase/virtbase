@@ -71,8 +71,11 @@ export function IntegrationSettingsForm({
     toFormValues(descriptor.secretFields.map((field) => field.key)),
   );
 
-  const onError = ({ error }: { error: { serverError?: string } }) =>
-    toast.error(error.serverError ?? t("Something went wrong."));
+  const onError = ({
+    error,
+  }: {
+    error: { serverError?: string | undefined };
+  }) => toast.error(error.serverError ?? t("Something went wrong."));
 
   const saveSettings = useAction(saveIntegrationSettingsAction, {
     onError,

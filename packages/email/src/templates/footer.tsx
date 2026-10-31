@@ -56,7 +56,7 @@ export function Footer({
    * email, which reads as a phishing tell.
    */
   showReview?: boolean;
-  locale?: string | null;
+  locale?: string | null | undefined;
 }) {
   const resolvedLocale = resolveEmailLocale(locale);
 

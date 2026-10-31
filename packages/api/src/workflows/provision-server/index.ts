@@ -61,7 +61,7 @@ type ProvisionServerWorkflowParams = {
   userId: string;
   proxmoxTemplateId?: string | null;
   initialRootPassword?: string | null;
-  initialSSHKeyId?: string | null;
+  initialSSHKeyId?: string | null | undefined;
 };
 
 export async function provisionServerWorkflow({

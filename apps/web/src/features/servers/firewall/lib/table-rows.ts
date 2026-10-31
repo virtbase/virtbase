@@ -116,8 +116,8 @@ export const buildFirewallTableRows = ({
   hostRules = [],
   guestRules = [],
 }: {
-  hostRules?: HostRule[];
-  guestRules?: GuestRule[];
+  hostRules?: HostRule[] | undefined;
+  guestRules?: GuestRule[] | undefined;
 }): FirewallTableRow[] => [
   ...hostRules.map(toHostRow),
   ...guestRules.map(toGuestRow),

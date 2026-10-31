@@ -213,9 +213,13 @@ export default function ServerGraphs({
                   tickFormatter={(value: number) => {
                     const date = new Date(value * 1000);
                     return format.dateTime(date, {
-                      year: activeTimeframe === "year" ? "numeric" : undefined,
-                      month: activeTimeframe !== "hour" ? "2-digit" : undefined,
-                      day: activeTimeframe !== "hour" ? "2-digit" : undefined,
+                      ...(activeTimeframe === "year"
+                        ? { year: "numeric" }
+                        : {}),
+                      ...(activeTimeframe !== "hour"
+                        ? { month: "2-digit" }
+                        : {}),
+                      ...(activeTimeframe !== "hour" ? { day: "2-digit" } : {}),
                       hour: "2-digit",
                       minute: "2-digit",
                       timeZone:
@@ -290,7 +294,7 @@ export default function ServerGraphs({
                         </defs>
                         <Area
                           dataKey={key}
-                          stroke={color}
+                          {...(color === undefined ? {} : { stroke: color })}
                           fill={`url(#fill-${key})`}
                           type="monotone"
                           stackId={key}

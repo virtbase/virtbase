@@ -87,12 +87,16 @@ const resendEmailForOptions = async (
     to: isProdEnv ? to : "delivered@resend.dev",
     from: from || VARIANT_TO_FROM_MAP[variant],
     subject: `${!isProdEnv && gitBranch ? `[${gitBranch}] ` : ""}${subject}`,
-    bcc: trustpilotAfs ? [...(bcc || []), TRUSTPILOT_AFS_EMAIL] : bcc,
+    ...(trustpilotAfs
+      ? { bcc: [...(bcc || []), TRUSTPILOT_AFS_EMAIL] }
+      : bcc === undefined
+        ? {}
+        : { bcc }),
     // if replyTo is set to "noreply", don't set replyTo
     // else set it to the value of replyTo or fallback to SUPPORT_EMAIL
     ...(replyTo === "noreply" ? {} : { replyTo: replyTo || SUPPORT_EMAIL }),
-    scheduledAt,
-    tags,
+    ...(scheduledAt === undefined ? {} : { scheduledAt }),
+    ...(tags === undefined ? {} : { tags }),
     ...(variant === "marketing"
       ? {
           headers: {

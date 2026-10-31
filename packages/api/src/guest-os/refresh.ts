@@ -61,7 +61,7 @@ export interface IsDetectionStaleParams {
   /** Whether the server is running. A stopped guest cannot be asked. */
   running: boolean;
   /** The guest's uptime in seconds, as Proxmox reports it. */
-  uptime?: number | null;
+  uptime?: number | null | undefined;
   now?: Date;
 }
 

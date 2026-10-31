@@ -47,7 +47,7 @@ export default async function InvoiceCreated({
 }: {
   name: string;
   email: string;
-  locale?: string | null;
+  locale?: string | null | undefined;
   voucherNumber: string;
   totalAmountCents: number;
   taxAmountCents: number;

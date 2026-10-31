@@ -74,7 +74,7 @@ export async function generateMetadata(): Promise<Metadata> {
       slug: `/${locale}`,
       theme: "dark",
     }),
-    keywords,
+    ...(keywords === undefined ? {} : { keywords }),
   });
 }
 

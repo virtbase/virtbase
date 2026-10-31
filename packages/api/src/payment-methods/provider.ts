@@ -56,12 +56,17 @@ type OptionalCapability =
  * provider failure - a Stripe outage mid-detach - surface as itself.
  */
 export class PaymentCapabilityUnavailableError extends Error {
+  readonly providerId: string;
+  readonly capability: OptionalCapability;
+
   constructor(
-    readonly providerId: string,
-    readonly capability: OptionalCapability,
+    providerId: string,
+    capability: OptionalCapability,
     message: string,
   ) {
     super(message);
+    this.providerId = providerId;
+    this.capability = capability;
     this.name = "PaymentCapabilityUnavailableError";
   }
 }

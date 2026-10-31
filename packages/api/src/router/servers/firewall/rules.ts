@@ -148,7 +148,7 @@ export const serverFirewallRulesRouter = {
       const { instance } = ctx;
 
       await instance.vm.firewall.rules.$(input.pos).$delete({
-        digest: input.digest,
+        ...(input.digest === undefined ? {} : { digest: input.digest }),
       });
     }),
   update: serverProcedure
@@ -186,13 +186,21 @@ export const serverFirewallRulesRouter = {
         ...rest,
       }).filter(([_, value]) => value === undefined);
 
+      const { proto, dport, sport, comment, action, source, ...fields } = rest;
+
       await instance.vm.firewall.rules.$(pos).$put({
-        ...rest,
+        ...fields,
+        ...(proto === undefined ? {} : { proto }),
+        ...(dport === undefined ? {} : { dport }),
+        ...(sport === undefined ? {} : { sport }),
+        ...(comment === undefined ? {} : { comment }),
+        ...(action === undefined ? {} : { action }),
+        ...(source === undefined ? {} : { source }),
         enable: enabled ? 1 : 0,
         ...(icmp_type && { "icmp-type": icmp_type }),
         ...(direction && { type: direction }),
         log: "nolog",
-        digest,
+        ...(digest === undefined ? {} : { digest }),
         delete: undefinedFields.map(([key]) => key).join(","),
       });
     }),
@@ -220,7 +228,7 @@ export const serverFirewallRulesRouter = {
 
       await instance.vm.firewall.rules.$(pos).$put({
         moveto: pos > moveto ? moveto : moveto + 1,
-        digest,
+        ...(digest === undefined ? {} : { digest }),
       });
     }),
   generate: serverProcedure

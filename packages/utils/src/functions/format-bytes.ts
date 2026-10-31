@@ -37,11 +37,13 @@ function baseFormat<T extends readonly string[]>(units: T) {
           ),
         );
 
+    const unitName = perSecond
+      ? `${unit || units[unitIndex]}-per-second`
+      : units[unitIndex];
+
     return formatter.number(value / base ** unitIndex, {
       style: "unit",
-      unit: perSecond
-        ? `${unit || units[unitIndex]}-per-second`
-        : units[unitIndex],
+      ...(unitName === undefined ? {} : { unit: unitName }),
       unitDisplay: "narrow",
       notation: "compact",
     });

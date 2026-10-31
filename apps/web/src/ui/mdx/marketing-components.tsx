@@ -71,10 +71,11 @@ export const marketingMdxComponents = {
   ...defaultMdxComponents,
   Steps,
   Step,
-  img: ({ src, ...props }: ComponentProps<"img">) => (
+  img: ({ src, sizes, ...props }: ComponentProps<"img">) => (
     <ImageZoom
       className="rounded-lg border border-border"
       src={src as string}
+      {...(sizes === undefined ? {} : { sizes })}
       {...props}
     />
   ),

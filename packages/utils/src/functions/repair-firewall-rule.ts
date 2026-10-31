@@ -18,11 +18,11 @@
 import { FIRWALL_PROTOCOLS_WITH_PORTS } from "../constants/firewall";
 
 export interface RepairableFirewallRule {
-  proto?: string | null;
-  sport?: string | null;
-  dport?: string | null;
-  icmp_type?: string | null;
-  source?: string | null;
+  proto?: string | null | undefined;
+  sport?: string | null | undefined;
+  dport?: string | null | undefined;
+  icmp_type?: string | null | undefined;
+  source?: string | null | undefined;
   [key: string]: unknown;
 }
 

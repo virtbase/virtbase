@@ -60,10 +60,13 @@ export class Stage {
    * @param now - Seconds since the first captured frame. Injected rather than
    *   measured here, so a cut is expressed on the same clock as the beats.
    */
-  constructor(
-    readonly page: Page,
-    private readonly now: () => number = () => 0,
-  ) {}
+  readonly page: Page;
+  private readonly now: () => number;
+
+  constructor(page: Page, now: () => number = () => 0) {
+    this.page = page;
+    this.now = now;
+  }
 
   locate(target: Target): Locator {
     return typeof target === "string" ? this.page.locator(target) : target;
@@ -449,7 +452,9 @@ export async function recordEpisode(episode: Episode): Promise<Take> {
     ...(episode.mobile ? { isMobile: true, hasTouch: true } : {}),
     locale: "de-DE",
     timezoneId: "Europe/Berlin",
-    storageState: episode.storageState,
+    ...(episode.storageState === undefined
+      ? {}
+      : { storageState: episode.storageState }),
     reducedMotion: "no-preference",
   });
 

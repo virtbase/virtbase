@@ -281,12 +281,22 @@ export async function changeTempalateWorkflow({
         // template's vendor data, and the guest is now running a different OS.
         // Step 7b re-renders it.
         ...{
-          ciuser: previousConfig.ciuser,
+          ...(previousConfig.ciuser === undefined
+            ? {}
+            : { ciuser: previousConfig.ciuser }),
           cipassword: initialRootPassword,
-          ciupgrade: previousConfig.ciupgrade,
-          net0: previousConfig.net0,
-          net1: previousConfig.net1,
-          boot: previousConfig.boot,
+          ...(previousConfig.ciupgrade === undefined
+            ? {}
+            : { ciupgrade: previousConfig.ciupgrade }),
+          ...(previousConfig.net0 === undefined
+            ? {}
+            : { net0: previousConfig.net0 }),
+          ...(previousConfig.net1 === undefined
+            ? {}
+            : { net1: previousConfig.net1 }),
+          ...(previousConfig.boot === undefined
+            ? {}
+            : { boot: previousConfig.boot }),
         },
         // Delete the unused disk from the original guest
         delete: "unused0",

@@ -73,7 +73,9 @@ export async function sendServerReadyEmailStep({
         name: user.name,
         locale: user.locale,
         serverId,
-        rootPassword: initialRootPassword,
+        ...(initialRootPassword === undefined
+          ? {}
+          : { rootPassword: initialRootPassword }),
         rootUsername: "root",
         trustpilot: {
           recipientName: user.name,

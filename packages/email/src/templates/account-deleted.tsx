@@ -57,7 +57,7 @@ export default async function AccountDeleted({
   email: string;
   name: string;
   reason?: "inactivity" | "user_request" | "admin_request";
-  locale?: string | null;
+  locale?: string | null | undefined;
 }) {
   const resolvedLocale = resolveEmailLocale(locale);
 

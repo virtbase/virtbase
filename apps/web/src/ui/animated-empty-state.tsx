@@ -100,7 +100,7 @@ export function AnimatedEmptyState({
 function Card({
   children,
   className,
-}: PropsWithChildren<{ className?: string }>) {
+}: PropsWithChildren<{ className?: string | undefined }>) {
   return (
     <div
       className={cn(

@@ -29,6 +29,7 @@ import {
 } from "@virtbase/validators/admin";
 import { revalidatePath, revalidateTag } from "next/cache";
 import { actionClient } from "../../lib/action-client";
+import { definedSnippetTargets } from "../../lib/cloud-init-snippets/targets";
 
 /**
  * Parses the body exactly as the renderer will.
@@ -67,7 +68,10 @@ export const createSnippetAction = actionClient
       // which is where the body is actually written.
       const [row] = await db
         .insert(cloudInitSnippets)
-        .values(parsedInput)
+        .values({
+          ...parsedInput,
+          targets: definedSnippetTargets(parsedInput.targets),
+        })
         .returning({ id: cloudInitSnippets.id });
 
       if (!row) throw new Error("insert returned no row");
@@ -94,7 +98,7 @@ export const updateSnippetAction = actionClient
     try {
       await db
         .update(cloudInitSnippets)
-        .set(values)
+        .set({ ...values, targets: definedSnippetTargets(values.targets) })
         .where(eq(cloudInitSnippets.id, id));
     } catch {
       throw new TRPCError({

@@ -60,7 +60,7 @@ const serverId = (n: number) =>
 
 const addServer = async (
   n: number,
-  values: Partial<typeof servers.$inferInsert> = {},
+  values: Partial<Omit<typeof servers.$inferInsert, "id">> = {},
 ) => {
   const row = {
     ...mockServer,

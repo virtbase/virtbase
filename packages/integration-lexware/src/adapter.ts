@@ -88,7 +88,9 @@ export class LexwareInvoiceProvider implements InvoiceProvider {
       language: country === "DE" ? "de" : "en",
       lineItems: lineItems.map((item) => ({
         name: item.name,
-        description: item.description,
+        ...(item.description === undefined
+          ? {}
+          : { description: item.description }),
         quantity: item.quantity,
         type: "custom",
         unitPrice: {

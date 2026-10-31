@@ -50,8 +50,8 @@ export interface CreatePaymentResult {
    * Set when the provider needs the browser to finish the flow — a hosted
    * checkout URL (Anonpay) or a client secret for an embedded form (Stripe).
    */
-  redirectUrl?: string;
-  clientSecret?: string;
+  redirectUrl?: string | undefined;
+  clientSecret?: string | undefined;
 }
 
 export interface Payment {
@@ -114,11 +114,15 @@ export interface PaymentEvent {
 export type OffSessionResult =
   | { status: "succeeded"; externalId: string }
   | { status: "processing"; externalId: string }
-  | { status: "requires_action"; externalId: string; clientSecret?: string }
+  | {
+      status: "requires_action";
+      externalId: string;
+      clientSecret?: string | undefined;
+    }
   | {
       status: "failed";
       /** Absent when the provider rejected the charge before creating one. */
-      externalId?: string;
+      externalId?: string | undefined;
       /**
        * The provider's own decline code, unmapped. Dunning decisions are made
        * from `retryable`; this is kept raw so an operator can look up what the
@@ -205,9 +209,10 @@ export interface PaymentProvider {
    * is what gets the customer through the authentication while they are there
    * to do it.
    */
-  createSetupSession?(
-    input: CreateSetupSessionInput,
-  ): Promise<{ clientSecret?: string; redirectUrl?: string }>;
+  createSetupSession?(input: CreateSetupSessionInput): Promise<{
+    clientSecret?: string | undefined;
+    redirectUrl?: string | undefined;
+  }>;
 
   /**
    * Detaches a stored credential at the provider.

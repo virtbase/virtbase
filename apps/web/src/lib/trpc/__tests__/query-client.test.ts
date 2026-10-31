@@ -46,7 +46,7 @@ async function failMutation({
     mutationFn: async () => {
       throw error;
     },
-    meta,
+    ...(meta === undefined ? {} : { meta }),
   });
 
   await expect(mutation.execute(undefined)).rejects.toThrow();

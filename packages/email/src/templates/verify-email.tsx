@@ -43,7 +43,7 @@ export default async function VerifyEmail({
 }: {
   email: string;
   code: string;
-  locale?: string | null;
+  locale?: string | null | undefined;
 }) {
   const resolvedLocale = resolveEmailLocale(locale);
 

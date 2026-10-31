@@ -24,7 +24,7 @@ export const getNetworkAdapterConfig = ({
   vlan: number;
   bridge: string;
   macaddress: string;
-  netrate?: number | null;
+  netrate?: number | null | undefined;
 }) => {
   let config = `model=virtio,bridge=${bridge},firewall=1,macaddr=${macaddress}`;
   if (vlan > 0) {

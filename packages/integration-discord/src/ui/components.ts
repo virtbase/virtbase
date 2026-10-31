@@ -171,8 +171,8 @@ export const select = ({
   options: {
     label: string;
     value: string;
-    description?: string;
-    emoji?: ComponentEmoji;
+    description?: string | undefined;
+    emoji?: ComponentEmoji | undefined;
   }[];
 }): APIStringSelectComponent => ({
   type: ComponentType.StringSelect,

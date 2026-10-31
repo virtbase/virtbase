@@ -22,7 +22,7 @@ export const changeAdapterNetrate = ({
   /**
    * The current network config of Proxmox.
    */
-  net?: string;
+  net?: string | undefined;
   /**
    * The new network rate in MB/s.
    */
