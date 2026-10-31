@@ -61,7 +61,7 @@ const findClientIntegrationImports = async () => {
 };
 
 describe("client modules", () => {
-  test("import an integration package only through its /ui entry (WEB-3)", async () => {
+  test("import an integration package only through its /ui entry", async () => {
     expect(await findClientIntegrationImports()).toEqual(BEFORE_THE_GATE);
   });
 

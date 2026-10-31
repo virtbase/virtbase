@@ -20,8 +20,8 @@
  * returns one settled result per item, in the order of `items`.
  *
  * A rejection settles only its own item: the remaining items still run. Use it
- * for every fan-out over I/O (CMP-7 in `docs/style/composition.md`), so that one
- * unreachable host cannot stop a whole batch.
+ * for every fan-out over I/O, so that one unreachable host cannot stop a whole
+ * batch.
  *
  * @throws {RangeError} when `concurrency` is not a positive integer.
  */
