@@ -189,7 +189,11 @@ updates:
         patterns:
           - "@biomejs/*"
           - "@commitlint/*"
-          - dependency-cruiser
+          - "@dprint/*"
+          - dprint
+          - knip
+          - publint
+          - sherif
           - husky
           - lint-staged
           - turbo

@@ -77,6 +77,7 @@ export type CreateCloudInitSnippetInput = z.infer<
   typeof CreateCloudInitSnippetInputSchema
 >;
 
+/** @alias */
 export const UpdateCloudInitSnippetInputSchema = CloudInitSnippetSchema;
 
 export type UpdateCloudInitSnippetInput = z.infer<

@@ -32,7 +32,7 @@ import {
  * everything that ever happened. `resolved` and `rejected` are one click away
  * in the status filter - readable, just not in the way.
  */
-export const ACTIVE_CASE_STATUSES = [
+const ACTIVE_CASE_STATUSES = [
   "triage",
   "open",
   "awaiting_customer",
@@ -57,15 +57,6 @@ export const CASE_CATEGORIES = [
   "copyright",
   "compromised",
   "other",
-] as const;
-
-/** The enforcement ladder, weakest first. `terminate` is operator-only. */
-export const ENFORCEMENT_LEVELS = [
-  "none",
-  "throttle",
-  "isolate",
-  "power_off",
-  "terminate",
 ] as const;
 
 export const searchParamsCache = createSearchParamsCache({

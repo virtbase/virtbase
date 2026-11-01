@@ -58,6 +58,8 @@ interface GenericErrorProps extends React.ComponentProps<typeof Empty> {
  * (`bun test` runs `NODE_ENV=test`, which resolves `use-intl` to its
  * production build, where the hook throws instead of falling back to the
  * source string).
+ *
+ * @internal
  */
 export function resolveRetry({
   reset,

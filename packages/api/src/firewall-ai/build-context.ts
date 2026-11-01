@@ -17,7 +17,7 @@
 
 import type { ListeningSocket } from "@virtbase/utils";
 
-export interface ContextRule {
+interface ContextRule {
   pos: number;
   enabled: boolean;
   direction?: string;

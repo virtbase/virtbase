@@ -188,5 +188,3 @@ export async function getUserVerifiedCounts() {
     };
   }
 }
-
-export type GetUsersListOutput = Awaited<ReturnType<typeof getUsersList>>;

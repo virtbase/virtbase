@@ -16,19 +16,17 @@
  */
 
 import { useQuery } from "@tanstack/react-query";
-import type { RouterInputs, RouterOutputs } from "@virtbase/api";
+import type { RouterInputs } from "@virtbase/api";
 import { isInstalling, MAX_ENTRIES_PER_PAGE } from "@virtbase/utils";
 import { useTRPC } from "@/lib/trpc/react.tsx";
 
-export type ServerListInput = RouterInputs["servers"]["list"];
-
-export type ServerListOutput = RouterOutputs["servers"]["list"];
+type ServerListInput = RouterInputs["servers"]["list"];
 
 interface ServerList extends ServerListInput {
   queryConfig?: never;
 }
 
-export const defaultServerListQuery = {
+const defaultServerListQuery = {
   sort: ["id:desc"],
   per_page: MAX_ENTRIES_PER_PAGE,
   expand: ["plan", "template", "allocations"],

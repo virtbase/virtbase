@@ -18,7 +18,6 @@
 import * as Sentry from "@sentry/node";
 import { and, asc, eq, isNull, sql } from "@virtbase/db";
 import type { db as database } from "@virtbase/db/client";
-import type { AbuseCase } from "@virtbase/db/schema";
 import { abuseCaseMessages, abuseCases } from "@virtbase/db/schema";
 import { dispatchNotification } from "../../notifications/dispatch.ts";
 import { caseReference, linkCaseServer, recordCaseEvent } from "../case.ts";
@@ -357,5 +356,3 @@ export const sweepUntriagedCases = async ({
 
   return result;
 };
-
-export type { AbuseCase };

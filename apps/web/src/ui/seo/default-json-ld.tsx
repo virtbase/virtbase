@@ -30,7 +30,7 @@ import JsonLd from "./json-ld.tsx";
  * Virtbase as a brand or seller — `OffersJsonLd`, for one — points here instead.
  */
 export const ORGANIZATION_ID = `${PUBLIC_DOMAIN}/#organization`;
-export const WEBSITE_ID = `${PUBLIC_DOMAIN}/#website`;
+const WEBSITE_ID = `${PUBLIC_DOMAIN}/#website`;
 
 export function DefaultJsonLd() {
   const organization: Organization = {

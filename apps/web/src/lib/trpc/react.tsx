@@ -49,7 +49,9 @@ const getQueryClient = () => {
   }
 };
 
-export const { useTRPC, TRPCProvider } = createTRPCContext<AppRouter>();
+const { TRPCProvider, useTRPC } = createTRPCContext<AppRouter>();
+
+export { useTRPC };
 
 /**
  * Marks a query as too slow to share a batch.

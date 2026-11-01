@@ -63,7 +63,7 @@ const CAN_CLAIM_FIXED = new Set([
   "awaiting_operator",
 ]);
 
-export function AbuseCaseRow({ abuseCase }: { abuseCase: AbuseCaseSummary }) {
+function AbuseCaseRow({ abuseCase }: { abuseCase: AbuseCaseSummary }) {
   const t = useExtracted();
   const format = useFormatter();
   const now = useNow({ updateInterval: 60_000 });

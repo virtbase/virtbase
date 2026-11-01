@@ -26,6 +26,8 @@ import { buildTriageSystemPrompt } from "./system-prompt.ts";
  * `is_abuse_report` comes first on purpose. An abuse mailbox receives sales
  * mail, bounces and conference invitations, and a classifier that has no way
  * to say "this is not a report" will categorise one anyway.
+ *
+ * @internal
  */
 export const AbuseClassificationSchema = z.object({
   is_abuse_report: z.boolean(),

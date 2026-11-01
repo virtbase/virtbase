@@ -15,7 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { RenewalStatus, subscriptions } from "@virtbase/db/schema";
+import type { subscriptions } from "@virtbase/db/schema";
 import { getFiltersStateParser, getSortingStateParser } from "@virtbase/ui/lib";
 import type { SubscriptionStatus } from "@virtbase/validators";
 import {
@@ -49,22 +49,6 @@ export const SUBSCRIPTION_STATUSES = [
 ] as const satisfies readonly SubscriptionStatus[];
 
 /**
- * Every state one collection attempt can be in.
- *
- * Rendered on the detail page rather than filtered on, but declared beside the
- * subscription statuses so both vocabularies live in one file. `RenewalStatus`
- * is the database's own enum, so this list cannot drift from the column.
- */
-export const RENEWAL_STATUSES = [
-  "pending",
-  "collecting",
-  "awaiting_action",
-  "succeeded",
-  "failed",
-  "abandoned",
-] as const satisfies readonly RenewalStatus[];
-
-/**
  * The columns an operator may sort by, and the only ones.
  *
  * Passed to the parser rather than left open: the list query indexes
@@ -72,7 +56,7 @@ export const RENEWAL_STATUSES = [
  * column would reach drizzle as `undefined`. Naming the set makes a crafted
  * `?sort=` fall back to the default instead.
  */
-export const SORTABLE_SUBSCRIPTION_COLUMNS = new Set([
+const SORTABLE_SUBSCRIPTION_COLUMNS = new Set([
   "currentPeriodEnd",
   "currentPeriodStart",
   "createdAt",

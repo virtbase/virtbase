@@ -92,7 +92,3 @@ export async function getNodeGroupsList(input: GetNodeGroupsSchema) {
     return { data: [], pageCount: 0 };
   }
 }
-
-export type GetNodeGroupsListOutput = Awaited<
-  ReturnType<typeof getNodeGroupsList>
->;

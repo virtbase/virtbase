@@ -56,6 +56,8 @@ const API_KEY_DEFAULT_EXPIRY_SECONDS = 60 * 60 * 24 * 365;
  * Exported so the configuration itself can be asserted on. The plugin object
  * Better Auth hands back keeps none of this, so a test has no other way to
  * notice that the expiry below has gone missing again.
+ *
+ * @internal
  */
 export const apiKeyOptions = {
   enableMetadata: false,

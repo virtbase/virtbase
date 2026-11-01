@@ -38,7 +38,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
 import { PAYMENT_FORM_ID } from "../constants.ts";
 import { useCustomCheckout } from "../hooks/use-custom-checkout.ts";
 
-export const countries = [
+const countries = [
   "AT",
   "BE",
   "BG",

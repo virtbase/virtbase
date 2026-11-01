@@ -125,6 +125,7 @@ export const CreateSSHKeyInputSchema = z.object({
   public_key: SSHKeySchema.shape.public_key,
 });
 
+/** @alias */
 export const CreateSSHKeyOutputSchema = GetSSHKeyOutputSchema;
 
 export const UpdateSSHKeyInputSchema = z.object({
@@ -132,8 +133,10 @@ export const UpdateSSHKeyInputSchema = z.object({
   name: SSHKeySchema.shape.name,
 });
 
+/** @alias */
 export const UpdateSSHKeyOutputSchema = GetSSHKeyOutputSchema;
 
+/** @alias */
 export const DeleteSSHKeyInputSchema = GetSSHKeyInputSchema;
 
 export const DeleteSSHKeyOutputSchema = z.void();

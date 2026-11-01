@@ -41,11 +41,12 @@ const TRANSITIONS: Record<OrderStatus, readonly OrderStatus[]> = {
   refunded: [],
 } as const;
 
-export const TERMINAL_ORDER_STATUSES = [
+const TERMINAL_ORDER_STATUSES = [
   "cancelled",
   "refunded",
 ] as const satisfies readonly OrderStatus[];
 
+/** @internal */
 export const isTerminalOrderStatus = (status: OrderStatus): boolean =>
   (TERMINAL_ORDER_STATUSES as readonly OrderStatus[]).includes(status);
 
@@ -54,6 +55,7 @@ export const canTransitionOrder = (
   to: OrderStatus,
 ): boolean => TRANSITIONS[from].includes(to);
 
+/** @internal */
 export const nextOrderStatuses = (from: OrderStatus): readonly OrderStatus[] =>
   TRANSITIONS[from];
 
@@ -62,6 +64,8 @@ export const nextOrderStatuses = (from: OrderStatus): readonly OrderStatus[] =>
  *
  * Being loud here is deliberate: silently ignoring an illegal transition is how
  * an order ends up in a state nobody can explain.
+ *
+ * @internal
  */
 export class IllegalOrderTransitionError extends Error {
   readonly from: OrderStatus;

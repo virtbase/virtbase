@@ -21,7 +21,11 @@
 import type { SubjectTableName } from "../../privacy/subject-data.ts";
 import { tablesToErase } from "../../privacy/subject-data.ts";
 
-/** Marks a table `eraseSubjectDataStep` deletes itself. */
+/**
+ * Marks a table `eraseSubjectDataStep` deletes itself.
+ *
+ * @internal
+ */
 export const HERE = Symbol("erased-by-this-step");
 
 /**
@@ -45,6 +49,8 @@ export const HERE = Symbol("erased-by-this-step");
  * exports is a step, and a module it cannot stub drags its whole import graph
  * into the workflow bundle - where `@virtbase/utils`, reached from
  * `subject-data.ts`, fails the build over `node:crypto`.
+ *
+ * @internal
  */
 export const ERASURE_PLAN: Partial<
   Record<SubjectTableName, string | typeof HERE>

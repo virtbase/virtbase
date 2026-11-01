@@ -80,6 +80,8 @@ export const classifyInvalidReason = (
  * `period.ts`, `claimRenewal`, `acceptMandate`. Local months are how a customer
  * in UTC+13 opening this page at 00:30 on 1 January is refused a card that the
  * collector, thirteen hours behind them in December, would still have charged.
+ *
+ * @internal
  */
 export const hasExpired = (
   {

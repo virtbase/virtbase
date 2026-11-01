@@ -16,12 +16,10 @@
  */
 
 import { useQuery } from "@tanstack/react-query";
-import type { RouterInputs, RouterOutputs } from "@virtbase/api";
+import type { RouterInputs } from "@virtbase/api";
 import { useTRPC } from "@/lib/trpc/react.tsx";
 
-export type GetCustomImageStatusInput = RouterInputs["iso"]["status"]["get"];
-
-export type GetCustomImageStatusOutput = RouterOutputs["iso"]["status"]["get"];
+type GetCustomImageStatusInput = RouterInputs["iso"]["status"]["get"];
 
 interface GetCustomImageStatus extends GetCustomImageStatusInput {
   queryConfig?: {

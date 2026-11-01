@@ -16,14 +16,11 @@
  */
 
 import { useSuspenseQuery } from "@tanstack/react-query";
-import type { RouterInputs, RouterOutputs } from "@virtbase/api";
+import type { RouterInputs } from "@virtbase/api";
 import { useTRPC } from "@/lib/trpc/react.tsx";
 
-export type GetFirewallOptionsInput =
+type GetFirewallOptionsInput =
   RouterInputs["servers"]["firewall"]["options"]["get"];
-
-export type GetFirewallOptionsOutput =
-  RouterOutputs["servers"]["firewall"]["options"]["get"];
 
 interface GetFirewallOptions extends GetFirewallOptionsInput {
   queryConfig?: never;

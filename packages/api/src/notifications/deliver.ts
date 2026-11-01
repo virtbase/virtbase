@@ -170,6 +170,8 @@ const markSkipped = async (id: string, reason: string) => {
  * Absolute matters: Discord rejects an embed whose `url` is not a full URL,
  * with a 400 and `{"embeds": ["0"]}`, and an email link would render as a dead
  * relative href - which fails more quietly and is therefore worse.
+ *
+ * @internal
  */
 export const absoluteNotificationUrl = (
   url: string | null | undefined,

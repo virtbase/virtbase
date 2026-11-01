@@ -53,10 +53,11 @@ const TRANSITIONS: Record<SubscriptionStatus, readonly SubscriptionStatus[]> = {
   ended: [],
 } as const;
 
-export const TERMINAL_SUBSCRIPTION_STATUSES = [
+const TERMINAL_SUBSCRIPTION_STATUSES = [
   "ended",
 ] as const satisfies readonly SubscriptionStatus[];
 
+/** @internal */
 export const isTerminalSubscriptionStatus = (
   status: SubscriptionStatus,
 ): boolean =>
@@ -69,6 +70,7 @@ export const canTransitionSubscription = (
   to: SubscriptionStatus,
 ): boolean => TRANSITIONS[from].includes(to);
 
+/** @internal */
 export const nextSubscriptionStatuses = (
   from: SubscriptionStatus,
 ): readonly SubscriptionStatus[] => TRANSITIONS[from];
@@ -99,6 +101,8 @@ export const isRenewableSubscriptionStatus = (
  * Loud on purpose, as with orders: a subscription that quietly ends up in a
  * state nobody can explain is one that either bills a customer who cancelled
  * or fails to bill one who did not.
+ *
+ * @internal
  */
 export class IllegalSubscriptionTransitionError extends Error {
   readonly from: SubscriptionStatus;

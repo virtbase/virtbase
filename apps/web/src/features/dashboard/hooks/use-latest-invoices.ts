@@ -16,12 +16,10 @@
  */
 
 import { useSuspenseQuery } from "@tanstack/react-query";
-import type { RouterInputs, RouterOutputs } from "@virtbase/api";
+import type { RouterInputs } from "@virtbase/api";
 import { useTRPC } from "@/lib/trpc/react.tsx";
 
 export type GetLatestInvoicesInput = RouterInputs["invoices"]["list"];
-
-export type GetLatestInvoicesOutput = RouterOutputs["invoices"]["list"];
 
 interface GetLatestInvoices extends GetLatestInvoicesInput {
   queryConfig?: never;

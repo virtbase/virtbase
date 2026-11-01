@@ -50,7 +50,7 @@ const PASSWORD_FIELD_BY_PATH = {
 } as const satisfies Record<string, "password" | "newPassword">;
 
 /** The paths {@link assertPasswordPolicy} guards. */
-export type PasswordEndpointPath = keyof typeof PASSWORD_FIELD_BY_PATH;
+type PasswordEndpointPath = keyof typeof PASSWORD_FIELD_BY_PATH;
 
 /**
  * Length bounds handed to Better Auth so its own checks agree with ours.
@@ -63,7 +63,11 @@ export type PasswordEndpointPath = keyof typeof PASSWORD_FIELD_BY_PATH;
 export const PASSWORD_MIN_LENGTH = 8;
 export const PASSWORD_MAX_LENGTH = 64;
 
-/** What the client sees when a password fails the policy. */
+/**
+ * What the client sees when a password fails the policy.
+ *
+ * @internal
+ */
 export const PASSWORD_POLICY_ERROR_CODE = "PASSWORD_TOO_WEAK";
 
 /**
@@ -71,6 +75,8 @@ export const PASSWORD_POLICY_ERROR_CODE = "PASSWORD_TOO_WEAK";
  *
  * A path this does not know about is left alone: the guard exists to enforce
  * the rules on the ways in, not to inspect every request Better Auth serves.
+ *
+ * @internal
  */
 export const assertPasswordPolicy = ({
   path,

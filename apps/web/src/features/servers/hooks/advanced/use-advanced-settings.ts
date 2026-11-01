@@ -16,14 +16,10 @@
  */
 
 import { useQuery } from "@tanstack/react-query";
-import type { RouterInputs, RouterOutputs } from "@virtbase/api";
+import type { RouterInputs } from "@virtbase/api";
 import { useTRPC } from "@/lib/trpc/react.tsx";
 
-export type GetAdvancedSettingsInput =
-  RouterInputs["servers"]["advanced"]["get"];
-
-export type GetAdvancedSettingsOutput =
-  RouterOutputs["servers"]["advanced"]["get"];
+type GetAdvancedSettingsInput = RouterInputs["servers"]["advanced"]["get"];
 
 interface GetAdvancedSettings extends GetAdvancedSettingsInput {
   queryConfig?: never;

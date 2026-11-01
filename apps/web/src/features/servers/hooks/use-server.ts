@@ -20,7 +20,7 @@ import type { RouterInputs, RouterOutputs } from "@virtbase/api";
 import { isInstalling } from "@virtbase/utils";
 import { useTRPC } from "@/lib/trpc/react.tsx";
 
-export type GetServerInput = RouterInputs["servers"]["get"];
+type GetServerInput = RouterInputs["servers"]["get"];
 
 export type GetServerOutput = RouterOutputs["servers"]["get"];
 
@@ -28,7 +28,7 @@ interface GetServer extends GetServerInput {
   queryConfig?: never;
 }
 
-export const defaultGetServerExpand: Partial<GetServerInput> = {
+const defaultGetServerExpand: Partial<GetServerInput> = {
   expand: ["datacenter", "template", "node", "plan", "allocations", "mount"],
 };
 

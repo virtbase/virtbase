@@ -76,5 +76,3 @@ export async function getEmailsList(input: GetEmailsSchema) {
     return { data: [], pageCount: 0 };
   }
 }
-
-export type GetEmailsListOutput = Awaited<ReturnType<typeof getEmailsList>>;

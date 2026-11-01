@@ -16,12 +16,10 @@
  */
 
 import { useQuery } from "@tanstack/react-query";
-import type { RouterInputs, RouterOutputs } from "@virtbase/api";
+import type { RouterInputs } from "@virtbase/api";
 import { useTRPC } from "@/lib/trpc/react.tsx";
 
-export type GetServerPlansInput = RouterInputs["servers"]["plan"]["get"];
-
-export type GetServerPlansOutput = RouterOutputs["servers"]["plan"]["get"];
+type GetServerPlansInput = RouterInputs["servers"]["plan"]["get"];
 
 interface GetServerPlans extends GetServerPlansInput {
   queryConfig?: never;

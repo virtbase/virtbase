@@ -21,7 +21,7 @@ import { useQuery } from "@tanstack/react-query";
 import type { RouterInputs, RouterOutputs } from "@virtbase/api";
 import { useTRPC } from "@/lib/trpc/react.tsx";
 
-export type GetFirewallRulesInput =
+type GetFirewallRulesInput =
   RouterInputs["servers"]["firewall"]["rules"]["get"];
 
 export type GetFirewallRulesOutput =

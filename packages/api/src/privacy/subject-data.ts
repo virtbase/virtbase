@@ -305,6 +305,8 @@ export type SubjectTableName = keyof typeof SUBJECT_DATA;
  * but it also narrows every entry to exactly the keys it happens to have - so
  * `basis` is simply absent on the ones that do not retain anything. This view
  * restores the uniform shape for code that iterates rather than looks up.
+ *
+ * @alias
  */
 export const subjectTables: Record<SubjectTableName, SubjectTable> =
   SUBJECT_DATA;

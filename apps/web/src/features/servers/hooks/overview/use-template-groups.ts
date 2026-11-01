@@ -16,14 +16,11 @@
  */
 
 import { useQuery } from "@tanstack/react-query";
-import type { RouterInputs, RouterOutputs } from "@virtbase/api";
+import type { RouterInputs } from "@virtbase/api";
 import { useTRPC } from "@/lib/trpc/react.tsx";
 
-export type GetServerTemplateGroupsInput =
+type GetServerTemplateGroupsInput =
   RouterInputs["servers"]["templateGroups"]["get"];
-
-export type GetServerTemplateGroupsOutput =
-  RouterOutputs["servers"]["templateGroups"]["get"];
 
 interface UseServerTemplateGroups extends GetServerTemplateGroupsInput {
   queryConfig?: never;

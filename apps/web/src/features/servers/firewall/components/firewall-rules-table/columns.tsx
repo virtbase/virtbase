@@ -36,8 +36,6 @@ import { useUpdateFirewallRule } from "../../hooks/use-update-firewall-rule.ts";
 import type { FirewallTableRow } from "../../lib/table-rows.ts";
 import { RuleActions } from "./rule-actions.tsx";
 
-export type FirewallRulesTableColumn = FirewallTableRow;
-
 export function useFirewallRulesTableColumns({
   hostRuleCount,
   rowAction,

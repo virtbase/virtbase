@@ -61,6 +61,7 @@ export type NotificationTargetInput = z.infer<
   typeof NotificationTargetInputSchema
 >;
 
+/** @alias */
 export const CreateNotificationTargetInputSchema =
   NotificationTargetInputSchema;
 

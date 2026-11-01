@@ -22,7 +22,7 @@ import type { Config } from "./config.ts";
 import { log } from "./log.ts";
 import { verifyPayload } from "./payload.ts";
 
-export const Timeouts = {
+const Timeouts = {
   /** The node's TCP, TLS and websocket handshake. */
   handshakeMs: 15_000,
   /** A node that has fallen behind catching up, before it is terminated. */

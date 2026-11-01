@@ -217,6 +217,7 @@ export type CreateServerBackupInput = z.infer<
   typeof CreateServerBackupInputSchema
 >;
 
+/** @alias */
 export const CreateServerBackupOutputSchema = GetServerBackupOutputSchema;
 
 export type CreateServerBackupOutput = z.infer<
@@ -249,6 +250,7 @@ export type UpdateServerBackupInput = z.infer<
   typeof UpdateServerBackupInputSchema
 >;
 
+/** @alias */
 export const UpdateServerBackupOutputSchema = GetServerBackupOutputSchema;
 
 export const RestoreServerBackupInputSchema = z.object({

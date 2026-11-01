@@ -105,5 +105,3 @@ export const ProxmoxTemplateSchema = z.object({
   created_at: ObjectTimestampSchema.shape.created_at,
   updated_at: ObjectTimestampSchema.shape.updated_at,
 });
-
-export type ProxmoxTemplate = z.infer<typeof ProxmoxTemplateSchema>;

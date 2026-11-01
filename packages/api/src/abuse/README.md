@@ -25,21 +25,21 @@ sources ──▶ intake ──▶ decision ──▶ effects
 
 ## Where the code lives
 
-| Layer | Path | Contents |
-| --- | --- | --- |
-| 2 Ports | `packages/ports/src/signal.ts` | `InboundSignal`, `SignalIntake`, `EnforcementLevel` |
-| 2 Ports | `packages/ports/src/abuse-source.ts` | `AbuseSource` — pull sources only |
-| 2 Ports | `packages/ports/src/ip-reputation.ts` | `IpReputationProvider` |
-| 2 Ports | `packages/ports/src/notification-channel.ts` | `NotificationChannel` |
-| 1 Platform | `packages/db/src/schema/abuse-*.ts`, `notifications.ts` | 11 tables, 15 enums |
-| 1 Platform | `packages/config/src/notification-target-store.ts` | encrypted operator destinations |
-| 4 Integrations | `packages/integration-alertmanager` | inbound alerts, three payload formats |
-| 4 Integrations | `packages/integration-abuseipdb` | `abuse` + `ipReputation` |
-| 4 Integrations | `packages/integration-webhook` | outbound operator notifications |
-| 5 Composition | `packages/api/src/abuse` | this directory |
-| 5 Composition | `packages/api/src/notifications` | the dispatcher |
-| 5 Composition | `packages/api/src/router/abuse.ts` | the customer's tRPC surface |
-| 5 Composition | `apps/web/src/features/admin/{api,components}/abuse` | the operator console |
+| Layer          | Path                                                    | Contents                                            |
+| -------------- | ------------------------------------------------------- | --------------------------------------------------- |
+| 2 Ports        | `packages/ports/src/signal.ts`                          | `InboundSignal`, `SignalIntake`, `EnforcementLevel` |
+| 2 Ports        | `packages/ports/src/abuse-source.ts`                    | `AbuseSource` — pull sources only                   |
+| 2 Ports        | `packages/ports/src/ip-reputation.ts`                   | `IpReputationProvider`                              |
+| 2 Ports        | `packages/ports/src/notification-channel.ts`            | `NotificationChannel`                               |
+| 1 Platform     | `packages/db/src/schema/abuse-*.ts`, `notifications.ts` | 11 tables, 15 enums                                 |
+| 1 Platform     | `packages/config/src/notification-target-store.ts`      | encrypted operator destinations                     |
+| 4 Integrations | `packages/integration-alertmanager`                     | inbound alerts, three payload formats               |
+| 4 Integrations | `packages/integration-abuseipdb`                        | `abuse` + `ipReputation`                            |
+| 4 Integrations | `packages/integration-webhook`                          | outbound operator notifications                     |
+| 5 Composition  | `packages/api/src/abuse`                                | this directory                                      |
+| 5 Composition  | `packages/api/src/notifications`                        | the dispatcher                                      |
+| 5 Composition  | `packages/api/src/router/abuse.ts`                      | the customer's tRPC surface                         |
+| 5 Composition  | `apps/web/src/features/admin/{api,components}/abuse`    | the operator console                                |
 
 The domain lives inside `packages/api` rather than the Layer 3
 `packages/abuse` slot the layer rules reserve, because enforcement needs
@@ -74,13 +74,13 @@ operator settling the case.
 
 ## What can happen to a server
 
-| Level | Mechanism | Customer keeps |
-| --- | --- | --- |
-| `none` | case only | everything |
-| `throttle` | `rate=` on the guest NIC | network, console, data |
-| `isolate` | firewall `enable: 1, policy_out: DROP` | data, console, the ability to fix it |
-| `power_off` | `onboot: false`, then stop | data, console once released |
-| `terminate` | moves `terminates_at` to now (never later) and cancels the live subscription with `cancel_reason = 'abuse'`, so no renewal extends the term; hands over to the existing deletion lifecycle | the normal deletion grace period |
+| Level       | Mechanism                                                                                                                                                                                  | Customer keeps                       |
+| ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------ |
+| `none`      | case only                                                                                                                                                                                  | everything                           |
+| `throttle`  | `rate=` on the guest NIC                                                                                                                                                                   | network, console, data               |
+| `isolate`   | firewall `enable: 1, policy_out: DROP`                                                                                                                                                     | data, console, the ability to fix it |
+| `power_off` | `onboot: false`, then stop                                                                                                                                                                 | data, console once released          |
+| `terminate` | moves `terminates_at` to now (never later) and cancels the live subscription with `cancel_reason = 'abuse'`, so no renewal extends the term; hands over to the existing deletion lifecycle | the normal deletion grace period     |
 
 Every level below `terminate` is reversible and stores what it replaced in
 `abuse_case_servers.previous_state`, so a release restores the customer's
@@ -152,13 +152,13 @@ customer's repeat count as it stood at the time, so a rule gated on
 
 ## Sources
 
-| Source | How | Trust |
-| --- | --- | --- |
-| Alertmanager / Grafana | `POST /api/integrations/alertmanager/alerts` | our own stack; a rule may trust it |
-| AbuseIPDB | hourly CIDR sweep of our own ranges | third-party score, confidence-gated |
-| `abuse@` mailbox | Resend inbound → `mailbox/receive.ts` | a stranger; always `triage` |
-| Operator | admin console | a human decided |
-| Internal | `submitSignal` with `source: "internal"` | platform conditions |
+| Source                 | How                                          | Trust                               |
+| ---------------------- | -------------------------------------------- | ----------------------------------- |
+| Alertmanager / Grafana | `POST /api/integrations/alertmanager/alerts` | our own stack; a rule may trust it  |
+| AbuseIPDB              | hourly CIDR sweep of our own ranges          | third-party score, confidence-gated |
+| `abuse@` mailbox       | Resend inbound → `mailbox/receive.ts`        | a stranger; always `triage`         |
+| Operator               | admin console                                | a human decided                     |
+| Internal               | `submitSignal` with `source: "internal"`     | platform conditions                 |
 
 Bad or missing ingest tokens answer **404**, matching the Prometheus scrape
 endpoint — the endpoint cannot be used to confirm what this deployment runs.
@@ -211,11 +211,11 @@ bearer credential has nobody behind it at request time.
 
 Three surfaces in `apps/web`, all reading that router:
 
-| Surface | Path | Shows |
-| --- | --- | --- |
+| Surface        | Path                                                | Shows                                                                  |
+| -------------- | --------------------------------------------------- | ---------------------------------------------------------------------- |
 | Dashboard card | `features/dashboard/components/active-abuse-cases*` | open cases, answer-first ordering; renders nothing when there are none |
-| List | `/app.virtbase.com/abuse` | active cases, settled ones behind a toggle |
-| Case | `/app.virtbase.com/abuse/<id>` | the thread, the accusation, what is locked |
+| List           | `/app.virtbase.com/abuse`                           | active cases, settled ones behind a toggle                             |
+| Case           | `/app.virtbase.com/abuse/<id>`                      | the thread, the accusation, what is locked                             |
 
 The redaction is in the tRPC output schema rather than in a component: the
 `reporter` author kind is absent from `AbuseCaseMessageSchema`, and the query
@@ -260,14 +260,14 @@ first.
 
 ### The short version
 
-| Step | Without it |
-| --- | --- |
-| 1. `CONFIG_ENCRYPTION_KEY` | no integration can be configured and no notification target can be stored |
-| 2. At least one notification target | the desk works and tells nobody |
-| 3. At least one source enabled | no signals, so only the mailbox and hand-made cases exist |
-| 4. `ABUSE_MAILBOX_SECRET` + Resend inbound | no per-case addresses; reporters route by subject token only |
-| 5. At least one enabled rule with `trusted_source` | nothing ever enforces |
-| 6. `AI_GATEWAY_API_KEY` *(optional)* | assisted triage is off |
+| Step                                               | Without it                                                                |
+| -------------------------------------------------- | ------------------------------------------------------------------------- |
+| 1. `CONFIG_ENCRYPTION_KEY`                         | no integration can be configured and no notification target can be stored |
+| 2. At least one notification target                | the desk works and tells nobody                                           |
+| 3. At least one source enabled                     | no signals, so only the mailbox and hand-made cases exist                 |
+| 4. `ABUSE_MAILBOX_SECRET` + Resend inbound         | no per-case addresses; reporters route by subject token only              |
+| 5. At least one enabled rule with `trusted_source` | nothing ever enforces                                                     |
+| 6. `AI_GATEWAY_API_KEY` _(optional)_               | assisted triage is off                                                    |
 
 Steps 1–4 are safe to do on day one. **Step 5 is the one that can take a
 customer's server away**, and it deserves the week of watching described below.
@@ -303,27 +303,27 @@ Do this before enabling a source. An operator notification is how you find out
 that ingestion is working at all, and a source turned on with nowhere to
 report lands its first surprise in the database silently.
 
-| Channel | Needs | Good for |
-| --- | --- | --- |
-| `email` | an address | the durable record; always have one |
-| `discord` | a webhook URL, or a linked account for a DM | the one people actually read |
-| `webhook` | a URL and a signing secret | anything else — PagerDuty, an internal bot |
+| Channel   | Needs                                       | Good for                                   |
+| --------- | ------------------------------------------- | ------------------------------------------ |
+| `email`   | an address                                  | the durable record; always have one        |
+| `discord` | a webhook URL, or a linked account for a DM | the one people actually read               |
+| `webhook` | a URL and a signing secret                  | anything else — PagerDuty, an internal bot |
 
 A target matches on **key globs** and a **minimum severity**. Start with one
 target on `abuse.*` at `info` while you are setting up, and tighten it to
 `warning` once the volume is known. The keys that exist today:
 
-| Key | Fires when |
-| --- | --- |
-| `abuse.case.opened` | a case is created from a signal |
-| `abuse.case.triaged` | assisted triage filled one in |
-| `abuse.case.enforced` | a lock was actually applied |
-| `abuse.case.escalated` | a response deadline elapsed and enforcement tightened |
-| `abuse.case.customer_replied` | the customer answered or claimed it is fixed |
-| `abuse.lock.drift_detected` | a customer's API undid a lock and reconciliation put it back |
-| `abuse.signal.unattributed` | a report arrived that nobody can be held responsible for |
-| `abuse.source.poll_failed` / `.poll_incomplete` | a pull source errored or ran out of quota |
-| `abuse.report.received` | mail arrived at `abuse@` |
+| Key                                             | Fires when                                                   |
+| ----------------------------------------------- | ------------------------------------------------------------ |
+| `abuse.case.opened`                             | a case is created from a signal                              |
+| `abuse.case.triaged`                            | assisted triage filled one in                                |
+| `abuse.case.enforced`                           | a lock was actually applied                                  |
+| `abuse.case.escalated`                          | a response deadline elapsed and enforcement tightened        |
+| `abuse.case.customer_replied`                   | the customer answered or claimed it is fixed                 |
+| `abuse.lock.drift_detected`                     | a customer's API undid a lock and reconciliation put it back |
+| `abuse.signal.unattributed`                     | a report arrived that nobody can be held responsible for     |
+| `abuse.source.poll_failed` / `.poll_incomplete` | a pull source errored or ran out of quota                    |
+| `abuse.report.received`                         | mail arrived at `abuse@`                                     |
 
 `abuse.lock.drift_detected` and `abuse.signal.unattributed` are the two worth
 routing somewhere a human looks the same day. The first means a customer is
@@ -372,13 +372,13 @@ contract, the three payload formats, and worked PromQL. The setup order:
 **Attribution is the part that goes wrong.** One of these labels has to
 resolve to a customer, in this order of reliability:
 
-| Label | Resolves through |
-| --- | --- |
-| `virtbase_server_id` | directly, unambiguously — use it when you have it |
-| `virtbase_vmid` + `virtbase_node` | `unique(proxmox_node_id, vmid)` |
-| `virtbase_ip` | the allocation table **as it stood when the alert fired** |
-| `virtbase_user_id` | the account, for alerts that are not about one machine |
-| `node` / `instance` | the node. Opens no case — a node is ours |
+| Label                             | Resolves through                                          |
+| --------------------------------- | --------------------------------------------------------- |
+| `virtbase_server_id`              | directly, unambiguously — use it when you have it         |
+| `virtbase_vmid` + `virtbase_node` | `unique(proxmox_node_id, vmid)`                           |
+| `virtbase_ip`                     | the allocation table **as it stood when the alert fired** |
+| `virtbase_user_id`                | the account, for alerts that are not about one machine    |
+| `node` / `instance`               | the node. Opens no case — a node is ours                  |
 
 Per-VM traffic appears on the node's `tap<vmid>i<n>` interfaces, and the device
 name is the only place the vmid exists, so it has to be lifted out with
@@ -397,14 +397,14 @@ arriving, that 404 is the first thing to check.
 platform's own allocation table, not from configuration, so there is nothing to
 list by hand.
 
-| Setting | Default | Change it when |
-| --- | --- | --- |
-| Confidence threshold | `50` | you are drowning — raise it, don't add rules to compensate |
-| Report age | `30` days | rarely |
-| Block size | `/24` | you have a paid key; `check-block` is capped by plan and asking wider than the key allows **fails the call** rather than degrading |
-| Calls per run | `4` | you have a paid key. Four per hourly run is 96/day, inside a free key's allowance |
-| Look up categories | **off** | see below |
-| Allow reporting back | off | you want the operator-confirmed report-back offer on resolved cases |
+| Setting              | Default   | Change it when                                                                                                                     |
+| -------------------- | --------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Confidence threshold | `50`      | you are drowning — raise it, don't add rules to compensate                                                                         |
+| Report age           | `30` days | rarely                                                                                                                             |
+| Block size           | `/24`     | you have a paid key; `check-block` is capped by plan and asking wider than the key allows **fails the call** rather than degrading |
+| Calls per run        | `4`       | you have a paid key. Four per hourly run is 96/day, inside a free key's allowance                                                  |
+| Look up categories   | **off**   | see below                                                                                                                          |
+| Allow reporting back | off       | you want the operator-confirmed report-back offer on resolved cases                                                                |
 
 **Look up categories, off by default, is the setting that surprises people.**
 With it off every AbuseIPDB signal has type `abuse.other`, because the block
@@ -480,21 +480,21 @@ on prior cases reads slightly hot.
 Ordered by how much they are trusted, which is also priority order. Adjust the
 thresholds to the fleet — these are shapes, not numbers that transfer.
 
-| # | Rule | Matches | Trusted | Does |
-| --- | --- | --- | --- | --- |
-| 10 | Attack traffic, flow-confirmed | `abuse.ddos` · source `alertmanager` · severity ≥ `critical` · `virtbase_detector = flow` | **yes** | `isolate` after 15 min, answer within 12 h |
-| 20 | Attack traffic, hypervisor-confirmed | `abuse.ddos` · `alertmanager` · ≥ `critical` · `virtbase_detector = guest_nic` | **yes** | `isolate` after 15 min, answer within 12 h |
-| 30 | Compromised guest spreading | `abuse.compromised` · `alertmanager` · ≥ `critical` · `virtbase_detector = flow` | **yes** | `throttle` after 15 min, answer within 24 h |
-| 40 | Sustained scanning | `abuse.port_scan` · `alertmanager` · ≥ `critical` · `virtbase_detector = flow` | **yes** | `throttle` after 60 min, answer within 24 h |
-| 50 | Repeat offender, third-party report | source `abuseipdb` · confidence ≥ 90 · ≥ 1 prior case | **yes** | `throttle` after 4 h, answer within 48 h |
-| 60 | Third-party report, first offence | source `abuseipdb` · confidence ≥ 75 | no | opens at `high`, waits for a person |
+| #  | Rule                                 | Matches                                                                                   | Trusted | Does                                        |
+| -- | ------------------------------------ | ----------------------------------------------------------------------------------------- | ------- | ------------------------------------------- |
+| 10 | Attack traffic, flow-confirmed       | `abuse.ddos` · source `alertmanager` · severity ≥ `critical` · `virtbase_detector = flow` | **yes** | `isolate` after 15 min, answer within 12 h  |
+| 20 | Attack traffic, hypervisor-confirmed | `abuse.ddos` · `alertmanager` · ≥ `critical` · `virtbase_detector = guest_nic`            | **yes** | `isolate` after 15 min, answer within 12 h  |
+| 30 | Compromised guest spreading          | `abuse.compromised` · `alertmanager` · ≥ `critical` · `virtbase_detector = flow`          | **yes** | `throttle` after 15 min, answer within 24 h |
+| 40 | Sustained scanning                   | `abuse.port_scan` · `alertmanager` · ≥ `critical` · `virtbase_detector = flow`            | **yes** | `throttle` after 60 min, answer within 24 h |
+| 50 | Repeat offender, third-party report  | source `abuseipdb` · confidence ≥ 90 · ≥ 1 prior case                                     | **yes** | `throttle` after 4 h, answer within 48 h    |
+| 60 | Third-party report, first offence    | source `abuseipdb` · confidence ≥ 75                                                      | no      | opens at `high`, waits for a person         |
 
 The reasoning behind the shape, which matters more than the numbers:
 
 - **Trust is granted per detector, not per source.** `virtbase_detector` names
   the path that produced the signal, and the three do not deserve equal weight.
   `flow` reads Akvorado's records and knows ports and protocols, so it can say
-  *memcached reflection* or *bare-SYN sweep* rather than *a lot of traffic*.
+  _memcached reflection_ or _bare-SYN sweep_ rather than _a lot of traffic_.
   `guest_nic` counts packets on the guest's tap interface, which is what
   separates a flood from a download. `pve` counts only bytes — and a customer
   running a mirror, a backup target or a media server produces the same shape
@@ -532,7 +532,7 @@ The reasoning behind the shape, which matters more than the numbers:
 - **The ladder is short.** `isolate` is the harshest thing in this set. It
   leaves the customer their data, their console, and the ability to fix the
   problem — everything except the ability to keep causing it. It is reserved
-  for the two rules whose detectors say what the traffic *was*, because
+  for the two rules whose detectors say what the traffic _was_, because
   throttling a reflection attack leaves it amplifying at a lower rate against
   somebody else. `power_off` is for cases an operator has read.
 

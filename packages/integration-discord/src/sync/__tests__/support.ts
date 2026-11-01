@@ -17,7 +17,7 @@
 
 import type { DiscordClient } from "../../api/index.ts";
 
-export interface RecordedRequest {
+interface RecordedRequest {
   method: string;
   path: string;
   body?: unknown;

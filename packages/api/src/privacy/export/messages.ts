@@ -26,7 +26,7 @@
  * Locales match `EMAIL_LOCALES`. Anything else falls back to English, which is
  * the source text rather than a placeholder.
  */
-export const DOCUMENT_LOCALES = ["en", "de", "fr", "nl"] as const;
+const DOCUMENT_LOCALES = ["en", "de", "fr", "nl"] as const;
 export type DocumentLocale = (typeof DOCUMENT_LOCALES)[number];
 
 const en = {

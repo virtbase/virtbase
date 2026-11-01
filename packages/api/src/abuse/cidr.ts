@@ -59,7 +59,7 @@ const RESERVED: [string, number][] = [
   ["240.0.0.0", 4],
 ];
 
-export interface ParsedCidr {
+interface ParsedCidr {
   address: number;
   prefixLength: number;
 }

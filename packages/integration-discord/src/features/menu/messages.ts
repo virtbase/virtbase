@@ -28,7 +28,7 @@ import { createEmbed } from "../../utils/create-embed.ts";
 import { buildInviteUrl } from "../../utils/invite-url.ts";
 
 /** Where the guide lives. One constant, linked from four different screens. */
-export const helpArticleUrl = (locale: Locale) =>
+const helpArticleUrl = (locale: Locale) =>
   `${PUBLIC_DOMAIN}/${locale}/help/article/discord-integration`;
 
 /**

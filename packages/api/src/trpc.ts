@@ -93,7 +93,7 @@ export const createTRPCContext = async ({
     session,
   };
 };
-export interface TRPCMeta extends OpenApiMeta {
+interface TRPCMeta extends OpenApiMeta {
   /**
    * A custom rate limit configuration for this endpoint.
    * - If set to an object, that configuration is used.

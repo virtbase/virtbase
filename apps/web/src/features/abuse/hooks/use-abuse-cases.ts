@@ -29,7 +29,7 @@ export type CustomerAbuseCase = RouterOutputs["abuse"]["get"]["case"];
  * A settled case is readable but finished, so it does not belong in a count
  * that is meant to say "this needs you".
  */
-export const ACTIVE_STATUSES = new Set([
+const ACTIVE_STATUSES = new Set([
   "triage",
   "open",
   "awaiting_customer",

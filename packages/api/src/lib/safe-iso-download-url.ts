@@ -232,6 +232,7 @@ function tryUnwrapIpv4Mapped(address: string): string | null {
   return `${(hi >> 8) & 255}.${hi & 255}.${(lo >> 8) & 255}.${lo & 255}`;
 }
 
+/** @internal */
 export function isBlockedIpAddress(address: string): boolean {
   const unwrapped = tryUnwrapIpv4Mapped(address);
   const candidate = unwrapped ?? address;

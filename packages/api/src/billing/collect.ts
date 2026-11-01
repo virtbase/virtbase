@@ -58,6 +58,8 @@ export type CollectableRenewal = Pick<
  * card on file - and the dunning ladder is exactly the window in which a
  * customer adds one. Marking it terminal would mean a customer who saves a
  * card the same afternoon is never charged again and loses the server anyway.
+ *
+ * @internal
  */
 export const NO_PAYMENT_METHOD_CODE = "no_payment_method";
 
@@ -66,6 +68,8 @@ export const NO_PAYMENT_METHOD_CODE = "no_payment_method";
  *
  * Also retryable: `invalid_at` is set on one credential, and a customer whose
  * card expired can add another before the ladder runs out.
+ *
+ * @internal
  */
 export const PAYMENT_METHOD_INVALID_CODE = "payment_method_invalid";
 
@@ -83,6 +87,8 @@ const FALLBACK_DESCRIPTION = "Subscription renewal";
  * without the attempt collapses the second into the first and the ladder
  * silently replays one dead charge four times; a key with a timestamp in it
  * collapses the first into the second and bills the customer once per crash.
+ *
+ * @internal
  */
 export const renewalIdempotencyKey = (
   renewalId: string,

@@ -52,9 +52,8 @@ mock.module("../../upstash/redis.ts", () => ({
   },
 }));
 
-const { grantStepUp, isStepUpSatisfied, revokeStepUp } = await import(
-  "../index.ts"
-);
+const { isStepUpSatisfied } = await import("../index.ts");
+const { grantStepUp, revokeStepUp } = await import("../marker.ts");
 
 const sessionWith = (overrides: Partial<Session["session"]>): Session => ({
   ...mockSession,

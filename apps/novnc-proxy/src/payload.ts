@@ -19,7 +19,7 @@ import { decryptPayload, isAuthenticatedPayload } from "@virtbase/utils";
 import type { WebSocketData } from "@virtbase/validators";
 import { WebsocketDataSchema } from "@virtbase/validators";
 
-export const ExpiryLimit = {
+const ExpiryLimit = {
   /**
    * Clock drift allowed between the web app that minted a payload and this
    * proxy, so a proxy a few seconds behind still accepts a fresh one.

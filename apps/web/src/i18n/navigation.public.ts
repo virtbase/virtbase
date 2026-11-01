@@ -21,7 +21,7 @@ import { routing } from "@/i18n/routing.public.ts";
 
 export const {
   Link: IntlLink,
-  getPathname: getIntlPathname,
+
   useRouter: useIntlRouter,
   usePathname: useIntlPathname,
 } = createNavigation(routing);

@@ -224,7 +224,3 @@ export async function getSubscriptionStatusCounts(): Promise<
     return {};
   }
 }
-
-export type GetSubscriptionsListOutput = Awaited<
-  ReturnType<typeof getSubscriptionsList>
->;

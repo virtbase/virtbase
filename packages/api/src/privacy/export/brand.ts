@@ -43,7 +43,6 @@ const WORDMARK_PATH_TARGET_WIDTH = 115.66;
 const WORDMARK_PATH_TARGET_HEIGHT = 14.94;
 
 export const COLOR_SECONDARY = "#f0f0f0";
-export const COLOR_BACKGROUND = "#ffffff";
 
 export function renderBackgroundImage(document: PDFKit.PDFDocument) {
   // center position AFTER scaling

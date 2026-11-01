@@ -221,7 +221,11 @@ function renderHeader(
   root.add(document.struct("Div", {}, () => renderDivider(document)));
 }
 
-/** A section of the report: either one table of fields, or a table per record. */
+/**
+ * A section of the report: either one table of fields, or a table per record.
+ *
+ * @internal
+ */
 export type DocumentSection =
   | { title: string; kind: "fields"; rows: Row[] }
   | { title: string; kind: "records"; items: Record_[] };
@@ -237,6 +241,8 @@ export type DocumentSection =
  * Pure, and separate from the drawing on purpose: once a font is subsetted the
  * content stream holds glyph indices rather than text, so what the document
  * says can only be asserted here.
+ *
+ * @internal
  */
 export function buildDocumentSections(
   data: SubjectExport,

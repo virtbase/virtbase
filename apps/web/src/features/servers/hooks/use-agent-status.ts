@@ -16,12 +16,10 @@
  */
 
 import { useQuery } from "@tanstack/react-query";
-import type { RouterInputs, RouterOutputs } from "@virtbase/api";
+import type { RouterInputs } from "@virtbase/api";
 import { UNBATCHED, useTRPC } from "@/lib/trpc/react.tsx";
 
-export type GetAgentStatusInput = RouterInputs["servers"]["agent"]["get"];
-
-export type GetAgentStatusOutput = RouterOutputs["servers"]["agent"]["get"];
+type GetAgentStatusInput = RouterInputs["servers"]["agent"]["get"];
 
 interface GetAgentStatus extends GetAgentStatusInput {
   queryConfig?: never;

@@ -58,7 +58,7 @@ const SnippetEditor = dynamic(() => import("./snippet-editor.tsx"), {
 });
 
 /** The template metadata a selector is matched against, for the live preview. */
-export interface SnippetTemplate {
+interface SnippetTemplate {
   id: string;
   name: string;
   osFamily: string | null;

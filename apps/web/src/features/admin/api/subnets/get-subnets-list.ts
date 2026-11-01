@@ -95,8 +95,6 @@ export async function getSubnetsList(input: GetSubnetsSchema) {
   }
 }
 
-export type GetSubnetsListOutput = Awaited<ReturnType<typeof getSubnetsList>>;
-
 export async function getSubnetVlanCounts() {
   "use cache: private";
 

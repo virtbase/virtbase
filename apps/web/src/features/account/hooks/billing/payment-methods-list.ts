@@ -19,8 +19,7 @@ import { useSuspenseQuery } from "@tanstack/react-query";
 import type { RouterOutputs } from "@virtbase/api";
 import { useTRPC } from "@/lib/trpc/react.tsx";
 
-export type GetPaymentMethodsListOutput =
-  RouterOutputs["paymentMethods"]["list"];
+type GetPaymentMethodsListOutput = RouterOutputs["paymentMethods"]["list"];
 
 /**
  * One saved credential as the dashboard is allowed to see it.

@@ -66,7 +66,7 @@ const interpolate = (
     Object.hasOwn(values, key) ? String(values[key]) : whole,
   );
 
-export interface PortCall {
+interface PortCall {
   method: string;
   actor: ServerManagementActor;
   input: unknown;

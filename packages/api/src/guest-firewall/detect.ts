@@ -28,7 +28,7 @@ import { DETECT_SCRIPT, shell } from "./commands.ts";
  * the customer actually configured is both more useful and less alarming than
  * reporting the backend it generated.
  */
-export const MANAGER_PRECEDENCE: readonly GuestFirewallManager[] = [
+const MANAGER_PRECEDENCE: readonly GuestFirewallManager[] = [
   "ufw",
   "firewalld",
   "nftables",
@@ -68,6 +68,8 @@ const isManager = (value: string): value is GuestFirewallManager =>
  * Kept separate from the call so the format can be checked without a VM. Lines
  * that are not recognised are ignored rather than treated as an error - a
  * `sh` that warns on stderr should not lose us the detection.
+ *
+ * @internal
  */
 export const parseDetectionOutput = (
   stdout: string,

@@ -73,7 +73,7 @@ export function StatsCard<T extends Record<string, number | bigint>>({
   );
 }
 
-export function StatsCardCount<T extends Record<string, number | bigint>>({
+function StatsCardCount<T extends Record<string, number | bigint>>({
   promise,
   formatOptions,
   accessorKey,

@@ -30,6 +30,8 @@
  * Renewals add `INTERVAL '1 month'`, which is a calendar month, so the two
  * disagree by up to a day and a half per month. Reconciling them needs the
  * term's start date — which is not an input here — so the flat month stays.
+ *
+ * @internal
  */
 export const MONTH_MS = 30 * 24 * 60 * 60 * 1000;
 
@@ -39,6 +41,8 @@ export const MONTH_MS = 30 * 24 * 60 * 60 * 1000;
  *
  * A provider constraint leaking into pricing is not ideal; it belongs to
  * `PaymentProvider` once both providers are behind the port.
+ *
+ * @internal
  */
 export const MIN_CHARGE_EUR_CENTS = 50;
 

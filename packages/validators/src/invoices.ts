@@ -111,6 +111,7 @@ export const GetInvoiceOutputSchema = z.object({
   }),
 });
 
+/** @alias */
 export const DownloadInvoiceInputSchema = GetInvoiceInputSchema;
 
 export const DownloadInvoiceOutputSchema = z.object({

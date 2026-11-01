@@ -37,13 +37,13 @@ that is seconds: `bootstrap.sh` checks each stage and skips what is already done
 
 ## What you get
 
-| | |
-| --- | --- |
-| Nodes | `pve1` `pve2` `pve3`, quorate, on `172.28.0.0/24` |
-| Ceph | 3 mons, 3 mgrs, 3 OSDs, `vm-storage` (RBD) and `cephfs` |
-| Web UI | <https://127.0.0.1:8006>, `root` / `virtbase` (`8007`/`8008` for the others) |
-| Credentials | `cluster.json` - gitignored, holds a live API token |
-| Patches | `tooling/pve-patches` applied at image build (snippet upload, snippet mode, hookscript) |
+|             |                                                                                         |
+| ----------- | --------------------------------------------------------------------------------------- |
+| Nodes       | `pve1` `pve2` `pve3`, quorate, on `172.28.0.0/24`                                       |
+| Ceph        | 3 mons, 3 mgrs, 3 OSDs, `vm-storage` (RBD) and `cephfs`                                 |
+| Web UI      | <https://127.0.0.1:8006>, `root` / `virtbase` (`8007`/`8008` for the others)            |
+| Credentials | `cluster.json` - gitignored, holds a live API token                                     |
+| Patches     | `tooling/pve-patches` applied at image build (snippet upload, snippet mode, hookscript) |
 
 `cephfs` is **shared** and carries iso/backup/snippets, so every node sees the same
 ISO. That is the condition the `// TODO: Get correct storage node` in
@@ -76,14 +76,14 @@ Two things do not survive on their own, both because they live in the container
 filesystem rather than on a volume:
 
 - **Systemd enablement.** `/etc/systemd/system/ceph-*.target.wants` is lost
-  whenever a container is *recreated* rather than restarted - which
+  whenever a container is _recreated_ rather than restarted - which
   `docker compose up -d --build` does on any image rebuild. The daemons' data
   survives on `/var/lib/ceph`, so it looks like Ceph is installed and configured
   while no mon is actually running, and `ceph -s` then hangs forever rather than
   failing. `bootstrap.sh` reasserts enablement from the data directories on
   every run.
 - **The loop device an OSD is built on.** Loop devices are host state, so this
-  one *outlives* the container - but the path it records does not, because the
+  one _outlives_ the container - but the path it records does not, because the
   volume is remounted somewhere else. `losetup` then still lists the device
   while naming a file that no longer resolves, and because `losetup -j` matches
   by inode it still finds it: the device looks attached while the
@@ -140,7 +140,6 @@ happy path. Each workaround in `bootstrap.sh` is load-bearing:
   `mon_max_pg_per_osd` on a three-OSD cluster.
 - Loop devices do not survive a container restart, so OSD units are started
   explicitly rather than trusted to come up on boot.
-
 
 ## The Proxmox patches
 

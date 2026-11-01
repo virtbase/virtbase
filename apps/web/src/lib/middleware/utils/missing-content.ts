@@ -17,6 +17,7 @@
 
 import { defaultLocale } from "@/i18n/config.ts";
 
+/** @internal */
 export const ROUTED_SEGMENTS: ReadonlySet<string> = new Set([
   "checkout",
   "contact",

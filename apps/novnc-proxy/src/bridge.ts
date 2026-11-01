@@ -42,7 +42,7 @@ const SENDABLE_CLOSE_CODES = [
 ] as const;
 
 /** Bounded so a browser that talks before the node answers cannot grow the heap. */
-export const BacklogLimit = {
+const BacklogLimit = {
   frames: 64,
   bytes: 1024 * 1024,
 } as const;

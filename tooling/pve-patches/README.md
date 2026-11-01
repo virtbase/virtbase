@@ -5,10 +5,10 @@ packaged as `virtbase-pve-patches` so they survive package upgrades.
 
 The three patches edit files owned by two Debian packages:
 
-| File | Owning package |
-| --- | --- |
+| File                                           | Owning package        |
+| ---------------------------------------------- | --------------------- |
 | `PVE/Storage.pm`, `PVE/API2/Storage/Status.pm` | `libpve-storage-perl` |
-| `PVE/API2/Qemu.pm` | `qemu-server` |
+| `PVE/API2/Qemu.pm`                             | `qemu-server`         |
 
 Upgrading either one restores the stock file and silently reverts the patches,
 after which snippet upload fails, the hookscript loses its executable bit and
@@ -19,7 +19,7 @@ The package carries a dpkg file trigger on `/usr/share/perl5/PVE`, so dpkg
 reapplies the patches at the end of any transaction that writes there. A daily
 systemd timer covers edits that do not go through dpkg.
 
-Reapplying is the easy half. A patch that no longer *fits* its context - after
+Reapplying is the easy half. A patch that no longer _fits_ its context - after
 a Proxmox version bump - cannot be reapplied by anyone, and no amount of
 retrying helps. That state is published to the node_exporter textfile collector
 and to the systemd unit state your Alloy config already scrapes; see
@@ -36,17 +36,18 @@ Original snippet-upload patch:
 https://bugzilla.proxmox.com/attachment.cgi?id=389
 
 Tested with:
+
 - `libpve-storage-perl` 9.1.8 (snippet upload, snippet mode)
 - `qemu-server` 9.2.7 (hookscript)
 
-Pin the *package* versions, not the `pve-manager` version. They move
+Pin the _package_ versions, not the `pve-manager` version. They move
 independently - a node reporting `pve-manager/9.2.10` can be carrying
 `libpve-storage-perl` 9.1.8, and it is the package that owns the patched file.
 
 ## Editing a patch desynchronises already-patched nodes
 
 `patch.sh` decides that a patch is `applied` by reverse-applying it, so a patch
-only recognises trees it produced itself. Change what a patch *writes* - even
+only recognises trees it produced itself. Change what a patch _writes_ - even
 the indentation of one line - and every node carrying the old output classifies
 as `unknown`: the forward dry-run fails because the other hunks are already
 there, and the reverse fails on the line that moved.
@@ -67,11 +68,11 @@ current package in one step. Verify with `patch.sh status`.
 
 All patches are unified diffs with `-U3` and share the same apply base (`/usr/share/perl5/PVE`, `-p1`).
 
-| Patch | Target file(s) on Proxmox |
-| --- | --- |
+| Patch                          | Target file(s) on Proxmox              |
+| ------------------------------ | -------------------------------------- |
 | `proxmox-snippet-upload.patch` | `API2/Storage/Status.pm`, `Storage.pm` |
-| `proxmox-snippet-mode.patch` | `API2/Storage/Status.pm` |
-| `proxmox-hookscript.patch` | `API2/Qemu.pm` |
+| `proxmox-snippet-mode.patch`   | `API2/Storage/Status.pm`               |
+| `proxmox-hookscript.patch`     | `API2/Qemu.pm`                         |
 
 They are independent: `proxmox-snippet-mode.patch` only touches stock context, so it applies with or without the upload patch and in either order. Nothing has to be unapplied to pick it up - `patch.sh apply` on an already-patched node classifies the other two as `applied` and adds this one.
 
@@ -125,12 +126,12 @@ dpkg-trigger --check-supported && grep -r virtbase /var/lib/dpkg/triggers/
 
 ### What it installs
 
-| Path | |
-| --- | --- |
-| `/usr/share/virtbase-pve-patches/` | the patches and `patch.sh` |
-| `/usr/sbin/virtbase-pve-repatch` | reapply + publish metrics; the admin entry point |
-| `/usr/lib/systemd/system/virtbase-pve-repatch.{service,timer}` | the daily safety net |
-| `/etc/default/virtbase-pve-repatch` | optional overrides (not shipped; create if needed) |
+| Path                                                           |                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------- |
+| `/usr/share/virtbase-pve-patches/`                             | the patches and `patch.sh`                         |
+| `/usr/sbin/virtbase-pve-repatch`                               | reapply + publish metrics; the admin entry point   |
+| `/usr/lib/systemd/system/virtbase-pve-repatch.{service,timer}` | the daily safety net                               |
+| `/etc/default/virtbase-pve-repatch`                            | optional overrides (not shipped; create if needed) |
 
 ### Removing
 
@@ -143,7 +144,7 @@ apt remove virtbase-pve-patches
 ## Monitoring
 
 Reapplying is the easy half. What cannot self-heal is a patch that no longer
-*fits* its context after a Proxmox version bump: `patch.sh` correctly refuses
+_fits_ its context after a Proxmox version bump: `patch.sh` correctly refuses
 to force it, no amount of retrying helps, and guest provisioning on that node
 is broken until someone rebases it. That state has to leave the node.
 
@@ -196,10 +197,10 @@ somewhere else if the role prefers a different path.
 Alerting rules are not shipped here - they belong with the rest of the
 Ansible-managed Prometheus config. The two worth writing:
 
-| Expression | Meaning |
-| --- | --- |
-| `virtbase_pve_patch_state == -1` | drifted; needs a rebase (critical) |
-| `virtbase_pve_patch_state == 0` for 30m | trigger is not firing (warning) |
+| Expression                              | Meaning                            |
+| --------------------------------------- | ---------------------------------- |
+| `virtbase_pve_patch_state == -1`        | drifted; needs a rebase (critical) |
+| `virtbase_pve_patch_state == 0` for 30m | trigger is not firing (warning)    |
 
 ### Why the postinst swallows the failure
 
@@ -233,11 +234,11 @@ metrics, so an alert fires on exactly the state `status` shows a human.
 
 `patch.sh` is **idempotent**: each patch is classified before being touched.
 
-| Classification | Meaning | `apply` | `unapply` |
-| --- | --- | --- | --- |
-| `pending` | would apply cleanly (forward dry-run succeeds) | applies it | no-op |
-| `applied` | reverse dry-run succeeds (already in place) | no-op | reverts it |
-| `unknown` | neither direction is clean (drifted / partial / wrong) | reports failure, continues to next patch | reports failure, continues to next patch |
+| Classification | Meaning                                                | `apply`                                  | `unapply`                                |
+| -------------- | ------------------------------------------------------ | ---------------------------------------- | ---------------------------------------- |
+| `pending`      | would apply cleanly (forward dry-run succeeds)         | applies it                               | no-op                                    |
+| `applied`      | reverse dry-run succeeds (already in place)            | no-op                                    | reverts it                               |
+| `unknown`      | neither direction is clean (drifted / partial / wrong) | reports failure, continues to next patch | reports failure, continues to next patch |
 
 Patches are processed independently, so a failure on one patch does **not** stop the others. `pvedaemon` / `pveproxy` are restarted only when at least one patch actually changed state.
 

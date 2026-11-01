@@ -20,9 +20,7 @@ import type { GetGuestFirewallOutput } from "../hooks/use-guest-firewall.ts";
 
 export type HostRule = GetFirewallRulesOutput["rules"][number];
 export type GuestRule = GetGuestFirewallOutput["guest"]["rules"][number];
-export type GuestManager = NonNullable<
-  GetGuestFirewallOutput["guest"]["primary"]
->;
+type GuestManager = NonNullable<GetGuestFirewallOutput["guest"]["primary"]>;
 
 /**
  * The fields both layers can fill.

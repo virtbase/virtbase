@@ -41,7 +41,7 @@ export const mockUser = {
   updatedAt: new Date(),
 } satisfies typeof users.$inferInsert;
 
-export const mockProxmoxNodeGroup = {
+const mockProxmoxNodeGroup = {
   id: "png_0000000000000000000000001",
   name: "Test Node Group",
   strategy: "RANDOM",
@@ -49,7 +49,7 @@ export const mockProxmoxNodeGroup = {
   updatedAt: new Date(),
 } satisfies typeof proxmoxNodeGroups.$inferInsert;
 
-export const mockDatacenter = {
+const mockDatacenter = {
   id: "dc_0000000000000000000000001",
   name: "Test Datacenter",
   country: "NL",
@@ -57,7 +57,7 @@ export const mockDatacenter = {
   updatedAt: new Date(),
 } satisfies typeof datacenters.$inferInsert;
 
-export const mockProxmoxNode = {
+const mockProxmoxNode = {
   id: "pn_0000000000000000000000001",
   datacenterId: mockDatacenter.id,
   proxmoxNodeGroupId: mockProxmoxNodeGroup.id,
@@ -87,7 +87,7 @@ export const mockServerPlan = {
   updatedAt: new Date(),
 } satisfies typeof serverPlans.$inferInsert;
 
-export const mockServerPlanPrice = {
+const mockServerPlanPrice = {
   id: "price_0000000000000000000000001",
   serverPlanId: mockServerPlan.id,
   purchasePrice: 2999,

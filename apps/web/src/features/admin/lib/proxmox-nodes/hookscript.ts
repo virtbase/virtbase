@@ -20,7 +20,7 @@ import { join } from "node:path";
 import type { ProxmoxInstance } from "@virtbase/api/proxmox";
 import { PUBLIC_DOMAIN } from "@virtbase/utils";
 
-export const HOOKSCRIPT_FILENAME = "hookscript.pl";
+const HOOKSCRIPT_FILENAME = "hookscript.pl";
 
 // Resolved against the working directory rather than this module's location:
 // the asset has to stay inside the app's source tree so Next traces it into

@@ -114,7 +114,7 @@ export interface SubscriptionPaymentRow {
  * transaction id: it is the thing an off-session charge is made against, and
  * nobody in support has a reason to hold one.
  */
-export interface SubscriptionPaymentMethodRow {
+interface SubscriptionPaymentMethodRow {
   id: string;
   provider: string;
   type: string;

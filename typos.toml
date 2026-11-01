@@ -1,0 +1,25 @@
+[files]
+ignore-hidden = false
+extend-exclude = [
+  ".git",
+  "bun.lock",
+  "LICENSE",
+  "**/LICENSE",
+  "**/CHANGELOG.md",
+  ".github/CODE_OF_CONDUCT.md",
+  "apps/web/src/i18n/messages/de.po",
+  "apps/web/src/i18n/messages/fr.po",
+  "apps/web/src/i18n/messages/nl.po",
+  "packages/email/src/messages/de.json",
+  "packages/email/src/messages/fr.json",
+  "packages/email/src/messages/nl.json",
+  "packages/content/**/de/**",
+  "packages/content/**/fr/**",
+  "packages/content/**/nl/**",
+]
+
+[default]
+extend-ignore-re = ["non-existant-packages"]
+
+[default.extend-words]
+sherif = "sherif"

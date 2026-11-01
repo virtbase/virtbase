@@ -17,7 +17,6 @@
 
 export const MAX_ABUSE_TITLE_LENGTH = 500;
 export const MAX_ABUSE_BODY_LENGTH = 50_000;
-export const MAX_ABUSE_REPORTER_LENGTH = 320;
 
 /**
  * Characters that change how text renders rather than what it says:

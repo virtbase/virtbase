@@ -18,11 +18,11 @@ the authenticated payload.
 docker run -p 8443:8443 -e NOVNC_PROXY_SECRET=... ghcr.io/virtbase/novnc-proxy:latest
 ```
 
-| Variable | | |
-| --- | --- | --- |
-| `NOVNC_PROXY_SECRET` | required | 64 hex characters, the same value the web app has. The proxy will not start without it. |
-| `PORT` | `8443` | Listening port. |
-| `NODE_EXTRA_CA_CERTS` | — | PEM bundle trusted on top of Bun's bundled roots, for nodes with a private CA. |
+| Variable              |          |                                                                                         |
+| --------------------- | -------- | --------------------------------------------------------------------------------------- |
+| `NOVNC_PROXY_SECRET`  | required | 64 hex characters, the same value the web app has. The proxy will not start without it. |
+| `PORT`                | `8443`   | Listening port.                                                                         |
+| `NODE_EXTRA_CA_CERTS` | —        | PEM bundle trusted on top of Bun's bundled roots, for nodes with a private CA.          |
 
 TLS is terminated in front of the proxy; it speaks plain HTTP and `ws://`.
 `GET /api/status` returns `{"uptime": <seconds>}`, and `novnc-proxy healthcheck`
@@ -47,14 +47,14 @@ version lives in `version.txt`, which release-please bumps - not in
 `package.json`, whose version `bun.lock` would record and a release would then
 leave stale.
 
-| File | |
-| --- | --- |
-| `src/index.ts` | The command line: serve, or `healthcheck`. |
-| `src/config.ts` | The environment, parsed with zod. |
+| File             |                                                        |
+| ---------------- | ------------------------------------------------------ |
+| `src/index.ts`   | The command line: serve, or `healthcheck`.             |
+| `src/config.ts`  | The environment, parsed with zod.                      |
 | `src/payload.ts` | `verifyPayload()`: format, decryption, schema, expiry. |
-| `src/server.ts` | HTTP, the websocket handlers and shutdown. |
-| `src/bridge.ts` | `Bridge`, one console's two sockets and its lifecycle. |
-| `src/log.ts` | The one logging helper. |
+| `src/server.ts`  | HTTP, the websocket handlers and shutdown.             |
+| `src/bridge.ts`  | `Bridge`, one console's two sockets and its lifecycle. |
+| `src/log.ts`     | The one logging helper.                                |
 
 The tests run the real proxy against a local Bun server standing in for the
 node; only the base URL the proxy dials is swapped.

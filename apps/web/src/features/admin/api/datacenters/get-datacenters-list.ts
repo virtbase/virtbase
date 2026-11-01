@@ -84,7 +84,3 @@ export async function getDatacentersList(input: GetDatacentersSchema) {
     return { data: [], pageCount: 0 };
   }
 }
-
-export type GetDatacentersListOutput = Awaited<
-  ReturnType<typeof getDatacentersList>
->;

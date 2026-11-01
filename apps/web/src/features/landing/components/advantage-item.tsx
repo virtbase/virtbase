@@ -51,7 +51,7 @@ const icons = {
   zap: LucideZap,
 } as const;
 
-export type AdvantageIcon = keyof typeof icons;
+type AdvantageIcon = keyof typeof icons;
 
 interface AdvantageItemProps
   extends Omit<React.ComponentProps<"div">, "title"> {

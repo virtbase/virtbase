@@ -176,6 +176,7 @@ export const UploadProxmoxIsoInputSchema = ProxmoxIsoDownloadSchema.pick({
 
 export type UploadProxmoxIsoInput = z.infer<typeof UploadProxmoxIsoInputSchema>;
 
+/** @alias */
 export const UploadProxmoxIsoOutputSchema = GetProxmoxIsoDownloadOutputSchema;
 
 export type UploadProxmoxIsoOutput = z.infer<
