@@ -17,6 +17,7 @@ env:
   # when CI is set, so no application secrets are needed for these jobs.
   CI: "true"
   TURBO_TELEMETRY_DISABLED: "1"
+  TURBO_REMOTE_CACHE_SIGNATURE_KEY: ${{ secrets.TURBO_REMOTE_CACHE_SIGNATURE_KEY }}
   NEXT_TELEMETRY_DISABLED: "1"
 
 jobs:
@@ -57,20 +58,20 @@ jobs:
       - name: Typecheck
         run: bun typecheck
 
-      # `--output-type err` prints violations only, so the green tick is the
-      # whole message a reader takes away - including when the cruise ran half
-      # blind. dependency-cruiser needs a `typescript` it can load (>=2 <7);
-      # without one it skips every `.ts` file and reports a clean graph.
-      # `tooling/boundaries` pins one. Treat the warning as a failure in case
-      # that ever regresses.
       - name: Architecture boundaries
-        run: |
-          set -o pipefail
-          bun check:boundaries 2>&1 | tee "$RUNNER_TEMP/boundaries.log"
-          if grep -q 'missing-typescript-transpiler' "$RUNNER_TEMP/boundaries.log"; then
-            echo "::error title=dependency-cruiser ran degraded::No TypeScript compiler in the range dependency-cruiser supports (>=2.0.0 <7.0.0), so type-only imports were not resolved. The layer rules above proved nothing. See tooling/boundaries/README.md."
-            exit 1
-          fi
+        run: bun run boundaries
+
+      - name: Markdown format
+        run: bun run fmt:md:check
+
+      - name: Unused code and dependencies
+        run: bun run lint:knip
+
+      - name: Workspace manifests
+        run: bun run lint:sherif
+
+      - name: Spelling
+        uses: crate-ci/typos@7f9d0819ca1c008ade73f4b41fa9d258d48f605b # v1.51.1
 
   test:
     name: Unit and integration tests

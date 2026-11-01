@@ -59,10 +59,9 @@ type DetachPaymentMethodsStepParams = {
  * has - an error, and a permanently wedged offboarding.
  *
  * The provider is resolved through the registry rather than by importing
- * `@virtbase/integration-stripe` - the rule `AGENTS.md` states and
- * `bun check:boundaries` enforces. The resolver is loaded lazily for the
- * reason `resetPointerRecordsStep` gives: it reaches `integrations`, a
- * module-level const inside an import cycle, and a static import of that from
+ * `@virtbase/integration-stripe` - the rule `AGENTS.md` states. The resolver
+ * is loaded lazily for the reason `resetPointerRecordsStep` gives: it reaches
+ * `integrations`, a module-level const inside an import cycle, and a static import of that from
  * a step module can be evaluated while the module is still initialising -
  * which fails the whole step bundle with a TDZ error rather than just this
  * step.

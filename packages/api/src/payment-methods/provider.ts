@@ -76,8 +76,7 @@ export class PaymentCapabilityUnavailableError extends Error {
  *
  * Goes through the registry rather than importing `@virtbase/integration-stripe`
  * - a router that imports an integration package pins the application to that
- * integration, which is the rule `AGENTS.md` states and
- * `.dependency-cruiser.jsonc` enforces.
+ * integration, which is the rule `AGENTS.md` states.
  *
  * The three off-session methods on `PaymentProvider` are optional on purpose:
  * Anonpay settles a trade and has nothing to store, so `resolve` can hand back

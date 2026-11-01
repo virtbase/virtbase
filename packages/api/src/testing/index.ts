@@ -23,8 +23,8 @@
  * cannot also be a dev dependency of it - turbo reads dev dependencies as graph
  * edges and the cycle breaks the build.
  *
- * Nothing here is imported by shipped code; `.dependency-cruiser.jsonc` enforces
- * that.
+ * Nothing here is imported by shipped code; a `noRestrictedImports` override in
+ * `biome.json` enforces that.
  */
 export * from "./caller.ts";
 export * from "./fixtures.ts";
