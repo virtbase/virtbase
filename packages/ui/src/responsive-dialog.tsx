@@ -85,8 +85,15 @@ export function ResponsiveDialog({
     );
   }
 
+  const { open, defaultOpen, onOpenChange, modal } = props;
+
   return (
-    <Drawer {...props}>
+    <Drawer
+      {...(open === undefined ? {} : { open })}
+      {...(defaultOpen === undefined ? {} : { defaultOpen })}
+      {...(onOpenChange === undefined ? {} : { onOpenChange })}
+      {...(modal === undefined ? {} : { modal })}
+    >
       <DrawerContent>
         <DrawerHeader>
           <DrawerTitle className="text-xl">{title}</DrawerTitle>

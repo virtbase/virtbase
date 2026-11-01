@@ -33,8 +33,8 @@
   "dependencies": {
     "@sentry/node": "catalog:sentry",
     "@trpc/server": "catalog:trpc",
-    "@upstash/ratelimit": "^2.2.0",
-    "@upstash/redis": "^1.39.0",
+    "@upstash/ratelimit": "2.2.0",
+    "@upstash/redis": "1.39.0",
     "@virtbase/auth": "workspace:*",
     "@virtbase/config": "workspace:*",
     "@virtbase/db": "workspace:*",
@@ -53,10 +53,10 @@
     "@virtbase/proxmox-api": "catalog:",
     "@virtbase/utils": "workspace:*",
     "@virtbase/validators": "workspace:*",
-    "ai": "7.0.137",
-    "pdfkit": "^0.20.2",
+    "ai": "7.0.153",
+    "pdfkit": "0.20.2",
     "superjson": "catalog:",
-    "trpc-to-openapi": "^3.3.0",
+    "trpc-to-openapi": "3.3.3",
     "use-intl": "catalog:intl",
     "workflow": "catalog:",
     "zod": "catalog:"
@@ -66,7 +66,7 @@
     "next": "catalog:"
   },
   "devDependencies": {
-    "@types/pdfkit": "^0.17.6",
+    "@types/pdfkit": "0.17.7",
     "@virtbase/tsconfig": "workspace:*",
     "typescript": "catalog:"
   }

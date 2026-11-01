@@ -248,8 +248,8 @@ async function claimFirstAvailableSubnet(
     `;
 
       const result = await tx
-        .execute(query)
-        .then((res) => res.rows[0] as { subnet: string } | undefined);
+        .execute<{ subnet: string }>(query)
+        .then((res) => res.rows[0]);
       if (!result?.subnet) {
         return null;
       }

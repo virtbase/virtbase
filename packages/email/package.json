@@ -38,9 +38,9 @@
   },
   "dependencies": {
     "@virtbase/utils": "workspace:*",
-    "nodemailer": "^10.1.0",
-    "react-email": "^6.11.0",
-    "resend": "^6.32.0",
+    "nodemailer": "10.2.1",
+    "react-email": "6.11.3",
+    "resend": "6.34.1",
     "use-intl": "catalog:intl"
   },
   "peerDependencies": {
@@ -48,8 +48,8 @@
     "react-dom": "catalog:react"
   },
   "devDependencies": {
-    "@react-email/preview-server": "^5.2.10",
-    "@react-email/ui": "^6.11.0",
+    "@react-email/preview-server": "5.2.10",
+    "@react-email/ui": "6.11.3",
     "@types/react": "catalog:react",
     "@types/react-dom": "catalog:react",
     "@virtbase/tsconfig": "workspace:*",
