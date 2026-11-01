@@ -1,5 +1,6 @@
 {
   "name": "@virtbase/integration-discord",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "exports": {
@@ -7,18 +8,18 @@
     "./utils": "./src/utils/index.ts"
   },
   "scripts": {
-    "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "rasterize-emojis": "bun scripts/rasterize-emojis.ts",
-    "test": "bun --env-file=../../.env.test test --timeout 20000 --isolate",
     "typecheck": "tsc --noEmit",
-    "with-env": "bun --bun --env-file ../../.env --"
+    "test": "bun --env-file=../../.env.test test --timeout 20000 --isolate",
+    "rasterize-emojis": "bun scripts/rasterize-emojis.ts",
+    "with-env": "bun --bun --env-file ../../.env --",
+    "clean": "git clean -xdf .cache .turbo dist node_modules"
   },
   "dependencies": {
     "@virtbase/db": "workspace:*",
     "@virtbase/integration-sdk": "workspace:*",
     "@virtbase/ports": "workspace:*",
-    "@virtbase/validators": "workspace:*",
     "@virtbase/utils": "workspace:*",
+    "@virtbase/validators": "workspace:*",
     "discord-api-types": "^0.38.56",
     "next-intl": "catalog:intl",
     "tweetnacl": "^1.0.3",

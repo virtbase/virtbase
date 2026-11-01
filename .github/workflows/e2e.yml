@@ -89,7 +89,7 @@ jobs:
         run: bun x playwright install --with-deps chromium
 
       - name: Run Playwright
-        run: bun run test:e2e
+        run: bun run e2e
 
       # `playwright-report/` embeds the trace, video and screenshot for every
       # failure, so it is self-contained. `test-results/` is kept alongside it

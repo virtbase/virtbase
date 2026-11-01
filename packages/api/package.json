@@ -1,5 +1,6 @@
 {
   "name": "@virtbase/api",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "exports": {
@@ -23,11 +24,11 @@
     "./testing/fixtures": "./src/testing/fixtures.ts"
   },
   "scripts": {
-    "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "embed-fonts": "bun scripts/embed-fonts.ts",
-    "test": "bun --env-file=../../.env.test test --timeout 20000 --parallel=2",
     "typecheck": "tsc --noEmit",
-    "with-env": "bun --bun --env-file ../../.env --"
+    "test": "bun --env-file=../../.env.test test --timeout 20000 --parallel=2",
+    "embed-fonts": "bun scripts/embed-fonts.ts",
+    "with-env": "bun --bun --env-file ../../.env --",
+    "clean": "git clean -xdf .cache .turbo dist node_modules"
   },
   "dependencies": {
     "@sentry/node": "catalog:sentry",
@@ -54,7 +55,6 @@
     "@virtbase/validators": "workspace:*",
     "ai": "7.0.137",
     "pdfkit": "^0.20.2",
-    "server-only": "^0.0.1",
     "superjson": "catalog:",
     "trpc-to-openapi": "^3.3.0",
     "use-intl": "catalog:intl",

@@ -1,103 +1,95 @@
 {
   "name": "virtbase",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "license": "AGPL-3.0-or-later",
   "author": "Janic Bellmann <contact@janic.dev>",
+  "homepage": "https://virtbase.com",
   "repository": {
     "type": "git",
     "url": "https://github.com/virtbase/virtbase"
   },
-  "devDependencies": {
-    "@biomejs/biome": "catalog:",
-    "@commitlint/cli": "^21.2.3",
-    "@commitlint/config-conventional": "^21.2.3",
-    "@types/bun": "catalog:",
-    "husky": "^9.1.7",
-    "lint-staged": "^17.6.0",
-    "turbo": "^2.11.7"
-  },
-  "peerDependencies": {
-    "typescript": "catalog:"
-  },
   "bugs": {
     "url": "https://github.com/virtbase/virtbase/issues"
   },
-  "catalog": {
-    "@biomejs/biome": "2.5.15",
-    "@playwright/test": "^1.64.0",
-    "@tanstack/react-query": "^5.104.1",
-    "@tanstack/react-table": "^9.2.8",
-    "@types/bun": "1.4.2",
-    "@virtbase/proxmox-api": "^3.0.0",
-    "next": "^16.4.0",
-    "next-themes": "^0.4.6",
-    "nuqs": "^2.10.2",
-    "recharts": "^3.10.1",
-    "sonner": "^2.0.8",
-    "superjson": "^2.2.6",
-    "typescript": "^7.0.2",
-    "workflow": "^5.2.0",
-    "yaml": "^2.9.1",
-    "zod": "^4.6.5"
-  },
-  "catalogs": {
-    "auth": {
-      "@better-auth/api-key": "^1.7.7",
-      "@better-auth/passkey": "^1.7.7",
-      "better-auth": "^1.7.7"
-    },
-    "intl": {
-      "next-intl": "^4.14.9",
-      "use-intl": "^4.14.9"
-    },
-    "react": {
-      "@types/react": "^19.3.0",
-      "@types/react-dom": "^19.3.0",
-      "react": "^19.3.0",
-      "react-dom": "^19.3.0"
-    },
-    "sentry": {
-      "@sentry/core": "11.6.0",
-      "@sentry/nextjs": "11.6.0",
-      "@sentry/node": "11.6.0"
-    },
-    "tailwind": {
-      "@tailwindcss/postcss": "^4.3.3",
-      "postcss": "^8.5.29",
-      "tailwindcss": "^4.3.3"
-    },
-    "trpc": {
-      "@trpc/client": "^11.19.0",
-      "@trpc/server": "^11.19.0",
-      "@trpc/tanstack-react-query": "^11.19.0"
-    }
-  },
-  "engines": {
-    "bun": ">=1.4.3",
-    "node": ">=24.15.0"
-  },
-  "homepage": "https://virtbase.com",
   "keywords": [
     "vps",
     "cloud",
     "hosting"
   ],
-  "license": "AGPL-3.0-or-later",
-  "overrides": {
-    "nanoid@>=4.0.0 <5.1.16": "5.1.16",
-    "next@<16.4.0": "16.4.0",
-    "esbuild@>=0.27.3 <0.28.1": "0.28.2",
-    "@ai-sdk/provider-utils@>=4.0.0-beta.10 <4.0.33": "4.0.33",
-    "devalue@<5.9.3": "5.9.3"
+  "engines": {
+    "bun": ">=1.4.3",
+    "node": ">=24.15.0"
   },
   "packageManager": "bun@1.4.3",
-  "private": true,
+  "workspaces": {
+    "packages": [
+      "apps/*",
+      "packages/*",
+      "tooling/tailwind",
+      "tooling/typescript",
+      "tooling/gates"
+    ],
+    "catalog": {
+      "@biomejs/biome": "2.5.15",
+      "@playwright/test": "^1.64.0",
+      "@tanstack/react-query": "^5.104.1",
+      "@tanstack/react-table": "^9.2.8",
+      "@types/bun": "1.4.2",
+      "@virtbase/proxmox-api": "^3.0.0",
+      "next": "^16.4.0",
+      "next-themes": "^0.4.6",
+      "nuqs": "^2.10.2",
+      "recharts": "^3.10.1",
+      "sonner": "^2.0.8",
+      "superjson": "^2.2.6",
+      "typescript": "^7.0.2",
+      "workflow": "^5.2.0",
+      "yaml": "^2.9.1",
+      "zod": "^4.6.5"
+    },
+    "catalogs": {
+      "auth": {
+        "@better-auth/api-key": "^1.7.7",
+        "@better-auth/passkey": "^1.7.7",
+        "better-auth": "^1.7.7"
+      },
+      "intl": {
+        "next-intl": "^4.14.9",
+        "use-intl": "^4.14.9"
+      },
+      "react": {
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "react": "^19.3.0",
+        "react-dom": "^19.3.0"
+      },
+      "sentry": {
+        "@sentry/core": "11.6.0",
+        "@sentry/nextjs": "11.6.0",
+        "@sentry/node": "11.6.0"
+      },
+      "tailwind": {
+        "@tailwindcss/postcss": "^4.3.3",
+        "postcss": "^8.5.29",
+        "tailwindcss": "^4.3.3"
+      },
+      "trpc": {
+        "@trpc/client": "^11.19.0",
+        "@trpc/server": "^11.19.0",
+        "@trpc/tanstack-react-query": "^11.19.0"
+      }
+    }
+  },
   "scripts": {
+    "boundaries": "turbo boundaries",
     "build": "turbo run build",
     "check": "biome check .",
-    "check:boundaries": "bun install --cwd tooling/boundaries --frozen-lockfile --silent && bun tooling/boundaries/node_modules/.bin/depcruise packages apps --config .dependency-cruiser.jsonc --output-type err",
     "check:ci": "biome ci --config-path=biome.ci.json .",
     "check:unsafe": "biome check --write --unsafe .",
     "check:write": "biome check --write .",
-    "clean": "git clean -xdf node_modules",
+    "clean": "git clean -xdf .turbo node_modules",
     "clean:workspaces": "turbo run clean",
     "cluster:down": "docker compose -f tooling/proxmox-cluster/docker-compose.yml down",
     "cluster:reset": "./tooling/proxmox-cluster/reset.sh",
@@ -109,8 +101,15 @@
     "dev": "turbo run dev",
     "discord:emojis": "turbo -F @virtbase/integration-discord rasterize-emojis",
     "discord:tunnel": "bunx localtunnel --port 3000 --subdomain virtbase-dev --print-requests",
+    "e2e": "turbo run e2e",
     "email": "turbo run email",
     "eval:firewall-ai": "bun --env-file .env packages/api/src/firewall-ai/eval/run.ts",
+    "fmt:md": "dprint fmt",
+    "fmt:md:check": "dprint check",
+    "lint:knip": "knip-bun && knip-bun --production",
+    "lint:publint": "turbo run publint",
+    "lint:sherif": "bun --bun sherif --fail-on-warnings --ignore-rule non-existant-packages",
+    "lint:typos": "typos",
     "prepare": "husky",
     "script": "turbo -F @virtbase/web script --",
     "setup": "./scripts/setup.sh",
@@ -118,15 +117,66 @@
     "stripe:listen": "turbo -F @virtbase/web stripe:listen",
     "test": "turbo run test",
     "test:coverage": "turbo run test -- --coverage --coverage-reporter=text --coverage-reporter=lcov",
-    "test:e2e": "turbo -F @virtbase/web test:e2e",
     "typecheck": "turbo run typecheck",
-    "ui-add": "turbo run ui-add"
+    "ui-add": "turbo run ui-add",
+    "verify": "turbo run typecheck test --affected && bun run check:ci && turbo boundaries && bun run fmt:md:check && bun run lint:knip && bun run lint:sherif"
   },
-  "type": "module",
-  "workspaces": [
-    "apps/*",
-    "packages/*",
-    "tooling/tailwind",
-    "tooling/typescript"
-  ]
+  "peerDependencies": {
+    "typescript": "catalog:"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "catalog:",
+    "@commitlint/cli": "21.2.3",
+    "@commitlint/config-conventional": "21.2.3",
+    "@dprint/markdown": "0.26.0",
+    "@types/bun": "catalog:",
+    "dprint": "0.60.1",
+    "husky": "9.1.7",
+    "knip": "6.40.0",
+    "lint-staged": "17.6.0",
+    "publint": "0.3.25",
+    "sherif": "1.13.0",
+    "turbo": "2.11.7"
+  },
+  "trustedDependencies": [],
+  "lint-staged": {
+    "*": [
+      "bun tooling/gates/src/license-header.ts",
+      "biome check --write --no-errors-on-unmatched --files-ignore-unknown=true"
+    ],
+    "*.md": "dprint fmt --allow-no-files"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ],
+    "rules": {
+      "type-enum": [
+        2,
+        "always",
+        [
+          "build",
+          "chore",
+          "ci",
+          "deprecate",
+          "docs",
+          "feat",
+          "fix",
+          "perf",
+          "refactor",
+          "revert",
+          "security",
+          "style",
+          "test"
+        ]
+      ]
+    }
+  },
+  "overrides": {
+    "nanoid@>=4.0.0 <5.1.16": "5.1.16",
+    "next@<16.4.0": "16.4.0",
+    "esbuild@>=0.27.3 <0.28.1": "0.28.2",
+    "@ai-sdk/provider-utils@>=4.0.0-beta.10 <4.0.33": "4.0.33",
+    "devalue@<5.9.3": "5.9.3"
+  }
 }

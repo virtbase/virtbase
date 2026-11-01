@@ -1,5 +1,6 @@
 {
   "name": "@virtbase/test-utils",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "exports": {
@@ -7,8 +8,8 @@
     "./preload": "./src/preload.ts"
   },
   "scripts": {
-    "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "clean": "git clean -xdf .cache .turbo dist node_modules"
   },
   "devDependencies": {
     "@happy-dom/global-registrator": "^20.14.6",

@@ -1,0 +1,16 @@
+{
+  "name": "@virtbase/gates",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "bun test",
+    "clean": "git clean -xdf .turbo node_modules"
+  },
+  "devDependencies": {
+    "@types/bun": "catalog:",
+    "@virtbase/tsconfig": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

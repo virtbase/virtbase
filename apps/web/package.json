@@ -1,19 +1,20 @@
 {
   "name": "@virtbase/web",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "bun with-env next build",
-    "clean": "git clean -xdf .cache .next .turbo node_modules src/app/.well-known",
     "dev": "bun with-env next dev",
-    "script": "bun with-env scripts/run.ts",
+    "build": "bun with-env next build",
     "start": "bun with-env next start",
-    "stripe:listen": "stripe listen --forward-to localhost:3000/api/stripe/webhook",
-    "test": "bun --env-file=../../.env.test test --timeout 20000 --isolate",
-    "test:codegen": "playwright codegen app.virtbase.localhost:3000",
-    "test:e2e": "playwright test",
     "typecheck": "bun with-env next typegen && tsc --noEmit",
-    "with-env": "bun --bun --env-file ../../.env --"
+    "test": "bun --env-file=../../.env.test test --timeout 20000 --isolate",
+    "e2e": "playwright test",
+    "script": "bun with-env scripts/run.ts",
+    "stripe:listen": "stripe listen --forward-to localhost:3000/api/stripe/webhook",
+    "test:codegen": "playwright codegen app.virtbase.localhost:3000",
+    "with-env": "bun --bun --env-file ../../.env --",
+    "clean": "git clean -xdf .cache .next .turbo node_modules src/app/.well-known"
   },
   "dependencies": {
     "@better-auth/api-key": "catalog:auth",

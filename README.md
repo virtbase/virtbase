@@ -1,26 +1,35 @@
 <a href="https://virtbase.com">
-  <img alt="Hosting, but secure. Virtbase is providing secure and open-source VPS hosting." src="https://raw.githubusercontent.com/virtbase/virtbase/main/.github/assets/banner.png">
+  <img
+    alt="Hosting, but secure. Virtbase is providing secure and open-source VPS hosting."
+    src="https://raw.githubusercontent.com/virtbase/virtbase/main/.github/assets/banner.png"
+  >
 </a>
 
 <h3 align="center">Virtbase</h3>
 
 <p align="center">
-    Hosting, but secure.
-    <br />
-    <a href="https://virtbase.com"><strong>Learn more »</strong></a>
-    <br />
-    <br />
-    <a href="#getting-started"><strong>Getting Started</strong></a> ·
-    <a href="#tech-stack"><strong>Tech Stack</strong></a> ·
-    <a href="#contributing"><strong>Contributing</strong></a>
+  Hosting, but secure.
+  <br />
+  <a href="https://virtbase.com"><strong>Learn more »</strong></a>
+  <br />
+  <br />
+  <a href="#getting-started"><strong>Getting Started</strong></a> ·
+  <a href="#tech-stack"><strong>Tech Stack</strong></a> ·
+  <a href="#contributing"><strong>Contributing</strong></a>
 </p>
 
 <p align="center">
   <a href="https://twitter.com/virtbasecom">
-    <img src="https://img.shields.io/twitter/follow/virtbasecom?style=flat&label=%40virtbasecom&logo=twitter&color=0bf&logoColor=fff" alt="Twitter" />
+    <img
+      src="https://img.shields.io/twitter/follow/virtbasecom?style=flat&label=%40virtbasecom&logo=twitter&color=0bf&logoColor=fff"
+      alt="Twitter"
+    />
   </a>
   <a href="https://github.com/virtbase/virtbase/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/virtbase/virtbase?label=license&logo=github&color=f80&logoColor=fff" alt="License" />
+    <img
+      src="https://img.shields.io/github/license/virtbase/virtbase?label=license&logo=github&color=f80&logoColor=fff"
+      alt="License"
+    />
   </a>
 </p>
 
@@ -85,12 +94,12 @@ The marketing site, the dashboard, the admin console and the public API are
 served on separate hosts, and the session is a cookie scoped to
 `.virtbase.localhost`:
 
-| | |
-| --- | --- |
-| <http://virtbase.localhost:3000> | marketing site |
-| <http://app.virtbase.localhost:3000> | customer dashboard |
-| <http://admin.virtbase.localhost:3000> | admin console |
-| <http://api.virtbase.localhost:3000> | public API |
+|                                        |                    |
+| -------------------------------------- | ------------------ |
+| <http://virtbase.localhost:3000>       | marketing site     |
+| <http://app.virtbase.localhost:3000>   | customer dashboard |
+| <http://admin.virtbase.localhost:3000> | admin console      |
+| <http://api.virtbase.localhost:3000>   | public API         |
 
 `http://localhost:3000` never receives that cookie, so signing in there appears
 to do nothing. Most systems resolve `*.localhost` to loopback on their own; if
@@ -103,7 +112,7 @@ bun dev              # the web app; packages are compiled from source
 bun check:write      # lint and format
 bun typecheck        # TypeScript
 bun run test         # unit and integration tests
-bun test:e2e         # Playwright
+bun run e2e          # Playwright
 ```
 
 `bun run test`, not `bun test`: the bare form is Bun's own runner, which starts
@@ -134,9 +143,9 @@ We love our contributors! Here's how you can contribute:
 
 ### Recommended Versions
 
-| Package |   Version    |
-|---------|--------------|
-| bun     | >= v1.4.3    |
+| Package | Version   |
+| ------- | --------- |
+| bun     | >= v1.4.3 |
 
 Node.js is not needed: everything, Next.js included, runs on Bun.
 
