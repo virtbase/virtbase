@@ -28,7 +28,7 @@ RUN bun run compile && cp dist/novnc-proxy /novnc-proxy
 FROM scratch AS binary
 COPY --from=builder /novnc-proxy /novnc-proxy
 
-FROM gcr.io/distroless/base-debian13:nonroot@sha256:a0d70d6a97cd697d9362bc2aae4a6560dd65817e365d0043b07325a97975dc91
+FROM gcr.io/distroless/base-debian13:nonroot@sha256:f9518b74815721f537a7458cc693b4406208c04fce23bbffab511516117f34fd
 COPY --from=builder /novnc-proxy /usr/local/bin/novnc-proxy
 ENV PORT=8443
 EXPOSE 8443
