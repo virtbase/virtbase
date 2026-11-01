@@ -482,6 +482,10 @@
         "typescript": "catalog:",
       },
     },
+    "tooling/pve-patches": {
+      "name": "@virtbase/pve-patches",
+      "version": "0.0.0",
+    },
     "tooling/tailwind": {
       "name": "@virtbase/tailwind-config",
       "version": "0.0.0",
@@ -1862,6 +1866,8 @@
     "@virtbase/ports": ["@virtbase/ports@workspace:packages/ports"],
 
     "@virtbase/proxmox-api": ["@virtbase/proxmox-api@3.0.0", "", {}, "sha512-/gZTxK7cK0vasSQB0zmdDtQOYLC5syVBKRCKt6H1CAXvbxyLmQuQ/1X8t2kvRUCMLY0iNqYeX+j0Tfm8g37xBg=="],
+
+    "@virtbase/pve-patches": ["@virtbase/pve-patches@workspace:tooling/pve-patches"],
 
     "@virtbase/tailwind-config": ["@virtbase/tailwind-config@workspace:tooling/tailwind"],
 
