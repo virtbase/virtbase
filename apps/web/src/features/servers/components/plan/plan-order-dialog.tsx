@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 "use client";
@@ -29,11 +29,11 @@ import { Spinner } from "@virtbase/ui/spinner";
 import { formatBytes } from "@virtbase/utils";
 import { useExtracted, useFormatter } from "next-intl";
 import type React from "react";
-import { CheckoutWaivers } from "@/features/checkout/components/checkout-waivers";
-import { PAYMENT_FORM_ID } from "@/features/checkout/constants";
-import { getMutationErrorDetail } from "@/lib/trpc/query-client";
-import { usePlanContext } from "./plan-context";
-import { getPlanCharge, PlanSummary } from "./plan-summary";
+import { CheckoutWaivers } from "@/features/checkout/components/checkout-waivers.tsx";
+import { PAYMENT_FORM_ID } from "@/features/checkout/constants.ts";
+import { getMutationErrorDetail } from "@/lib/trpc/query-client.ts";
+import { usePlanContext } from "./plan-context.tsx";
+import { getPlanCharge, PlanSummary } from "./plan-summary.tsx";
 
 /** The consent form lives in the body; the confirm button lives in the footer. */
 const PLAN_ORDER_FORM_ID = "plan-order-form";
@@ -169,7 +169,7 @@ export function PlanOrderDialog({
       // The payment step is the tall one. Letting the body take the height
       // that is left and scroll inside it is what keeps the footer - and with
       // it "Pay now" - pinned on a phone, where the dialog is a drawer.
-      containerClassName={isPaymentStep ? "min-h-0 flex-1" : undefined}
+      {...(isPaymentStep ? { containerClassName: "min-h-0 flex-1" } : {})}
       description={
         isPaymentStep
           ? t("Pay for the order you just placed.")

@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import * as Sentry from "@sentry/node";
@@ -23,9 +23,9 @@ import { notificationDeliveries, users } from "@virtbase/db/schema";
 import { DEFAULT_EMAIL_LOCALE } from "@virtbase/email/translations";
 import type { Notification, NotificationChannel } from "@virtbase/ports";
 import { ADMIN_DOMAIN, APP_DOMAIN } from "@virtbase/utils";
-import { notificationTargetStore } from "./store";
-import type { NotificationParams } from "./text";
-import { renderNotification } from "./text";
+import { notificationTargetStore } from "./store.ts";
+import type { NotificationParams } from "./text.ts";
+import { renderNotification } from "./text.ts";
 
 /**
  * How long one channel gets before the delivery is failed and left to the
@@ -77,7 +77,7 @@ const withTimeout = async <T>(
 const findChannel = async (
   channelId: string,
 ): Promise<NotificationChannel | null> => {
-  const { integrations } = await import("../integrations");
+  const { integrations } = await import("../integrations/index.ts");
   const channels = await integrations.resolveAll("notifications");
   return channels.find((channel) => channel.id === channelId) ?? null;
 };
@@ -170,6 +170,8 @@ const markSkipped = async (id: string, reason: string) => {
  * Absolute matters: Discord rejects an embed whose `url` is not a full URL,
  * with a 400 and `{"embeds": ["0"]}`, and an email link would render as a dead
  * relative href - which fails more quietly and is therefore worse.
+ *
+ * @internal
  */
 export const absoluteNotificationUrl = (
   url: string | null | undefined,

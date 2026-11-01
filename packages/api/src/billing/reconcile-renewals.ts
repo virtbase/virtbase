@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import * as Sentry from "@sentry/node";
@@ -31,14 +31,14 @@ import { db } from "@virtbase/db/client";
 import { payments, subscriptionRenewals } from "@virtbase/db/schema";
 import type { Payment } from "@virtbase/ports";
 import { RENEWAL_AUTHENTICATION_WINDOW_HOURS } from "@virtbase/utils";
-import { applyPaymentEvent } from "../orders/apply-payment-event";
-import { fulfilOrder } from "../orders/fulfill-order";
-import type { OrderBillingAddress } from "../orders/record-billing-details";
-import { requirePaymentCapability } from "../payment-methods/provider";
+import { applyPaymentEvent } from "../orders/apply-payment-event.ts";
+import { fulfilOrder } from "../orders/fulfill-order.ts";
+import type { OrderBillingAddress } from "../orders/record-billing-details.ts";
+import { requirePaymentCapability } from "../payment-methods/provider.ts";
 import {
   markRenewalCollecting,
   recordCollectionResult,
-} from "./record-outcome";
+} from "./record-outcome.ts";
 
 /**
  * How long a renewal may sit in `collecting` before the worker holding it is
@@ -178,7 +178,7 @@ const readBillingDetails: RenewalBillingResolver = async (payment) => {
   if (payment.provider !== "stripe") return EMPTY_BILLING_DETAILS;
 
   const { readStripeBillingDetails } = await import(
-    "../orders/settle-stripe-payment"
+    "../orders/settle-stripe-payment.ts"
   );
 
   return readStripeBillingDetails(payment.externalId);

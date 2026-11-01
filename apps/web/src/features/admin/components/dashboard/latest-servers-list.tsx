@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 "use client";
@@ -34,9 +34,9 @@ import { resolveServerOperatingSystem } from "@virtbase/utils";
 import NextLink from "next/link";
 import { useExtracted, useFormatter, useNow } from "next-intl";
 import { use } from "react";
-import type { getLatestServers } from "@/features/admin/api/dashboard/get-latest-servers";
-import { paths } from "@/lib/paths";
-import { OperatingSystemIcon } from "@/ui/operating-system-icon";
+import type { getLatestServers } from "@/features/admin/api/dashboard/get-latest-servers.ts";
+import { paths } from "@/lib/paths.ts";
+import { OperatingSystemIcon } from "@/ui/operating-system-icon.tsx";
 
 export function LatestServersList({
   promise,

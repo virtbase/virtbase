@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { afterEach, beforeEach, describe, expect, test } from "bun:test";
@@ -24,10 +24,14 @@ import {
   BACKUP_ARCHIVE_GRACE_MINUTES,
   BACKUP_STALE_AFTER_HOURS,
 } from "@virtbase/utils";
-import type { ProxmoxInstance } from "../../proxmox";
-import { mockProxmoxNode, mockServer, seedServerGraph } from "../../testing";
-import { reconcileServerBackup } from "../reconcile-backup";
-import { reconcileServerBackups } from "../reconcile-server-backups";
+import type { ProxmoxInstance } from "../../proxmox/index.ts";
+import {
+  mockProxmoxNode,
+  mockServer,
+  seedServerGraph,
+} from "../../testing/index.ts";
+import { reconcileServerBackup } from "../reconcile-backup.ts";
+import { reconcileServerBackups } from "../reconcile-server-backups.ts";
 
 const BACKUP_ID = "kbu_0000000000000000000000001";
 const UPID =

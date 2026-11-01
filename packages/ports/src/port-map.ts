@@ -1,33 +1,33 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { AbuseSource } from "./abuse-source";
-import type { PortName } from "./common";
-import type { DnsProvider } from "./dns-provider";
-import type { EventSubscriber } from "./event-subscriber";
-import type { IdentityProvider } from "./identity-provider";
-import type { InvoiceProvider } from "./invoice-provider";
-import type { IpReputationProvider } from "./ip-reputation";
-import type { MetricsSink } from "./metrics-sink";
-import type { NotificationChannel } from "./notification-channel";
-import type { ObjectStore } from "./object-store";
-import type { PaymentProvider } from "./payment-provider";
-import type { ServerManagementPort } from "./server-management";
-import type { SignalIntake } from "./signal";
+import type { AbuseSource } from "./abuse-source.ts";
+import type { PortName } from "./common.ts";
+import type { DnsProvider } from "./dns-provider.ts";
+import type { EventSubscriber } from "./event-subscriber.ts";
+import type { IdentityProvider } from "./identity-provider.ts";
+import type { InvoiceProvider } from "./invoice-provider.ts";
+import type { IpReputationProvider } from "./ip-reputation.ts";
+import type { MetricsSink } from "./metrics-sink.ts";
+import type { NotificationChannel } from "./notification-channel.ts";
+import type { ObjectStore } from "./object-store.ts";
+import type { PaymentProvider } from "./payment-provider.ts";
+import type { ServerManagementPort } from "./server-management.ts";
+import type { SignalIntake } from "./signal.ts";
 
 /**
  * The one place that says which interface each capability slot expects. The

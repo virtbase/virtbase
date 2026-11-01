@@ -1,27 +1,31 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 // Imported from the leaf rather than the `privacy` barrel: that barrel reaches
 // the export builder and through it PDFKit and the embedded fonts, none of
 // which an offboarding has any business loading.
-import type { SubjectTableName } from "../../privacy/subject-data";
-import { tablesToErase } from "../../privacy/subject-data";
+import type { SubjectTableName } from "../../privacy/subject-data.ts";
+import { tablesToErase } from "../../privacy/subject-data.ts";
 
-/** Marks a table `eraseSubjectDataStep` deletes itself. */
+/**
+ * Marks a table `eraseSubjectDataStep` deletes itself.
+ *
+ * @internal
+ */
 export const HERE = Symbol("erased-by-this-step");
 
 /**
@@ -45,6 +49,8 @@ export const HERE = Symbol("erased-by-this-step");
  * exports is a step, and a module it cannot stub drags its whole import graph
  * into the workflow bundle - where `@virtbase/utils`, reached from
  * `subject-data.ts`, fails the build over `node:crypto`.
+ *
+ * @internal
  */
 export const ERASURE_PLAN: Partial<
   Record<SubjectTableName, string | typeof HERE>

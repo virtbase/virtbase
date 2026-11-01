@@ -1,32 +1,32 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { defineIntegration } from "@virtbase/integration-sdk";
-import { createAbuseIpDbClient } from "./client";
-import { secretsSchema, settingsSchema } from "./config";
-import { localizeAbuseIpDb } from "./localize";
-import { AbuseIpDbReputation } from "./reputation";
-import { AbuseIpDbSource } from "./source";
+import { createAbuseIpDbClient } from "./client.ts";
+import { secretsSchema, settingsSchema } from "./config.ts";
+import { localizeAbuseIpDb } from "./localize.ts";
+import { AbuseIpDbReputation } from "./reputation.ts";
+import { AbuseIpDbSource } from "./source.ts";
 
-export * from "./categories";
-export * from "./client";
-export * from "./config";
-export * from "./reputation";
-export * from "./source";
+export * from "./categories.ts";
+export * from "./client.ts";
+export * from "./config.ts";
+export * from "./reputation.ts";
+export * from "./source.ts";
 
 export default defineIntegration({
   id: "abuseipdb",

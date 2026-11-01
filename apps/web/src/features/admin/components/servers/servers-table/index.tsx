@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 "use client";
@@ -21,10 +21,10 @@ import { DataTable, DataTableToolbar } from "@virtbase/ui/data-table";
 import { useDataTable } from "@virtbase/ui/hooks";
 import type { DataTableRowAction } from "@virtbase/ui/types";
 import React, { use } from "react";
-import type { getServerTemplateCounts } from "@/features/admin/api/servers/get-server-template-counts";
-import type { getServersList } from "@/features/admin/api/servers/get-servers-list";
-import type { ServersTableColumn } from "./columns";
-import { useServersTableColumns } from "./columns";
+import type { getServerTemplateCounts } from "@/features/admin/api/servers/get-server-template-counts.ts";
+import type { getServersList } from "@/features/admin/api/servers/get-servers-list.ts";
+import type { ServersTableColumn } from "./columns.tsx";
+import { useServersTableColumns } from "./columns.tsx";
 
 interface ServersTableProps {
   promises: Promise<

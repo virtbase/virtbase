@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 "use client";
@@ -21,18 +21,18 @@ import { AnimatedSizeContainer } from "@virtbase/ui/animated-size-container";
 import { Button } from "@virtbase/ui/button";
 import { useExtracted } from "next-intl";
 import { useEffect, useState } from "react";
-import { AuthMethodsSeparator } from "@/features/auth/components/auth-methods-separator";
-import { DiscordButton } from "@/features/auth/components/discord-button";
-import { EmailSignIn } from "@/features/auth/components/email-sign-in";
-import { GitHubButton } from "@/features/auth/components/github-button";
-import { GoogleButton } from "@/features/auth/components/google-button";
-import type { AuthMethod } from "@/features/auth/components/login-form-context";
+import { AuthMethodsSeparator } from "@/features/auth/components/auth-methods-separator.tsx";
+import { DiscordButton } from "@/features/auth/components/discord-button.tsx";
+import { EmailSignIn } from "@/features/auth/components/email-sign-in.tsx";
+import { GitHubButton } from "@/features/auth/components/github-button.tsx";
+import { GoogleButton } from "@/features/auth/components/google-button.tsx";
+import type { AuthMethod } from "@/features/auth/components/login-form-context.tsx";
 import {
   authMethods,
   LoginFormContext,
-} from "@/features/auth/components/login-form-context";
-import { PasskeyButton } from "@/features/auth/components/passkey-button";
-import { authClient } from "@/lib/auth/client";
+} from "@/features/auth/components/login-form-context.tsx";
+import { PasskeyButton } from "@/features/auth/components/passkey-button.tsx";
+import { authClient } from "@/lib/auth/client.ts";
 
 export default function LoginForm({
   methods = [...authMethods],

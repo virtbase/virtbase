@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import * as Sentry from "@sentry/node";
@@ -54,25 +54,25 @@ import {
   SetSubscriptionAutoRenewOutputSchema,
   SUBSCRIPTION_MANDATE_TEXT_VERSION,
 } from "@virtbase/validators";
-// The collector, reached the same way `servers/backups` reaches
-// `reconcileServerBackup`: through the package's own module, not through
-// `@virtbase/api/billing`, which would be this package importing itself.
-import type { RenewSubscriptionOutcome } from "../billing";
-import { retryRenewal } from "../billing";
 // By path, and deliberately: `./collect` is kept out of the `@virtbase/api/billing`
 // barrel because it reads `payment_methods.external_id`, and the barrel is an
 // entry point `apps/web` imports. Reaching in is the sanctioned way to want it -
 // see the note on that barrel. `usablePaymentMethodId` is the only caller here,
 // it returns an id the customer can already see, and the credential never
 // leaves it.
-import { resolveRenewalPaymentMethod } from "../billing/collect";
+import { resolveRenewalPaymentMethod } from "../billing/collect.ts";
+// The collector, reached the same way `servers/backups` reaches
+// `reconcileServerBackup`: through the package's own module, not through
+// `@virtbase/api/billing`, which would be this package importing itself.
+import type { RenewSubscriptionOutcome } from "../billing/index.ts";
+import { retryRenewal } from "../billing/index.ts";
 import {
   isRenewableSubscriptionStatus,
   RENEWABLE_SUBSCRIPTION_STATUSES,
-} from "../lib/subscription-status";
-import { SERVER_SUBJECT_TYPE } from "../subscriptions/subject-subscription";
-import { transitionSubscription } from "../subscriptions/transition-subscription";
-import { protectedProcedure } from "../trpc";
+} from "../lib/subscription-status.ts";
+import { SERVER_SUBJECT_TYPE } from "../subscriptions/subject-subscription.ts";
+import { transitionSubscription } from "../subscriptions/transition-subscription.ts";
+import { protectedProcedure } from "../trpc.ts";
 
 type Database = Parameters<
   Parameters<typeof protectedProcedure.query>[0]

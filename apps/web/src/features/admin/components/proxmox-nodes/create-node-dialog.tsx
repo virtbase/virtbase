@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 "use client";
@@ -56,13 +56,13 @@ import type React from "react";
 import { Suspense, useState } from "react";
 import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
-import { ShowPasswordAddon } from "@/ui/input-group-addons";
-import type { getLinkableDatacenters } from "../../api/datacenters/get-linkable-datacenters";
-import type { getLinkableProxmoxNodeGroups } from "../../api/proxmox-node-groups/get-linkable-proxmox-node-groups";
-import { createProxmoxNodeAction } from "../../api/proxmox-nodes/create-proxmox-node";
-import { transformTextField } from "../../lib/transform-text-field";
-import { DatacenterSelect } from "../datacenters/datacenter-select";
-import { NodeGroupSelect } from "../proxmox-node-groups/node-group-select";
+import { ShowPasswordAddon } from "@/ui/input-group-addons/index.tsx";
+import type { getLinkableDatacenters } from "../../api/datacenters/get-linkable-datacenters.ts";
+import type { getLinkableProxmoxNodeGroups } from "../../api/proxmox-node-groups/get-linkable-proxmox-node-groups.ts";
+import { createProxmoxNodeAction } from "../../api/proxmox-nodes/create-proxmox-node.ts";
+import { transformTextField } from "../../lib/transform-text-field.ts";
+import { DatacenterSelect } from "../datacenters/datacenter-select.tsx";
+import { NodeGroupSelect } from "../proxmox-node-groups/node-group-select.tsx";
 
 interface CreateNodeDialogProps
   extends Omit<

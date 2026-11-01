@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import * as Sentry from "@sentry/node";
@@ -37,14 +37,17 @@ import {
 } from "@virtbase/utils";
 import { start } from "workflow/api";
 import * as z from "zod";
-import { getDeletionBlockers, hasBlockers } from "../privacy/deletion/blockers";
+import {
+  getDeletionBlockers,
+  hasBlockers,
+} from "../privacy/deletion/blockers.ts";
 import {
   cancelAccountDeletion,
   requestAccountDeletion,
-} from "../privacy/deletion/lifecycle";
-import { revokeStepUp } from "../step-up/marker";
-import { protectedProcedure, stepUpProcedure } from "../trpc";
-import { exportUserDataWorkflow } from "../workflows/export-user-data";
+} from "../privacy/deletion/lifecycle.ts";
+import { revokeStepUp } from "../step-up/marker.ts";
+import { protectedProcedure, stepUpProcedure } from "../trpc.ts";
+import { exportUserDataWorkflow } from "../workflows/export-user-data/index.ts";
 
 export const privacyRouter = {
   /**

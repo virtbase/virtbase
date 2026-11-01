@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 "use client";
@@ -40,21 +40,24 @@ import type { DataTableRowAction } from "@virtbase/ui/types";
 import dynamic from "next/dynamic";
 import { useExtracted } from "next-intl";
 import { Fragment, useMemo, useState } from "react";
-import { AnimatedEmptyState } from "@/ui/animated-empty-state";
+import { AnimatedEmptyState } from "@/ui/animated-empty-state.tsx";
 import type {
   FirewallTableRow,
   GuestRule,
   HostRule,
-} from "../../lib/table-rows";
-import { buildFirewallTableRows, countHostRows } from "../../lib/table-rows";
-import { useFirewallRulesTableColumns } from "./columns";
+} from "../../lib/table-rows.ts";
+import { buildFirewallTableRows, countHostRows } from "../../lib/table-rows.ts";
+import { useFirewallRulesTableColumns } from "./columns.tsx";
 
-const FirewallRuleDialog = dynamic(() => import("../firewall-rule-dialog"), {
-  ssr: false,
-});
+const FirewallRuleDialog = dynamic(
+  () => import("../firewall-rule-dialog.tsx"),
+  {
+    ssr: false,
+  },
+);
 
 const DeleteFirewallRuleDialog = dynamic(
-  () => import("../delete-firewall-rule-dialog"),
+  () => import("../delete-firewall-rule-dialog.tsx"),
   { ssr: false },
 );
 
@@ -64,10 +67,10 @@ export function FirewallRulesTable({
   guestManager,
   isPending,
 }: {
-  hostRules?: HostRule[];
-  guestRules?: GuestRule[];
+  hostRules?: HostRule[] | undefined;
+  guestRules?: GuestRule[] | undefined;
   /** The in-VM firewall the guest rules came from, for the group heading. */
-  guestManager?: string | null;
+  guestManager?: string | null | undefined;
   isPending: boolean;
 }) {
   const t = useExtracted();

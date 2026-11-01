@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { GenerateServerFirewallRuleOutputSchema } from "@virtbase/validators/server";
@@ -21,11 +21,11 @@ import {
   FIREWALL_AI_MODEL,
   GENERATION_TIMEOUT_MS,
   repairGeneratedText,
-} from "../../router/servers/firewall/generation";
-import { buildGenerationContext } from "../build-context";
-import { buildSystemPrompt } from "../system-prompt";
-import type { EvalCase } from "./cases";
-import { defaultServer, EVAL_CASES, matchesExpectation } from "./cases";
+} from "../../router/servers/firewall/generation.ts";
+import { buildGenerationContext } from "../build-context.ts";
+import { buildSystemPrompt } from "../system-prompt.ts";
+import type { EvalCase } from "./cases.ts";
+import { defaultServer, EVAL_CASES, matchesExpectation } from "./cases.ts";
 
 /**
  * Measures rule generation against a fixed set of prompts.

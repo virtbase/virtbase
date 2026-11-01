@@ -1,30 +1,33 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { APP_DOMAIN, SUPPORT_EMAIL } from "@virtbase/utils";
 import { render } from "react-email";
 import type { CreateEmailOptions } from "resend";
-import { EmailDeliveryError } from "./errors";
-import { getResendClient } from "./resend";
-import { TRUSTPILOT_AFS_EMAIL, VARIANT_TO_FROM_MAP } from "./resend/constants";
+import { EmailDeliveryError } from "./errors.ts";
+import {
+  TRUSTPILOT_AFS_EMAIL,
+  VARIANT_TO_FROM_MAP,
+} from "./resend/constants.ts";
+import { getResendClient } from "./resend/index.ts";
 import type {
   ResendBulkEmailOptions,
   ResendEmailOptions,
-} from "./resend/types";
+} from "./resend/types.ts";
 
 /**
  * Turns one send into a thrown error, so that no failure can be mistaken for
@@ -87,12 +90,16 @@ const resendEmailForOptions = async (
     to: isProdEnv ? to : "delivered@resend.dev",
     from: from || VARIANT_TO_FROM_MAP[variant],
     subject: `${!isProdEnv && gitBranch ? `[${gitBranch}] ` : ""}${subject}`,
-    bcc: trustpilotAfs ? [...(bcc || []), TRUSTPILOT_AFS_EMAIL] : bcc,
+    ...(trustpilotAfs
+      ? { bcc: [...(bcc || []), TRUSTPILOT_AFS_EMAIL] }
+      : bcc === undefined
+        ? {}
+        : { bcc }),
     // if replyTo is set to "noreply", don't set replyTo
     // else set it to the value of replyTo or fallback to SUPPORT_EMAIL
     ...(replyTo === "noreply" ? {} : { replyTo: replyTo || SUPPORT_EMAIL }),
-    scheduledAt,
-    tags,
+    ...(scheduledAt === undefined ? {} : { scheduledAt }),
+    ...(tags === undefined ? {} : { tags }),
     ...(variant === "marketing"
       ? {
           headers: {

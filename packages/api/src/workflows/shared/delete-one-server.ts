@@ -1,28 +1,28 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { sleep } from "workflow";
-import type { GetProxmoxInstanceParams } from "../../proxmox/get-proxmox-instance";
-import { purgeAllBackupsStep } from "../delete-server/purge-all-backups";
-import { resetPointerRecordsStep } from "../delete-server/reset-pointer-records";
-import { storeServerDeletionStep } from "../delete-server/store-server-deletion";
-import { destroyGuestStep } from "./destroy-guest";
-import { performGuestActionStep } from "./perform-guest-action";
-import { waitForProxmoxTaskStep } from "./wait-for-proxmox-task";
+import type { GetProxmoxInstanceParams } from "../../proxmox/get-proxmox-instance.ts";
+import { purgeAllBackupsStep } from "../delete-server/purge-all-backups.ts";
+import { resetPointerRecordsStep } from "../delete-server/reset-pointer-records.ts";
+import { storeServerDeletionStep } from "../delete-server/store-server-deletion.ts";
+import { destroyGuestStep } from "./destroy-guest.ts";
+import { performGuestActionStep } from "./perform-guest-action.ts";
+import { waitForProxmoxTaskStep } from "./wait-for-proxmox-task.ts";
 
 type DeleteOneServerParams = {
   vmid: number;

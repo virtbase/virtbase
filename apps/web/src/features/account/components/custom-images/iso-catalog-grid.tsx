@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 "use client";
@@ -39,7 +39,7 @@ import { ISO_CATALOG } from "@virtbase/utils";
 import { useExtracted, useFormatter } from "next-intl";
 import { parseAsString, useQueryState } from "nuqs";
 import { useMemo, useState } from "react";
-import { OperatingSystemIcon } from "@/ui/operating-system-icon";
+import { OperatingSystemIcon } from "@/ui/operating-system-icon.tsx";
 
 const SEARCH_DEBOUNCE_MS = 300;
 
@@ -164,7 +164,7 @@ function IsoCatalogCard({
 }: {
   entry: IsoCatalogEntry;
   selected: boolean;
-  disabled?: boolean;
+  disabled?: boolean | undefined;
   onSelect: () => void;
 }) {
   const t = useExtracted();

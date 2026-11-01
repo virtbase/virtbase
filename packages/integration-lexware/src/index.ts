@@ -1,32 +1,32 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { defineIntegration } from "@virtbase/integration-sdk";
 import * as z from "zod";
-import { LexwareInvoiceProvider } from "./adapter";
-import { LexwareClient } from "./client";
-import { COUNTRY_CONTACTS, HOME_COUNTRY } from "./constants";
-import { localizeLexware } from "./localize";
+import { LexwareInvoiceProvider } from "./adapter.ts";
+import { LexwareClient } from "./client.ts";
+import { COUNTRY_CONTACTS, HOME_COUNTRY } from "./constants.ts";
+import { localizeLexware } from "./localize.ts";
 
-export * from "./adapter";
-export * from "./client";
-export * from "./constants";
-export * from "./messages";
-export * from "./types";
+export * from "./adapter.ts";
+export * from "./client.ts";
+export * from "./constants.ts";
+export * from "./messages.ts";
+export * from "./types.ts";
 
 const secretsSchema = z.object({
   apiKey: z.string().min(1),

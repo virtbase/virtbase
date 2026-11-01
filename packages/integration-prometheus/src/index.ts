@@ -1,39 +1,39 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { defineIntegration } from "@virtbase/integration-sdk";
-import { collectPlatformMetrics } from "./collectors";
+import { collectPlatformMetrics } from "./collectors.ts";
 import {
   secretFields,
   secretsSchema,
   settingsFields,
   settingsSchema,
-} from "./config";
-import { localizePrometheus } from "./localize";
-import { runtimeFor } from "./runtime";
-import { PrometheusMetricsSink } from "./sink";
-import { handleScrapeRequest } from "./webhook";
+} from "./config.ts";
+import { localizePrometheus } from "./localize.ts";
+import { runtimeFor } from "./runtime.ts";
+import { PrometheusMetricsSink } from "./sink.ts";
+import { handleScrapeRequest } from "./webhook.ts";
 
-export * from "./collectors";
-export * from "./config";
-export * from "./names";
-export * from "./runtime";
-export * from "./sink";
-export * from "./webhook";
+export * from "./collectors.ts";
+export * from "./config.ts";
+export * from "./names.ts";
+export * from "./runtime.ts";
+export * from "./sink.ts";
+export * from "./webhook.ts";
 
 export default defineIntegration({
   id: "prometheus",

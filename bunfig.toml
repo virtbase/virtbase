@@ -1,17 +1,4 @@
-[test]
-
-# Nothing here is read by `bun run test`. Turbo runs each package's `test`
-# script with cwd set to that package, and bun reads `./bunfig.toml` from cwd
-# without walking up, so the settings that shape a run live in the package's own
-# `bunfig.toml`. Every package with tests ignores `../**` and `**/__tests__/**`,
-# so its report covers its own source only (ADR 0020); `packages/api` also
-# ignores `src/testing/**` and `packages/utils` ignores `src/constants/**`.
-#
-# `packages/validators/src/**` and `packages/db/src/schema/**` are deliberately
-# not ignored. Each has its own `__tests__`, so excluding them would hide the
-# coverage of behaviour somebody wrote tests for.
-#
-# A DOM `preload` is deliberately absent, here and in most packages: happy-dom's
-# `GlobalRegistrator` replaces `fetch`, which breaks every suite that drives a
-# real server or installs its own mock. Only packages that render components
-# opt in.
+[install]
+linker = "isolated"
+exact = true
+minimumReleaseAge = 604800

@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { captureException } from "@sentry/nextjs";
@@ -38,7 +38,7 @@ import { cache } from "react";
 // Deferring the import breaks the cycle at the only edge that is not load
 // bearing: nothing here needs `auth` until a request actually asks for a
 // locale.
-import { COOKIE_NAME, defaultLocale, locales } from "./config";
+import { COOKIE_NAME, defaultLocale, locales } from "./config.ts";
 
 /**
  * The two ways `next/root-params` fails that are not our mistake.
@@ -105,7 +105,7 @@ async function getRouteLocale(): Promise<string | undefined> {
  */
 const getStoredLocale = cache(async (): Promise<Locale | undefined> => {
   try {
-    const { auth } = await import("@/lib/auth/server");
+    const { auth } = await import("@/lib/auth/server.ts");
     const session = await auth.api.getSession({ headers: await headers() });
 
     if (session && hasLocale(locales, session.user.locale)) {

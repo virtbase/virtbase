@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import {
@@ -26,15 +26,19 @@ import {
 } from "bun:test";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { appRouter } from "../../../root";
-import { mockServer, mockSession, seedServerGraph } from "../../../testing";
+import { appRouter } from "../../../root.ts";
+import {
+  mockServer,
+  mockSession,
+  seedServerGraph,
+} from "../../../testing/index.ts";
 
 // Redis is stubbed rather than exercised: `cached` degrades on any Redis error,
 // so a real client would still pass while quietly making the suite depend on
 // the network. The store is cleared per test to keep them independent.
 const cacheStore = new Map<string, unknown>();
 
-mock.module("../../../upstash/redis", () => ({
+mock.module("../../../upstash/redis.ts", () => ({
   redis: {
     get: async (key: string) => cacheStore.get(key) ?? null,
     set: async (key: string, value: unknown) => {
@@ -131,7 +135,7 @@ const running = { status: "running", qmpstatus: "running", agent: true };
 
 describe("servers.agent.get", () => {
   test("it reports a healthy agent with its OS", async () => {
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         current: running,
         info: {
@@ -167,7 +171,7 @@ describe("servers.agent.get", () => {
   test("it does not probe a stopped server", async () => {
     let probed = false;
 
-    mock.module("../../../proxmox", () => {
+    mock.module("../../../proxmox/index.ts", () => {
       const proxmoxMock = createProxmoxMock({
         current: { status: "stopped", qmpstatus: "stopped", agent: true },
       });
@@ -196,7 +200,7 @@ describe("servers.agent.get", () => {
   });
 
   test("it reports an agent that is not enabled in the configuration", async () => {
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({ current: { ...running, agent: false } }),
     );
 
@@ -211,7 +215,7 @@ describe("servers.agent.get", () => {
   });
 
   test("it reports a removed agent as unreachable", async () => {
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         current: running,
         infoError: new Error(
@@ -233,7 +237,7 @@ describe("servers.agent.get", () => {
   });
 
   test("it reports a blocked guest-exec distinctly from a missing agent", async () => {
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         current: running,
         info: { result: { supported_commands: supportedCommands(false) } },
@@ -255,7 +259,7 @@ describe("servers.agent.get", () => {
   test("it serves a cached result and re-probes only when refresh is set", async () => {
     let probes = 0;
 
-    mock.module("../../../proxmox", () => {
+    mock.module("../../../proxmox/index.ts", () => {
       const build = () =>
         createProxmoxMock({
           current: running,
@@ -298,7 +302,7 @@ describe("servers.agent.get", () => {
   test("it returns a Date on a cache hit, not the string Redis stored", async () => {
     // The cached payload is plain JSON, so a Date stored in it would come back
     // as a string and fail the output schema on every hit but the first.
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         current: running,
         info: { result: { supported_commands: supportedCommands(true) } },

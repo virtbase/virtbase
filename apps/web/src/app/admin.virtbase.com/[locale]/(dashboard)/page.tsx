@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import {
@@ -24,15 +24,15 @@ import {
 import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
-import { getActivityStats } from "@/features/admin/api/dashboard/get-activity-stats";
-import { verifyRenderSession } from "@/features/admin/api/verify-session";
-import { ActivityStatsRow } from "@/features/admin/components/dashboard/activity-stats-row";
-import { CustomersOverTimeCard } from "@/features/admin/components/dashboard/customers-over-time-card";
-import { LatestCustomersCard } from "@/features/admin/components/dashboard/latest-customers-card";
-import { LatestServersCard } from "@/features/admin/components/dashboard/latest-servers-card";
-import { RevenueOverTimeCard } from "@/features/admin/components/dashboard/revenue-over-time-card";
-import { SalesByPlanCard } from "@/features/admin/components/dashboard/sales-by-plan-card";
-import DashboardLayout from "@/ui/layout/dashboard-layout";
+import { getActivityStats } from "@/features/admin/api/dashboard/get-activity-stats.ts";
+import { verifyRenderSession } from "@/features/admin/api/verify-session.ts";
+import { ActivityStatsRow } from "@/features/admin/components/dashboard/activity-stats-row.tsx";
+import { CustomersOverTimeCard } from "@/features/admin/components/dashboard/customers-over-time-card.tsx";
+import { LatestCustomersCard } from "@/features/admin/components/dashboard/latest-customers-card.tsx";
+import { LatestServersCard } from "@/features/admin/components/dashboard/latest-servers-card.tsx";
+import { RevenueOverTimeCard } from "@/features/admin/components/dashboard/revenue-over-time-card.tsx";
+import { SalesByPlanCard } from "@/features/admin/components/dashboard/sales-by-plan-card.tsx";
+import DashboardLayout from "@/ui/layout/dashboard-layout.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();

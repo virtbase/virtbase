@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { eq, sql } from "@virtbase/db";
@@ -25,22 +25,22 @@ import type {
   SignalIngestResult,
 } from "@virtbase/ports";
 import { ABUSE_SIGNAL_PREFIX, InboundSignalSchema } from "@virtbase/validators";
-import { dispatchNotification } from "../notifications/dispatch";
+import { dispatchNotification } from "../notifications/dispatch.ts";
 import {
   caseReference,
   countRecentResolvedCases,
   openOrJoinAbuseCase,
   recordCaseEvent,
   setCaseStatus,
-} from "./case";
-import { ensureCaseMailbox } from "./mailbox/send";
-import { resolveSignalSubject } from "./resolve-subject";
-import { findMatchingRule } from "./rules";
+} from "./case.ts";
+import { ensureCaseMailbox } from "./mailbox/send.ts";
+import { resolveSignalSubject } from "./resolve-subject.ts";
+import { findMatchingRule } from "./rules.ts";
 import {
   sanitizeAbuseBody,
   sanitizeAbuseText,
   sanitizeAbuseTitle,
-} from "./sanitize";
+} from "./sanitize.ts";
 
 type Database = typeof database;
 type CaseCategory = AbuseCase["category"];

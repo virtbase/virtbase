@@ -1,21 +1,21 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import type { Money } from "./common";
+import type { Money } from "./common.ts";
 
 export type PaymentStatus =
   | "pending"
@@ -50,8 +50,8 @@ export interface CreatePaymentResult {
    * Set when the provider needs the browser to finish the flow — a hosted
    * checkout URL (Anonpay) or a client secret for an embedded form (Stripe).
    */
-  redirectUrl?: string;
-  clientSecret?: string;
+  redirectUrl?: string | undefined;
+  clientSecret?: string | undefined;
 }
 
 export interface Payment {
@@ -114,11 +114,15 @@ export interface PaymentEvent {
 export type OffSessionResult =
   | { status: "succeeded"; externalId: string }
   | { status: "processing"; externalId: string }
-  | { status: "requires_action"; externalId: string; clientSecret?: string }
+  | {
+      status: "requires_action";
+      externalId: string;
+      clientSecret?: string | undefined;
+    }
   | {
       status: "failed";
       /** Absent when the provider rejected the charge before creating one. */
-      externalId?: string;
+      externalId?: string | undefined;
       /**
        * The provider's own decline code, unmapped. Dunning decisions are made
        * from `retryable`; this is kept raw so an operator can look up what the
@@ -205,9 +209,10 @@ export interface PaymentProvider {
    * is what gets the customer through the authentication while they are there
    * to do it.
    */
-  createSetupSession?(
-    input: CreateSetupSessionInput,
-  ): Promise<{ clientSecret?: string; redirectUrl?: string }>;
+  createSetupSession?(input: CreateSetupSessionInput): Promise<{
+    clientSecret?: string | undefined;
+    redirectUrl?: string | undefined;
+  }>;
 
   /**
    * Detaches a stored credential at the provider.

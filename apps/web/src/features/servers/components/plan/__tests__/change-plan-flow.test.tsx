@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { beforeAll, describe, expect, mock, test } from "bun:test";
@@ -47,11 +47,11 @@ let renderWithProviders: Rendered["renderWithProviders"];
 let screen: Rendered["screen"];
 let within: Rendered["within"];
 let userEvent: Rendered["userEvent"];
-let PlanProvider: typeof import("../plan-context").PlanProvider;
-let PlanCatalog: typeof import("../plan-catalog").PlanCatalog;
-let PlanOrderDialog: typeof import("../plan-order-dialog").PlanOrderDialog;
-type PlanCheckoutState = import("../plan-context").PlanCheckoutState;
-type Plan = import("../plan-context").Plan;
+let PlanProvider: typeof import("../plan-context.tsx").PlanProvider;
+let PlanCatalog: typeof import("../plan-catalog.tsx").PlanCatalog;
+let PlanOrderDialog: typeof import("../plan-order-dialog.tsx").PlanOrderDialog;
+type PlanCheckoutState = import("../plan-context.tsx").PlanCheckoutState;
+type Plan = import("../plan-context.tsx").Plan;
 let IntlEnvironment: (props: { children: React.ReactNode }) => React.ReactNode;
 
 beforeAll(async () => {
@@ -61,9 +61,9 @@ beforeAll(async () => {
   within = rendered.within;
   userEvent = rendered.userEvent;
 
-  PlanProvider = (await import("../plan-context")).PlanProvider;
-  PlanCatalog = (await import("../plan-catalog")).PlanCatalog;
-  PlanOrderDialog = (await import("../plan-order-dialog")).PlanOrderDialog;
+  PlanProvider = (await import("../plan-context.tsx")).PlanProvider;
+  PlanCatalog = (await import("../plan-catalog.tsx")).PlanCatalog;
+  PlanOrderDialog = (await import("../plan-order-dialog.tsx")).PlanOrderDialog;
 
   const { NextIntlClientProvider } = actualNextIntl;
   IntlEnvironment = ({ children }) => (

@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import * as Sentry from "@sentry/node";
@@ -28,7 +28,7 @@ import {
   SetDefaultPaymentMethodInputSchema,
   SetDefaultPaymentMethodOutputSchema,
 } from "@virtbase/validators";
-import type { PaymentMethodSummary } from "../payment-methods";
+import type { PaymentMethodSummary } from "../payment-methods/index.ts";
 import {
   listPaymentMethods,
   PaymentCapabilityUnavailableError,
@@ -36,8 +36,8 @@ import {
   requirePaymentCapability,
   SAVED_CREDENTIAL_PROVIDER_ID,
   setDefaultPaymentMethod,
-} from "../payment-methods";
-import { protectedProcedure } from "../trpc";
+} from "../payment-methods/index.ts";
+import { protectedProcedure } from "../trpc.ts";
 
 /**
  * Where the provider sends the customer once the credential is saved.

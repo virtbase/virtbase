@@ -1,34 +1,32 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { useQuery } from "@tanstack/react-query";
-import type { RouterInputs, RouterOutputs } from "@virtbase/api";
+import type { RouterInputs } from "@virtbase/api";
 import { isInstalling, MAX_ENTRIES_PER_PAGE } from "@virtbase/utils";
-import { useTRPC } from "@/lib/trpc/react";
+import { useTRPC } from "@/lib/trpc/react.tsx";
 
-export type ServerListInput = RouterInputs["servers"]["list"];
-
-export type ServerListOutput = RouterOutputs["servers"]["list"];
+type ServerListInput = RouterInputs["servers"]["list"];
 
 interface ServerList extends ServerListInput {
   queryConfig?: never;
 }
 
-export const defaultServerListQuery = {
+const defaultServerListQuery = {
   sort: ["id:desc"],
   per_page: MAX_ENTRIES_PER_PAGE,
   expand: ["plan", "template", "allocations"],

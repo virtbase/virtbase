@@ -1,13 +1,18 @@
 {
-  "extends": "@virtbase/tsconfig/base.json",
+  "extends": ["@virtbase/tsconfig/nextjs.json", "@virtbase/tsconfig/bun.json"],
   "compilerOptions": {
-    "lib": ["ES2022", "dom", "dom.iterable"],
-    "jsx": "react-jsx",
     "paths": {
       "fdx-source/*": ["./.source/*"],
       "@/*": ["./src/*"]
     },
-    "plugins": [{ "name": "next" }, { "name": "workflow" }]
+    "plugins": [
+      {
+        "name": "next"
+      },
+      {
+        "name": "workflow"
+      }
+    ]
   },
   "include": [
     "next-env.d.ts",

@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { LucideLifeBuoy } from "@virtbase/ui/icons";
@@ -32,10 +32,10 @@ import {
 import { SUPPORT_EMAIL } from "@virtbase/utils";
 import NextLink from "next/link";
 import { useExtracted } from "next-intl";
-import { AppSidebarMenu } from "@/ui/app-sidebar-menu";
-import { NavUser } from "@/ui/nav-user";
-import FeedbackButton from "./feedback-button";
-import { LocaleSwitcher } from "./locale-switcher";
+import { AppSidebarMenu } from "@/ui/app-sidebar-menu.tsx";
+import { NavUser } from "@/ui/nav-user.tsx";
+import FeedbackButton from "./feedback-button.tsx";
+import { LocaleSwitcher } from "./locale-switcher.tsx";
 
 export function AppSidebar() {
   const t = useExtracted();

@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import type {
@@ -23,13 +23,13 @@ import type {
 } from "@virtbase/utils";
 import { mapProxmoxServerStatus, ProxmoxServerStatus } from "@virtbase/utils";
 import type { GuestFirewallStatus } from "@virtbase/validators/server";
-import type { ProxmoxVm } from "../proxmox/agent";
-import { getGuestOsInfo, isPosixGuest } from "../proxmox/agent";
-import { cached } from "../upstash";
-import type { DetectedManager } from "./detect";
-import { detectGuestFirewalls } from "./detect";
-import { canReadRules, readGuestFirewallRules } from "./read-rules";
-import { readListeningSockets } from "./read-sockets";
+import type { ProxmoxVm } from "../proxmox/agent/index.ts";
+import { getGuestOsInfo, isPosixGuest } from "../proxmox/agent/index.ts";
+import { cached } from "../upstash/index.ts";
+import type { DetectedManager } from "./detect.ts";
+import { detectGuestFirewalls } from "./detect.ts";
+import { canReadRules, readGuestFirewallRules } from "./read-rules.ts";
+import { readListeningSockets } from "./read-sockets.ts";
 
 /**
  * How long one inspection is reused.
@@ -89,7 +89,7 @@ export const inspectGuest = ({
 }: {
   vm: ProxmoxVm;
   serverId: string;
-  refresh?: boolean;
+  refresh?: boolean | undefined;
 }): Promise<GuestInspection> =>
   cached<GuestInspection>(
     `guest-inspection:${serverId}`,

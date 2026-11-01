@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 "use client";
@@ -39,11 +39,11 @@ import { Popover, PopoverContent, PopoverTrigger } from "@virtbase/ui/popover";
 import { useExtracted, useFormatter } from "next-intl";
 import type React from "react";
 import { useEffect, useState } from "react";
-import type { GetCustomImagesListOutput } from "@/features/account/hooks/custom-images/use-custom-image-list";
-import { defaultGetCustomImagesListQuery } from "@/features/account/hooks/custom-images/use-custom-image-list";
-import { useCustomImageStatus } from "@/features/account/hooks/custom-images/use-custom-image-status";
-import { useTRPC } from "@/lib/trpc/react";
-import { CustomImageIcon } from "@/ui/custom-image-icon";
+import type { GetCustomImagesListOutput } from "@/features/account/hooks/custom-images/use-custom-image-list.ts";
+import { defaultGetCustomImagesListQuery } from "@/features/account/hooks/custom-images/use-custom-image-list.ts";
+import { useCustomImageStatus } from "@/features/account/hooks/custom-images/use-custom-image-status.ts";
+import { useTRPC } from "@/lib/trpc/react.tsx";
+import { CustomImageIcon } from "@/ui/custom-image-icon.tsx";
 
 type CustomImage = GetCustomImagesListOutput["iso_downloads"][number];
 
@@ -83,7 +83,11 @@ export function ServerCustomImageSelect({
         ) : null,
       )}
 
-      <Popover open={isOpen} onOpenChange={setIsOpen} modal={modal}>
+      <Popover
+        open={isOpen}
+        onOpenChange={setIsOpen}
+        {...(modal === undefined ? {} : { modal })}
+      >
         <PopoverTrigger asChild>
           <Button
             variant="outline"

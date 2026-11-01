@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 "use client";
@@ -22,13 +22,16 @@ import { useDataTable } from "@virtbase/ui/hooks";
 import type { DataTableRowAction } from "@virtbase/ui/types";
 import dynamic from "next/dynamic";
 import React, { use } from "react";
-import type { getEmailsList } from "@/features/admin/api/emails/get-emails-list";
-import type { EmailsTableColumn } from "@/features/admin/components/emails/emails-table/columns";
-import { useEmailsTableColumns } from "@/features/admin/components/emails/emails-table/columns";
+import type { getEmailsList } from "@/features/admin/api/emails/get-emails-list.ts";
+import type { EmailsTableColumn } from "@/features/admin/components/emails/emails-table/columns.tsx";
+import { useEmailsTableColumns } from "@/features/admin/components/emails/emails-table/columns.tsx";
 
-const EmailPreviewDialog = dynamic(() => import("../email-preview-dialog"), {
-  ssr: false,
-});
+const EmailPreviewDialog = dynamic(
+  () => import("../email-preview-dialog.tsx"),
+  {
+    ssr: false,
+  },
+);
 
 interface EmailsTableProps {
   promises: Promise<[Awaited<ReturnType<typeof getEmailsList>>]>;

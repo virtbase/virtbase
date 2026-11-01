@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 "use client";
@@ -51,20 +51,20 @@ import { Controller, useForm } from "react-hook-form";
 import {
   defaultGetSSHKeysListQuery,
   useSSHKeysList,
-} from "@/features/account/hooks/ssh-keys/ssh-keys-list";
-import { PasswordRequirements } from "@/features/auth/components/password-requirements";
+} from "@/features/account/hooks/ssh-keys/ssh-keys-list.ts";
+import { PasswordRequirements } from "@/features/auth/components/password-requirements.tsx";
 import {
   RandomPasswordAddon,
   ShowPasswordAddon,
-} from "@/ui/input-group-addons";
-import { OperatingSystemSelect } from "@/ui/operating-system-select";
-import type { getTemplateGroups } from "../api/get-template-groups";
-import { PAYMENT_FORM_ID } from "../constants";
-import { useCheckoutState } from "../hooks/use-checkout-state";
-import { CheckoutPublicKeySelect } from "./checkout-public-key-select";
-import { CheckoutWaivers } from "./checkout-waivers";
-import { ElementsProvider } from "./elements-provider";
-import { StripePaymentForm } from "./stripe-payment-form";
+} from "@/ui/input-group-addons/index.tsx";
+import { OperatingSystemSelect } from "@/ui/operating-system-select.tsx";
+import type { getTemplateGroups } from "../api/get-template-groups.ts";
+import { PAYMENT_FORM_ID } from "../constants.ts";
+import { useCheckoutState } from "../hooks/use-checkout-state.tsx";
+import { CheckoutPublicKeySelect } from "./checkout-public-key-select.tsx";
+import { CheckoutWaivers } from "./checkout-waivers.tsx";
+import { ElementsProvider } from "./elements-provider.tsx";
+import { StripePaymentForm } from "./stripe-payment-form.tsx";
 
 export function CheckoutForm({
   promise,

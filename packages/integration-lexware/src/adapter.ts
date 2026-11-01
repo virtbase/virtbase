@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import type {
@@ -23,11 +23,11 @@ import type {
 import { PortError } from "@virtbase/ports";
 import { APP_NAME } from "@virtbase/utils";
 import { createTranslator } from "use-intl/core";
-import type { LexwareClient } from "./client";
-import type { ContactCountry } from "./constants";
-import { COUNTRY_CONTACTS, HOME_COUNTRY } from "./constants";
-import { invoiceMessages, resolveInvoiceLocale } from "./messages";
-import type { InvoiceForCreate, InvoiceRetrieveResponse } from "./types";
+import type { LexwareClient } from "./client.ts";
+import type { ContactCountry } from "./constants.ts";
+import { COUNTRY_CONTACTS, HOME_COUNTRY } from "./constants.ts";
+import { invoiceMessages, resolveInvoiceLocale } from "./messages.ts";
+import type { InvoiceForCreate, InvoiceRetrieveResponse } from "./types.ts";
 
 const EUR = "EUR";
 
@@ -88,7 +88,9 @@ export class LexwareInvoiceProvider implements InvoiceProvider {
       language: country === "DE" ? "de" : "en",
       lineItems: lineItems.map((item) => ({
         name: item.name,
-        description: item.description,
+        ...(item.description === undefined
+          ? {}
+          : { description: item.description }),
         quantity: item.quantity,
         type: "custom",
         unitPrice: {

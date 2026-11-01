@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import * as Sentry from "@sentry/node";
@@ -26,8 +26,8 @@ import {
   users,
 } from "@virtbase/db/schema";
 import { FatalError } from "workflow";
-import { liveSubscriptionFor } from "../../subscriptions/subject-subscription";
-import { transitionSubscription } from "../../subscriptions/transition-subscription";
+import { liveSubscriptionFor } from "../../subscriptions/subject-subscription.ts";
+import { transitionSubscription } from "../../subscriptions/transition-subscription.ts";
 
 type StoreServerExtensionStepParams = {
   serverId: string;
@@ -39,7 +39,7 @@ type StoreServerExtensionStepParams = {
    * pressing the button, an operator, the dev scripts - and because every
    * server sold before subscriptions existed has no subscription at all.
    */
-  orderId?: string | null;
+  orderId?: string | null | undefined;
 };
 
 /**

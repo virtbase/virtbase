@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import {
@@ -28,18 +28,21 @@ import { and, eq, lte, sql } from "@virtbase/db";
 import * as schema from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { billingAnchorDay, nextPeriodEnd } from "../../../subscriptions/period";
+import {
+  billingAnchorDay,
+  nextPeriodEnd,
+} from "../../../subscriptions/period.ts";
 import {
   mockServer,
   mockServerPlanPrice,
   mockSession,
   seedServerGraph,
-} from "../../../testing/fixtures";
+} from "../../../testing/fixtures.ts";
 
 let db: TestDb;
-let store: typeof import("../store-server-extension").storeServerExtensionStep;
-let rollback: typeof import("../store-server-extension").rollbackStoreServerExtensionStep;
-let claimRenewal: typeof import("../../../subscriptions/claim-renewal").claimRenewal;
+let store: typeof import("../store-server-extension.ts").storeServerExtensionStep;
+let rollback: typeof import("../store-server-extension.ts").rollbackStoreServerExtensionStep;
+let claimRenewal: typeof import("../../../subscriptions/claim-renewal.ts").claimRenewal;
 
 const SERVER_ID = mockServer.id;
 const USER_ID = mockSession.user.id;
@@ -55,8 +58,8 @@ beforeAll(async () => {
   ({
     storeServerExtensionStep: store,
     rollbackStoreServerExtensionStep: rollback,
-  } = await import("../store-server-extension"));
-  ({ claimRenewal } = await import("../../../subscriptions/claim-renewal"));
+  } = await import("../store-server-extension.ts"));
+  ({ claimRenewal } = await import("../../../subscriptions/claim-renewal.ts"));
 
   await seedServerGraph(db);
 });

@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import type {
@@ -41,7 +41,7 @@ export const mockUser = {
   updatedAt: new Date(),
 } satisfies typeof users.$inferInsert;
 
-export const mockProxmoxNodeGroup = {
+const mockProxmoxNodeGroup = {
   id: "png_0000000000000000000000001",
   name: "Test Node Group",
   strategy: "RANDOM",
@@ -49,7 +49,7 @@ export const mockProxmoxNodeGroup = {
   updatedAt: new Date(),
 } satisfies typeof proxmoxNodeGroups.$inferInsert;
 
-export const mockDatacenter = {
+const mockDatacenter = {
   id: "dc_0000000000000000000000001",
   name: "Test Datacenter",
   country: "NL",
@@ -57,7 +57,7 @@ export const mockDatacenter = {
   updatedAt: new Date(),
 } satisfies typeof datacenters.$inferInsert;
 
-export const mockProxmoxNode = {
+const mockProxmoxNode = {
   id: "pn_0000000000000000000000001",
   datacenterId: mockDatacenter.id,
   proxmoxNodeGroupId: mockProxmoxNodeGroup.id,
@@ -87,7 +87,7 @@ export const mockServerPlan = {
   updatedAt: new Date(),
 } satisfies typeof serverPlans.$inferInsert;
 
-export const mockServerPlanPrice = {
+const mockServerPlanPrice = {
   id: "price_0000000000000000000000001",
   serverPlanId: mockServerPlan.id,
   purchasePrice: 2999,

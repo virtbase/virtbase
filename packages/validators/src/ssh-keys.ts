@@ -1,25 +1,25 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import type { SortableColumns } from "@virtbase/utils";
 import * as z from "zod";
-import { PaginationSchema } from "./pagination";
-import { ObjectTimestampSchema } from "./timestamps";
-import { preprocessQueryArray } from "./utils";
+import { PaginationSchema } from "./pagination.ts";
+import { ObjectTimestampSchema } from "./timestamps.ts";
+import { preprocessQueryArray } from "./utils/index.ts";
 
 const MD5_FINGERPRINT_REGEX = /^[a-f0-9]{2}(:[a-f0-9]{2}){15}$/;
 
@@ -125,6 +125,7 @@ export const CreateSSHKeyInputSchema = z.object({
   public_key: SSHKeySchema.shape.public_key,
 });
 
+/** @alias */
 export const CreateSSHKeyOutputSchema = GetSSHKeyOutputSchema;
 
 export const UpdateSSHKeyInputSchema = z.object({
@@ -132,8 +133,10 @@ export const UpdateSSHKeyInputSchema = z.object({
   name: SSHKeySchema.shape.name,
 });
 
+/** @alias */
 export const UpdateSSHKeyOutputSchema = GetSSHKeyOutputSchema;
 
+/** @alias */
 export const DeleteSSHKeyInputSchema = GetSSHKeyInputSchema;
 
 export const DeleteSSHKeyOutputSchema = z.void();

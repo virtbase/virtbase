@@ -1,5 +1,6 @@
 {
   "name": "@virtbase/email",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "exports": {
@@ -30,10 +31,10 @@
     }
   },
   "scripts": {
-    "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "email": "email dev --dir ./src/templates -p 3333",
+    "typecheck": "tsc --noEmit",
     "test": "bun --env-file=../../.env.test test --timeout 20000",
-    "typecheck": "tsc --noEmit"
+    "email": "email dev --dir ./src/templates -p 3333",
+    "clean": "git clean -xdf .cache .turbo dist node_modules"
   },
   "dependencies": {
     "@virtbase/utils": "workspace:*",
@@ -42,6 +43,10 @@
     "resend": "^6.32.0",
     "use-intl": "catalog:intl"
   },
+  "peerDependencies": {
+    "react": "catalog:react",
+    "react-dom": "catalog:react"
+  },
   "devDependencies": {
     "@react-email/preview-server": "^5.2.10",
     "@react-email/ui": "^6.11.0",
@@ -49,15 +54,5 @@
     "@types/react-dom": "catalog:react",
     "@virtbase/tsconfig": "workspace:*",
     "typescript": "catalog:"
-  },
-  "peerDependencies": {
-    "react": "catalog:react",
-    "react-dom": "catalog:react"
-  },
-  "virtbase": {
-    "coverage": {
-      "lines": 0.06,
-      "functions": 0.21
-    }
   }
 }

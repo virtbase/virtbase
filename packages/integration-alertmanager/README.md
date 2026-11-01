@@ -14,11 +14,11 @@ decides, and this is where it says so.
 Everything is configured in the admin console at
 `/admin.virtbase.com/integrations/alertmanager`.
 
-| Field | Kind | Default |
-| --- | --- | --- |
-| Payload format | setting | `alertmanager` |
-| Default severity | setting | `warning` |
-| Ingest token | secret | *required* |
+| Field            | Kind    | Default        |
+| ---------------- | ------- | -------------- |
+| Payload format   | setting | `alertmanager` |
+| Default severity | setting | `warning`      |
+| Ingest token     | secret  | _required_     |
 
 The token is required rather than optional. This endpoint opens abuse cases,
 and an unauthenticated one would let anybody suspend a customer. Generate one
@@ -46,19 +46,19 @@ receivers:
 
 ## The label contract
 
-| Label | Becomes |
-| --- | --- |
-| `severity` | `critical` \| `warning` \| `info`, with `crit`/`error`/`page` and `warn` accepted |
-| `virtbase_type` | the signal type, e.g. `abuse.ddos`. Falls back to `alert.<alertname>` |
-| `virtbase_server_id` | the server, unambiguously |
-| `virtbase_vmid` + `virtbase_node` | resolved through `unique(proxmox_node_id, vmid)` |
-| `virtbase_ip` | resolved through the IP allocation table **as it stood when the alert fired** |
-| `virtbase_user_id` | the account, for alerts that are not about one machine |
-| `node` / `instance` | the node, when nothing above matched. Opens no case — a node is ours |
+| Label                             | Becomes                                                                           |
+| --------------------------------- | --------------------------------------------------------------------------------- |
+| `severity`                        | `critical` \| `warning` \| `info`, with `crit`/`error`/`page` and `warn` accepted |
+| `virtbase_type`                   | the signal type, e.g. `abuse.ddos`. Falls back to `alert.<alertname>`             |
+| `virtbase_server_id`              | the server, unambiguously                                                         |
+| `virtbase_vmid` + `virtbase_node` | resolved through `unique(proxmox_node_id, vmid)`                                  |
+| `virtbase_ip`                     | resolved through the IP allocation table **as it stood when the alert fired**     |
+| `virtbase_user_id`                | the account, for alerts that are not about one machine                            |
+| `node` / `instance`               | the node, when nothing above matched. Opens no case — a node is ours              |
 
-| Annotation | Becomes |
-| --- | --- |
-| `summary` (or `title`) | the signal title |
+| Annotation                   | Becomes                                                             |
+| ---------------------------- | ------------------------------------------------------------------- |
+| `summary` (or `title`)       | the signal title                                                    |
 | `description` (or `message`) | the body, joined with Grafana's `valueString` and the generator URL |
 
 The `abuse.` prefix on the type is what routes a signal into the case

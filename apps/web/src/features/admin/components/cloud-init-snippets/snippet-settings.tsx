@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 "use client";
@@ -46,18 +46,19 @@ import { useExtracted } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import { useMemo, useState } from "react";
 import { toast } from "sonner";
-import { updateSnippetAction } from "../../api/cloud-init-snippets/mutate-snippet";
-import { SettingsCard } from "../proxmox-templates/cards/settings-card";
+import { updateSnippetAction } from "../../api/cloud-init-snippets/mutate-snippet.ts";
+import { definedSnippetTargets } from "../../lib/cloud-init-snippets/targets.ts";
+import { SettingsCard } from "../proxmox-templates/cards/settings-card.tsx";
 
 // CodeMirror is ~200 KB gzipped and is wanted on exactly this route, so it is
 // loaded on demand rather than bundled into every admin page.
-const SnippetEditor = dynamic(() => import("./snippet-editor"), {
+const SnippetEditor = dynamic(() => import("./snippet-editor.tsx"), {
   ssr: false,
   loading: () => <Skeleton className="h-[420px] w-full" />,
 });
 
 /** The template metadata a selector is matched against, for the live preview. */
-export interface SnippetTemplate {
+interface SnippetTemplate {
   id: string;
   name: string;
   osFamily: string | null;
@@ -115,7 +116,9 @@ export function SnippetSettings({ snippet, templates }: SnippetSettingsProps) {
     () =>
       new Set(
         templates
-          .filter((template) => matchesTargets(draft.targets, template))
+          .filter((template) =>
+            matchesTargets(definedSnippetTargets(draft.targets), template),
+          )
           .map((template) => template.id),
       ),
     [draft.targets, templates],

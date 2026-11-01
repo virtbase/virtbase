@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import * as Sentry from "@sentry/node";
@@ -20,9 +20,12 @@ import { and, eq, gte, inArray, isNotNull, isNull, sql } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { proxmoxNodes, servers, subscriptions } from "@virtbase/db/schema";
 import { mapSettled, RENEWAL_SUSPENSION_GRACE_DAYS } from "@virtbase/utils";
-import type { GetProxmoxInstanceParams, ProxmoxInstance } from "../proxmox";
-import { getProxmoxInstance } from "../proxmox";
-import { transitionSubjectSubscription } from "./subject-subscription";
+import type {
+  GetProxmoxInstanceParams,
+  ProxmoxInstance,
+} from "../proxmox/index.ts";
+import { getProxmoxInstance } from "../proxmox/index.ts";
+import { transitionSubjectSubscription } from "./subject-subscription.ts";
 
 /** The most servers one run suspends. The rest are suspended by the next run. */
 export const SUSPENSION_BATCH_SIZE = 200;

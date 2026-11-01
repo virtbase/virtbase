@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { cn } from "@virtbase/ui";
@@ -20,11 +20,11 @@ import { LucideExternalLink } from "@virtbase/ui/icons";
 import { Logo } from "@virtbase/ui/logo";
 import { APP_DOMAIN, APP_NAME, LOOKING_GLASS_URL } from "@virtbase/utils";
 import { getExtracted } from "next-intl/server";
-import { IntlLink } from "@/i18n/navigation.public";
-import { GetOnAppStore } from "@/ui/get-on-app-store";
-import { MaxWidthWrapper } from "@/ui/max-width-wrapper";
-import { SocialsRow } from "@/ui/socials-row";
-import { ThemeSwitcher } from "./theme-switcher";
+import { IntlLink } from "@/i18n/navigation.public.ts";
+import { GetOnAppStore } from "@/ui/get-on-app-store.tsx";
+import { MaxWidthWrapper } from "@/ui/max-width-wrapper.tsx";
+import { SocialsRow } from "@/ui/socials-row.tsx";
+import { ThemeSwitcher } from "./theme-switcher.tsx";
 
 const linkListHeaderClassName = "text-sm font-medium text-foreground";
 const linkListClassName = "flex flex-col mt-2.5 gap-3.5";

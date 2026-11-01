@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { afterAll, beforeAll, describe, expect, mock, test } from "bun:test";
@@ -21,13 +21,13 @@ import { touchLastSeen } from "@virtbase/db/queries";
 import * as schema from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { mockSession, seedServerGraph } from "../../../testing/fixtures";
-import { isEligibleForInactivityDeletion } from "../eligibility";
+import { mockSession, seedServerGraph } from "../../../testing/fixtures.ts";
+import { isEligibleForInactivityDeletion } from "../eligibility.ts";
 
 let db: TestDb;
-let findInactivityCandidates: typeof import("../sweep").findInactivityCandidates;
-let scheduleInactivityDeletion: typeof import("../sweep").scheduleInactivityDeletion;
-let findAccountsToRemind: typeof import("../sweep").findAccountsToRemind;
+let findInactivityCandidates: typeof import("../sweep.ts").findInactivityCandidates;
+let scheduleInactivityDeletion: typeof import("../sweep.ts").scheduleInactivityDeletion;
+let findAccountsToRemind: typeof import("../sweep.ts").findAccountsToRemind;
 
 const LONG_AGO = new Date("2024-01-01T00:00:00.000Z");
 
@@ -43,7 +43,7 @@ beforeAll(async () => {
     findInactivityCandidates,
     scheduleInactivityDeletion,
     findAccountsToRemind,
-  } = await import("../sweep"));
+  } = await import("../sweep.ts"));
 
   await seedServerGraph(db);
 

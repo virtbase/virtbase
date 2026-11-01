@@ -1,7 +1,6 @@
 # Virtbase Development Guide
 
-> **Note:** `CLAUDE.md` contains the single line `@AGENTS.md`, which makes Claude
-> Code load this file. Edit this file, never `CLAUDE.md`.
+> **Note:** `CLAUDE.md` is a symlink to `AGENTS.md`. They are the same file.
 
 ## Codebase structure
 
@@ -14,7 +13,7 @@ virtbase/
 ├── apps/               # Published apps (website)
 ├── packages/           # Internal packages with shared logic
 │   └── content/        # MDX for the public site (no code)
-└── tooling/            # Shared tools for development
+└── tooling/            # Shared tools for development (tsconfig, tailwind)
 ```
 
 ### README files
@@ -28,89 +27,6 @@ Before editing or creating files in any subdirectory (e.g., `packages/*`, `apps/
 - `packages/api/src/README.md` (if exists)
 - `packages/api/src/router/README.md` (if exists - closest to target file)
 
-## Rules for every change
-
-These rules apply to every change, whether a person or an agent makes it.
-
-- The coding rules they refer to are in [`docs/style/`](docs/style/README.md).
-- The target architecture, its decisions and its known defects are in
-  [`docs/architecture/`](docs/architecture/README.md).
-- Cite rules by ID (`CMP-15`, `CMT-8`) in reviews and PR descriptions.
-
-1. **Read before you write.** Before the first edit, read:
-   - the READMEs on the path (above);
-   - the style guides for the area (table below);
-   - the ADRs of the current phase;
-   - the code you change, and every caller of it. Find callers with the language
-     server's references, not with text search.
-2. **Write composable code.** New code is built from decisions, operations,
-   orchestrators and adapters, as [`composition.md`](docs/style/composition.md)
-   defines them:
-   - dependencies are passed in;
-   - one transaction per state change;
-   - no network inside a transaction;
-   - side effects after commit;
-   - retries are harmless;
-   - every loop that does I/O is bounded.
-3. **Repair the surrounding code.** The surrounding code of a change is:
-   - every function in a file you modify;
-   - every function one call away from your change, in either direction, within
-     the same package.
-
-   Recode every defect in it into the same composable shape, in the same PR,
-   test first (CMP-15 to CMP-20). A defect is any of:
-   - an entry in [`risks.md`](docs/architecture/risks.md);
-   - a broken rule marked **(defect)**;
-   - a forbidden comment.
-
-   Never copy a defective pattern into new code. If a repair would change what a
-   customer or operator sees beyond decision D9, stop and ask.
-4. **Write unambiguous comments.** A comment states why, a constraint or a
-   hazard. It names its subject, and every claim in it is enforced by code and
-   tested ([`comments.md`](docs/style/comments.md)).
-   - No hedging: "should", "might", "for now", "temporary", and the rest of the
-     CMT-8 list.
-   - No `TODO` without an open issue.
-   - No commented-out code.
-   - When you change code, update or delete every comment that describes it.
-5. **Never:**
-   - `git commit --no-verify`;
-   - `gh pr ready`;
-   - attribution footers;
-   - a bare `bun test`;
-   - a new `process.env` read outside the bootstrap allowlist;
-   - moving or renaming an existing workflow file;
-   - comments in configuration or CI files;
-   - a secret in any output;
-   - `notFound()` to decide a route-level 404;
-   - a new dependency without its reason in the PR description.
-6. **Prove each step before the next one**
-   ([Task Decomposition and Verification](#task-decomposition-and-verification)).
-   Before opening a PR, run `bun check`, `bun typecheck`, `bun check:boundaries`
-   and `bun run test` for the touched packages, plus Playwright when a page or
-   route changed.
-7. **Review before you open a PR.** In Claude Code:
-   - run the `neighbourhood-auditor` and `style-reviewer` agents
-     (`.claude/agents/`);
-   - run `/code-review`;
-   - run `/security-review` once per phase.
-
-   Other agents follow the same checklists by reading those files. Fix the
-   findings, or answer each one in the PR.
-8. **Report honestly**, in the PR template of [`git.md`](docs/style/git.md): every
-   gate and its result, every behaviour change, every repair.
-
-| Area you touch | Read |
-| --- | --- |
-| any TypeScript | [composition](docs/style/composition.md), [typescript](docs/style/typescript.md), [comments](docs/style/comments.md) |
-| `packages/db`, `src/schema.ts`, migrations, backfills | [data](docs/style/data.md) |
-| procedures, server actions, route handlers, crons, workflows, events | [server](docs/style/server.md) |
-| `apps/web` | [web](docs/style/web.md), and the matching Next.js skill in `.claude/skills/` |
-| `packages/integration-*` | [integrations](docs/style/integrations.md) |
-| tests | [testing](docs/style/testing.md) |
-| secrets, auth, personal data, webhooks, outbound HTTP | [security](docs/style/security.md) |
-| commits and PRs | [git](docs/style/git.md) |
-
 ## Linting and Types
 
 ```bash
@@ -118,19 +34,21 @@ bun check              # Lint and format (editor rule set)
 bun check:ci           # As CI runs it: adds the type-aware rules (~15 s)
 bun check:write        # Auto-fix lint issues
 bun typecheck          # TypeScript type checking
-bun check:boundaries   # Architecture layer rules (dependency-cruiser)
-bun run comment:check  # Comment lines added since origin/main (CMT-8, CMT-10, CMT-11)
+bun run boundaries     # Architecture layer rules (turbo boundaries)
+bun run fmt:md         # Format Markdown (dprint)
+bun run lint:knip      # Unused files, exports and dependencies
+bun run lint:sherif    # Workspace package.json consistency
+bun run lint:typos     # Spelling (needs the typos binary)
+bun run verify         # The gates above, plus the affected typecheck and tests
 ```
 
-`biome.jsonc` leaves out `noFloatingPromises`, `noMisusedPromises` and
+`biome.json` leaves out `noFloatingPromises`, `noMisusedPromises` and
 `noImportCycles`: they need type inference and a scan of the whole module
-graph, which kept the editor's language server above 1.8 GB. `biome.ci.jsonc`
-extends it with those rules, and CI runs `bun check:ci`.
-
-`check:boundaries` runs dependency-cruiser from `tooling/boundaries`, a
-standalone install that pins TypeScript 6 - dependency-cruiser cannot load
-TypeScript 7 and otherwise skips every `.ts` file. See
-`tooling/boundaries/README.md`.
+graph, which kept the editor's language server above 1.8 GB. `biome.ci.json`
+extends it with those rules, and CI runs `bun check:ci`. There is one Biome
+configuration for the whole repository: a nested one resolves override paths
+from its own directory, so the boundary rules below would silently miss its
+package.
 
 Everything runs on Bun, Next.js included: the `with-env` scripts pass `--bun`,
 so a `#!/usr/bin/env node` binary never falls back to Node, and Vercel runs the
@@ -149,8 +67,7 @@ with `Cannot find module`. `outputFileTracingIncludes` in
 ```bash
 bun run test           # every package, through turbo (cached)
 bun run test:coverage  # what CI runs
-bun run coverage:check # the thresholds, against the last coverage run
-bun test:e2e           # Playwright
+bun run e2e            # Playwright
 ```
 
 Use `bun run test`, not `bun test`: each package's script sets its own
@@ -161,11 +78,6 @@ Use `bun run test`, not `bun test`: each package's script sets its own
   mocks are process-wide in Bun and otherwise leak into the files that run
   after them. Add the flag to a package's `test` script as soon as one of its
   tests mocks a module.
-- **Coverage.** Each package with tests sets its minimum line and function
-  share under `virtbase.coverage` in its `package.json`, and its `bunfig.toml`
-  ignores `../**` and `**/__tests__/**`, so the report holds its own files
-  only. `coverage:check` also counts the files no test loads, as uncovered. A
-  new package with tests gets both; see `tooling/coverage-gate/README.md`.
 - **Databases.** `createTestDb()` restores an in-memory PGlite from a snapshot
   of the schema. The snapshot is built once and cached in
   `packages/db/.cache/test-db/`, keyed by the schema sources and `bun.lock`;
@@ -174,22 +86,27 @@ Use `bun run test`, not `bun test`: each package's script sets its own
   prefixes in `packages/db/src/utils/create-id.ts`; tRPC output validation
   rejects anything else, which surfaces as an empty list in E2E.
 - **E2E.** CI runs Playwright against a production build (`next build`, then
-  `next start`) with two workers. Locally, `bun test:e2e` starts `next dev`, or
+  `next start`) with two workers. Locally, `bun run e2e` starts `next dev`, or
   reuses a server that is already running.
 
 ## Architecture layering
 
-Imports point downward only. The rules are enforced by `bun check:boundaries`
-(see `.dependency-cruiser.jsonc`), not by convention.
+Imports point downward only. The rules are enforced by `bun run boundaries`,
+not by convention: every workspace carries a tag in its `turbo.json`, and the
+`boundaries` section of the root `turbo.json` lists which tags each tag may
+depend on. The rules that concern single files rather than packages are
+`noRestrictedImports` overrides in `biome.json`: test helpers stay out of
+shipped code, integrations do not read `@virtbase/db/schema`, and `auth`,
+`email` and `db` import nothing named after a provider.
 
-| Layer | Packages | May import |
-| --- | --- | --- |
-| 0 Foundation | `validators`, `utils` | nothing internal |
-| 1 Platform | `db`, `auth`, `email`, `ui`, `config` | layer 0 |
-| 2 Ports | `ports` | layer 0 only — interfaces, no runtime deps |
-| 3 Domain | *(not yet extracted)* | layers 0–2 |
-| 4 Integrations | `integration-sdk`, `integration-*` | layers 0–2 |
-| 5 Composition | `api`, `apps/*` | everything |
+| Layer          | Packages                              | May import                                 |
+| -------------- | ------------------------------------- | ------------------------------------------ |
+| 0 Foundation   | `validators`, `utils`                 | nothing internal                           |
+| 1 Platform     | `db`, `auth`, `email`, `ui`, `config` | layer 0                                    |
+| 2 Ports        | `ports`                               | layer 0 only — interfaces, no runtime deps |
+| 3 Domain       | _(not yet extracted)_                 | layers 0–2                                 |
+| 4 Integrations | `integration-sdk`, `integration-*`    | layers 0–2                                 |
+| 5 Composition  | `api`, `apps/*`                       | everything                                 |
 
 ### Adding an integration
 
@@ -268,16 +185,15 @@ caches.
 
 Three collections, each loaded in `apps/web/src/lib/source.ts`:
 
-| Collection | Files | URL |
-| --- | --- | --- |
-| `marketing` | `marketing/<locale>/index.mdx` | `/<locale>` |
-| `marketing` | `marketing/<locale>/<slug>.mdx` | `/<locale>/<slug>` |
-| `legal` | `legal/<locale>/<slug>.mdx` | `/<locale>/legal/<slug>` |
+| Collection     | Files                               | URL                             |
+| -------------- | ----------------------------------- | ------------------------------- |
+| `marketing`    | `marketing/<locale>/index.mdx`      | `/<locale>`                     |
+| `marketing`    | `marketing/<locale>/<slug>.mdx`     | `/<locale>/<slug>`              |
+| `legal`        | `legal/<locale>/<slug>.mdx`         | `/<locale>/legal/<slug>`        |
 | `helpArticles` | `help/articles/<locale>/<slug>.mdx` | `/<locale>/help/article/<slug>` |
 
 Locales are **directories**, not filename suffixes, so Fumadocs is configured
-with `parser: "dir"`. That is the only layout Crowdin can map onto a translation
-path — it has no placeholder that strips `.en` from the middle of a filename.
+with `parser: "dir"`.
 
 The home page is `marketing/<locale>/index.mdx`. Its prose is MDX rather than
 next-intl messages. Anything backed by live data — plans, prices, specs — stays
@@ -288,14 +204,14 @@ a component and is never copied into MDX, or it goes stale.
 The components a marketing document may use are registered in
 `apps/web/src/ui/mdx/marketing-components.tsx`. Nothing else is in scope.
 
-| Block | Body | Notes |
-| --- | --- | --- |
-| `<Hero>` | `#` heading + paragraph | `h1` is rendered unanchored |
-| `<Offers />` | — | plans and prices from the database |
-| `<OperatingSystems />` | — | distro logos |
-| `<Features>` / `<Feature>` | prose | `title`, `demo`, optional `href` |
-| `<Advantages>` / `<Advantage>` | prose | `title`, `icon`, optional `href` |
-| `<Faq>` / `<Question>` | prose | `title`; also emits `FAQPage` JSON-LD |
+| Block                          | Body                    | Notes                                 |
+| ------------------------------ | ----------------------- | ------------------------------------- |
+| `<Hero>`                       | `#` heading + paragraph | `h1` is rendered unanchored           |
+| `<Offers />`                   | —                       | plans and prices from the database    |
+| `<OperatingSystems />`         | —                       | distro logos                          |
+| `<Features>` / `<Feature>`     | prose                   | `title`, `demo`, optional `href`      |
+| `<Advantages>` / `<Advantage>` | prose                   | `title`, `icon`, optional `href`      |
+| `<Faq>` / `<Question>`         | prose                   | `title`; also emits `FAQPage` JSON-LD |
 
 Two conventions hold across the blocks:
 
@@ -463,8 +379,8 @@ is old: during a reinstall the agent stops answering, and holding the last
 known system until the new one announces itself is less wrong than flipping the
 logo to an installer that may never finish.
 
-**A failed probe never overwrites.** `detected_os_at` means *last successful
-observation*. A stopped server, an uninstalled agent, a guest still booting -
+**A failed probe never overwrites.** `detected_os_at` means _last successful
+observation_. A stopped server, an uninstalled agent, a guest still booting -
 all of them write nothing, so the last known system stays on screen instead of
 the row blanking out. The only things that clear the columns are the workflows
 that replace a server's disk (`change-template`, `restore-server-backup`, via
@@ -484,7 +400,7 @@ the Discord bot and the admin console read.
 **The logo is never guest-supplied.** `OPERATING_SYSTEMS` in
 `@virtbase/utils` maps an `os-release` ID - or, for a template or an ISO, free
 text - onto a slug, a label and a path under
-`apps/web/public/assets/static/distros`. A customer controls only the *name*,
+`apps/web/public/assets/static/distros`. A customer controls only the _name_,
 which is `PRETTY_NAME` out of a file inside their own server: untrusted text,
 sanitised by `sanitizeGuestOsName()` before it is stored and escaped again at
 any sink that renders markup, such as a Discord embed field.
@@ -515,7 +431,6 @@ Always treat environment variable values as sensitive unless they are known test
 - Keep commit messages concise and descriptive
 - PR descriptions should focus on what changed and why
 - Do NOT mark PRs as "ready for review" (`gh pr ready`) - leave PRs in draft mode and let the user decide when to mark them ready
-- The branch, commit and PR rules, including the PR description template, are in [`docs/style/git.md`](docs/style/git.md)
 
 ## Task Decomposition and Verification
 
@@ -524,17 +439,8 @@ Always treat environment variable values as sensitive unless they are known test
 - **Choose the right verification method for each change.** This may include running unit tests, integration tests, type checking, linting, building the project, or inspecting runtime behavior depending on what was changed.
 - **When unclear how to verify a change, ask the user.** If there is no obvious test or verification method for a particular change, ask the user how they would like it verified before moving on.
 
-The pre-commit hook only runs lint-staged (Biome on the staged files). Tests,
-types, boundaries and the type-aware lint rules run in CI; run the matching
-`bun` command locally when a change touches them.
-
-<!-- BEGIN:turborepo-agent-rules -->
-
-# This is NOT the Turborepo you know
-
-Turborepo configuration, task behavior, and CLI commands can vary between installed versions and may differ from your training data. Resolve the `turbo` package from this file's directory or relevant workspace; in monorepos, it may not be visible from the repository root. For example, run `node -p "require.resolve('turbo/package.json')"` from a workspace that depends on `turbo`.
-
-Read `docs/README.md` inside that installed package first, then read the relevant pages from its `docs/` directory before changing Turborepo configuration or commands. Heed deprecation notices. These bundled docs match the installed package version and are available without network access.
-
-This block is written and re-added by `turbo` before repository-scoped commands when an AI agent is detected. In the Turborepo source repository, its template is defined in `crates/turborepo-cli/src/cli/agent_guidance.rs`. Removing the managed block while updates are enabled means a later qualifying invocation will add it again. Set `"agentGuidance": false` in the root `turbo.json` or `turbo.jsonc` to opt out; this does not remove an existing block. Keep the block committed with your work to avoid an uncommitted change on the next agent invocation.
-<!-- END:turborepo-agent-rules -->
+The pre-commit hook runs lint-staged, configured in the root `package.json`: it
+adds the licence header to new source files (`tooling/gates`), runs Biome on
+the staged files and dprint on staged Markdown. Commit messages are checked
+by commitlint, configured in the same file. Tests, types, boundaries and the
+type-aware lint rules run in CI; `bun run verify` runs them locally.

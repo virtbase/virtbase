@@ -1,27 +1,27 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-export * from "./apply-payment-event";
-export * from "./create-order";
-export * from "./fulfill-order";
-export * from "./legacy-snapshot";
-export * from "./order-secrets";
-export * from "./reconcile-orders";
-export * from "./record-billing-details";
-export * from "./settle-anonpay-payment";
-export * from "./settle-stripe-payment";
-export * from "./transition-order";
+export * from "./apply-payment-event.ts";
+export * from "./create-order.ts";
+export * from "./fulfill-order.ts";
+export * from "./legacy-snapshot.ts";
+export * from "./order-secrets.ts";
+export * from "./reconcile-orders.ts";
+export * from "./record-billing-details.ts";
+export * from "./settle-anonpay-payment.ts";
+export * from "./settle-stripe-payment.ts";
+export * from "./transition-order.ts";

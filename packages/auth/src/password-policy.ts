@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { PasswordSchema } from "@virtbase/validators/auth";
@@ -50,7 +50,7 @@ const PASSWORD_FIELD_BY_PATH = {
 } as const satisfies Record<string, "password" | "newPassword">;
 
 /** The paths {@link assertPasswordPolicy} guards. */
-export type PasswordEndpointPath = keyof typeof PASSWORD_FIELD_BY_PATH;
+type PasswordEndpointPath = keyof typeof PASSWORD_FIELD_BY_PATH;
 
 /**
  * Length bounds handed to Better Auth so its own checks agree with ours.
@@ -63,7 +63,11 @@ export type PasswordEndpointPath = keyof typeof PASSWORD_FIELD_BY_PATH;
 export const PASSWORD_MIN_LENGTH = 8;
 export const PASSWORD_MAX_LENGTH = 64;
 
-/** What the client sees when a password fails the policy. */
+/**
+ * What the client sees when a password fails the policy.
+ *
+ * @internal
+ */
 export const PASSWORD_POLICY_ERROR_CODE = "PASSWORD_TOO_WEAK";
 
 /**
@@ -71,6 +75,8 @@ export const PASSWORD_POLICY_ERROR_CODE = "PASSWORD_TOO_WEAK";
  *
  * A path this does not know about is left alone: the guard exists to enforce
  * the rules on the ways in, not to inspect every request Better Auth serves.
+ *
+ * @internal
  */
 export const assertPasswordPolicy = ({
   path,

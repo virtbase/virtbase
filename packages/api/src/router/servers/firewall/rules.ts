@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import type { TRPCRouterRecord } from "@trpc/server";
@@ -36,15 +36,15 @@ import { generateObject } from "ai";
 import {
   buildGenerationContext,
   buildSystemPrompt,
-} from "../../../firewall-ai";
-import { inspectGuest } from "../../../guest-firewall";
-import { serverProcedure } from "../../../trpc";
-import { readFirewallDigest } from "./digest";
+} from "../../../firewall-ai/index.ts";
+import { inspectGuest } from "../../../guest-firewall/index.ts";
+import { serverProcedure } from "../../../trpc.ts";
+import { readFirewallDigest } from "./digest.ts";
 import {
   FIREWALL_AI_MODEL,
   GENERATION_TIMEOUT_MS,
   repairGeneratedText,
-} from "./generation";
+} from "./generation.ts";
 
 export const serverFirewallRulesRouter = {
   get: serverProcedure
@@ -148,7 +148,7 @@ export const serverFirewallRulesRouter = {
       const { instance } = ctx;
 
       await instance.vm.firewall.rules.$(input.pos).$delete({
-        digest: input.digest,
+        ...(input.digest === undefined ? {} : { digest: input.digest }),
       });
     }),
   update: serverProcedure
@@ -186,13 +186,21 @@ export const serverFirewallRulesRouter = {
         ...rest,
       }).filter(([_, value]) => value === undefined);
 
+      const { proto, dport, sport, comment, action, source, ...fields } = rest;
+
       await instance.vm.firewall.rules.$(pos).$put({
-        ...rest,
+        ...fields,
+        ...(proto === undefined ? {} : { proto }),
+        ...(dport === undefined ? {} : { dport }),
+        ...(sport === undefined ? {} : { sport }),
+        ...(comment === undefined ? {} : { comment }),
+        ...(action === undefined ? {} : { action }),
+        ...(source === undefined ? {} : { source }),
         enable: enabled ? 1 : 0,
         ...(icmp_type && { "icmp-type": icmp_type }),
         ...(direction && { type: direction }),
         log: "nolog",
-        digest,
+        ...(digest === undefined ? {} : { digest }),
         delete: undefinedFields.map(([key]) => key).join(","),
       });
     }),
@@ -220,7 +228,7 @@ export const serverFirewallRulesRouter = {
 
       await instance.vm.firewall.rules.$(pos).$put({
         moveto: pos > moveto ? moveto : moveto + 1,
-        digest,
+        ...(digest === undefined ? {} : { digest }),
       });
     }),
   generate: serverProcedure

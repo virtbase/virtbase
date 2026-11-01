@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { ServerManagementError } from "@virtbase/ports";
@@ -20,11 +20,11 @@ import { InteractionResponseType } from "discord-api-types/v10";
 import type { Locale } from "next-intl";
 import { getExtracted } from "next-intl/server";
 
-import type { LinkedInteractionContext } from "../../handlers/types";
-import type { MessageResponse } from "../../ui/message";
-import { modal, modalValue } from "../../ui/modal";
-import { actorFor } from "../../utils/actor";
-import type { DiscordFeature } from "../types";
+import type { LinkedInteractionContext } from "../../handlers/types.ts";
+import type { MessageResponse } from "../../ui/message.ts";
+import { modal, modalValue } from "../../ui/modal.ts";
+import { actorFor } from "../../utils/actor.ts";
+import type { DiscordFeature } from "../types.ts";
 import {
   PAGE_SIZE,
   ResetPasswordSuccessMessage,
@@ -32,9 +32,9 @@ import {
   ServerOverviewMessage,
   ServersListEmptyMessage,
   ServersListMessage,
-} from "./messages";
+} from "./messages.ts";
 
-export * from "./messages";
+export * from "./messages.ts";
 
 /**
  * The server overview, rebuilt from scratch.

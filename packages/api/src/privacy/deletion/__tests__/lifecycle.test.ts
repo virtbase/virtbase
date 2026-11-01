@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { afterAll, beforeAll, describe, expect, test } from "bun:test";
@@ -21,14 +21,14 @@ import * as schema from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
 import { ACCOUNT_DELETION_GRACE_PERIOD_DAYS } from "@virtbase/utils";
-import { mockSession, seedServerGraph } from "../../../testing/fixtures";
-import { getDeletionBlockers, hasBlockers } from "../blockers";
+import { mockSession, seedServerGraph } from "../../../testing/fixtures.ts";
+import { getDeletionBlockers, hasBlockers } from "../blockers.ts";
 import {
   cancelAccountDeletion,
   confirmAccountDeletion,
   requestAccountDeletion,
-} from "../lifecycle";
-import { hashDeletionToken } from "../tokens";
+} from "../lifecycle.ts";
+import { hashDeletionToken } from "../tokens.ts";
 
 let testDb: TestDb;
 const USER_ID = mockSession.user.id;

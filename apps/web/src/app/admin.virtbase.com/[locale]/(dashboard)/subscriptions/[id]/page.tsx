@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import {
@@ -28,12 +28,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getExtracted } from "next-intl/server";
 import { ErrorBoundary } from "react-error-boundary";
-import { getSubscription } from "@/features/admin/api/subscriptions/get-subscription";
-import { verifyRenderSession } from "@/features/admin/api/verify-session";
-import { SubscriptionDetailView } from "@/features/admin/components/subscriptions/subscription-detail";
-import { paths } from "@/lib/paths";
-import { GenericError } from "@/ui/generic-error";
-import DashboardLayout from "@/ui/layout/dashboard-layout";
+import { getSubscription } from "@/features/admin/api/subscriptions/get-subscription.ts";
+import { verifyRenderSession } from "@/features/admin/api/verify-session.ts";
+import { SubscriptionDetailView } from "@/features/admin/components/subscriptions/subscription-detail.tsx";
+import { paths } from "@/lib/paths.ts";
+import { GenericError } from "@/ui/generic-error.tsx";
+import DashboardLayout from "@/ui/layout/dashboard-layout.tsx";
 
 // instant = false: kept on purpose - the record is resolved up front so a missing one 404s before any chrome
 export const instant = false;

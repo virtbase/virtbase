@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import type {
@@ -31,25 +31,25 @@ import { ButtonStyle, InteractionResponseType } from "discord-api-types/v10";
 import type { Locale } from "next-intl";
 import { getExtracted, getFormatter } from "next-intl/server";
 
-import type { EmojiResolver } from "../../emoji";
+import type { EmojiResolver } from "../../emoji/index.ts";
 import {
   actionButton,
   linkButton,
   row,
   SELECT_OPTIONS_MAX,
   select,
-} from "../../ui/components";
-import { EMOJI } from "../../ui/emoji";
+} from "../../ui/components.ts";
+import { EMOJI } from "../../ui/emoji.ts";
 import {
   escapeMarkdown,
   formatUptime,
   stateEmoji,
   timestamp,
   usageBar,
-} from "../../ui/format";
-import type { MessageResponse, ResponseType } from "../../ui/message";
-import { message } from "../../ui/message";
-import { createEmbed } from "../../utils/create-embed";
+} from "../../ui/format.ts";
+import type { MessageResponse, ResponseType } from "../../ui/message.ts";
+import { message } from "../../ui/message.ts";
+import { createEmbed } from "../../utils/create-embed.ts";
 
 /** Servers per page. Discord renders at most 25 select options. */
 export const PAGE_SIZE = SELECT_OPTIONS_MAX;

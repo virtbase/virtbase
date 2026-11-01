@@ -1,24 +1,24 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import type { GuestFirewallManager } from "@virtbase/utils";
-import type { GuestAgentFailure, ProxmoxVm } from "../proxmox/agent";
-import { runGuestCommand } from "../proxmox/agent";
-import { DETECT_SCRIPT, shell } from "./commands";
+import type { GuestAgentFailure, ProxmoxVm } from "../proxmox/agent/index.ts";
+import { runGuestCommand } from "../proxmox/agent/index.ts";
+import { DETECT_SCRIPT, shell } from "./commands.ts";
 
 /**
  * Which manager owns the ruleset when several are present.
@@ -28,7 +28,7 @@ import { DETECT_SCRIPT, shell } from "./commands";
  * the customer actually configured is both more useful and less alarming than
  * reporting the backend it generated.
  */
-export const MANAGER_PRECEDENCE: readonly GuestFirewallManager[] = [
+const MANAGER_PRECEDENCE: readonly GuestFirewallManager[] = [
   "ufw",
   "firewalld",
   "nftables",
@@ -68,6 +68,8 @@ const isManager = (value: string): value is GuestFirewallManager =>
  * Kept separate from the call so the format can be checked without a VM. Lines
  * that are not recognised are ignored rather than treated as an error - a
  * `sh` that warns on stderr should not lose us the detection.
+ *
+ * @internal
  */
 export const parseDetectionOutput = (
   stdout: string,

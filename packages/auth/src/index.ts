@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { captureException } from "@sentry/core";
@@ -38,14 +38,14 @@ import type { BetterAuthOptions, BetterAuthPlugin } from "better-auth";
 import { drizzleAdapter } from "better-auth/adapters/drizzle";
 import { betterAuth } from "better-auth/minimal";
 import type { UserWithRole } from "better-auth/plugins";
-import type { AccountLinkedHandler } from "./account-linked";
-import { notifyAccountLinked } from "./account-linked";
+import type { AccountLinkedHandler } from "./account-linked.ts";
+import { notifyAccountLinked } from "./account-linked.ts";
 import {
   PASSWORD_MAX_LENGTH,
   PASSWORD_MIN_LENGTH,
   passwordPolicyHook,
-} from "./password-policy";
-import { plugins } from "./plugins";
+} from "./password-policy.ts";
+import { plugins } from "./plugins/index.ts";
 
 export function initAuth({
   additionalPlugins,
@@ -353,7 +353,10 @@ export function initAuth({
   return betterAuth(config);
 }
 
-export type { AccountLinkedHandler, LinkedAccountInfo } from "./account-linked";
+export type {
+  AccountLinkedHandler,
+  LinkedAccountInfo,
+} from "./account-linked.ts";
 export type Auth = ReturnType<typeof initAuth>;
 
 /**

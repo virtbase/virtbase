@@ -1,38 +1,37 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import {
   helpArticleCollection,
   legalCollection,
   marketingCollection,
-} from "fdx-source/server";
+} from "fdx-source/server.ts";
 import type { I18nConfig } from "fumadocs-core/i18n";
 import { defineI18n } from "fumadocs-core/i18n";
 import { loader } from "fumadocs-core/source";
 import { toFumadocsSource } from "fumadocs-mdx/runtime/server";
 import type { Locale } from "next-intl";
 
-import { defaultLocale, locales } from "@/i18n/config";
+import { defaultLocale, locales } from "@/i18n/config.ts";
 
 const i18nConfig: I18nConfig = {
   languages: [...locales],
   defaultLanguage: defaultLocale,
-  // Locales are directories (`en/terms.mdx`), not filename suffixes — the only
-  // layout Crowdin can map onto a translation path.
+  // Locales are directories (`en/terms.mdx`), not filename suffixes.
   parser: "dir",
 };
 

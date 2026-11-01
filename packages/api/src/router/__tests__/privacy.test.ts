@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { afterAll, beforeAll, describe, expect, mock, test } from "bun:test";
@@ -21,9 +21,9 @@ import type { Session } from "@virtbase/auth";
 import { eq } from "@virtbase/db";
 import { dataExports, invoices, users } from "@virtbase/db/schema";
 import { STEP_UP_WINDOW_SECONDS } from "@virtbase/utils";
-import { appRouter } from "../../root";
-import type { TestCaller, TestCallerResult } from "../../testing";
-import { createTestCaller, mockSession } from "../../testing";
+import { appRouter } from "../../root.ts";
+import type { TestCaller, TestCallerResult } from "../../testing/index.ts";
+import { createTestCaller, mockSession } from "../../testing/index.ts";
 
 // Neither reaches anything real in a test: the workflow engine would try to
 // enqueue a run, and the step-up marker would try to reach Redis.
@@ -37,7 +37,7 @@ mock.module("@virtbase/email", () => ({
   sendEmail: async () => {},
   sendBatchEmail: async () => {},
 }));
-mock.module("../../upstash/redis", () => ({
+mock.module("../../upstash/redis.ts", () => ({
   redis: {
     get: async () => null,
     set: async () => "OK",

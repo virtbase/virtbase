@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 import { beforeAll, describe, expect, mock, test } from "bun:test";
 import * as actualNextIntl from "next-intl";
@@ -44,8 +44,8 @@ type Rendered = typeof import("@virtbase/test-utils/react");
 let renderWithProviders: Rendered["renderWithProviders"];
 let screen: Rendered["screen"];
 let userEvent: Rendered["userEvent"];
-let PaymentMethodItem: typeof import("../payment-method-item").PaymentMethodItem;
-let RemovePaymentMethodDialog: typeof import("../remove-payment-method-dialog").RemovePaymentMethodDialog;
+let PaymentMethodItem: typeof import("../payment-method-item.tsx").PaymentMethodItem;
+let RemovePaymentMethodDialog: typeof import("../remove-payment-method-dialog.tsx").RemovePaymentMethodDialog;
 let IntlEnvironment: (props: { children: React.ReactNode }) => React.ReactNode;
 
 beforeAll(async () => {
@@ -56,10 +56,11 @@ beforeAll(async () => {
   screen = rendered.screen;
   userEvent = rendered.userEvent;
 
-  PaymentMethodItem = (await import("../payment-method-item"))
+  PaymentMethodItem = (await import("../payment-method-item.tsx"))
     .PaymentMethodItem;
-  RemovePaymentMethodDialog = (await import("../remove-payment-method-dialog"))
-    .RemovePaymentMethodDialog;
+  RemovePaymentMethodDialog = (
+    await import("../remove-payment-method-dialog.tsx")
+  ).RemovePaymentMethodDialog;
 
   // Pins the time zone the dates below are formatted in. Without it `use-intl`
   // falls back to the machine's, which turns a UTC midnight into the previous

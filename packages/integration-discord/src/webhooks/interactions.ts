@@ -1,32 +1,32 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { InteractionType } from "discord-api-types/v10";
 
-import { createDiscordClient } from "../api";
-import type { DiscordContext } from "../config";
-import { getEmojiResolver } from "../emoji";
-import { getInteractionHandler } from "../handlers";
-import { createDeferred } from "../handlers/defer";
-import type { InteractionContext } from "../handlers/types";
-import { getUserByInteraction } from "../utils/get-user-by-interaction";
-import { mapDiscordLocale } from "../utils/map-discord-locale";
-import { millisecondsSince } from "../utils/snowflake";
-import { verifyInteractionRequest } from "../utils/verify-incoming-request";
+import { createDiscordClient } from "../api/index.ts";
+import type { DiscordContext } from "../config.ts";
+import { getEmojiResolver } from "../emoji/index.ts";
+import { createDeferred } from "../handlers/defer.ts";
+import { getInteractionHandler } from "../handlers/index.ts";
+import type { InteractionContext } from "../handlers/types.ts";
+import { getUserByInteraction } from "../utils/get-user-by-interaction.ts";
+import { mapDiscordLocale } from "../utils/map-discord-locale.ts";
+import { millisecondsSince } from "../utils/snowflake.ts";
+import { verifyInteractionRequest } from "../utils/verify-incoming-request.ts";
 
 /**
  * Discord's interactions endpoint.

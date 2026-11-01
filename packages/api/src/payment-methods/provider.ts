@@ -1,22 +1,22 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import type { PaymentProvider } from "@virtbase/ports";
-import { integrations } from "../integrations";
+import { integrations } from "../integrations/index.ts";
 
 /**
  * The integration that holds saved credentials today.
@@ -56,12 +56,17 @@ type OptionalCapability =
  * provider failure - a Stripe outage mid-detach - surface as itself.
  */
 export class PaymentCapabilityUnavailableError extends Error {
+  readonly providerId: string;
+  readonly capability: OptionalCapability;
+
   constructor(
-    readonly providerId: string,
-    readonly capability: OptionalCapability,
+    providerId: string,
+    capability: OptionalCapability,
     message: string,
   ) {
     super(message);
+    this.providerId = providerId;
+    this.capability = capability;
     this.name = "PaymentCapabilityUnavailableError";
   }
 }
@@ -71,8 +76,7 @@ export class PaymentCapabilityUnavailableError extends Error {
  *
  * Goes through the registry rather than importing `@virtbase/integration-stripe`
  * - a router that imports an integration package pins the application to that
- * integration, which is the rule `AGENTS.md` states and
- * `.dependency-cruiser.jsonc` enforces.
+ * integration, which is the rule `AGENTS.md` states.
  *
  * The three off-session methods on `PaymentProvider` are optional on purpose:
  * Anonpay settles a trade and has nothing to store, so `resolve` can hand back

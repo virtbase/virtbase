@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { cn } from "@virtbase/ui";
@@ -20,10 +20,10 @@ import { Button } from "@virtbase/ui/button";
 import { getExtracted } from "next-intl/server";
 import type { ReactNode } from "react";
 
-import { IntlLink } from "@/i18n/navigation.public";
-import DiscordBotDemo from "./discord-bot-demo";
-import ServerFirewallDemo from "./server-firewall-demo";
-import ServerStatsDemo from "./server-stats-demo";
+import { IntlLink } from "@/i18n/navigation.public.ts";
+import DiscordBotDemo from "./discord-bot-demo.tsx";
+import ServerFirewallDemo from "./server-firewall-demo.tsx";
+import ServerStatsDemo from "./server-stats-demo.tsx";
 
 /**
  * The interactive previews a feature can show. Named rather than passed as a

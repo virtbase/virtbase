@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { join } from "node:path";
@@ -23,14 +23,18 @@ import { join } from "node:path";
  * picker renders.
  */
 import { FIRWALL_PROTOCOLS } from "@virtbase/utils";
-import { appUrl } from "../../e2e/support/urls";
-import { prependCover } from "./lib/render";
-import { CUSTOMER_ID, ensureSession, prepareFirewallScene } from "./lib/scene";
-import type { Beat, Stage, Take } from "./lib/studio";
-import { recordEpisode } from "./lib/studio";
-import { renderThumbnail } from "./lib/thumbnail";
-import { ensureTools, workspaceFor } from "./lib/tools";
-import { captions } from "./lib/voice";
+import { appUrl } from "../../e2e/support/urls.ts";
+import { prependCover } from "./lib/render.ts";
+import {
+  CUSTOMER_ID,
+  ensureSession,
+  prepareFirewallScene,
+} from "./lib/scene.ts";
+import type { Beat, Stage, Take } from "./lib/studio.ts";
+import { recordEpisode } from "./lib/studio.ts";
+import { renderThumbnail } from "./lib/thumbnail.ts";
+import { ensureTools, workspaceFor } from "./lib/tools.ts";
+import { captions } from "./lib/voice.ts";
 
 /**
  * Episode one: the firewall.

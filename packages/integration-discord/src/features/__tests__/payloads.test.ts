@@ -1,32 +1,32 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { beforeAll, describe, expect, test } from "bun:test";
 import type { APIInteractionResponse } from "discord-api-types/v10";
 
-import { stubNextIntl } from "../../__tests__/support/harness";
+import { stubNextIntl } from "../../__tests__/support/harness.ts";
 
 beforeAll(stubNextIntl);
 
 const { HelpMessage, InviteMessage, MainMenuMessage, SetupMenuMessage } =
-  await import("../menu/messages");
-const { ServersListEmptyMessage } = await import("../servers/messages");
-const { ErrorMessage } = await import("../../messages/error");
-const { isLinkableUrl } = await import("../../ui/components");
+  await import("../menu/messages.ts");
+const { ServersListEmptyMessage } = await import("../servers/messages.ts");
+const { ErrorMessage } = await import("../../messages/error.ts");
+const { isLinkableUrl } = await import("../../ui/components.ts");
 
 /**
  * Discord's own limits. Exceeding one is not an error anybody sees: the message
@@ -170,9 +170,9 @@ const press = async (
   action: string,
   params: string[],
 ): Promise<APIInteractionResponse> => {
-  const { fakePort } = await import("../../__tests__/support/harness");
+  const { fakePort } = await import("../../__tests__/support/harness.ts");
   const { buttonData, testContext } = await import(
-    "../../__tests__/support/context"
+    "../../__tests__/support/context.ts"
   );
 
   const entry = feature.buttons?.[action];
@@ -210,11 +210,11 @@ describe("modals", () => {
   test("every modal stays inside Discord's five-component limit", async () => {
     // Exceeding it is not an error anybody sees: the modal never opens and the
     // click looks like it did nothing. The firewall form was six.
-    const { firewallFeature } = await import("../firewall");
-    const { backupsFeature } = await import("../backups");
-    const { rdnsFeature } = await import("../rdns");
-    const { lifecycleFeature } = await import("../lifecycle");
-    const { serversFeature } = await import("../servers");
+    const { firewallFeature } = await import("../firewall/index.ts");
+    const { backupsFeature } = await import("../backups/index.ts");
+    const { rdnsFeature } = await import("../rdns/index.ts");
+    const { lifecycleFeature } = await import("../lifecycle/index.ts");
+    const { serversFeature } = await import("../servers/index.ts");
 
     const openers: [string, () => Promise<APIInteractionResponse>][] = [
       ["firewall add", () => press(firewallFeature, "add", [SERVER])],

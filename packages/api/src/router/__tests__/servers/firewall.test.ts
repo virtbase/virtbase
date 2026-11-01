@@ -1,25 +1,29 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { afterAll, beforeAll, describe, expect, mock, test } from "bun:test";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { appRouter } from "../../../root";
-import { mockServer, mockSession, seedServerGraph } from "../../../testing";
+import { appRouter } from "../../../root.ts";
+import {
+  mockServer,
+  mockSession,
+  seedServerGraph,
+} from "../../../testing/index.ts";
 
 let testDb: TestDb;
 let caller: ReturnType<typeof appRouter.createCaller>;
@@ -60,9 +64,9 @@ type FirewallRuleRaw = {
   pos: number;
   proto?: string;
   dport?: string;
-  sport?: string;
+  sport?: string | undefined;
   comment?: string;
-  "icmp-type"?: string;
+  "icmp-type"?: string | undefined;
   digest?: string;
 };
 
@@ -81,7 +85,7 @@ function createProxmoxMock(vm: {
     enable: number;
     policy_in?: string;
     policy_out?: string;
-    digest?: string;
+    digest?: string | undefined;
   }>;
   $put?: (params: { policy_in?: string; policy_out?: string }) => Promise<void>;
   rules?: FirewallRulesMock;
@@ -130,7 +134,7 @@ describe("server.firewall.options.get", () => {
       digest: undefined,
     };
 
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         $get: () => Promise.resolve(mockFirewallOptions),
       }),
@@ -155,7 +159,7 @@ describe("server.firewall.options.update", () => {
   test("it updates the firewall settings if the user is authenticated and the server exists", async () => {
     const $put = mock(() => Promise.resolve());
 
-    mock.module("../../../proxmox", () => createProxmoxMock({ $put }));
+    mock.module("../../../proxmox/index.ts", () => createProxmoxMock({ $put }));
 
     const result = await caller.servers.firewall.options.update({
       server_id: mockServer.id,
@@ -189,7 +193,7 @@ describe("server.firewall.rules.get", () => {
       },
     ];
 
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         rules: {
           $get: () => Promise.resolve(mockRules),
@@ -224,7 +228,7 @@ describe("server.firewall.rules.create", () => {
   test("it creates a firewall rule with the expected Proxmox payload", async () => {
     const $post = mock(() => Promise.resolve());
 
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         rules: { $post },
       }),
@@ -262,7 +266,7 @@ describe("server.firewall.rules.delete", () => {
   test("it deletes a firewall rule at the given position", async () => {
     const $delete = mock(() => Promise.resolve());
 
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         rules: {
           $: () => ({ $delete }),
@@ -285,7 +289,7 @@ describe("server.firewall.rules.update", () => {
   test("it updates a firewall rule with log and digest", async () => {
     const $put = mock(() => Promise.resolve());
 
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         rules: {
           $: () => ({ $put }),
@@ -315,7 +319,7 @@ describe("server.firewall.rules.move", () => {
   test("it passes moveto unchanged when moving a rule down (higher pos to lower index)", async () => {
     const $put = mock(() => Promise.resolve());
 
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         rules: {
           $: () => ({ $put }),
@@ -336,7 +340,7 @@ describe("server.firewall.rules.move", () => {
   test("it passes moveto + 1 when moving a rule up (lower pos to higher index)", async () => {
     const $put = mock(() => Promise.resolve());
 
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         rules: {
           $: () => ({ $put }),

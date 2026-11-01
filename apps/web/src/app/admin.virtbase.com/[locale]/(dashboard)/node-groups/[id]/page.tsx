@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import {
@@ -26,12 +26,12 @@ import { constructMetadata } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { getExtracted } from "next-intl/server";
 import { Suspense } from "react";
-import { getLinkableDatacenters } from "@/features/admin/api/datacenters/get-linkable-datacenters";
-import { getLinkableProxmoxNodeGroups } from "@/features/admin/api/proxmox-node-groups/get-linkable-proxmox-node-groups";
-import { verifyRenderSession } from "@/features/admin/api/verify-session";
-import { CreateNodeButton } from "@/features/admin/components/proxmox-nodes/create-datacenter-button";
-import { NodesTableCard } from "@/features/admin/components/proxmox-nodes/nodes-table-card";
-import DashboardLayout from "@/ui/layout/dashboard-layout";
+import { getLinkableDatacenters } from "@/features/admin/api/datacenters/get-linkable-datacenters.ts";
+import { getLinkableProxmoxNodeGroups } from "@/features/admin/api/proxmox-node-groups/get-linkable-proxmox-node-groups.ts";
+import { verifyRenderSession } from "@/features/admin/api/verify-session.ts";
+import { CreateNodeButton } from "@/features/admin/components/proxmox-nodes/create-datacenter-button.tsx";
+import { NodesTableCard } from "@/features/admin/components/proxmox-nodes/nodes-table-card.tsx";
+import DashboardLayout from "@/ui/layout/dashboard-layout.tsx";
 
 export async function generateMetadata(): Promise<Metadata> {
   const t = await getExtracted();

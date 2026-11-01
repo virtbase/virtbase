@@ -1,41 +1,44 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { sleep } from "workflow";
 // Imported from the leaf rather than the `guest-os` barrel: that barrel
 // reaches Redis and therefore `node:crypto`, which a workflow cannot load.
-import { CLEARED_OPERATING_SYSTEM } from "../../guest-os/columns";
-import type { GetProxmoxInstanceParams } from "../../proxmox";
+import { CLEARED_OPERATING_SYSTEM } from "../../guest-os/columns.ts";
+import type { GetProxmoxInstanceParams } from "../../proxmox/index.ts";
 import {
   applyGuestConfigStep,
   rollbackApplyGuestConfigStep,
-} from "../shared/apply-guest-config";
-import { destroyGuestStep } from "../shared/destroy-guest";
-import { getGuestConfigStep } from "../shared/get-guest-config";
-import { moveDiskStep } from "../shared/move-disk";
+} from "../shared/apply-guest-config.ts";
+import { destroyGuestStep } from "../shared/destroy-guest.ts";
+import { getGuestConfigStep } from "../shared/get-guest-config.ts";
+import { moveDiskStep } from "../shared/move-disk.ts";
 import {
   performGuestActionStep,
   rollbackPerformGuestActionStep,
-} from "../shared/perform-guest-action";
-import { resizeDiskStep } from "../shared/resize-disk";
-import { runRollbacks } from "../shared/run-rollbacks";
-import { updateServerStep } from "../shared/update-server";
-import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task";
-import { restoreBackupStep, rollbackRestoreBackupStep } from "./restore-backup";
+} from "../shared/perform-guest-action.ts";
+import { resizeDiskStep } from "../shared/resize-disk.ts";
+import { runRollbacks } from "../shared/run-rollbacks.ts";
+import { updateServerStep } from "../shared/update-server.ts";
+import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task.ts";
+import {
+  restoreBackupStep,
+  rollbackRestoreBackupStep,
+} from "./restore-backup.ts";
 
 type RestoreServerBackupWorkflowParams = {
   proxmoxNode: GetProxmoxInstanceParams;

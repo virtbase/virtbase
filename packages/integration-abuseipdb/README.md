@@ -14,15 +14,15 @@ Provides two capabilities:
 
 ## Configuration
 
-| Field | Kind | Default |
-| --- | --- | --- |
-| Confidence threshold | setting | `50` |
-| Report age (days) | setting | `30` |
-| Block size | setting | `24` |
-| Calls per run | setting | `4` |
-| Look up categories | setting | off |
-| Allow reporting back | setting | off |
-| API key | secret | *required* |
+| Field                | Kind    | Default    |
+| -------------------- | ------- | ---------- |
+| Confidence threshold | setting | `50`       |
+| Report age (days)    | setting | `30`       |
+| Block size           | setting | `24`       |
+| Calls per run        | setting | `4`        |
+| Look up categories   | setting | off        |
+| Allow reporting back | setting | off        |
+| API key              | secret  | _required_ |
 
 **Calls per run** is the one to get right. `check-block` is capped by plan, and
 so is the daily allowance. Four calls an hour is 96 a day, which fits inside a
@@ -57,7 +57,7 @@ ranges go first on the next run.
 ## What a finding looks like
 
 `check-block` gives an address, a report count and a confidence score — not
-what the reports were *for*. So a finding is `abuse.other` unless **Look up
+what the reports were _for_. So a finding is `abuse.other` unless **Look up
 categories** is on, which spends one extra call per finding to ask. That is the
 difference between a customer being told "port scan" and being told "other",
 and it doubles the cost of every finding. Off by default; worth turning on as

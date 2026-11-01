@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { beforeAll, beforeEach, describe, expect, mock, test } from "bun:test";
@@ -26,7 +26,7 @@ import { beforeAll, beforeEach, describe, expect, mock, test } from "bun:test";
  * be driven directly. That is the part under test here, not what any individual
  * step does.
  */
-let extendServerWorkflow: typeof import("../index").extendServerWorkflow;
+let extendServerWorkflow: typeof import("../index.ts").extendServerWorkflow;
 
 const calls: string[] = [];
 
@@ -59,7 +59,7 @@ const storedServer: {
 };
 
 beforeAll(async () => {
-  mock.module("../store-server-extension", () => ({
+  mock.module("../store-server-extension.ts", () => ({
     storeServerExtensionStep: step("storeServerExtensionStep", {
       server: storedServer,
       proxmoxNode: {
@@ -77,7 +77,7 @@ beforeAll(async () => {
     ),
   }));
 
-  mock.module("../../shared/apply-guest-config", () => ({
+  mock.module("../../shared/apply-guest-config.ts", () => ({
     applyGuestConfigStep: step("applyGuestConfigStep", {
       upid: null,
       previousConfig: {},
@@ -88,7 +88,7 @@ beforeAll(async () => {
     }),
   }));
 
-  mock.module("../../shared/perform-guest-action", () => ({
+  mock.module("../../shared/perform-guest-action.ts", () => ({
     // A null upid keeps the workflow out of `sleep()` and the task wait.
     performGuestActionStep: step("performGuestActionStep", { upid: null }),
     rollbackPerformGuestActionStep: step("rollbackPerformGuestActionStep", {
@@ -96,23 +96,23 @@ beforeAll(async () => {
     }),
   }));
 
-  mock.module("../../shared/wait-for-proxmox-task", () => ({
+  mock.module("../../shared/wait-for-proxmox-task.ts", () => ({
     waitForProxmoxTaskStep: step("waitForProxmoxTaskStep", undefined),
   }));
 
-  mock.module("../send-server-extended-email", () => ({
+  mock.module("../send-server-extended-email.ts", () => ({
     sendServerExtendedEmailStep: step("sendServerExtendedEmailStep", undefined),
   }));
 
-  mock.module("../../shared/report-swallowed-failure", () => ({
+  mock.module("../../shared/report-swallowed-failure.ts", () => ({
     reportSwallowedFailureStep: step("reportSwallowedFailureStep", undefined),
   }));
 
-  mock.module("../../shared/report-rollback-failure", () => ({
+  mock.module("../../shared/report-rollback-failure.ts", () => ({
     reportRollbackFailureStep: step("reportRollbackFailureStep", undefined),
   }));
 
-  ({ extendServerWorkflow } = await import("../index"));
+  ({ extendServerWorkflow } = await import("../index.ts"));
 });
 
 beforeEach(() => {

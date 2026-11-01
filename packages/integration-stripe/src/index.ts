@@ -1,29 +1,29 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { defineIntegration } from "@virtbase/integration-sdk";
 import * as z from "zod";
-import { StripePaymentProvider } from "./adapter";
-import { stripe } from "./client";
+import { StripePaymentProvider } from "./adapter.ts";
+import { stripe } from "./client.ts";
 
 export type { Stripe } from "stripe";
-export * from "./adapter";
-export * from "./client";
-export * from "./get-or-create-customer";
+export * from "./adapter.ts";
+export * from "./client.ts";
+export * from "./get-or-create-customer.ts";
 
 const secretsSchema = z.object({
   secretKey: z.string().min(1),

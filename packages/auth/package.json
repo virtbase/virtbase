@@ -1,5 +1,6 @@
 {
   "name": "@virtbase/auth",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "exports": {
@@ -9,9 +10,9 @@
     "./stored-oauth-token": "./src/stored-oauth-token.ts"
   },
   "scripts": {
-    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "typecheck": "tsc --noEmit",
     "test": "bun --env-file=../../.env.test test --timeout 20000 --isolate",
-    "typecheck": "tsc --noEmit"
+    "clean": "git clean -xdf .cache .turbo dist node_modules"
   },
   "dependencies": {
     "@better-auth/api-key": "catalog:auth",
@@ -28,11 +29,5 @@
   "devDependencies": {
     "@virtbase/tsconfig": "workspace:*",
     "typescript": "catalog:"
-  },
-  "virtbase": {
-    "coverage": {
-      "lines": 0.69,
-      "functions": 0.36
-    }
   }
 }

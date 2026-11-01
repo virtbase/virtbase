@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { beforeEach, describe, expect, mock, test } from "bun:test";
@@ -34,7 +34,7 @@ mock.module("@sentry/nextjs", () => ({ captureException: () => {} }));
 mock.module("@virtbase/db/client", () => ({ db: testDb }));
 // The route's own authentication is exercised by `withCronSecret`; here it
 // would only mean building an env just to hand the handler a header back.
-mock.module("@/lib/with-cron-secret", () => ({
+mock.module("@/lib/with-cron-secret.ts", () => ({
   withCronSecret: (handler: (request: NextRequest) => Promise<Response>) =>
     handler,
 }));
@@ -48,7 +48,7 @@ mock.module("workflow/api", () => ({
   },
 }));
 
-const { GET } = await import("../route");
+const { GET } = await import("../route.ts");
 
 const SERVER_ID = "kvm_0000000000000000000000000";
 const days = (n: number) => new Date(Date.now() + n * 24 * 60 * 60 * 1000);

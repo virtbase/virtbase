@@ -1,10 +1,4 @@
 {
-  "extends": "@virtbase/tsconfig/base.json",
-  "compilerOptions": {
-    "lib": ["ES2022", "dom", "dom.iterable"],
-    "jsx": "react-jsx",
-    "rootDir": "."
-  },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  "extends": ["@virtbase/tsconfig/react.json", "@virtbase/tsconfig/bun.json"],
+  "include": ["src"]
 }

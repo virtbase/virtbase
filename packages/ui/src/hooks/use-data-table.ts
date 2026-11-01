@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import type {
@@ -36,15 +36,15 @@ import {
   useQueryStates,
 } from "nuqs";
 import * as React from "react";
-import { useDebouncedCallback } from "../hooks/use-debounced-callback";
-import { getSortingStateParser } from "../lib/parsers";
-import type { DataTableFeatures } from "../lib/table-features";
-import { dataTableFeatures } from "../lib/table-features";
+import { useDebouncedCallback } from "../hooks/use-debounced-callback.ts";
+import { getSortingStateParser } from "../lib/parsers.ts";
+import type { DataTableFeatures } from "../lib/table-features.ts";
+import { dataTableFeatures } from "../lib/table-features.ts";
 import type {
   ExtendedColumnSort,
   FilterVariant,
   QueryKeys,
-} from "../types/data-table";
+} from "../types/data-table.ts";
 
 const PAGE_KEY = "page";
 const PER_PAGE_KEY = "perPage";
@@ -133,7 +133,7 @@ export function useDataTable<TData extends RowData>(
       throttleMs,
       debounceMs,
       clearOnDefault,
-      startTransition,
+      ...(startTransition === undefined ? {} : { startTransition }),
     }),
     [
       history,
@@ -303,7 +303,7 @@ export function useDataTable<TData extends RowData>(
     ...tableProps,
     features: dataTableFeatures,
     columns,
-    initialState,
+    ...(initialState === undefined ? {} : { initialState }),
     pageCount,
     state: {
       pagination,

@@ -1,34 +1,34 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import type { SortableColumns } from "@virtbase/utils";
 import * as z from "zod";
-import { PaginationSchema } from "../pagination";
-import { SubnetAllocationSchema } from "../subnet-allocations";
-import { SubnetSchema } from "../subnets";
-import { ObjectTimestampSchema } from "../timestamps";
-import { preprocessQueryArray } from "../utils";
+import { PaginationSchema } from "../pagination.ts";
+import { SubnetAllocationSchema } from "../subnet-allocations.ts";
+import { SubnetSchema } from "../subnets.ts";
+import { ObjectTimestampSchema } from "../timestamps.ts";
+import { preprocessQueryArray } from "../utils/index.ts";
 // [!] From the leaf, not the barrel. `./index` re-exports this module, so
 // importing through it makes this file evaluate during that barrel's own
 // initialisation - and `ServerSchema` is read at module scope below, before
 // the re-export binding exists. That is a temporal dead zone which throws
 // while the graph is still initialising, taking the whole bundle with it.
 // `./index` itself imports `ServerSchema` from `./shared` for the same reason.
-import { ServerSchema } from "./shared";
+import { ServerSchema } from "./shared.ts";
 
 export const PointerRecordSchema = z.object({
   id: z

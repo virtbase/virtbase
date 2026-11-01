@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { cn } from "@virtbase/ui";
@@ -37,14 +37,14 @@ import type { Metadata } from "next";
 import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import { getExtracted, getFormatter, getLocale } from "next-intl/server";
-import { defaultLocale } from "@/i18n/config";
-import { IntlLink } from "@/i18n/navigation.public";
-import { constructAlternateLanguages } from "@/lib/hreflang";
-import { getDocumentLocales, helpArticles } from "@/lib/source";
-import { HelpHint } from "@/ui/fumadocs/help-hint";
-import { TableOfContents } from "@/ui/fumadocs/table-of-contents";
-import { Video } from "@/ui/fumadocs/video";
-import { BreadcrumbJsonLd } from "@/ui/seo/breadcrumb-json-ld";
+import { defaultLocale } from "@/i18n/config.ts";
+import { IntlLink } from "@/i18n/navigation.public.ts";
+import { constructAlternateLanguages } from "@/lib/hreflang.ts";
+import { getDocumentLocales, helpArticles } from "@/lib/source.ts";
+import { HelpHint } from "@/ui/fumadocs/help-hint.tsx";
+import { TableOfContents } from "@/ui/fumadocs/table-of-contents.tsx";
+import { Video } from "@/ui/fumadocs/video.tsx";
+import { BreadcrumbJsonLd } from "@/ui/seo/breadcrumb-json-ld.tsx";
 
 export async function generateStaticParams() {
   return helpArticles.getPages().map((page) => ({
@@ -172,10 +172,11 @@ export default async function HelpArticlePage({
                 ...defaultMdxComponents,
                 Steps,
                 Step,
-                img: ({ src, ...props }) => (
+                img: ({ src, sizes, ...props }) => (
                   <ImageZoom
                     className="rounded-lg border border-border"
                     src={src as string}
+                    {...(sizes === undefined ? {} : { sizes })}
                     {...props}
                   />
                 ),

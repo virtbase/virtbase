@@ -1,0 +1,72 @@
+{
+  "$schema": "./node_modules/knip/schema.json",
+  "treatConfigHintsAsErrors": true,
+  "workspaces": {
+    ".": {
+      "ignoreBinaries": ["typos"],
+      "ignoreDependencies": [
+        "@dprint/markdown",
+        "lint-staged",
+        "publint",
+        "sherif"
+      ]
+    },
+    "apps/novnc-proxy": {
+      "entry": ["src/*.ts!"],
+      "project": ["**/*.ts!", "!src/__tests__/**!"]
+    },
+    "apps/web": {
+      "entry": [
+        "scripts/**/*.ts",
+        "src/i18n/source-paths.ts!",
+        "src/lib/csp/index.ts!"
+      ],
+      "playwright": {
+        "entry": ["e2e/**/*.ts"]
+      },
+      "ignoreBinaries": ["stripe"],
+      "ignoreDependencies": [
+        "@tailwindcss/postcss",
+        "@virtbase/content",
+        "postcss"
+      ],
+      "project": [
+        "**/*.{ts,tsx,css,mdx}!",
+        "!e2e/**!",
+        "!scripts/**!",
+        "!**/__tests__/**!"
+      ]
+    },
+    "packages/api": {
+      "entry": ["scripts/*.ts", "src/abuse/triage/eval/run.ts"],
+      "project": [
+        "**/*.{ts,tsx}!",
+        "!scripts/**!",
+        "!src/**/eval/**!",
+        "!**/__tests__/**!"
+      ]
+    },
+    "packages/db": {
+      "ignoreDependencies": ["@types/ws", "ws"]
+    },
+    "packages/email": {
+      "ignoreDependencies": ["@react-email/preview-server"]
+    },
+    "packages/integration-discord": {
+      "entry": ["scripts/*.ts"],
+      "project": ["**/*.{ts,tsx}!", "!scripts/**!", "!**/__tests__/**!"]
+    },
+    "packages/utils": {
+      "project": ["**/*.{ts,tsx}!", "!**/__tests__/**!"]
+    },
+    "tooling/gates": {
+      "project": ["**/*.ts", "!src/**!"]
+    },
+    "tooling/tailwind": {
+      "ignoreDependencies": ["@tailwindcss/postcss", "postcss", "tailwindcss"]
+    },
+    "tooling/typescript": {
+      "ignoreUnresolved": ["next"]
+    }
+  }
+}

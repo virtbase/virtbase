@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import {
@@ -26,12 +26,16 @@ import {
 } from "bun:test";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import { appRouter } from "../../../root";
-import { mockServer, mockSession, seedServerGraph } from "../../../testing";
+import { appRouter } from "../../../root.ts";
+import {
+  mockServer,
+  mockSession,
+  seedServerGraph,
+} from "../../../testing/index.ts";
 
 const cacheStore = new Map<string, unknown>();
 
-mock.module("../../../upstash/redis", () => ({
+mock.module("../../../upstash/redis.ts", () => ({
   redis: {
     get: async (key: string) => cacheStore.get(key) ?? null,
     set: async (key: string, value: unknown) => {
@@ -146,7 +150,7 @@ const get = () =>
 
 describe("servers.firewall.analysis.get", () => {
   test("a plain web server produces no findings", async () => {
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         scripts: { "command -v ss": SS_WEB, "command -v ufw": "" },
       }),
@@ -159,7 +163,7 @@ describe("servers.firewall.analysis.get", () => {
   });
 
   test("it reports an exposed database with the process holding it", async () => {
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         scripts: { "command -v ss": SS_REDIS, "command -v ufw": "" },
       }),
@@ -185,7 +189,7 @@ describe("servers.firewall.analysis.get", () => {
   });
 
   test("a Proxmox rule already blocking the port silences the finding", async () => {
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         rules: [
           {
@@ -206,7 +210,7 @@ describe("servers.firewall.analysis.get", () => {
 
   test("a rule restricted to one network does not count as open to the internet", async () => {
     // Without reading `source`, this would be a false critical on a safe server.
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         policyIn: "DROP",
         rules: [
@@ -228,7 +232,7 @@ describe("servers.firewall.analysis.get", () => {
   });
 
   test("ufw blocking the port silences the finding", async () => {
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         scripts: {
           "command -v ss": SS_REDIS,
@@ -248,7 +252,7 @@ describe("servers.firewall.analysis.get", () => {
   });
 
   test("it explains a Virtbase rule that ufw overrules", async () => {
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         policyIn: "DROP",
         rules: [
@@ -287,7 +291,7 @@ describe("servers.firewall.analysis.get", () => {
   });
 
   test("it declines to advise when the server cannot be inspected", async () => {
-    mock.module("../../../proxmox", () =>
+    mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         current: { status: "stopped", qmpstatus: "stopped", agent: true },
       }),
@@ -304,7 +308,7 @@ describe("servers.firewall.analysis.get", () => {
     // follows a rule the customer just added straight away.
     let rules: HostRuleRaw[] = [];
 
-    mock.module("../../../proxmox", () => {
+    mock.module("../../../proxmox/index.ts", () => {
       const build = () =>
         createProxmoxMock({
           scripts: { "command -v ss": SS_REDIS, "command -v ufw": "" },

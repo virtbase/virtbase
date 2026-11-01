@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { APP_NAME } from "@virtbase/utils";
@@ -24,10 +24,10 @@ import {
   renderDivider,
   renderWordmark,
   WORDMARK_ALT,
-} from "./brand";
-import type { SubjectExport } from "./collect";
-import type { DocumentMessages } from "./messages";
-import { getDocumentMessages, resolveDocumentLocale } from "./messages";
+} from "./brand.ts";
+import type { SubjectExport } from "./collect.ts";
+import type { DocumentMessages } from "./messages.ts";
+import { getDocumentMessages, resolveDocumentLocale } from "./messages.ts";
 
 /**
  * The fonts, decompressed from a generated module rather than read off disk.
@@ -45,7 +45,7 @@ import { getDocumentMessages, resolveDocumentLocale } from "./messages";
  */
 async function loadFonts() {
   const [{ ARIAL_BLACK_GZIP_BASE64, ARIAL_GZIP_BASE64 }, { gunzipSync }] =
-    await Promise.all([import("./fonts.generated"), import("node:zlib")]);
+    await Promise.all([import("./fonts.generated.ts"), import("node:zlib")]);
 
   return {
     body: gunzipSync(Buffer.from(ARIAL_GZIP_BASE64, "base64")),
@@ -84,7 +84,7 @@ export interface BuildExportDocumentInput {
    * an English record of their own account by forgetting to pass it. Override
    * it only when someone else is the reader, as the admin console does.
    */
-  locale?: string | null;
+  locale?: string | null | undefined;
 }
 
 /**
@@ -221,7 +221,11 @@ function renderHeader(
   root.add(document.struct("Div", {}, () => renderDivider(document)));
 }
 
-/** A section of the report: either one table of fields, or a table per record. */
+/**
+ * A section of the report: either one table of fields, or a table per record.
+ *
+ * @internal
+ */
 export type DocumentSection =
   | { title: string; kind: "fields"; rows: Row[] }
   | { title: string; kind: "records"; items: Record_[] };
@@ -237,6 +241,8 @@ export type DocumentSection =
  * Pure, and separate from the drawing on purpose: once a font is subsetted the
  * content stream holds glyph indices rather than text, so what the document
  * says can only be asserted here.
+ *
+ * @internal
  */
 export function buildDocumentSections(
   data: SubjectExport,

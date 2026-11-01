@@ -1,23 +1,23 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import type { WebSocketData } from "@virtbase/validators";
 import type { ServerWebSocket } from "bun";
-import { log } from "./log";
+import { log } from "./log.ts";
 
 /** A websocket message as Bun hands it over, on either side of the bridge. */
 export type Frame = string | Buffer<ArrayBuffer>;
@@ -42,7 +42,7 @@ const SENDABLE_CLOSE_CODES = [
 ] as const;
 
 /** Bounded so a browser that talks before the node answers cannot grow the heap. */
-export const BacklogLimit = {
+const BacklogLimit = {
   frames: 64,
   bytes: 1024 * 1024,
 } as const;
@@ -156,7 +156,7 @@ type State =
 
 export interface BridgeOptions {
   /** Dialled instead of `wss://<host>`. Tests point it at a local node. */
-  upstreamBaseUrl?: string;
+  upstreamBaseUrl?: string | undefined;
   /** How long the node gets for TCP, TLS and the websocket handshake. */
   handshakeMs: number;
   /** How long a node that has fallen behind gets to catch up before its close. */

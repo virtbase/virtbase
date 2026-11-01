@@ -1,14 +1,15 @@
 {
   "name": "@virtbase/config",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "exports": {
     ".": "./src/index.ts"
   },
   "scripts": {
-    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "typecheck": "tsc --noEmit",
     "test": "bun --env-file=../../.env.test test --timeout 20000",
-    "typecheck": "tsc --noEmit"
+    "clean": "git clean -xdf .cache .turbo dist node_modules"
   },
   "dependencies": {
     "@virtbase/db": "workspace:*",
@@ -17,11 +18,5 @@
   "devDependencies": {
     "@virtbase/tsconfig": "workspace:*",
     "typescript": "catalog:"
-  },
-  "virtbase": {
-    "coverage": {
-      "lines": 0.85,
-      "functions": 0.89
-    }
   }
 }

@@ -9,13 +9,13 @@ Everything is configured in the admin console at
 `/admin.virtbase.com/integrations/prometheus`. Nothing is read from the
 environment.
 
-| Field | Kind | Default |
-| --- | --- | --- |
-| Metric prefix | setting | `virtbase_` |
-| Node.js runtime metrics | setting | on |
-| Platform metrics | setting | on |
-| Histogram buckets (ms) | setting | 5ms – 5min |
-| Scrape token | secret | *required* |
+| Field                   | Kind    | Default     |
+| ----------------------- | ------- | ----------- |
+| Metric prefix           | setting | `virtbase_` |
+| Node.js runtime metrics | setting | on          |
+| Platform metrics        | setting | on          |
+| Histogram buckets (ms)  | setting | 5ms – 5min  |
+| Scrape token            | secret  | _required_  |
 
 The scrape token is required rather than optional. The endpoint is a public
 route, and an unauthenticated one would publish the fleet's size, revenue shape
@@ -45,22 +45,22 @@ endpoint cannot be used to confirm that this deployment runs Prometheus.
 **Platform metrics** are counted in Postgres at scrape time, so they are exact
 regardless of how many instances are running or when they last restarted.
 
-| Metric | Labels |
-| --- | --- |
-| `servers` | `state` = active \| installing \| suspended \| terminating |
-| `servers_per_node` | `node`, `datacenter` |
-| `server_backups` | `state` = running \| failed \| completed |
-| `server_backup_bytes` | — |
-| `server_backup_oldest_unsettled_seconds` | — |
-| `orders` | `status` (the `order_statuses` enum) |
-| `order_oldest_in_flight_seconds` | — |
-| `payments` | `status` (the `payment_statuses` enum) |
-| `payment_amount_minor_units` | `kind` = captured \| refunded, `currency` |
-| `users` | — |
-| `proxmox_nodes` | `datacenter` |
-| `subnet_allocations` | `state` = allocated \| released |
-| `platform_collector_up` | — |
-| `platform_collector_duration_seconds` | — |
+| Metric                                   | Labels                                                     |
+| ---------------------------------------- | ---------------------------------------------------------- |
+| `servers`                                | `state` = active \| installing \| suspended \| terminating |
+| `servers_per_node`                       | `node`, `datacenter`                                       |
+| `server_backups`                         | `state` = running \| failed \| completed                   |
+| `server_backup_bytes`                    | —                                                          |
+| `server_backup_oldest_unsettled_seconds` | —                                                          |
+| `orders`                                 | `status` (the `order_statuses` enum)                       |
+| `order_oldest_in_flight_seconds`         | —                                                          |
+| `payments`                               | `status` (the `payment_statuses` enum)                     |
+| `payment_amount_minor_units`             | `kind` = captured \| refunded, `currency`                  |
+| `users`                                  | —                                                          |
+| `proxmox_nodes`                          | `datacenter`                                               |
+| `subnet_allocations`                     | `state` = allocated \| released                            |
+| `platform_collector_up`                  | —                                                          |
+| `platform_collector_duration_seconds`    | —                                                          |
 
 The two `*_oldest_*_seconds` gauges are the ones worth alerting on. An unsettled
 backup row blocks every further backup of its server and can be neither deleted
@@ -100,7 +100,7 @@ records it as the empty string. Never label with a user, server or IP.
 Counters, gauges and histograms recorded through the port live in the process
 that recorded them. On a platform that runs several instances and restarts them
 freely, a scrape reaches exactly one of those processes, so a counter answers
-"how many did *this* instance see since *its* cold start" rather than "how many
+"how many did _this_ instance see since _its_ cold start" rather than "how many
 were there". They are useful for rates and distributions across a fleet that
 Prometheus aggregates itself; they are not a ledger.
 

@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { createHash, randomUUID } from "node:crypto";
@@ -22,10 +22,10 @@ import type {
   NotificationAudience,
   NotificationSeverity,
 } from "@virtbase/ports";
-import { deliverNotification } from "./deliver";
-import { matchesAnyKey, meetsSeverity } from "./match";
-import { notificationTargetStore } from "./store";
-import type { NotificationParams } from "./text";
+import { deliverNotification } from "./deliver.ts";
+import { matchesAnyKey, meetsSeverity } from "./match.ts";
+import { notificationTargetStore } from "./store.ts";
+import type { NotificationParams } from "./text.ts";
 
 export interface DispatchNotificationInput {
   /** Dotted key, e.g. `abuse.case.opened`. Must have text registered for it. */
@@ -99,7 +99,7 @@ const resolveCandidates = async (
 ): Promise<Candidate[]> => {
   // See `deliver.ts`: the registry reaches back into this module, so it is
   // resolved at call time rather than imported.
-  const { integrations } = await import("../integrations");
+  const { integrations } = await import("../integrations/index.ts");
   const channels = await integrations.resolveAll("notifications");
 
   if ("user" === input.audience.kind) {

@@ -11,11 +11,11 @@ configuration store, it fills the `identity` capability port, and it consumes
 There are no environment variables. Everything is configured in the admin
 console at `/admin.virtbase.com/integrations/discord`:
 
-| Field | Where it comes from |
-| --- | --- |
+| Field          | Where it comes from                                 |
+| -------------- | --------------------------------------------------- |
 | Application ID | General Information in the Discord developer portal |
-| Bot token | Bot → Reset Token |
-| Public key | General Information |
+| Bot token      | Bot → Reset Token                                   |
+| Public key     | General Information                                 |
 
 Enabling the integration runs `onEnable`, which registers the slash commands,
 the role-connection metadata and the emojis. There is no script to run. If a
@@ -30,11 +30,11 @@ better-auth's social login, not to this package.
 Each reads the live state, compares it against what this package declares, and
 writes only on drift:
 
-| Reconciler | Declared in |
-| --- | --- |
-| `commands` | `src/commands.ts` |
+| Reconciler         | Declared in                        |
+| ------------------ | ---------------------------------- |
+| `commands`         | `src/commands.ts`                  |
 | `role-connections` | `src/role-connections-metadata.ts` |
-| `emojis` | `src/emoji/manifest.ts` |
+| `emojis`           | `src/emoji/manifest.ts`            |
 
 `runDiscordSync()` runs all three from two places — `onEnable`, and `health` on
 every probe. Because `/api/cron/check-integration-health` runs every thirty

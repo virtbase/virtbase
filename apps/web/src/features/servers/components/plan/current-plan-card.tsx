@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 "use client";
@@ -38,17 +38,17 @@ import {
 import { Skeleton } from "@virtbase/ui/skeleton";
 import NextLink from "next/link";
 import { useExtracted, useFormatter } from "next-intl";
-import { ItemRow } from "@/features/account/components/item-row";
-import type { PaymentMethodState } from "@/features/servers/components/billing/auto-renew-section";
-import { AutoRenewSection } from "@/features/servers/components/billing/auto-renew-section";
-import { PastDueAlert } from "@/features/servers/components/billing/past-due-alert";
-import type { Subscription } from "@/features/servers/hooks/billing/use-server-subscription";
-import { paths } from "@/lib/paths";
-import { CHANGE_PLAN_ANCHOR } from "./anchors";
-import type { PlanSpecsShape } from "./plan-specs";
-import { PlanSpecs } from "./plan-specs";
-import type { SavedPaymentMethod } from "./renewal-payment-method";
-import { RenewalPaymentMethod } from "./renewal-payment-method";
+import { ItemRow } from "@/features/account/components/item-row.tsx";
+import type { PaymentMethodState } from "@/features/servers/components/billing/auto-renew-section.tsx";
+import { AutoRenewSection } from "@/features/servers/components/billing/auto-renew-section.tsx";
+import { PastDueAlert } from "@/features/servers/components/billing/past-due-alert.tsx";
+import type { Subscription } from "@/features/servers/hooks/billing/use-server-subscription.ts";
+import { paths } from "@/lib/paths.ts";
+import { CHANGE_PLAN_ANCHOR } from "./anchors.ts";
+import type { PlanSpecsShape } from "./plan-specs.tsx";
+import { PlanSpecs } from "./plan-specs.tsx";
+import type { SavedPaymentMethod } from "./renewal-payment-method.tsx";
+import { RenewalPaymentMethod } from "./renewal-payment-method.tsx";
 
 interface CurrentPlanCardProps {
   /**

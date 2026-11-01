@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 "use client";
@@ -23,13 +23,13 @@ import { useMemo } from "react";
 import {
   CheckoutStateProvider,
   useCheckoutState,
-} from "@/features/checkout/hooks/use-checkout-state";
-import { useServerPlans } from "../../hooks/plan/use-server-plans";
-import { CHANGE_PLAN_ANCHOR } from "./anchors";
-import { PlanCatalog } from "./plan-catalog";
-import { PlanProvider } from "./plan-context";
-import { PlanOrderDialog } from "./plan-order-dialog";
-import { PlanPaymentStep } from "./plan-payment-step";
+} from "@/features/checkout/hooks/use-checkout-state.tsx";
+import { useServerPlans } from "../../hooks/plan/use-server-plans.ts";
+import { CHANGE_PLAN_ANCHOR } from "./anchors.ts";
+import { PlanCatalog } from "./plan-catalog.tsx";
+import { PlanProvider } from "./plan-context.tsx";
+import { PlanOrderDialog } from "./plan-order-dialog.tsx";
+import { PlanPaymentStep } from "./plan-payment-step.tsx";
 
 /**
  * The catalogue, and nothing above it.

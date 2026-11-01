@@ -1,46 +1,49 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { sleep } from "workflow";
 // Imported from the leaf rather than the `guest-os` barrel: that barrel
 // reaches Redis and therefore `node:crypto`, which a workflow cannot load.
-import { CLEARED_OPERATING_SYSTEM } from "../../guest-os/columns";
-import type { GetProxmoxInstanceParams } from "../../proxmox/get-proxmox-instance";
-import { applyCloudInitStep } from "../shared/apply-cloud-init";
+import { CLEARED_OPERATING_SYSTEM } from "../../guest-os/columns.ts";
+import type { GetProxmoxInstanceParams } from "../../proxmox/get-proxmox-instance.ts";
+import { applyCloudInitStep } from "../shared/apply-cloud-init.ts";
 import {
   applyGuestConfigStep,
   rollbackApplyGuestConfigStep,
-} from "../shared/apply-guest-config";
+} from "../shared/apply-guest-config.ts";
 import {
   createGuestFromImageStep,
   rollbackCreateGuestFromImageStep,
-} from "../shared/create-guest-from-image";
-import { destroyGuestStep } from "../shared/destroy-guest";
-import { getTemplateStep } from "../shared/get-template";
-import { moveDiskStep } from "../shared/move-disk";
+} from "../shared/create-guest-from-image.ts";
+import { destroyGuestStep } from "../shared/destroy-guest.ts";
+import { getTemplateStep } from "../shared/get-template.ts";
+import { moveDiskStep } from "../shared/move-disk.ts";
 import {
   performGuestActionStep,
   rollbackPerformGuestActionStep,
-} from "../shared/perform-guest-action";
-import { regenerateCloudInitStep } from "../shared/regenerate-cloud-init";
-import { resizeDiskStep, rollbackResizeDiskStep } from "../shared/resize-disk";
-import { runRollbacks } from "../shared/run-rollbacks";
-import { updateServerStep } from "../shared/update-server";
-import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task";
+} from "../shared/perform-guest-action.ts";
+import { regenerateCloudInitStep } from "../shared/regenerate-cloud-init.ts";
+import {
+  resizeDiskStep,
+  rollbackResizeDiskStep,
+} from "../shared/resize-disk.ts";
+import { runRollbacks } from "../shared/run-rollbacks.ts";
+import { updateServerStep } from "../shared/update-server.ts";
+import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task.ts";
 
 type ChangeTempalateWorkflowParams = {
   /**
@@ -281,12 +284,22 @@ export async function changeTempalateWorkflow({
         // template's vendor data, and the guest is now running a different OS.
         // Step 7b re-renders it.
         ...{
-          ciuser: previousConfig.ciuser,
+          ...(previousConfig.ciuser === undefined
+            ? {}
+            : { ciuser: previousConfig.ciuser }),
           cipassword: initialRootPassword,
-          ciupgrade: previousConfig.ciupgrade,
-          net0: previousConfig.net0,
-          net1: previousConfig.net1,
-          boot: previousConfig.boot,
+          ...(previousConfig.ciupgrade === undefined
+            ? {}
+            : { ciupgrade: previousConfig.ciupgrade }),
+          ...(previousConfig.net0 === undefined
+            ? {}
+            : { net0: previousConfig.net0 }),
+          ...(previousConfig.net1 === undefined
+            ? {}
+            : { net1: previousConfig.net1 }),
+          ...(previousConfig.boot === undefined
+            ? {}
+            : { boot: previousConfig.boot }),
         },
         // Delete the unused disk from the original guest
         delete: "unused0",

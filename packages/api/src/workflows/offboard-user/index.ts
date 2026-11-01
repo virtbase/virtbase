@@ -1,32 +1,32 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { deleteOneServer } from "../shared/delete-one-server";
-import { anonymizeUserStep } from "./anonymize-user";
-import { claimAccountStep } from "./claim-account";
-import { countRetainedStep } from "./count-retained";
-import { detachExternalServicesStep } from "./detach-external-services";
-import { detachPaymentMethodsStep } from "./detach-payment-methods";
-import { eraseSubjectDataStep } from "./erase-subject-data";
-import { getServersToDestroyStep } from "./get-servers-to-destroy";
-import { purgeIsoDownloadsStep } from "./purge-iso-downloads";
-import { recordErasureStep } from "./record-erasure";
-import { revokeExternalIdentitiesStep } from "./revoke-external-identities";
-import { sendAccountDeletedEmailStep } from "./send-account-deleted-email";
+import { deleteOneServer } from "../shared/delete-one-server.ts";
+import { anonymizeUserStep } from "./anonymize-user.ts";
+import { claimAccountStep } from "./claim-account.ts";
+import { countRetainedStep } from "./count-retained.ts";
+import { detachExternalServicesStep } from "./detach-external-services.ts";
+import { detachPaymentMethodsStep } from "./detach-payment-methods.ts";
+import { eraseSubjectDataStep } from "./erase-subject-data.ts";
+import { getServersToDestroyStep } from "./get-servers-to-destroy.ts";
+import { purgeIsoDownloadsStep } from "./purge-iso-downloads.ts";
+import { recordErasureStep } from "./record-erasure.ts";
+import { revokeExternalIdentitiesStep } from "./revoke-external-identities.ts";
+import { sendAccountDeletedEmailStep } from "./send-account-deleted-email.ts";
 
 type OffboardUserWorkflowParams = {
   userId: string;
@@ -127,13 +127,13 @@ export async function offboardUserWorkflow({
   });
 }
 
-export { anonymizeUserStep } from "./anonymize-user";
-export { claimAccountStep } from "./claim-account";
-export { countRetainedStep } from "./count-retained";
-export { detachExternalServicesStep } from "./detach-external-services";
-export { detachPaymentMethodsStep } from "./detach-payment-methods";
-export { eraseSubjectDataStep } from "./erase-subject-data";
-export { getServersToDestroyStep } from "./get-servers-to-destroy";
-export { purgeIsoDownloadsStep } from "./purge-iso-downloads";
-export { recordErasureStep } from "./record-erasure";
-export { revokeExternalIdentitiesStep } from "./revoke-external-identities";
+export { anonymizeUserStep } from "./anonymize-user.ts";
+export { claimAccountStep } from "./claim-account.ts";
+export { countRetainedStep } from "./count-retained.ts";
+export { detachExternalServicesStep } from "./detach-external-services.ts";
+export { detachPaymentMethodsStep } from "./detach-payment-methods.ts";
+export { eraseSubjectDataStep } from "./erase-subject-data.ts";
+export { getServersToDestroyStep } from "./get-servers-to-destroy.ts";
+export { purgeIsoDownloadsStep } from "./purge-iso-downloads.ts";
+export { recordErasureStep } from "./record-erasure.ts";
+export { revokeExternalIdentitiesStep } from "./revoke-external-identities.ts";

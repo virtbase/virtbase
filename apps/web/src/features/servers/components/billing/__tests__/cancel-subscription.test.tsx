@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { beforeAll, describe, expect, mock, test } from "bun:test";
@@ -46,8 +46,8 @@ let renderWithProviders: Rendered["renderWithProviders"];
 let screen: Rendered["screen"];
 let within: Rendered["within"];
 let userEvent: Rendered["userEvent"];
-let CancelSubscriptionDialog: typeof import("../cancel-subscription-dialog").CancelSubscriptionDialog;
-let CancelSubscriptionSection: typeof import("../cancel-subscription-section").CancelSubscriptionSection;
+let CancelSubscriptionDialog: typeof import("../cancel-subscription-dialog.tsx").CancelSubscriptionDialog;
+let CancelSubscriptionSection: typeof import("../cancel-subscription-section.tsx").CancelSubscriptionSection;
 let IntlEnvironment: (props: { children: React.ReactNode }) => React.ReactNode;
 
 beforeAll(async () => {
@@ -59,10 +59,11 @@ beforeAll(async () => {
   within = rendered.within;
   userEvent = rendered.userEvent;
 
-  CancelSubscriptionDialog = (await import("../cancel-subscription-dialog"))
+  CancelSubscriptionDialog = (await import("../cancel-subscription-dialog.tsx"))
     .CancelSubscriptionDialog;
-  CancelSubscriptionSection = (await import("../cancel-subscription-section"))
-    .CancelSubscriptionSection;
+  CancelSubscriptionSection = (
+    await import("../cancel-subscription-section.tsx")
+  ).CancelSubscriptionSection;
 
   // Pins the time zone the dates below are formatted in. Without it `use-intl`
   // falls back to the machine's, which turns a UTC midnight into the previous

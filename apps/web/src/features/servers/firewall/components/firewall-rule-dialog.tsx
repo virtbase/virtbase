@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 "use client";
@@ -54,11 +54,11 @@ import { useParams } from "next/navigation";
 import { useExtracted } from "next-intl";
 import { useCallback, useEffect } from "react";
 import { Controller, useForm } from "react-hook-form";
-import { useCreateFirewallRule } from "../hooks/use-create-firewall-rule";
-import { useUpdateFirewallRule } from "../hooks/use-update-firewall-rule";
-import { getICMPTypes, isICMP, isProtocolWithPorts } from "../lib/utils";
-import { FirewallActionSelect } from "./firewall-action-select";
-import { FirewallProtocolSelect } from "./firewall-protocol-select";
+import { useCreateFirewallRule } from "../hooks/use-create-firewall-rule.ts";
+import { useUpdateFirewallRule } from "../hooks/use-update-firewall-rule.ts";
+import { getICMPTypes, isICMP, isProtocolWithPorts } from "../lib/utils.ts";
+import { FirewallActionSelect } from "./firewall-action-select.tsx";
+import { FirewallProtocolSelect } from "./firewall-protocol-select.tsx";
 
 interface FirewallRuleDialogProps
   extends Omit<
@@ -193,7 +193,9 @@ export default function FirewallRuleDialog({
                   <Select
                     name={field.name}
                     onValueChange={field.onChange}
-                    value={field.value}
+                    {...(field.value === undefined
+                      ? {}
+                      : { value: field.value })}
                   >
                     <SelectTrigger
                       id={field.name}
@@ -224,7 +226,9 @@ export default function FirewallRuleDialog({
                   <FirewallActionSelect
                     name={field.name}
                     onValueChange={field.onChange}
-                    value={field.value}
+                    {...(field.value === undefined
+                      ? {}
+                      : { value: field.value })}
                     triggerProps={{
                       id: field.name,
                       "aria-invalid": fieldState.invalid,
@@ -324,7 +328,9 @@ export default function FirewallRuleDialog({
                 <Checkbox
                   id={field.name}
                   name={field.name}
-                  checked={field.value}
+                  {...(field.value === undefined
+                    ? {}
+                    : { checked: field.value })}
                   onCheckedChange={field.onChange}
                   aria-invalid={fieldState.invalid}
                 />

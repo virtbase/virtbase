@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 "use client";
@@ -32,12 +32,12 @@ import { useExtracted } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import { useState } from "react";
 import { toast } from "sonner";
-import type { IntegrationListItem } from "../../api/integrations/get-integrations-list";
+import type { IntegrationListItem } from "../../api/integrations/get-integrations-list.ts";
 import {
   saveIntegrationSecretsAction,
   saveIntegrationSettingsAction,
-} from "../../api/integrations/update-integration";
-import { IntegrationField } from "./integration-field";
+} from "../../api/integrations/update-integration.ts";
+import { IntegrationField } from "./integration-field.tsx";
 
 const toFormValues = (
   keys: string[],
@@ -71,8 +71,11 @@ export function IntegrationSettingsForm({
     toFormValues(descriptor.secretFields.map((field) => field.key)),
   );
 
-  const onError = ({ error }: { error: { serverError?: string } }) =>
-    toast.error(error.serverError ?? t("Something went wrong."));
+  const onError = ({
+    error,
+  }: {
+    error: { serverError?: string | undefined };
+  }) => toast.error(error.serverError ?? t("Something went wrong."));
 
   const saveSettings = useAction(saveIntegrationSettingsAction, {
     onError,

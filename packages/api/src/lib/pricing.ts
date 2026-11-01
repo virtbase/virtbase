@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 /**
@@ -30,6 +30,8 @@
  * Renewals add `INTERVAL '1 month'`, which is a calendar month, so the two
  * disagree by up to a day and a half per month. Reconciling them needs the
  * term's start date — which is not an input here — so the flat month stays.
+ *
+ * @internal
  */
 export const MONTH_MS = 30 * 24 * 60 * 60 * 1000;
 
@@ -39,6 +41,8 @@ export const MONTH_MS = 30 * 24 * 60 * 60 * 1000;
  *
  * A provider constraint leaking into pricing is not ideal; it belongs to
  * `PaymentProvider` once both providers are behind the port.
+ *
+ * @internal
  */
 export const MIN_CHARGE_EUR_CENTS = 50;
 

@@ -1,22 +1,22 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { defineConfig, devices } from "@playwright/test";
-import { appOrigin } from "./e2e/support/urls";
+import { appOrigin } from "./e2e/support/urls.ts";
 
 const PORT = Number(process.env.E2E_PORT ?? 3000);
 
@@ -28,7 +28,7 @@ export default defineConfig({
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
   retries: process.env.CI ? 1 : 0,
-  workers: process.env.CI ? 2 : undefined,
+  ...(process.env.CI ? { workers: 2 } : {}),
   // The HTML report embeds the traces, videos and screenshots, so it is the one
   // artifact worth downloading. `github` adds inline annotations on the PR diff.
   // If this suite is ever sharded, add `["blob"]` here and a merge step - blob
@@ -103,16 +103,18 @@ export default defineConfig({
       },
     },
   ],
-  webServer: process.env.E2E_SKIP_WEB_SERVER
-    ? undefined
+  ...(process.env.E2E_SKIP_WEB_SERVER
+    ? {}
     : {
-        command: process.env.CI
-          ? `bun with-env next start --port ${PORT}`
-          : `bun with-env next dev --port ${PORT}`,
-        timeout: 240 * 1000,
-        port: PORT,
-        reuseExistingServer: !process.env.CI,
-        stdout: "pipe",
-        stderr: "pipe",
-      },
+        webServer: {
+          command: process.env.CI
+            ? `bun with-env next start --port ${PORT}`
+            : `bun with-env next dev --port ${PORT}`,
+          timeout: 240 * 1000,
+          port: PORT,
+          reuseExistingServer: !process.env.CI,
+          stdout: "pipe",
+          stderr: "pipe",
+        },
+      }),
 });

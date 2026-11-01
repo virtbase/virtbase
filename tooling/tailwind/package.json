@@ -1,5 +1,6 @@
 {
   "name": "@virtbase/tailwind-config",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "exports": {
@@ -7,8 +8,8 @@
     "./postcss-config": "./postcss-config.js"
   },
   "scripts": {
-    "clean": "git clean -xdf .cache .turbo dist node_modules",
-    "typecheck": "tsc --noEmit --emitDeclarationOnly false"
+    "typecheck": "tsc --noEmit --emitDeclarationOnly false",
+    "clean": "git clean -xdf .cache .turbo dist node_modules"
   },
   "dependencies": {
     "@tailwindcss/postcss": "catalog:tailwind",

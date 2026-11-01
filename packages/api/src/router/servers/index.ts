@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import type { TRPCRouterRecord } from "@trpc/server";
@@ -39,19 +39,19 @@ import {
   RenameServerInputSchema,
   RenameServerOutputSchema,
 } from "@virtbase/validators/server";
-import { protectedProcedure, serverProcedure } from "../../trpc";
-import { serversActionsRouter } from "./actions";
-import { serversAdvancedRouter } from "./advanced";
-import { serversAgentRouter } from "./agent";
-import { serversBackupsRouter } from "./backups";
-import { serversConsoleRouter } from "./console";
-import { serverFirewallRouter } from "./firewall";
-import { serversGraphsRouter } from "./graphs";
-import { serversMountsRouter } from "./mounts";
-import { serversPlanRouter } from "./plan";
-import { serversRdnsRouter } from "./rdns";
-import { serversStatusRouter } from "./status";
-import { serversTemplateGroupsRouter } from "./template-groups";
+import { protectedProcedure, serverProcedure } from "../../trpc.ts";
+import { serversActionsRouter } from "./actions/index.ts";
+import { serversAdvancedRouter } from "./advanced.ts";
+import { serversAgentRouter } from "./agent.ts";
+import { serversBackupsRouter } from "./backups/index.ts";
+import { serversConsoleRouter } from "./console.ts";
+import { serverFirewallRouter } from "./firewall/index.ts";
+import { serversGraphsRouter } from "./graphs.ts";
+import { serversMountsRouter } from "./mounts.ts";
+import { serversPlanRouter } from "./plan.ts";
+import { serversRdnsRouter } from "./rdns.ts";
+import { serversStatusRouter } from "./status.ts";
+import { serversTemplateGroupsRouter } from "./template-groups.ts";
 
 export const serversRouter = {
   actions: serversActionsRouter,

@@ -1,24 +1,24 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { createEmoji, deleteEmoji, listEmojis } from "../api";
-import { invalidateEmojiCache } from "../emoji/cache";
-import { EMOJI_MANIFEST, EMOJI_PREFIX } from "../emoji/manifest";
-import type { Reconciler } from "./types";
+import { createEmoji, deleteEmoji, listEmojis } from "../api/index.ts";
+import { invalidateEmojiCache } from "../emoji/cache.ts";
+import { EMOJI_MANIFEST, EMOJI_PREFIX } from "../emoji/manifest.ts";
+import type { Reconciler } from "./types.ts";
 
 /**
  * Uploads the distro logos the bot renders next to a server's operating system.
@@ -57,7 +57,7 @@ export const reconcileEmojis: Reconciler = async (client) => {
   // Imported here rather than at the top: the images are ~100 KB of base64 and
   // this module is reachable from the web app's import graph. A dynamic import
   // keeps them in their own chunk, loaded only when there is an upload to do.
-  const { EMOJI_IMAGES } = await import("../emoji/images.generated");
+  const { EMOJI_IMAGES } = await import("../emoji/images.generated.ts");
 
   for (const descriptor of missing) {
     const image = EMOJI_IMAGES[descriptor.file];

@@ -1,25 +1,25 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { APP_NAME, PUBLIC_DOMAIN, SUPPORT_EMAIL } from "@virtbase/utils";
 import type { Organization, WebSite } from "schema-dts";
-import { locales } from "@/i18n/config";
-import { SOCIALS } from "@/lib/socials";
-import JsonLd from "./json-ld";
+import { locales } from "@/i18n/config.ts";
+import { SOCIALS } from "@/lib/socials.ts";
+import JsonLd from "./json-ld.tsx";
 
 /**
  * Stable node identifiers for the site-wide graph.
@@ -30,7 +30,7 @@ import JsonLd from "./json-ld";
  * Virtbase as a brand or seller — `OffersJsonLd`, for one — points here instead.
  */
 export const ORGANIZATION_ID = `${PUBLIC_DOMAIN}/#organization`;
-export const WEBSITE_ID = `${PUBLIC_DOMAIN}/#website`;
+const WEBSITE_ID = `${PUBLIC_DOMAIN}/#website`;
 
 export function DefaultJsonLd() {
   const organization: Organization = {

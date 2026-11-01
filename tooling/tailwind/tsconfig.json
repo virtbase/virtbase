@@ -1,5 +1,8 @@
 {
-  "extends": "@virtbase/tsconfig/base.json",
-  "include": ["."],
-  "exclude": ["node_modules"]
+  "extends": ["@virtbase/tsconfig/library.json", "@virtbase/tsconfig/bun.json"],
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true
+  },
+  "include": ["."]
 }

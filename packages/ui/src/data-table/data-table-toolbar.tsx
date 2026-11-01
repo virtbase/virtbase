@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 "use client";
@@ -22,13 +22,13 @@ import { cn } from "@virtbase/ui";
 import { X } from "lucide-react";
 import { useExtracted } from "next-intl";
 import * as React from "react";
-import { Button } from "../button";
-import { Input } from "../input";
-import type { Column, Table } from "../types/data-table";
-import { DataTableDateFilter } from "./data-table-date-filter";
-import { DataTableFacetedFilter } from "./data-table-faceted-filter";
-import { DataTableSliderFilter } from "./data-table-slider-filter";
-import { DataTableViewOptions } from "./data-table-view-options";
+import { Button } from "../button.tsx";
+import { Input } from "../input.tsx";
+import type { Column, Table } from "../types/data-table.ts";
+import { DataTableDateFilter } from "./data-table-date-filter.tsx";
+import { DataTableFacetedFilter } from "./data-table-faceted-filter.tsx";
+import { DataTableSliderFilter } from "./data-table-slider-filter.tsx";
+import { DataTableViewOptions } from "./data-table-view-options.tsx";
 
 interface DataTableToolbarProps<TData extends RowData>
   extends React.ComponentProps<"div"> {

@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import {
@@ -44,7 +44,7 @@ import {
   mockServerPlanPrice,
   mockSession,
   seedServerInfrastructure,
-} from "../../testing/fixtures";
+} from "../../testing/fixtures.ts";
 
 /**
  * `transitionSubscription` binds `db` at import time and the router calls it,
@@ -72,12 +72,12 @@ mock.module("@virtbase/db/client", () => ({ db: testDb }));
  * infinite recursion, and returning a bare object would strip every other
  * export out from under the billing suites.
  */
-const realCollect = { ...(await import("../../billing/collect")) };
+const realCollect = { ...(await import("../../billing/collect.ts")) };
 
 /** Armed by one test, fired once, immediately after the collector answers. */
 let afterResolvingPaymentMethod: (() => Promise<void>) | null = null;
 
-mock.module("../../billing/collect", () => ({
+mock.module("../../billing/collect.ts", () => ({
   ...realCollect,
   resolveRenewalPaymentMethod: async (subscriptionId: string) => {
     const resolved =
@@ -91,7 +91,7 @@ mock.module("../../billing/collect", () => ({
   },
 }));
 
-const { appRouter } = await import("../../root");
+const { appRouter } = await import("../../root.ts");
 
 type Caller = ReturnType<typeof appRouter.createCaller>;
 

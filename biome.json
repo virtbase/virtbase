@@ -1,0 +1,370 @@
+{
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "root": true,
+  "vcs": {
+    "enabled": true,
+    "clientKind": "git",
+    "useIgnoreFile": true
+  },
+  "formatter": {
+    "enabled": true,
+    "formatWithErrors": false,
+    "indentStyle": "space",
+    "indentWidth": 2,
+    "lineEnding": "lf",
+    "lineWidth": 80,
+    "attributePosition": "auto"
+  },
+  "files": {
+    "includes": ["**", "!**/*.svg"]
+  },
+  "css": {
+    "parser": {
+      "tailwindDirectives": true
+    }
+  },
+  "assist": {
+    "actions": {
+      "source": {
+        "organizeImports": "on"
+      }
+    }
+  },
+  "linter": {
+    "enabled": true,
+    "domains": {
+      "react": "recommended",
+      "next": "recommended",
+      "turborepo": "recommended",
+      "test": "recommended"
+    },
+    "rules": {
+      "style": {
+        "noRestrictedImports": {
+          "options": {
+            "paths": {
+              "zod": {
+                "importNames": ["z"],
+                "message": "Use `import * as z from \"zod\"` instead of `import { z }`."
+              },
+              "use-intl": {
+                "importNames": ["createTranslator", "createFormatter"],
+                "message": "Use `import { ... } from \"use-intl/core\"` instead of `import { ... } from \"use-intl\"`."
+              },
+              "discord-api-types/v9": {
+                "message": "Use `import { ... } from \"discord-api-types/v10\"` instead of `import { ... } from \"discord-api-types/v9\"`."
+              }
+            }
+          },
+          "level": "error"
+        },
+        "useImportType": {
+          "level": "error",
+          "options": {
+            "style": "separatedType"
+          }
+        },
+        "useNodejsImportProtocol": "error",
+        "useConst": "error",
+        "noRestrictedTypes": "off",
+        "noRestrictedGlobals": "off",
+        "noNonNullAssertion": "error",
+        "noDefaultExport": "warn",
+        "noProcessEnv": "warn"
+      },
+      "preset": "recommended",
+      "suspicious": {
+        "noArrayIndexKey": "off",
+        "noImplicitAnyLet": "warn",
+        "noDuplicateObjectKeys": "warn",
+        "noTsIgnore": "error",
+        "noDebugger": "error"
+      },
+      "performance": {
+        "noDelete": "error"
+      },
+      "complexity": {
+        "noExcessiveCognitiveComplexity": {
+          "level": "warn",
+          "options": {
+            "maxAllowedComplexity": 15
+          }
+        },
+        "noExcessiveLinesPerFunction": {
+          "level": "warn",
+          "options": {
+            "maxLines": 60
+          }
+        },
+        "useDateNow": "error",
+        "noUselessSwitchCase": "warn",
+        "noUselessTypeConstraint": "warn"
+      },
+      "correctness": {
+        "noUnusedImports": "warn",
+        "noUnusedVariables": "warn",
+        "useExhaustiveDependencies": "warn",
+        "useHookAtTopLevel": "warn",
+        "useImportExtensions": "error"
+      },
+      "nursery": {
+        "useExhaustiveSwitchCases": "error",
+        "useReactCompiler": "warn",
+        "useSortedClasses": {
+          "level": "warn",
+          "fix": "safe",
+          "options": {
+            "functions": ["clsx", "cva", "cn"]
+          }
+        }
+      }
+    }
+  },
+  "overrides": [
+    {
+      "includes": [
+        "**/src/app/**",
+        "**/integration-*/src/index.ts",
+        "**/*.config.ts",
+        "**/*.config.js",
+        "**/*.config.mjs",
+        "packages/email/src/templates/**",
+        "packages/integration-discord/src/integration.ts",
+        "tooling/tailwind/postcss-config.js"
+      ],
+      "linter": {
+        "rules": {
+          "style": {
+            "noDefaultExport": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": [
+        "**/env.ts",
+        "**/*.config.ts",
+        "**/__tests__/**",
+        "**/src/instrumentation.ts",
+        "**/src/instrumentation-client.ts",
+        "tooling/**",
+        ".claude/**",
+        "apps/web/e2e/**",
+        "apps/web/scripts/**"
+      ],
+      "linter": {
+        "rules": {
+          "style": {
+            "noProcessEnv": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["**/integration-*/src/**"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noConsole": "warn"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["**/integration-sdk/src/**"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noConsole": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": ["packages/api/**"],
+      "linter": {
+        "rules": {
+          "suspicious": {
+            "noImportCycles": "off"
+          }
+        }
+      }
+    },
+    {
+      "includes": [
+        "**/*.ts",
+        "**/*.tsx",
+        "!**/__tests__/**",
+        "!**/*.test.ts",
+        "!**/*.test.tsx",
+        "!packages/test-utils/**",
+        "!packages/api/src/testing/**",
+        "!apps/web/e2e/**",
+        "!apps/web/scripts/**"
+      ],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "paths": {
+                  "zod": {
+                    "importNames": ["z"],
+                    "message": "Use `import * as z from \"zod\"` instead of `import { z }`."
+                  },
+                  "use-intl": {
+                    "importNames": ["createTranslator", "createFormatter"],
+                    "message": "Use `import { ... } from \"use-intl/core\"` instead of `import { ... } from \"use-intl\"`."
+                  },
+                  "discord-api-types/v9": {
+                    "message": "Use `import { ... } from \"discord-api-types/v10\"` instead of `import { ... } from \"discord-api-types/v9\"`."
+                  }
+                },
+                "patterns": [
+                  {
+                    "group": [
+                      "@virtbase/test-utils",
+                      "@virtbase/test-utils/**"
+                    ],
+                    "message": "Import test utilities only in tests, e2e and dev scripts."
+                  },
+                  {
+                    "group": [
+                      "@virtbase/api/testing",
+                      "@virtbase/api/testing/**",
+                      "**/testing",
+                      "**/testing/**"
+                    ],
+                    "message": "Import the api test harness only in tests, e2e and dev scripts."
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "includes": [
+        "packages/integration-*/src/**",
+        "!**/__tests__/**",
+        "!**/*.test.ts",
+        "!**/*.test.tsx",
+        "!packages/integration-discord/src/utils/get-user-by-interaction.ts",
+        "!packages/integration-discord/src/notifications/index.ts",
+        "!packages/integration-discord/src/identity/push-linked-role-metadata.ts",
+        "!packages/integration-prometheus/src/collectors.ts",
+        "!packages/integration-stripe/src/get-or-create-customer.ts"
+      ],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "paths": {
+                  "zod": {
+                    "importNames": ["z"],
+                    "message": "Use `import * as z from \"zod\"` instead of `import { z }`."
+                  },
+                  "use-intl": {
+                    "importNames": ["createTranslator", "createFormatter"],
+                    "message": "Use `import { ... } from \"use-intl/core\"` instead of `import { ... } from \"use-intl\"`."
+                  },
+                  "discord-api-types/v9": {
+                    "message": "Use `import { ... } from \"discord-api-types/v10\"` instead of `import { ... } from \"discord-api-types/v9\"`."
+                  }
+                },
+                "patterns": [
+                  {
+                    "group": [
+                      "@virtbase/test-utils",
+                      "@virtbase/test-utils/**"
+                    ],
+                    "message": "Import test utilities only in tests, e2e and dev scripts."
+                  },
+                  {
+                    "group": [
+                      "@virtbase/api/testing",
+                      "@virtbase/api/testing/**",
+                      "**/testing",
+                      "**/testing/**"
+                    ],
+                    "message": "Import the api test harness only in tests, e2e and dev scripts."
+                  },
+                  {
+                    "group": ["@virtbase/db/schema", "@virtbase/db/schema/**"],
+                    "message": "Integrations reach their own tables through ctx.db and core data through ports."
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "includes": [
+        "packages/auth/src/**",
+        "packages/email/src/**",
+        "packages/db/src/**",
+        "!**/__tests__/**",
+        "!**/*.test.ts",
+        "!**/*.test.tsx"
+      ],
+      "linter": {
+        "rules": {
+          "style": {
+            "noRestrictedImports": {
+              "level": "error",
+              "options": {
+                "paths": {
+                  "zod": {
+                    "importNames": ["z"],
+                    "message": "Use `import * as z from \"zod\"` instead of `import { z }`."
+                  },
+                  "use-intl": {
+                    "importNames": ["createTranslator", "createFormatter"],
+                    "message": "Use `import { ... } from \"use-intl/core\"` instead of `import { ... } from \"use-intl\"`."
+                  },
+                  "discord-api-types/v9": {
+                    "message": "Use `import { ... } from \"discord-api-types/v10\"` instead of `import { ... } from \"discord-api-types/v9\"`."
+                  }
+                },
+                "patterns": [
+                  {
+                    "group": [
+                      "@virtbase/test-utils",
+                      "@virtbase/test-utils/**"
+                    ],
+                    "message": "Import test utilities only in tests, e2e and dev scripts."
+                  },
+                  {
+                    "group": [
+                      "@virtbase/api/testing",
+                      "@virtbase/api/testing/**",
+                      "**/testing",
+                      "**/testing/**"
+                    ],
+                    "message": "Import the api test harness only in tests, e2e and dev scripts."
+                  },
+                  {
+                    "group": [
+                      "**/*discord*",
+                      "**/*stripe*",
+                      "**/*anonpay*",
+                      "**/*lexware*",
+                      "**/*powerdns*"
+                    ],
+                    "message": "Platform packages stay provider-neutral; emit an event and let an integration react."
+                  }
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

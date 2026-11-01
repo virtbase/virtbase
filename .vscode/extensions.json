@@ -2,9 +2,17 @@
   "recommendations": [
     "biomejs.biome",
     "bradlc.vscode-tailwindcss",
-    "r3bl.r3bl-auto-insert-copyright",
+    "dprint.dprint",
+    "github.vscode-github-actions",
     "ms-playwright.playwright",
     "oven.bun-vscode",
+    "psioniq.psi-header",
     "TypeScriptTeam.native-preview"
+  ],
+  "unwantedRecommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "ms-vscode.vscode-typescript-next",
+    "vitest.explorer"
   ]
 }

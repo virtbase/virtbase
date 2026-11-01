@@ -1,34 +1,34 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { ADMIN_HOSTNAMES, API_HOSTNAMES, APP_HOSTNAMES } from "@virtbase/utils";
-import contentCollections from "fdx-source/browser";
+import contentCollections from "fdx-source/browser.ts";
 import type { NextRequest, ProxyConfig } from "next/server";
 import { hasLocale } from "next-intl";
 import createMiddleware from "next-intl/middleware";
-import { locales } from "@/i18n/config";
-import { routing } from "@/i18n/routing.public";
-import { AdminMiddleware } from "@/lib/middleware/admin";
-import { ApiMiddleware } from "@/lib/middleware/api";
-import { AppMiddleware } from "@/lib/middleware/app";
-import { isMissingContent } from "@/lib/middleware/utils/missing-content";
-import { rewriteToNotFound } from "@/lib/middleware/utils/not-found";
-import { parse } from "@/lib/middleware/utils/parse";
-import { ensureLocaleCookie } from "./lib/middleware/ensure-locale-cookie";
+import { locales } from "@/i18n/config.ts";
+import { routing } from "@/i18n/routing.public.ts";
+import { AdminMiddleware } from "@/lib/middleware/admin.ts";
+import { ApiMiddleware } from "@/lib/middleware/api.ts";
+import { AppMiddleware } from "@/lib/middleware/app.ts";
+import { isMissingContent } from "@/lib/middleware/utils/missing-content.ts";
+import { rewriteToNotFound } from "@/lib/middleware/utils/not-found.ts";
+import { parse } from "@/lib/middleware/utils/parse.ts";
+import { ensureLocaleCookie } from "./lib/middleware/ensure-locale-cookie.ts";
 
 export const config: ProxyConfig = {
   // Match all pathnames except for

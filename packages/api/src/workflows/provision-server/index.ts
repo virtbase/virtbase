@@ -1,59 +1,62 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { FatalError, sleep } from "workflow";
 import {
   applyCloudInitStep,
   rollbackApplyCloudInitStep,
-} from "../shared/apply-cloud-init";
+} from "../shared/apply-cloud-init.ts";
 import {
   createGuestFromImageStep,
   rollbackCreateGuestFromImageStep,
-} from "../shared/create-guest-from-image";
-import { getHAFailoverNodesStep } from "../shared/get-ha-failover-nodes";
-import { getNetworkAdaptersStep } from "../shared/get-network-adapters";
-import { getTemplateStep } from "../shared/get-template";
+} from "../shared/create-guest-from-image.ts";
+import { getHAFailoverNodesStep } from "../shared/get-ha-failover-nodes.ts";
+import { getNetworkAdaptersStep } from "../shared/get-network-adapters.ts";
+import { getTemplateStep } from "../shared/get-template.ts";
 import {
   performGuestActionStep,
   rollbackPerformGuestActionStep,
-} from "../shared/perform-guest-action";
-import { reportSwallowedFailureStep } from "../shared/report-swallowed-failure";
-import { resizeDiskStep, rollbackResizeDiskStep } from "../shared/resize-disk";
-import { runRollbacks } from "../shared/run-rollbacks";
-import { updateHASettingsStep } from "../shared/update-ha-settings";
-import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task";
+} from "../shared/perform-guest-action.ts";
+import { reportSwallowedFailureStep } from "../shared/report-swallowed-failure.ts";
+import {
+  resizeDiskStep,
+  rollbackResizeDiskStep,
+} from "../shared/resize-disk.ts";
+import { runRollbacks } from "../shared/run-rollbacks.ts";
+import { updateHASettingsStep } from "../shared/update-ha-settings.ts";
+import { waitForProxmoxTaskStep } from "../shared/wait-for-proxmox-task.ts";
 import {
   applyHardwareConfigStep,
   rollbackApplyHardwareConfigStep,
-} from "./apply-hardware-config";
+} from "./apply-hardware-config.ts";
 import {
   applyNetworkConfigStep,
   rollbackApplyNetworkConfigStep,
-} from "./apply-network-config";
+} from "./apply-network-config.ts";
 import {
   createServerSubscriptionStep,
   rollbackCreateServerSubscriptionStep,
-} from "./create-server-subscription";
-import { selectProxmoxNodeStep } from "./select-proxmox-node";
-import { sendServerReadyEmailStep } from "./send-server-ready-email";
+} from "./create-server-subscription.ts";
+import { selectProxmoxNodeStep } from "./select-proxmox-node.ts";
+import { sendServerReadyEmailStep } from "./send-server-ready-email.ts";
 import {
   rollbackStoreProvisionedServerStep,
   storeProvisionedServerStep,
-} from "./store-provisioned-server";
+} from "./store-provisioned-server.ts";
 
 type ProvisionServerWorkflowParams = {
   serverPlanId: string;
@@ -61,7 +64,7 @@ type ProvisionServerWorkflowParams = {
   userId: string;
   proxmoxTemplateId?: string | null;
   initialRootPassword?: string | null;
-  initialSSHKeyId?: string | null;
+  initialSSHKeyId?: string | null | undefined;
 };
 
 export async function provisionServerWorkflow({

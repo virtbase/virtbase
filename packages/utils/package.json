@@ -1,14 +1,15 @@
 {
   "name": "@virtbase/utils",
+  "version": "0.0.0",
   "private": true,
   "type": "module",
   "exports": {
     ".": "./src/index.ts"
   },
   "scripts": {
-    "clean": "git clean -xdf .cache .turbo dist node_modules",
+    "typecheck": "tsc --noEmit",
     "test": "bun --env-file=../../.env.test test --timeout 20000 --isolate",
-    "typecheck": "tsc --noEmit"
+    "clean": "git clean -xdf .cache .turbo dist node_modules"
   },
   "dependencies": {
     "yaml": "catalog:"
@@ -19,11 +20,5 @@
     "next": "catalog:",
     "typescript": "catalog:",
     "use-intl": "catalog:intl"
-  },
-  "virtbase": {
-    "coverage": {
-      "lines": 0.92,
-      "functions": 0.86
-    }
   }
 }

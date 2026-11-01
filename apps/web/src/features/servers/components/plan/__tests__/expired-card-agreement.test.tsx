@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { beforeAll, describe, expect, mock, test } from "bun:test";
@@ -47,10 +47,10 @@ type Rendered = typeof import("@virtbase/test-utils/react");
 let renderWithProviders: Rendered["renderWithProviders"];
 let screen: Rendered["screen"];
 let userEvent: Rendered["userEvent"];
-let PaymentMethodItem: typeof import("@/features/account/components/billing/payment-method-item").PaymentMethodItem;
-let CurrentPlanCard: typeof import("../current-plan-card").CurrentPlanCard;
-let resolvePaymentMethodState: typeof import("@/features/account/utils/payment-method").resolvePaymentMethodState;
-let resolvePaymentMethodHealth: typeof import("@/features/account/utils/payment-method").resolvePaymentMethodHealth;
+let PaymentMethodItem: typeof import("@/features/account/components/billing/payment-method-item.tsx").PaymentMethodItem;
+let CurrentPlanCard: typeof import("../current-plan-card.tsx").CurrentPlanCard;
+let resolvePaymentMethodState: typeof import("@/features/account/utils/payment-method.ts").resolvePaymentMethodState;
+let resolvePaymentMethodHealth: typeof import("@/features/account/utils/payment-method.ts").resolvePaymentMethodHealth;
 let IntlEnvironment: (props: { children: React.ReactNode }) => React.ReactNode;
 
 beforeAll(async () => {
@@ -60,11 +60,13 @@ beforeAll(async () => {
   userEvent = rendered.userEvent;
 
   PaymentMethodItem = (
-    await import("@/features/account/components/billing/payment-method-item")
+    await import(
+      "@/features/account/components/billing/payment-method-item.tsx"
+    )
   ).PaymentMethodItem;
-  CurrentPlanCard = (await import("../current-plan-card")).CurrentPlanCard;
+  CurrentPlanCard = (await import("../current-plan-card.tsx")).CurrentPlanCard;
 
-  const utils = await import("@/features/account/utils/payment-method");
+  const utils = await import("@/features/account/utils/payment-method.ts");
   resolvePaymentMethodState = utils.resolvePaymentMethodState;
   resolvePaymentMethodHealth = utils.resolvePaymentMethodHealth;
 

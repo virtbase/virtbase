@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 "use client";
@@ -55,17 +55,17 @@ import {
   ENFORCEMENT_ICONS,
   humanise,
   SEVERITY_ICONS,
-} from "@/ui/abuse/case-meta";
-import type { AbuseRuleListItem } from "../../../api/abuse/get-abuse-rules";
+} from "@/ui/abuse/case-meta.tsx";
+import type { AbuseRuleListItem } from "../../../api/abuse/get-abuse-rules.ts";
 import {
   createAbuseRuleAction,
   dryRunAbuseRuleAction,
   updateAbuseRuleAction,
-} from "../../../api/abuse/manage-abuse-rules";
+} from "../../../api/abuse/manage-abuse-rules.ts";
 import {
   CASE_CATEGORIES,
   CASE_SEVERITIES,
-} from "../../../lib/abuse/validations";
+} from "../../../lib/abuse/validations.ts";
 
 /** A `Select` cannot hold an empty value, and "no condition" needs one. */
 const ANY = "__any__";
@@ -258,8 +258,11 @@ export function AbuseRuleDialog({
   const [error, setError] = useState<string | null>(null);
   const [labelsError, setLabelsError] = useState<string | null>(null);
 
-  const onError = ({ error: failure }: { error: { serverError?: string } }) =>
-    toast.error(failure.serverError ?? t("Something went wrong."));
+  const onError = ({
+    error: failure,
+  }: {
+    error: { serverError?: string | undefined };
+  }) => toast.error(failure.serverError ?? t("Something went wrong."));
 
   // No success toast: the dialog closes and the row appears or changes.
   const close = () => onOpenChange(false);

@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 "use client";
@@ -45,13 +45,13 @@ import { useExtracted } from "next-intl";
 import { useAction } from "next-safe-action/hooks";
 import { useState } from "react";
 import { toast } from "sonner";
-import type { NotificationTargetListItem } from "../../api/notifications/get-notification-settings";
+import type { NotificationTargetListItem } from "../../api/notifications/get-notification-settings.ts";
 import {
   createNotificationTargetAction,
   testNotificationTargetAction,
   updateNotificationTargetAction,
-} from "../../api/notifications/manage-notification-targets";
-import { IntegrationField } from "../integrations/integration-field";
+} from "../../api/notifications/manage-notification-targets.ts";
+import { IntegrationField } from "../integrations/integration-field.tsx";
 
 const SEVERITIES = ["info", "warning", "critical"] as const;
 
@@ -99,8 +99,11 @@ export function NotificationTargetDialog({
   const channel = channels.find((candidate) => candidate.id === channelId);
   const secretKeys = new Set(channel?.secretKeys ?? []);
 
-  const onError = ({ error }: { error: { serverError?: string } }) =>
-    toast.error(error.serverError ?? t("Something went wrong."));
+  const onError = ({
+    error,
+  }: {
+    error: { serverError?: string | undefined };
+  }) => toast.error(error.serverError ?? t("Something went wrong."));
 
   // No success toast: the dialog closes and the row appears or changes, which
   // says it better than a message that has to be read.

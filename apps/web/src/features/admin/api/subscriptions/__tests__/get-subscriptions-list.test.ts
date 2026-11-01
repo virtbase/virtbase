@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import {
@@ -30,7 +30,7 @@ mock.module("next/cache", () => ({ cacheLife: () => {}, cacheTag: () => {} }));
 mock.module("@sentry/nextjs", () => ({ captureException: () => {} }));
 
 let refusal: Error | null = null;
-mock.module("../../verify-session", () => ({
+mock.module("../../verify-session.ts", () => ({
   verifySession: async () => {
     if (refusal) throw refusal;
 
@@ -42,13 +42,13 @@ import { mockServer, seedServerGraph } from "@virtbase/api/testing/fixtures";
 import { subscriptions } from "@virtbase/db/schema";
 import type { TestDb } from "@virtbase/db/test-client";
 import { createTestDb } from "@virtbase/db/test-client";
-import type { GetSubscriptionsSchema } from "../../../lib/subscriptions/validations";
-import { searchParamsCache } from "../../../lib/subscriptions/validations";
-import { insertSubscription, MONTH } from "./fixtures";
+import type { GetSubscriptionsSchema } from "../../../lib/subscriptions/validations.ts";
+import { searchParamsCache } from "../../../lib/subscriptions/validations.ts";
+import { insertSubscription, MONTH } from "./fixtures.ts";
 
 let testDb: TestDb;
-let getSubscriptionsList: typeof import("../get-subscriptions-list").getSubscriptionsList;
-let getSubscriptionStatusCounts: typeof import("../get-subscriptions-list").getSubscriptionStatusCounts;
+let getSubscriptionsList: typeof import("../get-subscriptions-list.ts").getSubscriptionsList;
+let getSubscriptionStatusCounts: typeof import("../get-subscriptions-list.ts").getSubscriptionStatusCounts;
 
 /** The shape `searchParamsCache.parse` hands over, with nothing filtered. */
 const query = (
@@ -73,7 +73,7 @@ beforeAll(async () => {
 
   await seedServerGraph(testDb);
 
-  const mod = await import("../get-subscriptions-list");
+  const mod = await import("../get-subscriptions-list.ts");
   getSubscriptionsList = mod.getSubscriptionsList;
   getSubscriptionStatusCounts = mod.getSubscriptionStatusCounts;
 });

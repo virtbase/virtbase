@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import * as Sentry from "@sentry/node";
@@ -24,11 +24,11 @@ import PaymentMethodInvalid from "@virtbase/email/templates/payment-method-inval
 import RenewalFinalWarning from "@virtbase/email/templates/renewal-final-warning";
 import RenewalPaymentFailed from "@virtbase/email/templates/renewal-payment-failed";
 import { getEmailTitle } from "@virtbase/email/translations";
-import type { RenewalOutcome } from "./renewal-outcome";
+import type { RenewalOutcome } from "./renewal-outcome.ts";
 import {
   RENEWAL_LADDER_EXHAUSTED_AFTER_DAYS,
   RENEWAL_LADDER_RUNGS,
-} from "./retry-schedule";
+} from "./retry-schedule.ts";
 
 /**
  * Telling the customer, which is the only part of dunning that recovers money.
@@ -263,8 +263,12 @@ const sendFirstFailure = async (
       currency: notice.currency,
       failureCode: notice.failureCode,
       nextAttemptAt,
-      cardBrand: notice.card?.brand,
-      cardLast4: notice.card?.last4,
+      ...(notice.card?.brand === undefined
+        ? {}
+        : { cardBrand: notice.card.brand }),
+      ...(notice.card?.last4 === undefined
+        ? {}
+        : { cardLast4: notice.card.last4 }),
     }),
   });
 };
@@ -292,8 +296,12 @@ const sendFinalWarning = async (
       // attempt, and saying there is would make the mail ignorable.
       lastAttemptAt: notice.nextAttemptAt,
       suspendsAt,
-      cardBrand: notice.card?.brand,
-      cardLast4: notice.card?.last4,
+      ...(notice.card?.brand === undefined
+        ? {}
+        : { cardBrand: notice.card.brand }),
+      ...(notice.card?.last4 === undefined
+        ? {}
+        : { cardLast4: notice.card.last4 }),
     }),
   });
 };
@@ -310,8 +318,12 @@ const sendCredentialNotice = async (
       name: recipient.name,
       locale: recipient.locale,
       reasonCode: notice.failureCode,
-      cardBrand: notice.card?.brand,
-      cardLast4: notice.card?.last4,
+      ...(notice.card?.brand === undefined
+        ? {}
+        : { cardBrand: notice.card.brand }),
+      ...(notice.card?.last4 === undefined
+        ? {}
+        : { cardLast4: notice.card.last4 }),
     }),
   });
 };

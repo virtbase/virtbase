@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { beforeAll, beforeEach, describe, expect, mock, test } from "bun:test";
@@ -22,7 +22,7 @@ import { beforeAll, beforeEach, describe, expect, mock, test } from "bun:test";
  * `extend-server/__tests__/index.test.ts`: the orchestration is under test,
  * not what any individual step does.
  */
-let upgradeServerWorkflow: typeof import("../index").upgradeServerWorkflow;
+let upgradeServerWorkflow: typeof import("../index.ts").upgradeServerWorkflow;
 
 const calls: string[] = [];
 
@@ -62,10 +62,10 @@ const step =
   };
 
 beforeAll(async () => {
-  mock.module("../../shared/get-server", () => ({
+  mock.module("../../shared/get-server.ts", () => ({
     getServerStep: step("getServerStep", storedServer),
   }));
-  mock.module("../../shared/get-server-plan", () => ({
+  mock.module("../../shared/get-server-plan.ts", () => ({
     getServerPlanStep: step("getServerPlanStep", {
       cores: 2,
       memory: 2048,
@@ -73,10 +73,10 @@ beforeAll(async () => {
       netrate: 1000,
     }),
   }));
-  mock.module("../../shared/get-guest-config", () => ({
+  mock.module("../../shared/get-guest-config.ts", () => ({
     getGuestConfigStep: step("getGuestConfigStep", { config: {} }),
   }));
-  mock.module("../../shared/apply-guest-config", () => ({
+  mock.module("../../shared/apply-guest-config.ts", () => ({
     applyGuestConfigStep: step("applyGuestConfigStep", {
       upid: null,
       previousConfig: {},
@@ -86,31 +86,31 @@ beforeAll(async () => {
       upid: null,
     }),
   }));
-  mock.module("../../shared/resize-disk", () => ({
+  mock.module("../../shared/resize-disk.ts", () => ({
     resizeDiskStep: step("resizeDiskStep", { resizeUpid: null }),
   }));
-  mock.module("../store-server-upgrade", () => ({
+  mock.module("../store-server-upgrade.ts", () => ({
     storeServerUpgradeStep: step("storeServerUpgradeStep", undefined),
     rollbackStoreServerUpgradeStep: step(
       "rollbackStoreServerUpgradeStep",
       undefined,
     ),
   }));
-  mock.module("../../shared/perform-guest-action", () => ({
+  mock.module("../../shared/perform-guest-action.ts", () => ({
     // A null upid keeps the workflow out of `sleep()` and the task wait.
     performGuestActionStep: step("performGuestActionStep", { upid: null }),
     rollbackPerformGuestActionStep: step("rollbackPerformGuestActionStep", {
       upid: null,
     }),
   }));
-  mock.module("../../shared/wait-for-proxmox-task", () => ({
+  mock.module("../../shared/wait-for-proxmox-task.ts", () => ({
     waitForProxmoxTaskStep: step("waitForProxmoxTaskStep", undefined),
   }));
-  mock.module("../../shared/report-rollback-failure", () => ({
+  mock.module("../../shared/report-rollback-failure.ts", () => ({
     reportRollbackFailureStep: step("reportRollbackFailureStep", undefined),
   }));
 
-  ({ upgradeServerWorkflow } = await import("../index"));
+  ({ upgradeServerWorkflow } = await import("../index.ts"));
 });
 
 beforeEach(() => {

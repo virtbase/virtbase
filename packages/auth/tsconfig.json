@@ -1,8 +1,4 @@
 {
-  "extends": "@virtbase/tsconfig/base.json",
-  "compilerOptions": {
-    "jsx": "preserve"
-  },
-  "include": ["src"],
-  "exclude": ["node_modules"]
+  "extends": ["@virtbase/tsconfig/react.json", "@virtbase/tsconfig/bun.json"],
+  "include": ["src"]
 }

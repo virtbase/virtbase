@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { and, eq, isNotNull, isNull, sql } from "@virtbase/db";
@@ -59,10 +59,9 @@ type DetachPaymentMethodsStepParams = {
  * has - an error, and a permanently wedged offboarding.
  *
  * The provider is resolved through the registry rather than by importing
- * `@virtbase/integration-stripe` - the rule `AGENTS.md` states and
- * `bun check:boundaries` enforces. The resolver is loaded lazily for the
- * reason `resetPointerRecordsStep` gives: it reaches `integrations`, a
- * module-level const inside an import cycle, and a static import of that from
+ * `@virtbase/integration-stripe` - the rule `AGENTS.md` states. The resolver
+ * is loaded lazily for the reason `resetPointerRecordsStep` gives: it reaches
+ * `integrations`, a module-level const inside an import cycle, and a static import of that from
  * a step module can be evaluated while the module is still initialising -
  * which fails the whole step bundle with a TDZ error rather than just this
  * step.
@@ -93,7 +92,7 @@ export async function detachPaymentMethodsStep({
 
   for (const method of live) {
     const { requirePaymentCapability } = await import(
-      "../../payment-methods/provider"
+      "../../payment-methods/provider.ts"
     );
 
     const detachPaymentMethod = await requirePaymentCapability(

@@ -1,26 +1,26 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { eq } from "@virtbase/db";
 import { db } from "@virtbase/db/client";
 import { sshKeys } from "@virtbase/db/schema";
 import { generatePassword } from "@virtbase/utils";
-import type { GetProxmoxInstanceParams } from "../../proxmox";
-import { getProxmoxInstance } from "../../proxmox";
+import type { GetProxmoxInstanceParams } from "../../proxmox/index.ts";
+import { getProxmoxInstance } from "../../proxmox/index.ts";
 
 type ApplyHardwareConfigStepParams = {
   proxmoxNode: GetProxmoxInstanceParams & { snippetStorage: string };
@@ -30,8 +30,8 @@ type ApplyHardwareConfigStepParams = {
     memory: number;
     storage: number;
   };
-  initialRootPassword?: string | null;
-  initialSSHKeyId?: string | null;
+  initialRootPassword?: string | null | undefined;
+  initialSSHKeyId?: string | null | undefined;
 };
 
 export async function applyHardwareConfigStep({

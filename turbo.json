@@ -1,6 +1,35 @@
 {
-  "$schema": "https://v2-11-7.turborepo.dev/schema.json",
+  "$schema": "./node_modules/turbo/schema.json",
+  "agentGuidance": false,
+  "noUpdateNotifier": true,
   "ui": "tui",
+  "globalPassThroughEnv": [
+    "CI",
+    "GITHUB_ACTIONS",
+    "VERCEL",
+    "VERCEL_ENV",
+    "VERCEL_URL",
+    "VERCEL_GIT_COMMIT_SHA",
+    "NODE_ENV",
+    "VERCEL_GIT_COMMIT_REF",
+    "SENTRY_AUTH_TOKEN",
+    "npm_lifecycle_event",
+    "E2E_PUBLIC_URL",
+    "E2E_APP_URL",
+    "E2E_ADMIN_URL",
+    "E2E_PORT",
+    "E2E_SKIP_WEB_SERVER",
+    "NODE_EXTRA_CA_CERTS",
+    "NEXT_RUNTIME"
+  ],
+  "futureFlags": {
+    "affectedUsingTaskInputs": true,
+    "githubActionsRemoteBaseRefFallback": true,
+    "longerSignatureKey": true
+  },
+  "remoteCache": {
+    "signature": true
+  },
   "tasks": {
     "topo": {
       "dependsOn": ["^topo"]
@@ -50,32 +79,45 @@
         "NEXT_PUBLIC_VERCEL_ENV"
       ]
     },
+    "typecheck": {
+      "dependsOn": ["^topo", "^build"],
+      "outputs": []
+    },
+    "test": {
+      "dependsOn": ["^topo", "^build"],
+      "inputs": ["$TURBO_DEFAULT$", "!e2e/**", "$TURBO_ROOT$/.env.test"],
+      "outputs": ["coverage/**"]
+    },
+    "e2e": {
+      "dependsOn": ["^topo"],
+      "passThroughEnv": ["PORT", "VERCEL_AUTOMATION_BYPASS_SECRET"],
+      "outputs": ["playwright-report/**", "test-results/**", "blob-report/**"],
+      "cache": false
+    },
+    "publint": {
+      "dependsOn": ["^topo"],
+      "outputs": []
+    },
     "dev": {
+      "dependsOn": ["^build"],
       "cache": false,
       "persistent": true
-    },
-    "//#check": {},
-    "//#check:boundaries": {},
-    "test": {
-      "dependsOn": ["^topo"],
-      "outputs": ["coverage/**"],
-      "inputs": ["$TURBO_DEFAULT$", "!e2e/**", "$TURBO_ROOT$/.env.test"]
-    },
-    "test:e2e": {
-      "dependsOn": ["^topo"],
-      "cache": false,
-      "passThroughEnv": ["PORT", "VERCEL_AUTOMATION_BYPASS_SECRET"],
-      "outputs": ["playwright-report/**", "test-results/**", "blob-report/**"]
-    },
-    "typecheck": {
-      "dependsOn": ["^topo"],
-      "outputs": [".cache/tsbuildinfo.json"]
     },
     "clean": {
       "cache": false
     },
     "//#clean": {
       "cache": false
+    },
+    "//#check": {},
+    "db:generate": {
+      "cache": false,
+      "interactive": true,
+      "passThroughEnv": ["DATABASE_URL"]
+    },
+    "db:migrate": {
+      "cache": false,
+      "passThroughEnv": ["DATABASE_URL"]
     },
     "db:push": {
       "cache": false,
@@ -86,19 +128,6 @@
       "cache": false,
       "persistent": true,
       "passThroughEnv": ["DATABASE_URL"]
-    },
-    "db:generate": {
-      "cache": false,
-      "interactive": true,
-      "passThroughEnv": ["DATABASE_URL"]
-    },
-    "db:migrate": {
-      "cache": false,
-      "passThroughEnv": ["DATABASE_URL"]
-    },
-    "ui-add": {
-      "cache": false,
-      "interactive": true
     },
     "email": {
       "cache": false,
@@ -112,23 +141,80 @@
     "stripe:listen": {
       "cache": false,
       "persistent": true
+    },
+    "ui-add": {
+      "cache": false,
+      "interactive": true
     }
   },
-  "globalPassThroughEnv": [
-    "NODE_ENV",
-    "CI",
-    "VERCEL",
-    "VERCEL_ENV",
-    "VERCEL_URL",
-    "VERCEL_GIT_COMMIT_REF",
-    "SENTRY_AUTH_TOKEN",
-    "npm_lifecycle_event",
-    "E2E_PUBLIC_URL",
-    "E2E_APP_URL",
-    "E2E_ADMIN_URL",
-    "E2E_PORT",
-    "E2E_SKIP_WEB_SERVER",
-    "NODE_EXTRA_CA_CERTS",
-    "NEXT_RUNTIME"
-  ]
+  "boundaries": {
+    "tags": {
+      "foundation": {
+        "dependencies": {
+          "allow": ["foundation", "tooling"]
+        }
+      },
+      "ports": {
+        "dependencies": {
+          "allow": ["foundation", "tooling"]
+        }
+      },
+      "platform": {
+        "dependencies": {
+          "allow": ["foundation", "platform", "testing", "tooling"]
+        }
+      },
+      "sdk": {
+        "dependencies": {
+          "allow": ["foundation", "ports", "tooling"]
+        }
+      },
+      "integration": {
+        "dependencies": {
+          "allow": ["foundation", "ports", "sdk", "platform", "tooling"]
+        },
+        "dependents": {
+          "allow": ["api", "app"]
+        }
+      },
+      "api": {
+        "dependencies": {
+          "allow": [
+            "foundation",
+            "ports",
+            "platform",
+            "sdk",
+            "integration",
+            "tooling"
+          ]
+        },
+        "dependents": {
+          "allow": ["app"]
+        }
+      },
+      "testing": {
+        "dependencies": {
+          "allow": ["foundation", "tooling"]
+        }
+      },
+      "content": {
+        "dependencies": {
+          "allow": ["tooling"]
+        },
+        "dependents": {
+          "allow": ["app"]
+        }
+      },
+      "app": {
+        "dependents": {
+          "allow": []
+        }
+      },
+      "tooling": {
+        "dependencies": {
+          "allow": ["tooling"]
+        }
+      }
+    }
+  }
 }

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://dprint.dev/schemas/v0.json",
+  "incremental": true,
+  "lineWidth": 80,
+  "newLineKind": "lf",
+  "markdown": {
+    "textWrap": "maintain",
+    "emphasisKind": "underscores",
+    "strongKind": "asterisks",
+    "unorderedListKind": "dashes"
+  },
+  "includes": ["**/*.md"],
+  "excludes": [
+    "**/node_modules",
+    "**/CHANGELOG.md",
+    ".github/CODE_OF_CONDUCT.md"
+  ],
+  "plugins": ["./node_modules/@dprint/markdown/plugin.wasm"]
+}

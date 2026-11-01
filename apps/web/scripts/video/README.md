@@ -5,11 +5,11 @@ this directory: the narration, the recording and the finished file.
 
 Three episodes so far:
 
-| | What it covers |
-| --- | --- |
+|            | What it covers                                                                                                        |
+| ---------- | --------------------------------------------------------------------------------------------------------------------- |
 | `firewall` | the three default actions, rule order, the protocol list, the firewall inside the guest, every kind of recommendation |
-| `iso` | the image catalogue, checksums, your own URL, mounting and unmounting |
-| `backups` | the three backup modes, the deletion protection, creating and restoring |
+| `iso`      | the image catalogue, checksums, your own URL, mounting and unmounting                                                 |
+| `backups`  | the three backup modes, the deletion protection, creating and restoring                                               |
 
 An episode is as long as its feature needs. The firewall runs about four
 minutes wide and a little under two portrait, because it is a walkthrough
@@ -41,14 +41,14 @@ in the fast voice while the wording is still moving.
 One run produces two recordings and the files built from them, named after
 the episode:
 
-| File | What it is |
-| --- | --- |
-| `<name>.de.mp4` | 1920x1080, the wide cut |
-| `<name>.de.srt` | its narration, timecoded |
-| `<name>.de.thumbnail.png` | 1280x720 cover for YouTube |
-| `<name>.de.vertical.mp4` | 1080x1920 for TikTok and Reels, captions burned in |
-| `<name>.de.vertical-cover.png` | the frame that cut opens on |
-| `<name>-portrait.de.mp4` / `.srt` | the portrait take before its cover was attached |
+| File                              | What it is                                         |
+| --------------------------------- | -------------------------------------------------- |
+| `<name>.de.mp4`                   | 1920x1080, the wide cut                            |
+| `<name>.de.srt`                   | its narration, timecoded                           |
+| `<name>.de.thumbnail.png`         | 1280x720 cover for YouTube                         |
+| `<name>.de.vertical.mp4`          | 1080x1920 for TikTok and Reels, captions burned in |
+| `<name>.de.vertical-cover.png`    | the frame that cut opens on                        |
+| `<name>-portrait.de.mp4` / `.srt` | the portrait take before its cover was attached    |
 
 ## What an episode is
 
@@ -66,7 +66,7 @@ happens on screen while it is being said:
 ```
 
 The studio's job is making those two last the same length of time. Every line is
-synthesised *before* the browser opens, so a beat knows how many seconds it has
+synthesised _before_ the browser opens, so a beat knows how many seconds it has
 to fill; whichever of the sentence and the action finishes first waits for the
 other. Nothing is timed by hand, which is why a script can be rewritten without
 re-timing the whole episode.
@@ -180,7 +180,7 @@ interface and a shadow stops being enough the moment a button passes underneath.
 
 The cover is prepended as real video, because neither platform accepts a
 thumbnail upload - both take the opening frame. It is held for a beat so it
-reads as a title card, and it is built from a frame of the *portrait* take, so
+reads as a title card, and it is built from a frame of the _portrait_ take, so
 the card holds a phone screen rather than a letterbox.
 
 ## Encoding
@@ -191,11 +191,11 @@ where one starts.
 Software is the default, and since "the GPU is faster" says otherwise, the
 numbers are worth keeping. Same 3113-frame take, same machine:
 
-| | time | size |
-| --- | --- | --- |
-| decode only | 7.7s | — |
-| decode + libx264 | 12.7s | 9.1 MB |
-| decode + nvenc | 12.6s | 16.9 MB |
+|                  | time  | size    |
+| ---------------- | ----- | ------- |
+| decode only      | 7.7s  | —       |
+| decode + libx264 | 12.7s | 9.1 MB  |
+| decode + nvenc   | 12.6s | 16.9 MB |
 
 NVENC saves a tenth of a second and costs 86% more file. Encoding was never the
 bottleneck: six of those twelve seconds go on decoding JPEGs, because the
@@ -221,16 +221,16 @@ That reference clip is six seconds of `piper` with the German `thorsten-high`
 voice, which is what the series used to be read by outright - so the narrator
 did not change when the synthesiser did. It is **committed rather than
 generated**, and that is the load-bearing part: piper samples, so re-running it
-would produce a *nearly* identical clip, and "nearly" is how a voice drifts
+would produce a _nearly_ identical clip, and "nearly" is how a voice drifts
 between episodes.
 
 Both engines are still here, and `speakAll` picks by `engine`:
 
-| | `qwen` (default) | `piper` |
-| --- | --- | --- |
-| what it is | clones the reference | speaks the reference into being |
-| a four minute episode | ~30 minutes | seconds |
-| respelling rules needed | one, unused | ten |
+|                         | `qwen` (default)     | `piper`                         |
+| ----------------------- | -------------------- | ------------------------------- |
+| what it is              | clones the reference | speaks the reference into being |
+| a four minute episode   | ~30 minutes          | seconds                         |
+| respelling rules needed | one, unused          | ten                             |
 
 The reason for the swap is not that it sounds nicer, though it does. Every
 candidate in `videos/voice-lab` went through `whisper-small`, and the clone
@@ -351,18 +351,18 @@ The guest is deliberately imperfect, and imperfect in exactly three ways,
 because those are the three findings the recommendations card can raise and an
 episode about a feature that finds nothing shows nothing:
 
-| What the guest does | What the card says |
-| --- | --- |
-| Redis on every address, allowed by both firewalls | `EXPOSED_SENSITIVE_PORT`, critical |
-| a rule for a port its own ufw closes again | `BLOCKED_BY_GUEST_FIREWALL`, warning |
-| a rule for a port nothing listens on | `ORPHAN_RULE`, info |
+| What the guest does                               | What the card says                   |
+| ------------------------------------------------- | ------------------------------------ |
+| Redis on every address, allowed by both firewalls | `EXPOSED_SENSITIVE_PORT`, critical   |
+| a rule for a port its own ufw closes again        | `BLOCKED_BY_GUEST_FIREWALL`, warning |
+| a rule for a port nothing listens on              | `ORPHAN_RULE`, info                  |
 
 It also runs **ufw**, which is the only way to film the second half of the
 feature: the warning, the merged rule table and the finding that exists because
 two firewalls disagree all need a firewall inside the server to disagree with.
 `GUEST_FIREWALL` in `scene.ts` is what keeps the three findings apart, and every
 line of it is load bearing - allowing 8080 is what keeps that rule an orphan
-rather than a second blocked-by-the-guest finding, and *not* allowing 9000 is
+rather than a second blocked-by-the-guest finding, and _not_ allowing 9000 is
 the whole of the third.
 
 That firewall is put back to the baseline on every take, like the Proxmox rules,
@@ -385,7 +385,7 @@ video, because `open()` runs before the screencast starts.
 Each episode resets what it is about, and only that. `prepareIsoScene` takes
 back every custom image the account holds and empties the drive, because a
 customer may hold three at once and a few takes without a reset would film the
-limit being refused. `prepareBackupsScene` empties the backup list, rows *and*
+limit being refused. `prepareBackupsScene` empties the backup list, rows _and_
 archives, driven off the storage rather than the rows - the two can disagree in
 either direction, and a row with no archive is a backup the video then fails to
 restore.
@@ -437,7 +437,7 @@ perfectly and shows the wrong thing:
   selection and appends: the field ends up reading `Backup 27.8.2026,
   21:37:46Vor dem Update`. Replacing the contents of a field means
   `keyboard.type` after the select-all, with the click already spent.
-- **`asChild` overwrites `data-slot`.** Radix merges its own props *over* the
+- **`asChild` overwrites `data-slot`.** Radix merges its own props _over_ the
   child's, so a `Badge` wrapped in a `HoverCardTrigger asChild` announces
   itself as `data-slot="hover-card-trigger"` and the obvious selector matches
   nothing while the badge is plainly on screen. `data-testid` survives, because
@@ -447,7 +447,7 @@ perfectly and shows the wrong thing:
   containing block instead of the viewport. `wide()` first, and the same goes
   for hovering anything with a tooltip.
 
-  That advice used to be *nearly* true and quietly wasn't: the lens left an
+  That advice used to be _nearly_ true and quietly wasn't: the lens left an
   identity `scale(1)` behind when it was out, which is visually nothing and
   still a containing block, so a select opened after any zoom landed 66px below
   its trigger for the rest of the take. `apply()` in `overlay.ts` now removes

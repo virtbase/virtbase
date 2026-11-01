@@ -1,18 +1,18 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import { and, desc, eq, isNull } from "@virtbase/db";
@@ -20,7 +20,7 @@ import { db } from "@virtbase/db/client";
 import type { SubscriptionRenewal } from "@virtbase/db/schema";
 import { orderItems, paymentMethods, subscriptions } from "@virtbase/db/schema";
 import type { OffSessionResult } from "@virtbase/ports";
-import { requirePaymentCapability } from "../payment-methods/provider";
+import { requirePaymentCapability } from "../payment-methods/provider.ts";
 
 /**
  * The credential a renewal is charged against.
@@ -58,6 +58,8 @@ export type CollectableRenewal = Pick<
  * card on file - and the dunning ladder is exactly the window in which a
  * customer adds one. Marking it terminal would mean a customer who saves a
  * card the same afternoon is never charged again and loses the server anyway.
+ *
+ * @internal
  */
 export const NO_PAYMENT_METHOD_CODE = "no_payment_method";
 
@@ -66,6 +68,8 @@ export const NO_PAYMENT_METHOD_CODE = "no_payment_method";
  *
  * Also retryable: `invalid_at` is set on one credential, and a customer whose
  * card expired can add another before the ladder runs out.
+ *
+ * @internal
  */
 export const PAYMENT_METHOD_INVALID_CODE = "payment_method_invalid";
 
@@ -83,6 +87,8 @@ const FALLBACK_DESCRIPTION = "Subscription renewal";
  * without the attempt collapses the second into the first and the ladder
  * silently replays one dead charge four times; a key with a timestamp in it
  * collapses the first into the second and bills the customer once per crash.
+ *
+ * @internal
  */
 export const renewalIdempotencyKey = (
   renewalId: string,

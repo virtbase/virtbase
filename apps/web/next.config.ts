@@ -1,31 +1,31 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 // Import env files to validate at build time
-import "@/env";
+import "@/env.ts";
 
 import { ADMIN_DOMAIN, APP_DOMAIN, PUBLIC_DOMAIN } from "@virtbase/utils";
 import { createMDX } from "fumadocs-mdx/next";
 import type { NextConfig } from "next";
 import createNextIntlPlugin from "next-intl/plugin";
 import { withWorkflow } from "workflow/next";
-import { routing } from "@/i18n/routing.public";
-import { MESSAGE_SOURCE_PATHS } from "@/i18n/source-paths";
-import { contentSecurityPolicy } from "@/lib/csp";
+import { routing } from "@/i18n/routing.public.ts";
+import { MESSAGE_SOURCE_PATHS } from "@/i18n/source-paths.ts";
+import { contentSecurityPolicy } from "@/lib/csp/index.ts";
 
 const nextConfig: NextConfig = {
   agentRules: false,
@@ -226,7 +226,7 @@ const withNextIntl = createNextIntlPlugin({
     extract: true,
     messages: {
       path: "./src/i18n/messages",
-      locales: "infer",
+      locales: routing.locales,
       sourceLocale: "en",
       format: "po",
       // Keep runtime ICU formatting available for non-precompiled messages

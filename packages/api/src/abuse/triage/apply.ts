@@ -1,32 +1,31 @@
 /*
- *   Copyright (c) 2026 Janic Bellmann
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
  *
- *   This program is free software: you can redistribute it and/or modify
- *   it under the terms of the GNU General Public License as published by
- *   the Free Software Foundation, either version 3 of the License, or
- *   (at your option) any later version.
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
  *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
  *
- *   You should have received a copy of the GNU General Public License
- *   along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
 import * as Sentry from "@sentry/node";
 import { and, asc, eq, isNull, sql } from "@virtbase/db";
 import type { db as database } from "@virtbase/db/client";
-import type { AbuseCase } from "@virtbase/db/schema";
 import { abuseCaseMessages, abuseCases } from "@virtbase/db/schema";
-import { dispatchNotification } from "../../notifications/dispatch";
-import { caseReference, linkCaseServer, recordCaseEvent } from "../case";
-import { resolveSignalSubject } from "../resolve-subject";
-import { verifiedAddresses } from "./addresses";
-import type { AbuseClassification } from "./classify";
-import { classifyAbuseReport, isTriageAvailable } from "./classify";
-import { MAX_TRIAGE_BODY_CHARS, TRIAGE_BATCH_SIZE } from "./model";
+import { dispatchNotification } from "../../notifications/dispatch.ts";
+import { caseReference, linkCaseServer, recordCaseEvent } from "../case.ts";
+import { resolveSignalSubject } from "../resolve-subject.ts";
+import { verifiedAddresses } from "./addresses.ts";
+import type { AbuseClassification } from "./classify.ts";
+import { classifyAbuseReport, isTriageAvailable } from "./classify.ts";
+import { MAX_TRIAGE_BODY_CHARS, TRIAGE_BATCH_SIZE } from "./model.ts";
 
 type Database = typeof database;
 
@@ -357,5 +356,3 @@ export const sweepUntriagedCases = async ({
 
   return result;
 };
-
-export type { AbuseCase };
