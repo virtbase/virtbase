@@ -1,0 +1,68 @@
+.TH VIRTBASE-PVE-REPATCH 8 "" "virtbase-pve-patches" "System Administration"
+.SH NAME
+virtbase-pve-repatch \- reapply the virtbase-pve-patches Proxmox VE patches
+.SH SYNOPSIS
+.B virtbase-pve-repatch
+.RB [ apply | unapply | status | dry-run-apply | dry-run-unapply ]
+.SH DESCRIPTION
+.B virtbase-pve-repatch
+brings the patches shipped in
+.I /usr/share/virtbase-pve-patches
+into the requested state, then classifies every patch as
+.BR applied ,
+.B pending
+or
+.B unknown
+and writes the result for the Prometheus node_exporter textfile collector.
+A patch is
+.B unknown
+when it no longer fits the installed Proxmox VE version; it cannot be applied
+until it is rebased.
+.PP
+The dpkg file trigger on
+.I /usr/share/perl5/PVE
+and the daily
+.B virtbase-pve-repatch.timer
+run
+.BR "virtbase-pve-repatch apply" .
+The command defaults to
+.BR apply .
+.SH OPTIONS
+.TP
+.B apply
+Apply every patch that is not applied, and restart pvedaemon and pveproxy if
+anything changed.
+.TP
+.B unapply
+Revert every applied patch.
+.TP
+.B status
+Only classify the patches and write the metrics.
+.TP
+.BR dry-run-apply ", " dry-run-unapply
+Check that apply or unapply would succeed, without changing anything.
+.SH ENVIRONMENT
+Variables may also be set in
+.IR /etc/default/virtbase-pve-repatch .
+.TP
+.B TEXTFILE_DIR
+Directory the metrics file is written to; the file is skipped when it does not
+exist. Default:
+.IR /var/lib/prometheus/node-exporter .
+.TP
+.B METRIC_FILE
+Path of the metrics file. Default:
+.IR $TEXTFILE_DIR/virtbase_pve_patches.prom .
+.TP
+.B SKIP_RESTART
+If set, pvedaemon and pveproxy are never restarted.
+.SH EXIT STATUS
+0 when every patch ends up in the requested state, 1 when a patch is pending or
+unknown afterwards, 64 for a usage error.
+.SH FILES
+.TP
+.I /usr/share/virtbase-pve-patches/patch.sh
+Applies, reverts and classifies the patches.
+.TP
+.I /etc/default/virtbase-pve-repatch
+Optional settings, not shipped by the package.

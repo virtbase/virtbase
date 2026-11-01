@@ -1,0 +1,10 @@
+{
+  "name": "@virtbase/pve-patches",
+  "version": "0.0.0",
+  "private": true,
+  "license": "AGPL-3.0-or-later",
+  "scripts": {
+    "deb": "./build.sh",
+    "clean": "git clean -xdf .turbo dist"
+  }
+}

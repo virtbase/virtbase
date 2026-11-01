@@ -1,265 +1,170 @@
 #!/usr/bin/env bash
+#
+# Applies, reverts and reports the Proxmox VE patches that sit next to this
+# script. Every command is idempotent and handles each patch independently.
+
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PVE_BASE="${PVE_BASE:-/usr/share/perl5/PVE}"
 
-# Escalate only when we are not already root. A container image build and the
-# dockerised dev cluster both run as root and may not ship sudo at all, and
-# calling it there fails for no reason.
-if [[ "$(id -u)" -eq 0 ]]; then
-  SUDO=()
-else
-  SUDO=(sudo)
-fi
-
-# Applied in this order; unapply reverses it.
+# Applied in this order and reverted in reverse. The snippet-mode patch is
+# generated against a tree that already carries the snippet-upload patch, so
+# its line numbers are exact only in this order.
 DEFAULT_PATCH_FILES=(
   "${SCRIPT_DIR}/proxmox-snippet-upload.patch"
   "${SCRIPT_DIR}/proxmox-snippet-mode.patch"
   "${SCRIPT_DIR}/proxmox-hookscript.patch"
 )
 
-# Tracks whether any patch was actually applied/reverted in this run, so we
-# only restart Proxmox services when something changed.
 CHANGES_MADE=0
-# Tracks per-run failures so we keep going across patches and report a single
-# non-zero exit at the end (instead of aborting on the first failure).
 FAILED_PATCHES=()
 
 usage() {
   cat <<'EOF'
-Usage:
-  ./patch.sh apply              apply all patches (idempotent)
-  ./patch.sh unapply            revert all patches (idempotent)
-  ./patch.sh status             show applied / pending state per patch
-  ./patch.sh status --json      the same, as JSON (used by virtbase-pve-repatch)
-  ./patch.sh dry-run-apply      check that apply would succeed
-  ./patch.sh dry-run-unapply    check that unapply would succeed
+Usage: patch.sh COMMAND
 
-Patches that are already in the desired state are detected and skipped
-without prompting or writing .rej files. Patches are processed independently
-so a failure in one does not skip the rest. Services are restarted only when
-at least one patch was newly applied or reverted.
+Commands:
+  apply             apply every patch that is not applied yet
+  unapply           revert every patch that is applied
+  status [--json]   show each patch as applied, pending or unknown
+  dry-run-apply     check that apply would succeed
+  dry-run-unapply   check that unapply would succeed
 
-Environment overrides:
-  PVE_BASE=/usr/share/perl5/PVE       base directory (passed to `patch -d`)
-  PATCH_FILES="path1 path2"           space-separated list (replaces defaults)
-  PATCH_FILE=/path/to/single.patch    single patch only (legacy)
-  SKIP_RESTART=1                      skip pvedaemon/pveproxy restart
+Environment:
+  PVE_BASE      tree the patches apply to (default /usr/share/perl5/PVE)
+  PATCH_FILES   space-separated patch files, replacing the default list
+  SKIP_RESTART  set to skip restarting pvedaemon and pveproxy
 EOF
 }
 
 resolve_patch_files() {
-  if [[ -n "${PATCH_FILE:-}" ]]; then
-    PATCH_FILES=("${PATCH_FILE}")
-  elif [[ -n "${PATCH_FILES:-}" ]]; then
-    # shellcheck disable=SC2206
-    PATCH_FILES=(${PATCH_FILES})
+  if [[ -n "${PATCH_FILES:-}" ]]; then
+    read -r -a PATCH_FILES <<<"${PATCH_FILES}"
   else
     PATCH_FILES=("${DEFAULT_PATCH_FILES[@]}")
   fi
-}
 
-require_patch_files() {
-  local f
-  for f in "${PATCH_FILES[@]}"; do
-    if [[ ! -f "${f}" ]]; then
-      echo "Patch file not found: ${f}" >&2
+  local file
+  for file in "${PATCH_FILES[@]}"; do
+    if [[ ! -f "${file}" ]]; then
+      echo "Patch file not found: ${file}" >&2
       exit 1
     fi
   done
 }
 
-# Run `patch` non-interactively. `--batch` disables prompts entirely so a
-# patch that looks already-applied or reversed fails fast rather than waiting
-# on stdin. `-d` / `-p1` mirror what the README documents for manual use.
-# `--forward` (-N) is load-bearing, not decoration. Without it `--batch` detects
-# an already-applied patch, silently assumes `-R`, reverts it and exits 0 - so
-# `apply` run twice would leave the node unpatched. With it, a patch that is
-# already in place fails instead, which is what the classifier below relies on.
+# Escalates only when the tree is not writable, so a copy of it can be checked
+# without privileges.
+if [[ "$(id -u)" -eq 0 || -w "${PVE_BASE}" ]]; then
+  SUDO=()
+else
+  SUDO=(sudo)
+fi
+
+# --forward is load-bearing: without it, --batch takes an already applied patch
+# for a reversed one, reverts it and exits 0. --fuzz=0 makes a patch whose
+# context has changed fail instead of landing in the wrong place.
 run_patch() {
-  "${SUDO[@]}" patch --batch --forward -d "${PVE_BASE}" -p1 "$@"
+  "${SUDO[@]}" patch --batch --forward --fuzz=0 -d "${PVE_BASE}" -p1 "$@"
 }
 
-# Silent variant for detection passes — we don't care about stdout, only the
-# exit code, but errors are still surfaced to stderr if something is really
-# wrong with the patch file itself.
-run_patch_quiet() {
-  "${SUDO[@]}" patch --batch --forward --silent -d "${PVE_BASE}" -p1 "$@" >/dev/null
-}
-
-# Classify a patch against the current PVE source tree.
-#
-# Echoes one of:
-#   pending   - would apply cleanly (not yet applied)
-#   applied   - reverse-applies cleanly (already applied)
-#   unknown   - neither direction applies cleanly (partial / drifted / wrong)
+# Prints pending (applies cleanly), applied (reverts cleanly) or unknown
+# (neither: the patch no longer fits this Proxmox version).
 classify_patch() {
   local patch_file="$1"
-  if run_patch_quiet --dry-run < "${patch_file}" 2>/dev/null; then
-    echo "pending"
-    return 0
+  if run_patch --dry-run --silent <"${patch_file}" >/dev/null 2>&1; then
+    echo pending
+  elif run_patch --dry-run --silent -R <"${patch_file}" >/dev/null 2>&1; then
+    echo applied
+  else
+    echo unknown
   fi
-  if run_patch_quiet --dry-run -R < "${patch_file}" 2>/dev/null; then
-    echo "applied"
-    return 0
-  fi
-  echo "unknown"
 }
 
-apply_patch_file() {
-  local patch_file="$1"
-  local label
+# Brings one patch into the state COMMAND asks for, or reports what it would do.
+process_patch() {
+  local command="$1" patch_file="$2"
+  local label reverse=() wanted done_state verb
   label="$(basename "${patch_file}")"
+
+  case "${command}" in
+    apply | dry-run-apply)
+      wanted=applied done_state=pending verb=apply
+      ;;
+    unapply | dry-run-unapply)
+      wanted=pending done_state=applied verb=revert reverse=(-R)
+      ;;
+  esac
 
   local state
   state="$(classify_patch "${patch_file}")"
 
-  case "${state}" in
-    applied)
-      printf '  [skip]   %s — already applied\n' "${label}"
-      ;;
-    pending)
-      printf '  [apply]  %s\n' "${label}"
-      run_patch < "${patch_file}"
+  if [[ "${state}" == "${wanted}" ]]; then
+    printf '  [skip]   %s - already %s\n' "${label}" "${wanted}"
+  elif [[ "${state}" == "${done_state}" ]]; then
+    if [[ "${command}" == dry-run-* ]]; then
+      printf '  [ok]     %s - would %s cleanly\n' "${label}" "${verb}"
+    else
+      printf '  [%-6s] %s\n' "${verb}" "${label}"
+      run_patch "${reverse[@]}" <"${patch_file}"
       CHANGES_MADE=1
-      ;;
-    unknown)
-      printf '  [fail]   %s — does not apply cleanly against %s\n' \
-        "${label}" "${PVE_BASE}" >&2
-      # Surface the real reason to aid debugging without leaving .rej files
-      # behind on disk.
-      run_patch --dry-run --reject-file=- < "${patch_file}" >&2 || true
-      FAILED_PATCHES+=("${label}")
-      ;;
-  esac
+    fi
+  else
+    printf '  [fail]   %s - does not %s cleanly against %s\n' \
+      "${label}" "${verb}" "${PVE_BASE}" >&2
+    run_patch --dry-run "${reverse[@]}" --reject-file=- <"${patch_file}" >&2 || true
+    FAILED_PATCHES+=("${label}")
+  fi
 }
 
-unapply_patch_file() {
-  local patch_file="$1"
-  local label
-  label="$(basename "${patch_file}")"
-
-  local state
-  state="$(classify_patch "${patch_file}")"
-
-  case "${state}" in
-    pending)
-      printf '  [skip]   %s — not currently applied\n' "${label}"
-      ;;
-    applied)
-      printf '  [revert] %s\n' "${label}"
-      run_patch -R < "${patch_file}"
-      CHANGES_MADE=1
-      ;;
-    unknown)
-      printf '  [fail]   %s — cannot be cleanly reverted from %s\n' \
-        "${label}" "${PVE_BASE}" >&2
-      run_patch --dry-run -R --reject-file=- < "${patch_file}" >&2 || true
-      FAILED_PATCHES+=("${label}")
-      ;;
-  esac
+process_all() {
+  local command="$1" i
+  if [[ "${command}" == *unapply ]]; then
+    for ((i = ${#PATCH_FILES[@]} - 1; i >= 0; i--)); do
+      process_patch "${command}" "${PATCH_FILES[i]}"
+    done
+  else
+    for i in "${!PATCH_FILES[@]}"; do
+      process_patch "${command}" "${PATCH_FILES[i]}"
+    done
+  fi
 }
 
-dry_run_apply_patch_file() {
-  local patch_file="$1"
-  local label
-  label="$(basename "${patch_file}")"
-
-  local state
-  state="$(classify_patch "${patch_file}")"
-
-  case "${state}" in
-    pending)
-      printf '  [ok]     %s — would apply cleanly\n' "${label}"
-      ;;
-    applied)
-      printf '  [skip]   %s — already applied, would be a no-op\n' "${label}"
-      ;;
-    unknown)
-      printf '  [fail]   %s — would not apply cleanly\n' "${label}" >&2
-      run_patch --dry-run --reject-file=- < "${patch_file}" >&2 || true
-      FAILED_PATCHES+=("${label}")
-      ;;
-  esac
+# Patch names come from file names in this directory, so they need no JSON
+# escaping.
+print_status() {
+  local file label state first=1
+  if [[ "${1:-}" == "--json" ]]; then
+    printf '{"base":"%s","patches":[' "${PVE_BASE}"
+    for file in "${PATCH_FILES[@]}"; do
+      label="$(basename "${file}")"
+      state="$(classify_patch "${file}")"
+      [[ "${first}" -eq 1 ]] || printf ','
+      first=0
+      printf '{"patch":"%s","state":"%s"}' "${label}" "${state}"
+    done
+    printf ']}\n'
+  else
+    for file in "${PATCH_FILES[@]}"; do
+      printf '  [%-7s] %s\n' "$(classify_patch "${file}")" "$(basename "${file}")"
+    done
+  fi
 }
 
-dry_run_unapply_patch_file() {
-  local patch_file="$1"
-  local label
-  label="$(basename "${patch_file}")"
-
-  local state
-  state="$(classify_patch "${patch_file}")"
-
-  case "${state}" in
-    applied)
-      printf '  [ok]     %s — would revert cleanly\n' "${label}"
-      ;;
-    pending)
-      printf '  [skip]   %s — not applied, would be a no-op\n' "${label}"
-      ;;
-    unknown)
-      printf '  [fail]   %s — would not revert cleanly\n' "${label}" >&2
-      run_patch --dry-run -R --reject-file=- < "${patch_file}" >&2 || true
-      FAILED_PATCHES+=("${label}")
-      ;;
-  esac
-}
-
-# Machine-readable form of `status`, for `virtbase-pve-repatch` to turn into
-# Prometheus metrics. It lives here rather than in the wrapper so there is one
-# classifier: a state the alert fires on is the same state a human reading
-# `status` is shown.
-#
-# Patch names come from this directory, so no JSON escaping is needed.
-status_json() {
-  local first=1 f label state
-  printf '{"base":"%s","patches":[' "${PVE_BASE}"
-  for f in "${PATCH_FILES[@]}"; do
-    label="$(basename "${f}")"
-    state="$(classify_patch "${f}")"
-    [[ "${first}" -eq 1 ]] || printf ','
-    first=0
-    printf '{"patch":"%s","state":"%s"}' "${label}" "${state}"
-  done
-  printf ']}\n'
-}
-
-status_patch_file() {
-  local patch_file="$1"
-  local label
-  label="$(basename "${patch_file}")"
-
-  local state
-  state="$(classify_patch "${patch_file}")"
-  printf '  [%-7s] %s\n' "${state}" "${label}"
-}
-
-iterate_forward() {
-  local fn="$1"
-  local f
-  for f in "${PATCH_FILES[@]}"; do
-    "${fn}" "${f}"
-  done
-}
-
-iterate_reverse() {
-  local fn="$1"
-  local i
-  for ((i = ${#PATCH_FILES[@]} - 1; i >= 0; i--)); do
-    "${fn}" "${PATCH_FILES[i]}"
-  done
-}
-
-maybe_restart_services() {
-  if [[ -n "${SKIP_RESTART:-}" ]]; then
-    echo "SKIP_RESTART is set — not restarting services."
+# The patched modules are loaded once by the API daemons, so a change only takes
+# effect after a restart. A tree other than the installed one is not what the
+# daemons load, and without a running systemd (a container, an image build)
+# there is nothing to restart.
+restart_services() {
+  if [[ -n "${SKIP_RESTART:-}" || "${CHANGES_MADE}" -eq 0 ]]; then
     return 0
   fi
-  if [[ "${CHANGES_MADE}" -eq 0 ]]; then
-    echo "No patches changed state — skipping service restart."
+  if [[ "${PVE_BASE}" != /usr/share/perl5/PVE ]]; then
+    return 0
+  fi
+  if [[ ! -d /run/systemd/system ]]; then
+    echo "systemd is not running; restart pvedaemon and pveproxy yourself."
     return 0
   fi
   echo "Restarting pvedaemon and pveproxy ..."
@@ -267,53 +172,35 @@ maybe_restart_services() {
 }
 
 report_failures() {
-  if [[ "${#FAILED_PATCHES[@]}" -eq 0 ]]; then
-    return 0
-  fi
-  echo "" >&2
-  echo "The following patches failed:" >&2
-  local p
-  for p in "${FAILED_PATCHES[@]}"; do
-    echo "  - ${p}" >&2
-  done
+  [[ "${#FAILED_PATCHES[@]}" -eq 0 ]] && return 0
+  printf '\nThese patches failed:\n' >&2
+  printf '  - %s\n' "${FAILED_PATCHES[@]}" >&2
   exit 1
 }
 
 main() {
-  resolve_patch_files
-  require_patch_files
-
-  case "${1:-}" in
-    apply)
-      iterate_forward apply_patch_file
-      maybe_restart_services
+  local command="${1:-}"
+  case "${command}" in
+    apply | unapply)
+      resolve_patch_files
+      process_all "${command}"
+      restart_services
       report_failures
       ;;
-    unapply)
-      iterate_reverse unapply_patch_file
-      maybe_restart_services
-      report_failures
-      ;;
-    dry-run-apply)
-      iterate_forward dry_run_apply_patch_file
-      report_failures
-      ;;
-    dry-run-unapply)
-      iterate_reverse dry_run_unapply_patch_file
+    dry-run-apply | dry-run-unapply)
+      resolve_patch_files
+      process_all "${command}"
       report_failures
       ;;
     status)
-      if [[ "${2:-}" == "--json" ]]; then
-        status_json
-      else
-        iterate_forward status_patch_file
-      fi
+      resolve_patch_files
+      print_status "${2:-}"
       ;;
     *)
       usage
-      exit 1
+      exit 64
       ;;
   esac
 }
 
-main "${@}"
+main "$@"
