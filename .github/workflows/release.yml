@@ -28,6 +28,9 @@ jobs:
       novnc-proxy-released: ${{ steps.release.outputs['apps/novnc-proxy--release_created'] }}
       novnc-proxy-version: ${{ steps.release.outputs['apps/novnc-proxy--version'] }}
       novnc-proxy-tag: ${{ steps.release.outputs['apps/novnc-proxy--tag_name'] }}
+      pve-patches-released: ${{ steps.release.outputs['tooling/pve-patches--release_created'] }}
+      pve-patches-version: ${{ steps.release.outputs['tooling/pve-patches--version'] }}
+      pve-patches-tag: ${{ steps.release.outputs['tooling/pve-patches--tag_name'] }}
     steps:
       - uses: googleapis/release-please-action@45996ed1f6d02564a971a2fa1b5860e934307cf7 # v5.0.0
         id: release
@@ -48,3 +51,16 @@ jobs:
     with:
       version: ${{ needs.release-please.outputs.novnc-proxy-version }}
       tag: ${{ needs.release-please.outputs.novnc-proxy-tag }}
+
+  pve-patches:
+    name: Publish pve-patches
+    needs: release-please
+    if: needs.release-please.outputs.pve-patches-released == 'true'
+    permissions:
+      contents: write
+      id-token: write
+      attestations: write
+    uses: ./.github/workflows/pve-patches.yml
+    with:
+      version: ${{ needs.release-please.outputs.pve-patches-version }}
+      tag: ${{ needs.release-please.outputs.pve-patches-tag }}

@@ -1,20 +1,22 @@
 #!/usr/bin/env bash
 #
-# Build virtbase-pve-patches_<version>_all.deb.
+# Builds virtbase-pve-patches_<version>_all.deb in a Debian trixie container,
+# the base of Proxmox VE 9, and checks it with lintian.
 #
-# Runs the build inside a Debian trixie container, which is what Proxmox VE 9
-# is built on, so the result does not depend on what happens to be installed on
-# the machine doing the building.
+# Usage: ./build.sh [output-dir]    (default: ./dist)
 #
-# Usage:
-#   ./build.sh [output-dir]     # default: ./dist
+# The version comes from version.txt and debian/changelog is generated from it.
+# The changelog date, which dpkg uses as SOURCE_DATE_EPOCH, is the last commit
+# that touched this directory, so a commit always builds the same package.
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 IMAGE="${BUILD_IMAGE:-debian:trixie}"
+VERSION="$(tr -d '[:space:]' <"${SCRIPT_DIR}/version.txt")"
+EPOCH="${SOURCE_DATE_EPOCH:-$(git -C "${SCRIPT_DIR}" log -1 --format=%ct -- . 2>/dev/null || true)}"
+EPOCH="${EPOCH:-$(date +%s)}"
 
-# Resolve to an absolute path, because it is handed to `docker -v`.
 OUT_DIR="${1:-${SCRIPT_DIR}/dist}"
 mkdir -p "${OUT_DIR}"
 OUT_DIR="$(cd "${OUT_DIR}" && pwd)"
@@ -24,25 +26,36 @@ if ! command -v docker >/dev/null 2>&1; then
   exit 1
 fi
 
-echo "Building in ${IMAGE} ..."
+echo "Building virtbase-pve-patches ${VERSION} in ${IMAGE} ..."
 docker run --rm \
   -v "${SCRIPT_DIR}:/src:ro" \
   -v "${OUT_DIR}:/out" \
-  "${IMAGE}" bash -c '
-set -e
+  -e VERSION="${VERSION}" \
+  -e EPOCH="${EPOCH}" \
+  -e OWNER="$(id -u):$(id -g)" \
+  "${IMAGE}" bash -euo pipefail -c '
 export DEBIAN_FRONTEND=noninteractive
-apt-get update -qq >/dev/null
-apt-get install -y -qq --no-install-recommends debhelper build-essential >/dev/null
-mkdir -p /build && cp -r /src/. /build/ && cd /build
-rm -rf dist debian/virtbase-pve-patches debian/.debhelper
-dpkg-buildpackage -us -uc -b
-cp ../virtbase-pve-patches_*.deb /out/
-chmod 0644 /out/virtbase-pve-patches_*.deb
+apt-get update -qq
+apt-get install -y -qq --no-install-recommends dpkg-dev lintian >/dev/null
+
+mkdir -p /build/virtbase-pve-patches
+tar -C /src --exclude=./dist -cf - . | tar -C /build/virtbase-pve-patches -xf -
+cd /build/virtbase-pve-patches
+
+cat >debian/changelog <<EOF
+virtbase-pve-patches (${VERSION}) trixie; urgency=medium
+
+  * Release ${VERSION}. The changes are listed in CHANGELOG.md.
+
+ -- $(sed -n "s/^Maintainer: //p" debian/control)  $(date -u -R -d "@${EPOCH}")
+EOF
+
+apt-get build-dep -y -qq --no-install-recommends ./ >/dev/null
+dpkg-buildpackage --build=all -us -uc
+lintian --fail-on error,warning --info ../virtbase-pve-patches_*.changes
+
+install -m 0644 ../virtbase-pve-patches_*.deb /out/
+chown "${OWNER}" /out/virtbase-pve-patches_*.deb
 '
 
-echo ""
-echo "Built:"
 ls -1 "${OUT_DIR}"/virtbase-pve-patches_*.deb
-echo ""
-echo "Install on each node with:"
-echo "  apt install ./virtbase-pve-patches_<version>_all.deb"

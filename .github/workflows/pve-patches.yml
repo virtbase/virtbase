@@ -1,0 +1,154 @@
+name: pve-patches
+
+on:
+  pull_request:
+    paths: &paths
+      - tooling/pve-patches/**
+      - .github/workflows/pve-patches.yml
+  push:
+    branches: [main]
+    paths: *paths
+  workflow_call:
+    inputs:
+      version:
+        description: The released version, without a leading v.
+        type: string
+        required: true
+      tag:
+        description: The git tag of the GitHub release to attach the package to.
+        type: string
+        required: true
+
+permissions: {}
+
+concurrency:
+  group: pve-patches-${{ github.event_name }}-${{ github.ref }}-${{ inputs.version }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+env:
+  BUILD_IMAGE: debian:trixie@sha256:913f6706df59a68922d1dd08f78c2476560a8d367897200a6005b00e5f67c2d5
+
+defaults:
+  run:
+    working-directory: tooling/pve-patches
+
+jobs:
+  lint:
+    name: Lint the scripts
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq shellcheck shfmt
+
+      - run: |
+          shellcheck -x patch.sh virtbase-pve-repatch build.sh scripts/upstream.sh tests/lifecycle.sh
+          shellcheck -s sh debian/postinst debian/prerm debian/postrm
+          shfmt -i 2 -ci -d patch.sh virtbase-pve-repatch build.sh scripts/upstream.sh \
+            tests/lifecycle.sh debian/postinst debian/prerm debian/postrm
+
+  upstream:
+    name: Check against upstream Proxmox VE
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - run: ./scripts/upstream.sh check
+        env:
+          REPORT: ${{ runner.temp }}/upstream.md
+
+      - if: always()
+        run: cat "$RUNNER_TEMP/upstream.md" >>"$GITHUB_STEP_SUMMARY"
+
+  package:
+    name: Build and test the package
+    needs: [lint, upstream]
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: read
+    outputs:
+      sha256: ${{ steps.build.outputs.sha256 }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      - id: build
+        run: |
+          ./build.sh "$RUNNER_TEMP/dist"
+          deb="$(ls "$RUNNER_TEMP"/dist/virtbase-pve-patches_*_all.deb)"
+          echo "deb=$deb" >>"$GITHUB_OUTPUT"
+          echo "sha256=$(sha256sum "$deb" | cut -d' ' -f1)" >>"$GITHUB_OUTPUT"
+
+      - run: ./tests/lifecycle.sh "$DEB" pve-no-subscription
+        env:
+          DEB: ${{ steps.build.outputs.deb }}
+
+      - run: ./tests/lifecycle.sh "$DEB" pve-test
+        env:
+          DEB: ${{ steps.build.outputs.deb }}
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: virtbase-pve-patches
+          path: ${{ steps.build.outputs.deb }}
+          if-no-files-found: error
+          retention-days: 30
+
+  publish:
+    name: Attach the package to the release
+    needs: package
+    if: inputs.version != ''
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    permissions:
+      contents: write # upload to the release
+      id-token: write # sign the provenance attestation
+      attestations: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+
+      # The build is reproducible, so this rebuild is byte-identical to the
+      # package the previous job tested; the checksum comparison proves it.
+      - id: build
+        env:
+          VERSION: ${{ inputs.version }}
+          TESTED: ${{ needs.package.outputs.sha256 }}
+        run: |
+          [ "$(tr -d '[:space:]' <version.txt)" = "$VERSION" ] || {
+            echo "::error::version.txt does not match the release version $VERSION"
+            exit 1
+          }
+          ./build.sh "$RUNNER_TEMP/dist"
+          deb="$RUNNER_TEMP/dist/virtbase-pve-patches_${VERSION}_all.deb"
+          [ "$(sha256sum "$deb" | cut -d' ' -f1)" = "$TESTED" ] || {
+            echo "::error::the rebuilt package differs from the tested one"
+            exit 1
+          }
+          (cd "$RUNNER_TEMP/dist" && sha256sum "${deb##*/}" >"${deb##*/}.sha256")
+          echo "deb=$deb" >>"$GITHUB_OUTPUT"
+
+      - uses: actions/attest-build-provenance@4d101475d8b20a2381f78447822ac1eab6504dd8 # v4.2.2
+        with:
+          subject-path: ${{ steps.build.outputs.deb }}
+
+      - env:
+          GH_TOKEN: ${{ github.token }}
+          TAG: ${{ inputs.tag }}
+          DEB: ${{ steps.build.outputs.deb }}
+        run: gh release upload "$TAG" "$DEB" "$DEB.sha256" --clobber

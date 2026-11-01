@@ -1,0 +1,114 @@
+name: pve-patches upstream
+
+on:
+  schedule:
+    - cron: "41 5 * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+concurrency:
+  group: pve-patches-upstream
+  cancel-in-progress: false
+
+env:
+  LABEL: pve-patches-upstream
+
+jobs:
+  check:
+    name: Check against upstream Proxmox VE
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: read
+    outputs:
+      broken: ${{ steps.check.outputs.broken }}
+      stale: ${{ steps.check.outputs.stale }}
+      report: ${{ steps.report.outputs.report }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - id: check
+        working-directory: tooling/pve-patches
+        env:
+          REPORT: ${{ runner.temp }}/upstream.md
+        run: ./scripts/upstream.sh check || true
+
+      - id: report
+        run: |
+          cat "$RUNNER_TEMP/upstream.md" >>"$GITHUB_STEP_SUMMARY"
+          {
+            echo "report<<REPORT_EOF"
+            cat "$RUNNER_TEMP/upstream.md"
+            echo "REPORT_EOF"
+          } >>"$GITHUB_OUTPUT"
+
+  issue:
+    name: Report on the tracking issue
+    needs: check
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    permissions:
+      issues: write
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      BROKEN: ${{ needs.check.outputs.broken }}
+      REPORT: ${{ needs.check.outputs.report }}
+      RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+    steps:
+      - run: |
+          open="$(gh issue list --label "$LABEL" --state open --json number --jq '.[0].number')"
+          body="$(printf '%s\n\n%s\n\nChecked by %s.\n' \
+            "A pve-patches patch no longer applies to the newest Proxmox VE packages, or upstream already contains it. Rebase or drop it in tooling/pve-patches, then release." \
+            "$REPORT" "$RUN_URL")"
+          if [ "$BROKEN" = "true" ]; then
+            if [ -n "$open" ]; then
+              gh issue comment "$open" --body "$body"
+            else
+              gh label create "$LABEL" --color B60205 \
+                --description "pve-patches no longer fit upstream Proxmox VE" 2>/dev/null || true
+              gh issue create --label "$LABEL" \
+                --title "pve-patches: a patch no longer fits upstream Proxmox VE" --body "$body"
+            fi
+          elif [ -n "$open" ]; then
+            gh issue close "$open" --comment "$(printf 'Every patch applies again.\n\n%s\n\nChecked by %s.\n' "$REPORT" "$RUN_URL")"
+          fi
+
+  rebase:
+    name: Open a pull request that rebases the patches
+    needs: check
+    if: needs.check.outputs.broken == 'false' && needs.check.outputs.stale == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - id: refresh
+        working-directory: tooling/pve-patches
+        run: |
+          {
+            echo "versions<<VERSIONS_EOF"
+            ./scripts/upstream.sh refresh | sed -n 's/^\(.*\)=\(.*\)$/- `\1` \2/p'
+            echo "VERSIONS_EOF"
+          } >>"$GITHUB_OUTPUT"
+
+      - uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
+        with:
+          branch: chore/pve-patches-rebase
+          add-paths: tooling/pve-patches/*.patch
+          commit-message: "fix(pve-patches): rebase the patches onto the current Proxmox VE packages"
+          title: "fix(pve-patches): rebase the patches onto the current Proxmox VE packages"
+          body: |
+            The patches still apply to `pve-no-subscription`, but at moved line numbers. This rebases them, so the next upstream change is caught as early as possible.
+
+            ${{ steps.refresh.outputs.versions }}
+          sign-commits: true
+          delete-branch: true
