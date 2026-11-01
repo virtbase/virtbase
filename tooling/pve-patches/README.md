@@ -1,318 +1,166 @@
-Proxmox VE patches used by Virtbase for snippet storage and VM hook scripts,
-packaged as `virtbase-pve-patches` so they survive package upgrades.
+# virtbase-pve-patches
 
-## Why this is a package
+A Debian package that applies three patches to Proxmox VE 9 and keeps them
+applied across Proxmox upgrades. Together they let an API client manage guest
+hookscripts end to end: upload a script as a snippet and attach it to a VM.
 
-The three patches edit files owned by two Debian packages:
+| Patch                          | Change                                                                                               | Patched file                           |
+| ------------------------------ | ---------------------------------------------------------------------------------------------------- | -------------------------------------- |
+| `proxmox-snippet-upload.patch` | The storage upload API accepts the `snippets` content type ([bug 2208][bug-2208])                    | `API2/Storage/Status.pm`, `Storage.pm` |
+| `proxmox-snippet-mode.patch`   | An uploaded snippet whose first line starts with `#!` becomes executable; other snippets stay `0644` | `API2/Storage/Status.pm`               |
+| `proxmox-hookscript.patch`     | Users with `VM.Config.Options` may set a VM's `hookscript`, which upstream reserves for `root@pam`   | `API2/Qemu.pm`                         |
 
-| File                                           | Owning package        |
-| ---------------------------------------------- | --------------------- |
-| `PVE/Storage.pm`, `PVE/API2/Storage/Status.pm` | `libpve-storage-perl` |
-| `PVE/API2/Qemu.pm`                             | `qemu-server`         |
+All paths are relative to `/usr/share/perl5/PVE`. `libpve-storage-perl` owns the
+first two files, `qemu-server` the third.
 
-Upgrading either one restores the stock file and silently reverts the patches,
-after which snippet upload fails, the hookscript loses its executable bit and
-`hookscript` is rejected on config update - that is, provisioning stops
-working. `unattended-upgrades` does this without anyone watching.
+> [!WARNING]
+> A hookscript runs as root on the node. With these patches, any user who may
+> upload snippets to a storage (`Datastore.AllocateTemplate`) and edit a VM's
+> options (`VM.Config.Options`) can run code as root on that node. Grant those
+> privileges together only to users you would give root.
 
-The package carries a dpkg file trigger on `/usr/share/perl5/PVE`, so dpkg
-reapplies the patches at the end of any transaction that writes there. A daily
-systemd timer covers edits that do not go through dpkg.
+## How it stays applied
 
-Reapplying is the easy half. A patch that no longer _fits_ its context - after
-a Proxmox version bump - cannot be reapplied by anyone, and no amount of
-retrying helps. That state is published to the node_exporter textfile collector
-and to the systemd unit state your Alloy config already scrapes; see
-[Monitoring](#monitoring).
+Upgrading `libpve-storage-perl` or `qemu-server` replaces the patched files and
+reverts the patches. The package handles that in three ways:
 
-Without the snippet-upload patch, custom cloud-init snippets cannot be uploaded for VMs.
-Without the snippet-mode patch, an uploaded hookscript is not executable and Proxmox refuses to reference it.
-Without the hookscript patch, the `hookscript` VM option is not accepted in general VM config updates.
+- **A dpkg file trigger** on `/usr/share/perl5/PVE` reapplies the patches
+  whenever a package writes there, including during unattended upgrades. It is
+  `interest-noawait`, so it never holds up the package that activated it.
+- **A daily systemd timer**, `virtbase-pve-repatch.timer`, catches changes that
+  bypass dpkg.
+- **Patch state is published** for the Prometheus node_exporter textfile
+  collector, because a patch that no longer fits a new Proxmox version cannot
+  be reapplied by retrying.
 
-Reference issue (snippet upload):
-https://bugzilla.proxmox.com/show_bug.cgi?id=2208
+Each patch is in one of three states:
 
-Original snippet-upload patch:
-https://bugzilla.proxmox.com/attachment.cgi?id=389
+| State     | Meaning                                                       |
+| --------- | ------------------------------------------------------------- |
+| `applied` | The patch is in place.                                        |
+| `pending` | The patch is not applied; the next run applies it.            |
+| `unknown` | The patch no longer fits the installed version; it needs work |
 
-Tested with:
+A failed reapply never fails the dpkg transaction, so an upgrade cannot leave a
+node half-configured. The failure is logged, written to the metrics file, and
+reported by the timer's next run as a failed unit.
 
-- `libpve-storage-perl` 9.1.8 (snippet upload, snippet mode)
-- `qemu-server` 9.2.7 (hookscript)
+## Install
 
-Pin the _package_ versions, not the `pve-manager` version. They move
-independently - a node reporting `pve-manager/9.2.10` can be carrying
-`libpve-storage-perl` 9.1.8, and it is the package that owns the patched file.
-
-## Editing a patch desynchronises already-patched nodes
-
-`patch.sh` decides that a patch is `applied` by reverse-applying it, so a patch
-only recognises trees it produced itself. Change what a patch _writes_ - even
-the indentation of one line - and every node carrying the old output classifies
-as `unknown`: the forward dry-run fails because the other hunks are already
-there, and the reverse fails on the line that moved.
-
-Nothing is broken, and the machinery is right to refuse: it cannot tell that
-drift apart from a genuine version mismatch. But it does not self-heal, so
-after editing a patch, restore the stock file on each node and let the trigger
-reapply:
+Download `virtbase-pve-patches_<version>_all.deb` from the
+[releases](https://github.com/virtbase/virtbase/releases?q=pve-patches) and
+install it on every node of the cluster:
 
 ```bash
-apt-get install --reinstall -y libpve-storage-perl   # or qemu-server
+apt install ./virtbase-pve-patches_<version>_all.deb
 ```
 
-That wipes the old output, and the dpkg trigger reapplies every patch from the
-current package in one step. Verify with `patch.sh status`.
-
-## Patch files in this directory
-
-All patches are unified diffs with `-U3` and share the same apply base (`/usr/share/perl5/PVE`, `-p1`).
-
-| Patch                          | Target file(s) on Proxmox              |
-| ------------------------------ | -------------------------------------- |
-| `proxmox-snippet-upload.patch` | `API2/Storage/Status.pm`, `Storage.pm` |
-| `proxmox-snippet-mode.patch`   | `API2/Storage/Status.pm`               |
-| `proxmox-hookscript.patch`     | `API2/Qemu.pm`                         |
-
-They are independent: `proxmox-snippet-mode.patch` only touches stock context, so it applies with or without the upload patch and in either order. Nothing has to be unapplied to pick it up - `patch.sh apply` on an already-patched node classifies the other two as `applied` and adds this one.
-
-### Snippet upload (`proxmox-snippet-upload.patch`)
-
-Updates:
-
-- `/usr/share/perl5/PVE/API2/Storage/Status.pm` — allow `snippets` content type on upload
-- `/usr/share/perl5/PVE/Storage.pm` — add `get_snippet_dir`
-
-Applying one patch for both files is expected and correct.
-
-### Snippet mode (`proxmox-snippet-mode.patch`)
-
-Updates `/usr/share/perl5/PVE/API2/Storage/Status.pm`:
-
-- an uploaded snippet whose first line is a shebang is given mode `0755`
-- the local copy uses `cp --preserve=mode`, so overwriting an existing snippet updates its mode too
-
-`PVE::GuestHelpers::check_hookscript` refuses a hookscript that is missing **or** not executable, and the upload API has no parameter for a file mode. Without this patch every guest creation fails at the config update with `script '<storage>:snippets/hookscript.pl' is not executable`.
-
-The shebang is what separates a hookscript from a cloud-init data snippet; snippets without one stay `0644`.
-
-### Hookscript (`proxmox-hookscript.patch`)
-
-Updates:
-
-- `/usr/share/perl5/PVE/API2/Qemu.pm` — add `hookscript` to `$generaloptions`
-
-## Install on a Proxmox node
-
-```bash
-./build.sh                     # builds dist/virtbase-pve-patches_<version>_all.deb
-```
-
-Copy the `.deb` to each node and:
-
-```bash
-apt install ./virtbase-pve-patches_1.0.0_all.deb
-```
-
-`apt` rather than `dpkg -i` so the `libpve-storage-perl` and `qemu-server`
-dependencies are checked. Installing applies the patches immediately; from then
-on the trigger keeps them applied.
-
-To confirm the trigger is registered:
-
-```bash
-dpkg-trigger --check-supported && grep -r virtbase /var/lib/dpkg/triggers/
-```
-
-### What it installs
-
-| Path                                                           |                                                    |
-| -------------------------------------------------------------- | -------------------------------------------------- |
-| `/usr/share/virtbase-pve-patches/`                             | the patches and `patch.sh`                         |
-| `/usr/sbin/virtbase-pve-repatch`                               | reapply + publish metrics; the admin entry point   |
-| `/usr/lib/systemd/system/virtbase-pve-repatch.{service,timer}` | the daily safety net                               |
-| `/etc/default/virtbase-pve-repatch`                            | optional overrides (not shipped; create if needed) |
-
-### Removing
+Installing applies the patches and restarts `pvedaemon` and `pveproxy`.
+Removing the package reverts them:
 
 ```bash
 apt remove virtbase-pve-patches
 ```
 
-`prerm` reverts the patches, so the node is left on stock Proxmox.
+## Operate
 
-## Monitoring
-
-Reapplying is the easy half. What cannot self-heal is a patch that no longer
-_fits_ its context after a Proxmox version bump: `patch.sh` correctly refuses
-to force it, no amount of retrying helps, and guest provisioning on that node
-is broken until someone rebases it. That state has to leave the node.
-
-### The signal you already collect
-
-`virtbase-pve-repatch` exits non-zero on `pending` or `unknown`, and
-`virtbase-pve-repatch.service` sets no `Restart=`, so a drifted node leaves the
-unit in `failed`. The fleet's Alloy config enables the `systemd` collector with
-`unit_include = ".+"`, so that is already scraped - **no Ansible change is
-needed for this**:
-
-```promql
-node_systemd_unit_state{name="virtbase-pve-repatch.service", state="failed"} == 1
+```bash
+virtbase-pve-repatch            # reapply, restart the API daemons if needed, publish the state
+virtbase-pve-repatch status     # only classify and publish
+/usr/share/virtbase-pve-patches/patch.sh status
 ```
 
-The daily timer bounds how long a drift can hide; the postinst also pokes the
-unit when the dpkg trigger hits a failure, so in practice it surfaces within
-seconds of the upgrade that caused it rather than at the next timer run.
-
-### Per-patch detail (optional, needs an Ansible change)
-
-`virtbase-pve-repatch` also writes the state of each patch for the
-node_exporter textfile collector:
-
-```
-virtbase_pve_patch_state{patch="proxmox-hookscript.patch"} 1
-virtbase_pve_patch_last_run_timestamp_seconds 1788087683
-```
-
-`1` applied, `0` pending, `-1` unknown.
-
-This is written but **not scraped** as things stand: `prometheus.exporter.unix`
-in `roles/common_alloy/templates/config.alloy.j2` has no `textfile` block, and
-the collector reads nothing without a directory. To pick it up, add:
-
-```hcl
-prometheus.exporter.unix "integrations_node_exporter" {
-  // ... existing config ...
-
-  textfile {
-    directory = "/var/lib/prometheus/node-exporter"
-  }
-}
-```
-
-The file is skipped silently when that directory does not exist, so the
-package is safe to install before the role is updated. Point `TEXTFILE_DIR` at
-somewhere else if the role prefers a different path.
-
-Alerting rules are not shipped here - they belong with the rest of the
-Ansible-managed Prometheus config. The two worth writing:
-
-| Expression                              | Meaning                            |
-| --------------------------------------- | ---------------------------------- |
-| `virtbase_pve_patch_state == -1`        | drifted; needs a rebase (critical) |
-| `virtbase_pve_patch_state == 0` for 30m | trigger is not firing (warning)    |
-
-### Why the postinst swallows the failure
-
-**`virtbase-pve-repatch` exits non-zero, but the postinst calls it with
-`|| true` on purpose.** A failed rebase must not leave dpkg half-configured on
-a hypervisor mid-upgrade, because that blocks every later `apt` run - a worse
-outage than the one it would be reporting. The failure travels through the
-journal, the unit state and the metrics file instead.
-
-Overrides go in `/etc/default/virtbase-pve-repatch`:
+`virtbase-pve-repatch` exits non-zero while any patch is not applied. See
+`man virtbase-pve-repatch` for its options. Settings go in
+`/etc/default/virtbase-pve-repatch`:
 
 ```sh
 TEXTFILE_DIR=/var/lib/prometheus/node-exporter
 SKIP_RESTART=1
 ```
 
-## Driving the patches by hand
+## Monitor
 
-On a node with the package installed, `patch.sh` is at
-`/usr/share/virtbase-pve-patches/patch.sh`. From a checkout it runs in place:
+The metrics file, `virtbase_pve_patches.prom`, is written to `TEXTFILE_DIR` if
+that directory exists. Point the node_exporter textfile collector at it:
 
-```bash
-./patch.sh status          # show which patches are already applied
-./patch.sh status --json   # the same, for virtbase-pve-repatch
-./patch.sh dry-run-apply   # verify every patch would apply cleanly
-./patch.sh apply
+```text
+virtbase_pve_patch_state{patch="proxmox-hookscript.patch"} 1
+virtbase_pve_patch_last_run_timestamp_seconds 1767225600
 ```
 
-`status --json` is the classifier `virtbase-pve-repatch` reads to build its
-metrics, so an alert fires on exactly the state `status` shows a human.
+`1` is applied, `0` pending and `-1` unknown. Two alerts cover it:
 
-`patch.sh` is **idempotent**: each patch is classified before being touched.
+| Expression                                                    | Meaning                              |
+| ------------------------------------------------------------- | ------------------------------------ |
+| `virtbase_pve_patch_state == -1`                              | a patch needs to be rebased          |
+| `time() - virtbase_pve_patch_last_run_timestamp_seconds > 2d` | neither trigger nor timer is running |
 
-| Classification | Meaning                                                | `apply`                                  | `unapply`                                |
-| -------------- | ------------------------------------------------------ | ---------------------------------------- | ---------------------------------------- |
-| `pending`      | would apply cleanly (forward dry-run succeeds)         | applies it                               | no-op                                    |
-| `applied`      | reverse dry-run succeeds (already in place)            | no-op                                    | reverts it                               |
-| `unknown`      | neither direction is clean (drifted / partial / wrong) | reports failure, continues to next patch | reports failure, continues to next patch |
+The unit state of `virtbase-pve-repatch.service` carries the same signal for
+systemd-based monitoring.
 
-Patches are processed independently, so a failure on one patch does **not** stop the others. `pvedaemon` / `pveproxy` are restarted only when at least one patch actually changed state.
+## Compatibility
 
-Environment overrides:
+The patches target Proxmox VE 9 on Debian trixie. A scheduled workflow checks
+them every day against the newest `libpve-storage-perl` and `qemu-server` in the
+`pve-no-subscription` and `pve-test` repositories:
 
-- `PVE_BASE` — default `/usr/share/perl5/PVE`
-- `PATCH_FILES` — space-separated list replacing the default set
-- `PATCH_FILE` — apply or revert a single patch only (legacy)
-- `SKIP_RESTART=1` — never restart `pvedaemon`/`pveproxy`, even on changes
+- when a patch no longer applies, or upstream already contains it, it opens an
+  issue;
+- when the patches still apply but at moved line numbers, it opens a pull
+  request that rebases them.
 
-### Manual apply
+Patches apply with `--fuzz=0`, so a change to the surrounding code makes a patch
+`unknown` rather than letting it land in the wrong place.
 
-```bash
-sudo patch --dry-run -d /usr/share/perl5/PVE -p1 < proxmox-snippet-upload.patch
-sudo patch -d /usr/share/perl5/PVE -p1 < proxmox-snippet-upload.patch
+## Develop
 
-sudo patch --dry-run -d /usr/share/perl5/PVE -p1 < proxmox-snippet-mode.patch
-sudo patch -d /usr/share/perl5/PVE -p1 < proxmox-snippet-mode.patch
-
-sudo patch --dry-run -d /usr/share/perl5/PVE -p1 < proxmox-hookscript.patch
-sudo patch -d /usr/share/perl5/PVE -p1 < proxmox-hookscript.patch
-
-sudo systemctl restart pvedaemon pveproxy
-```
-
-Why this works:
-
-- Patch paths are stored as `a/API2/...` and `a/Storage.pm`.
-- `-d /usr/share/perl5/PVE` sets the base directory.
-- `-p1` removes the `a/` prefix.
-
-Apply on all cluster nodes.
-
-## Rollback (unapply patches)
+| Path                   | Purpose                                                           |
+| ---------------------- | ----------------------------------------------------------------- |
+| `patch.sh`             | applies, reverts and classifies the patches; runs from a checkout |
+| `virtbase-pve-repatch` | the installed entry point: reapply, then publish the state        |
+| `debian/`              | packaging (debhelper, compat 13)                                  |
+| `scripts/upstream.sh`  | fetches the upstream packages, checks and rebases the patches     |
+| `tests/lifecycle.sh`   | installs, retriggers and removes the package in a container       |
+| `version.txt`          | the package version, maintained by release-please                 |
 
 ```bash
-./patch.sh dry-run-unapply
-./patch.sh unapply
+./build.sh                               # dist/virtbase-pve-patches_<version>_all.deb, checked by lintian
+./tests/lifecycle.sh dist/*.deb          # install, trigger and remove against the real upstream files
+./scripts/upstream.sh check              # do the patches fit the newest upstream packages?
+./scripts/upstream.sh refresh            # rebase the patches onto pve-no-subscription
+PVE_BASE=/path/to/PVE ./patch.sh status  # classify against any copy of the tree
 ```
 
-`patch.sh` reverts in reverse order (hookscript, then snippet mode, then snippet upload) and restarts services only if anything was actually reverted.
+`build.sh` needs Docker and builds in `debian:trixie`; `BUILD_IMAGE` overrides
+the image. `debian/changelog` is generated from `version.txt`, dated by the last
+commit that touched this directory, so a commit always builds the same package.
 
-### Manual rollback
+### Changing a patch
+
+`patch.sh` recognises an applied patch by reverse-applying it, so it only
+recognises output it produced itself. After you change what a patch writes, a
+node with the old version classifies it as `unknown`. Restore the stock file on
+each node and let the trigger reapply the new version:
 
 ```bash
-sudo patch -R -d /usr/share/perl5/PVE -p1 < proxmox-hookscript.patch
-sudo patch -R -d /usr/share/perl5/PVE -p1 < proxmox-snippet-mode.patch
-sudo patch -R -d /usr/share/perl5/PVE -p1 < proxmox-snippet-upload.patch
-sudo systemctl restart pvedaemon pveproxy
+apt install --reinstall libpve-storage-perl   # or qemu-server
 ```
 
-## Regenerate patches from Perl sources
+To write a new patch, edit a copy of the tree and diff it against the stock
+files with `diff -u --label a/<path> --label b/<path>`, from
+`/usr/share/perl5/PVE`. Add it to `DEFAULT_PATCH_FILES` in `patch.sh`, which
+also sets the order: a patch generated on top of another must come after it.
 
-Regenerate with context (`-U3`) and ignore CRLF/LF-only differences.
+## Release
 
-### Snippet upload
+Commits that touch this directory feed a release-please pull request. Merging it
+tags `pve-patches-v<version>`, and the release workflow builds the package and
+attaches it to the GitHub release with a checksum and a build provenance
+attestation.
 
-```bash
-diff --strip-trailing-cr -U3 --label a/API2/Storage/Status.pm --label b/API2/Storage/Status.pm Status.pm.bak Status.pm > proxmox-snippet-upload.patch
-diff --strip-trailing-cr -U3 --label a/Storage.pm --label b/Storage.pm Storage.pm.bak Storage.pm >> proxmox-snippet-upload.patch
-```
+## Licence
 
-### Snippet mode
+AGPL-3.0-or-later.
 
-Generated against a tree that already has the snippet-upload patch applied, so the two do not overlap:
-
-```bash
-diff --strip-trailing-cr -U3 --label a/API2/Storage/Status.pm --label b/API2/Storage/Status.pm Status.pm.upload-patched Status.pm > proxmox-snippet-mode.patch
-```
-
-### Hookscript
-
-```bash
-diff --strip-trailing-cr -U3 --label a/API2/Qemu.pm --label b/API2/Qemu.pm Qemu.pm Qemu_patched.pm > proxmox-hookscript.patch
-```
-
-To avoid the `no newline at end of file` marker in generated diffs, ensure both source files end with a newline before creating a patch.
+[bug-2208]: https://bugzilla.proxmox.com/show_bug.cgi?id=2208

@@ -1,34 +1,19 @@
 #!/usr/bin/env bash
 #
-# Reapply the Virtbase Proxmox patches and publish the result.
+# Reapplies the patches and publishes their state. Runs from the dpkg file
+# trigger, from the daily timer and by hand.
 #
-# Called from three places, and the difference between them matters:
-#
-#   - the dpkg trigger, whenever any package writes under /usr/share/perl5/PVE.
-#     This is the case that exists because `libpve-storage-perl` and
-#     `qemu-server` own the patched files, so upgrading either silently reverts
-#     the patches and provisioning stops working.
-#   - the daily timer, to catch anything that edits those files outside dpkg.
-#   - a human, as the documented entry point.
-#
-# Reapplying is the easy half. The half that matters is `unknown`: after a
-# Proxmox version bump a patch may no longer fit its context, `patch.sh`
-# correctly refuses to force it, and no amount of retrying will fix that. That
-# state has to leave the node, which is what the metrics file is for.
+# Exits non-zero while any patch is not applied. A patch in state `unknown` no
+# longer fits the installed Proxmox version and cannot be reapplied by running
+# again; the exit status, the journal and the metrics file report it.
 
 set -euo pipefail
 
 PATCH_SH="${PATCH_SH:-/usr/share/virtbase-pve-patches/patch.sh}"
-
-# Written for the node_exporter textfile collector. Debian's
-# `prometheus-node-exporter` reads this directory; if it is absent the node is
-# not scraped for textfile metrics and we skip publishing rather than failing.
 TEXTFILE_DIR="${TEXTFILE_DIR:-/var/lib/prometheus/node-exporter}"
 METRIC_FILE="${METRIC_FILE:-${TEXTFILE_DIR}/virtbase_pve_patches.prom}"
 
-# `set -a` so anything set here reaches `patch.sh` as environment rather than
-# staying a local of this shell - SKIP_RESTART and PVE_BASE are read by the
-# child, not by us.
+# Exported, so the settings reach patch.sh as well.
 if [[ -r /etc/default/virtbase-pve-repatch ]]; then
   set -a
   # shellcheck source=/dev/null
@@ -36,20 +21,19 @@ if [[ -r /etc/default/virtbase-pve-repatch ]]; then
   set +a
 fi
 
-# stderr unconditionally: systemd routes it to the journal when this runs as a
-# unit, and apt shows it when the dpkg trigger runs it. syslog is best effort -
-# /dev/log does not exist in a container build, and a missing socket must not
-# abort the run under `set -e`.
+# syslog is best effort: /dev/log does not exist in a container.
 log() {
   echo "virtbase-pve-repatch: $*" >&2
   logger -t virtbase-pve-repatch -- "$*" 2>/dev/null || true
 }
 
-# `applied` is the only good state.
-#
-#    1  applied  - the patch is in place
-#    0  pending  - not applied; the next run will apply it
-#   -1  unknown  - drifted, and a human has to look
+# Prints `patch<TAB>state` lines from patch.sh's JSON, without jq, which a stock
+# Proxmox node does not ship.
+parse_states() {
+  local json="${1//\},\{/$'}\n{'}"
+  sed -n 's/.*"patch":"\([^"]*\)","state":"\([^"]*\)".*/\1\t\2/p' <<<"${json}"
+}
+
 state_to_metric() {
   case "$1" in
     applied) echo 1 ;;
@@ -58,46 +42,40 @@ state_to_metric() {
   esac
 }
 
-# node_exporter re-reads this file on every scrape, so it has to appear
-# atomically or a scrape can catch a half-written one.
+# Written for the node_exporter textfile collector, and skipped when its
+# directory does not exist. The file is replaced atomically, because the
+# collector reads it on every scrape.
 publish_metrics() {
-  local json="$1"
+  local json="$1" tmp patch state
   [[ -d "${TEXTFILE_DIR}" ]] || return 0
 
-  local tmp
   tmp="$(mktemp "${METRIC_FILE}.XXXXXX")"
   {
-    echo "# HELP virtbase_pve_patch_state Virtbase Proxmox patch state (1 applied, 0 pending, -1 unknown)."
+    echo "# HELP virtbase_pve_patch_state Patch state (1 applied, 0 pending, -1 unknown)."
     echo "# TYPE virtbase_pve_patch_state gauge"
     while IFS=$'\t' read -r patch state; do
       [[ -n "${patch}" ]] || continue
       printf 'virtbase_pve_patch_state{patch="%s"} %s\n' \
         "${patch}" "$(state_to_metric "${state}")"
     done < <(parse_states "${json}")
-
-    echo "# HELP virtbase_pve_patch_last_run_timestamp_seconds When virtbase-pve-repatch last classified the patches."
+    echo "# HELP virtbase_pve_patch_last_run_timestamp_seconds When the patches were last checked."
     echo "# TYPE virtbase_pve_patch_last_run_timestamp_seconds gauge"
     echo "virtbase_pve_patch_last_run_timestamp_seconds $(date +%s)"
-  } > "${tmp}"
-
+  } >"${tmp}"
   chmod 0644 "${tmp}"
   mv -f "${tmp}" "${METRIC_FILE}"
 }
 
-# Pull `patch<TAB>state` pairs out of the JSON without depending on jq, which
-# is not installed on a stock Proxmox node.
-parse_states() {
-  sed -e 's/},{/}\n{/g' <<<"$1" \
-    | sed -n 's/.*"patch":"\([^"]*\)","state":"\([^"]*\)".*/\1\t\2/p'
+patches_in_state() {
+  parse_states "$1" | awk -F'\t' -v s="$2" '$2 == s { print $1 }' | tr '\n' ' '
 }
 
 main() {
   local command="${1:-apply}"
-
   case "${command}" in
-    apply | status | dry-run-apply | dry-run-unapply | unapply) ;;
+    apply | unapply | status | dry-run-apply | dry-run-unapply) ;;
     *)
-      echo "Usage: $(basename "$0") [apply|status|unapply|dry-run-apply|dry-run-unapply]" >&2
+      echo "Usage: $(basename "$0") [apply|unapply|status|dry-run-apply|dry-run-unapply]" >&2
       exit 64
       ;;
   esac
@@ -108,29 +86,27 @@ main() {
   fi
 
   local rc=0
-  if [[ "${command}" != "status" ]]; then
+  if [[ "${command}" != status ]]; then
     "${PATCH_SH}" "${command}" || rc=$?
   fi
 
-  # Classify after acting, so the metrics describe the state we are leaving
-  # behind rather than the one we found.
-  local json
+  # Classified after acting, so the metrics describe the state left behind.
+  local json unknown pending
   json="$("${PATCH_SH}" status --json)"
   publish_metrics "${json}"
 
-  local unknown
-  unknown="$(parse_states "${json}" | awk -F'\t' '$2 == "unknown" { print $1 }')"
+  unknown="$(patches_in_state "${json}" unknown)"
   if [[ -n "${unknown}" ]]; then
-    log "error: patches do not fit this Proxmox version and were not applied: $(tr '\n' ' ' <<<"${unknown}")"
-    log "error: guest provisioning is degraded until these are rebased"
+    log "error: these patches do not fit the installed Proxmox version: ${unknown}"
     return 1
   fi
 
-  local pending
-  pending="$(parse_states "${json}" | awk -F'\t' '$2 == "pending" { print $1 }')"
-  if [[ -n "${pending}" ]]; then
-    log "warning: patches still pending after ${command}: $(tr '\n' ' ' <<<"${pending}")"
-    return 1
+  if [[ "${command}" != unapply ]]; then
+    pending="$(patches_in_state "${json}" pending)"
+    if [[ -n "${pending}" ]]; then
+      log "warning: these patches are not applied: ${pending}"
+      return 1
+    fi
   fi
 
   [[ "${rc}" -eq 0 ]] || log "warning: ${PATCH_SH} ${command} exited ${rc}"
