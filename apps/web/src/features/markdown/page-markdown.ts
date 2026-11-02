@@ -25,6 +25,7 @@ import {
   getAuthorArticles,
   getCategoryArticles,
   getPopularArticles,
+  getRelatedArticles,
 } from "@/features/help/articles.ts";
 import {
   getHelpCategories,
@@ -115,13 +116,27 @@ async function author(locale: Locale, slug: string) {
     .join("\n\n");
 }
 
+async function helpArticle(page: HelpArticle, locale: Locale) {
+  const t = await getExtracted({ locale });
+  const { title, description, related } = page.data;
+  const relatedArticles = getRelatedArticles(locale, related);
+
+  return [
+    `# ${title}`,
+    description,
+    await render(page, locale),
+    relatedArticles.length > 0 && `## ${t("Related articles")}`,
+    list(relatedArticles),
+  ]
+    .filter(Boolean)
+    .join("\n\n");
+}
+
 async function document(route: ContentRoute, locale: Locale) {
   switch (route.kind) {
     case "help-article": {
       const page = helpArticles.getPage(route.slugs, locale);
-      if (!page) return null;
-      const { title, description } = page.data;
-      return `# ${title}\n\n${description}\n\n${await render(page, locale)}`;
+      return page ? helpArticle(page, locale) : null;
     }
     case "legal": {
       const page = legal.getPage(route.slugs, locale);

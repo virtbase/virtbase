@@ -15,7 +15,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { cn } from "@virtbase/ui";
 import { Separator } from "@virtbase/ui/separator";
 import {
   constructMetadata,
@@ -28,10 +27,12 @@ import { notFound } from "next/navigation";
 import { getExtracted, getLocale } from "next-intl/server";
 import { getAuthors } from "@/features/authors/authors.ts";
 import { AuthorByline } from "@/features/authors/components/author-byline.tsx";
+import { getRelatedArticles } from "@/features/help/articles.ts";
 import { getHelpCategory } from "@/features/help/categories.tsx";
 import { HelpArticleJsonLd } from "@/features/help/components/help-article-json-ld.tsx";
 import { HelpBreadcrumb } from "@/features/help/components/help-breadcrumb.tsx";
 import { HelpHeader } from "@/features/help/components/help-header.tsx";
+import { RelatedArticles } from "@/features/help/components/related-articles.tsx";
 import { defaultLocale } from "@/i18n/config.ts";
 import { IntlLink } from "@/i18n/navigation.public.ts";
 import { constructAlternateLanguages } from "@/lib/hreflang.ts";
@@ -39,6 +40,7 @@ import { markdownUrl } from "@/lib/markdown-url.ts";
 import { getDocumentLocales, helpArticles } from "@/lib/source.ts";
 import { TableOfContents } from "@/ui/fumadocs/table-of-contents.tsx";
 import { helpMdxComponents } from "@/ui/mdx/article-components.tsx";
+import { Prose } from "@/ui/prose.tsx";
 
 export async function generateStaticParams() {
   return helpArticles.getPages().map((page) => ({
@@ -140,16 +142,13 @@ export default async function HelpArticlePage({
               <p className="text-muted-foreground">{description}</p>
               <AuthorByline authors={authors} lastModified={lastModified} />
             </div>
-            <article
-              className={cn(
-                "prose prose-neutral dark:prose-invert prose-headings:relative w-full max-w-none prose-headings:scroll-mt-20",
-                "prose-a:font-medium prose-a:text-muted-foreground prose-thead:text-lg prose-a:underline-offset-4 transition-all prose-a:hover:text-foreground",
-                "prose-headings:prose-a:text-foreground prose-headings:prose-a:no-underline",
-              )}
-            >
+            <Prose>
               <MDX components={helpMdxComponents} />
-            </article>
+            </Prose>
             <Separator />
+            <RelatedArticles
+              articles={getRelatedArticles(locale, page.data.related)}
+            />
           </div>
           <div className="sticky top-20 col-span-1 hidden self-start sm:block">
             <TableOfContents items={page.data.toc} />

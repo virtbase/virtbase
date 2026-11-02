@@ -53,6 +53,7 @@ export const helpArticleCollection = defineCollections({
     categories: z4.array(z4.enum(HELP_CATEGORIES)).min(1),
     popular: z4.number().int().positive().optional(),
     authors: z4.array(z4.string()).min(1),
+    related: z4.array(z4.string()).optional(),
     keywords: z4.array(z4.string()),
     lastModified,
   }),

@@ -31,6 +31,7 @@ type Frontmatter = {
   categories: string[];
   popular?: number;
   authors: string[];
+  related?: string[];
 };
 
 /** Every article's frontmatter, keyed by `<locale>/<slug>`. */
@@ -49,10 +50,11 @@ const source = [...articles].filter(([key]) =>
 );
 
 test("a translation is filed exactly like its source", () => {
-  const filing = ({ categories, popular, authors }: Frontmatter) => ({
+  const filing = ({ categories, popular, authors, related }: Frontmatter) => ({
     categories,
     popular,
     authors,
+    related,
   });
   const drift = [...articles].flatMap(([key, frontmatter]) => {
     const original = articles.get(key.replace(/^[^/]+/, defaultLocale));
@@ -80,6 +82,14 @@ test("every author an article names exists", () => {
   );
   const unknown = source.flatMap(([key, { authors }]) =>
     authors.filter((author) => !known.has(author)).map((a) => `${key}: ${a}`),
+  );
+  expect(unknown).toEqual([]);
+});
+
+test("every related article exists", () => {
+  const slugs = new Set(source.map(([key]) => key.replace(/^[^/]+\//, "")));
+  const unknown = source.flatMap(([key, { related = [] }]) =>
+    related.filter((slug) => !slugs.has(slug)).map((s) => `${key}: ${s}`),
   );
   expect(unknown).toEqual([]);
 });

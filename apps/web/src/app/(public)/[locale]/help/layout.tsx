@@ -16,18 +16,26 @@
  */
 
 import { RootProvider } from "fumadocs-ui/provider/next";
+import { getLocale } from "next-intl/server";
+import { getPopularSearchResults } from "@/features/help/search.ts";
+import type { HelpSearchProps } from "@/ui/fumadocs/help-search.tsx";
 import HelpSearch from "@/ui/fumadocs/help-search.tsx";
 
-export default function HelpLayout({
+export default async function HelpLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const options: Partial<HelpSearchProps> = {
+    popular: await getPopularSearchResults(await getLocale()),
+  };
+
   return (
     <RootProvider
       search={{
         enabled: true,
         SearchDialog: HelpSearch,
+        options,
         preload: false,
       }}
       theme={{

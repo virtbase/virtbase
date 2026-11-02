@@ -25,6 +25,14 @@ function getArticles(locale: string) {
   return helpArticles.getPages().filter((page) => page.locale === locale);
 }
 
+/** The articles an article lists as related, in its order. */
+export function getRelatedArticles(
+  locale: string,
+  slugs: readonly string[] = [],
+): HelpArticle[] {
+  return slugs.flatMap((slug) => helpArticles.getPage([slug], locale) ?? []);
+}
+
 /** The articles flagged `popular`, in the order of their rank. */
 export function getPopularArticles(locale: string): HelpArticle[] {
   return getArticles(locale)
