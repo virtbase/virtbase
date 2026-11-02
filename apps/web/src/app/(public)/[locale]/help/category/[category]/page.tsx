@@ -27,11 +27,14 @@ import { getCategoryArticles } from "@/features/help/articles.ts";
 import { getHelpCategory } from "@/features/help/categories.tsx";
 import { HelpArticleList } from "@/features/help/components/help-article-list.tsx";
 import { HelpBreadcrumb } from "@/features/help/components/help-breadcrumb.tsx";
+import { HelpCollectionJsonLd } from "@/features/help/components/help-collection-json-ld.tsx";
 import { HelpHeader } from "@/features/help/components/help-header.tsx";
+import { getHelpCategoryText } from "@/features/help/metadata.ts";
 import { locales } from "@/i18n/config.ts";
 import { HELP_CATEGORIES } from "@/lib/help-categories.ts";
 import { constructAlternateLanguages } from "@/lib/hreflang.ts";
 import { markdownUrl } from "@/lib/markdown-url.ts";
+import { publicPath } from "@/lib/public-routes.ts";
 
 export function generateStaticParams() {
   return locales.flatMap((locale) =>
@@ -54,8 +57,8 @@ export async function generateMetadata({
     notFound();
   }
 
-  const { title, description } = category;
-  const path = `/help/category/${slug}`;
+  const { title, description } = await getHelpCategoryText(category);
+  const path = publicPath({ kind: "help-category", category: category.slug });
 
   return constructMetadata({
     title,
@@ -88,6 +91,7 @@ export default async function HelpCategoryPage({
   }
 
   const articles = getCategoryArticles(locale, category.slug);
+  const text = await getHelpCategoryText(category);
 
   return (
     <>
@@ -107,6 +111,15 @@ export default async function HelpCategoryPage({
           />
         </div>
       </main>
+      <HelpCollectionJsonLd
+        url={`${PUBLIC_DOMAIN}/${locale}${publicPath({ kind: "help-category", category: category.slug })}`}
+        name={text.title}
+        description={text.description}
+        items={articles.map((article) => ({
+          name: article.data.title,
+          url: PUBLIC_DOMAIN + article.url,
+        }))}
+      />
     </>
   );
 }

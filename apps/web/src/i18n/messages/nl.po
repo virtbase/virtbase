@@ -1918,20 +1918,6 @@ msgid "Still have questions? Contact us ↗"
 msgstr "Heeft u nog vragen? Neem contact met ons op ↗"
 
 #: src/app/(public)/[locale]/help/page.tsx
-#: src/features/authors/components/author-header.tsx
-#: src/features/markdown/llms-txt.ts
-#: src/features/markdown/page-markdown.ts
-#: src/ui/footer.tsx
-msgctxt "HtSDyc"
-msgid "Help Center"
-msgstr "Helpcentrum"
-
-#: src/app/(public)/[locale]/help/page.tsx
-msgctxt "PPnkha"
-msgid "Find answers to all your Virtbase-related questions in one place with our comprehensive Help Center."
-msgstr "Vind antwoorden op al uw Virtbase-gerelateerde vragen op één plek met ons uitgebreide Helpcentrum."
-
-#: src/app/(public)/[locale]/help/page.tsx
 msgctxt "VQvikz"
 msgid "How can we help today?"
 msgstr "Hoe kunnen we u vandaag helpen?"
@@ -6300,6 +6286,15 @@ msgctxt "UuSBra"
 msgid "Written by <names></names>"
 msgstr "Geschreven door <names></names>"
 
+#: src/features/authors/components/author-header.tsx
+#: src/features/help/metadata.ts
+#: src/features/markdown/llms-txt.ts
+#: src/features/markdown/page-markdown.ts
+#: src/ui/footer.tsx
+msgctxt "HtSDyc"
+msgid "Help Center"
+msgstr "Helpcentrum"
+
 #: src/features/checkout/components/checkout-auth-wrapper.tsx
 msgctxt "jUKaDx"
 msgid "Authentication required"
@@ -6636,6 +6631,16 @@ msgstr "Alle categorieën"
 msgctxt "hiWuJZ"
 msgid "Related articles"
 msgstr "Gerelateerde artikelen"
+
+#: src/features/help/metadata.ts
+msgctxt "nDZMSK"
+msgid "Guides and answers for your Virtbase servers: {topics}."
+msgstr "Handleidingen en antwoorden voor uw Virtbase servers: {topics}."
+
+#: src/features/help/metadata.ts
+msgctxt "4zowvV"
+msgid "Step-by-step guides and answers from the Virtbase Help Center."
+msgstr "Stapsgewijze handleidingen en antwoorden uit het Virtbase Helpcentrum."
 
 #: src/features/invoices/components/invoices-table/columns.tsx
 msgctxt "ijDMrP"

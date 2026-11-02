@@ -28,17 +28,22 @@ import JsonLd from "@/ui/seo/json-ld.tsx";
  */
 export function HelpArticleJsonLd({
   url,
+  image,
   locale,
   title,
   description,
+  publishedAt,
   lastModified,
   authors,
 }: {
   /** Absolute URL of the article. */
   url: string;
+  /** Absolute URL of its OpenGraph image: 1200x630, the size Google asks for. */
+  image: string;
   locale: string;
   title: string;
   description: string;
+  publishedAt?: Date | undefined;
   lastModified?: Date | undefined;
   authors: Author[];
 }) {
@@ -49,7 +54,9 @@ export function HelpArticleJsonLd({
     description,
     url,
     mainEntityOfPage: url,
+    image,
     inLanguage: locale,
+    ...(publishedAt && { datePublished: publishedAt.toISOString() }),
     ...(lastModified && { dateModified: lastModified.toISOString() }),
     author: authors.map((author) => {
       const { url: authorUrl } = getAuthorUrls(author, locale);

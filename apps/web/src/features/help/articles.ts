@@ -15,10 +15,25 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { constructOpengraphUrl } from "@virtbase/utils";
 import type { HelpCategory } from "@/lib/help-categories.ts";
 import { helpArticles } from "@/lib/source.ts";
 
 export type HelpArticle = ReturnType<typeof helpArticles.getPages>[number];
+
+/**
+ * An article's image: its generated OpenGraph card, 1200x630. A site-relative
+ * path; the page's metadata, its structured data and its card on an author's
+ * page all use it.
+ */
+export function getArticleImage(article: HelpArticle) {
+  return constructOpengraphUrl({
+    title: article.data.title,
+    subtitle: article.data.description,
+    slug: article.url,
+    theme: "dark",
+  });
+}
 
 /** Every article in a locale, falling back to the source locale's file. */
 function getArticles(locale: string) {

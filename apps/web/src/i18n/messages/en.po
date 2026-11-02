@@ -1914,20 +1914,6 @@ msgid "Still have questions? Contact us ↗"
 msgstr ""
 
 #: src/app/(public)/[locale]/help/page.tsx
-#: src/features/authors/components/author-header.tsx
-#: src/features/markdown/llms-txt.ts
-#: src/features/markdown/page-markdown.ts
-#: src/ui/footer.tsx
-msgctxt "HtSDyc"
-msgid "Help Center"
-msgstr ""
-
-#: src/app/(public)/[locale]/help/page.tsx
-msgctxt "PPnkha"
-msgid "Find answers to all your Virtbase-related questions in one place with our comprehensive Help Center."
-msgstr ""
-
-#: src/app/(public)/[locale]/help/page.tsx
 msgctxt "VQvikz"
 msgid "How can we help today?"
 msgstr "How can we help today?"
@@ -6296,6 +6282,15 @@ msgctxt "UuSBra"
 msgid "Written by <names></names>"
 msgstr "Written by <names></names>"
 
+#: src/features/authors/components/author-header.tsx
+#: src/features/help/metadata.ts
+#: src/features/markdown/llms-txt.ts
+#: src/features/markdown/page-markdown.ts
+#: src/ui/footer.tsx
+msgctxt "HtSDyc"
+msgid "Help Center"
+msgstr ""
+
 #: src/features/checkout/components/checkout-auth-wrapper.tsx
 msgctxt "jUKaDx"
 msgid "Authentication required"
@@ -6632,6 +6627,16 @@ msgstr "All categories"
 msgctxt "hiWuJZ"
 msgid "Related articles"
 msgstr "Related articles"
+
+#: src/features/help/metadata.ts
+msgctxt "nDZMSK"
+msgid "Guides and answers for your Virtbase servers: {topics}."
+msgstr "Guides and answers for your Virtbase servers: {topics}."
+
+#: src/features/help/metadata.ts
+msgctxt "4zowvV"
+msgid "Step-by-step guides and answers from the Virtbase Help Center."
+msgstr "Step-by-step guides and answers from the Virtbase Help Center."
 
 #: src/features/invoices/components/invoices-table/columns.tsx
 msgctxt "ijDMrP"

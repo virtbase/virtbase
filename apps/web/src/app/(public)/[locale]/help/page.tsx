@@ -27,23 +27,22 @@ import { getPopularArticles } from "@/features/help/articles.ts";
 import { getHelpCategories } from "@/features/help/categories.tsx";
 import { CategoryCard } from "@/features/help/components/category-card.tsx";
 import { HelpArticleList } from "@/features/help/components/help-article-list.tsx";
+import { HelpCollectionJsonLd } from "@/features/help/components/help-collection-json-ld.tsx";
 import { HelpHeader } from "@/features/help/components/help-header.tsx";
+import { getHelpCenterText } from "@/features/help/metadata.ts";
 import { constructAlternateLanguages } from "@/lib/hreflang.ts";
 import { markdownUrl } from "@/lib/markdown-url.ts";
+import { publicPath } from "@/lib/public-routes.ts";
 
 export async function generateMetadata(): Promise<Metadata> {
   "use cache";
 
   const locale = await getLocale();
-  const t = await getExtracted();
 
   cacheLife("max");
   cacheTag("home", locale);
 
-  const title = t("Help Center");
-  const description = t(
-    "Find answers to all your Virtbase-related questions in one place with our comprehensive Help Center.",
-  );
+  const { title, description } = await getHelpCenterText();
 
   return constructMetadata({
     title,
@@ -71,6 +70,7 @@ export default async function HelpPage() {
 
   const categories = await getHelpCategories();
   const popular = getPopularArticles(locale);
+  const text = await getHelpCenterText();
 
   return (
     <>
@@ -101,6 +101,15 @@ export default async function HelpPage() {
           </div>
         </div>
       </main>
+      <HelpCollectionJsonLd
+        url={`${PUBLIC_DOMAIN}/${locale}/help`}
+        name={text.title}
+        description={text.description}
+        items={categories.map((category) => ({
+          name: category.title,
+          url: `${PUBLIC_DOMAIN}/${locale}${publicPath({ kind: "help-category", category: category.slug })}`,
+        }))}
+      />
     </>
   );
 }

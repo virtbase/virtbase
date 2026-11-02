@@ -16,18 +16,17 @@
  */
 
 import { Separator } from "@virtbase/ui/separator";
-import {
-  constructMetadata,
-  constructOpengraphUrl,
-  PUBLIC_DOMAIN,
-} from "@virtbase/utils";
+import { constructMetadata, PUBLIC_DOMAIN } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
 import { getExtracted, getLocale } from "next-intl/server";
 import { getAuthors } from "@/features/authors/authors.ts";
 import { AuthorByline } from "@/features/authors/components/author-byline.tsx";
-import { getRelatedArticles } from "@/features/help/articles.ts";
+import {
+  getArticleImage,
+  getRelatedArticles,
+} from "@/features/help/articles.ts";
 import { getHelpCategory } from "@/features/help/categories.tsx";
 import { HelpArticleJsonLd } from "@/features/help/components/help-article-json-ld.tsx";
 import { HelpBreadcrumb } from "@/features/help/components/help-breadcrumb.tsx";
@@ -85,12 +84,7 @@ export async function generateMetadata({
       languages[locale] ?? languages["x-default"] ?? PUBLIC_DOMAIN + page.url,
     languages,
     markdownUrl: markdownUrl(locale, `/help/article/${page.slugs.join("/")}`),
-    image: constructOpengraphUrl({
-      title,
-      subtitle: description,
-      slug: page.url,
-      theme: "dark",
-    }),
+    image: getArticleImage(page),
     keywords: page.data.keywords,
   });
 }
@@ -125,9 +119,11 @@ export default async function HelpArticlePage({
       <HelpHeader />
       <HelpArticleJsonLd
         url={PUBLIC_DOMAIN + page.url}
+        image={PUBLIC_DOMAIN + getArticleImage(page)}
         locale={locale}
         title={title}
         description={description}
+        publishedAt={page.data.publishedAt}
         lastModified={lastModified}
         authors={authors}
       />

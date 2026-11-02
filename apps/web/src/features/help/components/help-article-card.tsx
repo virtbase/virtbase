@@ -15,12 +15,12 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { constructOpengraphUrl } from "@virtbase/utils";
 import Image from "next/image";
 import { getFormatter, getLocale } from "next-intl/server";
 import { getAuthors } from "@/features/authors/authors.ts";
 import { AuthorAvatar } from "@/features/authors/components/author-avatar.tsx";
 import type { HelpArticle } from "@/features/help/articles.ts";
+import { getArticleImage } from "@/features/help/articles.ts";
 import { IntlLink } from "@/i18n/navigation.public.ts";
 
 /**
@@ -42,12 +42,7 @@ export async function HelpArticleCard({ article }: { article: HelpArticle }) {
       {/* The same image the article sets as its `og:image`, already rendered
           at its final size - nothing for the optimizer to do. */}
       <Image
-        src={constructOpengraphUrl({
-          title,
-          subtitle: description,
-          slug: article.url,
-          theme: "dark",
-        })}
+        src={getArticleImage(article)}
         alt=""
         width={1200}
         height={630}

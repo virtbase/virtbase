@@ -54,6 +54,7 @@ export const helpArticleCollection = defineCollections({
     popular: z4.number().int().positive().optional(),
     authors: z4.array(z4.string()).min(1),
     related: z4.array(z4.string()).optional(),
+    publishedAt: z4.coerce.date().optional(),
     keywords: z4.array(z4.string()),
     lastModified,
   }),
