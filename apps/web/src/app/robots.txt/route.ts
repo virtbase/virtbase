@@ -78,6 +78,9 @@ const TRAINING_CRAWLERS = [
   "Meta-ExternalAgent",
 ];
 
+/** Must match the path of the "Honeypot" rule in the Vercel firewall. */
+const HONEYPOT_DISALLOW = "Disallow: /api/internal/config-export";
+
 async function getRobots() {
   "use cache";
 
@@ -94,6 +97,10 @@ async function getRobots() {
       "Allow: /api/openapi.json",
       "Disallow: /api",
       "Disallow: /api/",
+      // A honeypot: the path does not exist and nothing links to it, so only
+      // a client reading this list for targets requests it. The firewall's
+      // "Honeypot" rule catches it.
+      HONEYPOT_DISALLOW,
       "Disallow: */checkout",
       "Disallow: */checkout/",
       "Disallow: */upsell",
