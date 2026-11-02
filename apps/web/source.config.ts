@@ -16,8 +16,10 @@
  */
 
 import { defineCollections, defineConfig } from "fumadocs-mdx/config";
-import lastModified from "fumadocs-mdx/plugins/last-modified";
+import lastModifiedPlugin from "fumadocs-mdx/plugins/last-modified";
 import * as z4 from "zod";
+
+const lastModified = z4.coerce.date().optional();
 
 export const legalCollection = defineCollections({
   type: "doc",
@@ -25,6 +27,7 @@ export const legalCollection = defineCollections({
   schema: z4.object({
     title: z4.string(),
     description: z4.string(),
+    lastModified,
   }),
 });
 
@@ -36,6 +39,7 @@ export const helpArticleCollection = defineCollections({
     description: z4.string(),
     category: z4.enum(["overview"]),
     keywords: z4.array(z4.string()),
+    lastModified,
   }),
 });
 
@@ -51,9 +55,10 @@ export const marketingCollection = defineCollections({
     /** The meta description, and the OpenGraph subtitle. */
     description: z4.string(),
     keywords: z4.array(z4.string()).optional(),
+    lastModified,
   }),
 });
 
 export default defineConfig({
-  plugins: [lastModified()],
+  plugins: [lastModifiedPlugin()],
 });
