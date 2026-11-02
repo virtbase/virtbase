@@ -25,6 +25,28 @@ to `en` at render time (`fallbackLanguage`), and is left out of that locale's
 `hreflang` map and sitemap entries, so crawlers are never pointed at a URL that
 serves the wrong language.
 
+## Images
+
+An image used by a document lives next to it, in an `images` directory of the
+same locale, and is linked relatively:
+
+```md
+![Firewall rule options](./images/create-firewall-rule-dialog.png)
+```
+
+Every translation therefore carries the same link and gets its own locale's
+screenshot. A locale without one of its own points at the source locale's
+explicitly (`../en/images/...`), so the fallback is visible in review.
+
+`fumadocs-mdx` turns each link into an import. A missing file fails the build,
+and the image is served from `/_next/static/media` under a content hash, with
+its width and height known up front. Only `.md` and `.mdx` files become pages,
+so the `images` directories need no configuration.
+
+An image that needs a permanent URL - an OpenGraph image, an email, the
+`poster` of a `<Video>` - stays in `apps/web/public`. The import only applies
+to Markdown image syntax; a path in a JSX attribute is passed through as it is.
+
 ## Last updated dates
 
 A document's `lastModified` - the "last updated" date on help and legal pages
