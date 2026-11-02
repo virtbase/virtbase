@@ -17,7 +17,9 @@
 
 import { ADMIN_HOSTNAMES, API_HOSTNAMES, APP_HOSTNAMES } from "@virtbase/utils";
 import contentCollections from "fdx-source/browser.ts";
+import { isMarkdownPreferred } from "fumadocs-core/negotiation";
 import type { NextRequest, ProxyConfig } from "next/server";
+import { NextResponse } from "next/server";
 import { hasLocale } from "next-intl";
 import createMiddleware from "next-intl/middleware";
 import { locales } from "@/i18n/config.ts";
@@ -25,6 +27,7 @@ import { routing } from "@/i18n/routing.public.ts";
 import { AdminMiddleware } from "@/lib/middleware/admin.ts";
 import { ApiMiddleware } from "@/lib/middleware/api.ts";
 import { AppMiddleware } from "@/lib/middleware/app.ts";
+import { hasMarkdown, markdownPath } from "@/lib/middleware/utils/markdown.ts";
 import { isMissingContent } from "@/lib/middleware/utils/missing-content.ts";
 import { rewriteToNotFound } from "@/lib/middleware/utils/not-found.ts";
 import { parse } from "@/lib/middleware/utils/parse.ts";
@@ -71,6 +74,18 @@ export default async function proxy(req: NextRequest) {
     isMissingContent(content, locale, segments)
   ) {
     return rewriteToNotFound(req, locale);
+  }
+
+  // Agents that ask for Markdown get the same URL as Markdown. The rewrite runs
+  // ahead of the CDN cache, so the two forms are cached under different keys.
+  if (
+    hasLocale(locales, locale) &&
+    hasMarkdown(segments) &&
+    isMarkdownPreferred(req)
+  ) {
+    return NextResponse.rewrite(
+      new URL(markdownPath(locale, segments), req.url),
+    );
   }
 
   const res = intlMiddleware(req);

@@ -25,6 +25,9 @@ export const ROUTED_SEGMENTS: ReadonlySet<string> = new Set([
   "contact",
   "help",
   "legal",
+  // A route handler. Its path contains a dot, so the proxy never sees it; it
+  // is listed because every static folder under `[locale]` must be.
+  "llms.txt",
   "upsell",
 ]);
 

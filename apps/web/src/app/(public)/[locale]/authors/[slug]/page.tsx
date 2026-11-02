@@ -31,6 +31,7 @@ import { getAuthorArticles } from "@/features/help/articles.ts";
 import { HelpArticleCard } from "@/features/help/components/help-article-card.tsx";
 import { defaultLocale } from "@/i18n/config.ts";
 import { constructAlternateLanguages } from "@/lib/hreflang.ts";
+import { markdownUrl } from "@/lib/markdown-url.ts";
 import { authors, getDocumentLocales } from "@/lib/source.ts";
 import { Prose } from "@/ui/prose.tsx";
 
@@ -72,6 +73,7 @@ export async function generateMetadata({
     canonicalUrl:
       languages[locale] ?? languages["x-default"] ?? PUBLIC_DOMAIN + author.url,
     languages,
+    markdownUrl: markdownUrl(locale, `/authors/${slug}`),
     image: constructOpengraphUrl({
       title: name,
       subtitle: role ?? description,

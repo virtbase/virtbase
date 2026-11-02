@@ -29,6 +29,7 @@ import { CategoryCard } from "@/features/help/components/category-card.tsx";
 import { HelpArticleList } from "@/features/help/components/help-article-list.tsx";
 import { HelpHeader } from "@/features/help/components/help-header.tsx";
 import { constructAlternateLanguages } from "@/lib/hreflang.ts";
+import { markdownUrl } from "@/lib/markdown-url.ts";
 
 export async function generateMetadata(): Promise<Metadata> {
   "use cache";
@@ -49,6 +50,7 @@ export async function generateMetadata(): Promise<Metadata> {
     description,
     canonicalUrl: `${PUBLIC_DOMAIN}/${locale}/help`,
     languages: constructAlternateLanguages("/help"),
+    markdownUrl: markdownUrl(locale, "/help"),
     image: constructOpengraphUrl({
       title,
       subtitle: description,

@@ -226,6 +226,34 @@ Links inside MDX carry their own locale prefix (`/de/legal/privacy`), matching
 the help and legal articles. The `href` attribute on a block is different — it
 goes through `IntlLink` and must stay unprefixed (`/help/article/...`).
 
+A new block also needs a Markdown form in
+`apps/web/src/ui/mdx/markdown-components.tsx`, or the Markdown served to agents
+carries it as raw JSX.
+
+### Markdown for agents
+
+Every public content page is also served as Markdown, by
+`app/llms.mdx/[locale]/[[...slug]]/route.ts`, from
+`features/markdown/page-markdown.ts`. Two ways lead there:
+
+- **`Accept: text/markdown`.** The proxy rewrites when `isMarkdownPreferred()`
+  says so, after the not-found check. The rewrite runs ahead of the CDN cache,
+  so HTML and Markdown are cached under different keys.
+- **`.md` appended to the URL** (`/en.md`, `/de/help/article/x.md`), mapped by
+  a rewrite in `next.config.ts`. The proxy never sees these paths, so the route
+  answers unknown pages with its own 404.
+
+Documents render through `getText("processed")` with `output: "function"`, so
+each MDX component writes its own Markdown; `<Offers />` becomes a live price
+table. Checkout, contact and upsell have no Markdown form and stay HTML. Pages
+announce their Markdown with `<link rel="alternate" type="text/markdown">`
+(`markdownUrl` in `constructMetadata`), and `/llms.txt` plus
+`/<locale>/llms.txt` index them all.
+
+`packages/content` depends on `fumadocs-core` although it holds no code: the
+compiled MDX imports `fumadocs-core/server`, resolved from the document's own
+directory.
+
 ### Locales and the fallback
 
 `source.ts` builds each collection twice. The exported loaders keep the default

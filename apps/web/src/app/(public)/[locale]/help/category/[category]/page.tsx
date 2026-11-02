@@ -31,6 +31,7 @@ import { HelpHeader } from "@/features/help/components/help-header.tsx";
 import { locales } from "@/i18n/config.ts";
 import { HELP_CATEGORIES } from "@/lib/help-categories.ts";
 import { constructAlternateLanguages } from "@/lib/hreflang.ts";
+import { markdownUrl } from "@/lib/markdown-url.ts";
 
 export function generateStaticParams() {
   return locales.flatMap((locale) =>
@@ -61,6 +62,7 @@ export async function generateMetadata({
     description,
     canonicalUrl: `${PUBLIC_DOMAIN}/${locale}${path}`,
     languages: constructAlternateLanguages(path),
+    markdownUrl: markdownUrl(locale, path),
     image: constructOpengraphUrl({
       title,
       subtitle: description,

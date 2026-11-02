@@ -1682,6 +1682,7 @@ msgid "Help articles written by {name}."
 msgstr "Articles d'aide rédigés par {name}."
 
 #: src/app/(public)/[locale]/authors/[slug]/page.tsx
+#: src/features/markdown/page-markdown.ts
 msgctxt "DZ0V4V"
 msgid "Help articles"
 msgstr "Articles d'aide"
@@ -1885,6 +1886,7 @@ msgstr "Afficher le centre d'aide"
 
 #: src/app/(public)/[locale]/contact/page.tsx
 #: src/features/account/components/api-keys/api-keys-card.tsx
+#: src/features/markdown/llms-txt.ts
 #: src/ui/footer.tsx
 msgctxt "yKOyCk"
 msgid "API Documentation"
@@ -1917,6 +1919,8 @@ msgstr "Vous avez encore des questions? Contactez-nous ↗"
 
 #: src/app/(public)/[locale]/help/page.tsx
 #: src/features/authors/components/author-header.tsx
+#: src/features/markdown/llms-txt.ts
+#: src/features/markdown/page-markdown.ts
 #: src/ui/footer.tsx
 msgctxt "HtSDyc"
 msgid "Help Center"
@@ -1933,6 +1937,7 @@ msgid "How can we help today?"
 msgstr "Comment pouvons-nous vous aider aujourd'hui ?"
 
 #: src/app/(public)/[locale]/help/page.tsx
+#: src/features/markdown/page-markdown.ts
 msgctxt "yN3mpX"
 msgid "Popular articles"
 msgstr "Articles populaires"
@@ -6648,6 +6653,7 @@ msgstr "Payé le"
 
 #: src/features/landing/components/advantage-item.tsx
 #: src/features/landing/components/feature.tsx
+#: src/ui/mdx/markdown-components.tsx
 msgctxt "TdTXXf"
 msgid "Learn more"
 msgstr "Apprendre encore plus"
@@ -6791,6 +6797,17 @@ msgstr "Réseau"
 msgctxt "yCCio2"
 msgid "Last reboot"
 msgstr "Dernier redémarrage"
+
+#: src/features/markdown/llms-txt.ts
+msgctxt "DeMYQk"
+msgid "Every page linked here is also available as Markdown: append .md to its URL, or request it with the header Accept: text/markdown."
+msgstr "Chaque page liée ici existe aussi en Markdown : ajoutez .md à son URL, ou demandez-la avec l'en-tête Accept: text/markdown."
+
+#: src/features/markdown/llms-txt.ts
+#: src/ui/footer.tsx
+msgctxt "7oFrM6"
+msgid "Legal"
+msgstr "Légale"
 
 #: src/features/servers/components/advanced/advanced-bios-card.tsx
 msgctxt "4HNt5G"
@@ -8719,11 +8736,6 @@ msgstr "Entreprise"
 msgctxt "iby7Fe"
 msgid "Data center"
 msgstr "Centre de données"
-
-#: src/ui/footer.tsx
-msgctxt "7oFrM6"
-msgid "Legal"
-msgstr "Légale"
 
 #: src/ui/footer.tsx
 msgctxt "vx0nkZ"

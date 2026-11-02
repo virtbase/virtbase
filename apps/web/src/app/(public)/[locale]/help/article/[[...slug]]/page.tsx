@@ -38,6 +38,7 @@ import { HelpHeader } from "@/features/help/components/help-header.tsx";
 import { defaultLocale } from "@/i18n/config.ts";
 import { IntlLink } from "@/i18n/navigation.public.ts";
 import { constructAlternateLanguages } from "@/lib/hreflang.ts";
+import { markdownUrl } from "@/lib/markdown-url.ts";
 import { getDocumentLocales, helpArticles } from "@/lib/source.ts";
 import { HelpHint } from "@/ui/fumadocs/help-hint.tsx";
 import { TableOfContents } from "@/ui/fumadocs/table-of-contents.tsx";
@@ -85,6 +86,7 @@ export async function generateMetadata({
     canonicalUrl:
       languages[locale] ?? languages["x-default"] ?? PUBLIC_DOMAIN + page.url,
     languages,
+    markdownUrl: markdownUrl(locale, `/help/article/${page.slugs.join("/")}`),
     image: constructOpengraphUrl({
       title,
       subtitle: description,

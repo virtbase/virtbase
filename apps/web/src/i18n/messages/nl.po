@@ -1682,6 +1682,7 @@ msgid "Help articles written by {name}."
 msgstr "Helpartikelen geschreven door {name}."
 
 #: src/app/(public)/[locale]/authors/[slug]/page.tsx
+#: src/features/markdown/page-markdown.ts
 msgctxt "DZ0V4V"
 msgid "Help articles"
 msgstr "Helpartikelen"
@@ -1885,6 +1886,7 @@ msgstr "Bekijk Helpcentrum"
 
 #: src/app/(public)/[locale]/contact/page.tsx
 #: src/features/account/components/api-keys/api-keys-card.tsx
+#: src/features/markdown/llms-txt.ts
 #: src/ui/footer.tsx
 msgctxt "yKOyCk"
 msgid "API Documentation"
@@ -1917,6 +1919,8 @@ msgstr "Heeft u nog vragen? Neem contact met ons op ↗"
 
 #: src/app/(public)/[locale]/help/page.tsx
 #: src/features/authors/components/author-header.tsx
+#: src/features/markdown/llms-txt.ts
+#: src/features/markdown/page-markdown.ts
 #: src/ui/footer.tsx
 msgctxt "HtSDyc"
 msgid "Help Center"
@@ -1933,6 +1937,7 @@ msgid "How can we help today?"
 msgstr "Hoe kunnen we u vandaag helpen?"
 
 #: src/app/(public)/[locale]/help/page.tsx
+#: src/features/markdown/page-markdown.ts
 msgctxt "yN3mpX"
 msgid "Popular articles"
 msgstr "Populaire artikelen"
@@ -6648,6 +6653,7 @@ msgstr "Betaald op"
 
 #: src/features/landing/components/advantage-item.tsx
 #: src/features/landing/components/feature.tsx
+#: src/ui/mdx/markdown-components.tsx
 msgctxt "TdTXXf"
 msgid "Learn more"
 msgstr "Meer informatie"
@@ -6791,6 +6797,17 @@ msgstr "Netwerk"
 msgctxt "yCCio2"
 msgid "Last reboot"
 msgstr "Laatste herstart"
+
+#: src/features/markdown/llms-txt.ts
+msgctxt "DeMYQk"
+msgid "Every page linked here is also available as Markdown: append .md to its URL, or request it with the header Accept: text/markdown."
+msgstr "Elke hier gelinkte pagina is ook beschikbaar als Markdown: voeg .md toe aan de URL, of vraag haar op met de header Accept: text/markdown."
+
+#: src/features/markdown/llms-txt.ts
+#: src/ui/footer.tsx
+msgctxt "7oFrM6"
+msgid "Legal"
+msgstr "Legaal"
 
 #: src/features/servers/components/advanced/advanced-bios-card.tsx
 msgctxt "4HNt5G"
@@ -8719,11 +8736,6 @@ msgstr "Bedrijf"
 msgctxt "iby7Fe"
 msgid "Data center"
 msgstr "Datacenter"
-
-#: src/ui/footer.tsx
-msgctxt "7oFrM6"
-msgid "Legal"
-msgstr "Legaal"
 
 #: src/ui/footer.tsx
 msgctxt "vx0nkZ"

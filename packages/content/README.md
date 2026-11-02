@@ -8,6 +8,10 @@ It is a workspace package rather than a plain directory so that Turborepo
 tracks content edits: `@virtbase/web` depends on it, so changing an MDX file
 invalidates the web build and typecheck caches.
 
+Its one dependency, `fumadocs-core`, is for the compiled documents rather than
+for code here: they import `fumadocs-core/server` to render themselves as
+Markdown, and an import resolves from the document's own directory.
+
 ## Layout
 
 ```

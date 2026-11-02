@@ -1678,6 +1678,7 @@ msgid "Help articles written by {name}."
 msgstr "Help articles written by {name}."
 
 #: src/app/(public)/[locale]/authors/[slug]/page.tsx
+#: src/features/markdown/page-markdown.ts
 msgctxt "DZ0V4V"
 msgid "Help articles"
 msgstr "Help articles"
@@ -1881,6 +1882,7 @@ msgstr ""
 
 #: src/app/(public)/[locale]/contact/page.tsx
 #: src/features/account/components/api-keys/api-keys-card.tsx
+#: src/features/markdown/llms-txt.ts
 #: src/ui/footer.tsx
 msgctxt "yKOyCk"
 msgid "API Documentation"
@@ -1913,6 +1915,8 @@ msgstr ""
 
 #: src/app/(public)/[locale]/help/page.tsx
 #: src/features/authors/components/author-header.tsx
+#: src/features/markdown/llms-txt.ts
+#: src/features/markdown/page-markdown.ts
 #: src/ui/footer.tsx
 msgctxt "HtSDyc"
 msgid "Help Center"
@@ -1929,6 +1933,7 @@ msgid "How can we help today?"
 msgstr "How can we help today?"
 
 #: src/app/(public)/[locale]/help/page.tsx
+#: src/features/markdown/page-markdown.ts
 msgctxt "yN3mpX"
 msgid "Popular articles"
 msgstr "Popular articles"
@@ -6644,6 +6649,7 @@ msgstr ""
 
 #: src/features/landing/components/advantage-item.tsx
 #: src/features/landing/components/feature.tsx
+#: src/ui/mdx/markdown-components.tsx
 msgctxt "TdTXXf"
 msgid "Learn more"
 msgstr ""
@@ -6786,6 +6792,17 @@ msgstr ""
 #: src/features/servers/components/server-stats-card.tsx
 msgctxt "yCCio2"
 msgid "Last reboot"
+msgstr ""
+
+#: src/features/markdown/llms-txt.ts
+msgctxt "DeMYQk"
+msgid "Every page linked here is also available as Markdown: append .md to its URL, or request it with the header Accept: text/markdown."
+msgstr "Every page linked here is also available as Markdown: append .md to its URL, or request it with the header Accept: text/markdown."
+
+#: src/features/markdown/llms-txt.ts
+#: src/ui/footer.tsx
+msgctxt "7oFrM6"
+msgid "Legal"
 msgstr ""
 
 #: src/features/servers/components/advanced/advanced-bios-card.tsx
@@ -8714,11 +8731,6 @@ msgstr ""
 #: src/ui/footer.tsx
 msgctxt "iby7Fe"
 msgid "Data center"
-msgstr ""
-
-#: src/ui/footer.tsx
-msgctxt "7oFrM6"
-msgid "Legal"
 msgstr ""
 
 #: src/ui/footer.tsx

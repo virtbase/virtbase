@@ -26,6 +26,7 @@ import { notFound } from "next/navigation";
 import { getLocale } from "next-intl/server";
 
 import { constructAlternateLanguages } from "@/lib/hreflang.ts";
+import { markdownUrl } from "@/lib/markdown-url.ts";
 import { getDocumentLocales, marketing } from "@/lib/source.ts";
 import { marketingMdxComponents } from "@/ui/mdx/marketing-components.tsx";
 
@@ -68,6 +69,7 @@ export async function generateMetadata(): Promise<Metadata> {
       languages["x-default"] ??
       `${PUBLIC_DOMAIN}/${locale}`,
     languages,
+    markdownUrl: markdownUrl(locale, ""),
     image: constructOpengraphUrl({
       title,
       subtitle: description,

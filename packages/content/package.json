@@ -5,5 +5,8 @@
   "type": "module",
   "scripts": {
     "clean": "git clean -xdf .cache .turbo node_modules"
+  },
+  "dependencies": {
+    "fumadocs-core": "16.17.8"
   }
 }

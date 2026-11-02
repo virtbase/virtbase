@@ -17,7 +17,7 @@
 
 import NextImage from "next/image";
 
-const items = [
+export const SHOWCASED_OPERATING_SYSTEMS = [
   {
     src: "/assets/static/distros/debian_wordmark.svg",
     alt: "Debian",
@@ -44,7 +44,7 @@ const items = [
 export function OperatingSystemShowcase() {
   return (
     <div className="grid grid-cols-2 items-center gap-4 px-4 py-10 transition-[opacity,transform] duration-500 sm:grid-cols-3 md:grid-cols-5">
-      {items.map((item) => (
+      {SHOWCASED_OPERATING_SYSTEMS.map((item) => (
         <div className="relative" key={item.alt}>
           <div className="relative h-12">
             <div className="group absolute inset-0" aria-hidden inert>

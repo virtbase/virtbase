@@ -29,6 +29,7 @@ import { notFound } from "next/navigation";
 import { getExtracted, getFormatter, getLocale } from "next-intl/server";
 import { defaultLocale } from "@/i18n/config.ts";
 import { constructAlternateLanguages } from "@/lib/hreflang.ts";
+import { markdownUrl } from "@/lib/markdown-url.ts";
 import { getDocumentLocales, legal } from "@/lib/source.ts";
 import { BlockWrapper } from "@/ui/block-wrapper.tsx";
 import { TableOfContents } from "@/ui/fumadocs/table-of-contents.tsx";
@@ -75,6 +76,7 @@ export async function generateMetadata({
     canonicalUrl:
       languages[locale] ?? languages["x-default"] ?? PUBLIC_DOMAIN + page.url,
     languages,
+    markdownUrl: markdownUrl(locale, `/legal/${page.slugs.join("/")}`),
     image: constructOpengraphUrl({
       title,
       subtitle: description,

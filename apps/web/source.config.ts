@@ -22,9 +22,20 @@ import { HELP_CATEGORIES } from "./src/lib/help-categories.ts";
 
 const lastModified = z4.coerce.date().optional();
 
+/**
+ * Every document is also served as Markdown, to agents. `output: "function"`
+ * keeps the authored Markdown and leaves MDX components as components, which
+ * `ui/mdx/markdown-components.tsx` renders into Markdown of their own.
+ */
+const postprocess = {
+  // Fumadocs would append `[#anchor]` to every heading, noise to an agent.
+  includeProcessedMarkdown: { output: "function", headingIds: false },
+} as const;
+
 export const legalCollection = defineCollections({
   type: "doc",
   dir: "../../packages/content/legal",
+  postprocess,
   schema: z4.object({
     title: z4.string(),
     description: z4.string(),
@@ -35,6 +46,7 @@ export const legalCollection = defineCollections({
 export const helpArticleCollection = defineCollections({
   type: "doc",
   dir: "../../packages/content/help/articles",
+  postprocess,
   schema: z4.object({
     title: z4.string(),
     description: z4.string(),
@@ -49,6 +61,7 @@ export const helpArticleCollection = defineCollections({
 export const authorCollection = defineCollections({
   type: "doc",
   dir: "../../packages/content/authors",
+  postprocess,
   schema: z4.object({
     name: z4.string(),
     role: z4.string().optional(),
@@ -67,6 +80,7 @@ export const authorCollection = defineCollections({
 export const marketingCollection = defineCollections({
   type: "doc",
   dir: "../../packages/content/marketing",
+  postprocess,
   schema: z4.object({
     /**
      * The `<title>` of the page. Not rendered — the visible heading is the
