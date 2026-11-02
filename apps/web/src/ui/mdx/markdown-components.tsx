@@ -23,6 +23,7 @@ import { getExtracted, getFormatter } from "next-intl/server";
 import type { ReactNode } from "react";
 import { getAvailablePlans } from "@/features/checkout/api/get-available-plans.ts";
 import { SHOWCASED_OPERATING_SYSTEMS } from "@/features/landing/components/operating-system-showcase.tsx";
+import type { MarkdownComponentName } from "@/ui/mdx/markdown-component-names.ts";
 
 type Children = { children?: ReactNode };
 
@@ -141,5 +142,5 @@ export async function getMarkdownComponents(locale: Locale) {
       asMarkdown();
       return md`${await offersTable(t, format)}\n\n`;
     },
-  };
+  } satisfies Record<MarkdownComponentName, unknown>;
 }
