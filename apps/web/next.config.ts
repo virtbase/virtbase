@@ -166,6 +166,8 @@ const nextConfig: NextConfig = {
     "/*": [
       "../../node_modules/.bun/jose@*/node_modules/jose/dist/browser/**/*",
     ],
+    "/api/docs": ["./src/app/api/docs/**/*.md"],
+    "/api/openapi.json": ["./src/app/api/docs/**/*.md"],
   },
   poweredByHeader: false,
   redirects: async () => [
