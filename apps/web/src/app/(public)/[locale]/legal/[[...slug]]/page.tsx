@@ -21,8 +21,6 @@ import {
   constructOpengraphUrl,
   PUBLIC_DOMAIN,
 } from "@virtbase/utils";
-import { Step, Steps } from "fumadocs-ui/components/steps";
-import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { Metadata } from "next";
 import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
@@ -33,6 +31,7 @@ import { markdownUrl } from "@/lib/markdown-url.ts";
 import { getDocumentLocales, legal } from "@/lib/source.ts";
 import { BlockWrapper } from "@/ui/block-wrapper.tsx";
 import { TableOfContents } from "@/ui/fumadocs/table-of-contents.tsx";
+import { legalMdxComponents } from "@/ui/mdx/article-components.tsx";
 
 export async function generateStaticParams() {
   return legal.getPages().map((page) => ({
@@ -128,13 +127,7 @@ export default async function LegalPage({
                 "prose-headings:prose-a:text-foreground prose-headings:prose-a:no-underline",
               )}
             >
-              <MDX
-                components={{
-                  ...defaultMdxComponents,
-                  Steps,
-                  Step,
-                }}
-              />
+              <MDX components={legalMdxComponents} />
             </article>
           </div>
           <div className="hidden md:block">

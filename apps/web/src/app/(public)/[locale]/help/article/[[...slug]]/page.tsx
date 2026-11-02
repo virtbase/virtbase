@@ -22,9 +22,6 @@ import {
   constructOpengraphUrl,
   PUBLIC_DOMAIN,
 } from "@virtbase/utils";
-import { ImageZoom } from "fumadocs-ui/components/image-zoom";
-import { Step, Steps } from "fumadocs-ui/components/steps";
-import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { Metadata } from "next";
 import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
@@ -40,9 +37,8 @@ import { IntlLink } from "@/i18n/navigation.public.ts";
 import { constructAlternateLanguages } from "@/lib/hreflang.ts";
 import { markdownUrl } from "@/lib/markdown-url.ts";
 import { getDocumentLocales, helpArticles } from "@/lib/source.ts";
-import { HelpHint } from "@/ui/fumadocs/help-hint.tsx";
 import { TableOfContents } from "@/ui/fumadocs/table-of-contents.tsx";
-import { Video } from "@/ui/fumadocs/video.tsx";
+import { helpMdxComponents } from "@/ui/mdx/article-components.tsx";
 
 export async function generateStaticParams() {
   return helpArticles.getPages().map((page) => ({
@@ -151,23 +147,7 @@ export default async function HelpArticlePage({
                 "prose-headings:prose-a:text-foreground prose-headings:prose-a:no-underline",
               )}
             >
-              <MDX
-                components={{
-                  ...defaultMdxComponents,
-                  Steps,
-                  Step,
-                  img: ({ src, sizes, ...props }) => (
-                    <ImageZoom
-                      className="rounded-lg border border-border"
-                      src={src as string}
-                      {...(sizes === undefined ? {} : { sizes })}
-                      {...props}
-                    />
-                  ),
-                  Hint: HelpHint,
-                  Video,
-                }}
-              />
+              <MDX components={helpMdxComponents} />
             </article>
             <Separator />
           </div>
