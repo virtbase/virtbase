@@ -19,6 +19,7 @@ import { PUBLIC_DOMAIN } from "@virtbase/utils";
 import type { MetadataRoute } from "next";
 import { cacheLife, cacheTag } from "next/cache";
 import { routing } from "@/i18n/routing.public.ts";
+import { HELP_CATEGORIES } from "@/lib/help-categories.ts";
 import { constructAlternateLanguages } from "@/lib/hreflang.ts";
 import type { ContentCollection, TranslatedPage } from "@/lib/source.ts";
 import { getDocumentLocales, getTranslatedPages } from "@/lib/source.ts";
@@ -65,7 +66,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // and the app domain is absent because a sitemap only speaks for the host
   // that serves it — those entries were silently discarded, and `/login` and
   // `/register` should never have been advertised for indexing anyway.
-  const pages = ["/help", "/contact"] as const;
+  const pages = [
+    "/help",
+    ...HELP_CATEGORIES.map((category) => `/help/category/${category}`),
+    "/contact",
+  ];
 
   return [
     // Special page without locale

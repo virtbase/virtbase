@@ -18,6 +18,7 @@
 import { defineCollections, defineConfig } from "fumadocs-mdx/config";
 import lastModifiedPlugin from "fumadocs-mdx/plugins/last-modified";
 import * as z4 from "zod";
+import { HELP_CATEGORIES } from "./src/lib/help-categories.ts";
 
 const lastModified = z4.coerce.date().optional();
 
@@ -37,7 +38,8 @@ export const helpArticleCollection = defineCollections({
   schema: z4.object({
     title: z4.string(),
     description: z4.string(),
-    category: z4.enum(["overview"]),
+    categories: z4.array(z4.enum(HELP_CATEGORIES)).min(1),
+    popular: z4.number().int().positive().optional(),
     keywords: z4.array(z4.string()),
     lastModified,
   }),

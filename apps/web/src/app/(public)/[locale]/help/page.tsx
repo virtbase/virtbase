@@ -16,13 +16,6 @@
  */
 
 import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbList,
-  BreadcrumbPage,
-} from "@virtbase/ui/breadcrumb";
-import { LucideChevronRight } from "@virtbase/ui/icons";
-import {
   constructMetadata,
   constructOpengraphUrl,
   PUBLIC_DOMAIN,
@@ -30,9 +23,12 @@ import {
 import type { Metadata } from "next";
 import { cacheLife, cacheTag } from "next/cache";
 import { getExtracted, getLocale } from "next-intl/server";
-import { IntlLink } from "@/i18n/navigation.public.ts";
+import { getPopularArticles } from "@/features/help/articles.ts";
+import { getHelpCategories } from "@/features/help/categories.tsx";
+import { CategoryCard } from "@/features/help/components/category-card.tsx";
+import { HelpArticleList } from "@/features/help/components/help-article-list.tsx";
+import { HelpHeader } from "@/features/help/components/help-header.tsx";
 import { constructAlternateLanguages } from "@/lib/hreflang.ts";
-import { helpArticles } from "@/lib/source.ts";
 
 export async function generateMetadata(): Promise<Metadata> {
   "use cache";
@@ -71,44 +67,38 @@ export default async function HelpPage() {
   cacheLife("max");
   cacheTag("home", locale);
 
-  const pages = helpArticles
-    .getPages()
-    .filter((page) => page.locale === locale);
+  const categories = await getHelpCategories();
+  const popular = getPopularArticles(locale);
 
   return (
-    <main className="relative border-border border-t">
-      <div className="mx-auto flex w-full max-w-5xl flex-col px-3 py-10">
-        <h1 className="mb-2 font-medium text-foreground text-xl">
-          {t("Help Center")}
-        </h1>
-        <Breadcrumb className="text-muted-foreground text-sm">
-          <BreadcrumbList>
-            <BreadcrumbItem>
-              <BreadcrumbPage className="text-muted-foreground">
-                {t("All articles")}
-              </BreadcrumbPage>
-            </BreadcrumbItem>
-          </BreadcrumbList>
-        </Breadcrumb>
-        <div className="mt-8 grid gap-2 rounded-md border border-border p-4">
-          {pages.map((page) => (
-            <IntlLink
-              href={`/help/article/${page.slugs.join("/")}`}
-              key={page.url}
-              className="group flex items-center justify-between space-x-4 rounded-lg px-2 py-3 transition-colors hover:bg-accent/50 active:bg-accent/50 sm:px-4"
-              prefetch={false}
-            >
-              <h3 className="font-medium text-foreground/80 text-sm sm:text-base">
-                {page.data.title}
-              </h3>
-              <LucideChevronRight
-                aria-hidden="true"
-                className="size-4 shrink-0 text-muted-foreground transition-all group-hover:translate-x-1 group-hover:text-foreground"
+    <>
+      <HelpHeader title={t("How can we help today?")} />
+      <main className="relative border-border border-t">
+        <div className="mx-auto w-full max-w-5xl px-3 py-10 lg:px-4 xl:px-0">
+          {popular.length > 0 && (
+            <section className="mb-10 rounded-xl border border-border bg-background px-4 py-6">
+              <h2 className="px-2 font-medium text-foreground text-xl sm:text-2xl">
+                {t("Popular articles")}
+              </h2>
+              <HelpArticleList
+                articles={popular}
+                className="mt-4 md:grid-cols-2"
               />
-            </IntlLink>
-          ))}
+            </section>
+          )}
+          <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3">
+            {categories.map(({ slug, title, description, Icon }) => (
+              <CategoryCard
+                key={slug}
+                href={`/help/category/${slug}`}
+                icon={<Icon aria-hidden="true" />}
+                title={title}
+                description={description}
+              />
+            ))}
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </>
   );
 }

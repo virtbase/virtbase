@@ -1901,12 +1901,6 @@ msgid "Contact us and get quick help."
 msgstr "Kontaktiere uns und erhalte schnelle Hilfe."
 
 #: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
-#: src/app/(public)/[locale]/help/page.tsx
-msgctxt "tUmaeD"
-msgid "All articles"
-msgstr "Alle Artikel"
-
-#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
 #: src/app/(public)/[locale]/legal/[[...slug]]/page.tsx
 msgctxt "ZdCdo5"
 msgid "Last updated: {date}"
@@ -1927,6 +1921,16 @@ msgstr "Hilfe-Center"
 msgctxt "PPnkha"
 msgid "Find answers to all your Virtbase-related questions in one place with our comprehensive Help Center."
 msgstr "Im Hilfe-Center findest du Antworten auf alle Fragen zu Virtbase an einem Ort."
+
+#: src/app/(public)/[locale]/help/page.tsx
+msgctxt "VQvikz"
+msgid "How can we help today?"
+msgstr "Wie können wir dir heute helfen?"
+
+#: src/app/(public)/[locale]/help/page.tsx
+msgctxt "yN3mpX"
+msgid "Popular articles"
+msgstr "Beliebte Artikel"
 
 #: src/app/(public)/[locale]/not-found.tsx
 #: src/app/global-not-found.tsx
@@ -2098,6 +2102,7 @@ msgstr "Dashboard"
 #: src/app/app.virtbase.com/[locale]/(dashboard)/servers/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
+#: src/features/help/categories.tsx
 #: src/ui/app-sidebar-menu.tsx
 msgctxt "QOxktD"
 msgid "Servers"
@@ -2280,6 +2285,7 @@ msgstr "Erweitert"
 
 #: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/backups/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/help/categories.tsx
 #: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/servers/components/backups/backups-card.tsx
 #: src/features/servers/components/server-nav-view.tsx
@@ -6537,6 +6543,71 @@ msgstr "Läuft ab (wird gelöscht {date})"
 msgctxt "Dnob31"
 msgid "Operational"
 msgstr "Betriebsbereit"
+
+#: src/features/help/categories.tsx
+msgctxt "EKtClK"
+msgid "Getting started"
+msgstr "Erste Schritte"
+
+#: src/features/help/categories.tsx
+msgctxt "raXuB5"
+msgid "Learn the basics of Virtbase and set up your first server."
+msgstr "Lerne die Grundlagen von Virtbase kennen und richte deinen ersten Server ein."
+
+#: src/features/help/categories.tsx
+msgctxt "QHvEJ1"
+msgid "Install an operating system, renew your server and manage it day to day."
+msgstr "Installiere ein Betriebssystem, verlängere deinen Server und verwalte ihn im Alltag."
+
+#: src/features/help/categories.tsx
+msgctxt "e85NWi"
+msgid "Back up your servers and restore them when something goes wrong."
+msgstr "Sichere deine Server und stelle sie wieder her, wenn etwas schiefgeht."
+
+#: src/features/help/categories.tsx
+msgctxt "ruOElN"
+msgid "Networking & firewall"
+msgstr "Netzwerk & Firewall"
+
+#: src/features/help/categories.tsx
+msgctxt "BwC7f3"
+msgid "Firewall rules, DDoS protection and your server's network."
+msgstr "Firewall-Regeln, DDoS-Schutz und das Netzwerk deines Servers."
+
+#: src/features/help/categories.tsx
+msgctxt "CZt8cl"
+msgid "Billing & payments"
+msgstr "Abrechnung & Zahlungen"
+
+#: src/features/help/categories.tsx
+msgctxt "TLJY6W"
+msgid "Renewals, invoices and payment methods."
+msgstr "Verlängerungen, Rechnungen und Zahlungsmethoden."
+
+#: src/features/help/categories.tsx
+msgctxt "jLghsC"
+msgid "Account & security"
+msgstr "Konto & Sicherheit"
+
+#: src/features/help/categories.tsx
+msgctxt "lv8UpE"
+msgid "Keep your account secure, and manage or delete it."
+msgstr "Halte dein Konto sicher, verwalte oder lösche es."
+
+#: src/features/help/categories.tsx
+msgctxt "CrEuJp"
+msgid "API & integrations"
+msgstr "API & Integrationen"
+
+#: src/features/help/categories.tsx
+msgctxt "qaMjdy"
+msgid "Automate Virtbase with the public API and manage it from Discord."
+msgstr "Automatisiere Virtbase mit der öffentlichen API und verwalte es über Discord."
+
+#: src/features/help/components/help-breadcrumb.tsx
+msgctxt "9g2jKz"
+msgid "All categories"
+msgstr "Alle Kategorien"
 
 #: src/features/invoices/components/invoices-table/columns.tsx
 msgctxt "ijDMrP"

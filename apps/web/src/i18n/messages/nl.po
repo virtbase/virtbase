@@ -1901,12 +1901,6 @@ msgid "Contact us and get quick help."
 msgstr "Neem contact met ons op en krijg snel hulp."
 
 #: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
-#: src/app/(public)/[locale]/help/page.tsx
-msgctxt "tUmaeD"
-msgid "All articles"
-msgstr "Alle artikelen"
-
-#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
 #: src/app/(public)/[locale]/legal/[[...slug]]/page.tsx
 msgctxt "ZdCdo5"
 msgid "Last updated: {date}"
@@ -1927,6 +1921,16 @@ msgstr "Helpcentrum"
 msgctxt "PPnkha"
 msgid "Find answers to all your Virtbase-related questions in one place with our comprehensive Help Center."
 msgstr "Vind antwoorden op al uw Virtbase-gerelateerde vragen op één plek met ons uitgebreide Helpcentrum."
+
+#: src/app/(public)/[locale]/help/page.tsx
+msgctxt "VQvikz"
+msgid "How can we help today?"
+msgstr "Hoe kunnen we u vandaag helpen?"
+
+#: src/app/(public)/[locale]/help/page.tsx
+msgctxt "yN3mpX"
+msgid "Popular articles"
+msgstr "Populaire artikelen"
 
 #: src/app/(public)/[locale]/not-found.tsx
 #: src/app/global-not-found.tsx
@@ -2098,6 +2102,7 @@ msgstr "Dashboard"
 #: src/app/app.virtbase.com/[locale]/(dashboard)/servers/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
+#: src/features/help/categories.tsx
 #: src/ui/app-sidebar-menu.tsx
 msgctxt "QOxktD"
 msgid "Servers"
@@ -2280,6 +2285,7 @@ msgstr "Geavanceerd"
 
 #: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/backups/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/help/categories.tsx
 #: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/servers/components/backups/backups-card.tsx
 #: src/features/servers/components/server-nav-view.tsx
@@ -6537,6 +6543,71 @@ msgstr "Verloopt (wordt verwijderd {date})"
 msgctxt "Dnob31"
 msgid "Operational"
 msgstr "Operationeel"
+
+#: src/features/help/categories.tsx
+msgctxt "EKtClK"
+msgid "Getting started"
+msgstr "Aan de slag"
+
+#: src/features/help/categories.tsx
+msgctxt "raXuB5"
+msgid "Learn the basics of Virtbase and set up your first server."
+msgstr "Leer de basis van Virtbase kennen en richt uw eerste server in."
+
+#: src/features/help/categories.tsx
+msgctxt "QHvEJ1"
+msgid "Install an operating system, renew your server and manage it day to day."
+msgstr "Installeer een besturingssysteem, verleng uw server en beheer hem dagelijks."
+
+#: src/features/help/categories.tsx
+msgctxt "e85NWi"
+msgid "Back up your servers and restore them when something goes wrong."
+msgstr "Maak back-ups van uw servers en zet ze terug als er iets misgaat."
+
+#: src/features/help/categories.tsx
+msgctxt "ruOElN"
+msgid "Networking & firewall"
+msgstr "Netwerk & firewall"
+
+#: src/features/help/categories.tsx
+msgctxt "BwC7f3"
+msgid "Firewall rules, DDoS protection and your server's network."
+msgstr "Firewallregels, DDoS-bescherming en het netwerk van uw server."
+
+#: src/features/help/categories.tsx
+msgctxt "CZt8cl"
+msgid "Billing & payments"
+msgstr "Facturatie & betalingen"
+
+#: src/features/help/categories.tsx
+msgctxt "TLJY6W"
+msgid "Renewals, invoices and payment methods."
+msgstr "Verlengingen, facturen en betaalmethoden."
+
+#: src/features/help/categories.tsx
+msgctxt "jLghsC"
+msgid "Account & security"
+msgstr "Account & beveiliging"
+
+#: src/features/help/categories.tsx
+msgctxt "lv8UpE"
+msgid "Keep your account secure, and manage or delete it."
+msgstr "Houd uw account veilig, en beheer of verwijder het."
+
+#: src/features/help/categories.tsx
+msgctxt "CrEuJp"
+msgid "API & integrations"
+msgstr "API & integraties"
+
+#: src/features/help/categories.tsx
+msgctxt "qaMjdy"
+msgid "Automate Virtbase with the public API and manage it from Discord."
+msgstr "Automatiseer Virtbase met de openbare API en beheer het vanuit Discord."
+
+#: src/features/help/components/help-breadcrumb.tsx
+msgctxt "9g2jKz"
+msgid "All categories"
+msgstr "Alle categorieën"
 
 #: src/features/invoices/components/invoices-table/columns.tsx
 msgctxt "ijDMrP"

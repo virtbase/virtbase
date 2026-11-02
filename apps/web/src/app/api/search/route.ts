@@ -16,10 +16,31 @@
  */
 
 import { createFromSource } from "fumadocs-core/search/server";
+import { hasLocale } from "next-intl";
 
+import { getHelpCategory } from "@/features/help/categories.tsx";
+import { defaultLocale, locales } from "@/i18n/config.ts";
 import { helpArticles } from "@/lib/source.ts";
 
 export const { GET } = createFromSource(helpArticles, {
+  // A result's breadcrumb is the article's primary category. Fumadocs would
+  // otherwise derive one from a page tree the help center does not have, and
+  // label every result "Docs".
+  buildIndex: async (page) => {
+    const locale = hasLocale(locales, page.locale)
+      ? page.locale
+      : defaultLocale;
+    const category = await getHelpCategory(page.data.categories[0], locale);
+
+    return {
+      id: page.url,
+      url: page.url,
+      title: page.data.title,
+      description: page.data.description,
+      structuredData: page.data.structuredData,
+      breadcrumbs: category ? [category.title] : [],
+    };
+  },
   localeMap: {
     de: { language: "german" },
     en: { language: "english" },

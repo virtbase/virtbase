@@ -15,9 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { Grid } from "@virtbase/ui/grid";
 import { RootProvider } from "fumadocs-ui/provider/next";
-import { FakeSearchButton } from "@/ui/fumadocs/fake-search-button.tsx";
 import HelpSearch from "@/ui/fumadocs/help-search.tsx";
 
 export default function HelpLayout({
@@ -36,15 +34,6 @@ export default function HelpLayout({
         enabled: false,
       }}
     >
-      <div className="relative -mt-14 overflow-hidden">
-        <Grid
-          cellSize={80}
-          className="mask-[radial-gradient(70%_50%_at_50%_60%,black_30%,transparent)] mx-auto max-w-7xl max-sm:opacity-50"
-        />
-        <div className="relative mx-auto mt-6 w-full max-w-5xl px-3 pt-24 pb-12 lg:px-4 xl:px-0">
-          <FakeSearchButton className="bg-background" />
-        </div>
-      </div>
       {children}
     </RootProvider>
   );

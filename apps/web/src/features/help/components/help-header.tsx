@@ -1,0 +1,42 @@
+/*
+ * Copyright (C) 2026 BeastHost UG (haftungsbeschränkt)
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU Affero General Public License as published
+ * by the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU Affero General Public License for more details.
+ *
+ * You should have received a copy of the GNU Affero General Public License
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+ */
+
+import { Grid } from "@virtbase/ui/grid";
+import { FakeSearchButton } from "@/ui/fumadocs/fake-search-button.tsx";
+
+/**
+ * The band at the top of every help page: the grid backdrop and the search
+ * field, with the help center's greeting above it on the index.
+ */
+export function HelpHeader({ title }: { title?: string }) {
+  return (
+    <div className="relative -mt-14 overflow-hidden">
+      <Grid
+        cellSize={80}
+        className="mask-[radial-gradient(70%_50%_at_50%_60%,black_30%,transparent)] mx-auto max-w-7xl max-sm:opacity-50"
+      />
+      <div className="relative mx-auto mt-6 w-full max-w-5xl px-3 pt-24 pb-12 lg:px-4 xl:px-0">
+        {title && (
+          <h1 className="mb-6 font-medium text-foreground text-xl sm:text-3xl">
+            {title}
+          </h1>
+        )}
+        <FakeSearchButton />
+      </div>
+    </div>
+  );
+}

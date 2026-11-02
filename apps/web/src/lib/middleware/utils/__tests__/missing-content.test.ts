@@ -53,6 +53,23 @@ describe("isMissingContent", () => {
     );
   });
 
+  test("knows the help categories", () => {
+    expect(
+      isMissingContent(content, "en", ["help", "category", "backups"]),
+    ).toBe(false);
+    expect(isMissingContent(content, "en", ["help", "category", "nope"])).toBe(
+      true,
+    );
+    expect(isMissingContent(content, "en", ["help", "category"])).toBe(true);
+    expect(
+      isMissingContent(content, "en", ["help", "category", "backups", "x"]),
+    ).toBe(true);
+  });
+
+  test("reports any other path under the help center", () => {
+    expect(isMissingContent(content, "en", ["help", "nope"])).toBe(true);
+  });
+
   test("leaves the home page and section indexes to their routes", () => {
     expect(isMissingContent(content, "en", [])).toBe(false);
     expect(isMissingContent(content, "en", ["legal"])).toBe(false);

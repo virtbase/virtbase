@@ -16,6 +16,7 @@
  */
 
 import { defaultLocale } from "@/i18n/config.ts";
+import { isHelpCategory } from "@/lib/help-categories.ts";
 
 /** @internal */
 export const ROUTED_SEGMENTS: ReadonlySet<string> = new Set([
@@ -61,11 +62,14 @@ export function isMissingContent(
 
   if (first === "help") {
     const [kind, ...slugs] = rest;
-    return (
-      kind === "article" &&
-      slugs.length > 0 &&
-      !hasDocument(content.help, locale, slugs)
-    );
+    if (kind === undefined) return false;
+    if (kind === "article") {
+      return slugs.length > 0 && !hasDocument(content.help, locale, slugs);
+    }
+    if (kind === "category") {
+      return !(slugs.length === 1 && isHelpCategory(slugs[0]));
+    }
+    return true;
   }
 
   if (ROUTED_SEGMENTS.has(first)) {

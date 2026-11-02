@@ -54,7 +54,10 @@ export default function HelpSearch(props: SharedProps) {
           <SearchDialogInput />
           <SearchDialogClose />
         </SearchDialogHeader>
-        <SearchDialogList items={query.data !== "empty" ? query.data : null} />
+        <SearchDialogList
+          className="[&_.prose]:prose-neutral dark:[&_.prose]:prose-invert"
+          items={query.data !== "empty" ? query.data : null}
+        />
       </SearchDialogContent>
       <SearchDialogFooter>{/* footer items */}</SearchDialogFooter>
     </SearchDialog>

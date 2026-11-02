@@ -25,6 +25,25 @@ to `en` at render time (`fallbackLanguage`), and is left out of that locale's
 `hreflang` map and sitemap entries, so crawlers are never pointed at a URL that
 serves the wrong language.
 
+## Help categories
+
+A help article names its categories in its frontmatter. The first one is its
+home: the article's breadcrumb links there. `popular` puts it on the help
+center's list of popular articles, ranked in ascending order:
+
+```yaml
+categories: [backups, servers]
+popular: 1
+```
+
+The categories themselves - slug and order - are listed in
+`apps/web/src/lib/help-categories.ts`, and their titles, descriptions and icons
+in `apps/web/src/features/help/categories.tsx`, translated like any other
+interface text. Each is served at `/<locale>/help/category/<slug>`.
+
+Every translation carries the same `categories` and `popular` as its `en`
+source, and every category needs at least one article; a test fails otherwise.
+
 ## Images
 
 An image used by a document lives next to it, in an `images` directory of the
