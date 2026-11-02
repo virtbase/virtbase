@@ -166,6 +166,8 @@ const nextConfig: NextConfig = {
     "/*": [
       "../../node_modules/.bun/jose@*/node_modules/jose/dist/browser/**/*",
     ],
+    "/api/docs": ["./src/app/api/docs/**/*.md"],
+    "/api/openapi.json": ["./src/app/api/docs/**/*.md"],
   },
   poweredByHeader: false,
   redirects: async () => [
@@ -214,6 +216,19 @@ const nextConfig: NextConfig = {
         },
       ],
       destination: "/api/v1/servers/:path*",
+    },
+    // A public page's URL with `.md` appended is its Markdown form, for agents
+    // that cannot send `Accept: text/markdown`. The proxy never sees these
+    // paths (they contain a dot), so the route answers unknown pages itself.
+    {
+      source: `/:locale(${routing.locales.join("|")}).md`,
+      has: [{ type: "host", value: new URL(PUBLIC_DOMAIN).hostname }],
+      destination: "/llms.mdx/:locale",
+    },
+    {
+      source: `/:locale(${routing.locales.join("|")})/:path*.md`,
+      has: [{ type: "host", value: new URL(PUBLIC_DOMAIN).hostname }],
+      destination: "/llms.mdx/:locale/:path*",
     },
   ],
   serverExternalPackages: ["pdfkit"],

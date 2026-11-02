@@ -31,6 +31,7 @@ export function constructMetadata({
   manifest,
   keywords,
   languages,
+  markdownUrl,
 }: {
   title?: string;
   fullTitle?: string;
@@ -48,6 +49,11 @@ export function constructMetadata({
    * stays self-referential, which is what the hreflang spec requires.
    */
   languages?: Record<string, string> | null;
+  /**
+   * The page's Markdown form, announced to agents as
+   * `<link rel="alternate" type="text/markdown">`.
+   */
+  markdownUrl?: string;
 } = {}): Metadata {
   return {
     title:
@@ -97,6 +103,7 @@ export function constructMetadata({
       alternates: {
         canonical: url || canonicalUrl,
         ...(languages && { languages }),
+        ...(markdownUrl && { types: { "text/markdown": markdownUrl } }),
       },
     }),
     robots: {

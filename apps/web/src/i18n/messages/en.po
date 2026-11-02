@@ -1672,6 +1672,17 @@ msgctxt "0H2hdf"
 msgid "No results."
 msgstr ""
 
+#: src/app/(public)/[locale]/authors/[slug]/page.tsx
+msgctxt "IetDHR"
+msgid "Help articles written by {name}."
+msgstr "Help articles written by {name}."
+
+#: src/app/(public)/[locale]/authors/[slug]/page.tsx
+#: src/features/markdown/page-markdown.ts
+msgctxt "DZ0V4V"
+msgid "Help articles"
+msgstr "Help articles"
+
 #: src/app/(public)/[locale]/checkout/[id]/page.tsx
 msgctxt "VX2yLr"
 msgid "Configure {name}"
@@ -1871,6 +1882,7 @@ msgstr ""
 
 #: src/app/(public)/[locale]/contact/page.tsx
 #: src/features/account/components/api-keys/api-keys-card.tsx
+#: src/features/markdown/llms-txt.ts
 #: src/ui/footer.tsx
 msgctxt "yKOyCk"
 msgid "API Documentation"
@@ -1897,31 +1909,25 @@ msgid "Contact us and get quick help."
 msgstr ""
 
 #: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
-#: src/app/(public)/[locale]/help/page.tsx
-msgctxt "tUmaeD"
-msgid "All articles"
-msgstr ""
-
-#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
-#: src/app/(public)/[locale]/legal/[[...slug]]/page.tsx
-msgctxt "ZdCdo5"
-msgid "Last updated: {date}"
-msgstr ""
-
-#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
 msgctxt "IAMn0B"
 msgid "Still have questions? Contact us ↗"
 msgstr ""
 
 #: src/app/(public)/[locale]/help/page.tsx
-#: src/ui/footer.tsx
-msgctxt "HtSDyc"
-msgid "Help Center"
-msgstr ""
+msgctxt "VQvikz"
+msgid "How can we help today?"
+msgstr "How can we help today?"
 
 #: src/app/(public)/[locale]/help/page.tsx
-msgctxt "PPnkha"
-msgid "Find answers to all your Virtbase-related questions in one place with our comprehensive Help Center."
+#: src/features/markdown/page-markdown.ts
+msgctxt "yN3mpX"
+msgid "Popular articles"
+msgstr "Popular articles"
+
+#: src/app/(public)/[locale]/legal/[[...slug]]/page.tsx
+#: src/features/authors/components/author-byline.tsx
+msgctxt "ZdCdo5"
+msgid "Last updated: {date}"
 msgstr ""
 
 #: src/app/(public)/[locale]/not-found.tsx
@@ -2094,6 +2100,7 @@ msgstr ""
 #: src/app/app.virtbase.com/[locale]/(dashboard)/servers/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
+#: src/features/help/categories.tsx
 #: src/ui/app-sidebar-menu.tsx
 msgctxt "QOxktD"
 msgid "Servers"
@@ -2276,6 +2283,7 @@ msgstr ""
 
 #: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/backups/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/help/categories.tsx
 #: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/servers/components/backups/backups-card.tsx
 #: src/features/servers/components/server-nav-view.tsx
@@ -4982,6 +4990,7 @@ msgid "Built by"
 msgstr ""
 
 #: src/features/admin/components/integrations/integration-detail.tsx
+#: src/features/authors/components/author-header.tsx
 msgctxt "JkLHGw"
 msgid "Website"
 msgstr ""
@@ -6268,6 +6277,20 @@ msgctxt "xl27nc"
 msgid "Reset Password"
 msgstr ""
 
+#: src/features/authors/components/author-byline.tsx
+msgctxt "UuSBra"
+msgid "Written by <names></names>"
+msgstr "Written by <names></names>"
+
+#: src/features/authors/components/author-header.tsx
+#: src/features/help/metadata.ts
+#: src/features/markdown/llms-txt.ts
+#: src/features/markdown/page-markdown.ts
+#: src/ui/footer.tsx
+msgctxt "HtSDyc"
+msgid "Help Center"
+msgstr ""
+
 #: src/features/checkout/components/checkout-auth-wrapper.tsx
 msgctxt "jUKaDx"
 msgid "Authentication required"
@@ -6534,6 +6557,87 @@ msgctxt "Dnob31"
 msgid "Operational"
 msgstr ""
 
+#: src/features/help/categories.tsx
+msgctxt "EKtClK"
+msgid "Getting started"
+msgstr "Getting started"
+
+#: src/features/help/categories.tsx
+msgctxt "raXuB5"
+msgid "Learn the basics of Virtbase and set up your first server."
+msgstr "Learn the basics of Virtbase and set up your first server."
+
+#: src/features/help/categories.tsx
+msgctxt "QHvEJ1"
+msgid "Install an operating system, renew your server and manage it day to day."
+msgstr "Install an operating system, renew your server and manage it day to day."
+
+#: src/features/help/categories.tsx
+msgctxt "e85NWi"
+msgid "Back up your servers and restore them when something goes wrong."
+msgstr "Back up your servers and restore them when something goes wrong."
+
+#: src/features/help/categories.tsx
+msgctxt "ruOElN"
+msgid "Networking & firewall"
+msgstr "Networking & firewall"
+
+#: src/features/help/categories.tsx
+msgctxt "BwC7f3"
+msgid "Firewall rules, DDoS protection and your server's network."
+msgstr "Firewall rules, DDoS protection and your server's network."
+
+#: src/features/help/categories.tsx
+msgctxt "CZt8cl"
+msgid "Billing & payments"
+msgstr "Billing & payments"
+
+#: src/features/help/categories.tsx
+msgctxt "TLJY6W"
+msgid "Renewals, invoices and payment methods."
+msgstr "Renewals, invoices and payment methods."
+
+#: src/features/help/categories.tsx
+msgctxt "jLghsC"
+msgid "Account & security"
+msgstr "Account & security"
+
+#: src/features/help/categories.tsx
+msgctxt "lv8UpE"
+msgid "Keep your account secure, and manage or delete it."
+msgstr "Keep your account secure, and manage or delete it."
+
+#: src/features/help/categories.tsx
+msgctxt "CrEuJp"
+msgid "API & integrations"
+msgstr "API & integrations"
+
+#: src/features/help/categories.tsx
+msgctxt "qaMjdy"
+msgid "Automate Virtbase with the public API and manage it from Discord."
+msgstr "Automate Virtbase with the public API and manage it from Discord."
+
+#: src/features/help/components/help-breadcrumb.tsx
+msgctxt "9g2jKz"
+msgid "All categories"
+msgstr "All categories"
+
+#: src/features/help/components/related-articles.tsx
+#: src/features/markdown/page-markdown.ts
+msgctxt "hiWuJZ"
+msgid "Related articles"
+msgstr "Related articles"
+
+#: src/features/help/metadata.ts
+msgctxt "nDZMSK"
+msgid "Guides and answers for your Virtbase servers: {topics}."
+msgstr "Guides and answers for your Virtbase servers: {topics}."
+
+#: src/features/help/metadata.ts
+msgctxt "4zowvV"
+msgid "Step-by-step guides and answers from the Virtbase Help Center."
+msgstr "Step-by-step guides and answers from the Virtbase Help Center."
+
 #: src/features/invoices/components/invoices-table/columns.tsx
 msgctxt "ijDMrP"
 msgid "Invoice number"
@@ -6556,6 +6660,7 @@ msgstr ""
 
 #: src/features/landing/components/advantage-item.tsx
 #: src/features/landing/components/feature.tsx
+#: src/ui/mdx/markdown-components.tsx
 msgctxt "TdTXXf"
 msgid "Learn more"
 msgstr ""
@@ -6698,6 +6803,17 @@ msgstr ""
 #: src/features/servers/components/server-stats-card.tsx
 msgctxt "yCCio2"
 msgid "Last reboot"
+msgstr ""
+
+#: src/features/markdown/llms-txt.ts
+msgctxt "DeMYQk"
+msgid "Every page linked here is also available as Markdown: append .md to its URL, or request it with the header Accept: text/markdown."
+msgstr "Every page linked here is also available as Markdown: append .md to its URL, or request it with the header Accept: text/markdown."
+
+#: src/features/markdown/llms-txt.ts
+#: src/ui/footer.tsx
+msgctxt "7oFrM6"
+msgid "Legal"
 msgstr ""
 
 #: src/features/servers/components/advanced/advanced-bios-card.tsx
@@ -8626,11 +8742,6 @@ msgstr ""
 #: src/ui/footer.tsx
 msgctxt "iby7Fe"
 msgid "Data center"
-msgstr ""
-
-#: src/ui/footer.tsx
-msgctxt "7oFrM6"
-msgid "Legal"
 msgstr ""
 
 #: src/ui/footer.tsx

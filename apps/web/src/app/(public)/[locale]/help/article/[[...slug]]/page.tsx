@@ -15,36 +15,31 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { cn } from "@virtbase/ui";
-import {
-  Breadcrumb,
-  BreadcrumbItem,
-  BreadcrumbLink,
-  BreadcrumbList,
-  BreadcrumbPage,
-  BreadcrumbSeparator,
-} from "@virtbase/ui/breadcrumb";
 import { Separator } from "@virtbase/ui/separator";
-import {
-  constructMetadata,
-  constructOpengraphUrl,
-  PUBLIC_DOMAIN,
-} from "@virtbase/utils";
-import { ImageZoom } from "fumadocs-ui/components/image-zoom";
-import { Step, Steps } from "fumadocs-ui/components/steps";
-import defaultMdxComponents from "fumadocs-ui/mdx";
+import { constructMetadata, PUBLIC_DOMAIN } from "@virtbase/utils";
 import type { Metadata } from "next";
 import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
-import { getExtracted, getFormatter, getLocale } from "next-intl/server";
+import { getExtracted, getLocale } from "next-intl/server";
+import { getAuthors } from "@/features/authors/authors.ts";
+import { AuthorByline } from "@/features/authors/components/author-byline.tsx";
+import {
+  getArticleImage,
+  getRelatedArticles,
+} from "@/features/help/articles.ts";
+import { getHelpCategory } from "@/features/help/categories.tsx";
+import { HelpArticleJsonLd } from "@/features/help/components/help-article-json-ld.tsx";
+import { HelpBreadcrumb } from "@/features/help/components/help-breadcrumb.tsx";
+import { HelpHeader } from "@/features/help/components/help-header.tsx";
+import { RelatedArticles } from "@/features/help/components/related-articles.tsx";
 import { defaultLocale } from "@/i18n/config.ts";
 import { IntlLink } from "@/i18n/navigation.public.ts";
 import { constructAlternateLanguages } from "@/lib/hreflang.ts";
+import { markdownUrl } from "@/lib/markdown-url.ts";
 import { getDocumentLocales, helpArticles } from "@/lib/source.ts";
-import { HelpHint } from "@/ui/fumadocs/help-hint.tsx";
 import { TableOfContents } from "@/ui/fumadocs/table-of-contents.tsx";
-import { Video } from "@/ui/fumadocs/video.tsx";
-import { BreadcrumbJsonLd } from "@/ui/seo/breadcrumb-json-ld.tsx";
+import { helpMdxComponents } from "@/ui/mdx/article-components.tsx";
+import { Prose } from "@/ui/prose.tsx";
 
 export async function generateStaticParams() {
   return helpArticles.getPages().map((page) => ({
@@ -88,12 +83,8 @@ export async function generateMetadata({
     canonicalUrl:
       languages[locale] ?? languages["x-default"] ?? PUBLIC_DOMAIN + page.url,
     languages,
-    image: constructOpengraphUrl({
-      title,
-      subtitle: description,
-      slug: page.url,
-      theme: "dark",
-    }),
+    markdownUrl: markdownUrl(locale, `/help/article/${page.slugs.join("/")}`),
+    image: getArticleImage(page),
     keywords: page.data.keywords,
   });
 }
@@ -119,92 +110,55 @@ export default async function HelpArticlePage({
   const { title, description, lastModified } = page.data;
 
   const t = await getExtracted();
-  const format = await getFormatter();
+
+  const category = await getHelpCategory(page.data.categories[0]);
+  const authors = getAuthors(page.data.authors, locale);
 
   return (
-    <main className="relative border-border border-t">
-      <div className="mx-auto grid w-full max-w-5xl grid-cols-4 gap-10 px-3 py-10 lg:px-4 xl:px-0">
-        <div className="col-span-4 flex flex-col space-y-8 sm:col-span-3 sm:pr-10">
-          <Breadcrumb className="text-muted-foreground text-sm">
-            <BreadcrumbList>
-              <BreadcrumbItem>
-                <BreadcrumbLink asChild>
-                  <IntlLink href="/help" prefetch={false}>
-                    {t("All articles")}
-                  </IntlLink>
-                </BreadcrumbLink>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator />
-              <BreadcrumbItem>
-                <BreadcrumbPage className="text-muted-foreground">
-                  {title}
-                </BreadcrumbPage>
-              </BreadcrumbItem>
-            </BreadcrumbList>
-          </Breadcrumb>
-          <div className="flex flex-col space-y-4">
-            <h1 className="font-medium text-3xl leading-snug sm:text-4xl">
-              {title}
-            </h1>
-            <p className="text-muted-foreground">{description}</p>
-            <div className="flex items-center space-x-3">
-              {lastModified && (
-                <time
-                  dateTime={lastModified.toISOString()}
-                  className="font-light text-muted-foreground text-sm"
-                >
-                  {t("Last updated: {date}", {
-                    date: format.dateTime(lastModified),
-                  })}
-                </time>
-              )}
-            </div>
-          </div>
-          <article
-            className={cn(
-              "prose prose-neutral dark:prose-invert prose-headings:relative w-full max-w-none prose-headings:scroll-mt-20",
-              "prose-a:font-medium prose-a:text-muted-foreground prose-thead:text-lg prose-a:underline-offset-4 transition-all prose-a:hover:text-foreground",
-              "prose-headings:prose-a:text-foreground prose-headings:prose-a:no-underline",
-            )}
-          >
-            <MDX
-              components={{
-                ...defaultMdxComponents,
-                Steps,
-                Step,
-                img: ({ src, sizes, ...props }) => (
-                  <ImageZoom
-                    className="rounded-lg border border-border"
-                    src={src as string}
-                    {...(sizes === undefined ? {} : { sizes })}
-                    {...props}
-                  />
-                ),
-                Hint: HelpHint,
-                Video,
-              }}
-            />
-          </article>
-          <Separator />
-        </div>
-        <div className="sticky top-20 col-span-1 hidden self-start sm:block">
-          <TableOfContents items={page.data.toc} />
-          <Separator className="mt-10 mb-5" />
-          <IntlLink
-            href="/contact"
-            className="text-muted-foreground text-xs transition-colors hover:text-foreground/80"
-            prefetch={false}
-          >
-            {t("Still have questions? Contact us ↗")}
-          </IntlLink>
-        </div>
-      </div>
-      <BreadcrumbJsonLd
-        items={[
-          { name: t("All articles"), url: `${PUBLIC_DOMAIN}/${locale}/help` },
-          { name: title },
-        ]}
+    <>
+      <HelpHeader />
+      <HelpArticleJsonLd
+        url={PUBLIC_DOMAIN + page.url}
+        image={PUBLIC_DOMAIN + getArticleImage(page)}
+        locale={locale}
+        title={title}
+        description={description}
+        publishedAt={page.data.publishedAt}
+        lastModified={lastModified}
+        authors={authors}
       />
-    </main>
+      <main className="relative border-border border-t">
+        <div className="mx-auto grid w-full max-w-5xl grid-cols-4 gap-10 px-3 py-10 lg:px-4 xl:px-0">
+          <div className="col-span-4 flex flex-col space-y-8 sm:col-span-3 sm:pr-10">
+            <HelpBreadcrumb category={category} title={title} />
+            <div className="flex flex-col space-y-4">
+              <h1 className="font-medium text-3xl leading-snug sm:text-4xl">
+                {title}
+              </h1>
+              <p className="text-muted-foreground">{description}</p>
+              <AuthorByline authors={authors} lastModified={lastModified} />
+            </div>
+            <Prose>
+              <MDX components={helpMdxComponents} />
+            </Prose>
+            <Separator />
+            <RelatedArticles
+              articles={getRelatedArticles(locale, page.data.related)}
+            />
+          </div>
+          <div className="sticky top-20 col-span-1 hidden self-start sm:block">
+            <TableOfContents items={page.data.toc} />
+            <Separator className="mt-10 mb-5" />
+            <IntlLink
+              href="/contact"
+              className="text-muted-foreground text-xs transition-colors hover:text-foreground/80"
+              prefetch={false}
+            >
+              {t("Still have questions? Contact us ↗")}
+            </IntlLink>
+          </div>
+        </div>
+      </main>
+    </>
   );
 }

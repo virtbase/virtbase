@@ -17,6 +17,7 @@
 
 "use client";
 
+import type { SortedResult } from "fumadocs-core/search";
 import { useDocsSearch } from "fumadocs-core/search/client";
 import type { SharedProps } from "fumadocs-ui/components/dialog/search";
 import {
@@ -32,7 +33,14 @@ import {
 } from "fumadocs-ui/components/dialog/search";
 import { useLocale } from "next-intl";
 
-export default function HelpSearch(props: SharedProps) {
+export type HelpSearchProps = SharedProps & {
+  popular?: SortedResult[];
+};
+
+export default function HelpSearch({
+  popular = [],
+  ...props
+}: HelpSearchProps) {
   const locale = useLocale();
   const { search, setSearch, query } = useDocsSearch({
     type: "fetch",
@@ -54,7 +62,16 @@ export default function HelpSearch(props: SharedProps) {
           <SearchDialogInput />
           <SearchDialogClose />
         </SearchDialogHeader>
-        <SearchDialogList items={query.data !== "empty" ? query.data : null} />
+        <SearchDialogList
+          className="[&_.prose]:prose-neutral dark:[&_.prose]:prose-invert"
+          items={
+            search.length === 0
+              ? popular
+              : query.data !== "empty"
+                ? query.data
+                : null
+          }
+        />
       </SearchDialogContent>
       <SearchDialogFooter>{/* footer items */}</SearchDialogFooter>
     </SearchDialog>

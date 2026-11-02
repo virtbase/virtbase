@@ -28,6 +28,9 @@ test.describe("meta", () => {
       const response = await page.goto(url, { waitUntil: "commit" });
       expect(response?.status()).toBe(200);
       expect(response?.headers()["content-type"]).toContain("text/plain");
+      expect(await response?.text()).toContain(
+        "User-agent: *\nContent-Signal: search=yes, ai-input=yes, ai-train=no",
+      );
     }
   });
 

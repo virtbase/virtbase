@@ -15,7 +15,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { ImageZoom } from "fumadocs-ui/components/image-zoom";
 import { Step, Steps } from "fumadocs-ui/components/steps";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { ComponentProps, ReactNode } from "react";
@@ -38,6 +37,7 @@ import {
   StatsBand,
 } from "@/features/landing/components/stats-band.tsx";
 import { BlockWrapper } from "@/ui/block-wrapper.tsx";
+import { MdxImage } from "@/ui/mdx/mdx-image.tsx";
 import { Prose } from "@/ui/prose.tsx";
 
 /**
@@ -74,14 +74,7 @@ export const marketingMdxComponents = {
   ...defaultMdxComponents,
   Steps,
   Step,
-  img: ({ src, sizes, ...props }: ComponentProps<"img">) => (
-    <ImageZoom
-      className="rounded-lg border border-border"
-      src={src as string}
-      {...(sizes === undefined ? {} : { sizes })}
-      {...props}
-    />
-  ),
+  img: MdxImage,
   // A marketing page's `#` heading is its hero headline, not a section anyone
   // deep-links to. Fumadocs' anchored heading renders a flex row with a
   // copy-link button, which breaks the centered hero — so keep `h1` plain and

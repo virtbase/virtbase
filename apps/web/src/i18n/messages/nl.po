@@ -1676,6 +1676,17 @@ msgctxt "0H2hdf"
 msgid "No results."
 msgstr "Geen resultaten."
 
+#: src/app/(public)/[locale]/authors/[slug]/page.tsx
+msgctxt "IetDHR"
+msgid "Help articles written by {name}."
+msgstr "Helpartikelen geschreven door {name}."
+
+#: src/app/(public)/[locale]/authors/[slug]/page.tsx
+#: src/features/markdown/page-markdown.ts
+msgctxt "DZ0V4V"
+msgid "Help articles"
+msgstr "Helpartikelen"
+
 #: src/app/(public)/[locale]/checkout/[id]/page.tsx
 msgctxt "VX2yLr"
 msgid "Configure {name}"
@@ -1875,6 +1886,7 @@ msgstr "Bekijk Helpcentrum"
 
 #: src/app/(public)/[locale]/contact/page.tsx
 #: src/features/account/components/api-keys/api-keys-card.tsx
+#: src/features/markdown/llms-txt.ts
 #: src/ui/footer.tsx
 msgctxt "yKOyCk"
 msgid "API Documentation"
@@ -1901,32 +1913,26 @@ msgid "Contact us and get quick help."
 msgstr "Neem contact met ons op en krijg snel hulp."
 
 #: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
-#: src/app/(public)/[locale]/help/page.tsx
-msgctxt "tUmaeD"
-msgid "All articles"
-msgstr "Alle artikelen"
-
-#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
-#: src/app/(public)/[locale]/legal/[[...slug]]/page.tsx
-msgctxt "ZdCdo5"
-msgid "Last updated: {date}"
-msgstr "Laatst bijgewerkt: {date}"
-
-#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
 msgctxt "IAMn0B"
 msgid "Still have questions? Contact us ↗"
 msgstr "Heeft u nog vragen? Neem contact met ons op ↗"
 
 #: src/app/(public)/[locale]/help/page.tsx
-#: src/ui/footer.tsx
-msgctxt "HtSDyc"
-msgid "Help Center"
-msgstr "Helpcentrum"
+msgctxt "VQvikz"
+msgid "How can we help today?"
+msgstr "Hoe kunnen we u vandaag helpen?"
 
 #: src/app/(public)/[locale]/help/page.tsx
-msgctxt "PPnkha"
-msgid "Find answers to all your Virtbase-related questions in one place with our comprehensive Help Center."
-msgstr "Vind antwoorden op al uw Virtbase-gerelateerde vragen op één plek met ons uitgebreide Helpcentrum."
+#: src/features/markdown/page-markdown.ts
+msgctxt "yN3mpX"
+msgid "Popular articles"
+msgstr "Populaire artikelen"
+
+#: src/app/(public)/[locale]/legal/[[...slug]]/page.tsx
+#: src/features/authors/components/author-byline.tsx
+msgctxt "ZdCdo5"
+msgid "Last updated: {date}"
+msgstr "Laatst bijgewerkt: {date}"
 
 #: src/app/(public)/[locale]/not-found.tsx
 #: src/app/global-not-found.tsx
@@ -2098,6 +2104,7 @@ msgstr "Dashboard"
 #: src/app/app.virtbase.com/[locale]/(dashboard)/servers/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
+#: src/features/help/categories.tsx
 #: src/ui/app-sidebar-menu.tsx
 msgctxt "QOxktD"
 msgid "Servers"
@@ -2280,6 +2287,7 @@ msgstr "Geavanceerd"
 
 #: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/backups/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
+#: src/features/help/categories.tsx
 #: src/features/landing/components/discord-bot-demo.tsx
 #: src/features/servers/components/backups/backups-card.tsx
 #: src/features/servers/components/server-nav-view.tsx
@@ -4986,6 +4994,7 @@ msgid "Built by"
 msgstr "Gemaakt door"
 
 #: src/features/admin/components/integrations/integration-detail.tsx
+#: src/features/authors/components/author-header.tsx
 msgctxt "JkLHGw"
 msgid "Website"
 msgstr "Website"
@@ -6272,6 +6281,20 @@ msgctxt "xl27nc"
 msgid "Reset Password"
 msgstr "Wachtwoord opnieuw instellen"
 
+#: src/features/authors/components/author-byline.tsx
+msgctxt "UuSBra"
+msgid "Written by <names></names>"
+msgstr "Geschreven door <names></names>"
+
+#: src/features/authors/components/author-header.tsx
+#: src/features/help/metadata.ts
+#: src/features/markdown/llms-txt.ts
+#: src/features/markdown/page-markdown.ts
+#: src/ui/footer.tsx
+msgctxt "HtSDyc"
+msgid "Help Center"
+msgstr "Helpcentrum"
+
 #: src/features/checkout/components/checkout-auth-wrapper.tsx
 msgctxt "jUKaDx"
 msgid "Authentication required"
@@ -6538,6 +6561,87 @@ msgctxt "Dnob31"
 msgid "Operational"
 msgstr "Operationeel"
 
+#: src/features/help/categories.tsx
+msgctxt "EKtClK"
+msgid "Getting started"
+msgstr "Aan de slag"
+
+#: src/features/help/categories.tsx
+msgctxt "raXuB5"
+msgid "Learn the basics of Virtbase and set up your first server."
+msgstr "Leer de basis van Virtbase kennen en richt uw eerste server in."
+
+#: src/features/help/categories.tsx
+msgctxt "QHvEJ1"
+msgid "Install an operating system, renew your server and manage it day to day."
+msgstr "Installeer een besturingssysteem, verleng uw server en beheer hem dagelijks."
+
+#: src/features/help/categories.tsx
+msgctxt "e85NWi"
+msgid "Back up your servers and restore them when something goes wrong."
+msgstr "Maak back-ups van uw servers en zet ze terug als er iets misgaat."
+
+#: src/features/help/categories.tsx
+msgctxt "ruOElN"
+msgid "Networking & firewall"
+msgstr "Netwerk & firewall"
+
+#: src/features/help/categories.tsx
+msgctxt "BwC7f3"
+msgid "Firewall rules, DDoS protection and your server's network."
+msgstr "Firewallregels, DDoS-bescherming en het netwerk van uw server."
+
+#: src/features/help/categories.tsx
+msgctxt "CZt8cl"
+msgid "Billing & payments"
+msgstr "Facturatie & betalingen"
+
+#: src/features/help/categories.tsx
+msgctxt "TLJY6W"
+msgid "Renewals, invoices and payment methods."
+msgstr "Verlengingen, facturen en betaalmethoden."
+
+#: src/features/help/categories.tsx
+msgctxt "jLghsC"
+msgid "Account & security"
+msgstr "Account & beveiliging"
+
+#: src/features/help/categories.tsx
+msgctxt "lv8UpE"
+msgid "Keep your account secure, and manage or delete it."
+msgstr "Houd uw account veilig, en beheer of verwijder het."
+
+#: src/features/help/categories.tsx
+msgctxt "CrEuJp"
+msgid "API & integrations"
+msgstr "API & integraties"
+
+#: src/features/help/categories.tsx
+msgctxt "qaMjdy"
+msgid "Automate Virtbase with the public API and manage it from Discord."
+msgstr "Automatiseer Virtbase met de openbare API en beheer het vanuit Discord."
+
+#: src/features/help/components/help-breadcrumb.tsx
+msgctxt "9g2jKz"
+msgid "All categories"
+msgstr "Alle categorieën"
+
+#: src/features/help/components/related-articles.tsx
+#: src/features/markdown/page-markdown.ts
+msgctxt "hiWuJZ"
+msgid "Related articles"
+msgstr "Gerelateerde artikelen"
+
+#: src/features/help/metadata.ts
+msgctxt "nDZMSK"
+msgid "Guides and answers for your Virtbase servers: {topics}."
+msgstr "Handleidingen en antwoorden voor uw Virtbase servers: {topics}."
+
+#: src/features/help/metadata.ts
+msgctxt "4zowvV"
+msgid "Step-by-step guides and answers from the Virtbase Help Center."
+msgstr "Stapsgewijze handleidingen en antwoorden uit het Virtbase Helpcentrum."
+
 #: src/features/invoices/components/invoices-table/columns.tsx
 msgctxt "ijDMrP"
 msgid "Invoice number"
@@ -6560,6 +6664,7 @@ msgstr "Betaald op"
 
 #: src/features/landing/components/advantage-item.tsx
 #: src/features/landing/components/feature.tsx
+#: src/ui/mdx/markdown-components.tsx
 msgctxt "TdTXXf"
 msgid "Learn more"
 msgstr "Meer informatie"
@@ -6703,6 +6808,17 @@ msgstr "Netwerk"
 msgctxt "yCCio2"
 msgid "Last reboot"
 msgstr "Laatste herstart"
+
+#: src/features/markdown/llms-txt.ts
+msgctxt "DeMYQk"
+msgid "Every page linked here is also available as Markdown: append .md to its URL, or request it with the header Accept: text/markdown."
+msgstr "Elke hier gelinkte pagina is ook beschikbaar als Markdown: voeg .md toe aan de URL, of vraag haar op met de header Accept: text/markdown."
+
+#: src/features/markdown/llms-txt.ts
+#: src/ui/footer.tsx
+msgctxt "7oFrM6"
+msgid "Legal"
+msgstr "Legaal"
 
 #: src/features/servers/components/advanced/advanced-bios-card.tsx
 msgctxt "4HNt5G"
@@ -8631,11 +8747,6 @@ msgstr "Bedrijf"
 msgctxt "iby7Fe"
 msgid "Data center"
 msgstr "Datacenter"
-
-#: src/ui/footer.tsx
-msgctxt "7oFrM6"
-msgid "Legal"
-msgstr "Legaal"
 
 #: src/ui/footer.tsx
 msgctxt "vx0nkZ"

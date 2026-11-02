@@ -15,35 +15,14 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { PUBLIC_DOMAIN } from "@virtbase/utils";
-import type { MetadataRoute } from "next";
-import { cacheLife, cacheTag } from "next/cache";
+import { getOpenApiDocument } from "../docs/openapi-document.ts";
 
-export default async function robots(): Promise<MetadataRoute.Robots> {
-  "use cache";
-
-  cacheTag("robots.txt");
-  cacheLife("max");
-
-  return {
-    rules: [
-      {
-        userAgent: "*",
-        allow: ["/", "/api/docs"],
-        disallow: [
-          "/api",
-          "/api/",
-          "*/checkout",
-          "*/checkout/",
-          "*/upsell",
-          "*/upsell/",
-        ],
-      },
-      {
-        userAgent: "nsa",
-        disallow: "/",
-      },
-    ],
-    sitemap: `${PUBLIC_DOMAIN}/sitemap.xml`,
-  };
+/**
+ * The public API's OpenAPI document, for tools and agents. The reference at
+ * `/api/docs` renders the same document.
+ */
+export async function GET() {
+  return Response.json(await getOpenApiDocument(), {
+    headers: { "Content-Type": "application/vnd.oai.openapi+json" },
+  });
 }

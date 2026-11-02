@@ -46,6 +46,9 @@
         "!**/__tests__/**!"
       ]
     },
+    "packages/content": {
+      "ignoreDependencies": ["fumadocs-core"]
+    },
     "packages/db": {
       "ignoreDependencies": ["@types/ws", "ws"]
     },

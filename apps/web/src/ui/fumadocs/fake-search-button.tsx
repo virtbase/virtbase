@@ -42,7 +42,7 @@ export function FakeSearchButton({
         aria-hidden="true"
         className="lucide lucide-search absolute inset-y-0 left-4 z-10 my-auto h-4 w-4 text-muted-foreground"
       />
-      <div className="w-full rounded-md border border-border bg-input/50 p-3 pl-12 text-left text-muted-foreground transition-colors group-active:bg-input">
+      <div className="w-full rounded-xl border border-border bg-background p-3 pl-12 text-left text-muted-foreground transition-[color,background-color,box-shadow] group-hover:bg-[color-mix(in_oklab,var(--color-accent)_50%,var(--color-background))] group-focus-visible:border-ring group-focus-visible:ring-[3px] group-focus-visible:ring-ring/50 group-active:bg-accent">
         {t("Search")}
       </div>
       <Kbd className="absolute inset-y-0 right-4 my-auto h-5 bg-transparent text-muted-foreground text-sm">

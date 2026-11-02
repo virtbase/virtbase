@@ -16,32 +16,73 @@
  */
 
 import { defineCollections, defineConfig } from "fumadocs-mdx/config";
-import lastModified from "fumadocs-mdx/plugins/last-modified";
+import lastModifiedPlugin from "fumadocs-mdx/plugins/last-modified";
 import * as z4 from "zod";
+import { HELP_CATEGORIES } from "./src/lib/help-categories.ts";
+
+const lastModified = z4.coerce.date().optional();
+
+/**
+ * Every document is also served as Markdown, to agents. `output: "function"`
+ * keeps the authored Markdown and leaves MDX components as components, which
+ * `ui/mdx/markdown-components.tsx` renders into Markdown of their own.
+ */
+const postprocess = {
+  // Fumadocs would append `[#anchor]` to every heading, noise to an agent.
+  includeProcessedMarkdown: { output: "function", headingIds: false },
+} as const;
 
 export const legalCollection = defineCollections({
   type: "doc",
   dir: "../../packages/content/legal",
+  postprocess,
   schema: z4.object({
     title: z4.string(),
     description: z4.string(),
+    lastModified,
   }),
 });
 
 export const helpArticleCollection = defineCollections({
   type: "doc",
   dir: "../../packages/content/help/articles",
+  postprocess,
   schema: z4.object({
     title: z4.string(),
     description: z4.string(),
-    category: z4.enum(["overview"]),
+    categories: z4.array(z4.enum(HELP_CATEGORIES)).min(1),
+    popular: z4.number().int().positive().optional(),
+    authors: z4.array(z4.string()).min(1),
+    related: z4.array(z4.string()).optional(),
+    publishedAt: z4.coerce.date().optional(),
     keywords: z4.array(z4.string()),
+    lastModified,
+  }),
+});
+
+export const authorCollection = defineCollections({
+  type: "doc",
+  dir: "../../packages/content/authors",
+  postprocess,
+  schema: z4.object({
+    name: z4.string(),
+    role: z4.string().optional(),
+    avatar: z4.string().startsWith("/").optional(),
+    links: z4
+      .object({
+        github: z4.url().optional(),
+        x: z4.url().optional(),
+        website: z4.url().optional(),
+      })
+      .optional(),
+    lastModified,
   }),
 });
 
 export const marketingCollection = defineCollections({
   type: "doc",
   dir: "../../packages/content/marketing",
+  postprocess,
   schema: z4.object({
     /**
      * The `<title>` of the page. Not rendered — the visible heading is the
@@ -51,9 +92,10 @@ export const marketingCollection = defineCollections({
     /** The meta description, and the OpenGraph subtitle. */
     description: z4.string(),
     keywords: z4.array(z4.string()).optional(),
+    lastModified,
   }),
 });
 
 export default defineConfig({
-  plugins: [lastModified()],
+  plugins: [lastModifiedPlugin()],
 });

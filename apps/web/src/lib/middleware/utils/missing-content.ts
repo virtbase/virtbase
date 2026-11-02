@@ -16,15 +16,7 @@
  */
 
 import { defaultLocale } from "@/i18n/config.ts";
-
-/** @internal */
-export const ROUTED_SEGMENTS: ReadonlySet<string> = new Set([
-  "checkout",
-  "contact",
-  "help",
-  "legal",
-  "upsell",
-]);
+import { matchPublicRoute } from "@/lib/public-routes.ts";
 
 type Documents = Readonly<Record<string, unknown>>;
 
@@ -32,6 +24,7 @@ export type ContentDocuments = {
   marketing: Documents;
   legal: Documents;
   help: Documents;
+  authors: Documents;
 };
 
 function hasDocument(documents: Documents, locale: string, slugs: string[]) {
@@ -44,33 +37,34 @@ function hasDocument(documents: Documents, locale: string, slugs: string[]) {
   );
 }
 
+/**
+ * Whether a locale-prefixed public path names a document that does not exist,
+ * or a path no route serves. The proxy answers both with a real 404.
+ *
+ * An index with no slugs (the home page, `/legal`, `/help/article`) and the
+ * pages with no document behind them are left to their routes.
+ */
 export function isMissingContent(
   content: ContentDocuments,
   locale: string,
   segments: string[],
 ) {
-  const [first, ...rest] = segments;
+  const route = matchPublicRoute(segments);
+  const missing = (documents: Documents, slugs: string[]) =>
+    slugs.length > 0 && !hasDocument(documents, locale, slugs);
 
-  if (first === undefined) {
-    return false;
+  switch (route?.kind) {
+    case undefined:
+      return true;
+    case "marketing":
+      return missing(content.marketing, route.slugs);
+    case "legal":
+      return missing(content.legal, route.slugs);
+    case "help-article":
+      return missing(content.help, route.slugs);
+    case "author":
+      return missing(content.authors, [route.slug]);
+    default:
+      return false;
   }
-
-  if (first === "legal") {
-    return rest.length > 0 && !hasDocument(content.legal, locale, rest);
-  }
-
-  if (first === "help") {
-    const [kind, ...slugs] = rest;
-    return (
-      kind === "article" &&
-      slugs.length > 0 &&
-      !hasDocument(content.help, locale, slugs)
-    );
-  }
-
-  if (ROUTED_SEGMENTS.has(first)) {
-    return false;
-  }
-
-  return !hasDocument(content.marketing, locale, segments);
 }
