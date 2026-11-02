@@ -25,7 +25,13 @@ const ARTICLES = resolve(
   "../../../../../../packages/content/help/articles",
 );
 
-type Frontmatter = { categories: string[]; popular?: number };
+const AUTHORS = resolve(ARTICLES, "../../authors");
+
+type Frontmatter = {
+  categories: string[];
+  popular?: number;
+  authors: string[];
+};
 
 /** Every article's frontmatter, keyed by `<locale>/<slug>`. */
 const articles = new Map<string, Frontmatter>();
@@ -43,15 +49,15 @@ const source = [...articles].filter(([key]) =>
 );
 
 test("a translation is filed exactly like its source", () => {
-  const drift = [...articles].flatMap(([key, { categories, popular }]) => {
+  const filing = ({ categories, popular, authors }: Frontmatter) => ({
+    categories,
+    popular,
+    authors,
+  });
+  const drift = [...articles].flatMap(([key, frontmatter]) => {
     const original = articles.get(key.replace(/^[^/]+/, defaultLocale));
     if (!original) return [`${key} has no ${defaultLocale} source`];
-    return Bun.deepEquals(
-      { categories, popular },
-      { categories: original.categories, popular: original.popular },
-    )
-      ? []
-      : [key];
+    return Bun.deepEquals(filing(frontmatter), filing(original)) ? [] : [key];
   });
 
   expect(drift).toEqual([]);
@@ -62,6 +68,20 @@ test("every category has an article", () => {
   // empty page instead of a 404.
   const used = new Set(source.flatMap(([, { categories }]) => categories));
   expect(HELP_CATEGORIES.filter((category) => !used.has(category))).toEqual([]);
+});
+
+test("every author an article names exists", () => {
+  // Fumadocs validates each collection on its own, so a misspelt author would
+  // otherwise just vanish from the byline.
+  const known = new Set(
+    [...new Bun.Glob(`${defaultLocale}/*.mdx`).scanSync({ cwd: AUTHORS })].map(
+      (path) => path.replace(/^.*\/|\.mdx$/g, ""),
+    ),
+  );
+  const unknown = source.flatMap(([key, { authors }]) =>
+    authors.filter((author) => !known.has(author)).map((a) => `${key}: ${a}`),
+  );
+  expect(unknown).toEqual([]);
 });
 
 test("no two popular articles share a rank", () => {

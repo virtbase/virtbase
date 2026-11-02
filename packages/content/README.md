@@ -44,6 +44,33 @@ interface text. Each is served at `/<locale>/help/category/<slug>`.
 Every translation carries the same `categories` and `popular` as its `en`
 source, and every category needs at least one article; a test fails otherwise.
 
+## Authors
+
+Every help article names who wrote it, by slug, and the byline links to each
+author's page at `/<locale>/authors/<slug>`:
+
+```yaml
+authors: [janic]
+```
+
+An author is `authors/<locale>/<slug>.mdx`. The frontmatter holds who they are,
+the body is their bio, and a locale without its own file falls back to `en`:
+
+```yaml
+name: Janic Bellmann
+role: CEO
+avatar: /assets/static/authors/janic.webp
+links:
+  github: https://github.com/…
+  x: https://x.com/…
+  website: https://janic.dev
+```
+
+`avatar` is a path under `apps/web/public` rather than a relative image:
+structured data and other sites need a URL that stays put. Without one, the
+author's initials are shown. A test fails for an article that names an author
+with no `en` file.
+
 ## Images
 
 An image used by a document lives next to it, in an `images` directory of the

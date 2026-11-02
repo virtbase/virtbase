@@ -16,6 +16,7 @@
  */
 
 import {
+  authorCollection,
   helpArticleCollection,
   legalCollection,
   marketingCollection,
@@ -72,6 +73,12 @@ export const helpArticles = loader({
   i18n,
 });
 
+export const authors = loader({
+  baseUrl: "/authors",
+  source: toFumadocsSource(authorCollection, []),
+  i18n,
+});
+
 /**
  * The same collections without the locale fallback. Used only to answer "which
  * languages does this document actually have?" — never to render.
@@ -90,6 +97,11 @@ const translated = {
   helpArticles: loader({
     baseUrl: "/help/article",
     source: toFumadocsSource(helpArticleCollection, []),
+    i18n: translatedI18n,
+  }),
+  authors: loader({
+    baseUrl: "/authors",
+    source: toFumadocsSource(authorCollection, []),
     i18n: translatedI18n,
   }),
 };

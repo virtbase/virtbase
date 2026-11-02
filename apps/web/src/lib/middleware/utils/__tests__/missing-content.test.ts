@@ -29,6 +29,7 @@ const content = {
   },
   legal: { "en/privacy.mdx": null },
   help: { "en/about-security.mdx": null },
+  authors: { "en/janic.mdx": null },
 };
 
 describe("isMissingContent", () => {
@@ -64,6 +65,15 @@ describe("isMissingContent", () => {
     expect(
       isMissingContent(content, "en", ["help", "category", "backups", "x"]),
     ).toBe(true);
+  });
+
+  test("knows the authors", () => {
+    expect(isMissingContent(content, "de", ["authors", "janic"])).toBe(false);
+    expect(isMissingContent(content, "en", ["authors", "nope"])).toBe(true);
+    expect(isMissingContent(content, "en", ["authors"])).toBe(true);
+    expect(isMissingContent(content, "en", ["authors", "janic", "x"])).toBe(
+      true,
+    );
   });
 
   test("reports any other path under the help center", () => {

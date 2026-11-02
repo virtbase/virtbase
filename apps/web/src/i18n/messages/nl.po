@@ -1676,6 +1676,16 @@ msgctxt "0H2hdf"
 msgid "No results."
 msgstr "Geen resultaten."
 
+#: src/app/(public)/[locale]/authors/[slug]/page.tsx
+msgctxt "IetDHR"
+msgid "Help articles written by {name}."
+msgstr "Helpartikelen geschreven door {name}."
+
+#: src/app/(public)/[locale]/authors/[slug]/page.tsx
+msgctxt "DZ0V4V"
+msgid "Help articles"
+msgstr "Helpartikelen"
+
 #: src/app/(public)/[locale]/checkout/[id]/page.tsx
 msgctxt "VX2yLr"
 msgid "Configure {name}"
@@ -1901,17 +1911,12 @@ msgid "Contact us and get quick help."
 msgstr "Neem contact met ons op en krijg snel hulp."
 
 #: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
-#: src/app/(public)/[locale]/legal/[[...slug]]/page.tsx
-msgctxt "ZdCdo5"
-msgid "Last updated: {date}"
-msgstr "Laatst bijgewerkt: {date}"
-
-#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
 msgctxt "IAMn0B"
 msgid "Still have questions? Contact us ↗"
 msgstr "Heeft u nog vragen? Neem contact met ons op ↗"
 
 #: src/app/(public)/[locale]/help/page.tsx
+#: src/features/authors/components/author-header.tsx
 #: src/ui/footer.tsx
 msgctxt "HtSDyc"
 msgid "Help Center"
@@ -1931,6 +1936,12 @@ msgstr "Hoe kunnen we u vandaag helpen?"
 msgctxt "yN3mpX"
 msgid "Popular articles"
 msgstr "Populaire artikelen"
+
+#: src/app/(public)/[locale]/legal/[[...slug]]/page.tsx
+#: src/features/authors/components/author-byline.tsx
+msgctxt "ZdCdo5"
+msgid "Last updated: {date}"
+msgstr "Laatst bijgewerkt: {date}"
 
 #: src/app/(public)/[locale]/not-found.tsx
 #: src/app/global-not-found.tsx
@@ -4992,6 +5003,7 @@ msgid "Built by"
 msgstr "Gemaakt door"
 
 #: src/features/admin/components/integrations/integration-detail.tsx
+#: src/features/authors/components/author-header.tsx
 msgctxt "JkLHGw"
 msgid "Website"
 msgstr "Website"
@@ -6277,6 +6289,11 @@ msgstr "Bevestig wachtwoord"
 msgctxt "xl27nc"
 msgid "Reset Password"
 msgstr "Wachtwoord opnieuw instellen"
+
+#: src/features/authors/components/author-byline.tsx
+msgctxt "UuSBra"
+msgid "Written by <names></names>"
+msgstr "Geschreven door <names></names>"
 
 #: src/features/checkout/components/checkout-auth-wrapper.tsx
 msgctxt "jUKaDx"

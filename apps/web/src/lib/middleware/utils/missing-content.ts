@@ -20,6 +20,7 @@ import { isHelpCategory } from "@/lib/help-categories.ts";
 
 /** @internal */
 export const ROUTED_SEGMENTS: ReadonlySet<string> = new Set([
+  "authors",
   "checkout",
   "contact",
   "help",
@@ -33,6 +34,7 @@ export type ContentDocuments = {
   marketing: Documents;
   legal: Documents;
   help: Documents;
+  authors: Documents;
 };
 
 function hasDocument(documents: Documents, locale: string, slugs: string[]) {
@@ -58,6 +60,10 @@ export function isMissingContent(
 
   if (first === "legal") {
     return rest.length > 0 && !hasDocument(content.legal, locale, rest);
+  }
+
+  if (first === "authors") {
+    return !(rest.length === 1 && hasDocument(content.authors, locale, rest));
   }
 
   if (first === "help") {

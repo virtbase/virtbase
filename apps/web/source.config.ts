@@ -40,7 +40,26 @@ export const helpArticleCollection = defineCollections({
     description: z4.string(),
     categories: z4.array(z4.enum(HELP_CATEGORIES)).min(1),
     popular: z4.number().int().positive().optional(),
+    authors: z4.array(z4.string()).min(1),
     keywords: z4.array(z4.string()),
+    lastModified,
+  }),
+});
+
+export const authorCollection = defineCollections({
+  type: "doc",
+  dir: "../../packages/content/authors",
+  schema: z4.object({
+    name: z4.string(),
+    role: z4.string().optional(),
+    avatar: z4.string().startsWith("/").optional(),
+    links: z4
+      .object({
+        github: z4.url().optional(),
+        x: z4.url().optional(),
+        website: z4.url().optional(),
+      })
+      .optional(),
     lastModified,
   }),
 });

@@ -93,5 +93,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...documentPages("marketing"),
     ...documentPages("legal"),
     ...documentPages("helpArticles"),
+    ...documentPages("authors"),
   ];
 }

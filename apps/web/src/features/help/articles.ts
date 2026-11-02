@@ -32,21 +32,31 @@ export function getPopularArticles(locale: string): HelpArticle[] {
     .sort((a, b) => (a.data.popular ?? 0) - (b.data.popular ?? 0));
 }
 
-/**
- * The articles filed under a category, popular ones first in the order of
- * their rank, then the rest alphabetically.
- */
+/** Popular articles first, in the order of their rank, then alphabetically. */
+function byPopularity(locale: string) {
+  const rank = (page: HelpArticle) =>
+    page.data.popular ?? Number.POSITIVE_INFINITY;
+
+  return (a: HelpArticle, b: HelpArticle) =>
+    rank(a) - rank(b) || a.data.title.localeCompare(b.data.title, locale);
+}
+
+/** The articles filed under a category. */
 export function getCategoryArticles(
   locale: string,
   category: HelpCategory,
 ): HelpArticle[] {
-  const rank = (page: HelpArticle) =>
-    page.data.popular ?? Number.POSITIVE_INFINITY;
-
   return getArticles(locale)
     .filter((page) => page.data.categories.includes(category))
-    .sort(
-      (a, b) =>
-        rank(a) - rank(b) || a.data.title.localeCompare(b.data.title, locale),
-    );
+    .sort(byPopularity(locale));
+}
+
+/** The articles an author wrote or co-wrote. */
+export function getAuthorArticles(
+  locale: string,
+  author: string,
+): HelpArticle[] {
+  return getArticles(locale)
+    .filter((page) => page.data.authors.includes(author))
+    .sort(byPopularity(locale));
 }

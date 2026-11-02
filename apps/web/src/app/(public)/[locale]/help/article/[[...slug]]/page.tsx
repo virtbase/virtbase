@@ -28,8 +28,11 @@ import defaultMdxComponents from "fumadocs-ui/mdx";
 import type { Metadata } from "next";
 import { cacheLife, cacheTag } from "next/cache";
 import { notFound } from "next/navigation";
-import { getExtracted, getFormatter, getLocale } from "next-intl/server";
+import { getExtracted, getLocale } from "next-intl/server";
+import { getAuthors } from "@/features/authors/authors.ts";
+import { AuthorByline } from "@/features/authors/components/author-byline.tsx";
 import { getHelpCategory } from "@/features/help/categories.tsx";
+import { HelpArticleJsonLd } from "@/features/help/components/help-article-json-ld.tsx";
 import { HelpBreadcrumb } from "@/features/help/components/help-breadcrumb.tsx";
 import { HelpHeader } from "@/features/help/components/help-header.tsx";
 import { defaultLocale } from "@/i18n/config.ts";
@@ -113,13 +116,21 @@ export default async function HelpArticlePage({
   const { title, description, lastModified } = page.data;
 
   const t = await getExtracted();
-  const format = await getFormatter();
 
   const category = await getHelpCategory(page.data.categories[0]);
+  const authors = getAuthors(page.data.authors, locale);
 
   return (
     <>
       <HelpHeader />
+      <HelpArticleJsonLd
+        url={PUBLIC_DOMAIN + page.url}
+        locale={locale}
+        title={title}
+        description={description}
+        lastModified={lastModified}
+        authors={authors}
+      />
       <main className="relative border-border border-t">
         <div className="mx-auto grid w-full max-w-5xl grid-cols-4 gap-10 px-3 py-10 lg:px-4 xl:px-0">
           <div className="col-span-4 flex flex-col space-y-8 sm:col-span-3 sm:pr-10">
@@ -129,18 +140,7 @@ export default async function HelpArticlePage({
                 {title}
               </h1>
               <p className="text-muted-foreground">{description}</p>
-              <div className="flex items-center space-x-3">
-                {lastModified && (
-                  <time
-                    dateTime={lastModified.toISOString()}
-                    className="font-light text-muted-foreground text-sm"
-                  >
-                    {t("Last updated: {date}", {
-                      date: format.dateTime(lastModified),
-                    })}
-                  </time>
-                )}
-              </div>
+              <AuthorByline authors={authors} lastModified={lastModified} />
             </div>
             <article
               className={cn(

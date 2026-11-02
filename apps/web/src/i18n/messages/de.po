@@ -1676,6 +1676,16 @@ msgctxt "0H2hdf"
 msgid "No results."
 msgstr "Keine Ergebnisse."
 
+#: src/app/(public)/[locale]/authors/[slug]/page.tsx
+msgctxt "IetDHR"
+msgid "Help articles written by {name}."
+msgstr "Hilfeartikel von {name}."
+
+#: src/app/(public)/[locale]/authors/[slug]/page.tsx
+msgctxt "DZ0V4V"
+msgid "Help articles"
+msgstr "Hilfeartikel"
+
 #: src/app/(public)/[locale]/checkout/[id]/page.tsx
 msgctxt "VX2yLr"
 msgid "Configure {name}"
@@ -1901,17 +1911,12 @@ msgid "Contact us and get quick help."
 msgstr "Kontaktiere uns und erhalte schnelle Hilfe."
 
 #: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
-#: src/app/(public)/[locale]/legal/[[...slug]]/page.tsx
-msgctxt "ZdCdo5"
-msgid "Last updated: {date}"
-msgstr "Letzte Änderung: {date}"
-
-#: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
 msgctxt "IAMn0B"
 msgid "Still have questions? Contact us ↗"
 msgstr "Noch Fragen? Kontaktiere uns ↗"
 
 #: src/app/(public)/[locale]/help/page.tsx
+#: src/features/authors/components/author-header.tsx
 #: src/ui/footer.tsx
 msgctxt "HtSDyc"
 msgid "Help Center"
@@ -1931,6 +1936,12 @@ msgstr "Wie können wir dir heute helfen?"
 msgctxt "yN3mpX"
 msgid "Popular articles"
 msgstr "Beliebte Artikel"
+
+#: src/app/(public)/[locale]/legal/[[...slug]]/page.tsx
+#: src/features/authors/components/author-byline.tsx
+msgctxt "ZdCdo5"
+msgid "Last updated: {date}"
+msgstr "Letzte Änderung: {date}"
 
 #: src/app/(public)/[locale]/not-found.tsx
 #: src/app/global-not-found.tsx
@@ -4992,6 +5003,7 @@ msgid "Built by"
 msgstr "Erstellt von"
 
 #: src/features/admin/components/integrations/integration-detail.tsx
+#: src/features/authors/components/author-header.tsx
 msgctxt "JkLHGw"
 msgid "Website"
 msgstr "Website"
@@ -6277,6 +6289,11 @@ msgstr "Passwort wiederholen"
 msgctxt "xl27nc"
 msgid "Reset Password"
 msgstr "Passwort zurücksetzen"
+
+#: src/features/authors/components/author-byline.tsx
+msgctxt "UuSBra"
+msgid "Written by <names></names>"
+msgstr "Geschrieben von <names></names>"
 
 #: src/features/checkout/components/checkout-auth-wrapper.tsx
 msgctxt "jUKaDx"

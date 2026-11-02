@@ -46,6 +46,7 @@ const content = {
   marketing: contentCollections.marketingCollection.raw,
   legal: contentCollections.legalCollection.raw,
   help: contentCollections.helpArticleCollection.raw,
+  authors: contentCollections.authorCollection.raw,
 };
 
 export default async function proxy(req: NextRequest) {
