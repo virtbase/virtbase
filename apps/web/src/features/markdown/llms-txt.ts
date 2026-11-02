@@ -22,6 +22,7 @@ import { getExtracted } from "next-intl/server";
 import { getCategoryArticles } from "@/features/help/articles.ts";
 import { getHelpCategories } from "@/features/help/categories.tsx";
 import { defaultLocale, locales } from "@/i18n/config.ts";
+import { API_DISCOVERY } from "@/lib/api-discovery.ts";
 import { legal, marketing } from "@/lib/source.ts";
 
 type Entry = { title: string; url: string; description?: string };
@@ -116,7 +117,10 @@ async function getLlmsTxt(locale: Locale): Promise<string> {
     `## ${t("Legal")}`,
     legalPages.join("\n"),
     "## API",
-    `- [${t("API Documentation")}](${PUBLIC_DOMAIN}/api/docs)`,
+    [
+      `- [${t("API Documentation")}](${API_DISCOVERY.docs})`,
+      `- [OpenAPI](${API_DISCOVERY.openapi})`,
+    ].join("\n"),
     "## Optional",
     otherLocales(locale),
   ]

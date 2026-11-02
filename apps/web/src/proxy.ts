@@ -24,6 +24,7 @@ import { hasLocale } from "next-intl";
 import createMiddleware from "next-intl/middleware";
 import { locales } from "@/i18n/config.ts";
 import { routing } from "@/i18n/routing.public.ts";
+import { HOME_DISCOVERY_LINKS } from "@/lib/api-discovery.ts";
 import { AdminMiddleware } from "@/lib/middleware/admin.ts";
 import { ApiMiddleware } from "@/lib/middleware/api.ts";
 import { AppMiddleware } from "@/lib/middleware/app.ts";
@@ -51,6 +52,31 @@ const content = {
   help: contentCollections.helpArticleCollection.raw,
   authors: contentCollections.authorCollection.raw,
 };
+
+/**
+ * Ensure that the locale cookie is set the first time the user visits the
+ * site, so the locale carries over to the app and admin pages, which have no
+ * locale in the URL to read one from.
+ *
+ * `next-intl` writes the cookie itself when it has something to correct, but
+ * deliberately stays quiet when a first-time visitor's `accept-language`
+ * already agrees with the locale it picked - the common case for an English
+ * browser landing on `/`. That is exactly the visit this needs to catch.
+ *
+ * The resolved locale lives in whichever header `intlMiddleware` set: a
+ * request without a locale prefix is answered with a redirect, one that has a
+ * prefix with a rewrite, and an already-canonical request with neither.
+ */
+function setFirstVisitLocaleCookie(req: NextRequest, res: NextResponse) {
+  const resolved =
+    res.headers.get("x-middleware-rewrite") ?? res.headers.get("location");
+  const [, localeSegment] = new URL(
+    resolved ?? req.url,
+    req.url,
+  ).pathname.split("/");
+
+  ensureLocaleCookie(req, res, localeSegment);
+}
 
 export default async function proxy(req: NextRequest) {
   const { domain } = parse(req);
@@ -90,25 +116,16 @@ export default async function proxy(req: NextRequest) {
 
   const res = intlMiddleware(req);
 
-  // Ensure that the locale cookie is set the first time the user visits the
-  // site, so the locale carries over to the app and admin pages, which have no
-  // locale in the URL to read one from.
-  //
-  // `next-intl` writes the cookie itself when it has something to correct, but
-  // deliberately stays quiet when a first-time visitor's `accept-language`
-  // already agrees with the locale it picked - the common case for an English
-  // browser landing on `/`. That is exactly the visit this needs to catch.
-  //
-  // The resolved locale lives in whichever header `intlMiddleware` set: a
-  // request without a locale prefix is answered with a redirect, one that has a
-  // prefix with a rewrite, and an already-canonical request with neither.
-  const resolved =
-    res.headers.get("x-middleware-rewrite") ?? res.headers.get("location");
-  const [, localeSegment] = new URL(
-    resolved ?? req.url,
-    req.url,
-  ).pathname.split("/");
+  // The home page tells agents where the API, its description and llms.txt
+  // are, next to the hreflang links next-intl already sends. `/` included: it
+  // redirects, and a scanner may read either response.
+  if (
+    segments.length === 0 &&
+    (locale === undefined || hasLocale(locales, locale))
+  ) {
+    res.headers.append("Link", HOME_DISCOVERY_LINKS);
+  }
 
-  ensureLocaleCookie(req, res, localeSegment);
+  setFirstVisitLocaleCookie(req, res);
   return res;
 }

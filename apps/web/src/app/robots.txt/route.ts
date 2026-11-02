@@ -91,6 +91,7 @@ async function getRobots() {
       `Content-Signal: ${CONTENT_SIGNAL}`,
       "Allow: /",
       "Allow: /api/docs",
+      "Allow: /api/openapi.json",
       "Disallow: /api",
       "Disallow: /api/",
       "Disallow: */checkout",
