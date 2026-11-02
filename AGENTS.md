@@ -227,8 +227,10 @@ the help and legal articles. The `href` attribute on a block is different — it
 goes through `IntlLink` and must stay unprefixed (`/help/article/...`).
 
 A new block also needs a Markdown form in
-`apps/web/src/ui/mdx/markdown-components.tsx`, or the Markdown served to agents
-carries it as raw JSX.
+`apps/web/src/ui/mdx/markdown-components.tsx` and its name in
+`markdown-component-names.ts`; a test fails for a document that uses a
+component missing from that list, which would otherwise reach agents as raw
+JSX.
 
 ### Markdown for agents
 
@@ -279,9 +281,13 @@ proxy, before anything renders:
 - `rewriteToNotFound()` rewrites to `/`, the one path no route matches, so Next
   answers with `global-not-found.tsx` and a 404. Adding an `app/page.tsx` would
   break every 404 on the site.
+- The URL structure itself lives in `lib/public-routes.ts`:
+  `matchPublicRoute()` turns a path into a typed route, `publicPath()` turns it
+  back. The not-found check, the Markdown served to agents and the sitemap all
+  read it, so a new kind of page is added there once.
 - A new static folder under `(public)/[locale]` must be listed in
-  `ROUTED_SEGMENTS`, or the proxy treats it as a missing marketing page. A test
-  fails until it is.
+  `ROUTED_SEGMENTS` there, or the proxy treats it as a missing marketing page.
+  A test fails until it is.
 - The admin console uses the same rewrite for signed-in non-admins, reading the
   session itself when Better Auth's cookie cache has expired.
 

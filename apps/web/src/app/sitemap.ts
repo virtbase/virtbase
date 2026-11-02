@@ -21,6 +21,7 @@ import { cacheLife, cacheTag } from "next/cache";
 import { routing } from "@/i18n/routing.public.ts";
 import { HELP_CATEGORIES } from "@/lib/help-categories.ts";
 import { constructAlternateLanguages } from "@/lib/hreflang.ts";
+import { publicPath } from "@/lib/public-routes.ts";
 import type { ContentCollection, TranslatedPage } from "@/lib/source.ts";
 import { getDocumentLocales, getTranslatedPages } from "@/lib/source.ts";
 
@@ -68,7 +69,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // `/register` should never have been advertised for indexing anyway.
   const pages = [
     "/help",
-    ...HELP_CATEGORIES.map((category) => `/help/category/${category}`),
+    ...HELP_CATEGORIES.map((category) =>
+      publicPath({ kind: "help-category", category }),
+    ),
     "/contact",
   ];
 

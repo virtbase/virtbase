@@ -26,7 +26,17 @@ import {
   getCategoryArticles,
   getPopularArticles,
 } from "@/features/help/articles.ts";
-import { getHelpCategories } from "@/features/help/categories.tsx";
+import {
+  getHelpCategories,
+  getHelpCategory,
+} from "@/features/help/categories.tsx";
+import type { HelpCategory } from "@/lib/help-categories.ts";
+import type { ContentRoute } from "@/lib/public-routes.ts";
+import {
+  hasMarkdown,
+  matchPublicRoute,
+  publicPath,
+} from "@/lib/public-routes.ts";
 import { helpArticles, legal, marketing } from "@/lib/source.ts";
 import { getMarkdownComponents } from "@/ui/mdx/markdown-components.tsx";
 
@@ -64,17 +74,15 @@ async function helpIndex(locale: Locale) {
     `## ${t("Popular articles")}`,
     list(getPopularArticles(locale)),
     ...categories.flatMap((category) => [
-      `## [${category.title}](${PUBLIC_DOMAIN}/${locale}/help/category/${category.slug})`,
+      `## [${category.title}](${PUBLIC_DOMAIN}/${locale}${publicPath({ kind: "help-category", category: category.slug })})`,
       category.description,
       list(getCategoryArticles(locale, category.slug)),
     ]),
   ].join("\n\n");
 }
 
-async function helpCategory(locale: Locale, slug: string) {
-  const category = (await getHelpCategories(locale)).find(
-    (category) => category.slug === slug,
-  );
+async function helpCategory(locale: Locale, slug: HelpCategory) {
+  const category = await getHelpCategory(slug, locale);
   if (!category) return null;
 
   return [
@@ -107,18 +115,26 @@ async function author(locale: Locale, slug: string) {
     .join("\n\n");
 }
 
-async function help(locale: Locale, segments: readonly string[]) {
-  const [kind, ...slugs] = segments;
-  if (kind === undefined) return helpIndex(locale);
-  if (kind === "category" && slugs.length === 1) {
-    return helpCategory(locale, slugs[0] as string);
+async function document(route: ContentRoute, locale: Locale) {
+  switch (route.kind) {
+    case "help-article": {
+      const page = helpArticles.getPage(route.slugs, locale);
+      if (!page) return null;
+      const { title, description } = page.data;
+      return `# ${title}\n\n${description}\n\n${await render(page, locale)}`;
+    }
+    case "legal": {
+      const page = legal.getPage(route.slugs, locale);
+      if (!page) return null;
+      return `# ${page.data.title}\n\n${await render(page, locale)}`;
+    }
+    case "marketing": {
+      const page = marketing.getPage(route.slugs, locale);
+      return page ? render(page, locale) : null;
+    }
+    default:
+      return null;
   }
-  if (kind !== "article") return null;
-
-  const page = helpArticles.getPage(slugs, locale);
-  if (!page) return null;
-  const { title, description } = page.data;
-  return `# ${title}\n\n${description}\n\n${await render(page, locale)}`;
 }
 
 /**
@@ -135,20 +151,17 @@ export async function getPageMarkdown(
   locale: Locale,
   segments: readonly string[],
 ): Promise<string | null> {
-  const [first, ...rest] = segments;
+  const route = matchPublicRoute(segments);
+  if (!hasMarkdown(route)) return null;
 
-  if (first === "help") return help(locale, rest);
-
-  if (first === "legal") {
-    const page = legal.getPage(rest, locale);
-    if (!page) return null;
-    return `# ${page.data.title}\n\n${await render(page, locale)}`;
+  switch (route.kind) {
+    case "help":
+      return helpIndex(locale);
+    case "help-category":
+      return helpCategory(locale, route.category);
+    case "author":
+      return author(locale, route.slug);
+    default:
+      return document(route, locale);
   }
-
-  if (first === "authors") {
-    return rest.length === 1 ? author(locale, rest[0] as string) : null;
-  }
-
-  const page = marketing.getPage([...segments], locale);
-  return page ? render(page, locale) : null;
 }

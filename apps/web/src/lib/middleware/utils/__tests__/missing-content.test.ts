@@ -18,7 +18,8 @@
 import { describe, expect, test } from "bun:test";
 import { readdirSync } from "node:fs";
 import { join } from "node:path";
-import { isMissingContent, ROUTED_SEGMENTS } from "../missing-content.ts";
+import { ROUTED_SEGMENTS } from "@/lib/public-routes.ts";
+import { isMissingContent } from "../missing-content.ts";
 
 const content = {
   marketing: {

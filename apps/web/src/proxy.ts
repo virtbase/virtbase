@@ -28,10 +28,11 @@ import { HOME_DISCOVERY_LINKS } from "@/lib/api-discovery.ts";
 import { AdminMiddleware } from "@/lib/middleware/admin.ts";
 import { ApiMiddleware } from "@/lib/middleware/api.ts";
 import { AppMiddleware } from "@/lib/middleware/app.ts";
-import { hasMarkdown, markdownPath } from "@/lib/middleware/utils/markdown.ts";
+import { markdownPath } from "@/lib/middleware/utils/markdown.ts";
 import { isMissingContent } from "@/lib/middleware/utils/missing-content.ts";
 import { rewriteToNotFound } from "@/lib/middleware/utils/not-found.ts";
 import { parse } from "@/lib/middleware/utils/parse.ts";
+import { hasMarkdown, matchPublicRoute } from "@/lib/public-routes.ts";
 import { ensureLocaleCookie } from "./lib/middleware/ensure-locale-cookie.ts";
 
 export const config: ProxyConfig = {
@@ -106,7 +107,7 @@ export default async function proxy(req: NextRequest) {
   // ahead of the CDN cache, so the two forms are cached under different keys.
   if (
     hasLocale(locales, locale) &&
-    hasMarkdown(segments) &&
+    hasMarkdown(matchPublicRoute(segments)) &&
     isMarkdownPreferred(req)
   ) {
     return NextResponse.rewrite(

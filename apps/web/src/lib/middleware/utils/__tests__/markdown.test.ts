@@ -16,15 +16,7 @@
  */
 
 import { expect, test } from "bun:test";
-import { hasMarkdown, markdownPath } from "../markdown.ts";
-
-test("content pages have a Markdown form, forms do not", () => {
-  expect(hasMarkdown([])).toBe(true);
-  expect(hasMarkdown(["help", "article", "how-to-renew-server"])).toBe(true);
-  expect(hasMarkdown(["datacenter"])).toBe(true);
-  expect(hasMarkdown(["checkout", "plan_1"])).toBe(false);
-  expect(hasMarkdown(["contact"])).toBe(false);
-});
+import { markdownPath } from "../markdown.ts";
 
 test("markdownPath points at the internal route", () => {
   expect(markdownPath("en", [])).toBe("/llms.mdx/en");

@@ -15,21 +15,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-/**
- * Routed segments whose pages are forms rather than content. They have no
- * Markdown form, so an agent asking for one gets the HTML page instead.
- */
-const WITHOUT_MARKDOWN: ReadonlySet<string> = new Set([
-  "checkout",
-  "contact",
-  "upsell",
-]);
-
-/** Whether a public page, by its locale-less path segments, has a Markdown form. */
-export function hasMarkdown(segments: readonly string[]) {
-  return !WITHOUT_MARKDOWN.has(segments[0] ?? "");
-}
-
 /** The internal route that renders a public page as Markdown. */
 export function markdownPath(locale: string, segments: readonly string[]) {
   return `/llms.mdx/${[locale, ...segments].join("/")}`;
