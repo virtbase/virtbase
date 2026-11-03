@@ -99,14 +99,14 @@ depend on. The rules that concern single files rather than packages are
 shipped code, integrations do not read `@virtbase/db/schema`, and `auth`,
 `email` and `db` import nothing named after a provider.
 
-| Layer          | Packages                              | May import                                 |
-| -------------- | ------------------------------------- | ------------------------------------------ |
-| 0 Foundation   | `validators`, `utils`                 | nothing internal                           |
-| 1 Platform     | `db`, `auth`, `email`, `ui`, `config` | layer 0                                    |
-| 2 Ports        | `ports`                               | layer 0 only — interfaces, no runtime deps |
-| 3 Domain       | _(not yet extracted)_                 | layers 0–2                                 |
-| 4 Integrations | `integration-sdk`, `integration-*`    | layers 0–2                                 |
-| 5 Composition  | `api`, `apps/*`                       | everything                                 |
+| Layer          | Packages                                     | May import                                 |
+| -------------- | -------------------------------------------- | ------------------------------------------ |
+| 0 Foundation   | `validators`, `utils`                        | nothing internal                           |
+| 1 Platform     | `db`, `auth`, `email`, `ui`, `config`, `pdf` | layer 0                                    |
+| 2 Ports        | `ports`                                      | layer 0 only — interfaces, no runtime deps |
+| 3 Domain       | _(not yet extracted)_                        | layers 0–2                                 |
+| 4 Integrations | `integration-sdk`, `integration-*`           | layers 0–2                                 |
+| 5 Composition  | `api`, `apps/*`                              | everything                                 |
 
 ### Adding an integration
 
@@ -257,6 +257,21 @@ announce their Markdown with `<link rel="alternate" type="text/markdown">`
 `packages/content` depends on `fumadocs-core` although it holds no code: the
 compiled MDX imports `fumadocs-core/server`, resolved from the document's own
 directory.
+
+### Legal PDFs
+
+Every legal page is also served as a PDF at `/<locale>/legal/<slug>.pdf`.
+`apps/web/scripts/legal-pdfs.ts` renders them with `@virtbase/pdf` (Typst
+through typst.ts) into `apps/web/public/` before `next build`, so they are
+static files: the compiler is a 50 MB native module and never runs in a
+function, and the same file can be attached to an email. They are gitignored
+and listed as outputs of the web build in Turborepo, so a cache hit restores
+them.
+
+A page with `pdf: <template>` in its frontmatter, such as the supplier
+information, is the short text around a PDF-only document; the PDF is then the
+template from `packages/pdf/typst/documents/` rather than the page. See
+`packages/content/README.md` and `packages/pdf/README.md`.
 
 ### Locales and the fallback
 

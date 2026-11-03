@@ -9,7 +9,8 @@
         ".next/**",
         "!.next/cache/**",
         "src/app/.well-known/workflow/**",
-        ".source/**"
+        ".source/**",
+        "public/*/legal/*.pdf"
       ],
       "inputs": ["$TURBO_DEFAULT$", "$TURBO_ROOT$/.env"]
     }

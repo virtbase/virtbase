@@ -1,0 +1,185 @@
+de:
+  title: Lieferantenselbstauskunft
+  subject: Unternehmensdaten und Zahlungsinformationen der {name}
+  sections:
+    - heading: Unternehmen
+      rows:
+        - [Name des Unternehmens, "{name}"]
+        - [Anschrift, "{street}, {postcode} {city}"]
+        - [Bundesland, "{state}"]
+        - [Land, "{country}"]
+        - [Telefon, "{phone}"]
+        - [E-Mail, {text: "{email}", url: "mailto:{email}"}]
+        - [Website, {url: "https://{web}"}]
+        - [Registergericht und Nummer, "Amtsgericht {register.court}, {register.number}"]
+        - [USt-IdNr., "{vat}"]
+        - [D-U-N-S® Nummer, "{duns}"]
+        - [Geschäftsführung, "{managing-director.name}"]
+    - heading: Unternehmensprofil
+      text: >-
+        Virtbase ist die Cloud-Marke der {name}. Wir bieten virtuelle Server (KVM)
+        für Unternehmen und Privatkunden mit IPv4 und IPv6. Die Server laufen auf dedizierter Hardware mit
+        AMD-EPYC-Prozessoren im SkyLink Data Center in Eygelshoven (Niederlande), mit verschlüsselten
+        Datenträgern und DDoS-Filterung durch die aurologic GmbH vor unserem Netz AS{asn}.
+    - heading: Rechtliches und Nachweise
+      page-break: true
+      rows:
+        - [AGB, {url: "https://{web}/de/legal/terms"}]
+        - [Nutzungsrichtlinie, {url: "https://{web}/de/legal/acceptable-use"}]
+        - [Datenschutzerklärung, {url: "https://{web}/de/legal/privacy"}]
+        - [Impressum, {url: "https://{web}/de/legal/notice"}]
+        - [Rechenzentrum, "{datacenter.name}, {datacenter.city}, {datacenter.country}"]
+        - [Netz, ["AS{asn} · ", {text: "peeringdb.com/asn/{asn}", url: "https://www.peeringdb.com/asn/{asn}"}]]
+        - [Quellcode, [{text: "{source.repository}", url: "https://{source.repository}"}, " ({source.license})"]]
+    - heading: Zahlungsinformationen
+      rows:
+        - [Kreditinstitut, "{bank.name}"]
+        - [Anschrift der Bank, "{bank.address}"]
+        - [Kontoinhaber, "{name}"]
+        - [IBAN, "{bank.iban}"]
+        - [SWIFT/BIC, "{bank.bic}"]
+      note:
+        lead: Bankverbindung ändern.
+        text: >-
+          Eine neue Bankverbindung teilen wir nur schriftlich auf Virtbase-Briefpapier mit. Bitte bestätigen
+          Sie jede Änderung telefonisch unter {phone}, bevor Sie Zahlungen umstellen.
+
+en:
+  title: Supplier Information
+  subject: Company details and payment information of {name}
+  sections:
+    - heading: Company
+      rows:
+        - [Company name, "{name}"]
+        - [Address, "{street}, {postcode} {city}"]
+        - [State, "{state}"]
+        - [Country, "{country}"]
+        - [Telephone, "{phone}"]
+        - [E-mail, {text: "{email}", url: "mailto:{email}"}]
+        - [Website, {url: "https://{web}"}]
+        - [Company registration, "{register.number}, Local Court (Amtsgericht) {register.court}"]
+        - [VAT reg. no., "{vat}"]
+        - [D-U-N-S® number, "{duns}"]
+        - [Managing Director, "{managing-director.name}"]
+    - heading: Company profile
+      text: >-
+        Virtbase is the cloud brand of {name}. We provide virtual servers (KVM) for
+        businesses and individuals with IPv4 and IPv6. The servers run on dedicated hardware with AMD EPYC
+        processors at SkyLink Data Center in Eygelshoven, the Netherlands, with encrypted storage and DDoS
+        filtering by aurologic GmbH in front of our network, AS{asn}.
+    - heading: Legal and references
+      page-break: true
+      rows:
+        - [General terms and conditions, {url: "https://{web}/en/legal/terms"}]
+        - [Acceptable use policy, {url: "https://{web}/en/legal/acceptable-use"}]
+        - [Privacy policy, {url: "https://{web}/en/legal/privacy"}]
+        - [Legal notice, {url: "https://{web}/en/legal/notice"}]
+        - [Data center, "{datacenter.name}, {datacenter.city}, {datacenter.country}"]
+        - [Network, ["AS{asn} · ", {text: "peeringdb.com/asn/{asn}", url: "https://www.peeringdb.com/asn/{asn}"}]]
+        - [Source code, [{text: "{source.repository}", url: "https://{source.repository}"}, " ({source.license})"]]
+    - heading: Payment information
+      rows:
+        - [Bank name, "{bank.name}"]
+        - [Bank address, "{bank.address}"]
+        - [Account holder, "{name}"]
+        - [IBAN, "{bank.iban}"]
+        - [SWIFT/BIC, "{bank.bic}"]
+      note:
+        lead: Changes to bank details.
+        text: >-
+          We announce new bank details only in writing on Virtbase letterhead. Please confirm any change by
+          phone at {phone} before you redirect payments.
+
+fr:
+  title: Fiche d'information fournisseur
+  subject: Données de l'entreprise et informations de paiement de {name}
+  sections:
+    - heading: Entreprise
+      rows:
+        - [Raison sociale, "{name}"]
+        - [Adresse, "{street}, {postcode} {city}"]
+        - [Land (État fédéré), "{state}"]
+        - [Pays, "{country}"]
+        - [Téléphone, "{phone}"]
+        - [E-mail, {text: "{email}", url: "mailto:{email}"}]
+        - [Site web, {url: "https://{web}"}]
+        - [Immatriculation, "{register.number}, tribunal d'instance (Amtsgericht) de {register.court}"]
+        - [N° de TVA intracommunautaire, "{vat}"]
+        - [Numéro D-U-N-S®, "{duns}"]
+        - [Gérant, "{managing-director.name}"]
+    - heading: Profil de l'entreprise
+      text: >-
+        Virtbase est la marque cloud de {name}. Nous proposons des serveurs virtuels (KVM)
+        aux entreprises et aux particuliers, avec IPv4 et IPv6. Les serveurs fonctionnent sur du matériel
+        dédié équipé de processeurs AMD EPYC au SkyLink Data Center d'Eygelshoven (Pays-Bas), avec des
+        supports de stockage chiffrés et un filtrage DDoS assuré par aurologic GmbH en amont de notre réseau
+        AS{asn}.
+    - heading: Informations juridiques et références
+      page-break: true
+      rows:
+        - [Conditions générales de vente, {url: "https://{web}/fr/legal/terms"}]
+        - [Politique d'utilisation acceptable, {url: "https://{web}/fr/legal/acceptable-use"}]
+        - [Politique de confidentialité, {url: "https://{web}/fr/legal/privacy"}]
+        - [Mentions légales, {url: "https://{web}/fr/legal/notice"}]
+        - [Centre de données, "{datacenter.name}, {datacenter.city}, {datacenter.country}"]
+        - [Réseau, ["AS{asn} · ", {text: "peeringdb.com/asn/{asn}", url: "https://www.peeringdb.com/asn/{asn}"}]]
+        - [Code source, [{text: "{source.repository}", url: "https://{source.repository}"}, " ({source.license})"]]
+    - heading: Informations de paiement
+      rows:
+        - [Établissement bancaire, "{bank.name}"]
+        - [Adresse de la banque, "{bank.address}"]
+        - [Titulaire du compte, "{name}"]
+        - [IBAN, "{bank.iban}"]
+        - [SWIFT/BIC, "{bank.bic}"]
+      note:
+        lead: Modification des coordonnées bancaires.
+        text: >-
+          Nous communiquons de nouvelles coordonnées bancaires uniquement par écrit sur papier à en-tête
+          Virtbase. Veuillez confirmer toute modification par téléphone au {phone} avant de modifier vos
+          paiements.
+
+nl:
+  title: Leveranciersinformatie
+  subject: Bedrijfsgegevens en betalingsinformatie van {name}
+  sections:
+    - heading: Onderneming
+      rows:
+        - [Bedrijfsnaam, "{name}"]
+        - [Adres, "{street}, {postcode} {city}"]
+        - [Deelstaat, "{state}"]
+        - [Land, "{country}"]
+        - [Telefoon, "{phone}"]
+        - [E-mail, {text: "{email}", url: "mailto:{email}"}]
+        - [Website, {url: "https://{web}"}]
+        - [Handelsregister, "{register.number}, kantongerecht (Amtsgericht) {register.court}"]
+        - [Btw-nummer, "{vat}"]
+        - [D-U-N-S®-nummer, "{duns}"]
+        - [Bedrijfsleider, "{managing-director.name}"]
+    - heading: Bedrijfsprofiel
+      text: >-
+        Virtbase is het cloudmerk van {name}. Wij bieden virtuele servers (KVM) voor
+        bedrijven en particulieren, met IPv4 en IPv6. De servers draaien op dedicated hardware met AMD
+        EPYC-processors in het SkyLink Data Center in Eygelshoven (Nederland), met versleutelde opslag en
+        DDoS-filtering door aurologic GmbH vóór ons netwerk AS{asn}.
+    - heading: Juridisch en referenties
+      page-break: true
+      rows:
+        - [Algemene voorwaarden, {url: "https://{web}/nl/legal/terms"}]
+        - [Beleid voor aanvaardbaar gebruik, {url: "https://{web}/nl/legal/acceptable-use"}]
+        - [Privacybeleid, {url: "https://{web}/nl/legal/privacy"}]
+        - [Juridische kennisgeving, {url: "https://{web}/nl/legal/notice"}]
+        - [Datacenter, "{datacenter.name}, {datacenter.city}, {datacenter.country}"]
+        - [Netwerk, ["AS{asn} · ", {text: "peeringdb.com/asn/{asn}", url: "https://www.peeringdb.com/asn/{asn}"}]]
+        - [Broncode, [{text: "{source.repository}", url: "https://{source.repository}"}, " ({source.license})"]]
+    - heading: Betalingsinformatie
+      rows:
+        - [Bank, "{bank.name}"]
+        - [Adres van de bank, "{bank.address}"]
+        - [Rekeninghouder, "{name}"]
+        - [IBAN, "{bank.iban}"]
+        - [SWIFT/BIC, "{bank.bic}"]
+      note:
+        lead: Wijziging van bankgegevens.
+        text: >-
+          Nieuwe bankgegevens delen wij uitsluitend schriftelijk mee op briefpapier van Virtbase. Bevestig
+          elke wijziging telefonisch via {phone} voordat u betalingen omzet.

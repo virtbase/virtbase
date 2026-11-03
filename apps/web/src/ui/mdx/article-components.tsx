@@ -17,6 +17,7 @@
 
 import { Step, Steps } from "fumadocs-ui/components/steps";
 import defaultMdxComponents from "fumadocs-ui/mdx";
+import type { ComponentProps } from "react";
 import { HelpHint } from "@/ui/fumadocs/help-hint.tsx";
 import { Video } from "@/ui/fumadocs/video.tsx";
 import { GlossaryTerm } from "@/ui/mdx/glossary-term.tsx";
@@ -41,9 +42,20 @@ export const helpMdxComponents = {
   Msg,
 };
 
+/**
+ * A legal document links to its PDF form as a plain download. `next/link`,
+ * which the default link uses, would try a client-side navigation to a file
+ * that is not a page.
+ */
+function LegalLink(props: ComponentProps<"a">) {
+  if (props.href?.endsWith(".pdf")) return <a {...props} download />;
+  return <defaultMdxComponents.a {...props} />;
+}
+
 /** Components available to every document in the `legal` collection. */
 export const legalMdxComponents = {
   ...defaultMdxComponents,
   Steps,
   Step,
+  a: LegalLink,
 };
