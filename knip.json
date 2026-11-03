@@ -3,7 +3,7 @@
   "treatConfigHintsAsErrors": true,
   "workspaces": {
     ".": {
-      "ignoreBinaries": ["typos"],
+      "ignoreBinaries": ["proxbase", "typos"],
       "ignoreDependencies": [
         "@dprint/markdown",
         "lint-staged",

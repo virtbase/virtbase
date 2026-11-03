@@ -133,7 +133,7 @@ async function main() {
   }
   console.log(
     nodes === null
-      ? "\nNo Proxmox cluster found. Start one with:\n  docker compose -f tooling/proxmox-cluster/docker-compose.yml up -d\n  ./tooling/proxmox-cluster/bootstrap.sh\n"
+      ? "\nNo Proxmox cluster found. Start one with:\n  bun cluster:up\n"
       : `\nRegistered ${nodes} Proxmox node(s) from the local cluster.\n`,
   );
 

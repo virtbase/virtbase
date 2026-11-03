@@ -45,9 +45,9 @@ bun setup
 
 `bun setup` copies `.env.example` to `.env`, starts Postgres, the Neon proxy and
 Redis from `docker-compose.yml`, applies the migrations and seeds the database.
-Use `bun setup:cluster` to also build and bootstrap the local Proxmox cluster in
-`tooling/proxmox-cluster` (it needs `/dev/kvm`) - nothing can be provisioned
-without one.
+Use `bun setup:cluster` to also create the local Proxmox cluster in
+`tooling/proxbase` (it needs [proxbase](https://github.com/virtbase/proxbase)
+and `/dev/kvm`) - nothing can be provisioned without one.
 
 ### Filling in `.env`
 

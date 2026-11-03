@@ -104,12 +104,18 @@ export const serversConsoleRouter = {
         secret,
       );
 
+      // A bare host is the proxy behind TLS on 443. A URL such as
+      // `ws://localhost:8443` reaches one running locally without TLS.
+      const proxy = new URL(
+        proxyUrl.includes("://") ? proxyUrl : `wss://${proxyUrl}`,
+      );
+
       const url = new URL("https://novnc.com/noVNC/vnc.html");
-      url.searchParams.set("host", proxyUrl);
-      url.searchParams.set("port", "443");
+      url.searchParams.set("host", proxy.hostname);
+      url.searchParams.set("port", proxy.port || "443");
       url.searchParams.set("password", password);
       url.searchParams.set("path", `?payload=${encryptedPayload}`);
-      url.searchParams.set("encrypt", "true");
+      url.searchParams.set("encrypt", String(proxy.protocol === "wss:"));
       url.searchParams.set("resize", "scale");
       url.searchParams.set("autoconnect", "true");
 

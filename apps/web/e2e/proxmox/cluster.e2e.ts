@@ -21,11 +21,11 @@ import type { ClusterConfig } from "../support/cluster.ts";
 import { clusterIsReachable, readClusterConfig } from "../support/cluster.ts";
 
 /**
- * Runs only against the local cluster from `tooling/proxmox-cluster`.
+ * Runs only against the local cluster from `tooling/proxbase`.
  *
  * Skipped rather than failed when it is absent: the cluster needs `/dev/kvm`,
  * nested virtualisation and several GB of RAM, none of which GitHub-hosted
- * runners guarantee. Bring it up with `./tooling/proxmox-cluster/bootstrap.sh`.
+ * runners guarantee. Bring it up with `bun cluster:up`.
  */
 let cluster: ClusterConfig | null = null;
 let skipReason = "";
@@ -34,8 +34,7 @@ test.beforeAll(async () => {
   cluster = await readClusterConfig();
 
   if (!cluster) {
-    skipReason =
-      "no local Proxmox cluster - run ./tooling/proxmox-cluster/bootstrap.sh";
+    skipReason = "no local Proxmox cluster - run bun cluster:up";
     return;
   }
 

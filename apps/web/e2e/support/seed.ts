@@ -75,7 +75,7 @@ export async function seedE2eFixtures() {
  *
  * The fixture node has a hostname that resolves nowhere, which is exactly what
  * is wanted for tests that never reach Proxmox - and useless for the ones that
- * do. When `tooling/proxmox-cluster/cluster.json` exists, its real nodes,
+ * do. When `tooling/proxbase/cluster.json` exists, its real nodes,
  * credentials and Ceph storages are written instead, so a `serverProcedure` can
  * actually complete.
  */

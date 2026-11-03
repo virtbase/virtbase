@@ -150,7 +150,7 @@ async function main() {
     cipassword: crypto.randomUUID(),
     ciupgrade: false,
     nameserver: "9.9.9.9",
-    ipconfig0: "ip=172.30.0.60/24,gw=172.30.0.1",
+    ipconfig0: "ip=10.0.2.60/24,gw=10.0.2.2",
     cicustom: `vendor=${node.snippetStorage}:snippets/${filename}`,
   } as never);
 

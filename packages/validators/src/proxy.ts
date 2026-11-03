@@ -34,11 +34,16 @@ export const WebsocketDataSchema = z4.object({
   type: z4.enum(["qemu", "lxc"]),
   /**
    * The FQDN of the Proxmox VE server, where the API is reachable.
-   * It is assumed that HTTPS protocol is used.
+   * It is assumed that HTTPS protocol is used. A port is only given where the
+   * API is not on 443, as on the local cluster in `tooling/proxbase`.
    *
    * @example "pve01.example.com"
+   * @example "127.0.0.1:19001"
    */
-  host: z4.hostname(),
+  host: z4.union([
+    z4.hostname(),
+    z4.templateLiteral([z4.hostname(), ":", z4.int()]),
+  ]),
   /**
    * The name of the node in Proxmox VE.
    * This is equal to the hostname of the node.

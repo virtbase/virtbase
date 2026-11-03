@@ -49,8 +49,7 @@ test.beforeAll(async () => {
   cluster = await readClusterConfig();
 
   if (!cluster) {
-    skipReason =
-      "no local Proxmox cluster - run ./tooling/proxmox-cluster/bootstrap.sh";
+    skipReason = "no local Proxmox cluster - run bun cluster:up";
     return;
   }
 
