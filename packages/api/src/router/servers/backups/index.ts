@@ -435,7 +435,7 @@ export const serversBackupsRouter = {
         description: "Updates a specific backup by its unique identifier.",
       },
       permissions: {
-        backups: ["update"],
+        backups: ["write"],
       },
       forbiddenStates: ["suspended", "terminated", "installing"],
     })
