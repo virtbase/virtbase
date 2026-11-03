@@ -1,450 +1,204 @@
 ---
 title: Allgemeine Geschäftsbedingungen (AGB)
-description: Allgemeine Geschäftsbedingungen (AGB) von Virtbase für Hosting-Dienstleistungen, Vertragsabschluss, Zahlungsbedingungen und Haftung.
-lastModified: 2026-03-19
+description: Allgemeine Geschäftsbedingungen von Virtbase für virtuelle Server - Vertragsschluss, Laufzeit und Kündigung, Zahlung, Backups, Missbrauch, Haftung und Datenlöschung.
 ---
 
-<Steps>
+## § 1 Geltungsbereich und Vertragspartner
 
-<Step>
-## Geltungsbereich
+1. Diese AGB gelten für alle Verträge über die Leistungen der Marke „Virtbase“ zwischen der
 
-**1.1 Geltung für Verträge**
+   **BeastHost UG (haftungsbeschränkt)**\
+   Lambarenestraße 21A, 09350 Lichtenstein/Sa., Deutschland\
+   Amtsgericht Chemnitz, HRB 37032, Geschäftsführer: Janic Bellmann\
+   E-Mail: [support@virtbase.com](mailto:support@virtbase.com), Telefon: [+49 7243 2005 862](tel:+4972432005862)
 
-Diese Allgemeinen Geschäftsbedingungen (nachfolgend "AGB") der BeastHost UG (haftungsbeschränkt) (nachfolgend "Anbieter" und "Virtbase"), 
-gelten für alle Verträge, die ein Verbraucher oder Unternehmer (nachfolgend „Kunde“) mit dem Anbieter hinsichtlich der vom Anbieter auf 
-seiner Website dargestellten Leistungen abschließt. Hiermit wird der Einbeziehung von eigenen Bedingungen des Kunden widersprochen, es 
-sei denn, es ist etwas anderes vereinbart.
+   (nachfolgend „Virtbase“, „wir“) und ihren Kunden (nachfolgend „Kunde“, „Sie“).
 
-**1.2 Verbraucherdefinition**
+2. Verbraucher ist jede natürliche Person, die einen Vertrag zu Zwecken abschließt, die überwiegend weder ihrer gewerblichen noch ihrer selbständigen beruflichen Tätigkeit zugerechnet werden können (§ 13 BGB). Unternehmer ist jede natürliche oder juristische Person oder rechtsfähige Personengesellschaft, die bei Vertragsschluss in Ausübung ihrer gewerblichen oder selbständigen beruflichen Tätigkeit handelt (§ 14 BGB). Regelungen, die nur für Verbraucher oder nur für Unternehmer gelten, sind als solche gekennzeichnet.
+3. Bestandteile des Vertrags sind in dieser Rangfolge:\
+   a) die bei der Bestellung angezeigte Paketbeschreibung (Leistungsbeschreibung) und der Preis,\
+   b) diese AGB,\
+   c) die Nutzungsrichtlinie (Acceptable Use Policy, nachfolgend „AUP“) unter [virtbase.com/de/legal/acceptable-use](/de/legal/acceptable-use),\
+   d) für Unternehmer der Vertrag zur Auftragsverarbeitung (AVV) nach § 17.
+4. Abweichende Bedingungen des Kunden gelten nur, wenn wir ihnen ausdrücklich in Textform zustimmen.
 
-Verbraucher im Sinne dieser AGB ist jede natürliche Person, die ein Rechtsgeschäft zu Zwecken abschließt, die überwiegend 
-weder ihrer gewerblichen noch ihrer selbständigen beruflichen Tätigkeit zugerechnet werden können.
+## § 2 Leistungen
 
-**1.3 Unternehmerdefinition**
+1. Virtbase stellt dem Kunden virtuelle Server auf Basis von KVM (nachfolgend „Server“) mit den in der Paketbeschreibung genannten Ressourcen (z. B. vCores, Arbeitsspeicher, NVMe-Speicher, IPv4-Adresse, IPv6-Subnetz, Anbindung) zur Verfügung. Die Server stehen im Rechenzentrum der SkyLink Data Center B.V. in Eygelshoven (Niederlande). Eingehender Datenverkehr wird durch einen DDoS-Filter geleitet.
+2. **Unverwaltete Server.** Die Server sind nicht verwaltet („unmanaged“). Der Kunde erhält vollen administrativen Zugriff (Root/Administrator) und ist allein verantwortlich für Installation, Konfiguration, Sicherheit, Updates und Betrieb des Betriebssystems und aller Software auf dem Server. Virtbase greift in den Server nicht ein, außer in den in diesen AGB genannten Fällen.
+3. Zum Leistungsumfang gehören außerdem: das Kundenportal (app.virtbase.com), die Programmierschnittstelle (API), die Konsole (VNC), eine Firewall auf Ebene des Hypervisors, die Einstellung von Reverse-DNS-Einträgen, die Neuinstallation aus bereitgestellten Vorlagen oder eigenen ISO-Abbildern, die Backup-Funktion nach § 11 sowie der Discord-Bot und die iOS-App. Optionale Funktionen wie der KI-Firewall-Assistent sind Zusatzangebote, die der Kunde nicht nutzen muss.
+4. **Netz und Datenverkehr.** Die Leistung von Virtbase bei der Datenübermittlung endet am Übergabepunkt des eigenen Netzes (AS213661) zum Internet. Für die Übertragung außerhalb dieses Netzes ist Virtbase nicht verantwortlich. Sofern die Paketbeschreibung „unbegrenzten Traffic“ nennt, wird das übertragene Datenvolumen nicht berechnet und nicht begrenzt; die Bandbreite ist durch die angegebene Anbindung begrenzt. Virtbase darf die Bandbreite eines Servers vorübergehend reduzieren, wenn dessen dauerhafte Nutzung den Netzbetrieb oder die Leistung für andere Kunden konkret beeinträchtigt; Virtbase informiert den Kunden darüber. Eine solche Beeinträchtigung liegt insbesondere bei dauerhafter Volllast der Anbindung vor.
+5. **IP-Adressen.** Die IP-Adressen werden für die Dauer des Vertrags überlassen und gehen nicht in das Eigentum des Kunden über. Virtbase darf zugewiesene IP-Adressen aus wichtigem technischem oder rechtlichem Grund (z. B. Umnummerierung des Netzes, Anordnung einer Behörde) ändern und kündigt dies mindestens 14 Tage vorher an, außer in Notfällen.
+6. Leistungen, die nicht in der Paketbeschreibung genannt sind (z. B. Administration des Servers, individuelle Einrichtung, Datenwiederherstellung aus Kundensystemen), schuldet Virtbase nicht. Der Support per E-Mail und Discord zu Fragen der Plattform ist kostenlos.
 
-Unternehmer im Sinne dieser AGB ist eine natürliche oder juristische Person oder eine rechtsfähige Personengesellschaft, 
-die bei Abschluss eines Rechtsgeschäfts in Ausübung ihrer gewerblichen oder selbständigen beruflichen Tätigkeit handelt.
-</Step>
+## § 3 Kundenkonto
+
+1. Für die Bestellung ist ein Kundenkonto erforderlich. Ein Konto dürfen voll geschäftsfähige Personen sowie juristische Personen und Personengesellschaften anlegen. Minderjährige dürfen ein Konto nur mit vorheriger Zustimmung ihrer gesetzlichen Vertreter anlegen und Verträge nur mit deren Zustimmung schließen; Virtbase kann einen Nachweis der Zustimmung verlangen.
+2. Der Kunde hat wahre und vollständige Angaben zu machen und sie aktuell zu halten, insbesondere seine E-Mail-Adresse und Rechnungsanschrift. Unsere vertraglichen Mitteilungen senden wir an die im Konto hinterlegte E-Mail-Adresse.
+3. Der Kunde hält seine Zugangsdaten (Passwort, Passkeys, API-Schlüssel, SSH-Schlüssel) geheim und schützt sie vor dem Zugriff Dritter. Wir empfehlen die Zwei-Faktor-Authentifizierung. Bei Verdacht auf Missbrauch seiner Zugangsdaten informiert der Kunde uns unverzüglich.
 
-<Step>
-## Leistungen von Virtbase
+## § 4 Bestellung und Vertragsschluss
 
-**2.1 Leistungsbeschreibung**
+1. Die Darstellung der Pakete auf virtbase.com ist kein verbindliches Angebot, sondern eine Aufforderung zur Bestellung.
+2. Der Bestellvorgang läuft so ab:\
+   a) Der Kunde wählt ein Paket und gelangt zur Bestellseite. Dort wählt er das Betriebssystem und optional ein Root-Passwort und einen SSH-Schlüssel.\
+   b) Er bestätigt, dass er diese AGB einschließlich der AUP (§ 1 Abs. 3 Buchst. c) akzeptiert und die Datenschutzerklärung zur Kenntnis genommen hat. Verbraucher erklären außerdem, ob sie den sofortigen Beginn der Leistung verlangen (§ 5 Abs. 2).\
+   c) Mit „Mit Zahlung fortfahren“ gelangt er zur Zahlungsseite. Dort gibt er seine Rechnungsanschrift ein und wählt die Zahlungsart. Bis hierhin kann er seine Eingaben jederzeit korrigieren oder den Vorgang abbrechen.\
+   d) Mit Klick auf die Schaltfläche „Jetzt kaufen“ gibt der Kunde ein verbindliches Angebot zum Abschluss eines Vertrags über das gewählte Paket ab.
+3. Der Vertrag kommt zustande, wenn Virtbase das Angebot annimmt. Die Annahme erfolgt durch eine Bestellbestätigung per E-Mail oder durch die Bereitstellung des Servers, je nachdem, was zuerst eintritt. Nimmt Virtbase das Angebot nicht innerhalb von 3 Tagen an (z. B. weil das Paket inzwischen ausverkauft ist oder die Zahlung nicht eingeht), ist der Kunde nicht mehr gebunden; bereits gezahlte Beträge erstattet Virtbase unverzüglich.
+4. Der Server wird erst bereitgestellt, wenn die Zahlung eingegangen ist. Bei SEPA-Lastschrift und Kryptowährung kann das länger dauern als bei Karte oder PayPal.
+5. Nach Vertragsschluss erhält der Kunde per E-Mail eine Vertragsbestätigung mit dem Vertragsinhalt, diesen AGB und – bei Verbrauchern – der Widerrufsbelehrung und der Bestätigung nach § 5 Abs. 2. Die Bestelldaten und Rechnungen sind im Kundenkonto abrufbar. Die jeweils aktuelle Fassung der AGB ist unter [virtbase.com/de/legal/terms](/de/legal/terms) abrufbar; die bei Vertragsschluss geltende Fassung enthält die Vertragsbestätigung.
+6. Vertragssprache ist Deutsch.
+7. **Verlängerungen und Paketwechsel** (§ 7, § 13) werden im Kundenportal über die Seite „Plan“ des Servers bestellt. Abs. 2 bis 5 gelten entsprechend.
 
-Virtbase erbringt Leistungen zur Zugänglichmachung von Inhalten über das Internet. 
-Hierzu stellt er dem Kunden Systemressourcen auf einem virtuellen Server zur Verfügung. 
-Der Kunde kann auf diesem Server Inhalte bis zu einem bestimmten Umfang ablegen. 
-Der genaue Umfang ergibt sich aus der Leistungsbeschreibung.
+## § 5 Widerrufsrecht für Verbraucher
 
-**2.2 Datenkommunikation**
+1. Verbrauchern steht ein gesetzliches Widerrufsrecht zu. Einzelheiten regelt die Widerrufsbelehrung unter [virtbase.com/de/legal/revocation](/de/legal/revocation). Unternehmer haben kein Widerrufsrecht.
+2. Der Server wird in der Regel unmittelbar nach der Bestellung bereitgestellt. Das geschieht bei Verbrauchern nur, wenn sie bei der Bestellung ausdrücklich verlangen, dass Virtbase vor Ablauf der Widerrufsfrist mit der Leistung beginnt. Virtbase bestätigt dieses Verlangen auf einem dauerhaften Datenträger (E-Mail). Da Server nur sofort bereitgestellt werden, ist dieses Verlangen Voraussetzung für die Bestellung.
+3. Widerruft ein Verbraucher, der den sofortigen Beginn verlangt hat, zahlt er einen Betrag, der dem Anteil der bis zum Widerruf erbrachten Leistung an der gesamten bezahlten Laufzeit entspricht (§ 357a Abs. 2 BGB). Den Rest erstattet Virtbase. Mit dem Widerruf endet der Vertrag; der Server und seine Backups werden gelöscht (§ 18).
+4. Das Widerrufsrecht erlischt vorzeitig, wenn Virtbase die Leistung vollständig erbracht hat, nachdem der Verbraucher ausdrücklich zugestimmt hat, dass Virtbase vor Ablauf der Widerrufsfrist mit der Leistung beginnt, und seine Kenntnis davon bestätigt hat, dass er sein Widerrufsrecht bei vollständiger Vertragserfüllung verliert (§ 356 Abs. 4 BGB). Da jede Laufzeit länger ist als die Widerrufsfrist, erlischt das Widerrufsrecht bei Servern in der Praxis nicht vor Ablauf der Widerrufsfrist. Die Bereitstellung des Servers allein lässt das Widerrufsrecht nicht erlöschen.
 
-Auf dem Server werden die Inhalte zum Abruf über das Internet bereitgehalten. 
-Die Leistungen von Virtbase bei der Übermittlung von Daten beschränken sich allein auf die Datenkommunikation zwischen dem vom 
-Virtbase betriebenen Übergabepunkt des eigenen Datenkommunikationsnetzes an das Internet und dem für den Kunden bereitgestellten Server. 
-Eine Einflussnahme auf den Datenverkehr außerhalb des eigenen Kommunikationsnetzes ist Virtbase nicht möglich. 
-Eine erfolgreiche Weiterleitung von Informationen von oder zu dem die Inhalte abfragenden Rechner ist daher insoweit nicht geschuldet.
+## § 6 Preise, Zahlung und Rechnungen
 
-**2.3 Verfügbarkeit**
+1. Es gelten die bei der Bestellung angezeigten Preise. Alle Preise sind Endpreise in Euro einschließlich der gesetzlichen Umsatzsteuer. Maßgeblich ist der Umsatzsteuersatz des Landes der Rechnungsanschrift. Bestellungen sind nur mit einer Rechnungsanschrift in der Europäischen Union möglich.
+2. Für jedes Paket gelten ein Preis für die erste Laufzeit (Kaufpreis) und ein Preis für jede weitere Laufzeit (Verlängerungspreis). Weichen sie voneinander ab, etwa wegen eines Rabatts für die erste Laufzeit, zeigt Virtbase beide vor der Bestellung an. Der Verlängerungspreis wird bei der Bestellung für diesen Server festgelegt und gilt für alle späteren Verlängerungen, bis er nach § 19 geändert wird.
+3. Die Vergütung für eine Laufzeit ist im Voraus fällig: bei der Erstbestellung und bei manueller Verlängerung mit der Bestellung, beim Abo (§ 7 Abs. 3) mit Beginn der jeweiligen Laufzeit.
+4. **Zahlungsarten.** Die verfügbaren Zahlungsarten werden auf der Zahlungsseite angezeigt, insbesondere Kreditkarte, SEPA-Lastschrift und PayPal. Diese Zahlungen wickelt die Stripe Payments Europe, Ltd., 1 Grand Canal Street Lower, Dublin 2, Irland, ab; bei PayPal ist zusätzlich PayPal (Europe) S.à r.l. et Cie, S.C.A. beteiligt. Zahlungen in Kryptowährungen werden über den Dienst AnonPay von Trocador abgewickelt; dabei werden Sie auf eine Seite des Anbieters weitergeleitet. Für die Zahlungsabwicklung können ergänzend die Bedingungen des jeweiligen Zahlungsdienstleisters gelten. Krypto-Zahlungen sind nur für einzelne Zahlungen möglich, nicht für das Abo.
+5. Kosten, die dadurch entstehen, dass eine Lastschrift oder Kartenzahlung aus einem vom Kunden zu vertretenden Grund zurückgebucht wird, trägt der Kunde in der tatsächlich angefallenen Höhe.
+6. **Rechnungen.** Der Kunde erhält zu jeder Zahlung eine Rechnung als PDF per E-Mail; sie ist außerdem im Kundenkonto abrufbar. Der Kunde ist mit elektronischen Rechnungen einverstanden.
+7. Gegen Forderungen von Virtbase kann der Kunde nur mit unbestrittenen oder rechtskräftig festgestellten Forderungen aufrechnen. Das gilt nicht für Gegenansprüche eines Verbrauchers aus demselben Vertragsverhältnis, insbesondere wegen Mängeln.
 
-Der Online-Dienst von Virtbase wird unter dem Vorbehalt der Verfügbarkeit angeboten. 
-Eine Verfügbarkeit zu 100 Prozent ist technisch nicht zu realisieren und kann deshalb 
-dem Kunden von Virtbase nicht gewährleistet werden. Virtbase bemüht sich jedoch, 
-den Dienst möglichst konstant verfügbar zu halten. 
-Insbesondere Wartungs-, Sicherheits- oder Kapazitätsbelange sowie Ereignisse, 
-die nicht im Machtbereich von Virtbase stehen (Störungen von öffentlichen Kommunikationsnetzen, 
-Stromausfälle etc.), können zu Störungen oder zur vorübergehenden Stilllegung des Dienstes führen.
+## § 7 Laufzeit, Verlängerung und Kündigung
 
-**2.4 Sicherungskopien**
+1. **Laufzeit.** Jeder Server ist ein eigener Vertrag. Die Laufzeit beträgt einen Monat ab Bereitstellung (Beispiel: Bereitstellung am 15. März, Ende am 15. April). Die Bestellung ist eine Vorauszahlung für diese Laufzeit (Prepaid).
+2. **Prepaid ohne automatische Verlängerung (Standard).** Der Vertrag endet mit Ablauf der Laufzeit, ohne dass es einer Kündigung bedarf. Der Kunde kann ihn vorher im Kundenportal um jeweils einen weiteren Monat zum Verlängerungspreis verlängern; die neue Laufzeit schließt nahtlos an. Virtbase erinnert den Kunden etwa 5 Tage vor Ablauf per E-Mail. Was nach Ablauf geschieht, regelt § 18.
+3. **Abo mit automatischer Verlängerung.** Der Kunde kann im Kundenportal die automatische Verlängerung einschalten. Dazu stimmt er ausdrücklich zu, dass Virtbase den Verlängerungspreis jeweils zum Ende der Laufzeit von seinem hinterlegten Zahlungsmittel einzieht. Ab dann verlängert sich der Vertrag jeweils um einen Monat, solange er nicht gekündigt ist. Die automatische Verlängerung ist nie voreingestellt.
+4. **Kündigung.** Der Kunde kann das Abo jederzeit zum Ende der laufenden Laufzeit kündigen, ohne Frist und ohne Angabe von Gründen. Dafür stehen zur Verfügung:\
+   a) die Schaltfläche **„Verträge hier kündigen“** auf der Seite „Plan“ des jeweiligen Servers im Kundenportal und die anschließende Bestätigung mit **„Jetzt kündigen“** (§ 312k BGB),\
+   b) jede Erklärung in Textform, z. B. per E-Mail an [support@virtbase.com](mailto:support@virtbase.com).
 
-Soweit nicht anders vereinbart, erstellt der Virtbase keine Sicherungskopien der Kundeninhalte. 
-Der Kunde ist dafür verantwortlich, ausreichende Sicherungskopien seiner bei Virtbase abgelegten Inhalte zu erstellen 
-und vorzuhalten sowie diese nicht ausschließlich auf den Servern von Virtbase zu speichern.
+   Schaltet der Kunde die automatische Verlängerung aus, wird der Vertrag nicht mehr automatisch verlängert und endet mit Ablauf der Laufzeit, sofern der Kunde ihn nicht nach Abs. 2 verlängert. Der Server läuft bis zum Ende der bezahlten Laufzeit weiter. Virtbase bestätigt die Kündigung unverzüglich per E-Mail mit Datum und Uhrzeit des Eingangs und dem Zeitpunkt, zu dem der Vertrag endet. Auch bei Prepaid-Servern steht die Kündigungsschaltfläche zur Verfügung. Eine Verlängerung nach Abs. 2 bleibt bis zum Ablauf der Laufzeit möglich.
 
-**2.5 Anpassung der Hard- und Software**
+5. Virtbase kann das Abo mit einer Frist von 30 Tagen zum Ende einer Laufzeit kündigen.
+6. **Kündigung aus wichtigem Grund.** Das Recht beider Parteien zur fristlosen Kündigung aus wichtigem Grund bleibt unberührt. Ein wichtiger Grund für Virtbase liegt insbesondere vor, wenn\
+   a) der Kunde schwerwiegend gegen die AUP verstößt (insbesondere Abschnitt 2.1 der AUP) oder trotz Aufforderung wiederholt dagegen verstößt,\
+   b) der Kunde bei der Bestellung vorsätzlich falsche Angaben zu seiner Identität gemacht hat, um eine Zahlung zu umgehen oder Missbrauch zu verschleiern,\
+   c) eine Behörde oder ein Gericht die Beendigung der Leistung verbindlich anordnet.
 
-Virtbase ist berechtigt, die zur Erbringung der Leistungen eingesetzte Hard- und Software 
-an den jeweiligen Stand der Technik anzupassen. Ergeben sich aufgrund einer solchen Anpassung zusätzliche 
-Anforderungen an die vom Kunden auf dem Server abgelegten Inhalte, um das Erbringen der Leistungen von Virtbase zu 
-gewährleisten, so wird Virtbase dem Kunden diese zusätzlichen Anforderungen rechtzeitig mitteilen. 
-Der Kunde hat Virtbase in diesem Fall bis spätestens vier Wochen vor dem Umstellungszeitpunkt mitzuteilen, 
-ob er seine Inhalte rechtzeitig - das heißt bis spätestens drei Werktage vor dem Umstellungszeitpunkt - zur Umstellung an 
-die zusätzlichen Anforderungen anpassen wird. Verweigert der Kunde die Anpassung seiner Inhalte oder erklärt er sich hierzu nicht 
-innerhalb vorgenannter Frist gegenüber Virtbase, kann Virtbase das Vertragsverhältnis mit Wirkung zum Umstellungszeitpunkt kündigen.
+   Kündigt Virtbase aus wichtigem Grund, erstattet Virtbase den bereits bezahlten Betrag für die nicht mehr genutzte Laufzeit anteilig, soweit Virtbase keine Gegenansprüche zustehen.
 
-</Step>
+7. **Löschung des Kundenkontos.** Löscht der Kunde sein Kundenkonto im Kundenportal, gelten damit alle Verträge als zum Zeitpunkt der Löschung (nach Ablauf der Wartefrist von 14 Tagen) gekündigt; alle Server und Backups werden gelöscht. Eine Erstattung bereits bezahlter Laufzeit erfolgt in diesem Fall nicht; darauf weist Virtbase im Löschdialog hin. Gesetzliche Rechte des Kunden, insbesondere das Widerrufsrecht, bleiben unberührt.
 
-<Step>
-## Leistungsänderungen
+## § 8 Zahlungsverzug und Sperre
 
-**3.1 Zumutbarkeit**
+1. Schlägt beim Abo der Einzug fehl, versucht Virtbase ihn nach 1, 3, 5 und 7 Tagen erneut. Virtbase informiert den Kunden per E-Mail über den fehlgeschlagenen Einzug und noch einmal vor dem letzten Versuch. Der Kunde kann die Zahlung jederzeit im Kundenportal selbst anstoßen oder ein anderes Zahlungsmittel hinterlegen. Während dieser Zeit läuft der Server weiter.
+2. Gelingt der Einzug auch beim letzten Versuch nicht, endet das Abo mit dem Ende der zuletzt bezahlten Laufzeit. Die Nutzung während der Zahlungsversuche berechnet Virtbase nicht. Der Server wird nach dem letzten Versuch deaktiviert und nach § 18 Abs. 2 und 3 gelöscht, wenn der Kunde ihn nicht vorher verlängert. Verlängert der Kunde, schließt die neue Laufzeit an die zuletzt bezahlte an.
+3. Kommt der Kunde mit sonstigen Zahlungen in Verzug, gelten die gesetzlichen Regeln (§§ 286, 288 BGB). Virtbase kann die Leistungen für den betroffenen Server nach Ankündigung in Textform mit einer Frist von mindestens 5 Tagen zurückbehalten, solange der fällige Betrag nicht gezahlt ist. Bei Verbrauchern ist eine Sperre nur zulässig, wenn der Rückstand nicht unerheblich ist.
 
-Virtbase behält sich vor, die angebotenen Leistungen zu ändern oder abweichende Leistungen anzubieten, es sei denn, dies ist für den Kunden nicht zumutbar.
+## § 9 Verfügbarkeit und Wartung
 
-**3.2 Vorbehalte**
+1. Virtbase betreibt die Infrastruktur mit der Sorgfalt eines ordentlichen Hosting-Anbieters (u. a. redundante Strom- und Netzanbindung im Rechenzentrum, Überwachung der Systeme) und bemüht sich um eine möglichst unterbrechungsfreie Verfügbarkeit. Eine bestimmte Verfügbarkeit (Service Level) sichert Virtbase nicht zu; es gibt keine Service-Level-Vereinbarung und keine pauschalen Gutschriften. Die gesetzlichen Rechte des Kunden bei Ausfällen (§ 14) bleiben unberührt.
+2. **Wartung.** Virtbase darf Wartungsarbeiten durchführen, die den Betrieb kurzzeitig unterbrechen (z. B. Neustart des Hosts, Migration auf andere Hardware, Sicherheitsupdates). Planbare Wartungen kündigt Virtbase mindestens 48 Stunden vorher per E-Mail oder im Kundenportal an und legt sie möglichst in verkehrsarme Zeiten. Notfallwartungen, etwa zum Schließen akuter Sicherheitslücken oder zur Abwehr von Angriffen, sind ohne Vorankündigung zulässig.
+3. Unterbrechungen durch Umstände außerhalb des Einflussbereichs von Virtbase (z. B. Störungen fremder Netze, großflächige DDoS-Angriffe, die der Filter nicht abwehren kann, höhere Gewalt) hat Virtbase nicht zu vertreten. Virtbase darf den Verkehr zu einem angegriffenen Server vorübergehend filtern oder umleiten oder die angegriffene IP-Adresse vorübergehend vom Netz nehmen (Null-Routing), wenn das zum Schutz des Netzes oder anderer Kunden erforderlich ist.
 
-Virtbase behält sich darüber hinaus vor, die angebotenen Leistungen zu ändern oder abweichende Leistungen anzubieten,
+## § 10 Pflichten des Kunden
 
-- soweit Virtbase hierzu aufgrund einer Änderung der Rechtslage verpflichtet ist;
-- soweit Virtbase damit einem gegen sich gerichteten Gerichtsurteil oder einer Behördenentscheidung nachkommt;
-- soweit die jeweilige Änderung notwendig ist, um bestehende Sicherheitslücken zu schließen;
-- wenn die Änderung lediglich vorteilhaft für den Kunden ist; oder
-- wenn die Änderung rein technischer oder prozessualer Natur ohne wesentliche Auswirkungen für den Kunden ist.
+1. Der Kunde nutzt die Leistungen nur im Rahmen der Gesetze und der AUP. Die AUP regelt insbesondere verbotene Inhalte und Handlungen, die Meldewege und das Verfahren bei Verstößen.
+2. Der Kunde ist für alle Inhalte und Aktivitäten auf seinen Servern verantwortlich, auch wenn er den Zugang Dritten überlässt oder ein Dritter den Server unberechtigt nutzt, weil der Kunde ihn nicht ausreichend gesichert hat. Er hält Betriebssystem und Software aktuell, verwendet sichere Zugangsdaten und beseitigt bekannte Sicherheitslücken in angemessener Zeit.
+3. Der Kunde darf die Server Dritten zur Nutzung überlassen (z. B. Hosting für eigene Kunden). Er verpflichtet diese Dritten auf die AUP und bleibt gegenüber Virtbase verantwortlich.
+4. Der Kunde prüft E-Mails an seine Kontoadresse regelmäßig und antwortet auf Missbrauchsmeldungen innerhalb der in der Meldung genannten Frist (§ 12).
+5. Der Kunde räumt Virtbase die Rechte ein, die zur Leistungserbringung erforderlich sind, insbesondere die Inhalte auf seinem Server zu speichern, zu übertragen, abrufbar zu machen und im Rahmen der Backup-Funktion zu vervielfältigen.
 
-**3.3 Ausnahmen**
+## § 11 Datensicherung (Backups)
 
-Änderungen mit lediglich unwesentlichem Einfluss auf die Leistungen von Virtbase stellen keine Leistungsänderungen im Sinne dieser Ziffer dar. 
-Dies gilt insbesondere für Änderungen rein graphischer Art und die bloße Änderung der Anordnung von Funktionen.
-</Step>
+1. **Der Kunde ist für die Sicherung seiner Daten selbst verantwortlich.** Er sichert seine Daten regelmäßig und in angemessener Weise, mindestens vor jeder wesentlichen Änderung, und bewahrt mindestens eine aktuelle Kopie außerhalb der Infrastruktur von Virtbase auf.
+2. Virtbase stellt im Kundenportal eine Backup-Funktion bereit, mit der der Kunde Sicherungen seines Servers selbst anlegen, wiederherstellen und löschen kann. Die Backup-Funktion kann aus technischen Gründen begrenzt sein, etwa in der Zahl der Backups pro Tag; die geltenden Grenzen nennt Virtbase im Kundenportal. Virtbase erstellt keine Backups auf eigene Initiative.
+3. **Diese Backups liegen im selben Rechenzentrum und Speichersystem wie der Server.** Sie schützen vor Fehlern im Server (z. B. fehlerhafte Updates, versehentliches Löschen), aber nicht vor Ereignissen, die das Rechenzentrum oder das Speichersystem selbst betreffen. Sie ersetzen deshalb keine eigene Sicherung nach Abs. 1. Backups können nicht heruntergeladen werden. Eine Herausgabe von Backups ist aus technischen Gründen auch auf Anfrage ausgeschlossen.
+4. Backups werden zusammen mit dem Server gelöscht (§ 18).
 
-<Step>
-## Vertragsabschluss
+## § 12 Maßnahmen bei Missbrauch und Rechtsverstößen
 
-**4.1 Angebote**
+1. Erhält Virtbase Kenntnis von Anhaltspunkten für einen Verstoß gegen Gesetze oder die AUP, die einem Server des Kunden zuzuordnen sind (z. B. durch eine Meldung Dritter, Behördenhinweise oder eigene Überwachung des Netzes), prüft Virtbase den Sachverhalt und wählt die mildeste Maßnahme, die den Verstoß wirksam beendet. Das Verfahren im Einzelnen regelt Abschnitt 4 der AUP.
+2. Mögliche Maßnahmen sind, in aufsteigender Reihenfolge:\
+   a) Information des Kunden mit Aufforderung zur Stellungnahme und Abhilfe,\
+   b) Begrenzung der Netzwerkgeschwindigkeit (Drosselung),\
+   c) Sperre des ausgehenden Netzwerkverkehrs (Isolierung), wobei der Zugriff über die Konsole erhalten bleibt,\
+   d) Herunterfahren des Servers,\
+   e) Kündigung aus wichtigem Grund (§ 7 Abs. 6).
 
-Die auf der Website von Virtbase beschriebenen Leistungen stellen keine verbindlichen Angebote dar, 
-sondern dienen zur Abgabe eines verbindlichen Angebots durch den Kunden.
+   Die Maßnahmen a) bis d) sind vorübergehend und lassen die Daten auf dem Server unberührt. Virtbase hebt sie auf, sobald der Verstoß abgestellt ist. Eine Kündigung entscheidet immer ein Mensch; sie wird nicht automatisch ausgelöst.
 
-**4.2 Bestellvorgang**
+3. Grundsätzlich informiert Virtbase den Kunden vor einer Maßnahme und gibt ihm Gelegenheit zur Stellungnahme und Abhilfe innerhalb einer angemessenen Frist. Ohne vorherige Anhörung darf Virtbase sofort handeln, wenn\
+   a) von dem Server eine akute Gefahr für Netz, Systeme oder Dritte ausgeht (z. B. laufender DDoS-Angriff, Phishing-Seite, Schadsoftware-Verteilung, kompromittierter Server),\
+   b) offensichtlich Inhalte nach Abschnitt 2.1 der AUP betroffen sind oder\
+   c) eine behördliche oder gerichtliche Anordnung vorliegt.
 
-Der Kunde kann das Angebot über das auf der Website von Virtbase bereitgestellte Online-Bestellformular abgeben. 
-Dabei gibt der Kunde nach Eingabe seiner persönlichen Daten durch Klicken des den Bestellvorgang abschließenden Buttons ein rechtlich 
-verbindliches Vertragsangebot in Bezug auf die ausgewählten Leistungen ab.
+   In diesen Fällen informiert Virtbase den Kunden unverzüglich nach der Maßnahme mit Begründung.
 
-**4.3 Annahme des Angebots**
+4. Bei Maßnahmen, die der Kunde zu vertreten hat, bleibt seine Zahlungspflicht bestehen. Stellt sich eine Maßnahme als unberechtigt heraus, verlängert Virtbase die Laufzeit des Servers um die Dauer der Einschränkung.
+5. Solange ein Missbrauchsfall offen ist, kann Virtbase neue Bestellungen des Kunden ablehnen. Bestehende Server, Verlängerungen und Rechnungen bleiben davon unberührt.
+6. Gesetzliche Pflichten von Virtbase, etwa nach der Verordnung (EU) 2022/2065 (Digital Services Act) und der Verordnung (EU) 2021/784 (Verbreitung terroristischer Online-Inhalte), bleiben unberührt.
 
-Virtbase kann das Angebot des Kunden innerhalb von fünf Tagen annehmen,
+## § 13 Paketwechsel und Leistungsänderungen
 
-- indem Virtbase dem Kunden eine schriftliche Auftragsbestätigung oder eine Auftragsbestätigung in Textform (Fax oder E-Mail) übermittelt, wobei insoweit der Zugang der Auftragsbestätigung beim Kunden maßgeblich ist, oder
-- indem Virtbase den Kunden nach Abgabe von dessen Bestellung zur Zahlung auffordert.
+1. Der Kunde kann während der laufenden Laufzeit im Kundenportal auf ein größeres Paket wechseln. Für die restliche Laufzeit zahlt er die anteilige Differenz der Verlängerungspreise, mindestens 0,50 €; das Ende der Laufzeit bleibt unverändert. Ab der nächsten Verlängerung gilt der Verlängerungspreis des neuen Pakets. Ein Wechsel auf ein günstigeres Paket oder auf ein Paket mit weniger Speicherplatz ist nicht möglich.
+2. Virtbase darf die Leistungen ändern, wenn dafür ein triftiger Grund besteht, insbesondere zur Anpassung an neue Technik oder neue Rechtslage, zur Behebung von Sicherheitsrisiken oder weil ein Vorlieferant eine Leistung nicht mehr anbietet, die Änderung den Kunden keine zusätzlichen Kosten verursacht und die vertraglich vereinbarten Kernleistungen (Ressourcen nach der Paketbeschreibung) nicht verschlechtert. Virtbase informiert den Kunden darüber klar und verständlich in Textform.
+3. Beeinträchtigt eine Änderung nach Abs. 2 die Nutzung durch einen Verbraucher mehr als nur unerheblich, informiert Virtbase ihn mindestens 30 Tage vorher; der Verbraucher kann den Vertrag dann innerhalb von 30 Tagen nach Zugang der Information oder nach der Änderung, je nachdem, was später eintritt, unentgeltlich beenden (§ 327r BGB). Bereits bezahlte Beträge für die Zeit nach Vertragsende erstattet Virtbase.
+4. Bereitgestellte Betriebssystemvorlagen können durch neuere Versionen ersetzt oder eingestellt werden. Auf bereits installierte Server hat das keine Auswirkung.
 
-Liegen mehrere der vorgenannten Alternativen vor, kommt der Vertrag in dem Zeitpunkt zustande, in dem eine der vorgenannten Alternativen zuerst eintritt. 
-Die Frist zur Annahme des Angebots beginnt am Tag nach der Absendung des Angebots durch den Kunden zu laufen und endet mit dem Ablauf des fünften Tages, welcher 
-auf die Absendung des Angebots folgt. Nimmt der Virtbase das Angebot des Kunden innerhalb vorgenannter Frist nicht an, so gilt dies als Ablehnung des Angebots mit der 
-Folge, dass der Kunde nicht mehr an seine Willenserklärung gebunden ist.
+## § 14 Mängelrechte
 
+1. Für Mängel gelten die gesetzlichen Vorschriften, für Verbraucher insbesondere §§ 327 ff. BGB (digitale Produkte), soweit sich aus § 15 nichts anderes ergibt.
+2. Der Kunde meldet Störungen unverzüglich an [support@virtbase.com](mailto:support@virtbase.com) und beschreibt sie so genau wie möglich.
+3. Für Unternehmer gilt zusätzlich: Die verschuldensunabhängige Haftung für Mängel, die bereits bei Vertragsschluss vorhanden waren (§ 536a Abs. 1 Alt. 1 BGB), ist ausgeschlossen. Ansprüche wegen Mängeln verjähren in einem Jahr; das gilt nicht für Ansprüche nach § 15 Abs. 1.
 
-**4.4 Zahlungsabwicklung**
+## § 15 Haftung
 
-Bei Auswahl einer von Virtbase angebotenen Zahlungsart erfolgt die Zahlungsabwicklung über den Zahlungsdienstleister 
-Stripe Technology Europe, Limited (im Folgenden: „Stripe“), unter Geltung der Stripe-Nutzungsbedingungen, 
-einsehbar unter https://stripe.com/. Zahlt der Kunde mittels einer im 
-Online-Bestellvorgang auswählbaren von Stripe angebotenen Zahlungsart, erklärt der Verkäufer schon jetzt die Annahme des Angebots des Kunden in dem Zeitpunkt, 
-in dem der Kunde den Button anklickt, welcher den Bestellvorgang abschließt.
+1. Virtbase haftet unbeschränkt\
+   a) bei Vorsatz und grober Fahrlässigkeit,\
+   b) für Schäden aus der Verletzung des Lebens, des Körpers oder der Gesundheit,\
+   c) nach dem Produkthaftungsgesetz,\
+   d) im Umfang einer übernommenen Garantie und bei arglistig verschwiegenen Mängeln.
+2. Bei leichter Fahrlässigkeit haftet Virtbase nur für die Verletzung wesentlicher Vertragspflichten (Kardinalpflichten). Das sind Pflichten, deren Erfüllung die ordnungsgemäße Durchführung des Vertrags überhaupt erst ermöglicht und auf deren Einhaltung der Kunde regelmäßig vertrauen darf, hier insbesondere die Bereitstellung des Servers mit den vereinbarten Ressourcen und der Schutz der gespeicherten Daten vor unbefugtem Zugriff. In diesem Fall ist die Haftung auf den bei Vertragsschluss vorhersehbaren, vertragstypischen Schaden begrenzt.
+3. **Datenverlust.** Für den Verlust von Daten haftet Virtbase nach Abs. 1 und 2. Bei leichter Fahrlässigkeit ist die Haftung auf den Aufwand begrenzt, der für die Wiederherstellung der Daten aus einer Sicherung nach § 11 Abs. 1 erforderlich gewesen wäre. Ein Mitverschulden des Kunden, etwa weil er keine eigene Sicherung angelegt hat, wird nach § 254 BGB berücksichtigt.
+4. Im Übrigen ist die Haftung ausgeschlossen. Die vorstehenden Regeln gelten auch für die persönliche Haftung der gesetzlichen Vertreter, Mitarbeiter und Erfüllungsgehilfen von Virtbase. Die Haftung nach Art. 82 DSGVO gegenüber betroffenen Personen bleibt unberührt.
 
+## § 16 Freistellung
 
-**4.5 Speicherung des Vertragstextes**
+Nimmt ein Dritter Virtbase wegen Inhalten oder Handlungen auf einem Server des Kunden in Anspruch, die gegen Gesetze oder die AUP verstoßen, stellt der Kunde Virtbase von diesen Ansprüchen einschließlich angemessener Kosten der Rechtsverteidigung frei, soweit er die Rechtsverletzung zu vertreten hat. Virtbase informiert den Kunden unverzüglich über die Inanspruchnahme und gibt ihm Gelegenheit zur Stellungnahme. Der Kunde unterstützt Virtbase bei der Abwehr der Ansprüche mit den erforderlichen Informationen.
 
-Bei der Abgabe eines Angebots über das Online-Bestellformular von Virtbase wird der Vertragstext nach dem Vertragsschluss von Virtbase gespeichert 
-und dem Kunden nach Absendung von dessen Bestellung in Textform (z. B. E-Mail, Fax oder Brief) übermittelt. Eine darüber hinausgehende Zugänglichmachung 
-des Vertragstextes durch Virtbase erfolgt nicht. Sofern der Kunde vor Absendung seiner Bestellung ein Nutzerkonto für die Website von Virtbase eingerichtet hat, 
-werden die Bestelldaten auf der Website archiviert und können vom Kunden über dessen passwortgeschütztes Nutzerkonto unter Angabe der entsprechenden Login-Daten 
-kostenlos abgerufen werden.
+## § 17 Datenschutz und Auftragsverarbeitung
 
-**4.6 Korrektur von Eingabefehlern**
+1. Wie Virtbase personenbezogene Daten des Kunden (z. B. Konto-, Vertrags- und Zahlungsdaten) als Verantwortlicher verarbeitet, erläutert die Datenschutzerklärung unter [virtbase.com/de/legal/privacy](/de/legal/privacy).
+2. Für personenbezogene Daten, die der Kunde auf seinen Servern verarbeitet, ist der Kunde Verantwortlicher; Virtbase verarbeitet sie in seinem Auftrag. Ist der Kunde Unternehmer oder verarbeitet er auf dem Server personenbezogene Daten nicht ausschließlich für persönliche oder familiäre Zwecke, gilt der **Vertrag zur Auftragsverarbeitung nach Art. 28 DSGVO** unter [virtbase.com/de/legal/dpa](/de/legal/dpa) (mit seinen Anlagen) als Bestandteil dieses Vertrags. Er kommt mit der Annahme dieser AGB bei der Bestellung zustande und kann dort als PDF heruntergeladen werden.
+3. Virtbase nimmt von den Inhalten auf den Servern grundsätzlich keine Kenntnis. Ein Zugriff erfolgt nur in den in der Datenschutzerklärung, im AVV und in § 12 genannten Fällen.
 
-Vor verbindlicher Abgabe der Bestellung über das Online-Bestellformular von Virtbase kann der Kunde mögliche Eingabefehler durch aufmerksames Lesen 
-der auf dem Bildschirm dargestellten Informationen erkennen. Ein wirksames technisches Mittel zur besseren Erkennung von Eingabefehlern kann dabei die 
-Vergrößerungsfunktion des Browsers sein, mit deren Hilfe die Darstellung auf dem Bildschirm vergrößert wird. Seine Eingaben kann der Kunde im Rahmen des 
-elektronischen Bestellprozesses so lange über die üblichen Tastatur- und Mausfunktionen korrigieren, bis er den Button anklickt, welcher den Bestellvorgang abschließt.
+## § 18 Vertragsende, Datenlöschung und Datenexport
 
-**4.7 Sprache**
+1. **Export.** Der Kunde kann seine Daten bis zum Ende der Laufzeit jederzeit selbst sichern und übertragen (z. B. per SSH, SFTP oder rsync). Virtbase stellt die Daten nicht in einem bestimmten Format bereit. Für Daten seines Kundenkontos kann der Kunde im Kundenportal einen Datenexport anfordern.
+2. **Nach Ablauf der Laufzeit** ohne Verlängerung wird der Server heruntergefahren und deaktiviert, beim Abo erst nach dem letzten Einzugsversuch (§ 8). Er kann dann nicht mehr gestartet werden; Backups können weder angelegt noch wiederhergestellt werden. Die Daten bleiben noch **5 Tage** gespeichert. Verlängert der Kunde in dieser Zeit, wird der Server reaktiviert; die neue Laufzeit beginnt mit dem Ablauf der alten. Virtbase weist den Kunden bei der Deaktivierung per E-Mail auf die Löschung hin.
+3. **Löschung.** Nach Ablauf dieser 5 Tage löscht Virtbase den Server mit allen Daten und Backups endgültig. Eine Wiederherstellung ist danach nicht möglich. Bei Widerruf (§ 5), Kündigung aus wichtigem Grund (§ 7 Abs. 6) und Löschung des Kundenkontos (§ 7 Abs. 7) gilt dasselbe ab dem Ende des Vertrags.
+4. Wird ein Kundenkonto ohne aktiven Server 6 Monate lang nicht genutzt, kündigt Virtbase die Löschung des Kontos per E-Mail an. Meldet sich der Kunde nicht innerhalb von 30 Tagen an, wird das Konto gelöscht; 7 Tage vor Ablauf erinnert Virtbase erneut.
+5. Daten, die Virtbase aufgrund gesetzlicher Pflichten aufbewahren muss (z. B. Rechnungen), werden bis zum Ablauf der Fristen aufbewahrt und gesperrt. Einzelheiten enthält die Datenschutzerklärung.
 
-Für den Vertragsschluss steht die deutsche Sprache zur Verfügung.
+## § 19 Änderungen dieser AGB und der Preise
 
-**4.8 Bestellabwicklung**
+1. Virtbase kann dem Kunden Änderungen dieser AGB, der AUP oder des Verlängerungspreises anbieten. Virtbase teilt das Angebot mindestens 30 Tage vor dem geplanten Inkrafttreten in Textform mit, stellt die Änderungen übersichtlich dar und nennt den Grund.
+2. **Die Änderungen werden nur wirksam, wenn der Kunde ihnen zustimmt**, etwa durch Bestätigung im Kundenportal. Schweigen gilt nicht als Zustimmung.
+3. Stimmt der Kunde nicht zu, läuft der Vertrag zu den bisherigen Bedingungen weiter. Virtbase kann ein Abo dann nach § 7 Abs. 5 ordentlich kündigen; eine Prepaid-Laufzeit endet ohnehin mit ihrem Ablauf. Eine Verlängerung nach dem geplanten Inkrafttreten kann Virtbase von der Zustimmung abhängig machen.
+4. Für neue Bestellungen gilt die jeweils bei der Bestellung akzeptierte Fassung.
+5. Änderungen, die nur die Rechtslage nachvollziehen oder ausschließlich zugunsten des Kunden wirken, teilt Virtbase mit; sie bedürfen keiner Zustimmung, soweit sie nicht in die vertraglichen Hauptleistungen eingreifen.
 
-Die Bestellabwicklung und Kontaktaufnahme finden in der Regel per E-Mail und automatisierter Bestellabwicklung statt. 
-Der Kunde hat sicherzustellen, dass die von ihm zur Bestellabwicklung angegebene E-Mail-Adresse zutreffend ist, so dass unter dieser Adresse 
-die von Virtbase versandten E-Mails empfangen werden können. Insbesondere hat der Kunde bei dem Einsatz von SPAM-Filtern sicherzustellen, dass alle von Virtbase 
-oder von diesem mit der Bestellabwicklung beauftragten Dritten versandten E-Mails zugestellt werden können.
+## § 20 Kommunikation
 
-</Step>
+Vertragliche Erklärungen können in Textform abgegeben werden, insbesondere per E-Mail an [support@virtbase.com](mailto:support@virtbase.com) bzw. an die im Kundenkonto hinterlegte E-Mail-Adresse. Der Kunde stellt sicher, dass E-Mails von virtbase.com nicht von Spamfiltern abgefangen werden. Der Support über Discord eignet sich nicht für vertragliche Erklärungen.
 
-<Step>
-## Widerrufsrecht
+## § 21 Streitbeilegung
 
-**5.1 Erlischen des Widerrufsrechts**
+Virtbase ist nicht bereit und nicht verpflichtet, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen. Bei Fragen oder Beschwerden wenden Sie sich bitte an [support@virtbase.com](mailto:support@virtbase.com).
 
-Mit dem Bereitstellen der gewählten Hosting-Dienstleistungen auf der von Virtbase bereitgestellten Kundenplattform (https://app.virtbase.com) gilt die Leistung vollständig erbracht. 
-Das Recht auf Widerruf erlischt somit.
-</Step>
+## § 22 Schlussbestimmungen
 
-<Step>
-## Pflichten des Kunden
-
-**6.1 Inhalte des Kunden**
-
-Die vom Kunden auf dem für ihn bestimmten Speicherplatz abgelegten Inhalte können urheber- und datenschutzrechtlich geschützt sein. 
-Der Kunde räumt Virtbase das Recht ein, die von ihm auf dem Server abgelegten Inhalte bei Abfragen über das Internet zugänglich machen zu dürfen, 
-insbesondere sie hierzu zu vervielfältigen und zu übermitteln sowie sie zum Zwecke der Datensicherung vervielfältigen zu können. Der Kunde prüft in eigener Verantwortung, 
-ob die Nutzung personenbezogener Daten durch ihn datenschutzrechtlichen Anforderungen genügt.
-
-**6.2 Verbotene Inhalte**
-
-Der Kunde verpflichtet sich, auf dem zur Verfügung gestellten Speicherplatz keine Inhalte abzulegen, die gegen geltendes Recht verstoßen oder Dritte 
-in ihren Rechten verletzen. Der Kunde trägt ferner dafür Sorge, dass von ihm installierte Programme, Skripte o.ä. den Betrieb des Servers oder des Kommunikationsnetzes 
-von Virtbase oder die Sicherheit und Integrität anderer auf den Servern von Virtbase abgelegten Daten nicht gefährden.
-
-**6.3 Freistellung**
-
-Der Kunde stellt Virtbase von sämtlichen Ansprüchen frei, die Dritte Virtbase gegenüber wegen Verletzung ihrer Rechte aufgrund vom Kunden auf dem Server 
-abgelegter Inhalte geltend machen. Der Kunde übernimmt hierbei die Kosten der notwendigen Rechtsverteidigung einschließlich aller Gerichts- und Anwaltskosten in angemessener 
-Höhe. Dies gilt nicht, wenn die Rechtsverletzung vom Kunden nicht zu vertreten ist. Der Kunde ist verpflichtet, Virtbase im Falle einer Inanspruchnahme durch Dritte 
-unverzüglich, wahrheitsgemäß und vollständig alle Informationen zur Verfügung zu stellen, die für die Prüfung der Ansprüche und eine Verteidigung erforderlich sind.
-
-**6.4 Sperrrecht**
-
-Im Falle eines unmittelbar drohenden oder eingetretenen Verstoßes gegen die vorstehenden Verpflichtungen sowie bei der Geltendmachung nicht offensichtlich unbegründeter 
-Ansprüche Dritter gegen Virtbase aufgrund der auf dem Server abgelegten Inhalte ist Virtbase berechtigt, unter Berücksichtigung auch der berechtigten Interessen des 
-Kunden die Anbindung dieser Inhalte an das Internet ganz oder teilweise mit sofortiger Wirkung vorübergehend einzustellen. Virtbase wird den Kunden über diese Maßnahme 
-unverzüglich informieren.
-
-**6.5 Deaktivierung schädlicher Programme**
-
-Gefährden oder beeinträchtigen vom Kunden installierte Programme, Skripte o.ä. den Betrieb des Servers oder des Kommunikationsnetzes von Virtbase oder die Sicherheit 
-und Integrität anderer auf den Servern von Virtbase abgelegter Daten, so kann Virtbase diese Programme, Skripte etc. deaktivieren oder deinstallieren. Falls die 
-Beseitigung der Gefährdung oder Beeinträchtigung dies erfordert, ist Virtbase auch berechtigt, die Anbindung der auf dem Server abgelegten Inhalte an das Internet zu 
-unterbrechen. Virtbase wird den Kunden über diese Maßnahme unverzüglich informieren.
-
-**6.6 Zugangsdaten**
-
-Für den Zugriff auf den für den Kunden bestimmten Speicherplatz erhält der Kunde eine Benutzerkennung und ein veränderbares Passwort. Der Kunde ist verpflichtet, das 
-Passwort in regelmäßigen Abständen zu ändern. Der Kunde darf das Passwort nur an solche Personen weitergeben, die von ihm berechtigt wurden, auf den Speicherplatz zuzugreifen.
-
-</Step>
-
-<Step>
-## Sicherheitsvorschriften
-
-**7.1 Allgemeine Sicherheitsverpflichtung**
-
-Jeder Kunde ist verpflichtet, die technische Sicherheit und Funktionsfähigkeit der Systeme von Virtbase zu gewährleisten. Insbesondere ist es untersagt:
-
-- auf Daten oder Bereiche zuzugreifen, die nicht für den jeweiligen Nutzer vorgesehen sind;
-- technische Systeme auf Schwachstellen oder Sicherheitslücken zu überprüfen, Sicherheitsmechanismen zu umgehen oder Manipulationen vorzunehmen;
-- Header-Informationen, IP-Adressen oder sonstige Kommunikationsdaten zu verfälschen.
-
-**7.2 Zulässige Nutzung**
-
-Virtbase darf ausschließlich über gängige, aktuelle Webbrowser genutzt werden. Jede Handlung, die den ordnungsgemäßen Betrieb der Plattform beeinträchtigt, ist untersagt. Hierzu zählen insbesondere Angriffe oder Maßnahmen wie XSS, SQL-Injection, CSRF, Phishing, DoS, DDoS, Brute-Force, Session Hijacking, automatisierte oder skriptgesteuerte Zugriffe sowie vergleichbare Eingriffe in die Infrastruktur des Betreibers.
-
-**7.3 Folgen von Verstößen**
-
-Zuwiderhandlungen gegen diese Sicherheitsbestimmungen können sowohl zivilrechtliche als auch strafrechtliche Konsequenzen nach sich ziehen. Virtbase ist berechtigt, Verstöße zu untersuchen, Beweise zu sichern und im Bedarfsfall Strafverfolgungsbehörden einzuschalten.
-
-**7.4 Vorgehen bei Missbrauchsmeldungen (Abuse)**
-
-Geht eine Abuse-Meldung zu einem Server oder einer IP-Adresse ein, kann Virtbase das betroffene System oder die IP-Adresse vorübergehend sperren. Der Kunde wird über eine solche Sperre per E-Mail informiert.
-</Step>
-
-<Step>
-## Zahlungsbedingungen und Vergütung
-
-**8.1 Preisangaben**
-
-Sofern in der Leistungsbeschreibung nichts anderes genannt ist, verstehen sich alle angegebenen Preise als Gesamtpreise inklusive der gesetzlichen Umsatzsteuer.
-
-**8.2 Zahlungsarten und Modalitäten**
-
-Alle verfügbaren Zahlungsarten sowie die jeweiligen Zahlungsbedingungen sind auf der Webseite von Virtbase aufgeführt.
-
-**8.3 Zahlung über „PayPal“**
-
-Wählt der Kunde eine über den Zahlungsdienst PayPal angebotene Zahlungsart, erfolgt die Abwicklung über PayPal. PayPal kann sich zur Zahlungsabwicklung weiterer Dienstleister bedienen. Bietet Virtbase über PayPal Zahlungsarten mit Vorleistung an (z. B. Rechnungskauf oder Ratenzahlung), wird die Forderung an PayPal oder einen von PayPal beauftragten Zahlungsdienstleister abgetreten. PayPal kann eine Bonitätsprüfung durchführen. Wird die gewählte Zahlungsart abgelehnt, kann Virtbase eine alternative Zahlungsweise verlangen. Allgemeine Kundenanliegen (z. B. zu Lieferungen, Stornierungen oder Reklamationen) sind weiterhin an Virtbase zu richten.
-
-**8.4 Zahlung per „SOFORT“ (Klarna)**
-
-Bei der Zahlungsoption „SOFORT“ erfolgt die Abwicklung über die SOFORT GmbH, Theresienhöhe 12, 80339 München. Der Kunde benötigt ein für „SOFORT“ freigeschaltetes Onlinebanking-Konto und muss sich dort legitimieren. Nach Bestätigung der Zahlungsanweisung wird der Betrag automatisch vom Bankkonto des Kunden eingezogen. Weitere Informationen sind unter https://www.klarna.com/sofort abrufbar.
-
-**8.5 Zahlung per Banküberweisung / SEPA**
-
-Bei Auswahl der Zahlungsart „Banküberweisung“ oder „SEPA-Überweisung“ ist der Rechnungsbetrag unmittelbar nach Vertragsschluss fällig, sofern keine abweichende Vereinbarung besteht. Dienstleistungen werden erst nach vollständigem Zahlungseingang aktiviert.
-</Step>
-
-<Step>
-## Zustandekommen eines Vertrages, Speicherung des Vertragstextes
-
-**9.1 Vertragsabschluss**
-
-Die nachfolgenden Regelungen gelten für alle Bestellungen über den Onlineshop oder das Kundenpanel von Virtbase (https://app.virtbase.com).
-
-**9.2 Vertragspartner**
-
-Der Vertrag kommt zustande mit:\
-BeastHost UG (haftungsbeschränkt)\
-Lambarenestraße 21A\
-09350 Lichtenstein/Sa.\
-Deutschland
-
-**9.3 Angebot und Annahme**
-
-Mit dem Absenden einer Bestellung gibt der Kunde ein verbindliches Angebot zum Abschluss eines Vertrages ab. Virtbase bestätigt den Erhalt der Bestellung automatisch per E-Mail. Der Vertrag kommt mit Bereitstellung der Dienstleistung zustande.
-
-**9.4 Bestellvorgang**
-
-Während des Bestellvorgangs kann der Kunde seine Eingaben jederzeit prüfen, korrigieren oder den Prozess abbrechen. Nach Absenden der Bestellung erhält der Kunde eine Bestätigungsmail. Kurz darauf wird das bestellte Produkt im Kundenbereich bereitgestellt.
-</Step>
-
-<Step>
-## Haftung
-
-**10.1 Grundsatz**
-
-Virtbase haftet im gesetzlichen Umfang für Schäden oder Aufwendungen, die aus Vertrags-, Delikts- oder sonstigen Rechtsverhältnissen entstehen.
-
-**10.2 Unbeschränkte Haftung**
-
-Eine uneingeschränkte Haftung besteht bei Vorsatz, grober Fahrlässigkeit, schuldhafter Verletzung von Leben, Körper oder Gesundheit, im Falle einer Garantieübernahme oder bei zwingenden gesetzlichen Haftungstatbeständen (z. B. Produkthaftungsgesetz).
-
-**10.3 Begrenzte Haftung**
-
-Bei fahrlässiger Verletzung wesentlicher Vertragspflichten ist die Haftung auf den typischen, vorhersehbaren Schaden beschränkt. Wesentliche Vertragspflichten sind solche, deren Erfüllung für die ordnungsgemäße Vertragsdurchführung notwendig ist und auf deren Einhaltung der Kunde vertrauen darf.
-
-**10.4 Ausschluss der weitergehenden Haftung**
-
-Eine darüberhinausgehende Haftung ist ausgeschlossen.
-
-**10.5 Erfüllungsgehilfen und Vertreter**
-
-Die vorstehenden Regelungen gelten gleichermaßen für gesetzliche Vertreter und Erfüllungsgehilfen von Virtbase.
-</Step>
-
-<Step>
-## Vorschriften für die Kontonutzung
-
-**11.1 Berechtigte Nutzer**
-
-Ein Nutzerkonto bei Virtbase kann von natürlichen, juristischen Personen oder Personengesellschaften eingerichtet werden, sofern diese voll geschäftsfähig sind.
-
-**11.2 Minderjährige Kunden**
-
-Minderjährige benötigen die Zustimmung eines Erziehungsberechtigten zur Nutzung von Virtbase. Virtbase kann eine schriftliche Bestätigung dieser Einwilligung jederzeit verlangen.
-
-**11.3 Altersnachweis**
-
-Für bestimmte Produkte kann eine Altersprüfung erforderlich sein, um gesetzliche Vorgaben zum Jugendschutz einzuhalten.
-
-**11.4 Erstellung des Kontos**
-
-Zur Kontoerstellung müssen eine gültige E-Mail-Adresse und ein sicheres Passwort angegeben werden. Falsche oder unvollständige Angaben können zur Löschung des Kontos und Beendigung der Vertragsbeziehung führen. Bereits aufgeladenes Guthaben wird in diesem Fall nicht erstattet.
-
-**11.5 Umgang mit dem Support**
-
-Ein respektvoller und sachlicher Umgangston gegenüber dem Kundendienst ist verpflichtend. Bei beleidigendem Verhalten kann Virtbase den Support verweigern oder das Konto sperren. Virtbase erwartet einen konstruktiven Dialog und verpflichtet sich umgekehrt zu freundlicher Kommunikation.
-
-**11.6 Sperrung von Konten**
-
-Virtbase ist berechtigt, Konten ohne Vorankündigung zu sperren, wenn ein wichtiger Grund besteht – etwa ein Gesetzesverstoß oder die Verletzung dieser AGB. In solchen Fällen erfolgt keine Rückerstattung von Guthaben.
-
-**11.7 Guthabenregelung**
-
-Aufgeladenes Guthaben kann nicht bar ausgezahlt werden. Es ist ausschließlich zur Nutzung von Virtbase-Diensten vorgesehen. Bei Rückbuchungen oder PayPal-Fällen kann das Konto vorübergehend oder dauerhaft gesperrt werden.
-</Step>
-
-<Step>
-## Verfügbarkeit
-
-Virtbase strebt eine durchgehende Verfügbarkeit seiner Systeme (24/7) an, übernimmt jedoch keine Gewähr für eine lückenlose Erreichbarkeit. Unterbrechungen durch Wartung, technische Störungen oder höhere Gewalt sind möglich. Eine Haftung für Datenverluste oder Ausfälle ist ausgeschlossen.
-</Step>
-
-<Step>
-## Erbringen von Leistungen
-
-**13.1 Schutz der technischen Infrastruktur**
-
-Virtbase behält sich vor, bei übermäßiger Nutzung oder außergewöhnlicher Belastung einzelner Systeme Produkte temporär zu deaktivieren oder zu entfernen, um die Gesamtstabilität zu sichern.
-
-**13.2 Kundensupport**
-
-Der allgemeine Support steht kostenfrei zur Verfügung. Administrativer oder individueller Zusatzsupport kann nach Absprache kostenpflichtig angeboten werden.
-
-**13.3 Bereitstellung**
-
-Produkte werden nach erfolgreicher Bestellung in der Regel automatisch bereitgestellt. Bei bestimmten Diensten, z. B. Domains, kann es aufgrund externer Validierungen zu Verzögerungen kommen.
-
-**13.4 Domainbedingungen**
-
-Domains werden mindestens für ein Jahr registriert. Erfolgt keine fristgerechte Kündigung, kann die Domain gelöscht werden. Inaktive Domains dürfen entfernt werden.
-
-**13.5 Verantwortung des Kunden**
-
-Die Übermittlung der Domainregistrierung erfolgt durch Virtbase an die zuständige Vergabestelle. Der Kunde trägt die Verantwortung für die Richtigkeit seiner Daten. Virtbase übernimmt keine Garantie für eine erfolgreiche Registrierung.
-</Step>
-
-<Step>
-## Leistungsbeschreibung
-
-**14.1 Zulässige Nutzung**
-
-Dienste von Virtbase dürfen nicht für rechtswidrige Zwecke oder die Verbreitung urheberrechtswidriger oder pornografischer Inhalte genutzt werden. Verstöße führen zur Sperrung oder Entfernung der Inhalte.
-
-**14.2 IP-Zuweisung**
-
-Die dem Kunden zugewiesene IP-Adresse kann sich aus technischen Gründen jederzeit ändern. Ein Anspruch auf eine feste IP-Adresse besteht nicht.
-
-**14.3 Gesetzliche Anpassungen**
-
-Virtbase kann Funktionen einschränken oder einstellen, wenn dies gesetzlich erforderlich ist. Kunden werden darüber rechtzeitig informiert.
-
-**14.4 Fair-Use-Prinzip**
-
-Bei übermäßiger Nutzung des im Tarif enthaltenen Datenverkehrs wird der Anschluss temporär gedrosselt. Die Höhe der Drosselung sowie die Festlegung der Obergrenze für den Datenverkehr obliegt Virtbase.
-</Step>
-
-<Step>
-## Änderung der AGB
-
-**15.1 Zustimmungspflichtige Änderungen**
-
-Virtbase kann diese AGB ändern, sofern der Kunde den Änderungen ausdrücklich zustimmt.
-
-**15.2 Änderungen ohne Zustimmung**
-
-Eine Anpassung ohne Zustimmung ist zulässig, wenn:
-
-- sie aufgrund gesetzlicher Vorschriften notwendig ist,  
-- sie der Umsetzung gerichtlicher oder behördlicher Entscheidungen dient,  
-- sie neue oder ergänzende Dienste betrifft,  
-- sie ausschließlich vorteilhaft für den Kunden ist oder  
-- sie rein technischer Natur ist, ohne wesentliche Auswirkungen für den Kunden.
-
-**15.3 Informationspflicht**
-
-Wesentliche Änderungen werden dem Kunden in geeigneter Weise mitgeteilt. Als wesentlich gelten Änderungen, die Art, Umfang oder Laufzeit der Leistungen betreffen.
-
-**15.4 Kündigungsrecht**
-
-Das Recht des Kunden zur Kündigung bleibt unberührt.
-</Step>
-
-<Step>
-## Anwendbares Recht, Gerichtsstand
-
-**16.1 Rechtswahl**
-
-Es gilt das Recht der Bundesrepublik Deutschland. Bei Verbrauchern gilt diese Rechtswahl nur, wenn dadurch keine zwingenden Verbraucherschutzrechte des Wohnsitzstaates eingeschränkt werden.
-
-**16.2 Gerichtsstand**
-
-Ist der Kunde Kaufmann, juristische Person des öffentlichen Rechts oder öffentlich-rechtliches Sondervermögen mit Sitz in Deutschland, ist der Geschäftssitz von Virtbase ausschließlicher Gerichtsstand. Gleiches gilt bei Sitz im Ausland, sofern der Vertrag dem gewerblichen Handeln zugeordnet werden kann.
-</Step>
-
-<Step>
-## Salvatorische Klausel
-
-**17.1 Teilunwirksamkeit**
-
-Sollte eine Bestimmung dieser AGB unwirksam oder undurchführbar sein, bleibt die Gültigkeit der übrigen Bestimmungen unberührt.
-
-**17.2 Ersatzbestimmung**
-
-Anstelle der unwirksamen Regelung tritt eine Bestimmung, die dem wirtschaftlichen Zweck der ursprünglichen am nächsten kommt.
-
-**17.3 Lückenregelung**
-
-Sollte eine Regelungslücke bestehen, gilt eine Regelung als vereinbart, die dem Sinn und Zweck des Vertrags entspricht.
-</Step>
-
-
-</Steps>
+1. Es gilt das Recht der Bundesrepublik Deutschland unter Ausschluss des UN-Kaufrechts. Bei Verbrauchern gilt diese Rechtswahl nur, soweit dadurch nicht der Schutz durch zwingende Vorschriften des Staates entzogen wird, in dem der Verbraucher seinen gewöhnlichen Aufenthalt hat.
+2. Ist der Kunde Kaufmann, juristische Person des öffentlichen Rechts oder öffentlich-rechtliches Sondervermögen, oder hat er keinen allgemeinen Gerichtsstand in Deutschland, ist ausschließlicher Gerichtsstand für alle Streitigkeiten aus diesem Vertrag Chemnitz. Virtbase kann den Kunden auch an seinem allgemeinen Gerichtsstand verklagen. Für Klagen gegen Verbraucher gilt kein abweichender Gerichtsstand; es bleibt bei den gesetzlichen Regeln.
+3. Sollten einzelne Bestimmungen unwirksam sein, bleibt der Vertrag im Übrigen wirksam. An die Stelle der unwirksamen Bestimmung treten die gesetzlichen Vorschriften.

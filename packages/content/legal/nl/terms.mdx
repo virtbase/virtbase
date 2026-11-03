@@ -1,450 +1,206 @@
 ---
 title: Algemene Voorwaarden (AV)
-description: Algemene Voorwaarden (AV) van Virtbase voor hostingdiensten, contractsluiting, betalingsvoorwaarden en aansprakelijkheid.
-lastModified: 2026-03-19
+description: Algemene voorwaarden van Virtbase voor virtuele servers - totstandkoming van de overeenkomst, looptijd en opzegging, betaling, back-ups, misbruik, aansprakelijkheid en verwijdering van gegevens.
 ---
 
-<Steps>
+De Duitse versie van deze voorwaarden is juridisch bindend. Deze vertaling dient alleen ter informatie.
 
-<Step>
-## Toepassingsgebied
+## § 1 Toepassingsgebied en contractpartijen
 
-**1.1 Toepasselijkheid op Contracten**
+1. Deze AV gelden voor alle overeenkomsten over de diensten van het merk „Virtbase” tussen
 
-Deze Algemene Voorwaarden (hierna "AV") van BeastHost UG (haftungsbeschränkt) (hierna "Aanbieder" en "Virtbase"),
-zijn van toepassing op alle contracten die een consument of ondernemer (hierna "Klant") sluit met de Aanbieder met betrekking tot de diensten
-die door de Aanbieder op zijn website worden gepresenteerd. De opname van de eigen voorwaarden van de Klant wordt hierbij afgewezen, tenzij
-anders overeengekomen.
+   **BeastHost UG (haftungsbeschränkt)**\
+   Lambarenestraße 21A, 09350 Lichtenstein/Sa., Duitsland\
+   Kantongerecht (Amtsgericht) Chemnitz, HRB 37032, bedrijfsleider: Janic Bellmann\
+   E-mail: [support@virtbase.com](mailto:support@virtbase.com), telefoon: [+49 7243 2005 862](tel:+4972432005862)
 
-**1.2 Consumentendefinitie**
+   (hierna „Virtbase”, „wij”) en haar klanten (hierna „Klant”, „u”).
 
-Een consument in de zin van deze AV is elke natuurlijke persoon die een rechtshandeling aangaat voor doeleinden die overwegend
-noch aan hun commerciële noch aan hun zelfstandige beroepsmatige activiteit kunnen worden toegeschreven.
+2. Consument is iedere natuurlijke persoon die een overeenkomst sluit voor doeleinden die overwegend buiten zijn bedrijfs- of beroepsactiviteit vallen (§ 13 BGB, Duits Burgerlijk Wetboek). Ondernemer is iedere natuurlijke of rechtspersoon of rechtsbevoegde personenvennootschap die bij het sluiten van de overeenkomst handelt in de uitoefening van zijn bedrijfs- of beroepsactiviteit (§ 14 BGB). Bepalingen die alleen voor consumenten of alleen voor ondernemers gelden, zijn als zodanig aangeduid.
+3. De overeenkomst bestaat uit het volgende, in deze rangorde:\
+   a) de bij de bestelling getoonde pakketbeschrijving (dienstbeschrijving) en de prijs,\
+   b) deze AV,\
+   c) het beleid voor aanvaardbaar gebruik (Acceptable Use Policy, hierna „AUP”) op [virtbase.com/nl/legal/acceptable-use](/nl/legal/acceptable-use),\
+   d) voor ondernemers de verwerkersovereenkomst volgens § 17.
+4. Afwijkende voorwaarden van de Klant gelden alleen als wij daarmee uitdrukkelijk in tekstvorm instemmen.
 
-**1.3 Ondernemersdefinitie**
+## § 2 Diensten
 
-Een ondernemer in de zin van deze AV is een natuurlijke of rechtspersoon of een rechtsbevoegde personenvennootschap,
-die handelt in de uitoefening van hun commerciële of zelfstandige beroepsmatige activiteit bij het aangaan van een rechtshandeling.
-</Step>
+1. Virtbase stelt de Klant virtuele servers op basis van KVM (hierna „Servers”) ter beschikking met de in de pakketbeschrijving genoemde middelen (bijv. vCores, werkgeheugen, NVMe-opslag, IPv4-adres, IPv6-subnet, verbinding). De Servers staan in het datacenter van SkyLink Data Center B.V. in Eygelshoven (Nederland). Inkomend dataverkeer wordt door een DDoS-filter geleid.
+2. **Onbeheerde servers.** De Servers worden niet beheerd („unmanaged”). De Klant krijgt volledige beheerderstoegang (root/administrator) en is als enige verantwoordelijk voor de installatie, configuratie, beveiliging, updates en werking van het besturingssysteem en alle software op de Server. Virtbase grijpt niet in de Server in, behalve in de in deze AV genoemde gevallen.
+3. Tot de dienstverlening behoren verder: het klantenportaal (app.virtbase.com), de programmeerinterface (API), de console (VNC), een firewall op hypervisorniveau, het instellen van reverse-DNS-vermeldingen, de herinstallatie vanuit aangeboden sjablonen of eigen ISO-images, de back-upfunctie volgens § 11, de Discord-bot en de iOS-app. Optionele functies zoals de AI-firewallassistent zijn aanvullende aanbiedingen die de Klant niet hoeft te gebruiken.
+4. **Netwerk en dataverkeer.** De dienstverlening van Virtbase bij de overdracht van gegevens eindigt op het overdrachtspunt van het eigen netwerk (AS213661) naar het internet. Voor de overdracht buiten dit netwerk is Virtbase niet verantwoordelijk. Voor zover de pakketbeschrijving „onbeperkt verkeer” vermeldt, wordt het overgedragen datavolume niet in rekening gebracht en niet beperkt; de bandbreedte is beperkt door de vermelde verbinding. Virtbase mag de bandbreedte van een Server tijdelijk verminderen als het aanhoudende gebruik ervan de netwerkwerking of de prestaties voor andere klanten concreet verstoort; Virtbase informeert de Klant daarover. Van een dergelijke verstoring is met name sprake bij aanhoudend volledig gebruik van de verbinding.
+5. **IP-adressen.** De IP-adressen worden voor de looptijd van de overeenkomst ter beschikking gesteld en worden geen eigendom van de Klant. Virtbase mag toegewezen IP-adressen om een gewichtige technische of juridische reden (bijv. hernummering van het netwerk, bevel van een autoriteit) wijzigen en kondigt dit ten minste 14 dagen van tevoren aan, behalve in noodgevallen.
+6. Diensten die niet in de pakketbeschrijving worden genoemd (bijv. beheer van de Server, individuele inrichting, gegevensherstel uit systemen van de Klant), is Virtbase niet verschuldigd. Support per e-mail en Discord over vragen met betrekking tot het platform is kosteloos.
 
-<Step>
-## Diensten van Virtbase
+## § 3 Klantaccount
 
-**2.1 Dienstbeschrijving**
+1. Voor een bestelling is een klantaccount vereist. Een account mag worden aangemaakt door volledig handelingsbekwame personen en door rechtspersonen en personenvennootschappen. Minderjarigen mogen alleen met voorafgaande toestemming van hun wettelijke vertegenwoordigers een account aanmaken en alleen met hun toestemming overeenkomsten sluiten; Virtbase kan een bewijs van de toestemming verlangen.
+2. De Klant moet juiste en volledige gegevens verstrekken en deze actueel houden, met name zijn e-mailadres en factuuradres. Onze contractuele mededelingen sturen wij naar het in het account opgeslagen e-mailadres.
+3. De Klant houdt zijn toegangsgegevens (wachtwoord, passkeys, API-sleutels, SSH-sleutels) geheim en beschermt ze tegen toegang door derden. Wij raden tweefactorauthenticatie aan. Bij vermoeden van misbruik van zijn toegangsgegevens informeert de Klant ons onverwijld.
 
-Virtbase levert diensten voor het toegankelijk maken van inhoud via het internet.
-Hiertoe stelt het de Klant systeembronnen ter beschikking op een virtuele server.
-De Klant kan op deze server inhoud opslaan tot een bepaalde omvang.
-De exacte omvang wordt gespecificeerd in de dienstbeschrijving.
+## § 4 Bestelling en totstandkoming van de overeenkomst
 
-**2.2 Datacommunicatie**
+1. De presentatie van de pakketten op virtbase.com is geen bindend aanbod, maar een uitnodiging tot bestellen.
+2. De bestelling verloopt als volgt:\
+   a) De Klant kiest een pakket en komt op de bestelpagina. Daar kiest hij het besturingssysteem en optioneel een rootwachtwoord en een SSH-sleutel.\
+   b) Hij bevestigt dat hij deze AV inclusief de AUP (§ 1 lid 3 onder c) aanvaardt en kennis heeft genomen van het privacybeleid. Consumenten verklaren bovendien of zij verlangen dat de uitvoering van de dienst onmiddellijk begint (§ 5 lid 2).\
+   c) Met „Doorgaan naar betaling” komt hij op de betaalpagina. Daar voert hij zijn factuuradres in en kiest hij de betaalmethode. Tot dit punt kan hij zijn invoer op elk moment corrigeren of de bestelling afbreken.\
+   d) Door op de knop „Nu betalen” te klikken, doet de Klant een bindend aanbod tot het sluiten van een overeenkomst over het gekozen pakket.
+3. De overeenkomst komt tot stand wanneer Virtbase het aanbod aanvaardt. De aanvaarding geschiedt door een bestelbevestiging per e-mail of door de terbeschikkingstelling van de Server, afhankelijk van wat het eerst plaatsvindt. Aanvaardt Virtbase het aanbod niet binnen 3 dagen (bijv. omdat het pakket inmiddels is uitverkocht of de betaling niet binnenkomt), dan is de Klant niet meer gebonden; reeds betaalde bedragen betaalt Virtbase onverwijld terug.
+4. De Server wordt pas ter beschikking gesteld wanneer de betaling is ontvangen. Bij SEPA-incasso en cryptovaluta kan dat langer duren dan bij kaart of PayPal.
+5. Na het sluiten van de overeenkomst ontvangt de Klant per e-mail een bevestiging van de overeenkomst met de inhoud van de overeenkomst, deze AV en – bij consumenten – de informatie over het herroepingsrecht en de bevestiging volgens § 5 lid 2. De bestelgegevens en facturen zijn in het klantaccount beschikbaar. De actuele versie van de AV is beschikbaar op [virtbase.com/nl/legal/terms](/nl/legal/terms); de bij het sluiten van de overeenkomst geldende versie is opgenomen in de bevestiging van de overeenkomst.
+6. De taal van de overeenkomst is Duits.
+7. **Verlengingen en pakketwijzigingen** (§ 7, § 13) worden in het klantenportaal besteld via de pagina „Plan” van de Server. De leden 2 tot en met 5 zijn van overeenkomstige toepassing.
 
-De inhoud wordt op de server beschikbaar gehouden voor ophaling via het internet.
-De diensten van Virtbase bij de overdracht van gegevens zijn uitsluitend beperkt tot datacommunicatie tussen het overdrachtspunt van Virtbase's
-eigen datacommunicatienetwerk naar het internet dat door Virtbase wordt beheerd en de server die voor de Klant wordt geleverd.
-Virtbase kan geen invloed uitoefenen op dataverkeer buiten het eigen communicatienetwerk.
-Succesvolle doorgifte van informatie van of naar de computer die de inhoud opvraagt, is daarom in zoverre niet verschuldigd.
+## § 5 Herroepingsrecht voor consumenten
 
-**2.3 Beschikbaarheid**
+1. Consumenten hebben een wettelijk herroepingsrecht. De details staan in de informatie over het herroepingsrecht op [virtbase.com/nl/legal/revocation](/nl/legal/revocation). Ondernemers hebben geen herroepingsrecht.
+2. De Server wordt in de regel direct na de bestelling ter beschikking gesteld. Bij consumenten gebeurt dat alleen als zij bij de bestelling uitdrukkelijk verlangen dat Virtbase vóór het einde van de herroepingstermijn met de uitvoering begint. Virtbase bevestigt dit verzoek op een duurzame gegevensdrager (e-mail). Omdat Servers alleen direct ter beschikking worden gesteld, is dit verzoek een voorwaarde voor de bestelling.
+3. Herroept een consument die de onmiddellijke aanvang heeft verlangd, dan betaalt hij een bedrag dat overeenkomt met het aandeel van de tot de herroeping geleverde dienst in de totale betaalde looptijd (§ 357a lid 2 BGB). Het restant betaalt Virtbase terug. Met de herroeping eindigt de overeenkomst; de Server en zijn back-ups worden verwijderd (§ 18).
+4. Het herroepingsrecht vervalt voortijdig wanneer Virtbase de dienst volledig heeft verricht nadat de consument uitdrukkelijk heeft ingestemd met de aanvang van de uitvoering vóór het einde van de herroepingstermijn en heeft bevestigd te weten dat hij zijn herroepingsrecht verliest bij volledige uitvoering van de overeenkomst (§ 356 lid 4 BGB). Omdat elke looptijd langer is dan de herroepingstermijn, vervalt het herroepingsrecht bij Servers in de praktijk niet vóór het einde van de herroepingstermijn. De terbeschikkingstelling van de Server alleen doet het herroepingsrecht niet vervallen.
 
-De online dienst van Virtbase wordt aangeboden onder voorbehoud van beschikbaarheid.
-100 procent beschikbaarheid is technisch niet haalbaar en kan daarom niet
-worden gegarandeerd aan de Klant door Virtbase. Virtbase streeft er echter naar om
-de dienst zo constant mogelijk beschikbaar te houden.
-In het bijzonder kunnen onderhouds-, beveiligings- of capaciteitsproblemen evenals gebeurtenissen
-die niet binnen de macht van Virtbase liggen (storingen aan openbare communicatienetwerken,
-stroomuitval, enz.) leiden tot storingen of tijdelijke uitschakeling van de dienst.
+## § 6 Prijzen, betaling en facturen
 
-**2.4 Back-ups**
+1. De bij de bestelling getoonde prijzen gelden. Alle prijzen zijn eindprijzen in euro inclusief de wettelijke btw. Bepalend is het btw-tarief van het land van het factuuradres. Bestellingen zijn alleen mogelijk met een factuuradres in de Europese Unie.
+2. Voor elk pakket gelden een prijs voor de eerste looptijd (aankoopprijs) en een prijs voor elke volgende looptijd (verlengingsprijs). Wijken ze van elkaar af, bijvoorbeeld door een korting voor de eerste looptijd, dan toont Virtbase beide vóór de bestelling. De verlengingsprijs wordt bij de bestelling voor deze Server vastgelegd en geldt voor alle latere verlengingen, totdat hij volgens § 19 wordt gewijzigd.
+3. De vergoeding voor een looptijd is vooraf verschuldigd: bij de eerste bestelling en bij handmatige verlenging met de bestelling, bij het abonnement (§ 7 lid 3) bij het begin van elke looptijd.
+4. **Betaalmethoden.** De beschikbare betaalmethoden worden op de betaalpagina getoond, met name creditcard, SEPA-incasso en PayPal. Deze betalingen worden verwerkt door Stripe Payments Europe, Ltd., 1 Grand Canal Street Lower, Dublin 2, Ierland; bij PayPal is daarnaast PayPal (Europe) S.à r.l. et Cie, S.C.A. betrokken. Betalingen in cryptovaluta worden verwerkt via de dienst AnonPay van Trocador; u wordt daarbij doorgestuurd naar een pagina van deze aanbieder. Voor de betalingsverwerking kunnen aanvullend de voorwaarden van de betreffende betaaldienstverlener gelden. Betalingen in cryptovaluta zijn alleen mogelijk voor afzonderlijke betalingen, niet voor het abonnement.
+5. Kosten die ontstaan doordat een incasso of kaartbetaling om een aan de Klant toe te rekenen reden wordt teruggeboekt, komen voor rekening van de Klant ter hoogte van de werkelijk gemaakte kosten.
+6. **Facturen.** De Klant ontvangt voor elke betaling een factuur als pdf per e-mail; deze is ook in het klantaccount beschikbaar. De Klant gaat akkoord met elektronische facturen.
+7. De Klant kan vorderingen van Virtbase alleen verrekenen met onbetwiste of in rechte onherroepelijk vastgestelde vorderingen. Dit geldt niet voor tegenvorderingen van een consument uit dezelfde contractuele verhouding, met name wegens gebreken.
 
-Tenzij anders overeengekomen, maakt Virtbase geen back-ups van Klantinhoud.
-De Klant is verantwoordelijk voor het maken en onderhouden van adequate back-ups van hun inhoud die bij Virtbase is opgeslagen
-en voor het niet uitsluitend opslaan hiervan op de servers van Virtbase.
+## § 7 Looptijd, verlenging en opzegging
 
-**2.5 Aanpassing van Hardware en Software**
+1. **Looptijd.** Elke Server is een afzonderlijke overeenkomst. De looptijd bedraagt één maand vanaf de terbeschikkingstelling (voorbeeld: terbeschikkingstelling op 15 maart, einde op 15 april). De bestelling is een vooruitbetaling voor deze looptijd (prepaid).
+2. **Prepaid zonder automatische verlenging (standaard).** De overeenkomst eindigt bij het verstrijken van de looptijd, zonder dat opzegging nodig is. De Klant kan haar daarvóór in het klantenportaal telkens met een maand verlengen tegen de verlengingsprijs; de nieuwe looptijd sluit naadloos aan. Virtbase herinnert de Klant ongeveer 5 dagen vóór het verstrijken per e-mail. Wat er na het verstrijken gebeurt, regelt § 18.
+3. **Abonnement met automatische verlenging.** De Klant kan in het klantenportaal de automatische verlenging inschakelen. Daartoe stemt hij er uitdrukkelijk mee in dat Virtbase de verlengingsprijs telkens aan het einde van de looptijd van zijn opgeslagen betaalmiddel incasseert. Vanaf dat moment wordt de overeenkomst telkens met een maand verlengd, zolang zij niet is opgezegd. De automatische verlenging is nooit vooraf ingesteld.
+4. **Opzegging.** De Klant kan het abonnement op elk moment opzeggen tegen het einde van de lopende looptijd, zonder opzegtermijn en zonder opgave van redenen. Daarvoor staan ter beschikking:\
+   a) de knop **„Abonnement opzeggen”** op de pagina „Plan” van de betreffende Server in het klantenportaal en de daaropvolgende bevestiging met **„Abonnement nu opzeggen”** (§ 312k BGB),\
+   b) elke verklaring in tekstvorm, bijv. per e-mail aan [support@virtbase.com](mailto:support@virtbase.com).
 
-Virtbase is gerechtigd de hardware en software die worden gebruikt om de diensten te leveren
-aan te passen aan de respectieve stand van de techniek. Als een dergelijke aanpassing resulteert in aanvullende
-vereisten voor de inhoud die door de Klant op de server is opgeslagen om de levering van de diensten van Virtbase te waarborgen,
-zal Virtbase de Klant tijdig op de hoogte stellen van deze aanvullende vereisten.
-In dit geval moet de Klant Virtbase uiterlijk vier weken voor de omschakelingsdatum informeren
-of zij hun inhoud tijdig zullen aanpassen - dat wil zeggen uiterlijk drie werkdagen voor de omschakelingsdatum - aan
-de aanvullende vereisten voor de omschakeling. Als de Klant weigert hun inhoud aan te passen of dit niet verklaart
-binnen de voornoemde termijn aan Virtbase, kan Virtbase de contractuele relatie beëindigen met ingang van de omschakelingsdatum.
+   Schakelt de Klant de automatische verlenging uit, dan wordt de overeenkomst niet meer automatisch verlengd en eindigt zij bij het verstrijken van de looptijd, tenzij de Klant haar volgens lid 2 verlengt. De Server blijft draaien tot het einde van de betaalde looptijd. Virtbase bevestigt de opzegging onverwijld per e-mail met datum en tijdstip van ontvangst en het tijdstip waarop de overeenkomst eindigt. Ook bij prepaid-Servers is de opzegknop beschikbaar. Een verlenging volgens lid 2 blijft mogelijk tot het verstrijken van de looptijd.
 
-</Step>
+5. Virtbase kan het abonnement opzeggen met een termijn van 30 dagen tegen het einde van een looptijd.
+6. **Opzegging om gewichtige redenen.** Het recht van beide partijen om de overeenkomst om gewichtige redenen zonder opzegtermijn op te zeggen, blijft onverlet. Een gewichtige reden voor Virtbase is er met name wanneer\
+   a) de Klant de AUP ernstig schendt (met name sectie 2.1 van de AUP) of ondanks een aanmaning herhaaldelijk schendt,\
+   b) de Klant bij de bestelling opzettelijk onjuiste gegevens over zijn identiteit heeft verstrekt om een betaling te omzeilen of misbruik te verhullen,\
+   c) een autoriteit of een rechter de beëindiging van de dienst bindend beveelt.
 
-<Step>
-## Dienstwijzigingen
+   Zegt Virtbase om gewichtige redenen op, dan betaalt Virtbase het reeds betaalde bedrag voor het niet meer gebruikte deel van de looptijd naar rato terug, voor zover Virtbase geen tegenvorderingen heeft.
 
-**3.1 Redelijkheid**
+7. **Verwijdering van het klantaccount.** Verwijdert de Klant zijn klantaccount in het klantenportaal, dan gelden alle overeenkomsten als opgezegd op het tijdstip van de verwijdering (na afloop van de wachttermijn van 14 dagen); alle Servers en back-ups worden verwijderd. Een terugbetaling van reeds betaalde looptijd vindt in dat geval niet plaats; Virtbase wijst daarop in het verwijderingsvenster. De wettelijke rechten van de Klant, met name het herroepingsrecht, blijven onverlet.
 
-Virtbase behoudt zich het recht voor om de aangeboden diensten te wijzigen of andere diensten aan te bieden, tenzij dit onredelijk is voor de Klant.
+## § 8 Betalingsachterstand en blokkering
 
-**3.2 Voorbehouden**
+1. Mislukt bij het abonnement de incasso, dan probeert Virtbase het na 1, 3, 5 en 7 dagen opnieuw. Virtbase informeert de Klant per e-mail over de mislukte incasso en nogmaals vóór de laatste poging. De Klant kan de betaling op elk moment zelf in het klantenportaal starten of een ander betaalmiddel opslaan. Gedurende deze tijd blijft de Server draaien.
+2. Mislukt de incasso ook bij de laatste poging, dan eindigt het abonnement aan het einde van de laatst betaalde looptijd. Het gebruik tijdens de betalingspogingen brengt Virtbase niet in rekening. Na de laatste poging wordt de Server gedeactiveerd en volgens § 18 lid 2 en 3 verwijderd, tenzij de Klant hem eerder verlengt. Verlengt de Klant, dan sluit de nieuwe looptijd aan op de laatst betaalde.
+3. Is de Klant met andere betalingen in verzuim, dan gelden de wettelijke regels (§§ 286, 288 BGB). Virtbase kan de diensten voor de betreffende Server na een aankondiging in tekstvorm met een termijn van ten minste 5 dagen opschorten, zolang het verschuldigde bedrag niet is betaald. Bij consumenten is een blokkering alleen toegestaan als de achterstand niet onaanzienlijk is.
 
-Virtbase behoudt zich verder het recht voor om de aangeboden diensten te wijzigen of andere diensten aan te bieden,
+## § 9 Beschikbaarheid en onderhoud
 
-- voor zover Virtbase hiertoe verplicht is vanwege een wijziging in de juridische situatie;
-- voor zover Virtbase hiermee voldoet aan een tegen haar gericht rechterlijk vonnis of administratieve beslissing;
-- voor zover de betreffende wijziging noodzakelijk is om bestaande beveiligingslekken te dichten;
-- als de wijziging slechts voordelig is voor de Klant; of
-- als de wijziging puur technisch of procedureel van aard is zonder significante impact voor de Klant.
+1. Virtbase exploiteert de infrastructuur met de zorg van een zorgvuldige hostingaanbieder (o.a. redundante stroom- en netwerkaansluiting in het datacenter, bewaking van de systemen) en streeft naar een zo ononderbroken mogelijke beschikbaarheid. Virtbase garandeert geen bepaalde beschikbaarheid (serviceniveau); er is geen service level agreement en er zijn geen forfaitaire tegoeden. De wettelijke rechten van de Klant bij storingen (§ 14) blijven onverlet.
+2. **Onderhoud.** Virtbase mag onderhoudswerkzaamheden uitvoeren die de werking kortstondig onderbreken (bijv. herstart van de host, migratie naar andere hardware, beveiligingsupdates). Planbaar onderhoud kondigt Virtbase ten minste 48 uur van tevoren aan per e-mail of in het klantenportaal en plant het zo mogelijk in rustige periodes. Noodonderhoud, bijvoorbeeld om acute beveiligingslekken te dichten of aanvallen af te weren, is zonder aankondiging toegestaan.
+3. Onderbrekingen door omstandigheden buiten de invloedssfeer van Virtbase (bijv. storingen in netwerken van derden, grootschalige DDoS-aanvallen die het filter niet kan afweren, overmacht) zijn Virtbase niet toe te rekenen. Virtbase mag het verkeer naar een aangevallen Server tijdelijk filteren of omleiden of het aangevallen IP-adres tijdelijk van het netwerk halen (null routing) als dat nodig is om het netwerk of andere klanten te beschermen.
 
-**3.3 Uitzonderingen**
+## § 10 Verplichtingen van de Klant
 
-Wijzigingen met slechts onbeduidende impact op de diensten van Virtbase vormen geen dienstwijzigingen in de zin van dit artikel.
-Dit geldt in het bijzonder voor wijzigingen van puur grafische aard en de loutere verandering in de rangschikking van functies.
-</Step>
+1. De Klant gebruikt de diensten alleen binnen de grenzen van de wet en de AUP. De AUP regelt met name verboden inhoud en handelingen, de meldkanalen en de procedure bij overtredingen.
+2. De Klant is verantwoordelijk voor alle inhoud en activiteiten op zijn Servers, ook als hij de toegang aan derden overlaat of een derde de Server onbevoegd gebruikt omdat de Klant hem niet voldoende heeft beveiligd. Hij houdt het besturingssysteem en de software actueel, gebruikt veilige toegangsgegevens en verhelpt bekende beveiligingslekken binnen een redelijke termijn.
+3. De Klant mag de Servers aan derden ter beschikking stellen (bijv. hosting voor eigen klanten). Hij verplicht deze derden tot naleving van de AUP en blijft tegenover Virtbase verantwoordelijk.
+4. De Klant controleert e-mails aan zijn accountadres regelmatig en reageert op meldingen van misbruik binnen de in de melding genoemde termijn (§ 12).
+5. De Klant verleent Virtbase de rechten die nodig zijn voor de dienstverlening, met name om de inhoud op zijn Server op te slaan, over te dragen, toegankelijk te maken en in het kader van de back-upfunctie te verveelvoudigen.
 
-<Step>
-## Contractsluiting
+## § 11 Gegevensbeveiliging (back-ups)
 
-**4.1 Aanbiedingen**
+1. **De Klant is zelf verantwoordelijk voor het beveiligen van zijn gegevens.** Hij maakt regelmatig en op passende wijze back-ups van zijn gegevens, ten minste vóór elke wezenlijke wijziging, en bewaart ten minste één actuele kopie buiten de infrastructuur van Virtbase.
+2. Virtbase stelt in het klantenportaal een back-upfunctie ter beschikking waarmee de Klant zelf back-ups van zijn Server kan maken, herstellen en verwijderen. De back-upfunctie kan om technische redenen beperkt zijn, bijvoorbeeld in het aantal back-ups per dag; de geldende grenzen vermeldt Virtbase in het klantenportaal. Virtbase maakt geen back-ups op eigen initiatief.
+3. **Deze back-ups worden opgeslagen in hetzelfde datacenter en hetzelfde opslagsysteem als de Server.** Zij beschermen tegen fouten in de Server (bijv. foutieve updates, onbedoeld verwijderen), maar niet tegen gebeurtenissen die het datacenter of het opslagsysteem zelf treffen. Zij vervangen daarom niet de eigen back-up volgens lid 1. Back-ups kunnen niet worden gedownload. Om technische redenen is het verstrekken van back-ups ook op verzoek uitgesloten.
+4. Back-ups worden samen met de Server verwijderd (§ 18).
 
-De op de website van Virtbase beschreven diensten vormen geen bindende aanbiedingen,
-maar dienen om een bindend aanbod door de Klant in te dienen.
+## § 12 Maatregelen bij misbruik en rechtsschendingen
 
-**4.2 Bestelproces**
+1. Krijgt Virtbase kennis van aanwijzingen voor een schending van de wet of de AUP die aan een Server van de Klant zijn toe te rekenen (bijv. door een melding van derden, aanwijzingen van autoriteiten of eigen bewaking van het netwerk), dan onderzoekt Virtbase de situatie en kiest zij de mildste maatregel die de schending effectief beëindigt. De procedure in detail regelt sectie 4 van de AUP.
+2. Mogelijke maatregelen zijn, in oplopende volgorde:\
+   a) informeren van de Klant met het verzoek te reageren en het probleem te verhelpen,\
+   b) beperking van de netwerksnelheid (throttling),\
+   c) blokkering van uitgaand netwerkverkeer (isolatie), waarbij de toegang via de console behouden blijft,\
+   d) uitschakelen van de Server,\
+   e) opzegging om gewichtige redenen (§ 7 lid 6).
 
-De Klant kan het aanbod indienen via het online bestelformulier dat op de website van Virtbase wordt aangeboden.
-Hierbij doet de Klant een juridisch bindend contractaanbod met betrekking tot de geselecteerde diensten door hun persoonlijke gegevens in te voeren
-en op de knop te klikken die het bestelproces afrondt.
+   De maatregelen a) tot en met d) zijn tijdelijk en laten de gegevens op de Server ongemoeid. Virtbase heft ze op zodra de schending is beëindigd. Over een opzegging beslist altijd een mens; zij wordt niet automatisch in gang gezet.
 
-**4.3 Aanvaarding van het Aanbod**
+3. In beginsel informeert Virtbase de Klant vóór een maatregel en geeft zij hem de gelegenheid om binnen een redelijke termijn te reageren en het probleem te verhelpen. Zonder voorafgaand horen mag Virtbase onmiddellijk handelen wanneer\
+   a) de Server een acuut gevaar vormt voor het netwerk, systemen of derden (bijv. een lopende DDoS-aanval, een phishingpagina, verspreiding van kwaadaardige software, een gecompromitteerde Server),\
+   b) het kennelijk gaat om inhoud volgens sectie 2.1 van de AUP, of\
+   c) er een bevel van een autoriteit of rechter is.
 
-Virtbase kan het aanbod van de Klant binnen vijf dagen aanvaarden,
+   In deze gevallen informeert Virtbase de Klant onverwijld na de maatregel, met opgave van redenen.
 
-- door Virtbase een schriftelijke orderbevestiging of een orderbevestiging in tekstvorm (fax of e-mail) aan de Klant te verzenden, waarbij de ontvangst van de orderbevestiging door de Klant bepalend is, of
-- door Virtbase de Klant om betaling te vragen na indiening van hun bestelling.
+4. Bij maatregelen die aan de Klant zijn toe te rekenen, blijft zijn betalingsverplichting bestaan. Blijkt een maatregel ongerechtvaardigd, dan verlengt Virtbase de looptijd van de Server met de duur van de beperking.
+5. Zolang een misbruikzaak openstaat, kan Virtbase nieuwe bestellingen van de Klant weigeren. Bestaande Servers, verlengingen en facturen worden daardoor niet geraakt.
+6. Wettelijke verplichtingen van Virtbase, bijvoorbeeld volgens Verordening (EU) 2022/2065 (Digital Services Act) en Verordening (EU) 2021/784 (verspreiding van terroristische online-inhoud), blijven onverlet.
 
-Als meerdere van de voornoemde alternatieven aanwezig zijn, komt het contract tot stand op het moment dat een van de voornoemde alternatieven het eerst plaatsvindt.
-De termijn voor aanvaarding van het aanbod begint te lopen op de dag na de verzending van het aanbod door de Klant en eindigt met het verstrijken van de vijfde dag die
-volgt op de verzending van het aanbod. Als Virtbase het aanbod van de Klant niet binnen de voornoemde termijn aanvaardt, wordt dit beschouwd als afwijzing van het aanbod met als
-gevolg dat de Klant niet langer gebonden is aan hun wilsverklaring.
+## § 13 Pakketwijziging en wijzigingen van de diensten
 
+1. De Klant kan tijdens de lopende looptijd in het klantenportaal overstappen naar een groter pakket. Voor de resterende looptijd betaalt hij het verschil tussen de verlengingsprijzen naar rato, ten minste € 0,50; het einde van de looptijd blijft ongewijzigd. Vanaf de volgende verlenging geldt de verlengingsprijs van het nieuwe pakket. Overstappen naar een goedkoper pakket of naar een pakket met minder opslagruimte is niet mogelijk.
+2. Virtbase mag de diensten wijzigen als daarvoor een geldige reden bestaat, met name ter aanpassing aan nieuwe technologie of een nieuwe rechtssituatie, ter verhelping van beveiligingsrisico's of omdat een toeleverancier een dienst niet meer aanbiedt, mits de wijziging de Klant geen extra kosten oplevert en de contractueel overeengekomen kerndiensten (middelen volgens de pakketbeschrijving) niet verslechtert. Virtbase informeert de Klant daarover duidelijk en begrijpelijk in tekstvorm.
+3. Verstoort een wijziging volgens lid 2 het gebruik door een consument meer dan onaanzienlijk, dan informeert Virtbase hem ten minste 30 dagen van tevoren; de consument kan de overeenkomst dan binnen 30 dagen na ontvangst van de informatie of na de wijziging, afhankelijk van wat later plaatsvindt, kosteloos beëindigen (§ 327r BGB). Reeds betaalde bedragen voor de periode na het einde van de overeenkomst betaalt Virtbase terug.
+4. Aangeboden sjablonen voor besturingssystemen kunnen door nieuwere versies worden vervangen of worden stopgezet. Dit heeft geen gevolgen voor reeds geïnstalleerde Servers.
 
-**4.4 Betalingsverwerking**
+## § 14 Rechten bij gebreken
 
-Bij selectie van een door Virtbase aangeboden betaalmethode wordt de betalingsverwerking uitgevoerd via de betalingsdienstaanbieder
-Stripe Technology Europe, Limited (hierna: "Stripe"), onder toepassing van de Stripe Gebruiksvoorwaarden,
-te bekijken op https://stripe.com/. Als de Klant betaalt met een door Stripe aangeboden betaalmethode die kan worden geselecteerd in het
-online bestelproces, verklaart de verkoper hierbij aanvaarding van het aanbod van de Klant op het moment
-dat de Klant op de knop klikt die het bestelproces afrondt.
+1. Voor gebreken gelden de wettelijke bepalingen, voor consumenten met name §§ 327 e.v. BGB (digitale producten), voor zover uit § 15 niets anders volgt.
+2. De Klant meldt storingen onverwijld aan [support@virtbase.com](mailto:support@virtbase.com) en beschrijft ze zo nauwkeurig mogelijk.
+3. Voor ondernemers geldt bovendien: de schuldonafhankelijke aansprakelijkheid voor gebreken die al bij het sluiten van de overeenkomst bestonden (§ 536a lid 1, eerste alternatief, BGB) is uitgesloten. Vorderingen wegens gebreken verjaren na één jaar; dit geldt niet voor vorderingen volgens § 15 lid 1.
 
+## § 15 Aansprakelijkheid
 
-**4.5 Opslag van de Contracttekst**
+1. Virtbase is onbeperkt aansprakelijk\
+   a) bij opzet en grove nalatigheid,\
+   b) voor schade door letsel aan leven, lichaam of gezondheid,\
+   c) volgens de Duitse wet op de productaansprakelijkheid,\
+   d) binnen de reikwijdte van een gegeven garantie en bij arglistig verzwegen gebreken.
+2. Bij lichte nalatigheid is Virtbase alleen aansprakelijk voor de schending van wezenlijke contractuele verplichtingen (kardinale verplichtingen). Dat zijn verplichtingen waarvan de nakoming de behoorlijke uitvoering van de overeenkomst pas mogelijk maakt en op de naleving waarvan de Klant regelmatig mag vertrouwen, hier met name de terbeschikkingstelling van de Server met de overeengekomen middelen en de bescherming van de opgeslagen gegevens tegen onbevoegde toegang. In dat geval is de aansprakelijkheid beperkt tot de bij het sluiten van de overeenkomst voorzienbare, voor de overeenkomst typische schade.
+3. **Gegevensverlies.** Voor het verlies van gegevens is Virtbase aansprakelijk volgens de leden 1 en 2. Bij lichte nalatigheid is de aansprakelijkheid beperkt tot de inspanning die nodig zou zijn geweest om de gegevens te herstellen uit een back-up volgens § 11 lid 1. Eigen schuld van de Klant, bijvoorbeeld omdat hij geen eigen back-up heeft gemaakt, wordt volgens § 254 BGB in aanmerking genomen.
+4. Voor het overige is de aansprakelijkheid uitgesloten. De bovenstaande regels gelden ook voor de persoonlijke aansprakelijkheid van de wettelijke vertegenwoordigers, medewerkers en hulppersonen van Virtbase. De aansprakelijkheid volgens art. 82 AVG jegens betrokkenen blijft onverlet.
 
-Bij het indienen van een aanbod via het online bestelformulier van Virtbase wordt de contracttekst na contractsluiting door Virtbase opgeslagen
-en na verzending van hun bestelling in tekstvorm (bijv. e-mail, fax of brief) aan de Klant verzonden. Verdere toegang tot
-de contracttekst door Virtbase vindt niet plaats. Als de Klant voor het verzenden van hun bestelling een gebruikersaccount voor de website van Virtbase heeft aangemaakt,
-worden de bestelgegevens op de website gearchiveerd en kunnen door de Klant gratis worden opgehaald via hun met wachtwoord beschermd gebruikersaccount door de bijbehorende inloggegevens te verstrekken.
+## § 16 Vrijwaring
 
-**4.6 Correctie van Invoerfouten**
+Spreekt een derde Virtbase aan wegens inhoud of handelingen op een Server van de Klant die in strijd zijn met de wet of de AUP, dan vrijwaart de Klant Virtbase voor deze vorderingen, inclusief redelijke kosten van rechtsverdediging, voor zover de Klant de schending is toe te rekenen. Virtbase informeert de Klant onverwijld over de vordering en geeft hem de gelegenheid om te reageren. De Klant ondersteunt Virtbase bij het afweren van de vorderingen met de benodigde informatie.
 
-Vóór bindende indiening van de bestelling via het online bestelformulier van Virtbase kan de Klant mogelijke invoerfouten identificeren door zorgvuldig
-de op het scherm weergegeven informatie te lezen. Een effectief technisch middel voor betere herkenning van invoerfouten kan de
-zoomfunctie van de browser zijn, waarmee de weergave op het scherm wordt vergroot. De Klant kan hun invoer binnen het
-elektronische bestelproces corrigeren met behulp van de gebruikelijke toetsenbord- en muisfuncties totdat zij op de knop klikken die het bestelproces afrondt.
+## § 17 Gegevensbescherming en verwerking in opdracht
 
-**4.7 Taal**
+1. Hoe Virtbase persoonsgegevens van de Klant (bijv. account-, contract- en betaalgegevens) als verwerkingsverantwoordelijke verwerkt, wordt uitgelegd in het privacybeleid op [virtbase.com/nl/legal/privacy](/nl/legal/privacy).
+2. Voor persoonsgegevens die de Klant op zijn Servers verwerkt, is de Klant verwerkingsverantwoordelijke; Virtbase verwerkt ze in zijn opdracht. Is de Klant ondernemer of verwerkt hij op de Server persoonsgegevens niet uitsluitend voor persoonlijke of huishoudelijke doeleinden, dan maakt de **verwerkersovereenkomst volgens art. 28 AVG** op [virtbase.com/nl/legal/dpa](/nl/legal/dpa) (met haar bijlagen) deel uit van deze overeenkomst. Zij komt tot stand met de aanvaarding van deze AV bij de bestelling en kan daar als pdf worden gedownload.
+3. Virtbase neemt in beginsel geen kennis van de inhoud op de Servers. Toegang vindt alleen plaats in de gevallen die in het privacybeleid, in de verwerkersovereenkomst en in § 12 worden genoemd.
 
-De Duitse taal is beschikbaar voor contractsluiting.
+## § 18 Einde van de overeenkomst, verwijdering en export van gegevens
 
-**4.8 Orderverwerking**
+1. **Export.** De Klant kan zijn gegevens tot het einde van de looptijd op elk moment zelf veiligstellen en overdragen (bijv. via SSH, SFTP of rsync). Virtbase stelt de gegevens niet in een bepaald formaat ter beschikking. Voor gegevens van zijn klantaccount kan de Klant in het klantenportaal een gegevensexport aanvragen.
+2. **Na het verstrijken van de looptijd** zonder verlenging wordt de Server uitgeschakeld en gedeactiveerd, bij een abonnement pas na de laatste incassopoging (§ 8). Hij kan dan niet meer worden gestart; back-ups kunnen niet meer worden gemaakt of hersteld. De gegevens blijven nog **5 dagen** opgeslagen. Verlengt de Klant in deze tijd, dan wordt de Server opnieuw geactiveerd; de nieuwe looptijd begint bij het verstrijken van de oude. Virtbase wijst de Klant bij de deactivering per e-mail op de verwijdering.
+3. **Verwijdering.** Na deze 5 dagen verwijdert Virtbase de Server met alle gegevens en back-ups definitief. Herstel is daarna niet meer mogelijk. Bij herroeping (§ 5), opzegging om gewichtige redenen (§ 7 lid 6) en verwijdering van het klantaccount (§ 7 lid 7) geldt hetzelfde vanaf het einde van de overeenkomst.
+4. Wordt een klantaccount zonder actieve Server 6 maanden niet gebruikt, dan kondigt Virtbase de verwijdering van het account per e-mail aan. Meldt de Klant zich niet binnen 30 dagen aan, dan wordt het account verwijderd; 7 dagen vóór het verstrijken herinnert Virtbase hem nogmaals.
+5. Gegevens die Virtbase op grond van wettelijke verplichtingen moet bewaren (bijv. facturen), worden tot het verstrijken van de termijnen bewaard en afgeschermd. Het privacybeleid bevat de details.
 
-Orderverwerking en contact vinden over het algemeen plaats via e-mail en geautomatiseerde orderverwerking.
-De Klant moet ervoor zorgen dat het door hen voor orderverwerking opgegeven e-mailadres correct is, zodat e-mails
-verzonden door Virtbase op dit adres kunnen worden ontvangen. In het bijzonder bij gebruik van SPAM-filters moet de Klant ervoor zorgen dat alle e-mails verzonden door Virtbase
-of door Virtbase met orderverwerking belaste derden kunnen worden afgeleverd.
+## § 19 Wijzigingen van deze AV en van de prijzen
 
-</Step>
+1. Virtbase kan de Klant wijzigingen van deze AV, de AUP of de verlengingsprijs aanbieden. Virtbase deelt het aanbod ten minste 30 dagen vóór de geplande inwerkingtreding in tekstvorm mee, geeft de wijzigingen overzichtelijk weer en noemt de reden.
+2. **De wijzigingen worden alleen van kracht als de Klant ermee instemt**, bijvoorbeeld door een bevestiging in het klantenportaal. Stilzwijgen geldt niet als instemming.
+3. Stemt de Klant niet in, dan loopt de overeenkomst door onder de bestaande voorwaarden. Virtbase kan een abonnement dan volgens § 7 lid 5 opzeggen; een prepaid-looptijd eindigt sowieso bij het verstrijken ervan. Een verlenging na de geplande inwerkingtreding kan Virtbase afhankelijk maken van de instemming.
+4. Voor nieuwe bestellingen geldt de bij de bestelling aanvaarde versie.
+5. Wijzigingen die alleen de rechtssituatie volgen of uitsluitend in het voordeel van de Klant zijn, deelt Virtbase mee; zij behoeven geen instemming, voor zover zij niet ingrijpen in de contractuele hoofdprestaties.
 
-<Step>
-## Herroepingsrecht
+## § 20 Communicatie
 
-**5.1 Verval van het Herroepingsrecht**
+Contractuele verklaringen kunnen in tekstvorm worden afgegeven, met name per e-mail aan [support@virtbase.com](mailto:support@virtbase.com) of aan het in het klantaccount opgeslagen e-mailadres. De Klant zorgt ervoor dat e-mails van virtbase.com niet door spamfilters worden tegengehouden. Support via Discord is niet geschikt voor contractuele verklaringen.
 
-Met de levering van de geselecteerde hostingdiensten op het klantenplatform dat door Virtbase wordt geleverd (https://app.virtbase.com), wordt de dienst als volledig verricht beschouwd.
-Het herroepingsrecht vervalt dus.
-</Step>
+## § 21 Geschillenbeslechting
 
-<Step>
-## Verplichtingen van de Klant
+Virtbase is niet bereid en niet verplicht deel te nemen aan geschillenbeslechtingsprocedures voor een consumentengeschillencommissie. Met vragen of klachten kunt u zich wenden tot [support@virtbase.com](mailto:support@virtbase.com).
 
-**6.1 Klantinhoud**
+## § 22 Slotbepalingen
 
-De inhoud die door de Klant is opgeslagen op de voor hen bestemde opslagruimte kan beschermd zijn door auteurs- en gegevensbeschermingsrecht.
-De Klant verleent Virtbase het recht om de door hen op de server opgeslagen inhoud toegankelijk te maken wanneer deze via het internet wordt opgevraagd,
-in het bijzonder om deze voor dit doel te reproduceren en te verzenden en om deze te kunnen reproduceren met het oog op gegevensback-up. De Klant controleert op eigen verantwoordelijkheid
-of hun gebruik van persoonsgegevens voldoet aan de eisen van gegevensbescherming.
-
-**6.2 Verboden Inhoud**
-
-De Klant verbindt zich ertoe geen inhoud op de beschikbaar gestelde opslagruimte op te slaan die in strijd is met toepasselijk recht of de rechten van derden schendt.
-De Klant zorgt er ook voor dat door hen geïnstalleerde programma's, scripts, enz. de werking van de server of het communicatienetwerk
-van Virtbase of de beveiliging en integriteit van andere op de servers van Virtbase opgeslagen gegevens niet in gevaar brengen.
-
-**6.3 Vrijwaring**
-
-De Klant vrijwaart Virtbase van alle aanspraken die derden tegen Virtbase geldend maken wegens schending van hun rechten op basis van door de Klant op de server opgeslagen inhoud.
-De Klant draagt de kosten van de noodzakelijke juridische verdediging inclusief alle gerechts- en advocaatkosten in redelijke
-bedragen. Dit geldt niet als de Klant niet verantwoordelijk is voor de rechtenschending. De Klant is verplicht om Virtbase in geval van een claim door derden
-onmiddellijk, waarheidsgetrouw en volledig alle informatie te verstrekken die nodig is voor het onderzoeken van de claims en voor verdediging.
-
-**6.4 Blokkeringsrecht**
-
-In geval van een onmiddellijk dreigende of opgetreden schending van de voornoemde verplichtingen evenals in geval van geldendmaking van niet kennelijk ongegronde
-claims door derden tegen Virtbase op basis van de op de server opgeslagen inhoud, is Virtbase gerechtigd, ook rekening houdend met de legitieme belangen van de
-Klant, om de verbinding van deze inhoud met het internet geheel of gedeeltelijk met onmiddellijke ingang tijdelijk te onderbreken. Virtbase zal de Klant over deze maatregel
-onmiddellijk informeren.
-
-**6.5 Deactivering van Schadelijke Programma's**
-
-Als door de Klant geïnstalleerde programma's, scripts, enz. de werking van de server of het communicatienetwerk van Virtbase of de beveiliging
-en integriteit van andere op de servers van Virtbase opgeslagen gegevens in gevaar brengen of belemmeren, kan Virtbase deze programma's, scripts, enz. deactiveren of verwijderen. Als de
-eliminatie van het gevaar of de belemmering dit vereist, is Virtbase ook gerechtigd om de verbinding van de op de server opgeslagen inhoud met het internet te onderbreken.
-Virtbase zal de Klant over deze maatregel onmiddellijk informeren.
-
-**6.6 Toegangsgegevens**
-
-Voor toegang tot de voor de Klant bestemde opslagruimte ontvangt de Klant een gebruikers-ID en een wijzigbaar wachtwoord. De Klant is verplicht om het
-wachtwoord regelmatig te wijzigen. De Klant mag het wachtwoord alleen doorgeven aan personen die door hen zijn gemachtigd om toegang te krijgen tot de opslagruimte.
-
-</Step>
-
-<Step>
-## Beveiligingsvoorschriften
-
-**7.1 Algemene Beveiligingsverplichting**
-
-Elke Klant is verplicht om de technische beveiliging en functionaliteit van de systemen van Virtbase te waarborgen. In het bijzonder is het verboden:
-
-- toegang te krijgen tot gegevens of gebieden die niet bestemd zijn voor de betreffende gebruiker;
-- technische systemen te controleren op kwetsbaarheden of beveiligingslekken, beveiligingsmechanismen te omzeilen of manipulaties uit te voeren;
-- header-informatie, IP-adressen of andere communicatiegegevens te vervalsen.
-
-**7.2 Toegestaan Gebruik**
-
-Virtbase mag alleen worden gebruikt via gangbare, actuele webbrowsers. Elke handeling die de goede werking van het platform belemmert, is verboden. Dit omvat in het bijzonder aanvallen of maatregelen zoals XSS, SQL-Injection, CSRF, Phishing, DoS, DDoS, Brute-Force, Session Hijacking, geautomatiseerde of scriptgestuurde toegang evenals vergelijkbare ingrepen in de infrastructuur van de exploitant.
-
-**7.3 Gevolgen van Overtredingen**
-
-Overtredingen van deze beveiligingsvoorschriften kunnen zowel civiel- als strafrechtelijke gevolgen hebben. Virtbase is gerechtigd om overtredingen te onderzoeken, bewijsmateriaal veilig te stellen en indien nodig wetshandhavingsinstanties in te schakelen.
-
-**7.4 Procedure bij Misbruikmeldingen**
-
-Als een misbruikmelding wordt ontvangen met betrekking tot een server of een IP-adres, kan Virtbase het betreffende systeem of IP-adres tijdelijk blokkeren. De Klant wordt per e-mail geïnformeerd over een dergelijke blokkade.
-</Step>
-
-<Step>
-## Betalingsvoorwaarden en Vergoeding
-
-**8.1 Prijsinformatie**
-
-Tenzij anders vermeld in de dienstbeschrijving, worden alle vermelde prijzen begrepen als totaalprijzen inclusief wettelijke btw.
-
-**8.2 Betaalmethoden en Modaliteiten**
-
-Alle beschikbare betaalmethoden evenals de respectieve betalingsvoorwaarden staan vermeld op de website van Virtbase.
-
-**8.3 Betaling via "PayPal"**
-
-Als de Klant een betaalmethode kiest die wordt aangeboden via de betalingsdienst PayPal, wordt de verwerking uitgevoerd via PayPal. PayPal kan andere dienstverleners gebruiken voor betalingsverwerking. Als Virtbase betaalmethoden met vooruitbetaling aanbiedt via PayPal (bijv. factuurkoop of gespreide betaling), wordt de vordering gecedeerd aan PayPal of een door PayPal ingeschakelde betalingsdienstaanbieder. PayPal kan een kredietwaardigheidscontrole uitvoeren. Als de geselecteerde betaalmethode wordt afgewezen, kan Virtbase een alternatieve betaalwijze vereisen. Algemene klantvragen (bijv. over leveringen, annuleringen of klachten) moeten nog steeds aan Virtbase worden gericht.
-
-**8.4 Betaling via "SOFORT" (Klarna)**
-
-Bij de betalingsoptie "SOFORT" wordt de verwerking uitgevoerd via SOFORT GmbH, Theresienhöhe 12, 80339 München. De Klant heeft een online bankrekening nodig die is geactiveerd voor "SOFORT" en moet zich daar authenticeren. Na bevestiging van de betalingsopdracht wordt het bedrag automatisch van de bankrekening van de Klant afgeschreven. Meer informatie is beschikbaar op https://www.klarna.com/sofort.
-
-**8.5 Betaling via Bankoverschrijving / SEPA**
-
-Bij selectie van de betaalmethode "Bankoverschrijving" of "SEPA-overschrijving" is het factuurbedrag onmiddellijk na contractsluiting verschuldigd, tenzij anders overeengekomen. Diensten worden pas geactiveerd na volledige ontvangst van de betaling.
-</Step>
-
-<Step>
-## Contractvorming, Opslag van de Contracttekst
-
-**9.1 Contractsluiting**
-
-De volgende bepalingen zijn van toepassing op alle bestellingen via de webshop of het klantenportaal van Virtbase (https://app.virtbase.com).
-
-**9.2 Contractpartij**
-
-Het contract wordt gesloten met:\
-BeastHost UG (haftungsbeschränkt)\
-Lambarenestraße 21A\
-09350 Lichtenstein/Sa.\
-Duitsland
-
-**9.3 Aanbod en Aanvaarding**
-
-Door het indienen van een bestelling doet de Klant een bindend aanbod om een contract te sluiten. Virtbase bevestigt de ontvangst van de bestelling automatisch per e-mail. Het contract komt tot stand bij levering van de dienst.
-
-**9.4 Bestelproces**
-
-Tijdens het bestelproces kan de Klant hun invoer te allen tijde controleren, corrigeren of het proces annuleren. Na het indienen van de bestelling ontvangt de Klant een bevestigings-e-mail. Kort daarna wordt het bestelde product beschikbaar gesteld in het klantengebied.
-</Step>
-
-<Step>
-## Aansprakelijkheid
-
-**10.1 Beginsel**
-
-Virtbase is aansprakelijk in de wettelijke omvang voor schade of kosten die voortvloeien uit contractuele, onrechtmatige of andere juridische verhoudingen.
-
-**10.2 Onbeperkte Aansprakelijkheid**
-
-Onbeperkte aansprakelijkheid bestaat in gevallen van opzet, grove nalatigheid, verwijtbare schending van leven, lichaam of gezondheid, in geval van een garantie-overname of dwingende wettelijke aansprakelijkheidsbepalingen (bijv. Productaansprakelijkheidswet).
-
-**10.3 Beperkte Aansprakelijkheid**
-
-In gevallen van nalatige schending van wezenlijke contractuele verplichtingen is de aansprakelijkheid beperkt tot de typische, voorzienbare schade. Wezenlijke contractuele verplichtingen zijn die waarvan de nakoming noodzakelijk is voor de goede uitvoering van het contract en op de naleving waarvan de Klant mag vertrouwen.
-
-**10.4 Uitsluiting van Verdere Aansprakelijkheid**
-
-Elke verdere aansprakelijkheid is uitgesloten.
-
-**10.5 Hulppersonen en Vertegenwoordigers**
-
-De bovenstaande bepalingen gelden evenzeer voor wettelijke vertegenwoordigers en hulppersonen van Virtbase.
-</Step>
-
-<Step>
-## Voorschriften voor Accountgebruik
-
-**11.1 Geautoriseerde Gebruikers**
-
-Een gebruikersaccount bij Virtbase kan worden aangemaakt door natuurlijke personen, rechtspersonen of personenvennootschappen, mits zij volledig handelingsbekwaam zijn.
-
-**11.2 Minderjarige Klanten**
-
-Minderjarigen hebben de toestemming van een wettelijke vertegenwoordiger nodig om Virtbase te gebruiken. Virtbase kan te allen tijde schriftelijke bevestiging van deze toestemming verlangen.
-
-**11.3 Leeftijdsverificatie**
-
-Voor bepaalde producten kan leeftijdsverificatie vereist zijn om te voldoen aan wettelijke eisen voor jeugdbescherming.
-
-**11.4 Accountaanmaak**
-
-Een geldig e-mailadres en een veilig wachtwoord moeten worden opgegeven voor accountaanmaak. Onjuiste of onvolledige informatie kan leiden tot verwijdering van het account en beëindiging van de contractuele relatie. Eventueel reeds opgeladen tegoed wordt in dit geval niet terugbetaald.
-
-**11.5 Omgang met Support**
-
-Een respectvolle en zakelijke toon jegens de klantenservice is verplicht. Bij beledigend gedrag kan Virtbase ondersteuning weigeren of het account blokkeren. Virtbase verwacht een constructieve dialoog en verbindt zich op haar beurt tot vriendelijke communicatie.
-
-**11.6 Accountblokkering**
-
-Virtbase is gerechtigd om accounts zonder voorafgaande kennisgeving te blokkeren als er een belangrijke reden is - zoals een wetsovertreding of schending van deze AV. In dergelijke gevallen vindt geen terugbetaling van tegoed plaats.
-
-**11.7 Tegoedregeling**
-
-Opgeladen tegoed kan niet contant worden uitbetaald. Het is uitsluitend bestemd voor het gebruik van Virtbase-diensten. In geval van terugboekingen of PayPal-zaken kan het account tijdelijk of permanent worden geblokkeerd.
-</Step>
-
-<Step>
-## Beschikbaarheid
-
-Virtbase streeft naar continue beschikbaarheid van haar systemen (24/7), maar neemt geen garantie voor naadloze bereikbaarheid. Onderbrekingen door onderhoud, technische storingen of overmacht zijn mogelijk. Aansprakelijkheid voor gegevensverlies of uitval is uitgesloten.
-</Step>
-
-<Step>
-## Levering van Diensten
-
-**13.1 Bescherming van Technische Infrastructuur**
-
-Virtbase behoudt zich het recht voor om producten tijdelijk te deactiveren of te verwijderen in geval van overmatig gebruik of uitzonderlijke belasting van individuele systemen om de algehele stabiliteit te waarborgen.
-
-**13.2 Klantenondersteuning**
-
-Algemene ondersteuning is gratis beschikbaar. Administratieve of individuele aanvullende ondersteuning kan na overleg tegen betaling worden aangeboden.
-
-**13.3 Levering**
-
-Producten worden over het algemeen automatisch geleverd na succesvolle bestelling. Bij bepaalde diensten, bijv. domeinen, kunnen vertragingen optreden door externe validaties.
-
-**13.4 Domeinvoorwaarden**
-
-Domeinen worden voor minimaal één jaar geregistreerd. Als er geen tijdige opzegging plaatsvindt, kan het domein worden verwijderd. Inactieve domeinen mogen worden verwijderd.
-
-**13.5 Verantwoordelijkheid van de Klant**
-
-De overdracht van domeinregistratie wordt uitgevoerd door Virtbase aan het verantwoordelijke register. De Klant is verantwoordelijk voor de juistheid van hun gegevens. Virtbase neemt geen garantie voor succesvolle registratie.
-</Step>
-
-<Step>
-## Dienstbeschrijving
-
-**14.1 Toegestaan Gebruik**
-
-Diensten van Virtbase mogen niet worden gebruikt voor onrechtmatige doeleinden of de verspreiding van auteursrechtelijk beschermde of pornografische inhoud. Overtredingen leiden tot blokkering of verwijdering van inhoud.
-
-**14.2 IP-toewijzing**
-
-Het IP-adres dat aan de Klant is toegewezen, kan te allen tijde om technische redenen wijzigen. Er bestaat geen aanspraak op een vast IP-adres.
-
-**14.3 Juridische Aanpassingen**
-
-Virtbase kan functies beperken of stopzetten als dit wettelijk vereist is. Klanten worden hierover tijdig geïnformeerd.
-
-**14.4 Fair Use Principe**
-
-In geval van overmatig gebruik van het in het tarief opgenomen dataverkeer wordt de verbinding tijdelijk vertraagd. Het niveau van vertraging evenals de bepaling van de bovengrens voor dataverkeer is ter beoordeling van Virtbase.
-</Step>
-
-<Step>
-## Wijziging van de AV
-
-**15.1 Wijzigingen die Toestemming Vereisen**
-
-Virtbase kan deze AV wijzigen, mits de Klant uitdrukkelijk instemt met de wijzigingen.
-
-**15.2 Wijzigingen Zonder Toestemming**
-
-Een aanpassing zonder toestemming is toegestaan als:
-
-- het noodzakelijk is vanwege wettelijke bepalingen,  
-- het dient ter uitvoering van rechterlijke of administratieve beslissingen,  
-- het nieuwe of aanvullende diensten betreft,  
-- het uitsluitend voordelig is voor de Klant of  
-- het puur technisch van aard is, zonder significante impact voor de Klant.
-
-**15.3 Informatieverplichting**
-
-Significante wijzigingen worden op gepaste wijze aan de Klant meegedeeld. Wijzigingen die het type, de omvang of de duur van diensten beïnvloeden, worden als significant beschouwd.
-
-**15.4 Opzeggingsrecht**
-
-Het recht van de Klant om op te zeggen blijft onverlet.
-</Step>
-
-<Step>
-## Toepasselijk Recht, Bevoegde Rechtbank
-
-**16.1 Rechtskeuze**
-
-Het recht van de Bondsrepubliek Duitsland is van toepassing. Voor consumenten geldt deze rechtskeuze alleen als deze geen dwingende consumentenbeschermingsrechten van de staat van verblijf beperkt.
-
-**16.2 Bevoegde Rechtbank**
-
-Als de Klant een handelaar is, publiekrechtelijke rechtspersoon of publiekrechtelijk speciaal fonds met statutaire zetel in Duitsland, is de vestigingsplaats van Virtbase de exclusieve bevoegde rechtbank. Hetzelfde geldt als de statutaire zetel in het buitenland is, mits het contract kan worden toegeschreven aan commerciële activiteit.
-</Step>
-
-<Step>
-## Salvatorische Clausule
-
-**17.1 Gedeeltelijke Ongeldigheid**
-
-Indien een bepaling van deze AV ongeldig of niet-afdwingbaar is, blijft de geldigheid van de overige bepalingen onverlet.
-
-**17.2 Vervangende Bepaling**
-
-In plaats van de ongeldige bepaling geldt een bepaling die het dichtst bij het economische doel van het origineel komt.
-
-**17.3 Lacuneregeling**
-
-Indien er een regelingslacune bestaat, wordt een bepaling geacht te zijn overeengekomen die overeenkomt met de zin en het doel van het contract.
-</Step>
-
-
-</Steps>
-
+1. Het recht van de Bondsrepubliek Duitsland is van toepassing, met uitsluiting van het Weens Koopverdrag. Voor consumenten geldt deze rechtskeuze alleen voor zover hun daardoor niet de bescherming wordt ontnomen van dwingende bepalingen van het land waar zij hun gewone verblijfplaats hebben.
+2. Is de Klant koopman, publiekrechtelijke rechtspersoon of publiekrechtelijk bijzonder vermogen, of heeft hij geen algemene woonplaats in Duitsland, dan is de exclusief bevoegde rechter voor alle geschillen uit deze overeenkomst Chemnitz. Virtbase kan de Klant ook dagvaarden bij zijn algemene bevoegde rechter. Voor vorderingen tegen consumenten geldt geen afwijkende bevoegde rechter; de wettelijke regels blijven van toepassing.
+3. Mochten afzonderlijke bepalingen ongeldig zijn, dan blijft de overeenkomst voor het overige geldig. In de plaats van de ongeldige bepaling treden de wettelijke bepalingen.

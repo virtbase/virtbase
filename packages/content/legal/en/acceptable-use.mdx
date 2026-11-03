@@ -1,0 +1,129 @@
+---
+title: Acceptable Use Policy
+description: Virtbase's Acceptable Use Policy - what is not allowed on our servers, how to report a violation and how we handle reports, including the information required by Art. 14 DSA.
+---
+
+This Acceptable Use Policy (the "AUP") applies to all services of Virtbase, a brand of BeastHost UG (haftungsbeschränkt), Lambarenestraße 21A, 09350 Lichtenstein/Sa., Germany. It forms part of the General Terms and Conditions (GTC). It describes what is not allowed on our servers, how you and third parties can report violations to us and how we deal with them. It also contains the information on our content moderation procedures required by Art. 14 of Regulation (EU) 2022/2065 (Digital Services Act, "DSA").
+
+The German version of this AUP is legally binding. This translation is provided for your convenience.
+
+## 1. Principle
+
+You are free to use your server for any lawful purpose. You are responsible for all content and activity on your server, including that of your own users and customers and the consequences of an insufficiently secured server. Anything that violates applicable law or endangers or harms our infrastructure, other customers or third parties is prohibited. German law and the law of the country where the server is located (the Netherlands) apply.
+
+## 2. Prohibited content and activities
+
+### 2.1 Severe violations (immediate action, usually termination)
+
+- Child sexual abuse material (CSAM), or content that initiates, promotes or trivialises such abuse. We report such cases to law enforcement.
+- Terrorist content within the meaning of Art. 2(7) of Regulation (EU) 2021/784 (TCO Regulation), and support for terrorist organisations.
+- Content or services that pose a danger to people's life, body or health, or that call for such harm.
+- Operating infrastructure for malicious software: command-and-control (C2) servers for botnets, distributing malware or ransomware, exploit kits.
+- Phishing and other sites that obtain login or payment details under false pretences.
+- Carrying out or brokering denial-of-service attacks (DoS/DDoS), including "booter" and "stresser" services.
+
+### 2.2 Other prohibited content
+
+- Content that violates criminal law, e.g. incitement to hatred, use of symbols of unconstitutional organisations, threats, defamation.
+- Content that infringes the rights of third parties, in particular copyright, trademark and personality rights (e.g. unauthorised distribution of protected works, counterfeit goods).
+- Pornographic content accessible to minors without effective age verification, and intimate images created or distributed without consent.
+- Offers to trade in prohibited weapons, narcotics, stolen data or other illegal goods and services.
+- Fraudulent offers, e.g. fake shops, investment fraud, fake payment pages.
+
+### 2.3 Prohibited network activities
+
+- **Spam:** sending unsolicited bulk email or other messages, operating services for sending spam, sending to purchased lists or lists collected without consent. When sending email, the usual standards must be met (a valid reverse DNS entry, no forged senders, an unsubscribe option for newsletters).
+- **Unauthorised access:** breaking into other people's systems, brute-force attacks on logins, exploiting vulnerabilities in other people's systems.
+- **Scans:** port scans and vulnerability scans are permitted if they are directed exclusively at your own systems, or if the owner of the scanned systems has agreed in advance (e.g. a commissioned penetration test, a bug bounty programme within its rules). You must be able to prove the authorisation on request. Large-scale scans of other networks without consent are prohibited. Research scanners (e.g. for internet measurements) are only permitted with our prior permission in text form.
+- **Forgery:** forging IP addresses (IP spoofing), MAC addresses, email headers or routing information. Only use the IP addresses assigned to you.
+- **Open services:** operating open DNS resolvers, mail relays, proxies, NTP, Memcached or SSDP services that anyone can use and that can be misused for abuse or amplification attacks. Proxies and VPN services are permitted if access is restricted to authorised users (e.g. by login), or if you effectively prevent abuse and handle reports.
+- **Tor:** operating Tor relays (middle/guard) and bridges is permitted. Tor exit nodes are only permitted with our prior permission in text form.
+- **Cryptomining:** mining cryptocurrencies is prohibited.
+- **Disrupting the infrastructure:** actions that impair the operation of our network, our hypervisors or other customers, e.g. attacks on the customer portal, the API or the console, attempts to break out of the server or to use other customers' resources, and circumventing locks or restrictions under section 4.
+
+### 2.4 Compromised servers
+
+If your server is taken over by a third party and misused for any of the activities listed, we treat this as a violation, even if you did not intend it. We will help you fix the problem; in this case, termination is only a last resort.
+
+## 3. Reporting violations
+
+### 3.1 How to report
+
+| Matter | Contact |
+| --- | --- |
+| Abuse (spam, attacks, phishing, malware, copyright infringement) and notices of illegal content under Art. 16 DSA | [abuse@virtbase.com](mailto:abuse@virtbase.com) |
+| Authorities of the EU member states, the Commission and the Board (Art. 11 DSA) | [dsa@virtbase.com](mailto:dsa@virtbase.com) |
+| Removal orders under the TCO Regulation (Art. 15 Regulation 2021/784) | [tco@virtbase.com](mailto:tco@virtbase.com) |
+| Customers, questions and complaints about decisions | [support@virtbase.com](mailto:support@virtbase.com) or the case in the customer portal |
+
+We communicate in German and English.
+
+### 3.2 What a report should contain
+
+So that we can process a report, it should contain:
+
+1. an explanation of why the content or activity is illegal or violates this AUP,
+2. the exact location, e.g. URL, IP address and, if applicable, port, and for network incidents the date, time with time zone and evidence (e.g. log excerpts, email headers),
+3. the name and email address of the person reporting, except for reports of child sexual abuse material,
+4. a statement that the report is accurate and complete to the best of their knowledge.
+
+We confirm receipt of a report if a contact address is given, and inform the person reporting of our decision. We also process automated reports (e.g. from blocklists, honeypots or abuse services).
+
+### 3.3 Abusive reports
+
+If someone frequently submits manifestly unfounded reports, after a prior warning we will deprioritise or stop processing their reports for a reasonable period.
+
+## 4. How we proceed
+
+### 4.1 Review
+
+Every report is assigned to a case. Using our allocation records, we determine which customer the reported IP address was assigned to at the time of the incident. For pre-sorting, we use an AI model that suggests a classification (category, urgency). **The model makes no decisions and triggers no measures.** Measures are triggered either by a person or by a rule-based automation that we have defined in advance and that applies only to reports from trusted sources (e.g. our own network monitoring in the case of an outgoing DDoS attack). If the attribution to a customer is not unambiguous, we never intervene automatically.
+
+### 4.2 Graduated measures
+
+We choose the mildest measure that effectively ends the violation:
+
+| Level | Measure | What you keep |
+| --- | --- | --- |
+| 1 | Notification asking you to respond and remedy the issue | everything |
+| 2 | Throttling of the network speed | network (slower), console, data |
+| 3 | Isolation: blocking of outgoing network traffic | data, console, the ability to fix the issue |
+| 4 | Shutting down the server | data; restart after release |
+| 5 | Termination for cause (§ 7(6) GTC) | deletion period under § 18 GTC |
+
+Levels 2 to 4 leave your data untouched and are lifted as soon as the problem is fixed; your own firewall settings are restored when they are. The console, the status display and password reset remain available so that you can fix the problem. Level 5 is always decided by a person. While a case is open, we may refuse new orders; existing servers and renewals are not affected.
+
+### 4.3 Deadlines
+
+1. **Normal case:** we inform you of the case by email and in the customer portal. You have **24 hours** to respond and stop the violation, or to explain why there is no violation. If you do not respond, we may tighten the measure by one level at a time, up to shutting down the server (level 4) at most.
+2. **Acute danger:** if your server poses an acute danger (e.g. an ongoing DDoS attack, an active phishing site, distribution of malicious software, an obviously compromised server), we intervene immediately and inform you without undue delay afterwards.
+3. **Severe violations** under section 2.1: we block access to the content immediately. We may terminate the contract for cause and, where required by law, secure evidence for the authorities.
+4. **Removal orders under the TCO Regulation** are carried out within one hour of receipt.
+5. **Repeated violations:** violations within 90 days are considered together. After the third justified case within this period, or on the order of an authority, we may terminate the contract for cause.
+
+### 4.4 Statement of reasons
+
+If we restrict your services because of content or an activity, we give you a clear statement of reasons no later than when the measure begins (Art. 17 DSA). It states:
+
+- which measure we have taken, its scope and its expected duration,
+- the facts and circumstances on which the decision is based, and whether it is based on a report (we only name the person reporting if that is necessary and they have agreed),
+- whether automated means were used in the detection or the decision,
+- the legal basis or the rule of this AUP that was violated,
+- your options for having the decision reviewed (section 5).
+
+We do not give a statement of reasons if an authority has prohibited it because of ongoing investigations, or if the content is deceptive high-volume commercial content (spam).
+
+### 4.5 Reporting to authorities
+
+If we become aware of information giving rise to a suspicion that a criminal offence involving a threat to the life or safety of persons has taken place, is taking place or is likely to take place, we inform the competent law enforcement authorities without undue delay (Art. 18 DSA). We only answer requests for information from authorities where there is a sufficient legal basis.
+
+## 5. Responses and complaints
+
+1. **Responding in the case:** you can reply in the case in the customer portal at any time, submit evidence and tell us that the problem is fixed. A person reviews your reply and lifts the measure if the violation has ended or did not exist. Your reply pauses the deadlines under section 4.3.
+2. **Complaint against a decision:** if you consider a measure or a termination unjustified, you can lodge a complaint within six months of the decision, in the case in the customer portal or by email to [support@virtbase.com](mailto:support@virtbase.com). People who reported content can likewise lodge a complaint if we took no action on their report. The complaint is reviewed by a person who does not rely solely on automated means. We decide promptly, give reasons for the decision and lift the measure without undue delay if the complaint is justified.
+3. **Removal of terrorist content:** if content was removed or blocked under the TCO Regulation, we inform you unless the authority prohibits it. You can complain against a removal based on our own measures under Art. 5 of the TCO Regulation as described in item 2 (Art. 10 TCO Regulation). Against a removal order itself, you can take legal action against the authority that issued it; on request, we will give you its statement of reasons.
+4. Your right to go to court remains unaffected.
+
+## 6. Changes
+
+Changes to this AUP apply to existing contracts only in accordance with § 19 of the GTC.

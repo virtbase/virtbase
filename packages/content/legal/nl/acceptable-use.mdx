@@ -1,0 +1,129 @@
+---
+title: Beleid voor aanvaardbaar gebruik
+description: Beleid voor aanvaardbaar gebruik van Virtbase - wat niet is toegestaan op onze servers, hoe u een overtreding meldt en hoe wij met meldingen omgaan, inclusief de informatie volgens art. 14 DSA.
+---
+
+Dit beleid voor aanvaardbaar gebruik (hierna „AUP”) geldt voor alle diensten van Virtbase, een merk van BeastHost UG (haftungsbeschränkt), Lambarenestraße 21A, 09350 Lichtenstein/Sa., Duitsland. Het maakt deel uit van de Algemene Voorwaarden (AV). Het beschrijft wat niet is toegestaan op onze servers, hoe u en derden overtredingen aan ons kunnen melden en hoe wij daarmee omgaan. Daarnaast bevat het de informatie over onze moderatieprocedures volgens art. 14 van Verordening (EU) 2022/2065 (Digital Services Act, „DSA”).
+
+De Duitse versie van deze AUP is juridisch bindend. Deze vertaling dient alleen ter informatie.
+
+## 1. Uitgangspunt
+
+U mag uw server vrij gebruiken voor elk rechtmatig doel. U bent verantwoordelijk voor alle inhoud en activiteiten op uw server, ook die van uw eigen gebruikers en klanten en voor de gevolgen van een onvoldoende beveiligde server. Verboden is alles wat in strijd is met het toepasselijke recht of onze infrastructuur, andere klanten of derden in gevaar brengt of schaadt. Bepalend zijn het Duitse recht en het recht van het land waar de server staat (Nederland).
+
+## 2. Verboden inhoud en handelingen
+
+### 2.1 Ernstige overtredingen (onmiddellijke maatregelen, in de regel opzegging)
+
+- Materiaal van seksueel misbruik van kinderen en jongeren (CSAM) of inhoud die zulk misbruik voorbereidt, aanprijst of bagatelliseert. Wij melden zulke gevallen aan de opsporingsautoriteiten.
+- Terroristische online-inhoud in de zin van art. 2, punt 7, van Verordening (EU) 2021/784 (TCO-verordening) en de ondersteuning van terroristische organisaties.
+- Inhoud of diensten die een gevaar vormen voor het leven, het lichaam of de gezondheid van mensen, of daartoe oproepen.
+- Het exploiteren van infrastructuur voor kwaadaardige software: command-and-control-servers (C2) van botnets, verspreiding van malware of ransomware, exploitkits.
+- Phishing en andere sites die onder valse voorwendselen inloggegevens of betaalgegevens verkrijgen.
+- Het uitvoeren of bemiddelen van denial-of-service-aanvallen (DoS/DDoS), inclusief „booter”- en „stresser”-diensten.
+
+### 2.2 Overige verboden inhoud
+
+- Inhoud die in strijd is met het strafrecht, bijv. aanzetten tot haat, het gebruik van symbolen van ongrondwettelijke organisaties, bedreiging, smaad.
+- Inhoud die inbreuk maakt op rechten van derden, met name auteursrechten, merkenrechten en persoonlijkheidsrechten (bijv. ongeoorloofde verspreiding van beschermde werken, namaakproducten).
+- Pornografische inhoud die zonder effectieve leeftijdsverificatie toegankelijk is voor minderjarigen, en intieme beelden die zonder toestemming zijn gemaakt of verspreid.
+- Aanbiedingen voor de handel in verboden wapens, verdovende middelen, gestolen gegevens of andere illegale goederen en diensten.
+- Frauduleuze aanbiedingen, bijv. nepwinkels, beleggingsfraude, valse betaalpagina's.
+
+### 2.3 Verboden handelingen op het netwerk
+
+- **Spam:** het versturen van ongevraagde massale e-mails of andere berichten, het exploiteren van diensten voor het versturen van spam, het versturen naar gekochte of zonder toestemming verzamelde adreslijsten. Bij het versturen van e-mails moeten de gebruikelijke standaarden worden nageleefd (een geldige reverse-DNS-vermelding, geen vervalste afzenders, een afmeldmogelijkheid bij nieuwsbrieven).
+- **Onbevoegde toegang:** het binnendringen in systemen van anderen, brute-force-aanvallen op logins, het misbruiken van beveiligingslekken in systemen van anderen.
+- **Scans:** poortscans en kwetsbaarheidsscans zijn toegestaan als ze uitsluitend gericht zijn op uw eigen systemen of als de eigenaar van de gescande systemen vooraf toestemming heeft gegeven (bijv. een opgedragen penetratietest, een bugbountyprogramma binnen de regels daarvan). Op verzoek moet u de toestemming kunnen aantonen. Grootschalige scans van netwerken van anderen zonder toestemming zijn verboden. Onderzoeksscanners (bijv. voor internetmetingen) zijn alleen toegestaan met onze voorafgaande toestemming in tekstvorm.
+- **Vervalsing:** het vervalsen van IP-adressen (IP-spoofing), MAC-adressen, e-mailheaders of routeringsinformatie. Gebruik uitsluitend de aan u toegewezen IP-adressen.
+- **Open diensten:** het exploiteren van open DNS-resolvers, mailrelays, proxy's, NTP-, Memcached- of SSDP-diensten die door iedereen te gebruiken zijn en voor misbruik of amplificatieaanvallen kunnen worden ingezet. Proxy's en VPN-diensten zijn toegestaan als de toegang beperkt is tot bevoegde gebruikers (bijv. via aanmelding) of als u misbruik effectief voorkomt en meldingen afhandelt.
+- **Tor:** het exploiteren van Tor-relays (middle/guard) en bridges is toegestaan. Tor-exitnodes zijn alleen toegestaan met onze voorafgaande toestemming in tekstvorm.
+- **Cryptomining:** het minen van cryptovaluta is verboden.
+- **Verstoring van de infrastructuur:** handelingen die de werking van ons netwerk, onze hypervisors of andere klanten verstoren, bijv. aanvallen op het klantenportaal, de API of de console, pogingen om uit de server te breken of middelen van andere klanten te gebruiken, en het omzeilen van blokkades of beperkingen volgens sectie 4.
+
+### 2.4 Gecompromitteerde servers
+
+Wordt uw server door derden overgenomen en misbruikt voor een van de genoemde handelingen, dan behandelen wij dat als een overtreding, ook als u dat niet zo bedoeld hebt. Wij helpen u het probleem op te lossen; opzegging is in dat geval slechts het laatste middel.
+
+## 3. Melden van overtredingen
+
+### 3.1 Meldkanalen
+
+| Onderwerp | Contact |
+| --- | --- |
+| Misbruik (spam, aanvallen, phishing, malware, auteursrechtinbreuken) en meldingen van illegale inhoud volgens art. 16 DSA | [abuse@virtbase.com](mailto:abuse@virtbase.com) |
+| Autoriteiten van de EU-lidstaten, de Commissie en de Raad (art. 11 DSA) | [dsa@virtbase.com](mailto:dsa@virtbase.com) |
+| Verwijderingsbevelen volgens de TCO-verordening (art. 15 Verordening 2021/784) | [tco@virtbase.com](mailto:tco@virtbase.com) |
+| Klanten, vragen en klachten over beslissingen | [support@virtbase.com](mailto:support@virtbase.com) of de zaak in het klantenportaal |
+
+Wij communiceren in het Duits en het Engels.
+
+### 3.2 Inhoud van een melding
+
+Om een melding te kunnen behandelen, moet deze bij voorkeur het volgende bevatten:
+
+1. een toelichting waarom de inhoud of handeling illegaal is of in strijd is met deze AUP,
+2. de exacte vindplaats, bijv. URL, IP-adres en eventueel poort, en bij netwerkincidenten datum, tijd met tijdzone en bewijs (bijv. logfragmenten, e-mailheaders),
+3. naam en e-mailadres van de melder, behalve bij meldingen van materiaal van seksueel misbruik van kinderen,
+4. de verklaring dat de melding naar beste weten juist en volledig is.
+
+Wij bevestigen de ontvangst van een melding als er een contactadres is opgegeven en delen de melder onze beslissing mee. Geautomatiseerde meldingen (bijv. van blocklists, honeypots of abuse-diensten) behandelen wij eveneens.
+
+### 3.3 Misbruik van meldingen
+
+Wie regelmatig kennelijk ongegronde meldingen indient, wiens meldingen behandelen wij na een voorafgaande waarschuwing gedurende een redelijke periode met lagere prioriteit of niet meer.
+
+## 4. Onze werkwijze
+
+### 4.1 Beoordeling
+
+Elke melding wordt aan een zaak gekoppeld. Aan de hand van onze toewijzingsgegevens stellen wij vast aan welke klant het gemelde IP-adres op het moment van het incident was toegewezen. Voor de voorsortering gebruiken wij een AI-model dat een indeling (categorie, urgentie) voorstelt. **Het model neemt geen beslissingen en zet geen maatregelen in gang.** Maatregelen worden in gang gezet door een mens of door een door ons vooraf vastgelegde, op regels gebaseerde automatisering die alleen geldt voor meldingen uit betrouwbare bronnen (bijv. onze eigen netwerkbewaking bij een uitgaande DDoS-aanval). Is de toewijzing aan een klant niet eenduidig, dan grijpen wij nooit automatisch in.
+
+### 4.2 Trapsgewijze maatregelen
+
+Wij kiezen de mildste maatregel die de overtreding effectief beëindigt:
+
+| Niveau | Maatregel | Wat u behoudt |
+| --- | --- | --- |
+| 1 | Kennisgeving met het verzoek om te reageren en het probleem te verhelpen | alles |
+| 2 | Beperking van de netwerksnelheid | netwerk (trager), console, gegevens |
+| 3 | Isolatie: blokkering van uitgaand netwerkverkeer | gegevens, console, de mogelijkheid om het probleem te verhelpen |
+| 4 | Uitschakelen van de server | gegevens; herstart na vrijgave |
+| 5 | Opzegging om gewichtige redenen (§ 7 lid 6 AV) | verwijderingstermijn volgens § 18 AV |
+
+De niveaus 2 tot en met 4 laten uw gegevens ongemoeid en worden opgeheven zodra het probleem is verholpen; uw eigen firewallinstellingen worden daarbij hersteld. De console, de statusweergave en het opnieuw instellen van het wachtwoord blijven beschikbaar, zodat u het probleem kunt verhelpen. Over niveau 5 beslist altijd een mens. Zolang een zaak openstaat, kunnen wij nieuwe bestellingen weigeren; bestaande servers en verlengingen worden daardoor niet geraakt.
+
+### 4.3 Termijnen
+
+1. **Normale situatie:** wij informeren u per e-mail en in het klantenportaal over de zaak. U hebt **24 uur** de tijd om te reageren en de overtreding te beëindigen of uit te leggen waarom er geen overtreding is. Reageert u niet, dan kunnen wij de maatregel telkens met één niveau verzwaren, hoogstens tot het uitschakelen van de server (niveau 4).
+2. **Acuut gevaar:** vormt uw server een acuut gevaar (bijv. een lopende DDoS-aanval, een actieve phishingpagina, verspreiding van kwaadaardige software, een duidelijk gecompromitteerde server), dan grijpen wij onmiddellijk in en informeren wij u onverwijld daarna.
+3. **Ernstige overtredingen** volgens sectie 2.1: wij blokkeren de toegang tot de inhoud onmiddellijk. Wij kunnen de overeenkomst om gewichtige redenen opzeggen en, voor zover wettelijk voorzien, bewijs veiligstellen voor de autoriteiten.
+4. **Verwijderingsbevelen volgens de TCO-verordening** voeren wij uit binnen een uur na ontvangst.
+5. **Herhaalde overtredingen:** overtredingen binnen 90 dagen worden samen beoordeeld. Na de derde gegronde zaak binnen deze periode of op bevel van een autoriteit kunnen wij de overeenkomst om gewichtige redenen opzeggen.
+
+### 4.4 Motivering van de beslissing
+
+Beperken wij uw diensten vanwege inhoud of een handeling, dan geven wij u uiterlijk bij het begin van de maatregel een duidelijke motivering (art. 17 DSA). Deze vermeldt:
+
+- welke maatregel wij hebben genomen, de reikwijdte en de verwachte duur ervan,
+- de feiten en omstandigheden waarop de beslissing berust, en of deze op een melding berust (de identiteit van de melder noemen wij alleen als dat noodzakelijk is en de melder daarmee heeft ingestemd),
+- of bij de opsporing of de beslissing geautomatiseerde middelen zijn gebruikt,
+- de rechtsgrondslag of de regel van deze AUP die is overtreden,
+- uw mogelijkheden om de beslissing te laten herzien (sectie 5).
+
+Wij geven geen motivering als een autoriteit dat vanwege een lopend onderzoek heeft verboden, of als het gaat om misleidende commerciële inhoud die op grote schaal wordt verspreid (spam).
+
+### 4.5 Melding aan autoriteiten
+
+Krijgen wij kennis van informatie die het vermoeden doet rijzen dat een strafbaar feit dat een bedreiging vormt voor het leven of de veiligheid van personen is gepleegd, wordt gepleegd of waarschijnlijk zal worden gepleegd, dan informeren wij onverwijld de bevoegde opsporingsautoriteiten (art. 18 DSA). Verzoeken om informatie van autoriteiten beantwoorden wij alleen op een toereikende rechtsgrondslag.
+
+## 5. Reactie en klacht
+
+1. **Reactie in de zaak:** u kunt in de zaak in het klantenportaal op elk moment reageren, bewijs indienen en meedelen dat het probleem is verholpen. Een mens beoordeelt uw reactie en heft de maatregel op als de overtreding is beëindigd of niet bestond. Uw reactie schort de termijnen volgens sectie 4.3 op.
+2. **Klacht tegen een beslissing:** vindt u een maatregel of een opzegging ongerechtvaardigd, dan kunt u binnen zes maanden na de beslissing een klacht indienen, in de zaak in het klantenportaal of per e-mail aan [support@virtbase.com](mailto:support@virtbase.com). Melders kunnen eveneens een klacht indienen als wij naar aanleiding van hun melding niets hebben ondernomen. De klacht wordt beoordeeld door een persoon die niet uitsluitend op geautomatiseerde middelen vertrouwt. Wij beslissen tijdig, motiveren de beslissing en heffen de maatregel onverwijld op als de klacht gegrond is.
+3. **Verwijdering van terroristische inhoud:** is inhoud op grond van de TCO-verordening verwijderd of ontoegankelijk gemaakt, dan informeren wij u, tenzij de autoriteit dat verbiedt. Tegen een verwijdering op grond van onze eigen maatregelen volgens art. 5 TCO-verordening kunt u een klacht indienen volgens punt 2 (art. 10 TCO-verordening). Tegen het verwijderingsbevel zelf staat de weg naar de rechter tegen de autoriteit die het bevel heeft uitgevaardigd voor u open; op verzoek delen wij u de motivering daarvan mee.
+4. Uw recht om naar de rechter te stappen blijft onverlet.
+
+## 6. Wijzigingen
+
+Wijzigingen van deze AUP gelden voor bestaande overeenkomsten alleen volgens § 19 van de AV.

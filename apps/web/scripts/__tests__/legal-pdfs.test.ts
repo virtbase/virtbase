@@ -9,6 +9,7 @@ describe("legal PDFs", () => {
     const slugs = new Set(documents.map((document) => document.slug));
 
     expect(slugs.has("terms")).toBe(true);
+    expect(slugs.has("supplier-information")).toBe(true);
     expect(documents).toHaveLength(slugs.size * locales.length);
   });
 
