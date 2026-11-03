@@ -34,7 +34,7 @@ import { auth } from "@/lib/auth/server.ts";
  *   bun script dev/login --admin           (grant the admin console)
  */
 const EMAIL = "dev@example.com";
-const PASSWORD = "devpassword123";
+const PASSWORD = "Devpassword123";
 
 async function main() {
   let [user] = await db.select().from(users).where(eq(users.email, EMAIL));

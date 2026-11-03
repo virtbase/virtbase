@@ -287,6 +287,18 @@ is not translated, not searchable and not read by AI assistants.
   article's language and says what the image shows: the labels as they appear
   in that locale, and the values that matter (a port, a selected mode).
 
+- Screenshots are generated, never taken by hand, so every locale can be
+  retaken after a UI change. `bun script help/screenshots` in `apps/web`
+  writes them all; `--locale=de` and `--only=name,name` narrow the run. Each
+  shot in `apps/web/scripts/help/screenshots.ts` prepares its own state and
+  returns the element to crop: a dialog alone, a card, a notice - the whole
+  page only where the layout itself is the point.
+
+- They need the local cluster with the demo server (`bun script video/prepare`),
+  the dev server and the noVNC proxy. The run turns the dev database into demo
+  data - the server's name, documentation addresses, an abuse case - and resets
+  the account's language, billing and firewall when it finishes.
+
 - WebP at quality 82, at most 1600 px wide from a 2x capture: sharp enough for
   high-density screens, mostly under 60 KB. The site resizes them again.
 
