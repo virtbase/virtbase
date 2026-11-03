@@ -239,7 +239,7 @@ export const HelpMessage = async ({
           {
             name: t("🛡️ Firewall & rDNS"),
             value: t(
-              "Turn the firewall on or off, add and remove rules, and set reverse DNS for your addresses.",
+              "Set the default policies, add and remove firewall rules, and set reverse DNS for your addresses.",
             ),
           },
           {

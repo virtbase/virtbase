@@ -157,7 +157,7 @@ msgstr "Seite {page} von {totalPages}"
 #: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration.b0Qt5R"
 msgid "In progress…"
-msgstr "Läuft …"
+msgstr "Läuft…"
 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration.FFGk_G"
@@ -338,7 +338,7 @@ msgstr "Keine Regeln"
 #: ../../packages/integration-discord/src/features/firewall/index.ts
 msgctxt "discord-integration.7SSws8"
 msgid "This server has no firewall rules. With the firewall on and no rules, the default policies above decide everything."
-msgstr "Dieser Server hat keine Firewall-Regeln. Bei aktiver Firewall ohne Regeln entscheiden allein die Standardrichtlinien oben."
+msgstr "Dieser Server hat keine Firewallregeln. Bei aktiver Firewall ohne Regeln entscheiden allein die Standardrichtlinien oben."
 
 #: ../../packages/integration-discord/src/features/firewall/index.ts
 msgctxt "discord-integration.kAAlGL"
@@ -363,7 +363,7 @@ msgstr "Regel hinzufügen"
 #: ../../packages/integration-discord/src/features/firewall/index.ts
 msgctxt "discord-integration.MHRs1u"
 msgid "Add firewall rule"
-msgstr "Firewall-Regel hinzufügen"
+msgstr "Firewallregel hinzufügen"
 
 #: ../../packages/integration-discord/src/features/firewall/index.ts
 msgctxt "discord-integration.QlsDcr"
@@ -423,7 +423,7 @@ msgstr "HTTPS erlauben"
 #: ../../packages/integration-discord/src/features/firewall/index.ts
 msgctxt "discord-integration.ZLl_FA"
 msgid "Delete this firewall rule?"
-msgstr "Diese Firewall-Regel löschen?"
+msgstr "Diese Firewallregel löschen?"
 
 #: ../../packages/integration-discord/src/features/firewall/index.ts
 msgctxt "discord-integration.q6DHpk"
@@ -451,9 +451,9 @@ msgid "Discard it and tell the sender"
 msgstr "Verwerfen und den Absender benachrichtigen"
 
 #: ../../packages/integration-discord/src/features/firewall/index.ts
-msgctxt "discord-integration.YDAX4F"
-msgid "What happens to a packet that no rule matches. Leave incoming on **DROP** unless you know why you are changing it."
-msgstr "Was mit einem Paket geschieht, auf das keine Regel zutrifft. Lass eingehend auf **DROP**, sofern du nicht weißt, warum du das änderst."
+msgctxt "discord-integration.hB998R"
+msgid "What happens to a packet that no rule matches. New servers accept everything; set incoming to **DROP** to block whatever your rules do not allow."
+msgstr "Was mit einem Paket geschieht, auf das keine Regel zutrifft. Neue Server lassen alles durch; stelle eingehend auf **DROP**, um alles zu blockieren, was deine Regeln nicht erlauben."
 
 #: ../../packages/integration-discord/src/features/firewall/index.ts
 msgctxt "discord-integration.XumiMR"
@@ -488,7 +488,7 @@ msgstr "Einstellungen — {name}"
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.db8X8t"
 msgid "Everything that changes what this server is."
-msgstr "Alles, was verändert, was dieser Server ist."
+msgstr "Alles, was diesen Server grundlegend verändert."
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 #: ../../packages/integration-discord/src/features/servers/messages.ts
@@ -509,7 +509,7 @@ msgstr "Plan"
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.tPfumK"
 msgid "Installer image"
-msgstr "Installationsabbild"
+msgstr "Installations-Image"
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.3Rx6Qo"
@@ -529,12 +529,12 @@ msgstr "Du nutzt **{name}** — {cores, plural, =1 {# vCore} other {# vCores}}, 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.GXCHD8"
 msgid "This server's plan could not be determined."
-msgstr "Der Tarif dieses Servers konnte nicht ermittelt werden."
+msgstr "Der Plan dieses Servers konnte nicht ermittelt werden."
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.LR754a"
 msgid "Renews at"
-msgstr "Verlängert sich für"
+msgstr "Verlängerungspreis"
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.5NTPq8"
@@ -549,7 +549,7 @@ msgstr " (heute upgraden für {price})"
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.-nInAI"
 msgid "Change plan or renew"
-msgstr "Tarif ändern oder verlängern"
+msgstr "Plan ändern oder verlängern"
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.07Xf2y"
@@ -564,22 +564,22 @@ msgstr "**{name}** ist eingebunden. Starte den Server neu, um davon zu booten, o
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.BWwrKU"
 msgid "You have no installer images ready. Add one in the customer portal, then mount it here."
-msgstr "Du hast keine Installationsabbilder bereit. Füge im Kundenportal eines hinzu und binde es dann hier ein."
+msgstr "Du hast keine Installations-Images bereit. Füge im Kundenportal eines hinzu und binde es dann hier ein."
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.U7qHPh"
 msgid "Nothing is mounted. Mounting an image attaches it as a virtual disc; reboot the server afterwards to boot from it."
-msgstr "Nichts ist eingebunden. Ein eingebundenes Abbild wird als virtuelles Laufwerk angehängt; starte den Server anschließend neu, um davon zu booten."
+msgstr "Nichts ist eingebunden. Ein eingebundenes Image wird als virtuelles Laufwerk angehängt; starte den Server anschließend neu, um davon zu booten."
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.L2ufbn"
 msgid "Expires {when}"
-msgstr "Läuft ab {when}"
+msgstr "Läuft {when} ab"
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.LkI5V4"
 msgid "Select an image to mount"
-msgstr "Abbild zum Einbinden auswählen"
+msgstr "Image zum Einbinden auswählen"
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.UzHwi-"
@@ -594,7 +594,7 @@ msgstr "Aushängen"
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.jQVfJU"
 msgid "Manage images"
-msgstr "Abbilder verwalten"
+msgstr "Images verwalten"
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.mrzKVy"
@@ -613,9 +613,9 @@ msgid "Cancel"
 msgstr "Abbrechen"
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
-msgctxt "discord-integration.VLFQi1"
-msgid "Firmware settings. Changing either of these reboots the server, and a machine installed under one setting may not boot under the other."
-msgstr "Firmware-Einstellungen. Eine Änderung startet den Server neu, und eine unter der einen Einstellung installierte Maschine bootet unter der anderen möglicherweise nicht."
+msgctxt "discord-integration.UdJVk6"
+msgid "Firmware settings. A change takes effect once the server is shut down and started again, and a machine installed under one setting may not boot under the other."
+msgstr "Firmware-Einstellungen. Eine Änderung greift, sobald der Server heruntergefahren und wieder gestartet wird, und eine unter der einen Einstellung installierte Maschine bootet unter der anderen möglicherweise nicht."
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.NjgW6o"
@@ -731,7 +731,7 @@ msgstr "Hauptmenü"
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.gaUHYQ"
 msgid "Please select an action from the menu below."
-msgstr "Wähl unten im Menü eine Aktion aus."
+msgstr "Wähle unten im Menü eine Aktion aus."
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 #: ../../packages/integration-discord/src/features/servers/messages.ts
@@ -749,7 +749,7 @@ msgstr "Was kann dieser Bot?"
 #: ../../packages/integration-discord/src/features/stats/index.ts
 msgctxt "discord-integration.-uqHID"
 msgid "Show in portal"
-msgstr "Im Portal anzeigen"
+msgstr "Im Kundenportal anzeigen"
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.dvr19k"
@@ -769,7 +769,7 @@ msgstr "Dein Virtbase-Konto ist noch nicht mit deinem Discord-Konto verknüpft."
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.u_Hev8"
 msgid "Please follow the instructions below to link your accounts:"
-msgstr "Folg den Schritten unten, um die Konten zu verknüpfen:"
+msgstr "Folge den Schritten unten, um deine Konten zu verknüpfen:"
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.ac8Iok"
@@ -779,7 +779,7 @@ msgstr "1. Kundenportal öffnen"
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.f4ziLK"
 msgid "Click the button below and sign in with your Virtbase account."
-msgstr "Klick auf den Button unten und meld dich mit deinem Virtbase-Konto an."
+msgstr "Klicke auf die Schaltfläche unten und melde dich mit deinem Virtbase-Konto an."
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.2ZTNN3"
@@ -789,7 +789,7 @@ msgstr "2. Konten verknüpfen"
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.XnY6rW"
 msgid "Navigate to your account in the customer portal, under **Security** in the **Authentication** section. Link your Discord account here."
-msgstr "Geh im Kundenportal zu deinem Konto, unter **Sicherheit** im Bereich **Authentifizierung**. Verknüpf dort dein Discord-Konto."
+msgstr "Gehe im Kundenportal zu deinem Konto, unter **Sicherheit** im Bereich **Anmeldemethoden**. Verknüpfe dort dein Discord-Konto."
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.VRJHO_"
@@ -799,7 +799,7 @@ msgstr "3. Befehl wiederholen"
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.gCSCoh"
 msgid "Repeat the command to perform actions."
-msgstr "Wiederhol den Befehl, wenn du Aktionen ausführen willst."
+msgstr "Wiederhole den Befehl, um Aktionen auszuführen."
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.baD-Vp"
@@ -844,7 +844,7 @@ msgstr "🖥️ Server"
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.Waq2D9"
 msgid "See every server you rent, with its plan, operating system, node and IP addresses."
-msgstr "Sieh alle Server, die du mietest, mit Tarif, Betriebssystem, Node und IP-Adressen."
+msgstr "Sieh dir alle Server an, die du mietest, mit Plan, Betriebssystem, Hostsystem und IP-Adressen."
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.kzrJPG"
@@ -882,9 +882,9 @@ msgid "🛡️ Firewall & rDNS"
 msgstr "🛡️ Firewall & rDNS"
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
-msgctxt "discord-integration.f2U7no"
-msgid "Turn the firewall on or off, add and remove rules, and set reverse DNS for your addresses."
-msgstr "Schalte die Firewall ein oder aus, füge Regeln hinzu und entferne sie, und setze Reverse DNS für deine Adressen."
+msgctxt "discord-integration.Ux0sfM"
+msgid "Set the default policies, add and remove firewall rules, and set reverse DNS for your addresses."
+msgstr "Lege die Standardrichtlinien fest, füge Firewallregeln hinzu und entferne sie, und setze Reverse DNS für deine Adressen."
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.imThHA"
@@ -894,7 +894,7 @@ msgstr "🔧 Einstellungen"
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.YcmU1n"
 msgid "Rename a server, reinstall it with a different operating system, mount an installer image and review your plan."
-msgstr "Benenne einen Server um, installiere ihn mit einem anderen Betriebssystem neu, binde ein Installationsabbild ein und sieh dir deinen Tarif an."
+msgstr "Benenne einen Server um, installiere ihn mit einem anderen Betriebssystem neu, binde ein Installations-Image ein und sieh dir deinen Plan an."
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.OJkAII"
@@ -958,7 +958,7 @@ msgstr "Laufzeit: {uptime}"
 #: ../../packages/integration-discord/src/features/power/index.ts
 msgctxt "discord-integration.2mkNcb"
 msgid "The current state could not be read from the node."
-msgstr "Der aktuelle Status konnte vom Node nicht gelesen werden."
+msgstr "Der aktuelle Status konnte nicht vom Hostsystem gelesen werden."
 
 #: ../../packages/integration-discord/src/features/power/index.ts
 msgctxt "discord-integration.mOFG3K"
@@ -968,7 +968,7 @@ msgstr "Starten"
 #: ../../packages/integration-discord/src/features/power/index.ts
 msgctxt "discord-integration.9U7nUR"
 msgid "Reboot"
-msgstr "Neustart"
+msgstr "Neu starten"
 
 #: ../../packages/integration-discord/src/features/power/index.ts
 msgctxt "discord-integration.CR9Lxh"
@@ -1118,7 +1118,7 @@ msgstr "Die folgenden Server sind deinem Konto zugewiesen und können verwaltet 
 #: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration.0ZPfix"
 msgid "Select a server to manage it:"
-msgstr "Wähl einen Server aus, den du verwalten willst:"
+msgstr "Wähle einen Server aus, den du verwalten willst:"
 
 #: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration.BGI16m"
@@ -1138,7 +1138,7 @@ msgstr "{storage} NVMe SSD"
 #: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration.7F86ji"
 msgid "View in portal ↗"
-msgstr "Im Portal ansehen ↗"
+msgstr "Im Kundenportal ansehen ↗"
 
 #: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration.JGe_wh"
@@ -1158,7 +1158,7 @@ msgstr "Du hast noch keine Server gemietet. Miete einen Server, um ihn über die
 #: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration.67Bzc5"
 msgid "Virtbase Store"
-msgstr "Virtbase Shop"
+msgstr "Virtbase-Shop"
 
 #: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration.wbsq7O"
@@ -1178,7 +1178,7 @@ msgstr "Datenverkehr: {in} ein / {out} aus"
 #: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration.ivkv_L"
 msgid "Node"
-msgstr "Node"
+msgstr "Hostsystem"
 
 #: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration.GaTcNW"
@@ -1248,7 +1248,7 @@ msgstr "Alle Server"
 #: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration.PlveeX"
 msgid "Click the one-time link below to access the console:"
-msgstr "Klick auf den Einmal-Link unten, um die Konsole zu öffnen:"
+msgstr "Klicke auf den Einmal-Link unten, um die Konsole zu öffnen:"
 
 #: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration.8rmkQD"
@@ -1524,7 +1524,7 @@ msgstr "Ausgehende Webhooks"
 #: ../../packages/integration-webhook/src/localize.ts
 msgctxt "R9xPr_"
 msgid "Delivers operator notifications as signed JSON to any endpoint. The way to reach Slack, Teams or an automation tool without a dedicated integration."
-msgstr "Liefert Operator-Benachrichtigungen als signiertes JSON an einen beliebigen Endpunkt. Der Weg zu Slack, Teams oder einem Automatisierungs-Tool ohne eigene Integration."
+msgstr "Liefert Operator-Benachrichtigungen als signiertes JSON an einen beliebigen Endpunkt. Der Weg zu Slack, Teams oder einem Automatisierungstool ohne eigene Integration."
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgctxt "o_UJXc"
@@ -1562,7 +1562,7 @@ msgstr "Datum auswählen"
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
 msgctxt "_zw7BY"
 msgid "Clear {title} filter"
-msgstr "{title} Filter löschen"
+msgstr "Filter „{title}“ löschen"
 
 #: ../../packages/ui/src/data-table/data-table-faceted-filter.tsx
 msgctxt "NKPfmm"
@@ -1597,7 +1597,7 @@ msgstr "Seite {page} von {total}"
 #: ../../packages/ui/src/data-table/data-table-pagination.tsx
 msgctxt "F4dsUN"
 msgid "Go to first page"
-msgstr "Zu ersten Seite gehen"
+msgstr "Zur ersten Seite gehen"
 
 #: ../../packages/ui/src/data-table/data-table-pagination.tsx
 msgctxt "NYErt1"
@@ -1629,7 +1629,7 @@ msgstr "Bis"
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
 msgctxt "UfFPe5"
 msgid "{title} slider"
-msgstr "{title} Slider"
+msgstr "Schieberegler für {title}"
 
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
 msgctxt "_GCoTA"
@@ -1664,7 +1664,7 @@ msgstr "Ansehen"
 #: ../../packages/ui/src/data-table/data-table-view-options.tsx
 msgctxt "nDz7zP"
 msgid "Search columns..."
-msgstr "Spalten suchen..."
+msgstr "Spalten suchen…"
 
 #: ../../packages/ui/src/data-table/data-table-view-options.tsx
 msgctxt "945Lt6"
@@ -1755,7 +1755,7 @@ msgstr "Die Bestellung erfordert eine Aktion von dir."
 #: src/app/(public)/[locale]/checkout/return/page.tsx
 msgctxt "uew4Mt"
 msgid "Please perform the action and the order will be automatically processed."
-msgstr "Bitte führe die notwendige Aktion aus und die Bestellung wird automatisch verarbeitet."
+msgstr "Bitte führe die notwendige Aktion aus, dann wird die Bestellung automatisch verarbeitet."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx
 msgctxt "6O8bJK"
@@ -1785,7 +1785,7 @@ msgstr "Die Bestellung erfordert eine Bestätigung durch deine Zahlungsmethode."
 #: src/app/(public)/[locale]/checkout/return/page.tsx
 msgctxt "wsDmTC"
 msgid "Perform the confirmation and the order will be automatically processed."
-msgstr "Führe die Bestätigung durch und die Bestellung wird automatisch ausgeführt."
+msgstr "Führe die Bestätigung durch, dann wird die Bestellung automatisch verarbeitet."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx
 msgctxt "uH08xA"
@@ -1795,7 +1795,7 @@ msgstr "Bestellung erfordert Zahlungsmethode"
 #: src/app/(public)/[locale]/checkout/return/page.tsx
 msgctxt "jS7WDS"
 msgid "The order requires a valid payment method. Please go back to the checkout and try again. "
-msgstr "Die Bestellung erfordert eine Zahlungsmethode. Bitte gehe zurück zum Checkout und versuche es erneut. "
+msgstr "Die Bestellung erfordert eine gültige Zahlungsmethode. Bitte gehe zurück zum Checkout und versuche es erneut. "
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx
 msgctxt "mDRHG0"
@@ -1841,7 +1841,7 @@ msgstr "Kontakt"
 #: src/app/(public)/[locale]/contact/page.tsx
 msgctxt "Hse98V"
 msgid "Get help with all product topics, give feedback or ask questions about billing."
-msgstr "Hilfe bei allen Produktthemen, Feedback geben oder Fragen bezüglich Abrechnung stellen."
+msgstr "Erhalte Hilfe zu allen Produktthemen, gib Feedback oder stelle Fragen zur Abrechnung."
 
 #: src/app/(public)/[locale]/contact/page.tsx
 msgctxt "cN2wPY"
@@ -1851,7 +1851,7 @@ msgstr "Discord-Community"
 #: src/app/(public)/[locale]/contact/page.tsx
 msgctxt "xmN7-N"
 msgid "Join the community Discord server and chat with other users."
-msgstr "Dem Discord Server beitreten und mit anderen Nutzern chatten."
+msgstr "Tritt dem Discord-Server der Community bei und chatte mit anderen Nutzern."
 
 #: src/app/(public)/[locale]/contact/page.tsx
 msgctxt "qh9exW"
@@ -1867,7 +1867,7 @@ msgstr "Support"
 #: src/app/(public)/[locale]/contact/page.tsx
 msgctxt "tA3IJb"
 msgid "Request Support"
-msgstr "Hilfe anfordern"
+msgstr "Support anfordern"
 
 #: src/app/(public)/[locale]/contact/page.tsx
 msgctxt "KV_9Hv"
@@ -1877,7 +1877,7 @@ msgstr "Fragen"
 #: src/app/(public)/[locale]/contact/page.tsx
 msgctxt "pNNM1r"
 msgid "Our help articles already answer many of your questions."
-msgstr "Unsere Hilfe-Artikel beantworten viele Fragen bereits."
+msgstr "Unsere Hilfeartikel beantworten viele deiner Fragen bereits."
 
 #: src/app/(public)/[locale]/contact/page.tsx
 msgctxt "TZHi__"
@@ -1895,7 +1895,7 @@ msgstr "API-Dokumentation"
 #: src/app/(public)/[locale]/contact/page.tsx
 msgctxt "p21Rwp"
 msgid "Learn more about the API interface for developers for your projects."
-msgstr "Mehr über die API-Schnittstelle für Entwickler erfahren."
+msgstr "Erfahre mehr über die API für Entwickler und deine Projekte."
 
 #: src/app/(public)/[locale]/contact/page.tsx
 msgctxt "SxCabn"
@@ -2014,7 +2014,7 @@ msgstr "Support rund um die Uhr"
 #: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgctxt "CKQfnV"
 msgid "Available around the clock whenever you need it"
-msgstr "Zu jeder Zeit verfügbar, wenn benötigt"
+msgstr "Rund um die Uhr erreichbar, wann immer du uns brauchst"
 
 #: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgctxt "3SJxuA"
@@ -2024,7 +2024,7 @@ msgstr "Aktiver DDoS-Schutz"
 #: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgctxt "VI9ImX"
 msgid "Your server is protected without additional charges"
-msgstr "Der Server ist ohne Aufpreis geschützt"
+msgstr "Dein Server ist ohne Aufpreis geschützt"
 
 #: src/app/admin.virtbase.com/[locale]/(dashboard)/abuse/[id]/page.tsx
 #: src/app/admin.virtbase.com/[locale]/(dashboard)/abuse/page.tsx
@@ -2082,7 +2082,7 @@ msgstr "Node-Gruppen"
 #: src/app/admin.virtbase.com/[locale]/(dashboard)/nodes/[id]/page.tsx
 msgctxt "n3j8M6"
 msgid "Proxmox Nodes"
-msgstr "Proxmox Nodes"
+msgstr "Proxmox-Nodes"
 
 #: src/app/admin.virtbase.com/[locale]/(dashboard)/notifications/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
@@ -2160,7 +2160,7 @@ msgstr "Passwort für {appName} vergessen"
 #: src/app/app.virtbase.com/[locale]/(auth)/forgot-password/page.tsx
 msgctxt "knQkcB"
 msgid "Reset the password of your {appName} account."
-msgstr "Setze das Passwort für deinen {appName} Account zurück."
+msgstr "Setze das Passwort für dein {appName}-Konto zurück."
 
 #: src/app/app.virtbase.com/[locale]/(auth)/forgot-password/page.tsx
 #: src/app/app.virtbase.com/[locale]/(auth)/reset-password/page.tsx
@@ -2176,17 +2176,17 @@ msgstr "Bei {appName} anmelden"
 #: src/app/app.virtbase.com/[locale]/(auth)/login/page.tsx
 msgctxt "VGUFk-"
 msgid "Sign in to your {appName} account to manage your virtual servers."
-msgstr "Melde dich bei deinem {appName} Account an, um deine virtuellen Server zu verwalten."
+msgstr "Melde dich bei deinem {appName}-Konto an, um deine virtuellen Server zu verwalten."
 
 #: src/app/app.virtbase.com/[locale]/(auth)/login/page.tsx
 msgctxt "TKG18n"
 msgid "Log in to your {appName} account"
-msgstr "Melde dich bei deinem {appName} Account an"
+msgstr "Melde dich bei deinem {appName}-Konto an"
 
 #: src/app/app.virtbase.com/[locale]/(auth)/login/page.tsx
 msgctxt "25WwxF"
 msgid "Don't have an account?"
-msgstr "Noch keinen Account?"
+msgstr "Noch kein Konto?"
 
 #: src/app/app.virtbase.com/[locale]/(auth)/login/page.tsx
 #: src/features/checkout/components/checkout-auth-wrapper.tsx
@@ -2200,12 +2200,12 @@ msgstr "Registrieren"
 #: src/app/app.virtbase.com/[locale]/(auth)/register/page.tsx
 msgctxt "LcaCOE"
 msgid "Create your {appName} account"
-msgstr "Erstelle deinen {appName} Account"
+msgstr "Erstelle dein {appName}-Konto"
 
 #: src/app/app.virtbase.com/[locale]/(auth)/register/page-client.tsx
 msgctxt "uCk8r-"
 msgid "Already have an account?"
-msgstr "Bereits einen Account?"
+msgstr "Bereits ein Konto?"
 
 #: src/app/app.virtbase.com/[locale]/(auth)/register/page-client.tsx
 msgctxt "odXlk8"
@@ -2225,7 +2225,7 @@ msgstr "Gib den sechsstelligen Verifizierungscode ein, der an <strong>{email}</s
 #: src/app/app.virtbase.com/[locale]/(auth)/register/page.tsx
 msgctxt "PcjZtc"
 msgid "Create your {appName} account to order your first virtual server."
-msgstr "Erstelle deinen {appName} Account, um deinen ersten virtuellen Server zu mieten."
+msgstr "Erstelle dein {appName}-Konto, um deinen ersten virtuellen Server zu mieten."
 
 #: src/app/app.virtbase.com/[locale]/(auth)/reset-password/page.tsx
 msgctxt "D2Np7X"
@@ -2235,7 +2235,7 @@ msgstr "Dein Passwort für {appName} zurücksetzen"
 #: src/app/app.virtbase.com/[locale]/(auth)/reset-password/page.tsx
 msgctxt "tNqFr9"
 msgid "Reset your password for your {appName} account."
-msgstr "Setze dein Passwort für deinen {appName} Account zurück."
+msgstr "Setze dein Passwort für dein {appName}-Konto zurück."
 
 #: src/app/app.virtbase.com/[locale]/(auth)/two-factor/page.tsx
 #: src/features/account/components/authentication/user-tfa-card.tsx
@@ -2357,7 +2357,7 @@ msgstr "Ein Fehler ist aufgetreten"
 #: src/app/app.virtbase.com/[locale]/(dashboard)/servers/error.tsx
 msgctxt "HkQfvt"
 msgid "An unexpected error occurred while loading the server details."
-msgstr "Beim Abrufen der Server-Details ist ein unerwarteter Fehler aufgetreten."
+msgstr "Beim Abrufen der Serverdetails ist ein unerwarteter Fehler aufgetreten."
 
 #: src/app/app.virtbase.com/[locale]/(dashboard)/servers/error.tsx
 #: src/features/account/components/billing/add-payment-method.tsx
@@ -2374,7 +2374,7 @@ msgstr "Neuen Server mieten"
 #: src/app/app.virtbase.com/[locale]/unauthorized.tsx
 msgctxt "srept4"
 msgid "You are not authorized to access this page. Your session may have expired, please sign in again."
-msgstr "Du bist für Zugriff auf diese Seite nicht autorisiert. Deine Sitzung ist möglicherweise abgelaufen, bitte erneut anmelden."
+msgstr "Du bist nicht berechtigt, auf diese Seite zuzugreifen. Deine Sitzung ist möglicherweise abgelaufen. Bitte melde dich erneut an."
 
 #: src/app/app.virtbase.com/[locale]/unauthorized.tsx
 #: src/features/account/components/authentication/user-sessions-list.tsx
@@ -2514,7 +2514,7 @@ msgstr "Offen"
 #: src/features/abuse/hooks/use-case-labels.ts
 msgctxt "MytfoW"
 msgid "Needs your answer"
-msgstr "Braucht deine Antwort"
+msgstr "Wartet auf deine Antwort"
 
 #: src/features/abuse/hooks/use-case-labels.ts
 msgctxt "s7iloU"
@@ -2657,12 +2657,12 @@ msgstr "SSH-Schlüssel"
 #: src/ui/nav-user.tsx
 msgctxt "TwyMau"
 msgid "Account"
-msgstr "Account"
+msgstr "Konto"
 
 #: src/features/account/components/account-nav.tsx
 msgctxt "96Us9V"
 msgid "ISO Images"
-msgstr "ISO-Abbilder"
+msgstr "ISO-Images"
 
 #: src/features/account/components/account-nav.tsx
 msgctxt "cXBJ7U"
@@ -2783,7 +2783,7 @@ msgstr "API-Schlüssel erstellt"
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 msgctxt "TQSqlk"
 msgid "This key will only be displayed once. Please save it securely, as it cannot be restored:"
-msgstr "Dieser Schlüssel wird nur einmal angezeigt. Bitte speichere ihn gut, er kann nicht wiederhergestellt werden:"
+msgstr "Dieser Schlüssel wird nur einmal angezeigt. Bitte bewahre ihn sicher auf, denn er kann nicht wiederhergestellt werden:"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
@@ -2860,7 +2860,7 @@ msgstr "Schließen"
 #: src/features/account/components/authentication/backup-codes-dialog.tsx
 msgctxt "gULNyk"
 msgid "These are your backup codes. Store them in a secure location. You will need them to access your account if you lose your authenticator app."
-msgstr "Dies sind deine Backup-Codes. Bewahre sie an einem sicheren Ort auf. Du benötigst sie, um auf deinen Account zuzugreifen, falls du deine Authenticator-App verlierst."
+msgstr "Dies sind deine Backup-Codes. Bewahre sie an einem sicheren Ort auf. Du benötigst sie, um auf dein Konto zuzugreifen, falls du deine Authenticator-App verlierst."
 
 #: src/features/account/components/authentication/confirm-password-dialog.tsx
 msgctxt "vfG-nh"
@@ -2884,7 +2884,7 @@ msgstr "Verwalte deine Server über Discord"
 #: src/features/account/components/authentication/discord-bot-card.tsx
 msgctxt "0eStxB"
 msgid "Start and stop servers, take backups, edit firewall rules and open a console — without leaving chat. Link your Discord account below, then run /menu."
-msgstr "Server starten und stoppen, Backups anlegen, Firewall-Regeln bearbeiten und eine Konsole öffnen — ohne den Chat zu verlassen. Verknüpfe unten dein Discord-Konto und führe dann /menu aus."
+msgstr "Server starten und stoppen, Backups anlegen, Firewallregeln bearbeiten und eine Konsole öffnen — ohne den Chat zu verlassen. Verknüpfe unten dein Discord-Konto und führe dann /menu aus."
 
 #: src/features/account/components/authentication/discord-bot-card.tsx
 msgctxt "vEF59U"
@@ -2953,7 +2953,7 @@ msgstr "Keine Passkeys"
 #: src/features/account/components/authentication/user-passkeys-list.tsx
 msgctxt "OHO8dm"
 msgid "No passkeys have been registered for this account."
-msgstr "Für diesen Account wurden noch keine Passkeys hinterlegt."
+msgstr "Für dieses Konto wurden noch keine Passkeys hinterlegt."
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx
 msgctxt "GKNfO2"
@@ -2979,7 +2979,7 @@ msgstr "Anmeldemethoden"
 #: src/features/account/components/authentication/user-providers-card.tsx
 msgctxt "wLHOoq"
 msgid "Configure how you can sign in to your account. Link your accounts for a seamless, secure authentication experience."
-msgstr "Passe an, wie du dich anmelden kannst. Verbinde deine Accounts für eine nahtlose, sichere Authentifizierung."
+msgstr "Lege fest, wie du dich bei deinem Konto anmelden kannst. Verknüpfe deine Konten für eine nahtlose, sichere Anmeldung."
 
 #: src/features/account/components/authentication/user-providers-list.tsx
 msgctxt "0Azlrb"
@@ -3000,7 +3000,7 @@ msgstr "E-Mail"
 #: src/features/account/components/authentication/user-providers-list.tsx
 msgctxt "EYyTPV"
 msgid "Passwordless authentication with passkeys"
-msgstr "Kennwortlose Anmeldung mit Passkeys"
+msgstr "Passwortlose Anmeldung mit Passkeys"
 
 #: src/features/account/components/authentication/user-providers-list.tsx
 msgctxt "waJLKW"
@@ -3010,7 +3010,7 @@ msgstr "Verknüpft"
 #: src/features/account/components/authentication/user-providers-list.tsx
 msgctxt "xGU8KV"
 msgid "Link your {name} account"
-msgstr "Verknüpfe deinen {name} Account"
+msgstr "Verknüpfe dein {name}-Konto"
 
 #: src/features/account/components/authentication/user-providers-list.tsx
 msgctxt "JBWS0c"
@@ -3020,7 +3020,7 @@ msgstr "Verknüpfen"
 #: src/features/account/components/authentication/user-providers-list.tsx
 msgctxt "4PKxPs"
 msgid "Unlink"
-msgstr "Entfernen"
+msgstr "Trennen"
 
 #: src/features/account/components/authentication/user-sessions-card.tsx
 msgctxt "V3ka34"
@@ -3045,7 +3045,7 @@ msgstr "Es gibt keine aktiven Sitzungen. Neue Anmeldungen werden hier angezeigt.
 #: src/features/account/components/authentication/user-sessions-list.tsx
 msgctxt "nBinN2"
 msgid "Signed in {date}"
-msgstr "Eingeloggt {date}"
+msgstr "Angemeldet {date}"
 
 #: src/features/account/components/authentication/user-sessions-list.tsx
 msgctxt "10IkTF"
@@ -3065,7 +3065,7 @@ msgstr "Unbekannte IP-Adresse"
 #: src/features/account/components/authentication/user-tfa-card.tsx
 msgctxt "BrXXiS"
 msgid "Protects your account by requiring a second factor at sign-in."
-msgstr "Schützt deinen Account, indem beim Anmelden ein zweiter Faktor erforderlich ist."
+msgstr "Schützt dein Konto, indem beim Anmelden ein zweiter Faktor erforderlich ist."
 
 #: src/features/account/components/authentication/user-tfa-card.tsx
 msgctxt "7YrJer"
@@ -3080,7 +3080,7 @@ msgstr "Authenticator-App (TOTP)"
 #: src/features/account/components/authentication/user-tfa-card.tsx
 msgctxt "4BGiwE"
 msgid "Enrolled"
-msgstr "Registriert"
+msgstr "Eingerichtet"
 
 #: src/features/account/components/authentication/user-tfa-card.tsx
 msgctxt "gnU5U1"
@@ -3213,7 +3213,7 @@ msgstr "Zahlungsmethode"
 #: src/features/account/components/billing/payment-method-item.tsx
 msgctxt "1qYrxy"
 msgid "{instrument} ending {last4}"
-msgstr "{instrument} endend auf {last4}"
+msgstr "{instrument} mit Endung {last4}"
 
 #: src/features/account/components/billing/payment-method-item.tsx
 msgctxt "NgmFCU"
@@ -3241,7 +3241,7 @@ msgstr "Standard"
 #: src/features/servers/components/plan/renewal-payment-method.tsx
 msgctxt "_VQpyO"
 msgid "Expires {date}"
-msgstr "Läuft ab {date}"
+msgstr "Gültig bis {date}"
 
 #: src/features/account/components/billing/payment-method-item.tsx
 msgctxt "kn3VHJ"
@@ -3256,7 +3256,7 @@ msgstr "Abgelaufen — ersetze sie, damit die automatische Verlängerung weiterl
 #: src/features/account/components/billing/payment-method-item.tsx
 msgctxt "KR85kZ"
 msgid "This card expired in {date}. Add a new one, choose it for renewals, and then remove this one."
-msgstr "Diese Karte ist {date} abgelaufen. Füge eine neue hinzu, wähle sie für Verlängerungen aus und entferne dann diese."
+msgstr "Diese Karte ist im {date} abgelaufen. Füge eine neue hinzu, wähle sie für Verlängerungen aus und entferne dann diese."
 
 #: src/features/account/components/billing/payment-method-item.tsx
 msgctxt "fME4OR"
@@ -3311,7 +3311,7 @@ msgstr "Für Verlängerungen ist keine Karte ausgewählt"
 #: src/features/account/components/billing/payment-methods-list.tsx
 msgctxt "bXjwnf"
 msgid "A renewal has nothing to charge, so the subscription ends when its period does. Pick a card below with “Use for renewals”."
-msgstr "Eine Verlängerung hat nichts zu belasten, deshalb endet das Abonnement mit seinem Zeitraum. Wähle unten eine Karte über „Für Verlängerungen verwenden“."
+msgstr "Für eine Verlängerung gibt es nichts, was belastet werden kann, deshalb endet das Abonnement mit Ablauf seines Zeitraums. Wähle unten über „Für Verlängerungen verwenden“ eine Karte aus."
 
 #: src/features/account/components/billing/remove-payment-method-dialog.tsx
 msgctxt "hguqnC"
@@ -3372,17 +3372,17 @@ msgstr "{count} Abonnement(s) verlängern sich über diese Karte. Sie werden sta
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 msgctxt "TKvr5O"
 msgid "Create Custom Image"
-msgstr "Benutzerdefiniertes Image erstellen"
+msgstr "Eigenes Image erstellen"
 
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 msgctxt "ggQwe8"
 msgid "Create a new custom image for your servers."
-msgstr "Erstelle ein neues benutzerdefiniertes Image für deine Server."
+msgstr "Erstelle ein neues eigenes Image für deine Server."
 
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 msgctxt "ueVsqa"
 msgid "Use a custom image"
-msgstr "Benutzerdefiniertes Image verwenden"
+msgstr "Eigenes Image verwenden"
 
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 #: src/features/admin/components/proxmox-templates/template-settings.tsx
@@ -3398,33 +3398,33 @@ msgstr "Die URL muss direkt auf die ISO-Datei verweisen. Die maximale Dateigrö�
 #: src/features/account/components/custom-images/custom-images-card.tsx
 msgctxt "4NrukI"
 msgid "Custom ISO Images"
-msgstr "Eigene ISO-Abbilder"
+msgstr "Eigene ISO-Images"
 
 #: src/features/account/components/custom-images/custom-images-card.tsx
 msgctxt "GnqZoy"
 msgid "Upload and manage custom ISO images for your servers."
-msgstr "Lade eigene ISO-Abbilder hoch und verwalte sie für deine Server."
+msgstr "Lade eigene ISO-Images hoch und verwalte sie für deine Server."
 
 #: src/features/account/components/custom-images/custom-images-card.tsx
 msgctxt "Lwyinc"
 msgid "You can have up to {count} active ISO images."
-msgstr "Du kannst bis zu {count} aktive ISO-Abbilder haben."
+msgstr "Du kannst bis zu {count} aktive ISO-Images haben."
 
 #: src/features/account/components/custom-images/custom-images-list.tsx
 msgctxt "sHUPf5"
 msgid "No custom images"
-msgstr "Keine eigenen Abbilder"
+msgstr "Keine eigenen Images"
 
 #: src/features/account/components/custom-images/custom-images-list.tsx
 msgctxt "8RV8A9"
 msgid "No custom images have been uploaded yet."
-msgstr "Es wurden noch keine eigenen Abbilder hochgeladen."
+msgstr "Es wurden noch keine eigenen Images hochgeladen."
 
 #: src/features/account/components/custom-images/custom-images-list.tsx
 #: src/features/servers/components/server-mount-badge.tsx
 msgctxt "N_dZaF"
 msgid "Expires {time}"
-msgstr "Läuft ab {time}"
+msgstr "Läuft {time} ab"
 
 #: src/features/account/components/custom-images/iso-catalog-grid.tsx
 msgctxt "gq3uD1"
@@ -3494,12 +3494,12 @@ msgstr "Du hast heute bereits einen Export angefordert. Bitte versuche es morgen
 #: src/features/account/components/privacy/data-export-card.tsx
 msgctxt "OTYJAd"
 msgid "Download Your Data"
-msgstr "Daten herunterladen"
+msgstr "Deine Daten herunterladen"
 
 #: src/features/account/components/privacy/data-export-card.tsx
 msgctxt "DnvVkK"
 msgid "Request a copy of everything stored about your account, including a PDF of every invoice."
-msgstr "Fordere eine Kopie aller Daten an, die zu deinem Konto gespeichert sind – inklusive einer PDF jeder Rechnung."
+msgstr "Fordere eine Kopie aller Daten an, die zu deinem Konto gespeichert sind – inklusive jeder Rechnung als PDF."
 
 #: src/features/account/components/privacy/data-export-card.tsx
 msgctxt "DwA2gI"
@@ -3566,7 +3566,7 @@ msgstr "Begleiche zuerst deine offenen Rechnungen."
 #: src/features/account/components/privacy/delete-account-card.tsx
 msgctxt "ja8jXT"
 msgid "Delete Your Account"
-msgstr "Konto löschen"
+msgstr "Dein Konto löschen"
 
 #: src/features/account/components/privacy/delete-account-card.tsx
 msgctxt "b3A411"
@@ -3641,12 +3641,12 @@ msgstr "Dein Konto bleibt bestehen."
 #: src/features/account/components/privacy/delete-account-card.tsx
 msgctxt "HB1He6"
 msgid "Keep My Account"
-msgstr "Konto behalten"
+msgstr "Mein Konto behalten"
 
 #: src/features/account/components/privacy/delete-account-card.tsx
 msgctxt "bbcaZO"
 msgid "Delete My Account"
-msgstr "Konto löschen"
+msgstr "Mein Konto löschen"
 
 #: src/features/account/components/privacy/delete-account-card.tsx
 msgctxt "UWklwU"
@@ -3808,12 +3808,12 @@ msgstr "Deine Benutzer-ID"
 #: src/features/account/components/user-id-card.tsx
 msgctxt "tX7q8l"
 msgid "This your unique account identifier on {appName}."
-msgstr "Dies ist deine einzigartige Account-Identifikation auf {appName}."
+msgstr "Dies ist die eindeutige Kennung deines Kontos bei {appName}."
 
 #: src/features/account/components/user-id-card.tsx
 msgctxt "6dnHkY"
 msgid "This may be used to identify your account in the API."
-msgstr "Dies wird möglicherweise verwendet, um deinen Account in der API zu identifizieren."
+msgstr "Damit kann dein Konto in der API identifiziert werden."
 
 #: src/features/account/components/user-name-card.tsx
 msgctxt "pwlQEY"
@@ -3828,7 +3828,7 @@ msgstr "Gib deinen vollständigen Namen oder einen Anzeigenamen ein, mit dem du 
 #: src/features/account/components/user-name-card.tsx
 msgctxt "YP7yEd"
 msgid "Please use 32 characters at maximum."
-msgstr "Bitte höchstens 32 Zeichen verwenden."
+msgstr "Bitte verwende höchstens 32 Zeichen."
 
 #: src/features/account/components/user-password-card.tsx
 msgctxt "or6fqM"
@@ -4046,7 +4046,7 @@ msgstr "Abgeschlossen als"
 #: src/features/admin/components/abuse/abuse-case-detail.tsx
 msgctxt "JB9XrR"
 msgid "This case applies {level} when the grace window closes. The window is the customer's chance to act first."
-msgstr "Dieser Fall wendet {level} an, sobald die Karenzzeit abläuft. Die Karenzzeit ist die Chance des Kunden, zuerst selbst zu handeln."
+msgstr "In diesem Fall wird {level} angewendet, sobald die Karenzzeit abläuft. Die Karenzzeit gibt dem Kunden die Chance, zuerst selbst zu handeln."
 
 #: src/features/admin/components/abuse/abuse-case-detail.tsx
 msgctxt "1Dbd1Z"
@@ -4169,7 +4169,7 @@ msgstr "Veraltet"
 #: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
 msgctxt "lWppu7"
 msgid "Search by case, title or customer..."
-msgstr "Nach Fall, Titel oder Kunde suchen..."
+msgstr "Nach Fall, Titel oder Kunden suchen…"
 
 #: src/features/admin/components/abuse/abuse-cases-table/columns.tsx
 #: src/features/admin/components/abuse/create-abuse-case-dialog.tsx
@@ -4330,7 +4330,7 @@ msgstr "Priorität"
 #: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
 msgctxt "4aBk2h"
 msgid "Lower runs first. Only the first matching rule decides."
-msgstr "Niedrigere laufen zuerst. Nur die erste passende Regel entscheidet."
+msgstr "Niedrigere Werte laufen zuerst. Nur die erste passende Regel entscheidet."
 
 #: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
 #: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
@@ -4614,7 +4614,7 @@ msgstr "Snippet erstellen"
 #: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
 msgctxt "I94XFH"
 msgid "Snippets compose into the cloud-init vendor data a guest receives on first boot. You will write the body next."
-msgstr "Snippets fließen in die cloud-init Vendor-Daten ein, die ein Gast beim ersten Start erhält. Den Inhalt schreibst du als Nächstes."
+msgstr "Snippets fließen in die cloud-init-Vendor-Daten ein, die ein Gast beim ersten Start erhält. Den Inhalt schreibst du als Nächstes."
 
 #: src/features/admin/components/cloud-init-snippets/create-snippet-dialog.tsx
 msgctxt "Ga3Fhc"
@@ -4783,7 +4783,7 @@ msgstr "Optional"
 #: src/features/admin/components/servers/servers-table/columns.tsx
 msgctxt "wFbsIt"
 msgid "Search by name..."
-msgstr "Nach Namen suchen..."
+msgstr "Nach Namen suchen…"
 
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
 msgctxt "MT5QHi"
@@ -4811,7 +4811,7 @@ msgstr "Aktive Server"
 #: src/features/admin/components/dashboard/activity-stats-row.tsx
 msgctxt "j1CPmU"
 msgid "The number of currently active servers"
-msgstr "Die Anzahl der zur Zeit aktiven Server"
+msgstr "Die Anzahl der derzeit aktiven Server"
 
 #: src/features/admin/components/dashboard/activity-stats-row.tsx
 msgctxt "TkYZBT"
@@ -4821,7 +4821,7 @@ msgstr "Kunden"
 #: src/features/admin/components/dashboard/activity-stats-row.tsx
 msgctxt "rRpnCw"
 msgid "The number of registered customers"
-msgstr "Die Anzahl an registrierten Kunden"
+msgstr "Die Anzahl der registrierten Kunden"
 
 #: src/features/admin/components/dashboard/activity-stats-row.tsx
 msgctxt "d0YgXc"
@@ -4919,7 +4919,7 @@ msgstr "Verkäufe nach Plan"
 #: src/features/admin/components/dashboard/sales-by-plan-card.tsx
 msgctxt "ZYHrCR"
 msgid "Sales by plan in the last 30 days"
-msgstr "Verkäufe in den letzten 30 Tagen"
+msgstr "Verkäufe nach Plan in den letzten 30 Tagen"
 
 #: src/features/admin/components/dashboard/sales-by-plan.tsx
 msgctxt "c8nvms"
@@ -4946,12 +4946,12 @@ msgstr "Land"
 #: src/features/admin/components/datacenters/datacenter-select.tsx
 msgctxt "kMzL65"
 msgid "Select a datacenter..."
-msgstr "Rechenzentrum auswählen..."
+msgstr "Rechenzentrum auswählen…"
 
 #: src/features/admin/components/datacenters/datacenter-select.tsx
 msgctxt "ESAZCK"
 msgid "Search for a datacenter..."
-msgstr "Suche ein Rechenzentrum..."
+msgstr "Rechenzentrum suchen…"
 
 #: src/features/admin/components/datacenters/datacenter-select.tsx
 msgctxt "lH0BHV"
@@ -4986,7 +4986,7 @@ msgstr "Betreff"
 #: src/features/admin/components/emails/emails-table/columns.tsx
 msgctxt "EPGMwQ"
 msgid "Search by subject..."
-msgstr "Nach Betreff suchen..."
+msgstr "Nach Betreff suchen…"
 
 #: src/features/admin/components/integrations/integration-detail.tsx
 msgctxt "Q4e8bq"
@@ -5012,7 +5012,7 @@ msgstr "Dokumentation lesen"
 #: src/features/admin/components/integrations/integration-detail.tsx
 msgctxt "bEhH0O"
 msgid "This integration has nothing to configure here. Switching it on is all there is."
-msgstr "Diese Integration hat hier nichts zu konfigurieren. Einschalten ist alles."
+msgstr "Für diese Integration gibt es hier nichts zu konfigurieren. Sie muss nur eingeschaltet werden."
 
 #: src/features/admin/components/integrations/integration-enable-button.tsx
 msgctxt "Rw7iI7"
@@ -5062,7 +5062,7 @@ msgstr "Geheimnisse"
 #: src/features/admin/components/integrations/integration-settings-form.tsx
 msgctxt "-iD5iQ"
 msgid "Stored encrypted and never shown again. Leave a field blank to keep its current value."
-msgstr "Wird verschlüsselt gespeichert und nie wieder angezeigt. Lassen Sie ein Feld leer, um den aktuellen Wert zu behalten."
+msgstr "Wird verschlüsselt gespeichert und nie wieder angezeigt. Lass ein Feld leer, um den aktuellen Wert zu behalten."
 
 #: src/features/admin/components/integrations/integrations-hub.tsx
 #: src/features/admin/components/subscriptions/subscription-detail.tsx
@@ -5090,7 +5090,7 @@ msgstr "Analysen"
 #: src/features/servers/components/overview/node-details-dialog.tsx
 msgctxt "DUIDEq"
 msgid "Storage"
-msgstr "Festplatte"
+msgstr "Speicher"
 
 #: src/features/admin/components/integrations/integrations-hub.tsx
 msgctxt "Mmuj1R"
@@ -5231,22 +5231,22 @@ msgstr "Node-Gruppe erstellen"
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
 msgctxt "1cAptV"
 msgid "Create Proxmox Node Group"
-msgstr "Proxmox Node-Gruppe erstellen"
+msgstr "Proxmox-Node-Gruppe erstellen"
 
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
 msgctxt "1sBtX6"
 msgid "Create a new Proxmox VE node group for Proxmox VE nodes."
-msgstr "Erstelle eine neue Proxmox VE Node-Gruppe für Proxmox VE Nodes."
+msgstr "Erstelle eine neue Proxmox-VE-Node-Gruppe für Proxmox-VE-Nodes."
 
 #: src/features/admin/components/proxmox-node-groups/node-group-select.tsx
 msgctxt "NMiQru"
 msgid "Select a node group..."
-msgstr "Node-Gruppe auswählen..."
+msgstr "Node-Gruppe auswählen…"
 
 #: src/features/admin/components/proxmox-node-groups/node-group-select.tsx
 msgctxt "_Uo5jN"
 msgid "Search for a node group..."
-msgstr "Suche eine Node-Gruppe..."
+msgstr "Node-Gruppe suchen…"
 
 #: src/features/admin/components/proxmox-node-groups/node-group-select.tsx
 msgctxt "ao30Ou"
@@ -5262,12 +5262,12 @@ msgstr "Zuletzt aktualisiert"
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "S-458D"
 msgid "Create Proxmox Node"
-msgstr "Proxmox Node erstellen"
+msgstr "Proxmox-Node erstellen"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "deLbYn"
 msgid "Create a new Proxmox VE node to host servers."
-msgstr "Erstelle einen neuen Proxmox VE Node, um Server zu hosten."
+msgstr "Erstelle einen neuen Proxmox-VE-Node, um Server zu hosten."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 #: src/features/servers/components/overview/node-details-dialog.tsx
@@ -5291,7 +5291,7 @@ msgstr "Hostname"
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "8cNS7n"
 msgid "The hostname of the Proxmox VE node as configured in the Proxmox cluster."
-msgstr "Der Hostname des Proxmox VE Nodes, so wie im Proxmox Cluster konfiguriert."
+msgstr "Der Hostname des Proxmox-VE-Nodes, wie im Proxmox-Cluster konfiguriert."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "2BEZJh"
@@ -5301,17 +5301,17 @@ msgstr "FQDN"
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "cUm-Vq"
 msgid "The FQDN of the Proxmox VE node where the API is accessible. Must be reachable from the internet and use a valid TLS certificate."
-msgstr "Der FQDN des Proxmox VE Nodes, wo die API erreichbar ist. Muss öffentlich erreichbar sein und über ein gültiges TLS-Zertifikat verfügen."
+msgstr "Der FQDN des Proxmox-VE-Nodes, unter dem die API erreichbar ist. Muss aus dem Internet erreichbar sein und ein gültiges TLS-Zertifikat verwenden."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "86ZUi9"
 msgid "Token ID"
-msgstr "Token ID"
+msgstr "Token-ID"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "1gRCWa"
 msgid "Token Secret"
-msgstr "Token Secret"
+msgstr "Token-Secret"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "Yoiogm"
@@ -5331,7 +5331,7 @@ msgstr "Snippet-Speicher"
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "10Yrc8"
 msgid "Cloud-init YAML files for any servers on this node will be stored here."
-msgstr "Cloud-init YAML-Dateien für Server auf diesem System werden hier gespeichert."
+msgstr "Cloud-init-YAML-Dateien für alle Server auf diesem Node werden hier gespeichert."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "IvtOOO"
@@ -5341,7 +5341,7 @@ msgstr "Backup-Speicher"
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "elgt8s"
 msgid "Backups of any servers on this node will be stored here."
-msgstr "Backups für Server auf diesem System werden hier gespeichert."
+msgstr "Backups aller Server auf diesem Node werden hier gespeichert."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "foINKU"
@@ -5351,7 +5351,7 @@ msgstr "ISO-Download-Speicher"
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "Us0NPD"
 msgid "ISO images will be stored here."
-msgstr "ISO-Abbilder werden hier gespeichert."
+msgstr "ISO-Images werden hier gespeichert."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "02_Jy9"
@@ -5372,7 +5372,7 @@ msgstr "Uplink"
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "1oyHhQ"
 msgid "The maximum possible network bandwidth of the Uplink in MB/s."
-msgstr "Die maximal verfügbare Netzwerkbandbreite in MB/s."
+msgstr "Die maximal mögliche Netzwerkbandbreite des Uplinks in MB/s."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "gYG5ho"
@@ -5414,22 +5414,22 @@ msgstr "vCores"
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "ueCC3G"
 msgid "Network limit"
-msgstr "Netzwerk-Limit"
+msgstr "Netzwerklimit"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "U9Jxp7"
 msgid "If reached, this node will no longer be used for services. Leave empty for unlimited."
-msgstr "Falls erreicht, wird dieses System nicht mehr für weitere Dienstleistungen verwendet. Leer lassen für unbegrenzt."
+msgstr "Wenn das Limit erreicht ist, wird dieser Node nicht mehr für neue Dienste verwendet. Leer lassen für unbegrenzt."
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 msgctxt "39jmFD"
 msgid "Search by hostname..."
-msgstr "Nach Hostname suchen..."
+msgstr "Nach Hostname suchen…"
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 msgctxt "_xxglw"
 msgid "Number of VMs"
-msgstr "Anzahl von VMs"
+msgstr "Anzahl der VMs"
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 #: src/features/landing/components/discord-bot-demo.tsx
@@ -5459,12 +5459,12 @@ msgstr "Bandbreite"
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
 msgctxt "Xj2bvc"
 msgid "Create Proxmox Template Group"
-msgstr "Proxmox Template Gruppe erstellen"
+msgstr "Proxmox-Template-Gruppe erstellen"
 
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
 msgctxt "Fbkq0B"
 msgid "Create a new Proxmox VE template group for Proxmox VE templates."
-msgstr "Erstelle eine neue Proxmox VE Template-Gruppe für Proxmox VE Templates."
+msgstr "Erstelle eine neue Proxmox-VE-Template-Gruppe für Proxmox-VE-Templates."
 
 #: src/features/admin/components/proxmox-template-groups/template-groups-table/columns.tsx
 msgctxt "lb_VMv"
@@ -5475,7 +5475,7 @@ msgstr "Anzahl der Templates"
 #: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
 msgctxt "TAoX_m"
 msgid "Create Proxmox Template"
-msgstr "Proxmox Template erstellen"
+msgstr "Proxmox-Template erstellen"
 
 #: src/features/admin/components/proxmox-templates/create-template-dialog.tsx
 msgctxt "1GUBwn"
@@ -5535,7 +5535,7 @@ msgstr "Template löschen"
 #: src/features/admin/components/proxmox-templates/delete-template-dialog.tsx
 msgctxt "_SLxIn"
 msgid "This cannot be undone. A template a server was built from cannot be deleted - that reference records which operating system the customer chose."
-msgstr "Das kann nicht rückgängig gemacht werden. Ein Template, aus dem ein Server gebaut wurde, kann nicht gelöscht werden - diese Referenz hält fest, welches Betriebssystem der Kunde gewählt hat."
+msgstr "Das kann nicht rückgängig gemacht werden. Ein Template, aus dem ein Server gebaut wurde, kann nicht gelöscht werden – diese Referenz hält fest, welches Betriebssystem der Kunde gewählt hat."
 
 #: src/features/admin/components/proxmox-templates/template-actions-row.tsx
 msgctxt "qoyVoB"
@@ -5550,7 +5550,7 @@ msgstr "Image herunterladen"
 #: src/features/admin/components/proxmox-templates/template-actions-row.tsx
 msgctxt "kxpfZc"
 msgid "Force re-download"
-msgstr "Erneut herunterladen erzwingen"
+msgstr "Erneuten Download erzwingen"
 
 #: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
 msgctxt "OZmJgO"
@@ -5560,7 +5560,7 @@ msgstr "Image-Verfügbarkeit"
 #: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
 msgctxt "cwF_E3"
 msgid "Download failed on {count} of {total} nodes"
-msgstr "Download fehlgeschlagen auf {count} von {total} Nodes"
+msgstr "Download auf {count} von {total} Nodes fehlgeschlagen"
 
 #: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
 msgctxt "U9BwIT"
@@ -5570,7 +5570,7 @@ msgstr "Der Node hat keinen Grund angegeben."
 #: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
 msgctxt "NHmbQX"
 msgid "Not downloaded on {count} of {total} nodes"
-msgstr "Nicht heruntergeladen auf {count} von {total} Nodes"
+msgstr "Auf {count} von {total} Nodes nicht heruntergeladen"
 
 #: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
 msgctxt "R7EsVm"
@@ -5717,7 +5717,7 @@ msgstr "Ein Download ist fehlgeschlagen."
 #: src/features/admin/components/proxmox-templates/vendor-data-preview.tsx
 msgctxt "iIwvLh"
 msgid "Cloud-init vendor data"
-msgstr "Cloud-init Vendor-Daten"
+msgstr "Cloud-init-Vendor-Daten"
 
 #: src/features/admin/components/proxmox-templates/vendor-data-preview.tsx
 msgctxt "BqqgbN"
@@ -5770,7 +5770,7 @@ msgstr "Benutzer"
 #: src/features/admin/components/servers/servers-table/columns.tsx
 msgctxt "1UsI0I"
 msgid "Terminates at"
-msgstr "Kündigungsdatum"
+msgstr "Endet am"
 
 #: src/features/admin/components/servers/servers-table/columns.tsx
 msgctxt "zvQbH_"
@@ -5802,7 +5802,7 @@ msgstr "Gateway"
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx
 msgctxt "tmvyl7"
 msgid "Reverse DNS Zone"
-msgstr "Reverse DNS Zone"
+msgstr "Reverse-DNS-Zone"
 
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx
 msgctxt "IBNdTs"
@@ -5812,7 +5812,7 @@ msgstr "VLAN"
 #: src/features/admin/components/subnets/subnets-table/columns.tsx
 msgctxt "XQeoKw"
 msgid "Search by CIDR..."
-msgstr "Nach CIDR suchen..."
+msgstr "Nach CIDR suchen…"
 
 #: src/features/admin/components/subnets/subnets-table/columns.tsx
 msgctxt "-U6ozc"
@@ -5928,12 +5928,12 @@ msgstr "Für diesen Kunden ist kein Zahlungsmittel hinterlegt, deshalb hat eine 
 #: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "AaiUD0"
 msgid "no last four"
-msgstr "keine letzten vier"
+msgstr "ohne Endziffern"
 
 #: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "l0VcDL"
 msgid "expires {month}/{year}"
-msgstr "läuft ab {month}/{year}"
+msgstr "gültig bis {month}/{year}"
 
 #: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "XJ5FR9"
@@ -5968,7 +5968,7 @@ msgstr "Kein Mandat"
 #: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "AXyFb3"
 msgid "Gone — the subject no longer exists"
-msgstr "Weg — der Betreff existiert nicht mehr"
+msgstr "Nicht mehr vorhanden — der Gegenstand des Abonnements existiert nicht mehr"
 
 #: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "3uJDrU"
@@ -6042,7 +6042,7 @@ msgstr "Diese Seite ist schreibgeschützt. Einen Einzug erneut versuchen, Zeit g
 #: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
 msgctxt "laPj3K"
 msgid "Search by server, customer or id..."
-msgstr "Nach Server, Kunde oder ID suchen..."
+msgstr "Nach Server, Kunden oder ID suchen…"
 
 #: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
 msgctxt "WZ-2C3"
@@ -6139,12 +6139,12 @@ msgstr "Mit Discord fortfahren"
 #: src/features/auth/components/email-sign-in.tsx
 msgctxt "JgGwrY"
 msgid "No account found with that email address."
-msgstr "Es existiert kein Account mit dieser E-Mail-Adresse."
+msgstr "Es existiert kein Konto mit dieser E-Mail-Adresse."
 
 #: src/features/auth/components/email-sign-in.tsx
 msgctxt "YXNhCz"
 msgid "Email sent - check your inbox!"
-msgstr "E-Mail gesendet - Posteingang prüfen!"
+msgstr "E-Mail gesendet – sieh in deinem Posteingang nach!"
 
 #: src/features/auth/components/email-sign-in.tsx
 msgctxt "V_JHlm"
@@ -6256,7 +6256,7 @@ msgstr "Registrieren"
 #: src/features/auth/components/register/verify-email-form.tsx
 msgctxt "pwyqaX"
 msgid "Account created! Redirecting..."
-msgstr "Account erstellt! Weiterleitung..."
+msgstr "Konto erstellt! Weiterleitung…"
 
 #: src/features/auth/components/register/verify-email-form.tsx
 #: src/features/auth/components/verify-totp-form.tsx
@@ -6303,7 +6303,7 @@ msgstr "Anmeldung notwendig"
 #: src/features/checkout/components/checkout-auth-wrapper.tsx
 msgctxt "7VnKx0"
 msgid "For the continuation of the order, the creation of a customer account is required."
-msgstr "Für die Fortsetzung der Bestellung ist die Erstellung eines Kundenkontos notwendig."
+msgstr "Um mit der Bestellung fortzufahren, brauchst du ein Kundenkonto."
 
 #: src/features/checkout/components/checkout-auth-wrapper.tsx
 msgctxt "SQJto2"
@@ -6323,12 +6323,12 @@ msgstr "Root-Passwort (optional)"
 #: src/features/checkout/components/checkout-form.tsx
 msgctxt "wzt4BE"
 msgid "Virtbase does not store your root password. It can be reset via the customer portal afterwards."
-msgstr "Virtbase speichert dein Root-Passwort nicht. Es kann nachträglich über das Kundenportal geändert werden."
+msgstr "Virtbase speichert dein Root-Passwort nicht. Es kann nachträglich über das Kundenportal zurückgesetzt werden."
 
 #: src/features/checkout/components/checkout-form.tsx
 msgctxt "mnTP3x"
 msgid "If left blank, a secure random password will be generated and sent by email."
-msgstr "Falls leer gelassen wird ein sicheres, zufällig generiertes Passwort per E-Mail versendet."
+msgstr "Wenn du das Feld leer lässt, wird ein sicheres, zufällig generiertes Passwort erzeugt und per E-Mail versendet."
 
 #: src/features/checkout/components/checkout-form.tsx
 msgctxt "-g-0OK"
@@ -6353,7 +6353,7 @@ msgstr "SSH-Schlüssel (optional)"
 #: src/features/checkout/components/checkout-public-key-select.tsx
 msgctxt "RB81cJ"
 msgid "The SSH key will be stored in the user account and can be reused for future orders."
-msgstr "Der SSH-Schlüssel wird im Benutzerkonto gespeichert und kann für zukünftige Bestellungen wiederverwendet werden."
+msgstr "Der SSH-Schlüssel wird in deinem Konto gespeichert und kann für zukünftige Bestellungen wiederverwendet werden."
 
 #: src/features/checkout/components/checkout-public-key-select.tsx
 msgctxt "iiDj1S"
@@ -6363,12 +6363,12 @@ msgstr "Vorhandenen SSH-Schlüssel auswählen"
 #: src/features/checkout/components/checkout-waivers.tsx
 msgctxt "fL6LzO"
 msgid "I have read and accepted the <terms>Terms of Service</terms> and the <privacy>Privacy Policy</privacy>."
-msgstr "Ich habe die <terms>Nutzungsbedingungen</terms> und die <privacy>Datenschutzerklärung</privacy> gelesen, verstanden und akzeptiere sie."
+msgstr "Ich habe die <terms>AGB</terms> und die <privacy>Datenschutzerklärung</privacy> gelesen, verstanden und akzeptiere sie."
 
 #: src/features/checkout/components/checkout-waivers.tsx
 msgctxt "-3U5qS"
 msgid "I have read and accepted the <revocation>Revocation Policy</revocation>. The revocation right expires as soon as the order is completed and the service is automatically provided."
-msgstr "Ich habe die <revocation>Widerrufsbestimmungen</revocation> gelesen und stimme zu. Das Widerrufsrecht erlischt, sobald die Bestellung abgeschlossen ist und die Dienstleistung automatisch bereitgestellt wird."
+msgstr "Ich habe die <revocation>Widerrufsbelehrung</revocation> gelesen und akzeptiere sie. Das Widerrufsrecht erlischt, sobald die Bestellung abgeschlossen ist und die Dienstleistung automatisch bereitgestellt wird."
 
 #: src/features/checkout/components/elements-provider.tsx
 msgctxt "mlJ21x"
@@ -6408,7 +6408,7 @@ msgstr "Geteilt"
 #: src/features/checkout/components/offer-card.tsx
 msgctxt "Gzo4L7"
 msgid "Shared-Uplink - the maximum possible bandwidth is shared with other customers."
-msgstr "Geteilter Uplink - die maximal mögliche Bandbreite wird mit anderen Kunden geteilt."
+msgstr "Geteilter Uplink – die maximal mögliche Bandbreite wird mit anderen Kunden geteilt."
 
 #: src/features/checkout/components/offer-card.tsx
 #: src/features/checkout/components/order-summary.tsx
@@ -6455,7 +6455,7 @@ msgstr "Rechnungsadresse"
 #: src/features/checkout/components/stripe-payment-form.tsx
 msgctxt "PAzxoc"
 msgid "Used for invoicing and VAT calculation."
-msgstr "Verwendet für die Rechnungserstellung und Steuerberechnung."
+msgstr "Wird für die Rechnungsstellung und die Berechnung der Umsatzsteuer verwendet."
 
 #: src/features/checkout/components/stripe-payment-form.tsx
 msgctxt "11yeGk"
@@ -6471,7 +6471,7 @@ msgstr "Zahlung konnte nicht abgeschlossen werden"
 #: src/features/servers/components/plan/plan-order-dialog.tsx
 msgctxt "ddCkDY"
 msgid "Processing payment…"
-msgstr "Verarbeite Zahlung…"
+msgstr "Zahlung wird verarbeitet…"
 
 #: src/features/checkout/components/stripe-payment-form.tsx
 #: src/features/servers/components/plan/plan-order-dialog.tsx
@@ -6537,7 +6537,7 @@ msgstr "Hier siehst du deine letzten Server."
 #: src/features/dashboard/components/server-status-small.tsx
 msgctxt "KRtjzZ"
 msgid "Expired (will be deleted {date})"
-msgstr "Abgelaufen (wird gelöscht {date})"
+msgstr "Abgelaufen (wird {date} gelöscht)"
 
 #: src/features/dashboard/components/server-status-small.tsx
 #: src/features/servers/components/plan/current-plan-card.tsx
@@ -6549,12 +6549,12 @@ msgstr "Deaktiviert"
 #: src/features/dashboard/components/server-status-small.tsx
 msgctxt "r9ELLA"
 msgid "Installing..."
-msgstr "Installiert..."
+msgstr "Wird installiert…"
 
 #: src/features/dashboard/components/server-status-small.tsx
 msgctxt "vOjKW3"
 msgid "Expiring (will be deleted {date})"
-msgstr "Läuft ab (wird gelöscht {date})"
+msgstr "Läuft ab (wird {date} gelöscht)"
 
 #: src/features/dashboard/components/server-status-small.tsx
 msgctxt "Dnob31"
@@ -6599,7 +6599,7 @@ msgstr "Netzwerk & Firewall"
 #: src/features/help/categories.tsx
 msgctxt "BwC7f3"
 msgid "Firewall rules, DDoS protection and your server's network."
-msgstr "Firewall-Regeln, DDoS-Schutz und das Netzwerk deines Servers."
+msgstr "Firewallregeln, DDoS-Schutz und das Netzwerk deines Servers."
 
 #: src/features/help/categories.tsx
 msgctxt "CZt8cl"
@@ -6645,12 +6645,12 @@ msgstr "Ähnliche Artikel"
 #: src/features/help/metadata.ts
 msgctxt "nDZMSK"
 msgid "Guides and answers for your Virtbase servers: {topics}."
-msgstr "Anleitungen und Antworten für deine Virtbase Server: {topics}."
+msgstr "Anleitungen und Antworten für deine Virtbase-Server: {topics}."
 
 #: src/features/help/metadata.ts
 msgctxt "4zowvV"
 msgid "Step-by-step guides and answers from the Virtbase Help Center."
-msgstr "Schritt-für-Schritt-Anleitungen und Antworten aus dem Virtbase Hilfe-Center."
+msgstr "Schritt-für-Schritt-Anleitungen und Antworten aus dem Virtbase-Hilfe-Center."
 
 #: src/features/invoices/components/invoices-table/columns.tsx
 msgctxt "ijDMrP"
@@ -6660,7 +6660,7 @@ msgstr "Rechnungsnummer"
 #: src/features/invoices/components/invoices-table/columns.tsx
 msgctxt "cIAuzz"
 msgid "Search invoice number..."
-msgstr "Rechnungsnummer suchen..."
+msgstr "Rechnungsnummer suchen…"
 
 #: src/features/invoices/components/invoices-table/columns.tsx
 msgctxt "dULmbA"
@@ -6706,7 +6706,7 @@ msgstr "Was dieser Bot kann"
 #: src/features/landing/components/discord-bot-demo.tsx
 msgctxt "HiI_P4"
 msgid "Add it to another server"
-msgstr "Auf einem weiteren Server hinzufügen"
+msgstr "Zu einem weiteren Server hinzufügen"
 
 #: src/features/landing/components/discord-bot-demo.tsx
 msgctxt "YXoHk0"
@@ -6873,7 +6873,7 @@ msgstr "Aktiviere oder deaktiviere das TPM-Modul für deinen Server."
 #: src/features/servers/components/advanced/advanced-tpm-card.tsx
 msgctxt "1Lw-6m"
 msgid "Most Linux installations don't require TPM, whereas Windows requires TPM v2.0."
-msgstr "Die meisten Linux-Installationen benötigen kein TPM, Windows erfordert TPM v2.0."
+msgstr "Die meisten Linux-Installationen benötigen kein TPM, während Windows TPM v2.0 erfordert."
 
 #: src/features/servers/components/advanced/advanced-tpm-selector.tsx
 msgctxt "I1Um2Q"
@@ -6963,7 +6963,7 @@ msgstr "Fehlgeschlagen"
 #: src/features/servers/components/backups/backups-table/columns.tsx
 msgctxt "mRL9Vh"
 msgid "Creating..."
-msgstr "Wird erstellt..."
+msgstr "Wird erstellt…"
 
 #: src/features/servers/components/backups/backups-table/index.tsx
 msgctxt "G7wlJr"
@@ -6998,7 +6998,7 @@ msgstr "Snapshot"
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 msgctxt "04uNfB"
 msgid "Creates a backup without interrupting the system. The current state of the processes is backed up."
-msgstr "Erstellt das Backup ohne Unterbrechungen des Systems. Der aktuelle Zustand der Prozesse wird gesichert."
+msgstr "Erstellt das Backup, ohne das System zu unterbrechen. Der aktuelle Zustand der Prozesse wird mitgesichert."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 msgctxt "elnaZe"
@@ -7008,7 +7008,7 @@ msgstr "Suspendieren"
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 msgctxt "qRuNZh"
 msgid "Interrupts the system briefly to create a backup without shutting it down."
-msgstr "Unterbricht das System kurzfristig, um das Backup zu erstellen, ohne es herunterzufahren."
+msgstr "Unterbricht das System kurzzeitig, um das Backup zu erstellen, ohne es herunterzufahren."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 #: src/features/servers/components/server-actions-row.tsx
@@ -7019,7 +7019,7 @@ msgstr "Stoppen"
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 msgctxt "JidfdC"
 msgid "Completely shuts down the system before creating the backup."
-msgstr "Das System wird zur Erstellung des Backups vollständig gestoppt."
+msgstr "Fährt das System vor dem Erstellen des Backups vollständig herunter."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 msgctxt "_EmLPv"
@@ -7029,7 +7029,7 @@ msgstr "Löschschutz aktivieren"
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 msgctxt "I9XNiI"
 msgid "The newly created backup can only be deleted after the deletion protection is disabled."
-msgstr "Das neu erstellte Backup kann erst nach Deaktivierung des Schutzes gelöscht werden."
+msgstr "Das neu erstellte Backup kann erst gelöscht werden, nachdem der Löschschutz deaktiviert wurde."
 
 #: src/features/servers/components/backups/delete-backup-dialog.tsx
 msgctxt "zkk3nZ"
@@ -7044,7 +7044,7 @@ msgstr "Lösche ein Backup deines Servers."
 #: src/features/servers/components/backups/delete-backup-dialog.tsx
 msgctxt "wl5Juv"
 msgid "The backup from {date} will be deleted from the node. This cannot be undone."
-msgstr "Das Backup vom {date} wird vom Node gelöscht. Das kann nicht rückgängig gemacht werden."
+msgstr "Das Backup vom {date} wird vom Hostsystem gelöscht. Das kann nicht rückgängig gemacht werden."
 
 #: src/features/servers/components/backups/delete-backup-dialog.tsx
 msgctxt "ijaxLm"
@@ -7099,7 +7099,7 @@ msgstr "Dein Server verlängert sich am Ende jeder Laufzeit von selbst."
 #: src/features/servers/components/billing/auto-renew-section.tsx
 msgctxt "DTMKLg"
 msgid "Your server will not renew by itself. It stops at the end of the current term unless you extend it."
-msgstr "Dein Server verlängert sich nicht von selbst. Er stoppt am Ende der aktuellen Laufzeit, wenn du ihn nicht verlängerst."
+msgstr "Dein Server verlängert sich nicht von selbst. Er wird am Ende der aktuellen Laufzeit gestoppt, wenn du ihn nicht verlängerst."
 
 #: src/features/servers/components/billing/auto-renew-section.tsx
 msgctxt "bByVFS"
@@ -7170,7 +7170,7 @@ msgstr "Dieses Abonnement wird gekündigt."
 #: src/features/servers/components/billing/cancel-subscription-dialog.tsx
 msgctxt "p7ppXv"
 msgid "This server is suspended and was switched off when the term ended on {date}."
-msgstr "Dieser Server ist gesperrt und wurde abgeschaltet, als die Laufzeit am {date} endete."
+msgstr "Dieser Server ist deaktiviert und wurde abgeschaltet, als die Laufzeit am {date} endete."
 
 #: src/features/servers/components/billing/cancel-subscription-dialog.tsx
 msgctxt "S3yQqh"
@@ -7225,7 +7225,7 @@ msgstr "Kündigung"
 #: src/features/servers/components/billing/cancel-subscription-section.tsx
 msgctxt "AzvUFD"
 msgid "This server is suspended and the term you paid for ended on {date}. Cancelling stops it being renewed; it does not switch the server back on."
-msgstr "Dieser Server ist gesperrt und die von dir bezahlte Laufzeit endete am {date}. Eine Kündigung verhindert, dass er verlängert wird; sie schaltet den Server nicht wieder ein."
+msgstr "Dieser Server ist deaktiviert und die von dir bezahlte Laufzeit endete am {date}. Eine Kündigung verhindert, dass er verlängert wird; sie schaltet den Server nicht wieder ein."
 
 #: src/features/servers/components/billing/cancel-subscription-section.tsx
 msgctxt "mYShCs"
@@ -7321,7 +7321,7 @@ msgstr "Server ist deaktiviert"
 #: src/features/servers/components/console/console-frame.tsx
 msgctxt "3KjSye"
 msgid "This feature is not available while the server is suspended. Please renew your server to access the console."
-msgstr "Die Funktion steht bei deaktivierten Servern nicht zur Verfügung. Bitte verlängere deinen Server, um die Konsole zu starten."
+msgstr "Diese Funktion ist nicht verfügbar, solange der Server deaktiviert ist. Bitte verlängere deinen Server, um auf die Konsole zuzugreifen."
 
 #: src/features/servers/components/console/console-frame.tsx
 #: src/features/servers/components/server-status-bar.tsx
@@ -7337,12 +7337,12 @@ msgstr "Diese Funktion ist nicht verfügbar, während der Server installiert wir
 #: src/features/servers/components/console/console-frame.tsx
 msgctxt "odJjY9"
 msgid "Backup in progress"
-msgstr "Backup-Prozess läuft"
+msgstr "Backup läuft"
 
 #: src/features/servers/components/console/console-frame.tsx
 msgctxt "Z_xHv5"
 msgid "This feature is not available while a backup is in progress. Please try again later."
-msgstr "Diese Funktion ist nicht verfügbar, während ein Backup-Prozess läuft. Bitte versuche es später erneut."
+msgstr "Diese Funktion ist nicht verfügbar, während ein Backup läuft. Bitte versuche es später erneut."
 
 #: src/features/servers/components/console/console-frame.tsx
 #: src/features/servers/hooks/use-agent-status-mapping.ts
@@ -7353,7 +7353,7 @@ msgstr "Server läuft nicht"
 #: src/features/servers/components/console/console-frame.tsx
 msgctxt "clmnLf"
 msgid "Start your server and the console will connect automatically."
-msgstr "Starte deinen Server und die Konsole verbindet sich automatisch."
+msgstr "Starte deinen Server, dann verbindet sich die Konsole automatisch."
 
 #: src/features/servers/components/overview/change-template-dialog.tsx
 msgctxt "CnkjLF"
@@ -7424,9 +7424,9 @@ msgid "Reset the password of a user on your server."
 msgstr "Setze das Passwort eines Benutzers auf deinem Server zurück."
 
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
-msgctxt "K1-gri"
-msgid "This action cannot be undone. If the <code>qemu-quest-agent</code> package is not installed, the process will fail."
-msgstr "Dieser Vorgang kann nicht rückgängig gemacht werden. Wenn das Paket <code>qemu-quest-agent</code> nicht installiert ist, schlägt der Vorgang fehl."
+msgctxt "hdNOd8"
+msgid "This action cannot be undone. If the <code>qemu-guest-agent</code> package is not installed, the process will fail."
+msgstr "Dieser Vorgang kann nicht rückgängig gemacht werden. Wenn das Paket <code>qemu-guest-agent</code> nicht installiert ist, schlägt der Vorgang fehl."
 
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgctxt "JCIgkj"
@@ -7436,7 +7436,7 @@ msgstr "Benutzername"
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgctxt "1jWUV4"
 msgid "The username of the account to reset the password for. Mostly <code>root</code> for Linux and <code>Administrator</code> for Windows."
-msgstr "Der Benutzername des Kontos, für welches das Passwort zurückgesetzt werden soll. Meist <code>root</code> unter Linux und <code>Administrator</code> unter Windows."
+msgstr "Der Benutzername des Kontos, dessen Passwort zurückgesetzt werden soll. Meist <code>root</code> unter Linux und <code>Administrator</code> unter Windows."
 
 #: src/features/servers/components/overview/server-details-card.tsx
 msgctxt "F_6VqP"
@@ -7456,7 +7456,7 @@ msgstr "Betriebssystem ändern"
 #: src/features/servers/components/overview/server-operating-system.tsx
 msgctxt "13DVxF"
 msgid "Read from inside this server {when}."
-msgstr "Aus diesem Server ausgelesen {when}."
+msgstr "Zuletzt {when} aus diesem Server ausgelesen."
 
 #: src/features/servers/components/overview/server-operating-system.tsx
 msgctxt "OwWZ_b"
@@ -7466,7 +7466,7 @@ msgstr "Aus diesem Server ausgelesen."
 #: src/features/servers/components/overview/server-operating-system.tsx
 msgctxt "8WvXOD"
 msgid "Installed from {template}."
-msgstr "Installiert von {template}."
+msgstr "Installiert aus {template}."
 
 #: src/features/servers/components/overview/server-operating-system.tsx
 msgctxt "wlld4G"
@@ -7509,7 +7509,7 @@ msgstr "Endet am {date}"
 #: src/features/servers/components/plan/current-plan-card.tsx
 msgctxt "uk8hUQ"
 msgid "Runs until {date}, then ends"
-msgstr "Läuft bis {date}, endet dann"
+msgstr "Läuft bis zum {date} und endet dann"
 
 #: src/features/servers/components/plan/current-plan-card.tsx
 msgctxt "L7pwLO"
@@ -7544,7 +7544,7 @@ msgstr "Die automatische Verlängerung ist nicht eingerichtet"
 #: src/features/servers/components/plan/current-plan-card.tsx
 msgctxt "US-mpc"
 msgid "This server is paid for one term at a time, so nothing is charged without you. It keeps running until {date} — extend it before then and it carries on."
-msgstr "Dieser Server wird Laufzeit für Laufzeit bezahlt, es wird also nichts ohne dich abgebucht. Er läuft bis zum {date} — verlängere ihn vorher und er läuft weiter."
+msgstr "Dieser Server wird Laufzeit für Laufzeit bezahlt, es wird also nichts ohne dich abgebucht. Er läuft bis zum {date} — verlängere ihn vorher, dann läuft er weiter."
 
 #: src/features/servers/components/plan/current-plan-card.tsx
 msgctxt "se4Js1"
@@ -7559,7 +7559,7 @@ msgstr "Plan verlängern oder wechseln"
 #: src/features/servers/components/plan/current-plan-section.tsx
 msgctxt "ktNrBh"
 msgid "Payment submitted. It can take a moment to go through."
-msgstr "Zahlung übermittelt. Es kann einen Moment dauern, bis sie durch ist."
+msgstr "Zahlung übermittelt. Es kann einen Moment dauern, bis sie verarbeitet ist."
 
 #: src/features/servers/components/plan/current-plan-section.tsx
 msgctxt "YTQMmP"
@@ -7594,12 +7594,12 @@ msgstr "Eine Bestellung wartet auf Zahlung"
 #: src/features/servers/components/plan/plan-catalog.tsx
 msgctxt "IZp69Q"
 msgid "You closed the payment for {name} before it went through. Nothing has been charged and this server is still on its current plan."
-msgstr "Du hast die Zahlung für {name} geschlossen, bevor sie durch war. Es wurde nichts abgebucht und dieser Server läuft weiterhin auf seinem aktuellen Plan."
+msgstr "Du hast die Zahlung für {name} geschlossen, bevor sie abgeschlossen war. Es wurde nichts abgebucht und dieser Server läuft weiterhin auf seinem aktuellen Plan."
 
 #: src/features/servers/components/plan/plan-catalog.tsx
 msgctxt "yg3np8"
 msgid "You closed a payment before it went through. Nothing has been charged and this server is still on its current plan."
-msgstr "Du hast eine Zahlung geschlossen, bevor sie durch war. Es wurde nichts abgebucht und dieser Server läuft weiterhin auf seinem aktuellen Plan."
+msgstr "Du hast eine Zahlung geschlossen, bevor sie abgeschlossen war. Es wurde nichts abgebucht und dieser Server läuft weiterhin auf seinem aktuellen Plan."
 
 #: src/features/servers/components/plan/plan-catalog.tsx
 msgctxt "BoV-ik"
@@ -7619,7 +7619,7 @@ msgstr "Keine Pläne verfügbar"
 #: src/features/servers/components/plan/plan-list.tsx
 msgctxt "EAyjS-"
 msgid "There is nothing to extend or upgrade to right now."
-msgstr "Derzeit gibt es nichts zu verlängern und kein Upgrade."
+msgstr "Derzeit gibt es keinen Plan zum Verlängern oder Upgraden."
 
 #: src/features/servers/components/plan/plan-list.tsx
 msgctxt "r45xAO"
@@ -7654,7 +7654,7 @@ msgstr "Dieser Plan hat weniger Speicher als deiner. Wähle einen mit mindestens
 #: src/features/servers/components/plan/plan-order-dialog.tsx
 msgctxt "3XuHC5"
 msgid "{name} is sold out right now. Try again later or pick a different plan."
-msgstr "{name} ist derzeit ausverkauft. Versuche es später erneut oder wähle ein anderes Angebot."
+msgstr "{name} ist derzeit ausverkauft. Versuche es später erneut oder wähle einen anderen Plan."
 
 #: src/features/servers/components/plan/plan-order-dialog.tsx
 msgctxt "2r_Ri2"
@@ -7749,7 +7749,7 @@ msgstr "Ab der nächsten Verlängerung"
 #: src/features/servers/components/plan/plan-summary.tsx
 msgctxt "LR754a"
 msgid "Renews at"
-msgstr "Verlängert sich für"
+msgstr "Verlängerungspreis"
 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgctxt "mCArsW"
@@ -7774,7 +7774,7 @@ msgstr "Keine ausgewählt"
 #: src/features/servers/components/plan/renewal-payment-method.tsx
 msgctxt "Mjlx26"
 msgid "A renewal has nothing to charge until you choose a card."
-msgstr "Eine Verlängerung hat nichts zu belasten, solange du keine Karte auswählst."
+msgstr "Solange du keine Karte auswählst, kann für eine Verlängerung nichts belastet werden."
 
 #: src/features/servers/components/plan/renewal-payment-method.tsx
 msgctxt "BY343C"
@@ -7789,7 +7789,7 @@ msgstr "Wird belastet, wenn sich dieser Server verlängert."
 #: src/features/servers/components/plan/renewal-payment-method.tsx
 msgctxt "hPxO4K"
 msgid "Expired {date}. Replace it or the next renewal fails."
-msgstr "Abgelaufen {date}. Ersetze sie, sonst schlägt die nächste Verlängerung fehl."
+msgstr "Abgelaufen ({date}). Ersetze sie, sonst schlägt die nächste Verlängerung fehl."
 
 #: src/features/servers/components/plan/renewal-payment-method.tsx
 msgctxt "ZIzf2A"
@@ -7860,7 +7860,7 @@ msgstr "PTR-Eintrag aktualisieren"
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx
 msgctxt "JAfuaI"
 msgid "Update a PTR record for a given IP and hostname."
-msgstr "Einen PTR-Eintrag für eine bestimmte IP-Adresse und einen bestimmten Hostnamen aktualisieren."
+msgstr "Aktualisiere einen PTR-Eintrag für eine bestimmte IP-Adresse und einen bestimmten Hostnamen."
 
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx
 msgctxt "uJV0wU"
@@ -7885,7 +7885,7 @@ msgstr "Herunterfahren"
 #: src/features/servers/components/server-actions-row.tsx
 msgctxt "9U7nUR"
 msgid "Reboot"
-msgstr "Neustart"
+msgstr "Neu starten"
 
 #: src/features/servers/components/server-actions-row.tsx
 msgctxt "mOFG3K"
@@ -7910,27 +7910,27 @@ msgstr "Pausieren"
 #: src/features/servers/components/server-custom-image-select.tsx
 msgctxt "wPPrpH"
 msgid "Select a custom image..."
-msgstr "Benutzerdefiniertes Image auswählen..."
+msgstr "Eigenes Image auswählen…"
 
 #: src/features/servers/components/server-custom-image-select.tsx
 msgctxt "3MDlnT"
 msgid "Search for a custom image..."
-msgstr "Benutzerdefiniertes Image suchen..."
+msgstr "Eigenes Image suchen…"
 
 #: src/features/servers/components/server-custom-image-select.tsx
 msgctxt "5YXiqk"
 msgid "No custom image found."
-msgstr "Kein benutzerdefiniertes Image gefunden."
+msgstr "Kein eigenes Image gefunden."
 
 #: src/features/servers/components/server-custom-image-select.tsx
 msgctxt "9P0AA6"
 msgid "Uploading {percentage}"
-msgstr "Hochladen {percentage}"
+msgstr "Wird hochgeladen {percentage}"
 
 #: src/features/servers/components/server-custom-image-select.tsx
 msgctxt "JEsxDw"
 msgid "Uploading..."
-msgstr "Wird hochgeladen..."
+msgstr "Wird hochgeladen…"
 
 #: src/features/servers/components/server-graphs.tsx
 msgctxt "j9Y9nu"
@@ -7982,7 +7982,7 @@ msgstr "Ausgehend"
 #: src/features/servers/components/server-mount-badge.tsx
 msgctxt "Han16c"
 msgid "Mounted"
-msgstr "Eingehängt"
+msgstr "Eingebunden"
 
 #: src/features/servers/components/server-mount-dialog.tsx
 msgctxt "lgSmVl"
@@ -8002,7 +8002,7 @@ msgstr "ISO-Images einbinden"
 #: src/features/servers/components/server-mount-dialog.tsx
 msgctxt "HZdPWF"
 msgid "Mount ISO images to your server."
-msgstr "Hänge ISO-Images an deinen Server."
+msgstr "Binde ISO-Images in deinen Server ein."
 
 #: src/features/servers/components/server-mount-dialog.tsx
 msgctxt "C3jmVs"
@@ -8017,17 +8017,17 @@ msgstr "Aushängen"
 #: src/features/servers/components/server-mount-dialog.tsx
 msgctxt "Uh7TFc"
 msgid "The ISO image will be mounted instantly, but to boot into it, you need to fully stop and restart the server."
-msgstr "Das ISO-Image wird sofort eingebunden; um davon zu starten, muss der Server jedoch vollständig herunterfahren und neu starten."
+msgstr "Das ISO-Image wird sofort eingebunden; um davon zu starten, musst du den Server jedoch vollständig herunterfahren und neu starten."
 
 #: src/features/servers/components/server-mount-dialog.tsx
 msgctxt "FglhQv"
 msgid "Images can be uploaded from your <link>account settings</link>."
-msgstr "Abbilder können in den <link>Kontoeinstellungen</link> hochgeladen werden."
+msgstr "Images können in den <link>Kontoeinstellungen</link> hochgeladen werden."
 
 #: src/features/servers/components/server-stats-card.tsx
 msgctxt "PW-sL4"
 msgid "N/A"
-msgstr "N/A"
+msgstr "k. A."
 
 #: src/features/servers/components/server-status-bar.tsx
 msgctxt "14KQU8"
@@ -8037,7 +8037,7 @@ msgstr "Server deaktiviert"
 #: src/features/servers/components/server-status-bar.tsx
 msgctxt "gmwFwF"
 msgid "This server has been suspended and will be deleted at {date}, if not renewed."
-msgstr "Dieser Server wurde deaktiviert und wird am {date} gelöscht, falls nicht verlängert."
+msgstr "Dieser Server wurde deaktiviert und wird am {date} gelöscht, falls er nicht verlängert wird."
 
 #: src/features/servers/components/server-status-bar.tsx
 msgctxt "76X-Qu"
@@ -8052,12 +8052,12 @@ msgstr "Server läuft ab"
 #: src/features/servers/components/server-status-bar.tsx
 msgctxt "fkf7mm"
 msgid "This server is expiring {expiry} and will be deleted after, if not renewed"
-msgstr "Dieser Server läuft {expiry} ab und wird danach gelöscht, falls nicht verlängert"
+msgstr "Dieser Server läuft {expiry} ab und wird danach gelöscht, falls er nicht verlängert wird"
 
 #: src/features/servers/components/servers-list.tsx
 msgctxt "SXm88k"
 msgid "IP copied to clipboard!"
-msgstr "IP-Adresse in Zwischenablage kopiert!"
+msgstr "IP-Adresse in die Zwischenablage kopiert!"
 
 #: src/features/servers/components/servers-list.tsx
 msgctxt "26lbPc"
@@ -8072,7 +8072,7 @@ msgstr "Verlängern"
 #: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 msgctxt "rWbrOx"
 msgid "Delete firewall rule"
-msgstr "Firewall-Regel löschen"
+msgstr "Firewallregel löschen"
 
 #: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 msgctxt "JfwSAy"
@@ -8149,7 +8149,7 @@ msgstr "Die Standardaktion für ausgehende Pakete"
 #: src/features/servers/firewall/components/firewall-protocol-select.tsx
 msgctxt "LV0wPI"
 msgid "Search for a protocol..."
-msgstr "Nach Protokoll suchen..."
+msgstr "Nach Protokoll suchen…"
 
 #: src/features/servers/firewall/components/firewall-protocol-select.tsx
 msgctxt "0dWwJ5"
@@ -8159,22 +8159,22 @@ msgstr "Kein unterstütztes Protokoll gefunden."
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgctxt "m5EN4C"
 msgid "Create Firewall Rule"
-msgstr "Firewall Regel erstellen"
+msgstr "Firewallregel erstellen"
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgctxt "gsXXUl"
 msgid "Update Firewall Rule"
-msgstr "Firewall Regel aktualisieren"
+msgstr "Firewallregel aktualisieren"
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgctxt "fnX-hz"
 msgid "Create a new firewall rule."
-msgstr "Erstelle eine neue Firewall Regel."
+msgstr "Erstelle eine neue Firewallregel."
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgctxt "bGOOmV"
 msgid "Update an existing firewall rule."
-msgstr "Aktualisiere eine bestehende Firewall Regel."
+msgstr "Aktualisiere eine bestehende Firewallregel."
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgctxt "HrImBx"
@@ -8194,12 +8194,12 @@ msgstr "Beliebige Adresse"
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgctxt "08nIQL"
 msgid "Only match traffic from this address or network, for example 10.0.0.0/8. Leave empty to match any address."
-msgstr "Nur Traffic von dieser Adresse oder Netzwerk verarbeiten, z.B. 10.0.0.0/8. Leer lassen, um beliebige Adressen zu verarbeiten."
+msgstr "Gilt nur für Datenverkehr von dieser Adresse oder diesem Netzwerk, z. B. 10.0.0.0/8. Leer lassen, damit die Regel für jede Adresse gilt."
 
 #: src/features/servers/firewall/components/firewall-rules-card.tsx
 msgctxt "Qov8tl"
 msgid "Firewall Rules"
-msgstr "Firewall Regeln"
+msgstr "Firewallregeln"
 
 #: src/features/servers/firewall/components/firewall-rules-card.tsx
 msgctxt "flNVEF"
@@ -8249,32 +8249,32 @@ msgstr "In deinem Server"
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx
 msgctxt "Ms3d_e"
 msgid "No Firewall rules"
-msgstr "Keine Firewall Regeln"
+msgstr "Keine Firewallregeln"
 
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx
 msgctxt "xlDRKD"
 msgid "No Firewall rules have been created yet."
-msgstr "Es wurden noch keine Firewall Regeln erstellt."
+msgstr "Es wurden noch keine Firewallregeln erstellt."
 
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
 msgctxt "wmFdws"
 msgid "Move up"
-msgstr "Nach oben bewegen"
+msgstr "Nach oben verschieben"
 
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
 msgctxt "H_r5m6"
 msgid "Move down"
-msgstr "Nach unten bewegen"
+msgstr "Nach unten verschieben"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgctxt "w-tZ4Z"
 msgid "Generate Firewall Rules"
-msgstr "Firewall-Regeln generieren"
+msgstr "Firewallregeln generieren"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgctxt "zxRL4s"
 msgid "Let AI generate firewall rules for your server."
-msgstr "Lass KI Firewall-Regeln für deinen Server erstellen."
+msgstr "Lass KI Firewallregeln für deinen Server erstellen."
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgctxt "iWKE8s"
@@ -8329,12 +8329,12 @@ msgstr "Datenverkehr muss beide Firewalls passieren. Die Regeln stehen unten."
 #: src/features/servers/firewall/hooks/use-create-firewall-rule.ts
 msgctxt "mJ0yAx"
 msgid "Could not create the firewall rule."
-msgstr "Die Firewall-Regel konnte nicht erstellt werden."
+msgstr "Die Firewallregel konnte nicht erstellt werden."
 
 #: src/features/servers/firewall/hooks/use-delete-firewall-rule.ts
 msgctxt "3Kd2EU"
 msgid "Could not delete the firewall rule."
-msgstr "Die Firewall-Regel konnte nicht gelöscht werden."
+msgstr "Die Firewallregel konnte nicht gelöscht werden."
 
 #: src/features/servers/firewall/hooks/use-finding-mapping.ts
 msgctxt "6tQJAd"
@@ -8409,7 +8409,7 @@ msgstr "Regeln konnten nicht generiert werden. Bitte versuche es erneut."
 #: src/features/servers/firewall/hooks/use-move-firewall-rule.ts
 msgctxt "AocbVN"
 msgid "Could not reorder the firewall rules."
-msgstr "Die Firewall-Regeln konnten nicht neu sortiert werden."
+msgstr "Die Firewallregeln konnten nicht neu sortiert werden."
 
 #: src/features/servers/firewall/hooks/use-update-firewall-options.ts
 msgctxt "gUdmaM"
@@ -8419,7 +8419,7 @@ msgstr "Die Firewall-Optionen konnten nicht aktualisiert werden."
 #: src/features/servers/firewall/hooks/use-update-firewall-rule.ts
 msgctxt "HixF5T"
 msgid "Could not update the firewall rule."
-msgstr "Die Firewall-Regel konnte nicht aktualisiert werden."
+msgstr "Die Firewallregel konnte nicht aktualisiert werden."
 
 #: src/features/servers/hooks/advanced/use-update-advanced-settings.ts
 msgctxt "TLEvHC"
@@ -8509,7 +8509,7 @@ msgstr "Gast-Agent antwortet nicht"
 #: src/features/servers/hooks/use-agent-status-mapping.ts
 msgctxt "ihTPpu"
 msgid "Storage usage, password resets and firewall detection need the {packageName} package installed and running inside your server."
-msgstr "Speicherauslastung, Passwort-Zurücksetzungen und Firewall-Erkennung benötigen das Paket {packageName}, installiert und laufend in deinem Server."
+msgstr "Für Speicherauslastung, das Zurücksetzen von Passwörtern und die Firewall-Erkennung muss das Paket {packageName} in deinem Server installiert sein und laufen."
 
 #: src/features/servers/hooks/use-agent-status-mapping.ts
 msgctxt "0pGhq1"
@@ -8574,52 +8574,52 @@ msgstr "Pausiert"
 #: src/features/servers/hooks/use-task-mapping.ts
 msgctxt "3qXa2f"
 msgid "Starting..."
-msgstr "Wird gestartet..."
+msgstr "Wird gestartet…"
 
 #: src/features/servers/hooks/use-task-mapping.ts
 msgctxt "PdMcML"
 msgid "Resetting..."
-msgstr "Wird resettet..."
+msgstr "Wird zurückgesetzt…"
 
 #: src/features/servers/hooks/use-task-mapping.ts
 msgctxt "JM9DH8"
 msgid "Rebooting..."
-msgstr "Wird neu gestartet..."
+msgstr "Wird neu gestartet…"
 
 #: src/features/servers/hooks/use-task-mapping.ts
 msgctxt "yR4-kW"
 msgid "Stopping..."
-msgstr "Wird gestoppt..."
+msgstr "Wird gestoppt…"
 
 #: src/features/servers/hooks/use-task-mapping.ts
 msgctxt "jqQprl"
 msgid "Shutting down..."
-msgstr "Wird heruntergefahren..."
+msgstr "Wird heruntergefahren…"
 
 #: src/features/servers/hooks/use-task-mapping.ts
 msgctxt "hbUGzS"
 msgid "Resuming..."
-msgstr "Wird fortgesetzt..."
+msgstr "Wird fortgesetzt…"
 
 #: src/features/servers/hooks/use-task-mapping.ts
 msgctxt "tXH4J0"
 msgid "Suspending..."
-msgstr "Wird suspendiert..."
+msgstr "Wird suspendiert…"
 
 #: src/features/servers/hooks/use-task-mapping.ts
 msgctxt "m1xdPJ"
 msgid "Pausing..."
-msgstr "Wird pausiert..."
+msgstr "Wird pausiert…"
 
 #: src/features/servers/hooks/use-task-mapping.ts
 msgctxt "3iXlTU"
 msgid "Backing up..."
-msgstr "Wird gesichert..."
+msgstr "Wird gesichert…"
 
 #: src/features/servers/hooks/use-task-mapping.ts
 msgctxt "98thq0"
 msgid "Restoring backup..."
-msgstr "Wird wiederhergestellt..."
+msgstr "Backup wird wiederhergestellt…"
 
 #: src/features/servers/hooks/use-unmount-image.ts
 msgctxt "D6e_ae"
@@ -8629,7 +8629,7 @@ msgstr "Das ISO-Image konnte nicht ausgehängt werden."
 #: src/features/servers/hooks/use-update-server-status.ts
 msgctxt "TpRHA3"
 msgid "Could not change the server state."
-msgstr "Der Server-Status konnte nicht geändert werden."
+msgstr "Der Serverstatus konnte nicht geändert werden."
 
 #: src/ui/app-footer.tsx
 msgctxt "4XCigB"
@@ -8639,7 +8639,7 @@ msgstr "Impressum"
 #: src/ui/app-footer.tsx
 msgctxt "EBDrtq"
 msgid "Terms of use"
-msgstr "Nutzungsbedingungen"
+msgstr "AGB"
 
 #: src/ui/app-footer.tsx
 #: src/ui/fumadocs/video.tsx
@@ -8650,7 +8650,7 @@ msgstr "Datenschutzerklärung"
 #: src/ui/copy-button.tsx
 msgctxt "9j0fO7"
 msgid "Copied to clipboard!"
-msgstr "In Zwischenablage kopiert!"
+msgstr "In die Zwischenablage kopiert!"
 
 #: src/ui/copy-button.tsx
 msgctxt "4l6vz1"
@@ -8680,7 +8680,7 @@ msgstr "Nachricht"
 #: src/ui/feedback-button.tsx
 msgctxt "VG94fP"
 msgid "(required)"
-msgstr "(notwendig)"
+msgstr "(erforderlich)"
 
 #: src/ui/feedback-button.tsx
 msgctxt "EbufBi"
@@ -8695,17 +8695,17 @@ msgstr "Feedback erfolgreich abgesendet"
 #: src/ui/feedback-button.tsx
 msgctxt "mi_NYE"
 msgid "Hide section"
-msgstr "Sektion ausblenden"
+msgstr "Bereich ausblenden"
 
 #: src/ui/feedback-button.tsx
 msgctxt "c47pnT"
 msgid "Highlight section"
-msgstr "Sektion hervorheben"
+msgstr "Bereich hervorheben"
 
 #: src/ui/feedback-button.tsx
 msgctxt "bemE3q"
 msgid "Remove section"
-msgstr "Sektion entfernen"
+msgstr "Bereich entfernen"
 
 #: src/ui/footer.tsx
 msgctxt "E80WrK"
@@ -8766,12 +8766,12 @@ msgstr "Datenschutzerklärung"
 #: src/ui/footer.tsx
 msgctxt "UhkSyx"
 msgid "Terms of Use"
-msgstr "Nutzungsbedingungen"
+msgstr "AGB"
 
 #: src/ui/footer.tsx
 msgctxt "o8wpU5"
 msgid "Revocation Policy"
-msgstr "Widerrufsbestimmungen"
+msgstr "Widerrufsbelehrung"
 
 #: src/ui/footer.tsx
 msgctxt "-eN-I1"
@@ -8826,7 +8826,7 @@ msgstr "Passwort ausblenden"
 #: src/ui/layout/auth-layout.tsx
 msgctxt "jr1I15"
 msgid "By continuing, you agree to {appName}'s <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>"
-msgstr "Durch fortfahren akzeptierst du die <terms>AGB</terms> und <privacy>Datenschutzerklärung</privacy> von {appName}"
+msgstr "Indem du fortfährst, akzeptierst du die <terms>AGB</terms> und die <privacy>Datenschutzerklärung</privacy> von {appName}"
 
 #: src/ui/mdx/glossary-term.tsx
 msgctxt "Y-U_95"
@@ -8866,12 +8866,12 @@ msgstr "Abmelden"
 #: src/ui/operating-system-select.tsx
 msgctxt "DMGJ3m"
 msgid "Select an operating system..."
-msgstr "Betriebssystem auswählen..."
+msgstr "Betriebssystem auswählen…"
 
 #: src/ui/operating-system-select.tsx
 msgctxt "r3Zixe"
 msgid "Search for an operating system..."
-msgstr "Nach Betriebssystem suchen..."
+msgstr "Nach Betriebssystem suchen…"
 
 #: src/ui/operating-system-select.tsx
 msgctxt "iEx8bl"
@@ -8881,7 +8881,7 @@ msgstr "Kein unterstütztes Betriebssystem gefunden."
 #: src/ui/theme-switcher.tsx
 msgctxt "Vny4fL"
 msgid "System theme"
-msgstr "System Erscheinungsbild"
+msgstr "System-Erscheinungsbild"
 
 #: src/ui/theme-switcher.tsx
 msgctxt "ee1Wp5"

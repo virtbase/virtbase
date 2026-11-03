@@ -110,12 +110,12 @@ msgstr "Payload-formaat"
 #: ../../packages/integration-alertmanager/src/localize.ts
 msgctxt "zVsF9H"
 msgid "Which shape the sender speaks. Grafana sends the Alertmanager shape with extras."
-msgstr "Welk formaat de afzender spreekt. Grafana stuurt het Alertmanager-formaat met extra's."
+msgstr "Welk formaat de afzender gebruikt. Grafana stuurt het Alertmanager-formaat met extra's."
 
 #: ../../packages/integration-alertmanager/src/localize.ts
 msgctxt "rgPqeB"
 msgid "Default severity"
-msgstr "Standaard ernst"
+msgstr "Standaardernst"
 
 #: ../../packages/integration-alertmanager/src/localize.ts
 msgctxt "GtLzvO"
@@ -146,7 +146,7 @@ msgstr "Deze server heeft nog geen back-ups. Maak er een om later naar dit punt 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration.dGAzhe"
 msgid "A backup captures the whole server. Restoring one replaces everything on the disk."
-msgstr "Een back-up legt de hele server vast. Bij terugzetten wordt alles op de schijf vervangen."
+msgstr "Een back-up legt de hele server vast. Bij herstellen wordt alles op de schijf vervangen."
 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 #: ../../packages/integration-discord/src/features/servers/messages.ts
@@ -255,7 +255,7 @@ msgstr "Ontgrendelen"
 #: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration.Zl4_y9"
 msgid "Lock"
-msgstr "Slot"
+msgstr "Vergrendelen"
 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 #: ../../packages/integration-discord/src/features/rdns/index.ts
@@ -282,7 +282,7 @@ msgstr "Naam"
 #: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration.Bvg3KH"
 msgid "How you will recognise this backup later."
-msgstr "Waaraan u deze back-up later herkent."
+msgstr "Waaraan je deze back-up later herkent."
 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration.dQpBgM"
@@ -292,12 +292,12 @@ msgstr "Voor de upgrade"
 #: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration.C8rGez"
 msgid "Restore this backup?"
-msgstr "Deze back-up terugzetten?"
+msgstr "Deze back-up herstellen?"
 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration.pcZWbD"
 msgid "Everything currently on the server's disk will be replaced by the contents of this backup. The server is stopped while it is restored, and anything created since the backup was taken is lost."
-msgstr "Alles wat nu op de schijf van de server staat, wordt vervangen door de inhoud van deze back-up. De server wordt gestopt tijdens het terugzetten en alles wat sinds de back-up is ontstaan, gaat verloren."
+msgstr "Alles wat nu op de schijf van de server staat, wordt vervangen door de inhoud van deze back-up. De server wordt gestopt tijdens het herstellen en alles wat sinds de back-up is ontstaan, gaat verloren."
 
 #: ../../packages/integration-discord/src/features/backups/index.ts
 msgctxt "discord-integration.VgpYlr"
@@ -328,7 +328,7 @@ msgstr "Inkomend: **{incoming}** · Uitgaand: **{outgoing}**"
 #: ../../packages/integration-discord/src/features/firewall/index.ts
 msgctxt "discord-integration.0EJN6x"
 msgid "Showing {shown} of {total} rules. Manage the rest in the portal."
-msgstr "{shown} van {total} regels worden getoond. Beheer de rest in het portaal."
+msgstr "{shown} van {total} regels worden getoond. Beheer de rest in het klantenportaal."
 
 #: ../../packages/integration-discord/src/features/firewall/index.ts
 msgctxt "discord-integration.ue2UOa"
@@ -388,7 +388,7 @@ msgstr "Bijvoorbeeld tcp, udp of icmp."
 #: ../../packages/integration-discord/src/features/firewall/index.ts
 msgctxt "discord-integration.WSxucy"
 msgid "Destination port"
-msgstr "Bestemmingshaven"
+msgstr "Bestemmingspoort"
 
 #: ../../packages/integration-discord/src/features/firewall/index.ts
 msgctxt "discord-integration.P4-ymJ"
@@ -428,7 +428,7 @@ msgstr "Deze firewallregel verwijderen?"
 #: ../../packages/integration-discord/src/features/firewall/index.ts
 msgctxt "discord-integration.q6DHpk"
 msgid "Rule #{pos} will be removed. If it was the rule allowing your own access, you may lock yourself out."
-msgstr "Regel #{pos} wordt verwijderd. Als dit de regel was die uw eigen toegang toestond, sluit u zichzelf mogelijk buiten."
+msgstr "Regel #{pos} wordt verwijderd. Als dit de regel was die je eigen toegang toestond, sluit je jezelf mogelijk buiten."
 
 #: ../../packages/integration-discord/src/features/firewall/index.ts
 msgctxt "discord-integration.MdFdbd"
@@ -451,9 +451,9 @@ msgid "Discard it and tell the sender"
 msgstr "Verwerpen en de afzender informeren"
 
 #: ../../packages/integration-discord/src/features/firewall/index.ts
-msgctxt "discord-integration.YDAX4F"
-msgid "What happens to a packet that no rule matches. Leave incoming on **DROP** unless you know why you are changing it."
-msgstr "Wat er gebeurt met een pakket waarop geen regel van toepassing is. Laat inkomend op **DROP** staan, tenzij u weet waarom u dit wijzigt."
+msgctxt "discord-integration.hB998R"
+msgid "What happens to a packet that no rule matches. New servers accept everything; set incoming to **DROP** to block whatever your rules do not allow."
+msgstr "Wat er gebeurt met een pakket waarop geen regel van toepassing is. Nieuwe servers laten alles door; zet inkomend op **DROP** om alles te blokkeren wat je regels niet toestaan."
 
 #: ../../packages/integration-discord/src/features/firewall/index.ts
 msgctxt "discord-integration.XumiMR"
@@ -524,17 +524,17 @@ msgstr "Opnieuw installeren"
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.A6VeUw"
 msgid "You are on **{name}** — {cores, plural, =1 {# vCore} other {# vCores}}, {memory} RAM, {storage} storage."
-msgstr "U gebruikt **{name}** — {cores, plural, =1 {# vCore} other {# vCores}}, {memory} RAM, {storage} opslag."
+msgstr "Je gebruikt **{name}** — {cores, plural, =1 {# vCore} other {# vCores}}, {memory} RAM, {storage} opslag."
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.GXCHD8"
 msgid "This server's plan could not be determined."
-msgstr "Het pakket van deze server kon niet worden bepaald."
+msgstr "Het plan van deze server kon niet worden bepaald."
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.LR754a"
 msgid "Renews at"
-msgstr "Verlengt voor"
+msgstr "Verlengt tegen"
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.5NTPq8"
@@ -549,7 +549,7 @@ msgstr " (vandaag upgraden voor {price})"
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.-nInAI"
 msgid "Change plan or renew"
-msgstr "Pakket wijzigen of verlengen"
+msgstr "Plan wijzigen of verlengen"
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.07Xf2y"
@@ -564,7 +564,7 @@ msgstr "**{name}** is gekoppeld. Herstart de server om ervan op te starten, of o
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.BWwrKU"
 msgid "You have no installer images ready. Add one in the customer portal, then mount it here."
-msgstr "U hebt geen installatie-images klaarstaan. Voeg er een toe in het klantenportaal en koppel het hier."
+msgstr "Je hebt geen installatie-images klaarstaan. Voeg er een toe in het klantenportaal en koppel het hier."
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.U7qHPh"
@@ -599,7 +599,7 @@ msgstr "Images beheren"
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.mrzKVy"
 msgid "Choose an operating system to install. **Everything currently on the disk is destroyed** and the server is rebuilt from scratch. Take a backup first if there is anything on it you want to keep."
-msgstr "Kies een besturingssysteem om te installeren. **Alles wat nu op de schijf staat, wordt vernietigd** en de server wordt volledig opnieuw opgebouwd. Maak eerst een back-up als u er iets van wilt bewaren."
+msgstr "Kies een besturingssysteem om te installeren. **Alles wat nu op de schijf staat, wordt vernietigd** en de server wordt volledig opnieuw opgebouwd. Maak eerst een back-up als je er iets van wilt bewaren."
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.kK9UBD"
@@ -613,9 +613,9 @@ msgid "Cancel"
 msgstr "Annuleren"
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
-msgctxt "discord-integration.VLFQi1"
-msgid "Firmware settings. Changing either of these reboots the server, and a machine installed under one setting may not boot under the other."
-msgstr "Firmware-instellingen. Een wijziging herstart de server, en een machine die onder de ene instelling is geïnstalleerd, start mogelijk niet op onder de andere."
+msgctxt "discord-integration.UdJVk6"
+msgid "Firmware settings. A change takes effect once the server is shut down and started again, and a machine installed under one setting may not boot under the other."
+msgstr "Firmware-instellingen. Een wijziging wordt actief zodra de server wordt uitgeschakeld en opnieuw gestart, en een machine die onder de ene instelling is geïnstalleerd, start onder de andere mogelijk niet op."
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.NjgW6o"
@@ -749,12 +749,12 @@ msgstr "Wat kan deze bot?"
 #: ../../packages/integration-discord/src/features/stats/index.ts
 msgctxt "discord-integration.-uqHID"
 msgid "Show in portal"
-msgstr "Tonen in portaal"
+msgstr "Tonen in klantenportaal"
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.dvr19k"
 msgid "Setup"
-msgstr "Instellingen"
+msgstr "Instellen"
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.S0rNC0"
@@ -819,7 +819,7 @@ msgstr "Nodig Virtbase uit op je server"
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.B3qx3D"
 msgid "Click the button below to add the Virtbase integration to your Discord server:"
-msgstr "Klik op de knop hieronder om de Virtbase-integratie aan uw Discord-server toe te voegen:"
+msgstr "Klik op de knop hieronder om de Virtbase-integratie aan je Discord-server toe te voegen:"
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.e68Bcd"
@@ -829,12 +829,12 @@ msgstr "Aan server toevoegen"
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.jWjN3Y"
 msgid "Manage your servers from Discord"
-msgstr "Beheer uw servers vanuit Discord"
+msgstr "Beheer je servers vanuit Discord"
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.lrRN8m"
 msgid "Link your Virtbase account once, then run **/menu** to manage every server you rent — without opening the portal."
-msgstr "Koppel uw Virtbase-account eenmalig en beheer daarna met **/menu** elke server die u huurt — zonder het portaal te openen."
+msgstr "Koppel je Virtbase-account eenmalig en beheer daarna met **/menu** elke server die je huurt — zonder het klantenportaal te openen."
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration._AFP30"
@@ -844,7 +844,7 @@ msgstr "🖥️ Servers"
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.Waq2D9"
 msgid "See every server you rent, with its plan, operating system, node and IP addresses."
-msgstr "Bekijk elke server die u huurt, met het pakket, besturingssysteem, node en IP-adressen."
+msgstr "Bekijk elke server die je huurt, met het plan, besturingssysteem, node en IP-adressen."
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.kzrJPG"
@@ -874,7 +874,7 @@ msgstr "💾 Back-ups"
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.XtvCXj"
 msgid "Create, restore and delete backups."
-msgstr "Back-ups maken, terugzetten en verwijderen."
+msgstr "Back-ups maken, herstellen en verwijderen."
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.3uIWlF"
@@ -882,9 +882,9 @@ msgid "🛡️ Firewall & rDNS"
 msgstr "🛡️ Firewall & rDNS"
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
-msgctxt "discord-integration.f2U7no"
-msgid "Turn the firewall on or off, add and remove rules, and set reverse DNS for your addresses."
-msgstr "Zet de firewall aan of uit, voeg regels toe en verwijder ze, en stel reverse DNS in voor uw adressen."
+msgctxt "discord-integration.Ux0sfM"
+msgid "Set the default policies, add and remove firewall rules, and set reverse DNS for your addresses."
+msgstr "Stel het standaardbeleid in, voeg firewallregels toe en verwijder ze, en stel reverse DNS in voor je adressen."
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.imThHA"
@@ -894,7 +894,7 @@ msgstr "🔧 Instellingen"
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.YcmU1n"
 msgid "Rename a server, reinstall it with a different operating system, mount an installer image and review your plan."
-msgstr "Hernoem een server, installeer hem opnieuw met een ander besturingssysteem, koppel een installatie-image en bekijk uw pakket."
+msgstr "Hernoem een server, installeer hem opnieuw met een ander besturingssysteem, koppel een installatie-image en bekijk je plan."
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.OJkAII"
@@ -914,7 +914,7 @@ msgstr "🏅 Gekoppelde rollen"
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.HI_CMF"
 msgid "Link your account and Discord servers can grant you roles based on how long you have been a customer and how many servers you run."
-msgstr "Koppel uw account en Discord-servers kunnen u rollen toekennen op basis van hoelang u al klant bent en hoeveel servers u draait."
+msgstr "Koppel je account en Discord-servers kunnen je rollen toekennen op basis van hoelang je al klant bent en hoeveel servers je draait."
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.hwV-OS"
@@ -963,7 +963,7 @@ msgstr "De huidige status kon niet van de node worden gelezen."
 #: ../../packages/integration-discord/src/features/power/index.ts
 msgctxt "discord-integration.mOFG3K"
 msgid "Start"
-msgstr "Begin"
+msgstr "Starten"
 
 #: ../../packages/integration-discord/src/features/power/index.ts
 msgctxt "discord-integration.9U7nUR"
@@ -1018,7 +1018,7 @@ msgstr "Er zijn geen reverse-DNS-records ingesteld. Vooral mailservers verwachte
 #: ../../packages/integration-discord/src/features/rdns/index.ts
 msgctxt "discord-integration.U8lx56"
 msgid "These records say which hostname each of your addresses resolves back to."
-msgstr "Deze records bepalen naar welke hostnaam elk van uw adressen terugverwijst."
+msgstr "Deze records bepalen naar welke hostnaam elk van je adressen terugverwijst."
 
 #: ../../packages/integration-discord/src/features/rdns/index.ts
 msgctxt "discord-integration.yYYenE"
@@ -1138,7 +1138,7 @@ msgstr "{storage} NVMe SSD"
 #: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration.7F86ji"
 msgid "View in portal ↗"
-msgstr "Bekijk in portaal ↗"
+msgstr "Bekijken in klantenportaal ↗"
 
 #: ../../packages/integration-discord/src/features/servers/messages.ts
 msgctxt "discord-integration.JGe_wh"
@@ -1389,7 +1389,7 @@ msgstr "Die server bestaat niet meer."
 #: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration.Bu3w9U"
 msgid "You are not allowed to do that."
-msgstr "Dat mag u niet doen."
+msgstr "Dat mag je niet doen."
 
 #: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration.NAzXO_"
@@ -1399,7 +1399,7 @@ msgstr "Sommige van de ingevoerde gegevens zijn ongeldig."
 #: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration.612Bxo"
 msgid "You are doing that too often. Please wait a moment."
-msgstr "U doet dat te vaak. Wacht even."
+msgstr "Je doet dat te vaak. Wacht even."
 
 #: ../../packages/integration-discord/src/messages/error.ts
 msgctxt "discord-integration.eXkTwt"
@@ -1534,14 +1534,14 @@ msgstr "Oplopend"
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgctxt "FXGK2_"
 msgid "Desc"
-msgstr "Besch"
+msgstr "Aflopend"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 #: ../../packages/ui/src/data-table/data-table-toolbar.tsx
 #: src/features/servers/components/server-actions-row.tsx
 msgctxt "jm_spn"
 msgid "Reset"
-msgstr "Opnieuw instellen"
+msgstr "Resetten"
 
 #: ../../packages/ui/src/data-table/data-table-column-header.tsx
 msgctxt "VA_Z1S"
@@ -1634,17 +1634,17 @@ msgstr "{title}-schuifregelaar"
 #: ../../packages/ui/src/data-table/data-table-slider-filter.tsx
 msgctxt "_GCoTA"
 msgid "Clear"
-msgstr "Duidelijk"
+msgstr "Wissen"
 
 #: ../../packages/ui/src/data-table/data-table-toolbar.tsx
 msgctxt "jZ0o74"
 msgid "Reset filters"
-msgstr "Filters opnieuw instellen"
+msgstr "Filters resetten"
 
 #: ../../packages/ui/src/data-table/data-table-view-options.tsx
 msgctxt "5PWP-M"
 msgid "Toggle columns"
-msgstr "Kolommen wisselen"
+msgstr "Kolommen tonen/verbergen"
 
 #: ../../packages/ui/src/data-table/data-table-view-options.tsx
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
@@ -1659,7 +1659,7 @@ msgstr "Kolommen wisselen"
 #: src/features/servers/components/servers-list.tsx
 msgctxt "FgydNe"
 msgid "View"
-msgstr "Weergave"
+msgstr "Bekijken"
 
 #: ../../packages/ui/src/data-table/data-table-view-options.tsx
 msgctxt "nDz7zP"
@@ -1700,7 +1700,7 @@ msgstr "Configureer het serverplan {name} op {appName}"
 #: src/app/(public)/[locale]/checkout/[id]/page.tsx
 msgctxt "fYwMu5"
 msgid "All prices include statutory VAT, if applicable."
-msgstr "Alle prijzen zijn inclusief wettelijke BTW, indien van toepassing."
+msgstr "Alle prijzen zijn inclusief wettelijke btw, indien van toepassing."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx
 msgctxt "xxhML8"
@@ -1710,7 +1710,7 @@ msgstr "Betalingsgegevens"
 #: src/app/(public)/[locale]/checkout/return/page.tsx
 msgctxt "H0EiGf"
 msgid "Your payment has been processed. Here you can see the details of your order."
-msgstr "Uw betaling is verwerkt. Hier kunt u de details van uw bestelling bekijken."
+msgstr "Je betaling is verwerkt. Hier kun je de details van je bestelling bekijken."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx
 msgctxt "MjOjxw"
@@ -1745,12 +1745,12 @@ msgstr "We sturen een e-mail met alle details zodra de bestelling is verwerkt."
 #: src/app/(public)/[locale]/checkout/return/page.tsx
 msgctxt "p39Bbe"
 msgid "Order requires action"
-msgstr "Orde vereist actie"
+msgstr "Bestelling vereist actie"
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx
 msgctxt "lDCVlQ"
 msgid "The order requires an action from you."
-msgstr "De bestelling vereist een actie van u."
+msgstr "De bestelling vereist een actie van jou."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx
 msgctxt "uew4Mt"
@@ -1770,7 +1770,7 @@ msgstr "Voor de bestelling is een betaling vereist."
 #: src/app/(public)/[locale]/checkout/return/page.tsx
 msgctxt "E9nzLe"
 msgid "We will initiate the payment and process the order."
-msgstr "Wij zullen de betaling initiëren en de bestelling verwerken."
+msgstr "We starten de betaling en verwerken de bestelling."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx
 msgctxt "dj4t0s"
@@ -1780,7 +1780,7 @@ msgstr "Bestelling vereist bevestiging"
 #: src/app/(public)/[locale]/checkout/return/page.tsx
 msgctxt "nxm6Cj"
 msgid "The order requires a confirmation by your payment method."
-msgstr "De bestelling vereist een bevestiging via uw betaalmethode."
+msgstr "De bestelling vereist een bevestiging via je betaalmethode."
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx
 msgctxt "wsDmTC"
@@ -1805,7 +1805,7 @@ msgstr "Als het probleem zich blijft voordoen, probeer dan een andere betaalmeth
 #: src/app/(public)/[locale]/checkout/return/page.tsx
 msgctxt "Ifl2yr"
 msgid "Order successful"
-msgstr "Bestelling succesvol"
+msgstr "Bestelling geslaagd"
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx
 msgctxt "SZKxGU"
@@ -1820,12 +1820,12 @@ msgstr "We sturen een e-mail met alle details zodra je bestelde producten klaars
 #: src/app/(public)/[locale]/checkout/return/page.tsx
 msgctxt "aIRWQB"
 msgid "Back to home"
-msgstr "Terug naar huis"
+msgstr "Terug naar de startpagina"
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx
 msgctxt "YgWige"
 msgid "Back to customer portal"
-msgstr "Terug naar klantenportaal"
+msgstr "Terug naar het klantenportaal"
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx
 msgctxt "nCYYaf"
@@ -1841,7 +1841,7 @@ msgstr "Contact"
 #: src/app/(public)/[locale]/contact/page.tsx
 msgctxt "Hse98V"
 msgid "Get help with all product topics, give feedback or ask questions about billing."
-msgstr "Krijg hulp bij alle productonderwerpen, geef feedback of stel vragen over facturering."
+msgstr "Krijg hulp bij alle productonderwerpen, geef feedback of stel vragen over facturatie."
 
 #: src/app/(public)/[locale]/contact/page.tsx
 msgctxt "cN2wPY"
@@ -1856,18 +1856,18 @@ msgstr "Sluit je aan bij de community Discord-server en chat met andere gebruike
 #: src/app/(public)/[locale]/contact/page.tsx
 msgctxt "qh9exW"
 msgid "Join Discord"
-msgstr "Sluit je aan bij Discord"
+msgstr "Word lid op Discord"
 
 #: src/app/(public)/[locale]/contact/page.tsx
 #: src/ui/app-sidebar.tsx
 msgctxt "HqRNN8"
 msgid "Support"
-msgstr "Steun"
+msgstr "Support"
 
 #: src/app/(public)/[locale]/contact/page.tsx
 msgctxt "tA3IJb"
 msgid "Request Support"
-msgstr "Vraag ondersteuning aan"
+msgstr "Support aanvragen"
 
 #: src/app/(public)/[locale]/contact/page.tsx
 msgctxt "KV_9Hv"
@@ -1877,7 +1877,7 @@ msgstr "Vragen"
 #: src/app/(public)/[locale]/contact/page.tsx
 msgctxt "pNNM1r"
 msgid "Our help articles already answer many of your questions."
-msgstr "Onze helpartikelen beantwoorden al veel van uw vragen."
+msgstr "Onze helpartikelen beantwoorden al veel van je vragen."
 
 #: src/app/(public)/[locale]/contact/page.tsx
 msgctxt "TZHi__"
@@ -1895,7 +1895,7 @@ msgstr "API-documentatie"
 #: src/app/(public)/[locale]/contact/page.tsx
 msgctxt "p21Rwp"
 msgid "Learn more about the API interface for developers for your projects."
-msgstr "Lees meer over de API-interface voor ontwikkelaars voor uw projecten."
+msgstr "Lees meer over de API-interface voor ontwikkelaars voor je projecten."
 
 #: src/app/(public)/[locale]/contact/page.tsx
 msgctxt "SxCabn"
@@ -1905,7 +1905,7 @@ msgstr "Bekijk API-documentatie"
 #: src/app/(public)/[locale]/contact/page.tsx
 msgctxt "M6PcEI"
 msgid "How can we help you?"
-msgstr "Hoe kunnen wij u helpen?"
+msgstr "Hoe kunnen wij je helpen?"
 
 #: src/app/(public)/[locale]/contact/page.tsx
 msgctxt "SLIoeO"
@@ -1920,7 +1920,7 @@ msgstr "Heb je nog vragen? Neem contact met ons op"
 #: src/app/(public)/[locale]/help/page.tsx
 msgctxt "VQvikz"
 msgid "How can we help today?"
-msgstr "Hoe kunnen we u vandaag helpen?"
+msgstr "Hoe kunnen we je vandaag helpen?"
 
 #: src/app/(public)/[locale]/help/page.tsx
 #: src/features/markdown/page-markdown.ts
@@ -1984,7 +1984,7 @@ msgstr "{percent} meer opslag"
 #: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgctxt "E8bbzS"
 msgid "Store more content on your server"
-msgstr "Bewaar meer inhoud op uw server"
+msgstr "Bewaar meer inhoud op je server"
 
 #: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgctxt "J4j1Fd"
@@ -2014,7 +2014,7 @@ msgstr "Support 24/7"
 #: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgctxt "CKQfnV"
 msgid "Available around the clock whenever you need it"
-msgstr "Altijd beschikbaar wanneer u het nodig hebt"
+msgstr "Altijd beschikbaar wanneer je het nodig hebt"
 
 #: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgctxt "3SJxuA"
@@ -2024,7 +2024,7 @@ msgstr "Actieve DDoS-bescherming"
 #: src/app/(public)/[locale]/upsell/[from]/[to]/page.tsx
 msgctxt "VI9ImX"
 msgid "Your server is protected without additional charges"
-msgstr "Uw server is beschermd zonder extra kosten"
+msgstr "Je server is beschermd zonder extra kosten"
 
 #: src/app/admin.virtbase.com/[locale]/(dashboard)/abuse/[id]/page.tsx
 #: src/app/admin.virtbase.com/[locale]/(dashboard)/abuse/page.tsx
@@ -2052,7 +2052,7 @@ msgstr "Misbruikregels"
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "NoQGSk"
 msgid "Datacenters"
-msgstr "Datacentra"
+msgstr "Datacenters"
 
 #: src/app/admin.virtbase.com/[locale]/(dashboard)/emails/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
@@ -2070,19 +2070,19 @@ msgstr "Integraties"
 #: src/app/admin.virtbase.com/[locale]/(dashboard)/layout.tsx
 msgctxt "iHN12u"
 msgid "Admin"
-msgstr "Beheerder"
+msgstr "Beheer"
 
 #: src/app/admin.virtbase.com/[locale]/(dashboard)/node-groups/[id]/page.tsx
 #: src/app/admin.virtbase.com/[locale]/(dashboard)/node-groups/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
 msgctxt "rcBiKK"
 msgid "Node Groups"
-msgstr "Knooppuntgroepen"
+msgstr "Nodegroepen"
 
 #: src/app/admin.virtbase.com/[locale]/(dashboard)/nodes/[id]/page.tsx
 msgctxt "n3j8M6"
 msgid "Proxmox Nodes"
-msgstr "Proxmox-knooppunten"
+msgstr "Proxmox-nodes"
 
 #: src/app/admin.virtbase.com/[locale]/(dashboard)/notifications/page.tsx
 #: src/features/admin/components/admin-sidebar-groups.tsx
@@ -2160,33 +2160,33 @@ msgstr "Wachtwoord vergeten voor {appName}"
 #: src/app/app.virtbase.com/[locale]/(auth)/forgot-password/page.tsx
 msgctxt "knQkcB"
 msgid "Reset the password of your {appName} account."
-msgstr "Reset het wachtwoord van uw {appName}-account."
+msgstr "Reset het wachtwoord van je {appName}-account."
 
 #: src/app/app.virtbase.com/[locale]/(auth)/forgot-password/page.tsx
 #: src/app/app.virtbase.com/[locale]/(auth)/reset-password/page.tsx
 msgctxt "p-kmJg"
 msgid "Reset your password"
-msgstr "Reset uw wachtwoord"
+msgstr "Reset je wachtwoord"
 
 #: src/app/app.virtbase.com/[locale]/(auth)/login/page.tsx
 msgctxt "VquSDh"
 msgid "Sign in to {appName}"
-msgstr "Meld u aan bij {appName}"
+msgstr "Inloggen bij {appName}"
 
 #: src/app/app.virtbase.com/[locale]/(auth)/login/page.tsx
 msgctxt "VGUFk-"
 msgid "Sign in to your {appName} account to manage your virtual servers."
-msgstr "Meld u aan bij uw {appName}-account om uw virtuele servers te beheren."
+msgstr "Log in op je {appName}-account om je virtuele servers te beheren."
 
 #: src/app/app.virtbase.com/[locale]/(auth)/login/page.tsx
 msgctxt "TKG18n"
 msgid "Log in to your {appName} account"
-msgstr "Log in op uw {appName}-account"
+msgstr "Log in op je {appName}-account"
 
 #: src/app/app.virtbase.com/[locale]/(auth)/login/page.tsx
 msgctxt "25WwxF"
 msgid "Don't have an account?"
-msgstr "Heeft u geen account?"
+msgstr "Heb je geen account?"
 
 #: src/app/app.virtbase.com/[locale]/(auth)/login/page.tsx
 #: src/features/checkout/components/checkout-auth-wrapper.tsx
@@ -2194,18 +2194,18 @@ msgstr "Heeft u geen account?"
 #: src/ui/nav.tsx
 msgctxt "8HJxXG"
 msgid "Sign up"
-msgstr "Schrijf je in"
+msgstr "Registreren"
 
 #: src/app/app.virtbase.com/[locale]/(auth)/register/page-client.tsx
 #: src/app/app.virtbase.com/[locale]/(auth)/register/page.tsx
 msgctxt "LcaCOE"
 msgid "Create your {appName} account"
-msgstr "Maak uw {appName}-account aan"
+msgstr "Maak je {appName}-account aan"
 
 #: src/app/app.virtbase.com/[locale]/(auth)/register/page-client.tsx
 msgctxt "uCk8r-"
 msgid "Already have an account?"
-msgstr "Heeft u al een account?"
+msgstr "Heb je al een account?"
 
 #: src/app/app.virtbase.com/[locale]/(auth)/register/page-client.tsx
 msgctxt "odXlk8"
@@ -2215,7 +2215,7 @@ msgstr "Inloggen"
 #: src/app/app.virtbase.com/[locale]/(auth)/register/page-client.tsx
 msgctxt "rEdUqQ"
 msgid "Verify your email address"
-msgstr "Controleer uw e-mailadres"
+msgstr "Bevestig je e-mailadres"
 
 #: src/app/app.virtbase.com/[locale]/(auth)/register/page-client.tsx
 msgctxt "H2tEgm"
@@ -2225,17 +2225,17 @@ msgstr "Voer de zescijferige verificatiecode in die naar <strong>{email}</strong
 #: src/app/app.virtbase.com/[locale]/(auth)/register/page.tsx
 msgctxt "PcjZtc"
 msgid "Create your {appName} account to order your first virtual server."
-msgstr "Maak uw {appName}-account aan om uw eerste virtuele server te bestellen."
+msgstr "Maak je {appName}-account aan om je eerste virtuele server te bestellen."
 
 #: src/app/app.virtbase.com/[locale]/(auth)/reset-password/page.tsx
 msgctxt "D2Np7X"
 msgid "Reset your password for {appName}"
-msgstr "Reset uw wachtwoord voor {appName}"
+msgstr "Reset je wachtwoord voor {appName}"
 
 #: src/app/app.virtbase.com/[locale]/(auth)/reset-password/page.tsx
 msgctxt "tNqFr9"
 msgid "Reset your password for your {appName} account."
-msgstr "Reset uw wachtwoord voor uw {appName}-account."
+msgstr "Reset je wachtwoord voor je {appName}-account."
 
 #: src/app/app.virtbase.com/[locale]/(auth)/two-factor/page.tsx
 #: src/features/account/components/authentication/user-tfa-card.tsx
@@ -2300,7 +2300,7 @@ msgstr "Back-ups"
 #: src/features/servers/components/server-nav-view.tsx
 msgctxt "gc-2Z2"
 msgid "Console"
-msgstr "Troosten"
+msgstr "Console"
 
 #: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/firewall/page.tsx
 #: src/features/account/components/api-keys/create-api-key-button.tsx
@@ -2318,7 +2318,7 @@ msgstr "Server niet gevonden"
 #: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/not-found.tsx
 msgctxt "bdn_TR"
 msgid "The server you are looking for does not exist."
-msgstr "De server die u zoekt bestaat niet."
+msgstr "De server die je zoekt bestaat niet."
 
 #: src/app/app.virtbase.com/[locale]/(dashboard)/servers/[id]/not-found.tsx
 msgctxt "43U065"
@@ -2374,13 +2374,13 @@ msgstr "Huur een nieuwe server"
 #: src/app/app.virtbase.com/[locale]/unauthorized.tsx
 msgctxt "srept4"
 msgid "You are not authorized to access this page. Your session may have expired, please sign in again."
-msgstr "U heeft geen toegang tot deze pagina. Mogelijk is uw sessie verlopen. Meld u opnieuw aan."
+msgstr "Je hebt geen toegang tot deze pagina. Mogelijk is je sessie verlopen. Log opnieuw in."
 
 #: src/app/app.virtbase.com/[locale]/unauthorized.tsx
 #: src/features/account/components/authentication/user-sessions-list.tsx
 msgctxt "xXbJso"
 msgid "Sign out"
-msgstr "Meld u af"
+msgstr "Uitloggen"
 
 #: src/features/abuse/components/abuse-case-conversation.tsx
 #: src/features/admin/components/abuse/abuse-case-conversation.tsx
@@ -2599,7 +2599,7 @@ msgstr "Overig"
 #: src/features/abuse/hooks/use-case-labels.ts
 msgctxt "oEQon6"
 msgid "Watched"
-msgstr "Gemonitord"
+msgstr "Onder toezicht"
 
 #: src/features/abuse/hooks/use-case-labels.ts
 msgctxt "aYdv6s"
@@ -2638,7 +2638,7 @@ msgstr "Beveiliging"
 #: src/features/admin/components/integrations/integrations-hub.tsx
 msgctxt "Tbo377"
 msgid "Billing"
-msgstr "Facturering"
+msgstr "Facturatie"
 
 #: src/features/account/components/account-breadcrumb.tsx
 #: src/features/account/components/account-nav.tsx
@@ -2657,7 +2657,7 @@ msgstr "SSH-sleutels"
 #: src/ui/nav-user.tsx
 msgctxt "TwyMau"
 msgid "Account"
-msgstr "Rekening"
+msgstr "Account"
 
 #: src/features/account/components/account-nav.tsx
 msgctxt "96Us9V"
@@ -2734,7 +2734,7 @@ msgstr "ISO"
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 msgctxt "-J17tT"
 msgid "Create API key"
-msgstr "Maak een API-sleutel"
+msgstr "API-sleutel aanmaken"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/account/components/authentication/confirm-password-dialog.tsx
@@ -2778,12 +2778,12 @@ msgstr "Annuleren"
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 msgctxt "fnMCvo"
 msgid "API key created"
-msgstr "API-sleutel gemaakt"
+msgstr "API-sleutel aangemaakt"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 msgctxt "TQSqlk"
 msgid "This key will only be displayed once. Please save it securely, as it cannot be restored:"
-msgstr "Deze sleutel wordt slechts één keer weergegeven. Bewaar het veilig, want het kan niet worden hersteld:"
+msgstr "Deze sleutel wordt maar één keer weergegeven. Bewaar hem veilig, want hij kan niet worden hersteld:"
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
@@ -2827,7 +2827,7 @@ msgstr "Machtigingen"
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 msgctxt "4u9ABD"
 msgid "Depending on the permissions, the API key can perform certain actions."
-msgstr "Afhankelijk van de rechten kan de API-sleutel bepaalde acties uitvoeren."
+msgstr "Afhankelijk van de machtigingen kan de API-sleutel bepaalde acties uitvoeren."
 
 #: src/features/account/components/api-keys/create-api-key-button.tsx
 #: src/features/servers/components/server-graphs.tsx
@@ -2844,7 +2844,7 @@ msgstr "Schrijven"
 #: src/features/account/components/authentication/add-passkey-button.tsx
 msgctxt "IknBAk"
 msgid "Add Passkey"
-msgstr "Wachtwoord toevoegen"
+msgstr "Passkey toevoegen"
 
 #: src/features/account/components/authentication/backup-codes-dialog.tsx
 msgctxt "RrL8zs"
@@ -2879,12 +2879,12 @@ msgstr "Wachtwoord"
 #: src/features/account/components/authentication/discord-bot-card.tsx
 msgctxt "jWjN3Y"
 msgid "Manage your servers from Discord"
-msgstr "Beheer uw servers vanuit Discord"
+msgstr "Beheer je servers vanuit Discord"
 
 #: src/features/account/components/authentication/discord-bot-card.tsx
 msgctxt "0eStxB"
 msgid "Start and stop servers, take backups, edit firewall rules and open a console — without leaving chat. Link your Discord account below, then run /menu."
-msgstr "Servers starten en stoppen, back-ups maken, firewallregels aanpassen en een console openen — zonder de chat te verlaten. Koppel hieronder uw Discord-account en voer daarna /menu uit."
+msgstr "Servers starten en stoppen, back-ups maken, firewallregels aanpassen en een console openen — zonder de chat te verlaten. Koppel hieronder je Discord-account en voer daarna /menu uit."
 
 #: src/features/account/components/authentication/discord-bot-card.tsx
 msgctxt "vEF59U"
@@ -2933,32 +2933,32 @@ msgstr "Vervangen"
 #: src/features/account/components/authentication/user-providers-list.tsx
 msgctxt "ASrBq8"
 msgid "Passkeys"
-msgstr "Wachtwoorden"
+msgstr "Passkeys"
 
 #: src/features/account/components/authentication/user-passkeys-card.tsx
 msgctxt "yZU_cd"
 msgid "Passkeys are a highly secure alternative to passwords. Register a new passkey or use an existing one."
-msgstr "Wachtwoorden zijn een zeer veilig alternatief voor wachtwoorden. Registreer een nieuwe toegangssleutel of gebruik een bestaande."
+msgstr "Passkeys zijn een zeer veilig alternatief voor wachtwoorden. Registreer een nieuwe passkey of gebruik een bestaande."
 
 #: src/features/account/components/authentication/user-passkeys-card.tsx
 msgctxt "ANHQFQ"
 msgid "Multiple passkeys can be used for authentication."
-msgstr "Er kunnen meerdere wachtwoordsleutels worden gebruikt voor authenticatie."
+msgstr "Er kunnen meerdere passkeys worden gebruikt voor authenticatie."
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx
 msgctxt "Hcvdp5"
 msgid "No passkeys"
-msgstr "Geen toegangscodes"
+msgstr "Geen passkeys"
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx
 msgctxt "OHO8dm"
 msgid "No passkeys have been registered for this account."
-msgstr "Er zijn geen toegangscodes geregistreerd voor dit account."
+msgstr "Er zijn geen passkeys geregistreerd voor dit account."
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx
 msgctxt "GKNfO2"
 msgid "Passkey #{number}"
-msgstr "Wachtwoord #{number}"
+msgstr "Passkey #{number}"
 
 #: src/features/account/components/authentication/user-passkeys-list.tsx
 msgctxt "jUqYir"
@@ -2979,7 +2979,7 @@ msgstr "Authenticatiemethoden"
 #: src/features/account/components/authentication/user-providers-card.tsx
 msgctxt "wLHOoq"
 msgid "Configure how you can sign in to your account. Link your accounts for a seamless, secure authentication experience."
-msgstr "Configureer hoe u zich kunt aanmelden bij uw account. Koppel uw accounts voor een naadloze, veilige authenticatie-ervaring."
+msgstr "Stel in hoe je inlogt op je account. Koppel je accounts voor een naadloze, veilige authenticatie-ervaring."
 
 #: src/features/account/components/authentication/user-providers-list.tsx
 msgctxt "0Azlrb"
@@ -3000,7 +3000,7 @@ msgstr "E-mail"
 #: src/features/account/components/authentication/user-providers-list.tsx
 msgctxt "EYyTPV"
 msgid "Passwordless authentication with passkeys"
-msgstr "Wachtwoordloze authenticatie met wachtwoordsleutels"
+msgstr "Wachtwoordloze authenticatie met passkeys"
 
 #: src/features/account/components/authentication/user-providers-list.tsx
 msgctxt "waJLKW"
@@ -3010,12 +3010,12 @@ msgstr "Gekoppeld"
 #: src/features/account/components/authentication/user-providers-list.tsx
 msgctxt "xGU8KV"
 msgid "Link your {name} account"
-msgstr "Koppel uw {name}-account"
+msgstr "Koppel je {name}-account"
 
 #: src/features/account/components/authentication/user-providers-list.tsx
 msgctxt "JBWS0c"
 msgid "Link"
-msgstr "Link"
+msgstr "Koppelen"
 
 #: src/features/account/components/authentication/user-providers-list.tsx
 msgctxt "4PKxPs"
@@ -3045,7 +3045,7 @@ msgstr "Er zijn geen actieve sessies. Nieuwe logins worden hier weergegeven."
 #: src/features/account/components/authentication/user-sessions-list.tsx
 msgctxt "nBinN2"
 msgid "Signed in {date}"
-msgstr "Aangemeld in {date}"
+msgstr "Ingelogd {date}"
 
 #: src/features/account/components/authentication/user-sessions-list.tsx
 msgctxt "10IkTF"
@@ -3065,7 +3065,7 @@ msgstr "Onbekend IP-adres"
 #: src/features/account/components/authentication/user-tfa-card.tsx
 msgctxt "BrXXiS"
 msgid "Protects your account by requiring a second factor at sign-in."
-msgstr "Beschermt je account door bij het aanmelden een tweede factor te vereisen."
+msgstr "Beschermt je account door bij het inloggen een tweede factor te vereisen."
 
 #: src/features/account/components/authentication/user-tfa-card.tsx
 msgctxt "7YrJer"
@@ -3080,7 +3080,7 @@ msgstr "Authenticator-app (TOTP)"
 #: src/features/account/components/authentication/user-tfa-card.tsx
 msgctxt "4BGiwE"
 msgid "Enrolled"
-msgstr "Ingeschreven"
+msgstr "Ingesteld"
 
 #: src/features/account/components/authentication/user-tfa-card.tsx
 msgctxt "gnU5U1"
@@ -3276,7 +3276,7 @@ msgstr "Geweigerd — vervang hem om automatische verlenging te behouden"
 #: src/features/account/components/billing/payment-method-item.tsx
 msgctxt "CSGj9j"
 msgid "The permission to charge it was withdrawn, so renewals can no longer use it. Add another card and choose it for renewals."
-msgstr "De toestemming om deze kaart te belasten is ingetrokken, dus verlengingen kunnen hem niet meer gebruiken. Voeg een andere kaart toe en kies die voor verlengingen."
+msgstr "De toestemming om van deze kaart af te schrijven is ingetrokken, dus verlengingen kunnen hem niet meer gebruiken. Voeg een andere kaart toe en kies die voor verlengingen."
 
 #: src/features/account/components/billing/payment-method-item.tsx
 msgctxt "YNh9Pm"
@@ -3326,7 +3326,7 @@ msgstr "Kaart verwijderen"
 #: src/features/account/components/billing/remove-payment-method-dialog.tsx
 msgctxt "mLXaQO"
 msgid "It is detached from our payment provider straight away and can never be charged again. Receipts for payments you have already made are unaffected."
-msgstr "De kaart wordt direct losgekoppeld van onze betaalprovider en kan nooit meer worden belast. Bewijzen van al gedane betalingen blijven ongewijzigd."
+msgstr "De kaart wordt direct losgekoppeld van onze betaalprovider en er kan nooit meer van worden afgeschreven. Betalingsbewijzen van betalingen die je al hebt gedaan, blijven ongewijzigd."
 
 #: src/features/account/components/billing/remove-payment-method-dialog.tsx
 msgctxt "JtXgPI"
@@ -3346,12 +3346,12 @@ msgstr "Op deze kaart worden verlengingen afgeschreven; als je hem verwijdert, h
 #: src/features/account/components/billing/remove-payment-method-dialog.tsx
 msgctxt "YFs9Ts"
 msgid "Nothing is switched off today: each one runs to the end of the period you have already paid for — the first on {date} — and then ends instead of renewing."
-msgstr "Er wordt vandaag niets uitgeschakeld: elk abonnement loopt tot het einde van de periode die je al hebt betaald — het eerste op {date} — en eindigt daarna in plaats van te verlengen."
+msgstr "Er wordt vandaag niets uitgeschakeld: elk abonnement loopt tot het einde van de periode die je al hebt betaald — het eerste op {date} — en eindigt daarna in plaats van verlengd te worden."
 
 #: src/features/account/components/billing/remove-payment-method-dialog.tsx
 msgctxt "DX5sBC"
 msgid "Nothing is switched off today: each one runs to the end of the period you have already paid for, and then ends instead of renewing."
-msgstr "Er wordt vandaag niets uitgeschakeld: elk abonnement loopt tot het einde van de periode die je al hebt betaald en eindigt daarna in plaats van te verlengen."
+msgstr "Er wordt vandaag niets uitgeschakeld: elk abonnement loopt tot het einde van de periode die je al hebt betaald en eindigt daarna in plaats van verlengd te worden."
 
 #: src/features/account/components/billing/remove-payment-method-dialog.tsx
 msgctxt "sfngf8"
@@ -3377,7 +3377,7 @@ msgstr "Aangepaste image maken"
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 msgctxt "ggQwe8"
 msgid "Create a new custom image for your servers."
-msgstr "Maak een nieuwe aangepaste image voor uw servers."
+msgstr "Maak een nieuwe aangepaste image voor je servers."
 
 #: src/features/account/components/custom-images/create-custom-image-dialog.tsx
 msgctxt "ueVsqa"
@@ -3403,12 +3403,12 @@ msgstr "Aangepaste ISO-images"
 #: src/features/account/components/custom-images/custom-images-card.tsx
 msgctxt "GnqZoy"
 msgid "Upload and manage custom ISO images for your servers."
-msgstr "Upload en beheer aangepaste ISO-images voor uw servers."
+msgstr "Upload en beheer aangepaste ISO-images voor je servers."
 
 #: src/features/account/components/custom-images/custom-images-card.tsx
 msgctxt "Lwyinc"
 msgid "You can have up to {count} active ISO images."
-msgstr "U kunt maximaal {count} actieve ISO-images hebben."
+msgstr "Je kunt maximaal {count} actieve ISO-images hebben."
 
 #: src/features/account/components/custom-images/custom-images-list.tsx
 msgctxt "sHUPf5"
@@ -3449,7 +3449,7 @@ msgstr "Deze images worden rechtstreeks van de servers van de leverancier gedown
 #: src/features/account/components/custom-images/iso-catalog-grid.tsx
 msgctxt "f2nkRw"
 msgid "No image matches your search."
-msgstr "Geen enkele image komt overeen met uw zoekopdracht."
+msgstr "Geen enkele image komt overeen met je zoekopdracht."
 
 #: src/features/account/components/custom-images/iso-catalog-grid.tsx
 msgctxt "Z8971h"
@@ -3586,7 +3586,7 @@ msgstr "Op {date} wordt alles verwijderd. Je kunt dit nog stoppen."
 #: src/features/account/components/privacy/delete-account-card.tsx
 msgctxt "hpbtvd"
 msgid "You have {count} unpaid invoice(s). Please settle them before deleting your account."
-msgstr "Je hebt {count} openstaande factu(u)r(en). Betaal die voordat je je account verwijdert."
+msgstr "Je hebt {count} onbetaalde factuur/facturen. Betaal die voordat je je account verwijdert."
 
 #: src/features/account/components/privacy/delete-account-card.tsx
 msgctxt "i0KRJm"
@@ -3651,7 +3651,7 @@ msgstr "Mijn account verwijderen"
 #: src/features/account/components/privacy/delete-account-card.tsx
 msgctxt "UWklwU"
 msgid "Email Me The Link"
-msgstr "Stuur mij de link"
+msgstr "Stuur me de link"
 
 #: src/features/account/components/privacy/delete-account-card.tsx
 msgctxt "gaaCtO"
@@ -3666,7 +3666,7 @@ msgstr "Typ {phrase} om door te gaan"
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 msgctxt "KdsDOJ"
 msgid "Create SSH key"
-msgstr "Maak een SSH-sleutel"
+msgstr "SSH-sleutel aanmaken"
 
 #: src/features/account/components/ssh-keys/create-ssh-key-button.tsx
 msgctxt "q7jtp0"
@@ -3803,17 +3803,17 @@ msgstr "Opslaan"
 #: src/features/account/components/user-id-card.tsx
 msgctxt "qW1hR5"
 msgid "Your User ID"
-msgstr "Uw gebruikers-ID"
+msgstr "Je gebruikers-ID"
 
 #: src/features/account/components/user-id-card.tsx
 msgctxt "tX7q8l"
 msgid "This your unique account identifier on {appName}."
-msgstr "Dit is uw unieke account-ID op {appName}."
+msgstr "Dit is je unieke account-ID op {appName}."
 
 #: src/features/account/components/user-id-card.tsx
 msgctxt "6dnHkY"
 msgid "This may be used to identify your account in the API."
-msgstr "Dit kan worden gebruikt om uw account in de API te identificeren."
+msgstr "Hiermee kan je account in de API worden geïdentificeerd."
 
 #: src/features/account/components/user-name-card.tsx
 msgctxt "pwlQEY"
@@ -4330,7 +4330,7 @@ msgstr "Prioriteit"
 #: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
 msgctxt "4aBk2h"
 msgid "Lower runs first. Only the first matching rule decides."
-msgstr "Lager loopt eerst. Alleen de eerste passende regel beslist."
+msgstr "Lager wordt eerst uitgevoerd. Alleen de eerste passende regel beslist."
 
 #: src/features/admin/components/abuse/rules/abuse-rule-dialog.tsx
 #: src/features/admin/components/abuse/rules/abuse-rules-list.tsx
@@ -4724,7 +4724,7 @@ msgstr "Hoe dit fragment wordt geïdentificeerd en gesorteerd."
 #: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
 msgctxt "mfKcIm"
 msgid "Lower priorities are composed first; ties break by slug."
-msgstr "Lagere prioriteiten worden eerst samengesteld; bij gelijke stand wint de slug."
+msgstr "Lagere prioriteiten worden eerst samengesteld; bij gelijke prioriteit wordt op slug gesorteerd."
 
 #: src/features/admin/components/cloud-init-snippets/snippet-settings.tsx
 #: src/features/admin/components/cloud-init-snippets/snippets-table/columns.tsx
@@ -4851,7 +4851,7 @@ msgstr "Nieuwe klanten"
 #: src/features/admin/components/dashboard/latest-customers-card.tsx
 msgctxt "fuvH7s"
 msgid "Latest Customers"
-msgstr "Laatste klanten"
+msgstr "Nieuwste klanten"
 
 #: src/features/admin/components/dashboard/latest-customers-card.tsx
 msgctxt "IqzPv-"
@@ -4898,28 +4898,28 @@ msgstr "Er zijn nog geen nieuwe servers aangemaakt."
 #: src/features/admin/components/dashboard/revenue-over-time-card.tsx
 msgctxt "vQuPQB"
 msgid "Revenue by Date"
-msgstr "Winst per datum"
+msgstr "Omzet per datum"
 
 #: src/features/admin/components/dashboard/revenue-over-time-card.tsx
 msgctxt "655MNT"
 msgid "Revenue per day in the last 14 days"
-msgstr "Winst per dag in de afgelopen 14 dagen"
+msgstr "Omzet per dag in de afgelopen 14 dagen"
 
 #: src/features/admin/components/dashboard/revenue-over-time.tsx
 #: src/features/admin/components/dashboard/sales-by-plan.tsx
 msgctxt "8WKgF6"
 msgid "Revenue"
-msgstr "Winst"
+msgstr "Omzet"
 
 #: src/features/admin/components/dashboard/sales-by-plan-card.tsx
 msgctxt "N5LvQA"
 msgid "Sales by Plan"
-msgstr "Verkoop per abonnement"
+msgstr "Verkoop per plan"
 
 #: src/features/admin/components/dashboard/sales-by-plan-card.tsx
 msgctxt "ZYHrCR"
 msgid "Sales by plan in the last 30 days"
-msgstr "Verkoop volgens plan in de afgelopen 30 dagen"
+msgstr "Verkoop per plan in de afgelopen 30 dagen"
 
 #: src/features/admin/components/dashboard/sales-by-plan.tsx
 msgctxt "c8nvms"
@@ -4930,12 +4930,12 @@ msgstr "Verkoop"
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
 msgctxt "ZD7Aza"
 msgid "Create Datacenter"
-msgstr "Datacenter creëren"
+msgstr "Datacenter aanmaken"
 
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
 msgctxt "s3yKp4"
 msgid "Create a new datacenter."
-msgstr "Creëer een nieuw datacenter."
+msgstr "Maak een nieuw datacenter aan."
 
 #: src/features/admin/components/datacenters/create-datacenter-dialog.tsx
 #: src/features/admin/components/datacenters/datacenters-table/columns.tsx
@@ -4969,7 +4969,7 @@ msgstr "Geen datacenter gevonden."
 #: src/features/servers/components/rdns/records-table/columns.tsx
 msgctxt "AbXVP4"
 msgid "Created at"
-msgstr "Gemaakt op"
+msgstr "Aangemaakt op"
 
 #: src/features/admin/components/emails/email-preview-dialog.tsx
 msgctxt "fg6AsA"
@@ -5226,32 +5226,32 @@ msgstr "Een doel ontvangt elke melding die past bij zijn keys en minimale ernst.
 #: src/features/admin/components/proxmox-node-groups/create-node-group-button.tsx
 msgctxt "8gJfol"
 msgid "Create Node Group"
-msgstr "Knooppuntgroep maken"
+msgstr "Nodegroep aanmaken"
 
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
 msgctxt "1cAptV"
 msgid "Create Proxmox Node Group"
-msgstr "Maak een Proxmox-knooppuntgroep"
+msgstr "Proxmox-nodegroep aanmaken"
 
 #: src/features/admin/components/proxmox-node-groups/create-node-group-dialog.tsx
 msgctxt "1sBtX6"
 msgid "Create a new Proxmox VE node group for Proxmox VE nodes."
-msgstr "Maak een nieuwe Proxmox VE-knooppuntgroep voor Proxmox VE-knooppunten."
+msgstr "Maak een nieuwe Proxmox VE-nodegroep aan voor Proxmox VE-nodes."
 
 #: src/features/admin/components/proxmox-node-groups/node-group-select.tsx
 msgctxt "NMiQru"
 msgid "Select a node group..."
-msgstr "Selecteer een knooppuntgroep..."
+msgstr "Selecteer een nodegroep..."
 
 #: src/features/admin/components/proxmox-node-groups/node-group-select.tsx
 msgctxt "_Uo5jN"
 msgid "Search for a node group..."
-msgstr "Zoeken naar een knooppuntgroep..."
+msgstr "Zoeken naar een nodegroep..."
 
 #: src/features/admin/components/proxmox-node-groups/node-group-select.tsx
 msgctxt "ao30Ou"
 msgid "No node group found."
-msgstr "Geen knooppuntgroep gevonden."
+msgstr "Geen nodegroep gevonden."
 
 #: src/features/admin/components/proxmox-node-groups/node-groups-table/columns.tsx
 msgctxt "0ICwq5"
@@ -5262,23 +5262,23 @@ msgstr "Laatst bijgewerkt"
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "S-458D"
 msgid "Create Proxmox Node"
-msgstr "Maak een Proxmox-knooppunt"
+msgstr "Proxmox-node aanmaken"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "deLbYn"
 msgid "Create a new Proxmox VE node to host servers."
-msgstr "Maak een nieuw Proxmox VE-knooppunt om servers te hosten."
+msgstr "Maak een nieuwe Proxmox VE-node aan om servers te hosten."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 #: src/features/servers/components/overview/node-details-dialog.tsx
 msgctxt "zUxWZC"
 msgid "Datacenter"
-msgstr "Datacentrum"
+msgstr "Datacenter"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "RJ3ocO"
 msgid "Node Group"
-msgstr "Knooppuntgroep"
+msgstr "Nodegroep"
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
@@ -5291,7 +5291,7 @@ msgstr "Hostnaam"
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "8cNS7n"
 msgid "The hostname of the Proxmox VE node as configured in the Proxmox cluster."
-msgstr "De hostnaam van het Proxmox VE-knooppunt zoals geconfigureerd in het Proxmox-cluster."
+msgstr "De hostnaam van de Proxmox VE-node zoals geconfigureerd in het Proxmox-cluster."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "2BEZJh"
@@ -5301,7 +5301,7 @@ msgstr "FQDN"
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "cUm-Vq"
 msgid "The FQDN of the Proxmox VE node where the API is accessible. Must be reachable from the internet and use a valid TLS certificate."
-msgstr "De FQDN van het Proxmox VE-knooppunt waar de API toegankelijk is. Moet bereikbaar zijn vanaf internet en een geldig TLS-certificaat gebruiken."
+msgstr "De FQDN van de Proxmox VE-node waarop de API toegankelijk is. Moet bereikbaar zijn vanaf internet en een geldig TLS-certificaat gebruiken."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "86ZUi9"
@@ -5321,7 +5321,7 @@ msgstr "VM-opslag"
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "iLHHKM"
 msgid "Disks of servers on this node are allocated here. Must allow the `images` content type."
-msgstr "Schijven van servers op dit knooppunt worden hier toegewezen. Moet het contenttype `images` toestaan."
+msgstr "Schijven van servers op deze node worden hier toegewezen. Moet het contenttype `images` toestaan."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "6o6hYT"
@@ -5331,7 +5331,7 @@ msgstr "Fragmentopslag"
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "10Yrc8"
 msgid "Cloud-init YAML files for any servers on this node will be stored here."
-msgstr "Cloud-init YAML-bestanden voor alle servers op dit knooppunt worden hier opgeslagen."
+msgstr "Cloud-init-YAML-bestanden voor alle servers op deze node worden hier opgeslagen."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "IvtOOO"
@@ -5341,7 +5341,7 @@ msgstr "Back-upopslag"
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "elgt8s"
 msgid "Backups of any servers on this node will be stored here."
-msgstr "Back-ups van eventuele servers op dit knooppunt worden hier opgeslagen."
+msgstr "Back-ups van alle servers op deze node worden hier opgeslagen."
 
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "foINKU"
@@ -5419,7 +5419,7 @@ msgstr "Netwerklimiet"
 #: src/features/admin/components/proxmox-nodes/create-node-dialog.tsx
 msgctxt "U9Jxp7"
 msgid "If reached, this node will no longer be used for services. Leave empty for unlimited."
-msgstr "Indien dit knooppunt wordt bereikt, wordt het niet langer gebruikt voor services. Laat leeg voor onbeperkt."
+msgstr "Als deze limiet wordt bereikt, wordt deze node niet meer voor services gebruikt. Laat leeg voor onbeperkt."
 
 #: src/features/admin/components/proxmox-nodes/nodes-table/columns.tsx
 msgctxt "39jmFD"
@@ -5459,7 +5459,7 @@ msgstr "Bandbreedte"
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
 msgctxt "Xj2bvc"
 msgid "Create Proxmox Template Group"
-msgstr "Maak een Proxmox-sjabloongroep"
+msgstr "Proxmox-sjabloongroep aanmaken"
 
 #: src/features/admin/components/proxmox-template-groups/create-template-group-dialog.tsx
 msgctxt "Fbkq0B"
@@ -5560,27 +5560,27 @@ msgstr "Imagebeschikbaarheid"
 #: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
 msgctxt "cwF_E3"
 msgid "Download failed on {count} of {total} nodes"
-msgstr "Download mislukt op {count} van {total} knooppunten"
+msgstr "Download mislukt op {count} van {total} nodes"
 
 #: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
 msgctxt "U9BwIT"
 msgid "The node did not say why."
-msgstr "Het knooppunt gaf geen reden."
+msgstr "De node gaf geen reden."
 
 #: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
 msgctxt "NHmbQX"
 msgid "Not downloaded on {count} of {total} nodes"
-msgstr "Niet gedownload op {count} van {total} knooppunten"
+msgstr "Niet gedownload op {count} van {total} nodes"
 
 #: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
 msgctxt "R7EsVm"
 msgid "The hourly refresh will fetch it, or you can start the download now."
-msgstr "De uurlijkse verversing haalt het op, of je kunt de download nu starten."
+msgstr "De verversing van elk uur haalt de image op, of je start de download nu."
 
 #: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
 msgctxt "87rP85"
 msgid "Downloading on {count} of {total} nodes"
-msgstr "Bezig met downloaden op {count} van {total} knooppunten"
+msgstr "Bezig met downloaden op {count} van {total} nodes"
 
 #: src/features/admin/components/proxmox-templates/template-image-issues-card.tsx
 msgctxt "GiODHE"
@@ -5616,12 +5616,12 @@ msgstr "Image"
 #: src/features/admin/components/proxmox-templates/template-settings.tsx
 msgctxt "5nV6L5"
 msgid "The cloud image a guest's disk is built from. It is downloaded to each node and imported at provisioning time."
-msgstr "De cloud-image waaruit de schijf van de gast wordt gebouwd. Deze wordt naar elk knooppunt gedownload en bij het provisionen geïmporteerd."
+msgstr "De cloud-image waaruit de schijf van de gast wordt gebouwd. Deze wordt naar elke node gedownload en bij het provisionen geïmporteerd."
 
 #: src/features/admin/components/proxmox-templates/template-settings.tsx
 msgctxt "Lj7fNF"
 msgid "Leave the checksum empty for a URL the vendor repoints in place."
-msgstr "Laat het checksum leeg voor een URL die de leverancier ter plaatse omzet."
+msgstr "Laat de checksum leeg voor een URL waarvan de leverancier het bestand op dezelfde plek vervangt."
 
 #: src/features/admin/components/proxmox-templates/template-settings.tsx
 msgctxt "I0HSpZ"
@@ -5770,7 +5770,7 @@ msgstr "Gebruiker"
 #: src/features/admin/components/servers/servers-table/columns.tsx
 msgctxt "1UsI0I"
 msgid "Terminates at"
-msgstr "Eindigt om"
+msgstr "Eindigt op"
 
 #: src/features/admin/components/servers/servers-table/columns.tsx
 msgctxt "zvQbH_"
@@ -5781,12 +5781,12 @@ msgstr "Bekijken in Proxmox"
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx
 msgctxt "pXZyDa"
 msgid "Create Subnet"
-msgstr "Subnet maken"
+msgstr "Subnet aanmaken"
 
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx
 msgctxt "w-MmK2"
 msgid "Create a new subnet."
-msgstr "Maak een nieuw subnet."
+msgstr "Maak een nieuw subnet aan."
 
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx
 #: src/features/admin/components/subnets/subnets-table/columns.tsx
@@ -5797,12 +5797,12 @@ msgstr "CIDR"
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx
 msgctxt "pMcQck"
 msgid "Gateway"
-msgstr "Poort"
+msgstr "Gateway"
 
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx
 msgctxt "tmvyl7"
 msgid "Reverse DNS Zone"
-msgstr "Omgekeerde DNS-zone"
+msgstr "Reverse-DNS-zone"
 
 #: src/features/admin/components/subnets/create-subnet-dialog.tsx
 msgctxt "IBNdTs"
@@ -5822,7 +5822,7 @@ msgstr "Type"
 #: src/features/admin/components/subnets/subnets-table/columns.tsx
 msgctxt "PLUhm9"
 msgid "VLAN ID"
-msgstr "VLAN-id"
+msgstr "VLAN-ID"
 
 #: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "SKenPE"
@@ -5893,7 +5893,7 @@ msgstr "Provider"
 #: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "92e4Pu"
 msgid "Transaction id"
-msgstr "Transactie-id"
+msgstr "Transactie-ID"
 
 #: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "ORGv1Q"
@@ -5928,7 +5928,7 @@ msgstr "Deze klant heeft geen opgeslagen betaalmiddel, dus een automatische verl
 #: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "AaiUD0"
 msgid "no last four"
-msgstr "geen laatste vier"
+msgstr "geen laatste vier cijfers"
 
 #: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "l0VcDL"
@@ -5938,7 +5938,7 @@ msgstr "verloopt {month}/{year}"
 #: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "XJ5FR9"
 msgid "Named"
-msgstr "Benoemd"
+msgstr "Aangewezen"
 
 #: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "2im1Il"
@@ -5968,7 +5968,7 @@ msgstr "Geen mandaat"
 #: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "AXyFb3"
 msgid "Gone — the subject no longer exists"
-msgstr "Weg — het onderwerp bestaat niet meer"
+msgstr "Verdwenen — het onderliggende object bestaat niet meer"
 
 #: src/features/admin/components/subscriptions/subscription-detail.tsx
 msgctxt "3uJDrU"
@@ -6042,7 +6042,7 @@ msgstr "Deze pagina is alleen-lezen. Een incasso opnieuw proberen, uitstel geven
 #: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
 msgctxt "laPj3K"
 msgid "Search by server, customer or id..."
-msgstr "Zoeken op server, klant of id..."
+msgstr "Zoeken op server, klant of ID..."
 
 #: src/features/admin/components/subscriptions/subscriptions-table/columns.tsx
 msgctxt "WZ-2C3"
@@ -6102,12 +6102,12 @@ msgstr "Nee"
 #: src/features/admin/components/users/users-table/columns.tsx
 msgctxt "hQZhn8"
 msgid "Impersonate"
-msgstr "Doe na"
+msgstr "Inloggen als gebruiker"
 
 #: src/features/admin/components/users/users-table/columns.tsx
 msgctxt "C3uaig"
 msgid "View in Stripe"
-msgstr "Bekijk in streep"
+msgstr "Bekijken in Stripe"
 
 #: src/features/admin/components/users/users-table/columns.tsx
 #: src/features/servers/components/backups/backups-table/backup-actions.tsx
@@ -6123,7 +6123,7 @@ msgstr "Exporteren"
 #: src/features/admin/components/users/users-table/columns.tsx
 msgctxt "XtUrMc"
 msgid "Ban"
-msgstr "Verbod"
+msgstr "Verbannen"
 
 #: src/features/auth/components/auth-methods-separator.tsx
 msgctxt "Ntjkqd"
@@ -6134,7 +6134,7 @@ msgstr "of"
 #: src/features/auth/components/register/signup-oauth.tsx
 msgctxt "Y7Cpd6"
 msgid "Continue with Discord"
-msgstr "Ga verder met onenigheid"
+msgstr "Doorgaan met Discord"
 
 #: src/features/auth/components/email-sign-in.tsx
 msgctxt "JgGwrY"
@@ -6144,7 +6144,7 @@ msgstr "Er is geen account gevonden met dat e-mailadres."
 #: src/features/auth/components/email-sign-in.tsx
 msgctxt "YXNhCz"
 msgid "Email sent - check your inbox!"
-msgstr "E-mail verzonden - controleer uw inbox!"
+msgstr "E-mail verzonden - controleer je inbox!"
 
 #: src/features/auth/components/email-sign-in.tsx
 msgctxt "V_JHlm"
@@ -6169,7 +6169,7 @@ msgstr "Inloggen met e-mail"
 #: src/features/auth/components/forgot-password-form.tsx
 msgctxt "qm-oRY"
 msgid "You will receive an email with instructions to reset your password."
-msgstr "U ontvangt een e-mail met instructies om uw wachtwoord opnieuw in te stellen."
+msgstr "Je ontvangt een e-mail met instructies om je wachtwoord te resetten."
 
 #: src/features/auth/components/forgot-password-form.tsx
 msgctxt "DkQ5Q8"
@@ -6180,33 +6180,33 @@ msgstr "Resetlink verzenden"
 #: src/features/auth/components/register/signup-oauth.tsx
 msgctxt "8eQ7FM"
 msgid "Continue with GitHub"
-msgstr "Ga verder met GitHub"
+msgstr "Doorgaan met GitHub"
 
 #: src/features/auth/components/google-button.tsx
 #: src/features/auth/components/register/signup-oauth.tsx
 msgctxt "FJ6r9E"
 msgid "Continue with Google"
-msgstr "Ga verder met Google"
+msgstr "Doorgaan met Google"
 
 #: src/features/auth/components/login-form.tsx
 msgctxt "Zk0_xv"
 msgid "You signed in with {method} last time"
-msgstr "U heeft zich de laatste keer aangemeld met {method}"
+msgstr "Je hebt de vorige keer ingelogd met {method}"
 
 #: src/features/auth/components/login-form.tsx
 msgctxt "u0mNBU"
 msgid "Continue with another method"
-msgstr "Ga verder met een andere methode"
+msgstr "Doorgaan met een andere methode"
 
 #: src/features/auth/components/passkey-button.tsx
 msgctxt "kHhLiu"
 msgid "Continue with Passkey"
-msgstr "Ga verder met Wachtwoord"
+msgstr "Doorgaan met passkey"
 
 #: src/features/auth/components/password-requirements.tsx
 msgctxt "kFkPWB"
 msgid "Number"
-msgstr "Nummer"
+msgstr "Cijfer"
 
 #: src/features/auth/components/password-requirements.tsx
 msgctxt "cXsNgc"
@@ -6221,7 +6221,7 @@ msgstr "Kleine letter"
 #: src/features/auth/components/password-requirements.tsx
 msgctxt "WK_0OI"
 msgid "8 characters"
-msgstr "8 karakters"
+msgstr "8 tekens"
 
 #: src/features/auth/components/register/resend-otp.tsx
 msgctxt "pFU3mO"
@@ -6241,7 +6241,7 @@ msgstr "Code succesvol verzonden."
 #: src/features/auth/components/register/resend-otp.tsx
 msgctxt "p9iDr6"
 msgid "Failed to send code."
-msgstr "Kan code niet verzenden."
+msgstr "De code kon niet worden verzonden."
 
 #: src/features/auth/components/register/signup-email.tsx
 msgctxt "dOQCL8"
@@ -6251,12 +6251,12 @@ msgstr "Weergavenaam"
 #: src/features/auth/components/register/signup-email.tsx
 msgctxt "39AHJm"
 msgid "Sign Up"
-msgstr "Aanmelden"
+msgstr "Registreren"
 
 #: src/features/auth/components/register/verify-email-form.tsx
 msgctxt "pwyqaX"
 msgid "Account created! Redirecting..."
-msgstr "Account aangemaakt! Omleiden..."
+msgstr "Account aangemaakt! Je wordt doorgestuurd..."
 
 #: src/features/auth/components/register/verify-email-form.tsx
 #: src/features/auth/components/verify-totp-form.tsx
@@ -6267,19 +6267,19 @@ msgstr "Doorgaan"
 #: src/features/auth/components/reset-password-form.tsx
 msgctxt "neYh81"
 msgid "Your password has been reset. You can now log in with your new password."
-msgstr "Uw wachtwoord is opnieuw ingesteld. U kunt nu inloggen met uw nieuwe wachtwoord."
+msgstr "Je wachtwoord is gereset. Je kunt nu inloggen met je nieuwe wachtwoord."
 
 #: src/features/auth/components/reset-password-form.tsx
 msgctxt "8HimVK"
 msgid "Confirm password"
-msgstr "Bevestig wachtwoord"
+msgstr "Wachtwoord bevestigen"
 
 #: src/features/auth/components/reset-password-form.tsx
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
 #: src/features/servers/components/overview/server-details-card.tsx
 msgctxt "xl27nc"
 msgid "Reset Password"
-msgstr "Wachtwoord opnieuw instellen"
+msgstr "Wachtwoord resetten"
 
 #: src/features/authors/components/author-byline.tsx
 msgctxt "UuSBra"
@@ -6308,7 +6308,7 @@ msgstr "Voor het voortzetten van de bestelling is het aanmaken van een klantacco
 #: src/features/checkout/components/checkout-auth-wrapper.tsx
 msgctxt "SQJto2"
 msgid "Sign in"
-msgstr "Log in"
+msgstr "Inloggen"
 
 #: src/features/checkout/components/checkout-form.tsx
 msgctxt "7OW8BT"
@@ -6318,22 +6318,22 @@ msgstr "Configuratie"
 #: src/features/checkout/components/checkout-form.tsx
 msgctxt "hE8w_g"
 msgid "Root Password (optional)"
-msgstr "Rootwachtwoord (optioneel)"
+msgstr "Root-wachtwoord (optioneel)"
 
 #: src/features/checkout/components/checkout-form.tsx
 msgctxt "wzt4BE"
 msgid "Virtbase does not store your root password. It can be reset via the customer portal afterwards."
-msgstr "Virtbase slaat uw root-wachtwoord niet op. Deze kan achteraf via het klantenportaal worden gereset."
+msgstr "Virtbase slaat je root-wachtwoord niet op. Je kunt het achteraf via het klantenportaal resetten."
 
 #: src/features/checkout/components/checkout-form.tsx
 msgctxt "mnTP3x"
 msgid "If left blank, a secure random password will be generated and sent by email."
-msgstr "Als u dit veld leeg laat, wordt er een veilig, willekeurig wachtwoord gegenereerd en per e-mail verzonden."
+msgstr "Als je dit veld leeg laat, wordt er een veilig, willekeurig wachtwoord gegenereerd en per e-mail verzonden."
 
 #: src/features/checkout/components/checkout-form.tsx
 msgctxt "-g-0OK"
 msgid "Continue to payment"
-msgstr "Ga verder naar betaling"
+msgstr "Doorgaan naar betaling"
 
 #: src/features/checkout/components/checkout-public-key-select.tsx
 msgctxt "fXFUFA"
@@ -6343,7 +6343,7 @@ msgstr "Bestaande SSH-sleutel"
 #: src/features/checkout/components/checkout-public-key-select.tsx
 msgctxt "UQc03N"
 msgid "Add new SSH key"
-msgstr "Voeg een nieuwe SSH-sleutel toe"
+msgstr "Nieuwe SSH-sleutel toevoegen"
 
 #: src/features/checkout/components/checkout-public-key-select.tsx
 msgctxt "UpInkr"
@@ -6358,17 +6358,17 @@ msgstr "De SSH-sleutel wordt opgeslagen in het gebruikersaccount en kan worden h
 #: src/features/checkout/components/checkout-public-key-select.tsx
 msgctxt "iiDj1S"
 msgid "Select existing SSH key"
-msgstr "Selecteer bestaande SSH-sleutel"
+msgstr "Bestaande SSH-sleutel selecteren"
 
 #: src/features/checkout/components/checkout-waivers.tsx
 msgctxt "fL6LzO"
 msgid "I have read and accepted the <terms>Terms of Service</terms> and the <privacy>Privacy Policy</privacy>."
-msgstr "Ik heb de <terms>Servicevoorwaarden</terms> en het <privacy>Privacybeleid</privacy> gelezen en geaccepteerd."
+msgstr "Ik heb de <terms>Algemene voorwaarden</terms> en het <privacy>Privacybeleid</privacy> gelezen en geaccepteerd."
 
 #: src/features/checkout/components/checkout-waivers.tsx
 msgctxt "-3U5qS"
 msgid "I have read and accepted the <revocation>Revocation Policy</revocation>. The revocation right expires as soon as the order is completed and the service is automatically provided."
-msgstr "Ik heb het <revocation>R-intrekkingsbeleid </revocation> gelezen en geaccepteerd. Het herroepingsrecht vervalt zodra de bestelling is voltooid en de dienst automatisch wordt verleend."
+msgstr "Ik heb het <revocation>Herroepingsbeleid</revocation> gelezen en geaccepteerd. Het herroepingsrecht vervalt zodra de bestelling is voltooid en de dienst automatisch wordt verleend."
 
 #: src/features/checkout/components/elements-provider.tsx
 msgctxt "mlJ21x"
@@ -6424,12 +6424,12 @@ msgstr "Verkeer volgens het fair-use-principe. Tijdelijke beperking bij overmati
 #: src/features/checkout/components/offer-card.tsx
 msgctxt "5EjMej"
 msgid "Configure {name} now"
-msgstr "Configureer nu {name}"
+msgstr "{name} nu configureren"
 
 #: src/features/checkout/components/offer-card.tsx
 msgctxt "khw_ok"
 msgid "Configure now"
-msgstr "Configureer nu"
+msgstr "Nu configureren"
 
 #: src/features/checkout/components/offer-card.tsx
 #: src/features/servers/components/plan/plan-list.tsx
@@ -6455,7 +6455,7 @@ msgstr "Factuuradres"
 #: src/features/checkout/components/stripe-payment-form.tsx
 msgctxt "PAzxoc"
 msgid "Used for invoicing and VAT calculation."
-msgstr "Gebruikt voor facturatie en BTW-berekening."
+msgstr "Gebruikt voor facturatie en btw-berekening."
 
 #: src/features/checkout/components/stripe-payment-form.tsx
 msgctxt "11yeGk"
@@ -6477,7 +6477,7 @@ msgstr "Betaling verwerken…"
 #: src/features/servers/components/plan/plan-order-dialog.tsx
 msgctxt "7tOz-m"
 msgid "Pay now"
-msgstr "Betaal nu"
+msgstr "Nu betalen"
 
 #: src/features/dashboard/components/active-abuse-cases.tsx
 msgctxt "aZFiKP"
@@ -6502,7 +6502,7 @@ msgstr "Geen servers gevonden"
 #: src/features/dashboard/components/empty-servers.tsx
 msgctxt "zuhonL"
 msgid "No servers have been rented yet. New servers will be displayed here."
-msgstr "Er zijn nog geen servers verhuurd. Nieuwe servers worden hier weergegeven."
+msgstr "Je hebt nog geen servers gehuurd. Nieuwe servers worden hier weergegeven."
 
 #: src/features/dashboard/components/empty-servers.tsx
 msgctxt "SjCCH5"
@@ -6517,7 +6517,7 @@ msgstr "Laatste facturen"
 #: src/features/dashboard/components/latest-invoices-card.tsx
 msgctxt "VgBFI4"
 msgid "Here you can see your latest invoices for direct download."
-msgstr "Hier kunt u uw meest recente facturen bekijken, zodat u deze direct kunt downloaden."
+msgstr "Hier zie je je meest recente facturen en kun je ze direct downloaden."
 
 #: src/features/dashboard/components/latest-invoices-list.tsx
 msgctxt "QVIbFk"
@@ -6532,7 +6532,7 @@ msgstr "Er zijn nog geen facturen uitgegeven."
 #: src/features/dashboard/components/latest-servers-card.tsx
 msgctxt "2AizOe"
 msgid "Here you can see your latest servers."
-msgstr "Hier kunt u uw nieuwste servers zien."
+msgstr "Hier zie je je nieuwste servers."
 
 #: src/features/dashboard/components/server-status-small.tsx
 msgctxt "KRtjzZ"
@@ -6579,17 +6579,17 @@ msgstr "Aan de slag"
 #: src/features/help/categories.tsx
 msgctxt "raXuB5"
 msgid "Learn the basics of Virtbase and set up your first server."
-msgstr "Leer de basis van Virtbase kennen en richt uw eerste server in."
+msgstr "Leer de basis van Virtbase kennen en richt je eerste server in."
 
 #: src/features/help/categories.tsx
 msgctxt "QHvEJ1"
 msgid "Install an operating system, renew your server and manage it day to day."
-msgstr "Installeer een besturingssysteem, verleng uw server en beheer hem dagelijks."
+msgstr "Installeer een besturingssysteem, verleng je server en beheer hem dagelijks."
 
 #: src/features/help/categories.tsx
 msgctxt "e85NWi"
 msgid "Back up your servers and restore them when something goes wrong."
-msgstr "Maak back-ups van uw servers en zet ze terug als er iets misgaat."
+msgstr "Maak back-ups van je servers en herstel ze als er iets misgaat."
 
 #: src/features/help/categories.tsx
 msgctxt "ruOElN"
@@ -6599,7 +6599,7 @@ msgstr "Netwerk & firewall"
 #: src/features/help/categories.tsx
 msgctxt "BwC7f3"
 msgid "Firewall rules, DDoS protection and your server's network."
-msgstr "Firewallregels, DDoS-bescherming en het netwerk van uw server."
+msgstr "Firewallregels, DDoS-bescherming en het netwerk van je server."
 
 #: src/features/help/categories.tsx
 msgctxt "CZt8cl"
@@ -6619,7 +6619,7 @@ msgstr "Account & beveiliging"
 #: src/features/help/categories.tsx
 msgctxt "lv8UpE"
 msgid "Keep your account secure, and manage or delete it."
-msgstr "Houd uw account veilig, en beheer of verwijder het."
+msgstr "Houd je account veilig, en beheer of verwijder het."
 
 #: src/features/help/categories.tsx
 msgctxt "CrEuJp"
@@ -6645,12 +6645,12 @@ msgstr "Gerelateerde artikelen"
 #: src/features/help/metadata.ts
 msgctxt "nDZMSK"
 msgid "Guides and answers for your Virtbase servers: {topics}."
-msgstr "Handleidingen en antwoorden voor uw Virtbase servers: {topics}."
+msgstr "Handleidingen en antwoorden voor je Virtbase-servers: {topics}."
 
 #: src/features/help/metadata.ts
 msgctxt "4zowvV"
 msgid "Step-by-step guides and answers from the Virtbase Help Center."
-msgstr "Stapsgewijze handleidingen en antwoorden uit het Virtbase Helpcentrum."
+msgstr "Stapsgewijze handleidingen en antwoorden uit het Virtbase-helpcentrum."
 
 #: src/features/invoices/components/invoices-table/columns.tsx
 msgctxt "ijDMrP"
@@ -6696,7 +6696,7 @@ msgstr "NET"
 #: src/features/landing/components/discord-bot-demo.tsx
 msgctxt "Ua-Cf7"
 msgid "Manage your servers"
-msgstr "Uw servers beheren"
+msgstr "Je servers beheren"
 
 #: src/features/landing/components/discord-bot-demo.tsx
 msgctxt "b_Pq29"
@@ -6736,7 +6736,7 @@ msgstr "Virtbase – hosting, maar veilig."
 #: src/features/landing/components/discord-bot-demo.tsx
 msgctxt "Ny1Wyk"
 msgid "Only you can see this"
-msgstr "Alleen u ziet dit"
+msgstr "Alleen jij ziet dit"
 
 #: src/features/landing/components/discord-bot-demo.tsx
 msgctxt "TY8Ho1"
@@ -6791,7 +6791,7 @@ msgstr "Bronpoort"
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgctxt "WSxucy"
 msgid "Destination port"
-msgstr "Bestemmingshaven"
+msgstr "Bestemmingspoort"
 
 #: src/features/landing/components/server-stats-demo.tsx
 #: src/features/servers/components/server-stats-card.tsx
@@ -6828,12 +6828,12 @@ msgstr "Elke hier gelinkte pagina is ook beschikbaar als Markdown: voeg .md toe 
 #: src/ui/footer.tsx
 msgctxt "7oFrM6"
 msgid "Legal"
-msgstr "Legaal"
+msgstr "Juridisch"
 
 #: src/features/servers/components/advanced/advanced-bios-card.tsx
 msgctxt "4HNt5G"
 msgid "Select the BIOS type for your server."
-msgstr "Selecteer het BIOS-type voor uw server."
+msgstr "Selecteer het BIOS-type voor je server."
 
 #: src/features/servers/components/advanced/advanced-bios-card.tsx
 msgctxt "HJOq_1"
@@ -6868,7 +6868,7 @@ msgstr "TPM"
 #: src/features/servers/components/advanced/advanced-tpm-card.tsx
 msgctxt "C6jvVM"
 msgid "Enable or disable the TPM module for your server."
-msgstr "Schakel de TPM-module voor uw server in of uit."
+msgstr "Schakel de TPM-module voor je server in of uit."
 
 #: src/features/servers/components/advanced/advanced-tpm-card.tsx
 msgctxt "1Lw-6m"
@@ -6913,7 +6913,7 @@ msgstr "Server-ID"
 #: src/features/servers/components/advanced/server-id-card.tsx
 msgctxt "67oWCe"
 msgid "This is the unique identifier of this server."
-msgstr "Dit is de unieke identificatie van deze server."
+msgstr "Dit is de unieke ID van deze server."
 
 #: src/features/servers/components/advanced/server-id-card.tsx
 msgctxt "bIqr1q"
@@ -6933,7 +6933,7 @@ msgstr "Herstellen"
 #: src/features/servers/components/backups/backups-table/backup-actions.tsx
 msgctxt "Zl4_y9"
 msgid "Lock"
-msgstr "Slot"
+msgstr "Vergrendelen"
 
 #: src/features/servers/components/backups/backups-table/columns.tsx
 msgctxt "kF9XUo"
@@ -6943,7 +6943,7 @@ msgstr "Tijdstempel"
 #: src/features/servers/components/backups/backups-table/columns.tsx
 msgctxt "tBwTvx"
 msgid "Size/Status"
-msgstr "Grootte/Status"
+msgstr "Grootte/status"
 
 #: src/features/servers/components/backups/backups-table/columns.tsx
 #: src/features/servers/components/backups/delete-backup-dialog.tsx
@@ -6963,7 +6963,7 @@ msgstr "Mislukt"
 #: src/features/servers/components/backups/backups-table/columns.tsx
 msgctxt "mRL9Vh"
 msgid "Creating..."
-msgstr "Creëren..."
+msgstr "Wordt gemaakt..."
 
 #: src/features/servers/components/backups/backups-table/index.tsx
 msgctxt "G7wlJr"
@@ -6978,12 +6978,12 @@ msgstr "Er zijn nog geen back-ups gemaakt."
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 msgctxt "6f7NTQ"
 msgid "Create Backup"
-msgstr "Maak een back-up"
+msgstr "Back-up maken"
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 msgctxt "Z6LfAU"
 msgid "Create a new backup for your server."
-msgstr "Maak een nieuwe back-up voor uw server."
+msgstr "Maak een nieuwe back-up voor je server."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 msgctxt "mDxkGm"
@@ -6993,7 +6993,7 @@ msgstr "Back-upmodus"
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 msgctxt "8Y0yUM"
 msgid "Snapshot"
-msgstr "Momentopname"
+msgstr "Snapshot"
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 msgctxt "04uNfB"
@@ -7008,13 +7008,13 @@ msgstr "Opschorten"
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 msgctxt "qRuNZh"
 msgid "Interrupts the system briefly to create a backup without shutting it down."
-msgstr "Onderbreekt het systeem kort om een ​​back-up te maken zonder het af te sluiten."
+msgstr "Onderbreekt het systeem kort om een back-up te maken zonder het af te sluiten."
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 #: src/features/servers/components/server-actions-row.tsx
 msgctxt "q_uwLT"
 msgid "Stop"
-msgstr "Stop"
+msgstr "Stoppen"
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 msgctxt "JidfdC"
@@ -7024,7 +7024,7 @@ msgstr "Sluit het systeem volledig af voordat de back-up wordt gemaakt."
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 msgctxt "_EmLPv"
 msgid "Enable deletion protection"
-msgstr "Schakel verwijderingsbeveiliging in"
+msgstr "Verwijderbeveiliging inschakelen"
 
 #: src/features/servers/components/backups/create-backup-dialog.tsx
 msgctxt "I9XNiI"
@@ -7039,7 +7039,7 @@ msgstr "Back-up verwijderen"
 #: src/features/servers/components/backups/delete-backup-dialog.tsx
 msgctxt "3pdwu9"
 msgid "Delete a backup of your server."
-msgstr "Verwijder een back-up van uw server."
+msgstr "Verwijder een back-up van je server."
 
 #: src/features/servers/components/backups/delete-backup-dialog.tsx
 msgctxt "wl5Juv"
@@ -7054,7 +7054,7 @@ msgstr "Het volgende besturingssysteem gaat verloren:"
 #: src/features/servers/components/backups/delete-backup-dialog.tsx
 msgctxt "SKjLPj"
 msgid "Should the backup be deleted?"
-msgstr "Moet de back-up worden verwijderd?"
+msgstr "Wil je de back-up verwijderen?"
 
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
 msgctxt "MW7EBt"
@@ -7064,12 +7064,12 @@ msgstr "Back-up herstellen"
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
 msgctxt "LImSzk"
 msgid "Restore a backup to your server."
-msgstr "Herstel een back-up naar uw server."
+msgstr "Herstel een back-up op je server."
 
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
 msgctxt "Z2bRvp"
 msgid "By restoring the backup, the current state of the server will be reset to the state of the backup from {date}."
-msgstr "Door het herstellen van de backup wordt de huidige status van de server teruggezet naar de status van de backup van {date}."
+msgstr "Door de back-up te herstellen, wordt de huidige status van de server teruggezet naar de status van de back-up van {date}."
 
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
 msgctxt "bX1pzZ"
@@ -7079,7 +7079,7 @@ msgstr "Het volgende besturingssysteem wordt hersteld:"
 #: src/features/servers/components/backups/restore-backup-dialog.tsx
 msgctxt "pFmRJS"
 msgid "Should the backup be restored?"
-msgstr "Moet de back-up worden hersteld?"
+msgstr "Wil je de back-up herstellen?"
 
 #: src/features/servers/components/billing/auto-renew-section.tsx
 msgctxt "tYBzXd"
@@ -7321,18 +7321,18 @@ msgstr "Server is opgeschort"
 #: src/features/servers/components/console/console-frame.tsx
 msgctxt "3KjSye"
 msgid "This feature is not available while the server is suspended. Please renew your server to access the console."
-msgstr "Deze functie is niet beschikbaar zolang de server is opgeschort. Vernieuw uw server om toegang te krijgen tot de console."
+msgstr "Deze functie is niet beschikbaar zolang de server is opgeschort. Verleng je server om weer toegang te krijgen tot de console."
 
 #: src/features/servers/components/console/console-frame.tsx
 #: src/features/servers/components/server-status-bar.tsx
 msgctxt "sIwjuh"
 msgid "Server is installing"
-msgstr "Server is aan het installeren"
+msgstr "Server wordt geïnstalleerd"
 
 #: src/features/servers/components/console/console-frame.tsx
 msgctxt "_iuNMM"
 msgid "This feature is not available while the server is installing."
-msgstr "Deze functie is niet beschikbaar terwijl de server aan het installeren is."
+msgstr "Deze functie is niet beschikbaar terwijl de server wordt geïnstalleerd."
 
 #: src/features/servers/components/console/console-frame.tsx
 msgctxt "odJjY9"
@@ -7353,17 +7353,17 @@ msgstr "Server is niet actief"
 #: src/features/servers/components/console/console-frame.tsx
 msgctxt "clmnLf"
 msgid "Start your server and the console will connect automatically."
-msgstr "Start uw server en de console maakt automatisch verbinding."
+msgstr "Start je server en de console maakt automatisch verbinding."
 
 #: src/features/servers/components/overview/change-template-dialog.tsx
 msgctxt "CnkjLF"
 msgid "Change operating system"
-msgstr "Wijzig het besturingssysteem"
+msgstr "Besturingssysteem wijzigen"
 
 #: src/features/servers/components/overview/change-template-dialog.tsx
 msgctxt "VWfWP6"
 msgid "Change the operating system of your server."
-msgstr "Wijzig het besturingssysteem van uw server."
+msgstr "Wijzig het besturingssysteem van je server."
 
 #: src/features/servers/components/overview/change-template-dialog.tsx
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
@@ -7390,12 +7390,12 @@ msgstr "Nieuw root-wachtwoord"
 #: src/features/servers/components/overview/server-details-card.tsx
 msgctxt "ivkv_L"
 msgid "Node"
-msgstr "Knooppunt"
+msgstr "Node"
 
 #: src/features/servers/components/overview/node-details-dialog.tsx
 msgctxt "UfS56w"
 msgid "Details of the node."
-msgstr "Details van het knooppunt."
+msgstr "Details van de node."
 
 #: src/features/servers/components/overview/node-details-dialog.tsx
 msgctxt "dVx3yz"
@@ -7406,12 +7406,12 @@ msgstr "Geheugen"
 #: src/features/servers/components/overview/server-details-card.tsx
 msgctxt "SwBrEP"
 msgid "Rename Server"
-msgstr "Naam van server wijzigen"
+msgstr "Server hernoemen"
 
 #: src/features/servers/components/overview/rename-server-dialog.tsx
 msgctxt "mFBy_n"
 msgid "Rename your server."
-msgstr "Hernoem uw server."
+msgstr "Hernoem je server."
 
 #: src/features/servers/components/overview/rename-server-dialog.tsx
 msgctxt "UQXG4v"
@@ -7421,12 +7421,12 @@ msgstr "Mijn server"
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgctxt "5juwi-"
 msgid "Reset the password of a user on your server."
-msgstr "Stel het wachtwoord van een gebruiker op uw server opnieuw in."
+msgstr "Reset het wachtwoord van een gebruiker op je server."
 
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
-msgctxt "K1-gri"
-msgid "This action cannot be undone. If the <code>qemu-quest-agent</code> package is not installed, the process will fail."
-msgstr "Deze actie kan niet ongedaan worden gemaakt. Als het <code>qemu-quest-agent</code>-pakket niet is geïnstalleerd, mislukt het proces."
+msgctxt "hdNOd8"
+msgid "This action cannot be undone. If the <code>qemu-guest-agent</code> package is not installed, the process will fail."
+msgstr "Deze actie kan niet ongedaan worden gemaakt. Als het pakket <code>qemu-guest-agent</code> niet is geïnstalleerd, mislukt het proces."
 
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgctxt "JCIgkj"
@@ -7436,7 +7436,7 @@ msgstr "Gebruikersnaam"
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgctxt "1jWUV4"
 msgid "The username of the account to reset the password for. Mostly <code>root</code> for Linux and <code>Administrator</code> for Windows."
-msgstr "De gebruikersnaam van het account waarvan u het wachtwoord wilt resetten. Meestal <code>root</code> op Linux en <code>Administrator</code> op Windows."
+msgstr "De gebruikersnaam van het account waarvan je het wachtwoord wilt resetten. Meestal <code>root</code> op Linux en <code>Administrator</code> op Windows."
 
 #: src/features/servers/components/overview/server-details-card.tsx
 msgctxt "F_6VqP"
@@ -7446,12 +7446,12 @@ msgstr "Server"
 #: src/features/servers/components/overview/server-details-card.tsx
 msgctxt "RTw2Xk"
 msgid "View Node Details"
-msgstr "Bekijk knooppuntdetails"
+msgstr "Nodedetails bekijken"
 
 #: src/features/servers/components/overview/server-details-card.tsx
 msgctxt "8O64Ol"
 msgid "Change Operating System"
-msgstr "Wijzig het besturingssysteem"
+msgstr "Besturingssysteem wijzigen"
 
 #: src/features/servers/components/overview/server-operating-system.tsx
 msgctxt "13DVxF"
@@ -7476,7 +7476,7 @@ msgstr "Overgenomen van de gekoppelde image. Installeer het pakket {packageName}
 #: src/features/servers/components/overview/server-operating-system.tsx
 msgctxt "lxp8MB"
 msgid "Taken from the template this server was created from. Install the {packageName} package to have Virtbase read the operating system from inside the server."
-msgstr "Overgenomen van de template waarmee deze server is aangemaakt. Installeer het pakket {packageName} zodat Virtbase het besturingssysteem vanuit je server kan uitlezen."
+msgstr "Overgenomen van het sjabloon waarmee deze server is aangemaakt. Installeer het pakket {packageName} zodat Virtbase het besturingssysteem vanuit je server kan uitlezen."
 
 #: src/features/servers/components/plan/current-plan-card.tsx
 #: src/features/servers/components/plan/plan-list.tsx
@@ -7489,7 +7489,7 @@ msgstr "{price} / maand"
 #: src/features/servers/components/plan/plan-summary.tsx
 msgctxt "LQbES8"
 msgid "Incl. statutory VAT, if applicable"
-msgstr "Incl. wettelijke BTW, indien van toepassing"
+msgstr "Incl. wettelijke btw, indien van toepassing"
 
 #: src/features/servers/components/plan/current-plan-card.tsx
 msgctxt "qV-TFm"
@@ -7609,7 +7609,7 @@ msgstr "Betaling hervatten"
 #: src/features/servers/components/plan/plan-catalog.tsx
 msgctxt "j6UwBH"
 msgid "Discard it"
-msgstr "Verwerpen"
+msgstr "Verwijderen"
 
 #: src/features/servers/components/plan/plan-list.tsx
 msgctxt "PEpK64"
@@ -7654,7 +7654,7 @@ msgstr "Dit plan heeft minder opslag dan het jouwe. Kies er een met minstens {si
 #: src/features/servers/components/plan/plan-order-dialog.tsx
 msgctxt "3XuHC5"
 msgid "{name} is sold out right now. Try again later or pick a different plan."
-msgstr "{name} is momenteel uitverkocht. Probeer het later opnieuw of kies een ander abonnement."
+msgstr "{name} is momenteel uitverkocht. Probeer het later opnieuw of kies een ander plan."
 
 #: src/features/servers/components/plan/plan-order-dialog.tsx
 msgctxt "2r_Ri2"
@@ -7729,7 +7729,7 @@ msgstr "De bestelling kon niet worden gestart"
 #: src/features/servers/components/plan/plan-specs.tsx
 msgctxt "tpfEY0"
 msgid "{memory} RAM"
-msgstr "{memory}-RAM"
+msgstr "{memory} RAM"
 
 #: src/features/servers/components/plan/plan-specs.tsx
 msgctxt "cenOuc"
@@ -7749,7 +7749,7 @@ msgstr "Vanaf je volgende verlenging"
 #: src/features/servers/components/plan/plan-summary.tsx
 msgctxt "LR754a"
 msgid "Renews at"
-msgstr "Verlengt voor"
+msgstr "Verlengt tegen"
 
 #: src/features/servers/components/plan/plan-summary.tsx
 msgctxt "mCArsW"
@@ -7759,7 +7759,7 @@ msgstr "Vandaag wordt alleen het verschil in rekening gebracht. Je termijn blijf
 #: src/features/servers/components/plan/plan-summary.tsx
 msgctxt "N387FB"
 msgid "Your current plan will be extended by one month."
-msgstr "Je huidige abonnement wordt met één maand verlengd."
+msgstr "Je huidige plan wordt met één maand verlengd."
 
 #: src/features/servers/components/plan/renewal-payment-method.tsx
 msgctxt "AiQP5M"
@@ -7815,7 +7815,7 @@ msgstr "PTR-record verwijderen"
 #: src/features/servers/components/rdns/delete-record-dialog.tsx
 msgctxt "LuQ-pB"
 msgid "Delete a PTR record of your server."
-msgstr "Verwijder een PTR-record van uw server."
+msgstr "Verwijder een PTR-record van je server."
 
 #: src/features/servers/components/rdns/delete-record-dialog.tsx
 msgctxt "2VDNVp"
@@ -7825,7 +7825,7 @@ msgstr "De reverse lookup voor {ip} verwijst niet langer naar {hostname}. E-mail
 #: src/features/servers/components/rdns/delete-record-dialog.tsx
 msgctxt "uoUX6n"
 msgid "Should the PTR record be deleted?"
-msgstr "Moet de PTR-record worden verwijderd?"
+msgstr "Wil je het PTR-record verwijderen?"
 
 #: src/features/servers/components/rdns/records-card.tsx
 msgctxt "Z2vqA3"
@@ -7860,7 +7860,7 @@ msgstr "PTR-record bijwerken"
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx
 msgctxt "JAfuaI"
 msgid "Update a PTR record for a given IP and hostname."
-msgstr "Update een PTR-record voor een bepaald IP-adres en een bepaalde hostnaam."
+msgstr "Werk een PTR-record bij voor een bepaald IP-adres en een bepaalde hostnaam."
 
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx
 msgctxt "uJV0wU"
@@ -7875,7 +7875,7 @@ msgstr "Voor alle IP-adressen die aan deze server zijn toegewezen, kunnen PTR-re
 #: src/features/servers/components/rdns/upsert-record-dialog.tsx
 msgctxt "XM_KKz"
 msgid "The hostname to resolve for the IP address. <code>localhost</code> is not allowed."
-msgstr "De hostnaam die moet worden omgezet in het IP-adres. <code>localhost</code> is niet toegestaan."
+msgstr "De hostnaam waarnaar het IP-adres moet verwijzen. <code>localhost</code> is niet toegestaan."
 
 #: src/features/servers/components/server-actions-row.tsx
 msgctxt "tZbb-K"
@@ -7890,12 +7890,12 @@ msgstr "Opnieuw opstarten"
 #: src/features/servers/components/server-actions-row.tsx
 msgctxt "mOFG3K"
 msgid "Start"
-msgstr "Begin"
+msgstr "Starten"
 
 #: src/features/servers/components/server-actions-row.tsx
 msgctxt "3y9DGg"
 msgid "Resume"
-msgstr "Cv"
+msgstr "Hervatten"
 
 #: src/features/servers/components/server-actions-row.tsx
 msgctxt "YsjuRA"
@@ -7905,7 +7905,7 @@ msgstr "ISO koppelen"
 #: src/features/servers/components/server-actions-row.tsx
 msgctxt "tFFMkF"
 msgid "Pause"
-msgstr "Pauze"
+msgstr "Pauzeren"
 
 #: src/features/servers/components/server-custom-image-select.tsx
 msgctxt "wPPrpH"
@@ -7935,7 +7935,7 @@ msgstr "Uploaden..."
 #: src/features/servers/components/server-graphs.tsx
 msgctxt "j9Y9nu"
 msgid "Hours"
-msgstr "Uur"
+msgstr "Uren"
 
 #: src/features/servers/components/server-graphs.tsx
 msgctxt "d8EqQY"
@@ -7982,7 +7982,7 @@ msgstr "Uitgaand"
 #: src/features/servers/components/server-mount-badge.tsx
 msgctxt "Han16c"
 msgid "Mounted"
-msgstr "Gemonteerd"
+msgstr "Gekoppeld"
 
 #: src/features/servers/components/server-mount-dialog.tsx
 msgctxt "lgSmVl"
@@ -8002,7 +8002,7 @@ msgstr "ISO-images koppelen"
 #: src/features/servers/components/server-mount-dialog.tsx
 msgctxt "HZdPWF"
 msgid "Mount ISO images to your server."
-msgstr "Koppel ISO-images aan uw server."
+msgstr "Koppel ISO-images aan je server."
 
 #: src/features/servers/components/server-mount-dialog.tsx
 msgctxt "C3jmVs"
@@ -8017,17 +8017,17 @@ msgstr "Ontkoppelen"
 #: src/features/servers/components/server-mount-dialog.tsx
 msgctxt "Uh7TFc"
 msgid "The ISO image will be mounted instantly, but to boot into it, you need to fully stop and restart the server."
-msgstr "De ISO-image wordt direct gekoppeld, maar om er van op te starten moet u de server volledig uitschakelen en opnieuw opstarten."
+msgstr "De ISO-image wordt direct gekoppeld, maar om ervan op te starten moet je de server volledig uitschakelen en opnieuw opstarten."
 
 #: src/features/servers/components/server-mount-dialog.tsx
 msgctxt "FglhQv"
 msgid "Images can be uploaded from your <link>account settings</link>."
-msgstr "ISO-images kunt u uploaden via uw <link>accountinstellingen</link>."
+msgstr "ISO-images kun je uploaden via je <link>accountinstellingen</link>."
 
 #: src/features/servers/components/server-stats-card.tsx
 msgctxt "PW-sL4"
 msgid "N/A"
-msgstr "N.v.t"
+msgstr "n.v.t."
 
 #: src/features/servers/components/server-status-bar.tsx
 msgctxt "14KQU8"
@@ -8037,7 +8037,7 @@ msgstr "Server opgeschort"
 #: src/features/servers/components/server-status-bar.tsx
 msgctxt "gmwFwF"
 msgid "This server has been suspended and will be deleted at {date}, if not renewed."
-msgstr "Deze server is opgeschort en wordt verwijderd bij {date}, indien niet verlengd."
+msgstr "Deze server is opgeschort en wordt op {date} verwijderd als hij niet wordt verlengd."
 
 #: src/features/servers/components/server-status-bar.tsx
 msgctxt "76X-Qu"
@@ -8052,7 +8052,7 @@ msgstr "Server verloopt"
 #: src/features/servers/components/server-status-bar.tsx
 msgctxt "fkf7mm"
 msgid "This server is expiring {expiry} and will be deleted after, if not renewed"
-msgstr "Deze server verloopt {expiry} en zal daarna worden verwijderd als deze niet wordt verlengd"
+msgstr "Deze server verloopt {expiry} en wordt daarna verwijderd als hij niet wordt verlengd"
 
 #: src/features/servers/components/servers-list.tsx
 msgctxt "SXm88k"
@@ -8062,12 +8062,12 @@ msgstr "IP gekopieerd naar klembord!"
 #: src/features/servers/components/servers-list.tsx
 msgctxt "26lbPc"
 msgid "Copy IP"
-msgstr "Kopieer IP"
+msgstr "IP kopiëren"
 
 #: src/features/servers/components/servers-list.tsx
 msgctxt "nWQFic"
 msgid "Renew"
-msgstr "Vernieuwen"
+msgstr "Verlengen"
 
 #: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 msgctxt "rWbrOx"
@@ -8077,7 +8077,7 @@ msgstr "Firewallregel verwijderen"
 #: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 msgctxt "JfwSAy"
 msgid "Delete a rule from your firewall."
-msgstr "Verwijder een regel uit uw firewall."
+msgstr "Verwijder een regel uit je firewall."
 
 #: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 msgctxt "wTEfoa"
@@ -8099,7 +8099,7 @@ msgstr "Opmerking"
 #: src/features/servers/firewall/components/delete-firewall-rule-dialog.tsx
 msgctxt "pc6aEi"
 msgid "Should the rule be deleted?"
-msgstr "Moet de regel worden verwijderd?"
+msgstr "Wil je de regel verwijderen?"
 
 #: src/features/servers/firewall/components/firewall-action-select.tsx
 msgctxt "ObQE5T"
@@ -8159,7 +8159,7 @@ msgstr "Geen ondersteund protocol gevonden."
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgctxt "m5EN4C"
 msgid "Create Firewall Rule"
-msgstr "Firewallregel maken"
+msgstr "Firewallregel aanmaken"
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgctxt "gsXXUl"
@@ -8169,12 +8169,12 @@ msgstr "Firewallregel bijwerken"
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgctxt "fnX-hz"
 msgid "Create a new firewall rule."
-msgstr "Maak een nieuwe firewallregel."
+msgstr "Maak een nieuwe firewallregel aan."
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgctxt "bGOOmV"
 msgid "Update an existing firewall rule."
-msgstr "Update een bestaande firewallregel."
+msgstr "Werk een bestaande firewallregel bij."
 
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgctxt "HrImBx"
@@ -8194,12 +8194,12 @@ msgstr "Elk adres"
 #: src/features/servers/firewall/components/firewall-rule-dialog.tsx
 msgctxt "08nIQL"
 msgid "Only match traffic from this address or network, for example 10.0.0.0/8. Leave empty to match any address."
-msgstr "Komt alleen overeen met verkeer van dit adres of netwerk, bijvoorbeeld 10.0.0.0/8. Laat leeg om overeen te komen met elk adres."
+msgstr "Alleen verkeer van dit adres of netwerk, bijvoorbeeld 10.0.0.0/8. Laat leeg voor elk adres."
 
 #: src/features/servers/firewall/components/firewall-rules-card.tsx
 msgctxt "Qov8tl"
 msgid "Firewall Rules"
-msgstr "Firewall-regels"
+msgstr "Firewallregels"
 
 #: src/features/servers/firewall/components/firewall-rules-card.tsx
 msgctxt "flNVEF"
@@ -8219,7 +8219,7 @@ msgstr "Beheerd in je server"
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgctxt "Mq5bUJ"
 msgid "Disable rule"
-msgstr "Schakel regel uit"
+msgstr "Regel uitschakelen"
 
 #: src/features/servers/firewall/components/firewall-rules-table/columns.tsx
 msgctxt "5te9jo"
@@ -8254,17 +8254,17 @@ msgstr "Geen firewallregels"
 #: src/features/servers/firewall/components/firewall-rules-table/index.tsx
 msgctxt "xlDRKD"
 msgid "No Firewall rules have been created yet."
-msgstr "Er zijn nog geen firewallregels gemaakt."
+msgstr "Er zijn nog geen firewallregels aangemaakt."
 
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
 msgctxt "wmFdws"
 msgid "Move up"
-msgstr "Ga omhoog"
+msgstr "Omhoog verplaatsen"
 
 #: src/features/servers/firewall/components/firewall-rules-table/rule-actions.tsx
 msgctxt "H_r5m6"
 msgid "Move down"
-msgstr "Ga naar beneden"
+msgstr "Omlaag verplaatsen"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgctxt "w-tZ4Z"
@@ -8279,7 +8279,7 @@ msgstr "Laat AI firewallregels voor je server genereren."
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgctxt "iWKE8s"
 msgid "Prompt"
-msgstr "Invoer"
+msgstr "Prompt"
 
 #: src/features/servers/firewall/components/generate-firewall-rules-dialog.tsx
 msgctxt "0r2ykg"
@@ -8399,12 +8399,12 @@ msgstr "Accepteren"
 #: src/features/servers/firewall/hooks/use-firewall-action-mapping.ts
 msgctxt "j8RTUO"
 msgid "Drop"
-msgstr "Druppel"
+msgstr "Verwerpen"
 
 #: src/features/servers/firewall/hooks/use-generate-firewall-rule.ts
 msgctxt "AFkUOq"
 msgid "Could not generate rules. Please try again."
-msgstr "Regels kunnen niet gegenereerd worden. Probeer het opnieuw."
+msgstr "De regels konden niet worden gegenereerd. Probeer het opnieuw."
 
 #: src/features/servers/firewall/hooks/use-move-firewall-rule.ts
 msgctxt "AocbVN"
@@ -8479,12 +8479,12 @@ msgstr "Het wachtwoord kon niet worden gereset."
 #: src/features/servers/hooks/rdns/use-delete-pointer-record.ts
 msgctxt "OqBG_o"
 msgid "Could not delete the PTR record."
-msgstr "De PTR-record kon niet worden verwijderd."
+msgstr "Het PTR-record kon niet worden verwijderd."
 
 #: src/features/servers/hooks/rdns/use-upsert-pointer-record.ts
 msgctxt "v_PJM7"
 msgid "Could not save the PTR record."
-msgstr "De PTR-record kon niet worden opgeslagen."
+msgstr "Het PTR-record kon niet worden opgeslagen."
 
 #: src/features/servers/hooks/use-agent-status-mapping.ts
 msgctxt "D7fMMu"
@@ -8509,7 +8509,7 @@ msgstr "Gastagent reageert niet"
 #: src/features/servers/hooks/use-agent-status-mapping.ts
 msgctxt "ihTPpu"
 msgid "Storage usage, password resets and firewall detection need the {packageName} package installed and running inside your server."
-msgstr "Opslaggebruik, wachtwoordherstel en firewalldetectie hebben het pakket {packageName} nodig, geïnstalleerd en draaiend in je server."
+msgstr "Opslaggebruik, wachtwoordresets en firewalldetectie vereisen dat het pakket {packageName} in je server is geïnstalleerd en draait."
 
 #: src/features/servers/hooks/use-agent-status-mapping.ts
 msgctxt "0pGhq1"
@@ -8574,7 +8574,7 @@ msgstr "Gepauzeerd"
 #: src/features/servers/hooks/use-task-mapping.ts
 msgctxt "3qXa2f"
 msgid "Starting..."
-msgstr "Beginnen..."
+msgstr "Starten..."
 
 #: src/features/servers/hooks/use-task-mapping.ts
 msgctxt "PdMcML"
@@ -8634,12 +8634,12 @@ msgstr "De serverstatus kon niet worden gewijzigd."
 #: src/ui/app-footer.tsx
 msgctxt "4XCigB"
 msgid "Legal notice"
-msgstr "Juridische mededeling"
+msgstr "Juridische kennisgeving"
 
 #: src/ui/app-footer.tsx
 msgctxt "EBDrtq"
 msgid "Terms of use"
-msgstr "Gebruiksvoorwaarden"
+msgstr "Algemene voorwaarden"
 
 #: src/ui/app-footer.tsx
 #: src/ui/fumadocs/video.tsx
@@ -8665,12 +8665,12 @@ msgstr "Feedback"
 #: src/ui/feedback-button.tsx
 msgctxt "HxIuLA"
 msgid "Add screenshot"
-msgstr "Voeg schermafbeelding toe"
+msgstr "Schermafbeelding toevoegen"
 
 #: src/ui/feedback-button.tsx
 msgctxt "wSZR47"
 msgid "Submit"
-msgstr "Indienen"
+msgstr "Versturen"
 
 #: src/ui/feedback-button.tsx
 msgctxt "T7Ry38"
@@ -8700,7 +8700,7 @@ msgstr "Sectie verbergen"
 #: src/ui/feedback-button.tsx
 msgctxt "c47pnT"
 msgid "Highlight section"
-msgstr "Markeer sectie"
+msgstr "Sectie markeren"
 
 #: src/ui/feedback-button.tsx
 msgctxt "bemE3q"
@@ -8720,7 +8720,7 @@ msgstr "Open source"
 #: src/ui/footer.tsx
 msgctxt "uxbXhb"
 msgid "Public API"
-msgstr "Publieke API"
+msgstr "Openbare API"
 
 #: src/ui/footer.tsx
 msgctxt "HVWg90"
@@ -8735,18 +8735,18 @@ msgstr "DDoS-bescherming"
 #: src/ui/footer.tsx
 msgctxt "Bqwweu"
 msgid "Customer Portal"
-msgstr "Klantportaal"
+msgstr "Klantenportaal"
 
 #: src/ui/footer.tsx
 #: src/ui/nav.tsx
 msgctxt "AyGauy"
 msgid "Login"
-msgstr "Login"
+msgstr "Inloggen"
 
 #: src/ui/footer.tsx
 msgctxt "Yy_yDL"
 msgid "Reset password"
-msgstr "Wachtwoord opnieuw instellen"
+msgstr "Wachtwoord resetten"
 
 #: src/ui/footer.tsx
 msgctxt "9YazHG"
@@ -8766,12 +8766,12 @@ msgstr "Privacybeleid"
 #: src/ui/footer.tsx
 msgctxt "UhkSyx"
 msgid "Terms of Use"
-msgstr "Gebruiksvoorwaarden"
+msgstr "Algemene voorwaarden"
 
 #: src/ui/footer.tsx
 msgctxt "o8wpU5"
 msgid "Revocation Policy"
-msgstr "Intrekkingsbeleid"
+msgstr "Herroepingsbeleid"
 
 #: src/ui/footer.tsx
 msgctxt "-eN-I1"
@@ -8786,7 +8786,7 @@ msgstr "© {year} {appName}, een merk van BeastHost UG (haftungsbeschränkt)."
 #: src/ui/fumadocs/fake-search-button.tsx
 msgctxt "xmcVZ0"
 msgid "Search"
-msgstr "Zoekopdracht"
+msgstr "Zoeken"
 
 #: src/ui/fumadocs/table-of-contents.tsx
 msgctxt "TM7OHi"
@@ -8811,7 +8811,7 @@ msgstr "Er is een onverwachte fout opgetreden tijdens het laden van de gegevens.
 #: src/ui/input-group-addons/random-password-addon.tsx
 msgctxt "gQLF4T"
 msgid "Generate random password"
-msgstr "Genereer een willekeurig wachtwoord"
+msgstr "Willekeurig wachtwoord genereren"
 
 #: src/ui/input-group-addons/show-password-addon.tsx
 msgctxt "JHTwdB"
@@ -8826,7 +8826,7 @@ msgstr "Wachtwoord verbergen"
 #: src/ui/layout/auth-layout.tsx
 msgctxt "jr1I15"
 msgid "By continuing, you agree to {appName}'s <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>"
-msgstr "Door verder te gaan, ga je akkoord met de <terms>Servicevoorwaarden</terms> en het <privacy>Privacybeleid</privacy> van {appName}"
+msgstr "Door verder te gaan, ga je akkoord met de <terms>Algemene voorwaarden</terms> en het <privacy>Privacybeleid</privacy> van {appName}"
 
 #: src/ui/mdx/glossary-term.tsx
 msgctxt "Y-U_95"
@@ -8846,7 +8846,7 @@ msgstr "externe website, opent in een nieuw tabblad"
 #: src/ui/nav-user.tsx
 msgctxt "f-sh2j"
 msgid "Administration"
-msgstr "Administratie"
+msgstr "Beheer"
 
 #: src/ui/nav-user.tsx
 msgctxt "rxNddi"
@@ -8856,7 +8856,7 @@ msgstr "Startpagina"
 #: src/ui/nav-user.tsx
 msgctxt "gZwnDa"
 msgid "Stop impersonation"
-msgstr "Stop met nabootsen"
+msgstr "Inloggen als gebruiker beëindigen"
 
 #: src/ui/nav-user.tsx
 msgctxt "C81_uG"
@@ -8881,7 +8881,7 @@ msgstr "Geen ondersteund besturingssysteem gevonden."
 #: src/ui/theme-switcher.tsx
 msgctxt "Vny4fL"
 msgid "System theme"
-msgstr "Systeem thema"
+msgstr "Systeemthema"
 
 #: src/ui/theme-switcher.tsx
 msgctxt "ee1Wp5"
