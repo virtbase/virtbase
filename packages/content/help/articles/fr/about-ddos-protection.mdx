@@ -1,34 +1,40 @@
 ---
-title: Quelle protection DDoS Virtbase utilise-t-il ?
-description: En savoir plus sur la protection DDoS utilisée chez Virtbase.
+title: Quelle protection anti-DDoS Virtbase utilise-t-il ?
+description: Chaque serveur Virtbase est protégé sans supplément par le filtrage anti-DDoS permanent d'aurologic. Il couvre les services TCP et UDP, y compris les serveurs de jeux, et ne demande aucune configuration.
 categories: [networking]
 authors: [janic]
-related: [how-to-use-server-firewall, about-security]
-keywords: [serveur, DDoS, protection DDoS, protection, attaque]
+related: [how-to-use-server-firewall, about-security, cant-connect-to-server]
+keywords: [serveur, DDoS, protection DDoS, anti-DDoS, protection, attaque, attaque DDoS, serveur de jeux]
 publishedAt: 2026-03-19
-lastModified: 2026-03-19
+lastModified: 2026-11-02
 ---
 
-Tous les serveurs Virtbase sont protégés par la protection DDoS de **aurologic GmbH**. 
-D'une part, celle-ci offre une excellente protection contre les attaques de grande envergure, 
-d'autre part, le filtrage des paquets est très précis et finement granulaire. 
+Tous les serveurs Virtbase sont protégés par la solution <Term id="ddos">anti-DDoS</Term> d'**aurologic GmbH**.
+Elle offre d'une part une excellente protection contre les attaques de grande ampleur
+et, d'autre part, un filtrage des paquets très précis et finement réglé.
 
-Tous les services et protocoles réseau courants sont pris en charge. 
-Même les jeux en ligne sont parfaitement protégés grâce à cette solution et restent jouables pendant toute la durée de l'attaque.
+Tous les services et protocoles réseau courants sont pris en charge.
+Les jeux en ligne sont eux aussi parfaitement protégés par cette solution et restent jouables pendant toute la durée de l'attaque.
 
-Si vous avez d'autres questions concernant la protection DDoS, [contactez notre équipe d'assistance](/fr/contact).
+Si vous avez d'autres questions sur la protection anti-DDoS, [contactez notre équipe d'assistance](/fr/contact).
 
-## Dois-je activer la protection DDoS ?
+## Dois-je activer la protection anti-DDoS ?
 
-Non, la protection DDoS est activée par défaut sur tous les serveurs Virtbase. 
-Vous n'avez rien d'autre à faire pour bénéficier de cette protection.
+Non, la protection anti-DDoS est activée par défaut sur tous les serveurs Virtbase.
+Vous n'avez rien d'autre à faire pour en bénéficier.
 
 ## Quels protocoles sont protégés ?
 
-Tous les services et protocoles réseau courants sont protégés. 
-Cela inclut, entre autres, les services basés sur TCP et UDP. Les protocoles des serveurs de jeux sont également reconnus et protégés de manière ciblée.
+Tous les services et protocoles réseau courants sont protégés,
+notamment les services basés sur TCP et UDP. Les protocoles des serveurs de jeux sont également reconnus et protégés de manière ciblée.
 
-## Mon serveur est-il accessible pendant une attaque ?
+## La protection anti-DDoS remplace-t-elle un pare-feu ?
 
-Oui, la protection DDoS est spécialement optimisée pour les serveurs web et les serveurs de jeux. 
-Grâce à l'utilisation de mécanismes de réponse aux défis, votre serveur reste accessible même pendant une attaque active.
+Non. La protection anti-DDoS filtre les flots de trafic d'attaque avant qu'ils n'atteignent notre réseau. Elle ne décide pas lesquels de vos services doivent être joignables. Utilisez le [pare-feu](/fr/help/article/how-to-use-server-firewall) pour fermer les ports dont vous n'avez pas besoin.
+
+## Mon serveur reste-t-il accessible pendant une attaque ?
+
+Oui, la protection anti-DDoS est spécialement optimisée pour les serveurs web et les serveurs de jeux.
+Des mécanismes de type challenge-response garantissent que votre serveur reste accessible même pendant une attaque en cours.
+
+Si votre serveur est injoignable et que vous soupçonnez une attaque, suivez d'abord l'article [Impossible de se connecter à mon serveur](/fr/help/article/cant-connect-to-server), puis [contactez le support](/fr/contact) en indiquant l'<Ui>ID du serveur</Ui> et l'heure à laquelle le problème a commencé.

@@ -1828,9 +1828,9 @@ msgid "Back to customer portal"
 msgstr "Retour au portail client"
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx
-msgctxt "lVV2Zz"
-msgid "Need help? Contact us ↗"
-msgstr "Besoin d'aide? Contactez-nous ↗"
+msgctxt "nCYYaf"
+msgid "Need help? Contact us"
+msgstr "Besoin d'aide ? Contactez-nous"
 
 #: src/app/(public)/[locale]/contact/page.tsx
 #: src/ui/footer.tsx
@@ -1913,9 +1913,9 @@ msgid "Contact us and get quick help."
 msgstr "Contactez-nous et obtenez une aide rapide."
 
 #: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
-msgctxt "IAMn0B"
-msgid "Still have questions? Contact us ↗"
-msgstr "Vous avez encore des questions? Contactez-nous ↗"
+msgctxt "Va6b-q"
+msgid "Still have questions? Contact us"
+msgstr "Vous avez encore des questions ? Contactez-nous"
 
 #: src/app/(public)/[locale]/help/page.tsx
 msgctxt "VQvikz"
@@ -6561,6 +6561,16 @@ msgctxt "Dnob31"
 msgid "Operational"
 msgstr "Opérationnelle"
 
+#: src/features/glossary/glossary.ts
+msgctxt "CwPawm"
+msgid "Glossary"
+msgstr "Glossaire"
+
+#: src/features/glossary/glossary.ts
+msgctxt "0oRAya"
+msgid "Short explanations of the technical terms used in the Virtbase Help Center, from PTR record to vCore."
+msgstr "De courtes explications des termes techniques utilisés dans le centre d'aide Virtbase, de l'enregistrement PTR au vCore."
+
 #: src/features/help/categories.tsx
 msgctxt "EKtClK"
 msgid "Getting started"
@@ -8817,6 +8827,21 @@ msgstr "Masquer le mot de passe"
 msgctxt "jr1I15"
 msgid "By continuing, you agree to {appName}'s <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>"
 msgstr "En continuant, tu acceptes les <terms>Conditions d’utilisation</terms> et la <privacy>Politique de confidentialité</privacy> de {appName}"
+
+#: src/ui/mdx/glossary-term.tsx
+msgctxt "Y-U_95"
+msgid "Read more in the glossary"
+msgstr "En savoir plus dans le glossaire"
+
+#: src/ui/mdx/help-link.tsx
+msgctxt "qDQRSE"
+msgid "customer portal, opens in a new tab"
+msgstr "portail client, s'ouvre dans un nouvel onglet"
+
+#: src/ui/mdx/help-link.tsx
+msgctxt "btLB8l"
+msgid "external website, opens in a new tab"
+msgstr "site externe, s'ouvre dans un nouvel onglet"
 
 #: src/ui/nav-user.tsx
 msgctxt "f-sh2j"

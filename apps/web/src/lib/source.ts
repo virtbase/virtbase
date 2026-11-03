@@ -17,6 +17,7 @@
 
 import {
   authorCollection,
+  glossaryCollection,
   helpArticleCollection,
   legalCollection,
   marketingCollection,
@@ -80,6 +81,16 @@ export const authors = loader({
 });
 
 /**
+ * Glossary terms. They have no pages of their own: every term is a section of
+ * `/<locale>/help/glossary`, anchored by its slug.
+ */
+export const glossary = loader({
+  baseUrl: "/help/glossary",
+  source: toFumadocsSource(glossaryCollection, []),
+  i18n,
+});
+
+/**
  * The same collections without the locale fallback. Used only to answer "which
  * languages does this document actually have?" — never to render.
  */
@@ -102,6 +113,11 @@ const translated = {
   authors: loader({
     baseUrl: "/authors",
     source: toFumadocsSource(authorCollection, []),
+    i18n: translatedI18n,
+  }),
+  glossary: loader({
+    baseUrl: "/help/glossary",
+    source: toFumadocsSource(glossaryCollection, []),
     i18n: translatedI18n,
   }),
 };

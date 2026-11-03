@@ -1,37 +1,50 @@
 ---
-title: Comment renouveler mon serveur Virtbase ?
-description: Découvrez comment renouveler votre serveur chez Virtbase
+title: Comment renouveler mon serveur ?
+description: "Cliquez sur Prolonger dans l'onglet Plan de votre serveur et payez un mois de plus. Renouvelez avant la fin de la période : un serveur non renouvelé est éteint, puis supprimé avec toutes ses données 5 jours plus tard."
 categories: [billing, servers]
 authors: [janic]
-related: [how-to-backup-server]
-popular: 4
-keywords: [renouvellement, expiration, suspension]
+related: [how-to-set-up-automatic-renewal, failed-payment, how-to-upgrade-server]
+popular: 5
+keywords: [renouveler, renouvellement, prolonger, prolongation, expiration, serveur expiré, serveur suspendu, serveur supprimé, période, payer, renew]
 publishedAt: 2026-03-19
-lastModified: 2026-03-19
+lastModified: 2026-11-02
 ---
 
-Pour éviter que votre serveur ne soit arrêté et supprimé prématurément, nous recommandons de renouveler au moins **5 jours avant l'expiration**.
+Un serveur Virtbase se paie mois par mois. Pour qu'il continue de fonctionner, renouvelez-le avant la fin de sa période, soit manuellement comme décrit ici, soit [automatiquement](/fr/help/article/how-to-set-up-automatic-renewal) pour ne plus avoir à y penser.
 
-## Renouvellement dans le portail client
+Vous pouvez renouveler à tout moment. Le nouveau mois s'ajoute à la fin de la période en cours : renouveler en avance ne vous coûte donc rien.
 
-Pour renouveler votre serveur, suivez ces étapes :
+## Renouveler un serveur
 
-1. Accédez à votre **serveur** dans le [portail client](https://app.virtbase.com/servers).
-2. Cliquez sur **Plan** dans la barre de navigation.
-3. Sélectionnez maintenant le forfait souhaité. Pour un renouvellement régulier, le forfait actuel est déjà présélectionné.
-4. Confirmez le renouvellement en cliquant sur **Renouveler**. Vous serez ensuite redirigé vers la page de paiement.
+1. Dans le [portail client](https://app.virtbase.com/servers), cliquez sur <Ui>Renouveler</Ui> à côté de votre serveur. Son onglet <Ui>Forfait</Ui> s'ouvre.
+2. Votre forfait actuel est marqué <Ui>Forfait actuel</Ui>. Cliquez sur <Ui>Prolonger</Ui> sur ce forfait.
+3. Vérifiez le prix et cliquez sur <Ui>Prolonger pour</Ui> suivi du montant affiché.
+4. Choisissez un mode de paiement et cliquez sur <Ui>Payer maintenant</Ui>.
 
-Après un paiement réussi, votre serveur sera renouvelé pour 30 jours supplémentaires. La facture sera stockée dans le portail client et vous sera envoyée par e-mail.
+![L'onglet Forfait avec le forfait actuel, la fin de la période, l'interrupteur du renouvellement automatique et le bouton « Prolonger » à côté du forfait actuel](./images/plan-extend.webp)
 
-Si vous avez d'autres questions sur le renouvellement ou avez besoin d'aide, veuillez [contacter notre équipe d'assistance](/fr/contact).
+Une fois le paiement effectué, la période est prolongée d'un mois. Vous recevez l'e-mail <Msg>Votre serveur a été renouvelé</Msg> avec la nouvelle date de fin, et la facture est disponible dans [Factures](https://app.virtbase.com/invoices).
 
-## Que se passe-t-il si je ne renouvelle pas mon serveur ?
+Pour passer plutôt à un forfait supérieur, consultez [Comment passer mon serveur à un forfait supérieur ?](/fr/help/article/how-to-upgrade-server)
 
-Nous vous enverrons un e-mail **5 jours** avant l'expiration de votre serveur avec un rappel pour le renouveler.
+## Que se passe-t-il si je ne renouvelle pas ?
 
-À la fin du terme, le serveur sera **suspendu** avec une autre notification. Cela signifie qu'il ne peut pas être démarré, et d'autres
-actions pertinentes telles que la restauration de la sauvegarde, la réinstallation ou les modifications du pare-feu ne peuvent pas être effectuées.
+| Quand | Ce qui se passe |
+| --- | --- |
+| 5 jours avant la fin de la période | Le serveur affiche <Ui>Le serveur expire</Ui>, et vous recevez l'e-mail <Msg>Votre serveur va bientôt expirer</Msg>. |
+| Fin de la période | Le serveur est suspendu et éteint, et vous recevez l'e-mail <Msg>Votre serveur a été suspendu</Msg>. Vos données sont toujours là. |
+| 5 jours après la suspension | Le serveur et toutes ses données, y compris toutes ses sauvegardes et ses entrées de <Term id="ptr-record">DNS inversé</Term>, sont définitivement supprimés. Vous recevez l'e-mail <Msg>Votre serveur a été supprimé</Msg>. |
 
-Si votre serveur a été suspendu, vous avez **5 jours supplémentaires** pour le renouveler. Après cela, votre serveur sera définitivement supprimé avec une autre notification.
-Veuillez noter que nous ne pouvons pas restaurer de données dans ce cas.
+Un serveur supprimé ne peut pas être restauré, pas même par notre équipe d'assistance.
 
+## Renouveler un serveur suspendu
+
+Tant qu'il n'a pas été supprimé, un serveur suspendu peut être renouvelé de la même manière. Le renouvellement le rallume, avec toutes ses données. Tant qu'il est suspendu, vous ne pouvez ni le démarrer, ni utiliser la console, ni restaurer des sauvegardes, ni le réinstaller.
+
+## Si cela n'a pas fonctionné
+
+- <Ui>Une commande est en attente de paiement</Ui> : vous avez fermé le paiement avant qu'il n'aboutisse. Rien n'a été prélevé. Cliquez sur <Ui>Reprendre le paiement</Ui>, ou sur <Ui>L'abandonner</Ui> pour recommencer.
+- <Msg>Les nouvelles commandes sont suspendues tant qu'un dossier d'abus est ouvert.</Msg> Le renouvellement manuel n'est pas possible tant qu'un [dossier d'abus](/fr/help/article/about-abuse-reports) est ouvert. Répondez au dossier, ou activez le renouvellement automatique, qui continue de fonctionner.
+- **Le paiement est refusé** : essayez un autre mode de paiement. Avec le <Term id="sepa-mandate">prélèvement SEPA</Term>, le renouvellement n'est appliqué qu'une fois le paiement arrivé.
+
+Si le serveur est sur le point d'être supprimé et que vous ne pouvez pas payer à temps, [contactez le support](/fr/contact) avant la date de suppression.

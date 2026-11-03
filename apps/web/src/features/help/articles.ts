@@ -29,7 +29,6 @@ export type HelpArticle = ReturnType<typeof helpArticles.getPages>[number];
 export function getArticleImage(article: HelpArticle) {
   return constructOpengraphUrl({
     title: article.data.title,
-    subtitle: article.data.description,
     slug: article.url,
     theme: "dark",
   });

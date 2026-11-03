@@ -1,42 +1,60 @@
 ---
-title: Hoe wijzig ik het besturingssysteem van mijn Virtbase server?
-description: Ontdek hoe je je Virtbase server met een ander besturingssysteem opnieuw kunt installeren.
+title: Hoe wijzig ik het besturingssysteem van mijn server?
+description: Installeer je server via het tabblad Overzicht opnieuw met een ander besturingssysteem. De hele schijf wordt gewist; je IP-adressen, back-ups en firewallregels blijven. Je stelt daarbij een nieuw root-wachtwoord in.
 categories: [servers, getting-started]
 authors: [janic]
-related: [how-to-backup-server]
-popular: 3
-keywords: [nieuwe installatie, server, besturingssysteem]
+related: [how-to-backup-server, how-to-install-from-iso, how-to-connect-to-server]
+popular: 6
+keywords: [opnieuw installeren, herinstallatie, besturingssysteem wijzigen, OS wijzigen, ander besturingssysteem, server resetten, schone installatie, Debian, Ubuntu, AlmaLinux, Rocky Linux]
 publishedAt: 2026-03-19
-lastModified: 2026-06-17
+lastModified: 2026-11-02
 ---
 
-Het komt vaak voor dat vereisten veranderen en je een ander besturingssysteem op je server nodig hebt.
-Je kunt het besturingssysteem van je server met een paar klikken en binnen enkele seconden wijzigen in het klantenportaal.
+Je kunt je server in een paar klikken opnieuw installeren met elk besturingssysteem uit onze lijst. De herinstallatie **wist alles op de schijf** en richt de server helemaal opnieuw in, alsof je hem net hebt besteld.
 
-## Hoe start ik de herinstallatie?
+Wat hetzelfde blijft: de IP-adressen van de server, het pakket en de termijn, de firewallregels, de <Term id="ptr-record">reverse-DNS-records</Term> en de back-ups.
 
-Volg deze stappen om je server te resetten:
+## Voordat je begint
 
-<Hint>
-Bij een herinstallatie van het besturingssysteem worden alle gegevens onherroepelijk verwijderd.
-We raden je aan eerst een back-up van de huidige configuratie te maken.
-</Hint>
+- Maak een [back-up](/nl/help/article/how-to-backup-server) als er iets op de server staat wat je misschien nog nodig hebt. Back-ups blijven na de herinstallatie bewaard, dus je kunt altijd terug.
+- Bedenk een nieuw root-wachtwoord: 8 tot 64 tekens, met minstens één hoofdletter, één kleine letter en één cijfer. Virtbase slaat het niet op.
 
-1. Ga naar je **server** in het [klantenportaal](https://app.virtbase.com/servers).
-2. Klik in het navigatiemenu op **Overzicht**.
-3. Klik aan de linkerkant op **Besturingssysteem wijzigen**.
-4. Hier kun je je nieuwe besturingssysteem selecteren en een nieuw root-wachtwoord instellen. 
-Je root-wachtwoord wordt niet opgeslagen en kan ook niet opnieuw worden weergegeven, dus onthoud het goed.
+## Het besturingssysteem wijzigen
 
-![Dialoogvenster Besturingssysteem resetten](./images/how-to-change-operating-system.png)
+1. Klik in het [klantenportaal](https://app.virtbase.com/servers) op <Ui>Bekijken</Ui> naast je server.
+2. Klik op de pagina <Ui>Overzicht</Ui> in het vak <Ui>Server</Ui> op <Ui>Besturingssysteem wijzigen</Ui>.
+3. Kies bij <Ui>Nieuw besturingssysteem</Ui> het systeem dat je wilt installeren.
+4. Vul bij <Ui>Nieuw root-wachtwoord</Ui> het nieuwe wachtwoord in.
+5. Bevestig.
 
-5. Bevestig nu de reset om het proces te starten.
+![Het dialoogvenster "Besturingssysteem wijzigen" met de waarschuwing, Debian 13 gekozen en een nieuw root-wachtwoord](./images/change-os-dialog.webp)
 
-Je server wordt vervolgens gestopt en het besturingssysteem wordt gewijzigd.
+De server toont <Ui>Server wordt geïnstalleerd</Ui> en is offline tot het nieuwe systeem is ingericht. Als de banner verdwijnt, kun je inloggen.
 
-Als je nog vragen hebt over onze besturingssystemen of hulp nodig hebt, neem dan [contact op met ons supportteam](/nl/contact).
+Heb je bij het bestellen van de server een <Term id="ssh-key">SSH-sleutel</Term> toegevoegd, dan wordt die op het nieuwe systeem opnieuw ingesteld.
 
-## Hoe kan ik mijn eigen ISO-bestanden uploaden?
+## Controleren of het gelukt is
 
-Je kunt in het klantenportaal maximaal drie eigen ISO-bestanden voor je servers uploaden en koppelen. 
-Je vindt deze onder je [accountinstellingen](https://app.virtbase.com/account/settings/custom-images).
+Maak verbinding met het nieuwe wachtwoord:
+
+```bash
+ssh root@<jouw-ip>
+```
+
+<Term id="ssh">SSH</Term> waarschuwt je met `WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!`. Dat is normaal: het nieuwe systeem heeft nieuwe hostsleutels. Verwijder de oude vermelding en maak opnieuw verbinding:
+
+```bash
+ssh-keygen -R <jouw-ip>
+```
+
+Het veld <Ui>Besturingssysteem</Ui> op de pagina <Ui>Overzicht</Ui> toont het nieuwe systeem.
+
+## Een systeem installeren dat niet in de lijst staat
+
+Wil je iets installeren wat wij niet aanbieden, bijvoorbeeld Windows, pfSense of een distributie naar keuze, gebruik dan je eigen <Term id="iso-image">ISO-image</Term>. Zie [Hoe installeer ik een besturingssysteem vanaf mijn eigen ISO?](/nl/help/article/how-to-install-from-iso)
+
+## Als het niet gelukt is
+
+- <Msg>Het besturingssysteem kon niet worden gewijzigd.</Msg> De server is opgeschort of nog aan het installeren, of het wachtwoord voldoet niet aan de eisen. Je kunt maximaal twee herinstallaties per minuut starten.
+- **Het systeem dat je wilt, staat niet in de lijst:** we bieden alleen systemen aan die beschikbaar zijn op de hardware waarop je server draait. Gebruik [je eigen ISO](/nl/help/article/how-to-install-from-iso), of [neem contact op met support](/nl/contact) om ernaar te vragen.
+- **De server staat langer dan 30 minuten op Server wordt geïnstalleerd:** [neem contact op met support](/nl/contact) en vermeld je <Ui>Server-ID</Ui> van het tabblad <Ui>Geavanceerd</Ui>.

@@ -4,10 +4,9 @@ description: Add the Virtbase bot to Discord, link your account and manage every
 categories: [api]
 authors: [janic]
 related: [how-to-use-public-api]
-popular: 6
 keywords: [discord, bot, integration, linked roles, chat]
 publishedAt: 2026-08-26
-lastModified: 2026-08-26
+lastModified: 2026-11-02
 ---
 
 The Virtbase Discord bot lets you manage every server you rent from inside Discord — start and stop them, take backups, edit firewall rules, open a console — without opening the customer portal.
@@ -18,19 +17,19 @@ Everything the bot sends is **only visible to you**, even in a shared channel. N
 
 | Area | What you can do |
 | --- | --- |
-| **Servers** | See every server you rent, with its plan, operating system, node and IP addresses |
-| **Power** | Start, reboot, shut down, force stop or hard reset, and read live CPU, memory, disk and network usage |
-| **Backups** | Create, restore, lock and delete backups |
-| **Firewall** | Review your rules, add and delete them, and change the default policies |
-| **Reverse DNS** | Set and remove the hostname each of your addresses resolves back to |
-| **Settings** | Rename a server, reinstall it with a different operating system, mount an installer image and review your plan |
-| **Access** | Open a one-time console link and reset the administrator password |
+| <Ui>Servers</Ui> | See every server you rent, with its plan, operating system, node and IP addresses |
+| <Ui>Power</Ui> | Start, reboot, shut down, force stop or hard reset, and read live CPU, memory, disk and network usage |
+| <Ui>Backups</Ui> | Create, restore, lock and delete backups |
+| <Ui>Firewall</Ui> | Review your rules, add and delete them, and change the default policies |
+| <Ui>Reverse DNS</Ui> | Set and remove the hostname each of your addresses resolves back to |
+| <Ui>Settings</Ui> | Rename a server, reinstall it with a different operating system, mount an installer image and review your plan |
+| <Ui>Access</Ui> | Open a one-time console link and reset the administrator password |
 
 Anything that costs money — upgrading a plan, renewing a server — links you through to the customer portal instead. The bot never charges you.
 
 ## How do I add the bot to my Discord server?
 
-1. Run **/invite** in any Discord server where the bot is already present, or use the button on your [authentication settings](https://app.virtbase.com/account/settings/authentication) page.
+1. Run <Ui>/invite</Ui> in any Discord server where the bot is already present, or select <Ui>Add to Discord</Ui> on the [Security](https://app.virtbase.com/account/settings/authentication) page of your account.
 2. Choose the Discord server you want to add it to.
 3. Confirm. The bot asks only for permission to send messages and to answer slash commands.
 
@@ -40,21 +39,21 @@ You do not need to add the bot to a server of your own. If it is already in a se
 
 The bot cannot tell who you are from your Discord account alone, so the two have to be linked once.
 
-1. Open your [authentication settings](https://app.virtbase.com/account/settings/authentication) in the customer portal.
-2. Under **Authentication**, link your Discord account.
-3. Go back to Discord and run **/menu**.
+1. Open [Account > Security](https://app.virtbase.com/account/settings/authentication) in the customer portal.
+2. Under <Ui>Authentication Methods</Ui>, select <Ui>Link</Ui> next to Discord and confirm in Discord.
+3. Go back to Discord and run <Ui>/menu</Ui>.
 
 That is all. From then on the bot recognises you in every Discord server it is in, and in direct messages.
 
-If you run **/menu** before linking, the bot shows you these steps rather than an error.
+If you run <Ui>/menu</Ui> before linking, the bot shows you these steps rather than an error.
 
 ## What are linked roles?
 
 Once your account is linked, a Discord server can grant you roles automatically based on your Virtbase data:
 
-- **Active servers** — how many servers you currently rent
-- **Email verified** — whether your email address is confirmed
-- **Registered days** — how long you have been a customer
+- <Ui>Active Servers</Ui> — how many servers you currently rent
+- <Ui>Email Verified</Ui> — whether your email address is confirmed
+- <Ui>Registered Days</Ui> — how long you have been a customer
 
 This is how a community can give long-standing customers a role without anybody having to check manually. Your email address, server names and addresses are **never** shared with the Discord server — only the three values above, and only for the roles it is configured to grant.
 
@@ -64,9 +63,9 @@ Linked roles need the `role_connections.write` permission, which is requested wh
 
 | Command | What it does |
 | --- | --- |
-| **/menu** | The main menu — everything starts here |
-| **/help** | What the bot can do, and links to this guide |
-| **/invite** | A link to add the bot to another Discord server |
+| <Ui>/menu</Ui> | The main menu — everything starts here |
+| <Ui>/help</Ui> | What the bot can do, and links to this guide |
+| <Ui>/invite</Ui> | A link to add the bot to another Discord server |
 
 Almost everything else is a button. Once you are in the menu you never have to type a command again.
 
@@ -82,7 +81,7 @@ Almost everything else is a button. Once you are in the menu you never have to t
 If a command does nothing, check the following:
 
 1. **Has the bot got permission to reply in that channel?** Try a direct message instead.
-2. **Is your account linked?** Run **/menu** — if it is not, you will see the setup steps.
-3. **Did you link before the integration was set up?** Unlink and link your Discord account again on your [authentication settings](https://app.virtbase.com/account/settings/authentication) page.
+2. **Is your account linked?** Run <Ui>/menu</Ui> — if it is not, you will see the setup steps.
+3. **Did you link before the integration was set up?** Unlink and link your Discord account again under <Ui>Authentication Methods</Ui> on the [Security](https://app.virtbase.com/account/settings/authentication) page.
 
 If none of that helps, please [contact our support team](/en/contact).

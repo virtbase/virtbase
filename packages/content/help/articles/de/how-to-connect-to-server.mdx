@@ -1,0 +1,77 @@
+---
+title: Wie verbinde ich mich zum ersten Mal mit meinem Server?
+description: Verbinde dich per SSH mit dem Benutzer root, der IP-Adresse des Servers aus dem Kundenportal und dem Passwort aus deiner Willkommens-E-Mail oder deinem SSH-Schlüssel. Bei Windows-Installationen nutzt du Remotedesktop.
+categories: [getting-started, servers]
+authors: [janic]
+related: [cant-connect-to-server, how-to-reset-root-password, how-to-use-console, how-to-order-server]
+keywords: [SSH, verbinden, Verbindung herstellen, anmelden, Login, erste Anmeldung, root, PuTTY, Terminal, IP-Adresse, Remotedesktop, RDP]
+publishedAt: 2026-11-02
+lastModified: 2026-11-02
+---
+
+An einem Linux-Server meldest du dich per <Term id="ssh">SSH</Term> als Benutzer `root` an. Du brauchst drei Dinge: die IP-Adresse des Servers, die du im Kundenportal findest, deinen <Term id="ssh-key">SSH-Schlüssel</Term> oder das Root-Passwort und einen SSH-Client.
+
+## Bevor du loslegst
+
+- **Die IP-Adresse:** Klicke in der [Serverliste](https://app.virtbase.com/servers) neben deinem Server auf <Ui>IP-Adresse kopieren</Ui>. Aus Sicherheitsgründen steht sie nicht in der Willkommens-E-Mail.
+- **Das Passwort oder der Schlüssel:**
+  - Hast du bei der Bestellung einen SSH-Schlüssel hinzugefügt, meldest du dich mit diesem Schlüssel an.
+  - Hast du ein Root-Passwort festgelegt, nutze dieses.
+  - Andernfalls steht das generierte Passwort in der E-Mail <Msg>Dein Server ist nun bereit</Msg>.
+- **Ein SSH-Client:** Linux, macOS und Windows 10 oder neuer haben `ssh` im Terminal bereits an Bord. Öffne unter Windows <Ui>PowerShell</Ui> oder <Ui>Terminal</Ui>.
+
+## Per SSH verbinden
+
+1. Öffne ein Terminal und führe mit der Adresse deines Servers Folgendes aus:
+
+   ```bash
+   ssh root@203.0.113.10
+   ```
+
+   Eine IPv6-Adresse verwendest du genauso: `ssh root@2001:db8::10`.
+
+2. Beim ersten Mal fragt SSH, ob du dem Server vertraust:
+
+   ```text
+   The authenticity of host '203.0.113.10' can't be established.
+   ED25519 key fingerprint is SHA256:...
+   Are you sure you want to continue connecting (yes/no/[fingerprint])?
+   ```
+
+   Tippe `yes` ein und drücke die Eingabetaste. Dein Computer merkt sich den Server ab jetzt.
+
+3. Gib das Root-Passwort ein, wenn du danach gefragt wirst. Während du tippst, erscheint nichts auf dem Bildschirm.
+
+Du bist angemeldet, wenn du eine Eingabeaufforderung wie `root@vm:~#` siehst.
+
+Nutzt du einen anderen als deinen Standardschlüssel, gib ihn ausdrücklich an:
+
+```bash
+ssh -i ~/.ssh/mein_schluessel root@203.0.113.10
+```
+
+## Empfohlene erste Schritte
+
+1. **Bring das System auf den neuesten Stand:**
+
+   ```bash tab="Debian / Ubuntu" tab-group="os"
+   apt update && apt upgrade
+   ```
+
+   ```bash tab="AlmaLinux / Rocky Linux / Fedora" tab-group="os"
+   dnf upgrade
+   ```
+
+2. **Ändere das generierte Passwort** mit `passwd`, oder steig auf SSH-Schlüssel um und schalte die Anmeldung per Passwort ab.
+3. **Leg fest, welche Ports erreichbar sein sollen,** und richte die [Firewall](/de/help/article/how-to-use-server-firewall) ein. Neue Server lassen sämtlichen eingehenden Datenverkehr durch.
+4. **Erstelle ein [Backup](/de/help/article/how-to-backup-server),** sobald der Server so eingerichtet ist, wie du ihn haben möchtest.
+
+## Windows
+
+Virtbase stellt keine Windows-Images oder -Lizenzen bereit. Du kannst Windows selbst von deinem eigenen <Term id="iso-image">ISO-Image</Term> installieren und deine eigene Lizenz mitbringen. Stelle vor der Installation im Reiter <Ui>Erweitert</Ui> das BIOS auf <Ui>UEFI</Ui> und das <Term id="tpm">TPM</Term> auf <Ui>v2.0</Ui>; ohne diese Einstellungen lässt sich Windows 11 nicht installieren. Sobald <Term id="rdp">Remotedesktop</Term> in Windows aktiviert ist, verbinde dich mit einem Remotedesktop-Client über Port 3389 mit der IP-Adresse des Servers.
+
+## Wenn es nicht geklappt hat
+
+- **Die Verbindung läuft in eine Zeitüberschreitung oder wird abgelehnt:** Siehe [Server nicht erreichbar: Ich kann mich nicht verbinden](/de/help/article/cant-connect-to-server).
+- **Das Passwort wird nicht akzeptiert:** [Setze das Root-Passwort zurück](/de/help/article/how-to-reset-root-password).
+- **Überhaupt kein Netzwerkzugriff:** Melde dich stattdessen über die [Browser-Konsole](/de/help/article/how-to-use-console) an.

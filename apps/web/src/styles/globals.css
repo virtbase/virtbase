@@ -30,6 +30,17 @@
 @plugin "tailwind-scrollbar";
 @plugin "@tailwindcss/typography";
 
+/*
+ * Fumadocs sets a code block inside tabs in `bg-fd-secondary`, which this
+ * theme maps to a light grey in dark mode. Keep it the colour of every other
+ * code block.
+ */
+@layer utilities {
+  figure.shiki.bg-fd-secondary {
+    background-color: var(--color-fd-card);
+  }
+}
+
 @custom-variant dark (&:where(.dark, .dark *));
 @custom-variant light (&:where(.light, .light *));
 @custom-variant auto (&:where(.auto, .auto *));

@@ -1824,9 +1824,9 @@ msgid "Back to customer portal"
 msgstr ""
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx
-msgctxt "lVV2Zz"
-msgid "Need help? Contact us ↗"
-msgstr ""
+msgctxt "nCYYaf"
+msgid "Need help? Contact us"
+msgstr "Need help? Contact us"
 
 #: src/app/(public)/[locale]/contact/page.tsx
 #: src/ui/footer.tsx
@@ -1909,9 +1909,9 @@ msgid "Contact us and get quick help."
 msgstr ""
 
 #: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
-msgctxt "IAMn0B"
-msgid "Still have questions? Contact us ↗"
-msgstr ""
+msgctxt "Va6b-q"
+msgid "Still have questions? Contact us"
+msgstr "Still have questions? Contact us"
 
 #: src/app/(public)/[locale]/help/page.tsx
 msgctxt "VQvikz"
@@ -6557,6 +6557,16 @@ msgctxt "Dnob31"
 msgid "Operational"
 msgstr ""
 
+#: src/features/glossary/glossary.ts
+msgctxt "CwPawm"
+msgid "Glossary"
+msgstr "Glossary"
+
+#: src/features/glossary/glossary.ts
+msgctxt "0oRAya"
+msgid "Short explanations of the technical terms used in the Virtbase Help Center, from PTR record to vCore."
+msgstr "Short explanations of the technical terms used in the Virtbase Help Center, from PTR record to vCore."
+
 #: src/features/help/categories.tsx
 msgctxt "EKtClK"
 msgid "Getting started"
@@ -8813,6 +8823,21 @@ msgstr ""
 msgctxt "jr1I15"
 msgid "By continuing, you agree to {appName}'s <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>"
 msgstr ""
+
+#: src/ui/mdx/glossary-term.tsx
+msgctxt "Y-U_95"
+msgid "Read more in the glossary"
+msgstr "Read more in the glossary"
+
+#: src/ui/mdx/help-link.tsx
+msgctxt "qDQRSE"
+msgid "customer portal, opens in a new tab"
+msgstr "customer portal, opens in a new tab"
+
+#: src/ui/mdx/help-link.tsx
+msgctxt "btLB8l"
+msgid "external website, opens in a new tab"
+msgstr "external website, opens in a new tab"
 
 #: src/ui/nav-user.tsx
 msgctxt "f-sh2j"

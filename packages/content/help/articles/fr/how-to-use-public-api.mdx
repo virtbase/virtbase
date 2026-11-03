@@ -1,47 +1,77 @@
 ---
-title : Comment utiliser l'API publique de Virtbase ?
-description : Découvrez comment gérer vos services Virtbase avec notre API.
+title: Comment utiliser l'API Virtbase ?
+description: Créez dans Compte > API une clé API dotée uniquement des autorisations nécessaires, envoyez-la dans l'en-tête X-Virtbase-API-Key et restez sous la limite de 120 requêtes par minute. Les clés expirent au bout d'un an.
 categories: [api]
 authors: [janic]
-related: [discord-integration]
-popular: 5
-keywords : [API, compte]
+related: [discord-integration, how-to-manage-ssh-keys]
+keywords: [API, API REST, REST API, clé API, API key, automatisation, automatiser, X-Virtbase-API-Key, limite de requêtes, rate limit, Terraform, scripts]
 publishedAt: 2026-03-19
-lastModified: 2026-05-02
+lastModified: 2026-11-02
 ---
 
-L'API publique Virtbase offre un moyen flexible de gérer vos services réservés de manière programmatique. 
-Pour cela, vous devez créer une clé API afin d'envoyer des requêtes authentifiées.
+L'API Virtbase vous permet de gérer vos serveurs depuis vos propres scripts et outils : actions d'alimentation, sauvegardes, règles de pare-feu, <Term id="ptr-record">DNS inversé</Term>, <Term id="ssh-key">clés SSH</Term>, <Term id="iso-image">images ISO</Term> et factures. Vous authentifiez chaque requête avec une <Term id="api-key">clé API</Term>.
 
-## Comment créer une clé API ?
+La référence complète, avec chaque endpoint et un client interactif, se trouve dans la [documentation de l'API](/api/docs).
 
-Suivez ces étapes pour créer une clé API.
+## Créer une clé API
+
+1. Dans le [portail client](https://app.virtbase.com/account/settings/api), ouvrez <Ui>Compte</Ui> › <Ui>API</Ui>.
+2. Cliquez sur <Ui>Créer une clé API</Ui>.
+3. Sous <Ui>Nom</Ui>, indiquez à quoi sert la clé, par exemple `Script de sauvegarde`.
+4. Sous <Ui>Autorisations</Ui>, choisissez <Ui>Lecture</Ui> ou <Ui>Écriture</Ui> pour chaque domaine dont la clé a besoin : <Ui>Serveurs</Ui>, <Ui>Sauvegardes</Ui>, <Ui>Pare-feu</Ui>, <Ui>Console</Ui>, <Ui>rDNS</Ui>, <Ui>Clés SSH</Ui>, <Ui>Factures</Ui> et <Ui>ISO</Ui>. Laissez tout le reste désactivé.
+5. Cliquez sur <Ui>Créer une clé API</Ui>.
+6. Copiez la clé depuis <Ui>Clé API créée</Ui> et conservez-la en lieu sûr, par exemple dans un gestionnaire de mots de passe.
+
+![La boîte de dialogue « Créer une clé API » avec un nom, l'accès en lecture aux serveurs et l'accès en lecture et en écriture aux sauvegardes](./images/create-api-key-dialog.webp)
 
 <Hint>
-Les clés API n'ont pas de date d'expiration, mais ne peuvent être affichées qu'une seule fois après leur création.
+La clé n'est affichée qu'une seule fois et ne peut plus être affichée ensuite. Si vous la perdez, supprimez-la et créez-en une nouvelle.
 </Hint>
 
+Les clés API sont valables **un an** à compter du jour de leur création. Créez une nouvelle clé avant cette échéance et remplacez l'ancienne dans vos scripts.
 
-1. Accédez aux paramètres **Compte** dans le [portail client](https://app.virtbase.com/account/settings).
-2. Cliquez sur **API** dans le menu de navigation.
-3. Vous voyez alors apparaître une liste de vos clés API déjà actives. Cliquez ici sur **Créer une clé API**.
-4. Attribuez un nom à votre clé et confirmez la création.
-5. Votre clé API s'affiche alors une seule fois dans la partie supérieure, enregistrez-la soigneusement.
+## Envoyer une requête
 
-Votre clé API peut être utilisée directement pour les requêtes API. Si vous n'avez plus besoin de votre clé, vous pouvez la supprimer à tout moment.
+Placez la clé dans l'en-tête `X-Virtbase-API-Key` de chaque requête. Par exemple, pour lister vos serveurs :
 
-Si vous avez d'autres questions sur l'API publique ou si vous avez besoin d'aide, [contactez notre équipe d'assistance](/fr/contact).
+```bash
+curl https://virtbase.com/api/v1/servers \
+  -H "X-Virtbase-API-Key: $VIRTBASE_API_KEY"
+```
 
-## Comment utiliser l'API publique ?
+Les listes sont paginées avec les paramètres de requête `page` (à partir de 1) et `per_page` (10 par défaut, 100 au maximum). De nombreuses listes peuvent être triées avec `sort`, par exemple `sort=name:asc`.
 
-Vous trouverez la documentation complète de tous les points de terminaison API à l'adresse suivante : https://virtbase.com/api/docs.
+## Limites de requêtes
 
-La documentation est disponible uniquement en anglais.
+Vous pouvez envoyer jusqu'à **120 requêtes par minute**. Certaines actions ont leurs propres limites, plus strictes, par exemple 5 actions d'alimentation par minute ou 5 sauvegardes par jour.
 
-Toutes les requêtes aux points finaux doivent être effectuées avec l'en-tête « X-Virtbase-API-Key ».
+Chaque réponse vous indique où vous en êtes :
 
-## Y a-t-il une limite de débit ?
+- `X-RateLimit-Limit` : le nombre de requêtes autorisées dans la fenêtre,
+- `X-RateLimit-Remaining` : le nombre de requêtes qu'il vous reste,
+- `X-RateLimit-Reset` : le moment où la totalité du quota est de nouveau disponible, sous forme d'horodatage Unix.
 
-Oui, vous pouvez envoyer un maximum de 120 requêtes par minute (= 1 requêtes par seconde) à l'API avec une clé API.
+Lorsque vous dépassez une limite, l'API répond `429 Too Many Requests`. Attendez l'heure de réinitialisation avant de réessayer. Si vous avez besoin d'une limite plus élevée, [contactez le support](/fr/contact) et décrivez ce que vous développez.
 
-Une limite de débit plus élevée n'est possible qu'après autorisation. Pour cela, veuillez contacter notre service d'assistance.
+## Ce que l'API ne permet pas de faire
+
+Pour votre sécurité, certaines actions ne sont possibles que dans le portail client, lorsque vous y êtes connecté :
+
+- commander, renouveler et mettre à niveau des serveurs,
+- gérer les moyens de paiement et les abonnements,
+- répondre aux signalements d'abus,
+- exporter vos données et supprimer votre compte.
+
+## Protéger vos clés
+
+- Donnez à chaque script sa propre clé, avec uniquement les autorisations dont il a besoin. Une clé qui ne fait que lire les factures ne peut pas supprimer un serveur.
+- Ne placez jamais une clé dans le code source ou dans un dépôt public. Utilisez une variable d'environnement ou un gestionnaire de secrets.
+- Supprimez les clés que vous n'utilisez plus dans <Ui>Compte</Ui> › <Ui>API</Ui>.
+
+Si une clé a fuité, supprimez-la immédiatement et créez-en une nouvelle.
+
+## Si cela n'a pas fonctionné
+
+- **`401 Unauthorized`** : la clé est absente, mal saisie, supprimée ou expirée.
+- **`403 Forbidden`** : la clé n'a pas l'autorisation nécessaire pour cette action, l'action n'est disponible que dans le portail, ou le serveur est dans un état qui ne la permet pas, par exemple en cours d'installation ou suspendu.
+- **`429 Too Many Requests`** : vous avez atteint une limite de requêtes. Voir ci-dessus.

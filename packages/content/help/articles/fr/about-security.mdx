@@ -1,38 +1,48 @@
 ---
-title : Virtbase est-il sûr ?
-description : Découvrez les mesures de sécurité mises en place par Virtbase pour protéger vos données.
+title: Virtbase est-il sécurisé ?
+description: Le portail fonctionne uniquement en HTTPS avec des en-têtes de sécurité stricts, les mots de passe root ne sont jamais stockés et chaque disque de notre cluster de stockage est chiffré avec LUKS2. La sécurité de ce qui tourne sur votre serveur relève de votre responsabilité.
 categories: [account, getting-started]
 authors: [janic]
-related: [about-ddos-protection, how-to-delete-account]
-keywords : [sécurité, protection des données, cryptage, centre de données, TPM]
+related: [about-ddos-protection, how-to-set-up-two-factor-authentication, how-to-use-server-firewall]
+keywords: [sécurité, protection des données, chiffrement, cryptage, centre de données, datacenter, TPM, HTTPS, LUKS2, RGPD]
 publishedAt: 2026-03-19
-lastModified: 2026-03-19
+lastModified: 2026-11-02
 ---
 
-Chez Virtbase, la sécurité de vos données est notre priorité absolue. Du centre de données au logiciel, nous misons sur plusieurs niveaux de protection indépendants les uns des autres afin de garantir un niveau de sécurité élevé et constant.
+Chez Virtbase, la sécurité de vos données est notre priorité absolue. Du centre de données au logiciel, nous nous appuyons sur plusieurs niveaux de protection indépendants les uns des autres afin de garantir un niveau de sécurité élevé et constant.
 
 ## Comment le site web et le portail client sont-ils protégés ?
 
-Notre site web et notre portail client sont exclusivement accessibles via des connexions HTTPS cryptées. Toutes les communications entre votre navigateur et nos systèmes sont cryptées selon les normes TLS actuelles, de sorte qu'aucun tiers ne puisse lire les données. L'utilisation du protocole HSTS (HTTP Strict Transport Security) garantit également que votre navigateur utilise exclusivement des connexions cryptées.
+Notre site web et notre portail client ne sont accessibles que par des connexions HTTPS chiffrées. Toutes les communications entre votre navigateur et nos systèmes sont chiffrées selon les normes TLS les plus récentes, de sorte qu'aucun tiers ne puisse lire vos données. Le recours à HSTS (HTTP Strict Transport Security) garantit en outre que votre navigateur utilise des connexions chiffrées sans exception.
 
-Pour nous protéger contre le cross-site scripting (XSS) et d'autres attaques, nous utilisons des en-têtes de sécurité complets. Ceux-ci comprennent, entre autres, une politique de sécurité stricte en matière de contenu, une politique d'autorisation visant à restreindre les fonctions du navigateur et d'autres mesures de protection au niveau HTTP. Tous les scripts et feuilles de style intégrés sont en outre sécurisés par SHA-384 Subresource Integrity, de sorte que les ressources manipulées sont automatiquement bloquées par le navigateur.
+Pour nous protéger contre le cross-site scripting (XSS) et d'autres attaques, nous utilisons des en-têtes de sécurité complets. Ils comprennent notamment une politique de sécurité du contenu (Content Security Policy) stricte, une politique d'autorisations (Permissions Policy) qui restreint les fonctions du navigateur, ainsi que d'autres mesures de protection au niveau HTTP. Tous les scripts et feuilles de style intégrés sont en outre sécurisés par SHA-384 Subresource Integrity, de sorte que les ressources manipulées sont automatiquement bloquées par le navigateur.
 
-Nous sommes extrêmement restrictifs en matière d'intégration de contenus externes. Presque toutes les ressources, y compris les polices, les scripts et les feuilles de style, sont hébergées sur notre propre site web. Cela nous permet de minimiser notre dépendance vis-à-vis des fournisseurs tiers et de réduire les vecteurs d'attaque potentiels.
+Nous sommes extrêmement restrictifs en matière d'intégration de contenus externes. Presque toutes les ressources, y compris les polices, les scripts et les feuilles de style, sont hébergées sur notre propre site web. Cela réduit notre dépendance vis-à-vis des fournisseurs tiers et limite les vecteurs d'attaque potentiels.
 
-Virtbase ne stocke pas les mots de passe root de vos serveurs. Les données d'accès ne sont affichées qu'une seule fois lors de la configuration initiale ou envoyées par e-mail, puis ne sont pas stockées dans nos systèmes.
+Virtbase ne stocke pas les mots de passe root de vos serveurs. Les données d'accès ne sont affichées qu'une seule fois lors de la configuration initiale ou envoyées par e-mail, et ne sont pas conservées dans nos systèmes par la suite.
 
-De plus, nous sécurisons le portail client grâce à des mesures telles que la limitation du débit et les pare-feu d'applications web afin de détecter et de bloquer à temps tout accès non autorisé.
+De plus, nous sécurisons le portail client grâce à des mesures telles que la limitation du nombre de requêtes (rate limiting) et des pare-feu applicatifs web (WAF), afin de détecter et de bloquer au plus tôt tout accès non autorisé.
 
 ## Comment mes serveurs et leurs données sont-ils protégés ?
 
-La sécurité commence au niveau du centre de données lui-même. Notre infrastructure est située dans un centre de données certifié doté d'un système de sécurité physique à plusieurs niveaux — les personnes non autorisées n'y ont pas accès.
+La sécurité commence au niveau du centre de données lui-même. Notre infrastructure est située dans un centre de données certifié, doté d'un système de sécurité physique à plusieurs niveaux : les personnes non autorisées n'y ont pas accès.
 
-Contrairement à de nombreux autres fournisseurs, nous utilisons également un verrouillage de démarrage avancé avec TPM et des mots de passe BIOS sur tous les systèmes hôtes. Cela garantit que même en cas d'accès physique, aucune manipulation non autorisée des systèmes n'est possible.
+Contrairement à de nombreux autres fournisseurs, nous utilisons également un verrouillage du démarrage renforcé avec <Term id="tpm">TPM</Term> ainsi que des mots de passe BIOS sur tous les systèmes hôtes. Ainsi, même en cas d'accès physique, aucune manipulation non autorisée des systèmes n'est possible.
 
-De plus, tous les disques durs de notre cluster Ceph sont sécurisés par un cryptage LUKS2 éprouvé. Vos données sont ainsi entièrement cryptées au niveau du stockage et protégées contre tout accès non autorisé.
+Enfin, tous les disques durs de notre cluster Ceph sont protégés par un chiffrement LUKS2 éprouvé. Vos données sont donc aussi entièrement chiffrées au niveau du stockage et protégées contre tout accès non autorisé.
+
+## Que puis-je faire pour protéger mon compte et mes serveurs ?
+
+Nous sécurisons la plateforme ; ce qui tourne sur votre serveur est entre vos mains. Voici les mesures les plus efficaces :
+
+- **Activez l'[authentification à deux facteurs](/fr/help/article/how-to-set-up-two-factor-authentication)** ou utilisez une <Term id="passkey">clé d'accès</Term> (passkey) pour votre compte Virtbase.
+- **Connectez-vous à vos serveurs avec des [clés SSH](/fr/help/article/how-to-manage-ssh-keys)** plutôt qu'avec des mots de passe.
+- **Fermez tous les ports dont vous n'avez pas besoin** avec le [pare-feu](/fr/help/article/how-to-use-server-firewall). Ses recommandations vous signalent les bases de données et autres services accessibles depuis Internet.
+- **Installez régulièrement les mises à jour de sécurité**, par exemple avec `unattended-upgrades` sur Debian et Ubuntu.
+- **N'accordez aux clés API que les autorisations dont elles ont besoin,** et supprimez les clés que vous n'utilisez plus.
 
 ## Quelles données sont traitées ?
 
-Tu trouveras un aperçu complet des données traitées dans le cadre de nos services dans notre [déclaration de confidentialité](/fr/legal/privacy).
+Vous trouverez un aperçu complet des données traitées dans le cadre de nos services dans notre [politique de confidentialité](/fr/legal/privacy).
 
-Si tu as d'autres questions concernant la sécurité ou la protection des données, [contacte notre équipe d'assistance](/fr/contact).
+Si vous avez d'autres questions sur la sécurité ou la protection des données, [contactez notre équipe d'assistance](/fr/contact).

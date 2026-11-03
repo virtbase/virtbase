@@ -20,6 +20,7 @@ import type { DocMethods } from "fumadocs-mdx/runtime/types";
 import type { Locale } from "next-intl";
 import { getExtracted } from "next-intl/server";
 import { getAuthor } from "@/features/authors/authors.ts";
+import { getGlossary, getGlossaryText } from "@/features/glossary/glossary.ts";
 import type { HelpArticle } from "@/features/help/articles.ts";
 import {
   getAuthorArticles,
@@ -93,6 +94,22 @@ async function helpCategory(locale: Locale, slug: HelpCategory) {
   ].join("\n\n");
 }
 
+/** Every term as a section, under the same headings as the page. */
+async function helpGlossary(locale: Locale) {
+  const { title, description } = await getGlossaryText(locale);
+  const entries = await Promise.all(
+    getGlossary(locale).map(async (term) =>
+      [
+        `## ${term.data.title}`,
+        term.data.description,
+        await render(term, locale),
+      ].join("\n\n"),
+    ),
+  );
+
+  return [`# ${title}`, description, ...entries].join("\n\n");
+}
+
 async function author(locale: Locale, slug: string) {
   const page = getAuthor(slug, locale);
   if (!page) return null;
@@ -159,8 +176,8 @@ async function document(route: ContentRoute, locale: Locale) {
  * Documents keep their own structure: help articles and legal texts gain the
  * title and description that the HTML page renders from frontmatter, while a
  * marketing page already opens with its own `#` heading. The help center's
- * index, its categories and author pages are React pages, so their Markdown is
- * assembled from the same data.
+ * index, its categories, the glossary and author pages are React pages, so
+ * their Markdown is assembled from the same data.
  */
 export async function getPageMarkdown(
   locale: Locale,
@@ -174,6 +191,8 @@ export async function getPageMarkdown(
       return helpIndex(locale);
     case "help-category":
       return helpCategory(locale, route.category);
+    case "help-glossary":
+      return helpGlossary(locale);
     case "author":
       return author(locale, route.slug);
     default:

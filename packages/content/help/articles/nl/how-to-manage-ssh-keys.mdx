@@ -1,0 +1,83 @@
+---
+title: Hoe voeg ik een SSH-sleutel toe?
+description: Sla je openbare sleutel op onder Account > SSH-sleutels of tijdens het bestellen. Nieuwe servers worden er dan mee ingericht, zodat je zonder wachtwoord inlogt. Wil je een sleutel aan een bestaande server toevoegen, zet hem dan in authorized_keys.
+categories: [account, getting-started]
+authors: [janic]
+related: [how-to-connect-to-server, how-to-order-server, cant-connect-to-server]
+keywords: [SSH-sleutel, SSH key, openbare sleutel, public key, ssh-keygen, ed25519, authorized_keys, inloggen met sleutel, inloggen zonder wachtwoord, PuTTY]
+publishedAt: 2026-11-02
+lastModified: 2026-11-02
+---
+
+Met een <Term id="ssh-key">SSH-sleutel</Term> log je zonder wachtwoord in op je server. Dat is veiliger dan een wachtwoord, omdat een sleutel niet te raden is en nooit naar de server wordt verstuurd.
+
+Een sleutel bestaat uit twee delen: de **privésleutel** blijft op je computer en deel je nooit; de **openbare sleutel** geef je aan Virtbase en aan je servers. Dat is één regel die bijvoorbeeld begint met `ssh-ed25519`.
+
+## Een sleutel aanmaken, als je er nog geen hebt
+
+Open op Linux, macOS of Windows 10 en later een terminal en voer uit:
+
+```bash
+ssh-keygen -t ed25519
+```
+
+Druk op Enter om de standaardlocatie te accepteren, en kies een wachtwoordzin om de sleutel te beschermen. Toon daarna de openbare sleutel:
+
+```bash tab="Linux / macOS" tab-group="client"
+cat ~/.ssh/id_ed25519.pub
+```
+
+```powershell tab="Windows" tab-group="client"
+type $env:USERPROFILE\.ssh\id_ed25519.pub
+```
+
+Kopieer de hele regel.
+
+## De sleutel opslaan in je account
+
+1. Open [Account > SSH-sleutels](https://app.virtbase.com/account/settings/ssh-keys) en klik op <Ui>SSH-sleutel aanmaken</Ui>.
+2. Vul bij <Ui>Naam</Ui> iets in waaraan je ziet bij welk apparaat de sleutel hoort, zoals `Laptop`.
+3. Plak bij <Ui>Openbare sleutel</Ui> de regel die je hebt gekopieerd.
+4. Klik op <Ui>SSH-sleutel aanmaken</Ui>.
+
+De sleutel verschijnt in de lijst met zijn vingerafdruk. Je kunt een sleutel ook direct toevoegen tijdens het [bestellen van een server](/nl/help/article/how-to-order-server): hij wordt dan ook in je account opgeslagen.
+
+Ondersteunde sleuteltypen zijn Ed25519, ECDSA, RSA en DSA, inclusief sleutels op hardwarebeveiligingssleutels (`sk-ssh-ed25519`, `sk-ecdsa`). Je kunt maximaal 100 sleutels opslaan.
+
+## De sleutel gebruiken voor een nieuwe server
+
+Kies bij het bestellen de sleutel onder <Ui>SSH-sleutel (optioneel)</Ui>. De server wordt ermee ingericht, en je logt in met:
+
+```bash
+ssh root@<jouw-ip>
+```
+
+Installeer je de server later opnieuw via [Besturingssysteem wijzigen](/nl/help/article/how-to-change-operating-system), dan wordt de sleutel opnieuw ingesteld.
+
+## Een sleutel toevoegen aan een server die al draait
+
+Sleutels die in je account zijn opgeslagen, worden alleen toegepast wanneer een server wordt ingericht. Wil je er een aan een bestaande server toevoegen, log dan in en voeg de openbare sleutel toe aan het bestand `authorized_keys` van de gebruiker:
+
+```bash
+mkdir -p ~/.ssh && chmod 700 ~/.ssh
+echo "ssh-ed25519 AAAA... laptop" >> ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+```
+
+Vanaf je eigen computer doet `ssh-copy-id root@<jouw-ip>` hetzelfde in één stap.
+
+## Inloggen met een wachtwoord uitschakelen
+
+Werkt inloggen met de sleutel, dan kun je inloggen met een wachtwoord helemaal uitschakelen. Stel in `/etc/ssh/sshd_config` in:
+
+```text title="/etc/ssh/sshd_config"
+PasswordAuthentication no
+```
+
+Voer daarna `systemctl restart ssh` (of `sshd`) uit. Houd de huidige sessie open en test de sleutel in een tweede terminal voordat je die sessie sluit. Gaat er iets mis, dan kom je via de [console](/nl/help/article/how-to-use-console) nog steeds binnen.
+
+## Als het niet gelukt is
+
+- **De sleutel wordt bij het opslaan niet geaccepteerd:** plak de **openbare** sleutel (het `.pub`-bestand), helemaal op één regel, en niet de privésleutel.
+- **`Permission denied (publickey)` bij het verbinden:** de sleutel op de server komt niet overeen met de sleutel die je gebruikt. Geef je sleutel expliciet op met `ssh -i ~/.ssh/id_ed25519 root@<jouw-ip>`, en controleer de rechten hierboven. Zie [Ik kan geen verbinding maken met mijn server](/nl/help/article/cant-connect-to-server).
+- **Je hebt een sleutel in je account verwijderd, maar hij werkt nog:** als je een sleutel in je account verwijdert, wordt hij niet van je servers verwijderd. Haal de regel weg uit `~/.ssh/authorized_keys` op elke server.

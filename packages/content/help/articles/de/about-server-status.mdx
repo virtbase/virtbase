@@ -1,0 +1,90 @@
+---
+title: Was bedeuten Status, Power-Buttons und Graphen meines Servers?
+description: Online, Offline, Pausiert und Deaktiviert erklärt; der Unterschied zwischen Herunterfahren, Stoppen, Neustart und Reset; was die Auslastungsgraphen zeigen und warum der QEMU-Gast-Agent für Festplattenauslastung, Passwort-Resets und Firewall-Prüfungen wichtig ist.
+categories: [servers, getting-started]
+authors: [janic]
+related: [cant-connect-to-server, how-to-use-console, how-to-reset-root-password, how-to-renew-server]
+keywords: [Serverstatus, Online, Offline, starten, stoppen, herunterfahren, Neustart, Reboot, Reset, pausieren, Graphen, CPU-Auslastung, RAM-Auslastung, Gast-Agent, Guest Agent, qemu-guest-agent, BIOS, UEFI, TPM]
+publishedAt: 2026-11-02
+lastModified: 2026-11-02
+---
+
+Die Seite <Ui>Übersicht</Ui> eines Servers zeigt, ob er läuft, lässt dich ihn ein- und ausschalten und zeigt, wie viel CPU, Arbeitsspeicher, Festplatte und Netzwerk er nutzt. Dieser Artikel erklärt alles der Reihe nach.
+
+## Status
+
+| Status | Bedeutung |
+| --- | --- |
+| <Ui>Online</Ui> | Der Server läuft. |
+| <Ui>Offline</Ui> | Der Server ist ausgeschaltet. Klicke auf <Ui>Starten</Ui>, um ihn einzuschalten. |
+| <Ui>Pausiert</Ui> | Der Server ist im Arbeitsspeicher eingefroren. Klicke auf <Ui>Fortsetzen</Ui>, um dort weiterzumachen, wo er angehalten wurde. |
+| <Ui>Deaktiviert</Ui> | Die Laufzeit ist ohne Verlängerung abgelaufen. [Verlängere den Server](/de/help/article/how-to-renew-server), um ihn wieder einzuschalten. |
+
+Während eine Aktion läuft, zeigt der Status sie an, z. B. <Ui>Wird gestartet…</Ui>, <Ui>Wird heruntergefahren…</Ui> oder <Ui>Wird gesichert…</Ui>, und die Power-Buttons sind nicht verfügbar, bis sie abgeschlossen ist.
+
+Banner oben auf der Seite informieren dich über den Server als Ganzes:
+
+- **Server wird installiert:** Der Server wird gerade eingerichtet, neu installiert, upgegradet oder wiederhergestellt. Einige Funktionen sind erst danach wieder verfügbar.
+- **Server läuft ab:** Die Laufzeit endet innerhalb von 5 Tagen. Verlängere ihn oder schalte die [automatische Verlängerung](/de/help/article/how-to-set-up-automatic-renewal) ein.
+- **Server deaktiviert:** Der Server wird an dem angezeigten Datum gelöscht, wenn du ihn nicht verlängerst.
+
+## Power-Buttons
+
+| Button | Was er tut | Wann du ihn nutzt |
+| --- | --- | --- |
+| <Ui>Starten</Ui> | Schaltet den Server ein. | Er ist <Ui>Offline</Ui>. |
+| <Ui>Herunterfahren</Ui> | Bittet das Betriebssystem, sich sauber herunterzufahren. | Normales Ausschalten. |
+| <Ui>Neu starten</Ui> | Bittet das Betriebssystem, sauber neu zu starten. | Nach Updates. |
+| <Ui>Stoppen</Ui> | Trennt sofort den Strom. | Der Server reagiert nicht mehr auf <Ui>Herunterfahren</Ui>. |
+| <Ui>Reset</Ui> | Startet sofort neu, wie ein Druck auf die Reset-Taste. | Der Server hängt und reagiert nicht auf <Ui>Neu starten</Ui>. |
+| <Ui>Pausieren</Ui> / <Ui>Fortsetzen</Ui> | Friert den Server im Arbeitsspeicher ein und setzt ihn später fort. | Selten nötig. |
+
+<Ui>Stoppen</Ui> und <Ui>Reset</Ui> sind wie Stecker ziehen: Alles, was noch nicht auf die Festplatte geschrieben wurde, geht verloren. Nutze <Ui>Herunterfahren</Ui> und <Ui>Neu starten</Ui>, solange der Server noch reagiert. <Ui>Stoppen</Ui>, <Ui>Reset</Ui> und <Ui>Pausieren</Ui> findest du im Menü neben den Buttons, zusammen mit <Ui>ISO einbinden</Ui>.
+
+Du kannst die Power-Buttons bis zu 5-mal pro Minute verwenden.
+
+## Auslastung und Graphen
+
+Die Karte <Ui>Auslastung</Ui> zeigt die aktuelle Auslastung von CPU, Arbeitsspeicher (<Ui>RAM</Ui>), <Ui>Festplatte</Ui> und <Ui>Netzwerk</Ui> sowie den Zeitpunkt des letzten Starts (<Ui>Letzter Neustart</Ui>).
+
+Die Graphen darunter zeigen dieselben Werte im Zeitverlauf. Wähle den Zeitraum mit <Ui>Stunden</Ui>, <Ui>Tage</Ui>, <Ui>Wochen</Ui>, <Ui>Monate</Ui> oder <Ui>Jahre</Ui>:
+
+- <Ui>CPU (%)</Ui>: der Anteil deiner <Term id="vcore">vCores</Term>, der in Gebrauch ist.
+- <Ui>RAM</Ui>: der belegte Arbeitsspeicher (<Ui>Verwendet</Ui>) im Vergleich zum Höchstwert deines Plans (<Ui>Maximal</Ui>).
+- <Ui>Festplatte</Ui>: von der Festplatte gelesene (<Ui>Lesen</Ui>) und auf sie geschriebene Daten (<Ui>Schreiben</Ui>).
+- <Ui>Netzwerk</Ui>: eingehender (<Ui>Eingehend</Ui>) und ausgehender Datenverkehr (<Ui>Ausgehend</Ui>).
+
+Ein Server meldet seine Auslastung nur, während er läuft. Für die Zeit, in der er ausgeschaltet war, bleiben die Graphen leer.
+
+## Der QEMU-Gast-Agent
+
+Der <Term id="guest-agent">Gast-Agent</Term> ist ein kleiner Dienst in deinem Server, über den Virtbase Informationen aus dem Betriebssystem auslesen kann. Er ist auf allen Betriebssystemen installiert, die du bei der Bestellung auswählen kannst. Ohne ihn kann das Kundenportal
+
+- die Festplattenauslastung nicht anzeigen (es zeigt <Ui>k. A.</Ui>),
+- keine [Passwörter zurücksetzen](/de/help/article/how-to-reset-root-password),
+- nicht anzeigen, welches Betriebssystem tatsächlich installiert ist,
+- keine Firewall im Server erkennen und keine [Firewall-Empfehlungen](/de/help/article/how-to-use-server-firewall#empfehlungen) geben.
+
+Der Reiter <Ui>Firewall</Ui> zeigt den Zustand des Agents an, z. B. <Ui>Gast-Agent läuft</Ui> oder <Ui>Gast-Agent antwortet nicht</Ui>. Antwortet er nicht, installiere und starte ihn:
+
+```bash tab="Debian / Ubuntu" tab-group="os"
+apt install qemu-guest-agent
+systemctl enable --now qemu-guest-agent
+```
+
+```bash tab="AlmaLinux / Rocky Linux / Fedora" tab-group="os"
+dnf install qemu-guest-agent
+systemctl enable --now qemu-guest-agent
+```
+
+Siehst du <Ui>Gast-Agent kann keine Befehle ausführen</Ui>, entferne `guest-exec` aus `BLOCK_RPCS` in `/etc/default/qemu-guest-agent` und starte den Agent neu.
+
+## Betriebssystem
+
+Das Feld <Ui>Betriebssystem</Ui> auf der Seite <Ui>Übersicht</Ui> zeigt, was installiert ist. Mit dem Gast-Agent wird es aus dem Server selbst ausgelesen und stimmt daher auch, wenn du etwas anderes von einer ISO installiert hast. Ohne den Agent zeigt es das System, mit dem der Server erstellt wurde.
+
+## Erweitert: BIOS und TPM
+
+Im Reiter <Ui>Erweitert</Ui> kannst du zwischen <Ui>Legacy-BIOS</Ui> und <Ui>UEFI-BIOS</Ui> wählen und ein <Term id="tpm">TPM</Term> ein- oder ausschalten. Das brauchst du nur, um Windows oder ein anderes System von deiner eigenen ISO zu installieren; siehe [Wie installiere ich ein Betriebssystem von einer eigenen ISO?](/de/help/article/how-to-install-from-iso). Eine Änderung wird wirksam, nachdem der Server heruntergefahren und wieder gestartet wurde. Ein System, das unter dem einen BIOS-Typ installiert wurde, startet unter dem anderen möglicherweise nicht.
+
+Der Reiter <Ui>Erweitert</Ui> zeigt außerdem die <Ui>Server-ID</Ui>, an der der Support deinen Server erkennt.

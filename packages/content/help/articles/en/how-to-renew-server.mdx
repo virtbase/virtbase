@@ -1,36 +1,50 @@
 ---
-title: How can I renew my Virtbase server?
-description: Learn how to renew your server with Virtbase.
+title: How do I renew my server?
+description: Select Extend on your server's Plan tab and pay for one more month. Renew before the term ends - a server that is not renewed is switched off, and deleted with all its data 5 days later.
 categories: [billing, servers]
 authors: [janic]
-related: [how-to-backup-server]
-popular: 4
-keywords: [renewal, expiration, suspension]
+related: [how-to-set-up-automatic-renewal, failed-payment, how-to-upgrade-server]
+popular: 5
+keywords: [renew, renewal, extend, expiry, expired, suspended, server deleted, term, pay]
 publishedAt: 2026-03-19
-lastModified: 2026-03-19
+lastModified: 2026-11-02
 ---
 
-To prevent your server from being shut down and deleted prematurely, we recommend renewing at least **5 days before expiration**.
+A Virtbase server is paid one month at a time. To keep it running, renew it before its term ends, either by hand as described here, or [automatically](/en/help/article/how-to-set-up-automatic-renewal) so you never have to think about it.
 
-## Renewal in the customer portal
+You can renew at any time. The new month is added to the end of the current term, so renewing early costs you nothing.
 
-To renew your server, follow these steps:
+## Renew a server
 
-1. Go to your **server** in the [customer portal](https://app.virtbase.com/servers).
-2. Click on **Plan** in the navigation bar.
-3. Now select the desired package. For a regular renewal, the current package is already preselected.
-4. Confirm the renewal by clicking on **Renew**. You will then be redirected to the payment page.
+1. In the [customer portal](https://app.virtbase.com/servers), select <Ui>Renew</Ui> next to your server. This opens its <Ui>Plan</Ui> tab.
+2. Your current plan is marked <Ui>Current plan</Ui>. Select <Ui>Extend</Ui> on it.
+3. Check the price and select <Ui>Extend for</Ui> the amount shown.
+4. Choose a payment method and select <Ui>Pay now</Ui>.
 
-After successful payment, your server will be renewed for another 30 days. The invoice will be stored in the customer portal and sent to you by email.
+![The Plan tab with the current plan, the end of the term, the Automatic renewal switch and the "Extend" button next to the current plan](./images/plan-extend.webp)
 
-If you have any further questions about renewal or need assistance, please [contact our support team](/en/contact).
+Once the payment has gone through, the term is extended by one month. You receive the email <Msg>Your server has been renewed</Msg> with the new end date, and the invoice under [Invoices](https://app.virtbase.com/invoices).
 
-## What happens if I don't renew my server?
+To move to a bigger plan instead, see [How do I upgrade my server?](/en/help/article/how-to-upgrade-server)
 
-We will send you an email **5 days** before your server expires with a reminder to renew your server.
+## What happens if I don't renew?
 
-At the end of the term, the server will be **suspended** with another notification. This means that it cannot be started, nor can other
-relevant actions such as restoring the backup, reinstalling, or making changes to the firewall be performed.
+| When | What happens |
+| --- | --- |
+| 5 days before the end of the term | The server shows <Ui>Server is expiring</Ui>, and you get the email <Msg>Your server is about to expire</Msg>. |
+| End of the term | The server is suspended and switched off, and you get the email <Msg>Your server has been suspended</Msg>. Your data is still there. |
+| 5 days after the suspension | The server and all its data, including every backup and its <Term id="ptr-record">reverse DNS</Term> entries, are deleted permanently. You get the email <Msg>Your server has been deleted</Msg>. |
 
-If your server has been suspended, you have **5 more days** to renew it. After that, your server will be permanently deleted with another notification.
-Please note that we cannot restore any data in this case.
+A deleted server cannot be restored, not even by our support team.
+
+## Renew a suspended server
+
+As long as it has not been deleted, a suspended server can be renewed the same way. Renewing it switches it back on, with all its data. While it is suspended you cannot start it, use the console, restore backups or reinstall it.
+
+## If it didn't work
+
+- **An order is waiting to be paid:** you closed the payment before it went through. Nothing was charged. Select <Ui>Resume payment</Ui>, or <Ui>Discard it</Ui> and start again.
+- <Msg>New orders are on hold while an abuse case is open.</Msg> Renewing by hand is not possible while an [abuse case](/en/help/article/about-abuse-reports) is open. Answer the case, or turn on automatic renewal, which keeps working.
+- **The payment is declined:** try a different payment method. With <Term id="sepa-mandate">SEPA Direct Debit</Term>, the renewal is only applied once the payment has arrived.
+
+If the server is about to be deleted and you cannot pay in time, [contact support](/en/contact) before the deletion date.

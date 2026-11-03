@@ -1,47 +1,77 @@
 ---
-title: Wie verwende ich die Public API von Virtbase?
-description: Erfahre, wie du deine Virtbase Dienste mit unserer API verwalten kannst
+title: Wie nutze ich die Virtbase-API?
+description: Erstelle unter Konto > API einen API-Schlüssel mit genau den Berechtigungen, die du brauchst, sende ihn im Header X-Virtbase-API-Key und bleib unter 120 Anfragen pro Minute. Schlüssel laufen nach einem Jahr ab.
 categories: [api]
 authors: [janic]
-related: [discord-integration]
-popular: 5
-keywords: [API, Account]
+related: [discord-integration, how-to-manage-ssh-keys]
+keywords: [API, REST-API, API-Schlüssel, API Key, Automatisierung, X-Virtbase-API-Key, Rate Limit, Ratenbegrenzung, Terraform, Skripte]
 publishedAt: 2026-03-19
-lastModified: 2026-05-02
+lastModified: 2026-11-02
 ---
 
-Die öffentliche Virtbase API bietet eine flexible Möglichkeit, um deine gebuchten Dienstleistungen programmatisch zu verwalten. 
-Dazu ist die Erstellung eines API-Schlüssels notwendig, um authentifizierte Anfragen zu senden.
+Mit der Virtbase-API verwaltest du deine Server aus deinen eigenen Skripten und Tools: Power-Aktionen, Backups, Firewallregeln, <Term id="ptr-record">Reverse DNS</Term>, <Term id="ssh-key">SSH-Schlüssel</Term>, <Term id="iso-image">ISO-Images</Term> und Rechnungen. Jede Anfrage authentifizierst du mit einem <Term id="api-key">API-Schlüssel</Term>.
 
-## Wie erstelle ich einen API-Schlüssel?
+Die vollständige Referenz mit allen Endpunkten und einem interaktiven Client findest du in der [API-Dokumentation](/api/docs).
 
-Befolge diese Schritte, um einen API-Schlüssel zu erstellen.
+## Einen API-Schlüssel erstellen
+
+1. Öffne im [Kundenportal](https://app.virtbase.com/account/settings/api) <Ui>Konto</Ui> › <Ui>API</Ui>.
+2. Klicke auf <Ui>API-Schlüssel erstellen</Ui>.
+3. Gib unter <Ui>Name</Ui> ein, wofür der Schlüssel gedacht ist, z. B. `Backup-Skript`.
+4. Wähle unter <Ui>Berechtigungen</Ui> für jeden Bereich, den der Schlüssel braucht, <Ui>Lesen</Ui> oder <Ui>Schreiben</Ui>: <Ui>Server</Ui>, <Ui>Backups</Ui>, <Ui>Firewall</Ui>, <Ui>Konsole</Ui>, <Ui>rDNS</Ui>, <Ui>SSH-Schlüssel</Ui>, <Ui>Rechnungen</Ui> und <Ui>ISO</Ui>. Lass alles andere ausgeschaltet.
+5. Klicke auf <Ui>API-Schlüssel erstellen</Ui>.
+6. Kopiere den Schlüssel aus <Ui>API-Schlüssel erstellt</Ui> und bewahre ihn sicher auf, etwa in einem Passwort-Manager.
+
+![Der Dialog „API-Schlüssel erstellen“ mit einem Namen, Lesezugriff auf Server und Lese- und Schreibzugriff auf Backups](./images/create-api-key-dialog.webp)
 
 <Hint>
-API-Schlüssel haben kein Ablaufdatum, können jedoch nur einmal nach der Erstellung angezeigt werden.
+Der Schlüssel wird nur einmal angezeigt und lässt sich nicht erneut aufrufen. Verlierst du ihn, lösche ihn und erstelle einen neuen.
 </Hint>
 
+API-Schlüssel sind ab dem Tag ihrer Erstellung **ein Jahr** gültig. Erstelle vorher einen neuen Schlüssel und ersetze den alten in deinen Skripten.
 
-1. Rufe die Einstellungen **Account** im [Kundenportal](https://app.virtbase.com/account/settings) auf.
-2. Klicke in der Navigation auf **API**.
-3. Du siehst nun eine List deiner bereits aktiven API-Schlüssel. Klicke hier auf **API-Schlüssel erstellen**.
-4. Vergib hier einen Namen für deinen Schlüssel und bestätige die Erstellung.
-5. Dein API-Schlüssel wird nun einmalig im oberen Bereich angezeigt, speichere ihn gut.
+## Eine Anfrage senden
 
-Dein API-Schlüssel kann direkt für API-Anfragen verwendet werden. Falls du deinen Schlüssel nicht mehr benötigst, kannst du diesen jederzeit löschen.
+Schick den Schlüssel bei jeder Anfrage im Header `X-Virtbase-API-Key` mit. So listest du zum Beispiel deine Server auf:
 
-Falls du weitere Fragen zur Public API hast oder Unterstützung dabei benötigst, dann [kontaktiere unser Support-Team](/de/contact).
+```bash
+curl https://virtbase.com/api/v1/servers \
+  -H "X-Virtbase-API-Key: $VIRTBASE_API_KEY"
+```
 
-## Wie verwende ich die Public API?
+Listen werden über die Query-Parameter `page` (beginnend bei 1) und `per_page` (standardmäßig 10, höchstens 100) seitenweise ausgegeben. Viele Listen lassen sich mit `sort` sortieren, z. B. `sort=name:asc`.
 
-Du findest die vollständige Dokumentation aller API-Endpunkte unter: https://virtbase.com/api/docs
+## Rate Limits
 
-Die Dokumentation ist ausschließlich in Englisch verfügbar.
+Du kannst bis zu **120 Anfragen pro Minute** senden. Für manche Aktionen gelten eigene, strengere Limits, z. B. 5 Power-Aktionen pro Minute oder 5 Backups pro Tag.
 
-Alle Anfragen an die Enpunkte müssen mit dem Header `X-Virtbase-API-Key` erfolgen.
+Jede Antwort zeigt dir, wo du stehst:
 
-## Gibt es ein Rate-Limit?
+- `X-RateLimit-Limit`: die im Zeitfenster erlaubten Anfragen,
+- `X-RateLimit-Remaining`: die Anfragen, die dir noch bleiben,
+- `X-RateLimit-Reset`: wann das volle Kontingent wieder zur Verfügung steht, als Unix-Zeitstempel.
 
-Ja, du kannst mit einem API-Schlüssel maximal 120 Anfragen pro Minute (= 2 Anfragen pro Sekunde) an die API senden.
+Überschreitest du ein Limit, antwortet die API mit `429 Too Many Requests`. Warte bis zum Reset-Zeitpunkt, bevor du es erneut versuchst. Brauchst du ein höheres Limit, [kontaktiere den Support](/de/contact) und beschreibe, was du baust.
 
-Ein höheres Rate-Limit ist nur nach Genehmigung möglich. Kontaktiere dazu unseren Support.
+## Was die API nicht kann
+
+Zu deiner Sicherheit sind manche Aktionen nur im Kundenportal möglich, während du angemeldet bist:
+
+- Server bestellen, verlängern und upgraden,
+- Zahlungsmethoden und Abonnements verwalten,
+- Missbrauchsmeldungen beantworten,
+- deine Daten exportieren und dein Konto löschen.
+
+## Deine Schlüssel schützen
+
+- Gib jedem Skript einen eigenen Schlüssel mit genau den Berechtigungen, die es braucht. Ein Schlüssel, der nur Rechnungen liest, kann keinen Server löschen.
+- Leg einen Schlüssel niemals im Quellcode oder in einem öffentlichen Repository ab. Nutze eine Umgebungsvariable oder einen Secrets-Manager.
+- Lösche Schlüssel, die du nicht mehr nutzt, unter <Ui>Konto</Ui> › <Ui>API</Ui>.
+
+Ist ein Schlüssel an die Öffentlichkeit gelangt, lösche ihn sofort und erstelle einen neuen.
+
+## Wenn es nicht geklappt hat
+
+- **`401 Unauthorized`:** Der Schlüssel fehlt, ist falsch geschrieben, gelöscht oder abgelaufen.
+- **`403 Forbidden`:** Dem Schlüssel fehlt die Berechtigung für diese Aktion, die Aktion ist nur im Kundenportal verfügbar, oder der Server befindet sich in einem Zustand, der sie nicht zulässt, etwa während der Installation oder wenn er deaktiviert ist.
+- **`429 Too Many Requests`:** Du hast ein Rate Limit erreicht. Siehe oben.

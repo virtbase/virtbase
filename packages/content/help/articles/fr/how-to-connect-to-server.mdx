@@ -1,0 +1,77 @@
+---
+title: Comment me connecter à mon serveur pour la première fois ?
+description: Connectez-vous en SSH avec l'utilisateur root, l'adresse IP du serveur indiquée dans le portail client et le mot de passe de votre e-mail de bienvenue ou votre clé SSH. Les installations Windows utilisent le Bureau à distance.
+categories: [getting-started, servers]
+authors: [janic]
+related: [cant-connect-to-server, how-to-reset-root-password, how-to-use-console, how-to-order-server]
+keywords: [SSH, se connecter, connexion, connexion SSH, première connexion, root, PuTTY, terminal, adresse IP, Bureau à distance, Remote Desktop, RDP]
+publishedAt: 2026-11-02
+lastModified: 2026-11-02
+---
+
+Vous vous connectez à un serveur Linux en <Term id="ssh">SSH</Term> avec l'utilisateur `root`. Il vous faut trois choses : l'adresse IP du serveur, qui figure dans le portail client, votre <Term id="ssh-key">clé SSH</Term> ou le mot de passe root, et un client SSH.
+
+## Avant de commencer
+
+- **L'adresse IP** : dans la [liste des serveurs](https://app.virtbase.com/servers), cliquez sur <Ui>Copier l'adresse IP</Ui> à côté de votre serveur. Pour des raisons de sécurité, l'e-mail de bienvenue ne la contient pas.
+- **Le mot de passe ou la clé** :
+  - Si vous avez ajouté une clé SSH lors de la commande, vous vous connectez avec cette clé.
+  - Si vous avez défini un mot de passe root, utilisez-le.
+  - Sinon, le mot de passe généré figure dans l'e-mail <Msg>Votre serveur est prêt</Msg>.
+- **Un client SSH** : Linux, macOS et Windows 10 ou version ultérieure intègrent `ssh` dans le terminal. Sous Windows, ouvrez <Ui>PowerShell</Ui> ou <Ui>Terminal</Ui>.
+
+## Se connecter en SSH
+
+1. Ouvrez un terminal et exécutez la commande suivante, avec l'adresse de votre serveur :
+
+   ```bash
+   ssh root@203.0.113.10
+   ```
+
+   Une adresse IPv6 s'utilise de la même façon : `ssh root@2001:db8::10`.
+
+2. La première fois, SSH vous demande si vous faites confiance au serveur :
+
+   ```text
+   The authenticity of host '203.0.113.10' can't be established.
+   ED25519 key fingerprint is SHA256:...
+   Are you sure you want to continue connecting (yes/no/[fingerprint])?
+   ```
+
+   Tapez `yes` et appuyez sur Entrée. Votre ordinateur se souviendra désormais du serveur.
+
+3. Saisissez le mot de passe root si on vous le demande. Rien ne s'affiche à l'écran pendant la saisie.
+
+Vous êtes connecté lorsque vous voyez une invite de commande comme `root@vm:~#`.
+
+Si vous utilisez une clé qui n'est pas votre clé par défaut, indiquez-la explicitement :
+
+```bash
+ssh -i ~/.ssh/ma_cle root@203.0.113.10
+```
+
+## Premières étapes recommandées
+
+1. **Mettez le système à jour** :
+
+   ```bash tab="Debian / Ubuntu" tab-group="os"
+   apt update && apt upgrade
+   ```
+
+   ```bash tab="AlmaLinux / Rocky Linux / Fedora" tab-group="os"
+   dnf upgrade
+   ```
+
+2. **Changez le mot de passe généré** avec `passwd`, ou passez aux clés SSH et désactivez la connexion par mot de passe.
+3. **Décidez quels ports doivent être joignables** et configurez le [pare-feu](/fr/help/article/how-to-use-server-firewall). Les nouveaux serveurs acceptent tout le trafic entrant.
+4. **Créez une [sauvegarde](/fr/help/article/how-to-backup-server)** une fois le serveur configuré comme vous le souhaitez.
+
+## Windows
+
+Virtbase ne fournit ni images ni licences Windows. Vous pouvez installer Windows vous-même depuis votre propre <Term id="iso-image">image ISO</Term>, avec votre propre licence. Avant l'installation, réglez le BIOS sur <Ui>UEFI</Ui> et le <Term id="tpm">TPM</Term> sur <Ui>v2.0</Ui> dans l'onglet <Ui>Avancé</Ui> ; Windows 11 ne s'installe pas sans cela. Une fois le <Term id="rdp">Bureau à distance</Term> activé dans Windows, connectez-vous à l'adresse IP du serveur avec un client Bureau à distance, sur le port 3389.
+
+## Si cela n'a pas fonctionné
+
+- **La connexion expire ou est refusée** : consultez [Impossible de se connecter à mon serveur](/fr/help/article/cant-connect-to-server).
+- **Le mot de passe n'est pas accepté** : [réinitialisez le mot de passe root](/fr/help/article/how-to-reset-root-password).
+- **Aucun accès réseau** : connectez-vous plutôt via la [console du navigateur](/fr/help/article/how-to-use-console).

@@ -1,38 +1,48 @@
 ---
 title: Wie sicher ist Virtbase?
-description: Erfahre, welche Sicherheitsmaßnahmen Virtbase zum Schutz deiner Daten einsetzt
+description: Das Kundenportal läuft ausschließlich über HTTPS mit strengen Security-Headern, Root-Passwörter werden nie gespeichert, und jede Festplatte in unserem Storage-Cluster ist mit LUKS2 verschlüsselt. Was auf deinem Server läuft, sicherst du selbst ab.
 categories: [account, getting-started]
 authors: [janic]
-related: [about-ddos-protection, how-to-delete-account]
-keywords: [Sicherheit, Datenschutz, Verschlüsselung, Rechenzentrum, TPM]
+related: [about-ddos-protection, how-to-set-up-two-factor-authentication, how-to-use-server-firewall]
+keywords: [Sicherheit, Datenschutz, Verschlüsselung, Rechenzentrum, DSGVO, TPM, LUKS2, HTTPS]
 publishedAt: 2026-03-19
-lastModified: 2026-03-19
+lastModified: 2026-11-02
 ---
 
-Bei Virtbase hat die Sicherheit deiner Daten höchste Priorität. Vom Rechenzentrum bis zur Software setzen wir auf mehrere, voneinander unabhängige Schutzschichten, um ein durchgängig hohes Sicherheitsniveau zu gewährleisten.
+Bei Virtbase hat die Sicherheit deiner Daten oberste Priorität. Vom Rechenzentrum bis zur Software setzen wir auf mehrere, voneinander unabhängige Schutzebenen, um durchgehend ein hohes Sicherheitsniveau zu gewährleisten.
 
-## Wie sind die Website und das Kundenportal geschützt?
+## Wie sind Website und Kundenportal geschützt?
 
-Unsere Website und das Kundenportal sind ausschließlich über verschlüsselte HTTPS-Verbindungen erreichbar. Die gesamte Kommunikation zwischen deinem Browser und unseren Systemen wird mit aktuellen TLS-Standards verschlüsselt, sodass Dritte keine Daten mitlesen können. Durch den Einsatz von HSTS (HTTP Strict Transport Security) wird zudem sichergestellt, dass dein Browser ausnahmslos verschlüsselte Verbindungen nutzt.
+Unsere Website und unser Kundenportal sind ausschließlich über verschlüsselte HTTPS-Verbindungen erreichbar. Die gesamte Kommunikation zwischen deinem Browser und unseren Systemen wird nach aktuellen TLS-Standards verschlüsselt, sodass Dritte deine Daten nicht mitlesen können. Durch HSTS (HTTP Strict Transport Security) stellen wir außerdem sicher, dass dein Browser ausnahmslos verschlüsselte Verbindungen nutzt.
 
-Zum Schutz vor Cross-Site-Scripting (XSS) und anderen Angriffen setzen wir umfassende Security-Header ein. Dazu gehören unter anderem eine strikte Content-Security-Policy, eine Permission-Policy zur Einschränkung von Browser-Funktionen sowie weitere Schutzmaßnahmen auf HTTP-Ebene. Alle eingebundenen Skripte und Stylesheets werden zusätzlich mit SHA-384 Subresource Integrity abgesichert, sodass manipulierte Ressourcen vom Browser automatisch blockiert werden.
+Umfangreiche Security-Header schützen vor Cross-Site-Scripting (XSS) und anderen Angriffen. Dazu gehören eine strikte Content Security Policy, eine Permissions Policy, die Browserfunktionen einschränkt, und weitere Schutzmaßnahmen auf HTTP-Ebene. Alle eingebundenen Skripte und Stylesheets sind zusätzlich mit SHA-384 Subresource Integrity abgesichert, sodass der Browser manipulierte Ressourcen automatisch blockiert.
 
-Bei der Einbindung externer Inhalte gehen wir äußerst restriktiv vor. Nahezu alle Ressourcen — einschließlich Schriftarten, Skripte und Stylesheets — werden auf unserer eigenen Website gehostet. Dadurch minimieren wir Abhängigkeiten von Drittanbietern und reduzieren potenzielle Angriffsvektoren.
+Beim Einbinden externer Inhalte gehen wir äußerst restriktiv vor. Nahezu alle Ressourcen – darunter Schriftarten, Skripte und Stylesheets – liegen auf unserer eigenen Website. Das minimiert Abhängigkeiten von Drittanbietern und reduziert mögliche Angriffsflächen.
 
-Virtbase speichert keine Root-Passwörter deiner Server. Zugangsdaten werden ausschließlich bei der Ersteinrichtung einmalig angezeigt bzw. per E-Mail versendet und anschließend nicht in unseren Systemen hinterlegt.
+Virtbase speichert keine Root-Passwörter deiner Server. Zugangsdaten werden nur einmal bei der Ersteinrichtung angezeigt oder per E-Mail verschickt und danach nicht in unseren Systemen gespeichert.
 
-Darüber hinaus sichern wir das Kundenportal durch Maßnahmen wie Rate-Limiting und Web Application Firewalls ab, um unbefugte Zugriffe frühzeitig zu erkennen und zu blockieren.
+Zusätzlich sichern wir das Kundenportal mit Maßnahmen wie Rate Limiting und Web Application Firewalls ab, um unberechtigte Zugriffe frühzeitig zu erkennen und zu blockieren.
 
-## Wie sind meine Server und deren Daten geschützt?
+## Wie sind meine Server und ihre Daten geschützt?
 
-Die Sicherheit beginnt beim Rechenzentrum selbst. Unsere Infrastruktur befindet sich in einem zertifizierten Rechenzentrum mit einem mehrstufigen physischen Sicherheitssystem — unbefugte Personen erhalten keinen Zutritt.
+Sicherheit beginnt schon im Rechenzentrum. Unsere Infrastruktur steht in einem zertifizierten Rechenzentrum mit einem mehrstufigen physischen Sicherheitskonzept – Unbefugte erhalten keinen Zutritt.
 
-Im Gegensatz zu vielen anderen Anbietern setzen wir zusätzlich auf eine erweiterte Boot-Sperre mit TPM sowie BIOS-Passwörter auf allen Hostsystemen. Damit wird sichergestellt, dass selbst bei physischem Zugang keine unautorisierte Manipulation der Systeme möglich ist.
+Anders als viele andere Anbieter setzen wir auf allen Hostsystemen zusätzlich eine erweiterte Boot-Sperre mit <Term id="tpm">TPM</Term> und BIOS-Passwörtern ein. So ist selbst bei physischem Zugriff keine unbefugte Manipulation der Systeme möglich.
 
-Darüber hinaus sind sämtliche Festplatten in unserem Ceph-Cluster mit einer bewährten LUKS2-Verschlüsselung gesichert. Deine Daten sind somit auch auf Speicherebene vollständig verschlüsselt und vor unbefugtem Zugriff geschützt.
+Außerdem sind alle Festplatten in unserem Ceph-Cluster mit der bewährten LUKS2-Verschlüsselung gesichert. Deine Daten sind damit auch auf Speicherebene vollständig verschlüsselt und vor unbefugtem Zugriff geschützt.
+
+## Was kann ich tun, um mein Konto und meine Server zu schützen?
+
+Wir sichern die Plattform ab – was auf deinem Server läuft, liegt in deiner Hand. Diese Schritte bringen am meisten:
+
+- **Schalte die [Zwei-Faktor-Authentifizierung](/de/help/article/how-to-set-up-two-factor-authentication) ein** oder nutze einen <Term id="passkey">Passkey</Term> für dein Virtbase-Konto.
+- **Melde dich mit [SSH-Schlüsseln](/de/help/article/how-to-manage-ssh-keys) an deinen Servern an** statt mit Passwörtern.
+- **Schließe jeden Port, den du nicht brauchst,** mit der [Firewall](/de/help/article/how-to-use-server-firewall). Ihre Empfehlungen weisen dich auf Datenbanken und andere Dienste hin, die aus dem Internet erreichbar sind.
+- **Installiere regelmäßig Sicherheitsupdates,** z. B. mit `unattended-upgrades` unter Debian und Ubuntu.
+- **Gib API-Schlüsseln nur die Berechtigungen, die sie brauchen,** und lösche Schlüssel, die du nicht mehr nutzt.
 
 ## Welche Daten werden verarbeitet?
 
-Eine vollständige Übersicht der Daten, die im Rahmen unserer Dienstleistungen verarbeitet werden, findest du in unserer [Datenschutzerklärung](/de/legal/privacy).
+Eine vollständige Übersicht über die Daten, die im Rahmen unserer Dienste verarbeitet werden, findest du in unserer [Datenschutzerklärung](/de/legal/privacy).
 
-Falls du weitere Fragen zum Thema Sicherheit oder Datenschutz hast, [kontaktiere unser Support-Team](/de/contact).
+Wenn du weitere Fragen zu Sicherheit oder Datenschutz hast, [kontaktiere unser Support-Team](/de/contact).

@@ -72,6 +72,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...HELP_CATEGORIES.map((category) =>
       publicPath({ kind: "help-category", category }),
     ),
+    publicPath({ kind: "help-glossary" }),
     "/contact",
   ];
 

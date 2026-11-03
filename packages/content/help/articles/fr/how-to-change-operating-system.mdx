@@ -1,42 +1,60 @@
 ---
-title : Comment changer le système d'exploitation de mon serveur Virtbase ?
-description : Découvrez comment réinstaller votre serveur Virtbase avec un autre système d'exploitation.
+title: Comment changer le système d'exploitation de mon serveur ?
+description: Réinstallez votre serveur avec un autre système d'exploitation depuis l'onglet Aperçu. Tout le disque est effacé ; vos adresses IP, sauvegardes et règles de pare-feu sont conservées. Vous définissez au passage un nouveau mot de passe root.
 categories: [servers, getting-started]
 authors: [janic]
-related: [how-to-backup-server]
-popular: 3
-keywords : [Réinstallation, serveur, système d'exploitation]
+related: [how-to-backup-server, how-to-install-from-iso, how-to-connect-to-server]
+popular: 6
+keywords: [réinstaller, réinstallation, changer de système d'exploitation, changer d'OS, réinstaller un VPS, réinitialiser le serveur, nouvelle installation, reinstall, Debian, Ubuntu, AlmaLinux, Rocky Linux]
 publishedAt: 2026-03-19
-lastModified: 2026-06-17
+lastModified: 2026-11-02
 ---
 
-Il arrive souvent que les exigences changent et que vous ayez besoin d'un autre système d'exploitation sur votre serveur.
-Vous pouvez modifier le système d'exploitation de votre serveur en quelques clics et en quelques secondes dans l'espace client.
+Vous pouvez réinstaller votre serveur en quelques clics avec n'importe quel système d'exploitation de notre liste. La réinstallation **efface tout le contenu du disque** et remet le serveur en place de zéro, comme si vous veniez de le commander.
 
-## Comment lancer la réinstallation ?
+Ce qui ne change pas : les adresses IP du serveur, son forfait et sa période, ses règles de pare-feu, ses entrées de <Term id="ptr-record">DNS inversé</Term> et ses sauvegardes.
 
-Suivez ces étapes pour réinitialiser votre serveur :
+## Avant de commencer
 
-<Hint>
-Lors d'une réinstallation du système d'exploitation, toutes les données sont irrévocablement supprimées.
-Nous vous recommandons de commencer par effectuer une sauvegarde de la configuration actuelle.
-</Hint>
+- Créez une [sauvegarde](/fr/help/article/how-to-backup-server) si le serveur contient quoi que ce soit dont vous pourriez encore avoir besoin. Les sauvegardes sont conservées lors de la réinstallation : vous pouvez donc revenir en arrière.
+- Choisissez un nouveau mot de passe root : de 8 à 64 caractères, dont au moins une lettre majuscule, une lettre minuscule et un chiffre. Virtbase ne le stocke pas.
 
-1. Accédez à votre **serveur** dans le [portail client](https://app.virtbase.com/servers).
-2. Cliquez sur **Aperçu** dans la navigation.
-3. Sur le côté gauche, cliquez sur **Modifier le système d'exploitation**.
-4. Vous pouvez ici sélectionner votre nouveau système d'exploitation et définir un nouveau mot de passe root. 
-Votre mot de passe root n'est pas enregistré et ne peut pas être affiché à nouveau, veuillez donc bien le noter.
+## Changer le système d'exploitation
 
-![Boîte de dialogue Réinitialiser le système d'exploitation](./images/how-to-change-operating-system.png)
+1. Dans le [portail client](https://app.virtbase.com/servers), cliquez sur <Ui>Voir</Ui> à côté de votre serveur.
+2. Sur la page <Ui>Aperçu</Ui>, cliquez sur <Ui>Changer de système d'exploitation</Ui> dans la carte <Ui>Serveur</Ui>.
+3. Sous <Ui>Nouveau système d'exploitation</Ui>, choisissez le système à installer.
+4. Sous <Ui>Nouveau mot de passe root</Ui>, saisissez le nouveau mot de passe.
+5. Confirmez.
 
-5. Confirmez la réinitialisation pour lancer le processus.
+![La boîte de dialogue « Changer de système d'exploitation » avec l'avertissement, Debian 13 sélectionné et un nouveau mot de passe root](./images/change-os-dialog.webp)
 
-Votre serveur sera alors arrêté et le système d'exploitation sera changé.
+Le serveur affiche <Ui>Le serveur est en cours d'installation</Ui> et reste hors ligne jusqu'à ce que le nouveau système soit en place. Une fois la bannière disparue, vous pouvez vous connecter.
 
-Si vous avez d'autres questions sur nos systèmes d'exploitation ou si vous avez besoin d'aide, [contactez notre équipe d'assistance](/fr/contact).
+Si vous avez ajouté une <Term id="ssh-key">clé SSH</Term> lors de la commande du serveur, elle est de nouveau configurée sur le nouveau système.
 
-## Comment puis-je télécharger mes propres fichiers ISO ?
+## Vérifier que cela a fonctionné
 
-Tu peux télécharger et intégrer jusqu'à trois fichiers ISO personnalisés pour tes serveurs sur le portail client. 
-Tu les trouveras dans tes [paramètres de compte](https://app.virtbase.com/account/settings/custom-images).
+Connectez-vous avec le nouveau mot de passe :
+
+```bash
+ssh root@<votre-ip>
+```
+
+<Term id="ssh">SSH</Term> vous avertira avec `WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!`. C'est normal : le nouveau système a de nouvelles clés d'hôte. Supprimez l'ancienne entrée et reconnectez-vous :
+
+```bash
+ssh-keygen -R <votre-ip>
+```
+
+Le champ <Ui>Système d'exploitation</Ui> de la page <Ui>Aperçu</Ui> affiche le nouveau système.
+
+## Installer un système absent de la liste
+
+Pour installer un système que nous ne proposons pas, par exemple Windows, pfSense ou la distribution de votre choix, utilisez votre propre <Term id="iso-image">image ISO</Term>. Consultez [Comment installer un système d'exploitation depuis ma propre ISO ?](/fr/help/article/how-to-install-from-iso)
+
+## Si cela n'a pas fonctionné
+
+- <Msg>Impossible de changer le système d'exploitation.</Msg> Le serveur est suspendu ou encore en cours d'installation, ou le mot de passe ne respecte pas les exigences. Vous pouvez lancer au maximum deux réinstallations par minute.
+- **Le système que vous voulez ne figure pas dans la liste** : seuls les systèmes disponibles sur le matériel sur lequel tourne votre serveur sont proposés. Utilisez [votre propre ISO](/fr/help/article/how-to-install-from-iso), ou [contactez le support](/fr/contact) pour en faire la demande.
+- **Le serveur reste sur Le serveur est en cours d'installation pendant plus de 30 minutes** : [contactez le support](/fr/contact) en indiquant l'<Ui>ID du serveur</Ui>, qui figure dans l'onglet <Ui>Avancé</Ui>.

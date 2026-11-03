@@ -1,15 +1,15 @@
 ---
 title: What DDoS protection does Virtbase use?
-description: Learn more about the DDoS protection used at Virtbase.
+description: Every Virtbase server is protected by aurologic's always-on DDoS filtering at no extra cost. It covers TCP and UDP services, including game servers, and needs no setup.
 categories: [networking]
 authors: [janic]
-related: [how-to-use-server-firewall, about-security]
+related: [how-to-use-server-firewall, about-security, cant-connect-to-server]
 keywords: [server, DDoS, DDoS protection, protection, attack]
 publishedAt: 2026-03-19
-lastModified: 2026-03-19
+lastModified: 2026-11-02
 ---
 
-All Virtbase servers are protected by **aurologic GmbH**'s DDoS protection. 
+All Virtbase servers are protected by **aurologic GmbH**'s <Term id="ddos">DDoS</Term> protection. 
 This offers excellent protection against large attacks on the one hand, 
 while on the other hand, packet filtering is very accurate and fine-grained. 
 
@@ -28,7 +28,13 @@ You don't need to do anything else to benefit from the protection.
 All common network services and protocols are protected. 
 These include TCP and UDP-based services. Game server protocols are also recognized and specifically protected.
 
+## Does DDoS protection replace a firewall?
+
+No. DDoS protection filters floods of attack traffic before they reach our network. It does not decide which of your services should be reachable. Use the [firewall](/en/help/article/how-to-use-server-firewall) to close ports you don't need.
+
 ## Will my server be accessible during an attack?
 
 Yes, DDoS protection is specially optimized for web and game servers. 
 The use of challenge response mechanisms ensures that your server remains accessible even during an active attack.
+
+If your server is unreachable and you suspect an attack, work through [I can't connect to my server](/en/help/article/cant-connect-to-server) first, then [contact support](/en/contact) with your <Ui>Server ID</Ui> and the time the problem started.

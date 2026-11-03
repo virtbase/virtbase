@@ -1828,9 +1828,9 @@ msgid "Back to customer portal"
 msgstr "Terug naar klantenportaal"
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx
-msgctxt "lVV2Zz"
-msgid "Need help? Contact us ↗"
-msgstr "Hulp nodig? Neem contact met ons op ↗"
+msgctxt "nCYYaf"
+msgid "Need help? Contact us"
+msgstr "Hulp nodig? Neem contact met ons op"
 
 #: src/app/(public)/[locale]/contact/page.tsx
 #: src/ui/footer.tsx
@@ -1913,9 +1913,9 @@ msgid "Contact us and get quick help."
 msgstr "Neem contact met ons op en krijg snel hulp."
 
 #: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
-msgctxt "IAMn0B"
-msgid "Still have questions? Contact us ↗"
-msgstr "Heeft u nog vragen? Neem contact met ons op ↗"
+msgctxt "Va6b-q"
+msgid "Still have questions? Contact us"
+msgstr "Heb je nog vragen? Neem contact met ons op"
 
 #: src/app/(public)/[locale]/help/page.tsx
 msgctxt "VQvikz"
@@ -6561,6 +6561,16 @@ msgctxt "Dnob31"
 msgid "Operational"
 msgstr "Operationeel"
 
+#: src/features/glossary/glossary.ts
+msgctxt "CwPawm"
+msgid "Glossary"
+msgstr "Woordenlijst"
+
+#: src/features/glossary/glossary.ts
+msgctxt "0oRAya"
+msgid "Short explanations of the technical terms used in the Virtbase Help Center, from PTR record to vCore."
+msgstr "Korte uitleg van de technische termen in het Virtbase Helpcentrum, van PTR-record tot vCore."
+
 #: src/features/help/categories.tsx
 msgctxt "EKtClK"
 msgid "Getting started"
@@ -8817,6 +8827,21 @@ msgstr "Wachtwoord verbergen"
 msgctxt "jr1I15"
 msgid "By continuing, you agree to {appName}'s <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>"
 msgstr "Door verder te gaan, ga je akkoord met de <terms>Servicevoorwaarden</terms> en het <privacy>Privacybeleid</privacy> van {appName}"
+
+#: src/ui/mdx/glossary-term.tsx
+msgctxt "Y-U_95"
+msgid "Read more in the glossary"
+msgstr "Meer in de woordenlijst"
+
+#: src/ui/mdx/help-link.tsx
+msgctxt "qDQRSE"
+msgid "customer portal, opens in a new tab"
+msgstr "klantenportaal, opent in een nieuw tabblad"
+
+#: src/ui/mdx/help-link.tsx
+msgctxt "btLB8l"
+msgid "external website, opens in a new tab"
+msgstr "externe website, opent in een nieuw tabblad"
 
 #: src/ui/nav-user.tsx
 msgctxt "f-sh2j"

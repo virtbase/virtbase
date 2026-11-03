@@ -1,0 +1,97 @@
+---
+title: Comment sécuriser un nouveau serveur ?
+description: "Sept étapes pour la première heure d'un nouveau serveur Linux : mises à jour, mises à jour de sécurité automatiques, clés SSH, aucune connexion par mot de passe, un pare-feu qui n'ouvre que ce que vous utilisez, fail2ban et une première sauvegarde."
+categories: [getting-started, servers]
+authors: [janic]
+related: [how-to-connect-to-server, how-to-manage-ssh-keys, how-to-use-server-firewall, how-to-backup-server]
+keywords: [sécuriser un serveur, sécuriser un VPS, durcir un serveur, durcissement, hardening, sécurité du serveur, premiers pas, sécuriser SSH, fail2ban, unattended-upgrades, mises à jour automatiques, pare-feu, serveur piraté]
+publishedAt: 2026-11-02
+lastModified: 2026-11-02
+---
+
+Un serveur connecté à Internet est analysé à la recherche de failles quelques minutes seulement après sa mise en ligne. Virtbase protège le réseau et la plateforme, mais c'est à vous de sécuriser ce qui tourne sur votre serveur. Ces sept étapes couvrent l'essentiel et prennent moins d'une heure. Les commandes sont données pour Debian et Ubuntu, ainsi que pour AlmaLinux, Rocky Linux et Fedora : choisissez votre système une fois, et chaque article affiche ses commandes.
+
+Gardez la [console du navigateur](/fr/help/article/how-to-use-console) à l'esprit : si une étape vous coupe l'accès <Term id="ssh">SSH</Term>, elle vous permet toujours d'accéder au serveur.
+
+## 1. Installer toutes les mises à jour
+
+```bash tab="Debian / Ubuntu" tab-group="os"
+apt update && apt full-upgrade
+reboot
+```
+
+```bash tab="AlmaLinux / Rocky Linux / Fedora" tab-group="os"
+dnf upgrade --refresh
+reboot
+```
+
+## 2. Installer automatiquement les mises à jour de sécurité
+
+```bash tab="Debian / Ubuntu" tab-group="os"
+apt install unattended-upgrades
+dpkg-reconfigure -plow unattended-upgrades
+```
+
+```bash tab="AlmaLinux / Rocky Linux / Fedora" tab-group="os"
+dnf install dnf-automatic
+systemctl enable --now dnf-automatic-install.timer
+```
+
+Les mises à jour sont désormais installées chaque jour, sans que vous ayez besoin de vous connecter. Sous Fedora 41 et versions ultérieures, le paquet s'appelle `dnf5-plugin-automatic` et le timer `dnf5-automatic.timer`.
+
+## 3. Se connecter avec une clé SSH
+
+Si vous n'avez pas ajouté de <Term id="ssh-key">clé SSH</Term> lors de la commande, copiez-en une sur le serveur depuis votre ordinateur :
+
+```bash
+ssh-copy-id root@<votre-ip>
+```
+
+Consultez [Comment ajouter une clé SSH ?](/fr/help/article/how-to-manage-ssh-keys) si vous n'en avez pas encore. Vérifiez que vous pouvez vous connecter sans mot de passe avant de continuer.
+
+## 4. Désactiver la connexion par mot de passe
+
+Dans `/etc/ssh/sshd_config`, définissez :
+
+```text title="/etc/ssh/sshd_config"
+PasswordAuthentication no
+PermitRootLogin prohibit-password
+```
+
+Appliquez la modification avec `systemctl restart ssh` (`sshd` sous AlmaLinux, Rocky Linux et Fedora). Gardez votre session en cours ouverte et testez d'abord une nouvelle connexion dans un second terminal. La plupart des attaques contre les serveurs consistent à deviner des mots de passe ; sans connexion par mot de passe, elles ne mènent nulle part.
+
+## 5. N'ouvrir que les ports que vous utilisez
+
+Dans l'onglet [Pare-feu](/fr/help/article/how-to-use-server-firewall) de votre serveur :
+
+1. Ajoutez des règles <Ui>Accepter</Ui> pour SSH (port `22`) et pour chaque service qui doit être joignable, par exemple `80` et `443` pour un site web.
+2. Réglez <Ui>Paquets entrants</Ui> sur <Ui>Ignorer</Ui>.
+
+Consultez ensuite les <Ui>Recommandations</Ui> dans ce même onglet. Elles vous avertissent des bases de données et autres services accessibles depuis Internet. Une base de données ne devrait presque jamais être ouverte à tout le monde : liez-la à `127.0.0.1`, ou n'autorisez que les adresses qui en ont besoin.
+
+## 6. Bloquer les tentatives de connexion répétées
+
+```bash tab="Debian / Ubuntu" tab-group="os"
+apt install fail2ban
+systemctl enable --now fail2ban
+```
+
+```bash tab="AlmaLinux / Rocky Linux / Fedora" tab-group="os"
+dnf install epel-release    # AlmaLinux et Rocky Linux uniquement
+dnf install fail2ban
+systemctl enable --now fail2ban
+```
+
+fail2ban bloque les adresses qui échouent plusieurs fois à se connecter. Ses paramètres par défaut protègent SSH.
+
+## 7. Créer une sauvegarde
+
+Une fois le serveur configuré comme vous le souhaitez, [créez une sauvegarde](/fr/help/article/how-to-backup-server). Si quelque chose tourne mal plus tard, vous pourrez revenir à cet état en quelques minutes.
+
+## Et ensuite
+
+- Exécutez chaque application sous son propre utilisateur, et non en tant que `root`.
+- Tenez à jour les logiciels que vous avez installés vous-même : les applications web comme WordPress ou Nextcloud sont une porte d'entrée fréquente.
+- Sécurisez aussi votre compte Virtbase, avec l'[authentification à deux facteurs ou une clé d'accès](/fr/help/article/how-to-set-up-two-factor-authentication).
+
+Si vous pensez que votre serveur a été compromis, consultez [Que faire si je reçois un signalement d'abus ?](/fr/help/article/about-abuse-reports#trouver-la-cause) : les vérifications qui y sont décrites sont utiles même sans signalement.

@@ -20,9 +20,6 @@ import type { ComponentProps } from "react";
 
 /**
  * Long-form typography for rendered MDX.
- *
- * The help and legal pages still carry their own copy of these classes; they
- * can adopt this once there is a reason to touch them.
  */
 export function Prose({ className, ...props }: ComponentProps<"article">) {
   return (
@@ -31,6 +28,7 @@ export function Prose({ className, ...props }: ComponentProps<"article">) {
         "prose prose-neutral dark:prose-invert prose-headings:relative w-full max-w-none prose-headings:scroll-mt-20",
         "prose-a:font-medium prose-a:text-muted-foreground prose-thead:text-lg prose-a:underline-offset-4 transition-all prose-a:hover:text-foreground",
         "prose-headings:prose-a:text-foreground prose-headings:prose-a:no-underline",
+        "prose-code:rounded-[5px] prose-code:border prose-code:bg-muted prose-code:p-0.75 prose-code:font-normal prose-code:text-[0.8125em] prose-code:before:content-none prose-code:after:content-none",
         className,
       )}
       {...props}
