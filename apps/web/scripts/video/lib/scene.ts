@@ -112,8 +112,8 @@ const GUEST_NAME = "vb-dev-firewall";
 
 const NETWORK = {
   mac: "BC:24:11:00:94:21",
-  address: "172.30.0.91/24",
-  gateway: "172.30.0.1",
+  address: "10.0.2.91/24",
+  gateway: "10.0.2.2",
 } as const;
 
 /**
