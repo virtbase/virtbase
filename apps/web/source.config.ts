@@ -39,6 +39,7 @@ export const legalCollection = defineCollections({
   schema: z4.object({
     title: z4.string(),
     description: z4.string(),
+    pdf: z4.string().optional(),
     lastModified,
   }),
 });

@@ -208,11 +208,29 @@ export async function Footer({ className }: { className?: string }) {
                   </li>
                   <li>
                     <IntlLink
+                      href="/legal/dpa"
+                      prefetch={false}
+                      className={linkListItemClassName}
+                    >
+                      {t("Data Processing Agreement")}
+                    </IntlLink>
+                  </li>
+                  <li>
+                    <IntlLink
                       href="/legal/terms"
                       prefetch={false}
                       className={linkListItemClassName}
                     >
                       {t("Terms of Use")}
+                    </IntlLink>
+                  </li>
+                  <li>
+                    <IntlLink
+                      href="/legal/acceptable-use"
+                      prefetch={false}
+                      className={linkListItemClassName}
+                    >
+                      {t("Acceptable Use Policy")}
                     </IntlLink>
                   </li>
                   <li>
@@ -231,6 +249,15 @@ export async function Footer({ className }: { className?: string }) {
                       className={linkListItemClassName}
                     >
                       {t("Legal Notice")}
+                    </IntlLink>
+                  </li>
+                  <li>
+                    <IntlLink
+                      href="/legal/supplier-information"
+                      prefetch={false}
+                      className={linkListItemClassName}
+                    >
+                      {t("Supplier Information")}
                     </IntlLink>
                   </li>
                 </ul>

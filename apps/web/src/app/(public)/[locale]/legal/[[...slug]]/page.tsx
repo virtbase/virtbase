@@ -15,6 +15,9 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { cn } from "@virtbase/ui";
+import { buttonVariants } from "@virtbase/ui/button";
+import { LucideDownload } from "@virtbase/ui/icons";
 import {
   constructMetadata,
   constructOpengraphUrl,
@@ -108,6 +111,11 @@ export default async function LegalPage({
 
   const MDX = page.data.body;
 
+  // Rendered into `public/` before the build by `scripts/legal-pdfs.ts`, for
+  // every page in every locale, so the link always has a file behind it.
+  const path = page.slugs.join("/");
+  const pdfUrl = `/${locale}/legal/${path}.pdf`;
+
   return (
     <main>
       <BlockWrapper variant="hero-full">
@@ -115,6 +123,14 @@ export default async function LegalPage({
           <h1 className="mt-5 text-center font-medium text-4xl text-foreground sm:text-5xl sm:leading-[1.15]">
             {page.data.title}
           </h1>
+          <a
+            href={pdfUrl}
+            download={`virtbase-${path}-${locale}.pdf`}
+            className={cn(buttonVariants({ variant: "outline" }), "mt-8")}
+          >
+            <LucideDownload aria-hidden="true" />
+            {t("Download as PDF")}
+          </a>
         </div>
       </BlockWrapper>
       <BlockWrapper>
@@ -126,7 +142,7 @@ export default async function LegalPage({
           </div>
           <div className="hidden md:block">
             <div className="sticky top-20 flex-col">
-              <TableOfContents items={page.data.toc} />
+              <TableOfContents items={page.data.toc} maxDepth={2} />
             </div>
           </div>
         </div>

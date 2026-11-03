@@ -145,6 +145,30 @@ the oldest commit in the clone, so the project sets `VERCEL_DEEP_CLONE=true`.
 Turborepo cannot see git history, so that variable is part of the build's cache
 key.
 
+## Legal PDFs
+
+Every legal page is also a PDF, at `/<locale>/legal/<slug>.pdf`, linked from a
+download button under the page's title. `apps/web/scripts/legal-pdfs.ts`
+renders them with `@virtbase/pdf` into `apps/web/public/` before every build,
+so they are static files the CDN serves and an email can attach. A locale
+without its own file gets the `en` document, as the page does.
+
+The PDF is rendered from the document's Markdown, so a legal page sticks to
+what has a print form: Markdown, `<br/>` and `<sup>`/`<sub>` around text.
+`<Steps>` and `<Step>` are dropped and their content kept. Anything else fails
+`scripts/__tests__/legal-pdfs.test.ts` in CI rather than the deploy.
+
+A document that exists only as a PDF, such as the supplier information, names
+its template in the frontmatter. The page is then the short text around the
+download, and the PDF is the template rather than the page:
+
+```yaml
+pdf: supplier-information
+```
+
+The templates themselves are listed in
+[`packages/pdf/README.md`](../pdf/README.md#templates).
+
 ## Adding a document
 
 1. Write `<collection>/en/<slug>.mdx` with the frontmatter its collection's

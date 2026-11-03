@@ -59,6 +59,10 @@
       "entry": ["scripts/*.ts"],
       "project": ["**/*.{ts,tsx}!", "!scripts/**!", "!**/__tests__/**!"]
     },
+    "packages/pdf": {
+      "entry": ["scripts/*.ts"],
+      "project": ["**/*.ts!", "!scripts/**!", "!**/__tests__/**!"]
+    },
     "packages/utils": {
       "project": ["**/*.{ts,tsx}!", "!**/__tests__/**!"]
     },

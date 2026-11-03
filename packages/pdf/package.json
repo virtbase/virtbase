@@ -1,0 +1,26 @@
+{
+  "name": "@virtbase/pdf",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "bun test --timeout 20000",
+    "examples": "bun scripts/examples.ts",
+    "clean": "git clean -xdf .cache .turbo build dist node_modules"
+  },
+  "dependencies": {
+    "@myriaddreamin/typst-ts-node-compiler": "0.7.0",
+    "mdast-util-from-markdown": "2.1.0",
+    "mdast-util-gfm": "3.1.0",
+    "micromark-extension-gfm": "3.0.0"
+  },
+  "devDependencies": {
+    "@types/mdast": "4.0.4",
+    "@virtbase/tsconfig": "workspace:*",
+    "typescript": "catalog:"
+  }
+}

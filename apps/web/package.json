@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "bun with-env next dev",
-    "build": "bun with-env next build",
+    "build": "bun scripts/legal-pdfs.ts && bun with-env next build",
+    "legal-pdfs": "bun scripts/legal-pdfs.ts",
     "start": "bun with-env next start",
     "typecheck": "bun with-env next typegen && tsc --noEmit",
     "test": "bun --env-file=../../.env.test test --timeout 20000 --isolate",
@@ -74,6 +75,7 @@
     "@types/node": "26.6.5",
     "@types/react": "catalog:react",
     "@types/react-dom": "catalog:react",
+    "@virtbase/pdf": "workspace:*",
     "@virtbase/tailwind-config": "workspace:*",
     "@virtbase/test-utils": "workspace:*",
     "@virtbase/tsconfig": "workspace:*",

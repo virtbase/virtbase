@@ -1,443 +1,206 @@
 ---
 title: Conditions Générales de Vente (CGV)
-description: Conditions Générales de Vente (CGV) de Virtbase pour les services d'hébergement, conclusion du contrat, conditions de paiement et responsabilité.
-lastModified: 2026-03-19
+description: Conditions générales de vente de Virtbase pour les serveurs virtuels - conclusion du contrat, durée et résiliation, paiement, sauvegardes, abus, responsabilité et suppression des données.
 ---
 
-<Steps>
+La version allemande des présentes conditions fait foi. Cette traduction est fournie à titre informatif.
 
-<Step>
-## Champ d'Application
+## § 1 Champ d'application et parties au contrat
 
-**1.1 Applicabilité aux Contrats**
+1. Les présentes CGV s'appliquent à tous les contrats portant sur les services de la marque « Virtbase » conclus entre
 
-Les présentes Conditions Générales de Vente (ci-après « CGV ») de BeastHost UG (haftungsbeschränkt) (ci-après « Fournisseur » et « Virtbase »),
-s'appliquent à tous les contrats qu'un consommateur ou un entrepreneur (ci-après « Client ») conclut avec le Fournisseur concernant les services
-présentés par le Fournisseur sur son site web. L'inclusion des propres conditions du Client est par la présente rejetée, sauf
-accord contraire.
+   **BeastHost UG (haftungsbeschränkt)**\
+   Lambarenestraße 21A, 09350 Lichtenstein/Sa., Allemagne\
+   Tribunal d'instance (Amtsgericht) de Chemnitz, HRB 37032, gérant : Janic Bellmann\
+   E-mail : [support@virtbase.com](mailto:support@virtbase.com), téléphone : [+49 7243 2005 862](tel:+4972432005862)
 
-**1.2 Définition du Consommateur**
+   (ci-après « Virtbase », « nous ») et ses clients (ci-après « Client », « vous »).
 
-Un consommateur au sens des présentes CGV est toute personne physique qui conclut une transaction juridique à des fins qui ne sont principalement
-ni attribuables à son activité commerciale ni à son activité professionnelle indépendante.
+2. Est consommateur toute personne physique qui conclut un contrat à des fins qui n'entrent pas principalement dans le cadre de son activité commerciale ou professionnelle indépendante (§ 13 BGB, Code civil allemand). Est professionnel toute personne physique ou morale ou société de personnes dotée de la capacité juridique qui, lors de la conclusion du contrat, agit dans l'exercice de son activité commerciale ou professionnelle indépendante (§ 14 BGB). Les dispositions qui ne s'appliquent qu'aux consommateurs ou qu'aux professionnels sont signalées comme telles.
+3. Le contrat se compose des éléments suivants, dans cet ordre de priorité :\
+   a) la description du forfait (description du service) et le prix affichés lors de la commande,\
+   b) les présentes CGV,\
+   c) la politique d'utilisation acceptable (Acceptable Use Policy, ci-après « AUP ») à l'adresse [virtbase.com/fr/legal/acceptable-use](/fr/legal/acceptable-use),\
+   d) pour les professionnels, l'accord de traitement des données (DPA) visé au § 17.
+4. Les conditions propres au Client ne s'appliquent que si nous les acceptons expressément sous forme textuelle.
 
-**1.3 Définition de l'Entrepreneur**
+## § 2 Services
 
-Un entrepreneur au sens des présentes CGV est une personne physique ou morale ou une société de personnes dotée de la capacité juridique,
-qui agit dans l'exercice de son activité commerciale ou professionnelle indépendante lors de la conclusion d'une transaction juridique.
-</Step>
+1. Virtbase met à la disposition du Client des serveurs virtuels basés sur KVM (ci-après « Serveurs ») dotés des ressources indiquées dans la description du forfait (p. ex. vCores, mémoire vive, stockage NVMe, adresse IPv4, sous-réseau IPv6, connexion). Les Serveurs se trouvent dans le centre de données de SkyLink Data Center B.V. à Eygelshoven (Pays-Bas). Le trafic entrant passe par un filtre DDoS.
+2. **Serveurs non gérés.** Les Serveurs ne sont pas gérés (« unmanaged »). Le Client dispose d'un accès administrateur complet (root/administrateur) et est seul responsable de l'installation, de la configuration, de la sécurité, des mises à jour et de l'exploitation du système d'exploitation et de tous les logiciels du Serveur. Virtbase n'intervient pas sur le Serveur, sauf dans les cas prévus par les présentes CGV.
+3. Font également partie des services : l'espace client (app.virtbase.com), l'interface de programmation (API), la console (VNC), un pare-feu au niveau de l'hyperviseur, la configuration d'entrées DNS inversé, la réinstallation à partir de modèles fournis ou de vos propres images ISO, la fonction de sauvegarde visée au § 11, ainsi que le bot Discord et l'application iOS. Les fonctions optionnelles comme l'assistant de pare-feu par IA sont des offres complémentaires que le Client n'est pas tenu d'utiliser.
+4. **Réseau et trafic.** La prestation de Virtbase en matière de transmission de données s'arrête au point de raccordement de son propre réseau (AS213661) à Internet. Virtbase n'est pas responsable de la transmission en dehors de ce réseau. Lorsque la description du forfait indique un « trafic illimité », le volume de données transféré n'est ni facturé ni limité ; la bande passante est limitée par la connexion indiquée. Virtbase peut réduire temporairement la bande passante d'un Serveur si son utilisation prolongée porte concrètement atteinte à l'exploitation du réseau ou aux performances pour d'autres clients ; Virtbase en informe le Client. Une telle atteinte existe notamment en cas d'utilisation prolongée de la connexion à pleine charge.
+5. **Adresses IP.** Les adresses IP sont mises à disposition pour la durée du contrat et ne deviennent pas la propriété du Client. Virtbase peut modifier les adresses IP attribuées pour un motif technique ou juridique important (p. ex. renumérotation du réseau, injonction d'une autorité) et l'annonce au moins 14 jours à l'avance, sauf en cas d'urgence.
+6. Virtbase n'est pas tenue de fournir des services non mentionnés dans la description du forfait (p. ex. administration du Serveur, configuration individuelle, récupération de données à partir des systèmes du Client). Le support par e-mail et Discord concernant la plateforme est gratuit.
 
-<Step>
-## Services de Virtbase
+## § 3 Compte client
 
-**2.1 Description des Services**
+1. Un compte client est nécessaire pour commander. Peuvent créer un compte les personnes disposant de la pleine capacité juridique ainsi que les personnes morales et les sociétés de personnes. Les mineurs ne peuvent créer un compte qu'avec l'accord préalable de leurs représentants légaux et ne peuvent conclure de contrats qu'avec leur accord ; Virtbase peut demander une preuve de cet accord.
+2. Le Client doit fournir des informations exactes et complètes et les tenir à jour, notamment son adresse e-mail et son adresse de facturation. Nous envoyons nos communications contractuelles à l'adresse e-mail enregistrée dans le compte.
+3. Le Client garde ses identifiants d'accès (mot de passe, passkeys, clés API, clés SSH) secrets et les protège contre l'accès de tiers. Nous recommandons l'authentification à deux facteurs. En cas de soupçon d'utilisation abusive de ses identifiants, le Client nous en informe sans délai.
 
-Virtbase fournit des services permettant de rendre du contenu accessible via Internet.
-À cette fin, il met à la disposition du Client des ressources système sur un serveur virtuel.
-Le Client peut stocker du contenu sur ce serveur jusqu'à une certaine limite.
-L'étendue exacte est spécifiée dans la description du service.
+## § 4 Commande et conclusion du contrat
 
-**2.2 Communication de Données**
+1. La présentation des forfaits sur virtbase.com ne constitue pas une offre ferme, mais une invitation à commander.
+2. La commande se déroule comme suit :\
+   a) Le Client choisit un forfait et accède à la page de commande. Il y choisit le système d'exploitation et, s'il le souhaite, un mot de passe root et une clé SSH.\
+   b) Il confirme accepter les présentes CGV, y compris l'AUP (§ 1, al. 3, point c), et avoir pris connaissance de la politique de confidentialité. Les consommateurs déclarent en outre s'ils demandent que l'exécution du service commence immédiatement (§ 5, al. 2).\
+   c) Avec « Continuer vers le paiement », il accède à la page de paiement. Il y saisit son adresse de facturation et choisit le mode de paiement. Jusqu'à ce stade, il peut à tout moment corriger ses saisies ou interrompre la commande.\
+   d) En cliquant sur le bouton « Payer maintenant », le Client fait une offre ferme de conclure un contrat portant sur le forfait choisi.
+3. Le contrat est conclu lorsque Virtbase accepte l'offre. L'acceptation résulte d'une confirmation de commande par e-mail ou de la mise à disposition du Serveur, selon ce qui intervient en premier. Si Virtbase n'accepte pas l'offre dans un délai de 3 jours (p. ex. parce que le forfait est entre-temps épuisé ou que le paiement n'est pas parvenu), le Client n'est plus lié ; Virtbase rembourse sans délai les montants déjà payés.
+4. Le Serveur n'est mis à disposition qu'une fois le paiement reçu. Avec le prélèvement SEPA et la cryptomonnaie, cela peut prendre plus de temps qu'avec une carte ou PayPal.
+5. Après la conclusion du contrat, le Client reçoit par e-mail une confirmation du contrat contenant son contenu, les présentes CGV et, pour les consommateurs, les informations sur le droit de rétractation et la confirmation visée au § 5, al. 2. Les données de commande et les factures sont accessibles dans le compte client. La version en vigueur des CGV est disponible à l'adresse [virtbase.com/fr/legal/terms](/fr/legal/terms) ; la version applicable lors de la conclusion du contrat figure dans la confirmation du contrat.
+6. La langue du contrat est l'allemand.
+7. **Les renouvellements et changements de forfait** (§ 7, § 13) se commandent dans l'espace client, sur la page « Forfait » du Serveur. Les alinéas 2 à 5 s'appliquent par analogie.
 
-Le contenu est maintenu disponible sur le serveur pour récupération via Internet.
-Les services de Virtbase dans la transmission de données se limitent uniquement à la communication de données entre le point de transfert du
-propre réseau de communication de données de Virtbase vers Internet exploité par Virtbase et le serveur fourni au Client.
-Virtbase ne peut pas influencer le trafic de données en dehors de son propre réseau de communication.
-Le transfert réussi d'informations vers ou depuis l'ordinateur interrogeant le contenu n'est donc pas dû dans cette mesure.
+## § 5 Droit de rétractation des consommateurs
 
-**2.3 Disponibilité**
+1. Les consommateurs disposent d'un droit de rétractation légal. Les détails figurent dans les informations sur le droit de rétractation à l'adresse [virtbase.com/fr/legal/revocation](/fr/legal/revocation). Les professionnels ne disposent pas d'un droit de rétractation.
+2. Le Serveur est en règle générale mis à disposition immédiatement après la commande. Pour les consommateurs, cela n'a lieu que s'ils demandent expressément, lors de la commande, que Virtbase commence l'exécution avant l'expiration du délai de rétractation. Virtbase confirme cette demande sur un support durable (e-mail). Les Serveurs n'étant mis à disposition qu'immédiatement, cette demande est une condition de la commande.
+3. Si un consommateur ayant demandé le début immédiat de l'exécution se rétracte, il paie un montant correspondant à la part du service fourni jusqu'à la rétractation par rapport à l'ensemble de la période payée (§ 357a, al. 2 BGB). Virtbase rembourse le reste. La rétractation met fin au contrat ; le Serveur et ses sauvegardes sont supprimés (§ 18).
+4. Le droit de rétractation expire de manière anticipée lorsque Virtbase a entièrement exécuté le service après que le consommateur a expressément accepté que Virtbase commence l'exécution avant l'expiration du délai de rétractation et a confirmé avoir connaissance de la perte de son droit de rétractation en cas d'exécution complète du contrat (§ 356, al. 4 BGB). Chaque période étant plus longue que le délai de rétractation, le droit de rétractation pour les Serveurs n'expire en pratique pas avant la fin du délai de rétractation. La seule mise à disposition du Serveur ne met pas fin au droit de rétractation.
 
-Le service en ligne de Virtbase est proposé sous réserve de disponibilité.
-Une disponibilité de 100 pour cent n'est techniquement pas réalisable et ne peut donc pas
-être garantie au Client par Virtbase. Cependant, Virtbase s'efforce de
-maintenir le service aussi constamment disponible que possible.
-En particulier, les préoccupations de maintenance, de sécurité ou de capacité ainsi que les événements
-qui ne sont pas sous le contrôle de Virtbase (perturbations des réseaux de communication publics,
-coupures de courant, etc.) peuvent entraîner des perturbations ou une fermeture temporaire du service.
+## § 6 Prix, paiement et factures
 
-**2.4 Sauvegardes**
+1. Les prix affichés lors de la commande s'appliquent. Tous les prix sont des prix finaux en euros, TVA légale comprise. Le taux de TVA applicable est celui du pays de l'adresse de facturation. Les commandes ne sont possibles qu'avec une adresse de facturation dans l'Union européenne.
+2. Chaque forfait comporte un prix pour la première période (prix d'achat) et un prix pour chaque période suivante (prix de renouvellement). S'ils diffèrent, par exemple en raison d'une remise sur la première période, Virtbase affiche les deux avant la commande. Le prix de renouvellement est fixé pour ce Serveur lors de la commande et s'applique à tous les renouvellements ultérieurs jusqu'à sa modification conformément au § 19.
+3. La rémunération d'une période est payable d'avance : lors de la première commande et en cas de renouvellement manuel avec la commande, pour l'abonnement (§ 7, al. 3) au début de chaque période.
+4. **Modes de paiement.** Les modes de paiement disponibles sont affichés sur la page de paiement, notamment la carte de crédit, le prélèvement SEPA et PayPal. Ces paiements sont traités par Stripe Payments Europe, Ltd., 1 Grand Canal Street Lower, Dublin 2, Irlande ; pour PayPal, PayPal (Europe) S.à r.l. et Cie, S.C.A. intervient également. Les paiements en cryptomonnaies sont traités par le service AnonPay de Trocador ; vous êtes alors redirigé vers une page de ce prestataire. Les conditions du prestataire de paiement concerné peuvent s'appliquer en complément au traitement du paiement. Les paiements en cryptomonnaie ne sont possibles que pour des paiements ponctuels, pas pour l'abonnement.
+5. Les frais occasionnés par le rejet d'un prélèvement ou d'un paiement par carte pour une raison imputable au Client sont à la charge du Client à hauteur du montant effectivement engagé.
+6. **Factures.** Le Client reçoit pour chaque paiement une facture au format PDF par e-mail ; elle est également accessible dans le compte client. Le Client accepte les factures électroniques.
+7. Le Client ne peut compenser les créances de Virtbase qu'avec des créances incontestées ou constatées par une décision passée en force de chose jugée. Cela ne s'applique pas aux contre-prétentions d'un consommateur issues du même rapport contractuel, notamment pour défauts.
 
-Sauf accord contraire, Virtbase ne crée pas de sauvegardes du contenu du Client.
-Le Client est responsable de la création et de la maintenance de sauvegardes adéquates de son contenu stocké chez Virtbase
-et de ne pas stocker celui-ci exclusivement sur les serveurs de Virtbase.
+## § 7 Durée, renouvellement et résiliation
 
-**2.5 Adaptation du Matériel et des Logiciels**
+1. **Durée.** Chaque Serveur constitue un contrat distinct. La durée est d'un mois à compter de la mise à disposition (exemple : mise à disposition le 15 mars, fin le 15 avril). La commande est un paiement anticipé pour cette période (prépayé).
+2. **Prépayé sans renouvellement automatique (par défaut).** Le contrat prend fin à l'expiration de la période, sans qu'une résiliation soit nécessaire. Avant cette date, le Client peut le renouveler dans l'espace client, à chaque fois pour un mois supplémentaire, au prix de renouvellement ; la nouvelle période suit sans interruption. Virtbase rappelle l'échéance au Client par e-mail environ 5 jours avant l'expiration. Ce qui se passe après l'expiration est régi par le § 18.
+3. **Abonnement avec renouvellement automatique.** Le Client peut activer le renouvellement automatique dans l'espace client. Pour cela, il accepte expressément que Virtbase prélève le prix de renouvellement sur son moyen de paiement enregistré à la fin de chaque période. Dès lors, le contrat est reconduit à chaque fois pour un mois tant qu'il n'est pas résilié. Le renouvellement automatique n'est jamais présélectionné.
+4. **Résiliation.** Le Client peut résilier l'abonnement à tout moment pour la fin de la période en cours, sans préavis et sans indication de motifs. Pour cela, il dispose :\
+   a) du bouton **« Annuler l'abonnement »** sur la page « Forfait » du Serveur concerné dans l'espace client et de la confirmation qui suit avec **« Annuler l'abonnement maintenant »** (§ 312k BGB),\
+   b) de toute déclaration sous forme textuelle, p. ex. par e-mail à [support@virtbase.com](mailto:support@virtbase.com).
 
-Virtbase est en droit d'adapter le matériel et les logiciels utilisés pour fournir les services
-à l'état de l'art respectif. Si une telle adaptation entraîne des exigences supplémentaires
-pour le contenu stocké par le Client sur le serveur afin d'assurer la fourniture des services de Virtbase,
-Virtbase informera le Client de ces exigences supplémentaires en temps utile.
-Dans ce cas, le Client doit informer Virtbase au plus tard quatre semaines avant la date de conversion
-s'il adaptera son contenu à temps - c'est-à-dire au plus tard trois jours ouvrables avant la date de conversion - aux
-exigences supplémentaires pour la conversion. Si le Client refuse d'adapter son contenu ou ne le déclare pas
-dans le délai susmentionné à Virtbase, Virtbase peut résilier la relation contractuelle avec effet à la date de conversion.
-</Step>
+   Si le Client désactive le renouvellement automatique, le contrat n'est plus reconduit automatiquement et prend fin à l'expiration de la période, sauf si le Client le renouvelle conformément à l'alinéa 2. Le Serveur continue de fonctionner jusqu'à la fin de la période payée. Virtbase confirme la résiliation sans délai par e-mail, en indiquant la date et l'heure de réception et la date à laquelle le contrat prend fin. Le bouton de résiliation est également disponible pour les Serveurs prépayés. Un renouvellement conformément à l'alinéa 2 reste possible jusqu'à l'expiration de la période.
 
-<Step>
-## Modifications des Services
+5. Virtbase peut résilier l'abonnement moyennant un préavis de 30 jours pour la fin d'une période.
+6. **Résiliation pour motif grave.** Le droit des deux parties de résilier sans préavis pour motif grave n'est pas affecté. Il existe notamment un motif grave pour Virtbase lorsque\
+   a) le Client enfreint gravement l'AUP (notamment la section 2.1 de l'AUP) ou l'enfreint de manière répétée malgré une mise en demeure,\
+   b) le Client a sciemment fourni de fausses informations sur son identité lors de la commande afin d'éviter un paiement ou de dissimuler un abus,\
+   c) une autorité ou un tribunal ordonne de manière contraignante la cessation du service.
 
-**3.1 Caractère Raisonnable**
+   Si Virtbase résilie pour motif grave, Virtbase rembourse au prorata le montant déjà payé pour la partie non utilisée de la période, dans la mesure où Virtbase ne dispose pas de contre-prétentions.
 
-Virtbase se réserve le droit de modifier les services proposés ou d'offrir des services différents, sauf si cela est déraisonnable pour le Client.
+7. **Suppression du compte client.** Si le Client supprime son compte client dans l'espace client, tous les contrats sont réputés résiliés au moment de la suppression (après expiration du délai d'attente de 14 jours) ; tous les Serveurs et sauvegardes sont supprimés. Aucun remboursement des périodes déjà payées n'a lieu dans ce cas ; Virtbase le signale dans la boîte de dialogue de suppression. Les droits légaux du Client, notamment le droit de rétractation, ne sont pas affectés.
 
-**3.2 Réserves**
+## § 8 Retard de paiement et suspension
 
-Virtbase se réserve en outre le droit de modifier les services proposés ou d'offrir des services différents,
+1. Si le prélèvement échoue pour un abonnement, Virtbase le tente de nouveau après 1, 3, 5 et 7 jours. Virtbase informe le Client par e-mail de l'échec du prélèvement et une nouvelle fois avant la dernière tentative. Le Client peut à tout moment déclencher lui-même le paiement dans l'espace client ou enregistrer un autre moyen de paiement. Le Serveur continue de fonctionner pendant ce temps.
+2. Si le prélèvement échoue également lors de la dernière tentative, l'abonnement prend fin à la fin de la dernière période payée. Virtbase ne facture pas l'utilisation pendant les tentatives de paiement. Après la dernière tentative, le Serveur est désactivé et supprimé conformément au § 18, al. 2 et 3, à moins que le Client ne le renouvelle auparavant. Si le Client renouvelle, la nouvelle période fait suite à la dernière période payée.
+3. Si le Client est en retard pour d'autres paiements, les règles légales s'appliquent (§§ 286, 288 BGB). Virtbase peut suspendre les services pour le Serveur concerné après l'avoir annoncé sous forme textuelle avec un préavis d'au moins 5 jours, tant que le montant dû n'est pas payé. Pour les consommateurs, une suspension n'est admise que si l'arriéré n'est pas insignifiant.
 
-- dans la mesure où Virtbase y est obligé en raison d'un changement de la situation juridique ;
-- dans la mesure où Virtbase se conforme ainsi à un jugement de tribunal ou à une décision administrative dirigée contre lui ;
-- dans la mesure où le changement respectif est nécessaire pour combler les failles de sécurité existantes ;
-- si le changement est simplement avantageux pour le Client ; ou
-- si le changement est de nature purement technique ou procédurale sans impact significatif pour le Client.
+## § 9 Disponibilité et maintenance
 
-**3.3 Exceptions**
+1. Virtbase exploite l'infrastructure avec le soin d'un hébergeur diligent (notamment alimentation électrique et connexion réseau redondantes dans le centre de données, surveillance des systèmes) et s'efforce d'assurer une disponibilité aussi continue que possible. Virtbase ne garantit pas de disponibilité déterminée (niveau de service) ; il n'existe pas d'accord de niveau de service ni d'avoirs forfaitaires. Les droits légaux du Client en cas de panne (§ 14) ne sont pas affectés.
+2. **Maintenance.** Virtbase peut effectuer des travaux de maintenance qui interrompent brièvement le fonctionnement (p. ex. redémarrage de l'hôte, migration vers un autre matériel, mises à jour de sécurité). Virtbase annonce les maintenances planifiables au moins 48 heures à l'avance par e-mail ou dans l'espace client et les programme si possible pendant les périodes de faible trafic. Les maintenances d'urgence, par exemple pour combler des failles de sécurité critiques ou repousser des attaques, sont admises sans préavis.
+3. Virtbase n'est pas responsable des interruptions dues à des circonstances échappant à son contrôle (p. ex. perturbations de réseaux tiers, attaques DDoS de grande ampleur que le filtre ne peut repousser, force majeure). Virtbase peut temporairement filtrer ou rediriger le trafic vers un Serveur attaqué ou retirer temporairement l'adresse IP attaquée du réseau (null routing) si cela est nécessaire pour protéger le réseau ou d'autres clients.
 
-Les changements n'ayant qu'un impact insignifiant sur les services de Virtbase ne constituent pas des modifications de service au sens du présent article.
-Cela s'applique en particulier aux changements de nature purement graphique et au simple changement de l'agencement des fonctions.
-</Step>
+## § 10 Obligations du Client
 
-<Step>
-## Conclusion du Contrat
+1. Le Client n'utilise les services que dans le respect de la loi et de l'AUP. L'AUP régit notamment les contenus et activités interdits, les canaux de signalement et la procédure en cas d'infraction.
+2. Le Client est responsable de l'ensemble des contenus et activités sur ses Serveurs, y compris lorsqu'il en confie l'accès à des tiers ou qu'un tiers utilise le Serveur sans autorisation parce que le Client ne l'a pas suffisamment sécurisé. Il maintient le système d'exploitation et les logiciels à jour, utilise des identifiants sûrs et corrige les failles de sécurité connues dans un délai raisonnable.
+3. Le Client peut confier l'utilisation des Serveurs à des tiers (p. ex. hébergement pour ses propres clients). Il soumet ces tiers à l'AUP et reste responsable envers Virtbase.
+4. Le Client consulte régulièrement les e-mails envoyés à l'adresse de son compte et répond aux signalements d'abus dans le délai indiqué dans le signalement (§ 12).
+5. Le Client accorde à Virtbase les droits nécessaires à la fourniture des services, notamment le droit de stocker, de transmettre et de rendre accessibles les contenus de son Serveur et de les reproduire dans le cadre de la fonction de sauvegarde.
 
-**4.1 Offres**
+## § 11 Sauvegarde des données (sauvegardes)
 
-Les services décrits sur le site web de Virtbase ne constituent pas des offres contraignantes,
-mais servent à soumettre une offre contraignante par le Client.
+1. **Le Client est lui-même responsable de la sauvegarde de ses données.** Il sauvegarde ses données régulièrement et de manière appropriée, au moins avant chaque modification importante, et conserve au moins une copie à jour en dehors de l'infrastructure de Virtbase.
+2. Virtbase met à disposition dans l'espace client une fonction de sauvegarde permettant au Client de créer, restaurer et supprimer lui-même des sauvegardes de son Serveur. La fonction de sauvegarde peut être limitée pour des raisons techniques, par exemple quant au nombre de sauvegardes par jour ; Virtbase indique les limites applicables dans l'espace client. Virtbase ne crée pas de sauvegardes de sa propre initiative.
+3. **Ces sauvegardes sont stockées dans le même centre de données et le même système de stockage que le Serveur.** Elles protègent contre les erreurs survenant sur le Serveur (p. ex. mises à jour défectueuses, suppression accidentelle), mais pas contre les événements affectant le centre de données ou le système de stockage lui-même. Elles ne remplacent donc pas la sauvegarde propre du Client visée à l'alinéa 1. Les sauvegardes ne peuvent pas être téléchargées. Pour des raisons techniques, la remise de sauvegardes est exclue, même sur demande.
+4. Les sauvegardes sont supprimées en même temps que le Serveur (§ 18).
 
-**4.2 Processus de Commande**
+## § 12 Mesures en cas d'abus et d'infractions
 
-Le Client peut soumettre l'offre via le formulaire de commande en ligne fourni sur le site web de Virtbase.
-Ce faisant, le Client soumet une offre de contrat juridiquement contraignante concernant les services sélectionnés en entrant ses données personnelles
-et en cliquant sur le bouton qui conclut le processus de commande.
+1. Si Virtbase a connaissance d'indices d'une infraction à la loi ou à l'AUP imputable à un Serveur du Client (p. ex. par un signalement de tiers, des indications des autorités ou sa propre surveillance du réseau), Virtbase examine les faits et choisit la mesure la plus douce qui met effectivement fin à l'infraction. La procédure détaillée est régie par la section 4 de l'AUP.
+2. Les mesures possibles sont, par ordre croissant :\
+   a) l'information du Client avec invitation à prendre position et à remédier au problème,\
+   b) la limitation de la vitesse du réseau (bridage),\
+   c) le blocage du trafic réseau sortant (isolement), l'accès par la console restant possible,\
+   d) l'arrêt du Serveur,\
+   e) la résiliation pour motif grave (§ 7, al. 6).
 
-**4.3 Acceptation de l'Offre**
+   Les mesures a) à d) sont temporaires et n'affectent pas les données du Serveur. Virtbase les lève dès que l'infraction a cessé. Une résiliation est toujours décidée par une personne ; elle n'est jamais déclenchée automatiquement.
 
-Virtbase peut accepter l'offre du Client dans un délai de cinq jours,
+3. En règle générale, Virtbase informe le Client avant une mesure et lui donne la possibilité de prendre position et de remédier au problème dans un délai raisonnable. Virtbase peut agir immédiatement sans audition préalable lorsque\
+   a) le Serveur présente un danger imminent pour le réseau, les systèmes ou des tiers (p. ex. attaque DDoS en cours, page d'hameçonnage, diffusion de logiciels malveillants, Serveur compromis),\
+   b) des contenus relevant de la section 2.1 de l'AUP sont manifestement en cause, ou\
+   c) une injonction d'une autorité ou d'un tribunal existe.
 
-- en transmettant au Client une confirmation de commande écrite ou une confirmation de commande sous forme de texte (fax ou e-mail), la réception de la confirmation de commande par le Client étant déterminante, ou
-- en demandant le paiement au Client après soumission de sa commande.
+   Dans ces cas, Virtbase informe le Client sans délai après la mesure, en indiquant les motifs.
 
-Si plusieurs des alternatives susmentionnées sont présentes, le contrat est conclu au moment où l'une des alternatives susmentionnées se produit en premier.
-Le délai d'acceptation de l'offre commence à courir le jour suivant l'envoi de l'offre par le Client et se termine à l'expiration du cinquième jour qui
-suit l'envoi de l'offre. Si Virtbase n'accepte pas l'offre du Client dans le délai susmentionné, cela est considéré comme un rejet de l'offre avec pour
-conséquence que le Client n'est plus lié par sa déclaration d'intention.
+4. En cas de mesures imputables au Client, son obligation de paiement subsiste. S'il s'avère qu'une mesure était injustifiée, Virtbase prolonge la période du Serveur de la durée de la restriction.
+5. Tant qu'un dossier d'abus est ouvert, Virtbase peut refuser de nouvelles commandes du Client. Les Serveurs existants, les renouvellements et les factures ne sont pas concernés.
+6. Les obligations légales de Virtbase, notamment en vertu du règlement (UE) 2022/2065 (Digital Services Act) et du règlement (UE) 2021/784 (diffusion de contenus à caractère terroriste en ligne), ne sont pas affectées.
 
-**4.4 Traitement des Paiements**
+## § 13 Changement de forfait et modification des services
 
-Lors de la sélection d'un mode de paiement proposé par Virtbase, le traitement du paiement est effectué par le prestataire de services de paiement
-Stripe Technology Europe, Limited (ci-après : « Stripe »), sous réserve des Conditions d'Utilisation de Stripe,
-consultables sur https://stripe.com/. Si le Client paie en utilisant un mode de paiement proposé par Stripe pouvant être sélectionné dans le
-processus de commande en ligne, le vendeur déclare par la présente l'acceptation de l'offre du Client au moment
-où le Client clique sur le bouton qui conclut le processus de commande.
+1. Pendant la période en cours, le Client peut passer à un forfait supérieur dans l'espace client. Pour la période restante, il paie la différence au prorata entre les prix de renouvellement, au minimum 0,50 € ; la fin de la période reste inchangée. À partir du renouvellement suivant, le prix de renouvellement du nouveau forfait s'applique. Il n'est pas possible de passer à un forfait moins cher ou à un forfait offrant moins d'espace de stockage.
+2. Virtbase peut modifier les services s'il existe un motif valable, notamment pour s'adapter à de nouvelles technologies ou à une nouvelle situation juridique, pour remédier à des risques de sécurité ou parce qu'un fournisseur ne propose plus un service, à condition que la modification n'entraîne pas de frais supplémentaires pour le Client et ne détériore pas les services essentiels convenus contractuellement (ressources selon la description du forfait). Virtbase en informe le Client de manière claire et compréhensible sous forme textuelle.
+3. Si une modification visée à l'alinéa 2 porte atteinte de manière plus qu'insignifiante à l'utilisation par un consommateur, Virtbase l'en informe au moins 30 jours à l'avance ; le consommateur peut alors mettre fin gratuitement au contrat dans un délai de 30 jours à compter de la réception de l'information ou de la modification, selon ce qui intervient en dernier (§ 327r BGB). Virtbase rembourse les montants déjà payés pour la période postérieure à la fin du contrat.
+4. Les modèles de systèmes d'exploitation fournis peuvent être remplacés par des versions plus récentes ou retirés. Cela n'a aucun effet sur les Serveurs déjà installés.
 
-**4.5 Stockage du Texte du Contrat**
+## § 14 Garantie des défauts
 
-Lors de la soumission d'une offre via le formulaire de commande en ligne de Virtbase, le texte du contrat est stocké par Virtbase après la conclusion du contrat
-et transmis au Client sous forme de texte (par ex., e-mail, fax ou lettre) après l'envoi de sa commande. Tout autre accès au
-texte du contrat par Virtbase n'a pas lieu. Si le Client a créé un compte utilisateur pour le site web de Virtbase avant d'envoyer sa commande,
-les données de commande sont archivées sur le site web et peuvent être consultées gratuitement par le Client via son compte utilisateur protégé par mot de passe en fournissant les identifiants de connexion correspondants.
+1. Les dispositions légales s'appliquent aux défauts, pour les consommateurs notamment les §§ 327 et suivants BGB (produits numériques), sauf disposition contraire du § 15.
+2. Le Client signale les dysfonctionnements sans délai à [support@virtbase.com](mailto:support@virtbase.com) et les décrit aussi précisément que possible.
+3. Pour les professionnels, s'applique en outre : la responsabilité sans faute pour les défauts existant déjà lors de la conclusion du contrat (§ 536a, al. 1, première alternative BGB) est exclue. Les prétentions pour défauts se prescrivent par un an ; cela ne s'applique pas aux prétentions visées au § 15, al. 1.
 
-**4.6 Correction des Erreurs de Saisie**
+## § 15 Responsabilité
 
-Avant la soumission contraignante de la commande via le formulaire de commande en ligne de Virtbase, le Client peut identifier d'éventuelles erreurs de saisie en lisant attentivement
-les informations affichées à l'écran. Un moyen technique efficace pour une meilleure reconnaissance des erreurs de saisie peut être la
-fonction de zoom du navigateur, avec laquelle l'affichage à l'écran est agrandi. Le Client peut corriger ses entrées dans le
-processus de commande électronique en utilisant les fonctions habituelles du clavier et de la souris jusqu'à ce qu'il clique sur le bouton qui conclut le processus de commande.
+1. Virtbase est responsable sans limitation\
+   a) en cas de faute intentionnelle et de négligence grave,\
+   b) pour les dommages résultant d'une atteinte à la vie, au corps ou à la santé,\
+   c) en vertu de la loi allemande sur la responsabilité du fait des produits,\
+   d) dans le cadre d'une garantie donnée et en cas de défauts dissimulés dolosivement.
+2. En cas de négligence légère, Virtbase n'est responsable qu'en cas de violation d'obligations contractuelles essentielles (obligations cardinales). Il s'agit des obligations dont l'exécution rend possible la bonne exécution du contrat et au respect desquelles le Client peut régulièrement se fier, ici notamment la mise à disposition du Serveur avec les ressources convenues et la protection des données stockées contre tout accès non autorisé. Dans ce cas, la responsabilité est limitée au dommage prévisible et typique du contrat au moment de sa conclusion.
+3. **Perte de données.** Virtbase est responsable de la perte de données conformément aux alinéas 1 et 2. En cas de négligence légère, la responsabilité est limitée aux frais qui auraient été nécessaires pour restaurer les données à partir d'une sauvegarde visée au § 11, al. 1. Une faute concurrente du Client, par exemple parce qu'il n'a pas créé sa propre sauvegarde, est prise en compte conformément au § 254 BGB.
+4. Pour le reste, la responsabilité est exclue. Les règles ci-dessus s'appliquent également à la responsabilité personnelle des représentants légaux, des collaborateurs et des auxiliaires d'exécution de Virtbase. La responsabilité au titre de l'art. 82 RGPD envers les personnes concernées n'est pas affectée.
 
-**4.7 Langue**
+## § 16 Garantie contre les recours de tiers
 
-La langue allemande est disponible pour la conclusion du contrat.
+Si un tiers fait valoir des prétentions contre Virtbase en raison de contenus ou d'activités sur un Serveur du Client qui enfreignent la loi ou l'AUP, le Client garantit Virtbase contre ces prétentions, y compris les frais raisonnables de défense juridique, dans la mesure où il est responsable de l'infraction. Virtbase informe le Client sans délai de la réclamation et lui donne la possibilité de prendre position. Le Client aide Virtbase à se défendre contre ces prétentions en fournissant les informations nécessaires.
 
-**4.8 Traitement des Commandes**
+## § 17 Protection des données et sous-traitance
 
-Le traitement des commandes et le contact s'effectuent généralement par e-mail et traitement automatisé des commandes.
-Le Client doit s'assurer que l'adresse e-mail qu'il a fournie pour le traitement des commandes est correcte, afin que les e-mails
-envoyés par Virtbase puissent être reçus à cette adresse. En particulier, lors de l'utilisation de filtres SPAM, le Client doit s'assurer que tous les e-mails envoyés par Virtbase
-ou par des tiers mandatés par Virtbase pour le traitement des commandes peuvent être livrés.
-</Step>
+1. La manière dont Virtbase traite en tant que responsable du traitement les données personnelles du Client (p. ex. données de compte, de contrat et de paiement) est expliquée dans la politique de confidentialité à l'adresse [virtbase.com/fr/legal/privacy](/fr/legal/privacy).
+2. Le Client est responsable du traitement des données personnelles qu'il traite sur ses Serveurs ; Virtbase les traite pour son compte. Si le Client est un professionnel ou s'il traite sur le Serveur des données personnelles à des fins qui ne sont pas exclusivement personnelles ou domestiques, l'**accord de traitement des données selon l'art. 28 RGPD** à l'adresse [virtbase.com/fr/legal/dpa](/fr/legal/dpa) (avec ses annexes) fait partie intégrante du présent contrat. Il est conclu par l'acceptation des présentes CGV lors de la commande et peut y être téléchargé au format PDF.
+3. En règle générale, Virtbase ne prend pas connaissance des contenus des Serveurs. Un accès n'a lieu que dans les cas prévus par la politique de confidentialité, par le DPA et par le § 12.
 
-<Step>
-## Droit de Rétractation
+## § 18 Fin du contrat, suppression et export des données
 
-**5.1 Expiration du Droit de Rétractation**
+1. **Export.** Le Client peut sauvegarder et transférer lui-même ses données à tout moment jusqu'à la fin de la période (p. ex. via SSH, SFTP ou rsync). Virtbase ne fournit pas les données dans un format particulier. Pour les données de son compte client, le Client peut demander un export de données dans l'espace client.
+2. **À l'expiration de la période** sans renouvellement, le Serveur est arrêté et désactivé, pour un abonnement seulement après la dernière tentative de prélèvement (§ 8). Il ne peut alors plus être démarré ; les sauvegardes ne peuvent être ni créées ni restaurées. Les données restent stockées pendant encore **5 jours**. Si le Client renouvelle pendant ce délai, le Serveur est réactivé ; la nouvelle période commence à l'expiration de l'ancienne. Lors de la désactivation, Virtbase informe le Client par e-mail de la suppression à venir.
+3. **Suppression.** À l'issue de ces 5 jours, Virtbase supprime définitivement le Serveur avec toutes ses données et sauvegardes. Une restauration n'est alors plus possible. Il en va de même à compter de la fin du contrat en cas de rétractation (§ 5), de résiliation pour motif grave (§ 7, al. 6) et de suppression du compte client (§ 7, al. 7).
+4. Si un compte client sans Serveur actif n'est pas utilisé pendant 6 mois, Virtbase annonce la suppression du compte par e-mail. Si le Client ne se connecte pas dans les 30 jours, le compte est supprimé ; Virtbase envoie un nouveau rappel 7 jours avant l'échéance.
+5. Les données que Virtbase doit conserver en vertu d'obligations légales (p. ex. factures) sont conservées et bloquées jusqu'à l'expiration des délais. La politique de confidentialité contient les détails.
 
-Avec la fourniture des services d'hébergement sélectionnés sur la plateforme client fournie par Virtbase (https://app.virtbase.com), le service est considéré comme entièrement exécuté.
-Le droit de rétractation expire donc.
-</Step>
+## § 19 Modification des présentes CGV et des prix
 
-<Step>
-## Obligations du Client
+1. Virtbase peut proposer au Client des modifications des présentes CGV, de l'AUP ou du prix de renouvellement. Virtbase communique la proposition sous forme textuelle au moins 30 jours avant la date d'entrée en vigueur prévue, présente clairement les modifications et en indique le motif.
+2. **Les modifications ne prennent effet que si le Client les accepte**, par exemple par une confirmation dans l'espace client. Le silence ne vaut pas acceptation.
+3. Si le Client n'accepte pas, le contrat se poursuit aux conditions antérieures. Virtbase peut alors résilier un abonnement moyennant préavis conformément au § 7, al. 5 ; une période prépayée prend fin de toute façon à son expiration. Virtbase peut subordonner un renouvellement après la date d'entrée en vigueur prévue à l'acceptation.
+4. Pour les nouvelles commandes, la version acceptée lors de la commande s'applique.
+5. Virtbase communique les modifications qui se bornent à refléter la situation juridique ou qui sont exclusivement favorables au Client ; elles ne nécessitent pas d'acceptation, dans la mesure où elles n'affectent pas les prestations contractuelles principales.
 
-**6.1 Contenu du Client**
+## § 20 Communication
 
-Le contenu stocké par le Client sur l'espace de stockage qui lui est destiné peut être protégé par le droit d'auteur et la loi sur la protection des données.
-Le Client accorde à Virtbase le droit de rendre accessible le contenu qu'il a stocké sur le serveur lorsqu'il est interrogé via Internet,
-en particulier de le reproduire et de le transmettre à cette fin et de pouvoir le reproduire à des fins de sauvegarde de données. Le Client vérifie sous sa propre responsabilité
-si son utilisation des données personnelles répond aux exigences de protection des données.
+Les déclarations contractuelles peuvent être faites sous forme textuelle, notamment par e-mail à [support@virtbase.com](mailto:support@virtbase.com) ou à l'adresse e-mail enregistrée dans le compte client. Le Client veille à ce que les e-mails provenant de virtbase.com ne soient pas interceptés par des filtres anti-spam. Le support via Discord ne convient pas aux déclarations contractuelles.
 
-**6.2 Contenu Interdit**
+## § 21 Règlement des litiges
 
-Le Client s'engage à ne pas stocker sur l'espace de stockage fourni de contenu qui viole le droit applicable ou porte atteinte aux droits de tiers.
-Le Client s'assure également que les programmes, scripts, etc. qu'il a installés ne mettent pas en danger le fonctionnement du serveur ou du réseau de communication
-de Virtbase ou la sécurité et l'intégrité des autres données stockées sur les serveurs de Virtbase.
+Virtbase n'est ni disposée ni tenue à participer à une procédure de règlement des litiges devant un organisme de médiation de la consommation. Pour toute question ou réclamation, veuillez vous adresser à [support@virtbase.com](mailto:support@virtbase.com).
 
-**6.3 Indemnisation**
+## § 22 Dispositions finales
 
-Le Client indemnise Virtbase de toutes les réclamations que des tiers font valoir contre Virtbase en raison de la violation de leurs droits sur la base du contenu stocké par le Client sur le serveur.
-Le Client supporte les frais de la défense juridique nécessaire, y compris tous les frais de justice et d'avocat dans des montants raisonnables. Cela ne s'applique pas si le Client n'est pas responsable de la violation du droit. Le Client est tenu de fournir à Virtbase en cas de réclamation par des tiers
-immédiatement, véritablement et complètement toutes les informations nécessaires pour examiner les réclamations et pour la défense.
-
-**6.4 Droit de Blocage**
-
-En cas de violation imminente ou survenue des obligations susmentionnées ainsi qu'en cas de réclamations manifestement non infondées
-par des tiers contre Virtbase sur la base du contenu stocké sur le serveur, Virtbase est en droit, en tenant également compte des intérêts légitimes du
-Client, de suspendre temporairement la connexion de ce contenu à Internet en tout ou en partie avec effet immédiat. Virtbase informera le Client de cette mesure
-immédiatement.
-
-**6.5 Désactivation des Programmes Nuisibles**
-
-Si des programmes, scripts, etc. installés par le Client mettent en danger ou altèrent le fonctionnement du serveur ou du réseau de communication de Virtbase ou la sécurité
-et l'intégrité des autres données stockées sur les serveurs de Virtbase, Virtbase peut désactiver ou désinstaller ces programmes, scripts, etc. Si
-l'élimination du danger ou de l'altération l'exige, Virtbase est également en droit d'interrompre la connexion du contenu stocké sur le serveur à Internet.
-Virtbase informera le Client de cette mesure immédiatement.
-
-**6.6 Identifiants d'Accès**
-
-Pour l'accès à l'espace de stockage destiné au Client, le Client reçoit un identifiant utilisateur et un mot de passe modifiable. Le Client est tenu de changer le
-mot de passe à intervalles réguliers. Le Client ne peut transmettre le mot de passe qu'aux personnes qu'il a autorisées à accéder à l'espace de stockage.
-</Step>
-
-<Step>
-## Règles de Sécurité
-
-**7.1 Obligation Générale de Sécurité**
-
-Chaque Client est tenu d'assurer la sécurité technique et la fonctionnalité des systèmes de Virtbase. En particulier, il est interdit :
-
-- d'accéder à des données ou zones qui ne sont pas destinées à l'utilisateur respectif ;
-- de vérifier les systèmes techniques pour des vulnérabilités ou failles de sécurité, de contourner les mécanismes de sécurité ou d'effectuer des manipulations ;
-- de falsifier les informations d'en-tête, les adresses IP ou d'autres données de communication.
-
-**7.2 Utilisation Autorisée**
-
-Virtbase ne peut être utilisé que via des navigateurs web courants et actuels. Toute action qui altère le bon fonctionnement de la plateforme est interdite. Cela inclut en particulier les attaques ou mesures telles que XSS, SQL-Injection, CSRF, Phishing, DoS, DDoS, Brute-Force, Session Hijacking, accès automatisé ou contrôlé par script ainsi que des interventions comparables dans l'infrastructure de l'opérateur.
-
-**7.3 Conséquences des Violations**
-
-Les violations de ces règles de sécurité peuvent entraîner des conséquences tant civiles que pénales. Virtbase est en droit d'enquêter sur les violations, de sécuriser les preuves et, si nécessaire, d'impliquer les autorités répressives.
-
-**7.4 Procédure pour les Signalements d'Abus**
-
-Si un signalement d'abus est reçu concernant un serveur ou une adresse IP, Virtbase peut bloquer temporairement le système ou l'adresse IP concerné. Le Client sera informé d'un tel blocage par e-mail.
-</Step>
-
-<Step>
-## Conditions de Paiement et Rémunération
-
-**8.1 Information sur les Prix**
-
-Sauf indication contraire dans la description du service, tous les prix indiqués s'entendent comme des prix totaux incluant la taxe sur la valeur ajoutée légale.
-
-**8.2 Modes et Modalités de Paiement**
-
-Tous les modes de paiement disponibles ainsi que les conditions de paiement respectives sont listés sur le site web de Virtbase.
-
-**8.3 Paiement via « PayPal »**
-
-Si le Client choisit un mode de paiement proposé via le service de paiement PayPal, le traitement est effectué via PayPal. PayPal peut utiliser d'autres prestataires de services pour le traitement des paiements. Si Virtbase propose des modes de paiement avec prestation anticipée via PayPal (par ex., achat sur facture ou paiement échelonné), la créance est cédée à PayPal ou à un prestataire de services de paiement mandaté par PayPal. PayPal peut effectuer une vérification de solvabilité. Si le mode de paiement sélectionné est refusé, Virtbase peut exiger un mode de paiement alternatif. Les demandes générales des clients (par ex., concernant les livraisons, annulations ou réclamations) doivent continuer à être adressées à Virtbase.
-
-**8.4 Paiement via « SOFORT » (Klarna)**
-
-Avec l'option de paiement « SOFORT », le traitement est effectué via SOFORT GmbH, Theresienhöhe 12, 80339 Munich. Le Client a besoin d'un compte bancaire en ligne activé pour « SOFORT » et doit s'y authentifier. Après confirmation de l'ordre de paiement, le montant est automatiquement débité du compte bancaire du Client. Plus d'informations sont disponibles sur https://www.klarna.com/sofort.
-
-**8.5 Paiement par Virement Bancaire / SEPA**
-
-Lors de la sélection du mode de paiement « Virement Bancaire » ou « Virement SEPA », le montant de la facture est dû immédiatement après la conclusion du contrat, sauf accord contraire. Les services ne sont activés qu'après réception complète du paiement.
-</Step>
-
-<Step>
-## Formation du Contrat, Stockage du Texte du Contrat
-
-**9.1 Conclusion du Contrat**
-
-Les réglementations suivantes s'appliquent à toutes les commandes via la boutique en ligne ou le panneau client de Virtbase (https://app.virtbase.com).
-
-**9.2 Partie Contractante**
-
-Le contrat est conclu avec :\
-BeastHost UG (haftungsbeschränkt)\
-Lambarenestraße 21A\
-09350 Lichtenstein/Sa.\
-Allemagne
-
-**9.3 Offre et Acceptation**
-
-En soumettant une commande, le Client fait une offre contraignante de conclure un contrat. Virtbase confirme la réception de la commande automatiquement par e-mail. Le contrat est conclu lors de la fourniture du service.
-
-**9.4 Processus de Commande**
-
-Pendant le processus de commande, le Client peut vérifier, corriger ses entrées ou annuler le processus à tout moment. Après avoir soumis la commande, le Client reçoit un e-mail de confirmation. Peu après, le produit commandé est mis à disposition dans l'espace client.
-</Step>
-
-<Step>
-## Responsabilité
-
-**10.1 Principe**
-
-Virtbase est responsable dans la limite légale des dommages ou dépenses résultant de relations juridiques contractuelles, délictuelles ou autres.
-
-**10.2 Responsabilité Illimitée**
-
-Une responsabilité illimitée existe en cas d'intention, de négligence grave, de violation fautive de la vie, du corps ou de la santé, en cas de prise en charge de garantie ou de dispositions légales impératives de responsabilité (par ex., Loi sur la Responsabilité du Fait des Produits).
-
-**10.3 Responsabilité Limitée**
-
-En cas de violation par négligence d'obligations contractuelles essentielles, la responsabilité est limitée au dommage typique et prévisible. Les obligations contractuelles essentielles sont celles dont l'exécution est nécessaire à la bonne exécution du contrat et sur le respect desquelles le Client peut compter.
-
-**10.4 Exclusion de Responsabilité Supplémentaire**
-
-Toute responsabilité supplémentaire est exclue.
-
-**10.5 Auxiliaires et Représentants**
-
-Les réglementations ci-dessus s'appliquent également aux représentants légaux et auxiliaires de Virtbase.
-</Step>
-
-<Step>
-## Règles d'Utilisation du Compte
-
-**11.1 Utilisateurs Autorisés**
-
-Un compte utilisateur chez Virtbase peut être créé par des personnes physiques, des entités juridiques ou des partenariats, à condition qu'ils soient pleinement capables juridiquement.
-
-**11.2 Clients Mineurs**
-
-Les mineurs ont besoin du consentement d'un représentant légal pour utiliser Virtbase. Virtbase peut demander une confirmation écrite de ce consentement à tout moment.
-
-**11.3 Vérification de l'Âge**
-
-Pour certains produits, une vérification de l'âge peut être requise pour se conformer aux exigences légales de protection de la jeunesse.
-
-**11.4 Création de Compte**
-
-Une adresse e-mail valide et un mot de passe sécurisé doivent être fournis pour la création du compte. Des informations fausses ou incomplètes peuvent entraîner la suppression du compte et la résiliation de la relation contractuelle. Tout crédit déjà chargé ne sera pas remboursé dans ce cas.
-
-**11.5 Relations avec le Support**
-
-Un ton respectueux et objectif envers le service client est obligatoire. En cas de comportement insultant, Virtbase peut refuser le support ou bloquer le compte. Virtbase attend un dialogue constructif et s'engage en retour à une communication amicale.
-
-**11.6 Blocage de Compte**
-
-Virtbase est en droit de bloquer des comptes sans préavis s'il existe une raison importante - telle qu'une violation de la loi ou une violation des présentes CGV. Dans de tels cas, aucun remboursement du crédit ne sera effectué.
-
-**11.7 Réglementation du Crédit**
-
-Le crédit chargé ne peut pas être versé en espèces. Il est exclusivement destiné à l'utilisation des services Virtbase. En cas de rétrofacturations ou de litiges PayPal, le compte peut être temporairement ou définitivement bloqué.
-</Step>
-
-<Step>
-## Disponibilité
-
-Virtbase vise une disponibilité continue de ses systèmes (24/7), mais n'assume aucune garantie d'accessibilité sans faille. Des interruptions dues à la maintenance, des pannes techniques ou des cas de force majeure sont possibles. La responsabilité pour la perte de données ou les pannes est exclue.
-</Step>
-
-<Step>
-## Fourniture des Services
-
-**13.1 Protection de l'Infrastructure Technique**
-
-Virtbase se réserve le droit de désactiver ou de supprimer temporairement des produits en cas d'utilisation excessive ou de charge exceptionnelle sur des systèmes individuels pour assurer la stabilité globale.
-
-**13.2 Support Client**
-
-Le support général est disponible gratuitement. Un support administratif ou individuel supplémentaire peut être proposé moyennant des frais après accord.
-
-**13.3 Fourniture**
-
-Les produits sont généralement fournis automatiquement après une commande réussie. Pour certains services, par ex., les domaines, des retards peuvent survenir en raison de validations externes.
-
-**13.4 Conditions des Domaines**
-
-Les domaines sont enregistrés pour au moins un an. Si aucune résiliation n'intervient en temps voulu, le domaine peut être supprimé. Les domaines inactifs peuvent être supprimés.
-
-**13.5 Responsabilité du Client**
-
-La transmission de l'enregistrement de domaine est effectuée par Virtbase au registre responsable. Le Client est responsable de l'exactitude de ses données. Virtbase n'assume aucune garantie pour un enregistrement réussi.
-</Step>
-
-<Step>
-## Description des Services
-
-**14.1 Utilisation Autorisée**
-
-Les services Virtbase ne peuvent pas être utilisés à des fins illégales ou pour la distribution de contenu portant atteinte aux droits d'auteur ou pornographique. Les violations entraînent le blocage ou la suppression du contenu.
-
-**14.2 Attribution d'IP**
-
-L'adresse IP attribuée au Client peut changer à tout moment pour des raisons techniques. Il n'existe aucun droit à une adresse IP fixe.
-
-**14.3 Ajustements Juridiques**
-
-Virtbase peut restreindre ou interrompre des fonctions si cela est légalement requis. Les Clients en seront informés en temps voulu.
-
-**14.4 Principe d'Utilisation Équitable**
-
-En cas d'utilisation excessive du trafic de données inclus dans le tarif, la connexion sera temporairement limitée. Le niveau de limitation ainsi que la détermination de la limite supérieure pour le trafic de données sont à la discrétion de Virtbase.
-</Step>
-
-<Step>
-## Modification des CGV
-
-**15.1 Modifications Nécessitant un Consentement**
-
-Virtbase peut modifier les présentes CGV, à condition que le Client accepte expressément les modifications.
-
-**15.2 Modifications Sans Consentement**
-
-Un ajustement sans consentement est autorisé si :
-
-- il est nécessaire en raison de dispositions légales,  
-- il sert à mettre en œuvre des décisions judiciaires ou administratives,  
-- il concerne des services nouveaux ou complémentaires,  
-- il est exclusivement avantageux pour le Client ou  
-- il est de nature purement technique, sans impact significatif pour le Client.
-
-**15.3 Obligation d'Information**
-
-Les modifications significatives seront communiquées au Client de manière appropriée. Les modifications qui affectent le type, l'étendue ou la durée des services sont considérées comme significatives.
-
-**15.4 Droit de Résiliation**
-
-Le droit du Client de résilier reste inaffecté.
-</Step>
-
-<Step>
-## Droit Applicable, Juridiction
-
-**16.1 Choix de la Loi**
-
-Le droit de la République Fédérale d'Allemagne s'applique. Pour les consommateurs, ce choix de loi ne s'applique que s'il ne restreint pas les droits impératifs de protection des consommateurs de l'État de résidence.
-
-**16.2 Juridiction**
-
-Si le Client est un commerçant, une entité juridique de droit public ou un fonds spécial de droit public ayant son siège social en Allemagne, le lieu d'affaires de Virtbase est le lieu de juridiction exclusif. Il en va de même si le siège social est à l'étranger, à condition que le contrat puisse être attribué à une activité commerciale.
-</Step>
-
-<Step>
-## Clause de Divisibilité
-
-**17.1 Invalidité Partielle**
-
-Si une disposition des présentes CGV est invalide ou inapplicable, la validité des autres dispositions reste inaffectée.
-
-**17.2 Disposition de Remplacement**
-
-Au lieu de la disposition invalide, s'applique une disposition qui se rapproche le plus de l'objectif économique de l'originale.
-
-**17.3 Réglementation des Lacunes**
-
-S'il existe une lacune réglementaire, une disposition est réputée convenue qui correspond au sens et à l'objectif du contrat.
-</Step>
-
-</Steps>
-
+1. Le droit de la République fédérale d'Allemagne s'applique, à l'exclusion de la Convention des Nations unies sur les contrats de vente internationale de marchandises. Pour les consommateurs, ce choix de loi ne s'applique que dans la mesure où il ne les prive pas de la protection des dispositions impératives de l'État dans lequel ils ont leur résidence habituelle.
+2. Si le Client est commerçant, personne morale de droit public ou fonds spécial de droit public, ou s'il n'a pas de for général en Allemagne, le for exclusif pour tous les litiges découlant du présent contrat est Chemnitz. Virtbase peut également assigner le Client devant son for général. Pour les actions contre des consommateurs, aucun for dérogatoire ne s'applique ; les règles légales demeurent.
+3. Si certaines dispositions sont invalides, le reste du contrat demeure valable. Les dispositions légales remplacent la disposition invalide.
