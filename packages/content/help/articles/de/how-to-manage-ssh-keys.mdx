@@ -1,0 +1,83 @@
+---
+title: Wie füge ich einen SSH-Schlüssel hinzu?
+description: Speichere deinen öffentlichen Schlüssel unter Konto > SSH-Schlüssel oder bei der Bestellung. Neue Server werden damit eingerichtet, sodass du dich ohne Passwort anmeldest. Für einen bestehenden Server hängst du den Schlüssel an authorized_keys an.
+categories: [account, getting-started]
+authors: [janic]
+related: [how-to-connect-to-server, how-to-order-server, cant-connect-to-server]
+keywords: [SSH-Schlüssel, SSH Key, öffentlicher Schlüssel, Public Key, ssh-keygen, ed25519, authorized_keys, Schlüssel-Login, Anmeldung ohne Passwort, PuTTY]
+publishedAt: 2026-11-02
+lastModified: 2026-11-02
+---
+
+Mit einem <Term id="ssh-key">SSH-Schlüssel</Term> meldest du dich ohne Passwort an deinem Server an. Das ist sicherer als ein Passwort, weil sich ein Schlüssel nicht erraten lässt und nie an den Server übertragen wird.
+
+Ein Schlüssel besteht aus zwei Teilen: Der **private Schlüssel** bleibt auf deinem Computer und darf niemals weitergegeben werden; der **öffentliche Schlüssel** ist der Teil, den du Virtbase und deinen Servern gibst. Er ist eine einzige Zeile, die z. B. mit `ssh-ed25519` beginnt.
+
+## Einen Schlüssel erstellen, falls du noch keinen hast
+
+Öffne unter Linux, macOS oder Windows 10 und neuer ein Terminal und führe Folgendes aus:
+
+```bash
+ssh-keygen -t ed25519
+```
+
+Drücke die Eingabetaste, um den Standardspeicherort zu übernehmen, und wähle eine Passphrase, um den Schlüssel zu schützen. Lass dir dann den öffentlichen Schlüssel anzeigen:
+
+```bash tab="Linux / macOS" tab-group="client"
+cat ~/.ssh/id_ed25519.pub
+```
+
+```powershell tab="Windows" tab-group="client"
+type $env:USERPROFILE\.ssh\id_ed25519.pub
+```
+
+Kopiere die ganze Zeile.
+
+## Den Schlüssel in deinem Konto speichern
+
+1. Öffne [Konto > SSH-Schlüssel](https://app.virtbase.com/account/settings/ssh-keys) und klicke auf <Ui>SSH-Schlüssel erstellen</Ui>.
+2. Gib unter <Ui>Name</Ui> etwas ein, das dir sagt, zu welchem Gerät der Schlüssel gehört, z. B. `Laptop`.
+3. Füge unter <Ui>Öffentlicher Schlüssel</Ui> die kopierte Zeile ein.
+4. Klicke auf <Ui>SSH-Schlüssel erstellen</Ui>.
+
+Der Schlüssel erscheint mit seinem Fingerabdruck in der Liste. Du kannst einen Schlüssel auch direkt beim [Bestellen eines Servers](/de/help/article/how-to-order-server) hinzufügen; er wird dann ebenfalls in deinem Konto gespeichert.
+
+Unterstützt werden die Schlüsseltypen Ed25519, ECDSA, RSA und DSA, auch Schlüssel auf Hardware-Sicherheitsschlüsseln (`sk-ssh-ed25519`, `sk-ecdsa`). Du kannst bis zu 100 Schlüssel speichern.
+
+## Den Schlüssel für einen neuen Server nutzen
+
+Wähle bei der Bestellung den Schlüssel unter <Ui>SSH-Schlüssel (optional)</Ui> aus. Der Server wird damit eingerichtet, und du meldest dich so an:
+
+```bash
+ssh root@<deine-ip>
+```
+
+Installierst du den Server später über [Betriebssystem ändern](/de/help/article/how-to-change-operating-system) neu, wird der Schlüssel wieder eingerichtet.
+
+## Einen Schlüssel zu einem laufenden Server hinzufügen
+
+In deinem Konto gespeicherte Schlüssel werden nur angewendet, wenn ein Server eingerichtet wird. Um einen Schlüssel zu einem bestehenden Server hinzuzufügen, melde dich an und hänge den öffentlichen Schlüssel an die Datei `authorized_keys` des Benutzers an:
+
+```bash
+mkdir -p ~/.ssh && chmod 700 ~/.ssh
+echo "ssh-ed25519 AAAA... laptop" >> ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+```
+
+Von deinem eigenen Computer aus erledigt `ssh-copy-id root@<deine-ip>` dasselbe in einem Schritt.
+
+## Die Anmeldung per Passwort abschalten
+
+Sobald die Anmeldung mit dem Schlüssel funktioniert, kannst du Anmeldungen per Passwort ganz abschalten. Setze in `/etc/ssh/sshd_config`:
+
+```text title="/etc/ssh/sshd_config"
+PasswordAuthentication no
+```
+
+Führe dann `systemctl restart ssh` (bzw. `sshd`) aus. Lass die aktuelle Sitzung offen und teste den Schlüssel in einem zweiten Terminal, bevor du sie schließt. Geht etwas schief, kommst du über die [Konsole](/de/help/article/how-to-use-console) weiterhin hinein.
+
+## Wenn es nicht geklappt hat
+
+- **Der Schlüssel wird beim Speichern nicht akzeptiert:** Füge den **öffentlichen** Schlüssel ein (die `.pub`-Datei), komplett in einer Zeile, nicht den privaten Schlüssel.
+- **`Permission denied (publickey)` beim Verbinden:** Der Schlüssel auf dem Server passt nicht zu dem, den du verwendest. Gib deinen Schlüssel ausdrücklich mit `ssh -i ~/.ssh/id_ed25519 root@<deine-ip>` an und prüfe die Berechtigungen oben. Siehe [Server nicht erreichbar: Ich kann mich nicht verbinden](/de/help/article/cant-connect-to-server).
+- **Du hast einen Schlüssel in deinem Konto gelöscht, aber er funktioniert noch:** Ein Schlüssel, den du in deinem Konto löschst, wird nicht von den Servern entfernt. Entferne die Zeile auf jedem Server aus `~/.ssh/authorized_keys`.

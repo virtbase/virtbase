@@ -412,7 +412,7 @@ const AdvancedMessage = async ({
         locale,
         title: t("Advanced"),
         description: t(
-          "Firmware settings. Changing either of these reboots the server, and a machine installed under one setting may not boot under the other.",
+          "Firmware settings. A change takes effect once the server is shut down and started again, and a machine installed under one setting may not boot under the other.",
         ),
         fields: [
           {

@@ -1,60 +1,86 @@
 ---
-title: How do I use the firewall on my Virtbase server?
-description: Learn how to configure the firewall on your server.
+title: How do I use the firewall on my server?
+description: The Virtbase firewall filters traffic before it reaches your server. New servers accept everything; set Incoming packets to Drop and add Accept rules for the ports you use. Rules apply top to bottom, first match wins.
 categories: [networking, servers]
 authors: [janic]
-related: [about-ddos-protection, about-security]
-popular: 2
-keywords: [firewall, security, port]
+related: [cant-connect-to-server, about-ddos-protection, about-security]
+popular: 4
+keywords: [firewall, open port, close port, block port, allow port, firewall rules, ufw, iptables, security, Drop, Reject]
 publishedAt: 2026-03-19
-lastModified: 2026-03-19
+lastModified: 2026-11-02
 ---
 
-With Virtbase's stateless firewall, you can further secure your server. You can use your own rules to filter incoming and outgoing requests to and from your server.
+Every Virtbase server has a firewall in front of it that you control on the <Ui>Firewall</Ui> tab. It filters traffic before it reaches your server, so it also protects a server whose own firewall is misconfigured.
 
-The options **Accept**, **Drop**, and **Reject** are available.
+The firewall is always on. **New servers accept all traffic in both directions.** To protect a server, set incoming traffic to <Ui>Drop</Ui> and allow only the ports you actually use.
 
-By default, all incoming and outgoing connections are set to **Accept**. You should adjust this to suit your individual needs.
+## Before you start: don't lock yourself out
 
-## How do I create firewall rules?
+If you change the default for incoming traffic to <Ui>Drop</Ui> before a rule allows your <Term id="ssh">SSH</Term> port, your SSH session stops working. Create the rule for port 22 first. If it happens anyway, the [console](/en/help/article/how-to-use-console) still works, and you can fix the rules in the portal at any time.
 
-To create a new firewall rule, proceed as follows:
+## Protect a new server in four steps
 
-1. Open your **server** in the [customer portal](https://app.virtbase.com/servers).
-2. Click on **Firewall** in the navigation bar.
-3. You will now see an overview of your existing firewall rules. Click on **+** in the top right-hand corner.
-4. Here you can define the properties of your rule.
+1. In the [customer portal](https://app.virtbase.com/servers), select <Ui>View</Ui> next to your server and open the <Ui>Firewall</Ui> tab.
+2. Create a rule that allows SSH: select <Ui>+</Ui>, then set <Ui>Direction</Ui> to <Ui>Incoming</Ui>, <Ui>Action</Ui> to <Ui>Accept</Ui>, <Ui>Protocol</Ui> to <Ui>TCP</Ui> and <Ui>Destination port</Ui> to `22`. Enter a <Ui>Comment</Ui> such as `SSH` and select <Ui>Create Firewall Rule</Ui>.
+3. Add a rule like this for every other service that must be reachable, for example `80` and `443` for a website.
+4. Set <Ui>Incoming packets</Ui> to <Ui>Drop</Ui>.
 
-![Firewall rule options](./images/create-firewall-rule-dialog.png)
+![The Firewall tab: incoming packets are dropped by default, outgoing packets are accepted, and three rules accept TCP ports 22, 80 and 443](./images/firewall-rules.webp)
 
-5. Ensure that the rule is active. It may take a few seconds for the rule to be applied to new requests.
+Changes take effect within a few seconds. Replies to connections your server opened itself, such as package downloads, are always let through, so you can leave <Ui>Outgoing packets</Ui> on <Ui>Accept</Ui>.
 
-If you have any further questions about the firewall or need assistance, please [contact our support team](/en/contact).
+## Create a rule
 
-## What do the processing options mean?
+Select <Ui>+</Ui> above the rule list and fill in:
 
-**Accept**: The request passes through the firewall. A request that meets the properties of the rule is **allowed** and can reach or leave your server.
+| Field | What to enter |
+| --- | --- |
+| <Ui>Direction</Ui> | <Ui>Incoming</Ui> for traffic to your server, <Ui>Outgoing</Ui> for traffic it sends. |
+| <Ui>Action</Ui> | <Ui>Accept</Ui>, <Ui>Drop</Ui> or <Ui>Reject</Ui> (see below). |
+| <Ui>Protocol</Ui> | Usually <Ui>TCP</Ui> or <Ui>UDP</Ui>. Choose <Ui>ICMP</Ui> to filter pings, then pick an <Ui>ICMP type</Ui>. |
+| <Ui>Destination port</Ui> | A single port such as `443`, or a range such as `8000:8100`. |
+| <Ui>Source</Ui> | Optional. An address or network such as `198.51.100.7` or `10.0.0.0/8`. Leave it empty to match everyone. |
+| <Ui>Comment</Ui> | Optional, up to 64 characters. Note what the rule is for. |
+| <Ui>Enabled</Ui> | Turn off to keep a rule without applying it. |
 
-**Drop**: The firewall **passively blocks** the request. No response is sent, or the request times out. 
+To change a rule, select <Ui>Edit</Ui> in its menu. To remove it, select <Ui>Delete</Ui>.
 
-**Reject**: The firewall **actively blocks** the request. A “connection refused” response is sent.
+## Accept, Drop or Reject?
 
-We always recommend using the **Drop** mode for blocking. Otherwise, a potential attacker can identify that the blocked port is being used on your server.
-This allows conclusions to be drawn about the services being used.
+- <Ui>Accept</Ui> lets the traffic through.
+- <Ui>Drop</Ui> discards it silently. The sender waits and eventually times out.
+- <Ui>Reject</Ui> discards it and tells the sender, who sees "connection refused" at once.
 
-With the **Drop** method, it is not possible to guess which ports are in use.
+Use <Ui>Drop</Ui> to block traffic from the internet: it reveals nothing about which services run on your server. <Ui>Reject</Ui> is useful inside your own networks, where you want failing connections to fail fast.
 
-## In what order are the rules processed?
+## In which order are rules applied?
 
-Active firewall rules are processed from top to bottom. As soon as a rule applies to the request, it is applied and further processing is stopped.
+Rules are checked **from top to bottom**. The first enabled rule that matches decides what happens, and the rest are ignored. If no rule matches, the default action for that direction applies: <Ui>Incoming packets</Ui> or <Ui>Outgoing packets</Ui>.
 
-Inactive firewall rules have no effect on requests. They are ignored during processing.
+That is why the order matters. A rule that drops port 22 for everyone, placed above a rule that accepts port 22 from your office, blocks your office as well. Put specific rules above general ones, and move rules with <Ui>Move up</Ui> and <Ui>Move down</Ui> in their menu.
 
-Therefore, the order of the rules must be observed. We recommend the following order:
-1. Start with specific **DENY** rules first.
-2. Then define specific **ALLOW** rules.
-3. Place general **DENY** rules at the end.
+![Five firewall rules in order: drop a blocked network, accept SSH, HTTP and HTTPS, then drop everything else](./images/firewall-rule-order.webp)
 
-The following image shows this structure for incoming rules:
+## Recommendations
 
-![Recommended order of firewall rules](./images/create-firewall-rule-example.png)
+When the <Term id="guest-agent">QEMU guest agent</Term> runs inside a Linux server, Virtbase compares the services listening on your server with your rules and shows <Ui>Recommendations</Ui>:
+
+- **A service can be reached from the internet:** a database, Redis, the Docker API or a similar service is open to everyone. Select <Ui>Create rule</Ui> to block it, unless you meant to publish it.
+- **A port is blocked inside your server:** your Virtbase rule allows a port, but the firewall inside your server blocks it, so the traffic never arrives.
+- **Nothing is listening on a port:** a rule opens a port no service uses. Select <Ui>Remove rule</Ui> to tidy up.
+
+SSH, HTTP and HTTPS (ports 22, 80 and 443) are never flagged, because they are meant to be public.
+
+## A firewall inside your server
+
+If your server runs its own firewall, such as ufw, firewalld or nftables, the tab shows <Ui>A firewall is also running inside your server</Ui>. Traffic must pass **both** firewalls: a port must be open in each one to be reachable. Where Virtbase can read the rules inside your server, it lists them below your own, marked <Ui>Managed inside your server</Ui>. You change those inside the server, not in the portal.
+
+## Let AI suggest rules
+
+Select the sparkles icon above the rule list to open <Ui>Generate Firewall Rules</Ui>. Describe what you want in plain words, for example "Allow HTTPS from everywhere and SSH only from 198.51.100.7", and select <Ui>Generate</Ui>. You get up to 5 suggested rules to review. Select <Ui>Apply</Ui> for a single rule or <Ui>Apply all</Ui>. Nothing changes until you apply it. You can generate rules 10 times per day.
+
+## If it didn't work
+
+- **You locked yourself out:** open the <Ui>Firewall</Ui> tab in the portal, which always works, and add an <Ui>Accept</Ui> rule for your SSH port above any rule that blocks it, or set <Ui>Incoming packets</Ui> back to <Ui>Accept</Ui>. See [I can't connect to my server](/en/help/article/cant-connect-to-server).
+- **A port is still unreachable although a rule allows it:** check that no rule above it drops the traffic, that the rule is enabled, and that the firewall inside your server allows the port too.
+- <Msg>Could not create the firewall rule.</Msg> If the server is restricted because of an [abuse case](/en/help/article/about-abuse-reports), firewall changes are on hold until it is closed.

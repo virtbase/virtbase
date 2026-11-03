@@ -58,8 +58,8 @@
     "farewell": "Danke, dass du Kunde warst."
   },
   "confirm-identity": {
-    "title": "Dein {appName} Sicherheitscode",
-    "preview": "Dein {appName} Sicherheitscode",
+    "title": "Dein {appName}-Sicherheitscode",
+    "preview": "Dein {appName}-Sicherheitscode",
     "heading": "Bestätige, dass du es wirklich bist",
     "instructions": "Gib diesen Code ein, um eine sicherheitsrelevante Änderung an deinem {appName}-Konto zu bestätigen:",
     "hint": "Dieser Code läuft in 10 Minuten ab. Wenn du ihn nicht angefordert hast, ignoriere diese E-Mail – es ändert sich nichts."
@@ -78,7 +78,7 @@
     "title": "Deine E-Mail-Adresse wurde geändert",
     "preview": "Deine E-Mail-Adresse wurde aktualisiert",
     "heading": "Deine E-Mail-Adresse wurde aktualisiert",
-    "changedFromTo": "Die E-Mail-Adresse für deinen {appName} Account wurde von <strong>{oldEmail}</strong> zu <strong>{newEmail}</strong> geändert.",
+    "changedFromTo": "Die E-Mail-Adresse für dein {appName}-Konto wurde von <strong>{oldEmail}</strong> in <strong>{newEmail}</strong> geändert.",
     "support": "Falls du diese Änderung nicht selbst durchgeführt hast, kontaktiere bitte unser Support-Team oder <link>aktualisiere deine E-Mail-Adresse</link>.",
     "hint": "Diese Nachricht wurde ausschließlich an deine alte E-Mail-Adresse gesendet."
   },
@@ -90,15 +90,15 @@
     "description": "Vielen Dank für deinen Einkauf bei {appName}. Deine Rechnung steht zum Download bereit. Sie befindet sich im Anhang dieser E-Mail.",
     "voucherNumber": "Rechnungsnummer",
     "totalAmount": "Gesamtbetrag",
-    "taxAmount": "Beinhaltete Steuern",
+    "taxAmount": "Enthaltene Steuern",
     "viewInvoice": "Rechnung im Kundenportal anzeigen"
   },
   "login-link": {
-    "title": "Dein {appName} Login-Link",
-    "preview": "Dein {appName} Login-Link",
-    "heading": "Dein Login-Link",
+    "title": "Dein {appName}-Anmeldelink",
+    "preview": "Dein {appName}-Anmeldelink",
+    "heading": "Dein Anmeldelink",
     "welcome": "Willkommen bei {appName}!",
-    "instructions": "Bitte klicke den nachfolgenden Link, um dich anzumelden.",
+    "instructions": "Bitte klicke auf den folgenden Link, um dich anzumelden.",
     "signIn": "Anmelden",
     "copyAndPaste": "oder kopiere diese URL in deinen Browser:"
   },
@@ -106,15 +106,15 @@
     "title": "Dein Passwort wurde geändert",
     "preview": "Dein Passwort wurde geändert",
     "heading": "Passwort wurde geändert",
-    "description": "Das Passwort für deinen {appName} Account wurde erfolgreich geändert.",
-    "hint": "Falls du diese Änderung nicht autorisiert hast, oder glaubst, dass eine unbefugte Person Zugriff auf deinen Account hat, dann kontaktiere uns bitte umgehend zur Sicherung deines Accounts."
+    "description": "Das Passwort für dein {appName}-Konto wurde erfolgreich geändert.",
+    "hint": "Falls du diese Änderung nicht selbst vorgenommen hast oder glaubst, dass eine unbefugte Person Zugriff auf dein Konto hat, kontaktiere uns bitte umgehend, damit wir dein Konto sichern können."
   },
   "reset-password-link": {
     "title": "Link zum Zurücksetzen des Passworts",
     "preview": "Link zum Zurücksetzen des Passworts",
     "heading": "Link zum Zurücksetzen des Passworts",
-    "description": "Du erhältst diese E-Mail, da wir eine Anfrage zum Zurücksetzen des Passworts für deinen {appName} Account erhalten haben.",
-    "instructions": "Bitte klicke auf den nachfolgenden Button, um dein Passwort zurückzusetzen.",
+    "description": "Du erhältst diese E-Mail, da wir eine Anfrage zum Zurücksetzen des Passworts für dein {appName}-Konto erhalten haben.",
+    "instructions": "Bitte klicke auf die Schaltfläche unten, um dein Passwort zurückzusetzen.",
     "resetPassword": "Passwort zurücksetzen",
     "copyAndPaste": "oder kopiere diese URL in deinen Browser:"
   },
@@ -122,15 +122,15 @@
     "title": "Dein Server wurde gelöscht",
     "preview": "Dein Server wurde gelöscht",
     "heading": "Dein Server wurde gelöscht",
-    "greeting": "Hi, {name}!",
-    "description": "Dein Server <strong>{serverName}</strong> und alle Daten wurden permanent gelöscht.",
+    "greeting": "Hi {name}!",
+    "description": "Dein Server <strong>{serverName}</strong> und alle Daten wurden endgültig gelöscht.",
     "hint": "Da dein Server nicht in den letzten {days} Tagen verlängert wurde, wurde er gelöscht und kann nicht wiederhergestellt werden."
   },
   "server-extended": {
     "title": "Dein Server wurde verlängert",
     "preview": "Dein Server wurde verlängert",
     "heading": "Dein Server wurde verlängert",
-    "greeting": "Hi, {name}!",
+    "greeting": "Hi {name}!",
     "description": "Dein Server <strong>{serverName}</strong> wurde erfolgreich verlängert.",
     "hint": "Das neue Ablaufdatum ist <strong>{newTerminatesAt}</strong>. Falls du den Server erneut verlängern möchtest, kannst du das im Kundenportal tun."
   },
@@ -139,7 +139,7 @@
     "preview": "Dein Server ist nun bereit",
     "heading": "Dein Server ist nun bereit",
     "greeting": "Hi {name}!",
-    "description": "Dein gebuchter Server ist nun vollständig konfiguriert und einsatzbereit. Aus Sicherheitsgründen ist die IP-Adresse dieser E-Mail nicht beigefügt. Du findest diese im Kundenportal.",
+    "description": "Dein gebuchter Server ist nun vollständig konfiguriert und einsatzbereit. Aus Sicherheitsgründen steht die IP-Adresse nicht in dieser E-Mail. Du findest sie im Kundenportal.",
     "username": "<strong>• Benutzername:</strong> {username}",
     "rootPassword": "<strong>• Root-Passwort:</strong> {rootPassword}",
     "customPassword": "Von dir gewähltes Passwort",
@@ -151,7 +151,7 @@
     "heading": "Dein Server läuft bald ab",
     "greeting": "Hi {name}!",
     "description": "Dein Server <strong>{serverName}</strong> läuft in den nächsten <strong>{days} Tagen</strong> ab.",
-    "hint": "Um eine Löschung zu vermeiden, empfehlen wir den Server <strong>so schnell wie möglich</strong> zu verlängern.",
+    "hint": "Um eine Löschung zu vermeiden, empfehlen wir, den Server <strong>so schnell wie möglich</strong> zu verlängern.",
     "renewButton": "Jetzt verlängern"
   },
   "server-suspended": {
@@ -160,21 +160,21 @@
     "heading": "Dein Server wurde deaktiviert",
     "greeting": "Hi {name}!",
     "description": "Dein Server <strong>{serverName}</strong> wurde deaktiviert, da er nicht rechtzeitig verlängert wurde.",
-    "hint": "Du hast <strong>{days} Tage</strong> zum Verlängern deines Servers. Danach werden dein Server und alle zugehörigen Daten permanent gelöscht.",
+    "hint": "Du hast <strong>{days} Tage</strong> Zeit, deinen Server zu verlängern. Danach werden dein Server und alle zugehörigen Daten endgültig gelöscht.",
     "renewButton": "Jetzt verlängern"
   },
   "verify-email": {
-    "title": "Dein {appName} Bestätigungscode",
-    "preview": "Dein {appName} Bestätigungscode",
+    "title": "Dein {appName}-Bestätigungscode",
+    "preview": "Dein {appName}-Bestätigungscode",
     "heading": "Bitte bestätige deine E-Mail-Adresse",
-    "instructions": "Gib diesen Code auf der {appName} Verifizierungsseite ein, um die Registrierung abzuschließen:",
+    "instructions": "Gib diesen Code auf der Bestätigungsseite von {appName} ein, um die Registrierung abzuschließen:",
     "hint": "Dieser Code läuft in 10 Minuten ab."
   },
   "verify-email-link": {
-    "title": "Dein {appName} Bestätigungslink",
-    "preview": "Dein {appName} Bestätigungslink",
+    "title": "Dein {appName}-Bestätigungslink",
+    "preview": "Dein {appName}-Bestätigungslink",
     "heading": "Bitte bestätige deine E-Mail-Adresse",
-    "instructions": "Klicke auf den nachfolgenden Link, um deine E-Mail-Adresse zu bestätigen:",
+    "instructions": "Klicke auf den folgenden Link, um deine E-Mail-Adresse zu bestätigen:",
     "verifyEmailLink": "E-Mail-Adresse bestätigen",
     "copyAndPaste": "oder kopiere diese URL in deinen Browser:"
   },
@@ -244,9 +244,9 @@
   },
   "footer": {
     "thisEmailWasIntendedFor": "Diese E-Mail ist für <strong>{email}</strong> bestimmt.",
-    "securityConcerns": "Falls du diese E-Mail nicht erwartet hast, kannst du sie ignorieren. Solltest du dir Sorgen um die Sicherheit deines Accounts machen, dann <link>kontaktiere uns</link>.",
-    "dontWantToGetTheseEmails": "Diese Art von E-Mail nicht erhalten?",
-    "managePreferences": "E-Mail-Präferenzen anpassen",
+    "securityConcerns": "Falls du diese E-Mail nicht erwartet hast, kannst du sie ignorieren. Solltest du dir Sorgen um die Sicherheit deines Kontos machen, <link>kontaktiere uns</link>.",
+    "dontWantToGetTheseEmails": "Du möchtest diese Art von E-Mail nicht mehr erhalten?",
+    "managePreferences": "E-Mail-Einstellungen anpassen",
     "adjustNotificationSettings": "Benachrichtigungseinstellungen anpassen",
     "managingDirector": "Geschäftsführer",
     "commercialRegister": "Handelsregister",

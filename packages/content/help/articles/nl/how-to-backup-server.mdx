@@ -1,85 +1,74 @@
 ---
-title: Hoe maak ik een backup van mijn Virtbase server?
-description: Leer hoe je een backup maakt van je Virtbase server
+title: Hoe maak ik een back-up van mijn server?
+description: Maak op het tabblad Back-ups in minder dan een minuut een back-up van de hele server. Kies de modus Snapshot, Opschorten of Stop, en vergrendel belangrijke back-ups tegen verwijderen. Maximaal 5 back-ups per dag.
 categories: [backups, servers]
 authors: [janic]
-related: [how-to-change-operating-system, how-to-renew-server]
-popular: 1
-keywords: [backup, snapshot, server, herstel]
+related: [how-to-restore-backup, how-to-change-operating-system, how-to-renew-server]
+popular: 3
+keywords: [back-up, backup, back-up maken, snapshot, momentopname, server back-up, verwijderingsbeveiliging, back-up vergrendelen, gegevensverlies, dataverlies]
 publishedAt: 2026-03-19
-lastModified: 2026-03-19
+lastModified: 2026-11-02
 ---
 
-Om ervoor te zorgen dat er geen belangrijke gegevens verloren gaan, is het belangrijk om regelmatig backups van je server te maken.
-Backups geven de volledige status van je server op een specifiek moment weer en kunnen op elk moment worden hersteld.
+Een back-up is een kopie van de volledige schijf van je server op één moment: het besturingssysteem, je applicaties en je gegevens. Je maakt hem op het tabblad <Ui>Back-ups</Ui>, en je kunt hem later [terugzetten](/nl/help/article/how-to-restore-backup) om de server precies terug te brengen in de staat van dat moment.
 
-Het aantal beschikbare backuppunten hangt af van het pakket dat je hebt gekozen.
+Back-ups blijven bewaard tot je ze verwijdert, ook als je het besturingssysteem wijzigt. Ze worden samen met de server verwijderd. Ze beschermen je dus niet als een server wordt verwijderd omdat hij niet is verlengd.
 
-## Hoe maak ik een backup?
+## Een back-up maken
 
-Volg deze stappen om een volledige backup te maken:
+1. Klik in het [klantenportaal](https://app.virtbase.com/servers) op <Ui>Bekijken</Ui> naast je server en open het tabblad <Ui>Back-ups</Ui>.
+2. Klik op de knop <Ui>+</Ui> naast <Ui>Back-ups</Ui>.
+3. Vul bij <Ui>Naam</Ui> iets in wat je later herkent, bijvoorbeeld `Voor upgrade naar Debian 13`.
+4. Kies een <Ui>Back-upmodus</Ui> (zie hieronder). <Ui>Snapshot</Ui> is in de meeste gevallen de juiste keuze.
+5. Optioneel: kies <Ui>Verwijderbeveiliging inschakelen</Ui> voor een back-up die je lang wilt bewaren.
+6. Klik op <Ui>Back-up maken</Ui>.
 
-<Hint>
-Voor maximale prestaties en compatibiliteit raden we aan om het `qemu-guest-agent` pakket te installeren.
-Dit is standaard voorgeïnstalleerd in al onze besturingssystemen.
-</Hint>
+![Het dialoogvenster "Back-up maken" met een naam, de gekozen modus Snapshot en de schakelaar voor verwijderbeveiliging](./images/create-backup-dialog.webp)
 
-1. Open je **server** in het [klantenportaal](https://app.virtbase.com/servers).
-2. Klik op **Backups** in de navigatiebalk.
-3. Je ziet nu een overzicht van je bestaande backups. Klik op **+ Backup maken**.
-4. Hier kun je extra opties voor je nieuwe backup opgeven. De aanbevolen instellingen zijn al voorgeselecteerd. Geef je backup een herkenbare naam en activeer indien nodig de verwijderbeveiliging.
+De back-up verschijnt in de lijst met de status <Ui>Wordt gemaakt...</Ui>. Als hij klaar is, toont de lijst de grootte. Hoe lang dat duurt, hangt af van hoeveel gegevens er op de schijf staan.
 
-![Backup opties maken](../en/images/create-backup-dialog.png)
+## Welke back-upmodus moet ik kiezen?
 
-5. Klik op **Backup maken** om het proces te starten.
+| Modus | Wat er gebeurt | Geschikt als |
+| --- | --- | --- |
+| <Ui>Snapshot</Ui> | De server blijft draaien. Zijn toestand wordt vastgelegd terwijl hij werkt. | Vrijwel altijd. |
+| <Ui>Opschorten</Ui> | De server wordt kort gepauzeerd terwijl de back-up wordt gemaakt, en gaat daarna verder. | Applicaties in één keer veel gegevens schrijven, zoals drukke databases, en je een consistente kopie wilt. |
+| <Ui>Stoppen</Ui> | De server wordt afgesloten, geback-upt en weer gestart. | Je de schoonst mogelijke kopie wilt en een paar minuten downtime kunt accepteren. |
 
-Je backup wordt nu gemaakt. De duur varieert afhankelijk van de opslagruimte die je hebt geboekt en de prestaties van je server. Het zou niet langer dan **5 minuten** moeten duren.
+Bij <Ui>Snapshot</Ui> zorgt de <Term id="guest-agent">QEMU guest agent</Term> in de server ervoor dat schrijfacties die nog openstaan kort naar de schijf worden weggeschreven, zodat de kopie consistent is. De agent is geïnstalleerd op elk besturingssysteem dat je bij het bestellen kiest.
 
-**Er kan slechts één backupproces tegelijk worden gestart**.
+## Een back-up beveiligen tegen verwijderen
 
-Je kunt de huidige status van de backup volgen in de lijst met backups.
+Een vergrendelde back-up kan niet worden verwijderd tot je hem ontgrendelt. Zo bescherm je belangrijke back-ups tegen per ongeluk verwijderen, ook door iemand anders die je <Term id="api-key">API-sleutel</Term> gebruikt.
 
-Als je nog vragen hebt over het backupproces of hulp nodig hebt, [neem dan contact op met ons supportteam](/nl/contact).
+- Om een voltooide back-up te vergrendelen, kies je <Ui>Vergrendelen</Ui> in het menu van de back-up.
+- Wil je hem later verwijderen, kies dan eerst <Ui>Ontgrendelen</Ui> en daarna <Ui>Verwijderen</Ui>.
 
-## Wat betekenen de backup-opties?
+Verwijderingsbeveiliging overleeft de server zelf niet: als een server wordt verwijderd, worden al zijn back-ups mee verwijderd, vergrendeld of niet.
 
-**Naam**: Dit is de naam van je backup. Deze wordt weergegeven in de lijst met gemaakte backups en wordt gebruikt voor organisatorische doeleinden.
-Je kunt elke naam kiezen die je wilt, zoals "Voor upgrade", "Nieuw besturingssysteem" of "Status op XX-XX-XXXX".
+## Limieten
 
-**Backup-modus**: Bepaal hoe de backup wordt gemaakt. De modus die je selecteert beïnvloedt de snelheid van de backup en de status die wordt opgeslagen.
+- Je kunt maximaal **5 back-ups per dag** maken, opgeteld over al je servers.
+- Per server kan er maar **één back-up tegelijk** lopen.
+- Er kunnen geen back-ups worden gemaakt terwijl de server aan het installeren is of is opgeschort.
+- Een back-up die na 12 uur nog niet klaar is, wordt gemarkeerd als <Ui>Mislukt</Ui>. Een mislukte back-up bevat niets en kan altijd worden verwijderd.
 
-- **Snapshot**: De server wordt tijdens het gebruik geback-upt. Hierdoor worden ook alle actieve processen en hun status opgeslagen. Wanneer de backup wordt hersteld, bevinden de processen zich in dezelfde staat als voorheen.
-- **Suspendeer**: De server wordt tijdelijk "bevroren". Alle processen worden gepauzeerd en de backup wordt gemaakt. Deze modus zorgt ervoor dat actieve processen geen verdere wijzigingen aan de server aanbrengen. Je server kan tijdens de backup geen nieuwe processen starten.
-- **Stop**: De server wordt volledig afgesloten voordat het backupproces start. De server wordt vervolgens in uitgeschakelde staat geback-upt. De server kan tijdens de backup niet worden gestart.
+## Wanneer moet ik een back-up maken?
 
-In de meeste gevallen is het gebruik van de **Snapshot**-modus voldoende. Als je op veilig wilt spelen, kun je een van de andere twee modi gebruiken.
+Maak een back-up vóór alles wat je misschien ongedaan wilt maken:
 
-**Verwijderbeveiliging**: Verhoog de beveiliging van je backup door verwijderbeveiliging te activeren. Actieve verwijderbeveiliging voorkomt onbedoelde verwijdering van de backup.
-Je moet dan eerst de verwijderbeveiliging op de voltooide backup deactiveren om deze te kunnen verwijderen.
+- voordat je het besturingssysteem wijzigt of naar een nieuwe release upgradet,
+- voordat je onbekende software installeert of grotere configuratiewijzigingen doorvoert,
+- regelmatig, als de gegevens op de server belangrijk voor je zijn.
 
-## Wanneer moet ik een backup maken?
+Houd er rekening mee dat back-ups bij Virtbase worden opgeslagen. Bewaar van gegevens die je echt niet kwijt mag raken ook een kopie buiten Virtbase, bijvoorbeeld met `rsync` of een back-uptool zoals restic of Borg.
 
-Er is geen exacte regel voor wanneer je een backup moet maken. Het is jouw verantwoordelijkheid om regelmatig een backup van je gegevens te maken.
+## Kan ik een back-up downloaden?
 
-We raden echter aan om een backup te maken in de volgende situaties:
-- Je hebt het besturingssysteem van je server opnieuw geïnstalleerd of wilt dit doen
-- Je wilt nieuwe, ongeteste software op je server installeren
-- Je bent het besturingssysteem van je server aan het updaten naar een nieuwere versie
-- Je wilt grote wijzigingen aanbrengen in de configuratie van je server
+Niet vanuit het klantenportaal. Heb je een back-up als bestand nodig, [neem dan contact op met support](/nl/contact) en vermeld je <Ui>Server-ID</Ui> van het tabblad <Ui>Geavanceerd</Ui> en de naam van de back-up.
 
-Als er tijdens deze gebeurtenissen een fout optreedt, zorgt de backup ervoor dat je de wijzigingen onmiddellijk ongedaan kunt maken.
+## Als het niet gelukt is
 
-## Worden backups verwijderd bij het wisselen van besturingssysteem?
-
-Nee, je backups worden bewaard totdat je ze handmatig verwijdert.
-Ze worden ook bewaard bij het wisselen van besturingssysteem, zodat je terug kunt schakelen naar het vorige besturingssysteem.
-
-Ons systeem verwijdert alleen backups als je server niet is verlengd nadat de termijn is verlopen.
-In dit geval informeren we je meerdere dagen van tevoren voordat een backup wordt verwijderd.
-
-## Hoe download ik mijn backup?
-
-Om veiligheidsredenen is het momenteel niet mogelijk om een backup rechtstreeks vanuit het klantenportaal te downloaden.
-
-Als je een kopie van je backup nodig hebt in de vorm van een downloadbaar bestand, [neem dan contact op met ons supportteam](/nl/contact).
-
+- <Msg>De back-up kon niet worden gemaakt.</Msg> Er loopt nog een andere back-up van deze server, je hebt de limiet van 5 back-ups per dag bereikt, of de server is aan het installeren of opgeschort. Wacht tot de lopende back-up klaar is, of probeer het morgen opnieuw.
+- <Msg>De back-up kon niet worden verwijderd.</Msg> De back-up is vergrendeld. Kies eerst <Ui>Ontgrendelen</Ui>.
+- **De back-up staat op Mislukt:** verwijder hem en maak een nieuwe. Mislukt die ook, [neem dan contact op met support](/nl/contact).

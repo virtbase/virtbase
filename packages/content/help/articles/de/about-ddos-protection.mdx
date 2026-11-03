@@ -1,34 +1,40 @@
 ---
-title: Welchen DDoS-Schutz verwendet Virtbase?
-description: Erfahre mehr über den eingesetzte DDoS-Schutz bei Virtbase
+title: Welchen DDoS-Schutz nutzt Virtbase?
+description: Jeder Virtbase-Server ist ohne Aufpreis durch die permanent aktive DDoS-Filterung von aurologic geschützt. Sie deckt TCP- und UDP-Dienste ab, auch Gameserver, und muss nicht eingerichtet werden.
 categories: [networking]
 authors: [janic]
-related: [how-to-use-server-firewall, about-security]
-keywords: [Server, DDoS, DDoS Protection, Schutz, Attacke]
+related: [how-to-use-server-firewall, about-security, cant-connect-to-server]
+keywords: [DDoS, DDoS-Schutz, DDoS-Angriff, Angriff, Schutz, Server, Gameserver, aurologic]
 publishedAt: 2026-03-19
-lastModified: 2026-03-19
+lastModified: 2026-11-02
 ---
 
-Alle Virtbase Server sind durch den DDoS-Schutz der **aurologic GmbH** geschützt. 
-Dieser bietet einerseits einen hervorragenden Schutz vor großen Attacken, 
-andererseits findet die Filterung der Pakete sehr genau und feingranular statt. 
+Alle Virtbase-Server sind durch den <Term id="ddos">DDoS</Term>-Schutz der **aurologic GmbH** geschützt.
+Er bietet einerseits hervorragenden Schutz vor großen Angriffen,
+andererseits filtert er Pakete sehr genau und feingranular.
 
-Unterstützt werden alle gängigen Netzwerkdienste und Protokolle. 
-Auch Online-Spiele sind mit dieser Lösung perfekt geschützt und bleiben während des ganzen Angriffes spielbar.
+Alle gängigen Netzwerkdienste und Protokolle werden unterstützt.
+Auch Onlinespiele sind mit dieser Lösung bestens geschützt und bleiben während des gesamten Angriffs spielbar.
 
-Falls du weitere Fragen zum DDoS-Schutz hast, dann [kontaktiere unser Support-Team](/de/contact).
+Wenn du weitere Fragen zum DDoS-Schutz hast, [kontaktiere unser Support-Team](/de/contact).
 
 ## Muss ich den DDoS-Schutz aktivieren?
 
-Nein, der DDoS-Schutz ist bei allen Virtbase Servern standardmäßig aktiv. 
+Nein, der DDoS-Schutz ist auf allen Virtbase-Servern standardmäßig aktiv.
 Du musst nichts weiter tun, um von dem Schutz zu profitieren.
 
-## Welche Protokolle werden geschützt?
+## Welche Protokolle sind geschützt?
 
-Es werden alle gängigen Netzwerkdienste und Protokolle geschützt. 
-Dazu gehören unter anderem TCP und UDP basierte Dienste. Auch Gameserver-Protokolle werden erkannt und gezielt geschützt.
+Alle gängigen Netzwerkdienste und Protokolle sind geschützt.
+Dazu gehören TCP- und UDP-basierte Dienste. Auch Gameserver-Protokolle werden erkannt und gezielt geschützt.
 
-## Ist mein Server während eines Angriffes erreichbar?
+## Ersetzt der DDoS-Schutz eine Firewall?
 
-Ja, der DDoS-Schutz ist speziell für Web- und Gameserver optimiert. 
-Durch den Einsatz von Challenge Response Mechanismen bleibt dein Server auch während eines aktiven Angriffes erreichbar.
+Nein. Der DDoS-Schutz filtert Angriffswellen heraus, bevor sie unser Netzwerk erreichen. Er entscheidet nicht darüber, welche deiner Dienste erreichbar sein sollen. Nutze die [Firewall](/de/help/article/how-to-use-server-firewall), um Ports zu schließen, die du nicht brauchst.
+
+## Ist mein Server während eines Angriffs erreichbar?
+
+Ja, der DDoS-Schutz ist speziell für Web- und Gameserver optimiert.
+Durch Challenge-Response-Verfahren bleibt dein Server auch während eines laufenden Angriffs erreichbar.
+
+Wenn dein Server nicht erreichbar ist und du einen Angriff vermutest, geh zuerst [Server nicht erreichbar: Ich kann mich nicht verbinden](/de/help/article/cant-connect-to-server) durch und [kontaktiere dann den Support](/de/contact) mit deiner <Ui>Server-ID</Ui> und dem Zeitpunkt, zu dem das Problem begonnen hat.

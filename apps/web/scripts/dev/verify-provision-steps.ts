@@ -56,8 +56,8 @@ const IMAGE_URL =
 const ADAPTERS = [
   {
     macaddress: "BC:24:11:00:94:00",
-    addresses: { 4: ["172.30.0.70/24"], 6: [] } as Record<4 | 6, string[]>,
-    gateways: { 4: ["172.30.0.1"], 6: [] } as Record<4 | 6, string[]>,
+    addresses: { 4: ["10.0.2.70/24"], 6: [] } as Record<4 | 6, string[]>,
+    gateways: { 4: ["10.0.2.2"], 6: [] } as Record<4 | 6, string[]>,
     vlan: 0,
     bridge: "vmbr0",
   },

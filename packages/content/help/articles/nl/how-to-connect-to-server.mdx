@@ -1,0 +1,77 @@
+---
+title: Hoe maak ik voor het eerst verbinding met mijn server?
+description: Maak verbinding via SSH met de gebruiker root, het IP-adres van de server uit het klantenportaal en het wachtwoord uit je welkomstmail of je SSH-sleutel. Met een Windows-installatie maak je verbinding via Extern bureaublad.
+categories: [getting-started, servers]
+authors: [janic]
+related: [cant-connect-to-server, how-to-reset-root-password, how-to-use-console, how-to-order-server]
+keywords: [SSH, verbinding maken, inloggen, eerste keer inloggen, root, PuTTY, terminal, IP-adres, Remote Desktop, Extern bureaublad, RDP]
+publishedAt: 2026-11-02
+lastModified: 2026-11-02
+---
+
+Op een Linux-server log je via <Term id="ssh">SSH</Term> in als de gebruiker `root`. Je hebt drie dingen nodig: het IP-adres van de server, dat in het klantenportaal staat, je <Term id="ssh-key">SSH-sleutel</Term> of het root-wachtwoord, en een SSH-client.
+
+## Voordat je begint
+
+- **Het IP-adres:** klik in de [serverlijst](https://app.virtbase.com/servers) op <Ui>IP kopiëren</Ui> naast je server. Om veiligheidsredenen staat het niet in de welkomstmail.
+- **Het wachtwoord of de sleutel:**
+  - Heb je bij het bestellen een SSH-sleutel toegevoegd, dan log je in met die sleutel.
+  - Heb je een root-wachtwoord ingesteld, gebruik dan dat.
+  - Anders staat het gegenereerde wachtwoord in de e-mail <Msg>Je server is nu klaar</Msg>.
+- **Een SSH-client:** Linux, macOS en Windows 10 of later hebben `ssh` al in de terminal. Open op Windows <Ui>PowerShell</Ui> of <Ui>Terminal</Ui>.
+
+## Verbinding maken via SSH
+
+1. Open een terminal en voer dit uit, met het adres van je server:
+
+   ```bash
+   ssh root@203.0.113.10
+   ```
+
+   Een IPv6-adres gebruik je op dezelfde manier: `ssh root@2001:db8::10`.
+
+2. De eerste keer vraagt SSH of je de server vertrouwt:
+
+   ```text
+   The authenticity of host '203.0.113.10' can't be established.
+   ED25519 key fingerprint is SHA256:...
+   Are you sure you want to continue connecting (yes/no/[fingerprint])?
+   ```
+
+   Typ `yes` en druk op Enter. Je computer onthoudt de server vanaf nu.
+
+3. Vul het root-wachtwoord in als daarom wordt gevraagd. Terwijl je typt, verschijnt er niets op het scherm.
+
+Je bent ingelogd zodra je een prompt ziet zoals `root@vm:~#`.
+
+Gebruik je een sleutel die niet je standaardsleutel is, geef die dan expliciet op:
+
+```bash
+ssh -i ~/.ssh/mijn_sleutel root@203.0.113.10
+```
+
+## Aanbevolen eerste stappen
+
+1. **Werk het systeem bij:**
+
+   ```bash tab="Debian / Ubuntu" tab-group="os"
+   apt update && apt upgrade
+   ```
+
+   ```bash tab="AlmaLinux / Rocky Linux / Fedora" tab-group="os"
+   dnf upgrade
+   ```
+
+2. **Wijzig het gegenereerde wachtwoord** met `passwd`, of stap over op SSH-sleutels en schakel inloggen met een wachtwoord uit.
+3. **Bepaal welke poorten bereikbaar moeten zijn** en stel de [firewall](/nl/help/article/how-to-use-server-firewall) in. Nieuwe servers accepteren al het inkomende verkeer.
+4. **Maak een [back-up](/nl/help/article/how-to-backup-server)** zodra de server is ingericht zoals jij wilt.
+
+## Windows
+
+Virtbase levert geen Windows-images of -licenties. Je kunt Windows zelf installeren vanaf je eigen <Term id="iso-image">ISO-image</Term>, met je eigen licentie. Zet vóór de installatie op het tabblad <Ui>Geavanceerd</Ui> het BIOS op <Ui>UEFI</Ui> en de <Term id="tpm">TPM</Term> op <Ui>v2.0</Ui>; zonder die instellingen laat Windows 11 zich niet installeren. Zodra <Term id="rdp">Extern bureaublad</Term> (Remote Desktop) in Windows is ingeschakeld, maak je verbinding met het IP-adres van de server via een Remote Desktop-client op poort 3389.
+
+## Als het niet gelukt is
+
+- **De verbinding krijgt een time-out of wordt geweigerd:** zie [Ik kan geen verbinding maken met mijn server](/nl/help/article/cant-connect-to-server).
+- **Het wachtwoord wordt niet geaccepteerd:** [reset het root-wachtwoord](/nl/help/article/how-to-reset-root-password).
+- **Helemaal geen netwerktoegang:** log in plaats daarvan in via de [browserconsole](/nl/help/article/how-to-use-console).

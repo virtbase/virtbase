@@ -19,10 +19,12 @@ import { APP_NAME, PUBLIC_DOMAIN } from "@virtbase/utils";
 import { cacheLife, cacheTag } from "next/cache";
 import type { Locale } from "next-intl";
 import { getExtracted } from "next-intl/server";
+import { getGlossaryText } from "@/features/glossary/glossary.ts";
 import { getCategoryArticles } from "@/features/help/articles.ts";
 import { getHelpCategories } from "@/features/help/categories.tsx";
 import { defaultLocale, locales } from "@/i18n/config.ts";
 import { API_DISCOVERY } from "@/lib/api-discovery.ts";
+import { publicPath } from "@/lib/public-routes.ts";
 import { legal, marketing } from "@/lib/source.ts";
 
 type Entry = { title: string; url: string; description?: string };
@@ -105,6 +107,8 @@ async function getLlmsTxt(locale: Locale): Promise<string> {
     link({ title: page.data.title, url: PUBLIC_DOMAIN + page.url }),
   );
 
+  const glossary = await getGlossaryText(locale);
+
   return [
     `# ${APP_NAME}`,
     home && `> ${home.data.description}`,
@@ -112,6 +116,12 @@ async function getLlmsTxt(locale: Locale): Promise<string> {
       "Every page linked here is also available as Markdown: append .md to its URL, or request it with the header Accept: text/markdown.",
     ),
     ...(await helpSections(locale, t("Help Center"))),
+    `## ${t("Help Center")}: ${glossary.title}`,
+    link({
+      title: glossary.title,
+      url: `${PUBLIC_DOMAIN}/${locale}${publicPath({ kind: "help-glossary" })}`,
+      description: glossary.description,
+    }),
     `## ${APP_NAME}`,
     site.join("\n"),
     `## ${t("Legal")}`,

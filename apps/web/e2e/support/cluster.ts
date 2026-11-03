@@ -45,7 +45,7 @@ export interface ClusterConfig {
 // undefined in the latter.
 const CLUSTER_JSON = join(
   dirname(fileURLToPath(import.meta.url)),
-  "../../../../tooling/proxmox-cluster/cluster.json",
+  "../../../../tooling/proxbase/cluster.json",
 );
 
 /**

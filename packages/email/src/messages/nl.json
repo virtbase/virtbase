@@ -91,7 +91,7 @@
     "voucherNumber": "Factuurnummer",
     "totalAmount": "Totaalbedrag",
     "taxAmount": "Inclusief belasting",
-    "viewInvoice": "Factuur bekijken in klantportaal"
+    "viewInvoice": "Factuur bekijken in klantenportaal"
   },
   "login-link": {
     "title": "Je {appName}-inloglink",
@@ -110,12 +110,12 @@
     "hint": "Als jij deze wijziging niet hebt gedaan of denkt dat iemand zonder toestemming toegang heeft gehad tot je account, neem dan meteen contact met ons op zodat we je account kunnen beveiligen."
   },
   "reset-password-link": {
-    "title": "Link om wachtwoord opnieuw in te stellen",
-    "preview": "Link om wachtwoord opnieuw in te stellen",
-    "heading": "Link om wachtwoord opnieuw in te stellen",
-    "description": "Je ontvangt deze e-mail omdat we een verzoek hebben ontvangen om het wachtwoord van je account bij {appName} opnieuw in te stellen.",
-    "instructions": "Klik op de knop hieronder om je wachtwoord opnieuw in te stellen.",
-    "resetPassword": "Wachtwoord opnieuw instellen",
+    "title": "Link om je wachtwoord te resetten",
+    "preview": "Link om je wachtwoord te resetten",
+    "heading": "Link om je wachtwoord te resetten",
+    "description": "Je ontvangt deze e-mail omdat we een verzoek hebben ontvangen om het wachtwoord van je account bij {appName} te resetten.",
+    "instructions": "Klik op de knop hieronder om je wachtwoord te resetten.",
+    "resetPassword": "Wachtwoord resetten",
     "copyAndPaste": "of kopieer en plak deze URL in je browser:"
   },
   "server-deleted": {
@@ -124,7 +124,7 @@
     "heading": "Je server is verwijderd",
     "greeting": "Hoi {name}!",
     "description": "Je server <strong>{serverName}</strong> en alle gegevens zijn permanent verwijderd.",
-    "hint": "Omdat je server de afgelopen {days} dagen niet is verlengd, is deze verwijderd en kan deze niet worden hersteld."
+    "hint": "Omdat je server de afgelopen {days} dagen niet is verlengd, is hij verwijderd en kan hij niet worden hersteld."
   },
   "server-extended": {
     "title": "Je server is verlengd",
@@ -132,18 +132,18 @@
     "heading": "Je server is verlengd",
     "greeting": "Hoi {name}!",
     "description": "Je server <strong>{serverName}</strong> is succesvol verlengd.",
-    "hint": "De nieuwe vervaldatum is <strong>{newTerminatesAt}</strong>. Als je de server opnieuw moet verlengen, kun je dat doen in het klantportaal."
+    "hint": "De nieuwe vervaldatum is <strong>{newTerminatesAt}</strong>. Als je de server opnieuw moet verlengen, kun je dat doen in het klantenportaal."
   },
   "server-ready": {
     "title": "Je server is nu klaar",
     "preview": "Je server is nu klaar",
     "heading": "Je server is nu klaar",
     "greeting": "Hoi {name}!",
-    "description": "De server die je hebt besteld is nu volledig geconfigureerd en klaar voor gebruik. Om veiligheidsredenen staat het IP-adres niet in deze e-mail. Je vindt het in het klantportaal.",
+    "description": "De server die je hebt besteld is nu volledig geconfigureerd en klaar voor gebruik. Om veiligheidsredenen staat het IP-adres niet in deze e-mail. Je vindt het in het klantenportaal.",
     "username": "<strong>• Gebruikersnaam:</strong> {username}",
     "rootPassword": "<strong>• Root-wachtwoord:</strong> {rootPassword}",
     "customPassword": "Aangepast wachtwoord dat je zelf hebt gekozen",
-    "portalLink": "Server bekijken in klantportaal"
+    "portalLink": "Server bekijken in klantenportaal"
   },
   "server-renewal-reminder": {
     "title": "Je server verloopt binnenkort",
@@ -159,7 +159,7 @@
     "preview": "Je server is opgeschort",
     "heading": "Je server is opgeschort",
     "greeting": "Hoi {name}!",
-    "description": "Je server <strong>{serverName}</strong> is opgeschort omdat deze niet op tijd is verlengd.",
+    "description": "Je server <strong>{serverName}</strong> is opgeschort omdat hij niet op tijd is verlengd.",
     "hint": "Je hebt <strong>{days} dagen</strong> om je server te verlengen. Daarna worden je server en alle gegevens permanent verwijderd.",
     "renewButton": "Nu verlengen"
   },
@@ -175,7 +175,7 @@
     "preview": "Je {appName}-verificatielink",
     "heading": "Bevestig je e-mailadres",
     "instructions": "Klik op de onderstaande link om je e-mailadres te bevestigen:",
-    "verifyEmailLink": "E-mailadres verifiëren",
+    "verifyEmailLink": "E-mailadres bevestigen",
     "copyAndPaste": "of kopieer en plak deze URL in je browser:"
   },
   "abuse-case-notice": {
@@ -191,7 +191,7 @@
     "body_throttle": "Vanwege de open misbruikzaak {reference} is de netwerksnelheid van de betrokken server begrensd. Je kunt nog steeds inloggen en het probleem oplossen. Reageer in de zaak zodra dat gelukt is, dan halen we de begrenzing weg.",
     "body_isolate": "Vanwege de open misbruikzaak {reference} is uitgaand netwerkverkeer van de betrokken server geblokkeerd. Je data blijft ongemoeid en je bereikt de server nog via de console. Reageer in de zaak zodra het probleem is opgelost, dan halen we de blokkade weg.",
     "body_power_off": "Vanwege de open misbruikzaak {reference} is de betrokken server uitgeschakeld. Je data blijft ongemoeid. Reageer in de zaak, dan starten we hem weer zodra de zaak is afgehandeld.",
-    "body_terminate": "Vanwege de open misbruikzaak {reference} is de opzegging van de betrokken server ingezet. Reageer direct in de zaak als dit een vergissing is."
+    "body_terminate": "Vanwege de open misbruikzaak {reference} is de betrokken server ingepland voor beëindiging. Reageer direct in de zaak als je denkt dat dit een vergissing is."
   },
   "notification": {
     "greeting": "Hoi {name}!",
@@ -252,7 +252,7 @@
     "commercialRegister": "Handelsregister",
     "howAreWeDoing": "Hoe doen we het? <link>Laat een review achter op Trustpilot</link>.",
     "legal": {
-      "notice": "Colofon",
+      "notice": "Juridische kennisgeving",
       "terms": "Algemene voorwaarden",
       "privacy": "Privacybeleid",
       "revocation": "Herroepingsrecht"

@@ -1,0 +1,83 @@
+---
+title: Comment ajouter une clé SSH ?
+description: Enregistrez votre clé publique dans Compte > Clés SSH ou lors de la commande, et les nouveaux serveurs sont configurés avec elle pour que vous puissiez vous connecter sans mot de passe. Pour ajouter une clé à un serveur existant, ajoutez-la au fichier authorized_keys.
+categories: [account, getting-started]
+authors: [janic]
+related: [how-to-connect-to-server, how-to-order-server, cant-connect-to-server]
+keywords: [clé SSH, ajouter une clé SSH, clé publique, clé privée, ssh-keygen, ed25519, authorized_keys, connexion par clé, connexion sans mot de passe, SSH key, PuTTY]
+publishedAt: 2026-11-02
+lastModified: 2026-11-02
+---
+
+Une <Term id="ssh-key">clé SSH</Term> vous permet de vous connecter à votre serveur sans mot de passe. Elle est plus sûre qu'un mot de passe, car elle ne peut pas être devinée et n'est jamais envoyée au serveur.
+
+Une clé se compose de deux parties : la **clé privée** reste sur votre ordinateur et ne doit jamais être partagée ; la **clé publique** est celle que vous donnez à Virtbase et à vos serveurs. Elle tient sur une seule ligne qui commence, par exemple, par `ssh-ed25519`.
+
+## Créer une clé, si vous n'en avez pas
+
+Sous Linux, macOS ou Windows 10 et versions ultérieures, ouvrez un terminal et exécutez :
+
+```bash
+ssh-keygen -t ed25519
+```
+
+Appuyez sur Entrée pour accepter l'emplacement par défaut, puis choisissez une phrase secrète pour protéger la clé. Affichez ensuite la clé publique :
+
+```bash tab="Linux / macOS" tab-group="client"
+cat ~/.ssh/id_ed25519.pub
+```
+
+```powershell tab="Windows" tab-group="client"
+type $env:USERPROFILE\.ssh\id_ed25519.pub
+```
+
+Copiez la ligne entière.
+
+## Enregistrer la clé dans votre compte
+
+1. Ouvrez [Compte > Clés SSH](https://app.virtbase.com/account/settings/ssh-keys) et cliquez sur <Ui>Créer une clé SSH</Ui>.
+2. Sous <Ui>Nom</Ui>, saisissez un nom qui vous indique à quel appareil elle appartient, comme `PC portable`.
+3. Sous <Ui>Clé publique</Ui>, collez la ligne que vous avez copiée.
+4. Cliquez sur <Ui>Créer une clé SSH</Ui>.
+
+La clé apparaît dans la liste avec son empreinte. Vous pouvez aussi ajouter une clé directement lors de la [commande d'un serveur](/fr/help/article/how-to-order-server) : elle est alors également enregistrée dans votre compte.
+
+Les types de clés pris en charge sont Ed25519, ECDSA, RSA et DSA, y compris les clés stockées sur des clés de sécurité matérielles (`sk-ssh-ed25519`, `sk-ecdsa`). Vous pouvez enregistrer jusqu'à 100 clés.
+
+## Utiliser la clé pour un nouveau serveur
+
+Lors de la commande, choisissez la clé sous <Ui>Clé SSH (facultative)</Ui>. Le serveur est configuré avec elle, et vous vous connectez avec :
+
+```bash
+ssh root@<votre-ip>
+```
+
+Si vous réinstallez le serveur plus tard avec [Changer de système d'exploitation](/fr/help/article/how-to-change-operating-system), la clé est de nouveau configurée.
+
+## Ajouter une clé à un serveur déjà en service
+
+Les clés enregistrées dans votre compte ne sont appliquées qu'au moment où un serveur est mis en place. Pour en ajouter une à un serveur existant, connectez-vous et ajoutez la clé publique à la fin du fichier `authorized_keys` de l'utilisateur :
+
+```bash
+mkdir -p ~/.ssh && chmod 700 ~/.ssh
+echo "ssh-ed25519 AAAA... laptop" >> ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+```
+
+Depuis votre propre ordinateur, `ssh-copy-id root@<votre-ip>` fait la même chose en une seule étape.
+
+## Désactiver la connexion par mot de passe
+
+Une fois que la connexion par clé fonctionne, vous pouvez interdire complètement la connexion par mot de passe. Dans `/etc/ssh/sshd_config`, définissez :
+
+```text title="/etc/ssh/sshd_config"
+PasswordAuthentication no
+```
+
+Exécutez ensuite `systemctl restart ssh` (ou `sshd`). Gardez la session en cours ouverte et testez la clé dans un second terminal avant de la fermer. En cas de problème, la [console](/fr/help/article/how-to-use-console) vous permet toujours d'accéder au serveur.
+
+## Si cela n'a pas fonctionné
+
+- **La clé n'est pas acceptée lors de l'enregistrement** : collez la clé **publique** (le fichier `.pub`), sur une seule ligne, et non la clé privée.
+- **`Permission denied (publickey)` lors de la connexion** : la clé présente sur le serveur ne correspond pas à celle que vous utilisez. Indiquez explicitement votre clé avec `ssh -i ~/.ssh/id_ed25519 root@<votre-ip>`, et vérifiez les permissions indiquées ci-dessus. Consultez [Impossible de se connecter à mon serveur](/fr/help/article/cant-connect-to-server).
+- **Vous avez supprimé une clé de votre compte, mais elle fonctionne toujours** : supprimer une clé de votre compte ne la retire pas des serveurs. Supprimez la ligne correspondante de `~/.ssh/authorized_keys` sur chaque serveur.

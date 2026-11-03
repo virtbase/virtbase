@@ -118,7 +118,7 @@ export default function ResetServerPasswordDialog(
             <AlertDescription>
               <p className="text-balance text-foreground text-sm">
                 {t.rich(
-                  "This action cannot be undone. If the <code>qemu-quest-agent</code> package is not installed, the process will fail.",
+                  "This action cannot be undone. If the <code>qemu-guest-agent</code> package is not installed, the process will fail.",
                   {
                     code: (chunks) => (
                       <span className="font-mono">{chunks}</span>

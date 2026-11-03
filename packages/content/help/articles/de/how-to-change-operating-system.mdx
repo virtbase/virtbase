@@ -1,48 +1,60 @@
 ---
-title: Wie ändere ich das Betriebssystem meines Virtbase Servers?
-description: Erfahre, wie du deinen Virtbase Server mit einem anderen Betriebssystem neuinstallieren kannst
+title: Wie wechsle ich das Betriebssystem meines Servers?
+description: Installiere deinen Server über die Übersichtsseite mit einem anderen Betriebssystem neu. Dabei wird die gesamte Festplatte gelöscht; IP-Adressen, Backups und Firewallregeln bleiben erhalten. Ein neues Root-Passwort legst du dabei gleich mit fest.
 categories: [servers, getting-started]
 authors: [janic]
-related: [how-to-backup-server]
-popular: 3
-keywords: [Neuinstallation, Server, Betriebssystem]
+related: [how-to-backup-server, how-to-install-from-iso, how-to-connect-to-server]
+popular: 6
+keywords: [Betriebssystem wechseln, Betriebssystem ändern, OS wechseln, neu installieren, Neuinstallation, Server zurücksetzen, Reinstall, Debian, Ubuntu, AlmaLinux, Rocky Linux]
 publishedAt: 2026-03-19
-lastModified: 2026-08-28
+lastModified: 2026-11-02
 ---
 
-Oft kommt es vor, dass sich Anforderungen ändern und du ein anderes Betriebssystem auf deinem Server benötigst.
-Du kannst das Betriebssystem deines Servers mit wenigen Klicks und innerhalb von Sekunden im Kundenportal ändern.
+Du kannst deinen Server mit wenigen Klicks mit jedem Betriebssystem aus unserer Liste neu installieren. Die Neuinstallation **löscht alles auf der Festplatte** und richtet den Server von Grund auf neu ein, als hättest du ihn gerade erst bestellt.
 
-## Wie starte ich die Neuinstallation?
+Gleich bleiben: die IP-Adressen des Servers, sein Plan und seine Laufzeit, seine Firewallregeln, seine <Term id="ptr-record">Reverse-DNS-Einträge</Term> und seine Backups.
 
-Befolge diese Schritte, um deinen Server zurückzusetzen:
+## Bevor du loslegst
 
-<Hint>
-Bei einer Neuinstallation des Betriebssystems werden alle Daten unwiderruflich gelöscht.
-Wir empfehlen zuerst ein Backup von der aktuellen Konfiguration zu erstellen.
-</Hint>
+- Erstelle ein [Backup](/de/help/article/how-to-backup-server), wenn auf dem Server etwas liegt, das du vielleicht noch brauchst. Backups überstehen die Neuinstallation, du kannst also zurück.
+- Überleg dir ein neues Root-Passwort: 8 bis 64 Zeichen, mit mindestens einem Großbuchstaben, einem Kleinbuchstaben und einer Ziffer. Virtbase speichert es nicht.
 
-1. Rufe deinen **Server** im [Kundenportal](https://app.virtbase.com/servers) auf.
-2. Klicke in der Navigation auf **Übersicht**.
-3. Auf der linken Seite, klicke auf **Betriebssystem ändern**.
-4. Hier kannst du dein neues Betriebssystem auswählen und ein neues Root-Passwort festlegen. 
-Dein Root-Passwort wird nicht gespeichert und kann auch nicht erneut angezeigt werden, merke es dir also gut.
+## Das Betriebssystem wechseln
 
-![Dialog Betriebssystem zurückzusetzen](./images/how-to-change-operating-system.png)
+1. Klicke im [Kundenportal](https://app.virtbase.com/servers) neben deinem Server auf <Ui>Ansehen</Ui>.
+2. Klicke auf der Seite <Ui>Übersicht</Ui> in der Karte <Ui>Server</Ui> auf <Ui>Betriebssystem ändern</Ui>.
+3. Wähle unter <Ui>Neues Betriebssystem</Ui> das System, das installiert werden soll.
+4. Gib unter <Ui>Neues Root-Passwort</Ui> das neue Passwort ein.
+5. Bestätige.
 
-5. Bestätige nun die Zurücksetzung, um den Prozess zu starten.
+![Der Dialog „Betriebssystem ändern“ mit der Warnung, Debian 13 als neuem Betriebssystem und einem neuen Root-Passwort](./images/change-os-dialog.webp)
 
-Dein Server wird anschließend gestoppt und das Betriebssystem wird gewechselt.
+Der Server zeigt <Ui>Server wird installiert</Ui> an und ist offline, bis das neue System eingerichtet ist. Sobald das Banner verschwindet, kannst du dich anmelden.
 
-Falls du weitere Fragen zu unseren Betriebssystemen hast oder Unterstützung dabei benötigst, dann [kontaktiere unser Support-Team](/de/contact).
+Hast du bei der Bestellung einen <Term id="ssh-key">SSH-Schlüssel</Term> hinzugefügt, wird er auf dem neuen System wieder eingerichtet.
 
-## Wie kann ich meine eigenen ISO-Dateien hochladen?
+## Prüfen, ob es geklappt hat
 
-Du kannst bis zu drei eigene ISO-Dateien im Kundenportal für deine Server hochladen und einbinden. 
-Diese findest du bei deinen [Kontoeinstellungen](https://app.virtbase.com/account/settings/custom-images).
+Verbinde dich mit dem neuen Passwort:
 
-<Video
-  id="i4AlJ1B1WMw"
-  title="Eigenes ISO einbinden: Katalog, Prüfsumme, Neustart"
-  poster="/assets/static/articles/video-custom-iso-de.png"
-/>
+```bash
+ssh root@<deine-ip>
+```
+
+<Term id="ssh">SSH</Term> warnt dich mit `WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!`. Das ist normal: Das neue System hat neue Host-Schlüssel. Entferne den alten Eintrag und verbinde dich erneut:
+
+```bash
+ssh-keygen -R <deine-ip>
+```
+
+Das Feld <Ui>Betriebssystem</Ui> auf der Seite <Ui>Übersicht</Ui> zeigt das neue System an.
+
+## Ein System installieren, das nicht in der Liste steht
+
+Um etwas zu installieren, das wir nicht anbieten, etwa Windows, pfSense oder eine Distribution deiner Wahl, nutze dein eigenes <Term id="iso-image">ISO-Image</Term>. Siehe [Wie installiere ich ein Betriebssystem von einer eigenen ISO?](/de/help/article/how-to-install-from-iso)
+
+## Wenn es nicht geklappt hat
+
+- <Msg>Das Betriebssystem konnte nicht geändert werden.</Msg> Der Server ist deaktiviert oder wird noch installiert, oder das Passwort erfüllt die Anforderungen nicht. Du kannst höchstens zwei Neuinstallationen pro Minute starten.
+- **Das gewünschte System fehlt in der Liste:** Angeboten werden nur Systeme, die auf der Hardware verfügbar sind, auf der dein Server läuft. Nutze [deine eigene ISO](/de/help/article/how-to-install-from-iso) oder [kontaktiere den Support](/de/contact), um danach zu fragen.
+- **Der Server zeigt länger als 30 Minuten „Server wird installiert“ an:** [Kontaktiere den Support](/de/contact) mit deiner <Ui>Server-ID</Ui> aus dem Reiter <Ui>Erweitert</Ui>.

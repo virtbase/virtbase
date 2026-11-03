@@ -158,6 +158,9 @@ export function MandateDialog({
           <Button
             type="button"
             data-testid="mandate-accept"
+            // The longest label in the portal; in German it would push
+            // "Cancel" out of the dialog unless it may wrap.
+            className="h-auto min-h-9 shrink whitespace-normal"
             onClick={() => onAccept(SUBSCRIPTION_MANDATE_TEXT_VERSION)}
             // Not merely styled as unavailable: without the tick there is
             // nothing to record.

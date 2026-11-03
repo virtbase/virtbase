@@ -1,0 +1,90 @@
+---
+title: Wat betekenen de status, de aan/uit-knoppen en de grafieken van mijn server?
+description: "Online, Offline, Gepauzeerd en Opgeschort uitgelegd; het verschil tussen Afsluiten, Stop, Opnieuw opstarten en Opnieuw instellen; wat de gebruiksgrafieken tonen; en waarom de QEMU guest agent belangrijk is voor schijfgebruik, wachtwoordresets en firewallcontroles."
+categories: [servers, getting-started]
+authors: [janic]
+related: [cant-connect-to-server, how-to-use-console, how-to-reset-root-password, how-to-renew-server]
+keywords: [serverstatus, online, offline, starten, stoppen, afsluiten, herstarten, opnieuw opstarten, reset, pauzeren, grafieken, CPU-gebruik, RAM-gebruik, geheugengebruik, guest agent, gastagent, qemu-guest-agent, BIOS, UEFI, TPM]
+publishedAt: 2026-11-02
+lastModified: 2026-11-02
+---
+
+De pagina <Ui>Overzicht</Ui> van een server laat zien of de server draait, laat je hem aan- en uitzetten en toont hoeveel CPU, geheugen, schijf en netwerk hij gebruikt. Dit artikel legt elk onderdeel uit.
+
+## Status
+
+| Status | Betekenis |
+| --- | --- |
+| <Ui>Online</Ui> | De server draait. |
+| <Ui>Offline</Ui> | De server staat uit. Klik op <Ui>Starten</Ui> om hem aan te zetten. |
+| <Ui>Gepauzeerd</Ui> | De server is in het geheugen bevroren. Klik op <Ui>Hervatten</Ui> om verder te gaan waar hij gebleven was. |
+| <Ui>Opgeschort</Ui> | De termijn is afgelopen zonder verlenging. [Verleng de server](/nl/help/article/how-to-renew-server) om hem weer aan te zetten. |
+
+Terwijl er een actie loopt, toont de status die actie, bijvoorbeeld <Ui>Starten...</Ui>, <Ui>Afsluiten...</Ui> of <Ui>Back-up maken...</Ui>, en zijn de aan/uit-knoppen pas weer beschikbaar als ze klaar is.
+
+Banners boven aan de pagina geven informatie over de server als geheel:
+
+- **Server wordt geïnstalleerd:** de server wordt ingericht, opnieuw geïnstalleerd, geüpgraded of teruggezet. Sommige functies zijn pas beschikbaar als dat klaar is.
+- **Server verloopt:** de termijn eindigt binnen 5 dagen. Verleng de server, of schakel [automatische verlenging](/nl/help/article/how-to-set-up-automatic-renewal) in.
+- **Server opgeschort:** de server wordt op de getoonde datum verwijderd, tenzij je hem verlengt.
+
+## Aan/uit-knoppen
+
+| Knop | Wat hij doet | Wanneer je hem gebruikt |
+| --- | --- | --- |
+| <Ui>Starten</Ui> | Zet de server aan. | De server staat op <Ui>Offline</Ui>. |
+| <Ui>Afsluiten</Ui> | Vraagt het besturingssysteem om netjes af te sluiten. | Normaal uitzetten. |
+| <Ui>Opnieuw opstarten</Ui> | Vraagt het besturingssysteem om netjes opnieuw op te starten. | Na updates. |
+| <Ui>Stoppen</Ui> | Schakelt de stroom meteen uit. | De server reageert niet meer op <Ui>Afsluiten</Ui>. |
+| <Ui>Resetten</Ui> | Start meteen opnieuw op, alsof je op een resetknop drukt. | De server hangt en reageert niet op <Ui>Opnieuw opstarten</Ui>. |
+| <Ui>Pauzeren</Ui> / <Ui>Hervatten</Ui> | Bevriest de server in het geheugen en laat hem later verdergaan. | Zelden nodig. |
+
+<Ui>Stoppen</Ui> en <Ui>Resetten</Ui> zijn te vergelijken met de stekker eruit trekken: alles wat nog niet naar de schijf is geschreven, gaat verloren. Gebruik <Ui>Afsluiten</Ui> en <Ui>Opnieuw opstarten</Ui> zolang de server nog reageert. <Ui>Stoppen</Ui>, <Ui>Resetten</Ui> en <Ui>Pauzeren</Ui> staan in het menu naast de knoppen, samen met <Ui>ISO koppelen</Ui>.
+
+Je kunt de aan/uit-knoppen maximaal 5 keer per minuut gebruiken.
+
+## Gebruik en grafieken
+
+Het vak <Ui>Gebruik</Ui> toont het huidige gebruik van CPU, geheugen (<Ui>RAM</Ui>), <Ui>Schijf</Ui> en <Ui>Netwerk</Ui>, en wanneer de server voor het laatst is gestart (<Ui>Laatste herstart</Ui>).
+
+De grafieken daaronder tonen dezelfde waarden door de tijd heen. Kies de periode met <Ui>Uren</Ui>, <Ui>Dagen</Ui>, <Ui>Weken</Ui>, <Ui>Maanden</Ui> of <Ui>Jaren</Ui>:
+
+- <Ui>CPU (%)</Ui>: het deel van je <Term id="vcore">vCores</Term> dat in gebruik is.
+- <Ui>RAM</Ui>: het geheugen dat wordt gebruikt (<Ui>Gebruikt</Ui>), vergeleken met het maximum van je pakket (<Ui>Max</Ui>).
+- <Ui>Schijf</Ui>: gegevens die van de schijf worden gelezen (<Ui>Lezen</Ui>) en ernaar worden geschreven (<Ui>Schrijven</Ui>).
+- <Ui>Netwerk</Ui>: <Ui>Inkomend</Ui> en <Ui>Uitgaand</Ui> verkeer.
+
+Een server meldt alleen gebruik terwijl hij draait. De grafieken zijn dus leeg voor de tijd dat hij uitstond.
+
+## De QEMU guest agent
+
+De <Term id="guest-agent">guest agent</Term> is een kleine dienst in je server waarmee Virtbase informatie uit het besturingssysteem kan uitlezen. Hij is geïnstalleerd op alle besturingssystemen die je bij het bestellen kunt kiezen. Zonder de agent kan het portaal:
+
+- geen schijfgebruik tonen (er staat dan <Ui>n.v.t.</Ui>),
+- geen [wachtwoorden resetten](/nl/help/article/how-to-reset-root-password),
+- niet tonen welk besturingssysteem er echt is geïnstalleerd,
+- geen firewall in de server herkennen en geen [firewallaanbevelingen](/nl/help/article/how-to-use-server-firewall#aanbevelingen) geven.
+
+Het tabblad <Ui>Firewall</Ui> toont de toestand van de agent, bijvoorbeeld <Ui>Gastagent draait</Ui> of <Ui>Gastagent reageert niet</Ui>. Reageert hij niet, installeer en start hem dan:
+
+```bash tab="Debian / Ubuntu" tab-group="os"
+apt install qemu-guest-agent
+systemctl enable --now qemu-guest-agent
+```
+
+```bash tab="AlmaLinux / Rocky Linux / Fedora" tab-group="os"
+dnf install qemu-guest-agent
+systemctl enable --now qemu-guest-agent
+```
+
+Zie je <Ui>Gastagent kan geen opdrachten uitvoeren</Ui>, verwijder dan `guest-exec` uit `BLOCK_RPCS` in `/etc/default/qemu-guest-agent` en start de agent opnieuw.
+
+## Besturingssysteem
+
+Het veld <Ui>Besturingssysteem</Ui> op de pagina <Ui>Overzicht</Ui> toont wat er is geïnstalleerd. Met de guest agent wordt dat uit de server zelf uitgelezen, zodat het ook klopt nadat je iets anders vanaf een ISO hebt geïnstalleerd. Zonder de agent toont het veld het systeem waarmee de server is aangemaakt.
+
+## Geavanceerd: BIOS en TPM
+
+Op het tabblad <Ui>Geavanceerd</Ui> kun je kiezen tussen <Ui>Legacy BIOS</Ui> en <Ui>UEFI BIOS</Ui>, en een <Term id="tpm">TPM</Term> in- of uitschakelen. Dat heb je alleen nodig om Windows of een ander systeem vanaf je eigen ISO te installeren; zie [Hoe installeer ik een besturingssysteem vanaf mijn eigen ISO?](/nl/help/article/how-to-install-from-iso). Een wijziging gaat in nadat de server is afgesloten en weer is gestart. Een systeem dat onder het ene BIOS-type is geïnstalleerd, start onder het andere mogelijk niet op.
+
+Het tabblad <Ui>Geavanceerd</Ui> toont ook het <Ui>Server-ID</Ui>, waarmee support je server identificeert.

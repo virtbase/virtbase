@@ -15,7 +15,6 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
-import { cn } from "@virtbase/ui";
 import {
   constructMetadata,
   constructOpengraphUrl,
@@ -32,6 +31,7 @@ import { getDocumentLocales, legal } from "@/lib/source.ts";
 import { BlockWrapper } from "@/ui/block-wrapper.tsx";
 import { TableOfContents } from "@/ui/fumadocs/table-of-contents.tsx";
 import { legalMdxComponents } from "@/ui/mdx/article-components.tsx";
+import { Prose } from "@/ui/prose.tsx";
 
 export async function generateStaticParams() {
   return legal.getPages().map((page) => ({
@@ -120,15 +120,9 @@ export default async function LegalPage({
       <BlockWrapper>
         <div className="grid grid-cols-4 gap-10 bg-background p-8 sm:p-12 lg:gap-20">
           <div className="col-span-4 md:col-span-3">
-            <article
-              className={cn(
-                "prose prose-neutral dark:prose-invert prose-headings:relative w-full max-w-none prose-headings:scroll-mt-20",
-                "prose-a:font-medium prose-a:text-muted-foreground prose-thead:text-lg prose-a:underline-offset-4 transition-all prose-a:hover:text-foreground",
-                "prose-headings:prose-a:text-foreground prose-headings:prose-a:no-underline",
-              )}
-            >
+            <Prose>
               <MDX components={legalMdxComponents} />
-            </article>
+            </Prose>
           </div>
           <div className="hidden md:block">
             <div className="sticky top-20 flex-col">

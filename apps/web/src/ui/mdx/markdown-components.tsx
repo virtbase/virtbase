@@ -22,6 +22,7 @@ import type { Locale } from "next-intl";
 import { getExtracted, getFormatter } from "next-intl/server";
 import type { ReactNode } from "react";
 import { getAvailablePlans } from "@/features/checkout/api/get-available-plans.ts";
+import { getTermPath } from "@/features/glossary/glossary.ts";
 import { SHOWCASED_OPERATING_SYSTEMS } from "@/features/landing/components/operating-system-showcase.tsx";
 import type { MarkdownComponentName } from "@/ui/mdx/markdown-component-names.ts";
 
@@ -33,8 +34,32 @@ function Pass({ children }: Children) {
   return md`${children}\n\n`;
 }
 
+/** Text set in bold, as a Markdown document would have written it. */
+function Bold({ children }: Children) {
+  asMarkdown();
+  return md`**${children}**`;
+}
+
+/** A control that only exists on screen, such as a tab bar. */
+function Omit() {
+  asMarkdown();
+  return md``;
+}
+
 /** The components whose Markdown does not depend on the locale. */
 const staticComponents = {
+  // Written by `remarkCodeTab` from consecutive code blocks with `tab="…"`.
+  // Each tab becomes its label followed by its code block.
+  CodeBlockTabs: Pass,
+  CodeBlockTabsList: Omit,
+  CodeBlockTabsTrigger: Omit,
+  // On screen these are set apart from emphasis; in Markdown, bold is enough.
+  Ui: Bold,
+  Msg: Bold,
+  CodeBlockTab: ({ value, children }: Children & { value: string }) => {
+    asMarkdown();
+    return md`${value}:\n\n${children}\n\n`;
+  },
   Hero: Pass,
   Prose: Pass,
   Split: Pass,
@@ -133,6 +158,12 @@ export async function getMarkdownComponents(locale: Locale) {
     ...staticComponents,
     Feature: section,
     Advantage: section,
+    // The term stays in the text, linked to its entry, so an agent can follow
+    // it to the definition.
+    Term: ({ id, children }: Children & { id: string }) => {
+      asMarkdown();
+      return md`[${children}](${absolute(getTermPath(id))})`;
+    },
     OperatingSystems: () => {
       asMarkdown();
       const names = SHOWCASED_OPERATING_SYSTEMS.map(({ alt }) => alt);

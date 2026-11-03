@@ -1,0 +1,83 @@
+---
+title: How do I add an SSH key?
+description: Save your public key under Account > SSH Keys or while ordering, and new servers are set up with it so you log in without a password. To add a key to an existing server, append it to authorized_keys.
+categories: [account, getting-started]
+authors: [janic]
+related: [how-to-connect-to-server, how-to-order-server, cant-connect-to-server]
+keywords: [SSH key, public key, ssh-keygen, ed25519, authorized_keys, key login, passwordless login, PuTTY]
+publishedAt: 2026-11-02
+lastModified: 2026-11-02
+---
+
+An <Term id="ssh-key">SSH key</Term> lets you log in to your server without a password. It is safer than a password, because it cannot be guessed and is never sent to the server.
+
+A key comes in two parts: the **private key** stays on your computer and must never be shared; the **public key** is what you give to Virtbase and your servers. It is a single line starting with, for example, `ssh-ed25519`.
+
+## Create a key, if you don't have one
+
+On Linux, macOS or Windows 10 and later, open a terminal and run:
+
+```bash
+ssh-keygen -t ed25519
+```
+
+Press Enter to accept the default location, and choose a passphrase to protect the key. Then show the public key:
+
+```bash tab="Linux / macOS" tab-group="client"
+cat ~/.ssh/id_ed25519.pub
+```
+
+```powershell tab="Windows" tab-group="client"
+type $env:USERPROFILE\.ssh\id_ed25519.pub
+```
+
+Copy the whole line.
+
+## Save the key in your account
+
+1. Open [Account > SSH Keys](https://app.virtbase.com/account/settings/ssh-keys) and select <Ui>Create SSH key</Ui>.
+2. Under <Ui>Name</Ui>, enter something that tells you which device it belongs to, such as `Laptop`.
+3. Under <Ui>Public key</Ui>, paste the line you copied.
+4. Select <Ui>Create SSH key</Ui>.
+
+The key appears in the list with its fingerprint. You can also add a key directly while [ordering a server](/en/help/article/how-to-order-server): it is then saved in your account as well.
+
+Supported key types are Ed25519, ECDSA, RSA and DSA, including keys on hardware security keys (`sk-ssh-ed25519`, `sk-ecdsa`). You can save up to 100 keys.
+
+## Use the key for a new server
+
+When ordering, choose the key under <Ui>SSH key (optional)</Ui>. The server is set up with it, and you log in with:
+
+```bash
+ssh root@<your-ip>
+```
+
+If you reinstall the server later with [Change Operating System](/en/help/article/how-to-change-operating-system), the key is set up again.
+
+## Add a key to a server that already runs
+
+Keys saved in your account are only applied when a server is set up. To add one to an existing server, log in and append the public key to the `authorized_keys` file of the user:
+
+```bash
+mkdir -p ~/.ssh && chmod 700 ~/.ssh
+echo "ssh-ed25519 AAAA... laptop" >> ~/.ssh/authorized_keys
+chmod 600 ~/.ssh/authorized_keys
+```
+
+From your own computer, `ssh-copy-id root@<your-ip>` does the same in one step.
+
+## Turn off password logins
+
+Once key login works, you can stop password logins altogether. In `/etc/ssh/sshd_config`, set:
+
+```text title="/etc/ssh/sshd_config"
+PasswordAuthentication no
+```
+
+Then run `systemctl restart ssh` (or `sshd`). Keep the current session open and test the key in a second terminal before you close it. If something goes wrong, the [console](/en/help/article/how-to-use-console) still lets you in.
+
+## If it didn't work
+
+- **The key is not accepted when saving:** paste the **public** key (the `.pub` file), all on one line, not the private key.
+- **`Permission denied (publickey)` when connecting:** the key on the server does not match the one you use. Name your key explicitly with `ssh -i ~/.ssh/id_ed25519 root@<your-ip>`, and check the permissions above. See [I can't connect to my server](/en/help/article/cant-connect-to-server).
+- **You deleted a key in your account, but it still works:** deleting a key in your account does not remove it from servers. Remove the line from `~/.ssh/authorized_keys` on each server.

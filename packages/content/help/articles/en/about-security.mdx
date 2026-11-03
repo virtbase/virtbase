@@ -1,12 +1,12 @@
 ---
 title: How secure is Virtbase?
-description: Learn about the security measures Virtbase uses to protect your data.
+description: The portal runs only over HTTPS with strict security headers, root passwords are never stored, and every disk in our storage cluster is encrypted with LUKS2. Securing what runs on your server is up to you.
 categories: [account, getting-started]
 authors: [janic]
-related: [about-ddos-protection, how-to-delete-account]
+related: [about-ddos-protection, how-to-set-up-two-factor-authentication, how-to-use-server-firewall]
 keywords: [security, data protection, encryption, data center, TPM]
 publishedAt: 2026-03-19
-lastModified: 2026-03-19
+lastModified: 2026-11-02
 ---
 
 At Virtbase, the security of your data is our top priority. From the data center to the software, we rely on multiple, independent layers of protection to ensure a consistently high level of security.
@@ -27,9 +27,19 @@ In addition, we secure the customer portal with measures such as rate limiting a
 
 Security begins at the data center itself. Our infrastructure is located in a certified data center with a multi-level physical security system — unauthorized persons are denied access.
 
-Unlike many other providers, we also use an extended boot lock with TPM and BIOS passwords on all host systems. This ensures that even with physical access, unauthorized manipulation of the systems is not possible.
+Unlike many other providers, we also use an extended boot lock with <Term id="tpm">TPM</Term> and BIOS passwords on all host systems. This ensures that even with physical access, unauthorized manipulation of the systems is not possible.
 
 In addition, all hard drives in our Ceph cluster are secured with proven LUKS2 encryption. Your data is therefore also fully encrypted at the storage level and protected against unauthorized access.
+
+## What can I do to protect my account and servers?
+
+We secure the platform; what runs on your server is in your hands. These steps make the biggest difference:
+
+- **Turn on [two-factor authentication](/en/help/article/how-to-set-up-two-factor-authentication)** or use a <Term id="passkey">passkey</Term> for your Virtbase account.
+- **Log in to your servers with [SSH keys](/en/help/article/how-to-manage-ssh-keys)** instead of passwords.
+- **Close every port you don't need** with the [firewall](/en/help/article/how-to-use-server-firewall). Its recommendations point out databases and other services that are reachable from the internet.
+- **Install security updates** regularly, for example with `unattended-upgrades` on Debian and Ubuntu.
+- **Give API keys only the permissions they need,** and delete keys you no longer use.
 
 ## What data is processed?
 

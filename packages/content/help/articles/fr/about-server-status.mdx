@@ -1,0 +1,90 @@
+---
+title: Que signifient le statut, les boutons d'alimentation et les graphiques de mon serveur ?
+description: "Les statuts En ligne, Hors ligne, En pause et Suspendue expliqués ; la différence entre Éteindre, Arrêt, Redémarrer et Réinitialiser ; ce que montrent les graphiques d'utilisation ; et pourquoi l'agent invité QEMU compte pour l'utilisation du disque, la réinitialisation des mots de passe et les vérifications du pare-feu."
+categories: [servers, getting-started]
+authors: [janic]
+related: [cant-connect-to-server, how-to-use-console, how-to-reset-root-password, how-to-renew-server]
+keywords: [statut du serveur, état du serveur, en ligne, hors ligne, démarrer, arrêter, éteindre, redémarrer, réinitialiser, reboot, reset, pause, graphiques, utilisation CPU, utilisation processeur, utilisation RAM, mémoire, agent invité, guest agent, qemu-guest-agent, BIOS, UEFI, TPM]
+publishedAt: 2026-11-02
+lastModified: 2026-11-02
+---
+
+La page <Ui>Aperçu</Ui> d'un serveur indique s'il est en marche, vous permet de l'allumer et de l'éteindre, et montre combien de processeur, de mémoire, de disque et de réseau il utilise. Cet article explique chacun de ces éléments.
+
+## Statut
+
+| Statut | Signification |
+| --- | --- |
+| <Ui>En ligne</Ui> | Le serveur est en marche. |
+| <Ui>Hors ligne</Ui> | Le serveur est éteint. Cliquez sur <Ui>Démarrer</Ui> pour l'allumer. |
+| <Ui>En pause</Ui> | Le serveur est figé en mémoire. Cliquez sur <Ui>Reprendre</Ui> pour qu'il reparte là où il s'était arrêté. |
+| <Ui>Suspendu</Ui> | La période s'est terminée sans renouvellement. [Renouvelez le serveur](/fr/help/article/how-to-renew-server) pour le rallumer. |
+
+Pendant qu'une action est en cours, le statut l'indique, par exemple <Ui>Démarrage...</Ui>, <Ui>Arrêt...</Ui> ou <Ui>Sauvegarde...</Ui>, et les boutons d'alimentation restent indisponibles jusqu'à ce qu'elle soit terminée.
+
+Des bannières en haut de la page vous informent sur l'état du serveur dans son ensemble :
+
+- <Ui>Le serveur est en cours d'installation</Ui> : le serveur est en train d'être mis en place, réinstallé, mis à niveau ou restauré. Certaines fonctions restent indisponibles jusqu'à la fin de l'opération.
+- <Ui>Le serveur expire</Ui> : la période se termine dans les 5 jours. Renouvelez-le, ou activez le [renouvellement automatique](/fr/help/article/how-to-set-up-automatic-renewal).
+- <Ui>Serveur suspendu</Ui> : le serveur sera supprimé à la date indiquée, sauf si vous le renouvelez.
+
+## Boutons d'alimentation
+
+| Bouton | Ce qu'il fait | Quand l'utiliser |
+| --- | --- | --- |
+| <Ui>Démarrer</Ui> | Allume le serveur. | Il est <Ui>Hors ligne</Ui>. |
+| <Ui>Éteindre</Ui> | Demande au système d'exploitation de s'arrêter proprement. | Extinction normale. |
+| <Ui>Redémarrer</Ui> | Demande au système d'exploitation de redémarrer proprement. | Après des mises à jour. |
+| <Ui>Arrêt</Ui> | Coupe immédiatement l'alimentation. | Le serveur ne réagit plus à <Ui>Éteindre</Ui>. |
+| <Ui>Réinitialiser</Ui> | Redémarre immédiatement, comme un appui sur le bouton reset. | Le serveur est bloqué et ne réagit pas à <Ui>Redémarrer</Ui>. |
+| <Ui>Pause</Ui> / <Ui>Reprendre</Ui> | Fige le serveur en mémoire et le fait repartir plus tard. | Rarement nécessaire. |
+
+<Ui>Arrêt</Ui> et <Ui>Réinitialiser</Ui> reviennent à débrancher la prise : tout ce qui n'a pas encore été écrit sur le disque est perdu. Utilisez <Ui>Éteindre</Ui> et <Ui>Redémarrer</Ui> tant que le serveur réagit encore. <Ui>Arrêt</Ui>, <Ui>Réinitialiser</Ui> et <Ui>Pause</Ui> se trouvent dans le menu à côté des boutons, avec <Ui>Monter l'ISO</Ui>.
+
+Vous pouvez utiliser les boutons d'alimentation jusqu'à 5 fois par minute.
+
+## Utilisation et graphiques
+
+La carte <Ui>Utilisation</Ui> affiche l'utilisation actuelle du processeur, de la mémoire (<Ui>RAM</Ui>), du <Ui>Disque</Ui> et du <Ui>Réseau</Ui>, ainsi que la date du dernier démarrage du serveur (<Ui>Dernier redémarrage</Ui>).
+
+Les graphiques en dessous montrent les mêmes valeurs dans le temps. Choisissez la période avec <Ui>Heures</Ui>, <Ui>Jours</Ui>, <Ui>Semaines</Ui>, <Ui>Mois</Ui> ou <Ui>Années</Ui> :
+
+- <Ui>Processeur (%)</Ui> : la part de vos <Term id="vcore">vCores</Term> utilisée.
+- <Ui>RAM</Ui> : la mémoire utilisée (<Ui>Utilisée</Ui>) par rapport au maximum de votre forfait (<Ui>Max.</Ui>).
+- <Ui>Disque</Ui> : les données lues (<Ui>Lecture</Ui>) sur le disque et écrites (<Ui>Écriture</Ui>) sur le disque.
+- <Ui>Réseau</Ui> : le trafic entrant (<Ui>Entrant</Ui>) et sortant (<Ui>Sortant</Ui>).
+
+Un serveur ne transmet son utilisation que lorsqu'il est en marche : les graphiques sont donc vides pour les périodes où il était éteint.
+
+## L'agent invité QEMU
+
+L'<Term id="guest-agent">agent invité</Term> est un petit service installé dans votre serveur qui permet à Virtbase de lire des informations depuis le système d'exploitation. Il est installé sur tous les systèmes d'exploitation que vous pouvez choisir lors de la commande. Sans lui, le portail ne peut pas :
+
+- afficher l'utilisation du disque (il affiche <Ui>N/A</Ui>),
+- [réinitialiser les mots de passe](/fr/help/article/how-to-reset-root-password),
+- indiquer quel système d'exploitation est réellement installé,
+- détecter un pare-feu à l'intérieur du serveur et proposer des [recommandations de pare-feu](/fr/help/article/how-to-use-server-firewall#recommandations).
+
+L'onglet <Ui>Pare-feu</Ui> indique l'état de l'agent, par exemple <Ui>L'agent invité fonctionne</Ui> ou <Ui>L'agent invité ne répond pas</Ui>. S'il ne répond pas, installez-le et démarrez-le :
+
+```bash tab="Debian / Ubuntu" tab-group="os"
+apt install qemu-guest-agent
+systemctl enable --now qemu-guest-agent
+```
+
+```bash tab="AlmaLinux / Rocky Linux / Fedora" tab-group="os"
+dnf install qemu-guest-agent
+systemctl enable --now qemu-guest-agent
+```
+
+Si vous voyez <Ui>L'agent invité ne peut pas exécuter de commandes</Ui>, retirez `guest-exec` de `BLOCK_RPCS` dans `/etc/default/qemu-guest-agent`, puis redémarrez l'agent.
+
+## Système d'exploitation
+
+Le champ <Ui>Système d'exploitation</Ui> de la page <Ui>Aperçu</Ui> indique ce qui est installé. Avec l'agent invité, cette information est lue depuis l'intérieur du serveur : elle reste donc exacte même si vous avez installé autre chose depuis une ISO. Sans l'agent, le champ affiche le système avec lequel le serveur a été créé.
+
+## Avancé : BIOS et TPM
+
+Dans l'onglet <Ui>Avancé</Ui>, vous pouvez choisir entre <Ui>BIOS classique</Ui> et <Ui>BIOS UEFI</Ui>, et activer ou désactiver un <Term id="tpm">TPM</Term>. Vous n'en avez besoin que pour installer Windows ou un autre système depuis votre propre ISO ; consultez [Comment installer un système d'exploitation depuis ma propre ISO ?](/fr/help/article/how-to-install-from-iso) Une modification prend effet une fois le serveur éteint puis rallumé. Un système installé avec un type de BIOS peut ne pas démarrer avec l'autre.
+
+L'onglet <Ui>Avancé</Ui> affiche également l'<Ui>ID du serveur</Ui>, que le support utilise pour identifier votre serveur.

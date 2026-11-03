@@ -16,6 +16,7 @@
  */
 
 import { getPlansWithAvailability } from "@virtbase/db/queries";
+import { seedCloudInitSnippets } from "./seed-cloud-init-snippets.ts";
 import { seedPlansAndNetworking } from "./seed-fixtures.ts";
 import { seedProxmoxCluster } from "./seed-proxmox-cluster.ts";
 
@@ -24,17 +25,13 @@ import { seedProxmoxCluster } from "./seed-proxmox-cluster.ts";
  *
  * Separate from `dev/seed` because that one is not idempotent - it inserts a
  * fresh set of rows and fails on a second run - while re-pointing the database
- * at a rebuilt cluster is something you do often. `bootstrap.sh` mints a new API
- * token whenever the cluster is reset, so this has to be re-runnable on its own.
+ * at a rebuilt cluster is something you do often. A recreated cluster comes with
+ * a new API token, so this has to be re-runnable on its own.
  */
 const nodes = await seedProxmoxCluster();
 
 if (nodes === null) {
-  console.error(
-    "No cluster found. Start one first:\n" +
-      "  docker compose -f tooling/proxmox-cluster/docker-compose.yml up -d\n" +
-      "  ./tooling/proxmox-cluster/bootstrap.sh",
-  );
+  console.error("No cluster found. Start one first:\n  bun cluster:up");
   process.exit(1);
 }
 
@@ -46,6 +43,13 @@ const fixtures = await seedPlansAndNetworking();
 console.log(
   `Seeded ${fixtures.plans} plans, ${fixtures.prices} prices, ` +
     `${fixtures.subnets} subnets and ${fixtures.links} subnet/node links.`,
+);
+
+// Without them a guest boots with no `qemu-guest-agent`, and everything read
+// out of the guest - its OS, its listening ports - stays empty.
+const snippets = await seedCloudInitSnippets();
+console.log(
+  `Seeded ${snippets.inserted} cloud-init snippets (${snippets.skipped} already present).`,
 );
 
 // Availability is the thing that actually matters, and it depends on plans,

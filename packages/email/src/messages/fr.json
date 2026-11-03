@@ -1,261 +1,261 @@
 {
   "account-inactivity-notice": {
-    "title": "Ton compte sera supprimé sauf si tu te connectes",
-    "preview": "Ton compte inactif est programmé pour suppression",
-    "heading": "Nous allons supprimer ton compte",
+    "title": "Votre compte sera supprimé sauf si vous vous connectez",
+    "preview": "Votre compte inactif est programmé pour suppression",
+    "heading": "Nous allons supprimer votre compte",
     "greeting": "Bonjour {name} !",
-    "instructions": "Tu n'as pas utilisé ton compte {appName} depuis {months} mois et rien n'y tourne : il est donc programmé pour suppression le {date}.",
-    "stop": "Il suffit de te connecter pour le conserver. Rien d'autre n'est nécessaire.",
+    "instructions": "Vous n'avez pas utilisé votre compte {appName} depuis {months} mois et rien n'y tourne : il est donc programmé pour suppression le {date}.",
+    "stop": "Il suffit de vous connecter pour le conserver. Rien d'autre n'est nécessaire.",
     "cta": "Me connecter et conserver mon compte",
-    "download": "Si tu préfères d'abord récupérer une copie de tes données, tu peux la télécharger depuis ton compte avant cette date."
+    "download": "Si vous préférez d'abord récupérer une copie de vos données, vous pouvez la télécharger depuis votre compte avant cette date."
   },
   "account-inactivity-reminder": {
-    "title": "Dernier rappel : ton compte sera supprimé le {date}",
-    "preview": "Dernier rappel avant la suppression de ton compte",
+    "title": "Dernier rappel : votre compte sera supprimé le {date}",
+    "preview": "Dernier rappel avant la suppression de votre compte",
     "heading": "Dernier rappel",
     "greeting": "Bonjour {name} !",
-    "instructions": "Ton compte {appName} sera définitivement supprimé le {date}. C'est le dernier e-mail que tu recevras à ce sujet.",
-    "stop": "Te connecter suffit à conserver ton compte. Rien d'autre n'est nécessaire.",
+    "instructions": "Votre compte {appName} sera définitivement supprimé le {date}. C'est le dernier e-mail que vous recevrez à ce sujet.",
+    "stop": "Vous connecter suffit à conserver votre compte. Rien d'autre n'est nécessaire.",
     "cta": "Me connecter et conserver mon compte"
   },
   "account-deletion-requested": {
-    "title": "Confirme la suppression de ton compte",
-    "preview": "Confirme la suppression de ton compte",
-    "heading": "Confirme la suppression de ton compte",
+    "title": "Confirmez la suppression de votre compte",
+    "preview": "Confirmez la suppression de votre compte",
+    "heading": "Confirmez la suppression de votre compte",
     "greeting": "Bonjour {name} !",
-    "instructions": "Tu as demandé la suppression de ton compte {appName}. Rien ne s'est encore passé : confirme avec le bouton ci-dessous.",
+    "instructions": "Vous avez demandé la suppression de votre compte {appName}. Rien ne s'est encore passé : confirmez avec le bouton ci-dessous.",
     "confirm": "Confirmer la suppression",
-    "consequences": "Une fois confirmé, tu disposes de {days} jours pour changer d'avis. Passé ce délai, ton compte et tous tes serveurs sont supprimés définitivement.",
-    "ignore": "Si tu n'es pas à l'origine de cette demande, ignore cet e-mail et change ton mot de passe. Rien ne sera supprimé.",
+    "consequences": "Une fois la suppression confirmée, vous disposez de {days} jours pour changer d'avis. Passé ce délai, votre compte et tous vos serveurs sont supprimés définitivement.",
+    "ignore": "Si vous n'êtes pas à l'origine de cette demande, ignorez cet e-mail et changez votre mot de passe. Rien ne sera supprimé.",
     "expiry": "Ce lien expire dans {hours} heures."
   },
   "account-deletion-scheduled": {
-    "title": "Ton compte sera supprimé le {date}",
-    "preview": "Ton compte est programmé pour suppression",
-    "heading": "Ton compte est programmé pour suppression",
+    "title": "Votre compte sera supprimé le {date}",
+    "preview": "Votre compte est programmé pour suppression",
+    "heading": "Votre compte est programmé pour suppression",
     "greeting": "Bonjour {name} !",
-    "instructions": "Ton compte {appName} et tous tes serveurs seront définitivement supprimés le {date}.",
-    "stop": "Tu as changé d'avis ? Tu peux tout arrêter jusqu'à cette date.",
+    "instructions": "Votre compte {appName} et tous vos serveurs seront définitivement supprimés le {date}.",
+    "stop": "Vous avez changé d'avis ? Vous pouvez tout arrêter jusqu'à cette date.",
     "cancel": "Conserver mon compte",
-    "download": "Si tu veux une copie de tes données, télécharge-la avant cette date : ensuite elle aura disparu."
+    "download": "Si vous voulez une copie de vos données, téléchargez-la avant cette date : ensuite elle aura disparu."
   },
   "account-deletion-cancelled": {
-    "title": "Ton compte ne sera pas supprimé",
-    "preview": "La suppression de ton compte a été annulée",
-    "heading": "Ton compte ne sera pas supprimé",
+    "title": "Votre compte ne sera pas supprimé",
+    "preview": "La suppression de votre compte a été annulée",
+    "heading": "Votre compte ne sera pas supprimé",
     "greeting": "Bonjour {name} !",
-    "instructions": "La suppression de ton compte {appName} a été annulée. Rien n'a été supprimé et tout fonctionne comme avant.",
-    "hint": "Si ce n'est pas toi qui as annulé, change ton mot de passe et contacte le support."
+    "instructions": "La suppression de votre compte {appName} a été annulée. Rien n'a été supprimé et tout fonctionne comme avant.",
+    "hint": "Si ce n'est pas vous qui avez annulé, changez votre mot de passe et contactez le support."
   },
   "account-deleted": {
-    "title": "Ton compte a été supprimé",
-    "preview": "Ton compte Virtbase a été supprimé",
-    "heading": "Ton compte a été supprimé",
+    "title": "Votre compte a été supprimé",
+    "preview": "Votre compte Virtbase a été supprimé",
+    "heading": "Votre compte a été supprimé",
     "greeting": "Bonjour {name} !",
-    "userRequest": "Ton compte et tous les serveurs qui s'y trouvaient ont été définitivement supprimés, comme tu l'as demandé. Il n'y a plus rien à restaurer.",
-    "inactivity": "Ton compte était inactif depuis longtemps : il a donc été définitivement supprimé, ainsi que tous les serveurs qui s'y trouvaient. Il n'y a plus rien à restaurer.",
-    "retained": "La législation fiscale allemande nous oblige à conserver tes factures et les pièces comptables correspondantes pendant {years} ans. Elles ne contiennent pas plus de données que la loi ne l'exige et sont supprimées à l'issue de cette période.",
+    "userRequest": "Votre compte et tous les serveurs qui s'y trouvaient ont été définitivement supprimés, comme vous l'avez demandé. Il n'y a plus rien à restaurer.",
+    "inactivity": "Votre compte était inactif depuis longtemps : il a donc été définitivement supprimé, ainsi que tous les serveurs qui s'y trouvaient. Il n'y a plus rien à restaurer.",
+    "retained": "La législation fiscale allemande nous oblige à conserver vos factures et les pièces comptables correspondantes pendant {years} ans. Elles ne contiennent pas plus de données que la loi ne l'exige et sont supprimées à l'issue de cette période.",
     "farewell": "Merci d'avoir été client."
   },
   "confirm-identity": {
-    "title": "Ton code de sécurité {appName}",
-    "preview": "Ton code de sécurité {appName}",
-    "heading": "Confirme que c'est bien toi",
-    "instructions": "Saisis ce code pour confirmer une modification sensible de ton compte {appName} :",
-    "hint": "Ce code expire dans 10 minutes. Si tu ne l'as pas demandé, ignore cet e-mail – rien ne sera modifié."
+    "title": "Votre code de sécurité {appName}",
+    "preview": "Votre code de sécurité {appName}",
+    "heading": "Confirmez que c'est bien vous",
+    "instructions": "Saisissez ce code pour confirmer une modification sensible de votre compte {appName} :",
+    "hint": "Ce code expire dans 10 minutes. Si vous ne l'avez pas demandé, ignorez cet e-mail – rien ne sera modifié."
   },
   "data-export-ready": {
-    "title": "Ton export de données est prêt",
-    "preview": "Ton export de données est prêt à être téléchargé",
-    "heading": "Ton export de données est prêt",
+    "title": "Votre export de données est prêt",
+    "preview": "Votre export de données est prêt à être téléchargé",
+    "heading": "Votre export de données est prêt",
     "greeting": "Bonjour {name} !",
-    "instructions": "Tout ce que {appName} conserve à ton sujet est prêt à être téléchargé ({size}). Le fichier est un PDF : tu peux le lire comme un document, et il contient également tes données complètes au format JSON ainsi qu'une copie de chaque facture.",
+    "instructions": "Tout ce que {appName} conserve à votre sujet est prêt à être téléchargé ({size}). Le fichier est un PDF : vous pouvez le lire comme un document, et il contient également vos données complètes au format JSON ainsi qu'une copie de chaque facture.",
     "download": "Télécharger mes données",
-    "passphrase": "Tu auras besoin de la phrase secrète affichée au moment de ta demande. Nous ne l'envoyons pas par e-mail et ne pouvons pas la récupérer – si tu ne l'as plus, demande simplement un nouvel export.",
+    "passphrase": "Vous aurez besoin de la phrase secrète affichée au moment de votre demande. Nous ne l'envoyons pas par e-mail et ne pouvons pas la récupérer – si vous ne l'avez plus, demandez simplement un nouvel export.",
     "expiry": "Ce téléchargement expire dans {days} jours, après quoi le fichier est supprimé."
   },
   "email-updated": {
-    "title": "Ton adresse e-mail a été modifiée",
-    "preview": "Ton adresse e-mail a été mise à jour",
-    "heading": "Ton adresse e-mail a été mise à jour",
-    "changedFromTo": "L'adresse e-mail de ton compte {appName} est passée de <strong>{oldEmail}</strong> à <strong>{newEmail}</strong>.",
-    "support": "Si tu n'es pas à l'origine de ce changement, contacte notre équipe support ou <link>mets à jour ton adresse e-mail</link>.",
-    "hint": "Ce message est envoyé uniquement à ton ancienne adresse e-mail."
+    "title": "Votre adresse e-mail a été modifiée",
+    "preview": "Votre adresse e-mail a été mise à jour",
+    "heading": "Votre adresse e-mail a été mise à jour",
+    "changedFromTo": "L'adresse e-mail de votre compte {appName} est passée de <strong>{oldEmail}</strong> à <strong>{newEmail}</strong>.",
+    "support": "Si vous n'êtes pas à l'origine de ce changement, contactez notre équipe support ou <link>mettez à jour votre adresse e-mail</link>.",
+    "hint": "Ce message est envoyé uniquement à votre ancienne adresse e-mail."
   },
   "invoice-created": {
     "title": "Une nouvelle facture a été créée",
-    "preview": "Ta facture est disponible",
-    "heading": "Ta facture est disponible",
-    "greeting": "Salut {name} !",
-    "description": "Merci pour ton achat chez {appName}. Ta facture est disponible au téléchargement. Tu la trouveras dans les pièces jointes de cet e-mail.",
+    "preview": "Votre facture est disponible",
+    "heading": "Votre facture est disponible",
+    "greeting": "Bonjour {name} !",
+    "description": "Merci pour votre achat chez {appName}. Votre facture est disponible au téléchargement. Vous la trouverez dans les pièces jointes de cet e-mail.",
     "voucherNumber": "Numéro de facture",
     "totalAmount": "Montant total",
-    "taxAmount": "Taxe incluse",
+    "taxAmount": "TVA incluse",
     "viewInvoice": "Voir la facture dans le portail client"
   },
   "login-link": {
-    "title": "Ton lien de connexion {appName}",
-    "preview": "Ton lien de connexion {appName}",
-    "heading": "Ton lien de connexion",
+    "title": "Votre lien de connexion {appName}",
+    "preview": "Votre lien de connexion {appName}",
+    "heading": "Votre lien de connexion",
     "welcome": "Bienvenue sur {appName} !",
-    "instructions": "Clique sur le lien magique ci-dessous pour te connecter à ton compte.",
+    "instructions": "Cliquez sur le lien magique ci-dessous pour vous connecter à votre compte.",
     "signIn": "Se connecter",
-    "copyAndPaste": "ou copie-colle cette URL dans ton navigateur :"
+    "copyAndPaste": "ou copiez-collez cette URL dans votre navigateur :"
   },
   "password-updated": {
-    "title": "Ton mot de passe a été modifié",
-    "preview": "Ton mot de passe a été modifié",
+    "title": "Votre mot de passe a été modifié",
+    "preview": "Votre mot de passe a été modifié",
     "heading": "Le mot de passe a été modifié",
-    "description": "Le mot de passe de ton compte {appName} a bien été modifié.",
-    "hint": "Si tu n'es pas à l'origine de ce changement ou si tu penses qu'une personne non autorisée a accédé à ton compte, contacte-nous immédiatement pour sécuriser ton compte."
+    "description": "Le mot de passe de votre compte {appName} a bien été modifié.",
+    "hint": "Si vous n'êtes pas à l'origine de ce changement ou si vous pensez qu'une personne non autorisée a accédé à votre compte, contactez-nous immédiatement pour sécuriser votre compte."
   },
   "reset-password-link": {
     "title": "Lien de réinitialisation du mot de passe",
     "preview": "Lien de réinitialisation du mot de passe",
     "heading": "Lien de réinitialisation du mot de passe",
-    "description": "Tu reçois cet e-mail parce que nous avons reçu une demande de réinitialisation du mot de passe pour ton compte chez {appName}.",
-    "instructions": "Clique sur le bouton ci-dessous pour réinitialiser ton mot de passe.",
+    "description": "Vous recevez cet e-mail parce que nous avons reçu une demande de réinitialisation du mot de passe pour votre compte chez {appName}.",
+    "instructions": "Cliquez sur le bouton ci-dessous pour réinitialiser votre mot de passe.",
     "resetPassword": "Réinitialiser le mot de passe",
-    "copyAndPaste": "ou copie-colle cette URL dans ton navigateur :"
+    "copyAndPaste": "ou copiez-collez cette URL dans votre navigateur :"
   },
   "server-deleted": {
-    "title": "Ton serveur a été supprimé",
-    "preview": "Ton serveur a été supprimé",
-    "heading": "Ton serveur a été supprimé",
-    "greeting": "Salut {name} !",
-    "description": "Ton serveur <strong>{serverName}</strong> et toutes les données ont été supprimés définitivement.",
-    "hint": "Comme ton serveur n'a pas été renouvelé au cours des {days} derniers jours, il a été supprimé et ne peut pas être restauré."
+    "title": "Votre serveur a été supprimé",
+    "preview": "Votre serveur a été supprimé",
+    "heading": "Votre serveur a été supprimé",
+    "greeting": "Bonjour {name} !",
+    "description": "Votre serveur <strong>{serverName}</strong> et toutes les données ont été supprimés définitivement.",
+    "hint": "Comme votre serveur n'a pas été renouvelé au cours des {days} derniers jours, il a été supprimé et ne peut pas être restauré."
   },
   "server-extended": {
-    "title": "Ton serveur a été renouvelé",
-    "preview": "Ton serveur a été renouvelé",
-    "heading": "Ton serveur a été renouvelé",
-    "greeting": "Salut {name} !",
-    "description": "Ton serveur <strong>{serverName}</strong> a bien été renouvelé.",
-    "hint": "La nouvelle date d'expiration est le <strong>{newTerminatesAt}</strong>. Si tu dois prolonger à nouveau le serveur, tu peux le faire dans le portail client."
+    "title": "Votre serveur a été renouvelé",
+    "preview": "Votre serveur a été renouvelé",
+    "heading": "Votre serveur a été renouvelé",
+    "greeting": "Bonjour {name} !",
+    "description": "Votre serveur <strong>{serverName}</strong> a bien été renouvelé.",
+    "hint": "La nouvelle date d'expiration est le <strong>{newTerminatesAt}</strong>. Si vous devez prolonger à nouveau le serveur, vous pouvez le faire dans le portail client."
   },
   "server-ready": {
-    "title": "Ton serveur est prêt",
-    "preview": "Ton serveur est prêt",
-    "heading": "Ton serveur est prêt",
-    "greeting": "Salut {name} !",
-    "description": "Le serveur que tu as commandé est maintenant entièrement configuré et prêt à être utilisé. Pour des raisons de sécurité, l'adresse IP n'est pas incluse dans cet e-mail. Tu peux la trouver dans le portail client.",
+    "title": "Votre serveur est prêt",
+    "preview": "Votre serveur est prêt",
+    "heading": "Votre serveur est prêt",
+    "greeting": "Bonjour {name} !",
+    "description": "Le serveur que vous avez commandé est maintenant entièrement configuré et prêt à être utilisé. Pour des raisons de sécurité, l'adresse IP n'est pas incluse dans cet e-mail. Vous pouvez la trouver dans le portail client.",
     "username": "<strong>• Nom d'utilisateur :</strong> {username}",
     "rootPassword": "<strong>• Mot de passe root :</strong> {rootPassword}",
-    "customPassword": "Mot de passe personnalisé choisi par toi",
+    "customPassword": "Mot de passe personnalisé que vous avez choisi",
     "portalLink": "Voir le serveur dans le portail client"
   },
   "server-renewal-reminder": {
-    "title": "Ton serveur va bientôt expirer",
-    "preview": "Ton serveur va bientôt expirer",
-    "heading": "Ton serveur va bientôt expirer",
-    "greeting": "Salut {name} !",
-    "description": "Ton serveur <strong>{serverName}</strong> va expirer dans les <strong>{days} prochains jours</strong>.",
-    "hint": "Pour éviter sa suppression, nous te recommandons de renouveler ton serveur <strong>dès que possible</strong>.",
+    "title": "Votre serveur va bientôt expirer",
+    "preview": "Votre serveur va bientôt expirer",
+    "heading": "Votre serveur va bientôt expirer",
+    "greeting": "Bonjour {name} !",
+    "description": "Votre serveur <strong>{serverName}</strong> va expirer dans les <strong>{days} prochains jours</strong>.",
+    "hint": "Pour éviter sa suppression, nous vous recommandons de renouveler votre serveur <strong>dès que possible</strong>.",
     "renewButton": "Renouveler maintenant"
   },
   "server-suspended": {
-    "title": "Ton serveur a été suspendu",
-    "preview": "Ton serveur a été suspendu",
-    "heading": "Ton serveur a été suspendu",
-    "greeting": "Salut {name} !",
-    "description": "Ton serveur <strong>{serverName}</strong> a été suspendu parce qu'il n'a pas été renouvelé à temps.",
-    "hint": "Tu as <strong>{days} jours</strong> pour renouveler ton serveur. Après cela, ton serveur et toutes les données seront supprimés définitivement.",
+    "title": "Votre serveur a été suspendu",
+    "preview": "Votre serveur a été suspendu",
+    "heading": "Votre serveur a été suspendu",
+    "greeting": "Bonjour {name} !",
+    "description": "Votre serveur <strong>{serverName}</strong> a été suspendu parce qu'il n'a pas été renouvelé à temps.",
+    "hint": "Vous avez <strong>{days} jours</strong> pour renouveler votre serveur. Après cela, votre serveur et toutes les données seront supprimés définitivement.",
     "renewButton": "Renouveler maintenant"
   },
   "verify-email": {
-    "title": "Ton code de vérification {appName}",
-    "preview": "Ton code de vérification {appName}",
-    "heading": "Confirme ton adresse e-mail",
-    "instructions": "Saisis ce code sur la page de vérification de {appName} pour terminer ton inscription :",
+    "title": "Votre code de vérification {appName}",
+    "preview": "Votre code de vérification {appName}",
+    "heading": "Confirmez votre adresse e-mail",
+    "instructions": "Saisissez ce code sur la page de vérification de {appName} pour terminer votre inscription :",
     "hint": "Ce code expire dans 10 minutes."
   },
   "verify-email-link": {
-    "title": "Ton lien de vérification {appName}",
-    "preview": "Ton lien de vérification {appName}",
-    "heading": "Confirme ton adresse e-mail",
-    "instructions": "Clique sur le lien ci-dessous pour confirmer ton adresse e-mail :",
-    "verifyEmailLink": "Vérifier l’adresse e-mail",
-    "copyAndPaste": "ou copie-colle cette URL dans ton navigateur :"
+    "title": "Votre lien de vérification {appName}",
+    "preview": "Votre lien de vérification {appName}",
+    "heading": "Confirmez votre adresse e-mail",
+    "instructions": "Cliquez sur le lien ci-dessous pour confirmer votre adresse e-mail :",
+    "verifyEmailLink": "Vérifier l'adresse e-mail",
+    "copyAndPaste": "ou copiez-collez cette URL dans votre navigateur :"
   },
   "abuse-case-notice": {
-    "title": "Signalement d'abus concernant ton service ({reference})",
-    "body": "Nous avons reçu un signalement d'abus concernant ton service.\n\nDossier {reference}, signalé comme {category}. Ouvre le dossier, vérifie le serveur concerné et réponds sous {deadlineHours} heures. Sans réponse de ta part, nous pourrions devoir restreindre le service pour mettre fin à l'abus."
+    "title": "Signalement d'abus concernant votre service ({reference})",
+    "body": "Nous avons reçu un signalement d'abus concernant votre service.\n\nDossier {reference}, signalé comme {category}. Ouvrez le dossier, vérifiez le serveur concerné et répondez sous {deadlineHours} heures. Sans réponse de votre part, nous pourrions devoir restreindre le service pour mettre fin à l'abus."
   },
   "abuse-case-resolved": {
     "title": "Le dossier d'abus {reference} est clos",
-    "body": "Le dossier d'abus {reference} a été clos. Tu n'as rien de plus à faire. Si tu as des questions, réponds dans le dossier et nous y reviendrons."
+    "body": "Le dossier d'abus {reference} a été clos. Vous n'avez rien de plus à faire. Si vous avez des questions, répondez dans le dossier et nous y reviendrons."
   },
   "abuse-case-restricted": {
-    "title": "Ton service a été restreint ({reference})",
-    "body_throttle": "En raison du dossier d'abus ouvert {reference}, le débit réseau du serveur concerné a été limité. Tu peux toujours te connecter et corriger le problème. Réponds dans le dossier une fois que c'est fait et nous lèverons la limite.",
-    "body_isolate": "En raison du dossier d'abus ouvert {reference}, le trafic réseau sortant du serveur concerné a été bloqué. Tes données sont intactes et tu gardes l'accès par la console. Réponds dans le dossier une fois le problème corrigé et nous lèverons le blocage.",
-    "body_power_off": "En raison du dossier d'abus ouvert {reference}, le serveur concerné a été arrêté. Tes données sont intactes. Réponds dans le dossier et nous le redémarrerons dès que la situation sera réglée.",
-    "body_terminate": "En raison du dossier d'abus ouvert {reference}, la résiliation du serveur concerné a été engagée. Réponds immédiatement dans le dossier si tu penses qu'il s'agit d'une erreur."
+    "title": "Votre service a été restreint ({reference})",
+    "body_throttle": "En raison du dossier d'abus ouvert {reference}, le débit réseau du serveur concerné a été limité. Vous pouvez toujours vous connecter et corriger le problème. Répondez dans le dossier une fois que c'est fait et nous lèverons la limite.",
+    "body_isolate": "En raison du dossier d'abus ouvert {reference}, le trafic réseau sortant du serveur concerné a été bloqué. Vos données sont intactes et vous gardez l'accès par la console. Répondez dans le dossier une fois le problème corrigé et nous lèverons le blocage.",
+    "body_power_off": "En raison du dossier d'abus ouvert {reference}, le serveur concerné a été arrêté. Vos données sont intactes. Répondez dans le dossier et nous le redémarrerons dès que la situation sera réglée.",
+    "body_terminate": "En raison du dossier d'abus ouvert {reference}, la résiliation du serveur concerné a été engagée. Répondez immédiatement dans le dossier si vous pensez qu'il s'agit d'une erreur."
   },
   "notification": {
-    "greeting": "Salut {name} !",
+    "greeting": "Bonjour {name} !",
     "viewButton": "Voir les détails"
   },
   "payment-decline-reason": {
     "expiredCard": "La carte enregistrée chez nous a expiré.",
     "insufficientFunds": "Les fonds disponibles n'étaient pas suffisants pour couvrir le paiement.",
     "cardDetails": "Les informations de carte que nous avons enregistrées n'ont pas été acceptées.",
-    "noPaymentMethod": "Aucun moyen de paiement n'est enregistré sur ton compte pour que nous puissions le débiter.",
-    "cardUnusable": "Le moyen de paiement enregistré chez nous ne peut plus être utilisé.",
-    "authenticationExpired": "Le paiement devait être confirmé auprès de ta banque, et le délai de confirmation a expiré avant que ce soit fait.",
+    "noPaymentMethod": "Aucun mode de paiement n'est enregistré sur votre compte pour que nous puissions effectuer le prélèvement.",
+    "cardUnusable": "Le mode de paiement enregistré chez nous ne peut plus être utilisé.",
+    "authenticationExpired": "Le paiement devait être confirmé auprès de votre banque, et le délai de confirmation a expiré avant que ce soit fait.",
     "temporary": "Le paiement n'a pas pu être traité. Ce genre de problème se règle généralement tout seul.",
-    "declinedByBank": "Ta banque a refusé le paiement. Elle ne nous en donne pas la raison, elle seule peut te la dire.",
-    "unknown": "Le paiement n'est pas passé et aucune raison ne nous a été communiquée. Dans la plupart des cas, il s'agit d'un blocage temporaire et non d'un problème sur ton compte."
+    "declinedByBank": "Votre banque a refusé le paiement. Elle ne nous en donne pas la raison, elle seule peut vous la dire.",
+    "unknown": "Le paiement n'est pas passé et aucune raison ne nous a été communiquée. Dans la plupart des cas, il s'agit d'un blocage temporaire et non d'un problème sur votre compte."
   },
   "renewal-payment-failed": {
-    "title": "Nous n'avons pas pu encaisser le paiement de ton serveur",
+    "title": "Nous n'avons pas pu encaisser le paiement de votre serveur",
     "preview": "Nous n'avons pas pu encaisser le paiement de {serverName}",
-    "heading": "Nous n'avons pas pu encaisser le paiement de ton serveur",
-    "greeting": "Salut {name} !",
-    "description": "Nous avons tenté de débiter <strong>{amount}</strong> pour renouveler <strong>{serverName}</strong>, et le paiement n'est pas passé.",
+    "heading": "Nous n'avons pas pu encaisser le paiement de votre serveur",
+    "greeting": "Bonjour {name} !",
+    "description": "Nous avons tenté de prélever <strong>{amount}</strong> pour renouveler <strong>{serverName}</strong>, et le paiement n'est pas passé.",
     "card": "Nous avons utilisé la carte se terminant par {last4} ({brand}).",
-    "nextAttempt": "Nous réessaierons le <strong>{date}</strong>. Si tu mets à jour ton moyen de paiement avant, nous utiliserons le nouveau.",
-    "reassurance": "<strong>{serverName} fonctionne toujours</strong> et rien n'a été supprimé. Tu as le temps de régler cela.",
-    "updatePaymentButton": "Mettre à jour le moyen de paiement"
+    "nextAttempt": "Nous réessaierons le <strong>{date}</strong>. Si vous mettez à jour votre mode de paiement avant, nous utiliserons le nouveau.",
+    "reassurance": "<strong>{serverName} fonctionne toujours</strong> et rien n'a été supprimé. Vous avez le temps de régler cela.",
+    "updatePaymentButton": "Mettre à jour le mode de paiement"
   },
   "renewal-final-warning": {
-    "title": "Ton serveur sera suspendu le {date}",
+    "title": "Votre serveur sera suspendu le {date}",
     "preview": "{serverName} sera suspendu si le paiement ne passe pas",
-    "heading": "Ton serveur est sur le point d'être suspendu",
-    "greeting": "Salut {name} !",
+    "heading": "Votre serveur est sur le point d'être suspendu",
+    "greeting": "Bonjour {name} !",
     "description": "Nous n'avons toujours pas pu encaisser <strong>{amount}</strong> pour renouveler <strong>{serverName}</strong>.",
     "card": "Nous avons utilisé la carte se terminant par {last4} ({brand}).",
     "lastAttempt": "Nous ferons <strong>une dernière tentative</strong> le {date}.",
-    "noFurtherAttempt": "<strong>Nous ne réessaierons pas avec ce moyen de paiement.</strong> Ta banque nous a indiqué qu'il ne peut pas être débité, donc rien ne se passera tant que tu n'en auras pas ajouté un autre.",
+    "noFurtherAttempt": "<strong>Nous ne réessaierons pas avec ce mode de paiement.</strong> Votre banque nous a indiqué qu'il ne peut pas être prélevé, donc rien ne se passera tant que vous n'en aurez pas ajouté un autre.",
     "deadline": "Si le paiement n'est pas réglé, <strong>{serverName}</strong> sera suspendu et éteint le <strong>{date}</strong>.",
-    "retention": "Tes données sont conservées <strong>{days} jours</strong> après cela. Si le paiement est toujours en attente à ce moment-là, le serveur et tout ce qu'il contient seront supprimés définitivement et ne pourront pas être récupérés.",
-    "updatePaymentButton": "Mettre à jour le moyen de paiement"
+    "retention": "Vos données sont conservées <strong>{days} jours</strong> après cela. Si le paiement est toujours en attente à ce moment-là, le serveur et tout ce qu'il contient seront supprimés définitivement et ne pourront pas être récupérés.",
+    "updatePaymentButton": "Mettre à jour le mode de paiement"
   },
   "payment-method-invalid": {
-    "title": "Ton moyen de paiement doit être remplacé",
-    "preview": "Ton moyen de paiement enregistré ne peut plus être utilisé",
-    "heading": "Ton moyen de paiement doit être remplacé",
-    "greeting": "Salut {name} !",
-    "descriptionCard": "La <strong>carte se terminant par {last4}</strong> ({brand}) enregistrée sur ton compte ne peut plus être utilisée pour les paiements.",
-    "description": "Le moyen de paiement enregistré sur ton compte ne peut plus être utilisé pour les paiements.",
-    "hint": "En ajouter un nouveau prend une minute et permet à tes serveurs de se renouveler sans interruption. D'ici là, chaque renouvellement dû échouera.",
-    "updatePaymentButton": "Ajouter un moyen de paiement"
+    "title": "Votre mode de paiement doit être remplacé",
+    "preview": "Votre mode de paiement enregistré ne peut plus être utilisé",
+    "heading": "Votre mode de paiement doit être remplacé",
+    "greeting": "Bonjour {name} !",
+    "descriptionCard": "La <strong>carte se terminant par {last4}</strong> ({brand}) enregistrée sur votre compte ne peut plus être utilisée pour les paiements.",
+    "description": "Le mode de paiement enregistré sur votre compte ne peut plus être utilisé pour les paiements.",
+    "hint": "En ajouter un nouveau prend une minute et permet à vos serveurs de se renouveler sans interruption. D'ici là, chaque renouvellement dû échouera.",
+    "updatePaymentButton": "Ajouter un mode de paiement"
   },
   "footer": {
     "thisEmailWasIntendedFor": "Cet e-mail était destiné à <strong>{email}</strong>.",
-    "securityConcerns": "Si tu n'attendais pas cet e-mail, tu peux l'ignorer. Si la sécurité de ton compte t'inquiète, <link>contacte-nous pour nous le dire</link>.",
-    "dontWantToGetTheseEmails": "Tu ne veux plus recevoir ces e-mails ?",
-    "managePreferences": "Gérer tes préférences e-mail",
-    "adjustNotificationSettings": "Modifier tes paramètres de notification",
+    "securityConcerns": "Si vous n'attendiez pas cet e-mail, vous pouvez l'ignorer. Si la sécurité de votre compte vous inquiète, <link>contactez-nous pour nous le dire</link>.",
+    "dontWantToGetTheseEmails": "Vous ne voulez plus recevoir ces e-mails ?",
+    "managePreferences": "Gérer vos préférences e-mail",
+    "adjustNotificationSettings": "Modifier vos paramètres de notification",
     "managingDirector": "Directeur général",
     "commercialRegister": "Registre du commerce",
     "howAreWeDoing": "Comment nous trouvez-vous ? <link>Laissez-nous un avis sur Trustpilot</link>.",
     "legal": {
       "notice": "Mentions légales",
-      "terms": "Conditions générales",
+      "terms": "Conditions générales de vente",
       "privacy": "Politique de confidentialité",
-      "revocation": "Politique de rétractation"
+      "revocation": "Droit de rétractation"
     }
   }
 }

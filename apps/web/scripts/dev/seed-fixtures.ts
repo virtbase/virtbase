@@ -37,17 +37,19 @@ import {
  * Everything uses fixed ids so a re-run updates in place instead of duplicating.
  */
 
-/** The bridge every dockerised node exposes; see `tooling/proxmox-cluster`. */
+/** The NAT uplink of every node; see `tooling/proxbase`. */
 const BRIDGE = "vmbr0";
 
 /**
- * Addressing matches the node's own `vmbr0` (172.30.0.0/24, gateway .1) so an
- * allocated address is actually reachable from the guest, rather than a
- * plausible-looking range that routes nowhere.
+ * Addressing matches the node's own `vmbr0`, QEMU user networking with its
+ * gateway at 10.0.2.2, so an allocated address is actually reachable from the
+ * guest rather than a plausible-looking range that routes nowhere. The node
+ * itself is .15 and the NAT hands out DHCP leases from .100, so guests take
+ * the static addresses in between.
  */
-const IPV4_PARENT = "172.30.0.0/24";
-const IPV4_GATEWAY = "172.30.0.1";
-const IPV4_FIRST_HOST = 100;
+const IPV4_PARENT = "10.0.2.0/24";
+const IPV4_GATEWAY = "10.0.2.2";
+const IPV4_FIRST_HOST = 20;
 
 const IPV6_PARENT = "fd00:1b:c0de::/48";
 const IPV6_GATEWAY = "fd00:1b:c0de::1";
@@ -160,7 +162,7 @@ export async function seedPlansAndNetworking(): Promise<FixtureSummary> {
       id: id("ipsub_", 100 + n),
       // `findFirstAvailableSubnet(4, 32, ...)` filters on `masklen = 32`, so
       // each usable address is its own /32 row.
-      cidr: `172.30.0.${IPV4_FIRST_HOST + n}/32`,
+      cidr: `10.0.2.${IPV4_FIRST_HOST + n}/32`,
       gateway: IPV4_GATEWAY,
       parentId: ipv4ParentId,
     });

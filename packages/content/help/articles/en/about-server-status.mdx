@@ -1,0 +1,90 @@
+---
+title: What do my server's status, power buttons and graphs mean?
+description: Online, Offline, Paused and Suspended explained; the difference between Shutdown, Stop, Reboot and Reset; what the usage graphs show; and why the QEMU guest agent matters for disk usage, password resets and firewall checks.
+categories: [servers, getting-started]
+authors: [janic]
+related: [cant-connect-to-server, how-to-use-console, how-to-reset-root-password, how-to-renew-server]
+keywords: [server status, online, offline, start, stop, shutdown, reboot, reset, pause, graphs, CPU usage, RAM usage, guest agent, qemu-guest-agent, BIOS, UEFI, TPM]
+publishedAt: 2026-11-02
+lastModified: 2026-11-02
+---
+
+The <Ui>Overview</Ui> page of a server shows whether it is running, lets you switch it on and off, and shows how much CPU, memory, disk and network it uses. This article explains each of them.
+
+## Status
+
+| Status | Meaning |
+| --- | --- |
+| <Ui>Online</Ui> | The server is running. |
+| <Ui>Offline</Ui> | The server is switched off. Select <Ui>Start</Ui> to switch it on. |
+| <Ui>Paused</Ui> | The server is frozen in memory. Select <Ui>Resume</Ui> to continue where it stopped. |
+| <Ui>Suspended</Ui> | The term has ended without renewal. [Renew the server](/en/help/article/how-to-renew-server) to switch it back on. |
+
+While an action runs, the status shows it, for example <Ui>Starting...</Ui>, <Ui>Shutting down...</Ui> or <Ui>Backing up...</Ui>, and the power buttons are unavailable until it is finished.
+
+Banners at the top of the page tell you about the server as a whole:
+
+- **Server is installing:** the server is being set up, reinstalled, upgraded or restored. Some features are unavailable until it is done.
+- **Server is expiring:** the term ends within 5 days. Renew it, or turn on [automatic renewal](/en/help/article/how-to-set-up-automatic-renewal).
+- **Server suspended:** the server will be deleted on the date shown unless you renew it.
+
+## Power buttons
+
+| Button | What it does | When to use it |
+| --- | --- | --- |
+| <Ui>Start</Ui> | Switches the server on. | It is <Ui>Offline</Ui>. |
+| <Ui>Shutdown</Ui> | Asks the operating system to shut down cleanly. | Normal switch-off. |
+| <Ui>Reboot</Ui> | Asks the operating system to restart cleanly. | After updates. |
+| <Ui>Stop</Ui> | Cuts the power immediately. | The server no longer reacts to <Ui>Shutdown</Ui>. |
+| <Ui>Reset</Ui> | Restarts immediately, like pressing a reset button. | The server hangs and does not react to <Ui>Reboot</Ui>. |
+| <Ui>Pause</Ui> / <Ui>Resume</Ui> | Freezes the server in memory and continues it later. | Rarely needed. |
+
+<Ui>Stop</Ui> and <Ui>Reset</Ui> are like pulling the plug: anything not yet written to disk is lost. Use <Ui>Shutdown</Ui> and <Ui>Reboot</Ui> whenever the server still reacts. <Ui>Stop</Ui>, <Ui>Reset</Ui> and <Ui>Pause</Ui> are in the menu next to the buttons, together with <Ui>Mount ISO</Ui>.
+
+You can use the power buttons up to 5 times per minute.
+
+## Usage and graphs
+
+The <Ui>Usage</Ui> card shows the current CPU, memory (<Ui>RAM</Ui>), <Ui>Disk</Ui> and <Ui>Network</Ui> usage, and when the server was last started (<Ui>Last reboot</Ui>).
+
+The graphs below show the same values over time. Choose the period with <Ui>Hours</Ui>, <Ui>Days</Ui>, <Ui>Weeks</Ui>, <Ui>Months</Ui> or <Ui>Years</Ui>:
+
+- <Ui>CPU (%)</Ui>: the share of your <Term id="vcore">vCores</Term> in use.
+- <Ui>RAM</Ui>: memory <Ui>Used</Ui> compared to the <Ui>Max</Ui> of your plan.
+- <Ui>Disk</Ui>: data <Ui>Read</Ui> from and <Ui>Write</Ui> to the disk.
+- <Ui>Network</Ui>: traffic <Ui>Incoming</Ui> and <Ui>Outgoing</Ui>.
+
+A server only reports usage while it is running, so graphs are empty for the time it was off.
+
+## The QEMU guest agent
+
+The <Term id="guest-agent">guest agent</Term> is a small service inside your server that lets Virtbase read information from the operating system. It is installed on all operating systems you can choose when ordering. Without it, the portal cannot:
+
+- show disk usage (it shows <Ui>N/A</Ui>),
+- [reset passwords](/en/help/article/how-to-reset-root-password),
+- show which operating system is really installed,
+- detect a firewall inside the server and give [firewall recommendations](/en/help/article/how-to-use-server-firewall#recommendations).
+
+The <Ui>Firewall</Ui> tab shows the agent's state, for example <Ui>Guest agent is running</Ui> or <Ui>Guest agent is not responding</Ui>. If it is not responding, install and start it:
+
+```bash tab="Debian / Ubuntu" tab-group="os"
+apt install qemu-guest-agent
+systemctl enable --now qemu-guest-agent
+```
+
+```bash tab="AlmaLinux / Rocky Linux / Fedora" tab-group="os"
+dnf install qemu-guest-agent
+systemctl enable --now qemu-guest-agent
+```
+
+If you see <Ui>Guest agent cannot run commands</Ui>, remove `guest-exec` from `BLOCK_RPCS` in `/etc/default/qemu-guest-agent` and restart the agent.
+
+## Operating system
+
+The <Ui>Operating System</Ui> field on the <Ui>Overview</Ui> page shows what is installed. With the guest agent, it is read from inside the server, so it is right even after you installed something else from an ISO. Without the agent, it shows the system the server was created with.
+
+## Advanced: BIOS and TPM
+
+On the <Ui>Advanced</Ui> tab you can choose between <Ui>Legacy BIOS</Ui> and <Ui>UEFI BIOS</Ui>, and switch a <Term id="tpm">TPM</Term> on or off. You only need this to install Windows or another system from your own ISO; see [How do I install an operating system from my own ISO?](/en/help/article/how-to-install-from-iso). A change takes effect after the server is shut down and started again. A system installed under one BIOS type may not start under the other.
+
+The <Ui>Advanced</Ui> tab also shows the <Ui>Server ID</Ui>, which support uses to identify your server.

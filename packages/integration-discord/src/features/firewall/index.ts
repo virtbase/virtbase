@@ -457,7 +457,7 @@ const PoliciesMessage = async ({
         locale,
         title: t("Default policies"),
         description: t(
-          "What happens to a packet that no rule matches. Leave incoming on **DROP** unless you know why you are changing it.",
+          "What happens to a packet that no rule matches. New servers accept everything; set incoming to **DROP** to block whatever your rules do not allow.",
         ),
         fields: [
           {

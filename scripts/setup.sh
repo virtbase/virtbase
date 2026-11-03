@@ -5,7 +5,7 @@
 # Safe to re-run: every step checks whether it is already done.
 #
 #   ./scripts/setup.sh              database, migrations, seed
-#   ./scripts/setup.sh --cluster    also build and bootstrap the Proxmox cluster
+#   ./scripts/setup.sh --cluster    also create or start the Proxmox cluster (proxbase)
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -36,15 +36,6 @@ if grep -q '^NOVNC_PROXY_SECRET=$' .env || grep -q '^NOVNC_PROXY_SECRET=""$' .en
   sed -i.bak "s/^NOVNC_PROXY_SECRET=.*/NOVNC_PROXY_SECRET=\"$secret\"/" .env && rm -f .env.bak
 fi
 
-# The cluster serves its API with its own CA, and the Proxmox client has no way
-# to skip verification. Recorded in .env so `bun dev` picks it up.
-CA_PATH="$ROOT/tooling/proxmox-cluster/pve-root-ca.pem"
-if [[ -f "$CA_PATH" ]] && ! grep -q '^NODE_EXTRA_CA_CERTS=' .env; then
-  log "pointing NODE_EXTRA_CA_CERTS at the cluster CA"
-  printf '\n# Trust the local Proxmox cluster CA (tooling/proxmox-cluster).\nNODE_EXTRA_CA_CERTS="%s"\n' \
-    "$CA_PATH" >> .env
-fi
-
 # -------------------------------------------------------------- services ----
 
 log "starting postgres, the neon proxy and redis"
@@ -63,10 +54,18 @@ if [[ "$WITH_CLUSTER" -eq 1 ]]; then
     warn "/dev/kvm is missing - the Proxmox cluster needs nested virtualisation."
     warn "Skipping it; everything else below still works."
   else
-    log "starting the proxmox cluster (first build takes a few minutes)"
-    docker compose -f tooling/proxmox-cluster/docker-compose.yml up -d --build
-    ./tooling/proxmox-cluster/bootstrap.sh
+    log "starting the proxmox cluster"
+    ./tooling/proxbase/up.sh
   fi
+fi
+
+# The cluster serves its API with its own CA, and the Proxmox client has no way
+# to skip verification. Recorded in .env so `bun dev` picks it up.
+CA_PATH="$ROOT/tooling/proxbase/pve-root-ca.pem"
+if [[ -f "$CA_PATH" ]] && ! grep -q '^NODE_EXTRA_CA_CERTS=' .env; then
+  log "pointing NODE_EXTRA_CA_CERTS at the cluster CA"
+  printf '\n# Trust the local Proxmox cluster CA (tooling/proxbase).\nNODE_EXTRA_CA_CERTS="%s"\n' \
+    "$CA_PATH" >> .env
 fi
 
 # ------------------------------------------------------------- database ----
@@ -90,7 +89,7 @@ else
   warn "seed skipped (already populated). Use 'bun script dev/seed --truncate' to reset."
 fi
 
-if [[ -f tooling/proxmox-cluster/cluster.json ]]; then
+if [[ -f tooling/proxbase/cluster.json ]]; then
   log "registering the proxmox cluster with the database"
   bun script dev/cluster
 fi
@@ -100,8 +99,8 @@ fi
 echo
 ok "ready"
 echo "  bun dev                          start the app"
-echo "  https://127.0.0.1:8006           proxmox web UI (root / virtbase)"
-if [[ ! -f tooling/proxmox-cluster/cluster.json ]]; then
+echo "  proxbase status virtbase         proxmox web UI and SSH ports"
+if [[ ! -f tooling/proxbase/cluster.json ]]; then
   echo
   echo "  No Proxmox cluster yet. Nothing can be provisioned without one:"
   echo "    ./scripts/setup.sh --cluster"

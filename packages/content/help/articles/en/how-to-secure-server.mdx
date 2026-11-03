@@ -1,0 +1,97 @@
+---
+title: How do I secure a new server?
+description: Seven steps for the first hour of a new Linux server - updates, automatic security updates, SSH keys, no password logins, a firewall that only opens what you use, fail2ban, and a first backup.
+categories: [getting-started, servers]
+authors: [janic]
+related: [how-to-connect-to-server, how-to-manage-ssh-keys, how-to-use-server-firewall, how-to-backup-server]
+keywords: [secure server, harden server, server security, first steps, SSH hardening, fail2ban, unattended upgrades, firewall, hacked]
+publishedAt: 2026-11-02
+lastModified: 2026-11-02
+---
+
+A server on the internet is scanned for weaknesses within minutes of going online. Virtbase protects the network and the platform, but what runs on your server is yours to secure. These seven steps cover what matters most, and take less than an hour. Commands are shown for Debian and Ubuntu, and for AlmaLinux, Rocky Linux and Fedora: choose your system once, and every article shows its commands.
+
+Keep the [browser console](/en/help/article/how-to-use-console) in mind: if a step locks you out of <Term id="ssh">SSH</Term>, it still gets you in.
+
+## 1. Install all updates
+
+```bash tab="Debian / Ubuntu" tab-group="os"
+apt update && apt full-upgrade
+reboot
+```
+
+```bash tab="AlmaLinux / Rocky Linux / Fedora" tab-group="os"
+dnf upgrade --refresh
+reboot
+```
+
+## 2. Install security updates automatically
+
+```bash tab="Debian / Ubuntu" tab-group="os"
+apt install unattended-upgrades
+dpkg-reconfigure -plow unattended-upgrades
+```
+
+```bash tab="AlmaLinux / Rocky Linux / Fedora" tab-group="os"
+dnf install dnf-automatic
+systemctl enable --now dnf-automatic-install.timer
+```
+
+Updates are now installed every day without you having to log in. On Fedora 41 and later, the package is `dnf5-plugin-automatic` and the timer `dnf5-automatic.timer`.
+
+## 3. Log in with an SSH key
+
+If you did not add an <Term id="ssh-key">SSH key</Term> when ordering, copy one to the server from your computer:
+
+```bash
+ssh-copy-id root@<your-ip>
+```
+
+See [How do I add an SSH key?](/en/help/article/how-to-manage-ssh-keys) if you do not have one yet. Test that you can log in without a password before you continue.
+
+## 4. Turn off password logins
+
+In `/etc/ssh/sshd_config`, set:
+
+```text title="/etc/ssh/sshd_config"
+PasswordAuthentication no
+PermitRootLogin prohibit-password
+```
+
+Apply it with `systemctl restart ssh` (`sshd` on AlmaLinux, Rocky Linux and Fedora). Keep your current session open and test a new login in a second terminal first. Most attacks on servers are password guesses; without password logins, they go nowhere.
+
+## 5. Open only the ports you use
+
+On the [Firewall](/en/help/article/how-to-use-server-firewall) tab of your server:
+
+1. Add <Ui>Accept</Ui> rules for SSH (port `22`) and every service that must be reachable, for example `80` and `443` for a website.
+2. Set <Ui>Incoming packets</Ui> to <Ui>Drop</Ui>.
+
+Then check <Ui>Recommendations</Ui> on the same tab. It warns you about databases and other services that can be reached from the internet. A database should almost never be open to everyone: bind it to `127.0.0.1`, or allow only the addresses that need it.
+
+## 6. Block repeated login attempts
+
+```bash tab="Debian / Ubuntu" tab-group="os"
+apt install fail2ban
+systemctl enable --now fail2ban
+```
+
+```bash tab="AlmaLinux / Rocky Linux / Fedora" tab-group="os"
+dnf install epel-release    # AlmaLinux and Rocky Linux only
+dnf install fail2ban
+systemctl enable --now fail2ban
+```
+
+fail2ban blocks addresses that fail to log in several times. Its default settings protect SSH.
+
+## 7. Create a backup
+
+Once the server is set up the way you want, [create a backup](/en/help/article/how-to-backup-server). If something goes wrong later, you can return to this state in minutes.
+
+## And then
+
+- Run each application under its own user, not as `root`.
+- Keep the software you installed yourself up to date: web applications such as WordPress or Nextcloud are a common way in.
+- Secure your Virtbase account too, with [two-factor authentication or a passkey](/en/help/article/how-to-set-up-two-factor-authentication).
+
+If you think your server has been compromised, see [What do I do when I receive an abuse report?](/en/help/article/about-abuse-reports#find-the-cause): the checks there also help without a report.

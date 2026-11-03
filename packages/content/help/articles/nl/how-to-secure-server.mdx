@@ -1,0 +1,97 @@
+---
+title: Hoe beveilig ik een nieuwe server?
+description: "Zeven stappen voor het eerste uur van een nieuwe Linux-server: updates, automatische beveiligingsupdates, SSH-sleutels, geen wachtwoordlogins, een firewall die alleen openzet wat je gebruikt, fail2ban en een eerste back-up."
+categories: [getting-started, servers]
+authors: [janic]
+related: [how-to-connect-to-server, how-to-manage-ssh-keys, how-to-use-server-firewall, how-to-backup-server]
+keywords: [server beveiligen, server hardenen, hardening, serverbeveiliging, eerste stappen, SSH beveiligen, fail2ban, unattended-upgrades, automatische updates, firewall, gehackt]
+publishedAt: 2026-11-02
+lastModified: 2026-11-02
+---
+
+Een server op internet wordt binnen enkele minuten nadat hij online gaat al gescand op zwakke plekken. Virtbase beschermt het netwerk en het platform, maar wat er op je server draait, beveilig je zelf. Deze zeven stappen dekken het belangrijkste af en kosten minder dan een uur. De opdrachten staan er voor Debian en Ubuntu en voor AlmaLinux, Rocky Linux en Fedora: kies één keer je systeem, en elk artikel toont de opdrachten daarvoor.
+
+Vergeet de [browserconsole](/nl/help/article/how-to-use-console) niet: sluit een stap je buiten van <Term id="ssh">SSH</Term>, dan kom je daarmee nog steeds binnen.
+
+## 1. Installeer alle updates
+
+```bash tab="Debian / Ubuntu" tab-group="os"
+apt update && apt full-upgrade
+reboot
+```
+
+```bash tab="AlmaLinux / Rocky Linux / Fedora" tab-group="os"
+dnf upgrade --refresh
+reboot
+```
+
+## 2. Installeer beveiligingsupdates automatisch
+
+```bash tab="Debian / Ubuntu" tab-group="os"
+apt install unattended-upgrades
+dpkg-reconfigure -plow unattended-upgrades
+```
+
+```bash tab="AlmaLinux / Rocky Linux / Fedora" tab-group="os"
+dnf install dnf-automatic
+systemctl enable --now dnf-automatic-install.timer
+```
+
+Updates worden nu elke dag geïnstalleerd, zonder dat je daarvoor hoeft in te loggen. Op Fedora 41 en nieuwer heet het pakket `dnf5-plugin-automatic` en de timer `dnf5-automatic.timer`.
+
+## 3. Log in met een SSH-sleutel
+
+Heb je bij het bestellen geen <Term id="ssh-key">SSH-sleutel</Term> toegevoegd, kopieer er dan een vanaf je computer naar de server:
+
+```bash
+ssh-copy-id root@<jouw-ip>
+```
+
+Zie [Hoe voeg ik een SSH-sleutel toe?](/nl/help/article/how-to-manage-ssh-keys) als je er nog geen hebt. Test of je zonder wachtwoord kunt inloggen voordat je verdergaat.
+
+## 4. Schakel inloggen met een wachtwoord uit
+
+Stel in `/etc/ssh/sshd_config` in:
+
+```text title="/etc/ssh/sshd_config"
+PasswordAuthentication no
+PermitRootLogin prohibit-password
+```
+
+Pas het toe met `systemctl restart ssh` (`sshd` op AlmaLinux, Rocky Linux en Fedora). Houd je huidige sessie open en test eerst een nieuwe login in een tweede terminal. De meeste aanvallen op servers zijn pogingen om wachtwoorden te raden; zonder wachtwoordlogins lopen die op niets uit.
+
+## 5. Open alleen de poorten die je gebruikt
+
+Op het tabblad [Firewall](/nl/help/article/how-to-use-server-firewall) van je server:
+
+1. Voeg <Ui>Accepteren</Ui>-regels toe voor SSH (poort `22`) en voor elke dienst die bereikbaar moet zijn, bijvoorbeeld `80` en `443` voor een website.
+2. Zet <Ui>Inkomende pakketten</Ui> op <Ui>Verwerpen</Ui>.
+
+Kijk daarna bij <Ui>Aanbevelingen</Ui> op hetzelfde tabblad. Daar word je gewaarschuwd voor databases en andere diensten die vanaf internet bereikbaar zijn. Een database hoort bijna nooit voor iedereen open te staan: bind hem aan `127.0.0.1`, of sta alleen de adressen toe die hem nodig hebben.
+
+## 6. Blokkeer herhaalde inlogpogingen
+
+```bash tab="Debian / Ubuntu" tab-group="os"
+apt install fail2ban
+systemctl enable --now fail2ban
+```
+
+```bash tab="AlmaLinux / Rocky Linux / Fedora" tab-group="os"
+dnf install epel-release    # alleen AlmaLinux en Rocky Linux
+dnf install fail2ban
+systemctl enable --now fail2ban
+```
+
+fail2ban blokkeert adressen waarvan het inloggen meerdere keren mislukt. De standaardinstellingen beschermen SSH.
+
+## 7. Maak een back-up
+
+Is de server ingericht zoals jij wilt, [maak dan een back-up](/nl/help/article/how-to-backup-server). Gaat er later iets mis, dan ben je binnen enkele minuten terug bij deze staat.
+
+## En daarna
+
+- Laat elke applicatie onder een eigen gebruiker draaien, niet als `root`.
+- Houd de software die je zelf hebt geïnstalleerd up-to-date: webapplicaties zoals WordPress of Nextcloud zijn een veelgebruikte manier om binnen te komen.
+- Beveilig ook je Virtbase-account, met [tweefactorauthenticatie of een passkey](/nl/help/article/how-to-set-up-two-factor-authentication).
+
+Denk je dat je server gecompromitteerd is, zie dan [Wat moet ik doen als ik een misbruikmelding krijg?](/nl/help/article/about-abuse-reports#de-oorzaak-vinden): de controles daar helpen ook zonder melding.

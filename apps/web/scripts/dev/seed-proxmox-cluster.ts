@@ -42,10 +42,7 @@ interface ClusterConfig {
   nodes: Array<{ hostname: string; ip: string }>;
 }
 
-const CLUSTER_JSON = join(
-  process.cwd(),
-  "../../tooling/proxmox-cluster/cluster.json",
-);
+const CLUSTER_JSON = join(process.cwd(), "../../tooling/proxbase/cluster.json");
 
 /**
  * Register the local Proxmox cluster as real `proxmox_nodes` rows.

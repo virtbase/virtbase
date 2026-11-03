@@ -1,0 +1,31 @@
+# yaml-language-server: $schema=https://proxbase.virtbase.com/schema/v1alpha1/cluster.json
+#
+# The local Proxmox VE cluster: three nodes with hyperconverged Ceph, the same
+# shape as production. Created and kept up by ./up.sh; see README.md.
+apiVersion: proxbase.virtbase.com/v1alpha1
+kind: Cluster
+name: virtbase
+proxmox:
+  goldenImage: true
+nodes:
+  count: 3
+  defaults:
+    cpus: 4
+    # Below the 6G proxbase suggests for Ceph, so the cluster fits next to an
+    # editor and a dev server. Idle nodes hand about half of it back.
+    memory: 4G
+    dataDisks: [{ size: 32G }]
+networks:
+  - name: cluster
+    cidr: 10.10.10.0/24
+    roles: [corosync, migration]
+storage:
+  zfs: []
+  ceph:
+    enabled: true
+    # The storage ids the seed registers: `vm-storage` for guest disks, and
+    # the shared `cephfs` for ISOs, backups, snippets and imports, so every
+    # node sees the same ISO.
+    pools:
+      - { name: vm-storage, size: 3, minSize: 2, pgNum: 32 }
+    cephfs: true

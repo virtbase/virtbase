@@ -1,41 +1,50 @@
 ---
-title: Wie kann ich meinen Virtbase Server verlängern?
-description: Erfahre, wie du deinen Server bei Virtbase verlängern kannst
+title: Wie verlängere ich meinen Server?
+description: Klicke im Reiter „Plan“ deines Servers auf „Verlängern“ und bezahle einen weiteren Monat. Verlängere vor Ende der Laufzeit – ein Server, der nicht verlängert wird, wird abgeschaltet und 5 Tage später mit allen Daten gelöscht.
 categories: [billing, servers]
 authors: [janic]
-related: [how-to-backup-server]
-popular: 4
-keywords: [Verlängerung, Laufzeit]
+related: [how-to-set-up-automatic-renewal, failed-payment, how-to-upgrade-server]
+popular: 5
+keywords: [verlängern, Verlängerung, Server verlängern, Laufzeit, abgelaufen, Ablauf, deaktiviert, Server gelöscht, bezahlen]
 publishedAt: 2026-03-19
-lastModified: 2026-03-19
+lastModified: 2026-11-02
 ---
 
-Um die vorzeitige Abschaltung und Löschung deines Servers zu verhindern, empfehlen wir die Verlängerung mindestens **5 Tage vor Ablauf** durchzuführen.
+Ein Virtbase-Server wird Monat für Monat bezahlt. Damit er weiterläuft, verlängere ihn vor Ende seiner Laufzeit – entweder von Hand, wie hier beschrieben, oder [automatisch](/de/help/article/how-to-set-up-automatic-renewal), damit du nie wieder daran denken musst.
 
-## Verlängerung im Kundenportal
+Du kannst jederzeit verlängern. Der neue Monat wird an das Ende der aktuellen Laufzeit angehängt, frühzeitiges Verlängern kostet dich also nichts.
 
-Um deinen Server zu verlängern, befolge diese Schritte:
+## Einen Server verlängern
 
-1. Rufe deinen **Server** im [Kundenportal](https://app.virtbase.com/servers) auf.
-2. Klicke in der Navigation auf **Plan**.
+1. Klicke im [Kundenportal](https://app.virtbase.com/servers) neben deinem Server auf <Ui>Verlängern</Ui>. Dadurch öffnet sich sein Reiter <Ui>Plan</Ui>.
+2. Dein aktueller Plan ist mit <Ui>Aktueller Plan</Ui> markiert. Klicke bei diesem Plan auf <Ui>Verlängern</Ui>.
+3. Prüfe den Preis und klicke auf die Schaltfläche <Ui>Für … verlängern</Ui>, die den Betrag anzeigt.
+4. Wähle eine Zahlungsmethode und klicke auf <Ui>Jetzt kaufen</Ui>.
 
-![Seite Plan aufrufen](./images/renew-server-step-1.png)
+![Der Reiter „Plan“ mit dem aktuellen Plan, dem Ende der Laufzeit, dem Schalter für die automatische Verlängerung und der Schaltfläche „Verlängern“ neben dem aktuellen Plan](./images/plan-extend.webp)
 
-3. Wähle nun das gewünschte Paket aus. Bei einer regulären Verlängerung ist bereits das aktuelle Paket vorausgewählt.
-4. Bestätige die Verlängerung mit dem Klick auf **Verlängern**. Du wirst im Anschluss zur Bezahlseite weitergeleitet.
+Sobald die Zahlung durchgegangen ist, verlängert sich die Laufzeit um einen Monat. Du erhältst die E-Mail <Msg>Dein Server wurde verlängert</Msg> mit dem neuen Enddatum und findest die Rechnung unter [Rechnungen](https://app.virtbase.com/invoices).
 
-![Paket verlängern](./images/renew-server-step-2.png)
+Möchtest du stattdessen auf einen größeren Plan wechseln, siehe [Wie mache ich ein Upgrade meines Servers auf einen größeren Plan?](/de/help/article/how-to-upgrade-server)
 
-Nach der erfolgreichen Bezahlung verlängert sich dein Server um weitere 30 Tage. Die Rechnung dazu wird im Kundenportal hinterlegt und per E-Mail an dich gesendet.
+## Was passiert, wenn ich nicht verlängere?
 
-Falls du weitere Fragen zur Verlängerung hast oder Unterstützung dabei benötigst, dann [kontaktiere unser Support-Team](/de/contact).
+| Wann | Was passiert |
+| --- | --- |
+| 5 Tage vor Ende der Laufzeit | Der Server zeigt <Ui>Server läuft ab</Ui> an, und du erhältst die E-Mail <Msg>Dein Server läuft bald ab</Msg>. |
+| Ende der Laufzeit | Der Server wird deaktiviert und ausgeschaltet, und du erhältst die E-Mail <Msg>Dein Server wurde deaktiviert</Msg>. Deine Daten sind noch vorhanden. |
+| 5 Tage nach der Deaktivierung | Der Server und alle seine Daten, einschließlich aller Backups und seiner <Term id="ptr-record">Reverse-DNS-Einträge</Term>, werden endgültig gelöscht. Du erhältst die E-Mail <Msg>Dein Server wurde gelöscht</Msg>. |
 
-## Was passiert wenn ich meinen Server nicht verlängere?
+Ein gelöschter Server lässt sich nicht wiederherstellen, auch nicht durch unser Support-Team.
 
-Wir senden dir **5 Tage** vor Ablauf der Laufzeit deines Servers eine E-Mail mit einer Erinnerung deinen Server zu verlängern.
+## Einen deaktivierten Server verlängern
 
-Zum Ende der Laufzeit wird der Server mit einer weiteren Benachrichtigung **suspendiert**. Das bedeutet er kann weder gestartet werden, noch können andere
-relevante Aktionen wie eine Wiederherstellung des Backups, Neuinstallation oder Änderungen an der Firewall, durchgeführt werden.
+Solange er nicht gelöscht ist, lässt sich ein deaktivierter Server auf dieselbe Weise verlängern. Durch die Verlängerung wird er mit all seinen Daten wieder eingeschaltet. Solange er deaktiviert ist, kannst du ihn nicht starten, die Konsole nicht nutzen, keine Backups wiederherstellen und ihn nicht neu installieren.
 
-Wenn dein Server suspendiert wurde, dann hast du **5 weitere Tage**, um eine Verlängerung durchzuführen. Danach wird dein Server mit einer weiteren Ankündigung permanent gelöscht. 
-Bitte beachte, dass wir in diesem Fall keine Daten wiederherstellen können.
+## Wenn es nicht geklappt hat
+
+- **Eine Bestellung wartet auf Zahlung:** Du hast die Zahlung geschlossen, bevor sie durchgegangen ist. Es wurde nichts berechnet. Klicke auf <Ui>Zahlung fortsetzen</Ui> oder auf <Ui>Verwerfen</Ui> und beginne von vorn.
+- <Msg>Neue Bestellungen sind ausgesetzt, solange ein Missbrauchsfall offen ist.</Msg> Solange ein [Missbrauchsfall](/de/help/article/about-abuse-reports) offen ist, ist eine manuelle Verlängerung nicht möglich. Beantworte den Fall oder schalte die automatische Verlängerung ein, die weiterhin funktioniert.
+- **Die Zahlung wird abgelehnt:** Versuche es mit einer anderen Zahlungsmethode. Bei <Term id="sepa-mandate">SEPA-Lastschrift</Term> wird die Verlängerung erst wirksam, wenn die Zahlung eingegangen ist.
+
+Steht die Löschung des Servers kurz bevor und kannst du nicht rechtzeitig bezahlen, [kontaktiere den Support](/de/contact) vor dem Löschdatum.

@@ -247,7 +247,7 @@ export default async function CheckoutSuccessPage({
             className="text-muted-foreground text-xs transition-colors hover:text-foreground/80"
             prefetch={false}
           >
-            {t("Need help? Contact us ↗")}
+            {t("Need help? Contact us")}
           </IntlLink>
         </EmptyContent>
       </Empty>

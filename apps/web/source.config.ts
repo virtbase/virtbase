@@ -79,6 +79,17 @@ export const authorCollection = defineCollections({
   }),
 });
 
+export const glossaryCollection = defineCollections({
+  type: "doc",
+  dir: "../../packages/content/glossary",
+  postprocess,
+  schema: z4.object({
+    title: z4.string(),
+    description: z4.string(),
+    lastModified,
+  }),
+});
+
 export const marketingCollection = defineCollections({
   type: "doc",
   dir: "../../packages/content/marketing",

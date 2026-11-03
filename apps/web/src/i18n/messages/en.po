@@ -447,9 +447,9 @@ msgid "Discard it and tell the sender"
 msgstr ""
 
 #: ../../packages/integration-discord/src/features/firewall/index.ts
-msgctxt "discord-integration.YDAX4F"
-msgid "What happens to a packet that no rule matches. Leave incoming on **DROP** unless you know why you are changing it."
-msgstr ""
+msgctxt "discord-integration.hB998R"
+msgid "What happens to a packet that no rule matches. New servers accept everything; set incoming to **DROP** to block whatever your rules do not allow."
+msgstr "What happens to a packet that no rule matches. New servers accept everything; set incoming to **DROP** to block whatever your rules do not allow."
 
 #: ../../packages/integration-discord/src/features/firewall/index.ts
 msgctxt "discord-integration.XumiMR"
@@ -609,9 +609,9 @@ msgid "Cancel"
 msgstr ""
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
-msgctxt "discord-integration.VLFQi1"
-msgid "Firmware settings. Changing either of these reboots the server, and a machine installed under one setting may not boot under the other."
-msgstr ""
+msgctxt "discord-integration.UdJVk6"
+msgid "Firmware settings. A change takes effect once the server is shut down and started again, and a machine installed under one setting may not boot under the other."
+msgstr "Firmware settings. A change takes effect once the server is shut down and started again, and a machine installed under one setting may not boot under the other."
 
 #: ../../packages/integration-discord/src/features/lifecycle/index.ts
 msgctxt "discord-integration.NjgW6o"
@@ -878,9 +878,9 @@ msgid "🛡️ Firewall & rDNS"
 msgstr ""
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
-msgctxt "discord-integration.f2U7no"
-msgid "Turn the firewall on or off, add and remove rules, and set reverse DNS for your addresses."
-msgstr ""
+msgctxt "discord-integration.Ux0sfM"
+msgid "Set the default policies, add and remove firewall rules, and set reverse DNS for your addresses."
+msgstr "Set the default policies, add and remove firewall rules, and set reverse DNS for your addresses."
 
 #: ../../packages/integration-discord/src/features/menu/messages.ts
 msgctxt "discord-integration.imThHA"
@@ -1824,9 +1824,9 @@ msgid "Back to customer portal"
 msgstr ""
 
 #: src/app/(public)/[locale]/checkout/return/page.tsx
-msgctxt "lVV2Zz"
-msgid "Need help? Contact us ↗"
-msgstr ""
+msgctxt "nCYYaf"
+msgid "Need help? Contact us"
+msgstr "Need help? Contact us"
 
 #: src/app/(public)/[locale]/contact/page.tsx
 #: src/ui/footer.tsx
@@ -1909,9 +1909,9 @@ msgid "Contact us and get quick help."
 msgstr ""
 
 #: src/app/(public)/[locale]/help/article/[[...slug]]/page.tsx
-msgctxt "IAMn0B"
-msgid "Still have questions? Contact us ↗"
-msgstr ""
+msgctxt "Va6b-q"
+msgid "Still have questions? Contact us"
+msgstr "Still have questions? Contact us"
 
 #: src/app/(public)/[locale]/help/page.tsx
 msgctxt "VQvikz"
@@ -6557,6 +6557,16 @@ msgctxt "Dnob31"
 msgid "Operational"
 msgstr ""
 
+#: src/features/glossary/glossary.ts
+msgctxt "CwPawm"
+msgid "Glossary"
+msgstr "Glossary"
+
+#: src/features/glossary/glossary.ts
+msgctxt "0oRAya"
+msgid "Short explanations of the technical terms used in the Virtbase Help Center, from PTR record to vCore."
+msgstr "Short explanations of the technical terms used in the Virtbase Help Center, from PTR record to vCore."
+
 #: src/features/help/categories.tsx
 msgctxt "EKtClK"
 msgid "Getting started"
@@ -7410,9 +7420,9 @@ msgid "Reset the password of a user on your server."
 msgstr ""
 
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
-msgctxt "K1-gri"
-msgid "This action cannot be undone. If the <code>qemu-quest-agent</code> package is not installed, the process will fail."
-msgstr ""
+msgctxt "hdNOd8"
+msgid "This action cannot be undone. If the <code>qemu-guest-agent</code> package is not installed, the process will fail."
+msgstr "This action cannot be undone. If the <code>qemu-guest-agent</code> package is not installed, the process will fail."
 
 #: src/features/servers/components/overview/reset-server-password-dialog.tsx
 msgctxt "JCIgkj"
@@ -8813,6 +8823,21 @@ msgstr ""
 msgctxt "jr1I15"
 msgid "By continuing, you agree to {appName}'s <terms>Terms of Service</terms> and <privacy>Privacy Policy</privacy>"
 msgstr ""
+
+#: src/ui/mdx/glossary-term.tsx
+msgctxt "Y-U_95"
+msgid "Read more in the glossary"
+msgstr "Read more in the glossary"
+
+#: src/ui/mdx/help-link.tsx
+msgctxt "qDQRSE"
+msgid "customer portal, opens in a new tab"
+msgstr "customer portal, opens in a new tab"
+
+#: src/ui/mdx/help-link.tsx
+msgctxt "btLB8l"
+msgid "external website, opens in a new tab"
+msgstr "external website, opens in a new tab"
 
 #: src/ui/nav-user.tsx
 msgctxt "f-sh2j"

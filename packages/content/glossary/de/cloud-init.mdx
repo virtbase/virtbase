@@ -1,0 +1,8 @@
+---
+title: "cloud-init"
+description: "Das Werkzeug, das einen neuen Server beim ersten Start einrichtet: Hostname, Netzwerk, Root-Passwort und SSH-Schlüssel."
+---
+
+cloud-init läuft, wenn ein Server nach der Bestellung oder einer Neuinstallation zum ersten Mal startet. Es übernimmt die Einstellungen aus deiner Bestellung, etwa das Passwort für [root](#root), deinen [SSH-Schlüssel](#ssh-key) und die Netzwerkkonfiguration, und installiert den [QEMU-Gast-Agent](#guest-agent).
+
+Systeme, die du selbst von einem [ISO-Image](#iso-image) installierst, nutzen es nicht. Deshalb richtest du ihr Netzwerk von Hand ein.

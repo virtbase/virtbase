@@ -48,6 +48,8 @@ export type ContentRoute =
   | { kind: "legal"; slugs: string[] }
   | { kind: "help" }
   | { kind: "help-category"; category: HelpCategory }
+  /** Every glossary term, each a section of one page. */
+  | { kind: "help-glossary" }
   /** A help article; no slugs is left to the route. */
   | { kind: "help-article"; slugs: string[] }
   | { kind: "author"; slug: string };
@@ -58,6 +60,9 @@ export type PublicRoute = ContentRoute | { kind: "page" };
 function matchHelp([kind, ...slugs]: readonly string[]): PublicRoute | null {
   if (kind === undefined) return { kind: "help" };
   if (kind === "article") return { kind: "help-article", slugs };
+  if (kind === "glossary" && slugs.length === 0) {
+    return { kind: "help-glossary" };
+  }
   const [category] = slugs;
   if (kind === "category" && slugs.length === 1 && isHelpCategory(category)) {
     return { kind: "help-category", category };
@@ -107,6 +112,8 @@ export function publicPath(route: ContentRoute): string {
       return "/help";
     case "help-category":
       return `/help/category/${route.category}`;
+    case "help-glossary":
+      return "/help/glossary";
     case "help-article":
       return `/help/article${join(route.slugs)}`;
     case "author":

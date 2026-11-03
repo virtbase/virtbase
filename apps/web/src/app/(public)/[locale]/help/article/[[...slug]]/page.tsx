@@ -154,7 +154,7 @@ export default async function HelpArticlePage({
               className="text-muted-foreground text-xs transition-colors hover:text-foreground/80"
               prefetch={false}
             >
-              {t("Still have questions? Contact us ↗")}
+              {t("Still have questions? Contact us")}
             </IntlLink>
           </div>
         </div>

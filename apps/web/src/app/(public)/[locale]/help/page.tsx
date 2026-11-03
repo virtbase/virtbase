@@ -15,6 +15,7 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { LucideBookA } from "@virtbase/ui/icons";
 import {
   constructMetadata,
   constructOpengraphUrl,
@@ -23,6 +24,7 @@ import {
 import type { Metadata } from "next";
 import { cacheLife, cacheTag } from "next/cache";
 import { getExtracted, getLocale } from "next-intl/server";
+import { getGlossaryText } from "@/features/glossary/glossary.ts";
 import { getPopularArticles } from "@/features/help/articles.ts";
 import { getHelpCategories } from "@/features/help/categories.tsx";
 import { CategoryCard } from "@/features/help/components/category-card.tsx";
@@ -71,6 +73,7 @@ export default async function HelpPage() {
   const categories = await getHelpCategories();
   const popular = getPopularArticles(locale);
   const text = await getHelpCenterText();
+  const glossary = await getGlossaryText(locale);
 
   return (
     <>
@@ -98,6 +101,12 @@ export default async function HelpPage() {
                 description={description}
               />
             ))}
+            <CategoryCard
+              href={publicPath({ kind: "help-glossary" })}
+              icon={<LucideBookA aria-hidden="true" />}
+              title={glossary.title}
+              description={glossary.description}
+            />
           </div>
         </div>
       </main>

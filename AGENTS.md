@@ -183,7 +183,7 @@ workspace rather than a plain directory so Turborepo tracks it — `@virtbase/we
 depends on it, so editing an MDX file invalidates the web build and typecheck
 caches.
 
-Three collections, each loaded in `apps/web/src/lib/source.ts`:
+The collections, each loaded in `apps/web/src/lib/source.ts`:
 
 | Collection     | Files                               | URL                             |
 | -------------- | ----------------------------------- | ------------------------------- |
@@ -191,6 +191,8 @@ Three collections, each loaded in `apps/web/src/lib/source.ts`:
 | `marketing`    | `marketing/<locale>/<slug>.mdx`     | `/<locale>/<slug>`              |
 | `legal`        | `legal/<locale>/<slug>.mdx`         | `/<locale>/legal/<slug>`        |
 | `helpArticles` | `help/articles/<locale>/<slug>.mdx` | `/<locale>/help/article/<slug>` |
+| `glossary`     | `glossary/<locale>/<id>.mdx`        | `/<locale>/help/glossary#<id>`  |
+| `authors`      | `authors/<locale>/<slug>.mdx`       | `/<locale>/authors/<slug>`      |
 
 Locales are **directories**, not filename suffixes, so Fumadocs is configured
 with `parser: "dir"`.

@@ -1,42 +1,60 @@
 ---
-title: How do I change the operating system of my Virtbase server?
-description: Learn how to reinstall your Virtbase server with a different operating system.
+title: How do I change the operating system of my server?
+description: Reinstall your server with a different operating system from the Overview tab. It erases the whole disk; your IP addresses, backups and firewall rules stay. Set a new root password as part of it.
 categories: [servers, getting-started]
 authors: [janic]
-related: [how-to-backup-server]
-popular: 3
-keywords: [reinstallation, server, operating system]
+related: [how-to-backup-server, how-to-install-from-iso, how-to-connect-to-server]
+popular: 6
+keywords: [reinstall, change operating system, change OS, reset server, fresh install, Debian, Ubuntu, AlmaLinux, Rocky Linux]
 publishedAt: 2026-03-19
-lastModified: 2026-06-17
+lastModified: 2026-11-02
 ---
 
-It often happens that requirements change and you need a different operating system on your server.
-You can change your server's operating system in just a few clicks and within seconds in the customer portal.
+You can reinstall your server with any operating system from our list in a few clicks. The reinstall **erases everything on the disk** and sets the server up from scratch, as if you had just ordered it.
 
-## How do I start the reinstallation?
+What stays the same: the server's IP addresses, its plan and term, its firewall rules, its <Term id="ptr-record">reverse DNS</Term> entries and its backups.
 
-Follow these steps to reset your server:
+## Before you start
 
-<Hint>
-When reinstalling the operating system, all data will be irrevocably deleted.
-We recommend first creating a backup of the current configuration.
-</Hint>
+- Create a [backup](/en/help/article/how-to-backup-server) if there is anything on the server you might need again. Backups survive the reinstall, so you can go back.
+- Think of a new root password: 8 to 64 characters, with at least one uppercase letter, one lowercase letter and one digit. Virtbase does not store it.
 
-1. Open your **server** in the [customer portal](https://app.virtbase.com/servers).
-2. Click on **Overview** in the navigation bar.
-3. On the left-hand side, click on **Change operating system**.
-4. Here you can select your new operating system and set a new root password. 
-Your root password will not be saved and cannot be displayed again, so make sure you remember it.
+## Change the operating system
 
-![Dialog Reset operating system](./images/how-to-change-operating-system.png)
+1. In the [customer portal](https://app.virtbase.com/servers), select <Ui>View</Ui> next to your server.
+2. On the <Ui>Overview</Ui> page, select <Ui>Change Operating System</Ui> in the <Ui>Server</Ui> card.
+3. Under <Ui>New Operating System</Ui>, choose the system to install.
+4. Under <Ui>New Root Password</Ui>, enter the new password.
+5. Confirm.
 
-5. Confirm the reset to start the process.
+![The "Change operating system" dialog with the warning, Debian 13 selected and a new root password](./images/change-os-dialog.webp)
 
-Your server will then be stopped and the operating system will be changed.
+The server shows <Ui>Server is installing</Ui> and is offline until the new system has been set up. When the banner disappears, you can log in.
 
-If you have any further questions about our operating systems or need assistance, please [contact our support team](/en/contact).
+If you added an <Term id="ssh-key">SSH key</Term> when you ordered the server, it is set up again on the new system.
 
-## How can I upload my own ISO files?
+## Check that it worked
 
-You can upload and integrate up to three of your own ISO files for your servers in the customer portal. 
-You can find these in your [Account Settings](https://app.virtbase.com/account/settings/custom-images).
+Connect with the new password:
+
+```bash
+ssh root@<your-ip>
+```
+
+<Term id="ssh">SSH</Term> will warn you with `WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!`. This is expected: the new system has new host keys. Remove the old entry and connect again:
+
+```bash
+ssh-keygen -R <your-ip>
+```
+
+The <Ui>Operating System</Ui> field on the <Ui>Overview</Ui> page shows the new system.
+
+## Install a system that is not in the list
+
+To install something we do not offer, for example Windows, pfSense or a distribution of your choice, use your own <Term id="iso-image">ISO image</Term>. See [How do I install an operating system from my own ISO?](/en/help/article/how-to-install-from-iso)
+
+## If it didn't work
+
+- <Msg>Could not change the operating system.</Msg> The server is suspended or still installing, or the password does not meet the requirements. You can start at most two reinstalls per minute.
+- **The system you want is missing from the list:** only systems available on the hardware your server runs on are offered. Use [your own ISO](/en/help/article/how-to-install-from-iso), or [contact support](/en/contact) to ask for it.
+- **The server stays in Server is installing for more than 30 minutes:** [contact support](/en/contact) with your <Ui>Server ID</Ui> from the <Ui>Advanced</Ui> tab.

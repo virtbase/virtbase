@@ -1,0 +1,77 @@
+---
+title: How do I connect to my server for the first time?
+description: Connect over SSH with the user root, the server's IP address from the customer portal and the password from your welcome email or your SSH key. Windows installs use Remote Desktop.
+categories: [getting-started, servers]
+authors: [janic]
+related: [cant-connect-to-server, how-to-reset-root-password, how-to-use-console, how-to-order-server]
+keywords: [SSH, connect, login, first login, root, PuTTY, terminal, IP address, Remote Desktop]
+publishedAt: 2026-11-02
+lastModified: 2026-11-02
+---
+
+You log in to a Linux server over <Term id="ssh">SSH</Term> as the user `root`. You need the server's IP address, which is in the customer portal, your <Term id="ssh-key">SSH key</Term> or the root password, and an SSH client.
+
+## Before you start
+
+- **The IP address:** in the [server list](https://app.virtbase.com/servers), select <Ui>Copy IP</Ui> next to your server. The welcome email does not contain it, for security reasons.
+- **The password or key:**
+  - If you added an SSH key when ordering, you log in with that key.
+  - If you set a root password, use that.
+  - Otherwise, the generated password is in the email <Msg>Your server is now ready</Msg>.
+- **An SSH client:** Linux, macOS and Windows 10 or later include `ssh` in the terminal. On Windows, open <Ui>PowerShell</Ui> or <Ui>Terminal</Ui>.
+
+## Connect over SSH
+
+1. Open a terminal and run, with your server's address:
+
+   ```bash
+   ssh root@203.0.113.10
+   ```
+
+   For an IPv6 address, use it the same way: `ssh root@2001:db8::10`.
+
+2. The first time, SSH asks whether you trust the server:
+
+   ```text
+   The authenticity of host '203.0.113.10' can't be established.
+   ED25519 key fingerprint is SHA256:...
+   Are you sure you want to continue connecting (yes/no/[fingerprint])?
+   ```
+
+   Type `yes` and press Enter. Your computer remembers the server from now on.
+
+3. Enter the root password if asked. Nothing appears on screen while you type it.
+
+You are logged in when you see a prompt such as `root@vm:~#`.
+
+If you use a key that is not your default one, name it explicitly:
+
+```bash
+ssh -i ~/.ssh/my_key root@203.0.113.10
+```
+
+## Recommended first steps
+
+1. **Update the system:**
+
+   ```bash tab="Debian / Ubuntu" tab-group="os"
+   apt update && apt upgrade
+   ```
+
+   ```bash tab="AlmaLinux / Rocky Linux / Fedora" tab-group="os"
+   dnf upgrade
+   ```
+
+2. **Change the generated password** with `passwd`, or switch to SSH keys and turn off password logins.
+3. **Decide which ports should be reachable** and set up the [firewall](/en/help/article/how-to-use-server-firewall). New servers accept all incoming traffic.
+4. **Create a [backup](/en/help/article/how-to-backup-server)** once the server is set up the way you want.
+
+## Windows
+
+Virtbase does not provide Windows images or licences. You can install Windows yourself from your own <Term id="iso-image">ISO image</Term> and bring your own licence. Before the installation, set the BIOS to <Ui>UEFI</Ui> and the <Term id="tpm">TPM</Term> to <Ui>v2.0</Ui> on the <Ui>Advanced</Ui> tab; Windows 11 does not install without them. Once <Term id="rdp">Remote Desktop</Term> is enabled in Windows, connect to the server's IP address with a Remote Desktop client on port 3389.
+
+## If it didn't work
+
+- **The connection times out or is refused:** see [I can't connect to my server](/en/help/article/cant-connect-to-server).
+- **The password is not accepted:** [reset the root password](/en/help/article/how-to-reset-root-password).
+- **No network access at all:** log in through the [browser console](/en/help/article/how-to-use-console) instead.

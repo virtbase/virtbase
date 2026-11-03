@@ -17,6 +17,7 @@ Markdown, and an import resolves from the document's own directory.
 ```
 legal/<locale>/<slug>.mdx          → /<locale>/legal/<slug>
 help/articles/<locale>/<slug>.mdx  → /<locale>/help/article/<slug>
+glossary/<locale>/<id>.mdx         → /<locale>/help/glossary#<id>
 marketing/<locale>/index.mdx       → /<locale>
 marketing/<locale>/<slug>.mdx      → /<locale>/<slug>
 ```
@@ -28,6 +29,12 @@ Locales are directories, not filename suffixes. Fumadocs is configured with
 to `en` at render time (`fallbackLanguage`), and is left out of that locale's
 `hreflang` map and sitemap entries, so crawlers are never pointed at a URL that
 serves the wrong language.
+
+## Help articles
+
+How help articles are written - types, structure, language, screenshots and
+translation - is in [help/README.md](help/README.md). Read it before writing or
+editing one.
 
 ## Help categories
 
@@ -47,6 +54,26 @@ interface text. Each is served at `/<locale>/help/category/<slug>`.
 
 Every translation carries the same `categories` and `popular` as its `en`
 source, and every category needs at least one article; a test fails otherwise.
+
+## Glossary
+
+Each file in `glossary/<locale>/` is one term. There is no page per term: all of
+them are sections of `/<locale>/help/glossary`, anchored by the file name, which
+is the term's `id` in every language and never changes.
+
+```yaml
+title: "PTR record"
+description: "The DNS entry that tells which hostname belongs to an IP address: reverse DNS."
+```
+
+`description` is a single sentence. It is what the popover shows when a reader
+selects the term in an article, and the term's `DefinedTerm` structured data.
+The body explains the term in a paragraph or two and links to the article that
+deals with it. A term without a translation is shown in English.
+
+Help articles refer to a term with `<Term id="ptr-record">PTR record</Term>`;
+see [help/README.md](help/README.md) for when. A test fails for a `Term` whose
+`id` has no `glossary/en/<id>.mdx`, and for a translated term without one.
 
 ## Authors
 
@@ -81,7 +108,7 @@ An image used by a document lives next to it, in an `images` directory of the
 same locale, and is linked relatively:
 
 ```md
-![Firewall rule options](./images/create-firewall-rule-dialog.png)
+![The Create Backup dialog with a name and the Snapshot mode](./images/create-backup-dialog.webp)
 ```
 
 Every translation therefore carries the same link and gets its own locale's

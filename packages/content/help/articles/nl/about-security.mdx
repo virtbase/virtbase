@@ -1,38 +1,48 @@
 ---
 title: Hoe veilig is Virtbase?
-description: Ontdek welke veiligheidsmaatregelen Virtbase neemt om uw gegevens te beschermen.
+description: Het klantenportaal is alleen via HTTPS bereikbaar, met strikte beveiligingsheaders, root-wachtwoorden worden nooit opgeslagen en elke schijf in ons opslagcluster is versleuteld met LUKS2. Wat er op je server draait, beveilig je zelf.
 categories: [account, getting-started]
 authors: [janic]
-related: [about-ddos-protection, how-to-delete-account]
-keywords: [veiligheid, gegevensbescherming, encryptie, datacenter, TPM]
+related: [about-ddos-protection, how-to-set-up-two-factor-authentication, how-to-use-server-firewall]
+keywords: [beveiliging, veiligheid, gegevensbescherming, privacy, encryptie, versleuteling, datacenter, TPM]
 publishedAt: 2026-03-19
-lastModified: 2026-03-19
+lastModified: 2026-11-02
 ---
 
-Bij Virtbase heeft de beveiliging van uw gegevens de hoogste prioriteit. Van het datacenter tot de software, we vertrouwen op meerdere, onafhankelijke beveiligingslagen om een consistent hoog beveiligingsniveau te garanderen.
+Bij Virtbase heeft de beveiliging van je gegevens de hoogste prioriteit. Van het datacenter tot de software: we vertrouwen op meerdere, onafhankelijke beveiligingslagen om een consistent hoog beveiligingsniveau te garanderen.
 
 ## Hoe worden de website en het klantenportaal beveiligd?
 
-Onze website en het klantenportaal zijn uitsluitend bereikbaar via versleutelde HTTPS-verbindingen. Alle communicatie tussen uw browser en onze systemen wordt versleuteld met de huidige TLS-standaarden, zodat derden geen gegevens kunnen meelezen. Door het gebruik van HSTS (HTTP Strict Transport Security) wordt bovendien gegarandeerd dat uw browser uitsluitend versleutelde verbindingen gebruikt.
+Onze website en het klantenportaal zijn alleen bereikbaar via versleutelde HTTPS-verbindingen. Alle communicatie tussen je browser en onze systemen wordt versleuteld met de nieuwste TLS-standaarden, zodat derden je gegevens niet kunnen meelezen. Door HSTS (HTTP Strict Transport Security) gebruikt je browser bovendien zonder uitzondering versleutelde verbindingen.
 
-Ter bescherming tegen cross-site scripting (XSS) en andere aanvallen maken we gebruik van uitgebreide beveiligingsheaders. Deze omvatten onder andere een strikt contentbeveiligingsbeleid, een toestemmingsbeleid om browserfuncties te beperken en andere beschermingsmaatregelen op HTTP-niveau. Alle geïntegreerde scripts en stylesheets worden bovendien beveiligd met SHA-384 Subresource Integrity, zodat gemanipuleerde bronnen automatisch door de browser worden geblokkeerd.
+Ter bescherming tegen cross-site scripting (XSS) en andere aanvallen gebruiken we uitgebreide beveiligingsheaders. Daaronder vallen een strikt contentbeveiligingsbeleid (Content Security Policy), een toestemmingsbeleid dat browserfuncties beperkt en andere beschermingsmaatregelen op HTTP-niveau. Alle ingebonden scripts en stylesheets zijn daarnaast beveiligd met SHA-384 Subresource Integrity, zodat gemanipuleerde bronnen automatisch door de browser worden geblokkeerd.
 
-Bij het integreren van externe inhoud gaan we uiterst restrictief te werk. Vrijwel alle bronnen – inclusief lettertypen, scripts en stylesheets – worden op onze eigen website gehost. Hierdoor minimaliseren we onze afhankelijkheid van derde partijen en verminderen we potentiële aanvalsvectoren.
+Bij het insluiten van externe inhoud zijn we uiterst terughoudend. Vrijwel alle bronnen, inclusief lettertypen, scripts en stylesheets, worden op onze eigen website gehost. Zo beperken we de afhankelijkheid van derde partijen en verkleinen we het aantal mogelijke aanvalsvectoren.
 
-Virtbase slaat geen root-wachtwoorden van je servers op. Toegangsgegevens worden uitsluitend bij de eerste installatie eenmalig weergegeven of per e-mail verzonden en vervolgens niet in onze systemen opgeslagen.
+Virtbase slaat geen root-wachtwoorden van je servers op. Toegangsgegevens worden alleen eenmalig getoond bij de eerste installatie of per e-mail verstuurd, en daarna niet in onze systemen bewaard.
 
-Daarnaast beveiligen we het klantenportaal met maatregelen zoals rate limiting en webapplicatie-firewalls om ongeoorloofde toegang vroegtijdig te detecteren en te blokkeren.
+Daarnaast beveiligen we het klantenportaal met maatregelen zoals rate limiting en webapplicatiefirewalls, om ongeoorloofde toegang vroegtijdig te herkennen en te blokkeren.
 
 ## Hoe worden mijn servers en hun gegevens beschermd?
 
-Beveiliging begint bij het datacenter zelf. Onze infrastructuur bevindt zich in een gecertificeerd datacenter met een meerlagig fysiek beveiligingssysteem – onbevoegde personen krijgen geen toegang.
+Beveiliging begint in het datacenter zelf. Onze infrastructuur staat in een gecertificeerd datacenter met een fysiek beveiligingssysteem in meerdere lagen: onbevoegden krijgen geen toegang.
 
-In tegenstelling tot veel andere aanbieders maken wij bovendien gebruik van een uitgebreide opstartbeveiliging met TPM en BIOS-wachtwoorden op alle hostsystemen. Dit zorgt ervoor dat zelfs bij fysieke toegang geen ongeoorloofde manipulatie van de systemen mogelijk is.
+Anders dan veel andere aanbieders gebruiken we bovendien een uitgebreide opstartbeveiliging met <Term id="tpm">TPM</Term> en BIOS-wachtwoorden op alle hostsystemen. Zo is ongeoorloofde manipulatie van de systemen zelfs bij fysieke toegang niet mogelijk.
 
-Bovendien zijn alle harde schijven in ons Ceph-cluster beveiligd met een beproefde LUKS2-versleuteling. Je gegevens zijn dus ook op opslagniveau volledig versleuteld en beschermd tegen ongeoorloofde toegang.
+Verder zijn alle harde schijven in ons Ceph-cluster beveiligd met de beproefde LUKS2-versleuteling. Je gegevens zijn dus ook op opslagniveau volledig versleuteld en beschermd tegen ongeoorloofde toegang.
+
+## Wat kan ik zelf doen om mijn account en servers te beschermen?
+
+Wij beveiligen het platform; wat er op je server draait, heb je zelf in de hand. Deze stappen maken het grootste verschil:
+
+- **Schakel [tweefactorauthenticatie](/nl/help/article/how-to-set-up-two-factor-authentication) in** of gebruik een <Term id="passkey">passkey</Term> voor je Virtbase-account.
+- **Log op je servers in met [SSH-sleutels](/nl/help/article/how-to-manage-ssh-keys)** in plaats van met wachtwoorden.
+- **Sluit elke poort die je niet nodig hebt** met de [firewall](/nl/help/article/how-to-use-server-firewall). De aanbevelingen daarvan wijzen je op databases en andere diensten die vanaf internet bereikbaar zijn.
+- **Installeer regelmatig beveiligingsupdates**, bijvoorbeeld met `unattended-upgrades` op Debian en Ubuntu.
+- **Geef API-sleutels alleen de rechten die ze nodig hebben,** en verwijder sleutels die je niet meer gebruikt.
 
 ## Welke gegevens worden verwerkt?
 
-Een volledig overzicht van de gegevens die in het kader van onze diensten worden verwerkt, vind je in onze [privacyverklaring](/nl/legal/privacy).
+Een volledig overzicht van de gegevens die we in het kader van onze diensten verwerken, vind je in ons [privacybeleid](/nl/legal/privacy).
 
-Als je nog vragen hebt over veiligheid of gegevensbescherming, neem dan [contact op met ons ondersteuningsteam](/nl/contact).
+Heb je nog vragen over beveiliging of gegevensbescherming, [neem dan contact op met ons supportteam](/nl/contact).

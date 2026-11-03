@@ -19,7 +19,10 @@ import { Step, Steps } from "fumadocs-ui/components/steps";
 import defaultMdxComponents from "fumadocs-ui/mdx";
 import { HelpHint } from "@/ui/fumadocs/help-hint.tsx";
 import { Video } from "@/ui/fumadocs/video.tsx";
+import { GlossaryTerm } from "@/ui/mdx/glossary-term.tsx";
+import { HelpLink } from "@/ui/mdx/help-link.tsx";
 import { MdxImage } from "@/ui/mdx/mdx-image.tsx";
+import { Msg, Ui } from "@/ui/mdx/ui-text.tsx";
 
 /**
  * Components available to every document in the `helpArticles` collection.
@@ -29,9 +32,13 @@ export const helpMdxComponents = {
   ...defaultMdxComponents,
   Steps,
   Step,
+  a: HelpLink,
   img: MdxImage,
   Hint: HelpHint,
   Video,
+  Term: GlossaryTerm,
+  Ui,
+  Msg,
 };
 
 /** Components available to every document in the `legal` collection. */

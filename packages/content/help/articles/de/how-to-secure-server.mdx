@@ -1,0 +1,97 @@
+---
+title: Wie sichere ich einen neuen Server ab?
+description: Sieben Schritte für die erste Stunde eines neuen Linux-Servers – Updates, automatische Sicherheitsupdates, SSH-Schlüssel, keine Anmeldung per Passwort, eine Firewall, die nur öffnet, was du nutzt, fail2ban und ein erstes Backup.
+categories: [getting-started, servers]
+authors: [janic]
+related: [how-to-connect-to-server, how-to-manage-ssh-keys, how-to-use-server-firewall, how-to-backup-server]
+keywords: [Server absichern, Server härten, Server-Sicherheit, Hardening, erste Schritte, SSH absichern, fail2ban, unattended-upgrades, Firewall, gehackt]
+publishedAt: 2026-11-02
+lastModified: 2026-11-02
+---
+
+Ein Server im Internet wird schon wenige Minuten, nachdem er online ist, nach Schwachstellen abgesucht. Virtbase schützt das Netzwerk und die Plattform, aber was auf deinem Server läuft, sicherst du selbst ab. Diese sieben Schritte decken das Wichtigste ab und dauern weniger als eine Stunde. Die Befehle stehen jeweils für Debian und Ubuntu sowie für AlmaLinux, Rocky Linux und Fedora da: Wähle dein System einmal aus, und jeder Artikel zeigt dir seine Befehle.
+
+Behalte die [Browser-Konsole](/de/help/article/how-to-use-console) im Hinterkopf: Sperrt dich ein Schritt aus <Term id="ssh">SSH</Term> aus, kommst du darüber trotzdem hinein.
+
+## 1. Alle Updates installieren
+
+```bash tab="Debian / Ubuntu" tab-group="os"
+apt update && apt full-upgrade
+reboot
+```
+
+```bash tab="AlmaLinux / Rocky Linux / Fedora" tab-group="os"
+dnf upgrade --refresh
+reboot
+```
+
+## 2. Sicherheitsupdates automatisch installieren
+
+```bash tab="Debian / Ubuntu" tab-group="os"
+apt install unattended-upgrades
+dpkg-reconfigure -plow unattended-upgrades
+```
+
+```bash tab="AlmaLinux / Rocky Linux / Fedora" tab-group="os"
+dnf install dnf-automatic
+systemctl enable --now dnf-automatic-install.timer
+```
+
+Updates werden jetzt jeden Tag installiert, ohne dass du dich anmelden musst. Unter Fedora 41 und neuer heißt das Paket `dnf5-plugin-automatic` und der Timer `dnf5-automatic.timer`.
+
+## 3. Mit einem SSH-Schlüssel anmelden
+
+Hast du bei der Bestellung keinen <Term id="ssh-key">SSH-Schlüssel</Term> hinzugefügt, kopiere einen von deinem Computer auf den Server:
+
+```bash
+ssh-copy-id root@<deine-ip>
+```
+
+Hast du noch keinen Schlüssel, siehe [Wie füge ich einen SSH-Schlüssel hinzu?](/de/help/article/how-to-manage-ssh-keys) Teste, ob du dich ohne Passwort anmelden kannst, bevor du weitermachst.
+
+## 4. Die Anmeldung per Passwort abschalten
+
+Setze in `/etc/ssh/sshd_config`:
+
+```text title="/etc/ssh/sshd_config"
+PasswordAuthentication no
+PermitRootLogin prohibit-password
+```
+
+Übernimm die Änderung mit `systemctl restart ssh` (`sshd` unter AlmaLinux, Rocky Linux und Fedora). Lass deine aktuelle Sitzung offen und teste zuerst eine neue Anmeldung in einem zweiten Terminal. Die meisten Angriffe auf Server sind Versuche, das Passwort zu erraten; ohne Anmeldung per Passwort laufen sie ins Leere.
+
+## 5. Nur die Ports öffnen, die du nutzt
+
+Im Reiter [Firewall](/de/help/article/how-to-use-server-firewall) deines Servers:
+
+1. Lege <Ui>Akzeptieren</Ui>-Regeln für SSH (Port `22`) und jeden Dienst an, der erreichbar sein muss, z. B. `80` und `443` für eine Website.
+2. Setze <Ui>Eingehende Pakete</Ui> auf <Ui>Verwerfen</Ui>.
+
+Sieh dir dann im selben Reiter die <Ui>Empfehlungen</Ui> an. Sie warnen dich vor Datenbanken und anderen Diensten, die aus dem Internet erreichbar sind. Eine Datenbank sollte fast nie für alle offen sein: Binde sie an `127.0.0.1` oder erlaube nur die Adressen, die sie brauchen.
+
+## 6. Wiederholte Anmeldeversuche blockieren
+
+```bash tab="Debian / Ubuntu" tab-group="os"
+apt install fail2ban
+systemctl enable --now fail2ban
+```
+
+```bash tab="AlmaLinux / Rocky Linux / Fedora" tab-group="os"
+dnf install epel-release    # nur AlmaLinux und Rocky Linux
+dnf install fail2ban
+systemctl enable --now fail2ban
+```
+
+fail2ban sperrt Adressen, die sich mehrmals erfolglos anzumelden versuchen. Schon mit den Standardeinstellungen ist SSH geschützt.
+
+## 7. Ein Backup erstellen
+
+Sobald der Server so eingerichtet ist, wie du ihn haben möchtest, [erstelle ein Backup](/de/help/article/how-to-backup-server). Geht später etwas schief, kehrst du in wenigen Minuten zu diesem Stand zurück.
+
+## Und danach
+
+- Lass jede Anwendung unter einem eigenen Benutzer laufen, nicht als `root`.
+- Halte die Software, die du selbst installiert hast, auf dem neuesten Stand: Webanwendungen wie WordPress oder Nextcloud sind ein häufiges Einfallstor.
+- Sichere auch dein Virtbase-Konto ab, mit [Zwei-Faktor-Authentifizierung oder einem Passkey](/de/help/article/how-to-set-up-two-factor-authentication).
+
+Glaubst du, dass dein Server kompromittiert wurde, siehe [Was tue ich, wenn ich eine Missbrauchsmeldung (Abuse) erhalte?](/de/help/article/about-abuse-reports#die-ursache-finden): Die Prüfungen dort helfen auch ohne Meldung.
