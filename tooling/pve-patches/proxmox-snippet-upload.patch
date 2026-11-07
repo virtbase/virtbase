@@ -1,6 +1,6 @@
 --- a/API2/Storage/Status.pm
 +++ b/API2/Storage/Status.pm
-@@ -533,7 +533,7 @@
+@@ -534,7 +534,7 @@
                  description => "Content type.",
                  type => 'string',
                  format => 'pve-storage-content',
@@ -9,7 +9,7 @@
              },
              filename => {
                  description =>
-@@ -618,6 +618,8 @@
+@@ -619,6 +619,8 @@
              }
  
              $path = PVE::Storage::get_import_dir($cfg, $storage);
@@ -18,7 +18,7 @@
          } else {
              raise_param_exc({ content => "upload content type '$content' not allowed" });
          }
-@@ -770,7 +772,7 @@
+@@ -767,7 +769,7 @@
                  description => "Content type.", # TODO: could be optional & detected in most cases
                  type => 'string',
                  format => 'pve-storage-content',
@@ -27,7 +27,7 @@
              },
              filename => {
                  description =>
-@@ -859,6 +861,8 @@
+@@ -856,6 +858,8 @@
              }
  
              $path = PVE::Storage::get_import_dir($cfg, $storage);
@@ -38,7 +38,7 @@
          }
 --- a/Storage.pm
 +++ b/Storage.pm
-@@ -564,6 +564,15 @@
+@@ -565,6 +565,15 @@
      return $plugin->get_subdir($scfg, 'import');
  }
  
