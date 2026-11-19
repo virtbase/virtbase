@@ -1,6 +1,6 @@
 --- a/API2/Storage/Status.pm
 +++ b/API2/Storage/Status.pm
-@@ -633,6 +633,20 @@
+@@ -634,6 +634,20 @@
          # best effort to match apl_download behaviour
          chmod 0644, $tmpfilename;
  
@@ -21,7 +21,7 @@
          my $err_cleanup = sub { unlink $dest or $! == ENOENT or die "cleanup failed: $!\n" };
  
          my $cmd;
-@@ -667,7 +681,7 @@
+@@ -664,7 +678,7 @@
          } else {
              PVE::Storage::activate_storage($cfg, $storage);
              File::Path::make_path($dirname);
