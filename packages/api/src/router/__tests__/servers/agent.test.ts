@@ -32,6 +32,7 @@ import {
   mockSession,
   seedServerGraph,
 } from "../../../testing/index.ts";
+import { proxmoxApiError } from "../../../testing/proxmox-errors.ts";
 
 // Redis is stubbed rather than exercised: `cached` degrades on any Redis error,
 // so a real client would still pass while quietly making the suite depend on
@@ -218,9 +219,9 @@ describe("servers.agent.get", () => {
     mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
         current: running,
-        infoError: new Error(
-          'GET https://n/api2/json/x return Error 500 Internal Server Error: {"errors":"QEMU guest agent is not running"}',
-        ),
+        infoError: proxmoxApiError(500, "QEMU guest agent is not running", {
+          method: "GET",
+        }),
       }),
     );
 

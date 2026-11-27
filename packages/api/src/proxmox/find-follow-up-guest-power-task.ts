@@ -75,7 +75,7 @@ export const findFollowUpGuestPowerTask = async (
   instance: ProxmoxInstance,
   vmid: number,
   { sinceStarttime }: FindFollowUpGuestPowerTaskOptions = {},
-): Promise<Proxmox.nodesTasksNodeTasks | null> => {
+): Promise<Proxmox.NodesTasksNodeTasks | null> => {
   const tasks = await instance.node.tasks.$get({
     vmid,
     limit: 10,

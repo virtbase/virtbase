@@ -31,7 +31,7 @@ export type GetProxmoxInstanceParams = {
  * Subtrees of the generated client, named so they can be written down.
  *
  * `Proxmox.Api` is one interface of inline anonymous objects - there is no
- * `Proxmox.nodesNode` to import. Every type below therefore reaches into it by
+ * `Proxmox.NodesNode` to import. Every type below therefore reaches into it by
  * index rather than restating its shape, which is also what keeps the
  * declaration emit small: the PVE 9 model expands `net0`..`net31`,
  * `scsi0`..`scsi30` and `mp0`..`mp255`, so a single node subtree written out
@@ -77,9 +77,36 @@ export type ProxmoxInstance = {
   node: ProxmoxNode;
   hostname: string;
   cluster: ProxmoxCluster;
+  /**
+   * The `Authorization` header value for the node's API token, for requests
+   * that cannot go through `engine`: the multipart snippet upload and the
+   * noVNC proxy's `vncwebsocket` dial. A bearer credential - never log it.
+   */
+  authorization: string;
   /** Returns the UPID of the download task - the caller has to poll it. */
   downloadUrl: (params: DownloadUrlParams) => Promise<string>;
   uploadSnippet: (params: UploadSnippetParams) => Promise<void>;
+};
+
+/**
+ * Splits a node's `fqdn` into the host and port the client wants.
+ *
+ * `fqdn` carries a port only where the API is not on 443, as on the local
+ * cluster in `tooling/proxbase` (`127.0.0.1:19001`); production nodes sit
+ * behind TLS on 443 and store a bare name. The client rejects a port inside
+ * `host` and defaults to Proxmox's own 8006, so 443 has to be passed
+ * explicitly - leaving it out would send every request to the wrong port.
+ */
+export const parseNodeEndpoint = (
+  fqdn: string,
+): { host: string; port: number } => {
+  const url = new URL(`https://${fqdn}`);
+
+  return {
+    host: url.hostname,
+    // `URL` drops the scheme's default port, so 443 reads back as "".
+    port: url.port ? Number(url.port) : 443,
+  };
 };
 
 export const getProxmoxInstance = (
@@ -87,10 +114,11 @@ export const getProxmoxInstance = (
 ): ProxmoxInstance => {
   const { hostname, fqdn, tokenID, tokenSecret } = proxmoxNode;
   const engine = new ProxmoxEngine({
-    host: fqdn,
+    ...parseNodeEndpoint(fqdn),
     tokenID,
     tokenSecret,
   });
+  const authorization = `PVEAPIToken=${tokenID}=${tokenSecret}`;
 
   const proxmox = proxmoxApi(engine);
   const node = proxmox.nodes.$(hostname);
@@ -102,6 +130,7 @@ export const getProxmoxInstance = (
     node,
     hostname,
     cluster,
+    authorization,
     // A thin adapter over the generated endpoint: camelCase names, and the two
     // parameters Proxmox couples (`checksum`/`checksum-algorithm`) passed as a
     // pair or not at all.
@@ -137,16 +166,6 @@ export const getProxmoxInstance = (
       storage,
       contents,
     }: UploadSnippetParams): Promise<void> => {
-      let ticket: string | undefined;
-      try {
-        const ticketResponse = await engine.getTicket();
-        ticket = ticketResponse.ticket;
-      } catch {
-        throw new Error(
-          "[getProxmoxInstance] Failed to get or create ticket for snippet upload.",
-        );
-      }
-
       const formData = new FormData();
       formData.append(
         "filename",
@@ -156,7 +175,8 @@ export const getProxmoxInstance = (
 
       try {
         const url = new URL(
-          `https://${fqdn}/api2/json/nodes/${hostname}/storage/${storage}/upload`,
+          `/api2/json/nodes/${hostname}/storage/${storage}/upload`,
+          engine.origin,
         );
         url.searchParams.set("content", "snippets");
         url.searchParams.set("filename", encodeURIComponent(filename));
@@ -165,7 +185,7 @@ export const getProxmoxInstance = (
           method: "POST",
           headers: {
             Accept: "application/json",
-            Authorization: ticket,
+            Authorization: authorization,
           },
           body: formData,
         });

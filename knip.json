@@ -4,12 +4,7 @@
   "workspaces": {
     ".": {
       "ignoreBinaries": ["proxbase", "typos"],
-      "ignoreDependencies": [
-        "@dprint/markdown",
-        "lint-staged",
-        "publint",
-        "sherif"
-      ]
+      "ignoreDependencies": ["@dprint/markdown", "publint"]
     },
     "apps/novnc-proxy": {
       "entry": ["src/*.ts!"],
@@ -51,8 +46,7 @@
     },
     "packages/db": {
       "drizzle": false,
-      "entry": ["drizzle.config.ts"],
-      "ignoreDependencies": ["@types/ws", "ws"]
+      "entry": ["drizzle.config.ts"]
     },
     "packages/email": {
       "ignoreDependencies": ["@react-email/preview-server"]
@@ -73,9 +67,6 @@
     },
     "tooling/tailwind": {
       "ignoreDependencies": ["@tailwindcss/postcss", "postcss", "tailwindcss"]
-    },
-    "tooling/typescript": {
-      "ignoreUnresolved": ["next"]
     }
   }
 }

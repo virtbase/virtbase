@@ -16,6 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
+import { proxmoxApiError } from "../../../testing/proxmox-errors.ts";
 import { getGuestOsInfo, isPosixGuest } from "../os-info.ts";
 import { probeGuestAgent } from "../probe.ts";
 import type { ProxmoxVm } from "../types.ts";
@@ -135,9 +136,9 @@ describe("probeGuestAgent", () => {
 
   test("it reports an uninstalled or stopped agent as unreachable", async () => {
     const vm = createVm({
-      infoError: new Error(
-        'GET https://n/api2/json/x return Error 500 Internal Server Error: {"errors":"No QEMU guest agent configured"}',
-      ),
+      infoError: proxmoxApiError(500, "No QEMU guest agent configured", {
+        method: "GET",
+      }),
     });
 
     expect(await probeGuestAgent(vm)).toMatchObject({
@@ -149,8 +150,10 @@ describe("probeGuestAgent", () => {
 
   test("it surfaces a permission problem instead of blaming the agent", async () => {
     const vm = createVm({
-      infoError: new Error(
-        "GET https://n/api2/json/x connection failed with 403 Forbidden return: {}",
+      infoError: proxmoxApiError(
+        403,
+        "Permission check failed (/vms/100, VM.GuestAgent.Unrestricted)",
+        { method: "GET" },
       ),
     });
 

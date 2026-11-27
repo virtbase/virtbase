@@ -17,6 +17,7 @@
 
 import { describe, expect, test } from "bun:test";
 import type { ProxmoxVm } from "../../proxmox/agent/index.ts";
+import { proxmoxApiError } from "../../testing/proxmox-errors.ts";
 import { DETECT_SCRIPT, shell } from "../commands.ts";
 import { detectGuestFirewalls, parseDetectionOutput } from "../detect.ts";
 import { readGuestFirewallRules } from "../read-rules.ts";
@@ -153,9 +154,9 @@ describe("detectGuestFirewalls", () => {
     // "We could not look" and "we looked and found nothing" mean very different
     // things to show a customer, so they must stay distinguishable.
     const vm = createVm({
-      execError: new Error(
-        'POST https://n/x return Error 500 Internal Server Error: {"errors":"No QEMU guest agent configured"}',
-      ),
+      execError: proxmoxApiError(500, "No QEMU guest agent configured", {
+        method: "POST",
+      }),
     });
 
     const detection = await detectGuestFirewalls(vm);
@@ -202,8 +203,10 @@ describe("readGuestFirewallRules", () => {
 
   test("it nests the reason when the command could not run", async () => {
     const vm = createVm({
-      execError: new Error(
-        "POST https://n/x connection failed with 403 Forbidden return: {}",
+      execError: proxmoxApiError(
+        403,
+        "Permission check failed (/vms/100, VM.GuestAgent.Unrestricted)",
+        { method: "POST" },
       ),
     });
 
@@ -234,9 +237,9 @@ describe("readListeningSockets", () => {
 
   test("it nests the reason on failure", async () => {
     const vm = createVm({
-      execError: new Error(
-        'GET https://n/x return Error 500 Internal Server Error: {"errors":"guest agent is not running"}',
-      ),
+      execError: proxmoxApiError(500, "guest agent is not running", {
+        method: "GET",
+      }),
     });
 
     const result = await readListeningSockets(vm);

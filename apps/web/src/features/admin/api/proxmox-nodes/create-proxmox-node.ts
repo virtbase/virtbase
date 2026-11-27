@@ -154,7 +154,7 @@ export const createProxmoxNodeAction = actionClient
       });
     }
 
-    let storages: Proxmox.nodesStorageIndex[] | null = null;
+    let storages: Proxmox.NodesStorageIndex[] | null = null;
     try {
       // Check if storages are available
       storages = await instance.node.storage.$get({

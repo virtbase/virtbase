@@ -22,7 +22,7 @@ import {
 } from "../constants/index.ts";
 
 export const mapProxmoxTaskStatus = (
-  task: Proxmox.nodesTasksNodeTasks,
+  task: Proxmox.NodesTasksNodeTasks,
 ): ProxmoxTaskStatus => {
   return (
     PROXMOX_TASK_STATUS_MAPPING[task.type as never] ?? ProxmoxTaskStatus.UNKNOWN

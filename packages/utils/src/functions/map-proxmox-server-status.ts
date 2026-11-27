@@ -19,7 +19,7 @@ import type { Proxmox } from "@virtbase/proxmox-api";
 import { ProxmoxServerStatus } from "../constants/index.ts";
 
 export const mapProxmoxServerStatus = (
-  currentStatus: Proxmox.nodesQemuStatusCurrentVmStatus,
+  currentStatus: Proxmox.NodesQemuStatusCurrentVmStatus,
 ): ProxmoxServerStatus => {
   const { status, qmpstatus, lock } = currentStatus;
   if (status === "running" && qmpstatus === "running" && !lock) {

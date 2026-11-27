@@ -16,6 +16,7 @@
  */
 
 import { describe, expect, test } from "bun:test";
+import { proxmoxApiError } from "../../../testing/proxmox-errors.ts";
 import { runGuestCommand } from "../exec.ts";
 import type { ProxmoxVm } from "../types.ts";
 
@@ -181,8 +182,10 @@ describe("runGuestCommand", () => {
 
   test("it classifies a failure to start the command", async () => {
     const { vm, calls } = createVm({
-      execError: new Error(
-        "POST https://n/api2/json/x connection failed with 403 Forbidden return: {}",
+      execError: proxmoxApiError(
+        403,
+        "Permission check failed (/vms/100, VM.GuestAgent.Unrestricted)",
+        { method: "POST" },
       ),
     });
 
@@ -195,9 +198,9 @@ describe("runGuestCommand", () => {
 
   test("it classifies a failure while polling", async () => {
     const { vm } = createVm({
-      statusError: new Error(
-        'GET https://n/api2/json/x return Error 500 Internal Server Error: {"errors":"QEMU guest agent is not running"}',
-      ),
+      statusError: proxmoxApiError(500, "QEMU guest agent is not running", {
+        method: "GET",
+      }),
     });
 
     const result = await runGuestCommand(vm, ["ss"], fast);

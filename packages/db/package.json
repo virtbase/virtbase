@@ -22,14 +22,14 @@
     "clean": "git clean -xdf .cache .turbo dist node_modules"
   },
   "dependencies": {
-    "@neondatabase/serverless": "1.2.0",
+    "@neondatabase/serverless": "1.2.1",
     "@virtbase/utils": "workspace:*",
     "base-x": "5.0.1",
     "drizzle-orm": "1.0.0-rc.5",
-    "ws": "8.22.0"
+    "ws": "8.23.0"
   },
   "devDependencies": {
-    "@electric-sql/pglite": "0.5.11",
+    "@electric-sql/pglite": "0.5.17",
     "@types/ws": "8.18.2",
     "@virtbase/tsconfig": "workspace:*",
     "drizzle-kit": "1.0.0-rc.5",
