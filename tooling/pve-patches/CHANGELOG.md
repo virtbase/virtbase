@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1](https://github.com/virtbase/virtbase/compare/pve-patches-v1.1.0...pve-patches-v1.1.1) (2026-11-27)
+
+
+### Bug Fixes
+
+* **pve-patches:** rebase the patches onto the current Proxmox VE packages ([#108](https://github.com/virtbase/virtbase/issues/108)) ([270024b](https://github.com/virtbase/virtbase/commit/270024bd4a6812e35759daebf5a8b1dc3536cc56))
+* **pve-patches:** rebase the patches onto the current Proxmox VE packages ([#118](https://github.com/virtbase/virtbase/issues/118)) ([1d7ac9c](https://github.com/virtbase/virtbase/commit/1d7ac9c93fa52d811d1a68e95b6665c87e8b82b4))
+
 ## [1.1.0](https://github.com/virtbase/virtbase/compare/pve-patches-v1.0.0...pve-patches-v1.1.0) (2026-11-01)
 
 
