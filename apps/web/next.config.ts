@@ -165,6 +165,12 @@ const nextConfig: NextConfig = {
   outputFileTracingIncludes: {
     "/*": [
       "../../node_modules/.bun/jose@*/node_modules/jose/dist/browser/**/*",
+      // `@sentry/nextjs` is external once `withSentryConfig` applies, and its
+      // `bun` export is `index.bun.js`, which requires the optional peer
+      // `@sentry/bun`. A trace with Node's conditions sees neither.
+      "../../node_modules/.bun/@sentry+nextjs@*/node_modules/@sentry/nextjs/build/{cjs,esm}/index.bun.js",
+      "../../node_modules/.bun/@sentry+nextjs@*/node_modules/@sentry/bun",
+      "../../node_modules/.bun/@sentry+bun@*/node_modules/**/*",
     ],
     "/api/docs": ["./src/app/api/docs/**/*.md"],
     "/api/openapi.json": ["./src/app/api/docs/**/*.md"],
