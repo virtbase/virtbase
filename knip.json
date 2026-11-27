@@ -50,6 +50,8 @@
       "ignoreDependencies": ["fumadocs-core"]
     },
     "packages/db": {
+      "drizzle": false,
+      "entry": ["drizzle.config.ts"],
       "ignoreDependencies": ["@types/ws", "ws"]
     },
     "packages/email": {
