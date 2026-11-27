@@ -32,6 +32,7 @@ import {
   mockSession,
   seedServerGraph,
 } from "../../../testing/index.ts";
+import { proxmoxApiError } from "../../../testing/proxmox-errors.ts";
 
 const cacheStore = new Map<string, unknown>();
 
@@ -203,9 +204,9 @@ describe("servers.firewall.guest.get", () => {
     // filtering" when in truth nobody checked.
     mock.module("../../../proxmox/index.ts", () =>
       createProxmoxMock({
-        execError: new Error(
-          'POST https://n/x return Error 500 Internal Server Error: {"errors":"No QEMU guest agent configured"}',
-        ),
+        execError: proxmoxApiError(500, "No QEMU guest agent configured", {
+          method: "POST",
+        }),
       }),
     );
 

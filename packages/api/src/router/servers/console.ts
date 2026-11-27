@@ -60,13 +60,15 @@ export const serversConsoleRouter = {
     .query(async ({ ctx }) => {
       const { instance, server, proxmoxNode, userId } = ctx;
 
-      const [ticket, data] = await Promise.all([
-        instance.engine.getTicket().then(({ ticket }) => ticket),
-        instance.vm.vncproxy.$post({
-          websocket: true,
-          "generate-password": true,
-        }),
-      ]);
+      // The node's API token, which the noVNC proxy sends as it is when it
+      // dials `vncwebsocket`. The client has no ticket to offer here: it
+      // authenticates with the token on every request, and `getTicket()`
+      // refuses a token-authenticated engine.
+      const ticket = instance.authorization;
+      const data = await instance.vm.vncproxy.$post({
+        websocket: true,
+        "generate-password": true,
+      });
 
       const secret = process.env.NOVNC_PROXY_SECRET;
       const proxyUrl = process.env.NOVNC_PROXY_URL;

@@ -15,22 +15,8 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 
+import { ProxmoxError } from "@virtbase/proxmox-api";
 import type { GuestAgentFailure } from "./types.ts";
-
-/**
- * `@virtbase/proxmox-api` throws a plain `Error` whose message is the only
- * carrier of the HTTP status - there is no `status` field to branch on. The two
- * shapes are:
- *
- *   `GET <url> return Error 500 <statusText>: {"errors":...}`          (400/401/500)
- *   `GET <url> connection failed with 403 Forbidden return: {...}`     (everything else)
- *
- * plus `FaILED to call <method> <url> cause by:<reason>` for transport
- * failures, which never carries a status at all.
- *
- * @see https://github.com/virtbase/proxmox-api `ProxmoxEngine.doRequest`
- */
-const STATUS_PATTERN = /return Error (\d{3})|connection failed with (\d{3})/;
 
 /**
  * QEMU guest agent replies that mean the agent is there but the command is not
@@ -43,15 +29,20 @@ const EXEC_DISABLED_PATTERNS = [
   "has not been found",
 ];
 
-const extractStatus = (message: string): number | null => {
-  const match = STATUS_PATTERN.exec(message);
-  if (!match) {
+/**
+ * The HTTP status Proxmox answered with, or `null` when there was no answer -
+ * a refused connection, a timeout, an abort.
+ *
+ * `ProxmoxApiError` and its 400/401/403 subclasses carry it as `status`.
+ * `isInstance` rather than `instanceof`, because the check has to hold for an
+ * error thrown by another installed copy of the client.
+ */
+const extractStatus = (error: unknown): number | null => {
+  if (!ProxmoxError.isInstance(error) || !("status" in error)) {
     return null;
   }
 
-  const status = match[1] ?? match[2];
-
-  return status ? Number.parseInt(status, 10) : null;
+  return typeof error.status === "number" ? error.status : null;
 };
 
 /**
@@ -76,7 +67,7 @@ export const classifyAgentError = (error: unknown): GuestAgentFailure => {
     return { status: "exec_disabled", message };
   }
 
-  const status = extractStatus(message);
+  const status = extractStatus(error);
 
   if (status === 401 || status === 403) {
     return { status: "permission_denied", message };

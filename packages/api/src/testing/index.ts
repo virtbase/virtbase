@@ -28,6 +28,7 @@
  */
 export * from "./caller.ts";
 export * from "./fixtures.ts";
+export * from "./proxmox-errors.ts";
 
 // `./fixtures` is also exported on its own as `@virtbase/api/testing/fixtures`.
 // The Playwright suite runs under Node and needs the fixture objects without

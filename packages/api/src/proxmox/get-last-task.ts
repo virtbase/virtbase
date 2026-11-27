@@ -29,13 +29,13 @@ import type { getProxmoxInstance } from "./get-proxmox-instance.ts";
  */
 const HA_FOLLOW_UP_GRACE_SECONDS = 30;
 
-const isRecognizedPowerTask = (task: Proxmox.nodesTasksNodeTasks): boolean =>
+const isRecognizedPowerTask = (task: Proxmox.NodesTasksNodeTasks): boolean =>
   task.type in PROXMOX_TASK_STATUS_MAPPING;
 
 export const getLastTask = async (
   instance: ReturnType<typeof getProxmoxInstance>,
   vmid: number,
-): Promise<Proxmox.nodesTasksNodeTasks | null> => {
+): Promise<Proxmox.NodesTasksNodeTasks | null> => {
   try {
     const taskList = await instance.node.tasks.$get({
       vmid,
