@@ -59,10 +59,8 @@ Next traces a function's files with Node's export conditions, but Bun resolves
 the `bun` condition first. A server-external package whose `exports` has a
 `bun` entry therefore ships without the file Bun loads, and fails at runtime
 with `Cannot find module`. `outputFileTracingIncludes` in
-`apps/web/next.config.ts` adds those files back. `jose`, reached through
-`@vercel/oidc`, is one case; `@sentry/nextjs` is the other, whose `bun` entry
-requires the optional peer `@sentry/bun`, so that is a direct dependency of the
-web app.
+`apps/web/next.config.ts` adds those files back; `jose`, reached through
+`@vercel/oidc`, is the case today.
 
 ## Testing
 
